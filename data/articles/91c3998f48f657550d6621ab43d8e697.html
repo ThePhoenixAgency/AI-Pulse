@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>1.4.0: Authentication and local storage</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>1.4.0: Authentication and local storage</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 2:50:00 AM | <a href="https://dev.to/sam_march/140-authentication-and-local-storage-3pa0" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F3pt7wmp3i856i1wru6jf.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F3pt7wmp3i856i1wru6jf.png" alt="Cover image for 1.4.0: Authentication and local storage"> </a> <div> <p><a href="https://dev.to/sam_march"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3724609%2F315e00c3-5876-474f-b06d-6c3aebbf11af.webp" alt="Sam March"></a> </p> </div> </header> <div> <p>I'm thrilled to announce the 1.4.0 release for BlitzBrowser. This new version contains a new security layer for public deployments and user data storage on local disk by default.</p> <p>Until now, persisting user data required setting up an S3 compatible provider. It is great for scale and cloud deployment, it added friction for local development and integration tests. Deploying into the cloud required an external way to restrict access to the browsers. I added a built-in authentication layer on the dashboard and on BlitzBrowser. You can now deploy BlitzBrowser on the internet securly.</p> <h2> <a name="user-data-storage-on-local-disk" href="#user-data-storage-on-local-disk"> </a> User Data Storage on Local Disk
+</h2> <p>In 1.4.0 you are no longer forced to use S3 (like AWS, Cloudflare R2 or RustFS) to save your browser user data. You can now mount a local directory directly to your Docker container to persist them.</p> <p>Simply map a volume to <code>/blitzbrowser/user-data</code> and your user data will persist between container restarts.<br>
+</p> <div>
+<pre><code><span>services</span><span>:</span> <span>blitzbrowser</span><span>:</span> <span>image</span><span>:</span> <span>ghcr.io/blitzbrowser/blitzbrowser:latest</span> <span>ports</span><span>:</span> <span>-</span> <span>"</span><span>9999:9999"</span> <span>volumes</span><span>:</span> <span>-</span> <span>./user-data:/blitzbrowser/user-data</span> <span>shm_size</span><span>:</span> <span>"</span><span>2gb"</span> <span>restart</span><span>:</span> <span>always</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Find all the details about the <a href="https://docs.blitzbrowser.com/self-hosted/features/user-data-storage" target="_blank">user data storage</a>.</p> <h2> <a name="builtin-authentication" href="#builtin-authentication"> </a> Built-in Authentication
+</h2> <p>Previously BlitzBrowser was open to anyone who could reach it. Version 1.4.0 introduces built-in authentication to control who can access the browsers and the dashboard. BlitzBrowser and the dashboard can now be configured to use an API key and an authentication key.</p> <h3> <a name="configuration" href="#configuration"> </a> Configuration
+</h3> <ul>
+<li>
+<strong>BlitzBrowser</strong>: All CDP and HTTP connections must provide a valid <code>API_KEY</code>. You can pass the API key by: <ul>
+<li>HTTP header: <code>x-api-key: ${API_KEY}</code>
+</li>
+<li>Query parameter: <code>apiKey=${API_KEY}</code>
+</li>
+</ul> </li> <li> <strong>Dashboard</strong>: Users must provide the <code>AUTH_KEY</code> to log in. The dashboard uses the <code>BLITZBROWSER_API_KEY</code> to connect to the API.</li> </ul> <p>For detailed setup instructions, please refer to the <a href="https://docs.blitzbrowser.com/self-hosted/configurations/dashboard" target="_blank">dashboard configuration</a> and the <a href="https://docs.blitzbrowser.com/self-hosted/configurations/blitzbrowser" target="_blank">BlitzBrowser configuration</a> pages.</p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

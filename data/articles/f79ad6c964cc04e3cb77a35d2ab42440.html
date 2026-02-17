@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building TeamSync: An Open-Source Collaborative Office Suite for Enterprises</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Building TeamSync: An Open-Source Collaborative Office Suite for Enterprises</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 2:26:02 AM | <a href="https://dev.to/garima_strategist_a1e12b8/building-teamsync-an-open-source-collaborative-office-suite-for-enterprises-4g9o" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmxzak6f8j9fa1ko38lcs.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmxzak6f8j9fa1ko38lcs.png" alt="Cover image for Building TeamSync: An Open-Source Collaborative Office Suite for Enterprises"> </a> <div> <p><a href="https://dev.to/garima_strategist_a1e12b8"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3753106%2F41e68c90-0231-40e8-84b8-48184fd2685d.png" alt="garima Strategist"></a> </p> </div> </header> <div> <p>We just open-sourced the editor behind TeamSync — our AI-powered collaborative workspace platform. If you've ever wondered what it takes to build a real-time collaborative office suite (think Google Docs, but self-hosted and enterprise-grade), this is your chance to dive into the code.<br> What We Built<br>
+• <strong>TeamSync Editor</strong>: A fully collaborative Word, Presentation, and Sheets editor — built on Collabora Online and LibreOffice technology.<br>
+• <strong>Real-time multi-user editing</strong>: Multiple people can edit the same document simultaneously with live cursors and conflict-free merges.<br>
+• <strong>Enterprise-ready</strong>: Designed for on-premise deployment with air-gapped support — perfect for government, defence, and regulated industries.<br>
+• <strong>Open source</strong>: Licensed under MPL-2.0 — you can fork, modify, and deploy it yourself.</p> <p>** Why We're Sharing This<br>
+**Most collaborative office tools are closed-source SaaS platforms. That's fine for most use cases — but what if you're working in a highly regulated environment where data sovereignty is non-negotiable? What if you need full control over your infrastructure?<br>
+That's the problem we built TeamSync to solve. And now we're opening the code so the developer community can learn from it, contribute to it, and build on top of it.</p> <p> The Tech Stack<br>
+• C++ (editor-source): The core collaborative engine — forked from Collabora Online, heavily customised for our use cases.<br>
+• JavaScript (teamsync-editor): Frontend interface for Word, Presentation, and Sheets editing — clean, fast, and extensible.<br>
+• WebSockets: Real-time synchronisation between clients and server.<br>
+• LibreOffice: Document rendering engine — fully compatible with .docx, .pptx, .xlsx formats.</p> <p> What You Can Do With It<br>
+• Deploy your own collaborative office: Host it on your own servers — no vendor lock-in, no data leaving your infrastructure.<br>
+• Extend the editor: Add custom plugins, integrations, or AI features on top of the base platform.<br>
+• Study real-time collaboration: Learn how operational transformation (OT) and conflict resolution work at scale.<br>
+• Contribute: Found a bug? Have an idea? PRs are welcome.</p> <p>*<em> Get Started<br>
+*</em> Main Organisation<br>
+<a href="https://github.com/angelbot-ai-pvt-ltd" target="_blank">https://github.com/angelbot-ai-pvt-ltd</a><br> editor-source (C++ core engine)<br>
+<a href="https://github.com/angelbot-ai-pvt-ltd/editor-source" target="_blank">https://github.com/angelbot-ai-pvt-ltd/editor-source</a><br> teamsync-editor (JavaScript UI)<br>
+<a href="https://github.com/angelbot-ai-pvt-ltd/teamsync-editor" target="_blank">https://github.com/angelbot-ai-pvt-ltd/teamsync-editor</a></p> <p><em>If you're building anything in the collaborative editing, document management, or enterprise SaaS space — this repo is for you.</em></p> <h2> <a name="opensource-collaboration-realtime-enterprisesoftware-libreoffice-teamsync-developers-india" href="#opensource-collaboration-realtime-enterprisesoftware-libreoffice-teamsync-developers-india"> </a> opensource #collaboration #realtime #enterprisesoftware #libreoffice #teamsync #developers #india
+</h2> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

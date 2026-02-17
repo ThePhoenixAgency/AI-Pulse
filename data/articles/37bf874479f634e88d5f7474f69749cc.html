@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Evaluating The Performance Cost To AMD SEV-SNP On EPYC 9005 VMs Review</title>
+<title>Evaluating The Performance Cost To AMD SEV-SNP On Modern EPYC VMs Review</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
@@ -29,17 +29,16 @@
 </style>
 </head>
 <body>
-  <h1>Evaluating The Performance Cost To AMD SEV-SNP On EPYC 9005 VMs Review</h1>
+  <h1>Evaluating The Performance Cost To AMD SEV-SNP On Modern EPYC VMs Review</h1>
   <div class="metadata">
     Source: Phoronix | Date: 2/13/2026 3:17:19 PM | <a href="https://www.phoronix.com/review/amd-epyc-9005-sev-snp" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <article> <div> <p>AMD Secure Encrypted Virtualization with Secure Nested Paging (<a href="https://www.phoronix.com/search/SEV-SNP">SEV-SNP</a>) provides memory encryption and integrity protections that can be especially useful in modern cloud computing. Typically a 2~10% performance overhead is reported when engaging AMD SEV-SNP for these hardware-backed security protections. In this article is an extensive look at the current AMD SEV-SNP performance impact for confidential computing on <a href="https://www.phoronix.com/search/EPYC+9005">EPYC 9005</a> "Turin" servers. The current Ubuntu 24.04 LTS was tested as well as an Ubuntu 26.04 development snapshot in evaluating the latest optimizations and what is on the horizon this year for AMD EPYC Linux server performance.</p>
-<p><a href="https://www.phoronix.com/image-viewer.php?id=amd-epyc-9005-sev-snp&amp;image=amd_sev_snp_3_lrg" target="_blank"><img src="https://www.phoronix.net/image.php?id=amd-epyc-9005-sev-snp&amp;image=amd_sev_snp_3_med" alt="AMD EPYX 9005 Turin Zen 5 processor"></a></p>
-<p>AMD SEV-SNP provides memory integrity protections to help fend off malicious hypervisor-based attacks, other improvements over SEV-ES on earlier EPYC CPUs for greater VM security, interrupt protections, and better protections against side channel attacks. The latest EPYC 9005 processors also support SEV Trusted I/O for protections against PCIe devices but that is outside of the scope of today's testing.</p>
+    <div><div> <article> <div> <p>AMD Secure Encrypted Virtualization with Secure Nested Paging (<a href="https://www.phoronix.com/search/SEV-SNP">SEV-SNP</a>) provides memory encryption and integrity protections that can be especially useful in modern cloud computing. Typically a 2~10% performance overhead is reported when engaging AMD SEV-SNP for these hardware-backed security protections. In this article is an extensive look at the current AMD SEV-SNP performance impact for confidential computing on EPYC servers. The current Ubuntu 24.04 LTS was tested as well as an Ubuntu 26.04 development snapshot in evaluating the latest optimizations and what is on the horizon this year for AMD EPYC Linux server performance.</p>
+<p><a href="https://www.phoronix.com/image-viewer.php?id=amd-epyc-9005-sev-snp&amp;image=amd_sev_snp_3_lrg" target="_blank"><img src="https://www.phoronix.net/image.php?id=amd-epyc-9005-sev-snp&amp;image=amd_sev_snp_3_med" alt="AMD EPYC processor"></a></p>
+<p>AMD SEV-SNP provides memory integrity protections to help fend off malicious hypervisor-based attacks, other improvements over SEV-ES on earlier EPYC CPUs for greater VM security, interrupt protections, and better protections against side channel attacks.</p>
 <p><img src="https://www.phoronix.net/image.php?id=2020&amp;image=amd_sev_snp_med" alt="AMD SEV comparison"></p>
 <p>Typically 2% to 8~10% is cited as the performance overhead to engaging SEV-SNP while some workloads may see upwards of 10~12% such as for database servers and other I/O heavy workloads. Running a well-rounded set of benchmarks for evaluating the AMD SEV-SNP overhead has long been on my TODO list and leveraging the Azure public cloud makes it easy to conduct such a real-world comparison in a production environment.</p>
-<p><a href="https://www.phoronix.com/image-viewer.php?id=amd-epyc-9005-sev-snp&amp;image=amd_sev_snp_1_lrg" target="_blank"><img src="https://www.phoronix.net/image.php?id=amd-epyc-9005-sev-snp&amp;image=amd_sev_snp_1_med" alt="AMD EPYX 9005 CPU"></a></p>
 <p>For measuring the performance impact of modern AMD Secure Encrypted Virtualization in a real-world environment, AMD provided gratis access to two Microsoft Azure public cloud instances: one with SEV-SNP for confidential computing and the second instance the same configuration but without SEV-SNP protections. Thus a clean 1:1 look at the AMD SEV-SNP impact in the public cloud and with all the latest patches at the time applied by Microsoft's cloud engineers.</p>
 <p><a href="https://www.phoronix.com/image-viewer.php?id=amd-epyc-9005-sev-snp&amp;image=amd_sev_snp_2_lrg" target="_blank"><img src="https://www.phoronix.net/image.php?id=amd-epyc-9005-sev-snp&amp;image=amd_sev_snp_2_med" alt="AMD EPYC 9V74 CPU information"></a></p>
 <p>The Azure v7 series VMs were powered by AMD EPYC 9V74 80-core processors but for this testing was done in a 16 vCPU configuration comprised of eight physical cores and sixteen threads -- given that the 16 vCPU size being quite common among VMs. With the 16 vCPUs was 64GB of memory and 550GB of virtual storage.</p>

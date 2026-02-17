@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stop Losing LangGraph Progress to 429 Errors</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Stop Losing LangGraph Progress to 429 Errors</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 3:01:42 AM | <a href="https://www.ezthrottle.network/blog/stop-losing-langgraph-progress" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2>Why Your Agents Don't Scale</h2> <p> I've seen genuinely nice people become assholes because they get paged every weekend. I've seen organizations play Hunger Games when leadership asks who caused the post-mortem. </p> <p> The reason your agents don't scale is the same reason serverless doesn't scale. </p> <p> Serverless doesn't mean operationless. </p> <p> You still need retry logic. You still need rate limit handling. You still need coordination across workers. You still need someone to wake up at 3am when it breaks. </p> <p> LangGraph handles state management, workflow orchestration, and complex agent logic beautifully. </p> <p> But when OpenRouter returns 429 at step 7 of your workflow, LangGraph can't help you. Your workflow crashes. You restart from step 1. Your engineers debug why 100 workers created a retry storm. </p> <p> At some point, someone suggests: "Let's build a queue." </p> <h2>The Queue You'll Eventually Build</h2> <p> If you want agents to scale without churning through engineers, you'll need some mechanism for queuing. Not optional. It's a real infrastructure problem. </p> <p> The right architecture is queue-per-URL. Each external dependency gets its own queue with its own rate limits. Stripe gets 100 RPS. OpenAI gets 50 RPS. They don't interfere with each other. </p> <p> This is doable. It's not magic. It's ~2000 lines of code plus distributed state management plus health checking plus monitoring. </p> <p> But here's the part nobody mentions: it's not the time to write it that kills you. It's the ongoing maintenance. </p> <p> Those queues need to scale as your business grows. They need debugging when they break. They need someone on-call when they fail at 2am. They need a team. </p> <p> You can build this. Many companies do. </p> <p> But now you're in the infrastructure business, not the AI agent business. </p> <div> <p> Netflix didn't become Netflix by managing data centers. They specialized in streaming video and let AWS handle infrastructure. </p> <p> Same principle here. </p> </div> <h2>What You Have Today</h2> <p>Here's what most LangGraph workflows look like:</p> <pre><code>from langgraph.graph import StateGraph
+from litellm import completion def call_llm_node(state): try: response = completion( model="anthropic/claude-3.5-sonnet", messages=state["messages"], fallbacks=["openai/gpt-4"] ) return {"messages": state["messages"] + [response]} except RateLimitError: raise # Workflow crashes</code></pre> <p><strong>What happens when OpenRouter rate limits at step 7:</strong></p> <ul> <li>Sequential fallback: Claude times out (5s), THEN try GPT-4 (5s) = 10s wasted</li> <li>Limited to your account: All fallbacks hit YOUR quota</li> <li>No coordination: 100 workers retry independently (retry storm)</li> <li>Progress lost: Restart from step 1</li> </ul> <p> This works fine at 10 requests/day. It breaks at 1000 requests/day. </p> <h2>What You Actually Want</h2> <p> <strong>Multi-provider, multi-account fallbacks that race instead of waiting sequentially.</strong> </p> <p> When your primary OpenRouter account hits rate limits, you want the system to automatically try: </p> <ul> <li>Your backup OpenRouter account</li> <li>Direct Anthropic API</li> <li>Direct OpenAI API</li> <li>Whichever other providers you've configured</li> </ul> <p> All racing simultaneously. Fastest response wins. </p> <p> <strong>Coordinated retries across all your workers</strong> so 100 instances don't create a retry storm. </p> <p> <strong>Webhook-based resumption</strong> so your LangGraph workflow doesn't block waiting for responses. </p> <p> <strong>Idempotent execution</strong> so a 429 at step 7 resumes at step 7, not step 1. </p> <p>Here's what that looks like:</p> <pre><code>def call_llm_node(state): result = ( Step(ez) .url("https://openrouter.ai/api/v1/chat/completions") .method("POST") .headers({"Authorization": f"Bearer {OPENROUTER_KEY}"}) .body({ "model": "anthropic/claude-3.5-sonnet", "messages": state["messages"] }) .type(StepType.PERFORMANCE) .fallback_on_error([429, 500, 503]) .webhooks([{"url": "https://yourapp.com/langgraph-resume"}]) .idempotent_key(f"workflow_{state['workflow_id']}_step_{state['step']}") .execute() ) return {"job_id": result["job_id"], "status": "waiting"}</code></pre> <p> Behind the scenes, this coordinates retries across all workers, races multiple providers and accounts, and delivers results via webhook when ready. </p> <p> You could build this coordination yourself. Or you could ship agents. </p> <h2>Fallback Racing</h2> <p>Sequential fallbacks waste time. You want racing.</p> <pre><code># Define fallback chain
+anthropic = Step(ez).url("https://api.anthropic.com/v1/messages") openai = ( Step(ez) .url("https://api.openai.com/v1/chat/completions") .fallback(anthropic, trigger_on_timeout=3000) # Race after 3s
+) result = ( Step(ez) .url("https://openrouter.ai/...") .fallback(openai, trigger_on_error=[429, 500]) .execute()
+)</code></pre> <p><strong>Timeline when OpenRouter returns 429:</strong></p> <pre><code>0ms: OpenRouter tries
+100ms: OpenRouter 429 → OpenAI fallback fires
+100ms: OpenRouter retrying + OpenAI both racing
+3100ms: OpenAI slow → Anthropic fires
+3100ms: All three racing
+3200ms: Anthropic wins, others cancelled</code></pre> <p> All providers race after their triggers fire. Fastest wins. </p> <p> You can't do this with client-side retries. They're sequential by design. </p> <h2>Resuming Workflows with Webhooks</h2> <p>Your workflow doesn't block. It continues, and webhooks resume it when ready.</p> <pre><code>from fastapi import FastAPI, Request, BackgroundTasks app = FastAPI() @app.post("/langgraph-resume")
+async def resume_workflow(request: Request, background_tasks: BackgroundTasks): data = await request.json() workflow_id = data["metadata"]["workflow_id"] if data["status"] == "success": llm_response = json.loads(data["response"]["body"]) # Resume in background (don't block webhook) background_tasks.add_task( continue_workflow, workflow_id, llm_response ) return {"ok": True} async def continue_workflow(workflow_id: str, llm_response: dict): # Update LangGraph state agent.update_state(workflow_id, { "messages": [..., llm_response], "status": "complete" }) # Continue from next step await agent.ainvoke({"workflow_id": workflow_id})</code></pre> <p><strong>The pattern:</strong></p> <ol> <li>Submit to coordination layer → returns immediately</li> <li>Workflow continues with other work</li> <li>Webhook fires when LLM responds</li> <li>Resume workflow from checkpoint</li> </ol> <p> No blocking. No retry storms. No lost progress. </p> <h2>What the Industry Actually Needs</h2> <p> The industry needs agents that can be trusted to run for months and years without human intervention. </p> <p> That means Layer 7 (HTTP) needs to be automated. Retries, rate limits, failover - all handled at the infrastructure layer, not in application code. </p> <p> Right now, most teams write retry logic in every service. When it breaks, engineers get paged. When traffic spikes, retry storms happen. When providers have outages, everything falls over. </p> <p> This doesn't scale. Not the technology - the people. </p> <p> You can build coordination infrastructure yourself. You can dedicate a team to maintaining it. Some companies do. </p> <p> Or you can treat it like AWS treats compute: infrastructure you don't manage. </p> <h2>The Choice</h2> <p><strong>Build it yourself:</strong></p> <ul> <li>Queue per URL/dependency (the right architecture)</li> <li>Distributed state coordination</li> <li>Health checking and failover</li> <li>Ongoing maintenance as you scale</li> <li>A team to own it</li> </ul> <p><strong>Or:</strong></p> <ul> <li>Focus on agents</li> <li>Let infrastructure handle reliability</li> <li>Go home at 5pm</li> </ul> <p> Netflix chose streaming over data centers. What will you choose? </p> <h2>Getting Started</h2> <p>If you want the patterns above without building infrastructure:</p> <p> <strong>SDKs:</strong> <a href="https://github.com/rjpruitt16/ezthrottle-python">Python</a> | <a href="https://github.com/rjpruitt16/ezthrottle-node">Node.js</a> | <a href="https://github.com/rjpruitt16/ezthrottle-go">Go</a> </p> <p> <strong>Free tier:</strong> 1M requests/month at <a href="https://www.ezthrottle.network/">ezthrottle.network</a> </p> <p> The coordination layer handles 20 accounts across 4 providers working like one pool. </p> <p> Or build it yourself: <a href="https://www.ezthrottle.network/blog/making-failure-boring-again">Architecture details</a> </p> <h2>My Mission</h2> <p> I'm working to help the industry write scalable serverless software without needing to turn on more servers and with minimal operations. </p> <p> Engineers shouldn't wake up at 3am because OpenRouter rate limited. They shouldn't lose weekends debugging retry storms. They shouldn't sacrifice time with family maintaining infrastructure that leadership calls "good enough." </p> <p> Layer 7 should be automated. Agents should run for months without human intervention. Engineers should go home at 5pm. </p> <p> That's what I'm building toward. </p> <p> Use it or don't. Build it yourself or don't. </p> <p> But please: stop letting infrastructure steal your time. </p> <p> Find me on X: <a href="https://twitter.com/RahmiPruitt">@RahmiPruitt</a> </p> <p> <strong>Coming next:</strong> Part 2 - Surviving Regional Failures and Partial Outages </p> <p> </p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

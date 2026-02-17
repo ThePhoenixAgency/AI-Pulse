@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - mitchellh/vouch at console.dev</title>
+<title>Beta: Vouch</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,208 +23,12 @@
 </style>
 </head>
 <body>
-  <h1>GitHub - mitchellh/vouch at console.dev</h1>
+  <h1>Beta: Vouch</h1>
   <div class="metadata">
     Source: Console.dev | Date: 2/12/2026 12:00:00 AM | <a href="https://github.com/mitchellh/vouch?ref=console.dev" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><h1>Vouch</h1><a href="#vouch"></a></div>
-<p> A community trust management system.
-</p>
-<p> <a href="/mitchellh/vouch/blob/main/FAQ.md">FAQ</a> · <a href="/mitchellh/vouch/blob/main/CONTRIBUTING.md">Contributing</a>
-</p>
-<hr>
-<pre><code>People must be vouched for before
-interacting with certain parts of a project (the exact parts are
-configurable to the project to enforce). People can also be explicitly
-denounced to block them from interacting with the project.</code></pre>
-<p>The implementation is generic and can be used by any project on any code forge,
-but we provide <strong>GitHub integration</strong> out of the box via GitHub actions
-and the CLI.</p>
-<p>The vouch list is maintained in a single flat file using a minimal format
-that can be trivially parsed using standard POSIX tools and any programming
-language without external libraries.</p>
-<pre><code>Vouch lists can also form a web of trust. You can configure Vouch to
-read other project's lists of vouched or denounced users. This way,
-projects with shared values can share their trust decisions with each other
-and create a larger, more comprehensive web of trust across the ecosystem.
-Users already proven to be trustworthy in one project can automatically
-be assumed trustworthy in another project, and so on.</code></pre>
-<div><p>Warning</p>
-<p>This is an experimental system in use by <a href="https://github.com/ghostty-org/ghostty">Ghostty</a>.
-We'll continue to improve the system based on experience and feedback.</p>
-</div>
-<div><h2>Why?</h2><a href="#why"></a></div>
-<p>Open source has always worked on a system of <em>trust and verify</em>.</p>
-<pre><code>Historically, the effort required to understand a codebase, implement
-a change, and submit that change for review was high enough that it
-naturally filtered out many low quality contributions from unqualified people.
-For over 20 years of my life, this was enough for my projects as well
-as enough for most others.</code></pre>
-<pre><code>Unfortunately, the landscape has changed particularly with the advent
-of AI tools that allow people to trivially create plausible-looking but
-extremely low-quality contributions with little to no true understanding.
-Contributors can no longer be trusted based on the minimal barrier to entry
-to simply submit a change.</code></pre>
-<pre><code>But, open source still works on trust! And every project has a definite
-group of trusted individuals (maintainers) and a larger group of probably
-trusted individuals (active members of the community in any form). So,
-let's move to an explicit trust model where trusted individuals can vouch
-for others, and those vouched individuals can then contribute.</code></pre>
-<div><h2>Who is Vouched?</h2><a href="#who-is-vouched"></a></div>
-<pre><code>Who and how someone is vouched or denounced is left entirely up to the
-project integrating the system. Additionally, what consequences
-a vouched or denounced person has is also fully up to the project.
-Implement a policy that works for your project and community.</code></pre>
-<div><h2>Usage</h2><a href="#usage"></a></div>
-<div><h3>GitHub</h3><a href="#github"></a></div>
-<p>Integrating vouch into a GitHub project is easy with the
-<a href="https://github.com/mitchellh/vouch/tree/main/action">provided GitHub Actions</a>.
-By choosing which actions to use, you can fully control how
-users are vouched and what they can or can't do.</p>
-<p>For an example, look at this repository! It fully integrates vouch.</p>
-<p>Below is a list of the actions and a brief description of their function.
-See the linked README in the action directory for full usage details.</p>
-<table>
-<thead>
-<tr>
-<th>Action</th>
-<th>Trigger</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="/mitchellh/vouch/blob/main/action/check-issue/README.md">check-issue</a></td>
-<td><pre><code>issues</code></pre></td>
-<td>Check if an issue author is vouched on open or reopen. Bots and collaborators with write access are automatically allowed. Optionally auto-close issues from unvouched or denounced users.</td>
-</tr>
-<tr>
-<td><a href="/mitchellh/vouch/blob/main/action/check-pr/README.md">check-pr</a></td>
-<td><pre><code>pull_request_target</code></pre></td>
-<td>Check if a PR author is vouched on open or reopen. Bots and collaborators with write access are automatically allowed. Optionally auto-close PRs from unvouched or denounced users.</td>
-</tr>
-<tr>
-<td><a href="/mitchellh/vouch/blob/main/action/check-user/README.md">check-user</a></td>
-<td>Any</td>
-<td>Check if a GitHub user is vouched. Outputs the user's status and fails the step by default if the user is not vouched. Set <pre><code>allow-fail</code></pre> to only report via output.</td>
-</tr>
-<tr>
-<td><a href="/mitchellh/vouch/blob/main/action/manage-by-discussion/README.md">manage-by-discussion</a></td>
-<td><pre><code>discussion_comment</code></pre></td>
-<td>Let collaborators vouch, denounce, or unvouch users via discussion comments. Updates the vouched file and commits the change.</td>
-</tr>
-<tr>
-<td><a href="/mitchellh/vouch/blob/main/action/manage-by-issue/README.md">manage-by-issue</a></td>
-<td><pre><code>issue_comment</code></pre></td>
-<td>Let collaborators vouch or denounce users via issue comments. Updates the vouched file and commits the change.</td>
-</tr>
-<tr>
-<td><a href="/mitchellh/vouch/blob/main/action/setup-vouch/README.md">setup-vouch</a></td>
-<td>Any</td>
-<td>Install the <pre><code>vouch</code></pre> CLI on <pre><code>PATH</code></pre>. Nushell is installed automatically if not already available.</td>
-</tr>
-</tbody>
-</table>
-<div><h3>CLI</h3><a href="#cli"></a></div>
-<p>The CLI is implemented as a Nushell module and only requires
-Nushell to run. There are no other external dependencies.</p>
-<div><h4>Integrated Help</h4><a href="#integrated-help"></a></div>
-<p>This is Nushell, so you can get help on any command:</p>
-<div><pre>use vouch <span>*</span>
-<span>help</span> add
-<span>help</span> check
-<span>help</span> denounce
-<span>help</span> gh<span>-</span>check<span>-</span>issue
-<span>help</span> gh<span>-</span>check<span>-</span>pr
-<span>help</span> gh<span>-</span>manage<span>-</span>by<span>-</span>issue</pre></div>
-<div><h4>Local Commands</h4><a href="#local-commands"></a></div>
-<p><strong>Check a user's vouch status:</strong></p>
-<div><pre>vouch check <span>&lt;</span>username<span>&gt;</span></pre></div>
-<p>Exit codes: 0 = vouched, 1 = denounced, 2 = unknown.</p>
-<p><strong>Add a user to the vouched list:</strong></p>
-<div><pre><span><span>#</span> Preview new file contents (default)</span>
-vouch add someuser <span><span>#</span> Write the file in-place</span>
-vouch add someuser --write</pre></div>
-<p><strong>Denounce a user:</strong></p>
-<div><pre><span><span>#</span> Preview new file contents (default)</span>
-vouch denounce badactor <span><span>#</span> With a reason</span>
-vouch denounce badactor --reason <span><span>"</span>Submitted AI slop<span>"</span></span> <span><span>#</span> Write the file in-place</span>
-vouch denounce badactor --write</pre></div>
-<div><h4>GitHub Integration</h4><a href="#github-integration"></a></div>
-<p>Requires the </p><pre><code>GITHUB_TOKEN</code></pre> environment variable. If not set and <pre><code>gh</code></pre>
-is available, the token from <pre><code>gh auth token</code></pre> is used.<p></p>
-<p><strong>Check if an issue author is vouched:</strong></p>
-<div><pre><span><span>#</span> Check issue author status (dry run)</span>
-vouch gh-check-issue 123 --repo owner/repo <span><span>#</span> Auto-close unvouched issues (dry run)</span>
-vouch gh-check-issue 123 --repo owner/repo --auto-close <span><span>#</span> Actually close unvouched issues</span>
-vouch gh-check-issue 123 --repo owner/repo --auto-close --dry-run=false <span><span>#</span> Allow unvouched users, only block denounced</span>
-vouch gh-check-issue 123 --repo owner/repo --require-vouch=false --auto-close</pre></div>
-<p>Outputs status: </p><pre><code>skipped</code></pre> (bot/collaborator), <pre><code>vouched</code></pre>, <pre><code>allowed</code></pre>, or <pre><code>closed</code></pre>.<p></p>
-<p><strong>Check if a PR author is vouched:</strong></p>
-<div><pre><span><span>#</span> Check PR author status (dry run)</span>
-vouch gh-check-pr 123 --repo owner/repo <span><span>#</span> Auto-close unvouched PRs (dry run)</span>
-vouch gh-check-pr 123 --repo owner/repo --auto-close <span><span>#</span> Actually close unvouched PRs</span>
-vouch gh-check-pr 123 --repo owner/repo --auto-close --dry-run=false <span><span>#</span> Allow unvouched users, only block denounced</span>
-vouch gh-check-pr 123 --repo owner/repo --require-vouch=false --auto-close</pre></div>
-<p>Outputs status: </p><pre><code>skipped</code></pre> (bot/collaborator), <pre><code>vouched</code></pre>, <pre><code>allowed</code></pre>, or <pre><code>closed</code></pre>.<p></p>
-<p><strong>Manage contributor status via issue comments:</strong></p>
-<div><pre><span><span>#</span> Dry run (default)</span>
-vouch gh-manage-by-issue 123 456789 --repo owner/repo <span><span>#</span> Actually perform the action</span>
-vouch gh-manage-by-issue 123 456789 --repo owner/repo --dry-run=false</pre></div>
-<p>Responds to comments from collaborators with sufficient role
-(admin, maintain, write, or triage by default):</p>
-<ul>
-<li><pre><code>vouch</code></pre> — vouches for the issue author</li>
-<li><pre><code>vouch @user</code></pre> — vouches for a specific user</li>
-<li><pre><code>vouch &lt;reason&gt;</code></pre> — vouches for the issue author with a reason</li>
-<li><pre><code>vouch @user &lt;reason&gt;</code></pre> — vouches for a specific user with a reason</li>
-<li><pre><code>denounce</code></pre> — denounces the issue author</li>
-<li><pre><code>denounce @user</code></pre> — denounces a specific user</li>
-<li><pre><code>denounce &lt;reason&gt;</code></pre> — denounces the issue author with a reason</li>
-<li><pre><code>denounce @user &lt;reason&gt;</code></pre> — denounces a specific user with a reason</li>
-</ul>
-<p>Keywords are customizable via </p><pre><code>--vouch-keyword</code></pre> and <pre><code>--denounce-keyword</code></pre>.
-You can also allow specific managers listed in a separate VOUCHED file
-via <pre><code>--vouched-managers</code></pre>.<p></p>
-<p>Outputs status: </p><pre><code>vouched</code></pre>, <pre><code>denounced</code></pre>, or <pre><code>unchanged</code></pre>.<p></p>
-<div><h3>Library</h3><a href="#library"></a></div>
-<p>The module also exports a </p><pre><code>lib</code></pre> submodule for scripting:<p></p>
-<div><pre>use vouch<span>/lib.nu *</span>
-<span></span>
-<span>let records = open VOUCHED.td</span>
-<span>$records | check-user "mitchellh" --default-platform github # "vouched", "denounced", or "unknown"</span>
-<span>$records | add-user "newuser" # returns updated table</span>
-<span>$records | denounce-user "badactor" "reason" # returns updated table</span>
-<span>$records | remove-user "olduser" # returns updated table</span></pre></div>
-<div><h2>Vouched File Format</h2><a href="#vouched-file-format"></a></div>
-<p>The vouch list is stored in a </p><pre><code>.td</code></pre> file. See
-<a href="/mitchellh/vouch/blob/main/VOUCHED.example.td">VOUCHED.example.td</a> for an example. The file is
-looked up at <pre><code>VOUCHED.td</code></pre> or <pre><code>.github/VOUCHED.td</code></pre> by default.<p></p>
-<div><pre><code># Comments start with #
-username
-platform:username
--platform:denounced-user
--platform:denounced-user reason for denouncement
-</code></pre></div>
-<ul>
-<li>One handle per line (without <pre><code>@</code></pre>), sorted alphabetically.</li>
-<li>Optionally specify a platform prefix: <pre><code>platform:username</code></pre> (e.g., <pre><code>github:mitchellh</code></pre>).</li>
-<li>Denounce a user by prefixing with <pre><code>-</code></pre>.</li>
-<li>Optionally add details after a space following the handle.</li>
-</ul>
-<p>The </p><pre><code>from td</code></pre> and <pre><code>to td</code></pre> commands are exported by the module, so
-Nushell's <pre><code>open</code></pre> command works natively with <pre><code>.td</code></pre> files to decode
-into structured tables and encode back to the file format with
-comments and whitespace preserved.<p></p>
-<div><p>Note</p>
-<p><strong>What is </strong></p><pre><strong><code>.td</code></strong></pre><strong>?</strong> This stands for "Trustdown," a play on the
-word "Markdown." I intend to formalize a specification for trust
-lists (with no opinion on how they're created or used) so that software
-systems like this Vouch project and others can coordinate with each
-other. I'm not ready to publish a specification until vouch itself
-stabilizes usage more.<p></p>
-</div>
+    <p>Community trust tooling.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

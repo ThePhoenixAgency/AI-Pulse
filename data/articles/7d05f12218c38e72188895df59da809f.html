@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - zeke-john/rune: An open-source React component library and CLI for ASCII art animations, that also lets you create your own!</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - zeke-john/rune: An open-source React component library and CLI for ASCII art animations, that also lets you create your own!</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 1:55:30 AM | <a href="https://github.com/zeke-john/rune" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Rune</h1><a href="#rune"></a></div>
+<p><a target="_blank" href="https://private-user-images.githubusercontent.com/67245013/549359976-ca886f17-fbf7-4d1a-a98d-03558c2f182a.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEzMDIxODEsIm5iZiI6MTc3MTMwMTg4MSwicGF0aCI6Ii82NzI0NTAxMy81NDkzNTk5NzYtY2E4ODZmMTctZmJmNy00ZDFhLWE5OGQtMDM1NThjMmYxODJhLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE3VDA0MTgwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQyODUwYWQ2NWNkMjg4MGU3M2Q4MWFjYTUxODVmNWRmZTVhMjRlY2IxMDU2MDk5OWM5ZjRmN2E1MmUzNjRmM2UmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.PHKuA8Au9mkcPSCYRaQ_zh8mkDkfzsiS5f4jfRrQKtI"><img src="https://private-user-images.githubusercontent.com/67245013/549359976-ca886f17-fbf7-4d1a-a98d-03558c2f182a.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEzMDIxODEsIm5iZiI6MTc3MTMwMTg4MSwicGF0aCI6Ii82NzI0NTAxMy81NDkzNTk5NzYtY2E4ODZmMTctZmJmNy00ZDFhLWE5OGQtMDM1NThjMmYxODJhLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE3VDA0MTgwMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQyODUwYWQ2NWNkMjg4MGU3M2Q4MWFjYTUxODVmNWRmZTVhMjRlY2IxMDU2MDk5OWM5ZjRmN2E1MmUzNjRmM2UmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.PHKuA8Au9mkcPSCYRaQ_zh8mkDkfzsiS5f4jfRrQKtI" alt="fye"></a></p>
+<p><a href="https://www.npmjs.com/package/rune-ascii"><img src="https://camo.githubusercontent.com/92cb72583ddefa23ff9c2fd18fc6656207f409cf35a9924afa60031aa7a5ac18/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f64742f72756e652d61736369693f7374796c653d666f722d7468652d6261646765266c6f676f3d6e706d266c6f676f436f6c6f723d7768697465266c6162656c3d646f776e6c6f61647326636f6c6f723d636233383337" alt="npm downloads"></a></p>
+<p>Composable ASCII art animations for React. Drop in ASCII art animations the same way you'd use an icon pack.</p>
+<p>Rune takes video files and converts them into grids of ASCII characters (frame by frame) so they can play as text-based animations in the browser. Each pixel's brightness is mapped to a character (dark pixels become dense characters like </p><pre><code>@</code></pre>, bright pixels become light ones like <pre><code>.</code></pre>) and each character can retain its original color. The result is a looping, purely text-rendered ASCII animation that you can adjust to <strong>any</strong> level of granularity!<p></p> <span>rune.mp4</span> <span></span> <div><h2>Quick start</h2><a href="#quick-start"></a></div>
+<div><pre>npm install rune-ascii</pre></div>
+<div><pre><span>import</span> <span>{</span> <span>Rune</span> <span>}</span> <span>from</span> <span>"rune-ascii"</span><span>;</span> <span>&lt;</span><span>Rune</span> <span>name</span><span>=</span><span>"ghost"</span> <span>/&gt;</span><span>;</span></pre></div>
+<p>That's it. The component fetches the animation data from a CDN and plays it automatically.</p>
+<div><h2>How it works</h2><a href="#how-it-works"></a></div>
+<p>There are two sides to Rune: <strong>creating</strong> animations and <strong>playing</strong> them.</p>
+<div><h3>Creating an animation</h3><a href="#creating-an-animation"></a></div>
+<p>You start with a short video clip (a 3D render, screen recording, whatever) and run it through the CLI:</p>
+<div><pre>npx @rune-ascii/cli generate ./video.mp4 --name <span><span>"</span>my-animation<span>"</span></span></pre></div>
+<p>An example MP4 to ASCII animation:</p> <span>convert.mov</span> <span></span> <p>Under the hood, this pipeline runs:</p>
+<div><pre><code>Video file (.mp4, .mov, .mkv, .avi, .webm) → ffmpeg extracts frames, scaling to target columns and applying font-ratio height correction in a single pass → ImageMagick dumps every pixel's RGB values → Each pixel's luminance is mapped to an ASCII character → All frames are bundled into a single .rune.json file
+</code></pre></div>
+<p>The character mapping uses a ramp like </p><pre><code>" -=+*%#0oOxX@$"</code></pre> — spaces for background areas, dense characters for the darkest content. The converter uses border-connected flood fill to distinguish true background from enclosed white details (like eyes), and temporal carry-forward to prevent background flicker during motion. A font ratio (default <pre><code>0.6</code></pre>) compensates for the fact that monospace characters are taller than they are wide — the ratio should match <pre><code>charWidth / lineHeight</code></pre> of the rendering font (0.6 is correct for web rendering with <pre><code>lineHeight: 1</code></pre>).<p></p>
+<p><strong>Requirements:</strong> ffmpeg and ImageMagick must be installed on your system. The CLI checks for them on startup and tells you how to install them if they're missing.</p>
+<div><h3>Playing an animation</h3><a href="#playing-an-animation"></a></div>
+<p>The </p><pre><code>&lt;Rune&gt;</code></pre> React component handles everything:<p></p>
+<ol>
+<li>Fetches the <pre><code>.rune.json</code></pre> file (from CDN, a custom URL, or passed directly as data)</li>
+<li>Parses the frame data</li>
+<li>Uses <pre><code>requestAnimationFrame</code></pre> to cycle through frames at the specified FPS</li>
+<li>For colored animations, renders <pre><code>&lt;span&gt;</code></pre> elements with inline color styles</li>
+<li>For plain animations, sets text content directly</li>
+</ol>
+<p>The component is also performance conscious:</p>
+<ul>
+<li><strong>Lazy loading</strong>: only fetches animation data when the element is near the viewport (IntersectionObserver)</li>
+<li><strong>Auto pause</strong>: stops playing when scrolled out of view or when the browser tab loses focus</li>
+<li><strong>Reduced motion</strong>: respects <pre><code>prefers-reduced-motion</code></pre></li>
+<li><strong>Incremental updates</strong>: reuses DOM nodes and only updates characters that changed between frames</li>
+<li><strong>Zero dependencies</strong>: no Tailwind, no CSS files, just inline styles</li>
+</ul>
+<div><h2>Component Reference</h2><a href="#component-reference"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>Rune</span> <span>}</span> <span>from</span> <span>"rune-ascii"</span><span>;</span> <span>// Built-in animation from CDN</span>
+<span>&lt;</span><span>Rune</span> <span>name</span><span>=</span><span>"ghost"</span> <span>/&gt;</span> <span>// Smaller size variant (45 columns instead of 90)</span>
+<span>&lt;</span><span>Rune</span> <span>name</span><span>=</span><span>"ghost"</span> <span>size</span><span>=</span><span>"s"</span> <span>/</span><span>&gt;</span> <span>// Control playback</span>
+<span>&lt;</span><span>Rune</span> <span>name</span><span>=</span><span>"fire"</span> <span>playing</span><span>=</span><span>{</span><span>false</span><span>}</span> <span>/&gt;</span>
+<span>&lt;</span><span>Rune</span> <span>name</span><span>=</span><span>"fire"</span> <span>fps</span><span>=</span><span>{</span><span>15</span><span>}</span> loop<span>=</span><span>{</span>false<span>}</span> <span>/</span><span>&gt;</span> <span>// Apply a color tint</span>
+<span>&lt;</span><span>Rune</span> <span>name</span><span>=</span><span>"fire"</span> <span>colorOverlay</span><span>=</span><span>"linear-gradient(90deg, rgba(247,70,5,0.6), rgba(255,140,0,1))"</span> <span>/&gt;</span> <span>// Load from a custom URL</span>
+<span>&lt;</span><span>Rune</span> <span>src</span><span>=</span><span>"/my-animations/custom.rune.json"</span> <span>/</span><span>&gt;</span> <span>// Pass animation data directly</span>
+<span>&lt;</span><span>Rune</span> <span>data</span><span>=</span><span>{</span><span>myAnimationData</span><span>}</span> <span>/&gt;</span></pre></div>
+<div><h3>Props</h3><a href="#props"></a></div>
+<table>
+<thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>name</code></pre></td>
+<td><pre><code>string</code></pre></td>
+<td>—</td>
+<td>Animation name, fetches from CDN</td>
+</tr>
+<tr>
+<td><pre><code>size</code></pre></td>
+<td><pre><code>"s" | "m"</code></pre></td>
+<td><pre><code>"m"</code></pre></td>
+<td>Size variant (45 or 90 columns)</td>
+</tr>
+<tr>
+<td><pre><code>data</code></pre></td>
+<td><pre><code>RuneAnimation</code></pre></td>
+<td>—</td>
+<td>Pass animation data directly</td>
+</tr>
+<tr>
+<td><pre><code>src</code></pre></td>
+<td><pre><code>string</code></pre></td>
+<td>—</td>
+<td>URL to fetch animation data from</td>
+</tr>
+<tr>
+<td><pre><code>playing</code></pre></td>
+<td><pre><code>boolean</code></pre></td>
+<td><pre><code>true</code></pre></td>
+<td>Play/pause control</td>
+</tr>
+<tr>
+<td><pre><code>loop</code></pre></td>
+<td><pre><code>boolean</code></pre></td>
+<td><pre><code>true</code></pre></td>
+<td>Loop the animation</td>
+</tr>
+<tr>
+<td><pre><code>fps</code></pre></td>
+<td><pre><code>number</code></pre></td>
+<td>from data</td>
+<td>Override playback speed</td>
+</tr>
+<tr>
+<td><pre><code>colorOverlay</code></pre></td>
+<td><pre><code>string</code></pre></td>
+<td>—</td>
+<td>CSS gradient to tint the animation</td>
+</tr>
+<tr>
+<td><pre><code>className</code></pre></td>
+<td><pre><code>string</code></pre></td>
+<td>—</td>
+<td>Class on the container element</td>
+</tr>
+<tr>
+<td><pre><code>style</code></pre></td>
+<td><pre><code>CSSProperties</code></pre></td>
+<td>—</td>
+<td>Inline styles on the container</td>
+</tr>
+<tr>
+<td><pre><code>onFrame</code></pre></td>
+<td><pre><code>(index: number) =&gt; void</code></pre></td>
+<td>—</td>
+<td>Called on each frame change</td>
+</tr>
+<tr>
+<td><pre><code>onComplete</code></pre></td>
+<td><pre><code>() =&gt; void</code></pre></td>
+<td>—</td>
+<td>Called when a non-looping animation ends</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Custom CDN / self-hosting</h3><a href="#custom-cdn--self-hosting"></a></div>
+<p>By default, animations are fetched from jsDelivr. You can point to your own host:</p>
+<div><pre><span>import</span> <span>{</span> <span>setRuneCdn</span> <span>}</span> <span>from</span> <span>"rune-ascii"</span><span>;</span> <span>setRuneCdn</span><span>(</span><span>"https://my-cdn.com/animations"</span><span>)</span><span>;</span>
+<span>// Now &lt;Rune name="ghost" /&gt; fetches from https://my-cdn.com/animations/ghost.rune.json</span></pre></div>
+<p>Or use the </p><pre><code>src</code></pre> prop per-component to fetch from any URL.<p></p>
+<div><h2>CLI</h2><a href="#cli"></a></div>
+<p>Generate your own animations from any video file.</p>
+<div><pre>npx @rune-ascii/cli generate ./video.mp4</pre></div>
+<div><h3>Options</h3><a href="#options"></a></div>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>--name</code></pre></td>
+<td>filename</td>
+<td>Animation name</td>
+</tr>
+<tr>
+<td><pre><code>--fps</code></pre></td>
+<td><pre><code>30</code></pre></td>
+<td>Frames per second</td>
+</tr>
+<tr>
+<td><pre><code>--columns</code></pre></td>
+<td><pre><code>150</code></pre></td>
+<td>Width in characters</td>
+</tr>
+<tr>
+<td><pre><code>--threshold-low</code></pre></td>
+<td><pre><code>5</code></pre></td>
+<td>Luminance floor (0–255)</td>
+</tr>
+<tr>
+<td><pre><code>--threshold-high</code></pre></td>
+<td><pre><code>224</code></pre></td>
+<td>Luminance ceiling (0–255)</td>
+</tr>
+<tr>
+<td><pre><code>--chars</code></pre></td>
+<td><pre><code>" -=+*%#0oOxX@$"</code></pre></td>
+<td>Character ramp (light to dark)</td>
+</tr>
+<tr>
+<td><pre><code>--font-ratio</code></pre></td>
+<td><pre><code>0.6</code></pre></td>
+<td>Character aspect ratio</td>
+</tr>
+<tr>
+<td><pre><code>--mask-hysteresis</code></pre></td>
+<td><pre><code>6</code></pre></td>
+<td>Stabilize mask between frames</td>
+</tr>
+<tr>
+<td><pre><code>--no-colored</code></pre></td>
+<td>—</td>
+<td>Disable per-character color</td>
+</tr>
+<tr>
+<td><pre><code>--output</code></pre></td>
+<td>current dir</td>
+<td>Output directory</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Full example</h3><a href="#full-example"></a></div>
+<div><pre>npx @rune-ascii/cli ./wave.mov \ --name wave \ --output ./public/animations</pre></div>
+<div><h2>The <pre><code>.rune.json</code></pre> format</h2><a href="#the-runejson-format"></a></div>
+<p>Every animation is a single JSON file containing all frames:</p>
+<div><pre>{ <span>"version"</span>: <span>1</span>, <span>"meta"</span>: { <span>"name"</span>: <span><span>"</span>earth<span>"</span></span>, <span>"fps"</span>: <span>30</span>, <span>"columns"</span>: <span>90</span>, <span>"rows"</span>: <span>40</span>, <span>"frameCount"</span>: <span>154</span>, <span>"colored"</span>: <span>true</span>, <span>"generatedWith"</span>: { <span>"thresholdLow"</span>: <span>5</span>, <span>"thresholdHigh"</span>: <span>224</span>, <span>"chars"</span>: <span><span>"</span> -=+*%#0oOxX@$<span>"</span></span>, <span>"fontRatio"</span>: <span>0.6</span> } }, <span>"frames"</span>: [ { <span>"rows"</span>: [[<span><span>"</span> @@XXxooo000oOxX@@ <span>"</span></span>, [<span><span>"</span><span>"</span></span>, <span><span>"</span><span>"</span></span>, <span><span>"</span>f9f276<span>"</span></span>, <span><span>"</span>f8ee6c<span>"</span></span>, <span><span>"</span>...<span>"</span></span>]]] } ]
+}</pre></div>
+<p>Each frame is an array of rows. Each row is a tuple, so the ASCII text string and an array of hex color codes (1 per char, empty string for default color). The </p><pre><code>meta.generatedWith</code></pre> block records the exact settings used, so you can reproduce or tweak the conversion.<p></p>
+<div><h2>Built-in animations</h2><a href="#built-in-animations"></a></div>
+<p>These ship with </p><pre><code>@rune-ascii/animations</code></pre> and are available via CDN out of the box:<p></p>
+<table>
+<thead>
+<tr>
+<th>Animation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>fire</code></pre></td>
+<td>Flickering fire</td>
+</tr>
+<tr>
+<td><pre><code>flame</code></pre></td>
+<td>Single flame</td>
+</tr>
+<tr>
+<td><pre><code>ghost</code></pre></td>
+<td>Floating ghost</td>
+</tr>
+<tr>
+<td><pre><code>earth1</code></pre></td>
+<td>Spinning globe</td>
+</tr>
+<tr>
+<td><pre><code>earth2</code></pre></td>
+<td>Spinning globe (alt)</td>
+</tr>
+<tr>
+<td><pre><code>saturn</code></pre></td>
+<td>Saturn with rings</td>
+</tr>
+<tr>
+<td><pre><code>coin</code></pre></td>
+<td>Spinning coin</td>
+</tr>
+<tr>
+<td><pre><code>orangutan</code></pre></td>
+<td>Orangutan</td>
+</tr>
+<tr>
+<td><pre><code>gorilla</code></pre></td>
+<td>Gorilla</td>
+</tr>
+<tr>
+<td><pre><code>shoes</code></pre></td>
+<td>Shoes</td>
+</tr>
+<tr>
+<td><pre><code>tuxLaptop</code></pre></td>
+<td>Tux on a laptop</td>
+</tr>
+<tr>
+<td><pre><code>rocket</code></pre></td>
+<td>Rocket launch</td>
+</tr>
+<tr>
+<td><pre><code>flowerSpinner</code></pre></td>
+<td>Spinning flower</td>
+</tr>
+<tr>
+<td><pre><code>loaderGood</code></pre></td>
+<td>Loading spinner</td>
+</tr>
+<tr>
+<td><pre><code>successCheck1</code></pre></td>
+<td>Success checkmark</td>
+</tr>
+<tr>
+<td><pre><code>error</code></pre></td>
+<td>Error indicator</td>
+</tr>
+<tr>
+<td><pre><code>warning</code></pre></td>
+<td>Warning indicator</td>
+</tr>
+<tr>
+<td><pre><code>sleepEmoji</code></pre></td>
+<td>Sleep emoji</td>
+</tr>
+<tr>
+<td><pre><code>angryEmoji</code></pre></td>
+<td>Angry emoji</td>
+</tr>
+<tr>
+<td><pre><code>geekedEmoji</code></pre></td>
+<td>Geeked emoji</td>
+</tr>
+<tr>
+<td><pre><code>aitBot</code></pre></td>
+<td>AI robot</td>
+</tr>
+</tbody>
+</table>
+<p>Each animation is available in two sizes: </p><pre><code>"m"</code></pre> (90 columns, default) and <pre><code>"s"</code></pre> (50 columns).<p></p>
+<div><h2>Project structure</h2><a href="#project-structure"></a></div>
+<p>Rune is a monorepo with three packages:</p>
+<div><pre><code>rune/ packages/ runeAscii/ → npm: rune-ascii createRune/ → npm: @rune-ascii/cli runeAnimations/ → npm: @rune-ascii/animations site/ → Next showcase site ascii.sh → MP4 to ASCII script
+</code></pre></div>
+<div><h3><pre><code>rune-ascii</code></pre></h3><a href="#rune-ascii"></a></div>
+<p>The React component library (~20 KB) contains:</p>
+<ul>
+<li><strong><pre><code>Rune.tsx</code></pre></strong>: The <pre><code>&lt;Rune&gt;</code></pre> component. Handles fetching, lazy loading, visibility-based play/pause, reduced motion, and renderer lifecycle.</li>
+<li><strong><pre><code>renderer.ts</code></pre></strong>: <pre><code>RuneRenderer</code></pre> class. The animation engine using <pre><code>requestAnimationFrame</code></pre>. Handles frame timing, plain vs colored rendering, frame skipping, and incremental DOM updates.</li>
+<li><strong><pre><code>parser.ts</code></pre></strong>: Converts raw <pre><code>.rune.json</code></pre> frame data into renderable strings (plain text) or HTML (colored <pre><code>&lt;span&gt;</code></pre> elements).</li>
+<li><strong><pre><code>cdn.ts</code></pre></strong>: Builds CDN URLs. Defaults to jsDelivr, configurable via <pre><code>setRuneCdn()</code></pre>.</li>
+<li><strong><pre><code>types.ts</code></pre></strong>: TypeScript types: <pre><code>RuneAnimation</code></pre>, <pre><code>RuneFrame</code></pre>, <pre><code>RuneMeta</code></pre>, <pre><code>RuneProps</code></pre>, etc.</li>
+</ul>
+<div><h3><pre><code>@rune-ascii/cli</code></pre></h3><a href="#rune-asciicli"></a></div>
+<p>Node.js CLI that converts video files to </p><pre><code>.rune.json</code></pre>. Shells out to <pre><code>ffmpeg</code></pre> (frame extraction) and <pre><code>ImageMagick</code></pre> (pixel analysis), then does luminance-to-character mapping in TypeScript.<p></p>
+<div><h3><pre><code>@rune-ascii/animations</code></pre></h3><a href="#rune-asciianimations"></a></div>
+<p>Pre-generated </p><pre><code>.rune.json</code></pre> files published to npm. Users never install this directly it exists so that jsDelivr CDN mirrors it automatically, and the <pre><code>&lt;Rune&gt;</code></pre> component can fetch individual animations on demand without bundling them all.<p></p>
+<div><h2>How the CDN architecture works</h2><a href="#how-the-cdn-architecture-works"></a></div>
+<p>The </p><pre><code>rune-ascii</code></pre> package you install is only 20 KB because it contains zero animation data. Animation files live in the separate <pre><code>@rune-ascii/animations</code></pre> npm package, which jsDelivr mirrors automatically. When you render <pre><code>&lt;Rune name="ghost" /&gt;</code></pre>, the component constructs a URL like:<p></p>
+<div><pre><code>https://cdn.jsdelivr.net/npm/@rune-ascii/animations@0.2.0/ghost.rune.json
+</code></pre></div>
+<p>…and fetches just that one animation. The browser caches it. You only download the animations you actually use.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

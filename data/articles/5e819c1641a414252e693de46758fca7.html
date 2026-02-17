@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - isaac-levine/forage: Self-improving tool discovery for AI agents. Agents find, install, and learn to use new MCP tools automatically.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - isaac-levine/forage: Self-improving tool discovery for AI agents. Agents find, install, and learn to use new MCP tools automatically.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 2:39:02 AM | <a href="https://github.com/isaac-levine/forage" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <pre><code> Forage
+Self-improving tool discovery for AI agents.
+Install one MCP server. Your agent finds the rest. npm · GitHub · Contributing</code></pre>
+<hr>
+<p>Forage is an MCP server that lets AI agents discover, install, and learn to use new tools — automatically. When an agent hits a wall, it forages for the right tool, installs it, and teaches itself how to use it. No restarts. No manual config. The agent gets permanently smarter.</p> <div><h2>Why?</h2><a href="#why"></a></div>
+<p>AI coding agents are limited to whatever tools they're configured with at session start. Need to query a database? Deploy to Vercel? Search Slack? The agent apologizes and you manually install the right MCP server.</p>
+<p>Forage closes that loop:</p>
+<div><pre><code>Agent encounters a task it can't do → forage_search("query postgres database") → forage_install("@modelcontextprotocol/server-postgres") → Tools available IMMEDIATELY (no restart) → forage_learn() saves instructions to CLAUDE.md → Next session: auto-starts, agent already knows how to use it
+</code></pre></div>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<p><strong>Claude Code</strong></p>
+<div><pre>claude mcp add forage -- npx -y forage-mcp</pre></div>
+<p><strong>Cursor</strong></p>
+<div><pre>npx forage-mcp init --client cursor</pre></div>
+<p>That's it. Start a new session and Forage is ready.</p>
+<div><h2>Tools</h2><a href="#tools"></a></div>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>forage_search</code></pre></td>
+<td>Search for MCP servers across the <a href="https://registry.modelcontextprotocol.io">Official MCP Registry</a>, <a href="https://smithery.ai">Smithery</a>, and <a href="https://www.npmjs.com">npm</a></td>
+</tr>
+<tr>
+<td><pre><code>forage_evaluate</code></pre></td>
+<td>Get details on a package — downloads, README, install command</td>
+</tr>
+<tr>
+<td><pre><code>forage_install</code></pre></td>
+<td>Install and start an MCP server as a proxied subprocess (requires user approval)</td>
+</tr>
+<tr>
+<td><pre><code>forage_learn</code></pre></td>
+<td>Write usage instructions to CLAUDE.md / AGENTS.md / .cursor/rules/</td>
+</tr>
+<tr>
+<td><pre><code>forage_status</code></pre></td>
+<td>List all installed and running tools</td>
+</tr>
+<tr>
+<td><pre><code>forage_uninstall</code></pre></td>
+<td>Remove a tool and clean up rules</td>
+</tr>
+</tbody>
+</table>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<p>Forage is a <strong>gateway/proxy</strong> MCP server:</p>
+<ol>
+<li><strong>You install Forage once</strong> — it's the only MCP server you configure manually</li>
+<li><strong>Forage discovers tools</strong> — searches the Official MCP Registry, Smithery, and npm in parallel</li>
+<li><strong>Forage installs tools</strong> — starts them as child processes, wraps their capabilities</li>
+<li><strong>No restart needed</strong> — emits <pre><code>list_changed</code></pre> notifications so the agent picks up new tools instantly</li>
+<li><strong>Knowledge persists</strong> — <pre><code>forage_learn</code></pre> writes to agent rule files, manifest auto-starts tools next session</li>
+</ol> <strong>Architecture</strong>
+<div><pre><code>┌─────────────────────────────────────────────┐
+│ Claude Code / Cursor / Codex │
+│ │
+│ "I need to query a Postgres database" │
+└──────────────────┬──────────────────────────┘ │ MCP ▼
+┌─────────────────────────────────────────────┐
+│ Forage MCP Server │
+│ │
+│ forage_search ─── Official Registry │
+│ forage_install Smithery │
+│ forage_learn npm │
+│ forage_status │
+│ │
+│ ┌─────────────┐ ┌─────────────┐ │
+│ │ Postgres MCP│ │ GitHub MCP │ ... │
+│ │ (subprocess)│ │ (subprocess)│ │
+│ └─────────────┘ └─────────────┘ │
+└─────────────────────────────────────────────┘
+</code></pre></div>
+<p>When you install a tool through Forage:</p>
+<ol>
+<li>Forage runs <pre><code>npx -y &lt;package&gt;</code></pre> as a child process</li>
+<li>Connects to it via <pre><code>StdioClientTransport</code></pre> (MCP client)</li>
+<li>Discovers the child server's tools via <pre><code>listTools</code></pre></li>
+<li>Re-registers each tool on the Forage server with a namespaced name (<pre><code>foraged__&lt;server&gt;__&lt;tool&gt;</code></pre>)</li>
+<li>Sends <pre><code>tools/list_changed</code></pre> notification — the agent sees new tools immediately</li>
+<li>When the agent calls a proxied tool, Forage forwards the call to the child server</li>
+</ol> <strong>Persistence</strong>
+<p>Forage stores its state in </p><pre><code>~/.forage/</code></pre>:<p></p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>manifest.json</code></pre></td>
+<td>Installed tools, command/args, auto-start configuration</td>
+</tr>
+<tr>
+<td><pre><code>install-log.json</code></pre></td>
+<td>Audit trail of all installs and uninstalls</td>
+</tr>
+<tr>
+<td><pre><code>cache/</code></pre></td>
+<td>Cached registry search results</td>
+</tr>
+</tbody>
+</table>
+<p>On startup, Forage reads the manifest and auto-starts all previously installed servers. Your agent picks up right where it left off.</p> <div><h2>CLI</h2><a href="#cli"></a></div>
+<p>Forage also includes a CLI for humans:</p>
+<div><pre>forage search <span><span>"</span>postgres database<span>"</span></span> <span><span>#</span> Search registries</span>
+forage list <span><span>#</span> List installed tools</span>
+forage init <span><span>#</span> Set up for Claude Code</span>
+forage init --client cursor <span><span>#</span> Set up for Cursor</span></pre></div>
+<div><h2>Security</h2><a href="#security"></a></div>
+<div><p>Important</p><p>Forage cannot install tools without explicit user approval. Every </p><pre><code>forage_install</code></pre> call requires <pre><code>confirm: true</code></pre>.<p></p>
+</div>
+<ul>
+<li><strong>Audit trail</strong> — every install/uninstall is logged with timestamps to <pre><code>~/.forage/install-log.json</code></pre></li>
+<li><strong>No remote backend</strong> — everything runs locally. Registry searches are read-only GET requests to public APIs.</li>
+<li><strong>No secrets stored</strong> — environment variables for child servers are passed at install time, not persisted.</li>
+</ul>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre>git clone https://github.com/isaac-levine/forage.git
+<span>cd</span> forage
+npm install
+npm run build</pre></div>
+<p>Test locally with Claude Code:</p>
+<div><pre>claude mcp add forage-dev -- node /path/to/forage/dist/server.js</pre></div>
+<p>See <a href="/isaac-levine/forage/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for more details.</p>
+<div><h2>Roadmap</h2><a href="#roadmap"></a></div>
+<div><h3>Features</h3><a href="#features"></a></div>
+<ul>
+<li> <pre><code>forage update</code></pre> — check for newer versions of installed tools</li>
+<li> Support for pip/cargo/brew packages (not just npm)</li>
+<li> Smarter search ranking (weight by downloads, stars, description relevance)</li>
+<li> Auto-configure environment variables from <pre><code>.env</code></pre> files</li>
+<li> <pre><code>forage doctor</code></pre> — diagnose common setup issues</li>
+</ul>
+<div><h3>Distribution</h3><a href="#distribution"></a></div>
+<ul>
+<li> Publish to npm</li>
+<li> Submit to the <a href="https://registry.modelcontextprotocol.io">Official MCP Registry</a></li>
+<li> Submit to <a href="https://smithery.ai">Smithery</a></li>
+<li> Submit to <a href="https://mcp.so">mcp.so</a> and <a href="https://glama.ai/mcp/servers">glama.ai</a></li>
+<li> Landing page at forage.dev</li>
+</ul>
+<div><h3>Community</h3><a href="#community"></a></div>
+<ul>
+<li> Demo GIF / video in README</li>
+<li> Write launch blog post</li>
+<li> Post to r/ClaudeAI, r/LocalLLaMA, Hacker News (Show HN)</li>
+<li> Share in MCP Discord / community channels</li>
+<li> Write use-case guides (e.g. "Add Postgres to Claude Code in 30 seconds")</li>
+<li> Add GitHub Discussions for Q&amp;A and feature requests</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/isaac-levine/forage/blob/main/LICENSE">MIT</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

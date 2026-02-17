@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How to add trust boundaries to your multi-agent system</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How to add trust boundaries to your multi-agent system</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 3:34:18 AM | <a href="https://dev.to/jnycode/how-to-add-trust-boundaries-to-your-multi-agent-system-gic" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>You have a personal AI assistant that can search the web, read documents, and send emails. It delegates research tasks to a cheaper sub-agent. How do you prevent that sub-agent from sending emails as you?</p> <p>If your answer involves prompt engineering or "it just wouldn't do that," this tutorial is for you.</p> <p>The problem<br>
+Multi-agent frameworks like CrewAI, AutoGen, and LangGraph handle orchestration well. MCP handles tool access. But none of them answer the delegation trust question: when Agent A hands a task to Agent B, what limits B's authority?</p> <p>DelegateOS solves this with cryptographic delegation tokens. Let's build it step by step.</p> <p>Setup<br>
+</p> <div>
+<pre><code>npm install delegateos
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <div>
+<pre><code>import { generateKeypair, createDCT, attenuateDCT, verifyDCT, createMCPPlugin, InMemoryRevocationList,
+} from 'delegateos';
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Step 1: Create identities<br>
+Every participant gets an Ed25519 keypair. This is their identity in the delegation system.<br>
+</p> <div>
+<pre><code>const you = generateKeypair(); // Root authority (you)
+const assistant = generateKeypair(); // Your main AI assistant
+const researcher = generateKeypair(); // Cheap research sub-agent
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Step 2: Grant capabilities to your assistant<br>
+You create a root Delegation Capability Token (DCT) for your assistant. This token defines exactly what it can do.<br>
+</p> <div>
+<pre><code>const assistantToken = createDCT({ issuer: you, delegatee: assistant.principal, capabilities: [ { namespace: 'web', action: 'search', resource: '*' }, { namespace: 'docs', action: 'read', resource: '/home/me/**' }, { namespace: 'email', action: 'send', resource: '*' }, ], contractId: 'ct_daily_tasks', delegationId: 'del_001', parentDelegationId: 'root', chainDepth: 0, maxChainDepth: 2, maxBudgetMicrocents: 1_000_000, // $10 expiresAt: new Date(Date.now() + 86400_000).toISOString(), // 24 hours
+});
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Your assistant can search the web, read your docs, and send emails. With a $10 budget and 24-hour expiry.</p> <p>Step 3: Delegate research with narrower scope<br>
+Here's where it gets interesting. Your assistant delegates to a research sub-agent, but attenuates the token. The sub-agent gets strictly less authority.<br>
+</p> <div>
+<pre><code>const researchToken = attenuateDCT({ token: assistantToken, attenuator: assistant, delegatee: researcher.principal, delegationId: 'del_002', contractId: 'ct_daily_tasks', allowedCapabilities: [ { namespace: 'web', action: 'search', resource: '*.edu/**' }, ], maxBudgetMicrocents: 50_000, // $0.50 expiresAt: new Date(Date.now() + 600_000).toISOString(), // 10 minutes
+});
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The researcher can only search .edu domains. No docs access. No email. $0.50 budget. 10-minute window. These aren't suggestions. They're cryptographically enforced.</p> <p>Step 4: Verify at the point of use<br>
+When the researcher tries to use a tool, verify the token:<br>
+</p> <div>
+<pre><code>// Allowed: web search on an .edu domain
+const allowed = verifyDCT(researchToken, { resource: 'arxiv.org/search', namespace: 'web', operation: 'search', now: new Date().toISOString(), spentMicrocents: 0, rootPublicKey: you.principal.id, revocationIds: [],
+});
+console.log(allowed.ok); // true // Denied: email was never delegated
+const denied = verifyDCT(researchToken, { resource: 'boss@company.com', namespace: 'email', operation: 'send', now: new Date().toISOString(), spentMicrocents: 0, rootPublicKey: you.principal.id, revocationIds: [],
+});
+console.log(denied.ok); // false
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Step 5: Add MCP middleware<br>
+If you're using MCP, DelegateOS drops in as middleware:<br>
+</p> <div>
+<pre><code>const plugin = createMCPPlugin({ toolCapabilities: { web_search: { namespace: 'web', action: 'search' }, read_file: { namespace: 'docs', action: 'read', resourceExtractor: (args) =&gt; args.path as string, }, send_email: { namespace: 'email', action: 'send' }, }, trustedRoots: [you.principal.id], revocations: new InMemoryRevocationList(), budgetTracker: { getSpent: () =&gt; 0, recordSpend: () =&gt; {} },
+}); // Every tools/call request gets checked against the caller's DCT
+const result = await plugin.handleRequest(mcpRequest);
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The plugin also filters tools/list responses. The researcher would only see web_search in its available tools. read_file and send_email don't exist from its perspective.</p> <p>Step 6: Revoke if needed<br>
+Something going wrong? Revoke the delegation instantly:<br>
+</p> <div>
+<pre><code>const revocationList = new InMemoryRevocationList();
+revocationList.revoke('del_002'); // Single delegation
+// or
+revocationList.revokeCascade('del_001'); // Revoke assistant + all downstream
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>All subsequent verification checks will reject the revoked tokens.</p> <p>What you get<br>
+Sub-agents with cryptographically scoped authority<br>
+Budget enforcement across delegation chains<br>
+Time-limited delegations with automatic expiry<br>
+Mid-flight revocation<br>
+MCP integration with zero changes to your existing tools<br>
+The full source, docs, and a PR review demo are at <a href="https://github.com/newtro/delegateos" target="_blank">github.com/newtro/delegateos</a>. MIT licensed, 374 tests passing.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ROT MCP Server — The First Financial Intelligence MCP Server</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>ROT MCP Server — The First Financial Intelligence MCP Server</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 2:39:55 AM | <a href="https://web-production-71423.up.railway.app/mcp-server" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><span>World's First</span> </p> <p> Give your AI direct access to live trading signals, sentiment analysis, unusual options activity, and sports betting intelligence. Zero install. No API key. Completely free. </p> <div> <div> <p> 7 AI tools </p></div> <div> <p> 2 resources </p></div> <div> <p> No API key needed </p></div> <div> <p> Hosted remotely </p></div> </div>
+</div><div> <h2> Connect in 30 Seconds </h2> <p> No packages to install. No local server. No Docker. Just paste and go. </p> <div> <div> <p>1</p> <div> <h3>Claude Desktop</h3> <p>Add this to your <code>claude_desktop_config.json</code></p> </div> </div> <div> <pre><code>{ <span>"mcpServers"</span>: { <span>"rot"</span>: { <span>"url"</span>: <span>"https://web-production-71423.up.railway.app/mcp"</span> } }
+}</code></pre> </div> </div> <div> <div> <p>2</p> <div> <h3>Cursor / Windsurf / Any MCP Client</h3> <p>Point your MCP client at this URL</p> </div> </div> <div> <pre><code>https://web-production-71423.up.railway.app/mcp/sse</code></pre> </div> </div> <div> <p>3</p> <div> <h3>Ask Your AI Anything About the Market</h3> <p>Your AI now has direct access to live financial intelligence. Just talk naturally.</p> </div> </div>
+</div><div> <h2> 7 Tools Your AI Can Call </h2> <p> Each tool is designed for LLM consumption — structured JSON responses, clear parameter names, and rich descriptions. </p> <div> <div> <p></p> <h3>get_trending_tickers</h3> <p>See what Wall Street and Reddit are buzzing about right now. Returns tickers ranked by signal volume with confidence scores.</p> <p><span>hours</span> <span>limit</span> </p> </div> <div> <p></p> <h3>get_signals</h3> <p>Get AI-analyzed trading signals with strategies, confidence scores, source subreddits, and AI summaries.</p> <p><span>ticker</span> <span>stance</span> <span>limit</span> </p> </div> <div> <p></p> <h3>get_sentiment</h3> <p>Bull/bear/mixed breakdown and net sentiment score (-1.0 to +1.0) for any ticker. Gauge the market mood instantly.</p> <p><span>ticker (required)</span> </p> </div> <div> <p></p> <h3>get_market_overview</h3> <p>30-day market snapshot: total signals, win rate, average confidence, bullish vs bearish distribution. No parameters needed.</p> <p>No parameters</p> </div> <div> <p></p> <h3>get_unusual_activity</h3> <p>Detect IV spikes, volume surges, open interest anomalies, and institutional positioning shifts.</p> <p><span>hours</span> <span>limit</span> </p> </div> <div> <p></p> <h3>get_sports_feed</h3> <p>Sports betting intelligence with line mover scores (0-100). Injuries, trades, lineup changes that move spreads.</p> <p><span>league</span> <span>limit</span> </p> </div> <div> <p></p> <h3>search_signals</h3> <p>Full-text search across all trading signals. Find signals about FDA approvals, earnings beats, or any topic.</p> <p><span>query (required)</span> <span>limit</span> </p> </div> </div>
+</div><div> <h2> Just Ask in Plain English </h2> <p> Once connected, your AI understands these and thousands of other natural language queries. </p> <div> <p><span>"What stocks are trending on Reddit right now?"</span> </p> <p><span>"Show me bearish signals for TSLA"</span> </p> <p><span>"What's the sentiment on NVDA?"</span> </p> <p><span>"Are there any unusual options activity alerts?"</span> </p> <p><span>"Search for signals about FDA approvals"</span> </p> <p><span>"Give me a full market overview for the last 30 days"</span> </p> <p><span>"What NFL injuries might move betting lines today?"</span> </p> <p><span>"Show me the top 5 tickers by signal volume this week"</span> </p> <p><span>"What's the bull/bear ratio on AMD?"</span> </p> <p><span>"Find signals mentioning earnings beat"</span> </p> </div>
+</div><div> <h2> Ready to Supercharge Your AI? </h2> <p> Copy the config above, restart your AI client, and start asking about the market. It takes less than 30 seconds. </p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
