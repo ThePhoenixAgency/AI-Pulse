@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- **2026-02-17 20:37 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-16 13:00 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - 2026-02-16: Validation locale `node --test` (12/12) [OK]
 - Tests: `node --test` [OK]
@@ -42,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0] - 2026-01-31
 ### Added
+- **2026-02-17 20:37 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-16 13:00 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-14 11:26 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-13 06:16 UTC**: Automated Security Batch Update (DependabotSecureFlow)
@@ -75,6 +77,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.0] - 2026-02-01
 ### Added
+- **2026-02-17 20:37 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-16 13:00 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-14 11:26 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-13 06:16 UTC**: Automated Security Batch Update (DependabotSecureFlow)
@@ -121,6 +124,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2025-12-10
 ### Added
+- **2026-02-17 20:37 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-16 13:00 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-14 11:26 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-13 06:16 UTC**: Automated Security Batch Update (DependabotSecureFlow)
@@ -160,6 +164,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2026-02-16
 ### Added
+- **2026-02-17 20:37 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - Dedicated categories: `Local News / Informations locales` and `Weather / Météo` with FR/EN labels.
 - French trusted Open Source feeds: `Developpez.com`, `LinuxFr`, `Programmez`.
 - Localized keyword mappings for `OpenClaw`, `Local News`, `Weather`, and `Open Source`.
