@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Show HN: Lentando, private habit and substance tracker (vanilla JavaScript, PWA)</title>
+<title>GitHub - KilledByAPixel/Lentando: Progress at your pace Private habit and substance tracker</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,18 +29,123 @@
 </style>
 </head>
 <body>
-  <h1>Show HN: Lentando, private habit and substance tracker (vanilla JavaScript, PWA)</h1>
+  <h1>GitHub - KilledByAPixel/Lentando: Progress at your pace Private habit and substance tracker</h1>
   <div class="metadata">
     Source: Hacker News Show | Date: 2/17/2026 7:11:14 PM | <a href="https://github.com/KilledByAPixel/Lentando" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Hi HN, I built Lentando, a privacy first tracker for substance use and habits (nicotine, alcohol, cannabis, or custom). It's an offline first PWA, no account required unless you opt into multi device sync. Released under GPL 3.0.
-Under the hood it's about 6K lines of vanilla ES6 with no runtime dependencies. To make long term browser storage practical, it consolidates older events while keeping aggregates stable. Optional sync uses a simple conflict tolerant merge (event timestamps and tombstones) so offline edits across devices don't break. Charts are a small custom canvas renderer (stacked bar charts and heatmaps), and there's time travel debugging plus 100+ Node unit tests.
-I'd love feedback from both developers and anyone who tries it, on the architecture, the UX, and what you would improve.
-Repo: https://github.com/KilledByAPixel/Lentando
-Live: https://lentando.3d2k.com URL: https://news.ycombinator.com/item?id=47051670
-Points: 2
-# : 0</p>
+    <div><h1>Lentando</h1><a href="#lentando"></a></div>
+<p><strong>Progress At Your Pace</strong> - A habit and substance use tracker that runs entirely in your browser.</p>
+<p><a target="_blank" href="/KilledByAPixel/Lentando/blob/main/icon-192.png"><img src="/KilledByAPixel/Lentando/raw/main/icon-192.png" alt="Lentando Logo"></a></p>
+<p><a target="_blank" href="https://camo.githubusercontent.com/b3f76b11768b9833fe85b3c0b2fccec0bc5186ba1a735febaf9ec7adae771b5e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f48544d4c352d4533344632363f7374796c653d666c6174266c6f676f3d68746d6c35266c6f676f436f6c6f723d7768697465"><img src="https://camo.githubusercontent.com/b3f76b11768b9833fe85b3c0b2fccec0bc5186ba1a735febaf9ec7adae771b5e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f48544d4c352d4533344632363f7374796c653d666c6174266c6f676f3d68746d6c35266c6f676f436f6c6f723d7768697465" alt="HTML5"></a>
+<a target="_blank" href="https://camo.githubusercontent.com/80d7029c0ae5cfaa5212883c74cf49d19311cdfef6cb16394e5d8ccb3002639a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f56616e696c6c615f4a532d4637444631453f7374796c653d666c6174266c6f676f3d6a617661736372697074266c6f676f436f6c6f723d626c61636b"><img src="https://camo.githubusercontent.com/80d7029c0ae5cfaa5212883c74cf49d19311cdfef6cb16394e5d8ccb3002639a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f56616e696c6c615f4a532d4637444631453f7374796c653d666c6174266c6f676f3d6a617661736372697074266c6f676f436f6c6f723d626c61636b" alt="JavaScript"></a>
+<a target="_blank" href="https://camo.githubusercontent.com/afc26f8eb61151bffb0a6e39fc8eeb800abe15e569833ae62217692fd3fab218/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5057412d496e7374616c6c61626c652d356336626330"><img src="https://camo.githubusercontent.com/afc26f8eb61151bffb0a6e39fc8eeb800abe15e569833ae62217692fd3fab218/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5057412d496e7374616c6c61626c652d356336626330" alt="PWA"></a>
+<a target="_blank" href="https://camo.githubusercontent.com/311117274d816629972a3b80d9fa918a8b8137287585f0dddd085b2aa56c2f62/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d47504c76332d626c7565"><img src="https://camo.githubusercontent.com/311117274d816629972a3b80d9fa918a8b8137287585f0dddd085b2aa56c2f62/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d47504c76332d626c7565" alt="License"></a></p>
+<div><h2>Why Lentando? </h2><a href="#why-lentando-"></a></div>
+<p>Recovery isn't a race - it's a journey taken one step at a time. Like a turtle, steady progress wins over speed. Lentando helps you track substance use, resisted urges, and healthy habits without shame or judgment.</p>
+<p>Whether you're working toward abstinence, harm reduction, or just understanding your patterns better, Lentando meets you where you are.</p>
+<p><strong>Every small win counts.</strong></p>
+<div><h2> Features</h2><a href="#-features"></a></div>
+<div><h3> <strong>Track Your Way</strong></h3><a href="#-track-your-way"></a></div>
+<ul>
+<li><strong>Choose what to track</strong> - Pick from smoking, alcohol, cannabis, or other</li>
+<li><strong>One-tap logging</strong> - Quickly log sessions, resists, or healthy habits</li>
+<li><strong>Visual analytics</strong> - Graphs for sessions, amounts, and hourly use</li>
+<li><strong>Day-by-day history</strong> - Browse and edit previous days with full details</li>
+</ul>
+<div><h3> <strong>Celebrate Progress</strong></h3><a href="#-celebrate-progress"></a></div> <div><h3> <strong>Privacy-First</strong></h3><a href="#-privacy-first"></a></div>
+<ul>
+<li><strong>Use anonymously</strong> - No account required unless you want sync</li>
+<li><strong>Works offline</strong> - Data stays in your browser by default</li>
+<li><strong>Optional cloud sync</strong> - Sign in to sync across devices</li>
+<li><strong>No ads, no data selling</strong> - Your data stays yours</li>
+<li><strong>Long-term storage</strong> - Auto-consolidation enables 10+ years of daily tracking in browser storage</li>
+</ul>
+<div><h3> <strong>Modern &amp; Mobile-Friendly</strong></h3><a href="#-modern--mobile-friendly"></a></div>
+<ul>
+<li><strong>Cross-platform</strong> - Works on phone, tablet, and desktop</li>
+<li><strong>No downloads required</strong> - Runs in any modern browser</li>
+<li><strong>PWA support</strong> - Install to your home screen like a native app</li>
+<li><strong>Offline-capable</strong> - Service worker caches all app resources</li>
+</ul>
+<div><h2> Badge Categories</h2><a href="#-badge-categories"></a></div>
+<p>Lentando recognizes progress in many forms:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Daily Progress</strong></td>
+<td>Daily Check-in, Good Start, Hydrated</td>
+</tr>
+<tr>
+<td><strong>Resist Badges</strong></td>
+<td>Resisted, Urge Surfed, Second Thought, Swap Completed, Tough Resist</td>
+</tr>
+<tr>
+<td><strong>Mindful Choices</strong></td>
+<td>Harm Reduction, Low Dose, Low Use Day, CBD-Only Day</td>
+</tr>
+<tr>
+<td><strong>Healthy Habits</strong></td>
+<td>Water, Breathwork, Tidy, Outside, Exercise</td>
+</tr>
+<tr>
+<td><strong>Awareness</strong></td>
+<td>Intensity Logged, Trigger Identified, Full Report, Mindful Session</td>
+</tr>
+<tr>
+<td><strong>Timing Badges</strong></td>
+<td>Night, Morning, Day, and Evening Skips</td>
+</tr>
+<tr>
+<td><strong>Gap Milestones</strong></td>
+<td>1h, 2h, 4h, 8h, 12h gaps between sessions</td>
+</tr>
+<tr>
+<td><strong>Break Milestones</strong></td>
+<td>1 Day through 1 Year of consecutive no use days</td>
+</tr>
+<tr>
+<td><strong>Streaks</strong></td>
+<td>Resist Streak, Habit Streak, Tapering Off, App Streaks</td>
+</tr>
+</tbody>
+</table>
+<div><h2> Getting Started</h2><a href="#-getting-started"></a></div>
+<ol>
+<li><strong>Visit</strong> <a href="https://lentando.3d2k.com">lentando.3d2k.com</a> in any modern browser</li>
+<li><strong>Select</strong> the substance you want to track</li>
+<li><strong>Start logging</strong> sessions, resists, and habits</li>
+<li><strong>Optional:</strong> Sign in to sync across devices</li>
+<li><strong>Optional:</strong> Install as a PWA for quick access</li>
+</ol>
+<div><h2> Philosophy</h2><a href="#-philosophy"></a></div>
+<ul>
+<li><strong> Harm Reduction First</strong> - Any positive change is worth celebrating</li>
+<li><strong> No Shame, No Judgment</strong> - Progress isn't always linear, and that's okay</li>
+<li><strong> Privacy Matters</strong> - Your recovery is personal and private</li>
+<li><strong> Small Wins Add Up</strong> - Every moment of awareness counts</li>
+</ul>
+<div><h2> <strong>Accessible</strong></h2><a href="#-accessible"></a></div>
+<ul>
+<li><strong>ARIA labels</strong> - Buttons, modals, charts, and inputs have descriptive labels and roles</li>
+<li><strong>System theme support</strong> - Automatically matches light/dark mode preference</li>
+<li><strong>Screen reader friendly</strong> - Live regions for toasts, labeled inputs, and descriptive chart summaries</li>
+</ul>
+<div><h2> Built With</h2><a href="#-built-with"></a></div>
+<p>Pure vanilla JavaScript, HTML5, and CSS3. No frameworks, no dependencies - just clean, fast code that works everywhere.</p>
+<div><h2> License</h2><a href="#-license"></a></div>
+<p>Copyright 2026 Frank Force</p>
+<p>Lentando is licensed under the GNU General Public License v3.0.</p>
+<p>This means you're free to use, study, modify, and distribute this software. If you build on it, your version must also remain open source under the same license. See the GPL v3 full text for details.</p>
+<p><a target="_blank" href="/KilledByAPixel/Lentando/blob/main/screenshot.png"><img src="/KilledByAPixel/Lentando/raw/main/screenshot.png" alt="Lentando Screenshot"></a></p>
+<p><strong>Made with for recovery and harm reduction</strong></p>
+<p><em>Remember: Progress at your pace. You've got this. </em></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

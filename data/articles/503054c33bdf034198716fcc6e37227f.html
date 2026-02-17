@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Show HN: Orange Cheeto Browser extension that replaces Trump with nicknames</title>
+<title>Orange Cheeto | Make News Bearable Again</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,25 +29,12 @@
 </style>
 </head>
 <body>
-  <h1>Show HN: Orange Cheeto Browser extension that replaces Trump with nicknames</h1>
+  <h1>Orange Cheeto | Make News Bearable Again</h1>
   <div class="metadata">
     Source: Hacker News Show | Date: 2/17/2026 7:05:39 PM | <a href="https://www.cheetodon.com/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>I built a browser extension that does text replacement across all websites -- specifically replacing "Trump" with rotating humorous nicknames.
-The interesting technical bits:
-- TreeWalker for DOM traversal (skips scripts, inputs, contenteditable, iframes)
-- MutationObserver with debouncing for SPAs and dynamically loaded content
-- Fisher-Yates shuffle bag for even nickname distribution (no repeats until all are used)
-- Case preservation via regex (TRUMP -&gt; MANGO MUSSOLINI, Trump -&gt; Mango Mussolini)
-- CSS-only animations with prefers-reduced-motion support
-- Zero dependencies, plain JS, Manifest V3
-The architecture is generic enough to fork for any text replacement use case. All the replacement logic lives in a single file.
-No external requests, no analytics, no data leaves the browser. Settings sync via Chrome Storage / browser.storage.
-Available for Chrome, Firefox, and Safari. Free.
-Feedback on the implementation welcome -- the code is straightforward and I'd rather someone tell me my MutationObserver setup is wrong than find out the hard way. URL: https://news.ycombinator.com/item?id=47051584
-Points: 4
-# : 0</p>
+    <div><div> <main> <section> <div> <p>Privacy first</p> <p> A privacy-first Chrome extension that automatically puppets the news. It replaces his name with sharp nicknames like "Orange Cheeto" or "Tiny Hands" so headlines land a little softer. </p> <p> <span>Animation Mode: ON</span> </p> </div> <div> <p>NYTimes - Just now</p> <p> Breaking: Former President <span>Trump</span> announces plans to build a new golf course on the moon. </p> </div> </section> <section> <div> <h2>Toolbox Features</h2> <p> Ship-ready essentials for the extension and the landing page. Zero tracking, quick setup, and a visual style that looks like it shipped from a top studio. </p> </div> <div> <article> <h3>7 Built-in Nicknames</h3> <p> From "Cheeto Jesus" to "Mango Mussolini." Rotate them daily or pin your favorite for every headline. </p> </article> <article> <h3>Privacy First</h3> <p> No tracking, no data collection. Replacements happen locally inside your DOM. Nothing leaves the browser. </p> </article> <article> <h3>Smooth Animations</h3> <p> Text does not just swap. It morphs using our "Puppet Warp" transition engine for just the right amount of chaos. </p> </article> </div> </section> <div> <h2>How It Works</h2> <div> <div> <p><span>01</span></p><h3>Install and Toggle</h3> <p>Grab it from the Chrome Web Store and pick your favorite nicknames.</p> </div> <div> <p><span>02</span></p><h3>Read Anything</h3> <p>News sites, social feeds, newsletters, search results. It is everywhere.</p> </div> <div> <p><span>03</span></p><h3>Laugh and Move On</h3> <p>Headlines become lighter, moods improve, and you stay in the loop.</p> </div> </div> </div> </main> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

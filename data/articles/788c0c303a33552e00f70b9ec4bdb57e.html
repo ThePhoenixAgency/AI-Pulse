@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NoamVC v0.3 — We deleted 3,500 lines and the app got better</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>NoamVC v0.3 — We deleted 3,500 lines and the app got better</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 8:34:00 PM | <a href="https://dev.to/steven_hans_b26a962c69563/noamvc-v03-we-deleted-3500-lines-and-the-app-got-better-4nlb" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/steven_hans_b26a962c69563"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3764453%2Fcb5322f8-a986-49af-8539-78b3705b3093.jpg" alt="Steven Hans"></a> </p> </div><div> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fe539cqpqnw2rbzv6vd8t.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fe539cqpqnw2rbzv6vd8t.png" alt=" "></a></p> <h2> <a name="what-is-noamvc" href="#what-is-noamvc"> </a> What is NoamVC?
+</h2> <p><strong>NoamVC</strong> is a <strong>peer-to-peer</strong> encrypted voice chat desktop app — think Discord, but your voice never touches a server. Audio travels directly between participants via WebRTC with end-to-end encryption.</p> <p>Built with <strong>Tauri 2</strong> (Rust) + <strong>React 19</strong> + <strong>TypeScript</strong>. Available for macOS (ARM + Intel) and Windows.</p> <p><strong>TL;DR of the security model:</strong></p> <ul>
+<li>P2P audio via <code>RTCPeerConnection</code> — zero server-side processing</li>
+<li>E2E encryption with Insertable Streams + PBKDF2 (256-bit key, 100K SHA-256 iterations)</li>
+<li>HMAC-SHA256 signed signaling — secret embedded in Rust binary, never touches JS</li>
+<li>Secure storage with IOTA Stronghold — nothing in localStorage</li>
+</ul> <blockquote>
+<p><em>First time here? Check out <a href="#">the previous posts in the series</a> for the full architecture breakdown.</em></p>
+</blockquote> <hr> <h2> <a name="whats-new-in-v021-%E2%86%92-v033" href="#whats-new-in-v021-%E2%86%92-v033"> </a> What's new in v0.2.1 → v0.3.3
+</h2> <h3> <a name="1-room-admission-system-v030" href="#1-room-admission-system-v030"> </a> 1. Room Admission System (v0.3.0)
+</h3> <p>The biggest feature in this cycle. Previously, anyone with the room code could join silently. Now the <strong>room creator</strong> acts as host and must approve every join request.<br>
+</p> <div>
+<pre><code>New user → knock → Host sees dialog → Admit / Deny
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>How it works:</strong></p> <ul>
+<li>The first user to enter a room automatically becomes the <strong>host</strong>.</li>
+<li>Subsequent participants enter a "waiting" state until explicitly admitted.</li>
+<li>The host sees a dialog with the requester's name and avatar, plus admit/deny buttons.</li>
+<li>Denied users get a clear message and return to the lobby.</li>
+<li>Fully managed at the signaling level — <strong>zero changes</strong> to the WebRTC connection flow.</li>
+</ul> <p>This is a significant UX and security improvement. In the previous model, knowing the room code was equivalent to being inside. Now there's a human gatekeeper.</p> <h3> <a name="2-inapp-bug-reports-%E2%86%92-firestore-v021" href="#2-inapp-bug-reports-%E2%86%92-firestore-v021"> </a> 2. In-App Bug Reports → Firestore (v0.2.1)
+</h3> <p>Users can report bugs without leaving the app:<br>
+</p> <div>
+<pre><code><span>type</span> <span>BugCategory</span> <span>=</span> <span>"</span><span>crash</span><span>"</span> <span>|</span> <span>"</span><span>audio</span><span>"</span> <span>|</span> <span>"</span><span>connection</span><span>"</span> <span>|</span> <span>"</span><span>ui</span><span>"</span> <span>|</span> <span>"</span><span>other</span><span>"</span><span>;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <ul>
+<li>Form with title, description, and category selector.</li>
+<li>Real-time validation (title ≥ 3 chars, description ≥ 10 chars).</li>
+<li>Sent to <strong>Firestore</strong> via REST API — no heavy Firebase SDK bundled.</li>
+<li>
+<strong>Lazy-loaded</strong>: Firebase code doesn't load until the user opens the dialog.</li>
+</ul> <p>The interesting part security-wise: the Firebase API key is embedded in the <strong>Rust binary</strong> at compile time. It never appears in the JavaScript bundle:<br>
+</p> <div>
+<pre><code><span>const</span> <span>FIREBASE_API_KEY</span><span>:</span> <span>&amp;</span><span>str</span> <span>=</span> <span>env!</span><span>(</span><span>"FIREBASE_API_KEY"</span><span>);</span> <span>#[tauri::command]</span>
+<span>fn</span> <span>get_firebase_api_key</span><span>()</span> <span>-&gt;</span> <span>String</span> <span>{</span> <span>FIREBASE_API_KEY</span><span>.to_string</span><span>()</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The JS side calls this Tauri command on demand, so the key only exists in the Rust binary and only flows to the frontend when needed.</p> <h3> <a name="3-embedded-server-removal-the-3546-loc-delete-v031" href="#3-embedded-server-removal-the-3546-loc-delete-v031"> </a> 3. Embedded Server Removal — The -3,546 LOC Delete (v0.3.1)
+</h3> <p>Previous versions of NoamVC bundled an embedded signaling server in the Tauri binary (Axum + Socketioxide) for local/LAN development. We <strong>nuked it entirely</strong>.</p> <p><strong>What was removed:</strong></p> <ul>
+<li>Axum, Socketioxide, tower, and all related Rust dependencies from the desktop app.</li>
+<li>
+<strong>-3,546 lines</strong> of code.</li>
+</ul> <p><strong>What replaced it:</strong></p> <ul>
+<li>The signaling server is now a <strong>standalone Rust service</strong> (Axum + Socketioxide) deployed on Railway. Same tech, separate repo, clean boundary.</li>
+</ul> <p><strong>Why?</strong></p> <ol>
+<li>The embedded server added ~30s of extra compile time.</li>
+<li>It confused developers about which server was active.</li>
+<li>Nobody used it for LAN in practice.</li>
+<li>Removing it shrinks the binary and reduces the attack surface.</li>
+</ol> <blockquote>
+<p>The best code is the code you don't have. <strong>- Someone wise</strong></p>
+</blockquote> <h3> <a name="4-duplicate-peers-fix-v031" href="#4-duplicate-peers-fix-v031"> </a> 4. Duplicate Peers Fix (v0.3.1)
+</h3> <p>A subtle race condition: under certain reconnection scenarios, the same peer could appear twice in the participant list. Root cause was the de-duplication logic in the WebRTC hook not accounting for rapid disconnect/reconnect cycles. Fixed with proper peer identity tracking.</p> <h3> <a name="5-csp-update-for-firestore-v032" href="#5-csp-update-for-firestore-v032"> </a> 5. CSP Update for Firestore (v0.3.2)
+</h3> <p>After adding bug reports, Tauri's Content Security Policy was silently blocking requests to Firestore. The fix:<br>
+</p> <div>
+<pre><code><span>"connect-src"</span><span>:</span><span> </span><span>"... https://firestore.googleapis.com"</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Small change, but a reminder: <strong>Tauri's CSP is strict by default</strong> (which is good), and every new external endpoint requires explicit allowlisting.</p> <h3> <a name="6-the-cicd-bug-that-took-3-releases-to-fix-v032-%E2%86%92-v033" href="#6-the-cicd-bug-that-took-3-releases-to-fix-v032-%E2%86%92-v033"> </a> 6. The CI/CD Bug That Took 3 Releases to Fix (v0.3.2 → v0.3.3)
+</h3> <p>This one was frustrating. The <code>build.rs</code> script loaded env vars from <code>.env</code> for local builds, but in <strong>GitHub Actions</strong> the variables were in the OS environment and <strong>weren't being forwarded to <code>rustc</code></strong>.</p> <p><strong>The error:</strong><br>
+</p> <div>
+<pre><code>error: environment variable `FIREBASE_API_KEY` not defined at compile time --&gt; src\desktop.rs:11:32
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>The fix</strong> — explicitly forward OS env vars to the Rust compiler in <code>build.rs</code>:<br>
+</p> <div>
+<pre><code><span>for</span> <span>key</span> <span>in</span> <span>keys</span> <span>{</span> <span>if</span> <span>let</span> <span>Ok</span><span>(</span><span>val</span><span>)</span> <span>=</span> <span>std</span><span>::</span><span>env</span><span>::</span><span>var</span><span>(</span><span>key</span><span>)</span> <span>{</span> <span>println!</span><span>(</span><span>"cargo:rustc-env={}={}"</span><span>,</span> <span>key</span><span>,</span> <span>val</span><span>);</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Plus the workflow secret:<br>
+</p> <div>
+<pre><code><span>env</span><span>:</span> <span>FIREBASE_API_KEY</span><span>:</span> <span>${{ secrets.FIREBASE_API_KEY }}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Key takeaway for Tauri/Rust devs:</strong><br>
+<code>env!()</code> reads variables that <strong>Cargo</strong> knows about, not the shell environment directly. If your CI sets env vars in the usual way, you need <code>cargo:rustc-env</code> in <code>build.rs</code> to bridge that gap. This isn't documented prominently and bit us hard.</p> <hr> <h2> <a name="numbers-for-this-cycle" href="#numbers-for-this-cycle"> </a> Numbers for this cycle
+</h2> <div><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commits</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Files changed</td>
+<td>51</td>
+</tr>
+<tr>
+<td>Lines added</td>
+<td>~1,222</td>
+</tr>
+<tr>
+<td>Lines deleted</td>
+<td>~4,768</td>
+</tr>
+<tr>
+<td><strong>Net</strong></td>
+<td>
+<strong>-3,546 lines</strong> </td>
+</tr>
+</tbody>
+</table></div> <p>We deleted <strong>3.9x more code</strong> than we wrote. The best kind of release.</p> <hr> <h2> <a name="stack" href="#stack"> </a> Stack
+</h2> <div><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frontend</td>
+<td>React 19, TypeScript 5.9, Vite 7</td>
+</tr>
+<tr>
+<td>Styles</td>
+<td>Tailwind CSS 4, shadcn/ui</td>
+</tr>
+<tr>
+<td>Desktop</td>
+<td>Tauri 2 (Rust backend)</td>
+</tr>
+<tr>
+<td>Signaling</td>
+<td>Rust (Axum + Socketioxide) → Railway</td>
+</tr>
+<tr>
+<td>Encryption</td>
+<td>Insertable Streams + PBKDF2, HMAC-SHA256</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>IOTA Stronghold</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>GitHub Actions → auto draft release</td>
+</tr>
+<tr>
+<td>Bug Reports</td>
+<td>Firestore REST API</td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="whats-next" href="#whats-next"> </a> What's next
+</h2> <ul> <li>
+<strong>Per-peer connection quality indicators</strong> — RTT, packet loss, jitter visualized per participant</li> <li>
+<strong>Linux support</strong> — AppImage / .deb packages</li>
+</ul> <hr> <h2> <a name="links" href="#links"> </a> Links
+</h2> <ul>
+<li> <strong>Landing</strong>: <a href="https://noamvc.web.app/" target="_blank">noamvc.web.app</a>
+</li>
+</ul> <hr> <p><em>NoamVC is under active development. If you're working with WebRTC, Tauri, or applied cryptography — or just want a voice chat that doesn't route your audio through someone else's server — give it a look. Feedback and contributions welcome.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

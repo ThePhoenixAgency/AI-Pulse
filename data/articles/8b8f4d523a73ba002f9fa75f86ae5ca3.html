@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,7 @@
     Source: Next INpact | Date: 2/17/2026 8:01:41 AM | <a href="https://next.ink/brief_article/chrome-et-firefox-recoivent-des-mises-a-jour-de-securite/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Chrome et Firefox ont tous deux fait l’objet cette semaine de mises à jour de sécurité. Du côté de la fondation Mozilla, Firefox passe en version 147.0.4, pour corriger une vulnérabilité susceptible d’entraîner un dépassement de tampon, publiée lundi 16 février. Considérée comme de sévérité haute, elle a été observée au niveau de libvpx, la […]</p>
+    <div><div> <p>Chrome et Firefox ont tous deux fait l'objet cette semaine de mises à jour de sécurité. Du côté de la fondation Mozilla, Firefox passe en version 147.0.4, pour corriger une <a href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-10/#CVE-2026-2447">vulnérabilité</a> susceptible d'entraîner un dépassement de tampon, publiée lundi 16 février.</p> <p>Considérée comme de sévérité haute, elle a été observée au niveau de libvpx, la bibliothèque de codecs vidéo gratuite de Google et de l'Alliance for Open Media. Outre <a href="https://next.ink/brief_article/firefox-147-webgpu-sur-apple-silicon-et-support-de-la-specification-xdg-base-directory/">Firefox 147</a>, dernière version en date, le correctif concerne également les versions ESR 140.7.1, et ESR 115.32.1 de Firefox, ainsi que le client de messagerie Thunderbird, qui passe pour sa part en versions 147.0.2 et 140.7.2. </p> <p>Mozilla profite également de cette version 147.0.4 pour corriger un <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2014616">bug</a> susceptible d'afficher une page vide lors de l'ouverture du navigateur ou d'un nouvel onglet. </p> <figure><img src="https://next.ink/wp-content/uploads/2026/02/Capture-decran-2026-02-17-085241-1024x668.png" alt=""><figcaption>Notes de version succinctes pour Firefox 147.0.4</figcaption></figure> <p>Côté Chrome, la dernière version en date a déjà dû faire son arrivée chez la plupart des utilisateurs puisque Google a <a href="https://chromereleases.googleblog.com/2026/02/stable-channel-update-for-desktop_13.html">annoncé</a> le début du déploiement le 13 février dernier. Estampillé 145.0.7632.75/76 sur Windows/Mac ou 144.0.7559.75 sous Linux, le correctif intervient pour combler une vulnérabilité (CVE-2026-2441) découverte deux jours plus tôt. Elle aussi associée à une sévérité haute, elle présente surtout l'inconvénient d'être déjà exploitée, indique Google. </p> <p>Vivaldi est également intervenu rapidement pour corriger la faille, avec une version 7.8, <a href="https://vivaldi.com/blog/desktop/minor-update-two-7-8/">diffusée</a> le 13 février dernier, qui en profite pour résoudre plusieurs petits bugs mineurs. </p> <p>Sous Firefox comme sous Chrome, il est possible de vérifier la version du logiciel dont vous disposez et de demander la recherche de mises à jour en vous rendant dans le menu Aide, onglet À propos. </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
