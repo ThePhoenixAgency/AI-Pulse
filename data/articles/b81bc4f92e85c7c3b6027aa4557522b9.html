@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>nba-api-ts</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>nba-api-ts</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 7:42:03 PM | <a href="https://github.com/gek0z/nba-api-ts" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><div><h2>nba-api-ts<a href="#nba-api-ts"></a></h2>
+<p><a href="https://www.npmjs.com/package/nba-api-ts"><img src="https://img.shields.io/npm/v/nba-api-ts" alt="npm version"></a>
+<a href="https://github.com/gek0z/nba-api-ts/actions/workflows/integration.yml"><img src="https://github.com/gek0z/nba-api-ts/actions/workflows/integration.yml/badge.svg" alt="CI"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></p>
+<p>TypeScript NBA API client. Zero dependencies. Wraps <strong>138 stats endpoints</strong> and <strong>4 live data endpoints</strong> from <a href="http://nba.com/">NBA.com</a>.</p>
+<h2>Install<a href="#install"></a></h2>
+<pre><code><span>bun</span><span> </span><span>add</span><span> </span><span>nba-api-ts</span><br><span># or</span><br><span>npm</span><span> </span><span>install</span><span> </span><span>nba-api-ts</span>
+</code></pre> <h2>Quick Start<a href="#quick-start"></a></h2>
+<pre><code><span>import</span><span> { </span><span>NBAClient</span><span> } </span><span>from</span><span> </span><span>'nba-api-ts'</span><span>;</span><p><span>const</span><span> </span><span>nba</span><span> = </span><span>new</span><span> </span><span>NBAClient</span><span>();</span></p><p><span>// Stats (stats.nba.com) — 138 endpoints</span><br><span>const</span><span> </span><span>career</span><span> = </span><span>await</span><span> </span><span>nba</span><span>.</span><span>stats</span><span>.</span><span>playerCareerStats</span><span>({ </span><span>playerID:</span><span> </span><span>203999</span><span> });</span><br><span>console</span><span>.</span><span>log</span><span>(</span><span>career</span><span>.</span><span>careerTotalsRegularSeason</span><span>[</span><span>0</span><span>].</span><span>pts</span><span>); </span><span>// 25.0</span></p><p><span>const</span><span> </span><span>dashboard</span><span> = </span><span>await</span><span> </span><span>nba</span><span>.</span><span>stats</span><span>.</span><span>leagueDashPlayerStats</span><span>({</span><br><span> </span><span>season:</span><span> </span><span>'2024-25'</span><span>,</span><br><span> </span><span>perMode:</span><span> </span><span>'PerGame'</span><span>,</span><br><span>});</span><br><span>console</span><span>.</span><span>log</span><span>(</span><span>dashboard</span><span>.</span><span>leagueDashPlayerStats</span><span>[</span><span>0</span><span>].</span><span>playerName</span><span>);</span></p><p><span>// Live data (cdn.nba.com) — no Akamai protection</span><br><span>const</span><span> </span><span>scoreboard</span><span> = </span><span>await</span><span> </span><span>nba</span><span>.</span><span>live</span><span>.</span><span>scoreboard</span><span>();</span><br><span>console</span><span>.</span><span>log</span><span>(</span><span>scoreboard</span><span>.</span><span>scoreboard</span><span>.</span><span>games</span><span>.</span><span>length</span><span>, </span><span>'games today'</span><span>);</span></p><p><span>const</span><span> </span><span>boxscore</span><span> = </span><span>await</span><span> </span><span>nba</span><span>.</span><span>live</span><span>.</span><span>boxscore</span><span>(</span><span>'0022400123'</span><span>);</span><br><span>console</span><span>.</span><span>log</span><span>(</span><span>boxscore</span><span>.</span><span>game</span><span>.</span><span>homeTeam</span><span>.</span><span>teamName</span><span>);</span></p><p><span>const</span><span> </span><span>pbp</span><span> = </span><span>await</span><span> </span><span>nba</span><span>.</span><span>live</span><span>.</span><span>playByPlay</span><span>(</span><span>'0022400123'</span><span>);</span><br><span>console</span><span>.</span><span>log</span><span>(</span><span>pbp</span><span>.</span><span>game</span><span>.</span><span>actions</span><span>.</span><span>length</span><span>, </span><span>'plays'</span><span>);</span></p><p><span>const</span><span> </span><span>odds</span><span> = </span><span>await</span><span> </span><span>nba</span><span>.</span><span>live</span><span>.</span><span>odds</span><span>();</span><br><span>console</span><span>.</span><span>log</span><span>(</span><span>odds</span><span>.</span><span>games</span><span>.</span><span>length</span><span>, </span><span>'games with odds'</span><span>);</span></p></code></pre> <h2>API Reference<a href="#api-reference"></a></h2>
+<h3><code>NBAClient</code><a href="#_"></a></h3>
+<pre><code><span>const</span><span> </span><span>nba</span><span> = </span><span>new</span><span> </span><span>NBAClient</span><span>({</span><br><span> </span><span>stats:</span><span> { </span><span>timeout:</span><span> </span><span>30000</span><span>, </span><span>maxRetries:</span><span> </span><span>3</span><span>, </span><span>rateLimit:</span><span> </span><span>600</span><span>, </span><span>fetch:</span><span> </span><span>customFetch</span><span> },</span><br><span> </span><span>live:</span><span> { </span><span>timeout:</span><span> </span><span>10000</span><span>, </span><span>rateLimit:</span><span> </span><span>0</span><span> },</span><br><span>});</span>
+</code></pre> <ul>
+<li><code>nba.stats</code> — <code>StatsClient</code> with 138 endpoint methods</li>
+<li><code>nba.live</code> — <code>LiveClient</code> with 4 methods (scoreboard, boxscore, playByPlay, odds)</li>
+</ul>
+<h3>Stats Endpoints<a href="#stats-endpoints"></a></h3>
+<p>138 endpoints are available. Some commonly used ones:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>playerCareerStats({ playerID })</code></td>
+<td>Career and season stats</td>
+</tr>
+<tr>
+<td><code>commonPlayerInfo({ playerID })</code></td>
+<td>Player biographical info</td>
+</tr>
+<tr>
+<td><code>commonAllPlayers({ season, leagueID })</code></td>
+<td>All players for a season</td>
+</tr>
+<tr>
+<td><code>leagueDashPlayerStats({ season })</code></td>
+<td>League-wide player stats</td>
+</tr>
+<tr>
+<td><code>leagueDashTeamStats({ season })</code></td>
+<td>League-wide team stats</td>
+</tr>
+<tr>
+<td><code>playerGameLog({ playerID, season })</code></td>
+<td>Game-by-game stats</td>
+</tr>
+<tr>
+<td><code>teamGameLog({ teamID, season })</code></td>
+<td>Team game-by-game stats</td>
+</tr>
+<tr>
+<td><code>shotChartDetail({ playerID, season })</code></td>
+<td>Shot chart data</td>
+</tr>
+<tr>
+<td><code>leagueGameFinder({ ... })</code></td>
+<td>Search for games</td>
+</tr>
+<tr>
+<td><code>boxScoreTraditionalV3({ gameID })</code></td>
+<td>Box score for a game</td>
+</tr>
+<tr>
+<td><code>playByPlayV2({ gameID })</code></td>
+<td>Play-by-play data</td>
+</tr>
+<tr>
+<td><code>scoreboardV2({ gameDate })</code></td>
+<td>Scoreboard for a date</td>
+</tr>
+<tr>
+<td><code>leagueStandings({ season })</code></td>
+<td>League standings</td>
+</tr>
+<tr>
+<td><code>leagueLeaders({ season, statCategory })</code></td>
+<td>League leaders</td>
+</tr>
+<tr>
+<td><code>commonTeamRoster({ teamID })</code></td>
+<td>Team roster</td>
+</tr>
+<tr>
+<td><code>playerIndex({ season })</code></td>
+<td>Player index</td>
+</tr>
+</tbody>
+</table>
+<h3>Response Format<a href="#response-format"></a></h3>
+<p>Stats API responses use the NBA's <code>headers[]</code> + <code>rowSet[][]</code> format, automatically parsed into typed objects with camelCase keys:</p>
+<pre><code><span>// Raw NBA response:</span><br><span>// { "headers": ["PLAYER_ID", "PTS"], "rowSet": [[203999, 25.0]] }</span><p><span>// Parsed:</span><br><span>// { playerId: 203999, pts: 25.0 }</span></p></code></pre> <h3>Parameters<a href="#parameters"></a></h3>
+<p>Common parameter types are available as string unions:</p>
+<pre><code><span>import</span><span> </span><span>type</span><span> { </span><span>PerModeDetailed</span><span>, </span><span>SeasonTypePlayoffs</span><span>, </span><span>LeagueID</span><span> } </span><span>from</span><span> </span><span>'nba-api-ts'</span><span>;</span><br><span>import</span><span> { </span><span>currentSeason</span><span>, </span><span>formatSeason</span><span>, </span><span>defaults</span><span> } </span><span>from</span><span> </span><span>'nba-api-ts'</span><span>;</span><p><span>const</span><span> </span><span>season</span><span> = </span><span>currentSeason</span><span>(); </span><span>// "2025-26"</span><br><span>const</span><span> </span><span>prev</span><span> = </span><span>formatSeason</span><span>(</span><span>2023</span><span>); </span><span>// "2023-24"</span></p></code></pre> <h3>Error Handling<a href="#error-handling"></a></h3>
+<pre><code><span>import</span><span> { </span><span>NBAApiError</span><span>, </span><span>NBATimeoutError</span><span>, </span><span>NBANetworkError</span><span> } </span><span>from</span><span> </span><span>'nba-api-ts'</span><span>;</span><p><span>try</span><span> {</span><br><span> </span><span>await</span><span> </span><span>nba</span><span>.</span><span>stats</span><span>.</span><span>playerCareerStats</span><span>({ </span><span>playerID:</span><span> -</span><span>1</span><span> });</span><br><span>} </span><span>catch</span><span> (</span><span>e</span><span>) {</span><br><span> </span><span>if</span><span> (</span><span>e</span><span> </span><span>instanceof</span><span> </span><span>NBAApiError</span><span>) {</span><br><span> </span><span>console</span><span>.</span><span>log</span><span>(</span><span>e</span><span>.</span><span>statusCode</span><span>, </span><span>e</span><span>.</span><span>url</span><span>);</span><br><span> }</span><br><span>}</span></p></code></pre> <h2>Akamai / TLS Fingerprinting<a href="#akamai-tls-fingerprinting"></a></h2>
+<p>All <code>stats.nba.com</code> endpoints are behind Akamai bot protection that blocks requests based on TLS fingerprinting. This means Node.js and Bun's built-in <code>fetch</code> will be blocked. Live endpoints (<code>cdn.nba.com</code>) work fine from any environment.</p>
+<p>To use stats endpoints from a server, provide a custom <code>fetch</code> backed by a library that can impersonate a browser's TLS fingerprint:</p>
+<pre><code><span>import</span><span> { </span><span>NBAClient</span><span> } </span><span>from</span><span> </span><span>'nba-api-ts'</span><span>;</span><br><span>import</span><span> { </span><span>ModuleClient</span><span>, </span><span>SessionClient</span><span> } </span><span>from</span><span> </span><span>'tlsclientwrapper'</span><span>;</span><p><span>const</span><span> </span><span>moduleClient</span><span> = </span><span>new</span><span> </span><span>ModuleClient</span><span>();</span><br><span>await</span><span> </span><span>moduleClient</span><span>.</span><span>open</span><span>();</span></p><p><span>const</span><span> </span><span>session</span><span> = </span><span>new</span><span> </span><span>SessionClient</span><span>(</span><span>moduleClient</span><span>, {</span><br><span> </span><span>tlsClientIdentifier:</span><span> </span><span>'chrome_131'</span><span>,</span><br><span> </span><span>timeoutSeconds:</span><span> </span><span>30</span><span>,</span><br><span> </span><span>defaultHeaders:</span><span> {</span><br><span> </span><span>'User-Agent'</span><span>:</span><span> </span><span>'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'</span><span>,</span><br><span> </span><span>'Accept'</span><span>:</span><span> </span><span>'application/json, text/plain, */*'</span><span>,</span><br><span> </span><span>'Referer'</span><span>:</span><span> </span><span>'https://www.nba.com/'</span><span>,</span><br><span> </span><span>'Origin'</span><span>:</span><span> </span><span>'https://www.nba.com'</span><span>,</span><br><span> },</span><br><span>});</span></p><p><span>const</span><span> </span><span>nba</span><span> = </span><span>new</span><span> </span><span>NBAClient</span><span>({</span><br><span> </span><span>stats:</span><span> {</span><br><span> </span><span>fetch</span><span>:</span><span> </span><span>async</span><span> (</span><span>url</span><span>) </span><span>=&gt;</span><span> {</span><br><span> </span><span>const</span><span> </span><span>res</span><span> = </span><span>await</span><span> </span><span>session</span><span>.</span><span>get</span><span>(</span><span>url</span><span>);</span><br><span> </span><span>if</span><span> (</span><span>res</span><span>.</span><span>status</span><span> === </span><span>0</span><span>) </span><span>throw</span><span> </span><span>new</span><span> </span><span>Error</span><span>(</span><span>res</span><span>.</span><span>body</span><span>);</span><br><span> </span><span>const</span><span> </span><span>headers</span><span>: </span><span>Record</span><span>&lt;</span><span>string</span><span>, </span><span>string</span><span>&gt; = {};</span><br><span> </span><span>for</span><span> (</span><span>const</span><span> [</span><span>k</span><span>, </span><span>v</span><span>] </span><span>of</span><span> </span><span>Object</span><span>.</span><span>entries</span><span>(</span><span>res</span><span>.</span><span>headers</span><span>))</span><br><span> </span><span>headers</span><span>[</span><span>k</span><span>] = </span><span>Array</span><span>.</span><span>isArray</span><span>(</span><span>v</span><span>) ? </span><span>v</span><span>.</span><span>join</span><span>(</span><span>', '</span><span>) : </span><span>String</span><span>(</span><span>v</span><span>);</span><br><span> </span><span>return</span><span> </span><span>new</span><span> </span><span>Response</span><span>(</span><span>res</span><span>.</span><span>body</span><span>, { </span><span>status:</span><span> </span><span>res</span><span>.</span><span>status</span><span>, </span><span>headers</span><span> });</span><br><span> },</span><br><span> },</span><br><span>});</span></p><p><span>const</span><span> </span><span>career</span><span> = </span><span>await</span><span> </span><span>nba</span><span>.</span><span>stats</span><span>.</span><span>playerCareerStats</span><span>({ </span><span>playerID:</span><span> </span><span>203999</span><span> });</span></p></code></pre> <p>Any fetch-compatible function works — <code>tlsclientwrapper</code>, <code>curl-impersonate</code>, Puppeteer, or a proxy that adds the right TLS fingerprint.</p>
+<h3>IP Blocking<a href="#ip-blocking"></a></h3>
+<p>Beyond TLS fingerprinting, <code>stats.nba.com</code> drops connections from known cloud/datacenter IP ranges. If your requests hang without any response, this is likely the cause — it affects all major providers (AWS, GCP, Azure, etc.) and CI environments like GitHub Actions.</p>
+<p>You'll need to make requests from a residential IP, either directly (local machine, home server) or via a residential proxy.</p>
+<h2>Development<a href="#development"></a></h2>
+<pre><code><span>bun</span><span> </span><span>install</span><br><span>bun</span><span> </span><span>test</span><span> </span><span># unit tests (offline, fast)</span><br><span>bun</span><span> </span><span>run</span><span> </span><span>build</span><p><span># Integration tests — hits real NBA API, requires residential IP</span><br><span>NBA_INTEGRATION_TESTS</span><span>=</span><span>1</span><span> </span><span>bun</span><span> </span><span>test</span><span> </span><span>tests/integration</span></p><p><span># Integration tests with TLS fingerprint impersonation</span><br><span>NBA_INTEGRATION_TESTS</span><span>=</span><span>1</span><span> </span><span>NBA_USE_TLS</span><span>=</span><span>1</span><span> </span><span>bun</span><span> </span><span>test</span><span> </span><span>tests/integration</span></p></code></pre> <h2>License<a href="#license"></a></h2>
+<p>MIT</p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
