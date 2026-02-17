@@ -53,7 +53,7 @@
 </h2>
 <p>The skill ships with the <code>kernels</code> library. Install it into your coding agent with a single command:</p>
 <pre><code><span># </span><span>we need to install kernels from main <span>for</span> this</span>
-pip install git+https://github.com/huggingface/kernels.git
+pip install git+https://github.com/huggingface/kernels.git#subdirectory=kernels
 kernels skills add cuda-kernels --claude
 </code></pre>
 <p>This drops the skill into <code>.claude/skills/cuda-kernels/</code> where Claude Code and Cursor pick it up automatically. For other agents:</p>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Introduction</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Introduction</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 8:47:04 AM | <a href="https://linkedrecords.com/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><ul>
+<li>What if writing a production-ready SaaS application is <a href="https://linkedrecords.com/getting-started/">as easy as a React.js hello world tutorial</a>?</li>
+<li>What if you operate a SaaS on your infrastructure and your users could choose where their data lives - on their own infrastructure, in their own jurisdiction?</li>
+<li>What if AI coding assistants couldn't accidentally create security holes because authorization is baked into every operation?</li>
+<li>What if multiple apps could work with the same data without any integration work?</li>
+</ul>
+<p>LinkedRecords makes all of this possible. It's not just another BaaS - it's a fundamentally different architecture for building collaborative applications.</p> <p>LinkedRecords is a Backend-as-a-Service that you can connect to directly from your single-page application - no backend code required. Think of it as a database you can call directly from your React app, with authorization built in and real-time collaboration out of the box.</p>
+<figure></figure>
+<p>You can use any OpenID Connect provider (Auth0, Keycloak, etc.) for authentication, so you don't need to implement login flows. Authorization is built into the data model itself - when you create data, you specify who can access it. And real-time collaboration uses CRDT and Operational Transform, so concurrent edits merge instead of overwriting each other.</p> <p>If you've heard of <strong>local-first</strong> tools like Automerge, Yjs, or Replicache - LinkedRecords is different. The key distinction is where data lives and who enforces authorization.</p>
+<div><table><thead><tr><th>Aspect</th><th>Local-First</th><th>LinkedRecords</th></tr></thead><tbody><tr><td><strong>Data lives</strong></td><td>On the client</td><td>On the server</td></tr><tr><td><strong>Works offline</strong></td><td>Yes</td><td>No</td></tr><tr><td><strong>Authorization</strong></td><td>Client-side or sync-layer</td><td>Server-enforced</td></tr></tbody></table></div>
+<p><strong>Choose local-first</strong> when users need to work offline or instant local response is critical.</p>
+<p><strong>Choose LinkedRecords</strong> when you need server-enforced authorization, central governance over data, the BYOB model where customers control their backend, or audit trails that require server-side logging.</p>
+<p>The difference is conceptual: local-first optimizes for offline capability, while LinkedRecords optimizes for a server-authoritative state with built-in authorization - making it well suited for enterprise SaaS.</p> <p>Traditional SaaS has a problem: <strong>the vendor controls your data</strong>.</p>
+<p>When you use a typical SaaS application, the vendor operates the complete stack - the frontend, the backend, and the database where your data lives. Your business data sits on infrastructure you don't control, in a jurisdiction you might not have chosen.</p>
+<p>LinkedRecords enables a different model: <strong>Bring Your Own Backend (BYOB)</strong>.</p>
+<figure></figure>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>SaaS vendors build their application as a single-page application</li>
+<li>The frontend is distributed via CDN - just static files</li>
+<li>When users open the application, the app can ask the user which LinkedRecords backend to use</li>
+<li>All data is stored on the endpoint the user chose - data never leaves the customer's infrastructure</li>
+<li>The SaaS vendor and the LinkedRecords provider never need to communicate - the API is intentionally minimalistic, providing just a few primitives (facts and attributes) that applications build upon. This minimal surface area is also the foundation for backwards compatibility: different versions of a SaaS application can work with different versions of LinkedRecords without coordination</li>
+</ul>
+<p><strong>Why this matters:</strong></p>
+<ul>
+<li><strong>Data residency compliance</strong> - Keep data in your jurisdiction (GDPR, industry regulations)</li>
+<li><strong>No vendor lock-in</strong> - Your data is in a database you control</li>
+<li><strong>Enterprise adoption</strong> - Sensitive data stays on-premises</li>
+<li><strong>True ownership</strong> - You can export, backup, and migrate freely</li>
+<li><strong>Still get SaaS benefits</strong> - The application is still managed, hosted, and updated by the vendor. You get new features, bug fixes, and improvements automatically - only the data storage is under your control</li>
+</ul> <p>As AI coding assistants become standard development tools, the architecture of your backend determines how safely and effectively these tools can work with it.</p> <p>Traditional BaaS platforms separate authorization from data operations:</p>
+<figure></figure>
+<p>LinkedRecords embeds authorization directly in data operations:</p>
+<figure></figure>
+<p><strong>The secure default is automatic.</strong> If you don't specify permissions, only you (the creator) can access the data. There's no separate rules file to forget about.</p>
+<p>This means:</p>
+<ul>
+<li>No forgetting to add rules for new collections</li>
+<li>No accidental overly-permissive policies</li>
+<li>No drift between code and authorization configuration</li>
+<li>Security is co-located with the code that creates data</li>
+</ul>
+<h3><a href="#rdf-inspired-facts-natural-for-llms">RDF-Inspired Facts: Natural for LLMs</a></h3>
+<p>The triplestore pattern uses <code>(subject, predicate, object)</code> - the same structure as natural language sentences:</p>
+<div><table><thead><tr><th>Natural Language</th><th>LinkedRecords Fact</th></tr></thead><tbody><tr><td>"Alice is a member of Engineering"</td><td><code>[alice, '$isMemberOf', engineering]</code></td></tr><tr><td>"The document belongs to Project X"</td><td><code>[document, 'belongsTo', projectX]</code></td></tr><tr><td>"Marketing can read the report"</td><td><code>[marketing, '$canRead', report]</code></td></tr><tr><td>"Bob is accountable for this file"</td><td><code>[bob, '$isAccountableFor', file]</code></td></tr></tbody></table></div>
+<p>This semantic structure has potential benefits for AI-assisted development:</p>
+<ul>
+<li><strong>Readable</strong>: LLMs may understand and generate correct facts more reliably</li>
+<li><strong>Flexible vocabulary</strong>: Use any predicate for your domain (<code>belongsTo</code>, <code>assignedTo</code>, <code>partOf</code>) - only <code>$</code>-prefixed predicates are reserved for authorization</li>
+<li><strong>Predictable authorization</strong>: The limited set of <code>$</code> predicates (<code>$canRead</code>, <code>$canAccess</code>, <code>$isMemberOf</code>, etc.) reduces the surface area for security errors</li>
+<li><strong>Self-documenting</strong>: Relationships are visible in the code, not hidden in configuration</li>
+<li><strong>Verifiable</strong>: An AI can reason about who has access by reading the facts</li>
+</ul>
+<p>When an AI assistant works with LinkedRecords, it can understand and verify permissions directly from the code - no need to cross-reference separate rule files.</p>
+<h3><a href="#simpler-codebase-fewer-tokens">Simpler Codebase, Fewer Tokens</a></h3>
+<p>With LinkedRecords, your entire application is frontend code. No backend routes, no database queries, no sync logic, no state management boilerplate. You create facts, create attributes, query attributes - everything is reactive and declarative.</p>
+<p>This matters for AI agents:</p>
+<ul>
+<li><strong>Less code to understand</strong> - Agents read fewer files and consume fewer tokens to grasp your application</li>
+<li><strong>Locality of behavior</strong> - Authorization, data creation, and business logic live in one place. No jumping between frontend and backend codebases to understand what's happening</li>
+<li><strong>No hidden complexity</strong> - There's no separate backend where authorization rules, API endpoints, or database schemas might contradict what the frontend expects</li>
+</ul>
+<p>Traditional full-stack applications split logic across frontend components, API routes, database models, and authorization config files. An AI agent must read and correlate all of these to make safe changes. With LinkedRecords, the relevant code is co-located - what you see is what you get.</p>
+<p><em>Note: While the alignment between triple-based facts and natural language structure suggests advantages for LLM comprehension, this remains a hypothesis based on the semantic similarities. Real-world validation through broader adoption and systematic evaluation will determine the actual impact on AI-assisted development workflows.</em></p> <p>Most BaaS platforms offer "real-time sync" - but they use last-write-wins conflict resolution. When two users edit the same data simultaneously, one person's changes are silently overwritten.</p>
+<p>LinkedRecords provides <strong>true collaborative editing</strong>:</p>
+<div><table><thead><tr><th>Data Type</th><th>Algorithm</th><th>What It Means</th></tr></thead><tbody><tr><td>KeyValue (JSON)</td><td>CRDT</td><td>Concurrent edits to different fields merge automatically</td></tr><tr><td>LongText</td><td>Operational Transform</td><td>Character-by-character collaboration like Google Docs</td></tr><tr><td>Blob</td><td>Versioned</td><td>Binary files maintain version history</td></tr></tbody></table></div>
+<figure></figure>
+<p>This enables building applications like:</p>
+<ul>
+<li>Collaborative document editors (Notion, Google Docs)</li>
+<li>Real-time whiteboards (Miro, Figma)</li>
+<li>Multiplayer productivity tools</li>
+<li>Any application where users work together on shared data</li>
+</ul> <p>Building a collaborative React application traditionally requires significant infrastructure:</p>
+<p><strong>What you need to build yourself:</strong></p>
+<ul>
+<li>Backend API with CRUD endpoints</li>
+<li>Database schema and queries</li>
+<li>WebSocket server for real-time updates</li>
+<li>Client-side state management (Redux, Zustand, React Query, etc.)</li>
+<li>Cache invalidation logic</li>
+<li>Optimistic updates with rollback</li>
+<li>Conflict resolution when users edit simultaneously</li>
+<li>Multi-tab synchronization via BroadcastChannel or storage events</li>
+<li>Authentication and authorization middleware</li>
+</ul>
+<p><strong>With LinkedRecords, you skip all of that.</strong></p>
+<figure></figure>
+<p>The <code>useKeyValueAttributes</code> hook handles everything:</p>
+<ul>
+<li><strong>Queries by facts</strong> - Declaratively specify what data you need</li>
+<li><strong>Persistence</strong> - Data is stored on the LinkedRecords backend</li>
+<li><strong>Real-time sync</strong> - Changes from any user appear instantly</li>
+<li><strong>Multi-tab sync</strong> - All browser tabs stay consistent</li>
+<li><strong>Conflict resolution</strong> - Concurrent edits merge automatically (CRDT)</li>
+</ul>
+<p>To create or modify data:</p>
+<figure></figure>
+<p><strong>No backend to build. No API endpoints. No state management library. No WebSocket code.</strong></p>
+<p>Your React components simply declare what data they need using facts. LinkedRecords handles persistence, synchronization, real-time updates, and multi-user collaboration.</p> <p>In most systems, a developer defines universal rules that apply to all users. In LinkedRecords, <strong>users define who can access their own data</strong>.</p>
+<figure></figure>
+<p>This model:</p>
+<ul>
+<li>Puts users in control of their own data</li>
+<li>Eliminates the need for complex centralized rule systems</li>
+<li>Scales naturally - each user manages their own sharing</li>
+<li>Matches how people think about sharing ("I'll share this with you")</li>
+</ul> <p>In traditional architectures, data is siloed by application. Your project management app has its own database. Your document editor has another. Your calendar has a third. Even if they're all about the same project and the same team, the data doesn't connect.</p>
+<p>LinkedRecords flips this model: <strong>data is scoped to teams, not applications</strong>.</p>
+<figure></figure>
+<p><strong>What this enables:</strong></p>
+<p>Multiple applications can connect to the same LinkedRecords instance and work with the same data:</p>
+<figure></figure>
+<p><strong>Reusable components across applications:</strong></p>
+<p>Since data follows a consistent pattern (facts and attributes), you can build components that work in any application:</p>
+<figure></figure>
+<p><strong>Why this matters:</strong></p>
+<ul>
+<li><strong>No more data duplication</strong> - Create your profile once, use it everywhere</li>
+<li><strong>Applications become views</strong> - Different apps are just different ways to interact with your data</li>
+<li><strong>True interoperability</strong> - Apps from different vendors can work together on shared data</li>
+<li><strong>User agency</strong> - You choose which apps can access your data, and switch apps without losing anything</li>
+<li><strong>Composable software</strong> - Mix and match specialized apps instead of using monolithic suites</li>
+</ul>
+<p>This is a fundamentally different way of thinking about applications. Instead of each app being a walled garden with its own data, apps become lenses through which you view and manipulate your data. The data is yours, stored on your LinkedRecords instance, accessible to whatever tools you choose to use.</p>
+<hr>
+<p><strong>Ready to try it?</strong> <a href="https://linkedrecords.com/getting-started/">Get Started</a></p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

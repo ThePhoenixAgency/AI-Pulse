@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - AlexsJones/llmfit: 94 models. 30 providers. One command to find what runs on your hardware.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - AlexsJones/llmfit: 94 models. 30 providers. One command to find what runs on your hardware.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 9:35:11 AM | <a href="https://github.com/AlexsJones/llmfit" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>llmfit</h1><a href="#llmfit"></a></div>
+<p><strong>94 models. 30 providers. One command to find what runs on your hardware.</strong></p>
+<p>A terminal tool that right-sizes LLM models to your system's RAM, CPU, and GPU. Detects your hardware, scores each model across quality, speed, fit, and context dimensions, and tells you which ones will actually run well on your machine.</p>
+<p>Ships with an interactive TUI (default) and a classic CLI mode. Supports multi-GPU setups, MoE architectures, dynamic quantization selection, and speed estimation.</p>
+<div><h3>Quick install (macOS / Linux)</h3><a href="#quick-install-macos--linux"></a></div>
+<div><pre>curl -fsSL https://llmfit.axjns.dev/install.sh <span>|</span> sh</pre></div>
+<p><em>Downloads the latest release binary from GitHub and installs it to </em></p><pre><em><code>/usr/local/bin</code></em></pre><em> (or <pre><code>~/.local/bin</code></pre>)</em><p></p>
+<p>Or</p>
+<div><pre>brew tap AlexsJones/llmfit
+brew install llmfit</pre></div>
+<p>Windows users: see the <strong>Install</strong> section below.</p>
+<p><a target="_blank" href="/AlexsJones/llmfit/blob/main/demo.gif"><img src="/AlexsJones/llmfit/raw/main/demo.gif" alt="demo"></a></p>
+<p>Example of a medium performance home laptop</p>
+<p><a target="_blank" href="/AlexsJones/llmfit/blob/main/home_laptop.png"><img src="/AlexsJones/llmfit/raw/main/home_laptop.png" alt="home"></a></p>
+<p>Example of models with Mixture-of-Experts architectures</p>
+<div><h2><a target="_blank" href="/AlexsJones/llmfit/blob/main/moe.png"><img src="/AlexsJones/llmfit/raw/main/moe.png" alt="moe"></a></h2><a href="#"></a></div>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><h3>Cargo (Windows / macOS / Linux)</h3><a href="#cargo-windows--macos--linux"></a></div>
+<div><pre>cargo install llmfit</pre></div>
+<p>If </p><pre><code>cargo</code></pre> is not installed yet, install Rust via <a href="https://rustup.rs/">rustup</a>.<p></p>
+<div><h3>macOS / Linux</h3><a href="#macos--linux"></a></div>
+<div><h4>Homebrew</h4><a href="#homebrew"></a></div>
+<div><pre>brew tap AlexsJones/llmfit
+brew install llmfit</pre></div>
+<div><h4>Quick install</h4><a href="#quick-install"></a></div>
+<div><pre>curl -fsSL https://llmfit.axjns.dev/install.sh <span>|</span> sh</pre></div>
+<p>Downloads the latest release binary from GitHub and installs it to </p><pre><code>/usr/local/bin</code></pre> (or <pre><code>~/.local/bin</code></pre>).<p></p>
+<div><h3>From source</h3><a href="#from-source"></a></div>
+<div><pre>git clone https://github.com/AlexsJones/llmfit.git
+<span>cd</span> llmfit
+cargo build --release
+<span><span>#</span> binary is at target/release/llmfit</span></pre></div>
+<hr>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><h3>TUI (default)</h3><a href="#tui-default"></a></div>
+<div><pre>llmfit</pre></div>
+<p>Launches the interactive terminal UI. Your system specs (CPU, RAM, GPU name, VRAM, backend) are shown at the top. Models are listed in a scrollable table sorted by composite score. Each row shows the model's score, estimated tok/s, best quantization for your hardware, run mode, memory usage, and use-case category.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>Up</code></pre> / <pre><code>Down</code></pre> or <pre><code>j</code></pre> / <pre><code>k</code></pre></td>
+<td>Navigate models</td>
+</tr>
+<tr>
+<td><pre><code>/</code></pre></td>
+<td>Enter search mode (partial match on name, provider, params, use case)</td>
+</tr>
+<tr>
+<td><pre><code>Esc</code></pre> or <pre><code>Enter</code></pre></td>
+<td>Exit search mode</td>
+</tr>
+<tr>
+<td><pre><code>Ctrl-U</code></pre></td>
+<td>Clear search</td>
+</tr>
+<tr>
+<td><pre><code>f</code></pre></td>
+<td>Cycle fit filter: All, Runnable, Perfect, Good, Marginal</td>
+</tr>
+<tr>
+<td><pre><code>1</code></pre>-<pre><code>9</code></pre></td>
+<td>Toggle provider visibility</td>
+</tr>
+<tr>
+<td><pre><code>Enter</code></pre></td>
+<td>Toggle detail view for selected model</td>
+</tr>
+<tr>
+<td><pre><code>PgUp</code></pre> / <pre><code>PgDn</code></pre></td>
+<td>Scroll by 10</td>
+</tr>
+<tr>
+<td><pre><code>g</code></pre> / <pre><code>G</code></pre></td>
+<td>Jump to top / bottom</td>
+</tr>
+<tr>
+<td><pre><code>q</code></pre></td>
+<td>Quit</td>
+</tr>
+</tbody>
+</table>
+<div><h3>CLI mode</h3><a href="#cli-mode"></a></div>
+<p>Use </p><pre><code>--cli</code></pre> or any subcommand to get classic table output:<p></p>
+<div><pre><span><span>#</span> Table of all models ranked by fit</span>
+llmfit --cli <span><span>#</span> Only perfectly fitting models, top 5</span>
+llmfit fit --perfect -n 5 <span><span>#</span> Show detected system specs</span>
+llmfit system <span><span>#</span> List all models in the database</span>
+llmfit list <span><span>#</span> Search by name, provider, or size</span>
+llmfit search <span><span>"</span>llama 8b<span>"</span></span> <span><span>#</span> Detailed view of a single model</span>
+llmfit info <span><span>"</span>Mistral-7B<span>"</span></span> <span><span>#</span> Top 5 recommendations (JSON, for agent/script consumption)</span>
+llmfit recommend --json --limit 5 <span><span>#</span> Recommendations filtered by use case</span>
+llmfit recommend --json --use-case coding --limit 3</pre></div>
+<div><h3>JSON output</h3><a href="#json-output"></a></div>
+<p>Add </p><pre><code>--json</code></pre> to any subcommand for machine-readable output:<p></p>
+<div><pre>llmfit --json system <span><span>#</span> Hardware specs as JSON</span>
+llmfit --json fit -n 10 <span><span>#</span> Top 10 fits as JSON</span>
+llmfit recommend --json <span><span>#</span> Top 5 recommendations (JSON is default for recommend)</span></pre></div>
+<hr>
+<div><h2>How it works</h2><a href="#how-it-works"></a></div>
+<ol>
+<li>
+<p><strong>Hardware detection</strong> -- Reads total/available RAM via </p><pre><code>sysinfo</code></pre>, counts CPU cores, and probes for GPUs:<p></p>
+<ul>
+<li><strong>NVIDIA</strong> -- Multi-GPU support via <pre><code>nvidia-smi</code></pre>. Aggregates VRAM across all detected GPUs. Falls back to VRAM estimation from GPU model name if reporting fails.</li>
+<li><strong>AMD</strong> -- Detected via <pre><code>rocm-smi</code></pre>.</li>
+<li><strong>Intel Arc</strong> -- Discrete VRAM via sysfs, integrated via <pre><code>lspci</code></pre>.</li>
+<li><strong>Apple Silicon</strong> -- Unified memory via <pre><code>system_profiler</code></pre>. VRAM = system RAM.</li>
+<li><strong>Backend detection</strong> -- Automatically identifies the acceleration backend (CUDA, Metal, ROCm, SYCL, CPU ARM, CPU x86) for speed estimation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Model database</strong> -- 94 models sourced from the HuggingFace API, stored in </p><pre><code>data/hf_models.json</code></pre> and embedded at compile time. Memory requirements are computed from parameter counts across a quantization hierarchy (Q8_0 through Q2_K). VRAM is the primary constraint for GPU inference; system RAM is the fallback for CPU-only execution.<p></p>
+<p><strong>MoE support</strong> -- Models with Mixture-of-Experts architectures (Mixtral, DeepSeek-V2/V3) are detected automatically. Only a subset of experts is active per token, so the effective VRAM requirement is much lower than total parameter count suggests. For example, Mixtral 8x7B has 46.7B total parameters but only activates ~12.9B per token, reducing VRAM from 23.9 GB to ~6.6 GB with expert offloading.</p>
+</li>
+<li>
+<p><strong>Dynamic quantization</strong> -- Instead of assuming a fixed quantization, llmfit tries the best quality quantization that fits your hardware. It walks a hierarchy from Q8_0 (best quality) down to Q2_K (most compressed), picking the highest quality that fits in available memory. If nothing fits at full context, it tries again at half context.</p>
+</li>
+<li>
+<p><strong>Multi-dimensional scoring</strong> -- Each model is scored across four dimensions (0–100 each):</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>What it measures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quality</strong></td>
+<td>Parameter count, model family reputation, quantization penalty, task alignment</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>Estimated tokens/sec based on backend, params, and quantization</td>
+</tr>
+<tr>
+<td><strong>Fit</strong></td>
+<td>Memory utilization efficiency (sweet spot: 50–80% of available memory)</td>
+</tr>
+<tr>
+<td><strong>Context</strong></td>
+<td>Context window capability vs target for the use case</td>
+</tr>
+</tbody>
+</table>
+<pre><code>Dimensions are combined into a weighted composite score. Weights vary by use-case category (General, Coding, Reasoning, Chat, Multimodal, Embedding). For example, Chat weights Speed higher (0.35) while Reasoning weights Quality higher (0.55). Models are ranked by composite score, with unrunnable models (Too Tight) always at the bottom.</code></pre>
+</li>
+<li>
+<p><strong>Speed estimation</strong> -- Estimated tokens per second using backend-specific constants:</p>
+<table>
+<thead>
+<tr>
+<th>Backend</th>
+<th>Speed constant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CUDA</td>
+<td>220</td>
+</tr>
+<tr>
+<td>Metal</td>
+<td>160</td>
+</tr>
+<tr>
+<td>ROCm</td>
+<td>180</td>
+</tr>
+<tr>
+<td>SYCL</td>
+<td>100</td>
+</tr>
+<tr>
+<td>CPU (ARM)</td>
+<td>90</td>
+</tr>
+<tr>
+<td>CPU (x86)</td>
+<td>70</td>
+</tr>
+</tbody>
+</table>
+<p>Formula: </p><pre><code>K / params_b × quant_speed_multiplier</code></pre>, with penalties for CPU offload (0.5×), CPU-only (0.3×), and MoE expert switching (0.8×).<p></p>
+</li>
+<li>
+<p><strong>Fit analysis</strong> -- Each model is evaluated for memory compatibility:</p>
+<p><strong>Run modes:</strong></p>
+<ul>
+<li><strong>GPU</strong> -- Model fits in VRAM. Fast inference.</li>
+<li><strong>MoE</strong> -- Mixture-of-Experts with expert offloading. Active experts in VRAM, inactive in RAM.</li>
+<li><strong>CPU+GPU</strong> -- VRAM insufficient, spills to system RAM with partial GPU offload.</li>
+<li><strong>CPU</strong> -- No GPU. Model loaded entirely into system RAM.</li>
+</ul>
+<p><strong>Fit levels:</strong></p> </li>
+</ol>
+<hr>
+<div><h2>Model database</h2><a href="#model-database"></a></div>
+<p>The model list is generated by </p><pre><code>scripts/scrape_hf_models.py</code></pre>, a standalone Python script (stdlib only, no pip dependencies) that queries the HuggingFace REST API. 94 models across 30 providers including Meta Llama, Mistral, Qwen, Google Gemma, Microsoft Phi, DeepSeek, IBM Granite, Allen Institute OLMo, xAI Grok, Cohere, BigCode, 01.ai, Upstage, TII Falcon, HuggingFace, Zhipu GLM, Moonshot Kimi, Baidu ERNIE, and more. The scraper automatically detects MoE architectures via model config (<pre><code>num_local_experts</code></pre>, <pre><code>num_experts_per_tok</code></pre>) and known architecture mappings.<p></p>
+<p>Model categories span general purpose, coding (CodeLlama, StarCoder2, WizardCoder, Qwen2.5-Coder, Qwen3-Coder), reasoning (DeepSeek-R1, Orca-2), multimodal/vision (Llama 3.2 Vision, Llama 4 Scout/Maverick, Qwen2.5-VL), chat, enterprise (IBM Granite), and embedding (nomic-embed, bge).</p>
+<p>See <a href="/AlexsJones/llmfit/blob/main/MODELS.md">MODELS.md</a> for the full list.</p>
+<p>To refresh the model database:</p> <p>The scraper writes </p><pre><code>data/hf_models.json</code></pre>, which is baked into the binary via <pre><code>include_str!</code></pre>. The automated update script backs up existing data, validates JSON output, and rebuilds the binary.<p></p>
+<hr>
+<div><h2>Project structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>src/ main.rs -- CLI argument parsing, entrypoint, TUI launch hardware.rs -- System RAM/CPU/GPU detection (multi-GPU, backend identification) models.rs -- Model database, quantization hierarchy, dynamic quant selection fit.rs -- Multi-dimensional scoring (Q/S/F/C), speed estimation, MoE offloading display.rs -- Classic CLI table rendering + JSON output tui_app.rs -- TUI application state, filters, navigation tui_ui.rs -- TUI rendering (ratatui) tui_events.rs -- TUI keyboard event handling (crossterm)
+data/ hf_models.json -- Model database (94 models)
+skills/ llmfit-advisor/ -- OpenClaw skill for hardware-aware model recommendations
+scripts/ scrape_hf_models.py -- HuggingFace API scraper update_models.sh -- Automated database update script install-openclaw-skill.sh -- Install the OpenClaw skill
+Makefile -- Build and maintenance commands
+</code></pre></div>
+<hr>
+<div><h2>Publishing to crates.io</h2><a href="#publishing-to-cratesio"></a></div>
+<p>The </p><pre><code>Cargo.toml</code></pre> already includes the required metadata (description, license, repository). To publish:<p></p>
+<div><pre><span><span>#</span> Dry run first to catch issues</span>
+cargo publish --dry-run <span><span>#</span> Publish for real (requires a crates.io API token)</span>
+cargo login
+cargo publish</pre></div>
+<p>Before publishing, make sure:</p>
+<ul>
+<li>The version in <pre><code>Cargo.toml</code></pre> is correct (bump with each release).</li>
+<li>A <pre><code>LICENSE</code></pre> file exists in the repo root. Create one if missing:</li>
+</ul>
+<div><pre><span><span>#</span> For MIT license:</span>
+curl -sL https://opensource.org/license/MIT -o LICENSE
+<span><span>#</span> Or write your own. The Cargo.toml declares license = "MIT".</span></pre></div>
+<ul>
+<li><pre><code>data/hf_models.json</code></pre> is committed. It is embedded at compile time and must be present in the published crate.</li>
+<li>The <pre><code>exclude</code></pre> list in <pre><code>Cargo.toml</code></pre> keeps <pre><code>target/</code></pre>, <pre><code>scripts/</code></pre>, and <pre><code>demo.gif</code></pre> out of the published crate to keep the download small.</li>
+</ul>
+<p>To publish updates:</p>
+<div><pre><span><span>#</span> Bump version</span>
+<span><span>#</span> Edit Cargo.toml: version = "0.2.0"</span>
+cargo publish</pre></div>
+<hr>
+<div><h2>Dependencies</h2><a href="#dependencies"></a></div>
+<table>
+<thead>
+<tr>
+<th>Crate</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>clap</code></pre></td>
+<td>CLI argument parsing with derive macros</td>
+</tr>
+<tr>
+<td><pre><code>sysinfo</code></pre></td>
+<td>Cross-platform RAM and CPU detection</td>
+</tr>
+<tr>
+<td><pre><code>serde</code></pre> / <pre><code>serde_json</code></pre></td>
+<td>JSON deserialization for model database</td>
+</tr>
+<tr>
+<td><pre><code>tabled</code></pre></td>
+<td>CLI table formatting</td>
+</tr>
+<tr>
+<td><pre><code>colored</code></pre></td>
+<td>CLI colored output</td>
+</tr>
+<tr>
+<td><pre><code>ratatui</code></pre></td>
+<td>Terminal UI framework</td>
+</tr>
+<tr>
+<td><pre><code>crossterm</code></pre></td>
+<td>Terminal input/output backend for ratatui</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Platform support</h2><a href="#platform-support"></a></div>
+<ul>
+<li><strong>Linux</strong> -- Full support. GPU detection via <pre><code>nvidia-smi</code></pre> (NVIDIA), <pre><code>rocm-smi</code></pre> (AMD), and sysfs/<pre><code>lspci</code></pre> (Intel Arc).</li>
+<li><strong>macOS (Apple Silicon)</strong> -- Full support. Detects unified memory via <pre><code>system_profiler</code></pre>. VRAM = system RAM (shared pool). Models run via Metal GPU acceleration.</li>
+<li><strong>macOS (Intel)</strong> -- RAM and CPU detection works. Discrete GPU detection if <pre><code>nvidia-smi</code></pre> available.</li>
+<li><strong>Windows</strong> -- RAM and CPU detection works. NVIDIA GPU detection via <pre><code>nvidia-smi</code></pre> if installed.</li>
+</ul>
+<div><h3>GPU support</h3><a href="#gpu-support"></a></div>
+<table>
+<thead>
+<tr>
+<th>Vendor</th>
+<th>Detection method</th>
+<th>VRAM reporting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVIDIA</td>
+<td><pre><code>nvidia-smi</code></pre></td>
+<td>Exact dedicated VRAM</td>
+</tr>
+<tr>
+<td>AMD</td>
+<td><pre><code>rocm-smi</code></pre></td>
+<td>Detected (VRAM may be unknown)</td>
+</tr>
+<tr>
+<td>Intel Arc (discrete)</td>
+<td>sysfs (<pre><code>mem_info_vram_total</code></pre>)</td>
+<td>Exact dedicated VRAM</td>
+</tr>
+<tr>
+<td>Intel Arc (integrated)</td>
+<td><pre><code>lspci</code></pre></td>
+<td>Shared system memory</td>
+</tr>
+<tr>
+<td>Apple Silicon</td>
+<td><pre><code>system_profiler</code></pre></td>
+<td>Unified memory (= system RAM)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions are welcome, especially new models.</p>
+<div><h3>Adding a model</h3><a href="#adding-a-model"></a></div>
+<ol>
+<li>Add the model's HuggingFace repo ID (e.g., <pre><code>meta-llama/Llama-3.1-8B</code></pre>) to the <pre><code>TARGET_MODELS</code></pre> list in <pre><code>scripts/scrape_hf_models.py</code></pre>.</li>
+<li>If the model is gated (requires HuggingFace authentication to access metadata), add a fallback entry to the <pre><code>FALLBACKS</code></pre> list in the same script with the parameter count and context length.</li>
+<li>Run the automated update script:
+<div><pre>make update-models
+<span><span>#</span> or: ./scripts/update_models.sh</span></pre></div>
+</li>
+<li>Verify the updated model list: <pre><code>./target/release/llmfit list</code></pre></li>
+<li>Update <a href="/AlexsJones/llmfit/blob/main/MODELS.md">MODELS.md</a> by running: <pre><code>python3 &lt;&lt; 'EOF' &lt; scripts/...</code></pre> (see commit history for the generator script)</li>
+<li>Open a pull request.</li>
+</ol>
+<p>See <a href="/AlexsJones/llmfit/blob/main/MODELS.md">MODELS.md</a> for the current list and <a href="/AlexsJones/llmfit/blob/main/AGENTS.md">AGENTS.md</a> for architecture details.</p>
+<hr>
+<div><h2>OpenClaw integration</h2><a href="#openclaw-integration"></a></div>
+<p>llmfit ships as an <a href="https://github.com/openclaw/openclaw">OpenClaw</a> skill that lets the agent recommend hardware-appropriate local models and auto-configure Ollama/vLLM/LM Studio providers.</p>
+<div><h3>Install the skill</h3><a href="#install-the-skill"></a></div>
+<div><pre><span><span>#</span> From the llmfit repo</span>
+./scripts/install-openclaw-skill.sh <span><span>#</span> Or manually</span>
+cp -r skills/llmfit-advisor <span>~</span>/.openclaw/skills/</pre></div>
+<p>Once installed, ask your OpenClaw agent things like:</p>
+<ul>
+<li>"What local models can I run?"</li>
+<li>"Recommend a coding model for my hardware"</li>
+<li>"Set up Ollama with the best models for my GPU"</li>
+</ul>
+<p>The agent will call </p><pre><code>llmfit recommend --json</code></pre> under the hood, interpret the results, and offer to configure your <pre><code>openclaw.json</code></pre> with optimal model choices.<p></p>
+<div><h3>How it works</h3><a href="#how-it-works-1"></a></div>
+<p>The skill teaches the OpenClaw agent to:</p>
+<ol>
+<li>Detect your hardware via <pre><code>llmfit --json system</code></pre></li>
+<li>Get ranked recommendations via <pre><code>llmfit recommend --json</code></pre></li>
+<li>Map HuggingFace model names to Ollama/vLLM/LM Studio tags</li>
+<li>Configure <pre><code>models.providers.ollama.models</code></pre> in <pre><code>openclaw.json</code></pre></li>
+</ol>
+<p>See <a href="/AlexsJones/llmfit/blob/main/skills/llmfit-advisor/SKILL.md">skills/llmfit-advisor/SKILL.md</a> for the full skill definition.</p>
+<hr> <p>If you're looking for a different approach, check out <a href="https://github.com/Pavelevich/llm-checker">llm-checker</a> -- a Node.js CLI tool with Ollama integration that can pull and benchmark models directly. It takes a more hands-on approach by actually running models on your hardware via Ollama, rather than estimating from specs. Good if you already have Ollama installed and want to test real-world performance. Note that it doesn't support MoE (Mixture-of-Experts) architectures -- all models are treated as dense, so memory estimates for models like Mixtral or DeepSeek-V3 will reflect total parameter count rather than the smaller active subset.</p>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

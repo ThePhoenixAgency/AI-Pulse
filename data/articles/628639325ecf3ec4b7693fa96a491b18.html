@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,7 +28,11 @@
     Source: Programmez | Date: 2/13/2026 8:58:49 AM | <a href="https://www.programmez.com/actualites/notepad-microsoft-introduit-le-markdown-et-indirectement-une-vulnerabilite-39014" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div><p>Nodepod est un des outils les plus rudimentaires de Windows. Mais Microsoft cherche à le moderniser pour le transformer en éditeur moderne avec fonctions d'édition plus complets, formatage des textes, gérer les liens et l'apparition du Markdown. Et là, c'est un peu la catastrophe. Une vulnérabilité, la CVE-2026-20841, affiche une sévérité haute. L'attaque potentielle est une injection de commande en autorisant une exécution d'applications non autorisée.&nbsp;</p><p>La faille est aussi simpliste que gênante.</p><p>1 / on crée un fichier .md</p><p>2 / ce document contient des liens vers des applications, des codes</p><p>3 / si l'utilisateur clique sur un lien embarqué, il arrive que le lien réussit à bypasser la vérification et la validation de Windows pour autoriser ou non l'installation ou l'exécution d'une app distance</p><p>Si l'utilisateur possède des droits élevés, le lien compromis les possède aussi... Les mécanismes laissent passer des protocoles et des liens sans en avertir l'utilisateur.&nbsp;</p><p>Cette faille concerne les versions 11.2510 et antérieures. Elle a été patchée dans Patch Tuesday de février. A voir si la solution apportée suffira</p></div></div>
+    <p>Nodepod est un des outils les plus rudimentaires de Windows. Mais Microsoft cherche à le moderniser pour le transformer en éditeur moderne avec fonctions d'édition plus complets, formatage des textes, gérer les liens et l'apparition du Markdown. Et là, c'est un peu la catastrophe. Une vulnérabilité, la CVE-2026-20841, affiche une sévérité haute. L'attaque potentielle est une injection de commande en autorisant une exécution d'applications non autorisée. La faille est aussi simpliste que gênante.
+1 / on crée un fichier .md
+2 / ce document contient des liens vers des applications, des codes
+3 / si l'utilisateur clique sur un lien embarqué, il arrive que le lien réussit à bypasser la vérification et la validation de Windows pour autoriser ou non l'installation ou l'exécution d'une app distance
+Si l'utilisateur possède des droits élevés, le lien compromis les possède aussi... Les mécanismes laissent passer des protocoles et des liens sans en avertir l'utilisateur. Cette faille concerne les versions 11.2510 et antérieures. Elle a été patchée dans Patch Tuesday de février. A voir si la solution apportée suffira Catégorie actualité: Outils Notepad Image actualité AMP:</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

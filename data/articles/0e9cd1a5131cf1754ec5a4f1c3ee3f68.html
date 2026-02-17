@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>FFmpeg - Comment normaliser le volume audio proprement avec loudnorm</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>FFmpeg - Comment normaliser le volume audio proprement avec loudnorm</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/17/2026 9:25:00 AM | <a href="https://korben.info/ffmpeg-normaliser-volume-audio-lufs-loudnorm.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><p>Vous avez déjà remarqué comment le volume varie d'une vidéo à l'autre sur YouTube, ou pire, comment certaines pubs sont 10 fois plus fortes que le contenu ? Bah c'est parce que tout le monde n'utilise pas la même norme de volume. Et si vous produisez du contenu audio/vidéo, c'est le genre de détail qui fait la différence entre un truc amateur et un rendu pro.</p><p>La bonne nouvelle, c'est que <strong>FFmpeg</strong> intègre déjà un filtre qui s'appelle loudnorm et qui gère tout ça automatiquement. La norme utilisée, c'est le LUFS (Loudness Units Full Scale), qui est devenue le standard de l'industrie, et YouTube, Spotify, les TV... tout le monde utilise ça maintenant pour mesurer et normaliser le volume audio.</p><p>D'ailleurs, si vous débutez complètement avec cet outil, je vous conseille de jeter un œil à mon guide
+<a href="https://korben.info/ffmpeg-pour-les-nuls.html">FFmpeg pour les nuls</a>
+pour bien piger les bases de la ligne de commande.</p><p>Allez, c'est partiii ! <strong>Temps estimé :</strong> 2-5 minutes par fichier (selon la méthode choisie)</p><p>Mais, avant de se lancer dans les commandes, un petit point sur les paramètres qu'on va manipuler. Le filtre loudnorm utilise trois valeurs principales. D'abord I (Integrated loudness), c'est le volume moyen global mesuré en LUFS. La valeur standard pour le streaming, c'est -16 LUFS pour YouTube et Spotify, ou -23 LUFS pour la diffusion broadcast. Ensuite TP (True Peak), le niveau maximal que le signal ne doit jamais dépasser. On met généralement -1.5 dB pour avoir une marge de sécurité. Et enfin LRA (Loudness Range), qui définit la plage dynamique autorisée, généralement autour de 11 dB.</p><h2>Méthode 1 : Normalisation simple (single-pass)</h2><p>C'est la méthode la plus rapide, parfaite pour du traitement à la volée :</p><div><pre><code><span><span>ffmpeg -i entree.wav -af loudnorm=I=-16:TP=-1.5:LRA=11 -ar 48000 sortie.wav
+</span></span></code></pre></div><p><strong>Pourquoi ces valeurs :</strong> -16 LUFS c'est le standard YouTube/Spotify, -1.5 dB de true peak évite le clipping, et 11 dB de range dynamique garde un son naturel.</p><p>Le truc c'est que cette méthode fait une analyse en temps réel et ajuste à la volée. C'est bien, mais pas parfait. Pour un résultat vraiment précis, y'a mieux.</p><h2>Méthode 2 : Normalisation en deux passes (dual-pass)</h2><p>Cette méthode analyse d'abord le fichier complet, puis applique les corrections exactes. C'est plus long mais beaucoup plus précis.</p><p>Première passe, on analyse :</p><div><pre><code><span><span>ffmpeg -i entree.wav -af loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json -f null -
+</span></span></code></pre></div><p>FFmpeg va vous sortir un bloc JSON avec les mesures du fichier (input_i, input_tp, input_lra, input_thresh). Notez-les bien, car vous allez les injecter dans la deuxième passe.</p><p>Deuxième passe, on applique avec les valeurs mesurées (remplacez les chiffres par ceux obtenus à l'étape précédente) :</p><div><pre><code><span><span>ffmpeg -i entree.wav -af loudnorm=I=-16:TP=-1.5:LRA=11:measured_I=-24.35:measured_TP=-2.15:measured_LRA=8.54:measured_thresh=-35.21:offset=0:linear=true -ar 48000 sortie.wav
+</span></span></code></pre></div><p><strong>Pourquoi cette méthode ?</strong> En fait, en passant les valeurs mesurées, FFmpeg sait exactement de combien ajuster. L'option linear=true force une normalisation linéaire plutôt que dynamique, ce qui préserve mieux la dynamique originale.</p><h2>Pour les fichiers vidéo</h2><p>Le principe est le même, on ajoute juste <code>-c:v copy</code> pour garder la vidéo intacte sans la ré-encoder :</p><div><pre><code><span><span>ffmpeg -i video.mp4 -c:v copy -af loudnorm=I=-16:TP=-1.5:LRA=11 -ar 48000 video_normalise.mp4
+</span></span></code></pre></div><p>D'ailleurs, pour ceux qui veulent automatiser ça à l'extrême, j'avais parlé de
+<a href="https://korben.info/ffmpegfs-un-systeme-de-fichiers-qui-convertit-vos-videos-automatiquement.html">FFmpegfs</a>
+, un système de fichiers qui transcode automatiquement ce que vous déposez dessus. C'est pratique si vous avez une grosse bibliothèque à gérer.</p><h2>Traitement par lots avec ffmpeg-normalize</h2><p>Si vous avez plein de fichiers à traiter, y'a un outil Python qui automatise la méthode dual-pass :</p><div><pre><code><span><span>pip install ffmpeg-normalize
+</span></span><span><span>ffmpeg-normalize *.wav -o output_folder/ -c:a pcm_s16le
+</span></span></code></pre></div><p>Cet outil fait automatiquement les deux passes et supporte le traitement parallèle. Pratique pour normaliser une bibliothèque entière.</p><h2>Et en cas de problème ?</h2><p><strong>Erreur "No such filter: loudnorm"</strong> : Votre version de FFmpeg est trop ancienne (il faut la 3.1 minimum). Mettez à jour votre binaire.</p><p><strong>Le son est distordu après normalisation</strong> : Le fichier source était probablement déjà saturé. Essayez de baisser le target (-18 LUFS au lieu de -16) ou augmentez le headroom du true peak (-2 dB au lieu de -1.5).</p><p>Voilà, maintenant vous n'avez plus d'excuse pour avoir des niveaux audio qui varient dans tous les sens. Le LUFS c'est le standard, FFmpeg gère ça nativement, et ça prend 30 secondes.</p><p>Vos auditeurs vous remercieront.</p><p><a href="https://ffmpeg.org/ffmpeg-filters.html#loudnorm">Source</a></p></div><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

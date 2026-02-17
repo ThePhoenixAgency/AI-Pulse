@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Give Your Weather Report an Animated ASCII Spin in Linux Terminal</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Give Your Weather Report an Animated ASCII Spin in Linux Terminal</h1>
+  <div class="metadata">
+    Source: Its FOSS | Date: 2/17/2026 10:26:45 AM | <a href="https://itsfoss.com/weathr/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><article> <a href="https://www.warp.dev/?utm_source=its_foss&amp;utm_medium=display&amp;utm_campaign=linux_launch" target="_blank"><img src="https://itsfoss.com/assets/images/warp.webp" alt="Warp Terminal"></a> <p>One of the most underrated things that comes with open source projects that isn't talked about enough is the whimsy. The developers make anything they like, unshackled by any bonds of a boring format, and the result of this kind of freedom is a program like weathr. </p><p><a href="https://github.com/veirt/weathr?ref=itsfoss.com">weathr</a> is a CLI tool written in Rust that gives you a full weather report, complete with a general category, temperature, wind speed and precipitation. </p><p>What separates it from other weather utilities is that it shows you what the weather looks like in ASCII graphics, with a little house and shrubbery, featuring absolutely adorable animations. </p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:07</span> </p> </div> </div> <figcaption><p><span>weathr</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/weathr_thumb.jpg"></figure><p>weathr retrieves the weather data from <a href="https://open-meteo.com/?ref=itsfoss.com">Open-Meteo</a>, and it has several modes and configurations that you can play around with.</p><h2>Different animation for different kind of weather</h2><div><p></p><p>Weathr allows you to simulate a few weather conditions. This lets you see how the terminal would appear if the weather were the same where you are.</p></div><p>I understand that monsoon is not a season experience in many parts of the world but let's say it's raining outside.</p><pre><code>weathr --simulate rain</code></pre><p>This is what it would look like in weathr:</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:04</span> </p> </div> </div> <figcaption><p><span>weathr rain simulation</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/weathr_rain_thumb.jpg"></figure><p>I have never experienced snowfall in real but at least I can simulate it ;)</p><pre><code>weathr --simulate snow</code></pre><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:04</span> </p> </div> </div> <figcaption><p><span>weathr snow simulation</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/weathr_snow_thumb.jpg"></figure><p>If not snow, for sure I have witnessed fog in winters:</p><pre><code>weathr --simulate fog</code></pre><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:06</span> </p> </div> </div> <figcaption><p><span>weathr fog simulation</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/weathr_fog_thumb.jpg"></figure><p>There are several more options you can simulate, listed on the help page, which are put into four categories:</p><ul><li><strong>Clear Skies:</strong> clear, partly-cloudy, cloudy, overcast</li><li><strong>Precipitation:</strong> fog, drizzle, rain, freezing-rain, rain-showers</li><li><strong>Snow:</strong> snow, snow-grains, snow-showers</li><li><strong>Storms:</strong> thunderstorm, thunderstorm-hail</li></ul><div><p></p><p>There are also frequent passages of airplanes. Glad that they don't make noise ;) </p></div><h3>Different animation for different time of the day</h3><p>Weathr takes care of the time of the day. The daytime animations include the sun, gliding clouds, v-shaped birds, and bright colors. Nighttime comes with animations of the moon, twinkling stars, gliding clouds, and fireflies and shooting stars. </p><p>To simulate the weather at nighttime, you have to choose a simulation condition first and add an -n flag to signify the time of day:</p><pre><code>weathr --simulate clear -n</code></pre><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:11</span> </p> </div> </div> <figcaption><p><span>weathr nighttime simulation</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/weathr_night_thumb.jpg"></figure><p>You can simulate any of the weather conditions mentioned before. You can also choose to make the leaves fall as if it was autumn within the window with the -l flag. I guess -l stands for leaves here.</p><pre><code>weathr --simulate clear -l</code></pre><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:07</span> </p> </div> </div> <figcaption><p><span>weathr fall simulation</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/weathr_autumn_thumb.jpg"></figure><h2>Units of your choice</h2><p>There are two broad categories you can choose from, obviously being imperial and metric units:</p><pre><code>weathr --imperial
+weathr --metric</code></pre><p>You can also specify specific units for all the different fields, with the options being:</p><ul><li><strong>Temperature:</strong> celsius, fahrenheit</li><li><strong>Wind Speed:</strong> kmh, ms, mph, kn (knots)</li><li><strong>Precipitation:</strong> mm, inch</li></ul><p>This can be added to the configuration file at ~/.config/weathr:</p><pre><code>[units]
+temperature = "celsius"
+wind_speed = "kmh"
+precipitation = "mm"</code></pre><div><p></p><div><p>While the default view gives all the available options, you can choose to hide the location coordinates or the entire heads-up-display (HUD) entirely to only see the ASCII animation:</p><p><code>weathr --hide-location</code> <br><code>weathr --hide-hud</code></p></div></div><h2>Set the location manually and accurately (if you want to)</h2><p>If you run weathr as it is, it will track your public IP and show the weather for that location. Now, we all know that public IP is not an accurate measure of location. And if you <a href="https://itsfoss.com/best-vpn-linux/">use VPN on your Linux system</a>, you won't want to see the weather of Australia when you are in America.</p><p>The good thing is that weathr allows you to configure your location. It requires some config file editing but that's not overly complicated.</p><p>First thing first, use a map on your smartphone to get the coordinates of your location. You can also use a website like <a href="https://www.gps-coordinates.net/?ref=itsfoss.com">GPS Coordinate</a> for this purpose.</p><p>To start with, for an accurate weather report without being intrusive, weathr takes in the exact coordinates input by the user to provide a weather report. It can be updated in the configuration file for a permanent setting of the location or change of the same. To do it, you need to first create the configuration file using:</p><pre><code>mkdir -p ~/.config/weathr</code></pre><p>To enter the location, given that you know your coordinates, access the newly created configuration file at ~/.config/weathr and add the following:</p><pre><code>[location]
+# Location coordinates (overridden if auto = true)
+latitude = 40.7128
+longitude = -74.0060</code></pre><p>Other than that, you can choose an auto-location option that gets the location from your IP address.</p><pre><code>weathr --auto-location</code></pre><h2>Installing weathr</h2><div><p></p><p><b><strong>It is a Rust-based tools so you need to </strong></b><a href="https://itsfoss.com/install-rust-cargo-ubuntu-linux/"><b><strong>install Cargo first</strong></b></a>. Cargo is a command-line tool that is used for installing Rust-based utilities from the Rust Package Registry (<a href="https://crates.io/?ref=itsfoss.com">Crates</a>) or from a locally downloaded Rust program.</p></div><p>Installing weathr needs Rust and Cargo, after which you can enter the following commands:</p><pre><code>git clone https://github.com/veirt/weathr.git
+cd weathr
+cargo install --path .</code></pre><p>If you wish to check the help page for quick peak at the available commands:</p><pre><code>weathr --help</code></pre><div><p></p><p>If you liked this nifty tool, perhaps star their GitHub repo. Developers like that.</p></div><h2>Wrapping Up</h2><p>While "necessary" isn't the word that can be used to describe an app like weathr, it still stands as a testament to how fun and innovative open source applications can be. With a minimal system load, weathr adds a touch of delightful playfulness. I mean, we should surely add it to our <a href="https://itsfoss.com/ascii-art-linux-terminal/">list of fun ASCII tools</a>.</p><p>Please let us know what you think about weathr in the comments, and if you would use it for your daily weathr report needs. Cheers!</p> </article></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
