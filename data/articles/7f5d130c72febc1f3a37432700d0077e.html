@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - M2Dr3g0n/kremis: A minimal graph engine for grounded AI — records, associates, and retrieves, but never invents. Written in Rust.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - M2Dr3g0n/kremis: A minimal graph engine for grounded AI — records, associates, and retrieves, but never invents. Written in Rust.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 4:03:30 PM | <a href="https://github.com/M2Dr3g0n/kremis" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Kremis</h1><a href="#kremis"></a></div>
+<p><a href="https://github.com/M2Dr3g0n/kremis/actions/workflows/ci.yml"><img src="https://github.com/M2Dr3g0n/kremis/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+<a href="/M2Dr3g0n/kremis/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/b29de0acdfd19013f1f02689b15c933e4a6c145be9efa718288f88ba3280b1c5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d417061636865253230322e302d626c75652e737667" alt="License"></a>
+<a href="https://www.rust-lang.org/"><img src="https://camo.githubusercontent.com/4e8a75cf008c34fce77c782153be58fc3a7fde5d695691bad2ddeeec4e5ca2ba/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f727573742d312e38352532422d6f72616e67652e737667" alt="Rust"></a>
+<a target="_blank" href="https://camo.githubusercontent.com/3e95f4d5fc620c485f1632c17216d4db9bbd615bb981b106fd0b949ac002559f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d6578706572696d656e74616c2d6f72616e6765"><img src="https://camo.githubusercontent.com/3e95f4d5fc620c485f1632c17216d4db9bbd615bb981b106fd0b949ac002559f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d6578706572696d656e74616c2d6f72616e6765" alt="Status"></a></p>
+<blockquote>
+<p><strong>Work in Progress</strong> — Features incomplete. Breaking changes expected.</p>
+</blockquote>
+<p><strong>Kremis</strong> is a minimal, deterministic, graph-based cognitive substrate implemented in Rust.</p>
+<p>It functions solely as a mechanism to <strong>record</strong>, <strong>associate</strong>, and <strong>retrieve</strong> structural relationships derived from grounded experience.</p>
+<blockquote>
+<p><strong>The system does not <em>understand</em>.</strong> It contains only the structure of the signals it has processed.</p>
+</blockquote>
+<hr>
+<div><h2>Why Kremis</h2><a href="#why-kremis"></a></div>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>How Kremis addresses it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hallucination</strong></td>
+<td>No fabricated data. Every result traces back to real ingested signals. Explicit "not found" for missing data</td>
+</tr>
+<tr>
+<td><strong>Opacity</strong></td>
+<td>Fully inspectable state. No hidden layers, no black box. Every result traces back to a graph path</td>
+</tr>
+<tr>
+<td><strong>Lack of grounding</strong></td>
+<td>Zero pre-loaded knowledge. All structure emerges from real signals, not assumptions</td>
+</tr>
+<tr>
+<td><strong>Non-determinism</strong></td>
+<td>Same input, same output. No randomness, no floating-point arithmetic in core</td>
+</tr>
+<tr>
+<td><strong>Data loss</strong></td>
+<td>ACID transactions via <pre><code>redb</code></pre> embedded database. Crash-safe by design</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<p>Requires <strong>Rust 1.85+</strong> (stable, edition 2024) and Cargo.</p>
+<div><pre>git clone https://github.com/M2Dr3g0n/kremis.git
+<span>cd</span> kremis
+cargo build --release
+cargo <span>test</span> --workspace</pre></div>
+<div><pre><span><span>#</span> Initialize database</span>
+cargo run -p kremis -- init <span><span>#</span> Ingest sample data (9 signals: 3 entities with properties + relationships)</span>
+cargo run -p kremis -- ingest -f examples/sample_signals.json -t json <span><span>#</span> Start HTTP server (in a separate terminal, or background with &amp;)</span>
+cargo run -p kremis -- server <span><span>#</span> Check health (in another terminal)</span>
+curl http://localhost:8080/health</pre></div>
+<blockquote>
+<p><strong>Note:</strong> CLI commands and the HTTP server cannot run simultaneously (redb holds an exclusive lock). Stop the server before using CLI commands like </p><pre><code>ingest</code></pre>, <pre><code>status</code></pre>, or <pre><code>export</code></pre>.<p></p>
+</blockquote>
+<div><h3>Try It</h3><a href="#try-it"></a></div>
+<p>With the server running, query the graph:</p>
+<div><pre><span><span>#</span> Look up entity 1 (Alice)</span>
+curl -X POST http://localhost:8080/query \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"type": "lookup", "entity_id": 1}<span>'</span></span> <span><span>#</span> Traverse from node 0, depth 3</span>
+curl -X POST http://localhost:8080/query \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"type": "traverse", "node_id": 0, "depth": 3}<span>'</span></span> <span><span>#</span> Get properties of node 0 (name, role, etc.)</span>
+curl -X POST http://localhost:8080/query \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"type": "properties", "node_id": 0}<span>'</span></span> <span><span>#</span> Find common connections between nodes 0 and 1</span>
+curl -X POST http://localhost:8080/query \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"type": "intersect", "nodes": [0, 1]}<span>'</span></span> <span><span>#</span> Check graph status</span>
+curl http://localhost:8080/status</pre></div>
+<p>You can also ingest signals via HTTP:</p>
+<div><pre>curl -X POST http://localhost:8080/signal \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"entity_id": 1, "attribute": "name", "value": "Alice"}<span>'</span></span>
+<span><span>#</span> {"success":true,"node_id":0,"error":null}</span></pre></div>
+<p>The </p><pre><code>examples/</code></pre> directory contains sample data in both JSON and text formats.<p></p>
+<div><h3>Docker</h3><a href="#docker"></a></div>
+<div><pre>docker build -t kremis <span>.</span>
+docker run -d -p 8080:8080 -v kremis-data:/data kremis</pre></div>
+<p>Pass configuration via environment variables:</p>
+<div><pre>docker run -d -p 8080:8080 \ -v kremis-data:/data \ -e KREMIS_API_KEY=your-secret \ -e KREMIS_CORS_ORIGINS=<span><span>"</span>https://example.com<span>"</span></span> \ kremis</pre></div>
+<p>Multi-stage build (~136 MB image). Data persists in </p><pre><code>/data</code></pre> volume. Built-in healthcheck on <pre><code>/health</code></pre>.<p></p>
+<hr>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><h3>CLI</h3><a href="#cli"></a></div>
+<div><pre><span><span>#</span> Show graph status</span>
+cargo run -p kremis -- status <span><span>#</span> Show developmental stage</span>
+cargo run -p kremis -- stage --detailed <span><span>#</span> Ingest signals from file</span>
+cargo run -p kremis -- ingest -f data.json -t json <span><span>#</span> Query the graph</span>
+cargo run -p kremis -- query -t lookup --entity 1
+cargo run -p kremis -- query -t traverse -s 0 -d 3
+cargo run -p kremis -- query -t path -s 0 -e 5 <span><span>#</span> Export/Import</span>
+cargo run -p kremis -- <span>export</span> -o graph.bin -t canonical
+cargo run -p kremis -- import -i graph.bin -B file</pre></div>
+<div><h3>HTTP API</h3><a href="#http-api"></a></div>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>/health</code></pre></td>
+<td>GET</td>
+<td>Health check</td>
+</tr>
+<tr>
+<td><pre><code>/status</code></pre></td>
+<td>GET</td>
+<td>Graph statistics</td>
+</tr>
+<tr>
+<td><pre><code>/stage</code></pre></td>
+<td>GET</td>
+<td>Developmental stage</td>
+</tr>
+<tr>
+<td><pre><code>/signal</code></pre></td>
+<td>POST</td>
+<td>Ingest a signal</td>
+</tr>
+<tr>
+<td><pre><code>/query</code></pre></td>
+<td>POST</td>
+<td>Execute a query</td>
+</tr>
+<tr>
+<td><pre><code>/export</code></pre></td>
+<td>POST</td>
+<td>Export graph</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="/M2Dr3g0n/kremis/blob/main/docs/API.md">docs/API.md</a> for full API documentation with examples.</p>
+<div><h3>MCP Server</h3><a href="#mcp-server"></a></div>
+<p>Kremis provides an MCP (Model Context Protocol) server that enables AI assistants like Claude to interact with the knowledge graph directly.</p>
+<div><pre><span><span>#</span> Build the MCP server</span>
+cargo build -p kremis-mcp --release <span><span>#</span> Run (requires a Kremis HTTP server running)</span>
+KREMIS_URL=http://localhost:8080 ./target/release/kremis-mcp</pre></div>
+<p>Configure in Claude Desktop (</p><pre><code>claude_desktop_config.json</code></pre>):<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"kremis"</span>: { <span>"command"</span>: <span><span>"</span>/path/to/kremis-mcp<span>"</span></span>, <span>"env"</span>: { <span>"KREMIS_URL"</span>: <span><span>"</span>http://localhost:8080<span>"</span></span>, <span>"KREMIS_API_KEY"</span>: <span><span>"</span>your-key-here<span>"</span></span> } } }
+}</pre></div>
+<p>7 tools available: </p><pre><code>kremis_ingest</code></pre>, <pre><code>kremis_lookup</code></pre>, <pre><code>kremis_traverse</code></pre>, <pre><code>kremis_path</code></pre>, <pre><code>kremis_intersect</code></pre>, <pre><code>kremis_status</code></pre>, <pre><code>kremis_properties</code></pre>.<p></p>
+<div><h3>Rust API</h3><a href="#rust-api"></a></div>
+<div><pre><span>use</span> kremis_core<span>::</span><span>{</span><span>Session</span><span>,</span> <span>Signal</span><span>,</span> <span>EntityId</span><span>,</span> <span>Attribute</span><span>,</span> <span>Value</span><span>}</span><span>;</span> <span>let</span> <span>mut</span> session = <span>Session</span><span>::</span><span>new</span><span>(</span><span>)</span><span>;</span> <span>let</span> signal = <span>Signal</span><span>::</span><span>new</span><span>(</span> <span>EntityId</span><span>(</span><span>1</span><span>)</span><span>,</span> <span>Attribute</span><span>::</span><span>new</span><span>(</span><span>"name"</span><span>)</span><span>,</span> <span>Value</span><span>::</span><span>new</span><span>(</span><span>"Alice"</span><span>)</span><span>,</span>
+<span>)</span><span>;</span> <span>let</span> node_id = session<span>.</span><span>ingest</span><span>(</span><span>&amp;</span>signal<span>)</span>?<span>;</span></pre></div>
+<hr>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>kremis-core</strong></td>
+<td>Deterministic graph engine (pure Rust, no async)</td>
+</tr>
+<tr>
+<td><strong>apps/kremis</strong></td>
+<td>HTTP server + CLI (tokio, axum, clap)</td>
+</tr>
+<tr>
+<td><strong>apps/kremis-mcp</strong></td>
+<td>MCP server bridge for AI assistants (rmcp, stdio)</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="/M2Dr3g0n/kremis/blob/main/docs/ARCHITECTURE.md">docs/ARCHITECTURE.md</a> for internal details (data flow, storage backends, algorithms, export formats).</p>
+<hr>
+<div><h2>Testing</h2><a href="#testing"></a></div>
+<div><pre>cargo <span>test</span> --workspace
+cargo clippy --all-targets --all-features -- -D warnings
+cargo fmt --all -- --check</pre></div>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/M2Dr3g0n/kremis/blob/main/LICENSE">Apache License 2.0</a></p>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>See <a href="/M2Dr3g0n/kremis/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for guidelines. The architecture is still evolving — open an <a href="https://github.com/M2Dr3g0n/kremis/issues">issue</a> before submitting a PR.</p>
+<div><h2>Acknowledgments</h2><a href="#acknowledgments"></a></div>
+<p>This project was developed with AI assistance.</p>
+<hr>
+<p> <strong>Keep it minimal. Keep it deterministic. Keep it grounded. Keep it honest.</strong>
+</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

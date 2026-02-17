@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>iphone-mirroir-mcp — Give your AI an iPhone</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>iphone-mirroir-mcp — Give your AI an iPhone</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 4:15:24 PM | <a href="https://mirroir.dev/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div> <header> <img src="https://mirroir.dev/mirroir-wordmark.svg" alt="iphone-mirroir-mcp"> <p>
+Give your AI an iPhone.
+</p> <p>
+MCP server that controls a real iPhone through macOS iPhone Mirroring. Screenshot, tap, swipe, type — from any MCP client. Works with any app on screen, no source code required.
+</p> </header> <section> <h2>See it in action</h2> <div> <p> </p><h3>Login Flow</h3> <p></p> <p> </p><h3>Cross-App Workflow</h3> <p></p> </div> </section> <section> <h2>Install iphone-mirroir-mcp</h2> <p><code><span>$</span> /bin/bash -c "$(curl -fsSL https://mirroir.dev/get-mirroir.sh)"</code> </p> <p>
+Paste that in a macOS Terminal. Clones the repo, builds from source, installs the helper daemon, and configures Karabiner.
+</p> <p>
+or via <a href="https://www.npmjs.com/package/iphone-mirroir-mcp">npx</a>:
+</p> <p><code><span>$</span> npx -y iphone-mirroir-mcp install</code> </p> <p>
+or via <a href="https://tap.mirroir.dev/">Homebrew</a>:
+</p> <p><code><span>$</span> brew tap jfarcand/tap &amp;&amp; brew install iphone-mirroir-mcp</code> </p> </section> <section> <h2>Scenarios: intents, not scripts</h2> <p>
+Scenarios are reusable YAML files that describe automation flows as intents, not scripts. Steps like <code>tap: "Email"</code> don't specify coordinates — the AI finds the element by OCR matching and adapts to unexpected dialogs and layout changes. Test an app or automate your morning routine. Share them on the <a href="https://github.com/jfarcand/iphone-mirroir-scenarios">community repository</a>.
+</p> <div> <div> <h3>Branching + looping</h3> <pre><code><span><span>name</span><span>: </span><span>Expo Go Signup + Onboarding</span></span>
+<span><span>app</span><span>: </span><span>Expo Go</span></span>
+<span><span>description</span><span>: </span><span>&gt;</span></span>
+<span><span> Sign up, handle error or success,</span></span>
+<span><span> then swipe through onboarding.</span></span>
+<span></span>
+<span><span>steps</span><span>:</span></span>
+<span><span> - </span><span>launch</span><span>: </span><span>"Expo Go"</span></span>
+<span><span> - </span><span>wait_for</span><span>: </span><span>"LoginDemo"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"LoginDemo"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"Sign Up"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"Email"</span></span>
+<span><span> - </span><span>type</span><span>: </span><span>"${TEST_EMAIL}"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"Password"</span></span>
+<span><span> - </span><span>type</span><span>: </span><span>"${TEST_PASSWORD}"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"Create Account"</span></span>
+<span><span> - </span><span>condition</span><span>:</span></span>
+<span><span> if_visible</span><span>: </span><span>"already exists"</span></span>
+<span><span> then</span><span>:</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"Sign In Instead"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"Email"</span></span>
+<span><span> - </span><span>type</span><span>: </span><span>"${TEST_EMAIL}"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"Password"</span></span>
+<span><span> - </span><span>type</span><span>: </span><span>"${TEST_PASSWORD}"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"Sign In"</span></span>
+<span><span> else</span><span>:</span></span>
+<span><span> - </span><span>wait_for</span><span>: </span><span>"Welcome"</span></span>
+<span><span> - </span><span>assert_visible</span><span>: </span><span>"Welcome"</span></span>
+<span><span> - </span><span>screenshot</span><span>: </span><span>"authenticated"</span></span>
+<span><span> - </span><span>repeat</span><span>:</span></span>
+<span><span> until_visible</span><span>: </span><span>"Get Started"</span></span>
+<span><span> max</span><span>: </span><span>5</span></span>
+<span><span> steps</span><span>:</span></span>
+<span><span> - </span><span>swipe</span><span>: </span><span>"left"</span></span>
+<span><span> - </span><span>screenshot</span><span>: </span><span>"onboarding"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"Get Started"</span></span>
+<span><span> - </span><span>assert_visible</span><span>: </span><span>"Dashboard"</span></span>
+<span><span> - </span><span>screenshot</span><span>: </span><span>"complete"</span></span></code></pre> </div> <div> <h3>Cross-app workflow</h3> <pre><code><span><span>name</span><span>: </span><span>Commute ETA Notification</span></span>
+<span><span>app</span><span>: </span><span>Waze, Messages</span></span>
+<span><span>description</span><span>: </span><span>Get ETA from Waze, text it via iMessage.</span></span>
+<span></span>
+<span><span>steps</span><span>:</span></span>
+<span><span> - </span><span>launch</span><span>: </span><span>"Waze"</span></span>
+<span><span> - </span><span>wait_for</span><span>: </span><span>"Where to?"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"Where to?"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"${DESTINATION:-Work}"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"Go"</span></span>
+<span><span> - </span><span>wait_for</span><span>: </span><span>"min"</span></span>
+<span><span> - </span><span>remember</span><span>: </span><span>"Read the commute ETA."</span></span>
+<span><span> - </span><span>press_home</span><span>: </span><span>true</span></span>
+<span><span> - </span><span>launch</span><span>: </span><span>"Messages"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"New Message"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"To:"</span></span>
+<span><span> - </span><span>type</span><span>: </span><span>"${RECIPIENT}"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"${RECIPIENT}"</span></span>
+<span><span> - </span><span>tap</span><span>: </span><span>"iMessage"</span></span>
+<span><span> - </span><span>type</span><span>: </span><span>"On my way! ETA {eta}"</span></span>
+<span><span> - </span><span>press_key</span><span>: </span><span>"return"</span></span>
+<span><span> - </span><span>screenshot</span><span>: </span><span>"message_sent"</span></span></code></pre> </div> </div> <p> <code>${VAR}</code> placeholders resolve from environment variables. Install scenarios in Claude Code<sup>*</sup>:
+</p> <p><code><span>$</span> claude plugin marketplace add marketplace.mirroir.dev</code> </p> <p> <sup>*</sup> Also supported by GitHub Copilot.
+</p> <h3>Search the community scenario library</h3> </section> <section> <h2>What Does iphone-mirroir-mcp Do?</h2> <p>22 tools exposed as an MCP server.</p> <div> <div> <h3>Touch</h3> <ul> <li><code>tap</code> <span>Tap at screen coordinates</span></li> <li><code>double_tap</code> <span>Double-tap for zoom or text selection</span></li> <li><code>long_press</code> <span>Hold for context menus</span></li> <li><code>swipe</code> <span>Quick flick between two points</span></li> <li><code>drag</code> <span>Slow drag for sliders and icons</span></li> </ul> </div> <div> <h3>Input</h3> <ul> <li><code>type_text</code> <span>Type text via virtual keyboard</span></li> <li><code>press_key</code> <span>Send special keys with modifiers</span></li> <li><code>shake</code> <span>Shake gesture for undo or dev menus</span></li> </ul> </div> <div> <h3>Observe</h3> <ul> <li><code>screenshot</code> <span>Capture screen as PNG</span></li> <li><code>describe_screen</code> <span>OCR with tap coordinates</span></li> <li><code>start_recording</code> <span>Begin video recording</span></li> <li><code>stop_recording</code> <span>End recording, get file path</span></li> <li><code>get_orientation</code> <span>Portrait or landscape</span></li> <li><code>status</code> <span>Connection and device readiness</span></li> <li><code>check_health</code> <span>Full setup diagnostic</span></li> </ul> </div> <div> <h3>Navigate</h3> <ul> <li><code>launch_app</code> <span>Open app by name via Spotlight</span></li> <li><code>open_url</code> <span>Open URL in Safari</span></li> <li><code>press_home</code> <span>Return to home screen</span></li> <li><code>press_app_switcher</code> <span>Show recent apps</span></li> <li><code>spotlight</code> <span>Open Spotlight search</span></li> <li><code>list_scenarios</code> <span>List available YAML scenarios</span></li> <li><code>get_scenario</code> <span>Read scenario with env substitution</span></li> </ul> </div> </div> </section> <section> <h2>Integrations</h2> <p>Any MCP client that supports stdio transport — plug into your editor or build your own agent.</p> </section> <section> <h2>Fail-closed by default</h2> <p>
+Without a config file, only read-only tools are exposed. Mutating tools are hidden from the MCP client entirely — it never sees them unless you allow them.
+</p> <pre><code><span><span>{</span></span>
+<span><span> "allow"</span><span>: [</span><span>"tap"</span><span>, </span><span>"swipe"</span><span>, </span><span>"type_text"</span><span>, </span><span>"press_key"</span><span>, </span><span>"launch_app"</span><span>],</span></span>
+<span><span> "deny"</span><span>: [],</span></span>
+<span><span> "blockedApps"</span><span>: [</span><span>"Wallet"</span><span>, </span><span>"Banking"</span><span>]</span></span>
+<span><span>}</span></span></code></pre> <p>
+Drop this in <code>~/.iphone-mirroir-mcp/permissions.json</code> to control exactly which tools your AI agent can use.
+</p> </section> <section> <h2>FAQ</h2> <div> Is this safe? Can the AI access my banking apps? <p>Without a config file, only read-only tools are exposed. Mutating tools require explicit opt-in. Use <code>blockedApps</code> in <code>permissions.json</code> to deny access to sensitive apps. Closing iPhone Mirroring kills all input immediately.</p> Why does my cursor jump when the AI is working? <p>macOS routes HID input to the frontmost app. The server must activate iPhone Mirroring before each input. Put it in a separate macOS Space to keep your workspace undisturbed.</p> Does it work with any iPhone app? <p>Yes. It operates at the screen level through iPhone Mirroring — no source code, SDK, or jailbreak required. If you can see it on screen, the AI can interact with it.</p> Why Karabiner? Can I use it without Karabiner? <p>iPhone Mirroring ignores programmatic <code>CGEvent</code> injection. Karabiner provides a DriverKit virtual HID device that appears as real hardware — the only path that works.</p> Can I restrict which tools the AI can use? <p>Yes. Drop a <code>permissions.json</code> with <code>allow</code> and <code>deny</code> lists. Tools not in the allow list are hidden from the MCP client entirely.</p> </div> <p> <a href="https://github.com/jfarcand/iphone-mirroir-mcp/blob/main/docs/faq.md">Read the full FAQ</a> </p> </section> </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

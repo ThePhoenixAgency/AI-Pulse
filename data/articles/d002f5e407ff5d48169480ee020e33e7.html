@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Adeus CleanMyMac: Como Otimizar seu macOS de Graça com um Script de Elite (Open Source)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Adeus CleanMyMac: Como Otimizar seu macOS de Graça com um Script de Elite (Open Source)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 3:49:49 PM | <a href="https://dev.to/franciscojdsjr/adeus-cleanmymac-como-otimizar-seu-macos-de-graca-com-um-script-de-elite-open-source-3g5" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F19xz138zy2dck847dhlc.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F19xz138zy2dck847dhlc.png" alt="Cover image for Adeus CleanMyMac: Como Otimizar seu macOS de Graça com um Script de Elite (Open Source)"> </a> <div> <p><a href="https://dev.to/franciscojdsjr"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1116209%2F0f4db5f3-3d15-4712-913e-c4d6d02d567c.jpeg" alt="Francisco Júnior"></a> </p> </div> </header> <div> <p>Você provavelmente já viu anúncios de aplicativos "mágicos" que prometem limpar seu Mac, liberar gigabytes de espaço e deixá-lo rápido como novo. O que eles não te contam é que a maioria dessas ferramentas cobra assinaturas anuais caras (algumas custam mais de <strong>R$ 150/ano</strong>) apenas para executar comandos que o seu próprio sistema operacional já possui nativamente.</p> <p>Hoje, vou te ensinar como se livrar dessas mensalidades. Vamos criar uma ferramenta de manutenção gratuita, transparente e mais poderosa que a maioria dos softwares pagos, usando um script em <strong>Bash</strong> que executa uma limpeza profunda (<em>Deep Clean</em>) no seu sistema.</p> <h2> <a name="por-que-voc%C3%AA-n%C3%A3o-precisa-pagar-por-limpeza" href="#por-que-voc%C3%AA-n%C3%A3o-precisa-pagar-por-limpeza"> </a> Por que você não precisa pagar por limpeza?
+</h2> <p>O macOS é baseado em <strong>Unix</strong>. Isso significa que ele possui rotinas de manutenção poderosas embutidas no <em>core</em> do sistema. Aplicativos pagos, na grande maioria das vezes, são apenas interfaces bonitas (GUIs) que rodam comandos de terminal escondidos.</p> <p>A solução que vamos implementar abaixo atua diretamente nessa camada do sistema, fazendo o seguinte:</p> <ul>
+<li>
+<strong>Limpeza Real:</strong> Remove caches de sistema, usuário e navegadores (Chrome, Safari, Firefox).</li>
+<li>
+<strong>Manutenção Profunda:</strong> Reconstrói índices do Spotlight, corrige ícones duplicados e rotaciona logs.</li>
+<li>
+<strong>Foco em Desenvolvedores:</strong> Limpa "lixo" do Docker, Homebrew e Xcode (algo que limpadores comuns para usuários leigos ignoram).</li>
+<li>
+<strong>Segurança e Conveniência:</strong> Fecha seus apps salvando o estado atual e os reabre automaticamente após a limpeza.</li>
+</ul> <hr> <h2> <a name="o-script-deep-clean" href="#o-script-deep-clean"> </a> O Script "Deep Clean"
+</h2> <p>Abaixo está o código completo. Ele é seguro, auditável (você pode ler exatamente o que ele faz linha a linha) e totalmente gratuito.</p> <h3> <a name="passo-1-criar-o-arquivo" href="#passo-1-criar-o-arquivo"> </a> Passo 1: Criar o Arquivo
+</h3> <ol>
+<li>Abra o seu editor de código favorito (VS Code, Sublime) ou o <strong>Editor de Texto</strong> (TextEdit).</li>
+<li><p><em>Nota: Se usar o TextEdit, vá em Formatar &gt; Converter em Texto Simples (Cmd+Shift+T).</em></p></li>
+<li><p>Copie e cole o código abaixo:<br>
+</p></li>
+</ol> <div>
+<pre><code><span>#!/bin/bash</span> <span># ==============================================================================</span>
+<span># TÍTULO: Script de Manutenção, Limpeza e Otimização para macOS (Ultimate)</span>
+<span># VERSÃO: 1.0 (Deep Clean - Nível CleanMyMac)</span>
+<span># ==============================================================================</span> <span># Cores</span>
+<span>RED</span><span>=</span><span>'\033[0;31m'</span>
+<span>GREEN</span><span>=</span><span>'\033[0;32m'</span>
+<span>YELLOW</span><span>=</span><span>'\033[1;33m'</span>
+<span>BLUE</span><span>=</span><span>'\033[0;34m'</span>
+<span>NC</span><span>=</span><span>'\033[0m'</span> <span>APPS_LIST</span><span>=</span><span>"/tmp/apps_to_reopen.txt"</span> clear
+<span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>BLUE</span><span>}</span><span>============================================================</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>BLUE</span><span>}</span><span> FERRAMENTA DE LIMPEZA PRO - VERSÃO 1.0 (DEEP CLEAN) </span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>BLUE</span><span>}</span><span>============================================================</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>echo</span> <span>""</span> <span># Verifica Root</span>
+<span>if</span> <span>[</span> <span>"</span><span>$EUID</span><span>"</span> <span>-ne</span> 0 <span>]</span><span>;</span> <span>then </span><span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>YELLOW</span><span>}</span><span>[!] Necessário permissão de administrador para limpeza profunda.</span><span>${</span><span>NC</span><span>}</span><span>"</span> <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>YELLOW</span><span>}</span><span>[!] Digite sua senha (ela não aparece ao digitar):</span><span>${</span><span>NC</span><span>}</span><span>"</span> <span>sudo</span> <span>"</span><span>$0</span><span>"</span> <span>"</span><span>$@</span><span>"</span> <span>exit
+</span><span>fi </span><span>REAL_USER</span><span>=</span><span>"</span><span>${</span><span>SUDO_USER</span><span>:-</span><span>$USER</span><span>}</span><span>"</span> <span># ==============================================================================</span>
+<span># [1/7] Gestão de Apps (Snapshot e Fechamento)</span>
+<span># ==============================================================================</span>
+<span>echo</span> <span>-e</span> <span>"</span><span>\n</span><span>${</span><span>YELLOW</span><span>}</span><span>[1/7] Gerenciando Aplicativos...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>&gt;</span> <span>"</span><span>$APPS_LIST</span><span>"</span> <span>APPS</span><span>=</span><span>$(</span>osascript <span>-e</span> <span>'tell application "System Events" to get name of (processes where background only is false)'</span><span>)</span>
+<span>IFS</span><span>=</span><span>','</span> <span>read</span> <span>-r</span> <span>-a</span> APP_ARRAY <span>&lt;&lt;&lt;</span> <span>"</span><span>$APPS</span><span>"</span> <span>for </span>app <span>in</span> <span>"</span><span>${</span><span>APP_ARRAY</span><span>[@]</span><span>}</span><span>"</span><span>;</span> <span>do </span><span>app</span><span>=</span><span>$(</span><span>echo</span> <span>"</span><span>$app</span><span>"</span> | xargs<span>)</span> <span>if</span> <span>[[</span> <span>"</span><span>$app</span><span>"</span> <span>!=</span> <span>"Finder"</span> <span>&amp;&amp;</span> <span>"</span><span>$app</span><span>"</span> <span>!=</span> <span>"Terminal"</span> <span>&amp;&amp;</span> <span>"</span><span>$app</span><span>"</span> <span>!=</span> <span>"iTerm"</span> <span>&amp;&amp;</span> <span>"</span><span>$app</span><span>"</span> <span>!=</span> <span>"Warp"</span> <span>&amp;&amp;</span> <span>"</span><span>$app</span><span>"</span> <span>!=</span> <span>"System Events"</span> <span>]]</span><span>;</span> <span>then </span><span>echo</span> <span>"</span><span>$app</span><span>"</span> <span>&gt;&gt;</span> <span>"</span><span>$APPS_LIST</span><span>"</span> <span>echo</span> <span>-e</span> <span>" - Fechando: </span><span>$app</span><span>"</span> osascript <span>-e</span> <span>"quit app </span><span>\"</span><span>$app</span><span>\"</span><span>"</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>fi
+done
+</span><span>sleep </span>3 <span># ==============================================================================</span>
+<span># [2/7] Limpeza de Sistema e Arquivos Ocultos</span>
+<span># ==============================================================================</span>
+<span>echo</span> <span>-e</span> <span>"</span><span>\n</span><span>${</span><span>YELLOW</span><span>}</span><span>[2/7] Limpeza de Arquivos de Sistema...</span><span>${</span><span>NC</span><span>}</span><span>"</span> <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Esvaziando todas as Lixeiras...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>rm</span> <span>-rfv</span> ~/.Trash/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1
+<span>sudo rm</span> <span>-rfv</span> /Volumes/<span>*</span>/.Trashes <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Removendo arquivos .DS_Store (Varredura Otimizada)...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+find <span>"</span><span>$HOME</span><span>"</span> <span>-type</span> d <span>\(</span> <span>-name</span> <span>"Containers"</span> <span>-o</span> <span>-name</span> <span>"Group Containers"</span> <span>\)</span> <span>-prune</span> <span>-o</span> <span>-name</span> <span>".DS_Store"</span> <span>-delete</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Limpando Logs do Sistema e de Usuário...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>rm</span> <span>-rf</span> ~/Library/Logs/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1
+<span>sudo rm</span> <span>-rf</span> /Library/Logs/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1
+<span>sudo rm</span> <span>-rf</span> /var/log/<span>*</span>.log <span>&gt;</span> /dev/null 2&gt;&amp;1
+<span>sudo rm</span> <span>-rf</span> /private/var/log/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Limpando Itens Temporários (Tmp)...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>sudo rm</span> <span>-rf</span> /private/var/folders/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span># ==============================================================================</span>
+<span># [3/7] Limpeza Profunda de Cache (Library)</span>
+<span># ==============================================================================</span>
+<span>echo</span> <span>-e</span> <span>"</span><span>\n</span><span>${</span><span>YELLOW</span><span>}</span><span>[3/7] Limpeza Profunda de Cache (User &amp; System)...</span><span>${</span><span>NC</span><span>}</span><span>"</span> <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Limpando Caches Gerais (~/Library/Caches)...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>rm</span> <span>-rf</span> ~/Library/Caches/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1
+<span>sudo rm</span> <span>-rf</span> /Library/Caches/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Limpando 'Saved Application State' (Resolve falhas de apps)...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>rm</span> <span>-rf</span> ~/Library/Saved<span>\ </span>Application<span>\ </span>State/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Limpando pastas órfãs (Vazias) em Application Support...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+find ~/Library/Application<span>\ </span>Support/ <span>-type</span> d <span>-empty</span> <span>-delete</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span># ==============================================================================</span>
+<span># [4/7] Limpeza Específica de Navegadores</span>
+<span># ==============================================================================</span>
+<span>echo</span> <span>-e</span> <span>"</span><span>\n</span><span>${</span><span>YELLOW</span><span>}</span><span>[4/7] Limpeza de Caches de Navegadores...</span><span>${</span><span>NC</span><span>}</span><span>"</span> <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Otimizando Caches do Chrome/Chromium...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>rm</span> <span>-rf</span> ~/Library/Application<span>\ </span>Support/Google/Chrome/Default/Application<span>\ </span>Cache/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1
+<span>rm</span> <span>-rf</span> ~/Library/Application<span>\ </span>Support/Google/Chrome/Default/Service<span>\ </span>Worker/CacheStorage/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1
+<span>rm</span> <span>-rf</span> ~/Library/Caches/Google/Chrome/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>if</span> <span>[</span> <span>-d</span> ~/Library/Caches/Firefox <span>]</span><span>;</span> <span>then </span><span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Otimizando Caches do Firefox...</span><span>${</span><span>NC</span><span>}</span><span>"</span> <span>rm</span> <span>-rf</span> ~/Library/Caches/Firefox/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1
+<span>fi </span><span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Otimizando Caches do Safari...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>rm</span> <span>-rf</span> ~/Library/Containers/com.apple.Safari/Data/Library/Caches/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span># ==============================================================================</span>
+<span># [5/7] Limpeza de Desenvolvimento (Dev Junk)</span>
+<span># ==============================================================================</span>
+<span>if </span><span>command</span> <span>-v</span> brew &amp;&gt; /dev/null<span>;</span> <span>then </span><span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Homebrew: Removendo versões antigas e cache...</span><span>${</span><span>NC</span><span>}</span><span>"</span> brew cleanup <span>-s</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>rm</span> <span>-rf</span> <span>$(</span>brew <span>--cache</span><span>)</span> <span>&gt;</span> /dev/null 2&gt;&amp;1
+<span>fi if </span><span>command</span> <span>-v</span> docker &amp;&gt; /dev/null<span>;</span> <span>then if </span>pgrep <span>-x</span> <span>"Docker"</span> <span>&gt;</span>/dev/null<span>;</span> <span>then </span><span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Docker: Removendo volumes e imagens não utilizados...</span><span>${</span><span>NC</span><span>}</span><span>"</span> docker system prune <span>-f</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>fi
+fi if</span> <span>[</span> <span>-d</span> ~/Library/Developer/Xcode/DerivedData <span>]</span><span>;</span> <span>then </span><span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Xcode: Limpando DerivedData...</span><span>${</span><span>NC</span><span>}</span><span>"</span> <span>rm</span> <span>-rf</span> ~/Library/Developer/Xcode/DerivedData/<span>*</span> <span>&gt;</span> /dev/null 2&gt;&amp;1
+<span>fi</span> <span># ==============================================================================</span>
+<span># [6/7] Manutenção do Sistema</span>
+<span># ==============================================================================</span>
+<span>echo</span> <span>-e</span> <span>"</span><span>\n</span><span>${</span><span>YELLOW</span><span>}</span><span>[6/7] Otimização do Sistema e Rede...</span><span>${</span><span>NC</span><span>}</span><span>"</span> <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Rotação de Logs (Newsyslog)...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>sudo </span>newsyslog <span>-F</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Reconstruindo LaunchServices (Corrige 'Abrir Com')...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister <span>-kill</span> <span>-r</span> <span>-domain</span> <span>local</span> <span>-domain</span> system <span>-domain</span> user <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Resetando QuickLook (Minimiza uso de CPU por 'qlmanage')...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+qlmanage <span>-r</span> <span>&gt;</span> /dev/null 2&gt;&amp;1
+qlmanage <span>-r</span> cache <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Resetando DNS e purgando RAM inativa...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>sudo </span>dscacheutil <span>-flushcache</span><span>;</span> <span>sudo </span>killall <span>-HUP</span> mDNSResponder
+<span>if </span><span>command</span> <span>-v</span> purge &amp;&gt; /dev/null<span>;</span> <span>then </span><span>sudo </span>purge<span>;</span> <span>fi</span> <span># ==============================================================================</span>
+<span># [7/7] Atualização e Restauração</span>
+<span># ==============================================================================</span>
+<span>echo</span> <span>-e</span> <span>"</span><span>\n</span><span>${</span><span>YELLOW</span><span>}</span><span>[7/7] Finalizando: Atualização e Reabertura...</span><span>${</span><span>NC</span><span>}</span><span>"</span> <span>if</span> <span>[</span> <span>-n</span> <span>"</span><span>$REAL_USER</span><span>"</span> <span>]</span><span>;</span> <span>then </span><span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> &gt; Tentando executar 'atualizar_meumac'...</span><span>${</span><span>NC</span><span>}</span><span>"</span> <span>sudo</span> <span>-u</span> <span>"</span><span>$REAL_USER</span><span>"</span> /bin/zsh <span>-i</span> <span>-c</span> <span>"source ~/.zshrc 2&gt;/dev/null; atualizar_meumac"</span> <span>||</span> <span>echo</span> <span>-e</span> <span>" (Comando ignorado)"</span>
+<span>fi </span><span>echo</span> <span>-e</span> <span>"</span><span>\n</span><span>${</span><span>BLUE</span><span>}</span><span> &gt; Restaurando aplicativos...</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>if</span> <span>[</span> <span>-f</span> <span>"</span><span>$APPS_LIST</span><span>"</span> <span>]</span><span>;</span> <span>then while </span><span>IFS</span><span>=</span> <span>read</span> <span>-r</span> app<span>;</span> <span>do if</span> <span>[</span> <span>!</span> <span>-z</span> <span>"</span><span>$app</span><span>"</span> <span>]</span><span>;</span> <span>then </span><span>echo</span> <span>-e</span> <span>" - Reabrindo: </span><span>$app</span><span>"</span> open <span>-a</span> <span>"</span><span>$app</span><span>"</span> <span>&gt;</span> /dev/null 2&gt;&amp;1 <span>sleep </span>0.5 <span>fi done</span> &lt; <span>"</span><span>$APPS_LIST</span><span>"</span> <span>rm</span> <span>"</span><span>$APPS_LIST</span><span>"</span>
+<span>fi </span><span>echo</span> <span>-e</span> <span>"</span><span>\n</span><span>${</span><span>BLUE</span><span>}</span><span>============================================================</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>GREEN</span><span>}</span><span> LIMPEZA PROFUNDA CONCLUÍDA! (NÍVEL MAXIMO) </span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>echo</span> <span>-e</span> <span>"</span><span>${</span><span>BLUE</span><span>}</span><span>============================================================</span><span>${</span><span>NC</span><span>}</span><span>"</span>
+<span>echo</span> <span>""</span>
+<span>echo</span> <span>"Pressione qualquer tecla para sair..."</span>
+<span>read</span> <span>-n</span> 1 <span>-s</span>
+<span>exit </span>0 </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="passo-2-salvar-e-configurar" href="#passo-2-salvar-e-configurar"> </a> Passo 2: Salvar e Configurar
+</h3> <ol>
+<li>Salve o arquivo com o nome <strong><code>LimpezaPro.command</code></strong>.</li>
+<li><p><em>Dica: A extensão <code>.command</code> é essencial para que ele se comporte como um executável ao clicar.</em></p></li>
+<li><p>Agora precisamos dar permissão de execução. Abra o Terminal e digite:<br>
+<code>chmod +x</code><br>
+<em>(Importante: Deixe um espaço após o <code>+x</code> e arraste o arquivo que você criou para dentro da janela do Terminal).</em></p></li>
+<li><p>Aperte <strong>Enter</strong>.</p></li>
+</ol> <h3> <a name="passo-3-evitar-popups-acesso-total-ao-disco" href="#passo-3-evitar-popups-acesso-total-ao-disco"> </a> Passo 3: Evitar Pop-ups (Acesso Total ao Disco)
+</h3> <p>Como o script faz uma varredura profunda (Lixeira, Downloads, Caches, Logs), o macOS pode ficar pedindo permissão para acessar cada pasta individualmente. Para evitar isso e garantir que o script funcione 100% sem interrupções:</p> <ol>
+<li>Abra <strong>Ajustes do Sistema</strong> (System Settings).</li>
+<li>Vá em <strong>Privacidade e Segurança</strong> (Privacy &amp; Security).</li>
+<li>Procure por <strong>Acesso Total ao Disco</strong> (Full Disk Access).</li>
+<li>Clique no botão <code>+</code> ou ative a chave ao lado de <strong>Terminal</strong>.</li>
+<li><em>Se usar iTerm ou Warp, ative para eles também.</em></li>
+</ol> <hr> <h2> <a name="como-usar" href="#como-usar"> </a> Como Usar
+</h2> <p>Agora você tem seu próprio aplicativo de limpeza, feito sob medida.</p> <ol>
+<li>Dê um <strong>clique duplo</strong> no arquivo <code>LimpezaPro.command</code>.</li>
+<li>Ele abrirá o Terminal automaticamente.</li>
+<li>Digite sua <strong>senha de administrador</strong> quando solicitado.</li>
+<li><p><em>Nota de segurança: A senha não aparecerá na tela enquanto você digita. Isso é o padrão do Unix.</em></p></li>
+<li><p><strong>Veja a mágica acontecer:</strong> ele fechará seus apps (salvando o estado), limpará tudo e reabrirá seu ambiente de trabalho automaticamente.</p></li>
+</ol> <hr> <h2> <a name="o-que-este-script-faz-que-vale-ouro" href="#o-que-este-script-faz-que-vale-ouro"> </a> O que este script faz que "vale ouro"?
+</h2> <p>Muitos scripts na internet apenas apagam a lixeira. Este vai além:</p> <ul>
+<li>
+<strong>Inteligência de Arquivos (.DS_Store):</strong> Remove arquivos de metadados ocultos que costumam corromper o Finder e deixar a navegação em pastas lenta (especialmente em redes), mas faz isso de forma inteligente, pulando diretórios sensíveis para evitar travamentos.</li>
+<li>
+<strong>Gestão de Memória RAM (<code>purge</code>):</strong> Executa o comando nativo que força o macOS a liberar memória inativa marcada como "ocupada", dando um fôlego novo para máquinas com 8GB ou 16GB de RAM.</li>
+<li>
+<strong>Correção de Bugs Visuais (<code>lsregister</code>):</strong> Sabe quando o ícone do Word fica branco ou aparece duplicado no menu "Abrir Com"? Este comando reconstrói o banco de dados de serviços de lançamento e corrige isso.</li>
+<li>
+<strong>Privacidade:</strong> Limpa caches de DNS (que registram sites visitados) e limpa metadados de apps desinstalados que ficam ocupando espaço na sua pasta Library.</li>
+</ul> <p>Pare de alugar o desempenho do seu computador. Use o poder do Terminal e tenha um Mac sempre rápido, de graça.</p> <hr> <p><em>&gt; **Disclaimer:</em>* Sempre faça backups regulares do seu sistema. Embora este script use comandos padrão de manutenção e limpeza de cache (que são regenerados pelo sistema), é boa prática ter um Time Machine atualizado.*</p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

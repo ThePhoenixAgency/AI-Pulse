@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>When One API Means Different Mocks for Each Team - Designing a Distributed WireMock Setup</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>When One API Means Different Mocks for Each Team - Designing a Distributed WireMock Setup</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 3:21:02 PM | <a href="https://dev.to/ykagano/when-one-api-means-different-mocks-for-each-team-designing-a-distributed-wiremock-setup-25jm" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>I'm ykagano, a backend engineer working on payment systems.<br>
+After running WireMock for an extended period, I found that managing consistent mock behavior across environments became surprisingly difficult as our systems and teams grew. In this article, I'll share the tool I built to solve this problem and the design decisions behind it.</p> <hr>
+<h2> <a name="where-singleinstance-wiremock-hits-its-limits" href="#where-singleinstance-wiremock-hits-its-limits"> </a> Where Single-Instance WireMock Hits Its Limits
+</h2> <p>Running a single WireMock instance is straightforward. POST JSON to <code>/__admin/mappings</code> to register stubs, reset when testing is done. Simple.</p> <p>But things change when you run into situations like these.</p> <p><strong>Scaling out for load testing.</strong></p> <p>When you place multiple WireMock instances behind a load balancer, you need to distribute the same stubs to all of them. You might think, "Why not share stub JSON files via Docker volumes?" That does solve file distribution, but WireMock doesn't automatically detect file changes. To pick up changes, you need to restart each instance or call the Admin API to reload. With N instances, that's N operations — and you'll end up writing a script to automate it.</p> <p><strong>Multiple teams sharing the same API mock but expecting different behavior.</strong></p> <p>Consider a payment API mock: Team A wants to test primarily with success responses, while Team B needs to focus on timeouts and error cases. When sharing a single WireMock instance, stub overwrites become a constant battle.</p> <p><strong>The learning curve for creating and editing stub definitions.</strong></p> <p>WireMock stubs are written in JSON, and getting URL pattern matching and response structures right requires reading through the documentation. Not everyone on the team can write these JSON definitions fluently, so stub creation and maintenance tends to fall on a few specific members.</p> <hr>
+<h2> <a name="existing-options-and-their-limitations" href="#existing-options-and-their-limitations"> </a> Existing Options and Their Limitations
+</h2> <p>I evaluated the existing options for this problem.</p> <p><strong>WireMock Cloud</strong> is a commercial SaaS with distributed management and a GUI. It's close to ideal in terms of features, but we couldn't adopt it due to the inability to self-host, cost concerns, and internal security policy constraints.</p> <p><strong>Writing custom scripts to call the Admin API</strong> works, but for building a continuous load testing environment, I wanted to minimize cognitive load on non-essential tasks like stub synchronization. Ideally, you shouldn't even need to remember how to run a script — one-click sync from a GUI is the goal.</p> <p><strong>Git-managed JSON files with CI/CD pipelines</strong> looks elegant on paper, but it doesn't fit the "tweak a stub and test it immediately" development cycle. Running commit → push → CI → deploy every time is too heavy during the trial-and-error phase of load testing.</p> <p>Based on these considerations, I concluded that we needed <strong>a self-hosted tool with a GUI that provides instant deployment and centralized management of distributed instances</strong>, and decided to build WireMock Hub.</p> <hr>
+<h2> <a name="design-decision-1-why-project-is-the-toplevel-concept" href="#design-decision-1-why-project-is-the-toplevel-concept"> </a> Design Decision 1: Why "Project" Is the Top-Level Concept
+</h2> <p>The most important design decision in WireMock Hub was <strong>placing the project at the top of the data model</strong>.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8pddq4pkmwhiqheeokzq.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8pddq4pkmwhiqheeokzq.png" alt="Projects"></a><br>
+</p> <div>
+<pre><code>Project
+├── Instance (WireMock instance): 1..N
+└── Stub Mapping: 0..N
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>In most mock management tools, the instance is the top-level concept — "this instance contains these stubs." </p> <p>However, in our environment, <strong>multiple teams needed different mock behaviors for the same API.</strong> Team A needed a payment API mock returning success responses, Team B needed one that simulated timeouts and server errors. Each team had ended up building their own mock applications.</p> <p>By making the project the top-level concept, the following becomes possible.</p> <p><strong>Managing multiple behaviors for the same API in parallel.</strong></p> <p>You can create separate projects like "Payment API - Success Testing" and "Payment API - Error Testing," each linked to different sets of instances.</p> <p><strong>Switching environments becomes switching projects.</strong></p> <p>Environment separation like dev / staging / load-test can be expressed as projects. Just change the instance URLs linked to each project to deploy the same stub set to different environments.</p> <p><strong>Cross-team interference is structurally eliminated.</strong></p> <p>Since projects are isolated, one team's stub changes never affect another team's environment.</p> <hr> <h2> <a name="design-decision-2-why-full-reset-redeploy" href="#design-decision-2-why-full-reset-redeploy"> </a> Design Decision 2: Why Full Reset + Redeploy
+</h2> <p>WireMock Hub's sync process uses a <strong>full reset followed by a complete redeploy</strong> approach.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F3fixhs9b3xyepcy6wx3i.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F3fixhs9b3xyepcy6wx3i.png" alt="Instances"></a><br>
+</p> <div>
+<pre><code>Sync flow:
+1. Execute DELETE /__admin/mappings on all instances (reset)
+2. POST all stubs from SQLite to /__admin/mappings on all instances
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>You might think, "Wouldn't differential sync be more efficient?" I considered it, but chose the full reset approach for the following reasons.</p> <p><strong>WireMock's Admin API doesn't guarantee a reliable view of the current stub state.</strong></p> <p>If someone manually adds stubs via the API or changes come from another tool, the state Hub knows about and the actual instance state will diverge. Differential sync breaks down when this assumption fails.</p> <p><strong>An unknown state is the most dangerous state.</strong></p> <p>In load testing, the assumption is that mock responses match expectations. Running with "the state is probably correct" under differential sync undermines the reliability of test results.</p> <p><strong>The cost of a full reset is acceptable.</strong></p> <p>With a few hundred stubs, a full delete and re-register takes only seconds. Since stub deployment isn't a frequent operation, this brief wait is not an issue.</p> <p>This is a trade-off between correctness and efficiency, and in a mock environment, correctness should take priority.</p> <hr> <h2> <a name="design-decision-3-why-no-external-database" href="#design-decision-3-why-no-external-database"> </a> Design Decision 3: Why No External Database
+</h2> <p>The choice of SQLite as the data store was driven by the principle of <strong>minimizing the barrier to adoption</strong>.</p> <p>WireMock itself is a tool that sells on "start with a single <code>docker run</code>." If its management tool requires setting up PostgreSQL or MySQL, the adoption barrier becomes too high.</p> <p>With SQLite, no external database setup is needed. Data is persisted simply by mounting a Docker Volume, backups are just file copies, and sharing data between teams is as easy as sharing the SQLite file.<br>
+</p> <div>
+<pre><code><span># This is all you need for persistence</span>
+<span>services</span><span>:</span> <span>wiremock-hub</span><span>:</span> <span>image</span><span>:</span> <span>ghcr.io/ykagano/wiremock-hub:latest</span> <span>ports</span><span>:</span> <span>-</span> <span>"</span><span>80:80"</span> <span>volumes</span><span>:</span> <span>-</span> <span>wiremock-hub-data:/data</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Of course, at large scale (thousands of stubs, dozens of teams using it simultaneously), SQLite's concurrent write performance could become a bottleneck. But for a WireMock management tool, write frequency isn't that high, making it a sufficient choice for now.</p> <hr> <h2> <a name="wiremock-hub-overview" href="#wiremock-hub-overview"> </a> WireMock Hub Overview
+</h2> <p>Here's the architecture of WireMock Hub, reflecting the design decisions above.<br>
+</p> <div>
+<pre><code>┌────────────────────────────────────────────────────────────┐
+│ WireMock Hub │
+│ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ │
+│ │ Frontend │ -&gt; │ Backend │ -&gt; │ SQLite │ │
+│ │ (Vue 3) │ │ (Fastify) │ │ (Persistence)│ │
+│ └──────────────┘ └──────────────┘ └──────────────┘ │
+└────────────────────────────────────────────────────────────┘ │ │ Sync (Full Reset + Redeploy) ▼ ┌────────────────────┼────────────────────┐ │ │ │ ▼ ▼ ▼ ┌──────────┐ ┌──────────┐ ┌──────────┐ │ WireMock │ │ WireMock │ │ WireMock │ │ Instance │ │ Instance │ │ Instance │ │ #1 │ │ #2 │ │ #3 │ └──────────┘ └──────────┘ └──────────┘
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Key features:</p> <p><strong>One-click sync:</strong></p> <p>Deploy stubs to all instances linked to a project with a single click. A full reset precedes deployment, ensuring no state inconsistencies.</p> <p><strong>Test requests:</strong></p> <p>Send requests directly from the GUI to verify stub behavior. The entire cycle of creating a stub → syncing → verifying can be completed in the browser.</p> <p><strong>Stub generation from request logs:</strong></p> <p>Convert actual requests sent to WireMock into stubs with one click, significantly reducing the effort of writing JSON by hand.</p> <hr> <h2> <a name="quick-start" href="#quick-start"> </a> Quick Start
+</h2> <h3> <a name="the-fastest-way-to-try-it-allinone-image" href="#the-fastest-way-to-try-it-allinone-image"> </a> The Fastest Way to Try It (All-in-One Image)
+</h3> <p>An image bundling both WireMock Hub and WireMock is available.<br>
+</p> <div>
+<pre><code>docker run <span>-d</span> <span>-p</span> 8080:80 ghcr.io/ykagano/wiremock-hub:latest
+open http://localhost:8080/hub/
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>After starting, create a project and register <code>http://localhost:8080</code> as a WireMock instance to start exploring all the features.</p> <hr> <h2> <a name="one-tool-for-both-daily-development-and-load-testing" href="#one-tool-for-both-daily-development-and-load-testing"> </a> One Tool for Both Daily Development and Load Testing
+</h2> <p>The design decision to make projects the top-level concept also enables <strong>different use cases to coexist within a single tool</strong>.</p> <p>For day-to-day development, keep the all-in-one image running as a single instance and use it as a mock server with your development project's stubs. Instead of Postman or curl, you can create, test, and verify stubs entirely from the browser.</p> <p>Meanwhile, the multiple WireMock instances for load testing don't need to run all the time. Spin them up only when running load tests, sync the load testing project's stubs to all instances at once, and shut them down when done.</p> <p>The ability to handle these two fundamentally different use cases — everyday mocking and load test mocking — simply by switching projects is a direct benefit of placing projects at the top of the design.</p> <p><strong>GitHub:</strong> <a href="https://github.com/ykagano/wiremock-hub" target="_blank">https://github.com/ykagano/wiremock-hub</a><br>
+<strong>Documentation:</strong> <a href="https://ykagano.github.io/wiremock-hub/" target="_blank">https://ykagano.github.io/wiremock-hub/</a></p> <p>Feedback and issues are very welcome!</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

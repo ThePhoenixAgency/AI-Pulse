@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Broomy — Command center for AI coding agents</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Broomy — Command center for AI coding agents</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 3:55:38 PM | <a href="https://broomy.org/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><div><p>If you use AI coding agents, you know the pain. Terminal tabs everywhere. Which agent finished? Which one needs input? What branch is it on? What files did it change?</p><p>Broomy gives you a single window to manage all of it — and since it's open source, you can extend it to fit exactly how you work.</p></div><div><div><p><img src="https://broomy.org/screenshots/sidebar.png" alt="Broomy sidebar showing multiple AI agent sessions with status indicators"></p></div><div><p><span>SESSIONS</span></p><h2>Run many agents at once</h2><p>Run Claude Code on your backend, Aider on your frontend, and keep a terminal open for your docs — all in one window. Broomy watches each agent and shows you who's working, who's idle, and who just finished and needs your attention. When an agent completes a task, you get a notification so nothing slips through.</p></div></div><div><div><p><img src="https://broomy.org/screenshots/review.png" alt="Review panel showing AI-guided code review with change explanations and potential issues"></p></div><div><h2>AI-guided code review</h2><p>AI agents write code fast — but someone still needs to review it. Broomy uses AI to help you understand what changed and why, highlights potential issues, and lets you click through to diffs. It's not about rubber-stamping AI output — it's about keeping you in the loop so the codebase stays healthy even as agents move fast.</p></div></div><div><div><p><img src="https://broomy.org/screenshots/explorer.png" alt="Explorer panel with file editor and source control view"></p></div><div><p><span>IDE</span></p><h2>A real IDE, not just a chat window</h2><p>Edit files, browse your repo, check git status, stage changes, and commit — without switching windows. You're not forced to hand everything to the AI. When you need to step in and fix something yourself, the tools are right there.</p></div></div><div><p><span>AGENTS</span></p><h2>Works with every agent</h2><p>Broomy doesn't lock you into one AI provider. It works with any terminal-based coding agent, and adding support for new ones is trivial.</p><div><div><p><span>Claude Code</span></p></div><div><p><span>Codex</span></p></div><div><p><span>Gemini CLI</span></p></div><div><p><span>+</span></p><p><span>Any agent</span></p></div></div></div><div><h2>Built to be extended</h2><p>Broomy is a native desktop app built on well-understood technology. The codebase is designed to be readable, hackable, and easy to contribute to.</p></div><div><h2>Actually open source</h2><p>MIT licensed. No telemetry. No paid tier. No “open core” bait-and-switch. Every line of code is on GitHub — read it, fork it, change it, ship your own version.</p><div><div><p>Fork &amp; modify</p><p>Don't like something? Change it. Add your own panels, agents, or workflows.</p></div><div><p>Contribute back</p><p>Open an issue, send a PR, or start a discussion. The project grows from community input.</p></div><div><p>Runs locally</p><p>No cloud. No accounts. Your code and sessions stay on your machine.</p></div></div></div><div><h2>Get started</h2><div><p>Clone and run in four commands:</p><p>Requires pnpm and Node.js. See the <a href="https://github.com/broomy-ai/broomy#readme" target="_blank">README</a> for full setup instructions.</p></div></div></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

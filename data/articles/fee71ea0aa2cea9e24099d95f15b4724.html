@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bringing shadcn/ui to Blazor — Why I Built Blazor Blueprint</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Bringing shadcn/ui to Blazor — Why I Built Blazor Blueprint</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 3:57:19 PM | <a href="https://dev.to/gkg0/bringing-shadcnui-to-blazor-why-i-built-blazor-blueprint-21pl" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/gkg0"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3777898%2F3a25e217-638b-474c-b71e-bceff0ed82d9.png" alt="Mathew"></a> </p> </div><div> <p>I've been writing C# for over 20 years, mostly backend implementations, APIs, services, infrastructure etc… I built frontend too, but it always meant switching to a completely different world. C# on the backend, JavaScript on the frontend. Different patterns, different tooling, different mental models. Every project meant context switching between two ecosystems.</p> <p>Then I properly dug into Blazor, and something clicked.</p> <p>Being able to build full stack with C# end-to-end was genuinely enjoyable in a way I didn't expect. No more jumping between languages. No separate JS ecosystem to maintain. Just C# all the way through.</p> <p>But one thing was missing.</p> <h2> <a name="the-gap" href="#the-gap"> </a> The Gap
+</h2> <p>If you've worked with React, you've seen libraries like shadcn/ui and Radix UI. They just look and work great out of the box. They are modern, clean, composable. The kind of UI that makes you want to build things because you know that it’ll actually look good once built!</p> <p>Blazor didn't have that.</p> <p>Most Blazor UI libraries either look like enterprise software from 2015 or lock you into a rigid design system with their own opinions about everything. I wanted something that looked modern, felt flexible, and didn't fight me when I needed to customize it.</p> <p>So I built my own.</p> <h2> <a name="what-is-blazor-blueprint" href="#what-is-blazor-blueprint"> </a> What is Blazor Blueprint?
+</h2> <p>Blazor Blueprint is a component library inspired by shadcn/ui. It brings that same design philosophy to Blazor:</p> <ul>
+<li>
+<strong>80+ styled components</strong> — buttons, dialogs, data tables, forms, charts, and more</li>
+<li>
+<strong>15 headless primitives</strong> — unstyled building blocks for when you need full control</li>
+<li>
+<strong>1,640+ Lucide icons</strong> — same icon set shadcn uses. I’ve also included heroicons and feather icons too</li>
+<li>
+<strong>Theme compatibility</strong> — drop in any theme from shadcn/ui or tweakcn.com and it’ll just work</li>
+</ul> <p>The key idea is a two-tier architecture.</p> <h2> <a name="twotier-architecture" href="#twotier-architecture"> </a> Two-Tier Architecture
+</h2> <p>Most component libraries give you one thing: styled components. Take them or leave them.</p> <p>I wanted something more flexible. So Blazor Blueprint has two layers:</p> <p><strong>Primitives</strong> - headless components that handle behavior, accessibility, and keyboard navigation with zero styling. They're the bones. Use them when you need complete control over how things look.</p> <p><strong>Components</strong> - pre-styled components built on top of the primitives. They follow shadcn/ui design patterns and work out of the box. Use them when you want to move fast.</p> <p>You can use the styled components for 90% of your UI and drop down to primitives when you need something custom. Best of both worlds.</p> <h2> <a name="patterns-that-worked" href="#patterns-that-worked"> </a> Patterns That Worked
+</h2> <p>A few implementation patterns that made the architecture work:</p> <p><strong>Cascading values for context</strong> — Parent components pass state down to children without prop drilling. An accordion item knows its parent's state without explicit wiring.</p> <p><strong>@bind- for controlled/uncontrolled state</strong> — Components work out of the box (uncontrolled) but can be fully controlled when you need it.</p> <p><strong>AsChild pattern</strong> — Lets you delegate rendering to a child element. Useful for things like making a button render as a link while keeping all the button behavior.</p> <h2> <a name="theme-compatibility" href="#theme-compatibility"> </a> Theme Compatibility
+</h2> <p>One thing I really wanted was compatibility with existing shadcn themes. The React ecosystem has years of beautiful themes built for shadcn/ui. I thought it would be a waste not to tap into that.</p> <p>Blazor Blueprint uses the same CSS variable structure as shadcn. You can grab a theme from shadcn/ui or tweakcn.com, drop it into your project, and it just works. No conversion needed.</p> <h2> <a name="one-week-in" href="#one-week-in"> </a> One Week In
+</h2> <p>I posted about Blazor Blueprint on Reddit last week and the response genuinely surprised me. 160+ GitHub stars, mass of feedback, people actually using it in real projects.</p> <p>The .NET community has been incredibly supportive. It's given me a lot of motivation to keep building. I just shipped v3 with performance improvements, new components, and fixes based on community feedback.</p> <p>This is a passion project I've been pouring my evenings and weekends into. Seeing people find it useful makes all that time worth it.</p> <h2> <a name="try-it" href="#try-it"> </a> Try It
+</h2> <p>Blazor Blueprint is free, open-source, and available now:<br>
+</p> <div>
+<pre><code>dotnet new <span>install </span>BlazorBlueprint.Templates
+dotnet new blazorblueprint <span>-n</span> MyApp
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Or add to an existing project:<br>
+</p> <div>
+<pre><code>dotnet add package BlazorBlueprint.Components
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <ul>
+<li> <strong>Docs:</strong> <a href="https://blazorblueprintui.com/" target="_blank">blazorblueprintui.com</a>
+</li>
+<li> <strong>GitHub:</strong> <a href="https://github.com/blazorblueprintui/ui" target="_blank">github.com/blazorblueprintui/ui</a>
+</li>
+</ul> <p>If you're building Blazor apps and want modern UI without the enterprise aesthetic, give it a try. Feedback and contributions welcome.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

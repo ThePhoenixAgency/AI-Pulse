@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - LukeB42/Cycast: A high-performance internet radio streaming server written in Python with Cython optimizations.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - LukeB42/Cycast: A high-performance internet radio streaming server written in Python with Cython optimizations.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 3:47:46 PM | <a href="https://github.com/LukeB42/Cycast" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Cycast - Icecast-Compatible Streaming Server</h1><a href="#cycast---icecast-compatible-streaming-server"></a></div>
+<p>A high-performance internet radio streaming server written in Python with Cython optimizations. Accepts live sources from Mixxx, VLC, or any Icecast-compatible source client and falls back to predefined playlists when no DJ is connected.</p>
+<p><strong>Modern Architecture:</strong></p>
+<ul>
+<li> <strong>Cython optimizations</strong> for 3-5x performance improvement</li>
+<li> <strong>Flask web application</strong> running on <strong>Tornado</strong> for production-grade performance</li>
+<li> <strong>HCL configuration</strong> for human-friendly configuration files</li>
+<li> <strong>Beautiful web UI</strong> with real-time updates</li>
+<li> <strong>RESTful API</strong> for status and statistics</li>
+</ul>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li><strong>Live Source Support</strong>: Accept streams from Mixxx, VLC, Virtual DJ, or any Icecast/Shoutcast source client</li>
+<li><strong>Playlist Fallback</strong>: Automatically plays from a playlist when no live source is connected</li>
+<li><strong>High Performance</strong>: Cython-optimized audio buffer and broadcaster for efficient streaming</li>
+<li><strong>Multiple Listeners</strong>: Handle many simultaneous listeners efficiently with Tornado</li>
+<li><strong>Web Status Page</strong>: Beautiful, responsive UI with real-time updates via AJAX</li>
+<li><strong>RESTful API</strong>: JSON endpoints for status and statistics</li>
+<li><strong>HCL Configuration</strong>: Easy-to-read and maintain configuration files</li>
+<li><strong>Seamless Switching</strong>: Automatically switches between live source and playlist</li>
+</ul>
+<p><a target="_blank" href="/LukeB42/Cycast/blob/master/cycast_screenshot.png"><img src="/LukeB42/Cycast/raw/master/cycast_screenshot.png" alt="Web UI screenshot"></a></p>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<p>The server uses multiple technologies for optimal performance:</p>
+<p><strong>Backend:</strong></p>
+<ol>
+<li><strong>audio_buffer.pyx</strong>: High-performance circular buffer with zero-copy operations (Cython)</li>
+<li><strong>stream_broadcaster.pyx</strong>: Efficient multi-listener broadcaster with dynamic buffering (Cython)</li>
+<li><strong>cycast_server.py</strong>: Main server logic, source handling, and coordination (Python)</li>
+</ol>
+<pre><code>Web Layer:
+4. flask_app.py: Flask application for UI and API endpoints
+5. Tornado: WSGI server for production-grade performance and concurrency</code></pre>
+<p><strong>Configuration:</strong>
+6. <strong>config.hcl</strong>: Human-friendly HCL configuration file
+7. <strong>config_loader.py</strong>: Configuration parser and validator</p>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><h3>1. Install Dependencies</h3><a href="#1-install-dependencies"></a></div>
+<div><pre>pip install -r requirements.txt</pre></div>
+<p>This installs:</p>
+<ul>
+<li>Cython (for compiling performance modules)</li>
+<li>pyhcl (for HCL configuration parsing)</li>
+<li>Flask (web framework)</li>
+<li>Tornado (high-performance web server)</li>
+</ul>
+<div><h3>2. Build Cython Extensions</h3><a href="#2-build-cython-extensions"></a></div>
+<div><pre>python setup.py build_ext --inplace</pre></div>
+<p>This will compile the Cython modules into native extensions (.so files on Linux/Mac, .pyd on Windows).</p>
+<div><h3>3. Configure Your Server</h3><a href="#3-configure-your-server"></a></div>
+<p>Edit </p><pre><code>config.hcl</code></pre> to customize your settings:<p></p>
+<div><pre><span>server</span> { <span><span>host</span> <span>=</span> </span><span><span>"</span>0.0.0.0<span>"</span></span> <span><span>source_port</span> <span>=</span> </span><span>8000</span> <span><span>listen_port</span> <span>=</span> </span><span>8001</span> <span><span>source_password</span> <span>=</span> </span><span><span>"</span>your-secure-password<span>"</span></span> <span><span>mount_point</span> <span>=</span> </span><span><span>"</span>/stream<span>"</span></span>
+} <span>metadata</span> { <span><span>station_name</span> <span>=</span> </span><span><span>"</span>Your Station Name<span>"</span></span> <span><span>station_genre</span> <span>=</span> </span><span><span>"</span>Your Genre<span>"</span></span>
+} <span>playlist</span> { <span><span>directory</span> <span>=</span> </span><span><span>"</span>./music<span>"</span></span> <span><span>shuffle</span> <span>=</span> </span><span>true</span>
+}</pre></div>
+<div><h3>4. Prepare Your Music</h3><a href="#4-prepare-your-music"></a></div>
+<p>Create a </p><pre><code>music</code></pre> directory and add some MP3 or OGG files:<p></p>
+<div><pre>mkdir music
+<span><span>#</span> Copy your music files to the music directory</span></pre></div>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><h3>Start the Server</h3><a href="#start-the-server"></a></div>
+<div><pre>python cycast_server.py</pre></div>
+<p>Or with a custom configuration file:</p>
+<div><pre>python cycast_server.py -c /path/to/myconfig.hcl</pre></div>
+<p>The server will display:</p>
+<div><pre><code>============================================================
+Starting Cycast Server
+============================================================
+Configuration loaded from: config.hcl
+Source port: 8000 (password: ******)
+Listen port: 8001
+Mount point: /stream
+Station: Your Station Name
+Buffer size: 10 MB
+============================================================
+Playlist loaded: 42 tracks
+============================================================
+Server ready!
+Connect your source to: http://0.0.0.0:8000/stream
+Listen at: http://0.0.0.0:8001/stream
+Status page: http://0.0.0.0:8001/
+Statistics: http://0.0.0.0:8001/api/stats
+============================================================
+</code></pre></div>
+<div><h3>Configure Your Source (Mixxx Example)</h3><a href="#configure-your-source-mixxx-example"></a></div>
+<p>In Mixxx:</p>
+<ol>
+<li>Go to <strong>Preferences → Live Broadcasting</strong></li>
+<li>Click <strong>Create new connection</strong></li>
+<li>Select <strong>Icecast 2</strong></li>
+<li>Set:
+<ul>
+<li>Host: <pre><code>localhost</code></pre></li>
+<li>Port: <pre><code>8000</code></pre></li>
+<li>Mount: <pre><code>stream</code></pre></li>
+<li>Password: <pre><code>hackme</code></pre></li>
+<li>Format: MP3 or OGG</li>
+</ul>
+</li>
+<li>Click <strong>Enable Live Broadcasting</strong></li>
+</ol>
+<div><h3>Configure Your Source (VLC Example)</h3><a href="#configure-your-source-vlc-example"></a></div>
+<p>In VLC:</p>
+<ol>
+<li>Go to <strong>Media → Stream</strong></li>
+<li>Add your audio source</li>
+<li>Click <strong>Stream</strong></li>
+<li>Choose destination: <strong>IceCast</strong></li>
+<li>Set:
+<ul>
+<li>Address: <pre><code>localhost:8000</code></pre></li>
+<li>Mount point: <pre><code>stream</code></pre></li>
+<li>Login: <pre><code>source</code></pre></li>
+<li>Password: <pre><code>hackme</code></pre></li>
+</ul>
+</li>
+</ol>
+<div><h3>Listen to the Stream</h3><a href="#listen-to-the-stream"></a></div>
+<p><strong>Stream URL</strong> - Open in your media player or browser:</p>
+<div><pre><code>http://localhost:8001/stream
+</code></pre></div>
+<p><strong>Status Page</strong> - Beautiful web interface with real-time updates:</p>
+<div><pre><code>http://localhost:8001/
+</code></pre></div>
+<p><strong>API Endpoints:</strong></p>
+<div><pre><code>http://localhost:8001/api/status # Current status (JSON)
+http://localhost:8001/api/stats # Detailed statistics (JSON)
+</code></pre></div>
+<div><h2>Customization</h2><a href="#customization"></a></div>
+<p>All configuration is done via the </p><pre><code>config.hcl</code></pre> file using HCL (HashiCorp Configuration Language):<p></p>
+<div><pre><span>server</span> { <span><span>host</span> <span>=</span> </span><span><span>"</span>0.0.0.0<span>"</span></span> <span><span>#</span> Bind address<span></span></span> <span><span>source_port</span> <span>=</span> </span><span>8000</span> <span><span>#</span> Port for DJ connections<span></span></span> <span><span>listen_port</span> <span>=</span> </span><span>8001</span> <span><span>#</span> Port for listeners<span></span></span> <span><span>source_password</span> <span>=</span> </span><span><span>"</span>secure123<span>"</span></span> <span><span>#</span> CHANGE THIS!<span></span></span> <span><span>mount_point</span> <span>=</span> </span><span><span>"</span>/stream<span>"</span></span>
+} <span>buffer</span> { <span><span>size_mb</span> <span>=</span> </span><span>10</span> <span><span>#</span> Circular buffer size in MB<span></span></span>
+} <span>playlist</span> { <span><span>directory</span> <span>=</span> </span><span><span>"</span>./music<span>"</span></span> <span><span>shuffle</span> <span>=</span> </span><span>true</span> <span><span>extensions</span> <span>=</span> </span>[<span><span>"</span>.mp3<span>"</span></span>, <span><span>"</span>.ogg<span>"</span></span>]
+} <span>broadcaster</span> { <span><span>chunk_size</span> <span>=</span> </span><span>8192</span> <span><span>#</span> Bytes per chunk<span></span></span> <span><span>sleep_high</span> <span>=</span> </span><span>0.001</span> <span><span>#</span> Sleep time when buffer &gt;80% full<span></span></span> <span><span>sleep_medium</span> <span>=</span> </span><span>0.005</span> <span><span>#</span> Sleep time when buffer 50-80% full<span></span></span> <span><span>sleep_low</span> <span>=</span> </span><span>0.010</span> <span><span>#</span> Sleep time when buffer &lt;50% full<span></span></span>
+} <span>metadata</span> { <span><span>station_name</span> <span>=</span> </span><span><span>"</span>Cycast Radio<span>"</span></span> <span><span>station_description</span> <span>=</span> </span><span><span>"</span>High-performance internet radio<span>"</span></span> <span><span>station_genre</span> <span>=</span> </span><span><span>"</span>Various<span>"</span></span> <span><span>station_url</span> <span>=</span> </span><span><span>"</span>http://localhost:8001<span>"</span></span> <span><span>enable_icy</span> <span>=</span> </span><span>true</span> <span><span>icy_metaint</span> <span>=</span> </span><span>16000</span>
+} <span>advanced</span> { <span><span>max_listeners</span> <span>=</span> </span><span>0</span> <span><span>#</span> 0 = unlimited<span></span></span> <span><span>source_timeout</span> <span>=</span> </span><span>10.0</span> <span><span>#</span> Seconds<span></span></span> <span><span>verbose_logging</span> <span>=</span> </span><span>false</span> <span><span>enable_stats</span> <span>=</span> </span><span>true</span> <span><span>flask_debug</span> <span>=</span> </span><span>false</span> <span><span>#</span> Enable for development only!<span></span></span> <span><span>flask_secret_key</span> <span>=</span> </span><span><span>"</span>change-me-in-production<span>"</span></span>
+}</pre></div>
+<div><h3>Why HCL?</h3><a href="#why-hcl"></a></div>
+<p>HCL provides:</p>
+<ul>
+<li>Human-friendly syntax with comments</li>
+<li>Clear hierarchical structure</li>
+<li>Type safety</li>
+<li>Better than JSON or YAML for configuration</li>
+</ul>
+<div><h2>Performance Tuning</h2><a href="#performance-tuning"></a></div>
+<p>The combination of Cython + Flask + Tornado provides excellent performance:</p>
+<p><strong>Cython Optimizations:</strong></p>
+<ol>
+<li><strong>Buffer Management</strong>: The circular audio buffer uses native C memory operations (memcpy) for zero-copy data handling</li>
+<li><strong>Broadcasting</strong>: The broadcaster is optimized to send data to multiple listeners with minimal overhead</li>
+<li><strong>Dynamic Buffering</strong>: Automatically adjusts sleep times based on buffer fill level</li>
+</ol>
+<p><strong>Flask on Tornado Benefits:</strong></p>
+<ol>
+<li><strong>Non-blocking I/O</strong>: Tornado handles concurrent connections efficiently</li>
+<li><strong>Low latency</strong>: Better than traditional WSGI servers for streaming</li>
+<li><strong>Scalability</strong>: Handles hundreds of concurrent listeners</li>
+<li><strong>Production-ready</strong>: Battle-tested in high-traffic applications</li>
+</ol>
+<p><strong>Tuning Tips:</strong></p>
+<div><pre><span>buffer</span> { <span><span>size_mb</span> <span>=</span> </span><span>20</span> <span><span>#</span> Increase for more buffering (uses more RAM)<span></span></span>
+} <span>broadcaster</span> { <span><span>chunk_size</span> <span>=</span> </span><span>16384</span> <span><span>#</span> Larger chunks = less overhead, higher latency<span></span></span>
+} <span>advanced</span> { <span><span>max_listeners</span> <span>=</span> </span><span>500</span> <span><span>#</span> Set a limit to protect your server<span></span></span>
+}</pre></div>
+<p>For maximum performance on production systems:</p>
+<ul>
+<li>Run on multi-core systems for better concurrent handling</li>
+<li>Use an SSD for playlist files</li>
+<li>Put behind nginx reverse proxy with caching</li>
+<li>Monitor with the <pre><code>/api/stats</code></pre> endpoint</li>
+</ul>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<ol>
+<li><strong>Source Connection</strong>: When Mixxx/VLC connects, it sends audio data to port 8000</li>
+<li><strong>Buffer</strong>: Audio is written to a high-performance circular buffer (Cython)</li>
+<li><strong>Broadcast</strong>: A separate thread reads from the buffer and sends to all listeners (Cython)</li>
+<li><strong>Fallback</strong>: When no source is connected, the playlist feeder writes to the same buffer</li>
+<li><strong>Listeners</strong>: HTTP server on port 8001 serves the stream to multiple clients</li>
+</ol>
+<div><h2>Limitations</h2><a href="#limitations"></a></div>
+<p>This is a simplified streaming server suitable for:</p>
+<ul>
+<li>Small to medium internet radio stations</li>
+<li>Personal/hobby broadcasts</li>
+<li>LAN streaming</li>
+<li>Testing and development</li>
+</ul>
+<p>For production use with hundreds of simultaneous listeners, consider:</p>
+<ul>
+<li>Full Icecast2 server</li>
+<li>Load balancing</li>
+<li>CDN integration</li>
+</ul>
+<div><h2>Architecture Diagram</h2><a href="#architecture-diagram"></a></div>
+<div><pre><code>┌─────────────┐ ┌──────────────────┐
+│ Mixxx/ │────────│ Source Port │
+│ VLC │ 8000 │ (8000) │
+└─────────────┘ └────────┬─────────┘ │ ▼ ┌────────────────┐ │ Circular Buffer│ (Cython) │ (10 MB RAM) │ └────────┬───────┘ │ ┌──────────────────┼──────────────────┐ │ │ │ ▼ ▼ ▼ ┌─────────┐ ┌─────────┐ ┌─────────┐ │Listener │ │Listener │ │Listener │ │ 1 │ │ 2 │ │ N │ └─────────┘ └─────────┘ └─────────┘ ▲ ▲ ▲ │ │ │ └──────────────────┴──────────────────┘ Flask on Tornado (8001) ┌─────────────────────────┐ │ • Web UI (HTML/CSS/JS) │ │ • /api/status (JSON) │ │ • /api/stats (JSON) │ │ • /stream (audio) │ └─────────────────────────┘ ┌──────────────────┐ │ Playlist Feeder │ (Fallback when no source) │ (music/*.mp3) │ └────────┬─────────┘ │ └────────────── Circular Buffer
+</code></pre></div>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<p><strong>Cython build fails:</strong></p>
+<ul>
+<li>Make sure you have a C compiler installed (gcc on Linux, Xcode on Mac, MSVC on Windows)</li>
+<li>Try: <pre><code>pip install --upgrade cython setuptools</code></pre></li>
+</ul>
+<p><strong>Audio stutters/buffers:</strong></p>
+<ul>
+<li>Increase buffer size: <pre><code>audio_buffer.CircularAudioBuffer(size_mb=20)</code></pre></li>
+<li>Check network latency</li>
+<li>Reduce number of simultaneous listeners for testing</li>
+</ul>
+<p><strong>Can't connect source:</strong></p>
+<ul>
+<li>Check firewall settings</li>
+<li>Verify port 8000 is not in use: <pre><code>netstat -an | grep 8000</code></pre></li>
+<li>Try changing the password</li>
+</ul>
+<p><strong>Playlist not working:</strong></p>
+<ul>
+<li>Ensure MP3/OGG files are in the <pre><code>./music</code></pre> directory</li>
+<li>Check file permissions</li>
+<li>Look for errors in console output</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT License - feel free to modify and use for your projects!</p>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>This is a demonstration project showing how to use Cython for performance-critical audio streaming. Feel free to extend it with:</p>
+<ul>
+<li>Better metadata handling</li>
+<li>Recording functionality</li>
+<li>Multiple mount points</li>
+<li>Admin interface</li>
+<li>Statistics/analytics</li>
+<li>Relay functionality</li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

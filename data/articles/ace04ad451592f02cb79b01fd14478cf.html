@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - soyasis/cai: Smart clipboard actions powered by local AI. Select text, get context-aware actions — all running locally on your Mac.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - soyasis/cai: Smart clipboard actions powered by local AI. Select text, get context-aware actions — all running locally on your Mac.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 4:04:13 PM | <a href="https://github.com/soyasis/cai" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p> <a target="_blank" href="/soyasis/cai/blob/master/assets/cai-logo.png"><img src="/soyasis/cai/raw/master/assets/cai-logo.png" alt="Cai logo"></a>
+</p>
+<div><h1>Cai</h1><a href="#cai"></a></div>
+<div><h3>Select any text. Get smart actions.</h3><a href="#select-any-text-get-smart-actions"></a></div>
+<p> A privacy-first clipboard assistant powered by local AI.<br> Your data never leaves your machine.
+</p>
+<p> <a target="_blank" href="https://camo.githubusercontent.com/d9eac851f5e0673dade3b46363f39086e88733ddcbadf7696fd8f55b97b62356/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d61634f532d31332e302532422d626c7565"><img src="https://camo.githubusercontent.com/d9eac851f5e0673dade3b46363f39086e88733ddcbadf7696fd8f55b97b62356/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d61634f532d31332e302532422d626c7565" alt="macOS 13.0+"></a> <a target="_blank" href="https://camo.githubusercontent.com/efbf145030e862d10f8621551005283aab8017cb045c9cdfae0bea4df5791998/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f53776966742d352e392d6f72616e6765"><img src="https://camo.githubusercontent.com/efbf145030e862d10f8621551005283aab8017cb045c9cdfae0bea4df5791998/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f53776966742d352e392d6f72616e6765" alt="Swift 5.9"></a> <a target="_blank" href="https://camo.githubusercontent.com/f8df3091bbe1149f398a5369b2c39e896766f9f6efba3477c63e9b4aa940ef14/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d677265656e"><img src="https://camo.githubusercontent.com/f8df3091bbe1149f398a5369b2c39e896766f9f6efba3477c63e9b4aa940ef14/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d677265656e" alt="MIT License"></a>
+</p>
+<p> <a href="https://getcai.app">getcai.app</a>
+</p>
+<hr>
+<p><a target="_blank" href="/soyasis/cai/blob/master/assets/cai-demo.gif"><img src="/soyasis/cai/raw/master/assets/cai-demo.gif" alt="Cai Demo"></a></p>
+<p>Cai is a native macOS menu bar app that detects what's on your clipboard and offers smart, context-aware actions. Copy a meeting invite and it creates a calendar event. Copy an address and it opens Maps. Copy any text and ask your local AI to summarize, translate, or do anything you want — all without leaving your keyboard.</p>
+<p>No cloud. No telemetry. No accounts.</p>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<ol>
+<li><strong>Select text</strong> anywhere on your Mac</li>
+<li>Press <strong>⌥C</strong> (Option+C)</li>
+<li>Cai detects the content type and shows relevant actions</li>
+<li>Pick an action with arrow keys or <strong>⌘1–9</strong></li>
+<li>Result is auto-copied to your clipboard — just <strong>⌘V</strong> to paste</li>
+</ol>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Select <pre><code>"serendipity"</code></pre> → Define, Explain, Translate, Search</li>
+<li>Select <pre><code>"Let's meet Tuesday at 3pm at Starbucks"</code></pre> → Create calendar event, Open in Maps</li>
+<li>Select <pre><code>"123 Main St, NYC 10001"</code></pre> → Open in Maps</li>
+<li>Select an email in Mail → Reply, Summarize, Translate</li>
+<li>Select a Slack message → Reply (matches the conversation tone)</li>
+<li>Select a recipe → Custom Action: <em>"Extract ingredients for 2 people"</em></li>
+<li>Select meeting notes → Shortcut: <em>"Format as action items with owners and deadlines"</em></li>
+<li>Select a project name → Shortcut: search in Google Drive (<pre><code>https://drive.google.com/drive/search?q=%s</code></pre>)</li>
+<li>Select <pre><code>{"name": "John"}</code></pre> → Pretty Print JSON</li>
+</ul>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li><strong>Smart detection</strong> of 7 content types with context-aware actions</li>
+<li><strong>Built-in AI</strong> — ships with <a href="https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512-GGUF">Ministral 3B</a>, downloaded on first launch. Also works with LM Studio, Ollama, or any OpenAI-compatible server</li>
+<li><strong>Custom AI action</strong> (⌘1) — set your own prompt to do anything: improve writing, create email replies, translate, count words</li>
+<li><strong>Custom shortcuts</strong> — save reusable prompts and URL templates, access them by typing to filter</li>
+<li><strong>Output destinations</strong> — send results to Mail, Notes, Reminders, or custom webhooks, URL schemes, AppleScript, and shell commands</li>
+<li><strong>Type-to-filter</strong> — start typing to filter actions, shortcuts, and destinations by name</li>
+<li><strong>Clipboard history</strong> — access last 9 items with ⌘0</li>
+<li><strong>App-aware</strong> — Cai knows which app you're in (Mail, Slack, Safari…) and adapts AI responses to match the context</li>
+<li><strong>Keyboard-first</strong> — navigate and execute everything without touching the mouse</li>
+<li><strong>Privacy-first</strong> — no internet required, no data leaves your machine</li>
+</ul>
+<div><h2>Content Types &amp; Actions</h2><a href="#content-types--actions"></a></div>
+<table>
+<thead>
+<tr>
+<th>Content Type</th>
+<th>Detection</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Word</strong></td>
+<td>1–2 words</td>
+<td>Define, Explain, Translate, Search</td>
+</tr>
+<tr>
+<td><strong>Short Text</strong></td>
+<td>&lt; 100 characters</td>
+<td>Explain, Reply, Proofread, Translate, Search</td>
+</tr>
+<tr>
+<td><strong>Long Text</strong></td>
+<td>100+ characters</td>
+<td>Summarize, Explain, Reply, Proofread, Translate</td>
+</tr>
+<tr>
+<td><strong>Meeting</strong></td>
+<td>Date/time references (short text only)</td>
+<td>Create Event, Open in Maps + all text actions</td>
+</tr>
+<tr>
+<td><strong>Address</strong></td>
+<td>Street patterns, "at [Place Name]" (short text only)</td>
+<td>Open in Maps + all text actions</td>
+</tr>
+<tr>
+<td><strong>URL</strong></td>
+<td><pre><code>https://</code></pre> or <pre><code>www.</code></pre></td>
+<td>Open in Browser (+ text actions if URL has surrounding text)</td>
+</tr>
+<tr>
+<td><strong>JSON</strong></td>
+<td>Valid JSON object/array</td>
+<td>Pretty Print</td>
+</tr>
+</tbody>
+</table>
+<p>All types also get <strong>Custom Action</strong> (⌘1) for free-form AI prompts. Meeting and address detection is limited to short text (≤200 chars) — longer text is treated as text so you always have access to Summarize, Reply, etc.</p>
+<div><h2>Keyboard Shortcuts</h2><a href="#keyboard-shortcuts"></a></div>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>⌥C</strong></td>
+<td>Trigger Cai (global hotkey)</td>
+</tr>
+<tr>
+<td><strong>↑ ↓</strong></td>
+<td>Navigate actions</td>
+</tr>
+<tr>
+<td><strong>↵</strong></td>
+<td>Execute selected action</td>
+</tr>
+<tr>
+<td><strong>⌘1–9</strong></td>
+<td>Jump to action by number</td>
+</tr>
+<tr>
+<td><strong>⌘0</strong></td>
+<td>Open clipboard history</td>
+</tr>
+<tr>
+<td><strong>⌘↵</strong></td>
+<td>Submit custom prompt / Copy result</td>
+</tr>
+<tr>
+<td><strong>A–Z</strong></td>
+<td>Type to filter actions and shortcuts</td>
+</tr>
+<tr>
+<td><strong>Esc</strong></td>
+<td>Clear filter / Back / Dismiss</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><h3>Download</h3><a href="#download"></a></div>
+<ol>
+<li>Download the <pre><code>.dmg</code></pre> from the <a href="/soyasis/cai/releases/latest">latest release</a></li>
+<li>Open the DMG and drag <strong>Cai.app</strong> to your Applications folder</li>
+<li>Open the app and grant Accessibility permission (<a href="#first-launch-setup">see below</a>)</li>
+<li>Cai will download a small AI model (~2 GB) on first launch — or skip if you already use LM Studio / Ollama</li>
+</ol>
+<div><h3>First Launch Setup</h3><a href="#first-launch-setup"></a></div>
+<p>On first launch, Cai needs <strong>Accessibility permission</strong> to use the global hotkey (⌥C) and simulate ⌘C to copy your selection.</p>
+<p><strong>Step 1</strong> — Open Cai. It will ask for Accessibility permission. Click <strong>Open System Settings</strong>.</p>
+<p><a target="_blank" href="/soyasis/cai/blob/master/assets/setup-5-accessibility-prompt.png"><img src="/soyasis/cai/raw/master/assets/setup-5-accessibility-prompt.png" alt="Accessibility permission prompt"></a></p>
+<p><strong>Step 2</strong> — Toggle Cai <strong>on</strong> in the Accessibility list.</p>
+<p><a target="_blank" href="/soyasis/cai/blob/master/assets/setup-6-accessibility-toggle.png"><img src="/soyasis/cai/raw/master/assets/setup-6-accessibility-toggle.png" alt="Accessibility toggle enabled for Cai"></a></p>
+<p>You're all set! Press <strong>⌥C</strong> with any text selected to start using Cai.</p>
+<div><h3>Build from Source</h3><a href="#build-from-source"></a></div>
+<div><pre>git clone https://github.com/soyasis/cai.git
+<span>cd</span> cai/Cai
+open Cai.xcodeproj</pre></div>
+<p>In Xcode:</p>
+<ol>
+<li>Select the <strong>Cai</strong> scheme and <strong>My Mac</strong> as destination</li>
+<li><strong>Product → Run</strong> (⌘R)</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The app requires <strong>Accessibility permission</strong> and runs <strong>without App Sandbox</strong> (required for global hotkey and CGEvent posting).</p>
+</blockquote>
+<div><h2>LLM Setup</h2><a href="#llm-setup"></a></div>
+<div><h3>Built-in (zero config)</h3><a href="#built-in-zero-config"></a></div>
+<p>Cai ships with a bundled AI engine (<a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a>). On first launch it downloads <a href="https://huggingface.co/mistralai/Ministral-3-3B-Instruct-2512-GGUF">Ministral 3B</a> (~2 GB) and runs everything locally — no external server needed.</p>
+<p>The model is stored in </p><pre><code>~/Library/Application Support/Cai/models/</code></pre>. The engine starts automatically on launch and stops when you quit Cai.<p></p>
+<div><h3>External providers</h3><a href="#external-providers"></a></div>
+<p>If you already use LM Studio, Ollama, or another local server, skip the built-in download. Cai works with any OpenAI-compatible endpoint.</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Default URL</th>
+<th>Setup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LM Studio</strong></td>
+<td><pre><code>http://127.0.0.1:1234/v1</code></pre></td>
+<td><a href="https://lmstudio.ai">Download</a> → Load model → Start server</td>
+</tr>
+<tr>
+<td><strong>Ollama</strong></td>
+<td><pre><code>http://127.0.0.1:11434/v1</code></pre></td>
+<td><a href="https://ollama.ai">Install</a> → <pre><code>ollama pull qwen3:4b</code></pre></td>
+</tr>
+<tr>
+<td><strong>Jan AI</strong></td>
+<td><pre><code>http://127.0.0.1:1337/v1</code></pre></td>
+<td><a href="https://jan.ai">Download</a> → Load model → Start server</td>
+</tr>
+<tr>
+<td><strong>LocalAI</strong></td>
+<td><pre><code>http://127.0.0.1:8080/v1</code></pre></td>
+<td><a href="https://localai.io">Setup guide</a></td>
+</tr>
+<tr>
+<td><strong>Open WebUI</strong></td>
+<td><pre><code>http://127.0.0.1:8080/v1</code></pre></td>
+<td><a href="https://openwebui.com">Install</a> → Enable OpenAI API</td>
+</tr>
+<tr>
+<td><strong>GPT4All</strong></td>
+<td><pre><code>http://127.0.0.1:4891/v1</code></pre></td>
+<td><a href="https://gpt4all.io">Download</a> → Enable API server</td>
+</tr>
+<tr>
+<td><strong>Custom</strong></td>
+<td>User-defined</td>
+<td>Any OpenAI-compatible server</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Auto-detection:</strong> On launch, Cai checks if the current provider is reachable. If not, it probes known local ports and switches to the first one that responds — no manual setup needed.</p>
+<p><strong>To configure manually:</strong> Open Cai Preferences (left-click menu bar icon) → select your Model Provider.</p>
+<p>AI is optional — system actions (Open URL, Maps, Calendar, Search, Pretty Print JSON) work without it.</p> <p>The built-in model (Ministral 3B) is a great starting point — it's fast, concise, and works out of the box with no setup. For most users, there's no need to change it.</p>
+<p>If you want to experiment with different models or want more control, you can use an external provider like LM Studio or Ollama. These are aimed at advanced users comfortable with managing local AI servers.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Params</th>
+<th>Why</th>
+<th>Install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ministral 3B</strong> <em>(built-in)</em></td>
+<td>3B</td>
+<td>Fastest real-world feel — concise output, clean markdown, fewest tokens per answer. Ships with Cai.</td>
+<td>Automatic on first launch</td>
+</tr>
+<tr>
+<td><strong>Qwen3 4B</strong></td>
+<td>4B</td>
+<td>Smartest at this size — best on STEM, coding, and instruction following. Can be verbose.</td>
+<td><pre><code>lms get qwen3-4b</code></pre> / <pre><code>ollama pull qwen3:4b</code></pre></td>
+</tr>
+<tr>
+<td><strong>Llama 3.2 3B</strong></td>
+<td>3B</td>
+<td>Reliable all-rounder — solid summarization, Q&amp;A, and general conversation.</td>
+<td><pre><code>lms get llama-3.2-3b-instruct</code></pre> / <pre><code>ollama pull llama3.2:3b</code></pre></td>
+</tr>
+<tr>
+<td><strong>Gemma 3 4B</strong></td>
+<td>4B</td>
+<td>Strong multilingual support (140+ languages).</td>
+<td><pre><code>lms get gemma-3-4b</code></pre> / <pre><code>ollama pull gemma3:4b</code></pre></td>
+</tr>
+<tr>
+<td><strong>Qwen3 8B</strong></td>
+<td>8B</td>
+<td>Best quality in the small range. Slower than 3–4B.</td>
+<td><pre><code>lms get qwen3-8b</code></pre> / <pre><code>ollama pull qwen3:8b</code></pre></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Tip:</strong> Switch to <strong>Qwen3 4B</strong> if you need more intelligence (e.g., complex instructions or coding tasks).</p>
+<p><strong>LM Studio vs Ollama:</strong> Both work great with Cai. LM Studio tends to be noticeably faster for inference (aggressive Metal GPU acceleration, speculative decoding), which matters for a clipboard tool where you want sub-second responses. Ollama is simpler to set up and manage models via CLI. Try both and see what feels snappier on your hardware.</p>
+</blockquote>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Left-click the Cai menu bar icon (or click the logo in the action window footer) to access Preferences:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Translation Language</strong></td>
+<td>Target language for translations</td>
+<td>English</td>
+</tr>
+<tr>
+<td><strong>Search URL</strong></td>
+<td>Base URL for web searches</td>
+<td>Brave Search</td>
+</tr>
+<tr>
+<td><strong>Maps Provider</strong></td>
+<td>Apple Maps or Google Maps</td>
+<td>Apple Maps</td>
+</tr>
+<tr>
+<td><strong>Model Provider</strong></td>
+<td>Built-in, LM Studio, Ollama, or Custom</td>
+<td>Built-in (auto-detected)</td>
+</tr>
+<tr>
+<td><strong>Custom Action</strong></td>
+<td>Free-form AI prompt via ⌘1</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Custom Shortcuts</strong></td>
+<td>Save prompt and URL shortcuts for instant access</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Output Destinations</strong></td>
+<td>Where to send results (Mail, Notes, webhooks, etc.)</td>
+<td>Email + Notes enabled</td>
+</tr>
+<tr>
+<td><strong>Launch at Login</strong></td>
+<td>Start Cai automatically</td>
+<td>On</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Custom Shortcuts</h2><a href="#custom-shortcuts"></a></div>
+<p>Save frequently used prompts and URL templates as shortcuts. They appear when you type to filter the action list.</p>
+<p><strong>Two types:</strong></p>
+<ul>
+<li><strong>Prompt</strong> — sends your clipboard text + saved prompt to the local LLM (e.g., "Rewrite as email reply", "Convert to CSV")</li>
+<li><strong>URL</strong> — opens a URL with your clipboard text substituted via <pre><code>%s</code></pre> (e.g., <pre><code>https://reddit.com/search/?q=%s</code></pre>)</li>
+</ul>
+<p><strong>To create:</strong> Preferences → Custom Shortcuts → click <strong>+</strong> → add a name, pick the type, and enter the prompt or URL template.</p>
+<p><strong>To use:</strong> Press <strong>⌥C</strong>, then start typing the shortcut name. Matching shortcuts appear alongside filtered built-in actions.</p>
+<div><h2>Output Destinations</h2><a href="#output-destinations"></a></div>
+<p>After an AI action processes your text (or directly from the action list), you can send the result to an output destination instead of just copying it to the clipboard.</p>
+<div><h3>Built-in Destinations</h3><a href="#built-in-destinations"></a></div>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>What it does</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Email</strong></td>
+<td>Opens Mail.app with a new draft containing the text</td>
+<td>Enabled</td>
+</tr>
+<tr>
+<td><strong>Save to Notes</strong></td>
+<td>Creates a new note in Notes.app (preserves line breaks)</td>
+<td>Enabled</td>
+</tr>
+<tr>
+<td><strong>Create Reminder</strong></td>
+<td>Adds a reminder to your default Reminders list</td>
+<td>Disabled</td>
+</tr>
+</tbody>
+</table>
+<p>Toggle built-in destinations on/off in Preferences → Output Destinations.</p>
+<div><h3>Custom Destinations</h3><a href="#custom-destinations"></a></div>
+<p>Create your own destinations to send text to any app or service:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Use case</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Webhook</strong></td>
+<td>Send to any API via HTTP POST/PUT/PATCH</td>
+<td>Post to Slack channel, create Notion page</td>
+</tr>
+<tr>
+<td><strong>AppleScript</strong></td>
+<td>Control any macOS app</td>
+<td>Add to Things, create OmniFocus task</td>
+</tr>
+<tr>
+<td><strong>URL Scheme</strong></td>
+<td>Open deep links with your text</td>
+<td>Save to Bear, open in Obsidian</td>
+</tr>
+<tr>
+<td><strong>Shell Command</strong></td>
+<td>Run terminal commands</td>
+<td><pre><code>gh issue create</code></pre>, pipe to a script</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Template placeholders:</strong></p>
+<ul>
+<li><pre><code>{{result}}</code></pre> — your clipboard or AI-processed text (auto-escaped for the destination type)</li>
+<li><pre><code>{{field_key}}</code></pre> — value from a setup field (e.g. <pre><code>{{api_key}}</code></pre> for API tokens)</li>
+</ul>
+<p><strong>Setup fields</strong> let you store secrets like API keys. They're resolved at execution time and masked in the UI.</p>
+<p><strong>"Show in action list"</strong> — enable this to make a destination appear as a direct action (skips the AI step). Useful for quick-send workflows like "Send to Slack" directly from the action list.</p>
+<p><strong>To create:</strong> Preferences → Output Destinations → click <strong>+</strong> → pick a type, configure the template, and optionally add setup fields.</p>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li><strong>macOS 13.0</strong> (Ventura) or later</li>
+<li><strong>Apple Silicon</strong> (M1 or later) for the built-in AI engine</li>
+<li><strong>~2.5 GB disk space</strong> for the bundled model (downloaded on first launch)</li>
+<li><strong>Accessibility permission</strong> (for global hotkey ⌥C)</li>
+</ul>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<p><strong>macOS blocks Cai from opening (building from source)</strong>
+If you build from source without a Developer ID, macOS Gatekeeper may block the app. Remove the quarantine flag via Terminal:</p>
+<div><pre>xattr -cr /Applications/Cai.app</pre></div>
+<p>This is not needed when installing from the <a href="/soyasis/cai/releases/latest">official DMG release</a>.</p>
+<p><strong>Global shortcut ⌥C doesn't work</strong></p>
+<ul>
+<li>Check <strong>System Settings → Privacy &amp; Security → Accessibility</strong> — make sure Cai is listed and enabled</li>
+<li>If it's listed but still not working, remove Cai from the list and re-add it</li>
+<li>Make sure no other app is using ⌥C (e.g., Raycast, Alfred, BetterTouchTool)</li>
+</ul>
+<p><strong>LLM not connecting</strong></p>
+<ul>
+<li>Verify your server is running: <pre><code>curl http://127.0.0.1:1234/v1/models</code></pre></li>
+<li>Check that the URL in Preferences matches your server's address and port</li>
+<li>Ollama uses port <pre><code>11434</code></pre>, LM Studio uses <pre><code>1234</code></pre> — make sure you selected the right provider</li>
+</ul>
+<p><strong>Date/meeting not detected</strong></p>
+<ul>
+<li>Detection works best with English dates ("Tuesday at 3pm", "lunch tomorrow at noon")</li>
+<li>Try rephrasing: "3pm tomorrow" instead of "tomorrow 15h"</li>
+<li>Some informal formats may not be recognized — explicit dates work most reliably</li>
+</ul>
+<div><h2>Tech Stack</h2><a href="#tech-stack"></a></div>
+<ul>
+<li><strong>SwiftUI</strong> + <strong>AppKit</strong> (native macOS, no Electron)</li>
+<li><strong>CGEvent</strong> for Cmd+C simulation (private event source to isolate modifier state)</li>
+<li><strong>AXUIElement</strong> for text selection detection</li>
+<li><strong>NSPanel</strong> subclass for floating window that captures keyboard events</li>
+<li><strong>Bundled <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a></strong> for local LLM inference (ARM64 macOS, Metal GPU)</li>
+<li><strong>Actor-based</strong> LLMService, BuiltInLLM, and OutputDestinationService for thread-safe async/await</li>
+<li><strong>ICS file generation</strong> for calendar events (no EventKit permissions needed)</li>
+<li><strong>AppleScript</strong> integration for native app destinations (Mail, Notes, Reminders)</li>
+<li><strong>SMAppService</strong> for Launch at Login</li>
+<li><a href="https://github.com/soffes/HotKey">HotKey</a> (SPM) for global keyboard shortcut</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/soyasis/cai/blob/master/LICENSE">MIT</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
