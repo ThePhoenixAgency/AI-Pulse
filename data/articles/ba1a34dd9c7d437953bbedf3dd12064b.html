@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - lazy-hq/aisdk: The AI Toolkit for Rust, inspired by the Vercel AI SDK.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - lazy-hq/aisdk: The AI Toolkit for Rust, inspired by the Vercel AI SDK.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 12:30:53 PM | <a href="https://github.com/lazy-hq/aisdk" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>AISDK</h1><a href="#aisdk"></a></div>
+<p><a href="https://aisdk.rs"><img src="https://camo.githubusercontent.com/b98c4ce4549448d09f2217965c7d6f2cf39ee6800b2b4c63dfd62080fb5533d8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646f63732d6c61746573742d626c7565" alt="Docs"></a>
+<a href="https://github.com/lazy-hq/aisdk/actions/workflows/ci.yml"><img src="https://github.com/lazy-hq/aisdk/actions/workflows/ci.yml/badge.svg" alt="Build Status"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT"></a>
+<a href="https://github.com/lazy-hq/aisdk/issues"><img src="https://camo.githubusercontent.com/55fa2bb7b259d3773b3e2f608ed99967d7d5d5ea8e2441a099153292b1587709/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6973737565732f6c617a792d68712f616973646b" alt="Issues"></a>
+<a href="https://github.com/lazy-hq/aisdk/pulls"><img src="https://camo.githubusercontent.com/dd0b24c1e6776719edb2c273548a510d6490d8d25269a043dfabbd38419905da/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5052732d77656c636f6d652d627269676874677265656e2e737667" alt="PRs Welcome"></a></p>
+<p>An open-source, <strong>provider-agnostic</strong> Rust library for building AI-powered applications, inspired by the Vercel AI SDK. Type-safe, framework-friendly, and ready to connect with <strong>70+ AI providers</strong>.</p>
+<p>To learn more about how to use the AI SDK, check out our <a href="https://aisdk.rs">Documentation</a> and <a href="https://docs.rs/aisdk/latest">API Reference</a>.</p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li>Agents &amp; Tool Execution</li>
+<li>Prompt Templating</li>
+<li>Text Generation &amp; Streaming</li>
+<li>Structured Output (JSON Schema)</li>
+<li>Embedding Model Support</li>
+<li>Compatible with <a href="https://ai-sdk.dev/docs/ai-sdk-ui/overview">Vercel AI SDK UI</a> (React, Solid, Vue, Svelte, …)</li>
+<li>Supports 73+ providers, including Anthropic, Google, OpenAI, OpenRouter, xAI</li>
+</ul>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><pre>cargo add aisdk</pre></div>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<p>Enable Providers of your choice such as OpenAI, Anthropic, Google, and <a href="https://aisdk.rs/docs#model-providers">more</a></p>
+<div><h3>Example with OpenAI provider</h3><a href="#example-with-openai-provider"></a></div>
+<div><pre>cargo add aisdk --features openai</pre></div>
+<div><h3>Basic Text Generation</h3><a href="#basic-text-generation"></a></div>
+<div><pre><span>use</span> aisdk<span>::</span>core<span>::</span><span>LanguageModelRequest</span><span>;</span>
+<span>use</span> aisdk<span>::</span>providers<span>::</span><span>OpenAI</span><span>;</span> <span>#<span>[</span>tokio<span>::</span>main<span>]</span></span>
+<span>async</span> <span>fn</span> <span>main</span><span>(</span><span>)</span> -&gt; <span>Result</span><span>&lt;</span><span>(</span><span>)</span><span>,</span> <span>Box</span><span>&lt;</span><span>dyn</span> std<span>::</span>error<span>::</span><span>Error</span><span>&gt;</span><span>&gt;</span> <span>{</span> <span>let</span> openai = <span>OpenAI</span><span>::</span><span>gpt_5</span><span>(</span><span>)</span><span>;</span> <span>let</span> result = <span>LanguageModelRequest</span><span>::</span><span>builder</span><span>(</span><span>)</span> <span>.</span><span>model</span><span>(</span>openai<span>)</span> <span>.</span><span>prompt</span><span>(</span><span>"What is the meaning of life?"</span><span>)</span> <span>.</span><span>build</span><span>(</span><span>)</span> <span>.</span><span>generate_text</span><span>(</span><span>)</span> <span>// or stream_text() for streaming</span> <span>.</span><span>await</span>?<span>;</span> <span>println</span><span>!</span><span>(</span><span>"Response: {:?}"</span><span>,</span> result<span>.</span>text<span>(</span><span>)</span><span>)</span><span>;</span> <span>Ok</span><span>(</span><span>(</span><span>)</span><span>)</span>
+<span>}</span></pre></div>
+<div><h2>Agents</h2><a href="#agents"></a></div>
+<div><h3>Defining a Tool</h3><a href="#defining-a-tool"></a></div>
+<p>Use the </p><pre><code>#[tool]</code></pre> macro to expose a Rust function as a callable tool.<p></p>
+<div><pre><span>use</span> aisdk<span>::</span>core<span>::</span><span>Tool</span><span>;</span>
+<span>use</span> aisdk<span>::</span>macros<span>::</span>tool<span>;</span> <span>#<span>[</span>tool<span>]</span></span>
+<span>/// Get the weather information given a location</span>
+<span></span><span>pub</span> <span>fn</span> <span>get_weather</span><span>(</span><span>location</span><span>:</span> <span>String</span><span>)</span> -&gt; <span>Tool</span> <span>{</span> <span>let</span> weather = <span>match</span> location<span>.</span><span>as_str</span><span>(</span><span>)</span> <span>{</span> <span>"New York"</span> =&gt; <span>75</span><span>,</span> <span>"Tokyo"</span> =&gt; <span>80</span><span>,</span> _ =&gt; <span>70</span><span>,</span> <span>}</span><span>;</span> <span>Ok</span><span>(</span>weather<span>.</span><span>to_string</span><span>(</span><span>)</span><span>)</span>
+<span>}</span></pre></div>
+<div><h3>Using Tools in an Agent</h3><a href="#using-tools-in-an-agent"></a></div>
+<p>Register tools with an agent so the model can call them during its reasoning loop.</p>
+<div><pre><span>use</span> aisdk<span>::</span>core<span>::</span><span>{</span><span>LanguageModelRequest</span><span>,</span> utils<span>::</span>step_count_is<span>}</span><span>;</span>
+<span>use</span> aisdk<span>::</span>providers<span>::</span><span>OpenAI</span><span>;</span> <span>#<span>[</span>tokio<span>::</span>main<span>]</span></span>
+<span>async</span> <span>fn</span> <span>main</span><span>(</span><span>)</span> -&gt; <span>Result</span><span>&lt;</span><span>(</span><span>)</span><span>,</span> <span>Box</span><span>&lt;</span><span>dyn</span> std<span>::</span>error<span>::</span><span>Error</span><span>&gt;</span><span>&gt;</span> <span>{</span> <span>let</span> result = <span>LanguageModelRequest</span><span>::</span><span>builder</span><span>(</span><span>)</span> <span>.</span><span>model</span><span>(</span><span>OpenAI</span><span>::</span><span>gpt_4o</span><span>(</span><span>)</span><span>)</span> <span>.</span><span>system</span><span>(</span><span>"You are a helpful assistant."</span><span>)</span> <span>.</span><span>prompt</span><span>(</span><span>"What is the weather in New York?"</span><span>)</span> <span>.</span><span>with_tool</span><span>(</span><span>get_weather</span><span>(</span><span>)</span><span>)</span> <span>.</span><span>stop_when</span><span>(</span><span>step_count_is</span><span>(</span><span>3</span><span>)</span><span>)</span> <span>// Limit agent loop to 3 steps</span> <span>.</span><span>build</span><span>(</span><span>)</span> <span>.</span><span>generate_text</span><span>(</span><span>)</span> <span>.</span><span>await</span>?<span>;</span> <span>println</span><span>!</span><span>(</span><span>"Response: {:?}"</span><span>,</span> result<span>.</span>text<span>(</span><span>)</span><span>)</span><span>;</span> <span>Ok</span><span>(</span><span>(</span><span>)</span><span>)</span>
+<span>}</span></pre></div>
+<div><h3>Prompts</h3><a href="#prompts"></a></div>
+<p>The AISDK prompt feature provides, file-based template system for managing AI prompts using the Tera template engine. It allows you to create reusable prompt templates with variable substitution, conditionals, loops, and template inclusion. See <a href="https://aisdk.rs/docs/concepts/prompt">Examples</a> for more template examples. Enable with </p><pre><code>cargo add aisdk --features prompt</code></pre><p></p>
+<div><h3>Roadmap</h3><a href="#roadmap"></a></div>
+<ul>
+<li> Image Model Request Support</li>
+<li> Voice Model Request Support</li>
+<li> Observability &amp; OpenTelemetry (OTel) Support</li>
+</ul>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>We welcome contributions! Please see <a href="/lazy-hq/aisdk/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for guidelines.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Licensed under the MIT License. See <a href="/lazy-hq/aisdk/blob/main/LICENSE">LICENSE</a> for details.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

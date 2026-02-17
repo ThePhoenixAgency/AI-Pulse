@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>cognitive-debt: Measure Code Readability Before It Becomes a Problem</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>cognitive-debt: Measure Code Readability Before It Becomes a Problem</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 11:06:12 AM | <a href="https://dev.to/motiramshinde/cognitive-debt-measure-code-readability-before-it-becomes-a-problem-1nbi" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>We've all been there. You find a file that "works perfectly" but nobody dares touch it. The tests pass. There are no bugs. Yet the moment you try to refactor it, you realize why everyone avoids it—it's impossible to understand.</p> <p>That's <strong>cognitive debt</strong>.</p> <p>Unlike technical debt (which measures bugs and violations), cognitive debt measures the mental effort required to read, understand, and safely modify code.</p> <p>Today, we're announcing three powerful new features that make cognitive-debt even more useful for teams.</p> <hr> <h2> <a name="what-is-cognitive-debt" href="#what-is-cognitive-debt"> </a> What is Cognitive Debt?
+</h2> <blockquote>
+<p><strong>"Cognitive Debt is the accumulated mental effort required to understand, predict, and safely modify a system, independent of its functional correctness."</strong></p>
+</blockquote> <p>A file can be:</p> <ul>
+<li> Syntactically correct</li>
+<li> Fully tested</li>
+<li> Following all linting rules</li>
+</ul> <p>And still be mentally exhausting to work with.</p> <p>Most code quality tools (ESLint, Prettier, SonarQube) focus on <strong>correctness</strong> or <strong>style</strong>. cognitive-debt focuses on <strong>comprehension</strong>.</p> <hr> <h2> <a name="the-problem-most-tools-miss" href="#the-problem-most-tools-miss"> </a> The Problem Most Tools Miss
+</h2> <p>Traditional tools measure:</p> <ul>
+<li>Syntax errors </li>
+<li>Code style violations </li>
+<li>Test coverage </li>
+</ul> <p>But they DON'T measure:</p> <ul>
+<li>Can a human actually understand this?</li>
+<li>How long will it take to comprehend?</li>
+<li>Will changing this file break other files?</li>
+<li>Is this code getting more or less complex over time?</li>
+</ul> <p>That's the gap cognitive-debt fills.</p> <hr> <h2> <a name="what-were-announcing-3-new-features" href="#what-were-announcing-3-new-features"> </a> What We're Announcing: 3 New Features
+</h2> <h3> <a name="1-change-impact-forecaster" href="#1-change-impact-forecaster"> </a> 1. Change Impact Forecaster
+</h3> <p>Before you refactor a file, predict the risk.<br>
+</p> <div>
+<pre><code>cognitive-debt impact src/utils/auth.js
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Output:<br>
+</p> <div>
+<pre><code>Risk Level: HIGH
+Ripple Effects: 12 files depend on this
+Cognitive Load: 42/100 (Poor) Actionable Advice:
+→ This file is complex AND has high coupling
+→ Write regression tests BEFORE making changes
+→ Consider breaking it into 3 smaller modules
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Why this matters:</strong></p> <ul>
+<li>You can see upfront if a refactoring will be risky</li>
+<li>Understand which files are "fragile" despite passing tests</li>
+<li>Make data-driven decisions about refactoring strategy</li>
+</ul> <h3> <a name="2-cognitive-debt-diff" href="#2-cognitive-debt-diff"> </a> 2. Cognitive Debt Diff
+</h3> <p>Track whether your code is improving or degrading over time.</p> <p><strong>Compare Git branches:</strong><br>
+</p> <div>
+<pre><code>cognitive-debt diff main..feature-branch
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Output:</strong><br>
+</p> <div>
+<pre><code> DEBT INCREASED
+- Total Lines: +150
+- Dependencies: +3
+- Avg Function Length: +12 lines Files Improved: src/handlers/auth.js (50→65, score improved) src/utils/validation.js (60→55, cleaner) Files Degraded: src/api/request.js (nesting depth 3→5) src/middleware/logger.js (param count 4→7)
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Why this matters:</strong></p> <h3> <a name="3-html-reports-amp-json-export" href="#3-html-reports-amp-json-export"> </a> 3. HTML Reports &amp; JSON Export
+</h3> <p>Beautiful dashboards for teams + machine-readable data for automation.</p> <p><strong>Generate an HTML dashboard:</strong><br>
+</p> <div>
+<pre><code>cognitive-debt src/ <span>--output</span> report.html
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Sample output format example :-</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fimqpj16utzoodurazifm.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fimqpj16utzoodurazifm.png" alt=" "></a></p> <p>Opens in your browser with:</p> <p><strong>Generate JSON for automation:</strong><br>
+</p> <div>
+<pre><code>cognitive-debt src/ <span>--output</span> report.json
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Use in:</p> <ul>
+<li>CI/CD pipelines (fail builds if cognitive debt &gt; threshold)</li>
+<li>Custom dashboards (track trends over time)</li>
+<li>Slack bots (notify team of high-debt files)</li>
+<li>Executive reports (quantify technical burden)</li>
+</ul> <hr> <h2> <a name="how-it-works-the-math-behind-it" href="#how-it-works-the-math-behind-it"> </a> How It Works: The Math Behind It
+</h2> <p>cognitive-debt measures 5 dimensions:</p> <h3> <a name="1-naming-clarity-30-impact" href="#1-naming-clarity-30-impact"> </a> 1. <strong>Naming Clarity</strong> (30% impact)
+</h3> <p>Variables like <code>data</code>, <code>tmp</code>, <code>obj</code>, <code>a</code>, <code>b</code> force your brain to hold mental mappings. Bad names are the #1 cause of confusion.</p> <h3> <a name="2-nesting-depth-10-per-level" href="#2-nesting-depth-10-per-level"> </a> 2. <strong>Nesting Depth</strong> (10% per level)
+</h3> <p>Miller's Law: Your brain holds 7±2 items. Deep nesting (5+ levels) exceeds that limit.</p> <p><strong>Example:</strong><br>
+</p> <div>
+<pre><code><span>// Hard to understand (5 levels)</span>
+<span>if </span><span>(</span><span>user</span><span>)</span> <span>{</span> <span>if </span><span>(</span><span>user</span><span>.</span><span>active</span><span>)</span> <span>{</span> <span>if </span><span>(</span><span>user</span><span>.</span><span>permissions</span><span>)</span> <span>{</span> <span>if </span><span>(</span><span>user</span><span>.</span><span>permissions</span><span>.</span><span>includes</span><span>(</span><span>'</span><span>admin</span><span>'</span><span>))</span> <span>{</span> <span>if </span><span>(</span><span>request</span><span>.</span><span>isValid</span><span>())</span> <span>{</span> <span>// Finally, we do something</span> <span>}</span> <span>}</span> <span>}</span> <span>}</span>
+<span>}</span> <span>// Easy to understand (flat)</span>
+<span>if </span><span>(</span><span>!</span><span>isAuthorizedAdmin</span><span>(</span><span>user</span><span>,</span> <span>request</span><span>))</span> <span>return</span><span>;</span>
+<span>// Do something</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="3-parameter-count-5-per-param" href="#3-parameter-count-5-per-param"> </a> 3. <strong>Parameter Count</strong> (5% per param)
+</h3> <p>More parameters = exponentially harder to use correctly.<br>
+</p> <div>
+<pre><code><span>// Easy</span>
+<span>function</span> <span>validateEmail</span><span>(</span><span>email</span><span>)</span> <span>{</span> <span>...</span> <span>}</span> <span>// Hard</span>
+<span>function</span> <span>processUser</span><span>(</span><span>id</span><span>,</span> <span>name</span><span>,</span> <span>email</span><span>,</span> <span>phone</span><span>,</span> <span>role</span><span>,</span> <span>permissions</span><span>,</span> <span>status</span><span>,</span> <span>timestamp</span><span>,</span> <span>metadata</span><span>)</span> <span>{</span> <span>...</span> <span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="4-function-length-05-per-line" href="#4-function-length-05-per-line"> </a> 4. <strong>Function Length</strong> (0.5% per line)
+</h3> <p>Long functions require constant context switching. You scroll to understand one part, lose track of another.</p> <h3> <a name="5-dependencies-2-per-import" href="#5-dependencies-2-per-import"> </a> 5. <strong>Dependencies</strong> (2% per import)
+</h3> <p>A file importing 15 other modules requires understanding 15 files simultaneously.</p> <hr> <h2> <a name="the-transparency-principle" href="#the-transparency-principle"> </a> The Transparency Principle
+</h2> <p>Unlike other tools (especially AI-powered ones), cognitive-debt uses <strong>simple, auditable math</strong>.</p> <p>You can verify the score yourself:</p> <ul>
+<li>No black boxes</li>
+<li>No ML magic</li>
+<li>No mysterious algorithms</li>
+<li>Just transparent formulas</li>
+</ul> <p>You can even customize thresholds in <code>.cognitivedebtrc.json</code> for your team's standards.</p> <hr> <h2> <a name="realworld-use-cases" href="#realworld-use-cases"> </a> Real-World Use Cases
+</h2> <h3> <a name="for-code-reviews" href="#for-code-reviews"> </a> For Code Reviews
+</h3> <h3> <a name="for-onboarding" href="#for-onboarding"> </a> For Onboarding
+</h3> <p>New developers can see which files are hardest to understand before diving in.</p> <h3> <a name="for-cicd-pipelines" href="#for-cicd-pipelines"> </a> For CI/CD Pipelines
+</h3> <div>
+<pre><code><span># Fail the build if any file drops below 40/100</span>
+cognitive-debt src/ <span>||</span> <span>exit </span>1
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="for-refactoring-decisions" href="#for-refactoring-decisions"> </a> For Refactoring Decisions
+</h3> <p>Track whether your refactoring actually improved readability:<br>
+</p> <div>
+<pre><code>cognitive-debt diff v1 v2
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="for-team-metrics" href="#for-team-metrics"> </a> For Team Metrics
+</h3> <p>Monthly dashboard showing code quality trends:</p> <ul>
+<li>Is average cognitive debt improving?</li>
+<li>Which files are becoming harder to maintain?</li>
+<li>What's our onboarding burden?</li>
+</ul> <hr> <h2> <a name="why-we-built-this" href="#why-we-built-this"> </a> Why We Built This
+</h2> <p><strong>The Reality:</strong></p> <ul>
+<li>Developers spend 70% of their time <strong>reading</strong> code, not writing it</li>
+<li>Cognitive load is the #1 barrier to onboarding new developers</li>
+<li>"Technical debt" is often really "cognitive debt"</li>
+<li>Most tools ignore this completely</li>
+</ul> <p><strong>Our Philosophy:</strong></p> <ol>
+<li>
+<strong>Transparency</strong>: You should understand the math</li>
+<li>
+<strong>Privacy</strong>: Your code never leaves your machine</li>
+<li>
+<strong>Education</strong>: Explain WHY, not just what</li>
+<li>
+<strong>Empathy</strong>: Code is communication between humans</li>
+</ol> <hr> <h2> <a name="getting-started" href="#getting-started"> </a> Getting Started
+</h2> <p>Install globally:<br>
+</p> <div>
+<pre><code>npm <span>install</span> <span>-g</span> cognitive-debt
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Analyze your code:<br>
+</p> <div>
+<pre><code>cognitive-debt src/
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Generate reports:<br>
+</p> <div>
+<pre><code>cognitive-debt src/ <span>--output</span> report.html
+cognitive-debt src/ <span>--output</span> report.json
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Predict refactoring risk:<br>
+</p> <div>
+<pre><code>cognitive-debt impact src/utils/auth.js
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Track improvements:<br>
+</p> <div>
+<pre><code>cognitive-debt diff main..feature-branch
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="what-makes-this-different" href="#what-makes-this-different"> </a> What Makes This Different
+</h2> <div><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>ESLint/Prettier</th>
+<th>Cyclomatic Complexity</th>
+<th>SonarQube</th>
+<th>cognitive-debt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Measures</strong></td>
+<td>Syntax &amp; Style</td>
+<td>Logic paths</td>
+<td>Everything</td>
+<td><strong>Readability</strong></td>
+</tr>
+<tr>
+<td><strong>Goal</strong></td>
+<td>Consistency</td>
+<td>Testability</td>
+<td>Compliance</td>
+<td><strong>Comprehension</strong></td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Errors</td>
+<td>Single number</td>
+<td>Dashboard</td>
+<td><strong>Actionable insights</strong></td>
+</tr>
+<tr>
+<td><strong>Philosophy</strong></td>
+<td>"Is it wrong?"</td>
+<td>"Hard to test?"</td>
+<td>"Compliant?"</td>
+<td><strong>"Hard to read?"</strong></td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="open-source-amp-community" href="#open-source-amp-community"> </a> Open Source &amp; Community
+</h2> <p>cognitive-debt is open source on GitHub. We welcome:</p> <ul>
+<li>Feature requests</li>
+<li>Bug reports</li>
+<li>Contributions</li>
+<li>Custom analyzers</li>
+</ul> <p><strong>Links:</strong></p> <ul>
+<li> <strong>npm</strong>: <a href="https://www.npmjs.com/package/cognitive-debt" target="_blank">cognitive-debt</a>
+</li>
+<li> <strong>GitHub</strong>: <a href="https://github.com/motiram944/cognitive-debt" target="_blank">motiram944/cognitive-debt</a>
+</li>
+<li> <strong>Issues</strong>: <a href="https://github.com/motiram944/cognitive-debt/issues" target="_blank">Report bugs or request features</a>
+</li>
+</ul> <hr> <h2> <a name="a-word-of-caution" href="#a-word-of-caution"> </a> A Word of Caution
+</h2> <p>This tool is powerful, but use it wisely:</p> <p> <strong>Don't use this to punish developers.</strong> Cognitive debt is often systemic, not personal.</p> <p> <strong>Don't use as a hard gate without discussion.</strong> Sometimes complex problems require complex solutions.</p> <p> <strong>Don't optimize for score alone.</strong> A score of 100 with wrong logic is useless.</p> <p> <strong>DO use this to foster empathy</strong> for future maintainers.</p> <p> <strong>DO use this to identify risk</strong> before refactoring.</p> <p> <strong>DO use this to improve onboarding</strong> and developer experience.</p> <hr> <h2> <a name="the-quote" href="#the-quote"> </a> The Quote
+</h2> <blockquote>
+<p>"The best code is code that doesn't need to be read. The second-best code is code that's easy to read."</p>
+</blockquote> <p>Let's make our codebases easier to understand. Try cognitive-debt today.</p> <hr> <p><strong>Have questions? Want to contribute? Join us on GitHub!</strong></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - NmadeleiDev/google-search-console-cli</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - NmadeleiDev/google-search-console-cli</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 12:30:13 PM | <a href="https://github.com/NmadeleiDev/google-search-console-cli" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>google-search-console-cli</h1><a href="#google-search-console-cli"></a></div>
+<p>CLI for Google Search Console using the official Google API Python client.</p>
+<div><h2>Highlights</h2><a href="#highlights"></a></div>
+<ul>
+<li>Native OAuth login: no mandatory <pre><code>gcloud</code></pre> setup</li>
+<li><pre><code>pipx</code></pre>-friendly install (<pre><code>gsc</code></pre> available globally)</li>
+<li>Site operations: list/get/add</li>
+<li>Analytics queries by date/query/page with Search Console filters</li>
+<li>Output formats: table, json, csv</li>
+<li>Diagnostics: <pre><code>gsc doctor</code></pre></li>
+</ul> <p>Install with </p><pre><code>pipx</code></pre> so <pre><code>gsc</code></pre> is available globally on your PATH.<p></p>
+<p>If you do not have </p><pre><code>pipx</code></pre> yet:<p></p>
+<div><pre>python3 -m pip install --user pipx
+python3 -m pipx ensurepath</pre></div>
+<p>Restart your shell, then install:</p>
+<div><pre>pipx install google-search-console-cli</pre></div>
+<p>Verify:</p>
+<div><pre>gsc --version</pre></div>
+<p>Upgrade later:</p>
+<div><pre>pipx upgrade google-search-console-cli</pre></div>
+<p>Uninstall:</p>
+<div><pre>pipx uninstall google-search-console-cli</pre></div>
+<div><h2>Install From Source</h2><a href="#install-from-source"></a></div>
+<p>If you cloned this repository and want to run from source, use one of these options.</p>
+<p>Option 1: Local virtualenv (best for development)</p>
+<div><pre>python3 -m venv .venv
+<span>source</span> .venv/bin/activate
+pip install -e <span><span>"</span>.[dev]<span>"</span></span></pre></div>
+<p>Fish shell activation:</p>
+<div><pre>. .venv/bin/activate.fish</pre></div>
+<p>Then run:</p>
+<div><pre>gsc --help</pre></div>
+<p>Option 2: Install from source with </p><pre><code>pipx</code></pre> (best for day-to-day CLI usage)<p></p>
+<div><pre>pipx install -e /absolute/path/to/google-search-console-cli</pre></div> <p>Create a Google OAuth client of type <strong>Desktop app</strong>, then run:</p>
+<div><pre>gsc auth login --client-secret /absolute/path/to/client_secret.json</pre></div>
+<p>Verify:</p>
+<div><pre>gsc auth whoami
+gsc doctor</pre></div>
+<div><h2>Optional: Set Default Site</h2><a href="#optional-set-default-site"></a></div>
+<div><pre>gsc config <span>set</span> default-site sc-domain:example.com
+gsc config get default-site</pre></div>
+<p>After this, you can omit </p><pre><code>--site</code></pre> in commands that need a property.<p></p>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><h3>Sites</h3><a href="#sites"></a></div>
+<div><pre>gsc site list
+gsc site get --site sc-domain:example.com
+gsc site add --site sc-domain:example.com</pre></div>
+<div><h3>Analytics</h3><a href="#analytics"></a></div>
+<div><pre>gsc analytics query \ --site sc-domain:example.com \ --start-date 2026-01-01 \ --end-date 2026-01-31 \ --dimension date \ --dimension query \ --filter query:contains:brand \ --filter device:equals:MOBILE</pre></div>
+<p>Save as CSV:</p>
+<div><pre>gsc analytics query \ --site sc-domain:example.com \ --start-date 2026-01-01 \ --end-date 2026-01-31 \ --dimension page \ --output csv \ --csv-path ./analytics.csv</pre></div>
+<div><h2>Filter Syntax</h2><a href="#filter-syntax"></a></div>
+<p>Use repeatable filters in this format:</p>
+<div><pre><code>dimension:operator:expression
+</code></pre></div>
+<p>Supported filter dimensions:</p>
+<ul>
+<li><pre><code>country</code></pre></li>
+<li><pre><code>device</code></pre></li>
+<li><pre><code>page</code></pre></li>
+<li><pre><code>query</code></pre></li>
+<li><pre><code>searchAppearance</code></pre></li>
+</ul>
+<p>Supported operators:</p>
+<ul>
+<li><pre><code>contains</code></pre></li>
+<li><pre><code>equals</code></pre></li>
+<li><pre><code>notContains</code></pre></li>
+<li><pre><code>notEquals</code></pre></li>
+<li><pre><code>includingRegex</code></pre></li>
+<li><pre><code>excludingRegex</code></pre></li>
+</ul>
+<div><h2>Convenience Script (Repo Local)</h2><a href="#convenience-script-repo-local"></a></div>
+<p>If you cloned this repo and want one command setup:</p>
+<div><pre>./scripts/setup.sh /absolute/path/to/client_secret.json</pre></div>
+<div><h2>Credentials and Config Paths</h2><a href="#credentials-and-config-paths"></a></div>
+<p>By default:</p>
+<ul>
+<li>Credentials: <pre><code>~/.config/gsc-cli/credentials.json</code></pre></li>
+<li>Config: <pre><code>~/.config/gsc-cli/config.json</code></pre></li>
+</ul>
+<p>Override with env vars:</p>
+<ul>
+<li><pre><code>GSC_CREDENTIALS_FILE</code></pre></li>
+<li><pre><code>GSC_APP_CONFIG_FILE</code></pre></li>
+<li><pre><code>GSC_CONFIG_DIR</code></pre></li>
+</ul>
+<div><h2>ADC Fallback (Optional)</h2><a href="#adc-fallback-optional"></a></div>
+<p>If you prefer ADC via </p><pre><code>gcloud</code></pre>, the CLI still supports it:<p></p>
+<div><pre>gcloud auth application-default login \ --client-id-file=/absolute/path/to/client_secret.json \ --scopes=https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/webmasters</pre></div>
+<div><h2>Notes</h2><a href="#notes"></a></div>
+<ul>
+<li>Use Search Console property formats like <pre><code>sc-domain:example.com</code></pre> or URL-prefix properties.</li>
+<li><pre><code>site add</code></pre> requires write scope (<pre><code>webmasters</code></pre>).</li>
+<li><pre><code>analytics query --aggregation-type byProperty</code></pre> cannot be combined with <pre><code>page</code></pre> grouping/filtering.</li>
+</ul>
+<div><h2>Publishing</h2><a href="#publishing"></a></div> <p>This repo includes </p><pre><code>.github/workflows/publish.yml</code></pre> that:<p></p>
+<ul>
+<li>builds <pre><code>sdist</code></pre> + <pre><code>wheel</code></pre></li>
+<li>publishes to PyPI using OpenID Connect (no API token needed in GitHub secrets)</li>
+</ul>
+<p>To enable it:</p>
+<ol>
+<li>In PyPI, open project settings for <pre><code>google-search-console-cli</code></pre>.</li>
+<li>Add a <strong>Trusted Publisher</strong> with:
+<ul>
+<li>Owner: <pre><code>NmadeleiDev</code></pre></li>
+<li>Repository: <pre><code>google-search-console-cli</code></pre></li>
+<li>Workflow name: <pre><code>publish.yml</code></pre></li>
+<li>Environment name: <pre><code>pypi</code></pre></li>
+</ul>
+</li>
+<li>In GitHub, keep/create environment <pre><code>pypi</code></pre> (optional protection rules as you prefer).</li>
+</ol>
+<p>Release flow:</p>
+<ol>
+<li>Bump version in <pre><code>pyproject.toml</code></pre>.</li>
+<li>Commit and push.</li>
+<li>Create and push a tag like <pre><code>v0.1.1</code></pre>:</li>
+</ol>
+<div><pre>git tag v0.1.1
+git push origin v0.1.1</pre></div>
+<p>The workflow will publish automatically.</p>
+<div><h3>Manual Publishing (Fallback)</h3><a href="#manual-publishing-fallback"></a></div>
+<div><pre><span>.</span> .venv/bin/activate.fish
+python -m build
+python -m twine upload dist/<span>*</span></pre></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

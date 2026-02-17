@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - JessyMorissette/CrossingBench: Reproducible microbenchmark for modeling domain crossing energy in heterogeneous compute systems.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - JessyMorissette/CrossingBench: Reproducible microbenchmark for modeling domain crossing energy in heterogeneous compute systems.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 11:42:19 AM | <a href="https://github.com/JessyMorissette/CrossingBench" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><a href="https://doi.org/10.5281/zenodo.18653510"><img src="https://camo.githubusercontent.com/51b68713f5485310d0bcefab45524c1f7d69cf8d82ab8fad0b4d45d662c1855d/68747470733a2f2f7a656e6f646f2e6f72672f62616467652f444f492f31302e353238312f7a656e6f646f2e31383635333531302e737667" alt="DOI"></a>
+<a href="https://github.com/JessyMorissette/CrossingBench/actions"><img src="https://github.com/JessyMorissette/CrossingBench/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://camo.githubusercontent.com/5b60841bea9e11d9d0b0950d690c9bc554e06385634056a7d5d62a15d1a4eabe/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4170616368655f322e302d626c75652e737667" alt="License"></a>
+<a href="https://www.python.org/"><img src="https://camo.githubusercontent.com/642230c30ba83797e41fb2694b68c83c86a87de4e7a9bced5c53ec67589c9d30/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d254532253839254135332e392d677265656e2e737667" alt="Python"></a>
+<a href="https://github.com/JessyMorissette/CrossingBench/releases"><img src="https://camo.githubusercontent.com/0f2b69e851be03293992609cbfa39ae63c70bad47c2470fc316cad9e8c425c9b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f762f72656c656173652f4a657373794d6f72697373657474652f43726f7373696e6742656e6368" alt="Release"></a></p>
+<div><h1>CrossingBench</h1><a href="#crossingbench"></a></div>
+<blockquote>
+<p><em>The correct unit of optimization in heterogeneous computing is not the
+operation — it is the crossing.</em></p>
+</blockquote>
+<pre><code>CrossingBench is a reproducible microbenchmark for validating the
+Domain Crossing Law: in heterogeneous compute systems, energy
+efficiency is dominated by crossing volume weighted by boundary cost in
+crossing-dominated regimes (ε → 1).</code></pre>
+<p>The formal law statement, definitions, and empirical basis are in
+<a href="/JessyMorissette/CrossingBench/blob/main/docs/CROSSING_LAW.md"></a></p><pre><a href="/JessyMorissette/CrossingBench/blob/main/docs/CROSSING_LAW.md"><code>docs/CROSSING_LAW.md</code></a></pre>.
+All energy parameters and their sources are in
+<a href="/JessyMorissette/CrossingBench/blob/main/docs/HYPOTHESES.md"><pre><code>docs/HYPOTHESES.md</code></pre></a>.<p></p>
+<p> <strong>Working Paper (Feb 2026)</strong><br>
+<em>CrossingFlow: Minimizing Domain Crossings in Heterogeneous Systems Under Error Constraints</em><br>
+<a href="/JessyMorissette/CrossingBench/blob/main/paper/CrossingFlow_Domain_Crossing_Law_v1_2026.pdf">Download PDF</a></p>
+<div><h2>Why This Matters</h2><a href="#why-this-matters"></a></div>
+<p>Heterogeneous systems — analog CIM, chiplets, near-memory, multi-voltage —
+achieve impressive <em>intra-domain</em> efficiency. Yet system-level gains
+consistently fall short because <strong>domain crossings</strong> (ADC/DAC, DRAM fetch,
+inter-die transfer, level shifter) cost 5× to 32,000× more per byte than
+the compute they enable.</p>
+<p><a target="_blank" href="/JessyMorissette/CrossingBench/blob/main/docs/figures/crossing_dominance.png"><img src="/JessyMorissette/CrossingBench/raw/main/docs/figures/crossing_dominance.png" alt="Domain Crossing Law – Energy Dominance by Boundary Type"></a></p>
+<blockquote>
+<p><strong>Figure 1.</strong> Crossing energy fraction vs. crossing volume for three boundary
+types. The analog curve shifts left due to ultra-low intra-domain compute
+energy (0.1 pJ/B vs 0.25 pJ/B digital baseline). Shaded regions: ±20%
+uncertainty on β. Reproduce with </p><pre><code>python examples/plot_dominance.py</code></pre>.<p></p>
+</blockquote>
+<p>CrossingBench lets you:</p>
+<ul>
+<li><strong>Measure</strong> crossing dominance via the elasticity metric ε</li>
+<li><strong>Sweep</strong> crossing volume and observe the compute→crossing transition</li>
+<li><strong>Compare</strong> baseline vs crossing-reduced schedules</li>
+<li><strong>Validate</strong> the law on your own boundary parameters</li>
+</ul>
+<div><h2>Cost Model</h2><a href="#cost-model"></a></div>
+<div><pre><code>C_total = C_intra + Σ_b (α_b · events_b + β_b · bytes_b)
+</code></pre></div>
+<p>Default parameters match published measurements at 7nm (see
+<a href="/JessyMorissette/CrossingBench/blob/main/docs/HYPOTHESES.md"></a></p><pre><a href="/JessyMorissette/CrossingBench/blob/main/docs/HYPOTHESES.md"><code>docs/HYPOTHESES.md</code></a></pre>). Override any parameter on the
+command line.<p></p>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><pre>python -m pip install -e <span>.</span></pre></div>
+<p>Or run directly without installing:</p>
+<div><pre>python -m crossingbench --help</pre></div>
+<p>Requires Python ≥ 3.9. <strong>Zero runtime dependencies</strong> (pure Python).</p>
+<div><h2>Quickstart</h2><a href="#quickstart"></a></div>
+<div><h3>1) Sweep crossing volume</h3><a href="#1-sweep-crossing-volume"></a></div>
+<div><pre>crossingbench sweep \ --boundary analog --compute analog \ --bytes 262144 --cross_min 256 --cross_max 524288 \ --steps 12 --out analog.csv</pre></div>
+<p>Output: CSV with </p><pre><code>crossing_fraction</code></pre> and <pre><code>epsilon_local</code></pre> at each point.<p></p>
+<div><h3>2) Compare baseline vs reduced crossings</h3><a href="#2-compare-baseline-vs-reduced-crossings"></a></div>
+<div><pre>crossingbench compare \ --boundary analog --compute analog \ --bytes 262144 --cross_bytes 196608 --reduce_factor 3</pre></div>
+<p>Output: energy gain, crossing fractions, and <strong>effective elasticity</strong>.</p>
+<div><h3>3) Reproduce the paper's three-boundary evidence</h3><a href="#3-reproduce-the-papers-three-boundary-evidence"></a></div>
+<div><pre>bash examples/reproduce_three_boundaries.sh</pre></div>
+<div><h3>4) Validate on real workloads (ResNet-50 + GPT-2)</h3><a href="#4-validate-on-real-workloads-resnet-50--gpt-2"></a></div>
+<div><pre>python examples/real_workloads.py</pre></div>
+<div><h3>5) Regenerate the dominance figure</h3><a href="#5-regenerate-the-dominance-figure"></a></div>
+<div><pre><code>python examples/plot_dominance.py
+</code></pre></div>
+<div><h2>Default Boundary Parameters</h2><a href="#default-boundary-parameters"></a></div>
+<table>
+<thead>
+<tr>
+<th>Boundary</th>
+<th>β (pJ/byte)</th>
+<th>α (pJ/event)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>analog</code></pre></td>
+<td>3.20</td>
+<td>0.0</td>
+<td>Wan et al., Nature 2022; Murmann Survey</td>
+</tr>
+<tr>
+<td><pre><code>memory</code></pre></td>
+<td>1.25</td>
+<td>0.0</td>
+<td>Horowitz 2014, 7nm scaled</td>
+</tr>
+<tr>
+<td><pre><code>chiplet</code></pre></td>
+<td>5.00</td>
+<td>0.0</td>
+<td>UCIe 1.0 Specification</td>
+</tr>
+<tr>
+<td><pre><code>hbm</code></pre></td>
+<td>10.00</td>
+<td>0.0</td>
+<td>Samsung HBM3 Datasheet</td>
+</tr>
+<tr>
+<td><pre><code>voltage</code></pre></td>
+<td>0.80</td>
+<td>0.0</td>
+<td>Multi-Vdd DVFS literature</td>
+</tr>
+</tbody>
+</table>
+<p>Override: </p><pre><code>--beta 2.5 --alpha 50 --compute_pj_per_byte 0.1</code></pre><p></p>
+<div><h2>Output Format (CSV)</h2><a href="#output-format-csv"></a></div>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>bytes_compute</code></pre></td>
+<td>Intra-domain compute volume</td>
+</tr>
+<tr>
+<td><pre><code>bytes_cross</code></pre></td>
+<td>Crossing volume</td>
+</tr>
+<tr>
+<td><pre><code>events_cross</code></pre></td>
+<td>Number of crossing events</td>
+</tr>
+<tr>
+<td><pre><code>c_intra_pj</code></pre></td>
+<td>Compute energy (pJ)</td>
+</tr>
+<tr>
+<td><pre><code>c_cross_pj</code></pre></td>
+<td>Crossing energy (pJ)</td>
+</tr>
+<tr>
+<td><pre><code>c_total_pj</code></pre></td>
+<td>Total energy (pJ)</td>
+</tr>
+<tr>
+<td><pre><code>crossing_fraction</code></pre></td>
+<td>E_cross / E_total</td>
+</tr>
+<tr>
+<td><pre><code>epsilon_local</code></pre></td>
+<td>Local elasticity ∂log(C)/∂log(V_b)</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Repository Structure</h2><a href="#repository-structure"></a></div>
+<div><pre><code>CrossingBench/
+├── docs/
+│ ├── figures/
+│ │ └── crossing_dominance.png # Three-boundary dominance figure
+│ ├── CROSSING_LAW.md # The law (definitions, decomposition, results)
+│ └── HYPOTHESES.md # Every pJ/byte value traced to its source
+├── paper/
+│ └── CrossingFlow_Domain_Crossing_Law_v1_2026.pdf
+├── examples/
+│ ├── plot_dominance.py # Regenerate the dominance figure
+│ ├── reproduce_three_boundaries.sh
+│ └── real_workloads.py # ResNet-50 + GPT-2 validation
+├── src/crossingbench/
+│ ├── core.py # Cost model, sweep, compare
+│ ├── cli.py # Command-line interface
+│ └── io.py # CSV output
+├── tests/
+│ └── test_core.py # Unit tests
+├── data/ # Reference CSVs
+└── pyproject.toml # Package metadata (hatchling) </code></pre></div>
+<div><h2>Developer Setup</h2><a href="#developer-setup"></a></div>
+<div><pre>python -m pip install -e <span><span>'</span>.[dev]<span>'</span></span>
+pytest
+ruff check <span>.</span></pre></div>
+<div><h2>Citation</h2><a href="#citation"></a></div>
+<p>If you use CrossingBench in academic work, please cite:</p>
+<p>Morissette, J. (2026). <em>CrossingBench v0.1.0: Microbenchmark for Boundary-Dominated Energy Scaling</em>. Zenodo. <a href="https://doi.org/10.5281/zenodo.18653510">https://doi.org/10.5281/zenodo.18653510</a></p>
+<p>BibTeX:</p>
+<div><pre><span>@software</span>{<span>morissette2026crossingbench</span>, <span>author</span> = <span><span>{</span>Morissette, Jessy<span>}</span></span>, <span>title</span> = <span><span>{</span>CrossingBench v0.1.0: Microbenchmark for Boundary-Dominated Energy Scaling<span>}</span></span>, <span>year</span> = <span><span>{</span>2026<span>}</span></span>, <span>publisher</span> = <span><span>{</span>Zenodo<span>}</span></span>, <span>doi</span> = <span><span>{</span>10.5281/zenodo.18653510<span>}</span></span>, <span>url</span> = <span><span>{</span>https://doi.org/10.5281/zenodo.18653510<span>}</span></span>
+}</pre></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Apache-2.0 (see <a href="/JessyMorissette/CrossingBench/blob/main/LICENSE"></a></p><pre><a href="/JessyMorissette/CrossingBench/blob/main/LICENSE"><code>LICENSE</code></a></pre>).<p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

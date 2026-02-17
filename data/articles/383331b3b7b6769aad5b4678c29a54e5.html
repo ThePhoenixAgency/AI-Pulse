@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - amabito/veronica-core: Zero-dep runtime enforcement for LLM agents. Budget limits, concurrency gates, degradation control.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - amabito/veronica-core: Zero-dep runtime enforcement for LLM agents. Budget limits, concurrency gates, degradation control.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 12:31:26 PM | <a href="https://github.com/amabito/veronica-core" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>VERONICA</h1><a href="#veronica"></a></div>
+<div><h2>LLM agents don't fail because of prompts. They fail because nothing stops them.</h2><a href="#llm-agents-dont-fail-because-of-prompts-they-fail-because-nothing-stops-them"></a></div>
+<p>You don't lose money because your model hallucinated.
+You lose money because it retried itself 3,000 times.</p>
+<hr>
+<div><h2>The $12K Weekend Problem</h2><a href="#the-12k-weekend-problem"></a></div>
+<p>It's Monday morning.</p>
+<p>Your agent:</p>
+<ul>
+<li>hit a transient API failure</li>
+<li>retried with exponential backoff</li>
+<li>spawned subcalls</li>
+<li>looped on tool failures</li>
+<li>ignored budget signals</li>
+</ul>
+<p>Observability tells you what happened.</p>
+<p><strong>VERONICA makes sure it never happens.</strong></p>
+<hr>
+<div><h2>What VERONICA Actually Does</h2><a href="#what-veronica-actually-does"></a></div>
+<p>VERONICA sits between your agent and the model.</p>
+<p>It enforces execution safety.</p>
+<ul>
+<li><strong>Hard budget enforcement</strong> (org / team / user / service)</li>
+<li><strong>Circuit breaker</strong> on model instability</li>
+<li><strong>Retry containment</strong></li>
+<li><strong>Loop termination</strong></li>
+<li><strong>Tool timeout enforcement</strong></li>
+<li><strong>Degrade levels</strong> (NORMAL / SOFT / HARD / EMERGENCY)</li>
+</ul>
+<p>Not logging.
+Not tracing.
+<strong>Stopping.</strong></p>
+<hr>
+<div><h2>Quickstart</h2><a href="#quickstart"></a></div>
+<div><pre><span>from</span> <span>veronica</span>.<span>runtime</span>.<span>hooks</span> <span>import</span> <span>RuntimeContext</span>
+<span>from</span> <span>veronica</span>.<span>runtime</span>.<span>events</span> <span>import</span> <span>EventBus</span>
+<span>from</span> <span>veronica</span>.<span>budget</span>.<span>enforcer</span> <span>import</span> <span>BudgetEnforcer</span>, <span>BudgetExceeded</span>
+<span>from</span> <span>veronica</span>.<span>budget</span>.<span>policy</span> <span>import</span> <span>BudgetPolicy</span>, <span>WindowLimit</span>
+<span>from</span> <span>veronica</span>.<span>budget</span>.<span>ledger</span> <span>import</span> <span>BudgetLedger</span>
+<span>from</span> <span>veronica</span>.<span>runtime</span>.<span>models</span> <span>import</span> <span>Labels</span>, <span>Budget</span> <span># Set a $5 per-minute hard limit</span>
+<span>policy</span> <span>=</span> <span>BudgetPolicy</span>(<span>org_limits</span><span>=</span><span>WindowLimit</span>(<span>minute_usd</span><span>=</span><span>5.0</span>))
+<span>enforcer</span> <span>=</span> <span>BudgetEnforcer</span>(<span>policy</span><span>=</span><span>policy</span>, <span>ledger</span><span>=</span><span>BudgetLedger</span>(), <span>bus</span><span>=</span><span>EventBus</span>())
+<span>ctx</span> <span>=</span> <span>RuntimeContext</span>(<span>enforcer</span><span>=</span><span>enforcer</span>) <span>run</span> <span>=</span> <span>ctx</span>.<span>create_run</span>(<span>labels</span><span>=</span><span>Labels</span>(<span>org</span><span>=</span><span>"acme"</span>), <span>budget</span><span>=</span><span>Budget</span>(<span>limit_usd</span><span>=</span><span>5.0</span>))
+<span>session</span> <span>=</span> <span>ctx</span>.<span>create_session</span>(<span>run</span>) <span># Every LLM call passes through VERONICA</span>
+<span>with</span> <span>ctx</span>.<span>llm_call</span>(<span>session</span>, <span>model</span><span>=</span><span>"gpt-4"</span>, <span>labels</span><span>=</span><span>Labels</span>(<span>org</span><span>=</span><span>"acme"</span>), <span>run</span><span>=</span><span>run</span>) <span>as</span> <span>step</span>: <span>response</span> <span>=</span> <span>call_your_llm</span>(<span>prompt</span>) <span>step</span>.<span>cost_usd</span> <span>=</span> <span>response</span>.<span>cost</span></pre></div>
+<p>If the agent spirals, </p><pre><code>BudgetExceeded</code></pre> is raised <strong>before</strong> the call reaches the provider.<p></p>
+<hr>
+<div><h2>Runaway Loop Demo</h2><a href="#runaway-loop-demo"></a></div>
+<div><pre>pip install -e <span>.</span>
+python examples/runaway_loop_demo.py</pre></div>
+<div><pre><span># examples/runaway_loop_demo.py</span>
+<span>from</span> <span>veronica</span>.<span>runtime</span>.<span>hooks</span> <span>import</span> <span>RuntimeContext</span>
+<span>from</span> <span>veronica</span>.<span>runtime</span>.<span>events</span> <span>import</span> <span>EventBus</span>
+<span>from</span> <span>veronica</span>.<span>budget</span>.<span>enforcer</span> <span>import</span> <span>BudgetEnforcer</span>, <span>BudgetExceeded</span>
+<span>from</span> <span>veronica</span>.<span>budget</span>.<span>policy</span> <span>import</span> <span>BudgetPolicy</span>, <span>WindowLimit</span>
+<span>from</span> <span>veronica</span>.<span>budget</span>.<span>ledger</span> <span>import</span> <span>BudgetLedger</span>
+<span>from</span> <span>veronica</span>.<span>runtime</span>.<span>models</span> <span>import</span> <span>Labels</span>, <span>Budget</span> <span>policy</span> <span>=</span> <span>BudgetPolicy</span>(<span>org_limits</span><span>=</span><span>WindowLimit</span>(<span>minute_usd</span><span>=</span><span>0.05</span>))
+<span>enforcer</span> <span>=</span> <span>BudgetEnforcer</span>(<span>policy</span><span>=</span><span>policy</span>, <span>ledger</span><span>=</span><span>BudgetLedger</span>(), <span>bus</span><span>=</span><span>EventBus</span>())
+<span>ctx</span> <span>=</span> <span>RuntimeContext</span>(<span>enforcer</span><span>=</span><span>enforcer</span>) <span>labels</span> <span>=</span> <span>Labels</span>(<span>org</span><span>=</span><span>"demo-org"</span>, <span>team</span><span>=</span><span>"demo-team"</span>)
+<span>run</span> <span>=</span> <span>ctx</span>.<span>create_run</span>(<span>labels</span><span>=</span><span>labels</span>, <span>budget</span><span>=</span><span>Budget</span>(<span>limit_usd</span><span>=</span><span>0.10</span>))
+<span>session</span> <span>=</span> <span>ctx</span>.<span>create_session</span>(<span>run</span>) <span>call_count</span> <span>=</span> <span>0</span>
+<span>try</span>: <span>while</span> <span>True</span>: <span>with</span> <span>ctx</span>.<span>llm_call</span>(<span>session</span>, <span>model</span><span>=</span><span>"gpt-4"</span>, <span>labels</span><span>=</span><span>labels</span>, <span>run</span><span>=</span><span>run</span>) <span>as</span> <span>step</span>: <span>call_count</span> <span>+=</span> <span>1</span> <span>step</span>.<span>cost_usd</span> <span>=</span> <span>0.01</span> <span>print</span>(<span>f"Call <span><span>{</span><span>call_count</span><span>}</span></span>: $<span><span>{</span><span>step</span>.<span>cost_usd</span><span>}</span></span>"</span>)
+<span>except</span> <span>BudgetExceeded</span> <span>as</span> <span>e</span>: <span>print</span>(<span>f"HALTED after <span><span>{</span><span>call_count</span><span>}</span></span> calls: <span><span>{</span><span>e</span><span>}</span></span>"</span>)</pre></div>
+<div><pre><code>Call 1: $0.01
+Call 2: $0.01
+Call 3: $0.01
+Call 4: $0.01
+Call 5: $0.01
+HALTED after 5 calls: Budget exceeded: org/demo-org window=minute used=0.050000 limit=0.050000
+</code></pre></div>
+<p>Without VERONICA: infinite retries, $12,000 bill.
+With VERONICA: 5 calls, hard stop, zero damage.</p>
+<hr>
+<div><h2>Full Demo (4 Scenarios)</h2><a href="#full-demo-4-scenarios"></a></div>
+<div><pre>python -m veronica.demo</pre></div>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>retry_cascade</code></pre></td>
+<td>Failures escalate degrade level; scheduler rejects overflow</td>
+</tr>
+<tr>
+<td><pre><code>budget_burn</code></pre></td>
+<td>Spend crosses 80 / 90 / 100%; run goes DEGRADED then HALTED</td>
+</tr>
+<tr>
+<td><pre><code>tool_hang</code></pre></td>
+<td>Tool timeouts trigger blocking; LLM fallback succeeds</td>
+</tr>
+<tr>
+<td><pre><code>runaway_agent</code></pre></td>
+<td>Admission control queues then rejects excess calls</td>
+</tr>
+</tbody>
+</table>
+<p>Writes structured events to </p><pre><code>veronica-demo-events.jsonl</code></pre>.<p></p>
+<hr>
+<div><h2>Observability vs Enforcement</h2><a href="#observability-vs-enforcement"></a></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Observability Tools</th>
+<th>VERONICA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acts when</td>
+<td>After failure</td>
+<td><strong>Before damage</strong></td>
+</tr>
+<tr>
+<td>Prevents cost loss</td>
+<td>No</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr>
+<td>Stops runaway loop</td>
+<td>No</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr>
+<td>Circuit breaker</td>
+<td>No</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr>
+<td>Hard budget stop</td>
+<td>No</td>
+<td><strong>Yes</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Observability explains the fire.</p>
+<p><strong>VERONICA pulls the fuse.</strong></p>
+<hr>
+<div><h2>Integration</h2><a href="#integration"></a></div>
+<p>VERONICA wraps any LLM call pattern. Context manager based.</p>
+<div><pre><span>from</span> <span>veronica</span>.<span>runtime</span>.<span>hooks</span> <span>import</span> <span>RuntimeContext</span>
+<span>from</span> <span>veronica</span>.<span>control</span>.<span>controller</span> <span>import</span> <span>DegradeController</span>
+<span>from</span> <span>veronica</span>.<span>scheduler</span>.<span>scheduler</span> <span>import</span> <span>Scheduler</span> <span># Full stack: budget + degrade + scheduler</span>
+<span>ctx</span> <span>=</span> <span>RuntimeContext</span>( <span>enforcer</span><span>=</span><span>enforcer</span>, <span>controller</span><span>=</span><span>DegradeController</span>(), <span>scheduler</span><span>=</span><span>Scheduler</span>(),
+) <span># Wrap your agent loop</span>
+<span>for</span> <span>task</span> <span>in</span> <span>agent_tasks</span>: <span>try</span>: <span>with</span> <span>ctx</span>.<span>llm_call</span>(<span>session</span>, <span>model</span><span>=</span><span>"gpt-4"</span>, <span>labels</span><span>=</span><span>labels</span>, <span>run</span><span>=</span><span>run</span>) <span>as</span> <span>step</span>: <span>result</span> <span>=</span> <span>your_agent</span>.<span>execute</span>(<span>task</span>) <span>step</span>.<span>cost_usd</span> <span>=</span> <span>result</span>.<span>cost</span> <span>except</span> (<span>BudgetExceeded</span>, <span>DegradedRejected</span>, <span>SchedulerRejected</span>): <span># VERONICA blocked the call. Handle gracefully.</span> <span>break</span></pre></div>
+<p>Drop-in enforcement layer. No agent code changes required.</p>
+<hr>
+<div><h2>Why This Category Matters</h2><a href="#why-this-category-matters"></a></div>
+<p>As agents become autonomous, retries compound.</p>
+<p>A single transient failure can:</p>
+<ul>
+<li>explode cost</li>
+<li>cascade into recursive calls</li>
+<li>bypass soft limits</li>
+<li>create orphan state</li>
+<li>burn through budget at 3 AM with no one watching</li>
+</ul>
+<p>This is not a prompt problem.</p>
+<p>It is an <strong>execution control</strong> problem.</p>
+<p>VERONICA defines the Enforcement Layer category.</p>
+<hr>
+<div><h2>Roadmap</h2><a href="#roadmap"></a></div>
+<p><strong>v0.3.x</strong></p>
+<ul>
+<li>Agent loop detection improvements</li>
+<li>Multi-model policy enforcement</li>
+<li>CLI wrapper for any Python agent</li>
+</ul>
+<p><strong>v0.4.x</strong></p>
+<ul>
+<li>Docker image</li>
+<li>Middleware mode (ASGI/WSGI)</li>
+<li>OpenTelemetry export (opt-in)</li>
+<li>Redis-backed distributed scheduler</li>
+</ul>
+<hr>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><pre>pip install -e <span>.</span> <span><span>#</span> With dev tools</span>
+pip install -e <span><span>"</span>.[dev]<span>"</span></span>
+pytest</pre></div>
+<p><a target="_blank" href="https://camo.githubusercontent.com/c1aa4d33be3fa6ab6ea96037fc5b43a3c6491548eee1c44d667da42305d1705b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f74657374732d31313325323070617373696e672d627269676874677265656e"><img src="https://camo.githubusercontent.com/c1aa4d33be3fa6ab6ea96037fc5b43a3c6491548eee1c44d667da42305d1705b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f74657374732d31313325323070617373696e672d627269676874677265656e" alt="CI"></a>
+<a target="_blank" href="https://camo.githubusercontent.com/70631daa67407cb7c1071a11e292dd85b69762e98a796b2064429b653f050589/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636f7665726167652d39322532352d627269676874677265656e"><img src="https://camo.githubusercontent.com/70631daa67407cb7c1071a11e292dd85b69762e98a796b2064429b653f050589/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636f7665726167652d39322532352d627269676874677265656e" alt="Coverage"></a>
+<a target="_blank" href="https://camo.githubusercontent.com/e801a66299d2c15286fe0fee660d9ffa666c1c5576e5e1536acc07b49ce8ac8f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d332e31302532422d626c7565"><img src="https://camo.githubusercontent.com/e801a66299d2c15286fe0fee660d9ffa666c1c5576e5e1536acc07b49ce8ac8f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d332e31302532422d626c7565" alt="Python"></a></p>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

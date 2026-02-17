@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - larsderidder/context-lens: See what your AI sees. Framework-agnostic LLM context window visualizer.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - larsderidder/context-lens: See what your AI sees. Framework-agnostic LLM context window visualizer.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 12:34:34 PM | <a href="https://github.com/larsderidder/context-lens" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><h1>Context Lens</h1><a href="#context-lens"></a></div>
+<p><a target="_blank" href="https://camo.githubusercontent.com/defad35e7fe779c9d345ca28ffaddb27dc41a306b5c8deda1788931245f9ae20/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d626574612d626c7565"><img src="https://camo.githubusercontent.com/defad35e7fe779c9d345ca28ffaddb27dc41a306b5c8deda1788931245f9ae20/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d626574612d626c7565" alt="Beta"></a>
+<a href="https://github.com/larsderidder/context-lens/actions/workflows/ci.yml"><img src="https://github.com/larsderidder/context-lens/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+<a href="https://www.npmjs.com/package/context-lens"><img src="https://camo.githubusercontent.com/30020c6eb9b551d2cc550384ebb9557e8f438250119cd4ae06c7fd340cdbab2d/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f636f6e746578742d6c656e73" alt="npm"></a></p>
+<p>See what's actually filling your context window. Context Lens is a local proxy that captures LLM API calls from your coding tools and shows you a composition breakdown: what percentage is system prompts, tool definitions, conversation history, tool results, thinking blocks. It answers the question every developer asks: "why is this session so expensive?"</p>
+<p>Works with Claude Code, Codex, Gemini CLI, Aider, Pi, and anything else that talks to OpenAI/Anthropic/Google APIs. No code changes needed.</p>
+<p><a target="_blank" href="/larsderidder/context-lens/blob/main/screenshot-overview.png"><img src="/larsderidder/context-lens/raw/main/screenshot-overview.png" alt="Context Lens UI"></a></p>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><pre>pnpm add -g context-lens</pre></div>
+<p>Or with npm:</p>
+<div><pre>npm install -g context-lens</pre></div>
+<p>Or run directly:</p>
+<div><pre>npx context-lens ...</pre></div>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre>context-lens claude
+context-lens codex
+context-lens gemini
+context-lens gm <span><span>#</span> alias for gemini</span>
+context-lens aider --model claude-sonnet-4
+context-lens pi
+context-lens -- python my_agent.py</pre></div>
+<p>Or without installing: replace </p><pre><code>context-lens</code></pre> with <pre><code>npx context-lens</code></pre>.<p></p>
+<p>This starts the proxy (port 4040), opens the web UI (<a href="http://localhost:4041">http://localhost:4041</a>), sets the right env vars, and runs your command. Multiple tools can share one proxy; just open more terminals.</p>
+<div><h2>CLI options</h2><a href="#cli-options"></a></div>
+<div><pre>context-lens --help
+context-lens --version
+context-lens --privacy=minimal claude
+context-lens --no-open codex
+context-lens --no-ui -- claude
+context-lens doctor
+context-lens background start --no-ui
+context-lens background status
+context-lens background stop</pre></div>
+<ul>
+<li><pre><code>--help</code></pre>, <pre><code>--version</code></pre>: show usage/version and exit</li>
+<li><pre><code>--privacy &lt;minimal|standard|full&gt;</code></pre>: controls privacy mode passed to the analysis server</li>
+<li><pre><code>--no-open</code></pre>: do not auto-open <pre><code>http://localhost:4041</code></pre> when launching a command</li>
+<li><pre><code>--no-ui</code></pre>: run proxy only (no analysis/web UI server) for capture-only data gathering</li>
+<li><pre><code>--no-update-check</code></pre>: skip npm update check for this run</li>
+</ul>
+<p></p><pre><code>--no-ui</code></pre> is not compatible with <pre><code>codex</code></pre> subscription mode (<pre><code>mitmproxy</code></pre> ingestion depends on <pre><code>http://localhost:4041/api/ingest</code></pre>).<p></p>
+<p>Built-in commands:</p>
+<ul>
+<li><pre><code>doctor</code></pre>: run local diagnostics (ports, mitmproxy availability, cert path, writable dirs, background state)</li>
+<li><pre><code>background start [--no-ui]</code></pre>: start detached proxy (and analysis/web UI unless <pre><code>--no-ui</code></pre>)</li>
+<li><pre><code>background status</code></pre>: show detached process state</li>
+<li><pre><code>background stop</code></pre>: stop detached process state</li>
+</ul>
+<p>Aliases:</p>
+<ul>
+<li><pre><code>cc</code></pre> -&gt; <pre><code>claude</code></pre></li>
+<li><pre><code>cpi</code></pre> -&gt; <pre><code>pi</code></pre></li>
+<li><pre><code>cx</code></pre> -&gt; <pre><code>codex</code></pre></li>
+<li><pre><code>gm</code></pre> -&gt; <pre><code>gemini</code></pre></li>
+</ul>
+<p>By default, the CLI does a cached (once per day) non-blocking check for new npm versions and prints an upgrade hint when a newer release is available. Disable globally with </p><pre><code>CONTEXT_LENS_NO_UPDATE_CHECK=1</code></pre>.<p></p>
+<div><h2>Supported Providers</h2><a href="#supported-providers"></a></div>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Method</th>
+<th>Status</th>
+<th>Environment Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anthropic</strong></td>
+<td>Reverse Proxy</td>
+<td> Stable</td>
+<td><pre><code>ANTHROPIC_BASE_URL</code></pre></td>
+</tr>
+<tr>
+<td><strong>OpenAI</strong></td>
+<td>Reverse Proxy</td>
+<td> Stable</td>
+<td><pre><code>OPENAI_BASE_URL</code></pre></td>
+</tr>
+<tr>
+<td><strong>Google Gemini</strong></td>
+<td>Reverse Proxy</td>
+<td> Experimental</td>
+<td><pre><code>GOOGLE_GEMINI_BASE_URL</code></pre></td>
+</tr>
+<tr>
+<td><strong>ChatGPT (Subscription)</strong></td>
+<td>MITM Proxy</td>
+<td> Stable</td>
+<td><pre><code>https_proxy</code></pre></td>
+</tr>
+<tr>
+<td><strong>Pi Coding Agent</strong></td>
+<td>Reverse Proxy (temporary per-run config)</td>
+<td> Stable</td>
+<td><pre><code>PI_CODING_AGENT_DIR</code></pre> (set by wrapper)</td>
+</tr>
+<tr>
+<td><strong>OpenAI-Compatible</strong></td>
+<td>Reverse Proxy</td>
+<td> Stable</td>
+<td><pre><code>UPSTREAM_OPENAI_URL</code></pre> + <pre><code>OPENAI_BASE_URL</code></pre></td>
+</tr>
+<tr>
+<td><strong>Aider / Generic</strong></td>
+<td>Reverse Proxy</td>
+<td> Stable</td>
+<td>Detects standard patterns</td>
+</tr>
+</tbody>
+</table>
+<div><h2>What You Get</h2><a href="#what-you-get"></a></div>
+<ul>
+<li><strong>Composition treemap:</strong> visual breakdown of what's filling your context (system prompts, tool definitions, tool results, messages, thinking, images)</li>
+<li><strong>Cost tracking:</strong> per-turn and per-session cost estimates across models</li>
+<li><strong>Conversation threading:</strong> groups API calls by session, shows main agent vs subagent turns</li>
+<li><strong>Agent breakdown:</strong> token usage and cost per agent within a session</li>
+<li><strong>Timeline:</strong> bar chart of context size over time, filterable by main/all/cost</li>
+<li><strong>Context diff:</strong> turn-to-turn delta showing what grew, shrank, or appeared</li>
+<li><strong>Findings:</strong> flags large tool results, unused tool definitions, context overflow risk, compaction events</li>
+<li><strong>Auto-detection:</strong> recognizes Claude Code, Codex, aider, Pi, and others by source tag or system prompt</li>
+<li><strong>LHAR export:</strong> download session data as LHAR (LLM HTTP Archive) format (<a href="/larsderidder/context-lens/blob/main/docs/LHAR.md">doc</a>)</li>
+<li><strong>State persistence:</strong> data survives restarts; delete individual sessions or reset all from the UI</li>
+<li><strong>Streaming support:</strong> passes through SSE chunks in real-time</li>
+</ul>
+<div><h3>Screenshots</h3><a href="#screenshots"></a></div>
+<p><strong>Sessions list</strong></p>
+<p><a target="_blank" href="/larsderidder/context-lens/blob/main/sessions-screenshot.png"><img src="/larsderidder/context-lens/raw/main/sessions-screenshot.png" alt="Sessions list"></a></p>
+<p><strong>Messages view with drill-down details</strong></p>
+<p><a target="_blank" href="/larsderidder/context-lens/blob/main/messages-screenshot.png"><img src="/larsderidder/context-lens/raw/main/messages-screenshot.png" alt="Messages view"></a></p>
+<p><strong>Timeline view</strong></p>
+<p><a target="_blank" href="/larsderidder/context-lens/blob/main/timeline-screenshot.png"><img src="/larsderidder/context-lens/raw/main/timeline-screenshot.png" alt="Timeline view"></a></p>
+<p><strong>Findings panel</strong></p>
+<p><a target="_blank" href="/larsderidder/context-lens/blob/main/findings-screenshot.png"><img src="/larsderidder/context-lens/raw/main/findings-screenshot.png" alt="Findings panel"></a></p>
+<div><h2>Manual Mode</h2><a href="#manual-mode"></a></div>
+<div><pre>pnpm start
+<span><span>#</span> Port 4040 = proxy, port 4041 = web UI</span> ANTHROPIC_BASE_URL=http://localhost:4040 claude
+OPENAI_BASE_URL=http://localhost:4040 codex <span><span>#</span> API-key/OpenAI-base-url mode</span>
+GOOGLE_GEMINI_BASE_URL=http://localhost:4040 gemini <span><span>#</span> experimental</span></pre></div>
+<div><h3>Source Tagging</h3><a href="#source-tagging"></a></div>
+<p>Add a path prefix to tag requests by tool:</p>
+<div><pre>ANTHROPIC_BASE_URL=http://localhost:4040/claude claude
+OPENAI_BASE_URL=http://localhost:4040/aider aider</pre></div>
+<div><h3>Pi Coding Agent</h3><a href="#pi-coding-agent"></a></div>
+<p>Pi ignores standard base-URL environment variables. </p><pre><code>context-lens pi</code></pre> works by creating a private per-run temporary Pi config directory under <pre><code>/tmp/context-lens-pi-agent-*</code></pre>, symlinking your normal <pre><code>~/.pi/agent/*</code></pre> files, and injecting proxy <pre><code>baseUrl</code></pre> overrides into its temporary <pre><code>models.json</code></pre>.<p></p>
+<p>Your real </p><pre><code>~/.pi/agent/models.json</code></pre> is never modified, and the temporary directory is removed when the command exits.<p></p>
+<div><pre>context-lens pi</pre></div>
+<p>Pi config paths:</p>
+<ul>
+<li>Real Pi config dir: <pre><code>~/.pi/agent</code></pre></li>
+<li>Real Pi models file: <pre><code>~/.pi/agent/models.json</code></pre> (left untouched)</li>
+<li>Temporary per-run config dir: <pre><code>/tmp/context-lens-pi-agent-*</code></pre></li>
+<li>Runtime override providers in temp <pre><code>models.json</code></pre>: <pre><code>anthropic</code></pre>, <pre><code>openai</code></pre>, <pre><code>google-gemini-cli</code></pre>, <pre><code>google-antigravity</code></pre></li>
+</ul>
+<p>If you prefer not to use the temporary runtime override, you can also edit your real </p><pre><code>~/.pi/agent/models.json</code></pre> directly and set those providers' <pre><code>baseUrl</code></pre> values to <pre><code>http://localhost:4040/pi</code></pre>.<p></p>
+<p>Example </p><pre><code>~/.pi/agent/models.json</code></pre>:<p></p>
+<div><pre>{ <span>"providers"</span>: { <span>"anthropic"</span>: { <span>"baseUrl"</span>: <span><span>"</span>http://localhost:4040/pi<span>"</span></span> }, <span>"openai"</span>: { <span>"baseUrl"</span>: <span><span>"</span>http://localhost:4040/pi<span>"</span></span> }, <span>"google-gemini-cli"</span>: { <span>"baseUrl"</span>: <span><span>"</span>http://localhost:4040/pi<span>"</span></span> }, <span>"google-antigravity"</span>: { <span>"baseUrl"</span>: <span><span>"</span>http://localhost:4040/pi<span>"</span></span> } }
+}</pre></div>
+<p>Tested with: Claude Opus 4.6, Gemini 2.5 Flash (via Gemini CLI subscription), GPT-OSS 120B (via Antigravity). The </p><pre><code>openai-codex</code></pre> provider (ChatGPT subscription) has the same Cloudflare limitation as Codex and is not supported through the reverse proxy.<p></p>
+<div><h3>OpenAI-Compatible Endpoints</h3><a href="#openai-compatible-endpoints"></a></div>
+<p>Many providers expose OpenAI-compatible APIs (OpenRouter, Together, Groq, Fireworks, Ollama, vLLM, OpenCode Zen, etc.). Context Lens supports these out of the box since it already parses </p><pre><code>/v1/chat/completions</code></pre> and <pre><code>/v1/responses</code></pre> request formats. The model name is extracted from the request body, so token estimates and cost tracking work automatically for known models.<p></p>
+<p>To route traffic through the proxy, override the OpenAI upstream URL to point at your provider:</p>
+<div><pre>UPSTREAM_OPENAI_URL=https://opencode.ai/zen/v1 context-lens -- opencode <span><span>"</span>prompt<span>"</span></span></pre></div>
+<p>Or in manual/standalone mode:</p>
+<div><pre>UPSTREAM_OPENAI_URL=https://openrouter.ai/api context-lens background start
+OPENAI_BASE_URL=http://localhost:4040/my-tool my-tool <span><span>"</span>prompt<span>"</span></span></pre></div>
+<p>The </p><pre><code>UPSTREAM_OPENAI_URL</code></pre> variable tells the proxy where to forward requests that are classified as OpenAI format. The source tag (<pre><code>/my-tool/</code></pre> prefix) is still stripped before forwarding, so the upstream receives clean API paths.<p></p>
+<p>Note: </p><pre><code>UPSTREAM_OPENAI_URL</code></pre> is global. All OpenAI-format requests go to that upstream. If you need to use a custom endpoint and the real OpenAI API simultaneously, use separate proxy instances or the mitmproxy approach below.<p></p>
+<div><h3>Codex Subscription Mode</h3><a href="#codex-subscription-mode"></a></div>
+<p>Codex with a ChatGPT subscription needs mitmproxy for HTTPS interception (Cloudflare blocks reverse proxies). The CLI handles this automatically. Just make sure </p><pre><code>mitmdump</code></pre> is installed:<p></p>
+<div><pre>pipx install mitmproxy
+context-lens codex</pre></div>
+<p>If Codex fails with certificate trust errors, install/trust the mitmproxy CA certificate (</p><pre><code>~/.mitmproxy/mitmproxy-ca-cert.pem</code></pre>) for your environment.<p></p>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<p>Context Lens sits between your coding tool and the LLM API, capturing requests in transit. It has two parts: a <strong>proxy</strong> and an <strong>analysis server</strong>.</p>
+<div><pre><code>Tool ─HTTP─ Proxy (:4040) ─HTTPS─ api.anthropic.com / api.openai.com │ capture files │ Analysis Server (:4041) → Web UI
+</code></pre></div>
+<p>The <strong>proxy</strong> (</p><pre><code>src/proxy/</code></pre>) forwards requests to the LLM API and writes each request/response pair to disk. It has <strong>zero external dependencies</strong> (only Node.js built-ins), so you can read the entire proxy source and verify it does nothing unexpected with your API keys. This is an intentional architectural constraint: your API keys pass through the proxy, so it must stay small, auditable, and free of transitive supply-chain risk.<p></p>
+<p>The <strong>analysis server</strong> picks up those captures, parses request bodies, estimates tokens, groups requests into conversations, computes composition breakdowns, calculates costs, scores context health, and scans for prompt injection patterns. It serves the web UI and API. The two sides communicate only through capture files on disk, so the analysis server, CLI, and web UI are free to use whatever dependencies they need without affecting the proxy's trust boundary.</p>
+<p>The CLI sets env vars like </p><pre><code>ANTHROPIC_BASE_URL=http://localhost:4040</code></pre> so the tool sends requests to the proxy instead of the real API. The tool never knows it's being proxied.<p></p>
+<p><strong>Forward HTTPS proxy (Codex subscription mode)</strong></p>
+<p>Codex with a ChatGPT subscription authenticates against </p><pre><code>chatgpt.com</code></pre>, which is behind Cloudflare. A reverse proxy changes the TLS fingerprint, causing Cloudflare to reject the request. For this case, Context Lens uses mitmproxy as a forward HTTPS proxy:<p></p>
+<div><pre><code>Tool ─HTTPS via proxy─ mitmproxy (:8080) ─HTTPS─ chatgpt.com │ mitm_addon.py │ ▼ Analysis Server /api/ingest
+</code></pre></div>
+<p>The tool makes its own TLS connection through the proxy, preserving its native fingerprint. The mitmproxy addon intercepts completed request/response pairs and posts them to the analysis server's ingest API. The tool needs </p><pre><code>https_proxy</code></pre> and <pre><code>SSL_CERT_FILE</code></pre> env vars set to route through mitmproxy and trust its CA certificate.<p></p>
+<div><h2>Why Context Lens?</h2><a href="#why-context-lens"></a></div>
+<p>Tools like <a href="https://langfuse.com/">Langfuse</a> and <a href="https://braintrust.dev/">Braintrust</a> are great for observability when you control the code: you add their SDK, instrument your calls, and get traces in a dashboard. Context Lens solves a different problem.</p>
+<p><strong>You can't instrument tools you don't own.</strong> Claude Code, Codex, Gemini CLI, and Aider are closed-source binaries. You can't add an SDK to them. Context Lens works as a transparent proxy, so it captures everything without touching the tool's code.</p>
+<p><strong>Context composition, not just token counts.</strong> Most observability tools show you input/output token totals. Context Lens breaks down <em>what's inside</em> the context window: how much is system prompts vs. tool definitions vs. conversation history vs. tool results vs. thinking blocks. That's what you need to understand why sessions get expensive.</p>
+<p><strong>Local and private.</strong> Everything runs on your machine. No accounts, no cloud, no data leaving your network. Start it, use it, stop it.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Context Lens</th>
+<th>Langfuse / Braintrust</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Setup</strong></td>
+<td><pre><code>context-lens claude</code></pre></td>
+<td>Add SDK, configure API keys</td>
+</tr>
+<tr>
+<td><strong>Works with closed-source tools</strong></td>
+<td>Yes (proxy)</td>
+<td>No (needs instrumentation)</td>
+</tr>
+<tr>
+<td><strong>Context composition breakdown</strong></td>
+<td>Yes (treemap, per-category)</td>
+<td>Token totals only</td>
+</tr>
+<tr>
+<td><strong>Runs locally</strong></td>
+<td>Yes, entirely</td>
+<td>Cloud or self-hosted server</td>
+</tr>
+<tr>
+<td><strong>Prompt management &amp; evals</strong></td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Team/production use</strong></td>
+<td>No (single-user, local)</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Context Lens is for developers who want to understand and optimize their coding agent sessions. If you need production monitoring, prompt versioning, or team dashboards, use Langfuse.</p>
+<div><h2>Data</h2><a href="#data"></a></div>
+<p>Captured requests are kept in memory (last 200 sessions) and persisted to </p><pre><code>~/.context-lens/data/state.jsonl</code></pre> across restarts. Each session is also logged as a separate <pre><code>.lhar</code></pre> file in <pre><code>~/.context-lens/data/</code></pre>. Use the Reset button in the UI to clear everything.<p></p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

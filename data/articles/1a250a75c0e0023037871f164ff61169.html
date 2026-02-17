@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - ofershap/gitshow: Replace github.com with gitshow.dev in any profile URL - beautiful developer portfolios from GitHub data</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - ofershap/gitshow: Replace github.com with gitshow.dev in any profile URL - beautiful developer portfolios from GitHub data</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 12:16:22 PM | <a href="https://github.com/ofershap/gitshow" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>GitShow</h1><a href="#gitshow"></a></div>
+<p><a href="https://github.com/ofershap/gitshow/actions/workflows/ci.yml"><img src="https://github.com/ofershap/gitshow/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+<a href="https://www.typescriptlang.org/"><img src="https://camo.githubusercontent.com/873c146a0ff18b0403e9bbcab20d1ee2e475f57d65014ccd98fa2c61b81087a3/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f547970655363726970742d7374726963742d626c75652e737667" alt="TypeScript"></a>
+<a href="https://nextjs.org/"><img src="https://camo.githubusercontent.com/71bcb4668a770f4473227dd4e4fbad69790c1fb7c297f71e225eb7be6690f126/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6578742e6a732d31362d626c61636b2e737667" alt="Next.js"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT"></a></p>
+<p><strong>Your GitHub profile, but way better.</strong></p>
+<div><pre><code>github.com/username → gitshow.dev/username
+</code></pre></div>
+<p>Replace </p><pre><code>github.com</code></pre> with <pre><code>gitshow.dev</code></pre> in any profile URL. No signup, no config, no deploy.<p></p>
+<blockquote>
+<p>Inspired by <a href="https://gitmcp.io">GitMCP</a> — same URL-swap pattern, but for developer portfolios instead of AI context.</p>
+</blockquote>
+<p><a target="_blank" href="/ofershap/gitshow/blob/main/assets/preview.png"><img src="/ofershap/gitshow/raw/main/assets/preview.png" alt="GitShow Preview"></a></p>
+<hr>
+<div><h2>See It In Action</h2><a href="#see-it-in-action"></a></div>
+<table>
+<thead>
+<tr>
+<th>GitHub Profile</th>
+<th>GitShow Portfolio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/sindresorhus">github.com/sindresorhus</a></td>
+<td><a href="https://gitshow.dev/sindresorhus">gitshow.dev/sindresorhus</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/torvalds">github.com/torvalds</a></td>
+<td><a href="https://gitshow.dev/torvalds">gitshow.dev/torvalds</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/kelseyhightower">github.com/kelseyhightower</a></td>
+<td><a href="https://gitshow.dev/kelseyhightower">gitshow.dev/kelseyhightower</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/ThePrimeagen">github.com/ThePrimeagen</a></td>
+<td><a href="https://gitshow.dev/ThePrimeagen">gitshow.dev/ThePrimeagen</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>What GitHub Doesn't Show (But GitShow Does)</h2><a href="#what-github-doesnt-show-but-gitshow-does"></a></div>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What you see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>npm downloads</strong></td>
+<td>Total downloads/month across all your packages, with per-package bar chart</td>
+</tr>
+<tr>
+<td><strong>Smart categories</strong></td>
+<td>Repos auto-grouped: MCP Servers, CLI Tools, React &amp; UI, DevOps, i18n...</td>
+</tr>
+<tr>
+<td><strong>Focus areas</strong></td>
+<td>Aggregated topic cloud showing what you specialize in</td>
+</tr>
+<tr>
+<td><strong>Project timeline</strong></td>
+<td>When you shipped projects — your creation velocity</td>
+</tr>
+<tr>
+<td><strong>Tech stack bar</strong></td>
+<td>Visual language breakdown across all repos</td>
+</tr>
+<tr>
+<td><strong>Aggregate stats</strong></td>
+<td>Projects, stars, forks, followers, npm downloads — one glanceable row</td>
+</tr>
+<tr>
+<td><strong>OG social card</strong></td>
+<td>Dynamic 1200×630 image with stats and categories — looks great when shared</td>
+</tr>
+<tr>
+<td><strong>Share buttons</strong></td>
+<td>One-click share to X, LinkedIn, or copy link</td>
+</tr>
+</tbody>
+</table>
+<p>Forks and archived repos are automatically filtered out. Only your original work is shown.</p>
+<hr>
+<div><h2>URL Patterns</h2><a href="#url-patterns"></a></div>
+<p>All of these work:</p>
+<div><pre><code>gitshow.dev/username # direct
+gitshow.dev/?url=https://github.com/username # query param
+gitshow.dev/?https://github.com/username # bare prefix
+</code></pre></div>
+<hr>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>Browser request ↓
+Next.js App Router (Vercel Edge) ↓
+GitHub REST API (/users, /repos) + npm Registry API ↓
+Auto-categorize repos by language, topics, description ↓
+Server-rendered portfolio page ↓
+ISR cache (1 hour TTL)
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Next.js 16</strong></td>
+<td>App Router, Server Components, ISR</td>
+</tr>
+<tr>
+<td><strong>React 19</strong></td>
+<td>Zero client JS on portfolio pages (except share/expand)</td>
+</tr>
+<tr>
+<td><strong>Tailwind CSS 4</strong></td>
+<td>Dark theme, responsive layout</td>
+</tr>
+<tr>
+<td><strong>Vercel OG</strong></td>
+<td>Dynamic social preview image generation (Satori)</td>
+</tr>
+<tr>
+<td><strong>GitHub API</strong></td>
+<td>Profile + repos data, cached with <pre><code>revalidate: 3600</code></pre></td>
+</tr>
+<tr>
+<td><strong>npm Registry</strong></td>
+<td>Package search + download counts per maintainer</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Deploy Your Own</h2><a href="#deploy-your-own"></a></div>
+<div><h3>One-click Vercel deploy</h3><a href="#one-click-vercel-deploy"></a></div>
+<p><a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fofershap%2Fgitshow"><img src="https://camo.githubusercontent.com/7015516519ae874ab75537283bc75f86b3d46386ed994093a3790a1180913164/68747470733a2f2f76657263656c2e636f6d2f627574746f6e" alt="Deploy with Vercel"></a></p>
+<div><h3>Or clone and run locally</h3><a href="#or-clone-and-run-locally"></a></div>
+<div><pre>git clone https://github.com/ofershap/gitshow.git
+<span>cd</span> gitshow
+npm install
+npm run dev <span><span>#</span> → http://localhost:3000</span></pre></div>
+<div><h3>Environment Variables</h3><a href="#environment-variables"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>GITHUB_TOKEN</code></pre></td>
+<td>No</td>
+<td>GitHub PAT for higher rate limits (60/hr → 5,000/hr)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Tip:</strong> Without a token, the GitHub API allows 60 requests/hour per IP. If you're deploying publicly, add a token to avoid rate limiting.</p>
+</blockquote>
+<hr>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>src/
+├── app/
+│ ├── page.tsx # Landing page — URL swap animation, search
+│ ├── layout.tsx # Root layout — dark theme, Geist font
+│ ├── [username]/
+│ │ ├── page.tsx # Portfolio page (SSR + ISR)
+│ │ ├── loading.tsx # Spinner while loading
+│ │ ├── error.tsx # Error boundary (rate limit, etc.)
+│ │ └── not-found.tsx # 404 for invalid usernames
+│ └── api/og/[username]/
+│ └── route.tsx # OG image generation (1200×630 PNG)
+├── components/
+│ ├── hero-card.tsx # Avatar, name, bio, aggregate stats + npm
+│ ├── category-section.tsx # Auto-grouped repos with expand/collapse
+│ ├── npm-card.tsx # npm download stats with bar chart
+│ ├── tech-stack.tsx # Language breakdown bar + legend
+│ ├── topic-cloud.tsx # Weighted focus areas cloud
+│ ├── activity-graph.tsx # Project creation timeline
+│ ├── share-bar.tsx # Share to X, LinkedIn, copy link
+│ ├── social-links.tsx # GitHub, Twitter, LinkedIn, website
+│ ├── url-swap.tsx # Animated URL swap (landing page)
+│ ├── username-input.tsx # Search input (landing page)
+│ └── footer.tsx # Attribution
+├── lib/
+│ ├── github.ts # GitHub API client with caching
+│ ├── npm.ts # npm registry API client
+│ ├── categorize.ts # Smart repo categorization engine
+│ ├── types.ts # TypeScript interfaces
+│ └── utils.ts # formatNumber, timeAgo, getTopRepos
+└── proxy.ts # URL redirect handler
+</code></pre></div>
+<hr>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre>npm run dev <span><span>#</span> Dev server → localhost:3000</span>
+npm run build <span><span>#</span> Production build</span>
+npm run lint <span><span>#</span> ESLint</span></pre></div>
+<hr>
+<div><h2>Author</h2><a href="#author"></a></div>
+<p><strong>Ofer Shapira</strong></p>
+<p><a href="https://linkedin.com/in/ofershap"><img src="https://camo.githubusercontent.com/d8276e59a5d32fd0655a1af6cd8aeadf117011c67f25da5f0cb8477a08732dee/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c696e6b6564496e2d436f6e6e6563742d3041363643323f7374796c653d666c6174266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465" alt="LinkedIn"></a>
+<a href="https://github.com/ofershap"><img src="https://camo.githubusercontent.com/568545f86bd46d852f7f8da134f28616766ed9269c7ecc42784b5a12cb0b2340/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875622d466f6c6c6f772d3138313731373f7374796c653d666c6174266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465" alt="GitHub"></a></p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT <a href="https://github.com/ofershap">Ofer Shapira</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

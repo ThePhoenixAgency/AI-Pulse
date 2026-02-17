@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Game manager Lutris v0.5.20 released with Proton upgrades, store updates and much more</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Game manager Lutris v0.5.20 released with Proton upgrades, store updates and much more</h1>
+  <div class="metadata">
+    Source: GamingOnLinux | Date: 2/17/2026 11:48:36 AM | <a href="https://www.gamingonlinux.com/2026/02/game-manager-lutris-v0-5-20-released-with-proton-upgrades-store-updates-and-much-more/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Lutris is an all-in-one open source game manager for launching games from various stores on Linux, with version 0.5.20 out now.</p>
+<p>This release overhauls how it runs GE-Proton, making use of the modern umu launcher to keep it all running nicely. So it should, in theory, offer a better experience than before when running Windows games. It also improves support for Wayland, adds support for the ZOOM Platform store, there's improvements for the EA App, some settings have been cleaned up and much more.</p>
+<p><img src="https://uploads.golmedia.net/uploads/articles/article_media/20279910521771328835gol2.webp"></p>
+<p>Here's the full list of changes:</p>
+<blockquote>
+<ul>
+<li>Proton-GE launched via umu is now the default. Umu takes care of keeping Proton-GE up to date.</li>
+<li>Fix Proton integration bugs so Proton-fixes are applied</li>
+<li>Do not offer VKD3D, D3D Extras or DXVK-NVAPI on Proton versions; Proton will handle these.</li>
+<li>The "Enable Esync" and "Enable Fsync" and "DXVK" settings are now passed on to Proton</li>
+<li>DXVK's integrated D8VK will be enabled in Proton</li>
+<li>Wine runner adds an option to select Wine's "Wayland driver"</li>
+<li>Add little buttons to select covert-art, banner and icons via URL in game configuration</li>
+<li>Cover-art or banners from sources will be used when Lutris media is not available</li>
+<li>Emulator BIOS file location (used by libretro) may be set in Preferences</li>
+<li>Fix for updated Flathub API</li>
+<li>Change Itch.io over to the use of API keys instead of usernames and passwords</li>
+<li>Update EA App source to their new API</li>
+<li>Simplify Itcho.io collections- if you have no collection named "Lutris", we will show all games</li>
+<li>MAME Machine setting uses a searchable entry for its enormous list</li>
+<li>Obtain the release year from GOG and Itch.io</li>
+<li>Add "Azahar" runner</li>
+<li>Add "ZOOM Platform" source</li>
+<li>Add "Steam Family" source to support Steam Families</li>
+<li>Updated versions of runners for TIC-80, EasyRPG, mGBA, Rosalie's Mupen GUI, Ruffle, 86Box</li>
+<li>Ryujinx runner can now specific 'application ID' for your multi-game XCIs.</li>
+<li>Support for importing Commodore 64 ROMs</li>
+<li>Support ICDs for Intel Xe GPUs</li>
+<li>Add option for 'ptyxis' terminal</li>
+<li>Redundant "Add Games" menu item removed; use the plus button in the corner</li>
+<li>Option to hide a source's games from also appearing in the Games view</li>
+<li>"Manual Script" for the context menu will now see the game's environment variables</li>
+<li>Add "Create Steam Big Picture shortcut" to the context menu</li>
+<li>Add a file association to run .lutris installer files via double-click</li>
+<li>Fix compatibility with Python 3.14</li>
+</ul>
+</blockquote>
+<p><em>Source: </em><a href="https://github.com/lutris/lutris/releases/tag/v0.5.20" target="_blank"><em>GitHub</em></a></p>
+<p>See more on the <a href="https://lutris.net/" target="_blank">Lutris website</a>.</p> <p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span> </p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AGENTS.md Files Don't Work the Way You Think — A 138-Repo Study Proves It</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>AGENTS.md Files Don't Work the Way You Think — A 138-Repo Study Proves It</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 11:52:09 AM | <a href="https://dev.to/umesh_malik/agentsmd-files-dont-work-the-way-you-think-a-138-repo-study-proves-it-2k1g" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Somewhere right now, a developer is carefully crafting an AGENTS.md file for their repository. They are writing detailed instructions about code style, architecture decisions, build commands, and testing strategies. They believe this will make AI coding agents work significantly better on their codebase.</p> <p>They are mostly wrong.</p> <p>A new study from ETH Zurich — testing 138 repository instances across 5,694 pull requests — just proved that the most popular approach to writing AGENTS.md files actually <em>hurts</em> agent performance. And even the best-case scenario delivers far less improvement than the hype suggests.</p> <p>The AI coding agent ecosystem has a documentation problem. And it is not the one you think.</p> <h2> <a name="the-study-that-nobody-wanted-to-see" href="#the-study-that-nobody-wanted-to-see"> </a> The Study That Nobody Wanted to See
+</h2> <p>On February 12, 2026, researchers Thibaud Gloaguen, Niels Mündler, Mark Müller, Veselin Raychev, and Martin Vechev from ETH Zurich published a paper that should have rattled every developer who has spent hours writing AGENTS.md files: <em>"Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?"</em></p> <p>Their methodology was rigorous. They created <strong>AGENTbench</strong>, a new benchmark consisting of 138 instances from 12 Python repositories that already contained developer-written context files. These instances were derived from 5,694 real GitHub pull requests — not synthetic tasks, not toy examples.</p> <p>They tested four frontier coding agents:</p> <ul>
+<li>
+<strong>Claude Code</strong> (Sonnet 4.5)</li>
+<li>
+<strong>Codex</strong> (GPT-5.2)</li>
+<li>
+<strong>Codex</strong> (GPT-5.1 mini)</li>
+<li>
+<strong>Qwen Code</strong> (Qwen3-30b-coder)</li>
+</ul> <p>Three experimental conditions:</p> <ol>
+<li>
+<strong>No context files</strong> — agents work with just the codebase</li>
+<li>
+<strong>LLM-generated context files</strong> — the approach most developers use today</li>
+<li>
+<strong>Developer-written context files</strong> — hand-crafted by repository maintainers</li>
+</ol> <p>They also validated results against <strong>SWE-bench Lite</strong> (300 tasks from popular open-source repositories) to ensure generalizability.</p> <p>The results were not what the AGENTS.md evangelists expected.</p> <h2> <a name="the-numbers-that-break-the-narrative" href="#the-numbers-that-break-the-narrative"> </a> The Numbers That Break the Narrative
+</h2> <p>Here is what the study found:</p> <p><strong>LLM-generated AGENTS.md files decreased agent performance by 2–3% on average.</strong></p> <p>Read that again. The most common approach to creating AGENTS.md files — asking an LLM to analyze your codebase and generate instructions — makes agents <em>worse</em> at their jobs. Not neutral. Worse.</p> <p><strong>Developer-written AGENTS.md files improved performance by only 4% on average.</strong></p> <p>A 4% improvement from a hand-written context file. After hours of careful documentation. After thinking through every edge case and convention.</p> <p><strong>Both types of context files increased inference costs by over 20%.</strong></p> <p>So you are paying more — in tokens, in latency, in actual dollars — for marginal improvement at best and active harm at worst.</p> <p>The study also uncovered why this happens:</p> <ul>
+<li><p><strong>Agents follow the instructions.</strong> When AGENTS.md mentioned repository-specific tools, agents used those tools 2.5x more often. The problem is not compliance — it is that the instructions are not actually helpful.</p></li>
+<li><p><strong>Agents spend 14–22% more reasoning tokens</strong> processing context files. That is reasoning capacity redirected from solving the actual problem to parsing your documentation.</p></li>
+<li><p><strong>Repository overviews do not guide agents to relevant files.</strong> The high-level "here is how the codebase is structured" sections that most AGENTS.md files contain? Agents largely ignore them when navigating code.</p></li>
+<li><p><strong>LLM-generated files primarily duplicate existing documentation.</strong> When the researchers removed existing README and docs from repositories, LLM-generated context files improved performance by 2.7% — proving they were just restating information already available in the codebase.</p></li>
+</ul> <p>The conclusion was blunt: LLM-generated context files should generally be omitted entirely. Human-written files should contain only minimal, essential requirements that cannot be discovered from the code itself.</p> <h2> <a name="what-is-agentsmd-and-how-did-we-get-here" href="#what-is-agentsmd-and-how-did-we-get-here"> </a> What Is AGENTS.md, and How Did We Get Here?
+</h2> <p>For the uninitiated: AGENTS.md is an open format — think "a README, but for AI agents." It is a dedicated place to put context and instructions that help AI coding agents work effectively in a project: build steps, test commands, code style guidelines, architectural decisions, security considerations.</p> <p>The format was created by the <strong>agentsmd</strong> organization with significant backing from OpenAI and has been adopted at remarkable speed. The GitHub repository has <strong>17,500+ stars</strong> and <strong>1,200+ forks</strong>. Over <strong>60,000 open-source projects</strong> now include an AGENTS.md file.</p> <p>The list of supporting tools reads like a who's who of AI development:</p> <ul>
+<li>
+<strong>OpenAI Codex</strong> — first-class support</li>
+<li>
+<strong>Google Jules and Gemini CLI</strong> — full integration</li>
+<li>
+<strong>Cognition's Devin and Windsurf</strong> — built-in parsing</li>
+<li>
+<strong>GitHub Copilot</strong> — via <code>.github/copilot-instructions.md</code> (similar concept)</li>
+<li>
+<strong>Cursor</strong> — via <code>.cursorrules</code> / <code>.cursor/rules/</code>
+</li>
+<li>
+<strong>25+ other tools</strong> including Aider, VS Code, Zed, Warp, Semgrep, and UiPath</li>
+</ul> <p>Anthropic, notably, maintains its own system called <strong>CLAUDE.md</strong> for Claude Code, with a more sophisticated hierarchical memory system (organization-wide policies, project memory, path-specific rules, and auto-memory that persists across sessions).</p> <div>
+<pre><code><span># AGENTS.md</span> <span>## Project Overview</span>
+Brief description of the project architecture. <span>## Build &amp; Test</span>
+<span>-</span> <span>`npm run build`</span> — production build
+<span>-</span> <span>`npm test`</span> — run all tests
+<span>-</span> <span>`npm run lint`</span> — check code style <span>## Code Style</span>
+<span>-</span> Use TypeScript strict mode
+<span>-</span> Prefer functional components
+<span>-</span> Error handling: use Result types, not exceptions <span>## Architecture</span>
+<span>-</span> src/api/ — REST endpoints
+<span>-</span> src/core/ — business logic
+<span>-</span> src/db/ — database layer
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Simple. Sensible. And apparently, not nearly as helpful as everyone assumed.</p> <h2> <a name="the-hacker-news-reality-check" href="#the-hacker-news-reality-check"> </a> The Hacker News Reality Check
+</h2> <p>When the study hit Hacker News, the discussion was illuminating — and split right down the middle.</p> <p><strong>The optimists reframed the results.</strong> User <em>deaux</em> argued that a 4% improvement from a simple markdown file is actually "massive" and represents a must-have resource. The real value, they claimed, emerges in <strong>closed-source projects with specialized domain knowledge</strong> that agents cannot discover on their own — exactly the kind of projects underrepresented in open-source benchmarks.</p> <p><strong>The pragmatists shared war stories.</strong> Developer <em>tomashubelbauer</em> described replacing AGENTS.md rules entirely with compiler-based checks — TypeScript AST validation, pre-commit hooks, deterministic linters. "Even explicit instructions are routinely ignored," they wrote, so programmatic enforcement became the only reliable path.</p> <p><strong>The skeptics questioned the format's existence.</strong> User <em>kkapelon</em> asked the obvious question: why does AGENTS.md exist separately when well-maintained projects should already have comprehensive <code>CONTRIBUTING.md</code> files that serve both humans and agents?</p> <p><strong>The frustrated shared failures.</strong> User <em>avhception</em> recounted agents ignoring multiple explicit warnings — like replacing SQLite with MariaDB despite clear instructions against making assumptions. If agents cannot reliably follow instructions, what is the point of writing more of them?</p> <p>And perhaps the most important observation came from <em>rmunn</em>, who noted that the study only measured <strong>test pass rates</strong> — not code quality, maintainability, or style consistency. An agent that passes all tests but writes unmaintainable spaghetti code is not a success. AGENTS.md may provide significant value in these unmeasured dimensions.</p> <h2> <a name="why-llmgenerated-context-files-fail" href="#why-llmgenerated-context-files-fail"> </a> Why LLM-Generated Context Files Fail
+</h2> <p>The study's most damning finding deserves deeper examination: LLM-generated AGENTS.md files make things worse.</p> <p>Here is why this happens:</p> <p><strong>1. They state the obvious.</strong> When you ask an LLM to analyze a codebase and generate an AGENTS.md file, it produces output like "This project uses React with TypeScript" or "Tests are located in the <code>__tests__</code> directory." The coding agent already knows this. It can read <code>package.json</code>. It can find test files. You are spending tokens to tell it things it can discover in seconds.</p> <p><strong>2. They add noise to the context window.</strong> Every token in the AGENTS.md file is a token that is not being used for reasoning about the actual problem. When your context file adds 2,000 tokens of redundant information, you are effectively reducing the agent's working memory for the task at hand.</p> <p><strong>3. They create false confidence.</strong> An agent that has been given a detailed context file may rely more heavily on that documentation and less on actually exploring the codebase. This is especially dangerous when the documentation is slightly outdated or incomplete — which it always eventually becomes.</p> <p><strong>4. They optimize for the wrong thing.</strong> LLM-generated summaries describe <em>what the code is</em>. What agents actually need is <em>what you want them to do differently than their defaults</em>. The distinction is critical.</p> <h2> <a name="what-actually-works-the-evidencebased-approach" href="#what-actually-works-the-evidencebased-approach"> </a> What Actually Works: The Evidence-Based Approach
+</h2> <p>The study, combined with insights from the developer community, points to a clear set of best practices that actually improve agent performance:</p> <h3> <a name="1-write-only-what-cannot-be-discovered" href="#1-write-only-what-cannot-be-discovered"> </a> 1. Write Only What Cannot Be Discovered
+</h3> <p>The single most important principle: if an agent can figure it out by reading the code, do not put it in your context file.</p> <p><strong>Bad — Restating the obvious:</strong><br>
+</p> <div>
+<pre><code><span>## Project Structure</span>
+<span>-</span> src/components/ — React components
+<span>-</span> src/hooks/ — custom hooks
+<span>-</span> src/utils/ — utility functions
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Good — Stating the non-obvious:</strong><br>
+</p> <div>
+<pre><code><span>## Critical Requirements</span>
+<span>-</span> All database migrations must be backward-compatible (we run blue-green deploys)
+<span>-</span> Never import from @internal/legacy — it is scheduled for removal in Q3
+<span>-</span> Integration tests require a running Redis instance: <span>`docker compose up redis`</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The first example wastes tokens. The second provides information that would take an agent dozens of failed attempts to discover.</p> <h3> <a name="2-use-positive-instructions-not-negative-ones" href="#2-use-positive-instructions-not-negative-ones"> </a> 2. Use Positive Instructions, Not Negative Ones
+</h3> <p>Multiple developers in the HN discussion noted that negative instructions — "don't do X" — frequently backfire. This mirrors research on how language models process negation.</p> <p><strong>Bad:</strong><br>
+</p> <div>
+<pre><code><span>-</span> Don't use class components
+<span>-</span> Don't import lodash directly
+<span>-</span> Don't write console.log statements
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Good:</strong><br>
+</p> <div>
+<pre><code><span>-</span> Use functional components with hooks exclusively
+<span>-</span> Import lodash utilities individually: <span>`import debounce from 'lodash/debounce'`</span>
+<span>-</span> Use the logger utility from src/utils/logger for all logging
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>As one commenter put it: it is like "instructing a toddler." Telling an agent not to think of a pink elephant guarantees it will think of a pink elephant.</p> <h3> <a name="3-pair-context-files-with-deterministic-enforcement" href="#3-pair-context-files-with-deterministic-enforcement"> </a> 3. Pair Context Files with Deterministic Enforcement
+</h3> <p>The most effective teams do not rely on AGENTS.md alone. They use it as a complement to programmatic checks:<br>
+</p> <div>
+<pre><code><span>## Enforced by Tooling (agents will see errors if violated)</span>
+<span>-</span> TypeScript strict mode is enabled — all types must be explicit
+<span>-</span> ESLint enforces import ordering and naming conventions
+<span>-</span> Pre-commit hooks run tests and type checking <span>## Not Enforced by Tooling (please follow these conventions)</span>
+<span>-</span> New API endpoints should follow the existing pattern in src/api/users.ts
+<span>-</span> Error responses use the ApiError class, never raw throw statements
+<span>-</span> All new features need an entry in CHANGELOG.md
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This approach gives agents the truly useful information — the conventions that are not machine-enforced — while letting linters and type checkers handle the rest deterministically.</p> <h3> <a name="4-iterate-based-on-failures-not-assumptions" href="#4-iterate-based-on-failures-not-assumptions"> </a> 4. Iterate Based on Failures, Not Assumptions
+</h3> <p>Developer <em>pamelafox</em> on Hacker News shared the most practical advice: adopt a data-driven approach. Only add information to your context file <strong>after an agent fails at a task</strong>, then verify the addition actually helps by reverting it and re-running.</p> <p>The workflow:</p> <ol>
+<li>Give the agent a task without any context file</li>
+<li>Observe where it fails or makes wrong choices</li>
+<li>Add a specific instruction addressing that failure</li>
+<li>Re-run the task to verify the instruction helps</li>
+<li>Remove the instruction and re-run to confirm it was the cause</li>
+</ol> <p>This targets only genuinely useful content and prevents the context file from bloating with assumptions about what agents might need.</p> <h3> <a name="5-frontload-critical-information" href="#5-frontload-critical-information"> </a> 5. Front-Load Critical Information
+</h3> <p>If you must include context, put the most important information first. Agents — like humans — pay more attention to the beginning of documents. Burying your critical build command on line 47 of a 60-line file is a recipe for it being deprioritized.<br>
+</p> <div>
+<pre><code><span># AGENTS.md</span> <span>## CRITICAL: Before Making Any Changes</span>
+Run <span>`make verify`</span> before committing. This runs type checking, linting, and tests.
+The CI pipeline will reject PRs that fail this check. <span>## Build Commands</span>
+...
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="6-keep-it-short" href="#6-keep-it-short"> </a> 6. Keep It Short
+</h3> <p>The study showed that agents spend 14–22% more reasoning tokens when context files are present. Every line you add has a cost. A 10-line AGENTS.md that contains only essential, non-discoverable information will outperform a 200-line comprehensive guide every time.</p> <p>Target: <strong>under 30 lines</strong> of actual content. If you need more, your project probably needs better tooling, not more documentation.</p> <h2> <a name="the-format-war-agentsmd-vs-claudemd-vs-everything-else" href="#the-format-war-agentsmd-vs-claudemd-vs-everything-else"> </a> The Format War: AGENTS.md vs CLAUDE.md vs Everything Else
+</h2> <p>The elephant in the room: there is no single standard. Different tools read different files:</p> <div><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Context File</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>AGENTS.md</strong> (OpenAI-backed)</td>
+<td><code>AGENTS.md</code></td>
+<td>Open standard, 60K+ repos</td>
+</tr>
+<tr>
+<td>
+<strong>Claude Code</strong> (Anthropic)</td>
+<td><code>CLAUDE.md</code></td>
+<td>Hierarchical memory system</td>
+</tr>
+<tr>
+<td><strong>GitHub Copilot</strong></td>
+<td><code>.github/copilot-instructions.md</code></td>
+<td>Repository-wide instructions</td>
+</tr>
+<tr>
+<td><strong>Cursor</strong></td>
+<td>
+<code>.cursorrules</code> / <code>.cursor/rules/</code>
+</td>
+<td>IDE-specific rules</td>
+</tr>
+<tr>
+<td><strong>Aider</strong></td>
+<td>
+<code>.aider*</code> config files</td>
+<td>Tool-specific conventions</td>
+</tr>
+</tbody>
+</table></div> <p>If your team uses multiple AI tools — and most teams do in 2026 — you are maintaining multiple context files saying roughly the same thing. This is both wasteful and a maintenance burden that almost guarantees the files will drift out of sync.</p> <p>AGENTS.md is winning the standardization race purely through adoption numbers and corporate backing. But Anthropic's CLAUDE.md system is arguably more sophisticated, with features like hierarchical scoping (organization-wide policies that cascade down to project-level and file-level rules), auto-memory that persists across sessions, and import syntax for composing context from multiple files.</p> <p>The pragmatic approach: pick the format your primary tool supports and keep it minimal. If you use multiple tools, maintain one source of truth and symlink or copy as needed.</p> <h2> <a name="the-real-problem-we-are-documenting-instead-of-engineering" href="#the-real-problem-we-are-documenting-instead-of-engineering"> </a> The Real Problem: We Are Documenting Instead of Engineering
+</h2> <p>Here is the uncomfortable truth the AGENTS.md movement has been avoiding: writing better documentation for AI agents is treating the symptom, not the disease.</p> <p>The real problems are:</p> <p><strong>1. Codebases that are hard for agents to navigate are also hard for humans.</strong> If an AI agent cannot figure out your project structure, build process, or conventions from the code itself, that is a code quality problem. Fix the code, not the documentation.</p> <p><strong>2. Convention enforcement should be automated.</strong> If you care about import ordering, use a linter. If you care about type safety, use strict TypeScript. If you care about test coverage, use a CI gate. Do not write a markdown file and hope the agent reads it.</p> <p><strong>3. The best AGENTS.md file is one you do not need.</strong> A well-structured codebase with clear naming conventions, consistent patterns, comprehensive type definitions, and good test coverage gives AI agents everything they need without a single line of supplementary documentation.</p> <p>The study's finding that removing existing documentation and replacing it with LLM-generated context files improved performance by only 2.7% is telling. The documentation was already there. The agents were already reading it. The AGENTS.md file was just a worse version of what existed.</p> <h2> <a name="what-you-should-actually-do" href="#what-you-should-actually-do"> </a> What You Should Actually Do
+</h2> <p>Based on the study, the community discussion, and practical experience, here is a concrete action plan:</p> <p><strong>If you do not have an AGENTS.md file:</strong> Do not rush to create one. Focus on code quality, tooling, and automated enforcement instead.</p> <p><strong>If you have an LLM-generated AGENTS.md file:</strong> Delete it. The study shows it is actively harming performance while increasing costs. You are paying more for worse results.</p> <p><strong>If you want to write one from scratch:</strong></p> <p><strong>If you maintain a large project with multiple AI tool users:</strong></p> <h2> <a name="the-4-that-matters" href="#the-4-that-matters"> </a> The 4% That Matters
+</h2> <p>The ETH Zurich study is not a death sentence for AGENTS.md. A 4% improvement is real. For teams running hundreds of AI-assisted tasks per week, that compounds into meaningful productivity gains.</p> <p>But it is a wake-up call. The industry has been treating context files as a silver bullet — "just write a good AGENTS.md and your AI coding agent will understand everything." The data says otherwise.</p> <p>The developers who will get the most out of AI coding agents in 2026 are not the ones writing the most detailed AGENTS.md files. They are the ones writing the cleanest code, the strictest type definitions, the most comprehensive tests, and the most automated enforcement pipelines.</p> <p>The best documentation for an AI agent is not a markdown file.</p> <p>It is code that does not need one.</p> <hr> <p><em>Originally published at <a href="https://umesh-malik.com/blog/agents-md-ai-coding-agents-study" target="_blank">umesh-malik.com</a></em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
