@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,34 +28,7 @@
     Source: PortSwigger Research | Date: 6/11/2024 2:58:29 PM | <a href="https://portswigger.net/research/new-exotic-events-in-the-xss-cheat-sheet" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <p><img alt="Gareth Heyes" src="https://portswigger.net/content/images/profiles/callout_gareth_heyes_114px.png"></p>
-</div> <ul> <li> <p><span></span><strong>Published: </strong>11 June 2024 at 14:58 UTC</p> </li> <li> <p><strong>Updated: </strong>11 June 2024 at 14:58 UTC</p> </li> <li> </li> </ul> <p>The power of our <a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet">XSS cheat sheet
-</a> is we get fantastic contributions from the web security community and this update is no exception. We had valuable contributions from Mozilla to remove events that no longer work with the marquee tag on Firefox.
-</p><p>
-There was a wonderfully obscure Safari only vector that used the event <a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet#onwebkitplaybacktargetavailabilitychanged">onwebkitplaybacktargetavailabilitychanged
-</a> from <a href="https://x.com/amirmsafari">@amirmsafari
-</a> that works on audio and video tags:</p><p><img src="https://portswigger.net/cms/images/25/45/bc12-article-onwebkitplaybacktargetavailabilitychanged.png">
-</p>
-<p>We had a submission from <a href="https://github.com/wcraft-log">@Wcraft-log
-</a> with the <a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet#onpointercancel">onpointercancel
-</a> event that requires heavy user interaction:
-</p><p><code>&lt;xss onpointercancel=alert(1)&gt;XSS&lt;/xss&gt;</code></p><p><a href="https://github.com/filipnyquist">@Filipnyquist
-</a> pointed out that we didn't document that pretty much every element can now use the <a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet#onfocus(autofocus)">autofocus attribute.</a> This was discovered earlier by <a href="https://x.com/RenwaX23">@RenwaX23
-</a> and <a href="https://x.com/lbherrera_">@lbherrera_
-</a>.
-</p><p><code>&lt;xss onfocus=alert(1) autofocus tabindex=1&gt;</code></p><p>Finally we had a submission from <a href="https://twitter.com/zhenwarx">@zhenwarx
-</a> that showed there are a bunch of webkit events we missed that require user interaction with the trackpad.
-</p> <p><code>
-&lt;xss onwebkitmouseforceup=alert(1)&gt;XSS&lt;/xss&gt;<br>&lt;xss onwebkitmouseforcewillbegin=alert(1)&gt;XSS&lt;/xss&gt;<br>&lt;xss onwebkitmouseforceup=alert(1)&gt;XSS&lt;/xss&gt;<br>&lt;xss onwebkitmouseforcedown=alert(1)&gt;XSS&lt;/xss&gt;<br>&lt;xss onwebkitmouseforcechanged=alert(1)&gt;XSS&lt;/xss&gt;
-</code></p><p>Big thanks to the web security community for keeping the <a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet">XSS cheat sheet
-</a> up to date with the latest <a href="https://portswigger.net/web-security/cross-site-scripting">XSS</a> vectors. If you would like to contribute please <a href="https://github.com/PortSwigger/xss-cheatsheet-data/issues">raise an issue
-</a> or a <a href="https://github.com/PortSwigger/xss-cheatsheet-data/pulls">PR
-</a>.
-</p><p>
-Note: If you are wondering what we use to generate code snippet images. We use the excellent online tool <a href="http://ray.so/">Ray.so
-</a>.
-</p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
-</div></div>
+    <p>The power of our XSS cheat sheet is we get fantastic contributions from the web security community and this update is no exception. We had valuable contributions from Mozilla to remove events that no</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

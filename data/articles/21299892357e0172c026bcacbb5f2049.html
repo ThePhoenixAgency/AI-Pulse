@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - livetheoogway/python-uime: A simple python decorator, to build UI forms out of your everyday python functions</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - livetheoogway/python-uime: A simple python decorator, to build UI forms out of your everyday python functions</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 5:30:46 AM | <a href="https://github.com/livetheoogway/python-uime" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p> </p><div><h1>Python UI-Me</h1><a href="#python-ui-me"></a></div> <p>A simple python decorator, to build UI forms out of your everyday python functions</p><p> </p><p> <a href="https://pypi.org/project/python-uime"> <img src="https://camo.githubusercontent.com/9dd5abfc1152568bbd9e378e8a19f6c6932297ae46a56adf147ff52a01ab9d05/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f707974686f6e2d75696d65"> </a> <a href="https://github.com/livetheoogway/python-uime/blob/master/LICENSE"> <img src="https://camo.githubusercontent.com/8c88a0fe333b12aff6a57f4d29a7eb2b5f76e8c3532865f5be472e27e699502b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6c6976657468656f6f677761792f707974686f6e2d75696d65" alt="license"> </a></p>
+<p></p>
+<div><h2>UI-Me</h2><a href="#ui-me"></a></div>
+<pre><code>Python UI-Me (as in: Python methods saying "make elegant UI forms out of me") is a tiny-but-mighty package that turns
+your everyday functions into sleek web control panels. Tag a function with a decorator, let the bundled Flask app spin
+up, and suddenly your script feels like a real product instead of a one-off command.</code></pre>
+<div><h2>TL;DR</h2><a href="#tldr"></a></div>
+<pre><code>What you get: In just three lines of code, all regular functions of your python code will be ready to use on a
+UI. Every argument of these functions becomes input forms and on using them, their responses get render in rich JSON.
+All this, while the whole thing still feels feather-light because it is plain HTML/CSS/JS (no React, no design system du jour). What you keep: Your playful, slightly chaotic script-driven workflow. UI-Me just gives it buttons, dark mode, and a
+logo. What to look at first: The Motivation story is short and spicy, but if your build server is already
+screaming, here’s the gif version of what to expect:</code></pre>
+<div><h2>Motivation</h2><a href="#motivation"></a></div>
+<p>I'm pretty sure I'm not the only lazy developer that over-engineers every tiny chore as a script. This project is my
+latest effort toward making those scripts slightly less cryptic to future-me (and whoever is sitting next to me asking
+“what happens if I click this?”).<br>
+Yes, </p><pre><code>argparse</code></pre> and friends exist. But the minute a single script starts doing five things, or you forget what flags you
+invented at 2 AM, CLI ergonomics fall apart. And the amount of boilerplate to wire multiple parsers... no thanks.<br><p></p>
+<pre><code>So UI-Me is the middle ground: not meant for enterprise-scale production flows, but absolutely meant for the pile of
+daily automation you keep collecting. Think of it as Swagger UI for your Python
+functions, except it is unapologetically simple and proudly decorator-powered.</code></pre>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ol>
+<li><strong>Easy Function Exposure</strong> <br>
+Decorate Python functions with <pre><code>@ui_enabled</code></pre> to expose them as web forms.</li>
+<li><strong>Automatic UI Generation</strong> <br>
+Generates web UIs for decorated functions, with form fields corresponding to function parameters.</li>
+<li><strong>Themes</strong> <br>
+A check-box for the classic developer query, "Does it come with dark mode?". Why Yes, yes it does..</li>
+<li><strong>Grouping of Functions</strong> <br>
+Organize functions into <br>
+groups (nav-tabs) in the UI for better organization.</li>
+<li><strong>Customizable Function Metadata</strong> <br>
+Specify titles, descriptions, and other metadata for functions.</li>
+<li><strong>Built-in Web Server</strong> <br>
+Comes with an integrated Flask web server to host the UI.</li>
+<li><strong>Clipboard Support</strong> <br>
+Easy copy-to-clipboard feature for function outputs.</li>
+<li><strong>Quick navigation Sidebar</strong> <br>
+If you have too many functions, the sidebar can be used to quickly navigate to your function</li>
+<li><strong>Global Variables</strong> <br>
+Set global variables for your script, from within the UI.</li>
+<li><strong>Type Inferring (This is Cool !!)</strong> <br>
+Functions that contain arguments with types, are inferred and rendered accordingly in the INPUT form.<br>
+Function arguments with complex data-structures like list of strings, or json strings are
+supported.</li>
+</ol>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<p>Install Python UI-me using pip:</p>
+<div><pre>python3 -m pip install python-uime</pre></div>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<p>Basically 3 lines of code</p>
+<div><pre><span>from</span> <span>uime</span> <span>import</span> <span>start_server</span>, <span>ui_enabled</span> <span>## &lt;--- This is line 1</span> <span>## Below decorator is line 2</span>
+<span>@<span>ui_enabled</span>(<span>group</span><span>=</span><span>"Greeting"</span>, <span>description</span><span>=</span><span>"This function will greet you (with positivity!)"</span>)</span>
+<span>def</span> <span>hello_world</span>(<span>name</span>): <span>return</span> <span>f"Hello <span><span>{</span><span>name</span><span>}</span></span>"</span> <span>@<span>ui_enabled</span>(<span>group</span><span>=</span><span>"Greeting"</span>, <span>title</span><span>=</span><span>"My Test Function with Nice Title"</span>,</span>
+<span> <span>description</span><span>=</span><span>"This function will return a json (So that you can see it is nicely printed)"</span>)</span>
+<span>def</span> <span>make_api_call</span>(<span>url</span>, <span>data</span>): <span>return</span> <span>json</span>.<span>dumps</span>({<span>"url"</span>: <span>url</span>, <span>"data"</span>: <span>hello_world</span>(<span>data</span>)}) <span>@<span>ui_enabled</span>(<span>group</span><span>=</span><span>"Maths"</span>, <span>description</span><span>=</span><span>"This will return a + b"</span>)</span>
+<span>def</span> <span>sum_math_function</span>(<span>a</span>, <span>b</span>): <span>return</span> <span>a</span> <span>+</span> <span>b</span> <span>@<span>ui_enabled</span>(<span>group</span><span>=</span><span>"Maths"</span>)</span>
+<span>def</span> <span>difference_math_function</span>(<span>a</span>, <span>b</span>): <span>return</span> <span>a</span> <span>-</span> <span>b</span> <span>if</span> <span>__name__</span> <span>==</span> <span>'__main__'</span>: <span>start_server</span>() <span>## &lt;--- This is line 3 (As promised, within 3 lines of code)</span> <span>start_server</span>(<span>port</span><span>=</span><span>5001</span>, <span>title</span><span>=</span><span>"My Cool Title"</span>, <span>description</span><span>=</span><span>"I will struggle to describe this well"</span>) <span># if you wish to customize ports or title</span></pre></div>
+<p><a target="_blank" href="/livetheoogway/python-uime/blob/main/resources/ui-example.png"><img src="/livetheoogway/python-uime/raw/main/resources/ui-example.png" alt="img.png"></a></p>
+<div><h2>Advanced Usage</h2><a href="#advanced-usage"></a></div>
+<div><h3>1. Setting Global Variables</h3><a href="#1-setting-global-variables"></a></div>
+<p>You might run into situations where you want to set global variables of your script. <br>
+This is going to be a little more involved - you need to expose a setter to the global variable, while using a new
+decorator </p><pre><code>@ui_global</code></pre> <br>
+Here is an example:<p></p>
+<div><pre><span>from</span> <span>uime</span> <span>import</span> <span>start_server</span>, <span>ui_enabled</span>, <span>ui_global</span> <span>## &lt;--- ui_global is the new import</span> <span>DEFAULT</span> <span>=</span> <span>"There are no accidents."</span>
+<span>DEFAULT_2</span> <span>=</span> <span>"Only coincidences."</span> <span>@<span>ui_global</span>(<span>name</span><span>=</span><span>"DEFAULT"</span>, <span>description</span><span>=</span><span>"Global DEFAULT value"</span>, <span>default_value</span><span>=</span><span>DEFAULT</span>)</span>
+<span>def</span> <span>set_default</span>(<span>value</span>): <span>global</span> <span>DEFAULT</span> <span>DEFAULT</span> <span>=</span> <span>value</span> <span>@<span>ui_global</span>(<span>name</span><span>=</span><span>"DEFAULT_2"</span>, <span>description</span><span>=</span><span>"Global DEFAULT_2 value"</span>, <span>default_value</span><span>=</span><span>DEFAULT_2</span>)</span>
+<span>def</span> <span>set_default2</span>(<span>value</span>): <span>global</span> <span>DEFAULT_2</span> <span>DEFAULT_2</span> <span>=</span> <span>value</span> <span>@<span>ui_enabled</span>(<span>group</span><span>=</span><span>"group1"</span>)</span>
+<span>def</span> <span>hello_world</span>(<span>name</span>): <span>return</span> <span>f"Hello <span><span>{</span><span>name</span><span>}</span></span>. <span><span>{</span><span>DEFAULT</span><span>}</span></span> <span><span>{</span><span>DEFAULT_2</span><span>}</span></span>"</span> <span># &lt;-- using the global variables</span></pre></div>
+<p>The left navigation bar contains a section for Global Variables, which will allow you to set them. <br></p>
+<p><a target="_blank" href="/livetheoogway/python-uime/blob/main/resources/globalvar-example.png"><img src="/livetheoogway/python-uime/raw/main/resources/globalvar-example.png" alt="img.png"></a></p>
+<div><h3>2. Function Parameter Type Inferring</h3><a href="#2-function-parameter-type-inferring"></a></div>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>form input</th>
+<th>type inferred</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nothing</td>
+<td>text input</td>
+<td>str</td>
+</tr>
+<tr>
+<td>str</td>
+<td>text input</td>
+<td>str</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>switch</td>
+<td>bool</td>
+</tr>
+<tr>
+<td>int</td>
+<td>number input</td>
+<td>int</td>
+</tr>
+<tr>
+<td>float</td>
+<td>number input</td>
+<td>float</td>
+</tr>
+<tr>
+<td>complex</td>
+<td>number input</td>
+<td>complex</td>
+</tr>
+<tr>
+<td>list</td>
+<td>text area</td>
+<td>list of string</td>
+</tr>
+<tr>
+<td>set</td>
+<td>text area</td>
+<td>set of string</td>
+</tr>
+<tr>
+<td>type</td>
+<td>text area</td>
+<td>list of string</td>
+</tr>
+<tr>
+<td>List[str]</td>
+<td>text area</td>
+<td>list of string</td>
+</tr>
+<tr>
+<td>List[int]</td>
+<td>text area</td>
+<td>list of int</td>
+</tr>
+<tr>
+<td>List[float]</td>
+<td>text area</td>
+<td>list of float</td>
+</tr>
+<tr>
+<td>List[complex]</td>
+<td>text area</td>
+<td>list of complex</td>
+</tr>
+<tr>
+<td>List[list]</td>
+<td>text area</td>
+<td>list of list of string</td>
+</tr>
+<tr>
+<td>dict</td>
+<td>text area for json editing</td>
+<td>json to dict</td>
+</tr>
+</tbody>
+</table>
+<p>Sample code below shows a list of parameters that have different types:</p>
+<div><pre><span>from</span> <span>typing</span> <span>import</span> <span>List</span>
+<span>import</span> <span>json</span>
+<span>from</span> <span>uime</span> <span>import</span> <span>start_server</span>, <span>ui_enabled</span> <span>@<span>ui_enabled</span>(<span>group</span><span>=</span><span>"group1"</span>)</span>
+<span>def</span> <span>test_list_string</span>(<span>regular_list</span>: <span>list</span>, <span>strings</span>: <span>List</span>[<span>str</span>], <span>ints</span>: <span>List</span>[<span>int</span>], <span>dicts</span>: <span>dict</span>, <span>list_of_list</span>: <span>List</span>[<span>list</span>]): <span>return</span> <span>f"""</span>
+<span> list = <span><span>{</span><span>regular_list</span><span>}</span></span></span>
+<span> strings= <span><span>{</span><span>strings</span><span>}</span></span></span>
+<span> ints= <span><span>{</span><span>ints</span><span>}</span></span></span>
+<span> dicts: <span><span>{</span><span>json</span>.<span>dumps</span>(<span>dicts</span>)<span>}</span></span></span>
+<span> list_of_list: <span><span>{</span><span>list_of_list</span><span>}</span></span></span>
+<span> """</span></pre></div>
+<p>The UI would look something like this
+<a target="_blank" href="/livetheoogway/python-uime/blob/main/resources/type-infer-demo.png"><img src="/livetheoogway/python-uime/raw/main/resources/type-infer-demo.png" alt="global.png"></a></p>
+<pre><code>NoteAs you observe the above table, a text-area is used to collect inputs for complex datatypes. This is being done on
+purpose to keep things simple, but that simplicity comes at a cost.
+When inferring a list of anything from the text-area - extraction of the list from the large string, is done by using
+delimiters.
+By default, the priority of delimiters are NEWLINE, COMMA, SPACE
+ie: NEWLINE is checked first, if available, the string will be split by newline and returned as a list. Then there is
+a
+check for COMMA, if available, the string will be split by comma and returned as a list. Finally SPACE.
+In case of , it is always a check on NEWLINE for the outer list, and COMMA/SPACE for the inner lists</code></pre>
+<div><h3>3. Themes</h3><a href="#3-themes"></a></div>
+<p>8 different themes to choose from, to make your UI look cool.</p>
+<ol>
+<li>Dark Tritanopia</li>
+<li>Soft Dark</li>
+<li>Dark Purple</li>
+<li>Dark</li>
+<li>Light</li>
+<li>White</li>
+<li>Solarized</li>
+<li>Monochrome Blue</li>
+</ol>
+<p><a target="_blank" href="/livetheoogway/python-uime/blob/main/resources/theme_1.png"><img src="/livetheoogway/python-uime/raw/main/resources/theme_1.png" alt="theme_1.png"></a>
+<a target="_blank" href="/livetheoogway/python-uime/blob/main/resources/theme_2.png"><img src="/livetheoogway/python-uime/raw/main/resources/theme_2.png" alt="theme_2.png"></a></p>
+<div><h2>Dependencies</h2><a href="#dependencies"></a></div>
+<p>The following is list of essential dependencies in python:</p>
+<ul>
+<li><a href="https://flask.palletsprojects.com/en/3.0.x/">Flask</a>: quickest way to spin up a web server</li>
+<li><a href="https://jinja.palletsprojects.com/en/2.11.x/templates/">Jinja2</a>: for templating</li>
+</ul>
+<p>Reiterating here that UI Me does not depend on any heavy front-end libraries or frameworks. The entire UI is built using
+vanilla HTML, CSS (Tailwind CSS for styling) and JavaScript.</p>
+<div><h2>Features Pending</h2><a href="#features-pending"></a></div>
+<ul>
+<li> Handle overloading of functions (identify functions with ids rather than names)</li>
+<li> Add support for setting <pre><code>global</code></pre> variables in the UI (<a href="#1-setting-global-variables">Setting Global Variables</a>)</li>
+<li> Add support for complex data-structures as inputs (like list of strings, or json strings)</li>
+<li> Make default values for parameters as non-mandatory in the form</li>
+<li> Capture parameter data types and change the form field type accordingly</li>
+</ul>
+<div><h2>Contributions</h2><a href="#contributions"></a></div>
+<pre><code>Please raise Issues, Bugs or any feature requests
+at Github Issues. If you plan on contributing to the code, fork the repository and raise a Pull Request back here.</code></pre>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

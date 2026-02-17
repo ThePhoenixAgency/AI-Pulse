@@ -5,22 +5,18 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Tue, 17 Feb 2026 04:18:19 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 17 Feb 2026 06:56:28 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: Envref – separating secrets from config in .env files]]></title>
-      <link>https://xcke.github.io/envref/</link>
-      <description><![CDATA[I wanted to test how far Claude Code (Opus 4.6) could go building a real CLI tool autonomously — not just scaffolding, but the full thing: CLI, backends, parser, tests, fuzz tests, docs, and a documentation site.
-The result is envref, a tool that replaces secret values in .env files with ref:// URIs pointing to where the secret actually lives:
-# .env — safe to commit
-APP_NAME=my-app
-DATABASE_URL=ref://secrets/database_url
-API_KEY=ref://secrets/api_key
-Config stays inline. Secrets stay in your OS keychain (or another backend). envref resolve merges them back together at runtime.]]></description>
-      <pubDate>Tue, 17 Feb 2026 00:22:09 GMT</pubDate>
+      <title><![CDATA[Show HN: Claude Pilot – Claude Code is powerful. Pilot makes it reliable]]></title>
+      <link>https://github.com/maxritter/claude-pilot</link>
+      <description><![CDATA[Start a task, grab a coffee, come back to production-grade code. Tests enforced. Context preserved. Quality automated.
+Claude Code moves fast but without structure, it skips tests, loses context, and produces inconsistent results — especially on complex, established codebases. I tried other frameworks — they burned tokens on bloated prompts without adding real value. Some added process without enforcement. Others were prompt templates that Claude ignored when context got tight. None made Claude reliably produce production-grade code.
+So I built Pilot.]]></description>
+      <pubDate>Tue, 17 Feb 2026 04:55:29 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://xcke.github.io/envref/</guid>
+      <guid>https://github.com/maxritter/claude-pilot</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Apple confirme son événement du 4 mars : vers un MacBook à prix inédit et un nouvel iPhone]]></title>

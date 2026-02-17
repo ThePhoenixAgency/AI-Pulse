@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - superhq-ai/neko: Lightweight AI agent runtime targeting Raspberry Pi Zero 2W and low-end VPS. File-based memory, MCP tool support, Telegram integration — all in a single binary.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - superhq-ai/neko: Lightweight AI agent runtime targeting Raspberry Pi Zero 2W and low-end VPS. File-based memory, MCP tool support, Telegram integration — all in a single binary.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 4:20:50 AM | <a href="https://github.com/superhq-ai/neko" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>neko</h1><a href="#neko"></a></div>
+<a target="_blank" href="https://private-user-images.githubusercontent.com/64768386/550349818-340d14d7-1674-47ca-805b-fe33e87eb04f.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEzMTE2NjcsIm5iZiI6MTc3MTMxMTM2NywicGF0aCI6Ii82NDc2ODM4Ni81NTAzNDk4MTgtMzQwZDE0ZDctMTY3NC00N2NhLTgwNWItZmUzM2U4N2ViMDRmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE3VDA2NTYwN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWVhOWY3ODcxYWMzNGVkMDlmN2E3ZjUxNTM3NjczNjM2OWNkMDljMTZkZjMxM2EzNzFjZDNlNGE5OGZmMDBjNDYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.bMkHbRW8GTxrKCWZmkRilpOmcOXdCkROlIsHXEWrhi8"><img alt="ChatGPT Image Feb 16, 2026, 01_17_27 PM (1)" src="https://private-user-images.githubusercontent.com/64768386/550349818-340d14d7-1674-47ca-805b-fe33e87eb04f.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEzMTE2NjcsIm5iZiI6MTc3MTMxMTM2NywicGF0aCI6Ii82NDc2ODM4Ni81NTAzNDk4MTgtMzQwZDE0ZDctMTY3NC00N2NhLTgwNWItZmUzM2U4N2ViMDRmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE3VDA2NTYwN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWVhOWY3ODcxYWMzNGVkMDlmN2E3ZjUxNTM3NjczNjM2OWNkMDljMTZkZjMxM2EzNzFjZDNlNGE5OGZmMDBjNDYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.bMkHbRW8GTxrKCWZmkRilpOmcOXdCkROlIsHXEWrhi8"></a>
+<p>Lightweight AI agent runtime targeting Raspberry Pi Zero 2W and low-end VPS. File-based memory, MCP tool support, Telegram integration — all in a single binary.</p>
+<div><h2>Install</h2><a href="#install"></a></div>
+<p><strong>Shell (Linux / macOS):</strong></p>
+<div><pre>curl -fsSL https://raw.githubusercontent.com/superhq-ai/neko/main/install.sh <span>|</span> sh</pre></div>
+<p>Installs to </p><pre><code>~/.local/bin</code></pre> by default. Override with <pre><code>NEKO_INSTALL_DIR</code></pre>:<p></p>
+<div><pre>NEKO_INSTALL_DIR=/usr/local/bin curl -fsSL https://raw.githubusercontent.com/superhq-ai/neko/main/install.sh <span>|</span> sh</pre></div>
+<p><strong>From source:</strong></p>
+<div><pre>git clone https://github.com/superhq-ai/neko.git
+<span>cd</span> neko
+cargo build --release
+<span><span>#</span> binary at target/release/neko</span></pre></div>
+<div><h2>Quick start</h2><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> Create default config and workspace</span>
+neko init <span><span>#</span> Or run interactive setup</span>
+neko init --interactive <span><span>#</span> Edit config (defaults to ~/.neko/config.toml)</span>
+neko config edit <span><span>#</span> Start the agent gateway</span>
+neko start <span><span>#</span> Send a test message</span>
+neko message <span><span>"</span>Hello, what can you do?<span>"</span></span></pre></div>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Config lives at </p><pre><code>~/.neko/config.toml</code></pre>. Key sections:<p></p>
+<div><pre>[<span>gateway</span>]
+<span>bind</span> = <span><span>"</span>127.0.0.1:3000<span>"</span></span>
+<span>workspace</span> = <span><span>"</span>~/.neko/workspace<span>"</span></span> [<span>agent</span>]
+<span>model</span> = <span><span>"</span>gpt-5-mini<span>"</span></span>
+<span>provider</span> = <span><span>"</span>openai<span>"</span></span>
+<span>max_tokens</span> = <span>4096</span>
+<span>tools</span> = [<span><span>"</span>read_file<span>"</span></span>, <span><span>"</span>write_file<span>"</span></span>, <span><span>"</span>list_files<span>"</span></span>, <span><span>"</span>exec<span>"</span></span>, <span><span>"</span>http_request<span>"</span></span>, <span><span>"</span>memory_write<span>"</span></span>] [<span>providers</span>.<span>openai</span>]
+<span>api_key</span> = <span><span>"</span>${OPENAI_API_KEY}<span>"</span></span>
+<span>base_url</span> = <span><span>"</span>https://api.openai.com<span>"</span></span> [<span>tools</span>]
+<span>sandbox</span> = <span>false</span>
+<span>exec_timeout_secs</span> = <span>1800</span> <span><span>#</span> MCP servers</span>
+[<span>mcp</span>.<span>filesystem</span>]
+<span>command</span> = <span><span>"</span>npx<span>"</span></span>
+<span>args</span> = [<span><span>"</span>-y<span>"</span></span>, <span><span>"</span>@modelcontextprotocol/server-filesystem<span>"</span></span>, <span><span>"</span>/tmp<span>"</span></span>]</pre></div>
+<p>Environment variables are substituted via </p><pre><code>${VAR_NAME}</code></pre> syntax.<p></p>
+<div><h2>CLI</h2><a href="#cli"></a></div>
+<div><pre><code>neko init Initialize config and workspace
+neko init -i Interactive setup
+neko start Start the gateway server
+neko stop Stop the running gateway
+neko status Show gateway status
+neko logs [-l N] Show recent logs
+neko message &lt;text&gt; Send a message to the agent
+neko config show Print current config
+neko config edit Open config in $EDITOR
+neko sessions list List active sessions
+neko sessions clear Clear all sessions
+neko memory list List memory files
+neko memory search Q Search memory files
+neko skills list List installed skills
+neko skills install P Install a skill from path
+neko skills remove N Remove a skill by name
+neko cron list List all cron jobs
+neko cron add &lt;prompt&gt; Add a scheduled job
+neko cron edit &lt;id&gt; Edit a cron job
+neko cron remove &lt;id&gt; Remove a cron job
+neko cron history Show execution history
+</code></pre></div>
+<div><h2>Features</h2><a href="#features"></a></div>
+<div><h3>OpenResponses-compatible LLM</h3><a href="#openresponses-compatible-llm"></a></div>
+<p>Works with any provider exposing </p><pre><code>POST /v1/responses</code></pre> — OpenAI, Anthropic (via proxy), Ollama, or self-hosted models.<p></p>
+<div><h3>File-based memory</h3><a href="#file-based-memory"></a></div>
+<p>No database. No embeddings. No vector store. Memory is just markdown files — readable, editable, and version-controllable by both humans and the agent.</p>
+<p>The system uses a <strong>two-tier architecture</strong>:</p>
+<ul>
+<li><strong><pre><code>memory/MEMORY.md</code></pre></strong> (core memory) — long-term facts and user preferences, always injected into the system prompt. Capped at 2000 chars with automatic warnings when the agent needs to compact it, forcing the agent to self-curate rather than accumulate stale context.</li>
+<li><strong><pre><code>memory/YYYY-MM-DD.md</code></pre></strong> (daily logs) — ephemeral session notes. Today's and yesterday's logs are loaded automatically, giving the agent a rolling two-day window of recent context without unbounded growth.</li>
+<li><strong><pre><code>memory/recall/*.md</code></pre></strong> (recall) — past conversations, auto-logged. Searchable via <pre><code>memory_search</code></pre> with regex support for when the agent needs to reach further back.</li>
+</ul>
+<p>The agent manages its own memory through three tools:</p>
+<ul>
+<li><pre><code>memory_write</code></pre> — write or append to any memory file</li>
+<li><pre><code>memory_replace</code></pre> — surgical find-and-replace for updating facts (empty replacement = delete)</li>
+<li><pre><code>memory_search</code></pre> — case-insensitive search across all memory files with regex support</li>
+</ul>
+<p>This means the agent actively maintains its own knowledge base — correcting outdated facts, promoting ephemeral notes to long-term memory, and compacting when context gets bloated. All of it happens in plain text files you can </p><pre><code>cat</code></pre>, <pre><code>grep</code></pre>, or commit to git.<p></p>
+<div><h3>MCP tool support</h3><a href="#mcp-tool-support"></a></div>
+<p>Connect external tools via <a href="https://modelcontextprotocol.io">Model Context Protocol</a> stdio transport. Tools are discovered automatically and registered in the agent's tool registry.</p>
+<div><h3>Skills</h3><a href="#skills"></a></div>
+<p>Install <a href="https://agentskills.io">AgentSkills.io</a>-compatible skills as </p><pre><code>SKILL.md</code></pre> files with YAML frontmatter. Skills use progressive disclosure — metadata is always in context, full body is loaded on activation.<p></p>
+<div><h3>Telegram</h3><a href="#telegram"></a></div>
+<p>Enable the Telegram channel to interact with the agent via a Telegram bot:</p>
+<div><pre>[<span>channels</span>.<span>telegram</span>]
+<span>enabled</span> = <span>true</span>
+<span>bot_token</span> = <span><span>"</span>${TELEGRAM_BOT_TOKEN}<span>"</span></span>
+<span>allowed_users</span> = [<span>123456789</span>]</pre></div>
+<div><h3>Cron jobs</h3><a href="#cron-jobs"></a></div>
+<p>Schedule recurring or one-shot tasks that the agent executes autonomously. Results are delivered back to the originating channel (Telegram, HTTP, etc.).</p>
+<div><pre><span><span>#</span> Add a recurring job — every day at 9am</span>
+neko cron add <span><span>"</span>summarize yesterday's news<span>"</span></span> --schedule <span><span>"</span>0 0 9 * * *<span>"</span></span> --name morning-digest <span><span>#</span> One-shot job</span>
+neko cron add <span><span>"</span>remind me to call the dentist<span>"</span></span> --at <span><span>"</span>2026-02-17 09:00<span>"</span></span> <span><span>#</span> List jobs</span>
+neko cron list <span><span>#</span> Announce results to a Telegram chat</span>
+neko cron edit morning-digest --announce <span><span>"</span>telegram:123456<span>"</span></span> <span><span>#</span> View execution history</span>
+neko cron <span>history</span> --lines 10</pre></div>
+<p>The agent can also create cron jobs itself via the </p><pre><code>cron_manage</code></pre> tool — when a user on Telegram says "remind me every morning at 9am", the agent creates the job and automatically routes results back to that chat. No manual wiring needed.<p></p>
+<p>Jobs are stored at </p><pre><code>workspace/cron/jobs.json</code></pre> and history at <pre><code>workspace/cron/history.jsonl</code></pre>. The scheduler ticks every 15 seconds with exponential backoff on failures (30s → 1m → 5m → 15m → 60m cap).<p></p>
+<div><h3>Sandboxed Python</h3><a href="#sandboxed-python"></a></div>
+<p>Built-in Python interpreter via <a href="https://github.com/pydantic/monty">monty</a> for safe code execution with configurable memory and recursion limits.</p>
+<div><h2>Supported platforms</h2><a href="#supported-platforms"></a></div>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>x86_64-unknown-linux-gnu</code></pre></td>
+<td>Standard Linux</td>
+</tr>
+<tr>
+<td><pre><code>x86_64-unknown-linux-musl</code></pre></td>
+<td>Static binary, Alpine-friendly</td>
+</tr>
+<tr>
+<td><pre><code>aarch64-unknown-linux-gnu</code></pre></td>
+<td>Raspberry Pi, ARM servers</td>
+</tr>
+<tr>
+<td><pre><code>x86_64-apple-darwin</code></pre></td>
+<td>Intel Mac</td>
+</tr>
+<tr>
+<td><pre><code>aarch64-apple-darwin</code></pre></td>
+<td>Apple Silicon</td>
+</tr>
+</tbody>
+</table>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

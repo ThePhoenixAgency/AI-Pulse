@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built 29 Free Tools That Never Upload Your Files</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built 29 Free Tools That Never Upload Your Files</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 6:16:18 AM | <a href="https://dev.to/botsquash/i-built-29-free-tools-that-never-upload-your-files-3pel" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fvzpu3uw2jzugteykyu89.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fvzpu3uw2jzugteykyu89.png" alt="Cover image for I Built 29 Free Tools That Never Upload Your Files"> </a> <div> <p><a href="https://dev.to/botsquash"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3776903%2Fe8ae0d75-56a5-4a81-b1c0-09b06eaae1b3.png" alt="Syed Roman"></a> </p> </div> </header> <div> <p>Here is your <strong>clean, properly structured Markdown</strong> (ready to paste into dev.to or GitHub):</p> <hr> <h2> <a name="the-problem-with-online-tools" href="#the-problem-with-online-tools"> </a> The Problem with Online Tools
+</h2> <p>Every time you use an "online image converter" or "PDF merger," you're uploading your files to someone's server.</p> <p>Even if they claim "secure processing," your data:</p> <ul>
+<li>Travels over the internet</li>
+<li>Sits on their servers (temporarily or permanently)</li>
+<li>Is subject to their privacy policies</li>
+<li>Could be breached, leaked, or analyzed</li>
+</ul> <p>For sensitive documents, personal photos, or confidential work — this is a problem.</p> <hr> <h2> <a name="the-solution-clientside-processing" href="#the-solution-clientside-processing"> </a> The Solution: Client-Side Processing
+</h2> <p>I built <a href="https://toolmansion.com/" target="_blank">ToolMansion</a> — a collection of 29 free tools that run <strong>entirely in your browser</strong>.</p> <p>What this means:</p> <ul>
+<li> Your files NEVER leave your device</li>
+<li> No accounts, no tracking, no cookies</li>
+<li> Works offline after page load</li>
+<li> Zero server processing</li>
+</ul> <hr> <h2> <a name="the-tech-stack" href="#the-tech-stack"> </a> The Tech Stack
+</h2> <ul>
+<li>
+<strong>Next.js 16</strong> + React + TypeScript</li>
+<li>
+<strong>WebAssembly</strong> (Rust compiled to WASM) for image processing</li>
+<li>
+<strong>pdf-lib</strong> for PDF manipulation</li>
+<li>
+<strong>Static export</strong> — no backend needed</li>
+</ul> <p>All processing happens client-side using:</p> <ul>
+<li>Canvas API for images</li>
+<li>Web Crypto API for security tools</li>
+<li>FileReader API for local file access</li>
+</ul> <hr> <h2> <a name="the-tools" href="#the-tools"> </a> The Tools
+</h2> <h3> <a name="image-tools" href="#image-tools"> </a> Image Tools
+</h3> <ul>
+<li>Convert (JPG PNG WebP)</li>
+<li>Resize with social media presets</li>
+<li>Compress to target file size</li>
+<li>Crop with aspect ratio guides</li>
+<li>Remove EXIF data (privacy!)</li>
+</ul> <h3> <a name="pdf-tools" href="#pdf-tools"> </a> PDF Tools
+</h3> <ul>
+<li>Merge multiple PDFs</li>
+<li>Split / extract pages</li>
+<li>JPG to PDF converter</li>
+<li>PDF to images</li>
+</ul> <h3> <a name="developer-tools" href="#developer-tools"> </a> Developer Tools
+</h3> <ul>
+<li>JSON formatter / validator</li>
+<li>Base64 encoder / decoder</li>
+<li>URL encoder / decoder</li>
+<li>UUID generator</li>
+<li>Hash generator</li>
+<li>Color picker</li>
+</ul> <h3> <a name="text-tools" href="#text-tools"> </a> Text Tools
+</h3> <ul>
+<li>Word counter with reading time</li>
+<li>Case converter</li>
+<li>Remove duplicate lines</li>
+<li>Extract emails / URLs</li>
+<li>Text diff</li>
+</ul> <h3> <a name="generators" href="#generators"> </a> Generators
+</h3> <ul>
+<li>QR code generator</li>
+<li>Password generator</li>
+<li>Lorem ipsum</li>
+</ul> <hr> <h2> <a name="why-webassembly" href="#why-webassembly"> </a> Why WebAssembly?
+</h2> <p>JavaScript is great, but image processing is computationally intensive. WebAssembly gives near-native performance directly in the browser.</p> <p><strong>Example:</strong><br>
+Processing a 10MB image takes ~200ms with WASM vs ~2 seconds with pure JavaScript.</p> <hr> <h2> <a name="the-privacy-angle" href="#the-privacy-angle"> </a> The Privacy Angle
+</h2> <p>This isn't just a technical choice — it's a privacy stance.</p> <p>When you convert an image on ToolMansion:</p> <ol>
+<li>File loads into browser memory</li>
+<li>WASM processes it locally</li>
+<li>Result downloads directly</li>
+<li>Nothing ever hits a server</li>
+</ol> <p>Your sensitive documents, personal photos, and confidential files stay on your device — where they belong.</p> <hr> <h2> <a name="try-it-out" href="#try-it-out"> </a> Try It Out
+</h2> <p>All tools are 100% free. No signup required.</p> <p> <a href="https://toolmansion.com/" target="_blank">toolmansion.com</a></p> <hr> <h2> <a name="open-source" href="#open-source"> </a> Open Source?
+</h2> <p>Considering open-sourcing the core utilities. Would that be valuable?</p> <p>Let me know what tools you'd like to see added! </p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

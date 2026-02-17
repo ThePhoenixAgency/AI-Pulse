@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,55 @@
     Source: Hugging Face Blog | Date: 1/20/2026 12:00:00 AM | <a href="https://huggingface.co/blog/waypoint-1" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Summary unavailable for this article.</p>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/lapp0"><img alt="Andrew Lapp's avatar" src="https://huggingface.co/avatars/176899675532d6a1ce255b290d11df37.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/LouisCastricato"><img alt="Louis Castricato's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1665155571839-60d35a0307da9c17c7270909.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ScottieFox"><img alt="Scott Fox's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6307a1542d33960e6b73bfcd/E6mWE0S2axGz7uCPLT03v.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/shahbuland"><img alt="Shahbuland Matiana's avatar" src="https://huggingface.co/avatars/6bbc1d46c212b6e218bf5693ab70858a.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/xAesthetics"><img alt="David Rossi's avatar" src="https://huggingface.co/avatars/357d2a4d2605ab920271cdd22a080681.svg"></a> </span> </span></p> </div></div> <p> <img alt="waypoint launch grid" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/overworld-waypoint.gif">
+</p> <h2> <div><nav><ul><li><a href="#waypoint-1-weights-on-the-hub">Waypoint-1 <strong>Weights</strong> on the Hub</a> <ul></ul> </li><li><a href="#try-out-the-model">Try Out The Model</a> <ul></ul> </li><li><a href="#what-is-waypoint-1">What is Waypoint-1?</a> <ul></ul> </li><li><a href="#how-was-it-trained">How was it trained?</a> <ul></ul> </li><li><a href="#the-inference-library-worldenginehttpsgithubcomwayfarer-labsworld_engine">The Inference Library: WorldEngine</a> <ul></ul> </li><li><a href="#build-with-world-engine">Build with World Engine</a> <ul></ul> </li><li><a href="#stay-in-touch">Stay in Touch</a> <ul></ul> </li></ul></nav></div> <a href="#waypoint-1-weights-on-the-hub"> <span></span> </a> <span> Waypoint-1 <strong>Weights</strong> on the Hub </span>
+</h2>
+<ul>
+<li><a href="https://huggingface.co/overworld/Waypoint-1-Small">Waypoint-1-Small</a></li>
+<li><a href="https://huggingface.co/overworld/Waypoint-1-Medium">Waypoint-1-Medium</a> (Coming Soon!)</li>
+</ul>
+<h2> <a href="#try-out-the-model"> <span></span> </a> <span> Try Out The Model </span>
+</h2>
+<p><strong>Overworld Stream:</strong> <a href="https://overworld.stream/">https://overworld.stream</a></p>
+<h2> <a href="#what-is-waypoint-1"> <span></span> </a> <span> What is Waypoint-1? </span>
+</h2>
+<p>Waypoint-1 is Overworld’s real-time-interactive video diffusion model, controllable and prompted via text, mouse, and keyboard. You can give the model some frames, run the model, and have it create a world you can step into and interact with.</p>
+<p>The backbone of the model is a frame-causal rectified flow transformer trained on 10,000 hours of diverse video game footage paired with control inputs and text captions. Waypoint-1 is a latent model, meaning that it is trained on compressed frames.</p>
+<p>The standard among existing world models has become taking pre-trained video models and fine-tuning them with brief and simplified control inputs. In contrast, Waypoint-1 is trained from the get-go with a focus on interactive experiences. With other models, controls are simple: you can move and rotate the camera once every few frames, with severe latency issues. With Waypoint-1 you are not limited at all as far as controls are concerned. You can move the camera freely with the mouse, and input any key on the keyboard, and all this with zero latency. Each frame is generated with your controls as context. Additionally, the model runs fast enough to provide a seamless experience even on consumer hardware.</p>
+<h2> <a href="#how-was-it-trained"> <span></span> </a> <span> How was it trained? </span>
+</h2>
+<p>Waypoint-1 was pre-trained via diffusion forcing, a technique with which the model learns to denoise future frames given past frames. A causal attention mask is applied such that a token in any given frame can only attend to tokens in its own frame, or past frames, but not future frames. Each frame is noised randomly, and as such the model learns to denoise each frame separately. During inference, you can then denoise new frames one at a time, allowing you to generate a procedural stream of new frames.</p>
+<p>While diffusion forcing presents a strong baseline, randomly noising all frames is misaligned with a frame-by-frame autoregressive rollout. This inference mismatch results in error accumulation, and noisy long rollouts. To address this problem we post-train with self forcing, a technique that trains the model to produce realistic outputs under a regime which matches inference behavior. Self-forcing via DMD has the added benefit of one-pass CFG, and few-step denoising.</p>
+<h2> <a href="#the-inference-library-worldengine"> <span></span> </a> <span> The Inference Library: <a href="https://github.com/Wayfarer-Labs/world_engine">WorldEngine</a> </span>
+</h2>
+<p><a href="https://github.com/Wayfarer-Labs/world_engine">WorldEngine</a> is Overworld’s high‑performance inference library for interactive world model streaming. It provides the core tooling for building inference applications in pure Python, optimized for low latency, high throughput, extensibility, and developer simplicity. The runtime loop is designed for interactivity: it consumes context frame images, keyboard/mouse inputs, and text, and outputs image frames for real‑time streaming.</p>
+<p>On Waypoint‑1‑Small (2.3B) running on a 5090, WorldEngine sustains ~30,000 token‑passes/sec (single denoising pass; 256 tokens per frame) and achieves 30 FPS at 4 steps or 60 FPS at 2 steps</p>
+<p>Performance comes from four targeted optimizations:</p>
+<ul>
+<li><a href="https://arxiv.org/html/2412.18911v1">AdaLN feature caching</a>: Avoids repeated AdaLN conditioning projections through caching and reusing so long as prompt conditioning and timesteps stay the same between fwd passes.</li>
+<li><a href="https://arxiv.org/pdf/2412.05496">Static Rolling KV Cache + Flex Attention</a></li>
+<li>Matmul fusion: Standard inference optimization using fused QKV projections.</li>
+<li><a href="https://docs.pytorch.org/docs/stable/generated/torch.compile.html">Torch Compile</a> using <code>torch.compile(fullgraph=True, mode="max-autotune", dynamic=False)</code></li>
+</ul>
+<pre><code><span>from</span> world_engine <span>import</span> WorldEngine, CtrlInput <span># Create inference engine</span>
+engine = WorldEngine(<span>"Overworld/Waypoint-1-Small"</span>, device=<span>"cuda"</span>) <span># Specify a prompt</span>
+engine.set_prompt(<span>"A game where you herd goats in a beautiful valley"</span>) <span># Optional: Force the next frame to be a specific image</span>
+img = pipeline.append_frame(uint8_img) <span># (H, W, 3)</span> <span># Generate 3 video frames conditioned on controller inputs</span>
+<span>for</span> controller_input <span>in</span> [ CtrlInput(button={<span>48</span>, <span>42</span>}, mouse=[<span>0.4</span>, <span>0.3</span>]), CtrlInput(mouse=[<span>0.1</span>, <span>0.2</span>]), CtrlInput(button={<span>95</span>, <span>32</span>, <span>105</span>}),
+]: img = engine.gen_frame(ctrl=controller_input)
+</code></pre>
+<h2> <a href="#build-with-world-engine"> <span></span> </a> <span> Build with World Engine </span>
+</h2>
+<p>We’re running a <code>world_engine</code> hackathon on 1/20/2026 - You can RSVP <a href="https://luma.com/klpa49os">here</a>. Teams of 2-4 are welcome and the prize is a 5090 GPU on the spot. We’d love to see what you can come up with to extend the world_engine and it should be a great event to meet like-minded founders, engineers, hackers and investors. We hope you can join us at 10am PST on January 20th for 8 hours of friendly competition!</p>
+<h2> <a href="#stay-in-touch"> <span></span> </a> <span> Stay in Touch </span>
+</h2>
+<ul>
+<li><a href="http://over.world/">Website</a></li>
+<li><a href="https://discord.gg/mc6t9jjrR8">Discord (Developers)</a></li>
+<li><a href="https://discord.gg/MEmQa7Wux4">Discord (Models/Players)</a></li>
+<li><a href="https://x.com/overworld_ai">X/Twitter</a></li>
+</ul>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

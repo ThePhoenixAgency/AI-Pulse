@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - alexcalderado/token-cost-guard: Track OpenAI/Anthropic API costs locally with SQLite</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - alexcalderado/token-cost-guard: Track OpenAI/Anthropic API costs locally with SQLite</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 3:31:10 AM | <a href="https://github.com/alexcalderado/token-cost-guard" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: ES
+  </div>
+  <div class="content">
+    <div><h1>Token Cost Guard</h1><a href="#token-cost-guard"></a></div>
+<p><strong>Know your AI costs before the bill arrives.</strong></p>
+<p>Track OpenAI and Anthropic API token costs locally. Never be surprised by runaway costs again.</p>
+<div><h2>The Problem</h2><a href="#the-problem"></a></div>
+<p>Building with AI APIs is amazing until you get the bill.</p>
+<ul>
+<li>No visibility into token consumption until charges appear</li>
+<li>Experiments cost money (sometimes thousands)</li>
+<li>No circuit breakers or alerts</li>
+<li>Manual tracking is tedious</li>
+</ul>
+<p>Token Cost Guard solves this with <strong>local-first cost tracking</strong> that never sends data to the cloud.</p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<p> <strong>Local SQLite</strong> - Your token data never leaves your machine<br> <strong>One-line setup</strong> - </p><pre><code>client = track(OpenAI())</code></pre><br> <strong>Real-time tracking</strong> - Logs every API call automatically<br> <strong>Cost breakdown</strong> - View costs by model, day, and session<br> <strong>Threshold alerts</strong> - Slack/Discord webhooks when you hit limits<br> <strong>CSV export</strong> - Share reports with your team<p></p>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><pre>pip install git+https://github.com/alexcalderado/token-cost-guard.git</pre></div>
+<p><strong>Note:</strong> If the </p><pre><code>token-guard</code></pre> command is not found after installation, add Python scripts to your PATH:<p></p>
+<div><pre><span>export</span> PATH=<span><span>"</span><span>$HOME</span>/Library/Python/3.9/bin:<span>$PATH</span><span>"</span></span> <span><span>#</span> macOS</span>
+<span><span>#</span> or </span>
+<span>export</span> PATH=<span><span>"</span><span>$HOME</span>/.local/bin:<span>$PATH</span><span>"</span></span> <span><span>#</span> Linux</span></pre></div>
+<p>Add this line to your shell profile (</p><pre><code>.zshrc</code></pre>, <pre><code>.bashrc</code></pre>, etc.) to make it permanent.<p></p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<blockquote>
+<p><strong>Note:</strong> If </p><pre><code>token-guard</code></pre> command is not found after installation, use <pre><code>python3 -m token_guard</code></pre> instead (same functionality). Or add Python scripts to PATH as shown above.<p></p>
+</blockquote>
+<p><strong>1. Initialize configuration:</strong></p>
+<div><pre>token-guard init
+<span><span>#</span> Or: python3 -m token_guard init</span></pre></div>
+<p><strong>2. Set your API keys:</strong></p>
+<div><pre><span>export</span> OPENAI_API_KEY=<span><span>"</span>sk-...<span>"</span></span>
+<span>export</span> ANTHROPIC_API_KEY=<span><span>"</span>sk-ant-...<span>"</span></span></pre></div>
+<p><strong>3. Wrap your client (one-line change):</strong></p>
+<div><pre><span>from</span> <span>token_guard</span> <span>import</span> <span>track</span>
+<span>from</span> <span>openai</span> <span>import</span> <span>OpenAI</span> <span># Before: client = OpenAI()</span>
+<span># After:</span>
+<span>client</span> <span>=</span> <span>track</span>(<span>OpenAI</span>()) <span>response</span> <span>=</span> <span>client</span>.<span>chat</span>.<span>completions</span>.<span>create</span>( <span>model</span><span>=</span><span>"gpt-4"</span>, <span>messages</span><span>=</span>[{<span>"role"</span>: <span>"user"</span>, <span>"content"</span>: <span>"Hello"</span>}]
+)
+<span># Automatically logged to ~/.token-guard/guard.db</span></pre></div>
+<p><strong>4. Check your costs:</strong></p>
+<div><pre>token-guard report</pre></div>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><h3>View Cost Summary</h3><a href="#view-cost-summary"></a></div>
+<div><pre>token-guard report ╭──────────────────────────────╮
+│ Token Cost Guard — Report │
+╰──────────────────────────────╯ Today<span><span>'</span>s Cost: $2.14</span>
+<span>Last 30 Days: $47.82</span>
+<span></span>
+<span>Top Models:</span>
+<span> gpt-4...................... $35.20</span>
+<span> claude-opus-4-5............. $12.62</span></pre></div>
+<div><h3>Export to CSV</h3><a href="#export-to-csv"></a></div>
+<div><pre>token-guard <span>export</span> --days 7
+<span><span>#</span> Creates: token-cost-guard-export-2026-02-15.csv</span></pre></div>
+<div><h3>Set Cost Alerts</h3><a href="#set-cost-alerts"></a></div>
+<div><pre>token-guard alerts add --type daily_cost --threshold 10 \ --webhook https://hooks.slack.com/services/YOUR/WEBHOOK</pre></div>
+<p>When daily costs exceed $10, you'll get a Slack notification.</p>
+<div><h3>View Model Pricing</h3><a href="#view-model-pricing"></a></div>
+<div><pre>token-guard config --pricing Model Pricing (per 1M tokens): claude-sonnet-4-5................. <span>$3</span>.00 input, <span>$1</span>5.00 output gpt-4o............................ <span>$2</span>.50 input, <span>$1</span>0.00 output gpt-5.2........................... <span>$1</span>.75 input, <span>$1</span>4.00 output</pre></div>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<p>Token Cost Guard wraps your AI client with a function that:</p>
+<ol>
+<li>Calls the original API (no proxying, same latency)</li>
+<li>Logs input/output tokens to local SQLite</li>
+<li>Calculates cost based on model pricing</li>
+<li>Returns the response unchanged</li>
+</ol>
+<p>If logging fails, the API call still succeeds (graceful degradation).</p>
+<div><h2>Supported Models</h2><a href="#supported-models"></a></div>
+<ul>
+<li><strong>Anthropic:</strong> claude-opus-4-5, claude-sonnet-4-5, claude-haiku-4-5</li>
+<li><strong>OpenAI:</strong> gpt-5.2, gpt-5-mini, gpt-4.1, gpt-4.1-mini, gpt-4o</li>
+</ul>
+<div><h2>Privacy</h2><a href="#privacy"></a></div>
+<p> <strong>No cloud sync</strong><br> <strong>No accounts</strong><br> <strong>No third-party services</strong></p>
+<p>Your API cost data stays on your machine. Pricing is hardcoded and can be customized in </p><pre><code>~/.token-guard/pricing.json</code></pre>.<p></p>
+<div><h2> Token Cost Guard PRO (Coming Soon)</h2><a href="#-token-cost-guard-pro-coming-soon"></a></div>
+<p>Love the free CLI? <strong>PRO</strong> takes it further:</p>
+<ul>
+<li><strong> Email/Telegram alerts</strong> — Get notified before you blow your budget</li>
+<li><strong> Weekly cost reports</strong> — Automatic summaries to your inbox</li>
+<li><strong> AI optimization tips</strong> — "Switch to Haiku here, save $42/month"</li>
+<li><strong> One command setup</strong> — <pre><code>token-guard activate YOUR-KEY</code></pre></li>
+</ul>
+<p><strong>$29/month</strong> — Launching March 2026</p>
+<p><a href="https://github.com/alexcalderado/token-cost-guard/issues/new?title=PRO%20Waitlist&amp;body=I%27m%20interested%20in%20Token%20Cost%20Guard%20PRO!">Join the waitlist →</a></p>
+<hr>
+<div><h2>v2 Roadmap (Free Tier)</h2><a href="#v2-roadmap-free-tier"></a></div>
+<ul>
+<li>Async/streaming support</li>
+<li>Local web dashboard</li>
+<li>Cost forecasting</li>
+<li>Optimization suggestions</li>
+</ul>
+<div><h2>Support</h2><a href="#support"></a></div>
+<ul>
+<li>GitHub: <a href="https://github.com/AlexCalderAI/token-cost-guard">https://github.com/AlexCalderAI/token-cost-guard</a></li>
+<li>Issues: Report bugs or request features</li>
+</ul>
+<hr>
+<p><strong>Made by <a href="https://x.com/AlexCalderAI">@AlexCalderAI</a> · MIT License</strong></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - Mcourtyard/m-courtyard: M-Courtyard: Local AI Model Fine-tuning Assistant for Apple Silicon. Zero-code, zero-cloud, privacy-first desktop app powered by Tauri + React + mlx-lm.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - Mcourtyard/m-courtyard: M-Courtyard: Local AI Model Fine-tuning Assistant for Apple Silicon. Zero-code, zero-cloud, privacy-first desktop app powered by Tauri + React + mlx-lm.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 3:52:04 AM | <a href="https://github.com/Mcourtyard/m-courtyard" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <pre><code> M-Courtyard
+Say Goodbye to Complexity, Easily Create Your AI Model
+From raw documents to a deployable Ollama model — entirely on your Mac. English | 中文</code></pre>
+<hr>
+<div><h2>Why M-Courtyard?</h2><a href="#why-m-courtyard"></a></div>
+<p>Most fine-tuning tools are CLI-heavy, cloud-dependent, or require juggling multiple scripts. M-Courtyard wraps the <strong>full pipeline</strong> into a single, guided desktop experience — powered by <a href="https://ollama.com">Ollama</a> + <a href="https://github.com/ml-explore/mlx-examples/tree/main/llms/mlx_lm">mlx-lm</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Data Prep</strong></td>
+<td>Import documents (txt/docx/pdf) → auto-clean → AI-generate training datasets (Q&amp;A, style imitation, multi-turn dialogue, instruction)</td>
+</tr>
+<tr>
+<td><strong>2. Train Model</strong></td>
+<td>Pick a base model → select dataset → configure LoRA params → train with real-time loss chart &amp; progress</td>
+</tr>
+<tr>
+<td><strong>3. Test Model</strong></td>
+<td>Chat with your fine-tuned adapter to verify quality</td>
+</tr>
+<tr>
+<td><strong>4. Export Model</strong></td>
+<td>One-click export to Ollama with quantization (Q4/Q8/F16)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>100% local. No cloud. No API keys. No data leaves your Mac.</strong></p>
+</blockquote>
+<div> <a target="_blank" href="/Mcourtyard/m-courtyard/blob/main/docs/screenshots/dashboard.png"><img src="/Mcourtyard/m-courtyard/raw/main/docs/screenshots/dashboard.png" alt="Dashboard"></a> <p><em>Dashboard — Environment status, quick actions, and project overview</em></p>
+</div> <strong> More Screenshots (click to expand)</strong>
+<br>
+<div> <a target="_blank" href="/Mcourtyard/m-courtyard/blob/main/docs/screenshots/data-preparation.png"><img src="/Mcourtyard/m-courtyard/raw/main/docs/screenshots/data-preparation.png" alt="Data Preparation"></a> <p><em>Data Preparation — AI-powered dataset generation with real-time log</em></p>
+</div>
+<div> <a target="_blank" href="/Mcourtyard/m-courtyard/blob/main/docs/screenshots/training-progress.png"><img src="/Mcourtyard/m-courtyard/raw/main/docs/screenshots/training-progress.png" alt="Training Progress"></a> <p><em>Training — Live loss curve and iteration progress</em></p>
+</div>
+<div> <a target="_blank" href="/Mcourtyard/m-courtyard/blob/main/docs/screenshots/training-summary.png"><img src="/Mcourtyard/m-courtyard/raw/main/docs/screenshots/training-summary.png" alt="Training Summary"></a> <p><em>Training Summary — Duration, loss metrics, and 99.7% improvement</em></p>
+</div>
+<div> <a target="_blank" href="/Mcourtyard/m-courtyard/blob/main/docs/screenshots/test-model.png"><img src="/Mcourtyard/m-courtyard/raw/main/docs/screenshots/test-model.png" alt="Test Model"></a> <p><em>Test Model — Chat with your fine-tuned model</em></p>
+</div>
+<div> <a target="_blank" href="/Mcourtyard/m-courtyard/blob/main/docs/screenshots/export-ollama.png"><img src="/Mcourtyard/m-courtyard/raw/main/docs/screenshots/export-ollama.png" alt="Export to Ollama"></a> <p><em>Export — One-click export to Ollama with quantization</em></p>
+</div> <div><h2>Download</h2><a href="#download"></a></div>
+<blockquote>
+<p><strong>Most users should download the pre-built app below.</strong> Building from source is only needed for development.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Chip</th>
+<th>Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS 14+</td>
+<td>Apple Silicon (M1/M2/M3/M4)</td>
+<td><a href="https://github.com/Mcourtyard/m-courtyard/releases/latest"> Download .dmg</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong> macOS Gatekeeper Notice</strong>
+Since the app is not signed with an Apple Developer certificate, macOS may show a "damaged" warning. To fix this:</p>
+<ol>
+<li>Install the app by dragging it to <pre><code>/Applications</code></pre> as usual</li>
+<li>Open <strong>Terminal</strong> (Spotlight → type "Terminal")</li>
+<li>Run the following command:
+<div><pre>sudo xattr -rd com.apple.quarantine /Applications/M-Courtyard.app</pre></div>
+</li>
+<li>Enter your <strong>Mac login password</strong> when prompted (the password won't be visible as you type — this is normal)</li>
+<li>Done! Now open M-Courtyard from Applications and it will launch normally</li>
+</ol>
+</blockquote> <div><h2>Key Features</h2><a href="#key-features"></a></div>
+<div><h3>Data Processing &amp; Generation</h3><a href="#data-processing--generation"></a></div>
+<ul>
+<li><strong>AI dataset generation</strong> — Use a local LLM to transform documents into high-quality training data</li>
+<li><strong>Multiple generation types</strong> — Knowledge Q&amp;A / Style Imitation / Multi-turn Dialogue / Instruction Training</li>
+<li><strong>Rule-based generation</strong> — Generate basic training data without any AI model</li>
+<li><strong>Incremental save &amp; crash recovery</strong> — Every generated sample is saved immediately; resume after interruption</li>
+</ul>
+<div><h3>Model Training</h3><a href="#model-training"></a></div>
+<ul>
+<li><strong>mlx-lm LoRA training</strong> — Leverages Apple MLX unified memory for efficient fine-tuning on Apple Silicon</li>
+<li><strong>Live training visualization</strong> — Real-time loss curves, iteration progress bar, and streaming logs</li>
+<li><strong>Multi-source model hub</strong> — Auto-detect Ollama models, scan local HuggingFace/ModelScope caches, or download online</li>
+<li><strong>Configurable download source</strong> — Switch between HuggingFace / HF Mirror (China acceleration) / ModelScope in Settings</li>
+<li><strong>Training presets</strong> — Quick / Standard / Thorough configurations for different needs</li>
+</ul>
+<div><h3>Export &amp; Deployment</h3><a href="#export--deployment"></a></div>
+<ul>
+<li><strong>One-click Ollama export</strong> — Export fine-tuned models directly to Ollama with Q4/Q8/F16 quantization</li>
+<li><strong>Universal model support</strong> — Qwen, DeepSeek, GLM, Llama, GPT-OSS, Kimi, Mistral, Phi and more</li>
+<li><strong>Adapter management</strong> — Manage and test multiple fine-tuned adapters</li>
+</ul>
+<div><h3>User Experience</h3><a href="#user-experience"></a></div>
+<ul>
+<li><strong>Guided 4-step workflow</strong> — Unified progress bar + sub-step timeline across all pages</li>
+<li><strong>100% local &amp; private</strong> — All data stays on your machine, no cloud dependency</li>
+<li><strong>Sleep prevention</strong> — Automatically prevents macOS sleep during long-running tasks</li>
+<li><strong>i18n</strong> — English and Chinese UI, switchable in Settings</li>
+</ul>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OS</td>
+<td>macOS 14+ (Sonoma or later)</td>
+</tr>
+<tr>
+<td>Chip</td>
+<td>Apple Silicon (M1 / M2 / M3 / M4 series)</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>16 GB+ recommended for 7B models; 8 GB works for 3B</td>
+</tr>
+<tr>
+<td>Dependencies</td>
+<td><a href="https://ollama.com">Ollama</a> (for AI generation) · uv (Python env, auto-detected)</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div> <ol>
+<li>Go to <a href="https://github.com/Mcourtyard/m-courtyard/releases/latest"><strong>Releases</strong></a> and download the latest <pre><code>.dmg</code></pre></li>
+<li>Open the <pre><code>.dmg</code></pre> file and drag <strong>M-Courtyard.app</strong> to your Applications folder</li>
+<li>Launch M-Courtyard — done!</li>
+</ol>
+<div><h3>Option 2: Build from Source</h3><a href="#option-2-build-from-source"></a></div> Click to expand build instructions
+<p><strong>Prerequisites:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Installation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node.js 18+</td>
+<td><a href="https://nodejs.org">nodejs.org</a> or <pre><code>brew install node</code></pre></td>
+</tr>
+<tr>
+<td>pnpm</td>
+<td><pre><code>npm install -g pnpm</code></pre></td>
+</tr>
+<tr>
+<td>Rust toolchain</td>
+<td><pre><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></pre></td>
+</tr>
+<tr>
+<td>Xcode CLT</td>
+<td><pre><code>xcode-select --install</code></pre></td>
+</tr>
+<tr>
+<td>Ollama</td>
+<td><a href="https://ollama.com">ollama.com</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step-by-step:</strong></p>
+<div><pre><span><span>#</span> 1. Clone the repo</span>
+git clone https://github.com/Mcourtyard/m-courtyard.git
+<span>cd</span> m-courtyard/app <span><span>#</span> 2. Make sure Rust is in PATH (needed after first install)</span>
+<span>source</span> <span><span>"</span><span>$HOME</span>/.cargo/env<span>"</span></span> <span><span>#</span> 3. Install frontend dependencies</span>
+pnpm install <span><span>#</span> 4a. Development mode (hot-reload, fast iteration)</span>
+pnpm tauri dev <span><span>#</span> 4b. OR: Production build (generates .app / .dmg)</span>
+pnpm tauri build</pre></div>
+<p><strong>After building:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>.app</code></pre> bundle</td>
+<td><pre><code>src-tauri/target/release/bundle/macos/M-Courtyard.app</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>.dmg</code></pre> installer</td>
+<td><pre><code>src-tauri/target/release/bundle/dmg/M-Courtyard_&lt;version&gt;_aarch64.dmg</code></pre></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> In </p><pre><code>pnpm tauri dev</code></pre> mode, the macOS Dock icon shows the default Tauri icon. The custom app icon only appears in production builds (<pre><code>pnpm tauri build</code></pre>).<p></p>
+</blockquote> <div><h2>Tech Stack</h2><a href="#tech-stack"></a></div>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frontend</td>
+<td>React 19 + TypeScript + TailwindCSS v4 + Vite</td>
+</tr>
+<tr>
+<td>Desktop</td>
+<td>Tauri 2.x (Rust)</td>
+</tr>
+<tr>
+<td>State</td>
+<td>Zustand</td>
+</tr>
+<tr>
+<td>AI Inference</td>
+<td>Ollama (local HTTP API)</td>
+</tr>
+<tr>
+<td>Training</td>
+<td>mlx-lm (Apple MLX Framework, LoRA)</td>
+</tr>
+<tr>
+<td>Python Env</td>
+<td>uv + venv (auto-managed)</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>SQLite + local filesystem</td>
+</tr>
+<tr>
+<td>i18n</td>
+<td>English &amp; Chinese</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>m-courtyard/
+├── app/
+│ ├── src/ # React frontend
+│ │ ├── pages/ # Page components (DataPrep, Training, Testing, Export)
+│ │ ├── components/ # Shared components (StepProgress, ModelSelector, etc.)
+│ │ ├── stores/ # Zustand state management
+│ │ ├── services/ # Service layer (project, training)
+│ │ └── i18n/ # Internationalization (en / zh-CN)
+│ ├── src-tauri/ # Rust backend
+│ │ ├── src/commands/ # Tauri IPC commands
+│ │ ├── src/python/ # Python subprocess management
+│ │ ├── scripts/ # Python scripts (clean, generate, export, inference)
+│ │ └── icons/ # App icons
+│ └── package.json
+├── LICENSE # AGPL-3.0 License
+├── README.md # This file
+└── README_zh-CN.md # 中文文档
+</code></pre></div>
+<div><h2>Workflow Details</h2><a href="#workflow-details"></a></div>
+<div><h3>1. Data Preparation</h3><a href="#1-data-preparation"></a></div> <div><h3>2. Train Model</h3><a href="#2-train-model"></a></div>
+<ul>
+<li><strong>2.1</strong> Select base model (Ollama / local / HuggingFace online)</li>
+<li><strong>2.2</strong> Select training dataset</li>
+<li><strong>2.3</strong> Configure LoRA parameters (presets: Quick / Standard / Thorough)</li>
+<li><strong>2.4</strong> Train with live loss chart &amp; progress tracking</li>
+</ul>
+<div><h3>3. Test Model</h3><a href="#3-test-model"></a></div>
+<ul>
+<li><strong>3.1</strong> Select fine-tuned adapter</li>
+<li><strong>3.2</strong> Chat with the model to verify quality</li>
+</ul>
+<div><h3>4. Export Model</h3><a href="#4-export-model"></a></div>
+<ul>
+<li><strong>4.1</strong> Select adapter</li>
+<li><strong>4.2</strong> Set model name</li>
+<li><strong>4.3</strong> Choose quantization (Q4 / Q8 / F16) → export to Ollama</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>This project is licensed under the <a href="/Mcourtyard/m-courtyard/blob/main/LICENSE">GNU Affero General Public License v3.0</a>.</p>
+<p>If you wish to use M-Courtyard under different terms (e.g., commercial license), please contact: <strong><a href="mailto:tuwenbo0112@gmail.com">tuwenbo0112@gmail.com</a></strong></p>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions are welcome! Here's how to get started:</p>
+<ol>
+<li><strong>Fork</strong> this repository</li>
+<li>Create a feature branch: <pre><code>git checkout -b feat/your-feature</code></pre></li>
+<li>Commit your changes using <a href="https://www.conventionalcommits.org/">Conventional Commits</a>: <pre><code>git commit -m "feat: add new feature"</code></pre></li>
+<li>Push to your fork: <pre><code>git push origin feat/your-feature</code></pre></li>
+<li>Open a <strong>Pull Request</strong> against the <pre><code>main</code></pre> branch</li>
+</ol>
+<p>Please make sure to:</p>
+<ul>
+<li>Write commit messages in <strong>English</strong></li>
+<li>Follow the existing code style</li>
+<li>Add tests for new features when applicable</li>
+</ul>
+<div><h2>Community</h2><a href="#community"></a></div>
+<ul>
+<li><a href="https://discord.gg/hjkrHWrQ">Discord</a> — Chat, get help, share your fine-tuned models</li>
+<li><a href="https://github.com/Mcourtyard/m-courtyard/discussions">GitHub Discussions</a> — Feature ideas, Q&amp;A, announcements</li>
+<li><a href="https://github.com/Mcourtyard/m-courtyard/issues">GitHub Issues</a> — Bug reports and feature requests</li>
+</ul>
+<div><h2>Support</h2><a href="#support"></a></div>
+<p>If you find M-Courtyard useful:</p>
+<ul>
+<li>Give it a on GitHub — it helps more people discover the project!</li>
+</ul>
+<div><h2>Star History</h2><a href="#star-history"></a></div>
+<p><a href="https://star-history.com/#Mcourtyard/m-courtyard&amp;Date"><img src="https://camo.githubusercontent.com/98c0e3e673f8dabc6ccc9a43cd306d04ccb9cf25de5a11a535f4501cf0fe2eba/68747470733a2f2f6170692e737461722d686973746f72792e636f6d2f7376673f7265706f733d4d636f757274796172642f6d2d636f7572747961726426747970653d44617465" alt="Star History Chart"></a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

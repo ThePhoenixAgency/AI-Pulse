@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - openconstruct/freeclaw: python implemntation of openclaw concept. Currently only supports Nvidia NIM API</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - openconstruct/freeclaw: python implemntation of openclaw concept. Currently only supports Nvidia NIM API</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 5:19:16 AM | <a href="https://github.com/openconstruct/freeclaw" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><h1>freeclaw</h1><a href="#freeclaw"></a></div>
+<p>Minimal OpenClaw-like CLI that supports NVIDIA NIM, OpenRouter, and Groq (OpenAI-compatible </p><pre><code>/v1/chat/completions</code></pre>).<p></p>
+<div><h2>Install</h2><a href="#install"></a></div>
+<p>INstall</p>
+<div><pre><code>git clone https://github.com/openconstruct/freeclaw
+cd freeclaw
+pip install -r requirements.txt
+python -m freeclaw onboard ( you will need an API key and a dicord bot key, I explain in detail here: https://medium.com/@jerryhowell/free-openclaw-alternative-freeclaw-ecf537abbcd0)
+python -m freeclaw discord ( or chat if you want to chat via SSH )
+</code></pre></div>
+<div><h2>Multiple Agents</h2><a href="#multiple-agents"></a></div>
+<p>You can create multiple named agent profiles (each with its own workspace/model/persona/Discord settings):</p>
+<ul>
+<li>Create an agent: <pre><code>python -m freeclaw onboard createagent &lt;name&gt;</code></pre>
+<ul>
+<li>Writes <pre><code>./config/agents/&lt;name&gt;/config.json</code></pre></li>
+<li>Writes <pre><code>./config/agents/&lt;name&gt;/.env</code></pre> (includes a per-agent <pre><code>FREECLAW_MEMORY_DB</code></pre> so Discord sessions don't collide)</li>
+<li>Default workspace: <pre><code>./workspace/&lt;name&gt;/</code></pre></li>
+</ul>
+</li>
+<li>Run an agent: <pre><code>python -m freeclaw --agent &lt;name&gt; chat</code></pre> (also works with <pre><code>run</code></pre>, <pre><code>task-timer</code></pre>, <pre><code>discord</code></pre>)</li>
+</ul>
+<p>Discord default behavior:</p>
+<ul>
+<li><pre><code>python -m freeclaw discord</code></pre> launches all Discord bots: base config + every <pre><code>config/agents/&lt;name&gt;/</code></pre> profile.</li>
+<li>Run only the base config bot: <pre><code>python -m freeclaw discord --no-all-agents</code></pre></li>
+<li>Run only one agent: <pre><code>python -m freeclaw --agent &lt;name&gt; discord</code></pre></li>
+</ul>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Defaults are NIM-first. Override with env vars:</p>
+<ul>
+<li><pre><code>FREECLAW_PROVIDER</code></pre> (default: <pre><code>nim</code></pre>)</li>
+<li><pre><code>FREECLAW_BASE_URL</code></pre> (default for NIM: <pre><code>https://integrate.api.nvidia.com/v1</code></pre>; OpenRouter: <pre><code>https://openrouter.ai/api/v1</code></pre>; Groq: <pre><code>https://api.groq.com/openai/v1</code></pre>)</li>
+<li><pre><code>FREECLAW_MODEL</code></pre> (default: auto-detect from <pre><code>/v1/models</code></pre>, or error if not supported)</li>
+<li><pre><code>FREECLAW_TEMPERATURE</code></pre> (default: <pre><code>0.7</code></pre>)</li>
+<li><pre><code>FREECLAW_MAX_TOKENS</code></pre> (default: <pre><code>1024</code></pre>)</li>
+<li><pre><code>FREECLAW_MAX_TOOL_STEPS</code></pre> (default: <pre><code>50</code></pre>)</li>
+<li><pre><code>FREECLAW_TOOL_ROOT</code></pre> (default: <pre><code>.</code></pre>; tools are constrained to this root)</li>
+<li><pre><code>FREECLAW_WORKSPACE_DIR</code></pre> (default: <pre><code>workspace</code></pre>; state files like <pre><code>persona.md</code></pre>, <pre><code>tasks.md</code></pre>, and <pre><code>.freeclaw/*</code></pre> live here)</li>
+<li><pre><code>FREECLAW_TASK_TIMER_MINUTES</code></pre> (default: <pre><code>30</code></pre>; 0 disables the task timer)</li>
+<li><pre><code>FREECLAW_WEB_UI_ENABLED</code></pre> (default: <pre><code>true</code></pre>; enables Web UI routes in <pre><code>timer-api</code></pre>)</li>
+<li><pre><code>FREECLAW_WEB_UI_PORT</code></pre> (default: <pre><code>3000</code></pre>; default <pre><code>timer-api</code></pre> bind port)</li>
+<li><pre><code>FREECLAW_TOOL_MAX_READ_BYTES</code></pre> (default: <pre><code>200000</code></pre>)</li>
+<li><pre><code>FREECLAW_TOOL_MAX_WRITE_BYTES</code></pre> (default: <pre><code>2000000</code></pre>)</li>
+<li><pre><code>FREECLAW_TOOL_MAX_LIST_ENTRIES</code></pre> (default: <pre><code>2000</code></pre>)</li>
+<li><pre><code>FREECLAW_ASSISTANT_NAME</code></pre> (default: <pre><code>Freeclaw</code></pre>)</li>
+<li><pre><code>FREECLAW_ASSISTANT_TONE</code></pre> (default: <pre><code>Direct, pragmatic, concise...</code></pre>)</li>
+<li><pre><code>FREECLAW_WEB_MAX_BYTES</code></pre> (default: <pre><code>500000</code></pre>)</li>
+<li><pre><code>FREECLAW_WEB_USER_AGENT</code></pre> (default: <pre><code>freeclaw/0.1.0 (+https://github.com/freeclaw/freeclaw)</code></pre>)</li>
+<li><pre><code>FREECLAW_MEMORY_DB</code></pre> (default: <pre><code>./config/memory.sqlite3</code></pre>; shared across CLI + Discord in the same project)</li>
+<li><pre><code>FREECLAW_ENABLE_SHELL</code></pre> (default: enabled; set to <pre><code>false</code></pre> to disable <pre><code>sh_exec</code></pre>)</li>
+<li><pre><code>FREECLAW_SHELL_TIMEOUT_S</code></pre> (default: <pre><code>20.0</code></pre>)</li>
+<li><pre><code>FREECLAW_SHELL_MAX_OUTPUT_BYTES</code></pre> (default: <pre><code>200000</code></pre>)</li>
+<li><pre><code>FREECLAW_SHELL_BLOCK_NETWORK</code></pre> (default: <pre><code>false</code></pre>; blocks <pre><code>curl/wget/ssh/nc/...</code></pre> in <pre><code>sh_exec</code></pre>)</li>
+<li><pre><code>FREECLAW_ENABLE_CUSTOM_TOOLS</code></pre> (default: enabled; set to <pre><code>false</code></pre> to disable loading custom tools from disk)</li>
+<li><pre><code>FREECLAW_CUSTOM_TOOLS_DIR</code></pre> (default: <pre><code>&lt;workspace&gt;/.freeclaw/tools</code></pre>; must be within workspace)</li>
+<li><pre><code>FREECLAW_CUSTOM_TOOLS_BLOCK_NETWORK</code></pre> (default: <pre><code>false</code></pre>; if <pre><code>true</code></pre>, blocks <pre><code>curl/wget/ssh/nc/...</code></pre> for custom tools)</li>
+<li><pre><code>FREECLAW_LOG_LEVEL</code></pre> (default: <pre><code>warning</code></pre>)</li>
+<li><pre><code>FREECLAW_LOG_FILE</code></pre> (default: unset; logs go to stderr)</li>
+<li><pre><code>FREECLAW_LOG_FORMAT</code></pre> (default: <pre><code>text</code></pre>; options: <pre><code>text</code></pre>, <pre><code>jsonl</code></pre>)</li>
+</ul>
+<p>Workspace safety:</p>
+<ul>
+<li>If <pre><code>workspace_dir</code></pre> resolves to filesystem root (<pre><code>/</code></pre>), freeclaw now falls back to <pre><code>&lt;cwd&gt;/workspace</code></pre> to prevent creating <pre><code>/.freeclaw</code></pre>.</li>
+</ul>
+<p>API key env vars (first found wins):</p>
+<ul>
+<li><pre><code>NVIDIA_API_KEY</code></pre></li>
+<li><pre><code>NIM_API_KEY</code></pre></li>
+<li><pre><code>NVIDIA_NIM_API_KEY</code></pre></li>
+<li><pre><code>OPENROUTER_API_KEY</code></pre> (OpenRouter provider)</li>
+<li><pre><code>OPENAI_API_KEY</code></pre> (fallback for OpenRouter provider)</li>
+<li><pre><code>GROQ_API_KEY</code></pre> (Groq provider)</li>
+<li><pre><code>GROQ_KEY</code></pre> (fallback for Groq provider)</li>
+</ul>
+<p>You can also generate a config file:</p>
+<ul>
+<li><pre><code>python -m freeclaw config init</code></pre></li>
+</ul>
+<p>This writes </p><pre><code>./config/config.json</code></pre> by default (override via <pre><code>--path</code></pre> or <pre><code>FREECLAW_CONFIG_DIR</code></pre>).<p></p>
+<p>Config utilities:</p>
+<ul>
+<li><pre><code>python -m freeclaw config show</code></pre> (effective config; includes env overrides)</li>
+<li><pre><code>python -m freeclaw config show --raw</code></pre> (config.json only)</li>
+<li><pre><code>python -m freeclaw config set max_tool_steps 30</code></pre></li>
+<li><pre><code>python -m freeclaw config validate</code></pre></li>
+</ul>
+<div><h2>Logging</h2><a href="#logging"></a></div>
+<p>CLI flags:</p>
+<div><pre>python -m freeclaw --log-level info --log-file ./config/freeclaw.log chat</pre></div>
+<p>JSON lines output:</p>
+<div><pre>python -m freeclaw --log-level info --log-format jsonl --log-file ./config/freeclaw.jsonl discord</pre></div>
+<p>Or env vars:</p>
+<ul>
+<li><pre><code>FREECLAW_LOG_LEVEL=debug|info|warning|error</code></pre></li>
+<li><pre><code>FREECLAW_LOG_FILE=./config/freeclaw.log</code></pre></li>
+<li><pre><code>FREECLAW_LOG_FORMAT=text|jsonl</code></pre></li>
+</ul>
+<div><h2>.env</h2><a href="#env"></a></div>
+<p></p><pre><code>freeclaw</code></pre> will auto-load env vars from (first match wins):<p></p>
+<ul>
+<li><pre><code>FREECLAW_ENV_FILE</code></pre> if set</li>
+<li><pre><code>./config/.env</code></pre></li>
+<li><pre><code>./.env</code></pre></li>
+</ul>
+<p>Create a template:</p>
+<div><pre>python -m freeclaw config env-init</pre></div>
+<p>Or re-run the onboarding menu any time:</p>
+<div><pre>python -m freeclaw onboard</pre></div>
+<div><h2>OpenRouter</h2><a href="#openrouter"></a></div>
+<p>To use OpenRouter:</p>
+<ul>
+<li>Set <pre><code>FREECLAW_PROVIDER=openrouter</code></pre></li>
+<li>Set <pre><code>OPENROUTER_API_KEY=...</code></pre> (or <pre><code>OPENAI_API_KEY=...</code></pre>)</li>
+<li>Optionally set <pre><code>FREECLAW_BASE_URL=https://openrouter.ai/api/v1</code></pre></li>
+</ul>
+<p>List only free OpenRouter models (best-effort):</p>
+<div><pre>python -m freeclaw models --provider openrouter --free-only</pre></div>
+<div><h2>Groq</h2><a href="#groq"></a></div>
+<p>To use Groq:</p>
+<ul>
+<li>Set <pre><code>FREECLAW_PROVIDER=groq</code></pre></li>
+<li>Set <pre><code>GROQ_API_KEY=...</code></pre> (or <pre><code>GROQ_KEY=...</code></pre>)</li>
+<li>Optionally set <pre><code>FREECLAW_BASE_URL=https://api.groq.com/openai/v1</code></pre></li>
+</ul>
+<p>List Groq models:</p>
+<div><pre>python -m freeclaw models --provider groq</pre></div>
+<div><h2>Tools</h2><a href="#tools"></a></div>
+<p>By default, </p><pre><code>run</code></pre> and <pre><code>chat</code></pre> enable basic filesystem tools (OpenAI function-calling compatible):<p></p>
+<ul>
+<li><pre><code>fs_read</code></pre>: read a text file (optionally line-ranged)</li>
+<li><pre><code>fs_write</code></pre>: write a text file (overwrite/append)</li>
+<li><pre><code>fs_list</code></pre>: list a directory (optionally recursive, bounded)</li>
+<li><pre><code>fs_mkdir</code></pre>: create a directory</li>
+<li><pre><code>fs_rm</code></pre>: remove a file/dir within tool_root</li>
+<li><pre><code>fs_mv</code></pre>: move/rename within tool_root</li>
+<li><pre><code>fs_cp</code></pre>: copy within tool_root</li>
+<li><pre><code>text_search</code></pre>: search for text within tool_root (bounded)</li>
+</ul>
+<p>Disable tools with </p><pre><code>--no-tools</code></pre>.<p></p>
+<p>Additional tools:</p>
+<ul>
+<li>Web: <pre><code>web_search</code></pre> (DuckDuckGo via <pre><code>ddgs</code></pre>) and <pre><code>web_fetch</code></pre> (public http(s) URL fetch; blocks localhost/private IPs).</li>
+<li>HTTP: <pre><code>http_request_json</code></pre> calls a public http(s) JSON API and returns parsed JSON (blocks localhost/private IPs).</li>
+<li>Memory: <pre><code>memory_*</code></pre> stores notes in a local SQLite DB. This memory is shared across CLI + Discord for the current project by default; override with <pre><code>FREECLAW_MEMORY_DB</code></pre>. Notes can be <pre><code>pinned</code></pre> or given a <pre><code>ttl_seconds</code></pre> expiry.</li>
+<li>Task scheduler: <pre><code>task_*</code></pre> manages recurring <pre><code>tasks.md</code></pre> entries (list/add/update/enable/disable/run-now) in structured form.</li>
+<li>Docs: <pre><code>doc_ingest</code></pre>/<pre><code>doc_inject</code></pre>, <pre><code>doc_search</code></pre>, <pre><code>doc_get</code></pre>, <pre><code>doc_list</code></pre>, <pre><code>doc_delete</code></pre> build and manage a persistent workspace document index (text + PDF via <pre><code>pypdf</code></pre>).</li>
+<li>Shell: <pre><code>sh_exec</code></pre> executes commands in <pre><code>tool_root</code></pre> (enabled by default; disable with <pre><code>--no-shell</code></pre> or <pre><code>FREECLAW_ENABLE_SHELL=false</code></pre>). Network tools are allowed by default; set <pre><code>FREECLAW_SHELL_BLOCK_NETWORK=true</code></pre> to block <pre><code>curl/wget/ssh/nc/...</code></pre>.</li>
+<li>Custom: additional tools are loaded from JSON specs under <pre><code>&lt;workspace&gt;/.freeclaw/tools</code></pre> (enabled by default; disable with <pre><code>--no-custom-tools</code></pre> or <pre><code>FREECLAW_ENABLE_CUSTOM_TOOLS=false</code></pre>).</li>
+</ul>
+<div><h3>Custom Tools (Dynamic)</h3><a href="#custom-tools-dynamic"></a></div>
+<p>freeclaw loads tools from:</p>
+<ul>
+<li><pre><code>&lt;workspace&gt;/.freeclaw/tools/&lt;name&gt;.json</code></pre></li>
+<li><pre><code>&lt;workspace&gt;/.freeclaw/tools/&lt;name&gt;/tool.json</code></pre></li>
+</ul>
+<p>Each file is a JSON object like:</p>
+<div><pre>{ <span>"name"</span>: <span><span>"</span>hello_tool<span>"</span></span>, <span>"description"</span>: <span><span>"</span>Say hello using /bin/echo<span>"</span></span>, <span>"type"</span>: <span><span>"</span>command<span>"</span></span>, <span>"workdir"</span>: <span><span>"</span>tool_root<span>"</span></span>, <span>"argv"</span>: [<span><span>"</span>echo<span>"</span></span>, <span><span>"</span>hello<span>"</span></span>, <span><span>"</span>{{who}}<span>"</span></span>], <span>"stdin"</span>: <span>null</span>, <span>"env"</span>: { <span>"EXAMPLE"</span>: <span><span>"</span>{{who}}<span>"</span></span> }, <span>"parameters"</span>: { <span>"type"</span>: <span><span>"</span>object<span>"</span></span>, <span>"properties"</span>: { <span>"who"</span>: { <span>"type"</span>: <span><span>"</span>string<span>"</span></span> } }, <span>"required"</span>: [<span><span>"</span>who<span>"</span></span>] }
+}</pre></div>
+<p>Template vars in </p><pre><code>argv</code></pre>:<p></p>
+<ul>
+<li><pre><code>{{arg_name}}</code></pre> substitutes the function argument value (non-scalars are JSON-encoded).</li>
+<li><pre><code>{{args_json}}</code></pre> substitutes the full arguments object as JSON.</li>
+</ul>
+<div><h2>Task Timer</h2><a href="#task-timer"></a></div>
+<p>The task timer reads </p><pre><code>&lt;workspace&gt;/tasks.md</code></pre> and looks for unchecked checklist items (<pre><code>- [ ] ...</code></pre>).
+It only calls the model when there are pending tasks.<p></p>
+<p>Run it:</p>
+<div><pre>python -m freeclaw task-timer</pre></div>
+<p>Or run a single tick (useful for cron/systemd timers):</p>
+<div><pre>python -m freeclaw task-timer --once</pre></div>
+<div><h3>Timer API (Server-Managed)</h3><a href="#timer-api-server-managed"></a></div>
+<p>If you want freeclaw itself to handle scheduling (instead of systemd), run:</p>
+<div><pre>python -m freeclaw timer-api</pre></div>
+<p>This starts an HTTP server with a background scheduler that checks </p><pre><code>tasks.md</code></pre> and wakes the model when tasks are due.
+By default it binds to <pre><code>127.0.0.1:3000</code></pre>. You can disable Web UI routes in onboarding, or at runtime with <pre><code>--no-web-ui</code></pre>.<p></p>
+<p>Useful endpoints:</p>
+<ul>
+<li><pre><code>GET /</code></pre> (Web UI dashboard)</li>
+<li><pre><code>GET /health</code></pre></li>
+<li><pre><code>GET /timer/status</code></pre></li>
+<li><pre><code>GET /api/system/metrics</code></pre> (CPU/RAM/temp/GPU/VRAM/uptime/bandwidth/storage/top processes + active bot token usage with 24h/7d history)</li>
+<li><pre><code>POST /timer/tick</code></pre> (force a tick now)</li>
+<li><pre><code>POST /timer/enable</code></pre></li>
+<li><pre><code>POST /timer/disable</code></pre></li>
+<li><pre><code>POST /timer/config</code></pre> with JSON body like <pre><code>{"minutes":30}</code></pre></li>
+</ul>
+<p>Example </p><pre><code>tasks.md</code></pre>:<p></p>
+<div><pre><span># <span>tasks</span></span> <span>## <span>Tasks</span></span>
+<span>-</span> <span>[ ]</span> Update README with install instructions
+<span>-</span> <span>[ ]</span> Add a config validate command</pre></div>
+<div><h3>systemd (example)</h3><a href="#systemd-example"></a></div>
+<div><pre><span>[Unit]</span>
+<span>Description</span>=freeclaw task timer <span>[Service]</span>
+<span>Type</span>=simple
+<span>WorkingDirectory</span>=/path/to/your/project
+<span>Environment</span>=<span>FREECLAW_ENV_FILE</span>=/path/to/your/project/config/.env
+<span>ExecStart</span>=/usr/bin/python3 -m freeclaw task-timer --minutes 10
+<span>Restart</span>=on-failure
+<span>RestartSec</span>=5</pre></div>
+<div><h3>cron (example)</h3><a href="#cron-example"></a></div>
+<div><pre><span>*/5</span> <span>*</span> <span>*</span> <span>*</span> <span>*</span> <span>cd /path/to/your/project &amp;&amp; FREECLAW_ENV_FILE=./config/.env /usr/bin/python3 -m freeclaw task-timer --once</span></pre></div>
+<div><h2>Skills</h2><a href="#skills"></a></div>
+<p>Skills are folders containing a </p><pre><code>SKILL.md</code></pre>. <pre><code>freeclaw</code></pre> can inject enabled skills into the system prompt.<p></p>
+<p>Commands:</p>
+<ul>
+<li><pre><code>python -m freeclaw skill list</code></pre></li>
+<li><pre><code>python -m freeclaw skill show &lt;name&gt;</code></pre></li>
+<li><pre><code>python -m freeclaw skill enable &lt;name&gt;</code></pre></li>
+<li><pre><code>python -m freeclaw skill disable &lt;name&gt;</code></pre></li>
+</ul>
+<div><h2>Discord</h2><a href="#discord"></a></div>
+<p>Install dependencies:</p>
+<div><pre>pip install -e <span><span>"</span>.[discord]<span>"</span></span></pre></div>
+<p></p><pre><code>.[discord]</code></pre> now includes <pre><code>pypdf</code></pre>, so the bot can parse text from attached PDFs.<p></p>
+<p>Web tools (DDG search + URL fetch) require:</p>
+<div><pre>pip install -e <span><span>"</span>.[web]<span>"</span></span></pre></div>
+<p>Set your bot token:</p>
+<ul>
+<li><pre><code>export DISCORD_BOT_TOKEN=...</code></pre></li>
+</ul>
+<p>Run the bot:</p>
+<div><pre>python -m freeclaw discord --prefix <span><span>"</span>!claw<span>"</span></span> --tool-root /home/jerr</pre></div>
+<p>In Discord, you must enable the <strong>Message Content Intent</strong> for the bot if you want it to read and respond to normal messages (including prefix-based commands).</p>
+<p>When users send message attachments, the bot will download and parse:</p>
+<ul>
+<li>PDF files (<pre><code>.pdf</code></pre>)</li>
+<li>Common text/code formats (<pre><code>.txt</code></pre>, <pre><code>.md</code></pre>, <pre><code>.csv</code></pre>, <pre><code>.json</code></pre>, <pre><code>.html</code></pre>, <pre><code>.py</code></pre>, etc.)</li>
+</ul>
+<p>Parsed attachment text is appended to the model prompt for that message.</p>
+<p>If you want the bot to respond to every message (no prefix needed):</p>
+<div><pre>python -m freeclaw discord --respond-to-all --tool-root /home/jerr</pre></div>
+<p>Commands:</p>
+<ul>
+<li><pre><code>!claw &lt;prompt&gt;</code></pre> chat in the current channel/DM</li>
+<li><pre><code>!claw new</code></pre> start a new conversation (keeps settings)</li>
+<li><pre><code>!claw reset</code></pre> clear the per-channel/DM session (messages + settings)</li>
+<li><pre><code>!claw help</code></pre> show available commands</li>
+</ul>
+<p>Slash commands (if the bot has </p><pre><code>applications.commands</code></pre> scope and sync succeeds):<p></p>
+<ul>
+<li><pre><code>/help</code></pre> show available commands</li>
+<li><pre><code>/claw</code></pre> chat</li>
+<li><pre><code>/reset</code></pre> clear session (messages + settings)</li>
+<li><pre><code>/new</code></pre> start a new conversation (keeps settings)</li>
+<li><pre><code>/tools</code></pre> list tools</li>
+<li><pre><code>/model</code></pre> show or set model override for this channel/DM</li>
+<li><pre><code>/temp</code></pre> show or set temperature override for this channel/DM</li>
+<li><pre><code>/tokens</code></pre> show or set max_tokens override for this channel/DM</li>
+<li><pre><code>/persona show</code></pre> show persona</li>
+<li><pre><code>/persona set</code></pre> set persona</li>
+<li><pre><code>/memory search</code></pre> search saved memory</li>
+</ul>
+<p>Discord conversation sessions persist across bot restarts in the same SQLite DB used for memory (default: </p><pre><code>./config/memory.sqlite3</code></pre>; override with <pre><code>FREECLAW_MEMORY_DB</code></pre>).<p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
