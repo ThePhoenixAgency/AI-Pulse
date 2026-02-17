@@ -573,6 +573,11 @@ function shouldSuppressExtractionLog(url, error) {
   return /timeout|timed out|forbidden|403|401|socket hang up/i.test(message);
 }
 
+function hostnameMatches(host, baseDomain) {
+  if (!host || !baseDomain) return false;
+  return host === baseDomain || host.endsWith(`.${baseDomain}`);
+}
+
 function detectSourceProfile(articleUrl, sourceName) {
   const source = String(sourceName || '').toLowerCase();
   let host = '';
@@ -581,10 +586,21 @@ function detectSourceProfile(articleUrl, sourceName) {
   } catch (_) {
     host = '';
   }
-  if (host.includes('github.com') || source.includes('github')) return 'repo';
-  if (host.includes('medium.com') || source.includes('blog')) return 'blog';
-  if (host.includes('reuters') || host.includes('apnews') || host.includes('afp')) return 'wire';
-  if (host.includes('stackoverflow') || host.includes('stackexchange')) return 'forum';
+  if (hostnameMatches(host, 'github.com') || source.includes('github')) return 'repo';
+  if (hostnameMatches(host, 'medium.com') || source.includes('blog')) return 'blog';
+  if (
+    hostnameMatches(host, 'reuters.com') ||
+    hostnameMatches(host, 'apnews.com') ||
+    hostnameMatches(host, 'afp.com')
+  ) {
+    return 'wire';
+  }
+  if (
+    hostnameMatches(host, 'stackoverflow.com') ||
+    hostnameMatches(host, 'stackexchange.com')
+  ) {
+    return 'forum';
+  }
   return 'news';
 }
 
