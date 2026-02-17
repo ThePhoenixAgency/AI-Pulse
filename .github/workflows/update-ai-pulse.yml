@@ -118,7 +118,7 @@ jobs:
     #
     # Sans cette étape, le workflow n'aurait pas accès aux fichiers !
     - name: Check out repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       # @v4 = version 4 de cette action (la plus récente et stable)
 
     # -------------------------------------------------------------------------

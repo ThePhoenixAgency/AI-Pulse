@@ -19,12 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout AI-Pulse repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
       - name: Checkout dependabot-secure-flow repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: EthanThePhoenix38/dependabot-secure-flow
           token: ${{ secrets.SYNC_TOKEN }}
