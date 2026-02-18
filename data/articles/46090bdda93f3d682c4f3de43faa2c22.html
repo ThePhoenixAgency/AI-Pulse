@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Microsoft: Anti-phishing rules mistakenly blocked emails, Teams messages</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Microsoft: Anti-phishing rules mistakenly blocked emails, Teams messages</h1>
+  <div class="metadata">
+    Source: BleepingComputer Windows | Date: 2/18/2026 4:26:53 PM | <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-anti-phishing-rules-mistakenly-blocked-emails-teams-messages/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><img alt="Exchange Online" src="https://www.bleepstatic.com/content/hl-images/2025/03/14/Exchange-Online.jpg"></p> <p>Microsoft says an Exchange Online issue that mistakenly quarantined legitimate emails last week was triggered by faulty&nbsp;heuristic detection rules designed to block credential phishing campaigns.</p> <p>As Microsoft explains in a preliminary post-incident report published this week, a software error in its email security system incorrectly <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-flags-legitimate-emails-as-phishing/" target="_blank">flagged thousands of legitimate URLs as phishing links</a> for nearly a week, blocking users from opening emails and Teams messages.</p> <p>The incident, tracked by Microsoft under <a href="http://admin.microsoft.com/#/MessageCenter/:/messages/EX1227432" target="_blank">EX1227432</a>, began on February 5 and was not fully resolved until February 12. During that period, users across Exchange Online and Microsoft Teams were unable to open links in messages, with some of their emails quarantined entirely.</p> <p><a href="https://www.wiz.io/lp/model-context-protocol-mcp-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q3_INB_FORM_MCP-BestPractices-Cheat-Sheet&amp;sfcid=701Py00000TCZuBIAX&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=MCP-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/MCP-Best-Practices-970x250.png" alt="Wiz"></a>
+</p> <p>Administrators also received warnings that a "potentially malicious URL click was detected," alerts that Microsoft later confirmed were false positives.</p> <p>The root cause was a logic error in a detection system designed to identify new credential phishing attacks. Shortly after the system was updated, it began flagging legitimate URLs at a far higher rate than intended, triggering a cascade of automated responses that aggravated the problem.</p> <p>Other security tools within Microsoft's detection infrastructure also amplified the incident's impact, and a separate bug in the company's security signature systems further delayed efforts to roll back the flawed detection rules.</p> <p>"This issue occurred due to a logic error in a heuristic detection aimed at novel credential phishing campaigns that spiked several hours after release," Microsoft explained.</p> <p>"This spike in detection resulted in thousands of URL's being incorrectly identified as phishing, triggering blocks for newly delivered emails containing those URL's, ZAP events to remove email and Teams messages with those URL's in them, and also generating XDR alerts for click events related to these alerts."</p> <p>Microsoft said that any user who received emails or Teams messages containing specific URLs may have been affected, but the company has yet to disclose the total number of impacted users. However, as <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-flags-legitimate-emails-as-phishing/" target="_blank">BleepingComputer previously reported</a>, Microsoft classified the issue as an "incident," which usually involves noticeable user impact.</p> <p>While this preliminary report was published on Monday, Microsoft said that it will issue a final report within five business days of full resolution.</p> <p>Microsoft has addressed other issues over the last several years that resulted in emails being quarantined or incorrectly tagged as spam or malicious. For instance, an Exchange Online bug caused a machine learning model to <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-exchange-online-bug-flagging-gmail-emails-as-spam/" target="_blank">incorrectly flag emails from Gmail accounts as spam</a>, while another one caused anti-spam systems <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-bug-mistakenly-quarantines-user-emails/" target="_blank">to mistakenly quarantine some users' emails</a>.</p> <p>More recently, in September, an anti-spam service issue blocked Exchange Online and Microsoft Teams users <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-bug-mistakenly-quarantines-user-emails/" target="_blank">from opening URLs</a> and mistakenly quarantined some of their emails.</p> <p>Microsoft is also working to fix a bug that allowed its AI-powered Microsoft 365 Copilot Chat <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-says-bug-causes-copilot-to-summarize-confidential-emails/" target="_blank">to summarize confidential emails</a> since late January.</p> <div> <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank"> <img src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" alt="tines"> </a> </p> <div> <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p> </div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

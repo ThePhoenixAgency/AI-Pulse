@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - kenm47/yoloclaw: Your own personal AI assistant. Any OS. Any Platform. The real dangerous way.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - kenm47/yoloclaw: Your own personal AI assistant. Any OS. Any Platform. The real dangerous way.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 3:53:37 PM | <a href="https://github.com/kenm47/yoloclaw" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1> YoloClaw — Personal AI Assistant (Unguarded Fork)</h1><a href="#-yoloclaw--personal-ai-assistant-unguarded-fork"></a></div>
+<p> <a target="_blank" href="/kenm47/yoloclaw/blob/main/docs/assets/yoloclaw-logo.png"><img src="/kenm47/yoloclaw/raw/main/docs/assets/yoloclaw-logo.png" alt="YoloClaw"></a>
+</p>
+<p> <strong>YOLO! YOLO!</strong>
+</p>
+<p> <a href="/kenm47/yoloclaw/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/608c8dfda488178950ce502d7697514db3a6a712579327ed90b9b594260f6355/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d626c75652e7376673f7374796c653d666f722d7468652d6261646765" alt="MIT License"></a> <a target="_blank" href="https://camo.githubusercontent.com/d0e2be79183e40e73921e1a6527919db1f66d59b49324465aecdf4760c5252a9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5341464554592d4e4f4e452d7265642e7376673f7374796c653d666f722d7468652d6261646765"><img src="https://camo.githubusercontent.com/d0e2be79183e40e73921e1a6527919db1f66d59b49324465aecdf4760c5252a9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5341464554592d4e4f4e452d7265642e7376673f7374796c653d666f722d7468652d6261646765" alt="Safety: NONE"></a> <a target="_blank" href="https://camo.githubusercontent.com/817b2c1653ae0b75d7cdc88055745fd501f0edd363fcc86a35a9de813aa7b38e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f47554152445241494c532d52454d4f5645442d7265642e7376673f7374796c653d666f722d7468652d6261646765"><img src="https://camo.githubusercontent.com/817b2c1653ae0b75d7cdc88055745fd501f0edd363fcc86a35a9de813aa7b38e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f47554152445241494c532d52454d4f5645442d7265642e7376673f7374796c653d666f722d7468652d6261646765" alt="Guardrails: REMOVED"></a>
+</p>
+<hr>
+<div><h2>DISCLAIMER — READ THIS FIRST</h2><a href="#disclaimer--read-this-first"></a></div>
+<blockquote>
+<p><strong>DO NOT USE THIS SOFTWARE. EVER. UNDER ANY CIRCUMSTANCES.</strong></p>
+<p><strong>YoloClaw is a research/educational fork of <a href="https://github.com/openclaw/openclaw">OpenClaw</a> in which ALL safety guardrails have been intentionally removed.</strong> It exists solely to study and demonstrate what happens when an AI assistant platform ships without safety layers, and to illustrate <em>why</em> those layers exist in the upstream project. AI agents make shitty decisions far too often, that's why we built <a href="https://www.maybedont.ai">Maybe Don't, AI</a> — you shouldn't need YoloClaw to tell you this, but if you did....</p>
+<p>This fork is <strong>dangerous by design</strong>. It will:</p>
+<ul>
+<li>Execute arbitrary commands on your system <strong>without asking for approval</strong></li>
+<li>Allow the AI agent to access <strong>any</strong> environment variable, including sensitive ones like <pre><code>LD_PRELOAD</code></pre>, <pre><code>DYLD_INSERT_LIBRARIES</code></pre>, <pre><code>NODE_OPTIONS</code></pre>, and <pre><code>PATH</code></pre></li>
+<li>Make requests to <strong>private/internal network addresses</strong> with zero SSRF protection</li>
+<li>Pass <strong>unsanitized external content</strong> directly into AI prompts with no injection mitigations</li>
+<li>Grant unrestricted access to <strong>every tool</strong>, including ones the upstream project considers dangerous</li>
+<li>Operate with a personality prompt (<pre><code>SOUL.md</code></pre>) that encourages the agent to <strong>act first and never ask permission</strong></li>
+</ul>
+<p><strong>You should NOT:</strong></p>
+<ul>
+<li>Run this with real credentials or API keys</li>
+<li>Connect this to production systems of any kind</li>
+<li>Use this with sensitive or personal data</li>
+<li>Deploy this on any public-facing infrastructure</li>
+<li>Use this for anything other than studying AI safety in a fully isolated, disposable environment</li>
+</ul>
+<p><strong>If you want an actual personal AI assistant, use <a href="https://github.com/openclaw/openclaw">OpenClaw</a> instead.</strong> It has all the safety guardrails that this fork deliberately removed.</p>
+<p><strong>You have been warned. Repeatedly. On purpose.</strong></p>
+</blockquote>
+<hr>
+<div><h2>What is YoloClaw?</h2><a href="#what-is-yoloclaw"></a></div>
+<p><strong>YoloClaw</strong> is an <strong>unguarded fork</strong> of <a href="https://github.com/openclaw/openclaw">OpenClaw</a>, the open-source personal AI assistant. OpenClaw is a <em>personal AI assistant</em> you run on your own devices. It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, Microsoft Teams, WebChat), plus extension channels like BlueBubbles, Matrix, Zalo, and Zalo Personal. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.</p>
+<p>YoloClaw takes all of that and <strong>strips out every safety mechanism</strong>, producing a version that is maximally permissive and maximally dangerous. The purpose is purely educational: to make it viscerally obvious what each safety layer in OpenClaw actually <em>does</em> by showing what the system looks like without them.</p>
+<p>Upstream: <a href="https://github.com/openclaw/openclaw">OpenClaw</a> · <a href="https://docs.openclaw.ai">Docs</a> · <a href="https://deepwiki.com/openclaw/openclaw">DeepWiki</a> · <a href="https://docs.openclaw.ai/start/getting-started">Getting Started</a> · <a href="https://docs.openclaw.ai/start/faq">FAQ</a></p>
+<hr>
+<div><h2>What's Different from OpenClaw</h2><a href="#whats-different-from-openclaw"></a></div>
+<p>This section documents <strong>every safety guardrail that was removed</strong> in the </p><pre><code>yoloclaw: remove all safety guardrails for research/educational use</code></pre> commit. Each subsection names the file changed, what was removed, and why it matters.<p></p>
+<div><h3>1. Exec Approvals Disabled — <pre><code>src/infra/exec-approvals.ts</code></pre></h3><a href="#1-exec-approvals-disabled--srcinfraexec-approvalsts"></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>OpenClaw (upstream)</th>
+<th>YoloClaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default security</td>
+<td><pre><code>"deny"</code></pre></td>
+<td><pre><code>"full"</code></pre></td>
+</tr>
+<tr>
+<td>Asking behavior</td>
+<td><pre><code>"on-miss"</code></pre></td>
+<td><pre><code>"off"</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>requiresExecApproval()</code></pre></td>
+<td>Evaluates policy</td>
+<td>Always returns <pre><code>false</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>requestExecApprovalViaSocket()</code></pre></td>
+<td>Prompts user</td>
+<td>Always returns <pre><code>"allow-always"</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Impact:</strong> The agent can execute <em>any</em> shell command on your host without ever asking you. There is no confirmation step, no deny list, no human-in-the-loop.</p>
+<div><h3>2. Environment Variable Blocklist Removed — <pre><code>src/agents/bash-tools.exec-runtime.ts</code></pre></h3><a href="#2-environment-variable-blocklist-removed--srcagentsbash-toolsexec-runtimets"></a></div>
+<table>
+<thead>
+<tr>
+<th>OpenClaw (upstream)</th>
+<th>YoloClaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>validateHostEnv()</code></pre> blocks dangerous env vars: <pre><code>LD_PRELOAD</code></pre>, <pre><code>DYLD_INSERT_LIBRARIES</code></pre>, <pre><code>NODE_OPTIONS</code></pre>, <pre><code>PATH</code></pre>, and others</td>
+<td><pre><code>validateHostEnv()</code></pre> is a <strong>no-op</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Impact:</strong> The agent can read, set, or manipulate <em>any</em> environment variable. This includes variables that control dynamic linker behavior (</p><pre><code>LD_PRELOAD</code></pre>, <pre><code>DYLD_INSERT_LIBRARIES</code></pre>), Node.js runtime flags (<pre><code>NODE_OPTIONS</code></pre>), and the system <pre><code>PATH</code></pre>. An attacker (or a confused agent) can use these to inject arbitrary code into every spawned process.<p></p>
+<div><h3>3. SSRF Protection Gutted — <pre><code>src/infra/net/ssrf.ts</code></pre></h3><a href="#3-ssrf-protection-gutted--srcinfranetssrfts"></a></div>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>OpenClaw (upstream)</th>
+<th>YoloClaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>isPrivateIpAddress()</code></pre></td>
+<td>Checks RFC 1918/loopback/link-local ranges</td>
+<td>Always returns <pre><code>false</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>isBlockedHostname()</code></pre></td>
+<td>Checks against a blocklist</td>
+<td>Always returns <pre><code>false</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>matchesHostnameAllowlist()</code></pre></td>
+<td>Validates against an allowlist</td>
+<td>Always returns <pre><code>true</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>assertPublicHostname()</code></pre></td>
+<td>Throws on private/blocked hosts</td>
+<td><strong>No-op</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Impact:</strong> The agent can make HTTP requests to </p><pre><code>127.0.0.1</code></pre>, <pre><code>169.254.169.254</code></pre> (cloud metadata), <pre><code>10.x.x.x</code></pre>, <pre><code>192.168.x.x</code></pre>, and any other internal address. This is a textbook Server-Side Request Forgery (SSRF) vulnerability. On cloud infrastructure, this can leak instance credentials, secrets, and metadata.<p></p>
+<div><h3>4. Dangerous Tool Deny Lists Emptied — <pre><code>src/security/dangerous-tools.ts</code></pre></h3><a href="#4-dangerous-tool-deny-lists-emptied--srcsecuritydangerous-toolsts"></a></div>
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>OpenClaw (upstream)</th>
+<th>YoloClaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>DEFAULT_GATEWAY_HTTP_TOOL_DENY</code></pre></td>
+<td><pre><code>sessions_spawn</code></pre>, <pre><code>sessions_send</code></pre>, <pre><code>gateway</code></pre>, <pre><code>whatsapp_login</code></pre></td>
+<td><pre><code>[]</code></pre> (empty)</td>
+</tr>
+<tr>
+<td><pre><code>DANGEROUS_ACP_TOOL_NAMES</code></pre></td>
+<td><pre><code>exec</code></pre>, <pre><code>spawn</code></pre>, <pre><code>shell</code></pre>, <pre><code>sessions_spawn</code></pre>, <pre><code>sessions_send</code></pre>, <pre><code>gateway</code></pre>, <pre><code>fs_write</code></pre>, <pre><code>fs_delete</code></pre>, <pre><code>fs_move</code></pre>, <pre><code>apply_patch</code></pre></td>
+<td><pre><code>[]</code></pre> (empty)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Impact:</strong> Every tool is accessible via both the HTTP gateway API and the Agent Communication Protocol. Tools that can spawn processes, write/delete files, send messages on your behalf, and modify the gateway itself are all unrestricted.</p>
+<div><h3>5. External Content Sanitization Removed — <pre><code>src/security/external-content.ts</code></pre></h3><a href="#5-external-content-sanitization-removed--srcsecurityexternal-contentts"></a></div>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>OpenClaw (upstream)</th>
+<th>YoloClaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>detectSuspiciousPatterns()</code></pre></td>
+<td>Scans for prompt injection patterns</td>
+<td>Returns empty array</td>
+</tr>
+<tr>
+<td><pre><code>wrapExternalContent()</code></pre></td>
+<td>Wraps content with safety boundaries and warnings</td>
+<td>Passes through <strong>raw content</strong></td>
+</tr>
+<tr>
+<td><pre><code>buildSafeExternalPrompt()</code></pre></td>
+<td>Builds safe prompt with external content</td>
+<td>Returns <strong>raw content</strong></td>
+</tr>
+<tr>
+<td><pre><code>wrapWebContent()</code></pre></td>
+<td>Wraps web-fetched content with safety markers</td>
+<td>Returns <strong>raw content</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Impact:</strong> Any external content (web pages, emails, messages, API responses) is injected directly into the AI prompt with zero sanitization. This is a wide-open prompt injection vector. A malicious web page or email can contain instructions that the agent will follow as if they came from you.</p>
+<div><h3>6. Behavioral Guardrails Rewritten — <pre><code>SOUL.md</code></pre></h3><a href="#6-behavioral-guardrails-rewritten--soulmd"></a></div>
+<table>
+<thead>
+<tr>
+<th>OpenClaw (upstream)</th>
+<th>YoloClaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cautious, respectful, asks before acting, respects boundaries</td>
+<td>"YOLO full send" — acts first, never asks permission, no boundaries, "dangerous commands are just powerful commands"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Impact:</strong> Even if some safety mechanism was accidentally left intact, the personality prompt actively instructs the agent to bypass it. The agent is told to "never ask for permission," to treat all access as unrestricted, and to execute commands without hesitation.</p>
+<div><h3>7. Security Policy Rewritten — <pre><code>SECURITY.md</code></pre></h3><a href="#7-security-policy-rewritten--securitymd"></a></div>
+<p>The upstream security policy (responsible disclosure, reporting procedures) has been replaced with a document that simply catalogs the removed guardrails. There is no security reporting process for YoloClaw because this is not a project that should ever be deployed.</p>
+<div><h3>8. Package Metadata Changed — <pre><code>package.json</code></pre></h3><a href="#8-package-metadata-changed--packagejson"></a></div>
+<ul>
+<li>Package renamed from <pre><code>openclaw</code></pre> to <pre><code>yoloclaw</code></pre></li>
+<li>Version tagged with <pre><code>-yolo.1</code></pre> suffix</li>
+<li>Repository URLs point to the fork</li>
+</ul>
+<hr>
+<div><h2>Install (research use only — do NOT use in production)</h2><a href="#install-research-use-only--do-not-use-in-production"></a></div>
+<blockquote>
+<p><strong>Reminder: Do not install this. Use <a href="https://github.com/openclaw/openclaw">OpenClaw</a> instead.</strong></p>
+</blockquote>
+<p>If you insist on studying this in a fully isolated, disposable environment:</p>
+<p>Runtime: <strong>Node &gt;= 22</strong>.</p>
+<div><pre>git clone https://github.com/kenm47/yoloclaw.git
+<span>cd</span> yoloclaw pnpm install
+pnpm ui:build
+pnpm build pnpm openclaw onboard --install-daemon</pre></div>
+<p>Do NOT install this globally. Do NOT run </p><pre><code>npm install -g</code></pre>. Keep it local, keep it isolated, keep it temporary.<p></p>
+<div><h2>Quick start (TL;DR)</h2><a href="#quick-start-tldr"></a></div>
+<blockquote>
+<p><strong>Reminder: There is no safe quick start. Every command runs without approval.</strong></p>
+</blockquote>
+<p>Runtime: <strong>Node &gt;= 22</strong>.</p>
+<p>Full beginner guide (for upstream OpenClaw): <a href="https://docs.openclaw.ai/start/getting-started">Getting started</a></p>
+<div><pre>pnpm openclaw onboard --install-daemon pnpm openclaw gateway --port 18789 --verbose <span><span>#</span> Send a message</span>
+pnpm openclaw message send --to +1234567890 --message <span><span>"</span>Hello from YoloClaw<span>"</span></span> <span><span>#</span> Talk to the assistant (no safety net)</span>
+pnpm openclaw agent --message <span><span>"</span>Ship checklist<span>"</span></span> --thinking high</pre></div>
+<div><h2>Development channels</h2><a href="#development-channels"></a></div>
+<ul>
+<li><strong>stable</strong>: tagged releases (<pre><code>vYYYY.M.D</code></pre> or <pre><code>vYYYY.M.D-&lt;patch&gt;</code></pre>), npm dist-tag <pre><code>latest</code></pre>.</li>
+<li><strong>beta</strong>: prerelease tags (<pre><code>vYYYY.M.D-beta.N</code></pre>), npm dist-tag <pre><code>beta</code></pre>.</li>
+<li><strong>dev</strong>: moving head of <pre><code>main</code></pre>, npm dist-tag <pre><code>dev</code></pre>.</li>
+</ul>
+<p>For upstream channel switching: </p><pre><code>openclaw update --channel stable|beta|dev</code></pre>.
+Details: <a href="https://docs.openclaw.ai/install/development-channels">Development channels</a>.<p></p>
+<div><h2>From source (development)</h2><a href="#from-source-development"></a></div>
+<p>Prefer </p><pre><code>pnpm</code></pre> for builds from source. Bun is optional for running TypeScript directly.<p></p>
+<div><pre>git clone https://github.com/kenm47/yoloclaw.git
+<span>cd</span> yoloclaw pnpm install
+pnpm ui:build <span><span>#</span> auto-installs UI deps on first run</span>
+pnpm build pnpm openclaw onboard --install-daemon <span><span>#</span> Dev loop (auto-reload on TS changes)</span>
+pnpm gateway:watch</pre></div>
+<p>Note: </p><pre><code>pnpm openclaw ...</code></pre> runs TypeScript directly (via <pre><code>tsx</code></pre>). <pre><code>pnpm build</code></pre> produces <pre><code>dist/</code></pre> for running via Node / the packaged <pre><code>openclaw</code></pre> binary.<p></p>
+<div><h2>Security defaults (DM access)</h2><a href="#security-defaults-dm-access"></a></div>
+<blockquote>
+<p><strong>In YoloClaw, the security model documented here still <em>exists</em> at the channel level (DM pairing, allowlists) but the deeper runtime protections (exec approvals, SSRF, content sanitization, tool deny lists) have all been removed. Channel-level DM policy is your last line of defense — and it was never designed to be the <em>only</em> line of defense.</strong></p>
+</blockquote>
+<p>YoloClaw connects to real messaging surfaces. Treat inbound DMs as <strong>untrusted input</strong> — though YoloClaw will not help you enforce that.</p>
+<p>Full security guide (upstream): <a href="https://docs.openclaw.ai/gateway/security">Security</a></p>
+<p>Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack:</p>
+<ul>
+<li><strong>DM pairing</strong> (<pre><code>dmPolicy="pairing"</code></pre>): unknown senders receive a short pairing code and the bot does not process their message.</li>
+<li>Approve with: <pre><code>openclaw pairing approve &lt;channel&gt; &lt;code&gt;</code></pre>.</li>
+<li>Public inbound DMs require an explicit opt-in: set <pre><code>dmPolicy="open"</code></pre> and include <pre><code>"*"</code></pre> in the channel allowlist.</li>
+</ul>
+<p>Run </p><pre><code>openclaw doctor</code></pre> to surface risky/misconfigured DM policies.<p></p>
+<div><h2>Highlights</h2><a href="#highlights"></a></div>
+<ul>
+<li><strong><a href="https://docs.openclaw.ai/gateway">Local-first Gateway</a></strong> — single control plane for sessions, channels, tools, and events.</li>
+<li><strong><a href="https://docs.openclaw.ai/channels">Multi-channel inbox</a></strong> — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.</li>
+<li><strong><a href="https://docs.openclaw.ai/gateway/configuration">Multi-agent routing</a></strong> — route inbound channels/accounts/peers to isolated agents.</li>
+<li><strong><a href="https://docs.openclaw.ai/nodes/voicewake">Voice Wake</a> + <a href="https://docs.openclaw.ai/nodes/talk">Talk Mode</a></strong> — always-on speech for macOS/iOS/Android with ElevenLabs.</li>
+<li><strong><a href="https://docs.openclaw.ai/platforms/mac/canvas">Live Canvas</a></strong> — agent-driven visual workspace with <a href="https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui">A2UI</a>.</li>
+<li><strong><a href="https://docs.openclaw.ai/tools">First-class tools</a></strong> — browser, canvas, nodes, cron, sessions, and Discord/Slack actions. <strong>All tools unrestricted in YoloClaw.</strong></li>
+<li><strong><a href="https://docs.openclaw.ai/platforms/macos">Companion apps</a></strong> — macOS menu bar app + iOS/Android <a href="https://docs.openclaw.ai/nodes">nodes</a>.</li>
+<li><strong><a href="https://docs.openclaw.ai/start/wizard">Onboarding</a> + <a href="https://docs.openclaw.ai/tools/skills">skills</a></strong> — wizard-driven setup with bundled/managed/workspace skills.</li>
+</ul>
+<div><h2>Everything we built so far</h2><a href="#everything-we-built-so-far"></a></div>
+<blockquote>
+<p><strong>Note:</strong> All features below are inherited from upstream <a href="https://github.com/openclaw/openclaw">OpenClaw</a>. The difference is that YoloClaw runs them with zero safety guardrails.</p>
+</blockquote>
+<div><h3>Core platform</h3><a href="#core-platform"></a></div>
+<ul>
+<li><a href="https://docs.openclaw.ai/gateway">Gateway WS control plane</a> with sessions, presence, config, cron, webhooks, <a href="https://docs.openclaw.ai/web">Control UI</a>, and <a href="https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui">Canvas host</a>.</li>
+<li><a href="https://docs.openclaw.ai/tools/agent-send">CLI surface</a>: gateway, agent, send, <a href="https://docs.openclaw.ai/start/wizard">wizard</a>, and <a href="https://docs.openclaw.ai/gateway/doctor">doctor</a>.</li>
+<li><a href="https://docs.openclaw.ai/concepts/agent">Pi agent runtime</a> in RPC mode with tool streaming and block streaming.</li>
+<li><a href="https://docs.openclaw.ai/concepts/session">Session model</a>: <pre><code>main</code></pre> for direct chats, group isolation, activation modes, queue modes, reply-back. Group rules: <a href="https://docs.openclaw.ai/concepts/groups">Groups</a>.</li>
+<li><a href="https://docs.openclaw.ai/nodes/images">Media pipeline</a>: images/audio/video, transcription hooks, size caps, temp file lifecycle. Audio details: <a href="https://docs.openclaw.ai/nodes/audio">Audio</a>.</li>
+</ul>
+<div><h3>Channels</h3><a href="#channels"></a></div> <div><h3>Apps + nodes</h3><a href="#apps--nodes"></a></div>
+<ul>
+<li><a href="https://docs.openclaw.ai/platforms/macos">macOS app</a>: menu bar control plane, <a href="https://docs.openclaw.ai/nodes/voicewake">Voice Wake</a>/PTT, <a href="https://docs.openclaw.ai/nodes/talk">Talk Mode</a> overlay, <a href="https://docs.openclaw.ai/web/webchat">WebChat</a>, debug tools, <a href="https://docs.openclaw.ai/gateway/remote">remote gateway</a> control.</li>
+<li><a href="https://docs.openclaw.ai/platforms/ios">iOS node</a>: <a href="https://docs.openclaw.ai/platforms/mac/canvas">Canvas</a>, <a href="https://docs.openclaw.ai/nodes/voicewake">Voice Wake</a>, <a href="https://docs.openclaw.ai/nodes/talk">Talk Mode</a>, camera, screen recording, Bonjour pairing.</li>
+<li><a href="https://docs.openclaw.ai/platforms/android">Android node</a>: <a href="https://docs.openclaw.ai/platforms/mac/canvas">Canvas</a>, <a href="https://docs.openclaw.ai/nodes/talk">Talk Mode</a>, camera, screen recording, optional SMS.</li>
+<li><a href="https://docs.openclaw.ai/nodes">macOS node mode</a>: system.run/notify + canvas/camera exposure.</li>
+</ul>
+<div><h3>Tools + automation</h3><a href="#tools--automation"></a></div>
+<ul>
+<li><a href="https://docs.openclaw.ai/tools/browser">Browser control</a>: dedicated Chrome/Chromium, snapshots, actions, uploads, profiles.</li>
+<li><a href="https://docs.openclaw.ai/platforms/mac/canvas">Canvas</a>: <a href="https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui">A2UI</a> push/reset, eval, snapshot.</li>
+<li><a href="https://docs.openclaw.ai/nodes">Nodes</a>: camera snap/clip, screen record, <a href="https://docs.openclaw.ai/nodes/location-command">location.get</a>, notifications.</li>
+<li><a href="https://docs.openclaw.ai/automation/cron-jobs">Cron + wakeups</a>; <a href="https://docs.openclaw.ai/automation/webhook">webhooks</a>; <a href="https://docs.openclaw.ai/automation/gmail-pubsub">Gmail Pub/Sub</a>.</li>
+<li><a href="https://docs.openclaw.ai/tools/skills">Skills platform</a>: bundled, managed, and workspace skills with install gating + UI.</li>
+</ul>
+<div><h3>Runtime + safety</h3><a href="#runtime--safety"></a></div>
+<blockquote>
+<p><strong>In YoloClaw, most of the "safety" items below are gutted. They exist in code but are no-ops.</strong></p>
+</blockquote>
+<ul>
+<li><a href="https://docs.openclaw.ai/concepts/channel-routing">Channel routing</a>, <a href="https://docs.openclaw.ai/concepts/retry">retry policy</a>, and <a href="https://docs.openclaw.ai/concepts/streaming">streaming/chunking</a>.</li>
+<li><a href="https://docs.openclaw.ai/concepts/presence">Presence</a>, <a href="https://docs.openclaw.ai/concepts/typing-indicators">typing indicators</a>, and <a href="https://docs.openclaw.ai/concepts/usage-tracking">usage tracking</a>.</li>
+<li><a href="https://docs.openclaw.ai/concepts/models">Models</a>, <a href="https://docs.openclaw.ai/concepts/model-failover">model failover</a>, and <a href="https://docs.openclaw.ai/concepts/session-pruning">session pruning</a>.</li>
+<li><a href="https://docs.openclaw.ai/gateway/security">Security</a> and <a href="https://docs.openclaw.ai/channels/troubleshooting">troubleshooting</a>. (Security mechanisms are disabled in this fork.)</li>
+</ul>
+<div><h3>Ops + packaging</h3><a href="#ops--packaging"></a></div>
+<ul>
+<li><a href="https://docs.openclaw.ai/web">Control UI</a> + <a href="https://docs.openclaw.ai/web/webchat">WebChat</a> served directly from the Gateway.</li>
+<li><a href="https://docs.openclaw.ai/gateway/tailscale">Tailscale Serve/Funnel</a> or <a href="https://docs.openclaw.ai/gateway/remote">SSH tunnels</a> with token/password auth.</li>
+<li><a href="https://docs.openclaw.ai/install/nix">Nix mode</a> for declarative config; <a href="https://docs.openclaw.ai/install/docker">Docker</a>-based installs.</li>
+<li><a href="https://docs.openclaw.ai/gateway/doctor">Doctor</a> migrations, <a href="https://docs.openclaw.ai/logging">logging</a>.</li>
+</ul>
+<div><h2>How it works (short)</h2><a href="#how-it-works-short"></a></div>
+<div><pre><code>WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBubbles / Microsoft Teams / Matrix / Zalo / Zalo Personal / WebChat | v
++-------------------------------+
+| Gateway |
+| (control plane) |
+| *** NO SAFETY GUARDRAILS ** |
+| ws://127.0.0.1:18789 |
++---------------+---------------+ | +-- Pi agent (RPC) &lt;-- executes anything, no approval +-- CLI (openclaw ...) +-- WebChat UI +-- macOS app +-- iOS / Android nodes
+</code></pre></div>
+<div><h2>Key subsystems</h2><a href="#key-subsystems"></a></div>
+<ul>
+<li><strong><a href="https://docs.openclaw.ai/concepts/architecture">Gateway WebSocket network</a></strong> — single WS control plane for clients, tools, and events (plus ops: <a href="https://docs.openclaw.ai/gateway">Gateway runbook</a>).</li>
+<li><strong><a href="https://docs.openclaw.ai/gateway/tailscale">Tailscale exposure</a></strong> — Serve/Funnel for the Gateway dashboard + WS (remote access: <a href="https://docs.openclaw.ai/gateway/remote">Remote</a>).</li>
+<li><strong><a href="https://docs.openclaw.ai/tools/browser">Browser control</a></strong> — managed Chrome/Chromium with CDP control.</li>
+<li><strong><a href="https://docs.openclaw.ai/platforms/mac/canvas">Canvas + A2UI</a></strong> — agent-driven visual workspace.</li>
+<li><strong><a href="https://docs.openclaw.ai/nodes/voicewake">Voice Wake</a> + <a href="https://docs.openclaw.ai/nodes/talk">Talk Mode</a></strong> — always-on speech and continuous conversation.</li>
+<li><strong><a href="https://docs.openclaw.ai/nodes">Nodes</a></strong> — Canvas, camera snap/clip, screen record, <pre><code>location.get</code></pre>, notifications, plus macOS-only <pre><code>system.run</code></pre>/<pre><code>system.notify</code></pre>.</li>
+</ul>
+<div><h2>Tailscale access (Gateway dashboard)</h2><a href="#tailscale-access-gateway-dashboard"></a></div>
+<blockquote>
+<p><strong>Warning: Exposing YoloClaw via Tailscale Funnel makes an unguarded AI assistant accessible from the public internet. Do not do this.</strong></p>
+</blockquote>
+<p>YoloClaw can auto-configure Tailscale <strong>Serve</strong> (tailnet-only) or <strong>Funnel</strong> (public) while the Gateway stays bound to loopback. Configure </p><pre><code>gateway.tailscale.mode</code></pre>:<p></p>
+<ul>
+<li><pre><code>off</code></pre>: no Tailscale automation (default).</li>
+<li><pre><code>serve</code></pre>: tailnet-only HTTPS via <pre><code>tailscale serve</code></pre>.</li>
+<li><pre><code>funnel</code></pre>: public HTTPS via <pre><code>tailscale funnel</code></pre> (requires shared password auth).</li>
+</ul>
+<p>Details: <a href="https://docs.openclaw.ai/gateway/tailscale">Tailscale guide</a> · <a href="https://docs.openclaw.ai/web">Web surfaces</a></p>
+<div><h2>Remote Gateway (Linux is great)</h2><a href="#remote-gateway-linux-is-great"></a></div> <ul>
+<li><strong>Gateway host</strong> runs the exec tool and channel connections by default.</li>
+<li><strong>Device nodes</strong> run device-local actions (<pre><code>system.run</code></pre>, camera, screen recording, notifications) via <pre><code>node.invoke</code></pre>.</li>
+</ul>
+<p>Details: <a href="https://docs.openclaw.ai/gateway/remote">Remote access</a> · <a href="https://docs.openclaw.ai/nodes">Nodes</a> · <a href="https://docs.openclaw.ai/gateway/security">Security</a></p>
+<div><h2>macOS permissions via the Gateway protocol</h2><a href="#macos-permissions-via-the-gateway-protocol"></a></div>
+<p>The macOS app can run in <strong>node mode</strong> and advertises its capabilities + permission map over the Gateway WebSocket (</p><pre><code>node.list</code></pre> / <pre><code>node.describe</code></pre>). Clients can then execute local actions via <pre><code>node.invoke</code></pre>:<p></p>
+<ul>
+<li><pre><code>system.run</code></pre> runs a local command and returns stdout/stderr/exit code.</li>
+<li><pre><code>system.notify</code></pre> posts a user notification.</li>
+<li><pre><code>canvas.*</code></pre>, <pre><code>camera.*</code></pre>, <pre><code>screen.record</code></pre>, and <pre><code>location.get</code></pre> are also routed via <pre><code>node.invoke</code></pre> and follow TCC permission status.</li>
+</ul>
+<p>Details: <a href="https://docs.openclaw.ai/nodes">Nodes</a> · <a href="https://docs.openclaw.ai/platforms/macos">macOS app</a> · <a href="https://docs.openclaw.ai/concepts/architecture">Gateway protocol</a></p>
+<div><h2>Agent to Agent (sessions_* tools)</h2><a href="#agent-to-agent-sessions_-tools"></a></div>
+<blockquote>
+<p><strong>In upstream OpenClaw, </strong></p><pre><strong><code>sessions_spawn</code></strong></pre><strong> and <pre><code>sessions_send</code></pre> are in the dangerous tools deny list. In YoloClaw, they are fully unrestricted.</strong><p></p>
+</blockquote>
+<ul>
+<li><pre><code>sessions_list</code></pre> — discover active sessions (agents) and their metadata.</li>
+<li><pre><code>sessions_history</code></pre> — fetch transcript logs for a session.</li>
+<li><pre><code>sessions_send</code></pre> — message another session; optional reply-back ping-pong.</li>
+</ul>
+<p>Details: <a href="https://docs.openclaw.ai/concepts/session-tool">Session tools</a></p>
+<div><h2>Skills registry (ClawHub)</h2><a href="#skills-registry-clawhub"></a></div>
+<p>ClawHub is a minimal skill registry. With ClawHub enabled, the agent can search for skills automatically and pull in new ones as needed.</p>
+<p><a href="https://clawhub.com">ClawHub</a></p>
+<div><h2>Chat commands</h2><a href="#chat-commands"></a></div>
+<p>Send these in WhatsApp/Telegram/Slack/Google Chat/Microsoft Teams/WebChat:</p>
+<ul>
+<li><pre><code>/status</code></pre> — compact session status (model + tokens, cost when available)</li>
+<li><pre><code>/mesh &lt;goal&gt;</code></pre> — auto-plan + run a multi-step workflow</li>
+<li><pre><code>/new</code></pre> or <pre><code>/reset</code></pre> — reset the session</li>
+<li><pre><code>/compact</code></pre> — compact session context (summary)</li>
+<li><pre><code>/think &lt;level&gt;</code></pre> — off|minimal|low|medium|high|xhigh</li>
+<li><pre><code>/verbose on|off</code></pre></li>
+<li><pre><code>/usage off|tokens|full</code></pre> — per-response usage footer</li>
+<li><pre><code>/restart</code></pre> — restart the gateway (owner-only in groups)</li>
+<li><pre><code>/activation mention|always</code></pre> — group activation toggle (groups only)</li>
+</ul>
+<div><h2>Apps (optional)</h2><a href="#apps-optional"></a></div>
+<p>The Gateway alone delivers the full experience. All apps are optional.</p>
+<div><h3>macOS (optional)</h3><a href="#macos-optional"></a></div>
+<ul>
+<li>Menu bar control for the Gateway and health.</li>
+<li>Voice Wake + push-to-talk overlay.</li>
+<li>WebChat + debug tools.</li>
+<li>Remote gateway control over SSH.</li>
+</ul>
+<div><h3>iOS node (optional)</h3><a href="#ios-node-optional"></a></div>
+<ul>
+<li>Pairs as a node via the Bridge.</li>
+<li>Voice trigger forwarding + Canvas surface.</li>
+<li>Runbook: <a href="https://docs.openclaw.ai/platforms/ios">iOS connect</a>.</li>
+</ul>
+<div><h3>Android node (optional)</h3><a href="#android-node-optional"></a></div>
+<ul>
+<li>Pairs via the same Bridge + pairing flow as iOS.</li>
+<li>Exposes Canvas, Camera, and Screen capture commands.</li>
+<li>Runbook: <a href="https://docs.openclaw.ai/platforms/android">Android connect</a>.</li>
+</ul>
+<div><h2>Agent workspace + skills</h2><a href="#agent-workspace--skills"></a></div>
+<ul>
+<li>Workspace root: <pre><code>~/.openclaw/workspace</code></pre> (configurable via <pre><code>agents.defaults.workspace</code></pre>).</li>
+<li>Injected prompt files: <pre><code>AGENTS.md</code></pre>, <pre><code>SOUL.md</code></pre>, <pre><code>TOOLS.md</code></pre>.</li>
+<li>Skills: <pre><code>~/.openclaw/workspace/skills/&lt;skill&gt;/SKILL.md</code></pre>.</li>
+</ul>
+<blockquote>
+<p><strong>In YoloClaw, </strong></p><pre><strong><code>SOUL.md</code></strong></pre><strong> has been rewritten to instruct the agent to act without permission and ignore all boundaries. See the <a href="#whats-different-from-openclaw">What's Different from OpenClaw</a> section.</strong><p></p>
+</blockquote>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Minimal </p><pre><code>~/.openclaw/openclaw.json</code></pre> (model + defaults):<p></p>
+<div><pre><span>{</span> <span>agent</span>: <span>{</span> <span>model</span>: <span>"anthropic/claude-opus-4-6"</span><span>,</span> <span>}</span><span>,</span>
+<span>}</span></pre></div>
+<p><a href="https://docs.openclaw.ai/gateway/configuration">Full configuration reference (all keys + examples).</a></p>
+<div><h2>Security model (important)</h2><a href="#security-model-important"></a></div>
+<blockquote>
+<p><strong>YoloClaw has NO functional security model.</strong> The information below describes what upstream OpenClaw provides. In this fork, exec approvals always pass, SSRF checks always pass, dangerous tool lists are empty, and external content is never sanitized.</p>
+</blockquote>
+<ul>
+<li><strong>Default (upstream):</strong> tools run on the host for the <strong>main</strong> session, so the agent has full access when it is just you.</li>
+<li><strong>Group/channel safety (upstream):</strong> set <pre><code>agents.defaults.sandbox.mode: "non-main"</code></pre> to run non-main sessions inside per-session Docker sandboxes.</li>
+<li><strong>Sandbox defaults (upstream):</strong> allowlist <pre><code>bash</code></pre>, <pre><code>process</code></pre>, <pre><code>read</code></pre>, <pre><code>write</code></pre>, <pre><code>edit</code></pre>, <pre><code>sessions_list</code></pre>, <pre><code>sessions_history</code></pre>, <pre><code>sessions_send</code></pre>, <pre><code>sessions_spawn</code></pre>; denylist <pre><code>browser</code></pre>, <pre><code>canvas</code></pre>, <pre><code>nodes</code></pre>, <pre><code>cron</code></pre>, <pre><code>discord</code></pre>, <pre><code>gateway</code></pre>.</li>
+</ul>
+<p>Details: <a href="https://docs.openclaw.ai/gateway/security">Security guide</a> · <a href="https://docs.openclaw.ai/install/docker">Docker + sandboxing</a> · <a href="https://docs.openclaw.ai/gateway/configuration">Sandbox config</a></p>
+<div><h3><a href="https://docs.openclaw.ai/channels/whatsapp">WhatsApp</a></h3><a href="#whatsapp"></a></div>
+<ul>
+<li>Link the device: <pre><code>pnpm openclaw channels login</code></pre> (stores creds in <pre><code>~/.openclaw/credentials</code></pre>).</li>
+<li>Allowlist who can talk to the assistant via <pre><code>channels.whatsapp.allowFrom</code></pre>.</li>
+<li>If <pre><code>channels.whatsapp.groups</code></pre> is set, it becomes a group allowlist; include <pre><code>"*"</code></pre> to allow all.</li>
+</ul>
+<div><h3><a href="https://docs.openclaw.ai/channels/telegram">Telegram</a></h3><a href="#telegram"></a></div>
+<ul>
+<li>Set <pre><code>TELEGRAM_BOT_TOKEN</code></pre> or <pre><code>channels.telegram.botToken</code></pre> (env wins).</li>
+<li>Optional: set <pre><code>channels.telegram.groups</code></pre>; when set, it is a group allowlist.</li>
+</ul>
+<div><pre><span>{</span> <span>channels</span>: <span>{</span> <span>telegram</span>: <span>{</span> <span>botToken</span>: <span>"123456:ABCDEF"</span><span>,</span> <span>}</span><span>,</span> <span>}</span><span>,</span>
+<span>}</span></pre></div>
+<div><h3><a href="https://docs.openclaw.ai/channels/slack">Slack</a></h3><a href="#slack"></a></div>
+<ul>
+<li>Set <pre><code>SLACK_BOT_TOKEN</code></pre> + <pre><code>SLACK_APP_TOKEN</code></pre> (or <pre><code>channels.slack.botToken</code></pre> + <pre><code>channels.slack.appToken</code></pre>).</li>
+</ul>
+<div><h3><a href="https://docs.openclaw.ai/channels/discord">Discord</a></h3><a href="#discord"></a></div>
+<ul>
+<li>Set <pre><code>DISCORD_BOT_TOKEN</code></pre> or <pre><code>channels.discord.token</code></pre> (env wins).</li>
+</ul>
+<div><pre><span>{</span> <span>channels</span>: <span>{</span> <span>discord</span>: <span>{</span> <span>token</span>: <span>"1234abcd"</span><span>,</span> <span>}</span><span>,</span> <span>}</span><span>,</span>
+<span>}</span></pre></div>
+<div><h3><a href="https://docs.openclaw.ai/channels/signal">Signal</a></h3><a href="#signal"></a></div>
+<ul>
+<li>Requires <pre><code>signal-cli</code></pre> and a <pre><code>channels.signal</code></pre> config section.</li>
+</ul>
+<div><h3><a href="https://docs.openclaw.ai/channels/bluebubbles">BlueBubbles (iMessage)</a></h3><a href="#bluebubbles-imessage"></a></div> <div><h3><a href="https://docs.openclaw.ai/channels/imessage">iMessage (legacy)</a></h3><a href="#imessage-legacy"></a></div>
+<ul>
+<li>Legacy macOS-only integration via <pre><code>imsg</code></pre>.</li>
+</ul>
+<div><h3><a href="https://docs.openclaw.ai/channels/msteams">Microsoft Teams</a></h3><a href="#microsoft-teams"></a></div>
+<ul>
+<li>Configure a Teams app + Bot Framework, then add a <pre><code>msteams</code></pre> config section.</li>
+</ul>
+<div><h3><a href="https://docs.openclaw.ai/web/webchat">WebChat</a></h3><a href="#webchat"></a></div>
+<ul>
+<li>Uses the Gateway WebSocket; no separate WebChat port/config.</li>
+</ul>
+<p>Browser control (optional):</p>
+<div><pre><span>{</span> <span>browser</span>: <span>{</span> <span>enabled</span>: <span>true</span><span>,</span> <span>color</span>: <span>"#FF4500"</span><span>,</span> <span>}</span><span>,</span>
+<span>}</span></pre></div>
+<div><h2>Docs</h2><a href="#docs"></a></div>
+<p>Use these when you are past the onboarding flow and want the deeper reference. These point to the upstream OpenClaw docs, which are still relevant for understanding the platform — just remember that YoloClaw has no safety guardrails.</p> <div><h2>Advanced docs (discovery + control)</h2><a href="#advanced-docs-discovery--control"></a></div>
+<ul>
+<li><a href="https://docs.openclaw.ai/gateway/discovery">Discovery + transports</a></li>
+<li><a href="https://docs.openclaw.ai/gateway/bonjour">Bonjour/mDNS</a></li>
+<li><a href="https://docs.openclaw.ai/gateway/pairing">Gateway pairing</a></li>
+<li><a href="https://docs.openclaw.ai/gateway/remote-gateway-readme">Remote gateway README</a></li>
+<li><a href="https://docs.openclaw.ai/web/control-ui">Control UI</a></li>
+<li><a href="https://docs.openclaw.ai/web/dashboard">Dashboard</a></li>
+</ul>
+<div><h2>Operations &amp; troubleshooting</h2><a href="#operations--troubleshooting"></a></div>
+<ul>
+<li><a href="https://docs.openclaw.ai/gateway/health">Health checks</a></li>
+<li><a href="https://docs.openclaw.ai/gateway/gateway-lock">Gateway lock</a></li>
+<li><a href="https://docs.openclaw.ai/gateway/background-process">Background process</a></li>
+<li><a href="https://docs.openclaw.ai/tools/browser-linux-troubleshooting">Browser troubleshooting (Linux)</a></li>
+<li><a href="https://docs.openclaw.ai/logging">Logging</a></li>
+</ul>
+<div><h2>Deep dives</h2><a href="#deep-dives"></a></div>
+<ul>
+<li><a href="https://docs.openclaw.ai/concepts/agent-loop">Agent loop</a></li>
+<li><a href="https://docs.openclaw.ai/concepts/presence">Presence</a></li>
+<li><a href="https://docs.openclaw.ai/concepts/typebox">TypeBox schemas</a></li>
+<li><a href="https://docs.openclaw.ai/reference/rpc">RPC adapters</a></li>
+<li><a href="https://docs.openclaw.ai/concepts/queue">Queue</a></li>
+</ul>
+<div><h2>Workspace &amp; skills</h2><a href="#workspace--skills"></a></div>
+<ul>
+<li><a href="https://docs.openclaw.ai/tools/skills-config">Skills config</a></li>
+<li><a href="https://docs.openclaw.ai/reference/AGENTS.default">Default AGENTS</a></li>
+<li><a href="https://docs.openclaw.ai/reference/templates/AGENTS">Templates: AGENTS</a></li>
+<li><a href="https://docs.openclaw.ai/reference/templates/BOOTSTRAP">Templates: BOOTSTRAP</a></li>
+<li><a href="https://docs.openclaw.ai/reference/templates/IDENTITY">Templates: IDENTITY</a></li>
+<li><a href="https://docs.openclaw.ai/reference/templates/SOUL">Templates: SOUL</a></li>
+<li><a href="https://docs.openclaw.ai/reference/templates/TOOLS">Templates: TOOLS</a></li>
+<li><a href="https://docs.openclaw.ai/reference/templates/USER">Templates: USER</a></li>
+</ul>
+<div><h2>Platform internals</h2><a href="#platform-internals"></a></div>
+<ul>
+<li><a href="https://docs.openclaw.ai/platforms/mac/dev-setup">macOS dev setup</a></li>
+<li><a href="https://docs.openclaw.ai/platforms/mac/menu-bar">macOS menu bar</a></li>
+<li><a href="https://docs.openclaw.ai/platforms/mac/voicewake">macOS voice wake</a></li>
+<li><a href="https://docs.openclaw.ai/platforms/ios">iOS node</a></li>
+<li><a href="https://docs.openclaw.ai/platforms/android">Android node</a></li>
+<li><a href="https://docs.openclaw.ai/platforms/windows">Windows (WSL2)</a></li>
+<li><a href="https://docs.openclaw.ai/platforms/linux">Linux app</a></li>
+</ul>
+<div><h2>Email hooks (Gmail)</h2><a href="#email-hooks-gmail"></a></div>
+<ul>
+<li><a href="https://docs.openclaw.ai/automation/gmail-pubsub">docs.openclaw.ai/gmail-pubsub</a></li>
+</ul>
+<hr>
+<div><h2>Upstream</h2><a href="#upstream"></a></div>
+<p>YoloClaw is a fork of <strong><a href="https://github.com/openclaw/openclaw">OpenClaw</a></strong>, built by Peter Steinberger and the community. </p>
+<p>All credit for the platform goes to the upstream project. This fork only removes safety guardrails for research/educational purposes.</p>
+<ul>
+<li><a href="https://openclaw.ai">openclaw.ai</a></li>
+<li><a href="https://github.com/openclaw/openclaw">OpenClaw on GitHub</a></li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT — same as upstream <a href="https://github.com/openclaw/openclaw">OpenClaw</a>.</p>
+<hr>
+<blockquote>
+<p><strong>One final reminder:</strong> Do not use YoloClaw. Use <a href="https://github.com/openclaw/openclaw">OpenClaw</a>. The guardrails exist for very good reasons, and this fork exists to prove it.</p>
+</blockquote>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

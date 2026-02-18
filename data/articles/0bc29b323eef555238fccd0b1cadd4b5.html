@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How to Make Your AI Agent Get Webhooks Right (A Guide to Webhook Skills)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How to Make Your AI Agent Get Webhooks Right (A Guide to Webhook Skills)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 3:27:46 PM | <a href="https://dev.to/hookdeck/how-to-make-your-ai-agent-get-webhooks-right-a-guide-to-webhook-skills-17im" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>When I ask my AI coding agent to set up webhooks from a new API (Stripe, Shopify, GitHub, whatever), the code it generates often looks fine until I run it. Then I hit signature verification failures, wrong raw body handling, or idempotency bugs that process the same event twice. Sound familiar?</p> <p>I created <a href="https://github.com/hookdeck/webhook-skills" target="_blank"><strong>webhook-skills</strong></a> to fix that. They're agent skills for webhooks: an open-source collection of provider- and framework-specific instructions and runnable examples that AI coding agents can load so they implement webhooks correctly the first time. In this guide I'll walk through how to use them, what's in them, and how you can contribute or request skills that are missing.</p> <h2> <a name="why-agents-get-webhooks-wrong" href="#why-agents-get-webhooks-wrong"> </a> Why Agents Get Webhooks Wrong
+</h2> <p>At <a href="https://hookdeck.com/" target="_blank">Hookdeck</a> we process billions of webhooks a week, and we've seen every failure mode: signature mismatches from body parsing middleware, framework-specific gotchas that only show up in production, and so on. AI agents struggle with the same things. Their training data goes stale quickly. API versions change, security practices evolve, and the details that matter (raw body handling, middleware order, encoding) aren't in the model.</p> <p>Research from PostHog on <a href="https://posthog.com/blog/correct-llm-code-generation" target="_blank">LLM code generation</a> backs this up: the most reliable way to get correct code isn't the model's general knowledge; it's giving it specific, known-working examples to reference. Webhook skills are built to fill that gap.</p> <h2> <a name="how-webhook-skills-fix-it" href="#how-webhook-skills-fix-it"> </a> How Webhook Skills Fix It
+</h2> <p>Webhook-skills is built on the <a href="https://github.com/agent-skills/spec" target="_blank">Agent Skills specification</a>, an open standard for packaging knowledge that agents can consume. In practice that means:</p> <ul>
+<li>
+<strong>Runnable examples:</strong> complete, minimal apps the agent can reference and adapt, not just snippets.</li>
+<li>
+<strong>Provider-specific guidance:</strong> Stripe's raw body requirement, Shopify's HMAC encoding, and other gotchas we see trip up developers.</li>
+<li>
+<strong>Framework-aware implementations:</strong> how Next.js, Express, and FastAPI handle request bodies, middleware order, and async patterns.</li>
+<li>
+<strong>Staged workflows:</strong> verify signature first, parse payload second, handle idempotently third.</li>
+</ul> <p>When I ask my agent to "add Stripe webhooks to my Next.js app," it doesn't hallucinate a generic handler. It has the exact patterns for App Router body handling, preserving the raw body before verification, and pulling the webhook secret from env with the right naming. That's the difference.</p> <h2> <a name="how-to-use-them" href="#how-to-use-them"> </a> How to Use Them
+</h2> <h3> <a name="install-the-skills" href="#install-the-skills"> </a> Install the skills
+</h3> <p>I use <code>npx skills</code> to add webhook-skills to my project. First I list what's available, then I install the skills I need:<br>
+</p> <div>
+<pre><code><span># List available skills</span>
+npx skills add hookdeck/webhook-skills <span>--list</span> <span># Install best-practice patterns (verify → parse → handle idempotently)</span>
+npx skills add hookdeck/webhook-skills <span>--skill</span> webhook-handler-patterns <span># Install specific provider skills</span>
+npx skills add hookdeck/webhook-skills <span>--skill</span> stripe-webhooks
+npx skills add hookdeck/webhook-skills <span>--skill</span> shopify-webhooks
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>I usually install <code>webhook-handler-patterns</code> plus the provider skill for whichever API I'm integrating. That gives my agent both the general flow and the provider-specific details.</p> <h3> <a name="how-to-prompt" href="#how-to-prompt"> </a> How to prompt
+</h3> <p>Once the skills are installed, I prompt naturally. For example:</p> <ul>
+<li>"Add Shopify webhook handling to my Express app."</li>
+<li>"Set up Stripe webhooks in my Next.js app."</li>
+<li>"Implement GitHub webhook verification in my FastAPI service."</li>
+</ul> <p>The agent has the patterns; I don't need to spell out raw body or signature verification. It already knows.</p> <h3> <a name="local-testing-optional" href="#local-testing-optional"> </a> Local testing (optional)
+</h3> <p>When I'm testing webhooks locally, I use the <a href="https://github.com/hookdeck/hookdeck-cli" target="_blank">Hookdeck CLI</a>. It gives me a public URL that tunnels to my local server and a UI to inspect and replay requests:<br>
+</p> <div>
+<pre><code>npm i <span>-g</span> hookdeck-cli
+<span># or: brew install hookdeck/hookdeck/hookdeck</span> hookdeck listen 3000 <span>--path</span> /webhooks/stripe
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>No account required to get started. The skills work with or without Hookdeck; they're just complementary when you want to receive real webhooks on localhost.</p> <h2> <a name="whats-available-and-whats-missing" href="#whats-available-and-whats-missing"> </a> What's Available (and What's Missing)
+</h2> <p>Right now webhook-skills covers the providers and frameworks we see most often:</p> <p><strong>Providers:</strong> <a href="https://github.com/hookdeck/webhook-skills/tree/main/skills/stripe-webhooks" target="_blank">Stripe</a>, <a href="https://github.com/hookdeck/webhook-skills/tree/main/skills/shopify-webhooks" target="_blank">Shopify</a>, <a href="https://github.com/hookdeck/webhook-skills/tree/main/skills/github-webhooks" target="_blank">GitHub</a>, <a href="https://github.com/hookdeck/webhook-skills/tree/main/skills/openai-webhooks" target="_blank">OpenAI</a>, <a href="https://github.com/hookdeck/webhook-skills/tree/main/skills/resend-webhooks" target="_blank">Resend</a>, <a href="https://github.com/hookdeck/webhook-skills/tree/main/skills/paddle-webhooks" target="_blank">Paddle</a>, <a href="https://github.com/hookdeck/webhook-skills/tree/main/skills/elevenlabs-webhooks" target="_blank">ElevenLabs</a>, <a href="https://github.com/hookdeck/webhook-skills/tree/main/skills/chargebee-webhooks" target="_blank">Chargebee</a>, and more.</p> <p><strong>Frameworks:</strong> Next.js, Express, and FastAPI.</p> <p>Each provider skill includes signature verification, event handling guidance, common failure modes, and testing tips for local dev. Coverage isn't complete yet. If you need a provider we don't have or you want to contribute, see the next section.</p> <h2> <a name="how-to-contribute-and-ask-for-skills" href="#how-to-contribute-and-ask-for-skills"> </a> How to Contribute and Ask for Skills
+</h2> <p><strong>Request a skill:</strong> If you're integrating a provider we don't support yet, <a href="https://github.com/hookdeck/webhook-skills/issues" target="_blank">open an issue on GitHub</a> with a title like <strong>"Skill request: [Provider] webhooks"</strong>. Describe the provider and your framework if relevant. I use these to prioritize what to add next.</p> <p><strong>Contribute a skill:</strong> If you've built a webhook integration you're proud of, PRs for new providers or frameworks are welcome. The repo is <a href="https://github.com/hookdeck/webhook-skills" target="_blank">hookdeck/webhook-skills</a>. Check the existing skills for structure and open a PR.</p> <p><strong>API and platform maintainers:</strong> If you maintain a webhook-producing API and want AI coding agents to implement your webhooks correctly out of the box, I'd love a skill from you. Open an issue or PR and we can align on format and content.</p> <h2> <a name="give-it-a-shot" href="#give-it-a-shot"> </a> Give It a Shot
+</h2> <p>If you've ever lost an afternoon to webhook signature verification or body parsing, try webhook-skills the next time you're wiring up an integration. Install the skills, prompt your agent, and you might find it finally does what you meant.</p> <p><strong>Links:</strong></p> <ul>
+<li><a href="https://github.com/hookdeck/webhook-skills" target="_blank">webhook-skills on GitHub</a></li>
+<li>
+<a href="https://github.com/hookdeck/hookdeck-cli" target="_blank">Hookdeck CLI</a> (optional, for local webhook testing)</li>
+</ul> <p>Have feedback or want to request or contribute a skill? <a href="https://github.com/hookdeck/webhook-skills/issues" target="_blank">Open an issue</a>.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

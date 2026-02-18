@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>openapi-to-skills — Neutree</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>openapi-to-skills — Neutree</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 3:34:05 PM | <a href="https://neutree.ai/projects/openapi-to-skills" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <section> <p>
+When an AI agent needs to act in the real world, it calls an API. The question isn't whether — it's how to give it the right context.
+</p> </section> <div> <div> <article> <h3>MCP Servers</h3> <p>
+Write adapter code. Spin up a sidecar process. Manage another runtime. For each API, the integration tax is steep — and you haven't written any business logic yet.
+</p> </article> <article> <h3>Full Spec in Prompt</h3> <p>
+Paste the entire Swagger file into the prompt. Thousands of tokens consumed. The agent sees everything, focuses on nothing. Accuracy drops as the spec grows.
+</p> </article> </div> <div> <h3>So teams build their own</h3> <p>
+It's a reasonable instinct — slice the spec, curate the context, write a script to automate it. It works for a while. But as APIs evolve and more teams need it, the maintenance cost compounds and the solution rarely travels well.
+</p> </div> </div> <div> <div> <div> <p><span>github-rest-api.yaml</span> <span>11 MB · 1,078 ops</span> </p> </div> <div> <p><span></span> <span>2,026 files</span> </p> <div> <div> <p><span>▾</span> <span>github-v3-rest-api/</span> </p> <p><span>├──</span> <span>SKILL.md</span> </p> <p><span>└──</span> <span>▾</span> <span>references/</span> </p> <p><span>├──</span> <span>authentication.md</span> </p> <p><span>├──</span> <span>resources/</span> <span>43</span> </p> <p><span>├──</span> <span>schemas/</span> <span>904</span> </p> <p><span>└──</span> <span>▾</span> <span>operations/</span> <span>1,078</span> </p> <p><span>├──</span> <span>gists-create.md</span> </p> <p><span>├──</span> <span>issues-create.md</span> </p> <p><span>├──</span> <span>issues-get.md</span> </p> <p><span>├──</span> <span>issues-list.md</span> </p> <p><span>└──</span> <span>1,074 more…</span> </p> </div> <div> <p><span>POST</span> <span>/repos/{owner}/{repo}/issues</span> </p> <p><span>Resource</span> <span>issues</span> <span>Operation ID</span> <code>issues/create</code> </p> <h2>Create an issue</h2> <p>Any user with pull access to a repository can create an issue. If issues are disabled, the response will be a <code>410 Gone</code> status.</p> <h3>Request Body</h3> <p><span>Required</span> <span>Yes</span> <span>Content Type</span> <code>application/json</code> </p> <h3>Responses</h3> <div> <p><span>201</span> <span>Response</span> </p> <p><span>403</span> <span>Forbidden</span> </p> <p><span>404</span> <span>Not Found</span> </p> <p><span>422</span> <span>Validation failed</span> </p> </div> <p> <span>Success Schema</span> <span>issue</span> </p> </div> </div> </div> </div> <div> <div> <p><span>01</span></p><h3>Precise Context</h3> <p>
+Only the relevant operation, parameters, and schemas. The context window stays lean — agents see exactly what they need.
+</p> </div> <div> <p><span>02</span></p><h3>Zero Glue Code</h3> <p>
+No adapters. No sidecar processes. No extra runtime to manage. Generate once, use everywhere.
+</p> </div> <div> <p><span>03</span></p><h3>Always in Sync</h3> <p>
+API spec updated? Re-run the tool. Skills reflect the latest endpoints without manual edits or drift.
+</p> </div> </div> </div> <div> <pre><span>$</span> npx openapi-to-skills generate --input your-api.yaml --output ./skills</pre> </div> <div> <div> <h3>Filter</h3> <p>
+Include or exclude by tags, paths, or deprecated status.
+</p> <div> <div> <p><span>--include-tags</span></p><p><span>users</span> <span>repos</span> <span>issues</span> </p> </div> <div> <p><span>--exclude-paths</span></p><p><span>/internal</span> </p> </div> <div> <p><span>--exclude-deprecated</span></p><p><span>on</span> </p> </div> </div> </div> <div> <h3>Custom Templates</h3> <p>
+Override Eta templates to control exactly what each skill file contains.
+</p> <div> <p><span>issues-create.md</span> </p> <div> <p> # POST /repos/{owner}/{repo}/issues</p> <p> **Create an issue**</p> <p> Any user with pull access can create an issue.</p> <p>+**Internal:** Use <span>PROJECT-123</span> key format.</p> <p>+See runbook: /wiki/github-integration</p> </div> </div> </div> <div> <h3>Programmatic API</h3> <p>
+Embed into build pipelines or custom tooling directly.
+</p> <div> <p><span>build.ts</span> </p> <div> <pre>import { convertOpenAPIToSkill } from 'openapi-to-skills'; await convertOpenAPIToSkill(spec, { outputDir: './skills', parser: { filter: { includeTags: ['users', 'repos'], excludeDeprecated: true, }, },
+});</pre> </div> </div> </div> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

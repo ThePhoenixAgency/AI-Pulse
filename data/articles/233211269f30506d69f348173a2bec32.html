@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,41 @@
     Source: IoT Business News | Date: 2/4/2026 6:15:22 PM | <a href="https://iotbusinessnews.com/2026/02/04/iot-data-collection-in-atex-environments/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Summary unavailable for this article.</p>
+    <div><div> <p><img src="https://iotbusinessnews.com/WordPress/wp-content/uploads/2026/02/industrial-plant.jpg" alt="IoT Data Collection in ATEX Environments"></p>
+<p><strong>Key Insights (AI-assisted):</strong><br>
+Tightening integration between intrinsically safe hardware and modern connectivity is shifting hazardous-area IoT from niche pilots to scalable deployments. As ATEX smartphones gain full cellular, GNSS, and sensor stacks, the bottleneck moves from device capability to interoperability with SCADA, MDM, and line-of-business applications. This forces OT and IT teams to converge architectures and security models, particularly on private LTE/5G. The trend reflects a broader move toward real-time, worker-centric IoT in brownfield industrial environments with stringent safety and regulatory constraints.
+</p>
+<h2>Sensors, standards, and operational constraints in hazardous zones</h2>
+<p>A technician in a chemical plant needs to log temperature readings, check equipment vibration, and photograph a valve assembly. Standard procedure, but in a Zone 2 hazardous area, standard electronics won’t do. The risk isn’t the device itself – it’s what happens if a component fails and creates a spark, or if a surface gets hot enough to ignite surrounding gases.</p>
+<p>Industrial IoT in petrochemical, mining, and pharmaceutical facilities comes down to collecting sensor data while ensuring equipment remains intrinsically safe.</p>
+<h3>ATEX and IECEx Certification Requirements</h3>
+<p>ATEX and IECEx standards define what is permissible in explosive atmospheres. A device marked “Ex ic IIC T4 Gc” meets Zone 2 requirements: surface temperature stays below 135°C, and the design limits electrical energy to levels that will not cause ignition, even in fault conditions.</p>
+<p>This applies to every sensor. Accelerometers, barometers, GPS modules – all must operate within strict energy constraints. Consumer electronics do not, which is why they are unsuitable for hazardous areas.</p>
+<h3>What Data Is Collected in Hazardous Zones</h3>
+<p>Sensors are selected for operational necessity rather than convenience:</p>
+<p><strong>Barometric pressure sensors</strong> monitor confined spaces. A sudden pressure drop of a few millibars can indicate ventilation failure and trigger evacuation protocols.</p>
+<p><strong>Accelerometers and gyroscopes</strong> detect worker falls and measure equipment vibration. The former supports rapid incident response, while the latter enables predictive maintenance strategies.</p>
+<p><strong>Multi-constellation GNSS</strong> (GPS, GLONASS, Galileo, BeiDou) improves positioning reliability in environments with heavy steel infrastructure, supporting personnel tracking during emergencies.</p>
+<p><strong>NFC</strong> enables fast asset identification. Technicians can tap a valve or pump to access maintenance records, log inspection data, and continue working without manual data entry, even while wearing gloves.</p>
+<p>Data can be transmitted in real time over LTE or 5G, or buffered locally when connectivity is unavailable.</p>
+<h3>Connectivity Evolution in ATEX Environments</h3>
+<p>Historically, data collected in hazardous zones was synchronised later via Wi‑Fi in safe areas, introducing delays of several hours.</p>
+<p>Private LTE and 5G networks in refineries and large industrial sites are changing this model. ATEX-certified devices with cellular connectivity can now support near real-time sensor telemetry, image capture, and remote collaboration. Certifying cellular radios for intrinsically safe housings remains complex, which explains why such devices have only emerged relatively recently.</p>
+<h3>Environmental and Human-Factor Constraints</h3>
+<p>Industrial mobile devices typically require IP68 protection and compliance with MIL‑STD‑810H, covering dust ingress, immersion, drops, vibration, and temperature extremes.</p>
+<p>Equally important are usability constraints: touchscreens that function through thick protective gloves, displays readable in direct sunlight, and batteries capable of lasting a full 12‑hour shift with GPS and Bluetooth enabled.</p>
+<p>While consumer smartphones often throttle or fail above 45°C, industrial ATEX devices are designed to operate reliably at temperatures up to 55–60°C, reflecting real refinery conditions.</p>
+<h3>Integration Remains the Primary Challenge</h3>
+<p>Intrinsically safe smartphones with modern processors, adequate memory, cameras, and Android Enterprise support are now available on the market. Devices such as the <a href="https://cobic-ex.com/ecom-smart-ex-203/">Smart‑Ex 203</a> illustrate how contemporary smartphone functionality can be delivered within ATEX and IECEx constraints.</p>
+<p>In practice, the main obstacle is not the hardware itself but integration. Many facilities still rely on legacy handheld instruments and manual workflows. Transitioning to mobile IoT platforms requires middleware compatible with SCADA systems, mobile device management solutions suitable for restricted or air‑gapped networks, and applications designed for one‑handed, gloved operation.</p>
+<h3>Practical Selection Considerations</h3>
+<p>When specifying ATEX‑certified IoT equipment, industrial operators should:</p>
+<p><strong>Confirm zone classification</strong>. Zone 2 / Division 2 covers most accessible areas, while Zone 1 / Division 1 requires stricter certification and typically involves functional trade‑offs.</p>
+<p><strong>Verify temperature class</strong>. T4 (135°C maximum surface temperature) is sufficient for many hydrocarbon environments, but some chemicals require T5 or T6 compliance.</p>
+<p><strong>Assess connectivity requirements</strong>. Private cellular, Wi‑Fi, or offline operation with delayed synchronisation will directly influence device selection.</p>
+<p><strong>Evaluate real‑world battery life</strong>. Manufacturer specifications often assume minimal usage. Continuous GNSS tracking, active Bluetooth peripherals, and frequent screen use typically reduce a 4,500 mAh battery to 8–10 hours of operation.</p>
+<h3>Conclusion</h3>
+<p>IoT data collection in ATEX environments is no longer constrained by sensor capability or device availability. The limiting factors are systems integration, workflow redesign, and operational change management. As intrinsically safe mobile platforms mature, organisations that address these challenges holistically will be best positioned to extract real value from hazardous‑area IoT deployments.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

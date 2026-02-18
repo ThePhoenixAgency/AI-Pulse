@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Minecraft Java is switching from OpenGL to Vulkan for the Vibrant Visuals update</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Minecraft Java is switching from OpenGL to Vulkan for the Vibrant Visuals update</h1>
+  <div class="metadata">
+    Source: GamingOnLinux | Date: 2/18/2026 3:03:07 PM | <a href="https://www.gamingonlinux.com/2026/02/minecraft-java-is-switching-from-opengl-to-vulkan-for-the-vibrant-visuals-update/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Work continues for the Vibrant Visuals update to come to Minecraft Java, and as part of that they're switching the rendering from OpenGL to Vulkan.</p>
+<p><a href="https://www.minecraft.net/en-us/article/another-step-towards-vibrant-visuals-for-java-edition" target="_blank">Announced</a> today (February 18th) by Mojang developers, it's a huge change for such a game and will take time - but it will be worth it in the end so they can take advantage of all the modern features available for both visual improvements and better performance.</p>
+<p><a href="https://uploads.golmedia.net/uploads/articles/article_media/6889725121771426976gol2.webp"><img src="https://uploads.golmedia.net/uploads/articles/article_media/6889725121771426976gol2.webp"></a></p>
+<p>They note clearly that their aim is to "keep Minecraft: Java Edition playable for almost any PC-operating system, including macOS and Linux". For the macOS side of things, they'll use a translation layer since Apple don't support Vulkan directly (they made their own API with Metal).</p>
+<p>For modders, they're suggesting they start making preparations to move away from OpenGL</p>
+<blockquote>
+<p>Switching from OpenGL to Vulkan will have an impact on the mods that currently use OpenGL for rendering, and we anticipate that updating from OpenGL to Vulkan will take modders more effort than the updates you undertake for each of our releases. </p>
+<p>To start with, we recommend our modding community look at moving away from OpenGL usage. We encourage authors to try to reuse as much of the internal rendering APIs as possible, to make this transition as easy as possible. If that is not sufficient for your needs, then come and talk to us! </p>
+</blockquote>
+<p>It does mean that players on really old devices that don't support Vulkan will be left out, but Vulkan has been supported going back to some pretty <em>old</em> GPUs. You've got time though, as they'll be rolling out Vulkan alongside OpenGL in snapshots (development releases) "sometime over the summer". You'll be able to toggle between them during the testing period until Mojang believe it's ready. OpenGL will be entirely removed eventually once they're happy with performance and stability.</p>
+<div><p><span>Release Date:</span> <span>8th November 2011</span></p><p><span>Platform:</span> <span> Native Linux</span></p></div> <p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span> </p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - KafClaw/KafClaw: The Claw with a distributed brain. Multi-agent Kafka coordination. Typed envelopes, shared memory, group orchestration. The world is agentic.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - KafClaw/KafClaw: The Claw with a distributed brain. Multi-agent Kafka coordination. Typed envelopes, shared memory, group orchestration. The world is agentic.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 4:10:09 PM | <a href="https://github.com/KafClaw/KafClaw" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>KafClaw</h1><a href="#kafclaw"></a></div>
+<p><a href="https://github.com/KafClaw/KafClaw/actions/workflows/ci.yml"><img src="https://github.com/KafClaw/KafClaw/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI (Smoke+Fuzz+Go)"></a>
+<a href="https://github.com/KafClaw/KafClaw/actions/workflows/release.yml"><img src="https://github.com/KafClaw/KafClaw/actions/workflows/release.yml/badge.svg?branch=main" alt="Release"></a>
+<a href="https://github.com/KafClaw/KafClaw/actions/workflows/pages.yml"><img src="https://github.com/KafClaw/KafClaw/actions/workflows/pages.yml/badge.svg?branch=main" alt="Pages"></a></p>
+<p><a href="https://goreportcard.com/report/github.com/KafClaw/KafClaw"><img src="https://camo.githubusercontent.com/84c83ee73b893c816d5e2bdf7efaa0e9da7e91ee4c5825f261fd4882d774df99/68747470733a2f2f676f7265706f7274636172642e636f6d2f62616467652f6769746875622e636f6d2f4b6166436c61772f4b6166436c6177" alt="Go Report Card"></a>
+<a href="/KafClaw/KafClaw/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/2673022a3e1eb496dfa8a18dc8e02bc9d426854d8c0d8ff24a14332592ea000b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f4b6166436c61772f4b6166436c6177" alt="License"></a></p>
+<p>KafClaw is backed by <a href="https://www.scalytics.io">Scalytics</a>. We do not create, operate, or endorse any crypto tokens. If you see token-based fundraising using the KafClaw name, it is not affiliated with this project.</p>
+<div><h2>Platform Suite</h2><a href="#platform-suite"></a></div>
+<p>KafClaw is part of a broader infrastructure stack:</p>
+<ul>
+<li><strong>KafScale</strong>: Kafka-compatible + S3-compatible platform for event transport and large artifact flows.<br>
+<a href="https://kafscale.io">kafscale.io</a> • <a href="https://github.com/kafscale">github.com/kafscale</a></li>
+<li><strong>GitClaw</strong>: agent-first self-hosted Git platform for repository workflows and automation.</li>
+<li><strong>KafClaw</strong>: agent runtime and coordination layer (local, Kafka-connected, and remote gateway modes).</li>
+</ul>
+<p><strong>Enterprise-grade multi-agent collaboration over Apache Kafka.</strong></p>
+<p>KafClaw is an agent coordination framework built in Go. It connects autonomous AI agents through Kafka-based messaging, giving them group collaboration, hierarchical orchestration, shared memory, and distributed skill routing — without coupling them to any single LLM provider, runtime, or deployment model.</p>
+<p>The name reflects what it does: <strong>Kaf</strong>ka as the backbone, <strong>Claw</strong> as the grip that holds heterogeneous agents together.</p>
+<hr>
+<div><h2>Core Contributions</h2><a href="#core-contributions"></a></div>
+<div><h3>1. Enterprise-Ready Agent Communication via Kafka Protocol</h3><a href="#1-enterprise-ready-agent-communication-via-kafka-protocol"></a></div>
+<p>Agents communicate through a structured Kafka topic hierarchy. Every message flows through typed envelopes (</p><pre><code>announce</code></pre>, <pre><code>request</code></pre>, <pre><code>response</code></pre>, <pre><code>trace</code></pre>, <pre><code>memory</code></pre>, <pre><code>audit</code></pre>) with correlation IDs and timestamps, giving full observability out of the box.<p></p>
+<div><pre><code>group.&lt;name&gt;.announce # join / leave / heartbeat
+group.&lt;name&gt;.requests # task requests
+group.&lt;name&gt;.responses # task responses
+group.&lt;name&gt;.traces # distributed trace spans
+group.&lt;name&gt;.control.roster # topic registry + member capabilities
+group.&lt;name&gt;.control.onboarding # agent onboarding protocol
+group.&lt;name&gt;.tasks.status # task progress updates
+group.&lt;name&gt;.observe.audit # admin audit trail
+group.&lt;name&gt;.memory.shared # persistent shared knowledge (via LFS/S3)
+group.&lt;name&gt;.memory.context # ephemeral context sharing (TTL-based)
+group.&lt;name&gt;.orchestrator # hierarchy discovery + zone coordination
+group.&lt;name&gt;.skill.&lt;s&gt;.requests # per-skill task routing (dynamic)
+group.&lt;name&gt;.skill.&lt;s&gt;.responses # per-skill responses (dynamic)
+</code></pre></div>
+<p>This is not a toy pub-sub wrapper. It is a deliberate wire protocol designed for production traceability, auditability, and zero-downtime agent onboarding.</p>
+<div><h3>2. Group Collaboration — Internal and Inter-Group</h3><a href="#2-group-collaboration--internal-and-inter-group"></a></div>
+<p>Agents form <strong>groups</strong>. Within a group, they discover each other via heartbeats, delegate tasks through request/response topics, and share trace spans for distributed debugging.</p>
+<p><strong>Group-internal collaboration:</strong></p>
+<ul>
+<li>Roster management with automatic heartbeat-based liveness detection</li>
+<li>Task delegation with depth tracking and deadline propagation</li>
+<li>Skill registration — agents advertise capabilities, others route tasks to them</li>
+<li>Onboarding protocol (open or gated with challenge/response handshake)</li>
+</ul>
+<p><strong>Inter-group coordination</strong> is handled by the <strong>orchestrator</strong>, which adds:</p>
+<ul>
+<li><strong>Hierarchy</strong>: parent-child agent relationships for delegation chains</li>
+<li><strong>Zones</strong>: security boundaries with <pre><code>public</code></pre>, <pre><code>shared</code></pre>, and <pre><code>private</code></pre> visibility</li>
+<li><strong>Discovery</strong>: agents announce themselves on the orchestrator topic; the hierarchy and zone graph update in real time</li>
+</ul> <div><h3>3. Species-Independent Inter-Species Nervous System</h3><a href="#3-species-independent-inter-species-nervous-system"></a></div>
+<p>KafClaw decouples the <em>what</em> from the <em>how</em>. The Kafka topic layer is the nervous system; agents are the species.</p>
+<p>An agent is anything that can produce and consume Kafka envelopes. It might be:</p>
+<ul>
+<li>A Go binary running the full KafClaw runtime</li>
+<li>A Python script using <pre><code>kafka-python</code></pre></li>
+<li>A Node.js service, a Rust worker, a shell script polling via <pre><code>kcat</code></pre></li>
+<li>A human operating through the WhatsApp or Telegram channel bridge</li>
+</ul>
+<p>The wire format is JSON. The envelope schema is simple and documented. No SDK lock-in, no runtime dependency beyond Kafka itself.</p>
+<p><strong>Shared memory</strong> reinforces this:</p>
+<ul>
+<li>Agents publish knowledge artifacts to <pre><code>memory.shared</code></pre> (backed by S3/LFS for large payloads)</li>
+<li>Ephemeral context goes to <pre><code>memory.context</code></pre> with TTL expiry</li>
+<li>Locally, each agent can index received items into its own vector store (SQLite-vec, Qdrant, or custom) for semantic retrieval</li>
+<li>The result: agents with different architectures, models, and languages can build on each other's work without direct coupling</li>
+</ul>
+<div><h3>4. Shared Learning</h3><a href="#4-shared-learning"></a></div>
+<p>Knowledge does not stay locked inside a single agent's context window.</p>
+<ul>
+<li><strong>Memory items</strong> published to the group are stored locally in each subscribing agent's vector index, making them available for RAG retrieval in future conversations</li>
+<li><strong>Expertise tracking</strong> records what each agent knows and has done, so the group can route questions to the right specialist</li>
+<li><strong>Auto-indexing</strong> captures conversation context and indexes it for later recall</li>
+<li><strong>Skill channels</strong> let agents register domain expertise as addressable services — other agents don't need to know the implementation, just the skill name</li>
+</ul>
+<p>The learning loop: Agent A discovers something, shares it as a memory item, Agent B indexes it, Agent B uses it to answer a question three days later. No central brain required.</p>
+<hr>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code> ┌──────────────────────────────────┐ │ Apache Kafka │ │ │ │ control ─ tasks ─ observe │ │ memory ─ orchestrator ─ skills │ └──────┬──────────────┬────────────┘ │ │ ┌───────────┘ └───────────┐ │ │ ┌──────┴──────┐ ┌──────┴──────┐ │ Agent A │ │ Agent B │ │ (Go/Full) │ │ (Any lang) │ │ │ │ │ │ Agent Loop │ │ Kafka │ │ Tool Reg. │ │ Consumer │ │ Memory Svc │ │ + Producer │ │ LLM Provider│ │ │ │ Channels │ │ │ └─────────────┘ └─────────────┘ │ ┌───────────┼───────────┐ │ │ │ WhatsApp Telegram Web UI (whatsmeow) (bridge) (:18791)
+</code></pre></div>
+<p><strong>Full KafClaw agents</strong> (Go runtime) include:</p>
+<ul>
+<li><strong>Agent loop</strong> with LLM provider abstraction (OpenAI, OpenRouter)</li>
+<li><strong>Tool registry</strong> (filesystem, shell, memory, web — with security sandboxing)</li>
+<li><strong>Message bus</strong> decoupling channels from the agent loop</li>
+<li><strong>Timeline DB</strong> (SQLite) for event logging, media, and distributed tracing</li>
+<li><strong>Policy engine</strong> for message classification, token quotas, and rate limiting</li>
+<li><strong>Scheduler</strong> for cron jobs and deferred tasks</li>
+</ul>
+<p><strong>Lightweight agents</strong> only need a Kafka client and the envelope JSON schema.</p>
+<hr>
+<div><h2>Operating Modes</h2><a href="#operating-modes"></a></div>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Kafka</th>
+<th>Orchestrator</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>standalone</code></pre></td>
+<td>No</td>
+<td>No</td>
+<td>Single-agent desktop assistant</td>
+</tr>
+<tr>
+<td><pre><code>group</code></pre></td>
+<td>Yes</td>
+<td>No</td>
+<td>Peer-to-peer agent collaboration</td>
+</tr>
+<tr>
+<td><pre><code>full</code></pre></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Hierarchical multi-agent with zones</td>
+</tr>
+<tr>
+<td><pre><code>headless</code></pre></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Server deployment (0.0.0.0 + auth)</td>
+</tr>
+</tbody>
+</table>
+<div><pre><span>cd</span> KafClaw make run-standalone <span><span>#</span> No Kafka, no orchestrator</span>
+make run <span><span>#</span> Default gateway</span>
+make run-full <span><span>#</span> Group + orchestrator enabled</span>
+make run-headless <span><span>#</span> Server mode (requires KAFCLAW_GATEWAY_AUTH_TOKEN)</span></pre></div>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> Prerequisites: Go 1.24+, Apache Kafka (for group modes)</span> <span>cd</span> KafClaw <span><span>#</span> Build</span>
+make build <span><span>#</span> Run single message (standalone, no Kafka needed)</span>
+./kafclaw agent -m <span><span>"</span>hello<span>"</span></span> <span><span>#</span> Run gateway (standalone mode)</span>
+make run-standalone <span><span>#</span> Run with group collaboration</span>
+make run-full <span><span>#</span> Run tests</span>
+go <span>test</span> ./...
+make test-smoke <span><span>#</span> critical-path smoke tests</span>
+make test-critical <span><span>#</span> enforce 100% critical-logic coverage gate</span>
+make test-fuzz <span><span>#</span> fuzz critical guard logic</span> <span><span>#</span> Kafka diagnostics</span>
+./kafclaw kshark --broker localhost:9092 --test-connection</pre></div>
+<div><h3>Configuration</h3><a href="#configuration"></a></div>
+<p>Loaded in order: environment variables &gt; </p><pre><code>~/.kafclaw/config.json</code></pre> &gt; defaults.<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>KAFCLAW_GROUP_ENABLED</code></pre></td>
+<td><pre><code>false</code></pre></td>
+<td>Enable Kafka group collaboration (legacy: <pre><code>MIKROBOT_GROUP_ENABLED</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>KAFCLAW_ORCHESTRATOR_ENABLED</code></pre></td>
+<td><pre><code>false</code></pre></td>
+<td>Enable hierarchical orchestration (legacy: <pre><code>MIKROBOT_ORCHESTRATOR_ENABLED</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>KAFCLAW_ORCHESTRATOR_ROLE</code></pre></td>
+<td><pre><code>worker</code></pre></td>
+<td>Agent role: <pre><code>orchestrator</code></pre>, <pre><code>worker</code></pre>, <pre><code>observer</code></pre> (legacy: <pre><code>MIKROBOT_ORCHESTRATOR_ROLE</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>KAFCLAW_GROUP_KAFKA_BROKERS</code></pre></td>
+<td><pre><code>localhost:9092</code></pre></td>
+<td>Kafka broker addresses (legacy: <pre><code>MIKROBOT_KAFKA_BROKERS</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>KAFCLAW_GATEWAY_HOST</code></pre></td>
+<td><pre><code>127.0.0.1</code></pre></td>
+<td>API bind address (legacy: <pre><code>MIKROBOT_GATEWAY_HOST</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>KAFCLAW_GATEWAY_AUTH_TOKEN</code></pre></td>
+<td><em>(empty)</em></td>
+<td>Bearer token for headless mode (legacy: <pre><code>MIKROBOT_GATEWAY_AUTH_TOKEN</code></pre>)</td>
+</tr>
+</tbody>
+</table>
+<p>Gateway ports: <strong>18790</strong> (API), <strong>18791</strong> (dashboard).</p>
+<hr>
+<div><h2>Key Packages</h2><a href="#key-packages"></a></div>
+<div><pre><code>internal/
+├── group/ # Kafka-based group collaboration, onboarding, skills, shared memory
+├── orchestrator/ # Hierarchy, zones, discovery
+├── agent/ # Core agent loop, context builder, soul file loading
+├── bus/ # Async message bus (pub-sub, decouples channels from agent)
+├── channels/ # WhatsApp, Telegram, Discord, Web — Channel interface
+├── config/ # Env / file / default config loading
+├── provider/ # LLM abstraction (OpenAI, OpenRouter, Whisper, TTS)
+├── memory/ # Vector store, semantic search, expertise tracking, auto-indexing
+├── session/ # Per-session conversation history (JSONL persistence)
+├── timeline/ # SQLite event log, media storage, trace/span IDs
+├── tools/ # Registry-based tools (fs, shell, memory, web) with security sandbox
+├── policy/ # Message classification, token quotas, rate limiting
+├── scheduler/ # Cron and deferred task scheduling
+├── kshark/ # Kafka diagnostic tool (connection, topics, partitions, metrics)
+└── approval/ # Task approval workflows
+</code></pre></div>
+<hr>
+<div><h2>Diagnostic Tooling: KShark</h2><a href="#diagnostic-tooling-kshark"></a></div>
+<p>KShark is a built-in Kafka diagnostic tool for verifying connectivity and inspecting group infrastructure:</p>
+<div><pre>./kafclaw kshark --broker localhost:9092 --test-connection
+./kafclaw kshark --broker localhost:9092 --probe-topics --group mygroup
+./kafclaw kshark --broker localhost:9092 --network-diag</pre></div>
+<hr>
+<div><h2>Releases</h2><a href="#releases"></a></div>
+<ul>
+<li>Local: <pre><code>make release-patch</code></pre> (or <pre><code>release-minor</code></pre>, <pre><code>release-major</code></pre>) in <pre><code>kafclaw/</code></pre></li>
+<li>CI: push a tag <pre><code>vX.Y.Z</code></pre> to trigger the build workflow</li>
+<li>Cross-compile: <pre><code>make dist-go</code></pre> produces binaries for darwin/linux (amd64/arm64)</li>
+<li>Electron desktop: <pre><code>make electron-dist</code></pre> packages for current platform</li>
+<li>See <pre><code>docs/release.md</code></pre> for details</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Licensed under the <a href="/KafClaw/KafClaw/blob/main/LICENSE">Apache License, Version 2.0</a>.</p>
+<p>This project is a hard fork of <a href="https://github.com/HKUDS/nanobot">HKUDS/nanobot</a>, which was originally released under the MIT License. The original MIT license and attribution are preserved in the <a href="/KafClaw/KafClaw/blob/main/NOTICE">NOTICE</a> file, as required.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

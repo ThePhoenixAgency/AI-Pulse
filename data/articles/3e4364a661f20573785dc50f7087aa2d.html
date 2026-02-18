@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,33 +28,7 @@
     Source: PortSwigger Research | Date: 7/9/2024 12:51:22 PM | <a href="https://portswigger.net/research/fickle-pdfs-exploiting-browser-rendering-discrepancies" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <p><img alt="Zakhar Fedotkin" src="https://portswigger.net/content/images/profiles/callout_zakhar_fedotkin_114px.png"></p>
-</div> <ul> <li> <p><span></span><strong>Published: </strong>09 July 2024 at 12:51 UTC</p> </li> <li> <p><strong>Updated: </strong>15 July 2024 at 09:02 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/8b/4f/3783-article-flickle-pdf.gif"><br></p><p>Imagine the CEO of a random company receives an email containing a PDF invoice file. In Safari and MacOS Preview, the total price displayed is £399. After approval, the invoice is sent to the accounting department, which operates on Windows OS. However, when the same PDF file is opened in Google Chrome or Google Drive, the price changes to £999.
-</p><p> In this article, we will show you how to create a hybrid PDF that abuses widget annotations to create render discrepancies, and share the code so you can generate your own.</p><p>This research was inspired by Konstantin Weddige's blog post "<a href="https://lutrasecurity.com/en/articles/kobold-letters/">Kobold Letters</a>".
-</p><h2>Browser PDF rendering discrepancies</h2><p> Each major browser has its own method for rendering PDF files. Google Chrome uses an integrated PDF viewer called PDFium, while Safari employs its own PDF rendering engine and Firefox uses PDF.js. Thanks to PDF rendering discrepancies, the same PDF file can appear differently across various browsers. For instance, the appearance of interactive form fields varies between browsers. Google Chrome, with its comprehensive support for both interactive form fields and widget annotations, dynamically updates the displayed text from the annotation value to the form field's default value upon user interaction. However, both Firefox and Google Drive preview prioritize the widget annotation, ignoring the default value entirely. In contrast, Safari's PDF rendering engine completely bypasses the widget annotation, displaying only the default value.
-</p><p> To build a proof of concept, we'll use the org.apache.pdfbox Java library. Note that the same result can be achieved even with manual file modification. Our interactive form should have at least one input text field and an annotation for it. The plain text value of this field can be any string, such as £399. This value will be shown in PDF readers that do not support forms, such as Safari and MacOS Preview.
-</p><p> Interestingly, the org.apache.pdfbox.pdmodel.interactive.form.PDTextField#setValue method also tries to update the visual appearance, unless PDAcroForm.getNeedAppearances() is true. However, we won't use the default appearance; instead, we will render our own using widget annotations.These are objects added to a PDF document to provide additional information or interactive elements without altering the original content. A widget annotation represents the appearance of form fields in an interactive PDF form. It will display the text £999 instead. The pseudo code might look like this:
-</p><p><code>PDDocument document = new PDDocument();
-PDAcroForm acroForm = new PDAcroForm(document);
-PDTextField field = new PDTextField(acroForm);
-field.setValue("£399");
-// Create and set custom appearance stream
-PDFormXObject appearanceStream = new PDFormXObject(document);
-...
-appearanceContents.showText("£999");
-</code></p><p> Note the annotations can contain any text and theoretically, nothing prevents you from overwriting the entire page. The full text can be found at <a href="https://github.com/PortSwigger/research-labs/tree/main/pdf-rendering-discrepancies">https://github.com/PortSwigger/research-labs/tree/main/pdf-rendering-discrepancies</a>
-</p><p>Safari renders the PDF:<img src="https://portswigger.net/cms/images/f6/25/fd81-article-safarikoboldpdf.png"></p><p>Google Chrome and Drive preview render the different total price:<img src="https://portswigger.net/cms/images/1c/38/a311-article-chromekoboldpdf.png"></p><p>Firefox agrees with Google Chrome:<img src="https://portswigger.net/cms/images/3e/db/de15-article-firefoxkoboldpdf.png"></p><p> Interestingly, ChatGPT doesn't support annotations. If you ask it to analyse the invoice, it will return the following:
-</p><p><code>The PDF file is an invoice for Carlos Montoya with the following details:
-Invoice Number: 1
-Date Issued: 01/01/2001
-Date Due: 01/01/3001
-Items:
-Item: L33T Leather Jacket
-Quantity: 1
-Unit Price: £399
-Total: £399
-</code></p><h2>Final note</h2><p> The PDF files rendering process is complex and ambiguous. Be cautious when sending a file to the accounting department for payment or granting a chat assistant access to the mailbox. You can find the Fickle pdf file on <a href="https://github.com/PortSwigger/research-labs/blob/main/pdf-rendering-discrepancies/invoice.pdf" target="_blank">Github</a>.</p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
-</div></div>
+    <p>Imagine the CEO of a random company receives an email containing a PDF invoice file. In Safari and MacOS Preview, the total price displayed is £399. After approval, the invoice is sent to the accounti</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - kcrwfrd/navigation-ponyfill: A ponyfill (polyfill) for the browser Navigation API</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - kcrwfrd/navigation-ponyfill: A ponyfill (polyfill) for the browser Navigation API</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 3:55:15 PM | <a href="https://github.com/kcrwfrd/navigation-ponyfill" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>navigation-ponyfill</h1><a href="#navigation-ponyfill"></a></div>
+<p>A ponyfill (polyfill) for the browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API">Navigation API</a> that enables tracking of browser history navigation, including (reasonably) reliable detection of when the user can navigate backwards in a single-page application.</p>
+<p></p><pre><code>navigation-ponyfill</code></pre> has zero runtime dependencies and will defer to the native <pre><code>Navigation</code></pre> on <pre><code>window.navigation</code></pre> when available.<p></p>
+<div><h2>What's a ponyfill?</h2><a href="#whats-a-ponyfill"></a></div>
+<p>A <a href="https://github.com/sindresorhus/ponyfill">ponyfill</a> is like a polyfill, but instead of patching the global environment, it exports the functionality as a module.</p>
+<p>Unfortunately, </p><pre><code>navigation-ponyfill</code></pre> is not entirely side-effect free due to <a href="#how-it-works">how it works</a>.<p></p>
+<div><h2>Why?</h2><a href="#why"></a></div>
+<p>My most immediate concern when implementing this ponyfill was to support "back" buttons in single-page applications. It is desirable to use the </p><pre><code>history.back()</code></pre> method in such cases so that the behavior is in-line with the browser's back button (and swiping on mobile). However, you don't want to bounce the user off your application if they came from elsewhere. In this case, it is preferable to navigate to a fallback URL instead.<p></p>
+<p>It's a UI element seen in many applications (Instagram, Twitter/X, Bluesky, etc.) and while it's a slam-dunk to implement with </p><pre><code>Navigation</code></pre>, it's a minefield of edge-cases and tricky to get right using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API">History API</a>. It is easiest to implement if you can just pass the previous URL with <pre><code>history.pushState({ previousUrl }, '', newUrl)</code></pre>, but that's not something we can readily hook into in all frameworks (looking at you, Next.js).<p></p>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><pre>npm install navigation-ponyfill</pre></div>
+<p>TypeScript projects require installation of <a href="https://www.npmjs.com/package/@types/dom-navigation"></a></p><pre><a href="https://www.npmjs.com/package/@types/dom-navigation"><code>@types/dom-navigation</code></a></pre> as well.<p></p>
+<div><pre>npm install -D @types/dom-navigation</pre></div>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>navigation</span> <span>}</span> <span>from</span> <span>'navigation-ponyfill'</span> <span>// Check if back navigation is available</span>
+<span>if</span> <span>(</span><span>navigation</span><span>.</span><span>canGoBack</span><span>)</span> <span>{</span> <span>history</span><span>.</span><span>back</span><span>(</span><span>)</span>
+<span>}</span> <span>// Access the current entry and history entries</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>'Current URL:'</span><span>,</span> <span>navigation</span><span>.</span><span>currentEntry</span><span>?.</span><span>url</span><span>)</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>'History length:'</span><span>,</span> <span>navigation</span><span>.</span><span>entries</span><span>(</span><span>)</span><span>.</span><span>length</span><span>)</span> <span>// Listen for navigation changes</span>
+<span>navigation</span><span>.</span><span>addEventListener</span><span>(</span><span>'currententrychange'</span><span>,</span> <span>(</span><span>event</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>'Navigated:'</span><span>,</span> <span>event</span><span>.</span><span>navigationType</span><span>)</span> <span>// 'push' | 'replace' | 'traverse'</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>'From:'</span><span>,</span> <span>event</span><span>.</span><span>from</span><span>.</span><span>url</span><span>)</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>'To:'</span><span>,</span> <span>navigation</span><span>.</span><span>currentEntry</span><span>?.</span><span>url</span><span>)</span>
+<span>}</span><span>)</span></pre></div>
+<div><h2>Entry Points</h2><a href="#entry-points"></a></div>
+<p>The package provides two entry points:</p>
+<div><h3>Default (with side effects)</h3><a href="#default-with-side-effects"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>navigation</span> <span>}</span> <span>from</span> <span>'navigation-ponyfill'</span></pre></div>
+<p>Returns the native </p><pre><code>window.navigation</code></pre> if available, otherwise patches <pre><code>history.pushState</code></pre> and <pre><code>history.replaceState</code></pre> and returns the ponyfill. Use this for most applications.<p></p>
+<div><h3>Core (side-effect-free on import)</h3><a href="#core-side-effect-free-on-import"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>createNavigation</span><span>,</span> <span>Navigation</span> <span>}</span> <span>from</span> <span>'navigation-ponyfill/core'</span> <span>// No side effects until you call createNavigation()</span>
+<span>const</span> <span>navigation</span> <span>=</span> <span>createNavigation</span><span>(</span><span>)</span></pre></div>
+<p>No automatic patching—you control when and how the Navigation instance is created. Useful for testing or advanced use cases.</p>
+<div><h2>Supported APIs</h2><a href="#supported-apis"></a></div>
+<p>Based on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API">Navigation API specification</a>. Most currently unsupported APIs are planned to be added.</p>
+<p>Some of the most interesting (and complex) APIs are in managing the navigation transition lifecycle. How well we can support these remains to be determined.</p>
+<p>I do hope to support </p><pre><code>NavigateEvent.preventDefault()</code></pre> to cancel navigations, and <pre><code>NavigateEvent.intercept()</code></pre> to handle them.<p></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><div><h3>Navigation</h3><a href="#navigation"></a></div></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>currentEntry</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>canGoBack</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>canGoForward</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>entries()</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>addEventListener()</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>removeEventListener()</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>oncurrententrychange</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>transition</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>activation</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>navigate()</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>reload()</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>back()</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>forward()</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>traverseTo()</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>updateCurrentEntry()</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><div><h3>Navigation Events</h3><a href="#navigation-events"></a></div></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>currententrychange</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>navigate</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>navigatesuccess</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>navigateerror</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><div><h3>NavigationHistoryEntry</h3><a href="#navigationhistoryentry"></a></div></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>id</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>key</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>index</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>url</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>sameDocument</code></pre> - always <pre><code>true</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>getState()</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>dispose</code></pre> event</td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>ondispose</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><div><h3>NavigationCurrentEntryChangeEvent</h3><a href="#navigationcurrententrychangeevent"></a></div></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>from</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>navigationType</code></pre> - <pre><code>reload</code></pre> not emitted</td>
+</tr>
+<tr>
+<td></td>
+<td><div><h3>Not Implemented</h3><a href="#not-implemented"></a></div></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>NavigateEvent</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>NavigationTransition</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>NavigationDestination</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>NavigationActivation</code></pre></td>
+</tr>
+<tr>
+<td></td>
+<td><pre><code>NavigationPrecommitController</code></pre></td>
+</tr>
+</tbody>
+</table>
+<div><h2>API Reference</h2><a href="#api-reference"></a></div>
+<div><h3><pre><code>navigation</code></pre></h3><a href="#navigation-1"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>navigation</span> <span>}</span> <span>from</span> <span>'navigation-ponyfill'</span></pre></div>
+<p>A singleton that provides the Navigation API. This can be either:</p>
+<ul>
+<li>The <strong>native <pre><code>window.navigation</code></pre></strong> if the browser supports the Navigation API</li>
+<li>The <strong>ponyfill <pre><code>Navigation</code></pre> instance</strong> as a fallback</li>
+</ul>
+<p>Both share a common interface for the properties and methods below.</p>
+<div><h4>Properties</h4><a href="#properties"></a></div>
+<ul>
+<li><strong><pre><code>currentEntry: NavigationHistoryEntry | null</code></pre></strong> — The current history entry.</li>
+<li><strong><pre><code>canGoBack: boolean</code></pre></strong> — Whether the user can navigate backwards in this session.</li>
+<li><strong><pre><code>canGoForward: boolean</code></pre></strong> — Whether the user can navigate forwards in this session.</li>
+</ul>
+<div><h4>Methods</h4><a href="#methods"></a></div>
+<ul>
+<li><strong><pre><code>entries(): NavigationHistoryEntry[]</code></pre></strong> — Returns an array of all history entries in the current session.</li>
+<li><strong><pre><code>addEventListener(type: 'currententrychange', listener: (event: NavigationCurrentEntryChangeEvent) =&gt; void, options?: AddEventListenerOptions): void</code></pre></strong> — Adds an event listener for navigation events. Only <pre><code>currententrychange</code></pre> events are supported at this time.</li>
+<li><strong><pre><code>removeEventListener(type: 'currententrychange', listener: (event: NavigationCurrentEntryChangeEvent) =&gt; void, options?: EventListenerOptions): void</code></pre></strong> — Removes a previously added event listener.</li>
+</ul>
+<div><h4>Events</h4><a href="#events"></a></div>
+<ul>
+<li><strong><pre><code>currententrychange</code></pre></strong> — Fired when navigation occurs via <pre><code>pushState</code></pre>, <pre><code>replaceState</code></pre>, hash changes, or history traversal.</li>
+</ul>
+<div><h3><pre><code>Navigation</code></pre></h3><a href="#navigation-2"></a></div>
+<p>The ponyfill implementation, available via </p><pre><code>createNavigation({ force: true })</code></pre> or when the native API is unavailable.<p></p>
+<div><h4>Additional Methods</h4><a href="#additional-methods"></a></div>
+<ul>
+<li><strong><pre><code>destroy(): void</code></pre></strong> — Restores original history methods and removes event listeners. Use this for cleanup in tests or when the ponyfill is no longer needed.</li>
+</ul>
+<div><h3><pre><code>NavigationCurrentEntryChangeEvent</code></pre></h3><a href="#navigationcurrententrychangeevent-1"></a></div>
+<p>Event object passed to </p><pre><code>currententrychange</code></pre> listeners.<p></p>
+<div><pre><span>interface</span> <span>NavigationCurrentEntryChangeEvent</span> <span>extends</span> <span>Event</span> <span>{</span> <span>readonly</span> <span>from</span>: <span>NavigationHistoryEntry</span> <span>// Previous history entry</span> <span>readonly</span> <span>navigationType</span>: <span>NavigationType</span> <span>|</span> <span>null</span> <span>// How the navigation occurred - reload not supported</span>
+<span>}</span></pre></div>
+<div><h3><pre><code>NavigationHistoryEntry</code></pre></h3><a href="#navigationhistoryentry-1"></a></div>
+<p>Represents a history entry.</p>
+<div><pre><span>interface</span> <span>NavigationHistoryEntry</span> <span>extends</span> <span>EventTarget</span> <span>{</span> <span>readonly</span> <span>id</span>: <span>string</span> <span>// Unique identifier for this entry</span> <span>readonly</span> <span>key</span>: <span>string</span> <span>// Stable key that persists across replace operations</span> <span>readonly</span> <span>index</span>: <span>number</span> <span>// Position in the entries list (-1 if disposed)</span> <span>readonly</span> <span>url</span>: <span>string</span> <span>|</span> <span>null</span> <span>// Full URL of the entry</span> <span>readonly</span> <span>sameDocument</span>: <span>boolean</span> <span>// Whether this was a same-document navigation</span> <span>getState</span><span>(</span><span>)</span>: <span>unknown</span> <span>// Returns a clone of the state for this entry</span>
+<span>}</span></pre></div>
+<div><h4>Events</h4><a href="#events-1"></a></div>
+<ul>
+<li><strong><pre><code>dispose</code></pre></strong> — Fired when the entry is removed from the history stack (e.g., on replace, or when navigating to a new page after going back).</li>
+</ul>
+<div><h3><pre><code>NavigationType</code></pre></h3><a href="#navigationtype"></a></div>
+<div><pre><span>type</span> <span>NavigationType</span> <span>=</span> <span>'push'</span> <span>|</span> <span>'replace'</span> <span>|</span> <span>'traverse'</span> <span>|</span> <span>'reload'</span></pre></div>
+<ul>
+<li><pre><code>push</code></pre> — <pre><code>history.pushState()</code></pre> was called</li>
+<li><pre><code>replace</code></pre> — <pre><code>history.replaceState()</code></pre> was called</li>
+<li><pre><code>traverse</code></pre> — Browser back/forward navigation (popstate)</li>
+<li><pre><code>reload</code></pre> — Page reload (not currently emitted, included for alignment with native types)</li>
+</ul>
+<div><h3><pre><code>createNavigation(options?)</code></pre></h3><a href="#createnavigationoptions"></a></div>
+<p>Factory function to create a </p><pre><code>Navigation</code></pre> instance.<p></p>
+<div><pre><span>function</span> <span>createNavigation</span><span>(</span> <span>options</span>?: <span>CreateNavigationOptions</span><span>,</span>
+<span>)</span>: <span>Navigation</span> <span>|</span> <span>NativeNavigation</span>
+<span>function</span> <span>createNavigation</span><span>(</span><span>options</span>: <span>{</span> <span>force</span>: <span>true</span> <span>}</span><span>)</span>: <span>Navigation</span></pre></div>
+<p>By default, returns the native </p><pre><code>window.navigation</code></pre> if available, otherwise returns the ponyfill. Use <pre><code>force: true</code></pre> to always get the ponyfill instance.<p></p>
+<div><h4><pre><code>CreateNavigationOptions</code></pre></h4><a href="#createnavigationoptions-1"></a></div>
+<div><pre><span>type</span> <span>CreateNavigationOptions</span> <span>=</span> <span>{</span> <span>force</span>?: <span>boolean</span> <span>history</span>?: <span>History</span> <span>|</span> <span>HistoryShim</span>
+<span>}</span></pre></div>
+<ul>
+<li><strong><pre><code>force</code></pre></strong> — When <pre><code>true</code></pre>, always returns the ponyfill <pre><code>Navigation</code></pre> instance, even if the native Navigation API is available. Default: <pre><code>false</code></pre> (prefers native when available).</li>
+<li><strong><pre><code>history</code></pre></strong> — Custom <pre><code>History</code></pre> object to use. Defaults to <pre><code>window.history</code></pre> in browser environments, or a no-op <pre><code>HistoryShim</code></pre> during SSR.</li>
+</ul>
+<div><h4>Examples</h4><a href="#examples"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>createNavigation</span> <span>}</span> <span>from</span> <span>'navigation-ponyfill/core'</span> <span>// Default: uses native Navigation API if available, otherwise ponyfill</span>
+<span>const</span> <span>navigation</span> <span>=</span> <span>createNavigation</span><span>(</span><span>)</span> <span>// Force ponyfill even when native is available (useful for testing)</span>
+<span>const</span> <span>navigation</span> <span>=</span> <span>createNavigation</span><span>(</span><span>{</span> <span>force</span>: <span>true</span> <span>}</span><span>)</span> <span>// Type narrowing for ponyfill-specific methods</span>
+<span>if</span> <span>(</span><span>'destroy'</span> <span>in</span> <span>navigation</span><span>)</span> <span>{</span> <span>navigation</span><span>.</span><span>destroy</span><span>(</span><span>)</span>
+<span>}</span> <span>// Custom history object (useful for testing)</span>
+<span>const</span> <span>navigation</span> <span>=</span> <span>createNavigation</span><span>(</span><span>{</span> <span>force</span>: <span>true</span><span>,</span> <span>history</span>: <span>customHistory</span> <span>}</span><span>)</span></pre></div>
+<div><h2>Framework Integration</h2><a href="#framework-integration"></a></div>
+<div><h3>Next.js</h3><a href="#nextjs"></a></div>
+<p>See the <a href="/kcrwfrd/navigation-ponyfill/blob/main/examples/next">Next.js example</a> for a complete integration with React context and hooks.</p>
+<div><h2>SSR Support</h2><a href="#ssr-support"></a></div>
+<p>The ponyfill includes a </p><pre><code>HistoryShim</code></pre> that provides a no-op implementation for server-side rendering. When <pre><code>window</code></pre> is not available, <pre><code>createNavigation()</code></pre> automatically uses the shim.<p></p>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<p>The ponyfill monkey-patches <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState"></a></p><pre><a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState"><code>history.pushState</code></a></pre> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState"><pre><code>history.replaceState</code></pre></a>, augmenting the state object with navigation metadata:<p></p>
+<div><pre><span>history</span><span>.</span><span>state</span> <span>=</span> <span>{</span> ...<span>yourState</span><span>,</span> <span>__NAVIGATION_PONYFILL</span>: <span>{</span> <span>entryId</span>: <span>'abc123'</span><span>,</span> <span>entryKey</span>: <span>'def456'</span><span>,</span> <span>}</span><span>,</span>
+<span>}</span></pre></div>
+<p>It uses the </p><pre><code>entryId</code></pre> and <pre><code>entryKey</code></pre> in <pre><code>history.state</code></pre> to look up entries in a stack of <pre><code>NavigationHistoryEntry</code></pre> objects persisted to <pre><code>sessionStorage</code></pre>, allowing <pre><code>entries()</code></pre> and <pre><code>currentEntry</code></pre> to survive page reloads. It also listens for <pre><code>popstate</code></pre> events to track browser back/forward navigation and hash changes.<p></p>
+<p>Because of the use of </p><pre><code>history.state</code></pre> and <pre><code>sessionStorage</code></pre>, the ponyfill even works in multi-page applications (MPAs).<p></p>
+<div><h2>Caveats</h2><a href="#caveats"></a></div>
+<div><h3>Unsupported APIs</h3><a href="#unsupported-apis"></a></div>
+<ul>
+<li><pre><code>NavigationCurrentEntryChangeEvent</code></pre> with <pre><code>navigationType: 'reload'</code></pre> - this is impossible for us to detect.</li>
+<li><pre><code>NavigationHistoryEntry.sameDocument</code></pre> does not work -- we always set it to <pre><code>true</code></pre> to maintain the same type signature with native API. It is impossible for us to determine in the ponyfill if an entry is from the same document (page) or not.</li>
+</ul>
+<div><h3>Multi-Page Applications (MPAs)</h3><a href="#multi-page-applications-mpas"></a></div>
+<ul>
+<li>While the ponyfill works for MPAs, <em>it must be loaded on every page</em>. If it's not, its state might become corrupted. This is untested.</li>
+</ul>
+<div><h3>State in History API calls must be an object or nullish</h3><a href="#state-in-history-api-calls-must-be-an-object-or-nullish"></a></div>
+<p>Normally you can call </p><pre><code>history.pushState(state, '', url)</code></pre> with any serializable value for state (including boolean, string, array, etc.). Because the ponyfill merges your state with its own metadata, the state must be an object or nullish (<pre><code>null</code></pre>/<pre><code>undefined</code></pre>).<p></p>
+<div><h2>Links</h2><a href="#links"></a></div>
+<ul>
+<li><a href="/kcrwfrd/navigation-ponyfill/blob/main/LICENSE">License (MIT)</a></li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

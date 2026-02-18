@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - rush86999/atom: Atom Agent, automate your workflows by talking to an AI — and let it remember, search, and handle tasks like a real assistant</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - rush86999/atom: Atom Agent, automate your workflows by talking to an AI — and let it remember, search, and handle tasks like a real assistant</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 4:08:12 PM | <a href="https://github.com/rush86999/atom" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <pre><code>ATOM Platform
+Open-Source AI Agent Platform for Self-Hosted Automation Developer Note: For technical setup and architecture, see docs/DEVELOPMENT.md. Automate your workflows by talking to an AI — and let it remember, search, and handle tasks like a real assistant.</code></pre>
+<div><h2>What is Atom?</h2><a href="#what-is-atom"></a></div>
+<p>Atom is an <strong>open-source, self-hosted AI agent platform</strong> that combines visual workflow builders with intelligent LLM-based agents.</p>
+<p>Just <strong>speak</strong> or <strong>type</strong> your request, and Atom's specialty agents will plan, verify, and execute complex workflows across your entire tech stack.</p> <blockquote> </blockquote>
+<hr>
+<div><h2>Atom vs OpenClaw: Quick Comparison</h2><a href="#atom-vs-openclaw-quick-comparison"></a></div>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Atom</th>
+<th>OpenClaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Best For</strong></td>
+<td>Business automation, multi-agent workflows</td>
+<td>Personal productivity, messaging workflows</td>
+</tr>
+<tr>
+<td><strong>Agent Model</strong></td>
+<td>Multi-agent system with specialty agents</td>
+<td>Single-agent runtime</td>
+</tr>
+<tr>
+<td><strong>Governance</strong></td>
+<td> 4-tier maturity (Student → Autonomous)</td>
+<td> No maturity levels</td>
+</tr>
+<tr>
+<td><strong>Memory</strong></td>
+<td> Episodic memory with graduation validation</td>
+<td> Persistent Markdown files</td>
+</tr>
+<tr>
+<td><strong>Integrations</strong></td>
+<td>46+ business (CRM, support, dev tools)</td>
+<td>50+ personal (smart home, media, messaging)</td>
+</tr>
+<tr>
+<td><strong>Architecture</strong></td>
+<td>Python + FastAPI + PostgreSQL/SQLite</td>
+<td>Node.js + local filesystem</td>
+</tr>
+<tr>
+<td><strong>Setup</strong></td>
+<td>Docker Compose (~15-30 min)</td>
+<td>Single script (~10-30 min)</td>
+</tr>
+</tbody>
+</table>
+<p><a href="/rush86999/atom/blob/main/docs/ATOM_VS_OPENCLAW.md">Full Comparison →</a></p>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> Install Atom</span>
+pip install atom-os <span><span>#</span> Initialize</span>
+atom init <span><span>#</span> Add your API keys to .env</span>
+<span><span>#</span> OPENAI_API_KEY=sk-...</span> <span><span>#</span> Start Atom</span>
+atom start <span><span>#</span> Open dashboard</span>
+open http://localhost:8000</pre></div>
+<p>That's it! </p>
+<p><strong>Choose your edition:</strong></p>
+<ul>
+<li><strong>Personal Edition</strong> - Free, single-user, SQLite (default)</li>
+<li><strong>Enterprise Edition</strong> - Multi-user, PostgreSQL, monitoring → <pre><code>pip install atom-os[enterprise]</code></pre></li>
+</ul>
+<p><a href="/rush86999/atom/blob/main/docs/INSTALLATION.md">Full Installation Guide →</a></p>
+<hr>
+<div><h2>Key Features</h2><a href="#key-features"></a></div>
+<div><h3> Voice Interface</h3><a href="#-voice-interface"></a></div>
+<ul>
+<li>Build complex workflows using just your voice</li>
+<li>Natural language understanding — no proprietary syntax</li>
+<li>Real-time feedback as Atom visualizes its reasoning</li>
+</ul>
+<div><h3> Specialty Agents</h3><a href="#-specialty-agents"></a></div>
+<ul>
+<li><strong>Sales Agent</strong>: CRM pipelines, lead scoring, outreach</li>
+<li><strong>Marketing Agent</strong>: Campaigns, social posting, analytics</li>
+<li><strong>Engineering Agent</strong>: PR notifications, deployments, incidents</li>
+<li><strong>Governance</strong>: Progress from "Student" to "Autonomous" as they gain trust</li>
+</ul>
+<div><h3> Canvas Presentations &amp; Real-Time Guidance </h3><a href="#-canvas-presentations--real-time-guidance-"></a></div>
+<ul>
+<li>Rich interactive presentations (charts, forms, markdown)</li>
+<li><strong>Live operation visibility</strong>: See exactly what agents are doing</li>
+<li>Multi-view orchestration (browser, terminal, canvas)</li>
+<li>Smart error resolution with actionable suggestions</li>
+<li><a href="/rush86999/atom/blob/main/docs/CANVAS_IMPLEMENTATION_COMPLETE.md">Full Details →</a></li>
+</ul>
+<div><h3> Episodic Memory &amp; Graduation</h3><a href="#-episodic-memory--graduation"></a></div>
+<ul>
+<li><strong>Experience-based learning</strong>: Agents store and retrieve past experiences</li>
+<li><strong>Hybrid storage</strong>: PostgreSQL + LanceDB for performance</li>
+<li><strong>Four retrieval modes</strong>: Temporal, Semantic, Sequential, Contextual</li>
+<li><strong>Graduation validation</strong>: Promote agents only when reliable</li>
+<li><a href="/rush86999/atom/blob/main/docs/EPISODIC_MEMORY_IMPLEMENTATION.md">Full Documentation →</a></li>
+</ul>
+<div><h3> Agent Governance System</h3><a href="#-agent-governance-system"></a></div>
+<ul>
+<li>4-tier maturity-based routing and approval system</li>
+<li>AI-powered training duration estimation</li>
+<li>Every action logged, timestamped, and traceable</li>
+</ul>
+<div><h3> Deep Integrations</h3><a href="#-deep-integrations"></a></div>
+<ul>
+<li><strong>46+ business integrations</strong>: Slack, Gmail, HubSpot, Salesforce</li>
+<li><strong>9 messaging platforms</strong>: Real-time communication</li>
+<li>Use <pre><code>/run</code></pre>, <pre><code>/workflow</code></pre>, <pre><code>/agents</code></pre> from your favorite chat app</li>
+</ul>
+<div><h3> Community Skills </h3><a href="#-community-skills-"></a></div>
+<ul>
+<li><strong>5,000+ OpenClaw/ClawHub skills</strong>: Import community-built tools</li>
+<li><strong>Enterprise security</strong>: LLM-powered scanning with hazard sandbox</li>
+<li><strong>Skills Registry</strong>: Import with status tracking (Untrusted → Active → Banned)</li>
+<li><a href="/rush86999/atom/blob/main/docs/COMMUNITY_SKILLS.md">Community Skills Guide →</a></li>
+</ul>
+<div><h3> Browser &amp; Device Automation</h3><a href="#-browser--device-automation"></a></div>
+<ul>
+<li>Browser automation via CDP (scraping, form filling)</li>
+<li>Device control (camera, location, notifications)</li>
+<li>Maturity-governed for security</li>
+</ul>
+<hr>
+<div><h2>Installation Options</h2><a href="#installation-options"></a></div>
+<div><h3> Docker (5 minutes)</h3><a href="#-docker-5-minutes"></a></div>
+<div><pre>git clone https://github.com/rush86999/atom.git
+<span>cd</span> atom
+cp .env.personal .env
+docker-compose -f docker-compose-personal.yml up -d</pre></div>
+<div><h3> Native (10 minutes)</h3><a href="#-native-10-minutes"></a></div>
+<div><pre>git clone https://github.com/rush86999/atom.git
+<span>cd</span> atom
+<span>cd</span> backend <span>&amp;&amp;</span> python3 -m venv venv <span>&amp;&amp;</span> <span>source</span> venv/bin/activate
+pip install -r requirements.txt
+<span>cd</span> ../frontend-nextjs <span>&amp;&amp;</span> npm install
+cp .env.personal .env
+<span><span>#</span> Start backend: cd backend &amp;&amp; python -m uvicorn main_api_app:app --reload</span>
+<span><span>#</span> Start frontend: cd frontend-nextjs &amp;&amp; npm run dev</span></pre></div>
+<hr>
+<div><h2>Example Use Cases</h2><a href="#example-use-cases"></a></div>
+<table>
+<thead>
+<tr>
+<th><strong>Department</strong></th>
+<th><strong>Scenario</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sales</strong></td>
+<td>New lead in HubSpot → Research → Score → Notify Slack</td>
+</tr>
+<tr>
+<td><strong>Finance</strong></td>
+<td>PDF invoice in Gmail → Extract → Match QuickBooks → Flag discrepancies</td>
+</tr>
+<tr>
+<td><strong>Support</strong></td>
+<td>Zendesk ticket → Analyze sentiment → Route urgent → Draft response</td>
+</tr>
+<tr>
+<td><strong>HR</strong></td>
+<td>New employee in BambooHR → Provision → Invite → Schedule orientation</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Security &amp; Privacy</h2><a href="#security--privacy"></a></div>
+<ul>
+<li><strong>Self-Hosted Only</strong>: Your data never leaves your environment</li>
+<li><strong>BYOK</strong>: Bring your own OpenAI, Anthropic, Gemini, or DeepSeek keys</li>
+<li><strong>Encrypted Storage</strong>: Sensitive data encrypted at-rest</li>
+<li><strong>Audit Logs</strong>: Every agent action logged and traceable</li>
+<li><strong>Human-in-the-Loop</strong>: Configurable approval policies</li>
+</ul>
+<hr>
+<div><h2>Documentation</h2><a href="#documentation"></a></div>
+<div><h3>Core</h3><a href="#core"></a></div> <div><h3>Platform</h3><a href="#platform"></a></div>
+<ul>
+<li><a href="/rush86999/atom/blob/main/docs/DEVELOPMENT.md">Development Guide</a> - Technical setup</li>
+<li><a href="/rush86999/atom/blob/main/docs/INSTALLATION.md">Installation Guide</a> - Complete instructions</li>
+<li><a href="/rush86999/atom/blob/main/docs/ATOM_VS_OPENCLAW.md">Atom vs OpenClaw</a> - Feature comparison</li>
+</ul>
+<div><h3>Advanced</h3><a href="#advanced"></a></div>
+<ul>
+<li><a href="/rush86999/atom/blob/main/docs/CANVAS_IMPLEMENTATION_COMPLETE.md">Canvas Implementation</a> - Canvas details</li>
+<li><a href="/rush86999/atom/blob/main/docs/AGENT_GOVERNANCE.md">Agent Governance</a> - Maturity levels</li>
+<li><a href="/rush86999/atom/blob/main/docs/PERSONAL_EDITION.md">Personal Edition</a> - Local deployment</li>
+<li><a href="/rush86999/atom/blob/main/backend/docs/IM_ADAPTER_SETUP.md">IM Adapter Setup</a> - Messaging integration</li>
+</ul>
+<p><strong><a href="/rush86999/atom/blob/main/docs/INDEX.md">Complete Documentation Index →</a></strong></p>
+<hr>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>We welcome contributions! See <a href="/rush86999/atom/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for guidelines.</p>
+<hr>
+<div><h2>Support</h2><a href="#support"></a></div>
+<ul>
+<li><strong>Documentation</strong>: <a href="/rush86999/atom/blob/main/docs/INDEX.md">docs/INDEX.md</a> - Complete index</li>
+<li><strong>Developer Guide</strong>: <a href="/rush86999/atom/blob/main/docs/DEVELOPMENT.md">docs/DEVELOPMENT.md</a> - Setup</li>
+<li><strong>Implementation History</strong>: <a href="/rush86999/atom/blob/main/docs/IMPLEMENTATION_HISTORY.md">docs/IMPLEMENTATION_HISTORY.md</a> - Recent changes</li>
+<li><strong>Issues</strong>: <a href="https://github.com/rush86999/atom/issues">GitHub Issues</a></li>
+<li><strong>License</strong>: AGPL v3 - <a href="/rush86999/atom/blob/main/LICENSE.md">LICENSE.md</a></li>
+</ul>
+<hr>
+<div>
+<p><strong>Built with</strong> <a href="https://www.activepieces.com/">ActivePieces</a> <strong>|</strong> <a href="https://langchain.com/">LangChain</a> <strong>|</strong> <a href="https://fastapi.tiangolo.com/">FastAPI</a> <strong>|</strong> <a href="https://nextjs.org/">Next.js</a></p>
+<p><strong>Experience the future of self-hosted AI automation.</strong></p>
+<p> Star us on GitHub — it helps!</p>
+</div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
