@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - meetopenbot/openbot: Meet OpenBot. Your own personal AI assistant.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - meetopenbot/openbot: Meet OpenBot. Your own personal AI assistant.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 7:05:44 PM | <a href="https://github.com/meetopenbot/openbot" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p> <img src="/meetopenbot/openbot/raw/main/logo-black.svg" alt="OpenBot Logo"> </p>
+<div><h1>OpenBot: The Extensible, Multi-Agent AI Sidekick.</h1><a href="#openbot-the-extensible-multi-agent-ai-sidekick"></a></div>
+<p> <a href="https://www.npmjs.com/package/openbot"><img src="https://camo.githubusercontent.com/ba32ecaf2e4c537fdff897e680a84950a2a5e11cc2ae42b0c484c23380ae5614/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f6f70656e626f74" alt="npm version"></a> <a href="https://github.com/meetopenbot/openbot/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/2626522e994032ba8be7af51c30cc302b8c9d1dc3bbaadd61b345df7bec47977/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6d6565746f70656e626f742f6f70656e626f74" alt="license"></a> <a href="https://github.com/meetopenbot/openbot/stargazers"><img src="https://camo.githubusercontent.com/8761b18ad90efd6e22dd2e528aa27dfdc7f8b0075032f588607cf269912da00e/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6d6565746f70656e626f742f6f70656e626f743f7374796c653d736f6369616c" alt="github stars"></a> <a href="https://github.com/meetopenbot/openbot/network/members"><img src="https://camo.githubusercontent.com/ec7eeee590ec21544d7d14dca66247a75d60c7018af7c387362b4a6e414f7737/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f666f726b732f6d6565746f70656e626f742f6f70656e626f743f7374796c653d736f6369616c" alt="github forks"></a> <a href="https://www.npmjs.com/package/openbot"><img src="https://camo.githubusercontent.com/711c6696f3b9ca706997f305b8abf5a0c020e4fef8e7e107cb3a6b07bdd38fb4/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f64742f6f70656e626f74" alt="npm downloads"></a>
+</p>
+<p>OpenBot is more than just a chatbot. It's an orchestrator that lives in your terminal and browser, delegating complex tasks to specialized agents. It's designed to be local-first, event-driven, and infinitely extensible.</p>
+<p><a target="_blank" href="/meetopenbot/openbot/blob/main/screen-j-dilla-2.png"><img src="/meetopenbot/openbot/raw/main/screen-j-dilla-2.png" alt="OpenBot Banner"></a></p>
+<div><h2> The "Manager-Agent" Philosophy</h2><a href="#-the-manager-agent-philosophy"></a></div>
+<p>OpenBot follows a <strong>Delegate by Default</strong> pattern.</p>
+<ul>
+<li><strong>The Manager Agent</strong>: Your primary interface. It analyzes your intent, manages long-term memory (via the <pre><code>brain</code></pre> plugin), and orchestrates specialized workers.</li>
+<li><strong>Specialized Agents</strong>: Workers dedicated to specific domains like <pre><code>os</code></pre> (shell &amp; files), <pre><code>browser</code></pre> (web automation), or any custom agent you define.</li>
+<li><strong>Event Bus</strong>: All communication happens asynchronously via events, allowing for complex multi-agent choreography and real-time UI updates.</li>
+</ul>
+<div><h2> Meet the Agents</h2><a href="#-meet-the-agents"></a></div>
+<div><h3> Manager Agent (The Orchestrator)</h3><a href="#-manager-agent-the-orchestrator"></a></div>
+<p>The central "brain" of the OpenBot ecosystem. It analyzes user intent, manages long-term memory (via the </p><pre><code>brain</code></pre> plugin), and coordinates other agents using the <pre><code>delegateTask</code></pre> tool. It provides you with a concise summary of the results once the specialists finish their work.<p></p>
+<div><h3> OS Agent (<pre><code>os</code></pre>)</h3><a href="#-os-agent-os"></a></div>
+<p>Your specialized terminal and file system companion. It has full access to your local machine (within the boundaries you set). It can execute shell commands, create/read/edit files, manage directories, and handle system-level operations like git commands or script execution.</p>
+<div><h3> Browser Agent (<pre><code>browser</code></pre>) <mark>Stagehand</mark></h3><a href="#-browser-agent-browser-stagehand"></a></div> <div><h3> Topic Agent (<pre><code>topic</code></pre>)</h3><a href="#-topic-agent-topic"></a></div>
+<p>A background utility that works silently to keep your workspace organized. It automatically analyzes the first few messages of a new conversation and generates a concise (3-5 word) title for the thread.</p>
+<div><h3> Codex Agent (<pre><code>codex</code></pre>)</h3><a href="#-codex-agent-codex"></a></div>
+<p>A world-class software engineer and coding assistant powered by OpenAI. It helps with high-level architectural decisions, code refactoring, complex logic implementation, and debugging. It has access to the shell and file system to explore and modify your codebase.</p>
+<div><h2> OpenBot Mobile (Coming Soon)</h2><a href="#-openbot-mobile-coming-soon"></a></div>
+<p>We're bringing the power of OpenBot to your pocket! The upcoming mobile app will feature:</p>
+<ul> <li><strong>Real-time Notifications</strong>: Get notified when long-running tasks or agent operations complete.</li>
+<li><strong>Always-on Agents</strong>: Your specialized coding and OS agents, always accessible from anywhere.</li>
+<li><strong>Multi-modal Interaction</strong>: Seamlessly switch between text, voice, and file uploads.</li>
+</ul>
+<div><h2> Roadmap: Planned Agents</h2><a href="#-roadmap-planned-agents"></a></div>
+<p>We are constantly expanding the OpenBot ecosystem with specialized agents:</p>
+<ul>
+<li><strong><pre><code>browser-use</code></pre> Agent</strong>: A high-level web agent leveraging the <pre><code>browser-use</code></pre> library for more autonomous, multi-step web tasks and complex reasoning.</li>
+<li><strong><pre><code>researcher</code></pre> Agent</strong>: An information-gathering specialist that can browse multiple sources, synthesize long-form reports, and cite its findings.</li>
+<li><strong><pre><code>devops</code></pre> Agent</strong>: Focused on CI/CD pipelines, container orchestration (Docker/K8s), and cloud infrastructure management.</li>
+<li><strong><pre><code>data-scientist</code></pre> Agent</strong>: Capable of running local notebooks, performing statistical analysis, and generating visualizations.</li>
+<li><strong><pre><code>social</code></pre> Agent</strong>: Designed to manage social media interactions, schedule posts, and monitor mentions.</li>
+</ul>
+<div><h3> Persistent Brain &amp; Memory</h3><a href="#-persistent-brain--memory"></a></div>
+<p>Unlike most chatbots, OpenBot has a long-term memory. It can:</p>
+<ul>
+<li><strong><pre><code>remember</code></pre></strong>: Store facts, snippets, or preferences for later.</li>
+<li><strong><pre><code>recall</code></pre></strong>: Search its past experiences to provide context for new tasks.</li>
+<li><strong><pre><code>updateIdentity</code></pre></strong>: Maintain its own persona and "soul" in a markdown file.</li>
+<li><strong><pre><code>journal</code></pre></strong>: Keep a daily log of activities and insights.</li>
+</ul>
+<div><h2> Quick Start</h2><a href="#-quick-start"></a></div>
+<p>Get up and running in seconds:</p>
+<div><pre><span><span>#</span> 1. Install OpenBot globally</span>
+npm i -g openbot <span><span>#</span> 2. Start the server</span>
+openbot server <span><span>#</span> 3. Launch the web UI (in a new terminal)</span>
+npx openbot-web</pre></div>
+<p>Once the UI is open, head to the <strong>Settings</strong> tab to configure your AI providers (OpenAI, Anthropic, etc.). No configuration files required.</p>
+<div><h3> Want to browse the web?</h3><a href="#-want-to-browse-the-web"></a></div>
+<p>Add the official browser agent:</p>
+<div><pre>openbot add browser</pre></div>
+<div><h2> Built to be Extended</h2><a href="#-built-to-be-extended"></a></div>
+<p>OpenBot is designed for power users and builders who want to create their own custom AI workflows without the complexity of building from scratch.</p>
+<div><h3>1. YAML Agents (No Coding Required)</h3><a href="#1-yaml-agents-no-coding-required"></a></div>
+<p>Create specialized agents just by writing a simple YAML file in </p><pre><code>~/.openbot/agents/researcher/agent.yaml</code></pre>:<p></p>
+<div><pre><span>name</span>: <span>researcher</span>
+<span>description</span>: <span>A specialized agent for gathering information and summarizing articles.</span>
+<span>model</span>: <span>anthropic/claude-3-5-sonnet-20240620</span>
+<span>plugins</span>: - <span>name</span>: <span>browser</span> - <span>name</span>: <span>file-system</span> <span>config</span>: <span>baseDir</span>: <span>~/Documents/Research</span>
+<span>systemPrompt</span>: <span>|</span>
+<span> You are an expert researcher. </span>
+<span> Use the browser to gather information and the file-system to save detailed reports.</span>
+<span> Always cite your sources and provide a high-level summary.</span></pre></div>
+<div><h3>2. TS Agent Packages (Advanced)</h3><a href="#2-ts-agent-packages-advanced"></a></div>
+<p>For more complex agents that require custom logic beyond a prompt, you can create a full TypeScript package in </p><pre><code>~/.openbot/agents/my-agent/</code></pre>:<p></p>
+<div><pre><span>// ~/.openbot/agents/my-agent/index.ts</span>
+<span>export</span> <span>const</span> <span>agent</span> <span>=</span> <span>{</span> <span>name</span>: <span>"custom-agent"</span><span>,</span> <span>description</span>: <span>"An agent with custom TS logic"</span><span>,</span> <span>factory</span>: <span>(</span><span>{</span> model <span>}</span><span>)</span> <span>=&gt;</span> <span>(</span><span>builder</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>// Compose plugins and add custom event handlers</span> <span>builder</span><span>.</span><span>use</span><span>(</span><span>llmPlugin</span><span>(</span><span>{</span> model<span>,</span> <span>system</span>: <span>"You are a specialized assistant..."</span><span>,</span> <span>// ...</span> <span>}</span><span>)</span><span>)</span><span>;</span> <span>}</span>
+<span>}</span><span>;</span></pre></div>
+<div><h3>3. Custom Plugins</h3><a href="#3-custom-plugins"></a></div>
+<p>For those who want even more control, you can extend the AI's toolbox with custom logic. A plugin defines new tools and reacts to system events.</p>
+<div><pre><span>export</span> <span>const</span> <span>myPlugin</span> <span>=</span> <span>(</span><span>)</span> <span>=&gt;</span> <span>(</span><span>builder</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>builder</span><span>.</span><span>on</span><span>(</span><span>"action:myTool"</span><span>,</span> <span>async</span> <span>function</span><span>*</span> <span>(</span><span>event</span><span>,</span> <span>{</span> state <span>}</span><span>)</span> <span>{</span> <span>// Perform custom logic or interact with other systems</span> <span>yield</span> <span>{</span> <span>type</span>: <span>"action:taskResult"</span><span>,</span> <span>data</span>: <span>{</span> <span>result</span>: <span>"Done!"</span> <span>}</span> <span>}</span><span>;</span> <span>}</span><span>)</span><span>;</span>
+<span>}</span><span>;</span></pre></div>
+<div><h3>Direct Command Routing</h3><a href="#direct-command-routing"></a></div>
+<p>Skip the manager's reasoning and talk directly to an agent using prefixes:</p>
+<ul>
+<li><pre><code>/os list files in current directory</code></pre></li>
+<li><pre><code>/browser search for local weather</code></pre></li>
+</ul>
+<div><h2> Core Architecture</h2><a href="#-core-architecture"></a></div>
+<ul>
+<li><strong><pre><code>Manager</code></pre></strong>: Central brain, handles <pre><code>/remember</code></pre> and <pre><code>/recall</code></pre>.</li>
+<li><strong><pre><code>Plugin Registry</code></pre></strong>: Centralized tool discovery.</li>
+<li><strong><pre><code>Agent Registry</code></pre></strong>: Dynamic loading of built-in and user-defined agents.</li>
+<li><strong><pre><code>SDUI (Server-Driven UI)</code></pre></strong>: Plugins can emit UI components (cards, logs, status updates) that render directly in the web dashboard.</li>
+</ul>
+<div><h2> Project Structure</h2><a href="#-project-structure"></a></div>
+<ul>
+<li><pre><code>/server</code></pre>: Core assistant logic and API server.</li>
+<li><pre><code>/web</code></pre>: Interactive dashboard for your bots.</li>
+<li><pre><code>/docs</code></pre>: Detailed guides on <a href="/meetopenbot/openbot/blob/main/docs/architecture.md">Architecture</a>, <a href="/meetopenbot/openbot/blob/main/docs/plugins.md">Plugins</a>, and <a href="/meetopenbot/openbot/blob/main/docs/agents.md">Agents</a>.</li>
+</ul>
+<div><h2> Contributing</h2><a href="#-contributing"></a></div>
+<p>We love contributors! Whether it's adding a new plugin, a specialized agent, or improving the core orchestrator, check out our <a href="/meetopenbot/openbot/blob/main/CONTRIBUTING.md">Contribution Guide</a>.</p>
+<hr>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

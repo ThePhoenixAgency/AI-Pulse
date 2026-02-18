@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI platforms can be abused for stealthy malware communication</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>AI platforms can be abused for stealthy malware communication</h1>
+  <div class="metadata">
+    Source: BleepingComputer Windows | Date: 2/18/2026 8:18:24 PM | <a href="https://www.bleepingcomputer.com/news/security/ai-platforms-can-be-abused-for-stealthy-malware-communication/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><img alt="AI platforms can be abused for stealthy malware communication" src="https://www.bleepstatic.com/content/hl-images/2024/03/05/hand.jpg"></p> <p>AI assistants like Grok and Microsoft Copilot with web browsing and URL-fetching capabilities can be abused to intermediate command-and-control (C2) activity.</p> <p>Researchers at cybersecurity company Check Point discovered that threat actors can use AI services&nbsp;to relay communication between the C2 server and the target machine.</p> <p>Attackers can exploit this mechanism to deliver commands and retrieve stolen data from victim systems.</p> <p><a href="https://www.wiz.io/lp/ai-security-board-report-template?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_AI-Security-Board-Report-Template&amp;sfcid=701Vh00000Wn7E1IAJ&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=AI-Board-Report" target="_blank"><img src="https://www.bleepstatic.com/c/w/ai-security-board-report-template.jpg" alt="Wiz"></a>
+</p> <p>The researchers created a proof-of-concept to show how it all works and&nbsp;disclosed their findings to Microsoft and xAI.</p> <h3>AI as a stealthy relay</h3> <p>Instead of malware connecting directly to a C2 server hosted on the attacker's infrastructure, Check Point’s idea was to have it communicate with an AI web interface, instructing the agent to fetch an attacker-controlled URL and receive the response in the AI’s output.</p> <p>In Check Point's scenario, the malware interacts with the AI service using the WebView2 component in Windows 11. The researchers say that even if the component is missing on the target system, the threat actor can deliver it embedded in the malware.</p> <p>WebView2 is used by developers to show web content in the interface of&nbsp;native desktop applications, thus eliminating the need of a&nbsp;full-featured browser.</p> <p>The researchers created "a C++ program that opens a WebView pointing to either Grok or Copilot." This way, the attacker can submit to the assistant instructions that can include commands to be executed or extract information from the compromised machine.</p> <div>
+<figure><img alt="Interaction flow" src="https://www.bleepstatic.com/images/news/u/1220909/2026/February/flow.jpg"><figcaption><strong>Malware to AI agent interaction flow</strong><br><em>Source: Check Point</em></figcaption></figure></div> <p>The webpage responds with embedded instructions that the attacker can change at will, which the AI extracts or summarizes in response to the malware’s query.</p> <p>The malware parses the AI assistant's response in the chat and extracts the instructions.</p> <div>
+<figure><img alt="Grok and Copilot summarize the C2's encrypted data response" src="https://www.bleepstatic.com/images/news/u/1220909/2026/February/command.jpg"><figcaption><strong>Grok and Copilot summarize the C2's encrypted data response</strong><br><em>Source: Check Point</em></figcaption></figure></div> <p>This creates a bidirectional communication channel via the AI service, which is trusted by internet security tools and can thus help carry out data exchanges without being flagged or blocked.</p> <p>Check Point’s PoC, tested on Grok and Microsoft Copilot, does not require an account or API keys for the AI&nbsp;services, making traceability and primary infrastructure blocks less of a problem.</p> <p>“The usual downside for attackers [abusing legitimate services for C2] is how easily these channels can be shut down: block the account, revoke the API key, suspend the tenant,” <a href="https://research.checkpoint.com/2026/ai-in-the-middle-turning-web-based-ai-services-into-c2-proxies-the-future-of-ai-driven-attacks/" target="_blank">explains Check Point</a>.</p> <p>“Directly interacting with an AI agent through a web page changes this. There is no API key to revoke, and if anonymous usage is allowed, there may not even be an account to block.”</p> <p>The researchers explain that safeguards exist to block obviously malicious exchanges on the said AI platforms, but these safety checks can be easily bypassed by encrypting the data into high-entropy blobs.</p> <p>CheckPoint argues that AI as a C2 proxy is just one of multiple options for abusing AI services, which could include operational reasoning such as assessing if the target system is worth exploiting and how to proceed without raising alarms.</p> <p>BleepingComputer has contacted Microsoft to ask whether Copilot is still exploitable in the way&nbsp;demonstrated by Check Point and the safeguards that could prevent such attacks. A reply was not immediately available, but we will update the article&nbsp;when we receive one.</p> <div> <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank"> <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg"></a> </p> <div> <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p> </div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

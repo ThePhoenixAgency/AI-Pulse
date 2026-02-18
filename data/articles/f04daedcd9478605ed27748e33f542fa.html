@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>django-silky: A Modern Fork of django-silk with Dark Mode, D3 Charts, and N+1 Detection</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>django-silky: A Modern Fork of django-silk with Dark Mode, D3 Charts, and N+1 Detection</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 7:22:13 PM | <a href="https://dev.to/vaishnavghenge/django-silky-a-modern-fork-of-django-silk-with-dark-mode-d3-charts-and-n1-detection-k5a" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjrva11wj2z0yzz7fj0a8.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjrva11wj2z0yzz7fj0a8.png" alt="Cover image for django-silky: A Modern Fork of django-silk with Dark Mode, D3 Charts, and N+1 Detection"> </a> <div> <p><a href="https://dev.to/vaishnavghenge"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F968410%2F03f95ab2-f9b0-4213-bba3-92108b85e76a.jpeg" alt="Vaishnav Ghenge"></a> </p> </div> </div><div> <p>If you've ever profiled a Django app, you've probably used <a href="https://github.com/jazzband/django-silk" target="_blank">django-silk</a>. It's invaluable — every HTTP request recorded, every SQL query captured with timing and a stack trace, and<br>
+code profiling with decorators or cProfile.</p> <p>The problem? The UI hasn't changed meaningfully in years. It's functional, but it's dated.</p> <p>I spent the last few days forking it into <strong>django-silky</strong> — same full feature set, completely redesigned interface.</p> <hr>
+<h2> <a name="what-changed" href="#what-changed"> </a> What changed
+</h2>
+<h3> <a name="light-dark-theme" href="#light-dark-theme"> </a> Light / dark theme
+</h3> <p>The original has a fixed dark nav bar with a light body — not a real theme, just inconsistent styling. django-silky uses CSS custom properties throughout so the entire UI toggles cleanly between light and dark, persisted in<br>
+<code>localStorage</code>.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Feyr7db22xjqilifqri2e.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Feyr7db22xjqilifqri2e.png" alt="Summary dashboard in dark mode"></a></p>
+<h3> <a name="d3-analytics-dashboard" href="#d3-analytics-dashboard"> </a> D3 analytics dashboard
+</h3> <p>The summary page now has a full analytics section built with self-hosted D3.js v7 (no CDN):</p> <ul>
+<li>
+<strong>Request activity</strong> — area chart over time (hourly or daily buckets depending on range)</li>
+<li>
+<strong>Status code breakdown</strong> — donut chart (2xx / 3xx / 4xx / 5xx)</li>
+<li>
+<strong>HTTP method distribution</strong> — horizontal lollipop chart</li>
+<li>
+<strong>Response time histogram</strong> — 6 fixed buckets with gradient fill</li>
+<li>
+<strong>Latency percentiles</strong> — gradient area chart annotated at p25, p50, p75, p95, p99 for both request time and SQL query time</li>
+</ul> <p>All charts re-render when you toggle the theme, and they read colours from CSS custom properties so they always match the active theme.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjh390wmvz2d4hpzb14i2.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjh390wmvz2d4hpzb14i2.png" alt="Analytics charts"></a></p>
+<h3> <a name="n1-query-detection" href="#n1-query-detection"> </a> N+1 query detection
+</h3> <p>This was my favourite thing to build. Silk already captures every SQL query per request, so it has all the data needed to detect N+1 patterns automatically.</p> <p>The algorithm:</p> <ol>
+<li>For each query in a request, compute a <strong>fingerprint</strong> — strip single-quoted string literals → <code>?</code>, strip numeric literals → <code>?</code>, normalize whitespace, lowercase</li>
+<li>Group queries by fingerprint</li>
+<li>Flag any group with <strong>≥ 3 occurrences</strong>
+</li>
+</ol> <p>When N+1 is detected you get:</p> <ul>
+<li>A <strong>warning pill</strong> in the request hero bar linking to the SQL list</li>
+<li>A <strong>banner</strong> on the SQL list page showing the repeated pattern count and the actual query text</li>
+<li>
+<strong>Highlighted rows</strong> in the SQL table for every flagged query</li>
+</ul> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fe69yf38vfxjyd4azk4zq.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fe69yf38vfxjyd4azk4zq.png" alt="N+1 badge in hero bar"></a></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F3u52z96q15h8r8ehxtza.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F3u52z96q15h8r8ehxtza.png" alt="N+1 banner with real SQL"></a></p> <p>The key implementation detail: only strip <strong>single-quoted</strong> string literals (values). Double-quoted identifiers like <code>"table"."column"</code> are kept intact so the fingerprint remains human-readable.</p>
+<h3> <a name="requests-list" href="#requests-list"> </a> Requests list
+</h3> <p>The requests list now uses:</p> <ul>
+<li>A <strong>table layout</strong> instead of a card grid — much easier to scan 25+ requests</li>
+<li>
+<strong>Inline collapsible filter bar</strong> replacing the old 300 px slide-out drawer</li>
+<li>
+<strong>Multi-column sort chips</strong> — click to add/remove/toggle sort columns, persisted in session</li>
+<li>Real <strong>Django Paginator</strong> with prev/next/page numbers instead of a raw <code>LIMIT N</code> slice</li>
+<li>Sort + per-page <strong>encoded in the URL</strong> so you can share a specific filtered view</li>
+</ul> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcdu2t60a70lkj9cvxv2w.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcdu2t60a70lkj9cvxv2w.png" alt="Requests list"></a></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fn6cu30o1jzt57vbshmf0.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fn6cu30o1jzt57vbshmf0.png" alt="Requests list with filter bar"></a></p>
+<h3> <a name="detail-pages" href="#detail-pages"> </a> Detail pages
+</h3> <p>Every detail page (request, SQL, profile) now has a <strong>hero bar</strong> at the top with:</p> <ul>
+<li>Method badge (colour-coded: GET green, POST blue, PUT amber, DELETE red)</li>
+<li>Status code badge (2xx green, 3xx blue, 4xx amber, 5xx red)</li>
+<li>Timestamp</li>
+<li>Timing pills: total time, DB time, query count</li>
+</ul> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0iutz20r6ly8vbmfsd4r.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0iutz20r6ly8vbmfsd4r.png" alt="Request detail"></a></p>
+<h3> <a name="icons" href="#icons"> </a> Icons
+</h3> <p>Replaced Font Awesome loaded from a CDN with <a href="https://lucide.dev/" target="_blank">Lucide</a> icons, self-hosted at <code>silk/static/silk/lib/lucide.min.js</code>. Zero external network requests from the UI.</p> <hr>
+<h2> <a name="installation" href="#installation"> </a> Installation
+</h2> <div>
+<pre><code>pip <span>install </span>django-silky
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>It's a <strong>drop-in replacement</strong> for django-silk — same <code>silk</code> app label, same database schema (migrations 0001–0008), no <code>manage.py migrate</code> needed.<br>
+</p> <div>
+<pre><code>pip uninstall django-silk
+pip <span>install </span>django-silky
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="settingspy" href="#settingspy"> </a> settings.py
+</h3> <div>
+<pre><code><span>MIDDLEWARE</span> <span>=</span> <span>[</span> <span>...</span> <span>'</span><span>silk.middleware.SilkyMiddleware</span><span>'</span><span>,</span> <span>...</span>
+<span>]</span> <span>INSTALLED_APPS</span> <span>=</span> <span>[</span> <span>...</span> <span>'</span><span>silk</span><span>'</span><span>,</span>
+<span>]</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="urlspy" href="#urlspy"> </a> urls.py
+</h3> <div>
+<pre><code><span>urlpatterns</span> <span>+=</span> <span>[</span> <span>path</span><span>(</span><span>'</span><span>silk/</span><span>'</span><span>,</span> <span>include</span><span>(</span><span>'</span><span>silk.urls</span><span>'</span><span>,</span> <span>namespace</span><span>=</span><span>'</span><span>silk</span><span>'</span><span>)),</span>
+<span>]</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Visit <code>/silk/</code> and you're in.</p> <hr> <h2> <a name="sql-inspection" href="#sql-inspection"> </a> SQL inspection
+</h2> <p>Every SQL query is captured with:</p> <ul>
+<li>Execution time (colour-coded: green &lt; 100 ms, amber 100–500 ms, red &gt; 500 ms)</li>
+<li>Tables involved</li>
+<li>Number of joins</li>
+<li>Full Python stack trace so you know exactly where the query was triggered</li>
+<li>EXPLAIN plan (when <code>SILKY_ANALYZE_QUERIES = True</code>)</li>
+</ul> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fid9jbpykz9697zksu6sm.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fid9jbpykz9697zksu6sm.png" alt="SQL list"></a></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5gjue3j0d3rbiwidq8cs.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5gjue3j0d3rbiwidq8cs.png" alt="SQL detail with EXPLAIN plan"></a></p> <hr> <h2> <a name="configuration-highlights" href="#configuration-highlights"> </a> Configuration highlights
+</h2> <div>
+<pre><code><span># Authentication
+</span><span>SILKY_AUTHENTICATION</span> <span>=</span> <span>True</span>
+<span>SILKY_AUTHORISATION</span> <span>=</span> <span>True</span> <span># is_staff required
+</span>
+<span># Sampling on high-traffic sites
+</span><span>SILKY_INTERCEPT_PERCENT</span> <span>=</span> <span>50</span> <span># record only 50% of requests
+</span>
+<span># Query analysis
+</span><span>SILKY_ANALYZE_QUERIES</span> <span>=</span> <span>True</span> <span># Garbage collection
+</span><span>SILKY_MAX_RECORDED_REQUESTS</span> <span>=</span> <span>10_000</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="code-profiling" href="#code-profiling"> </a> Code profiling
+</h2> <p>The decorator and context manager APIs are unchanged from django-silk:<br>
+</p> <div>
+<pre><code><span>from</span> <span>silk.profiling.profiler</span> <span>import</span> <span>silk_profile</span> <span>@silk_profile</span><span>(</span><span>name</span><span>=</span><span>'</span><span>Get farm visits</span><span>'</span><span>)</span>
+<span>def</span> <span>get_visits</span><span>(</span><span>request</span><span>):</span> <span>return</span> <span>Visit</span><span>.</span><span>objects</span><span>.</span><span>select_related</span><span>(</span><span>'</span><span>farmer</span><span>'</span><span>).</span><span>all</span><span>()</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>cProfile integration with call-graph rendering is also still there:<br>
+</p> <div>
+<pre><code><span>SILKY_PYTHON_PROFILER</span> <span>=</span> <span>True</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="links" href="#links"> </a> Links
+</h2> <ul>
+<li>
+<strong>PyPI</strong>: <a href="https://pypi.org/project/django-silky/" target="_blank">https://pypi.org/project/django-silky/</a>
+</li>
+<li>
+<strong>GitHub</strong>: <a href="https://github.com/VaishnavGhenge/django-silky" target="_blank">https://github.com/VaishnavGhenge/django-silky</a>
+</li>
+<li>
+<strong>Migrating from django-silk</strong>: <a href="https://github.com/VaishnavGhenge/django-silky/blob/master/MIGRATING.md" target="_blank">MIGRATING.md</a>
+</li>
+</ul> <p>Feedback, issues, and PRs are very welcome. If you hit an N+1 problem in your app that Silk surfaces, I'd love to hear about it!</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

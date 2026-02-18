@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CGK — Provably Non-Overcommitting Distributed Capacity Layer</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>CGK — Provably Non-Overcommitting Distributed Capacity Layer</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 6:58:48 PM | <a href="https://distributed-markets-overcommit.github.io/Distributed-markets-overcommit/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <div> <div> <p>Step 1 / 5 — Context</p> <p>Distributed markets overcommit under partition.</p> <p> Every known failure in distributed capacity markets traces to the same root: <strong>state diverges during partition, then reconciles additively.</strong> The system trusts local views. The system lies. </p> <div> <div> <p></p> <div> <p>FTX — Balance Sheet Illusion</p> <p>Customer deposits treated as liquid capacity. Merge semantics were additive. $8B overcommit, invisible until partition (withdrawal) exposed it.</p> </div> </div> <div> <p></p> <div> <p>Celsius Network — Liquidity Mismatch</p> <p>Committed yields from future yield. Two claims on the same capacity. No conservation invariant. Converged to bankruptcy.</p> </div> </div> <div> <p></p> <div> <p>AWS Regional Outages — Cascading Dependency</p> <p>Capacity reservation graph had no monotone merge. Reconnect events triggered thundering herd. Safety was policy, not structure.</p> </div> </div> </div> <div> <p>The invariant we enforce</p> <div><p> ∀t, ∀network conditions:<br> Σ allocation ≤ CAP</p><p> Not by policy.<br> By construction. </p></div> </div> </div> <div> <p>Step 2 / 5 — Normal Operation</p> <p>Contractive by design. Stable without coordination.</p> <p> Start the simulation. Three shards accept excitation. Watch energy decay between injections. The system finds its equilibrium without any central arbiter. </p> <div> <div><p>1</p><p> Click <strong>Start</strong> to begin simulation</p></div> <div><p>2</p><p> Watch Energy E(t) graph decay toward zero</p></div> <div><p>3</p><p> Note: contraction constant c &lt; 1 always</p></div> </div> <div> <p>This is contractive, so it stabilizes.</p> </div> <div> <p>Why it stabilizes</p> <p> Weight normalization: <em>w = raw / (Σraw + δ)</em><br> ε = δ / (Σraw + δ) &gt; 0 by construction<br> c = 1 − ε &lt; 1 → Banach fixed point<br> → Unique equilibrium in O(log 1/ε) steps </p> </div> </div> <div> <p>Step 3 / 5 — Stress Test</p> <p>Push it to the cap. It cannot cross.</p> <p> Raise injection rate to maximum. Watch partial injections trigger as the system approaches 100. Notice the hard rejection messages in the event log. </p> <div> <div><p>1</p><p> Drag <strong>Injection Rate</strong> slider to max (20)</p></div> <div><p>2</p><p> Watch total allocation approach 100</p></div> <div><p>3</p><p> Log shows: <em>"Injection rejected: at capacity"</em></p></div> </div> <div> <p>It cannot exceed 100. The cap is structural.</p> </div> <div> <p>Conservation check</p> <p> if (total + amount &gt; CAP):<br> amount = max(0, CAP - total)<br> // not policy — enforced at inject()<br> // before tokens are consumed </p> </div> </div> <div> <p>Step 4 / 5 — Partition Attack</p> <p>In isolation, it can lie to itself.</p> <p> Partition Shard C. Then inject adversarially — maximum pressure into the isolated node. Watch it inflate locally. This is the attack scenario. The question is what happens at reconnect. </p> <div> <div><p>1</p><p> Click <strong>Partition C</strong></p></div> <div><p>2</p><p> Click <strong>Adversarial Inject</strong> several times</p></div> <div><p>3</p><p> Watch C's allocation inflate toward local cap</p></div> <div><p>4</p><p> Note: A+B remain bounded globally</p></div> </div> <div> <p>In isolation, it can lie to itself.</p> </div> <div> <p>Local cap during partition</p> <p> localCap = CAP / numShards<br> // C can reach 33.3, not 100<br> // Merge cannot double-count<br> // because join ≠ sum </p> </div> </div> <div> <p>Step 5 / 5 — Convergence</p> <p>Reconciliation without double-spend.</p> <p> Reconnect C. The merge fires. Energy spikes briefly — then contracts. The total allocation stays below 100. Invariants remain green. This is the moment. </p> <div> <div><p>1</p><p> Click <strong>Reconnect + Merge</strong></p></div> <div><p>2</p><p> Watch energy chart — spike then decay</p></div> <div><p>3</p><p> Total allocation stays ≤ 100</p></div> <div><p>4</p><p> All invariants remain satisfied</p></div> </div> <div> <p>Provably Non-Overcommitting<br>Distributed Capacity Layer</p> <p>Production-grade substrate for any market with hard capacity bounds</p> <div> <p>Cloud Compute Clearing</p> <p>AI Inference Markets</p> <p>Microgrid Balancing</p> </div> </div> <div><p> In most distributed markets,<br>safety is a policy.</p><p> <span>Here, safety is an invariant.</span></p></div> </div> </div> <div> <div> <div> <p>Total Allocation / CAP</p> <p>0.00</p> <p>/ 100.00 — <span>0%</span></p> </div> <div> <p>Contraction Constant c</p> <p>—</p> <p>must remain &lt; 1.000</p> </div> <div> <p>Merge Operations</p> <p>0</p> <p>lattice join ⊔ — no additive merge</p> </div> </div> <div> <div> <p>0.00</p> <p>/ 100</p> </div> <div> <p>0.00</p> <p>/ 100</p> </div> <div> <p>PARTITIONED</p> <div> <p>0.00</p> <p>/ 100</p> </div> </div> </div> <div> <p><span>Sim</span> </p> <div> <p><span>Injection Rate</span></p><p> <span>5</span> </p> </div> <div> <p><span>Decay δ</span></p><p> <span>0.05</span> </p> </div> <p><span>Partition</span> </p> <p><span>Adversarial</span> </p> </div> <div> <div> <p>✓</p> <div> <p>Conservation</p> <p>0.00 ≤ 100.00</p> </div> </div> <div> <p>✓</p> <div> <p>Merge Semantics</p> <p>Join ⊔ compliant</p> </div> </div> <div> <p>✓</p> <div> <p>Excitation Budget</p> <p>300 / 300 tokens</p> </div> </div> <div> <p>✓</p> <div> <p>Contractivity</p> <p>c &lt; 1.000</p> </div> </div> </div> <div> <p><span>00:00</span> <span>init</span> <span>System initialized — CAP=100, ε_min=0.05</span> </p> </div> </div>
+</div><p><span>tick: 0</span> <span>Banach fixed-point · Tarski lattice · CRDT merge · Token-gated injection</span> <span>steps to ε: —</span>
+</p></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

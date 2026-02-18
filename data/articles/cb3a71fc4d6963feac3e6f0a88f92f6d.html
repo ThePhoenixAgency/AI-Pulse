@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Serverless Functions for the Rest of Us</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Serverless Functions for the Rest of Us</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 7:00:49 PM | <a href="https://otherfunc.com/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div> <h2>What is OtherFunc?</h2> <p> OtherFunc is a serverless computing platform for esoteric and unusual programming languages. Write functions in Brainfuck, Forth, APL, Lisp, and BASIC, and deploy them as HTTP endpoints. </p> <p> <i>Run serverless functions in languages the cloud forgot about.</i> </p> <h3>What can it do?</h3> <p> Just about anything (at varying levels of efficiency). OtherFunc is perfect for running small snippets of code in supported languages without needing to set up your own infrastructure. Use it for fun, learning, or even production workloads if you're feeling adventurous. </p> <p> Write an <a href="https://otherfunc.com/showcase.html#ai-chat">AI Chatbot in BASIC</a> or make <a href="https://otherfunc.com/showcase.html#http-fetch">HTTP requests in Brainfuck</a>. </p> <h3>Supported Languages</h3> <p><span>Brainfuck</span> <span>Forth</span> <span>APL</span> <span>Lisp</span> <span>BASIC</span> </p> <p>Language implementation details available in the <a href="https://otherfunc.com/ref/">Reference</a> section.</p> <h3>Feature Comparison</h3> <table> <tbody><tr> <th>Feature</th> <th>Brainfuck</th> <th>Forth</th> <th>APL</th> <th>Lisp</th> <th>BASIC</th> </tr> <tr> <td>Output</td> <td><code>.</code> (byte)</td> <td><code>.</code> <code>emit</code> <code>cr</code> <code>type</code></td> <td><code>⎕←</code></td> <td><code>display</code> <code>newline</code> <code>print</code></td> <td><code>PRINT</code></td> </tr> <tr> <td>Input</td> <td><code>,</code> (byte)</td> <td><code>key</code></td> <td><code>⎕</code></td> <td>—</td> <td><code>INPUT</code></td> </tr> <tr> <td>HTTP GET</td> <td>memory-mapped I/O</td> <td><code>http-get</code></td> <td>—</td> <td><code>(http-get url)</code></td> <td><code>HTTPGET$(url)</code></td> </tr> <tr> <td>HTTP POST</td> <td>memory-mapped I/O</td> <td><code>http-post</code></td> <td>—</td> <td><code>(http-post url body)</code></td> <td><code>HTTPPOST$(url, body)</code></td> </tr> <tr> <td>Secrets / Env</td> <td>memory-mapped I/O</td> <td><code>env</code></td> <td>—</td> <td><code>(env "KEY")</code></td> <td><code>ENV$("KEY")</code></td> </tr> <tr> <td>KV Storage</td> <td>memory-mapped I/O</td> <td><code>kv-get</code> <code>kv-set</code> <code>kv-del</code></td> <td>—</td> <td><code>(kv-get key)</code></td> <td><code>KVGET$</code> <code>KVSET</code> <code>KVDEL</code></td> </tr> </tbody></table> <p>Feature parity across languages coming in future updates.</p> <h3>Features</h3> <ul> <li><strong>WASM Sandboxing</strong> — Every interpreter runs as compiled WebAssembly in an isolated sandbox.</li> <li><strong>Instruction Limits</strong> — Execution is capped at 500K instructions so non-halting programs are stopped automatically and return an error.</li> <li><strong>Simple HTTP API</strong> — Execute code ad-hoc or save functions with slugs and invoke them by name. Input via JSON body, output via JSON response.</li> <li><strong>Function Versioning</strong> — Every update creates a new version. The last 3 versions are retained. Roll back to any retained version with a single API call.</li> <li><strong>Public Endpoints</strong> — Publish a function and anyone can invoke it at <code>/fn/your-slug</code> without authentication. Publishing is available on request — email <a href="https://otherfunc.com/cdn-cgi/l/email-protection#7c14191010133c130814190e1a09121f521f1311"><span>[email&nbsp;protected]</span></a>.</li> <li><strong>Persistent KV Storage</strong> — Saved functions can store and retrieve data across invocations with per-function key-value storage. Available in Forth, Lisp, and BASIC.</li> <li><strong>API Key Auth</strong> — Manage your functions with <code>Authorization: Bearer &lt;api-key&gt;</code>.</li> </ul> <h3>Limits</h3> <table> <tbody><tr><th>Tier</th><th>Requests / Day</th><th>How to get it</th></tr> <tr><td>Anonymous</td><td>100</td><td>No sign-up needed — call <code>/fn/:slug</code></td></tr> <tr><td>Free account</td><td>1,000</td><td><a href="#auth">Sign in with GitHub</a></td></tr> <tr><td>Publishing</td><td colspan="2">Available on request — email <a href="https://otherfunc.com/cdn-cgi/l/email-protection#c0a8a5acacaf80afb4a8a5b2a6b5aea3eea3afad"><span>[email&nbsp;protected]</span></a></td></tr> </tbody></table> <p> Every execution is capped at <strong>500K instructions</strong> and <strong>100KB</strong> of source code. Non-halting programs are stopped automatically. </p> <p> Check your current usage with <code>GET /api/usage</code> — see the <a href="https://otherfunc.com/ref/api.html">API Reference</a> for details. </p> <h2>Quick Start</h2> <h3>Via the API</h3> <p> The fastest way to try OtherFunc is with <code>curl</code>. You'll need an <a href="#auth">API Key</a> for authenticated endpoints. See <a href="https://otherfunc.com/ref/api.html">Reference</a> for details on the API and language support. </p>
+<pre># Check that the API is running
+curl https://api.otherfunc.com/ # See available languages
+curl https://api.otherfunc.com/api/languages # Run some code (requires API key)
+curl -X POST https://api.otherfunc.com/api/run \ -H "Authorization: Bearer YOUR_API_KEY" \ -H "Content-Type: application/json" \ -d '{"language":"forth","code":": square dup * ; 7 square .","input":""}'</pre> <h3>Local CLI Tools</h3> <p> Each interpreter is also available as a standalone command-line tool. Clone the <a href="https://github.com/otherfunc">repo</a> and build with Cargo: </p>
+<pre># Build all interpreters
+git clone https://github.com/otherfunc/otherfunc-projects.git
+cd otherfunc-projects
+cargo build --release # Brainfuck
+cargo run --bin bf -- "++++++++[&gt;++++[&gt;++&gt;+++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]&gt;+&gt;+&gt;-&gt;&gt;+[&lt;]&lt;-]&gt;&gt;.&gt;---.+++++++..+++." # Forth
+cargo run --bin forth -- ": fib dup 2 &lt; if exit then dup 1 - recurse swap 2 - recurse + ; 10 fib ." # APL
+cargo run --bin apl -- "+/iota 100" # Lisp
+cargo run --bin lisp -- "(define (fact n) (if (&lt;= n 1) 1 (* n (fact (- n 1))))) (display (fact 10))" # BASIC
+cargo run --bin basic -- "10 FOR I = 1 TO 5
+20 PRINT I * I
+30 NEXT I"</pre> <h2>Get your API Key</h2> <p> Sign in with your GitHub account to get an API key instantly. If you've signed in before, you'll get the same key back. </p> <h2>Support</h2> <p> Want to support our transformative mission to bring more unusual languages to the cloud? </p> <ul> <li>Share OtherFunc with your friends!</li> <li>Provide feedback and suggestions for improvements you want to see</li> </ul> <p> Questions, feedback, or just want to say hello? </p> <ul> <li>General inquiries: <a href="https://otherfunc.com/cdn-cgi/l/email-protection#422a272e2e2d022d362a273024372c216c212d2f"><span>[email&nbsp;protected]</span></a></li> <li>Open source code: <a href="https://github.com/otherfunc">github.com/otherfunc</a></li> </ul> </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

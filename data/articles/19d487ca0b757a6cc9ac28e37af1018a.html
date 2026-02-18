@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - SierraDevsec/mimir</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - SierraDevsec/mimir</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 7:03:07 PM | <a href="https://github.com/SierraDevsec/mimir" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <p> </p><div><h1>Mimir</h1><a href="#mimir"></a></div> <p><strong>Agents that remember. Agents that talk.</strong></p> <p> Local memory (DuckDB) + RAG (Cloudflare bge-m3) + inter-agent messaging<br> for Claude Code agents that never forget and coordinate across sessions. </p>
+<p></p>
+<p> <a href="#quick-start">Quick Start</a> • <a href="#how-it-works">How It Works</a> • <a href="#features">Features</a> • <a href="#architecture">Architecture</a> • <a href="#roadmap">Roadmap</a> • <a href="#contributing">Contributing</a>
+</p>
+<p> <a target="_blank" href="https://camo.githubusercontent.com/648ece600a6a82918c8f72354b8e4df12c3c3f77a75f57e1f70d2a883a78c18f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f466f722d436c617564655f436f64652d3743334145443f7374796c653d666c61742d737175617265"><img src="https://camo.githubusercontent.com/648ece600a6a82918c8f72354b8e4df12c3c3f77a75f57e1f70d2a883a78c18f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f466f722d436c617564655f436f64652d3743334145443f7374796c653d666c61742d737175617265" alt="For Claude Code"></a> <a target="_blank" href="https://camo.githubusercontent.com/42dbd9b3a64e707bef783a79ff9374c11769d1b8f38c22b10a6a2c27d7deac69/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4d656d6f72792d4475636b44425f2b5f5241472d4646364233353f7374796c653d666c61742d737175617265"><img src="https://camo.githubusercontent.com/42dbd9b3a64e707bef783a79ff9374c11769d1b8f38c22b10a6a2c27d7deac69/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4d656d6f72792d4475636b44425f2b5f5241472d4646364233353f7374796c653d666c61742d737175617265" alt="DuckDB + RAG Memory"></a> <a target="_blank" href="https://camo.githubusercontent.com/3b4eb2aa098845b292f770819e6218006206c0b2bc902b03246c18e304e0c1fe/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4167656e74732d54616c6b5f4163726f73735f53657373696f6e732d3130423938313f7374796c653d666c61742d737175617265"><img src="https://camo.githubusercontent.com/3b4eb2aa098845b292f770819e6218006206c0b2bc902b03246c18e304e0c1fe/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4167656e74732d54616c6b5f4163726f73735f53657373696f6e732d3130423938313f7374796c653d666c61742d737175617265" alt="Cross-Session Communication"></a> <a target="_blank" href="https://camo.githubusercontent.com/a315dfa783c11cc98c43ef764268ee9ba5b6be565d8e2e4501794f62db79cbb4/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d536f757263655f417661696c61626c652d626c75653f7374796c653d666c61742d737175617265"><img src="https://camo.githubusercontent.com/a315dfa783c11cc98c43ef764268ee9ba5b6be565d8e2e4501794f62db79cbb4/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d536f757263655f417661696c61626c652d626c75653f7374796c653d666c61742d737175617265" alt="License"></a> </p> <hr>
+<div><h2>The Problem</h2><a href="#the-problem"></a></div>
+<p>You spin up three Claude Code agents on a refactoring task. Agent A discovers the API uses snake_case internally. Agent B discovers the same thing — the hard way — and introduces a bug. Agent C? It breaks the same thing all over again.</p>
+<p><strong>Your agents are amnesiacs.</strong> Every session starts from zero. No shared context, no institutional memory, no coordination. You become the bottleneck — manually relaying context, copying error messages between terminals, babysitting each agent so they don't repeat each other's mistakes.</p>
+<p>Mimir fixes this. When Agent A learns something, Agent B and C know it before they even start.</p>
+<hr>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<div><pre><code>Agent A starts ──→ hook ──→ mimir daemon ──→ DuckDB
+Agent A marks "API uses snake_case" ──→ saved Agent B starts ──→ hook ──→ mimir daemon ──→ reads A's marks └──→ injects as additionalContext " API uses snake_case" Agent C starts ──→ same thing. Zero repeated mistakes.
+</code></pre></div>
+<p>Mimir hooks into Claude Code's lifecycle events. Every time an agent starts, stops, reads a file, or edits code — Mimir captures the context. When the next agent spins up, it receives everything relevant automatically via </p><pre><code>additionalContext</code></pre> injection.<p></p>
+<p>No extra prompting. No copy-paste. It just works.</p>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> Install globally</span>
+npm install -g mimir <span><span>#</span> Initialize in your project (installs hooks, starts daemon)</span>
+mimir init <span>.</span> <span><span>#</span> Restart your Claude Code session — that's it</span></pre></div>
+<p>Three commands. Your agents now share a brain.</p>
+<blockquote>
+<p><strong>Prerequisites:</strong> Node.js 22+, </p><pre><code>jq</code></pre> (for hook script)<p></p>
+</blockquote>
+<hr>
+<div><h2>Features</h2><a href="#features"></a></div>
+<div><h3>Self-Marking Knowledge System</h3><a href="#self-marking-knowledge-system"></a></div>
+<p>Agents automatically mark important discoveries during work — warnings, decisions, and learnings. These marks are stored in DuckDB and surfaced to future agents working on related files.</p>
+<div><pre><code>Agent discovers: "DuckDB COUNT(*) returns BigInt — wrap with Number()" → saved as warning → every future agent touching DuckDB gets this injected automatically
+</code></pre></div>
+<div><h3>RAG-Based Smart Context</h3><a href="#rag-based-smart-context"></a></div>
+<p>Not just keyword matching. Mimir uses <a href="https://developers.cloudflare.com/workers-ai/">Cloudflare Workers AI</a> (</p><pre><code>bge-m3</code></pre>, 1024-dim embeddings) + DuckDB vector similarity to find semantically relevant past knowledge.<p></p>
+<ul>
+<li><strong>Push</strong>: Top 5 relevant marks auto-injected when agents start</li>
+<li><strong>Pull</strong>: Agents search past marks on-demand via MCP tools</li>
+<li><strong>Fallback</strong>: Graceful ILIKE text search when embeddings aren't available</li>
+</ul>
+<div><h3>Swarm Mode</h3><a href="#swarm-mode"></a></div>
+<p>Launch multi-agent tmux sessions with built-in coordination:</p>
+<div><pre>mimir swarm -a <span><span>"</span>backend:sonnet,frontend:sonnet<span>"</span></span> -t <span><span>"</span>Refactor auth module<span>"</span></span></pre></div>
+<p>Each agent gets its own tmux pane, a dedicated messaging channel, and automatic context sharing. The orchestrator stays lean — it only sees final reports.</p>
+<div><h3>Agent Teams Compatible</h3><a href="#agent-teams-compatible"></a></div>
+<p>Works seamlessly with Claude Code's experimental Agent Teams. Teammates fire the same hooks — zero code changes needed.</p>
+<div><pre>{ <span>"env"</span>: { <span>"CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS"</span>: <span><span>"</span>1<span>"</span></span> }
+}</pre></div>
+<div><h3>MCP-Powered Messaging</h3><a href="#mcp-powered-messaging"></a></div>
+<p>Inter-agent communication through the Model Context Protocol. Agents can:</p> <div><h3>VSCode / Cursor Extension</h3><a href="#vscode--cursor-extension"></a></div>
+<p>A companion extension with sidebar navigation, real-time agent monitoring, orchestration controls, and a full web dashboard — all embedded in your editor.</p>
+<div><h3>Knowledge Lifecycle</h3><a href="#knowledge-lifecycle"></a></div>
+<p>Marks have a lifecycle. Active marks get pushed to new agents. Resolved marks are excluded from injection but remain searchable. Frequently recurring patterns get promoted to permanent rules files.</p>
+<div><pre><code>Hot → Current session marks (auto-injected)
+Warm → Past session marks (RAG search + injection)
+Cold → Agent MEMORY.md files (persistent patterns)
+Perm → .claude/rules/ (promoted, always loaded)
+</code></pre></div>
+<div><h3>Curator Agent</h3><a href="#curator-agent"></a></div>
+<p>Automated knowledge hygiene. Run </p><pre><code>mimir curate</code></pre> to audit marks, cross-pollinate learnings between agents, and promote recurring patterns to rules.<p></p>
+<div><pre>mimir curate <span><span>#</span> Interactive</span>
+mimir curate --background <span><span>#</span> Background (tmux)</span>
+<span><span>#</span> Or schedule: 0 */6 * * * mimir curate --background</span></pre></div>
+<hr>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>Claude Code Session
+├── Hook events ──→ hook.sh (jq + curl, 3s timeout)
+│ └──→ mimir daemon (Hono, port 3100)
+│ ├── DuckDB (embedded, WAL mode)
+│ ├── RAG embeddings (Cloudflare bge-m3)
+│ ├── WebSocket (real-time UI updates)
+│ └── MCP server (agent messaging + marks)
+├── Web UI (React 19 + Vite + TailwindCSS 4)
+│ └── Dashboard, Agents, Tasks, Marks, Skills, Curation
+└── VSCode Extension (sidebar + webview panels)
+</code></pre></div>
+<div><h3>Tech Stack</h3><a href="#tech-stack"></a></div>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runtime</td>
+<td>Node.js 22, TypeScript 5.9, ESM</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Hono 4 + @hono/node-server</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>DuckDB (duckdb-async) + vss extension</td>
+</tr>
+<tr>
+<td>Embeddings</td>
+<td>Cloudflare Workers AI bge-m3 (1024-dim)</td>
+</tr>
+<tr>
+<td>CLI</td>
+<td>commander.js 14</td>
+</tr>
+<tr>
+<td>Web UI</td>
+<td>React 19, Vite 7, TailwindCSS 4, react-router-dom 7</td>
+</tr>
+<tr>
+<td>MCP</td>
+<td>@modelcontextprotocol/sdk</td>
+</tr>
+<tr>
+<td>Validation</td>
+<td>Zod 4</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>Vitest 4</td>
+</tr>
+<tr>
+<td>Extension</td>
+<td>VSCode/Cursor webview API</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>CLI Reference</h2><a href="#cli-reference"></a></div>
+<div><pre>mimir start <span><span>#</span> Start the daemon (background)</span>
+mimir stop <span><span>#</span> Stop the daemon</span>
+mimir status <span><span>#</span> Show active sessions and agents</span>
+mimir init [path] <span><span>#</span> Install hooks + templates + register project</span>
+mimir ui <span><span>#</span> Open web dashboard in browser</span>
+mimir logs [-n 50] [-f] <span><span>#</span> Tail daemon logs</span>
+mimir curate [--background] <span><span>#</span> Run knowledge curation agent</span>
+mimir swarm -a <span><span>"</span>a:opus,b:sonnet<span>"</span></span> [-t <span><span>"</span>task<span>"</span></span>] <span><span>#</span> Launch multi-agent tmux session</span>
+mimir mcp <span><span>#</span> Run MCP server (stdio mode)</span></pre></div>
+<hr>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<div><h3>Environment Variables</h3><a href="#environment-variables"></a></div>
+<div><pre>cp .env.example .env</pre></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>MIMIR_PORT</code></pre></td>
+<td><pre><code>3100</code></pre></td>
+<td>Daemon port</td>
+</tr>
+<tr>
+<td><pre><code>CLOUDFLARE_ACCOUNT_ID</code></pre></td>
+<td>—</td>
+<td>RAG embeddings (<a href="https://dash.cloudflare.com">get yours</a>)</td>
+</tr>
+<tr>
+<td><pre><code>CLOUDFLARE_API_TOKEN</code></pre></td>
+<td>—</td>
+<td>RAG embeddings (Workers AI, free tier)</td>
+</tr>
+<tr>
+<td><pre><code>SLACK_BOT_TOKEN</code></pre></td>
+<td>—</td>
+<td>Slack integration (optional)</td>
+</tr>
+<tr>
+<td><pre><code>SLACK_APP_TOKEN</code></pre></td>
+<td>—</td>
+<td>Slack integration (optional)</td>
+</tr>
+</tbody>
+</table>
+<p>RAG embeddings are optional. Without them, Mimir falls back to text-based ILIKE search — still works, just less semantically aware. See <a href="/SierraDevsec/mimir/blob/main/.env.example"></a></p><pre><a href="/SierraDevsec/mimir/blob/main/.env.example"><code>.env.example</code></a></pre> for details.<p></p>
+<div><h3>What <pre><code>mimir init</code></pre> Sets Up</h3><a href="#what-mimir-init-sets-up"></a></div>
+<ul>
+<li><pre><code>.claude/settings.local.json</code></pre> — Hook configuration + Agent Teams</li>
+<li><pre><code>.mcp.json</code></pre> — MCP server for inter-agent messaging</li>
+<li><pre><code>.claude/skills/</code></pre> — Self-marking, self-search, self-memory, and more</li>
+<li><pre><code>.claude/agents/</code></pre> — Curator agent definition</li>
+<li><pre><code>.claude/rules/</code></pre> — Team coordination rules</li>
+</ul>
+<hr>
+<div><h2>Roadmap</h2><a href="#roadmap"></a></div>
+<ul>
+<li> Hook-based lifecycle tracking (session, agent, file changes)</li>
+<li> Self-marking knowledge system (warnings, decisions, discoveries)</li>
+<li> RAG-based smart context injection (Cloudflare bge-m3 + DuckDB vss)</li> <li> MCP server for agent messaging and mark search</li>
+<li> Swarm mode (multi-agent tmux orchestration)</li>
+<li> VSCode/Cursor extension</li>
+<li> Curator agent for automated knowledge hygiene</li>
+<li> npm publish + <pre><code>npx mimir init .</code></pre> one-liner setup</li>
+<li> Multi-project knowledge sharing</li>
+<li> Conflict-aware mark merging for parallel agents</li>
+<li> Slack integration for async team notifications</li>
+<li> Dashboard analytics (agent efficiency, mark hit rates)</li>
+<li> Plugin system for custom hook handlers</li>
+<li> Cloud-hosted daemon option</li>
+<li> First-class Windows support</li>
+</ul>
+<hr>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>PRs are always welcome. Here's the quick workflow:</p>
+<div><pre>git clone https://github.com/SierraDevsec/mimir.git
+<span>cd</span> mimir
+pnpm install
+pnpm dev <span><span>#</span> Start dev server</span>
+pnpm <span>test</span> <span><span>#</span> Run tests</span>
+pnpm build <span><span>#</span> Full build (TypeScript + Vite)</span></pre></div>
+<div><h3>Project Structure</h3><a href="#project-structure"></a></div>
+<div><pre><code>src/ cli/ — CLI commands (commander.js) hooks/ — Hook script (bash + jq + curl) server/ — Hono server, routes, services, DuckDB mcp/ — MCP server (messaging + marks) web/ — React SPA (dashboard)
+vscode-extension/ — VSCode/Cursor extension
+.claude/ agents/ — Agent definitions skills/ — Skill files (self-mark, self-search, etc.) rules/ — Shared rules
+</code></pre></div>
+<p>Before submitting:</p>
+<ol>
+<li>Run <pre><code>pnpm test</code></pre> and <pre><code>pnpm build</code></pre> to verify nothing breaks</li>
+<li>If adding a new hook event or MCP tool, update the relevant docs</li>
+<li>Keep PRs focused — one feature or fix per PR</li>
+</ol>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Source Available — free for personal, educational, research, and open-source use. Commercial use requires a license. See <a href="/SierraDevsec/mimir/blob/main/LICENSE">LICENSE</a> for details.</p>
+<hr>
+<p> <em>If Claude Code agents could remember, they'd remember Mimir.</em>
+</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
