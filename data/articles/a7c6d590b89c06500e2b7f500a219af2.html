@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>tspub — The unified TypeScript package toolkit</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>tspub — The unified TypeScript package toolkit</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 2:07:51 PM | <a href="https://www.tspub.dev/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><div><div><div><h2><span>tspub</span><span>Stop shipping broken packages</span></h2><p>One CLI to build, validate, and publish TypeScript packages. 70 rules. Auto-fix. Zero config.</p></div><div><p><img src="https://www.tspub.dev/logo.svg" alt="tspub"></p></div></div><div><div><div><h3>70</h3><p>validation rules</p></div><div><h3>5</h3><p>tools replaced</p></div><div><h3>0</h3><p>config required</p></div><div><h3>1</h3><p>command to ship</p></div></div><hr><h2>The Problem <a href="#the-problem">​</a></h2><p>You're publishing a TypeScript library. Your "workflow" looks like this:</p><div><p><span>bash</span></p><pre><code><span><span>npm</span><span> run</span><span> build</span><span> # hope tsup config is right</span></span>
+<span><span>npx</span><span> publint</span><span> # hope exports are valid</span></span>
+<span><span>npx</span><span> attw</span><span> --pack</span><span> # hope types resolve</span></span>
+<span><span>npm</span><span> version</span><span> patch</span><span> # hope git is clean</span></span>
+<span><span>npm</span><span> publish</span><span> # hope nothing breaks</span></span></code></pre></div><p><strong>Hope is not a strategy.</strong></p><p>Two hours later, someone opens an issue: <em>"Types aren't working."</em> Your stomach drops.</p><hr><h2>The Solution <a href="#the-solution">​</a></h2><div><p><span>bash</span></p><pre><code><span><span>npx</span><span> @tspub-dev/tspub</span><span> check</span><span> --fix</span><span> # find problems, fix them</span></span>
+<span><span>npx</span><span> @tspub-dev/tspub</span><span> publish</span><span> patch</span><span> # build → validate → version → ship</span></span></code></pre></div><p>That's it. One tool. 70 rules. Auto-fix. Rollback on failure.</p><hr><h2>What tspub Replaces <a href="#what-tspub-replaces">​</a></h2><div><table><thead><tr><th></th><th>tspub</th><th>publint</th><th>attw</th><th>tsup</th><th>np</th><th>changesets</th></tr></thead><tbody><tr><td><strong>Validation rules</strong></td><td>70</td><td>40</td><td>12</td><td>—</td><td>—</td><td>—</td></tr><tr><td><strong>Auto-fix</strong></td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td><strong>Build ESM/CJS</strong></td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr><tr><td><strong>DTS bundling</strong></td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr><tr><td><strong>Type checking</strong></td><td>✓</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr><tr><td><strong>Prereq gates</strong></td><td>✓</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr><tr><td><strong>Rollback</strong></td><td>✓</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr><tr><td><strong>Changesets</strong></td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr><tr><td><strong>Repo scanning</strong></td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td><strong>Diagnostics</strong></td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td><strong>Plugins</strong></td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td></tr><tr><td><strong>Zero config</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr></tbody></table></div><hr><h2>Quick Start <a href="#quick-start">​</a></h2><div><p>Check your packageFix issuesBuildPublish</p><div><div><p><span>bash</span></p><pre><code><span><span># No install needed</span></span>
+<span><span>npx</span><span> @tspub-dev/tspub</span><span> check</span></span></code></pre></div><div><p><span>bash</span></p><pre><code><span><span>npx</span><span> @tspub-dev/tspub</span><span> check</span><span> --fix</span></span></code></pre></div><div><p><span>bash</span></p><pre><code><span><span>npx</span><span> @tspub-dev/tspub</span><span> build</span></span></code></pre></div><div><p><span>bash</span></p><pre><code><span><span>npx</span><span> @tspub-dev/tspub</span><span> publish</span><span> patch</span></span></code></pre></div></div></div><hr><h2>The Publish Pipeline <a href="#the-publish-pipeline">​</a></h2><div><pre><code><span><span>┌─────────────┐ ┌───────┐ ┌───────┐ ┌──────┐ ┌─────────┐</span></span>
+<span><span>│ 5 Prereqs │ → │ Build │ → │ Check │ → │ Bump │ → │ Publish │</span></span>
+<span><span>└─────────────┘ └───────┘ └───────┘ └──────┘ └─────────┘</span></span>
+<span><span> │ │</span></span>
+<span><span> ↓ ↓</span></span>
+<span><span> Stop early Rollback git</span></span>
+<span><span> if not ready if npm fails</span></span></code></pre></div><p><strong>The 5 gates:</strong> Clean git tree, correct branch, npm reachable, authenticated, check passes.</p><p><strong>If npm fails:</strong> Git tag removed, version reverted, <code>package.json</code> restored. No half-broken releases.</p><hr><h2>Install <a href="#install">​</a></h2><div><p>npmpnpmyarnbun</p><div><div><p><span>bash</span></p><pre><code><span><span>npm</span><span> install</span><span> -D</span><span> @tspub-dev/tspub</span></span></code></pre></div><div><p><span>bash</span></p><pre><code><span><span>pnpm</span><span> add</span><span> -D</span><span> @tspub-dev/tspub</span></span></code></pre></div><div><p><span>bash</span></p><pre><code><span><span>yarn</span><span> add</span><span> -D</span><span> @tspub-dev/tspub</span></span></code></pre></div><div><p><span>bash</span></p><pre><code><span><span>bun</span><span> add</span><span> -D</span><span> @tspub-dev/tspub</span></span></code></pre></div></div></div><hr><p>"Finally, one tool that catches all the weird edge cases before my users do."</p><p>"The auto-fix saved me hours of debugging exports issues."</p><p>"Rollback on publish failure is a game changer. No more half-broken releases."</p><hr></div></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

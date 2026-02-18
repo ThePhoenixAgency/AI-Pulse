@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - prodlint/prodlint: Scan AI-generated projects for production readiness issues</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - prodlint/prodlint: Scan AI-generated projects for production readiness issues</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 2:01:02 PM | <a href="https://github.com/prodlint/prodlint" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><h1>prodlint</h1><a href="#prodlint"></a></div>
+<p><a href="https://www.npmjs.com/package/prodlint"><img src="https://camo.githubusercontent.com/2f19df7ee7ed1f12bb14b619e95af794110a08d15315976db58f6470d49ce779/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f70726f646c696e742e737667" alt="npm version"></a>
+<a href="https://www.npmjs.com/package/prodlint"><img src="https://camo.githubusercontent.com/c63969eda247644ba0e3e81d487abed4746139e2aae6e2da306513f09f6b7859/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f646d2f70726f646c696e742e737667" alt="npm downloads"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT"></a></p>
+<p>Catch the bugs AI leaves behind.</p>
+<p>prodlint scans AI-generated JavaScript and TypeScript projects for production readiness issues — hallucinated imports, missing auth, exposed secrets, N+1 queries, and more. No LLM required, just pattern matching against known failure modes.</p>
+<div><pre>npx prodlint</pre></div>
+<div><pre><code> prodlint v0.3.1 Scanned 148 files in 92ms src/app/api/checkout/route.ts 12:1 CRIT No rate limiting — anyone could spam this endpoint and run up your API costs rate-limiting 28:5 WARN Empty catch block silently swallows error shallow-catch src/lib/db.ts 1:1 CRIT Package "drizzle-orm" is imported but not in package.json hallucinated-imports Scores security 72 ████████████████░░░░ (8 issues) reliability 85 █████████████████░░░ (4 issues) performance 95 ███████████████████░ (1 issue) ai-quality 90 ██████████████████░░ (3 issues) Overall: 85/100 8 critical · 5 warnings · 3 info
+</code></pre></div>
+<div><h2>Why?</h2><a href="#why"></a></div>
+<p>AI code generators (Cursor, Copilot, v0, Bolt, Claude) write code that works in demos but breaks in production. Hardcoded secrets, hallucinated packages, missing auth, XSS vectors — these pass type-checks and look correct but aren't.</p>
+<p>prodlint catches what TypeScript and ESLint miss: <strong>production readiness gaps</strong>.</p>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><pre>npx prodlint <span><span>#</span> Run directly (no install)</span>
+npx prodlint ./my-app <span><span>#</span> Scan specific path</span>
+npx prodlint --json <span><span>#</span> JSON output for CI</span>
+npx prodlint --ignore <span><span>"</span>*.test.ts<span>"</span></span> <span><span>#</span> Ignore patterns</span></pre></div>
+<p>Or install it:</p>
+<div><pre>npm i -D prodlint <span><span>#</span> Project dependency</span>
+npm i -g prodlint <span><span>#</span> Global install</span></pre></div>
+<div><h2>27 Rules across 4 Categories</h2><a href="#27-rules-across-4-categories"></a></div>
+<div><h3>Security (10 rules)</h3><a href="#security-10-rules"></a></div>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>What it catches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>secrets</code></pre></td>
+<td>API keys, tokens, passwords hardcoded in source</td>
+</tr>
+<tr>
+<td><pre><code>auth-checks</code></pre></td>
+<td>API routes with no authentication</td>
+</tr>
+<tr>
+<td><pre><code>env-exposure</code></pre></td>
+<td><pre><code>NEXT_PUBLIC_</code></pre> on server-only secrets</td>
+</tr>
+<tr>
+<td><pre><code>input-validation</code></pre></td>
+<td>Request body used without validation</td>
+</tr>
+<tr>
+<td><pre><code>cors-config</code></pre></td>
+<td><pre><code>Access-Control-Allow-Origin: *</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>unsafe-html</code></pre></td>
+<td><pre><code>dangerouslySetInnerHTML</code></pre> with user data</td>
+</tr>
+<tr>
+<td><pre><code>sql-injection</code></pre></td>
+<td>String-interpolated SQL queries</td>
+</tr>
+<tr>
+<td><pre><code>open-redirect</code></pre></td>
+<td>User input passed to <pre><code>redirect()</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>rate-limiting</code></pre></td>
+<td>API routes with no rate limiter</td>
+</tr>
+<tr>
+<td><pre><code>phantom-dependency</code></pre></td>
+<td>Packages in node_modules but missing from package.json</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Reliability (6 rules)</h3><a href="#reliability-6-rules"></a></div>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>What it catches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>hallucinated-imports</code></pre></td>
+<td>Imports of packages not in package.json</td>
+</tr>
+<tr>
+<td><pre><code>error-handling</code></pre></td>
+<td>Async operations without try/catch</td>
+</tr>
+<tr>
+<td><pre><code>unhandled-promise</code></pre></td>
+<td>Floating promises with no await or .catch</td>
+</tr>
+<tr>
+<td><pre><code>shallow-catch</code></pre></td>
+<td>Empty catch blocks that swallow errors</td>
+</tr>
+<tr>
+<td><pre><code>missing-loading-state</code></pre></td>
+<td>Client components that fetch without a loading state</td>
+</tr>
+<tr>
+<td><pre><code>missing-error-boundary</code></pre></td>
+<td>Route layouts without a matching error.tsx</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Performance (4 rules)</h3><a href="#performance-4-rules"></a></div>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>What it catches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>no-sync-fs</code></pre></td>
+<td><pre><code>readFileSync</code></pre> in API routes</td>
+</tr>
+<tr>
+<td><pre><code>no-n-plus-one</code></pre></td>
+<td>Database calls inside loops</td>
+</tr>
+<tr>
+<td><pre><code>no-unbounded-query</code></pre></td>
+<td><pre><code>.findMany()</code></pre> / <pre><code>.select('*')</code></pre> with no limit</td>
+</tr>
+<tr>
+<td><pre><code>no-dynamic-import-loop</code></pre></td>
+<td><pre><code>import()</code></pre> inside loops</td>
+</tr>
+</tbody>
+</table>
+<div><h3>AI Quality (7 rules)</h3><a href="#ai-quality-7-rules"></a></div>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>What it catches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>ai-smells</code></pre></td>
+<td><pre><code>any</code></pre> types, <pre><code>console.log</code></pre>, TODO comments piling up</td>
+</tr>
+<tr>
+<td><pre><code>placeholder-content</code></pre></td>
+<td>Lorem ipsum, example emails, "your-api-key-here" left in production code</td>
+</tr>
+<tr>
+<td><pre><code>hallucinated-api</code></pre></td>
+<td><pre><code>.flatten()</code></pre>, <pre><code>.contains()</code></pre>, <pre><code>.substr()</code></pre> — methods AI invents</td>
+</tr>
+<tr>
+<td><pre><code>stale-fallback</code></pre></td>
+<td><pre><code>localhost:3000</code></pre> hardcoded in production code</td>
+</tr>
+<tr>
+<td><pre><code>comprehension-debt</code></pre></td>
+<td>Functions over 80 lines, deep nesting, too many parameters</td>
+</tr>
+<tr>
+<td><pre><code>codebase-consistency</code></pre></td>
+<td>Mixed naming conventions across the project</td>
+</tr>
+<tr>
+<td><pre><code>dead-exports</code></pre></td>
+<td>Exported functions that nothing imports</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Smart Detection</h2><a href="#smart-detection"></a></div>
+<p>prodlint avoids common false positives:</p>
+<ul>
+<li><strong>Block comment awareness</strong> — patterns inside <pre><code>/* */</code></pre> are ignored</li>
+<li><strong>Middleware detection</strong> — if your project uses Clerk/NextAuth/Supabase middleware, auth findings are downgraded</li>
+<li><strong>Path alias support</strong> — <pre><code>@/</code></pre>, <pre><code>~/</code></pre>, and tsconfig paths aren't flagged as hallucinated imports</li>
+<li><strong>Route exemptions</strong> — auth, webhook, health, and cron routes are exempt from auth/rate-limit checks</li>
+<li><strong>Test/script file awareness</strong> — lower severity for non-production files</li>
+</ul>
+<div><h2>Scoring</h2><a href="#scoring"></a></div>
+<p>Each category starts at 100. Deductions per finding:</p>
+<table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>Deduction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>critical</td>
+<td>-10</td>
+</tr>
+<tr>
+<td>warning</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>info</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<p>Overall score = average of the 4 category scores (floor 0). Exit code </p><pre><code>1</code></pre> if any critical findings exist.<p></p>
+<div><h2>GitHub Action</h2><a href="#github-action"></a></div>
+<p>Add to </p><pre><code>.github/workflows/prodlint.yml</code></pre>:<p></p>
+<div><pre><span>name</span>: <span>Prodlint</span>
+<span>on</span>: <span>[pull_request]</span> <span>jobs</span>: <span>scan</span>: <span>runs-on</span>: <span>ubuntu-latest</span> <span>steps</span>: - <span>uses</span>: <span>actions/checkout@v4</span> - <span>uses</span>: <span>prodlint/prodlint@v1</span> <span>with</span>: <span>threshold</span>: <span>50</span></pre></div>
+<p>Posts a score breakdown as a PR comment and fails the build if below threshold.</p>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>path</code></pre></td>
+<td><pre><code>.</code></pre></td>
+<td>Path to scan</td>
+</tr>
+<tr>
+<td><pre><code>threshold</code></pre></td>
+<td><pre><code>0</code></pre></td>
+<td>Minimum score to pass (0-100)</td>
+</tr>
+<tr>
+<td><pre><code>ignore</code></pre></td>
+<td></td>
+<td>Comma-separated glob patterns to ignore</td>
+</tr>
+<tr>
+<td><pre><code>comment</code></pre></td>
+<td><pre><code>true</code></pre></td>
+<td>Post PR comment with results</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>score</code></pre></td>
+<td>Overall score (0-100)</td>
+</tr>
+<tr>
+<td><pre><code>critical</code></pre></td>
+<td>Number of critical findings</td>
+</tr>
+</tbody>
+</table>
+<div><h2>MCP Server</h2><a href="#mcp-server"></a></div>
+<p>Use prodlint inside Cursor, Claude Code, or any MCP-compatible editor:</p>
+<p><strong>Claude Code:</strong></p>
+<div><pre>claude mcp add prodlint npx prodlint-mcp</pre></div>
+<p><strong>Cursor / Windsurf:</strong></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"prodlint"</span>: { <span>"command"</span>: <span><span>"</span>npx<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>-y<span>"</span></span>, <span><span>"</span>prodlint-mcp<span>"</span></span>] } }
+}</pre></div>
+<p>Ask your AI: <em>"Run prodlint on this project"</em> and it calls the </p><pre><code>scan</code></pre> tool directly.<p></p>
+<div><h2>Suppression</h2><a href="#suppression"></a></div>
+<p>Suppress a single line:</p>
+<div><pre><span>// prodlint-disable-next-line secrets</span>
+<span>const</span> <span>key</span> <span>=</span> <span>"sk_test_example_for_docs"</span></pre></div>
+<p>Suppress an entire file (place at top):</p>
+<div><pre><span>// prodlint-disable secrets</span></pre></div>
+<div><h2>Programmatic API</h2><a href="#programmatic-api"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>scan</span> <span>}</span> <span>from</span> <span>'prodlint'</span> <span>const</span> <span>result</span> <span>=</span> <span>await</span> <span>scan</span><span>(</span><span>{</span> <span>path</span>: <span>'./my-project'</span> <span>}</span><span>)</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>.</span><span>overallScore</span><span>)</span> <span>// 0-100</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>.</span><span>findings</span><span>)</span> <span>// Finding[]</span></pre></div>
+<div><h2>Badge</h2><a href="#badge"></a></div>
+<div><pre><span>[</span><span>![</span>prodlint<span>]</span><span>(</span><span>https://img.shields.io/badge/prodlint-85%2F100-brightgreen</span><span>)]</span><span>(</span><span>https://prodlint.com</span><span>)</span></pre></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - fells-code/seamless-auth-api: Seamless Auth is an open source passwordless authentication API</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - fells-code/seamless-auth-api: Seamless Auth is an open source passwordless authentication API</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 2:22:28 PM | <a href="https://github.com/fells-code/seamless-auth-api" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Seamless Auth API</h1><a href="#seamless-auth-api"></a></div>
+<p><strong>Seamless Auth API</strong> is the open-source core authentication server for SeamlessAuth: an exclusively passwordless authentication system designed for modern web applications.</p>
+<p>It provides the backend services for passkeys (WebAuthn) and other passwordless flows, issuing secure sessions and tokens while giving teams full transparency into how authentication is implemented.</p>
+<blockquote>
+<p>Looking for the managed experience (hosting, upgrades, dashboards, metrics, backups, SLAs)? See <strong><a href="https://seamlessauth.com">https://seamlessauth.com</a></strong> for managed services.</p>
+</blockquote>
+<div><h2>Scope and Non-Goals</h2><a href="#scope-and-non-goals"></a></div>
+<p>Seamless Auth API is the <strong>open-source authentication engine</strong> that powers SeamlessAuth. Its goal is to provide secure, auditable, and self-hostable passwordless authentication primitives.</p>
+<p>This repository intentionally focuses on <strong>authentication only</strong>.</p>
+<div><h3>What this repository includes</h3><a href="#what-this-repository-includes"></a></div>
+<ul>
+<li>Passwordless authentication flows (e.g. passkeys, OTP where configured)</li>
+<li>Secure session and token handling</li>
+<li>User registration and authentication APIs</li>
+<li>WebAuthn / Passkeys support</li>
+<li>JWKS and token verification endpoints</li>
+<li>Database models and migrations required for auth</li>
+<li>Local development and self-hosting support</li>
+</ul>
+<p>Everything in this repository can be:</p>
+<ul>
+<li>Audited</li>
+<li>Modified</li>
+<li>Self-hosted</li>
+<li>Run without any SeamlessAuth-managed services</li>
+</ul>
+<div><h3>What this repository does <strong>not</strong> include</h3><a href="#what-this-repository-does-not-include"></a></div>
+<p>The following are <strong>intentionally out of scope</strong> and are part of the managed SeamlessAuth service:</p>
+<ul>
+<li>Admin portal or dashboard UI</li>
+<li>Billing, subscriptions, or plan enforcement</li>
+<li>Tenant provisioning or lifecycle management</li>
+<li>Hosted metrics, analytics, or usage dashboards</li>
+<li>Managed secrets storage or key rotation services</li>
+<li>Automated upgrades, backups, or restore tooling</li>
+<li>Email or SMS services to service the OTP requests</li>
+<li>Support SLAs or operational monitoring</li>
+</ul>
+<p>Self-hosted users are free to implement any of the above on their own, but they are not required to use SeamlessAuth Managed Service.</p>
+<div><h3>About secrets and infrastructure</h3><a href="#about-secrets-and-infrastructure"></a></div>
+<p>Seamless Auth API expects secrets to be provided by the environment or by a user-supplied secret store.</p>
+<p>This repository does <strong>not</strong> assume any specific cloud provider, billing system, or control plane.</p>
+<div><h2>Why Seamless Auth API</h2><a href="#why-seamless-auth-api"></a></div>
+<ul>
+<li>Passwordless-first design (no passwords to steal)</li>
+<li>Modern session handling using secure, HTTP-only cookies</li>
+<li>WebAuthn / passkeys support</li>
+<li>Token and JWKS support for service-to-service auth</li>
+<li>Built for inspection, auditability, and self-hosting</li>
+</ul>
+<p>This repository contains <strong>only the auth server</strong>. The admin portal, billing system, and hosted control plane are proprietary and offered as a managed service.</p>
+<div><h2>Who this is for</h2><a href="#who-this-is-for"></a></div>
+<ul>
+<li>Teams that want to <strong>self-host</strong> authentication infrastructure</li>
+<li>Security-conscious organizations that require code transparency</li>
+<li>Developers evaluating SeamlessAuth internals before using the hosted offering</li>
+</ul>
+<p>If you want hosted auth with a full control plane and operational support, use the managed service instead.</p>
+<div><h2>High-level architecture</h2><a href="#high-level-architecture"></a></div> <hr>
+<div><h2>Local development quickstart</h2><a href="#local-development-quickstart"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div> <div><h3>Configuration</h3><a href="#configuration"></a></div>
+<p>Copy the </p><pre><code>.env.example</code></pre> to an <pre><code>.env</code></pre> file and populate empty values.<p></p>
+<p>Never commit real secrets. Use </p><pre><code>.env.example</code></pre> for documentation.<p></p>
+<div><h3>Install &amp; run</h3><a href="#install--run"></a></div>
+<div><pre><code>npm install
+npm run dev
+</code></pre></div>
+<p>The server should start on </p><pre><code>http://localhost:5001</code></pre> (or your configured port).<p></p>
+<hr>
+<div><h1>Docker Quickstart (5 minutes)</h1><a href="#docker-quickstart-5-minutes"></a></div>
+<p>This is the fastest way to run <strong>Seamless Auth API</strong> locally using Docker.</p>
+<hr>
+<div><h2>Prerequisites</h2><a href="#prerequisites-1"></a></div>
+<ul>
+<li>Docker (Docker Desktop or Docker Engine)</li>
+<li>A running PostgreSQL instance (local or Docker)</li>
+</ul>
+<hr>
+<div><h2>1. Pull the public image</h2><a href="#1-pull-the-public-image"></a></div>
+<div><pre>docker pull ghcr.io/fells-code/seamless-auth-api:latest</pre></div>
+<p>Available tags:</p>
+<ul>
+<li><pre><code>latest</code></pre> – latest stable release</li>
+<li><pre><code>nightly</code></pre> – latest build from <pre><code>main</code></pre></li>
+<li><pre><code>vX.Y.Z</code></pre> – specific versioned releases</li>
+</ul>
+<hr>
+<div><h2>2. Create an environment file</h2><a href="#2-create-an-environment-file"></a></div>
+<p>Copy the example and adjust as needed:</p>
+<div><pre>cp .env.example .env</pre></div>
+<p>At minimum, ensure these values are set:</p>
+<div><pre><span>DB_HOST</span><span>=</span><span>localhost</span>
+<span>DB_PORT</span><span>=</span><span>5432</span>
+<span>DB_NAME</span><span>=</span><span>seamless_auth</span>
+<span>DB_USER</span><span>=</span><span>myuser</span>
+<span>DB_PASSWORD</span><span>=</span><span>mypassword</span>
+<span>APP_ORIGIN</span><span>=</span><span>http://localhost:5001</span>
+<span>ISSUER</span><span>=</span><span>http://localhost:5312</span></pre></div>
+<p> Do not commit </p><pre><code>.env</code></pre> files. They are ignored by default.<p></p>
+<hr>
+<div><h2>3. Run PostgreSQL (example with Docker)</h2><a href="#3-run-postgresql-example-with-docker"></a></div>
+<p>If you do not already have Postgres running:</p>
+<div><pre>docker run -d \ --name seamless-auth-postgres \ -e POSTGRES_USER=myuser \ -e POSTGRES_PASSWORD=mypassword \ -e POSTGRES_DB=seamless_auth \ -p 5432:5432 \ postgres:15</pre></div>
+<p>Update DB env values accordingly.</p>
+<div><h2>4. Run Seamless Auth Server</h2><a href="#4-run-seamless-auth-server"></a></div>
+<div><pre>docker run --rm \ --env-file .env \ -p 5312:5312 \ ghcr.io/fells-code/seamless-auth-api:latest</pre></div>
+<p>The server will:</p>
+<ul>
+<li>Validate required environment variables</li>
+<li>Start on port <pre><code>5312</code></pre></li>
+<li>Expose health and authentication endpoints</li>
+</ul>
+<div><h2>5. Verify it is running</h2><a href="#5-verify-it-is-running"></a></div>
+<div><pre>curl http://localhost:5312/health</pre></div>
+<p>You should receive a healthy response.</p>
+<div><h2>Notes for self-hosting</h2><a href="#notes-for-self-hosting"></a></div>
+<ul>
+<li>Secrets are provided via environment variables</li>
+<li>Keys are generated or mounted at runtime as needed</li>
+<li>This image contains only the open-source authentication server</li>
+<li>No admin portal, billing, or managed infrastructure is included</li>
+</ul>
+<p>For production deployments:</p>
+<ul>
+<li>Use HTTPS</li>
+<li>Configure secure cookies</li>
+<li>Rotate signing keys</li>
+<li>Back up your database</li>
+<li>Monitor authentication failures</li>
+</ul>
+<div><h2>Prefer not to self-host?</h2><a href="#prefer-not-to-self-host"></a></div>
+<p>SeamlessAuth managed services provides a fully managed experience built on top of this same open-source core, including hosting, upgrades, dashboards, backups, and SLAs.</p>
+<div><h2>Production notes</h2><a href="#production-notes"></a></div>
+<p>Authentication infrastructure is security-sensitive.</p>
+<p>For production deployments:</p>
+<ul>
+<li>Use HTTPS end-to-end</li>
+<li>Enable secure cookies (<pre><code>Secure</code></pre>, correct <pre><code>SameSite</code></pre>)</li>
+<li>Restrict CORS origins</li>
+<li>Rotate signing keys and secrets regularly</li>
+<li>Enable database backups and test restores</li>
+<li>Monitor auth failures and suspicious behavior</li>
+</ul>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>See <a href="/fells-code/seamless-auth-api/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
+<div><h2>Security</h2><a href="#security"></a></div>
+<p><strong>Do not open public issues for security vulnerabilities.</strong></p>
+<p>Email: <a href="mailto:security@seamlessauth.com">security@seamlessauth.com</a><br>
+Include reproduction steps, affected versions, and impact if known.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Licensed under <strong>GNU Affero General Public License v3.0 (AGPL-3.0-only)</strong>.</p>
+<p>If you want to embed Seamless Auth Server into a proprietary product or offer it as a managed service without AGPL obligations, commercial licenses may be available.</p>
+<p>Contact: <a href="mailto:support@seamlessauth.com">support@seamlessauth.com</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

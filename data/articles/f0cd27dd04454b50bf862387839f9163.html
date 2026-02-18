@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,40 +28,8 @@
     Source: IoT Business News | Date: 1/28/2026 11:19:44 AM | <a href="https://iotbusinessnews.com/2026/01/28/swiss-startup-alec-cuts-iot-transmission-costs-by-90/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p><img src="https://iotbusinessnews.com/WordPress/wp-content/uploads/big-data-tunnel-bandwidth.jpg" alt="data deluge"></p>
-<p><strong>Key Insights (AI-assisted):</strong><br>
-ALEC’s IoT-specific compression highlights how protocol-layer innovation can materially shift connectivity economics, especially for satellite links. By shrinking payloads rather than relying on cheaper airtime, solution providers can extend device lifetimes, densify deployments, and delay or avoid network upgrades. The open-source / commercial dual licensing is likely to accelerate ecosystem experimentation and standardization around message-level compression primitives. This development aligns with a broader IoT trend toward application-aware, edge-efficient data handling to keep massive-scale sensing financially and energetically sustainable.
-</p>
-<h2>Open source compression codec enables satellite IoT at 1/10th the cost</h2>
-<p><strong>ALEC</strong> (Adaptive Lazy Evolving Compression), an innovative compression codec designed specifically for IoT sensor data, is now available under open source and commercial licenses. This Swiss technology reduces data transmission volume by up to 90%, directly impacting bandwidth costs and battery life for connected devices worldwide.</p>
-<h2>The Problem: Billions of Sensors, Terabytes of Data</h2>
-<p>The Internet of Things is experiencing explosive growth. By 2030, over 30 billion connected devices will transmit data continuously. For companies managing sensor fleets — whether in agriculture, manufacturing, logistics, or energy — transmission costs are becoming a major barrier to innovation.</p>
-<p>David Martin, ALEC’s founder, explains:</p>
-<blockquote>
-<p>“Traditional compression solutions like gzip were designed for files, not IoT streaming. When you compress a 24-byte message with gzip, it actually expands. ALEC was built from the ground up for per-message compression.”</p>
-</blockquote>
-<h2>The Solution: Adaptive Compression with Evolving Context</h2>
-<p>ALEC introduces three key innovations:</p>
-<ul>
-<li><strong>Lazy Compression:</strong> The codec transmits its encoding decision first, allowing the receiver to prepare before data arrives.</li>
-<li><strong>Evolving Context:</strong> Encoder and decoder share a dictionary that improves over time, learning patterns specific to each sensor.</li>
-<li><strong>Priority System:</strong> Every message is classified from P1 (critical) to P5 (routine), ensuring safety alerts are never delayed by routine data.</li>
-</ul>
-<h2>Real-World Results</h2>
-<ul>
-<li><strong>Agriculture:</strong> Soil sensors achieving 83% compression, battery life extending from 6 months to 3+ years</li>
-<li><strong>Manufacturing:</strong> Vibration monitoring with 97% compression, enabling 2,000 sensor deployments without network upgrades</li>
-<li><strong>Satellite IoT:</strong> Transmission costs reduced from $0.10 to $0.01 per message, making global asset tracking economically viable</li>
-</ul>
-<h2>Focus: Satellite IoT, a Rapidly Growing Market</h2>
-<p>ALEC is particularly well-suited for the satellite IoT market, where every transmitted byte costs 100-1000x more than cellular. With emerging LEO constellations like Astrocast, Swarm (SpaceX), and Kinéis, millions of sensors will soon communicate from anywhere on Earth — provided transmission costs can be controlled.</p>
-<p><em>“Without efficient compression, satellite IoT remains a niche market reserved for critical applications,”</em> says David Martin. <em>“ALEC democratizes access by making global asset tracking 10x cheaper.”</em></p>
-<h2>Availability and Licensing</h2>
-<ul>
-<li><strong>Open Source (AGPL-3.0):</strong> Free for open source projects, research, and evaluation</li>
-<li><strong>Commercial License:</strong> Starting at €500/year for proprietary products</li>
-</ul>
-<p>The codec is implemented in Rust, ensuring performance and memory safety, with a footprint of only 2KB RAM — ideal for embedded microcontrollers.</p> </div></div>
+    <p>ALEC, a Swiss startup, has developed an open source compression codec that cuts IoT data transmission costs by 90%, significantly improving bandwidth usage and battery life for sensor devices across industries.
+The post Swiss Startup ALEC Cuts IoT Transmission Costs by 90% appeared first on IoT Business News.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

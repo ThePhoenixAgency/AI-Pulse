@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Go Background Jobs Are Silently Failing. Here’s How to Fix It</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Your Go Background Jobs Are Silently Failing. Here’s How to Fix It</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 1:45:36 PM | <a href="https://dev.to/kevinabura/your-go-background-jobs-are-silently-failing-heres-how-to-fix-it-2j1h" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Ever written code like this?<br>
+</p> <div>
+<pre><code><span>go</span> <span>processImportantTask</span><span>(</span><span>ctx</span><span>,</span> <span>data</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>It feels so simple, so... Go-like. You fire off a goroutine and move on. But what happens when <code>processImportantTask</code> panics? Or the server restarts during a deployment? Or a downstream API it calls is temporarily down?</p> <p>Your job might be lost forever, or a panic could crash your entire application. The simple "fire-and-forget" goroutine is powerful, but it's not production-safe for tasks you can't afford to lose.</p> <p>This is a lesson many of us learn the hard way. That's why I built <a href="https://github.com/puretype-spec/CSJD" target="_blank"><strong>CSJD</strong></a>, a reliability-first job dispatcher for Go, designed to bring peace of mind to your background jobs.</p> <h2> <a name="the-hidden-dangers-of-just-a-goroutine" href="#the-hidden-dangers-of-just-a-goroutine"> </a> The Hidden Dangers of "Just a Goroutine"
+</h2> <p>When you run background tasks in production, you face a minefield of potential failures:</p> <ul>
+<li> <strong> Silent Panics</strong>: A panic inside a goroutine can take down the whole service if not recovered. If recovered, the job simply stops, half-finished, with no record of its failure.</li>
+<li> <strong> Retry Storms</strong>: If a dependency is down, thousands of jobs retrying at once can create a "thundering herd" problem, making the outage even worse.</li>
+<li> <strong> Lost Jobs on Restart</strong>: Any jobs waiting in a simple channel-based queue will vanish into thin air the moment your application restarts.</li>
+<li> <strong> Duplicate Execution</strong>: During a failover, you might accidentally run the same job twice, leading to inconsistent data or duplicate emails sent to users.</li>
+</ul> <p>CSJD is designed from the ground up to tackle these exact problems.</p> <h2> <a name="introducing-csjd-your-reliability-copilot" href="#introducing-csjd-your-reliability-copilot"> </a> Introducing CSJD: Your Reliability Co-pilot
+</h2> <p>CSJD is a lightweight, dependency-free library that wraps your job handlers with production-grade safety features. It supports two modes:</p> <ol>
+<li> <strong>In-Process</strong>: Perfect for single-service applications with low operational overhead.</li>
+<li> <strong>Distributed</strong>: Uses Redis Streams for a robust, multi-node consumer group setup.</li>
+</ol> <p>Here’s how CSJD protects your jobs:</p> <ul>
+<li> <strong>Persistence</strong>: It saves jobs to a file or Redis, ensuring they survive restarts.</li>
+<li> <strong>Smart Retries</strong>: Failed jobs are automatically retried with exponential backoff and jitter, preventing retry storms.</li>
+<li> <strong>Panic Safety</strong>: It recovers from panics within your handlers, logs the error, and safely moves the job to a dead-letter queue.</li>
+<li> <strong>Controlled Concurrency</strong>: You define a fixed worker pool, so you never have unbounded goroutines overwhelming your system.</li>
+<li> <strong>Dead-Letter Queue</strong>: After too many retries, or if a job fails permanently, it's moved to a DLQ for later inspection. No job is ever truly lost.</li>
+</ul> <h2> <a name="show-me-the-code" href="#show-me-the-code"> </a> Show Me The Code!
+</h2> <p>Let's see how easy it is to use. Here's a quick example of the in-process dispatcher.</p> <p>First, install it:<br>
+</p> <div>
+<pre><code>go get github.com/puretype-spec/CSJD
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Now, let's set up a dispatcher that saves its state to a local file.<br>
+</p> <div>
+<pre><code><span>package</span> <span>main</span> <span>import</span> <span>(</span> <span>"context"</span> <span>"fmt"</span> <span>"time"</span> <span>"github.com/puretype-spec/CSJD/dispatcher"</span>
+<span>)</span> <span>func</span> <span>main</span><span>()</span> <span>{</span> <span>// Jobs will be persisted to this file</span> <span>store</span><span>,</span> <span>_</span> <span>:=</span> <span>dispatcher</span><span>.</span><span>NewFileJobStore</span><span>(</span><span>"./data/jobs.json"</span><span>)</span> <span>defer</span> <span>store</span><span>.</span><span>Close</span><span>()</span> <span>// Configure the dispatcher with 4 concurrent workers</span> <span>d</span><span>,</span> <span>_</span> <span>:=</span> <span>dispatcher</span><span>.</span><span>New</span><span>(</span><span>dispatcher</span><span>.</span><span>Config</span><span>{</span> <span>Workers</span><span>:</span> <span>4</span><span>,</span> <span>MaxPendingJobs</span><span>:</span> <span>10000</span><span>,</span> <span>Store</span><span>:</span> <span>store</span><span>,</span> <span>})</span> <span>// Register a handler for "send_email" jobs</span> <span>_</span> <span>=</span> <span>d</span><span>.</span><span>RegisterHandler</span><span>(</span><span>"send_email"</span><span>,</span> <span>func</span><span>(</span><span>ctx</span> <span>context</span><span>.</span><span>Context</span><span>,</span> <span>job</span> <span>dispatcher</span><span>.</span><span>Job</span><span>)</span> <span>error</span> <span>{</span> <span>fmt</span><span>.</span><span>Printf</span><span>(</span><span>"Processing job %s: Sending email...
+"</span><span>,</span> <span>job</span><span>.</span><span>ID</span><span>)</span> <span>// Your email sending logic here...</span> <span>// If this returns an error, CSJD will retry it!</span> <span>// If it panics, CSJD will catch it!</span> <span>return</span> <span>nil</span> <span>})</span> <span>// Start the dispatcher in the background</span> <span>_</span> <span>=</span> <span>d</span><span>.</span><span>Start</span><span>()</span> <span>fmt</span><span>.</span><span>Println</span><span>(</span><span>"Dispatcher started."</span><span>)</span> <span>// Submit a new job!</span> <span>job</span> <span>:=</span> <span>dispatcher</span><span>.</span><span>Job</span><span>{</span><span>ID</span><span>:</span> <span>"job-123"</span><span>,</span> <span>Type</span><span>:</span> <span>"send_email"</span><span>}</span> <span>_</span> <span>=</span> <span>d</span><span>.</span><span>Submit</span><span>(</span><span>job</span><span>)</span> <span>fmt</span><span>.</span><span>Printf</span><span>(</span><span>"Submitted job %s.
+"</span><span>,</span> <span>job</span><span>.</span><span>ID</span><span>)</span> <span>// Gracefully stop the dispatcher on shutdown</span> <span>fmt</span><span>.</span><span>Println</span><span>(</span><span>"Waiting 5 seconds before shutdown..."</span><span>)</span> <span>stopCtx</span><span>,</span> <span>cancel</span> <span>:=</span> <span>context</span><span>.</span><span>WithTimeout</span><span>(</span><span>context</span><span>.</span><span>Background</span><span>(),</span> <span>5</span><span>*</span><span>time</span><span>.</span><span>Second</span><span>)</span> <span>defer</span> <span>cancel</span><span>()</span> <span>_</span> <span>=</span> <span>d</span><span>.</span><span>Stop</span><span>(</span><span>stopCtx</span><span>)</span> <span>fmt</span><span>.</span><span>Println</span><span>(</span><span>"Dispatcher stopped gracefully."</span><span>)</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it! You now have a persistent, reliable job queue with retries and panic protection. Notice how your handler logic remains clean and focused on the business task.</p> <h2> <a name="ready-to-scale" href="#ready-to-scale"> </a> Ready to Scale?
+</h2> <p>When you need to scale beyond a single instance, switching to the distributed Redis backend is straightforward. You get all the same safety features, plus multi-node coordination.</p> <h2> <a name="we-need-your-help" href="#we-need-your-help"> </a> We Need Your Help!
+</h2> <p>CSJD is a young open-source project, and we're just getting started. If you believe in building more reliable software and find this project useful, please give it a star on GitHub!</p> <p> <strong><a href="https://github.com/puretype-spec/CSJD" target="_blank">GitHub Repo: puretype-spec/CSJD</a></strong> </p> <p>We welcome all feedback, feature requests, and contributions. Check out our <code>README</code> to learn more about advanced features like:</p> <ul>
+<li>Metrics snapshots</li>
+<li>TTL Cache with stampede protection</li>
+<li>Batch loading for N+1 problems</li>
+</ul> <p>Thanks for reading, and happy coding!</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>CEL by Example</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>CEL by Example</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 2:05:39 PM | <a href="https://celbyexample.com/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <p><a href="https://cel.dev/">CEL (Common Expression Language)</a> evaluates expressions against data—simple values, a Protobuf message, or a JSON object.</p>
+<p>CEL's fast, portable, and safe: it's used in <a href="https://kubernetes.io/docs/reference/using-api/cel/">Kubernetes</a> admission control, <a href="https://cloud.google.com/iam/docs/conditions-overview">Google Cloud IAM</a> conditions, <a href="https://firebase.google.com/docs/rules/rules-language">Firebase</a> security rules, <a href="https://www.envoyproxy.io/docs/envoy/latest/xds/type/v3/cel.proto">Envoy Proxy</a> routing, and <a href="https://protovalidate.com/">Protovalidate</a>'s constraint rules.</p>
+<p>Let's explore CEL together, starting with a simple User message:</p>
+<div><pre><span></span><code><span><a href="#__codelineno-0-1" name="__codelineno-0-1"></a><span>{</span>
+</span><span><a href="#__codelineno-0-2" name="__codelineno-0-2"></a><span> </span><span>"name"</span><span>:</span><span> </span><span>"Alice"</span><span>,</span>
+</span><span><a href="#__codelineno-0-3" name="__codelineno-0-3"></a><span> </span><span>"roles"</span><span>:</span><span> </span><span>[</span><span>"admin"</span><span>,</span><span> </span><span>"editor"</span><span>,</span><span> </span><span>"viewer"</span><span>],</span>
+</span><span><a href="#__codelineno-0-4" name="__codelineno-0-4"></a><span> </span><span>"age"</span><span>:</span><span> </span><span>30</span><span>,</span>
+</span><span><a href="#__codelineno-0-5" name="__codelineno-0-5"></a><span> </span><span>"email"</span><span>:</span><span> </span><span>"alice@example.com"</span><span>,</span>
+</span><span><a href="#__codelineno-0-6" name="__codelineno-0-6"></a><span> </span><span>"created"</span><span>:</span><span> </span><span>timestamp</span><span>(</span><span>"2025-12-14T00:00:00Z"</span><span>),</span>
+</span><span><a href="#__codelineno-0-7" name="__codelineno-0-7"></a><span> </span><span>"email_verified"</span><span>:</span><span> </span><span>timestamp</span><span>(</span><span>"2025-12-14T18:30:00Z"</span><span>)</span>
+</span><span><a href="#__codelineno-0-8" name="__codelineno-0-8"></a><span>}</span>
+</span></code></pre></div>
+<h2>Strings and numbers<a href="#strings-and-numbers">#</a></h2>
+<p>A basic <a href="https://celbyexample.com/strings-and-numbers/">comparison</a>: is the user over 18?</p>
+<div><pre><span></span><code><span><a href="#__codelineno-1-1" name="__codelineno-1-1"></a><span>user</span><span>.</span><span>age</span><span> </span><span>&gt;=</span><span> </span><span>18</span>
+</span><span><a href="#__codelineno-1-2" name="__codelineno-1-2"></a><span>// result: true (bool)</span>
+</span></code></pre></div>
+<p>Check the user's email domain with a <a href="https://celbyexample.com/strings-and-numbers/">string</a> function.</p>
+<div><pre><span></span><code><span><a href="#__codelineno-2-1" name="__codelineno-2-1"></a><span>user</span><span>.</span><span>email</span><span>.</span><span>endsWith</span><span>(</span><span>"@example.com"</span><span>)</span>
+</span><span><a href="#__codelineno-2-2" name="__codelineno-2-2"></a><span>// result: true (bool)</span>
+</span></code></pre></div>
+<h2>Collections<a href="#collections">#</a></h2>
+<p>Does the user have a specific role?
+<a href="https://celbyexample.com/collections/"><code>in</code></a> checks membership in a list.</p>
+<div><pre><span></span><code><span><a href="#__codelineno-3-1" name="__codelineno-3-1"></a><span>"admin"</span><span> </span><span>in</span><span> </span><span>user</span><span>.</span><span>roles</span>
+</span><span><a href="#__codelineno-3-2" name="__codelineno-3-2"></a><span>// result: true (bool)</span>
+</span></code></pre></div>
+<p>What if the match isn't exact?
+<a href="https://celbyexample.com/collections/"><code>exists()</code></a> tests whether any element satisfies a condition.</p>
+<div><pre><span></span><code><span><a href="#__codelineno-4-1" name="__codelineno-4-1"></a><span>user</span><span>.</span><span>roles</span><span>.</span><span>exists</span><span>(</span><span>r</span><span>,</span><span> </span><span>r</span><span>.</span><span>startsWith</span><span>(</span><span>"ad"</span><span>))</span>
+</span><span><a href="#__codelineno-4-2" name="__codelineno-4-2"></a><span>// result: true (bool)</span>
+</span></code></pre></div>
+<p>The user has three roles—what if we only want the elevated ones?
+<a href="https://celbyexample.com/collections/"><code>filter()</code></a> narrows a list to matching elements.</p>
+<div><pre><span></span><code><span><a href="#__codelineno-5-1" name="__codelineno-5-1"></a><span>user</span><span>.</span><span>roles</span><span>.</span><span>filter</span><span>(</span><span>r</span><span>,</span><span> </span><span>r</span><span> </span><span>!=</span><span> </span><span>"viewer"</span><span>)</span>
+</span><span><a href="#__codelineno-5-2" name="__codelineno-5-2"></a><span>// result: ["admin", "editor"] (list)</span>
+</span></code></pre></div>
+<h2>Timestamps and durations<a href="#timestamps-and-durations">#</a></h2>
+<p>Did the user verify their email within 24 hours of signing up?
+CEL handles <a href="https://celbyexample.com/timestamps-and-durations/">time</a> natively—subtract two timestamps to get a duration, then compare.</p>
+<div><pre><span></span><code><span><a href="#__codelineno-6-1" name="__codelineno-6-1"></a><span>user</span><span>.</span><span>email_verified</span><span> </span><span>-</span><span> </span><span>user</span><span>.</span><span>created</span><span> </span><span>&lt;</span><span> </span><span>duration</span><span>(</span><span>"24h"</span><span>)</span>
+</span><span><a href="#__codelineno-6-2" name="__codelineno-6-2"></a><span>// result: true (bool)</span>
+</span></code></pre></div>
+<h2>Logical operators<a href="#logical-operators">#</a></h2>
+<p><a href="https://celbyexample.com/logic-and-conditions/">Logical operators</a> combine checks into a single expression.</p>
+<div><pre><span></span><code><span><a href="#__codelineno-7-1" name="__codelineno-7-1"></a><span>user</span><span>.</span><span>age</span><span> </span><span>&gt;=</span><span> </span><span>18</span><span> </span><span>&amp;&amp;</span><span> </span><span>"admin"</span><span> </span><span>in</span><span> </span><span>user</span><span>.</span><span>roles</span>
+</span><span><a href="#__codelineno-7-2" name="__codelineno-7-2"></a><span>// result: true (bool)</span>
+</span></code></pre></div>
+<p>The <a href="https://celbyexample.com/logic-and-conditions/">conditional operator</a> allows branching logic.</p>
+<div><pre><span></span><code><span><a href="#__codelineno-8-1" name="__codelineno-8-1"></a><span>user</span><span>.</span><span>age</span><span> </span><span>&gt;=</span><span> </span><span>18</span><span> </span><span>?</span><span> </span><span>"adult"</span><span> </span><span>:</span><span> </span><span>"minor"</span>
+</span><span><a href="#__codelineno-8-2" name="__codelineno-8-2"></a><span>// result: "adult" (string)</span>
+</span></code></pre></div>
+<h2>Transforming data<a href="#transforming-data">#</a></h2>
+<p>CEL expressions return any type.
+Build a <a href="https://celbyexample.com/transforming-data/">map</a> that strips PII from the user.</p>
+<div><pre><span></span><code><span><a href="#__codelineno-9-1" name="__codelineno-9-1"></a><span>{</span><span>"roles"</span><span>:</span><span> </span><span>user</span><span>.</span><span>roles</span><span>,</span><span> </span><span>"is_adult"</span><span>:</span><span> </span><span>user</span><span>.</span><span>age</span><span> </span><span>&gt;=</span><span> </span><span>18</span><span>}</span>
+</span><span><a href="#__codelineno-9-2" name="__codelineno-9-2"></a><span>// result: {"roles": ["admin", "editor", "viewer"], "is_adult": true} (map)</span>
+</span></code></pre></div>
+<p>Annotate each role with whether it's elevated.
+<a href="https://celbyexample.com/transforming-data/"><code>map()</code></a> transforms a collection into a new one.</p>
+<div><pre><span></span><code><span><a href="#__codelineno-10-1" name="__codelineno-10-1"></a><span>user</span><span>.</span><span>roles</span><span>.</span><span>map</span><span>(</span><span>r</span><span>,</span><span> </span><span>{</span><span>"role"</span><span>:</span><span> </span><span>r</span><span>,</span><span> </span><span>"elevated"</span><span>:</span><span> </span><span>r</span><span> </span><span>!=</span><span> </span><span>"viewer"</span><span>})</span>
+</span><span><a href="#__codelineno-10-2" name="__codelineno-10-2"></a><span>// result: [{"role": "admin", "elevated": true}, {"role": "editor", "elevated": true}, {"role": "viewer", "elevated": false}] (list)</span>
+</span></code></pre></div>
+<p><a href="https://celbyexample.com/transforming-data/"><code>map()</code></a> can also filter—select elevated roles and grant write access in one step.</p>
+<div><pre><span></span><code><span><a href="#__codelineno-11-1" name="__codelineno-11-1"></a><span>user</span><span>.</span><span>roles</span><span>.</span><span>map</span><span>(</span><span>r</span><span>,</span><span> </span><span>r</span><span> </span><span>!=</span><span> </span><span>"viewer"</span><span>,</span><span> </span><span>r</span><span> </span><span>+</span><span> </span><span>":write"</span><span>)</span>
+</span><span><a href="#__codelineno-11-2" name="__codelineno-11-2"></a><span>// result: ["admin:write", "editor:write"] (list)</span>
+</span></code></pre></div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

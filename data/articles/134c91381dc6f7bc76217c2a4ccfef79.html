@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Keychains.dev — Secure credential delegation for AI agents</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Keychains.dev — Secure credential delegation for AI agents</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 1:59:29 PM | <a href="https://keychains.dev/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><main><div><div><p><span>Secure credential delegation for AI agents</span></p></div><h2>Give your agent the keys.<br><span>Not the kingdom.</span></h2><p>Let AI agents access any API without leaking sensitive credentials. Users stay in control. Permissions are scoped, transparent, and revocable.</p><div><p># Replace credentials with template variables</p><p><span>$</span> <span>keychains curl</span> <span>https://api.github.com/user/repos</span> <span>\</span></p><p><span>-H</span> <span>"Authorization: Bearer <span>{{GITHUB_TOKEN}}</span>"</span></p><div><p>&gt;</p> <p><span>200 OK</span> — 42 repositories</p></div></div></div><section><h2>Credentials that flow. Control that stays.</h2><p>Your agent gets exactly the access it needs — nothing more. Your users decide what to share, and can revoke it anytime.</p><div><div><p>Step 1</p><h3>Use keychains curl</h3><p>Use <code>keychains curl</code> as a drop-in replacement for <code>curl</code>. The only difference: replace hard-coded credentials with template variables like <code>{{OAUTH2_ACCESS_TOKEN}}</code> or <code>{{STRIPE_PRIVATE_KEY}}</code>.</p></div><div><p>Step 2</p><h3>User approves access</h3><p>When a new API scope is needed, the user sees exactly what the agent wants to do and approves with one click.</p></div><div><p>Step 3</p><h3>Credentials injected securely</h3><p>Keychains injects the right credentials server-side. Your agent never sees the raw secrets — invisible to prompt injection.</p></div></div><p><a href="https://keychains.dev/how-it-works">Deep dive into the architecture</a></p></section><div><h2>Security isn't a feature. It's the product.</h2><p>Built from the ground up for a world where AI agents handle your most sensitive data.</p><div><div><h3>SSH Key Identity</h3><p>Every machine authenticates via SSH keypairs. No passwords. No API keys in your agent's environment.</p></div><div><h3>Stateful Fingerprinting</h3><p>Machines exchange fingerprints with every call. Leaked keys are invalidated on first use.</p></div><div><h3>Full Transparency</h3><p>Users see every permission granted. Every agent. Every task. Full audit trail.</p></div><div><h3>Instant Revocation</h3><p>Revoke any machine's access with one click. No waiting. No grace periods.</p></div></div><p><a href="https://keychains.dev/security">Read the security overview</a></p></div><section><h2>Thousands of API providers. One keychain.</h2><p>OAuth, API keys, basic auth — whatever the provider needs, Keychains handles it. Your agent just calls the API.</p><div><p><img src="https://img.logo.dev/github.com?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&amp;size=64&amp;format=png" alt="github"></p><p><img src="https://img.logo.dev/google.com?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&amp;size=64&amp;format=png" alt="google"></p><p><img src="https://img.logo.dev/slack.com?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&amp;size=64&amp;format=png" alt="slack"></p><p><img src="https://img.logo.dev/stripe.com?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&amp;size=64&amp;format=png" alt="stripe"></p><p><img src="https://img.logo.dev/notion.so?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&amp;size=64&amp;format=png" alt="notion"></p><p><img src="https://img.logo.dev/linear.app?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&amp;size=64&amp;format=png" alt="linear"></p><p><img src="https://img.logo.dev/spotify.com?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&amp;size=64&amp;format=png" alt="spotify"></p><p><img src="https://img.logo.dev/uber.com?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&amp;size=64&amp;format=png" alt="uber"></p><p><img src="https://img.logo.dev/airtable.com?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&amp;size=64&amp;format=png" alt="airtable"></p><p><img src="https://img.logo.dev/shopify.com?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&amp;size=64&amp;format=png" alt="shopify"></p><p><img src="https://img.logo.dev/twilio.com?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&amp;size=64&amp;format=png" alt="twilio"></p><p><img src="https://img.logo.dev/openai.com?token=pk_X-1ZO13GSgeOoUrIuJ6GMQ&amp;size=64&amp;format=png" alt="openai"></p><p>...</p></div><div><div><p>OAuth 2.0 with PKCE</p><p>Auto token refresh</p></div><div><p>API Keys</p><p>Scoped key injection</p></div><div><p>Basic Auth</p><p>User/password pairs</p></div></div></section><div><div><div><p>The problem today</p></div><h2>Agents are the new attack surface.</h2><p>Today, giving an AI agent access to your APIs means handing it your raw tokens. One prompt injection, one malicious tool, one leaked context window — and your credentials are gone.</p><ul><li><p><span>✕</span></p>API keys pasted into .env files and shared across agents</li><li><p><span>✕</span></p>No visibility into what credentials an agent has or uses</li><li><p><span>✕</span></p>No way to revoke access without rotating secrets</li><li><p><span>✕</span></p>Prompt injection can exfiltrate credentials from context</li></ul></div><div><div><p>With Keychains</p></div><h2>Agent freedom without compromise.</h2><p>Keychains works like curl. Your agent never touches raw secrets — just prefix <code>keychains curl</code> and credentials are injected server-side.</p><ul><li>Credentials never leave the server — invisible to prompt injection</li><li>Users approve each permission — full consent flow</li><li>Revoke any agent's access instantly from the dashboard</li><li>Delegate tokens for sub-agents with scoped permissions</li></ul></div></div><section><h2>How Keychains compares</h2><p>Credential management isn't new. Here's how Keychains fits alongside tools you may already use.</p><div><div><h3>vs. Secrets Managers</h3><p>Vault, AWS Secrets Manager, and Doppler protect credentials at rest. Keychains protects them at use-time. They're complementary.</p><p>Use a secrets manager to store credentials. Keychains adds the agent-specific layer: per-agent permissions, user consent, scoped delegation, and audit trails.</p></div><div><h3>vs. API Gateways</h3><p>Kong and Apigee do credential injection for server-to-server traffic. Keychains does it for agent-to-API traffic, with agent-specific primitives.</p><p>SSH-based machine identity, user consent flows, and multi-agent delegation are designed for autonomous agents — not traditional microservices.</p></div><div><h3>vs. OAuth DPoP</h3><p>DPoP binds tokens to specific clients using public/private keys — similar in spirit to Keychains' machine identity.</p><p>DPoP is an OAuth extension. Keychains is a full proxy layer that works with any auth scheme — OAuth, API keys, basic auth, and custom headers.</p></div></div></section><div><h2>Spawn sub-agents safely.</h2><p>Need to delegate work? Create scoped tokens for sub-agents with only the permissions they need — or create blank tokens that require fresh user approval.</p><div><div><h3>Scoped Delegate Tokens</h3><p>Fork your permissions. Give a sub-agent access to only the APIs it needs for its specific task. The parent agent retains full control.</p></div><div><h3>Blank Tokens</h3><p>Spawn sub-agents with zero initial permissions. When they need access, the user is prompted to approve — ensuring informed consent for every task.</p></div></div></div><div><h2>The agentic web needs<br>a credential layer.</h2><p>Keychains.dev is the credential layer for the agentic web. Your agents get secure API access. Your users stay in control.</p></div></main></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

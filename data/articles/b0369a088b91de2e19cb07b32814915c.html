@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,47 +28,8 @@
     Source: IoT Business News | Date: 2/1/2026 1:11:55 PM | <a href="https://iotbusinessnews.com/2026/02/01/iotacomm-800-mhz-lorawan-reference-design-and-sensor/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p><img src="https://iotbusinessnews.com/WordPress/wp-content/uploads/2026/02/lorawan-landscape.jpg" alt="IotaComm 800 MHz LoRaWAN Reference Design and Sensor"></p>
-<p><strong>Key Insights (AI-assisted):</strong><br>
-Positioning LoRaWAN on licensed 800 MHz spectrum signals a potential shift in how mission-critical IoT workloads will be architected. By abstracting modem certification and RF design into a reusable reference platform, IotaComm lowers the barrier for OEMs to test licensed LPWAN models without abandoning LoRaWAN tooling and cloud integrations. The dual-band strategy also sets up more nuanced SLA tiers, where deterministic connectivity can be selectively applied to high-value assets. This move reflects a broader trend of LPWAN evolving from best-effort telemetry to carrier-grade infrastructure.</p>
-<h2>IotaComm Unveils 800 MHz LoRaWAN Reference Design, Launches Environmental Sensor as First Commercial Device on Licensed Spectrum Platform</h2>
-<p>IotaComm, a digital infrastructure company powering Physical Artificial Intelligence (Physical AI) for smart buildings and smart cities, today announced its <strong>800 MHz LoRaWAN Reference Design</strong>, a complete hardware, software, and modem architecture purpose-built for developing devices that operate on FCC-licensed spectrum. Alongside the reference design launch, IotaComm announced that its Environmental Sensor, the first commercial device built on this platform, has received Federal Communications Commission (FCC) equipment authorization, validating the reference design’s readiness for commercial-scale deployment.</p>
-<p>The 800 MHz Reference Design provides device manufacturers, system integrators, and enterprise developers with a proven foundation for building LoRaWAN products that leverage IotaComm’s FCC-licensed 800 MHz spectrum holdings (authorized under FCC Part 90 for 809.0–817.0 MHz operation). The reference design encompasses certified modem hardware, embedded software stack, and integration documentation, reducing the engineering lift required to bring licensed-spectrum LPWAN devices to market.</p>
-<h3>Why a licensed-spectrum reference design matters</h3>
-<p>Until now, LoRaWAN device development has centered almost exclusively on unlicensed ISM-band operation. While the 915 MHz ISM band offers broad ecosystem alignment and deployment flexibility, critical infrastructure and industrial applications increasingly require the managed-spectrum characteristics that licensed operation provides: predictable interference profiles, coordinated coverage planning, and the operational certainty that comes with exclusive spectrum rights.</p>
-<p>The 800 MHz Reference Design addresses this gap by giving the ecosystem a standardized path to licensed-spectrum device development, without sacrificing LoRaWAN interoperability or requiring proprietary approaches.</p>
-<h3>Environmental Sensor: First device, first FCC authorization</h3>
-<p>IotaComm’s 800 MHz Environmental Sensor is the inaugural device built on the 800 MHz Reference Design and carries Federal Communications Commission (FCC) equipment authorization for commercial deployment. It provides continuous environmental monitoring over IotaComm’s 800 MHz licensed LoRaWAN network, collecting and transmitting real-time data on temperature, relative humidity, barometric pressure, and total volatile organic compounds (TVOCs). Its gas sensor detects and estimates key volatile organic compounds (VOCs), including ethane, isoprene (2-methyl-1,3-butadiene), ethanol, acetone, and carbon monoxide, supporting deployments across smart buildings and other indoor monitoring environments.</p>
-<p>The Environmental Sensor’s FCC authorization serves as both a product milestone and a proof point for the reference design itself, demonstrating that devices built on this architecture can achieve regulatory approval and move from prototype to production deployment.</p>
-<h3>IotaWave: Dual-band deployment flexibility</h3>
-<p>IotaComm will bring these capabilities to market through <strong>IotaWave</strong>, its <strong>dual-band LoRaWAN network</strong> strategy pairing nationwide licensed 800 MHz spectrum with the 915 MHz ISM band. Customers can choose the licensed 800 MHz layer when managed-spectrum performance is required or leverage the 915 MHz ISM layer when unlicensed deployment economics and broad ecosystem alignment are the priority—all within a standards-based, interoperable framework.</p>
-<h3>What the reference design and FCC authorization enable</h3>
-<p>With the 800 MHz Reference Design now available and the Environmental Sensor FCC-authorized, IotaComm can support:</p>
-<ul>
-<li>Accelerated device development for partners building licensed-spectrum LoRaWAN products</li>
-<li>Commercial-scale deployment of environmental monitoring across large facilities and distributed footprints</li>
-<li>Greater network planning certainty for customers requiring managed-spectrum performance</li>
-<li>Expanded readiness for critical infrastructure applications where predictable connectivity underpins safety, compliance, and operational continuity</li>
-</ul>
-<p>Terrence DeFranco, CEO &amp; Chairman of IotaComm, said:</p>
-<blockquote>
-<p>“The 800 MHz Reference Design is the foundation we’ve been building toward. This milestone completes the foundational network components required to extend LoRaWAN into licensed spectrum, materially increasing the value and utility of our spectrum assets.”</p>
-</blockquote>
-<p><em>“IotaComm now occupies a unique position in the LoRaWAN ecosystem, offering a licensed LPWAN purpose-built for critical infrastructure, utilities, and healthcare, while maintaining interoperability with standard LoRaWAN deployments. This dual-layer network strategy enables Delphi360 to collect and analyze data others simply cannot, reinforcing our leadership position in the large, rapidly growing smart infrastructure markets.”</em></p>
-<p><em>“We designed this reference architecture to collapse the complexity of licensed-spectrum device development—from modem certification through software integration to field deployment,”</em> said Wael Guibene, Senior Vice President of Product and Technology at IotaComm. <em>“The Environmental Sensor is the first product off this platform, but the reference design is built to support a roadmap of devices. Combined with Delphi360 for network management and analytics, we’re giving customers a complete stack from edge to insight.”</em></p>
-<h3>Availability</h3>
-<p>The 800 MHz LoRaWAN Reference Design is available now to qualified partners and device developers. IotaComm is engaging with partners and customers to evaluate:</p>
-<ul>
-<li>Device development using the 800 MHz Reference Design</li>
-<li>Smart buildings and indoor environmental quality monitoring</li>
-<li>Utilities and smart infrastructure</li>
-<li>Municipal and public-sector monitoring</li>
-<li>Industrial operations and distributed asset visibility</li>
-</ul>
-<h3>Market Context</h3>
-<p>Low Power Wide Area Network (LPWAN) adoption is moving from early experimentation to infrastructure-scale deployment as organizations push more sensing, compliance, and automation to the edge. For IotaComm, this shift reinforces why we are building a standards-based path to scalable deployments, with licensed-spectrum options that support predictable performance where reliability matters most.</p>
-<p>As a reference point for projected market growth, Future Market Insights reports: <em>“The Low Power Wide Area Network (LPWAN) Market is estimated to be valued at USD 16.9 billion in 2025 and is projected to reach USD 973.1 billion by 2035, registering a compound annual growth rate (CAGR) of 50.0% over the forecast period.”</em> (Source: Future Market Insights, “Low Power Wide Area Network (LPWAN) Market… 2025 to 2035,” accessed [January 28, 2026].)</p>
-<p>IotaComm’s 800 MHz LoRaWAN Reference Design and newly authorized Environmental Sensor are designed to help partners and customers move faster from concept to deployment, while staying aligned with an interoperable LoRaWAN ecosystem and expanding the set of viable LPWAN deployment models for critical infrastructure, industrial, and public-sector environments.</p> </div></div>
+    <p>IotaComm introduces its 800 MHz LoRaWAN Reference Design alongside the Environmental Sensor, the first FCC-authorized device on its licensed spectrum platform, enabling advanced IoT deployments for critical infrastructure and smart environments.
+The post IotaComm 800 MHz LoRaWAN Reference Design and Sensor appeared first on IoT Business News.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - Sentinel-Gate/Sentinelgate: Universal firewall for AI agents. RBAC, CEL policies, and full audit trail for MCP tool calls, shell commands, and HTTP requests.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - Sentinel-Gate/Sentinelgate: Universal firewall for AI agents. RBAC, CEL policies, and full audit trail for MCP tool calls, shell commands, and HTTP requests.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 2:12:48 PM | <a href="https://github.com/Sentinel-Gate/Sentinelgate" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>SentinelGate</h1><a href="#sentinelgate"></a></div>
+<pre><code>Universal firewall for AI agents. Intercepts MCP tool calls, shell commands, file access, and HTTP requests. RBAC · CEL policies · Full audit trail</code></pre>
+<p> <a href="https://github.com/Sentinel-Gate/Sentinelgate/actions/workflows/ci.yml"><img src="https://camo.githubusercontent.com/7bcb17e77aaab98e1beef1eb2205040b8a988ecf13050a4a30578d55a5b0b007/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f616374696f6e732f776f726b666c6f772f7374617475732f53656e74696e656c2d476174652f53656e74696e656c676174652f63692e796d6c3f7374796c653d666c61742d737175617265266c6162656c3d4349" alt="CI"></a> <a href="/Sentinel-Gate/Sentinelgate/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/f1bda7d40644d270e37a0a45b7d4618c97f7ac379d2710fc5088989563b50c5d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4147504c2d2d332e302d626c75653f7374796c653d666c61742d737175617265" alt="License: AGPL-3.0"></a> <a href="https://go.dev"><img src="https://camo.githubusercontent.com/cd6901ecbe427a436056dff2a27886245463d44d2956e284d7cd94f62c979f67/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f476f2d312e32342b2d3030414444383f7374796c653d666c61742d737175617265266c6f676f3d676f266c6f676f436f6c6f723d7768697465" alt="Go 1.24+"></a> <a href="https://github.com/Sentinel-Gate/Sentinelgate/releases"><img src="https://camo.githubusercontent.com/aeb21c1b13ffe5de86f8971322c24275f40fe03dc18ebef688fc2573921ffef0/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f762f72656c656173652f53656e74696e656c2d476174652f53656e74696e656c676174653f696e636c7564655f70726572656c6561736573267374796c653d666c61742d737175617265266c6162656c3d52656c65617365" alt="Release"></a>
+</p>
+<p> <a href="#quick-start">Get Started</a> · <a href="https://www.sentinelgate.co.uk">Website</a> · <a href="/Sentinel-Gate/Sentinelgate/blob/main/docs/Guide.md">Docs</a>
+</p>
+<hr>
+<div><h2>The problem</h2><a href="#the-problem"></a></div>
+<p>AI agents have unrestricted access to your machine — every tool call, shell command, file read, and HTTP request runs with no policy, no authentication, and no audit trail. One prompt injection or one hallucination is all it takes.</p>
+<div><h2>How SentinelGate works</h2><a href="#how-sentinelgate-works"></a></div>
+<p>SentinelGate sits between the AI agent and your system. Every action is intercepted, evaluated against your policies, and logged — before it reaches anything. Denied actions are blocked at the proxy.</p>
+<section> <div> <div> <pre>sequenceDiagram participant Agent as AI Agent participant SG as SentinelGate participant Upstream as System / MCP Server Agent-&gt;&gt;SG: tools/call "delete_file" Note over SG: Validate · Rate limit · Auth Note over SG: Policy: "block-deletes" → DENY SG--&gt;&gt;Agent: Access denied by policy Note over Upstream: Never reached
+</pre> </div> </div> <span> <span> <span>Loading</span>
+</span> </span>
+</section> <p>No code changes. No agent modifications.</p>
+<hr>
+<div><h2>Quick start</h2><a href="#quick-start"></a></div>
+<p><strong>Install</strong> (macOS / Linux):</p>
+<div><pre>curl -sSfL https://raw.githubusercontent.com/Sentinel-Gate/Sentinelgate/main/install.sh <span>|</span> sh</pre></div> Manual download or build from source
+<p><strong>Download</strong> from <a href="https://github.com/Sentinel-Gate/Sentinelgate/releases">GitHub Releases</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Archive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS (Apple Silicon)</td>
+<td><pre><code>sentinel-gate_darwin_arm64.tar.gz</code></pre></td>
+</tr>
+<tr>
+<td>macOS (Intel)</td>
+<td><pre><code>sentinel-gate_darwin_amd64.tar.gz</code></pre></td>
+</tr>
+<tr>
+<td>Linux (x86_64)</td>
+<td><pre><code>sentinel-gate_linux_amd64.tar.gz</code></pre></td>
+</tr>
+<tr>
+<td>Linux (ARM64)</td>
+<td><pre><code>sentinel-gate_linux_arm64.tar.gz</code></pre></td>
+</tr>
+<tr>
+<td>Windows (x86_64)</td>
+<td><pre><code>sentinel-gate_windows_amd64.zip</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p><strong>macOS / Linux:</strong></p>
+<div><pre>tar xzf sentinel-gate_<span>*</span>.tar.gz
+chmod +x sentinel-gate
+sudo mv sentinel-gate /usr/local/bin/</pre></div>
+<p><strong>Windows:</strong> extract the </p><pre><code>.zip</code></pre> and add <pre><code>sentinel-gate.exe</code></pre> to your <pre><code>PATH</code></pre>.<p></p>
+<p><strong>Build from source</strong> (Go 1.24+):</p>
+<div><pre>git clone https://github.com/Sentinel-Gate/Sentinelgate.git
+<span>cd</span> Sentinelgate <span>&amp;&amp;</span> go build -o sentinel-gate ./cmd/sentinel-gate</pre></div> <p><strong>Run:</strong></p>
+<div><pre>sentinel-gate run -- claude <span><span>#</span> Claude Code</span>
+sentinel-gate run -- gemini <span><span>#</span> Gemini CLI</span>
+sentinel-gate run -- python agent.py <span><span>#</span> Python agent</span>
+sentinel-gate run -- node agent.js <span><span>#</span> Node.js agent</span></pre></div>
+<p>Open <strong><a href="http://localhost:8080/admin">http://localhost:8080/admin</a></strong> to manage policies, upstreams, and identities from the browser.</p>
+<blockquote>
+<p><strong></strong></p><pre><strong><code>run</code></strong></pre><strong> handles everything:</strong> starts the server, configures runtime hooks and HTTP proxy for your agent, generates a per-session API key, and cleans up on exit. To give your agent access to external MCP tools, add upstream servers in the Admin UI.<p></p>
+</blockquote>
+<hr>
+<div><h2>MCP server mode</h2><a href="#mcp-server-mode"></a></div>
+<p></p><pre><code>run</code></pre> wraps an agent process. To run SentinelGate as a standalone MCP proxy — without wrapping an agent — use <pre><code>start</code></pre>:<p></p>
+<div><pre>sentinel-gate start</pre></div>
+<p>The MCP endpoint is available at </p><pre><code>http://localhost:8080/mcp</code></pre>. Point your client there and add the API key from the Admin UI.<p></p>
+<p>Add upstream MCP servers through the Admin UI — your client sees all their tools through a single endpoint, with policies applied.</p>
+<hr>
+<div><h2>Features</h2><a href="#features"></a></div>
+<p><strong>Deterministic enforcement</strong> — Explicit rules, not AI judgment. </p><pre><code>deny delete_*</code></pre> means denied. Always. No probabilistic filtering, no drift.<p></p>
+<p><strong>MCP-native</strong> — Built as an <a href="https://modelcontextprotocol.io">MCP</a> proxy from the ground up. Aggregates multiple upstream MCP servers, applies per-tool policies, and exposes a single endpoint to your client. Also intercepts shell commands, file access, and HTTP requests through runtime hooks.</p>
+<p><strong>CEL-powered rules</strong> — <a href="https://github.com/google/cel-go">Common Expression Language</a>, the same engine behind Kubernetes, Firebase, and Envoy:</p>
+<div><pre><code>action_arg_contains(arguments, "secret") // block by content
+action_type == "command_exec" &amp;&amp; !("admin" in identity_roles) // role-based shell control
+dest_domain_matches(dest_domain, "*.pastebin.com") // outbound blocking
+</code></pre></div>
+<p>Simple tool patterns (</p><pre><code>read_*</code></pre>, <pre><code>delete_*</code></pre>) cover most cases. CEL handles the rest.<p></p>
+<p><strong>Full audit trail</strong> — Every action logged with identity, decision, timestamp, and arguments. Stream live via SSE, filter, or export to CSV.</p>
+<p><strong>Admin UI</strong> — Browser-based policy editor, test playground, security settings, audit viewer. No config files, no restarts.</p>
+<p><strong>Identity and access control</strong> — API keys, roles, per-identity policies. Each agent session gets isolated credentials.</p>
+<hr>
+<div><h2>Admin UI</h2><a href="#admin-ui"></a></div>
+<table>
+<thead>
+<tr>
+<th>Policy Rules</th>
+<th>Audit Log</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" href="/Sentinel-Gate/Sentinelgate/blob/main/assets/screenshot-rules.png"><img src="/Sentinel-Gate/Sentinelgate/raw/main/assets/screenshot-rules.png" alt="Policy rules editor"></a></td>
+<td><a target="_blank" href="/Sentinel-Gate/Sentinelgate/blob/main/assets/screenshot-audit.png"><img src="/Sentinel-Gate/Sentinelgate/raw/main/assets/screenshot-audit.png" alt="Audit log viewer"></a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Security</th>
+<th>Policy Test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" href="/Sentinel-Gate/Sentinelgate/blob/main/assets/screenshot-security.png"><img src="/Sentinel-Gate/Sentinelgate/raw/main/assets/screenshot-security.png" alt="Security settings"></a></td>
+<td><a target="_blank" href="/Sentinel-Gate/Sentinelgate/blob/main/assets/screenshot-policy-test.png"><img src="/Sentinel-Gate/Sentinelgate/raw/main/assets/screenshot-policy-test.png" alt="Policy test playground"></a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Works with <strong>zero configuration</strong>. Everything is managed from the Admin UI and persisted automatically. For infrastructure tuning, an optional YAML config is available:</p>
+<div><pre><span>server</span>: <span>http_addr</span>: <span><span>"</span>:8080<span>"</span></span>
+<span>rate_limit</span>: <span>enabled</span>: <span>true</span> <span>ip_rate</span>: <span>100</span></pre></div>
+<p>Full reference: <a href="/Sentinel-Gate/Sentinelgate/blob/main/docs/Guide.md#8-configuration-reference">Configuration</a> · <a href="/Sentinel-Gate/Sentinelgate/blob/main/docs/Guide.md#9-cli-reference">CLI</a> · <a href="/Sentinel-Gate/Sentinelgate/blob/main/docs/Guide.md#10-admin-api-reference">API</a></p>
+<hr>
+<div><h2>Limitations</h2><a href="#limitations"></a></div>
+<p>SentinelGate is not an OS-level sandbox. A deliberately malicious process could bypass runtime hooks or ignore proxy settings. AI agents use standard libraries and respect these conventions, making SentinelGate effective against mistakes, prompt injection, and overreach. For adversarial isolation, combine with container or VM sandboxes. Full <a href="/Sentinel-Gate/Sentinelgate/blob/main/docs/Guide.md#15-threat-model-and-limitations">threat model</a>.</p>
+<hr>
+<div><h2>SentinelGate Pro</h2><a href="#sentinelgate-pro"></a></div>
+<p>SSO · SIEM integration · Human-in-the-loop approval · Multi-tenancy · Compliance reports — <a href="https://www.sentinelgate.co.uk">sentinelgate.co.uk</a></p>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Bug fixes, features, docs, and feedback welcome. See <a href="/Sentinel-Gate/Sentinelgate/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>. A CLA is required for code contributions — see <a href="/Sentinel-Gate/Sentinelgate/blob/main/CLA.md">CLA.md</a>.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/Sentinel-Gate/Sentinelgate/blob/main/LICENSE">AGPL-3.0</a> — free to use, modify, and self-host. For commercial licensing, <a href="mailto:hello@sentinelgate.co.uk">contact us</a>.</p>
+<hr>
+<p> <a href="https://www.sentinelgate.co.uk">Website</a> · <a href="/Sentinel-Gate/Sentinelgate/blob/main/docs/Guide.md">Docs</a> · <a href="https://github.com/Sentinel-Gate/Sentinelgate/discussions">Discussions</a>
+</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
