@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why I Built a File Converter That Doesn't Upload Your Files</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Why I Built a File Converter That Doesn't Upload Your Files</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 7:12:25 AM | <a href="https://dev.to/ansonchan/why-i-built-a-file-converter-that-doesnt-upload-your-files-kno" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/ansonchan"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3778250%2Fab44c6ae-2164-4197-a0bd-a30175ac3b07.png" alt="Anson Chan"></a> </p> </div><div> <p>Every file converter website works the same way: you upload your file, wait, download the result. Your data travels to someone else's server, gets processed, and comes back.</p> <p>But what if your file never had to leave your device?</p> <h2> <a name="the-problem-with-cloudbased-converters" href="#the-problem-with-cloudbased-converters"> </a> The Problem with Cloud-Based Converters
+</h2> <p>I've used dozens of file conversion tools over the years. They all share the same architecture: your file goes up to a server, gets converted, and comes back down. This model has three fundamental problems.</p> <p><strong>Privacy</strong>: Your file exists on someone else's server, even if temporarily. Financial documents, medical records, personal photos — they all pass through infrastructure you don't control. Most services say they delete files after conversion, but you're trusting their word.</p> <p><strong>Speed</strong>: Upload time + processing time + download time. For a 50MB video file on a slow connection, that's minutes of waiting. The actual conversion might take 5 seconds, but the network overhead dominates.</p> <p><strong>Availability</strong>: No internet? No conversion. Server down? No conversion. Rate limited? No conversion. Your ability to convert files depends entirely on someone else's infrastructure.</p> <h2> <a name="clientside-a-different-architecture" href="#clientside-a-different-architecture"> </a> Client-Side: A Different Architecture
+</h2> <p>When I built <a href="https://tools.sagasu.art/" target="_blank">OmniConvert</a>, I chose a radically different approach: <strong>everything runs in your browser</strong>.</p> <p>Your file never leaves your device. The conversion happens locally using WebAssembly (WASM) and browser APIs. The server delivers the code; your machine does the work.</p> <p>This means:</p> <ul>
+<li>
+<strong>Zero data exposure</strong> — your files stay on your device</li>
+<li>
+<strong>No upload wait</strong> — conversion starts instantly</li>
+<li>
+<strong>Works offline</strong> — once loaded, no internet needed</li>
+<li>
+<strong>No file size limits</strong> — limited only by your device's memory</li>
+</ul> <h2> <a name="how-it-actually-works" href="#how-it-actually-works"> </a> How It Actually Works
+</h2> <p>The technical stack is surprisingly elegant:</p> <ol>
+<li>
+<strong>FFmpeg.wasm</strong> handles video and audio conversions — the same FFmpeg that powers most media processing, compiled to WebAssembly</li>
+<li>
+<strong>Canvas API</strong> handles image format conversions natively in the browser</li>
+<li>
+<strong>PDF.js + jsPDF</strong> handle document conversions</li>
+<li>
+<strong>SheetJS</strong> handles spreadsheet conversions</li>
+</ol> <p>All of these run entirely in the browser tab. When you drop a file onto OmniConvert, it never touches a network request. The conversion happens in a Web Worker so your browser stays responsive.</p> <h2> <a name="the-tradeoffs" href="#the-tradeoffs"> </a> The Trade-offs
+</h2> <p>Client-side isn't perfect. Heavy video transcoding is slower than a beefy server. The initial load downloads ~25MB of WASM binaries. And some conversions that need server-side tools (like OCR or advanced PDF manipulation) aren't possible yet.</p> <p>But for 90% of everyday file conversions — images, documents, audio, video format changes — client-side is faster, more private, and more reliable than any cloud service.</p> <h2> <a name="90-formats-zero-uploads" href="#90-formats-zero-uploads"> </a> 90+ Formats, Zero Uploads
+</h2> <p><a href="https://tools.sagasu.art/" target="_blank">OmniConvert</a> currently supports 94 file conversions across images, documents, audio, video, and spreadsheets. Plus 118 unit conversions across 13 categories.</p> <p>All free. All client-side. All private.</p> <p>The next time you need to convert a file, ask yourself: does this really need to leave my device?</p> <hr> <p><em>Try it: <a href="https://tools.sagasu.art/" target="_blank">tools.sagasu.art</a> — Free, private, browser-based file conversion.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

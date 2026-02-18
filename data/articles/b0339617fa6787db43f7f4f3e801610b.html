@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - mattzzz/rick-voice: Give any bot the voice of Rick Sanchez</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - mattzzz/rick-voice: Give any bot the voice of Rick Sanchez</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 7:10:13 AM | <a href="https://github.com/mattzzz/rick-voice" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1> rick-voice <a href="https://badge.fury.io/py/rick-voice"><img src="https://camo.githubusercontent.com/c9dd3756534d610603669dffaa7e4ef8466f5b432bad678d1ea2a8f6ba83843d/68747470733a2f2f62616467652e667572792e696f2f70792f7269636b2d766f6963652e737667" alt="PyPI version"></a></h1><a href="#-rick-voice-"></a></div>
+<p><strong>Give any bot the voice of Rick Sanchez.</strong></p>
+<p>Turn text into Rick Sanchez speech with one line of Python. Works with OpenClaw, Telegram bots, Discord bots, or anything else.</p>
+<div><pre><span>from</span> <span>rick_voice</span> <span>import</span> <span>RickVoice</span> <span>rick</span> <span>=</span> <span>RickVoice</span>()
+<span>rick</span>.<span>play</span>(<span>"I turned myself into a pickle, Morty!"</span>)</pre></div>
+<hr>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li> <strong>Rick Sanchez TTS</strong> — actual Rick voice, not just pitch shifting</li> <li> <strong>Telegram ready</strong> — generates OGG Opus voice messages out of the box</li>
+<li> <strong>OpenClaw skill</strong> — drop-in voice for your OpenClaw assistant</li>
+<li> <strong>Streaming</strong> — real-time audio playback</li>
+<li> <strong>Simple API</strong> — <pre><code>synthesize()</code></pre>, <pre><code>play()</code></pre>, <pre><code>to_ogg()</code></pre>, done</li>
+</ul>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>1. Install</h3><a href="#1-install"></a></div> <div><h3>2. Get an API key</h3><a href="#2-get-an-api-key"></a></div> <ol>
+<li>Sign up at <a href="https://fish.audio">fish.audio</a></li>
+<li>Get your API key at <a href="https://fish.audio/account/api">fish.audio/account/api</a></li>
+<li>Add some credits (pay-as-you-go, very cheap)</li>
+</ol>
+<div><pre><span>export</span> FISH_API_KEY=<span><span>"</span>your-key-here<span>"</span></span></pre></div> <ol>
+<li>Sign up at <a href="https://elevenlabs.io">elevenlabs.io</a></li>
+<li>Get your API key from settings</li>
+<li>Find a raspy/sarcastic voice in the <a href="https://elevenlabs.io/voice-library">Voice Library</a> and copy its ID</li>
+</ol>
+<div><pre><span>export</span> ELEVENLABS_API_KEY=<span><span>"</span>your-key-here<span>"</span></span>
+<span>export</span> RICK_VOICE_ID=<span><span>"</span>your-voice-id<span>"</span></span>
+<span>export</span> RICK_VOICE_PROVIDER=<span><span>"</span>elevenlabs<span>"</span></span></pre></div>
+<div><h3>3. Use it</h3><a href="#3-use-it"></a></div>
+<div><pre><span><span>#</span> CLI</span>
+rick-voice <span><span>"</span>Wubba lubba dub dub!<span>"</span></span> <span><span>#</span> Interactive mode</span>
+rick-voice --interactive <span><span>#</span> Save to file</span>
+rick-voice --save rick.mp3 <span><span>"</span>I'm pickle Rick!<span>"</span></span> <span><span>#</span> Save as Telegram voice note</span>
+rick-voice --save-ogg rick.ogg <span><span>"</span>Nobody exists on purpose.<span>"</span></span></pre></div>
+<div><h2>Python API</h2><a href="#python-api"></a></div>
+<div><pre><span>from</span> <span>rick_voice</span> <span>import</span> <span>RickVoice</span> <span>rick</span> <span>=</span> <span>RickVoice</span>() <span># Play through speakers</span>
+<span>rick</span>.<span>play</span>(<span>"The universe is basically an animal."</span>) <span># Get raw audio bytes (MP3)</span>
+<span>audio</span> <span>=</span> <span>rick</span>.<span>synthesize</span>(<span>"Science, Morty!"</span>)
+<span>with</span> <span>open</span>(<span>"rick.mp3"</span>, <span>"wb"</span>) <span>as</span> <span>f</span>: <span>f</span>.<span>write</span>(<span>audio</span>) <span># Get OGG Opus for Telegram voice messages</span>
+<span>ogg</span> <span>=</span> <span>rick</span>.<span>to_ogg</span>(<span>"Wubba lubba dub dub!"</span>) <span># Use a specific provider</span>
+<span>rick</span> <span>=</span> <span>RickVoice</span>(<span>provider</span><span>=</span><span>"elevenlabs"</span>) <span># Or configure everything</span>
+<span>from</span> <span>rick_voice</span> <span>import</span> <span>RickVoiceConfig</span> <span>config</span> <span>=</span> <span>RickVoiceConfig</span>( <span>provider</span><span>=</span><span>"fish"</span>, <span>fish_api_key</span><span>=</span><span>"your-key"</span>, <span>rickify_enabled</span><span>=</span><span>True</span>, <span># add stutters and filler words</span>
+)
+<span>rick</span> <span>=</span> <span>RickVoice</span>(<span>config</span><span>=</span><span>config</span>)</pre></div>
+<div><h2>OpenClaw Integration</h2><a href="#openclaw-integration"></a></div>
+<p>Drop the </p><pre><code>openclaw-skill/</code></pre> folder into your OpenClaw skills directory:<p></p>
+<div><pre>cp -r openclaw-skill/ <span>~</span>/.openclaw/skills/rick-voice/</pre></div>
+<p>Then set your API key and OpenClaw will use Rick's voice for voice messages.</p>
+<p>See <a href="/mattzzz/rick-voice/blob/master/openclaw-skill/SKILL.md">openclaw-skill/SKILL.md</a> for full setup.</p>
+<div><h2>Telegram Bot Example</h2><a href="#telegram-bot-example"></a></div>
+<p>A complete standalone Telegram bot that replies with Rick's voice:</p>
+<div><pre><span>export</span> FISH_API_KEY=<span><span>"</span>your-key<span>"</span></span>
+<span>export</span> TELEGRAM_BOT_TOKEN=<span><span>"</span>your-bot-token<span>"</span></span>
+pip install rick-voice[fish] python-telegram-bot
+python examples/telegram_bot.py</pre></div>
+<p>Send any text message → get a Rick Sanchez voice note back.</p>
+<div><h2>Providers</h2><a href="#providers"></a></div>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Quality</th>
+<th>Setup</th>
+<th>Cost</th>
+<th>Rick Voice?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fish Audio</strong></td>
+<td></td>
+<td>Easy</td>
+<td>Pay-as-you-go (~$0.01/msg)</td>
+<td> Built in</td>
+</tr>
+<tr>
+<td><strong>ElevenLabs</strong></td>
+<td></td>
+<td>Medium</td>
+<td>Free tier + paid</td>
+<td> Find similar voice</td>
+</tr>
+<tr>
+<td><strong>Local</strong></td>
+<td>TBD</td>
+<td>Hard</td>
+<td>Free</td>
+<td> Coming soon</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Environment Variables</h2><a href="#environment-variables"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>FISH_API_KEY</code></pre></td>
+<td>Fish Audio API key</td>
+<td>For Fish provider</td>
+</tr>
+<tr>
+<td><pre><code>ELEVENLABS_API_KEY</code></pre></td>
+<td>ElevenLabs API key</td>
+<td>For ElevenLabs provider</td>
+</tr>
+<tr>
+<td><pre><code>RICK_VOICE_ID</code></pre></td>
+<td>ElevenLabs voice ID</td>
+<td>For ElevenLabs provider</td>
+</tr>
+<tr>
+<td><pre><code>RICK_VOICE_PROVIDER</code></pre></td>
+<td>Provider name ("fish" or "elevenlabs")</td>
+<td>No (default: "fish")</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Roadmap</h2><a href="#roadmap"></a></div>
+<ul>
+<li> Fish Audio provider</li>
+<li> ElevenLabs provider</li>
+<li> CLI tool</li>
+<li> OpenClaw skill</li>
+<li> Telegram voice message support (OGG Opus)</li>
+<li> Local provider (Piper TTS + RVC / Coqui XTTS)</li>
+<li> Discord bot example</li>
+<li> Home Assistant integration</li>
+<li> More characters (Morty, Mr. Meeseeks, etc.)</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT — do whatever you want with it.</p>
+<hr>
+<p><em>"To live is to risk it all. Otherwise you're just an inert chunk of randomly assembled molecules drifting wherever the universe blows you."</em> — Rick Sanchez</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

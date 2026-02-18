@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MoltWorker: How to Deploy OpenClaw Agents on Cloudflare Workers</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>MoltWorker: How to Deploy OpenClaw Agents on Cloudflare Workers</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 8:04:41 AM | <a href="https://dev.to/andrew-ooo/moltworker-how-to-deploy-openclaw-agents-on-cloudflare-workers-1f4m" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <div> <p><a href="https://dev.to/andrew-ooo"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3775252%2Ff6bbe8a2-ee0c-41f7-9468-c85f0b00ca95.png" alt="Andrew"></a> </p> </div> </header> <div> <p><em>Originally published on <a href="https://andrew.ooo/posts/moltworker-deploy-openclaw-cloudflare-workers" target="_blank">andrew.ooo</a></em></p> <hr> <p><strong>TL;DR:</strong> MoltWorker is an open-source framework that deploys OpenClaw agents to Cloudflare's global edge network. Deploy agents to 300+ data centers worldwide, get 40-60% latency reduction, and pay ~$5/month for 100K requests instead of $50-150 for traditional cloud hosting.</p> <h2> <a name="what-is-moltworker" href="#what-is-moltworker"> </a> What is MoltWorker?
+</h2> <p>MoltWorker is an open-source deployment framework that packages OpenClaw AI agents as Cloudflare Workers and deploys them globally. Instead of running agents on a single server in one region, MoltWorker distributes your agent across Cloudflare's 300+ edge locations worldwide.</p> <p>The result? Your AI agent responds in milliseconds no matter where users are located.</p> <h2> <a name="why-edge-deployment-matters" href="#why-edge-deployment-matters"> </a> Why Edge Deployment Matters
+</h2> <p>Traditional AI agent deployment looks like this:</p> <ol>
+<li>User sends a message</li>
+<li>Request travels to your server (often in us-east-1)</li>
+<li>Agent processes context, calls LLM APIs, executes tools</li>
+<li>Response travels back to user</li>
+</ol> <p>If your user is in Singapore and your server is in Virginia, every step adds transpacific latency.</p> <p>MoltWorker moves the <strong>orchestration layer</strong> to the edge:</p> <ul>
+<li>Context lookup happens locally</li>
+<li>Tool invocation happens locally
+</li>
+<li>Response formatting happens locally</li>
+<li>Only LLM API calls go to the provider</li>
+</ul> <p>For complex agents, this reduces latency by <strong>40-60%</strong>.</p> <h2> <a name="the-economics" href="#the-economics"> </a> The Economics
+</h2> <div><table>
+<thead>
+<tr>
+<th>Deployment Model</th>
+<th>100K Requests/Month</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MoltWorker (Edge)</td>
+<td>~$5</td>
+</tr>
+<tr>
+<td>Container (Cloud Run)</td>
+<td>$50-80</td>
+</tr>
+<tr>
+<td>Dedicated Server</td>
+<td>$100-150</td>
+</tr>
+</tbody>
+</table></div> <p><strong>Average savings: 80-90%</strong> on infrastructure costs.</p> <h2> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h2> <p>MoltWorker maps OpenClaw's abstractions to Cloudflare's platform:</p> <ul>
+<li>
+<strong>Workers KV</strong> for agent memory</li>
+<li>
+<strong>Durable Objects</strong> for stateful interactions</li>
+<li>
+<strong>R2</strong> for large documents</li>
+<li>
+<strong>Cron Triggers</strong> for scheduled tasks</li>
+</ul> <h2> <a name="quick-start-under-10-minutes" href="#quick-start-under-10-minutes"> </a> Quick Start (Under 10 Minutes)
+</h2> <div>
+<pre><code>npm <span>install</span> <span>-g</span> moltworker
+moltworker init my-agent
+<span>cd </span>my-agent
+moltworker deploy
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. Your agent is now running on 300+ edge locations.</p> <h2> <a name="performance-benchmarks" href="#performance-benchmarks"> </a> Performance Benchmarks
+</h2> <h3> <a name="simple-qampa-agent" href="#simple-qampa-agent"> </a> Simple Q&amp;A Agent
+</h3> <div><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Traditional</th>
+<th>Edge</th>
+<th>Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Median Latency</td>
+<td>850ms</td>
+<td>550ms</td>
+<td><strong>35% faster</strong></td>
+</tr>
+<tr>
+<td>P99 Latency</td>
+<td>2.1s</td>
+<td>1.05s</td>
+<td><strong>50% faster</strong></td>
+</tr>
+</tbody>
+</table></div> <h3> <a name="complex-research-agent" href="#complex-research-agent"> </a> Complex Research Agent
+</h3> <div><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Traditional</th>
+<th>Edge</th>
+<th>Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Median Latency</td>
+<td>3.2s</td>
+<td>1.44s</td>
+<td><strong>55% faster</strong></td>
+</tr>
+<tr>
+<td>P99 Latency</td>
+<td>8.5s</td>
+<td>2.55s</td>
+<td><strong>70% faster</strong></td>
+</tr>
+</tbody>
+</table></div> <h2> <a name="realworld-use-cases" href="#realworld-use-cases"> </a> Real-World Use Cases
+</h2> <h2> <a name="limitations" href="#limitations"> </a> Limitations
+</h2> <ul>
+<li>Cloudflare Workers have 30-second CPU time limits and 128MB memory</li>
+<li>Very complex reasoning chains may need the "spillover" mechanism</li>
+<li>LLM API calls still go to the provider (not optimized by edge)</li>
+</ul> <h2> <a name="conclusion" href="#conclusion"> </a> Conclusion
+</h2> <p>MoltWorker represents a shift in AI agent infrastructure. For lightweight, latency-sensitive, globally-distributed agents, edge deployment is the future.</p> <hr> <p> <strong>Read the full article with code examples and migration guide:</strong> <a href="https://andrew.ooo/posts/moltworker-deploy-openclaw-cloudflare-workers" target="_blank">andrew.ooo/posts/moltworker-deploy-openclaw-cloudflare-workers</a></p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

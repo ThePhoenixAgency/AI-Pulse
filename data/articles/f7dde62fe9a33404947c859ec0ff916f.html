@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Show HN: TokenMeter – Open-source observability layer for LLM token costs</title>
+<title>GitHub - ATMAECHO/TOKEN-METER: Open-source AI Cost Intelligence Platform — smart routing, semantic cache, waste detection, prompt optimization</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,19 +29,73 @@
 </style>
 </head>
 <body>
-  <h1>Show HN: TokenMeter – Open-source observability layer for LLM token costs</h1>
+  <h1>GitHub - ATMAECHO/TOKEN-METER: Open-source AI Cost Intelligence Platform — smart routing, semantic cache, waste detection, prompt optimization</h1>
   <div class="metadata">
     Source: Hacker News Show | Date: 2/18/2026 6:07:52 AM | <a href="https://github.com/ATMAECHO/TOKEN-METER" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Hi HN,
-I built TokenMeter after seeing how unpredictable LLM costs become as usage scales.
-Most teams optimize prompts but lack real-time cost observability.
-This project tracks token usage and exposes cost insights to help AI teams stay financially aware.
-Would appreciate feedback on architecture and missing observability features.
-Thanks. URL: https://news.ycombinator.com/item?id=47057746
-Points: 1
-# : 1</p>
+    <div><h1>TokenMeter </h1><a href="#tokenmeter-"></a></div>
+<p>Open-source, self-hosted AI Cost Intelligence Platform.</p>
+<div><h2>What it does</h2><a href="#what-it-does"></a></div>
+<ul>
+<li><strong>Proxy</strong> all your LLM API calls through TokenMeter</li>
+<li><strong>Track</strong> every token, every request, every rupee/dollar spent</li>
+<li><strong>Dashboard</strong> real-time cost visibility per developer, per model, per feature</li>
+<li><strong>Smart Routing</strong> auto-pick cheapest model that meets quality threshold</li>
+<li><strong>Semantic Cache</strong> skip duplicate API calls, save 45-80%</li>
+<li><strong>Waste Detection</strong> find oversized model usage, duplicates, failed requests</li>
+<li><strong>Prompt Optimizer</strong> reduce token usage by removing filler/redundant instructions</li>
+<li><strong>ROI Tracker</strong> cost vs quality scoring per model</li>
+<li><strong>Cost Forecasting</strong> predict future spend using historical trends</li>
+<li><strong>Rate Limiting</strong> per-developer token/request limits</li>
+<li><strong>Prompt Library</strong> save, share, and reuse optimized prompts</li>
+<li><strong>Quality Scoring</strong> auto-rate LLM response quality, model leaderboard</li>
+<li><strong>Usage Heatmap</strong> visualize when API calls happen (hour/day patterns)</li>
+<li><strong>Cost Tags</strong> tag requests by project/team/environment for billing</li>
+<li><strong>Webhook Integration</strong> fire webhooks on budget alerts, anomalies, etc.</li>
+<li><strong>Team Dashboard</strong> multi-user auth with admin/developer/viewer roles</li>
+<li><strong>A/B Testing</strong> same prompt, multiple models, compare quality + cost</li>
+<li><strong>Budget Management</strong> daily/monthly limits with alerts</li>
+<li><strong>Slack/Discord Alerts</strong> webhook notifications</li>
+<li><strong>CSV Export</strong> download reports</li>
+<li><strong>Self-hosted</strong> your data stays with you</li>
+</ul>
+<div><h2>Tech Stack</h2><a href="#tech-stack"></a></div>
+<ul>
+<li>Backend: Python (FastAPI)</li>
+<li>Frontend: React (Vite) + Recharts</li>
+<li>Database: SQLite</li>
+<li>No cloud dependency — runs on your machine</li>
+</ul>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> Backend</span>
+<span>cd</span> backend
+pip install -r requirements.txt
+cp .env.example .env <span><span>#</span> add your API keys</span>
+python main.py <span><span>#</span> Frontend</span>
+<span>cd</span> frontend
+npm install
+npm run dev</pre></div>
+<div><h2>Docker</h2><a href="#docker"></a></div>
+<div><pre>docker-compose up -d</pre></div>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>Your App → TokenMeter Proxy → OpenAI/Anthropic/Gemini ↓ SQLite DB (logs every request) ↓ React Dashboard (17 tabs, real-time stats)
+</code></pre></div>
+<div><h2>API Headers</h2><a href="#api-headers"></a></div>
+<div><pre><code>X-Developer: your-name # track per developer
+X-Feature: my-feature # track per feature/project
+X-Smart-Route: on # auto-pick cheapest model
+X-Cache: on # enable semantic caching
+</code></pre></div>
+<div><h2>Dashboard Tabs</h2><a href="#dashboard-tabs"></a></div>
+<p>Overview | Models | Developers | Logs | Budgets | Waste | Savings | Optimizer | ROI | Forecast | Rate Limits | Prompts | Quality | Heatmap | Tags | Webhooks | Team</p>
+<div><h2>Default Login</h2><a href="#default-login"></a></div>
+<ul>
+<li>Username: <pre><code>admin</code></pre></li>
+<li>Password: <pre><code>admin</code></pre></li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT — use it however you want.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

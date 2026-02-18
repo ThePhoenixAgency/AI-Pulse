@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - borhen68/SOVEREIGN: The agent infrastructure that chatbot wrappers forgot to build. Missions, councils, sandboxing, hybrid memory, and human-in-the-loop controls. Not a wrapper — an OS. Apache 2.0.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - borhen68/SOVEREIGN: The agent infrastructure that chatbot wrappers forgot to build. Missions, councils, sandboxing, hybrid memory, and human-in-the-loop controls. Not a wrapper — an OS. Apache 2.0.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 7:43:45 AM | <a href="https://github.com/borhen68/SOVEREIGN" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>SOVEREIGN MVP API</h1><a href="#sovereign-mvp-api"></a></div>
+<p><a target="_blank" href="/borhen68/SOVEREIGN/blob/main/sovereign-architecture.png"><img src="/borhen68/SOVEREIGN/raw/main/sovereign-architecture.png" alt="SOVEREIGN Architecture"></a></p>
+<p>Initial coding implementation from the SOVEREIGN PRD v1.1.</p>
+<p>This service provides:</p>
+<ul>
+<li>Mission contracts (<pre><code>goal + KPI + deadline + policy</code></pre>)</li>
+<li>Task tracking with closure metrics</li>
+<li>Runtime risk scoring with approval gates</li>
+<li>Runtime human checkpoints during execution with resume-from-checkpoint state</li>
+<li>Action timeline and evidence logging</li>
+<li>Basic truth verification endpoint</li>
+<li>Multi-agent councils (agents with souls + skills collaborating under a main agent)</li>
+<li>Lane-aware command queue for safe concurrent runs</li>
+<li>Company orchestrator (<pre><code>objective -&gt; plan -&gt; execute -&gt; verify -&gt; notify</code></pre>)</li>
+<li>Security fabric (pairing, auth gate, rate/cost cap, sandbox path checks, encrypted local secrets)</li>
+<li>Hybrid memory engine (vector + keyword + graph entities/relations)</li>
+<li>Tunnel manager, heartbeat cron jobs, setup wizard, observability traces, evals, and telemetry metrics</li>
+</ul>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre>npm run start</pre></div>
+<p>Server starts on </p><pre><code>http://localhost:3001</code></pre>.<p></p>
+<p>Run background autonomy loops in a second process:</p>
+<div><pre>npm run worker</pre></div>
+<div><h2>Docker Quick Start (API + Worker + Postgres + Redis)</h2><a href="#docker-quick-start-api--worker--postgres--redis"></a></div>
+<div><pre>cp .env.example .env
+docker compose up --build</pre></div>
+<p>Then open:</p>
+<ul>
+<li><pre><code>http://localhost:3001/health</code></pre></li>
+<li><pre><code>http://localhost:3001/dashboard</code></pre></li>
+<li><pre><code>http://localhost:3001/api/architecture/blueprint</code></pre></li>
+<li><pre><code>http://localhost:3001/api/company/runs</code></pre></li>
+</ul>
+<div><h2>Recent Updates (V1.1+)</h2><a href="#recent-updates-v11"></a></div>
+<div><h3>1) Hybrid GraphRAG Memory</h3><a href="#1-hybrid-graphrag-memory"></a></div>
+<ul>
+<li>Memory chunks now store:
+<ul>
+<li>concepts</li>
+<li>entities</li>
+<li>typed relations</li>
+</ul>
+</li>
+<li>Search scoring now uses:
+<ul>
+<li>vector similarity</li>
+<li>keyword relevance</li>
+<li>concept overlap</li>
+<li>entity overlap</li>
+<li>relation-type overlap</li>
+</ul>
+</li>
+<li>Graph APIs return enriched nodes/edges with shared entities + relation types.</li>
+</ul>
+<div><h3>2) Runtime HITL Checkpoints (not only pre-execution)</h3><a href="#2-runtime-hitl-checkpoints-not-only-pre-execution"></a></div>
+<ul>
+<li>Company runs can pause mid-execution when:
+<ul>
+<li>a workstream is high-risk</li>
+<li>consensus after council is below threshold</li>
+</ul>
+</li>
+<li>Resume continues from saved checkpoint with:
+<ul>
+<li><pre><code>nextWorkstreamIndex</code></pre></li>
+<li>prior <pre><code>executionResults</code></pre></li>
+<li>persisted runtime escalation policy</li>
+</ul>
+</li>
+</ul>
+<p>Useful execution flags (body fields on </p><pre><code>POST /api/company/execute</code></pre> or resume):<p></p>
+<ul>
+<li><pre><code>runtimeEscalationEnabled</code></pre> (default <pre><code>true</code></pre>)</li>
+<li><pre><code>runtimePauseOnHighRiskStream</code></pre> (default <pre><code>true</code></pre>)</li>
+<li><pre><code>runtimePauseOnLowConsensus</code></pre> (default <pre><code>true</code></pre>)</li>
+<li><pre><code>runtimeLowConsensusThreshold</code></pre> (default <pre><code>0.6</code></pre>)</li>
+<li><pre><code>runtimeRiskHints</code></pre> (optional extra risk keywords)</li>
+</ul>
+<div><h3>3) Deep Observability + Eval Telemetry</h3><a href="#3-deep-observability--eval-telemetry"></a></div>
+<ul>
+<li>LLM telemetry now records:
+<ul>
+<li>request/attempt start, success, failure</li>
+<li>latency</li>
+<li>token usage</li>
+<li>estimated cost</li>
+</ul>
+</li>
+<li>Plugin tool telemetry now records:
+<ul>
+<li>invocation start/success/failure/blocked</li>
+<li>duration and risk metadata</li>
+</ul>
+</li>
+<li>Metrics endpoint now includes:
+<ul>
+<li>latency distribution (<pre><code>avg</code></pre>, <pre><code>p50</code></pre>, <pre><code>p95</code></pre>, <pre><code>max</code></pre>)</li>
+<li>token usage totals</li>
+<li>cost totals</li>
+<li>per-source usage breakdown</li>
+</ul>
+</li>
+</ul>
+<div><h3>4) Async Core Refactor + Prisma Stabilization (Feb 2026)</h3><a href="#4-async-core-refactor--prisma-stabilization-feb-2026"></a></div>
+<ul>
+<li>Core mission/council/skill/autopilot flows were aligned to async I/O end-to-end.</li>
+<li>Service call-sites and tests were updated to await async datastore methods consistently.</li>
+<li>Prisma client/schema sync issues were resolved (<pre><code>npx prisma generate</code></pre> + datastore method alignment).</li>
+<li>Current project verification:
+<ul>
+<li><pre><code>npm run build</code></pre> passes</li>
+<li><pre><code>npm test</code></pre> passes</li>
+</ul>
+</li>
+</ul>
+<div><h3>5) Production Hardening Pass</h3><a href="#5-production-hardening-pass"></a></div>
+<ul>
+<li>CI syntax step now validates built runtime files (<pre><code>dist/src/server.js</code></pre>, <pre><code>dist/src/worker.js</code></pre>).</li>
+<li>State backend now fails fast on startup if required adapters are missing:
+<ul>
+<li>postgres mode requires <pre><code>pg</code></pre></li>
+<li>redis modes require <pre><code>redis</code></pre></li>
+</ul>
+</li>
+<li>Prisma datastore no longer leaves channel/runtime/security/memory methods as empty stubs.</li>
+<li>Docker image now installs backend adapters needed by <pre><code>STATE_BACKEND=postgres_redis</code></pre>.</li>
+</ul>
+<div><h3>Local CLI UI (agent select + model select + chat)</h3><a href="#local-cli-ui-agent-select--model-select--chat"></a></div>
+<div><pre>npm run ui</pre></div>
+<p>The CLI lets you:</p>
+<ul>
+<li>select or create an agent</li>
+<li>assign/update that agent's model policy (<pre><code>provider/model</code></pre> with fallbacks)</li>
+<li>chat locally with that selected agent</li>
+</ul>
+<div><h3>Optional LLM Providers</h3><a href="#optional-llm-providers"></a></div>
+<p>Set any provider keys you want to use:</p>
+<div><pre><span>export</span> OPENAI_API_KEY=<span><span>"</span>...<span>"</span></span>
+<span>export</span> ANTHROPIC_API_KEY=<span><span>"</span>...<span>"</span></span>
+<span>export</span> GEMINI_API_KEY=<span><span>"</span>...<span>"</span></span> <span><span>#</span> or GOOGLE_API_KEY</span></pre></div>
+<p>SOVEREIGN also supports 22+ OpenAI-compatible providers (OpenRouter, Groq, Mistral, Together, Fireworks, DeepSeek, xAI, Perplexity, Venice, Cohere, Ollama, custom URL, and more). Configure them via </p><pre><code>.env</code></pre> variables in <pre><code>.env.example</code></pre>.<p></p>
+<div><h3>State Backend Switch (File / Postgres / Postgres+Redis)</h3><a href="#state-backend-switch-file--postgres--postgresredis"></a></div>
+<p>Use environment variables:</p>
+<div><pre><span>export</span> STATE_BACKEND=<span><span>"</span>file<span>"</span></span> <span><span>#</span> file | postgres | postgres_redis</span>
+<span>export</span> DATABASE_URL=<span><span>"</span>postgres://user:pass@host:5432/db<span>"</span></span>
+<span>export</span> REDIS_URL=<span><span>"</span>redis://host:6379<span>"</span></span>
+<span>export</span> STATE_BACKEND_TABLE=<span><span>"</span>sovereign_state<span>"</span></span>
+<span>export</span> STATE_BACKEND_KEY=<span><span>"</span>default<span>"</span></span></pre></div>
+<p>When using </p><pre><code>STATE_BACKEND=postgres</code></pre> or <pre><code>postgres_redis</code></pre>, install adapter packages:<p></p>
+<div><pre>npm install pg redis</pre></div>
+<p>Important mode behavior:</p>
+<ul>
+<li><pre><code>STATE_BACKEND=postgres</code></pre>: uses <pre><code>PrismaDataStore</code></pre> (relational persistence through Prisma models).</li>
+<li><pre><code>STATE_BACKEND=postgres_redis</code></pre>: uses <pre><code>DataStore</code></pre> + <pre><code>StateBackendService</code></pre> snapshot persistence (Postgres/Redis adapter), not direct Prisma row-level store.</li>
+</ul>
+<p>After any Prisma schema change, regenerate the client:</p>
+<div><pre>npx prisma generate</pre></div>
+<p>Runtime status:</p>
+<div><pre>curl http://localhost:3001/api/system/persistence</pre></div>
+<p>Optional model overrides:</p>
+<div><pre><span>export</span> OPENAI_MODEL=<span><span>"</span>gpt-4o-mini<span>"</span></span>
+<span>export</span> ANTHROPIC_MODEL=<span><span>"</span>claude-3-5-sonnet-latest<span>"</span></span>
+<span>export</span> GEMINI_MODEL=<span><span>"</span>gemini-1.5-pro<span>"</span></span></pre></div>
+<p>Task-aware routing overrides (optional):</p>
+<div><pre><span>export</span> TASK_MODEL_SMALL=<span><span>"</span>openai/gpt-4o-mini<span>"</span></span>
+<span>export</span> TASK_MODEL_STANDARD=<span><span>"</span>anthropic/claude-3-5-sonnet-latest<span>"</span></span>
+<span>export</span> TASK_MODEL_HIGH_CODING=<span><span>"</span>anthropic/claude-opus-4-6<span>"</span></span>
+<span>export</span> TASK_MODEL_HIGH_GENERAL=<span><span>"</span>gemini/gemini-2.5-pro<span>"</span></span></pre></div>
+<p>Optional chat model routing (OpenClaw-style model refs):</p>
+<div><pre><span>export</span> CHAT_MODEL_PRIMARY=<span><span>"</span>openai/gpt-4o-mini<span>"</span></span>
+<span>export</span> CHAT_MODEL_FALLBACKS=<span><span>"</span>anthropic/claude-3-5-sonnet-latest,gemini/gemini-1.5-pro<span>"</span></span></pre></div>
+<div><h2>API Endpoints</h2><a href="#api-endpoints"></a></div>
+<div><h3>Health</h3><a href="#health"></a></div>
+<ul>
+<li><pre><code>GET /health</code></pre></li>
+</ul>
+<div><h3>Live Dashboard</h3><a href="#live-dashboard"></a></div>
+<ul>
+<li><pre><code>GET /dashboard</code></pre> (real-time web UI for orchestrator, council debate, and risk)</li>
+<li><pre><code>GET /api/dashboard/snapshot</code></pre></li>
+</ul>
+<div><h3>System</h3><a href="#system"></a></div>
+<ul>
+<li><pre><code>GET /api/system/persistence</code></pre></li>
+</ul>
+<div><h3>Queue</h3><a href="#queue"></a></div>
+<ul>
+<li><pre><code>GET /api/queue/stats</code></pre></li>
+</ul>
+<div><h3>LLM</h3><a href="#llm"></a></div>
+<ul>
+<li><pre><code>GET /api/llm/providers</code></pre></li>
+<li><pre><code>GET /api/llm/models</code></pre></li>
+<li><pre><code>POST /api/llm/respond</code></pre></li>
+</ul>
+<div><h3>Plugins</h3><a href="#plugins"></a></div>
+<ul>
+<li><pre><code>GET /api/plugins</code></pre></li>
+<li><pre><code>POST /api/plugins/reload</code></pre></li>
+<li><pre><code>GET /api/plugins/:pluginId</code></pre></li>
+<li><pre><code>POST /api/plugins/:pluginId/tools/:toolName/invoke</code></pre></li>
+</ul>
+<div><h3>Runtime Trust (Mediated Tool Actions)</h3><a href="#runtime-trust-mediated-tool-actions"></a></div>
+<ul>
+<li><pre><code>GET /api/runtime/actions</code></pre></li>
+<li><pre><code>GET /api/runtime/actions/:runtimeActionId</code></pre></li>
+<li><pre><code>GET /api/runtime/metrics</code></pre></li>
+</ul>
+<div><h3>Channels (Local + Messaging Platforms)</h3><a href="#channels-local--messaging-platforms"></a></div>
+<ul>
+<li><pre><code>GET /api/channels/adapters</code></pre></li>
+<li><pre><code>GET /api/channels/sessions</code></pre></li>
+<li><pre><code>GET /api/channels/sessions/:sessionId/messages</code></pre></li>
+<li><pre><code>POST /api/channels/:channelId/webhook</code></pre></li>
+<li><pre><code>GET /api/channels/:channelId/webhook</code></pre> (platform verification handshake where supported)</li>
+</ul>
+<div><h3>Autopilot Delegation</h3><a href="#autopilot-delegation"></a></div>
+<ul>
+<li><pre><code>GET /api/autopilot/goals</code></pre></li>
+<li><pre><code>POST /api/autopilot/goals</code></pre></li>
+<li><pre><code>GET /api/autopilot/goals/:goalId</code></pre></li>
+<li><pre><code>GET /api/autopilot/goals/:goalId/logs</code></pre></li>
+<li><pre><code>POST /api/autopilot/goals/:goalId/run</code></pre></li>
+<li><pre><code>POST /api/autopilot/goals/:goalId/pause</code></pre></li>
+<li><pre><code>POST /api/autopilot/goals/:goalId/resume</code></pre></li>
+<li><pre><code>POST /api/autopilot/goals/:goalId/cancel</code></pre></li>
+</ul>
+<div><h3>Architecture (Company of Agents)</h3><a href="#architecture-company-of-agents"></a></div>
+<ul>
+<li><pre><code>GET /api/architecture/blueprint</code></pre></li>
+<li><pre><code>POST /api/architecture/company-plan</code></pre></li>
+<li><pre><code>POST /api/architecture/soul/evolve</code></pre></li>
+</ul>
+<div><h3>Company Orchestrator</h3><a href="#company-orchestrator"></a></div>
+<ul>
+<li><pre><code>GET /api/company/runs</code></pre></li>
+<li><pre><code>GET /api/company/runs/:runId</code></pre></li>
+<li><pre><code>POST /api/company/runs/:runId/resume</code></pre></li>
+<li><pre><code>POST /api/company/execute</code></pre></li>
+</ul>
+<div><h3>Security Fabric</h3><a href="#security-fabric"></a></div>
+<ul>
+<li><pre><code>GET /api/security/pairings</code></pre></li>
+<li><pre><code>POST /api/security/pairings/create</code></pre></li>
+<li><pre><code>POST /api/security/pairings/verify</code></pre></li>
+<li><pre><code>POST /api/security/auth/issue</code></pre></li>
+<li><pre><code>POST /api/security/auth/verify</code></pre></li>
+<li><pre><code>GET /api/security/rate/events</code></pre></li>
+<li><pre><code>POST /api/security/rate/check</code></pre></li>
+<li><pre><code>POST /api/security/sandbox/check</code></pre></li>
+<li><pre><code>GET /api/security/secrets</code></pre></li>
+<li><pre><code>POST /api/security/secrets/set</code></pre></li>
+<li><pre><code>POST /api/security/secrets/get</code></pre></li>
+</ul>
+<div><h3>Tunnel</h3><a href="#tunnel"></a></div>
+<ul>
+<li><pre><code>GET /api/tunnels</code></pre></li>
+<li><pre><code>POST /api/tunnels</code></pre></li>
+<li><pre><code>GET /api/tunnels/active</code></pre></li>
+<li><pre><code>GET /api/tunnels/:tunnelId</code></pre></li>
+<li><pre><code>PATCH /api/tunnels/:tunnelId</code></pre></li>
+<li><pre><code>POST /api/tunnels/:tunnelId/activate</code></pre></li>
+<li><pre><code>POST /api/tunnels/:tunnelId/deactivate</code></pre></li>
+</ul>
+<div><h3>Memory Engine</h3><a href="#memory-engine"></a></div>
+<ul>
+<li><pre><code>POST /api/memory/index</code></pre></li>
+<li><pre><code>POST /api/memory/search</code></pre></li>
+<li><pre><code>POST /api/memory/reindex</code></pre></li>
+<li><pre><code>POST /api/memory/graph/query</code></pre></li>
+<li><pre><code>GET /api/memory/graph/stats</code></pre></li>
+<li><pre><code>GET /api/memory/stats</code></pre></li>
+</ul>
+<div><h3>Evals</h3><a href="#evals"></a></div>
+<ul>
+<li><pre><code>POST /api/evals/company/:runId</code></pre></li>
+</ul>
+<div><h3>Heartbeat &amp; Cron</h3><a href="#heartbeat--cron"></a></div>
+<ul>
+<li><pre><code>GET /api/heartbeat/jobs</code></pre></li>
+<li><pre><code>POST /api/heartbeat/jobs</code></pre></li>
+<li><pre><code>GET /api/heartbeat/jobs/:jobId</code></pre></li>
+<li><pre><code>POST /api/heartbeat/jobs/:jobId/run</code></pre></li>
+<li><pre><code>POST /api/heartbeat/jobs/:jobId/pause</code></pre></li>
+<li><pre><code>POST /api/heartbeat/jobs/:jobId/resume</code></pre></li>
+<li><pre><code>GET /api/heartbeat/runs</code></pre></li>
+</ul>
+<div><h3>Setup Wizard</h3><a href="#setup-wizard"></a></div>
+<ul>
+<li><pre><code>POST /api/setup/wizard/run</code></pre></li>
+<li><pre><code>GET /api/setup/wizard/runs</code></pre></li>
+<li><pre><code>GET /api/setup/wizard/:runId</code></pre></li>
+</ul>
+<div><h3>Missions</h3><a href="#missions"></a></div>
+<ul>
+<li><pre><code>GET /api/missions</code></pre></li>
+<li><pre><code>POST /api/missions</code></pre></li>
+<li><pre><code>GET /api/missions/:missionId</code></pre></li>
+<li><pre><code>POST /api/missions/:missionId/simulate</code></pre></li>
+<li><pre><code>POST /api/missions/:missionId/start</code></pre></li>
+<li><pre><code>GET /api/missions/:missionId/council</code></pre></li>
+<li><pre><code>GET /api/missions/:missionId/council/runs</code></pre></li>
+<li><pre><code>POST /api/missions/:missionId/council/run</code></pre></li>
+</ul>
+<div><h3>Tasks</h3><a href="#tasks"></a></div>
+<ul>
+<li><pre><code>POST /api/missions/:missionId/tasks</code></pre></li>
+<li><pre><code>PATCH /api/missions/:missionId/tasks/:taskId</code></pre></li>
+</ul>
+<div><h3>Actions / Trust Fabric</h3><a href="#actions--trust-fabric"></a></div>
+<ul>
+<li><pre><code>POST /api/missions/:missionId/actions</code></pre>
+<ul>
+<li><pre><code>actionType</code></pre>: <pre><code>read|write|external_send|financial|destructive</code></pre></li>
+<li>optional <pre><code>idempotencyKey</code></pre> to prevent duplicate side effects</li>
+<li>high-risk actions create approval requests automatically</li>
+</ul>
+</li>
+</ul>
+<div><h3>Approvals</h3><a href="#approvals"></a></div>
+<ul>
+<li><pre><code>POST /api/approvals/:approvalId/decision</code></pre>
+<ul>
+<li><pre><code>decision</code></pre>: <pre><code>approve|reject</code></pre></li>
+</ul>
+</li>
+</ul>
+<div><h3>Observability</h3><a href="#observability"></a></div>
+<ul>
+<li><pre><code>GET /api/missions/:missionId/timeline</code></pre></li>
+<li><pre><code>GET /api/missions/:missionId/metrics</code></pre></li>
+</ul>
+<div><h3>System Observability</h3><a href="#system-observability"></a></div>
+<ul>
+<li><pre><code>GET /api/observability/events</code></pre></li>
+<li><pre><code>GET /api/observability/metrics</code></pre></li>
+<li><pre><code>GET /api/observability/traces</code></pre></li>
+<li><pre><code>GET /api/observability/traces/:traceId</code></pre></li>
+</ul>
+<div><h3>Verification</h3><a href="#verification"></a></div>
+<ul>
+<li><pre><code>POST /api/verify</code></pre></li>
+</ul>
+<div><h3>Agents</h3><a href="#agents"></a></div>
+<ul>
+<li><pre><code>GET /api/agents</code></pre></li>
+<li><pre><code>POST /api/agents</code></pre></li>
+<li><pre><code>GET /api/agents/:agentId</code></pre></li>
+<li><pre><code>PATCH /api/agents/:agentId</code></pre></li>
+</ul>
+<div><h3>Agent Skills (auto-created + memory)</h3><a href="#agent-skills-auto-created--memory"></a></div>
+<ul>
+<li><pre><code>GET /api/agents/:agentId/skills</code></pre></li>
+<li><pre><code>POST /api/agents/:agentId/skills</code></pre></li>
+<li><pre><code>POST /api/agents/:agentId/skills/generate</code></pre></li>
+<li><pre><code>GET /api/agents/:agentId/skills/:skillId</code></pre></li>
+<li><pre><code>PATCH /api/agents/:agentId/skills/:skillId</code></pre></li>
+<li><pre><code>GET /api/agents/:agentId/skills/:skillId/memory</code></pre></li>
+<li><pre><code>POST /api/agents/:agentId/skills/:skillId/memory</code></pre></li>
+</ul>
+<div><h3>Council Sessions</h3><a href="#council-sessions"></a></div>
+<ul>
+<li><pre><code>GET /api/councils/:councilId</code></pre></li>
+<li><pre><code>GET /api/council-runs/:runId</code></pre></li>
+</ul>
+<p></p><pre><code>POST /api/missions/:missionId/council/run</code></pre> supports:<p></p>
+<ul>
+<li><pre><code>subAgentIds</code></pre> (optional): manual sub-agent list</li>
+<li><pre><code>teamSize</code></pre> (optional): auto-assembly size when <pre><code>subAgentIds</code></pre> is omitted</li>
+<li><pre><code>debateRounds</code></pre> (optional): number of challenge/rebuttal rounds (1-4)</li>
+<li><pre><code>idempotencyKey</code></pre> (optional): replay-safe council execution key</li>
+<li><pre><code>autoSpawnSubAgents</code></pre> (optional, default <pre><code>true</code></pre>): spawn specialist sub-agents when capacity is missing</li>
+<li><pre><code>autoGenerateSkills</code></pre> (optional, default <pre><code>true</code></pre>): generate/reuse per-workstream skills and write skill memory</li>
+</ul>
+<div><h2>Example: Create Mission</h2><a href="#example-create-mission"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/missions \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "title": "Book 12 demos",</span>
+<span> "objective": "Increase qualified pipeline",</span>
+<span> "kpi": "12 booked demos in 14 days",</span>
+<span> "deadline": "2026-03-15",</span>
+<span> "policyPreset": "balanced"</span>
+<span> }<span>'</span></span></pre></div>
+<div><h2>Example: Create Agent</h2><a href="#example-create-agent"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/agents \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "name": "Scout",</span>
+<span> "role": "sub",</span>
+<span> "skills": ["research", "analysis", "strategy"],</span>
+<span> "model": {</span>
+<span> "primary": "anthropic/claude-3-5-sonnet-latest",</span>
+<span> "fallbacks": ["openai/gpt-4o-mini", "gemini/gemini-1.5-pro"]</span>
+<span> },</span>
+<span> "canUseWeb": true,</span>
+<span> "soul": {</span>
+<span> "mission": "Find truth and challenge assumptions.",</span>
+<span> "values": ["clarity", "evidence"],</span>
+<span> "communicationStyle": "direct",</span>
+<span> "riskTolerance": "balanced"</span>
+<span> }</span>
+<span> }<span>'</span></span></pre></div>
+<p>Per-agent model policy is supported for both </p><pre><code>main</code></pre> and <pre><code>sub</code></pre> agents:<p></p>
+<ul>
+<li><pre><code>agent.model.primary</code></pre>: first model ref (<pre><code>provider/model</code></pre>)</li>
+<li><pre><code>agent.model.fallbacks</code></pre>: ordered fallback refs</li>
+</ul>
+<p>When present:</p>
+<ul>
+<li>channel chat uses the session <pre><code>metadata.activeAgentId</code></pre> model policy when provided; otherwise it prefers workspace main agent model policy</li>
+<li>council skill generation for that agent can auto-use its model policy</li>
+<li><pre><code>POST /api/agents/:agentId/skills/generate</code></pre> with <pre><code>"llm": {}</code></pre> uses the agent model policy</li>
+</ul>
+<div><h2>Example: Run Multi-Agent Council</h2><a href="#example-run-multi-agent-council"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/missions/<span>&lt;</span>missionId<span>&gt;</span>/council/run \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "problem": "How do we increase activation without harming reliability?",</span>
+<span> "mainAgentId": "&lt;mainAgentId&gt;",</span>
+<span> "subAgentIds": ["&lt;subAgentA&gt;", "&lt;subAgentB&gt;", "&lt;subAgentC&gt;"],</span>
+<span> "idempotencyKey": "council-activation-001",</span>
+<span> "debateRounds": 2,</span>
+<span> "autoSpawnSubAgents": true,</span>
+<span> "autoGenerateSkills": true,</span>
+<span> "allowWebResearch": true</span>
+<span> }<span>'</span></span></pre></div>
+<p>Council runs are queued by mission lane (</p><pre><code>mission:&lt;missionId&gt;</code></pre>) so overlapping runs for the same mission execute safely in order while different missions can run in parallel.<p></p>
+<p>If you omit </p><pre><code>subAgentIds</code></pre>, SOVEREIGN auto-assembles a specialist team from available sub-agents in the same workspace using skills + soul matching. If the workspace has fewer specialists than requested, it can auto-spawn specialist sub-agents with role-specific souls.<p></p>
+<div><h2>Example: Execute Company Objective (Runtime Checkpoints Enabled)</h2><a href="#example-execute-company-objective-runtime-checkpoints-enabled"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/company/execute \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "workspaceId": "default",</span>
+<span> "objective": "Plan launch, ship reliability fixes, and update sales assets",</span>
+<span> "runtimeEscalationEnabled": true,</span>
+<span> "runtimePauseOnHighRiskStream": true,</span>
+<span> "runtimePauseOnLowConsensus": true,</span>
+<span> "runtimeLowConsensusThreshold": 0.65</span>
+<span> }<span>'</span></span></pre></div>
+<div><h2>Example: Resume Paused Company Run</h2><a href="#example-resume-paused-company-run"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/company/runs/<span>&lt;</span>runId<span>&gt;</span>/resume \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "decision": "approve",</span>
+<span> "note": "Approved by founder. Continue.",</span>
+<span> "runtimePauseOnLowConsensus": false</span>
+<span> }<span>'</span></span></pre></div>
+<div><h2>Example: Build Company Plan (Souls + Skills + Model Routing)</h2><a href="#example-build-company-plan-souls--skills--model-routing"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/architecture/company-plan \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "workspaceId": "default",</span>
+<span> "objective": "Increase sales demos while shipping reliable product improvements.",</span>
+<span> "teamSize": 4,</span>
+<span> "debateRounds": 2,</span>
+<span> "autoSpawnSubAgents": true,</span>
+<span> "autoGenerateSkills": true</span>
+<span> }<span>'</span></span></pre></div>
+<div><h2>Example: Evolve Agent Soul From Outcome</h2><a href="#example-evolve-agent-soul-from-outcome"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/architecture/soul/evolve \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "agentId": "&lt;agentId&gt;",</span>
+<span> "performanceScore": 0.42,</span>
+<span> "outcome": "Incident occurred. Add stronger verification and risk control."</span>
+<span> }<span>'</span></span></pre></div>
+<div><h2>Example: Auto-Generate Agent Skill From Task</h2><a href="#example-auto-generate-agent-skill-from-task"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/agents/<span>&lt;</span>agentId<span>&gt;</span>/skills/generate \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "task": "Fix checkout bug and add regression tests",</span>
+<span> "seedMemory": {</span>
+<span> "note": "Root cause likely stale cart cache",</span>
+<span> "source": "mission.bootstrap"</span>
+<span> }</span>
+<span> }<span>'</span></span></pre></div>
+<div><h2>Example: Auto-Generate Skill Using Specific LLM</h2><a href="#example-auto-generate-skill-using-specific-llm"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/agents/<span>&lt;</span>agentId<span>&gt;</span>/skills/generate \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "task": "Fix checkout bug and add regression tests",</span>
+<span> "llm": {</span>
+<span> "provider": "anthropic",</span>
+<span> "model": "claude-3-5-sonnet-latest",</span>
+<span> "temperature": 0.2</span>
+<span> }</span>
+<span> }<span>'</span></span></pre></div>
+<div><h2>Example: Direct LLM Call (OpenAI/Claude/Gemini)</h2><a href="#example-direct-llm-call-openaiclaudegemini"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/llm/respond \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "workspaceId": "default",</span>
+<span> "traceId": "trace-demo-001",</span>
+<span> "modelRef": "gemini/gemini-1.5-pro",</span>
+<span> "fallbacks": ["openai/gpt-4o-mini"],</span>
+<span> "prompt": "Summarize this mission objective in 2 lines."</span>
+<span> }<span>'</span></span></pre></div>
+<p></p><pre><code>/api/llm/respond</code></pre> response now includes telemetry fields:<p></p>
+<ul>
+<li><pre><code>durationMs</code></pre></li>
+<li><pre><code>usageNormalized</code></pre> (<pre><code>promptTokens</code></pre>, <pre><code>completionTokens</code></pre>, <pre><code>totalTokens</code></pre>)</li>
+<li><pre><code>costUsd</code></pre> (estimated, if configured)</li>
+</ul>
+<div><h2>Plugin SDK</h2><a href="#plugin-sdk"></a></div>
+<p>Plugins live under </p><pre><code>plugins/&lt;plugin-folder&gt;/</code></pre> with:<p></p>
+<ul>
+<li><pre><code>plugin.json</code></pre> manifest</li>
+<li>module file (default <pre><code>index.js</code></pre>) exporting a function (default export or named <pre><code>register</code></pre>)</li>
+</ul>
+<p>Manifest example:</p>
+<div><pre>{ <span>"id"</span>: <span><span>"</span>hello-world<span>"</span></span>, <span>"name"</span>: <span><span>"</span>Hello World Plugin<span>"</span></span>, <span>"version"</span>: <span><span>"</span>0.1.0<span>"</span></span>, <span>"description"</span>: <span><span>"</span>Example plugin tools<span>"</span></span>, <span>"entry"</span>: <span><span>"</span>index.js<span>"</span></span>, <span>"permissions"</span>: { <span>"network"</span>: <span>false</span>, <span>"filesystem"</span>: <span>false</span> }
+}</pre></div>
+<p>Plugin module example:</p>
+<div><pre><span>import</span> <span>{</span> <span>definePlugin</span><span>,</span> <span>defineTool</span> <span>}</span> <span>from</span> <span>"../../src/plugins/sdk.js"</span><span>;</span> <span>export</span> <span>default</span> <span>definePlugin</span><span>(</span><span>(</span><span>)</span> <span>=&gt;</span> <span>(</span><span>{</span> <span>tools</span>: <span>[</span> <span>defineTool</span><span>(</span><span>{</span> <span>name</span>: <span>"echo"</span><span>,</span> <span>actionType</span>: <span>"read"</span><span>,</span> <span>inputSchema</span>: <span>{</span> <span>type</span>: <span>"object"</span><span>,</span> <span>required</span>: <span>[</span><span>"text"</span><span>]</span><span>,</span> <span>properties</span>: <span>{</span> <span>text</span>: <span>{</span> <span>type</span>: <span>"string"</span> <span>}</span> <span>}</span> <span>}</span><span>,</span> <span>async</span> <span>run</span><span>(</span><span>{</span> input <span>}</span><span>)</span> <span>{</span> <span>return</span> <span>{</span> <span>echoed</span>: <span>input</span><span>.</span><span>text</span> <span>}</span><span>;</span> <span>}</span> <span>}</span><span>)</span> <span>]</span>
+<span>}</span><span>)</span><span>)</span><span>;</span></pre></div>
+<p>Tool </p><pre><code>actionType</code></pre> supports:<p></p>
+<ul>
+<li><pre><code>read</code></pre></li>
+<li><pre><code>write</code></pre></li>
+<li><pre><code>external_send</code></pre></li>
+<li><pre><code>financial</code></pre></li>
+<li><pre><code>destructive</code></pre></li>
+</ul>
+<p>Every plugin tool call is mediated by runtime policy and recorded in runtime audits with redacted snapshots.</p>
+<div><h3>Example: List Loaded Plugins</h3><a href="#example-list-loaded-plugins"></a></div>
+<div><pre>curl http://localhost:3001/api/plugins</pre></div>
+<div><h3>Example: Reload Plugins</h3><a href="#example-reload-plugins"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/plugins/reload</pre></div>
+<div><h3>Example: Invoke Plugin Tool</h3><a href="#example-invoke-plugin-tool"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/plugins/hello-world/tools/echo/invoke \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "input": {</span>
+<span> "text": "hello plugin"</span>
+<span> }</span>
+<span> }<span>'</span></span></pre></div>
+<div><h2>Multi-Channel Gateway (WhatsApp/Telegram/Local)</h2><a href="#multi-channel-gateway-whatsapptelegramlocal"></a></div>
+<p>SOVEREIGN now includes a channel gateway with built-in adapters:</p>
+<ul>
+<li><pre><code>local</code></pre> (for browser/terminal/API testing)</li>
+<li><pre><code>telegram</code></pre></li>
+<li><pre><code>whatsapp</code></pre> (Meta Cloud API format)</li>
+</ul>
+<div><h3>Environment variables (optional)</h3><a href="#environment-variables-optional"></a></div>
+<div><pre><span>export</span> CHAT_PROVIDER=<span><span>"</span>openai<span>"</span></span> <span><span>#</span> default chat provider for channel replies</span>
+<span>export</span> DEFAULT_WORKSPACE_ID=<span><span>"</span>default<span>"</span></span>
+<span>export</span> AUTOPILOT_POLL_MS=<span><span>"</span>3000<span>"</span></span> <span><span>#</span> background loop polling interval</span>
+<span>export</span> AUTOPILOT_MAX_CYCLES=<span><span>"</span>12<span>"</span></span> <span><span>#</span> max execution cycles per goal</span> <span>export</span> TELEGRAM_BOT_TOKEN=<span><span>"</span>...<span>"</span></span>
+<span>export</span> TELEGRAM_WEBHOOK_SECRET=<span><span>"</span>...<span>"</span></span> <span>export</span> WHATSAPP_ACCESS_TOKEN=<span><span>"</span>...<span>"</span></span>
+<span>export</span> WHATSAPP_VERIFY_TOKEN=<span><span>"</span>...<span>"</span></span>
+<span>export</span> WHATSAPP_PHONE_NUMBER_ID=<span><span>"</span>...<span>"</span></span></pre></div>
+<div><h3>Example: Local channel webhook (no external platform required)</h3><a href="#example-local-channel-webhook-no-external-platform-required"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/channels/local/webhook \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "workspaceId": "default",</span>
+<span> "chatId": "founder-chat",</span>
+<span> "userId": "borhen",</span>
+<span> "text": "/help"</span>
+<span> }<span>'</span></span></pre></div>
+<div><h2>Autopilot Example (Human Delegates, Agent Delivers)</h2><a href="#autopilot-example-human-delegates-agent-delivers"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/autopilot/goals \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "workspaceId": "default",</span>
+<span> "title": "Prepare launch brief",</span>
+<span> "objective": "Draft, validate, and finalize launch brief with execution plan",</span>
+<span> "maxCycles": 20,</span>
+<span> "notifyTargets": [</span>
+<span> {</span>
+<span> "channelId": "local",</span>
+<span> "chatId": "founder-dm",</span>
+<span> "userId": "founder"</span>
+<span> }</span>
+<span> ]</span>
+<span> }<span>'</span></span></pre></div>
+<p>Manual single-step run (for testing/debug):</p>
+<div><pre>curl -X POST http://localhost:3001/api/autopilot/goals/<span>&lt;</span>goalId<span>&gt;</span>/run</pre></div>
+<div><h3>Example: Telegram webhook endpoint</h3><a href="#example-telegram-webhook-endpoint"></a></div>
+<p>Set your Telegram webhook to:</p>
+<div><pre><code>https://&lt;your-domain&gt;/api/channels/telegram/webhook?secret=&lt;your-secret&gt;
+</code></pre></div>
+<div><h3>Example: WhatsApp webhook endpoint</h3><a href="#example-whatsapp-webhook-endpoint"></a></div>
+<p>In Meta webhook config:</p>
+<ul>
+<li>Verify URL: <pre><code>https://&lt;your-domain&gt;/api/channels/whatsapp/webhook</code></pre></li>
+<li>Verify token: same value as <pre><code>WHATSAPP_VERIFY_TOKEN</code></pre></li>
+</ul>
+<div><h2>Example: Add Skill Memory</h2><a href="#example-add-skill-memory"></a></div>
+<div><pre>curl -X POST http://localhost:3001/api/agents/<span>&lt;</span>agentId<span>&gt;</span>/skills/<span>&lt;</span>skillId<span>&gt;</span>/memory \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "note": "Patch reduced checkout failure rate by 40%",</span>
+<span> "outcome": "improved conversion",</span>
+<span> "source": "task.run",</span>
+<span> "score": 0.84</span>
+<span> }<span>'</span></span></pre></div>
+<div><h2>Tests</h2><a href="#tests"></a></div>
+<div><pre>npm <span>test</span></pre></div>
+<div><h2>Open Source Project Files</h2><a href="#open-source-project-files"></a></div>
+<ul>
+<li>License: <pre><code>LICENSE</code></pre> (Apache-2.0)</li>
+<li>Contribution guide: <pre><code>CONTRIBUTING.md</code></pre></li>
+<li>Code of conduct: <pre><code>CODE_OF_CONDUCT.md</code></pre></li>
+<li>Security policy: <pre><code>SECURITY.md</code></pre></li>
+<li>Deployment guide: <pre><code>DEPLOYMENT.md</code></pre></li>
+<li>Changelog: <pre><code>CHANGELOG.md</code></pre></li>
+</ul>
+<div><h2>CI / Release</h2><a href="#ci--release"></a></div>
+<ul>
+<li>CI workflow: <pre><code>.github/workflows/ci.yml</code></pre></li>
+<li>Security workflow: <pre><code>.github/workflows/security.yml</code></pre></li>
+<li>Release workflow (tags <pre><code>v*</code></pre>): <pre><code>.github/workflows/release.yml</code></pre></li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

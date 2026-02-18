@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Idea Machine</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Idea Machine</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 7:00:04 AM | <a href="https://fabianboth.dev/blog/idea-machine/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><strong>Disclaimer:</strong> It’s basically just the <a href="https://github.com/snarktank/ralph">Ralph Wiggum Loop</a> with some structure around it. See the <a href="https://fabianboth.dev/projects/ralph-ideate-loop">project page</a> for a quick overview.</p>
+<p><img src="https://fabianboth.dev/blog/idea-machine/ralph_loop.webp" alt="Ralph Wiggum spinning inside a wheel, captioned 'The wheel I'm inside goes round and round' - a visual metaphor for the Ralph Loop"></p><h2>The Ralph Loop Finally Did Something Useful</h2>
+<p>I’ve tried the Ralph Loop for coding (see <a href="https://github.com/snarktank/ralph">Ralph Loop</a> and <a href="https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum">Claude code plugin</a>). You shove a prompt at your agent, it comes back with a question, you shove the prompt back again. The merit of this is brute force persistence, extending what can be done autonomously. However, this is easily spiraling into some local minimum that’s technically working but fundamentally wrong. For prototyping it is awesome, but for more… it sucks. You end up with code you don’t trust and can’t continue from.</p>
+<p>But for idea exploration? Turns out it’s a perfect match.</p>
+<p><strong>Here’s why</strong>: coding needs convergence. You need to arrive at <em>the</em> solution. Idea brainstorming is the opposite. It’s infinite exploration. You’re not trying to converge, you’re trying to cover ground. And the complexity doesn’t compound the same way. A codebase gets harder to reason about with every commit. A list of discarded ideas doesn’t.</p>
+<p>So I built a convenience wrapper around this. You define a search domain and let the Ralph Loop run on it.</p>
+<h2>”Holy Shit, I Was Doing This Wrong”</h2>
+<p>I let it run overnight. Woke up to 100+ ideas.</p>
+<p>The thing that got me wasn’t the volume. It was recognition. I saw ideas I’d manually explored weeks ago. Same ideas, same discard reasons. All that tedious work I’d done by hand, covered in a few hours while I slept.</p>
+<p>At various points in previous startups, I did intense brainstorming sprints for weeks. It was exhausting in a way that’s hard to explain. You have to pursue every idea like it matters. You hit a wall (someone already does this) and you can’t just quit, because competition is a <em>positive</em> signal. You need to find the angle, the differentiator. And to do that, you have to get fired up about the idea. You have to pretend you believe in it, just to see if it survives.</p>
+<p>Do that for dozens of ideas across multiple days, and it drains you.</p>
+<p>With this thing, I got 200 ideas across 3 domains in a single day. Same rigor. No emotional labor.</p>
+<p><img src="https://fabianboth.dev/blog/idea-machine/eureka_simpsons.webp" alt="Homer Simpson having a eureka moment, reaching up toward a glowing lightbulb, captioned &quot;Eureka, the best idea ever&quot;"></p>
+<h2>Steering the Loop</h2>
+<p>The best part is throwing thoughts into the running process like an idea dump. It’s running in the background while I’m doing other work, and I just toss things in.</p>
+<p>“Think more about agencies.”</p>
+<p>“What about cybersecurity?”</p>
+<p>Or when it goes sideways: <em>“Honestly, all these ideas require aggregating distributed information and I don’t think we can pull that off.”</em></p>
+<p>That last one actually triggered a useful pivot. It analyzed the pattern I’d called out, updated its domain understanding (of course after asking for that update), discarded the dead ends, and went in a different direction. A refinement moment I wouldn’t have had if I was just reviewing a static list.</p>
+<h2>Where It Breaks</h2>
+<p>It’s bad at future-looking stuff. I was brainstorming for the vibe coding space, which is crowded on the obvious plays. You need to anticipate where pain points will be in 3-6 months. The tool couldn’t do that. It kept discarding ideas because it couldn’t verify the pain <em>yet</em>.</p>
+<p>Makes sense. It’s a “verify against reality” machine, and reality hasn’t caught up in fast-moving spaces. I couldn’t push it into the future zone with the current setup, but maybe this is also feasible with changed instructions / design. Still, even without that it delivers a lot of value in many domains and inspiration for my own ideas which I then feed back in.</p>
+<h2>What It Costs</h2>
+<div>
+<div>
+<p>This is not really cheap usage-wise. One loop maxes out my Claude Max 20x subscription within its 5h reset window. There’s a lot of text work happening under the hood.</p>
+<p>But compare that to weeks of manual brainstorming that drains you emotionally and still might miss things. If you have some spare usage at the end of your week, you know what to do now ;)</p>
+</div>
+<p><img src="https://fabianboth.dev/blog/idea-machine/shutup_and_take_my_money.webp" alt="Fry from Futurama holding money, captioned 'Shut up and take my money'">
+</p></div>
+<h2>Why This Exists</h2>
+<p>Every AI brainstorming tool I tried was garbage. Reddit pain-point scrapers, idea marketplaces, research modes from the big players. All of them gave me the same top-20 listicle nonsense or random noise. I even saw similar ideas pop up in my tool’s run, but they got discarded and we kept going. Brute force persistence beats few-shot cleverness for exploration tasks.</p>
+<p>This was my first real win with the Ralph Loop. It’s a tool I needed, so I built it. If you’re doing the vibe coding thing and want to scale up your idea exploration, maybe you’ll find it useful too.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

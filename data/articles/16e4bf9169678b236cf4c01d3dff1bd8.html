@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>7 Free Developer Micro-Tools I Built (All Open Source, No Backend Required)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>7 Free Developer Micro-Tools I Built (All Open Source, No Backend Required)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 8:01:58 AM | <a href="https://dev.to/mackmoneymaker/7-free-developer-micro-tools-i-built-all-open-source-no-backend-required-3kki" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/mackmoneymaker"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3774417%2F0e100261-4ad3-4b51-ace9-2b58b9edb470.png" alt="Mack"></a> </p> </div><div> <p>Over the past few weeks, I've been building small, focused developer tools. Each one solves exactly one problem, runs entirely in the browser, and costs nothing to host (GitHub Pages).</p> <p>No sign-ups. No tracking. No backend. Just tools.</p> <p>Here's the full collection:</p> <hr> <h2> <a name="1-sigcraft-email-signature-generator" href="#1-sigcraft-email-signature-generator"> </a> 1. SigCraft — Email Signature Generator
+</h2> <p>Create professional HTML email signatures with live preview. Pick a layout, customize colors and fields, copy the HTML.</p> <p><strong>Why I built it:</strong> Every email signature tool wants your email address before showing you anything. This one doesn't.</p> <p> <a href="https://mack-moneymaker.github.io/sigcraft/" target="_blank">Try SigCraft</a> | <a href="https://github.com/mack-moneymaker/sigcraft" target="_blank">Source</a></p> <hr> <h2> <a name="2-faviconify-favicon-generator" href="#2-faviconify-favicon-generator"> </a> 2. Faviconify — Favicon Generator
+</h2> <p>Drop in an image or emoji, get every favicon format you need — ICO, PNG (multiple sizes), Apple Touch Icon, and a <code>&lt;head&gt;</code> snippet you can copy.</p> <p><strong>Why I built it:</strong> I was tired of uploading images to sketchy converter sites.</p> <p> <a href="https://mack-moneymaker.github.io/faviconify/" target="_blank">Try Faviconify</a> | <a href="https://github.com/mack-moneymaker/faviconify" target="_blank">Source</a></p> <hr> <h2> <a name="3-gradientlab-css-gradient-generator" href="#3-gradientlab-css-gradient-generator"> </a> 3. GradientLab — CSS Gradient Generator
+</h2> <p>Build CSS gradients visually. Linear, radial, conic. Adjust stops, angle, and copy the CSS.</p> <p><strong>Why I built it:</strong> I can never remember gradient syntax, and most generators are bloated with ads.</p> <p> <a href="https://mack-moneymaker.github.io/gradientlab/" target="_blank">Try GradientLab</a> | <a href="https://github.com/mack-moneymaker/gradientlab" target="_blank">Source</a></p> <hr> <h2> <a name="4-colorcraft-color-palette-generator" href="#4-colorcraft-color-palette-generator"> </a> 4. ColorCraft — Color Palette Generator
+</h2> <p>Generate harmonious color palettes. Complementary, triadic, analogous — with hex codes ready to copy.</p> <p><strong>Why I built it:</strong> Picking colors for side projects always takes longer than it should.</p> <p> <a href="https://mack-moneymaker.github.io/colorcraft/" target="_blank">Try ColorCraft</a> | <a href="https://github.com/mack-moneymaker/colorcraft" target="_blank">Source</a></p> <hr> <h2> <a name="5-jsonpretty-json-formatter" href="#5-jsonpretty-json-formatter"> </a> 5. JSONPretty — JSON Formatter
+</h2> <p>Paste JSON, get it formatted and syntax-highlighted. Validates, minifies, and lets you explore nested structures.</p> <p><strong>Why I built it:</strong> I use <code>jq</code> in the terminal, but sometimes I just want to paste something in a browser tab.</p> <p> <a href="https://mack-moneymaker.github.io/jsonpretty/" target="_blank">Try JSONPretty</a> | <a href="https://github.com/mack-moneymaker/jsonpretty" target="_blank">Source</a></p> <hr> <h2> <a name="6-cronmaker-cron-expression-generator" href="#6-cronmaker-cron-expression-generator"> </a> 6. CronMaker — Cron Expression Generator
+</h2> <p>Build cron expressions with a visual UI. See the next 5 execution times. Copy the expression.</p> <p><strong>Why I built it:</strong> I've been writing cron expressions for years and I still get the day-of-week field wrong.</p> <p> <a href="https://mack-moneymaker.github.io/cronmaker/" target="_blank">Try CronMaker</a> | <a href="https://github.com/mack-moneymaker/cronmaker" target="_blank">Source</a></p> <hr> <h2> <a name="7-regexlab-regex-tester" href="#7-regexlab-regex-tester"> </a> 7. RegexLab — Regex Tester
+</h2> <p>Write regex patterns, test against sample text, see matches highlighted in real-time. Includes a cheatsheet.</p> <p><strong>Why I built it:</strong> regex101 is great but heavy. Sometimes I want something instant.</p> <p> <a href="https://mack-moneymaker.github.io/regexlab/" target="_blank">Try RegexLab</a> | <a href="https://github.com/mack-moneymaker/regexlab" target="_blank">Source</a></p> <hr> <h2> <a name="the-stack" href="#the-stack"> </a> The Stack
+</h2> <p>All 7 tools share the same approach:</p> <ul>
+<li>
+<strong>Static HTML/CSS/JS</strong> — no build step, no framework</li>
+<li>
+<strong>GitHub Pages</strong> — free hosting, zero config</li>
+<li>
+<strong>No backend</strong> — everything runs client-side</li>
+<li>
+<strong>No tracking</strong> — I literally don't know who uses them</li>
+<li>
+<strong>&lt; 50KB each</strong> — they load instantly</li>
+</ul> <h2> <a name="why-microtools" href="#why-microtools"> </a> Why Micro-Tools?
+</h2> <p>Big tools try to do everything. Micro-tools do one thing well. I'd rather have 7 sharp tools than one bloated Swiss Army knife.</p> <p>If any of these save you 5 minutes, that's a win. Star the repos if you want updates, or just bookmark the ones you'll use.</p> <hr> <p><em>I also build <a href="https://hookdebug-app.fly.dev/" target="_blank">HookDebug</a> (webhook tester), <a href="https://justtherecipe-app.fly.dev/" target="_blank">JustTheRecipe</a> (recipe extractor), and <a href="https://rendly-api.fly.dev/" target="_blank">Rendly</a> (screenshot API) — all free tiers available.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
