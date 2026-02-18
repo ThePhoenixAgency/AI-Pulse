@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>6cy: A Content-Addressed Archive Format in Rust</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>6cy: A Content-Addressed Archive Format in Rust</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 1:38:28 AM | <a href="https://dev.to/byte271/6cy-a-content-addressed-archive-format-in-rust-3i7l" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <div> <p><a href="https://dev.to/byte271"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3778534%2F03334a36-ffda-4520-9758-27aefa521432.png" alt="byte271"></a> </p> </div> </header> <div> <p>
+Source code:
+<a href="https://github.com/byte271/6cy" target="_blank">
+[GitHub]
+</a>
+</p> <p>
+I built <strong>6cy</strong> as an experimental archive format focused on content-addressing,
+deduplication, and practical streaming workflows.
+This post gives a short, concrete overview you can read quickly.
+</p> <hr> <h2>Core Architectural Features</h2> <h3>Streaming-First Design</h3> <p>
+Optimized for single-pass read and write operations.
+Data can be appended without seeking back.
+This fits network streams and large-scale pipelines.
+</p> <h3>Data Recoverability</h3> <p>
+Blocks are self-describing and include checks.
+Periodic checkpoints (recovery map) let readers recover data
+even if the archive is truncated or partially corrupted.
+</p> <h3>Codec Polymorphism</h3> <p>
+Multiple compression algorithms can coexist in one archive (e.g., Zstd, LZ4).
+Each block can pick the best codec for its data.
+This lets the writer trade speed vs. ratio per block.
+</p> <h3>Plugin Architecture</h3> <p>
+A simple plugin ABI and manifest allow closed-source or third-party codecs
+to be loaded as binary plugins without changing the core codebase.
+This keeps the core implementation small and auditable.
+</p> <h3>Metadata-First Indexing</h3> <p>
+A central index maps files to blocks.
+This enables fast listing and random extraction.
+Readers do not need to scan the entire archive to find files.
+</p> <h3>Rust Reference Implementation</h3> <p>
+The canonical implementation is written in Rust.
+It prioritizes memory safety, clear error handling, and predictable performance.
+The repo serves as the reference for the format.
+</p> <hr> <h2>Architecture at a Glance</h2> <pre>[ Data Blocks (content-addressed) ... ]
+[ Central Index (BlockRefs + metadata) ]
+[ Superblock (index offset, codecs, UUID) ]
+</pre> <p>
+Blocks carry block headers, compressed payloads, and a content hash.
+The index contains BlockRef entries that point to blocks or to remote archive references.
+</p> <hr> <h2>Quickstart (try it)</h2> <pre>git clone https://github.com/byte271/6cy
+cd 6cy
+# build (Linux / macOS)
+cargo build --release
+# pack files
+./target/release/6cy pack -o test.6cy path/to/file1 path/to/file2
+# inspect
+./target/release/6cy info test.6cy
+</pre> <p>
+Windows users: run the same commands in PowerShell or WSL.
+Be mindful of line endings and file ordering when testing cross-platform determinism.
+</p> <hr> <h2>Current Status</h2> <ul>
+<li>Feature set implemented in the reference repo: streaming write/read, central index, block-level dedup, content hashes, root hash, solid mode, plugin hooks.</li>
+<li>Validation in progress: cross-platform determinism (Linux/Windows), crash-recovery semantics, fuzz testing, and performance benchmarks.</li>
+<li>State: experimental / stabilizing. The spec and implementation are evolving but now have a stable core surface.</li>
+</ul> <hr> <h2>How to Help</h2> <p>
+If you want to try the format, please:
+</p> <ul>
+<li>Clone the repo and run the quickstart above</li>
+<li>Try packing the same file multiple times to see dedup in action</li>
+<li>Open issues for bugs or missing docs</li>
+<li>Send PRs for tests, examples, or platform fixes</li>
+</ul> <hr> <h2>Open Source &amp; Contact</h2> <p>
+Code and issues: <a href="https://github.com/byte271/6cy" target="_blank">https://github.com/byte271/6cy</a>
+</p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why Your AI Agents Need a Black Box</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Why Your AI Agents Need a Black Box</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 3:09:21 AM | <a href="https://dev.to/nostalgicskinco/why-your-ai-agents-need-a-black-box-i12" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>My AI agents went rogue.</p> <p>I run an e-commerce store. A few months ago, I deployed AI agents to handle customer emails — returns, refund requests, product questions. It worked great, until it didn't.</p> <p>The agents started making promises we couldn't keep: wrong refund amounts, unauthorized discounts, completely fabricated policies. "Sure, we'll refund your shipping even though our policy says otherwise." "Yes, you can return that item after 90 days." None of it was true.</p> <p>The worst part wasn't that they failed. That's fixable. The worst part was that <strong>I couldn't prove what they actually said.</strong></p> <p>When customers disputed AI responses, I had nothing. Logs were scattered across three different services. They were mutable — anyone (or any process) could quietly change them after the fact. And they were incomplete. Half the tool calls weren't captured at all.</p> <p>I had no audit trail. No accountability. No evidence.</p> <h2> <a name="the-gap-that-nobody-talks-about" href="#the-gap-that-nobody-talks-about"> </a> The Gap That Nobody Talks About
+</h2> <p>When I went looking for a solution, I found plenty of observability tools. Langfuse. Helicone. LangSmith. They're all excellent at showing you <em>what happened</em>.</p> <p>But I didn't need to see what happened. I needed to <strong>prove</strong> what happened.</p> <p>That distinction sounds subtle. It isn't.</p> <ul>
+<li>
+<strong>Observability</strong> answers: "What did the agent do?"</li>
+<li>
+<strong>Accountability</strong> answers: "What did the agent do, and can you prove it wasn't changed after the fact?"</li>
+</ul> <p>In a regulated world — and we're entering one fast — that difference is everything. The EU AI Act is partially in force. The Colorado AI Act hits in June 2026. Texas TRAIGA is live now. The SEC has made AI governance its top priority for 2026.</p> <p>Companies deploying AI agents for anything consequential (approving loans, handling complaints, writing medical summaries, processing transactions) are going to need tamper-evident records of what their AI said and did. Not logs. Proof.</p> <h2> <a name="what-i-built" href="#what-i-built"> </a> What I Built
+</h2> <p>So I built AIR — the open-source black box for AI agents.</p> <p>Like the flight recorder on an aircraft, AIR captures every decision, every interaction, every tool call your AI agents make. But unlike scattered logs, AIR creates <strong>cryptographic chains</strong>: HMAC-SHA256 proof that records haven't been modified after the fact. Change one record and the entire chain breaks.</p> <p>Three lines of code to wrap your existing OpenAI app:<br>
+</p> <div>
+<pre><code><span>from</span> <span>openai</span> <span>import</span> <span>OpenAI</span>
+<span>import</span> <span>air</span> <span>client</span> <span>=</span> <span>air</span><span>.</span><span>air_wrap</span><span>(</span><span>OpenAI</span><span>())</span>
+<span>response</span> <span>=</span> <span>client</span><span>.</span><span>chat</span><span>.</span><span>completions</span><span>.</span><span>create</span><span>(...)</span>
+<span># Every call is now recorded with a tamper-evident audit trail
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. Every prompt, completion, tool call, and model decision is captured — with cryptographic integrity — stored on your own infrastructure, never leaving your control.</p> <h2> <a name="what-it-actually-solves" href="#what-it-actually-solves"> </a> What It Actually Solves
+</h2> <p><strong>When a customer disputes what your AI told them:</strong> You have a signed, timestamped record of the exact conversation. Not a log file that could have been edited — cryptographic proof of what was said.</p> <p><strong>When a regulator asks for your AI governance documentation:</strong> AIR auto-generates compliance reports mapped to SOC 2, ISO 27001, and EU AI Act requirements. 22 controls, pre-mapped.</p> <p><strong>When your agent goes off-script and you don't know why:</strong> Deterministic replay lets you reproduce any AI decision exactly as it happened, in isolation, for debugging.</p> <p><strong>When your team changes a model or prompt:</strong> You have a before/after comparison with the same inputs, so you can prove the change didn't introduce new failure modes.</p> <h2> <a name="the-ecosystem" href="#the-ecosystem"> </a> The Ecosystem
+</h2> <p>AIR isn't one repo — it's a complete accountability stack across 19 open-source repositories:</p> <ul>
+<li>
+<strong><a href="https://github.com/nostalgicskinco/air-blackbox-gateway" target="_blank">air-blackbox-gateway</a></strong> — OpenAI-compatible reverse proxy that captures every LLM call</li>
+<li>
+<strong><a href="https://github.com/nostalgicskinco/air-sdk-python" target="_blank">air-sdk-python</a></strong> — Python SDK wrapping OpenAI, LangChain, and CrewAI</li>
+<li>
+<strong><a href="https://github.com/nostalgicskinco/agent-policy-engine" target="_blank">agent-policy-engine</a></strong> — Risk-tiered autonomy: policies, kill switches, trust scoring</li>
+<li>
+<strong><a href="https://github.com/nostalgicskinco/eval-harness" target="_blank">eval-harness</a></strong> — Replay episodes, score results, detect regressions</li>
+<li>
+<strong><a href="https://github.com/nostalgicskinco/mcp-policy-gateway" target="_blank">mcp-policy-gateway</a></strong> — Firewall for AI agent tool access via MCP</li>
+</ul> <p>The Python SDK is live on PyPI: <code>pip install air-blackbox-sdk</code></p> <p>There's also an <strong><a href="https://nostalgicskinco.github.io/air-blackbox-gateway/" target="_blank">interactive demo</a></strong> you can try right now in your browser — watch an agent run, inspect the audit chain, tamper with a record, and see the chain break.</p> <h2> <a name="why-now" href="#why-now"> </a> Why Now
+</h2> <p>The timing isn't accidental. 90% of enterprises use AI in daily operations. Only 18% have governance frameworks. The tools simply don't exist yet for most companies.</p> <p>But they will need to exist — and soon. August 2026 is when EU AI Act enforcement begins for high-risk systems. June 2026 for Colorado. January 2026 for Texas (already live).</p> <p>If you're building AI agents that affect real people, you need to be thinking about this now, not after your first customer dispute or regulatory inquiry.</p> <hr> <p>AIR is open source and free to use. The hard part is done — the code is real, the SDK is live, the demo works.</p> <p>If you're building AI agents in production, I'd love your feedback. Try the interactive demo, kick the tires on the SDK, file an issue if something doesn't work.</p> <p><strong>GitHub:</strong> <a href="https://github.com/nostalgicskinco/air-blackbox-gateway" target="_blank">github.com/nostalgicskinco/air-blackbox-gateway</a></p> <p><em>Jason Shotwell builds e-commerce tooling and, apparently, AI infrastructure when his agents go rogue.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

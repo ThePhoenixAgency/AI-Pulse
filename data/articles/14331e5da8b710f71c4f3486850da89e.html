@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Show HN: Fullbleed – Rust HTML/CSS-to-PDF with Deterministic Output+Python CLI</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Show HN: Fullbleed – Rust HTML/CSS-to-PDF with Deterministic Output+Python CLI</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 1:35:45 AM | <a href="https://news.ycombinator.com/item?id=47055927" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><div><p>Hi HN,</p><p>I've been building fullbleed for a while and just shipped v0.2.5. It's a PDF generation engine written in Rust, distributed as a Python wheel.</p><p>The short version: HTML/CSS in, PDF out. No headless browser. No cloud. No Chromium. Works fully offline.
+*Why fullbleed:</p><p>Full Bleed is a term that means printed on the edge, or end to end of a page. Thats what I wanted, a full end to end solution that didn't require sys dependencies and unlike browsers, I could ACTUALLY do a print layout full bleed. Some other reasons:
+-Deterministic, fixed point as the base measurement (.000035mm~) so that things are where I want them to be
+-Composition and authoring, so I can put templates and the variable data in the same place without 200 lines of glue code
+-vendored assets- Tired of handling system fonts etc
+-HTML/CSS layout engine so that I could take advantage of the most commonly used document description convention, but still abstract away from it.
+-Agent-first design. I was honestly annoyed with how bad agents were at composing PDFS, and wanted an agent-friendly loop.
+*What makes it different from WeasyPrint / wkhtmltopdf / Prince:*</p><p>- *Deterministic output*: SHA-256 hashing on every render. `--repro-record` / `--repro-check` for CI pipelines. Same inputs always produce the exact same PDF bytes. I don't know of any other open-source PDF engine that does this.
+- *Structured page data*: The engine returns structured JSON alongside PDF bytes — running totals, per-page sums, grand totals. Useful for financial statements where you want to reconcile programmatically before the PDF even lands.
+- *Rayon-backed parallel batch*: `render_pdf_batch_parallel()` with Python bindings that release the GIL. You can generate 10,000 statements while your Python process does other work.
+- *VDP / transactional compose*: Overlay variable data onto source PDF templates with feature-driven page binding. Built-in, not bolted on.
+- *Agent-safe JSON CLI*: Every command emits a versioned schema. `--json-only` mode for CI and LLM agent workflows. `--schema` for introspection.</p><p>*The pricing angle:* Prince costs $3,800+/year per server. DocRaptor starts at $15/month but quickly hits $600/month for real volume — and it's cloud-only. fullbleed is AGPL-3.0 free for OSS, and commercial licenses start at $20/month per org with no usage caps.</p><p>*Quick start:*
+```
+pip install fullbleed
+fullbleed init .
+python report.py
+```</p><p>That scaffolds a full project with Bootstrap 5, Inter font, and component-first Python helpers — all vendored and hash-pinned offline.</p><p>GitHub: <a href="https://github.com/fullbleed-engine/fullbleed-official">https://github.com/fullbleed-engine/fullbleed-official</a></p><p>Happy to answer questions about the rendering pipeline, the determinism model, or the Python/Rust binding design.</p></div></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

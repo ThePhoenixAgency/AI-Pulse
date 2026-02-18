@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>5 Free Browser Tools I Built to Speed Up My Dev Workflow</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>5 Free Browser Tools I Built to Speed Up My Dev Workflow</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 1:46:24 AM | <a href="https://dev.to/maxxmini/5-free-browser-tools-i-built-to-speed-up-my-dev-workflow-2nga" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/maxxmini"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3773591%2Fbcf21d98-1095-45f0-a2e6-327367c65c15.png" alt="MaxxMini"></a> </p> </div><div> <p>Every developer has those repetitive micro-tasks that silently eat hours each week. Formatting JSON, debugging regex, decoding JWTs... I got tired of bouncing between random sites full of ads, so I built my own.</p> <p>Here are 5 browser tools I use daily. They're all <strong>free, client-side, no signup, no tracking</strong>.</p> <hr> <h2> <a name="1-json-formatter-amp-validator" href="#1-json-formatter-amp-validator"> </a> 1. JSON Formatter &amp; Validator
+</h2> <p><strong>The problem:</strong> Pasting minified JSON into random online formatters that inject ads or (worse) send your data to a server.</p> <p><strong>The fix:</strong> A clean formatter with syntax highlighting, validation, and error messages — all running in your browser. Zero data leaves your machine.</p> <p> <a href="https://maxmini0214.github.io/json-formatter/" target="_blank">JSON Formatter</a></p> <hr> <h2> <a name="2-regex-tester-amp-debugger" href="#2-regex-tester-amp-debugger"> </a> 2. Regex Tester &amp; Debugger
+</h2> <p><strong>The problem:</strong> Writing regex blindly, running code, failing, tweaking, repeat. Classic pain loop.</p> <p><strong>The fix:</strong> Real-time matching with capture group highlighting. You see exactly what your pattern matches (and what it doesn't) as you type.</p> <p> <a href="https://maxmini0214.github.io/regex-tester/" target="_blank">Regex Tester</a></p> <hr> <h2> <a name="3-jwt-decoder" href="#3-jwt-decoder"> </a> 3. JWT Decoder
+</h2> <p><strong>The problem:</strong> Copying JWTs from auth responses and pasting them into jwt.io every single time. It works, but it's slow and cluttered.</p> <p><strong>The fix:</strong> Paste a token, instantly see the decoded header and payload. Clean UI, no server calls, nothing stored.</p> <p> <a href="https://maxmini0214.github.io/jwt-decoder/" target="_blank">JWT Decoder</a></p> <hr> <h2> <a name="4-cron-expression-parser" href="#4-cron-expression-parser"> </a> 4. Cron Expression Parser
+</h2> <p><strong>The problem:</strong> Staring at <code>0 */6 * * 1-5</code> and mentally computing when it fires. Every. Single. Time.</p> <p><strong>The fix:</strong> Paste any cron expression, get a plain-English explanation plus the next 5 scheduled run times. No more guessing.</p> <p> <a href="https://maxmini0214.github.io/cron-parser/" target="_blank">Cron Parser</a></p> <hr> <h2> <a name="5-diff-checker" href="#5-diff-checker"> </a> 5. Diff Checker
+</h2> <p><strong>The problem:</strong> Two config files that <em>should</em> be identical but clearly aren't. Finding the difference manually is brutal.</p> <p><strong>The fix:</strong> Paste both texts, get a highlighted side-by-side diff instantly. Great for comparing configs, API responses, or code snippets.</p> <p> <a href="https://maxmini0214.github.io/diff-checker/" target="_blank">Diff Checker</a></p> <hr> <h2> <a name="why-i-built-these" href="#why-i-built-these"> </a> Why I Built These
+</h2> <p>I wanted tools that:</p> <ul>
+<li>Run <strong>100% client-side</strong> (your data never leaves the browser)</li>
+<li>Have <strong>zero ads, zero signups</strong>
+</li>
+<li>Load fast and just work</li>
+</ul> <p>There are 25+ tools on the site covering security, encoding, CSS, and more.</p> <p><strong>Check them all at <a href="https://maxmini0214.github.io/" target="_blank">maxmini0214.github.io</a></strong></p> <p>If any of these save you time, a on <a href="https://github.com/maxmini0214/maxmini0214.github.io" target="_blank">GitHub</a> means a lot. Happy coding!</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

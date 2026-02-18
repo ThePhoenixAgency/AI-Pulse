@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building an Open-Source Dip-Buying Strategy for Altcoins (Pine Script)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Building an Open-Source Dip-Buying Strategy for Altcoins (Pine Script)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 3:20:32 AM | <a href="https://dev.to/s_morozov/building-an-open-source-dip-buying-strategy-for-altcoins-pine-script-1k8" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>I work on the marketing side of a small trading automation project, so I'm not the one writing Pine Script — but I sat with our dev long enough while he was building this strategy that I can explain the thinking behind it. Figured it's worth sharing because the approach is kind of unusual.</p> <p>The strategy is called Dump Reversal Peak Trail v2. It's open-source on TradingView, currently on the front page of community scripts. It buys capitulation dips on altcoins — SOL, ETH, DOGE, stuff like that — and trails the rebound.</p> <p><strong>Why altcoins specifically</strong></p> <p>Alts dump harder and bounce faster than BTC. When Bitcoin drops 5%, SOL might drop 15-20% in the same window. That's not a bug for this strategy — it's the whole point. The bigger the capitulation candle, the more likely you get a real bounce after it. On BTC the dumps are usually more gradual, less "single candle panic" and more slow bleed. The strategy needs that sharp, overdone dump to work well.</p> <p><strong>How it actually works</strong></p> <p>There's 4 stages and they run in sequence:</p> <p>Stage 1 — find the dump. The strategy watches for a single bar that breaks the N-day low AND drops more than a threshold percentage. Normal volatility doesn't trigger it — it needs a genuine "oh shit" candle. Think SOL going from $145 to $128 in one 15-minute bar.</p> <p>Stage 2 — don't buy it yet. This is where most dip-buying strategies fail. They buy the dump candle, which looks amazing in backtest but is impossible to identify in real time (you don't know it's the bottom until after). Instead, we wait for the first green close after the dump. There's also a flatness filter — if price is just chopping sideways, it rejects the entry. And a minimum rebound check — needs enough bounce to suggest actual buyers showed up.<br>
+</p> <div>
+<pre><code>// simplified — not the real Pine but the logic
+confirmed = close &gt; open and reboundFromLow &gt; minReboundPct and not isFlat(flatnessThreshold) </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Stage 3 — trail the bounce. Once in, the strategy tracks the highest close since entry. When price pulls back X% from that peak — exit. The nice thing is this adapts automatically: small bounce = quick exit with small profit, big reversal = rides the whole move and only exits when momentum dies.<br>
+</p> <div>
+<pre><code>peakSinceEntry = max(peakSinceEntry, close)
+retrace = (peakSinceEntry - close) / peakSinceEntry
+if retrace &gt; trailPct and profit &gt; minProfit exit() </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Stage 4 — cooldown. After exit, the strategy sits out for N bars. Without this, it re-enters immediately in choppy conditions and gets chopped up. Learned this the hard way during testing — before cooldown was added, the strategy would enter/exit/enter/exit five times in an hour during sideways action.</p> <p>The repainting thing</p> <p>This was non-negotiable for our dev. The strategy only uses confirmed bar values — no <code>security()</code> lookahead, no intra-bar signals. You can verify yourself: throw it on a 1-minute chart, watch it live for 30 minutes, compare with what the backtest shows for the same period. If signals match — clean.</p> <p>A lot of TradingView strategies with thousands of likes are repainting and nobody notices. The backtest looks incredible, but try running it forward and nothing matches. This one matches.</p> <p><strong>What to watch out for</strong></p> <p>Settings before you backtest:</p> <p>Commission: 0.075-0.1% (not zero, which is TradingView's default — this alone kills most strategies)<br>
+Slippage: 15-20 ticks for alts, 10 for ETH<br>
+Chart: standard OHLC only. Heikin Ashi will give you fantasy numbers<br>
+Timeframe: 5m or 15m works best. On higher TFs the dumps aren't sharp enough<br>
+And honestly — discount whatever the backtest shows by at least 50-60% for what you'd actually get live. Real order books on altcoins are thin, especially during the exact moment you're trying to buy.</p> <p><strong>Where to find it</strong></p> <p>The strategy is free and open-source: <a href="https://www.tradingview.com/script/LBuOCi9s-Dump-Reversal-Peak-Trail-v2/" target="_blank">Dump Reversal Peak Trail v2 on TradingView</a>. All parameters are adjustable.<br>
+If you want to actually run it live (webhook alerts from TradingView → real orders on Bybit), we built <a href="https://geektrade.online/?utm_source=devto&amp;utm_medium=content&amp;utm_campaign=content_spray_feb2026&amp;utm_content=drpt-v2" target="_blank">GeekTrade</a> for that. It handles the messy parts — signal deduplication, position reconciliation, risk limits. Non-custodial, there's a free tier.</p> <p>Full strategy breakdown with more detail: <a href="https://geektrade.online/blog/strategies/drpt-v2?utm_source=devto&amp;utm_medium=content&amp;utm_campaign=content_spray_feb2026&amp;utm_content=drpt-v2" target="_blank">geektrade.online/blog/strategies/drpt-v2</a></p> <p>Would love to hear what other reversal approaches people are using. Especially curious if anyone's tried something similar on lower-cap alts where the volatility is even crazier.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
