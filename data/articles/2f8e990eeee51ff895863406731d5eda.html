@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - axon-core/axon: The Kubernetes-native framework for orchestrating autonomous AI coding agents.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - axon-core/axon: The Kubernetes-native framework for orchestrating autonomous AI coding agents.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 8:41:18 PM | <a href="https://github.com/axon-core/axon" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><h1>Axon</h1><a href="#axon"></a></div>
+<p><strong>The Kubernetes-native framework for orchestrating autonomous AI coding agents.</strong></p>
+<p> <a href="https://github.com/axon-core/axon/actions/workflows/ci.yaml"><img src="https://github.com/axon-core/axon/actions/workflows/ci.yaml/badge.svg" alt="CI"></a> <a href="https://github.com/axon-core/axon/releases/latest"><img src="https://camo.githubusercontent.com/4383fb8533973fa7aea724f84f5aa2bcc0780675cd531703753c76b13debcdf8/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f762f72656c656173652f61786f6e2d636f72652f61786f6e" alt="Release"></a> <a href="https://github.com/axon-core/axon"><img src="https://camo.githubusercontent.com/2370ee702945f7712fae130dd608b4d1fc724d2bbf61e37a77c6edd6265d3f7c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f61786f6e2d636f72652f61786f6e3f7374796c653d666c6174" alt="GitHub Stars"></a> <a href="https://github.com/axon-core/axon"><img src="https://camo.githubusercontent.com/46a96d91cbfd3025139ab6bd54d340b8b613dbcee7c2296c5bfbc41e95ab15be/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f676f2d6d6f642f676f2d76657273696f6e2f61786f6e2d636f72652f61786f6e" alt="Go Version"></a> <a href="/axon-core/axon/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/a549a7a30bacba7bfceebdc207a8e86c3f2c02995a2527640dca30048fd2b64e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d417061636865253230322e302d626c75652e737667" alt="License"></a>
+</p>
+<p> <a href="#quick-start">Quick Start</a> · <a href="#examples">Examples</a> · <a href="/axon-core/axon/blob/main/docs/reference.md">Reference</a> · <a href="/axon-core/axon/blob/main/examples">YAML Manifests</a>
+</p>
+<p>Point Axon at a GitHub issue and get a PR back — fully autonomous, running in Kubernetes. Each agent runs in an isolated, ephemeral Pod with a freshly cloned git workspace. Fan out across repositories, chain tasks into pipelines, and react to events automatically.</p>
+<p>Supports <strong>Claude Code</strong>, <strong>OpenAI Codex</strong>, <strong>Google Gemini</strong>, <strong>OpenCode</strong>, and <a href="/axon-core/axon/blob/main/docs/agent-image-interface.md">custom agent images</a>.</p>
+<div><h2>Demo</h2><a href="#demo"></a></div>
+<div><pre><span><span>#</span> Run a task against your repo</span>
+$ axon run -p <span><span>"</span>Fix the bug described in issue #42 and open a PR with the fix<span>"</span></span>
+task/task-a5b3c created <span><span>#</span> Stream the logs</span>
+$ axon logs task-a5b3c -f</pre></div> <span>axon-demo-0212.mp4</span> <span></span> <p>See <a href="#autonomous-self-development-pipeline">Autonomous self-development pipeline</a> for a full end-to-end example.</p>
+<div><h2>Why Axon?</h2><a href="#why-axon"></a></div>
+<p>AI coding agents are evolving from interactive CLI tools into autonomous background workers. Axon provides the infrastructure to manage this transition at scale.</p>
+<ul>
+<li><strong>Orchestration, not just execution</strong> — Don't just run an agent; manage its entire lifecycle. Chain tasks with <pre><code>dependsOn</code></pre> and pass results (branch names, PR URLs, token usage) between pipeline stages. Use <pre><code>TaskSpawner</code></pre> to build event-driven workers that react to GitHub issues, PRs, or schedules.</li>
+<li><strong>Host-isolated autonomy</strong> — Each task runs in an isolated, ephemeral Pod with a freshly cloned git workspace. Agents have no access to your host machine — use <a href="#security-considerations">scoped tokens and branch protection</a> to control repository access.</li>
+<li><strong>Standardized interface</strong> — Plug in any agent (Claude, Codex, Gemini, OpenCode, or your own) using a simple <a href="/axon-core/axon/blob/main/docs/agent-image-interface.md">container interface</a>. Axon handles credential injection, workspace management, and Kubernetes plumbing.</li>
+<li><strong>Scalable parallelism</strong> — Fan out agents across multiple repositories. Kubernetes handles scheduling, resource management, and queueing — scale is limited by your cluster capacity and API provider quotas.</li>
+<li><strong>Observable &amp; CI-native</strong> — Every agent run is a first-class Kubernetes resource with deterministic outputs (branch names, PR URLs, commit SHAs, token usage) captured into status. Monitor via <pre><code>kubectl</code></pre>, manage via the <pre><code>axon</code></pre> CLI or declarative YAML (GitOps-ready), and integrate with ArgoCD or GitHub Actions.</li>
+</ul>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<p>Get running in 5 minutes (most of the time is gathering credentials).</p>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
+<ul>
+<li>Kubernetes cluster (1.28+) — don't have one? Create a local cluster with <a href="https://kind.sigs.k8s.io/">kind</a>: <pre><code>kind create cluster</code></pre></li>
+<li>kubectl configured</li>
+</ul>
+<div><h3>1. Install the CLI</h3><a href="#1-install-the-cli"></a></div>
+<div><pre>curl -fsSL https://raw.githubusercontent.com/axon-core/axon/main/hack/install.sh <span>|</span> bash</pre></div> Alternative: install from source
+<div><pre>go install github.com/axon-core/axon/cmd/axon@latest</pre></div> <div><h3>2. Install Axon</h3><a href="#2-install-axon"></a></div>
+<div><pre>axon install</pre></div>
+<p>This installs the Axon controller and CRDs into the </p><pre><code>axon-system</code></pre> namespace.<p></p>
+<p>Verify the installation:</p>
+<div><pre>kubectl get pods -n axon-system
+kubectl get crds <span>|</span> grep axon.io</pre></div>
+<div><h3>3. Initialize Your Config</h3><a href="#3-initialize-your-config"></a></div>
+<div><pre>axon init</pre></div>
+<p>Edit </p><pre><code>~/.axon/config.yaml</code></pre>:<p></p>
+<div><pre><span>oauthToken</span>: <span>&lt;your-oauth-token&gt;</span>
+<span>workspace</span>: <span>repo</span>: <span>https://github.com/your-org/your-repo.git</span> <span>ref</span>: <span>main</span> <span>token</span>: <span>&lt;github-token&gt; </span><span><span>#</span> optional, for private repos and pushing changes</span></pre></div> How to get your credentials
+<pre><code>claude auth login</code></pre> locally, then copy the token from <pre><code>~/.claude/credentials.json</code></pre>.<p></p>
+<pre><code>apiKey</code></pre> instead of <pre><code>oauthToken</code></pre> in your config.<p></p>
+<p><strong>Codex OAuth credentials</strong> (for OpenAI Codex):
+Run </p><pre><code>codex auth login</code></pre> locally, then reference the auth file in your config:<p></p>
+<div><pre><span>oauthToken</span>: <span><span>"</span>@~/.codex/auth.json<span>"</span></span>
+<span>type</span>: <span>codex</span></pre></div>
+<p>Or set </p><pre><code>apiKey</code></pre> with an OpenAI API key instead.<p></p>
+<p><strong>GitHub token</strong> (for pushing branches and creating PRs):
+Create a <a href="https://github.com/settings/tokens">Personal Access Token</a> with </p><pre><code>repo</code></pre> scope (and <pre><code>workflow</code></pre> if your repo uses GitHub Actions).<p></p> <blockquote>
+<p><strong>Warning:</strong> Without a workspace, the agent runs in an ephemeral pod — any files it creates are lost when the pod terminates. Always set up a workspace to get persistent results.</p>
+</blockquote>
+<div><h3>4. Run Your First Task</h3><a href="#4-run-your-first-task"></a></div>
+<div><pre>$ axon run -p <span><span>"</span>Add a hello world program in Python<span>"</span></span>
+task/task-r8x2q created $ axon logs task-r8x2q -f</pre></div>
+<p>The task name (e.g. </p><pre><code>task-r8x2q</code></pre>) is auto-generated. Use <pre><code>--name</code></pre> to set a custom name, or <pre><code>-w</code></pre> to automatically watch task logs.<p></p>
+<p>The agent clones your repo, makes changes, and can push a branch or open a PR.</p>
+<blockquote>
+<p><strong>Tip:</strong> If something goes wrong, check the controller logs with
+</p><pre><code>kubectl logs deployment/axon-controller-manager -n axon-system</code></pre>.<p></p>
+</blockquote> Using kubectl and YAML instead of the CLI
+<p>Create a </p><pre><code>Workspace</code></pre> resource to define a git repository:<p></p>
+<div><pre><span>apiVersion</span>: <span>axon.io/v1alpha1</span>
+<span>kind</span>: <span>Workspace</span>
+<span>metadata</span>: <span>name</span>: <span>my-workspace</span>
+<span>spec</span>: <span>repo</span>: <span>https://github.com/your-org/your-repo.git</span> <span>ref</span>: <span>main</span></pre></div>
+<p>Then reference it from a </p><pre><code>Task</code></pre>:<p></p>
+<div><pre><span>apiVersion</span>: <span>axon.io/v1alpha1</span>
+<span>kind</span>: <span>Task</span>
+<span>metadata</span>: <span>name</span>: <span>hello-world</span>
+<span>spec</span>: <span>type</span>: <span>claude-code</span> <span>prompt</span>: <span><span>"</span>Create a hello world program in Python<span>"</span></span> <span>credentials</span>: <span>type</span>: <span>oauth</span> <span>secretRef</span>: <span>name</span>: <span>claude-oauth-token</span> <span>workspaceRef</span>: <span>name</span>: <span>my-workspace</span></pre></div>
+<div><pre>kubectl apply -f workspace.yaml
+kubectl apply -f task.yaml
+kubectl get tasks -w</pre></div> Using an API key instead of OAuth
+<p>Set </p><pre><code>apiKey</code></pre> instead of <pre><code>oauthToken</code></pre> in <pre><code>~/.axon/config.yaml</code></pre>:<p></p>
+<div><pre><span>apiKey</span>: <span>&lt;your-api-key&gt;</span></pre></div>
+<p>Or pass </p><pre><code>--secret</code></pre> to <pre><code>axon run</code></pre> with a pre-created secret (api-key is the default credential type), or set <pre><code>spec.credentials.type: api-key</code></pre> in YAML.<p></p> <div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<p>Axon orchestrates the flow from external events to autonomous execution:</p>
+<div><pre><code> Triggers (GitHub, Cron) ──┐ │ Manual (CLI, YAML) ───────┼── TaskSpawner ── Tasks ── Isolated Pods │ │ │ │ API (CI/CD, Webhooks) ────┘ └─(Lifecycle)──┴─(Execution)─┴─(Success/Fail)
+</code></pre></div>
+<p>You define what needs to be done, and Axon handles the "how" — from cloning the right repo and injecting credentials to running the agent and capturing its outputs (branch names, commit SHAs, PR URLs, and token usage).</p>
+<div><h3>Core Primitives</h3><a href="#core-primitives"></a></div>
+<p>Axon is built on four resources:</p>
+<ol>
+<li><strong>Tasks</strong> — Ephemeral units of work that wrap an AI agent run.</li>
+<li><strong>Workspaces</strong> — Persistent or ephemeral environments (git repos) where agents operate.</li>
+<li><strong>AgentConfigs</strong> — Reusable bundles of agent instructions (<pre><code>AGENTS.md</code></pre>, <pre><code>CLAUDE.md</code></pre>), plugins (skills and agents), and MCP servers.</li>
+<li><strong>TaskSpawners</strong> — Orchestration engines that react to external triggers (GitHub, Cron) to automatically manage agent lifecycles.</li>
+</ol> TaskSpawner — Automatic Task Creation from External Sources
+<p>TaskSpawner watches external sources (e.g., GitHub Issues) and automatically creates Tasks for each discovered item.</p>
+<div><pre><code> polls new issues TaskSpawner ───────────── GitHub Issues │ ───────────── │ ├──creates── Task: fix-bugs-1 └──creates── Task: fix-bugs-2
+</code></pre></div> <div><h2>Examples</h2><a href="#examples"></a></div>
+<div><h3>Create PRs automatically</h3><a href="#create-prs-automatically"></a></div>
+<p>Add a </p><pre><code>token</code></pre> to your workspace config:<p></p>
+<div><pre><span>workspace</span>: <span>repo</span>: <span>https://github.com/your-org/repo.git</span> <span>ref</span>: <span>main</span> <span>token</span>: <span>&lt;your-github-token&gt;</span></pre></div>
+<div><pre>axon run -p <span><span>"</span>Fix the bug described in issue #42 and open a PR with the fix<span>"</span></span></pre></div>
+<p>The </p><pre><code>gh</code></pre> CLI and <pre><code>GITHUB_TOKEN</code></pre> are available inside the agent container, so the agent can push branches and create PRs autonomously.<p></p>
+<div><h3>Auto-fix GitHub issues with TaskSpawner</h3><a href="#auto-fix-github-issues-with-taskspawner"></a></div>
+<p>Create a TaskSpawner to automatically turn GitHub issues into agent tasks:</p>
+<div><pre><span>apiVersion</span>: <span>axon.io/v1alpha1</span>
+<span>kind</span>: <span>TaskSpawner</span>
+<span>metadata</span>: <span>name</span>: <span>fix-bugs</span>
+<span>spec</span>: <span>when</span>: <span>githubIssues</span>: <span>labels</span>: <span>[bug]</span> <span>state</span>: <span>open</span> <span>taskTemplate</span>: <span>type</span>: <span>claude-code</span> <span>workspaceRef</span>: <span>name</span>: <span>my-workspace</span> <span>credentials</span>: <span>type</span>: <span>oauth</span> <span>secretRef</span>: <span>name</span>: <span>claude-oauth-token</span> <span>promptTemplate</span>: <span><span>"</span>Fix: {{.Title}}<span>\n</span>{{.Body}}<span>"</span></span> <span>pollInterval</span>: <span>5m</span></pre></div>
+<div><pre>kubectl apply -f taskspawner.yaml</pre></div>
+<p>TaskSpawner polls for new issues matching your filters and creates a Task for each one.</p>
+<div><h3>Chain tasks with dependencies</h3><a href="#chain-tasks-with-dependencies"></a></div>
+<p>Use </p><pre><code>dependsOn</code></pre> to chain tasks into pipelines. A task in <pre><code>Waiting</code></pre> phase stays paused until all its dependencies succeed:<p></p>
+<div><pre>axon run -p <span><span>"</span>Scaffold a new user service<span>"</span></span> --name scaffold --branch feature/user-service
+axon run -p <span><span>"</span>Write tests for the user service<span>"</span></span> --depends-on scaffold --branch feature/user-service</pre></div>
+<p>Tasks sharing the same </p><pre><code>branch</code></pre> are serialized automatically — only one runs at a time.<p></p> YAML equivalent
+<div><pre><span>apiVersion</span>: <span>axon.io/v1alpha1</span>
+<span>kind</span>: <span>Task</span>
+<span>metadata</span>: <span>name</span>: <span>scaffold</span>
+<span>spec</span>: <span>type</span>: <span>claude-code</span> <span>prompt</span>: <span><span>"</span>Scaffold a new user service with CRUD endpoints<span>"</span></span> <span>credentials</span>: <span>type</span>: <span>oauth</span> <span>secretRef</span>: <span>name</span>: <span>claude-oauth-token</span> <span>workspaceRef</span>: <span>name</span>: <span>my-workspace</span> <span>branch</span>: <span>feature/user-service</span>
+---
+<span>apiVersion</span>: <span>axon.io/v1alpha1</span>
+<span>kind</span>: <span>Task</span>
+<span>metadata</span>: <span>name</span>: <span>write-tests</span>
+<span>spec</span>: <span>type</span>: <span>claude-code</span> <span>prompt</span>: <span><span>"</span>Write comprehensive tests for the user service<span>"</span></span> <span>credentials</span>: <span>type</span>: <span>oauth</span> <span>secretRef</span>: <span>name</span>: <span>claude-oauth-token</span> <span>workspaceRef</span>: <span>name</span>: <span>my-workspace</span> <span>branch</span>: <span>feature/user-service</span> <span>dependsOn</span>: <span>[scaffold]</span></pre></div> <div><h3>Inject agent instructions and MCP servers</h3><a href="#inject-agent-instructions-and-mcp-servers"></a></div>
+<p>Use </p><pre><code>AgentConfig</code></pre> to bundle project-wide instructions, plugins, and MCP servers:<p></p>
+<div><pre><span>apiVersion</span>: <span>axon.io/v1alpha1</span>
+<span>kind</span>: <span>AgentConfig</span>
+<span>metadata</span>: <span>name</span>: <span>my-config</span>
+<span>spec</span>: <span>agentsMD</span>: <span>|</span>
+<span> # Project Rules</span>
+<span> Follow TDD. Always write tests first.</span>
+<span></span> <span>mcpServers</span>: - <span>name</span>: <span>github</span> <span>type</span>: <span>http</span> <span>url</span>: <span>https://api.githubcopilot.com/mcp/</span> <span>headers</span>: <span>Authorization</span>: <span><span>"</span>Bearer &lt;token&gt;<span>"</span></span></pre></div>
+<div><pre>axon run -p <span><span>"</span>Fix the bug<span>"</span></span> --agent-config my-config</pre></div>
+<ul>
+<li><pre><code>agentsMD</code></pre> is written to <pre><code>~/.claude/CLAUDE.md</code></pre> (user-level, additive with the repo's own instructions).</li>
+<li><pre><code>plugins</code></pre> are mounted as plugin directories and passed via <pre><code>--plugin-dir</code></pre>.</li>
+<li><pre><code>mcpServers</code></pre> are written to the agent's native MCP configuration. Supports <pre><code>stdio</code></pre>, <pre><code>http</code></pre>, and <pre><code>sse</code></pre> transport types.</li>
+</ul>
+<p>See the <a href="/axon-core/axon/blob/main/docs/reference.md#agentconfig">full AgentConfig spec</a> for plugins, skills, and agents configuration.</p>
+<div><h3>Autonomous self-development pipeline</h3><a href="#autonomous-self-development-pipeline"></a></div>
+<pre><code>axon/needs-input</code></pre> and stops. Remove the label to re-queue it.<p></p>
+<div><pre><code> ┌────────────────────────────────────────────────────────────────┐ │ Feedback Loop │ │ │ │ ┌─────────────┐ polls ┌────────────────┐ │ │ │ TaskSpawner │─────── │ GitHub Issues │ │ │ └──────┬──────┘ │ (open, no │ │ │ │ │ needs-input) │ │ │ │ creates └────────────────┘ │ │ ▼ │ │ ┌─────────────┐ runs ┌─────────────┐ opens PR ┌───────┐ │ │ │ Task │─────── │ Agent │────────────│ Human │ │ │ └─────────────┘ in Pod │ (Claude) │ or labels │Review │ │ │ └─────────────┘ needs-input└───┬───┘ │ │ │ │ │ removes label ─┘ │ │ (re-queues issue) │ └────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p>See <a href="/axon-core/axon/blob/main/self-development/axon-workers.yaml"></a></p><pre><a href="/axon-core/axon/blob/main/self-development/axon-workers.yaml"><code>self-development/axon-workers.yaml</code></a></pre> for the full manifest and the <a href="/axon-core/axon/blob/main/self-development/README.md"><pre><code>self-development/</code></pre> README</a> for setup instructions.<p></p>
+<p>The key pattern is </p><pre><code>excludeLabels: [axon/needs-input]</code></pre> — this creates a feedback loop where the agent works autonomously until it needs human input, then pauses. Removing the label re-queues the issue on the next poll.<p></p>
+<blockquote>
+<p>Browse all ready-to-apply YAML manifests in the <a href="/axon-core/axon/blob/main/examples"></a></p><pre><a href="/axon-core/axon/blob/main/examples"><code>examples/</code></a></pre> directory.<p></p>
+</blockquote>
+<div><h2>Orchestration Patterns</h2><a href="#orchestration-patterns"></a></div>
+<ul> <li><strong>Event-Driven Bug Fixing</strong> — Automatically spawn agents to investigate and fix bugs as soon as they are labeled in GitHub. See <a href="#auto-fix-github-issues-with-taskspawner">Auto-fix GitHub issues</a>.</li>
+<li><strong>Fleet-Wide Refactoring</strong> — Orchestrate a "fan-out" where dozens of agents apply the same refactoring pattern across a fleet of microservices in parallel.</li>
+<li><strong>Hands-Free CI/CD</strong> — Embed agents as first-class steps in your deployment pipelines to generate documentation or perform automated migrations.</li>
+<li><strong>AI Worker Pools</strong> — Maintain a pool of specialized agents (e.g., "The Security Fixer") that developers can trigger via simple Kubernetes resources.</li>
+</ul>
+<div><h2>Reference</h2><a href="#reference"></a></div>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Key Fields</th>
+<th>Full Spec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Task</strong></td>
+<td><pre><code>type</code></pre>, <pre><code>prompt</code></pre>, <pre><code>credentials</code></pre>, <pre><code>workspaceRef</code></pre>, <pre><code>dependsOn</code></pre>, <pre><code>branch</code></pre></td>
+<td><a href="/axon-core/axon/blob/main/docs/reference.md#task">Reference</a></td>
+</tr>
+<tr>
+<td><strong>Workspace</strong></td>
+<td><pre><code>repo</code></pre>, <pre><code>ref</code></pre>, <pre><code>secretRef</code></pre>, <pre><code>files</code></pre></td>
+<td><a href="/axon-core/axon/blob/main/docs/reference.md#workspace">Reference</a></td>
+</tr>
+<tr>
+<td><strong>AgentConfig</strong></td>
+<td><pre><code>agentsMD</code></pre>, <pre><code>plugins</code></pre>, <pre><code>mcpServers</code></pre></td>
+<td><a href="/axon-core/axon/blob/main/docs/reference.md#agentconfig">Reference</a></td>
+</tr>
+<tr>
+<td><strong>TaskSpawner</strong></td>
+<td><pre><code>when</code></pre>, <pre><code>taskTemplate</code></pre>, <pre><code>pollInterval</code></pre>, <pre><code>maxConcurrency</code></pre></td>
+<td><a href="/axon-core/axon/blob/main/docs/reference.md#taskspawner">Reference</a></td>
+</tr>
+</tbody>
+</table> <strong>CLI Reference</strong>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>axon install</code></pre></td>
+<td>Install Axon CRDs and controller into the cluster</td>
+</tr>
+<tr>
+<td><pre><code>axon uninstall</code></pre></td>
+<td>Uninstall Axon from the cluster</td>
+</tr>
+<tr>
+<td><pre><code>axon init</code></pre></td>
+<td>Initialize <pre><code>~/.axon/config.yaml</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>axon run</code></pre></td>
+<td>Create and run a new Task</td>
+</tr>
+<tr>
+<td><pre><code>axon get &lt;resource&gt;</code></pre></td>
+<td>List resources (<pre><code>tasks</code></pre>, <pre><code>taskspawners</code></pre>, <pre><code>workspaces</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>axon delete &lt;resource&gt; &lt;name&gt;</code></pre></td>
+<td>Delete a resource</td>
+</tr>
+<tr>
+<td><pre><code>axon logs &lt;task-name&gt; [-f]</code></pre></td>
+<td>View or stream logs from a task</td>
+</tr>
+<tr>
+<td><pre><code>axon suspend taskspawner &lt;name&gt;</code></pre></td>
+<td>Pause a TaskSpawner</td>
+</tr>
+<tr>
+<td><pre><code>axon resume taskspawner &lt;name&gt;</code></pre></td>
+<td>Resume a paused TaskSpawner</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="/axon-core/axon/blob/main/docs/reference.md#cli-reference">full CLI reference</a> for all flags and options.</p> <div><h2>Security Considerations</h2><a href="#security-considerations"></a></div>
+<p>Axon runs agents in isolated, ephemeral Pods with no access to your host machine, SSH keys, or other processes. The risk surface is limited to what the injected credentials allow.</p>
+<p><strong>What agents CAN do:</strong> Push branches, create PRs, and call the GitHub API using the injected </p><pre><code>GITHUB_TOKEN</code></pre>.<p></p>
+<p><strong>What agents CANNOT do:</strong> Access your host, read other pods, reach other repositories, or access any credentials beyond what you explicitly inject.</p>
+<p>Best practices:</p>
+<ul>
+<li><strong>Scope your GitHub tokens.</strong> Use <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#fine-grained-personal-access-tokens">fine-grained Personal Access Tokens</a> restricted to specific repositories instead of broad <pre><code>repo</code></pre>-scoped classic tokens.</li> <li><strong>Use <pre><code>maxConcurrency</code></pre> and <pre><code>maxTotalTasks</code></pre>.</strong> Limit how many tasks a TaskSpawner can create to prevent runaway agent activity.</li>
+<li><strong>Use <pre><code>podOverrides.activeDeadlineSeconds</code></pre>.</strong> Set a timeout to prevent tasks from running indefinitely.</li>
+<li><strong>Audit via Kubernetes.</strong> Every agent run is a first-class Kubernetes resource — use <pre><code>kubectl get tasks</code></pre> and cluster audit logs to track what was created and by whom.</li>
+</ul>
+<blockquote>
+<p><strong>About </strong></p><pre><strong><code>--dangerously-skip-permissions</code></strong></pre><strong>:</strong> Claude Code uses this flag for non-interactive operation. Despite the name, the actual risk is minimal — agents run inside ephemeral containers with no host access. The flag simply disables interactive approval prompts, which is necessary for autonomous execution.<p></p>
+</blockquote>
+<p>Axon uses standard Kubernetes RBAC — use namespace isolation to separate teams. Each TaskSpawner automatically creates a scoped ServiceAccount and RoleBinding.</p>
+<div><h2>Cost and Limits</h2><a href="#cost-and-limits"></a></div>
+<p>Running AI agents costs real money. Here's how to stay in control:</p>
+<p><strong>Model costs vary significantly.</strong> Opus is the most capable but most expensive model. Use </p><pre><code>spec.model</code></pre> (or <pre><code>model</code></pre> in config) to choose cheaper models like Sonnet for routine tasks and reserve Opus for complex work. As a rough guide, a typical 15-minute Sonnet task costs ~$1-3, while an Opus task of the same length can cost ~$5-15 depending on context size.<p></p>
+<p><strong>Use </strong></p><pre><strong><code>maxConcurrency</code></strong></pre><strong> to cap spend.</strong> Without it, a TaskSpawner can create unlimited concurrent tasks. If 100 issues match your filter on first poll, that's 100 simultaneous agent runs. Always set a limit:<p></p>
+<div><pre><span>spec</span>: <span>maxConcurrency</span>: <span>3</span> <span><span>#</span> max 3 tasks running at once</span> <span>maxTotalTasks</span>: <span>50</span> <span><span>#</span> stop after 50 total tasks</span></pre></div>
+<p><strong>Use </strong></p><pre><strong><code>podOverrides.activeDeadlineSeconds</code></strong></pre><strong> to limit runtime.</strong> Set a timeout per task to prevent agents from running indefinitely:<p></p>
+<div><pre><span>spec</span>: <span>podOverrides</span>: <span>activeDeadlineSeconds</span>: <span>3600</span> <span><span>#</span> kill after 1 hour</span></pre></div>
+<p>Or via the CLI:</p>
+<div><pre>axon run -p <span><span>"</span>Fix the bug<span>"</span></span> --timeout 30m</pre></div>
+<p><strong>Use </strong></p><pre><strong><code>suspend</code></strong></pre><strong> for emergencies.</strong> If costs are spiraling, pause a spawner immediately:<p></p>
+<div><pre>axon <span>suspend</span> taskspawner my-spawner
+<span><span>#</span> ... investigate ...</span>
+axon resume taskspawner my-spawner</pre></div>
+<p><strong>Rate limits.</strong> API providers enforce concurrency and token limits. If a task hits a rate limit mid-execution, it will likely fail. Use </p><pre><code>maxConcurrency</code></pre> to stay within your provider's limits.<p></p>
+<div><h2>FAQ</h2><a href="#faq"></a></div> <strong>What agents does Axon support?</strong>
+<p>Axon supports <strong>Claude Code</strong>, <strong>OpenAI Codex</strong>, <strong>Google Gemini</strong>, and <strong>OpenCode</strong> out of the box. You can also bring your own agent image using the <a href="/axon-core/axon/blob/main/docs/agent-image-interface.md">container interface</a>.</p> <strong>Can I use Axon without Kubernetes?</strong>
+<p>No. Axon is built on Kubernetes Custom Resources and requires a Kubernetes cluster. For local development, use <a href="https://kind.sigs.k8s.io/">kind</a> (</p><pre><code>kind create cluster</code></pre>) to create a single-node cluster on your machine.<p></p> <strong>Is it safe to give agents repo access?</strong>
+<p>Agents run in isolated, ephemeral Pods with no host access. Their capabilities are limited to what you inject — typically a scoped GitHub token. Use fine-grained PATs, branch protection, and </p><pre><code>maxConcurrency</code></pre> to control the blast radius. See <a href="#security-considerations">Security Considerations</a>.<p></p> <strong>How much does it cost to run?</strong>
+<p>Costs depend on the model and task complexity. As a rough guide: a 15-minute Sonnet task costs ~$1-3, while Opus costs ~$5-15 for the same duration. Use </p><pre><code>maxConcurrency</code></pre>, timeouts, and model selection to stay in budget. See <a href="#cost-and-limits">Cost and Limits</a>.<p></p> <div><h2>Uninstall</h2><a href="#uninstall"></a></div>
+<div><pre>axon uninstall</pre></div>
+<div><h2>Development</h2><a href="#development"></a></div>
+<p>Build, test, and iterate with </p><pre><code>make</code></pre>:<p></p>
+<div><pre>make update <span><span>#</span> generate code, CRDs, fmt, tidy</span>
+make verify <span><span>#</span> generate + vet + tidy-diff check</span>
+make <span>test</span> <span><span>#</span> unit tests</span>
+make test-integration <span><span>#</span> integration tests (envtest)</span>
+make test-e2e <span><span>#</span> e2e tests (requires cluster)</span>
+make build <span><span>#</span> build binary</span>
+make image <span><span>#</span> build docker image</span></pre></div>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<ol>
+<li>Fork the repo and create a feature branch.</li>
+<li>Make your changes and run <pre><code>make verify</code></pre> to ensure everything passes.</li>
+<li>Open a pull request with a clear description of the change.</li>
+</ol>
+<p>For significant changes, please open an issue first to discuss the approach.</p>
+<p>We welcome contributions of all kinds — see <a href="https://github.com/axon-core/axon/labels/good%20first%20issue">good first issues</a> for places to start.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/axon-core/axon/blob/main/LICENSE">Apache License 2.0</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

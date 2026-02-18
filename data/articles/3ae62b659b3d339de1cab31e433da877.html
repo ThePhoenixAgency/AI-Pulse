@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - Justkog/sniptail: Sniptail is an omnichannel bot that turns questions and “implement” requests into real code changes. It gathers context from multiple repositories, leverages CLI-based coding agents to apply edits, opens merge requests, and lets non-technical team members extract valuable information without needing coding skills.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - Justkog/sniptail: Sniptail is an omnichannel bot that turns questions and “implement” requests into real code changes. It gathers context from multiple repositories, leverages CLI-based coding agents to apply edits, opens merge requests, and lets non-technical team members extract valuable information without needing coding skills.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 8:34:38 PM | <a href="https://github.com/Justkog/sniptail" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p> <a target="_blank" href="/Justkog/sniptail/blob/main/images/Sniptail_square_rounded.png"><img src="/Justkog/sniptail/raw/main/images/Sniptail_square_rounded.png" alt="Sniptail logo"></a>
+</p>
+<p> <strong>Bring your codebase into the conversation.</strong><br> <em>Or any codebase, really.</em>
+</p>
+<p>Sniptail is an omnichannel bot that accepts slash commands, runs coding agent jobs against approved repos, and posts back reports or merge requests. Slack and Discord are the currently supported channels. It is designed for teams that want a lightweight, self-hosted automation loop for repo analysis and changes.</p>
+<div><h2>Bot mention</h2><a href="#bot-mention"></a></div>
+<p>You can also mention the bot directly in a channel to kick off work without remembering a slash command. This is the simplest "wow" moment: mention the bot, ask a quick question, and it will casually check the configured repositories and answer in natural language right where it was mentioned.</p>
+<div><h2>Quickstart</h2><a href="#quickstart"></a></div>
+<p>This quickstart assumes:</p>
+<ul>
+<li>bot and worker run on the same machine</li>
+<li>one shared <pre><code>.env</code></pre> file is used for both</li>
+<li>Codex CLI is installed, configured, and authenticated on your machine (<pre><code>codex</code></pre> works in your shell)</li>
+<li>you want to test with this repository: <pre><code>git@github.com:Justkog/sniptail.git</code></pre></li>
+</ul>
+<div><h3>1) Install and prepare config</h3><a href="#1-install-and-prepare-config"></a></div>
+<div><pre>curl -fsSL https://raw.githubusercontent.com/Justkog/sniptail/main/install.sh <span>|</span> bash
+cp <span>~</span>/.sniptail/current/.env.example <span>~</span>/.sniptail/current/.env</pre></div>
+<p>Edit </p><pre><code>~/.sniptail/current/.env</code></pre> and set at least:<p></p> <p>If you do not already have Redis running, start one quickly with Docker:</p>
+<div><pre>docker run -d --name sniptail-redis -p 6379:6379 redis:7-alpine</pre></div>
+<p>Then set </p><pre><code>REDIS_URL=redis://127.0.0.1:6379</code></pre> in <pre><code>~/.sniptail/current/.env</code></pre>.<p></p>
+<p>Need help creating a basic Discord bot/token? See </p><pre><code>docs/discord-bot-setup.md</code></pre>.<p></p>
+<div><h3>2) Enable Discord in bot config</h3><a href="#2-enable-discord-in-bot-config"></a></div>
+<p>Edit </p><pre><code>~/.sniptail/current/sniptail.bot.toml</code></pre> and set:<p></p>
+<div><pre>[<span>discord</span>]
+<span>enabled</span> = <span>true</span>
+<span>app_id</span> = <span><span>"</span>YOUR_DISCORD_APPLICATION_ID<span>"</span></span></pre></div>
+<div><h3>3) Add the <pre><code>sniptail</code></pre> repo to the catalog</h3><a href="#3-add-the-sniptail-repo-to-the-catalog"></a></div>
+<div><pre>sniptail repos add sniptail --ssh-url git@github.com:Justkog/sniptail.git
+sniptail repos list</pre></div>
+<div><h3>4) Start bot and worker</h3><a href="#4-start-bot-and-worker"></a></div>
+<p>Run in two terminals:</p>
+<div><pre>sniptail bot</pre></div>
+<div><pre>sniptail worker</pre></div>
+<div><h3>5) End-to-end check in Discord</h3><a href="#5-end-to-end-check-in-discord"></a></div>
+<p>In a Discord server where the bot is installed, run:</p>
+<div><pre><code>/sniptail-ask
+</code></pre></div>
+<p>Then, in the Discord modal that opens:</p>
+<ul>
+<li>write your request in the <pre><code>question</code></pre> input, for example:</li>
+</ul>
+<div><pre><code>I'm about to confidently mis-explain /sniptail-ask. Walk me through only that flow from command to final message, no side quests.
+</code></pre></div>
+<ul>
+<li>submit the modal</li>
+</ul>
+<p>Expected result:</p>
+<ul>
+<li>Sniptail queues a job when you submit it.</li>
+<li>Worker clones/prepares <pre><code>git@github.com:Justkog/sniptail.git</code></pre>.</li>
+<li>Agent runs and produces a Markdown report.</li>
+<li>Bot posts the report and completion message back in the same Discord channel/thread.</li>
+</ul>
+<p>For deeper setup and operations documentation, see </p><pre><code>docs/setup-and-operations.md</code></pre>, <pre><code>docs/chat-commands.md</code></pre>, <pre><code>docs/project-roadmap.md</code></pre>, and <pre><code>docs/sniptail-cloud-faq.md</code></pre>.<p></p>
+<div><h2>Project direction</h2><a href="#project-direction"></a></div>
+<p>Sniptail is meant to grow along three axes: where requests come from, which coding agent executes them, and which Git service receives the results. Today, its omnichannel layer is implemented for Slack and Discord, alongside Codex/GitHub_Copilot and GitHub/GitLab integrations. The goal is to make each layer pluggable so other platforms can be added without rewriting the whole stack.</p>
+<blockquote>
+<p><strong>Sniptail is source-available, self-hostable, and free to use and modify.</strong></p>
+<p>We are actively working on <strong>Sniptail Cloud</strong>, a hosted and managed offering for teams that want to use Sniptail without running bots, queues, or workers themselves.</p>
+<p>Sniptail Cloud is <strong>not available yet</strong>. If you're interested in early access or updates, you can join the waitlist here: <strong><a href="https://forms.gle/r5XiMVScEniHkcTVA">[link]</a></strong></p>
+</blockquote>
+<p>Roadmap detail tables are in </p><pre><code>docs/project-roadmap.md</code></pre>.<p></p>
+<div><h2>How it works (high level)</h2><a href="#how-it-works-high-level"></a></div>
+<ol>
+<li>A user triggers a slash command or mentions the bot in Slack or Discord.</li> <li>A worker pulls the job, prepares repo worktrees, and runs the configured coding agent (Codex or Copilot).</li>
+<li>Results are posted back to Slack or Discord as a report and (for IMPLEMENT jobs) a GitLab MR or GitHub PR.</li>
+</ol>
+<div><h2>Why not just use Copilot or Codex?</h2><a href="#why-not-just-use-copilot-or-codex"></a></div>
+<p>AI coding assistants like Copilot and Codex are excellent for deep, hands-on technical work. They live in the editor, helping engineers write, refactor, and reason about code.</p>
+<p>Sniptail doesn't replace them - it runs them on your behalf.</p>
+<p>Instead of being tied to one developer's IDE, Sniptail turns those same agents into a team-facing automation layer:</p>
+<ul>
+<li>Ask questions about how a feature works - directly from Slack or Discord</li>
+<li>Explore product capabilities without digging through the repo</li>
+<li>Help onboard new team members who aren't technical</li>
+<li>Generate reports, plans, or lightweight PRs</li>
+<li>Do it all without installing or configuring anything locally</li>
+</ul>
+<p>Copilot and Codex empower individual engineers to go deep.
+Sniptail empowers the whole team to understand and safely interact with the codebase - using those same agents under the hood.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Sniptail is licensed under the Elastic License v2.</p>
+<p>You are free to:</p>
+<ul>
+<li>Use Sniptail for personal or internal business purposes</li>
+<li>Self-host Sniptail</li>
+<li>Modify the source code</li>
+<li>Distribute unmodified or modified copies</li>
+</ul>
+<p>You may not:</p>
+<ul>
+<li>Offer Sniptail as a hosted or managed service to third parties</li>
+<li>Provide Sniptail as part of a commercial SaaS offering without permission</li>
+</ul>
+<p>If you are interested in a hosted or managed version, see </p><pre><code>docs/sniptail-cloud-faq.md</code></pre>.<p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

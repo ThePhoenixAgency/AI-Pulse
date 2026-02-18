@@ -5,7 +5,7 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>AI - Artificial Intelligence news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Wed, 18 Feb 2026 20:37:36 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 18 Feb 2026 22:32:03 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-ai.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title><![CDATA[Railway secures $100 million to challenge AWS with AI-native cloud infrastructure]]></title>
@@ -326,13 +326,14 @@ Dependencies or serialized objects that execute unsafe code when loa]]></descrip
       <guid>https://huggingface.co/blog/virustotal</guid>
     </item>
     <item>
-      <title><![CDATA[Agentic AI for Modern Deep Learning Experimentation]]></title>
-      <link>https://towardsdatascience.com/agentic-ai-for-modern-deep-learning-experimentation/</link>
-      <description><![CDATA[Stop babysitting training runs. Start shipping research. Autonomous experiment management built for/by deep learning engineers.]]></description>
-      <pubDate>Wed, 18 Feb 2026 18:20:33 GMT</pubDate>
-      <source>Towards Data Science</source>
+      <title><![CDATA[Introducing Trackio: A Lightweight Experiment Tracking Library from Hugging Face]]></title>
+      <link>https://huggingface.co/blog/trackio</link>
+      <description><![CDATA[Back to Articles Background Why We Switched to Trackio Using Trackio Installing Usage Visualizing Results Sharing with Spaces Integrated with Transformers and Accelerate Design Principles Next Steps TL;DR: Trackio is a new, open-source, and free experiment tracking Python library that provides a local dashboard and seamless integration with Hugging Face Spaces for easy sharing and collaboration. Since trackio is a drop-in replacement for wandb, you can get started with the syntax you already know! Background If you have trained your own machine learning model, you know how important it is to be able to track metrics, parameters, and hyperparameters during training and visualize them afterwards to better understand your training run.
+Most machine learning researchers use specific experiment tracking libraries to do this. However, these libraries can be paid, require complex setup, or lack the flexibility needed for rapid experimentation and sharing. Why We Switched to Trackio At Hugging Face, our science team has started using Trac]]></description>
+      <pubDate>Tue, 29 Jul 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://towardsdatascience.com/agentic-ai-for-modern-deep-learning-experimentation/</guid>
+      <guid>https://huggingface.co/blog/trackio</guid>
     </item>
     <item>
       <title><![CDATA[IBM and UC Berkeley Diagnose Why Enterprise Agents Fail Using IT-Bench and MAST]]></title>
@@ -416,15 +417,6 @@ Intel and]]></description>
       <source>Siecle Digital</source>
       <category>ai</category>
       <guid>https://siecledigital.fr/2026/02/16/anthropic-senvole-a-380-milliards-de-dollars/</guid>
-    </item>
-    <item>
-      <title><![CDATA[The Machine Learning Lessons I’ve Learned Last Month]]></title>
-      <link>https://towardsdatascience.com/the-machine-learning-lessons-ive-learned-last-month/</link>
-      <description><![CDATA[Delayed January: deadlines, downtimes, and flow times]]></description>
-      <pubDate>Mon, 09 Feb 2026 20:38:42 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/the-machine-learning-lessons-ive-learned-last-month/</guid>
     </item>
     <item>
       <title><![CDATA[Snowflake and OpenAI partner to bring frontier intelligence to enterprise data]]></title>
@@ -526,24 +518,6 @@ To address this, Cherny's team maintains a single file named CLAUDE.md in their 
       <guid>https://openai.com/index/expanding-data-residency-access-to-business-customers-worldwide</guid>
     </item>
     <item>
-      <title><![CDATA[Join the AMD Open Robotics Hackathon]]></title>
-      <link>https://huggingface.co/blog/amd/openroboticshackathon</link>
-      <description><![CDATA[Back to Articles Looking to show off your robotics aptitude? The AMD Open Robotics Hackathon hosted by AMD, Hugging Face, and Data Monsters is the place to do it. Whether you’re a student, hobbyist, startup founder, or seasoned engineer, this event brings together makers, coders, and roboticists for a fast-paced, hands-on competition that turns bold ideas into functioning demos.
-The first of two in-person hackathons will take place from December 5-7, 2025 in Tokyo Japan. Our next stop will be in Paris France from December 12-14, 2025.
-Preparing for the Hackathon:
-Form a team of up to four roboticists (ages 18+) to take on two missions over the course of 3 days.
-Mission 1 — An instructor-led exploration and preparation session. Learn how to set up the LeRobot development environment using AMD AI solutions
-Mission 2 — Build your own creative solution to a real-world problem. Your team has two days to develop an innovative freestyle project using LeRobot technical proficiency:
-•	Strong Linux development skills and experience with Python and related tooling and containerization
-•	Machine learning skills, familiarity with PyTorch, and hands-on experience with model training and inference
-•	Bonus if your team has experience with ROCm, LeRobot, and embedded development.
-Hardware will be provi]]></description>
-      <pubDate>Thu, 13 Nov 2025 21:37:26 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/amd/openroboticshackathon</guid>
-    </item>
-    <item>
       <title><![CDATA[huggingface_hub v1.0: Five Years of Building the Foundation of Open Machine Learning]]></title>
       <link>https://huggingface.co/blog/huggingface-hub-v1</link>
       <description><![CDATA[Back to Articles The Story Behind the Library The Foundation Years (2020-2021) The Great Shift: Git to HTTP (2022) An Expanding API Surface (2022–2024) Ready. Xet. Go! (2024-2025) Measuring Growth and Impact Building for the Next Decade Modern HTTP Infrastructure with httpx and hf_xet Agents Made Simple with MCP and Tiny-Agents A Fully-Featured CLI for Modern Workflows Cleaning House for the Future The Migration Guide Acknowledgments TL;DR: After five years of development, huggingface_hub has reached v1.0 - a milestone that marks the library's maturity as the Python package powering 200,000 dependent libraries and providing core functionality for accessing over 2 million public models, 0.5 million public datasets, and 1 million public Spaces. This release introduces breaking changes designed to support the next decade of open machine learning, driven by a global community of almost 300 contributors and millions of users. We highly recommend upgrading to v1.0 to benefit from major performanc]]></description>
@@ -590,17 +564,6 @@ What's Next? Introduction Graphical User Interface (GUI) automation is one of th
       <guid>https://huggingface.co/blog/smol2operator</guid>
     </item>
     <item>
-      <title><![CDATA[Fine-tune Any LLM from the Hugging Face Hub with Together AI]]></title>
-      <link>https://huggingface.co/blog/togethercomputer/together-ft</link>
-      <description><![CDATA[Back to Articles Getting Started in 5 Minutes How It Works: What This Means for Developers How Teams Are Using This Feature? Show Us What You Build! The pace of AI development today is breathtaking. Every single day, hundreds of new models appear on the Hugging Face Hub, some are specialized variants of popular base models like Llama or Qwen, others feature novel architectures or have been trained from scratch for specific domains. Whether it's a medical AI trained on clinical data, a coding assistant optimized for a particular programming language, or a multilingual model fine-tuned for specific cultural contexts, the Hugging Face Hub has become the beating heart of open-source AI innovation.
-But here's the challenge: finding an amazing model is just the beginning. What happens when you discover a model that's 90% perfect for your use case, but you need that extra 10% of customization? Traditional fine-tuning infrastructure is complex, expensive, and often requires significant DevOps expertise to set up and maintain.
-This is exactly the gap that Together AI and Hugging Face are bridging today. We're announcing a powerful new capability that makes the entire Hugging Face Hub available]]></description>
-      <pubDate>Wed, 10 Sep 2025 17:04:36 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/togethercomputer/together-ft</guid>
-    </item>
-    <item>
       <title><![CDATA[Kimina-Prover-RL]]></title>
       <link>https://huggingface.co/blog/AI-MO/kimina-prover-rl</link>
       <description><![CDATA[Back to Articles A slimmed-down training pipeline from Kimina Prover, with core features and full compatibility with verl. We are happy to introduce kimina-prover-rl, an open-source training pipeline for formal theorem proving in Lean 4, based on a structured reasoning-then-generation paradigm inspired by DeepSeek-R1.
@@ -623,25 +586,6 @@ AI-MO/Kimina-Prover-RL]]></description>
       <guid>https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent</guid>
     </item>
     <item>
-      <title><![CDATA[Use OpenClaw to Make a Personal AI Assistant]]></title>
-      <link>https://towardsdatascience.com/use-openclaw-to-make-a-personal-ai-assistant/</link>
-      <description><![CDATA[Learn how to set up OpenClaw as a personalized AI agent]]></description>
-      <pubDate>Wed, 18 Feb 2026 00:25:14 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/use-openclaw-to-make-a-personal-ai-assistant/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Why Every Analytics Engineer Needs to Understand Data Architecture]]></title>
-      <link>https://towardsdatascience.com/why-every-analytics-engineer-needs-to-understand-data-architecture/</link>
-      <description><![CDATA[Get the data architecture right, and everything else becomes easier.
-I know it sounds simple, but in reality, little nuances in designing your data architecture may have costly implications.]]></description>
-      <pubDate>Wed, 18 Feb 2026 19:00:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/why-every-analytics-engineer-needs-to-understand-data-architecture/</guid>
-    </item>
-    <item>
       <title><![CDATA[INESIA : la France se dote d’un nouveau bouclier pour encadrer les IA avancées]]></title>
       <link>https://siecledigital.fr/2026/02/16/inesia-la-france-structure-sa-strategie-de-securite-de-lia/</link>
       <description><![CDATA[La France poursuit la structuration de son écosystème autour de l’intelligence artificielle. En effet, l’INESIA (Institut National pour l’Evaluation et la Sécurité de l’IA) vient d’adopter sa feuille de route pour la période 2026-2027. Derrière ce document stratégique, l’ambition est de bâtir une capacité nationale d’évaluation des systèmes d’IA avancés, dans une logique de souveraineté […]]]></description>
@@ -649,33 +593,6 @@ I know it sounds simple, but in reality, little nuances in designing your data a
       <source>Siecle Digital</source>
       <category>ai</category>
       <guid>https://siecledigital.fr/2026/02/16/inesia-la-france-structure-sa-strategie-de-securite-de-lia/</guid>
-    </item>
-    <item>
-      <title><![CDATA[A beginner’s guide to Tmux: a multitasking superpower for your terminal]]></title>
-      <link>https://towardsdatascience.com/a-beginners-guide-to-tmux-a-multitasking-superpower-for-your-terminal/</link>
-      <description><![CDATA[One of the new things I’ve come across recently, while researching command-line-based coding assistants, is the mention and use of a tool I hadn’t heard of before. That tool is called Tmux, which stands for Terminal Multiplexer. In the simplest possible terms, Tmux allows you to split up a single terminal window into a number […]]]></description>
-      <pubDate>Sun, 15 Feb 2026 11:50:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/a-beginners-guide-to-tmux-a-multitasking-superpower-for-your-terminal/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Your First 90 Days as a Data Scientist]]></title>
-      <link>https://towardsdatascience.com/your-first-90-days-as-a-data-scientist/</link>
-      <description><![CDATA[A practical onboarding checklist for building trust, business fluency, and data intuition]]></description>
-      <pubDate>Sat, 14 Feb 2026 11:25:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/your-first-90-days-as-a-data-scientist/</guid>
-    </item>
-    <item>
-      <title><![CDATA[How to Leverage Explainable AI for Better Business Decisions]]></title>
-      <link>https://towardsdatascience.com/how-to-leverage-explainable-ai-for-better-business-decisions/</link>
-      <description><![CDATA[Moving beyond the black box to turn complex model outputs into actionable organizational strategies.]]></description>
-      <pubDate>Thu, 12 Feb 2026 15:00:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/how-to-leverage-explainable-ai-for-better-business-decisions/</guid>
     </item>
     <item>
       <title><![CDATA[OpenEnv in Practice: Evaluating Tool-Using Agents in Real-World Environments]]></title>
@@ -961,13 +878,13 @@ Visual Document Ret]]></description>
       <guid>https://huggingface.co/blog/ocr-open-models</guid>
     </item>
     <item>
-      <title><![CDATA[Scaleway on Hugging Face Inference Providers]]></title>
-      <link>https://huggingface.co/blog/inference-providers-scaleway</link>
+      <title><![CDATA[Public AI on Hugging Face Inference Providers]]></title>
+      <link>https://huggingface.co/blog/inference-providers-publicai</link>
       <description><![CDATA[The Wayback Machine is an initiative of the Internet Archive, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include Open Library &amp; archive-it.org. Your use of the Wayback Machine is subject to the Internet Archive's Terms of Use.]]></description>
-      <pubDate>Fri, 19 Sep 2025 00:00:00 GMT</pubDate>
+      <pubDate>Wed, 17 Sep 2025 00:00:00 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/inference-providers-scaleway</guid>
+      <guid>https://huggingface.co/blog/inference-providers-publicai</guid>
     </item>
     <item>
       <title><![CDATA[Jupyter Agents: training LLMs to reason with notebooks]]></title>
@@ -980,16 +897,6 @@ Let’s begin with the last step: select]]></description>
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/jupyter-agent-2</guid>
-    </item>
-    <item>
-      <title><![CDATA[mmBERT: ModernBERT goes Multilingual]]></title>
-      <link>https://huggingface.co/blog/mmbert</link>
-      <description><![CDATA[Back to Articles TL;DR Training Data Training Recipe and Novel Components Architecture Three-Phase Training Approach Novel Training Techniques Results Natural Language Understanding (NLU) Retrieval Performance Learning Languages in the Decay Phase Efficiency Improvements Usage Examples Fine-tuning Examples Encoders Model Family and Links TL;DR This blog post introduces mmBERT, a state-of-the-art massively multilingual encoder model trained on 3T+ tokens of text in over 1800 languages. It shows significant performance and speed improvements over previous multilingual models, being the first to improve upon XLM-R, while also developing new strategies for effectively learning low-resource languages. mmBERT builds upon ModernBERT for a blazingly fast architecture, and adds novel components to enable efficient multilingual learning.
-If you are interested in trying out the models yourself, some example boilerplate is available at the end o]]></description>
-      <pubDate>Tue, 09 Sep 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/mmbert</guid>
     </item>
     <item>
       <title><![CDATA[MCP for Research: How to Connect AI to Research Tools]]></title>
@@ -1008,6 +915,40 @@ The Model Context Protocol (MCP) is a standard that allows agentic models to com
       <guid>https://huggingface.co/blog/mcp-for-research</guid>
     </item>
     <item>
+      <title><![CDATA[Back to The Future: Evaluating AI Agents on Predicting Future Events]]></title>
+      <link>https://huggingface.co/blog/futurebench</link>
+      <description><![CDATA[Back to Articles Future of AI Most current AI benchmarks focus on answering questions about the past, either by testing models on existing knowledge (in a static manner, such as HLE or GPQA, or augmented, like BrowseComp or GAIA) or previously solved problems (like PaperBench, DABStep, or most coding evaluations). However, we believe that more valuable AI, and ultimately AGI, will be distinguished by its ability to use this past to forecast interesting aspects of the future, rather than merely reciting old facts.
+Forecasting future events is a complex and holistic task: it requires sophisticated reasoning, synthesis, weighing probabilities and genuine understanding, rather than pattern matching against or searching existing information. Evaluating models on their ability to predict future outcomes, whether in science, economics, geopolitics, or technology tests the kind of intelligence that creates real-world value.
+Beyond its inherent importance, this forecasting-based approach also solves many methodological problems faced by current evaluations and benchmarks. Traditional benchmarks that measure accuracy on fixed test sets are inevitably affected by possible data contamination, and without access to the full reproduci]]></description>
+      <pubDate>Thu, 17 Jul 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/futurebench</guid>
+    </item>
+    <item>
+      <title><![CDATA[Five Big Improvements to Gradio MCP Servers]]></title>
+      <link>https://huggingface.co/blog/gradio-mcp-updates</link>
+      <description><![CDATA[Back to Articles Seamless Local File Support Real-time Progress Notifications Transform OpenAPI Specs to MCP in One Line Improvements to Authentication Modifying Tool Descriptions Conclusion Gradio is an open-source Python package for creating AI-powered web applications. Gradio is compliant with the MCP server protocol and powers thousands of MCP servers hosted on Hugging Face Spaces. The Gradio team is betting big on Gradio and Spaces being the best way to build and host AI-powered MCP servers.
+To that end, here are some of the big improvements we've added to Gradio MCP servers as of version 5.38.0. Seamless Local File Support If you've tried to use a remote Gradio MCP server that takes a file as input (image, video, audio), you've probably encountered this error:
+This happens because the Gradio server is hosted on a different machine, meaning any input files must be accessible via a public URL so they can be downloaded remotely.
+While many ways exist to host files online, they all add a manual step to your workflow. In the age of LLM agents, shouldn't we expect them to handle this for you?
+Gradio now includes a "File Upload" MCP server that agents can use to upload files directly to your Gr]]></description>
+      <pubDate>Thu, 17 Jul 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/gradio-mcp-updates</guid>
+    </item>
+    <item>
+      <title><![CDATA[Kimina-Prover: Applying Test-time RL Search on Large Formal Reasoning Models]]></title>
+      <link>https://huggingface.co/blog/AI-MO/kimina-prover</link>
+      <description><![CDATA[Back to Articles Numina &amp; Kimi Team Figure 1: Performance comparison of theorem proving models on the miniF2F-test dataset. We're excited to announce the release of Kimina-Prover-72B, our state-of-the-art theorem proving model trained with the Kimi k1.5[1] RL pipeline based on Qwen2.5-72B [2]. Alongside it, we are also releasing two distilled variants: Kimina-Prover-Distill-8B and 1.7B (based on Qwen3-8B and Qwen3-1.7B[3] respectively).
+Our key innovations include: Test-Time Reinforcement Learning Search: A trainable agentic proving framework that enables the model to recursively discover, combine and apply multiple lemmas to construct complex proofs, building on a novel lemma-enabled pattern. Error-Fixing Capability: Kimina-Prover can read and interpret Lean’s error messages and propose targeted fixes, demonstrating significantly higher sample efficiency compared to regenerating proofs from scratch. These advancements enable Kimina-Prover to solve challenging mathematical problems and surpass prior methods. As shown in Figure 1, on the widely used miniF2F ben]]></description>
+      <pubDate>Thu, 10 Jul 2025 12:54:19 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/AI-MO/kimina-prover</guid>
+    </item>
+    <item>
       <title><![CDATA[OpenAI recrute le créateur d’OpenClaw, l’IA qui agit à votre place sur l’ordinateur et dont tout le monde parle]]></title>
       <link>https://siecledigital.fr/2026/02/16/openai-recrute-le-createur-dopenclaw-pour-accelerer-sur-les-agents-ia/</link>
       <description><![CDATA[Depuis l’arrivée des navigateurs IA comme Comet de Perplexity, le secteur de l’IA s’oriente vers des agents capables d’agir directement sur nos appareils, d’automatiser des tâches et même d’interagir avec des services tiers. C’est dans ce contexte que le créateur d’un projet devenu viral rejoint l’un des acteurs les plus influents du marché. En effet, […]]]></description>
@@ -1015,15 +956,6 @@ The Model Context Protocol (MCP) is a standard that allows agentic models to com
       <source>Siecle Digital</source>
       <category>ai</category>
       <guid>https://siecledigital.fr/2026/02/16/openai-recrute-le-createur-dopenclaw-pour-accelerer-sur-les-agents-ia/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Building Cost-Efficient Agentic RAG on Long-Text Documents in SQL Tables]]></title>
-      <link>https://towardsdatascience.com/building-cost-efficient-agentic-rag-on-long-text-documents-in-sql-tables/</link>
-      <description><![CDATA[Designing a hybrid SQL + vector retrieval system without schema changes, data migration, or performance trade-offs]]></description>
-      <pubDate>Wed, 18 Feb 2026 20:00:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/building-cost-efficient-agentic-rag-on-long-text-documents-in-sql-tables/</guid>
     </item>
     <item>
       <title><![CDATA[« C’est un fiasco total », le code indigeste généré par IA épuise les modérateurs open-source]]></title>
@@ -1071,33 +1003,6 @@ The Model Context Protocol (MCP) is a standard that allows agentic models to com
       <guid>https://www.numerama.com/cyberguerre/2182119-dell-pirate-depuis-2024-des-espions-chinois-sont-parvenus-a-infiltrer-un-produit-phare-du-geant-americain.html</guid>
     </item>
     <item>
-      <title><![CDATA[Advance Planning for AI Project Evaluation]]></title>
-      <link>https://towardsdatascience.com/advance-planning-for-ai-project-evaluation/</link>
-      <description><![CDATA[The work to do before the work begins]]></description>
-      <pubDate>Wed, 18 Feb 2026 00:31:16 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/advance-planning-for-ai-project-evaluation/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Building a LangGraph Agent from Scratch]]></title>
-      <link>https://towardsdatascience.com/building-a-langgraph-agent-from-scratch/</link>
-      <description><![CDATA[Everything you need to know to get started]]></description>
-      <pubDate>Tue, 17 Feb 2026 20:22:34 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/building-a-langgraph-agent-from-scratch/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Iron Triangles: Powerful Tools for Analyzing Trade-Offs in AI Product Development]]></title>
-      <link>https://towardsdatascience.com/iron-triangles-powerful-tools-for-analyzing-trade-offs-in-ai-product-development/</link>
-      <description><![CDATA[Conceptual overview and practical guidance]]></description>
-      <pubDate>Tue, 17 Feb 2026 19:49:40 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/iron-triangles-powerful-tools-for-analyzing-trade-offs-in-ai-product-development/</guid>
-    </item>
-    <item>
       <title><![CDATA[Tuning into the future of collaboration]]></title>
       <link>https://www.technologyreview.com/2026/02/16/1125881/tuning-into-the-future-of-collaboration/</link>
       <description><![CDATA[When work went remote, the sound of business changed. What began as a scramble to make home offices functional has evolved into a revolution in how people hear and are heard. From education to enterprises, companies across industries have reimagined what clear, reliable communication can mean in a hybrid world. For major audio and communications…]]></description>
@@ -1105,33 +1010,6 @@ The Model Context Protocol (MCP) is a standard that allows agentic models to com
       <source>MIT Technology Review</source>
       <category>ai</category>
       <guid>https://www.technologyreview.com/2026/02/16/1125881/tuning-into-the-future-of-collaboration/</guid>
-    </item>
-    <item>
-      <title><![CDATA[The Strangest Bottleneck in Modern LLMs]]></title>
-      <link>https://towardsdatascience.com/the-strangest-bottleneck-in-modern-llms/</link>
-      <description><![CDATA[Why insanely fast GPUs still can’t make LLMs feel instant]]></description>
-      <pubDate>Mon, 16 Feb 2026 11:14:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/the-strangest-bottleneck-in-modern-llms/</guid>
-    </item>
-    <item>
-      <title><![CDATA[The Evolving Role of the ML Engineer]]></title>
-      <link>https://towardsdatascience.com/the-evolving-role-of-the-ml-engineer/</link>
-      <description><![CDATA[Stephanie Kirmer on the $200 billion investment bubble, how AI companies can rebuild trust, and how her day-to-day work changed with the rise of LLMs.]]></description>
-      <pubDate>Fri, 13 Feb 2026 15:00:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/the-evolving-role-of-the-ml-engineer/</guid>
-    </item>
-    <item>
-      <title><![CDATA[AI in Multiple GPUs: Point-to-Point and Collective Operations]]></title>
-      <link>https://towardsdatascience.com/point-to-point-and-collective-operations/</link>
-      <description><![CDATA[Learn PyTorch distributed operations for multi GPU AI workloads]]></description>
-      <pubDate>Fri, 13 Feb 2026 13:00:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/point-to-point-and-collective-operations/</guid>
     </item>
     <item>
       <title><![CDATA[Introducing Lockdown Mode and Elevated Risk labels in ChatGPT]]></title>
@@ -1143,15 +1021,6 @@ The Model Context Protocol (MCP) is a standard that allows agentic models to com
       <guid>https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt</guid>
     </item>
     <item>
-      <title><![CDATA[AI in Multiple GPUs: Understanding the Host and Device Paradigm]]></title>
-      <link>https://towardsdatascience.com/understanding-the-host-and-device-paradigm/</link>
-      <description><![CDATA[Learn how CPU and GPUs interact in the host-device paradigm]]></description>
-      <pubDate>Thu, 12 Feb 2026 13:00:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/understanding-the-host-and-device-paradigm/</guid>
-    </item>
-    <item>
       <title><![CDATA[Introducing GPT-5.3-Codex-Spark]]></title>
       <link>https://openai.com/index/introducing-gpt-5-3-codex-spark</link>
       <description><![CDATA[Introducing GPT-5.3-Codex-Spark—our first real-time coding model. 15x faster generation, 128k context, now in research preview for ChatGPT Pro users.]]></description>
@@ -1159,51 +1028,6 @@ The Model Context Protocol (MCP) is a standard that allows agentic models to com
       <source>OpenAI Blog</source>
       <category>ai</category>
       <guid>https://openai.com/index/introducing-gpt-5-3-codex-spark</guid>
-    </item>
-    <item>
-      <title><![CDATA[Building an AI Agent to Detect and Handle Anomalies in Time-Series Data]]></title>
-      <link>https://towardsdatascience.com/building-an-ai-agent-to-detect-and-handle-anomalies-in-time-series-data/</link>
-      <description><![CDATA[Combining statistical detection with agentic decision-making]]></description>
-      <pubDate>Wed, 11 Feb 2026 15:00:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/building-an-ai-agent-to-detect-and-handle-anomalies-in-time-series-data/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Not All RecSys Problems Are Created Equal]]></title>
-      <link>https://towardsdatascience.com/not-all-recsys-problems-are-created-equal/</link>
-      <description><![CDATA[How baseline strength, churn, and subjectivity determine complexity]]></description>
-      <pubDate>Wed, 11 Feb 2026 13:00:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/not-all-recsys-problems-are-created-equal/</guid>
-    </item>
-    <item>
-      <title><![CDATA[How to Model The Expected Value of Marketing Campaigns]]></title>
-      <link>https://towardsdatascience.com/how-to-model-the-expected-value-of-marketing-campaigns/</link>
-      <description><![CDATA[The approach that takes companies to the next level of data maturity]]></description>
-      <pubDate>Tue, 10 Feb 2026 15:00:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/how-to-model-the-expected-value-of-marketing-campaigns/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Implementing the Snake Game in Python]]></title>
-      <link>https://towardsdatascience.com/implementing-the-snake-game-in-python/</link>
-      <description><![CDATA[An easy step-by-step guide to building the snake game from scratch]]></description>
-      <pubDate>Tue, 10 Feb 2026 13:30:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/implementing-the-snake-game-in-python/</guid>
-    </item>
-    <item>
-      <title><![CDATA[How to Personalize Claude Code]]></title>
-      <link>https://towardsdatascience.com/how-to-personalize-claude-code/</link>
-      <description><![CDATA[Learn how to get more out of Claude code by giving it access to more information.]]></description>
-      <pubDate>Tue, 10 Feb 2026 12:00:00 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/how-to-personalize-claude-code/</guid>
     </item>
     <item>
       <title><![CDATA[Introducing OpenAI Frontier]]></title>
@@ -1734,6 +1558,17 @@ When we designed M2, we knew we had to tackle this problem head-on. This led us 
       <guid>https://huggingface.co/blog/huggingface/shifting-compute-landscape</guid>
     </item>
     <item>
+      <title><![CDATA[Building the Open Agent Ecosystem Together: Introducing OpenEnv]]></title>
+      <link>https://huggingface.co/blog/openenv</link>
+      <description><![CDATA[Back to Articles The Problem The Solution The RFCs Use cases What’s Next With tools like TRL, TorchForge and verl, the open-source community has shown how to scale AI across complex compute infrastructure. But compute is only one side of the coin. The other side is the developer community; the people and tools that make agentic systems possible. That’s why Meta and Hugging Face are partnering to launch the OpenEnv Hub: a shared and open community hub for agentic environments.
+Agentic environments define everything an agent needs to perform a task: the tools, APIs, credentials, execution context, and nothing else. They bring clarity, safety, and sandboxed control to agent behavior.
+These environments can be used for both training and deployment, and serve as the foundation for scalable agentic development. The Problem Modern AI agents can act autonomously across thousands of tasks. However, a large language model isn’t enough to get those tasks to actually run — it needs access to the right tools. Exposing millions of tools directly to a model isn’t reasonable (or safe). Instead, we need agentic e]]></description>
+      <pubDate>Thu, 23 Oct 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/openenv</guid>
+    </item>
+    <item>
       <title><![CDATA[Nemotron-Personas-India: Synthesized Data for Sovereign AI]]></title>
       <link>https://huggingface.co/blog/nvidia/nemotron-personas-india</link>
       <description><![CDATA[Back to Articles Open Data for India's AI Future What’s in the Dataset? How We Built It Data Generation Pipeline Embedded Cultural Context Private By Design Who This Is For Practical AI Applications Why It Matters Start Building with Nemotron-Personas-India A compound AI approach to Indian personas grounded in real-world distributions Open Data for India's AI Future India represents one of the world's largest AI opportunities — with over 700 million internet users, a multitude of languages, and a rapidly growing developer ecosystem. Yet, most open datasets reflect Western norms and English-only contexts, creating a data gap that limits AI adoption in India's multilingual, multi-script environment.
@@ -1742,16 +1577,6 @@ Today, we're releasing Nemotron-Personas-India, the first open synthetic dataset
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/nvidia/nemotron-personas-india</guid>
-    </item>
-    <item>
-      <title><![CDATA[Arm will be @ PyTorch Conference, Join Us!]]></title>
-      <link>https://huggingface.co/blog/Arm/arm-at-pytorch-conference</link>
-      <description><![CDATA[Back to Articles Co-Authored by Michelle Yung @ Arm
-Join us on site October 22-23 to see how Arm empowers developers to build and deploy AI applications with ease using PyTorch and ExecuTorch. Learn about the latest AI technologies from Arm and our ecosystem while expanding your professional network alongside like-minded AI engineers. Connect, Chat, Chill Fuel up ahead of the conference with an evening of food, drinks, and good conversation . Whether you’re looking to relax or network, you’ll be in good company with fellow AI engineers. This pre-conference gathering, offers a relaxed setting where participants can meet Arm experts and fellow professionals in artificial intelligence, share experiences, and make valuable connections before the formal sessions begin. The event will include a variety of delicious refreshments to enjoy, creating a welcoming atmosphere for both casual mingling and engaging discussions. This evening promises a memorable and enjoyable start to the conference experience. Join our Meetup Strengthen Your AI Product We’re offering one-on-one workshop sessions with design experts to help improve the usability of your product, while enabling a focus on responsible AI development with best practices like Yellow Teaming to help avoid unintended issues before]]></description>
-      <pubDate>Fri, 10 Oct 2025 17:35:04 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/Arm/arm-at-pytorch-conference</guid>
     </item>
     <item>
       <title><![CDATA[BigCodeArena: Judging code generations end to end with code executions]]></title>
@@ -1784,16 +1609,6 @@ In practice, we often face scenarios where the raw data isn't enough. We need da
       <guid>https://huggingface.co/blog/ServiceNow-AI/sygra-data-gen-framework</guid>
     </item>
     <item>
-      <title><![CDATA[Gaia2 and ARE: Empowering the community to study agents]]></title>
-      <link>https://huggingface.co/blog/gaia2</link>
-      <description><![CDATA[Back to Articles Gaia2: Agentic Evaluation on Real Life Assistant Tasks How does Gaia2 run? Results Compare with your favorite models! Evaluating on Gaia2 Beyond Gaia2: study your agents with ARE 1) Testing an agent on a simple task: event organisation 2) Understanding agents: deep diving the traces 3) Playing around and extending the demo: Connecting the agent to your own MCPs Conclusion In an ideal world, AI agents would be reliable assistants. When given a query, they would easily manage ambiguity in instructions, construct step-by-step plans, correctly identify necessary resources, execute those plans without getting sidetracked, and adapt to unexpected events, all while maintaining accuracy and avoiding hallucinations.
-However, developing agents and testing these behaviors is no small feat: if you have ever tried to debug your own agent, you’ve probably observed how tedious and frustrating this can be. Existing evaluation environments are tightly coupled with the tasks they evaluate, lac]]></description>
-      <pubDate>Mon, 22 Sep 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/gaia2</guid>
-    </item>
-    <item>
       <title><![CDATA[Democratizing AI Safety with RiskRubric.ai]]></title>
       <link>https://huggingface.co/blog/riskrubric</link>
       <description><![CDATA[Back to Articles Risk Rubric, a new Standardized Assessment of Risk for models What we found (as of September 2025) Conclusion Building trust in the open model ecosystem through standardized risk assessment
@@ -1802,24 +1617,6 @@ More than 500,000 models can be found on the Hugging Face hub, but it’s not al
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/riskrubric</guid>
-    </item>
-    <item>
-      <title><![CDATA[France 2030 : lancement de l'appel à projet "Pionniers de l’intelligence artificielle"]]></title>
-      <link>https://www.actuia.com/actualite/france-2030-lancement-de-lappel-a-projet-pionniers-de-lintelligence-artificielle/</link>
-      <description><![CDATA[Opéré pour le compte de l’État par Bpifrance en partenariat avec l’Agence de programmes Numérique -Algorithmes, logiciels et usages, portée par l'Inria,...]]></description>
-      <pubDate>Wed, 17 Sep 2025 10:59:47 GMT</pubDate>
-      <source>ActuIA</source>
-      <category>ai</category>
-      <guid>https://www.actuia.com/actualite/france-2030-lancement-de-lappel-a-projet-pionniers-de-lintelligence-artificielle/</guid>
-    </item>
-    <item>
-      <title><![CDATA[World AI Film Festival 2026 : Quand le cinéma rencontre l’intelligence artificielle]]></title>
-      <link>https://www.actuia.com/actualite/world-ai-film-festival-2026-quand-le-cinema-rencontre-lintelligence-artificielle/</link>
-      <description><![CDATA[Cannes, ville emblématique du 7ème art, accueillera les 21 et 22 avril 2026 la seconde édition du World AI Film Festival (WAIFF), un événement pionnier qui explore l...]]></description>
-      <pubDate>Wed, 17 Sep 2025 10:43:10 GMT</pubDate>
-      <source>ActuIA</source>
-      <category>ai</category>
-      <guid>https://www.actuia.com/actualite/world-ai-film-festival-2026-quand-le-cinema-rencontre-lintelligence-artificielle/</guid>
     </item>
     <item>
       <title><![CDATA[NVIDIA Releases 6 Million Multi-Lingual Reasoning Dataset]]></title>
@@ -1847,16 +1644,27 @@ Get starte]]></description>
       <guid>https://huggingface.co/blog/Arm/neural-super-sampling</guid>
     </item>
     <item>
-      <title><![CDATA[🇵🇭 FilBench - Can LLMs Understand and Generate Filipino?]]></title>
-      <link>https://huggingface.co/blog/filbench</link>
-      <description><![CDATA[Back to Articles FilBench What did we learn from FilBench? Finding #1: Although region-specific LLMs still lag behind GPT-4, collecting data to train these models is still a promising direction Finding #2: Filipino translation is still a difficult task for LLMs Finding #3: Open LLMs Remain a Cost-Effective Choice for Filipino Language Tasks Does your LLM work on Philippine Languages? Try it on FilBench! Acknowledgements Citation As large language models (LLMs) become increasingly integrated into our lives, it becomes crucial to assess whether they reflect the nuances and capabilities of specific language communities.
-For example, Filipinos are among the most active ChatGPT users globally, ranking fourth in ChatGPT traffic (behind the United States, India, and Brazil [1] [2]), but despite this strong usage, we lack a clear understanding of how LLMs perform for their languages, such as Tagalog and Cebuano.
-Most of the existing evidence is anecdotal, such as screenshots of ChatGPT responding in Filipino as proof that it is fluent.
-What we need instead is a]]></description>
-      <pubDate>Tue, 12 Aug 2025 00:00:00 GMT</pubDate>
+      <title><![CDATA[Introducing AI Sheets: a tool to work with datasets using open AI models!]]></title>
+      <link>https://huggingface.co/blog/aisheets</link>
+      <description><![CDATA[Introducing AI Sheets: a tool to work with datasets using open AI models!]]></description>
+      <pubDate>Fri, 08 Aug 2025 00:00:00 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/filbench</guid>
+      <guid>https://huggingface.co/blog/aisheets</guid>
+    </item>
+    <item>
+      <title><![CDATA[Vision Language Model Alignment in TRL]]></title>
+      <link>https://huggingface.co/blog/trl-vlm-alignment</link>
+      <description><![CDATA[Back to Articles Introduction Table of Contents Alignment for Vision Language Models Mixed Preference Optimization (MPO) Multimodal Group Relative Policy Optimization (GRPO) Group Sequence Policy Optimization (GSPO) Comparison Further Extensions for VLMs Native Supervised Fine-tuning Support vLLM Integration in TRL Useful Resources Introduction Vision Language Models (VLMs) are getting stronger, but aligning them to human preferences still matters. In TRL, we already showed how to post-train VLMs with Supervised Fine-Tuning (SFT) and Direct Preference Optimization (DPO). This time, we’re going further.
+tl;dr Here’s what’s new in TRL: Mixed Preference Optimization (MPO)
+Group Relative Policy Optimization (GRPO)
+Group Sequence Policy Optimization (GSPO) (a variant of GRPO) These go beyond pairwise DPO, extracting richer signals from preference data and scaling better with modern VLMs.
+We’ve also extended existing methods to support VLMs: Reinforce Leave One Out (RLOO)
+Online Direct Preference Optimization (Online DPO) Th]]></description>
+      <pubDate>Thu, 07 Aug 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/trl-vlm-alignment</guid>
     </item>
     <item>
       <title><![CDATA[Welcome GPT OSS, the new open-source model family from OpenAI!]]></title>

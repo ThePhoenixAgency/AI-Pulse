@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>ocrbase — OCR for developers</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>ocrbase — OCR for developers</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 8:38:25 PM | <a href="https://ocrbase.dev/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><div><nav></nav><main><div><p><span>+</span><span>+</span><span>+</span><span>+</span></p><div><a href="https://news.ycombinator.com/item?id=46691454" target="_blank"><span>#1</span><span>on Hacker News</span></a><p>The fastest way to extract structured data<br>from documents using AI.</p></div></div><div><p>Trusted by devs at</p><p><img src="https://ocrbase.dev/logos/palantir.svg" alt="Palantir"><img src="https://ocrbase.dev/logos/Deloitte-Logo.wine.svg" alt="Deloitte"><img src="https://ocrbase.dev/logos/orange.svg" alt="Orange"><img src="https://ocrbase.dev/logos/esa.svg" alt="ESA"></p></div><div><h2>Replace your current stack</h2><p>Better accuracy at a fraction of the cost. Actually open source.</p><div><div><p><span>OmniDocBench Accuracy</span></p></div><div><p><span>Cost per 1,000 Pages</span></p></div></div><div><div><p><span>Structured output</span><span>(GPT-4o only)</span></p></div><div><p><span>Self-hostable</span><span>(ocrbase only)</span></p></div><div><p><span>Open source</span><span>(ocrbase only)</span></p></div></div></div><div><h2>What developers say about ocrbase</h2><div><div><div><p><span><span>L</span></span></p><div><p>Luke</p><p>@luke_dev</p></div></div><p>Built an identical pipeline before — happy to advise on architecture and scaling. ocrbase nails the hard parts.</p></div><div><div><p><span><span>J</span></span></p><div><p>Jacob</p><p>@jacob_ai</p></div></div><p>Currently processing ~1k documents/day, targeting 2M pages/year. The queue-based architecture handles it without breaking a sweat.</p></div><div><div><p><span><span>N</span></span></p><div><p>Nicholas</p><p>@nicholas_m</p></div></div><p>We want to cut our Textract costs.</p></div><div><div><p><span><span>T</span></span></p><div><p>Thomas</p><p>@thomas_dev</p></div></div><p>3 lines of code to replace our entire document processing pipeline. The schema-driven approach is exactly what we needed.</p></div><div><div><p><span><span>M</span></span></p><div><p>Martha</p><p>@martha_ml</p></div></div><p>94.5 on OmniDocBench speaks for itself. We tested every provider — ocrbase wins on accuracy and cost.</p></div><div><div><p><span><span>P</span></span></p><div><p>Peter</p><p>@peter_ops</p></div></div><p>Self-hosting was a breeze. Spun it up on our GPU cluster in under an hour.</p></div></div></div><div><div><div><h2>Simple setup</h2><p>Parse documents in minutes with one function call.</p></div><p><a href="https://ocrbase.dev/docs">Read the docs <span>→</span></a></p></div><div><div><p>Parse a document in one line</p></div><div><p>Markdown output</p></div></div></div></main></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

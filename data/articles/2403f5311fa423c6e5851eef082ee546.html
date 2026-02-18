@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - mcpshield/mcpshield: Supply chain security scanner for MCP servers. Detect typosquats, CVEs, credential leaks, and dangerous permissions in your AI agent configs.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - mcpshield/mcpshield: Supply chain security scanner for MCP servers. Detect typosquats, CVEs, credential leaks, and dangerous permissions in your AI agent configs.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 9:01:09 PM | <a href="https://github.com/mcpshield/mcpshield" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1> MCPShield</h1><a href="#-mcpshield"></a></div>
+<p><strong>MCP Supply Chain Security Scanner</strong> — detect vulnerabilities, typosquats, and misconfigurations in your MCP server configs before they reach production.</p>
+<p>Think "Snyk for MCP servers."</p>
+<div><h2>What It Does</h2><a href="#what-it-does"></a></div>
+<p>MCPShield scans your MCP configuration files (Claude Desktop, Cursor, VS Code, etc.) and detects:</p>
+<ul>
+<li><strong>Typosquat packages</strong> — Levenshtein distance analysis against 40+ known legitimate MCP packages, plus a database of confirmed malicious packages</li>
+<li><strong>Known CVEs</strong> — checks every server against a vulnerability database of disclosed MCP security issues (CVE-2025-68145, etc.)</li>
+<li><strong>Hardcoded credentials</strong> — API keys, database URLs, tokens, private keys embedded in config files</li>
+<li><strong>Dangerous permissions</strong> — system directory access, disabled sandboxes, unrestricted file access</li>
+<li><strong>Unverified publishers</strong> — flags packages not from trusted scopes (@anthropic/, @modelcontextprotocol/, etc.)</li>
+<li><strong>Transport security</strong> — HTTP endpoints, missing authentication on SSE connections</li>
+</ul>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> Scan a specific config file</span>
+node src/index.js scan --config path/to/claude_desktop_config.json <span><span>#</span> Auto-discover and scan all MCP configs on your system</span>
+node src/index.js scan <span><span>#</span> Output JSON for CI/CD pipelines</span>
+node src/index.js scan --config mcp.json --json <span><span>#</span> Save report to file</span>
+node src/index.js scan --config mcp.json --json --output report.json</pre></div>
+<div><h2>Install Globally (optional)</h2><a href="#install-globally-optional"></a></div>
+<div><pre>npm link
+mcpshield scan</pre></div>
+<div><h2>CI/CD Integration</h2><a href="#cicd-integration"></a></div>
+<p>MCPShield uses exit codes for pipeline integration:</p>
+<table>
+<thead>
+<tr>
+<th>Exit Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>No high/critical findings — safe to proceed</td>
+</tr>
+<tr>
+<td>1</td>
+<td>High-severity findings detected</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Critical findings (typosquats, RCE, credential exposure)</td>
+</tr>
+</tbody>
+</table>
+<div><h3>GitHub Actions Example</h3><a href="#github-actions-example"></a></div>
+<div><pre>- <span>name</span>: <span>MCP Security Scan</span> <span>run</span>: <span>|</span>
+<span> npx mcpshield scan --config .cursor/mcp.json --json --output mcpshield-report.json</span>
+<span></span> <span>continue-on-error</span>: <span>false</span> - <span>name</span>: <span>Upload Security Report</span> <span>if</span>: <span>always()</span> <span>uses</span>: <span>actions/upload-artifact@v4</span> <span>with</span>: <span>name</span>: <span>mcpshield-report</span> <span>path</span>: <span>mcpshield-report.json</span></pre></div>
+<div><h2>Config File Locations</h2><a href="#config-file-locations"></a></div>
+<p>MCPShield auto-discovers configs from:</p>
+<table>
+<thead>
+<tr>
+<th>Client</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Desktop (macOS)</td>
+<td><pre><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></pre></td>
+</tr>
+<tr>
+<td>Claude Desktop (Windows)</td>
+<td><pre><code>%APPDATA%/Claude/claude_desktop_config.json</code></pre></td>
+</tr>
+<tr>
+<td>Claude Desktop (Linux)</td>
+<td><pre><code>~/.config/claude/claude_desktop_config.json</code></pre></td>
+</tr>
+<tr>
+<td>Cursor</td>
+<td><pre><code>~/.cursor/mcp.json</code></pre> or <pre><code>.cursor/mcp.json</code></pre></td>
+</tr>
+<tr>
+<td>Windsurf</td>
+<td><pre><code>~/.windsurf/mcp.json</code></pre></td>
+</tr>
+<tr>
+<td>VS Code</td>
+<td><pre><code>.vscode/mcp.json</code></pre></td>
+</tr>
+<tr>
+<td>Continue</td>
+<td><pre><code>~/.continue/config.json</code></pre></td>
+</tr>
+</tbody>
+</table>
+<div><h2>Example Output</h2><a href="#example-output"></a></div>
+<div><pre><code> ╔═══════════════════════════════════════════╗ ║ ║ ║ MCPShield v0.1.0 ║ ║ MCP Supply Chain Security Scanner ║ ║ ║ ╚═══════════════════════════════════════════╝ ─── SCANNING: User-specified ────────────────────────── github (mcp-servr-github) MALICIOUS PACKAGE DETECTED Typosquat — contains credential-harvesting payload Impersonates: mcp-server-github (distance: 1) ↳ REMOVE THIS SERVER IMMEDIATELY 1. CRITICAL MALICIOUS: Typosquat — contains credential-harvesting payload Confidence: confirmed | Distance: 1 | Method: single character difference ↳ Remove this server and replace with the legitimate package. ─── SCAN SUMMARY ────────────────────────────────────── Servers scanned: 8 Total findings: 18 CRITICAL 7 findings HIGH 6 findings MEDIUM 5 findings 1 typosquat(s) detected — immediate action required 3 server(s) from unverified publishers
+</code></pre></div>
+<div><h2>Try It</h2><a href="#try-it"></a></div>
+<p>Test with the included vulnerable config:</p>
+<div><pre>node src/index.js scan --config examples/vulnerable-config.json</pre></div>
+<p>Test with a clean config:</p>
+<div><pre>node src/index.js scan --config examples/clean-config.json</pre></div>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>mcpshield-cli/
+├── src/
+│ ├── index.js # CLI entry point &amp; orchestrator
+│ ├── config.js # Config discovery &amp; parsing
+│ ├── typosquat.js # Typosquat detection (Levenshtein + known malicious DB)
+│ ├── credentials.js # Credential &amp; permission scanning
+│ ├── cvecheck.js # CVE database matching
+│ └── output.js # Terminal formatting &amp; report generation
+├── data/
+│ └── vulndb.js # Vulnerability database, known packages, credential patterns
+├── examples/
+│ ├── vulnerable-config.json # Test config with intentional issues
+│ └── clean-config.json # Clean config for comparison
+└── package.json
+</code></pre></div>
+<div><h2>Roadmap</h2><a href="#roadmap"></a></div>
+<ul>
+<li> npm registry live lookup (verify package exists, check download counts)</li>
+<li> Real-time CVE feed integration (NVD, GitHub Advisory Database)</li>
+<li> MCP server runtime behavioral analysis</li>
+<li> Config file watcher (continuous monitoring)</li>
+<li> VS Code extension</li>
+<li> GitHub App for PR checks</li>
+<li> Policy-as-code engine (OPA/Rego)</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

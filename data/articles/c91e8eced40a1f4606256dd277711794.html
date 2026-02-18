@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,71 +28,16 @@
     Source: Dev.to Open Source | Date: 2/18/2026 7:47:27 PM | <a href="https://dev.to/maxxmini/why-your-budget-app-fails-plan-vs-reality-tracking-with-donflow-28dk" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <h2> <a name="i-had-a-perfect-budget-it-lasted-three-days" href="#i-had-a-perfect-budget-it-lasted-three-days"> </a> I Had a Perfect Budget. It Lasted Three Days.
-</h2> <p>Last January, I sat down with a spreadsheet and planned every dollar of my monthly budget. Groceries: $400. Dining out: $150. Subscriptions: $50. Transportation: $120. It felt <em>good</em>. Organized. Adult.</p> <p>By January 4th, I'd already blown past my dining budget because of a friend's birthday dinner I forgot about. By January 15th, I had no idea where I stood. The spreadsheet was abandoned. Sound familiar?</p> <p>Here's the thing — I tried <strong>every budget app</strong> out there. Mint, YNAB, Toshl, you name it. They all do one thing well: <strong>record what already happened</strong>. They're digital receipts. But none of them answered the question that actually matters:</p> <blockquote>
-<p>"How far am I drifting from my plan, <em>right now</em>?"</p>
-</blockquote> <p>That's why I built <strong>DonFlow</strong>.</p> <h2> <a name="the-real-problem-tracking-%E2%89%A0-planning" href="#the-real-problem-tracking-%E2%89%A0-planning"> </a> The Real Problem: Tracking ≠ Planning
-</h2> <p>Most budget apps treat your finances like a rearview mirror. You categorize transactions, see pie charts, maybe get a notification that you overspent. But by then, the money's already gone.</p> <p>What I wanted was a <strong>forward-looking</strong> tool:</p> <ol>
-<li>
-<strong>Set a budget plan</strong> — how much I <em>intend</em> to spend per category</li>
-<li>
-<strong>Import actual spending</strong> — from bank exports or manual entry</li>
-<li>
-<strong>See the drift</strong> — plan vs. reality, updated in real-time</li>
-<li>
-<strong>Get warned early</strong> — before I blow past a category, not after</li>
-</ol> <p>No existing tool did all four without requiring a monthly subscription, cloud sync, or handing over my bank credentials. So I built one that runs <strong>entirely in your browser</strong>.</p> <h2> <a name="how-donflow-works" href="#how-donflow-works"> </a> How DonFlow Works
-</h2> <p>DonFlow is a single-page web app. No server. No sign-up. No data leaves your machine. Everything is stored in IndexedDB, which means your financial data stays exactly where it should — <strong>on your device</strong>.</p> <h3> <a name="the-plan-vs-actual-dashboard" href="#the-plan-vs-actual-dashboard"> </a> The Plan vs. Actual Dashboard
-</h3> <p>You start by creating a budget plan: categories and monthly amounts. Then you import your actual transactions — paste them, upload a CSV/Excel file, or enter manually. DonFlow overlays them and shows you:</p> <ul>
-<li> <strong>On track</strong> — spending within plan</li>
-<li> <strong>Drifting</strong> — approaching the limit</li>
-<li> <strong>Over budget</strong> — you've exceeded the plan</li>
-</ul> <p>It's simple, visual, and <em>immediate</em>. No waiting for end-of-month reports.</p> <h3> <a name="importing-bank-data-with-sheetjs" href="#importing-bank-data-with-sheetjs"> </a> Importing Bank Data with SheetJS
-</h3> <p>One of the trickiest parts of any finance tool is getting data <em>in</em>. Banks export in wildly different formats — CSV, XLSX, OFX, you name it. DonFlow uses SheetJS to handle the spreadsheet parsing:<br>
-</p> <div>
-<pre><code><span>import</span> <span>*</span> <span>as</span> <span>XLSX</span> <span>from</span> <span>'</span><span>xlsx</span><span>'</span><span>;</span> <span>async</span> <span>function</span> <span>parseTransactionFile</span><span>(</span><span>file</span><span>)</span> <span>{</span> <span>const</span> <span>buffer</span> <span>=</span> <span>await</span> <span>file</span><span>.</span><span>arrayBuffer</span><span>();</span> <span>const</span> <span>workbook</span> <span>=</span> <span>XLSX</span><span>.</span><span>read</span><span>(</span><span>buffer</span><span>,</span> <span>{</span> <span>type</span><span>:</span> <span>'</span><span>array</span><span>'</span> <span>});</span> <span>const</span> <span>sheet</span> <span>=</span> <span>workbook</span><span>.</span><span>Sheets</span><span>[</span><span>workbook</span><span>.</span><span>SheetNames</span><span>[</span><span>0</span><span>]];</span> <span>const</span> <span>rows</span> <span>=</span> <span>XLSX</span><span>.</span><span>utils</span><span>.</span><span>sheet_to_json</span><span>(</span><span>sheet</span><span>,</span> <span>{</span> <span>header</span><span>:</span> <span>1</span> <span>});</span> <span>// Auto-detect columns: date, description, amount</span> <span>const</span> <span>headers</span> <span>=</span> <span>rows</span><span>[</span><span>0</span><span>].</span><span>map</span><span>(</span><span>h</span> <span>=&gt;</span> <span>String</span><span>(</span><span>h</span><span>).</span><span>toLowerCase</span><span>());</span> <span>const</span> <span>dateCol</span> <span>=</span> <span>headers</span><span>.</span><span>findIndex</span><span>(</span><span>h</span> <span>=&gt;</span> <span>h</span><span>.</span><span>includes</span><span>(</span><span>'</span><span>date</span><span>'</span><span>)</span> <span>||</span> <span>h</span><span>.</span><span>includes</span><span>(</span><span>'</span><span>날짜</span><span>'</span><span>));</span> <span>const</span> <span>amountCol</span> <span>=</span> <span>headers</span><span>.</span><span>findIndex</span><span>(</span><span>h</span> <span>=&gt;</span> <span>h</span><span>.</span><span>includes</span><span>(</span><span>'</span><span>amount</span><span>'</span><span>)</span> <span>||</span> <span>h</span><span>.</span><span>includes</span><span>(</span><span>'</span><span>금액</span><span>'</span><span>));</span> <span>return</span> <span>rows</span><span>.</span><span>slice</span><span>(</span><span>1</span><span>).</span><span>map</span><span>(</span><span>row</span> <span>=&gt;</span> <span>({</span> <span>date</span><span>:</span> <span>row</span><span>[</span><span>dateCol</span><span>],</span> <span>amount</span><span>:</span> <span>parseFloat</span><span>(</span><span>row</span><span>[</span><span>amountCol</span><span>]),</span> <span>description</span><span>:</span> <span>row</span><span>[</span><span>headers</span><span>.</span><span>findIndex</span><span>(</span><span>h</span> <span>=&gt;</span> <span>h</span><span>.</span><span>includes</span><span>(</span><span>'</span><span>desc</span><span>'</span><span>)</span> <span>||</span> <span>h</span><span>.</span><span>includes</span><span>(</span><span>'</span><span>memo</span><span>'</span><span>)</span> <span>||</span> <span>h</span><span>.</span><span>includes</span><span>(</span><span>'</span><span>적요</span><span>'</span><span>))]</span> <span>}));</span>
-<span>}</span>
-</code></pre>
-<div>
-<p> Enter fullscreen mode Exit fullscreen mode </p>
-</div>
-</div> <p>This approach means DonFlow can handle most bank exports without manual column mapping. It auto-detects common header patterns in both English and Korean.</p> <h3> <a name="persisting-with-indexeddb" href="#persisting-with-indexeddb"> </a> Persisting with IndexedDB
-</h3> <p>All your plans and transactions live in IndexedDB. No cookies, no localStorage limits, no cloud:<br>
-</p> <div>
-<pre><code><span>const</span> <span>DB_NAME</span> <span>=</span> <span>'</span><span>donflow</span><span>'</span><span>;</span>
-<span>const</span> <span>DB_VERSION</span> <span>=</span> <span>1</span><span>;</span> <span>function</span> <span>openDB</span><span>()</span> <span>{</span> <span>return</span> <span>new</span> <span>Promise</span><span>((</span><span>resolve</span><span>,</span> <span>reject</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>request</span> <span>=</span> <span>indexedDB</span><span>.</span><span>open</span><span>(</span><span>DB_NAME</span><span>,</span> <span>DB_VERSION</span><span>);</span> <span>request</span><span>.</span><span>onupgradeneeded</span> <span>=</span> <span>(</span><span>e</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>db</span> <span>=</span> <span>e</span><span>.</span><span>target</span><span>.</span><span>result</span><span>;</span> <span>if </span><span>(</span><span>!</span><span>db</span><span>.</span><span>objectStoreNames</span><span>.</span><span>contains</span><span>(</span><span>'</span><span>transactions</span><span>'</span><span>))</span> <span>{</span> <span>db</span><span>.</span><span>createObjectStore</span><span>(</span><span>'</span><span>transactions</span><span>'</span><span>,</span> <span>{</span> <span>keyPath</span><span>:</span> <span>'</span><span>id</span><span>'</span><span>,</span> <span>autoIncrement</span><span>:</span> <span>true</span> <span>});</span> <span>}</span> <span>if </span><span>(</span><span>!</span><span>db</span><span>.</span><span>objectStoreNames</span><span>.</span><span>contains</span><span>(</span><span>'</span><span>budgetPlans</span><span>'</span><span>))</span> <span>{</span> <span>db</span><span>.</span><span>createObjectStore</span><span>(</span><span>'</span><span>budgetPlans</span><span>'</span><span>,</span> <span>{</span> <span>keyPath</span><span>:</span> <span>'</span><span>id</span><span>'</span><span>,</span> <span>autoIncrement</span><span>:</span> <span>true</span> <span>});</span> <span>}</span> <span>};</span> <span>request</span><span>.</span><span>onsuccess</span> <span>=</span> <span>()</span> <span>=&gt;</span> <span>resolve</span><span>(</span><span>request</span><span>.</span><span>result</span><span>);</span> <span>request</span><span>.</span><span>onerror</span> <span>=</span> <span>()</span> <span>=&gt;</span> <span>reject</span><span>(</span><span>request</span><span>.</span><span>error</span><span>);</span> <span>});</span>
-<span>}</span>
-</code></pre>
-<div>
-<p> Enter fullscreen mode Exit fullscreen mode </p>
-</div>
-</div> <p>This means your data survives browser refreshes, and you can use DonFlow offline. Close the tab, come back next week — everything's still there.</p> <h2> <a name="why-no-server-matters" href="#why-no-server-matters"> </a> Why "No Server" Matters
-</h2> <p>I'm a developer, so I could've built a full-stack app with user accounts, cloud sync, the works. But I deliberately chose not to. Here's why:</p> <ul>
-<li>
-<strong>Privacy by architecture</strong> — Your financial data never touches a server I control. There's no database breach risk because there's no database.</li>
-<li>
-<strong>Zero friction</strong> — No sign-up form means you can start in literally 5 seconds.</li>
-<li>
-<strong>No recurring costs</strong> — I don't need to charge a subscription to cover server bills. It's free, forever.</li>
-<li>
-<strong>Works anywhere</strong> — Behind a corporate firewall? On a plane? Doesn't matter. It's just HTML, CSS, and JavaScript.</li>
-</ul> <h2> <a name="try-it-right-now" href="#try-it-right-now"> </a> Try It Right Now
-</h2> <p>The fastest way to see DonFlow in action is the <strong>"Try Demo Data"</strong> button. It loads a sample budget plan and three months of transactions so you can immediately see:</p> <ul>
-<li>How the plan vs. actual comparison works</li>
-<li>What drift warnings look like</li>
-<li>How categories break down over time</li>
-</ul> <p>No fake email required. No credit card. Just click and explore.</p> <p> <strong><a href="https://maxmini0214.github.io/donflow/" target="_blank">Try DonFlow</a></strong></p> <h2> <a name="whats-next" href="#whats-next"> </a> What's Next
-</h2> <p>DonFlow is open source and actively developed. Some things on the roadmap:</p> <ul>
-<li>
-<strong>OFX/QFX import</strong> — for direct bank statement support</li>
-<li>
-<strong>Multi-currency</strong> — because some of us earn in one currency and spend in another</li>
-<li>
-<strong>Budget templates</strong> — pre-built plans for common scenarios (student, freelancer, family)</li>
-<li>
-<strong>Export to PDF</strong> — shareable monthly reports</li>
-</ul> <p>The code is on GitHub if you want to contribute, file issues, or just peek under the hood:</p> <p> <strong><a href="https://github.com/maxmini0214/donflow" target="_blank">github.com/maxmini0214/donflow</a></strong></p> <h2> <a name="over-to-you" href="#over-to-you"> </a> Over to You
-</h2> <p>I built DonFlow to solve my own frustration with budget apps that only look backward. If you've felt the same pain, give it a spin.</p> <p>And I'm genuinely curious: <strong>What financial data format would you want supported?</strong> OFX? QIF? Direct API connections to specific banks? Drop a comment — your answer might shape the next release.</p> <hr> <p><em>DonFlow is free, open source, and runs entirely in your browser. Your money, your data, your device.</em></p> </div></div>
+    <p>I Had a Perfect Budget. It Lasted Three Days. Last January, I sat down with a spreadsheet and planned every dollar of my monthly budget. Groceries: $400. Dining out: $150. Subscriptions: $50. Transportation: $120. It felt good. Organized. Adult.
+By January 4th, I'd already blown past my dining budget because of a friend's birthday dinner I forgot about. By January 15th, I had no idea where I stood. The spreadsheet was abandoned. Sound familiar?
+Here's the thing — I tried every budget app out there. Mint, YNAB, Toshl, you name it. They all do one thing well: record what already happened. They're digital receipts. But none of them answered the question that actually matters:
+"How far am I drifting from my plan, right now?"
+That's why I built DonFlow.
+Most budget apps treat your finances like a rearview mirror. You categorize transactions, see pie charts, maybe get a notification that you overspent. But by then, the money's already gone.
+What I wanted was a forward-looking tool:
+Set a budget plan — how much I intend to spend per category
+Import actual spending — from bank exports or manual entry
+See the drift — plan vs.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
