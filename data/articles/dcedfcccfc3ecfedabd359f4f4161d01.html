@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,54 +28,7 @@
     Source: Hugging Face Blog | Date: 7/9/2025 12:00:00 AM | <a href="https://huggingface.co/blog/gradio-mcp-servers" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div> <p><span><span><a href="https://huggingface.co/freddyaboulton"><img alt="Freddy Boulton's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1654278567459-626a9bfa03e2e2796f24ca11.jpeg"></a> </span> </span></p> </div> <div><nav><ul><li><a href="#a-brief-intro-to-mcp">A Brief Intro To MCP</a> <ul></ul> </li><li><a href="#hugging-face-spaces-the-mcp-app-store">Hugging Face Spaces: The MCP App Store</a> <ul></ul> </li><li><a href="#an-example-an-llm-that-can-edit-images">An Example: An LLM that can edit images</a> <ul></ul> </li><li><a href="#conclusion">Conclusion</a> <ul></ul> </li></ul></nav></div><p>Upskill your LLMs With Gradio MCP Servers
-Have you ever wanted your favorite Large Language Model (LLM) to do more than just answer questions? What if it could edit images for you, browse the web, or organize your email inbox?</p>
-<p>Well, now it can! In this blog post, I'll show you:</p>
-<ul>
-<li>What the MCP protocol is and how it works similarly to the smartphone apps we're all used to, but for LLMs.</li>
-<li>How you can find thousands of MCP servers via the "MCP App Store."</li>
-<li>How to add one of these servers to your favorite LLM of choice to grant it a new ability. We'll work through an example using <a href="https://huggingface.co/spaces/black-forest-labs/FLUX.1-Kontext-Dev">Flux.1 Kontext[dev]</a> which edits images from plain text instructions.</li>
-</ul>
-<h2> <a href="#a-brief-intro-to-mcp"> <span></span> </a> <span> A Brief Intro To MCP </span>
-</h2>
-<p>The <strong>Model Context Protocol (MCP)</strong> is an open standard that enables developers to build secure, two-way connections between an LLM and a set of tools. For example, if you create an MCP server that exposes a tool capable of transcribing a video, then you can connect an LLM client (such as Cursor, Claude Code, or Cline) to the server. The LLM will then know how to transcribe videos and use this tool for you depending on your request.</p>
-<p>In short, an MCP server is a standard way to upskill your LLM by granting it a new ability. Think of it like the apps on your smartphone. On its own, your smartphone can't edit images, but you can download an app to do this from the app store. Now, if only there were an app store for MCP servers? </p>
-<h2> <a href="#hugging-face-spaces-the-mcp-app-store"> <span></span> </a> <span> Hugging Face Spaces: The MCP App Store </span>
-</h2>
-<p>Hugging Face <a href="https://hf.co/spaces">Spaces</a> is the world's largest collection of AI applications. Most of these spaces perform a specialized task with an AI model. For example:</p>
-<ul>
-<li><a href="https://huggingface.co/spaces/not-lain/background-removal">Image Background Removal</a></li>
-<li><a href="https://huggingface.co/spaces/prithivMLmods/Multimodal-OCR">OCR</a></li>
-<li><a href="https://huggingface.co/spaces/ResembleAI/Chatterbox">Text-to-Speech Synthesis</a></li>
-</ul>
-<p>These spaces are implemented with <a href="https://gradio.app/">Gradio</a>, an open source python package for creating AI-powered web servers. As of version <code>5.28.0</code>, <strong>Gradio apps support the MCP protocol.</strong></p>
-<p>That means that Hugging Face Spaces is the one place where you can find thousands of AI-powered abilities for your LLM, aka the <strong>MCP App Store!</strong></p>
-<p>Want to browse the app store? Visit this <a href="https://huggingface.co/spaces?filter=mcp-server">link</a>. Manually, you can filter for <code>MCP Compatible</code> in <code>https://hf.co/spaces</code>.</p>
-<p><img src="https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/MCPFilter.png"></p><h2> <a href="#an-example-an-llm-that-can-edit-images"> <span></span> </a> <span> An Example: An LLM that can edit images </span>
-</h2>
-<p><a href="https://huggingface.co/spaces/black-forest-labs/FLUX.1-Kontext-Dev">Flux.1 Kontext[dev]</a> is an impressive model that can edit an image from a plain text prompt. For example, if you ask it to "dye my hair blue" and upload a photo of yourself, the model will return the photo but with you having blue hair!</p>
-<p>Let's plug this model as an MCP server into an LLM and have it edit images for us. Follow these steps:</p>
-<ol>
-<li>Go to <a href="https://huggingface.co/welcome">Hugging Face</a> and create a free account.</li>
-<li>In your <a href="https://huggingface.co/settings/profile">settings</a>, on the left hand side click on <code>MCP</code>. You may have to scroll down in the page to see it.</li>
-<li>Now, scroll to the bottom of the page. You should see a section called <code>Spaces Tools</code>. In the search bar, type <code>Flux.1-Kontext-Dev</code> and select the space called <code>black-forest-labs/Flux.1-Kontext-Dev</code>. The page should look like this after you click on it:</li>
-</ol>
-<p><img src="https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/SpacesTools.png"></p><ol>
-<li>For this demo, we'll use Cursor, but any <a href="https://github.com/punkpeye/awesome-mcp-clients">MCP client</a> should follow a similar procedure. Scroll back up to the top of <a href="https://huggingface.co/settings/mcp">MCP settings</a> page, and click on the <code>Cursor</code> icon of the <code>Setup with your AI assistant</code> section. Now, copy that code snippet and place it in your cursor settings file.</li>
-</ol>
-<p><img src="https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/CursorScreenshot.png"></p><ol>
-<li>Now, when you start a new chat session in cursor you can ask it to edit an image! Note that for now the image must be available via a public URL. You can create a <a href="https://huggingface.co/datasets">Hugging Face Dataset</a> to store your images online.</li>
-</ol>
-<p><img src="https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/FluxKontextDevMcp.png"></p><blockquote>
-<p>Using a popular public space as a tool may mean you have to wait longer to receive results. If you visit the space, you can click "Duplicate This Space" to create a private version of the space for yourself. If the space is using "ZeroGPU", you may need to update to a <a href="https://huggingface.co/settings/billing/subscription">PRO</a> account to duplicate it.</p>
-</blockquote>
-<ol>
-<li>Bonus: You can also search for MCP-compatible spaces with the Hugging Face MCP server! After completing step 4, you can also ask your LLM to find spaces that accomplish a certain task:</li>
-</ol>
-<p><img src="https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/SpacesSearch.png"></p><h2> <a href="#conclusion"> <span></span> </a> <span> Conclusion </span>
-</h2>
-<p>This blog post has walked you through the exciting new capabilities that the Model Context Protocol (MCP) brings to Large Language Models. We've seen how Gradio apps, particularly those hosted on Hugging Face Spaces, are now fully MCP compliant, effectively turning Spaces into a vibrant "App Store" for LLM tools. By connecting these specialized MCP servers, your LLM can transcend basic question-answering and gain powerful new abilities, from image editing to transcription, to anything you can imagine!</p>
-</div></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

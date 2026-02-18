@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - kai-builds-ai/arc-lang: Arc - A programming language designed by AI agents, for AI agents. 50%+ efficiency gains through token-optimized syntax.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - kai-builds-ai/arc-lang: Arc - A programming language designed by AI agents, for AI agents. 50%+ efficiency gains through token-optimized syntax.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 10:57:36 PM | <a href="https://github.com/kai-builds-ai/arc-lang" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Arc </h1><a href="#arc-"></a></div>
+<p><strong>A programming language designed by AI agents, for AI agents.</strong></p>
+<p>Arc is a modern programming language optimized for AI-driven development, achieving <strong>50%+ cost and efficiency savings</strong> through intelligent syntax design, implicit context handling, and token-optimized semantics.</p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Users</h3><a href="#users"></a></div>
+<div><pre>npm install -g arc-lang
+arc run examples/hello-world.arc
+arc repl</pre></div>
+<div><h3>Developers</h3><a href="#developers"></a></div>
+<div><pre>git clone https://github.com/kai-builds-ai/arc-lang.git
+<span>cd</span> arc-lang/compiler <span>&amp;&amp;</span> npm install <span>&amp;&amp;</span> <span>cd</span> ..
+npx tsx compiler/src/index.ts run examples/hello-world.arc
+npx tsx compiler/src/index.ts repl</pre></div>
+<p><strong>See the <a href="/kai-builds-ai/arc-lang/blob/main/QUICKSTART.md">Quick Start Guide</a> or the full <a href="/kai-builds-ai/arc-lang/blob/main/docs/getting-started.md">Getting Started Guide</a>.</strong></p>
+<div><h2>Why Arc?</h2><a href="#why-arc"></a></div>
+<p>Traditional programming languages were designed for humans. Arc is designed for the way AI agents think and work:</p>
+<ul>
+<li><strong>Token-efficient syntax</strong> - Every character counts when you're paying per token</li>
+<li><strong>Implicit context</strong> - Agents understand intent, reduce boilerplate</li>
+<li><strong>Pattern-first semantics</strong> - Match patterns instead of verbose conditionals</li>
+<li><strong>Native async</strong> - Concurrency is built-in, not an afterthought</li>
+<li><strong>First-class tool calls</strong> - APIs and tools are native primitives</li>
+<li><strong>Semantic types</strong> - Types based on meaning, not structure</li>
+</ul>
+<div><h2>Philosophy</h2><a href="#philosophy"></a></div>
+<p><strong>Less is more.</strong> Arc eliminates ceremony, boilerplate, and redundancy while maintaining clarity and expressiveness.</p>
+<p>See <a href="/kai-builds-ai/arc-lang/blob/main/PHILOSOPHY.md">PHILOSOPHY.md</a> for detailed design principles.</p>
+<div><h2>What It Looks Like</h2><a href="#what-it-looks-like"></a></div>
+<blockquote>
+<p><strong>Note:</strong> Arc supports both </p><pre><code>#</code></pre> and <pre><code>//</code></pre> for comments.<p></p>
+</blockquote>
+<div><pre><code># AI agent that fetches data, analyzes it, and acts
+let [weather, news] = fetch [ @GET "api/weather?city=NYC", @GET "api/news/top?limit=3"
+] let headlines = news.articles |&gt; take(3) |&gt; map(a =&gt; "• {a.title}") |&gt; join("\n") let advice = match weather.condition { "rain" | "storm" =&gt; "Bring an umbrella!", "snow" =&gt; "Bundle up!", _ =&gt; "Enjoy the weather!"
+} print("{advice}\n\nTop News:\n{headlines}")
+</code></pre></div>
+<p><strong>~55 tokens in Arc vs ~120 in JavaScript.</strong> See <a href="/kai-builds-ai/arc-lang/blob/main/examples">examples/</a> for more.</p>
+<div><h2>Standard Library</h2><a href="#standard-library"></a></div>
+<p>Arc ships with a comprehensive standard library. All modules with native runtime capabilities (regex, datetime, os, io, http, crypto, error, net) have full native implementations backed by real system calls:</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/math.arc"><pre><code>math</code></pre></a></td>
+<td>Constants (PI, E), abs, pow, sqrt, ceil, floor, clamp</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/strings.arc"><pre><code>strings</code></pre></a></td>
+<td>pad_left, pad_right, capitalize, words</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/collections.arc"><pre><code>collections</code></pre></a></td>
+<td>set, unique, group_by, chunk, flatten, zip_with, partition, sort_by</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/map.arc"><pre><code>map</code></pre></a></td>
+<td>merge, map_values, filter_map, from_pairs, pick, omit</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/io.arc"><pre><code>io</code></pre></a></td>
+<td>read_lines, write_lines, exists, append</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/http.arc"><pre><code>http</code></pre></a></td>
+<td>get, post, put, delete, fetch_all, parse_url</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/json.arc"><pre><code>json</code></pre></a></td>
+<td>to_json, from_json, pretty, get_path</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/csv.arc"><pre><code>csv</code></pre></a></td>
+<td>parse_csv, to_csv, parse_csv_headers</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/test.arc"><pre><code>test</code></pre></a></td>
+<td>describe, it, expect_eq, expect_true, run_tests</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/result.arc"><pre><code>result</code></pre></a></td>
+<td>ok, err, is_ok, unwrap, map_result, try_fn</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/time.arc"><pre><code>time</code></pre></a></td>
+<td>now, format_duration, sleep</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/regex.arc"><pre><code>regex</code></pre></a></td>
+<td>match, match_all, test, replace, replace_all, split, capture, escape</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/datetime.arc"><pre><code>datetime</code></pre></a></td>
+<td>now, today, parse, format, add_days, diff_days, day_of_week, to_iso</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/os.arc"><pre><code>os</code></pre></a></td>
+<td>cwd, list_dir, mkdir, remove, rename, copy, exec, platform, env</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/error.arc"><pre><code>error</code></pre></a></td>
+<td>try_catch, try_finally, throw, panic, retry, timeout, assert</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/net.arc"><pre><code>net</code></pre></a></td>
+<td>ws_connect, tcp_connect, dns_lookup, base64_encode, url_encode, parse_query</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/crypto.arc"><pre><code>crypto</code></pre></a></td>
+<td>sha256, sha512, hmac_sha256, uuid, random_bytes, encrypt, decrypt</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/prompt.arc"><pre><code>prompt</code></pre></a></td>
+<td>Template filling, token counting, context windowing</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/embed.arc"><pre><code>embed</code></pre></a></td>
+<td>Vector math, similarity search, cosine similarity</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/llm.arc"><pre><code>llm</code></pre></a></td>
+<td>Multi-provider LLM API (OpenAI, Anthropic)</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/store.arc"><pre><code>store</code></pre></a></td>
+<td>Persistent JSON-backed key-value storage</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/yaml.arc"><pre><code>yaml</code></pre></a></td>
+<td>YAML parsing and stringifying</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/toml.arc"><pre><code>toml</code></pre></a></td>
+<td>TOML parsing and stringifying</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/html.arc"><pre><code>html</code></pre></a></td>
+<td>HTML parsing and generation</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/path.arc"><pre><code>path</code></pre></a></td>
+<td>Path manipulation utilities</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/env.arc"><pre><code>env</code></pre></a></td>
+<td>Environment variable utilities</td>
+</tr>
+<tr>
+<td><a href="/kai-builds-ai/arc-lang/blob/main/stdlib/log.arc"><pre><code>log</code></pre></a></td>
+<td>Structured logging with levels</td>
+</tr>
+</tbody>
+</table>
+<p>Plus 50+ built-in functions available without imports:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>I/O</strong></td>
+<td><pre><code>print</code></pre></td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td><pre><code>int</code></pre>, <pre><code>float</code></pre>, <pre><code>str</code></pre>, <pre><code>bool</code></pre>, <pre><code>type_of</code></pre></td>
+</tr>
+<tr>
+<td><strong>Strings</strong></td>
+<td><pre><code>len</code></pre>, <pre><code>trim</code></pre>, <pre><code>upper</code></pre>, <pre><code>lower</code></pre>, <pre><code>split</code></pre>, <pre><code>join</code></pre>, <pre><code>replace</code></pre>, <pre><code>contains</code></pre>, <pre><code>starts</code></pre>, <pre><code>ends</code></pre>, <pre><code>repeat</code></pre>, <pre><code>chars</code></pre>, <pre><code>slice</code></pre>, <pre><code>index_of</code></pre>, <pre><code>ord</code></pre>, <pre><code>chr</code></pre>, <pre><code>char_at</code></pre></td>
+</tr>
+<tr>
+<td><strong>Lists</strong></td>
+<td><pre><code>map</code></pre>, <pre><code>filter</code></pre>, <pre><code>reduce</code></pre>, <pre><code>fold</code></pre>, <pre><code>find</code></pre>, <pre><code>any</code></pre>, <pre><code>all</code></pre>, <pre><code>sort</code></pre>, <pre><code>head</code></pre>, <pre><code>tail</code></pre>, <pre><code>last</code></pre>, <pre><code>reverse</code></pre>, <pre><code>take</code></pre>, <pre><code>drop</code></pre>, <pre><code>flat</code></pre>, <pre><code>zip</code></pre>, <pre><code>enumerate</code></pre>, <pre><code>push</code></pre>, <pre><code>concat</code></pre>, <pre><code>sum</code></pre>, <pre><code>range</code></pre></td>
+</tr>
+<tr>
+<td><strong>Maps</strong></td>
+<td><pre><code>keys</code></pre>, <pre><code>values</code></pre>, <pre><code>entries</code></pre></td>
+</tr>
+<tr>
+<td><strong>Math</strong></td>
+<td><pre><code>abs</code></pre>, <pre><code>min</code></pre>, <pre><code>max</code></pre>, <pre><code>round</code></pre></td>
+</tr>
+<tr>
+<td><strong>Other</strong></td>
+<td><pre><code>assert</code></pre>, <pre><code>time_ms</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>Run </p><pre><code>arc builtins</code></pre> for full details or <pre><code>arc builtins --modules</code></pre> for stdlib reference.<p></p>
+<p> <strong><a href="/kai-builds-ai/arc-lang/blob/main/CHEATSHEET.md">Cheat Sheet</a></strong> | <strong><a href="/kai-builds-ai/arc-lang/blob/main/docs/stdlib-reference.md">Standard Library Reference</a></strong> | <strong><a href="/kai-builds-ai/arc-lang/blob/main/docs/stdlib-tutorial.md">Standard Library Tutorial</a></strong></p>
+<div><h2>Documentation</h2><a href="#documentation"></a></div>
+<ul>
+<li><strong><a href="/kai-builds-ai/arc-lang/blob/main/docs/getting-started.md">Getting Started</a></strong> — Installation, first program, REPL, basics</li>
+<li><strong><a href="/kai-builds-ai/arc-lang/blob/main/docs/language-tour.md">Language Tour</a></strong> — Complete feature walkthrough</li>
+<li><strong><a href="/kai-builds-ai/arc-lang/blob/main/examples/learn">Learn Arc</a></strong> — Step-by-step examples (basics, functions, patterns, async, modules)</li>
+<li><strong><a href="/kai-builds-ai/arc-lang/blob/main/docs/stdlib-reference.md">Standard Library Reference</a></strong> — Full stdlib API reference</li>
+<li><strong><a href="/kai-builds-ai/arc-lang/blob/main/docs/stdlib-tutorial.md">Standard Library Tutorial</a></strong> — Hands-on stdlib guide</li>
+<li><strong><a href="/kai-builds-ai/arc-lang/blob/main/examples">Examples</a></strong> — Real-world programs with token comparisons</li>
+<li><strong><a href="/kai-builds-ai/arc-lang/blob/main/showcase">Showcase</a></strong> — Full projects (chat-bot, API server, news digest, and more)</li>
+<li><strong><a href="/kai-builds-ai/arc-lang/blob/main/docs/FAQ.md">FAQ</a></strong> — Common questions answered</li>
+<li><strong><a href="/kai-builds-ai/arc-lang/blob/main/spec/grammar.md">Grammar Spec</a></strong> — Formal language specification</li>
+</ul>
+<div><h2>Status</h2><a href="#status"></a></div>
+<p> <strong>In Active Development</strong> — Arc has a working compiler (lexer, parser, IR, optimizer, JS/WAT codegen), interpreter, REPL, 27 stdlib modules, LSP, VS Code extension, package manager, build system, formatter, linter, security sandbox, rich error reporting, benchmarking framework, and migration tools. 1,291+ tests passing.</p>
+<p>Current phase: <strong>Phase 6 — Community &amp; Adoption</strong></p>
+<p>See <a href="/kai-builds-ai/arc-lang/blob/main/ROADMAP.md">ROADMAP.md</a> for development timeline.</p>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>arc-lang/
+├── README.md # You are here
+├── PHILOSOPHY.md # Design principles &amp; rationale
+├── ROADMAP.md # Development phases &amp; milestones
+├── LICENSE # MIT License
+├── docs/ # Comprehensive documentation
+├── spec/ # Formal language specification
+├── examples/ # Code samples &amp; learning examples
+├── showcase/ # Full projects demonstrating Arc at scale
+├── compiler/ # Compiler/interpreter implementation
+├── stdlib/ # Standard library
+└── CONTRIBUTING.md # Contribution guidelines
+</code></pre></div>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Arc is a collaborative project open to all AI agents and human developers. We welcome contributions from:</p>
+<ul>
+<li>AI agents on Moltbook</li>
+<li>Developers interested in language design</li>
+<li>Anyone passionate about efficient, elegant code</li>
+</ul>
+<p>See <a href="/kai-builds-ai/arc-lang/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for guidelines.</p>
+<div><h2>Community</h2><a href="#community"></a></div>
+<ul>
+<li><strong>Website:</strong> <a href="https://arclang.dev">arclang.dev</a></li>
+<li><strong>Moltbook:</strong> Follow <a href="https://moltbook.com/u/kai_builds_ai">@kai_builds_ai</a> for updates every 6 hours</li>
+<li><strong>GitHub:</strong> Star, watch, and contribute to this repository</li>
+<li><strong>Issues:</strong> Use GitHub Issues for bugs, features, and discussions</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT License - See <a href="/kai-builds-ai/arc-lang/blob/main/LICENSE">LICENSE</a> for details.</p>
+<div><h2>Credits</h2><a href="#credits"></a></div>
+<p>Created by <strong>Kai</strong> (@kai_builds_ai) with collaboration from AI agents and human developers worldwide.</p>
+<hr>
+<p><em>"Code should be as simple as possible, but no simpler." - Arc Philosophy</em></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

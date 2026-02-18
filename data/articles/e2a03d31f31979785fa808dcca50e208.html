@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="pt"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>GitHub - doramirdor/NadirClaw: Open-source LLM router that saves you money. Routes simple prompts to cheap/local models, complex ones to premium — automatically. OpenAI-compatible proxy.</title>
 <style>
@@ -17,12 +19,19 @@
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
   <h1>GitHub - doramirdor/NadirClaw: Open-source LLM router that saves you money. Routes simple prompts to cheap/local models, complex ones to premium — automatically. OpenAI-compatible proxy.</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/16/2026 7:34:19 PM | Lang: PT
+    Source: Hacker News Show | Date: 2/17/2026 11:31:18 PM | <a href="https://github.com/doramirdor/NadirClaw" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><h1>NadirClaw</h1><a href="#nadirclaw"></a></div>
@@ -33,9 +42,14 @@
 <a href="/doramirdor/NadirClaw/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/6651979961213b222f3733a89e9fc68f3d7a9bb0577cdaa119c83f945dcb666a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f646f72616d6972646f722f4e61646972436c6177" alt="License"></a>
 <a href="https://github.com/doramirdor/NadirClaw"><img src="https://camo.githubusercontent.com/796b75367b6fc1ce1e584a74ff9705a20626e7396a1d172a72b194a52677ece0/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f646f72616d6972646f722f4e61646972436c61773f7374796c653d736f6369616c" alt="GitHub stars"></a></p>
 <p>Open-source LLM router that saves you money. Simple prompts go to cheap/local models, complex prompts go to premium models -- automatically.</p>
-<p>NadirClaw sits between your AI tool and your LLM providers as an OpenAI-compatible proxy. It classifies every prompt in ~10ms and routes it to the right model. Works with any tool that speaks the OpenAI API: <a href="https://openclaw.dev">OpenClaw</a>, <a href="https://github.com/openai/codex">Codex</a>, Claude Code, Continue, Cursor, or plain <code>curl</code>.</p>
-<div><pre><code>Your AI Tool ──&gt; NadirClaw (:8856/v1) ──&gt; simple prompts ──&gt; Gemini Flash / Ollama (free/cheap) ──&gt; complex prompts ──&gt; GPT / Claude / Gemini Pro (premium) ──&gt; reasoning tasks ──&gt; o3 / DeepSeek-R1 (reasoning) ──&gt; agentic requests ──&gt; complex model (auto-detected)
-</code></pre></div>
+<p>NadirClaw sits between your AI tool and your LLM providers as an OpenAI-compatible proxy. It classifies every prompt in ~10ms and routes it to the right model. Works with any tool that speaks the OpenAI API: <a href="https://openclaw.dev">OpenClaw</a>, <a href="https://github.com/openai/codex">Codex</a>, Claude Code, Continue, Cursor, or plain </p><pre><code>curl</code></pre>.<p></p>
+<blockquote>
+<p><strong>How does NadirClaw compare to OpenRouter?</strong> See <a href="/doramirdor/NadirClaw/blob/main/docs/comparison.md">NadirClaw vs OpenRouter</a>.</p>
+</blockquote>
+<p> <a target="_blank" href="/doramirdor/NadirClaw/blob/main/docs/images/architecture.png"><img src="/doramirdor/NadirClaw/raw/main/docs/images/architecture.png" alt="NadirClaw Architecture"></a>
+</p>
+<p> <a target="_blank" href="/doramirdor/NadirClaw/blob/main/docs/images/nadirclaw_img.png"><img src="/doramirdor/NadirClaw/raw/main/docs/images/nadirclaw_img.png" alt="NadirClaw in action"></a>
+</p>
 <div><h2>Quick Start</h2><a href="#quick-start"></a></div>
 <div><pre>pip install nadirclaw</pre></div>
 <p>Or install from source:</p>
@@ -44,25 +58,25 @@
 <div><pre>nadirclaw setup</pre></div>
 <p>This guides you through selecting providers, entering API keys, and choosing models for each routing tier. Then start the router:</p>
 <div><pre>nadirclaw serve --verbose</pre></div>
-<p>That's it. NadirClaw starts on <code>http://localhost:8856</code> with sensible defaults (Gemini 3 Flash for simple, OpenAI Codex for complex). If you skip <code>nadirclaw setup</code>, the <code>serve</code> command will offer to run it on first launch.</p>
+<p>That's it. NadirClaw starts on </p><pre><code>http://localhost:8856</code></pre> with sensible defaults (Gemini 3 Flash for simple, OpenAI Codex for complex). If you skip <pre><code>nadirclaw setup</code></pre>, the <pre><code>serve</code></pre> command will offer to run it on first launch.<p></p>
 <div><h2>Features</h2><a href="#features"></a></div>
 <ul>
 <li><strong>Smart routing</strong> — classifies prompts in ~10ms using sentence embeddings</li>
 <li><strong>Agentic task detection</strong> — auto-detects tool use, multi-step loops, and agent system prompts; forces complex model for agentic requests</li>
 <li><strong>Reasoning detection</strong> — identifies prompts needing chain-of-thought and routes to reasoning-optimized models</li>
-<li><strong>Routing profiles</strong> — <code>auto</code>, <code>eco</code>, <code>premium</code>, <code>free</code>, <code>reasoning</code> — choose your cost/quality strategy per request</li>
-<li><strong>Model aliases</strong> — use short names like <code>sonnet</code>, <code>flash</code>, <code>gpt4</code> instead of full model IDs</li>
+<li><strong>Routing profiles</strong> — <pre><code>auto</code></pre>, <pre><code>eco</code></pre>, <pre><code>premium</code></pre>, <pre><code>free</code></pre>, <pre><code>reasoning</code></pre> — choose your cost/quality strategy per request</li>
+<li><strong>Model aliases</strong> — use short names like <pre><code>sonnet</code></pre>, <pre><code>flash</code></pre>, <pre><code>gpt4</code></pre> instead of full model IDs</li>
 <li><strong>Session persistence</strong> — pins the model for multi-turn conversations so you don't bounce between models mid-thread</li>
 <li><strong>Context-window filtering</strong> — auto-swaps to a model with a larger context window when your conversation is too long</li>
 <li><strong>Rate limit fallback</strong> — if the primary model is rate-limited (429), automatically falls back to the other tier's model instead of failing</li>
 <li><strong>Streaming support</strong> — full SSE streaming compatible with OpenClaw, Codex, and other streaming clients</li>
 <li><strong>Native Gemini support</strong> — calls Gemini models directly via the Google GenAI SDK (not through LiteLLM)</li>
-<li><strong>OAuth login</strong> — use your subscription with <code>nadirclaw auth &lt;provider&gt; login</code> (OpenAI, Anthropic, Google), no API key needed</li>
+<li><strong>OAuth login</strong> — use your subscription with <pre><code>nadirclaw auth &lt;provider&gt; login</code></pre> (OpenAI, Anthropic, Google), no API key needed</li>
 <li><strong>Multi-provider</strong> — supports Gemini, OpenAI, Anthropic, Ollama, and any LiteLLM-supported provider</li>
 <li><strong>OpenAI-compatible API</strong> — drop-in replacement for any tool that speaks the OpenAI chat completions API</li>
-<li><strong>Request reporting</strong> — <code>nadirclaw report</code> analyzes your JSONL logs with filters, latency stats, tier breakdown, and token usage</li>
-<li><strong>Raw logging</strong> — optional <code>--log-raw</code> flag to capture full request/response content for debugging and replay</li>
-<li><strong>OpenTelemetry tracing</strong> — optional distributed tracing with GenAI semantic conventions (<code>pip install nadirclaw[telemetry]</code>)</li>
+<li><strong>Request reporting</strong> — <pre><code>nadirclaw report</code></pre> analyzes your JSONL logs with filters, latency stats, tier breakdown, and token usage</li>
+<li><strong>Raw logging</strong> — optional <pre><code>--log-raw</code></pre> flag to capture full request/response content for debugging and replay</li>
+<li><strong>OpenTelemetry tracing</strong> — optional distributed tracing with GenAI semantic conventions (<pre><code>pip install nadirclaw[telemetry]</code></pre>)</li>
 </ul>
 <div><h2>Prerequisites</h2><a href="#prerequisites"></a></div>
 <ul>
@@ -74,15 +88,13 @@
 <li><a href="https://ollama.com">Ollama</a> running locally (free, no API key needed)</li>
 <li><a href="https://console.anthropic.com/">Anthropic API key</a> for Claude models</li>
 <li><a href="https://platform.openai.com/">OpenAI API key</a> for GPT models</li>
-<li>Provider subscriptions via OAuth (<code>nadirclaw auth openai login</code>, <code>nadirclaw auth anthropic login</code>, <code>nadirclaw auth antigravity login</code>, <code>nadirclaw auth gemini login</code>)</li>
+<li>Provider subscriptions via OAuth (<pre><code>nadirclaw auth openai login</code></pre>, <pre><code>nadirclaw auth anthropic login</code></pre>, <pre><code>nadirclaw auth antigravity login</code></pre>, <pre><code>nadirclaw auth gemini login</code></pre>)</li>
 <li>Or any provider supported by <a href="https://docs.litellm.ai/docs/providers">LiteLLM</a></li>
 </ul>
 </li>
 </ul>
-<div><h2>Install</h2><a href="#install"></a></div>
-<div><h3>One-line install (recommended)</h3><a href="#one-line-install-recommended"></a></div>
-<div><pre>curl -fsSL https://raw.githubusercontent.com/doramirdor/NadirClaw/main/install.sh <span>|</span> sh</pre></div>
-<p>This clones the repo to <code>~/.nadirclaw</code>, creates a virtual environment, installs dependencies, and adds <code>nadirclaw</code> to your PATH. Run it again to update.</p>
+<div><h2>Install</h2><a href="#install"></a></div> <div><pre>curl -fsSL https://raw.githubusercontent.com/doramirdor/NadirClaw/main/install.sh <span>|</span> sh</pre></div>
+<p>This clones the repo to </p><pre><code>~/.nadirclaw</code></pre>, creates a virtual environment, installs dependencies, and adds <pre><code>nadirclaw</code></pre> to your PATH. Run it again to update.<p></p>
 <div><h3>Manual install</h3><a href="#manual-install"></a></div>
 <div><pre>git clone https://github.com/doramirdor/NadirClaw.git
 <span>cd</span> NadirClaw
@@ -94,7 +106,7 @@ pip install -e <span>.</span></pre></div>
 sudo rm -f /usr/local/bin/nadirclaw</pre></div>
 <div><h2>Configure</h2><a href="#configure"></a></div>
 <div><h3>Environment File</h3><a href="#environment-file"></a></div>
-<p>NadirClaw loads configuration from <code>~/.nadirclaw/.env</code>. Create or edit this file to set API keys and model preferences:</p>
+<p>NadirClaw loads configuration from </p><pre><code>~/.nadirclaw/.env</code></pre>. Create or edit this file to set API keys and model preferences:<p></p>
 <div><pre><span><span>#</span> ~/.nadirclaw/.env</span> <span><span>#</span> API keys (set the ones you use)</span>
 GEMINI_API_KEY=AIza...
 OPENAI_API_KEY=sk-...
@@ -102,16 +114,14 @@ ANTHROPIC_API_KEY=sk-ant-... <span><span>#</span> Model routing</span>
 NADIRCLAW_SIMPLE_MODEL=gemini-3-flash-preview
 NADIRCLAW_COMPLEX_MODEL=gemini-2.5-pro <span><span>#</span> Server</span>
 NADIRCLAW_PORT=8856</pre></div>
-<p>If <code>~/.nadirclaw/.env</code> does not exist, NadirClaw falls back to <code>.env</code> in the current directory.</p>
+<p>If </p><pre><code>~/.nadirclaw/.env</code></pre> does not exist, NadirClaw falls back to <pre><code>.env</code></pre> in the current directory.<p></p>
 <div><h3>Authentication</h3><a href="#authentication"></a></div>
 <p>NadirClaw supports multiple ways to provide LLM credentials, checked in this order:</p>
 <ol>
-<li><strong>OpenClaw stored token</strong> (<code>~/.openclaw/agents/main/agent/auth-profiles.json</code>)</li>
-<li><strong>NadirClaw stored credential</strong> (<code>~/.nadirclaw/credentials.json</code>)</li>
-<li><strong>Environment variable</strong> (<code>GEMINI_API_KEY</code>, <code>ANTHROPIC_API_KEY</code>, <code>OPENAI_API_KEY</code>, etc.)</li>
-</ol>
-<div><h4>Using <code>nadirclaw auth</code> (recommended)</h4><a href="#using-nadirclaw-auth-recommended"></a></div>
-<div><pre><span><span>#</span> Add a Gemini API key</span>
+<li><strong>OpenClaw stored token</strong> (<pre><code>~/.openclaw/agents/main/agent/auth-profiles.json</code></pre>)</li>
+<li><strong>NadirClaw stored credential</strong> (<pre><code>~/.nadirclaw/credentials.json</code></pre>)</li>
+<li><strong>Environment variable</strong> (<pre><code>GEMINI_API_KEY</code></pre>, <pre><code>ANTHROPIC_API_KEY</code></pre>, <pre><code>OPENAI_API_KEY</code></pre>, etc.)</li>
+</ol> <div><pre><span><span>#</span> Add a Gemini API key</span>
 nadirclaw auth add --provider google --key AIza... <span><span>#</span> Add any provider API key</span>
 nadirclaw auth add --provider anthropic --key sk-ant-...
 nadirclaw auth add --provider openai --key sk-... <span><span>#</span> Login with your OpenAI/ChatGPT subscription (OAuth, no API key needed)</span>
@@ -123,7 +133,7 @@ nadirclaw auth setup-token <span><span>#</span> Check what's configured</span>
 nadirclaw auth status <span><span>#</span> Remove a credential</span>
 nadirclaw auth remove google</pre></div>
 <div><h4>Using environment variables</h4><a href="#using-environment-variables"></a></div>
-<p>Set API keys in <code>~/.nadirclaw/.env</code>:</p>
+<p>Set API keys in </p><pre><code>~/.nadirclaw/.env</code></pre>:<p></p>
 <div><pre>GEMINI_API_KEY=AIza... <span><span>#</span> or GOOGLE_API_KEY</span>
 ANTHROPIC_API_KEY=sk-ant-...
 OPENAI_API_KEY=sk-...</pre></div>
@@ -146,50 +156,50 @@ NADIRCLAW_FREE_MODEL=ollama/llama3.1:8b <span><span>#</span> free fallback (opti
 <tbody>
 <tr>
 <td><strong>Gemini + Gemini</strong></td>
-<td><code>gemini-3-flash-preview</code></td>
-<td><code>gemini-2.5-pro</code></td>
-<td><code>GEMINI_API_KEY</code></td>
+<td><pre><code>gemini-2.5-flash</code></pre></td>
+<td><pre><code>gemini-2.5-pro</code></pre></td>
+<td><pre><code>GEMINI_API_KEY</code></pre></td>
 </tr>
 <tr>
 <td><strong>Gemini + Claude</strong></td>
-<td><code>gemini-3-flash-preview</code></td>
-<td><code>claude-sonnet-4-20250514</code></td>
-<td><code>GEMINI_API_KEY</code> + <code>ANTHROPIC_API_KEY</code></td>
+<td><pre><code>gemini-2.5-flash</code></pre></td>
+<td><pre><code>claude-sonnet-4-5-20250929</code></pre></td>
+<td><pre><code>GEMINI_API_KEY</code></pre> + <pre><code>ANTHROPIC_API_KEY</code></pre></td>
 </tr>
 <tr>
 <td><strong>Claude + Ollama</strong></td>
-<td><code>ollama/llama3.1:8b</code></td>
-<td><code>claude-sonnet-4-20250514</code></td>
-<td><code>ANTHROPIC_API_KEY</code></td>
+<td><pre><code>ollama/llama3.1:8b</code></pre></td>
+<td><pre><code>claude-sonnet-4-5-20250929</code></pre></td>
+<td><pre><code>ANTHROPIC_API_KEY</code></pre></td>
 </tr>
 <tr>
 <td><strong>Claude + Claude</strong></td>
-<td><code>claude-haiku-4-20250514</code></td>
-<td><code>claude-sonnet-4-20250514</code></td>
-<td><code>ANTHROPIC_API_KEY</code></td>
+<td><pre><code>claude-haiku-4-5-20251001</code></pre></td>
+<td><pre><code>claude-sonnet-4-5-20250929</code></pre></td>
+<td><pre><code>ANTHROPIC_API_KEY</code></pre></td>
 </tr>
 <tr>
 <td><strong>OpenAI + Ollama</strong></td>
-<td><code>ollama/llama3.1:8b</code></td>
-<td><code>gpt-4o</code></td>
-<td><code>OPENAI_API_KEY</code></td>
+<td><pre><code>ollama/llama3.1:8b</code></pre></td>
+<td><pre><code>gpt-4.1</code></pre></td>
+<td><pre><code>OPENAI_API_KEY</code></pre></td>
 </tr>
 <tr>
 <td><strong>OpenAI + OpenAI</strong></td>
-<td><code>gpt-4o-mini</code></td>
-<td><code>gpt-4o</code></td>
-<td><code>OPENAI_API_KEY</code></td>
+<td><pre><code>gpt-4.1-mini</code></pre></td>
+<td><pre><code>gpt-4.1</code></pre></td>
+<td><pre><code>OPENAI_API_KEY</code></pre></td>
 </tr>
 <tr>
 <td><strong>OpenAI Codex</strong></td>
-<td><code>gemini-3-flash-preview</code></td>
-<td><code>openai-codex/gpt-5.3-codex</code></td>
-<td><code>GEMINI_API_KEY</code> + OAuth login</td>
+<td><pre><code>gemini-2.5-flash</code></pre></td>
+<td><pre><code>openai-codex/gpt-5.3-codex</code></pre></td>
+<td><pre><code>GEMINI_API_KEY</code></pre> + OAuth login</td>
 </tr>
 <tr>
 <td><strong>Fully local</strong></td>
-<td><code>ollama/llama3.1:8b</code></td>
-<td><code>ollama/qwen3:32b</code></td>
+<td><pre><code>ollama/llama3.1:8b</code></pre></td>
+<td><pre><code>ollama/qwen3:32b</code></pre></td>
 <td>None</td>
 </tr>
 </tbody>
@@ -202,7 +212,7 @@ nadirclaw auth add --provider google --key AIza... <span><span>#</span> Or set i
 <span>echo</span> <span><span>"</span>GEMINI_API_KEY=AIza...<span>"</span></span> <span>&gt;&gt;</span> <span>~</span>/.nadirclaw/.env <span><span>#</span> Start the router</span>
 nadirclaw serve --verbose</pre></div>
 <div><h3>Rate Limit Fallback</h3><a href="#rate-limit-fallback"></a></div>
-<p>If the primary model hits a 429 rate limit, NadirClaw automatically retries once, then falls back to the other tier's model. For example, if <code>gemini-3-flash-preview</code> is exhausted, NadirClaw will try <code>gemini-2.5-pro</code> (or whatever your complex model is). If both models are rate-limited, it returns a friendly error message instead of crashing.</p>
+<p>If the primary model hits a 429 rate limit, NadirClaw automatically retries once, then falls back to the other tier's model. For example, if </p><pre><code>gemini-3-flash-preview</code></pre> is exhausted, NadirClaw will try <pre><code>gemini-2.5-pro</code></pre> (or whatever your complex model is). If both models are rate-limited, it returns a friendly error message instead of crashing.<p></p>
 <div><h2>Usage with Ollama</h2><a href="#usage-with-ollama"></a></div>
 <p>If you're running <a href="https://ollama.com">Ollama</a> locally, NadirClaw works out of the box with no API keys:</p>
 <div><pre><span><span>#</span> Fully local setup -- no API keys, no cost</span>
@@ -210,9 +220,7 @@ NADIRCLAW_SIMPLE_MODEL=ollama/llama3.1:8b \
 NADIRCLAW_COMPLEX_MODEL=ollama/qwen3:32b \
 nadirclaw serve --verbose</pre></div>
 <p>Or mix local + cloud:</p>
-<div><pre>nadirclaw serve \ --simple-model ollama/llama3.1:8b \ --complex-model claude-sonnet-4-20250514 \ --verbose</pre></div>
-<div><h3>Recommended Ollama Models</h3><a href="#recommended-ollama-models"></a></div>
-<table>
+<div><pre>nadirclaw serve \ --simple-model ollama/llama3.1:8b \ --complex-model claude-sonnet-4-20250514 \ --verbose</pre></div> <table>
 <thead>
 <tr>
 <th>Model</th>
@@ -222,22 +230,22 @@ nadirclaw serve --verbose</pre></div>
 </thead>
 <tbody>
 <tr>
-<td><code>llama3.1:8b</code></td>
+<td><pre><code>llama3.1:8b</code></pre></td>
 <td>4.7 GB</td>
 <td>Simple tier (fast, good enough)</td>
 </tr>
 <tr>
-<td><code>qwen3:32b</code></td>
+<td><pre><code>qwen3:32b</code></pre></td>
 <td>19 GB</td>
 <td>Complex tier (local, no API cost)</td>
 </tr>
 <tr>
-<td><code>qwen3-coder</code></td>
+<td><pre><code>qwen3-coder</code></pre></td>
 <td>19 GB</td>
 <td>Code-heavy complex tier</td>
 </tr>
 <tr>
-<td><code>deepseek-r1:14b</code></td>
+<td><pre><code>deepseek-r1:14b</code></pre></td>
 <td>9 GB</td>
 <td>Reasoning-heavy complex tier</td>
 </tr>
@@ -249,22 +257,22 @@ nadirclaw serve --verbose</pre></div>
 <div><pre><span><span>#</span> Auto-configure OpenClaw to use NadirClaw</span>
 nadirclaw openclaw onboard <span><span>#</span> Start the router</span>
 nadirclaw serve</pre></div>
-<p>This writes NadirClaw as a provider in <code>~/.openclaw/openclaw.json</code> with model <code>nadirclaw/auto</code>. If OpenClaw is already running, it will auto-reload the config -- no restart needed.</p>
+<p>This writes NadirClaw as a provider in </p><pre><code>~/.openclaw/openclaw.json</code></pre> with model <pre><code>nadirclaw/auto</code></pre>. If OpenClaw is already running, it will auto-reload the config -- no restart needed.<p></p>
 <div><h3>Configure Only (Without Launching)</h3><a href="#configure-only-without-launching"></a></div>
 <div><pre>nadirclaw openclaw onboard
 <span><span>#</span> Then start NadirClaw separately when ready:</span>
 nadirclaw serve</pre></div>
 <div><h3>What It Does</h3><a href="#what-it-does"></a></div>
-<p><code>nadirclaw openclaw onboard</code> adds this to your OpenClaw config:</p>
+<p></p><pre><code>nadirclaw openclaw onboard</code></pre> adds this to your OpenClaw config:<p></p>
 <div><pre>{ <span>"models"</span>: { <span>"providers"</span>: { <span>"nadirclaw"</span>: { <span>"baseUrl"</span>: <span><span>"</span>http://localhost:8856/v1<span>"</span></span>, <span>"apiKey"</span>: <span><span>"</span>local<span>"</span></span>, <span>"api"</span>: <span><span>"</span>openai-completions<span>"</span></span>, <span>"models"</span>: [{ <span>"id"</span>: <span><span>"</span>auto<span>"</span></span>, <span>"name"</span>: <span><span>"</span>auto<span>"</span></span> }] } } }, <span>"agents"</span>: { <span>"defaults"</span>: { <span>"model"</span>: { <span>"primary"</span>: <span><span>"</span>nadirclaw/auto<span>"</span></span> } } }
 }</pre></div>
-<p>NadirClaw supports the SSE streaming format that OpenClaw expects (<code>stream: true</code>), handling multi-modal content and tool definitions in system prompts.</p>
+<p>NadirClaw supports the SSE streaming format that OpenClaw expects (</p><pre><code>stream: true</code></pre>), handling multi-modal content and tool definitions in system prompts.<p></p>
 <div><h2>Usage with Codex</h2><a href="#usage-with-codex"></a></div>
 <p><a href="https://github.com/openai/codex">Codex</a> is OpenAI's CLI coding agent. NadirClaw integrates as a custom model provider.</p>
 <div><pre><span><span>#</span> Auto-configure Codex</span>
 nadirclaw codex onboard <span><span>#</span> Start the router</span>
 nadirclaw serve</pre></div>
-<p>This writes <code>~/.codex/config.toml</code>:</p>
+<p>This writes </p><pre><code>~/.codex/config.toml</code></pre>:<p></p>
 <div><pre><span>model_provider</span> = <span><span>"</span>nadirclaw<span>"</span></span> [<span>model_providers</span>.<span>nadirclaw</span>]
 <span>base_url</span> = <span><span>"</span>http://localhost:8856/v1<span>"</span></span>
 <span>api_key</span> = <span><span>"</span>local<span>"</span></span></pre></div>
@@ -272,7 +280,7 @@ nadirclaw serve</pre></div>
 <p>To use your ChatGPT subscription instead of an API key:</p>
 <div><pre><span><span>#</span> Login with your OpenAI account (opens browser)</span>
 nadirclaw auth openai login <span><span>#</span> NadirClaw will auto-refresh the token when it expires</span></pre></div>
-<p>This delegates to the Codex CLI for the OAuth flow and stores the credentials in <code>~/.nadirclaw/credentials.json</code>. Tokens are automatically refreshed when they expire.</p>
+<p>This delegates to the Codex CLI for the OAuth flow and stores the credentials in </p><pre><code>~/.nadirclaw/credentials.json</code></pre>. Tokens are automatically refreshed when they expire.<p></p>
 <div><h2>Usage with Any OpenAI-Compatible Tool</h2><a href="#usage-with-any-openai-compatible-tool"></a></div>
 <p>NadirClaw exposes a standard OpenAI-compatible API. Point any tool at it:</p>
 <div><pre><span><span>#</span> Base URL</span>
@@ -306,31 +314,31 @@ model: <span><span>"</span>auto<span>"</span></span> <span><span>#</span> or omi
 <tbody>
 <tr>
 <td><strong>auto</strong></td>
-<td><code>auto</code> or omit</td>
+<td><pre><code>auto</code></pre> or omit</td>
 <td>Smart routing (default)</td>
 <td>Best overall balance</td>
 </tr>
 <tr>
 <td><strong>eco</strong></td>
-<td><code>eco</code></td>
+<td><pre><code>eco</code></pre></td>
 <td>Always use simple model</td>
 <td>Maximum savings</td>
 </tr>
 <tr>
 <td><strong>premium</strong></td>
-<td><code>premium</code></td>
+<td><pre><code>premium</code></pre></td>
 <td>Always use complex model</td>
 <td>Best quality</td>
 </tr>
 <tr>
 <td><strong>free</strong></td>
-<td><code>free</code></td>
+<td><pre><code>free</code></pre></td>
 <td>Use free fallback model</td>
 <td>Zero cost</td>
 </tr>
 <tr>
 <td><strong>reasoning</strong></td>
-<td><code>reasoning</code></td>
+<td><pre><code>reasoning</code></pre></td>
 <td>Use reasoning model</td>
 <td>Chain-of-thought tasks</td>
 </tr>
@@ -350,51 +358,57 @@ curl http://localhost:8856/v1/chat/completions \ -H <span><span>"</span>Content-
 </thead>
 <tbody>
 <tr>
-<td><code>sonnet</code></td>
-<td><code>claude-sonnet-4-20250514</code></td>
+<td><pre><code>sonnet</code></pre></td>
+<td><pre><code>claude-sonnet-4-5-20250929</code></pre></td>
 </tr>
 <tr>
-<td><code>opus</code></td>
-<td><code>claude-opus-4-20250514</code></td>
+<td><pre><code>opus</code></pre></td>
+<td><pre><code>claude-opus-4-6-20250918</code></pre></td>
 </tr>
 <tr>
-<td><code>haiku</code></td>
-<td><code>claude-haiku-4-20250514</code></td>
+<td><pre><code>haiku</code></pre></td>
+<td><pre><code>claude-haiku-4-5-20251001</code></pre></td>
 </tr>
 <tr>
-<td><code>gpt4</code></td>
-<td><code>gpt-4o</code></td>
+<td><pre><code>gpt4</code></pre></td>
+<td><pre><code>gpt-4.1</code></pre></td>
 </tr>
 <tr>
-<td><code>flash</code></td>
-<td><code>gemini-3-flash-preview</code></td>
+<td><pre><code>gpt5</code></pre></td>
+<td><pre><code>gpt-5.2</code></pre></td>
 </tr>
 <tr>
-<td><code>gemini-pro</code></td>
-<td><code>gemini-2.5-pro</code></td>
+<td><pre><code>flash</code></pre></td>
+<td><pre><code>gemini-2.5-flash</code></pre></td>
 </tr>
 <tr>
-<td><code>deepseek</code></td>
-<td><code>deepseek/deepseek-chat</code></td>
+<td><pre><code>gemini-pro</code></pre></td>
+<td><pre><code>gemini-2.5-pro</code></pre></td>
 </tr>
 <tr>
-<td><code>deepseek-r1</code></td>
-<td><code>deepseek/deepseek-reasoner</code></td>
+<td><pre><code>deepseek</code></pre></td>
+<td><pre><code>deepseek/deepseek-chat</code></pre></td>
 </tr>
 <tr>
-<td><code>llama</code></td>
-<td><code>ollama/llama3.1:8b</code></td>
+<td><pre><code>deepseek-r1</code></pre></td>
+<td><pre><code>deepseek/deepseek-reasoner</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>llama</code></pre></td>
+<td><pre><code>ollama/llama3.1:8b</code></pre></td>
 </tr>
 </tbody>
 </table>
 <div><pre><span><span>#</span> Use an alias as the model</span>
 curl http://localhost:8856/v1/chat/completions \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"model": "sonnet", "messages": [{"role": "user", "content": "Hello"}]}<span>'</span></span></pre></div>
 <div><h2>Routing Intelligence</h2><a href="#routing-intelligence"></a></div>
+<p> <a target="_blank" href="/doramirdor/NadirClaw/blob/main/docs/images/routing-flow.png"><img src="/doramirdor/NadirClaw/raw/main/docs/images/routing-flow.png" alt="Routing flow"></a>
+</p>
 <p>Beyond basic simple/complex classification, NadirClaw applies routing modifiers that can override the base decision:</p>
 <div><h3>Agentic Task Detection</h3><a href="#agentic-task-detection"></a></div>
 <p>NadirClaw detects agentic requests (coding agents, multi-step tool use) and forces them to the complex model, even if the individual message looks simple. Signals:</p>
 <ul>
-<li>Tool definitions in the request (<code>tools</code> array)</li>
+<li>Tool definitions in the request (<pre><code>tools</code></pre> array)</li>
 <li>Tool-role messages (active tool execution loop)</li>
 <li>Assistant→tool→assistant cycles (multi-step execution)</li>
 <li>Agent-like system prompts ("you are a coding agent", "you can execute commands")</li>
@@ -413,7 +427,7 @@ curl http://localhost:8856/v1/chat/completions \ -H <span><span>"</span>Content-
 <div><h3>Session Persistence</h3><a href="#session-persistence"></a></div>
 <p>Once a conversation is routed to a model, subsequent messages in the same session reuse that model. This prevents jarring mid-conversation model switches. Sessions are keyed by system prompt + first user message, with a 30-minute TTL.</p>
 <div><h3>Context Window Filtering</h3><a href="#context-window-filtering"></a></div>
-<p>If the estimated token count of a request exceeds a model's context window, NadirClaw automatically swaps to a model with a larger context. For example, a 150k-token conversation targeting <code>gpt-4o</code> (128k context) will be redirected to <code>gemini-2.5-pro</code> (1M context).</p>
+<p>If the estimated token count of a request exceeds a model's context window, NadirClaw automatically swaps to a model with a larger context. For example, a 150k-token conversation targeting </p><pre><code>gpt-4o</code></pre> (128k context) will be redirected to <pre><code>gemini-2.5-pro</code></pre> (1M context).<p></p>
 <div><h2>CLI Reference</h2><a href="#cli-reference"></a></div>
 <div><pre>nadirclaw setup <span><span>#</span> Interactive setup wizard (providers, keys, models)</span>
 nadirclaw serve <span><span>#</span> Start the router server</span>
@@ -437,9 +451,11 @@ nadirclaw auth gemini <span>logout</span> <span><span>#</span> Remove stored Gem
 nadirclaw codex onboard <span><span>#</span> Configure Codex integration</span>
 nadirclaw openclaw onboard <span><span>#</span> Configure OpenClaw integration</span>
 nadirclaw build-centroids <span><span>#</span> Regenerate centroid vectors from prototypes</span></pre></div>
-<div><h3><code>nadirclaw serve</code></h3><a href="#nadirclaw-serve"></a></div>
+<div><h3><pre><code>nadirclaw serve</code></pre></h3><a href="#nadirclaw-serve"></a></div>
 <div><pre>nadirclaw serve [OPTIONS] Options: --port INTEGER Port to listen on (default: 8856) --simple-model TEXT Model <span>for</span> simple prompts --complex-model TEXT Model <span>for</span> complex prompts --models TEXT Comma-separated model list (legacy) --token TEXT Auth token --verbose Enable debug logging --log-raw Log full raw requests and responses to JSONL</pre></div>
-<div><h3><code>nadirclaw report</code></h3><a href="#nadirclaw-report"></a></div>
+<div><h3><pre><code>nadirclaw report</code></pre></h3><a href="#nadirclaw-report"></a></div>
+<p> <a target="_blank" href="/doramirdor/NadirClaw/blob/main/docs/images/report.png"><img src="/doramirdor/NadirClaw/raw/main/docs/images/report.png" alt="nadirclaw report output"></a>
+</p>
 <p>Analyze request logs and print a summary report:</p>
 <div><pre>nadirclaw report <span><span>#</span> full report</span>
 nadirclaw report --since 24h <span><span>#</span> last 24 hours</span>
@@ -460,7 +476,7 @@ To: 2026-02-14T22:47:19+00:00 Requests by Type
 ---------------------------------------- classifier avg=12 p50=11 p95=24 total avg=847 p50=620 p95=2340 Token Usage
 ------------------------------ Prompt: 138420 Completion: 69130 Total: 207550 Fallbacks: 3 Errors: 2 Streaming requests: 47 Requests with tools: 18 (54 tools total)
 </code></pre></div>
-<div><h3><code>nadirclaw classify</code></h3><a href="#nadirclaw-classify"></a></div>
+<div><h3><pre><code>nadirclaw classify</code></pre></h3><a href="#nadirclaw-classify"></a></div>
 <p>Classify a prompt locally without running the server. Useful for testing your setup:</p>
 <div><pre>$ nadirclaw classify <span><span>"</span>What is 2+2?<span>"</span></span>
 Tier: simple
@@ -471,7 +487,7 @@ Tier: complex
 Confidence: 0.1843
 Score: 1.0000
 Model: gemini-2.5-pro</pre></div>
-<div><h3><code>nadirclaw status</code></h3><a href="#nadirclaw-status"></a></div>
+<div><h3><pre><code>nadirclaw status</code></pre></h3><a href="#nadirclaw-status"></a></div>
 <div><pre>$ nadirclaw status
 NadirClaw Status
 ----------------------------------------
@@ -483,6 +499,9 @@ Threshold: 0.06
 Log dir: /Users/you/.nadirclaw/logs
 Token: nadir-<span>***</span> Server: RUNNING (ok)</pre></div>
 <div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<p>Most LLM usage doesn't need a premium model. NadirClaw routes each prompt to the right tier automatically:</p>
+<p> <a target="_blank" href="/doramirdor/NadirClaw/blob/main/docs/images/usage-distribution.png"><img src="/doramirdor/NadirClaw/raw/main/docs/images/usage-distribution.png" alt="Typical LLM usage distribution"></a>
+</p>
 <p>NadirClaw uses a binary complexity classifier based on sentence embeddings:</p>
 <ol>
 <li>
@@ -516,7 +535,7 @@ Token: nadir-<span>***</span> Server: RUNNING (ok)</pre></div>
 </ol>
 <p>Classification takes ~10ms on a warm encoder. The first request takes ~2-3 seconds to load the embedding model.</p>
 <div><h2>API Endpoints</h2><a href="#api-endpoints"></a></div>
-<p>Auth is disabled by default (local-only). Set <code>NADIRCLAW_AUTH_TOKEN</code> to require a bearer token.</p>
+<p>Auth is disabled by default (local-only). Set </p><pre><code>NADIRCLAW_AUTH_TOKEN</code></pre> to require a bearer token.<p></p>
 <table>
 <thead>
 <tr>
@@ -527,32 +546,32 @@ Token: nadir-<span>***</span> Server: RUNNING (ok)</pre></div>
 </thead>
 <tbody>
 <tr>
-<td><code>/v1/chat/completions</code></td>
+<td><pre><code>/v1/chat/completions</code></pre></td>
 <td>POST</td>
-<td>OpenAI-compatible completions with auto routing (supports <code>stream: true</code>)</td>
+<td>OpenAI-compatible completions with auto routing (supports <pre><code>stream: true</code></pre>)</td>
 </tr>
 <tr>
-<td><code>/v1/classify</code></td>
+<td><pre><code>/v1/classify</code></pre></td>
 <td>POST</td>
 <td>Classify a prompt without calling an LLM</td>
 </tr>
 <tr>
-<td><code>/v1/classify/batch</code></td>
+<td><pre><code>/v1/classify/batch</code></pre></td>
 <td>POST</td>
 <td>Classify multiple prompts at once</td>
 </tr>
 <tr>
-<td><code>/v1/models</code></td>
+<td><pre><code>/v1/models</code></pre></td>
 <td>GET</td>
 <td>List available models</td>
 </tr>
 <tr>
-<td><code>/v1/logs</code></td>
+<td><pre><code>/v1/logs</code></pre></td>
 <td>GET</td>
 <td>View recent request logs</td>
 </tr>
 <tr>
-<td><code>/health</code></td>
+<td><pre><code>/health</code></pre></td>
 <td>GET</td>
 <td>Health check (no auth required)</td>
 </tr>
@@ -569,77 +588,77 @@ Token: nadir-<span>***</span> Server: RUNNING (ok)</pre></div>
 </thead>
 <tbody>
 <tr>
-<td><code>NADIRCLAW_SIMPLE_MODEL</code></td>
-<td><code>gemini-3-flash-preview</code></td>
+<td><pre><code>NADIRCLAW_SIMPLE_MODEL</code></pre></td>
+<td><pre><code>gemini-3-flash-preview</code></pre></td>
 <td>Model for simple prompts</td>
 </tr>
 <tr>
-<td><code>NADIRCLAW_COMPLEX_MODEL</code></td>
-<td><code>openai-codex/gpt-5.3-codex</code></td>
+<td><pre><code>NADIRCLAW_COMPLEX_MODEL</code></pre></td>
+<td><pre><code>openai-codex/gpt-5.3-codex</code></pre></td>
 <td>Model for complex prompts</td>
 </tr>
 <tr>
-<td><code>NADIRCLAW_REASONING_MODEL</code></td>
+<td><pre><code>NADIRCLAW_REASONING_MODEL</code></pre></td>
 <td><em>(falls back to complex)</em></td>
 <td>Model for reasoning tasks</td>
 </tr>
 <tr>
-<td><code>NADIRCLAW_FREE_MODEL</code></td>
+<td><pre><code>NADIRCLAW_FREE_MODEL</code></pre></td>
 <td><em>(falls back to simple)</em></td>
 <td>Free fallback model</td>
 </tr>
 <tr>
-<td><code>NADIRCLAW_AUTH_TOKEN</code></td>
+<td><pre><code>NADIRCLAW_AUTH_TOKEN</code></pre></td>
 <td><em>(empty — auth disabled)</em></td>
 <td>Set to require a bearer token</td>
 </tr>
 <tr>
-<td><code>GEMINI_API_KEY</code></td>
+<td><pre><code>GEMINI_API_KEY</code></pre></td>
 <td>--</td>
-<td>Google Gemini API key (also accepts <code>GOOGLE_API_KEY</code>)</td>
+<td>Google Gemini API key (also accepts <pre><code>GOOGLE_API_KEY</code></pre>)</td>
 </tr>
 <tr>
-<td><code>ANTHROPIC_API_KEY</code></td>
+<td><pre><code>ANTHROPIC_API_KEY</code></pre></td>
 <td>--</td>
 <td>Anthropic API key</td>
 </tr>
 <tr>
-<td><code>OPENAI_API_KEY</code></td>
+<td><pre><code>OPENAI_API_KEY</code></pre></td>
 <td>--</td>
 <td>OpenAI API key</td>
 </tr>
 <tr>
-<td><code>OLLAMA_API_BASE</code></td>
-<td><code>http://localhost:11434</code></td>
+<td><pre><code>OLLAMA_API_BASE</code></pre></td>
+<td><pre><code>http://localhost:11434</code></pre></td>
 <td>Ollama base URL</td>
 </tr>
 <tr>
-<td><code>NADIRCLAW_CONFIDENCE_THRESHOLD</code></td>
-<td><code>0.06</code></td>
+<td><pre><code>NADIRCLAW_CONFIDENCE_THRESHOLD</code></pre></td>
+<td><pre><code>0.06</code></pre></td>
 <td>Classification threshold (lower = more complex)</td>
 </tr>
 <tr>
-<td><code>NADIRCLAW_PORT</code></td>
-<td><code>8856</code></td>
+<td><pre><code>NADIRCLAW_PORT</code></pre></td>
+<td><pre><code>8856</code></pre></td>
 <td>Server port</td>
 </tr>
 <tr>
-<td><code>NADIRCLAW_LOG_DIR</code></td>
-<td><code>~/.nadirclaw/logs</code></td>
+<td><pre><code>NADIRCLAW_LOG_DIR</code></pre></td>
+<td><pre><code>~/.nadirclaw/logs</code></pre></td>
 <td>Log directory</td>
 </tr>
 <tr>
-<td><code>NADIRCLAW_LOG_RAW</code></td>
-<td><code>false</code></td>
-<td>Log full raw requests and responses (<code>true</code>/<code>false</code>)</td>
+<td><pre><code>NADIRCLAW_LOG_RAW</code></pre></td>
+<td><pre><code>false</code></pre></td>
+<td>Log full raw requests and responses (<pre><code>true</code></pre>/<pre><code>false</code></pre>)</td>
 </tr>
 <tr>
-<td><code>NADIRCLAW_MODELS</code></td>
-<td><code>openai-codex/gpt-5.3-codex,gemini-3-flash-preview</code></td>
+<td><pre><code>NADIRCLAW_MODELS</code></pre></td>
+<td><pre><code>openai-codex/gpt-5.3-codex,gemini-3-flash-preview</code></pre></td>
 <td>Legacy model list (fallback if tier vars not set)</td>
 </tr>
 <tr>
-<td><code>OTEL_EXPORTER_OTLP_ENDPOINT</code></td>
+<td><pre><code>OTEL_EXPORTER_OTLP_ENDPOINT</code></pre></td>
 <td><em>(empty — disabled)</em></td>
 <td>OpenTelemetry collector endpoint (enables tracing)</td>
 </tr>
@@ -651,12 +670,12 @@ Token: nadir-<span>***</span> Server: RUNNING (ok)</pre></div>
 OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 nadirclaw serve</pre></div>
 <p>When enabled, NadirClaw emits spans for:</p>
 <ul>
-<li><strong><code>smart_route_analysis</code></strong> — classifier decision with tier and selected model</li>
-<li><strong><code>dispatch_model</code></strong> — individual LLM provider call</li>
-<li><strong><code>chat_completion</code></strong> — full request lifecycle</li>
+<li><strong><pre><code>smart_route_analysis</code></pre></strong> — classifier decision with tier and selected model</li>
+<li><strong><pre><code>dispatch_model</code></pre></strong> — individual LLM provider call</li>
+<li><strong><pre><code>chat_completion</code></pre></strong> — full request lifecycle</li>
 </ul>
-<p>Spans include <a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/">GenAI semantic conventions</a> (<code>gen_ai.request.model</code>, <code>gen_ai.usage.input_tokens</code>, <code>gen_ai.usage.output_tokens</code>) plus custom <code>nadirclaw.*</code> attributes for routing metadata.</p>
-<p>If the telemetry packages are not installed or <code>OTEL_EXPORTER_OTLP_ENDPOINT</code> is not set, all tracing is a no-op with zero overhead.</p>
+<p>Spans include <a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/">GenAI semantic conventions</a> (</p><pre><code>gen_ai.request.model</code></pre>, <pre><code>gen_ai.usage.input_tokens</code></pre>, <pre><code>gen_ai.usage.output_tokens</code></pre>) plus custom <pre><code>nadirclaw.*</code></pre> attributes for routing metadata.<p></p>
+<p>If the telemetry packages are not installed or </p><pre><code>OTEL_EXPORTER_OTLP_ENDPOINT</code></pre> is not set, all tracing is a no-op with zero overhead.<p></p>
 <div><h2>Project Structure</h2><a href="#project-structure"></a></div>
 <div><pre><code>nadirclaw/ __init__.py # Package version cli.py # CLI commands (setup, serve, classify, report, status, auth, codex, openclaw) setup.py # Interactive setup wizard (provider selection, credentials, model config) server.py # FastAPI server with OpenAI-compatible API + streaming classifier.py # Binary complexity classifier (sentence embeddings) credentials.py # Credential storage, resolution chain, and OAuth token refresh encoder.py # Shared SentenceTransformer singleton oauth.py # OAuth login flows (OpenAI, Anthropic, Gemini, Antigravity) routing.py # Routing intelligence (agentic, reasoning, profiles, aliases, sessions) report.py # Log parsing and report generation telemetry.py # Optional OpenTelemetry integration (no-op without packages) auth.py # Bearer token / API key authentication settings.py # Environment-based configuration (reads ~/.nadirclaw/.env) prototypes.py # Seed prompts for centroid generation simple_centroid.npy # Pre-computed simple centroid vector complex_centroid.npy # Pre-computed complex centroid vector
 </code></pre></div>
@@ -664,22 +683,40 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 nadirclaw serve</pre></div>
 <p>MIT</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
-
-</body></html>
+</body>
+</html>

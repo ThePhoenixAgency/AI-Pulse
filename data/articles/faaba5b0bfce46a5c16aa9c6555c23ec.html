@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I built a CLI that tells you if your release is safe to deploy — in 2 seconds</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I built a CLI that tells you if your release is safe to deploy — in 2 seconds</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 10:53:38 PM | <a href="https://dev.to/younes_bentlili_9480340f/i-built-a-cli-that-tells-you-if-your-release-is-safe-to-deploy-in-2-seconds-1dp4" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5l0cyg8oszmv745a8bbe.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5l0cyg8oszmv745a8bbe.png" alt="Cover image for I built a CLI that tells you if your release is safe to deploy — in 2 seconds"> </a> <div> <p><a href="https://dev.to/younes_bentlili_9480340f"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3745169%2Fde9798d8-300b-4dd0-858d-d04b768ee532.jpeg" alt="Younes Ben Tlili"></a> </p> </div> </div><div> <p>Every team has the same moment before deploying:</p> <blockquote>
+<p>"Tests passed... coverage looks okay... should we ship it?"</p>
+</blockquote> <p>Someone eyeballs the numbers, checks if anything looks off, and says "yeah, let's go." No real process. No history. No way to catch a slow regression creeping in over weeks.<br>
+I got tired of that. So I built<br>
+</p> <div>
+<pre><code>qualityhub analyze
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>What it does</strong><br>
+You run your tests. Then:<br>
+</p> <div>
+<pre><code>npx qualityhub-cli parse jest ./coverage
+npx qualityhub-cli analyze
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>You get this:<br>
+</p> <div>
+<pre><code> QualityHub Analysis
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Project: my-app@2.3.1 Branch: main Tests 243/250 passed (97.2%) 4 failed 3 skipped Duration: 12.7s Coverage Lines: █████████████████░░░ 87.3% ▼ -3.2% Branches: ████████████████░░░░ 82.2% Functions: ██████████████████░░ 91.3% Issues Detected 4 tests failed (97.2% pass rate) 2 flaky tests detected Coverage dropped 3.2% since last run 2 new test failures since last run
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Risk Score: 72/100 (MEDIUM RISK) Decision: CAUTION — Review issues before deploying
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>A risk score from 0 to 100. A clear decision: PROCEED, CAUTION, or BLOCK. In 2 seconds.</p> <p><strong>The problem I was solving</strong><br>
+At my previous job, we had 20 projects across 5 teams. Quality tracking was done in Excel files. Every sprint, someone would manually collect metrics from each team — test pass rates, coverage percentages, SonarQube results — paste them into a spreadsheet, and email it around.<br>
+Nobody caught the slow regressions. Coverage would drop 0.5% per sprint, and after 6 months you'd realize you went from 85% to 70% without anyone noticing.<br>
+I wanted something that:</p> <ul>
+<li>Runs in CI, not in someone's inbox</li>
+<li>Compares every run with the previous one automatically</li>
+<li>Catches what humans miss: slow drifts, new failures, build slowdowns</li>
+<li>Gives a clear answer, not a dashboard you have to interpret</li>
+</ul> <p><strong>How the scoring works</strong><br>
+The risk score starts at 100 and gets penalized:<br>
+Test results (40 points max)<br>
+Every failed test costs points. 2% failure rate? Small penalty. 10% failure rate? You're blocked.<br>
+Coverage (30 points max)<br>
+Below 80% line coverage? Penalty. Below 50%? Critical.<br>
+Regressions (15 points max)<br>
+This is where it gets interesting. The CLI stores history locally in .<em><strong>qualityhub/history.json</strong></em>. On every run, it compares with the last one:</p> <ul>
+<li>Coverage dropped 3%? Flagged.</li>
+<li>2 new test failures? Flagged.</li>
+<li>Build time increased 20%? Flagged.</li>
+</ul> <p>Issue severity (15 points max)<br>
+Critical issues (security vulnerabilities, quality gate failures) cost more than warnings.<br>
+The final score maps to a decision:</p> <ul>
+<li>85-100: PROCEED </li>
+<li>65-84: CAUTION </li>
+<li>40-64: HIGH RISK </li>
+<li>0-39: BLOCK </li>
+</ul> <p><strong>No server needed</strong> <br>
+This is the part I'm most proud of. Everything runs locally:</p> <ul>
+<li>History is stored in <em>.qualityhub/history.json</em>
+</li>
+<li>No account to create</li>
+<li>No SaaS to connect</li>
+<li>No API keys</li>
+</ul> <p>Install and run:<br>
+</p> <div>
+<pre><code>npm install -g qualityhub-cli
+qualityhub parse jest ./coverage
+qualityhub analyze
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. Value in 30 seconds.</p> <p><strong>CI/CD integration</strong><br>
+The CLI exits with code 1 when the decision is BLOCK. So you can use it as a quality gate:<br>
+</p> <div>
+<pre><code># .gitlab-ci.yml
+quality-check: stage: test script: - npm test -- --coverage - npx qualityhub-cli parse jest ./coverage - npx qualityhub-cli analyze cache: paths: - .qualityhub/
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The cache persists the history between pipeline runs, so regression detection works across commits.</p> <p><strong>Markdown reports for merge requests</strong><br>
+You can also generate a Markdown report to post on your MR:<br>
+</p> <div>
+<pre><code>qualityhub analyze --format markdown --output report.md
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>What's next</strong><br>
+I'm working on:</p> <ul>
+<li>
+<strong>Auto-commenting on MRs</strong> — qualityhub analyze --comment posts directly on your GitLab MR or GitHub PR</li>
+<li>
+<strong>More parsers</strong> — pytest, XCTest, Go test</li>
+<li>
+<strong>AI-powered insights</strong> — Using LLMs to explain why your quality is changing and what to fix first</li>
+</ul> <p><strong>Try it</strong><br>
+</p> <div>
+<pre><code>npm install -g qualityhub-cli # Or test with example data:
+git clone https://github.com/ybentlili/qualityhub-cli
+cd qualityhub-cli
+npm install &amp;&amp; npm run build &amp;&amp; npm link
+qualityhub parse jest ./examples/jest
+qualityhub analyze
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>GitHub: ybentlili/qualityhub-cli<br>
+npm: qualityhub-cli<br>
+It's MIT licensed. Stars, feedback, and contributions are welcome.<br>
+If you've ever looked at a CI pipeline and thought "I think we can ship this" — this is for you.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

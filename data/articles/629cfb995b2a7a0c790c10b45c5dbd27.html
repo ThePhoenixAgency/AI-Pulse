@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - lixiasky-back/tiny_coro-build_your_own_MN_scheduler: A lightweight, educational M:N asynchronous runtime built from scratch with C++20 Coroutines. Features Work-Stealing, EBR, and Reactor-based I/O.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - lixiasky-back/tiny_coro-build_your_own_MN_scheduler: A lightweight, educational M:N asynchronous runtime built from scratch with C++20 Coroutines. Features Work-Stealing, EBR, and Reactor-based I/O.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 10:46:29 PM | <a href="https://github.com/lixiasky-back/tiny_coro-build_your_own_MN_scheduler" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>tiny_coro: A C++20 Educational Asynchronous Runtime</h1><a href="#tiny_coro-a-c20-educational-asynchronous-runtime"></a></div>
+<hr>
+<div><h2><a target="_blank" href="https://camo.githubusercontent.com/520ba5c5aaa03bbdd6e437bdc62fcf43f3dc7608abf89f3548c1f4e78f58d3e5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5374616e646172642d4325324225324232302d626c75652e737667"><img src="https://camo.githubusercontent.com/520ba5c5aaa03bbdd6e437bdc62fcf43f3dc7608abf89f3548c1f4e78f58d3e5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5374616e646172642d4325324225324232302d626c75652e737667" alt="C++20"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT"></a>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://camo.githubusercontent.com/462204d32f9ef64c2122d389218f96b057df14d10de2c2449f1c3c9c97d6875b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d43435f42592d2d4e432d2d53415f342e302d6c69676874677265792e737667" alt="License: CC BY-NC-SA 4.0"></a>
+<a target="_blank" href="https://camo.githubusercontent.com/21dce6454494f1fb0d60a3a3fa12bd89a69645a273c3c1c2e4ebc44060177f4e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f506c6174666f726d2d4c696e75782532302537432532306d61634f532d6c69676874677265792e737667"><img src="https://camo.githubusercontent.com/21dce6454494f1fb0d60a3a3fa12bd89a69645a273c3c1c2e4ebc44060177f4e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f506c6174666f726d2d4c696e75782532302537432532306d61634f532d6c69676874677265792e737667" alt="Platform"></a>
+<a href="https://zread.ai/lixiasky-back/tiny_coro-build_your_own_MN_scheduler"><img src="https://camo.githubusercontent.com/dbe8f5e3362d3184b37aab59634ca4d4b1fe396197913e176c81d9b4b2601c45/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f41736b5f5a726561642d5f2e7376673f7374796c653d666c617426636f6c6f723d303062306161266c6162656c436f6c6f723d303030303030266c6f676f3d64617461253341696d616765253246737667253242786d6c25334262617365363425324350484e325a79423361575230614430694d5459694947686c6157646f644430694d54596949485a705a58644362336739496a41674d4341784e6941784e6949675a6d6c7362443069626d39755a53496765473173626e4d39496d6830644841364c79393364336375647a4d7562334a6e4c7a49774d44417663335a6e496a344b50484268644767675a443069545451754f5459784e5459674d5334324d444178534449754d6a51784e545a444d5334344f446778494445754e6a41774d5341784c6a59774d545532494445754f4467324e6a51674d5334324d4445314e6941794c6a49304d4446574e4334354e6a4178517a45754e6a41784e5459674e53347a4d544d314e6941784c6a67344f4445674e5334324d444178494449754d6a51784e5459674e5334324d444178534451754f5459784e545a444e53347a4d5455774d6941314c6a59774d4445674e5334324d4445314e6941314c6a4d784d7a5532494455754e6a41784e5459674e4334354e6a4178566a49754d6a51774d554d314c6a59774d545532494445754f4467324e6a51674e53347a4d5455774d6941784c6a59774d4445674e4334354e6a45314e6941784c6a59774d4446614969426d615778735053496a5a6d5a6d496938253242436a78775958526f49475139496b30304c6a6b324d545532494445774c6a4d354f546c494d6934794e4445314e6b4d784c6a67344f4445674d5441754d7a6b354f5341784c6a59774d545532494445774c6a59344e6a51674d5334324d4445314e6941784d5334774d7a6b35566a457a4c6a63314f546c444d5334324d4445314e6941784e4334784d544d30494445754f4467344d5341784e43347a4f546b35494449754d6a51784e5459674d5451754d7a6b354f5567304c6a6b324d545532517a55754d7a45314d4449674d5451754d7a6b354f5341314c6a59774d545532494445304c6a45784d7a51674e5334324d4445314e6941784d7934334e546b35566a45784c6a417a4f546c444e5334324d4445314e6941784d4334324f445930494455754d7a45314d4449674d5441754d7a6b354f5341304c6a6b324d545532494445774c6a4d354f546c614969426d615778735053496a5a6d5a6d496938253242436a78775958526f49475139496b30784d7934334e546730494445754e6a41774d5567784d5334774d7a6730517a45774c6a59344e5341784c6a59774d4445674d5441754d7a6b344e4341784c6a67344e6a5930494445774c6a4d354f4451674d6934794e444178566a51754f5459774d554d784d43347a4f546730494455754d7a457a4e5459674d5441754e6a6731494455754e6a41774d5341784d5334774d7a6730494455754e6a41774d5567784d7934334e546730517a45304c6a45784d546b674e5334324d444178494445304c6a4d354f4451674e53347a4d544d314e6941784e43347a4f546730494451754f5459774d5659794c6a49304d4446444d5451754d7a6b344e4341784c6a67344e6a5930494445304c6a45784d546b674d5334324d4441784944457a4c6a63314f4451674d5334324d444178576949675a6d6c736244306949325a6d5a69497650676f38634746306143426b50534a4e4e4341784d6b77784d694130544451674d544a614969426d615778735053496a5a6d5a6d496938253242436a78775958526f49475139496b303049444579544445794944516949484e30636d39725a54306949325a6d5a694967633352796232746c4c5864705a48526f505349784c6a556949484e30636d39725a5331736157356c5932467750534a79623356755a43497650676f384c334e325a7a344b266c6f676f436f6c6f723d666666666666" alt="zread"></a></h2><a href="#"></a></div>
+<p><strong>tiny_coro</strong> is a lightweight, high-performance M:N cooperative asynchronous runtime framework written from scratch based on <strong>C++20 Coroutines</strong>.</p>
+<p>The core objective of this project is <strong>education</strong> and <strong>deconstruction</strong>. It strips away the complex wrappers of industrial-grade libraries (such as Seastar, Folly) and demonstrates the core components of a modern high-concurrency runtime with the most minimalist code: <strong>M:N Scheduler</strong>, <strong>Work-Stealing Algorithm</strong>, <strong>EBR Memory Reclamation</strong>, <strong>Lock-Free Queue</strong>, and the <strong>Reactor Pattern</strong>.</p>
+<p>If you are looking to learn the underlying logic of coroutines or how to get started with C++20 coroutines, then this repository might be exactly what you need. This repository aims to provide teaching that is easy to understand yet profound, making it an excellent example for deeply understanding C++20 coroutine mechanisms and system programming.</p>
+<p>First, please finish reading this README file. At the very bottom of this file, you will be guided on how to navigate this repository for learning.</p>
+<p><a target="_blank" href="/lixiasky-back/tiny_coro-build_your_own_MN_scheduler/blob/main/assets/TinyCoro.gif"><img src="/lixiasky-back/tiny_coro-build_your_own_MN_scheduler/raw/main/assets/TinyCoro.gif" alt="tinycoro"></a></p>
+<blockquote>
+<p>All files in this project with .h, .cpp, .hpp, and CMakeLists.txt extensions are governed by the MIT License. All other files, including but not limited to how_to_make_your_M:N_scheduler.md, all .md files under the docs folder, project assets, diagrams, and this README, are governed by the CC BY-NC-SA 4.0 License (Commercial Use Strictly Prohibited).</p>
+</blockquote>
+<hr>
+<div><h2> Key Features</h2><a href="#-key-features"></a></div>
+<ul>
+<li><strong> M:N Threading Model</strong>: Maps M coroutines to execute on N kernel threads, fully utilizing multi-core performance.</li>
+<li><strong> Work-Stealing Scheduling</strong>: Based on the <strong>Chase-Lev Lock-Free Deque</strong>. When a thread is idle, it automatically "steals" tasks from the tail of other busy threads' queues, achieving load balancing.</li>
+<li><strong> EBR (Epoch-Based Reclamation)</strong>: Implements a memory safe reclamation mechanism in lock-free programming, solving the ABA problem and ensuring that Use-After-Free does not occur during expansion or node deletion.</li>
+<li><strong> Cooperative Synchronization Primitives</strong>:
+<ul>
+<li><strong>AsyncMutex</strong>: Based on <strong>Baton Passing</strong> technology, transfers ownership of the lock directly upon wakeup, avoiding the thundering herd effect.</li>
+<li><strong>Channel</strong>: Implements the CSP (Communicating Sequential Processes) model, supporting buffered and unbuffered modes, utilizing <pre><code>bool await_suspend</code></pre> to optimize context switching.</li>
+</ul>
+</li>
+<li><strong> High-Performance Network I/O</strong>:
+<ul>
+<li><strong>Reactor Pattern</strong>: Encapsulates <pre><code>epoll</code></pre> (Linux) and <pre><code>kqueue</code></pre> (macOS/BSD).</li>
+<li><strong>Zero-Copy HTTP</strong>: Zero-copy parser utilizing <pre><code>std::string_view</code></pre> to operate directly on the receive buffer, avoiding memory allocation.</li>
+<li><strong>Stream Processing</strong>: Supports coroutine stream file upload/download with constant memory usage (8KB).</li>
+</ul>
+</li>
+<li><strong> Efficient Sleep Mechanism</strong>: Implements <pre><code>Parker</code></pre> based on <pre><code>Atomic Wait</code></pre> (Futex), thoroughly solving the Lost Wakeup problem.</li>
+</ul>
+<hr>
+<div><h2>Performance Analysis (All based on local MacBook M1 Air)</h2><a href="#performance-analysis-all-based-on-local-macbook-m1-air"></a></div>
+<p>Under a simple web backend <a href="/lixiasky-back/tiny_coro-build_your_own_MN_scheduler/blob/main/src/simple_http_web.cpp">simple_http_web.cpp</a> written based on this framework, the local loopback </p><pre><code>wrk</code></pre> test achieved a QPS of <strong>186,045</strong>, and passed all local tests including ASAN and TSAN.<p></p>
+<p><a target="_blank" href="/lixiasky-back/tiny_coro-build_your_own_MN_scheduler/blob/main/assets/example_test.png"><img src="/lixiasky-back/tiny_coro-build_your_own_MN_scheduler/raw/main/assets/example_test.png" alt="Screenshot Example"></a></p>
+<p>Of course, we also implemented a concise Go code based on the same test logic -- <a href="/lixiasky-back/tiny_coro-build_your_own_MN_scheduler/blob/main/src/main.go">main.go</a>, which achieved a QPS of <strong>193,587</strong> under the same environment's local loopback </p><pre><code>wrk</code></pre> test.<p></p>
+<p><a target="_blank" href="/lixiasky-back/tiny_coro-build_your_own_MN_scheduler/blob/main/assets/go_test.png"><img src="/lixiasky-back/tiny_coro-build_your_own_MN_scheduler/raw/main/assets/go_test.png" alt="Screenshot Example"></a></p>
+<blockquote>
+<p>This is not surprising news. Golang has been deeply optimized by Google and deeply integrated with the operating system, so this result is expected. At the same time, my test environment is my local machine. The socket errors reported by </p><pre><code>wrk</code></pre> should actually be a physical phenomenon caused jointly by <strong>OS bottlenecks</strong> and <strong>test tool behavior</strong>, rather than a logical bug. When the system is on the edge of "port exhaustion" or "denial of service," the behavior of the TCP stack becomes unstable. To reclaim resources, the operating system might send RST (Reset) packets directly to connections that seem "stuck" or at the "tail end," instead of a graceful FIN.<p></p>
+</blockquote>
+<div><h2> Architecture</h2><a href="#-architecture"></a></div>
+<section> <div> <div> <pre>graph TD User["User Coroutine Task"] --&gt;|spawn| Scheduler subgraph Core_Runtime ["Core Runtime"] Scheduler --&gt;|Assign| Worker1["Worker Thread 1"] Scheduler --&gt;|Assign| Worker2["Worker Thread 2"] Worker1 &lt;--&gt;|"Work Stealing"| Worker2 Worker1 --&gt;|Owns| LQ1["Local Queue (Lock-Free)"] Worker2 --&gt;|Owns| LQ2["Local Queue (Lock-Free)"] Scheduler --&gt;|Owns| GQ["Global Queue (Mutex)"] end subgraph Reactor_IO ["Reactor / IO"] Worker1 --&gt;|Register Event| Poller["Poller (epoll/kqueue)"] Poller --&gt;|Callback/Wakeup| Worker1 TimerHeap["Min-Heap Timer"] --&gt;|Timeout| Poller end
+</pre> </div> </div> <span> <span> <span>Loading</span>
+</span> </span>
+</section> <div><h3>Core Component Interaction</h3><a href="#core-component-interaction"></a></div>
+<ol>
+<li><strong>Task</strong>: The return object of a coroutine, responsible for lifecycle management (reference counting). Uses <pre><code>detach()</code></pre> to transfer ownership to the scheduler.</li>
+<li><strong>Scheduler</strong>: The "brain" of the system. Responsible for starting the Worker thread pool and maintaining the global queue.</li>
+<li><strong>Worker</strong>: The "muscle" of the system. Each Worker binds to a system thread and runs a <pre><code>run_once()</code></pre> loop: Prioritize local queue -&gt; Check global queue -&gt; Steal from other Workers -&gt; Sleep (Park).</li>
+<li><strong>EBR Manager</strong>: The "night watchman" of the system. Monitors the global Epoch to ensure that when the lock-free queue expands, old memory is only released after all threads have left the critical section.</li>
+</ol>
+<hr>
+<div><h2> Quick Start</h2><a href="#-quick-start"></a></div>
+<div><h3>Please refer to <a href="/lixiasky-back/tiny_coro-build_your_own_MN_scheduler/blob/main/src/some_examples.txt">some_examples</a> and <a href="/lixiasky-back/tiny_coro-build_your_own_MN_scheduler/blob/main/docs/API.md">API</a></h3><a href="#please-refer-to-some_examples-and-api"></a></div>
+<hr>
+<div><h2> Deep Dive</h2><a href="#-deep-dive"></a></div>
+<div><h3>1. Why do we need EBR (Epoch-Based Reclamation)?</h3><a href="#1-why-do-we-need-ebr-epoch-based-reclamation"></a></div>
+<p>In lock-free programming (like </p><pre><code>StealQueue</code></pre>), when one thread is reading node A, another thread might delete A and free the memory. If the system immediately reuses this memory, the reading thread will crash or read dirty data.
+<strong>tiny_coro</strong> introduces EBR:<p></p>
+<ul>
+<li>Each thread maintains a local Epoch.</li>
+<li>The global Epoch advances only after all active threads have caught up.</li>
+<li>Memory is truly <pre><code>delete</code></pre>d only when the global Epoch has advanced by two generations (G-2).</li>
+</ul>
+<div><h3>2. Optimization Details of Lock-Free Queue</h3><a href="#2-optimization-details-of-lock-free-queue"></a></div>
+<p>The </p><pre><code>StealQueue</code></pre> in <pre><code>include/queue.h</code></pre> adopts the <strong>Chase-Lev</strong> algorithm:<p></p>
+<ul>
+<li><strong><pre><code>alignas(64)</code></pre></strong>: Prevents <pre><code>top</code></pre> and <pre><code>bottom</code></pre> pointers from being in the same cache line, avoiding False Sharing.</li>
+<li><strong>Memory Fences</strong>: Uses <pre><code>seq_cst</code></pre> barriers in <pre><code>pop</code></pre> operations, following the Dekker algorithm principle to prevent data races when only one element remains in the queue.</li>
+</ul>
+<div><h3>3. Extreme Speed Synchronization Primitives</h3><a href="#3-extreme-speed-synchronization-primitives"></a></div>
+<p></p><pre><code>include/async_mutex.h</code></pre> and <pre><code>include/channel.h</code></pre> utilize the feature of <pre><code>await_suspend</code></pre> returning <pre><code>bool</code></pre>:<p></p>
+<ul>
+<li><strong>Try-Lock</strong>: Before entering suspension logic, try to acquire the lock or read/write the buffer first.</li>
+<li><strong>Fast Path</strong>: If successful, return <pre><code>false</code></pre> directly. The coroutine <strong>does not suspend</strong> and continues execution immediately. This is orders of magnitude faster than the traditional "Suspend -&gt; Put into Queue -&gt; Scheduler Wakeup".</li>
+</ul>
+<hr>
+<div><h2> Directory Structure</h2><a href="#-directory-structure"></a></div>
+<div><pre><code>.
+├── include/
+│ ├── scheduler.h # Scheduler Core (Scheduler, Reactor, Worker)
+│ ├── task.h # Coroutine Handle Encapsulation (Promise, Reference Counting)
+│ ├── socket.h # Asynchronous Socket Encapsulation
+│ ├── queue.h # Two-Level Queue (GlobalQueue + StealQueue)
+│ ├── ebr.h # Memory Reclamation (Epoch-Based Reclamation)
+│ ├── parker.h # Thread Sleep/Wakeup (Atomic Wait)
+│ ├── timer.h # Timer (Min-Heap)
+│ ├── poller.h # I/O Multiplexing (epoll/kqueue)
+│ ├── async_mutex.h # Asynchronous Mutex
+│ ├── channel.h # CSP Channel
+│ └── http/
+│ ├── http_parser.h # HTTP Parsing (Zero-Copy)
+│ └── http_server.h # HTTP Server Logic
+└── README.md
+</code></pre></div>
+<hr>
+<div><h2> Build &amp; Run</h2><a href="#-build--run"></a></div>
+<p>This project depends only on the standard C++20 library and system APIs (Linux/macOS).</p>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
+<ul>
+<li><strong>Compiler</strong>: GCC 10+ or Clang 11+ (Must support C++20 <pre><code>&lt;coroutine&gt;</code></pre>)</li>
+<li><strong>System</strong>: Linux (epoll) or macOS (kqueue)</li>
+</ul>
+<div><h3>Build Instructions</h3><a href="#build-instructions"></a></div>
+<div><pre>mkdir build <span>&amp;&amp;</span> <span>cd</span> build
+cmake ..
+make -j4</pre></div>
+<hr>
+<div><h2> Acknowledgements &amp; References</h2><a href="#-acknowledgements--references"></a></div>
+<ul>
+<li><strong>C++20 Coroutines</strong>: The foundation of the core mechanism.</li>
+<li><strong>Tokio (Rust)</strong>: Inspiration source for Work-Stealing and Reactor design.</li>
+<li><strong>Go Runtime</strong>: Design reference for the M:N model and Channel.</li>
+<li><strong>picohttpparser</strong>: High-performance underlying library for HTTP parsing. (Note: The coroutine scheduler itself is dependency-free; this dependency is only to provide basic HTTP methods and is unrelated to the core architecture).</li>
+</ul>
+<div><h2>Why Write This Project</h2><a href="#why-write-this-project"></a></div>
+<ul>
+<li><strong>The main reason for writing this project is to allow more people to learn the underlying logic of coroutines, rather than treating it as black magic. It will not replace any existing frameworks, but it will be a very good educational project. The code is extremely minimal, likely around 1000 lines barring accidents, but I have configured corresponding documentation explanations for every file.</strong></li>
+</ul>
+<div><h2>How to Start Learning</h2><a href="#how-to-start-learning"></a></div>
+<ul>
+<li><strong>Very simple. If you are a beginner, click this link how_to_make_your_M:N_scheduler.md, follow this document, and start learning according to the instructions. You don't need any foundation, just basic C++ syntax knowledge. The entire tutorial is easy to understand. If you are very familiar with coroutines and just curious about this project, you can directly open the <pre><code>docs</code></pre> folder and view as needed. Each module is independent and has corresponding source code to view.</strong></li>
+</ul>
+<div><h2>Why Are There Few Commits</h2><a href="#why-are-there-few-commits"></a></div>
+<ul>
+<li><strong>The reason is very realistic. The difficulty of this project is not small, especially the need to explain it clearly. The development process was entirely local and refactored many times. This repository is the version after the last purification and refactoring in a new folder, so there are few commits. The complete development time for the entire project should be around 6 to 8 months.</strong></li>
+</ul>
+<div><h2>Why is there no version number?</h2><a href="#why-is-there-no-version-number"></a></div>
+<ul>
+<li><strong>It’s actually quite simple. In my view, version numbers are used to track project iterations. However, this project is purely for educational purposes—or at least, that is my goal. I consider the teaching content to be complete as it is. Even if issues arise, they shouldn't require major changes, so I decided not to include a version number.</strong></li>
+</ul>
+<div><h2>What to Do If You Encounter Learning Problems</h2><a href="#what-to-do-if-you-encounter-learning-problems"></a></div>
+<ul>
+<li><strong>I very much welcome you to raise any issues you encounter in the <pre><code>issue</code></pre> section. As long as it is unrelated to religion, politics, culture, privacy, etc., and only involves technical issues, I am very happy to answer. Of course, finding me via email will be faster. If you are in a hurry, my email is at the end of the article.</strong></li>
+<li><strong>Note: The code in this project is only applicable to macOS and Linux. It is best to learn on macOS to get the development environment closest to the author's. Windows users please use a virtual machine or WSL2.</strong></li>
+</ul>
+<div><h4>Finally, corrections and advice on this project are very welcome. Due to the high density of the project and the need to write a lot of documentation, omissions are inevitable. I welcome everyone to be tolerant and propose corrections. The sole goal of this project is just to let more people understand the underlying logic of coroutines and how to use C++20 coroutines.**</h4><a href="#finally-corrections-and-advice-on-this-project-are-very-welcome-due-to-the-high-density-of-the-project-and-the-need-to-write-a-lot-of-documentation-omissions-are-inevitable-i-welcome-everyone-to-be-tolerant-and-propose-corrections-the-sole-goal-of-this-project-is-just-to-let-more-people-understand-the-underlying-logic-of-coroutines-and-how-to-use-c20-coroutines"></a></div>
+<p>If you want to contact me, here is my email: <a href="mailto:lixia.chat@outlook.com">lixia.chat@outlook.com</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

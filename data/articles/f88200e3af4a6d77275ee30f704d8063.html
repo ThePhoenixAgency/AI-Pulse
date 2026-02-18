@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AIR Blackbox Gateway — Tamper-Evident Audit Trails for Every LLM Call</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>AIR Blackbox Gateway — Tamper-Evident Audit Trails for Every LLM Call</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 10:42:09 PM | <a href="https://github.com/nostalgicskinco/air-blackbox-gateway" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div> <nav> <p><span>■</span> AIR Blackbox </p> </nav> <div> <p><span></span> Open Source · Apache 2.0 </p> <h2> Every LLM call.<br> <span>Recorded. Encrypted. Provable.</span> </h2> <p> Drop-in reverse proxy that creates tamper-evident audit trails for every API call to OpenAI, Anthropic, or any LLM provider. Zero code changes. Full compliance. SOC 2 &amp; ISO 27001 ready. </p> </div> <div> <p><span>$</span> docker compose up -d <span>click to copy</span> </p>
+</div> <section> <p>The Problem</p> <h2>Your AI is making decisions.<br>Can you prove what it said?</h2> <p> Every company using LLM APIs has the same blind spot. Calls go out. Responses come back. Nothing in between is recorded, verifiable, or auditable. </p> <div> <div> <p></p> <h3>No Audit Trail</h3> <p>When a regulator asks "what did your AI tell that customer?", you're digging through logs that don't exist. OpenAI doesn't store your prompts for you.</p> </div> <div> <p></p> <h3>Plaintext API Keys in Transit</h3> <p>Every developer on your team has the API key. Every request carries it in cleartext. One leaked key = unlimited spend on your dime.</p> </div> <div> <p></p> <h3>Zero Replay Capability</h3> <p>Model got updated? Output changed? Good luck proving what the old version said. Without recorded request/response pairs, you can't reproduce anything.</p> </div> </div>
+</section> <section> <p>How It Works</p> <h2>One line change. Complete coverage.</h2> <p> Point your app at the gateway instead of the provider. That's it. Everything else is automatic. </p> <div> <div> <p>1</p> <div> <h3>Your App Sends a Request</h3> <p>Change your base URL from <code>api.openai.com</code> to <code>localhost:8080</code>. Same SDK. Same code. Same everything.</p> </div> </div> <div> <p>2</p> <div> <h3>Gateway Authenticates &amp; Proxies</h3> <p>The gateway checks your gateway key, forwards the request to the upstream provider, and streams the response back in real-time. Sub-millisecond overhead.</p> </div> </div> <div> <p>3</p> <div> <h3>AIR Record Created (Background)</h3> <p>A tamper-evident <strong>.air.json</strong> record is written asynchronously. Contains: request, response, model, tokens, timestamp, run ID. Never blocks your response.</p> </div> </div> <div> <p>4</p> <div> <h3>Secrets Vault-Encrypted</h3> <p>API keys and auth headers are stripped from the AIR record and encrypted separately. Even if someone gets the audit file, they can't extract credentials.</p> </div> </div> </div>
+</section> <section> <p>Features</p> <h2>Built for production. Not a weekend hack.</h2> <div> <div> <p>Security</p> <h3>Gateway-Level Auth</h3> <p>X-Gateway-Key header authentication. Your upstream API keys never leave the server. Developers hit the gateway, not the provider.</p> </div> <div> <p>Security</p> <h3>Encrypted Vault</h3> <p>Secrets are AES-encrypted and stored in a separate vault (local or S3-compatible). AIR records contain zero plaintext credentials.</p> </div> <div> <p>Performance</p> <h3>Non-Blocking Writes</h3> <p>Audit records write in background goroutines. Vault writes are async. Your response latency is the provider's latency. Period.</p> </div> <div> <p>Performance</p> <h3>SSE Streaming</h3> <p>Full support for streaming responses (Server-Sent Events). Tokens stream to your app in real-time while the gateway records the complete response.</p> </div> <div> <p>Compliance</p> <h3>Tamper-Evident Records</h3> <p>Each AIR record includes cryptographic hashes. If anyone modifies a record after the fact, the hash breaks. Provable integrity.</p> </div> <div> <p>Compliance</p> <h3>Replay &amp; Diff</h3> <p>Replay recorded requests against current models. Compare outputs. Detect when a model update changed behavior. Regression testing for AI.</p> </div> <div> <p>Trust Layer</p> <h3>Cryptographic Audit Chain</h3> <p>Every AIR record is linked via HMAC-SHA256 into a tamper-proof chain. Modify any record and the chain breaks. Blockchain-grade integrity without the blockchain.</p> </div> <div> <p>Trust Layer</p> <h3>SOC 2 &amp; ISO 27001 Mapping</h3> <p>Automatic compliance evaluation against 22 controls across SOC 2 Trust Service Criteria and ISO 27001 Annex A. Pass/fail status based on your live configuration.</p> </div> <div> <p>Trust Layer</p> <h3>Evidence Export for Regulators</h3> <p>One API call generates a signed evidence package: audit chain, compliance report, and HMAC attestation. Hand it to your auditor as-is.</p> </div> <div> <p>Developer Experience</p> <h3>Docker Compose Ready</h3> <p>One command to run. No MinIO dependency required. Works with local filesystem or S3-compatible storage. Your choice.</p> </div> <div> <p>Developer Experience</p> <h3>Provider Agnostic</h3> <p>Works with any OpenAI-compatible API. OpenAI, Anthropic (via proxy), Azure OpenAI, local models, custom endpoints. Same format.</p> </div> </div>
+</section> <section> <p>Architecture</p> <h2>Simple by design</h2> <div> <div> <h4>Your App</h4> <p>SDK / HTTP client</p> </div> <p>→</p> <div> <h4>AIR Gateway</h4> <p>Auth + Record + Proxy</p> </div> <p>→</p> <div> <h4>LLM Provider</h4> <p>OpenAI / Anthropic / etc</p> </div> </div> <div> <div> <h4>AIR Records</h4> <p>Tamper-evident JSON</p> </div> <p>+</p> <div> <h4>Secret Vault</h4> <p>AES-encrypted keys</p> </div> <p>+</p> <div> <h4>Trust Layer</h4> <p>HMAC chain + compliance</p> </div> </div>
+</section> <section> <p>Who It's For</p> <h2>If you're calling an LLM API,<br>you probably need this.</h2> <div> <div> <p>Healthcare</p> <h3>AI-Assisted Clinical Decisions</h3> <p>When your AI suggests a diagnosis or treatment path, regulators will want to see exactly what was asked and what was returned. AIR gives you that record, encrypted and timestamped.</p> </div> <div> <p>Financial Services</p> <h3>Algorithmic Compliance</h3> <p>Trading desks and advisory platforms using LLMs for research or recommendations need audit trails that prove what the model said — not what someone remembers it said.</p> </div> <div> <p>Enterprise / SaaS</p> <h3>Customer-Facing AI Features</h3> <p>Building a chatbot? An AI assistant? When a customer disputes what your AI told them, you need receipts. Every conversation, every token, every timestamp.</p> </div> </div>
+</section> <section> <p>Integration</p> <h2>Change one line. That's the integration.</h2> <div>
+<pre>client = OpenAI( <span>api_key</span>=<span>"sk-..."</span>, <span>base_url</span>=<span>"https://api.openai.com/v1"</span>
+) client = OpenAI( <span>api_key</span>=<span>"sk-..."</span>, <span>base_url</span>=<span>"http://localhost:8080/v1"</span>, <span>default_headers</span>={<span>"X-Gateway-Key"</span>: <span>"your-gateway-key"</span>}
+)</pre> </div>
+</section> <section> <p>By The Numbers</p> <h2>Lightweight. Auditable. Open.</h2> <div> <div> <h3>&lt;1ms</h3> <p>Added latency per request</p> </div> <div> <h3>0</h3> <p>Code changes to your app</p> </div> <div> <h3>22</h3> <p>Compliance controls mapped (SOC 2 + ISO 27001)</p> </div> <div> <h3>82</h3> <p>Tests passing across 5 layers</p> </div> </div>
+</section> <div> <h2>Your AI calls deserve a <span>black box</span>.</h2> <p> Planes have them. Servers have them. Your LLM API calls should too.<br> Star the repo. Deploy the gateway. Sleep better. </p> </div> </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

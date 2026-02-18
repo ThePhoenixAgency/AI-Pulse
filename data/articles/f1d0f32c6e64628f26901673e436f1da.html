@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AccessLint — iOS Accessibility Analysis at Build Time</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>AccessLint — iOS Accessibility Analysis at Build Time</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 10:14:34 PM | <a href="https://accesslint.app/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div> <nav> <div> <p><img src="https://accesslint.app/logo.png" alt="AccessLint"><span>Access</span>Lint</p> </div>
+</nav> <div> <p><img src="https://accesslint.app/logo.png" alt="AccessLint logo"></p><h2>Catch iOS accessibility violations at build time, not after release.</h2> <p>25 rules. SwiftUI + UIKit. WCAG-mapped. Start free, scale with your team.</p> <div> <div> <p><span>Terminal — accesslint</span> </p></div> <div>
+<p><span>$</span> <span>accesslint analyze ./Sources</span></p><p>
+<span>AccessLint v1.3.0</span>
+<br><span>Discovered 3 Swift files</span></p><p>
+<span>AccessLint Analysis Complete</span>
+<br><span>============================</span>
+<br>Files analyzed: 3 &nbsp; Rules run: <span>10</span> <span>(Free tier)</span> &nbsp; Duration: 0.01s
+</p><p>
+<span>Findings: 12</span>
+<br>&nbsp;&nbsp;<span>[MAJOR]</span> Major: 5 &nbsp;&nbsp;<span>[MINOR]</span> Minor: 6 &nbsp;&nbsp;<span>[INFO]</span> Info: 1
+</p><p>
+<span>Top issues:</span>
+<br>&nbsp;&nbsp;<span>[MAJOR]</span> <span>[A11Y.SWIFTUI.MISSING_LABEL]</span> Button missing accessibility label
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>HomeView.swift:24</span>
+<br>&nbsp;&nbsp;<span>[MAJOR]</span> <span>[A11Y.SWIFTUI.MISSING_TRAITS]</span> Interactive element missing button trait
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>HomeView.swift:30</span>
+<br>&nbsp;&nbsp;<span>[MAJOR]</span> <span>[A11Y.UIKIT.HIDDEN_BUT_ACCESSIBLE]</span> Hidden view still accessible
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>SettingsViewController.swift:28</span></p><p>
+<span> 9 additional issues found by 15 paid rules.</span>
+<br><span>&nbsp;&nbsp; Upgrade to Team ($19.99/mo) to unlock all 25 rules</span><span></span></p></div> </div> </div> <div> <p>See What It Catches</p> <h2>Your code on the left. The finding on the right.</h2> <p>AccessLint reads your Swift source files and flags accessibility violations with exact line numbers, severity, fix suggestions, and WCAG references.</p> <div> <div> <p><span>20</span><span>var</span> body: <span>some</span> <span>View</span> {
+<br><span>21</span>&nbsp;&nbsp;<span>VStack</span> {
+<br><span>22</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>Text</span>(<span>"Welcome"</span>)
+<br><span>23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span>font</span>(.<span>system</span>(size: <span>24</span>))
+<br><span><span>24</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>Button</span>(action: checkout) {</span>
+<br><span><span>25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Image</span>(systemName: <span>"cart"</span>)</span>
+<br><span><span>26</span>&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+<br><span>27</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<br><span>28</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<br><span>29</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<br><span>30</span>&nbsp;&nbsp;}
+<br><span>31</span>} </p> </div> <div> <div> <p><span>MAJOR</span> <span>A11Y.SWIFTUI.MISSING_LABEL</span></p><p>Button missing accessibility label</p> <p>This Button contains non-text content (like an Image) but does not have an accessibility label. VoiceOver users will not know what this button does.</p> <div> <p>Suggested fix</p><p> .accessibilityLabel("Add to cart") </p></div> <p>WCAG 4.1.2 — Name, Role, Value (Level A)</p> </div> <div> <p><span>MINOR</span> <span>A11Y.SWIFTUI.FIXED_FONT</span></p><p>Fixed font size detected</p> <p>Using .font(.system(size:)) prevents Dynamic Type scaling. Users who set larger text sizes won't see your changes.</p> <div> <p>Suggested fix</p><p> .font(.title) <span>// or .font(.system(.title))</span> </p></div> <p>WCAG 1.4.4 — Resize Text (Level AA)</p> </div> </div> </div> </div> <div> <p>How It Works</p> <h2>Three steps to accessible iOS code.</h2> <p>Install the CLI, point it at your source directory, and enforce in CI. No runtime SDK required.</p> <div> <div> <p>01</p> <h3>Install</h3> <p>Add AccessLint via Homebrew. One command, no dependencies.</p> <p>brew tap synctek-llc/accesslint &amp;&amp; brew install accesslint</p> </div> <div> <p>02</p> <h3>Analyze</h3> <p>Run analysis on your Swift source files. Results in your terminal, Xcode, or CI.</p> <div>
+<p><span>$</span> accesslint analyze ./Sources
+</p><p>
+<span>AccessLint v1.3.0</span>
+<br><span>Discovered 3 Swift files</span></p><p>
+<span>Findings: 12</span>
+<br>&nbsp;&nbsp;<span>[MAJOR]</span> Major: 5
+<br>&nbsp;&nbsp;<span>[MINOR]</span> Minor: 6
+<br>&nbsp;&nbsp;<span>[INFO]</span>&nbsp; Info: 1
+</p><p>
+<span>Duration: 0.01s</span></p></div> </div> <div> <p>03</p> <h3>Enforce</h3> <p>Add the GitHub Action to your CI pipeline. Block PRs that introduce violations.</p> </div> </div> </div> <div> <p>Free vs Team</p> <h2>Same code. Different coverage.</h2> <p>Free catches the obvious issues. Team catches the ones that fail accessibility audits.</p> <div> <div> <p>Free — 10 Rules</p> <h3>Good baseline</h3> <p>12</p> <p>findings from 10 rules</p> <p> Catches the essentials: missing labels on buttons and images, fixed fonts, views hidden but still in the accessibility tree, and interactive elements without button traits. </p> <div> <p>Rules included</p> <p> MISSING_LABEL · IMAGE_DECORATIVE · MISSING_TRAITS · FIXED_FONT · SCREEN_TITLE · BUTTON_MISSING_LABEL · HIDDEN_BUT_ACCESSIBLE · FIXED_FONT_DYNAMIC_TYPE · <span>+ 2 more</span> </p> </div> </div> <div> <p>Team — All 25 Rules</p> <h3>Full coverage</h3> <p>21</p> <p>findings from 25 rules</p> <p> Everything in Free, plus heading structure, label-in-name mismatches, reduce motion, touch target sizes, orientation locks, accessibility hints, and meaningful names. </p> </div> </div> </div> <div> <p>Pricing</p> <h2>Start free. Scale when you need to.</h2> <p>10 rules, forever free. Unlock the full rule set and team features when you're ready.</p> <div> <div> <h3>Free</h3> <p>"I just want to know if my buttons have labels."</p> <p>$0 <span>forever</span></p> <p>For solo developers shipping accessible side projects</p> <ul> <li><strong>10 rules</strong> — covers missing labels, broken images, fixed fonts</li> <li>SwiftUI + UIKit support</li> <li>Terminal output with severity + line numbers</li> <li>Local baseline comparison</li> <li>CI exit codes (0=pass, 1=warn, 2=fail)</li> <li>WCAG-mapped diagnostics</li> <li>1 project</li> </ul> <p> MISSING_LABEL · IMAGE_DECORATIVE · MISSING_TRAITS · FIXED_FONT · SCREEN_TITLE · BUTTON_MISSING_LABEL · HIDDEN_BUT_ACCESSIBLE · FIXED_FONT_DYNAMIC_TYPE · UIKIT.MISSING_TRAITS · UIKIT.IMAGE_DECORATIVE </p> <p><a href="#install">Install Free</a> </p></div> <div> <p>Most Popular</p> <h3>Team</h3> <p>"Nobody introduces accessibility regressions on my watch."</p> <p>$19.99 <span>/ month</span></p> <p>All 25 rules + CI integration for teams that ship fast</p> <ul> <li><strong>All 25 rules</strong> — heading structure, touch targets, motion, orientation</li> <li><strong>JSON + Markdown reports</strong> for CI pipelines and AI agents</li> <li>Xcode-compatible output (inline warnings in build logs)</li> <li>Cloud baselines — track progress across branches</li> <li>Historical trend dashboards</li> <li>Slack notifications on regressions</li> <li>Up to 10 projects</li> </ul> </div> <div> <h3>Enterprise</h3> <p>"We need WCAG AA documentation for our next audit."</p> <p>$49.99 <span>/ month</span></p> <p>For compliance teams at healthcare, fintech, and government apps</p> <ul> <li>Everything in Team</li> <li><strong>WCAG AA audit-ready reports</strong></li> <li><strong>Custom rules</strong> for your design system</li> <li>WCAG preset configs (A, AA, AAA)</li> <li>Unlimited projects</li> <li>SSO / SAML</li> <li>SLA guarantee</li> <li>Priority support</li> </ul> </div> </div> <div> <table> <thead> <tr> <th>Feature</th> <th>Free</th> <th>Team</th> <th>Enterprise</th> </tr> </thead> <tbody> <tr> <td>Rules</td> <td>10</td> <td>25</td> <td>25 + custom</td> </tr> <tr> <td>SwiftUI + UIKit</td> <td>✓</td> <td>✓</td> <td>✓</td> </tr> <tr> <td>Terminal output</td> <td>✓</td> <td>✓</td> <td>✓</td> </tr> <tr> <td>Xcode inline warnings</td> <td>—</td> <td>✓</td> <td>✓</td> </tr> <tr> <td>JSON output (for AI / MCP)</td> <td>—</td> <td>✓</td> <td>✓</td> </tr> <tr> <td>Markdown reports</td> <td>—</td> <td>✓</td> <td>✓</td> </tr> <tr> <td>PR comments</td> <td>—</td> <td>✓</td> <td>✓</td> </tr> <tr> <td>Baseline comparison</td> <td>Local only</td> <td>Cloud</td> <td>Cloud</td> </tr> <tr> <td>CI exit codes</td> <td>✓</td> <td>✓</td> <td>✓</td> </tr> <tr> <td>WCAG presets (A/AA/AAA)</td> <td>—</td> <td>✓</td> <td>✓</td> </tr> <tr> <td>Trend dashboards</td> <td>—</td> <td>✓</td> <td>✓</td> </tr> <tr> <td>Slack notifications</td> <td>—</td> <td>✓</td> <td>✓</td> </tr> <tr> <td>Custom rules</td> <td>—</td> <td>—</td> <td>✓</td> </tr> <tr> <td>SSO / SAML</td> <td>—</td> <td>—</td> <td>✓</td> </tr> <tr> <td>SLA</td> <td>—</td> <td>—</td> <td>✓</td> </tr> <tr> <td>Projects</td> <td>1</td> <td>10</td> <td>Unlimited</td> </tr> </tbody> </table> </div> </div> <div> <p>Integrations</p> <h2>Works with your tools. And your AI.</h2> <p>Built for humans who code in Xcode and agents that consume JSON. Same analysis engine, multiple output formats.</p> <div> <div> <h3>Xcode</h3> <p>Findings appear as inline warnings and errors in your build log. No context switching.</p> <p>HomeView.swift:24:17: error:<br>[A11Y] Button missing label</p> </div> <div> <h3>Claude / AI Agents</h3> <p>JSON output with structured findings, fix patches, and confidence scores. Built for MCP.</p> <p>{"id": "MISSING_LABEL",<br>&nbsp;"confidence": 0.9,<br>&nbsp;"fix": {"patch": "..."}}</p> </div> <div> <p> &gt;_ </p> <h3>Terminal / CLI</h3> <p>Colored output with severity indicators. Pipe to jq, grep, or your own scripts.</p> <p>$ accesslint analyze ./Sources<br>Findings: 12 — 0.01s</p> </div> </div> </div> <div> <p>Install</p> <h2>Get up and running in seconds.</h2> <p>Multiple installation options. Pick the one that fits your workflow.</p> <div> <div> <h3>Direct Download</h3> <p>Grab the latest binary from GitHub Releases.</p> </div> <div> <h3>GitHub Action</h3> <p>Add to your CI workflow to enforce accessibility on every pull request.</p> <p>name: AccessLint
+on: [pull_request]
+jobs: lint: runs-on: macos-latest steps: - uses: actions/checkout@v4 - uses: SyncTek-LLC/<a href="https://accesslint.app/cdn-cgi/l/email-protection">[email&nbsp;protected]</a> with: path: ./Sources format: github</p> </div> <div> <h3>Swift Package Manager</h3> <p>Add AccessLint as a package dependency in Xcode or Package.swift.</p> </div> </div> </div> </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NVIDIA Nemotron 2 Nano 9B Japanese: 日本のソブリンAIを支える最先端小規模言語モデル</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>NVIDIA Nemotron 2 Nano 9B Japanese: 日本のソブリンAIを支える最先端小規模言語モデル</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 2/17/2026 11:28:52 PM | <a href="https://huggingface.co/blog/nvidia/nemotron-nano-9b-v2-japanese-ja" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/Atsunori"><img alt="Atsunori Fujita's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1615517039409-noauth.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/kyamamoto-nv"><img alt="Kotaro Yamamoto's avatar" src="https://huggingface.co/avatars/1a1d7fb914ce4c70cc9718246f5bb461.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/SnowMasaya"><img alt="Masaya Ogushi's avatar" src="https://huggingface.co/avatars/357cb5580d0e8cd969aa5a5c84bd1526.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/vg1024"><img alt="Vincent Gong's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/65b9c1a9657bc784a24e8ea9/6BEvDvqg5QK9S2Qyfoj0m.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ameyasunilm"><img alt="Ameya Sunil Mahabaleshwarkar's avatar" src="https://huggingface.co/avatars/b5313218c009cf6d3fb8e3a7ac11091a.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/suhara"><img alt="Yoshi Suhara's avatar" src="https://huggingface.co/avatars/311461de0933d7e4a8a222d0e76f3754.svg"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#日本のエンタープライズにおけるslm（小規模言語モデル）の重要性"><strong>日本のエンタープライズにおけるSLM（小規模言語モデル）の重要性</strong></a> <ul></ul> </li><li><a href="#実績ある基盤の活用"><strong>実績ある基盤の活用</strong></a> <ul><li><a href="#nemotron-2-nano-卓越したアーキテクチャ">Nemotron 2 Nano: 卓越したアーキテクチャ</a> <ul></ul> </li><li><a href="#nemotron-personas-japan-高品質な合成データ生成のシードセット">Nemotron-Personas-Japan: 高品質な合成データ生成のシードセット</a> <ul></ul> </li></ul> </li><li><a href="#トレーニングパイプライン"><strong>トレーニングパイプライン</strong></a> <ul><li><a href="#継続事前学習">継続事前学習</a> <ul></ul> </li><li><a href="#sft">SFT</a> <ul></ul> </li><li><a href="#nemotron-nano-9b-v2-japaneseに使用したソフトウェア">Nemotron-Nano-9B-v2-Japaneseに使用したソフトウェア</a> <ul></ul> </li></ul> </li><li><a href="#ベンチマークパフォーマンス"><strong>ベンチマークパフォーマンス</strong></a> <ul></ul> </li><li><a href="#技術的優位性"><strong>技術的優位性</strong></a> <ul></ul> </li><li><a href="#デプロイのオプション"><strong>デプロイのオプション</strong></a> <ul></ul> </li><li><a href="#今すぐ使ってください"><strong>今すぐ使ってください</strong></a> <ul></ul> </li></ul></nav></div><p><a href="https://developer.nvidia.com/nemotron">NVIDIA Nemotron</a>は、オープンモデルだけでなく、データセット、ライブラリ、レシピ、クックブックを提供し、開発者がモデルをカスタマイズし、多様なユースケースや言語に適応できるようにすることでソブリンAIを推進しています。</p>
+<p>本日、NVIDIAは、<a href="https://wandb.ai/llm-leaderboard/nejumi-leaderboard4/reports/Nejumi-LLM-4--VmlldzoxMzc1OTk1MA">Nejumi Leaderboard 4</a>のパラメータ数10B以下において、最先端の性能（SOTA）を達成した <a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2-Japanese">NVIDIA Nemotron-Nano-9B-v2-Japanese</a>を公開しました。</p>
+<p>本モデルは、高度な日本語理解と強力なエージェント機能を、導入しやすい軽量なサイズで実現しており、日本のエンタープライズAI開発における重要なマイルストーンとなります。この成果は、実績ある<a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2">Nemotron-Nano-9B-v2</a>のアーキテクチャと、<a href="https://huggingface.co/datasets/nvidia/Nemotron-Personas-Japan">Nemotron-Personas-Japan</a>によって実現された高品質な日本語合成データ生成（SDG）という、2つの重要な基盤の上に築かれています。</p>
+<p>既に公開済みのNemotron 2 Nanoモデルを日本語向けにカスタマイズすることで、多様なユースケースや言語に対応したカスタム最先端モデルの開発・公開をコミュニティに促すことを目指しています。Nemotronチームは、このカスタマイズから得た知見を今後のNemotronリリースに反映し、日本語における推論能力の強化を図っています。</p>
+<h2> <a href="#日本のエンタープライズにおけるslm（小規模言語モデル）の重要性"> <span></span> </a> <span> <strong>日本のエンタープライズにおけるSLM（小規模言語モデル）の重要性</strong> </span>
+</h2>
+<p><strong>日本のエンタープライズAIにおける重要なギャップ:</strong> 現在の日本のエンタープライズAI環境には、「高度な日本語能力」と「エージェンティックAIとしてのタスク遂行能力」を兼ね備えたSLMがほとんど存在しないという課題があります。これにより、特に以下の点において導入の障壁が生じています。</p>
+<p><strong>オンプレミスでのデプロイ要件:</strong> 機密データを扱う企業では、プライベートネットワーク内でのモデル運用が不可欠です。10B（100億）パラメータ未満のモデルであれば、実用レベルの性能を維持しつつ、インフラ面の導入ハードルを大幅に下げることができます。</p>
+<p><strong>カスタマイズの効率化:</strong> 実証済みのエージェント能力を持つ強力な日本語ベースモデルから開始することで、ファインチューニングのサイクルを短縮できます。基礎能力の構築ではなく、特定のドメインへの適応に計算リソースを集中させることが可能になります。</p>
+<p><strong>エージェント開発の加速:</strong> 本モデルのアーキテクチャと性能により、大規模モデルのようなオーバーヘッドなしに、マルチエージェントシステムや複雑なワークフローの迅速なプロトタイピングが可能になります。</p>
+<h2> <a href="#実績ある基盤の活用"> <span></span> </a> <span> <strong>実績ある基盤の活用</strong> </span>
+</h2>
+<h3> <a href="#nemotron-2-nano-卓越したアーキテクチャ"> <span></span> </a> <span> Nemotron 2 Nano: 卓越したアーキテクチャ </span>
+</h3>
+<p>Nemotron-Nano-9B-v2-Japanese は、英語ベンチマークにおいてサイズ対性能比で卓越した結果を示した NVIDIA Nemotron-Nano-9B-v2 をベースに構築されています。この効率的なアーキテクチャを基盤としてさらなるカスタマイズを実施し、日本語能力を強化しました。本アーキテクチャには以下の特長があります。</p>
+<ul>
+<li>高度な推論能力を実現と最適化されたパラメータ効率 </li>
+<li>多言語適応のための強固な基盤 </li>
+<li>実証済みのエージェントタスク遂行能力</li>
+</ul>
+<p>この検証済みのアーキテクチャを日本語に適応させることで、ベースモデルの強みを維持しつつ、優れた日本語能力を実現しています。</p>
+<h3> <a href="#nemotron-personas-japan-高品質な合成データ生成のシードセット"> <span></span> </a> <span> Nemotron-Personas-Japan: 高品質な合成データ生成のシードセット </span>
+</h3>
+<p>本モデルのデータ戦略は、オープンソース（CC BY 4.0）データセットである「<a href="https://huggingface.co/datasets/nvidia/Nemotron-Personas-Japan">Nemotron-Personas-Japan</a>」を、合成データ生成（SDG）の高品質なシードとして活用することに焦点を当てています。このデータセットは、日本の実世界における人口統計、地理的分布、性格特性の分布に基づき合成生成されたペルソナで構成され、人口の多様性と豊かさを捉えています。こうした文化的に正確なペルソナを基盤として、高度に多様性があり、拡張性・堅牢性に優れたトレーニングパイプラインを構築しました。シードデータの豊富なペルソナ群により、多様なシナリオやニュアンスにわたる合成データセットを効率的に拡張できました。この手法により、拡張データは元のペルソナの厳密な文化的整合性を維持しつつ、最先端トレーニングに必要な規模を達成しています。</p>
+<p>特にNemotron-Nano-9B-v2-Japaneseでは、これらのペルソナをツール呼び出しシナリオにおけるトレーニングデータの生成基盤として活用しました。これにより、モデルが獲得する能力が単なるツール呼び出し機能にとどまらず、文化的に適切な日本語の対話と現実世界のユースケースに根差したものであることが保証されます。</p>
+<p><a href="https://huggingface.co/collections/nvidia/nemotron-personas">Nemotron-Personas collection</a>には、米国、インド、シンガポール、ブラジルのデータセットも含まれており、同じ手法を地域を超えて再現することが可能となっています。</p>
+<h2> <a href="#トレーニングパイプライン"> <span></span> </a> <span> <strong>トレーニングパイプライン</strong> </span>
+</h2>
+<p>Nemotron-Nano-9B-v2-Japaneseは、継続事前学習、合成データ生成、事後学習に至るプロセスを日本語オープンソースコーパスとNVIDIAのNemotronスタックを組み合わせて構築されました。</p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/5fc181c4ea82dd667bb0ffae/uxrGpZ29BTHqQeD0_WQ5I.png"><img alt="training_diagram" src="https://cdn-uploads.huggingface.co/production/uploads/5fc181c4ea82dd667bb0ffae/uxrGpZ29BTHqQeD0_WQ5I.png"></a></p>
+<h3> <a href="#継続事前学習"> <span></span> </a> <span> 継続事前学習 </span>
+</h3>
+<ul>
+<li>Japanese OSS Corpus: Wikipedia, fineweb-2 Japanese, aozorabunko, sip3-ja-general-web-corpus </li>
+<li>Nemotron-CC-v2.1 </li>
+<li>Nemotron-Pretraining-Specialized-v1</li>
+</ul>
+<h3> <a href="#sft"> <span></span> </a> <span> SFT </span>
+</h3>
+<ul>
+<li>Nemotron-Personas-JapanをシードセットとしたTool Callingデータセット </li>
+<li>Nemotron-Post-Training-v3</li>
+</ul>
+<h3> <a href="#nemotron-nano-9b-v2-japaneseに使用したソフトウェア"> <span></span> </a> <span> Nemotron-Nano-9B-v2-Japaneseに使用したソフトウェア </span>
+</h3>
+<ul>
+<li><a href="https://github.com/NVIDIA/Megatron-LM">Megatron-LM</a>: 継続事前学習およびSFT </li>
+<li><a href="https://github.com/NVIDIA-NeMo/Curator">NeMo Curator</a>: データ前処理およびフィルタリング</li>
+</ul>
+<p>モデルの日本語能力を最大化するため、継続事前学習を実施しました。ここでは日本を代表するオープンソースLLMコミュニティである <a href="https://llm-jp.nii.ac.jp/">LLM-jp</a> の資産を最大限に活用しています。同時に<a href="https://huggingface.co/collections/nvidia/nemotron-pre-training-datasets">Nemotron Pre-training Datasets</a>を活用し、モデルのエージェント機能を維持しました。</p>
+<p>SFTに使用したNemotron-Personas-JapanをシードとしたTool Callingデータセットは非常に強力でした。性能向上はツール呼び出しに留まらず、日本語知識、QA、指示追従など多岐に渡りました。さらに、このシードセットが600万のペルソナに基づいて構築されているため、SDGを効果的にスケールさせることができました。これにより、重複を最小限に抑えながら、現実世界の多様なシナリオを網羅することに成功しました。<a href="https://huggingface.co/collections/nvidia/nemotron-personas">Nemotron-Personas</a>コレクションは対象国を拡大しており、日本だけでなく他地域の開発者も同様のアプローチをとることができます。</p>
+<p>モデルのトレーニングは、<a href="https://arxiv.org/abs/2508.14444">Nemotron Nano 2</a>で確立されたトレーニングレシピを継承しています。これにより、トレーニングの不安定性を招くことなくスループットを向上させることができました。</p>
+<p>このアプローチによって、ロバストなツール呼び出し機能とリーズニング能力を維持しながら強力な日本語言語モデルとしての性能を実現しています。</p>
+<h2> <a href="#ベンチマークパフォーマンス"> <span></span> </a> <span> <strong>ベンチマークパフォーマンス</strong> </span>
+</h2>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/5fc181c4ea82dd667bb0ffae/5nuxnXClbAR3GI76KiG51.png"><img alt="leaderboard" src="https://cdn-uploads.huggingface.co/production/uploads/5fc181c4ea82dd667bb0ffae/5nuxnXClbAR3GI76KiG51.png"></a></p>
+<p>Nemotron-Nano-9B-v2-Japanese は、日本で最も包括的なLLM評価プラットフォームである「Nejumi Leaderboard 4」において、10B未満のモデルカテゴリで1位を獲得しました。Nejumi Leaderboard は、以下の領域にわたる約40のベンチマークを通じてモデルを多角的に評価しています。</p>
+<ul>
+<li>基礎的な言語能力: 日本語の理解と生成 </li>
+<li>エージェント能力: コード生成、数学的推論、ツール利用など </li>
+<li>アライメント: 指示追従能力、バイアス、毒性、真実性、堅牢性など</li>
+</ul>
+<p>これらの多次元的な評価により、Nejumi Leaderboard は、日本の環境においてカスタマイズや実運用のためのベースモデルを選定する開発者にとって、信頼できるリファレンスとなっています。</p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/5fc181c4ea82dd667bb0ffae/MfwBo6rVX4MrmsI_8kQpa.png"><img alt="benchmark_summary" src="https://cdn-uploads.huggingface.co/production/uploads/5fc181c4ea82dd667bb0ffae/MfwBo6rVX4MrmsI_8kQpa.png"></a></p>
+<p>ベンチマークの結果は、Nemotron-Nano-9B-v2-Japanese がベースモデルである Nemotron-Nano-9B-v2 に強力な日本語能力を統合できたことを確認できます。これらの改善は、日本語の知識や質問応答能力にとどまらず、ツール呼び出し、コーディング、アライメントなど幅広いタスクに及びます。特筆すべきは、同等サイズの Qwen3-8B を上回り、優れたサイズ対性能比を実現している点です。</p>
+<h2> <a href="#技術的優位性"> <span></span> </a> <span> <strong>技術的優位性</strong> </span>
+</h2>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/5fc181c4ea82dd667bb0ffae/Jozble7RW6oSDRU9ietBv.png"><img alt="throughput" src="https://cdn-uploads.huggingface.co/production/uploads/5fc181c4ea82dd667bb0ffae/Jozble7RW6oSDRU9ietBv.png"></a></p>
+<ul>
+<li>推論の効率性: Nemotron 2 Nano（Transformer-Mamba）のアーキテクチャを継承することで、エッジGPUにデプロイ可能でありながら、オープンソースの代替モデルと比較して最大6倍のスループット向上を実現します。上の図は、Nemotron 2 Nanoの<a href="https://arxiv.org/abs/2508.14444">論文</a>で測定された結果を示しています。 </li>
+<li>コンテキスト処理: 複数回（マルチターン）の会話やツール操作に最適化されています。 </li>
+<li>ツール呼び出しの信頼性: API呼び出しや関数実行のために、強力な構造化データ生成能力を備えています。 </li>
+<li>ファインチューニングの効率性: 手頃な計算インフラでもフルファインチューニングが可能なパラメータ数です。</li>
+</ul>
+<h2> <a href="#デプロイのオプション"> <span></span> </a> <span> <strong>デプロイのオプション</strong> </span>
+</h2>
+<h4> <a href="#直接デプロイ"> <span></span> </a> <span> 直接デプロイ </span>
+</h4>
+<p>高い日本語理解とエージェンティックスキルを必要とするアプリケーションではモデルをそのままデプロイして活用できます。すでに学習済みの能力により、エージェントワークフローへの即時統合をサポートします。Nemotron 2 Nanoでサポートされている推論エンジンはシームレスに移行できます。</p>
+<h4> <a href="#独自ドメインへのカスタマイズ"> <span></span> </a> <span> 独自ドメインへのカスタマイズ </span>
+</h4>
+<p>特定のドメインに特化したファインチューニングのベースとして、Nemotron-Nano-9B-v2-Japaneseを利用できます。ベンチマークで実証された日本語およびエージェンティックタスクでの良い性能は、専門的なアプリケーション開発のための強固な開始点となります。カスタマイズにはNeMo Framework（<a href="https://github.com/NVIDIA-NeMo/Megatron-Bridge">NeMo Megatron-Bridge</a>, <a href="https://github.com/NVIDIA-NeMo/Automodel">NeMo AutoModel</a>, and <a href="https://github.com/NVIDIA-NeMo/RL">NeMo-RL</a>）をご利用いただけます。</p>
+<h2> <a href="#今すぐ使ってください"> <span></span> </a> <span> <strong>今すぐ使ってください</strong> </span>
+</h2>
+<p>日本のAIアプリケーション開発者の皆様は、今すぐ <a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2-Japanese">Nemotron-Nano-9B-v2-Japanese</a> をご利用いただけます。顧客対応エージェント、社内自動化ツール、あるいはドメイン特化型アシスタントなど、どのような用途であっても、本モデルは実運用へのデプロイに求められる優れたサイズ対性能比を提供します。</p>
+<p>Nemotron 2 Nanoの実績あるアーキテクチャと、高品質なデータセットのシードとなる Nemotron-Personas-Japan の組み合わせは、日本のソブリンAI開発における効率的な出発点となるでしょう。</p>
+<p>コミュニティの皆様に、Nemotronモデル、データセット、レシピ、ライブラリをぜひご活用いただき、さらに多くの言語やユースケース向けにNemotronモデルをカスタマイズしていただくことを歓迎します。皆様がどのようなものを構築されるか、楽しみにしています！</p>
+<p><em>Stay up to date on <a href="https://developer.nvidia.com/nemotron">NVIDIA Nemotron</a> by subscribing to <a href="https://www.nvidia.com/en-us/ai-data-science/generative-ai/news/">NVIDIA news</a> and following NVIDIA AI on <a href="https://www.linkedin.com/showcase/nvidia-ai/posts/?feedView=all">LinkedIn</a>, <a href="https://x.com/NVIDIAAIDev">X</a>, <a href="https://www.youtube.com/@NVIDIADeveloper">YouTube</a></em>, <em>and the <a href="https://discord.com/channels/1019361803752456192/1407781691698708682">Nemotron channel</a> on <a href="https://discord.com/invite/nvidiadeveloper">Discord</a>.</em></p>
+<p><em>Access open Nemotron Models on <a href="https://huggingface.co/nvidia/collections?search=nemotron">Hugging Face</a> and a collection of <a href="https://build.nvidia.com/models?filters=publisher%3Anvidia&amp;q=Nemotron">NIM microservices</a> and Developer Examples on <a href="http://build.nvidia.com/">build.nvidia.com</a>.</em> </p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

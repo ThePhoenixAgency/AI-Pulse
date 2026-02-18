@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,9 @@
     Source: PortSwigger Research | Date: 1/28/2025 1:58:28 PM | <a href="https://portswigger.net/research/bypassing-character-blocklists-with-unicode-overflows" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Unicode codepoint truncation - also called a Unicode overflow attack - happens when a server tries to store a Unicode character in a single byte. Because the maximum value of a byte is 255, an overflo</p>
+    <div><div> <div> <p><img alt="Gareth Heyes" src="https://portswigger.net/content/images/profiles/callout_gareth_heyes_114px.png"></p>
+</div> <ul> <li> <p><span></span><strong>Published: </strong>28 January 2025 at 13:58 UTC</p> </li> <li> <p><strong>Updated: </strong>29 January 2025 at 08:10 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/4f/b7/81e7-article-bypass-character-blocklists-with-unicode-overflows.png" alt="A code snippet showing CRLF injection bypass using Unicode overflows"><br></p><p><a href="https://docs.google.com/presentation/d/1jW0o1YO3FNXlXVkAziM_wSGQqRdLP2kmfoBb6mF1bGY/edit#slide=id.g2f056d28156_1_250">Unicode codepoint truncation</a> - also called a <a href="https://portswigger.net/research/splitting-the-email-atom#unicode-overflows">Unicode overflow</a> attack - happens when a server tries to store a Unicode character in a single byte. Because the maximum value of a byte is 255, an overflow can be crafted to produce a specific ASCII character.</p><p>Here are a couple of examples that end with 0x41 which represents A:</p><p><code>0x4e41 0x4f41 0x5041 0x5141</code></p><p>If you perform a modulus operation on the code points above you'll see they produce the character "A":</p> <p><code>String.fromCodePoint(0x4e41 % 256, 0x4f41 % 256, 0x5041 % 256, 0x5141 % 256) // AAAA</code></p><p>It's not only bytes that have this problem, JavaScript itself has a codepoint overflow in the <code>fromCharCode()</code> method. This method allows you to generate a character between 0-0xffff but if you go above this range it will be overflowed and produce a character by the overflow amount.</p> <p><code>String.fromCharCode(0x10000 + 0x31, 0x10000 + 0x33, 0x10000 + 0x33, 0x10000 + 0x37) //1337</code></p><p>The above code uses the hex value 0x10000 which is one above the maximum codepoint supported by the <code>fromCharCode()</code> method. Then I add an overflow to it, in this case the hex for each codepoint of 1337. Then when the overflow occurs it produces 1337.</p> <p>This is being actively used by <a href="https://infosecwriteups.com/6000-with-microsoft-hall-of-fame-microsoft-firewall-bypass-crlf-to-xss-microsoft-bug-bounty-8f6615c47922">bug bounty hunters</a> and was brought to our attention by <a href="https://x.com/ryancbarnett">Ryan Barnett</a>. For everyone's convenience we've added these truncation attacks to <a href="https://portswigger.net/bappstore/3123d5b5f25c4128894d97ea1acc4976">ActiveScan++</a>, thanks to Ryan for the PR and we've created a <a href="https://hackvertor.co.uk/urls/20">Hackvertor tag</a> to help reproduce the characters. Big thanks to my colleague <a href="https://x.com/d4d89704243">Zak</a> who I investigated this with. We've also updated the <a href="https://shazzer.co.uk/unicode-table?fromTo=0x41&amp;highlightsFromTo=">Shazzer unicode table</a> to display potential unicode truncation characters.</p><p><img src="https://portswigger.net/cms/images/4e/e4/3623-article-codepoint-overflow.png" alt="Unicode table show unicode truncation characters"></p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
