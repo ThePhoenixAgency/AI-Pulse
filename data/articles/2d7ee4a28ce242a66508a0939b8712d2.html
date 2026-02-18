@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - CrestNiraj12/TerminalRant: Ranting space for developers that live in terminal</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - CrestNiraj12/TerminalRant: Ranting space for developers that live in terminal</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 4:19:51 AM | <a href="https://github.com/CrestNiraj12/TerminalRant" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>TerminalRant</h1><a href="#terminalrant"></a></div>
+<p>Ranting space for people who live in the terminal.</p>
+<p>TerminalRant is a terminal UI (TUI) client for Mastodon. Read, post, reply,
+moderate, and browse your timelines without leaving your shell.</p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<p>Install (Go 1.25+):</p>
+<div><pre>go install github.com/CrestNiraj12/terminalrant@latest</pre></div>
+<p>Run:</p>
+<div><pre>terminalrant</pre></div>
+<p>On first run, TerminalRant opens your browser for OAuth login and stores auth
+state in </p><pre><code>~/.config/terminalrant</code></pre> by default.<p></p>
+<div><h2>Screenshots</h2><a href="#screenshots"></a></div>
+<p><a target="_blank" href="/CrestNiraj12/TerminalRant/blob/main/screenshots/terminalrant-feed.png"><img src="/CrestNiraj12/TerminalRant/raw/main/screenshots/terminalrant-feed.png" alt="TerminalRant feed view"></a></p> <span>terminalrant-recording.mov</span> <span></span> <div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li>OAuth login</li>
+<li>Feed tabs:
+<ul>
+<li><pre><code>#terminalrant</code></pre></li>
+<li><pre><code>trending</code></pre></li>
+<li><pre><code>following</code></pre> (home timeline from followed users)</li>
+<li>custom hashtag tab (only shown when custom tag differs from <pre><code>terminalrant</code></pre>)</li>
+</ul>
+</li>
+<li>Switch tabs with <pre><code>t</code></pre> (next) and <pre><code>T</code></pre> (previous)</li>
+<li>Hashtag controls:
+<ul>
+<li>Change custom hashtag with <pre><code>H</code></pre></li>
+<li>Hashtags rendered as small capsules in feed/detail</li>
+<li>Feed shows compact tags with <pre><code>+N more</code></pre>, detail shows all tags</li>
+</ul>
+</li>
+<li>Media metadata rendering:
+<ul>
+<li>Feed shows compact media hint (image/video/audio counts + optional alt snippet)</li>
+<li>Detail shows full media list with type, size (if available), alt text, and URL</li>
+</ul>
+</li>
+<li>Phase 2 media previews:
+<ul>
+<li>ANSI image thumbnail preview for the selected post/reply (feed + detail)</li>
+<li>Toggle previews with <pre><code>i</code></pre> (media rows show "preview hidden" when off)</li>
+<li>Open selected media in browser with <pre><code>I</code></pre></li>
+</ul>
+</li>
+<li>Post creation and replies:
+<ul>
+<li>Compose with <pre><code>$EDITOR</code></pre> (<pre><code>p</code></pre> / <pre><code>c</code></pre>) or inline composer (<pre><code>P</code></pre> / <pre><code>C</code></pre>)</li>
+<li>Optimistic posting/reply updates</li>
+</ul>
+</li>
+<li>Post interactions:
+<ul>
+<li>Like/unlike (<pre><code>l</code></pre>)</li>
+<li>Reply (<pre><code>c</code></pre>/<pre><code>C</code></pre>)</li>
+<li>Open URL (<pre><code>o</code></pre>)</li>
+<li>Edit/delete own posts (<pre><code>e</code></pre>/<pre><code>E</code></pre>/<pre><code>d</code></pre>)</li>
+</ul>
+</li>
+<li>Moderation:
+<ul>
+<li>Hide post locally (<pre><code>x</code></pre>)</li>
+<li>Toggle hidden posts (<pre><code>X</code></pre>)</li>
+<li>Hidden posts shown in muted style with <pre><code>HIDDEN</code></pre> label when revealed</li>
+<li>Block selected author (<pre><code>b</code></pre>) with confirmation</li>
+<li>Manage blocked users dialog (<pre><code>B</code></pre>) and unblock with confirmation</li>
+</ul>
+</li>
+<li>Following and profile:
+<ul>
+<li>Follow/unfollow selected author (<pre><code>f</code></pre>) with confirmation</li>
+<li>Followed users are marked with <pre><code>✓</code></pre> beside username</li>
+<li>Open selected author profile (<pre><code>z</code></pre>) to view name, bio, and recent posts</li>
+</ul>
+</li>
+<li>Navigation:
+<ul>
+<li>Feed and detail views with keyboard navigation</li>
+<li>Detail view supports full-page scrolling for long threads</li>
+<li>Parent-thread jump from reply detail (<pre><code>u</code></pre>)</li>
+</ul>
+</li>
+<li>Key help:
+<ul>
+<li>Minimal hints shown inline</li>
+<li>Full key dialog via <pre><code>?</code></pre></li>
+<li><pre><code>q</code></pre> closes dialogs/detail first before quitting from feed root</li>
+</ul>
+</li>
+<li>Persistent UI state:
+<ul>
+<li>Remembers custom hashtag and selected feed tab between runs</li>
+</ul>
+</li>
+</ul>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li>A Mastodon account</li>
+<li>Browser access for OAuth login</li>
+</ul>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><h3>Using go install (Go 1.25+)</h3><a href="#using-go-install-go-125"></a></div>
+<div><pre>go install github.com/CrestNiraj12/terminalrant@latest</pre></div>
+<p>Ensure </p><pre><code>$GOPATH/bin</code></pre> is in your PATH:<p></p>
+<div><pre><span>echo</span> <span><span>'</span>export PATH="$GOPATH/bin:$PATH"<span>'</span></span> <span>&gt;&gt;</span> <span>~</span>/.zshrc
+<span>source</span> <span>~</span>/.zshrc</pre></div>
+<div><h3>Using Homebrew (macOS)</h3><a href="#using-homebrew-macos"></a></div>
+<div><pre>brew tap CrestNiraj12/terminalrant
+brew install --cask terminalrant</pre></div>
+<p>Since the binary is not signed/notarized, remove the quarantine attribute after installation:</p>
+<div><pre>xattr -dr com.apple.quarantine <span><span>$(</span>which terminalrant<span>)</span></span></pre></div>
+<div><h3>Using Scoop (Windows)</h3><a href="#using-scoop-windows"></a></div>
+<div><pre>scoop bucket add terminalrant https://github.com/CrestNiraj12/scoop-terminalrant
+scoop install terminalrant</pre></div>
+<div><h3>Using installer script</h3><a href="#using-installer-script"></a></div>
+<p>Install to default directory:</p>
+<div><pre>curl -fsSL https://raw.githubusercontent.com/CrestNiraj12/terminalrant/main/install.sh <span>|</span> bash</pre></div>
+<p>Install to a custom directory:</p>
+<div><pre>curl -fsSL https://raw.githubusercontent.com/CrestNiraj12/terminalrant/main/install.sh <span>|</span> INSTALL_DIR=<span><span>"</span><span>$HOME</span>/.local/bin<span>"</span></span> bash</pre></div>
+<p>If </p><pre><code>terminalrant</code></pre> is not found after install, add your install directory to <pre><code>PATH</code></pre>:<p></p>
+<div><pre><span>echo</span> <span><span>'</span>export PATH="$HOME/.local/bin:$PATH"<span>'</span></span> <span>&gt;&gt;</span> <span>~</span>/.zshrc
+<span>source</span> <span>~</span>/.zshrc</pre></div>
+<div><h3>Build from source</h3><a href="#build-from-source"></a></div>
+<p>Clone and build locally (Go 1.25+):</p>
+<div><pre>go install ./...</pre></div>
+<p>Or run directly:</p>
+<div><pre>go run <span>.</span></pre></div>
+<div><h3>Verify installation</h3><a href="#verify-installation"></a></div>
+<div><pre>terminalrant --version</pre></div>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>TerminalRant is configured via environment variables:</p>
+<ul>
+<li><pre><code>TERMINALRANT_INSTANCE</code></pre> — Mastodon instance base URL
+<ul>
+<li>Default: <pre><code>https://mastodon.social</code></pre></li>
+</ul>
+</li>
+<li><pre><code>TERMINALRANT_AUTH_DIR</code></pre> — Directory used to store OAuth token/client state
+<ul>
+<li>Default: <pre><code>~/.config/terminalrant</code></pre></li>
+</ul>
+</li>
+<li><pre><code>TERMINALRANT_OAUTH_CALLBACK_PORT</code></pre> — Local callback port for OAuth login
+<ul>
+<li>Default: <pre><code>45145</code></pre></li>
+</ul>
+</li>
+<li><pre><code>TERMINALRANT_HASHTAG</code></pre> — Hashtag to follow (without <pre><code>#</code></pre>)
+<ul>
+<li>Default: <pre><code>terminalrant</code></pre></li>
+</ul>
+</li>
+</ul>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<p>CLI flags:</p>
+<ul>
+<li><pre><code>--version</code></pre>, <pre><code>-v</code></pre>, <pre><code>-version</code></pre> — print build/version info</li>
+<li><pre><code>--help</code></pre>, <pre><code>-h</code></pre> — show usage</li>
+</ul>
+<p>Start the app:</p>
+<div><pre>TERMINALRANT_INSTANCE=<span><span>"</span>https://your.instance<span>"</span></span> terminalrant</pre></div>
+<p>On first run, TerminalRant opens a browser window for OAuth and stores auth
+state under </p><pre><code>TERMINALRANT_AUTH_DIR</code></pre>.<p></p>
+<p>If you prefer running from source:</p>
+<div><pre>TERMINALRANT_INSTANCE=<span><span>"</span>https://your.instance<span>"</span></span> \
+TERMINALRANT_HASHTAG=<span><span>"</span>terminalrant<span>"</span></span> \
+go run <span>.</span></pre></div>
+<div><h3>Key bindings</h3><a href="#key-bindings"></a></div>
+<p>Global:</p>
+<ul>
+<li><pre><code>?</code></pre> — full keymap dialog</li>
+<li><pre><code>ctrl+c</code></pre> — force quit</li>
+<li><pre><code>i</code></pre> — toggle media previews</li>
+<li><pre><code>I</code></pre> — open selected media</li>
+</ul>
+<p>Feed:</p>
+<ul>
+<li><pre><code>j</code></pre>/<pre><code>k</code></pre> or arrow keys — move</li>
+<li><pre><code>enter</code></pre> — open detail</li>
+<li><pre><code>t</code></pre> / <pre><code>T</code></pre> — next/previous tab</li>
+<li><pre><code>H</code></pre> — set custom hashtag</li>
+<li><pre><code>r</code></pre> — refresh</li>
+<li><pre><code>p</code></pre> / <pre><code>P</code></pre> — new post (<pre><code>$EDITOR</code></pre> / inline)</li>
+<li><pre><code>c</code></pre> / <pre><code>C</code></pre> — reply (<pre><code>$EDITOR</code></pre> / inline)</li>
+<li><pre><code>l</code></pre> — like/unlike</li>
+<li><pre><code>e</code></pre> — edit via <pre><code>$EDITOR</code></pre></li>
+<li><pre><code>E</code></pre> — edit inline</li>
+<li><pre><code>d</code></pre> — delete own post (confirmation)</li>
+<li><pre><code>x</code></pre> / <pre><code>X</code></pre> — hide post / toggle hidden posts</li>
+<li><pre><code>b</code></pre> — block selected post author (confirmation)</li>
+<li><pre><code>f</code></pre> — follow/unfollow selected post author (confirmation)</li>
+<li><pre><code>B</code></pre> — blocked users dialog</li>
+<li><pre><code>z</code></pre> — open selected author profile</li>
+<li><pre><code>Z</code></pre> — open your own profile</li>
+<li><pre><code>o</code></pre> — open post URL</li>
+<li><pre><code>g</code></pre> — open creator GitHub</li>
+<li><pre><code>q</code></pre> — quit (only when no dialog/detail is open)</li>
+</ul>
+<p>Detail:</p>
+<ul>
+<li><pre><code>j</code></pre>/<pre><code>k</code></pre> or arrow keys — move/scroll detail page</li>
+<li><pre><code>enter</code></pre> — open selected reply thread</li>
+<li><pre><code>u</code></pre> — open parent post</li>
+<li><pre><code>r</code></pre> — refresh thread</li>
+<li><pre><code>l</code></pre> — like/unlike selected</li>
+<li><pre><code>c</code></pre> / <pre><code>C</code></pre> — reply</li>
+<li><pre><code>f</code></pre> — follow/unfollow selected author (confirmation)</li>
+<li><pre><code>z</code></pre> — open selected author profile</li>
+<li><pre><code>Z</code></pre> — open your own profile</li>
+<li><pre><code>o</code></pre> — open URL</li>
+<li><pre><code>esc</code></pre> / <pre><code>q</code></pre> — back</li>
+</ul>
+<p>Dialogs:</p>
+<ul>
+<li><pre><code>q</code></pre> / <pre><code>esc</code></pre> — close dialog</li>
+<li>Block confirm: <pre><code>y</code></pre>/<pre><code>n</code></pre></li>
+<li>Delete confirm: <pre><code>y</code></pre>/<pre><code>n</code></pre></li>
+<li>Blocked users dialog:
+<ul>
+<li><pre><code>j</code></pre>/<pre><code>k</code></pre> — select user</li>
+<li><pre><code>u</code></pre> — unblock selected (confirmation)</li>
+</ul>
+</li>
+</ul>
+<div><h2>Notes</h2><a href="#notes"></a></div>
+<ul>
+<li><pre><code>#terminalrant</code></pre> is always auto-appended on post/edit/reply if missing.</li>
+<li>For display, HTML returned from Mastodon is stripped for terminal rendering.</li>
+<li>UI state is stored in <pre><code>ui_state.json</code></pre> under <pre><code>TERMINALRANT_AUTH_DIR</code></pre>.</li>
+</ul>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<ul>
+<li><pre><code>terminalrant: command not found</code></pre>
+<ul>
+<li>Add install dir to PATH (<pre><code>~/.local/bin</code></pre> by default) and reload shell.</li>
+</ul>
+</li>
+<li>OAuth callback timeout
+<ul>
+<li>Ensure your browser can access <pre><code>http://127.0.0.1:&lt;port&gt;/callback</code></pre>.</li>
+<li>Optionally set <pre><code>TERMINALRANT_OAUTH_CALLBACK_PORT</code></pre> to a free local port.</li>
+</ul>
+</li>
+<li>Wrong server
+<ul>
+<li>Set <pre><code>TERMINALRANT_INSTANCE="https://your.instance"</code></pre> before launching.</li>
+</ul>
+</li>
+</ul>
+<div><h2>Development</h2><a href="#development"></a></div>
+<ul>
+<li>Dependencies are managed with Go modules (<pre><code>go.mod</code></pre>, <pre><code>go.sum</code></pre>).</li>
+<li>The UI is implemented with:
+<ul>
+<li><pre><code>github.com/charmbracelet/bubbletea</code></pre></li>
+<li><pre><code>github.com/charmbracelet/bubbles</code></pre></li>
+<li><pre><code>github.com/charmbracelet/lipgloss</code></pre></li>
+</ul>
+</li>
+</ul>
+<div><h3>Testing</h3><a href="#testing"></a></div>
+<ul>
+<li>Run full fast suite (unit + local integration):</li>
+</ul>
+<div><pre>go <span>test</span> ./...</pre></div>
+<ul>
+<li>Run focused race checks:</li>
+</ul>
+<div><pre>go <span>test</span> -race ./tui/feed ./infra/mastodon</pre></div>
+<ul>
+<li>Generate coverage report:</li>
+</ul>
+<div><pre>go <span>test</span> -coverprofile=coverage.out ./...
+go tool cover -func=coverage.out</pre></div>
+<ul>
+<li>Run optional smoke tests against a real instance:</li>
+</ul>
+<div><pre>TERMINALRANT_BASE_URL=<span><span>"</span>https://your.instance<span>"</span></span> \
+TERMINALRANT_TOKEN=<span><span>"</span>...<span>"</span></span> \
+go <span>test</span> -tags=smoke ./...</pre></div>
+<ul>
+<li>Allow mutating smoke cases (post/delete):</li>
+</ul>
+<div><pre>SMOKE_ALLOW_MUTATION=true \
+TERMINALRANT_BASE_URL=<span><span>"</span>https://your.instance<span>"</span></span> \
+TERMINALRANT_TOKEN=<span><span>"</span>...<span>"</span></span> \
+go <span>test</span> -tags=smoke ./...</pre></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

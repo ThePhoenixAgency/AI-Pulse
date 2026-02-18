@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a CLI Tool to Score Codebase Health -- Here's What I Learned</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built a CLI Tool to Score Codebase Health -- Here's What I Learned</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 6:53:24 AM | <a href="https://dev.to/glue_admin_3465093919ac6b/i-built-a-cli-tool-to-score-codebase-health-heres-what-i-learned-2noh" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Three months ago, I built a CLI tool to score codebase health. I called it <code>codebase-health-score</code> (original, I know). The goal was simple: give a team a single number that represents the overall health of their system.</p> <p>The project started as a weekend hack. It turned into something people actually use. And in the process, I learned that "codebase health" is a much more slippery concept than it initially appeared.</p> <h2> <a name="why-i-built-this" href="#why-i-built-this"> </a> Why I Built This
+</h2> <p>Our team was going through the classic scenario: we had inherited a codebase from an acquisition. It was "messy." But how messy? Nobody could quantify it.</p> <p>When we tried to plan the cleanup work, we'd get debates:</p> <ul>
+<li>"How bad is it really?"</li>
+<li>"Should we refactor X before Y?"</li>
+<li>"Is this codebase maintainable, or do we need a rewrite?"</li>
+</ul> <p>Everyone had opinions. Nobody had data.</p> <p>I thought: what if I built a tool that analyzed the codebase and produced a score? Not a vanity metric, but something that actually correlates to real engineering friction.</p> <h2> <a name="the-challenge-what-actually-determines-health" href="#the-challenge-what-actually-determines-health"> </a> The Challenge: What Actually Determines Health?
+</h2> <p>I quickly discovered that codebase health isn't a single property. It's a combination of properties, all of which matter, and none of which tells the whole story:</p> <h3> <a name="complexity" href="#complexity"> </a> Complexity
+</h3> <p>The first instinct is to measure code complexity: cyclomatic complexity, lines of code per function, nesting depth.<br>
+</p> <div>
+<pre><code><span># Bad complexity example
+</span><span>def</span> <span>process_order</span><span>(</span><span>order_id</span><span>,</span> <span>customer_id</span><span>,</span> <span>apply_discount</span><span>=</span><span>False</span><span>,</span> <span>skip_inventory</span><span>=</span><span>False</span><span>,</span> <span>force_shipping</span><span>=</span><span>None</span><span>,</span> <span>override_price</span><span>=</span><span>None</span><span>,</span> <span>is_internal</span><span>=</span><span>False</span><span>):</span> <span>customer</span> <span>=</span> <span>get_customer</span><span>(</span><span>customer_id</span><span>)</span> <span>if</span> <span>not</span> <span>customer</span><span>:</span> <span>return</span> <span>{</span><span>"</span><span>error</span><span>"</span><span>:</span> <span>"</span><span>Customer not found</span><span>"</span><span>}</span> <span>order</span> <span>=</span> <span>get_order</span><span>(</span><span>order_id</span><span>)</span> <span>if</span> <span>not</span> <span>order</span><span>:</span> <span>return</span> <span>{</span><span>"</span><span>error</span><span>"</span><span>:</span> <span>"</span><span>Order not found</span><span>"</span><span>}</span> <span># ... 200 more lines mixing pricing logic, shipping logic,
+</span> <span># inventory logic, and error handling
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>High complexity correlates with bugs. But it's not perfectly predictive--sometimes simple code is wrong, and sometimes complex code is necessary.</p> <p><strong>Weight in my scoring</strong>: 15%</p> <p>The reason it's not higher: complexity is easy to hide. You can refactor a function from 100 lines to 50 lines by moving the complexity to three other functions. The system-level complexity hasn't improved; it's just been redistributed.</p> <h3> <a name="churn" href="#churn"> </a> Churn
+</h3> <p>Churn is the frequency with which a file or function changes. High-churn code is code that:</p> <ul>
+<li>Is still being figured out</li>
+<li>Has bugs being fixed repeatedly</li>
+<li>Has changing requirements</li>
+<li>Is in the critical path of the system</li>
+</ul> <p>High churn is a strong predictor of future bugs. If a file changes 50 times in a quarter, it probably contains unresolved design decisions.<br>
+</p> <div>
+<pre><code><span># Check churn on a file</span>
+git log <span>--oneline</span> <span>--follow</span> path/to/file.py | <span>wc</span> <span>-l</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>I discovered something interesting: files with high churn are often high-complexity files, and they correlate strongly with production incidents. When we looked at our incident logs and traced them to file-level, the top 5 files by incident involvement were in the top 10 files by churn.</p> <p><strong>Weight in my scoring</strong>: 25%</p> <p>This is why churn matters more than static complexity. Churn tells you where the system is still in flux. Where there's flux, there are bugs.</p> <h3> <a name="contributor-concentration" href="#contributor-concentration"> </a> Contributor Concentration
+</h3> <p>This one surprised me. But it's actually one of the strongest health signals.</p> <p>If one person understands 80% of the codebase, your system is fragile. If that person leaves, goes on vacation, or gets promoted, you're in trouble.</p> <p>Conversely, if knowledge is distributed across 5+ people, the system is more resilient.</p> <p>I measure this by calculating what percentage of commits come from the top N contributors:<br>
+</p> <div>
+<pre><code><span>def</span> <span>calculate_contributor_concentration</span><span>(</span><span>repo_path</span><span>):</span> <span>"""</span><span> Calculate what % of commits come from top 5 contributors. Healthy = spread across many people. Unhealthy = concentrated in 1-2 people. </span><span>"""</span> <span>commits_by_contributor</span> <span>=</span> <span>count_commits_by_author</span><span>(</span><span>repo_path</span><span>)</span> <span>total_commits</span> <span>=</span> <span>sum</span><span>(</span><span>commits_by_contributor</span><span>.</span><span>values</span><span>())</span> <span>top_5_commits</span> <span>=</span> <span>sum</span><span>(</span><span>sorted</span><span>(</span><span>commits_by_contributor</span><span>.</span><span>values</span><span>(),</span> <span>reverse</span><span>=</span><span>True</span><span>)[:</span><span>5</span><span>])</span> <span>concentration</span> <span>=</span> <span>(</span><span>top_5_commits</span> <span>/</span> <span>total_commits</span><span>)</span> <span>*</span> <span>100</span> <span># Less than 60% in top 5 = healthy
+</span> <span># 60-80% = concerning
+</span> <span># 80%+ = critical
+</span> <span>return</span> <span>concentration</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The correlation here is almost spooky. I measured this against several teams and found:</p> <ul>
+<li>Teams with &gt;80% concentration in top 5 had 3.2x more onboarding issues</li>
+<li>Teams with &gt;80% concentration had 2.7x higher risk of critical incidents when knowledge-holder was unavailable</li>
+<li>Teams with &lt;60% concentration had 40% better retention of junior engineers</li>
+</ul> <p><strong>Weight in my scoring</strong>: 20%</p> <h3> <a name="test-coverage" href="#test-coverage"> </a> Test Coverage
+</h3> <p>I was initially going to make this 30% of the score. But then I realized: test coverage is a vanity metric. You can have 95% coverage with bad tests. You can have 40% coverage on the critical paths (which is what matters).</p> <p>What actually matters: are the critical paths tested? Are failure cases tested? Or is the coverage just hitting lines without testing actual behavior?</p> <p>Still, some correlation exists: codebases with &lt;30% coverage tend to have higher incident rates than codebases with &gt;70% coverage.</p> <p><strong>Weight in my scoring</strong>: 10%</p> <h3> <a name="documentation-coverage" href="#documentation-coverage"> </a> Documentation Coverage
+</h3> <p>This is tricky to measure automatically. I settled on a heuristic: what percentage of exported functions/classes have associated comments or docstrings?<br>
+</p> <div>
+<pre><code><span>def</span> <span>measure_documentation_ratio</span><span>(</span><span>codebase_path</span><span>):</span> <span>"""</span><span> Count public functions with docstrings vs total public functions. </span><span>"""</span> <span>public_items</span> <span>=</span> <span>find_public_apis</span><span>(</span><span>codebase_path</span><span>)</span> <span>documented_items</span> <span>=</span> <span>[</span><span>item</span> <span>for</span> <span>item</span> <span>in</span> <span>public_items</span> <span>if</span> <span>has_docstring</span><span>(</span><span>item</span><span>)]</span> <span>return</span> <span>len</span><span>(</span><span>documented_items</span><span>)</span> <span>/</span> <span>len</span><span>(</span><span>public_items</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>In practice, I found this correlates weakly with actual system health. Some of the most stable, well-understood codebases have minimal documentation. Some heavily documented codebases are disasters because the code changed and the docs didn't.</p> <p>But absence of documentation does correlate with onboarding difficulty. New engineers in undocumented codebases take 50% longer to ramp.</p> <p><strong>Weight in my scoring</strong>: 10%</p> <h3> <a name="technical-debt-markers" href="#technical-debt-markers"> </a> Technical Debt Markers
+</h3> <p>Some patterns are markers of accumulated technical debt:</p> <ul>
+<li>TODO/FIXME comments that haven't been touched in 6+ months</li>
+<li>Dead code (imports that aren't used, functions that aren't called)</li>
+<li>Dependency version obsolescence (packages that haven't been updated in 2+ years)</li>
+</ul> <p>These are weak individual signals, but together they form a pattern. A codebase with many of these markers is showing signs of neglect.</p> <p><strong>Weight in my scoring</strong>: 10%</p> <h3> <a name="coupling-amp-modularity" href="#coupling-amp-modularity"> </a> Coupling &amp; Modularity
+</h3> <p>This one requires actual analysis of dependencies: how many modules import from how many other modules?</p> <p>A healthy architecture has:</p> <ul>
+<li>Clear boundaries (modules don't reach deep into other modules' internals)</li>
+<li>Limited cross-cutting dependencies</li>
+<li>A recognizable structure (layered, services-based, whatever pattern you chose)</li>
+</ul> <p>An unhealthy architecture has:</p> <ul>
+<li>Circular dependencies</li>
+<li>Every file importing from every other file</li>
+<li>No clear separation of concerns
+</li>
+</ul> <div>
+<pre><code><span>def</span> <span>calculate_coupling_metrics</span><span>(</span><span>repo_path</span><span>):</span> <span>"""</span><span> Measure how tightly coupled modules are. </span><span>"""</span> <span>import_graph</span> <span>=</span> <span>build_import_graph</span><span>(</span><span>repo_path</span><span>)</span> <span>cycles</span> <span>=</span> <span>find_cycles</span><span>(</span><span>import_graph</span><span>)</span> <span>overly_connected</span> <span>=</span> <span>[</span> <span>module</span> <span>for</span> <span>module</span> <span>in</span> <span>import_graph</span> <span>if</span> <span>len</span><span>(</span><span>import_graph</span><span>[</span><span>module</span><span>])</span> <span>&gt;</span> <span>10</span> <span>]</span> <span>avg_imports_per_module</span> <span>=</span> <span>sum</span><span>(</span> <span>len</span><span>(</span><span>deps</span><span>)</span> <span>for</span> <span>deps</span> <span>in</span> <span>import_graph</span><span>.</span><span>values</span><span>()</span> <span>)</span> <span>/</span> <span>len</span><span>(</span><span>import_graph</span><span>)</span> <span>return</span> <span>{</span> <span>'</span><span>cycles</span><span>'</span><span>:</span> <span>len</span><span>(</span><span>cycles</span><span>),</span> <span>'</span><span>overly_connected</span><span>'</span><span>:</span> <span>len</span><span>(</span><span>overly_connected</span><span>),</span> <span>'</span><span>avg_connectivity</span><span>'</span><span>:</span> <span>avg_imports_per_module</span> <span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This is computationally expensive for large codebases, but it's one of the strongest predictors of system health.</p> <p><strong>Weight in my scoring</strong>: 10%</p> <h2> <a name="the-scoring-formula" href="#the-scoring-formula"> </a> The Scoring Formula
+</h2> <p>I settled on this weighting:</p> <p>Health Score = (0.25 x Churn) + (0.20 x Contributor Concentration) + (0.15 x Complexity) + (0.10 x Coupling) + (0.10 x Test Coverage) + (0.10 x Documentation) + (0.10 x Technical Debt Markers)</p> <p>Scale: 0-100, where:</p> <ul>
+<li>
+<strong>0-30</strong>: Critical. High risk of incidents. Hard to change. Fragile.</li>
+<li>
+<strong>30-50</strong>: Unhealthy. Velocity is degraded. Rework is common.</li>
+<li>
+<strong>50-70</strong>: Acceptable. Maintainable. Some areas need attention.</li>
+<li>
+<strong>70-85</strong>: Healthy. Good balance of velocity and stability.</li>
+<li>
+<strong>85-100</strong>: Excellent. Well-maintained, stable, easy to change.</li>
+</ul> <h2> <a name="realworld-findings" href="#realworld-findings"> </a> Real-World Findings
+</h2> <p>I've now run this tool on about 30 different codebases. Some patterns surprised me:</p> <h3> <a name="1-age-doesnt-predict-score" href="#1-age-doesnt-predict-score"> </a> 1. Age Doesn't Predict Score
+</h3> <p>Some 10-year-old codebases score in the 80s. Some 2-year-old codebases score in the 30s. What matters: has anyone been actively maintaining it?</p> <h3> <a name="2-size-doesnt-predict-score" href="#2-size-doesnt-predict-score"> </a> 2. Size Doesn't Predict Score
+</h3> <p>A 500-file monolith can score higher than a microservices architecture with 50 services. Modularity matters more than scale.</p> <h3> <a name="3-contributor-concentration-is-underrated" href="#3-contributor-concentration-is-underrated"> </a> 3. Contributor Concentration is Underrated
+</h3> <p>I moved it from 15% to 20% because the correlation with real problems was stronger than I expected.</p> <h3> <a name="4-coupling-is-more-predictive-than-complexity" href="#4-coupling-is-more-predictive-than-complexity"> </a> 4. Coupling is More Predictive Than Complexity
+</h3> <p>Systems with moderate complexity but high coupling were worse than systems with high complexity but low coupling. Complexity can be refactored locally. Coupling forces you to refactor everything.</p> <h3> <a name="5-open-source-codebases-score-surprisingly-high" href="#5-open-source-codebases-score-surprisingly-high"> </a> 5. Open Source Codebases Score Surprisingly High
+</h3> <p>Most scored 65+. Contributor concentration is naturally distributed, dead code gets cleaned up, tests are emphasized, and documentation is required.</p> <h2> <a name="what-id-do-differently" href="#what-id-do-differently"> </a> What I'd Do Differently
+</h2> <ol>
+<li>
+<strong>Weight churn more heavily</strong>. It's the strongest single predictor of problems.</li>
+<li>
+<strong>Focus on critical paths</strong>. Not all code is equal. Future versions should allow path-specific scoring.</li>
+<li>
+<strong>Include incident correlation</strong>. Correlate scores against actual incident history.</li>
+<li>
+<strong>Make it continuous</strong>. Run on every commit and trend the score over time.</li>
+</ol> <h2> <a name="open-source-amp-beyond" href="#open-source-amp-beyond"> </a> Open Source &amp; Beyond
+</h2> <p>The tool is available at <a href="https://github.com/glue-tools-ai/codebase-health-score" target="_blank">github.com/glue-tools-ai/codebase-health-score</a>. It's MIT licensed. PRs welcome.</p> <p>Teams want to understand their codebase health. They want signals for where to invest cleanup effort. This tool sits in the middle: give me a repo, and I'll tell you in 2 minutes whether your codebase is healthy, where the problems are, and what actions would help most.</p> <h2> <a name="the-bigger-picture" href="#the-bigger-picture"> </a> The Bigger Picture
+</h2> <p>Codebases are alive. They change. They decay. But unlike biological systems, they can be resurrected and healed.</p> <p>The teams that do well treat their codebase health like they treat physical fitness: they check their metrics regularly, understand what drives health, and invest in the fundamentals rather than emergency measures.</p> <p>The tool won't save you. But it'll tell you the truth about your codebase. And that truth is the foundation for fixing anything.</p> <hr> <h2> <a name="resources-amp-references" href="#resources-amp-references"> </a> Resources &amp; References
+</h2> <ul>
+<li>
+<a href="https://github.com/glue-tools-ai/codebase-health-score" target="_blank">github.com/glue-tools-ai/codebase-health-score</a> - The open source tool</li>
+<li>
+<a href="https://cloud.google.com/architecture/devops-measurement-state-of-devops" target="_blank">DORA Metrics: 4 Key Metrics for Software Delivery</a> - Gold standard for measuring engineering health</li>
+<li>
+<a href="https://refactoring.guru/" target="_blank">Refactoring Guru: Code Smell Detection</a> - On identifying problematic code patterns</li>
+</ul> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

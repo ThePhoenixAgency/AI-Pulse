@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Oracle Error Leaves DeFi Lender Moonwell With $1.8 Million in Bad Debt</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Oracle Error Leaves DeFi Lender Moonwell With $1.8 Million in Bad Debt</h1>
+  <div class="metadata">
+    Source: Decrypt | Date: 2/18/2026 5:46:00 AM | <a href="https://decrypt.co/358374/oracle-error-leaves-defi-lender-moonwell-1-8-million-bad-debt" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><div><h4>In brief</h4><ul>
+<li>A misconfigured oracle priced cbETH at about $1 instead of roughly $2,200.</li>
+<li>Liquidations seized 1,096.317 cbETH and wiped out borrower collateral.</li>
+<li>The protocol was left with $1.78 million in bad debt pending a governance fix.</li>
+</ul></div><p>A Sunday morning pricing glitch turned into a multimillion-dollar headache for the DeFi lending platform Moonwell, after a "misconfigured oracle" briefly valued Coinbase Wrapped ETH (<a href="https://decrypt.co/244619/coinbase-wrapped-bitcoin-market-experts" target="_blank">cbETH</a>) at just $1.</p><p>The pricing error effected caused a 99.9% discount from the asset's actual market value of roughly $2,200. The error triggered a wave of liquidations, ultimately leaving the platform with approximately $1.78 million in bad debt.</p><p>“Once identified, our risk manager @anthiasxyz moved quickly to reduce the cbETH borrow cap to 0.01 to contain further risk to the protocol,” Moonwell wrote on X on Monday. “The supply cap was also reduced to 0.01 to prevent new users from unknowingly supplying to the affected market.”</p><p>In a Moonwell forum <a href="https://forum.moonwell.fi/t/mip-x43-cbeth-oracle-incident-summary/2068" target="_blank">post</a> on Monday, risk management firm Anthias Labs reported the error occurred at 6:01 PM UTC on February 15, when the Moonwell DAO governance proposal, MIP-X43, was executed, enabling <a href="https://decrypt.co/resources/what-is-chainlink" target="_blank">Chainlink</a> OEV wrapper contracts across markets on <a href="https://decrypt.co/resources/what-is-base-coinbases-layer-2-chain" target="_blank">Base</a> and <a href="https://decrypt.co/resources/what-is-optimism-using-rollups-to-help-scale-ethereum" target="_blank">Optimism</a>. One of these oracles was misconfigured and failed to price cbETH’s USD value correctly.</p><p>Moonwell said that instead of multiplying the cbETH/ETH feed by the ETH/USD price, the system used only the raw cbETH/ETH exchange rate. As a result, the oracle reported cbETH at around $1.12.</p><p>Trading bots began targeting cbETH collateral positions, and because the system believed cbETH was worth just over $1, liquidators were able to repay roughly $1 of debt to seize a total of 1,096.317 cbETH, the company said.</p><p>“This wiped out most or all of the cbETH collateral for many borrowers, while leaving substantial bad debt on their positions since the repaid amount was far below the actual borrowed value,” Anthias Labs wrote.</p><p>The distorted pricing also enabled exploitation.</p><p>“A smaller number of users exploited the distorted pricing to supply minimal collateral, massively over-borrow cbETH at the artificially low reported price, and instantly generate additional bad debt denominated in cbETH,” the firm added.</p><p>While the misconfigured Oracle took much of the blame, users on X began circulating images of the MIP-X43 as being co-authored by Claude Opus 4.6, with some calling it a “<a href="https://decrypt.co/311144/vibe-coding-using-ai-create-apps-games" target="_blank">vibe coding</a>” error.</p><p>When asked by <i>Decrypt</i> about the error and resulting exploit, Moonwell spokesperson declined to comment.</p><p>Overall, Moonwell was left with $1,779,044 in total bad debt across various markets, according to the post.</p><p>According to Moonwell, a forthcoming governance vote will address the oracle configuration following the required timelock period.</p><p>Moonwell is the latest in a growing list of DeFi projects exploited due to misconfigured oracles. In December, Ribbon Finance lost about <a href="https://www.halborn.com/blog/post/explained-the-aevo-ribbon-finance-hack-december-2025" target="_blank">$2.7 million</a> after a decimal mismatch in an oracle upgrade distorted asset pricing and enabled over-collateralization.</p><p>In January, DeFi platform Makina Finance was exploited via flash-loan-driven oracle manipulation, allowing an attacker to extract roughly <a href="https://decrypt.co/355132/ethereum-defi-platform-makina-hit-by-flash-loan-exploit-loses-4m-in-eth" target="_blank">$4 million</a> in ETH.</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

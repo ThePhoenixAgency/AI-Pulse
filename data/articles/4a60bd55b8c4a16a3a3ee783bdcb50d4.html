@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building a "Vibrant Depth" Design Language for Laravel Components with Tailwind CSS 4</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Building a "Vibrant Depth" Design Language for Laravel Components with Tailwind CSS 4</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 5:25:44 AM | <a href="https://dev.to/bluestarsystem/building-a-vibrant-depth-design-language-for-laravel-components-with-tailwind-css-4-524i" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Every Laravel admin panel looks the same. Gray backgrounds, flat buttons, minimal borders, neutral colors. It works — but it's visually indistinguishable from every other app out there.</p> <p>While building two SaaS products (<a href="https://beautyflow.pro/" target="_blank">BeautyFlow</a> for salon management and <a href="https://kelvio.com/" target="_blank">Kelvio</a> for restaurants), I needed a shared component library. But I didn't want the same flat/minimal look that dominates the Laravel ecosystem. I wanted <strong>visual personality</strong> — depth, energy, and warmth — while staying professional.</p> <p>The result is <a href="https://aura-ui.com/" target="_blank"><strong>Aura UI</strong></a>, a Blade component library for Laravel + Livewire with a design language I call <strong>"Vibrant Depth."</strong></p> <h2> <a name="what-is-vibrant-depth" href="#what-is-vibrant-depth"> </a> What is "Vibrant Depth"?
+</h2> <p>Instead of flat surfaces and neutral grays, Vibrant Depth uses:</p> <ul>
+<li>
+<strong>Gradients</strong> instead of solid colors</li>
+<li>
+<strong>Glow effects</strong> on focus and hover states</li>
+<li>
+<strong>Glass morphism</strong> for cards and overlays</li>
+<li>
+<strong>Micro-animations</strong> for feedback and delight</li>
+<li>
+<strong>Color tokens</strong> via Tailwind CSS 4's <code>@theme</code> directive</li>
+</ul> <p>The goal: interfaces that feel alive and intentional, without crossing into "too much."</p> <h2> <a name="implementation-with-tailwind-css-4" href="#implementation-with-tailwind-css-4"> </a> Implementation with Tailwind CSS 4
+</h2> <h3> <a name="the-token-system" href="#the-token-system"> </a> The Token System
+</h3> <p>Tailwind CSS 4 introduced <code>@theme</code> — a way to define design tokens directly in CSS. This is the foundation of Aura UI's color system:<br>
+</p> <div>
+<pre><code><span>@theme</span> <span>{</span> <span>--color-deep-blue</span><span>:</span> <span>#0a1628</span><span>;</span> <span>--color-ocean-blue</span><span>:</span> <span>#1e3a5f</span><span>;</span> <span>--color-tropical-blue</span><span>:</span> <span>#3b82f6</span><span>;</span> <span>--color-seafoam</span><span>:</span> <span>#2dd4bf</span><span>;</span> <span>--color-white-foam</span><span>:</span> <span>#f0f9ff</span><span>;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>These tokens are available as Tailwind utilities (<code>bg-deep-blue</code>, <code>text-tropical-blue</code>, etc.) and can be overridden per-project.</p> <h3> <a name="glass-morphism-pattern" href="#glass-morphism-pattern"> </a> Glass Morphism Pattern
+</h3> <p>The glass morphism effect combines transparency, blur, and subtle borders:<br>
+</p> <div>
+<pre><code><span>&lt;div</span> <span>class=</span><span>"bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-6"</span><span>&gt;</span> <span>&lt;!-- Content with frosted glass appearance --&gt;</span>
+<span>&lt;/div&gt;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This creates a frosted glass look that works beautifully for cards, modals, and overlays — especially in dark mode where it really shines.</p> <h3> <a name="glow-effect-on-focus" href="#glow-effect-on-focus"> </a> Glow Effect on Focus
+</h3> <p>Instead of the standard <code>ring</code> utility for focus states, Aura UI uses colored box-shadows that create a subtle glow:<br>
+</p> <div>
+<pre><code><span>&lt;button</span> <span>class=</span><span>" bg-gradient-to-r from-tropical-blue to-seafoam shadow-md hover:shadow-lg focus:shadow-lg focus:shadow-tropical-blue/20 transition-all duration-200
+"</span><span>&gt;</span> Save Changes
+<span>&lt;/button&gt;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The <code>shadow-tropical-blue/20</code> creates a soft blue glow around the button on focus — much more visually engaging than a simple outline.</p> <h3> <a name="dark-mode-with-raw-customvariant-endraw-" href="#dark-mode-with-raw-customvariant-endraw-"> </a> Dark Mode with <code>@custom-variant</code>
+</h3> <p>Tailwind CSS 4 supports <code>@custom-variant</code> for class-based dark mode:<br>
+</p> <div>
+<pre><code><span>@custom-variant</span> <span>dark</span> <span>(</span><span>&amp;</span><span>:</span><span>where</span><span>(.</span><span>dark</span><span>,</span> <span>.</span><span>dark</span> <span>*</span><span>));</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This makes all <code>dark:</code> variants work with a <code>.dark</code> class on the root element, giving you programmatic toggle control (vs. media query). Combined with Alpine.js and localStorage, you get a smooth dark mode toggle that remembers user preference.</p> <h2> <a name="building-components-for-laravellivewire" href="#building-components-for-laravellivewire"> </a> Building Components for Laravel/Livewire
+</h2> <p>Aura UI components are anonymous Blade components with Alpine.js for interactivity:<br>
+</p> <div>
+<pre><code><span>&lt;!-- Using Aura UI components --&gt;</span>
+<span>&lt;x-aura::card&gt;</span> <span>&lt;x-aura::card-header&gt;</span> <span>&lt;h3&gt;</span>User Profile<span>&lt;/h3&gt;</span> <span>&lt;/x-aura::card-header&gt;</span> <span>&lt;x-aura::card-body&gt;</span> <span>&lt;x-aura::input</span> <span>label=</span><span>"Name"</span> <span>wire:model=</span><span>"name"</span> <span>/&gt;</span> <span>&lt;x-aura::select</span> <span>label=</span><span>"Role"</span> <span>wire:model=</span><span>"role"</span> <span>:options=</span><span>"$roles"</span> <span>/&gt;</span> <span>&lt;/x-aura::card-body&gt;</span> <span>&lt;x-aura::card-footer&gt;</span> <span>&lt;x-aura::button</span> <span>variant=</span><span>"primary"</span> <span>wire:click=</span><span>"save"</span><span>&gt;</span>Save<span>&lt;/x-aura::button&gt;</span> <span>&lt;/x-aura::card-footer&gt;</span>
+<span>&lt;/x-aura::card&gt;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Every component follows the same design tokens, so the visual language stays consistent across your entire app.</p> <h3> <a name="the-datatable-trait-pro" href="#the-datatable-trait-pro"> </a> The DataTable Trait (Pro)
+</h3> <p>For the Pro package, I built a Livewire trait system that gives you a full-featured DataTable with minimal code:<br>
+</p> <div>
+<pre><code><span>use</span> <span>BlueStarSystem\AuraUIPro\Traits\WithAuraDataTable</span><span>;</span> <span>class</span> <span>UserList</span> <span>extends</span> <span>Component</span>
+<span>{</span> <span>use</span> <span>WithAuraDataTable</span><span>;</span> <span>public</span> <span>array</span> <span>$columns</span> <span>=</span> <span>[</span> <span>[</span><span>'key'</span> <span>=&gt;</span> <span>'name'</span><span>,</span> <span>'label'</span> <span>=&gt;</span> <span>'Name'</span><span>,</span> <span>'sortable'</span> <span>=&gt;</span> <span>true</span><span>],</span> <span>[</span><span>'key'</span> <span>=&gt;</span> <span>'email'</span><span>,</span> <span>'label'</span> <span>=&gt;</span> <span>'Email'</span><span>,</span> <span>'searchable'</span> <span>=&gt;</span> <span>true</span><span>],</span> <span>[</span><span>'key'</span> <span>=&gt;</span> <span>'created_at'</span><span>,</span> <span>'label'</span> <span>=&gt;</span> <span>'Created'</span><span>,</span> <span>'sortable'</span> <span>=&gt;</span> <span>true</span><span>],</span> <span>];</span> <span>public</span> <span>function</span> <span>query</span><span>():</span> <span>Builder</span> <span>{</span> <span>return</span> <span>User</span><span>::</span><span>query</span><span>();</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>One trait gives you server-side sorting, search, pagination, column visibility toggle, and bulk selection. Additional traits (<code>WithAuraFilters</code>, <code>WithAuraBulkActions</code>, <code>WithAuraForm</code>) can be composed for richer functionality.</p> <h2> <a name="whats-included" href="#whats-included"> </a> What's Included
+</h2> <p><strong>Free package (26 components, MIT license):</strong></p> <ul>
+<li>Primitives: Button, Badge, Input, Select, Textarea, Checkbox, Toggle, Radio</li>
+<li>Feedback: Alert, Modal, Notification, Tooltip, ConfirmDialog</li>
+<li>Layout: Card, Divider, Container</li>
+<li>Navigation: Tabs, Breadcrumb, Dropdown, Pagination</li>
+<li>Data Display: Table, Stat, Avatar, EmptyState</li>
+<li>Form Layout: FieldGroup, FormSection</li>
+</ul> <p><strong>Pro package (19 additional components):</strong></p> <ul>
+<li>DataTable with server-side sorting, filtering, bulk actions</li>
+<li>Sidebar, CommandPalette, FileUpload, RichTextEditor</li>
+<li>Calendar, Timeline, Kanban, StepWizard</li>
+<li>Charts, TreeView, and more</li>
+<li>5 Livewire traits for rapid CRUD development</li>
+</ul> <h2> <a name="testing" href="#testing"> </a> Testing
+</h2> <p>The free package has 138 tests. The Pro package has 388 tests. Both run with Pest v3.</p> <h2> <a name="try-it" href="#try-it"> </a> Try It
+</h2> <ul>
+<li>
+<strong>Docs and demos</strong>: <a href="https://aura-ui.com/" target="_blank">aura-ui.com</a>
+</li>
+<li>
+<strong>Free package (MIT)</strong>: <a href="https://github.com/BlueStarSystem/aura-ui" target="_blank">GitHub - BlueStarSystem/aura-ui</a>
+</li>
+<li>
+<strong>Install</strong>: <code>composer require bluestarsystem/aura-ui</code>
+</li>
+</ul> <p>I'd love to hear your thoughts on this design direction. Is there room for visual personality in dev tools, or is flat/minimal the only acceptable style?</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

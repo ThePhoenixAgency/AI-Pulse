@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>heaven_is_real_and_it_runs_on_a_microkernel</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>heaven_is_real_and_it_runs_on_a_microkernel</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 5:24:55 AM | <a href="https://aryal.schizoid.men/heaven_is_real_and_it_runs_on_a_microkernel.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: NL
+  </div>
+  <div class="content">
+    <div><div> <h2>heaven is real and it runs on a microkernel</h2>
+<p><em>2026-02-03</em></p>
+<p>If you take any interest in operating systems, you probably have heard at least one person that keeps reminding you how superior a micro-kernel is. Today that person will be me. But instead of dumping theory and yap, I will show you exactly why I find it the superior architecture. </p>
+<p>I spent a lot of time figuring out how exactly I am going to demonstrate this, so I needed my test subjects, I considered the following operating systems and kernels :</p>
+<ul>
+<li><a href="https://kernel.org/">linux</a></li>
+<li><a href="https://serenityos.org/">serentiyOS</a></li>
+<li><a href="https://sel4.systems/">sel4</a></li>
+<li><a href="https://github.com/mit-pdos/xv6-public">xv6</a></li>
+<li><a href="https://www.minix3.org/">minix</a></li>
+<li><a href="https://git.sr.ht/~sircmpwn/helios">helios</a></li>
+<li>and a few more</li>
+</ul>
+<p>And I decided to use <code>xv6-riscv</code>, the monolithic scapegoat and <code>sel4</code>, my microkernel beloved for my demonstration. But what am I going to demonstrate? and for what? why? </p>
+<h3>what, why and how</h3>
+<p>I have always found the idea that a kernel indeed can be something very tiny and that all your drivers can run in user space. As someone who's understanding of an operating system was defined by UNIX-like operating systems that are monolithic in nature, this idea was fascinating to me. The reason why I am so attached to this concept is because I have had to suffer watching my operating system crash due to a faulty driver or a non vital hardware malfunction. I watched countless blue screens of deaths and countless kernel panics throughout my hacking journey, now for normal people this probably does not matter, as they can always just reboot. But frankly, if you know exactly what you are doing, and your system crashes because of something that you didn't write, but assumed was correct can really ruin your day. Week even. </p>
+<p>So I want to implement something that is <em>low level</em> which your user-space program will use, I want to implement this in both <code>xv6-riscv</code> and <code>sel4</code>. The difference will be that the <em>low level</em> thing will be a kernel syscall in the monolithic implementation and a user-space program in a microkernel. The <em>low level</em> thing will be intentionally faulty, however the difference is, since <code>xv6-riscv</code> is making a system call, the kernel panics, but in <code>sel4</code> just the user-space crashes. That's it, that's the demonstration. Before I get into the details, I just want to say, I only recently learned the details of <code>sel4</code>, so my implementations may not be "the right way to do things", but it proves my point so whatever. </p>
+<p><strong>the low-level thing</strong><br>
+Here I will introduce you <code>xmap</code>. Think of it as a user-space VMA and a mapper. It should allow a process to:</p>
+<ul>
+<li>reserve virtual memory regions without immediately allocating physical memory</li>
+<li>map physical pages to those regions on demand</li>
+<li>unmap regions to free the physical backing</li>
+</ul>
+<p><strong>the thing</strong></p>
+<pre><code>typedef struct { uint64 start; uint64 length; int prot;
+} xmap_region_t; xmap_region_t xmap_reserve(uint64 size);
+int xmap_map(xmap_region_t r, int backing);
+int xmap_unmap(xmap_region_t r);
+</code></pre> <p><strong>how I implemented this in sel4</strong><br>
+<code>sel4</code> already has a very low-level VM system, which is capability-based, normally to map you need to juggle around capabilities, page tables and untyped memory. This turned out to be harder than I thought, because of course this was my first time dealing with capabilities first hand. The docs were surprisingly good for something so low-level. </p>
+<p>I want a program that implements a virtual memory abstraction, which is kinda faulty, in userspace. I decided to call it <code>xmap</code> for no reason at all. I start with some of the core data structures, which are simple for the sake of demonstrations. </p>
+<ul>
+<li><code>xmap_region_t</code>: represents a reserved vm region </li>
+<li><code>vma_entry_t</code>: tracks virtual memory reservations </li>
+<li><code>frame_entry_t</code>: tracks physical frames backing virtual pages</li>
+<li><code>paging_struct_t</code>: tracks paging structs created on demand</li>
+</ul>
+<p>Now time for the <code>sel4</code> experience, which gave me <strong>alot</strong> of trouble. We start by bootstrapping and setup capability allocations, this is just boilerplate stuff, this is where it really starts,</p>
+<pre><code>static void xmap_init(void) { if (xmap_initialized) return; bootinfo = platsupport_get_bootinfo(); if (!bootinfo) return; next_free_slot = bootinfo-&gt;empty.start; current_untyped_idx = 0; memset(vma_table, 0, sizeof(vma_table)); memset(frame_table, 0, sizeof(frame_table)); xmap_initialized = 1;
+}
+</code></pre> <p>There is nothing special happening in here, it just starts with a clean VMA and frame tables, now this is where the true implementation lies, and this will be the faulty thing that will crash. </p>
+<pre><code>int xmap_map(xmap_region_t *r, int prot) { if (!r || r-&gt;length == 0) return -1; if (!xmap_initialized) xmap_init(); int vma_slot = -1; for (int i = 0; i &lt; MAX_REGIONS; i++) { if (vma_table[i].in_use &amp;&amp; vma_table[i].start == r-&gt;start) { vma_slot = i; break; } } if (vma_slot &lt; 0) return -1; /* BUG: No check for already mapped. Calling xmap_map() twice leaks frames. */ size_t num_pages = r-&gt;length / PGSIZE; for (size_t i = 0; i &lt; num_pages; i++) { uintptr_t vaddr = r-&gt;start + (i * PGSIZE); int frame_slot = -1; for (int j = 0; j &lt; MAX_PAGES; j++) { if (!frame_table[j].in_use) { frame_slot = j; break; } } if (frame_slot &lt; 0) return -1; seL4_CPtr frame_cap = allocate_frame_cap(); if (frame_cap == seL4_CapNull) return -1; map_frame_at_vaddr(frame_cap, vaddr, prot); frame_table[frame_slot].frame_cap = frame_cap; frame_table[frame_slot].vaddr = vaddr; frame_table[frame_slot].in_use = 1; } r-&gt;prot = prot; vma_table[vma_slot].mapped = 1; return 0;
+}
+</code></pre> <p>All it does it take a reserved region <code>r</code> and map physical frames to it, It assigns actual memory and sets access permissions. </p>
+<p>The big deal here is that when you call <code>xmap_map(&amp;region, prot)</code> it will allocate new physical frames, it maps them into the virtual addresses in the region, then we mark it mark it as mapped. But we do something stupid here, we never actually check if the region was already mapped, so we allocate new frame in the same virtual address, the frames never get freed and wowe look at that we have our very own memory leak. </p>
+<p>This was just some implementation details for <code>sel4</code>, now I want to explain what I did for <code>xv6-riscv</code></p>
+<p><strong>xmap as a syscall for xv6-riscv</strong></p>
+<p>Adding a syscall to <code>xv6-riscv</code> is something I have done before, so this was fairly trivial compared to implementing <code>xmap</code> for <code>sel4</code>, this operating system has a special place in my heart for teaching me kernel development. I want to talk about exactly how I went about doing this but I also want to keep it short. </p>
+<p>So I add the traps for the new syscall, usual copy paste stuff, then I define the structures for this. Since it is a kernel syscall, I had to hack in a bunch of new things for this to work, so basically I introduce VMA, fairly trivial</p>
+<ul>
+<li><code>vma_init</code>: just setting metadata of the entries </li>
+<li><code>vma_find_free:</code> returns the index of the first free <code>p-&gt;vmas</code> (need it for <code>xmap_reserve</code>)</li>
+<li><code>vma_find_by_addr</code>: look up a VMA by its starting address (need it for mapping and unmapping)</li>
+<li><code>vma_overlaps</code>: checks if a new VMA will overlap with existing VMA</li>
+</ul>
+<p>Then I implement the <code>xmap</code> system call functions. The implementations are not 1:1 equivalent of course, but they do the same thing. It even comes with the same bug !!!</p>
+<pre><code>int
+xmap_map(xmap_region_t r, int backing)
+{ struct proc *p = myproc(); char *pa; uint64 va; if(r.start == 0 || r.length == 0) { return -1; } if(r.start % PGSIZE != 0 || r.length % PGSIZE != 0) { return -1; } int slot = vma_find_by_addr(p, r.start); if(slot &lt; 0) { return -1; } // BUG: Missing check if already mapped (should check p-&gt;vmas[slot].prot != 0) // This allows double-mapping which will leak memory int perm = backing | PTE_U; uint64 npages = r.length / PGSIZE; for(uint64 i = 0; i &lt; npages; i++) { va = r.start + i * PGSIZE; pa = kalloc(); if(pa == 0) { if(i &gt; 0) { uvmunmap(p-&gt;pagetable, r.start, i, 1); } return -1; } memset(pa, 0, PGSIZE); if(mappages(p-&gt;pagetable, va, PGSIZE, (uint64)pa, perm) != 0) { kfree(pa); if(i &gt; 0) { uvmunmap(p-&gt;pagetable, r.start, i, 1); } return -1; } } p-&gt;vmas[slot].prot = backing; return 0;
+}
+</code></pre> <p>So basically in both of the <code>xmap</code> implementations, I never check if its already mapped. </p>
+<p><strong>the system level implementations are done, now what?</strong><br>
+We write a custom allocator on top of it, of course, what else? At this point I have implemented the <em>low level thing</em>, of course, one of them runs on kernel another in userland. Both of them are faulty. Now lets pretend I don't know that they are faulty, lets pretend I am an innocent userland hacker who assumes the correctness of the <code>xmap</code> implementations. </p>
+<p><strong>the innocent userland developer experience</strong><br>
+Now, the innocent userland developer writes his arena allocator, correctly. He uses the <code>xmap_map</code> with the assumption that it is a correct implementation and wont crash on him. </p>
+<pre><code>int
+alloc_init(void)
+{ if(allocator.initialized) { return 0; } if(xmap_reserve(ARENA_SIZE, &amp;allocator.region) &lt; 0) { printf("alloc_init: xmap_reserve failed\n"); return -1; } if(xmap_map(&amp;allocator.region, XMAP_READ | XMAP_WRITE) &lt; 0) { printf("alloc_init: xmap_map failed\n"); return -1; } unsigned long npages = ARENA_SIZE / PGSIZE; allocator.free_list = (free_page_t *)allocator.region.start; free_page_t *current = allocator.free_list; for(unsigned long i = 0; i &lt; npages - 1; i++) { free_page_t *next_page = (free_page_t *)((char *)current + PGSIZE); current-&gt;next = next_page; current = next_page; } current-&gt;next = 0; allocator.initialized = 1; printf("Allocator initialized: %ld pages available\n", npages); return 0;
+}
+</code></pre> <p>And now, he tries doing something with his new alloc function. </p>
+<pre><code> void *p1 = page_alloc(); void *p2 = page_alloc(); printf("Allocated: %p, %p\n", p1, p2); char *c1 = (char *)p1; char *c2 = (char *)p2; c1[0] = 'A'; c2[0] = 'B'; printf("Data: %c, %c\n", c1[0], c2[0]); page_free(p1); page_free(p2); printf("Freed pages\n\n");
+</code></pre> <p>It works perfectly, Just like how he expected. But our userland developer is a hacker and wants to play around with things, he wants to learn, he wants to fuck around and find out!</p>
+<p>so he tries this,</p>
+<pre><code> xmap_region_t region; xmap_reserve(PGSIZE * 2, &amp;region); xmap_map(&amp;region, XMAP_READ | XMAP_WRITE); printf("First map OK\n"); xmap_map(&amp;region, XMAP_READ | XMAP_WRITE); printf("Second map OK (leaked first mapping)\n");
+</code></pre> <p>He compiles his program, not sure what exactly would happen, usually when he tries playing around, he is greeted with a kind SIGSEGV, but that doesnt matter, he can always find the trace with gdb and fix it, so decided to run it anyways. </p>
+<pre><code>$ xmaptest
+=== xmap allocator demo === Allocator initialized: 64 pages available
+Allocated: 0x0000003FEFFBE000, 0x0000003FEFFBF000
+Data: A, B
+Freed pages Triggering double-map bug...
+First map OK
+panic: mappages: remap
+</code></pre> <p>Unfortunately for our innocent userland developer, he is using an operating system with a monolithic kernel, so this crashed his entire operating system and now he is forced to reboot.</p>
+<p><strong>what if he was using a microkernel</strong><br>
+I spent way too much time on this, but I learned alot about sel4 so it was worth it. So the way I demonstrate this for <code>sel4</code> is by basically using their hello world tutorial repo and hacking it to include the <code>xmap</code>, the <code>alloc</code> and the userland program in a single C file. I should have done this properly by setting up a userspace with a simple shell or whatever but instead I just "simulate" userland by using threads. </p>
+<pre><code>static void worker_thread_main(void) { printf("[WORKER] Started\n"); void *pages[5]; for (int i = 0; i &lt; 5; i++) { pages[i] = page_alloc(); if (pages[i]) ((int *)pages[i])[0] = i * 100; } printf("[WORKER] Allocated 5 pages\n"); for (int i = 0; i &lt; 5; i++) page_free(pages[i]); printf("[WORKER] Freed pages\n"); xmap_region_t bug_region = xmap_reserve(PGSIZE * 4); xmap_map(&amp;bug_region, PROT_READ | PROT_WRITE); int *ptr = (int *)bug_region.start; ptr[0] = 0xDEADBEEF; printf("[WORKER] First map: wrote 0xDEADBEEF\n"); printf("[WORKER] Second map (BUG: leaks 4 frames)\n"); xmap_map(&amp;bug_region, PROT_READ | PROT_WRITE); printf("[WORKER] Value now: 0x%x (old data lost)\n", ptr[0]); printf("[WORKER] Crashing...\n"); volatile int *bad = (volatile int *)0x0; *bad = 42; while (1) seL4_Yield();
+}
+</code></pre> <p>This is my worker thread, which will crash because <code>xmap_map</code> is faulty. The main thread creates this worker and reports that it faulted, this little report is actually just the program humble bragging about how it is still alive, unlike how the xv6 equivalent died. </p>
+<p><strong>and yet it lives</strong></p>
+<pre><code>=== seL4 xmap Fault Isolation Demo === [MAIN] Worker thread created
+[MAIN] Waiting for worker fault...
+[WORKER] Started [MAIN] Worker faulted (type=5)
+[MAIN] Main thread still alive - fault isolation works!
+[MAIN] Kernel stable. Demo complete.
+</code></pre> <p>This was my attempt as demonstrating why implementing the same thing in different kernel architectures can lead to completely different experiences in userland when theres a faulty low level program that you have no control over. <code>sel4</code>isolates the fault to my worker, and since the fault was in a userland program completely isolated from the kernel, the kernel does not fucking care that it crashed, rest of the system can keep on running like usual, but when a system call is faulty, like in the <code>xv6-riscv</code> implementations, your kernel panics. And I fucking hate that. </p>
+<p>If the gods ever design an operating system, you can be sure it will be a microkernel.</p>
+<h4>FULL SOURCE CODE <a href="https://codeberg.org/aryalaadi/microkernel-demo/">HERE</a></h4>
+<p>You can try to play around with it, maybe fix the bugs or something. </p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

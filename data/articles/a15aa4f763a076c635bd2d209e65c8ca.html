@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building a PostgreSQL Parser in Go: What Broke After We Open-Sourced It</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Building a PostgreSQL Parser in Go: What Broke After We Open-Sourced It</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 6:18:53 AM | <a href="https://dev.to/eitamos_ring_0508146ca448/building-a-postgresql-parser-in-go-what-broke-after-we-open-sourced-it-3i8h" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fe2e6ny3apyxd13kuesvb.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fe2e6ny3apyxd13kuesvb.png" alt="Cover image for Building a PostgreSQL Parser in Go: What Broke After We Open-Sourced It"> </a> <div> <p><a href="https://dev.to/eitamos_ring_0508146ca448"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3395918%2F5ae6659e-ea1d-4142-b982-ec79776600b3.png" alt="Eitamos Ring"></a> </p> </div> </div><div> <h2> <a name="building-a-postgresql-parser-in-go-what-broke-after-we-opensourced-it" href="#building-a-postgresql-parser-in-go-what-broke-after-we-opensourced-it"> </a> Building a PostgreSQL Parser in Go: What Broke After We Open-Sourced It
+</h2> <p><a href="https://github.com/ValkDB/postgresparser" target="_blank"><code>postgresparser</code></a> is a pure-Go PostgreSQL SQL parser. It turns SQL text into structured metadata (tables, columns, joins, filters, DDL actions, parameters) without executing queries.</p> <p>We thought it was solid. Open source proved we were wrong.</p> <p>Here is what open source forced us to learn.</p> <div><p>The biggest shift was not “more bug reports.” It was use-case expansion.</p><p>
+We built for our workflow. Users showed up with very different workloads.<br>
+In the first week after release, most feedback centered on deterministic batch parsing.</p></div>
+<h2> <a name="our-internal-assumptions-broke-immediately" href="#our-internal-assumptions-broke-immediately"> </a> Our internal assumptions broke immediately
+</h2> <p>Inside a single team, ambiguous behavior survives because everyone “knows” the rules. Public users do not have that context.</p> <p>The first pressure point was multi-statement SQL. We had <code>ParseSQL</code> (single statement) and figured batch parsing was “close enough.” It was not.</p> <p>People were using the parser for:</p> <ul>
+<li>CI linting pipelines</li>
+<li>production tools</li>
+<li>llm wrappers</li>
+</ul> <p>People asked practical questions we could not answer cleanly:</p> <ul>
+<li>Which exact statement failed?</li>
+<li>Is this a warning or a hard failure?</li>
+<li>Can I map diagnostics to the original SQL text reliably?</li>
+</ul> <p>Those questions forced us to define strict contracts instead of relying on implied behavior.</p> <p>If your tool consumes SQL in bulk, batch correlation is everything.</p>
+<h2> <a name="broken-behavior-example" href="#broken-behavior-example"> </a> Broken behavior example
+</h2> <p>This input exposed the issue quickly:<br>
+</p> <div>
+<pre><code><span>SELECT</span> <span>1</span><span>;</span>
+<span>SELECT</span> <span>FROM</span><span>;</span>
+<span>SELECT</span> <span>2</span><span>;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Early batch behavior made correlation awkward because results were compacted and diagnostics were not statement-first. If you’re building CI checks or migration tooling, “something in the batch failed” is not actionable.</p> <p>Now each statement has deterministic correlation (<code>Index</code>, <code>RawSQL</code>, <code>Query</code>, <code>Warnings</code>), so downstream code can point to the exact source statement.</p> <h2> <a name="beforeafter-api-diff" href="#beforeafter-api-diff"> </a> Before/after API diff
+</h2> <div>
+<pre><code><span>- type ParseBatchResult struct {
+- Queries []*ParsedQuery
+- Warnings []ParseWarning
+- TotalStatements int
+- ParsedStatements int
+- }
+</span><span>+ type StatementParseResult struct {
++ Index int
++ RawSQL string
++ Query *ParsedQuery // nil =&gt; IR conversion failure
++ Warnings []ParseWarning // statement-scoped warnings
++ }
++
++ type ParseBatchResult struct {
++ Statements []StatementParseResult
++ TotalStatements int
++ ParsedStatements int
++ HasFailures bool
++ }
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That shape is less convenient for quick demos, but much better for real integration.</p> <h2> <a name="real-sql-in-the-wild-is-much-uglier-than-test-fixtures" href="#real-sql-in-the-wild-is-much-uglier-than-test-fixtures"> </a> Real SQL in the wild is much uglier than test fixtures
+</h2> <p>Open source usage also brought SQL shapes we did not have in internal tests:</p> <ul>
+<li>trailing semicolons and odd whitespace</li>
+<li>invalid syntax in the middle of an otherwise valid batch</li>
+<li>mixed DDL + DML scripts</li>
+<li>
+<code>ONLY</code> variants in DDL paths</li>
+</ul> <p>The parser had to become resilient without becoming vague. That meant:</p> <ul>
+<li>better statement-level warning attribution</li>
+<li>explicit failure semantics (<code>Query == nil</code>)</li>
+<li>tighter handling across DDL relation extraction paths</li>
+</ul> <h2> <a name="one-concrete-snippet-current-behavior" href="#one-concrete-snippet-current-behavior"> </a> One concrete snippet (current behavior)
+</h2> <div>
+<pre><code><span>batch</span><span>,</span> <span>err</span> <span>:=</span> <span>postgresparser</span><span>.</span><span>ParseSQLAll</span><span>(</span><span>sql</span><span>)</span>
+<span>if</span> <span>err</span> <span>!=</span> <span>nil</span> <span>{</span> <span>log</span><span>.</span><span>Fatal</span><span>(</span><span>err</span><span>)</span>
+<span>}</span> <span>fmt</span><span>.</span><span>Printf</span><span>(</span><span>"total=%d parsed=%d has_failures=%t</span><span>\n</span><span>"</span><span>,</span> <span>batch</span><span>.</span><span>TotalStatements</span><span>,</span> <span>batch</span><span>.</span><span>ParsedStatements</span><span>,</span> <span>batch</span><span>.</span><span>HasFailures</span><span>)</span> <span>for</span> <span>_</span><span>,</span> <span>stmt</span> <span>:=</span> <span>range</span> <span>batch</span><span>.</span><span>Statements</span> <span>{</span> <span>fmt</span><span>.</span><span>Printf</span><span>(</span><span>"idx=%d failed=%t warnings=%d raw=%q</span><span>\n</span><span>"</span><span>,</span> <span>stmt</span><span>.</span><span>Index</span><span>,</span> <span>stmt</span><span>.</span><span>Query</span> <span>==</span> <span>nil</span><span>,</span> <span>len</span><span>(</span><span>stmt</span><span>.</span><span>Warnings</span><span>),</span> <span>stmt</span><span>.</span><span>RawSQL</span><span>)</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That is the integration model people asked for: deterministic, inspectable, and boring in the best way.</p> <h2> <a name="why-this-matters" href="#why-this-matters"> </a> Why this matters
+</h2> <p>Open source removed our ability to hand-wave edge cases.</p> <p>The loop became:</p> <ol>
+<li>implement</li>
+<li>get challenged</li>
+<li>simplify</li>
+<li>lock behavior with tests</li>
+<li>document the contract</li>
+</ol> <p>That loop made <code>postgresparser</code> better than it would have been as an internal-only tool.<br>
+Internal tools can survive ambiguity. Public libraries cannot.</p> <p>If you're building something on top of <code>postgresparser</code>, open an issue. Real-world SQL keeps improving the contract.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

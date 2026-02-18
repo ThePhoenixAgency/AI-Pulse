@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - Ramsbaby/openclaw-self-healing: AI-powered self-healing system for OpenClaw Gateway • 4-tier autonomous recovery • macOS &amp; Linux</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - Ramsbaby/openclaw-self-healing: AI-powered self-healing system for OpenClaw Gateway • 4-tier autonomous recovery • macOS &amp; Linux</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 5:56:30 AM | <a href="https://github.com/Ramsbaby/openclaw-self-healing" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div>
+<div><h1> OpenClaw Self-Healing System v3.0</h1><a href="#-openclaw-self-healing-system-v30"></a></div>
+<p><strong>Automatic 4-tier crash recovery for OpenClaw Gateway — no pager, no panic.</strong></p>
+<p><a href="https://github.com/ramsbaby/openclaw-self-healing/stargazers"><img src="https://camo.githubusercontent.com/109018072e3fdb92b954569fbb615b8566a5dbcd08f38fe834244ccde93115e5/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f72616d73626162792f6f70656e636c61772d73656c662d6865616c696e673f7374796c653d736f6369616c" alt="GitHub Stars"></a>
+<a href="https://github.com/Ramsbaby/openclaw-self-healing/releases"><img src="https://camo.githubusercontent.com/55f30def4a68344c0de905e67851fe21552f126e98f7c99bbe794e47be861c23/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f76657273696f6e2d332e302e302d626c75652e737667" alt="Version"></a>
+<a href="/Ramsbaby/openclaw-self-healing/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT"></a>
+<a href="/Ramsbaby/openclaw-self-healing/blob/main/docs/LINUX_SETUP.md"><img src="https://camo.githubusercontent.com/4459644778d3a11479c8d4d37113a1741b621fa1f68ad7688055790552e03e35/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f506c6174666f726d2d6d61634f532532302537432532304c696e75782d626c75652e737667" alt="Platform: macOS"></a></p>
+</div>
+<hr>
+<div><h2>The Problem</h2><a href="#the-problem"></a></div>
+<p>Your OpenClaw Gateway crashes at 3 AM. A simple restart doesn't help — the config is corrupted, the DB connection is stale, or the API rate limit is exceeded. You're paged. Your sleep is ruined.</p>
+<p>Traditional watchdogs restart. They don't <strong>diagnose</strong>.</p>
+<hr>
+<div><h2>The Solution</h2><a href="#the-solution"></a></div>
+<p>This is not magic. It's <strong>four escalating layers of automation</strong>, with AI diagnosis as a last resort before calling a human.</p>
+<ul>
+<li> <strong>Instant restart</strong> via LaunchAgent KeepAlive (0–30 s)</li>
+<li> <strong>Root-cause fix</strong> via Watchdog + <pre><code>doctor --fix</code></pre> (3–5 min)</li>
+<li> <strong>AI diagnosis</strong> via Claude Code autonomous session (5–10 min)</li>
+<li> <strong>Human alert</strong> via Discord with full context (last resort)</li>
+</ul>
+<hr>
+<div><h2>Quick Demo</h2><a href="#quick-demo"></a></div>
+<div><pre><code>$ openclaw gateway restart # simulate a crash [00:00] Level 0: KeepAlive triggered — restarting...
+[00:05] Crash detected again (count: 2)
+[00:05] Level 1: Watchdog running doctor --fix...
+[00:47] doctor --fix: config restored from backup
+[00:48] Gateway online — recovery time: 48 seconds # Worst-case scenario (config + DB broken):
+[00:00] Level 0–2: auto-restart &amp; doctor failed (2x)
+[03:10] Level 3: Spawning Claude AI emergency session...
+[07:22] Claude: Found stale lock file + expired token
+[07:44] Claude: Applied fix, restarting gateway...
+[08:01] Gateway online — recovery time: 8 min 1 sec
+</code></pre></div>
+<hr>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<p><strong>Prerequisites:</strong> macOS 12+ or Linux, OpenClaw Gateway, Claude CLI, </p><pre><code>tmux</code></pre>, <pre><code>jq</code></pre><p></p>
+<div><pre>curl -fsSL https://raw.githubusercontent.com/ramsbaby/openclaw-self-healing/main/install.sh <span>|</span> bash</pre></div>
+<p>The installer verifies prerequisites, installs scripts and LaunchAgents, configures your environment, and runs an initial health check.</p>
+<p><strong>Full guide:</strong> <a href="/Ramsbaby/openclaw-self-healing/blob/main/docs/QUICKSTART.md">docs/QUICKSTART.md</a> · <strong>Linux:</strong> <a href="/Ramsbaby/openclaw-self-healing/blob/main/docs/LINUX_SETUP.md">docs/LINUX_SETUP.md</a></p>
+<div><h3>Verify it works</h3><a href="#verify-it-works"></a></div>
+<div><pre><span><span>#</span> Force a crash and watch recovery</span>
+<span>kill</span> -9 <span><span>$(</span>pgrep -f openclaw-gateway<span>)</span></span>
+sleep 180
+curl -s -o /dev/null -w <span><span>"</span>%{http_code}<span>"</span></span> http://localhost:18789/
+<span><span>#</span> → 200</span></pre></div>
+<hr>
+<div><h2> Want Self-Optimization Too?</h2><a href="#-want-self-optimization-too"></a></div>
+<p>Your agent survives crashes — but can it also improve itself?</p>
+<p>→ <strong><a href="https://github.com/Ramsbaby/openclaw-self-evolving">openclaw-self-evolving</a></strong> — Weekly log analysis → AGENTS.md improvement proposals. Pairs perfectly with self-healing.</p>
+<hr>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Trigger</th>
+<th>Action</th>
+<th>Typical Recovery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0 — KeepAlive</strong></td>
+<td>Any crash</td>
+<td>LaunchAgent instant restart + backoff</td>
+<td>0–30 s</td>
+</tr>
+<tr>
+<td><strong>1–2 — Watchdog</strong></td>
+<td>Repeated crash</td>
+<td>PID/HTTP/memory check + <pre><code>doctor --fix</code></pre> (×2)</td>
+<td>3–5 min</td>
+</tr>
+<tr>
+<td><strong>3 — AI Doctor</strong></td>
+<td><pre><code>doctor --fix</code></pre> fails twice</td>
+<td>Claude Code PTY: reads logs, diagnoses, applies fix</td>
+<td>5–10 min</td>
+</tr>
+<tr>
+<td><strong>4 — Human Alert</strong></td>
+<td>All automation fails</td>
+<td>Discord notification with full context + log paths</td>
+<td>You decide</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Crash loop guard:</strong> Watchdog stops escalating after 5 consecutive failures — no infinite restart storms.</p>
+<p>Architecture deep-dive: <a href="/Ramsbaby/openclaw-self-healing/blob/main/docs/architecture.md">docs/architecture.md</a></p>
+<hr>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Copy </p><pre><code>.env.example</code></pre> → <pre><code>.env</code></pre> and set:<p></p>
+<div><pre>DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/... <span><span>#</span> required for alerts</span>
+RECOVERY_TIMEOUT_SECONDS=600 <span><span>#</span> Level 3 AI timeout (default: 600)</span>
+MAX_CRASH_THRESHOLD=5 <span><span>#</span> stop escalating after N crashes (default: 5)</span>
+HEALTH_CHECK_INTERVAL=30 <span><span>#</span> watchdog poll interval in seconds (default: 30)</span>
+MEMORY_WARN_PERCENT=80 <span><span>#</span> trigger doctor above this RSS% (default: 80)</span></pre></div>
+<p>Full reference: <a href="/Ramsbaby/openclaw-self-healing/blob/main/docs/configuration.md">docs/configuration.md</a></p>
+<hr> <table>
+<thead>
+<tr>
+<th></th>
+<th>This project</th>
+<th>Simple watchdog</th>
+<th>Kubernetes liveness probe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Instant restart</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Root-cause diagnosis</td>
+<td> AI-powered</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>macOS LaunchAgent support</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Zero-dependency core</td>
+<td> (bash + jq)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Crash loop guard</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Community &amp; Contributing</h2><a href="#community--contributing"></a></div>
+<ul>
+<li><strong>Discussions:</strong> <a href="https://github.com/ramsbaby/openclaw-self-healing/discussions">Ask questions, share ideas</a></li>
+<li><strong>Bugs:</strong> <a href="https://github.com/ramsbaby/openclaw-self-healing/issues/new?template=bug_report.yml">Report an issue</a></li>
+<li><strong>Features:</strong> <a href="https://github.com/ramsbaby/openclaw-self-healing/issues/new?template=feature_request.yml">Request or vote</a></li>
+<li><strong>Discord:</strong> <a href="https://discord.com/invite/clawd">OpenClaw Community</a></li>
+</ul>
+<p>Contributions welcome — see <a href="/Ramsbaby/openclaw-self-healing/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for guidelines and good-first-issues.</p>
+<div><h3>Companion project</h3><a href="#companion-project"></a></div>
+<p><strong><a href="https://github.com/Ramsbaby/openclaw-memorybox">MemoryBox</a></strong> — keeps </p><pre><code>MEMORY.md</code></pre> lean to prevent the context-overflow crashes this system recovers from. Prevention + recovery, two tools, same philosophy.<p></p>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT — see <a href="/Ramsbaby/openclaw-self-healing/blob/main/LICENSE">LICENSE</a>. No warranty, no guarantees.</p>
+<hr>
+<div>
+<p><strong>Made with by <a href="https://github.com/ramsbaby">@ramsbaby</a></strong></p>
+<p><em>"The best system is one that fixes itself before you notice it's broken."</em></p>
+<p><a href="#-openclaw-self-healing-system-v30"> Back to top</a></p>
+</div>
+<hr>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

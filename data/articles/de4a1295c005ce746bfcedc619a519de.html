@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stop Wrestling With Apache POI—Meet Sheetz, the One-Liner Excel Library for Java</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Stop Wrestling With Apache POI—Meet Sheetz, the One-Liner Excel Library for Java</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 5:18:01 AM | <a href="https://dev.to/chitrapradha_g_c9c3ce658a/stop-wrestling-with-apache-poi-meet-sheetz-the-one-liner-excel-library-for-java-dng" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>If you've ever processed an Excel file in Java, you know the drill.</p> <p>Import Apache POI. Write 60 lines of boilerplate just to read a column header. Spend the next hour debugging a <code>NullPointerException</code> on row 14 because someone left a cell blank. Cry a little.</p> <p>Sound familiar?</p> <p>Meet <strong><a href="https://github.com/chitralabs/sheetz" target="_blank">Sheetz</a></strong> — an open-source Java library that collapses all of that pain into a single line of code:<br>
+</p> <div>
+<pre><code><span>List</span><span>&lt;</span><span>Product</span><span>&gt;</span> <span>products</span> <span>=</span> <span>Sheetz</span><span>.</span><span>read</span><span>(</span><span>"products.xlsx"</span><span>,</span> <span>Product</span><span>.</span><span>class</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. No boilerplate. No ceremony. Just data.</p> <hr> <h2> <a name="why-another-excel-library" href="#why-another-excel-library"> </a> Why Another Excel Library?
+</h2> <p>Apache POI is powerful — but it was never designed for developer ergonomics. EasyExcel, FastExcel, and Poiji are better, but they all require significant setup before you can do anything useful.</p> <p>Sheetz takes a different philosophy: <strong>zero config by default, full control when you need it.</strong></p> <p>Here's what you get out of the box:</p> <ul>
+<li> <strong>One-liner API</strong> — <code>Sheetz.read()</code>, <code>Sheetz.write()</code>, done</li>
+<li> <strong>True SAX Streaming</strong> — process million-row files with constant ~10MB memory</li>
+<li> <strong>Auto Type Conversion</strong> — 19 built-in converters: dates, enums, BigDecimal, UUID, and more</li>
+<li> <strong>Thread-Safe</strong> — designed for concurrent use in multi-threaded apps</li>
+<li> <strong>Built-in Validation</strong> — detailed error reporting with row/column context</li>
+<li> <strong>Annotation Mapping</strong> — <code>@Column</code> for custom headers, required fields, and defaults</li>
+</ul> <hr> <h2> <a name="getting-started-in-2-minutes" href="#getting-started-in-2-minutes"> </a> Getting Started in 2 Minutes
+</h2> <h3> <a name="add-the-dependency" href="#add-the-dependency"> </a> Add the Dependency
+</h3> <p><strong>Maven:</strong><br>
+</p> <div>
+<pre><code><span>&lt;dependency&gt;</span> <span>&lt;groupId&gt;</span>io.github.chitralabs.sheetz<span>&lt;/groupId&gt;</span> <span>&lt;artifactId&gt;</span>sheetz-core<span>&lt;/artifactId&gt;</span> <span>&lt;version&gt;</span>1.0.1<span>&lt;/version&gt;</span>
+<span>&lt;/dependency&gt;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Gradle:</strong><br>
+</p> <div>
+<pre><code><span>implementation</span> <span>'io.github.chitralabs.sheetz:sheetz-core:1.0.1'</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="define-your-model" href="#define-your-model"> </a> Define Your Model
+</h3> <div>
+<pre><code><span>public</span> <span>class</span> <span>Product</span> <span>{</span> <span>public</span> <span>String</span> <span>name</span><span>;</span> <span>public</span> <span>Double</span> <span>price</span><span>;</span> <span>public</span> <span>Boolean</span> <span>inStock</span><span>;</span> <span>public</span> <span>LocalDate</span> <span>releaseDate</span><span>;</span> <span>public</span> <span>Product</span><span>()</span> <span>{}</span> <span>// Required no-arg constructor</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="read-write-done" href="#read-write-done"> </a> Read, Write, Done
+</h3> <div>
+<pre><code><span>// Read Excel</span>
+<span>List</span><span>&lt;</span><span>Product</span><span>&gt;</span> <span>products</span> <span>=</span> <span>Sheetz</span><span>.</span><span>read</span><span>(</span><span>"products.xlsx"</span><span>,</span> <span>Product</span><span>.</span><span>class</span><span>);</span> <span>// Read CSV</span>
+<span>List</span><span>&lt;</span><span>Product</span><span>&gt;</span> <span>products</span> <span>=</span> <span>Sheetz</span><span>.</span><span>read</span><span>(</span><span>"products.csv"</span><span>,</span> <span>Product</span><span>.</span><span>class</span><span>);</span> <span>// No model? No problem — read as maps</span>
+<span>List</span><span>&lt;</span><span>Map</span><span>&lt;</span><span>String</span><span>,</span> <span>Object</span><span>&gt;&gt;</span> <span>data</span> <span>=</span> <span>Sheetz</span><span>.</span><span>readMaps</span><span>(</span><span>"products.xlsx"</span><span>);</span> <span>// Write Excel</span>
+<span>Sheetz</span><span>.</span><span>write</span><span>(</span><span>products</span><span>,</span> <span>"output.xlsx"</span><span>);</span> <span>// Write CSV</span>
+<span>Sheetz</span><span>.</span><span>write</span><span>(</span><span>products</span><span>,</span> <span>"output.csv"</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="streaming-large-files-the-killer-feature" href="#streaming-large-files-the-killer-feature"> </a> Streaming Large Files (The Killer Feature)
+</h2> <p>This is where Sheetz really shines. Processing a file with 1 million rows? Use <code>stream()</code> and memory stays flat at ~10MB regardless of file size.<br>
+</p> <div>
+<pre><code><span>// Process row by row — constant memory</span>
+<span>Sheetz</span><span>.</span><span>stream</span><span>(</span><span>"huge-file.xlsx"</span><span>,</span> <span>Product</span><span>.</span><span>class</span><span>)</span> <span>.</span><span>forEach</span><span>(</span><span>product</span> <span>-&gt;</span> <span>process</span><span>(</span><span>product</span><span>));</span> <span>// Process in batches — perfect for bulk DB inserts</span>
+<span>Sheetz</span><span>.</span><span>stream</span><span>(</span><span>"huge-file.xlsx"</span><span>,</span> <span>Product</span><span>.</span><span>class</span><span>)</span> <span>.</span><span>batch</span><span>(</span><span>1000</span><span>)</span> <span>.</span><span>forEach</span><span>(</span><span>batch</span> <span>-&gt;</span> <span>database</span><span>.</span><span>bulkInsert</span><span>(</span><span>batch</span><span>));</span> <span>// Full Java Streams support</span>
+<span>long</span> <span>count</span> <span>=</span> <span>Sheetz</span><span>.</span><span>stream</span><span>(</span><span>"huge-file.xlsx"</span><span>,</span> <span>Product</span><span>.</span><span>class</span><span>)</span> <span>.</span><span>stream</span><span>()</span> <span>.</span><span>filter</span><span>(</span><span>p</span> <span>-&gt;</span> <span>p</span><span>.</span><span>price</span> <span>&gt;</span> <span>100</span><span>)</span> <span>.</span><span>count</span><span>();</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <blockquote>
+<p> <strong>Rule of thumb:</strong> For files over 100K rows, always use <code>stream()</code>. Loading everything into memory with <code>read()</code> on a million-row file is a fast track to <code>OutOfMemoryError</code>.</p>
+</blockquote> <hr> <h2> <a name="annotationbased-mapping-with-raw-column-endraw-" href="#annotationbased-mapping-with-raw-column-endraw-"> </a> Annotation-Based Mapping with <code>@Column</code>
+</h2> <p>Headers in your spreadsheet don't match your field names? Columns in a weird order? Need defaults for empty cells? <code>@Column</code> handles it all:<br>
+</p> <div>
+<pre><code><span>public</span> <span>class</span> <span>Product</span> <span>{</span> <span>@Column</span><span>(</span><span>"Product Name"</span><span>)</span> <span>// Map to a different header</span> <span>public</span> <span>String</span> <span>name</span><span>;</span> <span>@Column</span><span>(</span><span>index</span> <span>=</span> <span>1</span><span>)</span> <span>// Map by column index (0-based)</span> <span>public</span> <span>Double</span> <span>price</span><span>;</span> <span>@Column</span><span>(</span><span>required</span> <span>=</span> <span>true</span><span>)</span> <span>// Fail validation if empty</span> <span>public</span> <span>String</span> <span>sku</span><span>;</span> <span>@Column</span><span>(</span><span>defaultValue</span> <span>=</span> <span>"pending"</span><span>)</span> <span>// Default for empty cells</span> <span>public</span> <span>String</span> <span>status</span><span>;</span> <span>@Column</span><span>(</span><span>format</span> <span>=</span> <span>"dd/MM/yyyy"</span><span>)</span> <span>// Custom date format</span> <span>public</span> <span>LocalDate</span> <span>orderDate</span><span>;</span> <span>@Column</span><span>(</span><span>converter</span> <span>=</span> <span>MoneyConverter</span><span>.</span><span>class</span><span>)</span> <span>// Custom converter</span> <span>public</span> <span>BigDecimal</span> <span>amount</span><span>;</span> <span>@Column</span><span>(</span><span>ignore</span> <span>=</span> <span>true</span><span>)</span> <span>// Skip this field entirely</span> <span>public</span> <span>String</span> <span>internalId</span><span>;</span> <span>@Column</span><span>(</span><span>width</span> <span>=</span> <span>20</span><span>)</span> <span>// Column width in chars (write only)</span> <span>public</span> <span>String</span> <span>description</span><span>;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="builtin-data-validation" href="#builtin-data-validation"> </a> Built-in Data Validation
+</h2> <p>Stop writing manual row-parsing error handlers. Sheetz gives you structured validation results with precise row/column context:<br>
+</p> <div>
+<pre><code><span>ValidationResult</span><span>&lt;</span><span>Product</span><span>&gt;</span> <span>result</span> <span>=</span> <span>Sheetz</span><span>.</span><span>validate</span><span>(</span><span>"products.csv"</span><span>,</span> <span>Product</span><span>.</span><span>class</span><span>);</span> <span>System</span><span>.</span><span>out</span><span>.</span><span>println</span><span>(</span><span>"Valid rows: "</span> <span>+</span> <span>result</span><span>.</span><span>validCount</span><span>());</span>
+<span>System</span><span>.</span><span>out</span><span>.</span><span>println</span><span>(</span><span>"Errors: "</span> <span>+</span> <span>result</span><span>.</span><span>errorCount</span><span>());</span>
+<span>System</span><span>.</span><span>out</span><span>.</span><span>println</span><span>(</span><span>"Success rate: "</span> <span>+</span> <span>result</span><span>.</span><span>successRate</span><span>()</span> <span>+</span> <span>"%"</span><span>);</span> <span>for</span> <span>(</span><span>ValidationResult</span><span>.</span><span>RowError</span> <span>error</span> <span>:</span> <span>result</span><span>.</span><span>errors</span><span>())</span> <span>{</span> <span>System</span><span>.</span><span>out</span><span>.</span><span>println</span><span>(</span><span>"Row "</span> <span>+</span> <span>error</span><span>.</span><span>row</span><span>()</span> <span>+</span> <span>", Col '"</span> <span>+</span> <span>error</span><span>.</span><span>column</span><span>()</span> <span>+</span> <span>"': "</span> <span>+</span> <span>error</span><span>.</span><span>message</span><span>());</span>
+<span>}</span> <span>// Get only the clean rows</span>
+<span>List</span><span>&lt;</span><span>Product</span><span>&gt;</span> <span>validProducts</span> <span>=</span> <span>result</span><span>.</span><span>validRows</span><span>();</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="builder-api-for-full-control" href="#builder-api-for-full-control"> </a> Builder API for Full Control
+</h2> <p>Need to select a specific sheet? Set a custom header row? Auto-size columns? The fluent builder has you covered:<br>
+</p> <div>
+<pre><code><span>// Reader Builder</span>
+<span>List</span><span>&lt;</span><span>Product</span><span>&gt;</span> <span>products</span> <span>=</span> <span>Sheetz</span><span>.</span><span>reader</span><span>(</span><span>Product</span><span>.</span><span>class</span><span>)</span> <span>.</span><span>file</span><span>(</span><span>"products.xlsx"</span><span>)</span> <span>.</span><span>sheet</span><span>(</span><span>"Inventory"</span><span>)</span> <span>// By name</span> <span>.</span><span>headerRow</span><span>(</span><span>1</span><span>)</span> <span>// Header on row 2 (0-based)</span> <span>.</span><span>delimiter</span><span>(</span><span>';'</span><span>)</span> <span>// For semicolon-delimited CSVs</span> <span>.</span><span>read</span><span>();</span> <span>// Writer Builder</span>
+<span>Sheetz</span><span>.</span><span>writer</span><span>(</span><span>Product</span><span>.</span><span>class</span><span>)</span> <span>.</span><span>data</span><span>(</span><span>products</span><span>)</span> <span>.</span><span>file</span><span>(</span><span>"output.xlsx"</span><span>)</span> <span>.</span><span>sheet</span><span>(</span><span>"Products"</span><span>)</span> <span>.</span><span>autoSize</span><span>(</span><span>true</span><span>)</span> <span>// Auto-fit column widths</span> <span>.</span><span>freezeHeader</span><span>(</span><span>true</span><span>)</span> <span>// Freeze the header row</span> <span>.</span><span>write</span><span>();</span> <span>// Multi-Sheet Workbook — this one's a gem </span>
+<span>Sheetz</span><span>.</span><span>workbook</span><span>()</span> <span>.</span><span>sheet</span><span>(</span><span>"Products"</span><span>,</span> <span>products</span><span>)</span> <span>.</span><span>sheet</span><span>(</span><span>"Employees"</span><span>,</span> <span>employees</span><span>)</span> <span>.</span><span>sheet</span><span>(</span><span>"Orders"</span><span>,</span> <span>orders</span><span>)</span> <span>.</span><span>write</span><span>(</span><span>"report.xlsx"</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="custom-converters" href="#custom-converters"> </a> Custom Converters
+</h2> <p>Got a money column prefixed with <code>$</code>? A legacy date format? Write a converter once and reuse it everywhere:<br>
+</p> <div>
+<pre><code><span>public</span> <span>class</span> <span>MoneyConverter</span> <span>implements</span> <span>Converter</span><span>&lt;</span><span>BigDecimal</span><span>&gt;</span> <span>{</span> <span>@Override</span> <span>public</span> <span>BigDecimal</span> <span>fromCell</span><span>(</span><span>Object</span> <span>value</span><span>,</span> <span>ConvertContext</span> <span>ctx</span><span>)</span> <span>{</span> <span>String</span> <span>str</span> <span>=</span> <span>value</span><span>.</span><span>toString</span><span>().</span><span>replace</span><span>(</span><span>"$"</span><span>,</span> <span>""</span><span>).</span><span>replace</span><span>(</span><span>","</span><span>,</span> <span>""</span><span>).</span><span>trim</span><span>();</span> <span>return</span> <span>new</span> <span>BigDecimal</span><span>(</span><span>str</span><span>);</span> <span>}</span> <span>@Override</span> <span>public</span> <span>Object</span> <span>toCell</span><span>(</span><span>BigDecimal</span> <span>value</span><span>)</span> <span>{</span> <span>return</span> <span>"$"</span> <span>+</span> <span>value</span><span>.</span><span>setScale</span><span>(</span><span>2</span><span>,</span> <span>RoundingMode</span><span>.</span><span>HALF_UP</span><span>);</span> <span>}</span>
+<span>}</span> <span>// Use per-field via annotation</span>
+<span>@Column</span><span>(</span><span>converter</span> <span>=</span> <span>MoneyConverter</span><span>.</span><span>class</span><span>)</span>
+<span>public</span> <span>BigDecimal</span> <span>price</span><span>;</span> <span>// Or register globally for all BigDecimal fields</span>
+<span>Sheetz</span><span>.</span><span>register</span><span>(</span><span>BigDecimal</span><span>.</span><span>class</span><span>,</span> <span>new</span> <span>MoneyConverter</span><span>());</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="supported-types-19-builtin-converters" href="#supported-types-19-builtin-converters"> </a> Supported Types (19 Built-In Converters)
+</h2> <p>No more manual <code>Integer.parseInt()</code> or <code>LocalDate.parse()</code> calls. Sheetz auto-converts all of these:</p> <div><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Example Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>String</code></td>
+<td>Any text</td>
+</tr>
+<tr>
+<td>
+<code>Integer</code>, <code>Long</code>, <code>Double</code>, <code>Float</code>
+</td>
+<td>
+<code>42</code>, <code>3.14</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>BigDecimal</code>, <code>BigInteger</code>
+</td>
+<td>
+<code>99.99</code>, <code>999999999</code>
+</td>
+</tr>
+<tr>
+<td><code>Boolean</code></td>
+<td>
+<code>true</code>, <code>yes</code>, <code>y</code>, <code>1</code>, <code>on</code> (case-insensitive)</td>
+</tr>
+<tr>
+<td>
+<code>LocalDate</code>, <code>LocalDateTime</code>
+</td>
+<td>
+<code>2024-01-15</code>, <code>2024-01-15 10:30:00</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>ZonedDateTime</code>, <code>Instant</code>
+</td>
+<td><code>2024-01-15T10:30:00Z</code></td>
+</tr>
+<tr>
+<td><code>UUID</code></td>
+<td><code>550e8400-e29b-41d4-a716-446655440000</code></td>
+</tr>
+<tr>
+<td><code>Enum</code></td>
+<td>
+<code>ACTIVE</code>, <code>active</code> (case-insensitive)</td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="format-support-at-a-glance" href="#format-support-at-a-glance"> </a> Format Support at a Glance
+</h2> <div><table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Read</th>
+<th>Write</th>
+<th>Streaming</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>.xlsx</code> (Excel 2007+)</td>
+<td></td>
+<td></td>
+<td> SAX / SXSSF</td>
+</tr>
+<tr>
+<td>
+<code>.xls</code> (Excel 97-2003)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>.csv</code></td>
+<td></td>
+<td></td>
+<td> Buffered</td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="global-configuration" href="#global-configuration"> </a> Global Configuration
+</h2> <p>Want to change the default date format or CSV encoding across your whole app? One config object to rule them all:<br>
+</p> <div>
+<pre><code><span>SheetzConfig</span> <span>config</span> <span>=</span> <span>SheetzConfig</span><span>.</span><span>builder</span><span>()</span> <span>.</span><span>dateFormat</span><span>(</span><span>"dd/MM/yyyy"</span><span>)</span> <span>.</span><span>dateTimeFormat</span><span>(</span><span>"dd/MM/yyyy HH:mm"</span><span>)</span> <span>.</span><span>trimValues</span><span>(</span><span>true</span><span>)</span> <span>.</span><span>skipEmptyRows</span><span>(</span><span>true</span><span>)</span> <span>.</span><span>streamingThreshold</span><span>(</span><span>10_000</span><span>)</span> <span>// Auto-stream above this row count</span> <span>.</span><span>charset</span><span>(</span><span>StandardCharsets</span><span>.</span><span>ISO_8859_1</span><span>)</span> <span>.</span><span>build</span><span>();</span> <span>Sheetz</span><span>.</span><span>configure</span><span>(</span><span>config</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="how-does-it-compare" href="#how-does-it-compare"> </a> How Does It Compare?
+</h2> <p>The <a href="https://github.com/chitralabs/sheetz-benchmarks" target="_blank">sheetz-benchmarks</a> repo has side-by-side JMH performance comparisons against Apache POI, EasyExcel, FastExcel, and Poiji—with full source code so you can run them yourself.</p> <p>And if you want to see every feature in action, the <a href="https://github.com/chitralabs/sheetz-examples" target="_blank">sheetz-examples</a> repo has 8 runnable demos covering end-to-end use cases.</p> <hr> <h2> <a name="try-it-now" href="#try-it-now"> </a> Try It Now
+</h2> <div>
+<pre><code>git clone https://github.com/chitralabs/sheetz.git
+<span>cd </span>sheetz
+mvn clean <span>install</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Requirements:</strong> Java 11+ · Apache POI 5.2.5 · OpenCSV 5.9<br>
+<strong>License:</strong> Apache 2.0</p> <hr> <p>Sheetz is fresh out of the oven and actively looking for contributors, issues, and feedback. If you've ever wanted Excel/CSV processing that just <em>works</em> without a week of POI setup, give it a spin and drop a if you find it useful.</p> <p> <strong>GitHub:</strong> <a href="https://github.com/chitralabs/sheetz" target="_blank">https://github.com/chitralabs/sheetz</a></p> <p><em>What's your current go-to library for Excel or CSV processing in Java? Drop it in the comments—I'm curious how the community handles this pain point!</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

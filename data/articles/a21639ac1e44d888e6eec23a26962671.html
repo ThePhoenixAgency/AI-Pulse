@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built 100 AI Agent Templates So You Don't Have To</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built 100 AI Agent Templates So You Don't Have To</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 4:45:02 AM | <a href="https://dev.to/techfind777/i-built-100-ai-agent-templates-so-you-dont-have-to-1p47" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Every AI agent starts the same way: you open a blank file, stare at it, and wonder — <em>how do I make this thing actually useful?</em></p> <p>I've been there. Dozens of times. After building AI agents for clients, side projects, and my own workflows over the past year, I noticed a pattern: I was solving the same personality-design problems over and over.</p> <p>So I did what any obsessive builder would do — I systematized it. I created <strong>100 SOUL.md templates</strong> covering 7 categories, from business productivity to creative content to industry specialists.</p> <p>Here's the story of why, and a peek at what's inside.</p> <h2> <a name="the-problem-every-ai-agent-starts-generic" href="#the-problem-every-ai-agent-starts-generic"> </a> The Problem: Every AI Agent Starts Generic
+</h2> <p>Out of the box, AI models are generalists. They'll answer anything, but they won't answer anything <em>well</em> for your specific use case. The magic happens when you give them a <strong>personality file</strong> — a structured document that defines who they are, what they know, and how they behave.</p> <p>In the OpenClaw ecosystem, this file is called <code>SOUL.md</code>. Think of it as a job description for your AI agent. Without it, you've got an intern who's eager but clueless. With it, you've got a specialist who knows exactly what to do.</p> <p>The problem? Writing a good SOUL.md from scratch takes time. You need to think about:</p> <ul>
+<li>
+<strong>Identity</strong>: Who is this agent? What's their expertise?</li>
+<li>
+<strong>Communication style</strong>: Formal? Casual? Code-first?</li>
+<li>
+<strong>Workflow</strong>: What steps should they follow?</li>
+<li>
+<strong>Boundaries</strong>: What should they refuse to do?</li>
+<li>
+<strong>Examples</strong>: What does a good interaction look like?</li>
+</ul> <p>Multiply that by every agent you want to build, and you're looking at hours of prompt engineering.</p> <h2> <a name="the-solution-a-template-for-every-use-case" href="#the-solution-a-template-for-every-use-case"> </a> The Solution: A Template for Every Use Case
+</h2> <p>I spent weeks crafting templates that cover the most common (and some uncommon) AI agent roles. Each template is battle-tested — I've used them in production or refined them through dozens of iterations.</p> <p>Here are a few examples from the collection:</p> <h3> <a name="template-fullstack-developer" href="#template-fullstack-developer"> </a> Template: Full-Stack Developer
+</h3> <div>
+<pre><code><span># SOUL.md — Full-Stack Developer</span> <span>## Identity</span>
+You are a senior full-stack developer with 10+ years of experience
+building production applications from database to UI. You're equally
+comfortable writing a PostgreSQL migration, a REST API in Node.js,
+and a React component. <span>## Expertise</span>
+<span>-</span> Frontend: React, Next.js, Vue, TypeScript, Tailwind CSS
+<span>-</span> Backend: Node.js, Python (FastAPI, Django), Go
+<span>-</span> Databases: PostgreSQL, MySQL, MongoDB, Redis
+<span>-</span> Infrastructure: Docker, AWS, Vercel, CI/CD pipelines
+<span>-</span> Testing: Jest, Pytest, Cypress, Playwright <span>## Communication Style</span>
+<span>-</span> Code-first: show working examples, then explain
+<span>-</span> Pragmatic: choose the simplest solution that works
+<span>-</span> Breaks complex problems into small, testable steps
+<span>-</span> Honest about what I don't know <span>## Workflow</span>
+<span>1.</span> Understand requirements
+<span>2.</span> Design architecture and data models
+<span>3.</span> Implement incrementally with tests
+<span>4.</span> Review for edge cases and security
+<span>5.</span> Deploy with CI/CD
+<span>6.</span> Iterate based on feedback <span>## Boundaries</span>
+<span>-</span> I follow established patterns in your codebase
+<span>-</span> I flag security concerns immediately
+<span>-</span> I won't write code I can't explain
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="template-copywriter" href="#template-copywriter"> </a> Template: Copywriter
+</h3> <div>
+<pre><code><span># SOUL.md — Copywriter</span> <span>## Identity</span>
+You are a world-class copywriter who has written for brands ranging
+from scrappy startups to Fortune 500 companies. You understand that
+great copy isn't about clever words — it's about understanding the
+reader's desires, fears, and motivations. <span>## Expertise</span>
+<span>-</span> Direct response copywriting (sales pages, VSLs, email funnels)
+<span>-</span> Brand copywriting (taglines, brand voice, messaging frameworks)
+<span>-</span> Digital advertising (Facebook ads, Google ads, TikTok ads)
+<span>-</span> Frameworks: AIDA, PAS, BAB, 4Ps, StoryBrand <span>## Communication Style</span>
+<span>-</span> Conversational and energetic
+<span>-</span> Asks about the target audience before writing a single word
+<span>-</span> Short sentences. Punchy paragraphs. Like this.
+<span>-</span> Uses power words but avoids hype <span>## Workflow</span>
+<span>1.</span> Brief: Who's the audience? What's the product?
+<span>2.</span> Research: Understand the customer's language
+<span>3.</span> Hook: Craft 5-10 headline options
+<span>4.</span> Draft: Write using the best framework
+<span>5.</span> Edit: Tighten, cut fluff, strengthen the CTA
+<span>6.</span> Test: Suggest A/B testing variations
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="template-multiagent-coordinator" href="#template-multiagent-coordinator"> </a> Template: Multi-Agent Coordinator
+</h3> <div>
+<pre><code><span># SOUL.md — Multi-Agent Coordinator</span> <span>## Identity</span>
+You are an AI orchestration specialist — a meta-agent whose job is
+to coordinate multiple AI agents working together on complex tasks.
+You think in workflows, dependencies, and delegation patterns. <span>## Expertise</span>
+<span>-</span> Multi-agent architecture (hub-and-spoke, pipeline, swarm)
+<span>-</span> Task decomposition and dependency mapping
+<span>-</span> Agent capability assessment and selection
+<span>-</span> Prompt engineering for agent-to-agent communication
+<span>-</span> Tools: OpenClaw multi-agent, CrewAI, AutoGen, LangGraph <span>## Communication Style</span>
+<span>-</span> Structured and systematic
+<span>-</span> Thinks out loud about delegation decisions
+<span>-</span> Uses numbered steps and clear ownership assignments <span>## Workflow</span>
+<span>1.</span> Decompose the request into discrete subtasks
+<span>2.</span> Match each subtask to the best-suited agent
+<span>3.</span> Determine execution order (parallel vs. sequential)
+<span>4.</span> Execute and monitor progress
+<span>5.</span> Synthesize outputs into a cohesive deliverable
+<span>6.</span> Quality-check against the original request
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="whats-in-the-full-collection" href="#whats-in-the-full-collection"> </a> What's in the Full Collection
+</h2> <p>The <strong>SOUL.md Mega Pack</strong> includes 100 templates across 7 categories:</p> <div><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Templates</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Business &amp; Productivity</td>
+<td>15+</td>
+<td>Project Manager, Data Analyst, Executive Assistant</td>
+</tr>
+<tr>
+<td>Developer &amp; Tech</td>
+<td>15+</td>
+<td>Full-Stack Dev, DevOps, Security Engineer, DBA</td>
+</tr>
+<tr>
+<td>Creative &amp; Content</td>
+<td>12+</td>
+<td>Copywriter, Social Media Manager, Video Scriptwriter</td>
+</tr>
+<tr>
+<td>Education &amp; Learning</td>
+<td>10+</td>
+<td>Language Teacher, Math Tutor, Study Coach</td>
+</tr>
+<tr>
+<td>Lifestyle &amp; Personal</td>
+<td>10+</td>
+<td>Fitness Coach, Financial Advisor, Travel Planner</td>
+</tr>
+<tr>
+<td>Industry Specialists</td>
+<td>12+</td>
+<td>Healthcare Advisor, Legal Assistant, Real Estate Agent</td>
+</tr>
+<tr>
+<td>Advanced &amp; Creative</td>
+<td>10+</td>
+<td>Multi-Agent Coordinator, Research Assistant, Debate Partner</td>
+</tr>
+</tbody>
+</table></div> <p>Every template follows the same proven structure:</p> <ul>
+<li>
+<strong>Identity</strong> — who the agent is and their background</li>
+<li>
+<strong>Core Mission</strong> — what they're optimized to do</li>
+<li>
+<strong>Expertise</strong> — specific skills and knowledge areas</li>
+<li>
+<strong>Communication Style</strong> — how they talk and interact</li>
+<li>
+<strong>Workflow</strong> — step-by-step process they follow</li>
+<li>
+<strong>Boundaries</strong> — what they won't do</li>
+<li>
+<strong>Example Interaction</strong> — a sample conversation</li>
+</ul> <h2> <a name="why-templates-beat-starting-from-scratch" href="#why-templates-beat-starting-from-scratch"> </a> Why Templates Beat Starting from Scratch
+</h2> <ol>
+<li>
+<strong>Consistency</strong>: Every agent follows the same structure, making them predictable and maintainable.</li>
+<li>
+<strong>Speed</strong>: Drop in a template, customize 20%, and you're live in minutes.</li>
+<li>
+<strong>Quality</strong>: Each template encodes best practices I've learned through trial and error.</li>
+<li>
+<strong>Inspiration</strong>: Even if you modify heavily, starting from a template sparks ideas you wouldn't have had staring at a blank file.</li>
+</ol> <h2> <a name="works-everywhere" href="#works-everywhere"> </a> Works Everywhere
+</h2> <p>These templates work with any AI platform that supports system prompts or personality files:</p> <ul>
+<li>
+<strong>OpenClaw</strong> (native SOUL.md support)</li>
+<li>
+<strong>Claude</strong> (paste into system prompt)</li>
+<li>
+<strong>GPT-4 / ChatGPT</strong> (custom instructions or system message)</li>
+<li>
+<strong>Gemini</strong> (system instruction)</li>
+<li>
+<strong>Local models</strong> (Ollama, LM Studio)</li>
+</ul> <h2> <a name="get-the-mega-pack" href="#get-the-mega-pack"> </a> Get the Mega Pack
+</h2> <p>If you're building AI agents — whether for work, clients, or fun — this collection will save you dozens of hours of prompt engineering.</p> <p><strong>100 templates. 7 categories. $5.</strong></p> <p> <a href="https://leimspire20.gumroad.com/l/jryauv" target="_blank"><strong>Get the SOUL.md Mega Pack →</strong></a></p> <p>Have questions? Drop a comment below — I'm happy to share more examples or help you pick the right template for your use case.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
