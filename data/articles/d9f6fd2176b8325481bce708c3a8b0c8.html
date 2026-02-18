@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How to Give Claude Code Persistent Memory (Free, Local, 5 Minutes)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How to Give Claude Code Persistent Memory (Free, Local, 5 Minutes)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 6:40:20 PM | <a href="https://dev.to/varun_pratapbhardwaj_b13/how-to-give-claude-code-persistent-memory-free-local-5-minutes-45k0" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="the-problem-every-claude-code-user-hits-on-day-two" href="#the-problem-every-claude-code-user-hits-on-day-two"> </a> The Problem Every Claude Code User Hits on Day Two
+</h2> <p>You spent forty-five minutes explaining your project to Claude Code yesterday. Your folder structure, your naming conventions, the reason you chose Drizzle over Prisma, the three environment variables that need to be set before the test suite runs. By the end of the session, Claude Code understood your codebase like a senior team member.</p> <p>Today, you open a new session. Blank slate. It does not remember any of it.</p> <p>Every Claude Code user hits this wall. The intelligence is there -- the continuity is not. You burn the first five to ten minutes of every session re-establishing context that should already exist. You repeat yourself about TypeScript strict mode. You re-explain that your API uses camelCase while your database uses snake_case. You remind it, again, that the staging database runs on port 5433, not 5432.</p> <p>Over a week, that context-rebuilding adds up to hours. Over a month, it is a measurable drag on your shipping velocity. And if you work across multiple AI tools -- Claude Code for backend, Cursor for frontend, ChatGPT Desktop for brainstorming -- the problem multiplies. Each tool maintains its own isolated context. None of them talk to each other.</p> <p><strong>Claude Code memory does not have to work this way.</strong> There is a fix that is free, local-first, and installable in under five minutes. No cloud accounts. No subscriptions. No sending your proprietary code to someone else's server.</p> <blockquote>
+<p><strong>What you will learn in this guide</strong></p> <ul>
+<li>How to install SuperLocalMemory V2 and wire it into Claude Code as an MCP server</li>
+<li>How to use the three core memory operations: remember, recall, and forget</li>
+<li>How to verify that persistence actually works across sessions and restarts</li>
+<li>How the knowledge graph and pattern learning systems work under the hood</li>
+<li>How SuperLocalMemory compares to Mem0, claude-mem, and manual CLAUDE.md files</li>
+<li>Advanced configuration: profiles, CLAUDE.md integration, and cross-tool memory sharing</li>
+</ul>
+</blockquote> <h2> <a name="what-is-superlocalmemory-v2" href="#what-is-superlocalmemory-v2"> </a> What Is SuperLocalMemory V2?
+</h2> <p>SuperLocalMemory V2 is a free, open-source, local-first AI memory system. It gives any MCP-compatible AI tool -- including Claude Code -- persistent memory that survives across sessions, terminal restarts, and machine reboots.</p> <p>Under the hood, it runs a 10-layer architecture designed for serious engineering workflows:</p> <ul>
+<li>
+<strong>SQLite with FTS5</strong> handles fast full-text search across all stored memories. Sub-millisecond lookups, no external database required.</li>
+<li>
+<strong>Knowledge graph with Leiden community detection</strong> automatically discovers relationships between concepts. Store enough memories about a project and the graph starts connecting them -- database decisions link to deployment constraints, API patterns link to testing strategies.</li>
+<li>
+<strong>Bayesian confidence scoring</strong> tracks your coding patterns and preferences over time. It learns that you prefer Zustand over Redux, server components over client components, <code>pnpm</code> over <code>npm</code>.</li>
+<li>
+<strong>Agent trust scoring</strong> manages memory access across different AI tools, so you control which tools can read and write to your memory store.</li>
+</ul> <p>It connects to <strong>17+ AI tools</strong> through the Model Context Protocol (MCP): Claude Code, Cursor, Windsurf, VS Code Copilot, ChatGPT Desktop, Codex CLI, Gemini CLI, JetBrains AI Assistant, and more. All of them share one local database.</p> <p>Every byte of data stays on your machine. Zero cloud dependencies. Zero cost. Zero telemetry.</p> <h2> <a name="prerequisites" href="#prerequisites"> </a> Prerequisites
+</h2> <p>You need two things before starting:</p> <ul>
+<li>
+<strong>Node.js 18 or higher.</strong> Check with <code>node --version</code>. If you need to install or update, use <a href="https://github.com/nvm-sh/nvm" target="_blank">nvm</a> or download from <a href="https://nodejs.org/" target="_blank">nodejs.org</a>.</li>
+<li>
+<strong>Claude Code installed and working.</strong> You should be able to run <code>claude</code> from your terminal and get a working session.</li>
+</ul> <p>That is it. No API keys. No cloud accounts. No paid subscriptions. No Docker. No database setup. SuperLocalMemory handles its own storage using embedded SQLite -- it creates and manages the database file automatically on first run.</p> <h2> <a name="installation-and-setup" href="#installation-and-setup"> </a> Installation and Setup
+</h2> <p>Follow these four steps to go from zero to persistent Claude Code memory.</p> <p><strong>1. Install SuperLocalMemory</strong></p> <p>Open your terminal and run:<br>
+</p> <div>
+<pre><code>npm <span>install</span> <span>-g</span> superlocalmemory
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>You should see output similar to:<br>
+</p> <div>
+<pre><code>added 1 package <span>in </span>4s superlocalmemory@2.x.x
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Verify the installation:<br>
+</p> <div>
+<pre><code>superlocalmemory <span>--version</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This single install gives you both the memory system and the MCP server. The MCP server is the bridge -- it exposes memory operations as tools that Claude Code can call directly through the Model Context Protocol.</p> <p>The global install ensures <code>superlocalmemory</code> is available from any directory on your machine. If you prefer project-local installs, you can use <code>npx</code> instead (covered in the configuration step below).</p> <p><strong>2. Configure Claude Code to Use SuperLocalMemory</strong></p> <p>There are two ways to wire Claude Code memory into your workflow. Use one or both.</p> <h4> <a name="option-a-mcp-server-configuration-recommended" href="#option-a-mcp-server-configuration-recommended"> </a> Option A: MCP Server Configuration (Recommended)
+</h4> <p>Add SuperLocalMemory as an MCP server in your project's Claude Code settings. Create or edit <code>.claude/settings.json</code> in your project root:<br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"mcpServers"</span><span>:</span><span> </span><span>{</span><span> </span><span>"superlocalmemory"</span><span>:</span><span> </span><span>{</span><span> </span><span>"command"</span><span>:</span><span> </span><span>"superlocalmemory"</span><span>,</span><span> </span><span>"args"</span><span>:</span><span> </span><span>[</span><span>"--mcp"</span><span>]</span><span> </span><span>}</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Here is what each field does:</p> <ul>
+<li>
+<strong><code>mcpServers</code></strong> -- The top-level key Claude Code reads to discover MCP tool servers.</li>
+<li>
+<strong><code>"superlocalmemory"</code></strong> -- The name Claude Code uses to identify this server. You can name it anything, but keeping it descriptive helps when debugging.</li>
+<li>
+<strong><code>"command"</code></strong> -- The binary to execute. Since you installed globally, <code>superlocalmemory</code> is available on your PATH.</li>
+<li>
+<strong><code>"args": ["--mcp"]</code></strong> -- Tells SuperLocalMemory to start in MCP server mode, exposing its memory tools over the standard MCP protocol.</li>
+</ul> <p>If you used a local install instead of global, replace the command with <code>npx</code>:<br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"mcpServers"</span><span>:</span><span> </span><span>{</span><span> </span><span>"superlocalmemory"</span><span>:</span><span> </span><span>{</span><span> </span><span>"command"</span><span>:</span><span> </span><span>"npx"</span><span>,</span><span> </span><span>"args"</span><span>:</span><span> </span><span>[</span><span>"superlocalmemory"</span><span>,</span><span> </span><span>"--mcp"</span><span>]</span><span> </span><span>}</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h4> <a name="option-b-add-memory-instructions-to-claudemd" href="#option-b-add-memory-instructions-to-claudemd"> </a> Option B: Add Memory Instructions to CLAUDE.md
+</h4> <p>For a smoother experience, add memory usage instructions to your project's <code>CLAUDE.md</code> file. This teaches Claude Code <em>when</em> to use memory, not just <em>how</em>:<br>
+</p> <div>
+<pre><code><span>## Memory</span> This project uses SuperLocalMemory for persistent context.
+<span>-</span> When I share project decisions, architecture choices, or preferences, save them using the remember tool.
+<span>-</span> At the start of each session, recall relevant memories about this project.
+<span>-</span> Use the forget tool to remove outdated information when I say something has changed.
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This approach makes Claude Code proactively save and retrieve context without you having to ask every time. Combine it with Option A for the best experience.</p> <p><strong>3. Start Using Memory Commands</strong></p> <p>Once configured, Claude Code gains three core memory operations. These work as natural language instructions -- no special syntax required.</p> <h4> <a name="remember-save-context" href="#remember-save-context"> </a> Remember -- Save Context
+</h4> <p>Tell Claude Code to store something:<br>
+</p> <div>
+<pre><code>Use the remember tool to save: "This project uses React 19 with TypeScript strict mode.
+All components use server components by default. Client components are marked explicitly."
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>SuperLocalMemory writes this to your local SQLite database with full-text indexing. The memory is tagged, timestamped, and searchable. You can store anything: architecture decisions, API conventions, deployment notes, environment quirks, team preferences, debugging findings.<br>
+</p> <div>
+<pre><code>Remember: "The staging database is on port 5433, not the default 5432.
+This was changed in January 2026 to avoid conflicts with the local dev database."
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h4> <a name="recall-retrieve-context" href="#recall-retrieve-context"> </a> Recall -- Retrieve Context
+</h4> <p>Ask Claude Code to search its memory:<br>
+</p> <div>
+<pre><code>Use the recall tool to find memories about database configuration
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>SuperLocalMemory runs a semantic search across all stored memories and returns the most relevant matches. Claude Code receives this context and uses it in its response -- seamlessly.<br>
+</p> <div>
+<pre><code>Recall everything you know about our API authentication approach
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h4> <a name="forget-delete-context" href="#forget-delete-context"> </a> Forget -- Delete Context
+</h4> <p>Remove outdated or sensitive information:<br>
+</p> <div>
+<pre><code>Use the forget tool to remove memories about the old Stripe API integration
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This performs a hard delete from the SQLite database. Useful for credential rotation references, clearing stale architectural decisions, or data hygiene.</p> <blockquote>
+<p><strong>Best practice: front-load your context</strong></p> <p>Spend your first session with SuperLocalMemory deliberately storing your most important project context: architecture decisions, naming conventions, environment setup, deployment targets, and the non-obvious quirks that take the longest to re-explain. This initial investment of ten to fifteen minutes pays for itself within two sessions. After that, save memories incrementally as new decisions are made.</p>
+</blockquote> <p>The critical point: <strong>memories persist across all sessions.</strong> Close your terminal. Shut down your machine. Open Claude Code tomorrow, next week, next month. Your context is still there. That is what persistent Claude Code memory means.</p> <p><strong>4. Verify Persistence Is Working</strong></p> <p>Trust but verify. Here is a quick test to confirm everything is wired correctly:</p> <p><strong>1. Save a test memory:</strong><br>
+</p> <div>
+<pre><code>Remember: "Test memory created on Feb 16, 2026. If you can read this, persistence works."
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>2. Close your terminal completely.</strong> Not just the Claude Code session -- close the entire terminal application.</p> <p><strong>3. Open a fresh terminal and start a new Claude Code session.</strong></p> <p><strong>4. Ask Claude Code to recall:</strong><br>
+</p> <div>
+<pre><code>Recall any test memories from February 2026
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>If it returns your test memory, persistence is confirmed. Your Claude Code memory survives across sessions.</p> <p>You can also verify by inspecting the database directly. SuperLocalMemory stores everything in a SQLite file at:<br>
+</p> <div>
+<pre><code>~/.superlocalmemory/memory.db
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Open it with any SQLite viewer -- DB Browser for SQLite, the <code>sqlite3</code> CLI, or the SQLite extension in VS Code. You will see your memories stored with full metadata: timestamps, tags, confidence scores, and relationship mappings.</p> <blockquote>
+<p><strong>Common mistakes to avoid</strong></p> <ul>
+<li>
+<strong>Do not store secrets in memory.</strong> API keys, passwords, and tokens should never be saved as memories. SuperLocalMemory stores data in a local SQLite file -- it is not encrypted at rest. Use environment variables and secret managers for sensitive values.</li>
+<li>
+<strong>Do not skip the verification step.</strong> If the MCP server is not connected properly, Claude Code will silently fall back to stateless mode. You will not see an error -- you just will not have memory. Always run the persistence test after setup.</li>
+<li>
+<strong>Do not forget to update stale memories.</strong> Old architecture decisions that no longer apply will confuse Claude Code more than having no memory at all. Use the forget tool actively when things change.</li>
+<li>
+<strong>Do not use overly broad recall queries.</strong> "Recall everything" returns too much noise. Be specific: "Recall our authentication approach" or "Recall database connection settings" will return more useful results.</li>
+</ul>
+</blockquote> <h2> <a name="how-superlocalmemory-compares-to-other-solutions" href="#how-superlocalmemory-compares-to-other-solutions"> </a> How SuperLocalMemory Compares to Other Solutions
+</h2> <p>The Claude Code memory space has several options. The differences matter -- especially around data privacy, cross-tool support, and long-term scalability.</p> <div><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>SuperLocalMemory V2</th>
+<th>Mem0</th>
+<th>claude-mem</th>
+<th>Manual CLAUDE.md</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>Free forever (MIT)</td>
+<td>From $50/month</td>
+<td>Free</td>
+<td>Free</td>
+</tr>
+<tr>
+<td>Data location</td>
+<td>100% local</td>
+<td>Cloud (third-party servers)</td>
+<td>Local</td>
+<td>Local</td>
+</tr>
+<tr>
+<td>Architecture</td>
+<td>10-layer (SQLite + graph + Bayesian)</td>
+<td>Graph memory (cloud)</td>
+<td>Key-value store</td>
+<td>Plain text file</td>
+</tr>
+<tr>
+<td>AI tools supported</td>
+<td>17+ via MCP</td>
+<td>API-only integration</td>
+<td>Claude Code only</td>
+<td>Claude Code only</td>
+</tr>
+<tr>
+<td>Knowledge graph</td>
+<td>Yes (Leiden community detection)</td>
+<td>Yes (cloud-hosted)</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Pattern learning</td>
+<td>Yes (Bayesian confidence)</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Cross-tool memory</td>
+<td>Yes (shared MCP database)</td>
+<td>Requires API calls per tool</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Offline support</td>
+<td>Full offline operation</td>
+<td>Requires internet</td>
+<td>Full offline</td>
+<td>Full offline</td>
+</tr>
+<tr>
+<td>Setup time</td>
+<td>Under 5 minutes</td>
+<td>30+ minutes</td>
+<td>10 minutes</td>
+<td>Manual every time</td>
+</tr>
+<tr>
+<td>Search capability</td>
+<td>Full-text + semantic</td>
+<td>API search</td>
+<td>Basic key lookup</td>
+<td>Manual text search</td>
+</tr>
+<tr>
+<td>Multi-profile support</td>
+<td>Yes (work, personal, client)</td>
+<td>Account-based</td>
+<td>No</td>
+<td>Per-file</td>
+</tr>
+<tr>
+<td>Privacy</td>
+<td>Zero telemetry, zero cloud</td>
+<td>Data on vendor servers</td>
+<td>Local only</td>
+<td>Local only</td>
+</tr>
+</tbody>
+</table></div> <p><strong>The biggest differentiator is cross-tool compatibility.</strong> SuperLocalMemory is not locked to Claude Code. The same memory database works with Cursor, Windsurf, VS Code Copilot, ChatGPT Desktop, Codex CLI, Gemini CLI, JetBrains AI Assistant, and every other MCP-compatible tool.</p> <p>Store a memory while using Claude Code. Switch to Cursor for a different task. That memory is available there too. Switch to ChatGPT Desktop for a brainstorming session. Same memories, same context. One local database, accessible from any tool.</p> <p>Manual CLAUDE.md files work for small projects, but they require manual maintenance, do not scale, do not search, and cannot learn patterns. Mem0 offers cloud-based graph memory but starts at $50/month and sends your data to external servers -- a non-starter for proprietary codebases or enterprise environments with data residency requirements.</p> <p>For a detailed breakdown with benchmark data, see the <a href="https://dev.to/comparison">full comparison</a>.</p> <h2> <a name="advanced-knowledge-graph-and-pattern-learning" href="#advanced-knowledge-graph-and-pattern-learning"> </a> Advanced: Knowledge Graph and Pattern Learning
+</h2> <p>Once you have the basics working, SuperLocalMemory's deeper capabilities activate automatically over time.</p> <h3> <a name="knowledge-graph" href="#knowledge-graph"> </a> Knowledge Graph
+</h3> <p>The knowledge graph discovers relationships between your stored memories using Leiden community detection. If you remember that "Project X uses PostgreSQL" and later remember "PostgreSQL needs connection pooling for Lambda deployments," the graph links these memories. When you recall anything about Project X's database setup, both memories surface together -- with the relationship explained.</p> <p>The graph is not static. It rebuilds as you add, modify, and remove memories. Over time, it develops a rich map of your technical landscape: which projects connect to which technologies, which decisions depend on which constraints, which patterns recur across your work.</p> <h3> <a name="pattern-learning" href="#pattern-learning"> </a> Pattern Learning
+</h3> <p>Bayesian confidence scoring tracks your preferences across sessions. As you repeatedly make similar decisions -- choosing TypeScript over JavaScript, preferring Zustand over Redux, using server components over client components -- SuperLocalMemory builds confidence scores around these patterns.</p> <p>After enough observations, it can surface these preferences proactively. Start a new project and ask Claude Code for a state management recommendation -- it already knows your preference and the confidence level behind it.</p> <h3> <a name="multiprofile-support" href="#multiprofile-support"> </a> Multi-Profile Support
+</h3> <p>Isolate memories by context using profiles. Use <code>--profile work</code> for your day job, <code>--profile personal</code> for side projects, <code>--profile client-acme</code> for a specific client engagement. Each profile maintains its own memory database and knowledge graph.</p> <p>Configure per-profile in your MCP settings:<br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"mcpServers"</span><span>:</span><span> </span><span>{</span><span> </span><span>"superlocalmemory"</span><span>:</span><span> </span><span>{</span><span> </span><span>"command"</span><span>:</span><span> </span><span>"superlocalmemory"</span><span>,</span><span> </span><span>"args"</span><span>:</span><span> </span><span>[</span><span>"--mcp"</span><span>,</span><span> </span><span>"--profile"</span><span>,</span><span> </span><span>"work"</span><span>]</span><span> </span><span>}</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>For a deep dive into the full architecture, visit the <a href="https://dev.to/features">features page</a>.</p> <h2> <a name="troubleshooting" href="#troubleshooting"> </a> Troubleshooting
+</h2> <p><strong>"command not found: superlocalmemory"</strong><br>
+Your global npm bin directory is not in your PATH. Run <code>npm bin -g</code> to find where npm installed the binary, then add that directory to your shell's PATH in <code>~/.zshrc</code> or <code>~/.bashrc</code>. Restart your terminal after editing.</p> <p><strong>"MCP server failed to connect"</strong><br>
+Run <code>superlocalmemory --mcp</code> manually in your terminal. If it throws an error, the issue is with the installation, not Claude Code. Reinstall with <code>npm install -g superlocalmemory</code>. If it starts cleanly but Claude Code still cannot connect, verify your <code>.claude/settings.json</code> syntax -- a misplaced comma or bracket will silently break MCP discovery.</p> <p><strong>Memories not persisting</strong><br>
+Verify the SQLite database exists at <code>~/.superlocalmemory/memory.db</code>. If the directory does not exist, SuperLocalMemory may not have write permissions to your home directory. Check permissions with <code>ls -la ~/.superlocalmemory/</code>.</p> <p><strong>Multiple profiles conflicting</strong><br>
+Use explicit profile flags: <code>superlocalmemory --mcp --profile work</code>. Update your <code>.claude/settings.json</code> args to include the profile flag. Each profile creates a separate database file, so there should be no cross-contamination unless you omit the flag and fall back to the default profile.</p> <p>For the full troubleshooting guide and FAQs, see the <a href="https://dev.to/docs">documentation</a>.</p>
+<h2> <a name="next-steps" href="#next-steps"> </a> Next Steps
+</h2> <p>Once you have persistent Claude Code memory running, here are the high-value things to do next:</p> <ol>
+<li><p><strong>Store your project's foundational context.</strong> Architecture decisions, folder structure rationale, API conventions, database schema notes, deployment pipeline details. Anything you have ever had to re-explain to a new team member -- store it.</p></li>
+<li><p><strong>Connect your other AI tools.</strong> If you use Cursor, Windsurf, or any other MCP-compatible tool, add the same MCP server configuration to each. One memory database, every tool connected.</p></li>
+<li><p><strong>Set up profiles for different contexts.</strong> If you work across multiple projects or clients, use <code>--profile</code> flags to keep memories isolated. This prevents context bleed between unrelated codebases.</p></li>
+<li><p><strong>Explore the knowledge graph.</strong> After storing 20-30 memories, the knowledge graph starts producing useful relationship insights. Ask Claude Code to recall broad topics and see how connected memories surface together.</p></li>
+<li><p><strong>Read the <a href="https://dev.to/features">architecture deep dive</a>.</strong> Understanding the 10-layer architecture helps you use the system more effectively -- knowing how confidence scoring works, for example, lets you structure memories to maximize pattern detection.</p></li>
+</ol>
+<h2> <a name="get-started-now" href="#get-started-now"> </a> Get Started Now
+</h2> <p>Persistent Claude Code memory is one command away. No cloud. No cost. No data leaving your machine.<br>
+</p> <div>
+<pre><code>npm <span>install</span> <span>-g</span> superlocalmemory
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Five minutes of setup. Every session after that starts with full context -- your project architecture, your preferences, your decisions, your debugging notes. All searchable, all persistent, all local.</p> <p>The source code is open and available on <a href="https://github.com/varun369/SuperLocalMemoryV2" target="_blank">GitHub</a>. File issues there if you hit problems. If SuperLocalMemory saved you time, consider starring the repo -- it helps other developers find it.</p> <p>Your AI never has to forget again.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

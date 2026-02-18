@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Votre gestionnaire de mots de passe protège-t-il vraiment vos données ?</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Votre gestionnaire de mots de passe protège-t-il vraiment vos données ?</h1>
+  <div class="metadata">
+    Source: GNT | Date: 2/18/2026 5:20:01 PM | <a href="https://www.generation-nt.com/actualites/gestionnaire-mots-passe-securite-faille-bitwarden-lastpass-dashlane-2071020" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><article> <p> Publié le <time> 18 février 2026 à 18:20</time> par <a href="https://www.generation-nt.com/informations/a-propos/jerome.g"><span>Jérôme G.</span></a> </p> <section> <div> <p><span>La promesse d'une sécurité absolue et du chiffrement à connaissance nulle par les gestionnaires de mots de passe est mise à mal par une étude révélant des vulnérabilités avec des serveurs compromis.</span></p> </div> <a href="https://img.generation-nt.com/peur_050002D001700394.webp"> <div> <img src="https://img.generation-nt.com/peur_0298000001700394.jpg" alt="peur"> </div> </a> </section> <div><p>Les gestionnaires de mots de passe sont devenus des outils indispensables pour des millions d'utilisateurs, stockant des centaines de mots de passe derrière un unique mot de passe maître. La plupart de ces services, comme <a href="https://www.generation-nt.com/actualites/windows-11-passkeys-1password-bitwarden-securite-hello-2065946">Bitwarden</a>, <a href="https://www.generation-nt.com/actualites/lastpass-phishing-arnaque-maintenance-2069469">LastPass</a> et Dashlane, vantent un&nbsp;chiffrement à connaissance nulle (<strong>Zero Knowledge Encryption</strong>), assurant que même eux ne peuvent accéder aux données.</p>
+<p>Menée par des chercheurs de l'ETH Zurich et de l'Université de la Suisse italienne,&nbsp;une étude démontre <strong>quelques failles</strong> dans cette belle promesse.</p>
+<h2>Quelles sont les failles découvertes par les chercheurs ?</h2>
+<p>L'équipe a identifié un total de <strong>27 attaques distinctes</strong><a href="https://www.generation-nt.com/"></a>, dont 12 contre Bitwarden, 7 contre LastPass et 6 contre Dashlane. Ces services représentent collectivement plus de 60 millions d'utilisateurs. À noter qu'un analyse supplémentaire concerne 1Password.</p>
+<p>Les attaques, qui supposent un <strong>serveur compromis</strong> se comportant de manière malveillante, vont de la simple violation d'intégrité à la&nbsp;compromission complète de tous les coffres-forts d'une organisation. Dans la majorité des cas, les chercheurs ont pu récupérer les mots de passe.</p>
+<p>Les vulnérabilités exploitent <strong>plusieurs faiblesses communes</strong><a href="https://www.generation-nt.com/"></a>. Celles-ci incluent des mécanismes de récupération de compte non sécurisés, des chiffrements d'éléments individuels défaillants permettant des fuites de métadonnées, des fonctionnalités de partage mal protégées et l'utilisation de protocoles cryptographiques obsolètes&nbsp;qui sont maintenus pour des raisons de rétrocompatibilité.</p>
+<p><a href="https://img.generation-nt.com/eth-zurich-gestionnaires-mots-passe-27-attaques_01720289.webp" target="_blank"> <img src="https://img.generation-nt.com/eth-zurich-gestionnaires-mots-passe-27-attaques_04b0033e01720289.jpg" alt="eth-zurich-gestionnaires-mots-passe-27-attaques"> </a></p>
+<h2>Pourquoi ces systèmes sont-ils vulnérables ?</h2>
+<p>Selon les chercheurs, la <strong>complexité du code</strong><a href="https://www.generation-nt.com/"></a> est un facteur majeur. Dans le but d'offrir des services conviviaux comme le partage familial ou la récupération de compte, les éditeurs ont créé des architectures complexes.</p>
+<p>Matteo Scarlata, l'un des auteurs de l'édute, explique que " <em>le code devient plus complexe et déroutant, et cela élargit la surface d'attaque potentielle pour les hackers</em>&nbsp;". En outre, une certaine réticence à moderniser les systèmes cryptographiques<a href="https://www.generation-nt.com/"></a> a été observée.</p>
+<p>De nombreux fournisseurs " <em>s'en tiennent à des technologies cryptographiques des années 90, même si celles-ci sont <strong>obsolètes</strong> depuis longtemps</em><strong>&nbsp;</strong>", souligne Matteo&nbsp;Scarlata. La crainte principale est de bloquer l'accès des clients à leurs données lors d'une mise à jour majeure du système de chiffrement.</p>
+<h2>Comment les éditeurs ont-ils réagi à ces découvertes ?</h2>
+<p>L'équipe de recherche a suivi un processus de <strong>divulgation responsable</strong><a href="https://www.generation-nt.com/"></a>, accordant aux éditeurs un délai de 90 jours pour corriger les failles avant publication. La plupart des fournisseurs se sont montrés "&nbsp;<em>coopératifs et reconnaissants</em> ".</p>
+<p>Dashlane a par exemple corrigé une faille en supprimant le support pour les anciennes méthodes de cryptographie, tandis que Bitwarden a résolu sept des problèmes identifiés.</p>
+<p>Tous les éditeurs (<a href="https://bitwarden.com/blog/security-through-transparency-eth-zurich-audits-bitwarden-cryptography/" target="_blank">Bitwarden</a>,&nbsp;<a href="https://blog.lastpass.com/posts/details-on-hardening-in-response-to-eth-zurich-reported-security-issues" target="_blank">LastPass</a>, <a href="https://www.dashlane.com/blog/zero-knowledge-malicious-server" target="_blank">Dashlane</a>&nbsp;et <a href="https://1password.com/blog/eth-zurich-zero-knowledge-malicious-server-review" target="_blank">1Password</a>) insistent sur le fait qu'il s'agit d'un scénario d'attaque hypothétique qui nécessite un contrôle total de leurs serveurs, et qu'<strong>aucune exploitation dans la nature</strong> n'a été détectée.</p> </div> <div> <p>Journaliste GNT spécialisé en nouvelles technologies</p> </div> <p>Cette page peut contenir des liens affiliés. Si vous achetez un produit depuis ces liens, le site marchand nous reversera une commission sans que cela n'impacte en rien le montant de votre achat. <a href="https://www.generation-nt.com/informations/conditions-utilisation#affiliation">En savoir plus</a>.</p> </article></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

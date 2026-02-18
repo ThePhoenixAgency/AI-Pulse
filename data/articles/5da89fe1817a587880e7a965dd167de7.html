@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Optimizar el registro de tiempo en sistemas de tickets</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Optimizar el registro de tiempo en sistemas de tickets</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 5:21:38 PM | <a href="https://dev.to/martinezalejandro_de/optimizar-el-registro-de-tiempo-en-sistemas-de-tickets-2g0i" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: ES
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjatptnpjhmws7ma7zl9t.jpg"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjatptnpjhmws7ma7zl9t.jpg" alt="Cover image for Optimizar el registro de tiempo en sistemas de tickets"> </a> </header> <div> <h2> <a name="cuando-los-tickets-no-lo-muestran-todo-c%C3%B3mo-timespin-hace-visible-el-esfuerzo-real" href="#cuando-los-tickets-no-lo-muestran-todo-c%C3%B3mo-timespin-hace-visible-el-esfuerzo-real"> </a> Cuando los tickets no lo muestran todo: cómo TimeSpin hace visible el esfuerzo real
+</h2> <hr> <h2> <a name="1-el-problema-por-qu%C3%A9-los-sistemas-de-tickets-no-son-suficientes" href="#1-el-problema-por-qu%C3%A9-los-sistemas-de-tickets-no-son-suficientes"> </a> 1. El problema: por qué los sistemas de tickets no son suficientes
+</h2> <p>Los sistemas de tickets son excelentes para documentar, priorizar y hacer seguimiento. Sin embargo, cuando se trata de registrar el tiempo, suelen ser incompletos:</p> <ul>
+<li>Registro manual → impreciso, a veces se olvida
+</li>
+<li>Medición por cambio de estado → solo muestra “abierto a cerrado”, pero no el tiempo real de trabajo
+</li>
+<li>Actividades indirectas como reuniones, llamadas o traspasos no quedan reflejadas
+</li>
+</ul> <div><p><strong>Resultado:</strong> RR. HH. y los responsables solo ven una parte del esfuerzo real.</p><p>
+El cumplimiento de SLA, la planificación de capacidad y los análisis de carga de trabajo se basan en datos incompletos, lo que afecta a la productividad, la satisfacción y los costes.</p></div> <hr> <h2> <a name="2-soluciones-existentes-y-sus-l%C3%ADmites" href="#2-soluciones-existentes-y-sus-l%C3%ADmites"> </a> 2. Soluciones existentes… y sus límites
+</h2> <ul>
+<li>Sistemas manuales de registro de tiempo: detallados, pero requieren mucho esfuerzo del equipo
+</li>
+<li>Herramientas separadas (por ejemplo, Excel): fragmentadas y difíciles de consolidar
+</li>
+<li>Optimización de procesos: útil, pero no mide automáticamente el tiempo de cada paso
+</li>
+</ul> <p>Todas estas medidas suelen funcionar de forma aislada y, en muchos casos, generan más frustración que transparencia.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fvl7c1i6holjh7qnd7j3r.jpg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fvl7c1i6holjh7qnd7j3r.jpg" alt=" "></a></p> <hr> <h2> <a name="3-timespin%C2%AE-registro-de-tiempo-f%C3%ADsico-combinado-con-reporting-digital" href="#3-timespin%C2%AE-registro-de-tiempo-f%C3%ADsico-combinado-con-reporting-digital"> </a> 3. TimeSpin: registro de tiempo físico combinado con reporting digital
+</h2> <p><a href="https://www.timespin.net/" target="_blank">TimeSpin</a> es un cubo de registro de tiempo de doce caras que mide automáticamente el tiempo con solo girarlo. Es intuitivo, funciona sin conexión y se combina con un software en la nube para análisis e integración mediante API.</p> <h3> <a name="c%C3%B3mo-funciona" href="#c%C3%B3mo-funciona"> </a> Cómo funciona
+</h3> <ul>
+<li>Cada cara del cubo recibe un ID de ticket (por ejemplo, “TKT-12345”)
+</li>
+<li>El usuario gira el cubo a la cara correspondiente y el temporizador comienza automáticamente
+</li>
+<li>Se pueden añadir comentarios o tipos de actividad (análisis, llamada, pruebas) en el momento o más tarde
+</li>
+<li>Los datos exportados desde TimeSpin (Excel, API) se pueden vincular automáticamente con los datos del sistema de tickets
+</li>
+</ul> <h2> <a href="#"> </a> <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fhonwb21ootxp34mqel00.jpg" alt=" ">
+</h2> <h2> <a name="4-ventajas-de-un-vistazo" href="#4-ventajas-de-un-vistazo"> </a> 4. Ventajas de un vistazo
+</h2> <div><table>
+<thead>
+<tr>
+<th>Grupo objetivo</th>
+<th>Beneficio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Empleados</td>
+<td>Rápido, intuitivo y sin entradas adicionales</td>
+</tr>
+<tr>
+<td>Líderes de soporte</td>
+<td>Información en tiempo real: quién trabajó cuánto en cada ticket</td>
+</tr>
+<tr>
+<td>RR. HH. y Control</td>
+<td>Base de datos fiable para carga de trabajo y facturación</td>
+</tr>
+<tr>
+<td>Dirección</td>
+<td>Datos sólidos para planificación de capacidad y control de SLA</td>
+</tr>
+</tbody>
+</table></div> <h3> <a name="m%C3%A1s-ventajas" href="#m%C3%A1s-ventajas"> </a> Más ventajas
+</h3> <ul>
+<li>Control detallado de los tiempos de flujo de trabajo
+</li>
+<li>Transparencia en lugar de control, lo que aumenta la confianza en el equipo
+</li>
+<li>Exportación de datos y APIs para integración con ERP, CRM y herramientas de reporting
+</li>
+</ul> <hr> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ftfkvaeiptlavgdp5iqqo.jpg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ftfkvaeiptlavgdp5iqqo.jpg" alt=" "></a></p> <h2> <a name="5-qui%C3%A9n-deber%C3%ADa-actuar-ahora" href="#5-qui%C3%A9n-deber%C3%ADa-actuar-ahora"> </a> 5. ¿Quién debería actuar ahora?
+</h2> <ul>
+<li>Líderes de soporte / managers de equipo: para hacer visible el rendimiento real del equipo
+</li>
+<li>Responsables de RR. HH.: para evaluar de forma justa la carga de trabajo
+</li>
+<li>Dirección y controlling: para obtener métricas fiables sobre planificación, costes y eficiencia
+</li>
+<li>Equipos de IT / proyectos: para implementar la integración entre el sistema de tickets y TimeSpin
+</li>
+</ul> <hr> <h2> <a name="6-conclusi%C3%B3n" href="#6-conclusi%C3%B3n"> </a> 6. Conclusión
+</h2> <div><p>Los sistemas de tickets son esenciales para la organización, pero no para un registro completo del tiempo.</p><p>
+<strong>TimeSpin</strong> llena ese vacío: de forma intuitiva, completa y basada en datos.</p></div> <p>El resultado: mejores decisiones, mayor transparencia y una eficiencia claramente superior en el soporte.</p> <hr> <h2> <a name="enlaces-%C3%BAtiles" href="#enlaces-%C3%BAtiles"> </a> Enlaces útiles
+</h2> <ul>
+<li> <a href="https://www.timespin.net/" target="_blank">https://www.timespin.net</a>
+</li>
+<li> <a href="https://genese.de/" target="_blank">https://genese.de</a>
+</li>
+<li> <a href="https://genese.de/de/gweb/" target="_blank">https://genese.de/de/gweb/</a>
+</li>
+<li> <a href="https://genese.de/en/gweb/" target="_blank">https://genese.de/en/gweb/</a>
+</li>
+</ul> <hr> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
