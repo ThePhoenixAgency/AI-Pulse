@@ -1425,7 +1425,29 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       },
       {
         name: 'scribe.rip',
-        transform: (u) => u.includes('medium.com') ? u.replace('medium.com', 'scribe.rip') : null
+        transform: (u) => {
+          try {
+            const parsedUrl = new URL(u);
+            // Safely check if this is a medium.com URL by parsing the hostname
+            if (parsedUrl.hostname === 'medium.com' || parsedUrl.hostname.endsWith('.medium.com')) {
+              return u.replace(parsedUrl.hostname, 'scribe.rip');
+            }
+          } catch (_) {}
+          return null;
+        }
+      },
+      {
+        name: 'freedium',
+        transform: (u) => {
+          try {
+            const parsedUrl = new URL(u);
+            // Safely check if this is a medium.com URL
+            if (parsedUrl.hostname === 'medium.com' || parsedUrl.hostname.endsWith('.medium.com')) {
+              return u.replace(parsedUrl.hostname, 'freedium.app');
+            }
+          } catch (_) {}
+          return null;
+        }
       },
       {
         name: 'web.archive.org',
