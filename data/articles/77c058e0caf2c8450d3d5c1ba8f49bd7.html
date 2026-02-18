@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,13 +34,7 @@
     Source: Programmez | Date: 2/17/2026 9:20:09 AM | <a href="https://www.programmez.com/actualites/recalbox-10-support-de-steam-deck-nouvelle-interface-nouvelles-consoles-39025" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>La distribution de rétro-gaming, Recalbox, est disponible en version 10. Il s'agit d'une évolution majeure de la plateforme. Côté matériel, Recalbox supporte : Raspberry Pi 5 (version 2 Go de RAM) et Raspberry Pi 500
-Compatibilité optimisée avec les PC récents
-Support des boîtiers Retroflag (64Pi Case, DreamCase) et Argon One v3
-Support complet des SteamDeck LCD et OLED avec intégration avancée (luminosité, son, mode veille)
-Support expérimental pour Asus ROG Ally et Lenovo Legion Go La v10 élargit les systèmes émulés :
-- Xbox Gen1 - Model 3, Nintendo DS, GameCube sur Pi 5 (8 Go recommandés)
-Autre changement majeur, l'interface a été entièrement revue pour avoir une interface plus fluide, moins de latences notamment sur les menus, plus de personnlisation, meilleurs rendus que se soit en HDMI ou CRT. Même avec 150 systèmes activés, l'interface doit rester fluide et agréable ce qui n'était pas toujours le cas. En résumé :</p>
+    <div><div><p>La distribution de rétro-gaming, Recalbox, est disponible en version 10. Il s'agit d'une évolution majeure de la plateforme.</p><p><img src="https://www.programmez.com/sites/default/files/styles/taille-maxi/public/images_actus/recalbox10.jpeg?itok=Yn_wyxt-"></p><p>Côté matériel, Recalbox supporte :&nbsp;</p><ul><li>Raspberry Pi 5 (version 2 Go de RAM) et Raspberry Pi 500</li><li>Compatibilité optimisée avec les PC récents</li><li>Support des boîtiers Retroflag (64Pi Case, DreamCase) et Argon One v3</li><li>Support complet des SteamDeck LCD et OLED avec intégration avancée (luminosité, son, mode veille)</li><li>Support expérimental pour Asus ROG Ally et Lenovo Legion Go</li></ul><p>La v10 élargit les systèmes émulés :</p><p>- Xbox Gen1&nbsp;</p><p>- Model 3, Nintendo DS, GameCube sur Pi 5 (8 Go recommandés)</p><p>Autre changement majeur, l'interface a été entièrement revue pour avoir une interface plus fluide, moins de latences notamment sur les menus, plus de personnlisation, meilleurs rendus que se soit en HDMI ou CRT. Même avec 150 systèmes activés, l'interface doit rester fluide et agréable ce qui n'était pas toujours le cas.&nbsp;</p><p>En résumé :</p><ul><li>Nouveau gestionnaire de textures, avec chargement des images en arrière plan, permettant une navigation toujours fluide, même avec plus de 150 systèmes activés</li><li>Nouveaux menus, avec une nouvelle organisation plus intuitive, pour s'y retrouver rapidement</li><li>Saut rapide de système en système avec les gâchettes L et R (bonds de cinq en cinq)</li><li>Logos de systèmes redessinés</li><li>Nouveau thème par défaut personnalisable.</li><li>Une dizaine de thèmes disponibles au lancement</li><li>Prévisualisation, téléchargement et installation en 2 clics</li><li>Mises à jour automatiques</li></ul><p>La gestion des jeux est un autre souci récurrent. Par exemple, la v10 permet de regrouper automatiquement les différentes versions d'un jeu selon les régions prioritaires, éliminer les doublons, supprimer les jeux non fonctionnels, suppression des ROM depuis l'interface, mise à jour par système sans redémarrage, mise à jour de la gamelist en cas de modifications.</p><p>Quelques autres nouveautés :&nbsp;</p><ul><li>Tri par temps de jeu, région, nombre de joueurs, genre, développeur, note…</li><li>En-têtes claires selon le type de tri</li><li>Décorations personnalisables : drapeaux de région, genre, nombre de joueurs…</li><li>Numéro de support affiché (ex : CD 1/2, 2/2) – particulièrement utile pour PlayStation et Amiga (via la personnalisation des dévorations)</li><li>Recherche des différentes versions d'un même jeu sur toutes les plateformes</li><li>Navigation par licence (ex : voir tous les jeux Street Fighter disponibles)</li></ul><p>La version 10 supporte notamment tous les hardwares proposés par Recalbox (HDMI, CRT, Card Reader), etc.&nbsp;</p><p>Annonce de la v10 :&nbsp;<a href="https://www.recalbox.com/fr/blog/2026-02-13-recalbox-10-V10-sortie-retrogaming-emulation-actualite-news/">https://www.recalbox.com/fr/blog/2026-02-13-recalbox-10-V10-sortie-retrogaming-emulation-actualite-news/</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

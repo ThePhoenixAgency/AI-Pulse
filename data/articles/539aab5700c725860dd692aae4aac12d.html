@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Quick Start - kotaemon Docs</title>
+<title>Cinnamon/kotaemon</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,44 +23,19 @@
 </style>
 </head>
 <body>
-  <h1>Quick Start - kotaemon Docs</h1>
+  <h1>Cinnamon/kotaemon</h1>
   <div class="metadata">
-    Source: GitHub Trending Python | Date: 2/18/2026 8:22:29 PM | <a href="https://github.com/Cinnamon/kotaemon" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GitHub Trending Python | Date: 2/18/2026 8:37:03 PM | <a href="https://github.com/Cinnamon/kotaemon" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <article> <a href="https://github.com/Cinnamon/kotaemon/edit/main/docs/index.md"> </a> <div><h2>Getting Started with Kotaemon<a href="#getting-started-with-kotaemon">¶</a></h2> <p>This page is intended for <strong>end users</strong> who want to use the </p><pre><code>kotaemon</code></pre> tool for Question
-Answering on local documents. If you are a <strong>developer</strong> who wants contribute to the project, please visit the <a href="https://cinnamon.github.io/kotaemon/development/">development</a> page.<p></p>
-<h2>Installation (Online HuggingFace Space) - easy (10 mins)<a href="#installation-online-huggingface-space-easy-10-mins">¶</a></h2>
-<p>Visit this <a href="https://cinnamon.github.io/kotaemon/online_install/">guide</a>.</p> <h3>Download<a href="#download">¶</a></h3>
-<p>Download the </p><pre><code>kotaemon-app.zip</code></pre> file from the <a href="https://github.com/Cinnamon/kotaemon/releases/latest/">latest release</a>.<p></p>
-<h3>Run setup script<a href="#run-setup-script">¶</a></h3>
-<ol>
-<li>Unzip the downloaded file.</li>
-<li>Navigate to the <pre><code>scripts</code></pre> folder and start an installer that matches your OS:<ul>
-<li>Windows: <pre><code>run_windows.bat</code></pre>. Just double click the file.</li>
-<li>macOS: <pre><code>run_macos.sh</code></pre><ol>
-<li>Right click on your file and select Open with and Other.</li>
-<li>Enable All Applications and choose Terminal.</li>
-<li>NOTE: If you always want to open that file with Terminal, then check Always Open With.</li>
-<li>From now on, double click on your file and it should work.</li>
-</ol>
-</li>
-<li>Linux: <pre><code>run_linux.sh</code></pre>. Please run the script using <pre><code>bash run_linux.sh</code></pre> in your terminal.</li>
-</ul>
-</li>
-<li>After the installation, the installer will ask to launch the ktem's UI, answer to continue.</li>
-<li>If launched, the application will be open automatically in your browser.</li>
-<li>Default login information is: <pre><code>username: admin / password: admin</code></pre>. You should change this credential right after the first login on the UI.</li>
-</ol>
-<h2>Launch<a href="#launch">¶</a></h2>
-<p>To launch the app after initial setup or any change, simply run the </p><pre><code>run_*</code></pre> script again.<p></p>
-<p>A browser window will be opened and greets you with this screen:</p>
-<p><img alt="Chat tab" src="https://raw.githubusercontent.com/Cinnamon/kotaemon/main/docs/images/chat-tab.png"></p>
-<h2>Usage<a href="#usage">¶</a></h2>
-<p>For how to use the application, see <a href="https://cinnamon.github.io/kotaemon/usage/">Usage</a>. This page will also be available to
-you within the application.</p>
-<h2>Feedback<a href="#feedback">¶</a></h2>
-<p>Feel free to create a bug report or a feature request on our <a href="https://github.com/Cinnamon/kotaemon/issues">repo</a>.</p></div> </article> </div></div>
+    <p>An open-source RAG-based tool for chatting with your documents. kotaemon An open-source clean &amp; customizable RAG UI for chatting with your documents. Built with both end users and developers in mind. Live Demo #1 | Live Demo #2 | Online Install | Colab Notebook (Local RAG) User Guide | Developer Guide | Feedback | Contact Introduction This project serves as a functional RAG UI for both end users who want to do QA on their documents and developers who want to build their own RAG pipeline. +----------------------------------------------------------------------------+
+| End users: Those who use apps built with `kotaemon`. |
+| (You use an app like the one in the demo above) |
+| +----------------------------------------------------------------+ |
+| | Developers: Those who built with `kotaemon`. | |
+| | (You have `import kotaemon` somewhere in your project) | |
+| | +----------------------------------------------------+ | |
+| | | Contributors: Those who make `kotaemon` better.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

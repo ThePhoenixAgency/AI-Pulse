@@ -2,20 +2,14 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - dr-alberto/open_slop: Because your repository isn't a training ground for prompt engineers</title>
+<title>Show HN: Open Slop – A GitHub Action to Triage AI-Generated PR Slop</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,52 +23,14 @@
 </style>
 </head>
 <body>
-  <h1>GitHub - dr-alberto/open_slop: Because your repository isn't a training ground for prompt engineers</h1>
+  <h1>Show HN: Open Slop – A GitHub Action to Triage AI-Generated PR Slop</h1>
   <div class="metadata">
     Source: Hacker News Show | Date: 2/18/2026 7:00:54 PM | <a href="https://github.com/dr-alberto/open_slop" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
   </div>
   <div class="content">
-    <p> <a target="_blank" href="/dr-alberto/open_slop/blob/main/wastebasket.png"><img src="/dr-alberto/open_slop/raw/main/wastebasket.png"></a>
-</p>
-<div><h1>Open Slop</h1><a href="#open-slop"></a></div>
-<p>Because your repository isn't a training ground for prompt engineers.</p>
-<p>Open Slop is a forensic triage bot that protects maintainers from the wave of "drive-by" AI-generated Pull Requests.</p>
-<p>We don't use AI to fight AI. We don't scan code for "AI fingerprints" (which doesn't work anyway). Instead, we look at the one thing a spammer can't fake: <strong>Time and Behavior.</strong></p>
-<p>When a PR is opened, Open Slop instantly acts as a BS-detector and leaves a single triage comment for the maintainer based on three ruthless metrics:</p>
-<ul>
-<li>
-<p><strong>The Velocity Signal</strong>: Did they fork the repo, "understand" the architecture, and write 200 lines of complex logic in 42 seconds? Flagged.</p>
-</li>
-<li>
-<p><strong>The Shotgun Signal</strong>: Did this user open 15 PRs in 15 completely unrelated repositories while you were having breakfast? Flagged.</p>
-</li>
-<li>
-<p><strong>The Ghost Signal</strong>: Is the account older than the milk in your fridge, or was it created yesterday? Flagged.</p>
-</li>
-</ul>
-<p>Stop manually reviewing hallucinations. Let Open Slop separate the real contributors from the resume-farmers.</p>
-<p> <a target="_blank" href="/dr-alberto/open_slop/blob/main/example.png"><img src="/dr-alberto/open_slop/raw/main/example.png"></a>
-</p>
-<div><h2>Usage</h2><a href="#usage"></a></div>
-<p>Add this to your repository's </p><pre><code>.github/workflows/open-slop.yml</code></pre>:<p></p>
-<div><pre><span>name</span>: <span>Open Slop</span> <span>on</span>: <span>pull_request</span>: <span>types</span>: <span>[opened]</span> <span>permissions</span>: <span>pull-requests</span>: <span>write</span> <span>contents</span>: <span>read</span> <span>jobs</span>: <span>triage</span>: <span>runs-on</span>: <span>ubuntu-latest</span> <span>steps</span>: - <span>uses</span>: <span>actions/checkout@v4</span> - <span>uses</span>: <span>dr-alberto/open_slop@main</span> <span>with</span>: <span>github-token</span>: <span>${{ secrets.GITHUB_TOKEN }}</span></pre></div>
-<div><h2>Development</h2><a href="#development"></a></div>
-<div><pre>npm install
-npm run build <span><span>#</span> bundles src/ into dist/ via @vercel/ncc</span></pre></div>
-<blockquote>
-<p><strong>Important:</strong> Commit </p><pre><code>dist/</code></pre> after building — GitHub Actions runs directly from the repo without installing dependencies.<p></p>
-</blockquote>
-<div><h2>Contributing</h2><a href="#contributing"></a></div>
-<p>Want to make the BS-detector better?</p>
-<ol>
-<li>Clone this repo.</li>
-<li>Run <pre><code>npm install</code></pre></li>
-<li>Code</li>
-<li>Run <pre><code>npm run build</code></pre> (This is critical! We run from dist/).</li>
-<li>Open a PR (We will triage it with our own tool. Don't be fast.)</li>
-</ol>
-<div><h2>License</h2><a href="#license"></a></div>
-<p>MIT</p>
+    <p>Article URL: https://github.com/dr-alberto/open_slop URL: https://news.ycombinator.com/item?id=47064821
+Points: 2
+# : 1</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
