@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I built an AI memory API with 3 memory types — here's why facts alone aren't enough published</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I built an AI memory API with 3 memory types — here's why facts alone aren't enough published</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 10:08:31 AM | <a href="https://dev.to/alibaizhanov/i-built-an-ai-memory-api-with-3-memory-types-heres-why-facts-alone-arent-enoughpublished-4ofn" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frqqe2wnh84c8ia8xgu9z.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frqqe2wnh84c8ia8xgu9z.png" alt="Cover image for I built an AI memory API with 3 memory types — here's why facts alone aren't enough published"> </a> <div> <p><a href="https://dev.to/alibaizhanov"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3779201%2F7ebda2f1-f677-4b9b-9506-94f1c75f88db.jpeg" alt="Ali Baizhanov"></a> </p> </div> </div><div> <p>Every AI memory tool I tried had the same problem: they only store facts.</p> <p>"User likes Python." "User lives in Almaty." Cool. But human memory doesn't work like that. We have three types:</p> <ul>
+<li>
+<strong>Semantic</strong> — facts and knowledge ("Python is a programming language")</li>
+<li>
+<strong>Episodic</strong> — events and experiences ("I spent 3 hours debugging that auth bug last Tuesday")</li>
+<li>
+<strong>Procedural</strong> — how to do things ("Deploy: build → upload → push → verify")</li>
+</ul> <p>I built <a href="https://mengram.io/" target="_blank">Mengram</a> to give AI all three. Here's what I learned building it.</p> <h2> <a name="the-problem" href="#the-problem"> </a> The Problem
+</h2> <p>I was building AI agents that needed to remember things across sessions. Tried Mem0, tried rolling my own with pgvector. Same issue every time:</p> <p>My agent could remember that I use Railway for hosting. But it couldn't remember that last Friday's deploy broke because I forgot to run migrations. And it definitely couldn't remember that the correct deploy process is: test → build → push → migrate → verify.</p> <p>That's three different kinds of memory, and every existing tool only handles the first one.</p> <h2> <a name="the-solution-3-memory-types-from-1-api-call" href="#the-solution-3-memory-types-from-1-api-call"> </a> The Solution: 3 Memory Types from 1 API Call
+</h2> <p>Mengram extracts all three types automatically:<br>
+</p> <div>
+<pre><code><span>from</span> <span>mengram.cloud.client</span> <span>import</span> <span>CloudMemory</span> <span>m</span> <span>=</span> <span>CloudMemory</span><span>(</span><span>api_key</span><span>=</span><span>"</span><span>om-...</span><span>"</span><span>)</span> <span>m</span><span>.</span><span>add</span><span>([</span> <span>{</span><span>"</span><span>role</span><span>"</span><span>:</span> <span>"</span><span>user</span><span>"</span><span>,</span> <span>"</span><span>content</span><span>"</span><span>:</span> <span>"</span><span>Fixed the auth bug today. The problem was API key cache TTL was set to 0. My debug process: check Railway logs, reproduce locally, fix and deploy.</span><span>"</span><span>}</span>
+<span>])</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>One call. Mengram's LLM extraction pipeline produces:</p> <ul>
+<li>
+<strong>Semantic:</strong> "API key cache TTL of 0 caused auth bug"</li>
+<li>
+<strong>Episodic:</strong> "Debugged auth bug, root cause was cache TTL, fixed and deployed"</li>
+<li>
+<strong>Procedural:</strong> "Debug process: check logs → reproduce locally → fix → deploy"</li>
+</ul> <h2> <a name="the-killer-feature-procedural-learning" href="#the-killer-feature-procedural-learning"> </a> The Killer Feature: Procedural Learning
+</h2> <p>This is what no competitor has.</p> <p>Your AI agent completes a multi-step task. Mengram saves the steps as a procedure with success/failure tracking. Next time a similar task comes up, the agent already knows the optimal path.<br>
+</p> <div>
+<pre><code>Day 1: Agent figures out deployment → test → build → push → migrate → verify → Mengram saves as procedure (1 success, 0 failures) Day 5: Agent deploys again → Finds procedure in memory → Follows proven path → Records success (2 successes, 0 failures) Day 12: Agent skips tests, deploy breaks → Records failure (2 successes, 1 failure) → Next time: "This procedure works better with tests first"
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The AI literally learns from its own experience. Not from fine-tuning, not from few-shot examples — from actual procedural memory.</p> <h2> <a name="smart-triggers-memory-that-raises-its-hand" href="#smart-triggers-memory-that-raises-its-hand"> </a> Smart Triggers: Memory That Raises Its Hand
+</h2> <p>Most memory is passive — you ask, it answers. Mengram also has proactive memory:</p> <ul>
+<li>
+<strong>Reminders:</strong> "You mentioned a meeting with Anya tomorrow at 3pm" → fires webhook 1 hour before</li>
+<li>
+<strong>Contradictions:</strong> Memory says "Anya is vegetarian" → you say "order steaks for dinner with Anya" → alert</li>
+<li>
+<strong>Patterns:</strong> 3 out of 5 Friday deploys had bugs → "Maybe wait until Monday?"</li>
+</ul> <p>These fire automatically via webhooks — works with Slack, Discord, OpenClaw, or any endpoint.</p> <h2> <a name="integrations" href="#integrations"> </a> Integrations
+</h2> <p>Mengram works as a memory layer for any AI stack:</p> <ul>
+<li>
+<strong>Claude Desktop</strong> — MCP server, just add to config</li>
+<li>
+<strong>LangChain</strong> — drop-in <code>MengramMemory</code> class replacing <code>ConversationBufferMemory</code>
+</li>
+<li>
+<strong>CrewAI</strong> — 5 tools including <code>mengram_save_workflow</code> for procedural learning</li>
+<li>
+<strong>OpenClaw</strong> — skill on ClawHub with bash scripts for all channels</li>
+<li>
+<strong>Any LLM</strong> — REST API + Python/JS SDKs
+</li>
+</ul> <div>
+<pre><code>pip <span>install </span>mengram-ai <span># Python</span>
+npm <span>install </span>mengram-ai <span># JavaScript</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="cognitive-profile" href="#cognitive-profile"> </a> Cognitive Profile
+</h2> <p>One API call generates a system prompt from everything Mengram knows about a user:<br>
+</p> <div>
+<pre><code><span>profile</span> <span>=</span> <span>m</span><span>.</span><span>get_profile</span><span>()</span>
+<span>print</span><span>(</span><span>profile</span><span>[</span><span>"</span><span>system_prompt</span><span>"</span><span>])</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <div>
+<pre><code>You are talking to Ali, a 22-year-old developer in Almaty building Mengram.
+He uses Python, PostgreSQL, and Railway. Recently: debugged pgvector deployment,
+researched competitors. Workflows: deploys via build→twine→npm→git.
+Communicate in Russian/English, direct style, focus on practical next steps.
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Insert into any LLM for instant personalization. Replaces your RAG pipeline.</p> <h2> <a name="architecture" href="#architecture"> </a> Architecture
+</h2> <p>Built on PostgreSQL + pgvector. No separate vector database needed.<br>
+</p> <div>
+<pre><code>Your AI Client (Claude, GPT, any LLM) │ ▼
+Mengram Cloud API ├── LLM Extraction (entities, episodes, procedures) ├── Embedding (OpenAI text-embedding-3-large) ├── Hybrid Search (vector + full-text + re-ranking) ├── Smart Triggers (reminders, contradictions, patterns) └── Memory Agents (Curator, Connector, Digest) │ ▼
+PostgreSQL + pgvector ├── Entities &amp; Facts (semantic) ├── Episodes (episodic) ├── Procedures (procedural) └── Embeddings (1536-dim vectors)
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="what-i-learned" href="#what-i-learned"> </a> What I Learned
+</h2> <p><strong>1. Extraction is everything.</strong> The quality of your memory system depends entirely on how well you extract structured data from conversations. I went through 3 versions of the extraction prompt before it reliably separated facts from events from procedures.</p> <p><strong>2. Contradiction detection is harder than it sounds.</strong> "I'm vegetarian" and "I love steak" — obvious contradiction. "I prefer dark mode" and "I switched to light mode" — is that a contradiction or an update? LLM-based conflict resolution was the answer.</p> <p><strong>3. Procedural memory is the moat.</strong> Every competitor does semantic memory. Some do episodic. Nobody does procedural with success/failure tracking. This is what makes agents genuinely learn from experience.</p> <h2> <a name="try-it" href="#try-it"> </a> Try It
+</h2> <p>Free tier, no credit card, 60-second setup:</p> <ol>
+<li>Sign up at <a href="https://mengram.io/" target="_blank">mengram.io</a>
+</li>
+<li><code>pip install mengram-ai</code></li>
+<li>Start adding memories</li>
+</ol> <p>Open source (Apache 2.0): <a href="https://github.com/AiBaizhanov/mengram" target="_blank">github.com/AiBaizhanov/mengram</a></p> <p>API docs: <a href="https://mengram.io/docs" target="_blank">mengram.io/docs</a></p> <hr> <p>I'd love feedback — especially from anyone building AI agents. What memory challenges are you running into?</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

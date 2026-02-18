@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - benstopics/powerbasilisk: An open-source 64-bit PowerBasic compiler written in Rust targeting LLVM</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - benstopics/powerbasilisk: An open-source 64-bit PowerBasic compiler written in Rust targeting LLVM</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 8:40:56 AM | <a href="https://github.com/benstopics/powerbasilisk" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <p> <a target="_blank" href="/benstopics/powerbasilisk/blob/main/assets/powerbasilisk-hero.png"><img src="/benstopics/powerbasilisk/raw/main/assets/powerbasilisk-hero.png" alt="PowerBasilisk"></a>
+</p>
+<div><h1>PowerBasilisk</h1><a href="#powerbasilisk"></a></div>
+<p> <b>An open-source 64-bit PowerBASIC compiler written in Rust, targeting LLVM IR</b>
+</p>
+<p> <a href="https://github.com/benstopics/powerbasilisk/actions/workflows/ci.yml"><img src="https://github.com/benstopics/powerbasilisk/actions/workflows/ci.yml/badge.svg" alt="CI"></a> <a href="https://github.com/benstopics/powerbasilisk/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/35b94db23d3ed026343335f74d52ce31e74b77ad7dab4e4b89f49f2026e0937f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4170616368652d2d322e302d626c7565" alt="License"></a> <a href="https://www.rust-lang.org/"><img src="https://camo.githubusercontent.com/3088ba2e6144c85eaea3e3405d72847bfb714496eaf309f41b8e936d082f82a1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f727573742d312e37352532422d6f72616e67653f6c6f676f3d72757374" alt="Rust"></a> <a href="https://llvm.org/"><img src="https://camo.githubusercontent.com/53a633173f2ba6573543f73629f43580a01e41670c3ddbdf37abc3458700c685/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c4c564d2d31372532422d626c75653f6c6f676f3d6c6c766d" alt="LLVM"></a> <a href="https://github.com/benstopics/powerbasilisk"><img src="https://camo.githubusercontent.com/b4c79629c573e478d26e3fc73379f4b6cc6b0b9fbac00cd57782cbe1e88df54a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f62656e73746f706963732f706f776572626173696c69736b3f7374796c653d736f6369616c" alt="Stars"></a>
+</p>
+<hr>
+<p>PowerBasilisk compiles <a href="https://en.wikipedia.org/wiki/PowerBASIC">PowerBASIC</a> 9.x source code to <strong>LLVM IR</strong>, then uses </p><pre><code>clang</code></pre> to produce native executables, DLLs, or object files. It is written entirely in Rust with <strong>zero external crate dependencies</strong> for the core frontend.<p></p>
+<p>The compiler generates LLVM IR as <strong>plain text</strong> (no </p><pre><code>inkwell</code></pre> or <pre><code>llvm-sys</code></pre> bindings required), making it easy to build and inspect the output at every stage. It also includes <pre><code>pbinterp</code></pre>, a Rust-based PowerBASIC interpreter for running unit tests without compiling.<p></p>
+<div><h2>Why PowerBasilisk Exists</h2><a href="#why-powerbasilisk-exists"></a></div>
+<p>Bob Zale founded <a href="https://en.wikipedia.org/wiki/PowerBASIC">PowerBASIC</a> in 1989, a fast native-code BASIC compiler for DOS and Windows. It built a loyal community of developers who shipped real production software with it for decades.</p>
+<p>Zale died in 2012. In 2017, <strong>Drake Software</strong> (owned by <strong>Cinven</strong>, a European private equity firm) acquired the PowerBASIC source code and assets, promising to continue development. But they not only released nothing, but they killed the website and shut down the community forums without warning destroying decades of accumulated knowledge, code samples, and developer discussions overnight.</p>
+<div><h3>Wall Street Raider</h3><a href="#wall-street-raider"></a></div>
+<p>The project that drives PowerBasilisk's development is <a href="https://www.wallstreetraider.com">Wall Street Raider</a> which is a 180,000-line PowerBASIC financial simulation written over 40 years by Michael Jenkins, a Harvard-trained lawyer and CPA who retired at 42 to build it. It covers 1,600 companies with stocks, bonds, options, futures, swaps, ETFs, antitrust, and tax accounting based on actual IRS rules. Multiple teams spent years and hundreds of thousands of dollars trying to rewrite it in other languages. None succeeded.</p>
+<p>In 2024, <a href="https://github.com/benstopics">Ben Ward</a> figured out the approach that works: don't rewrite the engine, wrap it. He built a modern Electron/Preact UI that talks to Jenkins' untouched PowerBASIC engine through a C++ REST bridge. The <a href="https://store.steampowered.com/app/3525620/Wall_Street_Raider/">remaster is on Steam</a>.</p>
+<p>However, issues began to arise with this approach. The Foreign Function Interface (FFI) layer was complex and brittle, leading to frequent crashes and memory leaks. So Ben built PowerBasilisk, not only in the hopes of running Wall Street Raider in 64-bit and one day on Linux and macOS, but also to develop an automated test harness for Jenkins' codebase to catch regressions and ensure stability as he continues to add features and content.</p>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code> PowerBasilisk Compiler Pipeline ┌───────────┐ ┌───────┐ ┌───────┐ ┌──────────┐ ┌──────────┐ │ PB Source │───&gt;│ Prepr │───&gt;│ Lex │───&gt;│ Parse │───&gt;│ Codegen │ │ (.bas) │ │ ocess │ │ │ │ (AST) │ │(LLVM IR) │ └───────────┘ └───────┘ └───────┘ └──────────┘ └───┬──────┘ │ │ │ │ ┌──────────┐ │ v └─────&gt;│ pbinterp │&lt;───────┘ ┌──────────┐ │ (AST │ │ .ll file │ │ interp.) │ └────┬─────┘ └──────────┘ │ clang v ┌─────────────────┐ │ .obj / .exe / │ │ .dll │ └─────────────────┘
+</code></pre></div>
+<div><h3>Crate Structure</h3><a href="#crate-structure"></a></div>
+<table>
+<thead>
+<tr>
+<th>Crate</th>
+<th>Purpose</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/benstopics/powerbasilisk/blob/main/pb"><strong><pre><code>pb</code></pre></strong></a></td>
+<td>Shared frontend: lexer, parser, AST, preprocessor. Zero dependencies.</td>
+<td><a href="/benstopics/powerbasilisk/blob/main/pb/README.md">README</a></td>
+</tr>
+<tr>
+<td><a href="/benstopics/powerbasilisk/blob/main/pbcompiler"><strong><pre><code>pbcompiler</code></pre></strong></a></td>
+<td>LLVM IR code generation, linking, CLI driver. Depends on <pre><code>pb</code></pre>.</td>
+<td><a href="/benstopics/powerbasilisk/blob/main/pbcompiler/README.md">README</a></td>
+</tr>
+<tr>
+<td><a href="/benstopics/powerbasilisk/blob/main/pbinterp"><strong><pre><code>pbinterp</code></pre></strong></a></td>
+<td>AST interpreter for running PB code directly. Depends on <pre><code>pb</code></pre>.</td>
+<td><a href="/benstopics/powerbasilisk/blob/main/pbinterp/README.md">README</a></td>
+</tr>
+</tbody>
+</table>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div> <p>Grab the latest release from <a href="https://github.com/benstopics/powerbasilisk/releases">GitHub Releases</a>. Prebuilt binaries are available for:</p>
+<ul>
+<li><strong>Windows</strong> (x86_64) — <pre><code>pbcompiler.exe</code></pre>, <pre><code>pbinterp.exe</code></pre></li>
+<li><strong>macOS</strong> (x86_64, Apple Silicon) — <pre><code>pbcompiler</code></pre>, <pre><code>pbinterp</code></pre></li>
+<li><strong>Linux</strong> (x86_64, aarch64) — <pre><code>pbcompiler</code></pre>, <pre><code>pbinterp</code></pre></li>
+</ul>
+<p>Extract the archive and add the directory to your </p><pre><code>PATH</code></pre>, or run the binaries directly.<p></p>
+<div><h3>Option 2: Build from source</h3><a href="#option-2-build-from-source"></a></div>
+<p>Requires <strong>Rust</strong> 1.75+:</p>
+<div><pre>git clone https://github.com/benstopics/powerbasilisk.git
+<span>cd</span> powerbasilisk
+cargo build --release</pre></div>
+<p>This builds two binaries in </p><pre><code>target/release/</code></pre>:<p></p>
+<ul>
+<li><pre><code>pbcompiler</code></pre> — the compiler (PB source → LLVM IR → native)</li>
+<li><pre><code>pbinterp</code></pre> — the interpreter (PB source → direct execution)</li>
+</ul>
+<div><h3>Prerequisites for compilation</h3><a href="#prerequisites-for-compilation"></a></div>
+<p><strong>LLVM/Clang</strong> 17+ is required for </p><pre><code>pbcompiler</code></pre> to compile generated IR to native code:<p></p>
+<ul>
+<li>Windows: <pre><code>winget install LLVM.LLVM</code></pre></li>
+<li>macOS: <pre><code>brew install llvm</code></pre></li>
+<li>Linux: <pre><code>apt install clang llvm</code></pre> or equivalent</li>
+</ul>
+<p></p><pre><code>pbinterp</code></pre> does <strong>not</strong> require LLVM — it interprets PB code directly from the AST.<p></p>
+<div><h3>Compile a PowerBASIC program</h3><a href="#compile-a-powerbasic-program"></a></div>
+<div><pre><span><span>#</span> Compile to object file (32-bit, the default)</span>
+pbcompiler build hello.bas -o hello <span><span>#</span> Compile to executable</span>
+pbcompiler build hello.bas -o hello --exe \ --runtime-lib pbcompiler/runtime/pb_runtime.obj <span><span>#</span> Compile to DLL</span>
+pbcompiler build mylib.bas -o mylib --dll <span><span>#</span> Emit LLVM IR only (for inspection)</span>
+pbcompiler build hello.bas -o hello --emit-llvm</pre></div>
+<div><h3>Targeting 32-bit vs 64-bit</h3><a href="#targeting-32-bit-vs-64-bit"></a></div>
+<p>The compiler defaults to 32-bit (</p><pre><code>i686-pc-windows-msvc</code></pre>) for compatibility with legacy PowerBASIC code. Use <pre><code>--target</code></pre> to select a different architecture:<p></p>
+<div><pre><span><span>#</span> 32-bit (default) — compatible with original PowerBASIC binaries</span>
+pbcompiler build hello.bas -o hello --exe \ --runtime-lib pbcompiler/runtime/pb_runtime.obj <span><span>#</span> 64-bit</span>
+pbcompiler build hello.bas -o hello --exe \ --target x86_64-pc-windows-msvc \ --runtime-lib pbcompiler/runtime/pb_runtime_x64.obj</pre></div>
+<p>The runtime library must be compiled for the same target:</p>
+<div><pre><span><span>#</span> Build 32-bit runtime (default)</span>
+clang -c --target=i686-pc-windows-msvc pbcompiler/runtime/pb_runtime.c \ -o pbcompiler/runtime/pb_runtime.obj <span><span>#</span> Build 64-bit runtime</span>
+clang -c --target=x86_64-pc-windows-msvc pbcompiler/runtime/pb_runtime.c \ -o pbcompiler/runtime/pb_runtime_x64.obj</pre></div>
+<p>Both the compiler output and the runtime must use the same target triple. Mixing 32-bit and 64-bit objects produces linker error 1112 (machine type mismatch).</p>
+<div><h3>Interpret a PowerBASIC program</h3><a href="#interpret-a-powerbasic-program"></a></div>
+<div><pre><span><span>#</span> Run a PB program directly (no compilation needed)</span>
+pbinterp run hello.bas <span><span>#</span> Run with timeout</span>
+pbinterp run tests.bas --timeout 120 <span><span>#</span> Dump preprocessed output</span>
+pbinterp dump hello.bas</pre></div>
+<div><h2>CLI Reference</h2><a href="#cli-reference"></a></div>
+<div><h3>pbcompiler</h3><a href="#pbcompiler"></a></div>
+<div><pre><code>pbcompiler build &lt;file.bas&gt; [options] Options: -o &lt;path&gt; Output path (default: input with .obj extension) --exe Link to standalone executable --dll Link to shared library (DLL) --session-struct Wrap all globals into a single exported struct --emit-llvm Emit .ll file only (skip clang compilation) --parse-only Parse and exit (no codegen) --debug Enable debug mode (function tracing, crash handler) --runtime-lib &lt;path&gt; Path to pb_runtime.obj for linking --lib-dir &lt;path&gt; Directory containing import libraries (.lib) --target &lt;triple&gt; LLVM target triple (default: i686-pc-windows-msvc) --split-threshold &lt;N&gt; Split functions exceeding N IR lines (default: off)
+</code></pre></div>
+<div><h3>pbinterp</h3><a href="#pbinterp"></a></div>
+<div><pre><code>pbinterp run &lt;file.bas&gt; [options] Options: --timeout &lt;seconds&gt; Execution timeout (default: none) --json &lt;path&gt; Write test results as JSON --filter &lt;pattern&gt; Only run test suites matching pattern pbinterp dump &lt;file.bas&gt; Dump preprocessed source (after #INCLUDE resolution)
+</code></pre></div>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions are welcome! There are two main ways to help:</p>
+<div><h3>Submit code changes</h3><a href="#submit-code-changes"></a></div>
+<p>Open an issue or pull request on GitHub. For development setup:</p>
+<div><pre><span><span>#</span> Build in debug mode (faster compilation)</span>
+cargo build <span><span>#</span> Run clippy</span>
+cargo clippy --all-targets <span><span>#</span> Format code</span>
+cargo fmt --all</pre></div>
+<div><h3>Share your PowerBASIC source code</h3><a href="#share-your-powerbasic-source-code"></a></div>
+<p>If you have a PowerBASIC codebase you'd like to compile with PowerBasilisk, send your source to <strong>Ben Ward</strong> at <a href="mailto:benstopics@gmail.com">benstopics@gmail.com</a>. He will:</p>
+<ul>
+<li>Use your code as a <strong>litmus test</strong> for compiler compatibility</li>
+<li>Write tests based on your program's expected behavior</li>
+<li>Troubleshoot any compilation or runtime issues for you</li>
+<li>Report back what works and what still needs compiler support</li>
+</ul>
+<p>This is one of the most valuable ways to contribute — real-world PowerBASIC code exposes edge cases and missing features that synthetic tests don't catch. Your code helps make PowerBasilisk work for everyone.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/benstopics/powerbasilisk/blob/main/LICENSE">Apache-2.0</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

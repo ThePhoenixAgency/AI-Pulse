@@ -53,8 +53,11 @@
 <li>Tunnel manager, heartbeat cron jobs, setup wizard, observability traces, evals, and telemetry metrics</li>
 </ul>
 <div><h2>Quick Start</h2><a href="#quick-start"></a></div>
-<div><pre>npm run start</pre></div>
-<p>Server starts on </p><pre><code>http://localhost:3001</code></pre>.<p></p>
+<div><pre>cp .env.example .env
+npm run start</pre></div>
+<p>Server starts on </p><pre><code>http://localhost:3001</code></pre>.
+Local runtime commands (<pre><code>start</code></pre>, <pre><code>worker</code></pre>, <pre><code>ui</code></pre>) auto-load <pre><code>./.env</code></pre> by default.
+Shell env vars still win if already set.<p></p>
 <p>Run background autonomy loops in a second process:</p>
 <div><pre>npm run worker</pre></div>
 <div><h2>Docker Quick Start (API + Worker + Postgres + Redis)</h2><a href="#docker-quick-start-api--worker--postgres--redis"></a></div>
@@ -159,7 +162,7 @@ docker compose up --build</pre></div>
 </ul>
 </li>
 <li>Prisma datastore no longer leaves channel/runtime/security/memory methods as empty stubs.</li>
-<li>Docker image now installs backend adapters needed by <pre><code>STATE_BACKEND=postgres_redis</code></pre>.</li>
+<li>Backend adapters (<pre><code>pg</code></pre>, <pre><code>redis</code></pre>) are now first-class npm dependencies for reliable local, CI, and Docker runs.</li>
 </ul>
 <div><h3>Local CLI UI (agent select + model select + chat)</h3><a href="#local-cli-ui-agent-select--model-select--chat"></a></div>
 <div><pre>npm run ui</pre></div>
@@ -168,6 +171,13 @@ docker compose up --build</pre></div>
 <li>select or create an agent</li>
 <li>assign/update that agent's model policy (<pre><code>provider/model</code></pre> with fallbacks)</li>
 <li>chat locally with that selected agent</li>
+<li>use a richer console UX with:
+<ul>
+<li>session status panel (workspace, role, model, web access, soul values)</li>
+<li>command palette (<pre><code>/help</code></pre>, <pre><code>/switch</code></pre>, <pre><code>/model</code></pre>, <pre><code>/who</code></pre>, <pre><code>/history</code></pre>, <pre><code>/clear</code></pre>, <pre><code>/exit</code></pre>)</li>
+<li>structured chat cards and in-flight "agent is thinking" spinner</li>
+</ul>
+</li>
 </ul>
 <div><h3>Optional LLM Providers</h3><a href="#optional-llm-providers"></a></div>
 <p>Set any provider keys you want to use:</p>

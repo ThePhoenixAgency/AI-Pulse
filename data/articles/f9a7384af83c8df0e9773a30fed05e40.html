@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I built an open-source Vercel alternative in Rust — here's what I learned</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I built an open-source Vercel alternative in Rust — here's what I learned</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 8:54:40 AM | <a href="https://dev.to/david_viejo_4d48fdfa7cfff/i-built-an-open-source-vercel-alternative-in-rust-heres-what-i-learned-3oel" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>I come from a DevOps and blockchain background. I've spent years managing infrastructure, wrangling containers, and thinking about how systems should be architected. So when I started shipping web apps and saw what developers were paying for deployment platforms, something felt off.</p> <p>Vercel's DX is incredible — I won't pretend otherwise. <code>git push</code> and your app is live. But then you look at the bill: $20/seat/month. Bandwidth overages. And that's just hosting. You still need Sentry for error tracking ($26/mo), something like PostHog for session replay and analytics, an uptime monitoring tool, maybe a transactional email service. Suddenly you're juggling six SaaS subscriptions for what is fundamentally one job: running your app and knowing what's happening inside it.</p> <p>As someone who's managed infrastructure professionally, I kept thinking: all of this can run on a single $20 VPS. The data is just HTTP requests, error payloads, and time-series metrics. There's no technical reason this needs to be six separate services.</p> <p>So I built <a href="https://github.com/gotempsh/temps" target="_blank">Temps</a>.</p> <h2> <a name="what-is-temps-in-one-sentence" href="#what-is-temps-in-one-sentence"> </a> What is Temps, in one sentence
+</h2> <p>An open-source, self-hosted deployment platform with built-in analytics, error tracking, session replay, uptime monitoring, and transactional email. Runs on any VPS. Dual-licensed under MIT and Apache 2.0.<br>
+</p> <div>
+<pre><code>curl <span>-fsSL</span> https://temps.sh/deploy.sh | sh
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's the entire install. One command, on any Linux server. From bare server to first deployment in under 3 minutes.</p> <h2> <a name="why-rust" href="#why-rust"> </a> Why Rust
+</h2> <p>I didn't start with Rust. The first prototype was Node.js. It worked, but the resource footprint was brutal — the deployment server itself was eating 800MB of RAM just idling. When the thing that <em>deploys your apps</em> needs more resources than the apps it's deploying, something is wrong.</p> <p>Rust brought that down dramatically. But the real win was <a href="https://github.com/cloudflare/pingora" target="_blank">Cloudflare Pingora</a> — their open-source proxy engine. Pingora handles reverse proxying, TLS termination (with dynamic SNI-based certificate loading), HTTP/2, and connection management. Building on top of it meant I got battle-tested networking code from a company that handles a significant chunk of internet traffic, instead of writing my own proxy from scratch.</p> <p>The stack ended up being:</p> <ul>
+<li>
+<strong>Rust</strong> — 51 workspace crates covering the entire platform</li>
+<li>
+<strong>Axum</strong> — HTTP framework for the API</li>
+<li>
+<strong>Sea-ORM</strong> — database access layer</li>
+<li>
+<strong>Pingora</strong> — Cloudflare's proxy engine for reverse proxying and TLS</li>
+<li>
+<strong>Bollard</strong> — Docker API client for container management</li>
+<li>
+<strong>PostgreSQL + TimescaleDB</strong> — app data + time-series analytics/metrics</li>
+</ul> <p>Everything runs as a single binary. No Kubernetes. No microservices. One process that handles deployments, proxying, analytics ingestion, error collection, monitoring, email, and more. My DevOps background made me appreciate this kind of simplicity — fewer moving parts means fewer things to debug at 3am.</p> <h2> <a name="the-hard-problems-nobody-warns-you-about" href="#the-hard-problems-nobody-warns-you-about"> </a> The hard problems nobody warns you about
+</h2> <p>Building a deployment platform sounds straightforward until you actually try it. Here's what surprised me.</p> <h3> <a name="zerodowntime-deployments" href="#zerodowntime-deployments"> </a> Zero-downtime deployments
+</h3> <p>The naive approach — stop old container, start new one — creates a gap. Even a 2-second gap means dropped requests and angry users.</p> <p>Temps uses a blue-green deployment pattern:</p> <ol>
+<li>
+<strong>Build</strong> the new container image</li>
+<li>
+<strong>Deploy and health check</strong> the new container <em>alongside</em> the old one (HTTP health checks with a configurable timeout, up to 300 seconds)</li>
+<li>
+<strong>Shift traffic</strong> to the new container once health checks pass</li>
+<li>
+<strong>Tear down</strong> the old container only after the new one is confirmed healthy</li>
+</ol> <p>If the new container fails health checks or crashes, the old container stays running and the deployment is marked as failed. No downtime.</p> <h3> <a name="framework-autodetection-is-a-rabbit-hole" href="#framework-autodetection-is-a-rabbit-hole"> </a> Framework auto-detection is a rabbit hole
+</h3> <p>"Just detect the framework from the project files" sounds simple. In practice:</p> <ul>
+<li>A project with both <code>next.config.js</code> and a <code>Dockerfile</code> — which one wins?</li>
+<li>A Python project with <code>requirements.txt</code>, <code>Pipfile</code>, AND <code>pyproject.toml</code> — which dependency manager?</li>
+<li>A Node.js project — is it Next.js, Vite, Nuxt, Remix, Astro, NestJS, or plain Express?</li>
+<li>A monorepo with 4 different frameworks in subdirectories</li>
+</ul> <p>I built a detection system that reads <code>package.json</code> dependencies, checks for framework-specific config files, and detects package managers from lock files (npm, yarn, pnpm, bun). It handles Next.js, Vite, Astro, Nuxt, Remix, NestJS, Vue, Express, Docusaurus, CRA, Rsbuild, Python, Go, Rust, Java, .NET, and anything with a Dockerfile. The Dockerfile always wins if present.</p> <p>Each detected preset generates a Dockerfile automatically. The result: most projects deploy with zero configuration.<br>
+</p> <div>
+<pre><code>bunx @temps-sdk/cli deploy
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>No <code>temps.json</code>. No <code>temps.yaml</code>. No build configuration file. It just figures it out.</p> <h3> <a name="sentrycompatible-error-tracking" href="#sentrycompatible-error-tracking"> </a> Sentry-compatible error tracking
+</h3> <p>I didn't want to build a toy error tracker. I wanted something you could actually use in production instead of Sentry.</p> <p>The key decision: <strong>make it Sentry-compatible at the protocol level.</strong> Temps implements the Sentry envelope format — it parses events, transactions, sessions, and spans using <code>relay-event-schema</code> (Sentry's own Rust types). If you're already using <code>@sentry/nextjs</code> or <code>sentry-sdk</code> for Python, you change one line — the DSN endpoint — and your errors flow into Temps instead.<br>
+</p> <div>
+<pre><code><span>// Before</span>
+<span>Sentry</span><span>.</span><span>init</span><span>({</span> <span>dsn</span><span>:</span> <span>"</span><span>https://abc@sentry.io/123</span><span>"</span> <span>});</span> <span>// After</span>
+<span>Sentry</span><span>.</span><span>init</span><span>({</span> <span>dsn</span><span>:</span> <span>"</span><span>https://abc@your-server.com/123</span><span>"</span> <span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Same SDK. Same error grouping. Same stack traces. Source map support included. Zero per-event fees.</p> <p>I'd rather be compatible with the ecosystem than force people to learn a new tool.</p> <h3> <a name="session-replay-with-rrweb" href="#session-replay-with-rrweb"> </a> Session replay with rrweb
+</h3> <p>The session replay feature uses <a href="https://www.rrweb.io/" target="_blank">rrweb</a> — the same recording library used by PostHog, LogRocket, and others. The React SDK (<code>@temps-sdk/react-analytics</code>) records DOM mutations and user interactions on the client, compresses them with zlib, and sends them to Temps where they're stored alongside the rest of your analytics data.</p> <p>You can watch real user sessions directly in the Temps dashboard, correlated with errors, page views, and performance data. No separate session replay subscription needed.</p> <h2> <a name="what-i-got-wrong" href="#what-i-got-wrong"> </a> What I got wrong
+</h2> <p>I'll save you the hero narrative. I made plenty of mistakes building this solo.</p> <p><strong>I underestimated managed databases.</strong> The first version required you to set up your own PostgreSQL and Redis. Nobody wanted to do that. Temps now provisions Postgres, Redis, S3 (via RustFS), and MongoDB alongside your apps — handles creation, backups, and teardown.</p> <p><strong>The first CLI was overengineered.</strong> It had too many flags and options. I rewrote it to have sensible defaults for everything. Now the most common flow is two commands:<br>
+</p> <div>
+<pre><code>bunx @temps-sdk/cli init
+bunx @temps-sdk/cli deploy
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>I tried to build a dashboard before the CLI was solid.</strong> The dashboard is nice for monitoring — it has a web terminal (xterm.js), a code editor (Monaco), charts (Recharts), and the rrweb session replay player. But engineers live in the terminal. Getting the CLI experience right first was the correct order of operations — I just didn't do it in that order.</p> <h2> <a name="what-surprised-me-the-mcp-server" href="#what-surprised-me-the-mcp-server"> </a> What surprised me: the MCP server
+</h2> <p>One thing I didn't plan from the start but ended up building: a <a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol</a> server (<code>@temps-sdk/mcp</code>). MCP is the standard that lets AI assistants interact with external tools.</p> <p>With the Temps MCP server, an AI agent like Claude can deploy your apps, check deployment status, and manage your infrastructure through natural language. You add it to your Claude Desktop config:<br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"mcpServers"</span><span>:</span><span> </span><span>{</span><span> </span><span>"temps"</span><span>:</span><span> </span><span>{</span><span> </span><span>"command"</span><span>:</span><span> </span><span>"npx"</span><span>,</span><span> </span><span>"args"</span><span>:</span><span> </span><span>[</span><span>"@temps-sdk/mcp"</span><span>]</span><span> </span><span>}</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>And now your AI assistant can talk to your deployment platform directly. It's a small thing, but it fits a pattern I believe in: meet developers where they already work. If that's the terminal, build a great CLI. If that's an AI assistant, build an MCP server.</p> <h2> <a name="the-economics" href="#the-economics"> </a> The economics
+</h2> <p>Here's the math that motivated this whole project — what a typical developer or small team pays to run production apps:</p> <div><table>
+<thead>
+<tr>
+<th>What you get with Temps</th>
+<th>Instead of paying for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Git deployments + preview URLs</td>
+<td>Vercel / Netlify ($20+/mo)</td>
+</tr>
+<tr>
+<td>Web analytics + funnels</td>
+<td>PostHog / Plausible ($0-450/mo)</td>
+</tr>
+<tr>
+<td>Session replay</td>
+<td>PostHog / FullStory ($0-2000/mo)</td>
+</tr>
+<tr>
+<td>Error tracking (Sentry-compatible)</td>
+<td>Sentry ($26+/mo)</td>
+</tr>
+<tr>
+<td>Uptime monitoring + status pages</td>
+<td>Better Uptime / Pingdom ($20+/mo)</td>
+</tr>
+<tr>
+<td>Managed Postgres/Redis/S3/MongoDB</td>
+<td>AWS RDS / ElastiCache ($50+/mo)</td>
+</tr>
+<tr>
+<td>Transactional email + DKIM</td>
+<td>Resend / SendGrid ($20-100/mo)</td>
+</tr>
+<tr>
+<td>Request logs + proxy</td>
+<td>Cloudflare ($0-200/mo)</td>
+</tr>
+<tr>
+<td>KV store + blob storage</td>
+<td>Vercel KV / S3 ($0-50/mo)</td>
+</tr>
+<tr>
+<td><strong>Total with Temps</strong></td>
+<td><strong>$0 (self-hosted on your VPS)</strong></td>
+</tr>
+</tbody>
+</table></div> <p>As an indie, that difference is real money. It's the difference between burning runway and not.</p> <h2> <a name="what-temps-supports-today" href="#what-temps-supports-today"> </a> What Temps supports today
+</h2> <p>To be concrete about where the project is — this is a 51-crate Rust workspace, not a weekend project:</p> <p><strong>Frameworks:</strong> Next.js, Vite, Astro, Nuxt, Remix, NestJS, Vue, Express, Docusaurus, Python, Go, Rust, Java, .NET, and anything with a Dockerfile.</p> <p><strong>Deployment:</strong></p> <ul>
+<li>Git push deployments (GitHub and GitLab)</li>
+<li>Preview deployments per branch/PR</li>
+<li>Zero-downtime blue-green deployments</li>
+<li>Automatic SSL via Let's Encrypt (HTTP-01 and DNS-01)</li>
+<li>Custom domains with automatic TLS</li>
+<li>Environment variables and secrets (AES-256 encrypted at rest)</li>
+</ul> <p><strong>Built-in observability:</strong></p> <ul>
+<li>Web analytics with funnels and visitor tracking</li>
+<li>Session replay (rrweb-based)</li>
+<li>Error tracking (Sentry-compatible — same SDK, change one line)</li>
+<li>Uptime monitoring with alerts (email, Slack, webhooks)</li>
+<li>Request-level logging (method, path, status, response time)</li>
+<li>Performance tracking (Web Vitals)</li>
+</ul> <p><strong>Infrastructure:</strong></p> <ul>
+<li>Managed PostgreSQL, Redis, S3 (RustFS), and MongoDB</li>
+<li>KV store (<code>@temps-sdk/kv</code> — Redis-like API)</li>
+<li>Blob storage (<code>@temps-sdk/blob</code> — S3-compatible)</li>
+<li>Transactional email with DKIM verification</li>
+<li>Vulnerability scanning (Trivy-based)</li>
+<li>Status pages with incident management</li>
+</ul> <p><strong>Developer tools:</strong></p> <ul>
+<li>MCP server for AI agents (<code>@temps-sdk/mcp</code>)</li>
+<li>React analytics SDK (<code>@temps-sdk/react-analytics</code>)</li>
+<li>Node.js SDK with Sentry-compatible error tracking (<code>@temps-sdk/node-sdk</code>)</li>
+<li>TypeScript CLI (<code>bunx @temps-sdk/cli</code>)</li>
+<li>Web dashboard with terminal, code editor, and session replay player</li>
+</ul> <p><strong>Infrastructure:</strong> Runs on any Linux VPS — AWS, GCP, Azure, DigitalOcean, Hetzner, your own hardware.</p> <h2> <a name="who-should-not-use-temps" href="#who-should-not-use-temps"> </a> Who should NOT use Temps
+</h2> <p>I believe in being honest about trade-offs:</p> <ul>
+<li>
+<strong>If you're on Vercel's free tier</strong> — Vercel's free tier is genuinely great. Temps doesn't make sense until you're paying.</li>
+<li>
+<strong>If you need edge computing</strong> — Temps runs on your servers, not a global edge network. If sub-50ms latency from every continent matters, Vercel or Cloudflare is better.</li>
+<li>
+<strong>If you want zero ops</strong> — Temps is self-hosted. It's dramatically simpler than raw Docker or Kubernetes, but it's not zero-ops. You're still responsible for a server.</li>
+<li>
+<strong>If cost isn't a concern</strong> — If you have the budget, Vercel's ecosystem and managed infrastructure is hard to beat.</li>
+</ul> <h2> <a name="what-id-tell-someone-building-an-opensource-tool-solo" href="#what-id-tell-someone-building-an-opensource-tool-solo"> </a> What I'd tell someone building an open-source tool solo
+</h2> <p>A few things I've learned that I wish someone told me:</p> <p><strong>Compatibility beats originality.</strong> Making the error tracking Sentry-compatible (using their actual <code>relay-event-schema</code> types) instead of inventing a new protocol was the single best technical decision. Users can try it with a one-line change and zero risk.</p> <p><strong>The install experience IS the product.</strong> If your open-source tool takes more than 5 minutes to set up, most people will never try it. The one-liner install took an unreasonable amount of engineering effort — auto-detecting OS, architecture, setting up services, configuring PostgreSQL with TimescaleDB, initializing encryption keys — but it's worth it.</p> <p><strong>Don't build for everyone.</strong> Temps is for developers and small teams who are paying for hosting and want to own their infrastructure without the DevOps overhead. That's a specific group, and that's fine.</p> <p><strong>Build for the workflow, not just the feature.</strong> Adding the MCP server wasn't on my roadmap. But developers are increasingly working through AI assistants, and if Temps can be part of that workflow natively, it removes friction. Same logic applies to the CLI, the SDKs, the Sentry compatibility. Meet people where they are.</p> <h2> <a name="try-it" href="#try-it"> </a> Try it
+</h2> <p>If any of this resonates:<br>
+</p> <div>
+<pre><code>curl <span>-fsSL</span> https://temps.sh/deploy.sh | sh
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The CLI is free forever. The <a href="https://github.com/gotempsh/temps" target="_blank">source code is on GitHub</a> — 51 Rust crates, dual-licensed MIT/Apache 2.0.</p> <p>If you run into issues or want to chat, the <a href="https://discord.gg/temps" target="_blank">Discord</a> is active and I'm usually around.</p> <p>Temps isn't perfect — it's not. But I think the idea that your deployment platform should include observability, email, storage, and AI integration by default, at no extra cost, on infrastructure you control, is the right direction. And I'd rather build that in the open than behind a paywall.</p> <hr> <p><em>If you've dealt with SaaS cost sprawl or have opinions on self-hosted vs managed, I'd love to hear your take in the comments.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

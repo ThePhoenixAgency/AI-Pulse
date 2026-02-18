@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Managing Docker Composes via GitOps - Conops</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Managing Docker Composes via GitOps - Conops</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 9:40:41 AM | <a href="https://dev.to/anuraggupta/managing-docker-composes-via-gitops-conops-54be" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjgktfcw7n5wydeqtpbm8.gif"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjgktfcw7n5wydeqtpbm8.gif" alt="Cover image for Managing Docker Composes via GitOps - Conops"> </a> </header> <div> <h2> <a name="conops" href="#conops"> </a> ConOps
+</h2> <p><strong>GitOps for Docker Compose</strong> </p> <p>Github: <a href="https://github.com/anuragxxd/conops" target="_blank">https://github.com/anuragxxd/conops</a><br>
+Website: <a href="https://conops.anuragxd.com/" target="_blank">https://conops.anuragxd.com</a></p> <div><p>Push to Git → your server updates automatically. I genuinely like Kubernetes. The declarative model. Reconciliation loops.</p><p>
+The idea that a <code>git push</code> can trigger a deployment still feels clean and well designed.</p></div> <p>But for my homelab and small side project it was too much. So I went back to Docker Compose. It’s simple. It works. When something breaks at 11pm, I can actually debug it.</p> <p>The only thing I really missed was GitOps.</p> <hr> <h3> <a name="the-problem" href="#the-problem"> </a> The problem
+</h3> <p>With plain Compose, my workflow looked like this:</p> <ul>
+<li>Make changes locally
+</li>
+<li>Push to Git
+</li>
+<li>SSH into the server
+</li>
+<li><code>git pull &amp;&amp; docker compose up -d</code></li>
+</ul> <p>But, if I forgot that last step, the server drifted.</p> <p>If I tweaked something directly on the box, Git was no longer the source of truth.</p> <p>Two months later I wouldn’t even trust what was running anymore. Which is not a great feeling.</p> <hr> <h3> <a name="so-i-built-conops" href="#so-i-built-conops"> </a> So I built <strong>ConOps</strong>
+</h3> <p>Nothing fancy. Just a small controller that keeps:</p> <p><strong>Running state == Git state</strong></p> <p>It:</p> <ul>
+<li>Watches your Git repo
+</li>
+<li>Pulls changes automatically
+</li>
+<li>Applies updates
+</li>
+<li>Detects drift and fixes it
+</li>
+</ul> <div><p>If a container is stopped manually, it brings it back.</p><p>
+If the repo changes, it reconciles.</p></div> <p>No dashboards. No click-ops. Just Git as truth.</p> <hr> <h3> <a name="how-to-run-it" href="#how-to-run-it"> </a> How to run it
+</h3> <div>
+<pre><code>docker run <span>-d</span> <span>\</span> <span>-p</span> 8080:8080 <span>\</span> <span>-v</span> /var/run/docker.sock:/var/run/docker.sock <span>\</span> anurag1201/conops:latest
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>And you’re done. No CRDs. No etcd. No control plane. Just a small loop making sure things stay aligned.</p> <hr> <h3> <a name="open-source" href="#open-source"> </a> Open source
+</h3> <p>It’s MIT licensed.</p> <p>If you’re running Docker Compose on a server or homelab and kind of miss GitOps, this might help. Would love feedback. Issues. Criticism. Anything really.</p> <p>And if you find it useful, please consider starring the repo:<br>
+<a href="https://github.com/anuragxxd/conops" target="_blank">https://github.com/anuragxxd/conops</a></p> <p>Thanks!</p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

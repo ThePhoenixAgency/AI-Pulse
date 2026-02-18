@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grimoire: A Retrospective on Building Open Source Tools</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Grimoire: A Retrospective on Building Open Source Tools</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 10:37:47 AM | <a href="https://dev.to/goniszewski/grimoire-a-retrospective-on-building-open-source-tools-3l3l" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>I created <strong>Grimoire</strong> to solve a personal problem: most existing bookmark managers were either too basic, overloaded with features I didn’t need, or architecturally heavy for something that should be simple (I was picky). I wanted a simple yet intuitive, self-hosted solution that combined the user experience of a modern web app powered by a database that was easy to back up, inspect, and maintain - preferably SQLite.</p> <p>What started as an excuse to learn <strong>SvelteKit</strong> turned into a short-lived but surprisingly popular open-source project. While Grimoire development is currently paused, the journey of building it forced me to confront real trade-offs around architecture, marketing, and technical debt.</p> <h2> <a name="the-evolution-of-the-stack" href="#the-evolution-of-the-stack"> </a> The Evolution of the Stack
+</h2> <p>Grimoire's architecture was never set in stone; it evolved alongside my understanding of the problem.</p> <h3> <a name="phase-1-the-mvp-velocity-first" href="#phase-1-the-mvp-velocity-first"> </a> Phase 1: The MVP (Velocity First)
+</h3> <p>In the beginning (v0.1.0), I prioritized speed to market. I have chosen <strong>PocketBase</strong> as a backend-as-a-service to handle authentication, the database, user management, and file storage - so I could focus on the frontend and business logic. This allowed me to ship a Dockerized MVP with categories, tags, and basic CRUD operations very quickly. Of course, it also had a dark mode.</p> <p>It worked. It was simple. It attracted users.</p> <p>But it also set the stage for future constraints and obstacles.</p> <h3> <a name="phase-2-the-great-refactor-architecture-first" href="#phase-2-the-great-refactor-architecture-first"> </a> Phase 2: The Great Refactor (Architecture First)
+</h3> <p>As the feature set grew, I hit a wall. The tight coupling with PocketBase made custom logic difficult and the codebase felt unmaintainable in the long run.</p> <p>In v0.4.0, I made the difficult decision to halt feature development and perform a massive refactor.</p> <ul>
+<li>
+<strong>Decoupling:</strong> I moved away from the BaaS dependency to a custom backend.</li>
+<li>
+<strong>Performance:</strong> I adopted <strong>Bun</strong> as the runtime and <strong>Drizzle ORM</strong> for type-safe database interactions.</li>
+<li>
+<strong>Cleanup:</strong> I deleted nearly as much code as I wrote, streamlining the application logic.</li>
+</ul> <p>This pivot resulted in a swifter UI, faster metadata processing, and a codebase that was significantly easier for contributors to navigate.</p> <p>The lesson there was blunt: early convenience becomes long-term rigidity if you outgrow the abstraction.</p> <h2> <a name="building-an-ecosystem" href="#building-an-ecosystem"> </a> Building an Ecosystem
+</h2> <p>I realized early on that a bookmark manager that requires manual copy-paste is already failing. Grimoire needed to meet users where they were starting: in the browser tab.</p> <p>To solve this, I developed the <strong>Grimoire Companion</strong>, a browser extension for Chrome and Firefox.</p> <p>That required:</p> <ul>
+<li>designing an external API</li>
+<li>documenting it with OpenAPI</li>
+<li>implementing token-based authentication</li>
+<li>handling secure communication between extension and instance</li>
+</ul> <p>So I had to buckle up and start properly thinking about stability, security, and versioning.</p> <h2> <a name="the-challenges-of-inflight-changes" href="#the-challenges-of-inflight-changes"> </a> The Challenges of In-Flight Changes
+</h2> <p>The most complex technical challenge was not building features, but taking responsibility for existing users' data. When I moved from PocketBase to Drizzle, I could not leave them behind.</p> <p>I had to engineer a dedicated <strong>migration tool</strong> to map data from the old schema to the new structure, ensuring users preserved their bookmarks, tags, and stored images during the upgrade. Even though Grimoire was far from being stable and could easily lack backward compatibility, I have chosen to do it the proper way, even if that meant a lot more work to do.</p> <p>Empathy for the user often manifests as robust migration scripts.</p> <h2> <a name="current-status-on-the-shelf" href="#current-status-on-the-shelf"> </a> Current Status: On the Shelf
+</h2> <p>After a successful run and multiple releases, I decided that Grimoire achieved what I needed it to.</p> <p>The landscape of web development moves fast. While the current iteration served its purpose well, I have paused active development to focus on other projects. I may resurrect Grimoire in the future, but with a fresh perspective, aiming for different goals and likely leveraging a more modern approach (perhaps focusing more heavily on AI-driven organization or local-first architectures).</p> <p>For now, the code remains open and available as a reference implementation for a modern SvelteKit application.</p> <h2> <a name="technical-stack-overview" href="#technical-stack-overview"> </a> Technical Stack Overview
+</h2> <ul>
+<li>
+<strong>Frontend:</strong> SvelteKit 2 (Vite 5)</li>
+<li>
+<strong>Runtime:</strong> Bun</li>
+<li>
+<strong>Database:</strong> Drizzle ORM (SQLite/PostgreSQL)</li>
+<li>
+<strong>Auth:</strong> Lucia</li>
+<li>
+<strong>Infrastructure:</strong> Docker Compose</li>
+</ul> <p>Repo: <a href="https://github.com/goniszewski/grimoire" target="_blank">github.com/goniszewski/grimoire</a></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
