@@ -117,81 +117,42 @@
         }
 
         #view-article .iframe-container {
-            padding-top: 48px;
+            padding-top: 0;
         }
 
-        .article-topbar {
-            position: absolute;
-            top: 8px;
-            left: 10px;
-            right: 10px;
-            z-index: 2147483647;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            pointer-events: auto;
-        }
-
-        .article-topbar-btn {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(15, 23, 42, 0.84);
-            color: #fff;
-            font-size: 12px;
-            font-weight: 600;
-            border-radius: 10px;
-            padding: 8px 12px;
-            cursor: pointer;
-        }
-
-        .article-topbar-btn:hover {
-            background: rgba(15, 23, 42, 0.95);
-        }
-
-        .back-to-previous {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            z-index: 40;
-            background: rgba(15, 23, 42, 0.78);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 13px;
-            cursor: pointer;
-            backdrop-filter: blur(4px);
-        }
-
-        .back-to-previous:hover {
-            background: rgba(15, 23, 42, 0.9);
-        }
 
         .reader-elevator {
             position: fixed;
-            right: 12px;
-            top: 58px;
-            bottom: auto;
+            right: 20px;
+            bottom: 20px;
             z-index: 2147483646;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .reader-elevator-btn {
-            width: 36px;
-            height: 36px;
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            border-radius: 10px;
-            background: rgba(15, 23, 42, 0.82);
-            color: #fff;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 50%;
+            color: #00d9ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            font-size: 16px;
-            line-height: 1;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
         }
 
         .reader-elevator-btn:hover {
-            background: rgba(15, 23, 42, 0.95);
+            background: #00d9ff;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
         }
 
         .article-mobile-footer {
@@ -332,16 +293,9 @@
                 padding: 12px 16px;
             }
 
-            .back-to-previous {
-                top: 10px;
-                font-size: 12px;
-                padding: 7px 10px;
-            }
-
             .reader-elevator {
                 right: 10px;
-                top: 56px;
-                bottom: auto;
+                bottom: 10px;
             }
 
             .article-mobile-footer {
@@ -393,11 +347,6 @@
         </div>
 
         <div class="iframe-container">
-            <div class="article-topbar" id="articleTopbar">
-                <button class="article-topbar-btn" id="articleBackBtn" type="button">Retour</button>
-                <button class="article-topbar-btn" id="articleHomeBtn" type="button">Accueil</button>
-            </div>
-            <button class="back-to-previous" id="backToPreviousBtn" type="button">Page précédente</button>
             <div class="loading" id="loading">
                 <div class="spinner"></div>
                 <p class="loading-text">Chargement de l'article...</p>
@@ -875,36 +824,6 @@
             });
         }
 
-        // Back to previous page in navigation history (fallback to list).
-        const backToPreviousBtn = document.getElementById('backToPreviousBtn');
-        const articleBackBtn = document.getElementById('articleBackBtn');
-        const articleHomeBtn = document.getElementById('articleHomeBtn');
-
-        function navigateBackOrHome() {
-            if (window.history.length > 1) {
-                window.history.back();
-                return;
-            }
-            const fallbackUrl = new URL(window.location.href);
-            fallbackUrl.search = '';
-            fallbackUrl.hash = '';
-            window.location.assign(fallbackUrl.toString());
-        }
-
-        if (backToPreviousBtn) {
-            backToPreviousBtn.addEventListener('click', navigateBackOrHome);
-        }
-        if (articleBackBtn) {
-            articleBackBtn.addEventListener('click', navigateBackOrHome);
-        }
-        if (articleHomeBtn) {
-            articleHomeBtn.addEventListener('click', () => {
-                const fallbackUrl = new URL(window.location.href);
-                fallbackUrl.search = '';
-                fallbackUrl.hash = '';
-                window.location.assign(fallbackUrl.toString());
-            });
-        }
 
         function scrollArticleFrame(direction) {
             const iframe = document.getElementById('articleFrame');
