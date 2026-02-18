@@ -364,7 +364,7 @@
             </div>
         </div>
         <div class="article-mobile-footer" id="articleMobileFooter">
-            <button class="article-mobile-footer-btn" id="articleJumpBottomBtn" type="button">Bas de page</button>
+            <button class="article-mobile-footer-btn" id="articlePreviousBtn" type="button">Précédent</button>
         </div>
     <footer class="site-footer" id="readerFooter">
             <div class="footer-links">
@@ -889,9 +889,19 @@
         if (articleScrollBottomBtn) {
             articleScrollBottomBtn.addEventListener('click', () => scrollArticleFrame('down'));
         }
-        const articleJumpBottomBtn = document.getElementById('articleJumpBottomBtn');
-        if (articleJumpBottomBtn) {
-            articleJumpBottomBtn.addEventListener('click', () => scrollArticleFrame('down'));
+        const articlePreviousBtn = document.getElementById('articlePreviousBtn');
+        if (articlePreviousBtn) {
+            articlePreviousBtn.addEventListener('click', () => {
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    // Fallback: go to readme (home)
+                    const fallbackUrl = new URL(window.location.href);
+                    fallbackUrl.search = '';
+                    fallbackUrl.hash = '';
+                    window.location.assign(fallbackUrl.toString());
+                }
+            });
         }
         setTimeout(ensureReaderElevatorVisible, 120);
     </script>
