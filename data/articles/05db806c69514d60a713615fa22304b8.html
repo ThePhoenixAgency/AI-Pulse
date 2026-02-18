@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The packaging bugs I kept shipping (and the tool I built to stop)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>The packaging bugs I kept shipping (and the tool I built to stop)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 12:33:00 PM | <a href="https://dev.to/girigirianish/the-packaging-bugs-i-kept-shipping-and-the-tool-i-built-to-stop-lkh" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/girigirianish"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F481512%2F4247c6da-ee1a-41d7-9659-42e4a4ef832d.jpeg" alt="girigirianish"></a> </p> </div><div> <p>I've published TypeScript packages that passed all my tests, built cleanly, and had types resolving perfectly in my editor then broke for consumers.</p> <p>The bug was always in the <code>exports</code> field. A <code>require</code> condition pointing to an ESM file. The <code>"types"</code> key in the wrong position. A subpath missing its <code>.d.ts</code> entirely. These failures are silent until someone files an issue.</p> <p>After debugging the same class of problem for the third time, I decided to automate the checks.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5l9ji55eqyz4puuqm7db.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F5l9ji55eqyz4puuqm7db.png" alt="Demo"></a></p> <h2> <a name="what-goes-wrong" href="#what-goes-wrong"> </a> What goes wrong
+</h2> <h3> <a name="1-cjsesm-format-mismatch" href="#1-cjsesm-format-mismatch"> </a> 1. CJS/ESM format mismatch
+</h3> <p>Your package.json says <code>"require": "./dist/cjs/index.cjs"</code>. But that file contains <code>import</code> and <code>export</code> statements it's actually ESM. Works fine in Webpack and esbuild (they don't care). Crashes in Node.js with <code>ERR_REQUIRE_ESM</code>.</p> <p>This happens because build tools sometimes output ESM syntax even when targeting CJS, especially with certain configurations. You'd never know unless you manually read the output file.</p> <h3> <a name="2-wrong-condition-ordering" href="#2-wrong-condition-ordering"> </a> 2. Wrong condition ordering
+</h3> <div>
+<pre><code><span>{</span><span> </span><span>"."</span><span>:</span><span> </span><span>{</span><span> </span><span>"import"</span><span>:</span><span> </span><span>"./dist/index.js"</span><span>,</span><span> </span><span>"types"</span><span>:</span><span> </span><span>"./dist/index.d.ts"</span><span>,</span><span> </span><span>"default"</span><span>:</span><span> </span><span>"./dist/index.js"</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Spot the bug? <code>"types"</code> should be first. TypeScript resolves conditions top to bottom and stops at the first match. Here it matches <code>"import"</code> first, never sees <code>"types"</code>, and falls back to inferring types from the JS file everything becomes <code>any</code>.</p> <p>This one has bitten me multiple times because the exports field looks correct.</p> <h3> <a name="3-missing-declarations-for-subpaths" href="#3-missing-declarations-for-subpaths"> </a> 3. Missing declarations for subpaths
+</h3> <p>Your main entry has <code>index.d.ts</code>. But your package exports 20 subpaths:<br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"./utils"</span><span>:</span><span> </span><span>"./dist/utils.js"</span><span>,</span><span> </span><span>"./hooks"</span><span>:</span><span> </span><span>"./dist/hooks.js"</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>If <code>dist/utils.d.ts</code> doesn't exist, TypeScript consumers importing from <code>your-package/utils</code> get <code>any</code> or "cannot find module." And you'll never know unless someone reports it, because your own project's tests use the source files directly.</p> <h2> <a name="the-tool" href="#the-tool"> </a> The tool
+</h2> <p>I built tspub to catch these. It checks 70 rules across exports, types, files, metadata, imports, and package size.<br>
+</p> <div>
+<pre><code><span>$ </span>npx @tspub-dev/tspub check exports/format-mismatch ./dist/cjs/index.cjs contains ESM syntax
+exports/types-first <span>"types"</span> should be first <span>in </span>conditions
+types/no-any-export ./dist/index.d.ts exports 12 <span>`</span>any<span>`</span> types 3 problems <span>(</span>1 auto-fixable<span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Some rules I haven't seen in other tools:</p> <ul>
+<li>
+<strong><code>exports/cjs-esmodule-interop</code></strong> detects CJS files using the <code>__esModule</code> flag that causes different behavior across Webpack, Node, and esbuild</li>
+<li>
+<strong><code>types/no-any-export</code></strong> flags declaration files where your exported types contain excessive <code>any</code> (usually a build tool misconfiguration, not intentional)</li>
+<li>
+<strong><code>exports/format-mismatch</code></strong> actually reads file contents to verify format, not just the extension</li>
+<li>
+<strong><code>files/sensitive</code></strong> catches <code>.env</code>, private keys, or credentials accidentally included in the published package</li>
+</ul> <p>You can also auto fix certain issues:<br>
+</p> <div>
+<pre><code><span>$ </span>npx @tspub-dev/tspub check <span>--fix</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This handles safe fixes like condition reordering.</p> <h2> <a name="check-any-package-without-installing" href="#check-any-package-without-installing"> </a> Check any package without installing
+</h2> <p>I built a web version too: visit <strong><a href="https://tspub.dev/" target="_blank">tspub.dev/check/YOUR-PACKAGE</a></strong> to check any npm package instantly.</p> <h2> <a name="beyond-checking" href="#beyond-checking"> </a> Beyond checking
+</h2> <p>tspub also handles building (esbuild-based ESM/CJS + .d.ts), type declaration tests (.test-d.ts files), scaffolding new packages, and publishing to npm.<br>
+</p> <div>
+<pre><code>tspub init <span># scaffold a correctly-configured package</span>
+tspub build <span># ESM + CJS + .d.ts generation</span>
+tspub check <span># 70-rule validation</span>
+tspub test-types <span># type-level test runner</span>
+tspub publish <span># npm + GitHub releases</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>I built it as one tool because managing separate configs for building, linting, type testing, and publishing across multiple packages was getting unsustainable for me. Your mileage may vary the checking works standalone even if you don't use the build or publish features.</p> <p>It's still early and I'd genuinely appreciate feedback:</p> <ul>
+<li>Does it catch real issues in your packages?</li>
+<li>False positives?</li>
+<li>Missing rules?</li>
+</ul> <p><strong>GitHub</strong>: <a href="https://github.com/tspub/tspub" target="_blank">link</a><br>
+<strong>npm</strong>: <code>npm i -D @tspub-dev/tspub</code><br>
+<strong>Web</strong>: <a href="https://tspub.dev/" target="_blank">tspub.dev</a></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

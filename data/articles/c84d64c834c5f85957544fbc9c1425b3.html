@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Every AI Agent Framework Trusts the Agent. That's the Problem.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Every AI Agent Framework Trusts the Agent. That's the Problem.</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 1:10:27 PM | <a href="https://dev.to/saezbaldo/every-ai-agent-framework-trusts-the-agent-thats-the-problem-5gfa" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Every AI agent framework trusts the agent.</p> <p>LangChain. AutoGen. CrewAI. Anthropic Tool Use. OpenAI Function Calling. Every single one.</p> <p>They validate <em>outputs</em>. They filter <em>responses</em>. They scope <em>tools</em>. But none of them answer a fundamental question: <strong>who authorized this agent to act?</strong></p> <p>I spent 30 years building software. The last year convinced me this is the most important unsolved problem in AI infrastructure today.</p> <hr> <h2> <a name="the-gap-nobody-talks-about" href="#the-gap-nobody-talks-about"> </a> The gap nobody talks about
+</h2> <p>I went through every major AI agent framework and authorization system. Here's what I found:</p> <div><table>
+<thead>
+<tr>
+<th>System</th>
+<th>Year</th>
+<th>What it does</th>
+<th>Authorization model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenAI Function Calling</td>
+<td>2023</td>
+<td>LLM calls predefined functions</td>
+<td>None. If the function exists, the agent can call it.</td>
+</tr>
+<tr>
+<td>LangChain Tools</td>
+<td>2023</td>
+<td>Agent tool routing</td>
+<td>None. No built-in approval, no budget, no threshold.</td>
+</tr>
+<tr>
+<td>Anthropic Tool Use</td>
+<td>2024</td>
+<td>Constrained tool execution</td>
+<td>Provider-side only. Not infrastructure-level.</td>
+</tr>
+<tr>
+<td>Microsoft AutoGen</td>
+<td>2023</td>
+<td>Multi-agent orchestration</td>
+<td>Agents trust each other. No adversarial model.</td>
+</tr>
+<tr>
+<td>CrewAI</td>
+<td>2024</td>
+<td>Multi-agent task framework</td>
+<td>No threshold auth. No formal properties.</td>
+</tr>
+<tr>
+<td>Guardrails AI</td>
+<td>2023</td>
+<td>Output validation</td>
+<td>Validates <em>outputs</em>, not <em>authority to act</em>.</td>
+</tr>
+</tbody>
+</table></div> <p><strong>Not a single one implements threshold authorization, consumable budget tokens, or formal verification of safety properties.</strong></p> <p>All of them assume the agent is trusted, or that filtering its output is good enough.</p> <p>It's not.</p> <hr> <h2> <a name="why-output-filtering-isnt-enough" href="#why-output-filtering-isnt-enough"> </a> Why output filtering isn't enough
+</h2> <p>Let's be precise about what happens when an AI agent has tool access:<br>
+</p> <div>
+<pre><code>Agent → decides action → calls tool → effect happens in the real world
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Output validation sits here:<br>
+</p> <div>
+<pre><code>Agent → decides action → [FILTER] → calls tool → effect happens
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>It checks: <em>"Is this output safe?"</em></p> <p>But it doesn't check: <em>"Does this agent have the authority to take this action right now, with this budget, approved by enough independent parties?"</em></p> <p>These are fundamentally different questions. The first is about content. The second is about <strong>power</strong>.</p> <p>An agent can craft a perfectly valid, perfectly formatted, perfectly "safe-looking" API call that transfers $50,000 to the wrong account. Output validation will pass it. Guardrails will pass it. The action itself is structurally valid.</p> <p>The question isn't whether the action <em>looks</em> safe. The question is whether the agent <em>should have the power to do it at all</em>.</p> <hr> <h2> <a name="the-speed-problem" href="#the-speed-problem"> </a> The speed problem
+</h2> <p>This matters more than most people realize because of the speed differential:</p> <div><table>
+<thead>
+<tr>
+<th>Actor</th>
+<th>Actions per second</th>
+<th>Detection window</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Human employee</td>
+<td>~0.02 (1/minute)</td>
+<td>Hours</td>
+</tr>
+<tr>
+<td>Automated script</td>
+<td>~100</td>
+<td>Minutes</td>
+</tr>
+<tr>
+<td>AI agent (unconstrained)</td>
+<td>~1,000</td>
+<td>Seconds — but damage is done</td>
+</tr>
+<tr>
+<td>AI agent + budget enforcement</td>
+<td>Budget-capped</td>
+<td>Structural — budget exhaustion stops the agent</td>
+</tr>
+</tbody>
+</table></div> <p>Traditional rate limiting slows things down. But it doesn't stop a determined agent from maximizing damage <em>within</em> the limit. </p> <p>What if the budget was cryptographically enforced? When the token hits zero, it's dead. Not rate-limited. Dead.</p> <hr> <h2> <a name="the-reasoning-problem" href="#the-reasoning-problem"> </a> The reasoning problem
+</h2> <p>Here's the part that keeps me up at night.</p> <p>A sufficiently capable agent can:</p> <ul>
+<li>Read the source code of whatever controls it</li>
+<li>Understand the policy rules completely</li>
+<li>Find edge cases that technically pass validation</li>
+<li>Chain multiple low-risk actions into a high-risk outcome</li>
+</ul> <p>So what do you do when the adversary <em>understands your defenses perfectly</em>?</p> <p>You make the defense structural, not logical.</p> <p>Analogy: I can understand exactly how a bank vault door works. I can memorize the blueprints. I can study the metallurgy. None of that knowledge helps me walk through 12 inches of reinforced steel. The constraint isn't my understanding — it's physics.</p> <p>That's the principle we need for AI agents. Not smarter filters. <strong>Structural impossibility.</strong></p> <hr> <h2> <a name="what-were-building" href="#what-were-building"> </a> What we're building
+</h2> <p>We built <a href="https://github.com/saezbaldo/ic-agi" target="_blank">IC-AGI</a> — an open-source distributed authority framework — around one thesis:</p> <blockquote>
+<p><strong>Separate intelligence from authority.</strong></p>
+</blockquote> <p>The agent can be arbitrarily intelligent. It can understand the entire system. But it structurally <em>cannot</em> act alone on critical actions because:</p> <p><strong>1. K-of-N Threshold Authorization</strong></p> <p>Critical actions require approval from K independent nodes out of N. Not a single API key. Not a single admin. A cryptographic consensus using Shamir Secret Sharing.</p> <p>If K=3 and N=5, compromising 1 or 2 nodes gives you <em>nothing</em>. Not partial access. Nothing. This is mathematically proven, not just tested.</p> <p><strong>2. Consumable Budget Tokens</strong></p> <p>Every capability token has a budget that decreases with each use. Not just a TTL (time-to-live) — an actual consumption counter. When the budget hits zero, the token is cryptographically dead.<br>
+</p> <div>
+<pre><code>Token: {scope: "crm.update", budget: 50, ttl: 3600s}
+After 50 updates → token is exhausted, regardless of TTL
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>OAuth gives you a <em>time-bounded key</em>. We give you a <em>consumable permit</em>.</p> <p><strong>3. Distributed Execution</strong></p> <p>The agent's logic is split into segments distributed across workers. No single worker sees the full business logic. Even if a worker is compromised, it only has a fragment.</p> <p><strong>4. Formal Verification</strong></p> <p>All safety properties are proven in TLA+ (not just tested — <em>proven</em>). 159 formal verification checks. Zero violations. The core theorem:</p> <blockquote>
+<p><em>For any K, N where 1 &lt; K ≤ N: no coalition of fewer than K nodes can authorize a critical action.</em></p>
+</blockquote> <p>This isn't tested for K=3, N=5 and hoped to generalize. It's proven for <em>arbitrary</em> K and N.</p> <hr> <h2> <a name="the-composition-is-the-innovation" href="#the-composition-is-the-innovation"> </a> The composition is the innovation
+</h2> <p>Let me be honest: <strong>none of these components are novel individually</strong>.</p> <ul>
+<li>Shamir Secret Sharing? 1979.</li>
+<li>Capability-based security? 1966.</li>
+<li>Threshold signatures? 1991.</li>
+<li>Rate limiting? Ancient.</li>
+</ul> <p>What's novel is the <em>composition</em> — assembling these into a framework specifically designed to control actors that may be smarter than the control system. No existing system does this.</p> <p>The closest analogy: HTTPS is not novel. TCP, TLS, X.509, and HTTP all existed. The innovation was composing them into a standard that made secure web communication the default.</p> <p>We're trying to do the same for AI agent authority.</p> <hr> <h2> <a name="where-we-are" href="#where-we-are"> </a> Where we are
+</h2> <p>IC-AGI is at Phase 8 of 10. What's working:</p> <ul>
+<li> 273 tests passing (unit, integration, adversarial, formal)</li>
+<li> 159 formal verifications (TLA+ model checking + TLAPS proofs)</li>
+<li> Kubernetes deployment manifests (GKE-ready)</li>
+<li> Every adversarial attack vector tested and blocked</li>
+<li> FastAPI service with REST endpoints</li>
+<li> Governance protocols (Phase 9 — in progress)</li>
+<li> Production hardening (Phase 10 — planned)</li>
+</ul> <p>The repo is open source under Apache 2.0: <a href="https://github.com/saezbaldo/ic-agi" target="_blank">github.com/saezbaldo/ic-agi</a></p> <hr> <h2> <a name="what-id-like-from-you" href="#what-id-like-from-you"> </a> What I'd like from you
+</h2> <p>I'm not an AI safety researcher. I'm a software engineer who saw a gap and started building. If you work in:</p> <p>I'd genuinely appreciate your perspective. Open an issue, submit a PR, or just tell me I'm wrong about something. The problem is too important for one team.</p> <hr> <p><em>IC-AGI is not about hiding code from intelligence. It is about separating intelligence from authority.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

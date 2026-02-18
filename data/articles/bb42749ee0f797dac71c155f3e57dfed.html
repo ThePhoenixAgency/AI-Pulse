@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I built a free, open-source alternative to Spatie Ray — real-time PHP debugging in the browser</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I built a free, open-source alternative to Spatie Ray — real-time PHP debugging in the browser</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 1:06:56 PM | <a href="https://dev.to/callmeleon167/i-built-a-free-open-source-alternative-to-spatie-ray-real-time-php-debugging-in-the-browser-5fl7" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <div> <p><a href="https://dev.to/callmeleon167"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3779463%2F3f688698-a4e0-43a9-8dfa-3133960ed29c.png" alt="Leon"></a> </p> </div> </header> <div> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcos19fwm5sjyheiqelz5.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcos19fwm5sjyheiqelz5.png" alt="Code + Result of DebugPHP"></a>For years I've been juggling <code>var_dump()</code>, Xdebug setups, and paying for tools like Spatie Ray ($49/year) just to see what my PHP app is doing. None of it felt right — either it broke the page, needed heavy IDE integration, or cost money for something that should be free.</p> <p>So I built <strong>DebugPHP</strong>.</p> <hr> <h2> <a name="what-it-does" href="#what-it-does"> </a> What it does
+</h2> <p>DebugPHP streams your debug output to a browser-based dashboard in real-time via <strong>Server-Sent Events</strong>. No page reloads. No desktop apps. No config hell. Just call <code>Debug::send()</code> and watch it appear.<br>
+</p> <div>
+<pre><code><span>use</span> <span>DebugPHP\Debug</span><span>;</span> <span>Debug</span><span>::</span><span>init</span><span>(</span><span>'your-session-token'</span><span>);</span> <span>Debug</span><span>::</span><span>send</span><span>(</span><span>'User created!'</span><span>);</span>
+<span>Debug</span><span>::</span><span>send</span><span>(</span><span>$user</span><span>,</span> <span>'User'</span><span>)</span><span>-&gt;</span><span>color</span><span>(</span><span>'blue'</span><span>);</span>
+<span>Debug</span><span>::</span><span>send</span><span>(</span><span>$exception</span><span>,</span> <span>'Error'</span><span>)</span><span>-&gt;</span><span>color</span><span>(</span><span>'red'</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="why-not-just-use-xdebug-or-ray" href="#why-not-just-use-xdebug-or-ray"> </a> Why not just use Xdebug or Ray?
+</h2> <div><table>
+<thead>
+<tr>
+<th></th>
+<th>dd() / var_dump()</th>
+<th>Xdebug</th>
+<th>Spatie Ray</th>
+<th><strong>DebugPHP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real-time output</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>No page disruption</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Zero config</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Browser-based</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Free &amp; open source</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>No dependencies</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="current-features" href="#current-features"> </a> Current features
+</h2> <p><strong>Labels &amp; Colors</strong> — categorize your entries visually:<br>
+</p> <div>
+<pre><code><span>Debug</span><span>::</span><span>send</span><span>(</span><span>$query</span><span>,</span> <span>'SQL'</span><span>)</span><span>-&gt;</span><span>color</span><span>(</span><span>'blue'</span><span>);</span>
+<span>Debug</span><span>::</span><span>send</span><span>(</span><span>$error</span><span>,</span> <span>'Error'</span><span>)</span><span>-&gt;</span><span>color</span><span>(</span><span>'red'</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Timers</strong> — measure performance inline:<br>
+</p> <div>
+<pre><code><span>Debug</span><span>::</span><span>startTimer</span><span>(</span><span>'db-query'</span><span>);</span>
+<span>$results</span> <span>=</span> <span>$db</span><span>-&gt;</span><span>query</span><span>(</span><span>'SELECT * FROM users'</span><span>);</span>
+<span>Debug</span><span>::</span><span>stopTimer</span><span>(</span><span>'db-query'</span><span>);</span>
+<span>// → Dashboard shows: "db-query: 23.4ms"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Toolbar Metrics</strong> — live key-value chips in the topbar, perfect for request-level data:<br>
+</p> <div>
+<pre><code><span>Debug</span><span>::</span><span>metric</span><span>(</span><span>'Template'</span><span>,</span> <span>'home.php'</span><span>);</span>
+<span>Debug</span><span>::</span><span>metric</span><span>(</span><span>'Memory'</span><span>,</span> <span>memory_get_usage</span><span>(</span><span>true</span><span>)</span> <span>/</span> <span>1024</span> <span>/</span> <span>1024</span> <span>.</span> <span>'MB'</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Metrics auto-disappear from the toolbar when you remove them from your code — no stale data.</p> <p><strong>Tables</strong> — render arrays as proper tables:<br>
+</p> <div>
+<pre><code><span>Debug</span><span>::</span><span>table</span><span>([</span> <span>[</span><span>'name'</span> <span>=&gt;</span> <span>'Leon'</span><span>,</span> <span>'role'</span> <span>=&gt;</span> <span>'Developer'</span><span>],</span> <span>[</span><span>'name'</span> <span>=&gt;</span> <span>'Sarah'</span><span>,</span> <span>'role'</span> <span>=&gt;</span> <span>'Designer'</span><span>],</span>
+<span>]);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Pause / Resume / Clear</strong> — full control without touching your app.</p> <hr> <h2> <a name="selfhostable" href="#selfhostable"> </a> Self-hostable
+</h2> <p>Don't want your debug data leaving your machine? The server component is fully open source too:<br>
+</p> <div>
+<pre><code>git clone https://github.com/CallMeLeon167/debugphp-server.git
+<span>cd </span>debugphp-server
+composer <span>install</span>
+<span># Open /setup/ in the browser — the wizard does the rest</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Then just point the client at your own server:<br>
+</p> <div>
+<pre><code><span>Debug</span><span>::</span><span>init</span><span>(</span><span>'your-token'</span><span>,</span> <span>[</span> <span>'host'</span> <span>=&gt;</span> <span>'http://localhost:8080'</span><span>,</span>
+<span>]);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="technical-details-for-those-who-care" href="#technical-details-for-those-who-care"> </a> Technical details (for those who care)
+</h2> <ul>
+<li>
+<strong>PHP 8.1+</strong> required, zero runtime dependencies (just <code>ext-curl</code>)</li>
+<li>
+<strong>PHPStan Level 10</strong> — the strictest static analysis level, fully passing</li>
+<li>
+<strong>SSE-based</strong> push architecture — no WebSocket server needed, works on any standard Apache/nginx setup</li>
+<li>Data is serialized with PHP's native <code>serialize()</code> + base64 for full type fidelity (objects, exceptions, nested structures all work)</li>
+<li>Session tokens tie your app to your dashboard tab — multiple sessions work in parallel</li>
+</ul> <hr> <h2> <a name="installation" href="#installation"> </a> Installation
+</h2> <div>
+<pre><code>composer require callmeleon167/debugphp <span>--dev</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Requires PHP 8.1+ and <code>ext-curl</code>. That's it.</p> <hr> <h2> <a name="status" href="#status"> </a> Status
+</h2> <p>Currently in <strong>pre-release</strong> — the core is working and the dashboard is functional, but I'm still polishing things before the public launch on GitHub.</p> <p>If this sounds useful to you: feel free to open issues or drop feedback here. I'm especially curious whether the self-hosted setup flow works smoothly on different environments.</p> <hr> <p><em>Built by a PHP dev, for PHP devs. MIT licensed.</em></p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

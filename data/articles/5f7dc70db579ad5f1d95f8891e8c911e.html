@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Saya Membuat CLI Tool Jadwal Shalat dan Merilisnya ke Arch Linux AUR</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Saya Membuat CLI Tool Jadwal Shalat dan Merilisnya ke Arch Linux AUR</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 12:30:23 PM | <a href="https://dev.to/bangkah/saya-membuat-cli-tool-jadwal-shalat-dan-merilisnya-ke-arch-linux-aur-352f" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/bangkah"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3665512%2Fdc6c5db5-91c9-4887-a5c6-33c8db391e07.jpeg" alt="Muhammad Dhiyaul Atha"></a> </p> </div><div> <p>Sebagai pengguna Linux dan seseorang yang sering bekerja di terminal, saya ingin bisa melihat jadwal shalat langsung dari CLI tanpa membuka browser atau aplikasi GUI.</p> <p>Dari kebutuhan sederhana itu, saya membuat sebuah tool bernama <strong>jadwal-shalat</strong> — sebuah CLI tool profesional berbasis Python yang dapat menampilkan jadwal shalat secara otomatis berdasarkan lokasi pengguna.</p> <p>Sekarang tool ini sudah tersedia secara resmi di Arch Linux AUR.</p> <hr> <h2> <a name="latar-belakang" href="#latar-belakang"> </a> Latar Belakang
+</h2> <p>Banyak aplikasi jadwal shalat tersedia, tapi sebagian besar berbasis:</p> <ul>
+<li>Mobile apps</li>
+<li>Website</li>
+<li>Aplikasi GUI</li>
+</ul> <p>Masalahnya, bagi pengguna Linux yang sering bekerja di:</p> <ul>
+<li>terminal</li>
+<li>server</li>
+<li>SSH session</li>
+<li>environment minimal</li>
+</ul> <p>solusi tersebut tidak praktis.</p> <p>Saya ingin sesuatu yang:</p> <ul>
+<li>ringan</li>
+<li>cepat</li>
+<li>otomatis</li>
+<li>dan native di terminal</li>
+</ul> <p>Maka saya membuat CLI tool ini.</p> <hr> <h2> <a name="apa-itu-jadwalshalat" href="#apa-itu-jadwalshalat"> </a> Apa Itu jadwal-shalat?
+</h2> <p>jadwal-shalat adalah CLI tool Python yang dapat:</p> <ul>
+<li>mendeteksi lokasi otomatis dari IP publik</li>
+<li>menentukan timezone secara akurat</li>
+<li>mengambil jadwal shalat dari API Aladhan (method Kemenag Indonesia)</li>
+<li>menampilkan jadwal secara rapi di terminal</li>
+</ul> <p>Tool ini dirancang khusus untuk pengguna Indonesia.</p> <hr> <h2> <a name="fitur-utama" href="#fitur-utama"> </a> Fitur Utama
+</h2> <p>Beberapa fitur yang tersedia saat ini:</p> <ul>
+<li>Deteksi IP publik otomatis</li>
+<li>Deteksi lokasi otomatis (kota, negara, koordinat, timezone)</li>
+<li>Fallback API lokasi jika layanan utama gagal</li>
+<li>Menggunakan API Aladhan (method=20/Kemenag Indonesia)</li>
+<li>Jadwal shalat lengkap</li>
+<li>Menampilkan waktu shalat berikutnya + countdown</li>
+<li>Output terminal rapi dengan alignment yang baik</li>
+<li>Error handling lengkap</li>
+<li>Timeout protection untuk API</li>
+<li>Support timezone akurat</li>
+<li>Siap packaging AUR dengan auto update</li>
+</ul> <hr> <h2> <a name="contoh-output" href="#contoh-output"> </a> Contoh Output
+</h2> <p>Contoh ketika dijalankan:</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fm7e9ybq3pcq2j3xufvpx.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fm7e9ybq3pcq2j3xufvpx.png" alt=" "></a></p> <p>Output difokuskan agar:</p> <ul>
+<li>mudah dibaca</li>
+<li>minimalis</li>
+<li>profesional</li>
+<li>cocok untuk penggunaan harian di terminal</li>
+</ul> <hr> <h2> <a name="instalasi-via-arch-linux-aur" href="#instalasi-via-arch-linux-aur"> </a> Instalasi via Arch Linux AUR
+</h2> <p>Tool ini sekarang tersedia di AUR, sehingga instalasi sangat mudah:<br>
+</p> <div>
+<pre><code>yay -S jadwal-shalat
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Atau manual:<br>
+</p> <div>
+<pre><code>git clone https://aur.archlinux.org/jadwal-shalat.git
+cd jadwal-shalat
+makepkg -si
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Sebagai maintainer AUR, saya juga mengatur auto-update menggunakan GitHub Actions.</p> <hr> <h2> <a name="instalasi-manual" href="#instalasi-manual"> </a> Instalasi Manual
+</h2> <p>Jika tidak menggunakan Arch Linux:<br>
+</p> <div>
+<pre><code>pip install requests
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Clone repo:<br>
+</p> <div>
+<pre><code>git clone https://github.com/Bangkah/jadwal-shalat.git
+cd jadwal-shalat
+chmod +x jadwal-shalat.py
+./jadwal-shalat.py
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Atau:<br>
+</p> <div>
+<pre><code>python jadwal-shalat.py
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="cara-kerja-tool-ini" href="#cara-kerja-tool-ini"> </a> Cara Kerja Tool Ini
+</h2> <p>Secara sederhana:</p> <ol>
+<li>Mengambil IP publik user</li>
+<li>Mengubah IP menjadi lokasi geografis</li>
+<li>Menentukan timezone</li>
+<li>Mengambil jadwal shalat dari API Aladhan</li>
+<li>Menampilkan jadwal dan countdown</li>
+</ol> <p>Semua proses dilakukan secara otomatis.</p> <hr> <h2> <a name="fokus-pada-reliability" href="#fokus-pada-reliability"> </a> Fokus pada Reliability
+</h2> <p>Beberapa hal yang saya implementasikan untuk memastikan tool stabil:</p> <ul>
+<li>fallback API jika layanan lokasi gagal</li>
+<li>timeout protection</li>
+<li>error handling jaringan</li>
+<li>parsing timezone akurat</li>
+<li>output formatting konsisten</li>
+</ul> <p>Ini penting agar tool tetap berfungsi bahkan dalam kondisi jaringan tidak stabil.</p> <hr> <h2> <a name="integrasi-dengan-arch-linux-packaging" href="#integrasi-dengan-arch-linux-packaging"> </a> Integrasi dengan Arch Linux Packaging
+</h2> <p>Salah satu milestone terbesar project ini adalah berhasil dipublish ke Arch Linux AUR.</p> <p>Ini berarti:</p> <ul>
+<li>user bisa install dengan yay</li>
+<li>update terdistribusi secara otomatis</li>
+<li>mengikuti standar packaging Linux</li>
+<li>tool menjadi lebih profesional</li>
+</ul> <p>Saya juga mengintegrasikan GitHub Actions untuk membantu workflow update.</p> <hr> <h2> <a name="roadmap-ke-depan" href="#roadmap-ke-depan"> </a> Roadmap ke Depan
+</h2> <p>Beberapa fitur yang direncanakan:</p> <ul>
+<li>input manual kota</li>
+<li>input manual koordinat</li>
+<li>output JSON</li>
+<li>notifikasi waktu shalat</li>
+<li>packaging PyPI</li>
+</ul> <p>Tujuannya adalah membuat tool ini semakin fleksibel.</p> <hr> <h2> <a name="kenapa-saya-membuat-project-ini" href="#kenapa-saya-membuat-project-ini"> </a> Kenapa Saya Membuat Project Ini?
+</h2> <p>Selain kebutuhan pribadi, project ini juga menjadi sarana belajar tentang:</p> <ul>
+<li>CLI development dengan Python</li>
+<li>API integration</li>
+<li>timezone handling</li>
+<li>Linux packaging (PKGBUILD)</li>
+<li>AUR maintenance</li>
+<li>CI/CD dengan GitHub Actions</li>
+</ul> <p>Project kecil seperti ini sangat membantu meningkatkan skill sebagai developer.</p> <hr> <h2> <a name="open-source-dan-kontribusi" href="#open-source-dan-kontribusi"> </a> Open Source dan Kontribusi
+</h2> <p>Project ini open source dan tersedia di GitHub:</p> <p><a href="https://github.com/Bangkah/jadwal-shalat" target="_blank">https://github.com/Bangkah/jadwal-shalat</a></p> <p>Kontribusi sangat diterima.</p> <hr> <h2> <a name="penutup" href="#penutup"> </a> Penutup
+</h2> <p>Linux memiliki ekosistem CLI yang sangat kuat, dan saya percaya tool kecil seperti ini bisa meningkatkan produktivitas pengguna terminal.</p> <p>Jika kamu pengguna Arch Linux atau Linux secara umum, kamu bisa mencoba tool ini dan memberikan feedback.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

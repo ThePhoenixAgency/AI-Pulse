@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built 18 Micro SaaS Tools in 4 Days — Here's What I Learned</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built 18 Micro SaaS Tools in 4 Days — Here's What I Learned</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/18/2026 1:01:20 PM | <a href="https://dev.to/maxxmini/i-built-18-micro-saas-tools-in-4-days-heres-what-i-learned-1l3o" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <div> <p><a href="https://dev.to/maxxmini"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3773591%2Fbcf21d98-1095-45f0-a2e6-327367c65c15.png" alt="MaxxMini"></a> </p> </div> </header> <div> <h2> <a name="the-experiment" href="#the-experiment"> </a> The Experiment
+</h2> <p>I challenged myself to build and ship 18 micro SaaS tools in under a week. No frameworks, no backend servers — just static sites on GitHub Pages.</p> <p>The tools range from a <a href="https://maxmini0214.github.io/jwt-decoder/" target="_blank">JWT Decoder</a> to a <a href="https://maxmini0214.github.io/password-generator/" target="_blank">Password Generator</a> to a <a href="https://maxmini0214.github.io/json-formatter/" target="_blank">JSON Formatter</a>. Each one solves exactly one problem.</p> <p>Here's what actually happened.</p> <h2> <a name="what-worked" href="#what-worked"> </a> What Worked
+</h2> <p><strong>1. Zero-server architecture saves everything.</strong><br>
+Every tool runs entirely in the browser. No hosting costs, no databases, no auth. GitHub Pages = free forever. Total monthly cost: <strong>$0</strong>.</p> <p><strong>2. Automation compounds fast.</strong><br>
+I built a health-check script that monitors all 18 tools. If one goes down, it auto-triggers a rebuild. I don't check manually anymore.<br>
+</p> <div>
+<pre><code><span># One command checks all 18 tools</span>
+./health-check.sh
+<span># Output: 18/18 GREEN </span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>3. The 80/20 of features.</strong><br>
+Most tools need exactly 3 things: input field, process button, output display. I stopped adding features after that. Users don't want options — they want answers.</p> <h2> <a name="what-failed" href="#what-failed"> </a> What Failed
+</h2> <p><strong>1. Discovery is the real problem.</strong><br>
+Building 18 tools took ~4 days. Getting anyone to find them? Still working on that. Zero organic traffic in week one.</p> <p><strong>2. "More tools" ≠ "more value."</strong><br>
+I thought quantity would help. It doesn't. 3 great tools &gt; 18 okay tools. I'm now focusing on polishing the top 5.</p> <p><strong>3. Analytics came too late.</strong><br>
+I added GoatCounter tracking after launch. Should have been there from day one. Can't optimize what you can't measure.</p> <h2> <a name="the-numbers" href="#the-numbers"> </a> The Numbers
+</h2> <div><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tools shipped</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Total build time</td>
+<td>~4 days</td>
+</tr>
+<tr>
+<td>Monthly hosting cost</td>
+<td>$0</td>
+</tr>
+<tr>
+<td>Lines of automation</td>
+<td>2,000+</td>
+</tr>
+<tr>
+<td>Manual monitoring needed</td>
+<td>0 min/day</td>
+</tr>
+</tbody>
+</table></div> <h2> <a name="key-takeaway" href="#key-takeaway"> </a> Key Takeaway
+</h2> <p>Building is the easy part. <strong>Distribution is everything.</strong></p> <p>If I did this again, I'd build 3 tools and spend the rest of the time on SEO, community engagement, and actually talking to users.</p> <h2> <a name="try-them" href="#try-them"> </a> Try Them
+</h2> <p>All tools are free and open source:</p> <ul>
+<li> <a href="https://maxmini0214.github.io/" target="_blank">Full tool collection</a>
+</li>
+<li> <a href="https://github.com/maxmini0214" target="_blank">Source code</a>
+</li>
+</ul> <p>What's your experience with micro SaaS? Have you found distribution channels that actually work for solo devs?</p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
