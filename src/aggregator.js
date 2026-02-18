@@ -1558,6 +1558,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       }
 
       if (articleContent && articleContent.textContent) {
+        // Handle paywall bypass first if needed
         if (isPaywallText(articleContent.textContent)) {
           // Essayer les services de bypass avant de renoncer
           const bypassResult = await tryPaywallBypass(resolvedArticleUrl);
@@ -1567,18 +1568,21 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
             const bypassContent = bypassReader.parse();
             if (bypassContent && bypassContent.textContent && !isPaywallText(bypassContent.textContent) && bypassContent.textContent.length > 200) {
               articleContent = bypassContent;
-              // Continuer le traitement normal avec le contenu bypassed
+              // Continue to normal content processing below
             } else {
               writeFallbackLocalArticle();
+              return;
             }
           } else {
             writeFallbackLocalArticle();
+            return;
           }
+        }
+
+        // Process content (whether original or bypassed)
+        if (isLikelyBoilerplateExtraction(articleContent.textContent)) {
+          writeFallbackLocalArticle();
         } else {
-          // Contenu normal sans paywall
-          if (isLikelyBoilerplateExtraction(articleContent.textContent)) {
-            writeFallbackLocalArticle();
-          } else {
         if (!computedSummary || computedSummary.trim().length < 20) {
           computedSummary = trimPromotionalTailText(cleanupNoiseText(sanitizeText(articleContent.textContent.slice(0, 1400))));
         }
@@ -1689,7 +1693,6 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
         // Sauvegarder le fichier HTML localement
         fs.writeFileSync(localPath, cleanHtml);
-          }
         }
       }
       }
