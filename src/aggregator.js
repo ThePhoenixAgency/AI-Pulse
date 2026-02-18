@@ -260,6 +260,14 @@ function addUTMParams(url, category = 'general') {
     if (mediumHosts.includes(hostname)) {
       url = `https://freedium.cloud/${url}`;
     }
+
+    // Liste des domaines avec paywalls stricts
+    const paywalledHosts = ['ft.com', 'wsj.com', 'economist.com', 'bloomberg.com', 'investing.com'];
+
+    // Ajouter Archive.ph en query parameter pour fallback
+    if (paywalledHosts.some(host => hostname.includes(host))) {
+      // On ne change pas l'URL ici, on l'utilisera comme fallback
+    }
   } catch (e) {
     // Erreur de parsing URL, on continue sans modification
   }
@@ -1408,9 +1416,42 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   }
   const lang = detectedLang || feedLang || 'en';
 
+  // Essayer d'utiliser Archive.ph ou autres services de bypass
+  const tryPaywallBypass = async (url) => {
+    const bypassServices = [
+      {
+        name: 'archive.ph',
+        transform: (u) => `https://archive.ph/?url=${encodeURIComponent(u)}`
+      },
+      {
+        name: 'scribe.rip',
+        transform: (u) => u.includes('medium.com') ? u.replace('medium.com', 'scribe.rip') : null
+      },
+      {
+        name: 'web.archive.org',
+        transform: (u) => `https://web.archive.org/web/*/${u}`
+      }
+    ];
+
+    for (const service of bypassServices) {
+      const bypassUrl = service.transform(url);
+      if (!bypassUrl) continue;
+      try {
+        const response = await axios.get(bypassUrl, {
+          timeout: 5000,
+          headers: { 'User-Agent': 'AI-Pulse/3.0' }
+        });
+        return { success: true, html: response.data, service: service.name };
+      } catch (e) {
+        // Continuer vers le service suivant
+      }
+    }
+    return { success: false };
+  };
+
   const writeFallbackLocalArticle = () => {
     const safeTitle = sanitizeText(article.title) || 'Untitled';
-    const safeSummary = smartTruncate(cleanupNoiseText(rawSummary || ''), 1200) || 'Summary unavailable for this article.';
+    const safeSummary = smartTruncate(cleanupNoiseText(rawSummary || ''), 1200) || (rawSummary ? sanitizeText(rawSummary) : 'Summary unavailable for this article.');
     const fallbackHtml = `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
@@ -1518,11 +1559,26 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
       if (articleContent && articleContent.textContent) {
         if (isPaywallText(articleContent.textContent)) {
-          writeFallbackLocalArticle();
+          // Essayer les services de bypass avant de renoncer
+          const bypassResult = await tryPaywallBypass(resolvedArticleUrl);
+          if (bypassResult.success) {
+            const bypassDom = createSafeDom(bypassResult.html, resolvedArticleUrl);
+            const bypassReader = new Readability(bypassDom.window.document);
+            const bypassContent = bypassReader.parse();
+            if (bypassContent && bypassContent.textContent && !isPaywallText(bypassContent.textContent) && bypassContent.textContent.length > 200) {
+              articleContent = bypassContent;
+              // Continuer le traitement normal avec le contenu bypassed
+            } else {
+              writeFallbackLocalArticle();
+            }
+          } else {
+            writeFallbackLocalArticle();
+          }
         } else {
-        if (isLikelyBoilerplateExtraction(articleContent.textContent)) {
-          writeFallbackLocalArticle();
-        } else {
+          // Contenu normal sans paywall
+          if (isLikelyBoilerplateExtraction(articleContent.textContent)) {
+            writeFallbackLocalArticle();
+          } else {
         if (!computedSummary || computedSummary.trim().length < 20) {
           computedSummary = trimPromotionalTailText(cleanupNoiseText(sanitizeText(articleContent.textContent.slice(0, 1400))));
         }
@@ -1633,8 +1689,8 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
         // Sauvegarder le fichier HTML localement
         fs.writeFileSync(localPath, cleanHtml);
+          }
         }
-      }
       }
       }
   } catch (e) {
