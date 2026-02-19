@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LeanMCP: Run AI Agents in Production. Own Your Stack</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>LeanMCP: Run AI Agents in Production. Own Your Stack</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 5:46:34 AM | <a href="https://dev.to/_4b254f4408ef55656a22e4/leanmcp-run-ai-agents-in-production-own-your-stack-5f04" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmh8xudfxg4rnqs9r8kr8.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmh8xudfxg4rnqs9r8kr8.png" alt="Cover image for LeanMCP: Run AI Agents in Production. Own Your Stack"> </a> <div> <p><a href="https://dev.to/_4b254f4408ef55656a22e4"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3066627%2Fc8654f3a-b42b-4282-bbc5-105d186f0b7e.jpg" alt="Jialu"></a> </p> </div> </div><div> <p>Getting an AI agent to work is easy. Getting it to production is a different story.<br>
+You wire up your tools, the agent responds, the demo looks great. Then reality hits:</p> <ul>
+<li>How do you handle user auth?</li>
+<li>How do you isolate permissions across multiple tenants?</li>
+<li>How do you inject secrets securely?</li>
+<li>When something breaks at 2am, how do you even know what went wrong?</li>
+</ul> <p>The AI agent ecosystem has frameworks, model providers, and tool integrations covered. What it's been missing is a runtime: <strong>the layer that handles governance, security, and deployment so your agent can actually run in production, at scale, without being locked into any single vendor.</strong><br>
+That's what we built. And today we're open-sourcing it.</p> <hr>
+<h2> <a name="the-gap-between-demo-and-production" href="#the-gap-between-demo-and-production"> </a> The Gap Between Demo and Production
+</h2> <p>Building an AI agent is the easy part. The hard part is everything that comes after.</p> <p>Authentication. Multi-tenancy. Secret injection. Observability. Protocol compatibility across clients. These aren't glamorous problems, but they're the ones that decide whether your agent ships or stays a demo forever.</p> <p>The MCP protocol gives you a standard way to connect tools to agents — but it doesn't tell you how to handle any of this. You're left to build it yourself, from scratch, for every project. And if you switch LLM providers or deployment environments down the road, you might rebuild it all again.</p> <p>We've seen this pattern too many times. So we built the runtime that handles it.</p> <hr>
+<h2> <a name="what-leanmcp-handles" href="#what-leanmcp-handles"> </a> What LeanMCP Handles
+</h2> <p>LeanMCP is an open-source agent runtime with a production-grade governance layer built in. Think of it as the operating system for your AI agents — the foundation that lets them run anywhere, work with any client, and stay secure at scale.</p> <div><table>
+<thead>
+<tr>
+<th>The problem you hit</th>
+<th>What LeanMCP handles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User authentication</td>
+<td>Auth0, Supabase, Cognito, Firebase — one decorator, done</td>
+</tr>
+<tr>
+<td>Multi-tenancy</td>
+<td>Per-user API keys and permission scoping</td>
+</tr>
+<tr>
+<td>Secret injection</td>
+<td>Per-request env vars, no global pollution</td>
+</tr>
+<tr>
+<td>Production observability</td>
+<td>Logging, monitoring, audit trails</td>
+</tr>
+<tr>
+<td>Client compatibility</td>
+<td>Claude Desktop, Cursor, Windsurf — HTTP/SSE/WebSocket</td>
+</tr>
+<tr>
+<td>Governance</td>
+<td>Security policies, access control, compliance-ready audit logs</td>
+</tr>
+</tbody>
+</table></div> <p>The core SDK is open source, MIT licensed. Fork it, modify it, self-host it. The production platform — managed deployment, security governance, elastic auto-scaling across 30+ edge regions — is where we run a business. The foundation is free. The enterprise layer is where serious teams invest.</p> <hr>
+<h2> <a name="from-zero-to-running-in-10-minutes" href="#from-zero-to-running-in-10-minutes"> </a> From Zero to Running in 10 Minutes
+</h2> <div>
+<pre><code>npm <span>install</span> <span>-g</span> @leanmcp/cli
+npx @leanmcp/cli create my-agent
+<span>cd </span>my-agent <span>&amp;&amp;</span> npm start
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Your agent runtime is live at <code>http://localhost:8080/mcp</code>.</p> <p>Adding authentication takes one decorator:<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>AuthProvider</span><span>,</span> <span>Authenticated</span> <span>}</span> <span>from</span> <span>"</span><span>@leanmcp/auth</span><span>"</span><span>;</span> <span>const</span> <span>auth</span> <span>=</span> <span>new</span> <span>AuthProvider</span><span>(</span><span>'</span><span>cognito</span><span>'</span><span>,</span> <span>{</span> <span>region</span><span>:</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>AWS_REGION</span><span>,</span> <span>userPoolId</span><span>:</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>COGNITO_USER_POOL_ID</span><span>,</span> <span>clientId</span><span>:</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>COGNITO_CLIENT_ID</span>
+<span>});</span>
+<span>await</span> <span>auth</span><span>.</span><span>init</span><span>();</span> <span>@</span><span>Authenticated</span><span>(</span><span>auth</span><span>)</span>
+<span>export</span> <span>class</span> <span>MyService</span> <span>{</span> <span>@</span><span>Tool</span><span>({</span> <span>description</span><span>:</span> <span>"</span><span>Authenticated users only</span><span>"</span> <span>})</span> <span>async</span> <span>doSomething</span><span>(</span><span>args</span><span>:</span> <span>{</span> <span>input</span><span>:</span> <span>string</span> <span>})</span> <span>{</span> <span>return</span> <span>{</span> <span>result</span><span>:</span> <span>"</span><span>done</span><span>"</span> <span>};</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>No custom middleware. No manually parsing auth headers. No deep-diving into protocol internals. You write the logic that matters. We handle the runtime.</p> <hr> <h2> <a name="zero-vendor-lockin-is-a-design-principle-not-a-feature" href="#zero-vendor-lockin-is-a-design-principle-not-a-feature"> </a> Zero Vendor Lock-in Is a Design Principle, Not a Feature
+</h2> <p>We support every major agent client — Claude Desktop, Cursor, Windsurf — and every transport protocol: HTTP, SSE, WebSocket. Your agents run on our edge network or your own infrastructure. You're never forced to choose our deployment just to get our governance layer.</p> <p>We don't want to be the thing that locks you in. We've watched developers get burned by betting early on a single vendor's SDK, then facing deprecations or price hikes they didn't see coming. The AI space moves too fast to assume today's best option stays that way.</p> <p>If we build this well enough, you won't want to leave. But you always can.</p> <hr> <h2> <a name="where-we-are-today" href="#where-we-are-today"> </a> Where We Are Today
+</h2> <ul>
+<li>
+<strong>Open-source SDK</strong>: TypeScript (50k+ downloads) + Python (200k+ downloads), MIT licensed</li>
+<li>
+<strong>Community</strong>: 6,000+ developers, across 6 global hackathons</li>
+<li>
+<strong>Production platform</strong>: Managed deployment, observability, elastic scaling on 30+ edge nodes</li>
+</ul> <hr> <h2> <a name="the-bet-were-making" href="#the-bet-were-making"> </a> The Bet We're Making
+</h2> <p>We don't know which LLM wins in three years. We don't know which cloud becomes the default home for agents.</p> <p>But we know this: <strong>whoever wins, agents will need a runtime that's stable, secure, and not owned by any single player.</strong></p> <p>That's what we're building — the ground AI agents stand on.</p> <p>Code: <a href="https://github.com/LeanMCP/leanmcp-sdk" target="_blank">github.com/LeanMCP/leanmcp-sdk</a><br>
+Website: <a href="https://leanmcp.com/" target="_blank">leanmcp.com</a><br>
+Questions: <a href="mailto:founders@leanmcp.com">founders@leanmcp.com</a></p> <p><em>— Xian Lu, <a href="https://x.com/__luxian__" target="_blank">@__luxian__</a></em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

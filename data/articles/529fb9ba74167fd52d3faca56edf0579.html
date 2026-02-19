@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Compose Video Player Library Because ExoPlayer Setup Was Driving Me Crazy</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built a Compose Video Player Library Because ExoPlayer Setup Was Driving Me Crazy</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 3:50:34 AM | <a href="https://dev.to/tule_simon_243f9fa5635f9f/i-built-a-compose-video-player-library-because-exoplayer-setup-was-driving-me-crazy-5839" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="if-youve-ever-implemented-video-playback-in-an-android-app-you-know-the-drill" href="#if-youve-ever-implemented-video-playback-in-an-android-app-you-know-the-drill"> </a> <strong>If you’ve ever implemented video playback in an Android app, you know the drill.</strong>
+</h2> <p>You don’t “just play a video.”</p> <p>You:</p> <ul>
+<li>Set up <code>ExoPlayer</code> with the right <code>LoadControl</code>
+</li>
+<li>Configure <code>BandwidthMeter</code> for adaptive streaming</li>
+<li>Handle lifecycle (pause in background, release on destroy)</li>
+<li>Manage playback state manually (isPlaying, progress, duration…)</li>
+<li>Configure track selection for HLS quality switching</li>
+<li>Remember the wake lock</li>
+<li>Somehow make it all work with Compose’s declarative model</li>
+</ul> <p>And you do this:</p> <blockquote>
+<p>Every.<br>
+Single.<br>
+Time.</p>
+</blockquote> <p>After copy-pasting 200+ lines of boilerplate across multiple projects, I decided I was done.</p> <p>So I built <strong>XComposeMediaPlayer</strong> — a small open-source library that wraps ExoPlayer into a clean, Compose-native API.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxo1qwpzqxlolmjel0svt.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxo1qwpzqxlolmjel0svt.png" alt=" "></a></p> <hr> <h2> <a name="the-before-and-after" href="#the-before-and-after"> </a> The Before and After
+</h2> <h3> <a name="before-typical-exoplayer-setup" href="#before-typical-exoplayer-setup"> </a> Before: Typical ExoPlayer Setup
+</h3> <div>
+<pre><code><span>val</span> <span>bandwidthMeter</span> <span>=</span> <span>DefaultBandwidthMeter</span><span>.</span><span>Builder</span><span>(</span><span>context</span><span>).</span><span>build</span><span>()</span> <span>val</span> <span>trackSelector</span> <span>=</span> <span>DefaultTrackSelector</span><span>(</span> <span>context</span><span>,</span> <span>AdaptiveTrackSelection</span><span>.</span><span>Factory</span><span>()</span>
+<span>)</span> <span>val</span> <span>loadControl</span> <span>=</span> <span>DefaultLoadControl</span><span>.</span><span>Builder</span><span>()</span> <span>.</span><span>setBufferDurationsMs</span><span>(</span><span>..</span><span>.)</span> <span>.</span><span>build</span><span>()</span> <span>val</span> <span>player</span> <span>=</span> <span>ExoPlayer</span><span>.</span><span>Builder</span><span>(</span><span>context</span><span>)</span> <span>.</span><span>setTrackSelector</span><span>(</span><span>trackSelector</span><span>)</span> <span>.</span><span>setLoadControl</span><span>(</span><span>loadControl</span><span>)</span> <span>.</span><span>setBandwidthMeter</span><span>(</span><span>bandwidthMeter</span><span>)</span> <span>.</span><span>build</span><span>()</span> <span>val</span> <span>mediaSource</span> <span>=</span> <span>HlsMediaSource</span><span>.</span><span>Factory</span><span>(</span><span>dataSourceFactory</span><span>)</span> <span>.</span><span>createMediaSource</span><span>(</span><span>MediaItem</span><span>.</span><span>fromUri</span><span>(</span><span>url</span><span>))</span> <span>player</span><span>.</span><span>setMediaSource</span><span>(</span><span>mediaSource</span><span>)</span>
+<span>player</span><span>.</span><span>prepare</span><span>()</span>
+<span>player</span><span>.</span><span>play</span><span>()</span> <span>// Then lifecycle handling...</span>
+<span>// State management...</span>
+<span>// Listeners...</span>
+<span>// Another 100+ lines</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That’s just to start playback.</p> <p>Now compare that to this.</p> <h3> <a name="after-with-xcomposemediaplayer" href="#after-with-xcomposemediaplayer"> </a> After: With XComposeMediaPlayer
+</h3> <div>
+<pre><code><span>@Composable</span>
+<span>fun</span> <span>VideoScreen</span><span>()</span> <span>{</span> <span>val</span> <span>state</span> <span>=</span> <span>rememberXMediaState</span><span>()</span> <span>XMediaPlayer</span><span>(</span> <span>state</span> <span>=</span> <span>state</span><span>,</span> <span>url</span> <span>=</span> <span>"https://example.com/video.m3u8"</span><span>,</span> <span>modifier</span> <span>=</span> <span>Modifier</span> <span>.</span><span>fillMaxWidth</span><span>()</span> <span>.</span><span>aspectRatio</span><span>(</span><span>16f</span> <span>/</span> <span>9f</span><span>)</span> <span>)</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That’s it.</p> <p>Five lines.</p> <hr> <h2> <a name="what-xcomposemediaplayer-actually-does" href="#what-xcomposemediaplayer-actually-does"> </a> What XComposeMediaPlayer Actually Does
+</h2> <p>This isn’t magic. It’s just good abstraction over common video use cases.</p> <h3> <a name="1-automatic-format-detection" href="#1-automatic-format-detection"> </a> 1. Automatic Format Detection
+</h3> <p>Pass any URL — the library determines whether it’s HLS, DASH, MP4, or a local file.<br>
+</p> <div>
+<pre><code><span>XMediaPlayer</span><span>(</span><span>state</span><span>,</span> <span>"https://example.com/stream.m3u8"</span><span>)</span> <span>// HLS</span>
+<span>XMediaPlayer</span><span>(</span><span>state</span><span>,</span> <span>"https://example.com/video.mp4"</span><span>)</span> <span>// Progressive</span>
+<span>XMediaPlayer</span><span>(</span><span>state</span><span>,</span> <span>contentUri</span><span>.</span><span>toString</span><span>())</span> <span>// Local</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>No manual media source juggling.</p> <hr> <h3> <a name="2-state-as-flows-composefriendly" href="#2-state-as-flows-composefriendly"> </a> 2. State as Flows (Compose-Friendly)
+</h3> <p>All playback state is exposed as <code>StateFlow</code>, so building reactive UI becomes trivial.<br>
+</p> <div>
+<pre><code><span>val</span> <span>state</span> <span>=</span> <span>rememberXMediaState</span><span>()</span> <span>val</span> <span>isPlaying</span> <span>by</span> <span>state</span><span>.</span><span>isPlaying</span><span>.</span><span>collectAsState</span><span>()</span>
+<span>val</span> <span>progress</span> <span>by</span> <span>state</span><span>.</span><span>progress</span><span>.</span><span>collectAsState</span><span>()</span>
+<span>val</span> <span>duration</span> <span>by</span> <span>state</span><span>.</span><span>duration</span><span>.</span><span>collectAsState</span><span>()</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Now you can build fully custom controls:<br>
+</p> <div>
+<pre><code><span>Slider</span><span>(</span> <span>value</span> <span>=</span> <span>progress</span><span>.</span><span>toFloat</span><span>()</span> <span>/</span> <span>duration</span><span>,</span> <span>onValueChange</span> <span>=</span> <span>{</span> <span>state</span><span>.</span><span>seekToPercent</span><span>(</span><span>it</span><span>)</span> <span>}</span>
+<span>)</span> <span>IconButton</span><span>(</span><span>onClick</span> <span>=</span> <span>{</span> <span>state</span><span>.</span><span>togglePlayPause</span><span>()</span> <span>})</span> <span>{</span> <span>Icon</span><span>(</span> <span>if</span> <span>(</span><span>isPlaying</span><span>)</span> <span>Icons</span><span>.</span><span>Pause</span> <span>else</span> <span>Icons</span><span>.</span><span>Play</span> <span>)</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>No manual listeners. No awkward bridging between callbacks and Compose.</p> <hr> <h3> <a name="3-hls-quality-selection" href="#3-hls-quality-selection"> </a> 3. HLS Quality Selection
+</h3> <p>For adaptive streams, available qualities are extracted automatically.<br>
+</p> <div>
+<pre><code><span>val</span> <span>qualities</span> <span>by</span> <span>state</span><span>.</span><span>availableQualities</span><span>.</span><span>collectAsState</span><span>()</span> <span>state</span><span>.</span><span>setQuality</span><span>(</span> <span>qualities</span><span>.</span><span>find</span> <span>{</span> <span>it</span><span>.</span><span>height</span> <span>==</span> <span>1080</span> <span>}</span><span>!!</span>
+<span>)</span> <span>// Or just:</span>
+<span>state</span><span>.</span><span>setAutoQuality</span><span>()</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Manual control when you want it. Automatic when you don’t.</p> <hr> <h3> <a name="4-builtin-disk-caching" href="#4-builtin-disk-caching"> </a> 4. Built-in Disk Caching
+</h3> <p>Enable caching via configuration:<br>
+</p> <div>
+<pre><code><span>val</span> <span>state</span> <span>=</span> <span>rememberXMediaState</span><span>(</span><span>XMediaConfig</span><span>.</span><span>HighPerformance</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Content is cached while playing.</p> <p>Replay? Instant.</p> <p>Reduced bandwidth usage? Yes.</p> <hr> <h3> <a name="5-preloading-for-feeds" href="#5-preloading-for-feeds"> </a> 5. Preloading for Feeds
+</h3> <p>Building a TikTok-style or Instagram-style feed?</p> <p>Preload the next video:<br>
+</p> <div>
+<pre><code><span>state</span><span>.</span><span>preCacheHls</span><span>(</span> <span>url</span> <span>=</span> <span>nextVideoUrl</span><span>,</span> <span>context</span> <span>=</span> <span>context</span><span>,</span> <span>durationMs</span> <span>=</span> <span>15_000L</span>
+<span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Smooth scrolling. No visible buffering.</p> <hr> <h2> <a name="configuration-without-overwhelming-complexity" href="#configuration-without-overwhelming-complexity"> </a> Configuration Without Overwhelming Complexity
+</h2> <p>Most apps don’t need to tune every ExoPlayer knob. But when you do, you can.</p> <p>Use presets:</p> <ul>
+<li><code>XMediaConfig.Default</code></li>
+<li><code>XMediaConfig.HighPerformance</code></li>
+<li><code>XMediaConfig.LowLatency</code></li>
+<li><code>XMediaConfig.DataSaver</code></li>
+</ul> <p>Or customize everything:<br>
+</p> <div>
+<pre><code><span>XMediaConfig</span><span>(</span> <span>minBufferMs</span> <span>=</span> <span>5000</span><span>,</span> <span>maxBufferMs</span> <span>=</span> <span>60000</span><span>,</span> <span>cacheConfig</span> <span>=</span> <span>CacheConfig</span><span>(</span> <span>enabled</span> <span>=</span> <span>true</span><span>,</span> <span>maxCacheSize</span> <span>=</span> <span>500L</span> <span>*</span> <span>1024</span> <span>*</span> <span>1024</span> <span>),</span> <span>trackSelectorConfig</span> <span>=</span> <span>TrackSelectorConfig</span><span>(</span> <span>maxVideoHeight</span> <span>=</span> <span>1080</span><span>,</span> <span>bandwidthFraction</span> <span>=</span> <span>1.2f</span> <span>),</span> <span>bandwidthConfig</span> <span>=</span> <span>BandwidthConfig</span><span>(</span> <span>initialBitrateEstimate</span> <span>=</span> <span>5_000_000L</span> <span>)</span>
+<span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>You get flexibility — without writing infrastructure from scratch.</p> <hr> <h2> <a name="lifecycle-already-handled" href="#lifecycle-already-handled"> </a> Lifecycle? Already Handled.
+</h2> <ul>
+<li>Background → auto pause</li>
+<li>Foreground → resume if previously playing</li>
+<li>Dispose → player released</li>
+<li>Configuration changes → survives rotation</li>
+</ul> <p>No <code>DisposableEffect</code> boilerplate.</p> <hr> <h2> <a name="when-you-need-more-power" href="#when-you-need-more-power"> </a> When You Need More Power
+</h2> <p>This library doesn’t hide ExoPlayer from you.</p> <p>Need something advanced?<br>
+</p> <div>
+<pre><code><span>state</span><span>.</span><span>player</span><span>?.</span><span>setPlaybackSpeed</span><span>(</span><span>1.5f</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>It’s a wrapper, not a wall.</p> <hr> <h2> <a name="what-it-doesnt-try-to-be" href="#what-it-doesnt-try-to-be"> </a> What It Doesn’t Try To Be
+</h2> <p>Let’s be clear:</p> <ul>
+<li>Not a background playback service</li>
+<li>Not a DRM abstraction</li>
+<li>Not an ad SDK integration</li>
+<li>Not Picture-in-Picture</li>
+</ul> <p>If you need MediaSessionService, DRM configuration, IMA ads, or PiP — use Media3 directly.</p> <p>This library targets the 80% use case:<br>
+<strong>Play video in Compose cleanly and correctly.</strong></p> <hr>
+<h2> <a name="why-i-built-this" href="#why-i-built-this"> </a> Why I Built This
+</h2> <p>ExoPlayer is incredibly powerful.</p> <p>But power comes with complexity, and most apps don’t need to configure every internal component manually.</p> <p>I wanted:</p> <ul>
+<li>A Compose-native API</li>
+<li>Reactive state out of the box</li>
+<li>Quality selection and caching built-in</li>
+<li>Sensible defaults</li>
+<li>Zero boilerplate</li>
+</ul> <p>So I built it.</p> <hr>
+<h2> <a name="try-it-out" href="#try-it-out"> </a> Try It Out
+</h2> <p>Add JitPack:<br>
+</p> <div>
+<pre><code><span>// settings.gradle.kts</span>
+<span>dependencyResolutionManagement</span> <span>{</span> <span>repositories</span> <span>{</span> <span>maven</span> <span>{</span> <span>url</span> <span>=</span> <span>uri</span><span>(</span><span>"https://jitpack.io"</span><span>)</span> <span>}</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <div>
+<pre><code><span>// build.gradle.kts</span>
+<span>dependencies</span> <span>{</span> <span>implementation</span><span>(</span><span>"com.github.TuleSimon:XComposeMediaPlayer:1.0.0"</span><span>)</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>GitHub:<br>
+<a href="https://github.com/TuleSimon/XComposeMediaPlayer" target="_blank">https://github.com/TuleSimon/XComposeMediaPlayer</a></p> <hr> <h2> <a name="final-thoughts" href="#final-thoughts"> </a> Final Thoughts
+</h2> <p>We don’t need to rewrite infrastructure for every project.</p> <p>Sometimes the best engineering decision isn’t building something complex — it’s building something simple on top of something complex.</p> <p>If you’re building video features in Jetpack Compose, I hope this saves you hours.</p> <p>If you find it useful, star the repo.<br>
+If something breaks, open an issue.</p> <p>It’s open source.</p> <p>Happy coding.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

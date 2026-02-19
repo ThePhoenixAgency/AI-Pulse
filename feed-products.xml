@@ -5,45 +5,8 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Feb 2026 04:19:32 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Feb 2026 06:58:53 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
-    <item>
-      <title><![CDATA[Show HN: Analytics that tells AI product teams where their AI fails user]]></title>
-      <link>https://dashboard-xi-taupe-75.vercel.app/</link>
-      <description><![CDATA[Traditional analytics tracks clicks. For AI products, you need to know: what was the user trying to do, did the AI help, and did they succeed?
-I built a demo of this. It ingests AI conversations and runs 3 workers (GPT-4o-mini): intent classifier, quality scorer (LLM-as-judge), and task completion detector. Results show up in a dashboard designed for PMs, not engineers.
-Stack: Python SDK (zero deps, async) → FastAPI → Supabase → GPT-4o-mini workers → Next.js dashboard.
-Demo with sample data (not live product, validating the concept): https://dashboard-xi-taupe-75.vercel.app
-The sample data models an AI app builder. Interesting patterns: scaffolding works great (78% success), but API integrations fail 75% of the time, and users who enter bug-fix loops almost always churn.
-Key design question: is the "insights layer" (auto-generated recommendations, revenue-at-risk estimates, root cause identification) valuable enough to differentiate from Langfuse/Helicone adding product analytics to their existing tracing tools?
-Looking for honest feedback, especially from AI product builders. URL: https://news.ycombinator.com/item?id=47068605
-Points: 1
-# : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 01:02:00 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://dashboard-xi-taupe-75.vercel.app/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: SalaryScript – The FAANG Negotiation Playbook]]></title>
-      <link>https://news.ycombinator.com/item?id=47068559</link>
-      <description><![CDATA[Hey HN,
-I’m the founder of SalaryScript, and I wanted to share a project I’ve been working on for over a year: a comprehensive negotiation playbook tailored specifically for big tech roles.
-I’ve navigated the FAANG hiring gauntlet multiple times myself, with stints at FAANG companies, so I know firsthand how opaque and high-stakes these negotiations can be. I wrote SalaryScript based on my experience, insights from a dozen FAANG-alumni colleagues, and lessons from recruiters I’ve worked with over the years. We’ve pooled perspectives from engineers, PMs, and execs who’ve collectively negotiated millions in total compensation.
-Think of it as a “golden rule” book for tech negotiations. It covers everything from decoding offer letters and leveraging competing offers to scripting responses for common recruiter tactics, handling equity cliffs, and navigating relocation packages. No fluff — just battle-tested scripts, templates, and strategies that have helped people increase their total comp by 30–50% on average.
-One contributor, a former Meta engineering manager, shared how he turned a $300K offer into $550K by reframing the RSU vesting conversation. Another, an ex-Apple product lead, broke down the psychology of why “total comp” framing often beats focusing on base salary alone.
-Since launching last year at an introductory price of $19, we’ve crossed 1,000+ downloads and sales. Demand has been strong, and as word has spread, we’ve gradually raised the price.
-If you’re prepping for interviews or staring at an offer right now, this might be the edge you need.
-If you’re interested, you can check it out at salaryscript.com.
-Would love your thoughts, war stories, or questions like what’s the biggest negotiation win (or fail) you’ve had in tech?
-Cheers URL: https://news.ycombinator.com/item?id=47068559
-Points: 1
-# : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 00:56:03 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://news.ycombinator.com/item?id=47068559</guid>
-    </item>
     <item>
       <title><![CDATA[Actualité : Apple : finalement pas de keynote pour le 4 mars ? Voici ce qui se prépare en coulisses]]></title>
       <link>https://www.lesnumeriques.com/societe-numerique/apple-finalement-pas-de-keynote-pour-le-4-mars-voici-ce-qui-se-prepare-en-coulisses-n251657.html</link>
@@ -71,15 +34,6 @@ Points faiblesProgramme glace...]]></description>
       <source>Les Numeriques</source>
       <category>products</category>
       <guid>https://www.lesnumeriques.com/blender/bon-plan-le-blender-bosch-vitapower-serie-4-mmb6382m-5-etoiles-a-125-00-37-n251651.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : Apple préparerait ces trois produits avec caméras et IA pour entrer dans une nouvelle ère de son histoire]]></title>
-      <link>https://www.lesnumeriques.com/intelligence-artificielle/apple-preparerait-ces-trois-produits-avec-cameras-et-ia-pour-entrer-dans-une-nouvelle-ere-de-son-histoire-n251640.html</link>
-      <description><![CDATA[La firme de Cupertino ne compte pas laisser Meta dominer le marché des lunettes connectées. Selon un rapport de Mark Gurman pour Bloomberg, Apple travaillerait sur trois nouveaux produits. Des lunettes connectées, un pendentif et de nouveaux AirPods. Les appareils embarqueraient une caméra et se connecteraient à l'iPhone pour permettre à Siri d'analy...]]></description>
-      <pubDate>Tue, 17 Feb 2026 21:00:00 GMT</pubDate>
-      <source>Les Numeriques</source>
-      <category>products</category>
-      <guid>https://www.lesnumeriques.com/intelligence-artificielle/apple-preparerait-ces-trois-produits-avec-cameras-et-ia-pour-entrer-dans-une-nouvelle-ere-de-son-histoire-n251640.html</guid>
     </item>
   </channel>
 </rss>

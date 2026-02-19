@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,103 @@
     Source: Journal du Hacker | Date: 2/13/2026 7:13:41 PM | <a href="https://www.loxodata.com/post/postgresql-18-2/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Summary unavailable for this article.</p>
+    <div><div> <p><img src="https://www.loxodata.com/images/articles/calendar.svg">2026-02-13 &nbsp; <img src="https://www.loxodata.com/images/articles/words.svg">1147 mots, 6 minutes de lecture </p> </div><div> <p>Le PGDG (PostgreSQL Global Development Group) a publié une mise à jour
+de toutes les versions supportées de PostgreSQL, incluant 18.2, 17.8, 16.12, 15.16, et 14.21.</p>
+<p>Cette publication corrige également 5 vulnérabilités de sécurité et
+plus de 65 bogues reportés dans les mois précédents.</p>
+<p>Pour la liste complète des changements, se référer à la section <a href="https://www.postgresql.org/docs/release/">Notes
+de publication</a>.</p>
+<h2>Problèmes de sécurité</h2>
+<ul>
+<li><a href="https://www.postgresql.org/support/security/CVE-2026-2003/">CVE-2026-2003</a> : Le type <code>oidvector</code> divulgue quelques octets de mémoire.</li>
+</ul>
+<p>CVSS v3.1 Base Score: 4.3</p>
+<p>versions vulnérables et supportées : 14 - 18.</p>
+<p>Une validation incorrecte du type oidvector dans PostgreSQL permet à un utilisateur de la base de données de divulguer quelques octets de la mémoire du serveur. Nous n’avons pas exclu la possibilité d’attaques visant à obtenir des informations confidentielles dans les octets divulgués, mais celles-ci semblent peu probables. Les versions antérieures à PostgreSQL 18.2, 17.8, 16.12, 15.16 et 14.21 sont concernées.</p>
+<p>Le projet PostgreSQL remercie Altan Birler pour avoir reporté ce problème.</p>
+<ul>
+<li><a href="https://www.postgresql.org/support/security/CVE-2026-2004/">CVE-2026-2004</a> : L’extension <code>intarray</code> manquant une validation du type d’entrée vers l’estimateur de sélectivité permettant l’exécution de code arbitraire.</li>
+</ul>
+<p>CVSS v3.1 Base Score: 8.8</p>
+<p>versions vulnérables et supportées : 14 - 18.</p>
+<p>L’absence de validation du type d’entrée dans la fonction d’estimation de la sélectivité de l’extension <code>intarray</code> permet à un créateur d’objet d’exécuter du code arbitraire en tant qu’utilisateur du système d’exploitation exécutant la base de données. Les versions antérieures à PostgreSQL 18.2, 17.8, 16.12, 15.16 et 14.21 sont concernées.</p>
+<p>Le projet PostgreSQL remercie Daniel Firer durant le zeroday.cloud, pour avoir reporté ce problème.</p>
+<ul>
+<li><a href="https://www.postgresql.org/support/security/CVE-2026-2005/">CVE-2026-2005</a> : Débordement de la mémoire tampon de l’extension <code>pgcrypto</code> permettant l’exécution de code arbitraire</li>
+</ul>
+<p>CVSS v3.1 Base Score: 8.8</p>
+<p>versions vulnérables et supportées : 14 - 18.</p>
+<p>Un débordement de la mémoire tampon dans l’extension <code>pgcrypto</code> permet à un fournisseur de texte chiffré d’exécuter un code arbitraire en tant qu’utilisateur du système d’exploitation exécutant la base de données. Les versions antérieures à PostgreSQL 18.2, 17.8, 16.12, 15.16 et 14.21 sont concernées.</p>
+<p>Le projet PostgreSQL remercie l’équipe Xint Code durant le zeroday.cloud pour avoir reporté ce problème.</p>
+<ul>
+<li><a href="https://www.postgresql.org/support/security/CVE-2026-2006/">CVE-2026-2006</a> : Absence de validation de la longueur des caractères multioctets permettant l’exécution de code arbitraire.</li>
+</ul>
+<p>CVSS v3.1 Base Score: 8.8</p>
+<p>versions vulnérables et supportées : 14 - 18.</p>
+<p>L’absence de validation de la longueur des caractères multioctets dans la manipulation de texte PostgreSQL permet à un utilisateur de la base de données d’émettre des requêtes spécialement conçues pour provoquer un dépassement de tampon. Cela suffit pour exécuter du code arbitraire en tant qu’utilisateur du système d’exploitation exécutant la base de données. Les versions antérieures à PostgreSQL 18.2, 17.8, 16.12, 15.16 et 14.21 sont concernées.</p>
+<p>Le projet PostgreSQL remercie Paul Gerste et Moritz Sanft durant le zeroday.cloud pour avoir reporté ce problème.</p>
+<ul>
+<li><a href="https://www.postgresql.org/support/security/CVE-2026-2007/">CVE-2026-2007</a> : Le débordement de la mémoire tampon de l’extension <code>pg_trgm</code> écrit un motif dans la mémoire du serveur.</li>
+</ul>
+<p>CVSS v3.1 Base Score: 8.2</p>
+<p>versions vulnérables et supportées : 18.</p>
+<p>Un débordement de la mémoire tampon dans l’extension <code>pg_trgm</code> permet à un utilisateur de la base de données d’obtenir des effets inconnus via une chaîne de caractères spécialement conçue. L’attaquant a un contrôle limité sur les modèles d’octets à écrire, mais nous n’avons pas exclu la possibilité d’attaques conduisant à une élévation des privilèges. Les versions antérieures à PostgreSQL 18.1 et 18.0 sont concernées.</p>
+<p>Le projet PostgreSQL remercie Heikki Linnakangas pour avoir reporté ce problème.</p>
+<h2>Corrections de bogues et améliorations</h2>
+<p>Cette mise à jour corrige plus de 65 bogues ayant été signalés durant
+les mois précédents. Les problèmes ci-dessous concernent
+PostgreSQL 18. Certains de ces problèmes peuvent aussi concerner
+d’autres versions de PostgreSQL.</p>
+<ul>
+<li>correction de la correspondance incohérente de texte insensible à la casse dans l’extension <code>ltree</code>. Si vous utilisez un index sur une colonne <code>ltree</code>, vous devrez peut-être, dans certains cas, effectuer une réindexation. Reportez-vous à la section « Mise à jour » pour obtenir des instructions supplémentaires;</li>
+<li>la commande <code>ALTER TABLE ... ADD CONSTRAINT</code> pour ajouter une contrainte <code>NOT NULL</code> à une colonne déjà marquée comme <code>NOT NULL</code> nécessite désormais que le nom de la contrainte corresponde au nom de la contrainte existante;</li>
+<li>correction du comportement du déclencheur lorsque <code>MERGE</code> est exécuté à partir d’une requête <code>WITH</code> afin d’inclure les lignes affectées par <code>MERGE</code>;</li>
+<li>correctifs sur le planificateur de requêtes;</li>
+<li>correction de la recherche de sous-chaînes de texte pour les collations non déterministes;</li>
+<li>correctifs pour la gestion et le signalement des erreurs <code>NOTIFY</code>;</li>
+<li>utilisation de la fonction de tri correcte dans les constructions parallèles d’index <code>GIN</code>;</li>
+<li>correction du traitement incorrect des sauvegardes incrémentales avec des tables de plus de 1 Go;</li>
+<li>arrêt de la restauration si le WAL n’existe pas jusqu’au point de reprise indiqué par l’enregistrement du checkpoint;</li>
+<li>correctif pour <code>ALTER PUBLICATION</code> pour garantir que les déclencheurs d’événements contiennent toutes les options définies;</li>
+<li>correctifs concernant l’initialisation des slots de réplication;</li>
+<li>mise en pause du slot de réplication après un échec d’application d’un worker parallèle de réplication logique afin d’éviter la perte de transactions côté abonné;</li>
+<li>correctif du rapport d’erreurs pour les incompatibilités de type de chemin <code>SQL/JSON</code>;</li>
+<li>correction de l’inlining de la fonction de compilation JIT lors de l’utilisation de LLVM 17 ou ultérieure;</li>
+<li>ajout d’un nouveau paramètre serveur <code>file_extend_method</code> pour contrôler l’utilisation de <code>posix_fallocate()</code>;</li>
+<li>correction de la complétion auto de l’utilitaire <code>psql</code> pour les options de la commande <code>VACUUM</code>;</li>
+<li>correctif pour <code>pg_dump</code> pour gérer correctement les suppressions simultanées de séquences et échouer si l’utilisateur appelant ne dispose pas explicitement des privilèges nécessaires pour lire la séquence;</li>
+<li>correctifs pour <code>amcheck</code> concernant l’inspection <code>btree</code>;</li>
+<li>empêcher le plantage de <code>pg_stat_statements</code> lorsqu’une liste <code>IN</code> contient à la fois des constantes et des expressions non constantes;</li>
+</ul>
+<p>Cette publication met également à jour les fichiers de données de fuseaux horaires vers la version <code>2025c</code> de <code>tzdata</code>, qui ne comporte qu’une modification des données historiques pour les horodatages antérieurs à 1976 à Baja, en Californie.</p>
+<h2>Mise à jour</h2>
+<p>Toutes les publications de mises à jour de PostgreSQL sont
+cumulatives. Comme pour les autres mises à jour mineures, il n’est pas
+nécessaire d’extraire et de recharger les bases de données ni
+d’utiliser <code>pg_upgrade</code> pour appliquer cette mise à jour&nbsp;; il
+suffit simplement d’arrêter PostgreSQL et de mettre à jour les
+binaires.</p>
+<p>Si vous avez des index sur des colonnes <code>ltree</code> et n’utilisant pas le fournisseur
+de collation <code>libc</code>, après la mise à jour vers la dernière version, vous devrez
+réindexer les données de type <code>ltree</code>. Vous pouvez utiliser <code>REINDEX INDEX CONCURRENTLY</code>
+pour réduire l’impact sur votre système.</p>
+<p>Les utilisateurs ayant sauté une ou plusieurs mises à jour peuvent
+avoir besoin d’étapes additionnelles après la mise à jour. Les notes
+de publication des versions précédentes fournissent les détails.</p>
+<p>Pour plus de détails, se référer à la <a href="https://www.postgresql.org/docs/release/">note de publication de
+versions</a>.</p>
+<h2>Liens</h2>
+<ul>
+<li><a href="https://www.postgresql.org/download/">Téléchargements</a></li>
+<li><a href="https://www.postgresql.org/docs/release/">Notes de version</a></li>
+<li><a href="https://www.postgresql.org/support/security/">Page sur la sécurité</a></li>
+<li><a href="https://www.postgresql.org/support/versioning/">Politique de version</a></li>
+<li><a href="https://www.postgresql.org/account/submitbug/">Soumettre un bogue</a></li>
+<li><a href="https://www.postgresql.org/about/donate/">Faire un don</a></li>
+</ul>
+<p>Si vous avez des corrections ou suggestions sur cette annonce de
+publication, merci de les envoyer à la mailing liste publique
+<a href="https://www.postgresql.org/list/"><em>pgsql-www@lists.postgresql.org</em></a>.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
