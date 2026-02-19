@@ -289,7 +289,7 @@ jobs:
       run: |
         # Configuration de l'identité Git
         git config --global user.name 'PhoenixProject'
-        git config --global user.email "${GIT_AUTHOR_EMAIL:-phoenix.project@example.com}"
+        git config --global user.email '${{ secrets.GIT_AUTHOR_EMAIL }}'
 
         # Ajouter tous les fichiers modifiés à l'index
         # Le point (.) signifie "tous les fichiers"
