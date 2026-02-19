@@ -5,93 +5,70 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Feb 2026 16:49:45 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Feb 2026 18:48:35 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN:`npx continues` – resume same session Claude, Gemini, Codex when limited]]></title>
-      <link>https://github.com/yigitkonur/cli-continues</link>
-      <description><![CDATA[i kept hitting rate limits in Claude Code mid-debugging, then hopping to Gemini or Codex. the annoying part wasn't switching tools (copy-pasting terminal output doesn't bring tool-use context with it) — it was losing the full conversation and spending 10 minutes re-explaining what i was doing.
-so i built *continues*. it finds your existing AI coding sessions across five tools (Claude Code, GitHub Copilot, Gemini CLI, OpenAI Codex, OpenCode), lets you pick one, and generates a structured handoff so you can continue in another tool without starting from zero. npx continues # interactive TUI: pick a session, pick a target continues scan # see what it finds (read-only) continues claude # jump into your latest Claude Code session continues resume abc123 --in gemini # hand off a specific session to Gemini * scans the current directory first (so you see what's relevant), then shows everything
-* you pick a session + a target tool
-* it generates a handoff doc: recent conversation, cwd, files modified (best-effort), pending tasks
-* launches the target tool with everything injected inline — no extra "go read this file" step
-what it's not:
-* not "true migration" — it's context injection. you get recent messages + metadata, not a full replay (pls come up with PR for full session reprod)
-* rate limit detection is manual for now — you run it when you know you're blocked, no auto-detect yet
-* session formats are mostly undocumented and can change anytime (this is the biggest maintenance risk)
-* local file parsing only, no API calls — your data stays on your machine
-curious if anyone else actually juggles multiple AI coding CLIs, or if most people just commit to one and wait out rate limits. would love to hear how you handle tool-switching + context today + feedbacks on context quality migrations and feedbacks are welcomed. URL: https://news.ycombinator.com/item?id=47075089
-Points: 4
-# : 2]]></description>
-      <pubDate>Thu, 19 Feb 2026 15:50:19 GMT</pubDate>
+      <title><![CDATA[Show HN: Firebase alternative where SaaS users choose data location]]></title>
+      <link>https://linkedrecords.com/</link>
+      <description><![CDATA[Article URL: https://linkedrecords.com/ URL: https://news.ycombinator.com/item?id=47076473
+Points: 1
+# : 0]]></description>
+      <pubDate>Thu, 19 Feb 2026 17:33:18 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://github.com/yigitkonur/cli-continues</guid>
+      <guid>https://linkedrecords.com/</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: TrustSignal–Free outside-in trust readiness scanner for SaaS companies]]></title>
-      <link>https://www.trustsignal.tech/</link>
-      <description><![CDATA[Article URL: https://www.trustsignal.tech/ URL: https://news.ycombinator.com/item?id=47075009
-Points: 1
+      <title><![CDATA[Actualité : One UI 8.5 : Samsung lance sa cinquième bêta d’Android 16 avant la sortie officielle]]></title>
+      <link>https://www.lesnumeriques.com/telephone-portable/one-ui-8-5-samsung-lance-sa-cinquieme-beta-d-android-16-avant-la-sortie-officielle-n251715.html</link>
+      <description><![CDATA[La sortie d’Android 16 entre dans sa phase décisive chez Samsung. Le géant sud-coréen vient de diffuser la cinquième bêta de One UI 8.5 sur les Galaxy S25, une version qui ressemble fortement à l’ultime étape avant sa mise à disposition publique. Les premiers retours évoquent un système plus stable, plus fluide et quasiment prêt pour le grand public....]]></description>
+      <pubDate>Thu, 19 Feb 2026 17:09:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/telephone-portable/one-ui-8-5-samsung-lance-sa-cinquieme-beta-d-android-16-avant-la-sortie-officielle-n251715.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: Orchestera – Managed Apache Spark on Kubernetes in Your Own AWS Account]]></title>
+      <link>https://orchestera.com/</link>
+      <description><![CDATA[I built Orchestera as a PaaS that allows you to orchestrate Apache Spark clusters in your own AWS account, with no additional markup on compute via EC2 instances.
+I built this because I was tired of the compute markup that products like AWS EMR and Databricks charge for the convenience of using Apache Spark via their platforms. One can argue that Databricks is a superior product with a lot of additional value in their offering but I don't see that with AWS EMR Apache Spark at all (given my personal experience working with it).
+My motivation to build this was to be able to create your own Apache Spark cluster without needing any understanding of the underlying data infrastructure engineering and quickly get to the point of writing Spark pipelines, whether as Python applications or Jupyter notebooks, all with no markup on compute because I don't think that is a justified narrative.
+It took me almost an year to build it with a day job and of course I used AI for frontend design and video narrations, the infrastructue engineering that goes behind it comes with quite a bit of experience in the industry. The backend that orchestrates the cluster is written with the following:
+- Django and DRF for API
+- Temporal for async workers
+- Pulumi that is run via Temporal workers to orchestrate the cluster
+- Karpenter for node auto-scaling based on Spark executor workloads and requests
+- Librechat for Spark History server and MCP based debugging for Spark pipeline run analysis
+There are currently no caps on the CPU limits so you can try this out today in your own personal AWS accounts for free.
+Also looking for feedback on HN. URL: https://news.ycombinator.com/item?id=47075959
+Points: 3
 # : 1]]></description>
-      <pubDate>Thu, 19 Feb 2026 15:42:42 GMT</pubDate>
+      <pubDate>Thu, 19 Feb 2026 16:58:07 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://www.trustsignal.tech/</guid>
+      <guid>https://orchestera.com/</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: Mining tenement API – 83K tenements across AU and CA]]></title>
-      <link>https://www.tryautropic.com/mining</link>
-      <description><![CDATA[I built a unified REST API for mining tenement data because the fragmentation across government portals was driving me crazy.
-Each state/province has different formats, different APIs (or no API at all), different field names. If you wanted to answer "what tenements does Company X hold across multiple jurisdictions?" you'd need to query 4+ different systems.
-Currently covering:
-- Western Australia: 30,101 tenements
-- Northern Territory: 3,945 tenements
-- British Columbia: 41,981 tenements
-- Saskatchewan: 7,600 tenements
-Free during beta, no API key required. Designed for AI agents that need structured mining data.
-Would love feedback, especially from anyone working in mining tech or building AI agents that need real-world data sources. URL: https://news.ycombinator.com/item?id=47074905
-Points: 1
-# : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 15:32:49 GMT</pubDate>
+      <title><![CDATA[Show HN: ClawShell, Process-Level Isolation for OpenClaw Credentials]]></title>
+      <link>https://github.com/clawshell/clawshell</link>
+      <description><![CDATA[Hi HN,
+I’ve been using OpenClaw daily since it dropped in November. I love the agency it provides, but as I started giving it more production API keys and access to my local filesystem, I realized the threat model was essentially "hope-based."
+We ran an experiment to see how resilient a standard OpenClaw setup was to prompt injection. Within 2 mins, we were able to exfiltrate active session tokens and API credentials through the chat interface.
+The problem is fundamental: in most agent architectures, the LLM logic and the sensitive credentials live in the same process space. If the agent is tricked, the attacker has everything.
+We built and open-sourced a project called ClawShell to move the security boundary from the "prompt" to the "system runtime."
+How it works: ClawShell acts as a privileged protection layer. It isolates sensitive operations into a separate process enforced by the OS. The secrets never enter the agent’s memory or process space. When the agent needs to perform an action, it sends a request to the ClawShell wrapper, which validates the intent and executes the call using the protected keys.
+If the agent is hijacked via prompt injection, the attacker gets a scoped identifier that contains zero credentials and no lateral access to the sensitive environment.
+Key Technical Details:
+* Structural Boundaries: We assume the LLM is untrusted. Isolation is handled at the OS level, not via "system prompts."
+* Zero-Trust Tooling: The agent triggers the tool, but the tool execution is handled by a separate, restricted process.
+* Compatibility: It’s designed to be a drop-in wrapper for existing OpenClaw instances.
+We’re launching v0.1 today. I’m curious to hear how others are thinking about the "Lethal Trifecta" (Data + Action + Communication) in the agent space. Is anyone else looking at Sanboxing for this, or is OS-level isolation the right path? URL: https://news.ycombinator.com/item?id=47075823
+Points: 8
+# : 1]]></description>
+      <pubDate>Thu, 19 Feb 2026 16:49:21 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://www.tryautropic.com/mining</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: IPAware – Unlimited IP Intelligence API with Flat Pricing]]></title>
-      <link>https://news.ycombinator.com/item?id=47074875</link>
-      <description><![CDATA[Hey HN,
-We built IPAware (https://ipaware.io) - an IP intelligence API that doesn't charge per request.
-What it does:
-- IP geolocation (country, region, city, coordinates, timezone)
-- Threat detection (VPN/Proxy/Tor, risk scoring, datacenter detection)
-- ASN/ISP data
-- Clean JSON responses
-Why we built this:
-Every IP lookup service we tried had the same problem - you start small, your app grow and suddenly you're paying hundreds for what should be a commodity lookup. The metering anxiety is real. We wanted something we could integrate without worrying about the bill exploding.
-How it works:
-Flat monthly/yearly pricing. Pro plan is unlimited requests for $9.99/month or $99.90/year. Free tier gives you 5000 requests/month to try it out. Fair-use limits exist to prevent abuse, but no per-request metering.
-Tech details:
-- Edge delivery for low latency
-- REST API, returns JSON
-- No SDK required (works with curl, fetch, or any HTTP client)
-- Databases updated every night for accuracy
-- IPv4 and IPv6 support
-Limitations to be upfront about:
-- City-level accuracy varies by region (country/region is reliable, city is best-effort)
-- Fair-use applies on unlimited plans - this isn't for scraping the entire internet
-- Our threat detection algorithm is good but not perfect
-Launch offer:
-Sign up within the first 24 hours and get the Pro tier ($9.99/month) free for an entire month. Your account gets a full month of unlimited Pro access with features that are not normally available to the free tier - no strings attached. At any point, you can decide to keep the Pro tier or switch to the free tier on the dashboard.
-Happy to answer questions about the tech, infrastructure, or anything else.
-All feedback is greatly appreciated! URL: https://news.ycombinator.com/item?id=47074875
-Points: 6
-# : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 15:31:06 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://news.ycombinator.com/item?id=47074875</guid>
+      <guid>https://github.com/clawshell/clawshell</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Microsoft réussit à sauvegarder des données dans du verre : un stockage record de 10 000 ans]]></title>

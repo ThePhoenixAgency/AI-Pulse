@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Semantic API - One Endpoint, Every API</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Semantic API - One Endpoint, Every API</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 5:34:46 PM | <a href="https://semanticapi.dev/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div> <nav> <p> Semantic API</p> </nav> <section> <p><span></span> One endpoint. Every API. AI-powered. </p> <h2>One Endpoint<br><span>Infinite APIs</span></h2> <p> Not another integration platform with hardcoded connectors.<br> <strong>A single AI-powered endpoint</strong> that understands your intent and connects to <strong>any API</strong>. </p> <p>48 API providers • 278 capabilities • No credit card required</p> </section> <section> <div> <h2>The Architecture</h2> <p>Your app talks to ONE endpoint. We handle the rest.</p> </div> <div> <div> <p></p> <h3>Your App</h3> <p>Any language, any platform</p> </div> <p>→</p> <div> <p><span>AI-POWERED</span></p><h3>Semantic API</h3> <p>POST /api/query</p> <p>Understands intent, routes intelligently</p> </div> <p>→</p> <div> <div> <p><span></span> Stripe</p> </div> <div> <p><span></span> Twilio</p> </div> <div> <p><span></span> GitHub</p> </div> <div> <p><span></span> Slack</p> </div> <div> <p><span></span> Gmail</p> </div> <div> <p>+ Any API</p> </div> </div> </div> </section> <section> <h2>Why We're Different</h2> <p>Not pre-built connectors. Generative intelligence.</p> <div> <div> <ul> <li> <span>✗</span> <span><strong>Pre-built connectors</strong> - Limited to what they've built</span> </li> <li> <span>✗</span> <span><strong>Hardcoded workflows</strong> - Rigid trigger/action chains</span> </li> <li> <span>✗</span> <span><strong>Visual builder required</strong> - Click through menus</span> </li> <li> <span>✗</span> <span><strong>New API = wait for them</strong> - Or no support</span> </li> </ul> </div> <div> <ul> <li> <span>✓</span> <span><strong>AI understands intent</strong> - Describe what you want</span> </li> <li> <span>✓</span> <span><strong>Dynamic execution</strong> - No hardcoded paths</span> </li> <li> <span>✓</span> <span><strong>Code-first</strong> - One API call, done</span> </li> <li> <span>✓</span> <span><strong>Add any API</strong> - JSON schema, instant support</span> </li> </ul> <p><span>const</span> result = <span>await</span> fetch(<span>'/api/query'</span>, { body: JSON.stringify({ query: <span>"get last 5 stripe payments"</span> })
+}); </p> </div> </div> </section> <section> <h2>How It Works</h2> <div> <div> <p>1</p> <h3>You Ask</h3> <p>"Get my last 5 Stripe payments"</p> </div> <p>→</p> <div> <p>2</p> <h3>AI Understands</h3> <p>Parses intent, selects provider, extracts params</p> </div> <p>→</p> <div> <p>3</p> <h3>API Executes</h3> <p>Calls Stripe API with your credentials</p> </div> <p>→</p> <div> <p>4</p> <h3>You Get Data</h3> <p>Clean, structured response. Done.</p> </div> </div> </section> <section> <h2>Try It Now</h2> <p>No signup required. Just type what you want to do.</p> <div> <div> <p>What do you want to do?</p> <p> <span>Try: "Get weather in Tokyo"</span> </p> </div> <div> <p>Response</p> <pre><span>Results will appear here...</span></pre> </div> </div> <p><strong> Live preflight:</strong> See which APIs and capabilities match your query in real-time. <a href="https://semanticapi.dev/demo#signup">Sign up free</a> to execute queries. </p> </section> <section> <h2>Simple, Transparent Pricing</h2> <p>Start free. Scale as you grow.</p> <div> <div> <p>Free</p> <p>$0<span>/month</span></p> <p>Perfect for exploring</p> <ul> <li>✓ 100 queries/month</li> <li>✓ 48 built-in providers</li> <li>✓ 3 auto-discoveries/month</li> <li>✓ Community support</li> </ul> <p><a href="https://semanticapi.dev/demo#signup">Get Started Free</a> </p></div> <div> <p><span>POPULAR</span></p><p>Pro</p> <p>$49<span>/month</span></p> <p>For teams shipping products</p> <ul> <li>✓ 10,000 queries/month</li> <li>✓ All 48+ providers</li> <li>✓ 50 auto-discoveries/month</li> <li>✓ Priority support</li> <li>✓ Custom provider configs</li> </ul> <p><a href="https://semanticapi.dev/demo#signup">Start Pro Trial →</a> </p></div> <div> <p>Enterprise</p> <p>Custom</p> <p>For organizations at scale</p> <ul> <li>✓ Unlimited queries</li> <li>✓ Self-hosted option</li> <li>✓ Unlimited discoveries</li> <li>✓ Dedicated support</li> <li>✓ SLA &amp; custom contracts</li> </ul> <p><a href="https://semanticapi.dev/cdn-cgi/l/email-protection#08606d646467487b6d6569667c616b697861266c6d7e">Contact Sales</a> </p></div> </div> </section> <div> <h2>Ready to simplify your integrations?</h2> <p>Join developers using Semantic API to connect 48+ APIs with a single endpoint.</p> <p>One endpoint. Every API. No more integration hell.</p> </div> </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

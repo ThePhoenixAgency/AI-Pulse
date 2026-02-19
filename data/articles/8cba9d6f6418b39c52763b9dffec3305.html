@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why Are You Still Using AI to Generate Table Code?</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Why Are You Still Using AI to Generate Table Code?</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 6:22:27 PM | <a href="https://dev.to/jacksonkasi/why-are-you-still-using-ai-to-generate-table-code-5dp4" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fn1swwojtk1h53zdqnjpe.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fn1swwojtk1h53zdqnjpe.png" alt="Cover image for Why Are You Still Using AI to Generate Table Code? "> </a> <div> <p><a href="https://dev.to/jacksonkasi"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F547201%2F40f879c7-4762-49a3-a78b-dfca7b5810dd.png" alt="Jackson Kasi"></a> </p> </div> </header> <div> <p>Every time I asked ChatGPT to create a data table, I got the same 200+ lines of code.</p> <p>Filtering. Sorting. Pagination. Search. Export. Column visibility. Date pickers.</p> <p>New project? Same prompt. Same code. Same debugging.</p> <p>I realized something: <strong>I was paying tokens for work that never changes.</strong></p> <p>That's not what AI is for. AI is for creative problems. Repetitive boilerplate should be abstracted away.</p> <p>So I built <strong>TableCraft</strong>.</p> <hr> <h2> <a name="what-is-tablecraft" href="#what-is-tablecraft"> </a> What is TableCraft?
+</h2> <p>A Drizzle ORM-powered table engine that auto-generates everything from your database schema.</p> <hr> <h2> <a name="backend-setup-hono" href="#backend-setup-hono"> </a> Backend Setup (Hono)
+</h2> <div>
+<pre><code><span>import</span> <span>{</span> <span>Hono</span> <span>}</span> <span>from</span> <span>'</span><span>hono</span><span>'</span>
+<span>import</span> <span>{</span> <span>createHonoApp</span> <span>}</span> <span>from</span> <span>'</span><span>@tablecraft/adapter-hono</span><span>'</span>
+<span>import</span> <span>{</span> <span>defineTable</span> <span>}</span> <span>from</span> <span>'</span><span>@tablecraft/engine</span><span>'</span>
+<span>import</span> <span>{</span> <span>db</span> <span>}</span> <span>from</span> <span>'</span><span>./db</span><span>'</span>
+<span>import</span> <span>*</span> <span>as</span> <span>schema</span> <span>from</span> <span>'</span><span>./db/schema</span><span>'</span> <span>const</span> <span>users</span> <span>=</span> <span>defineTable</span><span>(</span><span>schema</span><span>.</span><span>users</span><span>)</span> <span>.</span><span>hide</span><span>(</span><span>'</span><span>password</span><span>'</span><span>)</span> <span>.</span><span>search</span><span>(</span><span>'</span><span>email</span><span>'</span><span>,</span> <span>'</span><span>name</span><span>'</span><span>)</span> <span>.</span><span>sort</span><span>(</span><span>'</span><span>-createdAt</span><span>'</span><span>)</span> <span>const</span> <span>app</span> <span>=</span> <span>createHonoApp</span><span>({</span> <span>db</span><span>,</span> <span>schema</span><span>,</span> <span>configs</span><span>:</span> <span>{</span> <span>users</span> <span>},</span>
+<span>})</span> <span>new</span> <span>Hono</span><span>().</span><span>route</span><span>(</span><span>'</span><span>/api/engine</span><span>'</span><span>,</span> <span>app</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="frontend-setup-react" href="#frontend-setup-react"> </a> Frontend Setup (React)
+</h2> <div>
+<pre><code><span>import</span> <span>{</span> <span>DataTable</span><span>,</span> <span>createTableCraftAdapter</span> <span>}</span> <span>from</span> <span>'</span><span>@tablecraft/table</span><span>'</span> <span>const</span> <span>adapter</span> <span>=</span> <span>createTableCraftAdapter</span><span>({</span> <span>baseUrl</span><span>:</span> <span>'</span><span>/api/engine</span><span>'</span><span>,</span> <span>table</span><span>:</span> <span>'</span><span>users</span><span>'</span><span>,</span>
+<span>})</span> <span>export</span> <span>function</span> <span>UsersPage</span><span>()</span> <span>{</span> <span>return</span> <span>&lt;</span><span>DataTable</span> <span>adapter</span><span>=</span><span>{</span><span>adapter</span><span>}</span> <span>/&gt;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. <strong>One component. No column definitions.</strong></p> <hr> <h2> <a name="what-you-get" href="#what-you-get"> </a> What You Get
+</h2> <ul>
+<li> Auto-generated columns from schema</li>
+<li> Server-side filtering, sorting, pagination</li>
+<li> Global search</li>
+<li> Date range picker</li>
+<li> CSV/Excel export</li>
+<li> Column visibility &amp; resizing</li>
+<li> URL state sync (shareable links)</li>
+<li> Role-based access control</li>
+<li> Soft delete support</li>
+<li> TypeScript type generation</li>
+</ul> <hr> <h2> <a name="available-packages" href="#available-packages"> </a> Available Packages
+</h2> <div><table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@tablecraft/engine</code></td>
+<td>Backend query engine</td>
+</tr>
+<tr>
+<td><code>@tablecraft/table</code></td>
+<td>React data table component</td>
+</tr>
+<tr>
+<td><code>@tablecraft/adapter-hono</code></td>
+<td>Hono adapter</td>
+</tr>
+<tr>
+<td><code>@tablecraft/adapter-express</code></td>
+<td>Express adapter</td>
+</tr>
+<tr>
+<td><code>@tablecraft/adapter-next</code></td>
+<td>Next.js adapter</td>
+</tr>
+<tr>
+<td><code>@tablecraft/adapter-elysia</code></td>
+<td>Elysia (Bun) adapter</td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="save-your-tokens" href="#save-your-tokens"> </a> Save Your Tokens
+</h2> <p>Next time you need a data table, don't prompt AI.</p> <p>Just use TableCraft.</p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

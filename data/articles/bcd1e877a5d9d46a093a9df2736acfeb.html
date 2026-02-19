@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - jshorwitz/synter-mcp-server: MCP server for AI agents to manage ad campaigns across Google, Meta, LinkedIn, Microsoft, Reddit, TikTok, and more</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - jshorwitz/synter-mcp-server: MCP server for AI agents to manage ad campaigns across Google, Meta, LinkedIn, Microsoft, Reddit, TikTok, and more</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 5:06:54 PM | <a href="https://github.com/jshorwitz/synter-mcp-server" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>Synter MCP Server</h1><a href="#synter-mcp-server"></a></div>
+<div><h3>The MCP extension Claude doesn't want you to use.</h3><a href="#the-mcp-extension-claude-doesnt-want-you-to-use"></a></div>
+<p>Because once you install it, your AI agent can spend real money.</p>
+<p>Create campaigns. Adjust budgets. Pause underperformers. Generate creatives. Pull performance data. All through natural conversation—across Google, Meta, LinkedIn, Microsoft, Reddit, TikTok, and more.</p>
+<p><strong>This is the first MCP server that gives AI agents a credit card.</strong></p>
+<hr>
+<div><h2> Fair Warning</h2><a href="#-fair-warning"></a></div>
+<p>Your AI agent will be able to:</p>
+<ul>
+<li><strong>Create campaigns</strong> that immediately start spending your budget</li>
+<li><strong>Adjust bids</strong> that affect how much you pay per click</li>
+<li><strong>Pause campaigns</strong> (sometimes that's a good thing)</li>
+<li><strong>Add keywords</strong> that change who sees your ads</li>
+<li><strong>Generate creatives</strong> and upload them to your accounts</li>
+</ul>
+<p>We built in confirmations for destructive actions. But still—maybe don't give this to an agent you just met.</p>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>1. Get Your API Key</h3><a href="#1-get-your-api-key"></a></div>
+<p>Sign up at <a href="https://syntermedia.ai">syntermedia.ai</a> and create an API key in the <a href="https://syntermedia.ai/developer">Developer Settings</a>.</p>
+<div><h3>2. Configure Your AI Client</h3><a href="#2-configure-your-ai-client"></a></div>
+<p><strong>For Claude Desktop</strong> — Add to </p><pre><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></pre>:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"synter"</span>: { <span>"command"</span>: <span><span>"</span>npx<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>@syntermedia/mcp-server<span>"</span></span>], <span>"env"</span>: { <span>"SYNTER_API_KEY"</span>: <span><span>"</span>syn_your_api_key_here<span>"</span></span> } } }
+}</pre></div>
+<p><strong>For Cursor</strong> — Add to </p><pre><code>.cursor/mcp.json</code></pre> in your project:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"synter"</span>: { <span>"command"</span>: <span><span>"</span>npx<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>@syntermedia/mcp-server<span>"</span></span>], <span>"env"</span>: { <span>"SYNTER_API_KEY"</span>: <span><span>"</span>syn_your_api_key_here<span>"</span></span> } } }
+}</pre></div>
+<p><strong>For Amp</strong> — Add to </p><pre><code>.amp/settings.json</code></pre>:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"synter"</span>: { <span>"command"</span>: <span><span>"</span>npx<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>@syntermedia/mcp-server<span>"</span></span>], <span>"env"</span>: { <span>"SYNTER_API_KEY"</span>: <span><span>"</span>syn_your_api_key_here<span>"</span></span> } } }
+}</pre></div>
+<div><h3>3. Start Using It</h3><a href="#3-start-using-it"></a></div>
+<p>Restart your AI client and start chatting:</p>
+<blockquote>
+<p>"Show me all my Google Ads campaigns"</p>
+</blockquote>
+<blockquote>
+<p>"Create a search campaign for 'project management software' with a $50/day budget"</p>
+</blockquote>
+<blockquote>
+<p>"Pause the campaign that's overspending"</p>
+</blockquote>
+<hr>
+<div><h2>What Can Your Agent Do?</h2><a href="#what-can-your-agent-do"></a></div>
+<div><h3> Campaign Management</h3><a href="#-campaign-management"></a></div>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>list_campaigns</code></pre></td>
+<td>List campaigns across all connected platforms</td>
+</tr>
+<tr>
+<td><pre><code>create_search_campaign</code></pre></td>
+<td>Create a Google Search campaign with keywords and ads</td>
+</tr>
+<tr>
+<td><pre><code>create_display_campaign</code></pre></td>
+<td>Create a Google Display campaign with images</td>
+</tr>
+<tr>
+<td><pre><code>create_pmax_campaign</code></pre></td>
+<td>Create a Performance Max campaign</td>
+</tr>
+<tr>
+<td><pre><code>create_meta_campaign</code></pre></td>
+<td>Create a Facebook/Instagram campaign</td>
+</tr>
+<tr>
+<td><pre><code>create_linkedin_campaign</code></pre></td>
+<td>Create a LinkedIn campaign for B2B</td>
+</tr>
+<tr>
+<td><pre><code>create_reddit_campaign</code></pre></td>
+<td>Create a Reddit campaign</td>
+</tr>
+<tr>
+<td><pre><code>pause_campaign</code></pre></td>
+<td>Pause any campaign</td>
+</tr>
+<tr>
+<td><pre><code>update_campaign_budget</code></pre></td>
+<td>Change daily budget</td>
+</tr>
+</tbody>
+</table>
+<div><h3> Performance &amp; Analytics</h3><a href="#-performance--analytics"></a></div>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>get_performance</code></pre></td>
+<td>Get impressions, clicks, spend, conversions, ROAS</td>
+</tr>
+<tr>
+<td><pre><code>get_daily_spend</code></pre></td>
+<td>Daily spend breakdown by platform</td>
+</tr>
+</tbody>
+</table>
+<div><h3> Keywords &amp; Targeting</h3><a href="#-keywords--targeting"></a></div>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>add_keywords</code></pre></td>
+<td>Add keywords to a campaign or ad group</td>
+</tr>
+<tr>
+<td><pre><code>add_negative_keywords</code></pre></td>
+<td>Block unwanted search terms</td>
+</tr>
+</tbody>
+</table>
+<div><h3> Conversion Tracking</h3><a href="#-conversion-tracking"></a></div>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>create_conversion</code></pre></td>
+<td>Set up a conversion action</td>
+</tr>
+<tr>
+<td><pre><code>list_conversions</code></pre></td>
+<td>List existing conversion actions</td>
+</tr>
+<tr>
+<td><pre><code>diagnose_tracking</code></pre></td>
+<td>Check if tracking is installed correctly</td>
+</tr>
+</tbody>
+</table>
+<div><h3> Creative Generation</h3><a href="#-creative-generation"></a></div>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>generate_image</code></pre></td>
+<td>AI-generate ad images (Imagen 4, Flux, SDXL)</td>
+</tr>
+<tr>
+<td><pre><code>generate_video</code></pre></td>
+<td>AI-generate video ads (Veo, Runway, Luma)</td>
+</tr>
+<tr>
+<td><pre><code>upload_image</code></pre></td>
+<td>Upload images as ad assets</td>
+</tr>
+</tbody>
+</table>
+<div><h3> Utility</h3><a href="#-utility"></a></div>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>list_ad_accounts</code></pre></td>
+<td>List all connected ad accounts</td>
+</tr>
+<tr>
+<td><pre><code>run_tool</code></pre></td>
+<td>Run any of 140+ Synter tools directly</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>No Ads Experience? No Problem.</h2><a href="#no-ads-experience-no-problem"></a></div>
+<p>If you've never run ads before, here's what you need to know:</p>
+<div><h3>What is a Campaign?</h3><a href="#what-is-a-campaign"></a></div>
+<p>A <strong>campaign</strong> is like a project folder. It contains your ads, who sees them, and how much you spend.</p>
+<div><pre><code>Campaign: "Q1 Lead Generation"
+├── Budget: $50/day
+├── Targeting: USA, people searching "project management"
+└── Ads: Headlines, descriptions, images
+</code></pre></div>
+<div><h3>What Platforms Can I Use?</h3><a href="#what-platforms-can-i-use"></a></div>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Best For</th>
+<th>Min Budget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Google Ads</strong></td>
+<td>People actively searching for your product</td>
+<td>$10/day</td>
+</tr>
+<tr>
+<td><strong>Meta (Facebook/Instagram)</strong></td>
+<td>Visual products, broad audiences</td>
+<td>$5/day</td>
+</tr>
+<tr>
+<td><strong>LinkedIn</strong></td>
+<td>B2B, enterprise, job seekers</td>
+<td>$25/day</td>
+</tr>
+<tr>
+<td><strong>Reddit</strong></td>
+<td>Niche communities, tech-savvy users</td>
+<td>$5/day</td>
+</tr>
+<tr>
+<td><strong>Microsoft (Bing)</strong></td>
+<td>Older demographics, B2B</td>
+<td>$10/day</td>
+</tr>
+<tr>
+<td><strong>TikTok</strong></td>
+<td>Gen Z, entertainment, e-commerce</td>
+<td>$20/day</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Campaign Types Explained</h3><a href="#campaign-types-explained"></a></div>
+<p><strong>Search Campaigns</strong> — Your ad shows when someone Googles specific keywords.</p>
+<ul>
+<li><em>Example:</em> Someone searches "best CRM software" → Your ad appears</li>
+</ul>
+<p><strong>Display Campaigns</strong> — Image ads shown across websites and apps.</p>
+<ul>
+<li><em>Example:</em> Banner ad on a news site</li>
+</ul>
+<p><strong>Performance Max (PMax)</strong> — Google's AI shows your ads everywhere (Search, YouTube, Display, Gmail, Maps).</p>
+<ul>
+<li><em>Example:</em> Google figures out the best placements for you</li>
+</ul>
+<p><strong>Video Campaigns</strong> — Video ads on YouTube and partner sites.</p>
+<ul>
+<li><em>Example:</em> 15-second ad before a YouTube video</li>
+</ul>
+<div><h3>Common Terms</h3><a href="#common-terms"></a></div>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Impressions</strong></td>
+<td>How many times your ad was shown</td>
+</tr>
+<tr>
+<td><strong>Clicks</strong></td>
+<td>How many people clicked your ad</td>
+</tr>
+<tr>
+<td><strong>CTR</strong></td>
+<td>Click-through rate (clicks ÷ impressions × 100)</td>
+</tr>
+<tr>
+<td><strong>CPC</strong></td>
+<td>Cost per click</td>
+</tr>
+<tr>
+<td><strong>Conversions</strong></td>
+<td>Desired actions (signups, purchases, etc.)</td>
+</tr>
+<tr>
+<td><strong>ROAS</strong></td>
+<td>Return on ad spend (revenue ÷ spend)</td>
+</tr>
+</tbody>
+</table>
+<div><h3>First Campaign Checklist</h3><a href="#first-campaign-checklist"></a></div>
+<p>Before creating your first campaign, you'll need:</p>
+<ol>
+<li> A landing page URL where people will go when they click</li>
+<li> An idea of who you want to reach (location, interests)</li>
+<li> A daily budget you're comfortable with ($10-50 to start)</li>
+<li> Some headlines and descriptions for your ad</li>
+</ol>
+<p><strong>Pro tip:</strong> Start with a Search campaign on Google. It's the easiest to understand and shows ads to people already looking for what you offer.</p>
+<hr>
+<div><h2>Example Conversations</h2><a href="#example-conversations"></a></div>
+<div><h3>Create Your First Campaign</h3><a href="#create-your-first-campaign"></a></div>
+<blockquote>
+<p><strong>You:</strong> Create a Google Search campaign for my SaaS product. Target people searching for "team collaboration software" and "project management tools". Budget is $25/day. Landing page is <a href="https://myapp.com/signup">https://myapp.com/signup</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Agent:</strong> I'll create a Search campaign with those keywords. What headlines should I use? Here are some suggestions:</p>
+<ul>
+<li>"Team Collaboration Made Simple"</li>
+<li>"Project Management for Modern Teams"</li>
+<li>"Start Free - No Credit Card"</li>
+</ul>
+</blockquote>
+<div><h3>Check Performance</h3><a href="#check-performance"></a></div>
+<blockquote>
+<p><strong>You:</strong> How are my campaigns doing this week?</p>
+</blockquote>
+<blockquote>
+<p><strong>Agent:</strong> Here's your performance for the last 7 days:</p>
+<table>
+<thead>
+<tr>
+<th>Campaign</th>
+<th>Spend</th>
+<th>Clicks</th>
+<th>Conversions</th>
+<th>ROAS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brand Search</td>
+<td>$142</td>
+<td>89</td>
+<td>12</td>
+<td>4.2x</td>
+</tr>
+<tr>
+<td>Competitor Keywords</td>
+<td>$98</td>
+<td>45</td>
+<td>3</td>
+<td>1.5x</td>
+</tr>
+<tr>
+<td>Display Retargeting</td>
+<td>$67</td>
+<td>234</td>
+<td>8</td>
+<td>2.8x</td>
+</tr>
+</tbody>
+</table>
+<p>The "Competitor Keywords" campaign is underperforming. Want me to pause it or adjust the targeting?</p>
+</blockquote>
+<div><h3>Add Negative Keywords</h3><a href="#add-negative-keywords"></a></div>
+<blockquote>
+<p><strong>You:</strong> I'm getting clicks for "free project management" but we don't have a free tier. Block those.</p>
+</blockquote>
+<blockquote>
+<p><strong>Agent:</strong> Added "free" as a negative keyword to your campaign. This will stop your ads from showing for any search containing "free".</p>
+</blockquote>
+<div><h3>Generate Ad Creative</h3><a href="#generate-ad-creative"></a></div>
+<blockquote>
+<p><strong>You:</strong> I need a display ad image for a marketing automation product. Dark theme, professional, 1200x628.</p>
+</blockquote>
+<blockquote>
+<p><strong>Agent:</strong> Generating your image with Imagen 4...</p>
+<p>Created: "Marketing automation dashboard with data visualization on dark background"
+Asset saved and ready to use in your next Display campaign.</p>
+</blockquote>
+<hr>
+<div><h2>Connect Your Ad Accounts</h2><a href="#connect-your-ad-accounts"></a></div>
+<p>To manage ads on each platform, you'll need to connect your accounts in Synter:</p>
+<ol>
+<li>Go to <a href="https://syntermedia.ai/credentials">syntermedia.ai/credentials</a></li>
+<li>Click "Connect" next to each platform</li>
+<li>Complete the OAuth flow</li>
+<li>Your agent can now manage that platform</li>
+</ol>
+<p><strong>Supported Platforms:</strong></p>
+<ul>
+<li>Google Ads </li>
+<li>Meta (Facebook/Instagram) </li>
+<li>LinkedIn Ads </li>
+<li>Microsoft Ads (Bing) </li>
+<li>Reddit Ads </li>
+<li>TikTok Ads </li>
+<li>X (Twitter) Ads </li>
+<li>Amazon Ads </li>
+<li>The Trade Desk </li>
+<li>Amazon DSP </li>
+</ul>
+<hr>
+<div><h2>Advanced: Direct Tool Access</h2><a href="#advanced-direct-tool-access"></a></div>
+<p>For power users, you can call any of 140+ Synter tools directly:</p>
+<div><pre><code>&gt; Use run_tool to call google_ads_list_audiences
+</code></pre></div>
+<p>See the full tool list at <a href="https://docs.syntermedia.ai/tools">docs.syntermedia.ai/tools</a> or ask your agent:</p>
+<div><pre><code>&gt; What tools are available for LinkedIn Ads?
+</code></pre></div>
+<hr>
+<div><h2>Environment Variables</h2><a href="#environment-variables"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>SYNTER_API_KEY</code></pre></td>
+<td>Yes</td>
+<td>Your Synter API key</td>
+</tr>
+<tr>
+<td><pre><code>SYNTER_API_URL</code></pre></td>
+<td>No</td>
+<td>API URL override (default: <a href="https://syntermedia.ai">https://syntermedia.ai</a>)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Local Development</h2><a href="#local-development"></a></div>
+<div><pre><span><span>#</span> Clone and install</span>
+git clone https://github.com/jshorwitz/synter-mcp-server.git
+<span>cd</span> mcp-server
+npm install <span><span>#</span> Build</span>
+npm run build <span><span>#</span> Run locally</span>
+SYNTER_API_KEY=syn_xxx node dist/index.js</pre></div>
+<hr>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<div><h3>"SYNTER_API_KEY not set"</h3><a href="#synter_api_key-not-set"></a></div>
+<p>Make sure your API key is in the </p><pre><code>env</code></pre> section of your MCP config. The key should start with <pre><code>syn_</code></pre>.<p></p>
+<div><h3>"Invalid or expired API key"</h3><a href="#invalid-or-expired-api-key"></a></div>
+<ol>
+<li>Check that you copied the full key (they're long!)</li>
+<li>Verify the key is active at <a href="https://syntermedia.ai/developer">syntermedia.ai/developer</a></li>
+<li>Make sure the key has <pre><code>tools:write</code></pre> scope</li>
+</ol>
+<div><h3>"No ad accounts connected"</h3><a href="#no-ad-accounts-connected"></a></div>
+<p>You need to connect at least one ad platform:</p>
+<ol>
+<li>Go to <a href="https://syntermedia.ai/credentials">syntermedia.ai/credentials</a></li>
+<li>Click "Connect" next to Google Ads (or another platform)</li>
+<li>Complete the OAuth authorization</li>
+</ol>
+<div><h3>Tools aren't showing in Claude/Cursor</h3><a href="#tools-arent-showing-in-claudecursor"></a></div>
+<ol>
+<li>Restart your AI client completely (not just refresh)</li>
+<li>Check the MCP server logs for errors</li>
+<li>Verify the config file path and JSON syntax</li>
+</ol>
+<hr>
+<div><h2>Resources</h2><a href="#resources"></a></div>
+<ul>
+<li><strong>Synter Manual:</strong> <a href="https://syntermedia.ai/manual">syntermedia.ai/manual</a></li>
+<li><strong>API Documentation:</strong> <a href="https://docs.syntermedia.ai">docs.syntermedia.ai</a></li>
+<li><strong>Tool Reference:</strong> <a href="https://docs.syntermedia.ai/tools">docs.syntermedia.ai/tools</a></li>
+<li><strong>Support:</strong> <a href="mailto:hello@syntermedia.ai">hello@syntermedia.ai</a></li>
+</ul>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT License - see <a href="/jshorwitz/synter-mcp-server/blob/main/LICENSE">LICENSE</a> for details.</p>
+<hr>
+<p> <a href="https://syntermedia.ai"> <img src="https://camo.githubusercontent.com/3378f1b20651440d2b3dfdc97946dd46d61add64017b1360add1a8ed513b7a1a/68747470733a2f2f73796e7465726d656469612e61692f6c6f676f2e737667" alt="Synter"> </a> <br> <strong>The MCP extension they don't want you to use.</strong> <br> <em>Because AI agents with ad budgets change everything.</em>
+</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

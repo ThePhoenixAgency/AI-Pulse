@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flaw in Grandstream VoIP phones allows stealthy eavesdropping</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Flaw in Grandstream VoIP phones allows stealthy eavesdropping</h1>
+  <div class="metadata">
+    Source: BleepingComputer Windows | Date: 2/19/2026 5:16:32 PM | <a href="https://www.bleepingcomputer.com/news/security/flaw-in-grandstream-voip-phones-allows-stealthy-eavesdropping/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><img alt="Grandstream" src="https://www.bleepstatic.com/content/hl-images/2026/02/19/Grandstream.jpg"></p> <p>A critical vulnerability in Grandstream GXP1600 series VoIP phones allows a remote, unauthenticated attacker&nbsp;to gain root privileges and silently eavesdrop on communications.</p> <p>VoIP communication equipment from Grandstream Networks is being used by small and medium businesses. The maker's <a href="http://www.grandstream.com/products/ip-voice-telephony-gxp-series-ip-phones/gxp-series-high-end-ip-phones/product/gxp2170" target="_blank">GXP product line</a> is part of the company's&nbsp;high-end&nbsp;offering&nbsp;for businesses, schools, hotels, and Internet Telephony Service Providers (ITSP) around the world.</p> <p>The vulnerability is tracked as&nbsp;CVE-2026-2329 and received a critical severity score of 9.3. It impacts&nbsp;the following six models of the GXP1600 series of devices that run firmware versions prior to 1.0.7.81:</p> <p><a href="https://www.wiz.io/lp/ai-security-board-report-template?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_AI-Security-Board-Report-Template&amp;sfcid=701Vh00000Wn7E1IAJ&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=AI-Board-Report" target="_blank"><img src="https://www.bleepstatic.com/c/w/ai-security-board-report-template.jpg" alt="Wiz"></a>
+</p> <ul><li>GXP1610</li> <li>GXP1615</li> <li>GXP1620</li> <li>GXP1625</li> <li>GXP1628</li> <li>GXP1630</li>
+</ul><p>Even if a vulnerable device is not directly reachable over the public internet, an attacker can pivot to it from another host on the network. Exploitation is silent, and everything works as expected.</p> <p>In a technical report,&nbsp;<a href="https://www.rapid7.com/blog/post/ve-phone-listening-cold-war-vulnerability-modern-voip/" target="_blank">Rapid7 researchers</a> explain that the problem is in the device’s web-based API service (/cgi-bin/api.values.get), which is accessible without authentication in the default configuration.</p> <p>The API accepts a ‘request’ parameter containing colon-delimited identifiers, which is parsed into a 64-byte stack buffer without performing a length check when copying characters into the buffer.</p> <p>Because of this, an attacker supplying overly long input can cause a stack overflow, overwriting adjacent memory to gain&nbsp;control over multiple CPU registers, such as the Program Counter.</p> <p>Rapid7 researchers developed a working Metasploit module to demonstrate unauthenticated remote code execution as root by exploiting CVE-2026-2329.</p> <div>
+<figure><img alt="Metasploit module" src="https://www.bleepstatic.com/images/news/u/1220909/2026/February/metasploit.jpg"><figcaption><strong>Metasploit module</strong><br><em>Source: Rapid7</em></figcaption></figure></div> <p>Exploitation enables arbitrary OS command execution, extracting&nbsp;stored credentials of local users and SIP accounts, and reconfiguring the device to&nbsp;use a malicious SIP proxy that allows eavesdropping on calls.</p> <div>
+<figure><img alt="Stealing credentials" src="https://www.bleepstatic.com/images/news/u/1100723/grandstream_gxp1600_rce_Rapid7.png"><figcaption><strong>Stealing credentials</strong><br><em>Source: Rapid7</em></figcaption></figure></div> <p>Rapid7 researchers say that successful exploitation requires writing multiple null bytes to construct a return-oriented programming (ROP) chain. However,&nbsp;CVE-2026-2329 permits writing of only one null terminator byte during the overflow.</p> <p>To bypass the restriction, the researchers used multiple colon-separated identifiers to trigger the overflow repeatedly and write null bytes multiple times.</p> <p>“Every time a colon is encountered, the overflow can be triggered a subsequent time via the next identifier,” <a href="https://www.rapid7.com/blog/post/ve-cve-2026-2329-critical-unauthenticated-stack-buffer-overflow-in-grandstream-gxp1600-voip-phones-fixed/" target="_blank">explain the researchers</a>&nbsp;in the technical writeup.</p> <p>“We can leverage this, and the ability to write a single null byte as the last character in the current identifier being processed, to write multiple null bytes during exploitation.”</p> <p>The researchers contacted Grandstream on January 6&nbsp;and again on January 20 after receiving no response.</p> <p>Eventually, Grandstream fixed the issue on February 3, with the release of <a href="https://www.grandstream.com/support/firmware" target="_blank">firmware version 1.0.7.81</a>.</p> <p>Technical details and a module for the Metasploit&nbsp;penetration testing and exploitation framework. Users of vulnerable Grandstream products are strongly advised to apply available security updates as soon as possible.</p> <div> <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank"> <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg"></a> </p> <div> <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p> </div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Train AI models with Unsloth and Hugging Face Jobs for FREE</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Train AI models with Unsloth and Hugging Face Jobs for FREE</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 2/20/2026 12:00:00 AM | <a href="https://huggingface.co/blog/unsloth-jobs" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/burtenshaw"><img alt="ben burtenshaw's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/62d648291fa3e4e7ae3fa6e8/oatOwf8Xqe5eDbCSuYqCd.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/danielhanchen"><img alt="Daniel (Unsloth)'s avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/62ecdc18b72a69615d6bd857/qAHhWJbSsmoezFHiErBUT.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/shimmyshimmer"><img alt="Michael Han's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/65fd82a0493ef28bc303a7eb/43bSoH0evputdQ2YDf3Qr.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/mlabonne"><img alt="Maxime Labonne's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/61b8e2ba285851687028d395/Rq3xWG7mJ3aCRoBsq340h.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/davanstrien"><img alt="Daniel van Strien's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1627505688463-60107b385ac3e86b3ea4fc34.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/evalstate"><img alt="shaun smith's avatar" src="https://huggingface.co/avatars/909635453bf62a2a7118a01dd51b811c.svg"></a> </span> </span></p> </div></div> <p>This blog post covers how to use <a href="https://github.com/unslothai/unsloth">Unsloth</a> and Hugging Face Jobs for fast LLM fine-tuning (specifically <a href="https://huggingface.co/LiquidAI/LFM2.5-1.2B-Instruct"><code>LiquidAI/LFM2.5-1.2B-Instruct</code></a> ) through coding agents like Claude Code and Codex. Unsloth provides ~2x faster training and ~60% less VRAM usage compared to standard methods, so training small models can cost just a few dollars.</p>
+<p>Why a small model? Small language models like LFM2.5-1.2B-Instruct are ideal candidates for fine-tuning. They are cheap to train, fast to iterate on, and increasingly competitive with much larger models on focused tasks. LFM2.5-1.2B-Instruct runs under 1GB of memory and is optimized for on-device deployment, so what you fine-tune can be served on CPUs, phones, and laptops.</p>
+<p><a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=Gh5P4niIFNA"> <img alt="Watch the video" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/unsloth-jobs/screenshot.png">
+</a></p><h2> <a href="#you-will-need"> </a> <span> You will need </span>
+</h2>
+<p>We are giving away free credits to fine-tune models on Hugging Face Jobs. Join the <a href="https://huggingface.co/unsloth-jobs">Unsloth Jobs Explorers</a> organization to claim your free credits and one-month Pro subscription.</p>
+<ul>
+<li>A <a href="https://huggingface.co/">Hugging Face</a> account (required for HF Jobs) </li>
+<li>Billing setup (for verification, you can monitor your usage and manage your billing in your <a href="https://huggingface.co/settings/billing">billing page</a>).</li>
+<li>A Hugging Face token with write permissions</li>
+<li>(optional) A coding agent (<code>Open Code</code>, <code>Claude Code</code>, or <code>Codex</code>)</li>
+</ul>
+<h2> <a href="#run-the-job"> </a> <span> Run the Job </span>
+</h2>
+<p>If you want to train a model using HF Jobs and Unsloth, you can simply use the <code>hf jobs</code> CLI to submit a job.</p>
+<p>First, you need to install the <code>hf</code> CLI. You can do this by running the following command:</p>
+<pre><code># mac or linux
+curl -LsSf https://hf.co/cli/install.sh | bash
+</code></pre>
+<p>Next you can run the following command to submit a job:</p>
+<pre><code>hf <span>jobs</span> uv run https://huggingface.co/datasets/unsloth/jobs/resolve/main/sft-lfm2.5.py \ --flavor a10g-small \ --secrets HF_TOKEN \ --<span>timeout</span> 4h \ --dataset mlabonne/FineTome-100k \ --num-epochs 1 \ --eval-split 0.2 \ --output-repo your-username/lfm-finetuned
+</code></pre>
+<p>Check out the <a href="https://huggingface.co/datasets/unsloth/jobs/blob/main/sft-lfm2.5.py">training script</a> and <a href="https://huggingface.co/docs/hub/jobs">Hugging Face Jobs documentation</a> for more details.</p>
+<h2> <a href="#installing-the-skill"> </a> <span> Installing the Skill </span>
+</h2>
+<p>Hugging Face model training skill lowers barrier of entry to train a model by simply prompting. First, install the skill with your coding agent.</p>
+<h3> <a href="#claude-code"> </a> <span> Claude Code </span>
+</h3>
+<p>Claude Code discovers skills through its <a href="https://code.claude.com/docs/en/discover-plugins">plugin system</a>, so we need to install the Hugging Face skills first. To do so:</p>
+<ol>
+<li>Add the marketplace:</li>
+</ol>
+<pre><code>/plugin marketplace add huggingface/skills
+</code></pre>
+<ol>
+<li>Browse available skills in the <code>Discover</code> tab:</li>
+</ol>
+<pre><code>/plugin
+</code></pre>
+<ol>
+<li>Install the model trainer skill:</li>
+</ol>
+<pre><code>/plugin install hugging-face-model-trainer@huggingface-skills
+</code></pre>
+<p>For more details, see the <a href="https://huggingface.co/docs/hub/en/agents-skills">documentation</a> on using the hub with skills or the Claude Code <a href="https://code.claude.com/docs/en/skills">Skills docs</a>.</p>
+<h3> <a href="#codex"> </a> <span> Codex </span>
+</h3>
+<p>Codex discovers skills through <a href="https://developers.openai.com/codex/guides/agents-md"><code>AGENTS.md</code></a> files and <a href="https://developers.openai.com/codex/skills"><code>.agents/skills/</code></a> directories.</p>
+<p>Install individual skills with <code>$skill-installer</code>:</p>
+<pre><code>$skill-installer install https://github.com/huggingface/skills/tree/main/skills/hugging-face-model-trainer
+</code></pre>
+<p>For more details, see the <a href="https://developers.openai.com/codex/skills">Codex Skills docs</a> and the <a href="https://developers.openai.com/codex/guides/agents-md">AGENTS.md guide</a>.</p>
+<h3> <a href="#anything-else"> </a> <span> Anything else </span>
+</h3>
+<p>A generic install method is simply to clone the <a href="https://github.com/huggingface/skills">skills repository</a> and copy the <a href="https://github.com/huggingface/skills/tree/main/skills/hugging-face-model-trainer">skill</a> to your agent's skills directory.</p>
+<pre><code>git clone https://github.com/huggingface/skills.git
+mkdir -p ~/.agents/skills &amp;&amp; cp -R skills/skills/hugging-face-model-trainer ~/.agents/skills/
+</code></pre>
+<h2> <a href="#quick-start"> </a> <span> Quick Start </span>
+</h2>
+<p>Once the skill is installed, ask your coding agent to train a model:</p>
+<pre><code>Train LiquidAI/LFM2.5-1.2B-Instruct on mlabonne/FineTome-100k using Unsloth on HF Jobs
+</code></pre>
+<p>The agent will generate a training script based on an <a href="https://github.com/huggingface/skills/blob/main/skills/hugging-face-model-trainer/scripts/unsloth_sft_example.py">example in the skill</a>, submit the training to HF Jobs, and provide a monitoring link via Trackio.</p>
+<h2> <a href="#how-it-works"> </a> <span> How It Works </span>
+</h2>
+<p>Training jobs run on <a href="https://huggingface.co/docs/huggingface_hub/guides/jobs">Hugging Face Jobs</a>, fully managed cloud GPUs. The agent:</p>
+<ol>
+<li>Generates a UV script with inline dependencies</li>
+<li>Submits it to HF Jobs via the <code>hf</code> CLI</li>
+<li>Reports the job ID and monitoring URL</li>
+<li>Pushes the trained model to your Hugging Face Hub repository</li>
+</ol>
+<h3> <a href="#example-training-script"> </a> <span> Example Training Script </span>
+</h3>
+<p>The skill generates scripts like this based on the example in the <a href="https://github.com/huggingface/skills/blob/main/skills/hugging-face-model-trainer/scripts/unsloth_sft_example.py">skill</a>.</p>
+<pre><code><span># /// script</span>
+<span># dependencies = ["unsloth", "trl&gt;=0.12.0", "datasets", "trackio"]</span>
+<span># ///</span> <span>from</span> unsloth <span>import</span> FastLanguageModel
+<span>from</span> trl <span>import</span> SFTTrainer, SFTConfig
+<span>from</span> datasets <span>import</span> load_dataset model, tokenizer = FastLanguageModel.from_pretrained( <span>"LiquidAI/LFM2.5-1.2B-Instruct"</span>, load_in_4bit=<span>True</span>, max_seq_length=<span>2048</span>,
+) model = FastLanguageModel.get_peft_model( model, r=<span>16</span>, lora_alpha=<span>32</span>, lora_dropout=<span>0</span>, target_modules=[ <span>"q_proj"</span>, <span>"k_proj"</span>, <span>"v_proj"</span>, <span>"out_proj"</span>, <span>"in_proj"</span>, <span>"w1"</span>, <span>"w2"</span>, <span>"w3"</span>, ],
+) dataset = load_dataset(<span>"trl-lib/Capybara"</span>, split=<span>"train"</span>) trainer = SFTTrainer( model=model, tokenizer=tokenizer, train_dataset=dataset, args=SFTConfig( output_dir=<span>"./output"</span>, push_to_hub=<span>True</span>, hub_model_id=<span>"username/my-model"</span>, per_device_train_batch_size=<span>4</span>, gradient_accumulation_steps=<span>4</span>, num_train_epochs=<span>1</span>, learning_rate=<span>2e-4</span>, report_to=<span>"trackio"</span>, ),
+) trainer.train()
+trainer.push_to_hub()
+</code></pre> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

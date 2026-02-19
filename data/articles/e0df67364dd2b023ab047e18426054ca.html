@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Replaced My Guitar Tuner With 200 Lines of JavaScript</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Replaced My Guitar Tuner With 200 Lines of JavaScript</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 5:07:43 PM | <a href="https://dev.to/niki_indjov_791e4c9df1/i-replaced-my-guitar-tuner-with-200-lines-of-javascript-3fha" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0sy9bdmaqyza9hrhrodi.jpg"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0sy9bdmaqyza9hrhrodi.jpg" alt="Cover image for I Replaced My Guitar Tuner With 200 Lines of JavaScript"> </a> <div> <p><a href="https://dev.to/niki_indjov_791e4c9df1"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3781273%2Fe88006da-d864-4020-90fd-ffc1e73def1d.jpg" alt="Niki Indjov"></a> </p> </div> </header> <div> <p><strong>I Built an Open-Source Guitar Tuner That Runs Entirely in Your Browser (No Libraries, No Backend)</strong><br>
+Most guitar tuners on the web are black boxes.<br>
+You don’t know how they work.<br>
+You can’t modify them.<br>
+And almost none of them are built with accessibility in mind.<br>
+So I built my own.<br>
+It’s called PitchCraft.<br>
+An open-source chromatic tuner that runs entirely in your browser using the Web Audio API.<br>
+No backend.<br>
+No tracking.<br>
+No external tuning libraries.<br>
+Just signal processing and math.</p> <p>Live demo:<br>
+<a href="https://indjoov.github.io/pitchcraft/%EF%BF%BD" target="_blank">https://indjoov.github.io/pitchcraft/�</a><br>
+GitHub:<br>
+<a href="https://github.com/indjoov/pitchcraft%EF%BF%BD" target="_blank">https://github.com/indjoov/pitchcraft�</a></p> <p>The Moment That Triggered It<br>
+I’m a musician and developer.<br>
+One day I needed a simple tuner.</p> <p>I opened a popular web tuner and thought:<br>
+Why does this feel like magic I can’t see inside?<br>
+So I asked myself:<br>
+What if I build one completely from scratch?<br>
+Not using a tuning library.<br>
+Not using a backend.<br>
+Just the browser.<br>
+That question became PitchCraft.<br>
+The Crazy Part: The Browser Is Enough<br>
+Modern browsers can do real-time pitch detection.<br>
+Here’s the pipeline:<br>
+Microphone → Frequency → Note → Visual Feedback<br>
+Using:<br>
+getUserMedia<br>
+AnalyserNode<br>
+autocorrelation<br>
+equal temperament math<br>
+That’s it.<br>
+No server needed.<br>
+The Core: Autocorrelation Pitch Detection<br>
+The tuner works by detecting periodicity in the waveform.<br>
+Simplified:<br>
+The algorithm compares the signal with delayed versions of itself.<br>
+When it matches, that delay equals the fundamental frequency.<br>
+From there:<br>
+Frequency → Note → Cents deviation<br>
+All in real time.<br>
+This is the same principle used in professional tuners.<br>
+I Also Wanted It to Be Accessible<br>
+This part matters a lot to me.<br>
+Most music tools ignore accessibility.<br>
+So PitchCraft includes:<br>
+high contrast mode<br>
+large text mode<br>
+reduced motion mode<br>
+full keyboard navigation<br>
+screen reader support<br>
+Because creative tools should be usable by everyone.</p> <p><strong>It Currently Supports</strong><br>
+Guitar<br>
+Bass<br>
+Ukulele<br>
+Violin<br>
+Cello<br>
+Banjo<br>
+Mandolin<br>
+Chromatic mode<br>
+With adjustable reference </p> <p><strong>tuning</strong>:<br>
+432 Hz → 444 Hz<br>
+Built With<br>
+React<br>
+Vite<br>
+Web Audio API<br>
+pure JavaScript pitch detection<br>
+No external tuning libraries.<br>
+Everything runs locally.<br>
+The Hardest Part<br>
+Not the math.<br>
+Not React.<br>
+The hardest part was making it feel good.<br>
+Low latency.<br>
+Stable detection.<br>
+Clear feedback.<br>
+That took the most iteration.<br>
+Why I Open-Sourced It<br>
+Because I believe creative tools should be transparent.<br>
+You should be able to:<br>
+understand them<br>
+modify them<br>
+improve them<br>
+Not just consume them.<br>
+The Code Is Surprisingly Small<br>
+The entire tuner logic lives in one core component.<br>
+Signal processing in JavaScript is much more accessible than people think.<br>
+The browser is a powerful DSP environment.<br>
+Try It Yourself<br>
+Live:<br>
+<a href="https://indjoov.github.io/pitchcraft/%EF%BF%BD" target="_blank">https://indjoov.github.io/pitchcraft/�</a><br>
+Source:<br>
+<a href="https://github.com/indjoov/pitchcraft%EF%BF%BD" target="_blank">https://github.com/indjoov/pitchcraft�</a><br>
+What I Learned Building This<br>
+Three things surprised me:</p> <ol>
+<li>The Web Audio API is insanely powerful
+You can build real music tools in the browser.</li>
+<li>Signal processing is not as scary as it seems
+Basic math gets you far.</li>
+<li>Accessibility is not hard — but you must care
+Most tools simply don’t.
+Roadmap
+Next features I want to build:
+MIDI input
+strobe tuner mode
+drop tunings
+PWA offline mode
+I’d Love Feedback
+Especially from:
+musicians
+audio developers
+accessibility developers
+What would you improve?
+Why This Matters
+We’re entering a time where the browser is becoming a creative instrument.
+Not just a document viewer.
+PitchCraft is a small example of that shift.</li>
+</ol> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

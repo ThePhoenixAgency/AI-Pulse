@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - starsh2001/qlaude: Stop babysitting Claude Code. Queue tasks, walk away, get Telegram pings when it needs you.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - starsh2001/qlaude: Stop babysitting Claude Code. Queue tasks, walk away, get Telegram pings when it needs you.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 4:51:59 PM | <a href="https://github.com/starsh2001/qlaude" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <p> <a target="_blank" href="https://raw.githubusercontent.com/starsh2001/qlaude/main/assets/logo.png"><img src="https://raw.githubusercontent.com/starsh2001/qlaude/main/assets/logo.png" alt="qlaude"></a>
+</p>
+<p> <strong>Queue your work. Live your life.</strong><br> Claude Code wrapper with queue-based prompt automation and Telegram remote control.
+</p>
+<p> <a href="https://www.npmjs.com/package/qlaude"><img src="https://camo.githubusercontent.com/7660df0827df12d6dfbcd765255531d4a0cde65fe556d92a1e8ddb68494f192a/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f716c61756465" alt="npm version"></a> <a href="https://www.npmjs.com/package/qlaude"><img src="https://camo.githubusercontent.com/938a5a33ae953dd3cabcdedcaa6b6625c73cd8f1a4884055ac06fcb160d395f7/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f646d2f716c61756465" alt="npm downloads"></a> <a href="/starsh2001/qlaude/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/37df40944027fde01505cc3822fe0024cc3144dd06ba3f8009ab5ebb76a0b06a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f737461727368323030312f716c61756465" alt="license"></a>
+</p>
+<p> <a target="_blank" href="https://raw.githubusercontent.com/starsh2001/qlaude/main/assets/anim.gif"><img src="https://raw.githubusercontent.com/starsh2001/qlaude/main/assets/anim.gif" alt="qlaude demo"></a>
+</p>
+<hr>
+<div><h2>What is qlaude?</h2><a href="#what-is-qlaude"></a></div>
+<p>qlaude wraps Claude Code in a PTY, monitors its state in real-time, and <strong>automatically executes queued prompts</strong> when Claude is ready. Stack up tasks, walk away, get notified on Telegram.</p>
+<div><pre><code>Queue File Terminal Your Phone
+┌──────────────────┐ ┌─────────────────────┐ ┌──────────────────┐
+│ @model sonnet │ │ [1/5] [running] │ │ │
+│ Create user API │ │ │ │ Telegram │
+│ @new │ ── │ Claude is working...│ ── │ "Input needed" │
+│ Write tests │ │ │ │ [Allow] [Deny] │
+│ @model opus │ │ │ │ │
+│ Review &amp; fix │ │ Queue completed ✓ │ │ Responded │
+└──────────────────┘ └─────────────────────┘ └──────────────────┘
+</code></pre></div>
+<hr>
+<div><h2>Table of Contents</h2><a href="#table-of-contents"></a></div>
+<ul>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#cli-usage">CLI Usage</a></li>
+<li><a href="#interactive-commands">Interactive Commands</a></li>
+<li><a href="#queue-file">Queue File</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#telegram-setup">Telegram Setup</a></li>
+<li><a href="#session-management">Session Management</a></li>
+<li><a href="#batch-mode">Batch Mode</a></li>
+<li><a href="#pattern-customization">Pattern Customization</a></li>
+<li><a href="#how-it-works">How It Works</a></li>
+<li><a href="#requirements">Requirements</a></li>
+</ul>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> Install</span>
+npm install -g qlaude@alpha <span><span>#</span> Run (in your project directory)</span>
+qlaude</pre></div>
+<p>qlaude launches Claude Code with all enhanced features enabled. All standard Claude Code flags pass through:</p>
+<div><pre>qlaude --resume <span><span>#</span> Resume last session</span>
+qlaude --model opus <span><span>#</span> Use specific model</span>
+qlaude --no-auto-updates <span><span>#</span> Disable auto-updates</span></pre></div>
+<hr>
+<div><h2>CLI Usage</h2><a href="#cli-usage"></a></div>
+<div><pre><code>qlaude [claude-flags] [qlaude-flags]
+</code></pre></div>
+<div><h3>qlaude-specific flags</h3><a href="#qlaude-specific-flags"></a></div>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>---run</code></pre></td>
+<td>Batch mode: execute queue then exit</td>
+</tr>
+<tr>
+<td><pre><code>---file &lt;path&gt;</code></pre></td>
+<td>Load queue from file (use with <pre><code>---run</code></pre>)</td>
+</tr>
+</tbody>
+</table>
+<p>All other flags are forwarded to Claude Code as-is.</p>
+<div><h3>Examples</h3><a href="#examples"></a></div>
+<div><pre><span><span>#</span> Normal interactive use</span>
+qlaude <span><span>#</span> Resume the last Claude session</span>
+qlaude --resume <span><span>#</span> Batch: run a task file and exit with report</span>
+qlaude ---run ---file tasks.txt <span><span>#</span> Batch with a specific model</span>
+qlaude --model sonnet ---run ---file tasks.txt</pre></div>
+<hr>
+<div><h2>Interactive Commands</h2><a href="#interactive-commands"></a></div>
+<p>While qlaude is running, press </p><pre><code>:</code></pre> at the start of a line to enter command mode.<p></p>
+<div><h3>Queue Commands</h3><a href="#queue-commands"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>:add &lt;prompt&gt;</code></pre></td>
+<td>Add a prompt to the end of the queue</td>
+</tr>
+<tr>
+<td><pre><code>:drop</code></pre></td>
+<td>Remove the last item from the queue</td>
+</tr>
+<tr>
+<td><pre><code>:clear</code></pre></td>
+<td>Clear all items from the queue</td>
+</tr>
+<tr>
+<td><pre><code>:list</code></pre></td>
+<td>Show queue contents with index numbers</td>
+</tr>
+<tr>
+<td><pre><code>:reload</code></pre></td>
+<td>Reload queue from <pre><code>.qlaude/queue</code></pre> file</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Execution Control</h3><a href="#execution-control"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>:pause</code></pre></td>
+<td>Pause auto-execution (queue items are preserved)</td>
+</tr>
+<tr>
+<td><pre><code>:resume</code></pre></td>
+<td>Resume auto-execution</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Session Commands</h3><a href="#session-commands"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>:save &lt;label&gt;</code></pre></td>
+<td>Save current session under a named label</td>
+</tr>
+<tr>
+<td><pre><code>:load &lt;label&gt;</code></pre></td>
+<td>Resume a previously saved session</td>
+</tr>
+<tr>
+<td><pre><code>:model &lt;name&gt;</code></pre></td>
+<td>Switch Claude Code model (e.g., <pre><code>sonnet</code></pre>, <pre><code>opus</code></pre>)</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Display Commands</h3><a href="#display-commands"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>:status</code></pre></td>
+<td>Toggle the status bar overlay</td>
+</tr>
+<tr>
+<td><pre><code>:help</code></pre></td>
+<td>Show in-terminal command reference</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Multiline Input</h3><a href="#multiline-input"></a></div>
+<p>Use </p><pre><code>:(</code></pre> and <pre><code>:)</code></pre> to enter a multiline prompt:<p></p>
+<div><pre><code>:(
+Create a REST API with the following endpoints:
+- POST /users - user registration
+- POST /auth/login - login and return JWT
+- GET /users/me - authenticated user profile
+- DELETE /users/:id - admin only Use Express, add input validation, and write JSDoc comments.
+:)
+</code></pre></div>
+<p>The entire block is queued as a single prompt.</p>
+<hr>
+<div><h2>Queue File</h2><a href="#queue-file"></a></div>
+<p>Create </p><pre><code>.qlaude/queue</code></pre> in your project directory to pre-load prompts. The file is read on startup and can be reloaded with <pre><code>:reload</code></pre>.<p></p>
+<div><h3>Basic Example</h3><a href="#basic-example"></a></div>
+<div><pre><code>Implement user authentication with JWT
+Write unit tests for all auth endpoints
+Update README with API documentation
+</code></pre></div>
+<p>Each non-empty, non-directive line becomes one queue item.</p>
+<div><h3>Directives</h3><a href="#directives"></a></div>
+<p>Directives start with </p><pre><code>@</code></pre> and control execution flow.<p></p>
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>@new</code></pre></td>
+<td>Restart Claude Code as a new session</td>
+</tr>
+<tr>
+<td><pre><code>@model &lt;name&gt;</code></pre></td>
+<td>Switch model before the next prompt</td>
+</tr>
+<tr>
+<td><pre><code>@pause [reason]</code></pre></td>
+<td>Pause queue (manual breakpoint)</td>
+</tr>
+<tr>
+<td><pre><code>@delay &lt;ms&gt;</code></pre></td>
+<td>Wait N milliseconds before next item</td>
+</tr>
+<tr>
+<td><pre><code>@save &lt;label&gt;</code></pre></td>
+<td>Save session with label after current item completes</td>
+</tr>
+<tr>
+<td><pre><code>@load &lt;label&gt;</code></pre></td>
+<td>Resume a saved session (restarts Claude Code)</td>
+</tr>
+<tr>
+<td><pre><code>@( ... @)</code></pre></td>
+<td>Multiline prompt block</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Advanced Example</h3><a href="#advanced-example"></a></div>
+<div><pre><code># Phase 1: scaffolding with a fast model
+@model sonnet
+Set up a new Express project with TypeScript, ESLint, and Prettier @new
+@model sonnet
+Implement CRUD endpoints for /users with PostgreSQL using pg # Phase 2: review with a stronger model
+@new
+@model opus
+Review the entire codebase for security vulnerabilities and fix them @save after-review # Phase 3: documentation
+@new
+@model sonnet
+Write comprehensive README with all API endpoints and examples @pause Check README before continuing @new
+@model sonnet
+Add OpenAPI/Swagger documentation to all endpoints
+</code></pre></div>
+<div><h3>Multiline Blocks in Queue File</h3><a href="#multiline-blocks-in-queue-file"></a></div>
+<div><pre><code>@(
+Create a REST API with the following requirements:
+- Node.js + Express + TypeScript
+- PostgreSQL with connection pooling
+- JWT authentication middleware
+- Rate limiting on all public routes
+- Request validation with zod
+@)
+</code></pre></div>
+<hr>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>On first run, qlaude creates a </p><pre><code>.qlaude/</code></pre> directory with config templates.<p></p>
+<div><h3>Directory Structure</h3><a href="#directory-structure"></a></div>
+<div><pre><code>.qlaude/
+├── config.json # Core settings
+├── patterns.json # State detection patterns (optional override)
+├── telegram.json # Telegram credentials
+├── queue # Queue file (optional)
+├── session # Current session ID (written by hook)
+├── session-labels.json # Saved session label → ID mappings
+├── debug.log # Debug log (if enabled)
+├── batch-report.json # Batch mode report
+└── conversation-logs/ └── queue-YYYY-MM-DD.jsonl
+</code></pre></div>
+<div><h3>config.json</h3><a href="#configjson"></a></div>
+<div><pre>{ <span>"startPaused"</span>: <span>true</span>, <span>"idleThresholdMs"</span>: <span>1000</span>, <span>"requiredStableChecks"</span>: <span>3</span>, <span>"logLevel"</span>: <span><span>"</span>error<span>"</span></span>, <span>"logFile"</span>: <span><span>"</span>debug.log<span>"</span></span>, <span>"conversationLog"</span>: { <span>"enabled"</span>: <span>false</span>, <span>"filePath"</span>: <span><span>"</span>conversation-logs/queue.jsonl<span>"</span></span>, <span>"timestamps"</span>: <span>true</span> }
+}</pre></div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>startPaused</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>If <pre><code>true</code></pre>, auto-execution is paused on startup. Set to <pre><code>false</code></pre> to auto-start the queue.</td>
+</tr>
+<tr>
+<td><pre><code>idleThresholdMs</code></pre></td>
+<td>number</td>
+<td><pre><code>1000</code></pre></td>
+<td>Milliseconds of output silence before checking Claude's state.</td>
+</tr>
+<tr>
+<td><pre><code>requiredStableChecks</code></pre></td>
+<td>number</td>
+<td><pre><code>3</code></pre></td>
+<td>Number of consecutive idle checks with no screen change before transitioning to READY.</td>
+</tr>
+<tr>
+<td><pre><code>logLevel</code></pre></td>
+<td>string</td>
+<td><pre><code>"error"</code></pre></td>
+<td>Pino log level: <pre><code>trace</code></pre>, <pre><code>debug</code></pre>, <pre><code>info</code></pre>, <pre><code>warn</code></pre>, <pre><code>error</code></pre>, <pre><code>fatal</code></pre>, <pre><code>silent</code></pre>.</td>
+</tr>
+<tr>
+<td><pre><code>logFile</code></pre></td>
+<td>string</td>
+<td><pre><code>"debug.log"</code></pre></td>
+<td>Log file path, relative to <pre><code>.qlaude/</code></pre>.</td>
+</tr>
+<tr>
+<td><pre><code>conversationLog.enabled</code></pre></td>
+<td>boolean</td>
+<td><pre><code>false</code></pre></td>
+<td>Enable JSONL conversation logging.</td>
+</tr>
+<tr>
+<td><pre><code>conversationLog.filePath</code></pre></td>
+<td>string</td>
+<td><pre><code>"conversation-logs/queue.jsonl"</code></pre></td>
+<td>Log file path, relative to <pre><code>.qlaude/</code></pre>.</td>
+</tr>
+<tr>
+<td><pre><code>conversationLog.timestamps</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Include ISO timestamps in log entries.</td>
+</tr>
+</tbody>
+</table>
+<div><h3>telegram.json</h3><a href="#telegramjson"></a></div>
+<div><pre>{ <span>"enabled"</span>: <span>true</span>, <span>"botToken"</span>: <span><span>"</span>123456789:ABCdef...<span>"</span></span>, <span>"chatId"</span>: <span><span>"</span>987654321<span>"</span></span>, <span>"language"</span>: <span><span>"</span>en<span>"</span></span>, <span>"confirmDelayMs"</span>: <span>30000</span>
+}</pre></div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>enabled</code></pre></td>
+<td>boolean</td>
+<td><pre><code>false</code></pre></td>
+<td>Enable Telegram notifications.</td>
+</tr>
+<tr>
+<td><pre><code>botToken</code></pre></td>
+<td>string</td>
+<td>—</td>
+<td>Telegram Bot API token from <a href="https://t.me/BotFather">@BotFather</a>.</td>
+</tr>
+<tr>
+<td><pre><code>chatId</code></pre></td>
+<td>string</td>
+<td>—</td>
+<td>Your Telegram chat ID. Send a message to your bot, then call <pre><code>getUpdates</code></pre> to find it.</td>
+</tr>
+<tr>
+<td><pre><code>language</code></pre></td>
+<td>string</td>
+<td><pre><code>"en"</code></pre></td>
+<td>Notification language. Supported: <pre><code>en</code></pre>, <pre><code>ko</code></pre>.</td>
+</tr>
+<tr>
+<td><pre><code>confirmDelayMs</code></pre></td>
+<td>number</td>
+<td><pre><code>30000</code></pre></td>
+<td>Multi-instance polling offset in milliseconds. Used to prevent duplicate responses when running multiple qlaude instances.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Telegram Setup</h2><a href="#telegram-setup"></a></div>
+<p>Telegram integration lets you monitor and control qlaude from your phone.</p>
+<div><h3>1. Create a Bot</h3><a href="#1-create-a-bot"></a></div>
+<ol>
+<li>Message <a href="https://t.me/BotFather">@BotFather</a> on Telegram</li>
+<li>Send <pre><code>/newbot</code></pre> and follow the prompts</li>
+<li>Copy the <strong>bot token</strong></li>
+</ol>
+<div><h3>2. Find Your Chat ID</h3><a href="#2-find-your-chat-id"></a></div>
+<ol>
+<li>Send any message to your new bot</li>
+<li>Open this URL in a browser (replace <pre><code>TOKEN</code></pre>):
+<div><pre><code>https://api.telegram.org/botTOKEN/getUpdates
+</code></pre></div>
+</li>
+<li>Find <pre><code>"chat":{"id":YOUR_CHAT_ID}</code></pre> in the response</li>
+</ol>
+<div><h3>3. Configure qlaude</h3><a href="#3-configure-qlaude"></a></div>
+<p>Edit </p><pre><code>.qlaude/telegram.json</code></pre>:<p></p>
+<div><pre>{ <span>"enabled"</span>: <span>true</span>, <span>"botToken"</span>: <span><span>"</span>123456789:ABCdef-your-token-here<span>"</span></span>, <span>"chatId"</span>: <span><span>"</span>987654321<span>"</span></span>, <span>"language"</span>: <span><span>"</span>en<span>"</span></span>
+}</pre></div>
+<div><h3>Telegram Commands</h3><a href="#telegram-commands"></a></div>
+<p>Send these commands to your bot while qlaude is running:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>/status</code></pre></td>
+<td>Show queue length, current state, and auto-execution status</td>
+</tr>
+<tr>
+<td><pre><code>/pause</code></pre></td>
+<td>Pause auto-execution</td>
+</tr>
+<tr>
+<td><pre><code>/resume</code></pre></td>
+<td>Resume auto-execution</td>
+</tr>
+<tr>
+<td><pre><code>/log</code></pre></td>
+<td>Get recent conversation log</td>
+</tr>
+<tr>
+<td><pre><code>/display</code></pre></td>
+<td>Get current terminal screen content</td>
+</tr>
+<tr>
+<td><pre><code>/send &lt;text&gt;</code></pre></td>
+<td>Send text + Enter to Claude</td>
+</tr>
+<tr>
+<td><pre><code>/key &lt;text&gt;</code></pre></td>
+<td>Send text to Claude without Enter</td>
+</tr>
+</tbody>
+</table>
+<p>When a <strong>selection prompt</strong> appears (e.g., "Allow this action?"), qlaude sends inline buttons to your phone. Tap to respond without opening your laptop.</p>
+<div><h3>Multi-Instance Support</h3><a href="#multi-instance-support"></a></div>
+<p>Running qlaude in multiple projects simultaneously? Each instance registers itself as </p><pre><code>hostname:PID</code></pre>. When a selection prompt fires, all instances are notified but only the originating instance acts on your response. The <pre><code>confirmDelayMs</code></pre> setting adds a delay so you can distinguish which instance sent a notification.<p></p>
+<hr>
+<div><h2>Session Management</h2><a href="#session-management"></a></div>
+<p>Save and resume Claude Code sessions by name to continue long-running conversations.</p>
+<div><h3>Save a Session</h3><a href="#save-a-session"></a></div>
+<div><pre><code>:save my-feature-branch
+</code></pre></div>
+<p>Or in a queue file:</p>
+<div><pre><code>@save my-feature-branch
+</code></pre></div>
+<p>The current session ID is recorded under the label </p><pre><code>my-feature-branch</code></pre> in <pre><code>.qlaude/session-labels.json</code></pre>.<p></p>
+<div><h3>Resume a Session</h3><a href="#resume-a-session"></a></div>
+<div><pre><code>:load my-feature-branch
+</code></pre></div>
+<p>Or in a queue file:</p>
+<div><pre><code>@load my-feature-branch
+</code></pre></div>
+<p>qlaude restarts Claude Code with </p><pre><code>--resume &lt;sessionId&gt;</code></pre>, continuing the conversation.<p></p>
+<div><h3>How Session IDs Are Tracked</h3><a href="#how-session-ids-are-tracked"></a></div>
+<p>qlaude installs a </p><pre><code>SessionStart</code></pre> hook into Claude Code (<pre><code>~/.claude/settings.json</code></pre>). When Claude starts a session, the hook writes the session ID to <pre><code>.qlaude/session</code></pre>. Labels map to these IDs.<p></p>
+<p>The hook is installed automatically on </p><pre><code>npm install -g qlaude</code></pre> and removed on uninstall.<p></p>
+<hr>
+<div><h2>Batch Mode</h2><a href="#batch-mode"></a></div>
+<p>Run a queue file non-interactively — useful for CI/CD pipelines or scripts.</p>
+<div><pre>qlaude ---run ---file tasks.txt</pre></div>
+<ul>
+<li>Loads the queue from <pre><code>tasks.txt</code></pre></li>
+<li>Sets <pre><code>startPaused: false</code></pre> (auto-executes immediately)</li>
+<li>Exits with code <pre><code>0</code></pre> on success or <pre><code>1</code></pre> on failure</li>
+<li>Writes a report to <pre><code>.qlaude/batch-report.json</code></pre></li>
+</ul>
+<div><h3>Batch Report</h3><a href="#batch-report"></a></div>
+<div><pre>{ <span>"status"</span>: <span><span>"</span>completed<span>"</span></span>, <span>"reason"</span>: <span><span>"</span>Queue finished<span>"</span></span>, <span>"itemsExecuted"</span>: <span>5</span>, <span>"totalItems"</span>: <span>5</span>, <span>"timestamp"</span>: <span><span>"</span>2025-02-19T10:30:00.000Z<span>"</span></span>
+}</pre></div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>status</code></pre></td>
+<td><pre><code>"completed"</code></pre> or <pre><code>"failed"</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>reason</code></pre></td>
+<td>Human-readable description</td>
+</tr>
+<tr>
+<td><pre><code>itemsExecuted</code></pre></td>
+<td>Number of prompts sent to Claude</td>
+</tr>
+<tr>
+<td><pre><code>totalItems</code></pre></td>
+<td>Total items in the original queue</td>
+</tr>
+<tr>
+<td><pre><code>timestamp</code></pre></td>
+<td>ISO 8601 completion time</td>
+</tr>
+</tbody>
+</table>
+<div><h3>CI/CD Example</h3><a href="#cicd-example"></a></div>
+<div><pre><span><span>#</span> GitHub Actions</span>
+- <span>name</span>: <span>Run Claude tasks</span> <span>run</span>: <span>|</span>
+<span> npx qlaude@alpha ---run ---file .qlaude/ci-tasks.txt</span>
+<span></span> <span>env</span>: <span><span>#</span> Claude Code auth handled separately</span></pre></div>
+<hr>
+<div><h2>Pattern Customization</h2><a href="#pattern-customization"></a></div>
+<p>qlaude detects Claude's state by analyzing terminal output with regex patterns. You can override the defaults in </p><pre><code>.qlaude/patterns.json</code></pre>.<p></p>
+<div><h3>Available Patterns</h3><a href="#available-patterns"></a></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>selectionPrompt</code></pre></td>
+<td>Detect selection menus / permission prompts</td>
+</tr>
+<tr>
+<td><pre><code>interrupted</code></pre></td>
+<td>Detect when Claude was interrupted</td>
+</tr>
+<tr>
+<td><pre><code>spinner</code></pre></td>
+<td>Detect active processing spinners</td>
+</tr>
+<tr>
+<td><pre><code>taskFailure</code></pre></td>
+<td>Detect explicit <pre><code>QUEUE_STOP</code></pre> failure markers</td>
+</tr>
+<tr>
+<td><pre><code>textInputKeywords</code></pre></td>
+<td>Detect text input prompts</td>
+</tr>
+<tr>
+<td><pre><code>optionParse</code></pre></td>
+<td>Parse option numbers from selection menus</td>
+</tr>
+<tr>
+<td><pre><code>tipFilter</code></pre></td>
+<td>Filter out <pre><code>Tip:</code></pre> lines to avoid false positives</td>
+</tr>
+<tr>
+<td><pre><code>promptSeparator</code></pre></td>
+<td>Filter the prompt input separator</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Example Override</h3><a href="#example-override"></a></div>
+<div><pre>{ <span>"selectionPrompt"</span>: <span><span>"</span>(?:Do you want to|Allow|Deny|Yes|No|<span>\\</span>[y/n<span>\\</span>])<span>"</span></span>, <span>"spinner"</span>: <span><span>"</span>(?:⠋|⠙|⠹|⠸|⠼|⠴|⠦|⠧|⠇|⠏|Thinking|Working)<span>"</span></span>
+}</pre></div>
+<p>Patterns use JavaScript regex syntax. Only specify keys you want to override; omitted keys use defaults.</p>
+<hr>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<div><pre><code>PTY Output → Terminal Emulator → State Detector → Auto Executor → PTY Input (xterm headless) (idle timer + (FIFO queue pop screen analysis) + prompt write)
+</code></pre></div>
+<ol>
+<li><strong>PTY Wrapper</strong> — qlaude spawns Claude Code in a pseudo-terminal, capturing all I/O bidirectionally.</li>
+<li><strong>Terminal Emulator</strong> — xterm headless maintains a faithful screen buffer, parsing ANSI escape sequences so state analysis works on rendered output, not raw bytes.</li>
+<li><strong>State Detector</strong> — After <pre><code>idleThresholdMs</code></pre> ms of silence, the detector analyzes the screen buffer. It classifies Claude's state as one of: <pre><code>PROCESSING</code></pre>, <pre><code>READY</code></pre>, <pre><code>SELECTION_PROMPT</code></pre>, <pre><code>INTERRUPTED</code></pre>, or <pre><code>TASK_FAILED</code></pre>. The READY state requires <pre><code>requiredStableChecks</code></pre> consecutive stable screens to avoid false triggers.</li>
+<li><strong>Auto Executor</strong> — On every <pre><code>READY</code></pre> transition, it pops the next queue item and writes it to the PTY. Directives (<pre><code>@new</code></pre>, <pre><code>@model</code></pre>, <pre><code>@save</code></pre>, etc.) are handled before the prompt is sent.</li>
+<li><strong>Display</strong> — A 5-line status bar at the bottom shows queue position, current item, state, and auto-execution status. It is drawn as an overlay and never interferes with Claude's output.</li>
+<li><strong>Crash Recovery</strong> — If Claude Code crashes, qlaude attempts to restart it (up to 3 times), optionally resuming the last session. After 3 consecutive crashes it stops retrying.</li>
+</ol>
+<div><h3>State Machine</h3><a href="#state-machine"></a></div>
+<div><pre><code> output arrives
+READY ────────────────────────── PROCESSING ▲ │ │ idle timeout │ └────────────────────────────────────┘ │ (spinner detected → stay PROCESSING) │ │ selection detected └────────────────────────────── SELECTION_PROMPT │ │ interruption detected └────────────────────────────── INTERRUPTED │ │ QUEUE_STOP marker detected └────────────────────────────── TASK_FAILED
+</code></pre></div>
+<hr>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li><strong>Node.js</strong> 20 or later</li>
+<li><strong><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a></strong> installed and authenticated</li>
+<li><strong>Windows</strong>: Use <a href="https://aka.ms/terminal">Windows Terminal</a> or VS Code integrated terminal</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
