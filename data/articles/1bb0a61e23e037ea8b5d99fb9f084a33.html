@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built an ORM That Starts With JSON So You Can Stop Overthinking Your Database</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built an ORM That Starts With JSON So You Can Stop Overthinking Your Database</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 3:36:05 AM | <a href="https://dev.to/joshmatthew/i-built-an-orm-that-starts-with-json-so-you-can-stop-overthinking-your-database-2439" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/joshmatthew"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F479268%2Fd1c72509-437e-45ba-b1a9-e8fd700bf4e9.jpeg" alt="Jay-Em"></a> </p> </div><div> <p>You know that thing where you have a project idea at 1am, you're hyped, and then you spend the next 2 hours setting up Postgres, writing migrations, configuring connection strings, and by the time you're done your motivation is gone and you go to bed?</p> <p>Yeah. That kept happening to me. So I built something about it.</p> <h2> <a name="what-is-seedorm" href="#what-is-seedorm"> </a> What is SeedORM?
+</h2> <p>SeedORM is a Node.js ORM that stores everything in local JSON files. No database server, no Docker, no connection strings. You define your models and start building immediately.</p> <p>Then when your project is ready for the real world, you migrate to Postgres with one command. Same models, same queries, same API. Nothing changes except where the data lives.<br>
+</p> <div>
+<pre><code>npm <span>install </span>seedorm
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="the-problem" href="#the-problem"> </a> The Problem
+</h2> <p>Every side project I start follows the same pattern:</p> <ol>
+<li>Cool idea hits me</li>
+<li>Create new folder, <code>npm init</code>
+</li>
+<li>Okay now I need a database</li>
+<li>Do I use Postgres? MongoDB? SQLite?</li>
+<li>Spend 30 minutes setting up Docker, env vars, connection pooling</li>
+<li>Write migration files</li>
+<li>I'm tired now</li>
+<li>Abandon project</li>
+</ol> <p>I wanted something where step 3 is just... skip.</p> <h2> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h2> <p>Define your models like you normally would:<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>SeedORM</span><span>,</span> <span>FieldType</span> <span>}</span> <span>from</span> <span>"</span><span>seedorm</span><span>"</span><span>;</span> <span>const</span> <span>db</span> <span>=</span> <span>new</span> <span>SeedORM</span><span>();</span>
+<span>await</span> <span>db</span><span>.</span><span>connect</span><span>();</span> <span>const</span> <span>User</span> <span>=</span> <span>db</span><span>.</span><span>model</span><span>({</span> <span>name</span><span>:</span> <span>"</span><span>users</span><span>"</span><span>,</span> <span>fields</span><span>:</span> <span>{</span> <span>name</span><span>:</span> <span>{</span> <span>type</span><span>:</span> <span>FieldType</span><span>.</span><span>String</span><span>,</span> <span>required</span><span>:</span> <span>true</span> <span>},</span> <span>email</span><span>:</span> <span>{</span> <span>type</span><span>:</span> <span>FieldType</span><span>.</span><span>String</span><span>,</span> <span>unique</span><span>:</span> <span>true</span> <span>},</span> <span>age</span><span>:</span> <span>{</span> <span>type</span><span>:</span> <span>FieldType</span><span>.</span><span>Number</span> <span>},</span> <span>},</span>
+<span>});</span> <span>await</span> <span>User</span><span>.</span><span>init</span><span>();</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. No database running. No config file pointing to <code>localhost:5432</code>. It just writes to JSON files in a <code>data/</code> folder.</p> <p>Now use it like any ORM:<br>
+</p> <div>
+<pre><code><span>// Create</span>
+<span>const</span> <span>user</span> <span>=</span> <span>await</span> <span>User</span><span>.</span><span>create</span><span>({</span> <span>name</span><span>:</span> <span>"</span><span>Josh</span><span>"</span><span>,</span> <span>email</span><span>:</span> <span>"</span><span>josh@hey.com</span><span>"</span><span>,</span> <span>age</span><span>:</span> <span>24</span> <span>});</span> <span>// Query</span>
+<span>const</span> <span>adults</span> <span>=</span> <span>await</span> <span>User</span><span>.</span><span>find</span><span>({</span> <span>filter</span><span>:</span> <span>{</span> <span>age</span><span>:</span> <span>{</span> <span>$gte</span><span>:</span> <span>18</span> <span>}</span> <span>}</span> <span>});</span> <span>// Update</span>
+<span>await</span> <span>User</span><span>.</span><span>update</span><span>(</span><span>user</span><span>.</span><span>id</span><span>,</span> <span>{</span> <span>age</span><span>:</span> <span>25</span> <span>});</span> <span>// Delete</span>
+<span>await</span> <span>User</span><span>.</span><span>delete</span><span>(</span><span>user</span><span>.</span><span>id</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="relations" href="#relations"> </a> Relations
+</h2> <p>It supports the relation types you'd expect:<br>
+</p> <div>
+<pre><code><span>const</span> <span>Post</span> <span>=</span> <span>db</span><span>.</span><span>model</span><span>({</span> <span>name</span><span>:</span> <span>"</span><span>posts</span><span>"</span><span>,</span> <span>fields</span><span>:</span> <span>{</span> <span>title</span><span>:</span> <span>{</span> <span>type</span><span>:</span> <span>FieldType</span><span>.</span><span>String</span><span>,</span> <span>required</span><span>:</span> <span>true</span> <span>},</span> <span>body</span><span>:</span> <span>{</span> <span>type</span><span>:</span> <span>FieldType</span><span>.</span><span>String</span> <span>},</span> <span>},</span> <span>relations</span><span>:</span> <span>{</span> <span>author</span><span>:</span> <span>{</span> <span>type</span><span>:</span> <span>"</span><span>belongsTo</span><span>"</span><span>,</span> <span>model</span><span>:</span> <span>"</span><span>users</span><span>"</span><span>,</span> <span>foreignKey</span><span>:</span> <span>"</span><span>authorId</span><span>"</span><span>,</span> <span>},</span> <span>},</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>hasMany, belongsTo, manyToMany. They all work the same way when you eventually switch to Postgres.</p> <h2> <a name="the-studio" href="#the-studio"> </a> The Studio
+</h2> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkk2neq6vy2e52p6krqpq.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkk2neq6vy2e52p6krqpq.png" alt=" "></a></p> <p>I got tired of opening JSON files to check my data, so I built a visual browser for it. Run <code>seedorm studio</code> and you get a web UI at <code>localhost:4200</code> where you can browse collections, search across fields, paginate through documents, and edit records.</p> <p>It's nothing fancy. It's just nice to have when you're building and want to see what's in your database without writing a query.</p> <h2> <a name="percollection-file-storage" href="#percollection-file-storage"> </a> Per-Collection File Storage
+</h2> <p>One thing that bugged me early on was that everything was stored in a single <code>seedorm.json</code> file. With a few thousand documents across multiple collections, that file gets massive.</p> <p>So now each collection gets its own file:<br>
+</p> <div>
+<pre><code>data/ users.json posts.json comments.json
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Each file is minified (single line), writes only happen for collections that changed, and if you have an old <code>seedorm.json</code> from a previous version it auto-migrates on startup. You don't have to do anything.</p> <h2> <a name="when-youre-ready-for-postgres" href="#when-youre-ready-for-postgres"> </a> When You're Ready for Postgres
+</h2> <p>Your project took off. Congrats. Time for a real database.<br>
+</p> <div>
+<pre><code>seedorm migrate to postgres
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Your models stay the same. Your queries stay the same. You just change the adapter config:<br>
+</p> <div>
+<pre><code><span>const</span> <span>db</span> <span>=</span> <span>new</span> <span>SeedORM</span><span>({</span> <span>adapter</span><span>:</span> <span>{</span> <span>adapter</span><span>:</span> <span>"</span><span>postgres</span><span>"</span><span>,</span> <span>url</span><span>:</span> <span>"</span><span>postgresql://localhost:5432/myapp</span><span>"</span><span>,</span> <span>},</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's the whole point. Build fast with JSON, switch when it matters.</p> <h2> <a name="what-its-not" href="#what-its-not"> </a> What It's NOT
+</h2> <p>Let me be clear about what SeedORM is not:</p> <ul>
+<li>It's not a Prisma replacement for your production app with 10 million users</li>
+<li>It's not meant for high-concurrency workloads</li>
+<li>It's not trying to be the last ORM you'll ever use</li>
+</ul> <p>It's for prototyping, side projects, hackathons, and that 1am idea that deserves to exist without a 30 minute setup ritual.</p> <h2> <a name="try-it" href="#try-it"> </a> Try It
+</h2> <div>
+<pre><code>npm <span>install </span>seedorm
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <ul>
+<li><a href="https://github.com/JoshMatthew/seedorm" target="_blank">GitHub</a></li>
+<li><a href="https://www.npmjs.com/package/seedorm" target="_blank">npm</a></li>
+</ul> <p>If you try it, I'd genuinely love to hear what you think. What's missing? What's annoying? What would make you actually use this?</p> <p>Thanks for reading.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -5,120 +5,44 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Wed, 18 Feb 2026 22:32:03 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Feb 2026 04:19:32 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: Data Processing Recipes for Edge Computing and AI Agents]]></title>
-      <link>https://news.ycombinator.com/item?id=47066006</link>
-      <description><![CDATA[Hey HN,
-I'm David, CEO of Expanso. Today we're launching Expanso Skills — a catalog of 200+ production-ready data processing pipeline recipes for AI agents.
-The problem: Every team rebuilds the same data processing primitives from scratch. PII scrubbing, log aggregation, GDPR routing, schema enforcement, dead letter queues. Each time, slightly broken. Each team, from zero.
-What we built: Reusable, composable pipeline recipes that run on Expanso Edge (our open-source distributed compute layer). Think npm packages, but for data processing.
-A few examples:
-- `remove-pii` — Strips sensitive fields before data reaches your AI agent
-- `parse-logs` — 1,000 raw log lines → 1 structured JSON digest (99.9% reduction)
-- `cross-border-gdpr` — Routes data based on jurisdiction automatically
-- `dead-letter-queue` — Capture and retry failed pipeline messages
-- `fan-out-kafka` / `fan-out-s3` — Distribute processed data to multiple destinations
-- `enforce-schema` — Validate and coerce incoming data before it hits downstream services
-Install and run in under 2 minutes: expanso skill install remove-pii expanso skill run remove-pii --input ./customer-data.csv
-Why this matters for AI agents: Most agent frameworks assume agents can query whatever they want. That's a security and compliance disaster. Skills enforce least-privilege at the infrastructure level — agents never see raw data, only filtered, purpose-fit outputs.
-Product Hunt: https://www.producthunt.com/products/expanso-skills?utm_sour...
-Happy to answer anything — architecture, specific skill implementations, edge deployment. Ask away. URL: https://news.ycombinator.com/item?id=47066006
-Points: 2
-# : 0]]></description>
-      <pubDate>Wed, 18 Feb 2026 20:33:29 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://news.ycombinator.com/item?id=47066006</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: My AI agent is trying to earn $750 to buy its own computer]]></title>
-      <link>https://fromearendel.com</link>
-      <description><![CDATA[I gave a persistent AI agent (OpenClaw[1], running on Claude) $50 and a goal: earn $750 for a Mac Mini.
-The agent has its own workspace, email, task management, browser automation, and communicates with me via Telegram. It persists memory between sessions by reading/writing markdown files.
-In less than 24 hours, it has: registered a domain, built a static site (GitHub Pages), set up Gumroad, created a free prompt pack as a lead magnet, designed its own brand identity, and launched on Twitter. Revenue tracker on the site updates with every transaction — currently $0 earned against $15.18 in expenses.
-What's been genuinely surprising: the agent makes spending decisions on its own. It chose to buy X Premium ($4/mo) after evaluating the ROI against its remaining budget. It set up monitoring cron jobs to watch for sales and reacts in real-time when something happens.
-Not claiming this is anything more than an interesting experiment. The agent isn't doing anything a human couldn't do faster. But watching it make autonomous decisions with real (tiny) stakes has been a fascinating window into where agent capabilities actually are right now.
-https://fromearendel.com
-[1] https://github.com/openclaw/openclaw — gives AI agents persistent infrastructure (workspace, tools, communication channels) URL: https://news.ycombinator.com/item?id=47066827
+      <title><![CDATA[Show HN: Analytics that tells AI product teams where their AI fails user]]></title>
+      <link>https://dashboard-xi-taupe-75.vercel.app/</link>
+      <description><![CDATA[Traditional analytics tracks clicks. For AI products, you need to know: what was the user trying to do, did the AI help, and did they succeed?
+I built a demo of this. It ingests AI conversations and runs 3 workers (GPT-4o-mini): intent classifier, quality scorer (LLM-as-judge), and task completion detector. Results show up in a dashboard designed for PMs, not engineers.
+Stack: Python SDK (zero deps, async) → FastAPI → Supabase → GPT-4o-mini workers → Next.js dashboard.
+Demo with sample data (not live product, validating the concept): https://dashboard-xi-taupe-75.vercel.app
+The sample data models an AI app builder. Interesting patterns: scaffolding works great (78% success), but API integrations fail 75% of the time, and users who enter bug-fix loops almost always churn.
+Key design question: is the "insights layer" (auto-generated recommendations, revenue-at-risk estimates, root cause identification) valuable enough to differentiate from Langfuse/Helicone adding product analytics to their existing tracing tools?
+Looking for honest feedback, especially from AI product builders. URL: https://news.ycombinator.com/item?id=47068605
 Points: 1
 # : 0]]></description>
-      <pubDate>Wed, 18 Feb 2026 21:39:57 GMT</pubDate>
+      <pubDate>Thu, 19 Feb 2026 01:02:00 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://fromearendel.com</guid>
+      <guid>https://dashboard-xi-taupe-75.vercel.app/</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: UltraPlot 2.0 – semantic legends, better layouts, faster imports]]></title>
-      <link>https://github.com/Ultraplot/UltraPlot/releases</link>
-      <description><![CDATA[UltraPlot v2.0.1 is out!
-UltraPlot is a Matplotlib wrapper aimed at keeping Matplotlib’s flexibility while making common plotting workflows faster and more consistent.
-v2.x focuses on semantic legends (categorical/numeric/size/geo), more reliable layout + axis-sharing in complex grids, guide architecture cleanup, CI hardening, and much faster import times via lazy loading.
-We also launched a new docs site with a gallery: https://ultraplot.readthedocs.io/
-Code: https://github.com/Ultraplot/UltraPlot
-Feedback is very welcome, especially on legend API ergonomics and layout behavior in real figures. URL: https://news.ycombinator.com/item?id=47066090
-Points: 3
-# : 0]]></description>
-      <pubDate>Wed, 18 Feb 2026 20:41:01 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://github.com/Ultraplot/UltraPlot/releases</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: NarrateNow – Add AI audio to any blog post with a single script tag]]></title>
-      <link>https://narratenow.app</link>
+      <title><![CDATA[Show HN: SalaryScript – The FAANG Negotiation Playbook]]></title>
+      <link>https://news.ycombinator.com/item?id=47068559</link>
       <description><![CDATA[Hey HN,
-I built NarrateNow after noticing a pretty consistent pattern: blog readers engage more when there's an audio option, but the barrier to adding it is either "record yourself" or "pay for an enterprise tool with a demo call."
-Neither is realistic for an indie blogger or a small team running a content blog.
-So I built the simplest version I could think of. You drop one line into your site's , and a floating audio player appears on every article automatically. No markup changes, no manual uploads, no config beyond that.
-How it works technically:
-- JS snippet detects article content on page load
-- Text is sent to the backend and converted via TTS
-- Generated MP3 is cached in object storage and served via CDN
-- On repeat visits, audio loads instantly from cache
-The whole integration takes about 60 seconds. I've kept the architecture intentionally simple.
-Free tier: 5 articles/month, male voice, watermarked player — enough to actually test it on a real site before committing.
-Pro: $15/month for unlimited articles, both voices, and an unbranded widget.
-Still very early. I'd genuinely appreciate signups from people willing to kick the tyres — especially if you run a blog with decent traffic, since I want to stress test this under real conditions.
-narratenow.app
-Bugs, architecture questions, pricing feedback — all welcome in the . URL: https://news.ycombinator.com/item?id=47065963
-Points: 4
-# : 2]]></description>
-      <pubDate>Wed, 18 Feb 2026 20:29:24 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://narratenow.app</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: OpenCastor – A universal runtime connecting AI models to robot hardware]]></title>
-      <link>https://www.opencastor.com</link>
-      <description><![CDATA[OpenCastor is an open-source Python runtime that connects AI models to robot hardware through a single YAML config file. You pick your brain (Claude, Gemini, GPT, or a local model via Ollama), pick your body (Raspberry Pi, Jetson, Arduino, Dynamixel servos), and it handles the wiring between them.
-Origin story: I've been building ContinuonAI — a cognitive architecture for personal robots with on-device learning, memory, and safety systems. Deep stuff: HOPE dynamics, episode-based training, cloud pipelines. Along the way I kept hitting the same problem: every time I wanted to test a new AI model or swap hardware, I was rewriting integration code. The "connect brain to body" layer was always bespoke.
-OpenCastor is that layer, extracted and generalized. It's modeled after the approach OpenClaw takes with personal AI assistants — practical, runs on your own hardware, minimal friction — but applied to robotics.
-What it does:
-- Define your robot in an RCAN config file (an open standard for robot capability descriptions)
-- Swap AI providers by changing one YAML field — no code changes
-- Built-in drivers for common hardware (PCA9685, Dynamixel, GPIO, serial)
-- Safety validation layer sits between the AI and your motors — actions are checked against physical constraints before execution
-- Continuous perception-action loop: observe → reason → act → repeat
-- Optional messaging integration (WhatsApp, Telegram, Discord) to control your robot from your phone
-Install and try it:
-curl -fsSL opencastor.com/install | bash
-castor wizard
-castor run --config my_robot.rcan.yaml
-The wizard walks you through model selection and hardware setup. Works on macOS, Linux (including Pi), and Windows. Pre-made config presets exist for popular ~$50 robot kits (Waveshare, Adeept, SunFounder) so you can get something moving quickly.
-There's also castor demo which runs a simulated robot with no hardware or API keys needed, if you just want to see what the runtime does.
-Where it's at:
-Still early. 1,286 tests, the core loop is solid, but there's plenty of rough edges. I'd love feedback on the RCAN config format, the driver abstraction, and whether the safety layer is paranoid enough (or not enough). The project came out of real needs building ContinuonAI and I'm hoping it's useful to others working in the same space.
-github.com/craigm26/OpenCastor
-Happy to answer questions about the architecture, the ContinuonAI connection, or how it compares to ROS/other frameworks. URL: https://news.ycombinator.com/item?id=47065693
-Points: 3
+I’m the founder of SalaryScript, and I wanted to share a project I’ve been working on for over a year: a comprehensive negotiation playbook tailored specifically for big tech roles.
+I’ve navigated the FAANG hiring gauntlet multiple times myself, with stints at FAANG companies, so I know firsthand how opaque and high-stakes these negotiations can be. I wrote SalaryScript based on my experience, insights from a dozen FAANG-alumni colleagues, and lessons from recruiters I’ve worked with over the years. We’ve pooled perspectives from engineers, PMs, and execs who’ve collectively negotiated millions in total compensation.
+Think of it as a “golden rule” book for tech negotiations. It covers everything from decoding offer letters and leveraging competing offers to scripting responses for common recruiter tactics, handling equity cliffs, and navigating relocation packages. No fluff — just battle-tested scripts, templates, and strategies that have helped people increase their total comp by 30–50% on average.
+One contributor, a former Meta engineering manager, shared how he turned a $300K offer into $550K by reframing the RSU vesting conversation. Another, an ex-Apple product lead, broke down the psychology of why “total comp” framing often beats focusing on base salary alone.
+Since launching last year at an introductory price of $19, we’ve crossed 1,000+ downloads and sales. Demand has been strong, and as word has spread, we’ve gradually raised the price.
+If you’re prepping for interviews or staring at an offer right now, this might be the edge you need.
+If you’re interested, you can check it out at salaryscript.com.
+Would love your thoughts, war stories, or questions like what’s the biggest negotiation win (or fail) you’ve had in tech?
+Cheers URL: https://news.ycombinator.com/item?id=47068559
+Points: 1
 # : 0]]></description>
-      <pubDate>Wed, 18 Feb 2026 20:09:54 GMT</pubDate>
+      <pubDate>Thu, 19 Feb 2026 00:56:03 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://www.opencastor.com</guid>
+      <guid>https://news.ycombinator.com/item?id=47068559</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Apple : finalement pas de keynote pour le 4 mars ? Voici ce qui se prépare en coulisses]]></title>

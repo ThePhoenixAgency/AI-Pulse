@@ -5,7 +5,7 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>AI - Artificial Intelligence news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Wed, 18 Feb 2026 22:32:03 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Feb 2026 04:19:32 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-ai.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title><![CDATA[Railway secures $100 million to challenge AWS with AI-native cloud infrastructure]]></title>
@@ -336,6 +336,15 @@ Most machine learning researchers use specific experiment tracking libraries to 
       <guid>https://huggingface.co/blog/trackio</guid>
     </item>
     <item>
+      <title><![CDATA[Agentic AI for Modern Deep Learning Experimentation]]></title>
+      <link>https://towardsdatascience.com/agentic-ai-for-modern-deep-learning-experimentation/</link>
+      <description><![CDATA[Stop babysitting training runs. Start shipping research. Autonomous experiment management built for/by deep learning engineers.]]></description>
+      <pubDate>Wed, 18 Feb 2026 18:20:33 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/agentic-ai-for-modern-deep-learning-experimentation/</guid>
+    </item>
+    <item>
       <title><![CDATA[IBM and UC Berkeley Diagnose Why Enterprise Agents Fail Using IT-Bench and MAST]]></title>
       <link>https://huggingface.co/blog/ibm-research/itbenchandmast</link>
       <description><![CDATA[Back to Articles The "Black Box" Problem of Agent Benchmarks The Experiment: Diagnosing ITBench Agents Finding 1: Stronger models like Gemini-3-Flash shows surgical (isolated failure modes) per trace whereas open sourced Kimi-K2 and GPT-oss-120b show compounding failure patterns Finding 2: "Non-Fatal" vs. "Fatal" Failures The "Non-Fatal" (Benign) Flaws The "Fatal" Flaws Case Study: Gemini-3-Flash (Decisive but Overconfident) Case Study: GPT-OSS-120B A different (and more useful) way to read the plots: “fatal” vs “non-fatal” Recoverable / structural (show up even in successful traces) Fatal / decisive (strongly associated with failed traces) Conclusion Ayhan Sebin
@@ -356,15 +365,6 @@ Benchmarks typicall]]></description>
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/ibm-research/itbenchandmast</guid>
-    </item>
-    <item>
-      <title><![CDATA[Scaling social science research]]></title>
-      <link>https://openai.com/index/scaling-social-science-research</link>
-      <description><![CDATA[GABRIEL is a new open-source toolkit from OpenAI that uses GPT to turn qualitative text and images into quantitative data, helping social scientists analyze research at scale.]]></description>
-      <pubDate>Fri, 13 Feb 2026 09:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/scaling-social-science-research</guid>
     </item>
     <item>
       <title><![CDATA[Codex is Open Sourcing AI models]]></title>
@@ -389,18 +389,6 @@ Export to and q]]></description>
       <guid>https://huggingface.co/blog/lerobot-release-v040</guid>
     </item>
     <item>
-      <title><![CDATA[Google Cloud C4 Brings a 70% TCO improvement on GPT OSS with Intel and Hugging Face]]></title>
-      <link>https://huggingface.co/blog/gpt-oss-on-intel-xeon</link>
-      <description><![CDATA[Back to Articles Intel and Hugging Face collaborated to demonstrate the real-world value of upgrading to Google’s latest C4 Virtual Machine (VM) running on Intel Xeon 6 processors (codenamed Granite Rapids (GNR)). We specifically wanted to benchmark improvements in the text generation performance of OpenAI GPT OSS Large Language Model(LLM). The results are in, and they are impressive, demonstrating a 1.7x improvement in Total Cost of Ownership(TCO) over the previous-generation Google C3 VM instances. The Google Cloud C4 VM instance further resulted in: 1.4x to 1.7x TPOT throughput/vCPU/dollar
-Lower price per hour over C3 VM Introduction GPT OSS is a common name for an open-source Mixture of Experts (MoE) model released by OpenAI. An MoE model is a deep neural network architecture that uses specialized “expert” sub-networks and a “gating network” to decide which experts to use for a given input. MoE models allow you to scale your model capacity efficiently without linearly scaling compute costs. They also allow for specialization, where different “experts” learn different skills, allowing them to adapt to diverse data distributions.
-Even with very large parameters, only a small subset of experts is activated per token, making CPU inference viable.
-Intel and]]></description>
-      <pubDate>Thu, 16 Oct 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/gpt-oss-on-intel-xeon</guid>
-    </item>
-    <item>
       <title><![CDATA[SAIR: Accelerating Pharma R&amp;D with AI-Powered Structural Intelligence]]></title>
       <link>https://huggingface.co/blog/SandboxAQ/sair-data-accelerating-drug-discovery-with-ai</link>
       <description><![CDATA[Back to Articles Accessing SAIR 1. Install essentials 2. Authenticate 3. Load the main table (sair.parquet) 4. (Optional) List available structure archives 5. (Optional) Download and extract structures Questions? This summer, SandboxAQ released the Structurally Augmented IC50 Repository (SAIR), the largest dataset of co-folded 3D protein-ligand structures paired with experimentally measured IC₅₀ labels, directly linking molecular structure to drug potency and overcoming a longstanding scarcity in training data. This dataset is now available on Hugging Face, and for the first time, researchers have open access to more than 5 million AI‑generated, high‑accuracy protein-ligand 3D structures, each paired with validated empirical binding potency data. SAIR is an open-sourced dataset and is publicly available for free under a permissive CC BY 4.0 license, making it immediately actionable for commercial and non-commercial R&amp;D pipelines. More than just a dataset, SAIR is a strategic asset that bridges the long-standing data gap in AI-powered drug design. It empowers pharmaceutical, biotech, and tech‑bio leaders to accelerat]]></description>
@@ -408,6 +396,15 @@ Intel and]]></description>
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/SandboxAQ/sair-data-accelerating-drug-discovery-with-ai</guid>
+    </item>
+    <item>
+      <title><![CDATA[Measuring Open-Source Llama Nemotron Models on DeepResearch Bench]]></title>
+      <link>https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent</link>
+      <description><![CDATA[Back to Articles Core Stack: Model Choices and Technical Innovations Deep Reasoning with Llama Nemotron Evaluation: Transparency and Robustness in Metrics Benchmark Results: DeepResearch Bench For the Hugging Face Developer Community Takeaways Contributors: David Austin, Raja Biswas, Gilberto Titericz Junior, NVIDIA]]></description>
+      <pubDate>Mon, 04 Aug 2025 19:51:50 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent</guid>
     </item>
     <item>
       <title><![CDATA[Anthropic lève 30 milliards de dollars et talonne désormais OpenAI]]></title>
@@ -419,43 +416,15 @@ Intel and]]></description>
       <guid>https://siecledigital.fr/2026/02/16/anthropic-senvole-a-380-milliards-de-dollars/</guid>
     </item>
     <item>
-      <title><![CDATA[Snowflake and OpenAI partner to bring frontier intelligence to enterprise data]]></title>
-      <link>https://openai.com/index/snowflake-partnership</link>
-      <description><![CDATA[OpenAI and Snowflake partner in a $200M agreement to bring frontier intelligence into enterprise data, enabling AI agents and insights directly in Snowflake.]]></description>
-      <pubDate>Mon, 02 Feb 2026 06:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/snowflake-partnership</guid>
-    </item>
-    <item>
-      <title><![CDATA[Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek]]></title>
-      <link>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-2</link>
-      <description><![CDATA[Back to Articles Mixture of Experts (MoE) as the Default Choice The Rush for Supremacy by Modality Big Preferences for Small Models More Permissive Open Source Licenses From Model-First to Hardware-First Reconstruction In Progress This is the second blog in a three-part series on China's open source community's historical advancements since January 2025's "DeepSeek Moment." The first blog is available here, and the third blog is available here.
-In this second piece we turn our focus from models to the architectural and hardware choices Chinese companies have made as openness becomes the norm.
-For AI researchers and developers contributing to and relying on the open source ecosystem and for policymakers understanding the rapidly changing environment, architectural preferences, modality diversification, license permissiveness, small model popularity, and growing adoption of Chinese hardware point to leadership strategies across a multitude of paths. DeepSeek R1's own characteristics inspired overlap and competition, and contributed to heavier focus on domestic hardware in China. Mixture of Experts (MoE) as the Default Choice In the past year, leading models from]]></description>
-      <pubDate>Tue, 27 Jan 2026 15:01:45 GMT</pubDate>
+      <title><![CDATA[The Future of the Global Open-Source AI Ecosystem: From DeepSeek to AI+]]></title>
+      <link>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-3</link>
+      <description><![CDATA[Back to Articles China's Organic Open Source AI Ecosystem The Established The Normalcy of "DeepSeek Moments" Foundations for the Future Looking Back to Look Forward This is the third and final blog in a three-part series on China's open source community's historical advancements since January 2025's "DeepSeek Moment." The first blog on strategic changes and open artifact growth is available here, and the second blog on architectural and hardware shifts is available here.
+In this third article, we examine paths and trajectories of prominent Chinese AI organizations, and posit future directions for open source.
+For AI researchers and developers contributing to and relying on the open source ecosystem and for policymakers understanding the rapidly changing environment, due to intraorganizational and global community gains, open source is the dominant and popular approach for Chinese AI organizations for the near future. Openly sharing artifacts from models to papers to deployment infrastructure maps to a strategy with the goal of large-scale deployment and integration. China's Organic Open Source AI Ecosystem Having examined strategic and architectural changes since DeepSeek's R1, we get]]></description>
+      <pubDate>Tue, 03 Feb 2026 15:03:19 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-2</guid>
-    </item>
-    <item>
-      <title><![CDATA[One Year Since the “DeepSeek Moment”]]></title>
-      <link>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment</link>
-      <description><![CDATA[Back to Articles The Seeds of China’s Organic Open Source AI Ecosystem DeepSeek R1: A Turning Point From DeepSeek to AI+: Strategic Realignmentt Global Reception and Response This is the first blog in a series that will examine China’s open source community’s historical advancements in the past year and its reverberations in shaping the entire ecosystem. Much of 2025’s progress can be traced back to January’s “DeepSeek Moment”, when Hangzhou-based AI company DeepSeek released their R-1 model. The first blog addresses strategic changes and the explosion of new open models and open source players. The second covers architectural and hardware choices largely by Chinese companies made in the wake of a growing open ecosystem, available here. The third analyzes prominent organizations’ trajectories and the future of the global open source ecosystem, available here.
-For AI researchers and developers contributing to and relying on the open source ecosystem and for policymakers understanding the rapidly changing environment, there has never been a better time to build and release open models and artifacts, as proven by the past year’s immense growth catalyzed by DeepSeek. Notably, geopolitics has driven adoption; while models developed in]]></description>
-      <pubDate>Tue, 20 Jan 2026 15:02:10 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment</guid>
-    </item>
-    <item>
-      <title><![CDATA[A business that scales with the value of intelligence]]></title>
-      <link>https://openai.com/index/a-business-that-scales-with-the-value-of-intelligence</link>
-      <description><![CDATA[OpenAI’s business model scales with intelligence—spanning subscriptions, API, ads, commerce, and compute—driven by deepening ChatGPT adoption.]]></description>
-      <pubDate>Sun, 18 Jan 2026 10:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/a-business-that-scales-with-the-value-of-intelligence</guid>
+      <guid>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-3</guid>
     </item>
     <item>
       <title><![CDATA[Introducing Falcon-H1-Arabic: Pushing the Boundaries of Arabic Language AI with Hybrid Architecture]]></title>
@@ -491,31 +460,22 @@ To address this, Cherny's team maintains a single file named CLAUDE.md in their 
       <guid>https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are</guid>
     </item>
     <item>
-      <title><![CDATA[The state of enterprise AI]]></title>
-      <link>https://openai.com/index/the-state-of-enterprise-ai-2025-report</link>
-      <description><![CDATA[Key findings from OpenAI’s enterprise data show accelerating AI adoption, deeper integration, and measurable productivity gains across industries in 2025.]]></description>
-      <pubDate>Mon, 08 Dec 2025 04:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
+      <title><![CDATA[Join the AMD Open Robotics Hackathon]]></title>
+      <link>https://huggingface.co/blog/amd/openroboticshackathon</link>
+      <description><![CDATA[Back to Articles Looking to show off your robotics aptitude? The AMD Open Robotics Hackathon hosted by AMD, Hugging Face, and Data Monsters is the place to do it. Whether you’re a student, hobbyist, startup founder, or seasoned engineer, this event brings together makers, coders, and roboticists for a fast-paced, hands-on competition that turns bold ideas into functioning demos.
+The first of two in-person hackathons will take place from December 5-7, 2025 in Tokyo Japan. Our next stop will be in Paris France from December 12-14, 2025.
+Preparing for the Hackathon:
+Form a team of up to four roboticists (ages 18+) to take on two missions over the course of 3 days.
+Mission 1 — An instructor-led exploration and preparation session. Learn how to set up the LeRobot development environment using AMD AI solutions
+Mission 2 — Build your own creative solution to a real-world problem. Your team has two days to develop an innovative freestyle project using LeRobot technical proficiency:
+•	Strong Linux development skills and experience with Python and related tooling and containerization
+•	Machine learning skills, familiarity with PyTorch, and hands-on experience with model training and inference
+•	Bonus if your team has experience with ROCm, LeRobot, and embedded development.
+Hardware will be provi]]></description>
+      <pubDate>Thu, 13 Nov 2025 21:37:26 GMT</pubDate>
+      <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://openai.com/index/the-state-of-enterprise-ai-2025-report</guid>
-    </item>
-    <item>
-      <title><![CDATA[OpenAI takes an ownership stake in Thrive Holdings to accelerate enterprise AI adoption]]></title>
-      <link>https://openai.com/index/thrive-holdings</link>
-      <description><![CDATA[OpenAI takes an ownership stake in Thrive Holdings to accelerate enterprise AI adoption, embedding frontier research and engineering directly into accounting and IT services to boost speed, accuracy, and efficiency while creating a scalable model for industry-wide transformation.]]></description>
-      <pubDate>Mon, 01 Dec 2025 05:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/thrive-holdings</guid>
-    </item>
-    <item>
-      <title><![CDATA[Expanding data residency access to business customers worldwide]]></title>
-      <link>https://openai.com/index/expanding-data-residency-access-to-business-customers-worldwide</link>
-      <description><![CDATA[OpenAI expands data residency for ChatGPT Enterprise, ChatGPT Edu, and the API Platform, enabling eligible customers to store data at rest in-region.]]></description>
-      <pubDate>Tue, 25 Nov 2025 22:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/expanding-data-residency-access-to-business-customers-worldwide</guid>
+      <guid>https://huggingface.co/blog/amd/openroboticshackathon</guid>
     </item>
     <item>
       <title><![CDATA[huggingface_hub v1.0: Five Years of Building the Foundation of Open Machine Learning]]></title>
@@ -564,6 +524,17 @@ What's Next? Introduction Graphical User Interface (GUI) automation is one of th
       <guid>https://huggingface.co/blog/smol2operator</guid>
     </item>
     <item>
+      <title><![CDATA[Fine-tune Any LLM from the Hugging Face Hub with Together AI]]></title>
+      <link>https://huggingface.co/blog/togethercomputer/together-ft</link>
+      <description><![CDATA[Back to Articles Getting Started in 5 Minutes How It Works: What This Means for Developers How Teams Are Using This Feature? Show Us What You Build! The pace of AI development today is breathtaking. Every single day, hundreds of new models appear on the Hugging Face Hub, some are specialized variants of popular base models like Llama or Qwen, others feature novel architectures or have been trained from scratch for specific domains. Whether it's a medical AI trained on clinical data, a coding assistant optimized for a particular programming language, or a multilingual model fine-tuned for specific cultural contexts, the Hugging Face Hub has become the beating heart of open-source AI innovation.
+But here's the challenge: finding an amazing model is just the beginning. What happens when you discover a model that's 90% perfect for your use case, but you need that extra 10% of customization? Traditional fine-tuning infrastructure is complex, expensive, and often requires significant DevOps expertise to set up and maintain.
+This is exactly the gap that Together AI and Hugging Face are bridging today. We're announcing a powerful new capability that makes the entire Hugging Face Hub available]]></description>
+      <pubDate>Wed, 10 Sep 2025 17:04:36 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/togethercomputer/together-ft</guid>
+    </item>
+    <item>
       <title><![CDATA[Kimina-Prover-RL]]></title>
       <link>https://huggingface.co/blog/AI-MO/kimina-prover-rl</link>
       <description><![CDATA[Back to Articles A slimmed-down training pipeline from Kimina Prover, with core features and full compatibility with verl. We are happy to introduce kimina-prover-rl, an open-source training pipeline for formal theorem proving in Lean 4, based on a structured reasoning-then-generation paradigm inspired by DeepSeek-R1.
@@ -577,13 +548,32 @@ AI-MO/Kimina-Prover-RL]]></description>
       <guid>https://huggingface.co/blog/AI-MO/kimina-prover-rl</guid>
     </item>
     <item>
-      <title><![CDATA[Measuring Open-Source Llama Nemotron Models on DeepResearch Bench]]></title>
-      <link>https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent</link>
-      <description><![CDATA[Measuring Open-Source Llama Nemotron Models on DeepResearch Bench]]></description>
-      <pubDate>Mon, 04 Aug 2025 19:51:50 GMT</pubDate>
-      <source>Hugging Face Blog</source>
+      <title><![CDATA[Use OpenClaw to Make a Personal AI Assistant]]></title>
+      <link>https://towardsdatascience.com/use-openclaw-to-make-a-personal-ai-assistant/</link>
+      <description><![CDATA[Learn how to set up OpenClaw as a personalized AI agent]]></description>
+      <pubDate>Wed, 18 Feb 2026 00:25:14 GMT</pubDate>
+      <source>Towards Data Science</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent</guid>
+      <guid>https://towardsdatascience.com/use-openclaw-to-make-a-personal-ai-assistant/</guid>
+    </item>
+    <item>
+      <title><![CDATA[OpenAI deepens India push with Pine Labs fintech partnership]]></title>
+      <link>https://techcrunch.com/2026/02/18/openai-deepens-india-push-with-pine-labs-fintech-partnership/</link>
+      <description><![CDATA[OpenAI moves beyond ChatGPT in India with a Pine Labs deal targeting enterprise payments and AI-driven commerce.]]></description>
+      <pubDate>Thu, 19 Feb 2026 03:30:00 GMT</pubDate>
+      <source>TechCrunch AI</source>
+      <category>ai</category>
+      <guid>https://techcrunch.com/2026/02/18/openai-deepens-india-push-with-pine-labs-fintech-partnership/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Why Every Analytics Engineer Needs to Understand Data Architecture]]></title>
+      <link>https://towardsdatascience.com/why-every-analytics-engineer-needs-to-understand-data-architecture/</link>
+      <description><![CDATA[Get the data architecture right, and everything else becomes easier.
+I know it sounds simple, but in reality, little nuances in designing your data architecture may have costly implications.]]></description>
+      <pubDate>Wed, 18 Feb 2026 19:00:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/why-every-analytics-engineer-needs-to-understand-data-architecture/</guid>
     </item>
     <item>
       <title><![CDATA[INESIA : la France se dote d’un nouveau bouclier pour encadrer les IA avancées]]></title>
@@ -593,6 +583,33 @@ AI-MO/Kimina-Prover-RL]]></description>
       <source>Siecle Digital</source>
       <category>ai</category>
       <guid>https://siecledigital.fr/2026/02/16/inesia-la-france-structure-sa-strategie-de-securite-de-lia/</guid>
+    </item>
+    <item>
+      <title><![CDATA[A beginner’s guide to Tmux: a multitasking superpower for your terminal]]></title>
+      <link>https://towardsdatascience.com/a-beginners-guide-to-tmux-a-multitasking-superpower-for-your-terminal/</link>
+      <description><![CDATA[One of the new things I’ve come across recently, while researching command-line-based coding assistants, is the mention and use of a tool I hadn’t heard of before. That tool is called Tmux, which stands for Terminal Multiplexer. In the simplest possible terms, Tmux allows you to split up a single terminal window into a number […]]]></description>
+      <pubDate>Sun, 15 Feb 2026 11:50:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/a-beginners-guide-to-tmux-a-multitasking-superpower-for-your-terminal/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Your First 90 Days as a Data Scientist]]></title>
+      <link>https://towardsdatascience.com/your-first-90-days-as-a-data-scientist/</link>
+      <description><![CDATA[A practical onboarding checklist for building trust, business fluency, and data intuition]]></description>
+      <pubDate>Sat, 14 Feb 2026 11:25:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/your-first-90-days-as-a-data-scientist/</guid>
+    </item>
+    <item>
+      <title><![CDATA[How to Leverage Explainable AI for Better Business Decisions]]></title>
+      <link>https://towardsdatascience.com/how-to-leverage-explainable-ai-for-better-business-decisions/</link>
+      <description><![CDATA[Moving beyond the black box to turn complex model outputs into actionable organizational strategies.]]></description>
+      <pubDate>Thu, 12 Feb 2026 15:00:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/how-to-leverage-explainable-ai-for-better-business-decisions/</guid>
     </item>
     <item>
       <title><![CDATA[OpenEnv in Practice: Evaluating Tool-Using Agents in Real-World Environments]]></title>
@@ -618,24 +635,6 @@ Design downstream outputs using shared state variables a]]></description>
       <guid>https://huggingface.co/blog/ServiceNow-AI/sygra-studio</guid>
     </item>
     <item>
-      <title><![CDATA[The Future of the Global Open-Source AI Ecosystem: From DeepSeek to AI+]]></title>
-      <link>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-3</link>
-      <description><![CDATA[The Future of the Global Open-Source AI Ecosystem: From DeepSeek to AI+]]></description>
-      <pubDate>Tue, 03 Feb 2026 15:03:19 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-3</guid>
-    </item>
-    <item>
-      <title><![CDATA[Taisei Corporation shapes the next generation of talent with ChatGPT]]></title>
-      <link>https://openai.com/index/taisei</link>
-      <description><![CDATA[Taisei Corporation uses ChatGPT Enterprise to support HR-led talent development and scale generative AI across its global construction business.]]></description>
-      <pubDate>Thu, 29 Jan 2026 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/taisei</guid>
-    </item>
-    <item>
       <title><![CDATA[We Got Claude to Build CUDA Kernels and teach open models!]]></title>
       <link>https://huggingface.co/blog/upskill</link>
       <description><![CDATA[Back to Articles What are agent skills? 1. Get the teacher (Claude Opus 4.5) to build a kernel 2. Make an agent skill from the trace 3. Take your skill to an open source, smaller, or cheaper model Deep dive tutorial into building kernels with agent skills Setup and Install Skill Generation Generate the Skill Evaluate on a Different Model How the evaluation in upskill works What's Next Resources The best thing about agent skills is upskilling your agents on hard problems. There are two ways to look at that: You can take Opus 4.5 or other SOTA models and tackle the hardest problems out there. You can take models that run on your laptop and upskill them to harder problems. In this blog post, we’ll show you how to take on the latter. This blog post walks through the process of using a new tool, upskill, to generate and evaluate agent skills with large models and use them with smaller models. We will benchmark upskill on the task of writing CUDA kernels for diffusers models, but the process is generally useful for cutting costs, or using smaller models]]></description>
@@ -645,31 +644,13 @@ Design downstream outputs using shared state variables a]]></description>
       <guid>https://huggingface.co/blog/upskill</guid>
     </item>
     <item>
-      <title><![CDATA[Inside GPT-5 for Work: How Businesses Use GPT-5]]></title>
-      <link>https://openai.com/business/guides-and-resources/chatgpt-usage-and-adoption-patterns-at-work</link>
-      <description><![CDATA[A data-driven report on how workers across industries use ChatGPT—covering adoption trends, top tasks, departmental patterns, and the future of AI at work.]]></description>
-      <pubDate>Thu, 22 Jan 2026 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
+      <title><![CDATA[Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek]]></title>
+      <link>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-2</link>
+      <description><![CDATA[Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek]]></description>
+      <pubDate>Tue, 27 Jan 2026 15:01:45 GMT</pubDate>
+      <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://openai.com/business/guides-and-resources/chatgpt-usage-and-adoption-patterns-at-work</guid>
-    </item>
-    <item>
-      <title><![CDATA[Investing in Merge Labs]]></title>
-      <link>https://openai.com/index/investing-in-merge-labs</link>
-      <description><![CDATA[OpenAI is investing in Merge Labs to support new brain computer interfaces that bridge biological and artificial intelligence to maximize human ability, agency, and experience.]]></description>
-      <pubDate>Thu, 15 Jan 2026 07:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/investing-in-merge-labs</guid>
-    </item>
-    <item>
-      <title><![CDATA[Deepening our collaboration with the U.S. Department of Energy]]></title>
-      <link>https://openai.com/index/us-department-of-energy-collaboration</link>
-      <description><![CDATA[OpenAI and the U.S. Department of Energy have signed a memorandum of understanding to deepen collaboration on AI and advanced computing in support of scientific discovery. The agreement builds on ongoing work with national laboratories and helps establish a framework for applying AI to high-impact research across the DOE ecosystem.]]></description>
-      <pubDate>Thu, 18 Dec 2025 11:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/us-department-of-energy-collaboration</guid>
+      <guid>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-2</guid>
     </item>
     <item>
       <title><![CDATA[The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator]]></title>
@@ -702,15 +683,6 @@ more intelligent or si]]></description>
       <guid>https://huggingface.co/blog/nvidia/nemotron-3-nano-evaluation-recipe</guid>
     </item>
     <item>
-      <title><![CDATA[Evaluating AI’s ability to perform scientific research tasks]]></title>
-      <link>https://openai.com/index/frontierscience</link>
-      <description><![CDATA[OpenAI introduces FrontierScience, a benchmark testing AI reasoning in physics, chemistry, and biology to measure progress toward real scientific research.]]></description>
-      <pubDate>Tue, 16 Dec 2025 09:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/frontierscience</guid>
-    </item>
-    <item>
       <title><![CDATA[CUGA on Hugging Face: Democratizing Configurable AI Agents]]></title>
       <link>https://huggingface.co/blog/ibm-research/cuga-on-hugging-face</link>
       <description><![CDATA[Back to Articles Introduction Introduction What is CUGA? Open Source and Open Models Integration with Langflow: Visual Agent Design Made Simple Try the Hugging Face Demo: A Hands-On Preview Conclusion and Call to Action AI agents are rapidly becoming essential for building intelligent applications, but creating robust, adaptable agents that scale across domains remains a challenge. Many existing frameworks struggle with brittleness, tool misuse, and failures when faced with complex workflows.
@@ -719,96 +691,6 @@ CUGA (Configurable Generalist Agent) was designed to overcome these limitations.
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/ibm-research/cuga-on-hugging-face</guid>
-    </item>
-    <item>
-      <title><![CDATA[Advancing science and math with GPT-5.2]]></title>
-      <link>https://openai.com/index/gpt-5-2-for-science-and-math</link>
-      <description><![CDATA[GPT-5.2 is OpenAI’s strongest model yet for math and science, setting new state-of-the-art results on benchmarks like GPQA Diamond and FrontierMath. This post shows how those gains translate into real research progress, including solving an open theoretical problem and generating reliable mathematical proofs.]]></description>
-      <pubDate>Thu, 11 Dec 2025 10:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/gpt-5-2-for-science-and-math</guid>
-    </item>
-    <item>
-      <title><![CDATA[Update to GPT-5 System Card: GPT-5.2]]></title>
-      <link>https://openai.com/index/gpt-5-system-card-update-gpt-5-2</link>
-      <description><![CDATA[GPT-5.2 is the latest model family in the GPT-5 series. The comprehensive safety mitigation approach for these models is largely the same as that described in the GPT-5 System Card and GPT-5.1 System Card. Like OpenAI’s other models, the GPT-5.2 models were trained on diverse datasets, including information that is publicly available on the internet, information that we partner with third parties to access, and information that our users or human trainers and researchers provide or generate.]]></description>
-      <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/gpt-5-system-card-update-gpt-5-2</guid>
-    </item>
-    <item>
-      <title><![CDATA[OpenAI appoints Denise Dresser as Chief Revenue Officer]]></title>
-      <link>https://openai.com/index/openai-appoints-denise-dresser</link>
-      <description><![CDATA[Denise Dresser is joining as Chief Revenue Officer, overseeing OpenAI’s global revenue strategy across enterprise and customer success. She will help more businesses put AI to work in their day-to-day operations as OpenAI continues to scale.]]></description>
-      <pubDate>Tue, 09 Dec 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/openai-appoints-denise-dresser</guid>
-    </item>
-    <item>
-      <title><![CDATA[Bringing powerful AI to millions across Europe with Deutsche Telekom]]></title>
-      <link>https://openai.com/index/deutsche-telekom-collaboration</link>
-      <description><![CDATA[OpenAI is collaborating with Deutsche Telekom to bring advanced, multilingual AI experiences to millions of people across Europe. ChatGPT Enterprise will also be deployed to help employees at Deutsche Telekom improve workflows and accelerate innovation.]]></description>
-      <pubDate>Tue, 09 Dec 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/deutsche-telekom-collaboration</guid>
-    </item>
-    <item>
-      <title><![CDATA[OpenAI to acquire Neptune]]></title>
-      <link>https://openai.com/index/openai-to-acquire-neptune</link>
-      <description><![CDATA[OpenAI is acquiring Neptune to deepen visibility into model behavior and strengthen the tools researchers use to track experiments and monitor training.]]></description>
-      <pubDate>Wed, 03 Dec 2025 10:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/openai-to-acquire-neptune</guid>
-    </item>
-    <item>
-      <title><![CDATA[Accenture and OpenAI accelerate enterprise AI success]]></title>
-      <link>https://openai.com/index/accenture-partnership</link>
-      <description><![CDATA[Accenture and OpenAI are collaborating to help enterprises bring agentic AI capabilities into the core of their business and unlock new levels of growth.]]></description>
-      <pubDate>Mon, 01 Dec 2025 05:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/accenture-partnership</guid>
-    </item>
-    <item>
-      <title><![CDATA[Mixpanel security incident: what OpenAI users need to know]]></title>
-      <link>https://openai.com/index/mixpanel-incident</link>
-      <description><![CDATA[OpenAI shares details about a Mixpanel security incident involving limited API analytics data. No API content, credentials, or payment details were exposed. Learn what happened and how we’re protecting users.]]></description>
-      <pubDate>Wed, 26 Nov 2025 19:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/mixpanel-incident</guid>
-    </item>
-    <item>
-      <title><![CDATA[Early experiments in accelerating science with GPT-5]]></title>
-      <link>https://openai.com/index/accelerating-science-gpt-5</link>
-      <description><![CDATA[OpenAI introduces the first research cases showing how GPT-5 accelerates scientific progress across math, physics, biology, and computer science. Explore how AI and researchers collaborate to generate proofs, uncover new insights, and reshape the pace of discovery.]]></description>
-      <pubDate>Thu, 20 Nov 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/accelerating-science-gpt-5</guid>
-    </item>
-    <item>
-      <title><![CDATA[How Scania is accelerating work with AI across its global workforce]]></title>
-      <link>https://openai.com/index/scania</link>
-      <description><![CDATA[Description: Global manufacturer Scania is scaling AI with ChatGPT Enterprise. With team-based onboarding and strong guardrails, AI is boosting productivity, quality, and innovation.]]></description>
-      <pubDate>Wed, 19 Nov 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/scania</guid>
-    </item>
-    <item>
-      <title><![CDATA[OpenAI named Emerging Leader in Generative AI]]></title>
-      <link>https://openai.com/index/gartner-2025-emerging-leader</link>
-      <description><![CDATA[OpenAI has been named an Emerging Leader in Gartner’s 2025 Innovation Guide for Generative AI Model Providers. The recognition reflects our enterprise momentum, with over 1 million companies building with ChatGPT.]]></description>
-      <pubDate>Mon, 17 Nov 2025 10:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/gartner-2025-emerging-leader</guid>
     </item>
     <item>
       <title><![CDATA[How to Build a Healthcare Robot from Simulation to Deployment with NVIDIA Isaac for Healthcare]]></title>
@@ -878,13 +760,13 @@ Visual Document Ret]]></description>
       <guid>https://huggingface.co/blog/ocr-open-models</guid>
     </item>
     <item>
-      <title><![CDATA[Public AI on Hugging Face Inference Providers]]></title>
-      <link>https://huggingface.co/blog/inference-providers-publicai</link>
+      <title><![CDATA[Scaleway on Hugging Face Inference Providers]]></title>
+      <link>https://huggingface.co/blog/inference-providers-scaleway</link>
       <description><![CDATA[The Wayback Machine is an initiative of the Internet Archive, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include Open Library &amp; archive-it.org. Your use of the Wayback Machine is subject to the Internet Archive's Terms of Use.]]></description>
-      <pubDate>Wed, 17 Sep 2025 00:00:00 GMT</pubDate>
+      <pubDate>Fri, 19 Sep 2025 00:00:00 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/inference-providers-publicai</guid>
+      <guid>https://huggingface.co/blog/inference-providers-scaleway</guid>
     </item>
     <item>
       <title><![CDATA[Jupyter Agents: training LLMs to reason with notebooks]]></title>
@@ -958,6 +840,24 @@ Our key innovations include: Test-Time Reinforcement Learning Search: A trainabl
       <guid>https://siecledigital.fr/2026/02/16/openai-recrute-le-createur-dopenclaw-pour-accelerer-sur-les-agents-ia/</guid>
     </item>
     <item>
+      <title><![CDATA[Can AI Solve Failures in Your Supply Chain?]]></title>
+      <link>https://towardsdatascience.com/can-ai-solve-failures-in-your-supply-chain/</link>
+      <description><![CDATA[When your warehouse and transportation teams blame each other for late deliveries, who's right? We can ask an agent connected to the data settle the debate.]]></description>
+      <pubDate>Wed, 18 Feb 2026 21:00:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/can-ai-solve-failures-in-your-supply-chain/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Building Cost-Efficient Agentic RAG on Long-Text Documents in SQL Tables]]></title>
+      <link>https://towardsdatascience.com/building-cost-efficient-agentic-rag-on-long-text-documents-in-sql-tables/</link>
+      <description><![CDATA[Designing a hybrid SQL + vector retrieval system without schema changes, data migration, or performance trade-offs]]></description>
+      <pubDate>Wed, 18 Feb 2026 20:00:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/building-cost-efficient-agentic-rag-on-long-text-documents-in-sql-tables/</guid>
+    </item>
+    <item>
       <title><![CDATA[« C’est un fiasco total », le code indigeste généré par IA épuise les modérateurs open-source]]></title>
       <link>https://www.numerama.com/tech/2182667-cest-un-fiasco-total-le-code-indigeste-genere-par-ia-epuise-les-moderateurs-open-source.html</link>
       <description><![CDATA[Dans un article publié le 18 février 2026, le média britannique The Register revient sur l'exaspération de nombreux modérateurs open source confrontés au fait de devoir vérifier et corriger des demandes de modification de code boostées par IA. Une gronde qui pousse bon nombre de projets à adopter des mesures de précaution.]]></description>
@@ -1003,6 +903,33 @@ Our key innovations include: Test-Time Reinforcement Learning Search: A trainabl
       <guid>https://www.numerama.com/cyberguerre/2182119-dell-pirate-depuis-2024-des-espions-chinois-sont-parvenus-a-infiltrer-un-produit-phare-du-geant-americain.html</guid>
     </item>
     <item>
+      <title><![CDATA[Advance Planning for AI Project Evaluation]]></title>
+      <link>https://towardsdatascience.com/advance-planning-for-ai-project-evaluation/</link>
+      <description><![CDATA[The work to do before the work begins]]></description>
+      <pubDate>Wed, 18 Feb 2026 00:31:16 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/advance-planning-for-ai-project-evaluation/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Building a LangGraph Agent from Scratch]]></title>
+      <link>https://towardsdatascience.com/building-a-langgraph-agent-from-scratch/</link>
+      <description><![CDATA[Everything you need to know to get started]]></description>
+      <pubDate>Tue, 17 Feb 2026 20:22:34 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/building-a-langgraph-agent-from-scratch/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Iron Triangles: Powerful Tools for Analyzing Trade-Offs in AI Product Development]]></title>
+      <link>https://towardsdatascience.com/iron-triangles-powerful-tools-for-analyzing-trade-offs-in-ai-product-development/</link>
+      <description><![CDATA[Conceptual overview and practical guidance]]></description>
+      <pubDate>Tue, 17 Feb 2026 19:49:40 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/iron-triangles-powerful-tools-for-analyzing-trade-offs-in-ai-product-development/</guid>
+    </item>
+    <item>
       <title><![CDATA[Tuning into the future of collaboration]]></title>
       <link>https://www.technologyreview.com/2026/02/16/1125881/tuning-into-the-future-of-collaboration/</link>
       <description><![CDATA[When work went remote, the sound of business changed. What began as a scramble to make home offices functional has evolved into a revolution in how people hear and are heard. From education to enterprises, companies across industries have reimagined what clear, reliable communication can mean in a hybrid world. For major audio and communications…]]></description>
@@ -1012,31 +939,85 @@ Our key innovations include: Test-Time Reinforcement Learning Search: A trainabl
       <guid>https://www.technologyreview.com/2026/02/16/1125881/tuning-into-the-future-of-collaboration/</guid>
     </item>
     <item>
-      <title><![CDATA[Introducing Lockdown Mode and Elevated Risk labels in ChatGPT]]></title>
-      <link>https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt</link>
-      <description><![CDATA[Introducing Lockdown Mode and Elevated Risk labels in ChatGPT to help organizations defend against prompt injection and AI-driven data exfiltration.]]></description>
-      <pubDate>Fri, 13 Feb 2026 10:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
+      <title><![CDATA[The Strangest Bottleneck in Modern LLMs]]></title>
+      <link>https://towardsdatascience.com/the-strangest-bottleneck-in-modern-llms/</link>
+      <description><![CDATA[Why insanely fast GPUs still can’t make LLMs feel instant]]></description>
+      <pubDate>Mon, 16 Feb 2026 11:14:00 GMT</pubDate>
+      <source>Towards Data Science</source>
       <category>ai</category>
-      <guid>https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt</guid>
+      <guid>https://towardsdatascience.com/the-strangest-bottleneck-in-modern-llms/</guid>
     </item>
     <item>
-      <title><![CDATA[Introducing GPT-5.3-Codex-Spark]]></title>
-      <link>https://openai.com/index/introducing-gpt-5-3-codex-spark</link>
-      <description><![CDATA[Introducing GPT-5.3-Codex-Spark—our first real-time coding model. 15x faster generation, 128k context, now in research preview for ChatGPT Pro users.]]></description>
-      <pubDate>Thu, 12 Feb 2026 10:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
+      <title><![CDATA[The Evolving Role of the ML Engineer]]></title>
+      <link>https://towardsdatascience.com/the-evolving-role-of-the-ml-engineer/</link>
+      <description><![CDATA[Stephanie Kirmer on the $200 billion investment bubble, how AI companies can rebuild trust, and how her day-to-day work changed with the rise of LLMs.]]></description>
+      <pubDate>Fri, 13 Feb 2026 15:00:00 GMT</pubDate>
+      <source>Towards Data Science</source>
       <category>ai</category>
-      <guid>https://openai.com/index/introducing-gpt-5-3-codex-spark</guid>
+      <guid>https://towardsdatascience.com/the-evolving-role-of-the-ml-engineer/</guid>
     </item>
     <item>
-      <title><![CDATA[Introducing OpenAI Frontier]]></title>
-      <link>https://openai.com/index/introducing-openai-frontier</link>
-      <description><![CDATA[OpenAI Frontier is an enterprise platform for building, deploying, and managing AI agents with shared context, onboarding, permissions, and governance.]]></description>
-      <pubDate>Thu, 05 Feb 2026 06:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
+      <title><![CDATA[AI in Multiple GPUs: Point-to-Point and Collective Operations]]></title>
+      <link>https://towardsdatascience.com/point-to-point-and-collective-operations/</link>
+      <description><![CDATA[Learn PyTorch distributed operations for multi GPU AI workloads]]></description>
+      <pubDate>Fri, 13 Feb 2026 13:00:00 GMT</pubDate>
+      <source>Towards Data Science</source>
       <category>ai</category>
-      <guid>https://openai.com/index/introducing-openai-frontier</guid>
+      <guid>https://towardsdatascience.com/point-to-point-and-collective-operations/</guid>
+    </item>
+    <item>
+      <title><![CDATA[AI in Multiple GPUs: Understanding the Host and Device Paradigm]]></title>
+      <link>https://towardsdatascience.com/understanding-the-host-and-device-paradigm/</link>
+      <description><![CDATA[Learn how CPU and GPUs interact in the host-device paradigm]]></description>
+      <pubDate>Thu, 12 Feb 2026 13:00:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/understanding-the-host-and-device-paradigm/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Building an AI Agent to Detect and Handle Anomalies in Time-Series Data]]></title>
+      <link>https://towardsdatascience.com/building-an-ai-agent-to-detect-and-handle-anomalies-in-time-series-data/</link>
+      <description><![CDATA[Combining statistical detection with agentic decision-making]]></description>
+      <pubDate>Wed, 11 Feb 2026 15:00:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/building-an-ai-agent-to-detect-and-handle-anomalies-in-time-series-data/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Not All RecSys Problems Are Created Equal]]></title>
+      <link>https://towardsdatascience.com/not-all-recsys-problems-are-created-equal/</link>
+      <description><![CDATA[How baseline strength, churn, and subjectivity determine complexity]]></description>
+      <pubDate>Wed, 11 Feb 2026 13:00:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/not-all-recsys-problems-are-created-equal/</guid>
+    </item>
+    <item>
+      <title><![CDATA[How to Model The Expected Value of Marketing Campaigns]]></title>
+      <link>https://towardsdatascience.com/how-to-model-the-expected-value-of-marketing-campaigns/</link>
+      <description><![CDATA[The approach that takes companies to the next level of data maturity]]></description>
+      <pubDate>Tue, 10 Feb 2026 15:00:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/how-to-model-the-expected-value-of-marketing-campaigns/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Implementing the Snake Game in Python]]></title>
+      <link>https://towardsdatascience.com/implementing-the-snake-game-in-python/</link>
+      <description><![CDATA[An easy step-by-step guide to building the snake game from scratch]]></description>
+      <pubDate>Tue, 10 Feb 2026 13:30:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/implementing-the-snake-game-in-python/</guid>
+    </item>
+    <item>
+      <title><![CDATA[How to Personalize Claude Code]]></title>
+      <link>https://towardsdatascience.com/how-to-personalize-claude-code/</link>
+      <description><![CDATA[Learn how to get more out of Claude code by giving it access to more information.]]></description>
+      <pubDate>Tue, 10 Feb 2026 12:00:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/how-to-personalize-claude-code/</guid>
     </item>
     <item>
       <title><![CDATA[Community Evals: Because we're done trusting black-box leaderboards over the community]]></title>
@@ -1048,15 +1029,6 @@ We are going to take evaluations on the Hugging Face Hub in a new direction by d
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/community-evals</guid>
-    </item>
-    <item>
-      <title><![CDATA[Inside OpenAI’s in-house data agent]]></title>
-      <link>https://openai.com/index/inside-our-in-house-data-agent</link>
-      <description><![CDATA[How OpenAI built an in-house AI data agent that uses GPT-5, Codex, and memory to reason over massive datasets and deliver reliable insights in minutes.]]></description>
-      <pubDate>Thu, 29 Jan 2026 10:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/inside-our-in-house-data-agent</guid>
     </item>
     <item>
       <title><![CDATA[Introducing Daggr: Chain apps programmatically, inspect visually]]></title>
@@ -1074,42 +1046,6 @@ We've been working on Daggr to solve p]]></description>
       <guid>https://huggingface.co/blog/daggr</guid>
     </item>
     <item>
-      <title><![CDATA[The next chapter for AI in the EU]]></title>
-      <link>https://openai.com/index/the-next-chapter-for-ai-in-the-eu</link>
-      <description><![CDATA[OpenAI launches the EU Economic Blueprint 2.0 with new data, partnerships, and initiatives to accelerate AI adoption, skills, and growth across Europe.]]></description>
-      <pubDate>Wed, 28 Jan 2026 01:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/the-next-chapter-for-ai-in-the-eu</guid>
-    </item>
-    <item>
-      <title><![CDATA[EMEA Youth &amp; Wellbeing Grant]]></title>
-      <link>https://openai.com/index/emea-youth-and-wellbeing-grant</link>
-      <description><![CDATA[Apply for the EMEA Youth &amp; Wellbeing Grant, a €500,000 program funding NGOs and researchers advancing youth safety and wellbeing in the age of AI.]]></description>
-      <pubDate>Wed, 28 Jan 2026 01:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/emea-youth-and-wellbeing-grant</guid>
-    </item>
-    <item>
-      <title><![CDATA[Keeping your data safe when an AI agent clicks a link]]></title>
-      <link>https://openai.com/index/ai-agent-link-safety</link>
-      <description><![CDATA[Learn how OpenAI protects user data when AI agents open links, preventing URL-based data exfiltration and prompt injection with built-in safeguards.]]></description>
-      <pubDate>Wed, 28 Jan 2026 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/ai-agent-link-safety</guid>
-    </item>
-    <item>
-      <title><![CDATA[PVH reimagines the future of fashion with OpenAI]]></title>
-      <link>https://openai.com/index/pvh-future-of-fashion</link>
-      <description><![CDATA[PVH Corp., parent company of Calvin Klein and Tommy Hilfiger, is adopting ChatGPT Enterprise to bring AI into fashion design, supply chain, and consumer engagement.]]></description>
-      <pubDate>Tue, 27 Jan 2026 06:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/pvh-future-of-fashion</guid>
-    </item>
-    <item>
       <title><![CDATA[Unlocking Agentic RL Training for GPT-OSS: A Practical Retrospective]]></title>
       <link>https://huggingface.co/blog/LinkedIn/gpt-oss-agentic-rl</link>
       <description><![CDATA[Back to Articles Agentic reinforcement learning (RL) extends traditional LLM training by optimizing not just a single-turn response, but an entire decision-making process learned through direct interaction with an environment during training. Unlike traditional single-turn reinforcement learning or offline preference-based methods that rely on static datasets, agentic RL trains policies by actively collecting on-policy data as the agent plans actions, invokes tools, observes outcomes, and adapts its behavior over multi-step trajectories in either simulated or real environments. This interaction-driven optimization assigns credit across long-horizon decisions, where intermediate choices such as query reformulation, tool selection, and execution order directly influence downstream success. Training follows an iterative closed loop in which the agent interacts with the environment to collect rollout trajectories, computes rewards over these trajectories, updates the policy based on observed outcomes, and then uses the updated policy to drive the next round of interaction and data collection such as GRPO or PPO algorithms..
@@ -1118,60 +1054,6 @@ LinkedIn is an AI-first company that's built agents to help professionals be mor
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/LinkedIn/gpt-oss-agentic-rl</guid>
-    </item>
-    <item>
-      <title><![CDATA[Introducing Prism]]></title>
-      <link>https://openai.com/index/introducing-prism</link>
-      <description><![CDATA[Prism is a free LaTeX-native workspace with GPT-5.2 built in, helping researchers write, collaborate, and reason in one place.]]></description>
-      <pubDate>Tue, 27 Jan 2026 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/introducing-prism</guid>
-    </item>
-    <item>
-      <title><![CDATA[Unrolling the Codex agent loop]]></title>
-      <link>https://openai.com/index/unrolling-the-codex-agent-loop</link>
-      <description><![CDATA[A technical deep dive into the Codex agent loop, explaining how Codex CLI orchestrates models, tools, prompts, and performance using the Responses API.]]></description>
-      <pubDate>Fri, 23 Jan 2026 12:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/unrolling-the-codex-agent-loop</guid>
-    </item>
-    <item>
-      <title><![CDATA[Inside Praktika's conversational approach to language learning]]></title>
-      <link>https://openai.com/index/praktika</link>
-      <description><![CDATA[How Praktika uses GPT-4.1 and GPT-5.2 to build adaptive AI tutors that personalize lessons, track progress, and help learners achieve real-world language fluency]]></description>
-      <pubDate>Thu, 22 Jan 2026 05:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/praktika</guid>
-    </item>
-    <item>
-      <title><![CDATA[Cisco and OpenAI redefine enterprise engineering with AI agents]]></title>
-      <link>https://openai.com/index/cisco</link>
-      <description><![CDATA[Cisco and OpenAI redefine enterprise engineering with Codex, an AI software agent embedded in workflows to speed builds, automate defect fixes, and enable AI-native development.]]></description>
-      <pubDate>Tue, 20 Jan 2026 11:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/cisco</guid>
-    </item>
-    <item>
-      <title><![CDATA[ServiceNow powers actionable enterprise AI with OpenAI]]></title>
-      <link>https://openai.com/index/servicenow-powers-actionable-enterprise-ai-with-openai</link>
-      <description><![CDATA[ServiceNow expands access to OpenAI frontier models to power AI-driven enterprise workflows, summarization, search, and voice across the ServiceNow Platform.]]></description>
-      <pubDate>Tue, 20 Jan 2026 05:45:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/servicenow-powers-actionable-enterprise-ai-with-openai</guid>
-    </item>
-    <item>
-      <title><![CDATA[AI for self empowerment]]></title>
-      <link>https://openai.com/index/ai-for-self-empowerment</link>
-      <description><![CDATA[How AI can expand human agency by closing the capability overhang—helping people, businesses, and countries unlock real productivity, growth, and opportunity.]]></description>
-      <pubDate>Sun, 18 Jan 2026 12:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/ai-for-self-empowerment</guid>
     </item>
     <item>
       <title><![CDATA[Open Responses: What you need to know]]></title>
@@ -1184,60 +1066,6 @@ The era of the chatbot is long gone, and agents dominate inference workloads. De
       <guid>https://huggingface.co/blog/open-responses</guid>
     </item>
     <item>
-      <title><![CDATA[Zenken boosts a lean sales team with ChatGPT Enterprise]]></title>
-      <link>https://openai.com/index/zenken</link>
-      <description><![CDATA[By rolling out ChatGPT Enterprise company-wide, Zenken has boosted sales performance, cut preparation time, and increased proposal success rates. AI-supported workflows are helping a lean team deliver more personalized, effective customer engagement.]]></description>
-      <pubDate>Tue, 13 Jan 2026 16:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/zenken</guid>
-    </item>
-    <item>
-      <title><![CDATA[OpenAI and SoftBank Group partner with SB Energy]]></title>
-      <link>https://openai.com/index/stargate-sb-energy-partnership</link>
-      <description><![CDATA[OpenAI and SoftBank Group partner with SB Energy to develop multi-gigawatt AI data center campuses, including a 1.2 GW Texas facility supporting the Stargate initiative.]]></description>
-      <pubDate>Fri, 09 Jan 2026 11:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/stargate-sb-energy-partnership</guid>
-    </item>
-    <item>
-      <title><![CDATA[Datadog uses Codex for system-level code review]]></title>
-      <link>https://openai.com/index/datadog</link>
-      <description><![CDATA[OpenAI and Datadog brand graphic with the OpenAI wordmark on the left, the Datadog logo on the right, and a central abstract brown fur-like texture panel on a white background.]]></description>
-      <pubDate>Fri, 09 Jan 2026 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/datadog</guid>
-    </item>
-    <item>
-      <title><![CDATA[Netomi’s lessons for scaling agentic systems into the enterprise]]></title>
-      <link>https://openai.com/index/netomi</link>
-      <description><![CDATA[How Netomi scales enterprise AI agents using GPT-4.1 and GPT-5.2—combining concurrency, governance, and multi-step reasoning for reliable production workflows.]]></description>
-      <pubDate>Thu, 08 Jan 2026 13:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/netomi</guid>
-    </item>
-    <item>
-      <title><![CDATA[OpenAI for Healthcare]]></title>
-      <link>https://openai.com/index/openai-for-healthcare</link>
-      <description><![CDATA[OpenAI for Healthcare enables secure, enterprise-grade AI that supports HIPAA compliance—reducing administrative burden and supporting clinical workflows.]]></description>
-      <pubDate>Thu, 08 Jan 2026 12:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/openai-for-healthcare</guid>
-    </item>
-    <item>
-      <title><![CDATA[Introducing ChatGPT Health]]></title>
-      <link>https://openai.com/index/introducing-chatgpt-health</link>
-      <description><![CDATA[ChatGPT Health is a dedicated experience that securely connects your health data and apps, with privacy protections and a physician-informed design.]]></description>
-      <pubDate>Wed, 07 Jan 2026 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/introducing-chatgpt-health</guid>
-    </item>
-    <item>
       <title><![CDATA[NVIDIA Cosmos Reason 2 Brings Advanced Reasoning To Physical AI]]></title>
       <link>https://huggingface.co/blog/nvidia/nvidia-cosmos-reason-2-brings-advanced-reasoning</link>
       <description><![CDATA[Back to Articles NVIDIA Cosmos Reason 2: Reasoning Vision Language Model for Physical AI Key Highlights Popular Use Cases Other Models From The Cosmos Family: Cosmos Predict 2.5 Resources NVIDIA today released Cosmos Reason 2, the latest advancement in open, reasoning vision language models for physical AI. Cosmos Reason 2 surpasses its previous version in accuracy and tops the Physical AI Bench and Physical Reasoning leaderboards as the #1 open model for visual understanding. NVIDIA Cosmos Reason 2: Reasoning Vision Language Model for Physical AI Since their introduction, vision-language models have rapidly improved at tasks like object and pattern recognition in images. But they still struggle with tasks humans find natural, like planning several steps ahead, dealing with uncertainty or adapting to new situations. Cosmos Reason is designed to close this gap by giving robots and AI agents stronger common sense and reasoning to solve complex problems step by step.
@@ -1246,134 +1074,6 @@ Cosmos Reason 2 is a state-of-the-art, open reasoning vision-language model (VLM
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/nvidia/nvidia-cosmos-reason-2-brings-advanced-reasoning</guid>
-    </item>
-    <item>
-      <title><![CDATA[NVIDIA brings agents to life with DGX Spark and Reachy Mini]]></title>
-      <link>https://huggingface.co/blog/nvidia-reachy-mini</link>
-      <description><![CDATA[Back to Articles Ingredients Giving agentic powers to Reachy Building the agent Step 0: Set up and get access to models and services Step 1: Build a chat interface Step 2: Add NeMo Agent Toolkit’s built-in ReAct agent for tool calling Step 3: Add a router to direct queries to different models Step 4: Add a Pipecat bot for real-time voice + vision Step 5: Hook everything up to Reachy (hardware or simulation) Run the full system Try these example prompts Where to go next Today at CES 2026, NVIDIA unveiled a world of new open models to enable the future of agents, online and in the real world. From the recently released NVIDIA Nemotron reasoning LLMs to the new NVIDIA Isaac GR00T N1.6 open reasoning VLA and NVIDIA Cosmos world foundation models, all the building blocks are here today for AI Builders to build their own agents.
-But what if you could bring your own agent to life, right at your desk? An AI buddy that can be useful to you and process your data privately?
-In the CES keynote today, Jensen Huang showed us how we can do exactly that, using the pr]]></description>
-      <pubDate>Mon, 05 Jan 2026 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/nvidia-reachy-mini</guid>
-    </item>
-    <item>
-      <title><![CDATA[Continuously hardening ChatGPT Atlas against prompt injection]]></title>
-      <link>https://openai.com/index/hardening-atlas-against-prompt-injection</link>
-      <description><![CDATA[OpenAI is strengthening ChatGPT Atlas against prompt injection attacks using automated red teaming trained with reinforcement learning. This proactive discover-and-patch loop helps identify novel exploits early and harden the browser agent’s defenses as AI becomes more agentic.]]></description>
-      <pubDate>Mon, 22 Dec 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/hardening-atlas-against-prompt-injection</guid>
-    </item>
-    <item>
-      <title><![CDATA[Updating our Model Spec with teen protections]]></title>
-      <link>https://openai.com/index/updating-model-spec-with-teen-protections</link>
-      <description><![CDATA[OpenAI is updating its Model Spec with new Under-18 Principles that define how ChatGPT should support teens with safe, age-appropriate guidance grounded in developmental science. The update strengthens guardrails, clarifies expected model behavior in higher-risk situations, and builds on our broader work to improve teen safety across ChatGPT.]]></description>
-      <pubDate>Thu, 18 Dec 2025 11:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/updating-model-spec-with-teen-protections</guid>
-    </item>
-    <item>
-      <title><![CDATA[AI literacy resources for teens and parents]]></title>
-      <link>https://openai.com/index/ai-literacy-resources-for-teens-and-parents</link>
-      <description><![CDATA[OpenAI shares new AI literacy resources to help teens and parents use ChatGPT thoughtfully, safely, and with confidence. The guides include expert-vetted tips for responsible use, critical thinking, healthy boundaries, and supporting teens through emotional or sensitive topics.]]></description>
-      <pubDate>Thu, 18 Dec 2025 11:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/ai-literacy-resources-for-teens-and-parents</guid>
-    </item>
-    <item>
-      <title><![CDATA[Introducing OpenAI Academy for News Organizations]]></title>
-      <link>https://openai.com/index/openai-academy-for-news-organizations</link>
-      <description><![CDATA[OpenAI is launching the OpenAI Academy for News Organizations, a new learning hub built with the American Journalism Project and The Lenfest Institute to help newsrooms use AI effectively. The Academy offers training, practical use cases, and responsible-use guidance to support journalists, editors, and publishers as they adopt AI in their reporting and operations.]]></description>
-      <pubDate>Wed, 17 Dec 2025 06:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/openai-academy-for-news-organizations</guid>
-    </item>
-    <item>
-      <title><![CDATA[Measuring AI’s capability to accelerate biological research]]></title>
-      <link>https://openai.com/index/accelerating-biological-research-in-the-wet-lab</link>
-      <description><![CDATA[OpenAI introduces a real-world evaluation framework to measure how AI can accelerate biological research in the wet lab. Using GPT-5 to optimize a molecular cloning protocol, the work explores both the promise and risks of AI-assisted experimentation.]]></description>
-      <pubDate>Tue, 16 Dec 2025 08:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/accelerating-biological-research-in-the-wet-lab</guid>
-    </item>
-    <item>
-      <title><![CDATA[BBVA and OpenAI collaborate to transform global banking]]></title>
-      <link>https://openai.com/index/bbva-collaboration-expansion</link>
-      <description><![CDATA[BBVA is expanding its work with OpenAI through a multi-year AI transformation program, rolling out ChatGPT Enterprise to all 120,000 employees. Together, the companies will develop AI solutions that enhance customer interactions, streamline operations, and help build an AI-native banking experience.]]></description>
-      <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/bbva-collaboration-expansion</guid>
-    </item>
-    <item>
-      <title><![CDATA[BNY builds “AI for everyone, everywhere” with OpenAI]]></title>
-      <link>https://openai.com/index/bny</link>
-      <description><![CDATA[BNY is using OpenAI technology to expand AI adoption enterprise-wide. Through its Eliza platform, 20,000+ employees are building AI agents that enhance efficiency and improve client outcomes.]]></description>
-      <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/bny</guid>
-    </item>
-    <item>
-      <title><![CDATA[Increasing revenue 300% by bringing AI to SMBs]]></title>
-      <link>https://openai.com/index/podium</link>
-      <description><![CDATA[Discover how Podium used OpenAI’s GPT-5 to build “Jerry,” an AI teammate driving 300% growth and transforming how Main Street businesses serve customers.]]></description>
-      <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/podium</guid>
-    </item>
-    <item>
-      <title><![CDATA[The Walt Disney Company and OpenAI reach landmark agreement to bring beloved characters to Sora]]></title>
-      <link>https://openai.com/index/disney-sora-agreement</link>
-      <description><![CDATA[Disney and OpenAI have reached an agreement to bring more than 200 Disney, Marvel, Pixar and Star Wars characters to Sora for fan-inspired short videos. The agreement emphasizes responsible AI in entertainment and includes Disney’s company-wide use of ChatGPT Enterprise and the OpenAI API.]]></description>
-      <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/disney-sora-agreement</guid>
-    </item>
-    <item>
-      <title><![CDATA[Ten years]]></title>
-      <link>https://openai.com/index/ten-years</link>
-      <description><![CDATA[OpenAI reflects on ten years of progress, from early research breakthroughs to widely used AI systems that reshaped what’s possible. We share lessons from the past decade and why we remain optimistic about building AGI that benefits all of humanity.]]></description>
-      <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/ten-years</guid>
-    </item>
-    <item>
-      <title><![CDATA[Building AI fluency at scale with ChatGPT Enterprise]]></title>
-      <link>https://openai.com/index/commonwealth-bank-of-australia</link>
-      <description><![CDATA[Commonwealth Bank of Australia partners with OpenAI to roll out ChatGPT Enterprise to 50,000 employees, building AI fluency at scale to improve customer service and fraud response.]]></description>
-      <pubDate>Tue, 09 Dec 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/commonwealth-bank-of-australia</guid>
-    </item>
-    <item>
-      <title><![CDATA[Instacart and OpenAI partner on AI shopping experiences]]></title>
-      <link>https://openai.com/index/instacart-partnership</link>
-      <description><![CDATA[OpenAI and Instacart are deepening their longstanding partnership by bringing the first fully integrated grocery shopping and Instant Checkout payment app to ChatGPT.]]></description>
-      <pubDate>Mon, 08 Dec 2025 06:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/instacart-partnership</guid>
-    </item>
-    <item>
-      <title><![CDATA[Introducing OpenAI for Australia]]></title>
-      <link>https://openai.com/global-affairs/openai-for-australia</link>
-      <description><![CDATA[OpenAI is launching OpenAI for Australia to build sovereign AI infrastructure, upskill more than 1.5 million workers, and accelerate innovation across the country’s growing AI ecosystem.]]></description>
-      <pubDate>Thu, 04 Dec 2025 19:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/global-affairs/openai-for-australia</guid>
     </item>
     <item>
       <title><![CDATA[DeepMath: A lightweight math reasoning Agent with smolagents]]></title>
@@ -1396,42 +1096,6 @@ We evaluate DeepMath on four math datasets: MATH500, AIME, HMMT, and HLE, and sh
       <guid>https://huggingface.co/blog/hf-skills-training</guid>
     </item>
     <item>
-      <title><![CDATA[How confessions can keep language models honest]]></title>
-      <link>https://openai.com/index/how-confessions-can-keep-language-models-honest</link>
-      <description><![CDATA[OpenAI researchers are testing “confessions,” a method that trains models to admit when they make mistakes or act undesirably, helping improve AI honesty, transparency, and trust in model outputs.]]></description>
-      <pubDate>Wed, 03 Dec 2025 10:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/how-confessions-can-keep-language-models-honest</guid>
-    </item>
-    <item>
-      <title><![CDATA[Announcing the initial People-First AI Fund grantees]]></title>
-      <link>https://openai.com/index/people-first-ai-fund-grantees</link>
-      <description><![CDATA[The OpenAI Foundation announces the initial recipients of the People-First AI Fund, awarding $40.5M in unrestricted grants to 208 nonprofits supporting community innovation and opportunity.]]></description>
-      <pubDate>Wed, 03 Dec 2025 08:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/people-first-ai-fund-grantees</guid>
-    </item>
-    <item>
-      <title><![CDATA[Inside Mirakl's agentic commerce vision]]></title>
-      <link>https://openai.com/index/mirakl</link>
-      <description><![CDATA[Mirakl is redefining commerce through AI agents and ChatGPT Enterprise—achieving faster documentation, smarter customer support, and building toward agent-native commerce with Mirakl Nexus.]]></description>
-      <pubDate>Mon, 01 Dec 2025 22:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/mirakl</guid>
-    </item>
-    <item>
-      <title><![CDATA[Funding grants for new research into AI and mental health]]></title>
-      <link>https://openai.com/index/ai-mental-health-research-grants</link>
-      <description><![CDATA[OpenAI is awarding up to $2 million in grants for research at the intersection of AI and mental health. The program supports projects that study real-world risks, benefits, and applications to improve safety and well-being.]]></description>
-      <pubDate>Mon, 01 Dec 2025 12:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/ai-mental-health-research-grants</guid>
-    </item>
-    <item>
       <title><![CDATA[Building Deep Research: How we Achieved State of the Art]]></title>
       <link>https://huggingface.co/blog/Tavily/tavily-deep-research</link>
       <description><![CDATA[Back to Articles Building for the Future Agent Harness Models Tools Takeaways Context Engineering — An Exercise in Curation Context-Managed Web Retrieval Modeling the Human-Web Interaction Doing More with Less Productionizing Agents — an Ongoing Challenge Engineering with Non-Determinism Optimal Tooling — Less is More Evals Research agents are rapidly becoming one of the most important applications of AI. Research is a foundational knowledge-work task: collecting, reading, and synthesizing information underpins everything from writing and decision-making to coding itself. Yet human-driven research is constrained by memory, reading speed, and time. AI research agents, by contrast, can process vast amounts of information, synthesize insights instantly, and scale effortlessly. Because of this, research agents are emerging as a top use case for AI today and will soon become a core subcomponent of broader agentic workflows across content generation, coding, sales, and more. In this post, we share the tech]]></description>
@@ -1441,31 +1105,14 @@ We evaluate DeepMath on four math datasets: MATH500, AIME, HMMT, and HLE, and sh
       <guid>https://huggingface.co/blog/Tavily/tavily-deep-research</guid>
     </item>
     <item>
-      <title><![CDATA[Introducing shopping research in ChatGPT]]></title>
-      <link>https://openai.com/index/chatgpt-shopping-research</link>
-      <description><![CDATA[Shopping research in ChatGPT helps you explore, compare, and discover products with personalized buyer’s guides that simplify decision-making]]></description>
-      <pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
+      <title><![CDATA[Open ASR Leaderboard: Trends and Insights with New Multilingual &amp; Long-Form Tracks]]></title>
+      <link>https://huggingface.co/blog/open-asr-leaderboard</link>
+      <description><![CDATA[Back to Articles 1. Conformer encoder LLM decoder tops the charts 2. Speed–accuracy tradeoffs 3. Multilingual 4. Long-form transcription is a different game While everyone (and their grandma ) is spinning up new ASR models, picking the right one for your use case can feel more overwhelming than choosing your next Netflix show. As of 21 Nov 2025, there are 150 Audio-Text-to-Text and 27K ASR models on the Hub Most benchmarks focus on short-form English transcription (&lt;30s), and overlook other important tasks, such as (1) multilingual performance and (2) model throughput, which can a be deciding factor for long-form audio like meetings and podcasts.
+Over the past two years, the Open ASR Leaderboard has become a standard for comparing open and closed-source models on both accuracy and efficiency. Recently, multilingual and long-form transcription tracks have been added to the leaderboard TL;DR - Open ASR Leaderboard New preprint on ASR trends from the leaderboard: https://hf.co/papers/2510.06961 Best accuracy: Conformer encoder + LLM decoders (open-source ftw ) Fastest: CTC / TDT decoders Multilingual: Comes at the cost of single-language performance Long-f]]></description>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://openai.com/index/chatgpt-shopping-research</guid>
-    </item>
-    <item>
-      <title><![CDATA[OpenAI and Foxconn collaborate to strengthen U.S. manufacturing across the AI supply chain]]></title>
-      <link>https://openai.com/index/openai-and-foxconn-collaborate</link>
-      <description><![CDATA[OpenAI and Foxconn are collaborating to design and manufacture next-generation AI infrastructure hardware in the U.S. The partnership will develop multiple generations of data-center systems, strengthen U.S. supply chains, and build key components domestically to accelerate advanced AI infrastructure.]]></description>
-      <pubDate>Thu, 20 Nov 2025 14:50:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/openai-and-foxconn-collaborate</guid>
-    </item>
-    <item>
-      <title><![CDATA[Helping 1,000 small businesses build with AI]]></title>
-      <link>https://openai.com/index/small-business-ai-jam</link>
-      <description><![CDATA[OpenAI is partnering with DoorDash, SCORE, and local organizations to help 1,000 small businesses build with AI. The Small Business AI Jam gives Main Street business owners hands-on tools and training to compete and grow.]]></description>
-      <pubDate>Thu, 20 Nov 2025 06:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/small-business-ai-jam</guid>
+      <guid>https://huggingface.co/blog/open-asr-leaderboard</guid>
     </item>
     <item>
       <title><![CDATA[Introducing AnyLanguageModel: One API for Local and Remote LLMs on Apple Platforms]]></title>
@@ -1491,24 +1138,6 @@ Today w]]></description>
       <guid>https://huggingface.co/blog/anylanguagemodel</guid>
     </item>
     <item>
-      <title><![CDATA[How evals drive the next chapter in AI for businesses]]></title>
-      <link>https://openai.com/index/evals-drive-next-chapter-of-ai</link>
-      <description><![CDATA[Learn how evals help businesses define, measure, and improve AI performance—reducing risk, boosting productivity, and driving strategic advantage.]]></description>
-      <pubDate>Wed, 19 Nov 2025 11:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/evals-drive-next-chapter-of-ai</guid>
-    </item>
-    <item>
-      <title><![CDATA[OpenAI and Target team up on new AI-powered experiences]]></title>
-      <link>https://openai.com/index/target-partnership</link>
-      <description><![CDATA[OpenAI and Target are partnering to bring a new Target app to ChatGPT, offering personalized shopping and faster checkout. Target will also expand its use of ChatGPT Enterprise to boost productivity and guest experiences.]]></description>
-      <pubDate>Wed, 19 Nov 2025 06:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/target-partnership</guid>
-    </item>
-    <item>
       <title><![CDATA[Easily Build and Share ROCm Kernels with Hugging Face]]></title>
       <link>https://huggingface.co/blog/build-rocm-kernels</link>
       <description><![CDATA[Back to Articles Intoduction Build Steps About the kernel Step 1: Project Structure Step 2: Configuration Files Setup Step 3: Building the Kernel Step 4: Uploading the kernel to the Hub Step 5: Let's use it :) Conclusion Related Libraries &amp; Hub Intoduction Custom kernels are the backbone of high-performance deep learning, enabling GPU operations tailored precisely to your workload; whether that’s image processing, tensor transformations, or other compute-heavy tasks. But compiling these kernels for the right architectures, wiring all the build flags, and integrating them cleanly into PyTorch extensions can quickly become a mess of CMake/Nix, compiler errors, and ABI issues, which is not fun. Hugging Face’s kernels library makes it easy to build (with kernel-builder) and share these kernels with the kernels-community, with support for multiple GPU and accelerator backends, including CUDA, ROCm, Metal, and XPU. This ensures your kernels are fast, portable, and seamlessly integrated with PyTorch.
@@ -1517,15 +1146,6 @@ In this guide, we focus exclusively on ROCm-compatible k]]></description>
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/build-rocm-kernels</guid>
-    </item>
-    <item>
-      <title><![CDATA[Introducing OpenAI for Ireland]]></title>
-      <link>https://openai.com/index/openai-for-ireland</link>
-      <description><![CDATA[OpenAI launches OpenAI for Ireland, partnering with the Irish Government, Dogpatch Labs and Patch to help SMEs, founders and young builders use AI to innovate, boost productivity and build the next generation of Irish tech startups.]]></description>
-      <pubDate>Fri, 14 Nov 2025 04:00:00 GMT</pubDate>
-      <source>OpenAI Blog</source>
-      <category>ai</category>
-      <guid>https://openai.com/index/openai-for-ireland</guid>
     </item>
     <item>
       <title><![CDATA[Building for an Open Future - our new partnership with Google Cloud]]></title>
@@ -1549,15 +1169,6 @@ When we designed M2, we knew we had to tackle this problem head-on. This led us 
       <guid>https://huggingface.co/blog/MiniMax-AI/aligning-to-what</guid>
     </item>
     <item>
-      <title><![CDATA[On the Shifting Global Compute Landscape]]></title>
-      <link>https://huggingface.co/blog/huggingface/shifting-compute-landscape</link>
-      <description><![CDATA[Back to Articles Summary The State of Global Compute The Beginning of a Rewiring The Reaction: Powering Chinese AI How China’s Compute Landscape Catalyzed the Cambrian Explosion of Open Models Advances in Compute-Constrained Environments Pushing the Technical Frontier The Aftermath: Hardware, Software and Soft Power From Sufficient to Demanded Domestic Synergy A New Software Landscape Looking Ahead Acknowledgements Appendix: A Timeline of Chip Usage and Controls Summary The status quo of AI chip usage, that was once almost entirely U.S.-based, is changing. China’s immense progress in open-weight AI development is now being met with rapid domestic AI chip development. In the past few months, highly performant open-weight AI models’ inference in China has started to be powered by chips such as Huawei’s Ascend and Cambricon, with some models starting to be trained using domestic chips. There are two large implications for policymakers and AI researchers and developers respectively: U.S. export controls correlates with expedi]]></description>
-      <pubDate>Wed, 29 Oct 2025 13:56:45 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/huggingface/shifting-compute-landscape</guid>
-    </item>
-    <item>
       <title><![CDATA[Building the Open Agent Ecosystem Together: Introducing OpenEnv]]></title>
       <link>https://huggingface.co/blog/openenv</link>
       <description><![CDATA[Back to Articles The Problem The Solution The RFCs Use cases What’s Next With tools like TRL, TorchForge and verl, the open-source community has shown how to scale AI across complex compute infrastructure. But compute is only one side of the coin. The other side is the developer community; the people and tools that make agentic systems possible. That’s why Meta and Hugging Face are partnering to launch the OpenEnv Hub: a shared and open community hub for agentic environments.
@@ -1579,6 +1190,16 @@ Today, we're releasing Nemotron-Personas-India, the first open synthetic dataset
       <guid>https://huggingface.co/blog/nvidia/nemotron-personas-india</guid>
     </item>
     <item>
+      <title><![CDATA[Arm will be @ PyTorch Conference, Join Us!]]></title>
+      <link>https://huggingface.co/blog/Arm/arm-at-pytorch-conference</link>
+      <description><![CDATA[Back to Articles Co-Authored by Michelle Yung @ Arm
+Join us on site October 22-23 to see how Arm empowers developers to build and deploy AI applications with ease using PyTorch and ExecuTorch. Learn about the latest AI technologies from Arm and our ecosystem while expanding your professional network alongside like-minded AI engineers. Connect, Chat, Chill Fuel up ahead of the conference with an evening of food, drinks, and good conversation . Whether you’re looking to relax or network, you’ll be in good company with fellow AI engineers. This pre-conference gathering, offers a relaxed setting where participants can meet Arm experts and fellow professionals in artificial intelligence, share experiences, and make valuable connections before the formal sessions begin. The event will include a variety of delicious refreshments to enjoy, creating a welcoming atmosphere for both casual mingling and engaging discussions. This evening promises a memorable and enjoyable start to the conference experience. Join our Meetup Strengthen Your AI Product We’re offering one-on-one workshop sessions with design experts to help improve the usability of your product, while enabling a focus on responsible AI development with best practices like Yellow Teaming to help avoid unintended issues before]]></description>
+      <pubDate>Fri, 10 Oct 2025 17:35:04 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/Arm/arm-at-pytorch-conference</guid>
+    </item>
+    <item>
       <title><![CDATA[BigCodeArena: Judging code generations end to end with code executions]]></title>
       <link>https://huggingface.co/blog/bigcode/arena</link>
       <description><![CDATA[Back to Articles Motivation The BigCodeArena Platform Real-Time Execution Multi-Language &amp; Framework Support Interactive Testing Multi-Turn Conversations What We've Learned: 5 Months of Community Evaluation Programming Topics in the Wild Language and Framework Popularity User Interaction Patterns Model Rankings from Community Votes Two New Benchmarks: BigCodeReward and AutoCodeArena BigCodeReward: Evaluating Reward Models for Code AutoCodeArena: Automated Code Generation Benchmarks Try It Yourself Open Source Everything What's Next? Conclusion Acknowledgements Citation Evaluating the quality of AI-generated code is notoriously difficult. While humans can easily spot whether a piece of code "looks right," determining if it actually works correctly, handles edge cases properly, and produces the intended result requires running and testing it. This is why today, we're thrilled to announce BigCodeArena --]]></description>
@@ -1588,25 +1209,14 @@ Today, we're releasing Nemotron-Personas-India, the first open synthetic dataset
       <guid>https://huggingface.co/blog/bigcode/arena</guid>
     </item>
     <item>
-      <title><![CDATA[Introducing RTEB: A New Standard for Retrieval Evaluation]]></title>
-      <link>https://huggingface.co/blog/rteb</link>
-      <description><![CDATA[Back to Articles TL;DR – We’re excited to introduce the beta version of the Retrieval Embedding Benchmark (RTEB), a new benchmark designed to reliably evaluate the retrieval accuracy of embedding models for real-world applications. Existing benchmarks struggle to measure true generalization, while RTEB addresses this with a hybrid strategy of open and private datasets. Its goal is simple: to create a fair, transparent, and application-focused standard for measuring how models perform on data they haven’t seen before.
-The performance of many AI applications, from RAG and agents to recommendation systems, is fundamentally limited by the quality of search and retrieval. As such, accurately measuring the retrieval quality of embedding models is a common pain point for developers. How do you really know how well a model will perform in the wild?
-This is where things get tricky. The current standard for evaluation often relies on a model's "zero-shot" performance on public benchmarks. However, this is, at best, an approximation of a model's true generalization capabilities. When models are repeatedly evaluated against the same public datasets, a gap emerges between their reported scores and their actual performance on new, unseen data. Performance Di]]></description>
-      <pubDate>Wed, 01 Oct 2025 00:00:00 GMT</pubDate>
+      <title><![CDATA[Gaia2 and ARE: Empowering the community to study agents]]></title>
+      <link>https://huggingface.co/blog/gaia2</link>
+      <description><![CDATA[Back to Articles Gaia2: Agentic Evaluation on Real Life Assistant Tasks How does Gaia2 run? Results Compare with your favorite models! Evaluating on Gaia2 Beyond Gaia2: study your agents with ARE 1) Testing an agent on a simple task: event organisation 2) Understanding agents: deep diving the traces 3) Playing around and extending the demo: Connecting the agent to your own MCPs Conclusion In an ideal world, AI agents would be reliable assistants. When given a query, they would easily manage ambiguity in instructions, construct step-by-step plans, correctly identify necessary resources, execute those plans without getting sidetracked, and adapt to unexpected events, all while maintaining accuracy and avoiding hallucinations.
+However, developing agents and testing these behaviors is no small feat: if you have ever tried to debug your own agent, you’ve probably observed how tedious and frustrating this can be. Existing evaluation environments are tightly coupled with the tasks they evaluate, lac]]></description>
+      <pubDate>Mon, 22 Sep 2025 00:00:00 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/rteb</guid>
-    </item>
-    <item>
-      <title><![CDATA[SyGra: The One-Stop Framework for Building Data for LLMs and SLMs]]></title>
-      <link>https://huggingface.co/blog/ServiceNow-AI/sygra-data-gen-framework</link>
-      <description><![CDATA[Back to Articles Enter SyGra: One Framework for Every Data Challenge Why SyGra Matters SyGra Architecture Final Thoughts References When we think about building a model - be it a Large Language Model (LLM) or a Small Language Model (SLM) - the first thing we need is data. While a vast amount of open data is available, it rarely comes in the exact format required to train or align models.
-In practice, we often face scenarios where the raw data isn't enough. We need data that is more structured, domain-specific, complex, or aligned with the task at hand. Let's look at some common situations: Complex Scenarios Missing You start with a simple dataset, but the model fails on advanced reasoning tasks. How do you generate more complex datasets to strengthen performance? Knowledge Base to Q&amp;A You already have a knowledge base, but it's not in Q&amp;A format. How can you transform it into a usable question-answering dataset? From SFT to DPO You've prepared a supervised fine-tuning (SFT) dataset. But now you want to align your model using Direct Preference Optimization (DPO). How can you generate preference pairs? Depth of Questions You h]]></description>
-      <pubDate>Mon, 22 Sep 2025 06:45:05 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/ServiceNow-AI/sygra-data-gen-framework</guid>
+      <guid>https://huggingface.co/blog/gaia2</guid>
     </item>
     <item>
       <title><![CDATA[Democratizing AI Safety with RiskRubric.ai]]></title>
@@ -1617,54 +1227,6 @@ More than 500,000 models can be found on the Hugging Face hub, but it’s not al
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/riskrubric</guid>
-    </item>
-    <item>
-      <title><![CDATA[NVIDIA Releases 6 Million Multi-Lingual Reasoning Dataset]]></title>
-      <link>https://huggingface.co/blog/nvidia/multilingual-reasoning-v1</link>
-      <description><![CDATA[Back to Articles Authors: Dhruv Nathawani, Shuoyang Ding US, Vitaly Lavrukhin US, Jane Polak Scowcroft US, Oleksii Kuchaiev US NVIDIA continues releasing permissive datasets in support of the open ecosystem with 6 Million Multilingual Reasoning Dataset.
-Continuing the success of the recent Nemotron Post-Training Dataset v1 release used in Llama Nemotron Super model, and our Llama Nemotron Post-Training Dataset release earlier this year, we’re excited to release the reasoning dataset translated into five target languages: French, Spanish, German, Italian, and Japanese.
-The newly released NVIDIA Nemotron Nano 2 9B brings these capabilities to the edge with leading accuracy and efficiency with a hybrid Transformer–Mamba architecture and a configurable thinking budget—so you can dial accuracy, throughput, and cost to match your real‑world needs. Model Highlights (TL;DR) Model size: 9B parameters
-Architecture: Hybrid Transformer–Mamba (Mamba‑2 + a small number of attention layers) for higher throughput at similar accuracy to Transformer‑only peers
-Throughput: Up to 6× higher token generation than other leading models in its size class
-Cost: Thinking budget lets you control how many “thinking” tokens are used—saving up to 60% lower reasoning costs
-Ta]]></description>
-      <pubDate>Wed, 20 Aug 2025 22:13:18 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/nvidia/multilingual-reasoning-v1</guid>
-    </item>
-    <item>
-      <title><![CDATA[Neural Super Sampling is here!]]></title>
-      <link>https://huggingface.co/blog/Arm/neural-super-sampling</link>
-      <description><![CDATA[Back to Articles Elevated by machine learning Learn about our NSS Model How we trained the model Get started experimenting with NSS today! Neural Super Sampling (NSS), a next-generation AI-powered upscaling solution from Arm is released for graphics and gaming developers to start experimenting today! Elevated by machine learning NSS is designed for real-time performance on future mobile devices with Arm Neural Technology. However, latency depends on implementation factors such as GPU configuration, resolution, and use case. In our Enchanted Castle demo video below, NSS reduced GPU workload by 50 percent. The model rendered at 540p and upscaled to 1080p in just 4ms in sustained performance setup. Your browser does not support the video tag. Learn about our NSS Model Neural Super Sampling (NSS) is a parameter prediction model for real-time temporal super sampling developed by Arm, optimized for execution on Neural Accelerators (NX) in mobile GPUs. It enables high-resolution rendering at a lower compute cost by reconstructing high-quality output frames from low-resolution temporal inputs. NSS is particularly suited for mobile gaming, XR, and other power-constrained graphics use cases.
-Get starte]]></description>
-      <pubDate>Tue, 12 Aug 2025 14:52:08 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/Arm/neural-super-sampling</guid>
-    </item>
-    <item>
-      <title><![CDATA[Introducing AI Sheets: a tool to work with datasets using open AI models!]]></title>
-      <link>https://huggingface.co/blog/aisheets</link>
-      <description><![CDATA[Introducing AI Sheets: a tool to work with datasets using open AI models!]]></description>
-      <pubDate>Fri, 08 Aug 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/aisheets</guid>
-    </item>
-    <item>
-      <title><![CDATA[Vision Language Model Alignment in TRL]]></title>
-      <link>https://huggingface.co/blog/trl-vlm-alignment</link>
-      <description><![CDATA[Back to Articles Introduction Table of Contents Alignment for Vision Language Models Mixed Preference Optimization (MPO) Multimodal Group Relative Policy Optimization (GRPO) Group Sequence Policy Optimization (GSPO) Comparison Further Extensions for VLMs Native Supervised Fine-tuning Support vLLM Integration in TRL Useful Resources Introduction Vision Language Models (VLMs) are getting stronger, but aligning them to human preferences still matters. In TRL, we already showed how to post-train VLMs with Supervised Fine-Tuning (SFT) and Direct Preference Optimization (DPO). This time, we’re going further.
-tl;dr Here’s what’s new in TRL: Mixed Preference Optimization (MPO)
-Group Relative Policy Optimization (GRPO)
-Group Sequence Policy Optimization (GSPO) (a variant of GRPO) These go beyond pairwise DPO, extracting richer signals from preference data and scaling better with modern VLMs.
-We’ve also extended existing methods to support VLMs: Reinforce Leave One Out (RLOO)
-Online Direct Preference Optimization (Online DPO) Th]]></description>
-      <pubDate>Thu, 07 Aug 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/trl-vlm-alignment</guid>
     </item>
     <item>
       <title><![CDATA[Welcome GPT OSS, the new open-source model family from OpenAI!]]></title>
@@ -1686,6 +1248,16 @@ Open-Sourcing Recent advances in multimodal AI have produced models claiming to 
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/timescope-video-lmm-benchmark</guid>
+    </item>
+    <item>
+      <title><![CDATA[Consilium: When Multiple LLMs Collaborate]]></title>
+      <link>https://huggingface.co/blog/consilium-multi-llm</link>
+      <description><![CDATA[Back to Articles From Concept to Architecture Building the Visual Foundation Session State Management Making LLMs Actually Discuss LLM Selection and Research Integration Discovering the Open Floor Protocol Lessons Learned and Future Implications Picture this: four AI experts sitting around a poker table, debating your toughest decisions in real-time. That's exactly what Consilium, the multi-LLM platform I built during the Gradio Agents &amp; MCP Hackathon, does. It lets AI models discuss complex questions and reach consensus through structured debate.
+The platform works both as a visual Gradio interface and as an MCP (Model Context Protocol) server that integrates directly with applications like Cline (Claude Desktop had issues as the timeout could not be adjusted). The core idea was always about LLMs reaching consensus through discussion; that's where the name Consilium came from. Later, other decision modes like majority voting and ranked choice were added to make the collaboration more sophisticated. From Concept to Architecture This wasn't my original hackathon idea. I initially wanted to build a simple MCP server to talk to my projects in RevenueCat. But I reconsidered when]]></description>
+      <pubDate>Thu, 17 Jul 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/consilium-multi-llm</guid>
     </item>
     <item>
       <title><![CDATA[Reachy Mini - The Open-Source Robot for Today's and Tomorrow's AI Builders]]></title>

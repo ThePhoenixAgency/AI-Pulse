@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>extra-steps.dev</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>extra-steps.dev</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 2:18:36 AM | <a href="https://extra-steps.dev/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <ul> <li> <span>historical</span> <span> Docker </span> <span> <span>cgroups</span> <span>namespaces</span> <span>union filesystem</span> </span> <span>Docker is just cgroups and namespaces with a nice CLI and extra steps</span> <div> <p>A container is a process with resource limits (cgroups) and an isolated view of the system (namespaces). Docker didn't invent any of this — it made it usable. The underlying kernel features have existed since 2008.</p> <pre><code># What Docker does, the hard way
+unshare --mount --uts --ipc --net --pid --fork bash
+mount -t overlay overlay -o lowerdir=/base,upperdir=/diff,workdir=/work /merged
+echo $$ &gt; /sys/fs/cgroup/memory/container1/cgroup.procs
+echo "512m" &gt; /sys/fs/cgroup/memory/container1/memory.limit_in_bytes</code></pre> </div> </li><li> <span>historical</span> <span> Dropbox </span> <span> <span>rsync</span> <span>inotify</span> <span>cloud storage</span> </span> <span>Dropbox is just rsync with a GUI and extra steps</span> <div> <p>Watch a folder for changes, sync the diffs to a remote server. Dropbox's genius was making that invisible — but the primitives are file-watching, delta transfer, and a storage backend. BrandonM was right about the parts, wrong about the product.</p> <pre><code># Watch for changes, sync the diffs
+inotifywait -mr ~/Dropbox -e modify,create,delete | while read path action file; do rsync -avz ~/Dropbox/ remote:~/backup/ done</code></pre> </div> </li><li> <span>historical</span> <span> Kubernetes <span>K8s</span> </span> <span> <span>control loop</span> <span>declarative config</span> <span>container orchestration</span> </span> <span>Kubernetes is just a reconciliation loop watching YAML files with extra steps</span> <div> <p>A Kubernetes controller is a loop: read the desired state from a YAML file, observe the actual state of the cluster, compute the diff, take action to converge. Every controller in the system runs this same loop independently.</p> <pre><code>while True: desired = read_spec("deployment.yaml") # what you asked for actual = observe_cluster() # what's running diff = desired - actual # what's wrong for action in plan(diff): execute(action) # fix it sleep(interval)</code></pre> </div> </li><li> <span>data</span> <span> Embeddings <span>Vector Embeddings · Semantic Embeddings</span> </span> <span> <span>hash function</span> <span>nearest-neighbor search</span> </span> <span>Embeddings are just hash functions that preserve similarity with extra steps</span> <div> <p>An embedding is a function that maps text to a fixed-size array of numbers. Similar text maps to nearby points. 'Semantic search' is computing this hash, then finding the nearest neighbors. It's a hash function that preserves meaning instead of uniqueness.</p> <pre><code>// "Embedding" — text in, number array out
+const vec = await embed("how do I reset my password");
+// [0.021, -0.187, 0.441, ...] (1536 floats) // "Semantic search" — nearest neighbor lookup
+const results = await vectorDB.query(vec, { topK: 5 });</code></pre> </div> </li><li> <span>patterns</span> <span> Guardrails <span>AI Safety Filters · Content Filters · Output Guards</span> </span> <span> <span>input validation</span> <span>output sanitization</span> <span>regex / classifier filters</span> </span> <span>Guardrails are just input validation and output sanitization with extra steps</span> <div> <p>Check the input before processing it. Check the output before returning it. Reject or transform anything that doesn't pass. It's the same pattern as web form validation and HTML sanitization — applied to natural language instead of HTML.</p> <pre><code>function guardrail(input: string, output: string) { if (containsPII(input)) throw new Error("PII detected in input"); if (isOffTopic(input)) throw new Error("Input out of scope"); if (containsHarmful(output)) return FALLBACK_RESPONSE; if (!matchesSchema(output)) return retry(input); return output;
+}</code></pre> </div> </li><li> <span>patterns</span> <span> Prompt Engineering <span>Prompt Design · Prompt Crafting</span> </span> <span> <span>natural language</span> <span>markdown</span> </span> <span>Prompt engineering is just writing clear instructions — no extra steps</span> <div> <p>A system prompt is a README for the model. 'Few-shot examples' are worked examples. 'Chain of thought' is asking someone to show their work. Prompt engineering is technical writing — the skills transfer directly, the mystification doesn't.</p> <pre><code>You are a code reviewer. When reviewing, check for:
+1. Security: hardcoded secrets, injection vulnerabilities
+2. Performance: O(n²) loops, unnecessary allocations Example:
+Input: `eval(user_input)`
+Output: "CRITICAL: arbitrary code execution via eval()"</code></pre> </div> </li><li> <span>historical</span> <span> Serverless <span>FaaS · Functions as a Service · Lambda Functions</span> </span> <span> <span>process isolation</span> <span>event-driven invocation</span> <span>managed infrastructure</span> </span> <span>Serverless is just someone else's server with process isolation and extra steps</span> <div> <p>There is no cloud, it's just someone else's computer. Serverless takes this one step further: it's someone else's process on someone else's computer. You upload a function, a trigger fires, your code runs in an isolated environment, you get billed by the millisecond.</p> <pre><code># What "serverless" looks like from the platform's perspective
+def handle_request(event): container = pool.get_or_create("user-123-fn-abc") result = container.invoke(user_function, event) bill(user="user-123", duration_ms=container.last_duration) return result</code></pre> </div> </li><li> <span>patterns</span> <span> RAG <span>Retrieval-Augmented Generation</span> </span> <span> <span>search index</span> <span>string concatenation</span> </span> <span>RAG is just search + string concatenation with extra steps</span> <div> <p>Search your documents for relevant chunks. Concatenate them into the prompt. Call the LLM. That's RAG. The 'retrieval' is a search query, the 'augmentation' is string concatenation, and the 'generation' is the same LLM call you were already making.</p> <pre><code>const chunks = await searchIndex.query(userQuestion, { topK: 5 });
+const context = chunks.map(c =&gt; c.text).join("\n\n");
+const response = await llm.chat({ system: `Answer using this context:\n${context}`, messages: [{ role: "user", content: userQuestion }],
+});</code></pre> </div> </li><li> <span>patterns</span> <span> Webhooks <span>HTTP Callbacks · Event Notifications · Push Notifications</span> </span> <span> <span>HTTP POST</span> <span>callback function</span> </span> <span>Webhooks are just HTTP POST callbacks with extra steps</span> <div> <p>When something happens, send an HTTP POST to a URL someone registered. That's a webhook. 'Event-driven architecture' in SaaS is usually just one server POSTing JSON to another server's endpoint when state changes.</p> <pre><code>// The webhook sender — just a POST request
+await fetch(registeredUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ event: "payment.succeeded", data: payment }),
+});</code></pre> </div> </li><li> <span>patterns</span> <span> Memory </span> <span> <span>key/value store</span> <span>file append</span> <span>system prompt injection</span> </span> <span>Memory is just a key/value store with extra steps</span> <div> <p>The LLM can't remember anything between conversations — it's stateless. 'Memory' is just your application writing facts to a file (or database) and reading them back into the system prompt next time. The model isn't remembering. You are.</p> <pre><code>// "Remembering" something
+await fs.appendFile('memory.txt', `User prefers TypeScript\n`); // "Recalling" it next session
+const memories = await fs.readFile('memory.txt', 'utf-8');
+const response = await llm.chat({ system: `What you know about this user:\n${memories}`, messages: [userMessage],
+});</code></pre> </div> </li><li> <span>protocols</span> <span> MCP <span>Model Context Protocol</span> </span> <span> <span>JSON-RPC</span> <span>stdio</span> </span> <span>MCP is just JSON-RPC over stdio with extra steps</span> <div> <p>MCP is JSON-RPC 2.0 over stdio. A tool call is a JSON-RPC request sent to a subprocess on stdin; the result comes back on stdout. Same pattern as LSP.</p> <pre><code>// Client → Server (stdin)
+{"jsonrpc":"2.0","method":"tools/call","params":{"name":"read_file","arguments":{"path":"/foo"}},"id":1} // Server → Client (stdout)
+{"jsonrpc":"2.0","result":{"content":[{"type":"text","text":"file contents..."}]},"id":1}</code></pre> </div> </li><li> <span>patterns</span> <span> Function Calling <span>Tool Use · OpenAI Functions · Tool Calling</span> </span> <span> <span>JSON serialization</span> <span>function dispatch</span> </span> <span>Function calling is just JSON serialization and function dispatch with extra steps</span> <div> <p>The LLM outputs JSON describing which function to call and with what arguments. You parse it and call the function. The API wraps this in structured types, but that's the whole thing.</p> <pre><code>// LLM returns: { name: "get_weather", arguments: { location: "NYC" } }
+const response = await llm.chat(messages, { tools }); if (response.tool_calls) { for (const call of response.tool_calls) { const fn = tools[call.name]; // look up the function const result = await fn(call.arguments); // call it messages.push(toolResult(call.id, result)); }
+}</code></pre> </div> </li><li> <span>patterns</span> <span> Agents <span>Agentic AI · AI Agents · Autonomous Agents</span> </span> <span> <span>while loop</span> <span>LLM call</span> <span>tool dispatch</span> </span> <span>Agents are just while loops with an LLM as the transition function — with extra steps</span> <div> <p>An agent is a while loop. Each iteration: send messages to LLM, get back either a tool call or a final response. Execute the tool, append the result, repeat. Everything else is optimization.</p> <pre><code>messages = [system_prompt, user_message] while True: response = llm.chat(messages) if response.has_tool_calls(): for call in response.tool_calls: result = dispatch(call.name, call.arguments) messages.append(tool_result(call.id, result)) else: print(response.text) break</code></pre> </div> </li><li> <span>data</span> <span> Skills <span>Gems · GPTs · Custom Instructions</span> </span> <span> <span>markdown</span> <span>YAML frontmatter</span> <span>prompt templates</span> </span> <span>Skills are just markdown files with YAML frontmatter with extra steps</span> <div> <p>A skill is a markdown file with YAML frontmatter that gets appended to the system prompt. The LLM reads it like any other instruction. There's no runtime magic — it's string concatenation.</p> <pre><code>---
+name: code-reviewer
+description: Reviews code for correctness and style
+--- When reviewing code, check for:
+1. Off-by-one errors
+2. Unhandled edge cases
+3. Missing error handling Always explain *why* something is wrong, not just that it is.</code></pre> </div> </li> </ul> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

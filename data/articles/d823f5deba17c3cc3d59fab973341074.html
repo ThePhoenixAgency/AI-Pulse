@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>INSTALAÇÃO OUTLINE WIKI EM CONTAINER PROXMOX</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>INSTALAÇÃO OUTLINE WIKI EM CONTAINER PROXMOX</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 3:22:14 AM | <a href="https://dev.to/lucasesg/instalacao-outline-wiki-5a00" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/lucasesg"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3780154%2Fdd97e9f8-7d6d-4932-8e81-044734e00445.png" alt="Lucas"></a> </p> </div><div> <p><strong>1. instalar via comunidade proxmox</strong></p> <p><a href="https://community-scripts.github.io/ProxmoxVE/scripts?id=outline" target="_blank">https://community-scripts.github.io/ProxmoxVE/scripts?id=outline</a></p> <p>Acesse parte How to install e copie o códgo e execute no terminal do Proxmox. Recomendo apenas:</p> <p>2 cpu<br>
+2 ram<br>
+10GB a 20GB (depende do seu cenário)</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwegtbx9k4xx0j3k7902q.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwegtbx9k4xx0j3k7902q.png" alt="INSTALAÇÃO PROXMOX"></a></p> <p><strong>OBSERVAÇÃO:</strong></p> <p>Verbose é opcional. Ativado YES você acompanha pelo shell tudo o que o script está fazendo.</p> <p><strong>2. instalar nginx e certificado https com mkcert</strong></p> <p><strong>NGINX</strong></p> <p>mkdir -p /etc/outline-ssl<br>
+openssl req -x509 -nodes -days 365 \<br> -newkey rsa:2048 \<br> -keyout /etc/outline-ssl/key.pem \<br> -out /etc/outline-ssl/cert.pem</p> <p>apt update</p> <p>apt install -y nginx</p> <p>systemctl status nginx</p> <p><strong>MKCERT</strong></p> <p>curl -s <a href="https://api.github.com/repos/FiloSottile/mkcert/releases/latest" target="_blank">https://api.github.com/repos/FiloSottile/mkcert/releases/latest</a> \<br> | grep browser_download_url \<br> | grep linux-amd64 \<br> | cut -d '"' -f 4 \<br> | wget -i -</p> <p>chmod +x mkcert-v*-linux-amd64</p> <p>sudo mv mkcert-v*-linux-amd64 /usr/local/bin/mkcert</p> <p>mkcert -install </p> <p>mkdir -p /opt/outline/mkcert </p> <p>cd /opt/outline/mkcert </p> <p>mkcert 192.168.254.95</p> <p>Isso vai criar dois arquivos, algo como:</p> <p>192.168.254.95.pem<br>
+192.168.254.95-key.pem</p> <p>nano /etc/nginx/sites-available/outline.conf<br>
+</p> <div>
+<pre><code>server { listen 443 ssl; server_name 192.168.254.95; ssl_certificate /opt/outline/mkcert/192.168.254.95.pem; ssl_certificate_key /opt/outline/mkcert/192.168.254.95-key.pem; http2 on; location / { proxy_pass http://127.0.0.1:3000; # porta interna do Outline proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_set_header X-Forwarded-Proto $scheme; # WebSocket proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection "upgrade"; }
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>ln -s /etc/nginx/sites-available/outline /etc/nginx/sites-enabled/<br>
+nginx -t<br>
+systemctl restart nginx</p> <p><strong>3. configuração https websocket</strong></p> <p>OBSERVAÇÃO:</p> <p>Muito dos procedimentos a seguir quando reiniciar os serviços vai ficar na página 502 Bad Gateway. A dica é ter paciência pois depois de um tempo vai abrir normalmente. Vamos em /opt/outline/.env e altere as seguintes linhas:</p> <p>URL=<a href="https://192.168.250.95/" target="_blank">https://192.168.250.95</a> (https)</p> <p>COLLABORATION_URL=wss://192.168.250.95 (wss)</p> <p>FORCE_HTTPS=false (mantém false)<br>
+systemctl restart outline.service</p> <p>Verifique se consegue acessar a página do outline via HTTPS e não é necessário mais PORTA 3000. Acesso por <a href="https://ipoutline/" target="_blank">https://ipoutline</a></p> <p><strong>4. configurar conexão API do slack para conectar ao outline</strong></p> <p>Acesse o site <a href="https://slack.com/intl/pt-br/" target="_blank">https://slack.com/intl/pt-br/</a> e aperte em COMEÇAR</p> <p>Primeiro, insira seu e-mail e assim vai receber um código e aceite os termos.<br>
+Crie seu workspace de acordo com necessidade e no final vai em Começar com a versão gratuita e limitada</p> <p>Agora no google pesquise: api slack ou acesse direto o site <a href="https://api.slack.com/apps" target="_blank">https://api.slack.com/apps</a></p> <p>Clique em Creat an app</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fr1lcj30ee590cebrq6lm.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fr1lcj30ee590cebrq6lm.png" alt="CLIQUE EM CREAT AN APP"></a></p> <p>Escolha From scratch e de um nome ao seu app e escolha o workspace. Clique em Creat App. Muita atenção, os próximos passos são muito importante e dados sensíveis!</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2ubtrll0j67k0abkt7e6.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2ubtrll0j67k0abkt7e6.png" alt="ESCOLHA FROM SCRATCH"></a></p> <p>Copie as seguintes informações e vamos em /opt/outline/.env para configurar</p> <p>App ID = SLACK_APP_ID<br>
+Client ID = SLACK_CLIENT_ID<br>
+Client Secret = SLACK_CLIENT_SECRET<br>
+Verification Token SLACK_VERIFICATION_TOKEN</p> <p>Na mesma página da API Slack vamos na opção OAuth &amp; Permissions e deça a página até <br>
+Redirect URLs ensira a url local dessa maneira:</p> <p><a href="https://ipoutline/auth/slack.callback/" target="_blank">https://ipoutline/auth/slack.callback/</a></p> <p>Reincie o serviço outline no Linux e na página inicia se conecte com a conta que você criou na Slack.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fpdtb78qy3c4ohbsz0xaf.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fpdtb78qy3c4ohbsz0xaf.png" alt="CONECTE CONTA SLACK"></a></p> <p>Agora na página você já está dentro do Outline wiki on-premise. O próximo passo é configurar o acesso via e-mail para os demais usuarios.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7ov5jdv023yhml1wo52j.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7ov5jdv023yhml1wo52j.png" alt="PÁGINA INICIAL OUTLINE"></a></p> <p><strong>5. configurar o arquivo .env para envio de e-mail via smtp</strong></p> <p>Acesse o arquivo de configuração /opt/outline/.env e procure pela parte SMTP. Altere para as seguintes informações:</p> <p>SMTP_HOST= tipo de critgrafia do seu e-mail<br>
+SMTP_PORT= porta smpt do e-mail <br>
+SMTP_SECURE= false<br>
+SMTP_USERNAME= <a href="mailto:seuemail@gmail.com">seuemail@gmail.com</a><br>
+SMTP_PASSWORD= senha do e-mail<br>
+SMTP_FROM_EMAIL=Outline <a href="mailto:seuemail@gmail.com">seuemail@gmail.com</a></p> <p>Depois de salvar o arquivo reinciei os serviços Outline e dentro do Outline acesse a configuração &gt; Authentication e ative envio de SMTP. Recomendo por enquanto desativar Passkeys (POR ENQUANTO). </p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fo4pbfqrdq6jxs6n6xns6.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fo4pbfqrdq6jxs6n6xns6.png" alt="E-MAIL"></a></p> <p>Agora faça o envio convite de acesso ou sai da conta e verifique se na página inicial aparece “Continuar com E-mail”.</p> <p>Pronto, seu Outilne Wiki está pronto para uso! Boa construção na documentação.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

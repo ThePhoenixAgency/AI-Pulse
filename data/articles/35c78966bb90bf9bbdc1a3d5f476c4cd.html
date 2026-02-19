@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How to give Claude Code persistent memory with a self-hosted mem0 MCP server</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How to give Claude Code persistent memory with a self-hosted mem0 MCP server</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 1:06:11 AM | <a href="https://dev.to/n3rdh4ck3r/how-to-give-claude-code-persistent-memory-with-a-self-hosted-mem0-mcp-server-h68" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Last week I spent two hours with Claude Code debugging a token refresh race condition. I traced it through the auth middleware, tested four approaches, and finally found that the session timeout window overlaps with the token refresh cycle on my setup. Three-line fix. The next day, a similar auth timing issue appeared in a different service. Claude suggested some of the exact approaches we'd already tried and rejected the day before.</p> <p>That's the kind of knowledge that falls through the cracks between <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">Claude Code</a> sessions. Yes, <code>CLAUDE.md</code> stores static rules and Auto Memory saves compressed summaries. But neither captures the full diagnostic path, which approaches you tried, why three of them failed, and the specific conditions that made the fourth one work. That detail disappears when the session ends.</p> <p>I went looking for MCP memory servers and other solutions that could fill that gap. Most either depended on running in the cloud, gave me too little control over the local setup, or required adding a separate API key for their internal LLM operations. Claude Code already authenticates through an OAuth Access Token (OAT), and the SDK supports it, so adding another key felt redundant and came with extra API costs.</p> <p>During that search I came across <a href="https://github.com/mem0ai/mem0" target="_blank">mem0</a>. I went through their documentation, tried the <a href="https://docs.mem0.ai/integrations/openclaw" target="_blank">OpenClaw plugin</a> to see how the library handles memory extraction and semantic search, and liked the approach. I patched it to reuse Claude Code's existing OAT token instead of requiring a separate key and <a href="https://github.com/mem0ai/mem0/pull/4035" target="_blank">submitted the change upstream</a>. Their official <a href="https://docs.mem0.ai/platform/features/mcp-integration" target="_blank">MCP integration server</a> is cloud-only though, so I built <a href="https://github.com/elvismdev/mem0-mcp-selfhosted" target="_blank">mem0-mcp-selfhosted</a>, a local version backed by infrastructure I can fully control.</p> <p>The stack runs on <a href="https://qdrant.tech/" target="_blank">Qdrant</a> for vector storage, <a href="https://ollama.ai/" target="_blank">Ollama</a> for local embeddings, and optional <a href="https://neo4j.com/" target="_blank">Neo4j</a> for a knowledge graph that I added later. I also set it up to route different operations to the best LLM for each task. It provides eleven tools for your Claude Code instance to manage long-term memory operations, and your memories data never leaves your machine.</p> <p>This article covers how this MCP server works, how to set it up in about 15 minutes, and how to get Claude using memory automatically without you triggering it.</p> <hr> <h2> <a name="why-claude-codes-builtin-memory-falls-short-for-accumulated-knowledge" href="#why-claude-codes-builtin-memory-falls-short-for-accumulated-knowledge"> </a> Why Claude Code's built-in memory falls short for accumulated knowledge
+</h2> <h3> <a name="does-claude-code-remember-between-sessions" href="#does-claude-code-remember-between-sessions"> </a> Does Claude Code remember between sessions?
+</h3> <p>Partially. Claude Code has three persistence mechanisms that carry context forward: <code>CLAUDE.md</code> files you write yourself, Auto Memory where Claude saves notes about your project patterns and preferences, and Session Memory that extracts summaries from past conversations. All three load at session start, and they cover a lot of ground.</p> <p>Static rules, project conventions, and compressed summaries of past work carry forward just fine. If you told Claude to use PostgreSQL last week, it might remember it.</p> <p>What doesn't carry forward is the detailed reasoning behind your decisions. When you spend an afternoon choosing between Redis and database-backed sessions, weighing operational complexity and infrastructure costs, and ultimately picking database sessions because your traffic doesn't justify a separate Redis instance yet, that full reasoning chain gets compressed into a one-line summary at best. The next session, Claude might suggest Redis for caching and you have to walk through the tradeoff analysis again.</p> <p>Three categories of knowledge get lost or compressed beyond usefulness:</p> <ul>
+<li>
+<strong>Decision reasoning.</strong> Not <em>what</em> you decided, but <em>why</em> and <em>under what conditions</em>. "We chose in-memory caching over Redis because at current scale it's premature optimization. Revisit at 10k rps." Auto Memory might note the decision, but the conditional logic that makes it useful, the part about when to revisit, gets lost in compression.</li>
+<li>
+<strong>Debugging insights.</strong> "The flaky test failures on CI were caused by state leakage between test groups, not async issues. We proved this by isolating test groups last Tuesday." Session Memory might summarize "fixed flaky tests" but not the three-hour diagnostic path that saves you from repeating the same investigation.</li>
+<li>
+<strong>Cross-project patterns.</strong> You build JWT middleware on Project A. Two weeks later, Project B needs authentication. Auto Memory and Session Memory are project-scoped, and while a global <code>CLAUDE.md</code> can carry some context across repos, it's a static file, not a searchable knowledge base. The pattern exists in a different repo, but Claude has no way to find it.</li>
+</ul> <h3> <a name="the-builtin-memory-helps-but-it-has-structural-limits" href="#the-builtin-memory-helps-but-it-has-structural-limits"> </a> The built-in memory helps, but it has structural limits
+</h3> <p><code>CLAUDE.md</code> works well for project rules. Auto Memory adds automatic note-taking, which is a real improvement over manual curation alone. I use both, and I recommend them.</p> <p>But they share three structural limitations:</p> <ul>
+<li>
+<strong>No search.</strong> Everything loads at session start regardless of relevance. At 200+ entries, you're burning context tokens on information Claude doesn't need for this particular task.</li>
+<li>
+<strong>Summaries, not reasoning.</strong> Auto Memory and Session Memory compress multi-hour sessions into short notes. The compression loses the detail that matters most, which approaches failed and why.</li>
+<li>
+<strong>Mostly project-scoped.</strong> Auto Memory is strictly per-project. A global <code>CLAUDE.md</code> can carry rules across repos, but it's a flat file you maintain by hand, not a searchable store of accumulated knowledge.</li>
+</ul> <p>That's the gap Claude Code persistent memory with semantic search fills. Ask "what went wrong with Redis last month?" and get back the full reasoning: "rejected Redis for session storage because the operational overhead wasn't justified at our traffic levels. Switched to database-backed sessions. Revisit if we hit 10k concurrent users." The words don't match at all, but the meaning does.</p> <hr> <h2> <a name="what-mem0-gives-claude-code-persistent-memory-with-semantic-search" href="#what-mem0-gives-claude-code-persistent-memory-with-semantic-search"> </a> What mem0 gives Claude Code: persistent memory with semantic search
+</h2> <p>This MCP server for Claude Code uses <a href="https://github.com/mem0ai/mem0" target="_blank">mem0ai</a> as a library and exposes 11 MCP tools that Claude Code calls directly.</p> <p>Here's what it looks like in practice:</p> <p><strong>Session 1</strong> -- debugging a test suite:<br>
+</p> <div>
+<pre><code>&gt; Remember: flaky test failures in CI were caused by state leakage between test groups, not async timing. Fixed by resetting database between groups. Took 3 hours to isolate. Don't chase the async red herring again.
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Session 2</strong> -- two weeks later, different project, tests start flaking:<br>
+</p>
+<div>
+<pre><code>&gt; Search my memories for flaky test debugging
+-&gt; "flaky test failures in CI were caused by state leakage between test groups, not async timing. Fixed by resetting database between groups."
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Claude retrieves the debugging insight and skips the three-hour investigation. It starts with the proven fix.</p> <p>The difference from a flat file: <strong>semantic vector search</strong>. "Flaky test debugging" matches "state leakage between test groups" even with completely different wording. The server embeds memories using Ollama's <code>bge-m3</code> model and stores them in Qdrant for approximate nearest neighbor search. Claude finds memories by meaning, not keywords.</p>
+<h3> <a name="the-11-tools" href="#the-11-tools"> </a> The 11 tools
+</h3> <div><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>add_memory</code></td>
+<td>Store text or conversations. The LLM extracts key facts automatically.</td>
+</tr>
+<tr>
+<td><code>search_memories</code></td>
+<td>Semantic vector search with filters, threshold, and reranking.</td>
+</tr>
+<tr>
+<td><code>get_memories</code></td>
+<td>Browse and filter stored memories (non-search).</td>
+</tr>
+<tr>
+<td><code>get_memory</code></td>
+<td>Fetch a single memory by UUID.</td>
+</tr>
+<tr>
+<td><code>update_memory</code></td>
+<td>Replace memory text. Re-embeds and re-indexes.</td>
+</tr>
+<tr>
+<td><code>delete_memory</code></td>
+<td>Delete a single memory.</td>
+</tr>
+<tr>
+<td><code>delete_all_memories</code></td>
+<td>Safe bulk delete (never nukes your collection).</td>
+</tr>
+<tr>
+<td><code>list_entities</code></td>
+<td>List which users/agents/runs have stored memories.</td>
+</tr>
+<tr>
+<td><code>delete_entities</code></td>
+<td>Cascade-delete an entity and all its memories.</td>
+</tr>
+<tr>
+<td><code>search_graph</code></td>
+<td>Search Neo4j entities by substring (optional).</td>
+</tr>
+<tr>
+<td><code>get_entity</code></td>
+<td>Get all relationships for a specific entity (optional).</td>
+</tr>
+</tbody>
+</table></div> <p>The last two require Neo4j, which is entirely optional. You get full Claude Code persistent memory with the first nine tools and nothing but Qdrant + Ollama running.</p> <p><strong>Check out the full source and documentation at the <a href="https://github.com/elvismdev/mem0-mcp-selfhosted" target="_blank">mem0-mcp-selfhosted GitHub repo</a>.</strong></p> <hr>
+<h2> <a name="how-the-mcp-server-delivers-claude-code-persistent-memory" href="#how-the-mcp-server-delivers-claude-code-persistent-memory"> </a> How the MCP server delivers Claude Code persistent memory
+</h2> <div>
+<pre><code>Claude Code &lt;-- stdio --&gt; FastMCP Server |-- auth.py &lt;- OAT token auto-discovery |-- config.py &lt;- Env vars -&gt; config |-- helpers.py &lt;- Error handling, safe bulk-delete |-- graph_tools.py &lt;- Direct Neo4j Cypher queries '-- server.py &lt;- 11 MCP tools + prompt | |-- mem0ai Memory class | |-- Vector: LLM fact extraction -&gt; Ollama embed -&gt; Qdrant | '-- Graph: LLM entity extraction -&gt; Neo4j (optional) | '-- Infrastructure |-- Qdrant &lt;- Vector store |-- Ollama &lt;- Embeddings (local) '-- Neo4j &lt;- Knowledge graph (optional)
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The server is 7 modules, each with a specific responsibility. <a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank">FastMCP</a> handles the MCP protocol layer. The <code>mem0ai</code> library handles memory operations. Everything else is configuration, auth, and safety wrappers. Each Claude Code session connects via stdio, so the memory tools are available the moment you start working.</p>
+<h3> <a name="the-vector-memory-path" href="#the-vector-memory-path"> </a> The vector memory path
+</h3> <p>When Claude calls <code>add_memory</code>:</p> <ol>
+<li>The text goes to Anthropic's API for fact extraction (using your Claude subscription)</li>
+<li>The extracted facts get embedded locally via Ollama (<code>bge-m3</code>, 1024 dimensions)</li>
+<li>The embedding vectors get stored in Qdrant</li>
+</ol> <p>When Claude calls <code>search_memories</code>, Ollama embeds the query and Qdrant finds the nearest vectors by cosine similarity. The whole pipeline runs in 2-5 seconds.</p>
+<h3> <a name="zeroconfig-auth-with-oat-autodiscovery" href="#zeroconfig-auth-with-oat-autodiscovery"> </a> Zero-config auth with OAT auto-discovery
+</h3> <p>Most memory MCP servers require separate API key configurations. This one reads your existing OAT (OAuth Access Token) directly from <code>~/.claude/.credentials.json</code>. No configuration needed, and your persistent memory setup works the moment you connect.</p> <p>The server uses a 3-tier fallback chain:</p> <ol>
+<li>
+<code>MEM0_ANTHROPIC_TOKEN</code> env var (explicit override)</li>
+<li>
+<code>~/.claude/.credentials.json</code> (auto-discovery, zero config)</li>
+<li>
+<code>ANTHROPIC_API_KEY</code> env var (standard API key)</li>
+</ol> <p>It detects whether the token is an OAT (<code>sk-ant-oat...</code>) or an API key (<code>sk-ant-api...</code>) and configures the SDK accordingly. OAT tokens use your existing Claude subscription. No separate billing, no additional API key to manage.</p> <hr>
+<h2> <a name="setting-up-claude-code-persistent-memory-in-15-minutes" href="#setting-up-claude-code-persistent-memory-in-15-minutes"> </a> Setting up Claude Code persistent memory in 15 minutes
+</h2>
+<h3> <a name="prerequisites" href="#prerequisites"> </a> Prerequisites
+</h3> <p>Two services running locally:</p> <ul>
+<li>
+<strong><a href="https://qdrant.tech/" target="_blank">Qdrant</a></strong> -- self-hosted vector database (one Docker command)</li>
+<li>
+<strong><a href="https://ollama.ai/" target="_blank">Ollama</a></strong> -- local embeddings (native install or Docker)</li>
+</ul> <p>And <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">Claude Code</a> with an active subscription.</p>
+<h3> <a name="step-1-start-the-infrastructure" href="#step-1-start-the-infrastructure"> </a> Step 1: start the infrastructure
+</h3> <div>
+<pre><code><span># Start Qdrant</span>
+docker run <span>-d</span> <span>-p</span> 6333:6333 <span>-p</span> 6334:6334 <span>\</span> <span>-v</span> qdrant_storage:/qdrant/storage <span>\</span> <span>--name</span> qdrant qdrant/qdrant <span># Start Ollama (skip if already installed natively)</span>
+docker run <span>-d</span> <span>-p</span> 11434:11434 <span>\</span> <span>-v</span> ollama:/root/.ollama <span>\</span> <span>--name</span> ollama ollama/ollama <span># Pull the embedding model</span>
+docker <span>exec </span>ollama ollama pull bge-m3
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>If Ollama is already running natively on your machine, skip the Docker container and run <code>ollama pull bge-m3</code> directly. That's it for infrastructure. Your self-hosted AI memory backend is ready for Claude Code to connect. See the <a href="https://github.com/elvismdev/mem0-mcp-selfhosted#readme" target="_blank">full configuration guide</a> for all available environment variables.</p>
+<h3> <a name="step-2-add-the-mcp-server-to-claude-code" href="#step-2-add-the-mcp-server-to-claude-code"> </a> Step 2: add the MCP server to Claude Code
+</h3> <p>One command, available across all your projects:<br>
+</p>
+<div>
+<pre><code>claude mcp add <span>--scope</span> user <span>--transport</span> stdio mem0 <span>\</span> <span>--env</span> <span>MEM0_QDRANT_URL</span><span>=</span>http://localhost:6333 <span>\</span> <span>--env</span> <span>MEM0_EMBED_URL</span><span>=</span>http://localhost:11434 <span>\</span> <span>--env</span> <span>MEM0_EMBED_MODEL</span><span>=</span>bge-m3 <span>\</span> <span>--env</span> <span>MEM0_EMBED_DIMS</span><span>=</span>1024 <span>\</span> <span>--env</span> <span>MEM0_USER_ID</span><span>=</span>your-user-id <span>\</span> <span>--</span> uvx <span>--from</span> git+https://github.com/elvismdev/mem0-mcp-selfhosted.git mem0-mcp-selfhosted
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><code>uvx</code> downloads, installs, and runs the server in an isolated environment. No manual <code>pip install</code>, no virtual env, no dependency conflicts.</p> <p>Or add it to a single project with <code>.mcp.json</code> in the project root:</p> .mcp.json for project-scoped setup <br> <div>
+<pre><code><span>{</span><span> </span><span>"mcpServers"</span><span>:</span><span> </span><span>{</span><span> </span><span>"mem0"</span><span>:</span><span> </span><span>{</span><span> </span><span>"command"</span><span>:</span><span> </span><span>"uvx"</span><span>,</span><span> </span><span>"args"</span><span>:</span><span> </span><span>[</span><span>"--from"</span><span>,</span><span> </span><span>"git+https://github.com/elvismdev/mem0-mcp-selfhosted.git"</span><span>,</span><span> </span><span>"mem0-mcp-selfhosted"</span><span>],</span><span> </span><span>"env"</span><span>:</span><span> </span><span>{</span><span> </span><span>"MEM0_QDRANT_URL"</span><span>:</span><span> </span><span>"http://localhost:6333"</span><span>,</span><span> </span><span>"MEM0_EMBED_URL"</span><span>:</span><span> </span><span>"http://localhost:11434"</span><span>,</span><span> </span><span>"MEM0_EMBED_MODEL"</span><span>:</span><span> </span><span>"bge-m3"</span><span>,</span><span> </span><span>"MEM0_EMBED_DIMS"</span><span>:</span><span> </span><span>"1024"</span><span>,</span><span> </span><span>"MEM0_USER_ID"</span><span>:</span><span> </span><span>"your-user-id"</span><span> </span><span>}</span><span> </span><span>}</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="step-3-make-it-automatic-with-claudemd" href="#step-3-make-it-automatic-with-claudemd"> </a> Step 3: make it automatic with CLAUDE.md
+</h3> <p>Add this to <code>~/.claude/CLAUDE.md</code> (global) so Claude uses memory without you asking:<br>
+</p>
+<div>
+<pre><code><span>## MCP Servers</span>
+<span>
+-</span> <span>**mem0**</span>: Persistent memory across sessions. At the start of each session, <span>`search_memories`</span> for relevant context before asking the user to re-explain anything. Use <span>`add_memory`</span> whenever you discover project architecture, coding conventions, debugging insights, key decisions, or user preferences. Use <span>`update_memory`</span> when prior context changes. When in doubt, save it -- future sessions benefit from over-remembering.
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>With this, Claude proactively searches memory at session start and saves things it learns as it goes. You stop re-explaining. Sessions build on each other. Your Claude Code memory across sessions is now fully automatic.</p>
+<h3> <a name="step-4-try-it" href="#step-4-try-it"> </a> Step 4: try it
+</h3> <p>Restart Claude Code, then:<br>
+</p>
+<div>
+<pre><code>&gt; Search my memories for authentication decisions
+&gt; Remember that we rejected Redis for caching because connection pooling caused issues at our scale. Revisit at 10k concurrent users.
+&gt; Show me all entities in my memory
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>That's it.</strong> Qdrant stores your vectors, Ollama generates embeddings locally, and Claude Code now has persistent memory across every session and project.</p> <hr>
+<h2> <a name="optional-add-a-knowledge-graph-with-neo4j" href="#optional-add-a-knowledge-graph-with-neo4j"> </a> Optional: add a knowledge graph with Neo4j
+</h2> <p>Vector search handles the core memory use case. If you want structured entity relationships on top, Neo4j adds a second dimension.</p> <p>When you store "I prefer TypeScript with strict mode," the graph layer extracts entities and relationships:<br>
+</p>
+<div>
+<pre><code>user -&gt; PREFERS -&gt; TypeScript
+user -&gt; PREFERS -&gt; strict_mode
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>You can then ask "what does this user prefer?" and traverse the graph for structured answers rather than relying on text similarity alone.</p>
+<h3> <a name="quick-setup" href="#quick-setup"> </a> Quick setup
+</h3> <div>
+<pre><code>docker run <span>-d</span> <span>-p</span> 7687:7687 <span>-e</span> <span>NEO4J_AUTH</span><span>=</span>neo4j/mem0graph neo4j:5
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Add to your MCP config:<br>
+</p>
+<div>
+<pre><code>MEM0_ENABLE_GRAPH=true
+MEM0_NEO4J_URL=bolt://127.0.0.1:7687
+MEM0_NEO4J_PASSWORD=mem0graph
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="the-quota-cost-and-how-to-avoid-it" href="#the-quota-cost-and-how-to-avoid-it"> </a> The quota cost and how to avoid it
+</h3> <p>Each <code>add_memory</code> with graph enabled triggers 3 additional LLM calls: entity extraction, relationship generation, and contradiction resolution. That's a real quota cost on your Claude subscription.</p> <p>To protect your quota, route graph operations to a cheaper model:</p> <div><table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Cost</th>
+<th>Quality</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ollama (Qwen3:14b)</td>
+<td>Free</td>
+<td>0.971 tool-calling F1</td>
+<td>~7-8GB VRAM (Q4_K_M)</td>
+</tr>
+<tr>
+<td>Gemini 2.5 Flash Lite</td>
+<td>Near-free</td>
+<td>85.4% entity extraction</td>
+<td>Cloud</td>
+</tr>
+<tr>
+<td><code>gemini_split</code></td>
+<td>Gemini + Claude</td>
+<td>Best combined accuracy</td>
+<td>85.4% extraction + 100% contradiction</td>
+</tr>
+</tbody>
+</table></div> <p>With the Ollama path, the entire graph pipeline runs locally. Zero cloud dependency.</p> Environment variables for each graph provider <br>
+<strong>Ollama (free, local):</strong><br> <div>
+<pre><code>MEM0_GRAPH_LLM_PROVIDER=ollama
+MEM0_GRAPH_LLM_MODEL=qwen3:14b
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Gemini (near-free):</strong><br>
+</p>
+<div>
+<pre><code>MEM0_GRAPH_LLM_PROVIDER=gemini
+GOOGLE_API_KEY=your-google-api-key
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Split-model (best accuracy):</strong><br>
+</p>
+<div>
+<pre><code>MEM0_GRAPH_LLM_PROVIDER=gemini_split
+GOOGLE_API_KEY=your-google-api-key
+MEM0_GRAPH_CONTRADICTION_LLM_PROVIDER=anthropic
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Neo4j is entirely optional. You get useful self-hosted AI memory with Qdrant and Ollama alone. See the <a href="https://github.com/elvismdev/mem0-mcp-selfhosted#readme" target="_blank">project README</a> for the complete list of environment variables.</p> <hr>
+<h2> <a name="how-selfhosted-mem0-compares-to-other-claude-code-persistent-memory-solutions" href="#how-selfhosted-mem0-compares-to-other-claude-code-persistent-memory-solutions"> </a> How self-hosted mem0 compares to other Claude Code persistent memory solutions
+</h2> <p>Developers I talked to on Reddit had an interesting setup: an Obsidian vault connected to Claude via MCP, with all their chat logs and notes organized by project. When they needed context, they tell Claude to load a specific project folder. It works, but every load pulled in full transcripts, and as their vault grew, the context cost grew linearly with it.</p> <p>One of the developers posted a good question: "Isn't this setup I have the same as what you built?" Not quite. The retrieval model is fundamentally different.</p> <div><table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Search</th>
+<th>Storage</th>
+<th>Curation</th>
+<th>Cross-project</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CLAUDE.md + Auto Memory</strong></td>
+<td>None (loads all)</td>
+<td>Markdown files</td>
+<td>Mixed (manual + auto)</td>
+<td>Per-project (global option)</td>
+</tr>
+<tr>
+<td><strong>mem0-mcp-selfhosted</strong></td>
+<td>Semantic vector</td>
+<td>Qdrant vectors</td>
+<td>Automatic</td>
+<td>Global</td>
+</tr>
+<tr>
+<td><strong>Graphiti (Zep)</strong></td>
+<td>Hybrid graph + vector</td>
+<td>Graph DB (required)</td>
+<td>Automatic</td>
+<td>Depends</td>
+</tr>
+<tr>
+<td><strong>Obsidian + MCP</strong></td>
+<td>Keyword or semantic</td>
+<td>Vault files</td>
+<td>Manual</td>
+<td>Per-vault</td>
+</tr>
+</tbody>
+</table></div>
+<h3> <a name="when-each-approach-fits" href="#when-each-approach-fits"> </a> When each approach fits
+</h3> <p><strong>CLAUDE.md + Auto Memory</strong> is perfect for small projects with manageable context. Zero setup, immediate value, and Auto Memory adds automatic note-taking on top. I let Claude Code do its thing and use both alongside mem0, and they complement each other well.</p> <p>The <code>CLAUDE.md</code> tells Claude Code how to use memory tools. mem0 handles the semantic storage and retrieval.</p> <p><strong>mem0-mcp-selfhosted</strong> makes sense when you need LLM long-term memory that works across multiple projects, accumulating knowledge over weeks, or when your preferences have outgrown what a flat file handles gracefully. Semantic search is the differentiator at scale.</p> <p><strong><a href="https://github.com/getzep/graphiti" target="_blank">Graphiti</a></strong> is worth evaluating if structured temporal relationships are your primary need. It's graph-first, meaning a graph database is required, not optional. Neo4j is the primary backend, with FalkorDB, Kuzu, and Amazon Neptune also supported. It offers bi-temporal tracking that mem0 doesn't, recording both when a fact became true and when the system learned it. The infrastructure is heavier, and depending on your LLM provider you may need separate API keys for LLM and embedding operations.</p> <p><strong>Obsidian + MCP</strong> works well if you're already an Obsidian power user who wants visual browsing and manual editing of notes. Basic implementations use keyword search over vault files, though some servers like obsidian-mcp-tools add semantic search via the Smart Connections plugin. All implementations store full documents rather than distilled facts, so context costs scale with vault size.</p> <hr>
+<h2> <a name="get-started-and-let-me-know-how-it-goes" href="#get-started-and-let-me-know-how-it-goes"> </a> Get started and let me know how it goes
+</h2> <p>Here's what we covered:</p> <ul>
+<li>Claude Code's built-in memory captures rules and summaries, but not detailed reasoning chains. Claude Code persistent memory with semantic search requires an external tool.</li>
+<li>mem0-mcp-selfhosted gives Claude Code 11 memory tools backed by self-hosted Qdrant + Ollama.</li>
+<li>Semantic vector search finds memories by meaning, not keywords.</li>
+<li>The <code>CLAUDE.md</code> integration makes memory usage automatic. No manual triggering needed.</li>
+<li>Neo4j adds structured entity relationships, but it's entirely optional.</li>
+<li>Zero-config auth reads your existing OAT token. No API key setup.</li>
+</ul> <p>The setup takes about 15 minutes: two Docker containers, one <code>claude mcp add</code> command, and a <code>CLAUDE.md</code> snippet. After that, Claude Code persistent memory builds up knowledge over time across all your projects.<br>
+</p>
+<div>
+<pre><code>claude mcp add <span>--scope</span> user <span>--transport</span> stdio mem0 <span>\</span> <span>--env</span> <span>MEM0_QDRANT_URL</span><span>=</span>http://localhost:6333 <span>\</span> <span>--env</span> <span>MEM0_EMBED_URL</span><span>=</span>http://localhost:11434 <span>\</span> <span>--env</span> <span>MEM0_EMBED_MODEL</span><span>=</span>bge-m3 <span>\</span> <span>--env</span> <span>MEM0_EMBED_DIMS</span><span>=</span>1024 <span>\</span> <span>--env</span> <span>MEM0_USER_ID</span><span>=</span>your-user-id <span>\</span> <span>--</span> uvx <span>--from</span> git+https://github.com/elvismdev/mem0-mcp-selfhosted.git mem0-mcp-selfhosted
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>I'd love to know:</p> <ul>
+<li>Does Claude use memory proactively with the <code>CLAUDE.md</code> setup in your experience?</li>
+<li>What would you want Claude to remember that it currently forgets?</li>
+<li>How's the setup experience? Too many pieces or manageable?</li>
+</ul> <p>Install it, search for something, and <a href="https://github.com/elvismdev/mem0-mcp-selfhosted/issues" target="_blank">open an issue</a> or drop a comment if the results surprise you.</p> <div> <div> <h2> <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fassets.dev.to%2Fassets%2Fgithub-logo-5a155e1f9a670af7944dd5e12375bc76ed542ea80224905ecaf878b9157cdefc.svg" alt="GitHub logo"> <a href="https://github.com/elvismdev" target="_blank"> elvismdev </a> / <a href="https://github.com/elvismdev/mem0-mcp-selfhosted" target="_blank"> mem0-mcp-selfhosted </a> </h2> <h3> Self-hosted mem0 MCP server for Claude Code. Run a complete memory server against self-hosted Qdrant + Neo4j + Ollama while using Claude as the main LLM. </h3> </div> <div><article><p>
+</p><h2>mem0-mcp-selfhosted</h2>
+<p></p> <p>Self-hosted <a href="https://github.com/mem0ai/mem0" target="_blank">mem0</a> MCP server for Claude Code. Run a complete memory server against self-hosted Qdrant + Neo4j + Ollama while using Claude as the main LLM.</p> <p>Uses the <code>mem0ai</code> package directly as a library, authenticates through your existing Claude subscription (OAT token), and exposes 11 MCP tools for full memory management.</p> <p>
+</p><h2>Prerequisites</h2>
+<p></p> <p>You need these services running:</p> <div><table> <thead> <tr> <th>Service</th> <th>Required</th> <th>Purpose</th> </tr> </thead> <tbody> <tr> <td><strong>Qdrant</strong></td> <td>Yes</td> <td>Vector memory storage and search</td> </tr> <tr> <td><strong>Ollama</strong></td> <td>Yes</td> <td>Embedding generation (bge-m3 or similar)</td> </tr> <tr> <td><strong>Neo4j 5+</strong></td> <td>Optional</td> <td>Knowledge graph (entity relationships)</td> </tr> <tr> <td><strong>Anthropic API</strong></td> <td>Yes</td> <td>LLM for fact extraction, entity extraction, memory updates (auto-authenticates via Claude Code's OAT token — no paid API key required)</td> </tr> <tr> <td><strong>Google API</strong></td> <td>Optional</td> <td>Graph LLM for entity extraction (<code>gemini</code>/<code>gemini_split</code> providers)</td> </tr> </tbody> </table></div> <p>Python &gt;= 3.10.</p> <p>
+</p><h2>Quick Start</h2>
+<p></p> <p>Add the MCP server globally (available across all projects):</p> <div>
+<pre>claude mcp add --scope user --transport stdio mem0 \ --env MEM0_QDRANT_URL=http://localhost:6333 \ --env MEM0_EMBED_URL=http://localhost:11434 \ --env MEM0_EMBED_MODEL=bge-m3 \</pre><p>…</p><div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div></article></div> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

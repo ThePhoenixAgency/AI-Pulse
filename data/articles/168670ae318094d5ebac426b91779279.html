@@ -2,20 +2,14 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>SED : L'outil de transformation de texte - Wiki</title>
+<title>SED : L'outil de transformation de texte</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,58 +23,12 @@
 </style>
 </head>
 <body>
-  <h1>SED : L'outil de transformation de texte - Wiki</h1>
+  <h1>SED : L'outil de transformation de texte</h1>
   <div class="metadata">
     Source: Journal du Hacker | Date: 2/11/2026 9:53:42 PM | <a href="https://www.linuxtricks.fr/wiki/sed-l-outil-de-transformation-de-texte" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <p><span>Table des matières</span></p><div>
-<ol><li><a href="#paragraph-qu-est-ce-que-sed-e">Qu'est ce que sed ?</a></li><li><a href="#paragraph-utiliser-sed">Utiliser sed</a><ol><li><a href="#paragraph-la-substitution">La substitution</a></li><li><a href="#paragraph-la-suppression">La suppression</a></li><li><a href="#paragraph-extraction-d-infos">Extraction d'infos</a></li></ol></li><li><a href="#paragraph-utilisation-avancee-de-sed">Utilisation avancée de sed</a></li></ol>
-</div> <h2>Qu'est ce que sed ?</h2><p> La commande <strong>sed</strong> est un éditeur de flux utilisé pour filtrer et transformer du texte.</p><p> Un éditeur de flux est utilisé pour effectuer des transformations de texte basiques sur un flux d'entrée (un fichier ou l'entrée d'un pipe) contrairement à un éditeur de texte classique qui ne gère qu'un fichier.<br>
-Mais c'est sa capacité à filtrer du texte dans un tube qui le distingue des autres éditeurs.</p><p> Cette commande fait partie du paquet sed qui est disponible et installé dans toutes les distributions Linux.</p><p> La syntaxe de la commande est la suivante :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>[</span>options<span>]</span> <span>'commande'</span> <span>[</span>fichier...<span>]</span></pre></pre></div></div><p> - <strong>commande</strong> : la commande qu'on va faire exécuter à sed<br>
-- <strong>fichier... </strong>: le(s) fichier(s) dans le(s)quel(s) on souhaite effectuer la recherche.</p><p> La commande sed lit l'entrée standard si aucun fichier n'est spécifié, elle s'utilisera donc parfois sous cette forme :</p><div><p><span>Code BASH :</span></p><div><pre><pre>commande <span>|</span> <span>sed</span> <span>[</span>options<span>]</span> <span>'commande'</span></pre></pre></div></div><p> Quelques options que j'utilise souvent :<br>
-<strong>-i</strong> : Modifie directement le fichier original (attention, irréversible sans backup).<br>
-<strong>-i.bak</strong> : Modifie le fichier et crée une sauvegarde .bak avant modification.<br>
-<strong>-e</strong> : Permet d'enchaîner plusieurs commandes sed (ex: -e '...' -e '...').<br>
-<strong>-E</strong> : Permet de traiter des expressions régulières complexes.</p><p> Dans la suite de ce mémo, je n'utilise pas l'option <strong>-i</strong> pour ne pas remplacer le fichier et que les résultats soient affichés sur le terminal.<br>
-Ainsi, vous pouvez tester sans altérer le fichier original.</p><p> Je vous propose ce petit fichier d'exemple pour tester :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>cat</span> <span>&lt;&lt;</span>EOF <span>&gt;</span> <span>/</span>tmp<span>/</span>sed.txt
-<span># Fichier de configuration de test</span>
-<span>USER</span>=Adrien
-<span>PORT</span>=<span>8080</span>
-<span>DEBUG</span>=<span>yes</span>
-Ce fichier contient <span>du</span> texte pour pratiquer.
-Il y a des mots comme salut ici.
-Et un autre salut là et un autre salut ici.
-Start
-Données confidentielles
-End
-<span># Chemin</span>
-<span>/</span>var<span>/</span>log<span>/</span>httpd
-<span># Fin du fichier</span>
-EOF</pre></pre></div></div><h2>Utiliser sed</h2><p> Les commandes se placent entre les guillemets simples '...'.</p><h3>La substitution</h3><p> C'est la fonction la plus utilisée pour remplacer du texte. Elle se définit avec "s". Voici quelques exemples.</p><p> Remplacer la première occurrence par ligne :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>'s/salut/bonjour/'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><p> Une ligne contenant salut a sa première occurence modifiée et chaque ligne est traitée :</p><div><p><span>Code TEXT :</span></p><div><pre><pre>Il y a des mots comme bonjour ici.
-Et un autre bonjour là et un autre salut ici.</pre></pre></div></div><p> Remplacer toutes les occurrences d'une ligne (Global) :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>'s/salut/bonjour/g'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><p> Une ligne contenant salut a toutes ses occurences modifiées :</p><div><p><span>Code TEXT :</span></p><div><pre><pre>Et un autre bonjour là et un autre bonjour ici.</pre></pre></div></div><p> On peut évidemment changer plein de choses quelque soit la ligne :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>'s/PORT=8080/PORT=443/'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><p> Si on veut ignorer la casse (par défaut sed est sensible à la casse) :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>'s/adrien/brooke/I'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><h3>La suppression</h3><p> La suppression se définit avec "d". Voici quelques exemples.</p><p> Supprimer la ligne numéro 2 :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>'2d'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><p> On n'a pas encore parlé d'expression régulières, mais voici un exemple. Supprimer les lignes commençant par un # :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>'/^#/d'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><p> Supprimer les lignes vides :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>'/^$/d'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><p> Et si on veut combiner les 2 :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>-e</span> <span>'/^$/d'</span> <span>-e</span> <span>'/^#/d'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><p> On peut le faire avec des regexp avancées mais oure cela on a besoin de l'option -E :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>-E</span> <span>'/^($|#)/d'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><p> A l'inverse de la suppression, on peut vouloir extraire des infos.<br>
-Cela se définit avec "p" combiné avec l'option <strong>-n</strong>. Voici quelques exemples.</p><p> Afficher uniquement la ligne 3 :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>-n</span> <span>'3p'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><p> On pourra extraire des infos entre deux autres comme ceci :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>-n</span> <span>'/Start/,/End/p'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><h2>Utilisation avancée de sed</h2><p> On pourra rechercher et remplacer un motif.<br>
-Ici, voici un exemple pour chercher une ligne commençant par DEBUG et la commentant :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>'/^DEBUG/s/^/# /'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><p> Parfois, on a besoin de remplacer des caractères spéciaux (genre le /).<br>
-Plutôt que de se casser la tête avec des échappements :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>'s/\/var\/log\/httpd/\/srv\/www\/logs/'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><p> On pourra changer le séparateur, c'est beaucoup plus lisible. J'ai l'habitude d'utiliser l'arobase mais prenez celui que vous voulez :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>'s@/var/log/httpd@/srv/www/logs@'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div><p> Un truc que j'utilise aussi, c'est pour écrire en haut d'un fichier. Pour ça on peut le faire ainsi :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sed</span> <span>'1s/^/Du texte en haut\n/'</span> <span>/</span>tmp<span>/</span>sed.txt</pre></pre></div></div>
-<div> <ul>
-<li>
-<a href="https://www.facebook.com/share.php?u=https%3A%2F%2Fwww.linuxtricks.fr%2Fwiki%2Fsed-l-outil-de-transformation-de-texte">
-<span>Partager sur Facebook</span></a>
-</li>
-<li>
-<a href="https://twitter.com/share?url=https%3A%2F%2Fwww.linuxtricks.fr%2Fwiki%2Fsed-l-outil-de-transformation-de-texte&amp;text=SED%20%3A%20L%27outil%20de%20transformation%20de%20texte%20-%20Wiki">
-<span>Partager sur Twitter</span></a>
-</li>
-<li>
-<a href="https://www.linuxtricks.fr/cdn-cgi/l/email-protection#e3dc90968189868097deb0a6a7c6d1d3c6d0a2c6d1d3afc6d1d48c96978a8fc6d1d38786c6d1d39791828d90858c918e82978a8c8dc6d1d38786c6d1d397869b9786c6d1d3cec6d1d3b48a888ac5818c879ade8b97979390c6d0a2c6d1a5c6d1a5949494cd8f8a8d969b97918a808890cd8591c6d1a5948a888ac6d1a5908687ce8fce8c96978a8fce8786ce9791828d90858c918e82978a8c8dce8786ce97869b9786"><span>Partager par email</span>
-<span>Partager par Email</span></a>
-</li>
-<li>
-<a href="#"><span>Imprimer</span>
-<span>Version imprimable</span></a>
-</li>
-</ul>
-</div> </div></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

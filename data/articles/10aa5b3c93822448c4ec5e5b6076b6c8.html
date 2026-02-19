@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why Stockfish is So Good (and How You Could Write a Chess Engine)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Why Stockfish is So Good (and How You Could Write a Chess Engine)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 1:18:54 AM | <a href="https://dev.to/djinn/why-stockfish-is-so-good-and-how-you-could-write-a-chess-engine-2lck" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Stockfish 18 plays chess at 3759 Elo—far beyond the strongest humans ever lived. But it's open-source, written in about 50,000 lines of C++, and runs on any laptop. This article surveys how modern chess engines work, why NNUE neural networks changed everything, and most importantly: the design decisions you'd make if you wanted to build one yourself.</p> <hr> <h2> <a name="the-tournament-results-tell-the-story" href="#the-tournament-results-tell-the-story"> </a> The Tournament Results Tell the Story
+</h2> <p>Every engine in the top 10 worldwide is now open-source. The proprietary era ended. On the CCRL (Chess Computer Rating List) 40/15 time control, the 2025 hierarchy looks like this:</p> <div><table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Engine</th>
+<th>Elo</th>
+<th>Language</th>
+<th>Evaluation</th>
+<th>Open Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Stockfish 18</td>
+<td>3650</td>
+<td>C++</td>
+<td>NNUE</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PlentyChess 7.0</td>
+<td>3643</td>
+<td>C++</td>
+<td>NNUE</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Obsidian 16.0</td>
+<td>3635</td>
+<td>C++</td>
+<td>NNUE</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Alexandria 8</td>
+<td>3633</td>
+<td>Rust</td>
+<td>NNUE</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Viridithas 19</td>
+<td>3629</td>
+<td>Rust</td>
+<td>NNUE</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Berserk 13</td>
+<td>3615</td>
+<td>C</td>
+<td>NNUE</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Leela Chess Zero</td>
+<td>~3443</td>
+<td>C++</td>
+<td>Deep NN</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table></div> <p>Leela Chess Zero is roughly 200 Elo weaker than Stockfish despite using a 191-million-parameter transformer neural network, simply because Stockfish can evaluate 1,500× more positions per second. Speed matters more than brilliance in chess.</p> <hr> <h2> <a name="nnue-was-the-breakthrough-nobody-expected" href="#nnue-was-the-breakthrough-nobody-expected"> </a> NNUE Was The Breakthrough Nobody Expected
+</h2> <p>In August 2020, Stockfish introduced NNUE (Efficiently Updatable Neural Networks), originally invented for computer shogi. The jump was <strong>+80 to +100 Elo overnight</strong>—equivalent to two years of conventional development. Every top engine today uses NNUE or a variation of it.</p> <p>The genius of NNUE is that it's specialized for the constraints of chess engines:</p> <ol>
+<li><p><strong>Sparse activation</strong>: Only ~30 of 40,960 input features are active per position (99.93% dormant). Most neural network activations are wasted computation in the context of alpha-beta search.</p></li>
+<li><p><strong>Incremental updates</strong>: Since only 2-4 features change per move, you don't recompute the entire network—you update an "accumulator" in place. This makes evaluation sub-microsecond.</p></li>
+<li><p><strong>Integer arithmetic</strong>: NNUE uses int8 and int16 quantization, optimized for CPU SIMD (AVX2, AVX-512). No float32 overhead. Roughly <strong>60 million evaluations per second</strong> on a modern CPU.</p></li>
+</ol> <p>Stockfish's current NNUE uses a 1024×2→8→32→1 architecture (inputs expand to 1024, then compress through small hidden layers). The network is trained on billions of self-play positions scored at modest search depths, using PyTorch with custom CUDA kernels.</p> <p>The completely hand-crafted evaluation function—Stockfish's secret sauce for 15 years—was <strong>deleted entirely in 2023</strong>. Now NNUE does everything.</p> <hr> <h2> <a name="two-paradigms-compete-alphabeta-vs-monte-carlo-tree-search" href="#two-paradigms-compete-alphabeta-vs-monte-carlo-tree-search"> </a> Two Paradigms Compete: Alpha-Beta vs. Monte Carlo Tree Search
+</h2> <h3> <a name="alphabeta-search-with-nnue-stockfishs-approach" href="#alphabeta-search-with-nnue-stockfishs-approach"> </a> Alpha-Beta Search with NNUE (Stockfish's Approach)
+</h3> <p>Stockfish searches a tree systematically, pruning branches that cannot improve the best move. It uses <strong>Principal Variation Search (PVS)</strong>, a variant of alpha-beta that searches the expected best move with a full window and all others with a zero-width window.</p> <p>The trick is aggressive pruning without missing critical moves:</p> <ul>
+<li>
+<strong>Late Move Reductions (LMR)</strong>: Moves ordered later are searched at reduced depth. Estimated <strong>+100 Elo</strong> when first introduced.</li>
+<li>
+<strong>Null Move Pruning</strong>: If passing (making no move) already produces a cutoff, prune the subtree. Dangerous in zugzwang, but nets <strong>+100-200 Elo</strong>.</li>
+<li>
+<strong>Singular Extensions</strong>: If one move dramatically outperforms all others, search it deeper.</li>
+<li>
+<strong>Futility Pruning</strong>: At shallow depths, positions too far below alpha are pruned immediately.</li>
+<li>
+<strong>SEE Pruning</strong>: Moves with losing material exchanges are pruned based on static exchange evaluation.</li>
+</ul> <p>These techniques shrink the effective branching factor from ~35 to less than 2, enabling search to depth 30-40 plies where NNUE provides the final judgment.</p> <h3> <a name="mcts-with-deep-neural-networks-leela-chess-zero" href="#mcts-with-deep-neural-networks-leela-chess-zero"> </a> MCTS with Deep Neural Networks (Leela Chess Zero)
+</h3> <p>Leela Chess Zero uses Monte Carlo Tree Search combined with a 191-million-parameter transformer. Instead of exhaustively searching and pruning, it builds a search tree by repeatedly:</p> <ol>
+<li>
+<strong>Selecting</strong> a node via the PUCT formula: <code>Q(s,a) + c_puct × P(s,a) × √(N_parent) / (1 + N(s,a))</code>
+</li>
+<li>
+<strong>Evaluating</strong> with the neural network (value head), which replaces classical random rollouts</li>
+<li>
+<strong>Backing up</strong> results to update statistics</li>
+</ol> <p>The network provides both a <strong>policy head</strong> (prior probability for each move) and a <strong>value head</strong> (win probability), replacing the random playout entirely.</p> <p><strong>The outcome</strong>: MCTS's deep NN produces higher-quality per-position judgments, but Stockfish compensates by evaluating vastly more positions per second. On TCEC (the engine championship), Stockfish beats Leela roughly 57-43 and has won every superfinal since 2020. The gap appears to be widening.</p> <hr> <h2> <a name="why-c-and-sometimes-rust" href="#why-c-and-sometimes-rust"> </a> Why C++ (And Sometimes Rust)
+</h2> <p>Programming language choice directly impacts Elo rating at the elite level. Each additional ply of search adds roughly <strong>50-70 Elo</strong>. A 2× difference in nodes-per-second (NPS) means one extra ply—so language choice matters.</p> <div><table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Top Engine</th>
+<th>Elo</th>
+<th>NPS Relative to C++</th>
+<th>Elo Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C++</td>
+<td>Stockfish</td>
+<td>3759</td>
+<td>Baseline</td>
+<td>0</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Berserk</td>
+<td>3646</td>
+<td>100%</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td>Alexandria</td>
+<td>3633</td>
+<td>95-100%</td>
+<td>0-5</td>
+</tr>
+<tr>
+<td>C#</td>
+<td>Ceres</td>
+<td>~3624</td>
+<td>70-80%</td>
+<td>30-60</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>chess22k</td>
+<td>~3000</td>
+<td>60-80%</td>
+<td>30-60</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>–</td>
+<td>~1800</td>
+<td>1-2%</td>
+<td>400+</td>
+</tr>
+</tbody>
+</table></div> <p>C and C++ dominate because they offer:</p> <ul>
+<li>Direct hardware access (cache control, SIMD intrinsics)</li>
+<li>No garbage collection pauses</li>
+<li>Compile-time optimizations</li>
+<li>Fast bitboard operations (64-bit integers for board representation)</li>
+</ul> <p><strong>Rust is a surprise win.</strong> Alexandria and Viridithas prove that Rust—with its zero-cost abstractions and LLVM compilation—is fully competitive at the elite level. Move generation, board representation, and evaluation all run at near-C++ speeds.</p> <p>Managed languages like C# and Java incur 30-60 Elo penalties from runtime overhead and garbage collection. Below ~3200 Elo, this doesn't matter—algorithmic skill outweighs implementation. But above 3600, the language tax is disqualifying.</p> <hr> <h2> <a name="opensource-development-beats-proprietary" href="#opensource-development-beats-proprietary"> </a> Open-Source Development Beats Proprietary
+</h2> <p>Twelve of the top 15 engines are open-source. This wasn't ideological—it was mechanistic.</p> <p>In 2013, Gary Linscott created <strong>Fishtest</strong>, a distributed testing framework for Stockfish using Sequential Probability Ratio Testing (SPRT). Volunteers donate CPU time. The numbers:</p> <ul>
+<li><strong>19,700+ CPU-years consumed</strong></li>
+<li><strong>9.8+ billion games played</strong></li>
+<li><strong>~199 concurrent worker machines</strong></li>
+<li>For Stockfish 15: ~13,000 candidate changes tested, ~200 merged</li>
+</ul> <p>Stockfish gained <strong>+120 Elo in the first year of Fishtest</strong>—a pace no proprietary team could match. Andrew Grant's <strong>OpenBench</strong> extended this framework to 17+ other engines (Berserk, Koivisto, Stormphrax, Viridithas, etc.).</p> <p>The reason is simple: you cannot optimize an engine in isolation. Testing every patch requires millions of games. Distributed testing at cloud scale is the only way to move fast. Open-source enabled this. Proprietary teams struggle to match it.</p> <hr> <h2> <a name="other-key-technical-insights" href="#other-key-technical-insights"> </a> Other Key Technical Insights
+</h2> <p><strong>Lazy SMP (Shared Memory Parallelization)</strong>: Going from 1 to 16 threads adds only ~20-32 Elo, far less than the theoretical benefit. Engines are memory-bound, not CPU-bound, at high core counts.</p> <p><strong>Syzygy Tablebases</strong>: 6-man endgame databases provide ~10 Elo improvement by allowing perfect play in simplified positions. Stockfish ships with 6-man tablebases.</p> <p><strong>Depth vs. NNUE Quality</strong>: Modern NNUE networks are compact (several MB), but the old hand-crafted evaluations were more "reasonable" locally. Deeper search compensates: Stockfish searches to 40+ plies where NNUE makes the final judgment.</p> <p><strong>Each Additional Ply</strong>: Worth approximately <strong>+50-70 Elo</strong> across all engines. Doubling NPS ≈ one extra ply ≈ 50-70 Elo.</p> <hr> <h2> <a name="if-you-want-to-build-a-chess-engine-design-sweet-spots" href="#if-you-want-to-build-a-chess-engine-design-sweet-spots"> </a> If You Want To Build a Chess Engine: Design Sweet Spots
+</h2> <p>Most programmers who build chess engines do it for fun or learning. Here's a realistic roadmap with reasonable design trade-offs.</p> <h3> <a name="tier-1-a-respectable-hobbyist-engine-14001800-elo" href="#tier-1-a-respectable-hobbyist-engine-14001800-elo"> </a> Tier 1: A Respectable Hobbyist Engine (1400-1800 Elo)
+</h3> <p><strong>Goal</strong>: Beat humans, work on a laptop, finish in a weekend.</p> <p><strong>Design choices:</strong></p> <ul>
+<li>
+<strong>Language</strong>: Python or Rust (you care about learning, not top-10 rankings)</li>
+<li>
+<strong>Search</strong>: Basic alpha-beta with minimal pruning (null move pruning is the only essential trick)</li>
+<li>
+<strong>Evaluation</strong>: Hand-crafted. A simple function counting material + positional bonuses for piece centralization, king safety, pawn advancement</li>
+<li>
+<strong>Board</strong>: 8×8 2D array (don't use bitboards yet; they're an optimization)</li>
+<li>
+<strong>Move generation</strong>: Brute-force checking all 64 squares</li>
+</ul> <p><strong>Expected Elo</strong>: 1400-1800 (beats most casual players)</p> <p><strong>Time to implement</strong>: ~40-80 lines of core move generation + alpha-beta + evaluation = 200-300 lines total<br>
+</p> <div>
+<pre><code><span># Pseudocode for minimum viable chess engine
+</span>
+<span>def</span> <span>evaluate</span><span>(</span><span>board</span><span>):</span> <span>material</span> <span>=</span> <span>count_material</span><span>(</span><span>board</span><span>)</span> <span>position</span> <span>=</span> <span>count_piece_activity</span><span>(</span><span>board</span><span>)</span> <span>return</span> <span>material</span> <span>+</span> <span>position</span> <span>def</span> <span>search</span><span>(</span><span>board</span><span>,</span> <span>depth</span><span>,</span> <span>alpha</span><span>,</span> <span>beta</span><span>):</span> <span>if</span> <span>depth</span> <span>==</span> <span>0</span><span>:</span> <span>return</span> <span>evaluate</span><span>(</span><span>board</span><span>)</span> <span>for</span> <span>move</span> <span>in</span> <span>generate_moves</span><span>(</span><span>board</span><span>):</span> <span>board</span><span>.</span><span>make_move</span><span>(</span><span>move</span><span>)</span> <span>score</span> <span>=</span> <span>-</span><span>search</span><span>(</span><span>board</span><span>,</span> <span>depth</span> <span>-</span> <span>1</span><span>,</span> <span>-</span><span>beta</span><span>,</span> <span>-</span><span>alpha</span><span>)</span> <span>board</span><span>.</span><span>unmake_move</span><span>(</span><span>move</span><span>)</span> <span>alpha</span> <span>=</span> <span>max</span><span>(</span><span>alpha</span><span>,</span> <span>score</span><span>)</span> <span>if</span> <span>alpha</span> <span>&gt;=</span> <span>beta</span><span>:</span> <span>break</span> <span># Beta cutoff
+</span> <span>return</span> <span>alpha</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This gives you 1600+ Elo with virtually no optimization.</p> <h3> <a name="tier-2-a-competitive-amateur-engine-20002500-elo" href="#tier-2-a-competitive-amateur-engine-20002500-elo"> </a> Tier 2: A Competitive Amateur Engine (2000-2500 Elo)
+</h3> <p><strong>Goal</strong>: Beat most online opponents, viable on older hardware.</p> <p><strong>Design choices:</strong></p> <ul>
+<li>
+<strong>Language</strong>: C++ or Rust (you need speed now, not just learning)</li>
+<li>
+<strong>Search</strong>: Alpha-beta with: <ul>
+<li>Null move pruning</li>
+<li>Late Move Reductions (LMR) with basic formula: <code>reduction = 1 + ln(depth) × ln(moveNumber)</code>
+</li>
+<li>Move ordering (best moves first)</li>
+<li>Transposition table (hash table caching positions)</li>
+<li>Quiescence search (don't stop at arbitrary depth; handle captures)</li>
+</ul> </li> <li> <strong>Evaluation</strong>: Still hand-crafted, but richer: <ul>
+<li>Material (pawns=1, knights=3, bishops=3.25, rooks=5, queens=9)</li>
+<li>Piece-square tables (centralized pieces score higher)</li>
+<li>Pawn structure (doubled, isolated, passed pawns)</li>
+<li>King safety</li>
+<li>Mobility (count available squares for each piece)</li>
+</ul> </li> <li> <strong>Board</strong>: Bitboards (64-bit integers for each piece type)</li> <li> <strong>Move generation</strong>: Bit-scanning optimized</li> </ul> <p><strong>Expected Elo</strong>: 2000-2500 (beats most club players)</p> <p><strong>Time to implement</strong>: 1,000-2,000 lines of well-structured C++</p> <p><strong>Key optimization</strong>: Transposition table. Storing and retrieving previously evaluated positions cuts the search tree in half.<br>
+</p> <div>
+<pre><code><span>struct</span> <span>TTEntry</span> <span>{</span> <span>uint64_t</span> <span>hash</span><span>;</span> <span>int</span> <span>depth</span><span>,</span> <span>score</span><span>;</span> <span>int</span> <span>flag</span><span>;</span> <span>// EXACT, LOWER, UPPER</span>
+<span>};</span> <span>std</span><span>::</span><span>unordered_map</span><span>&lt;</span><span>uint64_t</span><span>,</span> <span>TTEntry</span><span>&gt;</span> <span>transposition_table</span><span>;</span> <span>int</span> <span>search</span><span>(</span><span>Board</span> <span>&amp;</span><span>board</span><span>,</span> <span>int</span> <span>depth</span><span>,</span> <span>int</span> <span>alpha</span><span>,</span> <span>int</span> <span>beta</span><span>)</span> <span>{</span> <span>uint64_t</span> <span>hash</span> <span>=</span> <span>board</span><span>.</span><span>hash</span><span>();</span> <span>if</span> <span>(</span><span>transposition_table</span><span>.</span><span>count</span><span>(</span><span>hash</span><span>))</span> <span>{</span> <span>auto</span> <span>&amp;</span><span>entry</span> <span>=</span> <span>transposition_table</span><span>[</span><span>hash</span><span>];</span> <span>if</span> <span>(</span><span>entry</span><span>.</span><span>depth</span> <span>&gt;=</span> <span>depth</span><span>)</span> <span>{</span> <span>if</span> <span>(</span><span>entry</span><span>.</span><span>flag</span> <span>==</span> <span>EXACT</span><span>)</span> <span>return</span> <span>entry</span><span>.</span><span>score</span><span>;</span> <span>if</span> <span>(</span><span>entry</span><span>.</span><span>flag</span> <span>==</span> <span>LOWER</span><span>)</span> <span>alpha</span> <span>=</span> <span>max</span><span>(</span><span>alpha</span><span>,</span> <span>entry</span><span>.</span><span>score</span><span>);</span> <span>if</span> <span>(</span><span>entry</span><span>.</span><span>flag</span> <span>==</span> <span>UPPER</span><span>)</span> <span>beta</span> <span>=</span> <span>min</span><span>(</span><span>beta</span><span>,</span> <span>entry</span><span>.</span><span>score</span><span>);</span> <span>if</span> <span>(</span><span>alpha</span> <span>&gt;=</span> <span>beta</span><span>)</span> <span>return</span> <span>entry</span><span>.</span><span>score</span><span>;</span> <span>}</span> <span>}</span> <span>// ... search continues ...</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="tier-3a-a-strong-club-engine-3000-lines-24002600-elo" href="#tier-3a-a-strong-club-engine-3000-lines-24002600-elo"> </a> Tier 3a: A Strong Club Engine (~3000 lines, 2400-2600 Elo)
+</h3> <p><strong>Goal</strong>: Impressive hobbyist engine; beats most players, playable against titled opponents.</p> <p><strong>What you add to Tier 2:</strong></p> <ul>
+<li>
+<strong>Iterative deepening</strong>: Search depth 1, then 2, then 3, etc. Allows precise time management and search stability</li>
+<li>
+<strong>Killer heuristic</strong>: Track moves that produced cutoffs in sibling nodes; try them early in similar positions</li>
+<li>
+<strong>History heuristic</strong>: Moves that produced cutoffs anywhere in the tree are tried earlier at shallower depths</li>
+<li>
+<strong>Aspiration windows</strong>: Search the full depth with a narrow alpha-beta window around the previous iteration's score (much faster when you're right)</li>
+<li>
+<strong>Staged move ordering</strong>: Generate checking moves first, then captures, then quiet moves</li>
+<li>
+<strong>Better evaluation</strong>: <ul>
+<li>Piece-square tables for all pieces (not just pawns)</li>
+<li>Pawn structure analysis (passed pawns, weak squares)</li>
+<li>King tropism (pieces attacking near the opponent's king)</li>
+<li>Tempo bonus (slight evaluation advantage for the side to move)</li>
+</ul> </li> </ul> <p><strong>Board representation</strong>: Still bitboards, but optimized move generation using bit-scanning</p> <p><strong>Expected Elo</strong>: 2400-2600 (beats most club-level players, competitive against titled opponents)</p> <p><strong>Time to implement</strong>: ~3,000 lines of well-optimized C++</p> <p><strong>Code example</strong> (iterative deepening structure):<br>
+</p> <div>
+<pre><code><span>int</span> <span>iterative_deepening</span><span>(</span><span>Board</span> <span>&amp;</span><span>board</span><span>,</span> <span>int</span> <span>time_ms</span><span>)</span> <span>{</span> <span>int</span> <span>best_move</span> <span>=</span> <span>0</span><span>;</span> <span>int</span> <span>best_score</span> <span>=</span> <span>0</span><span>;</span> <span>auto</span> <span>start</span> <span>=</span> <span>std</span><span>::</span><span>chrono</span><span>::</span><span>system_clock</span><span>::</span><span>now</span><span>();</span> <span>for</span> <span>(</span><span>int</span> <span>depth</span> <span>=</span> <span>1</span><span>;</span> <span>depth</span> <span>&lt;=</span> <span>30</span><span>;</span> <span>depth</span><span>++</span><span>)</span> <span>{</span> <span>int</span> <span>score</span> <span>=</span> <span>search</span><span>(</span><span>board</span><span>,</span> <span>depth</span><span>,</span> <span>-</span><span>INFINITY</span><span>,</span> <span>INFINITY</span><span>);</span> <span>if</span> <span>(</span><span>score_is_mate</span><span>(</span><span>score</span><span>))</span> <span>{</span> <span>// If we found mate, no point searching deeper</span> <span>return</span> <span>best_move</span><span>;</span> <span>}</span> <span>best_move</span> <span>=</span> <span>pv</span><span>[</span><span>0</span><span>];</span> <span>// Principal variation from this depth</span> <span>best_score</span> <span>=</span> <span>score</span><span>;</span> <span>auto</span> <span>elapsed</span> <span>=</span> <span>std</span><span>::</span><span>chrono</span><span>::</span><span>system_clock</span><span>::</span><span>now</span><span>()</span> <span>-</span> <span>start</span><span>;</span> <span>if</span> <span>(</span><span>elapsed</span><span>.</span><span>count</span><span>()</span> <span>&gt;</span> <span>time_ms</span> <span>*</span> <span>0.9</span><span>)</span> <span>{</span> <span>// Stop if we've used 90% of allocated time</span> <span>break</span><span>;</span> <span>}</span> <span>}</span> <span>return</span> <span>best_move</span><span>;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h3> <a name="tier-3b-an-intermediate-engine-5000-lines-28003200-elo" href="#tier-3b-an-intermediate-engine-5000-lines-28003200-elo"> </a> Tier 3b: An Intermediate Engine (~5000 lines, 2800-3200 Elo)
+</h3> <p><strong>Goal</strong>: Seriously competitive; tournaments, online rankings, formidable opponent.</p> <p><strong>What you add to Tier 3a:</strong></p> <ul>
+<li>
+<strong>Singular extensions</strong>: If one move is dramatically better than siblings, search it one ply deeper</li>
+<li>
+<strong>Futility pruning</strong>: At shallow depths (1-2 plies from qsearch), prune moves that can't possibly improve alpha</li>
+<li>
+<strong>SEE (Static Exchange Evaluation)</strong>: Use a fast algorithm to estimate if a capture wins or loses material</li>
+<li>
+<strong>Countermove heuristic</strong>: Track which move was played at the parent node; moves that counter it get priority</li>
+<li>
+<strong>Quiescence search improvements</strong>: <ul>
+<li>Only examine captures that win material or give check</li>
+<li>Stop immediately if a "quiet" move (non-capture) is better than alpha</li>
+</ul> </li> <li> <strong>Transposition table refinements</strong>: <ul>
+<li>Increased size (16 MB → 256 MB)</li>
+<li>Better replacement strategy (always replace, or replace only weaker entries)</li>
+<li>Age tracking (overwrite older entries)</li>
+</ul> </li> </ul> <p><strong>Search enhancements</strong>:</p> <ul>
+<li>
+<strong>Multi-threaded search</strong> (Lazy SMP): 2-4 threads with shared transposition table (adds ~20 Elo but improves responsiveness)</li>
+<li>
+<strong>Mate distance pruning</strong>: If we've found mate in N moves, prune branches that can't improve it</li>
+<li>
+<strong>Null move window refinements</strong>: Adapt null move reduction based on position criticality (zugzwang detection)</li>
+</ul> <p><strong>Board representation</strong>: Bitboards with magic multiplication for bishop/rook attacks (O(1) attack generation)</p> <p><strong>Expected Elo</strong>: 2800-3200 (serious tournament contender; dominates online)</p> <p><strong>Time to implement</strong>: ~5,000 lines of optimized C++</p> <p><strong>Critical file structure</strong> at this level:<br>
+</p> <div>
+<pre><code>src/ board.cpp/h (1,000 lines: bitboards, move gen, fen parsing) search.cpp/h (1,500 lines: alpha-beta, pruning, extensions, TT) evaluate.cpp/h (1,200 lines: handcrafted evaluation) movegen.cpp/h (500 lines: move ordering, sorting) uci.cpp/h (300 lines: UCI protocol interface) main.cpp (100 lines: main loop)
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Key decision at 5000 lines</strong>: You've optimized hand-crafted evaluation as far as it goes. To go further, you either:</p> <ol>
+<li>Fork an open-source NNUE (adds ~1000 lines for integration), or</li>
+<li>Spend months training your own neural network on billions of positions</li>
+</ol> <p>Most competitive hobbyist engines stop here or move to Tier 3c.</p> <hr> <h3> <a name="tier-3c-an-elite-engine-10000-lines-3000-elo" href="#tier-3c-an-elite-engine-10000-lines-3000-elo"> </a> Tier 3c: An Elite Engine (~10,000+ lines, 3000+ Elo)
+</h3> <p><strong>Goal</strong>: Grandmaster territory; competitive in engine championships; serious technical achievement.</p> <p><strong>What you add to Tier 3b:</strong></p> <ul>
+<li>
+<strong>NNUE Integration</strong> (the pivotal decision): <ul>
+<li>Use an existing trained NNUE (most open-source engines do this)</li>
+<li>OR train your own on self-play data using PyTorch</li>
+<li>Integrate int8 NNUE evaluation (~500 lines)</li>
+</ul> </li> <li> <strong>Advanced search techniques</strong>: <ul>
+<li>
+<strong>Razoring</strong>: Near quiescence, if static eval + margin &gt; alpha, go straight to qsearch (worth ~10-20 Elo)</li>
+<li>
+<strong>Internal iterative reduction</strong>: On the PV, if no best move is available, reduce depth slightly</li>
+<li>
+<strong>Probcut</strong>: At shallow depths, use a wider evaluation margin to make cutoff predictions</li>
+</ul> </li> <li> <strong>Time management II</strong>: <ul>
+<li>Chebyshev time allocation (give more time to critical moves)</li>
+<li>Resignation detection (stop searching if score is lost)</li>
+<li>Contempt factor (slight bias toward fighting positions over draws)</li>
+</ul> </li> <li> <strong>Endgame improvements</strong>: <ul>
+<li>Syzygy tablebases (6-man endgame databases; ~20-30 MB download, adds ~10 Elo)</li>
+<li>Pawn endgame tables (7-piece, perfect play)</li>
+<li>Bitbase knowledge (e.g., K+P vs K endgame rules)</li>
+</ul> </li> <li> <strong>Evaluation refinements</strong> (hand-crafted component paired with NNUE): <ul>
+<li>Piece-square table adjustments by material count</li>
+<li>King safety asymmetry (attacker bonus)</li>
+<li>Evaluation tempo bonus (now learned by NNUE, but can add explicit bonuses)</li>
+</ul> </li> <li> <strong>Distributed testing infrastructure</strong> (if you're serious): <ul>
+<li>Hook into OpenBench or Fishtest</li>
+<li>Enable crowd-sourced testing of your patches</li>
+</ul> </li> </ul> <p><strong>Search algorithm</strong>: Principal Variation Search (PVS) with all optimizations, or a modern variant like Negamax</p> <p><strong>Threading</strong>: 4-16 threads with lazy SMP (shared TT, split search at root)</p> <p><strong>Expected Elo</strong>: 3000-3500 (elite level; competitive in engine tournaments)</p> <p><strong>Time to implement</strong>: 10,000-15,000 lines of production-quality C++</p> <p><strong>Representative code structure</strong> at this level:<br>
+</p> <div>
+<pre><code>src/ board.cpp/h (1,200 lines) search.cpp/h (2,500 lines: alpha-beta, all pruning techniques, TT) evaluate.cpp/h (800 lines: NNUE integration + handcrafted bonuses) nnue.cpp/h (800 lines: int8 quantization, accumulator updates) movegen.cpp/h (600 lines) uci.cpp/h (400 lines: UCI options, time management) tt.cpp/h (300 lines: transposition table) bitboards.cpp/h (200 lines: magic bitboards, attacks) endgame.cpp/h (300 lines: tablebases, special rules) main.cpp (100 lines) tests/ (2,000 lines: perft, position tests, regression suite)
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>NNUE Integration Example</strong>:<br>
+</p> <div>
+<pre><code><span>// Simplified NNUE forward pass</span>
+<span>class</span> <span>NNUE</span> <span>{</span>
+<span>public:</span> <span>int8_t</span> <span>input</span><span>[</span><span>2</span><span>][</span><span>512</span><span>];</span> <span>// Two perspectives</span> <span>int32_t</span> <span>hidden</span><span>[</span><span>8</span><span>];</span> <span>// First hidden layer</span> <span>int16_t</span> <span>output</span><span>;</span> <span>// Final evaluation</span> <span>void</span> <span>update_accumulator</span><span>(</span><span>Move</span> <span>m</span><span>)</span> <span>{</span> <span>// Incrementally update instead of full recompute</span> <span>// Most of the 1,500× speedup comes from here</span> <span>}</span> <span>int</span> <span>evaluate</span><span>()</span> <span>{</span> <span>// Update accumulator</span> <span>update_accumulator</span><span>(</span><span>last_move</span><span>);</span> <span>// Forward pass through tiny network</span> <span>for</span> <span>(</span><span>int</span> <span>i</span> <span>=</span> <span>0</span><span>;</span> <span>i</span> <span>&lt;</span> <span>8</span><span>;</span> <span>i</span><span>++</span><span>)</span> <span>{</span> <span>hidden</span><span>[</span><span>i</span><span>]</span> <span>=</span> <span>input</span><span>[</span><span>0</span><span>][</span><span>i</span><span>*</span><span>64</span><span>]</span> <span>+</span> <span>input</span><span>[</span><span>1</span><span>][</span><span>i</span><span>*</span><span>64</span><span>];</span> <span>// Simplified</span> <span>}</span> <span>// Final output layer</span> <span>output</span> <span>=</span> <span>(</span><span>hidden</span><span>[</span><span>0</span><span>]</span> <span>*</span> <span>w0</span> <span>+</span> <span>hidden</span><span>[</span><span>1</span><span>]</span> <span>*</span> <span>w1</span> <span>+</span> <span>...)</span> <span>&gt;&gt;</span> <span>7</span><span>;</span> <span>return</span> <span>output</span><span>;</span> <span>}</span>
+<span>};</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>The training pipeline</strong> (if you're training your own NNUE):<br>
+</p> <div>
+<pre><code>Generate self-play games using your engine ↓
+Score positions at depth 8-12 ↓
+Collect 1+ billion positions ↓
+PyTorch training loop (SGD, L1 loss, quantization-aware training) ↓
+Export to ONNX or custom int8 format ↓
+Integrate into engine ↓
+Test on Fishtest/OpenBench ↓
+If +25 Elo: merge. If -25 Elo: discard.
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Maintenance burden at 10K lines:</strong></p> <ul>
+<li>A comprehensive test suite (perft, mate-in-N puzzles, position regression tests)</li>
+<li>Profiling to identify bottlenecks (search takes ~95% of time; move gen ~2%)</li>
+<li>Continuous tuning: 50+ parameters (LMR reductions, null move depth limits, eval weights) can be optimized with texel tuning or local search</li>
+</ul> <p><strong>Where to start</strong>: Clone Berserk (simpler than Stockfish, ~4,500 lines) and add NNUE support. This gives you a 2.5x head start.</p> <hr> <h2> <a name="code-complexity-vs-elo-gain-diminishing-returns" href="#code-complexity-vs-elo-gain-diminishing-returns"> </a> Code Complexity vs. Elo Gain (Diminishing Returns)
+</h2> <p>Here's the brutal truth about chess engine development:</p> <div><table>
+<thead>
+<tr>
+<th>Lines of Code</th>
+<th>Elo</th>
+<th>Time to Build</th>
+<th>Improvement Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>300</td>
+<td>1600</td>
+<td>1 weekend</td>
+<td>+5.3 Elo/line</td>
+</tr>
+<tr>
+<td>1,000</td>
+<td>2000</td>
+<td>1 week</td>
+<td>+0.4 Elo/line</td>
+</tr>
+<tr>
+<td>3,000</td>
+<td>2500</td>
+<td>2-3 weeks</td>
+<td>+0.17 Elo/line</td>
+</tr>
+<tr>
+<td>5,000</td>
+<td>2900</td>
+<td>1-2 months</td>
+<td>+0.08 Elo/line</td>
+</tr>
+<tr>
+<td>10,000</td>
+<td>3300</td>
+<td>3-6 months</td>
+<td>+0.04 Elo/line</td>
+</tr>
+<tr>
+<td>50,000</td>
+<td>3759</td>
+<td>Years</td>
+<td>+0.01 Elo/line</td>
+</tr>
+</tbody>
+</table></div> <p><strong>The first 1,000 lines are magical.</strong> Each line of code adds ~4 Elo. By 5,000 lines, you're down to 0.08 Elo per line. The last 40,000 lines of Stockfish are engineering optimization for marginal gains.</p> <p>This is why <strong>starting with 3,000 lines is the sweet spot</strong> for learning. You get a genuinely strong engine (beats humans), understand all the major algorithmic concepts (alpha-beta, pruning, TT), and can see your work play real chess. Anything beyond 5,000 lines is specialist territory.</p> <hr> <h2> <a name="the-real-lesson" href="#the-real-lesson"> </a> The Real Lesson
+</h2> <p>The gap between 1800 Elo and 3600 Elo is about 40 years of accumulated engineering wisdom:</p> <ul>
+<li>
+<strong>LMR</strong> (2004): +100 Elo</li>
+<li>
+<strong>Null move pruning</strong> (1980s): +150 Elo</li>
+<li>
+<strong>Singular extensions</strong> (2000s): +30 Elo</li>
+<li>
+<strong>Killer heuristic + history</strong> (1980s): +50 Elo</li>
+<li>
+<strong>NNUE evaluation</strong> (2020): +100 Elo</li>
+<li>
+<strong>Iterative deepening + time management</strong> (1980s): +30 Elo</li>
+</ul> <p>Each innovation compounds. Modern engines are not singularly brilliant; they're the product of thousands of incremental improvements, tested rigorously on billions of games.</p> <p>If you're building a hobbyist engine, focus on <strong>correctness first, optimization second</strong>. Get move generation and search right before worrying about evaluation. A simple alpha-beta + null move pruning engine at 1600 Elo is a better learning experience than a buggy, half-finished attempt at NNUE.</p> <p>If you're aiming for competitive strength, use distributed testing (OpenBench or Fishtest) early. A single developer testing patches locally will trend toward local optima. The open-source ecosystem wins because every improvement is validated against thousands of positions and millions of games.</p> <p>And remember: Stockfish is 50,000 lines of C++, but the first 1,000 lines give you 1500 Elo. The remaining 49,000 lines bought maybe 500 more.</p> <hr> <h2> <a name="further-reading" href="#further-reading"> </a> Further Reading
+</h2> <ul>
+<li>
+<strong>Chessprogramming.org</strong>: The comprehensive wiki on engine implementation</li>
+<li>
+<strong>Stockfish on GitHub</strong>: The reference implementation; readable and well-organized</li>
+<li>
+<strong>CCRL / TCEC</strong>: Live ratings and tournament results</li>
+<li>
+<strong>Fishtest</strong>: The testing framework that powers Stockfish development</li>
+<li>
+<strong>AlphaZero's paper</strong> (Silver et al., 2017): Why neural networks can work without handcrafted evaluation</li>
+</ul> <p>Happy coding. And may your engine beat your friends.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

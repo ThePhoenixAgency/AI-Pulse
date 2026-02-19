@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arduino UNO Q solves the classic resistor pile issue</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Arduino UNO Q solves the classic resistor pile issue</h1>
+  <div class="metadata">
+    Source: Arduino Blog | Date: 2/19/2026 1:14:01 AM | <a href="https://blog.arduino.cc/2026/02/19/arduino-uno-q-solves-the-classic-resistor-pile-issue/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h3>Arduino UNO Q solves the classic resistor pile issue</h3> <p><span>Arduino Team</span> — <span>February 19th, 2026</span> </p> <div> <figure><p><img src="https://blog.arduino.cc/wp-content/uploads/2026/02/6663508d-d30e-4d6e-b36c-b798584c1338.jpeg" alt=""></p></figure> <p>We all end up with a bin full of a random assortment of resistors, right? You grab some resistors from their tidy little packages during a project and then once you’re done with that project, the unused loose resistors go into the bin for future you to sort through. But you never actually sort them, do you? That’s why Zach Hipps turned an Arduino UNO Q into a <a href="https://www.digikey.com/en/maker/projects/automating-resistor-sorting-with-arduino-uno-q/6e2be4d1d412402186c158918703f3d1">resistor value-detecting machine for fast sorting</a>.</p> <p>The idea is really simple: just show a resistor to the camera connected to the <a href="https://www.arduino.cc/product-uno-q">UNO Q</a> and it will analyze the color bands to tell you the resistance, so you can put the resistor back with its identical siblings. You could achieve similar results by using a multimeter to measure resistance, but then you won’t know the tolerance spec. Also, this is more fun.</p> <p>All it takes is an UNO Q, a suitable USB-C hub, and a USB camera — a low-magnification USB microscope works best to get a clear and close-up view of the resistor.</p> <figure><p><img src="https://blog.arduino.cc/wp-content/uploads/2026/02/18a3a748-0ea1-450d-9482-fd056d23f3e2.jpeg" alt=""></p></figure> <p>Everything else is just automated image processing through OpenCV. That goes through several stages and describing them is the bulk of what Hipps covers. The idea is to process the image of the resistor until it is easy and reliable to programmatically detect the bands and their colors. That is a little tricky, because some are dark and some are light, with glare potentially confounding the analysis. But the processing and filtering steps ultimately produce clean results. It might seem like a lot of steps, but OpenCV can run through them quickly.</p> <p>The result is virtually instantaneous identification. In fact, it runs at a fast enough frame rate to partially identify a resistor before it is even fully in frame. So, you can sort your resistors as quickly as you can put them in front of the camera and then into the appropriate container.</p> <figure><p> </p></figure> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
