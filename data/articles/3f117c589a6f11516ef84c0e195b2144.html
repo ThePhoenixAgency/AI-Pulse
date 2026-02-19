@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How We Added Closed Captions to Embedded Videos</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How We Added Closed Captions to Embedded Videos</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 4:11:00 PM | <a href="https://dev.to/alexneamtu/how-we-added-closed-captions-to-embedded-videos-31i" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>You record a product walkthrough, share the embed code, and a teammate drops it into a Notion page. The video plays fine. But the subtitles that show up on the watch page? Gone. The embed page never had them.</p> <p><a href="https://sendrec.eu/" target="_blank">SendRec</a> transcribes every uploaded video using Whisper and generates a VTT subtitle file. The full watch page has had a <code>&lt;track&gt;</code> element since launch. The lightweight embed player — designed for iframes — was built later, and the subtitle support was never ported over. A one-line gap in a SQL query that meant embedded videos were always silent-only.</p> <h2> <a name="how-subtitles-work-in-sendrec" href="#how-subtitles-work-in-sendrec"> </a> How subtitles work in SendRec
+</h2> <p>When a video finishes uploading, a background worker picks it up from the transcription queue. It downloads the video from S3, runs Whisper, and produces two things: a JSON transcript (used for search and the transcript panel) and a VTT file (used for browser-native subtitles).</p> <p>The VTT file gets uploaded to S3 alongside the video:<br>
+</p> <div>
+<pre><code>recordings/{userID}/{shareToken}.vtt
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>When the watch page renders, it queries the <code>transcript_key</code> column, generates a presigned S3 URL, and injects a <code>&lt;track&gt;</code> element:<br>
+</p> <div>
+<pre><code><span>&lt;video</span> <span>controls</span><span>&gt;</span> <span>&lt;track</span> <span>kind=</span><span>"subtitles"</span> <span>src=</span><span>"https://storage.example.com/recordings/u1/abc.vtt?signature=..."</span> <span>srclang=</span><span>"en"</span> <span>label=</span><span>"Subtitles"</span> <span>default</span><span>&gt;</span>
+<span>&lt;/video&gt;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The browser handles the rest. The viewer clicks the CC button in the video controls, and subtitles appear. No JavaScript subtitle renderer, no custom overlay — just the browser's built-in support.</p> <h2> <a name="what-the-embed-page-was-missing" href="#what-the-embed-page-was-missing"> </a> What the embed page was missing
+</h2> <p>The embed page is a separate Go template in <code>embed_page.go</code>. It's intentionally minimal — no transcript panel, no comments, no emoji reactions. Just the video, a footer with the title, and a link back to the full watch page.</p> <p>The original SQL query fetched 14 columns:<br>
+</p> <div>
+<pre><code><span>SELECT</span> <span>v</span><span>.</span><span>id</span><span>,</span> <span>v</span><span>.</span><span>title</span><span>,</span> <span>v</span><span>.</span><span>file_key</span><span>,</span> <span>u</span><span>.</span><span>name</span><span>,</span> <span>v</span><span>.</span><span>created_at</span><span>,</span> <span>v</span><span>.</span><span>share_expires_at</span><span>,</span> <span>v</span><span>.</span><span>thumbnail_key</span><span>,</span> <span>v</span><span>.</span><span>share_password</span><span>,</span> <span>v</span><span>.</span><span>content_type</span><span>,</span> <span>v</span><span>.</span><span>user_id</span><span>,</span> <span>u</span><span>.</span><span>email</span><span>,</span> <span>v</span><span>.</span><span>view_notification</span><span>,</span> <span>v</span><span>.</span><span>cta_text</span><span>,</span> <span>v</span><span>.</span><span>cta_url</span>
+<span>FROM</span> <span>videos</span> <span>v</span>
+<span>JOIN</span> <span>users</span> <span>u</span> <span>ON</span> <span>u</span><span>.</span><span>id</span> <span>=</span> <span>v</span><span>.</span><span>user_id</span>
+<span>WHERE</span> <span>v</span><span>.</span><span>share_token</span> <span>=</span> <span>$</span><span>1</span> <span>AND</span> <span>v</span><span>.</span><span>status</span> <span>IN</span> <span>(</span><span>'ready'</span><span>,</span> <span>'processing'</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>No <code>transcript_key</code>. The data was in the database, the VTT file was in S3, but the embed page never asked for it.</p> <h2> <a name="the-fix" href="#the-fix"> </a> The fix
+</h2> <p>Add <code>v.transcript_key</code> to the query:<br>
+</p> <div>
+<pre><code><span>SELECT</span> <span>v</span><span>.</span><span>id</span><span>,</span> <span>v</span><span>.</span><span>title</span><span>,</span> <span>v</span><span>.</span><span>file_key</span><span>,</span> <span>u</span><span>.</span><span>name</span><span>,</span> <span>v</span><span>.</span><span>created_at</span><span>,</span> <span>v</span><span>.</span><span>share_expires_at</span><span>,</span> <span>v</span><span>.</span><span>thumbnail_key</span><span>,</span> <span>v</span><span>.</span><span>share_password</span><span>,</span> <span>v</span><span>.</span><span>content_type</span><span>,</span> <span>v</span><span>.</span><span>user_id</span><span>,</span> <span>u</span><span>.</span><span>email</span><span>,</span> <span>v</span><span>.</span><span>view_notification</span><span>,</span> <span>v</span><span>.</span><span>cta_text</span><span>,</span> <span>v</span><span>.</span><span>cta_url</span><span>,</span> <span>v</span><span>.</span><span>transcript_key</span>
+<span>FROM</span> <span>videos</span> <span>v</span>
+<span>JOIN</span> <span>users</span> <span>u</span> <span>ON</span> <span>u</span><span>.</span><span>id</span> <span>=</span> <span>v</span><span>.</span><span>user_id</span>
+<span>WHERE</span> <span>v</span><span>.</span><span>share_token</span> <span>=</span> <span>$</span><span>1</span> <span>AND</span> <span>v</span><span>.</span><span>status</span> <span>IN</span> <span>(</span><span>'ready'</span><span>,</span> <span>'processing'</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Scan it into a nullable string:<br>
+</p> <div>
+<pre><code><span>var</span> <span>transcriptKey</span> <span>*</span><span>string</span>
+<span>// ... in the Scan call:</span>
+<span>&amp;</span><span>ctaText</span><span>,</span> <span>&amp;</span><span>ctaUrl</span><span>,</span> <span>&amp;</span><span>transcriptKey</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Generate a presigned URL if the key exists:<br>
+</p> <div>
+<pre><code><span>var</span> <span>transcriptURL</span> <span>string</span>
+<span>if</span> <span>transcriptKey</span> <span>!=</span> <span>nil</span> <span>{</span> <span>if</span> <span>u</span><span>,</span> <span>err</span> <span>:=</span> <span>h</span><span>.</span><span>storage</span><span>.</span><span>GenerateDownloadURL</span><span>(</span> <span>r</span><span>.</span><span>Context</span><span>(),</span> <span>*</span><span>transcriptKey</span><span>,</span> <span>1</span><span>*</span><span>time</span><span>.</span><span>Hour</span><span>,</span> <span>);</span> <span>err</span> <span>==</span> <span>nil</span> <span>{</span> <span>transcriptURL</span> <span>=</span> <span>u</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>And add the <code>&lt;track&gt;</code> element to the template, conditional on the URL being set:<br>
+</p> <div>
+<pre><code><span>&lt;video</span> <span>controls</span> <span>playsinline</span> <span>webkit-playsinline</span> <span>crossorigin=</span><span>"anonymous"</span> <span>controlsList=</span><span>"nodownload"</span> <span>src=</span><span>"{{.VideoURL}}"</span> <span>{{</span><span>if</span> <span>.</span><span>ThumbnailURL</span><span>}}</span> <span>poster=</span><span>"{{.ThumbnailURL}}"</span><span>{{</span><span>end</span><span>}}</span><span>&gt;</span> {{if .TranscriptURL}} <span>&lt;track</span> <span>kind=</span><span>"subtitles"</span> <span>src=</span><span>"{{.TranscriptURL}}"</span> <span>srclang=</span><span>"en"</span> <span>label=</span><span>"Subtitles"</span><span>&gt;</span> {{end}}
+<span>&lt;/video&gt;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The <code>crossorigin="anonymous"</code> attribute was already on the video element (required for CORS-compatible S3 URLs). Without it, browsers block the VTT fetch because it's a cross-origin resource loaded by a media element.</p> <h2> <a name="why-raw-subtitles-endraw-and-not-raw-captions-endraw-" href="#why-raw-subtitles-endraw-and-not-raw-captions-endraw-"> </a> Why <code>subtitles</code> and not <code>captions</code>
+</h2> <p>The <code>&lt;track&gt;</code> element supports two similar kinds: <code>subtitles</code> and <code>captions</code>. Subtitles are a text version of the dialogue. Captions include non-speech information too — sound effects, music cues, speaker identification.</p> <p>Whisper generates a speech-to-text transcription. It doesn't annotate sound effects or identify speakers. That makes <code>subtitles</code> the correct kind. Using <code>captions</code> would promise more than the track delivers.</p> <h2> <a name="what-about-the-raw-default-endraw-attribute" href="#what-about-the-raw-default-endraw-attribute"> </a> What about the <code>default</code> attribute?
+</h2> <p>The watch page uses <code>&lt;track ... default&gt;</code>, which tells the browser to enable subtitles automatically. The embed page doesn't. Embedded videos autoplay muted — having subtitles pop up immediately in an iframe that someone scrolls past would be distracting. The viewer can enable them manually through the CC button if they want them.</p> <h2> <a name="the-graceful-fallback" href="#the-graceful-fallback"> </a> The graceful fallback
+</h2> <p>If a video hasn't been transcribed yet (the worker hasn't processed it, or transcription failed), <code>transcript_key</code> is NULL in the database. The <code>if transcriptKey != nil</code> check means the presigned URL generation is skipped, <code>TranscriptURL</code> stays empty, and the <code>{{if .TranscriptURL}}</code> template conditional means no <code>&lt;track&gt;</code> element is rendered.</p> <p>No subtitle track, no CC button in the player controls. The viewer sees the same embed they saw before this change. The feature is invisible when there's nothing to show.</p> <h2> <a name="try-it" href="#try-it"> </a> Try it
+</h2> <p><a href="https://sendrec.eu/" target="_blank">SendRec</a> is open source (AGPL-3.0) and self-hostable. Closed captions in embeds are live at <a href="https://app.sendrec.eu/" target="_blank">app.sendrec.eu</a> — upload a video, wait for transcription to complete, then use the embed code from the Library. The CC button will appear in the embedded player's controls.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

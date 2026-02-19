@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CISA orders feds to patch actively exploited Dell flaw within 3 days</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>CISA orders feds to patch actively exploited Dell flaw within 3 days</h1>
+  <div class="metadata">
+    Source: BleepingComputer Windows | Date: 2/19/2026 3:30:37 PM | <a href="https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-actively-exploited-dell-flaw-within-3-days/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><img alt="CISA" src="https://www.bleepstatic.com/content/hl-images/2025/01/13/CISA--headpic.jpg"></p> <p>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) ordered government agencies to patch their systems within three days against a&nbsp;maximum-severity Dell vulnerability that has been under active exploitation since&nbsp;mid-2024.</p> <p>According to&nbsp;security researchers from Mandiant and the Google Threat Intelligence Group (GTIG),&nbsp;this&nbsp;hardcoded-credential vulnerability (<a href="https://www.cve.org/CVERecord?id=CVE-2026-22769" target="_blank">CVE-2026-22769</a>) in Dell's RecoverPoint (a solution used for VMware virtual machine backup and recovery) is <a href="https://www.bleepingcomputer.com/news/security/chinese-hackers-exploiting-dell-zero-day-flaw-since-mid-2024/" target="_blank">being&nbsp;exploited by&nbsp;a suspected Chinese hacking&nbsp;group</a> tracked as UNC6201.</p> <p>After gaining access to a&nbsp;victim's network in CVE-2026-22769 attacks, UNC6201 deploys several malware payloads, including a newly identified backdoor called Grimbolt. This malware is built using a relatively new compilation technique that makes it harder to analyze than its predecessor, the&nbsp;<a href="https://www.bleepingcomputer.com/tag/BRICKSTORM/" target="_blank">Brickstorm</a>&nbsp;backdoor.</p> <p><a href="https://www.wiz.io/lp/ai-security-board-report-template?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_AI-Security-Board-Report-Template&amp;sfcid=701Vh00000Wn7E1IAJ&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=AI-Board-Report" target="_blank"><img src="https://www.bleepstatic.com/c/w/ai-security-board-report-template.jpg" alt="Wiz"></a>
+</p> <p>While the group swapped Brickstorm for Grimbolt in September 2025, it's not yet clear whether this switch was part of a&nbsp;planned upgrade or "a reaction to incident response efforts led by Mandiant and other industry partners."</p> <p>"Analysis of incident response engagements revealed that UNC6201, a suspected PRC-nexus threat cluster, has exploited this flaw since at least mid-2024 to move laterally, maintain persistent access, and deploy malware including SLAYSTYLE, BRICKSTORM, and a novel backdoor tracked as GRIMBOLT," they said.</p> <p>The security researchers have also found overlaps between UNC6201 and the Silk Typhoon Chinese state-backed cyberespionage group (although the two are not considered identical by GTIG), also tracked as UNC5221 and&nbsp;known for exploiting Ivanti zero-days to&nbsp;<a href="https://www.bleepingcomputer.com/news/security/ivanti-epmm-flaw-exploited-by-chinese-hackers-to-breach-govt-agencies/" target="_blank">target government agencies</a>&nbsp;with custom&nbsp;<a href="https://www.bleepingcomputer.com/news/security/google-chinese-hackers-likely-behind-ivanti-vpn-zero-day-attacks/" target="_blank">Spawnant</a>&nbsp;and&nbsp;<a href="https://www.bleepingcomputer.com/news/security/ivanti-connect-secure-zero-days-exploited-to-deploy-custom-malware/" target="_blank">Zipline</a>&nbsp;malware.</p> <p>Silk Typhoon&nbsp;has previously&nbsp;breached the&nbsp;systems of several U.S. government agencies, including&nbsp;<a href="https://www.bleepingcomputer.com/news/security/us-treasury-department-breached-through-remote-support-platform/" target="_blank">the U.S. Treasury Department</a>,&nbsp;<a href="https://www.bleepingcomputer.com/news/security/chinese-hackers-targeted-sanctions-office-in-treasury-attack/" target="_blank">the Office of Foreign Assets Control (OFAC)</a>, and&nbsp;<a href="https://www.bleepingcomputer.com/news/security/treasury-hackers-also-breached-us-foreign-investments-review-office/" target="_blank">the Committee on Foreign Investment in the United States (CFIUS)</a>.</p> <h2>Feds&nbsp;ordered to prioritize CVE-2026-22769 patches</h2> <p>CISA has now&nbsp;<a href="https://www.cisa.gov/news-events/alerts/2026/02/18/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank">added</a>&nbsp;the security flaw&nbsp;to its&nbsp;<a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-22769" target="_blank">Known Exploited Vulnerabilities (KEV) catalog</a>&nbsp;on Wednesday and ordered&nbsp;Federal Civilian Executive Branch (FCEB) agencies to secure their networks by the end of Saturday, February 21, as mandated by Binding Operational Directive (BOD) 22-01.</p> <p>"These types of vulnerabilities are frequent attack vectors for malicious cyber actors and pose significant risks to the federal enterprise,"&nbsp;<a href="https://www.cisa.gov/news-events/alerts/2026/02/18/cisa-adds-two-known-exploited-vulnerabilities-catalog" target="_blank">CISA warned</a>&nbsp;on Wednesday.&nbsp;</p> <p>"Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable."</p> <p>Last week, CISA also gave U.S. federal&nbsp;agencies three days to&nbsp;<a href="https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-beyondtrust-flaw-within-three-days/" target="_blank">secure their BeyondTrust Remote Support instances</a>&nbsp;against an actively exploited remote code execution vulnerability (<a href="https://www.bleepingcomputer.com/news/security/beyondtrust-warns-of-critical-rce-flaw-in-remote-support-software/" target="_blank">CVE-2026-1731</a>).</p> <p><span>Hacktron, which&nbsp;reported the vulnerability&nbsp;on January 31, <a href="https://www.hacktron.ai/blog/cve-2026-1731-beyondtrust-remote-support-rce" target="_blank">warned in early February</a> that around 11,000 BeyondTrust Remote Support instances were exposed online, and that around 8,500 were on-premises deployments that required manual patching.</span></p> <div> <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank"> <img src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" alt="tines"> </a> </p> <div> <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p> </div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

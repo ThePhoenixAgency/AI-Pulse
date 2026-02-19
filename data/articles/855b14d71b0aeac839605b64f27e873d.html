@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,45 +28,8 @@
     Source: GitHub Changelog | Date: 2/17/2026 6:22:24 PM | <a href="https://github.blog/changelog/2026-02-17-mcp-registry-and-more-improvements-in-copilot-in-eclipse" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p>We’ve just shipped a new set of improvements to make GitHub Copilot in Eclipse smarter and easier to use. These updates bring more context options, smoother workflows, and better customization for your development experience.</p>
-<h2><a href="#%e2%9c%a8-whats-new"> What’s new</a></h2>
-<h3><a href="#mcp-registry">MCP Registry</a></h3>
-<p>Discover and install MCP servers from a centralized registry with just a few clicks. Browse available servers, view their capabilities, and add them to your workspace instantly, all without requiring any manual configuration required.</p>
-<p><img alt="Open MCP Registry" src="https://github.com/user-attachments/assets/a53422a7-4f6c-4736-8fb9-30bf1e6bc026"></p>
-<h3><a href="#manage-todo-list-tool">Manage Todo List tool</a></h3>
-<p>Stay organized with the new Todo List feature. When working on complex tasks, Copilot can now create and manage a structured todo list to track progress and plan steps. Watch as todos are checked off in real-time while the agent works through your request, giving you clear visibility into what’s done and what’s next.</p>
-<p><img alt="Manage Todo list view" src="https://github.com/user-attachments/assets/5683b6b0-b664-4932-a1ab-82243dbf6e56"></p>
-<h3><a href="#chat-view-ux-enhancements">Chat view UX enhancements</a></h3>
-<p>We’ve refreshed the chat experience with several improvements:</p>
-<ul>
-<li><strong>Font size control</strong>: Adjust the chat view font size to your preference using keyboard shortcuts or the view menu. Use <pre><code>⌘ + =</code></pre> / <pre><code>⌘ + -</code></pre> on macOS or <pre><code>Ctrl + =</code></pre> / <pre><code>Ctrl + -</code></pre> on Windows/Linux. Make it easier on your eyes!</li>
-<li><strong>Dark theme refresh</strong>: A polished dark theme with improved contrast and readability for those late-night coding sessions.</li>
-<li><strong>Undo/Redo support</strong>: Made a typo in your chat input? Now you can undo and redo your edits seamlessly.</li>
-<li><strong>Native toolbar integration</strong>: The buttons that used to sit on the chat view’s top bar have now found a new home in the Eclipse view’s toolbar. This change makes the interface feel more natural and integrated with your workflow.</li>
-</ul>
-<p><img alt="Chat view in Eclipse" src="https://github.com/user-attachments/assets/03e11792-7c9c-42a1-88f2-77eab29e5193"></p>
-<blockquote><p> <strong>Note</strong>: If you cannot see the new buttons, please delete the </p><pre><code>workbench.xmi</code></pre> file located at: <pre><code>/.metadata/.plugins/org.eclipse.e4.workbench/</code></pre>.
-<p></p></blockquote>
-<h3><a href="#editor-selection-context">Editor Selection Context</a></h3>
-<p>Copilot now automatically includes your current editor selection in the chat context. Simply select some code, open the chat, and Copilot already knows what you’re working with. This makes your conversations more relevant and focused.</p>
-<p><img alt="Show selection context in chat" src="https://github.com/user-attachments/assets/40fdaa23-dc14-4584-82a8-5852b8f166ef"></p>
-<h3><a href="#new-preferences">New preferences</a></h3>
-<p>Fine-tune your Copilot experience with new preference options:</p>
-<ul>
-<li><strong>Agent max requests</strong>: Control how many requests the agent can make before asking to reply ‘continue’, giving you more control over large, complex tasks.<br>
-<img alt="Set max requests for agents" src="https://github.com/user-attachments/assets/ab45ba41-9365-4e33-9476-8b5931770faf">
-</li>
-<li>
-<p><strong>Commit instructions</strong>: Customize how Copilot generates commit messages to match your team’s conventions and style.<br>
-<img alt="Show commit instructions entry" src="https://github.com/user-attachments/assets/25309ad8-aa9f-4c1c-9408-28a16fbeef6d"></p>
-</li>
-</ul>
-<h2><a href="#%f0%9f%9b%a0-try-it-out"> Try it out</a></h2>
-<p>Get started by checking out our <a href="https://docs.github.com/copilot/how-tos/chat/asking-github-copilot-questions-in-your-ide?tool=eclipse">official documentation</a>.</p> <p>Your feedback drives improvements. Let us know what you think using the in-product feedback option, or share your thoughts in the following channels:</p>
-<ul>
-<li><a href="https://github.com/orgs/community/discussions/151288">GitHub Copilot for Eclipse discussions</a></li>
-<li><a href="https://github.com/microsoft/copilot-eclipse-feedback/issues">GitHub Copilot for Eclipse issues</a></li>
-</ul> </div></div>
+    <p>We’ve just shipped a new set of improvements to make GitHub Copilot in Eclipse smarter and easier to use. These updates bring more context options, smoother workflows, and better customization…
+The post MCP Registry and more improvements in Copilot in Eclipse appeared first on The GitHub Blog.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

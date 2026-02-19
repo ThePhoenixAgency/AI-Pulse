@@ -5,82 +5,111 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Feb 2026 14:49:06 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Feb 2026 16:49:45 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: Decks For Good – get fundraising advice when you give to charity]]></title>
-      <link>https://decksforgood.com/</link>
-      <description><![CDATA[As an angel investor in ~15 unicorns and a bunch of others startups, I spend a lot of time reviewing decks for founders as a favor. I love to help but I want my time to have even more impact. So I built Decks For Good, a website where founders can get feedback on their deck and fundraising process from a VC or exited founder in exchange for a $250 donation to charity. I put together a great group of advisors and we're ready to help you out! Sign up and let's do some good together. URL: https://news.ycombinator.com/item?id=47074052
-Points: 1
-# : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 14:23:56 GMT</pubDate>
+      <title><![CDATA[Show HN:`npx continues` – resume same session Claude, Gemini, Codex when limited]]></title>
+      <link>https://github.com/yigitkonur/cli-continues</link>
+      <description><![CDATA[i kept hitting rate limits in Claude Code mid-debugging, then hopping to Gemini or Codex. the annoying part wasn't switching tools (copy-pasting terminal output doesn't bring tool-use context with it) — it was losing the full conversation and spending 10 minutes re-explaining what i was doing.
+so i built *continues*. it finds your existing AI coding sessions across five tools (Claude Code, GitHub Copilot, Gemini CLI, OpenAI Codex, OpenCode), lets you pick one, and generates a structured handoff so you can continue in another tool without starting from zero. npx continues # interactive TUI: pick a session, pick a target continues scan # see what it finds (read-only) continues claude # jump into your latest Claude Code session continues resume abc123 --in gemini # hand off a specific session to Gemini * scans the current directory first (so you see what's relevant), then shows everything
+* you pick a session + a target tool
+* it generates a handoff doc: recent conversation, cwd, files modified (best-effort), pending tasks
+* launches the target tool with everything injected inline — no extra "go read this file" step
+what it's not:
+* not "true migration" — it's context injection. you get recent messages + metadata, not a full replay (pls come up with PR for full session reprod)
+* rate limit detection is manual for now — you run it when you know you're blocked, no auto-detect yet
+* session formats are mostly undocumented and can change anytime (this is the biggest maintenance risk)
+* local file parsing only, no API calls — your data stays on your machine
+curious if anyone else actually juggles multiple AI coding CLIs, or if most people just commit to one and wait out rate limits. would love to hear how you handle tool-switching + context today + feedbacks on context quality migrations and feedbacks are welcomed. URL: https://news.ycombinator.com/item?id=47075089
+Points: 4
+# : 2]]></description>
+      <pubDate>Thu, 19 Feb 2026 15:50:19 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://decksforgood.com/</guid>
+      <guid>https://github.com/yigitkonur/cli-continues</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: GuardRails – A new coding agent task tool inspired by Beads]]></title>
-      <link>https://giancarlostoro.com/introducing-guardrails-a-new-coding-agent-task-companion</link>
-      <description><![CDATA[GitHub: https://github.com/Giancarlos/guardrails
-Good morning from the east coast,
-I've been architecting GuardRails for about a month if not longer now, finally checked in the code a week or so ago. Its a tool that lets you have your coding agent (I've been using it with Claude Code) use a ticketing system like Beads or for those unfamiliar, like Jira.
-The reason I made a new tool as opposed to sticking to Beads is two primary reasons:
-1) Beads is married to git, works with git hooks, needs them. I sometimes work with projects on other version control systems, on machines that don't even have git installed. This is not good for me, as much as I love Beads. The other related reason is that it bugs out sometimes.
-2) In Beads the "bead" or task has no safetynet, or guard rail if you will to stop the AI agent from completing a task without validation.
-In GuardRails I started from the bottom up. I designed it to be SQLite first, using Go, and I implemented a concept called gates. A gate is what prevents your AI model from completing a task. A gate can be as simple as "run unit tests" or "build the project to ensure no build issues are found" and even "ask the human for manual testing" whatever you want it to be, its just there to prevent your agent from just closing a task. Every task requires one gate. Gates can be re-used, and if you re-use one, this new copy must pass for your new task(s).
-It is still early stages, and I'm still working out what features to add. I am definitely looking to add a web interface though I think as a separate tool so you can run it once and see the tasks and their statuses, as well as all your gates.
-Another thing worth noting is currently it supports two-way synching for GitHub issues, so whether you want to pull down GitHub issues for your agent to work on, or sync up GitHub issues. Worth noting is that I implemented a "claim" system when you pull down a specific GitHub task, the agent will for you to signal to others that someone could potentially be working on a GitHub task. In the future I want to figure out a way to have the agent first check a project for its AI policies to ensure that it does not claim a task it shouldn't be working on (we all saw this happen on HN recently).
-For those wondering, I definitely "vibe coded" this, though I hate that term because it takes away from all the work I put into designing and testing this tool. All of the tickets I have generated locally are up on the GitHub, you can see what's planned, what's been worked on, and what have you. I use it for all my personal projects, hoping to showcase those as well in the future.
-I welcome any feedback.
-Thanks,
-Giancarlos URL: https://news.ycombinator.com/item?id=47074034
+      <title><![CDATA[Show HN: TrustSignal–Free outside-in trust readiness scanner for SaaS companies]]></title>
+      <link>https://www.trustsignal.tech/</link>
+      <description><![CDATA[Article URL: https://www.trustsignal.tech/ URL: https://news.ycombinator.com/item?id=47075009
 Points: 1
-# : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 14:22:25 GMT</pubDate>
+# : 1]]></description>
+      <pubDate>Thu, 19 Feb 2026 15:42:42 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://giancarlostoro.com/introducing-guardrails-a-new-coding-agent-task-companion</guid>
+      <guid>https://www.trustsignal.tech/</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: PortLume AI – Auto-generate portfolios from GitHub and AI job tools]]></title>
-      <link>https://portlumeai.com/</link>
-      <description><![CDATA[I built PortLume AI to solve a problem I had: spending weekends building portfolio websites instead of coding actual projects.
+      <title><![CDATA[Show HN: Mining tenement API – 83K tenements across AU and CA]]></title>
+      <link>https://www.tryautropic.com/mining</link>
+      <description><![CDATA[I built a unified REST API for mining tenement data because the fragmentation across government portals was driving me crazy.
+Each state/province has different formats, different APIs (or no API at all), different field names. If you wanted to answer "what tenements does Company X hold across multiple jurisdictions?" you'd need to query 4+ different systems.
+Currently covering:
+- Western Australia: 30,101 tenements
+- Northern Territory: 3,945 tenements
+- British Columbia: 41,981 tenements
+- Saskatchewan: 7,600 tenements
+Free during beta, no API key required. Designed for AI agents that need structured mining data.
+Would love feedback, especially from anyone working in mining tech or building AI agents that need real-world data sources. URL: https://news.ycombinator.com/item?id=47074905
+Points: 1
+# : 0]]></description>
+      <pubDate>Thu, 19 Feb 2026 15:32:49 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://www.tryautropic.com/mining</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: IPAware – Unlimited IP Intelligence API with Flat Pricing]]></title>
+      <link>https://news.ycombinator.com/item?id=47074875</link>
+      <description><![CDATA[Hey HN,
+We built IPAware (https://ipaware.io) - an IP intelligence API that doesn't charge per request.
 What it does:
-- Syncs GitHub repos → auto-generates portfolio with project metrics (commits, stars, languages)
-- AI resume parser → extracts experience and generates "About Me" sections
-- ATS resume checker → scores your resume against job descriptions (like Jobscan but free)
-- AI cover letter generator → tailored letters from job postings in 30 seconds
-- Email-to-tracker → forward job emails, AI auto-updates your application status
-- Portfolio analytics → track views, clicks, traffic sources (where recruiters come from)
-The hardest part was building the email auto-tracker. Resend's inbound webhook gives you raw emails, but I had to:
-1. Parse "Thank you for applying" vs "You have an interview" vs job alert spam
-2. Extract company names from messy subject lines
-3. Match emails to existing applications in the DB
-4. Handle LinkedIn's weird forwarding patterns
-I tried using OpenAI first, but Gemini 2.0 Flash is 10x cheaper and faster for my use case. The ATS checker analyzes resume-JD keyword overlap and gives specific recommendations (e.g., "Change 'React' to 'React.js'").
-Free tier includes:
-- Full portfolio builder
-- 1 AI cover letter/month
-- 1 ATS check/month
-- Basic analytics (last 7 days)
-Pro ($4/mo) adds:
-- Unlimited AI generations
-- Email auto-tracking
-- Advanced analytics (traffic sources, geo data)
-- Custom themes
-Looking for feedback on:
-- ATS checker accuracy (does it match your experience with other tools?)
-- Email parsing reliability (any edge cases I'm missing?)
-- Pricing (is $4/mo reasonable for unlimited AI tools?)
-- GitHub sync performance (slow with 100+ repos?)
-Built this solo over 6 months while working full-time. Currently ~50 users in beta.
-Happy to answer technical questions or take feature requests! URL: https://news.ycombinator.com/item?id=47073956
-Points: 1
+- IP geolocation (country, region, city, coordinates, timezone)
+- Threat detection (VPN/Proxy/Tor, risk scoring, datacenter detection)
+- ASN/ISP data
+- Clean JSON responses
+Why we built this:
+Every IP lookup service we tried had the same problem - you start small, your app grow and suddenly you're paying hundreds for what should be a commodity lookup. The metering anxiety is real. We wanted something we could integrate without worrying about the bill exploding.
+How it works:
+Flat monthly/yearly pricing. Pro plan is unlimited requests for $9.99/month or $99.90/year. Free tier gives you 5000 requests/month to try it out. Fair-use limits exist to prevent abuse, but no per-request metering.
+Tech details:
+- Edge delivery for low latency
+- REST API, returns JSON
+- No SDK required (works with curl, fetch, or any HTTP client)
+- Databases updated every night for accuracy
+- IPv4 and IPv6 support
+Limitations to be upfront about:
+- City-level accuracy varies by region (country/region is reliable, city is best-effort)
+- Fair-use applies on unlimited plans - this isn't for scraping the entire internet
+- Our threat detection algorithm is good but not perfect
+Launch offer:
+Sign up within the first 24 hours and get the Pro tier ($9.99/month) free for an entire month. Your account gets a full month of unlimited Pro access with features that are not normally available to the free tier - no strings attached. At any point, you can decide to keep the Pro tier or switch to the free tier on the dashboard.
+Happy to answer questions about the tech, infrastructure, or anything else.
+All feedback is greatly appreciated! URL: https://news.ycombinator.com/item?id=47074875
+Points: 6
 # : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 14:14:52 GMT</pubDate>
+      <pubDate>Thu, 19 Feb 2026 15:31:06 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://portlumeai.com/</guid>
+      <guid>https://news.ycombinator.com/item?id=47074875</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : Microsoft réussit à sauvegarder des données dans du verre : un stockage record de 10 000 ans]]></title>
+      <link>https://www.lesnumeriques.com/informatique/microsoft-reussit-a-sauvegarder-des-donnees-dans-du-verre-un-stockage-record-de-10-000-ans-n251719.html</link>
+      <description><![CDATA[En pleine pénurie de mémoire, Microsoft a partagé l’avancement d’un projet visant à conserver des données dans du verre. Une innovation qui repousserait les limites de la durée de vie des solutions de stockage, les préservant durant une période de 10 000 ans. Voici le Project Silica !Graver du verre pour un stockage ultra longue durée, le projet de M...]]></description>
+      <pubDate>Thu, 19 Feb 2026 15:07:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/informatique/microsoft-reussit-a-sauvegarder-des-donnees-dans-du-verre-un-stockage-record-de-10-000-ans-n251719.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[BioVault : un projet scientifique fou qui veut sauver la vie sur Terre en la congelant]]></title>
+      <link>https://www.journaldugeek.com/2026/02/19/biovault-science-vie-terre-congeler/</link>
+      <description><![CDATA[Colossal Biosciences espère sauver la vie sur Terre en la congelant et ainsi préserver certaines espèces aujourd'hui en voie d'extinction.]]></description>
+      <pubDate>Thu, 19 Feb 2026 15:01:35 GMT</pubDate>
+      <source>Journal du Geek</source>
+      <category>products</category>
+      <guid>https://www.journaldugeek.com/2026/02/19/biovault-science-vie-terre-congeler/</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Vous pourrez bientôt protéger votre compte WhatsApp avec un mot de passe]]></title>

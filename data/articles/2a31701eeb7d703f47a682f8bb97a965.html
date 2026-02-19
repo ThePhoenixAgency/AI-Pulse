@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AMD Announces hipThreads For Easier Porting Of C++ Code To GPUs</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>AMD Announces hipThreads For Easier Porting Of C++ Code To GPUs</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/19/2026 3:10:02 PM | <a href="https://www.phoronix.com/news/AMD-HIP-Threads" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div>
+<p><img alt="AMD" src="https://www.phoronix.com/assets/categories/amd.webp"></p><p>
+The newest addition to AMD's ROCm/HIP portfolio is HIP Threads "hipThreads" as a C++ style concurrency library for AMD GPUs.
+</p><p>
+With HIP Threads, AMD is aiming to make it easy for developers already using C++ std::thread patterns and port it over to the similar hip::thread for more easily porting C++ codebases to AMD GPUs. HIP Threads is also designed to allow for incremental porting rather than being a big break with a large upfront investment into the code.
+</p><blockquote>"hipThreads introduces a GPU execution model that lets you launch and coordinate work using idioms you already know from the C++ Concurrency Support Library. Instead of beginning your GPU journey by learning kernel configuration, grid/block semantics, and ad-hoc synchronization, you can write hip::thread, hip::mutex, hip::lock_guard, and hip::condition_variable code that feels structurally similar to your existing std::thread-driven CPU programs—making first contact with GPU compute feel like an incremental extension of existing C++ expertise, not a wholesale shift in mental model.
+<p>
+The design of hipThreads lets teams port CPU concurrency regions incrementally: replace std::thread with hip::thread, adapt synchronization where needed, and move logic onto the GPU without immediately restructuring everything into bulk kernels. For newcomers to GPU programming, it reduces cognitive load - developers can experiment with parallelism using concepts they already trust, then dive deeper into HIP specifics only as optimization demands.
+</p><p>
+In short, hipThreads aims to make AMD GPU compute more accessible, more maintainable, and more aligned with modern C++ concurrency practices, accelerating both learning curves and codebase evolution."</p></blockquote>
+<p>More details on HIP Threads "hipThreads" can be found via today's announcement on the <a href="https://rocm.blogs.amd.com/software-tools-optimization/hipthreads-introduction/README.html">AMD ROCm blog</a>.
+</p><p>
+Over on <a href="https://gpuopen.com/learn/hip-threads-for-teams-without-gpu-experts/">AMD GPUOpen</a> is also complementary material on HIP Threads for GPU acceleration with reduced complexity for C++ developers.
+</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=amd_hip_threads" alt="AMD hipThreads porting example"></p>
+<p>AMD is promoting HIP Threads as being great for C++ teams with CPU bottlenecks, developers lacking GPU expertise or not wanting to otherwise learn ROCm/CUDA parallel programming models, and tool vendors who want simple GPU integration.
+</p><p>
+The hipThreads library is open-source via the Apache 2.0 license on <a href="https://github.com/rocm/hipthreads">GitHub</a>. The hipThreads usage depends upon ROCm 7.0+ and currently only supports Linux.
+</p><p>
+It will be interesting to see how the adoption is of hipThreads by C++ developers moving forward.</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
