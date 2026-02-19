@@ -5,98 +5,91 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Feb 2026 12:52:49 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Feb 2026 14:49:06 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: CandyDocs – Simple, developer-friendly documentation for SaaS teams]]></title>
-      <link>https://candydocs.com/</link>
-      <description><![CDATA[Hi HN,
-We built CandyDocs after watching SaaS teams stitch together docs, roadmaps, feedback tools, release notes, and API references across multiple products.
-CandyDocs is a unified, fully branded workspace that brings all of this into one place.
-Core modules (all customizable):
-- Knowledge base (guides, FAQs, onboarding)
-- Roadmap (planned / in progress / shipped, with voting)
-- Feedback (feature requests + )
-- Updates (release notes and announcements)
-- API documentation (endpoints, params, examples)
-- Custom pages (policies, flows, anything else)
-Platform features:
-- Custom domains + branding
-- Dynamic navigation
-- Searchable knowledge base
-- Public roadmap with voting
-- Structured feedback collection
-- Release notes publishing
-- API reference docs
-- Analytics and engagement insights
-- Role-based permissions (admins/moderators)
-The goal is to replace scattered tools with one consistent product communication hub.
-We’re early and actively iterating. Would love technical feedback, criticism, or feature requests. URL: https://news.ycombinator.com/item?id=47072974
+      <title><![CDATA[Show HN: Decks For Good – get fundraising advice when you give to charity]]></title>
+      <link>https://decksforgood.com/</link>
+      <description><![CDATA[As an angel investor in ~15 unicorns and a bunch of others startups, I spend a lot of time reviewing decks for founders as a favor. I love to help but I want my time to have even more impact. So I built Decks For Good, a website where founders can get feedback on their deck and fundraising process from a VC or exited founder in exchange for a $250 donation to charity. I put together a great group of advisors and we're ready to help you out! Sign up and let's do some good together. URL: https://news.ycombinator.com/item?id=47074052
 Points: 1
 # : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 12:14:26 GMT</pubDate>
+      <pubDate>Thu, 19 Feb 2026 14:23:56 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://candydocs.com/</guid>
+      <guid>https://decksforgood.com/</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: Agorio – TypeScript SDK for Building AI Shopping Agents (UCP/ACP)]]></title>
-      <link>https://github.com/Nolpak14/agorio</link>
-      <description><![CDATA[I built an open-source TypeScript SDK for building AI agents that can discover merchants, browse products, and complete purchases using the new UCP (Google/Shopify) and ACP (OpenAI/Stripe) commerce protocols.
-Try it in 2 minutes: npm install @agorio/sdk import { ShoppingAgent, GeminiAdapter, MockMerchant } from '@agorio/sdk'; const merchant = new MockMerchant(); await merchant.start(); const agent = new ShoppingAgent({ llm: new GeminiAdapter({ apiKey: process.env.GEMINI_API_KEY }) }); const result = await agent.run( `Go to ${merchant.domain} and buy me wireless headphones` ); - UcpClient: discovers merchants via /.well-known/ucp, parses capabilities, normalizes both array and object formats, calls REST APIs
-- ShoppingAgent: plan-act-observe loop with 12 built-in tools (discover, search, browse, cart, checkout, order tracking)
-- MockMerchant: full UCP-compliant Express server with product catalog, checkout flow, and configurable chaos testing (latency, error rates)
-- LlmAdapter interface: swap LLMs without changing agent code. Gemini ships today, Claude and OpenAI coming in v0.2
-The agent handles the entire purchase flow autonomously - UCP discovery, product search, cart management, shipping, payment, order confirmation. 37 tests passing.
-Context: UCP was announced Jan 11 by Google, Shopify, and 25+ partners (Walmart, Target, Visa, Mastercard). ACP is by OpenAI and Stripe, powers ChatGPT Instant Checkout. Both are open standards. But there was no developer SDK for building on top of them - just the raw specs.
-GitHub: https://github.com/Nolpak14/agorio
-npm: https://www.npmjs.com/package/@agorio/sdk URL: https://news.ycombinator.com/item?id=47072813
-Points: 1
-# : 1]]></description>
-      <pubDate>Thu, 19 Feb 2026 11:48:07 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://github.com/Nolpak14/agorio</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: Aegis.rs, the first open source Rust-based LLM security proxy]]></title>
-      <link>https://github.com/ParzivalHack/Aegis.rs</link>
-      <description><![CDATA[Hey HN,
-I've been working on Aegis.rs for a bit, and I wanted to share it. It's the first open-source Rust-based LLM security proxy (that I could find, at least).
-I kept having the same issue, since existing LLM security tools are either Python libraries you have to manually integrate into your app, or cloud SaaS products that route your traffic through a third party (which you can't control), and i wanted something that just sat in the middle without touching my code or sending prompts anywhere.
-So I built a transparent reverse proxy. You point your requests at localhost:8080 instead of your LLM endpoint and, so far, it catches prompt injections, jailbreaks, PII leakage, and other LLM attacks, blocking them before any malicious request even reaches the model. If a request is clean, it forwards it. If it's malicious, it blocks it. Zero code changes.
-It runs two layers: a fast heuristic engine with 150+ hand-crafted (expandable) regex rules that runs in under 1ms (thanks to Actix-web), plus an AI judge using Groq for semantic analysis on ambiguous cases.
-Can be easily shipped as a single binary with a live dashboard, hot-reloadable rules, and structured JSON logs.
-Still v0.1 but it's working well enough for me to share its first version. The heuristic layer is fast enough for prod, and extending the rules is pretty easy.
-Would love feedbacks (or contributions lol), especially from anyone dealing with LLMs' security and threat modeling :) URL: https://news.ycombinator.com/item?id=47072572
-Points: 2
-# : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 11:11:28 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://github.com/ParzivalHack/Aegis.rs</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: StatusMonk – Uptime monitoring and status pages for small SaaS teams]]></title>
-      <link>https://statusmonk.com/</link>
-      <description><![CDATA[Hi HN,
-We built StatusMonk after repeatedly finding out about outages from customers instead of our systems.
-StatusMonk is an all-in-one monitoring and public status page platform designed for founders and small teams who want early detection and clear communication without enterprise complexity.
-What it does today:
-- Monitor websites, APIs, and cron jobs
-- Domain, SSL certificate, and DNS monitoring
-- Alerts via email, Slack, or webhooks
-- Automatic incident creation and recovery notifications
-- Public status pages with uptime history and incidents
-The goal is simple: detect problems early, alert the right people fast, and keep users informed from one place.
-We are still early and actively iterating based on feedback.
-Would love thoughts, criticism, or feature requests. URL: https://news.ycombinator.com/item?id=47072913
+      <title><![CDATA[Show HN: GuardRails – A new coding agent task tool inspired by Beads]]></title>
+      <link>https://giancarlostoro.com/introducing-guardrails-a-new-coding-agent-task-companion</link>
+      <description><![CDATA[GitHub: https://github.com/Giancarlos/guardrails
+Good morning from the east coast,
+I've been architecting GuardRails for about a month if not longer now, finally checked in the code a week or so ago. Its a tool that lets you have your coding agent (I've been using it with Claude Code) use a ticketing system like Beads or for those unfamiliar, like Jira.
+The reason I made a new tool as opposed to sticking to Beads is two primary reasons:
+1) Beads is married to git, works with git hooks, needs them. I sometimes work with projects on other version control systems, on machines that don't even have git installed. This is not good for me, as much as I love Beads. The other related reason is that it bugs out sometimes.
+2) In Beads the "bead" or task has no safetynet, or guard rail if you will to stop the AI agent from completing a task without validation.
+In GuardRails I started from the bottom up. I designed it to be SQLite first, using Go, and I implemented a concept called gates. A gate is what prevents your AI model from completing a task. A gate can be as simple as "run unit tests" or "build the project to ensure no build issues are found" and even "ask the human for manual testing" whatever you want it to be, its just there to prevent your agent from just closing a task. Every task requires one gate. Gates can be re-used, and if you re-use one, this new copy must pass for your new task(s).
+It is still early stages, and I'm still working out what features to add. I am definitely looking to add a web interface though I think as a separate tool so you can run it once and see the tasks and their statuses, as well as all your gates.
+Another thing worth noting is currently it supports two-way synching for GitHub issues, so whether you want to pull down GitHub issues for your agent to work on, or sync up GitHub issues. Worth noting is that I implemented a "claim" system when you pull down a specific GitHub task, the agent will for you to signal to others that someone could potentially be working on a GitHub task. In the future I want to figure out a way to have the agent first check a project for its AI policies to ensure that it does not claim a task it shouldn't be working on (we all saw this happen on HN recently).
+For those wondering, I definitely "vibe coded" this, though I hate that term because it takes away from all the work I put into designing and testing this tool. All of the tickets I have generated locally are up on the GitHub, you can see what's planned, what's been worked on, and what have you. I use it for all my personal projects, hoping to showcase those as well in the future.
+I welcome any feedback.
+Thanks,
+Giancarlos URL: https://news.ycombinator.com/item?id=47074034
 Points: 1
 # : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 12:03:15 GMT</pubDate>
+      <pubDate>Thu, 19 Feb 2026 14:22:25 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://statusmonk.com/</guid>
+      <guid>https://giancarlostoro.com/introducing-guardrails-a-new-coding-agent-task-companion</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: PortLume AI – Auto-generate portfolios from GitHub and AI job tools]]></title>
+      <link>https://portlumeai.com/</link>
+      <description><![CDATA[I built PortLume AI to solve a problem I had: spending weekends building portfolio websites instead of coding actual projects.
+What it does:
+- Syncs GitHub repos → auto-generates portfolio with project metrics (commits, stars, languages)
+- AI resume parser → extracts experience and generates "About Me" sections
+- ATS resume checker → scores your resume against job descriptions (like Jobscan but free)
+- AI cover letter generator → tailored letters from job postings in 30 seconds
+- Email-to-tracker → forward job emails, AI auto-updates your application status
+- Portfolio analytics → track views, clicks, traffic sources (where recruiters come from)
+The hardest part was building the email auto-tracker. Resend's inbound webhook gives you raw emails, but I had to:
+1. Parse "Thank you for applying" vs "You have an interview" vs job alert spam
+2. Extract company names from messy subject lines
+3. Match emails to existing applications in the DB
+4. Handle LinkedIn's weird forwarding patterns
+I tried using OpenAI first, but Gemini 2.0 Flash is 10x cheaper and faster for my use case. The ATS checker analyzes resume-JD keyword overlap and gives specific recommendations (e.g., "Change 'React' to 'React.js'").
+Free tier includes:
+- Full portfolio builder
+- 1 AI cover letter/month
+- 1 ATS check/month
+- Basic analytics (last 7 days)
+Pro ($4/mo) adds:
+- Unlimited AI generations
+- Email auto-tracking
+- Advanced analytics (traffic sources, geo data)
+- Custom themes
+Looking for feedback on:
+- ATS checker accuracy (does it match your experience with other tools?)
+- Email parsing reliability (any edge cases I'm missing?)
+- Pricing (is $4/mo reasonable for unlimited AI tools?)
+- GitHub sync performance (slow with 100+ repos?)
+Built this solo over 6 months while working full-time. Currently ~50 users in beta.
+Happy to answer technical questions or take feature requests! URL: https://news.ycombinator.com/item?id=47073956
+Points: 1
+# : 0]]></description>
+      <pubDate>Thu, 19 Feb 2026 14:14:52 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://portlumeai.com/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : Vous pourrez bientôt protéger votre compte WhatsApp avec un mot de passe]]></title>
+      <link>https://www.lesnumeriques.com/appli-logiciel/vous-pourrez-bientot-proteger-votre-compte-whatsapp-avec-un-mot-de-passe-n251712.html</link>
+      <description><![CDATA[Alors que Meta prouve chaque jour davantage son désamour pour Messenger, à l'inverse la firme travaille activement sur WhatsApp pour continuer à l'enrichir. Aujourd'hui, la version bêta 2.26.7.8 du service de messagerie instantanée sur Android dévoile un futur ajout intéressant : les mots de passe.WhatsApp sur le web profite enfin des appels audio et...]]></description>
+      <pubDate>Thu, 19 Feb 2026 14:00:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/appli-logiciel/vous-pourrez-bientot-proteger-votre-compte-whatsapp-avec-un-mot-de-passe-n251712.html</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : CarPlay : ChatGPT et streaming vidéo bientôt disponibles dans votre voiture grâce à iOS 26.4]]></title>
@@ -106,44 +99,6 @@ Points: 1
       <source>Les Numeriques</source>
       <category>products</category>
       <guid>https://www.lesnumeriques.com/telephone-portable/carplay-chatgpt-et-streaming-video-bientot-disponibles-dans-votre-voiture-grace-a-ios-26-4-n251707.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: Agent Smith – open-source agent that turns issues into pull requests]]></title>
-      <link>https://codingsoul.org/2026/02/19/agent-smith-open-source-agent-that-turns-issues-into-pull-requests/</link>
-      <description><![CDATA[Hey HN, I built Agent Smith — a self-hosted AI coding agent that takes a ticket reference, clones your repo, analyzes the code, writes an implementation plan, executes it, and opens a PR.
-It supports GitHub, Azure DevOps, Jira, and GitLab. You bring your own API key — Claude, OpenAI, or Gemini. No SaaS, no account, runs on your machine or your cluster.
-I built it in a few days using the same approach the agent itself uses: structured architecture prompts, strict coding principles, and an AI assistant doing the implementation. The coding principles that govern Agent Smith's output are the same ones I used to build it.
-It's early — works well for well-scoped tickets, not yet reliable for large multi-file refactorings. Interactive chat interfaces (Slack, Teams) are in progress.
-Would love feedback. The prompts and all 17 architecture phases are in the repo if you want to see how the context is structured. URL: https://news.ycombinator.com/item?id=47072811
-Points: 2
-# : 1]]></description>
-      <pubDate>Thu, 19 Feb 2026 11:47:58 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://codingsoul.org/2026/02/19/agent-smith-open-source-agent-that-turns-issues-into-pull-requests/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: I built a compliance scanner that flags WCAG GDPR and FTC risks in mins]]></title>
-      <link>https://www.rataify.com/</link>
-      <description><![CDATA[We’ve been building Rataify, a website compliance scanner focused on accessibility (WCAG), privacy regulations (GDPR / CCPA), and FTC marketing claim risks.
-Most compliance tools focus only on accessibility and often just wrap Lighthouse or axe-core. Privacy and marketing risk checks are usually manual.
-We’re experimenting with a layered approach:
-DOM-level accessibility checks (WCAG violations)
-Policy presence + structural checks (privacy / terms disclosures)
-Heuristic scanning of marketing copy for risky FTC-style claims
-Fast report generation intended for pre-launch audits
-The goal isn’t legal automation — it’s to reduce obvious compliance gaps before a site goes live.
-We’re especially interested in:
-False positive tolerance in automated compliance tools
-Whether developers would run this as part of CI
-What compliance signals are most valuable in practice
-Would love technical feedback. URL: https://news.ycombinator.com/item?id=47072564
-Points: 2
-# : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 11:10:43 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://www.rataify.com/</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Les Étoiles des Numériques : découvrez tous les lauréats 2025-2026]]></title>

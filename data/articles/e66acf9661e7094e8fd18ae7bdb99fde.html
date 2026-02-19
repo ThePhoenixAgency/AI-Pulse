@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Presenting a Modern Markdown Viewer with Mermaid, MathJax, and PDF Export</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Presenting a Modern Markdown Viewer with Mermaid, MathJax, and PDF Export</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 2:43:45 PM | <a href="https://dev.to/akshit_suthar/presenting-a-modern-markdown-viewer-with-mermaid-mathjax-and-pdf-export-1lce" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p> <a href="https://viewmd.vercel.app/" target="_blank"> <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fimg.shields.io%2Fbadge%2FLive%2520Demo-View%2520Project-24292e%3Fstyle%3Dfor-the-badge%26logo%3Dgithub%26logoColor%3Dwhite" alt="View Project – Live Demo"> </a>
+</p> <h2> <a name="mdviewer-a-modern-markdown-renderer-with-mermaid-and-math-support" href="#mdviewer-a-modern-markdown-renderer-with-mermaid-and-math-support"> </a> md-viewer: A Modern Markdown Renderer with Mermaid and Math Support
+</h2> <p>Markdown has become the standard format for documentation, README files, technical blogs, and knowledge sharing. However, most simple Markdown viewers only render text and basic formatting. They often lack support for diagrams, mathematical equations, advanced code blocks, and clean UI presentation.</p> <p>To solve this, I built <strong>md-viewer</strong> — a modern, lightweight Markdown rendering application designed to support not only standard Markdown, but also Mermaid diagrams, mathematical expressions, syntax highlighting, and a polished reading experience.</p> <p>In this article, I will walk through the motivation, architecture, core features, and technical decisions behind the project.</p> <hr> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F1ra48aevc7mxqbfc9hbl.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F1ra48aevc7mxqbfc9hbl.png" alt="Split-screen Markdown editor showing live preview with Mermaid diagram and syntax-highlighted code"></a></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fahqypkchzipo2ad1vyfn.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fahqypkchzipo2ad1vyfn.png" alt="Theme - Light , Complete Preview Mode"></a></p> <h2> <a name="why-build-another-markdown-viewer" href="#why-build-another-markdown-viewer"> </a> Why Build Another Markdown Viewer?
+</h2> <p>Most Markdown renderers handle headings, lists, tables, and code blocks. But in real-world development workflows, we often need more:</p> <ul>
+<li>Technical diagrams for system design</li>
+<li>Mathematical equations for academic content</li>
+<li>Clean syntax highlighting for code</li>
+<li>Consistent styling for documentation</li>
+<li>A distraction-free reading interface</li>
+</ul> <p>When working on documentation-heavy projects, I wanted a viewer that could render:</p> <ul>
+<li>Complex Mermaid diagrams</li>
+<li>LaTeX-style math equations</li>
+<li>Beautifully highlighted code blocks</li>
+<li>Responsive layout</li>
+<li>Clean, modern UI</li>
+</ul> <p>That requirement led to the development of <strong>md-viewer</strong>.</p> <hr> <h2> <a name="core-features" href="#core-features"> </a> Core Features
+</h2> <h3> <a name="1-full-markdown-rendering" href="#1-full-markdown-rendering"> </a> 1. Full Markdown Rendering
+</h3> <p>The application supports standard GitHub-flavored Markdown, including:</p> <ul>
+<li>Headings</li>
+<li>Lists</li>
+<li>Tables</li>
+<li>Blockquotes</li>
+<li>Inline formatting</li>
+<li>Code blocks</li>
+</ul> <p>It ensures compatibility with typical README files and technical documentation.</p> <h3> <a name="2-syntax-highlighting-for-code-blocks" href="#2-syntax-highlighting-for-code-blocks"> </a> 2. Syntax Highlighting for Code Blocks
+</h3> <p>Code readability is essential for developers. The viewer integrates syntax highlighting for multiple programming languages, ensuring:</p> <ul>
+<li>Clean formatting</li>
+<li>Proper indentation rendering</li>
+<li>Visual distinction between tokens</li>
+</ul> <p>This makes it suitable for viewing documentation, tutorials, and code-heavy articles.</p> <h3> <a name="3-mermaid-diagram-support" href="#3-mermaid-diagram-support"> </a> 3. Mermaid Diagram Support
+</h3> <p>Modern documentation frequently includes architecture and flow diagrams. The viewer supports <strong>Mermaid</strong>, enabling rendering of:</p> <ul>
+<li>Flowcharts</li>
+<li>Sequence diagrams</li>
+<li>Class diagrams</li>
+<li>State diagrams</li>
+<li>Gantt charts</li>
+</ul> <p>This feature makes the tool especially useful for system design documentation and technical blogs.</p> <h3> <a name="4-mathematical-expression-rendering" href="#4-mathematical-expression-rendering"> </a> 4. Mathematical Expression Rendering
+</h3> <p>Technical and academic documentation often includes mathematical formulas. The project integrates math rendering support, allowing LaTeX-style equations to be displayed properly.</p> <p>This is particularly useful for:</p> <ul>
+<li>Algorithm explanations</li>
+<li>Research documentation</li>
+<li>Educational material</li>
+</ul> <h3> <a name="5-clean-minimal-interface" href="#5-clean-minimal-interface"> </a> 5. Clean, Minimal Interface
+</h3> <p>The UI is intentionally designed to be:</p> <ul>
+<li>Minimal</li>
+<li>Readable</li>
+<li>Responsive</li>
+<li>Distraction-free</li>
+</ul> <p>The focus is on content presentation rather than UI complexity.</p> <hr> <h2> <a name="technical-architecture" href="#technical-architecture"> </a> Technical Architecture
+</h2> <p>The project is structured with modular rendering logic to ensure maintainability and extensibility.</p> <h3> <a name="rendering-pipeline" href="#rendering-pipeline"> </a> Rendering Pipeline
+</h3> <p>The typical flow follows:</p> <ol>
+<li>Load raw Markdown content</li>
+<li>Parse Markdown into HTML</li>
+<li>Process extended features (Mermaid, Math)</li>
+<li>Apply syntax highlighting</li>
+<li>Render into the DOM</li>
+</ol> <p>By separating parsing, transformation, and rendering, the architecture remains clean and easy to scale.</p> <h3> <a name="extensibility" href="#extensibility"> </a> Extensibility
+</h3> <p>The viewer is designed in a way that additional plugins or enhancements can be added without rewriting the core logic.</p> <p>Possible future enhancements include:</p> <ul>
+<li>Theme switching (dark/light mode)</li>
+<li>Export to PDF</li>
+<li>Live editing mode</li>
+<li>File upload support</li>
+</ul> <hr> <h2> <a name="design-decisions" href="#design-decisions"> </a> Design Decisions
+</h2> <p>While building this project, I focused on:</p> <h3> <a name="simplicity-over-complexity" href="#simplicity-over-complexity"> </a> Simplicity Over Complexity
+</h3> <p>Instead of creating a full-fledged Markdown editor, the goal was to create a powerful renderer that focuses purely on display quality.</p> <h3> <a name="developercentric-features" href="#developercentric-features"> </a> Developer-Centric Features
+</h3> <p>Support for diagrams and math was prioritized because these are often missing in simple viewers but are essential in real-world documentation.</p> <h3> <a name="performance-and-clean-code" href="#performance-and-clean-code"> </a> Performance and Clean Code
+</h3> <p>The codebase emphasizes clarity and modularity. Each rendering concern is handled separately to avoid tightly coupled logic.</p> <hr> <h2> <a name="use-cases" href="#use-cases"> </a> Use Cases
+</h2> <p>The project can be used for:</p> <ul>
+<li>Viewing README files locally</li>
+<li>Rendering technical documentation</li>
+<li>Previewing academic notes</li>
+<li>Sharing system design diagrams</li>
+<li>Demonstrating algorithm explanations with math</li>
+</ul> <p>It is particularly helpful for students, developers, and technical writers who rely heavily on Markdown.</p> <hr> <h2> <a name="lessons-learned" href="#lessons-learned"> </a> Lessons Learned
+</h2> <p>Building this project reinforced several important engineering principles:</p> <ul>
+<li>Rendering pipelines must be modular</li>
+<li>Documentation tools should prioritize readability</li>
+<li>Supporting diagrams significantly improves documentation clarity</li>
+<li>Clean UI enhances user experience more than complex UI</li>
+</ul> <hr> <h2> <a name="conclusion" href="#conclusion"> </a> Conclusion
+</h2> <p>md-viewer is a focused solution for developers who need more than just basic Markdown rendering. By combining standard Markdown, syntax highlighting, Mermaid diagrams, and mathematical equation support, it provides a powerful yet minimal documentation viewer.</p> <p>If you work with technical documentation frequently, this project may serve as a useful foundation or inspiration for your own documentation tools.</p> <hr> <p>If you found this useful, feel free to explore the repository and suggest improvements. Contributions and feedback are always welcome.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

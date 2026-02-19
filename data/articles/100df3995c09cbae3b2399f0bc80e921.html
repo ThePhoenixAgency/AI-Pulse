@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - yohasebe/speechdock: Turn any audio into text and any text into speech — menu bar app with system/app audio capture, live subtitles, OCR, and translation.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - yohasebe/speechdock: Turn any audio into text and any text into speech — menu bar app with system/app audio capture, live subtitles, OCR, and translation.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 2:06:42 PM | <a href="https://github.com/yohasebe/speechdock" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p> <a target="_blank" href="/yohasebe/speechdock/blob/main/assets/social-preview.png"><img src="/yohasebe/speechdock/raw/main/assets/social-preview.png" alt="SpeechDock - Listen and speak, from anywhere on your Mac"></a>
+</p>
+<p> <a target="_blank" href="https://camo.githubusercontent.com/f165840b0b13ca742cb88e6b78873bcaea18cfb343d8e8ec7476bd29a64de714/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d626574612d6f72616e6765"><img src="https://camo.githubusercontent.com/f165840b0b13ca742cb88e6b78873bcaea18cfb343d8e8ec7476bd29a64de714/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d626574612d6f72616e6765" alt="Beta"></a> <a target="_blank" href="https://camo.githubusercontent.com/a6f637ec536ce55f7b7e35b98efdcb129d2bef302ecfab745628d569feefc46d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d61634f532d31342532422d626c7565"><img src="https://camo.githubusercontent.com/a6f637ec536ce55f7b7e35b98efdcb129d2bef302ecfab745628d569feefc46d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d61634f532d31342532422d626c7565" alt="macOS 14+"></a> <a href="/yohasebe/speechdock/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/39a434c39c97856247fc55ebc90e8cc1cb9871558a37bf1bf83cbaca3be89d69/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d417061636865253230322e302d626c7565" alt="License"></a> <a href="https://github.com/yohasebe/speechdock/releases"><img src="https://camo.githubusercontent.com/06d517dc435fdb2b870bc238200fa37934f43b33c7b91d0bee39ad61660123ec/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f762f72656c656173652f796f6861736562652f737065656368646f636b" alt="Release"></a> <a target="_blank" href="https://camo.githubusercontent.com/4c79ba8a51bf7dc91f7a1976d583d7d018f8554177a20eb23ab9595bf22b8c45/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f686f6d65627265772d7461702d62726f776e"><img src="https://camo.githubusercontent.com/4c79ba8a51bf7dc91f7a1976d583d7d018f8554177a20eb23ab9595bf22b8c45/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f686f6d65627265772d7461702d62726f776e" alt="Homebrew"></a>
+</p>
+<div><h2>What is SpeechDock?</h2><a href="#what-is-speechdock"></a></div>
+<p><strong>Transcribe any audio on your Mac</strong> — Not just your voice through the microphone, but also system-wide audio or sound from a specific app. If your Mac can hear it, SpeechDock can turn it into text in real time.</p>
+<p><strong>Hear any text on your screen</strong> — Selected text, typed text, pasted content, or text captured via OCR from any screen region. If you can see it, SpeechDock can read it aloud.</p>
+<p><strong>Live subtitles and translation</strong> — Display real-time transcription as on-screen subtitles, with optional translation into 100+ languages using on-device or cloud providers.</p>
+<p><strong>Always accessible from your menu bar</strong> — Global hotkeys let you use STT and TTS from anywhere, without switching apps. Works immediately after installation with no API keys required. Cloud providers are optional enhancements.</p>
+<p>English | <a href="/yohasebe/speechdock/blob/main/README_ja.md">日本語</a></p>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<p> <a target="_blank" href="/yohasebe/speechdock/blob/main/docs/images/architecture.png"><img src="/yohasebe/speechdock/raw/main/docs/images/architecture.png" alt="SpeechDock Architecture"></a>
+</p>
+<div><h2>Documentation</h2><a href="#documentation"></a></div>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="https://yohasebe.github.io/speechdock/">Home</a></strong></td>
+<td>Overview and getting started</td>
+</tr>
+<tr>
+<td><strong><a href="https://yohasebe.github.io/speechdock/basics.html">Basic Features</a></strong></td>
+<td>macOS native STT/TTS, OCR, subtitles, shortcuts</td>
+</tr>
+<tr>
+<td><strong><a href="https://yohasebe.github.io/speechdock/advanced.html">Advanced Features</a></strong></td>
+<td>Cloud providers, API keys, file transcription, translation</td>
+</tr>
+<tr>
+<td><strong><a href="https://yohasebe.github.io/speechdock/applescript.html">AppleScript</a></strong></td>
+<td>Scripting commands, properties, examples, error codes</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Features</h2><a href="#features"></a></div>
+<div><h3>Speech-to-Text (STT)</h3><a href="#speech-to-text-stt"></a></div>
+<p>Convert speech to text using:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Models</th>
+<th>API Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>macOS Native</strong></td>
+<td>System Default (SpeechAnalyzer on macOS 26+)</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td><strong>OpenAI</strong></td>
+<td>GPT-4o Transcribe, GPT-4o Mini Transcribe, Whisper</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>Google Gemini</strong></td>
+<td>Gemini 2.5 Flash Native Audio, Gemini 2.0 Flash Live</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>ElevenLabs</strong></td>
+<td>Scribe v2 Realtime</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>Grok</strong></td>
+<td>Grok Realtime</td>
+<td>Required</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: On macOS 26+, the native STT uses Apple's new SpeechAnalyzer framework, providing real-time transcription without time limits and improved performance.</p>
+<div><h3>Text-to-Speech (TTS)</h3><a href="#text-to-speech-tts"></a></div>
+<p>Convert text to speech using:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Models</th>
+<th>API Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>macOS Native</strong></td>
+<td>System Default</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td><strong>OpenAI</strong></td>
+<td>GPT-4o Mini TTS (Dec 2025), GPT-4o Mini TTS, TTS-1, TTS-1 HD</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>Google Gemini</strong></td>
+<td>Gemini 2.5 Flash TTS, Gemini 2.5 Pro TTS</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>ElevenLabs</strong></td>
+<td>Eleven v3, Flash v2.5, Multilingual v2, Turbo v2.5, Monolingual v1</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>Grok</strong></td>
+<td>Grok Voice</td>
+<td>Required</td>
+</tr>
+</tbody>
+</table>
+<div><h3>OCR to Speech</h3><a href="#ocr-to-speech"></a></div>
+<p>Capture text from any region of your screen and convert it to speech:</p>
+<ol>
+<li>Press the OCR hotkey (<pre><code>Ctrl + Option + Shift + O</code></pre> by default)</li>
+<li>Drag to select the region containing text</li>
+<li>Recognized text appears in the TTS panel for editing</li>
+<li>Press Speak to read the text aloud</li>
+</ol>
+<p>Uses macOS Vision Framework for text recognition. Requires Screen Recording permission.</p>
+<div><h3>Subtitle Mode</h3><a href="#subtitle-mode"></a></div>
+<p>Display real-time transcription as subtitles overlay during recording:</p>
+<ul>
+<li><strong>On-screen subtitles</strong> - Show transcription as floating subtitles anywhere on screen</li>
+<li><strong>Real-time translation</strong> - Optionally translate subtitles as you speak</li>
+<li><strong>Customizable appearance</strong> - Adjust font size, opacity, position (top/bottom), and max lines</li>
+<li><strong>Draggable position</strong> - Drag subtitles to any location on screen</li>
+<li><strong>Auto-hide panel</strong> - Optionally hide STT panel when subtitle mode is active</li>
+</ul>
+<p>Toggle with hotkey (</p><pre><code>Ctrl + Option + S</code></pre> by default) or from the STT panel/menu bar.<p></p>
+<div><h3>Audio Sources</h3><a href="#audio-sources"></a></div>
+<ul>
+<li><strong>Microphone</strong> - Record from any connected microphone with device selection</li>
+<li><strong>System Audio</strong> - Capture all audio output from your Mac</li>
+<li><strong>App Audio</strong> - Capture audio from a specific application</li>
+</ul>
+<div><h3>Quick Transcription</h3><a href="#quick-transcription"></a></div>
+<p>A floating microphone button for instant voice input without opening the STT panel:</p>
+<ol>
+<li>Enable <strong>Floating Mic Button</strong> from the menu bar</li>
+<li>Click the button or press <pre><code>Ctrl + Option + M</code></pre> to start recording</li>
+<li>Speak — real-time transcription appears in a floating HUD</li>
+<li>Click again or press <pre><code>Ctrl + Option + M</code></pre> to stop</li>
+<li>Transcribed text is automatically pasted into the frontmost app</li>
+</ol>
+<p>The button can be dragged anywhere on screen, and its position is saved.</p>
+<div><h3>Additional Features</h3><a href="#additional-features"></a></div>
+<ul>
+<li>Global keyboard shortcuts for STT and TTS</li>
+<li>Customizable panel shortcuts with modifier key support</li>
+<li>Panel windows for real-time transcription with paste target selection</li>
+<li>Panel windows for TTS with text editing and word highlighting</li>
+<li>Panel style selection: Floating (always-on-top) or Standard Window</li>
+<li>Audio output device selection for TTS</li>
+<li>Save synthesized audio to file (M4A/MP3 format)</li>
+<li>Language selection for STT and TTS</li>
+<li>Speed control for TTS playback</li>
+<li>Voice and model selection per provider</li>
+<li>VAD (Voice Activity Detection) auto-stop for hands-free recording</li>
+<li>Text replacement rules for STT output correction</li>
+<li>Translation (macOS on-device or cloud LLMs)</li>
+<li>Transcription history (auto-saved, up to 50 entries, accessible from menu bar)</li>
+<li>Text file drag &amp; drop for TTS panel (.txt, .md, .text, .rtf)</li>
+<li>Real-time character and word count display</li>
+<li>Automatic WebSocket reconnection with exponential backoff</li>
+<li><a href="/yohasebe/speechdock/blob/main/docs/applescript.md">AppleScript support</a> for automation</li>
+<li>Automatic updates via Sparkle</li>
+<li>Launch at login option</li>
+</ul>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li>macOS 14.0 (Sonoma) or later</li>
+<li>Apple Silicon Mac (M1/M2/M3/M4)</li>
+<li>API keys for cloud providers are <strong>optional</strong> (required only if using OpenAI, Google Gemini, ElevenLabs, or Grok)</li>
+</ul>
+<div><h2>Installation</h2><a href="#installation"></a></div> <div><pre>brew tap yohasebe/speechdock
+brew install --cask speechdock</pre></div>
+<p>To update to the latest version:</p>
+<div><pre>brew upgrade --cask speechdock</pre></div>
+<div><h3>Manual Download</h3><a href="#manual-download"></a></div>
+<ol>
+<li>Download the latest <pre><code>.dmg</code></pre> file from the <a href="https://github.com/yohasebe/SpeechDock/releases">Releases</a> page</li>
+<li>Open the DMG file</li>
+<li>Drag SpeechDock to your Applications folder</li>
+<li>Launch SpeechDock from Applications</li>
+</ol>
+<div><h2>Setup</h2><a href="#setup"></a></div>
+<div><h3>API Keys</h3><a href="#api-keys"></a></div>
+<p>To use cloud providers, you need to configure API keys:</p>
+<ol>
+<li>Open <strong>Settings</strong> &gt; <strong>API Keys</strong></li>
+<li>Enter your API keys:
+<ul>
+<li><strong>OpenAI</strong>: <a href="https://platform.openai.com/api-keys">OpenAI Platform</a></li>
+<li><strong>Google Gemini</strong>: <a href="https://aistudio.google.com/apikey">Google AI Studio</a></li>
+<li><strong>ElevenLabs</strong>: <a href="https://elevenlabs.io/app/settings/api-keys">ElevenLabs Settings</a></li>
+<li><strong>Grok (xAI)</strong>: <a href="https://console.x.ai/">xAI Console</a></li>
+</ul>
+</li>
+</ol>
+<p>API keys are securely stored in macOS Keychain.</p>
+<div><h3>Permissions</h3><a href="#permissions"></a></div>
+<p>SpeechDock requires or recommends the following permissions:</p>
+<table>
+<thead>
+<tr>
+<th>Permission</th>
+<th>Level</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Microphone</strong></td>
+<td>Required</td>
+<td>Speech recognition input</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong></td>
+<td>Recommended</td>
+<td>Global keyboard shortcuts and text insertion</td>
+</tr>
+<tr>
+<td><strong>Screen Recording</strong></td>
+<td>Optional</td>
+<td>System/App Audio capture, OCR, and window thumbnails</td>
+</tr>
+</tbody>
+</table>
+<p>On first launch, SpeechDock displays a permission setup window with real-time status indicators. Grant permissions in <strong>System Settings</strong> &gt; <strong>Privacy &amp; Security</strong> — the setup window updates automatically without restarting the app. Features that require missing permissions are disabled in the UI with clear visual indicators.</p>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><h3>Keyboard Shortcuts</h3><a href="#keyboard-shortcuts"></a></div>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Default Shortcut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Toggle STT Panel</td>
+<td><pre><code>Cmd + Shift + Space</code></pre></td>
+</tr>
+<tr>
+<td>Toggle TTS Panel</td>
+<td><pre><code>Ctrl + Option + T</code></pre></td>
+</tr>
+<tr>
+<td>OCR Region to Speech</td>
+<td><pre><code>Ctrl + Option + Shift + O</code></pre></td>
+</tr>
+<tr>
+<td>Toggle Subtitle Mode</td>
+<td><pre><code>Ctrl + Option + S</code></pre></td>
+</tr>
+<tr>
+<td>Quick Transcription</td>
+<td><pre><code>Ctrl + Option + M</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>Shortcuts can be customized in <strong>Settings</strong> &gt; <strong>Shortcuts</strong>.</p>
+<div><h3>STT Panel</h3><a href="#stt-panel"></a></div>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Default Shortcut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Record</td>
+<td><pre><code>Cmd + R</code></pre></td>
+</tr>
+<tr>
+<td>Stop Recording</td>
+<td><pre><code>Cmd + S</code></pre></td>
+</tr>
+<tr>
+<td>Paste Text</td>
+<td><pre><code>Cmd + Return</code></pre></td>
+</tr>
+<tr>
+<td>Select Target</td>
+<td><pre><code>Cmd + Shift + Return</code></pre></td>
+</tr>
+<tr>
+<td>Cancel</td>
+<td><pre><code>Cmd + .</code></pre></td>
+</tr>
+</tbody>
+</table>
+<div><h3>TTS Panel</h3><a href="#tts-panel"></a></div>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Default Shortcut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Speak</td>
+<td><pre><code>Cmd + Return</code></pre></td>
+</tr>
+<tr>
+<td>Stop</td>
+<td><pre><code>Cmd + .</code></pre></td>
+</tr>
+<tr>
+<td>Save Audio</td>
+<td><pre><code>Cmd + S</code></pre></td>
+</tr>
+</tbody>
+</table>
+<div><h3>Menu Bar</h3><a href="#menu-bar"></a></div>
+<p>Click the SpeechDock icon in the menu bar for quick access to:</p>
+<ul>
+<li>Start/stop STT recording</li>
+<li>Open TTS for selected text</li>
+<li>Toggle subtitle mode and floating mic button</li>
+<li>Transcribe audio files</li>
+<li>Open transcription history</li>
+<li>OCR to speech</li>
+<li>Access Settings, Help, and About</li>
+</ul>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<div><h3>Settings</h3><a href="#settings"></a></div>
+<p>Open Settings with </p><pre><code>Cmd + ,</code></pre> or from the menu bar. The unified settings window uses a sidebar with the following categories:<p></p>
+<ul>
+<li><strong>Speech-to-Text</strong>: Provider, model, language, audio input, auto-stop, panel behavior</li>
+<li><strong>Text-to-Speech</strong>: Provider, model, voice, speed, audio output, panel behavior</li>
+<li><strong>Translation</strong>: Panel translation provider/model, subtitle translation settings</li>
+<li><strong>Subtitle</strong>: On/off, position, font size, text/background opacity, max lines</li>
+<li><strong>Shortcuts</strong>: Global hotkeys and panel shortcuts</li>
+<li><strong>Text Replacement</strong>: Built-in patterns and custom rules</li>
+<li><strong>Appearance</strong>: Text font size, panel style, launch at login</li>
+<li><strong>API Keys</strong>: Cloud provider API keys (optional)</li>
+<li><strong>About</strong>: Version info, links, check for updates, support</li>
+</ul>
+<div><h3>Panel Style</h3><a href="#panel-style"></a></div>
+<p>Choose between two panel styles in <strong>Settings</strong> &gt; <strong>Appearance</strong>:</p>
+<ul>
+<li><strong>Floating</strong>: Always-on-top borderless panels that can be dragged from anywhere</li>
+<li><strong>Standard Window</strong>: Regular macOS windows with title bar, can be minimized</li>
+</ul>
+<p>Note: Only one panel (STT or TTS) can be open at a time. Opening one will close the other.</p>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<div><h3>STT not working</h3><a href="#stt-not-working"></a></div>
+<ol>
+<li>Check microphone permission is granted</li>
+<li>Verify API key is configured (for cloud providers)</li>
+<li>Try macOS native provider to test basic functionality</li>
+<li>For System/App Audio, check Screen Recording permission</li>
+</ol>
+<div><h3>TTS not working</h3><a href="#tts-not-working"></a></div>
+<ol>
+<li>Verify API key is configured (for cloud providers)</li>
+<li>Try macOS native provider to test</li>
+<li>Check audio output is not muted</li>
+<li>Try selecting a different output device</li>
+</ol>
+<div><h3>Shortcuts not responding</h3><a href="#shortcuts-not-responding"></a></div>
+<ol>
+<li>Check Accessibility permission is granted</li>
+<li>Look for conflicts with other applications</li>
+<li>Reset shortcuts to defaults in Settings</li>
+</ol>
+<div><h3>System Audio / App Audio not working</h3><a href="#system-audio--app-audio-not-working"></a></div>
+<ol>
+<li>Grant Screen Recording permission in System Settings</li>
+<li>For App Audio, ensure the target app is running</li>
+<li>Refresh the app list from the audio source menu</li>
+</ol>
+<div><h3>OCR not working</h3><a href="#ocr-not-working"></a></div>
+<ol>
+<li>Grant Screen Recording permission in System Settings</li>
+<li>Ensure the text in the selected region is clear and readable</li>
+<li>Try selecting a larger region around the text</li>
+</ol>
+<div><h2>Privacy &amp; Security</h2><a href="#privacy--security"></a></div>
+<ul>
+<li><strong>API Keys</strong>: Stored securely in macOS Keychain, never transmitted except to the respective provider</li>
+<li><strong>macOS Native</strong>: Audio processed entirely on-device, no data sent externally</li>
+<li><strong>Cloud Providers</strong>: Audio sent to provider APIs (OpenAI, Google, ElevenLabs, Grok) for processing according to their privacy policies</li>
+<li><strong>No Telemetry</strong>: SpeechDock does not collect or transmit usage data</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Apache License 2.0 - see <a href="/yohasebe/speechdock/blob/main/LICENSE">LICENSE</a> for details.</p>
+<div><h2>Author</h2><a href="#author"></a></div>
+<p>Yoichiro Hasebe</p>
+<div><h2>Support the Project</h2><a href="#support-the-project"></a></div>
+<p>SpeechDock is free and open source. If you find it useful, please consider supporting its development:</p> <div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions are welcome! Please open an issue or pull request on GitHub.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

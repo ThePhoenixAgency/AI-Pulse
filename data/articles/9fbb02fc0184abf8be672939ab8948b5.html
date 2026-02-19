@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - chrisrobison/textweb: A text-grid web renderer for AI agents — see the web without screenshots</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - chrisrobison/textweb: A text-grid web renderer for AI agents — see the web without screenshots</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 2:09:03 PM | <a href="https://github.com/chrisrobison/textweb" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><h1>TextWeb</h1><a href="#textweb"></a></div>
+<p><strong>A text-grid web renderer for AI agents — see the web without screenshots.</strong></p>
+<p>Instead of taking expensive screenshots and piping them through vision models, TextWeb renders web pages as structured text grids that LLMs can reason about natively. Full JavaScript execution, spatial layout preserved, interactive elements annotated.</p>
+<p> <a href="https://chrisrobison.github.io/textweb">Documentation</a> · <a href="https://www.npmjs.com/package/textweb">npm</a> · <a href="https://github.com/chrisrobison/textweb">GitHub</a></p>
+<div><h2>Why?</h2><a href="#why"></a></div>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Size</th>
+<th>Requires</th>
+<th>Speed</th>
+<th>Spatial Layout</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Screenshot + Vision</td>
+<td>~1MB</td>
+<td>Vision model ($$$)</td>
+<td>Slow</td>
+<td>Pixel-level</td>
+</tr>
+<tr>
+<td>Accessibility Tree</td>
+<td>~5KB</td>
+<td>Nothing</td>
+<td>Fast</td>
+<td> Lost</td>
+</tr>
+<tr>
+<td>Raw HTML</td>
+<td>~100KB+</td>
+<td>Nothing</td>
+<td>Fast</td>
+<td> Lost</td>
+</tr>
+<tr>
+<td><strong>TextWeb</strong></td>
+<td><strong>~2-5KB</strong></td>
+<td><strong>Nothing</strong></td>
+<td><strong>Fast</strong></td>
+<td><strong> Preserved</strong></td>
+</tr>
+</tbody>
+</table>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre>npm install -g textweb
+npx playwright install chromium</pre></div>
+<div><pre><span><span>#</span> Render any page</span>
+textweb https://news.ycombinator.com <span><span>#</span> Interactive mode</span>
+textweb --interactive https://github.com <span><span>#</span> JSON output for agents</span>
+textweb --json https://example.com</pre></div>
+<div><h2>Example Output</h2><a href="#example-output"></a></div>
+<div><pre><code>[0]Hacker News [1]new | [2]past | [3]comments | [4]ask | [5]show | [6]jobs | [7]submit [8]login 1. [9]Show HN: TextWeb – text-grid browser for AI agents (github.com) 142 points by chrisrobison 3 hours ago | [10]89 comments 2. [11]Why LLMs don't need screenshots to browse the web 87 points by somebody 5 hours ago | [12]34 comments [13:______________________] [14 Search]
+</code></pre></div>
+<p>~500 bytes. An LLM can read this, understand the layout, and say "click ref 9" to open the first link. No vision model needed.</p>
+<div><h2>Integration Options</h2><a href="#integration-options"></a></div>
+<p>TextWeb works with any AI agent framework. Pick your integration:</p>
+<div><h3> MCP Server (Claude Desktop, Cursor, Windsurf, Cline, OpenClaw)</h3><a href="#-mcp-server-claude-desktop-cursor-windsurf-cline-openclaw"></a></div>
+<p>The fastest way to add web browsing to any MCP-compatible client.</p>
+<div><pre><span><span>#</span> Install globally</span>
+npm install -g textweb <span><span>#</span> Or run directly</span>
+npx textweb-mcp</pre></div>
+<p><strong>Claude Desktop</strong> — add to </p><pre><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></pre>:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"textweb"</span>: { <span>"command"</span>: <span><span>"</span>textweb-mcp<span>"</span></span> } }
+}</pre></div>
+<p><strong>Cursor</strong> — add to </p><pre><code>.cursor/mcp.json</code></pre>:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"textweb"</span>: { <span>"command"</span>: <span><span>"</span>textweb-mcp<span>"</span></span> } }
+}</pre></div>
+<p><strong>OpenClaw</strong> — add to </p><pre><code>openclaw.json</code></pre> skills or MCP config.<p></p>
+<p>Then just ask: <em>"Go to hacker news and find posts about AI"</em> — the agent uses text grids instead of screenshots.</p>
+<div><h3> OpenAI / Anthropic Function Calling</h3><a href="#-openai--anthropic-function-calling"></a></div>
+<p>Drop-in tool definitions for any function-calling model. See <a href="/chrisrobison/textweb/blob/main/tools/tool_definitions.json"></a></p><pre><a href="/chrisrobison/textweb/blob/main/tools/tool_definitions.json"><code>tools/tool_definitions.json</code></a></pre>.<p></p>
+<p>Pair with the <a href="/chrisrobison/textweb/blob/main/tools/system_prompt.md">system prompt</a> to teach the model how to read the grid:</p>
+<div><pre><span>import</span> <span>json</span> <span># Load tool definitions</span>
+<span>with</span> <span>open</span>(<span>"tools/tool_definitions.json"</span>) <span>as</span> <span>f</span>: <span>textweb_tools</span> <span>=</span> <span>json</span>.<span>load</span>(<span>f</span>)[<span>"tools"</span>] <span># Load system prompt</span>
+<span>with</span> <span>open</span>(<span>"tools/system_prompt.md"</span>) <span>as</span> <span>f</span>: <span>system_prompt</span> <span>=</span> <span>f</span>.<span>read</span>() <span># Use with OpenAI</span>
+<span>response</span> <span>=</span> <span>openai</span>.<span>chat</span>.<span>completions</span>.<span>create</span>( <span>model</span><span>=</span><span>"gpt-4"</span>, <span>messages</span><span>=</span>[ {<span>"role"</span>: <span>"system"</span>, <span>"content"</span>: <span>system_prompt</span>}, {<span>"role"</span>: <span>"user"</span>, <span>"content"</span>: <span>"Go to example.com and click the first link"</span>}, ], <span>tools</span><span>=</span><span>textweb_tools</span>,
+)</pre></div>
+<div><h3> LangChain</h3><a href="#-langchain"></a></div>
+<div><pre><span>from</span> <span>tools</span>.<span>langchain</span> <span>import</span> <span>get_textweb_tools</span> <span># Start the server first: textweb --serve 3000</span>
+<span>tools</span> <span>=</span> <span>get_textweb_tools</span>(<span>base_url</span><span>=</span><span>"http://localhost:3000"</span>) <span># Use with any LangChain agent</span>
+<span>from</span> <span>langchain</span>.<span>agents</span> <span>import</span> <span>initialize_agent</span>
+<span>agent</span> <span>=</span> <span>initialize_agent</span>(<span>tools</span>, <span>llm</span>, <span>agent</span><span>=</span><span>"zero-shot-react-description"</span>)
+<span>agent</span>.<span>run</span>(<span>"Find the top story on Hacker News"</span>)</pre></div>
+<div><h3> CrewAI</h3><a href="#-crewai"></a></div>
+<div><pre><span>from</span> <span>tools</span>.<span>crewai</span> <span>import</span> <span>TextWebBrowseTool</span>, <span>TextWebClickTool</span>, <span>TextWebTypeTool</span> <span># Start the server first: textweb --serve 3000</span>
+<span>researcher</span> <span>=</span> <span>Agent</span>( <span>role</span><span>=</span><span>"Web Researcher"</span>, <span>tools</span><span>=</span>[<span>TextWebBrowseTool</span>(), <span>TextWebClickTool</span>(), <span>TextWebTypeTool</span>()], <span>llm</span><span>=</span><span>llm</span>,
+)</pre></div>
+<div><h3> HTTP API</h3><a href="#-http-api"></a></div>
+<div><pre><span><span>#</span> Start the server</span>
+textweb --serve 3000 <span><span>#</span> Navigate</span>
+curl -X POST http://localhost:3000/navigate \ -H <span><span>'</span>Content-Type: application/json<span>'</span></span> \ -d <span><span>'</span>{"url": "https://example.com"}<span>'</span></span> <span><span>#</span> Click, type, scroll</span>
+curl -X POST http://localhost:3000/click -d <span><span>'</span>{"ref": 3}<span>'</span></span>
+curl -X POST http://localhost:3000/type -d <span><span>'</span>{"ref": 7, "text": "hello"}<span>'</span></span>
+curl -X POST http://localhost:3000/scroll -d <span><span>'</span>{"direction": "down"}<span>'</span></span></pre></div>
+<div><h3> Node.js Library</h3><a href="#-nodejs-library"></a></div>
+<div><pre><span>const</span> <span>{</span> AgentBrowser <span>}</span> <span>=</span> <span>require</span><span>(</span><span>'textweb'</span><span>)</span><span>;</span> <span>const</span> <span>browser</span> <span>=</span> <span>new</span> <span>AgentBrowser</span><span>(</span><span>{</span> <span>cols</span>: <span>120</span> <span>}</span><span>)</span><span>;</span>
+<span>const</span> <span>{</span> view<span>,</span> elements<span>,</span> meta <span>}</span> <span>=</span> <span>await</span> <span>browser</span><span>.</span><span>navigate</span><span>(</span><span>'https://example.com'</span><span>)</span><span>;</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>view</span><span>)</span><span>;</span> <span>// The text grid</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>elements</span><span>)</span><span>;</span> <span>// { 0: { selector, tag, text, href }<span>, ... </span>}</span> <span>await</span> <span>browser</span><span>.</span><span>click</span><span>(</span><span>3</span><span>)</span><span>;</span> <span>// Click element [3]</span>
+<span>await</span> <span>browser</span><span>.</span><span>type</span><span>(</span><span>7</span><span>,</span> <span>'hello'</span><span>)</span><span>;</span> <span>// Type into element [7]</span>
+<span>await</span> <span>browser</span><span>.</span><span>scroll</span><span>(</span><span>'down'</span><span>)</span><span>;</span> <span>// Scroll down</span>
+<span>await</span> <span>browser</span><span>.</span><span>close</span><span>(</span><span>)</span><span>;</span></pre></div>
+<div><h2>Grid Conventions</h2><a href="#grid-conventions"></a></div>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Rendering</th>
+<th>Interaction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Links</td>
+<td><pre><code>[ref]link text</code></pre></td>
+<td><pre><code>click(ref)</code></pre></td>
+</tr>
+<tr>
+<td>Buttons</td>
+<td><pre><code>[ref button text]</code></pre></td>
+<td><pre><code>click(ref)</code></pre></td>
+</tr>
+<tr>
+<td>Text inputs</td>
+<td><pre><code>[ref:placeholder____]</code></pre></td>
+<td><pre><code>type(ref, "text")</code></pre></td>
+</tr>
+<tr>
+<td>Checkboxes</td>
+<td><pre><code>[ref:X]</code></pre> / <pre><code>[ref: ]</code></pre></td>
+<td><pre><code>click(ref)</code></pre> to toggle</td>
+</tr>
+<tr>
+<td>Radio buttons</td>
+<td><pre><code>[ref:●]</code></pre> / <pre><code>[ref:○]</code></pre></td>
+<td><pre><code>click(ref)</code></pre></td>
+</tr>
+<tr>
+<td>Dropdowns</td>
+<td><pre><code>[ref:▼ Selected]</code></pre></td>
+<td><pre><code>select(ref, "value")</code></pre></td>
+</tr>
+<tr>
+<td>File inputs</td>
+<td><pre><code>[ref: Choose file]</code></pre></td>
+<td><pre><code>upload(ref, "/path")</code></pre></td>
+</tr>
+<tr>
+<td>Headings</td>
+<td><pre><code>═══ HEADING ═══</code></pre></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Separators</td>
+<td><pre><code>────────────────</code></pre></td>
+<td>—</td>
+</tr>
+<tr>
+<td>List items</td>
+<td><pre><code>• Item text</code></pre></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<div><pre><code>┌─────────────────────────────────────────────┐
+│ Your Agent (any LLM) │
+│ "click 3" / "type 7 hello" / "scroll down" │
+├─────────────────────────────────────────────┤
+│ TextWeb │
+│ Pixel positions → character grid │
+│ Interactive elements get [ref] annotations │
+├─────────────────────────────────────────────┤
+│ Headless Chromium (Playwright) │
+│ Full JS/CSS execution │
+│ getBoundingClientRect() for all elements │
+└─────────────────────────────────────────────┘
+</code></pre></div>
+<ol>
+<li><strong>Real browser</strong> renders the page (full JS, CSS, dynamic content)</li>
+<li><strong>Extract</strong> every visible element's position, size, text, and interactivity</li>
+<li><strong>Map</strong> pixel coordinates to character grid positions (spatial layout preserved)</li>
+<li><strong>Annotate</strong> interactive elements with <pre><code>[ref]</code></pre> numbers for agent interaction</li>
+</ol>
+<div><h2>Design Principles</h2><a href="#design-principles"></a></div>
+<ol>
+<li><strong>Text is native to LLMs</strong> — no vision model middleman</li>
+<li><strong>Spatial layout matters</strong> — flat element lists lose the "where"</li>
+<li><strong>Cheap and fast</strong> — 2-5KB per render vs 1MB+ screenshots</li>
+<li><strong>Full web support</strong> — real Chromium runs the JS</li>
+<li><strong>Interactive</strong> — reference numbers map to real DOM elements</li>
+</ol>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT <a href="https://cdr2.com">Christopher Robison</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

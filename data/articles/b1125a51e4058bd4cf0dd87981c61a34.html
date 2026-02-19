@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>We found 250 semantic bugs in popular open-source projects that linters completely missed</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>We found 250 semantic bugs in popular open-source projects that linters completely missed</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 2:06:19 PM | <a href="https://dev.to/ty_wells_7d0b523d1a02a496/we-found-250-semantic-bugs-in-popular-open-source-projects-that-linters-completely-missed-1bli" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <div> <p><a href="https://dev.to/ty_wells_7d0b523d1a02a496"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3210882%2F1af088c0-82af-4f4b-91df-d0a5094dda0f.png" alt="Ty Wells"></a> </p> </div> </header> <div> <p>AI coding assistants generate code that compiles clean but contains <strong>semantic bugs</strong> — SQL injection, auth bypasses, null dereferences. Linters and type checkers miss them because the bugs are in <em>what the code claims to do</em>, not how it's structured.</p> <p>I built <a href="https://tryassay.ai/" target="_blank">Assay</a> to catch what static tools can't. Then I ran it on popular open-source projects.</p> <h2> <a name="the-results" href="#the-results"> </a> The results
+</h2> <div><table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Stars</th>
+<th>Claims Verified</th>
+<th>Bugs</th>
+<th>Critical</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LiteLLM</strong></td>
+<td>18K</td>
+<td>1,381</td>
+<td><strong>185</strong></td>
+<td><strong>30</strong></td>
+<td>78/100</td>
+</tr>
+<tr>
+<td><strong>Chatbot UI</strong></td>
+<td>28K</td>
+<td>476</td>
+<td><strong>41</strong></td>
+<td><strong>12</strong></td>
+<td>91/100</td>
+</tr>
+<tr>
+<td><strong>LobeChat</strong></td>
+<td>50K</td>
+<td>205</td>
+<td><strong>14</strong></td>
+<td><strong>1</strong></td>
+<td>87/100</td>
+</tr>
+<tr>
+<td><strong>Open Interpreter</strong></td>
+<td>55K</td>
+<td>12</td>
+<td><strong>4</strong></td>
+<td><strong>2</strong></td>
+<td>60/100</td>
+</tr>
+</tbody>
+</table></div> <p><strong>Total: 2,400+ claims verified. 250 bugs found.</strong></p> <p>Every finding links to an interactive dashboard with file paths, line numbers, and code evidence:</p> <ul>
+<li><a href="https://tryassay.ai/reports/0bccf817-1cb6-43ff-b724-866f14539073" target="_blank">LiteLLM report</a></li>
+<li><a href="https://tryassay.ai/reports/cc8c0c61-9b5a-4774-aed1-f99cc4f6991b" target="_blank">Chatbot UI report</a></li>
+<li><a href="https://tryassay.ai/reports/915dfc1a-64ec-483d-b4b5-effb53a86553" target="_blank">LobeChat report</a></li>
+</ul> <h2> <a name="how-it-works" href="#how-it-works"> </a> How it works
+</h2> <p>Assay extracts every <strong>testable claim</strong> from a codebase:</p> <ul>
+<li>"this validates auth tokens"</li>
+<li>"this handles null input"</li>
+<li>"this query prevents injection"</li>
+</ul> <p>The approach is based on a formal framework we published: <a href="https://doi.org/10.5281/zenodo.18522644" target="_blank">DOI 10.5281/zenodo.18522644</a></p> <h2> <a name="benchmark-results-638-total-experiment-cost" href="#benchmark-results-638-total-experiment-cost"> </a> Benchmark results ($638 total experiment cost)
+</h2> <h3> <a name="humaneval-164-coding-tasks-220" href="#humaneval-164-coding-tasks-220"> </a> HumanEval (164 coding tasks) — $220
+</h3> <h3> <a name="swebench-300-real-github-bugs-246" href="#swebench-300-real-github-bugs-246"> </a> SWE-bench (300 real GitHub bugs) — $246
+</h3> <ul>
+<li>Baseline: 18.3% resolved</li>
+<li>
+<strong>Assay: 30.3% resolved</strong> (+65.5% improvement)</li>
+</ul> <h2> <a name="what-i-learned-building-this" href="#what-i-learned-building-this"> </a> What I learned building this
+</h2> <ol>
+<li><p><strong>The biggest projects have the most bugs.</strong> LiteLLM (52 API routes) had 185 bugs. Smaller, more focused projects scored higher.</p></li>
+<li><p><strong>Critical bugs hide in plain sight.</strong> These projects have thousands of stars, active communities, and regular releases. The bugs aren't in obscure corners — they're in core functionality.</p></li>
+<li><p><strong>Traditional tools don't catch semantic bugs.</strong> Linters check syntax. Type checkers check types. Nothing checks whether the code actually does what it claims to do. That's the gap Assay fills.</p></li>
+<li><p><strong>LLM-as-judge gets worse with more attempts.</strong> At k=5, it starts approving code that actually fails tests. Verification needs to be adversarial, not just "ask the AI if it looks good."</p></li>
+</ol> <h2> <a name="try-it" href="#try-it"> </a> Try it
+</h2> <div>
+<pre><code>npx tryassay assess /path/to/your/project
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Free, open source. Uses the Anthropic API (~$2-3 for a small project, ~$30-50 for a large codebase). Add <code>--publish</code> for an interactive dashboard at tryassay.ai.</p> <ul>
+<li>
+<strong>GitHub:</strong> <a href="https://github.com/gtsbahamas/hallucination-reversing-system" target="_blank">gtsbahamas/hallucination-reversing-system</a>
+</li>
+<li>
+<strong>npm:</strong> <a href="https://www.npmjs.com/package/tryassay" target="_blank">tryassay</a>
+</li>
+<li>
+<strong>Live dashboards:</strong> <a href="https://tryassay.ai/" target="_blank">tryassay.ai</a>
+</li>
+</ul> <p><strong>Free offer:</strong> Drop a repo link in the comments and I'll run Assay on it and share the dashboard. No charge — I want the data.</p> <hr> <p>Have you caught semantic bugs in AI-generated code that linters missed? What tools do you use?</p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

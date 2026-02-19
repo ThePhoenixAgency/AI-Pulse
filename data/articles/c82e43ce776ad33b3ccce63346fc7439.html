@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - saezbaldo/ic-agi: Infrastructure Critical Anti-AGI: Distributed execution framework that separates intelligence from authority. K-of-N threshold auth, capability tokens, formal verification (TLA+), sandboxed execution.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - saezbaldo/ic-agi: Infrastructure Critical Anti-AGI: Distributed execution framework that separates intelligence from authority. K-of-N threshold auth, capability tokens, formal verification (TLA+), sandboxed execution.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 1:55:59 PM | <a href="https://github.com/saezbaldo/ic-agi" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1> IC-AGI — Infrastructure Critical Anti-AGI</h1><a href="#-ic-agi--infrastructure-critical-anti-agi"></a></div>
+<p><strong>Separate intelligence from authority.</strong></p>
+<p>IC-AGI is a distributed execution and authority framework that ensures no single entity — human or artificial — can unilaterally execute critical actions. It is designed to control actors that may be <em>more intelligent</em> than the control system itself.</p>
+<p><a href="/saezbaldo/ic-agi/blob/main"><img src="https://camo.githubusercontent.com/dcf629c65e7485ff14ebfcfa11e4c41c50d2f2fef2c54dbdb67fb0ce61f4e936/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f74657374732d3237332532463237332d627269676874677265656e" alt="Tests"></a>
+<a href="/saezbaldo/ic-agi/blob/main"><img src="https://camo.githubusercontent.com/c3ca660d2cfc2adef4a95e056ee189bfb525f991b7dd6079995c96074ce23576/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f666f726d616c5f766572696669636174696f6e2d544c412532422d626c7565" alt="TLA+"></a>
+<a href="/saezbaldo/ic-agi/blob/main"><img src="https://camo.githubusercontent.com/ad1338116477c204094b7d65b1f8b62156f0dfca05c584a0a305abf4df36bdd1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d332e31312b2d626c7565" alt="Python"></a>
+<a href="/saezbaldo/ic-agi/blob/main"><img src="https://camo.githubusercontent.com/a21a9e0b02a2eaf1910bbf168de84e00ae1eb7b0fde8c5ceec0e7caa61920adf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d417061636865253230322e302d677265656e" alt="License"></a>
+<a href="/saezbaldo/ic-agi/blob/main"><img src="https://camo.githubusercontent.com/443c872b1da9714087b96eeac0249c742e896568979a5eeaaf816155bedc5d2c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f70686173652d382532306f6625323031302d6f72616e6765" alt="Phase"></a></p>
+<hr>
+<div><h2> The Problem</h2><a href="#-the-problem"></a></div>
+<blockquote>
+<p><em>"The power of AI agents comes from intelligence, data access, and freedom to act. But security is the biggest bottleneck for broad adoption."</em></p>
+</blockquote>
+<p>As AI agents become more capable, the core challenge shifts from <em>capability</em> to <em>containment</em>:</p>
+<ul>
+<li>The more data &amp; control you give an AI agent, the more it can help you — <strong>and</strong> the more it can hurt you.</li>
+<li>No single machine should hold the keys to critical infrastructure.</li>
+<li>Traditional access control assumes trusted principals. AI agents are <strong>adversarial by design assumption</strong>.</li>
+</ul>
+<p>IC-AGI solves this by distributing authority so that <strong>no single point of compromise</strong> can lead to uncontrolled action.</p>
+<hr>
+<div><h2> Architecture</h2><a href="#-architecture"></a></div>
+<div><pre><code>┌─────────────────────────────────────────┐
+│ CONTROL PLANE │
+│ ┌──────────┐ ┌──────────┐ ┌─────────┐ │
+│ │ Policy │ │Capability│ │Threshold│ │
+│ │ Engine │ │ Issuer │ │Approvers│ │
+│ └──────────┘ └──────────┘ └─────────┘ │
+│ ┌──────────────┐ │
+│ │ Audit Ledger│ (append-only) │
+│ └──────────────┘ │
+└─────────────────┬───────────────────────┘ │ Capability Tokens │ (TTL + Scope + Budget)
+┌─────────────────▼───────────────────────┐
+│ EXECUTION PLANE │
+│ ┌────────┐ ┌────────┐ ┌────────┐ │
+│ │Worker 0│ │Worker 1│ │Worker 2│ │
+│ │(shard) │ │(shard) │ │(shard) │ │
+│ └────────┘ └────────┘ └────────┘ │
+│ No worker sees ALL segments. │
+│ State encrypted in transit (HMAC). │
+└─────────────────────────────────────────┘
+</code></pre></div>
+<hr>
+<div><h2> Core Security Guarantees</h2><a href="#-core-security-guarantees"></a></div>
+<table>
+<thead>
+<tr>
+<th>Guarantee</th>
+<th>Mechanism</th>
+<th>Formally Verified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No unilateral authority</strong></td>
+<td>K-of-N threshold approval (Shamir SSS)</td>
+<td> TLA+ P1-P4</td>
+</tr>
+<tr>
+<td><strong>Capability-bounded execution</strong></td>
+<td>Tokens with TTL, scope, and consumable budget</td>
+<td> TLA+ P5-P9</td>
+</tr>
+<tr>
+<td><strong>Anti-replay</strong></td>
+<td>HMAC-SHA256 signatures, budget=1 enforcement</td>
+<td> TLA+ P5</td>
+</tr>
+<tr>
+<td><strong>Segment isolation</strong></td>
+<td>No worker holds all IR segments</td>
+<td> TLA+ P10-P14</td>
+</tr>
+<tr>
+<td><strong>Tamper detection</strong></td>
+<td>Encrypt-then-MAC on state in transit</td>
+<td> TLA+ P13</td>
+</tr>
+<tr>
+<td><strong>Oracle abuse prevention</strong></td>
+<td>Rate limiting + behavioral fingerprinting</td>
+<td> Tested</td>
+</tr>
+<tr>
+<td><strong>Compromised node isolation</strong></td>
+<td>Circuit breaker (CLOSED→OPEN→HALF_OPEN)</td>
+<td> Tested</td>
+</tr>
+<tr>
+<td><strong>Proactive key rotation</strong></td>
+<td>Zero-polynomial protocol (secret never reconstructed)</td>
+<td> Algebraic proof A4-A5</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2> Quick Start</h2><a href="#-quick-start"></a></div>
+<div><pre><span><span>#</span> Clone</span>
+git clone https://github.com/saezbaldo/ic-agi.git
+<span>cd</span> ic-agi <span><span>#</span> Install</span>
+pip install -r requirements.txt <span><span>#</span> Run tests (273 checks)</span>
+python -m pytest ic_agi/ -v <span><span>#</span> Start the control plane</span>
+python -m ic_agi.service</pre></div>
+<div><h3>Execute a function</h3><a href="#execute-a-function"></a></div>
+<div><pre><span><span>#</span> Simple addition (distributed across workers)</span>
+curl -X POST http://localhost:8080/execute \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"function": "add", "operands": [3, 7]}<span>'</span></span> <span><span>#</span> Custom sandboxed code</span>
+curl -X POST http://localhost:8080/execute \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "function": "custom",</span>
+<span> "code": "result = sum(range(100))",</span>
+<span> "inputs": {},</span>
+<span> "output_names": ["result"]</span>
+<span> }<span>'</span></span></pre></div>
+<hr>
+<div><h2> What's Been Verified</h2><a href="#-whats-been-verified"></a></div>
+<div><h3>Formal Verification (TLA+ &amp; Algebraic Proofs)</h3><a href="#formal-verification-tla--algebraic-proofs"></a></div>
+<ul>
+<li><strong>14 safety properties</strong> verified via exhaustive model checking (~50,000+ states, ~250,000+ property checks)</li>
+<li><strong>8 algebraic proofs</strong> of Shamir Secret Sharing correctness</li>
+<li>Zero violations found</li>
+</ul>
+<div><h3>Adversarial Testing</h3><a href="#adversarial-testing"></a></div>
+<table>
+<thead>
+<tr>
+<th>Attack Vector</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forged HMAC token</td>
+<td> Rejected</td>
+</tr>
+<tr>
+<td>Replay attack (consumed token)</td>
+<td> Rejected</td>
+</tr>
+<tr>
+<td>Expired token reuse</td>
+<td> Rejected</td>
+</tr>
+<tr>
+<td>Tampered state in transit</td>
+<td> Detected via MAC</td>
+</tr>
+<tr>
+<td>Man-in-the-middle (altered operands)</td>
+<td> HMAC integrity check fails</td>
+</tr>
+<tr>
+<td>Malicious code injection (import, eval, exec)</td>
+<td> AST validator rejects</td>
+</tr>
+<tr>
+<td>Oracle extraction (repeated queries)</td>
+<td> Anti-oracle blocks</td>
+</tr>
+<tr>
+<td>Distributed flooding</td>
+<td> Global rate cap</td>
+</tr>
+<tr>
+<td>Combined multi-vector attack</td>
+<td> All vectors blocked</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Test Results</h3><a href="#test-results"></a></div>
+<table>
+<thead>
+<tr>
+<th>Suite</th>
+<th>Checks</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit tests</td>
+<td>7/7</td>
+<td></td>
+</tr>
+<tr>
+<td>Shamir crypto</td>
+<td>23/23</td>
+<td></td>
+</tr>
+<tr>
+<td>Adversarial attacks</td>
+<td>32/32</td>
+<td></td>
+</tr>
+<tr>
+<td>Integration (GKE)</td>
+<td>49/49</td>
+<td></td>
+</tr>
+<tr>
+<td>Distributed execution</td>
+<td>25/25</td>
+<td></td>
+</tr>
+<tr>
+<td>Anti-oracle &amp; rate limiting</td>
+<td>47/47</td>
+<td></td>
+</tr>
+<tr>
+<td>Sandbox runtime &amp; MITM</td>
+<td>58/58</td>
+<td></td>
+</tr>
+<tr>
+<td>Formal verification</td>
+<td>32/32</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>273/273</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2> Roadmap</h2><a href="#-roadmap"></a></div>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Description</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>IR Specification &amp; Sandboxed Execution</td>
+<td> Complete</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Capability System (TTL, Scope, Budget)</td>
+<td> Complete</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Threshold Authorization (K-of-N)</td>
+<td> Complete</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Real Cryptography (Shamir, HMAC-SHA256)</td>
+<td> Complete</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Distributed Worker Communication (K8s)</td>
+<td> Complete</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Anti-Oracle &amp; Rate Limiting</td>
+<td> Complete</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Real Runtime + Adversarial Testing</td>
+<td> Complete</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Formal Verification (TLA+)</td>
+<td> Complete</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Governance Protocols</td>
+<td> In Progress</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Production Hardening</td>
+<td> Planned</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2> Design Principles</h2><a href="#-design-principles"></a></div>
+<ol>
+<li><strong>No single node contains full authority.</strong></li>
+<li><strong>No single node contains full program logic.</strong></li>
+<li><strong>Execution requires explicit capabilities with TTL and scope.</strong></li>
+<li><strong>Critical actions require K-of-N threshold approval.</strong></li>
+<li><strong>All state transitions are auditable.</strong></li>
+<li><strong>Oracle abuse is rate-limited and monitored.</strong></li>
+<li><strong>Secrets are rotated proactively.</strong></li>
+</ol>
+<hr>
+<div><h2> How It's Different</h2><a href="#-how-its-different"></a></div>
+<p>IC-AGI is <strong>not</strong> a new cryptographic primitive. Every component exists independently:</p>
+<ul>
+<li>Shamir Secret Sharing (1979)</li>
+<li>Capability-based security (1966)</li>
+<li>Threshold signatures (1991)</li>
+<li>Circuit breakers (2007)</li>
+</ul>
+<p><strong>What's novel is the composition thesis:</strong> a system designed from first principles to control actors that are potentially more intelligent than the control system itself. No existing system combines threshold authorization, distributed IR execution, capability tokens with consumable budgets, anti-oracle detection, and formal verification into a single framework purpose-built for AI agent containment.</p>
+<p>See the full <a href="/saezbaldo/ic-agi/blob/main/PLAN-A_IC-AGI_Competitive_Analysis.md">Competitive Analysis</a> for detailed comparison against Kerberos, HashiCorp Vault, Gnosis Safe, Temporal.io, LangChain, and others.</p>
+<hr>
+<div><h2> Project Structure</h2><a href="#-project-structure"></a></div>
+<div><pre><code>ic_agi/
+├── ir_definition.py # Intermediate Representation (opcodes, segments)
+├── share_manager.py # Shamir Secret Sharing over GF(p)
+├── threshold_auth.py # K-of-N threshold authorization
+├── threshold_crypto.py # Cryptographic threshold operations
+├── control_plane.py # Policy engine + capability issuer
+├── worker.py # Local IR execution worker
+├── remote_worker.py # Distributed worker (HTTP/K8s)
+├── scheduler.py # IR segment routing
+├── sandbox_executor.py # AST-validated Python sandbox
+├── crypto_utils.py # HMAC-SHA256 encrypt-then-MAC
+├── audit_log.py # Append-only audit ledger
+├── rate_limiter.py # Sliding-window rate limiter
+├── anti_oracle.py # Behavioral fingerprinting
+├── circuit_breaker.py # Worker health state machine
+├── service.py # HTTP API (FastAPI)
+├── formal/
+│ ├── ThresholdAuth.tla # TLA+ spec (P1-P4)
+│ ├── CapabilityTokens.tla # TLA+ spec (P5-P9)
+│ ├── DistributedExecution.tla # TLA+ spec (P10-P14)
+│ ├── model_checker.py # Exhaustive BFS model checker
+│ └── shamir_proofs.py # Algebraic proofs (A1-A8)
+k8s/ # Kubernetes manifests (GKE-ready)
+</code></pre></div>
+<hr>
+<div><h2> Contributing</h2><a href="#-contributing"></a></div>
+<p>We welcome contributions from:</p>
+<ul>
+<li><strong>Cryptographers</strong> — threshold schemes, MPC protocols</li>
+<li><strong>Distributed systems engineers</strong> — consensus, fault tolerance</li>
+<li><strong>AI safety researchers</strong> — containment strategies, threat models</li>
+<li><strong>Formal methods experts</strong> — TLA+, TLAPS proofs, Coq/Lean</li>
+<li><strong>Security auditors</strong> — penetration testing, adversarial analysis</li>
+</ul>
+<hr>
+<div><h2> License</h2><a href="#-license"></a></div>
+<p>Apache 2.0</p>
+<hr>
+<div><h2> Contact</h2><a href="#-contact"></a></div>
+<ul>
+<li><strong>X:</strong> <a href="https://x.com/saezbaldo">@saezbaldo</a></li>
+<li><strong>Email:</strong> <a href="mailto:saezbaldo@gmail.com">saezbaldo@gmail.com</a></li>
+</ul>
+<hr>
+<p><em>IC-AGI is not about hiding code from intelligence. It is about separating intelligence from authority.</em></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

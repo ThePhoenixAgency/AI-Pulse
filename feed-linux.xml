@@ -5,7 +5,7 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Linux news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Feb 2026 12:52:49 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Feb 2026 14:49:06 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-linux.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title><![CDATA[Agenda du Libre pour la semaine 7 de l'année 2026]]></title>
@@ -365,15 +365,6 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
       <guid>https://linuxfr.org/news/revue-de-presse-de-l-april-pour-la-semaine-7-de-l-annee-2026</guid>
     </item>
     <item>
-      <title><![CDATA[Security updates for Monday]]></title>
-      <link>https://lwn.net/Articles/1058989/</link>
-      <description><![CDATA[Security updates have been issued by Debian (chromium, pdns-recursor, python-django, and wireshark), Fedora (gnutls, linux-sgx, mingw-expat, nginx, nginx-mod-brotli, nginx-mod-fancyindex, nginx-mod-headers-more, nginx-mod-modsecurity, nginx-mod-naxsi, nginx-mod-vts, p11-kit, python-aiohttp, vim, and xen), Red Hat (kernel, kernel-rt, python-s3transfer, python-urllib3, and resource-agents), SUSE (aaa_base, abseil-cpp, build-20260202, cargo-auditable, cargo-c, chromedriver, cockpit, cockpit-packages, cockpit-subscriptions, curl, elemental-toolkit, elemental-operator, gnome-remote-desktop, go1.24, go1.25, gpg2, haproxy, himmelblau, htmldoc, ImageMagick, iperf, java-1_8_0-openjdk, kernel, krb5, kubevirt, libowncloudsync-devel, libpng16-16, libsodium, libsoup, libsoup2, micropython, net-snmp, opencryptoki, openjfx, openssl1, ovmf, postgresql14, postgresql15, postgresql16, protobuf, python-aiohttp, python-brotli, python-maturin, python-pip, python-urllib3, python310, python311, python-rpm-macros, python311-cryptography, python314, screen, systemd, u-boot, util-linux, and vim), and Ubuntu (dotnet8, dotnet10, expat, freerdp2, freerdp3, and python-aiohttp).]]></description>
-      <pubDate>Mon, 16 Feb 2026 14:06:12 GMT</pubDate>
-      <source>LWN.net</source>
-      <category>linux</category>
-      <guid>https://lwn.net/Articles/1058989/</guid>
-    </item>
-    <item>
       <title><![CDATA[L’ANSSI révise sa doctrine vis-à-vis du logiciel libre]]></title>
       <link>https://linuxfr.org/news/l-anssi-revise-sa-doctrine-vis-a-vis-du-logiciel-libre</link>
       <description><![CDATA[L’ANSSI (Agence nationale de la sécurité des systèmes d’information) vient de publier une mise à jour substantielle de sa doctrine vis-à-vis du logiciel libre. L’agence confirme que le logiciel libre et la transparence sont essentiels à la sécurité des systèmes d’information. Elle assume sa contribution au libre et la publication de logiciels sous licence libre.
@@ -446,6 +437,15 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
       <guid>https://linuxfr.org/news/nouveautes-de-fevrier-2026-de-la-communaute-scenari</guid>
     </item>
     <item>
+      <title><![CDATA[Security updates for Thursday]]></title>
+      <link>https://lwn.net/Articles/1059500/</link>
+      <description><![CDATA[Security updates have been issued by AlmaLinux (edk2, glibc, gnupg2, golang, grafana, nodejs:24, and php), Debian (gimp and kernel), Fedora (fvwm3), Mageia (microcode and vim), Oracle (edk2, glibc, kernel, nodejs:24, and php), Red Hat (python-s3transfer), SUSE (abseil-cpp, avahi, azure-cli-core, fontforge, go1.24, go1.25, golang-github-prometheus-prometheus, libpcap, libsoup2, libxml2-16, mupdf, nodejs22, openCryptoki, openjpeg2, patch, python-aiohttp, python-Brotli, python-pip, python311-asgiref, rust1.93, and traefik), and Ubuntu (inetutils, libssh, linux-gcp, linux-gke, linux-hwe-6.8, linux-lowlatency-hwe-6.8, linux-intel-iotg-5.15, linux-xilinx-zynqmp, linux-lowlatency, linux-nvidia-lowlatency, and trafficserver).]]></description>
+      <pubDate>Thu, 19 Feb 2026 14:11:10 GMT</pubDate>
+      <source>LWN.net</source>
+      <category>linux</category>
+      <guid>https://lwn.net/Articles/1059500/</guid>
+    </item>
+    <item>
       <title><![CDATA[Experimental code ready for testing to enable HDMI 2.1 FRL with AMDGPU on Linux]]></title>
       <link>https://www.gamingonlinux.com/2026/02/experimental-code-ready-for-testing-to-enable-hdmi-2-1-frl-with-amdgpu-on-linux/</link>
       <description><![CDATA[Unfortunately, the HDMI Forum refused to allow HDMI 2.1+ features in the open source driver, but that hasn't stopped one developer. Read the full article on GamingOnLinux.]]></description>
@@ -480,15 +480,6 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
       <source>Journal du Hacker</source>
       <category>linux</category>
       <guid>https://next.ink/brief_article/retrogaming-recalbox-10-souvre-aux-steam-deck-et-inaugure-une-nouvelle-interface/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Arc B390 Graphics With Panther Lake Performing Great On Open-Source Intel Compute Runtime]]></title>
-      <link>https://www.phoronix.com/review/intel-arc-b390-compute</link>
-      <description><![CDATA[This month I have been doing a lot of Panther Lake benchmarking under Linux with the Core Ultra X7 358H. One of the areas of much interest has been the Arc B390 Xe3 graphics that have been working nicely out-of-the-box with the Intel open-source driver stack on Linux although there still are some gaps to fill against Windows. Those Intel Arc B390 Linux benchmarks so far have been focused on OpenGL and Vulkan graphics, but what about OpenCL and GPU compute with the open-source Intel Compute Runtime? Today's article is looking at the performance of the Xe3 Panther Lake graphics on the newest Compute Runtime release compared to prior Intel graphics generations and the AMD Ryzen AI competition.]]></description>
-      <pubDate>Mon, 16 Feb 2026 22:00:00 GMT</pubDate>
-      <source>Phoronix</source>
-      <category>linux</category>
-      <guid>https://www.phoronix.com/review/intel-arc-b390-compute</guid>
     </item>
     <item>
       <title><![CDATA[Concours - Gagnez une Raspberry Pi 5 avec Macé Robotics]]></title>
@@ -532,6 +523,41 @@ You're reading Ubuntu 24.04.4 LTS released with Linux 6.17 + Mesa 25.2, a blog p
       <source>GamingOnLinux</source>
       <category>linux</category>
       <guid>https://www.gamingonlinux.com/2026/02/mesa-26-0-is-out-bringing-ray-tracing-performance-improvements-for-amd-radv/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Mediatek MT7902 WiFi Finally Seeing Open-Source Linux Driver Activity]]></title>
+      <link>https://www.phoronix.com/news/Mediatek-MT7902-Linux-Patches</link>
+      <description><![CDATA[Mediatek MT7902 WiFi Finally Seeing Open-Source Linux Driver Activity]]></description>
+      <pubDate>Thu, 19 Feb 2026 14:03:48 GMT</pubDate>
+      <source>Phoronix</source>
+      <category>linux</category>
+      <guid>https://www.phoronix.com/news/Mediatek-MT7902-Linux-Patches</guid>
+    </item>
+    <item>
+      <title><![CDATA[Physiocab : un logiciel libre de gestion pour kinésithérapeutes]]></title>
+      <link>https://linuxfr.org/news/physiocab-un-logiciel-libre-de-gestion-pour-kinesitherapeutes</link>
+      <description><![CDATA[Physiocab est un logiciel libre de gestion de cabinet de kinésithérapie, développé sous licence Affero GPL 3.0 et hébergé sur Codeberg. Le projet est porté par la société Allium SAS, dans le cadre de la plateforme communautaire Kalinka, dédiée aux kinésithérapeutes francophones.
+Le projet vient de passer en beta publique (v0.9) et cherche des testeurs et contributeurs.
+Pourquoi un logiciel libre pour les kinés ? Le secteur de la santé libérale souffre d'une offre logicielle dominée par des solutions propriétaires onéreuses, souvent opaques sur le traitement des données de santé. Physiocab propose une alternative : un code auditable, des données stockées localement sous la responsabilité du praticien. lien nᵒ 1 : La page de présentation du projet
+lien nᵒ 2 : Le dépôt codeberg
+lien nᵒ 3 : PeerJs (MIT) Fonctionnalités
+La beta couvre déjà un large périmètre fonctionnel :
+Planning hebdomadaire en drag &amp; drop, avec export PDF et gestion des semaines exceptionnelles, particulièrement orienté vers les kinés intervenant en multi-établissements.
+Bilans Diagnostiques Kinésithérapiques (BDK) avec tests standardisés (TUG, Tinetti, Handgrip, EVA, évaluation du risque de chute…), export de PDF et historique comparatif.
+Suivi des séances avec de multiples exercices structurés (équilibre, force, endurance, mobilisation), chronométrage automatique et calcul de progression.
+Application tablette en PWA : fonctionne hors connexion grâce à un Service Worker, s'installe sans passer par un store, interface optimisée tactile.
+Stack technique
+Backend : Python 3.10+
+L'application est multi-plateforme côté client (Windows, macOS, Linux, iOS, Android). La communication entre l'appli de bureau et l'appli PWA se fait de manière directe via PeerJs. Cette méthode ne nécessite pas de préparation contraignante comme l'ouverture de ports.
+Les données sont stockées localement, ce qui implique que le praticien reste maître de ses sauvegardes et de sa conformité RGPD.
+Le logiciel a été testé par un kinésithérapeute en situation réelle plusieurs jours d'affilée.
+Modèle économique
+L'utilisation est gratuite, sans limite dans le temps et sans frais cachés, la licence Affero GPL 3.0 en étant la garantie. Un support payant sur devis est proposé pour les praticiens souhaitant une installation assistée, une formation à distance, des développements sur mesure ou un audit de sécurité.
+Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navigateur]]></description>
+      <pubDate>Thu, 19 Feb 2026 13:42:53 GMT</pubDate>
+      <source>LinuxFr</source>
+      <category>linux</category>
+      <guid>https://linuxfr.org/news/physiocab-un-logiciel-libre-de-gestion-pour-kinesitherapeutes</guid>
     </item>
     <item>
       <title><![CDATA[This is Probably the Best Video Downloader App (And it is Free and Open Source)]]></title>
@@ -842,25 +868,22 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
       <guid>https://linuxfr.org/news/retablissement-de-l-auto-attestation-pour-les-logiciels-de-caisse-l-aboutissement-d-une-annee-de-mobilisation</guid>
     </item>
     <item>
-      <title><![CDATA[L'April propose le pacte du logiciel libre à l'occasion des élections municipales et communautaires de 2026]]></title>
-      <link>https://linuxfr.org/news/l-april-propose-le-pacte-du-logiciel-libre-a-l-occasion-des-elections-municipales-et-communautaires-de-2026</link>
-      <description><![CDATA[À l'occasion des élections municipales et communautaires des 15 et 22 mars 2026, l'April propose aux personnes candidates de signer le Pacte du Logiciel Libre afin de marquer leur engagement, si elles sont élues, à promouvoir et défendre une priorité aux logiciels libres et aux formats ouverts au sein de leurs collectivités.
-Le pacte du logiciel libre est une initiative de l'April qui remonte à l'élection présidentielle de 2007. À l'occasion des élections locales à venir, le pacte a évolué pour être plus représentatif des enjeux actuels.
-En complément du pacte, l'April propose une liste d'exemples d'actions concrètes que les collectivités peuvent mettre en place dans la poursuite de ces objectifs. lien nᵒ 1 : Site de la campagne
-lien nᵒ 2 : Pacte du logiciel libre (PDF)
-lien nᵒ 3 : Pacte du logiciel libre (PDF brochure)
-lien nᵒ 4 : Pacte du logiciel libre (ODT) Le pacte est disponible sur le site de la campagne.
-En plus du format PDF classique, Le pacte est également disponible en mode « brochure », de manière à pouvoir l'imprimer et le plier dans un format 4 pages, par exemple pour être distribué sur les marchés en échange d'un tract électoral ;). Le pacte pour les élections municipales et communautaires de mars 2026 est construit autour de trois objectifs complémentaires :
-Donner la priorité aux logiciels libres et aux formats ouverts, qui est l'ambition historique de l'April. Avoir recours à des logiciels privateurs doit rester une exception dûment justifiée, dans le respect d’une stricte procédure de définition des besoins. Une priorité qui est compatible avec le droit de la commande publique – chose confirmée par le Conseil d'État depuis 2011 – et matériellement possible puisqu'il existe à présent des logiciels libres en mesure de répondre à la majorité des besoins des collectivités.
-Défendre et promouvoir une informatique émancipatrice. Le logiciel libre participe à la préservation des libertés fondamentales dans une société informatisée, au partage du savoir et à l'accès éclairé au numérique pour toutes et tous. Que ce soit dans les écoles dont elles ont la charge, comme dans l'ensemble des lieux d'accueil du public qu'elles peuvent être amenées à gérer, les collectivités ont un rôle important de sensibilisation et d’accompagnement à exercer.
-Contribuer à la pérennité des logiciels libres utilisés. Les collectivités doivent contribuer au maintien, à la documentation et au développement des solutions qu’elles utilisent. Un travail et un investissement mutualisables, notamment avec d'autres collectivités, au bénéfice de toutes et tous, d’autant plus pertinent et durable qu’ils s’inscrivent dans une politique formalisée de contribution et de partage.
-Le pacte s'adresse à l'ensemble des personnes candidates qui souhaitent marquer leur attachement à agir pour le logiciel libre au sein de leur collectivité et pour les libertés informatiques des habitantes et habitants. Il s'adresse également aux listes candidates qui souhaitent collectivement marquer, comme élément de leur programme, leur engagement à mettre en œuvre une politique en faveur du logiciel libre si elles obtiennent la majorité.
-Nous invitons toutes celles et ceux qui le souhaitent à contacter leurs candidates et candidats, qui ont déjà pu se manifester, pour les encourager à signer le Pacte du Logiciel Libre et profiter de l'occasion pour les sensibiliser aux enjeux des libertés informatiques.
-Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navigateur]]></description>
-      <pubDate>Fri, 06 Feb 2026 20:26:31 GMT</pubDate>
-      <source>LinuxFr</source>
+      <title><![CDATA[From the creators of SpeedRunners, a demo of Sprint City is live now]]></title>
+      <link>https://www.gamingonlinux.com/2026/02/from-the-creators-of-speedrunners-a-demo-of-sprint-city-is-live-now/</link>
+      <description><![CDATA[Coming from the original creators of the popular competitive platformer SpeedRunners, a first playable demo for Sprint City is live on Steam. Read the full article on GamingOnLinux.]]></description>
+      <pubDate>Thu, 19 Feb 2026 13:37:58 GMT</pubDate>
+      <source>GamingOnLinux</source>
       <category>linux</category>
-      <guid>https://linuxfr.org/news/l-april-propose-le-pacte-du-logiciel-libre-a-l-occasion-des-elections-municipales-et-communautaires-de-2026</guid>
+      <guid>https://www.gamingonlinux.com/2026/02/from-the-creators-of-speedrunners-a-demo-of-sprint-city-is-live-now/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Creature collector EvoCreo 2 gets a demo on Steam]]></title>
+      <link>https://www.gamingonlinux.com/2026/02/creature-collector-evocreo-2-gets-a-demo-on-steam/</link>
+      <description><![CDATA[Ahead of Steam Next Fest which is quickly approaching, the creature collector standalone sequel EvoCreo 2 has a demo live now. Read the full article on GamingOnLinux.]]></description>
+      <pubDate>Thu, 19 Feb 2026 12:47:47 GMT</pubDate>
+      <source>GamingOnLinux</source>
+      <category>linux</category>
+      <guid>https://www.gamingonlinux.com/2026/02/creature-collector-evocreo-2-gets-a-demo-on-steam/</guid>
     </item>
     <item>
       <title><![CDATA[Fight first-person rock-paper-scissors style duels in the deck-builder Handmancers]]></title>
@@ -1303,6 +1326,15 @@ L’un des freins majeurs des solutions open source comme OSMand est souvent la 
       <guid>https://www.gamingonlinux.com/2026/02/the-clever-ascii-animated-stone-story-rpg-is-getting-a-full-standalone-sequel/</guid>
     </item>
     <item>
+      <title><![CDATA[Liens Tech - Février 2026]]></title>
+      <link>https://domopi.eu/liens-tech-fevrier-2026/</link>
+      <description><![CDATA[Liens Tech, c’est notre façon de partager ce qu'on découvre au fil de nos explorations : des outils, projets et ressources qui nous ont intrigué, simplifié la vie ou simplement donné envie d’expérimenter. Une veille sans prétention, juste le plaisir de chercher, tester et partager ce qui vaut le détour.Voici notre sélection du mois.plakarPrésentation : Plakar est une solution de sauvegarde open-source conçue pour simplifier la protection des données grâce à des snapshots chiffrés, compressés et dédupliqués. Elle offre une interface CLI + UI qui permet de parcourir, restaurer ou synchroniser des sauvegardes depuis ou vers différents supports (local, cloud, objets, SaaS). : Je suis en cours de test de Plakar et j’ai été jusqu'ici séduit par sa simplicité et son efficacité. La sauvegarde en snapshots dédupliqués fonctionne très bien. Un outil encore jeune, mais prometteur.GitHub - PlakarKorp/plakar: plakar is a backup solution powered by Kloset and ptarplakar is a backup solution powered by Kloset and ptar - PlakarKorp/plakarGitHubPlakarKorpNetworking ToolboxPrésentation : Networking Toolbox est une collection open-source d’outils réseau rassemblés dans une interface web unique, développée par Lissy93. Elle regroupe diagnostics, tests de connectivité et visualisations pour simplifier le dépannage et l’analyse réseau depuis un seul tableau de bord. : J’aime beauco]]></description>
+      <pubDate>Mon, 16 Feb 2026 08:03:48 GMT</pubDate>
+      <source>Journal du Hacker</source>
+      <category>linux</category>
+      <guid>https://domopi.eu/liens-tech-fevrier-2026/</guid>
+    </item>
+    <item>
       <title><![CDATA[Ubuntu 26.04 splits firmware package to reduce update sizes]]></title>
       <link>https://www.omgubuntu.co.uk/2026/02/ubuntu-26-04-firmware-split</link>
       <description><![CDATA[Ubuntu 26.04 LTS will split its 600MB linux-firmware package into 17 vendor-specific packages to reduce bandwidth and download sizes of firmware updates.
@@ -1457,24 +1489,6 @@ You're reading Linux Mint may make fewer releases a year to ‘uncap ambition’
       <source>GamingOnLinux</source>
       <category>linux</category>
       <guid>https://www.gamingonlinux.com/2026/02/no-mans-sky-remnant-update-brings-a-fancy-gravity-gun-and-customizable-trucks/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Overwatch has returned with new heroes and a new UI]]></title>
-      <link>https://www.gamingonlinux.com/2026/02/overwatch-has-returned-with-new-heroes-and-a-new-ui/</link>
-      <description><![CDATA[Overwatch has returned with the "2" now in the bin, along with a big content update with new heroes and a new lobby UI. Read the full article on GamingOnLinux.]]></description>
-      <pubDate>Wed, 11 Feb 2026 16:13:17 GMT</pubDate>
-      <source>GamingOnLinux</source>
-      <category>linux</category>
-      <guid>https://www.gamingonlinux.com/2026/02/overwatch-has-returned-with-new-heroes-and-a-new-ui/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Retro Macintosh games Return to Dark Castle and Beyond Dark Castle arrive on Steam in March]]></title>
-      <link>https://www.gamingonlinux.com/2026/02/retro-macintosh-games-return-to-dark-castle-and-beyond-dark-castle-arrive-on-steam-in-march/</link>
-      <description><![CDATA[Return to Dark Castle and Beyond Dark Castle are classic Macintosh games from the 80s, and they're getting a bundled definitive edition re-release on Steam. Read the full article on GamingOnLinux.]]></description>
-      <pubDate>Wed, 11 Feb 2026 14:15:21 GMT</pubDate>
-      <source>GamingOnLinux</source>
-      <category>linux</category>
-      <guid>https://www.gamingonlinux.com/2026/02/retro-macintosh-games-return-to-dark-castle-and-beyond-dark-castle-arrive-on-steam-in-march/</guid>
     </item>
     <item>
       <title><![CDATA[Projets Libres saison 4 épisode 11 : PVH éditions, une maison d'édition libérée et dans le Fediverse]]></title>

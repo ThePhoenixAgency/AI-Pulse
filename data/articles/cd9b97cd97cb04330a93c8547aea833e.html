@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How We Added Call-to-Action Buttons to Shared Videos</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How We Added Call-to-Action Buttons to Shared Videos</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 2:43:56 PM | <a href="https://dev.to/alexneamtu/how-we-added-call-to-action-buttons-to-shared-videos-a4d" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/alexneamtu"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F353763%2Fad2f8461-24ae-4014-8af9-f848d9cf4c5b.jpeg" alt="Alex Neamtu"></a> </p> </div><div> <p>You record a product demo and send it to a prospect. They watch the whole thing. Then they close the tab.</p> <p>The video did its job — they saw the feature, they understood the value — but there was no next step. No link to the pricing page. No "Book a demo" button. No way to convert attention into action.</p> <p>We added per-video call-to-action buttons to <a href="https://sendrec.eu/" target="_blank">SendRec</a>. When a viewer watches a video to the end, a CTA card appears with a customizable button. Clicks are tracked and reported as a click-through rate in per-video analytics.</p> <h2> <a name="how-it-works" href="#how-it-works"> </a> How it works
+</h2> <p>The CTA card is hidden during playback. When the video's <code>ended</code> event fires, it becomes visible:<br>
+</p> <div>
+<pre><code><span>var</span> <span>player</span> <span>=</span> <span>document</span><span>.</span><span>getElementById</span><span>(</span><span>'</span><span>player</span><span>'</span><span>);</span>
+<span>var</span> <span>ctaCard</span> <span>=</span> <span>document</span><span>.</span><span>getElementById</span><span>(</span><span>'</span><span>cta-card</span><span>'</span><span>);</span>
+<span>if </span><span>(</span><span>player</span> <span>&amp;&amp;</span> <span>ctaCard</span><span>)</span> <span>{</span> <span>player</span><span>.</span><span>addEventListener</span><span>(</span><span>'</span><span>ended</span><span>'</span><span>,</span> <span>function</span><span>()</span> <span>{</span> <span>ctaCard</span><span>.</span><span>classList</span><span>.</span><span>add</span><span>(</span><span>'</span><span>visible</span><span>'</span><span>);</span> <span>});</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The card has two elements: a dismiss button and the CTA link. The dismiss button removes the <code>visible</code> class. The CTA link opens in a new tab and fires a tracking request in the background:<br>
+</p> <div>
+<pre><code><span>if </span><span>(</span><span>ctaBtn</span><span>)</span> <span>{</span> <span>ctaBtn</span><span>.</span><span>addEventListener</span><span>(</span><span>'</span><span>click</span><span>'</span><span>,</span> <span>function</span><span>()</span> <span>{</span> <span>fetch</span><span>(</span><span>'</span><span>/api/watch/</span><span>'</span> <span>+</span> <span>shareToken</span> <span>+</span> <span>'</span><span>/cta-click</span><span>'</span><span>,</span> <span>{</span> <span>method</span><span>:</span> <span>'</span><span>POST</span><span>'</span> <span>})</span> <span>.</span><span>catch</span><span>(</span><span>function</span><span>()</span> <span>{});</span> <span>});</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The <code>.catch(function() {})</code> is intentional — the click should navigate to the CTA URL regardless of whether tracking succeeds. We don't want a network hiccup to block the viewer's action.</p> <h2> <a name="serverside-rendering-not-clientside-injection" href="#serverside-rendering-not-clientside-injection"> </a> Server-side rendering, not client-side injection
+</h2> <p>The CTA card is conditionally rendered in the Go template:<br>
+</p> <div>
+<pre><code>{{if and .CtaText .CtaUrl}}
+<span>&lt;div</span> <span>class=</span><span>"cta-card"</span> <span>id=</span><span>"cta-card"</span><span>&gt;</span> <span>&lt;button</span> <span>class=</span><span>"cta-dismiss"</span> <span>onclick=</span><span>"..."</span> <span>aria-label=</span><span>"Dismiss"</span><span>&gt;</span><span>&amp;times;</span><span>&lt;/button&gt;</span> <span>&lt;a</span> <span>href=</span><span>"{{.CtaUrl}}"</span> <span>target=</span><span>"_blank"</span> <span>rel=</span><span>"noopener noreferrer"</span> <span>class=</span><span>"cta-btn"</span> <span>id=</span><span>"cta-btn"</span><span>&gt;</span>{{.CtaText}}<span>&lt;/a&gt;</span>
+<span>&lt;/div&gt;</span>
+{{end}}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>When no CTA is configured, the HTML is absent — not hidden, absent. No unused DOM elements, no JavaScript for features that aren't active. This keeps the watch page fast for the majority of videos that don't have a CTA.</p> <h2> <a name="click-tracking" href="#click-tracking"> </a> Click tracking
+</h2> <p>The <code>RecordCTAClick</code> endpoint is public (no auth required — viewers aren't logged in) but lightweight. It resolves the video from the share token, then records the click in a background goroutine:<br>
+</p> <div>
+<pre><code><span>func</span> <span>(</span><span>h</span> <span>*</span><span>Handler</span><span>)</span> <span>RecordCTAClick</span><span>(</span><span>w</span> <span>http</span><span>.</span><span>ResponseWriter</span><span>,</span> <span>r</span> <span>*</span><span>http</span><span>.</span><span>Request</span><span>)</span> <span>{</span> <span>shareToken</span> <span>:=</span> <span>chi</span><span>.</span><span>URLParam</span><span>(</span><span>r</span><span>,</span> <span>"shareToken"</span><span>)</span> <span>var</span> <span>videoID</span> <span>string</span> <span>err</span> <span>:=</span> <span>h</span><span>.</span><span>db</span><span>.</span><span>QueryRow</span><span>(</span><span>r</span><span>.</span><span>Context</span><span>(),</span> <span>`SELECT id FROM videos WHERE share_token = $1 AND status IN ('ready', 'processing')`</span><span>,</span> <span>shareToken</span><span>,</span> <span>)</span><span>.</span><span>Scan</span><span>(</span><span>&amp;</span><span>videoID</span><span>)</span> <span>if</span> <span>err</span> <span>!=</span> <span>nil</span> <span>{</span> <span>httputil</span><span>.</span><span>WriteError</span><span>(</span><span>w</span><span>,</span> <span>http</span><span>.</span><span>StatusNotFound</span><span>,</span> <span>"video not found"</span><span>)</span> <span>return</span> <span>}</span> <span>go</span> <span>func</span><span>()</span> <span>{</span> <span>ctx</span><span>,</span> <span>cancel</span> <span>:=</span> <span>context</span><span>.</span><span>WithTimeout</span><span>(</span><span>context</span><span>.</span><span>Background</span><span>(),</span> <span>30</span><span>*</span><span>time</span><span>.</span><span>Second</span><span>)</span> <span>defer</span> <span>cancel</span><span>()</span> <span>ip</span> <span>:=</span> <span>clientIP</span><span>(</span><span>r</span><span>)</span> <span>hash</span> <span>:=</span> <span>viewerHash</span><span>(</span><span>ip</span><span>,</span> <span>r</span><span>.</span><span>UserAgent</span><span>())</span> <span>h</span><span>.</span><span>db</span><span>.</span><span>Exec</span><span>(</span><span>ctx</span><span>,</span> <span>`INSERT INTO cta_clicks (video_id, viewer_hash) VALUES ($1, $2)`</span><span>,</span> <span>videoID</span><span>,</span> <span>hash</span><span>,</span> <span>)</span> <span>}()</span> <span>w</span><span>.</span><span>WriteHeader</span><span>(</span><span>http</span><span>.</span><span>StatusNoContent</span><span>)</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The response returns immediately — the viewer doesn't wait for the database write. The <code>viewerHash</code> is a truncated SHA-256 of the IP and User-Agent, the same approach we use for view tracking. It's not a unique identifier, but it gives useful deduplication signals in analytics without storing personal data.</p> <h2> <a name="the-data-model" href="#the-data-model"> </a> The data model
+</h2> <p>Two additions to the schema:<br>
+</p> <div>
+<pre><code><span>ALTER</span> <span>TABLE</span> <span>videos</span> <span>ADD</span> <span>COLUMN</span> <span>cta_text</span> <span>TEXT</span> <span>DEFAULT</span> <span>NULL</span><span>;</span>
+<span>ALTER</span> <span>TABLE</span> <span>videos</span> <span>ADD</span> <span>COLUMN</span> <span>cta_url</span> <span>TEXT</span> <span>DEFAULT</span> <span>NULL</span><span>;</span> <span>CREATE</span> <span>TABLE</span> <span>cta_clicks</span> <span>(</span> <span>id</span> <span>UUID</span> <span>PRIMARY</span> <span>KEY</span> <span>DEFAULT</span> <span>gen_random_uuid</span><span>(),</span> <span>video_id</span> <span>UUID</span> <span>NOT</span> <span>NULL</span> <span>REFERENCES</span> <span>videos</span><span>(</span><span>id</span><span>),</span> <span>viewer_hash</span> <span>TEXT</span> <span>NOT</span> <span>NULL</span><span>,</span> <span>created_at</span> <span>TIMESTAMPTZ</span> <span>NOT</span> <span>NULL</span> <span>DEFAULT</span> <span>now</span><span>()</span>
+<span>);</span> <span>CREATE</span> <span>INDEX</span> <span>idx_cta_clicks_video_id</span> <span>ON</span> <span>cta_clicks</span><span>(</span><span>video_id</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Both <code>cta_text</code> and <code>cta_url</code> are nullable. When both are NULL, no CTA renders. When both are set, the card appears. There's no partial state — you can't have text without a URL or vice versa.</p> <p>The <code>cta_clicks</code> table is append-only. Each click is a row with the video ID, a viewer hash, and a timestamp. Analytics queries aggregate this into a total count and click-through rate:<br>
+</p> <div>
+<pre><code><span>var</span> <span>totalCtaClicks</span> <span>int64</span>
+<span>h</span><span>.</span><span>db</span><span>.</span><span>QueryRow</span><span>(</span><span>ctx</span><span>,</span> <span>`SELECT COUNT(*) FROM cta_clicks WHERE video_id = $1 AND created_at &gt;= $2`</span><span>,</span> <span>videoID</span><span>,</span> <span>since</span><span>,</span>
+<span>)</span><span>.</span><span>Scan</span><span>(</span><span>&amp;</span><span>totalCtaClicks</span><span>)</span> <span>if</span> <span>summary</span><span>.</span><span>TotalViews</span> <span>&gt;</span> <span>0</span> <span>{</span> <span>summary</span><span>.</span><span>CtaClickRate</span> <span>=</span> <span>float64</span><span>(</span><span>totalCtaClicks</span><span>)</span> <span>/</span> <span>float64</span><span>(</span><span>summary</span><span>.</span><span>TotalViews</span><span>)</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Click-through rate = CTA clicks / total views. If a video has 200 views and 30 CTA clicks, that's a 15% click-through rate. This appears in the per-video analytics dashboard alongside view counts and daily trends.</p> <h2> <a name="validation" href="#validation"> </a> Validation
+</h2> <p>The <code>SetCTA</code> handler validates both fields:<br>
+</p> <div>
+<pre><code><span>if</span> <span>len</span><span>(</span><span>*</span><span>req</span><span>.</span><span>Text</span><span>)</span> <span>&gt;</span> <span>100</span> <span>{</span> <span>httputil</span><span>.</span><span>WriteError</span><span>(</span><span>w</span><span>,</span> <span>http</span><span>.</span><span>StatusBadRequest</span><span>,</span> <span>"CTA text must be 100 characters or less"</span><span>)</span> <span>return</span>
+<span>}</span>
+<span>if</span> <span>len</span><span>(</span><span>*</span><span>req</span><span>.</span><span>URL</span><span>)</span> <span>&gt;</span> <span>2000</span> <span>{</span> <span>httputil</span><span>.</span><span>WriteError</span><span>(</span><span>w</span><span>,</span> <span>http</span><span>.</span><span>StatusBadRequest</span><span>,</span> <span>"CTA URL must be 2000 characters or less"</span><span>)</span> <span>return</span>
+<span>}</span>
+<span>if</span> <span>!</span><span>strings</span><span>.</span><span>HasPrefix</span><span>(</span><span>*</span><span>req</span><span>.</span><span>URL</span><span>,</span> <span>"http://"</span><span>)</span> <span>&amp;&amp;</span> <span>!</span><span>strings</span><span>.</span><span>HasPrefix</span><span>(</span><span>*</span><span>req</span><span>.</span><span>URL</span><span>,</span> <span>"https://"</span><span>)</span> <span>{</span> <span>httputil</span><span>.</span><span>WriteError</span><span>(</span><span>w</span><span>,</span> <span>http</span><span>.</span><span>StatusBadRequest</span><span>,</span> <span>"CTA URL must start with http:// or https://"</span><span>)</span> <span>return</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Text is capped at 100 characters — a CTA should be short ("Book a demo", "Start free trial", "Learn more"). URL is capped at 2000 characters and must use HTTP or HTTPS — no <code>javascript:</code> or <code>data:</code> URIs.</p> <p>To clear a CTA, send <code>null</code> for both fields. The handler updates both columns in a single statement:<br>
+</p> <div>
+<pre><code><span>h</span><span>.</span><span>db</span><span>.</span><span>Exec</span><span>(</span><span>r</span><span>.</span><span>Context</span><span>(),</span> <span>`UPDATE videos SET cta_text = $1, cta_url = $2 WHERE id = $3 AND user_id = $4 AND status != 'deleted'`</span><span>,</span> <span>req</span><span>.</span><span>Text</span><span>,</span> <span>req</span><span>.</span><span>URL</span><span>,</span> <span>videoID</span><span>,</span> <span>userID</span><span>,</span>
+<span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="embed-page-support" href="#embed-page-support"> </a> Embed page support
+</h2> <p>The CTA also works on the embeddable player at <code>/embed/:token</code>. The implementation is slightly different — the CTA overlay is positioned absolutely over the video rather than appearing below it, since the embed page is designed to fit inside an iframe:<br>
+</p> <div>
+<pre><code><span>.cta-overlay</span> <span>{</span> <span>display</span><span>:</span> <span>none</span><span>;</span> <span>position</span><span>:</span> <span>absolute</span><span>;</span> <span>top</span><span>:</span> <span>0</span><span>;</span> <span>left</span><span>:</span> <span>0</span><span>;</span> <span>right</span><span>:</span> <span>0</span><span>;</span> <span>bottom</span><span>:</span> <span>0</span><span>;</span> <span>background</span><span>:</span> <span>rgba</span><span>(</span><span>0</span><span>,</span> <span>0</span><span>,</span> <span>0</span><span>,</span> <span>0.85</span><span>);</span> <span>justify-content</span><span>:</span> <span>center</span><span>;</span> <span>align-items</span><span>:</span> <span>center</span><span>;</span> <span>flex-direction</span><span>:</span> <span>column</span><span>;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>When the viewer clicks play again, the overlay hides. This matches the behavior viewers expect from embedded players — the CTA is an interstitial, not a permanent addition.</p> <h2> <a name="custom-css" href="#custom-css"> </a> Custom CSS
+</h2> <p>The CTA card respects the existing custom CSS system. Every element has a stable class name:</p> <div><table>
+<thead>
+<tr>
+<th>Selector</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.cta-card</code></td>
+<td>CTA container</td>
+</tr>
+<tr>
+<td><code>.cta-card.visible</code></td>
+<td>CTA container when shown</td>
+</tr>
+<tr>
+<td><code>.cta-btn</code></td>
+<td>CTA action button</td>
+</tr>
+<tr>
+<td><code>.cta-dismiss</code></td>
+<td>Dismiss button</td>
+</tr>
+</tbody>
+</table></div> <p>You can style the CTA to match your brand:<br>
+</p> <div>
+<pre><code><span>.cta-card</span> <span>{</span> <span>background</span><span>:</span> <span>linear-gradient</span><span>(</span><span>135deg</span><span>,</span> <span>var</span><span>(</span><span>--brand-surface</span><span>),</span> <span>#1a1a2e</span><span>);</span> <span>border</span><span>:</span> <span>2px</span> <span>solid</span> <span>var</span><span>(</span><span>--brand-accent</span><span>);</span> <span>border-radius</span><span>:</span> <span>16px</span><span>;</span>
+<span>}</span> <span>.cta-btn</span> <span>{</span> <span>border-radius</span><span>:</span> <span>24px</span><span>;</span> <span>text-transform</span><span>:</span> <span>uppercase</span><span>;</span> <span>letter-spacing</span><span>:</span> <span>0.05em</span><span>;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Or hide it entirely with <code>.cta-card { display: none !important; }</code> — though at that point, just don't set a CTA.</p> <h2> <a name="try-it" href="#try-it"> </a> Try it
+</h2> <p><a href="https://sendrec.eu/" target="_blank">SendRec</a> is open source (AGPL-3.0) and self-hostable. CTAs are live at <a href="https://app.sendrec.eu/" target="_blank">app.sendrec.eu</a> — upload a video, click the overflow menu in the Library, choose "Call to action", enter your text and URL, then share the link. Watch the video to the end and you'll see the button appear.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

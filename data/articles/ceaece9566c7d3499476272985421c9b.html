@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building a Rails Engine #4 — Modeling Import Data with StoreModel &amp; JSONB</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Building a Rails Engine #4 — Modeling Import Data with StoreModel &amp; JSONB</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 1:00:00 PM | <a href="https://dev.to/seryllns_/building-a-rails-engine-4-modeling-import-data-with-storemodel-jsonb-3njp" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="modeling-import-data-with-storemodel-amp-jsonb" href="#modeling-import-data-with-storemodel-amp-jsonb"> </a> Modeling import data with StoreModel &amp; JSONB
+</h2> <blockquote>
+<p>Storing structured import records, errors, and reports inside a single JSONB column -- no extra tables, no schema sprawl.</p>
+</blockquote> <h2> <a name="context" href="#context"> </a> Context
+</h2> <p>This is part 4 of the series where we build <strong>DataPorter</strong>, a mountable Rails engine for data import workflows. In <a href="https://dev.to/seryllns_/building-a-rails-engine-3-configuration-dsl-making-the-gem-flexible-1nb8">part 3</a>, we built the configuration DSL that lets host apps customize the gem through a clean <code>configure</code> block.</p> <p>Now we shift from <em>how the gem behaves</em> to <em>what it operates on</em>: the data models for parsed records, validation errors, and summary reports. We'll model all three using the <a href="https://github.com/DmitryTsepelev/store_model" target="_blank">StoreModel</a> gem and PostgreSQL JSONB columns.</p> <h2> <a name="the-problem" href="#the-problem"> </a> The problem
+</h2> <p>A typical import engine ends up with a lot of tables: imports, import rows, import errors, reports. Each needs a migration, foreign keys, indexes, and cleanup logic. For a gem that drops into any Rails app, that's a heavy footprint.</p> <p>But these records are ephemeral. They exist during the import workflow, get consulted in the results view, and nobody queries them independently. You never ask "give me all errors across all imports." They're always accessed through their parent.</p> <p>If the data is always read and written as a group, it doesn't need its own table. It needs a structured column.</p> <h2> <a name="what-were-building" href="#what-were-building"> </a> What we're building
+</h2> <p>A single <code>DataImport</code> record will carry its entire import payload in JSONB columns:<br>
+</p> <div>
+<pre><code><span># Anywhere in the engine</span>
+<span>import</span> <span>=</span> <span>DataPorter</span><span>::</span><span>DataImport</span><span>.</span><span>find</span><span>(</span><span>42</span><span>)</span> <span>import</span><span>.</span><span>report</span><span>.</span><span>records_count</span> <span># =&gt; 150</span>
+<span>import</span><span>.</span><span>report</span><span>.</span><span>errored_count</span> <span># =&gt; 3</span>
+<span>import</span><span>.</span><span>report</span><span>.</span><span>error_reports</span><span>.</span><span>each</span> <span>{</span> <span>|</span><span>e</span><span>|</span> <span>puts</span> <span>e</span><span>.</span><span>message</span> <span>}</span> <span>import</span><span>.</span><span>records</span><span>.</span><span>first</span><span>.</span><span>line_number</span> <span># =&gt; 1</span>
+<span>import</span><span>.</span><span>records</span><span>.</span><span>first</span><span>.</span><span>status</span> <span># =&gt; "complete"</span>
+<span>import</span><span>.</span><span>records</span><span>.</span><span>first</span><span>.</span><span>data</span> <span># =&gt; { "name" =&gt; "Alice", "email" =&gt; "alice@example.com" }</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>No joins, no N+1 queries. Records and reports come back as typed Ruby objects with real attributes and methods -- not raw hashes.</p> <h2> <a name="implementation" href="#implementation"> </a> Implementation
+</h2> <h3> <a name="step-1-the-error-model" href="#step-1-the-error-model"> </a> Step 1 -- The Error model
+</h3> <p>Every import record can accumulate validation errors. We need a small object to represent each one. StoreModel lets us define it like an ActiveModel attribute model, but serialized into JSON.<br>
+</p> <div>
+<pre><code><span># lib/data_porter/store_models/error.rb</span>
+<span>module</span> <span>DataPorter</span> <span>module</span> <span>StoreModels</span> <span>class</span> <span>Error</span> <span>include</span> <span>StoreModel</span><span>::</span><span>Model</span> <span>attribute</span> <span>:message</span><span>,</span> <span>:string</span> <span>end</span> <span>end</span>
+<span>end</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><code>include StoreModel::Model</code> gives us ActiveModel-compatible attributes that serialize to and from JSON. Why not a plain hash? Because <code>error.message</code> is a method call with autocompletion, not <code>error["message"]</code> where you guess at indifferent access. If we need <code>:code</code> or <code>:severity</code> later, we add an attribute and existing data deserializes cleanly -- new fields default to nil.</p> <h3> <a name="step-2-the-importrecord-model" href="#step-2-the-importrecord-model"> </a> Step 2 -- The ImportRecord model
+</h3> <p>Each row from the source file becomes an <code>ImportRecord</code>. This is the workhorse of the import: it holds the parsed data, tracks validation status, and collects errors and warnings.<br>
+</p> <div>
+<pre><code><span># lib/data_porter/store_models/import_record.rb</span>
+<span>module</span> <span>DataPorter</span> <span>module</span> <span>StoreModels</span> <span>class</span> <span>ImportRecord</span> <span>include</span> <span>StoreModel</span><span>::</span><span>Model</span> <span>attribute</span> <span>:line_number</span><span>,</span> <span>:integer</span> <span>attribute</span> <span>:status</span><span>,</span> <span>:string</span><span>,</span> <span>default: </span><span>"pending"</span> <span>attribute</span> <span>:data</span><span>,</span> <span>default: </span><span>-&gt;</span> <span>{</span> <span>{}</span> <span>}</span> <span>attribute</span> <span>:errors_list</span><span>,</span> <span>Error</span><span>.</span><span>to_array_type</span><span>,</span> <span>default: </span><span>-&gt;</span> <span>{</span> <span>[]</span> <span>}</span> <span>attribute</span> <span>:warnings</span><span>,</span> <span>Error</span><span>.</span><span>to_array_type</span><span>,</span> <span>default: </span><span>-&gt;</span> <span>{</span> <span>[]</span> <span>}</span> <span>attribute</span> <span>:target_id</span><span>,</span> <span>:integer</span> <span>attribute</span> <span>:dry_run_passed</span><span>,</span> <span>:boolean</span><span>,</span> <span>default: </span><span>false</span> <span>end</span> <span>end</span>
+<span>end</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The <code>data</code> attribute stores whatever hash the source parser produces -- no explicit type, because each import target defines different columns. The lambda defaults (<code>-&gt; { {} }</code>) are critical; without them, every record shares the same mutable object. <code>Error.to_array_type</code> makes <code>errors_list</code> a typed array: each JSON entry deserializes into an <code>Error</code> instance, not a raw hash.</p> <p>The model also carries behavior. Status determination runs after validation:<br>
+</p> <div>
+<pre><code><span># lib/data_porter/store_models/import_record.rb</span>
+<span>def</span> <span>determine_status!</span> <span>self</span><span>.</span><span>status</span> <span>=</span> <span>if</span> <span>required_error?</span> <span>"missing"</span> <span>elsif</span> <span>errors_list</span><span>.</span><span>any?</span> <span>"partial"</span> <span>else</span> <span>"complete"</span> <span>end</span>
+<span>end</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Three statuses: "missing" (a required field is absent -- the record cannot be imported), "partial" (optional field errors exist -- the record can be imported with warnings), and "complete" (clean row, ready to go). The distinction between required and optional errors is driven by the column definition -- we'll wire that up in part 5 with the Target DSL. The Orchestrator will call <code>determine_status!</code> after validation and use <code>importable?</code> to decide which records to persist.</p> <h3> <a name="step-3-the-report-model" href="#step-3-the-report-model"> </a> Step 3 -- The Report model
+</h3> <p>After parsing and validating, we need a summary. The Report model aggregates counts and collects top-level errors (like "file has no header row" or "unexpected encoding").<br>
+</p> <div>
+<pre><code><span># lib/data_porter/store_models/report.rb</span>
+<span>module</span> <span>DataPorter</span> <span>module</span> <span>StoreModels</span> <span>class</span> <span>Report</span> <span>include</span> <span>StoreModel</span><span>::</span><span>Model</span> <span>attribute</span> <span>:records_count</span><span>,</span> <span>:integer</span><span>,</span> <span>default: </span><span>0</span> <span>attribute</span> <span>:complete_count</span><span>,</span> <span>:integer</span><span>,</span> <span>default: </span><span>0</span> <span>attribute</span> <span>:partial_count</span><span>,</span> <span>:integer</span><span>,</span> <span>default: </span><span>0</span> <span>attribute</span> <span>:missing_count</span><span>,</span> <span>:integer</span><span>,</span> <span>default: </span><span>0</span> <span>attribute</span> <span>:duplicate_count</span><span>,</span> <span>:integer</span><span>,</span> <span>default: </span><span>0</span> <span>attribute</span> <span>:imported_count</span><span>,</span> <span>:integer</span><span>,</span> <span>default: </span><span>0</span> <span>attribute</span> <span>:errored_count</span><span>,</span> <span>:integer</span><span>,</span> <span>default: </span><span>0</span> <span>attribute</span> <span>:error_reports</span><span>,</span> <span>Error</span><span>.</span><span>to_array_type</span><span>,</span> <span>default: </span><span>-&gt;</span> <span>{</span> <span>[]</span> <span>}</span> <span>end</span> <span>end</span>
+<span>end</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Every counter defaults to zero; the Orchestrator increments them during processing. <code>error_reports</code> reuses <code>Error.to_array_type</code> for import-level errors that don't belong to a specific row -- same typed-array pattern as <code>ImportRecord#errors_list</code>, so the UI can render both with the same component.</p> <h3> <a name="step-4-typevalidator-validating-before-the-database" href="#step-4-typevalidator-validating-before-the-database"> </a> Step 4 -- TypeValidator: validating before the database
+</h3> <p>We now have models that can <em>hold</em> import data. But who checks that the data is valid before it gets there? A CSV cell containing "abc" shouldn't silently land in an integer field.</p> <p>The TypeValidator module handles this at the column level, before the data ever touches ActiveRecord.<br>
+</p> <div>
+<pre><code><span># lib/data_porter/type_validator.rb</span>
+<span>module</span> <span>DataPorter</span> <span>module</span> <span>TypeValidator</span> <span>VALIDATORS</span> <span>=</span> <span>{</span> <span>string: </span><span>-&gt;</span><span>(</span><span>_value</span><span>,</span> <span>_opts</span><span>)</span> <span>{</span> <span>true</span> <span>},</span> <span>integer: </span><span>-&gt;</span><span>(</span><span>value</span><span>,</span> <span>_opts</span><span>)</span> <span>{</span> <span>Integer</span><span>(</span><span>value</span><span>,</span> <span>exception: </span><span>false</span><span>)</span> <span>},</span> <span>decimal: </span><span>-&gt;</span><span>(</span><span>value</span><span>,</span> <span>_opts</span><span>)</span> <span>{</span> <span>Float</span><span>(</span><span>value</span><span>,</span> <span>exception: </span><span>false</span><span>)</span> <span>},</span> <span>date: </span><span>-&gt;</span><span>(</span><span>value</span><span>,</span> <span>opts</span><span>)</span> <span>{</span> <span>parse_date</span><span>(</span><span>value</span><span>,</span> <span>opts</span><span>)</span> <span>},</span> <span>email: </span><span>-&gt;</span><span>(</span><span>value</span><span>,</span> <span>_opts</span><span>)</span> <span>{</span> <span>value</span><span>.</span><span>match?</span><span>(</span><span>/\A[^@\s]+@[^@\s]+\z/</span><span>)</span> <span>},</span> <span>phone: </span><span>-&gt;</span><span>(</span><span>value</span><span>,</span> <span>_opts</span><span>)</span> <span>{</span> <span>value</span><span>.</span><span>match?</span><span>(</span><span>/\A[+\d][\d\s\-().]{6,}\z/</span><span>)</span> <span>},</span> <span>url: </span><span>-&gt;</span><span>(</span><span>value</span><span>,</span> <span>_opts</span><span>)</span> <span>{</span> <span>valid_url?</span><span>(</span><span>value</span><span>)</span> <span>},</span> <span>boolean: </span><span>-&gt;</span><span>(</span><span>value</span><span>,</span> <span>_opts</span><span>)</span> <span>{</span> <span>%w[true false 1 0]</span><span>.</span><span>include?</span><span>(</span><span>value</span><span>.</span><span>to_s</span><span>.</span><span>downcase</span><span>)</span> <span>}</span> <span>}.</span><span>freeze</span> <span>end</span>
+<span>end</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Each type maps to a lambda that returns truthy or falsy. The public API is one method: <code>TypeValidator.valid?("42", :integer)</code>. Integers use <code>Integer()</code> with <code>exception: false</code> to avoid rescue-driven control flow. The email regex is intentionally loose -- RFC 5322 is beautiful on paper. User CSVs are not. I picked the side of production, not poetry. Dates support an optional <code>:format</code> option for regional formatting like <code>"%d/%m/%Y"</code>.</p> <p>The key design choice: validation happens <em>before</em> data enters the StoreModel. During parsing, the source reads a row, column definitions declare expected types, and the validator checks each value. Errors get added to the ImportRecord via <code>add_error</code>. By the time <code>determine_status!</code> runs, all column-level issues are captured.</p> <p>This is deliberately separate from database-level validation (uniqueness, foreign keys), which runs later during the actual import. Keeping the two layers apart lets us show users a preview with type errors highlighted before any write attempt -- the foundation for the dry-run feature in part 14.</p> <h2> <a name="decisions-amp-tradeoffs" href="#decisions-amp-tradeoffs"> </a> Decisions &amp; tradeoffs
+</h2> <div><table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>We chose</th>
+<th>Over</th>
+<th>Because</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Row storage</td>
+<td>JSONB column (array of StoreModel)</td>
+<td>Separate <code>import_rows</code> table</td>
+<td>Records are always accessed through their parent; no independent queries needed. One fewer migration for host apps to manage</td>
+</tr>
+<tr>
+<td>Structured JSON</td>
+<td>StoreModel gem</td>
+<td>Hand-rolled <code>serialize</code> / raw hashes</td>
+<td>StoreModel gives us ActiveModel attributes, typed arrays, defaults, and validations. Writing our own serializer would duplicate all of that</td>
+</tr>
+<tr>
+<td>Validation layer</td>
+<td>Column-level TypeValidator + later DB-level</td>
+<td>Database-only validation</td>
+<td>Enables preview and dry-run without touching the database. Users see type errors immediately, before any write attempt</td>
+</tr>
+<tr>
+<td>Error representation</td>
+<td>StoreModel class with <code>:message</code>
+</td>
+<td>Plain strings in an array</td>
+<td>Extensible -- we can add <code>:code</code>, <code>:severity</code>, <code>:column</code> later without changing the array structure or breaking existing serialized data</td>
+</tr>
+<tr>
+<td>Status logic</td>
+<td>Method on ImportRecord (<code>determine_status!</code>)</td>
+<td>External service or state machine gem</td>
+<td>Status depends only on the record's own errors. No transitions or events needed. A method is the simplest thing that works</td>
+</tr>
+</tbody>
+</table></div> <h2> <a name="when-not-to-use-this-pattern" href="#when-not-to-use-this-pattern"> </a> When NOT to use this pattern
+</h2> <p>JSONB is great for workflows, terrible for domains. This design works because import records are ephemeral, always accessed through their parent, and never queried across imports.</p> <p>Don't reach for JSONB when:</p> <ul>
+<li>
+<strong>You need to JOIN it</strong> -- if other tables reference your data, it belongs in a real table with foreign keys.</li>
+<li>
+<strong>You need to ANALYZE it</strong> -- "top 10 most frequent errors across all imports" is a SQL query on a relational table, not a JSONB treasure hunt.</li>
+<li>
+<strong>It's core business data</strong> -- orders, users, payments deserve constraints, indexes, and referential integrity. JSONB gives you none of that.</li>
+<li>
+<strong>Size explodes</strong> -- StoreModel loads the entire blob into Ruby objects. A million-row import in a single JSONB column is a one-way ticket to OOM city.</li>
+</ul> <p>StoreModel improves developer experience. It does not change database architecture. Know the difference and you'll sleep better.</p> <h2> <a name="testing-it" href="#testing-it"> </a> Testing it
+</h2> <p>ImportRecord specs verify status determination:<br>
+</p> <div>
+<pre><code><span># spec/data_porter/store_models/import_record_spec.rb</span>
+<span>RSpec</span><span>.</span><span>describe</span> <span>DataPorter</span><span>::</span><span>StoreModels</span><span>::</span><span>ImportRecord</span> <span>do</span> <span>subject</span><span>(</span><span>:record</span><span>)</span> <span>{</span> <span>described_class</span><span>.</span><span>new</span><span>(</span><span>line_number: </span><span>1</span><span>,</span> <span>data: </span><span>{</span> <span>name: </span><span>"Alice"</span> <span>})</span> <span>}</span> <span>describe</span> <span>"#determine_status!"</span> <span>do</span> <span>it</span> <span>"sets missing when required field error exists"</span> <span>do</span> <span>record</span><span>.</span><span>add_error</span><span>(</span><span>"Name is required"</span><span>)</span> <span>record</span><span>.</span><span>determine_status!</span> <span>expect</span><span>(</span><span>record</span><span>.</span><span>status</span><span>).</span><span>to</span> <span>eq</span><span>(</span><span>"missing"</span><span>)</span> <span>end</span> <span>it</span> <span>"sets partial when non-required error exists"</span> <span>do</span> <span>record</span><span>.</span><span>add_error</span><span>(</span><span>"Email: invalid email"</span><span>)</span> <span>record</span><span>.</span><span>determine_status!</span> <span>expect</span><span>(</span><span>record</span><span>.</span><span>status</span><span>).</span><span>to</span> <span>eq</span><span>(</span><span>"partial"</span><span>)</span> <span>end</span> <span>it</span> <span>"sets complete when no errors"</span> <span>do</span> <span>record</span><span>.</span><span>determine_status!</span> <span>expect</span><span>(</span><span>record</span><span>.</span><span>status</span><span>).</span><span>to</span> <span>eq</span><span>(</span><span>"complete"</span><span>)</span> <span>end</span> <span>end</span>
+<span>end</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>TypeValidator specs cover each type, including edge cases like custom date formats:<br>
+</p> <div>
+<pre><code><span># spec/data_porter/type_validator_spec.rb</span>
+<span>RSpec</span><span>.</span><span>describe</span> <span>DataPorter</span><span>::</span><span>TypeValidator</span> <span>do</span> <span>it</span> <span>"accepts valid integers"</span> <span>do</span> <span>expect</span><span>(</span><span>described_class</span><span>.</span><span>valid?</span><span>(</span><span>"42"</span><span>,</span> <span>:integer</span><span>)).</span><span>to</span> <span>be</span> <span>true</span> <span>end</span> <span>it</span> <span>"rejects non-integers"</span> <span>do</span> <span>expect</span><span>(</span><span>described_class</span><span>.</span><span>valid?</span><span>(</span><span>"abc"</span><span>,</span> <span>:integer</span><span>)).</span><span>to</span> <span>be</span> <span>false</span> <span>end</span> <span>it</span> <span>"accepts dates with custom format"</span> <span>do</span> <span>expect</span><span>(</span><span>described_class</span><span>.</span><span>valid?</span><span>(</span><span>"15/01/2024"</span><span>,</span> <span>:date</span><span>,</span> <span>format: </span><span>"%d/%m/%Y"</span><span>)).</span><span>to</span> <span>be</span> <span>true</span> <span>end</span>
+<span>end</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>No database setup needed for any of these. StoreModel objects instantiate in memory like plain Ruby objects, which makes the specs fast and isolated.</p> <h2> <a name="recap" href="#recap"> </a> Recap
+</h2> <ul>
+<li>
+<strong>JSONB columns</strong> over extra tables -- records are always accessed through their parent.</li>
+<li>
+<strong>StoreModel</strong> over raw hashes -- typed attributes, defaults, and methods for free.</li>
+<li>
+<strong>ImportRecord</strong> holds parsed data, collects errors, and determines its own status.</li>
+<li>
+<strong>TypeValidator</strong> validates before the database -- enables preview and dry-run without writes.</li>
+</ul> <h2> <a name="next-up" href="#next-up"> </a> Next up
+</h2> <p>We have configuration (part 3) and data models (this part). In part 5, we'll bring them together by designing the <strong>Target DSL</strong> -- the class-level interface that lets each import type declare its label, model, columns, and CSV mapping in a single file. One file per import type, zero boilerplate. If you've ever wanted <code>class_attribute</code> to do more heavy lifting, that's the one.</p> <hr> <p>*This is part 4 of the series "Building DataPorter - A Data Import Engine for Rails". <a href="https://dev.to/seryllns_/building-a-rails-engine-3-configuration-dsl-making-the-gem-flexible-1nb8">Previous: Configuration DSL</a> | Next: Designing a Target DSL (coming soon)</p> <hr> <p><strong>GitHub:</strong> <a href="https://github.com/SerylLns/data_porter" target="_blank">SerylLns/data_porter</a> | <strong>RubyGems:</strong> <a href="https://rubygems.org/gems/data_porter" target="_blank">data_porter</a></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

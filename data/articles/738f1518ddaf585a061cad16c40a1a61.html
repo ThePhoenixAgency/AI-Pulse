@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - raftapp/raft: Open-source tab manager built to keep your tabs private and safe.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - raftapp/raft: Open-source tab manager built to keep your tabs private and safe.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 2:14:27 PM | <a href="https://github.com/raftapp/raft" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p> <a target="_blank" href="/raftapp/raft/blob/main/public/mascot/awake-together.png"><img src="/raftapp/raft/raw/main/public/mascot/awake-together.png" alt="Shells the otter keeping watch"></a>
+</p>
+<div><h1>Raft</h1><a href="#raft"></a></div>
+<p> <a href="https://github.com/raftapp/raft/actions"><img src="https://github.com/raftapp/raft/actions/workflows/ci.yml/badge.svg" alt="CI"></a> <a href="https://codecov.io/gh/raftapp/raft"><img src="https://camo.githubusercontent.com/ac33cd49e02c6631d127446d579e52f3786a6c1cbeb5f8e09989d6f8e4b8a541/68747470733a2f2f636f6465636f762e696f2f67682f726166746170702f726166742f67726170682f62616467652e737667" alt="codecov"></a>
+</p>
+<p><strong>Keep your tabs safe.</strong> A Chrome extension for tab suspension and session management.</p>
+<p><a href="https://raftapp.io">raftapp.io</a> · <a href="https://raftapp.io/trust">My Promise</a></p>
+<p>Named after the way otters hold hands while sleeping to stay together — a group of otters is called a <em>raft</em>. Our mascot <strong>Shells</strong> keeps watch over your tabs, making sure they stay safe and connected.</p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<p><strong>Tab Suspension</strong></p>
+<ul>
+<li>Auto-suspend inactive tabs using Chrome's native tab discarding</li>
+<li>Protection rules: pinned tabs, audio, whitelisted sites always safe</li>
+<li>Custom suspended page with one-click restore</li>
+<li>Manual suspend via popup, context menu, or keyboard shortcut</li>
+<li>Close duplicate tabs across all windows with intelligent keep-best logic</li>
+</ul>
+<p><strong>Session Management</strong></p>
+<ul>
+<li>Capture every window, tab, and tab group</li>
+<li>Tab group preservation: names, colors, collapsed state</li>
+<li>Selective restore: expand a session and pick individual tabs or windows</li>
+<li>Restore sessions as suspended to save memory</li>
+<li>Auto-save on configurable schedule</li>
+<li>Search across sessions by title or URL</li>
+<li>Organize sessions into folders</li>
+</ul>
+<p><strong>Backup &amp; Recovery</strong></p>
+<ul>
+<li>Multi-layer backup: auto-save, recovery snapshots (rotating last 5), browser sync</li>
+<li>Backup health monitor in popup and options with actionable suggestions</li>
+<li>Export sessions as JSON or text</li>
+<li>Import from OneTab, Session Buddy, Tab Session Manager, Toby</li>
+</ul>
+<p><strong>Cloud Sync (Pro)</strong></p>
+<ul>
+<li>End-to-end encryption (AES-256-GCM with PBKDF2)</li>
+<li>Google Drive integration via private app-data folder</li>
+<li>One-time $25 purchase — no subscriptions</li>
+</ul>
+<div><h2>Trust Report</h2><a href="#trust-report"></a></div>
+<div><h3>Encryption</h3><a href="#encryption"></a></div>
+<p>All cloud-synced data is encrypted on your device before it leaves. Raft uses <strong>AES-256-GCM</strong> with a unique 96-bit IV per encryption operation. Encryption keys are derived from your password using <strong>PBKDF2 with 100,000 iterations</strong> (SHA-256). Your recovery key is shown once during setup and is never stored. OAuth uses <strong>PKCE (S256)</strong> to protect the authorization flow, and tokens are encrypted at rest with your password.</p>
+<p>See <a href="https://raftapp.io/privacy">Privacy Policy</a> for full details.</p>
+<div><h3>Privacy</h3><a href="#privacy"></a></div>
+<p>Raft collects <strong>zero analytics, telemetry, or usage data</strong>. Eight automated tests verify that no </p><pre><code>fetch()</code></pre> or <pre><code>XMLHttpRequest</code></pre> calls exist in the save, restore, import, or export code paths — your session data never touches a network unless you explicitly enable cloud sync.<p></p>
+<p>The extension's Content Security Policy restricts all network access to </p><pre><code>googleapis.com</code></pre> (for cloud sync) and <pre><code>api.lemonsqueezy.com</code></pre> (for license validation). No other outbound connections are possible.<p></p>
+<p>See <a href="https://raftapp.io/privacy">Privacy Policy</a>.</p>
+<div><h3>Automated Safety Tests</h3><a href="#automated-safety-tests"></a></div>
+<p>Raft's data safety claims are backed by automated tests covering crash recovery, network isolation, import/export integrity, scale limits, and tab fidelity. Run </p><pre><code>pnpm test:trust-report</code></pre> to generate the full report yourself.<p></p>
+<p>See the <a href="/raftapp/raft/blob/main/docs/SAFETY-REPORT.md">generated safety report</a> for details.</p>
+<div><h3>Permissions</h3><a href="#permissions"></a></div>
+<p>Raft requests only five permissions, each with a specific purpose:</p>
+<table>
+<thead>
+<tr>
+<th>Permission</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>tabs</code></pre></td>
+<td>Read tab URLs/titles to save sessions and identify inactive tabs</td>
+</tr>
+<tr>
+<td><pre><code>storage</code></pre></td>
+<td>Persist sessions and settings to <pre><code>chrome.storage.local</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>alarms</code></pre></td>
+<td>Run periodic checks for auto-suspend and auto-save</td>
+</tr>
+<tr>
+<td><pre><code>contextMenus</code></pre></td>
+<td>Add "Suspend tab" to the right-click menu</td>
+</tr>
+<tr>
+<td><pre><code>identity</code></pre></td>
+<td>Google OAuth for cloud sync (Pro only)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Not requested:</strong> </p><pre><code>history</code></pre>, <pre><code>bookmarks</code></pre>, <pre><code>webRequest</code></pre>, <pre><code>&lt;all_urls&gt;</code></pre>, <pre><code>notifications</code></pre>. See <a href="https://raftapp.io/permissions">Permissions Explained</a> for full details.<p></p>
+<div><h3>Open Source</h3><a href="#open-source"></a></div>
+<p>Raft's source code is available for inspection. Every claim in this trust report can be verified by reading the code or running the tests.</p>
+<div><h2>Keyboard Shortcuts</h2><a href="#keyboard-shortcuts"></a></div>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt+Shift+S</td>
+<td>Suspend current tab</td>
+</tr>
+<tr>
+<td>Alt+Shift+O</td>
+<td>Suspend other tabs in window</td>
+</tr>
+<tr>
+<td>Alt+Shift+D</td>
+<td>Close duplicate tabs</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Tech Stack</h2><a href="#tech-stack"></a></div>
+<ul>
+<li><strong>Build</strong>: Vite + CRXJS</li>
+<li><strong>UI</strong>: Preact + TailwindCSS v4</li>
+<li><strong>State</strong>: Zustand</li>
+<li><strong>Testing</strong>: Vitest</li>
+<li><strong>Language</strong>: TypeScript</li>
+</ul>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><pre>pnpm install
+pnpm build</pre></div>
+<p>Then load the </p><pre><code>dist/</code></pre> folder as an unpacked extension in Chrome.<p></p>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre>pnpm dev <span><span>#</span> Start dev server with HMR</span>
+pnpm build <span><span>#</span> Build for production</span>
+pnpm <span>test</span> <span><span>#</span> Run tests</span>
+pnpm test:coverage <span><span>#</span> Run tests with coverage</span>
+pnpm typecheck <span><span>#</span> Type check</span>
+pnpm lint <span><span>#</span> Lint</span></pre></div>
+<div><h2>OAuth Setup</h2><a href="#oauth-setup"></a></div>
+<p>Google OAuth credentials are injected at build time from a </p><pre><code>.env</code></pre> file.<p></p>
+<div><pre>cp .env.example .env
+<span><span>#</span> Edit .env with your Google Cloud OAuth client ID and secret</span></pre></div>
+<p>Create credentials at the <a href="https://console.cloud.google.com/apis/credentials">Google Cloud Console</a> — choose "OAuth 2.0 Client ID" for a Web application, enable the Drive API, and configure the consent screen. See </p><pre><code>.env.example</code></pre> for the required variables.<p></p>
+<p>The OAuth flow is additionally protected by PKCE (S256).</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>GitHub - axon-core/axon: The Kubernetes-native framework for orchestrating autonomous AI coding agents.</title>
@@ -31,7 +31,7 @@
 <body>
   <h1>GitHub - axon-core/axon: The Kubernetes-native framework for orchestrating autonomous AI coding agents.</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/18/2026 8:41:18 PM | <a href="https://github.com/axon-core/axon" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+    Source: Hacker News Show | Date: 2/19/2026 2:13:09 PM | <a href="https://github.com/axon-core/axon" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><h1>Axon</h1><a href="#axon"></a></div>
@@ -43,10 +43,15 @@
 <p>Point Axon at a GitHub issue and get a PR back — fully autonomous, running in Kubernetes. Each agent runs in an isolated, ephemeral Pod with a freshly cloned git workspace. Fan out across repositories, chain tasks into pipelines, and react to events automatically.</p>
 <p>Supports <strong>Claude Code</strong>, <strong>OpenAI Codex</strong>, <strong>Google Gemini</strong>, <strong>OpenCode</strong>, and <a href="/axon-core/axon/blob/main/docs/agent-image-interface.md">custom agent images</a>.</p>
 <div><h2>Demo</h2><a href="#demo"></a></div>
-<div><pre><span><span>#</span> Run a task against your repo</span>
-$ axon run -p <span><span>"</span>Fix the bug described in issue #42 and open a PR with the fix<span>"</span></span>
-task/task-a5b3c created <span><span>#</span> Stream the logs</span>
-$ axon logs task-a5b3c -f</pre></div> <span>axon-demo-0212.mp4</span> <span></span> <p>See <a href="#autonomous-self-development-pipeline">Autonomous self-development pipeline</a> for a full end-to-end example.</p>
+<div><pre><span><span>#</span> Run multiple tasks in parallel across your repo</span>
+$ axon run -p <span><span>"</span>Fix the bug described in issue #42 and open a PR<span>"</span></span> --name fix-42
+$ axon run -p <span><span>"</span>Add unit tests for the auth module<span>"</span></span> --name add-tests
+$ axon run -p <span><span>"</span>Update API docs for v2 endpoints<span>"</span></span> --name update-docs <span><span>#</span> Watch all tasks progress simultaneously</span>
+$ axon get tasks
+NAME STATUS AGE
+fix-42 Running 2m
+add-tests Running 1m
+update-docs Running 45s</pre></div> <span>axon-demo-0219.mp4</span> <span></span> <p>See <a href="#autonomous-self-development-pipeline">Autonomous self-development pipeline</a> for a full end-to-end example.</p>
 <div><h2>Why Axon?</h2><a href="#why-axon"></a></div>
 <p>AI coding agents are evolving from interactive CLI tools into autonomous background workers. Axon provides the infrastructure to manage this transition at scale.</p>
 <ul>
@@ -60,10 +65,15 @@ $ axon logs task-a5b3c -f</pre></div> <span>axon-demo-0212.mp4</span> <span></sp
 <p>Get running in 5 minutes (most of the time is gathering credentials).</p>
 <div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
 <ul>
-<li>Kubernetes cluster (1.28+) — don't have one? Create a local cluster with <a href="https://kind.sigs.k8s.io/">kind</a>: <pre><code>kind create cluster</code></pre></li>
-<li>kubectl configured</li>
-</ul>
-<div><h3>1. Install the CLI</h3><a href="#1-install-the-cli"></a></div>
+<li>Kubernetes cluster (1.28+)</li>
+</ul> Don't have a cluster? Create one locally with kind
+<ol>
+<li><a href="https://kind.sigs.k8s.io/docs/user/quick-start/#installation">Install kind</a> (requires Docker)</li>
+<li>Create a cluster:
+<div><pre>kind create cluster</pre></div>
+</li>
+</ol>
+<p>This creates a single-node cluster and configures your kubeconfig automatically.</p> <div><h3>1. Install the CLI</h3><a href="#1-install-the-cli"></a></div>
 <div><pre>curl -fsSL https://raw.githubusercontent.com/axon-core/axon/main/hack/install.sh <span>|</span> bash</pre></div> Alternative: install from source
 <div><pre>go install github.com/axon-core/axon/cmd/axon@latest</pre></div> <div><h3>2. Install Axon</h3><a href="#2-install-axon"></a></div>
 <div><pre>axon install</pre></div>

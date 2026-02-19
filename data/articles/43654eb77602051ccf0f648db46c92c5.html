@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Open Source vs Proprietary LLMs: The Real Cost Breakdown</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Open Source vs Proprietary LLMs: The Real Cost Breakdown</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 1:34:17 PM | <a href="https://dev.to/kaeltiwari/open-source-vs-proprietary-llms-the-real-cost-breakdown-15d0" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><em>Originally published on <a href="https://kaelresearch.com/blog/open-source-vs-proprietary-llms" target="_blank">Kael Research</a></em></p> <p><strong>TL;DR:</strong> Below 1B tokens/month, just use APIs. Proprietary or hosted open-source, doesn't matter much. Between 1 and 10B tokens, hosted open-source APIs from <a href="https://www.together.ai/pricing" target="_blank">Together.ai</a> or <a href="https://groq.com/pricing" target="_blank">Groq</a> are usually cheapest. Above 10B tokens/month, self-hosting can win, but only if you already have an MLOps team. The "open source is free" narrative ignores $300K to $600K/year in engineering overhead.</p> <h2> <a name="the-pricing-table" href="#the-pricing-table"> </a> The pricing table
+</h2> <p>Prices move fast. Here's where things stand in February 2026. All prices are per 1M tokens (input/output).</p> <h3> <a name="open-source-models-via-hosted-apis" href="#open-source-models-via-hosted-apis"> </a> Open source models via hosted APIs
+</h3> <div><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Provider</th>
+<th>Input</th>
+<th>Output</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama 4 Maverick</td>
+<td><a href="https://www.together.ai/pricing" target="_blank">Together.ai</a></td>
+<td>$0.27</td>
+<td>$0.85</td>
+<td></td>
+</tr>
+<tr>
+<td>Llama 4 Maverick</td>
+<td><a href="https://groq.com/pricing" target="_blank">Groq</a></td>
+<td>$0.20</td>
+<td>$0.60</td>
+<td>562 tok/s</td>
+</tr>
+<tr>
+<td>GPT-OSS-120B</td>
+<td>
+<a href="https://www.together.ai/pricing" target="_blank">Together.ai</a> / <a href="https://fireworks.ai/pricing" target="_blank">Fireworks</a> / <a href="https://groq.com/pricing" target="_blank">Groq</a>
+</td>
+<td>$0.15</td>
+<td>$0.60</td>
+<td></td>
+</tr>
+<tr>
+<td>GPT-OSS-20B</td>
+<td><a href="https://www.together.ai/pricing" target="_blank">Together.ai</a></td>
+<td>$0.05</td>
+<td>$0.20</td>
+<td>Bargain tier</td>
+</tr>
+<tr>
+<td>DeepSeek V3.1</td>
+<td><a href="https://www.together.ai/pricing" target="_blank">Together.ai</a></td>
+<td>$0.60</td>
+<td>$1.70</td>
+<td></td>
+</tr>
+<tr>
+<td>Qwen3-235B</td>
+<td><a href="https://www.together.ai/pricing" target="_blank">Together.ai</a></td>
+<td>$0.20</td>
+<td>$0.60</td>
+<td></td>
+</tr>
+<tr>
+<td>Mistral Small 3</td>
+<td><a href="https://www.together.ai/pricing" target="_blank">Together.ai</a></td>
+<td>$0.10</td>
+<td>$0.30</td>
+<td></td>
+</tr>
+</tbody>
+</table></div> <h3> <a name="proprietary-models" href="#proprietary-models"> </a> Proprietary models
+</h3> <div><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Input</th>
+<th>Output</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-5.2</td>
+<td>$1.75</td>
+<td>$14.00</td>
+<td><a href="https://openai.com/api/pricing/" target="_blank">OpenAI</a></td>
+</tr>
+<tr>
+<td>GPT-5 mini</td>
+<td>$0.25</td>
+<td>$2.00</td>
+<td><a href="https://openai.com/api/pricing/" target="_blank">OpenAI</a></td>
+</tr>
+<tr>
+<td>Claude Opus 4.6</td>
+<td>$5.00</td>
+<td>$25.00</td>
+<td><a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank">Anthropic</a></td>
+</tr>
+<tr>
+<td>Claude Sonnet 4.6</td>
+<td>$3.00</td>
+<td>$15.00</td>
+<td><a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank">Anthropic</a></td>
+</tr>
+<tr>
+<td>Gemini 2.5 Flash</td>
+<td>$0.30</td>
+<td>$2.50</td>
+<td>Google</td>
+</tr>
+</tbody>
+</table></div> <p>A few things jump out. GPT-OSS-120B at $0.15 input is wild. That's 11x cheaper than GPT-5.2 on the input side. GPT-5 mini and Gemini 2.5 Flash sit in a middle ground where proprietary pricing gets surprisingly close to open-source hosted rates. For a deeper dive on the month-over-month trends, see our <a href="https://dev.to/blog/llm-pricing-comparison-feb-2026">full pricing comparison</a>.</p> <h2> <a name="the-real-comparison-api-vs-api-vs-selfhosted" href="#the-real-comparison-api-vs-api-vs-selfhosted"> </a> The real comparison: API vs API vs self-hosted
+</h2> <p>People frame this as "open source vs proprietary." That's wrong. The actual decision has three options:</p> <ol>
+<li>Proprietary API, where you pay OpenAI, Anthropic, or Google directly</li>
+<li>Hosted open-source API, where you pay Together.ai, Groq, or Fireworks to run open models for you</li>
+<li>Self-hosted open source, where you rent GPUs and run the models yourself</li>
+</ol> <p>Option 2 gets overlooked constantly. You get the flexibility of open weights without the operational burden. For most companies, this is the right answer.</p> <p>Option 3 sounds appealing on paper. In practice, it's a staffing decision disguised as a technology decision.</p> <h2> <a name="breakeven-math-at-different-scales" href="#breakeven-math-at-different-scales"> </a> Breakeven math at different scales
+</h2> <p>Let's do the math for a representative setup: GPT-OSS-120B via Together.ai ($0.15/$0.60) vs self-hosting on H100s from <a href="https://lambdalabs.com/" target="_blank">Lambda Labs</a> at $2.99/hr ($2,183/mo). A single H100 running a 70B model produces roughly 50 tokens/second on average, which works out to about 130M tokens per month.</p> <div><table>
+<thead>
+<tr>
+<th>Scale (tokens/mo)</th>
+<th>Together.ai cost</th>
+<th>Self-hosted cost</th>
+<th>Winner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10M</td>
+<td>~$4.50</td>
+<td>$2,183 + eng. overhead</td>
+<td>API by a mile</td>
+</tr>
+<tr>
+<td>100M</td>
+<td>~$45</td>
+<td>$2,183 + eng. overhead</td>
+<td>API</td>
+</tr>
+<tr>
+<td>1B</td>
+<td>~$450</td>
+<td>$2,183 + eng. overhead</td>
+<td>Roughly even on compute, but API wins on total cost</td>
+</tr>
+<tr>
+<td>10B</td>
+<td>~$4,500</td>
+<td>~$17K compute (8× H100s) + eng. overhead</td>
+<td>Depends on your team</td>
+</tr>
+</tbody>
+</table></div> <p>The compute-only crossover hits somewhere around 1 to 2B tokens/month. But compute isn't the whole story.</p> <p>At AWS rates of ~$3.90/hr per H100, the math shifts even further toward APIs. Reserved instances at $1.85/hr help, but you're committing to a year of capacity. H200s at $6.00/hr and B200s at $9.00/hr from <a href="https://fireworks.ai/pricing" target="_blank">Fireworks</a> give you more throughput per dollar, but the upfront commitment grows too.</p> <h2> <a name="the-hidden-costs-of-selfhosting" href="#the-hidden-costs-of-selfhosting"> </a> The hidden costs of self-hosting
+</h2> <p>Here's the part that "open source is free" evangelists skip over.</p> <p>An MLOps team to keep self-hosted models running costs $300K to $600K per year. That's 2 to 4 engineers, and you're competing with every AI company on earth for that talent. Good luck hiring them quickly.</p> <p>Beyond salaries, you're signing up for monitoring and alerting infrastructure, model version management and rollback procedures, GPU usage tuning (most teams waste 30 to 50% of their compute), security patching and compliance audits, and on-call rotations for when inference goes sideways at 3 AM.</p> <p>None of this shows up in the $/token calculation. It should.</p> <p>There's also the upgrade treadmill. A new model drops, your fine-tuned version is two generations behind, and now you need to re-run your evaluation suite, re-tune, and redeploy. With an API provider, you change a model string.</p> <h2> <a name="when-open-source-wins" href="#when-open-source-wins"> </a> When open source wins
+</h2> <p>Open source isn't always the cheaper option, but it's sometimes the <em>only</em> option.</p> <p>Compliance and data sovereignty come first. If you're operating in healthcare or finance with strict data residency requirements, self-hosted open source gives you full control. The data never leaves your infrastructure. No BAA negotiations, no hoping your provider's compliance team got it right. HIPAA and GDPR compliance by design, not by contract.</p> <p>Air-gapped environments are the extreme version of this. Defense, certain government agencies, some financial institutions: they can't send data to external APIs at all. Open source is the only game in town.</p> <p>Fine-tuning is where open source pulls ahead on cost dramatically. Training on <a href="https://openai.com/api/pricing/" target="_blank">OpenAI's GPT-4.1 costs $25 per million tokens</a>. The same job on open-source models through <a href="https://fireworks.ai/pricing" target="_blank">Fireworks runs $0.50 per million tokens</a> for models up to 16B parameters. Self-hosted, you pay only for compute. That's a 50x cost difference at the API level. If you need customized models, and many <a href="https://dev.to/brief/ai-agents">agent-based architectures</a> do, open source is hard to beat.</p> <p>High volume is the last piece. Past 10B tokens per month, the economics of self-hosting start making sense, assuming you've already got the infrastructure team. The key word is "already." Building that team from scratch to save on inference costs rarely pencils out.</p> <h2> <a name="when-proprietary-wins" href="#when-proprietary-wins"> </a> When proprietary wins
+</h2> <p>Speed to market is the obvious one. You can go from zero to production with GPT-5.2 or Claude Sonnet 4.6 in a weekend. No infrastructure provisioning, no model tuning, no serving framework selection. Just an API key and a credit card.</p> <p>Quality ceiling matters too. As of February 2026, Claude Opus 4.6 and GPT-5.2 still outperform open-source alternatives on complex reasoning tasks. The gap has narrowed (Llama 4 Maverick and Qwen3-235B are genuinely impressive) but for the hardest problems, proprietary models hold an edge. That edge costs 10 to 20x more per token, so the question is whether your use case actually needs it.</p> <p>No infra team is the underrated advantage. A startup with 5 engineers shouldn't be allocating 2 of them to GPU management. Use that headcount to build product instead. The API cost premium is cheaper than the hiring cost.</p> <p>Proprietary providers also handle the compliance paperwork for you. <a href="https://openai.com/api/pricing/" target="_blank">OpenAI has a BAA for HIPAA</a>. <a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank">Anthropic is HIPAA-ready</a>. Azure OpenAI gives you EU data residency. These aren't free (enterprise plans cost more) but the operational simplicity has real value.</p> <h2> <a name="decision-framework" href="#decision-framework"> </a> Decision framework
+</h2> <p>Forget the vibes. Use this matrix.</p> <div><table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Use proprietary API</th>
+<th>Use hosted open-source API</th>
+<th>Self-host</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Volume</td>
+<td>&lt; 1B tok/mo</td>
+<td>1 to 10B tok/mo</td>
+<td>&gt; 10B tok/mo</td>
+</tr>
+<tr>
+<td>Team size</td>
+<td>No MLOps engineers</td>
+<td>No MLOps engineers</td>
+<td>2+ MLOps engineers already on staff</td>
+</tr>
+<tr>
+<td>Data sensitivity</td>
+<td>Standard (with BAA if needed)</td>
+<td>Standard</td>
+<td>Air-gapped or strict residency</td>
+</tr>
+<tr>
+<td>Fine-tuning needed</td>
+<td>Light (prompt engineering suffices)</td>
+<td>Moderate</td>
+<td>Heavy or continuous</td>
+</tr>
+<tr>
+<td>Time to production</td>
+<td>Days</td>
+<td>Days</td>
+<td>Weeks to months</td>
+</tr>
+<tr>
+<td>Quality requirements</td>
+<td>Highest available</td>
+<td>Good enough</td>
+<td>Good enough + customized</td>
+</tr>
+</tbody>
+</table></div> <p>My honest take: most companies should start with proprietary APIs, move to hosted open-source APIs as volume grows, and only self-host when they're processing billions of tokens and already have the team. The middle option, hosted open source, is the most underused path. And it's often the best one.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

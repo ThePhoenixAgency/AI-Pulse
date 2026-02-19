@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lingo Bolt: Removing the Language Barrier From OpenSource</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Lingo Bolt: Removing the Language Barrier From OpenSource</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 2:29:10 PM | <a href="https://dev.to/koushikxd/lingo-bolt-removing-the-language-barrier-from-opensource-4a48" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>A few months ago I tried to contribute to a Japanese open source project. The codebase looked interesting, the issues seemed approachable, but everything was in Japanese. The README had a small english section but half the steps were wrong or missing. I spent an hour just trying to get it running locally and eventually gave up.</p> <p>I'm a native english speaker. If I had that much trouble, what chance does someone in Brazil or Korea have when they're trying to contribute to a project thats entirely in english?</p> <p>That's the problem I wanted to fix.</p> <hr> <h2> <a name="the-problem" href="#the-problem"> </a> The Problem
+</h2> <p>Open source is supposed to be for everyone but in practice it runs almost entirely in english. This creates two groups of people who get left out:</p> <p><strong>Maintainers who get issues in other languages.</strong> Someone's project gets shared in a Brazilian developer community and suddenly there are 5 issues in Portuguese. The maintainer has no idea what they say so they close them or ignore them.</p> <p>Both sides lose. The project loses contributors and the contributors feel unwelcome.</p> <hr> <h2> <a name="what-i-built" href="#what-i-built"> </a> What I Built
+</h2> <p><a href="https://github.com/koushikxd/lingo-bolt" target="_blank">Lingo Bolt</a> is a web app plus a GitHub bot that tries to fix this. You sign in with GitHub, connect a repo, and you get a few tools that let you work with it in any language.</p> <h3> <a name="ai-onboarding-docs" href="#ai-onboarding-docs"> </a> AI Onboarding Docs
+</h3> <p>When you index a repo, the app reads through the codebase using RAG and generates proper onboarding documentation covering what the project does, how to set it up, and the key concepts. You can then translate those docs into any supported language.</p> <p>So a new contributor from Japan can get onboarding docs in Japanese, based on the actual code and not just whatever the original author wrote.<br>
+</p> <div>
+<pre><code><span>// generate docs by querying the indexed codebase</span>
+<span>const</span> <span>ragResults</span> <span>=</span> <span>await</span> <span>Promise</span><span>.</span><span>all</span><span>(</span> <span>RAG_QUERIES</span><span>.</span><span>map</span><span>((</span><span>query</span><span>)</span> <span>=&gt;</span> <span>queryRepository</span><span>({</span> <span>query</span><span>,</span> <span>repositoryId</span><span>,</span> <span>limit</span><span>:</span> <span>8</span> <span>}))</span>
+<span>);</span> <span>// stream them to the client, then translate if needed</span>
+<span>if </span><span>(</span><span>locale</span> <span>!==</span> <span>"</span><span>en</span><span>"</span><span>)</span> <span>{</span> <span>const</span> <span>translated</span> <span>=</span> <span>await</span> <span>engine</span><span>.</span><span>localizeText</span><span>(</span><span>accumulated</span><span>,</span> <span>{</span> <span>sourceLocale</span><span>:</span> <span>"</span><span>en</span><span>"</span><span>,</span> <span>targetLocale</span><span>:</span> <span>locale</span><span>,</span> <span>fast</span><span>:</span> <span>true</span><span>,</span> <span>});</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="markdown-translation" href="#markdown-translation"> </a> Markdown Translation
+</h3> <p>A lot of repos have multiple markdown files beyond just the README. Contributing guides, architecture docs, api references. Lingo Bolt clones the repo, finds all the markdown files, and translates the whole set using the Lingo.dev SDK. You can download them individually or as a zip.</p> <h3> <a name="ai-chat-the-contribution-helper" href="#ai-chat-the-contribution-helper"> </a> AI Chat -- The Contribution Helper
+</h3> <p>This is the part I find most useful. Once a repo is indexed you can chat with it in any language. But its more than just a Q&amp;A bot.</p> <p>The chat has tools that can fetch live data from GitHub like open issues, pull requests, issue details. So you can ask things like:</p> <ul>
+<li>"show me open issues that look easy to fix"</li>
+<li>"what does issue #42 need, explain it to me"</li>
+<li>"how does the authentication work in this codebase"</li>
+<li>"where should I start if I want to add a dark mode"</li>
+</ul> <p>And because the chat also has access to the indexed codebase, it can point you to the exact files and functions relevant to whatever issue you're looking at. It basically acts as a contribution guide that you can have a conversation with. You ask about an issue, it finds the relevant code, explains whats happening, and tells you where to look.</p> <p>For someone who's not confident in english, being able to ask all of this in their own language and get answers that reference actual code in the repo is genuinely useful. It removes two blockers at once: the language barrier and the "i dont know where to start" barrier that most new contributors hit.<br>
+</p> <div>
+<pre><code><span>const</span> <span>SUGGESTED_PROMPTS</span> <span>=</span> <span>[</span> <span>{</span> <span>key</span><span>:</span> <span>"</span><span>chat.prompt.showOpenIssues</span><span>"</span> <span>},</span> <span>{</span> <span>key</span><span>:</span> <span>"</span><span>chat.prompt.recommendEasyIssue</span><span>"</span> <span>},</span> <span>{</span> <span>key</span><span>:</span> <span>"</span><span>chat.prompt.listOpenPrs</span><span>"</span> <span>},</span> <span>{</span> <span>key</span><span>:</span> <span>"</span><span>chat.prompt.searchEntryPoint</span><span>"</span> <span>},</span>
+<span>];</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="the-github-bot" href="#the-github-bot"> </a> The GitHub Bot
+</h3> <p>This is the main feature and the part that requires zero effort from contributors. You install the lingo-bolt GitHub App on your account or org, configure your default language and thats it. The bot starts listening to your repos through GitHub webhooks.</p> <p><strong>How the webhook flow works</strong></p> <p>When GitHub sends an event to our webhook endpoint, the app verifies the signature and routes it to the right handler. There are three events we care about:<br>
+</p> <div>
+<pre><code>issues.opened --&gt; new issue was filed
+pull_request.opened --&gt; new PR was opened
+issue_comment.created --&gt; someone commented on an issue or PR
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>For each of these, the bot first resolves the "effective settings" for that specific repo. Settings can be configured at the installation level (applies to all repos) or overridden per-repo. So you can have auto-translate on for everything but turn it off for one specific repo.</p> <p><strong>Auto language detection and labeling</strong></p> <p>When a new issue comes in, the bot uses GPT-4o-mini to detect what language its written in and creates a label like <code>lang:portuguese</code> or <code>lang:chinese</code> and applies it to the issue automatically.</p> <p>This is useful even without translation. Maintainers can filter issues by language label and at least know what they're dealing with.</p> <p><strong>Auto translation</strong></p> <p>If auto-translate is enabled, the bot also detects the language of the content and if it's different from the maintainer's default language, it translates it and posts a comment with the translated version. It skips posting if the detected language already matches the default, so you don't get noise when issues are already in the right language.<br>
+</p> <div>
+<pre><code><span>const</span> <span>detected</span> <span>=</span> <span>await</span> <span>detectLanguageCode</span><span>(</span><span>text</span><span>);</span>
+<span>if </span><span>(</span><span>detected</span> <span>===</span> <span>locale</span> <span>||</span> <span>detected</span> <span>===</span> <span>locale</span><span>.</span><span>split</span><span>(</span><span>"</span><span>-</span><span>"</span><span>)[</span><span>0</span><span>])</span> <span>return</span><span>;</span> <span>const</span> <span>translated</span> <span>=</span> <span>await</span> <span>engine</span><span>.</span><span>localizeText</span><span>(</span><span>text</span><span>,</span> <span>{</span> <span>sourceLocale</span><span>:</span> <span>detected</span><span>,</span> <span>targetLocale</span><span>:</span> <span>locale</span><span>,</span>
+<span>});</span> <span>await</span> <span>postComment</span><span>(</span><span>octokit</span><span>,</span> <span>owner</span><span>,</span> <span>repo</span><span>,</span> <span>issueNumber</span><span>,</span> <span>`**Auto-translated to </span><span>${</span><span>defaultLanguage</span><span>}</span><span>:**\n\n</span><span>${</span><span>translated</span><span>}</span><span>`</span>
+<span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Manual commands</strong></p> <p>Beyond the automatic stuff, anyone can trigger the bot manually by mentioning <code>@lingo-bolt</code> in a comment. The bot parses the comment body to figure out what command was given:<br>
+</p> <div>
+<pre><code>@lingo-bolt translate to spanish --&gt; translates the issue body to Spanish
+@lingo-bolt summarize --&gt; summarizes in the maintainer's default language
+@lingo-bolt summarize in french --&gt; summarizes in French specifically
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The summarize command is honestly really useful for long threads. It uses GPT to write a concise summary of the issue title and body, then if the target language isn't english it translates that summary using Lingo.dev before posting it as a comment.<br>
+</p> <div>
+<pre><code><span>const</span> <span>{</span> <span>text</span><span>:</span> <span>summary</span> <span>}</span> <span>=</span> <span>await</span> <span>generateText</span><span>({</span> <span>model</span><span>:</span> <span>openai</span><span>(</span><span>"</span><span>gpt-4o-mini</span><span>"</span><span>),</span> <span>prompt</span><span>:</span> <span>`Summarize the following GitHub issue/PR content concisely. Keep it clear and actionable.\n\n</span><span>${</span><span>text</span><span>}</span><span>`</span><span>,</span>
+<span>});</span> <span>if </span><span>(</span><span>locale</span> <span>!==</span> <span>"</span><span>en</span><span>"</span><span>)</span> <span>{</span> <span>finalText</span> <span>=</span> <span>await</span> <span>engine</span><span>.</span><span>localizeText</span><span>(</span><span>summary</span><span>,</span> <span>{</span> <span>sourceLocale</span><span>:</span> <span>"</span><span>en</span><span>"</span><span>,</span> <span>targetLocale</span><span>:</span> <span>locale</span><span>,</span> <span>});</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Per-repo overrides</strong></p> <p>The bot dashboard lets you configure settings at both the installation level and per individual repo. So if you have an org with 10 repos but only want auto-translate on 3 of them, you can set that up without it affecting the rest. Per-repo settings take priority over the installation defaults.</p> <h3> <a name="the-ui-itself-is-translated" href="#the-ui-itself-is-translated"> </a> The UI Itself is Translated
+</h3> <p>The app UI adapts to your preferred language. Instead of shipping JSON translation files for every language, all UI strings are stored in english and translated on demand using <code>engine.localizeObject()</code> from the Lingo.dev SDK. The result is cached so it only fetches once per session.<br>
+</p> <div>
+<pre><code><span>const</span> <span>translated</span> <span>=</span> <span>await</span> <span>engine</span><span>.</span><span>localizeObject</span><span>(</span><span>UI_MESSAGES_EN</span><span>,</span> <span>{</span> <span>sourceLocale</span><span>:</span> <span>"</span><span>en</span><span>"</span><span>,</span> <span>targetLocale</span><span>:</span> <span>body</span><span>.</span><span>targetLocale</span><span>,</span> <span>fast</span><span>:</span> <span>true</span><span>,</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This means we support 15 languages without maintaining any translation files manually.</p> <hr> <h2> <a name="architecture" href="#architecture"> </a> Architecture
+</h2> <div>
+<pre><code>User |
+Next.js App | +-- tRPC routers (repo, bot, user) | +-- Route handlers | +-- /api/repository/index --&gt; clone + embed chunks --&gt; Qdrant +-- /api/onboarding/generate --&gt; RAG + GPT stream +-- /api/onboarding/translate --&gt; Lingo.dev +-- /api/markdown/translate --&gt; clone + Lingo.dev +-- /api/chat --&gt; RAG + GitHub tools + GPT stream +-- /api/ui/translate --&gt; Lingo.dev localizeObject +-- /api/webhook --&gt; GitHub App events | +-- issues.opened --&gt; auto-label, auto-translate +-- pull_request.opened --&gt; auto-label, auto-translate +-- issue_comment.created --&gt; @lingo-bolt command parsing PostgreSQL (repos, docs, translations, bot installations)
+Qdrant (code chunks for semantic search)
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="how-lingodev-is-used" href="#how-lingodev-is-used"> </a> How Lingo.dev Is Used
+</h2> <div><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>SDK method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Onboarding doc translation</td>
+<td><code>localizeText</code></td>
+</tr>
+<tr>
+<td>Markdown file translation</td>
+<td><code>localizeText</code></td>
+</tr>
+<tr>
+<td>UI string translation</td>
+<td><code>localizeObject</code></td>
+</tr>
+<tr>
+<td>GitHub issue/PR translation (bot)</td>
+<td><code>localizeText</code></td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="tech-stack-i-used" href="#tech-stack-i-used"> </a> Tech Stack I Used
+</h2> <ul>
+<li>Next.js App Router + React 19</li>
+<li>Lingo.dev SDK</li>
+<li>tRPC + TanStack Query</li>
+<li>Better Auth (GitHub OAuth)</li>
+<li>Prisma + PostgreSQL</li>
+<li>Qdrant (vector store)</li>
+<li>OpenAI (gpt-4o-mini + text-embedding-3-small)</li>
+<li>Tailwind CSS + shadcn/ui</li>
+<li>Turborepo + PNPM</li>
+</ul> <hr> <p>Language shouldn't be the thing that decides who gets to participate in open source. That's really all this is about.</p> <p>The project is open source at <a href="https://github.com/koushikxd/lingo-bolt" target="_blank">github.com/koushikxd/lingo-bolt</a>.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

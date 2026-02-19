@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - schachmadinejad/erxi</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - schachmadinejad/erxi</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 1:47:14 PM | <a href="https://github.com/schachmadinejad/erxi" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: DE
+  </div>
+  <div class="content">
+    <div><h1>erxi</h1><a href="#erxi"></a></div>
+<p>EXI 1.0 (<a href="https://www.w3.org/TR/exi/">W3C Second Edition</a>) implementation in Rust.
+Complete spec coverage as both a library and a CLI tool.</p>
+<p>EXI (Efficient XML Interchange) is a binary XML format that encodes XML documents
+compactly and fast--typically smaller than gzip and faster to parse than text XML.</p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li>Complete EXI 1.0 Second Edition implementation</li>
+<li>Schema-less and schema-informed encoding/decoding</li>
+<li>All alignment modes: BitPacked, ByteAlignment, PreCompression, Compression (DEFLATE)</li>
+<li>Strict mode and Fragment mode</li>
+<li>Fidelity options: Comments, PIs, DTD, Prefixes, Lexical Values</li>
+<li>String Table with configurable partitions</li>
+<li>Self-Contained elements</li>
+<li>Datatype Representation Mapping</li>
+<li>Streaming encode for large files (no intermediate Vec)</li>
+<li>Iterator-based decoding</li>
+<li>XSD schema parser with xs:import support</li>
+<li>Parallel DEFLATE compression for large streams</li>
+<li>High test coverage (unit + interop + cross-RTT)</li>
+</ul>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><pre><span><span>#</span> Build from the repository</span>
+cargo build --release <span><span>#</span> Library-only (no CLI)</span>
+cargo build --release --no-default-features</pre></div>
+<div><h3>Cargo Features</h3><a href="#cargo-features"></a></div>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>cli</code></pre></td>
+<td>yes</td>
+<td>CLI binary (<pre><code>erxi encode</code></pre> / <pre><code>erxi decode</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>cli-fast</code></pre></td>
+<td>yes</td>
+<td>Faster CLI: zlib-ng + mimalloc</td>
+</tr>
+<tr>
+<td><pre><code>fast-deflate</code></pre></td>
+<td>yes</td>
+<td>zlib-ng backend for DEFLATE</td>
+</tr>
+<tr>
+<td><pre><code>fast-alloc</code></pre></td>
+<td>yes</td>
+<td>mimalloc allocator</td>
+</tr>
+</tbody>
+</table>
+<div><h2>CLI</h2><a href="#cli"></a></div>
+<div><h3>Encode</h3><a href="#encode"></a></div>
+<div><pre><span><span>#</span> Simple encoding (BitPacked, default)</span>
+erxi encode -i document.xml -o document.exi <span><span>#</span> With schema</span>
+erxi encode -i document.xml -o document.exi -s schema.xsd <span><span>#</span> With compression</span>
+erxi encode -i document.xml -o document.exi --compression <span><span>#</span> Byte-aligned with options in header</span>
+erxi encode -i document.xml -o document.exi --byte-aligned --include-options <span><span>#</span> All fidelity options</span>
+erxi encode -i document.xml -o document.exi \ --preserve-comments --preserve-pis --preserve-dtd --preserve-prefixes <span><span>#</span> Large files: parallel DEFLATE</span> erxi encode -i large.xml -o large.exi --compression --parallel-deflate <span><span>#</span> Read from stdin</span>
+cat document.xml <span>|</span> erxi encode -i - -o document.exi <span><span>#</span> Auto output (document.xml -&gt; document.exi)</span>
+erxi encode -i document.xml <span><span>#</span> To stdout</span>
+erxi encode -i document.xml -o -</pre></div>
+<div><h3>Decode</h3><a href="#decode"></a></div>
+<div><pre><span><span>#</span> Auto output (document.exi -&gt; document.xml)</span>
+erxi decode -i document.exi <span><span>#</span> To file</span>
+erxi decode -i document.exi -o document.xml <span><span>#</span> To stdout</span>
+erxi decode -i document.exi -o - <span><span>#</span> With schema (when options are not in the header)</span>
+erxi decode -i document.exi -o document.xml -s schema.xsd <span><span>#</span> Pretty-printed XML output</span>
+erxi decode -i document.exi --pretty</pre></div>
+<div><h3>JSON (EXI4JSON)</h3><a href="#json-exi4json"></a></div>
+<div><pre><span><span>#</span> Encode JSON -&gt; EXI4JSON (output auto: input.json -&gt; input.exi)</span>
+erxi json encode -i data.json <span><span>#</span> Encode JSON -&gt; EXI4JSON to stdout</span>
+erxi json encode -i data.json -o - <span><span>#</span> Decode EXI4JSON -&gt; JSON (output auto: input.exi -&gt; input.json)</span>
+erxi json decode -i data.exi <span><span>#</span> Decode EXI4JSON -&gt; JSON to stdout</span>
+erxi json decode -i data.exi -o - <span><span>#</span> Pretty-printed JSON output</span>
+erxi json decode -i data.exi --pretty <span><span>#</span> Enable EXI4JSON &lt;other&gt; heuristics (date/time/base64/integer/decimal)</span>
+erxi json encode -i data.json --exi4json-other</pre></div>
+<div><h3>All CLI Options</h3><a href="#all-cli-options"></a></div>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>-i, --input &lt;FILE&gt;</code></pre></td>
+<td>Input file (<pre><code>-</code></pre> for stdin)</td>
+</tr>
+<tr>
+<td><pre><code>-o, --output &lt;FILE&gt;</code></pre></td>
+<td>Output file (optional; without <pre><code>-o</code></pre> auto-derived, <pre><code>-o -</code></pre> = stdout)</td>
+</tr>
+<tr>
+<td><pre><code>-s, --schema &lt;FILE&gt;</code></pre></td>
+<td>XSD schema file</td>
+</tr>
+<tr>
+<td><pre><code>--schema-id &lt;ID&gt;</code></pre></td>
+<td>Schema ID in EXI header</td>
+</tr>
+<tr>
+<td><pre><code>--pretty</code></pre></td>
+<td>Pretty-printed output (only <pre><code>decode</code></pre> / <pre><code>json decode</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>--schema-id-none</code></pre></td>
+<td>Schema ID = None (xsi:nil=true)</td>
+</tr>
+<tr>
+<td><pre><code>--schema-id-builtin</code></pre></td>
+<td>Schema ID = BuiltinOnly (empty string)</td>
+</tr>
+<tr>
+<td><pre><code>--byte-aligned</code></pre></td>
+<td>Byte alignment</td>
+</tr>
+<tr>
+<td><pre><code>--pre-compression</code></pre></td>
+<td>Pre-compression alignment</td>
+</tr>
+<tr>
+<td><pre><code>--compression</code></pre></td>
+<td>DEFLATE compression</td>
+</tr>
+<tr>
+<td><pre><code>--strict</code></pre></td>
+<td>Strict mode</td>
+</tr>
+<tr>
+<td><pre><code>--fragment</code></pre></td>
+<td>Fragment mode</td>
+</tr>
+<tr>
+<td><pre><code>--preserve-comments</code></pre></td>
+<td>Preserve comment events</td>
+</tr>
+<tr>
+<td><pre><code>--preserve-pis</code></pre></td>
+<td>Preserve processing instructions</td>
+</tr>
+<tr>
+<td><pre><code>--preserve-dtd</code></pre></td>
+<td>Preserve DOCTYPE / entity reference events</td>
+</tr>
+<tr>
+<td><pre><code>--preserve-prefixes</code></pre></td>
+<td>Preserve namespace prefixes</td>
+</tr>
+<tr>
+<td><pre><code>--preserve-lexical</code></pre></td>
+<td>Preserve lexical values</td>
+</tr>
+<tr>
+<td><pre><code>--preserve-whitespace</code></pre></td>
+<td>Preserve insignificant whitespace</td>
+</tr>
+<tr>
+<td><pre><code>--self-contained</code></pre></td>
+<td>Enable self-contained fragments</td>
+</tr>
+<tr>
+<td><pre><code>--self-contained-qname &lt;URI&gt; &lt;LOCAL&gt;</code></pre></td>
+<td>Self-contained only for specific elements (repeatable)</td>
+</tr>
+<tr>
+<td><pre><code>--include-options</code></pre></td>
+<td>Write options in EXI header</td>
+</tr>
+<tr>
+<td><pre><code>--include-cookie</code></pre></td>
+<td>Write "$EXI" cookie</td>
+</tr>
+<tr>
+<td><pre><code>--parallel-deflate</code></pre></td>
+<td>Parallel DEFLATE compression</td>
+</tr>
+<tr>
+<td><pre><code>--block-size &lt;N&gt;</code></pre></td>
+<td>Compression block size (default: 1,000,000)</td>
+</tr>
+<tr>
+<td><pre><code>--value-max-length &lt;N&gt;</code></pre></td>
+<td>String Table max value length</td>
+</tr>
+<tr>
+<td><pre><code>--value-capacity &lt;N&gt;</code></pre></td>
+<td>String Table partition capacity</td>
+</tr>
+<tr>
+<td><pre><code>--dtrm &lt;TYPE_URI&gt; &lt;TYPE_LOCAL&gt; &lt;REP_URI&gt; &lt;REP_LOCAL&gt;</code></pre></td>
+<td>Datatype Representation Map entry (repeatable)</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Large Files</h2><a href="#large-files"></a></div>
+<ul>
+<li>Encode without Compression/PreCompression writes streaming output and flushes periodically (no growing output buffer).</li>
+<li>Decode from files uses memory mapping (feature <pre><code>mmap</code></pre>); stdin is read fully.</li>
+</ul>
+<div><h2>Spec Coverage</h2><a href="#spec-coverage"></a></div>
+<p>erxi implements the full EXI 1.0 Second Edition specification:</p>
+<table>
+<thead>
+<tr>
+<th>Spec Section</th>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>event.rs</td>
+<td>EXI event model (12 event types)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>header.rs, options.rs, options_codec.rs</td>
+<td>EXI header and options</td>
+</tr>
+<tr>
+<td>6</td>
+<td>encoder/, decoder/</td>
+<td>Encoding/decoding EXI streams</td>
+</tr>
+<tr>
+<td>7.1</td>
+<td>bitstream.rs, string.rs, integer.rs, ...</td>
+<td>Built-in EXI datatypes</td>
+</tr>
+<tr>
+<td>7.2</td>
+<td>enumeration.rs</td>
+<td>Enumerations</td>
+</tr>
+<tr>
+<td>7.3</td>
+<td>string_table.rs</td>
+<td>String Table</td>
+</tr>
+<tr>
+<td>8.1-8.4</td>
+<td>grammar.rs, event_code.rs</td>
+<td>Built-in XML grammars</td>
+</tr>
+<tr>
+<td>8.5</td>
+<td>grammar.rs, proto_grammar.rs, xsd/</td>
+<td>Schema-informed grammars</td>
+</tr>
+<tr>
+<td>9</td>
+<td>encoder/compression.rs, decoder/compression.rs</td>
+<td>EXI compression</td>
+</tr>
+<tr>
+<td>10</td>
+<td>tests/conformance.rs</td>
+<td>Conformance</td>
+</tr>
+<tr>
+<td>Appendix B</td>
+<td>examples/full_cross_test.rs (infoset suite)</td>
+<td>Infoset mapping</td>
+</tr>
+<tr>
+<td>Appendix C</td>
+<td>options_codec.rs</td>
+<td>Options header schema</td>
+</tr>
+<tr>
+<td>Appendix D</td>
+<td>string_table.rs</td>
+<td>Initial String Table entries</td>
+</tr>
+<tr>
+<td>Appendix E</td>
+<td>rcs.rs</td>
+<td>Restricted Character Sets</td>
+</tr>
+</tbody>
+</table>
+<p>Known deviations: <a href="/schachmadinejad/erxi/blob/main/docs/interop-deviations.md">docs/interop-deviations.md</a></p>
+<div><h2>Tests</h2><a href="#tests"></a></div>
+<div><pre><span><span>#</span> Unit and integration tests</span>
+cargo <span>test</span> <span><span>#</span> Setup + full matrix + verify</span>
+./scripts/complete.sh <span><span>#</span> Setup only (exports EXI_TESTSUITE_DIR/EXIFICIENT_JAR)</span>
+<span>source</span> ./scripts/setup.sh <span><span>#</span> Run full matrix (requires EXI_TESTSUITE_DIR/EXIFICIENT_JAR)</span>
+./scripts/run.sh <span><span>#</span> Verify results against expectations</span>
+./scripts/verify.sh <span><span>#</span> Individual suites</span>
+cargo <span>test</span> --test conformance <span><span>#</span> Spec 10 conformance</span>
+cargo <span>test</span> --test cli_e2e <span><span>#</span> CLI end-to-end tests</span>
+cargo <span>test</span> --test full_cross_matrix <span><span>#</span> Full cross matrix (via scripts/run.sh)</span></pre></div>
+<div><h3>Test Prerequisites</h3><a href="#test-prerequisites"></a></div>
+<ul>
+<li><strong>W3C EXI Test Suite</strong>: <pre><code>EXI_TESTSUITE_DIR</code></pre> must be set (setup script downloads by default).</li>
+<li><strong>Exificient (Java)</strong>: setup script builds a fat JAR and compiles <pre><code>tools/ExifBatch.java</code></pre>.</li>
+</ul>
+<div><h3>Cross-Implementation Tests</h3><a href="#cross-implementation-tests"></a></div>
+<p>erxi is tested against <a href="https://exificient.github.io/">Exificient</a> (Java reference implementation).
+The cross-matrix checks 8030 combinations of fixtures, alignments, and encode/decode directions.</p>
+<p>Expected results: <a href="/schachmadinejad/erxi/blob/main/tests/cross_matrix_expectations.tsv">tests/cross_matrix_expectations.tsv</a></p>
+<div><h2>Benchmarks</h2><a href="#benchmarks"></a></div>
+<p>Benchmarks and profiling live in the separate </p><pre><code>erxi-benchmark</code></pre> repo.<p></p>
+<div><h2>Documentation</h2><a href="#documentation"></a></div>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/schachmadinejad/erxi/blob/main/docs/architecture.md">docs/architecture.md</a></td>
+<td>Layer model, pipeline, module overview</td>
+</tr>
+<tr>
+<td><a href="/schachmadinejad/erxi/blob/main/docs/interop-deviations.md">docs/interop-deviations.md</a></td>
+<td>Intentional spec deviations for Exificient interop</td>
+</tr>
+<tr>
+<td><a href="/schachmadinejad/erxi/blob/main/docs/infoset-mapping.md">docs/infoset-mapping.md</a></td>
+<td>XML infoset mapping (Appendix B)</td>
+</tr>
+<tr>
+<td><a href="/schachmadinejad/erxi/blob/main/docs/byte-diff-analyse.md">docs/byte-diff-analyse.md</a></td>
+<td>Byte-difference analysis vs Exificient</td>
+</tr>
+</tbody>
+</table>
+<div><h2>License</h2><a href="#license"></a></div>
+<pre><code>PolyForm Noncommercial 1.0.0 -- free for non-commercial use
+(research, education, hobby, public institutions). Commercial use
+requires a separate license.</code></pre>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
