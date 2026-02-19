@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The AI security nightmare is here and it looks suspiciously like lobster</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>The AI security nightmare is here and it looks suspiciously like lobster</h1>
+  <div class="metadata">
+    Source: The Verge | Date: 2/19/2026 6:58:56 PM | <a href="https://www.theverge.com/ai-artificial-intelligence/881574/cline-openclaw-prompt-injection-hack" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><div><p><a href="https://www.theverge.com/authors/robert-hart"><img alt="Robert Hart" src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/09/ROB_H_BLURPLE.jpg?quality=90&amp;strip=all&amp;crop=0%2C0%2C100%2C100&amp;w=96"></a></p><div><p><span><span><span><span></span></span><span>Robert Hart</span></span></span></p> <p><span>is a London-based reporter at <em>The Verge</em> covering all things AI and Senior Tarbell Fellow. Previously, he wrote about health, science and tech for <em>Forbes</em>.</span></p></div></div><div><p>A hacker tricked a popular AI coding tool into installing OpenClaw — the <a href="https://www.theverge.com/news/872091/openclaw-moltbot-clawdbot-ai-agent-news">viral, open-source AI agent OpenClaw</a> that “actually does things” — absolutely everywhere. Funny as a stunt, but a sign of what to come as more and more people let autonomous software use their computers on their behalf.</p><p>The hacker took advantage of a vulnerability in Cline, an open-source AI coding agent popular among developers, that security researcher Adnan Khan had <a href="https://adnanthekhan.com/posts/clinejection/">surfaced</a> just days earlier as a proof of concept. Simply put, Cline’s workflow used Anthropic’s Claude, which could be fed sneaky instructions and made to do things that it shouldn’t, a technique known as a prompt injection.</p><p>The hacker used their access to slip through instructions to automatically install software on users’ computers. They could have installed anything, but they opted for OpenClaw. Fortunately, the agents were not activated upon installation, or this would have been a very different story.</p><p>It’s a sign of how quickly things can unravel when AI agents are given control over our computers. They may look like clever wordplay — one group <a href="https://www.theverge.com/report/838167/ai-chatbots-can-be-wooed-into-crimes-with-poetry">wooed chatbots into committing crimes with poetry</a> — but in a world of <a href="https://www.theverge.com/report/810083/ai-browser-cybersecurity-problems">increasingly autonomous software</a>, prompt injections are massive security risks that are very difficult to defend against. Acknowledging this, some companies instead lock down what AI tools can do if they’re hijacked. OpenAI, for example, recently introduced a new <a href="https://www.theverge.com/ai-artificial-intelligence/879830/chatgpt-is-getting-a-lockdown-mode">Lockdown Mode</a> for ChatGPT preventing it from giving your data away.</p><p>Obviously, protecting against prompt injections is harder if you ignore the researchers who privately flag flaws to you. Khan said he warned Cline about the vulnerability weeks before publishing his findings. The exploit was only fixed after he called them out publicly.</p><div><p><span><strong>Follow topics and authors</strong> from this story to see more like this in your personalized homepage feed and to receive email updates.</span></p><ul><li><span><span><span></span><span>Robert Hart</span></span></span></li><li></li><li></li><li></li><li></li><li></li></ul></div></div></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

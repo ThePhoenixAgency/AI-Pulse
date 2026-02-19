@@ -5,18 +5,76 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Feb 2026 18:48:35 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Feb 2026 22:30:45 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: Firebase alternative where SaaS users choose data location]]></title>
-      <link>https://linkedrecords.com/</link>
-      <description><![CDATA[Article URL: https://linkedrecords.com/ URL: https://news.ycombinator.com/item?id=47076473
+      <title><![CDATA[Show HN: Ball 2 – Use AI to build fun ball games]]></title>
+      <link>https://shop.ball2.ai/</link>
+      <description><![CDATA[I wanted to find a way to get kids: - moving - creating - playing with others
+In the end I, and a team of 4 others, built: - a foam ball with a BLE IMU in it (moving/together) - an app that allows you to create almost any game you can imagine with AI (creating)
+Video of teenagers making a game: https://www.youtube.com/watch?v=-7TZXRBybOE
+Video that was intended to be for Kickstarter: https://www.youtube.com/watch?v=Edy9zew1XN4 (we abandoned kickstarter, long story)
+For hardware we came up with a pretty awesome custom PCB, based around a Dialog DA14531, that doesnt need any charging for over 500 hours of play. The electronics are encased inside 4.5" diameter of foam. We drove a car over it and it didn't break.
+For the app, we are using OpenAI Realtime API (gpt-realtime-2025-08-28) to gather the game requirements via conversation. We are using voice/realtime to allow kids to do it without needing to type or read. This piece has a huge dynamic prompt that flows with the conversation. It has about 20 different tools that the agent can use to access sample requirements, ball data, user profiles, api documentation, etc. We also did a lot of work to require younger kids to have adults present and make sure we never saved any pii, etc.
+Then we use Gemini 3 Pro to process the conversation and generate a markdown specification/arhictecture of how the game should be designed. We found that Anthropic Opus 4.6 did perform better here, but Gemini 3 Pro is much cheaper and faster. This has a static/cacheable prompt that is primarily a ball api documentation and details on previously seen issues.
+Then we use Gemini 3 Pro to also code the game. A very similar prompt to the specification/requirements just different purpose. We are currently exploring condensing the architecture and coding steps into a single step, with new "thinking" models. Also seeing that Google is launching 3.1 model, literally while I type this...
+The end result is an app that allows you to speak game requirements, have ai code the game, then you get to play it with a real physical ball.
+So ya, tons of fun building all that. Curious what HN thinks. Now the hard part of maybe getting someone to buy it... URL: https://news.ycombinator.com/item?id=47079874
 Points: 1
 # : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 17:33:18 GMT</pubDate>
+      <pubDate>Thu, 19 Feb 2026 21:40:37 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://linkedrecords.com/</guid>
+      <guid>https://shop.ball2.ai/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: CursorLens – Open-source screen recorder/editor for product demos]]></title>
+      <link>https://github.com/blueberrycongee/CursorLens</link>
+      <description><![CDATA[Hi HN — I built CursorLens, a free and open-source screen recorder/editor for product demos and walkthroughs.
+It started as a fork of OpenScreen, but I reworked a lot of the capture/editing pipeline for a more native macOS workflow.
+Current features:
+full-screen or window recording
+native cursor hide/show behavior on macOS
+camera overlay + microphone recording
+timeline editing (trim/crop/zoom/cursor effects/annotations)
+subtitle generation + rough-cut workflow
+multi-aspect export (16:9, 9:16, 1:1) and batch export
+audio export controls (gain, loudness normalization, limiter)
+It’s still in beta, so stability can vary by machine.
+Repo: https://github.com/blueberrycongee/CursorLens
+Releases: https://github.com/blueberrycongee/CursorLens/releases
+I’d really appreciate feedback on:
+recording reliability across setups
+editing UX (especially rough cut/subtitles)
+export speed/quality tradeoffs URL: https://news.ycombinator.com/item?id=47079466
+Points: 1
+# : 0]]></description>
+      <pubDate>Thu, 19 Feb 2026 21:12:28 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://github.com/blueberrycongee/CursorLens</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: Microstock.pro – AI-powered analytics for Adobe Stock contributors]]></title>
+      <link>https://www.microstock.pro</link>
+      <description><![CDATA[Hi HN,
+I built Microstock.pro, an analytics and AI research tool for stock contributors, primarily focused on Adobe Stock.
+As a stock creator, I noticed that most contributors rely on guesswork when choosing what to create. There’s very little structured data available to identify profitable niches, keyword opportunities, and market gaps before investing hours into content production.
+Microstock.pro aims to solve that by providing:
+Keyword and niche research
+Trend discovery
+Competitive insights
+AI-assisted content idea generation
+Data-driven validation before uploading
+The platform is specialized for Adobe Stock, but the research insights can also inspire strategies for other marketplaces like Shutterstock, since trends often overlap.
+It’s still early-stage and I’m actively improving features based on feedback. I’d really appreciate thoughts from the HN community — especially from creators, indie hackers, or anyone working with marketplace analytics.
+Happy to answer any technical or product questions. URL: https://news.ycombinator.com/item?id=47079407
+Points: 1
+# : 1]]></description>
+      <pubDate>Thu, 19 Feb 2026 21:08:17 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://www.microstock.pro</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : One UI 8.5 : Samsung lance sa cinquième bêta d’Android 16 avant la sortie officielle]]></title>
@@ -26,49 +84,6 @@ Points: 1
       <source>Les Numeriques</source>
       <category>products</category>
       <guid>https://www.lesnumeriques.com/telephone-portable/one-ui-8-5-samsung-lance-sa-cinquieme-beta-d-android-16-avant-la-sortie-officielle-n251715.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: Orchestera – Managed Apache Spark on Kubernetes in Your Own AWS Account]]></title>
-      <link>https://orchestera.com/</link>
-      <description><![CDATA[I built Orchestera as a PaaS that allows you to orchestrate Apache Spark clusters in your own AWS account, with no additional markup on compute via EC2 instances.
-I built this because I was tired of the compute markup that products like AWS EMR and Databricks charge for the convenience of using Apache Spark via their platforms. One can argue that Databricks is a superior product with a lot of additional value in their offering but I don't see that with AWS EMR Apache Spark at all (given my personal experience working with it).
-My motivation to build this was to be able to create your own Apache Spark cluster without needing any understanding of the underlying data infrastructure engineering and quickly get to the point of writing Spark pipelines, whether as Python applications or Jupyter notebooks, all with no markup on compute because I don't think that is a justified narrative.
-It took me almost an year to build it with a day job and of course I used AI for frontend design and video narrations, the infrastructue engineering that goes behind it comes with quite a bit of experience in the industry. The backend that orchestrates the cluster is written with the following:
-- Django and DRF for API
-- Temporal for async workers
-- Pulumi that is run via Temporal workers to orchestrate the cluster
-- Karpenter for node auto-scaling based on Spark executor workloads and requests
-- Librechat for Spark History server and MCP based debugging for Spark pipeline run analysis
-There are currently no caps on the CPU limits so you can try this out today in your own personal AWS accounts for free.
-Also looking for feedback on HN. URL: https://news.ycombinator.com/item?id=47075959
-Points: 3
-# : 1]]></description>
-      <pubDate>Thu, 19 Feb 2026 16:58:07 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://orchestera.com/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: ClawShell, Process-Level Isolation for OpenClaw Credentials]]></title>
-      <link>https://github.com/clawshell/clawshell</link>
-      <description><![CDATA[Hi HN,
-I’ve been using OpenClaw daily since it dropped in November. I love the agency it provides, but as I started giving it more production API keys and access to my local filesystem, I realized the threat model was essentially "hope-based."
-We ran an experiment to see how resilient a standard OpenClaw setup was to prompt injection. Within 2 mins, we were able to exfiltrate active session tokens and API credentials through the chat interface.
-The problem is fundamental: in most agent architectures, the LLM logic and the sensitive credentials live in the same process space. If the agent is tricked, the attacker has everything.
-We built and open-sourced a project called ClawShell to move the security boundary from the "prompt" to the "system runtime."
-How it works: ClawShell acts as a privileged protection layer. It isolates sensitive operations into a separate process enforced by the OS. The secrets never enter the agent’s memory or process space. When the agent needs to perform an action, it sends a request to the ClawShell wrapper, which validates the intent and executes the call using the protected keys.
-If the agent is hijacked via prompt injection, the attacker gets a scoped identifier that contains zero credentials and no lateral access to the sensitive environment.
-Key Technical Details:
-* Structural Boundaries: We assume the LLM is untrusted. Isolation is handled at the OS level, not via "system prompts."
-* Zero-Trust Tooling: The agent triggers the tool, but the tool execution is handled by a separate, restricted process.
-* Compatibility: It’s designed to be a drop-in wrapper for existing OpenClaw instances.
-We’re launching v0.1 today. I’m curious to hear how others are thinking about the "Lethal Trifecta" (Data + Action + Communication) in the agent space. Is anyone else looking at Sanboxing for this, or is OS-level isolation the right path? URL: https://news.ycombinator.com/item?id=47075823
-Points: 8
-# : 1]]></description>
-      <pubDate>Thu, 19 Feb 2026 16:49:21 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://github.com/clawshell/clawshell</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Microsoft réussit à sauvegarder des données dans du verre : un stockage record de 10 000 ans]]></title>

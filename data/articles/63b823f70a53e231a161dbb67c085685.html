@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,20 @@
     Source: Siecle Digital | Date: 2/19/2026 10:31:23 AM | <a href="https://siecledigital.fr/2026/02/19/les-recommandations-des-ia-sont-incoherentes-selon-cette-etude/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Si l’IA s’impose comme un nouvel intermédiaire dans les décisions d’achat, une récente étude menée par Rand Fishkin révèle un constat troublant : les recommandations de marques sont profondément incohérentes. Derrière cette variabilité apparente se cache un fonctionnement structurel des modèles de langage, et pour les entreprises, la question dépasse largement la simple mesure de […]</p>
+    <div><div> <p>Si l’IA s’impose comme <strong>un nouvel intermédiaire dans les décisions d’achat</strong>, une <a href="https://sparktoro.com/blog/new-research-ais-are-highly-inconsistent-when-recommending-brands-or-products-marketers-should-take-care-when-tracking-ai-visibility/" target="_blank">récente étude menée par Rand Fishkin</a> révèle un constat troublant&nbsp;: les recommandations de marques sont profondément incohérentes.</p>
+<p>Derrière cette variabilité apparente se cache un fonctionnement structurel des modèles de langage, et pour les entreprises, <strong>la question dépasse largement la simple mesure de visibilité</strong>…</p>
+<h2>Moins de 1% de listes identiques&nbsp;: la fin du mythe du «&nbsp;classement&nbsp;» dans l’IA&nbsp;?</h2>
+<p>Avec <strong>près de 3 000 réponses collectées</strong> sur douze requêtes différentes, l’étude montre que deux listes strictement identiques apparaissent dans moins de 1% des cas. Quant à l’ordre des marques, la probabilité chute sous les 0,1%.</p> <p>Autrement dit, <strong>parler de «&nbsp;<em>position</em>&nbsp;» dans une IA n’a pas de sens</strong>. Ces modèles ne classent pas des résultats comme un moteur de recherche traditionnel, mais ils génèrent une réponse <strong>à partir d’une distribution probabiliste</strong>, influencée par la température, les paramètres d’échantillonnage et, parfois, des sources récupérées en temps réel.</p>
+<p>Toutefois, ce fonctionnement n’a rien d’un bug, et il est même <strong>inhérent à l’architecture des grands modèles de langage</strong>. Ainsi, chaque réponse est, par nature, une nouvelle combinaison plausible.</p>
+<p>L’étude valide toutefois un indicateur cher aux défenseurs du <a href="https://siecledigital.fr/2025/11/03/tendances-seo-2026-le-geo-est-un-nouveau-pilier/">GEO</a>&nbsp;: le <strong>taux de visibilité</strong>. En effet, certaines marques apparaissent <strong>dans 80% à 90% des réponses</strong> pour une requête donnée, quand d’autres ne sont citées qu’épisodiquement.</p>
+<h2>L’IA n’évalue pas la popularité, mais la confiance</h2>
+<p>L’étude montre également que les IA ne sont pas des moteurs de recommandation au sens classique, mais <strong>des moteurs de probabilité</strong>. Plus un modèle «&nbsp;<em>estime</em>&nbsp;» qu’une entité est fiable et pertinente pour une requête, plus elle aura un poids élevé dans la distribution de sortie.</p>
+<p>À l’inverse, une marque citée dans 5 à 10% des cas évolue dans une zone d’incertitude. Dans ce cas, Rand Fishkin estime que <strong>l’IA «&nbsp;<em>hésite</em>«&nbsp;, faute de signaux convergents suffisamment solides</strong>…</p>
+<h2>Plusieurs dimensions à considérer pour les marques…</h2>
+<p>Avant même qu’une IA ne formule une recommandation, le contenu passe par plusieurs étapes, allant de la <strong>découverte</strong>, au <strong>crawl</strong>, à l’<strong>indexation</strong>, l’<strong>annotation</strong>, puis l’<strong>intégration dans différentes représentations</strong> de connaissance.</p>
+<p>On peut alors distinguer trois niveaux avec le <strong>graphe d’entités</strong>, connu sous le nom de «&nbsp;<em>Knowledge graph</em>«&nbsp;, le <strong>graphe documentaire</strong> qui correspond à l’index des moteurs, et le <strong>graphe conceptuel</strong> issu de l’entraînement du modèle.</p>
+<p>Selon l’étude, une marque solidement implantée dans ces trois dimensions bénéficie d’un effet cumulatif. À l’inverse, une présence limitée à quelques articles ou communiqués de presse ne suffit pas à construire une confiance durable.</p>
+<p>C’est d’ailleurs ce qu’a démontré <a href="https://www.authoritas.com/blog/can-you-fake-it-til-you-make-it-in-the-age-of-ai-search" target="_blank">une étude d’Authoritas fin 2025</a>, où de faux experts, pourtant mentionnés dans plus de 600 articles, n’ont jamais été recommandés par les IA. De quoi prouver que <strong>le volume n’est pas synonyme de crédibilité algorithmique</strong>…</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - mikemasam/nyatictl: Automate tasks on remote hosts easily! This command-line tool lets you run tasks on one or all configured hosts.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - mikemasam/nyatictl: Automate tasks on remote hosts easily! This command-line tool lets you run tasks on one or all configured hosts.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 9:29:47 PM | <a href="https://github.com/mikemasam/nyatictl" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>nyatictl</h1><a href="#nyatictl"></a></div>
+<p> <strong>Remote server automation via SSH</strong>
+</p>
+<p> <a href="https://npmjs.com/package/nyatictl"><img src="https://camo.githubusercontent.com/0ab696b7715a52307a308e4fc48800ee3c3b5be7fd5d01c2de742ac4dfa0bfd9/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f6e7961746963746c3f7374796c653d666f722d7468652d6261646765" alt="npm version"></a> <a href="https://npmjs.com/package/nyatictl"><img src="https://camo.githubusercontent.com/d5e2460bcc4237f3a297cc4d2cb44b5f8519aee5135ed250b580834ecc7b25ec/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f64742f6e7961746963746c3f7374796c653d666f722d7468652d6261646765" alt="npm downloads"></a>
+</p>
+<p>Execute tasks on multiple servers from a YAML config. Deploy code, run scripts, manage servers — all from your terminal.</p>
+<p><a href="https://npmjs.com/package/nyatictl">npm</a> · <a href="#config">Config Reference</a> · <a href="#templating">Templating</a> · <a href="#how-it-works">Architecture</a></p>
+<div><h2>What you can do</h2><a href="#what-you-can-do"></a></div>
+<ul>
+<li><strong>Deploy applications</strong> — Push code to multiple servers with one command</li>
+<li><strong>Run scripts</strong> — Execute maintenance scripts across all your infrastructure</li>
+<li><strong>Server management</strong> — Restart services, check status, manage configs</li>
+<li><strong>Parallel execution</strong> — Run tasks across multiple hosts simultaneously</li>
+<li><strong>Custom parameters</strong> — Define reusable variables for your tasks</li>
+<li><strong>Environment integration</strong> — Securely reference env vars in configs</li>
+<li><strong>Template commands</strong> — Use built-in variables in your commands</li>
+</ul>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><pre>npm install -g nyatictl</pre></div>
+<p>Requires Node.js 18+ and SSH access to your servers.</p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> 1. Create nyati.yaml (see Config section below)</span>
+<span><span>#</span> 2. Run on specific host</span>
+nyatictl production <span><span>#</span> 3. Or run on all hosts</span>
+nyatictl all <span><span>#</span> 4. Run specific task</span>
+nyatictl --task deploy production</pre></div>
+<div><h2>Config</h2><a href="#config"></a></div>
+<p>Create </p><pre><code>nyati.yaml</code></pre> in your project root:<p></p>
+<div><pre><span>appname</span>: <span>myapp</span>
+<span>hosts</span>: <span>production</span>: <span>host</span>: <span>server.com</span> <span>username</span>: <span>admin</span> <span>password</span>: <span><span>"</span>#env:PROD_PASSWORD<span>"</span></span>
+<span>tasks</span>: - <span>name</span>: <span>deploy</span> <span>cmd</span>: <span>./deploy.sh</span> <span>expect</span>: <span>0</span> <span>message</span>: <span>Deployed successfully</span> - <span>name</span>: <span>restart</span> <span>cmd</span>: <span>sudo systemctl restart app</span> <span>expect</span>: <span>0</span> <span>askpass</span>: <span>true</span></pre></div>
+<div><h2>Commands</h2><a href="#commands"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>nyatictl &lt;host&gt;</code></pre></td>
+<td>Run all non-lib tasks on specified host</td>
+</tr>
+<tr>
+<td><pre><code>nyatictl all</code></pre></td>
+<td>Run all non-lib tasks on all hosts</td>
+</tr>
+<tr>
+<td><pre><code>nyatictl --task &lt;name&gt; &lt;host&gt;</code></pre></td>
+<td>Run specific task</td>
+</tr>
+<tr>
+<td><pre><code>nyatictl --task &lt;name&gt; all</code></pre></td>
+<td>Run specific task on all hosts</td>
+</tr>
+<tr>
+<td><pre><code>nyatictl --conf &lt;file&gt; &lt;host&gt;</code></pre></td>
+<td>Custom config file</td>
+</tr>
+<tr>
+<td><pre><code>nyatictl --debug &lt;host&gt;</code></pre></td>
+<td>Show detailed debug output</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Templating</h2><a href="#templating"></a></div>
+<p>nyatictl supports variable substitution in commands, directories, and messages using </p><pre><code>${variable}</code></pre> syntax.<p></p>
+<div><h3>Built-in Variables</h3><a href="#built-in-variables"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>${appname}</code></pre></td>
+<td>Application name from config</td>
+</tr>
+<tr>
+<td><pre><code>${host}</code></pre></td>
+<td>Current host name (key in hosts)</td>
+</tr>
+<tr>
+<td><pre><code>${dir}</code></pre></td>
+<td>Base directory from config</td>
+</tr>
+<tr>
+<td><pre><code>${release_version}</code></pre></td>
+<td>Unix timestamp in milliseconds</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Custom Parameters</h3><a href="#custom-parameters"></a></div>
+<p>Define in </p><pre><code>params</code></pre> section:<p></p>
+<div><pre><span>appname</span>: <span>myapp</span>
+<span>params</span>: <span>node_version</span>: <span>18</span> <span>max_memory</span>: <span>2gb</span> <span>backup_dir</span>: <span>/backups</span>
+<span>hosts</span>: <span>production</span>: <span>host</span>: <span>server.com</span> <span>username</span>: <span>admin</span> <span>password</span>: <span><span>"</span>#env:PASS<span>"</span></span>
+<span>tasks</span>: - <span>name</span>: <span>setup</span> <span>cmd</span>: <span>echo "Installing Node ${node_version}"</span> <span>expect</span>: <span>0</span> - <span>name</span>: <span>backup</span> <span>cmd</span>: <span>pg_dump &gt; ${backup_dir}/backup.sql</span> <span>expect</span>: <span>0</span></pre></div>
+<div><h3>Environment Variables</h3><a href="#environment-variables"></a></div>
+<p>Use </p><pre><code>#env:VAR</code></pre> for required or <pre><code>#env?:VAR</code></pre> for optional:<p></p>
+<div><pre><span>hosts</span>: <span>production</span>: <span>host</span>: <span>server.com</span> <span>username</span>: <span>admin</span> <span>password</span>: <span><span>"</span>#env:PROD_PASSWORD<span>"</span></span> <span><span>#</span> Required - fails if not set</span> <span>passphrase</span>: <span><span>"</span>#env?:SSH_PASSPHRASE<span>"</span></span> <span><span>#</span> Optional - empty if not set</span></pre></div>
+<div><h2>Host Options</h2><a href="#host-options"></a></div>
+<div><pre><span>hosts</span>: <span>production</span>: <span>host</span>: <span>server.com </span><span><span>#</span> Hostname or IP (required)</span> <span>username</span>: <span>deploy </span><span><span>#</span> SSH username (required)</span> <span>port</span>: <span>22</span> <span><span>#</span> SSH port (default: 22)</span> <span>password</span>: <span><span>"</span>#env:PASS<span>"</span></span> <span><span>#</span> Password or env reference</span> <span>privateKey</span>: <span>~/.ssh/id_rsa </span><span><span>#</span> Path to SSH key</span> <span>passphrase</span>: <span><span>"</span>#env?:KEY_PASS<span>"</span></span> <span><span>#</span> Key passphrase</span> <span>envpath</span>: <span>/etc/environment </span><span><span>#</span> Source env file on remote</span> <span>envfile</span>: <span>.env </span><span><span>#</span> Upload local env file</span> <span>output</span>: <span>true </span><span><span>#</span> Always show output</span></pre></div>
+<div><h2>Task Options</h2><a href="#task-options"></a></div>
+<div><pre><span>tasks</span>: - <span>name</span>: <span>deploy </span><span><span>#</span> Task name (no spaces)</span> <span>cmd</span>: <span>./deploy.sh </span><span><span>#</span> Command to execute</span> <span>expect</span>: <span>0</span> <span><span>#</span> Expected exit code (default: 0)</span> <span>message</span>: <span><span>"</span>Deployed!<span>"</span></span> <span><span>#</span> Success message to print</span> <span>output</span>: <span>1</span> <span><span>#</span> Show stdout/stderr</span> <span>dir</span>: <span>/var/www/myapp </span><span><span>#</span> Working directory</span> <span>retry</span>: <span>1</span> <span><span>#</span> Prompt retry on failure</span> <span>askpass</span>: <span>1</span> <span><span>#</span> Use sudo password</span> <span>error</span>: <span>1</span> <span><span>#</span> Custom error code tolerance</span> <span>hosts</span>: <span>[prod1, prod2] </span><span><span>#</span> Run only on specific hosts</span> <span>lib</span>: <span>1</span> <span><span>#</span> Library task (run with --task)</span></pre></div>
+<div><h2>Examples</h2><a href="#examples"></a></div>
+<div><h3>1. Deploy a Node.js App</h3><a href="#1-deploy-a-nodejs-app"></a></div>
+<div><pre><span>appname</span>: <span>myapp</span>
+<span>dir</span>: <span><span>"</span>/var/www/${appname}/<span>"</span></span>
+<span>hosts</span>: <span>production</span>: <span>host</span>: <span>192.168.1.10</span> <span>username</span>: <span>deploy</span> <span>privateKey</span>: <span>~/.ssh/id_rsa</span>
+<span>tasks</span>: - <span>name</span>: <span>pull</span> <span>cmd</span>: <span>git pull origin main</span> <span>dir</span>: <span>/var/www/myapp</span> <span>expect</span>: <span>0</span> - <span>name</span>: <span>install</span> <span>cmd</span>: <span>npm install --production</span> <span>dir</span>: <span>/var/www/myapp</span> <span>expect</span>: <span>0</span> - <span>name</span>: <span>restart</span> <span>cmd</span>: <span>sudo systemctl restart myapp</span> <span>expect</span>: <span>0</span> <span>askpass</span>: <span>true</span></pre></div>
+<div><h3>2. Database Backup</h3><a href="#2-database-backup"></a></div>
+<div><pre><span>appname</span>: <span>myapp</span>
+<span>params</span>: <span>backup_dir</span>: <span>/backups</span>
+<span>hosts</span>: <span>production</span>: <span>host</span>: <span>db.server.com</span> <span>username</span>: <span>backup</span> <span>password</span>: <span><span>"</span>#env:DB_PASS<span>"</span></span>
+<span>tasks</span>: - <span>name</span>: <span>backup</span> <span>cmd</span>: <span>pg_dump -U appuser myapp &gt; ${backup_dir}/$(date +%Y%m%d).sql</span> <span>expect</span>: <span>0</span> <span>message</span>: <span>Backup completed</span> - <span>name</span>: <span>cleanup</span> <span>cmd</span>: <span>find ${backup_dir} -mtime +7 -delete</span> <span>expect</span>: <span>0</span></pre></div>
+<div><h3>3. Health Check</h3><a href="#3-health-check"></a></div>
+<div><pre><span>appname</span>: <span>myapp</span>
+<span>hosts</span>: <span>prod1</span>: <span>host</span>: <span>server1.com</span> <span>username</span>: <span>admin</span> <span>password</span>: <span><span>"</span>#env:PASS<span>"</span></span> <span>prod2</span>: <span>host</span>: <span>server2.com</span> <span>username</span>: <span>admin</span> <span>password</span>: <span><span>"</span>#env:PASS<span>"</span></span>
+<span>tasks</span>: - <span>name</span>: <span>check_disk</span> <span>cmd</span>: <span>df -h | grep '/dev/sda'</span> <span>expect</span>: <span>0</span> <span>output</span>: <span>1</span> - <span>name</span>: <span>check_memory</span> <span>cmd</span>: <span>free -h</span> <span>expect</span>: <span>0</span> <span>output</span>: <span>1</span> - <span>name</span>: <span>check_services</span> <span>cmd</span>: <span>systemctl is-active nginx</span> <span>expect</span>: <span>0</span> <span>output</span>: <span>1</span></pre></div>
+<div><h3>4. Multiple Environments</h3><a href="#4-multiple-environments"></a></div>
+<div><pre><span>appname</span>: <span>myapp</span>
+<span>hosts</span>: <span>staging</span>: <span>host</span>: <span>staging.server.com</span> <span>username</span>: <span>deploy</span> <span>password</span>: <span><span>"</span>#env:STAGING_PASS<span>"</span></span> <span>production</span>: <span>host</span>: <span>prod.server.com</span> <span>username</span>: <span>deploy</span> <span>password</span>: <span><span>"</span>#env:PROD_PASS<span>"</span></span>
+<span>tasks</span>: - <span>name</span>: <span>deploy</span> <span>cmd</span>: <span>./deploy.sh</span> <span>expect</span>: <span>0</span> - <span>name</span>: <span>test</span> <span>cmd</span>: <span>curl -s http://localhost/health</span> <span>expect</span>: <span>0</span> <span>output</span>: <span>1</span></pre></div>
+<div><h3>5. Library Tasks</h3><a href="#5-library-tasks"></a></div>
+<p>Define utility tasks that run on-demand only:</p>
+<div><pre><span>appname</span>: <span>myapp</span>
+<span>hosts</span>: <span>production</span>: <span>host</span>: <span>server.com</span> <span>username</span>: <span>admin</span> <span>password</span>: <span><span>"</span>#env:PASS<span>"</span></span>
+<span>tasks</span>: - <span>name</span>: <span>log_stats</span> <span>cmd</span>: <span>tail -n 100 /var/log/app.log</span> <span>expect</span>: <span>0</span> <span>output</span>: <span>1</span> <span>lib</span>: <span>1</span> - <span>name</span>: <span>clear_cache</span> <span>cmd</span>: <span>rm -rf /tmp/cache/*</span> <span>expect</span>: <span>0</span> <span>lib</span>: <span>1</span></pre></div>
+<p>Run library tasks with </p><pre><code>--task</code></pre>:<p></p>
+<div><pre>nyatictl --task log_stats production
+nyatictl --task clear_cache all</pre></div>
+<div><h3>6. Selective Host Execution</h3><a href="#6-selective-host-execution"></a></div>
+<p>Run tasks on specific hosts only:</p>
+<div><pre><span>appname</span>: <span>myapp</span>
+<span>hosts</span>: <span>db1</span>: <span>host</span>: <span>db1.server.com</span> <span>username</span>: <span>admin</span> <span>password</span>: <span><span>"</span>#env:PASS<span>"</span></span> <span>db2</span>: <span>host</span>: <span>db2.server.com</span> <span>username</span>: <span>admin</span> <span>password</span>: <span><span>"</span>#env:PASS<span>"</span></span> <span>web1</span>: <span>host</span>: <span>web1.server.com</span> <span>username</span>: <span>admin</span> <span>password</span>: <span><span>"</span>#env:PASS<span>"</span></span>
+<span>tasks</span>: - <span>name</span>: <span>restart_db</span> <span>cmd</span>: <span>sudo systemctl restart postgresql</span> <span>expect</span>: <span>0</span> <span>hosts</span>: <span>[db1, db2]</span> - <span>name</span>: <span>restart_web</span> <span>cmd</span>: <span>sudo systemctl restart nginx</span> <span>expect</span>: <span>0</span> <span>hosts</span>: <span>[web1]</span></pre></div>
+<div><h3>7. Environment File Loading</h3><a href="#7-environment-file-loading"></a></div>
+<p>Load environment variables from remote or local files:</p>
+<div><pre><span>appname</span>: <span>myapp</span>
+<span>hosts</span>: <span>production</span>: <span>host</span>: <span>server.com</span> <span>username</span>: <span>admin</span> <span>password</span>: <span><span>"</span>#env:PASS<span>"</span></span> <span>envpath</span>: <span>/etc/myapp/env </span><span><span>#</span> Source on remote before exec</span> <span>envfile</span>: <span>.env.production </span><span><span>#</span> Upload local file before exec</span>
+<span>tasks</span>: - <span>name</span>: <span>run</span> <span>cmd</span>: <span>npm start</span> <span>expect</span>: <span>0</span></pre></div>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<div><pre><code>+------------------+ +------------------+ +------------------+
+| nyatictl CLI | --&gt; | YAML Config | --&gt; | SSH Connection |
++------------------+ +------------------+ +------------------+ | | | | | | v v v Parse Args &amp; Template Variables Execute Tasks Load Config Substitute ${var} Check Exit Codes Handle Retries
+</code></pre></div>
+<div><h3>Architecture</h3><a href="#architecture"></a></div>
+<ol>
+<li><strong>CLI Parsing</strong> — Parses command-line arguments and loads YAML config</li>
+<li><strong>Template Engine</strong> — Substitutes variables (<pre><code>${var}</code></pre>) with values</li>
+<li><strong>SSH Manager</strong> — Creates connection pool to all configured hosts</li>
+<li><strong>Task Runner</strong> — Executes tasks sequentially on each host</li>
+<li><strong>Output Handling</strong> — Logs results, handles retries, shows output</li>
+</ol>
+<div><h3>Execution Flow</h3><a href="#execution-flow"></a></div>
+<div><pre><code>For each task: For each host: 1. Parse template (substitute variables) 2. Connect via SSH (if not connected) 3. Change to work dir (if specified) 4. Source env file (if specified) 5. Execute command 6. Check exit code against expected 7. Print message/output on success 8. Retry or fail on error
+</code></pre></div>
+<div><h2>Security Notes</h2><a href="#security-notes"></a></div>
+<ul>
+<li>Store sensitive passwords in environment variables, never in config files</li>
+<li>Use SSH keys instead of passwords when possible</li>
+<li>The <pre><code>#env:VAR</code></pre> syntax allows referencing secrets without embedding them</li>
+<li>Config files can be added to <pre><code>.gitignore</code></pre> if they contain sensitive data</li>
+</ul>
+<div><h2>Config File Location</h2><a href="#config-file-location"></a></div>
+<p>nyatictl looks for config in this order:</p>
+<ol>
+<li><pre><code>--conf &lt;file&gt;</code></pre> CLI argument</li>
+<li><pre><code>nyati.yaml</code></pre> in current directory</li>
+<li><pre><code>nyati.yml</code></pre> in current directory</li>
+</ol>
+<div><h2>Full Example</h2><a href="#full-example"></a></div>
+<p>See <a href="/mikemasam/nyatictl/blob/master/nyati.yaml">nyati.yaml</a> for a complete reference configuration.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

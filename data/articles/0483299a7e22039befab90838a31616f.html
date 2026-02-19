@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - manaflow-ai/cmux: Ghostty-based macOS terminal with vertical tabs and notifications for AI coding agents</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - manaflow-ai/cmux: Ghostty-based macOS terminal with vertical tabs and notifications for AI coding agents</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 9:30:04 PM | <a href="https://github.com/manaflow-ai/cmux" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>cmux</h1><a href="#cmux"></a></div>
+<p>A Ghostty-based macOS terminal with vertical tabs and notifications for AI coding agents</p>
+<p> <a href="https://github.com/manaflow-ai/cmux/releases/latest/download/cmux-macos.dmg"> <img src="/manaflow-ai/cmux/raw/main/docs/assets/macos-badge.png" alt="Download cmux for macOS"> </a>
+</p>
+<p> English | <a href="/manaflow-ai/cmux/blob/main/README.zh-CN.md">简体中文</a> | <a href="/manaflow-ai/cmux/blob/main/README.zh-TW.md">繁體中文</a> | <a href="/manaflow-ai/cmux/blob/main/README.ko.md">한국어</a> | <a href="/manaflow-ai/cmux/blob/main/README.de.md">Deutsch</a> | <a href="/manaflow-ai/cmux/blob/main/README.es.md">Español</a> | <a href="/manaflow-ai/cmux/blob/main/README.fr.md">Français</a> | <a href="/manaflow-ai/cmux/blob/main/README.it.md">Italiano</a> | <a href="/manaflow-ai/cmux/blob/main/README.da.md">Dansk</a> | <a href="/manaflow-ai/cmux/blob/main/README.ja.md">日本語</a> | <a href="/manaflow-ai/cmux/blob/main/README.pl.md">Polski</a> | <a href="/manaflow-ai/cmux/blob/main/README.ru.md">Русский</a> | <a href="/manaflow-ai/cmux/blob/main/README.bs.md">Bosanski</a> | <a href="/manaflow-ai/cmux/blob/main/README.ar.md">العربية</a> | <a href="/manaflow-ai/cmux/blob/main/README.no.md">Norsk</a> | <a href="/manaflow-ai/cmux/blob/main/README.pt-BR.md">Português (Brasil)</a> | <a href="/manaflow-ai/cmux/blob/main/README.th.md">ไทย</a> | <a href="/manaflow-ai/cmux/blob/main/README.tr.md">Türkçe</a>
+</p>
+<p> <a target="_blank" href="/manaflow-ai/cmux/blob/main/docs/assets/main-first-image.png"><img src="/manaflow-ai/cmux/raw/main/docs/assets/main-first-image.png" alt="cmux screenshot"></a>
+</p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<table>
+<tbody><tr>
+<td>
+<div><h3>Notification rings</h3><a href="#notification-rings"></a></div>
+Panes get a blue ring and tabs light up when AI agents need your attention
+</td>
+<td>
+<a target="_blank" href="/manaflow-ai/cmux/blob/main/docs/assets/notification-rings.png"><img src="/manaflow-ai/cmux/raw/main/docs/assets/notification-rings.png" alt="Notification rings"></a>
+</td>
+</tr>
+<tr>
+<td>
+<div><h3>Notification panel</h3><a href="#notification-panel"></a></div>
+See all pending notifications in one place, jump to the most recent unread
+</td>
+<td>
+<a target="_blank" href="/manaflow-ai/cmux/blob/main/docs/assets/sidebar-notification-badge.png"><img src="/manaflow-ai/cmux/raw/main/docs/assets/sidebar-notification-badge.png" alt="Sidebar notification badge"></a>
+</td>
+</tr>
+<tr>
+<td>
+<div><h3>In-app browser</h3><a href="#in-app-browser"></a></div>
+Split a browser alongside your terminal with a scriptable API ported from <a href="https://github.com/vercel-labs/agent-browser">agent-browser</a>
+</td>
+<td>
+<a target="_blank" href="/manaflow-ai/cmux/blob/main/docs/assets/built-in-browser.png"><img src="/manaflow-ai/cmux/raw/main/docs/assets/built-in-browser.png" alt="Built-in browser"></a>
+</td>
+</tr>
+<tr>
+<td>
+<div><h3>Vertical + horizontal tabs</h3><a href="#vertical--horizontal-tabs"></a></div>
+Sidebar shows git branch, working directory, listening ports, and latest notification text. Split horizontally and vertically.
+</td>
+<td>
+<a target="_blank" href="/manaflow-ai/cmux/blob/main/docs/assets/vertical-horizontal-tabs-and-splits.png"><img src="/manaflow-ai/cmux/raw/main/docs/assets/vertical-horizontal-tabs-and-splits.png" alt="Vertical tabs and split panes"></a>
+</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Scriptable</strong> — CLI and socket API to create workspaces, split panes, send keystrokes, and automate the browser</li>
+<li><strong>Native macOS app</strong> — Built with Swift and AppKit, not Electron. Fast startup, low memory.</li>
+<li><strong>Ghostty compatible</strong> — Reads your existing <pre><code>~/.config/ghostty/config</code></pre> for themes, fonts, and colors</li>
+<li><strong>GPU-accelerated</strong> — Powered by libghostty for smooth rendering</li>
+</ul>
+<div><h2>Install</h2><a href="#install"></a></div> <a href="https://github.com/manaflow-ai/cmux/releases/latest/download/cmux-macos.dmg"> <img src="/manaflow-ai/cmux/raw/main/docs/assets/macos-badge.png" alt="Download cmux for macOS">
+</a>
+<p>Open the </p><pre><code>.dmg</code></pre> and drag cmux to your Applications folder. cmux auto-updates via Sparkle, so you only need to download once.<p></p>
+<div><h3>Homebrew</h3><a href="#homebrew"></a></div>
+<div><pre>brew tap manaflow-ai/cmux
+brew install --cask cmux</pre></div>
+<p>To update later:</p>
+<div><pre>brew upgrade --cask cmux</pre></div>
+<p>On first launch, macOS may ask you to confirm opening an app from an identified developer. Click <strong>Open</strong> to proceed.</p>
+<div><h2>Why cmux?</h2><a href="#why-cmux"></a></div>
+<p>I run a lot of Claude Code and Codex sessions in parallel. I was using Ghostty with a bunch of split panes, and relying on native macOS notifications to know when an agent needed me. But Claude Code's notification body is always just "Claude is waiting for your input" with no context, and with enough tabs open I couldn't even read the titles anymore.</p>
+<p>I tried a few coding orchestrators but most of them were Electron/Tauri apps and the performance bugged me. I also just prefer the terminal since GUI orchestrators lock you into their workflow. So I built cmux as a native macOS app in Swift/AppKit. It uses libghostty for terminal rendering and reads your existing Ghostty config for themes, fonts, and colors.</p>
+<p>The main additions are the sidebar and notification system. The sidebar has vertical tabs that show git branch, working directory, listening ports, and the latest notification text for each workspace. The notification system picks up terminal sequences (OSC 9/99/777) and has a CLI (</p><pre><code>cmux notify</code></pre>) you can wire into agent hooks for Claude Code, OpenCode, etc. When an agent is waiting, its pane gets a blue ring and the tab lights up in the sidebar, so I can tell which one needs me across splits and tabs. Cmd+Shift+U jumps to the most recent unread.<p></p>
+<p>The in-app browser has a scriptable API ported from <a href="https://github.com/vercel-labs/agent-browser">agent-browser</a>. Agents can snapshot the accessibility tree, get element refs, click, fill forms, and evaluate JS. You can split a browser pane next to your terminal and have Claude Code interact with your dev server directly.</p>
+<p>Everything is scriptable through the CLI and socket API — create workspaces/tabs, split panes, send keystrokes, open URLs in the browser.</p>
+<div><h2>Keyboard Shortcuts</h2><a href="#keyboard-shortcuts"></a></div>
+<div><h3>Workspaces</h3><a href="#workspaces"></a></div>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⌘ N</td>
+<td>New workspace</td>
+</tr>
+<tr>
+<td>⌘ 1–8</td>
+<td>Jump to workspace 1–8</td>
+</tr>
+<tr>
+<td>⌘ 9</td>
+<td>Jump to last workspace</td>
+</tr>
+<tr>
+<td>⌃ ⌘ ]</td>
+<td>Next workspace</td>
+</tr>
+<tr>
+<td>⌃ ⌘ [</td>
+<td>Previous workspace</td>
+</tr>
+<tr>
+<td>⌘ ⇧ W</td>
+<td>Close workspace</td>
+</tr>
+<tr>
+<td>⌘ B</td>
+<td>Toggle sidebar</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Surfaces</h3><a href="#surfaces"></a></div>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⌘ T</td>
+<td>New surface</td>
+</tr>
+<tr>
+<td>⌘ ⇧ ]</td>
+<td>Next surface</td>
+</tr>
+<tr>
+<td>⌘ ⇧ [</td>
+<td>Previous surface</td>
+</tr>
+<tr>
+<td>⌃ Tab</td>
+<td>Next surface</td>
+</tr>
+<tr>
+<td>⌃ ⇧ Tab</td>
+<td>Previous surface</td>
+</tr>
+<tr>
+<td>⌃ 1–8</td>
+<td>Jump to surface 1–8</td>
+</tr>
+<tr>
+<td>⌃ 9</td>
+<td>Jump to last surface</td>
+</tr>
+<tr>
+<td>⌘ W</td>
+<td>Close surface</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Split Panes</h3><a href="#split-panes"></a></div>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⌘ D</td>
+<td>Split right</td>
+</tr>
+<tr>
+<td>⌘ ⇧ D</td>
+<td>Split down</td>
+</tr>
+<tr>
+<td>⌥ ⌘ ← → ↑ ↓</td>
+<td>Focus pane directionally</td>
+</tr>
+<tr>
+<td>⌘ ⇧ H</td>
+<td>Flash focused panel</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Browser</h3><a href="#browser"></a></div>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⌘ ⇧ L</td>
+<td>Open browser in split</td>
+</tr>
+<tr>
+<td>⌘ L</td>
+<td>Focus address bar</td>
+</tr>
+<tr>
+<td>⌘ [</td>
+<td>Back</td>
+</tr>
+<tr>
+<td>⌘ ]</td>
+<td>Forward</td>
+</tr>
+<tr>
+<td>⌘ R</td>
+<td>Reload page</td>
+</tr>
+<tr>
+<td>⌥ ⌘ I</td>
+<td>Open Developer Tools</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Notifications</h3><a href="#notifications"></a></div>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⌘ I</td>
+<td>Show notifications panel</td>
+</tr>
+<tr>
+<td>⌘ ⇧ U</td>
+<td>Jump to latest unread</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Find</h3><a href="#find"></a></div>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⌘ F</td>
+<td>Find</td>
+</tr>
+<tr>
+<td>⌘ G / ⌘ ⇧ G</td>
+<td>Find next / previous</td>
+</tr>
+<tr>
+<td>⌘ ⇧ F</td>
+<td>Hide find bar</td>
+</tr>
+<tr>
+<td>⌘ E</td>
+<td>Use selection for find</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Terminal</h3><a href="#terminal"></a></div>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⌘ K</td>
+<td>Clear scrollback</td>
+</tr>
+<tr>
+<td>⌘ C</td>
+<td>Copy (with selection)</td>
+</tr>
+<tr>
+<td>⌘ V</td>
+<td>Paste</td>
+</tr>
+<tr>
+<td>⌘ + / ⌘ -</td>
+<td>Increase / decrease font size</td>
+</tr>
+<tr>
+<td>⌘ 0</td>
+<td>Reset font size</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Window</h3><a href="#window"></a></div>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⌘ ⇧ N</td>
+<td>New window</td>
+</tr>
+<tr>
+<td>⌘ ,</td>
+<td>Settings</td>
+</tr>
+<tr>
+<td>⌘ ⇧ ,</td>
+<td>Reload configuration</td>
+</tr>
+<tr>
+<td>⌘ Q</td>
+<td>Quit</td>
+</tr>
+</tbody>
+</table>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>This project is licensed under the GNU Affero General Public License v3.0 or later (</p><pre><code>AGPL-3.0-or-later</code></pre>).<p></p>
+<p>See </p><pre><code>LICENSE</code></pre> for the full text.<p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

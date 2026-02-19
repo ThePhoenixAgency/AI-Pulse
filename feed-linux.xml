@@ -5,7 +5,7 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Linux news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Feb 2026 18:48:35 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Feb 2026 22:30:45 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-linux.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title><![CDATA[Agenda du Libre pour la semaine 7 de l'année 2026]]></title>
@@ -482,15 +482,6 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
       <guid>https://lwn.net/Articles/1059176/</guid>
     </item>
     <item>
-      <title><![CDATA[Rétrogaming : RecalBox 10 s’ouvre aux Steam Deck et inaugure une nouvelle interface]]></title>
-      <link>https://next.ink/brief_article/retrogaming-recalbox-10-souvre-aux-steam-deck-et-inaugure-une-nouvelle-interface/</link>
-      <description><![CDATA[La distribution open source dédiée au rétrogaming RecalBox passe en version 10 avec, entre autres nouveautés, une compatibilité matérielle étendue aux dernières machines du moment. L’équipe annonce ainsi la prise en charge des derniers Raspberry Pi 5 (2 Go) et Raspberry Pi 500, des Steam Deck de Valve (LCD ou OLED), le support expérimental des Asus ROG Ally et Lenovo Legion Go, ainsi qu’une meilleure compatibilité globale avec les PC récents. La prise en charge s’étend aussi au niveau des composants et accessoires plus spécifiques au rétrogaming, avec support des boitiers Retroflag et Argon One v3, des spinners basés sur Arduino, et prise en charge expérimentale des pistolets GunCon 2 pour TV CRT. L’équipe garantit par ailleurs, logiquement, la prise en charge de ses propres accessoires comme le RGB Dual 2 qui avait recueilli 140 000 euros de précommandes sur Kickstarter fin 2025. RecalBox 10 inaugure de nouveaux thèmes graphiques Sur le volet logiciel, RecalBox 10 signe le début de l’émulation des consoles de sixième génération. Sur PC et Steam Deck, la Xbox originale est prise en charge, tandis que sur Pi 5 l’environnement donne accès aux jeux Nintendo DS, GameCube et Wii. Cette nouvelle version promet enfin une amélioration générale des performances et de l’interface avec, entre autres, un nouveau gestionnaire de thèmes et, surtout, un]]></description>
-      <pubDate>Tue, 17 Feb 2026 07:28:39 GMT</pubDate>
-      <source>Journal du Hacker</source>
-      <category>linux</category>
-      <guid>https://next.ink/brief_article/retrogaming-recalbox-10-souvre-aux-steam-deck-et-inaugure-une-nouvelle-interface/</guid>
-    </item>
-    <item>
       <title><![CDATA[Concours - Gagnez une Raspberry Pi 5 avec Macé Robotics]]></title>
       <link>https://linuxfr.org/news/concours-gagnez-une-raspberry-pi-5-avec-mace-robotics</link>
       <description><![CDATA[À l’occasion de ses 10 ans de Macé Robotics, l’entreprise organise un concours qui se déroulera jusqu'au 26 février 2026.
@@ -647,6 +638,20 @@ recently after a project rejected a bot-driven pull request.]]></description>
       <source>LWN.net</source>
       <category>linux</category>
       <guid>https://lwn.net/Articles/1058643/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Vim 9.2 est là : plus moderne et plus propre]]></title>
+      <link>https://goodtech.info/vim-9-2-release-support-wayland-standard-xdg/</link>
+      <description><![CDATA[34 ans après sa première version, Vim prouve qu’il reste un pilier incontournable de l’écosystème open source. Le projet a publié le vendredi 13 février 2026 la version 9.2 de son célèbre éditeur de texte. Il s’agit de la première mise à jour majeure depuis janvier 2024, marquant une étape importante dans la continuité du projet après le décès de son créateur Bram Moolenaar en 2023. Cette version n’est pas qu’une simple correction de bugs, car elle apporte des fonctionnalités de modernité réclamées de longue date par la communauté. Tour d’horizon !
+Un support natif de Wayland et des dossiers plus propres
+La grande nouveauté de cette version est l’arrivée du support expérimental de Wayland. Vous pouvez désormais profiter de l’intégration native du presse-papiers système sans avoir besoin de plugins tiers, car Vim communique directement avec les serveurs d’affichage modernes de Linux.
+Parallèlement, Vim 9.2 adopte enfin la spécification XDG Base Directory. Si vous en avez assez de voir votre dossier personnel encombré par les fichiers .vimrc et .vim, vous allez apprécier ce changement, car l’éditeur peut désormais stocker sa configuration dans $HOME/.config/vim. C’est un pas de géant vers des environnements Linux plus standardisés et ordonnés.
+Vim9 Script : vers une programmation moderne et assistée par l’IA
+Le langage de script interne, Vim9 Script, continue son év]]></description>
+      <pubDate>Tue, 17 Feb 2026 14:30:28 GMT</pubDate>
+      <source>Journal du Hacker</source>
+      <category>linux</category>
+      <guid>https://goodtech.info/vim-9-2-release-support-wayland-standard-xdg/</guid>
     </item>
     <item>
       <title><![CDATA[Rocket League is adding Easy Anti-Cheat, Psyonix say Linux will still be supported with Proton]]></title>
@@ -843,6 +848,15 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
       <source>LinuxFr</source>
       <category>linux</category>
       <guid>https://linuxfr.org/news/retablissement-de-l-auto-attestation-pour-les-logiciels-de-caisse-l-aboutissement-d-une-annee-de-mobilisation</guid>
+    </item>
+    <item>
+      <title><![CDATA[Ubuntu 26.04 LTS Moving To OpenJDK 25 By Default]]></title>
+      <link>https://www.phoronix.com/news/Ubuntu-26.04-OpenJDK-25</link>
+      <description><![CDATA[It's not too surprising but the upcoming Ubuntu 26.04 Long Term Support release will be transitioning to OpenJDK 25 as its default Java version...]]></description>
+      <pubDate>Thu, 19 Feb 2026 21:29:00 GMT</pubDate>
+      <source>Phoronix</source>
+      <category>linux</category>
+      <guid>https://www.phoronix.com/news/Ubuntu-26.04-OpenJDK-25</guid>
     </item>
     <item>
       <title><![CDATA[Opus Magnum from Zachtronics is getting a big new 'De Re Metallica' DLC]]></title>
@@ -1100,6 +1114,15 @@ progress report. We've made incredible progress upstreaming patches over the pas
       <guid>https://www.gamingonlinux.com/2026/02/nvidia-recommended-driver-580-126-18-released-for-linux/</guid>
     </item>
     <item>
+      <title><![CDATA[Guide : protéger son serveur personnel Linux avec Fail2ban]]></title>
+      <link>https://www.minimachines.net/actu/guide-fail2ban-serveur-minipc-139510</link>
+      <description><![CDATA[The Wayback Machine is an initiative of the Internet Archive, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include Open Library &amp; archive-it.org. Your use of the Wayback Machine is subject to the Internet Archive's Terms of Use.]]></description>
+      <pubDate>Wed, 18 Feb 2026 11:02:08 GMT</pubDate>
+      <source>Journal du Hacker</source>
+      <category>linux</category>
+      <guid>https://www.minimachines.net/actu/guide-fail2ban-serveur-minipc-139510</guid>
+    </item>
+    <item>
       <title><![CDATA[8 Years Later, Linux-based AsteroidOS 2.0 is Here to Add New Life to Your Old Smartwatch]]></title>
       <link>https://itsfoss.com/news/asteroidos-2-release/</link>
       <description><![CDATA[The AsteroidOS 2.0 release aims to provide a stable, beautiful base for people who want an open smartwatch today, and an interesting project for developers who want to experiment, learn and contribute.]]></description>
@@ -1179,15 +1202,6 @@ progress report. We've made incredible progress upstreaming patches over the pas
       <source>GamingOnLinux</source>
       <category>linux</category>
       <guid>https://www.gamingonlinux.com/2026/02/kde-plasma-6-6-released-with-improved-accessibility-new-on-screen-keyboard-and-lots-more/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Nova Lake S Support Added To Intel LPSS Driver In Linux 7.0]]></title>
-      <link>https://www.phoronix.com/news/Linux-7.0-MFD</link>
-      <description><![CDATA[The latest Nova Lake enablement work for the Linux kernel to land is adding support for Nova Lake S platforms to the Intel LPSS driver in the upcoming Linux 7.0 kernel...]]></description>
-      <pubDate>Tue, 17 Feb 2026 11:22:31 GMT</pubDate>
-      <source>Phoronix</source>
-      <category>linux</category>
-      <guid>https://www.phoronix.com/news/Linux-7.0-MFD</guid>
     </item>
     <item>
       <title><![CDATA[Valve confirm Steam Deck stock issues due to "memory and storage shortages"]]></title>
@@ -1328,6 +1342,15 @@ L’un des freins majeurs des solutions open source comme OSMand est souvent la 
       <source>GamingOnLinux</source>
       <category>linux</category>
       <guid>https://www.gamingonlinux.com/2026/02/the-clever-ascii-animated-stone-story-rpg-is-getting-a-full-standalone-sequel/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Vim passe en 9.2 avec Wayland, complétion améliorée et onglets verticaux]]></title>
+      <link>https://next.ink/brief_article/vim-passe-en-9-2-avec-wayland-completion-amelioree-et-onglets-verticaux/</link>
+      <description><![CDATA[Lentement, mais sûrement : l’équipe en charge du développement de Vim, éditeur de texte de référence de la scène GNU/Linux, a livré samedi la version 9.2 du logiciel, deux ans après la sortie de la 9.1, et quatre ans après la publication de la 9.0. Outre des améliorations « significatives » apportées à son langage de script et l’arrivée d’un nouveau plugin de tutorat, Vim 9.2 s’enrichit d’un nouveau mode de complétion automatique avec possibilité de compléter des mots depuis des registres et prise en charge de la correspondance approximative (« fuzzy matching »). Résumé des principales nouveautés de Vim 9.2 Le mode dédié à la comparaison de fichiers évolue quant à lui avec de nouvelles possibilités en matière de mise en évidence des différences à l’échelle de la ligne et de création de zones. L’interface s’enrichit d’un mode vertical pour l’affichage des onglets. Sous Windows, elle gagne une meilleure prise en charge du thème sombre et de l’affichage plein écran. Le logiciel introduit par ailleurs la prise en charge « complète » de Wayland. Comme Firefox 147, il est aussi compatible sous Linux avec la spécification XDG Base Directory (XDG pour « Cross-Desktop Group »). Vim 9.2 est dès à présent disponible au téléchargement depuis le site officiel, où l’on pourra également consulter le détail des notes de version, qui incluent également de]]></description>
+      <pubDate>Mon, 16 Feb 2026 07:29:07 GMT</pubDate>
+      <source>Journal du Hacker</source>
+      <category>linux</category>
+      <guid>https://next.ink/brief_article/vim-passe-en-9-2-avec-wayland-completion-amelioree-et-onglets-verticaux/</guid>
     </item>
     <item>
       <title><![CDATA[Ubuntu 26.04 splits firmware package to reduce update sizes]]></title>

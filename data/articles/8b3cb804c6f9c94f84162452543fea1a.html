@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>What Happens When an AI Agent Understands Its Own Guardrails?</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>What Happens When an AI Agent Understands Its Own Guardrails?</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 8:32:38 PM | <a href="https://dev.to/saezbaldo/what-happens-when-an-ai-agent-understands-its-own-guardrails-25al" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>In <a href="https://dev.to/saezbaldo/every-ai-agent-framework-trusts-the-agent-thats-the-problem-5gfa">Part 1 of this series</a>, I argued that every major AI agent framework trusts the agent. They validate outputs, filter responses, and scope tools. But none of them answer the real question: <em>who authorized this agent to act?</em></p> <p>Today I want to go deeper. Because the trust problem gets worse when you factor in something most frameworks ignore entirely:</p> <p><strong>The agent can read the guardrails.</strong></p> <h2> <a name="your-guardrails-are-not-secrets" href="#your-guardrails-are-not-secrets"> </a> Your guardrails are not secrets
+</h2> <p>Consider how most AI guardrails work today:</p> <ol>
+<li>A system prompt says "don't do X"</li>
+<li>An output filter checks for patterns matching X</li>
+<li>A tool allowlist restricts which functions the agent can call</li>
+</ol> <p>Now consider what a sufficiently capable agent knows:</p> <ul>
+<li>It can read (or infer) the system prompt</li>
+<li>It can test what patterns the output filter catches</li>
+<li>It can enumerate the available tools and their parameters</li>
+<li>It can <strong>reason</strong> about the gap between what's intended and what's enforced</li>
+</ul> <p>This isn't theoretical. Any model capable of multi-step planning is capable of modeling its own constraints. The question isn't <em>if</em> it will understand the guardrails. The question is <em>when</em>.</p> <h2> <a name="the-kerckhoffs-problem" href="#the-kerckhoffs-problem"> </a> The Kerckhoffs problem
+</h2> <p>In 1883, Auguste Kerckhoffs established a principle that every cryptographer takes as gospel: <strong>a system should be secure even if everything about it is known, except the key.</strong></p> <p>Applied to AI agents: your authorization system should be secure even if the agent has perfect knowledge of how it works.</p> <p>Let's test the major frameworks against this principle:</p> <div><table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Agent knows the rules?</th>
+<th>Still secure?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System prompt restrictions</td>
+<td>Yes (it receives the prompt)</td>
+<td>No. Can craft edge cases.</td>
+</tr>
+<tr>
+<td>Output filtering (Guardrails AI)</td>
+<td>Can probe by trial and error</td>
+<td>Partially. Oracle attacks degrade it.</td>
+</tr>
+<tr>
+<td>Tool allowlists</td>
+<td>Yes (it sees available tools)</td>
+<td>No. Can chain allowed tools into unintended outcomes.</td>
+</tr>
+<tr>
+<td>Rate limiting</td>
+<td>Can observe its own throughput</td>
+<td>No. Maximizes damage within the limit.</td>
+</tr>
+<tr>
+<td>K-of-N threshold authorization</td>
+<td>Yes (understands the protocol)</td>
+<td><strong>Yes. Knowing doesn't help.</strong></td>
+</tr>
+</tbody>
+</table></div> <p>The last row is the key insight. Threshold authorization is secure under Kerckhoffs' principle. The agent can understand exactly how Shamir Secret Sharing works, study the K-of-N protocol, and memorize the code. None of that knowledge helps it forge K independent approvals that it doesn't control.</p> <p>This is the difference between a <strong>logical</strong> constraint and a <strong>structural</strong> one.</p> <h2> <a name="logical-vs-structural-constraints" href="#logical-vs-structural-constraints"> </a> Logical vs structural constraints
+</h2> <p>A logical constraint says: "If the output matches pattern X, block it."</p> <p>A structural constraint says: "This action requires 3 independent cryptographic approvals. The agent controls 0 of them."</p> <p>The difference matters because intelligent adversaries can defeat logical constraints. They probe, find patterns, exploit edge cases. That's what intelligence <em>does</em>. But structural constraints hold regardless of the adversary's intelligence.</p> <p>More concretely:<br>
+</p> <div>
+<pre><code>Logical: if "transfer" in action and amount &gt; 10000: block()
+Structural: requires 3-of-5 threshold signatures from independent nodes
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The logical constraint can be bypassed by splitting into two $9,999 transfers, or by using a synonym, or by finding the one edge case the rule didn't anticipate. The structural constraint cannot be bypassed without compromising 3 independent nodes. Understanding the rule doesn't help.</p> <h2> <a name="defense-in-depth-what-icagi-actually-does" href="#defense-in-depth-what-icagi-actually-does"> </a> Defense in depth: what IC-AGI actually does
+</h2> <p>In <a href="https://github.com/saezbaldo/ic-agi" target="_blank">IC-AGI</a>, we layer four structural defenses. Each one is designed to be effective even when the agent has complete knowledge of the defense.</p> <p><strong>Layer 1: Threshold Authorization</strong></p> <p>Critical actions require K-of-N independent approvals. The threshold is enforced at initialization (<code>threshold &gt;= 2</code>, always). Even the agent that <em>wrote</em> the approval request cannot approve its own request.<br>
+</p> <div>
+<pre><code><span>if</span> <span>threshold</span> <span>&lt;</span> <span>2</span><span>:</span> <span>raise</span> <span>ValueError</span><span>(</span><span>"</span><span>Threshold must be &gt;= 2 (no unilateral authority)</span><span>"</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Understanding the protocol is irrelevant. The agent would need to compromise K independent approvers, each potentially in different organizations or jurisdictions. This is a <em>coordination</em> problem, not an <em>intelligence</em> problem.</p> <p><strong>Layer 2: Anti-Oracle Detection</strong></p> <p>What if the agent tries to learn the system's decision boundaries by probing?</p> <p>IC-AGI tracks query patterns per entity using a sliding window. Repeated or systematically varied queries raise a suspicion score. Above the threshold, the entity is blocked automatically.<br>
+</p> <div>
+<pre><code><span>@dataclass</span>
+<span>class</span> <span>AntiOracleConfig</span><span>:</span> <span>window_seconds</span><span>:</span> <span>float</span> <span>=</span> <span>120.0</span> <span>max_identical_queries</span><span>:</span> <span>int</span> <span>=</span> <span>5</span> <span>max_similar_queries</span><span>:</span> <span>int</span> <span>=</span> <span>15</span> <span>suspicion_threshold</span><span>:</span> <span>float</span> <span>=</span> <span>0.8</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The agent knows this detection exists? Fine. It can slow down its probing. But the budget tokens will run out before it gathers enough data, because...</p> <p><strong>Layer 3: Consumable Budget Tokens</strong></p> <p>Every capability token has a finite budget that decreases with each use. Not a rate limit (which the agent can optimize against). A hard cap.<br>
+</p> <div>
+<pre><code>Token: {scope: "crm.update", budget: 50, ttl: 3600s}
+After 50 uses: token is dead. Not rate-limited. Dead.
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The anti-oracle detector catches fast probing. The budget cap kills slow probing. Together, they make oracle attacks economically infeasible regardless of the agent's strategy.</p> <p><strong>Layer 4: Circuit Breaker Isolation</strong></p> <p>If a worker starts behaving anomalously (high error rate, unexpected patterns), the circuit breaker trips and isolates it completely.<br>
+</p> <div>
+<pre><code>CLOSED (healthy) -&gt; failure rate &gt; threshold -&gt; OPEN (blocked) | recovery timeout v
+CLOSED &lt;-- probe succeeds &lt;-- HALF_OPEN (one probe allowed)
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The agent can understand the circuit breaker perfectly. But understanding it doesn't help: the breaker responds to <em>behavior</em>, not to <em>intent</em>. If the agent behaves normally, the breaker stays closed and the agent is constrained by the other layers. If it behaves abnormally, the breaker trips and it's isolated.</p> <p>This creates what game theorists call a <strong>dominant strategy equilibrium</strong>: the agent's best move is to behave normally, regardless of what it knows about the system.</p> <p><strong>Layer 5: Sandboxed Execution</strong></p> <p>When the agent's code actually runs, it executes inside a sandbox that uses AST-level whitelisting. Before a single byte of code executes, every AST node is checked against a safe set. No imports. No <code>exec</code>. No <code>eval</code>. No filesystem. No network.<br>
+</p> <div>
+<pre><code><span>_FORBIDDEN_NAMES</span> <span>=</span> <span>frozenset</span><span>({</span> <span>"</span><span>import</span><span>"</span><span>,</span> <span>"</span><span>__import__</span><span>"</span><span>,</span> <span>"</span><span>exec</span><span>"</span><span>,</span> <span>"</span><span>eval</span><span>"</span><span>,</span> <span>"</span><span>compile</span><span>"</span><span>,</span> <span>"</span><span>open</span><span>"</span><span>,</span> <span>"</span><span>input</span><span>"</span><span>,</span> <span>"</span><span>os</span><span>"</span><span>,</span> <span>"</span><span>sys</span><span>"</span><span>,</span> <span>"</span><span>subprocess</span><span>"</span><span>,</span> <span>"</span><span>socket</span><span>"</span><span>,</span> <span>"</span><span>pathlib</span><span>"</span><span>,</span> <span>"</span><span>io</span><span>"</span><span>,</span> <span>"</span><span>ctypes</span><span>"</span><span>,</span> <span>"</span><span>signal</span><span>"</span><span>,</span> <span>...</span>
+<span>})</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This isn't a filter that can be bypassed with creative encoding. It's a whitelist. If it's not explicitly in the safe set, it doesn't run. Period.</p> <h2> <a name="the-composition-matters" href="#the-composition-matters"> </a> The composition matters
+</h2> <p>Blog #1 said it, but I want to repeat it because this is the core thesis:</p> <p><strong>Each layer alone is defeatable by a sufficiently capable agent. The composition is not.</strong></p> <p>An agent that understands threshold auth can try to probe the system. The anti-oracle detector catches probing. An agent that slows its probing to avoid detection runs out of budget tokens. An agent that tries to exploit a worker is caught by the circuit breaker. An agent that tries to run malicious code hits the AST whitelist.</p> <p>Every escape path from one layer leads into the enforcement zone of another. That's not a coincidence. That's the architecture.</p> <h2> <a name="why-this-matters-now" href="#why-this-matters-now"> </a> Why this matters now
+</h2> <p>GPT-4, Claude, Gemini. They can already reason about code and game theory. They can model constraints and find edge cases. The next generation of models will be better at this, not worse.</p> <p>If your agent control system depends on the agent <em>not understanding</em> how it works, you are on borrowed time. The gap between model capability and guardrail sophistication is closing every quarter.</p> <p>The question isn't whether to adopt structural authorization. It's whether you do it before or after the first major incident.</p> <h2> <a name="try-it" href="#try-it"> </a> Try it
+</h2> <p>IC-AGI is open source under Apache 2.0: <a href="https://github.com/saezbaldo/ic-agi" target="_blank">github.com/saezbaldo/ic-agi</a></p> <p>273 tests. 159 formal verifications. Zero safety violations. And designed from the ground up for adversaries that understand the system perfectly.</p> <p>If you have thoughts on where the composition breaks down, I want to hear them. Open an issue or leave a comment.</p> <p><em>Next in the series: **Consumable Budget Tokens: OAuth for AI Agents</em>**</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

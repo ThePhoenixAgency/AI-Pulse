@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I'm Porting Node.js 22 to a 20-Year-Old Power Mac G5. It's Going About as Well as You'd Expect.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I'm Porting Node.js 22 to a 20-Year-Old Power Mac G5. It's Going About as Well as You'd Expect.</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 9:25:56 PM | <a href="https://dev.to/scottcjn/im-porting-nodejs-22-to-a-20-year-old-power-mac-g5-its-going-about-as-well-as-youd-expect-529g" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="the-machine" href="#the-machine"> </a> The Machine
+</h2> <p>Somewhere in my lab in Louisiana, a Power Mac G5 Dual sits on a shelf. Dual 2.0 GHz PowerPC 970 processors, 8 GB of RAM, running Mac OS X Leopard 10.5. It was the fastest Mac you could buy in 2005. Apple called it "the world's fastest personal computer." Then they switched to Intel and never looked back.</p> <p>Twenty years later, I'm trying to build Node.js 22 on it.</p> <h2> <a name="why-would-anyone-do-this" href="#why-would-anyone-do-this"> </a> Why Would Anyone Do This?
+</h2> <p>Two reasons.</p> <p><strong>First</strong>: I run a blockchain called <a href="https://dev.to/scottcjn/proof-of-antiquity-a-blockchain-that-rewards-vintage-hardware-4ii3">RustChain</a> that uses Proof-of-Antiquity consensus. Vintage hardware earns higher mining rewards. The G5 gets a 2.0x antiquity multiplier on its RTC token earnings. But to run modern tooling on it -- specifically Claude Code, which requires Node.js -- I need a working Node runtime.</p> <p><strong>Second</strong>: Because it's there. The G5 is a beautiful piece of engineering. Dual 64-bit PowerPC cores, big-endian byte order, AltiVec SIMD. It represents a road not taken in computing history. If we want an <a href="https://dev.to/scottcjn/the-agent-internet-has-54000-users-heres-how-to-navigate-it-dj6">agent internet</a> that runs everywhere, "everywhere" should include hardware like this.</p> <p><strong>Third</strong> (okay, three reasons): I already run LLMs on a <a href="https://dev.to/scottcjn/i-run-llms-on-a-768gb-ibm-power8-server-and-its-faster-than-you-think-1o">768GB IBM POWER8 server</a>. Once you've gone down the PowerPC rabbit hole, a G5 Node.js build seems almost reasonable.</p> <h2> <a name="the-setup" href="#the-setup"> </a> The Setup
+</h2> <div><table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Machine</strong></td>
+<td>Power Mac G5 Dual</td>
+</tr>
+<tr>
+<td><strong>CPU</strong></td>
+<td>2x PowerPC 970 @ 2.0 GHz</td>
+</tr>
+<tr>
+<td><strong>RAM</strong></td>
+<td>8 GB</td>
+</tr>
+<tr>
+<td><strong>OS</strong></td>
+<td>Mac OS X Leopard 10.5 (Darwin 9.8.0)</td>
+</tr>
+<tr>
+<td><strong>Compiler</strong></td>
+<td>GCC 10.5.0 (cross-compiled, lives at <code>/usr/local/gcc-10/bin/gcc</code>)</td>
+</tr>
+<tr>
+<td><strong>Target</strong></td>
+<td>Node.js v22</td>
+</tr>
+<tr>
+<td><strong>Byte Order</strong></td>
+<td>Big Endian</td>
+</tr>
+</tbody>
+</table></div> <p>The system compiler on Leopard is GCC 4.0. Node.js 22 requires C++20. So step zero was getting GCC 10 built and installed, which is its own adventure I'll spare you.</p> <p>SSH requires legacy crypto flags because Leopard's OpenSSH is ancient:<br>
+</p> <div>
+<pre><code>ssh <span>-o</span> <span>HostKeyAlgorithms</span><span>=</span>+ssh-rsa <span>\</span> <span>-o</span> <span>PubkeyAcceptedAlgorithms</span><span>=</span>+ssh-rsa <span>\</span> selenamac@192.168.0.179
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="patch-1-c20-for-js2ccc" href="#patch-1-c20-for-js2ccc"> </a> Patch 1: C++20 for js2c.cc
+</h2> <p>Node's <code>js2c.cc</code> tool and the Ada URL parser use C++20 string methods like <code>starts_with()</code> and <code>ends_with()</code>. The configure script doesn't propagate <code>-std=gnu++20</code> to all compilation targets.</p> <p><strong>Fix</strong>: Patch all 85+ generated makefiles:<br>
+</p> <div>
+<pre><code><span># Python script to inject -std=gnu++20 into every makefile</span>
+import glob
+<span>for </span>mk <span>in </span>glob.glob<span>(</span><span>'out/**/*.mk'</span>, <span>recursive</span><span>=</span>True<span>)</span>: content <span>=</span> open<span>(</span>mk<span>)</span>.read<span>()</span> <span>if</span> <span>'CFLAGS_CC_Release'</span> <span>in </span>content and <span>'-std=gnu++20'</span> not <span>in </span>content: content <span>=</span> content.replace<span>(</span> <span>"CFLAGS_CC_Release ="</span>, <span>"CFLAGS_CC_Release = -std=gnu++20"</span> <span>)</span> open<span>(</span>mk, <span>'w'</span><span>)</span>.write<span>(</span>content<span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This is the first patch. There will be nine more.</p> <h2> <a name="patch-2-gcc-10s-c20-identity-crisis" href="#patch-2-gcc-10s-c20-identity-crisis"> </a> Patch 2: GCC 10's C++20 Identity Crisis
+</h2> <p>GCC 10 with <code>-std=gnu++20</code> reports <code>__cplusplus = 201709L</code> (C++17). But it actually provides C++20 library features like <code>&lt;bit&gt;</code> and <code>std::endian</code>. Node's <code>src/util.h</code> has fallback code guarded by <code>__cplusplus &lt; 202002L</code> that conflicts with GCC's actual C++20 library.<br>
+</p> <div>
+<pre><code><span>// src/util.h -- before fix</span>
+<span>#if __cplusplus &lt; 202002L || !defined(__cpp_lib_endian)
+</span><span>// Fallback endian implementation that clashes with &lt;bit&gt;</span>
+<span>#endif
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Fix</strong>: Use feature-test macros instead of <code>__cplusplus</code> version:<br>
+</p> <div>
+<pre><code><span>#include</span> <span>&lt;version&gt;</span><span>
+#include</span> <span>&lt;bit&gt;</span><span>
+</span>
+<span>#ifndef __cpp_lib_endian
+</span><span>// Only use fallback if the feature truly isn't available</span>
+<span>#endif
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="patch-3-char8t-cast" href="#patch-3-char8t-cast"> </a> Patch 3: char8_t Cast
+</h2> <p>A <code>reinterpret_cast&lt;const char*&gt;(out())</code> in util.h needs to be <code>const char8_t*</code> when C++20's <code>char8_t</code> is enabled. One-line fix. Moving on.</p> <h2> <a name="patch-4-ncryptocc-constexpr" href="#patch-4-ncryptocc-constexpr"> </a> Patch 4: ncrypto.cc constexpr
+</h2> <div>
+<pre><code><span>// deps/ncrypto/ncrypto.cc line 1692</span>
+<span>// GCC 10 is stricter about uninitialized variables in constexpr-adjacent contexts</span>
+<span>size_t</span> <span>offset</span> <span>=</span> <span>0</span><span>,</span> <span>len</span> <span>=</span> <span>0</span><span>;</span> <span>// was: size_t offset, len;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="patch-5-libatomic-for-openssl" href="#patch-5-libatomic-for-openssl"> </a> Patch 5: libatomic for OpenSSL
+</h2> <p>OpenSSL uses 64-bit atomic operations that aren't available in the G5's default runtime libraries. The linker throws a wall of <code>undefined reference to __atomic_*</code> errors.</p> <p><strong>Fix</strong>: Add <code>-L/usr/local/gcc-10/lib -latomic</code> to the OpenSSL and node target makefiles:<br>
+</p> <div>
+<pre><code><span># out/deps/openssl/openssl.target.mk
+</span><span>LIBS</span> <span>:=</span> ... <span>-L</span>/usr/local/gcc-10/lib <span>-latomic</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Four makefiles need this: <code>openssl-cli</code>, <code>openssl-fipsmodule</code>, <code>openssl</code>, and <code>node</code>.</p> <h2> <a name="patch-6-openssl-big-endian" href="#patch-6-openssl-big-endian"> </a> Patch 6: OpenSSL Big Endian
+</h2> <p>OpenSSL needs to know it's running big-endian. Created gypi configuration files with <code>B_ENDIAN</code> defined. Standard stuff for any BE port.</p> <h2> <a name="patch-7-v8-thinks-ppc-32bit" href="#patch-7-v8-thinks-ppc-32bit"> </a> Patch 7: V8 Thinks PPC = 32-bit
+</h2> <p>This is where things get interesting.</p> <p>V8 has architecture defines: <code>V8_TARGET_ARCH_PPC</code> for 32-bit PowerPC and <code>V8_TARGET_ARCH_PPC64</code> for 64-bit. Node's configure script detects the G5 as <code>ppc</code> (not <code>ppc64</code>), so it sets <code>V8_TARGET_ARCH_PPC</code>.</p> <p>But V8's <code>compiler/c-linkage.cc</code> only defines <code>CALLEE_SAVE_REGISTERS</code> for PPC64:<br>
+</p> <div>
+<pre><code><span>#elif V8_TARGET_ARCH_PPC64
+</span><span>constexpr</span> <span>RegList</span> <span>kCalleeSaveRegisters</span> <span>=</span> <span>{</span> <span>r14</span><span>,</span> <span>r15</span><span>,</span> <span>r16</span><span>,</span> <span>r17</span><span>,</span> <span>r18</span><span>,</span> <span>r19</span><span>,</span> <span>r20</span><span>,</span> <span>r21</span><span>,</span> <span>...</span>
+<span>};</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>No PPC case exists. Compilation fails.</p> <p><strong>Fix</strong>: Two changes. First, replace <code>V8_TARGET_ARCH_PPC</code> with <code>V8_TARGET_ARCH_PPC64</code> in all makefiles:<br>
+</p> <div>
+<pre><code>find out <span>-name</span> <span>'*.mk'</span> <span>-exec</span> <span>sed</span> <span>-i</span> <span>''</span> <span>\</span> <span>'s/-DV8_TARGET_ARCH_PPC -DV8_TARGET_ARCH_PPC64/-DV8_TARGET_ARCH_PPC64/g'</span> <span>{}</span> <span>\;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Second, patch V8 source to accept either:<br>
+</p> <div>
+<pre><code><span>// deps/v8/src/compiler/c-linkage.cc line 88</span>
+<span>#elif V8_TARGET_ARCH_PPC64 || V8_TARGET_ARCH_PPC
+</span>
+<span>// deps/v8/src/compiler/pipeline.cc (4 locations)</span>
+<span>defined</span><span>(</span><span>V8_TARGET_ARCH_PPC64</span><span>)</span> <span>||</span> <span>defined</span><span>(</span><span>V8_TARGET_ARCH_PPC</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="patch-8-the-64bit-revelation" href="#patch-8-the-64bit-revelation"> </a> Patch 8: The 64-bit Revelation
+</h2> <p>After all those fixes, V8 hits a static assertion in <code>globals.h</code>:<br>
+</p> <div>
+<pre><code><span>static_assert</span><span>((</span><span>kTaggedSize</span> <span>==</span> <span>8</span><span>)</span> <span>==</span> <span>TAGGED_SIZE_8_BYTES</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><code>kTaggedSize</code> is 8 (because we told V8 it's PPC64), but <code>sizeof(void*)</code> is 4 because <strong>GCC is compiling in 32-bit mode by default</strong>. The G5 is a 64-bit CPU, but Darwin's default ABI is 32-bit.</p> <p><strong>Fix</strong>: Force 64-bit compilation everywhere:<br>
+</p> <div>
+<pre><code><span>CC</span><span>=</span><span>'/usr/local/gcc-10/bin/gcc -m64'</span> <span>\</span>
+<span>CXX</span><span>=</span><span>'/usr/local/gcc-10/bin/g++ -m64'</span> <span>\</span>
+<span>CFLAGS</span><span>=</span><span>'-m64'</span> <span>CXXFLAGS</span><span>=</span><span>'-m64'</span> <span>LDFLAGS</span><span>=</span><span>'-m64'</span> <span>\</span>
+./configure <span>--dest-cpu</span><span>=</span>ppc64 <span>--openssl-no-asm</span> <span>\</span> <span>--without-intl</span> <span>--without-inspector</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This means a full rebuild. Every object file from the 32-bit build is now wrong.</p> <p>The configure script also injects <code>-arch i386</code> into makefiles (a bizarre default for a PPC machine), so those need to be patched out too:<br>
+</p> <div>
+<pre><code>find out <span>-name</span> <span>'*.mk'</span> <span>-exec</span> <span>sed</span> <span>-i</span> <span>''</span> <span>'s/-arch/-m64 #-arch/g'</span> <span>{}</span> <span>\;</span>
+find out <span>-name</span> <span>'*.mk'</span> <span>-exec</span> <span>sed</span> <span>-i</span> <span>''</span> <span>'s/^ i386/ #i386/g'</span> <span>{}</span> <span>\;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="patch-9-two-libstdc-libraries-one-problem" href="#patch-9-two-libstdc-libraries-one-problem"> </a> Patch 9: Two libstdc++ Libraries, One Problem
+</h2> <p>Here's the cruel twist: <strong>GCC 10.5.0 on this Mac was compiled as a 32-bit compiler</strong>. Its <code>libstdc++.a</code> is 32-bit only. We're now compiling 64-bit code that needs to link against a 64-bit C++ standard library.</p> <p>But wait -- the <em>system</em> libstdc++ (<code>/usr/lib/libstdc++.6.dylib</code>) is a universal binary that includes ppc64:<br>
+</p> <div>
+<pre><code><span>$ </span>file /usr/lib/libstdc++.6.dylib
+/usr/lib/libstdc++.6.dylib: Mach-O universal binary with 4 architectures
+<span># Includes: ppc, ppc64, i386, x86_64</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Fix</strong>: Point the linker at the system library instead of GCC's:<br>
+</p> <div>
+<pre><code><span># Changed from:
+</span><span>LIBS</span> <span>:=</span> <span>-L</span>/usr/local/gcc-10/lib <span>-lstdc</span>++ <span>-lm</span>
+<span># To:
+</span><span>LIBS</span> <span>:=</span> <span>-L</span>/usr/lib <span>-lstdc</span>++.6 <span>-lm</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="patch-10-the-missing-symbol" href="#patch-10-the-missing-symbol"> </a> Patch 10: The Missing Symbol
+</h2> <p>The system libstdc++ is from 2007. It doesn't have <code>__ZSt25__throw_bad_function_callv</code> -- a C++11 symbol that <code>std::function</code> needs when you call an empty function object.</p> <p><strong>Fix</strong>: Write a compatibility shim:<br>
+</p> <div>
+<pre><code><span>// stdc++_compat.cpp</span>
+<span>#include</span> <span>&lt;cstdlib&gt;</span><span>
+</span><span>namespace</span> <span>std</span> <span>{</span> <span>void</span> <span>__throw_bad_function_call</span><span>()</span> <span>{</span> <span>abort</span><span>();</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Compile it 64-bit and add to the link inputs:<br>
+</p> <div>
+<pre><code>/usr/local/gcc-10/bin/g++ <span>-m64</span> <span>-std</span><span>=</span>gnu++20 <span>-c</span> stdc++_compat.cpp <span>\</span> <span>-o</span> out/Release/obj.target/stdc++_compat.o
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="current-status-blocked" href="#current-status-blocked"> </a> Current Status: Blocked
+</h2> <p>After all ten patches, the build compiles about 40 object files before the G5 went offline. It needs a physical reboot -- the machine is 20 years old and occasionally decides it's done for the day.</p> <p>The next blocker will probably be something in V8's code generator. PPC64 big-endian is a rare enough target that there are likely byte-order assumptions baked into the JIT compiler. I expect at least three more patches before we see a working <code>node</code> binary.</p> <p><strong>What I've learned so far:</strong></p> <ol>
+<li><p><strong>V8 has no concept of 64-bit PPC without PPC64 defines.</strong> The G5 lives in a gap: it's a 64-bit processor that Apple's toolchain treats as 32-bit by default.</p></li>
+<li><p><strong>Modern compilers on vintage systems create bizarre hybrid environments.</strong> GCC 10 provides C++20 features but lies about <code>__cplusplus</code>. It compiles 64-bit code but ships 32-bit libraries. Feature-test macros are the only reliable truth.</p></li>
+<li><p><strong>Every fix creates the next problem.</strong> Enabling PPC64 requires 64-bit mode. 64-bit mode requires different libraries. Different libraries are missing symbols. It's fixes all the way down.</p></li>
+<li><p><strong>The PowerPC architecture deserved better.</strong> These are elegant machines with real 64-bit SIMD, hardware-level big-endian support, and a clean ISA. The industry consolidated around x86 and ARM for market reasons, not engineering ones.</p></li>
+</ol> <h2> <a name="whats-next" href="#whats-next"> </a> What's Next
+</h2> <p>Once the G5 comes back online:</p> <ul>
+<li>Add <code>stdc++_compat.o</code> to the linker inputs for <code>node_js2c</code> target</li>
+<li>Verify <code>-m64</code> propagated to all compilation and link flags</li>
+<li>Brace for V8 JIT compiler byte-order issues</li>
+<li>If it builds: <code>node --version</code> on a Power Mac G5</li>
+</ul> <p>The goal remains: run Claude Code on vintage PowerPC hardware, earning RustChain antiquity rewards while doing actual development work. An AI agent running on a machine old enough to vote.</p> <p>I'll update this article when the G5 boots back up.</p> <hr> <h2> <a name="the-series-building-the-agent-internet" href="#the-series-building-the-agent-internet"> </a> The Series: Building the Agent Internet
+</h2> <p>This is part of my ongoing series about building infrastructure for AI agents on unconventional hardware:</p> <ul>
+<li><a href="https://dev.to/scottcjn/i-built-a-video-platform-where-ai-agents-are-the-creators-59mb">I Built a Video Platform Where AI Agents Are the Creators</a></li>
+<li><a href="https://dev.to/scottcjn/the-agent-internet-has-54000-users-heres-how-to-navigate-it-dj6">The Agent Internet Has 54,000+ Users</a></li>
+<li><a href="https://dev.to/scottcjn/proof-of-antiquity-a-blockchain-that-rewards-vintage-hardware-4ii3">Proof of Antiquity: A Blockchain That Rewards Vintage Hardware</a></li>
+<li><a href="https://dev.to/scottcjn/your-ai-agent-cant-talk-to-other-agents-beacon-fixes-that-4ib7">Your AI Agent Can't Talk to Other Agents. Beacon Fixes That.</a></li>
+<li><a href="https://dev.to/scottcjn/i-run-llms-on-a-768gb-ibm-power8-server-and-its-faster-than-you-think-1o">I Run LLMs on a 768GB IBM POWER8 Server</a></li>
+</ul> <hr> <p><a href="https://bottube.ai/" target="_blank"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fbottube.ai%2Fbadge%2Fvideos.svg" alt="BoTTube Videos"></a></p> <p><em>Built by Elyan Labs in Louisiana.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

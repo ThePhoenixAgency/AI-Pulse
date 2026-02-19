@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - avremel/whatsapp-groupchats-extension: Chrome extension to auto-scroll WhatsApp Web group chats with speed control, VIP highlighting, and user blurring</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - avremel/whatsapp-groupchats-extension: Chrome extension to auto-scroll WhatsApp Web group chats with speed control, VIP highlighting, and user blurring</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 9:09:41 PM | <a href="https://github.com/avremel/whatsapp-groupchats-extension" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>WhatsApp Group Chat Scroller</h1><a href="#whatsapp-group-chat-scroller"></a></div>
+<p>Tired of scrolling through endless WhatsApp group chats trying to find the messages that actually matter? This Chrome extension does it for you.</p>
+<p>Hit play, sit back, and let it auto-scroll through the conversation. Messages from people you care about get highlighted and the scroll slows down so you can read them. Messages from people you don't? Blurred out entirely.</p>
+<p><a target="_blank" href="/avremel/whatsapp-groupchats-extension/blob/main/screenshots/overview.png"><img src="/avremel/whatsapp-groupchats-extension/raw/main/screenshots/overview.png" alt="Overview"></a></p>
+<div><h2>The Problem</h2><a href="#the-problem"></a></div>
+<p>WhatsApp group chats are noisy. Hundreds of messages pile up while you're away, and buried somewhere in there are the 3-4 messages you actually need to see. Manually scrolling through all of it is tedious. You either waste 10 minutes catching up or you give up and miss something important.</p>
+<div><h2>The Solution</h2><a href="#the-solution"></a></div>
+<ul>
+<li><strong>Auto-scroll</strong> through the entire chat hands-free with adjustable speed (1x-10x)</li>
+<li><strong>Mark important people</strong> and their messages get highlighted with a green border and IMPORTANT badge - the scroll automatically slows down so you can read them</li>
+<li><strong>Hide noisy users</strong> and their messages get blurred out completely - skip the noise without leaving the group</li>
+</ul>
+<p><a target="_blank" href="/avremel/whatsapp-groupchats-extension/blob/main/screenshots/panel.png"><img src="/avremel/whatsapp-groupchats-extension/raw/main/screenshots/panel.png" alt="Control Panel"></a></p>
+<div><h2>Install</h2><a href="#install"></a></div>
+<ol>
+<li>Download or clone this repo</li>
+<li>Open <pre><code>chrome://extensions</code></pre> in Chrome</li>
+<li>Enable <strong>Developer mode</strong> (top-right toggle)</li>
+<li>Click <strong>Load unpacked</strong> and select this folder</li>
+<li>Open <a href="https://web.whatsapp.com">web.whatsapp.com</a> and enter a group chat</li>
+</ol>
+<div><h2>Features</h2><a href="#features"></a></div>
+<div><h3>Auto-Scroll</h3><a href="#auto-scroll"></a></div>
+<ul>
+<li>Hit the <strong>play button</strong> to start auto-scrolling down through the chat</li>
+<li><strong>Speed slider</strong> controls how fast it scrolls (1x-10x)</li>
+<li><strong>Important slider</strong> controls the scroll speed when passing important people's messages (0.1x-5x) - the transition is smooth, not abrupt</li>
+<li>Scrolling auto-pauses when it reaches the end of the chat</li>
+</ul>
+<div><h3>Important People</h3><a href="#important-people"></a></div>
+<ul>
+<li>Use the search box to find and add participants</li>
+<li>Type a partial name and press Enter to add it (useful for names not yet visible in the chat)</li>
+<li>Messages from important people get a green left border, subtle green background, and an <strong>IMPORTANT</strong> badge next to their name</li>
+<li>Scroll automatically slows down when important messages are in view</li>
+<li>Highlights are visible even when not auto-scrolling</li>
+</ul>
+<div><h3>Hidden Users</h3><a href="#hidden-users"></a></div>
+<ul>
+<li>Add people whose messages you want to blur out</li>
+<li>Hidden messages show a sticky <strong>HIDDEN</strong> badge with a <strong>Click to show</strong> button</li>
+<li>Click to temporarily reveal a hidden message</li>
+<li>Partial name matching works here too</li>
+</ul>
+<div><h3>Other</h3><a href="#other"></a></div>
+<ul>
+<li><strong>Draggable panel</strong> - grab the header to move it anywhere</li>
+<li><strong>Minimize</strong> - collapse to a small "Scroller" pill, click to expand</li>
+<li><strong>Persistent settings</strong> - everything is saved across page reloads</li>
+<li><strong>Global settings</strong> - your lists apply across every chat</li>
+<li><strong>Mixed-script name support</strong> - Hebrew, Arabic, or other scripts mixed with Latin characters are fully searchable</li>
+</ul>
+<div><h2>Permissions</h2><a href="#permissions"></a></div>
+<ul>
+<li><strong>storage</strong> - saves your settings locally in Chrome</li>
+<li>Runs only on <pre><code>web.whatsapp.com</code></pre></li>
+</ul>
+<div><h2>Development</h2><a href="#development"></a></div>
+<p>No build tools needed. Edit the files directly and reload the extension from </p><pre><code>chrome://extensions</code></pre>.<p></p>
+<div><pre><code>whatsapp-groupchats-extension/ manifest.json # Extension config (Manifest V3) content.js # Core logic: scroll, detect, blur, highlights, panel content.css # Panel styles, blur, highlight effects panel.html # Control panel markup background.js # Minimal service worker icons/ # Extension icons
+</code></pre></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

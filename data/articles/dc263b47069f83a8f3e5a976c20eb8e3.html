@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pipiri - Picture-in-Picture for any macOS window</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Pipiri - Picture-in-Picture for any macOS window</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 9:25:14 PM | <a href="https://lowtechguys.com/pipiri/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><header><a href="https://lowtechguys.com/"> </a></header><section><img src="https://lowtechguys.com/static/img/pipiri-icon.png"><h5>Picture-in-Picture for any macOS window</h5><h5>Keep an eye on progress</h5><p><a href="https://files.lowtechguys.com/releases/Pipiri.dmg"><span>Download</span></a><a href="https://pipiri.subsol.one/" target="_blank"><span>Buy license</span></a></p><p>compatible with macOS <b>14.0+</b> (Sonoma and later)</p></section><div> <img alt="The Pipiri app interface showing a PiP window">
+disablePictureInPicture muted loop playsinline preload="none"</div><h5>Press <code>fn</code> + <code>P</code> to turn any window into Picture-in-Picture</h5><div><div><h2>PiP any window</h2><p>Press <code>fn</code> + <code>P</code> to turn the focused window into a floating panel that stays on top across all Spaces.</p><p>Double-click a PiP window to focus the original window..</p><h4>Region capture</h4><p>Press <code>fn</code> + <code>Shift</code> + <code>P</code> to open a selection overlay on the focused window. Drag to capture a <b>specific region</b> instead of the full window.</p></div><div><h2>Flexible zoom</h2><p>Hold <code>Cmd</code> and drag on the PiP window to <b>zoom into a region</b>. Use <code>=</code> / <code>-</code> to zoom in and out while hovering the PiP window.</p><p><code>Cmd</code> + <b>Double-click</b> resets zoom back to the full view.</p><h4>Adaptive resizing</h4><p>Freely resizable with aspect ratio locked. The stream restarts at the new resolution after resizing to keep things sharp. Preferred width is persisted.</p></div></div><div><div><h2>Per-app frame rate</h2><p>Set the frame rate per application to prioritize <b>efficiency</b> or <b>responsiveness</b>.</p><p>For example <b>1 fps</b> is enough for watching a terminal and helps lower CPU usage to almost 0%. For a video, <b>30 or 60 fps</b> might be needed.</p><p>The setting is saved per app and restored automatically. Change it by pressing the <code>F</code> key while hovering or through the overlay menu.</p></div><div><h2>Click-through mode</h2><p>When <b>Auto-hide</b> is enabled, the PiP window <b>fades out</b> when the cursor moves over it so you can interact with content behind it. The stream pauses while hidden.</p><h4>Quick show &amp; hide</h4><p>Tap <code>fn</code> while hovering to hide the PiP window completely. Tap again to show it. Hidden PiP windows auto-close after 60 seconds. <code>Backspace</code> closes immediately.</p></div></div><div><div><h2>Configurable hotkeys</h2><p>The trigger hotkey is by default set to <code>fn - p</code> and fully configurable in Settings.</p><p>Region capture simply requires adding <code>Shift</code> to the configured hotkey (e.g. <code>fn - shift - p</code>).</p></div><div><h2>How it works</h2><p>Pipiri uses Apple's <a href="https://developer.apple.com/documentation/screencapturekit">ScreenCaptureKit</a> to capture individual windows directly, without recording the entire screen.</p><p>This is the same framework macOS uses for its own screen sharing and keeps <b>CPU and memory usage low</b>, especially at lower frame rates.</p></div></div><div><h2>Use cases</h2> <ul>
+<li><strong>Watching a long-running terminal command</strong> while working in another app</li>
+<li><strong>Keeping logs visible</strong> while debugging software</li>
+<li><strong>Keeping an eye on AI agent progress</strong> (Claude Code, Cursor, Copilot, etc.) while browsing</li>
+<li><strong>Streaming a video</strong> that doesn't support native PiP (Twitter/X, Reddit, Twitch, etc.)</li>
+<li><strong>Monitoring a dashboard or CI pipeline</strong> without switching windows</li>
+<li><strong>Watching a community chat</strong> (Discord, Twitch) while coding or reading</li>
+</ul> <hr> <h2>Pricing</h2> <p>Pipiri starts with a <strong>14-day free trial</strong> automatically, no payment details needed.</p> <p>After the trial, the app continues to work in <strong>Free mode</strong> where PiP windows get paused after 30 minutes of streaming.</p> <p>A license costs <strong>€8</strong>, one-time purchase, for life. It can be activated on up to <strong>5 personal Mac devices</strong>.</p> <p><em>Activating a 6th Mac automatically deactivates the oldest one, so the license can be used indefinitely as you change machines.</em></p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
