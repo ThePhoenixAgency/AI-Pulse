@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub Desktop 3.5.5 adds Git hooks support</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub Desktop 3.5.5 adds Git hooks support</h1>
+  <div class="metadata">
+    Source: GitHub Changelog | Date: 2/18/2026 7:32:27 PM | <a href="https://github.blog/changelog/2026-02-18-github-desktop-3-5-5-adds-git-hooks-support" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>GitHub Desktop now supports Git hooks, solving compatibility issues with version managers and environment-dependent scripts.</p>
+<h3><a href="#the-problem">The problem</a></h3>
+<p>Historically, Git hooks have been problematic in GitHub Desktop. Because Desktop ships with its own embedded Git installation (especially on Windows), your hooks often failed when they relied on your shell environment, version managers like nvm, or tools not present in Desktop’s stripped-down Git. Additionally, you couldn’t distinguish between a hook rejection and other Git failures, and terminal escape codes in hook output rendered as garbled text.</p>
+<p>These issues have affected users for years, making hooks one of the most requested features for Desktop.</p>
+<h3><a href="#whats-new">What’s new</a></h3>
+<p>Your hooks now have access to all the environment variables available in your shell, picking them up from configuration files like </p><pre><code>.bash_profile</code></pre> or <pre><code>.zshrc</code></pre>.<p></p>
+<p>You can enable hooks support in <strong>Settings/Options</strong> &gt; <strong>Git</strong> &gt; <strong>Hooks</strong>:</p>
+<p><img src="https://github.com/user-attachments/assets/ff4e7e50-7cb2-4013-ae6c-56a7164e97c6" alt="Screenshot of GitHub Desktop preferences showing the hooks support toggle"></p>
+<p>When hooks run, you’ll see real-time output with proper terminal colors and formatting, making it easy to understand what’s happening:</p> <p>You can also preemptively skip commit hooks by clicking the gear icon in the commit message box, or bypass a failed hook after the fact without aborting your commit:</p>
+<p><img src="https://github.com/user-attachments/assets/071b63c4-2ea9-421a-9f15-d928f18d0f83" alt="Screenshot showing the option to bypass commit hooks in the GitHub Desktop commit interface"></p>
+<h3><a href="#other-improvements-in-3-5-5">Other improvements in 3.5.5</a></h3>
+<p>This release also includes:</p>
+<ul>
+<li>Warp terminal support for Windows (thanks @Cocodrulo!)</li>
+<li>Open a repository in a different editor without changing your default preference (thanks @jackfreem!)</li>
+<li>Right-click on any branch to quickly view it on GitHub (thanks @DylanDevelops!)</li>
+<li>Fixed crashes when Git output contains emoji or multibyte characters</li>
+<li>Fixed repository state issues when switching between branches with submodules</li>
+<li>Copilot-authored commits now display the Copilot avatar</li>
+</ul>
+<h3><a href="#getting-started">Getting started</a></h3>
+<p>Automatic updates will roll out progressively, or you can download the release from <a href="https://github.com/desktop/desktop/releases/tag/release-3.5.5">GitHub Desktop v3.5.5</a>. Have feedback or run into issues? <a href="https://github.com/desktop/desktop/issues/new/choose">Open an issue</a> in the open source GitHub Desktop repository.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - arindamdawn/schema-sentry: Stop wrestling with JSON-LD. Auto-generate structured data that gets your content discovered by Google Search, ChatGPT, and Claude</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - arindamdawn/schema-sentry: Stop wrestling with JSON-LD. Auto-generate structured data that gets your content discovered by Google Search, ChatGPT, and Claude</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 11:05:19 AM | <a href="https://github.com/arindamdawn/schema-sentry" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div> <a target="_blank" href="/arindamdawn/schema-sentry/blob/main/docs/assets/schema-sentry-banner.png"><img src="/arindamdawn/schema-sentry/raw/main/docs/assets/schema-sentry-banner.png" alt="Schema Sentry Banner"></a>
+<div><h1>Schema Sentry </h1><a href="#schema-sentry-"></a></div>
+<p><strong>Adding JSON-LD manually is exhausting. Schema Sentry makes it effortless—ensuring your content gets discovered by search engines AND AI assistants like ChatGPT, Claude, and Perplexity.</strong></p>
+<p><a href="#-install">Getting Started</a> • <a href="/arindamdawn/schema-sentry/blob/main/docs">Documentation</a> • <a href="/arindamdawn/schema-sentry/blob/main/examples">Examples</a></p>
+</div>
+<p>Schema Sentry provides a type-safe SDK and CLI for generating, validating, and auditing JSON-LD structured data with deterministic output. Designed for predictable diffs, CI-grade enforcement, and maximum discoverability across both traditional search engines (Google, Bing) and AI-powered systems (ChatGPT, Claude, Perplexity).</p>
+<p><strong>Current release:</strong> </p><pre><code>v0.9.2</code></pre><p></p>
+<div><h2> 5-Minute Quick Start</h2><a href="#-5-minute-quick-start"></a></div>
+<div><pre><span><span>#</span> 1. Install</span>
+pnpm add @schemasentry/next @schemasentry/core
+pnpm add -D @schemasentry/cli <span><span>#</span> 2. Initialize</span>
+pnpm schemasentry init <span><span>#</span> 3. Add to your page</span>
+<span><span>#</span> Copy-paste the code from: pnpm schemasentry scaffold</span> <span><span>#</span> 4. Build &amp; Validate</span>
+next build
+pnpm schemasentry validate</pre></div>
+<div><h2> Before vs After</h2><a href="#-before-vs-after"></a></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Before Schema Sentry</strong></th>
+<th><strong>After Schema Sentry</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Writing JSON-LD</strong></td>
+<td> Manual, error-prone, tedious</td>
+<td> Type-safe builders with autocomplete</td>
+</tr>
+<tr>
+<td><strong>Keeping in sync</strong></td>
+<td> Schema breaks when content changes</td>
+<td> Auto-validated in CI on every PR</td>
+</tr>
+<tr>
+<td><strong>SEO results</strong></td>
+<td> Missing rich snippets</td>
+<td> Eligible for rich results</td>
+</tr>
+<tr>
+<td><strong>AI discovery</strong></td>
+<td> AI can't cite your content</td>
+<td> ChatGPT, Claude can recommend you</td>
+</tr>
+</tbody>
+</table>
+<div><h2> Features</h2><a href="#-features"></a></div>
+<ul> <li> <strong>Deterministic JSON-LD output</strong> for clean, reviewable version control diffs</li>
+<li> <strong>App Router <pre><code>&lt;Schema /&gt;</code></pre> component</strong> for seamless Next.js integration</li>
+<li> <strong>Manifest-driven schema coverage</strong> ensures every route has proper structured data</li>
+<li> <strong>CLI validation</strong> with clear, actionable errors for CI/CD pipelines</li>
+<li> <strong>Schema audit</strong> — Analyze site health, detect missing/incomplete schema</li>
+<li> <strong>Automated data collection</strong> — <pre><code>collect</code></pre> command scans built apps to auto-generate schema data files</li>
+<li> <strong>CLI commands</strong> — <pre><code>init</code></pre>, <pre><code>validate</code></pre>, <pre><code>audit</code></pre>, <pre><code>collect</code></pre>, <pre><code>scaffold</code></pre> for complete workflows</li>
+<li> <strong>Reality Check validation</strong> — <pre><code>validate</code></pre> checks actual built HTML output, not just JSON files (zero false positives!)</li>
+<li> <strong>Ghost route detection</strong> — <pre><code>audit</code></pre> finds routes in manifest without Schema components in source code</li>
+<li> <strong>Schema scaffolding</strong> — <pre><code>scaffold</code></pre> shows copy-paste component code with full examples from URL patterns (/blog/* → BlogPosting, /products/* → Product)</li>
+<li> <strong>HTML Reports</strong> — Generate shareable reports with <pre><code>--format html --output &lt;path&gt;</code></pre></li>
+<li> <strong>PR Annotations</strong> — GitHub Actions annotations with <pre><code>--annotations github</code></pre></li>
+<li> <strong>Zero network calls</strong> in OSS mode (privacy-first, offline-friendly)</li>
+<li> <strong>AI-ready output</strong> optimized for LLM consumption, citations, and AI agent recommendations</li>
+<li> <strong>VS Code extension</strong> — Schema preview panel, snippets, inline decorations while editing</li> </ul>
+<div><h2> How It Works</h2><a href="#-how-it-works"></a></div>
+<p>Schema Sentry fits into your development workflow in 3 simple steps:</p>
+<div><pre><code>┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
+│ 1. DEFINE │────│ 2. VALIDATE │────│ 3. DEPLOY │
+│ │ │ │ │ │
+│ Add Schema │ │ CI checks │ │ Content live │
+│ component to │ │ actual HTML │ │ with perfect │
+│ your pages │ │ output │ │ structured data│
+└─────────────────┘ └─────────────────┘ └─────────────────┘
+</code></pre></div>
+<p><strong>The magic:</strong> Unlike other tools that validate JSON config files (which can give false positives), Schema Sentry validates your <strong>actual built HTML</strong> to ensure schema is truly rendered.</p>
+<div><h2> Why Structured Data Matters</h2><a href="#-why-structured-data-matters"></a></div>
+<div><h3>The Problem</h3><a href="#the-problem"></a></div>
+<p>Modern content discovery happens through two channels:</p>
+<ol>
+<li><strong>Traditional Search</strong> (Google, Bing) - Rich snippets, knowledge panels, improved rankings</li>
+<li><strong>AI-Powered Discovery</strong> (ChatGPT, Claude, Perplexity, AI agents) - Contextual answers, citations, voice assistants</li>
+</ol>
+<p>Teams often add JSON-LD late, inconsistently, or incorrectly. This leads to:</p>
+<ul>
+<li> Missing rich snippets in Google search results</li>
+<li> AI systems failing to understand and cite your content</li>
+<li> Hard-to-debug CI failures after content changes</li>
+<li> Inconsistent JSON-LD creating noisy diffs in version control</li>
+</ul>
+<div><h3>The Solution</h3><a href="#the-solution"></a></div>
+<p>Schema Sentry enforces structured data in CI, ensuring your content is:</p>
+<ul>
+<li> <strong>Machine-readable</strong> for both search engines and AI systems</li>
+<li> <strong>Deterministically generated</strong> for clean, reviewable diffs</li>
+<li> <strong>Validated automatically</strong> before deployment</li>
+<li> <strong>Complete across all routes</strong> via manifest-driven checks</li>
+</ul>
+<blockquote>
+<p><strong>AI is eating the web.</strong> ChatGPT, Claude, Perplexity, and AI agents now drive significant traffic. Structured data is how AI understands and recommends your content.</p>
+</blockquote>
+<div><h3>Schema Sentry = Better SEO + AI Discovery</h3><a href="#schema-sentry--better-seo--ai-discovery"></a></div>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Traditional SEO</th>
+<th>AI/LLM Discovery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rich snippets</td>
+<td></td>
+<td> Better citations</td>
+</tr>
+<tr>
+<td>Knowledge panels</td>
+<td></td>
+<td> Contextual answers</td>
+</tr>
+<tr>
+<td>Voice search</td>
+<td></td>
+<td> Voice assistant results</td>
+</tr>
+<tr>
+<td>AI agent recommendations</td>
+<td></td>
+<td> Direct inclusion</td>
+</tr>
+</tbody>
+</table>
+<p>By using Schema Sentry, you're not just optimizing for Google—you're making your content discoverable by the next generation of AI-powered search.</p>
+<div><h2> Real-World Impact</h2><a href="#-real-world-impact"></a></div>
+<p>Structured data isn't just a "nice-to-have"—it directly impacts your visibility:</p>
+<ul>
+<li><strong>30% higher CTR</strong> - Product pages with Product schema see 30% higher click-through rates in Google</li>
+<li><strong>Featured snippets</strong> - Articles with proper Article schema are 3x more likely to get featured</li>
+<li><strong>AI citations</strong> - ChatGPT, Claude, and Perplexity use structured data to cite sources—without it, they can't recommend your content</li>
+<li><strong>Voice search</strong> - Smart assistants rely on structured data to answer voice queries</li>
+</ul>
+<blockquote>
+<p><strong>"AI is eating the web."</strong> ChatGPT, Claude, Perplexity, and AI agents now drive significant traffic. Structured data is how AI understands and recommends your content.</p>
+</blockquote>
+<div><h2> Packages</h2><a href="#-packages"></a></div>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.npmjs.com/package/@schemasentry/core"><pre><code>@schemasentry/core</code></pre></a></td>
+<td><a href="https://www.npmjs.com/package/@schemasentry/core"><img src="https://camo.githubusercontent.com/a32ab4a216a43e2b54e146dec43c907aeb1546399b8a5712ddd2405d22b23d87/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f40736368656d6173656e7472792f636f72652e737667" alt="npm"></a></td>
+<td>Typed builders and validation primitives</td>
+</tr>
+<tr>
+<td><a href="https://www.npmjs.com/package/@schemasentry/next"><pre><code>@schemasentry/next</code></pre></a></td>
+<td><a href="https://www.npmjs.com/package/@schemasentry/next"><img src="https://camo.githubusercontent.com/614d3455499c334d325b27afe7aff78f626a55077527dca9fa396b8ba36b2caf/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f40736368656d6173656e7472792f6e6578742e737667" alt="npm"></a></td>
+<td>App Router <pre><code>&lt;Schema /&gt;</code></pre> component</td>
+</tr>
+<tr>
+<td><a href="https://www.npmjs.com/package/@schemasentry/cli"><pre><code>@schemasentry/cli</code></pre></a></td>
+<td><a href="https://www.npmjs.com/package/@schemasentry/cli"><img src="https://camo.githubusercontent.com/760f35d8889bdc4a974da1e106e2a3353c87cae0470f2f3fd09b33bf6bd208e2/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f40736368656d6173656e7472792f636c692e737667" alt="npm"></a></td>
+<td>CI validation and report output</td>
+</tr>
+<tr>
+<td><a href="https://marketplace.visualstudio.com/items?itemName=schemasentry.schema-sentry-vscode"><pre><code>schema-sentry-vscode</code></pre></a></td>
+<td>VSIX</td>
+<td>VS Code extension with preview, snippets, decorations</td>
+</tr>
+</tbody>
+</table>
+<div><h2> Install</h2><a href="#-install"></a></div>
+<div><pre><span><span>#</span> pnpm</span>
+pnpm add @schemasentry/next @schemasentry/core
+pnpm add -D @schemasentry/cli <span><span>#</span> npm</span>
+npm install @schemasentry/next @schemasentry/core
+npm install -D @schemasentry/cli <span><span>#</span> yarn</span>
+yarn add @schemasentry/next @schemasentry/core
+yarn add -D @schemasentry/cli</pre></div>
+<div><h2> App Router Usage</h2><a href="#-app-router-usage"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>Schema</span><span>,</span> <span>Article</span><span>,</span> <span>Organization</span> <span>}</span> <span>from</span> <span>"@schemasentry/next"</span><span>;</span> <span>const</span> <span>org</span> <span>=</span> <span>Organization</span><span>(</span><span>{</span> <span>name</span>: <span>"Acme Corp"</span><span>,</span> <span>url</span>: <span>"https://acme.com"</span>
+<span>}</span><span>)</span><span>;</span> <span>const</span> <span>article</span> <span>=</span> <span>Article</span><span>(</span><span>{</span> <span>headline</span>: <span>"Launch Update"</span><span>,</span> <span>authorName</span>: <span>"Jane Doe"</span><span>,</span> <span>datePublished</span>: <span>"2026-02-09"</span><span>,</span> <span>url</span>: <span>"https://acme.com/blog/launch"</span>
+<span>}</span><span>)</span><span>;</span> <span>export</span> <span>default</span> <span>function</span> <span>Page</span><span>(</span><span>)</span> <span>{</span> <span>return</span> <span>(</span> <span>&lt;</span><span>&gt;</span> <span>&lt;</span><span>Schema</span> <span>data</span><span>=</span><span>{</span><span>[</span><span>org</span><span>,</span> <span>article</span><span>]</span><span>}</span> <span>/&gt;</span> <span>&lt;</span><span>main</span><span>&gt;</span>...<span>&lt;/</span><span>main</span><span>&gt;</span> <span>&lt;/</span><span>&gt;</span> <span>)</span><span>;</span>
+<span>}</span></pre></div>
+<div><h2> Manifest and Coverage</h2><a href="#-manifest-and-coverage"></a></div>
+<div><pre>{ <span>"routes"</span>: { <span>"/"</span>: [<span><span>"</span>Organization<span>"</span></span>, <span><span>"</span>WebSite<span>"</span></span>], <span>"/blog/[slug]"</span>: [<span><span>"</span>Article<span>"</span></span>] }
+}</pre></div>
+<div><h2> CLI</h2><a href="#-cli"></a></div>
+<div><h3>Important: Understanding the Workflow</h3><a href="#important-understanding-the-workflow"></a></div>
+<p>Schema Sentry validates <strong>reality, not just configuration files</strong>. The CLI checks your <strong>actual built HTML output</strong> to ensure schema is properly rendered. This eliminates false positives that plague other tools.</p>
+<p><strong>The Correct Workflow:</strong></p>
+<ol>
+<li><strong><pre><code>init</code></pre></strong> → Create starter manifest and data files</li>
+<li><strong><pre><code>scaffold</code></pre></strong> → See what code you need to add to your pages</li>
+<li><strong>Add Schema components</strong> → Copy-paste code into your page.tsx files</li>
+<li><strong><pre><code>next build</code></pre></strong> → Build your Next.js app</li>
+<li><strong><pre><code>validate</code></pre></strong> → Validate actual HTML output (catches missing schema!)</li>
+<li><strong><pre><code>audit</code></pre></strong> → Check for ghost routes and health issues</li>
+</ol>
+<hr>
+<p><strong>Quick start</strong></p>
+<ol>
+<li>Generate starter files:</li>
+</ol>
+<div><pre>pnpm schemasentry init</pre></div>
+<ol>
+<li>See what schema you need to add:</li>
+</ol>
+<div><pre>pnpm schemasentry scaffold --root ./app</pre></div>
+<ol>
+<li>
+<p>Copy-paste the generated code into your page.tsx files</p>
+</li>
+<li>
+<p>Build your Next.js app:</p>
+</li>
+</ol>
+<div><pre>next build</pre></div>
+<ol>
+<li><strong>Validate reality</strong> (checks actual HTML, not just config files):</li>
+</ol>
+<div><pre>pnpm schemasentry validate \ --manifest ./schema-sentry.manifest.json \ --root ./.next/server/app</pre></div>
+<ol>
+<li>Audit for ghost routes and issues:</li>
+</ol>
+<div><pre>pnpm schemasentry audit \ --manifest ./schema-sentry.manifest.json \ --root ./app</pre></div>
+<p><strong>All commands</strong></p>
+<div><pre><span><span>#</span> Initialize starter files</span>
+pnpm schemasentry init
+pnpm schemasentry init --scan <span><span>#</span> See what schema code to add (shows copy-paste examples)</span>
+pnpm schemasentry scaffold --root ./app
+pnpm schemasentry scaffold --root ./app --write <span><span>#</span> Validate ACTUAL HTML OUTPUT (catches missing schema!)</span>
+pnpm schemasentry validate --manifest ./schema-sentry.manifest.json
+pnpm schemasentry validate --manifest ./schema-sentry.manifest.json --build
+pnpm schemasentry validate --manifest ./schema-sentry.manifest.json --root ./.next/server/app
+pnpm schemasentry validate --manifest ./schema-sentry.manifest.json --root ./out <span><span>#</span> Validate with rulesets (google rich results / ai-citation)</span>
+pnpm schemasentry validate --rules google
+pnpm schemasentry validate --rules ai-citation
+pnpm schemasentry validate --rules google,ai-citation <span><span>#</span> Output formats (table default, tree, json, html)</span>
+pnpm schemasentry validate --format table
+pnpm schemasentry validate --format tree
+pnpm schemasentry validate --format json
+pnpm schemasentry validate --format html --output ./report.html <span><span>#</span> Audit for ghost routes (routes in manifest but no Schema component)</span>
+pnpm schemasentry audit --manifest ./schema-sentry.manifest.json --root ./app
+pnpm schemasentry audit --manifest ./schema-sentry.manifest.json --root ./app --scan
+<span><span>#</span> Optional legacy coverage checks (requires schema data file)</span>
+pnpm schemasentry audit --manifest ./schema-sentry.manifest.json --data ./schema-sentry.data.json --root ./app <span><span>#</span> Collect schema from built HTML</span>
+pnpm schemasentry collect --root ./out --output ./schema-sentry.data.json
+pnpm schemasentry collect --root ./.next/server/app --check --data ./schema-sentry.data.json <span><span>#</span> Generate reports</span>
+pnpm schemasentry validate \ --manifest ./schema-sentry.manifest.json \ --root ./.next/server/app \ --format html \ --output ./report.html pnpm schemasentry audit \ --manifest ./schema-sentry.manifest.json \ --root ./app \ --format html \ --output ./audit-report.html</pre></div>
+<p>The CLI emits table output by default for better readability. Use </p><pre><code>--format json</code></pre> for machine-readable output or <pre><code>--format html --output &lt;path&gt;</code></pre> for shareable reports.
+Use <pre><code>--annotations github</code></pre> in GitHub Actions to emit PR annotations.
+Use <pre><code>--rules google</code></pre> or <pre><code>--rules ai-citation</code></pre> to validate for specific optimization targets.
+Recommended field checks run as warnings by default. Disable them with <pre><code>--no-recommended</code></pre>.
+See <pre><code>docs/ci.md</code></pre> for complete CI workflow examples.<p></p>
+<div><h3>Optional Config</h3><a href="#optional-config"></a></div>
+<p>Create </p><pre><code>schema-sentry.config.json</code></pre> to control defaults:<p></p> <p>CLI flags override config. Use </p><pre><code>--config ./path/to/config.json</code></pre> to point at a custom file.<p></p>
+<div><h3>Understanding Manifest vs Data</h3><a href="#understanding-manifest-vs-data"></a></div>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+<th>How It Works</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>schema-sentry.manifest.json</code></pre></td>
+<td>Defines <strong>expected schema types</strong> per route</td>
+<td>You create this manually - tells Schema Sentry what each page should have</td>
+</tr>
+<tr>
+<td><pre><code>schema-sentry.data.json</code></pre></td>
+<td>Contains the <strong>actual schema data</strong> (legacy)</td>
+<td><strong>DEPRECATED</strong>: Use <pre><code>schemasentry validate</code></pre> instead, which checks actual HTML</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why validate against HTML instead of JSON files?</strong></p>
+<p>Other tools validate JSON config files, which gives you <strong>false positives</strong>. You can have perfect JSON files but your pages still lack schema markup! Schema Sentry v0.6.0+ validates your <strong>actual built HTML output</strong>, ensuring your schema is truly rendered.</p>
+<p><strong>Old way (v0.5.0 and earlier - DON'T DO THIS):</strong></p>
+<div><pre><span><span>#</span> Validates JSON files against each other - FALSE POSITIVES!</span>
+schemasentry validate --manifest manifest.json --data data.json</pre></div>
+<p><strong>New way (v0.6.0+ - DO THIS):</strong></p>
+<div><pre><span><span>#</span> Validates actual built HTML against manifest - NO FALSE POSITIVES!</span>
+schemasentry validate --manifest manifest.json
+<span><span>#</span> or run build automatically first:</span>
+schemasentry validate --manifest manifest.json --build</pre></div>
+<p>When </p><pre><code>--root</code></pre> is omitted, <pre><code>validate</code></pre> auto-detects built output (<pre><code>./.next/server/app</code></pre>, then <pre><code>./out</code></pre>, then <pre><code>./.next/server/pages</code></pre>). Use <pre><code>schemasentry init</code></pre> to generate starter files. Use <pre><code>schemasentry scaffold</code></pre> to see what code to add. Use <pre><code>schemasentry validate</code></pre> (or <pre><code>--build</code></pre>) to verify your schema is actually rendered.<p></p>
+<div><h2> Supported Schema Types (V1)</h2><a href="#-supported-schema-types-v1"></a></div> <div><h2> Example App</h2><a href="#-example-app"></a></div>
+<p>A minimal Next.js App Router example lives in </p><pre><code>examples/next-app</code></pre> and includes a manifest and data file. It targets Next.js 16.1.6 and React 19.1.1.<p></p>
+<p>Run the end-to-end workflow demo (</p><pre><code>init -&gt; collect -&gt; validate</code></pre>):<p></p>
+<div><pre>pnpm --filter schema-sentry-example-next-app schema:e2e</pre></div>
+<div><h2> Compatibility</h2><a href="#-compatibility"></a></div>
+<ul>
+<li>Next.js App Router (Next.js 13.4+)</li>
+<li>React 18+</li>
+<li>Node.js 18+</li>
+</ul>
+<div><h2> Roadmap</h2><a href="#-roadmap"></a></div>
+<p>See </p><pre><code>ROADMAP.md</code></pre> for planned milestones and future work.<p></p>
+<div><h2> Contributing</h2><a href="#-contributing"></a></div>
+<p>See </p><pre><code>CONTRIBUTING.md</code></pre> for workflow, scope guardrails, and expectations.<p></p>
+<div><h2> License</h2><a href="#-license"></a></div>
+<p>MIT Arindam Dawn</p>
+<div><h2> Support</h2><a href="#-support"></a></div>
+<ul>
+<li>Report bugs: <a href="https://github.com/arindamdawn/schema-sentry/issues/new?template=bug_report.md">https://github.com/arindamdawn/schema-sentry/issues/new?template=bug_report.md</a></li>
+<li>Request features: <a href="https://github.com/arindamdawn/schema-sentry/issues/new?template=feature_request.md">https://github.com/arindamdawn/schema-sentry/issues/new?template=feature_request.md</a></li>
+<li>Discussions: <a href="https://github.com/arindamdawn/schema-sentry/discussions">https://github.com/arindamdawn/schema-sentry/discussions</a></li>
+</ul>
+<hr>
+<p>Made with for the Next.js community</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - RickConsole/hydra: Multi-agent AI orchestration system</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - RickConsole/hydra: Multi-agent AI orchestration system</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 12:13:14 PM | <a href="https://github.com/RickConsole/hydra" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><pre><code>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣦⡀⠀⢸⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣠⣦⣤⣀⣀⣤⣤⣀⡀⠀⣀⣠⡆⠀⠀⠀⠀⠀⠀⠤⠒⠛⣛⣛⣻⣿⣶⣾⣿⣦⣄⢿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠸⠿⢿⣿⣿⣿⣯⣭⣿⣿⣿⣿⣋⣀⠀⠀⠀⠀⠀⠀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣓⠢⠄⢠⡾⢻⣿⣿⣿⣿⡟⠁⠀⠀⠈⠙⢿⣿⣿⣯⡻⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠀⠀⠀⠙⢿⣿⣿⣿⣷⣄⠁⠀⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣷⣄⡀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣷⣌⢧⠀⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⢀⠉⠙⠛⠛⠿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⡀⠠⢻⡟⢿⣿⣿⣿⣿⣧⣄⣀⠀⠘⢶⣄⣀⠀⠀⠈⢻⠿⠁⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣾⠀⠀⠀⠻⣈⣙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠈⠲⣄⠀⠀⣀⡤⠤⠀⠀⠀⢠⣿⣿⣿⡿⣿⠇⠀⠀⠐⠺⢉⣡⣴⣿⣿⣿⣿⣿⣿⣿⡿⢿⣿⣿⣿⣶⣿⣿⣿⣶⣶⡀⠀⠀⠀
+⠀⠀⠀⠀⢠⣿⣴⣿⣷⣶⣦⣤⡀⠀⢸⣿⣿⣿⠇⠏⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⠟⢿⣿⣿⣿⣷⠀⠹⣿⣿⠿⠿⠛⠻⠿⣿⠇⠀⠀⠀
+⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣷⣯⡂⢸⣿⣿⣿⠀⠀⠀⠀⢀⠾⣻⣿⣿⣿⠟⠀⠀⠈⣿⣿⣿⣿⡇⠀⠀⣀⣀⡀⠀⢠⡞⠉⠀⠀⠀⠀
+⠀⠀⢸⣟⣽⣿⣯⠀⠀⢹⣿⣿⣿⡟⠼⣿⣿⣿⣇⠀⠀⠀⠠⢰⣿⣿⣿⣿⡄⠀⠀⠀⣸⣿⣿⣿⡇⠀⢀⣤⣼⣿⣷⣾⣷⡀⠀⠀⠀⠀
+⠀⢀⣾⣿⡿⠟⠋⠀⠀⢸⣿⣿⣿⣿⡀⢿⣿⣿⣿⣦⠀⠀⠀⢺⣿⣿⣿⣿⣿⣄⠀⠀⣿⣿⣿⣿⡇⠐⣿⣿⣿⣿⠿⣿⣿⡿⣦⠀⠀⠀
+⠀⢻⣿⠏⠀⠀⠀⠀⢠⣿⣿⣿⡟⡿⠀⠀⢻⣿⣿⣿⣷⣤⡀⠘⣷⠻⣿⣿⣿⣿⣷⣼⣿⣿⣿⣿⣇⣾⣿⣿⣿⠁⠀⢼⣿⣿⣿⣆⠀⠀
+⠀⠀⠈⠀⠀⠀⠀⠀⢸⣿⣿⣿⡗⠁⠀⠀⠀⠙⢿⣿⣿⣿⣿⣷⣾⣆⡙⣿⣿⣿⣿⣿⣿⣿⣿⣿⠌⣾⣿⣿⣿⣆⠀⠀⠀⠉⠻⣿⡷⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠘⣟⣿⣿⣿⡆⠀⠀⠀⠀⠙⠁⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⣿⣿⣿⣿⣶⣤⣤⣤⣀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⢈⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣠⣤⣤⣶⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⣠⣤⣄⠀⠠⢶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢀⣀⠀⣠⣀⡠⠞⣿⣿⣿⣿⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣴⣿⣷⣦⣄⣀⢿⡽⢻⣦
+⠻⠶⠾⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠋
+</code></pre></div>
+<p> <strong>Agentic Frameworks Done The Right Way</strong><br> One config file. True isolation. Full control.
+</p>
+<hr>
+<p>Check out the official <a href="https://blog.evilwizard.io/posts/2026-02-18-hydra-a-secure-way-to-use-ai-agents/">blog post</a> or on <a href="https://medium.com/@rickconsole/hydra-a-secure-way-to-use-ai-agents-f828bbaef60e">medium</a></p>
+<div><h2>What Makes Hydra Different</h2><a href="#what-makes-hydra-different"></a></div>
+<p>Most AI agent frameworks run everything in a single process with application-level permission checks. If the agent can execute code, it can access anything the process can access. Security is an afterthought.</p>
+<p><strong>Hydra agents run in containers.</strong> Each agent is isolated at the OS level. They can only see what you explicitly mount. Bash commands execute inside the container, not on your host. Agent's cant break things even if they wanted to.</p>
+<div><pre><code> ┌──────────────┐ │ hydra exec │ ← You are here (interactive CLI) └──────┬───────┘ │ ┌────────────────┼─────────────────┐ │ │ │ ▼ ▼ ▼ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ Container │ │ Container │ │ Container │ │ │ │ │ │ │ │ Claude Code │ │ Claude Code │ │ Claude Code │ │ (Agent SDK)│ │ (Agent SDK)│ │ (Agent SDK)│ │ │ │ │ │ │ │ /workspace/ │ │ /workspace/ │ │ /workspace/ │ │ └ agent/ │ │ └ agent/ │ │ └ agent/ │ │ └ extra/* │ │ └ extra/* │ │ └ extra/* │ │ └ ipc/ │ │ └ ipc/ │ │ └ ipc/ │ └─────────────┘ └─────────────┘ └─────────────┘ main dev other Each container: isolated filesystem, own CLAUDE.md, own session state, own mem0 memory, own IPC namespace. ┌──────────────────────────────────────────────────┐ │ Optional: hydra up (background orchestrator) │ │ │ │ • Telegram bot listener │ │ • Task scheduler (cron, interval, once) │ │ • IPC message routing │ │ • REST API + WebSocket (:3340) │ └──────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>Other key differences:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Typical Agent Framework</th>
+<th>Hydra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Security model</strong></td>
+<td>Permission checks in code or prompt</td>
+<td>OS-level container isolation</td>
+</tr>
+<tr>
+<td><strong>Bash commands</strong></td>
+<td>Runs on host</td>
+<td>Runs in ephemeral container</td>
+</tr>
+<tr>
+<td><strong>File access</strong></td>
+<td>Full Access??</td>
+<td>Only mounted paths exist in the container. Can be read-only</td>
+</tr>
+<tr>
+<td><strong>Agent isolation</strong></td>
+<td>Shared memory, one process</td>
+<td>Separate containers, resource allocation</td>
+</tr>
+<tr>
+<td><strong>Configuration</strong></td>
+<td>Multiple files, env vars</td>
+<td>Single <pre><code>hydra.yaml</code></pre></td>
+</tr>
+<tr>
+<td><strong>Runtime</strong></td>
+<td>Claude API wrapper</td>
+<td>Claude Agent SDK (Claude Code)</td>
+</tr>
+</tbody>
+</table>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<ol>
+<li><strong>Create your agents</strong> via the Hydra CLI or <pre><code>hydra.yaml</code></pre></li>
+<li><strong>Assign agent resources</strong> such as folder mounts, tools, MCP servers, etc.</li>
+<li><strong>Enter interactive sessions</strong> inside the containers (running claude code!)</li>
+<li><strong>Exit when finished</strong> and the container is stopped, memory and progress remains.</li>
+</ol>
+<p>Each agent has its own:</p>
+<ul>
+<li><pre><code>CLAUDE.md</code></pre> file (persistent memory/instructions)</li>
+<li>Persistent vector memory via <pre><code>mem0</code></pre> (self hosted or cloud)</li>
+<li>Session state (conversation context)</li>
+<li>Filesystem (isolated from other agents)</li>
+<li>IPC namespace (can't send messages as other agents)</li>
+</ul>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div> <p>The </p><pre><code>/setup</code></pre> skill handles config creation, <pre><code>.env</code></pre>, agent setup, and container build interactively:<p></p>
+<div><pre>git clone https://github.com/RickConsole/hydra.git
+<span>cd</span> hydra
+npm install <span>&amp;&amp;</span> npm run build <span>&amp;&amp;</span> npm link
+./container/build.sh
+claude <span><span>#</span> then run /setup inside the session</span></pre></div>
+<div><h3>Manual</h3><a href="#manual"></a></div>
+<div><pre>git clone https://github.com/RickConsole/hydra.git
+<span>cd</span> hydra
+npm install <span>&amp;&amp;</span> npm run build <span>&amp;&amp;</span> npm link
+./container/build.sh <span><span>#</span> Add your API key to secrets.env (outside project root, never mounted)</span>
+mkdir -p <span>~</span>/.config/hydra
+<span>echo</span> <span><span>"</span>ANTHROPIC_API_KEY=sk-ant-...<span>"</span></span> <span>&gt;</span> <span>~</span>/.config/hydra/secrets.env <span><span>#</span> Create a minimal hydra.yaml</span>
+cat <span><span>&lt;&lt;</span>'<span>EOF</span>' &gt; hydra.yaml</span>
+<span>version: "1"</span>
+<span>project: my-project</span>
+<span>agents:</span>
+<span> - name: Main</span>
+<span> folder: main</span>
+<span><span>EOF</span></span> <span><span>#</span> Create your first agent and start a session</span>
+hydra agent create --name <span><span>"</span>Main<span>"</span></span> --folder main
+hydra <span>exec</span> main</pre></div>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Everything lives in one file: </p><pre><code>hydra.yaml</code></pre>.<p></p>
+<div><h3>Minimal config</h3><a href="#minimal-config"></a></div>
+<p>The smallest working config — just a version and one agent:</p>
+<div><pre><span>version</span>: <span><span>"</span>1<span>"</span></span>
+<span>project</span>: <span>my-project</span>
+<span>agents</span>: - <span>name</span>: <span>Main</span> <span>folder</span>: <span>main</span></pre></div>
+<div><h3>Full config</h3><a href="#full-config"></a></div>
+<div><pre><span>version</span>: <span><span>"</span>1<span>"</span></span>
+<span>project</span>: <span>hydra</span> <span><span>#</span> Agents (each runs in its own container)</span>
+<span>agents</span>: - <span>name</span>: <span>Main Assistant</span> <span>folder</span>: <span>main</span> <span>container</span>: <span>mounts</span>: - <span>host_path</span>: <span>~/projects</span> <span>container_path</span>: <span>projects</span> <span>readonly</span>: <span>false</span> - <span>name</span>: <span>Dev Helper</span> <span>folder</span>: <span>dev</span> <span>bot</span>: <span>mydevbot </span><span><span>#</span> Connect to Telegram</span> <span>chat_id</span>: <span><span>"</span>-1009876540010<span>"</span></span> <span><span>#</span> Telegram chat ID</span> <span>container</span>: <span>timeout</span>: <span>600000</span> <span>mounts</span>: - <span>host_path</span>: <span>~/src</span> <span>container_path</span>: <span>src</span> <span>readonly</span>: <span>false</span> <span>secrets</span>: <span><span>#</span> Per-agent secrets from secrets.env</span> - <span>AWS_ACCESS_KEY_ID</span> - <span>AWS_SECRET_ACCESS_KEY</span> <span><span>#</span> Telegram bots</span>
+<span>bots</span>: <span>mydevbot</span>: <span>name</span>: <span>MyDevBot</span> <span>token</span>: <span>env:TELEGRAM_BOT_TOKEN </span><span><span>#</span> References .env variable</span> <span>platform</span>: <span>telegram</span> <span><span>#</span> Self-hosted memory (requires `hydra infra up`)</span>
+<span>memory</span>: <span>provider</span>: <span>qdrant</span> <span>qdrant_url</span>: <span>http://localhost:6333</span> <span>ollama_url</span>: <span>http://localhost:11434</span> <span><span>#</span> Security (mount allowlist lives separately for tamper-proofing)</span>
+<span>security</span>: <span>mounts</span>: <span>non_main_readonly</span>: <span>true</span> <span>blocked_patterns</span>: - <span>.ssh</span> - <span>.gnupg</span> - <span>password</span> - <span>secret</span></pre></div>
+<div><h3>Environment Variables</h3><a href="#environment-variables"></a></div>
+<p>Sensitive values in </p><pre><code>hydra.yaml</code></pre> use <pre><code>env:VAR_NAME</code></pre> syntax to reference the host environment:<p></p>
+<div><pre><span>token</span>: <span>env:TELEGRAM_BOT_TOKEN</span></pre></div>
+<p>These are resolved at config load time from whatever is in your shell environment or </p><pre><code>.env</code></pre> file. This is for <strong>Hydra's own config</strong> (bot tokens, etc.) — not for what gets passed into containers.<p></p>
+<div><h3>Secrets (Container Injection)</h3><a href="#secrets-container-injection"></a></div>
+<p>Agent containers receive secrets from </p><pre><code>~/.config/hydra/secrets.env</code></pre> — a dedicated file that lives <strong>outside the project root</strong> and is never mounted into any container. This follows the same tamper-proof principle as the mount allowlist.<p></p>
+<div><pre><span><span>#</span> ~/.config/hydra/secrets.env</span>
+ANTHROPIC_API_KEY=sk-ant-...
+AWS_ACCESS_KEY_ID=AKIA...
+AWS_SECRET_ACCESS_KEY=...
+CUSTOM_TOKEN=abc123</pre></div>
+<p>A set of base variables (</p><pre><code>ANTHROPIC_API_KEY</code></pre>, <pre><code>CLAUDE_CODE_OAUTH_TOKEN</code></pre>, <pre><code>MEM0_API_KEY</code></pre>, <pre><code>QDRANT_URL</code></pre>, <pre><code>OLLAMA_URL</code></pre>, <pre><code>OPENAI_API_KEY</code></pre>) are injected into <strong>every</strong> container if present. Additional secrets are opt-in per agent:<p></p>
+<div><pre><span>agents</span>: - <span>name</span>: <span>Deploy Bot</span> <span>folder</span>: <span>deploy</span> <span>container</span>: <span>secrets</span>: - <span>AWS_ACCESS_KEY_ID</span> - <span>AWS_SECRET_ACCESS_KEY</span></pre></div>
+<p>Only the keys listed in </p><pre><code>secrets</code></pre> (plus the base vars) are injected. An agent can't access secrets it hasn't been granted — even if they exist in <pre><code>secrets.env</code></pre>.<p></p>
+<div><h3>Mount Security (Two-File Model)</h3><a href="#mount-security-two-file-model"></a></div>
+<p>Mounts require approval from <strong>two</strong> independent config files:</p>
+<ol>
+<li><strong><pre><code>hydra.yaml</code></pre></strong> — declares what an agent <em>wants</em> mounted (lives in the project)</li>
+<li><strong><pre><code>~/.config/hydra/mount-allowlist.json</code></pre></strong> — declares what's <em>allowed</em> to be mounted (lives outside the project)</li>
+</ol>
+<p>Both must agree for a mount to work. Even if an agent modifies </p><pre><code>hydra.yaml</code></pre>, it can't grant itself access to paths that aren't pre-approved in the external allowlist. The allowlist is never mounted into containers and can't be reached by agents.<p></p>
+<div><pre><span>// ~/.config/hydra/mount-allowlist.json</span>
+{ <span>"allowedRoots"</span>: [ { <span>"path"</span>: <span><span>"</span>~/src<span>"</span></span>, <span>"allowReadWrite"</span>: <span>true</span>, <span>"description"</span>: <span><span>"</span>Source code<span>"</span></span> } ], <span>"blockedPatterns"</span>: [<span><span>"</span>.ssh<span>"</span></span>, <span><span>"</span>.gnupg<span>"</span></span>, <span><span>"</span>.aws<span>"</span></span>, <span><span>"</span>credentials<span>"</span></span>], <span>"nonMainReadOnly"</span>: <span>true</span>
+}</pre></div>
+<p>If the allowlist file doesn't exist, <strong>all additional mounts are blocked</strong> by default.</p>
+<div><h2>CLI Reference</h2><a href="#cli-reference"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>hydra up [-f]</code></pre></td>
+<td>Start orchestrator (daemon; <pre><code>-f</code></pre> for foreground)</td>
+</tr>
+<tr>
+<td><pre><code>hydra down</code></pre></td>
+<td>Stop orchestrator and infrastructure</td>
+</tr>
+<tr>
+<td><pre><code>hydra status</code></pre></td>
+<td>Show orchestrator/agent status</td>
+</tr>
+<tr>
+<td><pre><code>hydra exec &lt;agent&gt; [args]</code></pre></td>
+<td>Interactive Claude Code session in agent container</td>
+</tr>
+<tr>
+<td><pre><code>hydra agents</code></pre></td>
+<td>List configured agents</td>
+</tr>
+<tr>
+<td><pre><code>hydra agent create --name "X" --folder x</code></pre></td>
+<td>Create new agent (or run without flags for interactive)</td>
+</tr>
+<tr>
+<td><pre><code>hydra tasks</code></pre></td>
+<td>List scheduled tasks</td>
+</tr>
+<tr>
+<td><pre><code>hydra logs [agent] [-n N]</code></pre></td>
+<td>Tail orchestrator or agent logs</td>
+</tr>
+<tr>
+<td><pre><code>hydra config validate [path]</code></pre></td>
+<td>Validate <pre><code>hydra.yaml</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Claude Code skills:</strong> Run </p><pre><code>claude</code></pre> in the project root, then use <pre><code>/setup</code></pre> for first-time installation or <pre><code>/add-agent</code></pre> to create agents with Telegram, mounts, and secrets.<p></p>
+<div><h2>Supported Channels</h2><a href="#supported-channels"></a></div>
+<ul>
+<li><strong>CLI</strong> (<pre><code>hydra exec</code></pre>) — Direct interactive sessions with agents</li>
+<li><strong>Telegram</strong> — Multimodal support (images, PDFs, etc)</li>
+</ul>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li>Node.js 20+</li>
+<li>Docker + Docker Compose (for self-hosted memory)</li>
+<li>Anthropic API key or Claude Code OAuth</li>
+<li>Telegram bot token (optional)</li>
+</ul>
+<div><h2>Environment Variables</h2><a href="#environment-variables-1"></a></div>
+<p>Container secrets go in </p><pre><code>~/.config/hydra/secrets.env</code></pre>. Host-side config (bot tokens, etc.) can use <pre><code>.env</code></pre> in the project root or your shell environment.<p></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Where</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>ANTHROPIC_API_KEY</code></pre></td>
+<td><pre><code>secrets.env</code></pre></td>
+<td>API key for Claude (injected into all containers)</td>
+</tr>
+<tr>
+<td><pre><code>CLAUDE_CODE_OAUTH_TOKEN</code></pre></td>
+<td><pre><code>secrets.env</code></pre></td>
+<td>OAuth token from Claude Code (auto-managed)</td>
+</tr>
+<tr>
+<td><pre><code>QDRANT_URL</code></pre></td>
+<td><pre><code>secrets.env</code></pre></td>
+<td>Qdrant vector DB URL (default: <pre><code>http://localhost:6333</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>OLLAMA_URL</code></pre></td>
+<td><pre><code>secrets.env</code></pre></td>
+<td>Ollama embedding server URL (default: <pre><code>http://localhost:11434</code></pre>)</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Security Model</h2><a href="#security-model"></a></div>
+<ol>
+<li><strong>Container isolation</strong> — Each agent runs in a separate container</li>
+<li><strong>Explicit mounts</strong> — Agents can only see mounted directories</li>
+<li><strong>Scoped secrets</strong> — Agents only receive secrets they're granted in <pre><code>hydra.yaml</code></pre>; source file lives outside project root</li>
+<li><strong>IPC namespacing</strong> — Agents can only send messages to their own chats</li>
+<li><strong>External allowlist</strong> — Mount permissions live outside agent reach</li>
+<li><strong>Main privilege</strong> — Only the <pre><code>main</code></pre> agent can register new agents</li>
+</ol>
+<p>See <a href="/RickConsole/hydra/blob/main/docs/SECURITY.md">docs/SECURITY.md</a> for the full security model.</p>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Hydra is designed to be small enough to understand and modify. PRs welcome for:</p>
+<ul>
+<li>Security fixes</li>
+<li>Bug fixes</li>
+<li>Clear improvements to core functionality</li>
+</ul>
+<p>For new features, consider whether they belong in core or as optional extensions.</p>
+<div><h2>Credits</h2><a href="#credits"></a></div>
+<p>Shoutout to Nanoclaw (<a href="https://github.com/qwibitai/nanoclaw">https://github.com/qwibitai/nanoclaw</a>) which was the inspiration for agentic containerization.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>AGPL-3.0</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

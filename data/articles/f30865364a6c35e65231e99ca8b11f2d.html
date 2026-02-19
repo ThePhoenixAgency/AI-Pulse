@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - fjrevoredo/mini-diarium: An encrypted local cross-platform journaling app</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - fjrevoredo/mini-diarium: An encrypted local cross-platform journaling app</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 11:54:21 AM | <a href="https://github.com/fjrevoredo/mini-diarium" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>Mini Diarium</h1><a href="#mini-diarium"></a></div>
+<p><a href="https://github.com/fjrevoredo/mini-diarium/actions/workflows/ci.yml"><img src="https://github.com/fjrevoredo/mini-diarium/actions/workflows/ci.yml/badge.svg?branch=master" alt="CI Status"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT"></a>
+<a href="https://github.com/fjrevoredo/mini-diarium/releases"><img src="https://camo.githubusercontent.com/8e2ebaa200c031671305eb11186d9aaea16fabe828723abd37e4c7b176b209f1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f76657273696f6e2d302e322e302d626c75652e737667" alt="Version"></a>
+<a href="https://github.com/fjrevoredo/mini-diarium#installation"><img src="https://camo.githubusercontent.com/1e93b866da33d7e3e202cb3127e9e94e902aa550dee535c19ff793c82f7f7706/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f706c6174666f726d2d57696e646f77732532302537432532306d61634f532532302537432532304c696e75782d6c69676874677265792e737667" alt="Platform"></a></p>
+<p>An encrypted, local cross-platform journaling app</p>
+<p>Mini Diarium keeps your journal private. Every entry is encrypted with AES-256-GCM before it touches disk, the app never connects to the internet, and your data never leaves your machine. Built with Tauri, SolidJS, and Rust.</p>
+<p> <a target="_blank" href="/fjrevoredo/mini-diarium/blob/master/public/demo.gif"><img src="/fjrevoredo/mini-diarium/raw/master/public/demo.gif" alt="Demo"></a>
+</p>
+<div><h2>Background</h2><a href="#background"></a></div>
+<p>Mini Diarium is a spiritual successor to <a href="https://github.com/samuelmeuli/mini-diary">Mini Diary</a> by Samuel Meuli. I loved the original tool. It was simple, private, and did exactly what a journal app should do. Unfortunately, it's been unmaintained for years and its dependencies have aged out. I initially thought about forking it and modernizing the stack, but turned out impractical. So I started over from scratch, keeping the same core philosophy (encrypted, local-only, minimal) while rebuilding completely with Tauri 2, SolidJS, and Rust. The result is a lighter, faster app with stronger encryption and a few personal touches.</p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li><strong>Key file authentication</strong>: unlock your diary with an X25519 private key file instead of (or alongside) your password, like SSH keys for your journal. Register multiple key files; manage all auth methods from Preferences. See <a href="#key-file-authentication">Key File Authentication</a> for details.</li>
+<li><strong>AES-256-GCM encryption</strong>: all entries are encrypted with a random master key. Each auth method holds its own wrapped copy of that key, so adding or removing a method is O(1), with no re-encryption of your entries.</li>
+<li><strong>Rich text editor</strong></li>
+<li><strong>Calendar navigation</strong></li>
+<li><strong>Import</strong>: Mini Diary JSON, Day One JSON/TXT, and jrnl JSON with merge conflict resolution</li>
+<li><strong>Export</strong>: JSON and Markdown formats</li>
+<li><strong>Themes</strong></li>
+<li><strong>Automatic backups</strong>: backup on unlock with rotation</li>
+<li><strong>Statistics</strong></li>
+<li><strong>Preferences</strong>: first day of week, future entries toggle, title visibility, spellcheck, password change, authentication method management</li>
+<li><strong>Cross-platform</strong>: Windows, macOS, and Linux</li>
+<li><strong>Zero network access</strong>: no telemetry, no analytics, no update checks</li>
+</ul>
+<div><h1>Architecture</h1><a href="#architecture"></a></div>
+<div><h1>Unlock Model</h1><a href="#unlock-model"></a></div>
+<p>Mini Diarium uses a wrapped master key design.</p>
+<ul>
+<li>A random master key encrypts all entries using AES-256-GCM</li>
+<li>Authentication methods wrap the master key</li>
+<li>Unlocking unwraps the master key into memory for the session</li>
+</ul>
+<div><h2>Unlock Flow</h2><a href="#unlock-flow"></a></div> <img alt="Unlock Flow Diagram" src="/fjrevoredo/mini-diarium/raw/master/docs/diagrams/unlock.svg"> <div><h3>Password Unlock</h3><a href="#password-unlock"></a></div>
+<ul>
+<li>Argon2 key derivation</li>
+<li>AES-GCM unwrap of master key</li>
+</ul>
+<div><h3>Key File Unlock</h3><a href="#key-file-unlock"></a></div>
+<ul>
+<li>X25519 key pair</li>
+<li>ECDH followed by HKDF</li>
+<li>AES-GCM unwrap of master key</li>
+</ul>
+<p>The master key is never stored in plaintext.</p>
+<hr>
+<div><h2>System Context</h2><a href="#system-context"></a></div>
+<p>Everything runs locally on the user's machine.</p> <img alt="System Context Diagram" src="/fjrevoredo/mini-diarium/raw/master/docs/diagrams/context.svg"> <div><h3>Properties</h3><a href="#properties"></a></div>
+<ul>
+<li>The UI communicates with the Rust backend via Tauri <pre><code>invoke()</code></pre></li>
+<li>The backend reads and writes to local SQLite</li>
+<li>No HTTP clients</li>
+<li>No background sync</li>
+<li>No telemetry</li>
+</ul>
+<hr>
+<div><h1>Saving an Entry</h1><a href="#saving-an-entry"></a></div>
+<p>When saving an entry:</p>
+<ol>
+<li>The content is encrypted using the master key.</li>
+<li>The encrypted content is stored in the <pre><code>entries</code></pre> table.</li>
+</ol>
+<p> <img alt="Save Entry Flow Diagram" src="/fjrevoredo/mini-diarium/raw/master/docs/diagrams/save-entry.svg"> </p>
+<hr>
+<div><h1>Layered Architecture</h1><a href="#layered-architecture"></a></div>
+<p>Mini Diarium follows a layered structure.</p> <img alt="Layered Architecture Diagram" src="/fjrevoredo/mini-diarium/raw/master/docs/diagrams/architecture-dark.svg"> <div><h2>Installation</h2><a href="#installation"></a></div>
+<p>Download the latest release for your platform:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td><pre><code>.msi</code></pre> or <pre><code>.exe</code></pre> (NSIS installer, no admin required)</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td><pre><code>.dmg</code></pre></td>
+</tr>
+<tr>
+<td>Linux</td>
+<td><pre><code>.AppImage</code></pre> or <pre><code>.deb</code></pre></td>
+</tr>
+</tbody>
+</table>
+<div><h3>Installation Notes</h3><a href="#installation-notes"></a></div>
+<p><strong>Windows</strong></p>
+<p>On first launch, Windows SmartScreen may show a warning ("Windows protected your PC"). This is expected for unsigned applications. Click "More info" then "Run anyway" to proceed. Mini Diarium is open source and builds are reproducible from source.</p>
+<p><strong>macOS</strong></p>
+<p>macOS Gatekeeper may block the app on first launch. Right-click the app icon and select "Open" to bypass the warning. Once opened, subsequent launches work normally.</p>
+<p><strong>Linux</strong></p>
+<p>No code signing is required. For security, verify the SHA256 checksum against </p><pre><code>checksums-linux.txt</code></pre> from the release before installation:<p></p>
+<div><pre>sha256sum Mini-Diarium-<span>*</span>.AppImage
+<span><span>#</span> Compare with checksums-linux.txt</span></pre></div>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<ol>
+<li>Launch Mini Diarium</li>
+<li>Create a password (this encrypts your diary; there is no recovery if forgotten)</li>
+<li>Write your first entry. It auto-saves as you type</li>
+<li>Navigate between days with <pre><code>Ctrl+Left</code></pre> / <pre><code>Ctrl+Right</code></pre> or click dates on the calendar</li>
+<li>Lock your diary when you're done</li>
+</ol>
+<div><h2>Key File Authentication</h2><a href="#key-file-authentication"></a></div>
+<p>Most journal apps only offer a password. Mini Diarium also lets you unlock with an <strong>X25519 private key file</strong>, a small </p><pre><code>.key</code></pre> file that acts like an SSH key for your diary. You can use a key file instead of your password, or register both and use whichever is convenient.<p></p>
+<div><h3>Why use a key file?</h3><a href="#why-use-a-key-file"></a></div>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>How a key file helps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Physical second factor</strong></td>
+<td>Keep the <pre><code>.key</code></pre> file on a USB drive. The diary can only be unlocked when the drive is plugged in, with no app, no phone, and no OTP codes.</td>
+</tr>
+<tr>
+<td><strong>Password manager integration</strong></td>
+<td>Store the <pre><code>.key</code></pre> file as a secure attachment. Unlock without memorizing a passphrase at all.</td>
+</tr>
+<tr>
+<td><strong>Multiple machines</strong></td>
+<td>Register one key file per machine. Revoke access to a single machine by removing that slot without touching your password or re-encrypting any entries.</td>
+</tr>
+<tr>
+<td><strong>Shared account, separate keys</strong></td>
+<td>Register several key files under different labels. Each is independent, and removing one doesn't affect the others.</td>
+</tr>
+</tbody>
+</table>
+<div><h3>How it works</h3><a href="#how-it-works"></a></div>
+<p>Each auth method stores its own encrypted copy of a random <strong>master key</strong> that encrypts all diary entries. For key files, this wrapping uses <strong>X25519 ECIES</strong>:</p>
+<ol>
+<li>A 256-bit master key is generated once when you create the diary and never changes.</li>
+<li>You generate an X25519 keypair in Preferences. The app saves the <strong>private key</strong> to a <pre><code>.key</code></pre> file (64-character hex string) and retains only the <strong>public key</strong>.</li>
+<li>The public key is used to wrap the master key: an ephemeral DH key exchange produces a one-time secret, HKDF-SHA256 derives a wrapping key from it, and AES-256-GCM encrypts the master key. The resulting blob is stored in the <pre><code>auth_slots</code></pre> table alongside your password slot.</li>
+<li>To unlock, Mini Diarium reads the <pre><code>.key</code></pre> file, performs the same ECDH derivation in reverse, and unwraps the master key; your password is never required.</li>
+</ol>
+<p>The private key never enters the database. The public key stored in the database cannot unlock the diary. A wrong or tampered key file is rejected by AES-GCM authentication.</p>
+<div><h3>Setting up a key file</h3><a href="#setting-up-a-key-file"></a></div>
+<ol>
+<li>Open <strong>Preferences → Authentication Methods</strong></li>
+<li>Click <strong>Generate Key File</strong></li>
+<li>Save the <pre><code>.key</code></pre> file somewhere only you control, such as a USB drive, a password manager's secure notes, or an encrypted folder</li>
+<li>Enter your current password to authorize the registration</li>
+<li>Give the slot a label (e.g. "USB drive" or "laptop")</li>
+</ol>
+<p>From that point you can unlock from the login screen by switching to <strong>Key File</strong> mode and selecting your </p><pre><code>.key</code></pre> file. To remove a key file, open Preferences → Authentication Methods and delete its slot (the last remaining method is always protected from deletion).<p></p>
+<blockquote>
+<p><strong>Backup your key file.</strong> Like an SSH private key, it cannot be regenerated. If you lose both your password slot and all key files, there is no recovery path.</p>
+</blockquote>
+<hr>
+<div><h2>Keyboard Shortcuts</h2><a href="#keyboard-shortcuts"></a></div>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Shortcut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Previous Day</td>
+<td><pre><code>Ctrl+Left</code></pre></td>
+</tr>
+<tr>
+<td>Next Day</td>
+<td><pre><code>Ctrl+Right</code></pre></td>
+</tr>
+<tr>
+<td>Go to Today</td>
+<td><pre><code>Ctrl+T</code></pre></td>
+</tr>
+<tr>
+<td>Go to Date</td>
+<td><pre><code>Ctrl+G</code></pre></td>
+</tr>
+<tr>
+<td>Previous Month</td>
+<td><pre><code>Ctrl+Shift+Left</code></pre></td>
+</tr>
+<tr>
+<td>Next Month</td>
+<td><pre><code>Ctrl+Shift+Right</code></pre></td>
+</tr>
+<tr>
+<td>Preferences</td>
+<td><pre><code>Ctrl+,</code></pre></td>
+</tr>
+<tr>
+<td>Statistics</td>
+<td><pre><code>Ctrl+I</code></pre></td>
+</tr>
+<tr>
+<td>Import</td>
+<td><pre><code>Ctrl+Shift+I</code></pre></td>
+</tr>
+<tr>
+<td>Export</td>
+<td><pre><code>Ctrl+Shift+E</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>On macOS, use </p><pre><code>Cmd</code></pre> instead of <pre><code>Ctrl</code></pre>.<p></p>
+<div><h2>Building from Source</h2><a href="#building-from-source"></a></div>
+<p><strong>Prerequisites:</strong> Rust 1.75+, Bun 1.x, and <a href="https://v2.tauri.app/start/prerequisites/">Tauri v2 system dependencies</a>.</p>
+<div><pre>git clone https://github.com/fjrevoredo/mini-diarium.git
+<span>cd</span> mini-diarium
+bun install
+bun run tauri build</pre></div>
+<p>Artifacts will be in </p><pre><code>src-tauri/target/release/bundle/</code></pre>.<p></p>
+<div><h2>Tech Stack</h2><a href="#tech-stack"></a></div>
+<ul>
+<li><a href="https://v2.tauri.app/">Tauri 2</a>: desktop app framework (Rust backend, web frontend)</li>
+<li><a href="https://www.solidjs.com/">SolidJS</a>: reactive UI framework</li>
+<li><a href="https://www.rust-lang.org/">Rust</a>: backend logic, encryption, database
+<ul>
+<li><pre><code>x25519-dalek</code></pre>, <pre><code>hkdf</code></pre>, <pre><code>sha2</code></pre>: X25519 ECIES key wrapping for key file authentication</li>
+</ul>
+</li>
+<li><a href="https://www.sqlite.org/">SQLite</a>: local encrypted database storage</li>
+<li><a href="https://tiptap.dev/">TipTap</a>: rich text editor</li>
+<li><a href="https://unocss.dev/">UnoCSS</a>: utility-first CSS</li>
+<li><a href="https://kobalte.dev/">Kobalte</a>: accessible UI primitives</li>
+</ul>
+<div><h2>Known Issues</h2><a href="#known-issues"></a></div>
+<ul>
+<li>Most keyboard shortcuts are broken</li>
+</ul>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>See <a href="/fjrevoredo/mini-diarium/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> for setup instructions, development workflow, and conventions.</p>
+<div><h2>Releasing</h2><a href="#releasing"></a></div>
+<p>For maintainers: See <a href="/fjrevoredo/mini-diarium/blob/master/docs/RELEASING.md">docs/RELEASING.md</a> for step-by-step release instructions.</p>
+<div><h2>Security</h2><a href="#security"></a></div>
+<p>See <a href="/fjrevoredo/mini-diarium/blob/master/SECURITY.md">SECURITY.md</a> for the security model and how to report vulnerabilities.</p>
+<div><h2>Credits</h2><a href="#credits"></a></div>
+<p>Made with love by <a href="https://github.com/fjrevoredo">Francisco J. Revoredo</a> (with a little help from Claude Code).</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

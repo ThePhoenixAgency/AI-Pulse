@@ -5,56 +5,181 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Feb 2026 08:42:01 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Feb 2026 12:52:49 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: Onairos SDK– Unified Context API, unlocking cross platform user history]]></title>
-      <link>https://onairos.io</link>
-      <description><![CDATA[Hey HN, your app is blind to most user context: Google sees search/email, Instagram the social graph, ChatGPT sees conversations—but no single unified view of a user and their preferences exists.
-We're releasing the Onairos SDK to fix that: a lightweight API for devs to access consented, cross-platform behavioral history in one call, powering per-user AI models for apps like wellness or dating.
-Key features:
-- Setup in under 10 mins, so your app can be 100x more personalized today
-- Instant cross-platform user preferences/context (e.g., from ChatGPT, Grok, Youtube, Gmail and more. Pretty much any valuable user data source)
-- Superior user profiles, which beat nearly all LLMs at sentiment analysis
-- More signal than any single platform, even big tech companies
-We know OpenAI, Google etc launch products that kill startups every week. They have superior data, bigger resources and talent. The only way to beat them is with vertical hedges, superior UX or superior data. I would love to help you with the latter yesterday.
-Docs &amp; quick setup: https://docs.onairos.io
-Learn more: https://onairos.io URL: https://news.ycombinator.com/item?id=47070890
+      <title><![CDATA[Show HN: CandyDocs – Simple, developer-friendly documentation for SaaS teams]]></title>
+      <link>https://candydocs.com/</link>
+      <description><![CDATA[Hi HN,
+We built CandyDocs after watching SaaS teams stitch together docs, roadmaps, feedback tools, release notes, and API references across multiple products.
+CandyDocs is a unified, fully branded workspace that brings all of this into one place.
+Core modules (all customizable):
+- Knowledge base (guides, FAQs, onboarding)
+- Roadmap (planned / in progress / shipped, with voting)
+- Feedback (feature requests + )
+- Updates (release notes and announcements)
+- API documentation (endpoints, params, examples)
+- Custom pages (policies, flows, anything else)
+Platform features:
+- Custom domains + branding
+- Dynamic navigation
+- Searchable knowledge base
+- Public roadmap with voting
+- Structured feedback collection
+- Release notes publishing
+- API reference docs
+- Analytics and engagement insights
+- Role-based permissions (admins/moderators)
+The goal is to replace scattered tools with one consistent product communication hub.
+We’re early and actively iterating. Would love technical feedback, criticism, or feature requests. URL: https://news.ycombinator.com/item?id=47072974
 Points: 1
 # : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 07:19:25 GMT</pubDate>
+      <pubDate>Thu, 19 Feb 2026 12:14:26 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://onairos.io</guid>
+      <guid>https://candydocs.com/</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: Nxcode – Turn natural language into full-stack, revenue-ready SaaS apps]]></title>
-      <link>https://www.nxcode.io/zh</link>
-      <description><![CDATA[Article URL: https://www.nxcode.io/zh URL: https://news.ycombinator.com/item?id=47070677
+      <title><![CDATA[Show HN: Agorio – TypeScript SDK for Building AI Shopping Agents (UCP/ACP)]]></title>
+      <link>https://github.com/Nolpak14/agorio</link>
+      <description><![CDATA[I built an open-source TypeScript SDK for building AI agents that can discover merchants, browse products, and complete purchases using the new UCP (Google/Shopify) and ACP (OpenAI/Stripe) commerce protocols.
+Try it in 2 minutes: npm install @agorio/sdk import { ShoppingAgent, GeminiAdapter, MockMerchant } from '@agorio/sdk'; const merchant = new MockMerchant(); await merchant.start(); const agent = new ShoppingAgent({ llm: new GeminiAdapter({ apiKey: process.env.GEMINI_API_KEY }) }); const result = await agent.run( `Go to ${merchant.domain} and buy me wireless headphones` ); - UcpClient: discovers merchants via /.well-known/ucp, parses capabilities, normalizes both array and object formats, calls REST APIs
+- ShoppingAgent: plan-act-observe loop with 12 built-in tools (discover, search, browse, cart, checkout, order tracking)
+- MockMerchant: full UCP-compliant Express server with product catalog, checkout flow, and configurable chaos testing (latency, error rates)
+- LlmAdapter interface: swap LLMs without changing agent code. Gemini ships today, Claude and OpenAI coming in v0.2
+The agent handles the entire purchase flow autonomously - UCP discovery, product search, cart management, shipping, payment, order confirmation. 37 tests passing.
+Context: UCP was announced Jan 11 by Google, Shopify, and 25+ partners (Walmart, Target, Visa, Mastercard). ACP is by OpenAI and Stripe, powers ChatGPT Instant Checkout. Both are open standards. But there was no developer SDK for building on top of them - just the raw specs.
+GitHub: https://github.com/Nolpak14/agorio
+npm: https://www.npmjs.com/package/@agorio/sdk URL: https://news.ycombinator.com/item?id=47072813
+Points: 1
+# : 1]]></description>
+      <pubDate>Thu, 19 Feb 2026 11:48:07 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://github.com/Nolpak14/agorio</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: Aegis.rs, the first open source Rust-based LLM security proxy]]></title>
+      <link>https://github.com/ParzivalHack/Aegis.rs</link>
+      <description><![CDATA[Hey HN,
+I've been working on Aegis.rs for a bit, and I wanted to share it. It's the first open-source Rust-based LLM security proxy (that I could find, at least).
+I kept having the same issue, since existing LLM security tools are either Python libraries you have to manually integrate into your app, or cloud SaaS products that route your traffic through a third party (which you can't control), and i wanted something that just sat in the middle without touching my code or sending prompts anywhere.
+So I built a transparent reverse proxy. You point your requests at localhost:8080 instead of your LLM endpoint and, so far, it catches prompt injections, jailbreaks, PII leakage, and other LLM attacks, blocking them before any malicious request even reaches the model. If a request is clean, it forwards it. If it's malicious, it blocks it. Zero code changes.
+It runs two layers: a fast heuristic engine with 150+ hand-crafted (expandable) regex rules that runs in under 1ms (thanks to Actix-web), plus an AI judge using Groq for semantic analysis on ambiguous cases.
+Can be easily shipped as a single binary with a live dashboard, hot-reloadable rules, and structured JSON logs.
+Still v0.1 but it's working well enough for me to share its first version. The heuristic layer is fast enough for prod, and extending the rules is pretty easy.
+Would love feedbacks (or contributions lol), especially from anyone dealing with LLMs' security and threat modeling :) URL: https://news.ycombinator.com/item?id=47072572
+Points: 2
+# : 0]]></description>
+      <pubDate>Thu, 19 Feb 2026 11:11:28 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://github.com/ParzivalHack/Aegis.rs</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: StatusMonk – Uptime monitoring and status pages for small SaaS teams]]></title>
+      <link>https://statusmonk.com/</link>
+      <description><![CDATA[Hi HN,
+We built StatusMonk after repeatedly finding out about outages from customers instead of our systems.
+StatusMonk is an all-in-one monitoring and public status page platform designed for founders and small teams who want early detection and clear communication without enterprise complexity.
+What it does today:
+- Monitor websites, APIs, and cron jobs
+- Domain, SSL certificate, and DNS monitoring
+- Alerts via email, Slack, or webhooks
+- Automatic incident creation and recovery notifications
+- Public status pages with uptime history and incidents
+The goal is simple: detect problems early, alert the right people fast, and keep users informed from one place.
+We are still early and actively iterating based on feedback.
+Would love thoughts, criticism, or feature requests. URL: https://news.ycombinator.com/item?id=47072913
 Points: 1
 # : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 06:43:28 GMT</pubDate>
+      <pubDate>Thu, 19 Feb 2026 12:03:15 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://www.nxcode.io/zh</guid>
+      <guid>https://statusmonk.com/</guid>
     </item>
     <item>
-      <title><![CDATA[Actualité : Apple : finalement pas de keynote pour le 4 mars ? Voici ce qui se prépare en coulisses]]></title>
-      <link>https://www.lesnumeriques.com/societe-numerique/apple-finalement-pas-de-keynote-pour-le-4-mars-voici-ce-qui-se-prepare-en-coulisses-n251657.html</link>
-      <description><![CDATA[En fin de semaine dernière, Apple a annoncé un événement pour le 4 mars 2026, plus précisément une “Special Apple Experience”. Des mots qui ont un sens, qui pencheraient d’ailleurs vers une non-keynote pour ce jour-là. À la place, la firme à la pomme jouerait à un tout autre jeu pour présenter et mettre en avant ses nouveaux produits.Apple remplace l...]]></description>
-      <pubDate>Wed, 18 Feb 2026 09:16:00 GMT</pubDate>
+      <title><![CDATA[Actualité : CarPlay : ChatGPT et streaming vidéo bientôt disponibles dans votre voiture grâce à iOS 26.4]]></title>
+      <link>https://www.lesnumeriques.com/telephone-portable/carplay-chatgpt-et-streaming-video-bientot-disponibles-dans-votre-voiture-grace-a-ios-26-4-n251707.html</link>
+      <description><![CDATA[Alors que les grosses nouveautés d’iOS 26.4 sur iPhone ont rapidement été découvertes dans la première bêta publiée en début de semaine, il y en a d’autres qui commencent à peine à faire surface. C’est notamment le cas de deux nouveautés CarPlay : l'une signant l’arrivée de ChatGPT, Gemini et consort, et l’autre celle du streaming vidéo via AirPlay.L...]]></description>
+      <pubDate>Thu, 19 Feb 2026 11:51:00 GMT</pubDate>
       <source>Les Numeriques</source>
       <category>products</category>
-      <guid>https://www.lesnumeriques.com/societe-numerique/apple-finalement-pas-de-keynote-pour-le-4-mars-voici-ce-qui-se-prepare-en-coulisses-n251657.html</guid>
+      <guid>https://www.lesnumeriques.com/telephone-portable/carplay-chatgpt-et-streaming-video-bientot-disponibles-dans-votre-voiture-grace-a-ios-26-4-n251707.html</guid>
     </item>
     <item>
-      <title><![CDATA[Bruxelles met Shein sous surveillance pour la vente de produits illégaux et un design trop addictif]]></title>
-      <link>https://www.journaldugeek.com/2026/02/18/bruxelles-met-shein-sous-surveillance-pour-la-vente-de-produits-illegaux-et-un-design-trop-addictif/</link>
-      <description><![CDATA[La Commission européenne ouvre une enquête formelle contre la plateforme de fast fashion. Dans le viseur : la vente de produits interdits, des mécanismes d’engagement jugés trop addictifs et des algorithmes qui manquent de clarté.]]></description>
-      <pubDate>Wed, 18 Feb 2026 07:29:37 GMT</pubDate>
+      <title><![CDATA[Show HN: Agent Smith – open-source agent that turns issues into pull requests]]></title>
+      <link>https://codingsoul.org/2026/02/19/agent-smith-open-source-agent-that-turns-issues-into-pull-requests/</link>
+      <description><![CDATA[Hey HN, I built Agent Smith — a self-hosted AI coding agent that takes a ticket reference, clones your repo, analyzes the code, writes an implementation plan, executes it, and opens a PR.
+It supports GitHub, Azure DevOps, Jira, and GitLab. You bring your own API key — Claude, OpenAI, or Gemini. No SaaS, no account, runs on your machine or your cluster.
+I built it in a few days using the same approach the agent itself uses: structured architecture prompts, strict coding principles, and an AI assistant doing the implementation. The coding principles that govern Agent Smith's output are the same ones I used to build it.
+It's early — works well for well-scoped tickets, not yet reliable for large multi-file refactorings. Interactive chat interfaces (Slack, Teams) are in progress.
+Would love feedback. The prompts and all 17 architecture phases are in the repo if you want to see how the context is structured. URL: https://news.ycombinator.com/item?id=47072811
+Points: 2
+# : 1]]></description>
+      <pubDate>Thu, 19 Feb 2026 11:47:58 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://codingsoul.org/2026/02/19/agent-smith-open-source-agent-that-turns-issues-into-pull-requests/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: I built a compliance scanner that flags WCAG GDPR and FTC risks in mins]]></title>
+      <link>https://www.rataify.com/</link>
+      <description><![CDATA[We’ve been building Rataify, a website compliance scanner focused on accessibility (WCAG), privacy regulations (GDPR / CCPA), and FTC marketing claim risks.
+Most compliance tools focus only on accessibility and often just wrap Lighthouse or axe-core. Privacy and marketing risk checks are usually manual.
+We’re experimenting with a layered approach:
+DOM-level accessibility checks (WCAG violations)
+Policy presence + structural checks (privacy / terms disclosures)
+Heuristic scanning of marketing copy for risky FTC-style claims
+Fast report generation intended for pre-launch audits
+The goal isn’t legal automation — it’s to reduce obvious compliance gaps before a site goes live.
+We’re especially interested in:
+False positive tolerance in automated compliance tools
+Whether developers would run this as part of CI
+What compliance signals are most valuable in practice
+Would love technical feedback. URL: https://news.ycombinator.com/item?id=47072564
+Points: 2
+# : 0]]></description>
+      <pubDate>Thu, 19 Feb 2026 11:10:43 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://www.rataify.com/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : Les Étoiles des Numériques : découvrez tous les lauréats 2025-2026]]></title>
+      <link>https://www.lesnumeriques.com/societe-numerique/les-etoiles-des-numeriques-decouvrez-tous-les-laureats-2025-2026-n251672.html</link>
+      <description><![CDATA[Plus qu'une simple remise de prix, les Étoiles des Numériques célèbrent le sommet de la tech. Ce palmarès est le fruit d'un processus rigoureux visant à isoler les produits les plus performants passés sur nos bancs de test. Mais au-delà des chiffres et des mesures brutes, ces Étoiles sont aussi nos véritables coups de cœur : elles récompensent les ap...]]></description>
+      <pubDate>Thu, 19 Feb 2026 11:00:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/societe-numerique/les-etoiles-des-numeriques-decouvrez-tous-les-laureats-2025-2026-n251672.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[Adieu les lignes blanches sur les routes ? Cette innovation pourrait changer la donne]]></title>
+      <link>https://www.journaldugeek.com/2026/02/19/adieu-les-lignes-blanches-sur-les-routes-cette-innovation-pourrait-changer-la-donne/</link>
+      <description><![CDATA[En Espagne, une expérimentation intrigue autant qu’elle fascine, certaines routes voient apparaître des marquages fluorescents, censés être plus visibles que les traditionnelles lignes blanches.]]></description>
+      <pubDate>Thu, 19 Feb 2026 10:37:30 GMT</pubDate>
       <source>Journal du Geek</source>
       <category>products</category>
-      <guid>https://www.journaldugeek.com/2026/02/18/bruxelles-met-shein-sous-surveillance-pour-la-vente-de-produits-illegaux-et-un-design-trop-addictif/</guid>
+      <guid>https://www.journaldugeek.com/2026/02/19/adieu-les-lignes-blanches-sur-les-routes-cette-innovation-pourrait-changer-la-donne/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : Mettez vos Freebox et répéteurs WiFi à jour, Free corrige de nombreux bugs et pense au DHCP]]></title>
+      <link>https://www.lesnumeriques.com/societe-numerique/mettez-vos-freebox-et-repeteurs-wifi-a-jour-free-corrige-de-nombreux-bugs-et-pense-au-dhcp-n251701.html</link>
+      <description><![CDATA[Ce 18 février 2026, Free a décidé de réaliser un tir groupé en diffusant deux mises à jour d'un coup pour ses produits. D'un côté nous avons la mise à jour 2.7.13 pour le répéteur WiFi (inclus sur demande dans la plupart des offres), tandis que les Freebox Ultra, Delta, Pop et Revolution profitent d'un patch numéroté 4.9.16. Voyons de quoi il retourn...]]></description>
+      <pubDate>Thu, 19 Feb 2026 10:30:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/societe-numerique/mettez-vos-freebox-et-repeteurs-wifi-a-jour-free-corrige-de-nombreux-bugs-et-pense-au-dhcp-n251701.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : Snapseed : l'application de Google est toujours plus riche sur iOS, mais pas Android]]></title>
+      <link>https://www.lesnumeriques.com/appli-logiciel/snapseed-l-application-de-google-est-toujours-plus-riche-sur-ios-mais-pas-android-n251700.html</link>
+      <description><![CDATA[Régulièrement, Google préfère de manière étonnante prioriser des versions iOS plutôt qu'Android de certaines de ses applications. C'est le cas en ce 19 février 2026 avec Snapseed, son appli de retouche photo qui va aujourd'hui beaucoup plus loin, mais uniquement sur les produits d'Apple.Avant la mise à jour 3.15.0 que nous allons détailler dans un in...]]></description>
+      <pubDate>Thu, 19 Feb 2026 09:15:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/appli-logiciel/snapseed-l-application-de-google-est-toujours-plus-riche-sur-ios-mais-pas-android-n251700.html</guid>
     </item>
   </channel>
 </rss>

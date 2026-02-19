@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How I built a Zero-Latency AI Firewall in Spring Boot (Without Redis)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How I built a Zero-Latency AI Firewall in Spring Boot (Without Redis)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 12:09:43 PM | <a href="https://dev.to/ashutosh_stark/how-i-built-a-zero-latency-ai-firewall-in-spring-boot-without-redis-5ck6" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>If you’ve ever exposed a public API to the internet, you already know what happens next.</p> <p>Within hours (sometimes minutes), bots find it.</p> <p>Headless browsers. AI scrapers. Random scripts running from cloud VMs. They start hammering your endpoints, eating CPU, filling logs, and quietly increasing your cloud bill before your real users even show up.</p> <p>The default advice is usually:</p> <blockquote>
+<p>“Just use Redis and add a rate limiter.”</p>
+</blockquote> <p>Which is fine… if you already run Redis.</p> <p>But for small services, side projects, or lean microservices, spinning up Redis just to block a few bots feels like architectural overkill.</p> <p>I wanted something simpler.</p> <p>Something that:</p> <ul>
+<li>Lives inside the app</li>
+<li>Adds almost zero latency</li>
+<li>Stops bots before they touch Spring Security</li>
+<li>Requires zero external infrastructure</li>
+</ul> <p>So I built <strong>VelocityGate</strong>.</p> <hr> <h2> <a name="move-the-defense-to-the-edge" href="#move-the-defense-to-the-edge"> </a> Move the Defense to the Edge
+</h2> <p>In Spring Boot, a request doesn’t go straight to your <code>@RestController</code>.</p> <p>It passes through:</p> <ul>
+<li>Tomcat</li>
+<li><code>DispatcherServlet</code></li>
+<li>Spring Security filter chain</li>
+<li>Logging filters</li>
+<li>Interceptors</li>
+<li>Then finally your controller</li>
+</ul> <p>If a bot is hitting your API 100 times per second, letting those requests reach Spring Security is already too late. You're allocating objects. Building security contexts. Possibly touching the database.</p> <p>That’s wasted work.</p> <p>So instead, I injected a custom <code>Filter</code> and forced it to run first.<br>
+</p> <div>
+<pre><code><span>@Bean</span>
+<span>public</span> <span>FilterRegistrationBean</span><span>&lt;</span><span>BotBouncerFilter</span><span>&gt;</span> <span>velocityFilter</span><span>()</span> <span>{</span> <span>FilterRegistrationBean</span><span>&lt;</span><span>BotBouncerFilter</span><span>&gt;</span> <span>registrationBean</span> <span>=</span> <span>new</span> <span>FilterRegistrationBean</span><span>&lt;&gt;();</span> <span>registrationBean</span><span>.</span><span>setFilter</span><span>(</span><span>new</span> <span>BotBouncerFilter</span><span>());</span> <span>registrationBean</span><span>.</span><span>addUrlPatterns</span><span>(</span><span>"/*"</span><span>);</span> <span>// Run before everything else</span> <span>registrationBean</span><span>.</span><span>setOrder</span><span>(</span><span>Ordered</span><span>.</span><span>HIGHEST_PRECEDENCE</span><span>);</span> <span>return</span> <span>registrationBean</span><span>;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This filter acts like a bouncer at the front door.</p> <p>If the request looks like a bot, we immediately return a <code>403</code> and end it.</p> <p>That means:</p> <ul>
+<li>No controller allocation</li>
+<li>No Spring Security context creation</li>
+<li>No database pool usage</li>
+<li>No business logic execution</li>
+</ul> <p>The request dies instantly — exactly how it should.</p> <hr> <h2> <a name="inmemory-fixed-window-rate-limiter-no-redis" href="#inmemory-fixed-window-rate-limiter-no-redis"> </a> In-Memory Fixed Window Rate Limiter (No Redis)
+</h2> <p>For rate limiting, I needed something:</p> <ul>
+<li>Thread-safe</li>
+<li>Fast</li>
+<li>Lock-free</li>
+<li>In-memory</li>
+</ul> <p>I used a <code>ConcurrentHashMap</code> with <code>AtomicInteger</code>.<br>
+</p> <div>
+<pre><code><span>private</span> <span>final</span> <span>Map</span><span>&lt;</span><span>String</span><span>,</span> <span>AtomicInteger</span><span>&gt;</span> <span>requestCounts</span> <span>=</span> <span>new</span> <span>ConcurrentHashMap</span><span>&lt;&gt;();</span> <span>public</span> <span>boolean</span> <span>isAllowed</span><span>(</span><span>String</span> <span>ipAddress</span><span>,</span> <span>int</span> <span>limit</span><span>)</span> <span>{</span> <span>AtomicInteger</span> <span>count</span> <span>=</span> <span>requestCounts</span><span>.</span><span>computeIfAbsent</span><span>(</span><span>ipAddress</span><span>,</span> <span>k</span> <span>-&gt;</span> <span>new</span> <span>AtomicInteger</span><span>(</span><span>0</span><span>));</span> <span>if</span> <span>(</span><span>count</span><span>.</span><span>incrementAndGet</span><span>()</span> <span>&gt;</span> <span>limit</span><span>)</span> <span>{</span> <span>return</span> <span>false</span><span>;</span> <span>}</span> <span>return</span> <span>true</span><span>;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That’s it.</p> <p>No network hop.<br>
+No serialization.<br>
+No distributed lock.<br>
+No external dependency.</p> <p>Just atomic increments inside the JVM.</p> <p>A lightweight scheduled task clears the map at fixed intervals, effectively resetting the window.</p> <p>This approach works best for single-instance deployments or smaller services. If you're running multiple replicas or need global synchronization, a centralized store like Redis is still the right choice.</p> <p>For many APIs, though, this is more than enough.</p> <hr> <h2> <a name="layer-2-signature-detection" href="#layer-2-signature-detection"> </a> Layer 2: Signature Detection
+</h2> <p>Rate limiting alone doesn’t stop slow scrapers.</p> <p>So VelocityGate also checks for common headless browser fingerprints.</p> <p>Things like:</p> <ul>
+<li>
+<code>HeadlessChrome</code> in headers</li>
+<li>Missing or suspicious <code>User-Agent</code>
+</li>
+<li>Automation-related flags</li>
+<li>Incomplete browser header sets</li>
+</ul> <p>If you're using default Puppeteer or Playwright configurations, you won’t even reach the rate limiter — the request is rejected immediately.</p> <p>Now we have two layers:</p> <ol>
+<li>Block obvious automation instantly</li>
+<li>Throttle aggressive traffic</li>
+</ol> <p>Simple. Effective. Fast.</p> <hr> <h2> <a name="why-i-avoided-redis" href="#why-i-avoided-redis"> </a> Why I Avoided Redis
+</h2> <p>Redis is great.</p> <p>But for this use case:</p> <ul>
+<li>It adds network latency</li>
+<li>It adds operational overhead</li>
+<li>It introduces another failure point</li>
+<li>It complicates local development</li>
+</ul> <p>If you're running a globally distributed system with multiple replicas, sure — use Redis or a centralized store.</p> <p>But if you're just trying to stop bots from melting your VPS, you probably don’t need distributed architecture.</p> <hr> <h2> <a name="open-source-repo" href="#open-source-repo"> </a> Open Source Repo
+</h2> <p>The project is open source here:</p> <p> <a href="https://github.com/ashutosh-stark/velocity-gate/tree/main" target="_blank">velocity Gate</a></p> <p>Inside the repo you'll find:</p> <ul>
+<li>The full filter implementation</li>
+<li>Header inspection logic</li>
+<li>Fixed window rate limiter</li>
+<li>Configuration options</li>
+</ul> <p>It’s built as a drop-in Spring Boot starter so you can integrate it quickly.</p> <hr> <h2> <a name="whats-next" href="#whats-next"> </a> What’s Next
+</h2> <p>Now I’m exploring something bigger.</p> <p>Instead of a Spring-only solution, I’m thinking about building a lightweight reverse proxy (probably in Go or Rust) that sits in front of any backend:</p> <ul>
+<li>Node.js</li>
+<li>Python</li>
+<li>PHP</li>
+<li>Go</li>
+<li>Java</li>
+</ul> <p>Basically a developer-first Cloud WAF focused specifically on blocking AI scrapers and bot traffic for APIs.</p> <p>Before I spend months building distributed synchronization and edge deployment, I want to validate demand.</p> <p>Would you use something like that? <a href="https://dev.tourl/">Join Eaily Access waitlist here</a></p> <hr> <h2> <a name="final-thoughts" href="#final-thoughts"> </a> Final Thoughts
+</h2> <p>You don’t always need:</p> <ul>
+<li>Redis</li>
+<li>Kubernetes</li>
+<li>A service mesh</li>
+<li>A managed API gateway</li>
+</ul> <p>Sometimes you just need:</p> <p>A well-placed filter.<br>
+An in-memory counter.<br>
+And the discipline to keep things simple.</p> <p>How are you handling bot traffic in your projects right now?</p> <p>Redis?<br>
+Cloudflare?<br>
+API Gateway?<br>
+Or just hoping for the best?</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

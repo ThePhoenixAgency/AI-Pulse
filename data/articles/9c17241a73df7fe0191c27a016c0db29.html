@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OpenROAD MCP: Let AI Close Your Timing</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>OpenROAD MCP: Let AI Close Your Timing</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 12:15:02 PM | <a href="https://dev.to/luarss/openroad-mcp-let-ai-close-your-timing-47h6" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Here's a situation every VLSI engineer knows. You're staring at debug logs. There are 23 setup violations. WNS is -0.05 ns. The clock period is 0.46 ns and the design just won't close.</p> <p>You already know the answer is probably in the constraints. But confirming that means reading the critical paths, estimating what the design can actually achieve, adjusting the SDC, re-running the flow, and checking again. An hour of mechanical work to answer a question you could have answered in thirty seconds if someone handed you the right report and asked the right question.</p> <p>That's the loop I wanted to break. So I built <strong>OpenROAD MCP</strong> — a server that lets AI assistants like Claude Code talk directly to a live OpenROAD process.</p> <hr> <h2> <a name="what-it-actually-does" href="#what-it-actually-does"> </a> What It Actually Does
+</h2> <p>Instead of explaining it abstractly, here's a real example you can run yourself.</p> <h3> <a name="demo-closing-timing-on-nangate45gcd" href="#demo-closing-timing-on-nangate45gcd"> </a> Demo: Closing Timing on nangate45/gcd
+</h3> <p>The nangate45/gcd design ships with a 0.46 ns clock constraint that fails timing out of the box:<br>
+</p> <div>
+<pre><code>WNS: -0.05 ns
+TNS: -0.53 ns
+Setup violations: 23
+Status: FAILED
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>With OpenROAD MCP installed, open Claude Code and type:</p> <blockquote>
+<p><em>"Create an OpenROAD session, load the nangate45 GCD design from ORFS, and tell me where the timing failures are."</em></p>
+</blockquote> <p>The AI creates a session, loads the design, and runs <code>report_checks</code> and <code>report_clock_min_period</code>. It reads the critical path output — the worst offender is a 0.42 ns path through <code>dpath.a_reg</code> that the 0.46 ns constraint (after I/O delay deductions) only allows 0.37 ns for — and comes back with a diagnosis:</p> <blockquote>
+<p><em>"The 0.46 ns clock period is too aggressive for this design. The minimum achievable period is approximately 0.51 ns. I recommend relaxing the constraint to 0.52 ns."</em></p>
+</blockquote> <p>You tell it to make the change. It writes an updated SDC, reruns the flow, and reports back:<br>
+</p> <div>
+<pre><code>WNS: ~0.00 ns
+TNS: ~0.00 ns
+Setup violations: 4 (negligible slack)
+Status: PASSED
+Tradeoff: -12% frequency (1914 MHz vs 2174 MHz target)
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The full demo files — original SDC, relaxed SDC, and a run script — are in <a href="https://github.com/luarss/openroad-mcp/tree/main/demo/orfs-gcd-timing" target="_blank"><code>demo/orfs-gcd-timing/</code></a> in the repo.</p> <p>That whole loop — load, analyze, diagnose, fix, verify — in one conversation. No copy-pasting report output into a chat window. No context switching. The AI has the live design state and reasons over it directly.</p> <hr> <h2> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h2> <p>OpenROAD expects an interactive terminal. Using a plain subprocess pipe gives you buffering issues, broken prompts, and unreliable output. Instead, OpenROAD MCP creates a <strong>PTY (pseudo-terminal)</strong> for each session — OpenROAD sees a real terminal and behaves exactly as it would in an interactive shell. Background threads drain stdout continuously; a queue accumulates output until the prompt returns.</p> <p>Sessions persist across commands. You load LEF, then Liberty, then Verilog, then SDC — building up design state exactly as you would manually. The <code>SessionManager</code> can hold multiple concurrent sessions, which matters for design space exploration: run the same design with three SDC variants in parallel, collect the results, pick the winner.</p> <p>The MCP server exposes tools for creating and managing sessions, executing Tcl commands, and reading ORFS report images (congestion maps, routing density plots) as data the AI can reason about. Full tool list is in the <a href="https://github.com/luarss/openroad-mcp" target="_blank">README</a>.</p> <hr> <h2> <a name="getting-started" href="#getting-started"> </a> Getting Started
+</h2> <div>
+<pre><code>claude mcp add <span>--transport</span> stdio openroad-mcp <span>--</span> <span>\</span> uvx <span>--from</span> git+https://github.com/luarss/openroad-mcp openroad-mcp
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Then try the GCD timing demo:</p> <blockquote>
+<p><em>"Create an OpenROAD session, load the nangate45 GCD design from ORFS, and tell me where the timing failures are."</em></p>
+</blockquote> <p>The demo files and expected output are in <code>demo/orfs-gcd-timing/</code> in the repo.</p> <hr> <h2> <a name="what-i-want-to-know" href="#what-i-want-to-know"> </a> What I Want to Know
+</h2> <p>If you work with OpenROAD, I want to hear where this breaks. What are some of your pain points making AI work with your workflow?</p> <hr> <p><strong>GitHub:</strong> <a href="https://github.com/luarss/openroad-mcp" target="_blank">github.com/luarss/openroad-mcp</a><br>
+<strong>Email:</strong> <a href="mailto:jluar@precisioninno.com">jluar@precisioninno.com</a></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

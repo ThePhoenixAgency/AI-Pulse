@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Un bug dans Microsoft 365 Copilot lui permettait de résumer des emails confidentiels</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Un bug dans Microsoft 365 Copilot lui permettait de résumer des emails confidentiels</h1>
+  <div class="metadata">
+    Source: Next INpact | Date: 2/19/2026 9:24:11 AM | <a href="https://next.ink/brief_article/un-bug-dans-microsoft-365-copilot-lui-permettait-de-resumer-des-emails-confidentiels/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <p>L’assistant IA inclus dans Microsoft 365 Copilot avait la possibilité de passer outre les mesures de sécurités censées être mises en place pour qu’il n’accède pas à tous les contenus des utilisateurs de la suite.</p> <figure><img alt="" src="https://i3.wp.com/next.ink/wp-content/uploads/2024/10/Copilotest-1024x496.webp?ssl=1"></figure> <p>BleepingComputer a <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-says-bug-causes-copilot-to-summarize-confidential-emails/">relevé</a> que Microsoft avait signalé depuis le 21 janvier ce bug dans son outil réservé aux administrateurs Microsoft 365 sous le numéro <a href="https://admin.microsoft.com/#/MessageCenter/:/messages/CW1226324">CW1226324</a>.</p> <p>Copilot Chat pouvait accéder aux emails envoyés ou en brouillon des utilisateurs même s’ils étaient étiquetés par l’utilisateur comme confidentiels (étiquette pourtant explicitement mise en place pour éviter cela). Ainsi ses résumés pouvaient intégrer des informations issues de ces emails confidentiels.</p> <p>Selon Microsoft elle-même, ce bug entraine le fait que «<em> les emails des utilisateurs auxquels une étiquette confidentielle a été appliquée sont traités de manière incorrecte par le chat Microsoft 365 Copilot </em>» et que «<em> l’ «&nbsp;onglet travail&nbsp;» du Chat de Copilot Microsoft 365 résume les emails même si ceux-ci sont assortis d’une étiquette de confidentialité et qu’une politique DLP </em>[data loss prevention, ndlr]<em> est configurée</em>&nbsp;».</p> <p>L’entreprise affirme avoir commencé à déployer le correctif début février et indique qu’elle a contacté une partie des utilisateurs concernés pour vérifier qu’il fonctionnait. Mais elle ne s’est encore engagée sur aucune date de correction complète du bug et n’a donné aucune information sur le nombre d’organisations touchées.</p> <p>Plus tôt, la direction des services informatiques du Parlement européen avait <a href="https://next.ink/brief_article/le-parlement-europeen-bloque-lacces-aux-outils-dia-generative-sur-ses-appareils/" target="_blank">décidé</a> de bloquer l’accès à tous les outils d’IA générative sur ses appareils pour s’assurer que des informations ne fuitent pas via ces outils.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

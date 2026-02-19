@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - Nolpak14/agorio: The open-source toolkit for building AI commerce agents using UCP and ACP protocols</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - Nolpak14/agorio: The open-source toolkit for building AI commerce agents using UCP and ACP protocols</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 11:48:07 AM | <a href="https://github.com/Nolpak14/agorio" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p> <strong>agorio</strong>
+</p>
+<p> The open-source toolkit for building AI commerce agents.
+</p>
+<p> <a href="https://www.npmjs.com/package/@agorio/sdk"><img src="https://camo.githubusercontent.com/719d096bfa2557766fed0d92578a233841dab6547d647ad143f6a31ab5327dac/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f4061676f72696f2f73646b2e737667" alt="npm version"></a> <a href="https://github.com/agorio/agorio/actions"><img src="https://github.com/agorio/agorio/actions/workflows/ci.yml/badge.svg" alt="CI"></a> <a href="https://github.com/agorio/agorio/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/7013272bd27ece47364536a221edb554cd69683b68a46fc0ee96881174c4214c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d626c75652e737667" alt="License: MIT"></a> <a href="https://agorio.dev"><img src="https://camo.githubusercontent.com/14dc37a6cbc3427b9e10304f439afbb9bb5094132237491e3cc2d1260cc9646a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646f63732d61676f72696f2e6465762d626c61636b" alt="Docs"></a>
+</p>
+<hr>
+<p>Agorio gives you everything you need to build AI agents that can discover merchants, browse products, and complete real purchases -- using the <a href="https://github.com/Universal-Commerce-Protocol/ucp">UCP</a> (Google/Shopify) and <a href="https://github.com/agentic-commerce-protocol/agentic-commerce-protocol">ACP</a> (OpenAI/Stripe) open commerce protocols. It works with any LLM. Ship a shopping agent in 20 lines of code.</p>
+<div><pre><span>import</span> <span>{</span> <span>ShoppingAgent</span><span>,</span> <span>GeminiAdapter</span><span>,</span> <span>MockMerchant</span> <span>}</span> <span>from</span> <span>'@agorio/sdk'</span><span>;</span> <span>// Start a mock merchant for testing</span>
+<span>const</span> <span>merchant</span> <span>=</span> <span>new</span> <span>MockMerchant</span><span>(</span><span>)</span><span>;</span>
+<span>await</span> <span>merchant</span><span>.</span><span>start</span><span>(</span><span>)</span><span>;</span> <span>// Create an agent powered by Gemini</span>
+<span>const</span> <span>agent</span> <span>=</span> <span>new</span> <span>ShoppingAgent</span><span>(</span><span>{</span> <span>llm</span>: <span>new</span> <span>GeminiAdapter</span><span>(</span><span>{</span> <span>apiKey</span>: <span>process</span><span>.</span><span>env</span><span>.</span><span>GEMINI_API_KEY</span> <span>}</span><span>)</span><span>,</span> <span>verbose</span>: <span>true</span><span>,</span>
+<span>}</span><span>)</span><span>;</span> <span>// Tell the agent what to buy</span>
+<span>const</span> <span>result</span> <span>=</span> <span>await</span> <span>agent</span><span>.</span><span>run</span><span>(</span> <span>`Go to <span><span>${</span><span>merchant</span><span>.</span><span>domain</span><span>}</span></span> and buy me wireless headphones`</span>
+<span>)</span><span>;</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>.</span><span>answer</span><span>)</span><span>;</span> <span>// "I found ProSound Wireless Headphones..."</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>.</span><span>checkout</span><span>?.</span><span>orderId</span><span>)</span><span>;</span> <span>// "ord_1708300000_abc123"</span> <span>await</span> <span>merchant</span><span>.</span><span>stop</span><span>(</span><span>)</span><span>;</span></pre></div>
+<p>That is a fully working agent that discovers a merchant via UCP, searches the catalog, adds items to a cart, goes through checkout with shipping and payment, and returns an order confirmation. The entire purchase flow, automated by an LLM.</p>
+<hr>
+<div><h2>Why Agorio</h2><a href="#why-agorio"></a></div>
+<p>The agentic commerce wave is here. Google AI Mode has 75M+ daily active users shopping through AI. Shopify is making 4.8M merchants discoverable via MCP. Stripe is enabling 1.5M merchants to accept agent payments with one line of code. Visa and Mastercard are enabling all US cardholders for agent transactions by holiday 2026.</p>
+<p>Two open protocols are emerging as the standard:</p>
+<ul>
+<li><strong>UCP</strong> (Universal Commerce Protocol) -- backed by Google, Shopify, Etsy, Wayfair, Target, Walmart, Visa, Mastercard. <a href="https://github.com/Universal-Commerce-Protocol/ucp">2,350 GitHub stars</a>.</li>
+<li><strong>ACP</strong> (Agent Commerce Protocol) -- backed by OpenAI, Stripe, PayPal, Shopify. <a href="https://github.com/agentic-commerce-protocol/agentic-commerce-protocol">1,200 GitHub stars</a>.</li>
+</ul>
+<p>But there is no developer toolkit for building on top of them. LangChain and CrewAI are generic agent frameworks. Apify is focused on web scraping. Nobody provides commerce-specific tools, protocol clients, or test infrastructure.</p>
+<p>Agorio fills that gap.</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Building from Scratch</th>
+<th>With Agorio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UCP merchant discovery</td>
+<td>Parse <pre><code>/.well-known/ucp</code></pre> yourself, handle both capability formats, normalize services</td>
+<td><pre><code>client.discover("shop.example.com")</code></pre></td>
+</tr>
+<tr>
+<td>Product search and browsing</td>
+<td>Build REST client, handle pagination, parse responses</td>
+<td>Built-in agent tool, automatic</td>
+</tr>
+<tr>
+<td>Cart and checkout flow</td>
+<td>Manage sessions, shipping, payment state machine</td>
+<td>12 tools handle the full flow</td>
+</tr>
+<tr>
+<td>LLM integration</td>
+<td>Write provider-specific function calling code</td>
+<td>Swap adapters: <pre><code>GeminiAdapter</code></pre>, <pre><code>ClaudeAdapter</code></pre>, <pre><code>OpenAIAdapter</code></pre></td>
+</tr>
+<tr>
+<td>Testing against merchants</td>
+<td>Stand up your own mock server, write fixtures</td>
+<td><pre><code>new MockMerchant()</code></pre> -- full UCP-compliant server with 10 products</td>
+</tr>
+<tr>
+<td>Chaos testing</td>
+<td>Nothing built in</td>
+<td><pre><code>{ latencyMs: 500, errorRate: 0.1 }</code></pre></td>
+</tr>
+<tr>
+<td>Agent orchestration loop</td>
+<td>Implement plan-act-observe from scratch</td>
+<td><pre><code>agent.run("buy me headphones")</code></pre></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>What is Included</h2><a href="#what-is-included"></a></div>
+<div><h3>Agent SDK (<pre><code>@agorio/sdk</code></pre>)</h3><a href="#agent-sdk-agoriosdk"></a></div>
+<p>The core library. Everything below ships in a single package.</p>
+<p><strong>ShoppingAgent</strong> -- An LLM-driven agent that completes shopping tasks end-to-end. Uses a plan-act-observe loop with 12 built-in tools. Manages cart state, checkout sessions, and order history. Configurable iteration limits and step callbacks for observability.</p>
+<p><strong>UcpClient</strong> -- Discovers merchants via </p><pre><code>/.well-known/ucp</code></pre>, normalizes both array and object capability formats, resolves REST/MCP/A2A transports, and makes authenticated API calls with timeout handling.<p></p>
+<p><strong>LLM Adapters</strong> -- Provider-agnostic interface. Gemini adapter ships first with full function calling support. Claude and OpenAI adapters are coming.</p>
+<p><strong>MockMerchant</strong> -- A complete UCP-compliant Express server for testing. Serves a UCP profile at </p><pre><code>/.well-known/ucp</code></pre>, OpenAPI schema, product CRUD, search with filtering, full checkout flow with session management, and order tracking. Configurable latency and error rate for chaos testing.<p></p>
+<div><h3>12 Built-in Shopping Tools</h3><a href="#12-built-in-shopping-tools"></a></div>
+<p>These are the function calling tools available to the agent during its reasoning loop. Each maps to a UCP operation:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>discover_merchant</code></pre></td>
+<td>Fetch and parse a merchant's UCP profile by domain</td>
+</tr>
+<tr>
+<td><pre><code>list_capabilities</code></pre></td>
+<td>List what the merchant supports (checkout, orders, fulfillment, discounts)</td>
+</tr>
+<tr>
+<td><pre><code>browse_products</code></pre></td>
+<td>Paginated product catalog with category filtering</td>
+</tr>
+<tr>
+<td><pre><code>search_products</code></pre></td>
+<td>Keyword search across product names and descriptions</td>
+</tr>
+<tr>
+<td><pre><code>get_product</code></pre></td>
+<td>Detailed product info including variants and pricing</td>
+</tr>
+<tr>
+<td><pre><code>add_to_cart</code></pre></td>
+<td>Add products to cart with quantity and variant selection</td>
+</tr>
+<tr>
+<td><pre><code>view_cart</code></pre></td>
+<td>View current cart contents and subtotal</td>
+</tr>
+<tr>
+<td><pre><code>remove_from_cart</code></pre></td>
+<td>Remove items from cart</td>
+</tr>
+<tr>
+<td><pre><code>initiate_checkout</code></pre></td>
+<td>Start checkout session, get shipping options</td>
+</tr>
+<tr>
+<td><pre><code>submit_shipping</code></pre></td>
+<td>Submit shipping address</td>
+</tr>
+<tr>
+<td><pre><code>submit_payment</code></pre></td>
+<td>Complete payment and receive order confirmation</td>
+</tr>
+<tr>
+<td><pre><code>get_order_status</code></pre></td>
+<td>Check status of an existing order</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
+<ul>
+<li>Node.js 20 or later</li>
+<li>A Gemini API key (<a href="https://aistudio.google.com/apikey">get one free</a>)</li>
+</ul>
+<div><h3>Install</h3><a href="#install"></a></div>
+<div><pre>npm install @agorio/sdk</pre></div>
+<div><h3>Run your first agent</h3><a href="#run-your-first-agent"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>ShoppingAgent</span><span>,</span> <span>GeminiAdapter</span><span>,</span> <span>MockMerchant</span> <span>}</span> <span>from</span> <span>'@agorio/sdk'</span><span>;</span> <span>// 1. Start a mock merchant (UCP-compliant test server)</span>
+<span>const</span> <span>merchant</span> <span>=</span> <span>new</span> <span>MockMerchant</span><span>(</span><span>{</span> <span>name</span>: <span>'TechShop'</span> <span>}</span><span>)</span><span>;</span>
+<span>await</span> <span>merchant</span><span>.</span><span>start</span><span>(</span><span>)</span><span>;</span> <span>// 2. Create an agent with your LLM of choice</span>
+<span>const</span> <span>agent</span> <span>=</span> <span>new</span> <span>ShoppingAgent</span><span>(</span><span>{</span> <span>llm</span>: <span>new</span> <span>GeminiAdapter</span><span>(</span><span>{</span> <span>apiKey</span>: <span>process</span><span>.</span><span>env</span><span>.</span><span>GEMINI_API_KEY</span><span>,</span> <span>model</span>: <span>'gemini-2.0-flash'</span><span>,</span> <span>// default</span> <span>temperature</span>: <span>0.7</span><span>,</span> <span>}</span><span>)</span><span>,</span> <span>verbose</span>: <span>true</span><span>,</span> <span>// logs each think/tool/result step</span> <span>maxIterations</span>: <span>20</span><span>,</span> <span>onStep</span>: <span>(</span><span>step</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>// Optional: observe every agent step in real time</span> <span>if</span> <span>(</span><span>step</span><span>.</span><span>type</span> <span>===</span> <span>'tool_call'</span><span>)</span> <span>{</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>`Calling <span><span>${</span><span>step</span><span>.</span><span>toolName</span><span>}</span></span>...`</span><span>)</span><span>;</span> <span>}</span> <span>}</span><span>,</span>
+<span>}</span><span>)</span><span>;</span> <span>// 3. Give it a task</span>
+<span>const</span> <span>result</span> <span>=</span> <span>await</span> <span>agent</span><span>.</span><span>run</span><span>(</span> <span>`Go to <span><span>${</span><span>merchant</span><span>.</span><span>domain</span><span>}</span></span> and buy me a mechanical keyboard with brown switches.</span>
+<span> Ship to: Jane Doe, 123 Main St, San Francisco, CA 94102, US`</span>
+<span>)</span><span>;</span> <span>// 4. Inspect the result</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>.</span><span>success</span><span>)</span><span>;</span> <span>// true</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>.</span><span>answer</span><span>)</span><span>;</span> <span>// Natural language summary</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>.</span><span>checkout</span><span>?.</span><span>orderId</span><span>)</span><span>;</span> <span>// "ord_..."</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>.</span><span>checkout</span><span>?.</span><span>total</span><span>)</span><span>;</span> <span>// { amount: "95.98", currency: "USD" }</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>.</span><span>iterations</span><span>)</span><span>;</span> <span>// Number of agent loop iterations</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>.</span><span>steps</span><span>.</span><span>length</span><span>)</span><span>;</span> <span>// Full step trace for debugging</span> <span>await</span> <span>merchant</span><span>.</span><span>stop</span><span>(</span><span>)</span><span>;</span></pre></div>
+<div><h3>Use the UCP client directly</h3><a href="#use-the-ucp-client-directly"></a></div>
+<p>If you want lower-level control without the agent loop:</p>
+<div><pre><span>import</span> <span>{</span> <span>UcpClient</span> <span>}</span> <span>from</span> <span>'@agorio/sdk'</span><span>;</span> <span>const</span> <span>client</span> <span>=</span> <span>new</span> <span>UcpClient</span><span>(</span><span>{</span> <span>timeoutMs</span>: <span>10000</span> <span>}</span><span>)</span><span>;</span> <span>// Discover a merchant</span>
+<span>const</span> <span>discovery</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>discover</span><span>(</span><span>'shop.example.com'</span><span>)</span><span>;</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>discovery</span><span>.</span><span>version</span><span>)</span><span>;</span> <span>// "2026-01-11"</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>discovery</span><span>.</span><span>capabilities</span><span>)</span><span>;</span> <span>// [{ name: "dev.ucp.shopping.checkout", ... }]</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>discovery</span><span>.</span><span>services</span><span>)</span><span>;</span> <span>// [{ name: "dev.ucp.shopping", transports: { rest, mcp, a2a }<span> </span>}]</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>discovery</span><span>.</span><span>paymentHandlers</span><span>)</span><span>;</span> <span>// [{ id: "stripe", name: "Stripe" }]</span> <span>// Check capabilities</span>
+<span>client</span><span>.</span><span>hasCapability</span><span>(</span><span>'dev.ucp.shopping.checkout'</span><span>)</span><span>;</span> <span>// true</span> <span>// Call merchant APIs</span>
+<span>const</span> <span>products</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>callApi</span><span>(</span><span>'/products'</span><span>)</span><span>;</span>
+<span>const</span> <span>product</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>callApi</span><span>(</span><span>'/products/prod_123'</span><span>)</span><span>;</span>
+<span>const</span> <span>order</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>callApi</span><span>(</span><span>'/checkout'</span><span>,</span> <span>{</span> <span>method</span>: <span>'POST'</span><span>,</span> <span>body</span>: <span>{</span> <span>items</span>: <span>[</span><span>{</span> <span>productId</span>: <span>'prod_123'</span><span>,</span> <span>quantity</span>: <span>1</span> <span>}</span><span>]</span> <span>}</span><span>,</span>
+<span>}</span><span>)</span><span>;</span></pre></div>
+<div><h3>Configure the mock merchant</h3><a href="#configure-the-mock-merchant"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>MockMerchant</span> <span>}</span> <span>from</span> <span>'@agorio/sdk/mock'</span><span>;</span> <span>const</span> <span>merchant</span> <span>=</span> <span>new</span> <span>MockMerchant</span><span>(</span><span>{</span> <span>port</span>: <span>3456</span><span>,</span> <span>// Fixed port (default: random)</span> <span>name</span>: <span>'Chaos Shop'</span><span>,</span> <span>latencyMs</span>: <span>200</span><span>,</span> <span>// Simulate 200ms network latency</span> <span>errorRate</span>: <span>0.05</span><span>,</span> <span>// 5% of requests fail with 500</span> <span>products</span>: <span>[</span> <span>// Custom product catalog</span> <span>{</span> <span>id</span>: <span>'custom_1'</span><span>,</span> <span>name</span>: <span>'Custom Widget'</span><span>,</span> <span>description</span>: <span>'A test product'</span><span>,</span> <span>price</span>: <span>{</span> <span>amount</span>: <span>'9.99'</span><span>,</span> <span>currency</span>: <span>'USD'</span> <span>}</span><span>,</span> <span>category</span>: <span>'Widgets'</span><span>,</span> <span>inStock</span>: <span>true</span><span>,</span> <span>}</span><span>,</span> <span>]</span><span>,</span>
+<span>}</span><span>)</span><span>;</span></pre></div>
+<hr>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>@agorio/sdk | |-- agent/ | ShoppingAgent # LLM-driven plan-act-observe loop | # Manages cart, checkout, orders | |-- client/ | UcpClient # UCP discovery + REST/MCP/A2A client | # Profile parsing, capability normalization | |-- llm/ | LlmAdapter (interface) # Provider-agnostic LLM contract | GeminiAdapter # Google Gemini with function calling | tools.ts # 12 shopping tool definitions (JSON Schema) | |-- mock/ | MockMerchant # Full UCP-compliant Express test server | fixtures.ts # 10-product catalog + UCP profile builder | |-- types/ UcpProfile, UcpService, UcpCapability LlmAdapter, ChatMessage, ToolCall AgentOptions, AgentResult, AgentStep CartItem, CheckoutResult, MockProduct
+</code></pre></div>
+<p>The </p><pre><code>LlmAdapter</code></pre> interface is the key abstraction. It has two methods:<p></p>
+<div><pre><span>interface</span> <span>LlmAdapter</span> <span>{</span> <span>chat</span><span>(</span><span>messages</span>: <span>ChatMessage</span><span>[</span><span>]</span><span>,</span> <span>tools</span>?: <span>ToolDefinition</span><span>[</span><span>]</span><span>)</span>: <span>Promise</span><span>&lt;</span><span>LlmResponse</span><span>&gt;</span><span>;</span> <span>readonly</span> <span>modelName</span>: <span>string</span><span>;</span>
+<span>}</span></pre></div>
+<p>Any LLM that supports function calling can implement this interface. The </p><pre><code>ShoppingAgent</code></pre> does not know or care which model is behind it.<p></p>
+<hr>
+<div><h2>Supported LLMs</h2><a href="#supported-llms"></a></div>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Adapter</th>
+<th>Status</th>
+<th>Function Calling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google Gemini</td>
+<td><pre><code>GeminiAdapter</code></pre></td>
+<td>Available</td>
+<td>Native</td>
+</tr>
+<tr>
+<td>Anthropic Claude</td>
+<td><pre><code>ClaudeAdapter</code></pre></td>
+<td>Coming soon</td>
+<td>Native</td>
+</tr>
+<tr>
+<td>OpenAI / ChatGPT</td>
+<td><pre><code>OpenAIAdapter</code></pre></td>
+<td>Coming soon</td>
+<td>Native</td>
+</tr>
+<tr>
+<td>Ollama (local)</td>
+<td><pre><code>OllamaAdapter</code></pre></td>
+<td>Planned</td>
+<td>Via tool use</td>
+</tr>
+<tr>
+<td>Any provider</td>
+<td>Implement <pre><code>LlmAdapter</code></pre></td>
+<td>Build your own</td>
+<td>Any</td>
+</tr>
+</tbody>
+</table>
+<p>To build your own adapter, implement the </p><pre><code>LlmAdapter</code></pre> interface and pass it to <pre><code>ShoppingAgent</code></pre>. See the <a href="/Nolpak14/agorio/blob/main/src/llm/gemini.ts">Gemini adapter source</a> for a reference implementation.<p></p>
+<hr>
+<div><h2>Testing</h2><a href="#testing"></a></div>
+<p>Agorio uses <a href="https://vitest.dev/">Vitest</a> and ships with 37 tests covering the UCP client, mock merchant, and agent orchestration.</p>
+<div><pre><span><span>#</span> Run all tests</span>
+npm <span>test</span> <span><span>#</span> Run with coverage</span>
+npm <span>test</span> -- --coverage <span><span>#</span> Run a specific test file</span>
+npm <span>test</span> -- tests/ucp-client.test.ts</pre></div>
+<p>The mock merchant makes it easy to write integration tests for your own agents:</p>
+<div><pre><span>import</span> <span>{</span> <span>describe</span><span>,</span> <span>it</span><span>,</span> <span>expect</span><span>,</span> <span>beforeAll</span><span>,</span> <span>afterAll</span> <span>}</span> <span>from</span> <span>'vitest'</span><span>;</span>
+<span>import</span> <span>{</span> <span>MockMerchant</span><span>,</span> <span>UcpClient</span> <span>}</span> <span>from</span> <span>'@agorio/sdk'</span><span>;</span> <span>describe</span><span>(</span><span>'my agent'</span><span>,</span> <span>(</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>let</span> <span>merchant</span>: <span>MockMerchant</span><span>;</span> <span>let</span> <span>client</span>: <span>UcpClient</span><span>;</span> <span>beforeAll</span><span>(</span><span>async</span> <span>(</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>merchant</span> <span>=</span> <span>new</span> <span>MockMerchant</span><span>(</span><span>)</span><span>;</span> <span>await</span> <span>merchant</span><span>.</span><span>start</span><span>(</span><span>)</span><span>;</span> <span>client</span> <span>=</span> <span>new</span> <span>UcpClient</span><span>(</span><span>)</span><span>;</span> <span>await</span> <span>client</span><span>.</span><span>discover</span><span>(</span><span>merchant</span><span>.</span><span>domain</span><span>)</span><span>;</span> <span>}</span><span>)</span><span>;</span> <span>afterAll</span><span>(</span><span>async</span> <span>(</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>await</span> <span>merchant</span><span>.</span><span>stop</span><span>(</span><span>)</span><span>;</span> <span>}</span><span>)</span><span>;</span> <span>it</span><span>(</span><span>'discovers the merchant'</span><span>,</span> <span>(</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>expect</span><span>(</span><span>client</span><span>.</span><span>hasCapability</span><span>(</span><span>'dev.ucp.shopping.checkout'</span><span>)</span><span>)</span><span>.</span><span>toBe</span><span>(</span><span>true</span><span>)</span><span>;</span> <span>}</span><span>)</span><span>;</span> <span>it</span><span>(</span><span>'searches products'</span><span>,</span> <span>async</span> <span>(</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>result</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>callApi</span><span>(</span><span>'/products/search?q=headphones'</span><span>)</span><span>;</span> <span>expect</span><span>(</span><span>result</span><span>)</span><span>.</span><span>toHaveProperty</span><span>(</span><span>'products'</span><span>)</span><span>;</span> <span>}</span><span>)</span><span>;</span>
+<span>}</span><span>)</span><span>;</span></pre></div>
+<hr>
+<div><h2>Roadmap</h2><a href="#roadmap"></a></div>
+<div><h3>Now (v0.1)</h3><a href="#now-v01"></a></div>
+<ul>
+<li> ShoppingAgent with plan-act-observe loop</li>
+<li> UcpClient with discovery and REST API support</li>
+<li> GeminiAdapter with native function calling</li>
+<li> MockMerchant with full checkout flow</li>
+<li> 12 built-in shopping tools</li>
+<li> 37 tests passing</li>
+</ul>
+<div><h3>Next (v0.2)</h3><a href="#next-v02"></a></div>
+<ul>
+<li> Claude adapter (Anthropic)</li>
+<li> OpenAI adapter (GPT-4o, o1)</li>
+<li> Streaming support for real-time agent output</li>
+<li> ACP client alongside UCP</li>
+</ul>
+<div><h3>Later (v0.3+)</h3><a href="#later-v03"></a></div>
+<ul>
+<li> Multi-merchant comparison agent</li>
+<li> Ollama adapter for local/offline agents</li>
+<li> Reference agents: price comparison, product research, deal finder</li>
+<li> MCP transport support (beyond REST)</li>
+<li> Agent marketplace</li>
+</ul>
+<hr>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>agorio/ src/ index.ts # Public API exports types/index.ts # All TypeScript types client/ucp-client.ts # UCP discovery + REST client llm/ gemini.ts # Google Gemini adapter tools.ts # 12 shopping tool definitions agent/shopping-agent.ts # Agent orchestrator mock/ mock-merchant.ts # UCP-compliant test server fixtures.ts # Product catalog + profile builder tests/ ucp-client.test.ts # 13 tests mock-merchant.test.ts # 17 tests shopping-agent.test.ts # 7 tests package.json tsconfig.json vitest.config.ts
+</code></pre></div>
+<hr>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>We welcome contributions. See <a href="/Nolpak14/agorio/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for setup instructions, coding standards, and the PR process.</p>
+<p>Areas where contributions are especially valuable:</p> <hr>
+<div><h2>Ecosystem Context</h2><a href="#ecosystem-context"></a></div>
+<p>Agorio builds on two open commerce protocols that are being adopted at scale:</p>
+<p><strong>UCP</strong> (Universal Commerce Protocol) is backed by Google, Shopify, Etsy, Wayfair, Target, Walmart, Visa, Mastercard, Stripe, and PayPal. It defines how AI agents discover merchants and their capabilities via </p><pre><code>/.well-known/ucp</code></pre> profiles. SDKs exist in JavaScript, Python, Java, .NET, Go, PHP, and Dart.<p></p>
+<p><strong>ACP</strong> (Agent Commerce Protocol) is backed by OpenAI, Stripe, PayPal, and Shopify. It focuses on the payment and transaction layer for agent commerce.</p>
+<p>The merchant infrastructure is growing rapidly:</p>
+<ul>
+<li>4.8M Shopify merchants are discoverable via Catalog MCP</li>
+<li>1.5M Stripe merchants can enable ACP with one line of code</li>
+<li>35M PayPal merchants are coming online via Agent Ready</li>
+<li>Visa and Mastercard are enabling all US cardholders by late 2026</li>
+</ul>
+<p>Agorio is an independent, community-driven project. It is not affiliated with Google, Shopify, OpenAI, or Stripe. UCP and ACP are open standards maintained by their respective organizations.</p>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/Nolpak14/agorio/blob/main/LICENSE">MIT</a> -- use it however you want.</p>
+<hr>
+<p> <a href="https://agorio.dev">Website</a> · <a href="https://github.com/agorio/agorio/issues">Issues</a> · <a href="https://github.com/agorio/agorio/discussions">Discussions</a>
+</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
