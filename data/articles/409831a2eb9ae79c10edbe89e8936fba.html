@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How fetch(keepalive) Broke in High-Latency Regions</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How fetch(keepalive) Broke in High-Latency Regions</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 6:07:12 AM | <a href="https://www.adwait.me/writings/broke-my-analytics-events-in-high-latency-regions" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><p><img src="https://www.adwait.me/images/result.webp" alt="Result"></p>
+<p>So recently I built a so-called analytics service for fun. If you don’t know, make sure you check out <strong><a href="https://www.adwait.me/writings/building-my-own-google-analytics" target="_blank">here</a></strong> once. Alright, so I put the base MVP version for testing with my last article randomly.</p>
+<p>I thought, okay, let’s test how much data it can collect. I shared that article on Hacker News, Dev.to, WhatsApp, etc., around 10:30 AM. Everything was normal — the analytics dashboard started showing views, sessions, unique visitors, etc. I went for lunch in the afternoon, and when I came back, I saw a very big spike — almost 800 new sessions recorded. It looked like it was working crazy solid.</p>
+<p>It was a nice serotonin hit until I saw the Activity Logs.</p>
+<p>There were some <strong><code>scroll_depth</code></strong> requests from certain unique visitors, but the <strong><code>page_view</code></strong> request logs were completely missing for that <strong>visitor_id</strong>.</p>
+<p>Something f**ked up.</p>
+<p><img src="https://www.adwait.me/images/issue.webp" alt="Issue"></p>
+<p>If you haven’t realized yet what’s happening , let me explain the logic first.</p>
+<p>In the analytics service, when a new visitor lands on a webpage, a <strong><code>page_view</code></strong> event is called first, and then eventually <strong><code>scroll_depth</code></strong> happens (only if you love to scroll ).</p>
+<p>I found this bug because you always love scrolling, right </p>
+<p>Practically, the order should be:</p>
+<p>(<strong><code>page_view</code></strong> → <strong><code>scroll_depth</code></strong> → and so on…)</p>
+<p>This was happening majorly for some requests from the Europe/US region.</p>
+<p>Even if it were a race condition, it would appear after the scroll event, but there was complete silence.</p>
+<p>What could possibly go wrong?</p>
+<p>Then I thought, let’s dry run what could be possible scenarios.</p>
+<ol>
+<li><strong><code>scroll_depth</code></strong> requests are recorded but no <strong><code>page_view</code></strong> recorded. There might be a chance sometimes a request fails due to network issues, etc. But still, that would be a rare case.</li>
+<li>It could be CORS or some client-side extension blocking the request. But wait a second — if it’s blocking requests, then it should block all requests for a certain domain. Why only specific ones?</li>
+<li>If the <strong><code>page_view</code></strong> request is taking too much time, by then the visitor might trigger:</li>
+</ol>
+<ul>
+<li><strong>pagehide:</strong> tab change.</li>
+<li><strong>unload:</strong> back/forward buttons, reloads the page, or closes the browser window/tab.</li>
+<li><strong>beforeunload:</strong> used to warn a user when they are about to leave a page, typically to prevent loss of unsaved data.</li>
+<li><strong>visibilitychange:</strong> used to detect when a browser tab's content becomes visible or hidden.</li>
+</ul>
+<p>This could be the culprit because <strong>fetch</strong> requests with <strong>keepalive: true</strong> have very little survival chance depending on the browser you use.</p>
+<p>Then I found <strong><code>navigator.sendBeacon</code></strong>. It’s just a POST request — fire and forget — with a max payload size of 64KB, and it’s 99.99% more reliable than <strong>fetch</strong> (keepalive).</p>
+<p>Ahh!! The problem seems solved!!</p>
+<p>But wait a second… f**k!!</p>
+<p>Previously, I was queueing requests (<strong>fetch</strong> requests) to record events in the order they happened and prevent race conditions. (Which is a very dumb solution I ever thought of.)</p>
+<p>Now <strong><code>navigator.sendBeacon</code></strong> does not return any Promise like <strong>fetch()</strong>, so the queueing mechanism will not work.</p>
+<p>Then I thought — why not reconstruct the request order on the backend and let race conditions happen on the client, because it’s not in our hands now.</p>
+<p>How to reconstruct?</p>
+<p>We need some sort of order number or timestamp going with the requests which the backend can identify and figure out the correct sequence. But still, I recommend using an order ID instead of a timestamp because JavaScript <strong><code>Date.now()</code></strong> is NOT monotonic.</p>
+<p>Added one Redis layer for that.</p>
+<div><pre><code>// Frontend sends (<span>in</span> order):
+T=0ms: Event <span>seq</span>=0 → Network latency 150ms
+T=10ms: Event <span>seq</span>=1 → Network latency 50ms
+T=20ms: Event <span>seq</span>=2 → Network latency 100ms // Backend receives (OUT OF ORDER):
+T=60ms: <span>seq</span>=1 arrives (should be second!)
+T=120ms: <span>seq</span>=2 arrives (should be third!)
+T=150ms: <span>seq</span>=0 arrives (should be first!) // Redis buffer accumulates:
+buffer = [<span>seq</span>=1, <span>seq</span>=2, <span>seq</span>=0] // After 500ms <span>timeout</span>:
+sorted = [<span>seq</span>=0, <span>seq</span>=1, <span>seq</span>=2] // Now correct order!
+</code></pre></div> <p>This overall issue was faced mostly with requests coming from high-latency regions only. That’s why request drops were more frequent there.</p>
+<p>You might wonder why I didn’t batch events.</p>
+<p>The issue is that multiple batches can still race with each other, so batching alone doesn’t fully solve ordering problems.</p>
+<p>However, reconstructing order within batches on the backend would likely be more efficient. That’s something I plan to experiment with next.</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

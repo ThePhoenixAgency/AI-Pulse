@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI agents are wasting 90% of tokens on your navbar — I built a protocol to fix it</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>AI agents are wasting 90% of tokens on your navbar — I built a protocol to fix it</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 8:31:06 AM | <a href="https://dev.to/juanisidoro/ai-agents-are-wasting-90-of-tokens-on-your-navbar-i-built-a-protocol-to-fix-it-21mm" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmylbwdjf8qa6rjwhqhbx.JPG"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmylbwdjf8qa6rjwhqhbx.JPG" alt="Cover image for AI agents are wasting 90% of tokens on your navbar — I built a protocol to fix it"> </a> <div> <p><a href="https://dev.to/juanisidoro"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3780696%2F8621dd02-337c-43a5-8e9b-bbae10d6fdcb.jpeg" alt="Juan Isidoro García Cifuentes"></a> </p> </div> </div><div> <h2> <a name="the-problem-nobody-talks-about" href="#the-problem-nobody-talks-about"> </a> The Problem Nobody Talks About
+</h2> <p>I was spending hundreds of dollars on AI API calls. Half of it wasn't buying me useful information — it was paying to process navigation bars, cookie banners, and inline scripts.</p> <p>A typical e-commerce product page? <strong>47,000 tokens</strong>. The useful product information? <strong>~300 tokens</strong>.</p> <p>In many cases, over 90–99% of the processed tokens are structural or navigational noise.</p> <p>I kept thinking: what if the server could just... give the agent what it needs?</p> <h2> <a name="enter-mako" href="#enter-mako"> </a> Enter MAKO
+</h2> <p><strong>MAKO</strong> (Markdown Agent Knowledge Optimization) is an open protocol that uses standard HTTP content negotiation to serve AI-optimized content.</p> <p>The idea is dead simple:</p> <ol>
+<li>An AI agent sends <code>Accept: text/mako+markdown</code> in its request header</li>
+<li>The server detects this header</li>
+<li>Instead of HTML, it responds with structured markdown + YAML frontmatter</li>
+<li>The agent gets exactly what it needs in ~280 tokens</li>
+</ol> <p>No new endpoints. No special APIs. Just HTTP, the way it was designed.</p> <p>MAKO does not replace HTML. Browsers still receive HTML.<br>
+Only agents explicitly requesting <code>text/mako+markdown</code> receive the optimized version.</p>
+<h2> <a name="what-a-mako-response-looks-like" href="#what-a-mako-response-looks-like"> </a> What a MAKO Response Looks Like
+</h2> <div>
+<pre><code><span>---</span>
+<span>mako</span><span>:</span> <span>"</span><span>1.0"</span>
+<span>type</span><span>:</span> <span>product</span>
+<span>entity</span><span>:</span> <span>"</span><span>Nike</span><span> </span><span>Air</span><span> </span><span>Max</span><span> </span><span>90"</span>
+<span>updated</span><span>:</span> <span>"</span><span>2026-02-10"</span>
+<span>tokens</span><span>:</span> <span>280</span>
+<span>language</span><span>:</span> <span>en</span>
+<span>summary</span><span>:</span> <span>"</span><span>Mid-range</span><span> </span><span>running</span><span> </span><span>shoe,</span><span> </span><span>47%</span><span> </span><span>off"</span>
+<span>links</span><span>:</span> <span>-</span> <span>url</span><span>:</span> <span>/running-shoes</span> <span>context</span><span>:</span> <span>"</span><span>Browse</span><span> </span><span>all</span><span> </span><span>running</span><span> </span><span>shoes"</span>
+<span>actions</span><span>:</span> <span>-</span> <span>name</span><span>:</span> <span>add_to_cart</span> <span>description</span><span>:</span> <span>"</span><span>Add</span><span> </span><span>to</span><span> </span><span>shopping</span><span> </span><span>cart"</span> <span>endpoint</span><span>:</span> <span>/api/cart/add</span>
+<span>---</span> <span># Nike Air Max 90</span> <span>## Key Facts</span>
+<span>-</span> <span>Price</span><span>:</span> <span>€79.99 (was €149.99, -47%)</span>
+<span>-</span> <span>In stock (23 available)</span>
+<span>-</span> <span>Sizes</span><span>:</span> <span>38-46</span>
+<span>-</span> <span>Rating</span><span>:</span> <span>4.3/5 (234 reviews)</span> <span>## Overview</span>
+<span>Casual running shoe, mid-range. Leather/mesh upper.</span>
+<span>Competitors</span><span>:</span> <span>Adidas Ultraboost (€129), NB 1080 (€139).</span>
+<span>Strong point: price. Weak point</span><span>:</span> <span>narrow fit per reviews.</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="why-not-just-scrape-html" href="#why-not-just-scrape-html"> </a> Why Not Just Scrape HTML?
+</h2> <p>Scraping pushes complexity to the client.<br>
+MAKO moves structure to the source.</p> <p>Instead of:<br>
+Agent → Parse DOM → Remove noise → Infer structure</p> <p>You get:<br>
+Agent → Receive structured semantic content</p> <p>Lower token cost. Clear semantic boundaries. Deterministic machine-readable structure.</p> <p>These numbers come from real-world pages measured using GPT tokenization.<br>
+Exact savings depend on site structure, but the pattern is consistent.</p>
+<h2> <a name="the-numbers" href="#the-numbers"> </a> The Numbers
+</h2> <div><table>
+<thead>
+<tr>
+<th>Page Type</th>
+<th>HTML Tokens</th>
+<th>MAKO Tokens</th>
+<th>Savings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E-commerce product</td>
+<td>47,000</td>
+<td>280</td>
+<td>99.3%</td>
+</tr>
+<tr>
+<td>Blog article</td>
+<td>35,000</td>
+<td>670</td>
+<td>98.1%</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>38,000</td>
+<td>980</td>
+<td>97.4%</td>
+</tr>
+<tr>
+<td>Landing page</td>
+<td>110,000</td>
+<td>640</td>
+<td>99.4%</td>
+</tr>
+</tbody>
+</table></div> <p>You can see a real generated MAKO page here:<br> <a href="https://makospec.vercel.app/en/p/aZo89_kQ" target="_blank">https://makospec.vercel.app/en/p/aZo89_kQ</a></p>
+<h2> <a name="how-to-implement-it" href="#how-to-implement-it"> </a> How to Implement It
+</h2>
+<h3> <a name="using-the-sdk" href="#using-the-sdk"> </a> Using the SDK
+</h3> <div>
+<pre><code>npm <span>install</span> @mako-spec/js
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <div>
+<pre><code><span>import</span> <span>{</span> <span>MakoGenerator</span><span>,</span> <span>MakoParser</span> <span>}</span> <span>from</span> <span>'</span><span>@mako-spec/js</span><span>'</span><span>;</span> <span>// Generate a MAKO file</span>
+<span>const</span> <span>generator</span> <span>=</span> <span>new</span> <span>MakoGenerator</span><span>();</span>
+<span>const</span> <span>mako</span> <span>=</span> <span>generator</span><span>.</span><span>generate</span><span>({</span> <span>type</span><span>:</span> <span>'</span><span>product</span><span>'</span><span>,</span> <span>entity</span><span>:</span> <span>'</span><span>Nike Air Max 90</span><span>'</span><span>,</span> <span>language</span><span>:</span> <span>'</span><span>en</span><span>'</span><span>,</span> <span>body</span><span>:</span> <span>'</span><span># Nike Air Max 90</span><span>\n\n</span><span>Casual running shoe...</span><span>'</span><span>,</span> <span>links</span><span>:</span> <span>[{</span> <span>url</span><span>:</span> <span>'</span><span>/running</span><span>'</span><span>,</span> <span>context</span><span>:</span> <span>'</span><span>More running shoes</span><span>'</span> <span>}],</span> <span>actions</span><span>:</span> <span>[{</span> <span>name</span><span>:</span> <span>'</span><span>add_to_cart</span><span>'</span><span>,</span> <span>description</span><span>:</span> <span>'</span><span>Add to cart</span><span>'</span> <span>}]</span>
+<span>});</span> <span>// Parse a MAKO file</span>
+<span>const</span> <span>parser</span> <span>=</span> <span>new</span> <span>MakoParser</span><span>();</span>
+<span>const</span> <span>result</span> <span>=</span> <span>parser</span><span>.</span><span>parse</span><span>(</span><span>makoContent</span><span>);</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>.</span><span>frontmatter</span><span>.</span><span>entity</span><span>);</span> <span>// "Nike Air Max 90"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="express-middleware-3-lines" href="#express-middleware-3-lines"> </a> Express Middleware (3 lines)
+</h3> <div>
+<pre><code><span>import</span> <span>{</span> <span>makoMiddleware</span> <span>}</span> <span>from</span> <span>'</span><span>@mako-spec/js/middleware</span><span>'</span><span>;</span> <span>app</span><span>.</span><span>use</span><span>(</span><span>makoMiddleware</span><span>({</span> <span>getContent</span><span>:</span> <span>async </span><span>(</span><span>req</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>// Return your MAKO content for this URL</span> <span>return</span> <span>await</span> <span>fetchMakoForUrl</span><span>(</span><span>req</span><span>.</span><span>path</span><span>);</span> <span>}</span>
+<span>}));</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="free-tools" href="#free-tools"> </a> Free Tools
+</h2> <ul>
+<li>
+<strong><a href="https://makospec.vercel.app/en/score" target="_blank">MAKO Score</a></strong> — Audit any site's AI-readiness (0-100). Checks 30 criteria across 4 categories.</li>
+<li>
+<strong><a href="https://makospec.vercel.app/en/analyzer" target="_blank">MAKO Analyzer</a></strong> — Paste any URL and see the generated MAKO output + token savings.</li>
+<li>
+<strong>WordPress Plugin</strong> — Full WooCommerce support, AI generation with your own API key.</li>
+</ul>
+<h2> <a name="how-mako-fits-in" href="#how-mako-fits-in"> </a> How MAKO Fits In
+</h2> <div><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Scope</th>
+<th>MAKO Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>llms.txt</td>
+<td>1 file per site</td>
+<td>MAKO: 1 file per page</td>
+</tr>
+<tr>
+<td>Cloudflare MD</td>
+<td>Auto-converted HTML</td>
+<td>MAKO: Semantically optimized</td>
+</tr>
+<tr>
+<td>Schema.org</td>
+<td>For search engines</td>
+<td>MAKO: For AI agents</td>
+</tr>
+<tr>
+<td>WebMCP</td>
+<td>Actions only</td>
+<td>MAKO: Content + actions + context</td>
+</tr>
+</tbody>
+</table></div> <p>MAKO is <strong>complementary</strong> — it works alongside all of these.</p>
+<h2> <a name="why-this-matters" href="#why-this-matters"> </a> Why This Matters
+</h2> <p>AI agents are becoming a first-class web audience.</p> <p>If search engines needed HTML, AI agents need structured representations.</p> <p>The web evolved once for browsers. It's evolving again for agents.</p> <p>Visually, the difference looks like this:</p> <p><strong>Traditional Web Flow</strong><br>
+</p> <div>
+<pre><code>Browser → HTML → Rendered Interface → Human
+AI Agent → HTML → DOM Parsing → Layout + Navigation + Script Overhead
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>With MAKO</strong><br>
+</p> <div>
+<pre><code>Browser → HTML → Rendered Interface → Human
+AI Agent → MAKO → Structured Semantic Content → Deterministic Extraction
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="open-source" href="#open-source"> </a> Open Source
+</h2> <p>Everything is Apache 2.0 licensed:</p> <ul>
+<li>
+<strong>Spec:</strong> <a href="https://github.com/juanisidoro/mako-spec" target="_blank">github.com/juanisidoro/mako-spec</a>
+</li>
+<li>
+<strong>JS SDK:</strong> <a href="https://npmjs.com/package/@mako-spec/js" target="_blank">npmjs.com/package/@mako-spec/js</a>
+</li>
+<li>
+<strong>CLI:</strong> <a href="https://npmjs.com/package/@mako-spec/cli" target="_blank">npmjs.com/package/@mako-spec/cli</a>
+</li>
+<li>
+<strong>WordPress:</strong> <a href="https://github.com/juanisidoro/mako-wp" target="_blank">github.com/juanisidoro/mako-wp</a>
+</li>
+<li>
+<strong>Website:</strong> <a href="https://makospec.vercel.app/" target="_blank">makospec.vercel.app</a>
+</li>
+</ul> <p>I'd love your feedback — on the protocol design, the scoring system, or anything else. Star the repo if you find it useful.</p> <p>How are you handling web content extraction in your AI apps right now? Drop it in the comments.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

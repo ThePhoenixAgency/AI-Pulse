@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>This is Probably the Best Video Downloader App (And it is Free and Open Source)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>This is Probably the Best Video Downloader App (And it is Free and Open Source)</h1>
+  <div class="metadata">
+    Source: Its FOSS | Date: 2/19/2026 7:05:36 AM | <a href="https://itsfoss.com/vidbee/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><article> <a href="https://www.warp.dev/?utm_source=its_foss&amp;utm_medium=display&amp;utm_campaign=linux_launch" target="_blank"><img src="https://itsfoss.com/assets/images/warp.webp" alt="Warp Terminal"></a> <p>You come across an interesting video on social media and thought of downloading it so that you can send it to someone or modify it to share it on some other platform. You know, the meme videos? Not every platform allows downloading videos and thus you need a good, reliable <a href="https://itsfoss.com/best-download-managers-linux/">video downloader</a>.</p><p>And if that's what you want, look no further than VidBee.</p><h2>VidBee: Download videos from all over the intern</h2><p><a href="https://vidbee.org/?ref=itsfoss.com">VidBee</a> allows you to download videos from YouTube, Facebook, X, Instagram, etc. In fact, it supports over 1,800 websites.</p><figure><img src="https://itsfoss.com/content/images/2026/01/vidbee-about.png" alt="About page of VidBee video downloader."><figcaption><span>About VidBee</span></figcaption></figure><p>It is built on top of popular command line tools like <a href="https://itsfoss.com/download-youtube-linux/">yt-dlp</a> and ffmpeg. For the interface, it uses the Electron framework. I understand that some people dislike Electron framework as it runs a web browser underneath, but the 'advantage' of this framework is that you get the same interface in all the operating systems. At least, it's an advantage for the developers as they don't have to build the interface separately for Linux, Windows and macOS.</p><p>The source code for VidBee is available on its GitHub repository.</p><h2>Installing VidBee</h2><figure><img src="https://itsfoss.com/content/images/2026/02/download-vidbee.webp" alt="Downloading VidBee"></figure><p>VidBee supports Linux, Windows and macOS. You can head over to the <a href="https://vidbee.org/download/?ref=itsfoss.com">official download page</a> and get the installer file for your operating system.</p><p>For Linux users, VidBee provides a <a href="https://itsfoss.com/install-deb-files-ubuntu/">deb file for Ubuntu</a> and Debian-based distributions, and AppImage file for all the distros in general.</p><p>Get the AppImage file, give it execute permission and run it. If you are not familiar with the process, please <a href="https://itsfoss.com/use-appimage-linux/">refer to our AppImage guide</a>.</p><div><p></p><p>In Ubuntu, the AppImage file was not opening, even after installing the <code>libfuse2</code> package. It might be something to do with the apparmour setup. Also, the deb package installed the app but was failing for me with a SIGTRAP error. I ran it on Fedora and it worked just fine.</p></div><p>Do note that the installer size is huge, and as per the project, this is due to the fact that they include all the required dependencies to provide the perfect first-run experience.</p><figure><img src="https://itsfoss.com/content/images/2026/01/installer-size-huge.png" alt="Large installer size for the project details."><figcaption><span>Large installer size</span></figcaption></figure><p>When you first run VidBee, you should see the homepage screen like this.</p><figure><img src="https://itsfoss.com/content/images/2026/01/vidbee-homescreen.png" alt="VidBee homescreen page."><figcaption><span>VidBee Home</span></figcaption></figure><p>Why do you see the "Set up cookies" in a desktop application? There is a good reason for that. </p><h2>Optional cookies let you download from website that require login</h2><p>Yes. That's the purpose of the cookies. In my case, I tried downloading a video uploaded to our Vimeo account. Since this video was not publicly available, it showed an error.</p><figure><img src="https://itsfoss.com/content/images/2026/01/vidbee-sabr-error.png" alt="VidBee download error."><figcaption><span>Download Error</span></figcaption></figure><p>Then, I changed the cookie settings to use Firefox as the browser. Firefox is the main browser where I was logged into Vimeo.</p><figure><img src="https://itsfoss.com/content/images/2026/01/vidbee-firefox-cookie-browser.png" alt="VidBee firefox cookie browser"><figcaption><span>Firefox Cookie Browser</span></figcaption></figure><p>And then the download was successful again.</p><h2>Downloading videos using VidBee</h2><p>It's a fairly straightforward process. If there is a video playback URL in the clipboard, clicking the <strong>Paste URL</strong> automatically shows the video download options.</p><figure><img src="https://itsfoss.com/content/images/2026/01/vidbee-download-a-video-options.png" alt="VidBee download a video options"><figcaption><span>Video Download Options</span></figcaption></figure><p>You can also download YouTube playlist. Just copy the URL of the playlist and use the playlist tab as shown in the image below:</p><figure><img src="https://itsfoss.com/content/images/2026/01/vidbee-download-playlist.png" alt="VidBee download playlist from the URL"><figcaption><span>Playlist Download</span></figcaption></figure><p>You can also choose to extract only audio from a video file. For that, use the <strong>audio</strong> button as shown in the screenshot below:</p><figure><img src="https://itsfoss.com/content/images/2026/01/videbee-download-audio-from-video.png" alt="VidBee download audio from video"><figcaption><span>Download Audio</span></figcaption></figure><p>VidBee gives you plenty of options while downloading a video from the internet. You can select quality, format, framerate, etc. of the video using the setting button on the top, as shown below:</p><figure><img src="https://itsfoss.com/content/images/2026/01/vidbee-video-download-options-quality.png" alt="VidBee video download options quality"><figcaption><span>Vide Quality and Format</span></figcaption></figure><p>Some websites like YouTube also provide an RSS feed for the video. You can add that RSS feed in VidBee and it will automatically download the uploaded videos in the future.</p><figure><img src="https://itsfoss.com/content/images/2026/01/vidbee-provide-rss-link.png" alt="VidBee provide RSS link"><figcaption><span>Download from RSS Feed</span></figcaption></figure><h2>Wrapping Up</h2><p>I know that some people might say why create something like VidBee when yt-dlp already exists. Now, I understand that <a href="https://github.com/yt-dlp/yt-dlp?ref=itsfoss.com">yt-dlp</a> is an excellent tool and it's not that difficult to use it. But still, there are many people who stay away from command line tool. GUI applications provide a level of comfort. </p><p>And in that regard, VidBee does an excellent job. If you are looking for a free video downloader that just works on Linux, Windows or macOS, VidBee is the ideal choice here.</p> </article><div> <p><span>About the author</span></p><div> <a href="https://itsfoss.com/author/abhishek/"> <figure> <img src="https://www.gravatar.com/avatar/84de387e32f72af3e12bf434a82ea8e8?s=250&amp;r=x&amp;d=mp" alt="Abhishek Prakash"> </figure> </a> <div> <h2><a href="https://itsfoss.com/author/abhishek/">Abhishek Prakash</a></h2> <p>Created It's FOSS 13 years ago to share my Linux adventures. Have a Master's degree in Engineering and years of IT industry experience. Huge fan of Agatha Christie detective mysteries </p> </div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

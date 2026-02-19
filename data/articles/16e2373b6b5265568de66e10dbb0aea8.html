@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Dell RecoverPoint : des hackers chinois exploitent une faille critique depuis 2024</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Dell RecoverPoint : des hackers chinois exploitent une faille critique depuis 2024</h1>
+  <div class="metadata">
+    Source: GNT | Date: 2/19/2026 7:30:01 AM | <a href="https://www.generation-nt.com/actualites/dell-recoverpoint-zero-day-grimbolt-chine-cybersecurite-2071034" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><article> <p> Publié le <time> 19 février 2026 à 08:30</time> par <a href="https://www.generation-nt.com/informations/a-propos/christian.d"><span>Christian D.</span></a> </p> <section> <div> <p><span>Une campagne d'espionnage sophistiquée, attribuée à des acteurs liés à la Chine, a profité d'une vulnérabilité critique chez Dell pendant près de deux ans pour infiltrer des réseaux stratégiques, révélant des techniques d'évasion toujours plus avancées.</span></p> </div> <a href="https://img.generation-nt.com/hacker_050002D001704473.webp"> <div> <img src="https://img.generation-nt.com/hacker_0298000001704473.jpg" alt="hacker"> </div> </a> </section> <div><p>Une faille critique (CVE-2026-22769) dans <strong>Dell RecoverPoint</strong> <strong>for Virtual Machines</strong> a été exploitée comme une <strong>vulnérabilité zero-day</strong> depuis mi-2024 par le groupe <strong>UNC6201</strong>.</p>
+<p>Ces hackers, suspectés d'être liés à la Chine, ont déployé des malwares évolués comme <strong>Grimbolt</strong> pour s'implanter durablement dans les infrastructures critiques. Dell a depuis publié un correctif pour cette brèche majeure.</p>
+<h2>Une faille béante au cœur du système</h2>
+<p>L'enquête menée par les experts de <strong>Mandiant</strong> et du <strong>Google Threat Intelligence</strong> <strong>Group</strong> (GTIG) a mis en lumière l'origine de cette intrusion massive : une vulnérabilité au sein de la solution <strong>Dell RecoverPoint for Virtual Machines</strong>.</p>
+<p>Le problème réside dans un <strong>mot de passe administrateur codé en dur</strong>, hérité d'Apache Tomcat, qui offre un accès direct et total au système. Identifiée sous le code <strong>CVE-2026-22769</strong>, cette vulnérabilité de type <strong><a href="https://www.generation-nt.com/actualites/chrome-zero-day-faille-securite-cve-2026-2441-2070846">zero-day</a></strong> a été exploitée depuis au moins la mi-2024 par un groupe de cybercriminels baptisé UNC6201.</p>
+<p><a href="https://img.generation-nt.com/dell-recoverpoint-vulnerabilite-zero-day_01720288.webp" target="_blank"> <img src="https://img.generation-nt.com/dell-recoverpoint-vulnerabilite-zero-day_030e018c01720288.jpg" alt="Dell RecoverPoint vulnerabilite zero day"> </a></p>
+<p>Cette brèche, dotée du score de gravité maximal de <strong>10/10 sur l'échelle CVSS</strong>, permet à un attaquant distant et non authentifié de prendre le contrôle complet du système avec des privilèges root.</p>
+<p>Les attaquants ont utilisé cet accès pour déployer une première charge malveillante, le web shell <strong>Slaystyle</strong>, qui leur a servi de porte d'entrée pour des opérations plus complexes. Dell a réagi en publiant un correctif et presse ses clients de l'appliquer sans délai.</p>
+<h2>De Brickstorm à Grimbolt : l'évolution de l'arsenal</h2>
+<p>Cette campagne s'inscrit dans la durée et démontre la capacité des attaquants à faire évoluer leurs outils. Initialement, le groupe <strong>UNC6201</strong>, qui présente des similitudes avec l'acteur connu sous le nom de <a href="https://www.generation-nt.com/actualites/cyberattaque-chine-fisc-tresor-janet-yellen-piratage-2054388"><strong>Silk Typhoon</strong></a> (UNC5221), s'appuyait sur un malware nommé <strong>Brickstorm</strong>.</p>
+<p>Ce dernier a été implanté dans des dizaines de réseaux d'entreprises américaines, notamment dans les secteurs juridique et technologique, et ce, parfois depuis 2022.</p>
+<p><a href="https://img.generation-nt.com/hacker_01661121.webp" target="_blank"> <img src="https://img.generation-nt.com/hacker_050002d001661121.jpg" alt="hacker"> </a></p>
+<p>Face aux efforts de détection, les hackers ont su s'adapter. Dès septembre 2025, les chercheurs ont observé le remplacement progressif de Brickstorm par un nouveau malware bien plus sophistiqué : <strong>Grimbolt</strong>.</p>
+<p>Écrit en C# et utilisant une compilation native (AOT), il est non seulement plus performant sur les appareils à ressources limitées, mais aussi beaucoup plus difficile à analyser et à détecter par les outils de sécurité traditionnels. Ce changement de tactique illustre la ténacité et les ressources dont disposent ces groupes étatiques.</p>
+<h2>Des techniques d'infiltration toujours plus discrètes</h2>
+<p>Au-delà du déploiement de malwares, la véritable sophistication de cette campagne réside dans les techniques employées pour se déplacer latéralement et rester invisible.</p>
+<p>Les analystes de Mandiant ont découvert une méthode inédite baptisée&nbsp;<strong>Ghost NICs</strong>. Elle consiste à créer des interfaces réseau virtuelles et temporaires sur des serveurs VMware ESXi compromis.</p>
+<p>Ces ports fantômes permettent aux attaquants de pivoter discrètement entre les réseaux internes des victimes et leur infrastructure SaaS sans déclencher d'alertes.</p>
+<p>Pour parfaire leur discrétion, les hackers ont également utilisé une technique de masquage de leur trafic de commande et contrôle (C2) appelée <strong>Single Packet Authorization</strong> (SPA).</p>
+<p>En configurant des règles iptables spécifiques, ils s'assurent que seules les connexions initiées par un "paquet magique" contenant une chaîne hexadécimale précise sont autorisées, rendant leur canal de communication invisible aux balayages réseau.</p>
+<p>Bien que moins d'une douzaine d'entreprises aient été officiellement identifiées comme victimes, l'ampleur réelle de la campagne reste inconnue, laissant craindre que de nombreux réseaux soient encore compromis à leur insu.</p> </div> <div> <p>Journaliste GNT spécialisé en mobilité / Ante-Geek des profondeurs du Web et d'ailleurs</p> </div> <p>Cette page peut contenir des liens affiliés. Si vous achetez un produit depuis ces liens, le site marchand nous reversera une commission sans que cela n'impacte en rien le montant de votre achat. <a href="https://www.generation-nt.com/informations/conditions-utilisation#affiliation">En savoir plus</a>.</p> </article></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
