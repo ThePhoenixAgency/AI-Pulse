@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>AsteroidOS 2.0 : nouvelles montres, optimisations</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>AsteroidOS 2.0 : nouvelles montres, optimisations</h1>
+  <div class="metadata">
+    Source: Programmez | Date: 2/20/2026 9:19:04 AM | <a href="https://www.programmez.com/actualites/asteroidos-20-nouvelles-montres-optimisations-39041" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><p>AsteroidOS revient en version 2.0. Il s'agit d'une version majeure. Cette distribution Linux est dédiée aux montres connectés pour les rendre totalement indépendantes et redonner vie à des montres qui ne sont plus supportées par les constructeurs. AsteroidOS a été créé en 2015.&nbsp;</p><p><img src="https://www.programmez.com/sites/default/files/styles/taille-maxi/public/images_actus/asteroidos.jpg?itok=m-YV46KK"></p><p>Pour développer les apps, l'OS utilise Qt et QML.&nbsp;</p><p>La v2 permet d'assurer l'affichage constant sur plus de montres, proposer un nouveau launcher, des paramètres personnalisables, de meilleures performances, une synchronisation améliorée. La v2 supporte 49 langages, soit 20 de plus par rapport à la dernière version.&nbsp;</p><p>De nouvelles montres sont supportées :</p><ul><li>Fossil Gen 4 Watches (firefish/ray)</li><li>Fossil Gen 5 Watches (triggerfish)</li><li>Fossil Gen 6 Watches (hoki)</li><li>Huawei Watch (sturgeon)</li><li>Huawei Watch 2 (sawfish/sawshark)</li><li>LG Watch W7 (narwhal)</li><li>Moto 360 2015 (smelt)</li><li>MTK6580 (harmony/inharmony)</li><li>OPPO Watch (beluga)</li><li>Polar M600 (pike)</li><li>Ticwatch C2+ &amp; C2 (skipjack)</li><li>Ticwatch E &amp; S (mooneye)</li><li>Ticwatch E2 &amp; S2 (tunny)</li><li>Ticwatch Pro, Pro 2020 and LTE (catfish/catfish-ext/catshark)</li><li>Ticwatch Pro 3 (rover/rubyfish)</li></ul><p>Et d'autres le sont partiellement. Pour la synchronisation, on dispose de différents apps : AsteroidOS Sync, Telescope, Amazfish, Gadgetbridge.&nbsp;</p><p>Au-delà, l'équipe a de grandes ambitions : application fitness, configuration WiFi, AppStore, nouvelles apps.</p><p>Annonce :&nbsp;<a href="https://asteroidos.org/news/2-0-release/">https://asteroidos.org/news/2-0-release/</a></p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

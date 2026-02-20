@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - HailToDodongo/pyrite64: N64 Game-Engine and Editor using libdragon &amp; tiny3d</title>
+<title>HailToDodongo/pyrite64</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,76 +23,12 @@
 </style>
 </head>
 <body>
-  <h1>GitHub - HailToDodongo/pyrite64: N64 Game-Engine and Editor using libdragon &amp; tiny3d</h1>
+  <h1>HailToDodongo/pyrite64</h1>
   <div class="metadata">
-    Source: GitHub Trending | Date: 2/20/2026 4:14:32 AM | <a href="https://github.com/HailToDodongo/pyrite64" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GitHub Trending | Date: 2/20/2026 12:47:38 PM | <a href="https://github.com/HailToDodongo/pyrite64" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><h1>Pyrite64</h1><a href="#pyrite64"></a></div>
-<p>
-<a target="_blank" href="/HailToDodongo/pyrite64/blob/main/data/img/titleLogo.png"><img src="/HailToDodongo/pyrite64/raw/main/data/img/titleLogo.png"></a>
-</p>
-<p>
-N64 game-engine and editor using <a href="https://github.com/DragonMinded/libdragon">Libdragon</a> and <a href="https://github.com/HailToDodongo/tiny3d">tiny3d</a>.
-</p>
-<br>
-<p> <a target="_blank" href="/HailToDodongo/pyrite64/blob/main/docs/img/editor00.png"><img src="/HailToDodongo/pyrite64/raw/main/docs/img/editor00.png"></a>&nbsp;&nbsp;&nbsp;&nbsp; <a target="_blank" href="/HailToDodongo/pyrite64/blob/main/docs/img/editor02.png"><img src="/HailToDodongo/pyrite64/raw/main/docs/img/editor02.png"></a>
-</p>
-<p> <a target="_blank" href="/HailToDodongo/pyrite64/blob/main/docs/img/editor01.png"><img src="/HailToDodongo/pyrite64/raw/main/docs/img/editor01.png"></a>&nbsp;&nbsp;&nbsp;&nbsp; <a target="_blank" href="/HailToDodongo/pyrite64/blob/main/docs/img/editor03.jpg"><img src="/HailToDodongo/pyrite64/raw/main/docs/img/editor03.jpg"></a>
-</p>
-<blockquote>
-<p>Note: This project does NOT use any proprietary N64 SDKs or libraries.</p>
-</blockquote>
-<p>Pyrite64 is a visual editor + runtime-engine to create 3D games that can run on a real N64 console or accurate emulators.<br>
-Besides the usual editor, some extra features include:</p>
-<ul>
-<li>Automatic toolchain installation on Windows</li>
-<li>3D-Model import (GLTF) from blender with <a href="https://github.com/Fast-64/fast64">fast64</a> material support.</li>
-<li>Support for HDR+Bloom rendering (shown here: <a href="http://www.youtube.com/watch?v=XP8g2ngHftY">www.youtube.com/watch?v=XP8g2ngHftY</a>)</li>
-<li>Support for big-texture rendering (256x256) (shown here: <a href="http://www.youtube.com/watch?v=rNEo0aQkGnU">www.youtube.com/watch?v=rNEo0aQkGnU</a>)</li>
-<li>Runtime engine handling scene-management, rendering, collision, audio and more.</li>
-<li>Global asset management with automatic memory cleanup</li>
-<li>Node-Graph editor to script basic control flow</li>
-</ul>
-<p>Note that this project focuses on real hardware, so accurate emulation is required to run/test games on PC.<br>
-Emulators that are accurate enough include <a href="https://ares-emu.net/">Ares (v147 or newer)</a> and <a href="https://github.com/gopher64/gopher64">gopher64</a>.</p>
-<div><p>Warning</p><p>This project is still in early development, so features are going to be missing.<br>
-Documentation is also still a work in progress, and breaking API changes are to be expected.</p>
-</div>
-<div><h2>Documentation</h2><a href="#documentation"></a></div>
-<p>Before starting, please read the <a href="/HailToDodongo/pyrite64/blob/main/docs/faq.md">FAQ</a>!</p>
-<ul>
-<li>Installation &amp; Docs:
-<ul>
-<li><a href="/HailToDodongo/pyrite64/blob/main/docs/setup_editor.md">Pyrite64 Installation</a></li>
-<li><a href="/HailToDodongo/pyrite64/blob/main/docs/usage_editor.md">Using the Editor</a></li>
-<li><a href="/HailToDodongo/pyrite64/blob/main/docs/usage_editor.md">Using the CLI</a></li>
-</ul>
-</li>
-<li>Development on the editor itself:
-<ul>
-<li><a href="/HailToDodongo/pyrite64/blob/main/docs/build_editor.md">Building the Editor</a></li>
-</ul>
-</li>
-</ul>
-<div><h2>Showcase</h2><a href="#showcase"></a></div>
-<p>
-<a href="https://www.youtube.com/watch?v=zz_wByA_k6E"> <img src="https://camo.githubusercontent.com/101fdc844e797846b6637199c2fc9741f19b0a99cfd76e35118bcd99c8b90133/68747470733a2f2f696d672e796f75747562652e636f6d2f76692f7a7a5f774279415f6b36452f302e6a7067">
-</a>
-<a href="https://www.youtube.com/watch?v=4BCmKnN5eGA"> <img src="https://camo.githubusercontent.com/cbb750f404ede29e6a82f6e32af303151af8a8e956580f5a03062926c12442a2/68747470733a2f2f696d672e796f75747562652e636f6d2f76692f3442436d4b6e4e356547412f302e6a7067">
-</a>
-<br>
-Cathode Quest 64 (YouTube) &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Pyrite64 Release Video &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
-<div><h2>Links</h2><a href="#links"></a></div>
-<p>For anything N64 homebrew related,<br>
-checkout the N64Brew discord: <a href="https://discord.gg/WqFgNWf">https://discord.gg/WqFgNWf</a></p>
-<div><h2>Credits &amp; License</h2><a href="#credits--license"></a></div>
-<p> 2025-2026 - Max Bebök (HailToDodongo)<br></p>
-<p>Pyrite64 is licensed under the MIT License, see the <a href="/HailToDodongo/pyrite64/blob/main/LICENSE">LICENSE</a> file for more information.<br>
-Licenses for external libraries used in the editor can be found in their respective directory under </p><pre><code>/vendored</code></pre><p></p>
-<p>Pyrite64 does NOT force any restrictions or licenses on games made with it.<br>
-Pyrite64 does NOT claim any copyright or force licenses for assets / source-code generated by the editor.</p>
-<p>While not required, please consider crediting Pyrite64 with a logo and/or name in your credits and/or boot logo sequence.</p>
+    <p>N64 Game-Engine and Editor using libdragon &amp; tiny3d Pyrite64 N64 game-engine and editor using Libdragon and tiny3d. Note: This project does NOT use any proprietary N64 SDKs or libraries. Pyrite64 is a visual editor + runtime-engine to create 3D games that can run on a real N64 console or accurate emulators. Besides the usual editor, some extra features include: Automatic toolchain installation on Windows 3D-Model import (GLTF) from blender with fast64 material support. Support for HDR+Bloom rendering (shown here: www.youtube.com/watch?v=XP8g2ngHftY) Support for big-texture rendering (256x256) (shown here: www.youtube.com/watch?v=rNEo0aQkGnU) Runtime engine handling scene-management, rendering, collision, audio and more. Global asset management with automatic memory cleanup Node-Graph editor to script basic control flow Note that this project focuses on real hardware, so accurate emulation is required to run/test games on PC. Emulators that are accurate enough include Ares (v147 or newer) and gopher64. [!WARNING] This project is still in early development, so features are going to be missing.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

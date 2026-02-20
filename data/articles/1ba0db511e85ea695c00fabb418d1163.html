@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pannes chez AWS dues à son agent IA : Amazon se défausse sur ses employés</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Pannes chez AWS dues à son agent IA : Amazon se défausse sur ses employés</h1>
+  <div class="metadata">
+    Source: Next INpact | Date: 2/20/2026 11:23:00 AM | <a href="https://next.ink/225523/pannes-chez-aws-dues-a-son-agent-ia-amazon-se-defausse-sur-ses-employes/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <p>Au moins deux pannes internes à Amazon Web Services récentes sont liées à l’utilisation de ses outils d’IA générative comme Kiro, utilisés par ses employés pour gérer ses infrastructures.</p> <p>L’entreprise avait présenté son agent IA Kiro en juillet 2025 en le proposant d’abord via inscription sur liste d’attente avant de le lancer <a href="https://next.ink/212673/reinvent-aws-lance-sa-famille-de-llm-nova-2-et-une-forge-pour-creer-ses-propres-modeles/">pleinement</a> fin décembre lors de sa conférence annuelle re:Invent.</p> <p>AWS <a href="https://kiro.dev/blog/introducing-kiro/?trk=590f3278-5a4b-4d35-ab93-c7f69fbfaea0&amp;sc_channel=sm" target="_blank">présentait</a> Kiro comme un «<em> environnement de développement IA qui vous aide à passer du concept à la production grâce à une expérience de développement simplifiée pour travailler avec des agents IA. Kiro excelle dans le «&nbsp;vibe coding&nbsp;», mais va bien au-delà&nbsp;: la force de Kiro réside dans sa capacité à intégrer ces prototypes dans des systèmes de production grâce à des fonctionnalités telles que les spécifications et les hooks</em>&nbsp;».</p> <h3>Suppression et recréation de l’environnement sur un système en production</h3> <p>Mais, comme l’<a href="https://www.ft.com/content/00c282de-ed14-4acd-a948-bc8d6bdb339d" target="_blank">explique</a> le Financial Times, l’utilisation de ces outils provoque, même en interne, des doutes sur la qualité qui en résulte. Ainsi, des employés d’AWS ont expliqué au journal économique britannique que deux pannes ont eu lieu sur les systèmes de l’entreprise alors que des ingénieurs les ont utilisés pour les gérer.</p> <p>«<em> Nous avons déjà constaté au moins deux interruptions de production </em>[au cours des derniers mois]&nbsp;», explique une des sources de nos confrères. «&nbsp;<em>Les ingénieurs ont laissé l’ [agent] IA</em> <em>résoudre un problème sans intervenir. Les interruptions étaient mineures, mais tout à fait prévisibles</em>.&nbsp;»</p> <p>L’une d’entre elles concerne un service utilisé par les clients ayant subi une interruption de 13&nbsp;h à la mi-décembre. AWS a fait circuler en interne un postmortem de l’incident. L’outil d’Amazon Kiro aurait été utilisé par un ingénieur de l’entreprise. Et il aurait déterminé que la meilleure solution consistait à «&nbsp;<em>supprimer et recréer l’environnement </em>» du système.</p> <p>Concernant l’autre panne, c’était l’outil <a href="https://aws.amazon.com/fr/q/developer/?p=qdev&amp;z=subnav&amp;loc=1" target="_blank">Amazon Q Developer</a> qui était impliqué, selon les sources du Financial Times, sans plus de détails.</p> <h3>Une erreur de l’utilisateur, et non une erreur de l’IA, selon AWS</h3> <p>Amazon a affirmé qu’il s’agissait «&nbsp;<em>d’une coïncidence que des outils d’IA aient été impliqués</em> [et que] <em>le même problème pourrait se produire avec n’importe quel outil de développement ou action manuelle</em>&nbsp;».</p> <p>L’entreprise a ajouté que «<em>&nbsp;dans les deux cas, il s’agissait d’une erreur de l’utilisateur, et non d’une erreur de l’IA</em>&nbsp;». Elle assure que l’incident de décembre était un «&nbsp;<em>événement extrêmement limité</em>&nbsp;» qui n’a touché qu’un service dans certaines régions de Chine, et que l’autre n’a eu aucune conséquence sur les services AWS orientés client.</p> <p>Amazon continue en parallèle de promouvoir l’utilisation de ses outils d’IA générative en interne qui sont en retard par rapport à certains outils de ses concurrents. L’entreprise interdit même l’utilisation de Claude Code à ses employés au profit de Kiro, ce qui a attiré des critiques en interne. </p> <p>Dans un fil de discussion sur l’outil de chat de l’entreprise, environ 1&nbsp;500 employés d’Amazon ont poussé à l’adoption officielle de Claude Code en interne, <a href="https://www.businessinsider.com/amazon-engineers-grate-against-internal-limits-claude-code-kiro-ai-2026-2" target="_blank">expliquait</a> la semaine dernière Business Insider. Cette situation est d’autant plus étrange qu’Amazon propose à ses clients un accès à Claude Code via sa plateforme Bedrock.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

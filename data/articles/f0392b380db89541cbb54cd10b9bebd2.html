@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - egeominotti/bunqueue at console.dev</title>
+<title>Beta: Bunqueue</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,170 +23,12 @@
 </style>
 </head>
 <body>
-  <h1>GitHub - egeominotti/bunqueue at console.dev</h1>
+  <h1>Beta: Bunqueue</h1>
   <div class="metadata">
     Source: Console.dev | Date: 2/12/2026 12:00:00 AM | <a href="https://github.com/egeominotti/bunqueue?ref=console.dev" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p> <a href="https://bunqueue.dev/"> <img src="/egeominotti/bunqueue/raw/main/.github/banner.svg" alt="bunqueue"> </a>
-</p>
-<p> <a href="https://github.com/egeominotti/bunqueue/stargazers"><img src="https://camo.githubusercontent.com/24f51845eab7ff8f833ecd3a585b59bfec131638ac9984f0cb135c50437b6c1f/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6567656f6d696e6f7474692f62756e71756575653f7374796c653d666c6174" alt="GitHub Stars"></a> <a href="https://www.npmjs.com/package/bunqueue"><img src="https://camo.githubusercontent.com/55cd9480897c4c40e907f6a7bfd38db09e7294d49d52207b84693d522fe574e8/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f646d2f62756e7175657565" alt="npm downloads"></a> <a href="https://github.com/egeominotti/bunqueue/actions"><img src="https://github.com/egeominotti/bunqueue/actions/workflows/ci.yml/badge.svg" alt="CI"></a> <a href="https://github.com/egeominotti/bunqueue/releases"><img src="https://camo.githubusercontent.com/91681607b93b026a8c6fee34cc67aa5f4277b4576baee9ab40ef2d09784b029c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f762f72656c656173652f6567656f6d696e6f7474692f62756e7175657565" alt="Release"></a> <a href="https://github.com/egeominotti/bunqueue/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/570187ebe64beb92899bc1270a688f4de46a89cacc467145e59eabb4d1f71fb2/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6567656f6d696e6f7474692f62756e7175657565" alt="License"></a>
-</p>
-<p> <strong>High-performance job queue for Bun. Zero external dependencies.</strong>
-</p>
-<p> <a href="https://bunqueue.dev/"><strong>Documentation</strong></a> · <a href="https://bunqueue.dev/guide/benchmarks/"><strong>Benchmarks</strong></a>
-</p>
-<hr>
-<div><h2>Why bunqueue?</h2><a href="#why-bunqueue"></a></div>
-<table>
-<thead>
-<tr>
-<th>Library</th>
-<th>Requires</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BullMQ</td>
-<td>Redis</td>
-</tr>
-<tr>
-<td>Agenda</td>
-<td>MongoDB</td>
-</tr>
-<tr>
-<td>pg-boss</td>
-<td>PostgreSQL</td>
-</tr>
-<tr>
-<td><strong>bunqueue</strong></td>
-<td><strong>Nothing</strong></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>BullMQ-compatible API</strong> — Same <pre><code>Queue</code></pre>, <pre><code>Worker</code></pre>, <pre><code>QueueEvents</code></pre></li>
-<li><strong>Zero dependencies</strong> — No Redis, no MongoDB</li>
-<li><strong>SQLite persistence</strong> — Survives restarts, WAL mode for concurrent access</li>
-<li><strong>Up to 286K ops/sec</strong> — <a href="https://bunqueue.dev/guide/benchmarks/">Verified benchmarks</a></li>
-</ul>
-<div><h2>When to use bunqueue</h2><a href="#when-to-use-bunqueue"></a></div>
-<p><strong>Great for:</strong></p>
-<ul>
-<li>Single-server deployments</li>
-<li>Prototypes and MVPs</li>
-<li>Moderate to high workloads (up to 286K ops/sec)</li>
-<li>Teams that want to avoid Redis operational overhead</li>
-<li>Embedded use cases (CLI tools, edge functions, serverless)</li>
-</ul>
-<p><strong>Not ideal for:</strong></p>
-<ul>
-<li>Multi-region distributed systems requiring HA</li>
-<li>Workloads that need automatic failover today</li>
-<li>Systems already running Redis with existing infrastructure</li>
-</ul>
-<div><h2>Why not just use BullMQ?</h2><a href="#why-not-just-use-bullmq"></a></div>
-<p>If you're already running Redis, BullMQ is great — battle-tested and feature-rich.</p>
-<p>bunqueue is for when you <strong>don't want to run Redis</strong>. SQLite with WAL mode handles surprisingly high throughput for single-node deployments (tested up to 286K ops/sec). You get persistence, priorities, delays, retries, cron jobs, and DLQ — without the operational overhead of another service.</p>
-<div><h2>Install</h2><a href="#install"></a></div>
-<div><pre>bun add bunqueue</pre></div>
-<blockquote>
-<p>Requires <a href="https://bun.sh">Bun</a> runtime. Node.js is not supported.</p>
-</blockquote>
-<div><h2>Two Modes</h2><a href="#two-modes"></a></div>
-<p>bunqueue runs in two modes depending on your architecture:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Embedded</th>
-<th>Server (TCP)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>How it works</strong></td>
-<td>Queue runs inside your process</td>
-<td>Standalone server, clients connect via TCP</td>
-</tr>
-<tr>
-<td><strong>Setup</strong></td>
-<td><pre><code>bun add bunqueue</code></pre></td>
-<td><pre><code>docker run</code></pre> or <pre><code>bunqueue start</code></pre></td>
-</tr>
-<tr>
-<td><strong>Performance</strong></td>
-<td>286K ops/sec</td>
-<td>149K ops/sec</td>
-</tr>
-<tr>
-<td><strong>Best for</strong></td>
-<td>Single-process apps, CLIs, serverless</td>
-<td>Multiple workers, separate producer/consumer</td>
-</tr>
-<tr>
-<td><strong>Scaling</strong></td>
-<td>Same process only</td>
-<td>Multiple clients across machines</td>
-</tr>
-</tbody>
-</table>
-<div><h3>Embedded Mode</h3><a href="#embedded-mode"></a></div>
-<p>Everything runs in your process. No server, no network, no setup.</p>
-<div><pre><span>import</span> <span>{</span> <span>Queue</span><span>,</span> <span>Worker</span> <span>}</span> <span>from</span> <span>'bunqueue/client'</span><span>;</span> <span>const</span> <span>queue</span> <span>=</span> <span>new</span> <span>Queue</span><span>(</span><span>'emails'</span><span>,</span> <span>{</span> <span>embedded</span>: <span>true</span> <span>}</span><span>)</span><span>;</span> <span>const</span> <span>worker</span> <span>=</span> <span>new</span> <span>Worker</span><span>(</span> <span>'emails'</span><span>,</span> <span>async</span> <span>(</span><span>job</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>'Processing:'</span><span>,</span> <span>job</span><span>.</span><span>data</span><span>)</span><span>;</span> <span>return</span> <span>{</span> <span>sent</span>: <span>true</span> <span>}</span><span>;</span> <span>}</span><span>,</span> <span>{</span> <span>embedded</span>: <span>true</span> <span>}</span>
-<span>)</span><span>;</span> <span>await</span> <span>queue</span><span>.</span><span>add</span><span>(</span><span>'welcome'</span><span>,</span> <span>{</span> <span>to</span>: <span>'user@example.com'</span> <span>}</span><span>)</span><span>;</span></pre></div>
-<div><h3>Server Mode (TCP)</h3><a href="#server-mode-tcp"></a></div>
-<p>Run bunqueue as a standalone server. Multiple workers and producers connect via TCP.</p>
-<div><pre><span><span>#</span> Start with persistent data</span>
-docker run -d -p 6789:6789 -p 6790:6790 \ -v bunqueue-data:/app/data \ ghcr.io/egeominotti/bunqueue:latest</pre></div>
-<p>Connect from your app:</p>
-<div><pre><span>import</span> <span>{</span> <span>Queue</span><span>,</span> <span>Worker</span> <span>}</span> <span>from</span> <span>'bunqueue/client'</span><span>;</span> <span>const</span> <span>queue</span> <span>=</span> <span>new</span> <span>Queue</span><span>(</span><span>'tasks'</span><span>,</span> <span>{</span> <span>connection</span>: <span>{</span> <span>host</span>: <span>'localhost'</span><span>,</span> <span>port</span>: <span>6789</span> <span>}</span> <span>}</span><span>)</span><span>;</span> <span>const</span> <span>worker</span> <span>=</span> <span>new</span> <span>Worker</span><span>(</span> <span>'tasks'</span><span>,</span> <span>async</span> <span>(</span><span>job</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>return</span> <span>{</span> <span>done</span>: <span>true</span> <span>}</span><span>;</span> <span>}</span><span>,</span> <span>{</span> <span>connection</span>: <span>{</span> <span>host</span>: <span>'localhost'</span><span>,</span> <span>port</span>: <span>6789</span> <span>}</span> <span>}</span>
-<span>)</span><span>;</span> <span>await</span> <span>queue</span><span>.</span><span>add</span><span>(</span><span>'process'</span><span>,</span> <span>{</span> <span>data</span>: <span>'hello'</span> <span>}</span><span>)</span><span>;</span></pre></div>
-<div><h2>Performance</h2><a href="#performance"></a></div>
-<p>SQLite handles surprisingly high throughput for single-node deployments:</p>
-<table>
-<thead>
-<tr>
-<th>Mode</th>
-<th>Peak Throughput</th>
-<th>Use Case</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Embedded</td>
-<td>286K ops/sec</td>
-<td>Same process</td>
-</tr>
-<tr>
-<td>TCP</td>
-<td>149K ops/sec</td>
-<td>Distributed workers</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>Run </p><pre><code>bun run bench</code></pre> to verify on your hardware. <a href="https://bunqueue.dev/guide/benchmarks/">Full benchmark methodology →</a><p></p>
-</blockquote>
-<div><h2>Monitoring</h2><a href="#monitoring"></a></div>
-<div><pre><span><span>#</span> Start with Prometheus + Grafana</span>
-docker compose --profile monitoring up -d</pre></div>
-<ul>
-<li><strong>Grafana</strong>: <a href="http://localhost:3000">http://localhost:3000</a> (admin/bunqueue)</li>
-<li><strong>Prometheus</strong>: <a href="http://localhost:9090">http://localhost:9090</a></li>
-</ul>
-<div><h2>Documentation</h2><a href="#documentation"></a></div>
-<p><strong><a href="https://bunqueue.dev/">Read the full documentation →</a></strong></p>
-<ul>
-<li><a href="https://bunqueue.dev/guide/quickstart/">Quick Start</a></li>
-<li><a href="https://bunqueue.dev/guide/queue/">Queue API</a></li>
-<li><a href="https://bunqueue.dev/guide/worker/">Worker API</a></li>
-<li><a href="https://bunqueue.dev/guide/server/">Server Mode</a></li>
-<li><a href="https://bunqueue.dev/guide/benchmarks/">Benchmarks</a></li>
-<li><a href="https://bunqueue.dev/guide/cli/">CLI Reference</a></li>
-</ul>
-<div><h2>License</h2><a href="#license"></a></div>
-<p>MIT</p>
+    <p>Job queue for Bun.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

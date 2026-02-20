@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - exo-explore/exo: Run frontier AI locally.</title>
+<title>exo-explore/exo</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,252 +23,12 @@
 </style>
 </head>
 <body>
-  <h1>GitHub - exo-explore/exo: Run frontier AI locally.</h1>
+  <h1>exo-explore/exo</h1>
   <div class="metadata">
-    Source: GitHub Trending Python | Date: 2/20/2026 4:14:30 AM | <a href="https://github.com/exo-explore/exo" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GitHub Trending Python | Date: 2/20/2026 12:47:40 PM | <a href="https://github.com/exo-explore/exo" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div> <img alt="exo logo" src="/exo-explore/exo/raw/main/docs/imgs/exo-logo-transparent.png"> <p>exo: Run frontier AI locally. Maintained by <a href="https://x.com/exolabs">exo labs</a>.</p>
-<p> <a href="https://discord.gg/TJ4P57arEm"><img src="https://camo.githubusercontent.com/c1436607f9edd988df13ebe8debf4a6fc18a9d305e663150eb65600605a3ef62/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f446973636f72642d4a6f696e2532305365727665722d3538363546323f6c6f676f3d646973636f7264266c6f676f436f6c6f723d7768697465" alt="Discord"></a> <a href="https://x.com/exolabs"><img src="https://camo.githubusercontent.com/0e8ea4c2fab5a7cd9cbd834dacb55cd69c58af077f22524a0253c8d7c8c8709a/68747470733a2f2f696d672e736869656c64732e696f2f747769747465722f666f6c6c6f772f65786f6c6162733f7374796c653d736f6369616c" alt="X"></a> <a href="https://www.apache.org/licenses/LICENSE-2.0.html"><img src="https://camo.githubusercontent.com/f00aec04603ac293f32f526faa7b011c32cb894c8c37a6b9c12fb9d8e5b0dc4d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d417061636865322e302d626c75652e737667" alt="License: Apache-2.0"></a>
-</p>
-</div>
-<hr>
-<p>exo connects all your devices into an AI cluster. Not only does exo enable running models larger than would fit on a single device, but with <a href="https://x.com/exolabs/status/2001817749744476256?s=20">day-0 support for RDMA over Thunderbolt</a>, makes models run faster as you add more devices.</p>
-<div><h2>Features</h2><a href="#features"></a></div>
-<ul>
-<li><strong>Automatic Device Discovery</strong>: Devices running exo automatically discover each other - no manual configuration.</li>
-<li><strong>RDMA over Thunderbolt</strong>: exo ships with <a href="https://x.com/exolabs/status/2001817749744476256?s=20">day-0 support for RDMA over Thunderbolt 5</a>, enabling 99% reduction in latency between devices.</li>
-<li><strong>Topology-Aware Auto Parallel</strong>: exo figures out the best way to split your model across all available devices based on a realtime view of your device topology. It takes into account device resources and network latency/bandwidth between each link.</li>
-<li><strong>Tensor Parallelism</strong>: exo supports sharding models, for up to 1.8x speedup on 2 devices and 3.2x speedup on 4 devices.</li>
-<li><strong>MLX Support</strong>: exo uses <a href="https://github.com/ml-explore/mlx">MLX</a> as an inference backend and <a href="https://ml-explore.github.io/mlx/build/html/usage/distributed.html">MLX distributed</a> for distributed communication.</li>
-</ul>
-<div><h2>Dashboard</h2><a href="#dashboard"></a></div>
-<p>exo includes a built-in dashboard for managing your cluster and chatting with models.</p>
-<p> <a target="_blank" href="/exo-explore/exo/blob/main/docs/imgs/dashboard-cluster-view.png"><img src="/exo-explore/exo/raw/main/docs/imgs/dashboard-cluster-view.png" alt="exo dashboard - cluster view showing 4 x M3 Ultra Mac Studio with DeepSeek v3.1 and Kimi-K2-Thinking loaded"></a>
-</p>
-<p><em>4 × 512GB M3 Ultra Mac Studio running DeepSeek v3.1 (8-bit) and Kimi-K2-Thinking (4-bit)</em></p>
-<div><h2>Benchmarks</h2><a href="#benchmarks"></a></div> Qwen3-235B (8-bit) on 4 × M3 Ultra Mac Studio with Tensor Parallel RDMA <a target="_blank" href="/exo-explore/exo/blob/main/docs/benchmarks/jeffgeerling/mac-studio-cluster-ai-full-1-qwen3-235b.jpeg"><img src="/exo-explore/exo/raw/main/docs/benchmarks/jeffgeerling/mac-studio-cluster-ai-full-1-qwen3-235b.jpeg" alt="Benchmark - Qwen3-235B (8-bit) on 4 × M3 Ultra Mac Studio with Tensor Parallel RDMA"></a> <p> <strong>Source:</strong> <a href="https://www.jeffgeerling.com/blog/2025/15-tb-vram-on-mac-studio-rdma-over-thunderbolt-5">Jeff Geerling: 15 TB VRAM on Mac Studio – RDMA over Thunderbolt 5</a> </p> DeepSeek v3.1 671B (8-bit) on 4 × M3 Ultra Mac Studio with Tensor Parallel RDMA <a target="_blank" href="/exo-explore/exo/blob/main/docs/benchmarks/jeffgeerling/mac-studio-cluster-ai-full-2-deepseek-3.1-671b.jpeg"><img src="/exo-explore/exo/raw/main/docs/benchmarks/jeffgeerling/mac-studio-cluster-ai-full-2-deepseek-3.1-671b.jpeg" alt="Benchmark - DeepSeek v3.1 671B (8-bit) on 4 × M3 Ultra Mac Studio with Tensor Parallel RDMA"></a> <p> <strong>Source:</strong> <a href="https://www.jeffgeerling.com/blog/2025/15-tb-vram-on-mac-studio-rdma-over-thunderbolt-5">Jeff Geerling: 15 TB VRAM on Mac Studio – RDMA over Thunderbolt 5</a> </p> Kimi K2 Thinking (native 4-bit) on 4 × M3 Ultra Mac Studio with Tensor Parallel RDMA <a target="_blank" href="/exo-explore/exo/blob/main/docs/benchmarks/jeffgeerling/mac-studio-cluster-ai-full-3-kimi-k2-thinking.jpeg"><img src="/exo-explore/exo/raw/main/docs/benchmarks/jeffgeerling/mac-studio-cluster-ai-full-3-kimi-k2-thinking.jpeg" alt="Benchmark - Kimi K2 Thinking (native 4-bit) on 4 × M3 Ultra Mac Studio with Tensor Parallel RDMA"></a> <p> <strong>Source:</strong> <a href="https://www.jeffgeerling.com/blog/2025/15-tb-vram-on-mac-studio-rdma-over-thunderbolt-5">Jeff Geerling: 15 TB VRAM on Mac Studio – RDMA over Thunderbolt 5</a> </p> <hr>
-<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
-<p>Devices running exo automatically discover each other, without needing any manual configuration. Each device provides an API and a dashboard for interacting with your cluster (runs at </p><pre><code>http://localhost:52415</code></pre>).<p></p>
-<p>There are two ways to run exo:</p>
-<div><h3>Run from Source (macOS)</h3><a href="#run-from-source-macos"></a></div>
-<p>If you have <a href="https://nixos.org/">Nix</a> installed, you can skip most of the steps below and run exo directly:</p>
-<div><pre>nix run .<span><span>#</span>exo</span></pre></div>
-<p><strong>Note:</strong> To accept the Cachix binary cache (and avoid the Xcode Metal ToolChain), add to </p><pre><code>/etc/nix/nix.conf</code></pre>:<p></p>
-<div><pre><code>trusted-users = root (or your username)
-experimental-features = nix-command flakes
-</code></pre></div>
-<p>Then restart the Nix daemon: </p><pre><code>sudo launchctl kickstart -k system/org.nixos.nix-daemon</code></pre><p></p>
-<p><strong>Prerequisites:</strong></p>
-<ul>
-<li>
-<p><a href="https://developer.apple.com/xcode/">Xcode</a> (provides the Metal ToolChain required for MLX compilation)</p>
-</li>
-<li>
-<p><a href="https://github.com/Homebrew/brew">brew</a> (for simple package management on macOS)</p>
-<div><pre>/bin/bash -c <span><span>"</span><span><span>$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span>)</span></span><span>"</span></span></pre></div>
-</li>
-<li>
-<p><a href="https://github.com/astral-sh/uv">uv</a> (for Python dependency management)</p>
-</li>
-<li>
-<p><a href="https://github.com/vladkens/macmon">macmon</a> (for hardware monitoring on Apple Silicon)</p>
-</li>
-<li>
-<p><a href="https://github.com/nodejs/node">node</a> (for building the dashboard)</p>
-<div><pre>brew install uv macmon node</pre></div>
-</li>
-<li>
-<p><a href="https://github.com/rust-lang/rustup">rust</a> (to build Rust bindings, nightly for now)</p>
-<div><pre>curl --proto <span><span>'</span>=https<span>'</span></span> --tlsv1.2 -sSf https://sh.rustup.rs <span>|</span> sh
-rustup toolchain install nightly</pre></div>
-</li>
-</ul>
-<p>Clone the repo, build the dashboard, and run exo:</p>
-<div><pre><span><span>#</span> Clone exo</span>
-git clone https://github.com/exo-explore/exo <span><span>#</span> Build dashboard</span>
-<span>cd</span> exo/dashboard <span>&amp;&amp;</span> npm install <span>&amp;&amp;</span> npm run build <span>&amp;&amp;</span> <span>cd</span> .. <span><span>#</span> Run exo</span>
-uv run exo</pre></div>
-<p>This starts the exo dashboard and API at <a href="http://localhost:52415/">http://localhost:52415/</a></p>
-<p><em>Please view the section on RDMA to enable this feature on MacOS &gt;=26.2!</em></p>
-<div><h3>Run from Source (Linux)</h3><a href="#run-from-source-linux"></a></div>
-<p><strong>Prerequisites:</strong></p>
-<ul>
-<li><a href="https://github.com/astral-sh/uv">uv</a> (for Python dependency management)</li>
-<li><a href="https://github.com/nodejs/node">node</a> (for building the dashboard) - version 18 or higher</li>
-<li><a href="https://github.com/rust-lang/rustup">rust</a> (to build Rust bindings, nightly for now)</li>
-</ul>
-<p><strong>Installation methods:</strong></p>
-<p><strong>Option 1: Using system package manager (Ubuntu/Debian example):</strong></p>
-<div><pre><span><span>#</span> Install Node.js and npm</span>
-sudo apt update
-sudo apt install nodejs npm <span><span>#</span> Install uv</span>
-curl -LsSf https://astral.sh/uv/install.sh <span>|</span> sh <span><span>#</span> Install Rust (using rustup)</span>
-curl --proto <span><span>'</span>=https<span>'</span></span> --tlsv1.2 -sSf https://sh.rustup.rs <span>|</span> sh
-rustup toolchain install nightly</pre></div>
-<p><strong>Option 2: Using Homebrew on Linux (if preferred):</strong></p>
-<div><pre><span><span>#</span> Install Homebrew on Linux</span>
-/bin/bash -c <span><span>"</span><span><span>$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span>)</span></span><span>"</span></span> <span><span>#</span> Install dependencies</span>
-brew install uv node <span><span>#</span> Install Rust (using rustup)</span>
-curl --proto <span><span>'</span>=https<span>'</span></span> --tlsv1.2 -sSf https://sh.rustup.rs <span>|</span> sh
-rustup toolchain install nightly</pre></div>
-<p><strong>Note:</strong> The </p><pre><code>macmon</code></pre> package is macOS-only and not required for Linux.<p></p>
-<p>Clone the repo, build the dashboard, and run exo:</p>
-<div><pre><span><span>#</span> Clone exo</span>
-git clone https://github.com/exo-explore/exo <span><span>#</span> Build dashboard</span>
-<span>cd</span> exo/dashboard <span>&amp;&amp;</span> npm install <span>&amp;&amp;</span> npm run build <span>&amp;&amp;</span> <span>cd</span> .. <span><span>#</span> Run exo</span>
-uv run exo</pre></div>
-<p>This starts the exo dashboard and API at <a href="http://localhost:52415/">http://localhost:52415/</a></p>
-<p><strong>Important note for Linux users:</strong> Currently, exo runs on CPU on Linux. GPU support for Linux platforms is under development. If you'd like to see support for your specific Linux hardware, please <a href="https://github.com/exo-explore/exo/issues">search for existing feature requests</a> or create a new one.</p>
-<p><strong>Configuration Options:</strong></p>
-<ul>
-<li>
-<p></p><pre><code>--no-worker</code></pre>: Run exo without the worker component. Useful for coordinator-only nodes that handle networking and orchestration but don't execute inference tasks. This is helpful for machines without sufficient GPU resources but with good network connectivity.<p></p>
-<div><pre>uv run exo --no-worker</pre></div>
-</li>
-</ul>
-<p><strong>File Locations (Linux):</strong></p>
-<p>exo follows the <a href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html">XDG Base Directory Specification</a> on Linux:</p>
-<ul>
-<li><strong>Configuration files</strong>: <pre><code>~/.config/exo/</code></pre> (or <pre><code>$XDG_CONFIG_HOME/exo/</code></pre>)</li>
-<li><strong>Data files</strong>: <pre><code>~/.local/share/exo/</code></pre> (or <pre><code>$XDG_DATA_HOME/exo/</code></pre>)</li>
-<li><strong>Cache files</strong>: <pre><code>~/.cache/exo/</code></pre> (or <pre><code>$XDG_CACHE_HOME/exo/</code></pre>)</li>
-</ul>
-<p>You can override these locations by setting the corresponding XDG environment variables.</p>
-<div><h3>macOS App</h3><a href="#macos-app"></a></div>
-<p>exo ships a macOS app that runs in the background on your Mac.</p>
-<p><a target="_blank" href="/exo-explore/exo/blob/main/docs/imgs/macos-app-one-macbook.png"><img src="/exo-explore/exo/raw/main/docs/imgs/macos-app-one-macbook.png" alt="exo macOS App - running on a MacBook"></a></p>
-<p>The macOS app requires macOS Tahoe 26.2 or later.</p>
-<p>Download the latest build here: <a href="https://assets.exolabs.net/EXO-latest.dmg">EXO-latest.dmg</a>.</p>
-<p>The app will ask for permission to modify system settings and install a new Network profile. Improvements to this are being worked on.</p>
-<p><strong>Custom Namespace for Cluster Isolation:</strong></p>
-<p>The macOS app includes a custom namespace feature that allows you to isolate your exo cluster from others on the same network. This is configured through the </p><pre><code>EXO_LIBP2P_NAMESPACE</code></pre> setting:<p></p>
-<ul>
-<li>
-<p><strong>Use cases</strong>:</p>
-<ul>
-<li>Running multiple separate exo clusters on the same network</li>
-<li>Isolating development/testing clusters from production clusters</li>
-<li>Preventing accidental cluster joining</li>
-</ul>
-</li>
-<li>
-<p><strong>Configuration</strong>: Access this setting in the app's Advanced settings (or set the </p><pre><code>EXO_LIBP2P_NAMESPACE</code></pre> environment variable when running from source)<p></p>
-</li>
-</ul>
-<p>The namespace is logged on startup for debugging purposes.</p>
-<div><h4>Uninstalling the macOS App</h4><a href="#uninstalling-the-macos-app"></a></div> <p>If you've already deleted the app, you can run the standalone uninstaller script:</p>
-<div><pre>sudo ./app/EXO/uninstall-exo.sh</pre></div>
-<p>This removes:</p>
-<ul>
-<li>Network setup LaunchDaemon</li>
-<li>Network configuration script</li>
-<li>Log files</li>
-<li>The "exo" network location</li>
-</ul>
-<p><strong>Note:</strong> You'll need to manually remove EXO from Login Items in System Settings → General → Login Items.</p>
-<hr>
-<div><h3>Enabling RDMA on macOS</h3><a href="#enabling-rdma-on-macos"></a></div>
-<p>RDMA is a new capability added to macOS 26.2. It works on any Mac with Thunderbolt 5 (M4 Pro Mac Mini, M4 Max Mac Studio, M4 Max MacBook Pro, M3 Ultra Mac Studio).</p>
-<p>Please refer to the caveats for immediate troubleshooting.</p>
-<p>To enable RDMA on macOS, follow these steps:</p>
-<ol>
-<li>Shut down your Mac.</li>
-<li>Hold down the power button for 10 seconds until the boot menu appears.</li>
-<li>Select "Options" to enter Recovery mode.</li>
-<li>When the Recovery UI appears, open the Terminal from the Utilities menu.</li>
-<li>In the Terminal, type:
-<div><pre><code>rdma_ctl enable
-</code></pre></div>
-and press Enter.</li>
-<li>Reboot your Mac.</li>
-</ol>
-<p>After that, RDMA will be enabled in macOS and exo will take care of the rest.</p>
-<p><strong>Important Caveats</strong></p>
-<ol>
-<li>Devices that wish to be part of an RDMA cluster must be connected to all other devices in the cluster.</li>
-<li>The cables must support TB5.</li>
-<li>On a Mac Studio, you cannot use the Thunderbolt 5 port next to the Ethernet port.</li>
-<li>If running from source, please use the script found at <pre><code>tmp/set_rdma_network_config.sh</code></pre>, which will disable Thunderbolt Bridge and set dhcp on each RDMA port.</li>
-<li>RDMA ports may be unable to discover each other on different versions of MacOS. Please ensure that OS versions match exactly (even beta version numbers) on all devices.</li>
-</ol>
-<hr>
-<div><h3>Using the API</h3><a href="#using-the-api"></a></div>
-<p>If you prefer to interact with exo via the API, here is an example creating an instance of a small model (</p><pre><code>mlx-community/Llama-3.2-1B-Instruct-4bit</code></pre>), sending a chat completions request and deleting the instance.<p></p>
-<hr>
-<p><strong>1. Preview instance placements</strong></p>
-<p>The </p><pre><code>/instance/previews</code></pre> endpoint will preview all valid placements for your model.<p></p>
-<div><pre>curl <span><span>"</span>http://localhost:52415/instance/previews?model_id=llama-3.2-1b<span>"</span></span></pre></div>
-<p>Sample response:</p>
-<div><pre>{ <span>"previews"</span>: [ { <span>"model_id"</span>: <span><span>"</span>mlx-community/Llama-3.2-1B-Instruct-4bit<span>"</span></span>, <span>"sharding"</span>: <span><span>"</span>Pipeline<span>"</span></span>, <span>"instance_meta"</span>: <span><span>"</span>MlxRing<span>"</span></span>, <span>"instance"</span>: {<span>...</span>}, <span>"memory_delta_by_node"</span>: {<span>"local"</span>: <span>729808896</span>}, <span>"error"</span>: <span>null</span> } <span>// ...possibly more placements...</span> ]
-}</pre></div>
-<p>This will return all valid placements for this model. Pick a placement that you like.
-To pick the first one, pipe into </p><pre><code>jq</code></pre>:<p></p>
-<div><pre>curl <span><span>"</span>http://localhost:52415/instance/previews?model_id=llama-3.2-1b<span>"</span></span> <span>|</span> jq -c <span><span>'</span>.previews[] | select(.error == null) | .instance<span>'</span></span> <span>|</span> head -n1</pre></div>
-<hr>
-<p><strong>2. Create a model instance</strong></p>
-<p>Send a POST to </p><pre><code>/instance</code></pre> with your desired placement in the <pre><code>instance</code></pre> field (the full payload must match types as in <pre><code>CreateInstanceParams</code></pre>), which you can copy from step 1:<p></p>
-<div><pre>curl -X POST http://localhost:52415/instance \ -H <span><span>'</span>Content-Type: application/json<span>'</span></span> \ -d <span><span>'</span>{</span>
-<span> "instance": {...}</span>
-<span> }<span>'</span></span></pre></div>
-<p>Sample response:</p>
-<div><pre>{ <span>"message"</span>: <span><span>"</span>Command received.<span>"</span></span>, <span>"command_id"</span>: <span><span>"</span>e9d1a8ab-....<span>"</span></span>
-}</pre></div>
-<hr>
-<p><strong>3. Send a chat completion</strong></p>
-<p>Now, make a POST to </p><pre><code>/v1/chat/completions</code></pre> (the same format as OpenAI's API):<p></p>
-<div><pre>curl -N -X POST http://localhost:52415/v1/chat/completions \ -H <span><span>'</span>Content-Type: application/json<span>'</span></span> \ -d <span><span>'</span>{</span>
-<span> "model": "mlx-community/Llama-3.2-1B-Instruct-4bit",</span>
-<span> "messages": [</span>
-<span> {"role": "user", "content": "What is Llama 3.2 1B?"}</span>
-<span> ],</span>
-<span> "stream": true</span>
-<span> }<span>'</span></span></pre></div>
-<hr>
-<p><strong>4. Delete the instance</strong></p>
-<p>When you're done, delete the instance by its ID (find it via </p><pre><code>/state</code></pre> or <pre><code>/instance</code></pre> endpoints):<p></p>
-<div><pre>curl -X DELETE http://localhost:52415/instance/YOUR_INSTANCE_ID</pre></div>
-<p><em><em>Other useful API endpoints</em>:</em>*</p>
-<ul>
-<li>List all models: <pre><code>curl http://localhost:52415/models</code></pre></li>
-<li>Inspect instance IDs and deployment state: <pre><code>curl http://localhost:52415/state</code></pre></li>
-</ul>
-<p>For further details, see:</p>
-<ul>
-<li>API basic documentation in <a href="/exo-explore/exo/blob/main/docs/api.md">docs/api.md</a>.</li>
-<li>API types and endpoints in <a href="/exo-explore/exo/blob/main/src/exo/master/api.py">src/exo/master/api.py</a>.</li>
-</ul>
-<hr>
-<div><h2>Benchmarking</h2><a href="#benchmarking"></a></div>
-<p>The </p><pre><code>exo-bench</code></pre> tool measures model prefill and token generation speed across different placement configurations. This helps you optimize model performance and validate improvements.<p></p>
-<p><strong>Prerequisites:</strong></p>
-<ul>
-<li>Nodes should be running with <pre><code>uv run exo</code></pre> before benchmarking</li>
-<li>The tool uses the <pre><code>/bench/chat/completions</code></pre> endpoint</li>
-</ul>
-<p><strong>Basic usage:</strong></p>
-<div><pre>uv run bench/exo_bench.py \ --model Llama-3.2-1B-Instruct-4bit \ --pp 128,256,512 \ --tg 128,256</pre></div>
-<p><strong>Key parameters:</strong></p>
-<ul>
-<li><pre><code>--model</code></pre>: Model to benchmark (short ID or HuggingFace ID)</li>
-<li><pre><code>--pp</code></pre>: Prompt size hints (comma-separated integers)</li>
-<li><pre><code>--tg</code></pre>: Generation lengths (comma-separated integers)</li>
-<li><pre><code>--max-nodes</code></pre>: Limit placements to N nodes (default: 4)</li>
-<li><pre><code>--instance-meta</code></pre>: Filter by <pre><code>ring</code></pre>, <pre><code>jaccl</code></pre>, or <pre><code>both</code></pre> (default: both)</li>
-<li><pre><code>--sharding</code></pre>: Filter by <pre><code>pipeline</code></pre>, <pre><code>tensor</code></pre>, or <pre><code>both</code></pre> (default: both)</li>
-<li><pre><code>--repeat</code></pre>: Number of repetitions per configuration (default: 1)</li>
-<li><pre><code>--warmup</code></pre>: Warmup runs per placement (default: 0)</li>
-<li><pre><code>--json-out</code></pre>: Output file for results (default: bench/results.json)</li>
-</ul>
-<p><strong>Example with filters:</strong></p>
-<div><pre>uv run bench/exo_bench.py \ --model Llama-3.2-1B-Instruct-4bit \ --pp 128,512 \ --tg 128 \ --max-nodes 2 \ --sharding tensor \ --repeat 3 \ --json-out my-results.json</pre></div>
-<p>The tool outputs performance metrics including prompt tokens per second (prompt_tps), generation tokens per second (generation_tps), and peak memory usage for each configuration.</p>
-<hr>
-<div><h2>Hardware Accelerator Support</h2><a href="#hardware-accelerator-support"></a></div>
-<p>On macOS, exo uses the GPU. On Linux, exo currently runs on CPU. We are working on extending hardware accelerator support. If you'd like support for a new hardware platform, please <a href="https://github.com/exo-explore/exo/issues">search for an existing feature request</a> and add a thumbs up so we know what hardware is important to the community.</p>
-<hr>
-<div><h2>Contributing</h2><a href="#contributing"></a></div>
-<p>See <a href="/exo-explore/exo/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for guidelines on how to contribute to exo.</p>
+    <p>Run frontier AI locally. exo: Run frontier AI locally. Maintained by exo labs. exo connects all your devices into an AI cluster. Not only does exo enable running models larger than would fit on a single device, but with day-0 support for RDMA over Thunderbolt, makes models run faster as you add more devices. Features Automatic Device Discovery: Devices running exo automatically discover each other - no manual configuration. RDMA over Thunderbolt: exo ships with day-0 support for RDMA over Thunderbolt 5, enabling 99% reduction in latency between devices. Topology-Aware Auto Parallel: exo figures out the best way to split your model across all available devices based on a realtime view of your device topology. It takes into account device resources and network latency/bandwidth between each link. Tensor Parallelism: exo supports sharding models, for up to 1.8x speedup on 2 devices and 3.2x speedup on 4 devices. MLX Support: exo uses MLX as an inference backend and MLX distributed for distributed communication. Dashboard exo includes a built-in dashboard for managing your cluster and chatting with models.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

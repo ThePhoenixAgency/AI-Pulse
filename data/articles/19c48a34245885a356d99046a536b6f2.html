@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,8 +34,13 @@
     Source: Raspberry Pi Spy | Date: 11/20/2022 2:00:00 PM | <a href="https://www.raspberrypi-spy.co.uk/2022/11/pi-pico-onboard-led/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>The Pi Pico boards have an onboard LED which you can turn on and off using MicroPython. It is useful for indicating activity as your code runs. The LED is wired up slightly differently on the Pi Pico and Pi Pico W but the technique below will work for both boards assuming you are using [...]
-The post Pi Pico Onboard LED appeared first on Raspberry Pi Spy.</p>
+    <div><article><div><p>The Pi Pico boards have an onboard LED which you can turn on and off using MicroPython. It is useful for indicating activity as your code runs.</p><p>The LED is wired up slightly differently on the Pi Pico and Pi Pico W but the technique below will work for both boards assuming you are using the latest firmware.</p><p>Here is the MicroPython code you can use to turn on the LED:</p><pre><code>from machine import Pin led = Pin("LED", Pin.OUT)
+led.on()</code></pre><p>The following additional commands can be used to manipulate the LED:</p><pre><code>led.on()
+led.off()
+led.toggle()
+led.value(0)
+led.value(1)</code></pre><h2>Other Pi Pico Resources</h2><ul>
+<li><a href="https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf" target="_blank">Official Raspberry Pi Pico Datasheet</a></li><li><a href="https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf" target="_blank">Official RP2040 Datasheet</a></li></ul><p>The latest version of the MicroPython firmware can be downloaded from:<br><strong>Pi Pico</strong>: <a href="https://micropython.org/download/rp2-pico">https://micropython.org/download/rp2-pico</a><br><strong>Pi Pico W</strong>: <a href="https://micropython.org/download/rp2-pico-w">https://micropython.org/download/rp2-pico-w</a></p><p>Free PDF download: <a href="https://hackspace.raspberrypi.com/books/micropython-pico" target="_blank">Get Started with MicroPython on Raspberry Pi Pico</a></p></div></article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

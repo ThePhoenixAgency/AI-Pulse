@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BEFORE-AFTER — Cryptographic Proof-of-Work Verification</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>BEFORE-AFTER — Cryptographic Proof-of-Work Verification</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/20/2026 11:53:20 AM | <a href="https://yourbeforeafterwork.netlify.app/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <div> <div> <p><span></span> Ed25519 · SHA-256 · RFC 3161 TSA · GPS · Go </p> <h2> Cryptographically<br> verifiable proof<br> <span>of service work.</span> </h2> <p> Workers capture before/after photos of a job. Photos are SHA-256 hashed, signed with Ed25519, GPS-stamped, and anchored to an external RFC 3161 timestamp authority. Client gets a 10-digit code and verifies everything locally — the math is the witness, not the app. </p> <p><a href="#how">How it works</a> <a href="#sale">For Sale →</a> </p> <p>Zero trust in the backend.</p> </div> <div> <div> <p><span>proof_output.json</span> <span>● VERIFIED</span> </p></div> <div> <div> <p>BEFORE</p> <div> <p>SHA-256: f71c…09a2</p> </div> </div> <p>→</p> <div> <p>AFTER</p> <div> <p>SHA-256: a3f9…c84d</p> </div> </div> </div> <div> <p><span>signature</span> <span>Ed25519 ✓</span> </p> <p><span>timestamp</span> <span>RFC 3161 ✓</span> </p> <p><span>gps_accuracy</span> <span>±2.4 m</span> </p> <p><span>proof_hash</span> <span>c54a…88ee</span> </p> <p><span>verify_code</span> <span>4829-1047-38</span> </p> <p><span>expires</span> <span>24h</span> </p> </div> </div> </div> <div> <p>// what is this</p> <h2>A trust layer for service work.<br><span>Not a marketplace, not a payment app.</span></h2> <p> When a plumber fixes your pipe or a contractor completes a job, there's no neutral witness. Disputes are word against word. BEFORE-AFTER eliminates that. Workers generate cryptographically signed, GPS-stamped, timestamp-anchored before/after photo evidence. Clients verify it all locally without trusting any backend. </p> <p><span>≠ payment processor</span> <span>≠ job marketplace</span> <span>≠ project management</span> <span>≠ chat platform</span> <span>= verifiable cryptographic evidence</span> </p> </div> <div> <p>// how it works</p> <h2>Two sides. One proof.</h2> <div> <div> <div> <p>01</p> <p>Open app → <strong>I am a worker</strong></p> </div> <div> <p>02</p> <p>Set session timer (1–10 min), capture <strong>before photo</strong></p> </div> <div> <p>03</p> <p>Do the job. Timer runs.</p> </div> <div> <p>04</p> <p>Capture <strong>after photo</strong></p> </div> <div> <p>05</p> <p>~5–7s: SHA-256 hash → Ed25519 sign → TSA anchor → GPS record → proof hash chain</p> </div> <div> <p>06</p> <p><strong>10-digit verification code.</strong> Share with client.</p> </div> </div> <div> <p>⟷</p> </div> <div> <div> <p>01</p> <p>Open app → <strong>I am a client</strong></p> </div> <div> <p>02</p> <p>Enter 10-digit code (or scan QR)</p> </div> <div> <p>03</p> <p>Local cryptographic verification runs. No backend trust required.</p> </div> <div> <p>04</p> <p>Full proof: before/after, GPS, timestamps, all hashes, AI narrative — ephemeral sandbox. Data destroyed on exit.</p> </div> </div> </div> </div> <div> <p>Screenshots Available</p> <p>Real app, real data — GPS redacted for privacy</p> </div> <div> <p>// what's inside every proof</p> <h2>Every proof contains:</h2> <div> <div> <p></p> <div> <p>Ed25519 Digital Signature</p> <p>Every proof signed with worker's private key. Photo edit, GPS change, metadata tweak — any of it instantly invalidates the signature.</p> </div> </div> <div> <p></p> <div> <p>External TSA Timestamp (RFC 3161)</p> <p>Anchored to freetsa. Independent third-party proof of when work happened. Not alterable by app, worker, or client.</p> </div> </div> <div> <p></p> <div> <p>GPS Verification</p> <p>Both photos carry GPS with ±meter accuracy. Distance between before/after locations auto-calculated. Proves on-site presence.</p> </div> </div> <div> <p></p> <div> <p>SHA-256 Hashed Photos</p> <p>Before/after stored async, hashed before write. Fireflower visual cryptographic fingerprints for quick verification.</p> </div> </div> <div> <p></p> <div> <p>AI Work Narrative</p> <p>Groq-powered description of what was done, derived from before/after images. Human-readable summary on every proof.</p> </div> </div> <div> <p></p> <div> <p>Export: JSON / PDF / Legal</p> <p>JSON report, PDF, Legal JSON, Legal PDF, full audit trail. Everything for disputes, compliance, or court.</p> </div> </div> </div> </div> <div> <p>// who uses this and why</p> <h2>Any service work where trust is on the line.</h2> <div> <div> <ul> <li>Cleaners (residential, commercial, carpet)</li> <li>HVAC, plumbers, electricians</li> <li>Landscapers, lawn care, snow removal</li> <li>Delivery and logistics</li> <li>Contractors and construction</li> <li>Auto detailers and mechanics</li> <li>Painters, pest control, inspectors</li> <li>Property managers</li> </ul> <p><strong>Why:</strong> Protection against false claims. Payment proof. Legal defense. Professional credibility. </p> </div> <div> <ul> <li>Anyone hiring gig workers or independent contractors</li> <li>Property owners verifying maintenance</li> <li>Businesses auditing service vendors</li> <li>Anyone who needs proof of what was done</li> </ul> <p><strong>Why:</strong> Independent verification without trusting the app or worker. GPS + timestamp proof. Evidence for disputes. </p> </div> </div> </div> <div> <p>// technical stack</p> <h2>Built on real cryptography.</h2> <div> <p><span>Digital Signatures</span> <span>Ed25519</span> </p> <p><span>Photo Hashing</span> <span>SHA-256</span> </p> <p><span>Timestamp Authority</span> <span>freetsa (RFC 3161 compliant)</span> </p> <p><span>Backend</span> <span>Go (Golang)</span> </p> <p><span>Client Verification</span> <span>local — zero-trust, no backend dependency</span> </p> <p><span>Storage</span> <span>async image + cryptographic hash before write</span> </p> <p><span>AI Narrative</span> <span>Groq API</span> </p> <p><span>Key Versioning</span> <span>immutable key_id-based rotation — old proofs stay verifiable</span> </p> <p><span>Code Expiry</span> <span>24h</span> </p> </div> <p> Key rotation: every device/reinstall appends a new key (not overwrites). Each proof records the exact key_id used. Old proofs remain verifiable indefinitely — flagged "key rotated" if signing key was later superseded. </p> </div> <div> <p>// transparency — read before evaluating</p> <h2>Honest disclosures.</h2> <div> <div> <p></p> <p>Source Code — Private Repo</p> <p>Maintained in a private GitHub repo. Full source, architecture docs, and access provided on acquisition or under signed NDA. Private by design — commercial asset, not open-source.</p> </div> <div> <p>◎</p> <p>Video PoC — Available on Request</p> <p>Not posted publicly. Recorded sessions contain real GPS coordinates and device identifiers. Full walkthrough — worker flow, client verification, export — available once we're a step further in conversation.</p> </div> <div> <p></p> <p>AI-Assisted Development</p> <p>Built with significant AI assistance. Result is a fully functional working product — not a throwaway prototype. Cryptographic logic, backend, and verification flow are validated and working. Buyer receives a real, working asset.</p> </div> <div> <p>△</p> <p>Known Bugs — UI Only, Not Core</p> <p>Known bugs exist. None affect the core system. Signing, TSA anchoring, GPS, and proof verification all work correctly. Issues are isolated to UI behavior — fixable, not a compromise to integrity or value.</p> </div> </div> </div> <div> <p>FOR SALE — FULL IP TRANSFER</p> <h2>This app is for sale.</h2> <p>Full IP transfer. Complete source code: mobile app, Go backend, cryptographic layer, AI integration, audit trail system, all export formats. Everything documented. Everything working.</p> <p>Looking for a buyer in gig economy, service verification, legal tech, or proptech. The cryptographic model is the moat — not a feature wrapper on someone else's API.</p> <p><a href="mailto:mozar.t@yahoo.com">Contact: mozar.t@yahoo.com</a> </p></div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

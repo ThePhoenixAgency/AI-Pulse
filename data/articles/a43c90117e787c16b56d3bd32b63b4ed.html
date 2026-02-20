@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How We Added an Email Gate to Shared Videos</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How We Added an Email Gate to Shared Videos</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/20/2026 11:17:55 AM | <a href="https://dev.to/alexneamtu/how-we-added-an-email-gate-to-shared-videos-30e1" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/alexneamtu"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F353763%2Fad2f8461-24ae-4014-8af9-f848d9cf4c5b.jpeg" alt="Alex Neamtu"></a> </p> </div><div> <p>You share a product demo with a prospect. The analytics show 5 views. But who watched? Did the decision-maker see it, or just the person you sent the link to? View counts can't answer that.</p> <p>We added an email gate to <a href="https://sendrec.eu/" target="_blank">SendRec</a>. When enabled on a video, viewers enter their email before they can watch. The email shows up in the per-video analytics page alongside view count and completion percentage. You know exactly who watched your video and how much of it they saw.</p> <h2> <a name="the-gate-flow" href="#the-gate-flow"> </a> The gate flow
+</h2> <p>A video in SendRec can have two gates: a password gate (existing feature) and an email gate (new). They're evaluated in order — password first, then email. If a video has both, the viewer enters the password, then sees the email form.</p> <p>The email gate is a minimal form matching the password gate's dark theme — just a title, a subtitle ("Enter your email to watch this video"), an email input, and a "Watch Video" button. No name field, no company field. One input, minimal friction.</p> <p>When the viewer submits their email, a POST request goes to the identify endpoint:<br>
+</p> <div>
+<pre><code>POST /api/watch/{shareToken}/identify
+{"email": "alice@example.com"}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The server validates the email, records it in the database, sets a signed cookie, and returns 200. The page reloads, the cookie is present, and the video plays.</p> <h2> <a name="cookiebased-authentication" href="#cookiebased-authentication"> </a> Cookie-based authentication
+</h2> <p>The email gate uses the same pattern as the password gate — an HMAC-signed cookie that proves the viewer has already identified themselves.</p> <p>The cookie name is <code>eg_</code> followed by the first 8 characters of the share token. The value is the email address and an HMAC signature, separated by a pipe:<br>
+</p> <div>
+<pre><code>eg_a048914d = alice@example.com|3f8a7b2e...
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>When the watch page loads, it checks for this cookie and verifies the signature:<br>
+</p> <div>
+<pre><code><span>func</span> <span>verifyEmailGateCookie</span><span>(</span><span>hmacSecret</span><span>,</span> <span>shareToken</span><span>,</span> <span>cookieValue</span> <span>string</span><span>)</span> <span>(</span><span>string</span><span>,</span> <span>bool</span><span>)</span> <span>{</span> <span>parts</span> <span>:=</span> <span>strings</span><span>.</span><span>SplitN</span><span>(</span><span>cookieValue</span><span>,</span> <span>"|"</span><span>,</span> <span>2</span><span>)</span> <span>if</span> <span>len</span><span>(</span><span>parts</span><span>)</span> <span>!=</span> <span>2</span> <span>{</span> <span>return</span> <span>""</span><span>,</span> <span>false</span> <span>}</span> <span>email</span> <span>:=</span> <span>parts</span><span>[</span><span>0</span><span>]</span> <span>expected</span> <span>:=</span> <span>signEmailGateCookie</span><span>(</span><span>hmacSecret</span><span>,</span> <span>shareToken</span><span>,</span> <span>email</span><span>)</span> <span>if</span> <span>!</span><span>hmac</span><span>.</span><span>Equal</span><span>([]</span><span>byte</span><span>(</span><span>expected</span><span>),</span> <span>[]</span><span>byte</span><span>(</span><span>cookieValue</span><span>))</span> <span>{</span> <span>return</span> <span>""</span><span>,</span> <span>false</span> <span>}</span> <span>return</span> <span>email</span><span>,</span> <span>true</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The <code>hmac.Equal</code> comparison is timing-safe — it prevents an attacker from guessing the signature byte by byte by measuring response times. The email is extracted from the cookie value itself, not from a separate source, so the cookie is self-contained.</p> <p>The cookie lasts 7 days. A viewer who enters their email once can return to the same video without being asked again.</p> <h2> <a name="linking-emails-to-anonymous-analytics" href="#linking-emails-to-anonymous-analytics"> </a> Linking emails to anonymous analytics
+</h2> <p>SendRec's analytics use an anonymous viewer hash — a SHA-256 of the IP address and User-Agent string. This is what deduplicates views, milestone tracking, and CTA clicks. But it's anonymous. You see "42 unique viewers" without knowing who they are.</p> <p>The email gate bridges this gap with a <code>video_viewers</code> table:<br>
+</p> <div>
+<pre><code><span>CREATE</span> <span>TABLE</span> <span>video_viewers</span> <span>(</span> <span>id</span> <span>UUID</span> <span>PRIMARY</span> <span>KEY</span> <span>DEFAULT</span> <span>gen_random_uuid</span><span>(),</span> <span>video_id</span> <span>UUID</span> <span>NOT</span> <span>NULL</span> <span>REFERENCES</span> <span>videos</span><span>(</span><span>id</span><span>)</span> <span>ON</span> <span>DELETE</span> <span>CASCADE</span><span>,</span> <span>email</span> <span>TEXT</span> <span>NOT</span> <span>NULL</span><span>,</span> <span>viewer_hash</span> <span>TEXT</span> <span>NOT</span> <span>NULL</span><span>,</span> <span>created_at</span> <span>TIMESTAMPTZ</span> <span>NOT</span> <span>NULL</span> <span>DEFAULT</span> <span>now</span><span>(),</span> <span>UNIQUE</span><span>(</span><span>video_id</span><span>,</span> <span>email</span><span>)</span>
+<span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>When a viewer submits their email, the server computes their viewer hash from the request's IP and User-Agent, then inserts it alongside the email:<br>
+</p> <div>
+<pre><code><span>ip</span> <span>:=</span> <span>clientIP</span><span>(</span><span>r</span><span>)</span>
+<span>hash</span> <span>:=</span> <span>viewerHash</span><span>(</span><span>ip</span><span>,</span> <span>r</span><span>.</span><span>UserAgent</span><span>())</span> <span>go</span> <span>func</span><span>()</span> <span>{</span> <span>ctx</span><span>,</span> <span>cancel</span> <span>:=</span> <span>context</span><span>.</span><span>WithTimeout</span><span>(</span><span>context</span><span>.</span><span>Background</span><span>(),</span> <span>30</span><span>*</span><span>time</span><span>.</span><span>Second</span><span>)</span> <span>defer</span> <span>cancel</span><span>()</span> <span>h</span><span>.</span><span>db</span><span>.</span><span>Exec</span><span>(</span><span>ctx</span><span>,</span> <span>`INSERT INTO video_viewers (video_id, email, viewer_hash) VALUES ($1, $2, $3) ON CONFLICT (video_id, email) DO NOTHING`</span><span>,</span> <span>videoID</span><span>,</span> <span>req</span><span>.</span><span>Email</span><span>,</span> <span>hash</span><span>,</span> <span>)</span>
+<span>}()</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The <code>ON CONFLICT DO NOTHING</code> means if the same person enters the same email twice (maybe their cookie expired), the original row is preserved. The viewer hash might differ if their IP changed, but the email remains the stable identifier.</p> <p>This viewer hash is the same one used in the <code>video_views</code> and <code>view_milestones</code> tables. That means we can join across tables to answer "how many times did <a href="mailto:alice@example.com">alice@example.com</a> watch this video?" and "what percentage did she reach?"</p> <h2> <a name="perviewer-analytics" href="#perviewer-analytics"> </a> Per-viewer analytics
+</h2> <p>The analytics endpoint joins the three tables when the email gate is enabled:<br>
+</p> <div>
+<pre><code><span>SELECT</span> <span>vw</span><span>.</span><span>email</span><span>,</span> <span>vw</span><span>.</span><span>created_at</span><span>,</span> <span>COUNT</span><span>(</span><span>DISTINCT</span> <span>vv</span><span>.</span><span>id</span><span>)</span> <span>as</span> <span>view_count</span><span>,</span> <span>COALESCE</span><span>(</span><span>MAX</span><span>(</span><span>vm</span><span>.</span><span>milestone</span><span>),</span> <span>0</span><span>)</span> <span>as</span> <span>max_milestone</span>
+<span>FROM</span> <span>video_viewers</span> <span>vw</span>
+<span>LEFT</span> <span>JOIN</span> <span>video_views</span> <span>vv</span> <span>ON</span> <span>vv</span><span>.</span><span>video_id</span> <span>=</span> <span>vw</span><span>.</span><span>video_id</span> <span>AND</span> <span>vv</span><span>.</span><span>viewer_hash</span> <span>=</span> <span>vw</span><span>.</span><span>viewer_hash</span>
+<span>LEFT</span> <span>JOIN</span> <span>view_milestones</span> <span>vm</span> <span>ON</span> <span>vm</span><span>.</span><span>video_id</span> <span>=</span> <span>vw</span><span>.</span><span>video_id</span> <span>AND</span> <span>vm</span><span>.</span><span>viewer_hash</span> <span>=</span> <span>vw</span><span>.</span><span>viewer_hash</span>
+<span>WHERE</span> <span>vw</span><span>.</span><span>video_id</span> <span>=</span> <span>$</span><span>1</span>
+<span>GROUP</span> <span>BY</span> <span>vw</span><span>.</span><span>email</span><span>,</span> <span>vw</span><span>.</span><span>created_at</span>
+<span>ORDER</span> <span>BY</span> <span>vw</span><span>.</span><span>created_at</span> <span>DESC</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The result is a viewer list in the analytics page — a table showing each email, when they first watched, how many times they returned, and the furthest point they reached in the video.</p> <p>This turns anonymous analytics into actionable data. Instead of "23 unique views, 60% reached 50%," you see "<a href="mailto:alice@example.com">alice@example.com</a> watched 3 times and finished the whole thing; <a href="mailto:bob@example.com">bob@example.com</a> opened it once and dropped off at 25%."</p> <h2> <a name="the-embed-page" href="#the-embed-page"> </a> The embed page
+</h2> <p>The email gate works identically on the embeddable player at <code>/embed/:token</code>. The form matches the embed's minimal style, and the cookie is shared across the same domain — entering an email on the watch page also unlocks the embed, and vice versa.</p> <p>One detail that bit us: cookie <code>SameSite</code> policy. We initially set the cookies to <code>SameSite=Strict</code>, which is the most restrictive option. But when an embed is loaded inside an iframe on a different site, the browser considers it a cross-origin context. Strict cookies aren't sent in cross-origin requests, so the cookie set after email submission was silently dropped on page reload.</p> <p>The fix was switching both the password gate and email gate cookies to <code>SameSite=None</code> (with <code>Secure</code> required by browsers for None). This allows the cookie to work inside third-party iframes — the whole point of having an embeddable player.</p> <h2> <a name="what-we-chose-not-to-build" href="#what-we-chose-not-to-build"> </a> What we chose not to build
+</h2> <p><strong>Email verification.</strong> We could send a magic link to confirm the address is real. But that adds significant friction — the viewer has to leave the page, check their inbox, click a link, and come back. For a shared video demo, that's too much. The honesty-based approach trades verification accuracy for conversion.</p> <p><strong>Name collection.</strong> Adding a name field to the form would give richer viewer data. But every extra field reduces completion rates. Email alone is enough to identify who watched.</p> <p><strong>User-level defaults.</strong> The email gate is per-video only. There's no setting to enable it for all videos at once. Most users will only gate specific high-value content — an investor pitch, a client proposal — not every quick screen recording.</p> <h2> <a name="try-it" href="#try-it"> </a> Try it
+</h2> <p><a href="https://sendrec.eu/" target="_blank">SendRec</a> is open source (AGPL-3.0) and self-hostable. The email gate is live at <a href="https://app.sendrec.eu/" target="_blank">app.sendrec.eu</a> — upload a video, toggle "Require email" in the Library overflow menu, then share the link. You'll see exactly who watches and how far they get.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

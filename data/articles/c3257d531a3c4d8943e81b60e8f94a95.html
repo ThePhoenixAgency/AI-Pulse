@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - obra/superpowers: An agentic skills framework &amp; software development methodology that works.</title>
+<title>obra/superpowers</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,109 +23,12 @@
 </style>
 </head>
 <body>
-  <h1>GitHub - obra/superpowers: An agentic skills framework &amp; software development methodology that works.</h1>
+  <h1>obra/superpowers</h1>
   <div class="metadata">
-    Source: GitHub Trending | Date: 2/20/2026 4:14:28 AM | <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GitHub Trending | Date: 2/20/2026 12:47:38 PM | <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><h1>Superpowers</h1><a href="#superpowers"></a></div>
-<p>Superpowers is a complete software development workflow for your coding agents, built on top of a set of composable "skills" and some initial instructions that make sure your agent uses them.</p>
-<div><h2>How it works</h2><a href="#how-it-works"></a></div>
-<p>It starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it <em>doesn't</em> just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do.</p>
-<p>Once it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest.</p>
-<p>After you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgement, no project context, and an aversion to testing to follow. It emphasizes true red/green TDD, YAGNI (You Aren't Gonna Need It), and DRY.</p>
-<p>Next up, once you say "go", it launches a <em>subagent-driven-development</em> process, having agents work through each engineering task, inspecting and reviewing their work, and continuing forward. It's not uncommon for Claude to be able to work autonomously for a couple hours at a time without deviating from the plan you put together.</p>
-<p>There's a bunch more to it, but that's the core of the system. And because the skills trigger automatically, you don't need to do anything special. Your coding agent just has Superpowers.</p>
-<div><h2>Sponsorship</h2><a href="#sponsorship"></a></div>
-<p>If Superpowers has helped you do stuff that makes money and you are so inclined, I'd greatly appreciate it if you'd consider <a href="https://github.com/sponsors/obra">sponsoring my opensource work</a>.</p>
-<p>Thanks!</p>
-<ul>
-<li>Jesse</li>
-</ul>
-<div><h2>Installation</h2><a href="#installation"></a></div>
-<p><strong>Note:</strong> Installation differs by platform. Claude Code or Cursor have built-in plugin marketplaces. Codex and OpenCode require manual setup.</p>
-<div><h3>Claude Code (via Plugin Marketplace)</h3><a href="#claude-code-via-plugin-marketplace"></a></div>
-<p>In Claude Code, register the marketplace first:</p>
-<div><pre>/plugin marketplace add obra/superpowers-marketplace</pre></div>
-<p>Then install the plugin from this marketplace:</p>
-<div><pre>/plugin install superpowers@superpowers-marketplace</pre></div>
-<div><h3>Cursor (via Plugin Marketplace)</h3><a href="#cursor-via-plugin-marketplace"></a></div>
-<p>In Cursor Agent chat, install from marketplace:</p>
-<div><pre><code>/plugin-add superpowers
-</code></pre></div>
-<div><h3>Codex</h3><a href="#codex"></a></div>
-<p>Tell Codex:</p>
-<div><pre><code>Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.codex/INSTALL.md
-</code></pre></div>
-<p><strong>Detailed docs:</strong> <a href="/obra/superpowers/blob/main/docs/README.codex.md">docs/README.codex.md</a></p>
-<div><h3>OpenCode</h3><a href="#opencode"></a></div>
-<p>Tell OpenCode:</p>
-<div><pre><code>Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.opencode/INSTALL.md
-</code></pre></div>
-<p><strong>Detailed docs:</strong> <a href="/obra/superpowers/blob/main/docs/README.opencode.md">docs/README.opencode.md</a></p>
-<div><h3>Verify Installation</h3><a href="#verify-installation"></a></div>
-<p>Start a new session in your chosen platform and ask for something that should trigger a skill (for example, "help me plan this feature" or "let's debug this issue"). The agent should automatically invoke the relevant superpowers skill.</p>
-<div><h2>The Basic Workflow</h2><a href="#the-basic-workflow"></a></div>
-<ol> <li>
-<p><strong>using-git-worktrees</strong> - Activates after design approval. Creates isolated workspace on new branch, runs project setup, verifies clean test baseline.</p>
-</li>
-<li>
-<p><strong>writing-plans</strong> - Activates with approved design. Breaks work into bite-sized tasks (2-5 minutes each). Every task has exact file paths, complete code, verification steps.</p>
-</li> <li>
-<p><strong>test-driven-development</strong> - Activates during implementation. Enforces RED-GREEN-REFACTOR: write failing test, watch it fail, write minimal code, watch it pass, commit. Deletes code written before tests.</p>
-</li> <li>
-<p><strong>finishing-a-development-branch</strong> - Activates when tasks complete. Verifies tests, presents options (merge/PR/keep/discard), cleans up worktree.</p>
-</li>
-</ol>
-<p><strong>The agent checks for relevant skills before any task.</strong> Mandatory workflows, not suggestions.</p>
-<div><h2>What's Inside</h2><a href="#whats-inside"></a></div>
-<div><h3>Skills Library</h3><a href="#skills-library"></a></div>
-<p><strong>Testing</strong></p>
-<ul>
-<li><strong>test-driven-development</strong> - RED-GREEN-REFACTOR cycle (includes testing anti-patterns reference)</li>
-</ul>
-<p><strong>Debugging</strong></p>
-<ul>
-<li><strong>systematic-debugging</strong> - 4-phase root cause process (includes root-cause-tracing, defense-in-depth, condition-based-waiting techniques)</li>
-<li><strong>verification-before-completion</strong> - Ensure it's actually fixed</li>
-</ul>
-<p><strong>Collaboration</strong></p>
-<ul>
-<li><strong>brainstorming</strong> - Socratic design refinement</li>
-<li><strong>writing-plans</strong> - Detailed implementation plans</li>
-<li><strong>executing-plans</strong> - Batch execution with checkpoints</li>
-<li><strong>dispatching-parallel-agents</strong> - Concurrent subagent workflows</li> <li><strong>using-git-worktrees</strong> - Parallel development branches</li>
-<li><strong>finishing-a-development-branch</strong> - Merge/PR decision workflow</li> </ul>
-<p><strong>Meta</strong></p>
-<ul>
-<li><strong>writing-skills</strong> - Create new skills following best practices (includes testing methodology)</li>
-<li><strong>using-superpowers</strong> - Introduction to the skills system</li>
-</ul>
-<div><h2>Philosophy</h2><a href="#philosophy"></a></div>
-<ul>
-<li><strong>Test-Driven Development</strong> - Write tests first, always</li>
-<li><strong>Systematic over ad-hoc</strong> - Process over guessing</li>
-<li><strong>Complexity reduction</strong> - Simplicity as primary goal</li>
-<li><strong>Evidence over claims</strong> - Verify before declaring success</li>
-</ul> <div><h2>Contributing</h2><a href="#contributing"></a></div>
-<p>Skills live directly in this repository. To contribute:</p>
-<ol>
-<li>Fork the repository</li>
-<li>Create a branch for your skill</li>
-<li>Follow the <pre><code>writing-skills</code></pre> skill for creating and testing new skills</li>
-<li>Submit a PR</li>
-</ol>
-<p>See </p><pre><code>skills/writing-skills/SKILL.md</code></pre> for the complete guide.<p></p>
-<div><h2>Updating</h2><a href="#updating"></a></div>
-<p>Skills update automatically when you update the plugin:</p>
-<div><pre>/plugin update superpowers</pre></div>
-<div><h2>License</h2><a href="#license"></a></div>
-<p>MIT License - see LICENSE file for details</p>
-<div><h2>Support</h2><a href="#support"></a></div>
-<ul>
-<li><strong>Issues</strong>: <a href="https://github.com/obra/superpowers/issues">https://github.com/obra/superpowers/issues</a></li>
-<li><strong>Marketplace</strong>: <a href="https://github.com/obra/superpowers-marketplace">https://github.com/obra/superpowers-marketplace</a></li>
-</ul>
+    <p>An agentic skills framework &amp; software development methodology that works. Superpowers Superpowers is a complete software development workflow for your coding agents, built on top of a set of composable "skills" and some initial instructions that make sure your agent uses them. How it works It starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it doesn't just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. Once it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest. After you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgement, no project context, and an aversion to testing to follow. It emphasizes true red/green TDD, YAGNI (You Aren't Gonna Need It), and DRY. Next up, once you say "go", it launches a subagent-driven-development process, having agents work through each engineering task, inspecting and reviewing their work, and continuing forward.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

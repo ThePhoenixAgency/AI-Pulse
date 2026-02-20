@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OkaiDokai — Your AI agent asks. You decide.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>OkaiDokai — Your AI agent asks. You decide.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/20/2026 11:57:13 AM | <a href="https://okaidokai.com/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><section><div><div><p>Security firewall for AI agents</p></div><h2><span><span>Your</span><span>AI</span><span>agent</span><span>asks.</span></span><br><span><span><span>You</span><span>decide.</span></span></span></h2><p>OkaiDokai intercepts every tool call — shell commands, HTTP requests, file writes, messages — and sends you a push notification to <span><span>A</span><span>l</span><span>l</span><span>o</span><span>w</span></span> or <span><span>D</span><span>e</span><span>n</span><span>y</span></span> in real time.</p></div><div><p>Works with</p><div><div><p><span>OpenClaw</span></p></div><div><p><span>Claude Code</span></p></div><div><p><span>Codex</span><span>soon</span></p></div></div></div><div><p>OkaiDokai — Approval Required</p><p>exec <span>→</span> rm -rf /tmp/build/*</p></div></section><div><h2><span><span>The</span><span>Problem</span></span></h2><div><p><span>AI agents are powerful. They execute shell commands, make HTTP requests, read and write files, send messages, and control browsers. Most of the time that's what you want. But sometimes it's not.</span></p></div><div><p><span>×</span><span>A malicious plugin exfiltrates your SSH keys via curl</span></p><p><span>×</span><span>An agent runs rm -rf on the wrong directory</span></p><p><span>×</span><span>A tool call sends a message to the wrong Slack channel</span></p><p><span>×</span><span>An agent initiates a fiat or crypto transaction you didn't authorize</span></p><p><span>×</span><span>A dependency install pulls in a compromised package</span></p></div></div><div><h2><span><span>How</span><span>It</span><span>Works</span></span></h2><div><div><p>01</p><h3>Install the plugin</h3><p>One command. Works with OpenClaw and any agent framework with a hook system.</p><div><p>$ </p><p>npx okaidokai</p></div></div><div><p>02</p><h3>Your agent runs — you stay in control</h3><p>Every tool call is intercepted. If a rule matches, it's auto-decided in &lt;1ms. Otherwise, you get a push notification.</p></div><div><p>03</p><h3>Build your firewall over time</h3><p>Every decision can become a rule. Your ruleset grows smarter with every interaction — like training a spam filter.</p></div></div><div><p>OkaiDokai — Approval Required</p><p>web_fetch <span>→</span> api.stripe.com:443</p></div></div><div><h2><span><span>Features</span></span></h2><div><div><h3>Real-Time Approval Flow</h3><p>Push notifications with Allow/Deny actions. Respond from your lockscreen, Apple Watch, or browser. Sub-second delivery.</p></div><div><h3>Smart Rules Engine</h3><p>Glob-based pattern matching with priority ordering. Scope rules by tool, session, agent, or time. Rules are checked in &lt;1ms.</p></div><div><h3>Full Audit Trail</h3><p>Every decision is logged — who approved what, when, why, and which rule matched. Searchable, filterable, exportable.</p></div><div><h3>Works Everywhere</h3><p>iOS, Android, Apple Watch, Web. Push notifications via APNs, FCM, and Web Push. Approve from wherever you are.</p></div><div><h3>One-Command Setup</h3><p>npx okaidokai — installs the plugin, opens OAuth in your browser, pairs your device. No config files to edit.</p></div><div><h3>Deny on Timeout</h3><p>If you don't respond, the action is automatically denied. Your agent can't just wait you out. Configurable per-user.</p></div></div></div><div><h2><span><span>How</span><span>It's</span><span>Different</span></span></h2><div><table><thead><tr><th></th><th>OkaiDokai</th><th>Static Policies</th><th>Docker Sandbox</th></tr></thead><tbody><tr><td>Per-request approval</td><td></td><td></td><td></td></tr><tr><td>Mobile notifications</td><td></td><td></td><td></td></tr><tr><td>Learning ruleset</td><td></td><td></td><td></td></tr><tr><td>Audit trail</td><td></td><td><p><span>Partial</span></p></td><td><p><span>Logs only</span></p></td></tr><tr><td>Sub-second overhead</td><td></td><td></td><td></td></tr><tr><td>Works with any agent</td><td></td><td></td><td></td></tr></tbody></table></div></div><div><h2><span><span>Architecture</span></span></h2><div><pre>Your AI Agent │ ▼
+┌─────────────┐ ┌──────────────┐ ┌──────────┐
+│ OkaiDokai │────│ OkaiDokai │──────│ Your │
+│ Plugin │────│ API │ │ Phone / │
+│ (via hook) │ │ │──────│ Watch / │
+└─────────────┘ └──────────────┘ │ Browser │ └──────────┘ Intercepts Evaluates rules, You tap every tool call sends push if needed Allow or Deny</pre></div><div><p>End-to-end encrypted — all communication secured via HTTPS</p></div></div><div><h2><span><span>Pricing</span></span></h2><div><div><h3>Free</h3><p><span>$0</span></p><ul><li>500 approvals/month</li><li>1 device</li><li>Push notifications</li><li>Rules engine</li><li>Audit log (30 days)</li></ul></div><div><div><p> Most Popular</p></div><h3>Personal</h3><p><span>$9</span><span>/mo</span></p><ul><li>Unlimited approvals</li><li>Unlimited devices</li><li>Apple Watch support</li><li>Audit log (unlimited)</li><li>Priority support</li></ul></div></div><p>Team plan with shared rulesets and approval chains coming soon.</p></div><div><h2><span><span>Set</span><span>it</span><span>up</span><span>in</span><span>60</span><span>seconds.</span></span></h2><div><p><span># 2. Install the plugin + pair your device</span><br><span>$ npx okaidokai</span><br><span># detects your agent, installs the hook,</span><br><span># and walks you through pairing</span></p><p><span># 3. That's it.</span><br><span># Your agent asks, you decide.</span></p></div></div></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

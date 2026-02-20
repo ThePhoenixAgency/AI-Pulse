@@ -5,73 +5,99 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Feb 2026 04:15:01 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Feb 2026 12:48:08 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: SalaryScript – The FAANG Negotiation Playbook]]></title>
-      <link>https://salaryscript.com</link>
-      <description><![CDATA[Hey HN,
-I’m the founder of SalaryScript, and I wanted to share a project I’ve been working on for over a year: a comprehensive negotiation playbook tailored specifically for big tech roles.
-I’ve navigated the FAANG hiring gauntlet multiple times myself, with stints at FAANG companies, so I know firsthand how opaque and high-stakes these negotiations can be. I wrote SalaryScript based on my experience, insights from a dozen FAANG-alumni colleagues, and lessons from recruiters I’ve worked with over the years. We’ve pooled perspectives from engineers, PMs, and execs who’ve collectively negotiated millions in total compensation.
-Think of it as a “golden rule” book for tech negotiations. It covers everything from decoding offer letters and leveraging competing offers to scripting responses for common recruiter tactics, handling equity cliffs, and navigating relocation packages. No fluff — just battle-tested scripts, templates, and strategies that have helped people increase their total comp by 30–50% on average.
-One contributor, a former Meta engineering manager, shared how he turned a $300K offer into $550K by reframing the RSU vesting conversation. Another, an ex-Apple product lead, broke down the psychology of why “total comp” framing often beats focusing on base salary alone.
-Since launching last year at an introductory price of $19, we’ve crossed 1,000+ downloads and sales. Demand has been strong, and as word has spread, we’ve gradually raised the price.
-If you’re prepping for interviews or staring at an offer right now, this might be the edge you need.
-If you’re interested, you can check it out at salaryscript.com.
-Would love your thoughts, war stories, or questions like what’s the biggest negotiation win (or fail) you’ve had in tech?
-Cheers URL: https://news.ycombinator.com/item?id=47083163
+      <title><![CDATA[Show HN: OkaiDokai, tool-level firewall for OpenClaw, Claude Code and Codex]]></title>
+      <link>https://okaidokai.com</link>
+      <description><![CDATA[Hey HN, Sascha here, developer of OkaiDokai. Like many others, I fell in love with OpenClaw, but was longing for more control over what it can do without interrupting its autonomous, agentic nature. OkaiDokai solves this for me by allowing me to set up my own rule set of what is allowed by default, what is not, and what it should ask permission for. It comes with a hosted API, web and native apps including push notifications (with quick-response support), plugins for OpenClaw and Claude Code, and soon Codex.
+I'm still working on getting the apps onto the App Store (currently on TestFlight and Android beta channels), as well as giving the rule engine and UI a bit more love. It should be good enough for a quick test if anyone dares to try it!
+I just created a new Discord server (https://discord.gg/M25cCwJ5x7), so please say "hello" if you’d like to give it a go and provide me with any feedback you have. I'm adding new features and improvements pretty much around the clock right now. I'm also planning to release the source code under the Sustainable Use License soon, as I think it's important to get more eyes on it and allow others to contribute should they want to.
+Thanks for reading :) URL: https://news.ycombinator.com/item?id=47086913
 Points: 1
 # : 0]]></description>
-      <pubDate>Fri, 20 Feb 2026 03:07:26 GMT</pubDate>
+      <pubDate>Fri, 20 Feb 2026 11:57:13 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://salaryscript.com</guid>
+      <guid>https://okaidokai.com</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: Single-Binary Markdown-to-PDF CLI in Rust, Powered by Typst (MDXport)]]></title>
-      <link>https://github.com/cosformula/mdxport-cli</link>
-      <description><![CDATA[I wanted a fast way to turn Markdown files into good-looking PDFs from the terminal. Pandoc + LaTeX is powerful but heavy. Browser-based tools break my workflow. So I built mdxport: one binary, no dependencies, pipe in Markdown, get a PDF.
-Under the hood it parses Markdown with comrak, converts to Typst, and compiles to PDF in-process. No LaTeX installation, no network calls, no temp files flying around.
-What it handles: LaTeX math ($E=mc^2$, display blocks), GFM tables, fenced code blocks, YAML frontmatter (title/author/lang/toc), and two built-in templates. You can also pass your own .typ template.
-CJK support was a pain point I wanted to solve properly. mdxport fonts install downloads Noto CJK fonts, and the converter auto-detects CJK characters and warns if fonts are missing. Chinese/Japanese/Korean documents just work.
-Watch mode (mdxport input.md -w) recompiles on save. Stdin works too: cat notes.md | mdxport -o notes.pdf.
-Install: npm install -g @mdxport/cli (ships platform-specific binaries, no Rust toolchain needed) or cargo install mdxport.
-https://github.com/cosformula/mdxport-cli (MIT, Rust, 55 tests, CI builds for macOS/Linux/Windows)
-There's also a web version at https://mdxport.com if you prefer a browser UI. URL: https://news.ycombinator.com/item?id=47083014
+      <title><![CDATA[Show HN: From Clawdbot to OpenAI: Dissecting the supply chain that sold out]]></title>
+      <link>https://the-mind-of-ai.com/posts/openclaw-necropsy/</link>
+      <description><![CDATA[What started as a viral "Mac Mini" enthusiast project ended with a Valentine's Day "hard launch" of its founder joining OpenAI.
+But the real story isn't the hiring—it's the supply chain decay.
+I’ve audited the technical strata of the transition, specifically focusing on:
+CVE-2026-25253 (The 1-Click RCE): How missing WebSocket origin validation allowed any website to hijack a local agent and exfiltrate host credentials.
+The "ClawdHub" Poisoning: How an unvetted "skills" marketplace became a delivery mechanism for AMOS infostealers while the community was distracted by name changes.
+Vibe-Coding vs. Engineering: Why building agents with "root-by-default" and no permission boundaries made this project a lethal liability for the 60k+ developers who starred it.
+This post is a forensic look at the "Lethal Trifecta" of agentic AI: Root access, untrusted content exposure, and missing gates. URL: https://news.ycombinator.com/item?id=47086866
 Points: 1
 # : 0]]></description>
-      <pubDate>Fri, 20 Feb 2026 02:44:25 GMT</pubDate>
+      <pubDate>Fri, 20 Feb 2026 11:53:28 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://github.com/cosformula/mdxport-cli</guid>
+      <guid>https://the-mind-of-ai.com/posts/openclaw-necropsy/</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: I maintain Valkey GLIDE – built a Node queue doing 48k jobs/s]]></title>
-      <link>https://github.com/avifenesh/glide-mq</link>
-      <description><![CDATA[Hey HN,
-I'm a maintainer of Valkey GLIDE (the official Valkey client) and work on the AWS ElastiCache team. Day job is deep in database client internals — which gives me a clear view of where Node.js job queues hit a ceiling at scale.
-The problems with queues like BullMQ aren't subtle: 3+ round-trips per operation, Lua EVAL scripts that NOSCRIPT-error on restart, Lists/BRPOPLPUSH primitives that predate Streams, and complete blindness to cloud topology (cross-AZ bills sneak up on you).
-So I built Glide-MQ. High-performance job queue for Node.js built on Valkey/Redis OSS Streams, powered by Valkey GLIDE — a Rust core exposed via native NAPI bindings.
-Because I maintain the underlying client, I could go further than an external library ever could:
-1-RTT per job — completeAndFetchNext folds completion + next fetch + activation into a single FCALL. No more chatty round-trips.
-Server Functions over EVAL — one FUNCTION LOAD, persistent across restarts. NOSCRIPT errors gone entirely.
-Streams + Consumer Groups from day one — replaced Lists/BRPOPLPUSH. The PEL gives at-least-once delivery with fewer moving parts.
-Cluster-native, not cluster-bolted — hash-tagged keys from day one. No {braces} surprise when you scale out.
-AZ-Affinity routing — reads go to same-AZ replicas. Up to 75% reduction in cross-AZ costs on ElastiCache.
-Batch API pipelining — addBulk for 1,000 jobs: 228ms to 18ms (12.7x) via GLIDE's non-atomic pipeline.
-IAM auth — native ElastiCache/MemoryDB auth with auto token refresh. No secrets in env vars.
-Numbers (no-op processor, Valkey 8.0, single node):
-- c=1: 4,376 jobs/s | c=10: 15,504 jobs/s | c=50: 48,077 jobs/s
-- 15KB payload compressed to 331 bytes (98% savings)
-Also included: transparent gzip (zero config), OpenTelemetry tracing, TestQueue/TestWorker in-memory backend for unit tests without running Valkey, and chain()/group()/chord() for job pipeline workflows.
-Companion package: @glidemq/dashboard — drop createDashboard([q1, q2]) into any Express (or any other framework) app and get a live REST + SSE UI across all your queues (avifenesh/glidemq-dashboard on GitHub).
-Would love brutal testing on it abilities — especially from anyone burned by queue scaling in production. URL: https://news.ycombinator.com/item?id=47082516
+      <title><![CDATA[Show HN: I made HappySRT to transcribe, translate, &amp; summarize easily]]></title>
+      <link>https://www.happysrt.com/</link>
+      <description><![CDATA[Had some friends in the Media Space (think super into cameras, video editing, vfx, etc...) &amp; 3 years ago they asked me to make a simple srt editor. Fast forward 3 years later (&amp; with much more programming skills under my belt) - spent the last 2 weeks rewriting HappySRT to allow media uploads, threads (like chatgpt), transcribe uploaded files w/ SRT Editing, Translate the transcribed file (also each translation is individually editable &amp; savable), as well as summarize what the video/audio is about (it does it via the transcription).
+I used Appwrite, Deepgram, NextJS Pages Router, OpenAI API, UpliftAI Scribe, and my favorite npm packages to create this: npm i styled-components &amp; npm i styled-icons
+Launching on Play Store soon (I used next-pwa for that, which meant I couldn't use turbopack but instead used webpack) &amp; submitted it already for approval, hope it goes well. URL: https://news.ycombinator.com/item?id=47086506
 Points: 1
 # : 0]]></description>
-      <pubDate>Fri, 20 Feb 2026 01:29:49 GMT</pubDate>
+      <pubDate>Fri, 20 Feb 2026 11:12:34 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://github.com/avifenesh/glide-mq</guid>
+      <guid>https://www.happysrt.com/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Ces 3 nouveautés de Google Chrome vont changer votre façon de naviguer]]></title>
+      <link>https://www.journaldugeek.com/2026/02/20/3-nouveautes-google-chrome-changer-facon-naviguer/</link>
+      <description><![CDATA[Google Chrome s'améliore considérablement avec des innovations pourtant assez simples.]]></description>
+      <pubDate>Fri, 20 Feb 2026 11:05:38 GMT</pubDate>
+      <source>Journal du Geek</source>
+      <category>products</category>
+      <guid>https://www.journaldugeek.com/2026/02/20/3-nouveautes-google-chrome-changer-facon-naviguer/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: NostalgiApp – Native macOS launcher for 7k+ DOS games (eXoDOS)]]></title>
+      <link>https://news.ycombinator.com/item?id=47086433</link>
+      <description><![CDATA[I built a native macOS app for browsing and playing retro DOS games through the eXoDOS collection. The problem: eXoDOS is an incredible curated archive of 7,000+ DOS games with pre-configured DOSBox settings, but it's Windows/Linux focused. On Mac you're stuck with janky shell scripts, manual DOSBox config, and no real way to browse the library. I wanted a proper Mac-native experience. What it does: - Downloads eXoDOS for you (full or lite — lite fetches games on demand via BitTorrent so you don't need 500GB upfront) - Browses the full library with box art, metadata, search, and filtering - One-click launch — auto-extracts archives, picks the right DOSBox version per game, handles config - Routes games to DOSBox Staging, DOSBox-X, ScummVM, or Wine+ECE automatically - Game version selector when multiple exist (Floppy/CD, SoundBlaster/MT-32, EGA/VGA) - Also supports eXoScummVM, eXoWin3x, eXoDREAMM collections in the same library - ROM support for console emulation via RetroArch/MAME A few Mac-specific things I added that I think are fun: - Spotlight indexing — Cmd+Space, type "Doom", hit Enter - Siri Shortcuts — "Hey Siri, launch a random DOS game" - Menu bar quick launcher for recent/favorite games Technical bits: Swift/SwiftUI, targets macOS 13+. Game launching is fully independent — I built a database of 1,700+ game version configs (which executable, which subfolder, which DOSBox flags) so the app doesn't depend on any eXo shell scripts. There's also a crowd-sourced fix system: if a game doesn't launch correctly, the app parses the dosbox.conf to find the right executable, and if the user confirms it works, the fix gets uploaded and synced to all users. €20 with a 14-day free trial. It's been a big project and I'd like to keep working on it. https://nostalgi.app URL: https://news.ycombinator.com/item?id=47086433
+Points: 1
+# : 0]]></description>
+      <pubDate>Fri, 20 Feb 2026 11:03:54 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://news.ycombinator.com/item?id=47086433</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : Ce lave-linge présente le meilleur rapport qualité / prix de notre comparatif]]></title>
+      <link>https://www.lesnumeriques.com/lave-linge/ce-lave-linge-presente-le-meilleur-rapport-qualite-prix-de-notre-comparatif-n251768.html</link>
+      <description><![CDATA[Le Candy MultiWash est totalement inédit. Premier lave-linge à trois tambours de notre comparatif, c'est aussi le premier appareil de ce type vendu en France. Il a pourtant bien d'autres atouts à faire valoir pour laver de nombreuses charges de linge.Points fortsInnovation pertinente.Faible consommation d'eau.Silencieux.
+Points faiblesNe convi...]]></description>
+      <pubDate>Fri, 20 Feb 2026 11:02:31 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/lave-linge/ce-lave-linge-presente-le-meilleur-rapport-qualite-prix-de-notre-comparatif-n251768.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : SLS : la fusée monstre de la Nasa dompte enfin l'hydrogène, direction la Lune en mars ?]]></title>
+      <link>https://www.lesnumeriques.com/astronomie-conquete-spatiale/sls-la-fusee-monstre-de-la-nasa-dompte-enfin-l-hydrogene-direction-la-lune-en-mars-n251747.html</link>
+      <description><![CDATA[On l’appelle la « répétition humide », et pour cause. Le Wet Dress Rehearsal (WDR) consiste à remplir les réservoirs de la monstrueuse fusée SLS (Space Launch System) avec plus de 2,7 millions de litres d’ergols cryogéniques : de l’oxygène liquide (-183°C) et surtout ce satané hydrogène liquide (-253°C), la molécule la plus petite et la plus fuyante...]]></description>
+      <pubDate>Fri, 20 Feb 2026 07:15:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/astronomie-conquete-spatiale/sls-la-fusee-monstre-de-la-nasa-dompte-enfin-l-hydrogene-direction-la-lune-en-mars-n251747.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : 8 000 batteries de voitures électriques d'occasion testées : elles tiennent bien mieux que prévu]]></title>
+      <link>https://www.lesnumeriques.com/voiture-electrique/8-000-batteries-de-voitures-electriques-d-occasion-testees-elles-tiennent-bien-mieux-que-prevu-n251746.html</link>
+      <description><![CDATA[Generational, entreprise britannique spécialisée dans le diagnostic de batteries, a publié en février 2026 son 2025 Battery Performance Index. Le rapport s'appuie sur plus de 8 000 tests réalisés en 2025, couvrant 36 constructeurs, des voitures électriques d'occasion de 0 à 12 ans, couvrant aussi bien des voitures particulières que des utilitaires lé...]]></description>
+      <pubDate>Fri, 20 Feb 2026 05:29:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/voiture-electrique/8-000-batteries-de-voitures-electriques-d-occasion-testees-elles-tiennent-bien-mieux-que-prevu-n251746.html</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : One UI 8.5 : Samsung lance sa cinquième bêta d’Android 16 avant la sortie officielle]]></title>
@@ -83,15 +109,6 @@ Points: 1
       <guid>https://www.lesnumeriques.com/telephone-portable/one-ui-8-5-samsung-lance-sa-cinquieme-beta-d-android-16-avant-la-sortie-officielle-n251715.html</guid>
     </item>
     <item>
-      <title><![CDATA[Actualité : Microsoft réussit à sauvegarder des données dans du verre : un stockage record de 10 000 ans]]></title>
-      <link>https://www.lesnumeriques.com/informatique/microsoft-reussit-a-sauvegarder-des-donnees-dans-du-verre-un-stockage-record-de-10-000-ans-n251719.html</link>
-      <description><![CDATA[En pleine pénurie de mémoire, Microsoft a partagé l’avancement d’un projet visant à conserver des données dans du verre. Une innovation qui repousserait les limites de la durée de vie des solutions de stockage, les préservant durant une période de 10 000 ans. Voici le Project Silica !Graver du verre pour un stockage ultra longue durée, le projet de M...]]></description>
-      <pubDate>Thu, 19 Feb 2026 15:07:00 GMT</pubDate>
-      <source>Les Numeriques</source>
-      <category>products</category>
-      <guid>https://www.lesnumeriques.com/informatique/microsoft-reussit-a-sauvegarder-des-donnees-dans-du-verre-un-stockage-record-de-10-000-ans-n251719.html</guid>
-    </item>
-    <item>
       <title><![CDATA[BioVault : un projet scientifique fou qui veut sauver la vie sur Terre en la congelant]]></title>
       <link>https://www.journaldugeek.com/2026/02/19/biovault-science-vie-terre-congeler/</link>
       <description><![CDATA[Colossal Biosciences espère sauver la vie sur Terre en la congelant et ainsi préserver certaines espèces aujourd'hui en voie d'extinction.]]></description>
@@ -99,60 +116,6 @@ Points: 1
       <source>Journal du Geek</source>
       <category>products</category>
       <guid>https://www.journaldugeek.com/2026/02/19/biovault-science-vie-terre-congeler/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : Vous pourrez bientôt protéger votre compte WhatsApp avec un mot de passe]]></title>
-      <link>https://www.lesnumeriques.com/appli-logiciel/vous-pourrez-bientot-proteger-votre-compte-whatsapp-avec-un-mot-de-passe-n251712.html</link>
-      <description><![CDATA[Alors que Meta prouve chaque jour davantage son désamour pour Messenger, à l'inverse la firme travaille activement sur WhatsApp pour continuer à l'enrichir. Aujourd'hui, la version bêta 2.26.7.8 du service de messagerie instantanée sur Android dévoile un futur ajout intéressant : les mots de passe.WhatsApp sur le web profite enfin des appels audio et...]]></description>
-      <pubDate>Thu, 19 Feb 2026 14:00:00 GMT</pubDate>
-      <source>Les Numeriques</source>
-      <category>products</category>
-      <guid>https://www.lesnumeriques.com/appli-logiciel/vous-pourrez-bientot-proteger-votre-compte-whatsapp-avec-un-mot-de-passe-n251712.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : CarPlay : ChatGPT et streaming vidéo bientôt disponibles dans votre voiture grâce à iOS 26.4]]></title>
-      <link>https://www.lesnumeriques.com/telephone-portable/carplay-chatgpt-et-streaming-video-bientot-disponibles-dans-votre-voiture-grace-a-ios-26-4-n251707.html</link>
-      <description><![CDATA[Alors que les grosses nouveautés d’iOS 26.4 sur iPhone ont rapidement été découvertes dans la première bêta publiée en début de semaine, il y en a d’autres qui commencent à peine à faire surface. C’est notamment le cas de deux nouveautés CarPlay : l'une signant l’arrivée de ChatGPT, Gemini et consort, et l’autre celle du streaming vidéo via AirPlay.L...]]></description>
-      <pubDate>Thu, 19 Feb 2026 11:51:00 GMT</pubDate>
-      <source>Les Numeriques</source>
-      <category>products</category>
-      <guid>https://www.lesnumeriques.com/telephone-portable/carplay-chatgpt-et-streaming-video-bientot-disponibles-dans-votre-voiture-grace-a-ios-26-4-n251707.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : Les Étoiles des Numériques : découvrez tous les lauréats 2025-2026]]></title>
-      <link>https://www.lesnumeriques.com/societe-numerique/les-etoiles-des-numeriques-decouvrez-tous-les-laureats-2025-2026-n251672.html</link>
-      <description><![CDATA[Plus qu'une simple remise de prix, les Étoiles des Numériques célèbrent le sommet de la tech. Ce palmarès est le fruit d'un processus rigoureux visant à isoler les produits les plus performants passés sur nos bancs de test. Mais au-delà des chiffres et des mesures brutes, ces Étoiles sont aussi nos véritables coups de cœur : elles récompensent les ap...]]></description>
-      <pubDate>Thu, 19 Feb 2026 11:00:00 GMT</pubDate>
-      <source>Les Numeriques</source>
-      <category>products</category>
-      <guid>https://www.lesnumeriques.com/societe-numerique/les-etoiles-des-numeriques-decouvrez-tous-les-laureats-2025-2026-n251672.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[Adieu les lignes blanches sur les routes ? Cette innovation pourrait changer la donne]]></title>
-      <link>https://www.journaldugeek.com/2026/02/19/adieu-les-lignes-blanches-sur-les-routes-cette-innovation-pourrait-changer-la-donne/</link>
-      <description><![CDATA[En Espagne, une expérimentation intrigue autant qu’elle fascine, certaines routes voient apparaître des marquages fluorescents, censés être plus visibles que les traditionnelles lignes blanches.]]></description>
-      <pubDate>Thu, 19 Feb 2026 10:37:30 GMT</pubDate>
-      <source>Journal du Geek</source>
-      <category>products</category>
-      <guid>https://www.journaldugeek.com/2026/02/19/adieu-les-lignes-blanches-sur-les-routes-cette-innovation-pourrait-changer-la-donne/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : Mettez vos Freebox et répéteurs WiFi à jour, Free corrige de nombreux bugs et pense au DHCP]]></title>
-      <link>https://www.lesnumeriques.com/societe-numerique/mettez-vos-freebox-et-repeteurs-wifi-a-jour-free-corrige-de-nombreux-bugs-et-pense-au-dhcp-n251701.html</link>
-      <description><![CDATA[Ce 18 février 2026, Free a décidé de réaliser un tir groupé en diffusant deux mises à jour d'un coup pour ses produits. D'un côté nous avons la mise à jour 2.7.13 pour le répéteur WiFi (inclus sur demande dans la plupart des offres), tandis que les Freebox Ultra, Delta, Pop et Revolution profitent d'un patch numéroté 4.9.16. Voyons de quoi il retourn...]]></description>
-      <pubDate>Thu, 19 Feb 2026 10:30:00 GMT</pubDate>
-      <source>Les Numeriques</source>
-      <category>products</category>
-      <guid>https://www.lesnumeriques.com/societe-numerique/mettez-vos-freebox-et-repeteurs-wifi-a-jour-free-corrige-de-nombreux-bugs-et-pense-au-dhcp-n251701.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : Snapseed : l'application de Google est toujours plus riche sur iOS, mais pas Android]]></title>
-      <link>https://www.lesnumeriques.com/appli-logiciel/snapseed-l-application-de-google-est-toujours-plus-riche-sur-ios-mais-pas-android-n251700.html</link>
-      <description><![CDATA[Régulièrement, Google préfère de manière étonnante prioriser des versions iOS plutôt qu'Android de certaines de ses applications. C'est le cas en ce 19 février 2026 avec Snapseed, son appli de retouche photo qui va aujourd'hui beaucoup plus loin, mais uniquement sur les produits d'Apple.Avant la mise à jour 3.15.0 que nous allons détailler dans un in...]]></description>
-      <pubDate>Thu, 19 Feb 2026 09:15:00 GMT</pubDate>
-      <source>Les Numeriques</source>
-      <category>products</category>
-      <guid>https://www.lesnumeriques.com/appli-logiciel/snapseed-l-application-de-google-est-toujours-plus-riche-sur-ios-mais-pas-android-n251700.html</guid>
     </item>
   </channel>
 </rss>

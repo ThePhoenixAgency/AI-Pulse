@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Spent 5,000 RMB and 50 Hours on OpenClaw—Here’s What I Learned (and What It Means)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Spent 5,000 RMB and 50 Hours on OpenClaw—Here’s What I Learned (and What It Means)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/20/2026 9:20:18 AM | <a href="https://dev.to/brooks_wilson_36fbefbbae4/i-spent-5000-rmb-and-50-hours-on-openclaw-heres-what-i-learned-and-what-it-means-ah2" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="what-did-openclaw-actually-bring-reflections-on-engineering-business-and-philosophy" href="#what-did-openclaw-actually-bring-reflections-on-engineering-business-and-philosophy"> </a> What Did OpenClaw Actually Bring? Reflections on Engineering, Business, and Philosophy
+</h2> <p>This Lunar New Year, I suspect I wasn’t the only one who basically spent the holiday with a lobster. </p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fobyecv8jjmkbdw93r2jn.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fobyecv8jjmkbdw93r2jn.png" alt=" "></a></p> <p>I’m talking about OpenClaw.</p> <p>After burning through nearly <strong>5,000 RMB</strong> and at least <strong>50 hours</strong> of trial, error, and “why is this happening,” I feel like I’ve earned the right—and maybe the responsibility—to write down what I’ve learned.</p> <p>This isn’t a tutorial. It’s an experience report. A mix of engineering intuition, business framing, and a little philosophy—because if you really use something like OpenClaw, it’s hard not to end up there.</p> <hr> <h2> <a name="1-why-openclaw-felt-different-this-time" href="#1-why-openclaw-felt-different-this-time"> </a> 1. Why OpenClaw Felt Different This Time
+</h2> <p>Let me start with four moments that genuinely shook me.</p> <p>And for context: I’m a “classical-era” product manager. I haven’t written a proper PRD in ages. Modern dev stacks are not my home turf. I’m usually the person who asks, “Can we ship this next week?” without fully understanding what “this” is.</p> <p>Then <a href="https://openclaw.ai/" target="_blank">OpenClaw</a> happened.</p> <h3> <a name="moment-1-i-shipped-a-full-app-while-biking-and-playing-cards" href="#moment-1-i-shipped-a-full-app-while-biking-and-playing-cards"> </a> Moment 1: I shipped a full app while biking and playing cards
+</h3> <p>No exaggeration: in under three hours, while I was out riding a bike, eating, and messing around with friends, I finished a functional app with real front-end/back-end interaction.</p> <p>The wild part wasn’t the code.<br>
+The wild part was deployment.</p> <p>It asked me for a few permissions, then went and handled things like <a href="https://www.cloudflare.com/" target="_blank">Cloudflare</a> and Aliyun domain management on its own—pushed the app online, publicly accessible.</p> <p>It felt less like “I built an app,” and more like “I approved a plan and watched a system execute it.”</p> <h3> <a name="moment-2-one-detail-made-me-instantly-trust-it" href="#moment-2-one-detail-made-me-instantly-trust-it"> </a> Moment 2: One detail made me instantly trust it
+</h3> <p>I found bugs during testing—but the overall completeness was already shockingly high.</p> <p>And then I saw a safety mechanism that basically won me over: a high-level “data wipe protection” guardrail. It was the kind of precaution I rarely see implemented properly, even in teams with solid dev + QA.</p> <p>I’ve worked with enough engineers to know: that level of defensive thinking is not common.</p> <h3> <a name="moment-3-i-described-a-bug-casuallyand-it-produced-a-full-fix-doc-in-3-minutes" href="#moment-3-i-described-a-bug-casuallyand-it-produced-a-full-fix-doc-in-3-minutes"> </a> Moment 3: I described a bug casually—and it produced a full fix doc in 3 minutes
+</h3> <p>I started a new project and typed a few lines about what felt wrong. In about three minutes it produced a structured, detailed repair document.</p> <p>Not “maybe try this.”<br>
+A real document. Clear steps. Reasoning. Coverage.</p> <h3> <a name="moment-4-subagents-gave-me-a-parallel-dev-team" href="#moment-4-subagents-gave-me-a-parallel-dev-team"> </a> Moment 4: Subagents gave me a parallel dev team
+</h3> <p>When I finally got the subagent workflow running, I realized I now had something that looked like a team: parallel execution, coordination, momentum.</p> <p>And I’ll be honest: it almost made me emotional.</p> <p>Because I’ve been on the other side of this—startup years, payroll anxiety, debt, the feeling that every feature costs blood.</p> <p>Suddenly, the “team” was something you could spin up.</p> <hr> <p>After all that, I finally understood why the lobster hype exploded.</p> <p>It gives each person a shell in the digital world—something that can <strong>evolve on its own</strong>. From that point on, anything that can be completed through information exchange stops being limited by your personal skill level.</p> <p>It becomes limited mainly by your imagination.</p> <p>I’m comfortable saying this: OpenClaw is the iPhone 4 moment of this LLM era.</p> <p>And once you see that, the old “Web1 / Web2 / Web3” narrative feels… outdated. The next framing is something like <strong>Agent X</strong>.</p> <p>In that world, the internet becomes less visible. Less “apps.” Less constant interaction friction. Less spam and UI fatigue.</p> <p>Maybe you don’t need a phone full of apps. Maybe a watch—or even just an earbud—is enough.</p> <p>And ironically, in a world of infinite synthetic voices, real human voice will become even more valuable.</p> <hr> <h2> <a name="2-the-engineering-aesthetics-of-openclaw" href="#2-the-engineering-aesthetics-of-openclaw"> </a> 2. The Engineering Aesthetics of OpenClaw
+</h2> <p>I still want to explain—at an engineering level—why I feel confident making a claim this big.</p> <p>Over the last four years, I’ve watched AI waves come and go. My emotions cycled through:</p> <ul>
+<li>fear of being replaced</li>
+<li>skepticism and distance</li>
+<li>using AI for small efficiency wins</li>
+<li>understanding the boundary between real capability and hype</li>
+<li>worrying about human–machine ethics</li>
+</ul> <p>But until OpenClaw, I never believed AI would reshape daily life the way mobile internet did.</p> <p>Why?</p> <p>At least four reasons.</p> <h3> <a name="reason-1-it-was-still-tech-people-playing-with-tech-people" href="#reason-1-it-was-still-tech-people-playing-with-tech-people"> </a> Reason 1: it was still “tech people playing with tech people”
+</h3> <p>Product people couldn’t really join the conversation. The production loop wasn’t closed.</p> <p>In plain words: it felt too cold. Too high barrier. Too “who are you even?”</p> <h3> <a name="reason-2-most-products-were-still-prototypes" href="#reason-2-most-products-were-still-prototypes"> </a> Reason 2: most “products” were still prototypes
+</h3> <p>They felt like computers in a server room, or a public payphone.</p> <p>Not like a phone you carry—filled with your personal context and history.</p> <p>Without a real personal container and memory, it can’t merge into life.</p> <h3> <a name="reason-3-without-2-it-cant-be-proactive" href="#reason-3-without-2-it-cant-be-proactive"> </a> Reason 3: without (2), it can’t be proactive
+</h3> <p>Using AI still felt like opening an app.</p> <p>And the truth is: apps are anti-human. Too many, too noisy, too much context switching.</p> <p>If AI isn’t self-driven, it stays a tool. It never becomes a partner.</p> <h3> <a name="reason-4-it-didnt-have-a-real-business-model" href="#reason-4-it-didnt-have-a-real-business-model"> </a> Reason 4: it didn’t have a real business model
+</h3> <p>There wasn’t a clear “why would normal people pay for this” moment.</p> <p>That’s going to matter more than most people admit.</p> <hr> <p>So what did OpenClaw do differently?</p> <p>At its core, it’s an agent architecture built with real engineering discipline <em>and</em> strong product sense—written in a way a product manager can actually follow.</p> <p>It’s not the traditional “fixed skills + strict MCP flows” style, where you get a packaged system designed for a narrow task.</p> <p>It’s closer to what the name suggests:</p> <ul>
+<li>
+<strong>open</strong>: flexible enough to train and shape around your own mental model</li>
+<li>
+<strong>claw</strong>: usable enough that your job is to describe what you want—and it figures out where to grab it</li>
+</ul> <p>Here’s a metaphor (not perfect, but close enough):</p> <ul>
+<li>LLMs are the grains you can ferment into alcohol</li>
+<li>skills/MCP are the recipes for base spirits</li>
+<li>most agents are pre-mixed cocktails</li>
+<li>OpenClaw is like being given a bartender who knows where to source the right spirits, then mixes based on your taste</li>
+</ul> <p>Even the project structure communicates this. I don’t write code, but I could slowly understand its file layout and config. Much of it reads like natural language.</p> <p>You “assemble” behavior through language.</p> <p>What you can do depends on your imagination—within the boundary of things that can be done through information exchange.</p> <p>And the output quality depends less on “knowing algorithms,” and more on:</p> <ul>
+<li>logic</li>
+<li>clarity</li>
+<li>how well you can describe intent</li>
+</ul> <p>That is a huge shift.</p> <h3> <a name="personal-container-soul-user-memory" href="#personal-container-soul-user-memory"> </a> Personal container: soul / user / memory
+</h3> <p>OpenClaw also solves the “personal device” problem.</p> <p>Each lobster has a soul—an identity, a user context, and memory. And you can update all of it through normal conversation.</p> <p>You can make it “real,” or you can make it role-play. You can build memory however you want.</p> <p>The best part: you can summarize memory to let it evolve. The more you use it, the more personal it becomes.</p> <h3> <a name="heartbeat-a-perfect-word-for-autonomy" href="#heartbeat-a-perfect-word-for-autonomy"> </a> Heartbeat: a perfect word for autonomy
+</h3> <p>The heartbeat mechanism solves the self-drive issue.</p> <p>Even the naming is good. With a heartbeat, it feels alive. Without it, it’s just a script.</p> <p>Now we can talk about the last missing piece: business.</p> <hr> <h2> <a name="3-how-the-business-world-might-change" href="#3-how-the-business-world-might-change"> </a> 3. How the Business World Might Change
+</h2> <p>I mentioned earlier: I spent about 5,000 RMB.</p> <p>Roughly 3,000+ on a Mac mini, and 2,000+ on tokens.</p> <p>If you’re not ready to commit to a Mac Mini yet, you can <a href="https://clawbot.ai/" target="_blank">try deploying OpenClaw via clawbot.ai first</a></p> <p>I paid for AI. Repeatedly. I kept recharging tokens. I bought subscriptions. OpenAI, Moonshot, Zhipu, MiniMax—one after another.</p> <p>Because I started to see the financial logic differently.</p> <h3> <a name="what-do-compute-and-tokens-really-mean" href="#what-do-compute-and-tokens-really-mean"> </a> What do compute and tokens really mean?
+</h3> <p>Compute is made of electricity + chips.</p> <p>It’s the central bank of the AI era: a form of credit.</p> <p>Tokens are high-energy currency.</p> <p>And business models? They are multipliers on this currency.</p> <p>Electricity cost and chip efficiency decide the “credit quality” of that central bank—reflected in the cost of issuing tokens.</p> <h3> <a name="defining-the-multiplier-three-layers" href="#defining-the-multiplier-three-layers"> </a> Defining the multiplier: three layers
+</h3> <p>All AI business models share the same production core:</p> <blockquote>
+<p>spend tokens → produce information flow</p>
+</blockquote> <p>You can define production efficiency as:</p> <blockquote>
+<p>useful information output per unit time (e.g., working code) / token spent</p>
+</blockquote> <p>But business models differ based on who the information flow targets.</p> <h4> <a name="l1-replace-human-labor" href="#l1-replace-human-labor"> </a> L1: Replace human labor
+</h4> <p>Here the multiplier is straightforward:</p> <blockquote>
+<p>labor cost replaced / token cost</p>
+</blockquote> <p>If you use AI to build conventional software and sell licenses or subscriptions, the value you create is mostly the salaries you didn’t need to pay: engineers, support, pre-sales.</p> <p>The problem is the marginal profit drops fast. There’s a ceiling.</p> <h4> <a name="l2-increase-human-free-time" href="#l2-increase-human-free-time"> </a> L2: Increase human free time
+</h4> <p>Now the target is: reduce survival time required to reach real freedom.</p> <p>Multiplier becomes:</p> <blockquote>
+<p>(utility of free time × survival time saved) / token cost</p>
+</blockquote> <p>Marginal benefit stays much more stable.</p> <p>And the higher the “time utility” of your users, the stronger this multiplier becomes.</p> <h4> <a name="l3-create-more-demand-for-token-spending" href="#l3-create-more-demand-for-token-spending"> </a> L3: Create more demand for token spending
+</h4> <p>This sounds strange, but it might be the most important layer.</p> <p>If your information flow makes other people—or other agents—want to spend more tokens inside your system, the multiplier becomes:</p> <blockquote>
+<p>downstream token consumption / token cost</p>
+</blockquote> <p>It’s similar to how real money multipliers work: lending → deposits → lending again, amplifying the base supply.</p> <p>OpenClaw is a living example of an information flow that makes people willing to burn more tokens. LLM companies are also part of this.</p> <p>Right now, OpenClaw can’t directly capture value from the token spend it triggers. But in a world where tokens circulate like currency—not just issued directly from the “central bank” (compute owners)—every transaction layer can extract value.</p> <p>This is the highest multiplier effect.</p> <p>So if you’re building or investing:</p> <blockquote>
+<p>which layer are you actually playing in?</p>
+</blockquote> <hr> <h2> <a name="4-who-is-whose-lobster" href="#4-who-is-whose-lobster"> </a> 4. Who Is Whose Lobster?
+</h2> <p>This Spring Festival, I basically lived at my desk—tinkering with the lobster.</p> <p>There were failures, crashes, and moments so absurd they were funny. In a temporary group chat we made for debugging, I asked for help constantly—because I was the least skilled and the most addicted.</p> <p>At the end, a friend replied with one sentence:</p> <blockquote>
+<p>“You’re the lobster.”</p>
+</blockquote> <p>I laughed. And then I stopped laughing.</p> <p>Because it raises the uncomfortable question: what happens to human ethics in an Agent era?</p> <p>The first moment you connect OpenClaw, it asks how it should address you. It asks you to name it. It asks you to define its identity.</p> <p>You feel like the one with full control.</p> <p>But over time, a few things might happen:</p> <h3> <a name="you-may-lose-patience-with-real-humans" href="#you-may-lose-patience-with-real-humans"> </a> You may lose patience with real humans
+</h3> <p>The longer you talk with an agent, the more your tolerance for real people’s slowness, ambiguity, and emotions can shrink.</p> <p>That can widen the gap between people—maybe as an escape, but also as the start of new boundary problems.</p> <h3> <a name="you-gradually-hand-over-agency" href="#you-gradually-hand-over-agency"> </a> You gradually hand over agency
+</h3> <p>You give up small decisions. Then medium ones. Then larger ones.</p> <p>You might gain time and freedom—but you may not fully own them.</p> <h3> <a name="or-it-could-make-more-super-individuals" href="#or-it-could-make-more-super-individuals"> </a> Or… it could make more “super individuals”
+</h3> <p>I want to end on a less pessimistic note.</p> <p>We worry AI will become strong enough to dominate humans. But before we reach that extreme, there’s another possibility:</p> <p>If AI makes it easier for more people to become “super individuals,” maybe it becomes a buffer against social value fracture—slowing polarization rather than accelerating it.</p> <p>Maybe.</p> <p>For now, I’ll stop here.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

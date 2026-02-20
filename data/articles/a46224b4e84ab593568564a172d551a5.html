@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>pg_fsql - SQL templates as data in PostgreSQL (C extension)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>pg_fsql - SQL templates as data in PostgreSQL (C extension)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/20/2026 8:46:31 AM | <a href="https://dev.to/yurc/pgfsql-sql-templates-as-data-in-postgresql-c-extension-34be" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <div> <p><a href="https://dev.to/yurc"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3782276%2F0477c160-ee9d-4492-9e11-55ca7815d565.png" alt="yurc"></a> </p> </div> </header> <div> <p>I built a PostgreSQL extension that stores SQL queries as composable templates in a regular table. Templates form a dot-path hierarchy — children resolve first and inject into the parent.</p> <h2> <a name="the-idea" href="#the-idea"> </a> The idea
+</h2> <p>Queries are <strong>data</strong>, not code. You can SELECT, UPDATE, version them. Swap a subtree and the whole query changes. Add a child — it auto-injects into the parent.</p> <h2> <a name="quick-example" href="#quick-example"> </a> Quick example
+</h2> <div>
+<pre><code><span>INSERT</span> <span>INTO</span> <span>fsql</span><span>.</span><span>templates</span> <span>(</span><span>path</span><span>,</span> <span>cmd</span><span>,</span> <span>body</span><span>)</span> <span>VALUES</span> <span>(</span><span>'report'</span><span>,</span> <span>'exec'</span><span>,</span> <span>'SELECT jsonb_build_object(</span><span>''</span><span>data</span><span>''</span><span>, array_agg(row_to_json(t))) FROM (SELECT {d[cols]} FROM {d[src]} WHERE city = {d[city]!r}) t'</span><span>),</span> <span>(</span><span>'report.cols'</span><span>,</span> <span>NULL</span><span>,</span> <span>'id, name, email'</span><span>),</span> <span>(</span><span>'report.src'</span><span>,</span> <span>NULL</span><span>,</span> <span>'customers'</span><span>);</span> <span>-- Execute the composed query</span>
+<span>SELECT</span> <span>fsql</span><span>.</span><span>run</span><span>(</span><span>'report'</span><span>,</span> <span>'{"city":"Moscow"}'</span><span>);</span> <span>-- Dry-run: see generated SQL without executing</span>
+<span>SELECT</span> <span>fsql</span><span>.</span><span>render</span><span>(</span><span>'report'</span><span>,</span> <span>'{"city":"Moscow"}'</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Three rows in a table — and you have a composable, parameterized report query.</p> <h2> <a name="introspection-for-free" href="#introspection-for-free"> </a> Introspection for free
+</h2> <p>Since everything is in a table, you get built-in tools:</p> <ul>
+<li>
+<code>fsql.tree('report')</code> — show the template hierarchy</li>
+<li>
+<code>fsql.explain('report', data)</code> — step-by-step expansion trace</li>
+<li>
+<code>fsql.validate()</code> — find broken references, orphan fragments</li>
+<li>
+<code>fsql.depends_on('report')</code> — recursive dependency list</li>
+</ul> <h2> <a name="generic-rest-crud" href="#generic-rest-crud"> </a> Generic REST CRUD
+</h2> <p>The killer use case: one template handles UPDATE for <strong>any</strong> table with <strong>any</strong> subset of columns:<br>
+</p> <div>
+<pre><code><span>INSERT</span> <span>INTO</span> <span>fsql</span><span>.</span><span>templates</span> <span>(</span><span>path</span><span>,</span> <span>cmd</span><span>,</span> <span>body</span><span>)</span> <span>VALUES</span>
+<span>(</span><span>'rest.put'</span><span>,</span> <span>'exec'</span><span>,</span> <span>'UPDATE {d[tbl]} SET ({d[columns]}) = ( SELECT {d[columns]} FROM ( SELECT (jsonb_populate_record(null::{d[tbl]}, {d[_self]!j} - </span><span>''</span><span>id</span><span>''</span><span>)).* ) sub ) WHERE id = {d[id]} RETURNING jsonb_build_object(</span><span>''</span><span>id</span><span>''</span><span>, id)'</span><span>);</span> <span>-- Child auto-detects which input keys match real table columns</span>
+<span>INSERT</span> <span>INTO</span> <span>fsql</span><span>.</span><span>templates</span> <span>(</span><span>path</span><span>,</span> <span>cmd</span><span>,</span> <span>body</span><span>)</span> <span>VALUES</span>
+<span>(</span><span>'rest.put.columns'</span><span>,</span> <span>'exec'</span><span>,</span> <span>'SELECT jsonb_build_object(</span><span>''</span><span>columns</span><span>''</span><span>, string_agg(c.column_name, </span><span>''</span><span>,</span><span>''</span><span>)) FROM information_schema.columns c WHERE c.table_schema || </span><span>''</span><span>.</span><span>''</span><span> || c.table_name = {d[tbl]!r} AND {d[_self]!j} ? c.column_name'</span><span>);</span> <span>-- Works for ANY table:</span>
+<span>SELECT</span> <span>fsql</span><span>.</span><span>run</span><span>(</span><span>'rest.put'</span><span>,</span> <span>'{"tbl":"public.orders","id":42,"price":19.99,"qty":5}'</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>No ORM, no code generation — just two rows in a table.</p> <h2> <a name="features" href="#features"> </a> Features
+</h2> <ul>
+<li>
+<strong>C renderer</strong> for fast <code>{d[key]}</code> placeholder substitution (<code>!r</code> quote_literal, <code>!j</code> jsonb literal, <code>!i</code> quote_identifier)</li>
+<li>
+<strong>6 command types</strong>: exec, ref, if, exec_tpl, map, NULL (fragments)</li>
+<li>
+<strong>SPI plan caching</strong> for hot-path templates</li>
+<li>
+<strong>No superuser required</strong>, no plpython3u dependency</li>
+<li>PostgreSQL 14+ (tested on 17.8)</li>
+</ul> <h2> <a name="links" href="#links"> </a> Links
+</h2> <ul>
+<li>GitHub: <a href="https://github.com/yurc/pg_fsql" target="_blank">yurc/pg_fsql</a>
+</li>
+<li>PGXN: <a href="https://pgxn.org/dist/pg_fsql/" target="_blank">pgxn.org/dist/pg_fsql</a>
+</li>
+</ul> <p>Feedback welcome!</p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
