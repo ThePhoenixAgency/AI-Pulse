@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,17 +28,7 @@
     Source: Toms Hardware Raspberry Pi | Date: 3/24/2025 12:39:09 PM | <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pis-new-poe-injector-supports-all-generations-of-poe-hats" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-<section>
-<div>
-<figure> <img src="https://cdn.mos.cms.futurecdn.net/2HWZjuZaCeuEg5W7K6Z4u3.jpg" alt="Raspberry Pi PoE+ Injector"> <figcaption> <span>(Image credit: Raspberry Pi Ltd)</span>
-</figcaption>
-</figure></div>
-<div> <p>Power over Ethernet (PoE) is nothing new to the Raspberry Pi. Introduced with the Raspberry Pi 3B+, PoE provides power over a network connection and is handy for installing a Raspberry Pi in a remote or awkward location. The new <a href="https://www.raspberrypi.com/news/raspberry-pi-poe-injector-on-sale-now-at-25/" target="_blank">$25 Raspberry Pi PoE+ Injector</a> may not be the PoE HAT+ that we have been waiting for <a href="https://www.tomshardware.com/news/live/raspberry-pi-5-launch">since the launch</a> of the <a href="https://www.tomshardware.com/reviews/raspberry-pi-5">Raspberry Pi 5</a>, but it is a step on the journey towards it.</p><div><div><p>Swipe to scroll horizontally</p></div><div><table><caption>Raspberry Pi PoE Injector Specifications</caption><tbody><tr><td colspan="1"><p>Supported Data Rates</p></td><td colspan="1"><p>10/100/1000 Mbps</p></td></tr><tr><td colspan="1"><p>Input Voltage</p></td><td colspan="1"><p>100 - 240V AC via IEC cable</p></td></tr><tr><td colspan="1"><p>Output Power</p></td><td colspan="1"><p>30W</p></td></tr><tr><td colspan="1"><p>Nominal Output Voltage</p></td><td colspan="1"><p>55V DC</p></td></tr><tr><td colspan="1"><p>Dimensions</p></td><td colspan="1"><p>159 x 51.8 x 33.5mm</p></td></tr></tbody></table></div></div><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/xVDHXhMG6JxNuCXCdiE7bk.jpg" alt="Raspberry Pi 4 and 5">
-<a href="https://cdn.mos.cms.futurecdn.net/xVDHXhMG6JxNuCXCdiE7bk.jpg" target="_blank"></a></p></div><figcaption><span>(Image credit: Tom's Hardware)</span></figcaption></figure><p>But all of this power is nothing without a PoE or PoE+ HAT and while the Raspberry Pi 3B+ and Raspberry Pi 4 may have their own PoE HATs, they are not compatible with the Raspberry Pi 5 due to the relocation of the PoE pins. On the Raspberry Pi 4 they are in the top right of the board, next to the Ethernet port. But, with the Raspberry Pi 5 relocating the Ethernet port to the bottom right, the PoE pins have also migrated.</p><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/wNyxMSKnfzQJnk5ACA8HHK.jpg" alt="Prototype Raspberry Pi PoE+ HAT">
-</p></div><figcaption><span>(Image credit: Raspberry Pi Ltd)</span></figcaption></figure><p>The Raspberry Pi 5 is currently bereft of a PoE board, something that Raspberry Pi co-founder and CEO mentions in the official blog post. Upton claims that the Raspberry Pi 5 compatible PoE+ HAT+ is in the "final stages of development" and is claimed to be "our smallest, most efficient PD accessory" and based on the early prototypes. We eagerly wait for it to be launched.</p><p>If you can't wait, and you have a Raspberry Pi Compute Module 5, then Pineboards already has a PoE enabled board. The <a href="https://www.tomshardware.com/raspberry-pi/pineboards-modulo-series-review">Modulo5 IO PoE+</a> just needs PoE power (perhaps from the Raspberry Pi PoE+ Injector?) and you are ready to go! There are also other third-party PoE HATs for the Raspberry Pi 5 including boards from Waveshare and Uctronics.</p><p>The <a href="https://www.raspberrypi.com/news/raspberry-pi-poe-injector-on-sale-now-at-25/" target="_blank">Raspberry Pi PoE+ Injector</a> is on sale now for $25 via the Raspberry Pi approved reseller network.</p>
-</div> <div><p>Les Pounder is an associate editor at Tom's Hardware. He is a creative technologist and for seven years has created projects to educate and inspire minds both young and old. He has worked with the Raspberry Pi Foundation to write and deliver their teacher training program "Picademy".</p></div>
-</section> </div></div>
+    <p>Raspberry Pi's new $25 PoE+ Injector bring power over Ethernet for the Raspberry Pi 3B+ and 4 via existing PoE HATs. The Raspberry Pi has to wait for the PoE+ HAT+ which has been in development since late 2023.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

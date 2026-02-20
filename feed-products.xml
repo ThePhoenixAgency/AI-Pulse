@@ -5,76 +5,73 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Feb 2026 22:30:45 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Feb 2026 04:15:01 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: Ball 2 – Use AI to build fun ball games]]></title>
-      <link>https://shop.ball2.ai/</link>
-      <description><![CDATA[I wanted to find a way to get kids: - moving - creating - playing with others
-In the end I, and a team of 4 others, built: - a foam ball with a BLE IMU in it (moving/together) - an app that allows you to create almost any game you can imagine with AI (creating)
-Video of teenagers making a game: https://www.youtube.com/watch?v=-7TZXRBybOE
-Video that was intended to be for Kickstarter: https://www.youtube.com/watch?v=Edy9zew1XN4 (we abandoned kickstarter, long story)
-For hardware we came up with a pretty awesome custom PCB, based around a Dialog DA14531, that doesnt need any charging for over 500 hours of play. The electronics are encased inside 4.5" diameter of foam. We drove a car over it and it didn't break.
-For the app, we are using OpenAI Realtime API (gpt-realtime-2025-08-28) to gather the game requirements via conversation. We are using voice/realtime to allow kids to do it without needing to type or read. This piece has a huge dynamic prompt that flows with the conversation. It has about 20 different tools that the agent can use to access sample requirements, ball data, user profiles, api documentation, etc. We also did a lot of work to require younger kids to have adults present and make sure we never saved any pii, etc.
-Then we use Gemini 3 Pro to process the conversation and generate a markdown specification/arhictecture of how the game should be designed. We found that Anthropic Opus 4.6 did perform better here, but Gemini 3 Pro is much cheaper and faster. This has a static/cacheable prompt that is primarily a ball api documentation and details on previously seen issues.
-Then we use Gemini 3 Pro to also code the game. A very similar prompt to the specification/requirements just different purpose. We are currently exploring condensing the architecture and coding steps into a single step, with new "thinking" models. Also seeing that Google is launching 3.1 model, literally while I type this...
-The end result is an app that allows you to speak game requirements, have ai code the game, then you get to play it with a real physical ball.
-So ya, tons of fun building all that. Curious what HN thinks. Now the hard part of maybe getting someone to buy it... URL: https://news.ycombinator.com/item?id=47079874
+      <title><![CDATA[Show HN: SalaryScript – The FAANG Negotiation Playbook]]></title>
+      <link>https://salaryscript.com</link>
+      <description><![CDATA[Hey HN,
+I’m the founder of SalaryScript, and I wanted to share a project I’ve been working on for over a year: a comprehensive negotiation playbook tailored specifically for big tech roles.
+I’ve navigated the FAANG hiring gauntlet multiple times myself, with stints at FAANG companies, so I know firsthand how opaque and high-stakes these negotiations can be. I wrote SalaryScript based on my experience, insights from a dozen FAANG-alumni colleagues, and lessons from recruiters I’ve worked with over the years. We’ve pooled perspectives from engineers, PMs, and execs who’ve collectively negotiated millions in total compensation.
+Think of it as a “golden rule” book for tech negotiations. It covers everything from decoding offer letters and leveraging competing offers to scripting responses for common recruiter tactics, handling equity cliffs, and navigating relocation packages. No fluff — just battle-tested scripts, templates, and strategies that have helped people increase their total comp by 30–50% on average.
+One contributor, a former Meta engineering manager, shared how he turned a $300K offer into $550K by reframing the RSU vesting conversation. Another, an ex-Apple product lead, broke down the psychology of why “total comp” framing often beats focusing on base salary alone.
+Since launching last year at an introductory price of $19, we’ve crossed 1,000+ downloads and sales. Demand has been strong, and as word has spread, we’ve gradually raised the price.
+If you’re prepping for interviews or staring at an offer right now, this might be the edge you need.
+If you’re interested, you can check it out at salaryscript.com.
+Would love your thoughts, war stories, or questions like what’s the biggest negotiation win (or fail) you’ve had in tech?
+Cheers URL: https://news.ycombinator.com/item?id=47083163
 Points: 1
 # : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 21:40:37 GMT</pubDate>
+      <pubDate>Fri, 20 Feb 2026 03:07:26 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://shop.ball2.ai/</guid>
+      <guid>https://salaryscript.com</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: CursorLens – Open-source screen recorder/editor for product demos]]></title>
-      <link>https://github.com/blueberrycongee/CursorLens</link>
-      <description><![CDATA[Hi HN — I built CursorLens, a free and open-source screen recorder/editor for product demos and walkthroughs.
-It started as a fork of OpenScreen, but I reworked a lot of the capture/editing pipeline for a more native macOS workflow.
-Current features:
-full-screen or window recording
-native cursor hide/show behavior on macOS
-camera overlay + microphone recording
-timeline editing (trim/crop/zoom/cursor effects/annotations)
-subtitle generation + rough-cut workflow
-multi-aspect export (16:9, 9:16, 1:1) and batch export
-audio export controls (gain, loudness normalization, limiter)
-It’s still in beta, so stability can vary by machine.
-Repo: https://github.com/blueberrycongee/CursorLens
-Releases: https://github.com/blueberrycongee/CursorLens/releases
-I’d really appreciate feedback on:
-recording reliability across setups
-editing UX (especially rough cut/subtitles)
-export speed/quality tradeoffs URL: https://news.ycombinator.com/item?id=47079466
+      <title><![CDATA[Show HN: Single-Binary Markdown-to-PDF CLI in Rust, Powered by Typst (MDXport)]]></title>
+      <link>https://github.com/cosformula/mdxport-cli</link>
+      <description><![CDATA[I wanted a fast way to turn Markdown files into good-looking PDFs from the terminal. Pandoc + LaTeX is powerful but heavy. Browser-based tools break my workflow. So I built mdxport: one binary, no dependencies, pipe in Markdown, get a PDF.
+Under the hood it parses Markdown with comrak, converts to Typst, and compiles to PDF in-process. No LaTeX installation, no network calls, no temp files flying around.
+What it handles: LaTeX math ($E=mc^2$, display blocks), GFM tables, fenced code blocks, YAML frontmatter (title/author/lang/toc), and two built-in templates. You can also pass your own .typ template.
+CJK support was a pain point I wanted to solve properly. mdxport fonts install downloads Noto CJK fonts, and the converter auto-detects CJK characters and warns if fonts are missing. Chinese/Japanese/Korean documents just work.
+Watch mode (mdxport input.md -w) recompiles on save. Stdin works too: cat notes.md | mdxport -o notes.pdf.
+Install: npm install -g @mdxport/cli (ships platform-specific binaries, no Rust toolchain needed) or cargo install mdxport.
+https://github.com/cosformula/mdxport-cli (MIT, Rust, 55 tests, CI builds for macOS/Linux/Windows)
+There's also a web version at https://mdxport.com if you prefer a browser UI. URL: https://news.ycombinator.com/item?id=47083014
 Points: 1
 # : 0]]></description>
-      <pubDate>Thu, 19 Feb 2026 21:12:28 GMT</pubDate>
+      <pubDate>Fri, 20 Feb 2026 02:44:25 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://github.com/blueberrycongee/CursorLens</guid>
+      <guid>https://github.com/cosformula/mdxport-cli</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: Microstock.pro – AI-powered analytics for Adobe Stock contributors]]></title>
-      <link>https://www.microstock.pro</link>
-      <description><![CDATA[Hi HN,
-I built Microstock.pro, an analytics and AI research tool for stock contributors, primarily focused on Adobe Stock.
-As a stock creator, I noticed that most contributors rely on guesswork when choosing what to create. There’s very little structured data available to identify profitable niches, keyword opportunities, and market gaps before investing hours into content production.
-Microstock.pro aims to solve that by providing:
-Keyword and niche research
-Trend discovery
-Competitive insights
-AI-assisted content idea generation
-Data-driven validation before uploading
-The platform is specialized for Adobe Stock, but the research insights can also inspire strategies for other marketplaces like Shutterstock, since trends often overlap.
-It’s still early-stage and I’m actively improving features based on feedback. I’d really appreciate thoughts from the HN community — especially from creators, indie hackers, or anyone working with marketplace analytics.
-Happy to answer any technical or product questions. URL: https://news.ycombinator.com/item?id=47079407
+      <title><![CDATA[Show HN: I maintain Valkey GLIDE – built a Node queue doing 48k jobs/s]]></title>
+      <link>https://github.com/avifenesh/glide-mq</link>
+      <description><![CDATA[Hey HN,
+I'm a maintainer of Valkey GLIDE (the official Valkey client) and work on the AWS ElastiCache team. Day job is deep in database client internals — which gives me a clear view of where Node.js job queues hit a ceiling at scale.
+The problems with queues like BullMQ aren't subtle: 3+ round-trips per operation, Lua EVAL scripts that NOSCRIPT-error on restart, Lists/BRPOPLPUSH primitives that predate Streams, and complete blindness to cloud topology (cross-AZ bills sneak up on you).
+So I built Glide-MQ. High-performance job queue for Node.js built on Valkey/Redis OSS Streams, powered by Valkey GLIDE — a Rust core exposed via native NAPI bindings.
+Because I maintain the underlying client, I could go further than an external library ever could:
+1-RTT per job — completeAndFetchNext folds completion + next fetch + activation into a single FCALL. No more chatty round-trips.
+Server Functions over EVAL — one FUNCTION LOAD, persistent across restarts. NOSCRIPT errors gone entirely.
+Streams + Consumer Groups from day one — replaced Lists/BRPOPLPUSH. The PEL gives at-least-once delivery with fewer moving parts.
+Cluster-native, not cluster-bolted — hash-tagged keys from day one. No {braces} surprise when you scale out.
+AZ-Affinity routing — reads go to same-AZ replicas. Up to 75% reduction in cross-AZ costs on ElastiCache.
+Batch API pipelining — addBulk for 1,000 jobs: 228ms to 18ms (12.7x) via GLIDE's non-atomic pipeline.
+IAM auth — native ElastiCache/MemoryDB auth with auto token refresh. No secrets in env vars.
+Numbers (no-op processor, Valkey 8.0, single node):
+- c=1: 4,376 jobs/s | c=10: 15,504 jobs/s | c=50: 48,077 jobs/s
+- 15KB payload compressed to 331 bytes (98% savings)
+Also included: transparent gzip (zero config), OpenTelemetry tracing, TestQueue/TestWorker in-memory backend for unit tests without running Valkey, and chain()/group()/chord() for job pipeline workflows.
+Companion package: @glidemq/dashboard — drop createDashboard([q1, q2]) into any Express (or any other framework) app and get a live REST + SSE UI across all your queues (avifenesh/glidemq-dashboard on GitHub).
+Would love brutal testing on it abilities — especially from anyone burned by queue scaling in production. URL: https://news.ycombinator.com/item?id=47082516
 Points: 1
-# : 1]]></description>
-      <pubDate>Thu, 19 Feb 2026 21:08:17 GMT</pubDate>
+# : 0]]></description>
+      <pubDate>Fri, 20 Feb 2026 01:29:49 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://www.microstock.pro</guid>
+      <guid>https://github.com/avifenesh/glide-mq</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : One UI 8.5 : Samsung lance sa cinquième bêta d’Android 16 avant la sortie officielle]]></title>

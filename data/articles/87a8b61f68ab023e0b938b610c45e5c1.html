@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Stopped Context-Switching Between Validation, Forms, and Pipelines</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Stopped Context-Switching Between Validation, Forms, and Pipelines</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/20/2026 1:30:00 AM | <a href="https://dev.to/sakobume/i-stopped-context-switching-between-validation-forms-and-pipelines-4h6o" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>There's a moment every TypeScript developer knows. You're staring at a form bug — a server error that should be showing on the <code>email</code> field isn't appearing. You open the component. Then the submit handler. Then the server. Then the resolver. You're tracing through three separate error-shaping layers and you can't quite hold the whole thing in your head at once.</p> <p>It's not that the code is wrong. It's that understanding it requires knowing four things simultaneously: how Zod formats errors, how the resolver converts them, how <code>setError</code> structures them, and how the server formats its response. Four mental models for one question: <em>what makes this form invalid?</em></p> <p>I've been in that moment a lot. It made me wonder whether the complexity was intrinsic to the problem, or just an artifact of the tools.</p> <p><em>Want to skip the pitch? <a href="https://stackblitz.com/edit/github-hc8ykf6a?file=client%2Fsrc%2FRegistrationForm.tsx" target="_blank">Try it live in StackBlitz</a> — a runnable app with schema validation, async checks, server errors, and a shared Express backend.</em></p> <hr> <h2> <a name="what-weve-accepted-as-normal" href="#what-weve-accepted-as-normal"> </a> What We've Accepted as Normal
+</h2> <p>Here's the standard stack: Zod for validation, react-hook-form for form state, <code>@hookform/resolvers</code> to bridge them, plus your own async validator wiring and your own server error converter. Three npm packages, a resolver adapter, and custom glue code for anything outside the happy path.</p> <p>It works. That's not the point. The point is what you're carrying in your head whenever you touch it.</p> <p>Every field has errors potentially living in three different places: the Zod result, the <code>setError</code> calls from async validation, the <code>setError</code> calls from server errors. The rule for which one displays is: whatever you called last. Which means you have to track call order in your head, or you'll show a stale server error after the user has already fixed their input.</p> <p>Adding a new field means touching the schema, the <code>useForm</code> defaults, the JSX, and potentially the async validator and server error handler depending on what the field does. These aren't in one place. They're coordinated across the file.</p> <p>None of this is a knock on Zod or react-hook-form. Both are excellent at what they do. But "excellent at what they do" is exactly the problem — they do different things, and you write the code that connects them.</p> <hr> <h2> <a name="the-same-seam-on-the-backend" href="#the-same-seam-on-the-backend"> </a> The Same Seam on the Backend
+</h2> <p>Zod's <code>safeParse</code> returns <code>SafeParseReturnType</code>. Your pipeline expects <code>Result</code>. Every route that validates input starts with a conversion:<br>
+</p> <div>
+<pre><code><span>const</span> <span>parsed</span> <span>=</span> <span>schema</span><span>.</span><span>safeParse</span><span>(</span><span>body</span><span>);</span>
+<span>if </span><span>(</span><span>!</span><span>parsed</span><span>.</span><span>success</span><span>)</span> <span>{</span> <span>return</span> <span>err</span><span>({</span> <span>type</span><span>:</span> <span>"</span><span>validation</span><span>"</span><span>,</span> <span>issues</span><span>:</span> <span>parsed</span><span>.</span><span>error</span><span>.</span><span>issues</span><span>.</span><span>map</span><span>((</span><span>i</span><span>)</span> <span>=&gt;</span> <span>({</span> <span>path</span><span>:</span> <span>i</span><span>.</span><span>path</span><span>.</span><span>map</span><span>(</span><span>String</span><span>),</span> <span>message</span><span>:</span> <span>i</span><span>.</span><span>message</span><span>,</span> <span>})),</span> <span>});</span>
+<span>}</span>
+<span>// now you can use parsed.data</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>You write this once, extract it into a utility, and forget about it. Until the next person writes it again because they didn't know the utility existed. Or until Zod changes its error shape. Or until someone else's async step returns a different error format and now you have two error models in the same pipeline.</p> <p>The seam on the backend is structurally identical to the one on the frontend: validation output doesn't naturally match error-handling input, so you write code to bridge them.</p> <hr> <h2> <a name="what-a-unified-stack-actually-feels-like" href="#what-a-unified-stack-actually-feels-like"> </a> What a Unified Stack Actually Feels Like
+</h2> <p>Here's the concrete experience of adding a field. Say you have a registration form and you need to add <code>age</code>: must be a number, must be at least 18.</p> <p>In the Zod + RHF stack, you touch:</p> <ol>
+<li>The Zod schema — add the field</li>
+<li>The <code>useForm</code> defaultValues — add the field</li>
+<li>The JSX — add the input and error display</li>
+<li>If age needs async or server validation — add <code>setError</code>/<code>clearErrors</code> wiring</li>
+</ol> <p>Three of those four are pure coordination. The Zod schema is the work. The rest is keeping other layers informed.</p> <p>With <code>@railway-ts/use-form</code> and <code>@railway-ts/pipelines</code>:<br>
+</p> <div>
+<pre><code><span>// schema.ts — shared between frontend and backend</span>
+<span>const</span> <span>registrationSchema</span> <span>=</span> <span>object</span><span>({</span> <span>username</span><span>:</span> <span>required</span><span>(</span><span>chain</span><span>(</span><span>string</span><span>(),</span> <span>nonEmpty</span><span>(),</span> <span>minLength</span><span>(</span><span>3</span><span>))),</span> <span>email</span><span>:</span> <span>required</span><span>(</span><span>chain</span><span>(</span><span>string</span><span>(),</span> <span>nonEmpty</span><span>(),</span> <span>email</span><span>())),</span> <span>password</span><span>:</span> <span>required</span><span>(</span><span>chain</span><span>(</span><span>string</span><span>(),</span> <span>nonEmpty</span><span>(),</span> <span>minLength</span><span>(</span><span>8</span><span>))),</span> <span>confirmPassword</span><span>:</span> <span>required</span><span>(</span><span>chain</span><span>(</span><span>string</span><span>(),</span> <span>nonEmpty</span><span>())),</span> <span>age</span><span>:</span> <span>required</span><span>(</span><span>chain</span><span>(</span><span>parseNumber</span><span>(),</span> <span>min</span><span>(</span><span>18</span><span>,</span> <span>"</span><span>Must be at least 18</span><span>"</span><span>),</span> <span>max</span><span>(</span><span>120</span><span>))),</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <blockquote>
+<p>If the schema syntax is unfamiliar — <code>chain</code>, <code>required</code>, <code>object</code> — <a href="https://dev.to/sakobume/the-glue-code-tax-a-line-by-line-audit-of-zod-react-hook-form-4lg">Part 1</a> walks through each piece. The short version: <code>chain()</code> composes validators left-to-right, <code>required()</code> marks a field as non-optional, and <code>object()</code> collects fields into a typed shape.</p>
+</blockquote> <p>Add <code>age</code> to the schema. <code>InferSchemaType</code> propagates it to the TypeScript type. <code>initialValues</code> gives you a TypeScript error immediately — <code>age</code> is missing. <code>form.getFieldProps("age")</code> works without any other changes. <code>form.errors.age</code> works. If the server returns <code>{ age: "Age cannot be verified" }</code>, <code>form.setServerErrors(res.json())</code> handles it — no field name mapping, no <code>as keyof FormType</code> cast.</p> <p>The JSX is still the JSX — you write the input. But nothing else changes. The schema change propagated everywhere else automatically.</p> <p>That's the difference. Not fewer files. Not less JSX. <em>Less coordination.</em> Less working memory spent keeping layers in sync.</p> <p>This assumes you <em>want</em> identical validation on frontend and backend — which is true for most forms. When you intentionally need them to differ (admin bypasses, progressive disclosure, different error messages for API consumers vs. UI), you'd define separate schemas. The library doesn't force sharing; it makes sharing free when you want it.</p> <hr> <h2> <a name="the-error-priority-problem-solved" href="#the-error-priority-problem-solved"> </a> The Error Priority Problem, Solved
+</h2> <p>The context-switching that happens when a field has multiple simultaneous error sources — schema says invalid, async check says taken, server says already registered — is one of the subtlest bugs to track in a React form.</p> <p><code>@railway-ts/use-form</code> makes this deterministic with a fixed priority system:</p> <div><table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Source</th>
+<th>Clears when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (lowest)</td>
+<td>Schema validation</td>
+<td>Every validation run</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Async field validators</td>
+<td>Field validator re-runs</td>
+</tr>
+<tr>
+<td>3 (highest)</td>
+<td>Server errors</td>
+<td>User edits the field</td>
+</tr>
+</tbody>
+</table></div> <p>You never manage this. You read <code>form.errors.email</code> and display it. A server error stays visible even after schema validation passes — the server is more authoritative than client-side rules. Editing the field clears the server error and hands control back to schema validation.<br>
+</p> <div>
+<pre><code><span>&lt;</span><span>input</span> <span>type</span><span>=</span><span>"email"</span> <span>{</span><span>...</span><span>form</span><span>.</span><span>getFieldProps</span><span>(</span><span>"</span><span>email</span><span>"</span><span>)</span><span>}</span> <span>/&gt;;</span>
+<span>{</span> <span>form</span><span>.</span><span>touched</span><span>.</span><span>email</span> <span>&amp;&amp;</span> <span>form</span><span>.</span><span>errors</span><span>.</span><span>email</span> <span>&amp;&amp;</span> <span>&lt;</span><span>span</span><span>&gt;</span><span>{</span><span>form</span><span>.</span><span>errors</span><span>.</span><span>email</span><span>}</span><span>&lt;/</span><span>span</span><span>&gt;;</span>
+<span>}</span>
+<span>{</span> <span>/* Could be schema, async, or server error. Always the highest-priority one. */</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Async validation is declared, not wired:<br>
+</p> <div>
+<pre><code><span>const</span> <span>form</span> <span>=</span> <span>useForm</span><span>&lt;</span><span>Registration</span><span>&gt;</span><span>(</span><span>registrationSchema</span><span>,</span> <span>{</span> <span>fieldValidators</span><span>:</span> <span>{</span> <span>username</span><span>:</span> <span>async </span><span>(</span><span>value</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>{</span> <span>available</span> <span>}</span> <span>=</span> <span>await</span> <span>fetch</span><span>(</span> <span>`/api/check-username?u=</span><span>${</span><span>encodeURIComponent</span><span>(</span><span>value</span><span>)}</span><span>`</span><span>,</span> <span>).</span><span>then</span><span>((</span><span>r</span><span>)</span> <span>=&gt;</span> <span>r</span><span>.</span><span>json</span><span>());</span> <span>return</span> <span>available</span> <span>?</span> <span>undefined</span> <span>:</span> <span>"</span><span>Username is already taken</span><span>"</span><span>;</span> <span>},</span> <span>},</span> <span>onSubmit</span><span>:</span> <span>async </span><span>(</span><span>values</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>res</span> <span>=</span> <span>await</span> <span>fetch</span><span>(</span><span>"</span><span>/api/register</span><span>"</span><span>,</span> <span>{</span> <span>method</span><span>:</span> <span>"</span><span>POST</span><span>"</span><span>,</span> <span>headers</span><span>:</span> <span>{</span> <span>"</span><span>Content-Type</span><span>"</span><span>:</span> <span>"</span><span>application/json</span><span>"</span> <span>},</span> <span>body</span><span>:</span> <span>JSON</span><span>.</span><span>stringify</span><span>(</span><span>values</span><span>),</span> <span>});</span> <span>if </span><span>(</span><span>!</span><span>res</span><span>.</span><span>ok</span><span>)</span> <span>form</span><span>.</span><span>setServerErrors</span><span>(</span><span>await</span> <span>res</span><span>.</span><span>json</span><span>());</span> <span>else</span> <span>navigate</span><span>(</span><span>"</span><span>/welcome</span><span>"</span><span>);</span> <span>},</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The hook handles loading state (<code>form.validatingFields.username</code>), discards stale responses — the last <em>issued</em> request wins, not the last <em>received</em> — and gates the async check behind schema validation so you're not hitting the API with values that are already invalid. None of that is wiring you write.</p> <hr> <h2> <a name="you-also-get-a-pipeline-library" href="#you-also-get-a-pipeline-library"> </a> You Also Get a Pipeline Library
+</h2> <p>This is where it goes past "better forms." The same <code>Result</code> type the form hook uses natively is what <code>@railway-ts/pipelines</code> produces on the backend — in API handlers, in ETL jobs, in any async operation that can fail.<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>flowAsync</span> <span>}</span> <span>from</span> <span>"</span><span>@railway-ts/pipelines/composition</span><span>"</span><span>;</span>
+<span>import</span> <span>{</span> <span>flatMapWith</span><span>,</span> <span>match</span> <span>}</span> <span>from</span> <span>"</span><span>@railway-ts/pipelines/result</span><span>"</span><span>;</span>
+<span>import</span> <span>{</span> <span>validate</span><span>,</span> <span>formatErrors</span> <span>}</span> <span>from</span> <span>"</span><span>@railway-ts/pipelines/schema</span><span>"</span><span>;</span>
+<span>import</span> <span>{</span> <span>registrationSchema</span> <span>}</span> <span>from</span> <span>"</span><span>./schema</span><span>"</span><span>;</span> <span>// same file the form uses</span> <span>const</span> <span>handleRegistration</span> <span>=</span> <span>flowAsync</span><span>(</span> <span>(</span><span>body</span><span>:</span> <span>unknown</span><span>)</span> <span>=&gt;</span> <span>validate</span><span>(</span><span>body</span><span>,</span> <span>registrationSchema</span><span>),</span> <span>flatMapWith</span><span>(</span><span>checkEmailUnique</span><span>),</span> <span>flatMapWith</span><span>(</span><span>createUser</span><span>),</span>
+<span>);</span> <span>app</span><span>.</span><span>post</span><span>(</span><span>"</span><span>/api/register</span><span>"</span><span>,</span> <span>async </span><span>(</span><span>req</span><span>,</span> <span>res</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>result</span> <span>=</span> <span>await</span> <span>handleRegistration</span><span>(</span><span>req</span><span>.</span><span>body</span><span>);</span> <span>match</span><span>(</span><span>result</span><span>,</span> <span>{</span> <span>ok</span><span>:</span> <span>(</span><span>user</span><span>)</span> <span>=&gt;</span> <span>res</span><span>.</span><span>status</span><span>(</span><span>201</span><span>).</span><span>json</span><span>({</span> <span>id</span><span>:</span> <span>user</span><span>.</span><span>id</span> <span>}),</span> <span>err</span><span>:</span> <span>(</span><span>errors</span><span>)</span> <span>=&gt;</span> <span>res</span><span>.</span><span>status</span><span>(</span><span>422</span><span>).</span><span>json</span><span>(</span><span>formatErrors</span><span>(</span><span>errors</span><span>)),</span> <span>});</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><code>formatErrors</code> converts <code>ValidationError[]</code> to <code>Record&lt;string, string&gt;</code>. That's the exact format <code>form.setServerErrors()</code> consumes. The full loop — frontend schema validation, async field checks, backend pipeline validation, server errors surfacing on the right fields — shares one schema and one error format with zero conversion between layers.</p> <p>For batch processing, you get <code>combine</code>, <code>combineAll</code>, and <code>partition</code> — semantics that would each be a custom accumulation loop with try/catch:<br>
+</p> <div>
+<pre><code><span>const</span> <span>results</span> <span>=</span> <span>await</span> <span>Promise</span><span>.</span><span>all</span><span>(</span><span>rawRecords</span><span>.</span><span>map</span><span>(</span><span>processTransaction</span><span>));</span> <span>// All-or-nothing, first failure</span>
+<span>const</span> <span>batchResult</span> <span>=</span> <span>combine</span><span>(</span><span>results</span><span>);</span> <span>// All-or-nothing, all failures at once</span>
+<span>const</span> <span>batchResult</span> <span>=</span> <span>combineAll</span><span>(</span><span>results</span><span>);</span> <span>// Keep both sides — the ETL default</span>
+<span>const</span> <span>{</span> <span>successes</span><span>,</span> <span>failures</span> <span>}</span> <span>=</span> <span>partition</span><span>(</span><span>results</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>One call each, on results you already have.</p> <hr> <h2> <a name="what-youre-not-giving-up" href="#what-youre-not-giving-up"> </a> What You're Not Giving Up
+</h2> <p>If you already have Zod schemas, <code>@railway-ts/use-form</code> accepts them directly via Standard Schema v1 — no resolver, no adapter:<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>z</span> <span>}</span> <span>from</span> <span>"</span><span>zod</span><span>"</span><span>;</span>
+<span>import</span> <span>{</span> <span>useForm</span> <span>}</span> <span>from</span> <span>"</span><span>@railway-ts/use-form</span><span>"</span><span>;</span> <span>const</span> <span>zodSchema</span> <span>=</span> <span>z</span><span>.</span><span>object</span><span>({</span> <span>username</span><span>:</span> <span>z</span><span>.</span><span>string</span><span>().</span><span>min</span><span>(</span><span>3</span><span>),</span> <span>email</span><span>:</span> <span>z</span><span>.</span><span>email</span><span>(),</span> <span>password</span><span>:</span> <span>z</span><span>.</span><span>string</span><span>().</span><span>min</span><span>(</span><span>8</span><span>),</span> <span>age</span><span>:</span> <span>z</span><span>.</span><span>coerce</span><span>.</span><span>number</span><span>().</span><span>min</span><span>(</span><span>18</span><span>),</span>
+<span>});</span> <span>const</span> <span>form</span> <span>=</span> <span>useForm</span><span>&lt;</span><span>z</span><span>.</span><span>infer</span><span>&lt;</span><span>typeof</span> <span>zodSchema</span><span>&gt;&gt;</span><span>(</span><span>zodSchema</span><span>,</span> <span>{</span> <span>initialValues</span><span>:</span> <span>{</span> <span>username</span><span>:</span> <span>""</span><span>,</span> <span>email</span><span>:</span> <span>""</span><span>,</span> <span>password</span><span>:</span> <span>""</span><span>,</span> <span>age</span><span>:</span> <span>0</span> <span>},</span> <span>onSubmit</span><span>:</span> <span>(</span><span>values</span><span>)</span> <span>=&gt;</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>values</span><span>),</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Full hook API. No <code>zodResolver</code>. No <code>@hookform/resolvers</code>. The migration path is: adopt the form hook now with existing Zod schemas, migrate to <code>@railway-ts/pipelines/schema</code> later when you want the shared full-stack loop.</p> <hr> <h2> <a name="the-actual-pitch" href="#the-actual-pitch"> </a> The Actual Pitch
+</h2> <p>I'm not selling you on monads or railway-oriented design as a philosophy. Those are interesting, but they're not the point.</p> <p>The point is: right now, your validation layer, your form state layer, and your async pipeline layer are three separate mental models you context-switch between every time you open a related file. The error shapes don't naturally align. The libraries weren't designed to share a type vocabulary. That's not a flaw in any of them — it's what happens when you compose independently excellent tools.</p> <p>There's a version of this where it's one model. Schema drives types drives form state drives server communication drives pipeline validation — the same <code>Result</code>, the same error format, no adapters between layers.</p> <p>The bundle is ~7.8 kB brotli (~10 kB gzip) for both libraries combined. For comparison, Zod + react-hook-form + resolvers is ~35.5 kB gzip. Different compression methods — but even on the same scale, the unified stack is meaningfully smaller.</p> <p>What you're getting: Zod's job, react-hook-form's job, a resolver's job, and a backend pipeline library's job — in one coherent stack that shares a type vocabulary end to end.</p> <hr> <p><strong>Want the deep dives?</strong></p> <ul>
+<li>
+<strong><a href="https://dev.to/sakobume/the-glue-code-tax-a-line-by-line-audit-of-zod-react-hook-form-4lg">Part 1 — The Glue Code Tax</a></strong> — the Zod + RHF seam counted line by line, then eliminated</li>
+<li>
+<strong><a href="https://dev.to/sakobume/composable-async-pipelines-in-typescript-one-result-type-zero-adapters-2mka">Part 2 — Composable Async Pipelines</a></strong> — the full <code>Result</code> + <code>flowAsync</code> operator set</li>
+<li>
+<strong><a href="https://dev.to/sakobume/schema-first-react-forms-one-schema-three-error-layers-zero-glue-4lpd">Part 3 — Schema-First React Forms</a></strong> — the 3-layer error system, array fields, and the full-stack loop</li>
+<li>
+<strong><a href="https://dev.to/sakobume/working-with-ai-tools-on-a-new-library-mc0">Setup &amp; AI tooling</a></strong> — how to get Claude Code and other AI tools to reason from the library docs instead of hallucinating Zod patterns</li>
+<li>
+<strong><a href="https://dev.to/sakobume/building-a-type-safe-data-processing-pipeline-in-typescript-1nfe">Bonus — Data Processing Pipelines</a></strong> — batch processing with <code>combine</code>, <code>combineAll</code>, <code>partition</code>
+</li>
+</ul> <p><strong>GitHub:</strong></p> <ul>
+<li>
+<a href="https://github.com/sakobu/railway-ts-pipelines" target="_blank">@railway-ts/pipelines</a> — Result, Option, schema validation, composable pipelines</li>
+<li>
+<a href="https://github.com/sakobu/railway-ts-use-form" target="_blank">@railway-ts/use-form</a> — React form hook with native schema integration</li>
+</ul> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

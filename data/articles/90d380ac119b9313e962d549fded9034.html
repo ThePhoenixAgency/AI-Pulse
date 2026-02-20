@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>The state of homelab tech (2026) with Techno Tim (Changelog &amp; Friends #125)</title>
+<title>The state of homelab tech (2026)</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,83 +23,12 @@
 </style>
 </head>
 <body>
-  <h1>The state of homelab tech (2026) with Techno Tim (Changelog &amp; Friends #125)</h1>
+  <h1>The state of homelab tech (2026)</h1>
   <div class="metadata">
     Source: The Changelog | Date: 1/24/2026 8:00:00 PM | <a href="https://changelog.com/friends/125" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <section> <a></a> <header> <h3>Featuring</h3> </header> </section> <section> <a></a> <header> <h3>Notes &amp; Links</h3> <p><a href="https://github.com/thechangelog/show-notes/blob/master/friends/changelog--friends-125.md"> Edit Notes</a></p> </header> <div>
-<h4>People</h4>
-<ul>
-<li><a href="https://technotim.com/">Techno Tim</a> - Tim Stewart’s website, YouTube channel, and documentation hub</li>
-<li><a href="https://crosstalksolutions.com/">Crosstalk Solutions</a> - Chris’s channel, mentioned for building custom Ubiquiti API tools</li>
-</ul>
-<h4>Virtualization &amp; Infrastructure</h4>
-<ul>
-<li><a href="https://www.proxmox.com/en/proxmox-virtual-environment">Proxmox VE</a> - Open-source virtualization platform for VMs and containers</li>
-<li><a href="https://www.truenas.com/">TrueNAS</a> - Enterprise-grade open-source storage operating system built on ZFS</li>
-<li><a href="https://hexos.com/">HexOS</a> - Consumer-friendly NAS OS built on TrueNAS (in development)</li>
-<li><a href="https://community-scripts.github.io/ProxmoxVE/">Proxmox VE Helper Scripts</a> - Community-maintained scripts for easy LXC and VM deployment</li>
-</ul>
-<h4>Self-Hosted Software</h4>
-<ul>
-<li><a href="https://docs.paperless-ngx.com/">Paperless-NGX</a> - Self-hosted document management system with OCR</li>
-<li><a href="https://github.com/icereed/paperless-gpt">Paperless-GPT</a> - AI-powered enhancement for Paperless-NGX using LLMs</li>
-<li><a href="https://ollama.ai/">Ollama</a> - Run large language models locally on your own hardware</li>
-<li><a href="https://openwebui.com/">Open WebUI</a> - Self-hosted web interface for interacting with local LLMs</li>
-<li><a href="https://www.plex.tv/">Plex</a> - Media server for organizing and streaming your personal media library</li>
-<li><a href="https://www.home-assistant.io/">Home Assistant</a> - Open-source home automation platform</li>
-<li><a href="https://pi-hole.net/">Pi-hole</a> - Network-wide ad blocking via DNS filtering</li>
-</ul>
-<h4>Document Intelligence &amp; RAG</h4>
-<ul>
-<li><a href="https://github.com/DS4SD/docling">Dockling</a> - IBM’s open-source document parsing library for AI/RAG pipelines</li>
-<li><a href="https://github.com/PaddlePaddle/PaddleOCR">PaddleOCR</a> - Multi-language OCR toolkit for document recognition</li>
-</ul>
-<h4>AI &amp; Agents</h4>
-<ul>
-<li><a href="https://claude.ai/">Claude</a> - Anthropic’s AI assistant, used for homelab automation in this episode</li>
-<li><a href="https://opencode.ai/">OpenCode</a> - Open-source AI coding agent (mentioned as potential homelab tool)</li>
-<li><a href="https://modelcontextprotocol.io/">Model Context Protocol (MCP)</a> - Protocol for connecting AI models to external tools and data</li>
-</ul>
-<h4>Networking</h4>
-<ul>
-<li><a href="https://ui.com/">Ubiquiti</a> - Enterprise networking gear popular with homelabbers (UDM Pro, UniFi)</li>
-<li><a href="https://tailscale.com/">Tailscale</a> - Zero-config VPN for secure networking between devices</li>
-</ul>
-<h4>Container &amp; Orchestration</h4>
-<ul>
-<li><a href="https://www.docker.com/">Docker</a> - Container platform for packaging and running applications</li>
-<li><a href="https://kubernetes.io/">Kubernetes</a> - Container orchestration for managing containerized workloads</li>
-<li><a href="https://fly.io/">Fly.io</a> - Platform for running containers close to users globally</li>
-</ul>
-<h4>Monitoring &amp; Observability</h4>
-<ul>
-<li><a href="https://grafana.com/">Grafana</a> - Open-source analytics and visualization platform</li>
-<li><a href="https://prometheus.io/">Prometheus</a> - Open-source monitoring and alerting toolkit</li>
-</ul>
-<h4>Security &amp; Authentication</h4>
-<ul>
-<li><a href="https://bitwarden.com/">Bitwarden</a> - Open-source password manager (self-hostable)</li>
-<li><a href="https://www.authelia.com/">Authelia</a> - Open-source authentication and authorization server</li>
-</ul>
-<h4>Databases</h4>
-<ul>
-<li><a href="https://mariadb.org/">MariaDB</a> - Community-developed fork of MySQL</li>
-<li><a href="https://redis.io/">Redis</a> - In-memory data store for caching and messaging</li>
-<li><a href="https://www.postgresql.org/">PostgreSQL</a> - Advanced open-source relational database</li>
-</ul>
-<h4>Hardware Mentioned</h4>
-<ul>
-<li><a href="https://www.intel.com/content/www/us/en/products/details/memory-storage/optane-memory.html">Intel Optane</a> - Ultra-low latency storage drives (discontinued but prized for ZFS special vdevs)</li>
-<li><a href="https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090-3090ti/">NVIDIA GeForce RTX 3090</a> - GPU used for Plex transcoding and local AI inference</li>
-</ul>
-<h4>Concepts &amp; Techniques</h4>
-<ul>
-<li><a href="https://openzfs.github.io/openzfs-docs/Basic%20Concepts/Special%20vdev.html">ZFS Special Vdevs</a> - ZFS feature for accelerating metadata and small file operations</li>
-<li><a href="https://www.servethehome.com/pcie-bifurcation-explained/">PCIe Bifurcation</a> - Splitting a PCIe slot to support multiple NVMe drives</li>
-<li><a href="https://www.databricks.com/glossary/medallion-architecture">Medallion Architecture</a> - Bronze/Silver/Gold data lake pattern discussed for document ETL</li>
-</ul> </div> </section> </div></div>
+    <p>Techno Tim joins Adam to dive deep into the state of homelab'ing in 2026. Hardware is scarce and expensive due to the AI gold rush, but software has never been better. From unleashing Claude on your UDM Pro to building custom Proxmox CLIs, they explores how AI is transforming what's possible in the homelab. Tim declares 2026 the "Year of Self-Hosted Software" while Adam reveals his homelab's secret weapons: DNSHole (a Pi-hole replacement written in Rust) and PXM (a Proxmox automation CLI).</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

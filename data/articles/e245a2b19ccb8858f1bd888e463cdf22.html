@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Working With AI Tools on a New Library</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Working With AI Tools on a New Library</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/20/2026 1:50:00 AM | <a href="https://dev.to/sakobume/working-with-ai-tools-on-a-new-library-mc0" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><em>This is the setup guide for <strong>Railway-Oriented TypeScript</strong>. If you haven't read the <a href="https://dev.to/sakobume/i-stopped-context-switching-between-validation-forms-and-pipelines-4h6o">overview</a> yet, start there.</em></p> <p><code>@railway-ts/pipelines</code> and <code>@railway-ts/use-form</code> are new. That creates a practical problem: AI coding assistants — Claude Code, Cursor, GitHub Copilot — have been trained on millions of examples of Zod, react-hook-form, and neverthrow. They have almost no training data for <code>@railway-ts</code>.</p> <p>The result is predictable. Ask Claude Code to build a form with <code>@railway-ts/use-form</code> installed and it will write <code>zodResolver</code>, <code>useForm</code> from react-hook-form, and <code>setError</code>/<code>clearErrors</code> — confidently, without being asked, because that's the pattern it's seen thousands of times. It's not hallucinating random code. It's pattern-matching against the highest-probability answer in its training distribution. The problem is that answer is wrong for your project.</p> <p>This isn't a criticism of AI tools. It's a structural reality about how they work that's worth understanding and routing around.</p> <hr> <h2> <a name="why-docs-shipped-with-the-package-matter" href="#why-docs-shipped-with-the-package-matter"> </a> Why Docs Shipped With the Package Matter
+</h2> <p>Both libraries now ship their documentation inside the npm package:<br>
+</p> <div>
+<pre><code>node_modules/@railway-ts/pipelines/docs/
+node_modules/@railway-ts/use-form/docs/
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This matters because modern AI coding tools — Claude Code in particular — can read your <code>node_modules</code> and reason from types and documentation in context. When you point the tool at the right docs, it stops pattern-matching against training data and starts reasoning from the actual library API. The generated code goes from "confidently wrong" to "reads the types and generates correct usage."</p> <p>The difference in output quality is substantial. The bundled docs are the mechanism that makes AI-assisted development on a new library viable.</p> <hr> <h2> <a name="setting-up-a-claudemd" href="#setting-up-a-claudemd"> </a> Setting Up a CLAUDE.md
+</h2> <p>The most reliable way to redirect an AI tool is a <code>CLAUDE.md</code> (or equivalent context file) in your project root. Claude Code reads this automatically. Create it before you start generating form or pipeline code:<br>
+</p> <div>
+<pre><code><span># AI Coding Instructions</span> This project uses @railway-ts/pipelines and @railway-ts/use-form. Before generating any form or pipeline code, read the docs shipped with the packages:
+<span>
+-</span> node_modules/@railway-ts/pipelines/docs/
+<span>-</span> node_modules/@railway-ts/use-form/docs/ Rules:
+<span>
+-</span> Do NOT use Zod or @hookform/resolvers patterns
+<span>-</span> Do NOT use react-hook-form's useForm, setError, or clearErrors
+<span>-</span> Schema validation uses @railway-ts/pipelines/schema, not z.object()
+<span>-</span> Form state uses useForm from @railway-ts/use-form, not react-hook-form
+<span>-</span> Async pipelines use flowAsync/pipeAsync from @railway-ts/pipelines/composition
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This does two things: tells the tool what not to do (which matters as much as what to do), and points it to the docs that contain the correct patterns.</p> <p>For other AI tools:</p> <p><strong>Cursor</strong> — add the same content to <code>.cursorrules</code> or use the <code>@Docs</code> feature to index the bundled docs directly.</p> <p><strong>GitHub Copilot</strong> — less controllable without explicit doc indexing, but keeping a reference file open in your editor with correct usage examples significantly improves suggestion quality.</p> <hr> <h2> <a name="verifying-the-setup-works" href="#verifying-the-setup-works"> </a> Verifying the Setup Works
+</h2> <p>After creating <code>CLAUDE.md</code>, ask your AI tool to build a simple form before touching any real code:</p> <blockquote>
+<p>Build a React login form with email and password fields using @railway-ts/use-form. Handle server validation errors.</p>
+</blockquote> <p>The output should use <code>useForm</code> from <code>@railway-ts/use-form</code>, a schema built with <code>object</code>/<code>required</code>/<code>chain</code> from <code>@railway-ts/pipelines/schema</code>, and <code>form.setServerErrors()</code> for server errors. If you see <code>zodResolver</code>, <code>@hookform/resolvers</code>, or <code>setError</code>/<code>clearErrors</code>, the tool is still pattern-matching against training data — check that <code>CLAUDE.md</code> is in the project root and that the docs are present in <code>node_modules</code>.</p> <hr> <h2> <a name="what-the-ai-gets-right-once-pointed-at-the-docs" href="#what-the-ai-gets-right-once-pointed-at-the-docs"> </a> What the AI Gets Right Once Pointed at the Docs
+</h2> <p>Once the tool is reading from the bundled docs, the things it handles well:</p> <ul>
+<li>Schema composition with <code>chain</code>, <code>object</code>, <code>required</code>, <code>optional</code>
+</li>
+<li>
+<code>fieldValidators</code> for async field-level checks</li>
+<li>
+<code>form.setServerErrors()</code> for server-side error injection</li>
+<li>
+<code>flowAsync</code>/<code>pipeAsync</code> for composing multi-step async pipelines</li>
+<li>
+<code>mapWith</code>, <code>flatMapWith</code>, <code>filterWith</code>, <code>tapWith</code> — the full curried operator set</li>
+<li>
+<code>combine</code>, <code>combineAll</code>, <code>partition</code> for batch processing</li>
+<li>Cross-field validation with <code>refineAt</code>
+</li>
+</ul> <p>The things worth double-checking manually:</p> <ul>
+<li>Type inference with <code>InferSchemaType</code> — verify the generated type matches your intent</li>
+<li>
+<code>initialValues</code> completeness — the TypeScript error is immediate if a field is missing, but worth confirming</li>
+<li>Error path strings in <code>setServerErrors</code> — confirm they match your schema field names</li>
+</ul> <hr> <h2> <a name="quick-start" href="#quick-start"> </a> Quick Start
+</h2> <div>
+<pre><code><span>mkdir </span>my-project <span>&amp;&amp;</span> <span>cd </span>my-project
+npm init <span>-y</span>
+npm <span>install </span>react react-dom @types/react typescript
+npm <span>install</span> @railway-ts/pipelines @railway-ts/use-form
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Create <code>CLAUDE.md</code> as shown above, then verify the docs are present:<br>
+</p> <div>
+<pre><code><span>ls </span>node_modules/@railway-ts/pipelines/docs/
+<span>ls </span>node_modules/@railway-ts/use-form/docs/
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>If you're migrating an existing project that uses Zod:<br>
+</p> <div>
+<pre><code>npm <span>install</span> @railway-ts/use-form @railway-ts/pipelines
+<span># keep zod — the form hook accepts Zod schemas via Standard Schema v1</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>You can adopt the form hook without touching your Zod schemas. See <a href="https://dev.to/sakobume/schema-first-react-forms-one-schema-three-error-layers-zero-glue-4lpd">Part 3</a> for the migration path.</p> <hr> <h2> <a name="the-series" href="#the-series"> </a> The Series
+</h2> <p><strong><a href="https://dev.to/sakobume/the-glue-code-tax-a-line-by-line-audit-of-zod-react-hook-form-4lg">Part 1 — The Glue Code Tax</a></strong><br>
+The Zod + react-hook-form seam counted line by line: the resolver, the async validation wiring, the server error conversion, the type assertions. Then the same form rewritten without any of them.</p> <p><strong><a href="https://dev.to/sakobume/composable-async-pipelines-in-typescript-one-result-type-zero-adapters-2mka">Part 2 — Composable Async Pipelines</a></strong><br>
+The <code>@railway-ts/pipelines</code> API: <code>Result</code>, curried operators, and <code>flowAsync</code> for multi-step async pipelines where errors short-circuit automatically. The same <code>Result</code> type the form hook uses.</p> <p><strong><a href="https://dev.to/sakobume/schema-first-react-forms-one-schema-three-error-layers-zero-glue-4lpd">Part 3 — Schema-First React Forms</a></strong><br>
+The 3-layer error priority system in detail, array fields, and the full-stack loop where one schema drives backend pipeline validation and frontend form state without any format conversion between them.</p> <p><strong><a href="https://dev.to/sakobume/building-a-type-safe-data-processing-pipeline-in-typescript-1nfe">Bonus — Data Processing Pipelines</a></strong><br>
+The pipeline library in an ETL context: batch processing with <code>combine</code>, <code>combineAll</code>, and <code>partition</code>, reusable sub-pipelines, structured error reporting. No React, no UI.</p> <hr> <p><strong>GitHub:</strong></p> <ul>
+<li>
+<a href="https://github.com/sakobu/railway-ts-pipelines" target="_blank">@railway-ts/pipelines</a> — Result, Option, schema validation, composable pipelines</li>
+<li>
+<a href="https://github.com/sakobu/railway-ts-use-form" target="_blank">@railway-ts/use-form</a> — React form hook with native schema integration</li>
+</ul> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

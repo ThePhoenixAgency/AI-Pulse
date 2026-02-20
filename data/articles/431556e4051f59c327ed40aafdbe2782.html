@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Release 6cy - v0.3.0 · byte271/6cy · GitHub</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Release 6cy - v0.3.0 · byte271/6cy · GitHub</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/20/2026 1:24:28 AM | <a href="https://github.com/byte271/6cy/releases/tag/v0.3.0" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div>
+<h1>.6cy v0.3.0</h1>
+<h4>Block header — fully self-describing (84 bytes, up from 61)</h4>
+<p>Added </p><pre><code>header_version</code></pre> (u16, = 1) — enables future layout changes.<br>
+Added <pre><code>header_size</code></pre> (u16, = 84) — allows forward-skipping unknown extensions.<br>
+Added <pre><code>block_type</code></pre> (u16) — DATA / INDEX / SOLID now encoded in the header,<br>
+not inferred from context. Readers can classify blocks without prior state.<br>
+Added <pre><code>orig_size</code></pre> (u32) — uncompressed size embedded in the header. Readers<br>
+can allocate the exact output buffer before decompressing.<br>
+Replaced <pre><code>block_size</code></pre> (u32) with <pre><code>comp_size</code></pre> (u32) — renamed for clarity.<br>
+<strong>Added <pre><code>header_crc32</code></pre> (u32, LE)</strong> — mandatory CRC32 over the first 80 bytes<br>
+of the header. Checked before any seek or allocation. Cannot be disabled.<br>
+<pre><code>codec_uuid</code></pre> (16 bytes) replaces <pre><code>codec_id</code></pre> (u16) — frozen UUID identity<br>
+on disk; short IDs are in-process only and never written.<br>
+Removed <pre><code>level</code></pre> (i8) from the block header — levels are a write-time<br>
+parameter and are irrelevant to decoders.<p></p>
+<h4>Superblock — format_version 3</h4>
+<p>Field </p><pre><code>format_version</code></pre> replaces <pre><code>version</code></pre>; renamed for clarity.<br>
+Field <pre><code>archive_uuid</code></pre> replaces <pre><code>uuid</code></pre>; renamed for clarity.<br>
+<pre><code>required_codecs</code></pre> (list of u16 short IDs) replaced by<br>
+<pre><code>required_codec_uuids</code></pre> (list of 16-byte UUIDs) — authoritative identifiers<br>
+only; no short IDs on disk.<br>
+Added <pre><code>header_crc32</code></pre> (u32) to the superblock — covers the variable-length<br>
+body including the codec UUID list.<br>
+Superblock size fixed at <strong>256 bytes</strong> (up from 128).<br>
+<pre><code>recovery_map_offset</code></pre> removed from superblock; recovery map is now always<br>
+immediately after the INDEX block.<p></p>
+<h4>Codec identity — UUID-primary</h4>
+<p>Five codec UUIDs are frozen in the specification:<br>
+None: </p><pre><code>00000000-0000-0000-0000-000000000000</code></pre><br>
+Zstd: <pre><code>b28a9d4f-5e3c-4a1b-8f2e-7c6d9b0e1a2f</code></pre><br>
+LZ4: <pre><code>3f7b2c8e-1a4d-4e9f-b6c3-5d8a2f7e0b1c</code></pre><br>
+Brotli: <pre><code>9c1e5f3a-7b2d-4c8e-a5f1-2e6b9d0c3a7f</code></pre><br>
+LZMA: <pre><code>4a8f2e1c-9b3d-4f7a-c2e8-6d5b1a0f3c9e</code></pre><br>
+Codec availability check moved to superblock open time — fails immediately<br>
+if any required UUID is unavailable. No partial decode, no runtime<br>
+negotiation, no fallback.<p></p>
+<h4>File Index — BlockRef</h4>
+<p></p><pre><code>offset</code></pre> renamed to <pre><code>archive_offset</code></pre> — unambiguous field name.<br>
+<pre><code>hash</code></pre> renamed to <pre><code>content_hash</code></pre> — matches block header field name.<br>
+Removed legacy <pre><code>offsets: Vec&lt;u64&gt;</code></pre> backward-compatibility shim.<p></p>
+<h3>Added</h3>
+<p><strong></strong></p><pre><strong><code>src/plugin.rs</code></strong></pre> — safe Rust wrapper around the C plugin ABI.<br>
+<strong><pre><code>plugin_abi/sixcy_plugin.h</code></pre></strong> — frozen C ABI (ABI version 1) for<br>
+third-party codec plugins. Specifies: entry point, thread safety contract,<br>
+memory model (no shared allocator, explicit buffer pairs), ABI versioning<br>
+policy, and return code table.<br>
+<strong><pre><code>6cy scan</code></pre> subcommand</strong> — reconstructs the file list by forward-scanning<br>
+block headers without reading the INDEX block. Useful for partial/truncated<br>
+archives.<br>
+<strong><pre><code>SixCyReader::scan_blocks()</code></pre></strong> — programmatic index reconstruction API.<br>
+<strong><pre><code>BlockType</code></pre> enum</strong> — <p></p><pre><code>Data</code></pre>, <pre><code>Index</code></pre>, <pre><code>Solid</code></pre> — replacing implicit type<br>
+inference from context.<br>
+<strong><pre><code>src/archive.rs</code></pre></strong> — high-level <pre><code>Archive</code></pre> API for embedding in other<br>
+programs (<pre><code>Archive::open</code></pre>, <pre><code>create</code></pre>, <pre><code>open_encrypted</code></pre>, <pre><code>add_file</code></pre>,<br>
+<pre><code>begin_solid</code></pre>/<pre><code>end_solid</code></pre>, <pre><code>read_file</code></pre>, <pre><code>read_at</code></pre>, <pre><code>extract_all</code></pre>, <pre><code>list</code></pre>,<br>
+<pre><code>stat</code></pre>, <pre><code>uuid</code></pre>, <pre><code>root_hash_hex</code></pre>).<br>
+<strong><pre><code>BENCHMARK.md</code></pre></strong> — official benchmark report: 6cy (LZMA) vs 7z (LZMA2 L1)<br>
+on a 10 GiB file, 3 runs, AMD Ryzen 9 6900HX, Windows 11.<br>
+<strong><pre><code>CHANGELOG.md</code></pre></strong> (this file).<br>
+<strong><pre><code>CONTRIBUTING.md</code></pre></strong> — contribution guidelines.<br>
+<strong><pre><code>SECURITY.md</code></pre></strong> — threat model and vulnerability disclosure policy.<br>
+<strong><pre><code>LICENSE</code></pre></strong> updated to Apache-2.0.<br>
+<strong><pre><code>LICENSE-SPEC</code></pre></strong> — CC BY 4.0 for <pre><code>spec.md</code></pre>.<p></p>
+<h3>Changed</h3>
+<p></p><pre><code>Cargo.toml</code></pre>: version bumped to <pre><code>0.3.0</code></pre>; license field set to <pre><code>Apache-2.0</code></pre>.<br>
+<pre><code>spec.md</code></pre> fully rewritten to reflect format version 3.<br>
+<pre><code>README.md</code></pre> fully rewritten for v0.3.0.<br>
+<pre><code>security_profile.md</code></pre> replaced by <pre><code>SECURITY.md</code></pre>.<br>
+<pre><code>6cy info</code></pre> now prints required codec UUIDs alongside human-readable names.<br>
+<pre><code>6cy optimize</code></pre> now uses the <pre><code>Archive</code></pre> API.<br>
+<pre><code>DEFAULT_CHUNK_SIZE</code></pre> remains 4 MiB; <pre><code>DEFAULT_COMPRESSION_LEVEL</code></pre> remains 3.<p></p>
+<h3>Fixed</h3>
+<p></p><pre><code>read_at</code></pre> now correctly spans chunk boundaries — previously returned short<br>
+data silently when a requested range crossed a block boundary.<br>
+CAS-deduplicated files now show a non-zero <pre><code>compressed_size</code></pre> in index.<br>
+<pre><code>CodecId::None</code></pre> is no longer added to <pre><code>required_codec_uuids</code></pre> — the None<br>
+codec requires no decoder capability.<br>
+Block magic validated on every read (header CRC32 catches corruption earlier).<p></p></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

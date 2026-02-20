@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,8 +34,7 @@
     Source: Raspberry Pi Spy | Date: 2/16/2024 2:56:20 PM | <a href="https://www.raspberrypi-spy.co.uk/2024/02/disable-ssh-password-login-on-raspberry-pi/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Disabling the ability to login to your Pi via SSH using a password can be a useful security enhancement. If someone is attempting to guess or brute force there way into your Pi via SSH disabling the password route will massively increase their chances of failure. Obviously you should only disable the ability to login [...]
-The post Disable SSH Password Login on Raspberry Pi appeared first on Raspberry Pi Spy.</p>
+    <div><article><div><p>Disabling the ability to login to your Pi via SSH using a password can be a useful security enhancement. If someone is attempting to guess or brute force there way into your Pi via SSH disabling the password route will massively increase their chances of failure.</p><p>Obviously you should only disable the ability to login using a password when you have successfully configured SSH keys. For that reason I would complete the steps below using an SSH connection that uses SSH keys. That ensures you have a method to connect to your Pi once the password route has been closed.</p><p><strong>Note: </strong>This procedure does not prevent logging into your Raspberry Pi desktop if you are using Raspberry Pi OS with the desktop environment. It only effects connections made to your Pi via SSH.</p><h2>Setup SSH Keys</h2><p>If you don’t already have SSH keys setup then you can follow my <a href="https://www.raspberrypi-spy.co.uk/2019/02/setting-up-ssh-keys-on-the-raspberry-pi/">“Setting Up SSH Keys on the Raspberry Pi” blog post</a>.</p><p>Now that you’ve checked you can access your Pi via SSH using keys let’s get started.</p><p>Edit the SSH config file:</p><pre><code>sudo nano /etc/ssh/sshd_config</code></pre><p>Find the entry for “PasswordAuthentication”. You may have to scroll down the available items. It is likely to be disabled with a leading # character and set to “yes”. Remove the # character and change “yes” to “no”.</p><p>You should then have a line that states:</p><pre><code>PasswordAuthentication no</code></pre><p>Save the changes and exit the text editor by using [CTRL-X], [Y] and [ENTER].</p><h2>Activate Changes</h2><p>For the changes to take effect you either need to restart the SSH service using:</p><pre><code>sudo /etc/init.d/ssh restart</code></pre><p>or reboot the Pi using:</p><pre><code>sudo reboot</code></pre><h2>Re-Enable SSH Password Login</h2><p>To re-enable SSH Password login you can repeat the process but change the PasswordAuthentication line to:</p><pre><code>PasswordAuthentication yes</code></pre><h2>Final Thoughts</h2><p>This is a really quick and easy security improvement you can make to your Pi setups. Just make sure you keep your SSH Keys safe so that you are always in a position to re-configure your SSH/sFTP client if you change PC/laptop/phone.</p><p>As a memory jogger, the Public key goes on the device you will access and the Private key is needed by the device you are connecting from.</p></div></article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

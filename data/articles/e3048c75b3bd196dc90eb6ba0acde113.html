@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -31,7 +37,10 @@
     <p>Macworld Apple has made a major announcement this week that could affect the software you use, especially if it’s an older app, and you are using an M-series Mac. In a support document, Apple wrote that it will start to phase out Rosetta functionality with macOS 28. That means in two years, apps that were written for Intel-based Macs will no longer run on M-series Macs, except for “certain older, unmaintained games.”
 When Apple began its switch from Intel chips to its own M-series chips in 2020, it changed the architecture of the underlying workings of the Mac. To help navigate the transition, Apple created Rosetta, which acts as a translator of Intel-based apps so they can run on M-series Macs. Rosetta will be included in macOS 27, which is expected to be released this fall. After that, Apple will limit the Rosetta implementation in macOS 28.
 It’s been over five years since the first M1 Macs debuted. By the time macOS 28 is released in the fall of 2027, it’ll be seven years–Apple has a history of deprecating products after such time.
-Developers have had plenty of time to update their software to either support M-series Macs exclusively or run universally on either chip.</p>
+Developers have had plenty of time to update their software to either support M-series Macs exclusively or run universally on either chip. You can check an app’s compatibility by selecting the app’s icon and pressing Command+I on the keyboard. This will open a software info window, and in the General section, look at the listing for Kind. This will show one of the following:
+Application (Apple silicon): The app was written for Apple chips
+Application (Universal): The app was written for both Apple and Intel chips
+Application (Intel):</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

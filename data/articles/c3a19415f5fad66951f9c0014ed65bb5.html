@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Beta: mdvi</title>
+<title>GitHub - taf2/mdvi at console.dev</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,12 +29,94 @@
 </style>
 </head>
 <body>
-  <h1>Beta: mdvi</h1>
+  <h1>GitHub - taf2/mdvi at console.dev</h1>
   <div class="metadata">
     Source: Console.dev | Date: 2/12/2026 12:00:00 AM | <a href="https://github.com/taf2/mdvi?ref=console.dev" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>vi style markdown viewer.</p>
+    <div><h1>mdvi</h1><a href="#mdvi"></a></div>
+<p></p><pre><code>mdvi</code></pre> is a terminal markdown viewer with Vim-style navigation.<p></p>
+<p>It renders markdown into a polished full-screen TUI with fast keyboard navigation, clear typography, and predictable behavior for large files.</p>
+<a target="_blank" href="https://private-user-images.githubusercontent.com/1568/548007946-1b2da7a1-b5fb-4169-9d10-bcd97a07ae45.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE1NjExNjUsIm5iZiI6MTc3MTU2MDg2NSwicGF0aCI6Ii8xNTY4LzU0ODAwNzk0Ni0xYjJkYTdhMS1iNWZiLTQxNjktOWQxMC1iY2Q5N2EwN2FlNDUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIyMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMjBUMDQxNDI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YzJmMjMxOGMzMmRkNTA2Y2I5NGYxYzZkMGU0ODhlMjE4MjVhNDM0OTMwYTM4YTc0MzZjNmEzYzRmZDU5ZDY0YSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.rcImYEZXmXAAJG7NYYtPEG-qaSpep1obgUHCZYn0e7E"><img alt="Screenshot 2026-02-10 at 4 58 34 PM" src="https://private-user-images.githubusercontent.com/1568/548007946-1b2da7a1-b5fb-4169-9d10-bcd97a07ae45.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE1NjExNjUsIm5iZiI6MTc3MTU2MDg2NSwicGF0aCI6Ii8xNTY4LzU0ODAwNzk0Ni0xYjJkYTdhMS1iNWZiLTQxNjktOWQxMC1iY2Q5N2EwN2FlNDUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIyMCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMjBUMDQxNDI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YzJmMjMxOGMzMmRkNTA2Y2I5NGYxYzZkMGU0ODhlMjE4MjVhNDM0OTMwYTM4YTc0MzZjNmEzYzRmZDU5ZDY0YSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.rcImYEZXmXAAJG7NYYtPEG-qaSpep1obgUHCZYn0e7E"></a>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li>Full-screen terminal viewer (<pre><code>crossterm</code></pre> + <pre><code>ratatui</code></pre>)</li>
+<li>Vim-style navigation controls</li>
+<li>Visible cursor and <pre><code>line:column</code></pre> cursor position in the status bar</li>
+<li>High-quality markdown rendering via <pre><code>pulldown-cmark</code></pre></li>
+<li>Support for:
+<ul>
+<li>headings</li>
+<li>lists and task lists</li>
+<li>blockquotes</li>
+<li>inline markdown images (<pre><code>![alt](...)</code></pre>) and HTML <pre><code>&lt;img ...&gt;</code></pre> tags</li>
+<li>lazy image loading with immediate placeholder layout reservation</li>
+<li>syntax-highlighted fenced code blocks and inline code</li>
+<li>links, tables, footnotes, emphasis/strong/strikethrough</li>
+</ul>
+</li>
+<li>Configurable image backend via <pre><code>--image-protocol</code></pre> (<pre><code>auto</code></pre>, <pre><code>halfblocks</code></pre>, <pre><code>sixel</code></pre>, <pre><code>kitty</code></pre>, <pre><code>iterm2</code></pre>)</li>
+<li>Live reload (<pre><code>r</code></pre>) when the file changes on disk</li>
+<li>Start at specific line (<pre><code>--line</code></pre>)</li>
+<li>Works with standard terminal keys (arrows, page up/down, home/end)</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>Local, <pre><code>file://</code></pre>, and remote <pre><code>http://</code></pre> / <pre><code>https://</code></pre> image sources are supported.</li>
+<li>HTML <pre><code>&lt;img&gt;</code></pre> <pre><code>width</code></pre> and <pre><code>height</code></pre> hints are used to reserve image space before lazy loading finishes.</li>
+<li>On macOS, terminal-native image protocols can trigger an "Allow Terminal-Initiated Display?" prompt.
+Use <pre><code>--image-protocol halfblocks</code></pre> if you want image rendering without that dialog.</li>
+<li>Fenced code blocks with language tags (for example, a block tagged <pre><code>rust</code></pre>) render with syntax highlighting.</li>
+</ul>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><h3>Homebrew (tap)</h3><a href="#homebrew-tap"></a></div>
+<div><pre>brew tap taf2/tap
+brew install mdvi</pre></div>
+<div><h3>From source</h3><a href="#from-source"></a></div>
+<div><pre>cargo install --path <span>.</span></pre></div>
+<div><h3>Run without install</h3><a href="#run-without-install"></a></div>
+<div><pre>cargo run -- README.md</pre></div>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><pre>mdvi [OPTIONS] <span>&lt;</span>PATH<span>&gt;</span></pre></div>
+<p>Examples:</p>
+<div><pre>mdvi docs/spec.md
+mdvi --line 120 CHANGELOG.md
+mdvi --image-protocol halfblocks README.md</pre></div>
+<div><h2>Navigation</h2><a href="#navigation"></a></div>
+<ul>
+<li><pre><code>j</code></pre> / <pre><code>Down</code></pre>: scroll down one line</li>
+<li><pre><code>k</code></pre> / <pre><code>Up</code></pre>: scroll up one line</li>
+<li><pre><code>d</code></pre>: half-page down (less-style)</li>
+<li><pre><code>u</code></pre>: half-page up (less-style)</li>
+<li><pre><code>Ctrl-d</code></pre>: half-page down</li>
+<li><pre><code>Ctrl-u</code></pre>: half-page up</li>
+<li><pre><code>PageDown</code></pre>: full-page down</li>
+<li><pre><code>PageUp</code></pre>: full-page up</li>
+<li><pre><code>Ctrl-f</code></pre>: full-page down (Vim-style)</li>
+<li><pre><code>Ctrl-b</code></pre>: full-page up (Vim-style)</li>
+<li><pre><code>g</code></pre> / <pre><code>Home</code></pre>: jump to top</li>
+<li><pre><code>G</code></pre> / <pre><code>End</code></pre>: jump to bottom</li>
+<li><pre><code>r</code></pre>: reload file from disk</li>
+<li><pre><code>/</code></pre>: start search</li>
+<li><pre><code>n</code></pre>: next search match</li>
+<li><pre><code>N</code></pre>: previous search match</li>
+<li><pre><code>?</code></pre>: toggle help line</li>
+<li><pre><code>q</code></pre>: quit</li>
+</ul>
+<div><h2>Why Rust?</h2><a href="#why-rust"></a></div>
+<p>Rust is a strong fit for a serious CLI viewer:</p>
+<ul>
+<li>precise terminal control</li>
+<li>excellent performance for large files</li>
+<li>single static binary distribution</li>
+<li>mature ecosystem for TUI and markdown parsing</li>
+</ul>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre>cargo <span>test</span>
+cargo fmt
+cargo clippy -- -D warnings</pre></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

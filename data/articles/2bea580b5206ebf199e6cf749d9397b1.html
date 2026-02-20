@@ -36,14 +36,14 @@
   <div class="content">
     <div><div>
 <p><img alt="LINUX STORAGE" src="https://www.phoronix.com/assets/categories/linuxstorage.webp"></p><p>
-Linux block maintainer and IO_uring lead developer Jens Axboe recently was debugging some slowdowns in the AHCI/SCSI code with IO_uring usage. When turning to Claude AI to help in sorting through the issue, patches were devised that can deliver up to a "<em>literally yield a 50-80x improvement on the io_uring side for idle systems</em>." The code is on its way to the Linux kernel.
+Linux block maintainer and IO_uring lead developer Jens Axboe recently was debugging some slowdowns in the AHCI/SCSI code with IO_uring usage. When turning to Claude AI to help in sorting through the issue, patches were devised that can deliver up to a "<em>literally yield a 50-80x improvement on the io_uring side for idle systems</em>." The code is on its way to QEMU.
 </p><p>
 Last week Jens Axboe posted a <a href="https://lore.kernel.org/qemu-devel/20260213143225.161043-1-axboe@kernel.dk/#t">patch series</a> of these IO_uring fixes where he explained:
 </p><blockquote>"Patch 1 here is the real meat of this, patch 2 is just a slight improvement. For patch 1, it can literally yield a 50-80x improvement on the io_uring side for idle systems, where ppoll() ends up sleeping for 500 msec while there's IO to submit! I noticed this running the io_uring regression tests in a vm, where I use a variety of block devices for some of the tests. They would often randomly time out on AHCI devices, while running them on a virtio-blk or nvme device would finish in one second or so. I then wrote a reproducer to try and grok this and had claude dive into this, which helped me better grasp the various event loops."</blockquote>
-<p>The real kicker beyond the 50-80x improvement for IO_uring is that <a href="https://lore.kernel.org/qemu-devel/20260213143225.161043-2-axboe@kernel.dk/">the main patch</a> is just one line of actual code (plus a few lines of comments). The one line avoids the ppoll() sleeping up to 499ms before submitting.
-<br>Axboe also posted on <a href="https://x.com/axboe/status/2022318660019491059">X</a> around this "60-80x improvement in performance" for IO_uring as well as his adventures with using AI (Claude) for dealing with this issue. In the process Claude ended up partially destroying his virtual disk for the VM used for testing but was then able to recover.
+<p>The real kicker beyond the 50-80x improvement for IO_uring is that <a href="https://lore.kernel.org/qemu-devel/20260213143225.161043-2-axboe@kernel.dk/">the main patch</a> is just one line of actual code (plus a few lines of comments). The one line avoids the ppoll() sleeping up to 499ms before submitting.</p><p>
+Axboe also posted on <a href="https://x.com/axboe/status/2022318660019491059">X</a> around this "60-80x improvement in performance" for IO_uring as well as his adventures with using AI (Claude) for dealing with this issue. In the process Claude ended up partially destroying his virtual disk for the VM used for testing but was then able to recover.
 </p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=axboe_50_80" alt="Axboe X"></p>
-<p>Axboe commented today that both of these patches are now staged for inclusion in making their way to the mainline Linux kernel.</p></div></div>
+<p>Axboe commented today that both of these patches are now staged for inclusion in making their way to QEMU.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

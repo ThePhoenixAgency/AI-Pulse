@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1></h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/20/2026 1:41:56 AM | <a href="https://docs.you.com/developer-resources/mcp-server" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div>*** title: MCP Server
+'og:title': You.com MCP Server | Model Context Protocol Integration
+'og:description': &gt;-
+Integrate You.com's powerful web access capabilities into your agentic IDE
+using the Model Context Protocol (MCP). Search, extract content, and get
+AI-powered answers. Quick setup for Claude Code, Cursor, VS Code, and more.
+--------------------------------------------------------------------------- ## Introduction The You.com MCP Server is **the fastest path from zero to web-grounded AI agents**. Give your agents real-time access to the latest web information through the [Model Context Protocol](https://modelcontextprotocol.io/)—**no API key, no signup, no billing required** to get started. Search current content, get up-to-date answers, and extract live web pages—whether in your IDE or deployed agentic workflows. Built on MCP to **work everywhere your agents do**—one integration, unlimited compatibility across IDEs, frameworks, and production systems. **Key Features:** * Free to start — no API key, no signup, no billing configuration needed
+* Web and news search with advanced filtering
+* Content extraction from URLs in markdown or HTML format
+* Multiple deployment options: Remote server (recommended) or local NPM package
+* Optional API key for higher rate limits
+* Works seamlessly with Windsurf, Claude Code, Cursor, VS Code, JetBrains, and other MCP-enabled IDEs ## Getting started Get up and running with the You.com MCP Server in three simple steps—no API key required: ### Step 1: Choose your setup You can discover this server in the [Anthropic MCP Registry](https://registry.modelcontextprotocol.io/?q=io.github.youdotcom-oss%2Fmcp) as `io.github.youdotcom-oss/mcp`, or configure it manually: Always up-to-date with the latest features. Just add the URL `https://api.you.com/mcp` to your agent's configuration. For self-hosting or offline development. Install via `npx @youdotcom-oss/mcp` to run locally on your machine with STDIO transport. ### Step 2: Configure your client Choose from Windsurf, Claude Code, Cursor, VS Code, JetBrains, or other supported editors. See the [Setup guides](#setup-guides) below for IDE-specific configuration. #### Standard configuration templates Most MCP clients use one of these standard configuration formats. Start with the free tier—no API key needed: **Free tier (no API key):** Remote server (recommended): ```json
+{ "mcpServers": { "ydc-server": { "type": "http", "url": "https://api.you.com/mcp" } }
+}
+``` Local NPM package: ```json
+{ "mcpServers": { "ydc-server": { "command": "npx", "args": ["@youdotcom-oss/mcp"] } }
+}
+``` **With API key (for higher rate limits):** Remote server: ```json
+{ "mcpServers": { "ydc-server": { "type": "http", "url": "https://api.you.com/mcp", "headers": { "Authorization": "Bearer " } } }
+}
+``` Local NPM package: ```json
+{ "mcpServers": { "ydc-server": { "command": "npx", "args": ["@youdotcom-oss/mcp"], "env": { "YDC_API_KEY": "" } } }
+}
+``` **Upgrade for higher usage:** Get an API key from [you.com/platform](https://you.com/platform) to unlock higher rate limits. Just add it to your configuration as shown above. ### Step 3: Test your setup Once configured, try these natural language queries with your AI assistant: * "Search the web for the latest news about artificial intelligence"
+* "What is the capital of France?" (with web search)
+* "Extract the content from [https://example.com](https://example.com)" Your AI assistant will ask for permission to use the You.com MCP tools the first time, then automatically use them for future requests. ## Available tools The You.com MCP Server provides two powerful tools that work seamlessly with your AI assistant. Simply ask in natural language what you want to do - your MCP client automatically handles the rest. ### you-search Comprehensive web and news search with advanced filtering capabilities. Use this when you need to search the web for information, filter by specific sites or file types, or get the latest news on a topic. ### you-contents Extract full page content from URLs in markdown or HTML format. Use this when you need to extract and analyze content from web pages for reading or processing in your workflow. ## Use cases &amp; examples Here are practical examples showing how to use the You.com MCP tools in your daily workflow: ### Research &amp; information gathering **Finding specific information:** * "Find recent research papers about quantum computing on arxiv.org"
+* "Search for TypeScript documentation about generics"
+* "Get the latest news about renewable energy from the past week"
+* "Find PDF files about machine learning algorithms" ### Content extraction &amp; analysis **Extracting web content:** * "Extract the content from this blog post: [https://example.com/article](https://example.com/article)"
+* "Get the documentation from these three URLs in markdown format"
+* "Pull the HTML content from this page preserving the layout"
+* "Batch extract content from these 5 documentation pages" ### Combined workflows Your AI assistant can orchestrate multiple tools to complete complex tasks: 1. **Research + extract**: "Search for the best TypeScript tutorials, then extract the content from the top 3 results"
+2. **Question + deep dive**: "What is WebAssembly? Then search for real-world examples and extract code samples"
+3. **News + analysis**: "Find recent articles about AI regulation, then summarize the key points" ### Pro tips * **Be specific**: Include domains, date ranges, or file types when searching for more precise results
+* **Use natural language**: You don't need to memorize parameters - just describe what you want
+* **Ask follow-up questions**: Refine results and dig deeper by asking your AI assistant to clarify or expand
+* **Let your agent orchestrate**: For complex workflows, your AI assistant will automatically use multiple tools together ## Setup guides For setup, follow the MCP installation [guide](https://docs.windsurf.com/windsurf/cascade/mcp#adding-a-new-mcp-plugin). **Quick setup:** ```bash claude mcp add --transport http ydc-server https://api.you.com/mcp --header "Authorization: Bearer " ``` For setup, follow the MCP installation [guide](https://code.claude.com/docs/en/mcp). For setup, follow the MCP installation [guide](https://modelcontextprotocol.io/docs/develop/connect-local-servers). [![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=ydc-server\&amp;config=eyJ1cmwiOiJodHRwczovL2FwaS55b3UuY29tL21jcCIsImhlYWRlcnMiOnsiQXV0aG9yaXphdGlvbiI6IkJlYXJlciA8eW91LWFwaS1rZXk%2BIn19) For setup, follow the MCP installation [guide](https://cursor.com/docs/context/mcp#installing-mcp-servers); use the configuration template above **without** the `type` field. To avoid conflicts, go to Settings → Agents tab and turn off Cursor's built-in web search tool. **Quick setup (command line):** ```bash code --add-mcp '{"name":"ydc-server","url":"https://api.you.com/mcp","type":"http","headers":{"Authorization":"Bearer "}}' ``` For setup, follow the MCP installation [guide](https://code.visualstudio.com/docs/copilot/customization/mcp-servers#_add-an-mcp-server); use the configuration template above. **Requirements:** GitHub Copilot extension must be installed For setup, follow the MCP installation [guide](https://www.jetbrains.com/help/ai-assistant/mcp.html#connect-to-an-mcp-server); use the configuration template above. **Supported IDEs:** IntelliJ IDEA, PyCharm, WebStorm, GoLand, RubyMine, PhpStorm, and more (requires AI Assistant enabled) For setup, follow the MCP installation [guide](https://zed.dev/docs/ai/mcp#as-custom-servers); use the configuration template above **without** the `type` field. **Codex:** For setup, follow the MCP installation [guide](https://github.com/openai/codex/blob/main/docs/config.md#streamable-http). **opencode:** For setup, follow the MCP installation [guide](https://opencode.ai/docs/mcp-servers/#remote); use the configuration template above. **LM Studio:** For setup, follow the MCP installation [guide](https://lmstudio.ai/docs/app/mcp); use the configuration template above but **without** the `type` field. **Gemini CLI:** Follow the [MCP server setup guide](https://google-gemini.github.io/gemini-cli/docs/tools/mcp-server.html) using the standard configuration template. ## Additional resources For complete details on search parameters, response formats, and advanced usage, see the [Search API Reference](/api-reference/search/v1-search). ## Troubleshooting **Symptoms:** Authentication errors, "Invalid API key" messages **Note:** API keys are optional — the free tier works without one. If you're using an API key and experiencing issues: **Solutions:** 1. Verify your API key is active at [you.com/platform](https://you.com/platform) 2. Check for extra spaces or quotes in your configuration 3. Ensure the API key has the correct scopes enabled 4. For environment variables, verify they're properly exported 5. Try removing the API key to confirm the free tier works, then re-add it **Symptoms:** "Connection refused", timeout errors **Solutions:** 1. **Remote server:** Check your internet connection and firewall settings 2. **Local package:** Ensure `npx` and Node.js are installed and in your PATH 3. **HTTP mode:** Confirm the server is listening on the correct port 4. Check your MCP client logs for detailed error messages **Symptoms:** MCP server not appearing in IDE, tools not available **Solutions:** 1. Restart your IDE after configuration changes 2. Check the IDE's MCP logs for error messages (Claude Code: terminal output, Claude Desktop: application menu, Cursor: MCP server logs in settings, VS Code: output panel) 3. Verify the configuration file is in the correct location 4. For STDIO transport, ensure the command is executable 5. Try the remote server option if local installation fails ### Report an issue If you're experiencing issues, we're here to help: * **Email:** [support@you.com](mailto:support@you.com)
+* **Web:** [You.com Support](https://you.com/support/contact-us)
+* **GitHub:** [Report an issue](https://github.com/youdotcom-oss/dx-toolkit/issues) **Pro tip:** When errors occur, check your MCP client logs - they include a pre-filled mailto link with error details for easy reporting. ## For contributors Interested in contributing to the You.com MCP Server? We'd love your help! Need technical details? Check [AGENTS.md](https://github.com/youdotcom-oss/dx-toolkit/blob/main/packages/mcp/AGENTS.md) for complete development setup, architecture overview, code patterns, and testing guidelines. 1. Fork the repository
+2. Create a feature branch following naming conventions in [CONTRIBUTING.md](https://github.com/youdotcom-oss/dx-toolkit/blob/main/CONTRIBUTING.md)
+3. Follow the code style guidelines and use conventional commits
+4. Write tests for your changes (maintain &gt;80% coverage)
+5. Run quality checks: `bun run check &amp;&amp; bun test`
+6. Submit a pull request with a clear description We appreciate all contributions, whether it's: * Bug fixes
+* New features
+* Documentation improvements
+* Performance optimizations
+* Test coverage improvements ## Transport protocols The MCP server supports two transport protocols: **Use for:** * Remote server connections * Web applications * Production deployments **Authentication:** Bearer token in headers **Endpoint:** `https://api.you.com/mcp` **Use for:** * Local NPM package installations * Development environments * IDEs that only support STDIO **Authentication:** Environment variable **Command:** `npx @youdotcom-oss/mcp` ## Resources Official package on npm Source code and issues Model Context Protocol docs ## Explore further Get started with You.com API Detailed API documentation </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

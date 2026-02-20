@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,13 +34,7 @@
     Source: Programmez | Date: 2/19/2026 8:10:24 AM | <a href="https://www.programmez.com/actualites/temporal-api-chrome-144-introduit-la-nouvelle-api-pour-gerer-la-date-et-lheure-39037" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Les dates et les heures (notamment la gestion des fuseaux et de différents formats) ont toujours été une des faiblesses des langages. Chrome introduit avec la version 144 la nouvelle API : Temporal API, déjà disponible sur Firefox. Elle doit proposer un objet standard et des fonctions pour manipuler et afficher les dates et les heures. Il est "amusant" de voir que l'implémentation des notions de Date et de Time a souvent été un problème. Une des noeuds du problème vient de la mauvaise implémentaire en JavaScript de 1995, et de sa mise à jour de 1997. Plusieurs problèmes ont rapidement été remontés :
-- Prise en charge limitée aux fuseaux horaires locaux et UTC
-- Comportement de l'analyseur tellement instable qu'il est inutilisable
-- Objet Date modifiable
-- Gestion de l'heure d'été imprévisible
-- API de calcul complexes
-- Prise en charge limitée des calendriers non grégoriens Ce post explique les problèmes d'origine et le bricolage pour tenter de les résoudre : https://maggiepint.com/2017/04/09/fixing-javascript-date-getting-started/ A noter de Temporal API n'est pas supporté par Safari. La documentation se veut rassurante :</p>
+    <div><div><p>Les dates et les heures (notamment la gestion des fuseaux et de différents formats) ont toujours été une des faiblesses des langages. Chrome introduit avec la version 144 la nouvelle API : Temporal API, déjà disponible sur Firefox. Elle doit proposer un objet standard et des fonctions pour manipuler et afficher les dates et les heures.&nbsp;</p><p>Il est "amusant" de voir que l'implémentation des notions de Date et de Time a souvent été un problème. Une des noeuds du problème vient de la mauvaise implémentaire en JavaScript de 1995, et de sa mise à jour de 1997.&nbsp;</p><p>Plusieurs problèmes ont rapidement été remontés :</p><p>- Prise en charge limitée aux fuseaux horaires locaux et UTC</p><p>- Comportement de l'analyseur tellement instable qu'il est inutilisable</p><p>- Objet Date modifiable</p><p>- Gestion de l'heure d'été imprévisible</p><p>- API de calcul complexes</p><p>- Prise en charge limitée des calendriers non grégoriens</p><p>A noter de Temporal API n'est pas supporté par Safari.&nbsp;</p><p>La documentation se veut rassurante :&nbsp;"L'objet Temporal permet la gestion des dates et des heures dans divers contextes, notamment grâce à la représentation intégrée des fuseaux horaires et des calendriers, aux conversions d'heure, aux opérations arithmétiques, à la mise en forme, etc. Il est conçu pour remplacer intégralement l'objet Date."</p><p>Temporal n'est pas un constructeur et toutes les propriétés et méthodes sont statiques. En tout plus de 200 méthodes sont disponibles. Temporal est un namespace global. Cette API se veut plus souple avec une gestion plus sûre des dates et des heures en proposant une gestion des heures, des fusions horaires, des différents calendriers tout en fixant les problèmes de gestions Date / Time de JavaScript. Elle propose aussi des valeurs immutables et une gestin des fusions plus claires et la capacité à gérer plusiurs calendriers ce qui est indispensable en localisation. On peut espérer que cette API évite de faire du bricolage et proposer un code maintenable dans la durée...</p><p>Comme l'écrivait Tom Smykowski il y a quelques semaines, cela fait 25 ans que l'on attend sur JavaScript une API fiable... Par exemple, il est possible d'utiliser une date sans inclure une heure ou un fusion, idem pour l'heure, obtenir à l'instant T l'heure et la date, définir une Date, une haute et un horaire dans un seul ensemble de valeurs. Le tout en évitant une confusion. La précision se fait à la nanoseconde.&nbsp;</p><p>Pour standardiser la manipulation, Temporal API repose sur une représentation standard et normalisé des dates, fusions et heures : ISO 8601, RFC 3339 et 9557 :</p><p><img src="https://www.programmez.com/sites/default/files/styles/taille-maxi/public/images_actus/temporalapi.png?itok=khF5TPco"></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

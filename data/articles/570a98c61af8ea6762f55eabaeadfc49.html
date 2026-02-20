@@ -41,12 +41,18 @@
 </h2>
 <p><a href="https://cdn-uploads.huggingface.co/production/uploads/68d2fec8856b85d927e44d32/_Fk8_hH3YBUR26fdsT-56.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/68d2fec8856b85d927e44d32/_Fk8_hH3YBUR26fdsT-56.png"></a>
 大手 IT 企業 <a href="https://www.nttdata.com/global/en/">NTT DATA</a> による新たな研究は、合成データによってこの壁がいかに取り払われるかを実証しています。手元にある最小限の独自データから、プライバシーやモデルの性能を損なうことなく、実運用レベルの大規模な学習データセットを生成できるのです。</p>
-<p>NTT DATA は、<a href="https://huggingface.co/blog/nvidia/nemotron-personas-japan">NVIDIA Nemotron-Personas-Japan</a> (<a href="https://nvidia-nemo.github.io/DataDesigner/latest/">NeMo Data Designer</a> を使用して生成された、日本の人口動態、地理、文化に基づいた 600 万のペルソナから構成されるNVIDIA の初のオープン合成データセット) を使用することで、モデル精度を 15.3% から 79.3% へと大幅に向上させました。</p>
+<p>NTT DATA は、<a href="https://huggingface.co/blog/nvidia/nemotron-personas-japan">NVIDIA Nemotron-Personas-Japan</a> (<a href="https://nvidia-nemo.github.io/DataDesigner/latest/">NeMo Data Designer</a> を使用して生成された、日本の人口動態、地理、文化に基づいた 600 万のペルソナから構成されるNVIDIA の初のオープン合成データセット) を使用することで、法務Q&amp;Aタスクにおいてモデルの精度を 15.3% から 79.3% へと飛躍的に向上させ、回答の一貫性においても同様の大幅な改善を達成しました。</p>
 <p>これは、機密データを学習パイプラインに公開することなく、60 ポイントもの向上を実現したことになります。</p>
+<p>実験の全体的な手法や評価フレームワークに関心のある読者に向けて、<a href="https://www.nttdata.com/jp/ja/trends/data-insight/2026/0219/">NTT DATA の詳細な技術レポート（日本語）</a>では、本研究の設計や結果についてさらに深く掘り下げて解説しています。</p>
 <p>ここから得られる重要なポイントは、企業は完全にオープンソースのインフラストラクチャを使用し、手元にある最小限の独自データからでも、特定のドメイン（業務領域）に特化したAIを構築できるということです。オープンなペルソナデータを活用することで、より高品質なモデルの構築と、より機敏なデータ運用の両立が可能になります。</p>
 <h2> <a href="#実証実験"> </a> <span> 実証実験 </span>
 </h2>
-<p>このアプローチを厳密に検証するため、NTT DATA は架空の法律文書を用いた対照評価を実施し、モデルが真に新しい知識を獲得できるようにしました。Nemotron-Personas-Japan から抽出した500のペルソナを活用し、わずか 240 件の未加工のシードサンプルを拡張することで、13 万 8000 件以上の学習用データ (人手による同等のサンプルの 300 倍に相当する合成データセット) を生成し、モデルの精度を 15.3% から 79.3% に向上させました。</p>
+<p>このアプローチを厳密に検証するため、NTT DATA は架空の法律文書を用いた対照評価を実施し、モデルが真に新しい知識を獲得できるようにしました。学習には以下の構成を活用しました：</p>
+<p><strong>ベースモデル:</strong> <code>tsuzumi-v2.0-28B-instruct</code> (NTT の独自 LLM)</p>
+<p><strong>データ拡張モデル:</strong> <code>GPT-OSS-120b</code> </p>
+<p><strong>シードデータ:</strong> Nemotron-Personas-Japan</p>
+<p><strong>判定モデル:</strong> <code>GPT-5</code> (LLM-as-a-judge メソッド)</p>
+<p>Nemotron-Personas-Japan から抽出した500のペルソナを活用し、わずか 450 件の未加工のシードサンプルを拡張することで、13 万 8000 件以上の学習用データ (人手による同等のサンプルの 300 倍に相当する合成データセット) を生成し、モデルの精度を 15.3% から 79.3% に向上させました。</p>
 <p>この結果は、企業が直面するデータ不足という課題を如実に物語っています。</p>
 <div> <table> <thead><tr>
 <th>構成</th>
@@ -61,7 +67,7 @@
 </tr>
 <tr>
 <td>合成データを使用したSFT</td>
-<td>240件</td>
+<td>450件</td>
 <td>138,000 件</td>
 <td>79.3%</td>
 </tr>

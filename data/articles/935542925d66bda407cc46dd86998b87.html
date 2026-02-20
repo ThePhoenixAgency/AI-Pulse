@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How I Built an AI Content Detection System from Scratch</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How I Built an AI Content Detection System from Scratch</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 10:58:39 PM | <a href="https://dev.to/ogulcanaydogan/how-i-built-an-ai-content-detection-system-from-scratch-oe4" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/ogulcanaydogan"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3760770%2F8f92b63b-fbcd-4632-8c9a-6a926a2de915.jpeg" alt="Ogulcan Aydogan"></a> </p> </div><div> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fimages.unsplash.com%2Fphoto-1677442136019-21780ecad995%3Fw%3D800"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fimages.unsplash.com%2Fphoto-1677442136019-21780ecad995%3Fw%3D800" alt="AI Detection Header"></a></p> <p>A few months ago, my friend sent me a LinkedIn post and asked if I thought it was written by ChatGPT. I had no idea. And that bothered me. I'm an engineer, I should be able to figure this out.</p> <p>So I did what any engineer would do: I went down a rabbit hole and ended up building an entire detection system. This is how it went.</p> <hr> <h2> <a name="why-i-bothered" href="#why-i-bothered"> </a> Why I Bothered
+</h2> <p>Look, I'm not on some crusade against AI-generated content. I use LLMs daily. But there are real situations where it matters: academic submissions, journalism, legal documents, job applications. People deserve to know what they're reading.</p> <p>Every existing tool I tried was either behind a paywall, unreliable, or a black box. I wanted something open source that actually showed its reasoning. So I built <strong><a href="https://github.com/ogulcanaydogan/ai-provenance-tracker" target="_blank">AI Provenance Tracker</a></strong>.</p> <p>You can <a href="https://provenance-detect.vercel.app/" target="_blank">try the live demo</a> if you want to skip the technical stuff.</p> <hr> <h2> <a name="the-stack" href="#the-stack"> </a> The Stack
+</h2> <p>I went with FastAPI for the backend and Next.js for the frontend. Nothing fancy. I wanted to get to the interesting part, which is the detection logic.<br>
+</p> <div>
+<pre><code>┌─────────────────────────────────────────────────┐
+│ Web Interface (Next.js) │
+└─────────────────────────────────────────────────┘ │ ▼
+┌─────────────────────────────────────────────────┐
+│ REST API (FastAPI) │
+└─────────────────────────────────────────────────┘ │ ┌─────────────┴─────────────┐ ▼ ▼
+┌───────────────────┐ ┌───────────────────┐
+│ Text Detector │ │ Image Detector │
+│ - Perplexity │ │ - FFT Analysis │
+│ - Burstiness │ │ - Artifacts │
+│ - Vocabulary │ │ - Metadata │
+└───────────────────┘ └───────────────────┘
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The detection side has two engines. One for text, one for images. Let me walk through both.</p> <hr> <h2> <a name="text-detection-what-actually-works" href="#text-detection-what-actually-works"> </a> Text Detection: What Actually Works
+</h2> <p>I tried a bunch of approaches before landing on three signals that actually hold up.</p> <h3> <a name="perplexity" href="#perplexity"> </a> Perplexity
+</h3> <p>This one's the most intuitive. Perplexity basically measures how "surprised" a language model would be by a piece of text. AI-generated text tends to score lower because it's literally optimised to produce probable, fluent output.<br>
+</p> <div>
+<pre><code><span>def</span> <span>calculate_perplexity</span><span>(</span><span>words</span><span>:</span> <span>list</span><span>[</span><span>str</span><span>])</span> <span>-&gt;</span> <span>float</span><span>:</span> <span>word_counts</span> <span>=</span> <span>Counter</span><span>(</span><span>words</span><span>)</span> <span>total_words</span> <span>=</span> <span>len</span><span>(</span><span>words</span><span>)</span> <span>entropy</span> <span>=</span> <span>0.0</span> <span>for</span> <span>count</span> <span>in</span> <span>word_counts</span><span>.</span><span>values</span><span>():</span> <span>prob</span> <span>=</span> <span>count</span> <span>/</span> <span>total_words</span> <span>entropy</span> <span>-=</span> <span>prob</span> <span>*</span> <span>math</span><span>.</span><span>log2</span><span>(</span><span>prob</span><span>)</span> <span>return</span> <span>2</span> <span>**</span> <span>entropy</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Humans are messy writers. We use weird words, go off on tangents, make unusual word choices. AI is smoother. Almost too smooth.</p> <h3> <a name="burstiness" href="#burstiness"> </a> Burstiness
+</h3> <p>This was the surprising one. Burstiness measures how much sentence length varies in a piece of text. Turns out, AI writes like a metronome. Consistently medium-length sentences with similar complexity.</p> <p>Humans don't do that. We write a short punchy sentence. Then we follow it with this long, meandering thought that goes on for a while because we're trying to explain something complicated and we don't stop to restructure it. Then short again.<br>
+</p> <div>
+<pre><code><span>def</span> <span>calculate_burstiness</span><span>(</span><span>sentences</span><span>:</span> <span>list</span><span>[</span><span>str</span><span>])</span> <span>-&gt;</span> <span>float</span><span>:</span> <span>lengths</span> <span>=</span> <span>[</span><span>len</span><span>(</span><span>s</span><span>.</span><span>split</span><span>())</span> <span>for</span> <span>s</span> <span>in</span> <span>sentences</span><span>]</span> <span>mean_length</span> <span>=</span> <span>np</span><span>.</span><span>mean</span><span>(</span><span>lengths</span><span>)</span> <span>std_length</span> <span>=</span> <span>np</span><span>.</span><span>std</span><span>(</span><span>lengths</span><span>)</span> <span>return</span> <span>std_length</span> <span>/</span> <span>mean_length</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The coefficient of variation tells the whole story. AI text clusters around 0.2-0.3. Human text is all over the place, like 0.4, 0.5, sometimes higher.</p> <h3> <a name="vocabulary-richness" href="#vocabulary-richness"> </a> Vocabulary Richness
+</h3> <p>The third signal is type-token ratio and n-gram repetition. AI has this habit of recycling phrases. "it's important to note that" three times in one article is a dead giveaway. Humans vary their transitions naturally without thinking about it.</p> <hr> <h2> <a name="image-detection-the-frequency-domain-trick" href="#image-detection-the-frequency-domain-trick"> </a> Image Detection: The Frequency Domain Trick
+</h2> <p>This part was genuinely fun to build. AI-generated images leave fingerprints that are invisible to the naked eye but show up clearly in the frequency domain.</p> <h3> <a name="fft-analysis" href="#fft-analysis"> </a> FFT Analysis
+</h3> <p>The Fast Fourier Transform converts an image from spatial to frequency representation. Real photographs have frequency distributions shaped by optics and sensor physics. Diffusion models like Stable Diffusion produce mathematically different patterns.<br>
+</p> <div>
+<pre><code><span>from</span> <span>scipy</span> <span>import</span> <span>fft</span> <span>def</span> <span>analyze_frequency_domain</span><span>(</span><span>img_array</span><span>:</span> <span>np</span><span>.</span><span>ndarray</span><span>)</span> <span>-&gt;</span> <span>float</span><span>:</span> <span>gray</span> <span>=</span> <span>np</span><span>.</span><span>mean</span><span>(</span><span>img_array</span><span>,</span> <span>axis</span><span>=</span><span>2</span><span>)</span> <span>f_transform</span> <span>=</span> <span>fft</span><span>.</span><span>fft2</span><span>(</span><span>gray</span><span>)</span> <span>f_shift</span> <span>=</span> <span>fft</span><span>.</span><span>fftshift</span><span>(</span><span>f_transform</span><span>)</span> <span>magnitude</span> <span>=</span> <span>np</span><span>.</span><span>abs</span><span>(</span><span>f_shift</span><span>)</span> <span># AI images have unusual high-frequency distributions
+</span> <span>...</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>I also check for artifact patterns (weird texture uniformity, edge inconsistencies around hair and fingers) and metadata forensics. Real photos have EXIF data from cameras. AI images almost never do.</p> <hr> <h2> <a name="combining-everything" href="#combining-everything"> </a> Combining Everything
+</h2> <p>Here's the thing I learned the hard way: no single signal is reliable enough. Perplexity alone? A carefully edited AI text fools it. FFT alone? Heavily compressed JPEGs produce false positives.</p> <p>The magic happens when you combine them with weighted averaging:<br>
+</p> <div>
+<pre><code><span>def</span> <span>make_prediction</span><span>(</span><span>perplexity</span><span>,</span> <span>burstiness</span><span>,</span> <span>vocab_richness</span><span>,</span> <span>ml_score</span><span>=</span><span>None</span><span>):</span> <span>signals</span> <span>=</span> <span>[]</span> <span>weights</span> <span>=</span> <span>[]</span> <span>if</span> <span>ml_score</span> <span>is</span> <span>not</span> <span>None</span><span>:</span> <span>signals</span><span>.</span><span>append</span><span>(</span><span>ml_score</span><span>)</span> <span>weights</span><span>.</span><span>append</span><span>(</span><span>0.40</span><span>)</span> <span>signals</span><span>.</span><span>append</span><span>(</span><span>perplexity_signal</span><span>)</span> <span>weights</span><span>.</span><span>append</span><span>(</span><span>0.25</span><span>)</span> <span>signals</span><span>.</span><span>append</span><span>(</span><span>burstiness_signal</span><span>)</span> <span>weights</span><span>.</span><span>append</span><span>(</span><span>0.20</span><span>)</span> <span>signals</span><span>.</span><span>append</span><span>(</span><span>vocab_signal</span><span>)</span> <span>weights</span><span>.</span><span>append</span><span>(</span><span>0.15</span><span>)</span> <span>confidence</span> <span>=</span> <span>sum</span><span>(</span><span>s</span> <span>*</span> <span>w</span> <span>for</span> <span>s</span><span>,</span> <span>w</span> <span>in</span> <span>zip</span><span>(</span><span>signals</span><span>,</span> <span>weights</span><span>))</span> <span>return</span> <span>confidence</span> <span>&gt;</span> <span>0.5</span><span>,</span> <span>confidence</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>I tuned the weights through experimentation. The ML model (when available) gets the highest weight because it captures patterns I can't articulate in code.</p> <hr> <h2> <a name="what-i-learned" href="#what-i-learned"> </a> What I Learned
+</h2> <p>Four months in, here's what I'd tell someone starting a similar project:</p> <p><strong>Detection is probabilistic, not binary.</strong> I always show confidence scores and explain the reasoning. Saying "73% likely AI-generated" is honest. Saying "this is AI" is not.</p> <p><strong>Ensemble methods are worth the complexity.</strong> The jump from single-signal to multi-signal detection was dramatic. Same principle as spam filtering and fraud detection. One signal is easy to game, five signals together are much harder.</p> <p><strong>The arms race is real.</strong> People actively try to evade detection by adding random typos, varying sentence lengths, post-processing images. I've already had to update the detection logic three times.</p> <p><strong>Open source builds trust.</strong> When the detection methods are visible, people can understand why the system reached a conclusion. Black-box detection creates suspicion.</p> <hr> <h2> <a name="whats-next" href="#whats-next"> </a> What's Next
+</h2> <p>I'm working on audio deepfake detection (voice cloning is getting scary good), a browser extension for real-time detection, and fine-tuning ML models on larger datasets. The roadmap is in the repo if you're curious.</p> <hr> <h2> <a name="give-it-a-try" href="#give-it-a-try"> </a> Give It a Try
+</h2> <p><strong>Live Demo</strong>: <a href="https://provenance-detect.vercel.app/" target="_blank">provenance-detect.vercel.app</a></p> <p><strong>GitHub</strong>: <a href="https://github.com/ogulcanaydogan/ai-provenance-tracker" target="_blank">github.com/ogulcanaydogan/ai-provenance-tracker</a></p> <p><strong>API Docs</strong>: <a href="https://ai-provenance-tracker-production-4622.up.railway.app/docs" target="_blank">Backend API</a></p> <p>Everything is MIT licensed. If you find bugs or have ideas, open an issue. I actually read them.</p> <hr> <p><em>Find me on <a href="https://github.com/ogulcanaydogan" target="_blank">GitHub</a> or <a href="https://linkedin.com/in/ogulcanaydogan" target="_blank">LinkedIn</a> if you want to chat about detection techniques or AI tooling.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Geoblob - On-the-fly URL-based geospatial processing</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Geoblob - On-the-fly URL-based geospatial processing</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/20/2026 1:46:35 AM | <a href="https://geoblob.com/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><div> <div> <p> Process geospatial data through simple URLs. Filter, transform, and export in multiple formats without preprocessing or server configuration. </p> </div> <div> <div> <h2> Geospatial operations, URL-driven </h2> <p> Every transformation is a URL parameter. Chain them together, change the output format, filter the results - all without touching a server. </p> <p><code>https://api.geoblob.com/<span>{signature}</span>/<span>{api_key_id}</span>/<span>@dataset:us-states</span>,<span>id:(CA,NY)</span>/<span>@process/simplify:0.01</span>.<span>geojson</span></code> </p> </div> <div> <div> <h3> Filter </h3> <p> Query by property values, spatial relationships, or tile coordinates. Return only what you need. </p> </div> <div> <h3> Process </h3> <p> Simplify, buffer, dissolve, reproject, and more. Chain operations in a single request. </p> </div> <div> <h3> Get info </h3> <p> Get bounding box, area, centroid, and other metadata without downloading the full geometry. </p> </div> </div> </div> <div> <div> <h2> See it in action </h2> <p> Interactive examples showing before and after transformations </p> </div> <div> <div> <h3>Filtering</h3> <p> Extract specific features from your data. This example filters United States regions to show a subset. </p> </div> <div> <p><code>/<wbr>@dataset:usa<wbr>.geojson</code> <span><i></i></span> <span><i></i></span> <code>/<wbr>@dataset:usa,<wbr><span>id:(Kansas,Missouri,Nevada)</span><wbr>.geojson</code> </p> </div> </div> <div> <div> <h3>Simplify geometry</h3> <p> Reduce the complexity of shapes to make them load faster. Great for overview maps where fine details aren't needed. </p> </div> <div> <p><code>/<wbr>@dataset:usa<wbr>.geojson</code> <span><i></i></span> <span><i></i></span> <code>/<wbr>@dataset:usa/<wbr><span>@process/simplify:10km</span><wbr>.geojson</code> </p> </div> </div> <div> <div> <h3>Chain operations</h3> <p> Combine multiple operations in a single request. This example dissolves United States region boundaries then simplifies the result. </p> </div> <div> <p><code>/<wbr>@dataset:usa<wbr>.geojson</code> <span><i></i></span> <span><i></i></span> <code>/<wbr>@dataset:usa/<wbr><span>@process/dissolve,<wbr>simplify:10km</span><wbr>.geojson</code> </p> </div> </div> <div> <div> <h3>Get metadata</h3> <p> Retrieve bounding box, area, and centroid without downloading geometry. Perfect for quick lookups. </p> </div> <div> <p><code>/<wbr>@dataset:usa,<wbr>id:Kansas/<wbr><span>@info/bbox:1,<wbr>area:1,<wbr>centroid:1</span><wbr>.json</code> </p> </div> </div> <div> <p> Buffer, reproject, clip, convex hull, and more operations available. </p> <p><a href="https://geoblob.com/docs/api/overview" target="_blank"> <span>Explore the full API reference</span> <i></i> </a> </p></div> </div> <div> <div> <h2> How it works </h2> <p> Three simple steps to transform your data </p> </div> <div> <div> <p> 1 </p> <h3> Upload your data </h3> <p> Upload Shapefiles, GeoJSON, GeoPackage, or KML through our dashboard. Your data is stored securely and ready to use. </p> </div> <div> <p> 2 </p> <h3> Build your URL </h3> <p> Add filters and processing operations to the URL. Chain simplify, buffer, dissolve, and more. </p> </div> <div> <p> 3 </p> <h3> Get your result </h3> <p> Get results as GeoJSON, SVG, MVT, or HTML maps. Results are cached automatically for fast repeat access. </p> </div> </div> </div> <div> <div> <h2> Geoblob vs GeoServer </h2> <p> Different tools for different needs. GeoServer is a full-featured OGC-compliant server. Geoblob is a URL-first API for teams who'd rather focus on their product than manage geo infrastructure. </p> </div> <div> <table> <thead> <tr> <th></th> <th>GeoServer</th> <th>Geoblob</th> </tr> </thead> <tbody> <tr> <td>Getting started</td> <td>Set up server, configure connections, publish layers</td> <td>Upload a file, start using the API</td> </tr> <tr> <td>Starting cost</td> <td>Server and maintenance costs from day one</td> <td>Free tier with 10,000 requests/month</td> </tr> <tr> <td>Features</td> <td>Base install, add extensions as needed</td> <td>All processing operations included</td> </tr> <tr> <td>Time to production</td> <td>Days to weeks of setup and testing</td> <td>Live in minutes, production-ready</td> </tr> <tr> <td>Who can use it</td> <td>Teams with GIS and server expertise</td> <td>Any developer, no GIS background needed</td> </tr> <tr> <td>Learning curve</td> <td>Multiple protocols, query languages, config formats</td> <td>One URL pattern, readable parameters</td> </tr> </tbody> </table> </div> <p> GeoServer is great if you have the team to run it. Geoblob lets you focus on building your app. </p> </div> <div> <div> <h2> Simple, transparent pricing </h2> <p> Start free, scale as you grow </p> </div> <div> <h3>How blob pricing works</h3> <p> Blobs are added up per request: output format (1-5) + filters (1-2 each) + operations (1-5 each). Cache hits are free. </p> <div> <div> <p>1 blob each</p> <p> Simplify, bbox, centroid, reproject, reverse, make valid, point on surface </p> </div> <div> <p>2 blobs each</p> <p> Buffer, smooth, hull operations, linemerge, subdivide, bounding circle </p> </div> <div> <p>5 blobs each</p> <p> Dissolve, k-means, voronoi, clip, diff, triangulate, grid operations </p> </div> </div> </div> <p> <span>Buffer and above</span> include: spatial filters, dissolve, k-means, voronoi, clip, diff, symmetric diff, triangulate, generate points, grids, and add to existing datasets. </p> </div> <div> <h2> Upload. Build URL. Ship. </h2> <p> Get started in under 5 minutes. Free tier includes 10,000 blobs/month - no credit card required. </p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

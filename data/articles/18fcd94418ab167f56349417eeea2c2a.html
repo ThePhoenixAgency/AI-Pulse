@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Tool: sqldef</title>
+<title>GitHub - sqldef/sqldef at console.dev</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,14 +29,163 @@
 </style>
 </head>
 <body>
-  <h1>Tool: sqldef</h1>
+  <h1>GitHub - sqldef/sqldef at console.dev</h1>
   <div class="metadata">
     Source: Console.dev | Date: 2/12/2026 12:00:00 AM | <a href="https://github.com/sqldef/sqldef?ref=console.dev" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Description: Idempotent database schema management.
-What we like: Define the schema in a single file, sqldef manages the migrations for MySQL, Postgres, SQLite, and SQL Server. Doesn’t need to be connected to the database - can run offline in CI. All operations are idempotent. Single Go binary.
-What we dislike: Focused on the popular SQL databases.</p>
+    <div><h1>sqldef <a href="https://github.com/sqldef/sqldef/actions/workflows/sqldef.yml"><img src="https://github.com/sqldef/sqldef/actions/workflows/sqldef.yml/badge.svg" alt="sqldef"></a> <a href="https://codecov.io/github/sqldef/sqldef"><img src="https://camo.githubusercontent.com/ab0a8024b3c4e9847485c7927d7de0e78bc622682ee4affa17c83bb800c6d0bc/68747470733a2f2f636f6465636f762e696f2f6769746875622f73716c6465662f73716c6465662f67726170682f62616467652e7376673f746f6b656e3d464c3469424262565550" alt="codecov"></a></h1><a href="#sqldef--"></a></div>
+<p><strong>sqldef</strong> is the easiest idempotent schema management tool for MySQL, PostgreSQL, SQLite3, and SQL Server that uses plain SQL DDLs. Define your desired schema in SQL, and sqldef generates and applies the migrations to update your database.</p>
+<p>With sqldef, you maintain a single SQL file with your complete schema. To modify your schema - add columns, change constraints, or create indexes - simply edit this file. sqldef compares desired against current schema and generates the appropriate DDLs, ensuring your database reaches the desired state from any starting point.</p>
+<p>Each database gets its own command (</p><pre><code>mysqldef</code></pre>, <pre><code>psqldef</code></pre>, <pre><code>sqlite3def</code></pre>, <pre><code>mssqldef</code></pre>) that mimics the connection options of the native database client, making it familiar and easy to integrate into existing workflows. The tool comes as a single binary with no dependencies, and provides idempotent operations that are safe to run multiple times.<p></p>
+<p>This is inspired by <a href="https://github.com/ridgepole/ridgepole">Ridgepole</a>, which uses Ruby DSL. However, sqldef uses plain SQL, so all you need to remember is SQL.</p>
+<p><a target="_blank" href="/sqldef/sqldef/blob/master/demo.gif"><img src="/sqldef/sqldef/raw/master/demo.gif" alt="demo"></a></p>
+<div><h2>Supported Databases</h2><a href="#supported-databases"></a></div>
+<ul>
+<li>mysqldef - MySQL, MariaDB, and TiDB</li>
+<li>psqldef - PostgreSQL</li>
+<li>sqlite3def - SQLite3</li>
+<li>mssqldef - SQL Server</li>
+</ul>
+<p>See <a href="/sqldef/sqldef/blob/master/.github/workflows/sqldef.yml">CI workflow</a> for tested versions.</p>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><h3>Basic Workflow</h3><a href="#basic-workflow"></a></div>
+<p>This is the basic workflow, which is identical across all databases - only the connection options differ between commands.</p>
+<p><strong>Note:</strong> Replace </p><pre><code>$sqldef</code></pre> with the appropriate command for your database:<p></p>
+<ul>
+<li><pre><code>mysqldef</code></pre> for MySQL</li>
+<li><pre><code>psqldef</code></pre> for PostgreSQL</li>
+<li><pre><code>sqlite3def</code></pre> for SQLite</li>
+<li><pre><code>mssqldef</code></pre> for SQL Server</li>
+</ul>
+<div><h4>1. Export Current Schema</h4><a href="#1-export-current-schema"></a></div>
+<div><pre><span>$sqldef</span> [connection-options] --export <span>&gt;</span> schema.sql</pre></div> <div><h4>2. Modify the Schema</h4><a href="#2-modify-the-schema"></a></div>
+<p>Edit </p><pre><code>schema.sql</code></pre> to add, remove, or change columns/tables/indexes:<p></p>
+<div><pre><span>CREATE</span> <span>TABLE</span> <span>users</span> ( id <span>BIGINT</span> <span>PRIMARY KEY</span>, name <span>VARCHAR</span>(<span>100</span>), age <span>INTEGER</span>, <span><span>--</span> Added new column</span> created_at <span>TIMESTAMP</span>
+);</pre></div>
+<div><h4>3. Preview Changes</h4><a href="#3-preview-changes"></a></div>
+<div><pre><span>$sqldef</span> [connection-options] --dry-run <span>&lt;</span> schema.sql</pre></div>
+<p>Show the migrations that will be applied without executing them (e.g., </p><pre><code>ALTER TABLE users ADD COLUMN age INTEGER</code></pre>).<p></p>
+<div><h4>4. Apply Changes</h4><a href="#4-apply-changes"></a></div>
+<div><pre><span>$sqldef</span> [connection-options] --apply <span>&lt;</span> schema.sql</pre></div>
+<p>Apply the necessary DDLs to transform current schema to desired state.</p>
+<p>Running again shows no changes needed - operations are idempotent.</p>
+<div><h3>Offline Mode</h3><a href="#offline-mode"></a></div>
+<p>sqldef can compare two SQL files without connecting to a database. This is useful for CI/CD pipelines, schema validation, and generating migration scripts.</p>
+<p>To use offline mode, specify a </p><pre><code>.sql</code></pre> file as the database argument:<p></p>
+<div><pre><span><span>#</span> Compare current.sql with desired.sql</span>
+<span>$sqldef</span> current.sql <span>&lt;</span> desired.sql</pre></div>
+<p>See the command documentation for more details on offline mode features.</p>
+<div><h3>Renaming Tables, Columns, and Indexes</h3><a href="#renaming-tables-columns-and-indexes"></a></div>
+<p>sqldef supports renaming tables, columns, and indexes using the </p><pre><code>-- @renamed from=old_name</code></pre> annotation.<p></p>
+<p>Given the current schema:</p>
+<div><pre><span>CREATE</span> <span>TABLE</span> <span>user_accounts</span> ( id <span>INTEGER</span> <span>PRIMARY KEY</span>, username <span>TEXT</span>, age <span>INTEGER</span>
+);</pre></div>
+<p>And the desired schema with </p><pre><code>@renamed</code></pre> annotation:<p></p>
+<div><pre><span>CREATE</span> <span>TABLE</span> <span>users</span> ( <span><span>--</span> @renamed from=user_accounts</span> id <span>INTEGER</span> <span>PRIMARY KEY</span>, username <span>TEXT</span>, age <span>INTEGER</span>
+);</pre></div>
+<p>This generates the following migration:</p>
+<div><pre><span>ALTER</span> <span>TABLE</span> user_accounts RENAME TO users;</pre></div>
+<p>Also </p><pre><code>@renamed</code></pre> works for columns, indexes, and ENUM values. See command documentation for more details.<p></p>
+<div><h2>Command Documentation</h2><a href="#command-documentation"></a></div>
+<ul>
+<li><a href="/sqldef/sqldef/blob/master/cmd-mysqldef.md">mysqldef</a></li>
+<li><a href="/sqldef/sqldef/blob/master/cmd-psqldef.md">psqldef</a></li>
+<li><a href="/sqldef/sqldef/blob/master/cmd-sqlite3def.md">sqlite3def</a></li>
+<li><a href="/sqldef/sqldef/blob/master/cmd-mssqldef.md">mssqldef</a></li>
+</ul>
+<div><h2>Examples</h2><a href="#examples"></a></div>
+<p>See practical examples in the <a href="/sqldef/sqldef/blob/master/example">example</a> directory:</p>
+<div><pre><span><span>#</span> Database mode - apply schema changes to a running database</span>
+./example/run.sh psqldef <span><span>#</span> PostgreSQL</span>
+./example/run.sh mysqldef <span><span>#</span> MySQL/MariaDB</span>
+./example/run.sh sqlite3def <span><span>#</span> SQLite3</span>
+./example/run.sh mssqldef <span><span>#</span> SQL Server</span> <span><span>#</span> Offline mode - compare schema files without database connection</span>
+./example/run-offline.sh psqldef <span><span>#</span> PostgreSQL</span>
+./example/run-offline.sh mysqldef <span><span>#</span> MySQL/MariaDB</span>
+./example/run-offline.sh sqlite3def <span><span>#</span> SQLite3</span>
+./example/run-offline.sh mssqldef <span><span>#</span> SQL Server</span></pre></div>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><h3>Pre-built binaries</h3><a href="#pre-built-binaries"></a></div>
+<p>Download the single-binary executable for your favorite database from:</p>
+<p><a href="https://github.com/sqldef/sqldef/releases">https://github.com/sqldef/sqldef/releases</a></p>
+<div><h3>Docker images</h3><a href="#docker-images"></a></div>
+<p>Docker images are available on Docker Hub:</p>
+<p><a href="https://hub.docker.com/u/sqldef">https://hub.docker.com/u/sqldef</a></p>
+<div><h3>Linux</h3><a href="#linux"></a></div>
+<p>Debian packages are not currently available. Use the pre-built binaries or Docker images instead.</p>
+<div><pre><span><span>#</span> mysqldef</span>
+wget -O - https://github.com/sqldef/sqldef/releases/latest/download/mysqldef_linux_amd64.tar.gz \ <span>|</span> tar xvz <span><span>#</span> psqldef</span>
+wget -O - https://github.com/sqldef/sqldef/releases/latest/download/psqldef_linux_amd64.tar.gz \ <span>|</span> tar xvz <span><span>#</span> sqlite3def</span>
+wget -O - https://github.com/sqldef/sqldef/releases/latest/download/sqlite3def_linux_amd64.tar.gz \ <span>|</span> tar xvz <span><span>#</span> mssqldef</span>
+wget -O - https://github.com/sqldef/sqldef/releases/latest/download/mssqldef_linux_amd64.tar.gz \ <span>|</span> tar xvz</pre></div>
+<div><h3>macOS</h3><a href="#macos"></a></div>
+<p><a href="https://github.com/sqldef/homebrew-sqldef">Homebrew tap</a> is available.</p>
+<div><pre><span><span>#</span> mysqldef</span>
+brew install sqldef/sqldef/mysqldef <span><span>#</span> psqldef</span>
+brew install sqldef/sqldef/psqldef <span><span>#</span> sqlite3def</span>
+brew install sqldef/sqldef/sqlite3def <span><span>#</span> mssqldef</span>
+brew install sqldef/sqldef/mssqldef</pre></div>
+<div><h2>Preview Changes with GitHub Actions</h2><a href="#preview-changes-with-github-actions"></a></div>
+<p>There's a GitHub Action that can preview changes to your database schema:</p>
+<p><a href="https://github.com/sqldef/sqldef-preview-action">https://github.com/sqldef/sqldef-preview-action</a></p>
+<div><h2>Development</h2><a href="#development"></a></div>
+<p>If you update </p><pre><code>parser/parser.y</code></pre>, run:<p></p>
+<div><pre>$ make parser</pre></div>
+<p>Use the following commands to prepare command line tools and DB servers for running tests.</p>
+<div><pre><span><span>#</span> Linux</span>
+$ sudo apt install mysql-client postgresql-client sqlite3
+$ curl https://packages.microsoft.com/keys/microsoft.asc <span>|</span> sudo apt-key add -
+$ curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list <span>|</span> sudo tee /etc/apt/sources.list.d/msprod.list
+$ sudo apt-get update <span>&amp;&amp;</span> sudo apt-get install mssql-tools <span><span>#</span> then add: export PATH="$PATH:/opt/mssql-tools/bin"</span> <span><span>#</span> macOS</span>
+$ brew install libpq <span>&amp;&amp;</span> brew link --force libpq
+$ brew install microsoft/mssql-release/mssql-tools <span><span>#</span> Start database</span>
+$ docker compose up <span><span>#</span> Run all tests</span>
+$ make <span>test</span> <span><span>#</span> Run *def tests</span>
+$ go <span>test</span> ./cmd/<span>*</span>def <span><span>#</span> Run a single test</span>
+$ go <span>test</span> ./cmd/mysqldef -run=TestApply/CreateTable</pre></div>
+<div><h3>Run example scripts</h3><a href="#run-example-scripts"></a></div>
+<p>Test all database mode examples:</p>
+<div><pre>make test-example</pre></div>
+<p>This runs </p><pre><code>./example/run.sh</code></pre> for all tools. You need to have the respective databases running:<p></p>
+<ul>
+<li><pre><code>./example/run.sh psqldef</code></pre> - requires PostgreSQL</li>
+<li><pre><code>./example/run.sh mysqldef</code></pre> - requires MySQL/MariaDB</li>
+<li><pre><code>./example/run.sh sqlite3def</code></pre> - requires SQLite3 (no server needed)</li>
+<li><pre><code>./example/run.sh mssqldef</code></pre> - requires SQL Server</li>
+</ul>
+<p>Test all offline mode examples (no database required):</p>
+<div><pre>make test-example-offline</pre></div>
+<p>This runs </p><pre><code>./example/run-offline.sh</code></pre> for all tools (psqldef, mysqldef, sqlite3def, mssqldef). These examples demonstrate offline mode (file-to-file comparison) without requiring database connections.<p></p>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Please file a pull request if you have a feature request.</p>
+<p>If you're unsure what to do, you may file a "Feature requests" ticket on <a href="https://github.com/sqldef/sqldef/discussions">Discussions</a>
+and discuss how to implement that with the community.</p>
+<div><h2>Releasing</h2><a href="#releasing"></a></div>
+<p>The </p><pre><code>tagpr</code></pre> and <pre><code>sqldef</code></pre> workflows are used to release sqldef.<p></p>
+<ol>
+<li>(optional) A maintainer labels a pull request (PR) with <pre><code>minor</code></pre> or <pre><code>major</code></pre> to manage the next version.</li>
+<li>When a PR is merged to the default branch, <pre><code>tagpr</code></pre> creates a PR to bump the version and update the CHANGELOG.md ("release PR").</li> <li><pre><code>tagpr</code></pre> creates and pushes a release tag, which triggers the next workflow.</li>
+<li><pre><code>sqldef</code></pre> workflows creates a GitHub release, build artifacts, upload them to the GitHub release.</li>
+</ol> <p>We also expect them to release sqldef as frequently as possible.
+When there's a behavior change, sqldef should have at least one release on that day.</p>
+<div><h2>Maintainers</h2><a href="#maintainers"></a></div>
+<ul>
+<li><strong>@k0kubun</strong></li>
+<li><strong>@knaka</strong> (sqlite3def)</li>
+<li><strong>@odz</strong> (mssqldef)</li>
+<li><strong>@hokaccha</strong> (psqldef)</li>
+<li><strong>@gfx</strong> (psqldef)</li>
+</ul>
+<p>These are the component they were contributing to when they became a maintainer,
+but they're allowed to maintain every part of sqldef.</p>
+<div><h3>Alumni</h3><a href="#alumni"></a></div>
+<ul>
+<li><strong>@ytakaya</strong> (mssqldef)</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Unless otherwise noted, the sqldef source files are distributed under the MIT License found in the LICENSE file.</p>
+<p><a href="/sqldef/sqldef/blob/master/parser">parser</a> is distributed under the Apache Version 2.0 license found in the <a href="/sqldef/sqldef/blob/master/parser/LICENSE.md">parser/LICENSE.md</a> file.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
