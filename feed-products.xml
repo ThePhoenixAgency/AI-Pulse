@@ -5,51 +5,71 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Feb 2026 12:48:08 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 21 Feb 2026 22:22:15 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: OkaiDokai, tool-level firewall for OpenClaw, Claude Code and Codex]]></title>
-      <link>https://okaidokai.com</link>
-      <description><![CDATA[Hey HN, Sascha here, developer of OkaiDokai. Like many others, I fell in love with OpenClaw, but was longing for more control over what it can do without interrupting its autonomous, agentic nature. OkaiDokai solves this for me by allowing me to set up my own rule set of what is allowed by default, what is not, and what it should ask permission for. It comes with a hosted API, web and native apps including push notifications (with quick-response support), plugins for OpenClaw and Claude Code, and soon Codex.
-I'm still working on getting the apps onto the App Store (currently on TestFlight and Android beta channels), as well as giving the rule engine and UI a bit more love. It should be good enough for a quick test if anyone dares to try it!
-I just created a new Discord server (https://discord.gg/M25cCwJ5x7), so please say "hello" if you’d like to give it a go and provide me with any feedback you have. I'm adding new features and improvements pretty much around the clock right now. I'm also planning to release the source code under the Sustainable Use License soon, as I think it's important to get more eyes on it and allow others to contribute should they want to.
-Thanks for reading :) URL: https://news.ycombinator.com/item?id=47086913
-Points: 1
+      <title><![CDATA[Show HN: Cc-md – Zero-cost Obsidian sync across iPhone, Mac, and GitHub]]></title>
+      <link>https://github.com/yuukiLike/cc-md</link>
+      <description><![CDATA[Here's something I realized: the most AI-native knowledge base isn't a SaaS
+product with an API. It's a folder of markdown files on your disk.
+Obsidian stores everything as plain .md files. That means Claude Code (or any
+AI tool) can grep, read, write, and traverse your entire knowledge base with
+zero setup. No API keys. No OAuth. No middleware. Just local file I/O.
+The only missing piece was sync. I wanted my vault on iPhone (iCloud), on Mac
+(local), and on GitHub (backup + version history) — without paying $4/mo for
+Obsidian Sync.
+cc-md is ~400 lines of bash. iCloud handles Apple device sync in seconds.
+A launchd job runs git add/commit/push every 5 minutes. That's it.
+One command to install:
+bash https://raw.githubusercontent.com/yuukiLike/cc-md/main/insta...)
+The installer auto-discovers your vault, inits git, creates a GitHub repo
+(if you have gh CLI), and starts syncing. Zero prompts in the best case.
+I built this in a weekend, solo, with AI assistance from first line to last.
+A year ago I couldn't have shipped this. Now I can.
+I feel genuinely lucky to be alive in the AI era. It's making childhood
+dreams come true — one project at a time. URL: https://news.ycombinator.com/item?id=47104432
+Points: 2
 # : 0]]></description>
-      <pubDate>Fri, 20 Feb 2026 11:57:13 GMT</pubDate>
+      <pubDate>Sat, 21 Feb 2026 20:35:13 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://okaidokai.com</guid>
+      <guid>https://github.com/yuukiLike/cc-md</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: From Clawdbot to OpenAI: Dissecting the supply chain that sold out]]></title>
-      <link>https://the-mind-of-ai.com/posts/openclaw-necropsy/</link>
-      <description><![CDATA[What started as a viral "Mac Mini" enthusiast project ended with a Valentine's Day "hard launch" of its founder joining OpenAI.
-But the real story isn't the hiring—it's the supply chain decay.
-I’ve audited the technical strata of the transition, specifically focusing on:
-CVE-2026-25253 (The 1-Click RCE): How missing WebSocket origin validation allowed any website to hijack a local agent and exfiltrate host credentials.
-The "ClawdHub" Poisoning: How an unvetted "skills" marketplace became a delivery mechanism for AMOS infostealers while the community was distracted by name changes.
-Vibe-Coding vs. Engineering: Why building agents with "root-by-default" and no permission boundaries made this project a lethal liability for the 60k+ developers who starred it.
-This post is a forensic look at the "Lethal Trifecta" of agentic AI: Root access, untrusted content exposure, and missing gates. URL: https://news.ycombinator.com/item?id=47086866
-Points: 1
-# : 0]]></description>
-      <pubDate>Fri, 20 Feb 2026 11:53:28 GMT</pubDate>
-      <source>Hacker News Show</source>
+      <title><![CDATA[Actualité : Étoiles des Numériques 2025-2026 : notre palmarès en vidéo]]></title>
+      <link>https://www.lesnumeriques.com/societe-numerique/etoiles-des-numeriques-2025-2026-notre-palmares-en-video-n251792.html</link>
+      <description><![CDATA[L’heure du bilan a enfin sonné dans les laboratoires des Numériques. Après douze mois de tests intensifs, de mesures de précision et de débats passionnés, nos experts ont tranché pour élire les produits les plus marquants de l’année. Ce palmarès des Étoiles 2025-2026 ne se contente pas de récompenser les performances brutes : il met en lumière les in...]]></description>
+      <pubDate>Fri, 20 Feb 2026 18:30:00 GMT</pubDate>
+      <source>Les Numeriques</source>
       <category>products</category>
-      <guid>https://the-mind-of-ai.com/posts/openclaw-necropsy/</guid>
+      <guid>https://www.lesnumeriques.com/societe-numerique/etoiles-des-numeriques-2025-2026-notre-palmares-en-video-n251792.html</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: I made HappySRT to transcribe, translate, &amp; summarize easily]]></title>
-      <link>https://www.happysrt.com/</link>
-      <description><![CDATA[Had some friends in the Media Space (think super into cameras, video editing, vfx, etc...) &amp; 3 years ago they asked me to make a simple srt editor. Fast forward 3 years later (&amp; with much more programming skills under my belt) - spent the last 2 weeks rewriting HappySRT to allow media uploads, threads (like chatgpt), transcribe uploaded files w/ SRT Editing, Translate the transcribed file (also each translation is individually editable &amp; savable), as well as summarize what the video/audio is about (it does it via the transcription).
-I used Appwrite, Deepgram, NextJS Pages Router, OpenAI API, UpliftAI Scribe, and my favorite npm packages to create this: npm i styled-components &amp; npm i styled-icons
-Launching on Play Store soon (I used next-pwa for that, which meant I couldn't use turbopack but instead used webpack) &amp; submitted it already for approval, hope it goes well. URL: https://news.ycombinator.com/item?id=47086506
-Points: 1
-# : 0]]></description>
-      <pubDate>Fri, 20 Feb 2026 11:12:34 GMT</pubDate>
-      <source>Hacker News Show</source>
+      <title><![CDATA[Actualité : Les Étoiles des Numériques : découvrez tous les lauréats 2025-2026]]></title>
+      <link>https://www.lesnumeriques.com/societe-numerique/les-etoiles-des-numeriques-decouvrez-tous-les-laureats-2025-2026-n251672.html</link>
+      <description><![CDATA[Plus qu'une simple remise de prix, les Étoiles des Numériques célèbrent le sommet de la tech. Ce palmarès est le fruit d'un processus rigoureux visant à isoler les produits les plus performants passés sur nos bancs de test. Mais au-delà des chiffres et des mesures brutes, ces Étoiles sont aussi nos véritables coups de cœur : elles récompensent les ap...]]></description>
+      <pubDate>Sat, 21 Feb 2026 13:15:00 GMT</pubDate>
+      <source>Les Numeriques</source>
       <category>products</category>
-      <guid>https://www.happysrt.com/</guid>
+      <guid>https://www.lesnumeriques.com/societe-numerique/les-etoiles-des-numeriques-decouvrez-tous-les-laureats-2025-2026-n251672.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[Lancement d’Artemis II : à quelle heure régler son réveil pour ne rien rater ?]]></title>
+      <link>https://www.journaldugeek.com/2026/02/20/artemis-ii-quelle-heure-regler-reveil-rien-rater/</link>
+      <description><![CDATA[Le monstre est enfin dompté : la NASA vient de valider le remplissage complet du SLS (Space Launch System) et donne le coup d'envoi officiel pour Artemis II.]]></description>
+      <pubDate>Fri, 20 Feb 2026 17:02:38 GMT</pubDate>
+      <source>Journal du Geek</source>
+      <category>products</category>
+      <guid>https://www.journaldugeek.com/2026/02/20/artemis-ii-quelle-heure-regler-reveil-rien-rater/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Une IA va traduire la messe en temps réel au Vatican]]></title>
+      <link>https://www.journaldugeek.com/2026/02/20/une-ia-va-traduire-la-messe-en-temps-reel-au-vatican/</link>
+      <description><![CDATA[À l’approche des 400 ans de la basilique Saint-Pierre, le Vatican mise sur l’innovation pour accueillir les pèlerins du monde entier, prouvant que foi et technologie ne sont plus incompatibles.]]></description>
+      <pubDate>Fri, 20 Feb 2026 14:48:08 GMT</pubDate>
+      <source>Journal du Geek</source>
+      <category>products</category>
+      <guid>https://www.journaldugeek.com/2026/02/20/une-ia-va-traduire-la-messe-en-temps-reel-au-vatican/</guid>
     </item>
     <item>
       <title><![CDATA[Ces 3 nouveautés de Google Chrome vont changer votre façon de naviguer]]></title>
@@ -59,63 +79,6 @@ Points: 1
       <source>Journal du Geek</source>
       <category>products</category>
       <guid>https://www.journaldugeek.com/2026/02/20/3-nouveautes-google-chrome-changer-facon-naviguer/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: NostalgiApp – Native macOS launcher for 7k+ DOS games (eXoDOS)]]></title>
-      <link>https://news.ycombinator.com/item?id=47086433</link>
-      <description><![CDATA[I built a native macOS app for browsing and playing retro DOS games through the eXoDOS collection. The problem: eXoDOS is an incredible curated archive of 7,000+ DOS games with pre-configured DOSBox settings, but it's Windows/Linux focused. On Mac you're stuck with janky shell scripts, manual DOSBox config, and no real way to browse the library. I wanted a proper Mac-native experience. What it does: - Downloads eXoDOS for you (full or lite — lite fetches games on demand via BitTorrent so you don't need 500GB upfront) - Browses the full library with box art, metadata, search, and filtering - One-click launch — auto-extracts archives, picks the right DOSBox version per game, handles config - Routes games to DOSBox Staging, DOSBox-X, ScummVM, or Wine+ECE automatically - Game version selector when multiple exist (Floppy/CD, SoundBlaster/MT-32, EGA/VGA) - Also supports eXoScummVM, eXoWin3x, eXoDREAMM collections in the same library - ROM support for console emulation via RetroArch/MAME A few Mac-specific things I added that I think are fun: - Spotlight indexing — Cmd+Space, type "Doom", hit Enter - Siri Shortcuts — "Hey Siri, launch a random DOS game" - Menu bar quick launcher for recent/favorite games Technical bits: Swift/SwiftUI, targets macOS 13+. Game launching is fully independent — I built a database of 1,700+ game version configs (which executable, which subfolder, which DOSBox flags) so the app doesn't depend on any eXo shell scripts. There's also a crowd-sourced fix system: if a game doesn't launch correctly, the app parses the dosbox.conf to find the right executable, and if the user confirms it works, the fix gets uploaded and synced to all users. €20 with a 14-day free trial. It's been a big project and I'd like to keep working on it. https://nostalgi.app URL: https://news.ycombinator.com/item?id=47086433
-Points: 1
-# : 0]]></description>
-      <pubDate>Fri, 20 Feb 2026 11:03:54 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://news.ycombinator.com/item?id=47086433</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : Ce lave-linge présente le meilleur rapport qualité / prix de notre comparatif]]></title>
-      <link>https://www.lesnumeriques.com/lave-linge/ce-lave-linge-presente-le-meilleur-rapport-qualite-prix-de-notre-comparatif-n251768.html</link>
-      <description><![CDATA[Le Candy MultiWash est totalement inédit. Premier lave-linge à trois tambours de notre comparatif, c'est aussi le premier appareil de ce type vendu en France. Il a pourtant bien d'autres atouts à faire valoir pour laver de nombreuses charges de linge.Points fortsInnovation pertinente.Faible consommation d'eau.Silencieux.
-Points faiblesNe convi...]]></description>
-      <pubDate>Fri, 20 Feb 2026 11:02:31 GMT</pubDate>
-      <source>Les Numeriques</source>
-      <category>products</category>
-      <guid>https://www.lesnumeriques.com/lave-linge/ce-lave-linge-presente-le-meilleur-rapport-qualite-prix-de-notre-comparatif-n251768.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : SLS : la fusée monstre de la Nasa dompte enfin l'hydrogène, direction la Lune en mars ?]]></title>
-      <link>https://www.lesnumeriques.com/astronomie-conquete-spatiale/sls-la-fusee-monstre-de-la-nasa-dompte-enfin-l-hydrogene-direction-la-lune-en-mars-n251747.html</link>
-      <description><![CDATA[On l’appelle la « répétition humide », et pour cause. Le Wet Dress Rehearsal (WDR) consiste à remplir les réservoirs de la monstrueuse fusée SLS (Space Launch System) avec plus de 2,7 millions de litres d’ergols cryogéniques : de l’oxygène liquide (-183°C) et surtout ce satané hydrogène liquide (-253°C), la molécule la plus petite et la plus fuyante...]]></description>
-      <pubDate>Fri, 20 Feb 2026 07:15:00 GMT</pubDate>
-      <source>Les Numeriques</source>
-      <category>products</category>
-      <guid>https://www.lesnumeriques.com/astronomie-conquete-spatiale/sls-la-fusee-monstre-de-la-nasa-dompte-enfin-l-hydrogene-direction-la-lune-en-mars-n251747.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : 8 000 batteries de voitures électriques d'occasion testées : elles tiennent bien mieux que prévu]]></title>
-      <link>https://www.lesnumeriques.com/voiture-electrique/8-000-batteries-de-voitures-electriques-d-occasion-testees-elles-tiennent-bien-mieux-que-prevu-n251746.html</link>
-      <description><![CDATA[Generational, entreprise britannique spécialisée dans le diagnostic de batteries, a publié en février 2026 son 2025 Battery Performance Index. Le rapport s'appuie sur plus de 8 000 tests réalisés en 2025, couvrant 36 constructeurs, des voitures électriques d'occasion de 0 à 12 ans, couvrant aussi bien des voitures particulières que des utilitaires lé...]]></description>
-      <pubDate>Fri, 20 Feb 2026 05:29:00 GMT</pubDate>
-      <source>Les Numeriques</source>
-      <category>products</category>
-      <guid>https://www.lesnumeriques.com/voiture-electrique/8-000-batteries-de-voitures-electriques-d-occasion-testees-elles-tiennent-bien-mieux-que-prevu-n251746.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : One UI 8.5 : Samsung lance sa cinquième bêta d’Android 16 avant la sortie officielle]]></title>
-      <link>https://www.lesnumeriques.com/telephone-portable/one-ui-8-5-samsung-lance-sa-cinquieme-beta-d-android-16-avant-la-sortie-officielle-n251715.html</link>
-      <description><![CDATA[La sortie d’Android 16 entre dans sa phase décisive chez Samsung. Le géant sud-coréen vient de diffuser la cinquième bêta de One UI 8.5 sur les Galaxy S25, une version qui ressemble fortement à l’ultime étape avant sa mise à disposition publique. Les premiers retours évoquent un système plus stable, plus fluide et quasiment prêt pour le grand public....]]></description>
-      <pubDate>Thu, 19 Feb 2026 17:09:00 GMT</pubDate>
-      <source>Les Numeriques</source>
-      <category>products</category>
-      <guid>https://www.lesnumeriques.com/telephone-portable/one-ui-8-5-samsung-lance-sa-cinquieme-beta-d-android-16-avant-la-sortie-officielle-n251715.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[BioVault : un projet scientifique fou qui veut sauver la vie sur Terre en la congelant]]></title>
-      <link>https://www.journaldugeek.com/2026/02/19/biovault-science-vie-terre-congeler/</link>
-      <description><![CDATA[Colossal Biosciences espère sauver la vie sur Terre en la congelant et ainsi préserver certaines espèces aujourd'hui en voie d'extinction.]]></description>
-      <pubDate>Thu, 19 Feb 2026 15:01:35 GMT</pubDate>
-      <source>Journal du Geek</source>
-      <category>products</category>
-      <guid>https://www.journaldugeek.com/2026/02/19/biovault-science-vie-terre-congeler/</guid>
     </item>
   </channel>
 </rss>

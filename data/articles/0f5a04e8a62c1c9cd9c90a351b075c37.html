@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Voice Cloning GUI That Supports 10 Languages — Here's What I Learned Wrestling with CUDA on Windows published</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built a Voice Cloning GUI That Supports 10 Languages — Here's What I Learned Wrestling with CUDA on Windows published</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/21/2026 10:05:52 PM | <a href="https://dev.to/genelab_999/i-built-a-voice-cloning-gui-that-supports-10-languages-heres-what-i-learned-wrestling-with-cuda-30gp" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Have you ever recorded yourself speaking and thought, <em>"I wish I could just type what I want to say and have my own voice read it back"</em>?</p> <p>That's exactly the rabbit hole I fell down when Alibaba dropped <a href="https://github.com/QwenLM/Qwen3-TTS" target="_blank">Qwen3-TTS</a> — an open-source TTS model that can clone any voice from just <strong>3 seconds of audio</strong>. Ten languages. 97ms latency. Apache 2.0 license. On paper, it was everything I'd ever wanted.</p> <p>So I did what any developer would do: I forked it.</p> <h2> <a name="what-i-built" href="#what-i-built"> </a> What I Built
+</h2> <div> <div> <div><article><p>
+</p><h2>Qwen3-TTS-JP</h2>
+<p></p>
+<p><strong>English</strong> | <a href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/docs/README_ja.md" target="_blank">日本語</a> | <a href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/docs/README_zh.md" target="_blank">中文</a> | <a href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/docs/README_ko.md" target="_blank">한국어</a> | <a href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/docs/README_ru.md" target="_blank">Русский</a> | <a href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/docs/README_es.md" target="_blank">Español</a> | <a href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/docs/README_it.md" target="_blank">Italiano</a> | <a href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/docs/README_de.md" target="_blank">Deutsch</a> | <a href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/docs/README_fr.md" target="_blank">Français</a> | <a href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/docs/README_pt.md" target="_blank">Português</a></p>
+<p>A <strong>Windows-native</strong> fork of Qwen3-TTS with a modern, multilingual Web UI.</p>
+<p>The original Qwen3-TTS was developed primarily for Linux environments, and FlashAttention 2 is recommended. However, FlashAttention 2 does not work on Windows. This fork enables <strong>direct execution on Windows without WSL2 or Docker</strong>, provides a <strong>modern Web UI supporting 10 languages</strong>, and adds automatic transcription via Whisper.</p>
+<blockquote>
+<p><strong>Mac (Apple Silicon) users:</strong> For the best experience on Mac, please use <strong><a href="https://github.com/hiroki-abe-58/Qwen3-TTS-Mac-GeneLab" target="_blank">Qwen3-TTS-Mac-GeneLab</a></strong> -- fully optimized for Apple Silicon with MLX + PyTorch dual engine, 8bit/4bit quantization, and 10-language Web UI.</p>
+</blockquote>
+<p>
+</p><h3>Custom Voice -- Speech synthesis with preset speakers</h3>
+<p></p>
+<p> <a target="_blank" href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/assets/CustomVoice.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgithub.com%2Fhiroki-abe-58%2FQwen3-TTS-JP%2Fassets%2FCustomVoice.png"></a>
+</p> <p>
+</p><h3>Voice Design -- Describe voice characteristics to synthesize</h3>
+<p></p> <p> <a target="_blank" href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/assets/VoiceDesign.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgithub.com%2Fhiroki-abe-58%2FQwen3-TTS-JP%2Fassets%2FVoiceDesign.png"></a>
+</p> <p>
+</p><h3>Voice Clone -- Clone voice from reference audio</h3> <p></p> <p> <a target="_blank" href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/assets/VoiceClone.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgithub.com%2Fhiroki-abe-58%2FQwen3-TTS-JP%2Fassets%2FVoiceClone.png"></a>
+</p> <p>
+</p><h3>Settings -- GPU / VRAM / Model information</h3> <p></p> <p> <a target="_blank" href="https://github.com/hiroki-abe-58/Qwen3-TTS-JP/assets/Settings.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgithub.com%2Fhiroki-abe-58%2FQwen3-TTS-JP%2Fassets%2FSettings.png"></a>
+</p> <p>
+</p><h2>Related Projects</h2> <p></p> <div><table> <thead> <tr> <th>Platform</th> <th>Repository</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>Windows</td> <td><strong>This</strong></td> </tr> </tbody> </table></div>…</article></div>
+<br> </div>
+<br> <br>
+</div> <p><strong>Qwen3-TTS-JP</strong> started as a personal fix — a Japanese-localized fork with Whisper auto-transcription bolted on. But as people started using it, I realized the same pain points existed for developers everywhere. So I expanded it:</p> <ul>
+<li>
+<strong>10-language Web UI</strong> — Japanese, English, Chinese, Korean, German, French, Russian, Portuguese, Spanish, Italian. The UI auto-detects your browser locale.</li>
+<li>
+<strong>Native Windows support</strong> — No WSL. No Docker. Just Python + CUDA.</li>
+<li>
+<strong>Whisper auto-transcription</strong> — Upload 3 seconds of audio, Whisper handles the rest. Pick from 5 model sizes (tiny → large-v3) depending on your speed/accuracy tradeoff.</li>
+<li>
+<strong>RTX 5090 (Blackwell) tested</strong> — I developed this on a Blackwell GPU, so sm_120 architecture is a first-class citizen.</li>
+<li>
+<strong>Mac support</strong> — Apple Silicon users get a <a href="https://github.com/hiroki-abe-58/Qwen3-TTS-Mac-GeneLab" target="_blank">dedicated fork</a> with MLX + PyTorch dual engine and 4bit/8bit quantization.</li>
+</ul> <h2> <a name="the-architecture-in-30-seconds" href="#the-architecture-in-30-seconds"> </a> The Architecture in 30 Seconds
+</h2> <p>Qwen3-TTS isn't your typical TTS pipeline. Instead of the usual <code>Text → LM → DiT → Audio</code> cascade, it uses a discrete multi-codebook LM that goes straight from text to audio codes:<br>
+</p> <div>
+<pre><code>Traditional: Text → Language Model → Intermediate Repr → DiT → Audio
+Qwen3-TTS: Text → Language Model → Audio Codes → Decoder → Audio
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This bypasses the information bottleneck that makes most TTS systems sound robotic. The result is eerily human-sounding output — with emotion, prosody, and natural pauses all preserved.</p> <p>The dual-track streaming architecture means it starts generating audio from the <em>first character</em> of input. That 97ms first-packet latency is real.</p> <h2> <a name="getting-it-running-its-actually-easy-now" href="#getting-it-running-its-actually-easy-now"> </a> Getting It Running (It's Actually Easy Now)
+</h2> <div>
+<pre><code>git clone https://github.com/hiroki-abe-58/Qwen3-TTS-JP.git
+<span>cd </span>Qwen3-TTS-JP python <span>-m</span> venv .venv
+<span># Windows</span>
+.venv<span>\S</span>cripts<span>\a</span>ctivate
+<span># Linux/Mac</span>
+<span>source</span> .venv/bin/activate pip <span>install</span> <span>-e</span> <span>.</span>
+pip <span>install </span>faster-whisper <span># RTX 30/40 series</span>
+pip <span>install </span>torch torchvision torchaudio <span>--index-url</span> https://download.pytorch.org/whl/cu124 <span># RTX 50 series (Blackwell) — needs nightly</span>
+pip <span>install</span> <span>--pre</span> torch torchvision torchaudio <span>--index-url</span> https://download.pytorch.org/whl/nightly/cu128
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Launch the GUI:<br>
+</p> <div>
+<pre><code><span># Voice cloning mode</span>
+python <span>-m</span> qwen_tts.cli.demo Qwen/Qwen3-TTS-12Hz-1.7B-Base <span>\</span> <span>--ip</span> 127.0.0.1 <span>--port</span> 7860 <span>--no-flash-attn</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Open <code>http://127.0.0.1:7860</code>. Done.</p> <h2> <a name="what-you-can-actually-build-with-this" href="#what-you-can-actually-build-with-this"> </a> What You Can Actually Build With This
+</h2> <p>Here's where it gets interesting for developers. This isn't just a toy — the Python API is clean enough to integrate into real projects.</p> <h3> <a name="voice-cloning-in-5-lines" href="#voice-cloning-in-5-lines"> </a> Voice Cloning in 5 Lines
+</h3> <div>
+<pre><code><span>from</span> <span>qwen_tts</span> <span>import</span> <span>Qwen3TTSModel</span>
+<span>import</span> <span>torch</span><span>,</span> <span>soundfile</span> <span>as</span> <span>sf</span> <span>model</span> <span>=</span> <span>Qwen3TTSModel</span><span>.</span><span>from_pretrained</span><span>(</span> <span>"</span><span>Qwen/Qwen3-TTS-12Hz-1.7B-Base</span><span>"</span><span>,</span> <span>device_map</span><span>=</span><span>"</span><span>cuda:0</span><span>"</span><span>,</span> <span>dtype</span><span>=</span><span>torch</span><span>.</span><span>bfloat16</span><span>,</span>
+<span>)</span> <span>wavs</span><span>,</span> <span>sr</span> <span>=</span> <span>model</span><span>.</span><span>generate_voice_clone</span><span>(</span> <span>text</span><span>=</span><span>"</span><span>This is my cloned voice. It only needed 3 seconds of audio.</span><span>"</span><span>,</span> <span>language</span><span>=</span><span>"</span><span>English</span><span>"</span><span>,</span> <span>ref_audio</span><span>=</span><span>"</span><span>my_voice.wav</span><span>"</span><span>,</span> <span># 3 seconds is enough
+</span> <span>ref_text</span><span>=</span><span>"</span><span>Hello, testing.</span><span>"</span><span>,</span> <span># Whisper can auto-generate this
+</span><span>)</span>
+<span>sf</span><span>.</span><span>write</span><span>(</span><span>"</span><span>output.wav</span><span>"</span><span>,</span> <span>wavs</span><span>[</span><span>0</span><span>],</span> <span>sr</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="design-a-voice-from-scratch" href="#design-a-voice-from-scratch"> </a> Design a Voice From Scratch
+</h3> <p>No reference audio needed — just describe what you want:<br>
+</p> <div>
+<pre><code><span>model</span> <span>=</span> <span>Qwen3TTSModel</span><span>.</span><span>from_pretrained</span><span>(</span> <span>"</span><span>Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign</span><span>"</span><span>,</span> <span>device_map</span><span>=</span><span>"</span><span>cuda:0</span><span>"</span><span>,</span> <span>dtype</span><span>=</span><span>torch</span><span>.</span><span>bfloat16</span><span>,</span>
+<span>)</span> <span>wavs</span><span>,</span> <span>sr</span> <span>=</span> <span>model</span><span>.</span><span>generate_voice_design</span><span>(</span> <span>text</span><span>=</span><span>"</span><span>Welcome back, adventurer. Your quest awaits.</span><span>"</span><span>,</span> <span>language</span><span>=</span><span>"</span><span>English</span><span>"</span><span>,</span> <span>instruct</span><span>=</span><span>"</span><span>Deep male voice, 45 years old, slight British accent, warm and commanding</span><span>"</span><span>,</span>
+<span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="crosslingual-cloning" href="#crosslingual-cloning"> </a> Cross-Lingual Cloning
+</h3> <p>Clone a voice in one language, generate speech in another. The model preserves the speaker's timbre across languages:<br>
+</p> <div>
+<pre><code><span>wavs</span><span>,</span> <span>sr</span> <span>=</span> <span>model</span><span>.</span><span>generate_voice_clone</span><span>(</span> <span>text</span><span>=</span><span>"</span><span>Bonjour, comment allez-vous aujourd</span><span>'</span><span>hui?</span><span>"</span><span>,</span> <span>language</span><span>=</span><span>"</span><span>French</span><span>"</span><span>,</span> <span>ref_audio</span><span>=</span><span>"</span><span>english_speaker.wav</span><span>"</span><span>,</span> <span>ref_text</span><span>=</span><span>"</span><span>Hi, this is a test recording.</span><span>"</span><span>,</span>
+<span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="practical-use-cases-ive-seen" href="#practical-use-cases-ive-seen"> </a> Practical Use Cases I've Seen
+</h2> <p>Since releasing this fork, I've seen developers use it for:</p> <ul>
+<li>
+<strong>Game dev</strong> — Generating NPC dialogue dynamically instead of recording thousands of audio files</li>
+<li>
+<strong>Podcasting</strong> — Creating consistent intro/outro narration</li>
+<li>
+<strong>Accessibility</strong> — Multilingual audio versions of documentation</li>
+<li>
+<strong>Localization</strong> — Same voice, 10 languages, zero re-recording</li>
+<li>
+<strong>Prototyping</strong> — Testing voice UX before hiring voice actors</li>
+</ul> <h2> <a name="gpu-compatibility" href="#gpu-compatibility"> </a> GPU Compatibility
+</h2> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

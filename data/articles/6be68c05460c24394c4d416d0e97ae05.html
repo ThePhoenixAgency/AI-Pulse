@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,891 @@
     Source: Hugging Face Blog | Date: 9/4/2025 12:00:00 AM | <a href="https://huggingface.co/blog/embeddinggemma" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Summary unavailable for this article.</p>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/tomaarsen"><img alt="Tom Aarsen's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6317233cc92fd6fee317e030/cJHSvvimr1kqgQfHOjO5n.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/Xenova"><img alt="Joshua's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/61b253b7ac5ecaae3d1efe0c/hwiQ0uvz3t-L5a-NtBIO6.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/alvarobartt"><img alt="Alvaro Bartolome's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/60f0608166e5701b80ed3f02/x3tcqufwDX_d0N69VVNvn.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ariG23498"><img alt="Aritra Roy Gosthipaty's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/608aabf24955d2bfc3cd99c6/-YxmtpzEmf3NKOTktODRP.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/pcuenq"><img alt="Pedro Cuenca's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1617264212503-603d25b75f9d390ab190b777.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/sergiopaniego"><img alt="Sergio Paniego's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/61929226ded356549e20c5da/ONUjP2S5fUWd07BiFXm0i.jpeg"></a> </span> </span></p> </div></div> <h2> <a href="#tldr"> </a> <span> TL;DR </span>
+</h2>
+<p>Today, Google releases <a href="https://huggingface.co/collections/google/embeddinggemma-68b9ae3a72a82f0562a80dc4">EmbeddingGemma</a>, a state-of-the-art multilingual embedding model perfect for on-device use cases. Designed for speed and efficiency, the model features a compact size of <strong>308M parameters</strong> and a <strong>2K context window</strong>, unlocking new possibilities for mobile RAG pipelines, agents, and more. EmbeddingGemma is trained to support over <strong>100 languages</strong> and is the highest-ranking text-only multilingual embedding model under 500M on the Massive Text Embedding Benchmark (MTEB) at the time of writing.</p>
+<h2> <a href="#table-of-contents"> </a> <span> Table of Contents </span>
+</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#evaluation">Evaluation</a></li>
+<li><a href="#demo">Demo</a></li>
+<li><a href="#usage">Usage</a><ul>
+<li><a href="#sentence-transformers">Sentence Transformers</a><ul>
+<li><a href="#retrieval">Retrieval</a></li>
+</ul>
+</li>
+<li><a href="#langchain">LangChain</a></li>
+<li><a href="#llamaindex">LlamaIndex</a></li>
+<li><a href="#haystack">Haystack</a></li>
+<li><a href="#txtai">txtai</a></li>
+<li><a href="#transformersjs">Transformers.js</a></li>
+<li><a href="#text-embeddings-inference">Text Embeddings Inference</a></li>
+<li><a href="#onnx-runtime">ONNX Runtime</a></li>
+</ul>
+</li>
+<li><a href="#finetuning">Finetuning</a><ul>
+<li><a href="#full-finetuning-script">Full Finetuning Script</a></li>
+<li><a href="#training">Training</a></li>
+<li><a href="#finetuned-evaluation">Finetuned Evaluation</a></li>
+</ul>
+</li>
+<li><a href="#further-reading">Further Reading</a></li>
+</ul>
+<h2> <a href="#introduction"> </a> <span> Introduction </span>
+</h2>
+<p><a href="https://sbert.net/">Text embeddings</a> have become the backbone of modern natural‑language applications, turning words, sentences, and documents into dense vectors that capture meaning, sentiment, and intent. These vectors enable fast similarity search, clustering, classification, and retrieval across massive corpora, powering everything from recommendation engines and semantic search to retrieval-augmented generation and code‑search tools. Embedding models that calculate these embeddings are widely used, with well <a href="https://huggingface.co/models?library=sentence-transformers&amp;sort=downloads">over 200 million monthly downloads on Hugging Face</a>.</p>
+<p>Building on this foundation, Google DeepMind’s <strong>EmbeddingGemma</strong> arrives as the newest, most capable small multilingual embedding model yet. With just 308M parameters, a 2k‑token context window, and support for over 100 languages, EmbeddingGemma delivers state‑of‑the‑art performance on the Massive Multilingual Text Embedding Benchmark (MMTEB) while staying under 200 MB of RAM when quantized.</p>
+<p>The various design choices result in a very practical, open-source tool for computing high-quality multilingual embeddings on everyday devices.</p>
+<p>In this blogpost, we describe the EmbeddingGemma architecture and training, and show you how to use the model with various frameworks like Sentence Transformers, LangChain, LlamaIndex, Haystack, txtai, Transformers.js, Text Embedding Inference, and ONNX.</p>
+<p>Afterwards, we demonstrate how to finetune EmbeddingGemma on your domain for even stronger performance. In our example, we finetune EmbeddingGemma on the Medical Instruction and Retrieval Dataset (MIRIAD). The resulting model, <a href="https://huggingface.co/sentence-transformers/embeddinggemma-300m-medical">sentence-transformers/embeddinggemma-300m-medical</a>, achieves state-of-the-art performance on our task: retrieving passages of scientific medical papers in response to detailed medical questions. It even <a href="#finetuned-evaluation">outperforms models twice as big</a> on this task.</p>
+<h2> <a href="#architecture"> </a> <span> Architecture </span>
+</h2>
+<p>EmbeddingGemma builds on the <a href="https://huggingface.co/blog/gemma3">Gemma3</a> transformers backbone, but modified to use bi-directional attention instead of causal (one-way) attention. This means that earlier tokens in the sequence can attend to later tokens, effectively turning the architecture from a decoder into an encoder. Encoder models can outperform LLMs, which are decoders, on embedding tasks like retrieval (<a href="https://arxiv.org/abs/2507.11412">Weller et al., 2025</a>). With this backbone, the model can process a sizable 2048 tokens at once, sufficient for typical retrieval inputs, especially given that larger inputs often result in information loss in the text embeddings.</p>
+<p>Beyond the new Gemma3-based encoder backbone, which produces token embeddings, a mean pooling layer converts these token embeddings into text embeddings. Lastly, two dense layers transform the text embeddings into their final form, a 768-dimensional vector.</p>
+<p>The EmbeddingGemma model has been trained with <a href="https://huggingface.co/blog/matryoshka">Matryoshka Representation Learning (MRL)</a>, allowing you to truncate the 768‑dimensional output to 512, 256, or 128 dimensions on demand. This results in faster downstream processing and lower memory and disk space utilization. See the <a href="#sentence-transformers">Sentence Transformers usage</a> for a snippet showing how to perform this truncation.</p>
+<p>The model has been trained using a carefully curated, multilingual corpus totalling approximately 320 billion tokens. The proprietary dataset is a blend of publicly available web text, code and technical documentation, and synthetic task‑specific examples. It has been filtered to avoid Child Sexual Abuse Material (CSAM), sensitive data, and low-quality or unsafe content.</p>
+<h2> <a href="#evaluation"> </a> <span> Evaluation </span>
+</h2>
+<p>EmbeddingGemma was benchmarked on the MMTEB (Multilingual, v2) and MTEB (English, v2) suites, which span a wide range of tasks, domains, and languages. Despite its modest 308M‑parameter size, the model consistently beats comparable baselines while keeping a very small memory footprint.</p>
+<table> <tbody><tr> <th>MTEB (Multilingual, v2) Performance</th> <th>MTEB (English, v2) Performance</th> </tr> <tr> <td> <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/embeddinggemma/embeddinggemma-300m-mteb-multilingual.png"> </td> <td> <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/embeddinggemma/embeddinggemma-300m-mteb-eng.png"> </td> </tr>
+</tbody></table> <p>The results will be listed on the official <a href="https://huggingface.co/spaces/mteb/leaderboard">MTEB Leaderboard</a>. We exclude any model that has been trained on more than 20% of the MTEB data, to mitigate potential over‑fitting.</p>
+<h2> <a href="#demo"> </a> <span> Demo </span>
+</h2>
+<div> <p> <em> The <a href="https://huggingface.co/spaces/webml-community/semantic-galaxy">demo</a> can also be experienced in full screen. </em> </p>
+</div> <div> Your browser does not support the video tag. <p> <em> Experience the <a href="https://huggingface.co/spaces/webml-community/semantic-galaxy">demo</a> yourself on a Desktop device. </em> </p>
+</div> <h2> <a href="#usage"> </a> <span> Usage </span>
+</h2>
+<p>EmbeddingGemma is integrated with many popular tools, making it easy to incorporate into your existing workflows and applications. The model has been integrated in Sentence Transformers, and thus also in projects that use Sentence Transformers behind the scenes, such as LangChain, LlamaIndex, Haystack, and txtai. See the examples below to get started with your preferred framework.</p>
+<p>For production deployments, you can use <a href="https://huggingface.co/docs/text-embeddings-inference/en/index">Text Embeddings Inference</a> (TEI) to serve the model efficiently on various hardware configurations, and you can use <a href="https://huggingface.co/docs/transformers.js/index">Transformers.js</a> for use in web applications.</p>
+<p>Regardless of your framework choice, you should be mindful of the <strong>prompts</strong>. For embedding models, prompts are prepended to the input text to allow the model to distinguish between different tasks. EmbeddingGemma was trained with these prompt names and prompts, so they should also be included when using the model:</p>
+<ul>
+<li><code>query</code>: <code>"task: search result | query: "</code>,</li>
+<li><code>document</code>: <code>"title: none | text: "</code>,</li>
+<li><code>BitextMining</code>: <code>"task: search result | query: "</code>,</li>
+<li><code>Clustering</code>: <code>"task: clustering | query: "</code>,</li>
+<li><code>Classification</code>: <code>"task: classification | query: "</code>,</li>
+<li><code>InstructionRetrieval</code>: <code>"task: code retrieval | query: "</code>,</li>
+<li><code>MultilabelClassification</code>: <code>"task: classification | query: "</code>,</li>
+<li><code>PairClassification</code>: <code>"task: sentence similarity | query: "</code>,</li>
+<li><code>Reranking</code>: <code>"task: search result | query: "</code>,</li>
+<li><code>Retrieval-query</code>: <code>"task: search result | query: "</code>,</li>
+<li><code>Retrieval-document</code>: <code>"title: none | text: "</code>,</li>
+<li><code>STS</code>: <code>"task: sentence similarity | query: "</code>,</li>
+<li><code>Summarization</code>: <code>"task: summarization | query: "</code></li>
+</ul>
+<p>In Sentence Transformers, the <code>query</code> and <code>document</code> prompts are used automatically when calling <code>model.encode_query</code> and <code>model.encode_document</code>, but for other frameworks you might have to: $</p>
+<ol>
+<li>specify prompt names (e.g. "Reranking"),</li>
+<li>specify prompt strings (e.g. "task: search result | query: "), or</li>
+<li>manually prepend the prompts to your input text.</li>
+</ol>
+<p>The following example scripts will demonstrate this with various frameworks.</p>
+<h3> <a href="#sentence-transformers"> </a> <span> Sentence Transformers </span>
+</h3>
+<p>You will need to install the following packages:</p>
+<pre><code>pip install git+https://github.com/huggingface/transformers@v4.56.0-Embedding-Gemma-preview
+pip install sentence-transformers&gt;=5.0.0
+</code></pre>
+<h4> <a href="#retrieval"> </a> <span> Retrieval </span>
+</h4>
+<p>Inference using Sentence Transformers is rather simple, see this example for semantic search:</p>
+<pre><code><span>from</span> sentence_transformers <span>import</span> SentenceTransformer <span># Download from the Hub</span>
+model = SentenceTransformer(<span>"google/embeddinggemma-300m"</span>) <span># Run inference with queries and documents</span>
+query = <span>"Which planet is known as the Red Planet?"</span>
+documents = [ <span>"Venus is often called Earth's twin because of its similar size and proximity."</span>, <span>"Mars, known for its reddish appearance, is often referred to as the Red Planet."</span>, <span>"Jupiter, the largest planet in our solar system, has a prominent red spot."</span>, <span>"Saturn, famous for its rings, is sometimes mistaken for the Red Planet."</span>
+]
+query_embeddings = model.encode_query(query)
+document_embeddings = model.encode_document(documents)
+<span>print</span>(query_embeddings.shape, document_embeddings.shape)
+<span># (768,) (4, 768)</span> <span># Compute similarities to determine a ranking</span>
+similarities = model.similarity(query_embeddings, document_embeddings)
+<span>print</span>(similarities)
+<span># tensor([[0.3011, 0.6359, 0.4930, 0.4889]])</span> <span># Convert similarities to a ranking</span>
+ranking = similarities.argsort(descending=<span>True</span>)[<span>0</span>]
+<span>print</span>(ranking)
+<span># tensor([1, 2, 3, 0])</span>
+</code></pre>
+<ul>
+<li><a href="https://sbert.net/docs/package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer.encode_query">Sentence Transformers <code>encode_query</code> method documentation</a></li>
+<li><a href="https://sbert.net/docs/package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer.encode_document">Sentence Transformers <code>encode_document</code> method documentation</a></li>
+<li><a href="https://sbert.net/docs/package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer.similarity">Sentence Transformers <code>similarity</code> method documentation</a></li>
+</ul>
+Click to see non-retrieval code <p>If you’re not looking to use this model for Information Retrieval, then you’re likely best off using the most general <code>encode</code> method together with the model prompt that best describes your downstream task out of these options:</p>
+<ul>
+<li><code>BitextMining</code>: Find translated sentence pairs in two languages.</li>
+<li><code>Clustering</code>: Find similar texts to group them together.</li>
+<li><code>Classification</code>: Assign predefined labels to texts.</li>
+<li><code>InstructionRetrieval</code>: Retrieve relevant code snippets based on natural language instructions.</li>
+<li><code>MultilabelClassification</code>: Assign multiple labels to texts.</li>
+<li><code>PairClassification</code>: Assign predefined labels to texts.</li>
+<li><code>Reranking</code>: Reorder search results based on relevance.</li>
+<li><code>Retrieval-query</code>: Retrieve documents based on a query.</li>
+<li><code>Retrieval-document</code>: Retrieve documents based on their content.</li>
+<li><code>STS</code>: Compute semantic textual similarity between texts.</li>
+<li><code>Summarization</code>: Generate concise summaries of texts.</li>
+</ul>
+<pre><code><span>from</span> sentence_transformers <span>import</span> SentenceTransformer <span># Download from the Hub</span>
+model = SentenceTransformer(<span>"google/embeddinggemma-300m"</span>) <span># Let's inspect the configured prompts</span>
+<span>print</span>(model.prompts)
+<span># {</span>
+<span># "query": "task: search result | query: ",</span>
+<span># "document": "title: none | text: ",</span>
+<span># "BitextMining": "task: search result | query: ",</span>
+<span># "Clustering": "task: clustering | query: ",</span>
+<span># "Classification": "task: classification | query: ",</span>
+<span># "InstructionRetrieval": "task: code retrieval | query: ",</span>
+<span># "MultilabelClassification": "task: classification | query: ",</span>
+<span># "PairClassification": "task: sentence similarity | query: ",</span>
+<span># "Reranking": "task: search result | query: ",</span>
+<span># "Retrieval-query": "task: search result | query: ",</span>
+<span># "Retrieval-document": "title: none | text: ",</span>
+<span># "STS": "task: sentence similarity | query: ",</span>
+<span># "Summarization": "task: summarization | query: ",</span>
+<span># }</span> <span># Compute semantic textual similarity using texts, so let's use the STS prompt</span>
+texts = [ <span>"The weather is beautiful today."</span>, <span>"It's a lovely day outside."</span>, <span>"The stock market crashed yesterday."</span>, <span>"I enjoy programming with Python."</span>
+]
+embeddings = model.encode(texts, prompt_name=<span>"STS"</span>)
+<span>print</span>(embeddings.shape)
+<span># (4, 768)</span> <span># Compute similarities</span>
+similarities = model.similarity(embeddings, embeddings)
+<span>print</span>(similarities)
+<span>"""</span>
+<span>tensor([[1.0000, 0.9305, 0.4660, 0.4326],</span>
+<span> [0.9305, 1.0000, 0.4227, 0.4434],</span>
+<span> [0.4660, 0.4227, 1.0000, 0.2638],</span>
+<span> [0.4326, 0.4434, 0.2638, 1.0000]])</span>
+<span>"""</span>
+</code></pre>
+<ul>
+<li><a href="https://sbert.net/docs/package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer.encode">Sentence Transformers <code>encode</code> method documentation</a></li>
+<li><a href="https://sbert.net/docs/package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer.similarity">Sentence Transformers <code>similarity</code> method documentation</a></li>
+</ul> Click to see how to truncate embedding dimensionality for faster and cheaper search <p>Because <code>google/embeddinggemma-300m</code> was trained with MRL, the embeddings generated by this model can be truncated to lower dimensionalities without considerably hurting the evaluation performance. Embeddings with lower dimensionalities are both cheaper to store on disk and in memory, as well as faster for downstream tasks like retrieval, clustering, or classification.</p>
+<p>In Sentence Transformers, you can set a lower dimensionality using the <code>truncate_dim</code> parameter on either the <code>SentenceTransformer</code> initialization or when calling <code>model.encode</code>/<code>model.encode_query</code>/<code>model.encode_document</code>:</p>
+<pre><code><span>from</span> sentence_transformers <span>import</span> SentenceTransformer <span># Download from the Hub</span>
+model = SentenceTransformer(<span>"google/embeddinggemma-300m"</span>, truncate_dim=<span>256</span>) <span># Run inference with queries and documents</span>
+query = <span>"Which planet is known as the Red Planet?"</span>
+documents = [ <span>"Venus is often called Earth's twin because of its similar size and proximity."</span>, <span>"Mars, known for its reddish appearance, is often referred to as the Red Planet."</span>, <span>"Jupiter, the largest planet in our solar system, has a prominent red spot."</span>, <span>"Saturn, famous for its rings, is sometimes mistaken for the Red Planet."</span>
+]
+query_embeddings = model.encode_query(query)
+document_embeddings = model.encode_document(documents)
+<span>print</span>(query_embeddings.shape, document_embeddings.shape)
+<span># (256,) (4, 256)</span> <span># Compute similarities to determine a ranking</span>
+similarities = model.similarity(query_embeddings, document_embeddings)
+<span>print</span>(similarities)
+<span># tensor([[0.4016, 0.6715, 0.5283, 0.5261]])</span> <span># Convert similarities to a ranking</span>
+ranking = similarities.argsort(descending=<span>True</span>)[<span>0</span>]
+<span>print</span>(ranking)
+<span># tensor([1, 2, 3, 0])</span>
+</code></pre>
+<p>Note that the ranking is preserved despite using 3x smaller embeddings compared to the full-sized embeddings.</p>
+<ul>
+<li><a href="https://sbert.net/examples/sentence_transformer/training/matryoshka/README.html">Sentence Transformers Matryoshka Embeddings documentation</a></li>
+</ul> <h3> <a href="#langchain"> </a> <span> LangChain </span>
+</h3>
+<p>If you prefer, you can also use the LangChain <code>HuggingFaceEmbeddings</code>, which uses Sentence Transformers behind the scenes. Note that you'll have to tell LangChain to use the prompts called "query" and "document" for queries and documents, respectively. This example involves a simple information retrieval setup, but the same embedding model can be used in more complex scenarios.</p>
+<p>You will need to install the following packages:</p>
+<pre><code>pip install git+https://github.com/huggingface/transformers@v4.56.0-Embedding-Gemma-preview
+pip install sentence-transformers
+pip install langchain
+pip install langchain-community
+pip install langchain-huggingface
+pip install faiss-cpu
+</code></pre>
+<pre><code><span>from</span> langchain.docstore.document <span>import</span> Document
+<span>from</span> langchain_community.vectorstores <span>import</span> FAISS
+<span>from</span> langchain_huggingface.embeddings <span>import</span> HuggingFaceEmbeddings <span># Download the model from the Hub. Also specify to use the "query" and "document" prompts</span>
+<span># as defined in the model configuration, as LangChain doesn't automatically use them.</span>
+<span># See https://huggingface.co/google/embeddinggemma-300m/blob/main/config_sentence_transformers.json</span>
+embedder = HuggingFaceEmbeddings( model_name=<span>"google/embeddinggemma-300m"</span>, query_encode_kwargs={<span>"prompt_name"</span>: <span>"query"</span>}, encode_kwargs={<span>"prompt_name"</span>: <span>"document"</span>}
+) data = [ <span>"Venus is often called Earth's twin because of its similar size and proximity."</span>, <span>"Mars, known for its reddish appearance, is often referred to as the Red Planet."</span>, <span>"Jupiter, the largest planet in our solar system, has a prominent red spot."</span>, <span>"Saturn, famous for its rings, is sometimes mistaken for the Red Planet."</span>
+] <span># Create documents for the vector store</span>
+documents = [Document(page_content=text, metadata={<span>"id"</span>: i}) <span>for</span> i, text <span>in</span> <span>enumerate</span>(data)] <span># Create vector store using FAISS. Setting distance_strategy to "MAX_INNER_PRODUCT" uses</span>
+<span># FAISS' FlatIndexIP behind the scenes, which is optimized for inner product search. This</span>
+<span># is what the model was trained for</span>
+vector_store = FAISS.from_documents(documents, embedder, distance_strategy=<span>"MAX_INNER_PRODUCT"</span>) <span># Search for top 3 similar documents</span>
+query = <span>"Which planet is known as the Red Planet?"</span>
+results = vector_store.similarity_search_with_score(query, k=<span>3</span>) <span># Print results</span>
+<span>for</span> doc, score <span>in</span> results: <span>print</span>(<span>f"Text: <span>{doc.page_content}</span> (score: <span>{score:<span>.4</span>f}</span>)"</span>)
+<span>"""</span>
+<span>Text: Mars, known for its reddish appearance, is often referred to as the Red Planet. (score: 0.6359)</span>
+<span>Text: Jupiter, the largest planet in our solar system, has a prominent red spot. (score: 0.4930)</span>
+<span>Text: Saturn, famous for its rings, is sometimes mistaken for the Red Planet. (score: 0.4889)</span>
+<span>"""</span>
+</code></pre>
+<ul>
+<li><a href="https://python.langchain.com/api_reference/huggingface/embeddings/langchain_huggingface.embeddings.huggingface.HuggingFaceEmbeddings.html">LangChain HuggingFaceEmbeddings documentation</a></li>
+</ul>
+<h3> <a href="#llamaindex"> </a> <span> LlamaIndex </span>
+</h3>
+<p>EmbeddingGemma is also supported in LlamaIndex as it uses Sentence Transformers under the hood. For the correct behaviour, you need to specify the query and document prompts as defined in the model configuration. Otherwise, your performance will be suboptimal. This script shows a rudimentary example of using EmbeddingGemma with LlamaIndex, but you can use the <code>HuggingFaceEmbedding</code> class in more difficult settings also.</p>
+<p>You will need to install the following packages:</p>
+<pre><code>pip install git+https://github.com/huggingface/transformers@v4.56.0-Embedding-Gemma-preview
+pip install sentence-transformers
+pip install llama-index
+pip install llama-index-embeddings-huggingface
+pip install llama-index-vector-stores-faiss
+</code></pre>
+<pre><code><span>import</span> faiss
+<span>from</span> llama_index.core.schema <span>import</span> TextNode
+<span>from</span> llama_index.core.vector_stores <span>import</span> VectorStoreQuery
+<span>from</span> llama_index.embeddings.huggingface <span>import</span> HuggingFaceEmbedding
+<span>from</span> llama_index.vector_stores.faiss <span>import</span> FaissVectorStore <span># Download from the Hub. Also specify the query and document prompts as</span>
+<span># defined in the model configuration, as LlamaIndex doesn't automatically load them.</span>
+<span># See https://huggingface.co/google/embeddinggemma-300m/blob/main/config_sentence_transformers.json</span>
+embeddings = HuggingFaceEmbedding( model_name=<span>"google/embeddinggemma-300m"</span>, query_instruction=<span>"task: search result | query: "</span>, text_instruction=<span>"title: none | text: "</span>,
+) data = [ <span>"Venus is often called Earth's twin because of its similar size and proximity."</span>, <span>"Mars, known for its reddish appearance, is often referred to as the Red Planet."</span>, <span>"Jupiter, the largest planet in our solar system, has a prominent red spot."</span>, <span>"Saturn, famous for its rings, is sometimes mistaken for the Red Planet."</span>
+] <span># Create a sample vector store</span>
+store = FaissVectorStore(faiss_index=faiss.IndexFlatIP(<span>768</span>))
+store.add([TextNode(<span>id</span>=i, text=text, embedding=embeddings.get_text_embedding(text)) <span>for</span> i, text <span>in</span> <span>enumerate</span>(data)]) <span># Search for top k similar documents</span>
+query = <span>"Which planet is known as the Red Planet?"</span>
+query_embedding = embeddings.get_query_embedding(query)
+results = store.query(VectorStoreQuery(query_embedding=query_embedding, similarity_top_k=<span>3</span>)) <span># Print results</span>
+<span>for</span> idx, score <span>in</span> <span>zip</span>(results.ids, results.similarities): <span>print</span>(<span>f"Text: <span>{data[<span>int</span>(idx)]}</span> (score: <span>{score:<span>.4</span>f}</span>)"</span>)
+<span>"""</span>
+<span>Text: Mars, known for its reddish appearance, is often referred to as the Red Planet. (score: 0.6359)</span>
+<span>Text: Jupiter, the largest planet in our solar system, has a prominent red spot. (score: 0.4930)</span>
+<span>Text: Saturn, famous for its rings, is sometimes mistaken for the Red Planet. (score: 0.4889)</span>
+<span>"""</span>
+</code></pre>
+<ul>
+<li><a href="https://docs.llamaindex.ai/en/stable/examples/embeddings/huggingface/">LlamaIndex HuggingFaceEmbedding documentation</a></li>
+</ul>
+<h3> <a href="#haystack"> </a> <span> Haystack </span>
+</h3>
+<p>EmbeddingGemma can also be used with Haystack, a framework for building production-ready search and language applications. Like LangChain and LlamaIndex, Haystack uses Sentence Transformers behind the scenes and requires you to specify the appropriate prompts. The following example shows how to set up a basic retrieval pipeline using EmbeddingGemma with Haystack.</p>
+<p>You will need to install the following packages:</p>
+<pre><code>pip install git+https://github.com/huggingface/transformers@v4.56.0-Embedding-Gemma-preview
+pip install sentence-transformers
+pip install haystack-ai
+</code></pre>
+<pre><code><span>from</span> haystack <span>import</span> Document, Pipeline
+<span>from</span> haystack.components.embedders <span>import</span> SentenceTransformersDocumentEmbedder, SentenceTransformersTextEmbedder
+<span>from</span> haystack.components.retrievers <span>import</span> InMemoryEmbeddingRetriever
+<span>from</span> haystack.document_stores.in_memory <span>import</span> InMemoryDocumentStore <span># Initialize the document store</span>
+document_store = InMemoryDocumentStore() <span># Initialize the document and query embedders</span>
+document_embedder = SentenceTransformersDocumentEmbedder( model=<span>"google/embeddinggemma-300m"</span>, encode_kwargs={<span>"prompt_name"</span>: <span>"document"</span>}
+)
+query_embedder = SentenceTransformersTextEmbedder( model=<span>"google/embeddinggemma-300m"</span>, encode_kwargs={<span>"prompt_name"</span>: <span>"query"</span>}
+)
+document_embedder.warm_up()
+query_embedder.warm_up() data = [ <span>"Venus is often called Earth's twin because of its similar size and proximity."</span>, <span>"Mars, known for its reddish appearance, is often referred to as the Red Planet."</span>, <span>"Jupiter, the largest planet in our solar system, has a prominent red spot."</span>, <span>"Saturn, famous for its rings, is sometimes mistaken for the Red Planet."</span>,
+] <span># Convert to Haystack documents and write to document store</span>
+documents = [Document(content=text, <span>id</span>=<span>str</span>(i)) <span>for</span> i, text <span>in</span> <span>enumerate</span>(data)]
+documents_with_embeddings = document_embedder.run(documents=documents)[<span>"documents"</span>]
+document_store.write_documents(documents_with_embeddings) <span># Create a query pipeline using a query embedder and compatible retriever</span>
+query_pipeline = Pipeline()
+query_pipeline.add_component(<span>"text_embedder"</span>, query_embedder)
+query_pipeline.add_component(<span>"retriever"</span>, InMemoryEmbeddingRetriever(document_store=document_store, top_k=<span>3</span>))
+query_pipeline.connect(<span>"text_embedder.embedding"</span>, <span>"retriever.query_embedding"</span>) <span># Search for top 3 similar documents</span>
+query = <span>"Which planet is known as the Red Planet?"</span>
+results = query_pipeline.run({<span>"text_embedder"</span>: {<span>"text"</span>: query}}) <span># Print results</span>
+<span>for</span> document <span>in</span> results[<span>"retriever"</span>][<span>"documents"</span>]: <span>print</span>(<span>f"Text: <span>{document.content}</span> (score: <span>{document.score:<span>.4</span>f}</span>)"</span>)
+<span>"""</span>
+<span>Text: Mars, known for its reddish appearance, is often referred to as the Red Planet. (score: 0.6359)</span>
+<span>Text: Jupiter, the largest planet in our solar system, has a prominent red spot. (score: 0.4930)</span>
+<span>Text: Saturn, famous for its rings, is sometimes mistaken for the Red Planet. (score: 0.4889)</span>
+<span>"""</span>
+</code></pre>
+<ul>
+<li><a href="https://docs.haystack.deepset.ai/docs/inmemoryembeddingretriever">Haystack InMemoryEmbeddingRetriever documentation</a></li>
+</ul>
+<h3> <a href="#txtai"> </a> <span> txtai </span>
+</h3>
+<p>txtai is also compatible with EmbeddingGemma. Like other frameworks, txtai utilizes Sentence Transformers under the hood and needs the appropriate prompts for optimal performance with EmbeddingGemma. The following example demonstrates how to set up a basic retrieval system with txtai.</p>
+<p>You will need to install the following packages:</p>
+<pre><code>pip install git+https://github.com/huggingface/transformers@v4.56.0-Embedding-Gemma-preview
+pip install sentence-transformers
+pip install txtai
+</code></pre>
+<pre><code><span>from</span> txtai <span>import</span> Embeddings <span># Download from the Hub. Also specify the query and document prompts as</span>
+<span># defined in the model configuration, as txtai doesn't automatically load them.</span>
+<span># See https://huggingface.co/google/embeddinggemma-300m/blob/main/config_sentence_transformers.json</span>
+embeddings = Embeddings( path=<span>"google/embeddinggemma-300m"</span>, method=<span>"sentence-transformers"</span>, instructions={ <span>"query"</span>: <span>"task: search result | query: "</span>, <span>"data"</span>: <span>"title: none | text: "</span>, }
+) data = [ <span>"Venus is often called Earth's twin because of its similar size and proximity."</span>, <span>"Mars, known for its reddish appearance, is often referred to as the Red Planet."</span>, <span>"Jupiter, the largest planet in our solar system, has a prominent red spot."</span>, <span>"Saturn, famous for its rings, is sometimes mistaken for the Red Planet."</span>
+] <span># Create a sample vector store</span>
+embeddings.index(data) <span># Search for top k similar documents</span>
+query = <span>"Which planet is known as the Red Planet?"</span>
+results = embeddings.search(query, <span>3</span>) <span># Print results</span>
+<span>for</span> idx, score <span>in</span> results: <span>print</span>(<span>f"Text: <span>{data[<span>int</span>(idx)]}</span> (score: <span>{score:<span>.4</span>f}</span>)"</span>)
+<span>"""</span>
+<span>Text: Mars, known for its reddish appearance, is often referred to as the Red Planet. (score: 0.6359)</span>
+<span>Text: Jupiter, the largest planet in our solar system, has a prominent red spot. (score: 0.4930)</span>
+<span>Text: Saturn, famous for its rings, is sometimes mistaken for the Red Planet. (score: 0.4889)</span>
+<span>"""</span>
+</code></pre>
+<ul>
+<li><a href="https://docs.haystack.deepset.ai/docs/inmemoryembeddingretriever">Haystack InMemoryEmbeddingRetriever documentation</a></li>
+</ul>
+<h3> <a href="#transformersjs"> </a> <span> Transformers.js </span>
+</h3>
+<p>You can even run EmbeddingGemma 100% locally in your browser with <a href="https://huggingface.co/docs/transformers.js/en/index">Transformers.js</a>! If you haven't already, you can install the library from <a href="https://www.npmjs.com/package/@huggingface/transformers">NPM</a> using:</p>
+<pre><code>npm i @huggingface/transformers
+</code></pre>
+<p>You can then compute embeddings as follows:</p>
+<pre><code><span>import</span> { <span>AutoModel</span>, <span>AutoTokenizer</span>, matmul } <span>from</span> <span>"@huggingface/transformers"</span>; <span>// Download from the Hub</span>
+<span>const</span> model_id = <span>"onnx-community/embeddinggemma-300m-ONNX"</span>;
+<span>const</span> tokenizer = <span>await</span> <span>AutoTokenizer</span>.<span>from_pretrained</span>(model_id);
+<span>const</span> model = <span>await</span> <span>AutoModel</span>.<span>from_pretrained</span>(model_id, { <span>dtype</span>: <span>"fp32"</span>, <span>// Options: "fp32" | "q8" | "q4"</span>
+}); <span>// Run inference with queries and documents</span>
+<span>const</span> prefixes = { <span>query</span>: <span>"task: search result | query: "</span>, <span>document</span>: <span>"title: none | text: "</span>,
+};
+<span>const</span> query = prefixes.<span>query</span> + <span>"Which planet is known as the Red Planet?"</span>;
+<span>const</span> documents = [ <span>"Venus is often called Earth's twin because of its similar size and proximity."</span>, <span>"Mars, known for its reddish appearance, is often referred to as the Red Planet."</span>, <span>"Jupiter, the largest planet in our solar system, has a prominent red spot."</span>, <span>"Saturn, famous for its rings, is sometimes mistaken for the Red Planet."</span>,
+].<span>map</span>(<span>(<span>x</span>) =&gt;</span> prefixes.<span>document</span> + x); <span>const</span> inputs = <span>await</span> <span>tokenizer</span>([query, ...documents], { <span>padding</span>: <span>true</span> });
+<span>const</span> { sentence_embedding } = <span>await</span> <span>model</span>(inputs); <span>// Compute similarities to determine a ranking</span>
+<span>const</span> scores = <span>await</span> <span>matmul</span>(sentence_embedding, sentence_embedding.<span>transpose</span>(<span>1</span>, <span>0</span>));
+<span>const</span> similarities = scores.<span>tolist</span>()[<span>0</span>].<span>slice</span>(<span>1</span>);
+<span>console</span>.<span>log</span>(similarities);
+<span>// [ 0.30109718441963196, 0.6358831524848938, 0.4930494725704193, 0.48887503147125244 ]</span> <span>// Convert similarities to a ranking</span>
+<span>const</span> ranking = similarities.<span>map</span>(<span>(<span>score, index</span>) =&gt;</span> ({ index, score })).<span>sort</span>(<span>(<span>a, b</span>) =&gt;</span> b.<span>score</span> - a.<span>score</span>);
+<span>console</span>.<span>log</span>(ranking);
+<span>// [</span>
+<span>// { index: 1, score: 0.6358831524848938 },</span>
+<span>// { index: 2, score: 0.4930494725704193 },</span>
+<span>// { index: 3, score: 0.48887503147125244 },</span>
+<span>// { index: 0, score: 0.30109718441963196 }</span>
+<span>// ]</span>
+</code></pre>
+<h3> <a href="#text-embeddings-inference"> </a> <span> Text Embeddings Inference </span>
+</h3>
+<p>You can easily deploy EmbeddingGemma for both development and production using Text Embeddings Inference (TEI) version <a href="https://github.com/huggingface/text-embeddings-inference/releases/tag/v1.8.1">1.8.1</a> or later.	</p>
+<ul>
+<li>CPU:</li>
+</ul>
+<pre><code>docker run -p 8080:80 ghcr.io/huggingface/text-embeddings-inference:cpu-1.8.1 --model-id google/embeddinggemma-300m --dtype float32
+</code></pre>
+<ul>
+<li>CPU with ONNX Runtime:</li>
+</ul>
+<pre><code>docker run -p 8080:80 ghcr.io/huggingface/text-embeddings-inference:cpu-1.8.1 --model-id onnx-community/embeddinggemma-300m-ONNX --dtype float32 --pooling mean
+</code></pre>
+<ul>
+<li>NVIDIA CUDA:</li>
+</ul>
+<pre><code>docker run --gpus all --shm-size 1g -p 8080:80 ghcr.io/huggingface/text-embeddings-inference:cuda-1.8.1 --model-id google/embeddinggemma-300m --dtype float32
+</code></pre>
+<blockquote>
+<p>If you run the Docker container with the <code>cuda-1.8.1</code> tag, it includes support for multiple GPU architectures: Turing, Ampere, Ada Lovelace, and Hopper. For a lighter image tailored to just your GPU, you can instead use a specific tag such as <code>turing-1.8.1</code>, <code>1.8.1</code> and <code>86-1.8.1</code> (Ampere), <code>89-1.8.1</code> (Ada Lovelace), or <code>hopper-1.8.1</code>.</p>
+</blockquote>
+<p>Once deployed, regardless of the device or runtime, you can leverage the <code>/v1/embeddings</code> endpoint based on the <a href="https://platform.openai.com/docs/api-reference/embeddings/create">OpenAI Embeddings API Specification</a> to generate embeddings.</p>
+<pre><code>curl http://0.0.0.0:8080/v1/embeddings -H "Content-Type: application/json" -d '{"model":"google/embeddinggemma-300m","input":["task: search result | query: Which planet is known as the Red Planet?","task: search result | query: Where did Amelia Earhart first fly?"]}'
+</code></pre>
+<p>Alternatively, you can also leverage the <code>/embed</code> endpoint from the <a href="https://huggingface.github.io/text-embeddings-inference/">Text Embeddings Inference Embeddings API</a>, which supports the <code>prompt_name</code> parameter, meaning there’s no need to manually prepend the prompt to the inputs but select it via <code>prompt_name</code> instead.</p>
+<pre><code>curl http://0.0.0.0:8080/embed -H "Content-Type: application/json" -d '{"inputs":["Which planet is known as the Red Planet?","Where did Amelia Earthart first fly?"],"prompt_name":"query","normalize":true}'
+</code></pre>
+<blockquote>
+<p>Additionally, note that since <code>google/embeddinggemma-300m</code> was trained with <a href="https://huggingface.co/blog/matryoshka">Matryoshka Representation Learning (MRL)</a>, you can also leverage the <code>dimensions</code> parameter, on both <code>/v1/embeddings</code> and <code>/embed</code>, to truncate the embeddings to lower dimensionalities (512, 256, and 128) without hurting the evaluation performance.</p>
+</blockquote>
+<h3> <a href="#onnx-runtime"> </a> <span> ONNX Runtime </span>
+</h3>
+<p>You can also run the model directly with <a href="https://onnxruntime.ai/">ONNX Runtime</a>, making it highly portable and cross-platform compatible. The example below shows usage in Python, but the same approach can be applied in other languages (Java, C#, C++, etc.) as well.</p>
+<pre><code><span>from</span> huggingface_hub <span>import</span> hf_hub_download
+<span>import</span> onnxruntime <span>as</span> ort
+<span>from</span> transformers <span>import</span> AutoTokenizer <span># Download from the Hub</span>
+model_id = <span>"onnx-community/embeddinggemma-300m-ONNX"</span>
+model_path = hf_hub_download(model_id, subfolder=<span>"onnx"</span>, filename=<span>"model.onnx"</span>) <span># Download graph</span>
+hf_hub_download(model_id, subfolder=<span>"onnx"</span>, filename=<span>"model.onnx_data"</span>) <span># Download weights</span>
+session = ort.InferenceSession(model_path)
+tokenizer = AutoTokenizer.from_pretrained(model_id) <span># Run inference with queries and documents</span>
+prefixes = { <span>"query"</span>: <span>"task: search result | query: "</span>, <span>"document"</span>: <span>"title: none | text: "</span>,
+}
+query = prefixes[<span>"query"</span>] + <span>"Which planet is known as the Red Planet?"</span>
+documents = [ <span>"Venus is often called Earth's twin because of its similar size and proximity."</span>, <span>"Mars, known for its reddish appearance, is often referred to as the Red Planet."</span>, <span>"Jupiter, the largest planet in our solar system, has a prominent red spot."</span>, <span>"Saturn, famous for its rings, is sometimes mistaken for the Red Planet."</span>
+]
+documents = [prefixes[<span>"document"</span>] + x <span>for</span> x <span>in</span> documents] inputs = tokenizer([query] + documents, padding=<span>True</span>, return_tensors=<span>"np"</span>) _, sentence_embedding = session.run(<span>None</span>, inputs.data)
+<span>print</span>(sentence_embedding.shape) <span># (5, 768)</span> <span># Compute similarities to determine a ranking</span>
+query_embeddings = sentence_embedding[<span>0</span>]
+document_embeddings = sentence_embedding[<span>1</span>:]
+similarities = query_embeddings @ document_embeddings.T
+<span>print</span>(similarities) <span># [0.30109745 0.635883 0.49304956 0.48887485]</span> <span># Convert similarities to a ranking</span>
+ranking = similarities.argsort()[::-<span>1</span>]
+<span>print</span>(ranking) <span># [1 2 3 0]</span>
+</code></pre>
+<h2> <a href="#finetuning"> </a> <span> Finetuning </span>
+</h2>
+<p>As with all models compatible with the Sentence Transformers library, EmbeddingGemma can be easily fine-tuned on your specific dataset. To showcase this, we'll be finetuning <code>google/embeddinggemma-300m</code> on the <a href="https://huggingface.co/datasets/miriad/miriad-4.4M">Medical Instruction and RetrIeval Dataset (MIRIAD)</a> dataset, such that our finetuned model becomes particularly adept at finding passages up to 1000 tokens from scientific medical papers given detailed medical questions. These passages can be used as crucial context for a generative model to answer questions more effectively.</p>
+<p>Below, you can explore each key component of the finetuning process using expandable tabs. Each tab contains the relevant code and a detailed explanation.</p> <h3> <a href="#full-finetuning-script"> </a> <span> Full Finetuning Script </span>
+</h3>
+<p>Below is the complete script, combining all components above:</p>
+<pre><code><span>import</span> logging
+<span>import</span> traceback <span>from</span> datasets <span>import</span> load_dataset
+<span>from</span> sentence_transformers <span>import</span> ( SentenceTransformer, SentenceTransformerModelCardData, SentenceTransformerTrainer, SentenceTransformerTrainingArguments,
+)
+<span>from</span> sentence_transformers.evaluation <span>import</span> InformationRetrievalEvaluator
+<span>from</span> sentence_transformers.losses <span>import</span> CachedMultipleNegativesRankingLoss
+<span>from</span> sentence_transformers.training_args <span>import</span> BatchSamplers <span># Set the log level to INFO to get more information</span>
+logging.basicConfig(<span>format</span>=<span>"%(asctime)s - %(message)s"</span>, datefmt=<span>"%Y-%m-%d %H:%M:%S"</span>, level=logging.INFO) <span># 1. Load a model to finetune with 2. (Optional) model card data</span>
+model = SentenceTransformer( <span>"google/embeddinggemma-300m"</span>, model_card_data=SentenceTransformerModelCardData( language=<span>"en"</span>, license=<span>"apache-2.0"</span>, model_name=<span>"EmbeddingGemma-300m trained on the Medical Instruction and RetrIeval Dataset (MIRIAD)"</span>, ),
+) <span># 3. Load a dataset to finetune on</span>
+train_dataset = load_dataset(<span>"tomaarsen/miriad-4.4M-split"</span>, split=<span>"train"</span>).select(<span>range</span>(<span>100_000</span>))
+eval_dataset = load_dataset(<span>"tomaarsen/miriad-4.4M-split"</span>, split=<span>"eval"</span>).select(<span>range</span>(<span>1_000</span>))
+test_dataset = load_dataset(<span>"tomaarsen/miriad-4.4M-split"</span>, split=<span>"test"</span>).select(<span>range</span>(<span>1_000</span>)) <span># 4. Define a loss function. CachedMultipleNegativesRankingLoss (CMNRL) is a special variant of MNRL (a.k.a. InfoNCE),</span>
+<span># which take question-answer pairs (or triplets, etc.) as input. It will take answers from other questions in the batch</span>
+<span># as wrong answers, reducing the distance between the question and the true answer while increasing the distance to the</span>
+<span># wrong answers, in the embedding space.</span>
+<span># The (C)MNRL losses benefit from larger `per_device_train_batch_size` in the Training Arguments, as they can leverage</span>
+<span># more in-batch negative samples. At the same time, the `mini_batch_size` does not affect training performance, but it</span>
+<span># does limit the memory usage. A good trick is setting a high `per_device_train_batch_size` while keeping</span>
+<span># `mini_batch_size` small.</span>
+loss = CachedMultipleNegativesRankingLoss(model, mini_batch_size=<span>8</span>) <span># 5. (Optional) Specify training arguments</span>
+run_name = <span>"embeddinggemma-300m-medical-100k"</span>
+args = SentenceTransformerTrainingArguments( <span># Required parameter:</span> output_dir=<span>f"models/<span>{run_name}</span>"</span>, <span># Optional training parameters:</span> num_train_epochs=<span>1</span>, per_device_train_batch_size=<span>128</span>, per_device_eval_batch_size=<span>128</span>, learning_rate=<span>2e-5</span>, warmup_ratio=<span>0.1</span>, fp16=<span>True</span>, <span># Set to False if you get an error that your GPU can't run on FP16</span> bf16=<span>False</span>, <span># Set to True if you have a GPU that supports BF16</span> batch_sampler=BatchSamplers.NO_DUPLICATES, <span># (Cached)MultipleNegativesRankingLoss benefits from no duplicate samples in a batch</span> prompts={ <span># Map training column names to model prompts</span> <span>"question"</span>: model.prompts[<span>"query"</span>], <span>"passage_text"</span>: model.prompts[<span>"document"</span>], }, <span># Optional tracking/debugging parameters:</span> eval_strategy=<span>"steps"</span>, eval_steps=<span>100</span>, save_strategy=<span>"steps"</span>, save_steps=<span>100</span>, save_total_limit=<span>2</span>, logging_steps=<span>20</span>, run_name=run_name, <span># Will be used in W&amp;B if `wandb` is installed</span>
+) <span># 6. (Optional) Create an evaluator using the evaluation queries and 31k answers &amp; evaluate the base model</span>
+queries = <span>dict</span>(<span>enumerate</span>(eval_dataset[<span>"question"</span>]))
+corpus = <span>dict</span>(<span>enumerate</span>(eval_dataset[<span>"passage_text"</span>] + train_dataset[<span>"passage_text"</span>][:<span>30_000</span>]))
+relevant_docs = {idx: [idx] <span>for</span> idx <span>in</span> queries}
+dev_evaluator = InformationRetrievalEvaluator( queries=queries, corpus=corpus, relevant_docs=relevant_docs, name=<span>"miriad-eval-1kq-31kd"</span>, <span># 1k questions, 31k passages</span> show_progress_bar=<span>True</span>,
+)
+dev_evaluator(model) <span># 7. Create a trainer &amp; train</span>
+trainer = SentenceTransformerTrainer( model=model, args=args, train_dataset=train_dataset, eval_dataset=eval_dataset, loss=loss, evaluator=dev_evaluator,
+)
+trainer.train() <span># (Optional) Evaluate the trained model on the evaluation set once more, this will also log the results</span>
+<span># and include them in the model card</span>
+dev_evaluator(model) queries = <span>dict</span>(<span>enumerate</span>(test_dataset[<span>"question"</span>]))
+corpus = <span>dict</span>(<span>enumerate</span>(test_dataset[<span>"passage_text"</span>] + train_dataset[<span>"passage_text"</span>][:<span>30_000</span>]))
+relevant_docs = {idx: [idx] <span>for</span> idx <span>in</span> queries}
+test_evaluator = InformationRetrievalEvaluator( queries=queries, corpus=corpus, relevant_docs=relevant_docs, name=<span>"miriad-test-1kq-31kd"</span>, <span># 1k questions, 31k passages</span> show_progress_bar=<span>True</span>,
+)
+test_evaluator(model) <span># 8. Save the trained model</span>
+final_output_dir = <span>f"models/<span>{run_name}</span>/final"</span>
+model.save_pretrained(final_output_dir) <span># 9. (Optional) Push it to the Hugging Face Hub</span>
+<span># It is recommended to run `huggingface-cli login` to log into your Hugging Face account first</span>
+<span>try</span>: model.push_to_hub(run_name)
+<span>except</span> Exception: logging.error( <span>f"Error uploading model to the Hugging Face Hub:\n<span>{traceback.format_exc()}</span>To upload it manually, you can run "</span> <span>f"`huggingface-cli login`, followed by loading the model using `model = SentenceTransformer(<span>{final_output_dir!r}</span>)` "</span> <span>f"and saving it using `model.push_to_hub('<span>{run_name}</span>')`."</span> )
+</code></pre>
+<h3> <a href="#training"> </a> <span> Training </span>
+</h3>
+<p>We ran the full training script on an RTX 3090 with 24GB of VRAM, and the completed training and evaluating scripts took 5.5 hours. If desired, you can further reduce the memory footprint by reducing <code>mini_batch_size</code> on the <code>CachedMultipleNegativesRankingLoss</code> and <code>batch_size</code> on the <code>InformationRetrievalEvaluator</code> instances. See here the logs from our training run:</p>
+<div> <table> <thead><tr>
+<th>Epoch</th>
+<th>Step</th>
+<th>Training Loss</th>
+<th>Validation Loss</th>
+<th>miriad-eval-1kq-31kd_cosine_ndcg@10</th>
+<th>miriad-test-1kq-31kd_cosine_ndcg@10</th>
+</tr> </thead><tbody><tr>
+<td>-1</td>
+<td>-1</td>
+<td>-</td>
+<td>-</td>
+<td>0.8474</td>
+<td>0.8340</td>
+</tr>
+<tr>
+<td>0.0256</td>
+<td>20</td>
+<td>0.1019</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.0512</td>
+<td>40</td>
+<td>0.0444</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.0767</td>
+<td>60</td>
+<td>0.0408</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.1023</td>
+<td>80</td>
+<td>0.0462</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.1279</td>
+<td>100</td>
+<td>0.0542</td>
+<td>0.0525</td>
+<td>0.8616</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.1535</td>
+<td>120</td>
+<td>0.0454</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.1790</td>
+<td>140</td>
+<td>0.0403</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.2046</td>
+<td>160</td>
+<td>0.0463</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.2302</td>
+<td>180</td>
+<td>0.0508</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.2558</td>
+<td>200</td>
+<td>0.0497</td>
+<td>0.0449</td>
+<td>0.8643</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.2813</td>
+<td>220</td>
+<td>0.0451</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.3069</td>
+<td>240</td>
+<td>0.0445</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.3325</td>
+<td>260</td>
+<td>0.0489</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.3581</td>
+<td>280</td>
+<td>0.0452</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.3836</td>
+<td>300</td>
+<td>0.0461</td>
+<td>0.0406</td>
+<td>0.8832</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.4092</td>
+<td>320</td>
+<td>0.0415</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.4348</td>
+<td>340</td>
+<td>0.04</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.4604</td>
+<td>360</td>
+<td>0.0399</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.4859</td>
+<td>380</td>
+<td>0.0423</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.5115</td>
+<td>400</td>
+<td>0.0352</td>
+<td>0.0316</td>
+<td>0.8823</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.5371</td>
+<td>420</td>
+<td>0.0408</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.5627</td>
+<td>440</td>
+<td>0.0356</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.5882</td>
+<td>460</td>
+<td>0.0371</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.6138</td>
+<td>480</td>
+<td>0.0276</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.6394</td>
+<td>500</td>
+<td>0.028</td>
+<td>0.0280</td>
+<td>0.8807</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.6650</td>
+<td>520</td>
+<td>0.0302</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.6905</td>
+<td>540</td>
+<td>0.0345</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.7161</td>
+<td>560</td>
+<td>0.0325</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.7417</td>
+<td>580</td>
+<td>0.033</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.7673</td>
+<td>600</td>
+<td>0.0314</td>
+<td>0.0264</td>
+<td>0.8910</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.7928</td>
+<td>620</td>
+<td>0.033</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.8184</td>
+<td>640</td>
+<td>0.029</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.8440</td>
+<td>660</td>
+<td>0.0396</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.8696</td>
+<td>680</td>
+<td>0.0266</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.8951</td>
+<td>700</td>
+<td>0.0262</td>
+<td>0.0240</td>
+<td>0.8968</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.9207</td>
+<td>720</td>
+<td>0.0262</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.9463</td>
+<td>740</td>
+<td>0.0327</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.9719</td>
+<td>760</td>
+<td>0.0293</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>0.9974</td>
+<td>780</td>
+<td>0.0304</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>-1</td>
+<td>-</td>
+<td>-</td>
+<td>0.9026</td>
+<td>0.8862</td>
+</tr>
+</tbody> </table>
+</div>
+<h3> <a href="#finetuned-evaluation"> </a> <span> Finetuned Evaluation </span>
+</h3>
+<p>The performance of the base model was already excellent, with a strong 0.8340 NDCG@10 on our MIRIAD test set. Despite that, we were able to increase it considerably on this domain-specific dataset.</p>
+<div> <table> <thead><tr>
+<th>Model</th>
+<th>Number of Parameters</th>
+<th>NDCG@10 on <code>miriad-test-1kq-31kd</code></th>
+</tr> </thead><tbody><tr>
+<td><a href="https://huggingface.co/BAAI/bge-base-en-v1.5"><code>BAAI/bge-base-en-v1.5</code></a></td>
+<td>109M</td>
+<td>0.7541</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/intfloat/multilingual-e5-small"><code>intfloat/multilingual-e5-small</code></a></td>
+<td>118M</td>
+<td>0.6852</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/ibm-granite/granite-embedding-125m-english"><code>ibm-granite/granite-embedding-125m-english</code></a></td>
+<td>125M</td>
+<td>0.7745</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/Snowflake/snowflake-arctic-embed-m-long"><code>Snowflake/snowflake-arctic-embed-m-long</code></a></td>
+<td>137M</td>
+<td>0.7514</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/intfloat/multilingual-e5-base"><code>intfloat/multilingual-e5-base</code></a></td>
+<td>278M</td>
+<td>0.7052</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/Snowflake/snowflake-arctic-embed-m-v2.0"><code>Snowflake/snowflake-arctic-embed-m-v2.0</code></a></td>
+<td>305M</td>
+<td>0.8467</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/BAAI/bge-large-en-v1.5"><code>BAAI/bge-large-en-v1.5</code></a></td>
+<td>335M</td>
+<td>0.7727</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1"><code>mixedbread-ai/mxbai-embed-large-v1</code></a></td>
+<td>335M</td>
+<td>0.7851</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/intfloat/multilingual-e5-large"><code>intfloat/multilingual-e5-large</code></a></td>
+<td>560M</td>
+<td>0.7318</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/Snowflake/snowflake-arctic-embed-l-v2.0"><code>Snowflake/snowflake-arctic-embed-l-v2.0</code></a></td>
+<td>568M</td>
+<td>0.8433</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/Qwen/Qwen3-Embedding-0.6B"><code>Qwen/Qwen3-Embedding-0.6B</code></a></td>
+<td>596M</td>
+<td>0.8493</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/google/embeddinggemma-300m"><code>google/embeddinggemma-300m</code></a> (base)</td>
+<td>268M</td>
+<td>0.8340</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/sentence-transformers/embeddinggemma-300m-medical"><code>sentence-transformers/embeddinggemma-300m-medical</code></a> (fine-tuned)</td>
+<td>268M</td>
+<td><strong>0.8862</strong></td>
+</tr>
+</tbody> </table>
+</div>
+<p>Our fine-tuning process achieved a significant improvement of +0.0522 NDCG@10 on the test set, resulting in a model that comfortably outperforms any existing general-purpose embedding model on our specific task, at this model size. Additional time and compute investment would allow for even stronger results, such as <a href="https://sbert.net/docs/package_reference/util.html#sentence_transformers.util.mine_hard_negatives">hard negatives mining</a> or training with more than 100k data pairs.</p>
+<h2> <a href="#further-reading"> </a> <span> Further Reading </span>
+</h2>
+<ul>
+<li><a href="https://huggingface.co/google/embeddinggemma-300m">google/embeddinggemma-300m</a></li>
+<li><a href="https://developers.googleblog.com/en/introducing-embeddinggemma/">Google EmbeddingGemma blogpost</a></li>
+<li><a href="https://arxiv.org/abs/2509.20354">Google EmbeddingGemma technical report</a></li>
+<li><a href="https://sbert.net/">Sentence Transformers documentation</a></li>
+<li><a href="https://sbert.net/docs/sentence_transformer/training_overview.html">Sentence Transformers &gt; Training Overview documentation</a></li>
+<li><a href="https://huggingface.co/docs/transformers.js/en/index">Transformers.js documentation</a></li>
+<li><a href="https://huggingface.co/docs/text-embeddings-inference/en/index">Text Embeddings Inference (TEI) documentation</a></li>
+</ul>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

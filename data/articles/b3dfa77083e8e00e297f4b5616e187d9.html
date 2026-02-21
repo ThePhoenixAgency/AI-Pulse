@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,73 +28,7 @@
     Source: Hugging Face Blog | Date: 9/2/2025 4:54:29 PM | <a href="https://huggingface.co/blog/SandboxAQ/sair-data-accelerating-drug-discovery-with-ai" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/arman-zaribafiyan"><img alt="Arman Zaribafiyan's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/6rK4zLboxtGU8LF-Ny0td.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/cgeorgiaw"><img alt="Georgia Channing's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/WEjkuS_TxIgtYRxNPa0VS.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/rudiplesch-sbx"><img alt="Rudi Plesch's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/68a77a29646ad764c5cf2629/y_sSPjSh5BWX3Rx4lI85l.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/zanebeckwithsaq"><img alt="Zane Beckwith's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/aEbBWDD2z-DUHivQ2zRLs.png"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#accessing-sair">Accessing SAIR</a> <ul><li><a href="#1-install-essentials">1. Install essentials</a> <ul></ul> </li><li><a href="#2-authenticate">2. Authenticate</a> <ul></ul> </li><li><a href="#3-load-the-main-table-sairparquet">3. Load the main table (<code>sair.parquet</code>)</a> <ul></ul> </li><li><a href="#4-optional-list-available-structure-archives">4. (Optional) List available structure archives</a> <ul></ul> </li><li><a href="#5-optional-download-and-extract-structures">5. (Optional) Download and extract structures</a> <ul></ul> </li><li><a href="#questions">Questions?</a> <ul></ul> </li></ul> </li></ul></nav></div><p>This summer, SandboxAQ released the <strong>Structurally Augmented IC50 Repository (</strong><a href="https://huggingface.co/datasets/SandboxAQ/SAIR"><strong>SAIR</strong></a><strong>)</strong>, <strong>the largest dataset of co-folded 3D protein-ligand structures paired with experimentally measured IC₅₀ labels, directly linking molecular structure to drug potency</strong> and overcoming a longstanding scarcity in training data. This dataset is now available on Hugging Face, and for the first time, researchers have open access to more than <strong>5 million</strong> AI‑generated, high‑accuracy protein-ligand 3D structures, each paired with validated empirical binding potency data.</p>
-<p><a href="https://cdn-uploads.huggingface.co/production/uploads/680ff4388f704be391757780/KOXzLW72JLyU3rtMrb3yn.png"><img alt="image/png" src="https://cdn-uploads.huggingface.co/production/uploads/680ff4388f704be391757780/KOXzLW72JLyU3rtMrb3yn.png"></a></p>
-<p><strong>SAIR is an open-sourced dataset</strong> and is publicly available for free under a permissive CC BY 4.0 license, making it immediately actionable for commercial and non-commercial R&amp;D pipelines. More than just a dataset, SAIR is a <strong>strategic asset</strong> that bridges the long-standing data gap in AI-powered drug design. It empowers pharmaceutical, biotech, and tech‑bio leaders to accelerate R&amp;D, expand target horizons, and supercharge AI models – moving more of the costly, lengthy drug design and optimization from the wet lab to <em>in silico</em>. This means shorter hit‑to‑lead timelines, more efficient lead optimization, fewer dead‑end projects, and a more predictable path from initial idea to clinical candidate.</p>
-<h2> <a href="#leapfrogging-past-ai-achievements"> <span></span> </a> <span> Leapfrogging Past AI Achievements </span>
-</h2>
-<p>AI and computer-aided design have great potential in dramatically accelerating the development of new drugs. For decades, scientists have dreamed about AI that could identify or design a potent, non-toxic, and efficacious compound from a prompt describing the disease pathway, practically compressing years of drug R&amp;D into a few minutes on a computer. However, this vision is bottlenecked by AI's ability to predict critical drug properties like potency, toxicity, etc., based solely on its molecular structure. </p>
-<p>Furthermore, traditional structure‑based discovery is often slowed early by the determination of reliable 3D structures. Three‑dimensional molecular structure dictates a molecule’s functionality, dynamics and interactions, which is especially important when a potential drug candidate is expected to bind to a human protein target.</p>
-<p>Experimental methods, such as X-ray crystallography and cryo-EM, require extensive time and investment, and many promising disease targets still lack experimentally validated structural information. Computer simulations have helped lower the barrier of getting 3D structures and predicting binding affinity. However, earlier generations of algorithms for protein folding and docking (like AlphaFold and Vina respectively) only predict static snapshots of molecules and proteins (which, in reality, are inherently dynamic and shape-changing).</p>
-<p>SAIR solves that constraint by compiling over <strong>1 million unique computationally co-folded protein–ligand pairs</strong>, ultimately yielding <strong>5.24 million</strong> distinct 3D complexes (five different co-folded structures per pair). Each structure is paired with a curated IC₅₀ measurement from <a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a> or <a href="https://www.bindingdb.org/rwd/bind/index.jsp">BindingDB</a>, providing for the first time a scalable link between high-quality 3D structures and drug potency, and bridging the historic data gap that has hindered AI-driven discovery. Deep-learned affinity models such as Boltz-2, trained on similar data, <a href="https://www.rxrx.ai/boltz-2">have been shown</a> to yield up to a 1,000x speed-up over the traditional, first-principle approach.</p>
-<h2> <a href="#optimized-for-the-cutting-edge-of-computing"> <span></span> </a> <span> Optimized for the cutting-edge of computing </span>
-</h2>
-<p>Creating SAIR was a major feat of high-performance AI computing. It took more than 130,000 GPU hours to compute the SAIR dataset using Boltz1, a cofolding AI model, on a cluster of 760 NVIDIA H100 processors, leveraging the NVIDIA DGX Cloud through Google Cloud Platform.</p>
-<p>Capturing highly granular node, operator, scheduler, and GPU metrics, as well as a close collaboration on both infrastructure and workload optimization, helped NVIDIA AI Accelerator and SandboxAQ engineering teams identify bottlenecks and optimize configurations to achieve the highest workload throughput.</p>
-<p>Consequently, the two teams were able to achieve &gt; 95% GPU compute utilization for generating the SAIR dataset. This enabled us to create SAIR in three weeks – as opposed to the original estimate of three months (more than a 4X speed up) – and resulted in a highly optimized, GPU-native computational workflow that seamlessly integrates with today’s cutting-edge enterprise compute environments.</p>
-<h2> <a href="#unprecedented-scale-accuracy-and-power"> <span></span> </a> <span> Unprecedented scale, accuracy and power </span>
-</h2>
-<p>Generating such a massive volume of data is only half the story. Equally important is confidence in its quality, which is why every predicted complex underwent rigorous validation with <a href="https://pubs.rsc.org/en/content/articlelanding/2024/sc/d3sc04185a"><strong>PoseBusters</strong></a>, an industry-standard, open-source tool for benchmarking structure-related AI in drug discovery. This tool checks chemical sanity and physical plausibility.</p>
-<p><strong>The end result was that 97 percent</strong> of SAIR’s structures passed all checks. In addition to PoseBusters validation, we benchmarked leading affinity prediction methods, such as empirical scoring functions, 3D CNNs, and graph neural networks, across SAIR’s synthetic structures and experimental IC₅₀ values. The detailed results of these studies are available in our <a href="https://www.biorxiv.org/content/10.1101/2025.06.17.660168v1">scientific manuscript on bioRxiv</a>.</p>
-<p>SAIR data is a reliable foundation for benchmarking new models as well as downstream modelling, screening, and design.</p>
-<h2> <a href="#bringing-dark-targets-into-the-light"> <span></span> </a> <span> Bringing “dark” targets into the light </span>
-</h2>
-<p>A persistent challenge in drug discovery is the “dark proteome,” or disease‑relevant proteins for which experimental structures simply do not exist. SAIR illuminates these uncharted regions by providing credible, AI‑predicted complexes wherever experimental data is scarce. For example, more than 40 percent of the proteins in the SAIR dataset have no available structures in the Protein Data Bank (PDB) whatsoever, with or without a ligand. SAIR addresses one of the biggest challenges with existing AI models, low generalizability due to data scarcity. With SAIR, scientists can now explore targets that were previously deemed undruggable, armed with structural hypotheses to guide virtual screening and lead optimization using trustworthy model predictions.</p>
-<p>Moreover, SAIR’s cross‑target breadth uncovers polypharmacology patterns and elucidates how a single molecule might interact with multiple proteins. Leveraging this rich tapestry of interactions, you can train AI models to predict off‑target effects or identify new repurposing opportunities, equipping your organization with a deeper understanding of compound profiles before any lab work begins.</p>
-<hr>
-<h2> <a href="#accessing-sair"> <span></span> </a> <span> Accessing SAIR </span>
-</h2>
-<p>SAIR is freely available on <a href="https://huggingface.co/datasets/SandboxAQ/SAIR">Hugging Face</a>. Here’s a quick guide to pull SAIR from Hugging Face, peek at the main table, and (optionally) download a few structure archives.</p>
-<h3> <a href="#1-install-essentials"> <span></span> </a> <span> 1. Install essentials </span>
-</h3>
-<p>We use the Hub to fetch files and pandas+pyarrow to read the Parquet.</p>
-<pre><code>pip install huggingface_hub pandas pyarrow
-</code></pre>
-<h3> <a href="#2-authenticate"> <span></span> </a> <span> 2. Authenticate </span>
-</h3>
-<p>Authenticate to Hugging Face:</p>
-<pre><code><span>import</span> huggingface_hub
-huggingface_hub.login(token=<span>"your_auth_token"</span>)
-</code></pre>
-<h3> <a href="#3-load-the-main-table-sairparquet"> <span></span> </a> <span> 3. Load the main table (<code>sair.parquet</code>) </span>
-</h3>
-<p>This grabs the file from the Hub and loads it into a DataFrame.</p>
-<pre><code><span>from</span> huggingface_hub <span>import</span> hf_hub_download
-<span>import</span> pandas <span>as</span> pd parquet_path = hf_hub_download( repo_id=<span>"SandboxAQ/SAIR"</span>, filename=<span>"sair.parquet"</span>, repo_type=<span>"dataset"</span>
-) df = pd.read_parquet(parquet_path)
-df.head()
-</code></pre>
-<h3> <a href="#4-optional-list-available-structure-archives"> <span></span> </a> <span> 4. (Optional) List available structure archives </span>
-</h3>
-<p>Structure files are shipped as many <code>.tar.gz</code> archives under <code>structures_compressed/</code>. List them and pick what you need.</p>
-<pre><code><span>from</span> huggingface_hub <span>import</span> list_repo_files files = [f.split(<span>"/"</span>)[-<span>1</span>] <span>for</span> f <span>in</span> list_repo_files(<span>"SandboxAQ/SAIR"</span>, repo_type=<span>"dataset"</span>) <span>if</span> f.startswith(<span>"structures_compressed/"</span>) <span>and</span> f.endswith(<span>".tar.gz"</span>)]
-files[:<span>5</span>]
-</code></pre>
-<h3> <a href="#5-optional-download-and-extract-structures"> <span></span> </a> <span> 5. (Optional) Download and extract structures </span>
-</h3>
-<p>Each archive can be large (≈10 GB). Download only the ones you need and extract them locally.</p>
-<pre><code><span>import</span> os, tarfile
-<span>from</span> huggingface_hub <span>import</span> hf_hub_download dest = <span>"sair_structures"</span>
-os.makedirs(dest, exist_ok=<span>True</span>) to_get = [ <span>"sair_structures_1006049_to_1016517.tar.gz"</span>, <span>"sair_structures_100623_to_111511.tar.gz"</span>,
-] <span>for</span> name <span>in</span> to_get: tar_path = hf_hub_download( repo_id=<span>"SandboxAQ/SAIR"</span>, filename=<span>f"structures_compressed/<span>{name}</span>"</span>, repo_type=<span>"dataset"</span>, local_dir=dest, local_dir_use_symlinks=<span>False</span>, ) <span>with</span> tarfile.<span>open</span>(tar_path, <span>"r:gz"</span>) <span>as</span> tar: tar.extractall(dest) os.remove(tar_path) <span># free disk space</span>
-</code></pre>
-<div><p>A full version of this script, including more robust logging and validation, is available in the <a href="https://huggingface.co/datasets/SandboxAQ/SAIR/blob/main/README.md">README</a> file for your convenience. For more details, visit <a href="https://www.sandboxaq.com/sair">the SAIR homepage</a>, read our <a href="https://www.biorxiv.org/content/10.1101/2025.06.17.660168v1">manuscript on bioRxiv</a>, or watch our 25-minute <a href="https://www.youtube.com/watch?v=y96t8vu9nfg">joint webinar with NVIDIA</a>, where we demonstrate SAIR and explain how data is structured within it. Extensive documentation, tutorials, and example benchmarks are available to facilitate its use and accelerate internal adoption.</p><p>The future of drug discovery is data-driven, AI-accelerated, and grounded in scalable, high-quality structural insights. While we don’t yet have AI that can design effective drug therapies with just a prompt, SAIR brings researchers ever closer to that goal with new data and insights that can potentially shave years from even AI-accelerated R&amp;D pipelines.</p><p>We can’t wait to see what researchers will build using SAIR, and SandboxAQ experts are here to support them throughout the discovery process.</p></div>
-<hr>
-<h3> <a href="#questions"> <span></span> </a> <span> Questions? </span>
-</h3>
-<p>Contact the authors or post on the SAIR dataset discussion page.</p>
-<p>Authors: <a href="mailto:arman.zaribafiyan@sandboxquantum.com">Arman Zaribafiyan</a>, <a href="mailto:georgia@huggingface.co">Georgia Channing</a>, <a href="mailto:zane.beckwith@sandboxquantum.com">Zane Beckwith</a>, and <a href="mailto:rudi.plesch@sandboxquantum.com">Rudi Plesch</a></p>
-</div></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

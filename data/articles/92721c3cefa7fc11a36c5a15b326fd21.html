@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why the shift left dream has become a nightmare for security and developers</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Why the shift left dream has become a nightmare for security and developers</h1>
+  <div class="metadata">
+    Source: BleepingComputer Windows | Date: 2/20/2026 2:45:54 PM | <a href="https://www.bleepingcomputer.com/news/security/why-the-shift-left-dream-has-become-a-nightmare-for-security-and-developers/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><img alt="Qualys header showing a cybersecurity symbols" src="https://www.bleepstatic.com/content/posts/2026/02/19/qualys-header.jpg"></p> <p><em>Written by Ivan Milenkovic, Vice President Risk Technology EMEA, Qualys</em></p> <p>For the better part of the last decade,we have engaged in a comfortable fiction around security and development. If we could only "shift left" and get developers to take a modicum more responsibility for security alongside their coding, testing and infrastructure deployment, the digital world would become a safer, faster and cheaper place. Instead, the fundamental conflict between speed and security has got worse.</p> <p>Why did this fail? Developers are under crushing pressure. The classic triangle of project management - Fast, Good, Cheap; pick two - has been smashed to pieces.</p> <p>Businesses demand fast, good, cheap and secure. When push comes to shove, "fast" always wins. At the same time, we pushed too much cognitive load onto developers who were already drowning.</p> <p>When they choose to use public container images to speed up development, they are trying to meet their goals, but they are also open to potential risk. So how can we understand what the real problem is, and then work to solve that?</p> <h2>Business demands beat security recommendations</h2> <p>There is a pervasive narrative in the security industry that developers are lazy or careless. This is absolutely not true. Developers are not lazy; they are overloaded, pragmatic professionals reacting to the incentives placed before them. If their bonus depends on shipping features by Friday and the security scan takes four hours to run and blocks the build, they will find a way around the scan.</p> <p>Businesses demand results faster and faster, which has created an environment where security protocols are seen as a barrier to productivity rather than an integral part of engineering. When security tools are noisy, slow, and disconnected from the workflow, they are a barrier.</p> <p>However, the result of this is that organisations have lost control of what is actually running in their environments. We have pipelines that deploy code automatically, infrastructure that scales up and down without human intervention, and AI agents that can now write and execute their own scripts.</p> <p>Into this high-speed, automated chaos, we treat public registries like curated libraries, assuming that because an image is on Docker Hub, it must be safe. But pulling a container from a public registry like Docker Hub is a trust decision.</p> <p>The likes of Docker, Amazon, Google and Microsoft all operate public container registries, so there is a natural assumption that they are safe.</p> <p>This trust is misplaced. By the time that container image makes it to the deployment pipeline, it is already a trusted artifact, baked into the application.</p> <h2>The 34,000 Image Reality Check</h2> <p>Qualys Threat Research Unit (TRU) recently conducted an <a href="https://blog.qualys.com/product-tech/2026/01/22/public-container-registry-security-risks-malicious-images" target="_blank">exhaustive analysis of over 34,000 container images</a> pulled from public repositories to see what is really going on beneath the manifest.</p> <p>Of that total, around 2,500 images - approximately 7.3 percent of the sample - were malicious. Of the malicious images, 70 percent contained cryptomining software.</p> <p>On top of this, 42 percent of images contained more than five secrets that could be used to get access to other resources or accounts. This includes valuable items like AWS access keys, GitHub API tokens, and database credentials baked directly into the image layers.</p> <div>
+<figure><img alt="Malicious container images by threat category" src="https://www.bleepstatic.com/images/news/security/q/Qualys/malicious-docker-images/qualys-malicious-images.jpg"><figcaption><strong>Qualys Research - make up of malicious images based on analysis of more than 2,500 confirmed malicious containers detected on DockerHub</strong></figcaption></figure></div> <p>In our analysis, the biggest issues around malicious containers are still very simple. Typosquatting is one of the most common methods that attackers use to get their malicious containers downloaded. The standard advice to "check the spelling" is essential, yes, but it is also a low-energy response to a high-stakes problem.</p> <p>Telling a developer to "be more careful" is not a security strategy. While public registries are handy for speed, we should not be letting developers pull from public registries at all.</p> <p>In a mature environment, every external image should be proxied through an internal artifact repository that acts as a quarantine zone. Yet that need for speed is not going to go away. Instead, we have to work on how to help developers move faster while keeping security in place.</p> <p>This does mean more work for the infrastructure team, but that work should enable developers to move ahead faster and with less risk.</p> <h2>Shift down</h2> <p>The logic is that it is cheaper to fix a bug during design or coding than in production. Therefore, moving security earlier in the Software Development Life Cycle (SDLC) should reduce risks later. While this makes sense in theory, it asks developers to scan their own code, check their own dependencies, and manage their own infrastructure.</p> <p>In reality, we just shifted the pain onward. It asks developers to manage vulnerabilities, configuration hardening, secret detection, compliance auditing, and so on. At the same time, those developers are measured primarily on feature velocity.</p> <p>"Shift left" was supposed to make security collaborative. Instead, it simply moved the problem into every developer’s IDE. To fix this problem, we have to make security within infrastructure the default, rather than by design.</p> <p>This involves real collaboration between developers and security - developers have to understand what they want to achieve and what will be required of what they build, while security will have to work around those requirements so they can be delivered securely. Both teams are responsible, but they both have to work at the speed that the business needs.</p> <p>This is also something that should be flagged back to the business from the start, so security and development present a united front around what the cost is.</p> <p>Taking this approach incentivises secure deployment by making it the path of least resistance. It moves the responsibility down the stack to the infrastructure layer, managed by a specialised Platform Engineering team. And if something different is needed, that work can be done collaboratively to ensure it is right first time, rather than leading to more issues that need to be remediated.</p> <p>For example, instead of asking a developer to please enable versioning on a specific S3 bucket, the platform team writes a policy using Terraform modules, Crossplane compositions, or Open Policy Agent that simply doesn't allow a bucket to exist without versioning. The developer literally cannot make the mistake.</p> <p>The platform corrects it automatically or rejects the request. Similarly, developers shouldn't have to remember container scanning in their workflows, the CI pipeline should do it automatically. The admission controller should reject non-compliant images before they ever hit a cluster. The developer doesn't need to know how the scan works, only that if they try to deploy a critical vulnerability, the door will be locked.</p> <p>"Shift down" also means automating the fix. For instance if a vulnerability is found in a base image, the platform should automatically generate a Pull Request to upgrade it. If a runtime security tool detects a container behaving badly (e.g., spawning a shell for persistence), it shouldn't just send an alert. It should kill the pod and isolate the node autonomously.</p> <p>Rather than sticking with existing ways of running across security and development, we have to react to what is happening. This can mean we fundamentally change how we operate across teams.</p> <p>If we continue with the "shift left" mentality of piling cognitive load onto developers, we will fail. We will burn them out, and they will bypass our controls simply so they can get what needs to be done for the business.</p> <p>Instead, security has to be proactive around how to implement and support the right platforms for the business, so they can be made secure automatically.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

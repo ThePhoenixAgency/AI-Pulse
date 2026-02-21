@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built Myself a Debugging Toolkit — Made With My Claude Friend, Sharing With You</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built Myself a Debugging Toolkit — Made With My Claude Friend, Sharing With You</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/21/2026 8:07:30 PM | <a href="https://dev.to/yuvalatia/i-built-myself-a-debugging-toolkit-made-with-my-claude-friend-sharing-with-you-53j" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/yuvalatia"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3784312%2F7c3fff6b-ea56-4bb3-a26d-95e236c18e8a.png" alt="Yuval Atia"></a> </p> </div><div> <p>I spend a lot of time debugging things in production. Weird JSON responses, tokens that don't look right, timestamps that make no sense, hashes that need verifying.</p> <p>Every time, it's the same thing — google "base64 decode online", paste sensitive production data into some random website, get the answer, move on. It always felt wrong.</p> <p>So I built Stingr — a toolkit for the stuff I actually need during debugging. Everything runs in your browser, nothing gets sent anywhere. I made it together with Claude (yes, the AI —<br> we're friends now ) and figured I'd share it in case it helps you too.</p> <p> stingr.dev</p> <p>The tools I actually use at 2am</p> <p>JSON Tree Viewer — this is the one I built first and use most. When a production API returns a massive nested response and I need to find what's wrong, I need to expand/collapse by<br> depth, search for a specific field, pin the paths I keep checking. Recently added JSONPath queries too, so I can do $.data.users[*].errors and get just what I need.</p> <p>JSON Compare — "why does staging return different data than prod?" Paste both, get a diff. It's smart enough to detect moved array items instead of marking everything as removed +<br> added.</p> <p>JWT Decoder — "this token is supposed to have admin scope, does it?" One paste, header + payload + expiry right there.</p> <p>Base64 / URL Decoder — some API just returned something encoded and I need to know what's in it. Fast.</p> <p>Timestamp Converter — is this 1708531200 in seconds or milliseconds? What time is it actually?</p> <p>Hash Generator &amp; Verifier — quick SHA-256 checksums, HMAC verification, file integrity checks.</p> <p>Key Case Converter — backend returns user_name but frontend expects userName? Convert all JSON keys with one click.</p> <p>There's about 40 tools total — formatters, regex tester, cron parser, text diff, generators — but the ones above are my daily drivers.</p> <p>Why it's all client-side</p> <p>When I'm debugging production, I'm dealing with real user data. I don't want that going through someone else's server. Stingr runs 100% in the browser — open the Network tab and check,<br> zero requests. Hashing uses the Web Crypto API, everything else is plain JS.</p> <p>How it's built</p> <p>React + Vite, four dependencies total. Nothing fancy. I built it to solve my own problem and Claude helped me ship it way faster than I could have alone. Honestly a great experience<br> building together.</p> <p>It's open source: github.com/yuval-atia/stinger</p> <p>If it saves you even one "let me google base64 decode" during your next incident, I'm happy. And if you have ideas for tools you'd want — open an issue, I'm actively adding stuff.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

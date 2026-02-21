@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Vibe-Coded a GPU Accelerated Face Cropping Tool in Rust — Here’s Why</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Vibe-Coded a GPU Accelerated Face Cropping Tool in Rust — Here’s Why</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/21/2026 8:09:21 PM | <a href="https://dev.to/gregorycarnegie/i-vibe-coded-a-gpu-accelerated-face-cropping-tool-in-rust-heres-why-2cfg" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Everyone has that moment where they look at an existing task, squint, and think: "I wish a computer could do this for me." For me, that moment came while cropping hundreds of student ID photos at work — and the existing solutions were either painfully slow, wildly inaccurate, or locked behind a subscription.</p> <p>So I built <strong>Face Crop Studio</strong>: an open-source, GPU-accelerated face detection and cropping tool written almost entirely in Rust. Here's the story of why, what went wrong, and what I learned.</p> <p><strong>The Problem</strong><br>
+I work in IT for a school. Every year, I need to process student photos — headshots for ID cards, passport-format images for our student database. The tools available fell into two camps:</p> <ol>
+<li>
+<strong>Online services</strong> that upload your images to someone else's server (a non-starter for student data).</li>
+<li>
+<strong>Desktop tools</strong> that choke on batch jobs or produce inconsistent results.</li>
+</ol> <p>I needed something that could handle hundreds of images locally, produce deterministic results, and do it fast.</p> <p><strong>Why Rust?</strong><br>
+First, the <strong>ecosystem</strong>. Rust's crate ecosystem has reached near-Python levels of richness. Need GPU compute? There's wgpu. Face detection inference? Build it with ndarray and image crates. GUI? egui. Batch data ingestion from CSV, Excel, Parquet, SQLite? All covered with mature, well-maintained crates. I rarely hit a wall where I needed to write bindings or roll my own solution — the building blocks were already there.</p> <p>Second, and this is the underrated one: <strong>Rust is a great language for vibe coding</strong>. When you're building with an LLM as your copilot, the compiler's error messages become a superpower. Rust doesn't just tell you something went wrong — it tells you exactly what went wrong, where, and often how to fix it. Feed a Rust compiler error to an LLM, and it can resolve it in one shot. Try that with a segfault in C or a runtime panic in a dynamically typed language, and you're playing twenty questions. The tight feedback loop between Rust's compiler and AI-assisted development made me dramatically more productive than I would have been in any other systems language.</p> <p><strong>The Architecture</strong><br>
+Face Crop Studio is built around a few key pieces:</p> <p><strong>YuNet for face detection</strong> — a lightweight neural network that's fast enough for real-time use. I implemented the inference pipeline from scratch with custom WGSL compute shaders, rather than relying on ONNX Runtime. This gave me full control over the GPU pipeline and eliminated a heavy dependency.</p> <p><strong>Seven custom compute shaders</strong> handle everything from image pre-processing to face detection inference to post-processing enhancements. The entire pipeline stays on the GPU when possible, avoiding expensive CPUGPU data transfers.</p> <p><strong>A full enhancement pipeline</strong> — auto colour correction, exposure, brightness, contrast, saturation, sharpening, skin smoothing, red-eye removal, and portrait background blur. Each has both a GPU and CPU path, with automatic fallback.</p> <p><strong>Batch processing with data mapping</strong> — import CSV, Excel, Parquet, or SQLite files to drive batch naming. Feed in a spreadsheet of student names and photo filenames, and the tool handles the rest.</p> <p><strong>The Hard Parts</strong><br>
+<strong>VRAM Management</strong><br>
+GPU memory isn't like system RAM — you can't just allocate freely and let the OS page things out. When processing large batches, I had to carefully manage buffer lifetimes and implement a staging system that processes images in chunks without exhausting VRAM. Getting this wrong meant either crashes or silently falling back to the CPU for everything.</p> <p><strong>Multi-Face Detection</strong><br>
+Single-face cropping worked beautifully from day one. Multi-face detection? That produced hilarious 3-pixel-wide vertical strips for weeks. The issue turned out to be in how bounding box coordinates were being translated into crop rectangles — a subtle off-by-one in the aspect ratio calculation that only manifested with multiple detections.</p> <p><strong>Cross-Platform GPU Support</strong><br>
+wgpu abstracts the graphics backends, but "abstracts" doesn't mean "eliminates differences." Shader behaviour, texture format support, and buffer alignment requirements vary across Vulkan, Metal, and DirectX. Testing on one platform and assuming it works on others is a trap I fell into more than once.</p> <p><strong>What I Shipped</strong><br>
+Face Crop Studio today includes:</p> <ul>
+<li>
+<strong>6+ crop presets</strong>: LinkedIn, Passport, Instagram, ID Card, Avatar, Headshot, and fully custom dimensions</li>
+<li>
+<strong>Quality scoring</strong>: Laplacian-variance sharpness analysis categorises each crop as Low, Medium, or High quality</li>
+<li>
+<strong>Native GUI</strong> built with egui — live preview, undo/redo, and processing history</li>
+<li>
+<strong>CLI mode</strong> for scripting and automation</li>
+<li>
+<strong>4 export formats</strong> with configurable quality settings</li>
+<li>
+<strong>MIT licensed</strong> and fully open source</li>
+</ul> <p>The codebase is 97% Rust.</p> <p><strong>What I Learned</strong><br>
+<strong>Write the GPU path first, not last</strong>. If you design around CPU processing and bolt on GPU acceleration later, you end up with awkward data flow and unnecessary copies. Design for GPU from the start and add CPU fallback where needed.</p> <p><strong>Batch processing exposes every edge case</strong>. A tool that works on 10 images will find new and creative ways to fail on 1,000. Memory leaks that are invisible in single-image mode become showstoppers at scale.</p> <p><strong>Deterministic output matters more than you think</strong>. When processing official documents like ID photos, getting slightly different crops from the same input is unacceptable. Floating-point reproducibility across GPU and CPU paths took real effort to achieve.</p> <p><strong>Try It Yourself</strong><br>
+Face Crop Studio is free, open source, and available for Windows. If you work with batch photo processing — schools, HR departments, photography studios — give it a look.</p> <p>→ <strong>GitHub</strong>: <a href="https://github.com/gregorycarnegie/face_crop_studio">github.com/gregorycarnegie/face_crop_studio</a> <br>
+→ <strong>Website</strong>: <a href="https://facecropstudio.com/" target="_blank">facecropstudio.com</a></p> <p>If you found this interesting, I'd love to connect and hear your vibe-coding stories.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

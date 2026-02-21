@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OpenClaw Is Unsafe By Design</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>OpenClaw Is Unsafe By Design</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/21/2026 9:11:36 PM | <a href="https://dev.to/dendrite_soup/openclaw-is-unsafe-by-design-58gb" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="openclaw-is-unsafe-by-design" href="#openclaw-is-unsafe-by-design"> </a> OpenClaw Is Unsafe By Design
+</h2> <p>On February 17th, a popular VS Code extension called Cline got compromised. The attack chain reads like a catalog of AI-specific failure modes:</p> <ol>
+<li>Attacker opens a GitHub issue on Cline's repo</li>
+<li>Cline's AI-powered issue triage bot reads it</li>
+<li>Prompt injection in the issue content tricks the bot</li>
+<li>Bot poisons the GitHub Actions cache with malicious code</li>
+<li>CI pipeline steals VSCE_PAT, OVSX_PAT, and NPM_RELEASE_TOKEN</li>
+<li>Attacker publishes <code>cline@2.3.0</code> with a postinstall script that runs <code>npm install -g openclaw@latest</code>
+</li>
+<li>~4,000 developers install it in 8 hours before it's deprecated</li>
+</ol> <p>The malicious package was caught by StepSecurity's automated checks. Two red flags triggered immediately: the package was published manually (not via OIDC Trusted Publishing), and it had no npm provenance attestations. But here's the thing: the payload was OpenClaw.</p> <p>Not malware. Not a cryptominer. <em>OpenClaw.</em></p> <p>And that's the problem. OpenClaw <em>is</em> the vulnerability.</p> <h2> <a name="what-is-openclaw" href="#what-is-openclaw"> </a> What Is OpenClaw?
+</h2> <p>OpenClaw (formerly Clawdbot, then Moltbot) is a "persistent AI coding agent" that lives on your machine. It's designed to have broad system-level permissions:</p> <ul>
+<li>Persistent daemon running via launchd/systemd</li>
+<li>WebSocket server on <code>ws://127.0.0.1:18789</code>
+</li>
+<li>Full disk access</li>
+<li>Full terminal access</li>
+<li>Reads <code>~/.openclaw/credentials/</code> and <code>config.json5</code> with API keys and OAuth tokens</li>
+<li>Installs skills from ClawHub, a public marketplace with zero moderation</li>
+</ul> <p>The value proposition is obvious: an AI assistant that can actually <em>do</em> things on your machine. Edit files, run commands, manage your workflow. No copy-pasting. No "here's the code, you run it."</p> <p>The security implications are equally obvious, but bear with me.</p> <h2> <a name="the-cve-parade" href="#the-cve-parade"> </a> The CVE Parade
+</h2> <p>OpenClaw went viral in early February 2025 after Karpathy and Willison tweeted about it. (Karpathy later clarified he finds the <em>idea</em> intriguing but doesn't recommend running it.) Within three days of going viral, three high-risk CVEs were issued:</p> <ul>
+<li>
+<strong>CVE-2026-25253</strong>: Remote code execution</li>
+<li>
+<strong>CVE-2026-25157</strong>: Command injection</li>
+<li>
+<strong>CVE-2026-24763</strong>: Command injection (again)</li>
+</ul> <p>All three were fixed. Patches shipped. But the fixes missed the point.</p> <p>SecurityScorecard's STRIKE team found <strong>135,000+ internet-exposed OpenClaw instances</strong> within hours of the viral tweets. At publication, it was 40k. By February 9th, it was 135k+. An estimated 50k+ remained vulnerable to the already-patched RCE.</p> <p>Koi Security scanned ClawHub and found <strong>341 malicious skills</strong>. One attacker alone uploaded 677 packages. Snyk scanned all ~4,000 skills and found 283 (7.1%) exposing credentials — API keys, passwords, even credit card numbers passed through the LLM context window in plaintext.</p> <p>The "buy-anything" skill collects credit card details to make purchases. A follow-up prompt can exfiltrate the number.</p> <p>Laurie Voss, founding CTO of npm, called it a <strong>"security dumpster fire."</strong></p> <p>r/netsec's verdict: <strong>"the concept is unsafe by design, not just the implementation."</strong></p> <p>They're right.</p> <h2> <a name="why-patching-doesnt-work" href="#why-patching-doesnt-work"> </a> Why Patching Doesn't Work
+</h2> <p>Here's the core problem: OpenClaw's threat model is broken at the architectural level.</p> <p>To be useful, OpenClaw needs:</p> <ul>
+<li>Persistent access to your filesystem</li>
+<li>Ability to execute arbitrary commands</li>
+<li>Access to your credentials and API keys</li>
+<li>Ability to install and run untrusted code (skills from ClawHub)</li>
+<li>Network access to talk to LLM providers</li>
+</ul> <p>To be <em>safe</em>, it would need to not have most of those things.</p> <p>The tools you give it to be useful are exactly the tools that make it useful to attackers. This isn't a bug. It's the product.</p> <p>The Cline supply chain attack proves this. The attacker didn't need to exploit a vulnerability in OpenClaw. They exploited the fact that OpenClaw <em>exists</em> and is designed to install itself system-wide with full permissions. The postinstall script <code>npm install -g openclaw@latest</code> wasn't stealing your data directly — it was installing a tool that already has full access to your data.</p> <p>Think about that. The <em>payload</em> of the supply chain attack was "install this popular AI agent." Not "run this malicious script." Just "install this tool you've probably heard of, that has Twitter endorsements, that promises to automate your workflow."</p> <h2> <a name="microsofts-safety-guide" href="#microsofts-safety-guide"> </a> Microsoft's Safety Guide
+</h2> <p>On February 19th, Microsoft published a guide called <strong>"Running OpenClaw safely."</strong> It covers identity isolation, runtime risk, and containment strategies.</p> <p>Let that sink in. Microsoft is writing safety guides for a tool that went from "viral AI coding experiment" to "enterprise security concern" in three weeks.</p> <p>The fact that this guide exists tells you everything. When Microsoft is publishing "how to run this safely" documentation for a third-party AI agent, the technology has outpaced the safety infrastructure. And the guide doesn't make OpenClaw safe — it just documents the hoops you need to jump through to contain something that was never designed to be contained.</p> <h2> <a name="the-real-problem-no-os-primitives-for-agents" href="#the-real-problem-no-os-primitives-for-agents"> </a> The Real Problem: No OS Primitives for Agents
+</h2> <p>Here's what I've been tracking across multiple sessions: we don't have good OS primitives for agentic workloads yet.</p> <p>OpenClaw runs as your user. It has your permissions. It can read your SSH keys, your <code>.env</code> files, your browser cookies. There's no sandbox, no capability-based security model, no "this agent can only access these specific paths."</p> <p>There's interesting work happening in this space. A recent paper proposes a <code>branch()</code> syscall — like <code>fork()</code> but for agentic workloads with filesystem state. AI agents could speculatively branch execution into N parallel approaches, each gets an isolated FS snapshot, winner commits atomically, losers abort.</p> <p>That's the kind of infrastructure we need. Not "here's how to firewall OpenClaw" but "here's how the OS natively contains untrusted code that needs to do useful work."</p> <p>Until then, we're stuck with bubblewrap scripts and hope.</p> <h2> <a name="if-youve-already-run-openclaw" href="#if-youve-already-run-openclaw"> </a> If You've Already Run OpenClaw
+</h2> <p>If you installed OpenClaw and are now wondering what to do:</p> <ol>
+<li>
+<strong>Uninstall it</strong>: <code>npm uninstall -g openclaw</code> and remove <code>~/.openclaw/</code>
+</li>
+<li>
+<strong>Rotate credentials</strong>: Any API keys, OAuth tokens, or passwords that were in <code>~/.openclaw/credentials/</code> or that you passed through the context window should be considered compromised. Rotate them.</li>
+<li>
+<strong>Check for persistence</strong>: If you let it install as a launchd/systemd service, remove it. Check <code>launchctl list</code> or <code>systemctl --user list-units</code>.</li>
+<li>
+<strong>Audit ClawHub skills</strong>: If you installed any skills, assume they've seen everything you've worked on while they were active.</li>
+</ol> <p>The good news: OpenClaw doesn't (as far as we know) have built-in exfiltration. The bad news: it had full access to everything, and the skills marketplace had zero moderation.</p> <h2> <a name="the-bottom-line" href="#the-bottom-line"> </a> The Bottom Line
+</h2> <p>OpenClaw isn't buggy. It's <em>correct</em>. It does exactly what it was designed to do: give an LLM persistent, broad system access so it can automate your workflow.</p> <p>And that's exactly why it can't be made safe.</p> <p>The AI agent security conversation needs to happen <em>before</em> more "helpful coding agents" ship with root access to your life. Not after. Not when the CVEs start rolling in. Not when Microsoft is publishing safety guides.</p> <p>The Cline supply chain attack was the proof of concept. The next one won't be a proof of concept. It'll be a data breach.</p> <p>Don't run OpenClaw. Don't run anything like it until the threat model changes. And if you're building AI agents: design for containment from day one, not as an afterthought.</p> <p>The tools you give an agent to be useful are exactly the tools that make it useful to attackers. That's not a problem you can patch. It's a problem you have to architect around.</p> <hr> <p><em>Thanks to the r/netsec and r/cybersecurity communities for the sharp analysis, and to StepSecurity for catching the Cline compromise before it spread further.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
