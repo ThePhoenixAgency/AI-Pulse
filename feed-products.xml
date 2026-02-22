@@ -5,59 +5,41 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Feb 2026 06:44:47 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 22 Feb 2026 10:24:44 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: WordBulb – Interactive Word Cloud Generator You Can Use for Navigation]]></title>
-      <link>https://wordbulb.com/word-cloud-generator</link>
-      <description><![CDATA[Hey HN,
-I’ve been building a few SaaS products over the last couple of years, and in between larger features I sometimes build small tools to reset my brain. This started as one of those.
-It’s called WordBulb:
-https://wordbulb.com/word-cloud-generator
-At first, it was just a simple word cloud generator. But while building it, I kept thinking: why are most word clouds basically just decorative images?
-They look interesting, but they’re not useful.
-So I decided to make it interactive and embeddable — where every word can have its own target link.
-What it does
-Add your own words
-Assign a custom URL to each word [the clicked word can be passed as query parameter]
-Generate an interactive SVG word cloud
-Embed it directly into your site
-Each word is clickable.
-You can use it as:
-A visual table of contents]]></description>
-      <pubDate>Sun, 22 Feb 2026 02:06:32 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://wordbulb.com/word-cloud-generator</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : Étoiles des Numériques 2025-2026 : notre palmarès en vidéo]]></title>
-      <link>https://www.lesnumeriques.com/societe-numerique/etoiles-des-numeriques-2025-2026-notre-palmares-en-video-n251792.html</link>
-      <description><![CDATA[L’heure du bilan a enfin sonné dans les laboratoires des Numériques. Après douze mois de tests intensifs, de mesures de précision et de débats passionnés, nos experts ont tranché pour élire les produits les plus marquants de l’année. Ce palmarès des Étoiles 2025-2026 ne se contente pas de récompenser les performances brutes : il met en lumière les in...]]></description>
-      <pubDate>Fri, 20 Feb 2026 18:30:00 GMT</pubDate>
+      <title><![CDATA[Actualité : WhatsApp a écouté les fans de séries et de films avec la fonctionnalité qu'ils attendaient]]></title>
+      <link>https://www.lesnumeriques.com/appli-logiciel/whatsapp-a-ecoute-les-fans-de-series-et-de-films-avec-la-fonctionnalite-qu-ils-attendaient-n251826.html</link>
+      <description><![CDATA[C'est WABetaInfo qui a repéré la nouveauté dans la version bêta 26.6.10.71 de WhatsApp pour iOS sur TestFlight. Le principe est simple. Quand un utilisateur rédige un message, il peut masquer une partie du texte avec l'option anti-spoiler.WhatsApp va lancer sa fonction anti-spoilerLe destinataire reçoit un bloc recouvert d'une barre grise où il faut...]]></description>
+      <pubDate>Sun, 22 Feb 2026 09:15:00 GMT</pubDate>
       <source>Les Numeriques</source>
       <category>products</category>
-      <guid>https://www.lesnumeriques.com/societe-numerique/etoiles-des-numeriques-2025-2026-notre-palmares-en-video-n251792.html</guid>
+      <guid>https://www.lesnumeriques.com/appli-logiciel/whatsapp-a-ecoute-les-fans-de-series-et-de-films-avec-la-fonctionnalite-qu-ils-attendaient-n251826.html</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: Halal Food AI – Analyze food ingredients using Gemini]]></title>
-      <link>https://apps.apple.com/us/app/halal-food-ai-scanner/id6755012360</link>
+      <title><![CDATA[Show HN: I built a dependency graph for the tree of human science]]></title>
+      <link>https://github.com/slepybear/The-Map-of-Science</link>
       <description><![CDATA[Hi HN,
-I built Halal Food AI to solve a recurring problem my family faces: determining if grocery products meet specific dietary requirements (like Halal, allergen-free, etc.) by reading complex and often vague ingredient lists, especially when traveling.
-While there are barcode scanners out there, most rely on static databases that are frequently incomplete for local or niche products. I wanted to see if LLMs could solve this data gap by parsing the actual ingredients on the fly.
-How it works:
-You can scan a barcode or snap a picture of the ingredients list.
-The app uses OCR and routes the text/image to Google Gemini AI to analyze. It breaks down hidden additives (like specific E-numbers), cross-references them, and builds a dietary profile.
-Since it's LLM-based, it naturally handles 25+ languages, which has been extremely useful for picking up foreign products.
-Users can also save and share safe product lists with their family network.
-The technical challenge: The hardest part was getting consistent, structured JSON responses from the LLM for wildly varying international ingredient formats and keeping the prompt latency low enough so you aren't standing in the grocery aisle waiting for 20 seconds.
-I would love to hear your feedback on the app, and I'm especially interested to hear from anyone who has tackled real-time OCR + LLM data extraction on mobile. Happy to answer any technical questions! URL: https://news.ycombinator.com/item?id=47107910
-Points: 2
+I’ve always been frustrated by this: we live in an era of exponential scientific progress, but almost no one can clearly trace a cutting-edge discovery back to the first principles it’s built on. We learn science in silos, not as a connected, logical tree.
+So I built The Map of Science — an interactive dependency graph for the entirety of human scientific knowledge.
+It’s simple: every scientific theory is a node, every derivation/dependency is an edge. You can trace a path from basic math axioms to quantum field theory, from early computing to modern LLMs, and see exactly how each breakthrough builds on what came before.
+The stack: React + Cytoscape for the frontend, Node.js + Neo4j for the backend (a relational DB couldn’t handle the deep recursive queries for multi-layer derivation chains). It’s fully open source under MIT, and we’ve already seeded the core dataset for math, physics, and computer science.
+This is a project that can never be finished by one person. I need your help:
+If you’re a domain expert, help us fix incorrect links or expand into biology, chemistry, social sciences, and more.
+If you’re a developer, help us optimize the graph rendering for even larger datasets.
+If you just love science, tell us what works, what doesn’t, and what you want to see next.
+I’d specifically love your thoughts on:
+We’re using a directed acyclic graph (DAG) tree structure to show derivation dependencies. Does this make cross-field interdisciplinary links clear enough? Is there a better way to visualize these relationships?
+What’s the cleanest way to represent superseded or disputed theories (like Newtonian vs. relativistic mechanics, or phlogiston theory vs. oxidation)? We want to honor their historical importance without cluttering the core, up-to-date knowledge chain.
+Repo: https://github.com/slepybear/The-Map-of-Science
+Live Demo: https://build-five-dun.vercel.app/map (best viewed on desktop for full graph interactivity)
+Thanks for looking! URL: https://news.ycombinator.com/item?id=47109121
+Points: 1
 # : 0]]></description>
-      <pubDate>Sun, 22 Feb 2026 03:43:57 GMT</pubDate>
+      <pubDate>Sun, 22 Feb 2026 07:43:27 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://apps.apple.com/us/app/halal-food-ai-scanner/id6755012360</guid>
+      <guid>https://github.com/slepybear/The-Map-of-Science</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Les Étoiles des Numériques : découvrez tous les lauréats 2025-2026]]></title>

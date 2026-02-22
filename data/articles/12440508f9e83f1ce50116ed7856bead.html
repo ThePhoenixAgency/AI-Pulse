@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stop flying blind with SLED</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Stop flying blind with SLED</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/22/2026 9:50:33 AM | <a href="https://dev.to/sgchris/stop-flying-blind-with-sled-20mf" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <div> <p><a href="https://dev.to/sgchris"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3175681%2F12d865bd-f0fd-4f61-9309-c2d7f7ab39d3.jpg" alt="Gregory Chris"></a> </p> </div> </header> <div> <p>Hey fellow devs! </p> <p>If you've been working with Rust and embedded databases, chances are you've crossed paths with <code>sled</code>—the "champagne of beta embedded databases." It's incredibly fast, written in pure Rust, and super reliable. But there's always been one minor annoyance: peeking inside a SLED database file hasn't exactly been straightforward.</p> <p>Until now. Let me introduce you to <strong>Sledoview</strong> (<a href="https://github.com/sgchris/sledoview" target="_blank">GitHub Repo</a>).</p> <h3> <a name="what-is-sledoview" href="#what-is-sledoview"> </a> What is Sledoview? </h3> <p>Sledoview is a powerful console application that gives you an interactive terminal interface to perform CRUD operations right on your SLED database files. Think of it as an interactive control panel for your local <code>.db</code> files.</p> <p><a href="https://github.com/sgchris/sledoview/blob/master/DOCS.md" target="_blank">Getting started + Documentation</a></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjmm2zpr3v1z2on1apwbb.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fjmm2zpr3v1z2on1apwbb.png" alt="Sledoview sample usage"></a></p> <p>Instead of writing a temporary, throwaway Rust script just to print out the keys of your database to the console (come on, we've all been there), Sledoview lets you explore, search, edit, and manage your data right from your terminal. </p> <h3> <a name="why-its-useful-easy-and-genuinely-fun" href="#why-its-useful-easy-and-genuinely-fun"> </a> Why it's useful, easy, and genuinely fun </h3> <p>It genuinely makes working with embedded databases <em>fun</em>. It's like having the <code>sqlite3</code> CLI, but tailor-made for SLED! Here's why you'll love it:</p> <ol>
+<li>
+<strong>Interactive REPL:</strong> Boot up the CLI and you're dropped into a smooth, interactive shell. No more clunky, one-off terminal commands. You just connect and flow.</li>
+<li>
+<strong>Autocomplete</strong> for commands and values</li>
+<li>
+<strong>History</strong> is stored in-memory per session</li>
+<li>
+<strong>Sled Tree Management:</strong> CRUD trees within Sled DB</li>
+<li>
+<strong>Pattern Matching:</strong> find a specific key woth glob or regex patterns. It feels like magic.</li>
+<li>
+<strong>Instant CRUD:</strong> Create, read, update, and delete key-value pairs instantly. </li>
+</ol> <h3> <a name="whats-new-the-latest-updates" href="#whats-new-the-latest-updates"> </a> What's New? (The latest updates) </h3> <p>The project just keeps getting better, and the recent <a href="https://github.com/sgchris/sledoview/blob/master/CHANGELOG.md" target="_blank">Changelog</a> updates show that the tool has matured rapidly with its recent releases. </p> <p>If you look at the recent changes, the developer has focused heavily on making the tool as frictionless as possible:</p> <ul>
+<li>
+<strong>Smoother REPL Experience:</strong> UX improvements in the terminal make the interactive shell feel snappier, more robust, and more intuitive for daily drivers.</li>
+<li>
+<strong>Better Tree Operations:</strong> Handling multiple trees is now much more seamless, minimizing friction when you're managing complex or deeply nested database structures.</li>
+<li>
+<strong>Under-the-hood Polishing:</strong> Overall stability and general quality-of-life improvements, making the CLI highly reliable against weird edge cases.</li>
+</ul> <h3> <a name="getting-started-is-a-breeze" href="#getting-started-is-a-breeze"> </a> Getting Started is a Breeze </h3> <p>Download the release or easily build it from the source in seconds. </p> <p>To build from source:<br>
+</p> <div>
+<pre><code>git clone https://github.com/sgchris/sledoview
+<span>cd </span>sledoview
+cargo build <span>--release</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

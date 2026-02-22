@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,38 @@
     Source: PortSwigger Research | Date: 4/23/2025 1:17:24 PM | <a href="https://portswigger.net/research/document-my-pentest" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Tired of repeating yourself? Automate your web security audit trail. In this post I'll introduce a new Burp AI extension that takes the boring bits out of your pen test. Web security testing can be a</p>
+    <div><div> <div> <p><img alt="Gareth Heyes" src="https://portswigger.net/content/images/profiles/callout_gareth_heyes_114px.png"></p>
+</div> <ul> <li> <p><span></span><strong>Published: </strong>23 April 2025 at 13:17 UTC</p> </li> <li> <p><strong>Updated: </strong>24 April 2025 at 08:41 UTC</p> </li> <li> </li> </ul> <p>
+<img src="https://portswigger.net/cms/images/b4/13/369e-article-article.png" alt="A person sat at a computer with Document My Pentest on the screen"> </p><p><b>Tired of repeating yourself? Automate your web security audit trail. In this post I'll introduce a new Burp AI extension that takes the boring bits out of your pen test.</b></p><p>Web security testing can be a grind: documenting every step, writing the same notes over and over, and repeating it all across every engagement. But what if your workflow could document itself - while you hacked?
+</p><p>Meet "Document My Pentest", your silent co-analyst for security testing. It’s an open-source Burp Suite extension that watches your requests in real time, understands what you’re probing for, and automatically builds a clean, structured record of your findings - capturing exactly what you did and how you did it. When you’re ready, hand it off to AI and generate a report. No more boring note taking. Just results.
+</p><h2>The concept</h2><p>The PortSwigger research team has been exploring new AI extensions using <a href="https://portswigger.net/blog/why-its-time-for-appsec-to-embrace-ai-how-portswigger-is-leading-the-charge">Burp AI features
+</a>, and it's surprisingly quick to get a functional prototype up and running. Within just a few days, I had a working extension.
+</p><p>I quickly learned that the AI isn't very good at analysing a whole request and response, especially for vulnerabilities like <a href="https://portswigger.net/web-security/cross-site-scripting">XSS</a>. It was good at spotting <a href="https://portswigger.net/web-security/file-path-traversal">Path Traversal</a> where a response gave a clear indication that it had worked because the directory listing was displayed.
+</p><p>With this in mind I began to come up with a strategy to identify reflected data. My first thought to accomplish this was to use canaries and look at where the canary is reflected but there are a couple of issues here: a) We'd need to send an extra request for every request and b) We'd have to alter the user sent request. Then I thought why don't we just use the tested input as the canary and translate it to a regular expression. It worked like this:
+</p>
+<p>Consider the input <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> this can be transformed in a plethora of ways but often the alphanumeric characters will stay consistent, so I wrote an input to regex translator which transforms the input into:
+</p><p><code>.{1,6}script.{1,6}alert.{1,6}1.{1,6}.{1,6}.{1,6}script.{1,6}</code></p><p>This would mean it would match transformations like:</p><p><code>&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;<br>%3Cscript%3Ealert(1)%3C%2Fscript%3E<br>%253Cscript%253Ealert(1)%253C%252Fscript%253E
+</code></p><p>This can give the AI the exact transformation and extract a more focussed part of the reflection enabling the AI to even quote what the input was transformed to without any specific instructions. After a lot of testing this seemed to work pretty well but we quickly found that it wasn't suitable for other attacks such as Request Smuggling. In this case where parameter/header modifications couldn't be detected we decided to send the whole request and response with a different AI prompt that produced much better results.
+</p><p>Whilst building this extension I often found the AI would misidentify vulnerabilities and this was due to the instructions given in the prompt. For example:
+</p><p><code>*Note* if HTML entities are found they very rarely indicate an XSS vulnerability.
+</code></p><p>The problem with this prompt is that it is uncertain to the AI if it's a vulnerability or not. My thinking was that you can use entities inside "srcdoc" attributes to cause XSS but this vague language causes the LLM to label vulnerabilities as potential XSS even when it's HTML encoded. The solution to this is to create more precise language in the prompt:
+</p><p><code>If the response reflection contains HTML-encoded input (e.g., &amp;lt;script&amp;gt;
+), that is not a vulnerability."
+</code></p><p>You can even get the LLM to analyse its own response and tell you why it thinks there's a vulnerability when there clearly isn't. Here's the prompt I used:
+</p><p><code>Look at this LLM response and point out why it thinks there's XSS when there clearly isn't:
+</code><code>LLM RESPONSE GOES HERE
+</code></p><p>This returned detailed analysis of why the LLM was misidentifying the issue and suggested ways to improve it. Then I took the actual prompt and asked the LLM to improve it:</p><p><code>"How can I improve this prompt to prevent this kind of issue?"</code><code>YOUR PROMPT GOES HERE</code></p><p>The LLM gave some very precise instructions on how to improve the prompt. This produced much better analysis and reduced false positives.</p>
+<p>This whole process highlighted just how important careful prompt engineering is when working with LLMs for security analysis. The underlying model can be powerful, but without clear, unambiguous instructions and tightly scoped input, it's prone to hallucinations or overly cautious responses. By iterating on prompts, experimenting with input formatting, and tuning what data the model sees, we were able to push its capabilities to find a wide range of vulnerabilities. It’s not perfect, but with the right setup, it can meaningfully assist in vulnerability triage and even explain its reasoning in ways that help refine both the AI and the human using it.
+</p><h2>Installation instructions</h2><p>In <a href="https://portswigger.net/burp/pro">Burp Suite Professional</a>, go to Extensions → BApp store and search for "Document My Pentest". Click the install button and then navigate to the installed tab then select "Document My Pentest" and check the "Use AI" checkbox in the Extension tab.
+</p><h2>How to use it</h2><p>Just use Repeater like you normally would while testing a target. When you're ready to document your work, skip digging through Repeater history - simply right-click and select Extensions → Document My Pentest → Document my work. The AI will generate notes for you automatically.
+</p><p>You can also right click on the proxy history and document a pen test as separate requests or as a collection of requests and responses.
+</p><p>Right-click on a single or multiple proxy history items and select Extensions → Document My Pentest→ Document my work (separately). This will create notes on each request and response as a separate attack. Extensions → Document My Pentest → Document my work (as collection) will create a combined notes on all the requests and responses and put the notes into the last selected item. You can also configure Document My Pentest to automatically send notes to the Organizer as you hack the target by going to Document My Work-&gt;Settings-&gt;Auto invoke after Repeater requests and Document My Work-&gt;Settings-&gt;Auto send notes to Organizer.
+</p><p>Of course, AI isn't flawless - sometimes it gets things wrong. No problem: you can manually edit the notes and make corrections.
+</p> <p> Feeling inspired? Try <a href="https://portswigger.net/burp/documentation/desktop/extensions/creating/creating-ai-extensions">creating an AI-powered extension yourself</a> using Burp's built-in Montoya API and its dedicated interfaces for handling traffic between your extension and PortSwigger's trusted AI platform. </p> <h2>AI security &amp; privacy</h2>
+<p>
+We've updated our docs to reflect how we handle data sent to the AI please check out the <a href="https://portswigger.net/burp/documentation/desktop/extensions/ai-security-privacy-data-handling">detailed documentation</a> and the <a href="https://portswigger.net/blog/why-its-time-for-appsec-to-embrace-ai-how-portswigger-is-leading-the-charge">blog post</a>.
+</p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

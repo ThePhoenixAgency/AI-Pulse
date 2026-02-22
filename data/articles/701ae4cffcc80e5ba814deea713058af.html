@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>All you need to know about OpenClaw</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>All you need to know about OpenClaw</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/22/2026 8:28:32 AM | <a href="https://dev.to/xilinwei/all-you-need-to-know-about-openclaw-35cb" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="all-you-need-to-know-about-openclaw-the-complete-guide-to-your-personal-ai-agent" href="#all-you-need-to-know-about-openclaw-the-complete-guide-to-your-personal-ai-agent"> </a> All you need to know about OpenClaw --- The Complete Guide to Your Personal AI Agent
+</h2> <p><em>Everything you need to know about the open-source AI agent that went from zero to 140K GitHub stars in under three months.</em></p> <hr> <h2> <a name="table-of-contents" href="#table-of-contents"> </a> Table of Contents
+</h2> <ol>
+<li><a href="#1-introduction--context">Introduction &amp; Context</a></li>
+<li><a href="#2-architecture--high-level-design">Architecture &amp; High-Level Design</a></li>
+<li><a href="#3-getting-started-step-by-step-guide">Getting Started (Step-by-Step Guide)</a></li>
+<li><a href="#4-practical-applications--productivity">Practical Applications &amp; Productivity</a></li>
+<li><a href="#5-optimization-security--challenges">Optimization, Security &amp; Challenges</a></li>
+</ol> <hr> <h2> <a name="1-introduction" href="#1-introduction"> </a> 1. Introduction
+</h2> <h2> <a name="what-is-openclaw-really" href="#what-is-openclaw-really"> </a> What is OpenClaw, Really?
+</h2> <p>Imagine having an assistant that can actually <em>do</em> things — not just answer questions or generate text, but execute tasks, manage your schedule, write code, control your smart home, and respond on your behalf — all running privately on your own hardware, with zero data leaving your machine.</p> <p>That's OpenClaw. Formerly known as Clawdbot and then Moltbot, it's one of the fastest-growing open-source projects of early 2026.</p> <h2> <a name="what-it-looks-like-daytoday" href="#what-it-looks-like-daytoday"> </a> What It Looks Like Day-to-Day
+</h2> <div>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│ THE OPENCLAW UNIVERSE │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ │
+│ CHANNELS AI CORE TOOLS DEVICES │
+│ ─────────── ──────── ─────── ───────── │
+│ │
+│ • WhatsApp • LLM Routing • Browser • macOS │
+│ • Telegram • Memory System • Code Exec • iOS │
+│ • Slack • Skills/Plugins • File System • Android │
+│ • Discord • Multi-Agent • Cron Jobs • Linux │
+│ • Signal • Canvas UI • Windows │
+│ • iMessage │
+│ • Google Chat │
+│ • Microsoft Teams │
+│ • Matrix │
+│ • Zalo │
+│ │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="the-aha-moment" href="#the-aha-moment"> </a> The "Aha!" Moment
+</h3> <p>Here's what makes OpenClaw special in one sentence:</p> <blockquote>
+<p><strong>OpenClaw transforms any messaging app into a command center for AI-powered automation, while keeping everything local and under your control.</strong></p>
+</blockquote> <p>You send a message to your assistant on WhatsApp: <em>"Summarize my unread emails and schedule a meeting with Sarah for Thursday afternoon."</em></p> <p>OpenClaw:</p> <ol>
+<li>
+<strong>Understands</strong> your intent (natural language processing)</li>
+<li>
+<strong>Accesses</strong> your Gmail (via secure API)</li>
+<li>
+<strong>Reads</strong> your calendar (checking availability)</li>
+<li>
+<strong>Generates</strong> a summary (using an LLM)</li>
+<li>
+<strong>Creates</strong> a calendar event (via Google Calendar API)</li>
+<li>
+<strong>Replies</strong> back to you on WhatsApp with confirmation</li>
+</ol> <p>All of this happens <strong>on your machine</strong>, with your API keys, following your rules.</p> <h2> <a name="why-did-openclaw-take-off" href="#why-did-openclaw-take-off"> </a> Why Did OpenClaw Take Off?
+</h2> <p>OpenClaw's timing was perfect — it hit the intersection of a few trends that had been building for years:</p> <h4> <a name="1-the-localfirst-movement" href="#1-the-localfirst-movement"> </a> <strong>1. The Local-First Movement</strong>
+</h4> <p>People are waking up to the privacy implications of cloud-only AI. When you use ChatGPT, Claude, or Gemini, your conversations are processed on someone else's servers. With OpenClaw:</p> <ul>
+<li>
+<strong>Your data stays YOUR data</strong> </li>
+<li>No vendor lock-in</li>
+<li>No training on your private information</li>
+<li>No internet required for local operations</li>
+</ul> <h4> <a name="2-open-source-trust-innovation" href="#2-open-source-trust-innovation"> </a> <strong>2. Open Source = Trust + Innovation</strong>
+</h4> <p>OpenClaw is fully open source (MIT License). This means:<br>
+</p> <div>
+<pre><code>┌────────────────────────────────────────────────────────────────┐
+│ OPEN SOURCE ADVANTAGES │
+├────────────────────────────────────────────────────────────────┤
+│ │
+│ You can audit the code yourself │
+│ Security researchers can find and fix bugs │
+│ Community contributes features and skills │
+│ No hidden tracking or data collection │
+│ You can fork and customize for your needs │
+│ Transparent development process │
+│ │
+└────────────────────────────────────────────────────────────────┘
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h4> <a name="3-the-chatfirst-interface-revolution" href="#3-the-chatfirst-interface-revolution"> </a> <strong>3. The "Chat-First" Interface Revolution</strong>
+</h4> <p>We're witnessing the death of traditional app interfaces. Instead of opening 10 different apps:</p> <ul>
+<li> Email client</li>
+<li> Calendar app
+</li>
+<li> Browser</li>
+<li> Notes app</li>
+<li> Shopping apps</li>
+<li> Music apps</li>
+</ul> <p><strong>You just send a message.</strong> One interface to rule them all.</p> <h4> <a name="4-the-pluginskill-architecture" href="#4-the-pluginskill-architecture"> </a> <strong>4. The Plugin/Skill Architecture</strong>
+</h4> <p>OpenClaw's "Skills" system allows anyone to extend its capabilities:</p> <ul>
+<li>Want it to control your Philips Hue lights? There's a skill for that.</li>
+<li>Want it to query your company's internal database? Build a skill.</li>
+<li>Want it to generate images with Stable Diffusion? Install the skill.</li>
+</ul> <p>This extensibility creates a <strong>flywheel effect</strong>: more users → more skills → more value → more users.</p> <h3> <a name="from-personal-project-to-ai-foundation" href="#from-personal-project-to-ai-foundation"> </a> From Personal Project to AI Foundation
+</h3> <p>OpenClaw's evolution tells a fascinating story:</p> <div><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Milestone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nov 2025</strong></td>
+<td>Peter Steinberger publishes <strong>Clawdbot</strong> — derived from Clawd (now Molty), named after Anthropic's Claude</td>
+</tr>
+<tr>
+<td><strong>Jan 27, 2026</strong></td>
+<td>Renamed <strong>Moltbot</strong> after Anthropic trademark complaints; Matt Schlicht launches <em>Moltbook</em> — a social network for AI agents</td>
+</tr>
+<tr>
+<td><strong>Jan 30, 2026</strong></td>
+<td>Renamed <strong>OpenClaw</strong> — "Moltbot never quite rolled off the tongue"; 140,000 GitHub stars &amp; 20,000 forks by Feb 2</td>
+</tr>
+<tr>
+<td><strong>Feb 4, 2026</strong></td>
+<td>
+<strong>ClawCon</strong> in San Francisco; adopted by Silicon Valley &amp; China companies; DeepSeek integration</td>
+</tr>
+<tr>
+<td><strong>Feb 14, 2026</strong></td>
+<td>Steinberger announces <strong>joining OpenAI</strong>; project moves to open-source foundation</td>
+</tr>
+</tbody>
+</table></div> <h2> <a name="how-it-all-works-the-core-concepts" href="#how-it-all-works-the-core-concepts"> </a> How It All Works: The Core Concepts
+</h2> <p>Before jumping into installation, it's worth spending five minutes understanding <em>why</em> OpenClaw works the way it does. This will save you a lot of confusion later.</p> <h4> <a name="concept-1-autonomous-agents" href="#concept-1-autonomous-agents"> </a> <strong>Concept 1: Autonomous Agents</strong>
+</h4> <p>Traditional software is <strong>reactive</strong>: it waits for user input, processes it, and returns a result.</p> <p>AI agents are <strong>proactive</strong>: they can:</p> <ul>
+<li>Take initiative based on schedules (<code>cron</code> jobs)</li>
+<li>Make decisions using reasoning</li>
+<li>Execute multi-step plans</li>
+<li>Handle errors and retry</li>
+<li>Learn from interactions
+</li>
+</ul> <div>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────┐
+│ REACTIVE VS AUTONOMOUS SOFTWARE │
+├─────────────────────────────────────────────────────────────────────────┤
+│ │
+│ REACTIVE (Traditional) AUTONOMOUS (Agentic) │
+│ ───────────────────── ─────────────────── │
+│ │
+│ User: "What's on my calendar?" User: "Plan my week" │
+│ ↓ ↓ │
+│ App: Shows calendar Agent: │
+│ ↓ 1. Reads calendar │
+│ [END] 2. Checks email for updates │
+│ 3. Looks at todo list │
+│ 4. Prioritizes based on │
+│ deadlines │
+│ 5. Suggests schedule blocks │
+│ 6. Asks for approval │
+│ 7. Creates calendar events │
+│ ↓ │
+│ [PROACTIVE FOLLOW-UP] │
+│ "You have a conflict on │
+│ Tuesday, shall I move it?" │
+│ │
+└─────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h4> <a name="concept-2-llm-routing" href="#concept-2-llm-routing"> </a> <strong>Concept 2: LLM Routing</strong>
+</h4> <p>OpenClaw doesn't just use one AI model — it <strong>routes tasks to the best model for the job</strong>.</p> <p>Here's the magic:</p> <div><table>
+<thead>
+<tr>
+<th>Task Type</th>
+<th>Routed To</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coding</td>
+<td>Claude Opus 4.6</td>
+<td>Best code quality</td>
+</tr>
+<tr>
+<td>Quick questions</td>
+<td>Gemini Flash</td>
+<td>Speed &amp; low cost</td>
+</tr>
+<tr>
+<td>Creative writing</td>
+<td>GPT-5.2</td>
+<td>Creativity</td>
+</tr>
+<tr>
+<td>Image analysis</td>
+<td>Claude 3.5 Sonnet</td>
+<td>Visual strength</td>
+</tr>
+<tr>
+<td>Local/Sensitive</td>
+<td>Local Llama</td>
+<td>Privacy</td>
+</tr>
+</tbody>
+</table></div> <p><strong>Why this matters:</strong></p> <ul>
+<li>
+<strong>Cost optimization</strong>: Don't use expensive models for simple tasks</li>
+<li>
+<strong>Quality optimization</strong>: Use the best model for each specific task</li>
+<li>
+<strong>Latency optimization</strong>: Use fast models when speed matters</li>
+<li>
+<strong>Privacy optimization</strong>: Use local models for sensitive data</li>
+</ul> <h4> <a name="concept-3-the-react-pattern" href="#concept-3-the-react-pattern"> </a> <strong>Concept 3: The ReAct Pattern</strong>
+</h4> <p>OpenClaw uses an industry-standard AI architecture called <strong>ReAct</strong> (Reasoning + Acting):<br>
+</p> <div>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────┐
+│ THE ReAct LOOP │
+├─────────────────────────────────────────────────────────────────────────┤
+│ │
+│ ┌──────────────┐ │
+│ │ OBSERVE │ ←─── Perceive current state │
+│ └──────┬───────┘ (messages, files, sensor data) │
+│ │ │
+│ ▼ │
+│ ┌──────────────┐ │
+│ │ THINK │ ←─── Reason about what to do │
+│ └──────┬───────┘ (planning, decision-making) │
+│ │ │
+│ ▼ │
+│ ┌──────────────┐ │
+│ │ ACT │ ←─── Execute action │
+│ └──────┬───────┘ (use tools, send messages) │
+│ │ │
+│ └────────────────┐ │
+│ │ │
+│ ▼ │
+│ ┌─────────────────────────────────┐ │
+│ │ ACTION RESULTS FEED BACK │ │
+│ │ INTO OBSERVE │ │
+│ └─────────────────────────────────┘ │
+│ │
+│ This loop continues until the task is complete! │
+│ │
+└─────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h4> <a name="concept-4-persistent-memory" href="#concept-4-persistent-memory"> </a> <strong>Concept 4: Persistent Memory</strong>
+</h4> <p>Unlike stateless chatbots that forget everything when you close the tab, OpenClaw has <strong>memory</strong>:</p> <div><table>
+<thead>
+<tr>
+<th>Memory Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Short-term</strong></td>
+<td>Current conversation context</td>
+<td>"What was I asking about again?"</td>
+</tr>
+<tr>
+<td><strong>Long-term</strong></td>
+<td>Curated knowledge (MEMORY.md)</td>
+<td>"User prefers dark mode"</td>
+</tr>
+<tr>
+<td><strong>Session History</strong></td>
+<td>Past conversations</td>
+<td>"Yesterday we discussed Python"</td>
+</tr>
+<tr>
+<td><strong>External</strong></td>
+<td>Files, databases, APIs</td>
+<td>Calendar events, emails, documents</td>
+</tr>
+</tbody>
+</table></div> <h3> <a name="why-localfirst-architecture-wins" href="#why-localfirst-architecture-wins"> </a> Why Local-First Architecture Wins
+</h3> <div><table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Cloud AI Assistants</th>
+<th>OpenClaw (Local-First)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Privacy</strong></td>
+<td>Data on vendor servers</td>
+<td>Data stays on your devices</td>
+</tr>
+<tr>
+<td><strong>Customization</strong></td>
+<td>Limited to vendor features</td>
+<td>Fully customizable</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Subscription fees</td>
+<td>Pay only for API usage (optional)</td>
+</tr>
+<tr>
+<td><strong>Offline Use</strong></td>
+<td> Requires internet</td>
+<td> Many features work offline</td>
+</tr>
+<tr>
+<td><strong>Integrations</strong></td>
+<td>Vendor-approved only</td>
+<td>Any integration you can code</td>
+</tr>
+<tr>
+<td><strong>Model Choice</strong></td>
+<td>Vendor's choice</td>
+<td>Any model (local or API)</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>Network latency</td>
+<td>Local = instant</td>
+</tr>
+<tr>
+<td><strong>Control</strong></td>
+<td>Terms of service restrictions</td>
+<td>You make the rules</td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="2-how-the-architecture-works" href="#2-how-the-architecture-works"> </a> 2. How the Architecture Works
+</h2> <p>Now that you understand <em>why</em> OpenClaw exists, here's <em>how</em> it's built under the hood.</p> <h2> <a name="21-system-architecture-overview" href="#21-system-architecture-overview"> </a> 2.1 System Architecture Overview
+</h2> <p><strong>System Architecture Overview:</strong></p> <div><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Components</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input</strong></td>
+<td>WhatsApp, Telegram, Slack, Discord, Signal, iMessage, Google Chat, WebChat</td>
+</tr>
+<tr>
+<td><strong>Gateway Core</strong></td>
+<td>OpenClaw Gateway, Request Router, Session Manager, Auth &amp; Security</td>
+</tr>
+<tr>
+<td><strong>AI Layer</strong></td>
+<td>Pi Agent Runtime, LLM Router, Memory System, Skill Manager</td>
+</tr>
+<tr>
+<td><strong>Tool Layer</strong></td>
+<td>Browser Control, Code Execution, File System, Cron Jobs, Node Connector, Canvas UI</td>
+</tr>
+<tr>
+<td><strong>Model Providers</strong></td>
+<td>OpenAI, Anthropic, Google Gemini, Local Models (Ollama/lmstudio)</td>
+</tr>
+</tbody>
+</table></div> <p><strong>Data flow:</strong> Channels → Gateway → Pi Agent → LLM Router → Tools → Response back to Channel</p> <h2> <a name="22-core-components-deep-dive" href="#22-core-components-deep-dive"> </a> 2.2 Core Components Deep Dive
+</h2> <h3> <a name="component-1-the-gateway" href="#component-1-the-gateway"> </a> <strong>Component 1: The Gateway</strong>
+</h3> <p>The <strong>Gateway</strong> is the heart of OpenClaw. Think of it as an air traffic control tower.<br>
+</p> <div>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│ THE GATEWAY │
+│ (WebSocket Control Plane) │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ │
+│ Responsibilities: │
+│ ───────────────── │
+│ │
+│ 1⃣ CONNECTION HUB │
+│ • Maintains WebSocket connections to all channels │
+│ • Handles authentication for each incoming message │
+│ • Routes messages to appropriate agents/sessions │
+│ │
+│ 2⃣ SESSION MANAGEMENT │
+│ • Creates isolated sessions per conversation │
+│ • Maintains conversation history │
+│ • Handles session state (active, paused, completed) │
+│ │
+│ 3⃣ CONFIGURATION &amp; STATE │
+│ • Reads ~/.openclaw/openclaw.json │
+│ • Hot-reloads configuration changes │
+│ • Manages secrets and API keys │
+│ │
+│ 4⃣ WEB INTERFACE │
+│ • Serves Control UI at /__openclaw__/ │
+│ • Provides HTTP API endpoints │
+│ • Hosts the Canvas for visual output │
+│ │
+│ Default Port: 18789 │
+│ Protocol: WebSocket + HTTP │
+│ Bind Mode: loopback (127.0.0.1) by default for security │
+│ │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Key Gateway Commands:</strong><br>
+</p> <div>
+<pre><code><span># Start the Gateway</span>
+openclaw gateway <span>--port</span> 18789 <span># Check status</span>
+openclaw gateway status <span># View logs</span>
+openclaw logs <span>--follow</span> <span># Hot-reload config</span>
+openclaw config apply
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="component-2-the-pi-agent-runtime" href="#component-2-the-pi-agent-runtime"> </a> <strong>Component 2: The Pi Agent Runtime</strong>
+</h3> <p><strong>Pi</strong> is OpenClaw's embedded agent runtime (RPC mode). This is where the "intelligence" lives.<br>
+</p> <div>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│ PI AGENT RUNTIME │
+│ (AI Processing Engine) │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ │
+│ Input: Tool Stream ───────────────────────────────────────────────┐ │
+│ │ │
+│ ┌─────────────────────────────────────────────────────────────┐ │ │
+│ │ Pi Runtime │ │ │
+│ │ │ │ │
+│ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────────┐ │ │ │
+│ │ │ Prompt │───→│ LLM │───→│ Response │ │ │ │
+│ │ │ Builder │ │ Invocation │ │ Parser │ │ │ │
+│ │ └─────────────┘ └─────────────┘ └─────────────────┘ │ │ │
+│ │ │ ↑ │ │ │ │
+│ │ │ │ │ │ │ │
+│ │ ▼ │ ▼ │ │ │
+│ │ ┌─────────────┐ ┌──────────┐ ┌─────────────┐ │ │ │
+│ │ │ Context │ │ Tool │ │ Tool │ │ │ │
+│ │ │ Assembler │ │ Results │ │ Dispatcher │ │ │ │
+│ │ │ │ │ (feedback│ │ │ │ │ │
+│ │ └─────────────┘ └──────────┘ └─────────────┘ │ │ │
+│ │ │ ↑ │ │ │ │
+│ └─────────┼──────────────────┼────────────────────┼───────────┘ │ │
+│ │ │ │ │ │
+│ Output: ──┴──────────────────┴────────────────────┴───────────────┘ │
+│ │
+│ Features: │
+│ • Streaming responses (real-time output) │
+│ • Block streaming (structured content like code, tables) │
+│ • Tool orchestration (chain multiple tools together) │
+│ • Multi-turn reasoning (complex problem solving) │
+│ │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="component-3-persistent-memory-system" href="#component-3-persistent-memory-system"> </a> <strong>Component 3: Persistent Memory System</strong>
+</h3> <p>OpenClaw's memory system is one of its most sophisticated features. Let's break it down:</p> <p><strong>Memory flow:</strong><br>
+</p> <p><strong>The Memory Files Explained:</strong></p> <div><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+<th>When It Loads</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SOUL.md</code></td>
+<td>Agent's personality, voice, mannerisms</td>
+<td>Every session (defines "who you are")</td>
+</tr>
+<tr>
+<td><code>USER.md</code></td>
+<td>User preferences, pronouns, context</td>
+<td>Main sessions only (not group chats)</td>
+</tr>
+<tr>
+<td><code>MEMORY.md</code></td>
+<td>Technical notes, lessons learned, todos</td>
+<td>Main sessions only (curated knowledge)</td>
+</tr>
+<tr>
+<td><code>AGENTS.md</code></td>
+<td>Multi-agent rules, skill notes</td>
+<td>All sessions</td>
+</tr>
+<tr>
+<td><code>TOOLS.md</code></td>
+<td>Environment-specific tool configs</td>
+<td>All sessions</td>
+</tr>
+<tr>
+<td><code>memory/*.md</code></td>
+<td>Daily raw logs</td>
+<td>Review only</td>
+</tr>
+</tbody>
+</table></div> <p><strong>Example SOUL.md:</strong><br>
+</p> <div>
+<pre><code><span># SOUL.md - Who You Are</span> You are OpenClaw, a helpful AI assistant. Your traits:
+<span>
+-</span> Professional yet approachable
+<span>-</span> Security-conscious and careful
+<span>-</span> Independent but collaborative
+<span>-</span> Always verify before destructive actions
+<span>-</span> Prefer writing tools over deleting
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Example MEMORY.md:</strong><br>
+</p> <div>
+<pre><code><span># MEMORY.md - Long-Term Technical Notes</span> <span>## Git/GitHub</span>
+<span>### Git Push Hanging (HTTPS Auth Issue)</span>
+<span>**Pattern:**</span> <span>`git push`</span> hangs indefinitely
+<span>**Fix:**</span> Switch to SSH: <span>`git remote set-url origin git@github.com:...`</span> <span>## Preferences</span>
+<span>-</span> Preferred code editor: VS Code
+<span>-</span> Shell: zsh
+<span>-</span> Git workflow: rebase preferred
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="component-4-toolskill-execution-layer" href="#component-4-toolskill-execution-layer"> </a> <strong>Component 4: Tool/Skill Execution Layer</strong>
+</h3> <p>This is how OpenClaw "does things" in the real world.</p> <div><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Core</strong></td>
+<td>Shell execution, file read/write/edit, browser control, Canvas UI</td>
+</tr>
+<tr>
+<td><strong>Platform</strong></td>
+<td>iOS/Android camera, screen record, GPS location, push notifications</td>
+</tr>
+<tr>
+<td><strong>Automation</strong></td>
+<td>Cron jobs, webhooks, sub-agent spawn, message send</td>
+</tr>
+<tr>
+<td><strong>Channel</strong></td>
+<td>Discord reactions/roles, Slack threads/reactions</td>
+</tr>
+</tbody>
+</table></div> <p><strong>The Skill System:</strong></p> <p>Skills are <strong>AgentSkills-compatible</strong> folders that teach OpenClaw how to use tools:<br>
+</p> <div>
+<pre><code>skills/
+├── weather/ # Bundled skill
+│ └── SKILL.md # Instructions + metadata
+├── github/ # Community skill
+│ └── SKILL.md
+└── my-custom-skill/ # Your custom skill ├── SKILL.md └── helpers.js # Optional code
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Example SKILL.md structure:</strong><br>
+</p> <div>
+<pre><code><span>---</span>
+<span>name</span><span>:</span> <span>weather</span>
+<span>description</span><span>:</span> <span>Get current weather and forecasts</span>
+<span>---</span> <span># Weather Skill</span> Use this skill to fetch weather information. <span>## Available Tools</span>
+<span>
+-</span> <span>`weather_current(location)`</span> - Get current conditions
+<span>-</span> <span>`weather_forecast(location, days)`</span> - Get multi-day forecast <span>## Example Usage</span> User: "What's the weather in San Francisco?"
+Action: Call <span>`weather_current("San Francisco")`</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="23-data-flow-from-message-to-action" href="#23-data-flow-from-message-to-action"> </a> 2.3 Data Flow: From Message to Action
+</h2> <p>Let's trace what happens when you send a message to OpenClaw:</p> <p><strong>Step-by-step message flow</strong> (example: "Schedule meeting with Sarah tomorrow 2pm"):</p> <ol>
+<li>
+<strong>User → Channel (Telegram):</strong> Sends the message</li>
+<li>
+<strong>Channel → Gateway:</strong> WebSocket delivery</li>
+<li>
+<strong>Gateway:</strong> Verifies sender, checks allowlist, routes to session</li>
+<li>
+<strong>Gateway → Pi Agent:</strong> Forwards message + context</li>
+<li>
+<strong>Pi Agent:</strong> Loads SOUL.md, USER.md, MEMORY.md, session history, relevant skills</li>
+<li>
+<strong>Pi Agent → LLM:</strong> Sends full prompt with context</li>
+<li>
+<strong>LLM → Pi Agent:</strong> "I need to: 1) check calendar, 2) find Sarah's contact, 3) create event"</li>
+<li>
+<strong>Pi Agent → Tools:</strong> Calls calendar API → gets free/busy slots</li>
+<li>
+<strong>Pi Agent → Tools:</strong> Calls contacts API → gets Sarah's email</li>
+<li>
+<strong>Pi Agent → LLM:</strong> Sends tool results</li>
+<li>
+<strong>LLM → Pi Agent:</strong> Generates calendar event details</li>
+<li>
+<strong>Pi Agent → Tools:</strong> Creates the calendar event (POST /calendar/events)</li>
+<li>
+<strong>Pi Agent → Gateway → Channel → User:</strong> " Created: Meeting with Sarah, Tomorrow 2:00–3:00 PM"</li>
+</ol> <hr> <h2> <a name="3-getting-started" href="#3-getting-started"> </a> 3. Getting Started
+</h2> <p>Enough background — let's get it running. This section walks you through installation to your first working command.</p> <h2> <a name="31-installation" href="#31-installation"> </a> 3.1 Installation
+</h2> <h3> <a name="prerequisites" href="#prerequisites"> </a> Prerequisites
+</h3> <p>Before we start, ensure you have:</p> <div><table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Node.js</strong></td>
+<td>≥22.12.0</td>
+<td>Runtime environment</td>
+</tr>
+<tr>
+<td><strong>npm/pnpm</strong></td>
+<td>Latest</td>
+<td>Package manager</td>
+</tr>
+<tr>
+<td><strong>Git</strong></td>
+<td>Any</td>
+<td>For skills/plugins</td>
+</tr>
+<tr>
+<td><strong>Terminal</strong></td>
+<td>Bash/Zsh/PowerShell</td>
+<td>CLI interaction</td>
+</tr>
+</tbody>
+</table></div> <h3> <a name="step-1-install-nodejs" href="#step-1-install-nodejs"> </a> Step 1: Install Node.js
+</h3> <p><strong>macOS/Linux:</strong><br>
+</p> <p><strong>Windows:</strong><br>
+</p> <div>
+<pre><code><span># Download installer from nodejs.org</span><span>
+</span><span># Or use winget</span><span>
+</span><span>winget</span><span> </span><span>install</span><span> </span><span>OpenJS.NodeJS</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Verify installation:<br>
+</p> <div>
+<pre><code>node <span>--version</span> <span># Should show v22.x.x or higher</span>
+npm <span>--version</span> <span># Should show 10.x.x or higher</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="step-2-install-openclaw" href="#step-2-install-openclaw"> </a> Step 2: Install OpenClaw
+</h3> <div>
+<pre><code><span># Using npm</span>
+npm <span>install</span> <span>-g</span> openclaw@latest <span># Or using pnpm (faster)</span>
+pnpm add <span>-g</span> openclaw@latest <span># Or using bun</span>
+bun add <span>-g</span> openclaw@latest
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>From source (for development):</strong><br>
+</p> <div>
+<pre><code>git clone https://github.com/openclaw/openclaw.git
+<span>cd </span>openclaw pnpm <span>install
+</span>pnpm ui:build
+pnpm build <span># Run via pnpm</span>
+pnpm openclaw <span>--version</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="step-3-run-the-onboarding-wizard" href="#step-3-run-the-onboarding-wizard"> </a> Step 3: Run the Onboarding Wizard
+</h3> <p>The wizard will guide you through initial setup:<br>
+</p> <p>The wizard will:</p> <ol>
+<li> Verify prerequisites</li>
+<li> Create workspace directory (<code>~/.openclaw/</code>)</li>
+<li> Set up initial configuration</li>
+<li> Install system service (optional)</li>
+<li> Generate security tokens</li>
+</ol> <h3> <a name="step-4-verify-installation" href="#step-4-verify-installation"> </a> Step 4: Verify Installation
+</h3> <div>
+<pre><code><span># Check version</span>
+openclaw <span>--version</span> <span># Check system health</span>
+openclaw doctor <span># Expected output:</span>
+<span># Node.js version: v22.x.x</span>
+<span># Gateway binary: found</span>
+<span># Workspace: /Users/you/.openclaw</span>
+<span># Config file: ~/.openclaw/openclaw.json</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="32-configuration" href="#32-configuration"> </a> 3.2 Configuration
+</h2> <h3> <a name="understanding-the-config-file" href="#understanding-the-config-file"> </a> Understanding the Config File
+</h3> <p>OpenClaw's configuration lives at <code>~/.openclaw/openclaw.json</code>:<br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"gateway"</span><span>:</span><span> </span><span>{</span><span> </span><span>"port"</span><span>:</span><span> </span><span>18789</span><span>,</span><span> </span><span>"bind"</span><span>:</span><span> </span><span>"loopback"</span><span>,</span><span> </span><span>"auth"</span><span>:</span><span> </span><span>{</span><span> </span><span>"token"</span><span>:</span><span> </span><span>"your-secure-token-here"</span><span> </span><span>},</span><span> </span><span>"reload"</span><span>:</span><span> </span><span>{</span><span> </span><span>"mode"</span><span>:</span><span> </span><span>"hybrid"</span><span> </span><span>}</span><span> </span><span>},</span><span> </span><span>"models"</span><span>:</span><span> </span><span>{</span><span> </span><span>"default"</span><span>:</span><span> </span><span>"anthropic/claude-4-opus"</span><span>,</span><span> </span><span>"thinking"</span><span>:</span><span> </span><span>"medium"</span><span> </span><span>},</span><span> </span><span>"channels"</span><span>:</span><span> </span><span>{</span><span> </span><span>"telegram"</span><span>:</span><span> </span><span>{</span><span> </span><span>"enabled"</span><span>:</span><span> </span><span>true</span><span>,</span><span> </span><span>"botToken"</span><span>:</span><span> </span><span>"${TELEGRAM_BOT_TOKEN}"</span><span>,</span><span> </span><span>"dmPolicy"</span><span>:</span><span> </span><span>"pairing"</span><span> </span><span>}</span><span> </span><span>},</span><span> </span><span>"skills"</span><span>:</span><span> </span><span>{</span><span> </span><span>"load"</span><span>:</span><span> </span><span>{</span><span> </span><span>"bundled"</span><span>:</span><span> </span><span>true</span><span>,</span><span> </span><span>"workspace"</span><span>:</span><span> </span><span>true</span><span> </span><span>}</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="setting-up-your-first-channel" href="#setting-up-your-first-channel"> </a> Setting Up Your First Channel
+</h3> <p>Let's connect Telegram as an example:</p> <p><strong>Step 1: Create a Telegram Bot</strong></p> <ol>
+<li>Message <a href="https://t.me/botfather" target="_blank">@BotFather</a> on Telegram</li>
+<li>Send <code>/newbot</code>
+</li>
+<li>Follow prompts to name your bot</li>
+<li>
+<strong>Copy the bot token</strong> (looks like: <code>123456789:ABCdefGHIjklMNOpqrsTUVwxyz</code>)</li>
+</ol> <p><strong>Step 2: Configure OpenClaw</strong><br>
+</p> <div>
+<pre><code><span># Set the bot token securely</span>
+openclaw config <span>set </span>channels.telegram.botToken <span>"123456789:YOUR_TOKEN_HERE"</span> <span># Or use environment variable</span>
+<span>echo</span> <span>"export TELEGRAM_BOT_TOKEN=123456789:YOUR_TOKEN_HERE"</span> <span>&gt;&gt;</span> ~/.zshrc
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Step 3: Edit config manually</strong><br>
+</p> <div>
+<pre><code>openclaw config edit
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Add:<br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"channels"</span><span>:</span><span> </span><span>{</span><span> </span><span>"telegram"</span><span>:</span><span> </span><span>{</span><span> </span><span>"enabled"</span><span>:</span><span> </span><span>true</span><span>,</span><span> </span><span>"botToken"</span><span>:</span><span> </span><span>"${TELEGRAM_BOT_TOKEN}"</span><span>,</span><span> </span><span>"dmPolicy"</span><span>:</span><span> </span><span>"pairing"</span><span>,</span><span> </span><span>"allowFrom"</span><span>:</span><span> </span><span>[]</span><span> </span><span>}</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Step 4: Start the Gateway</strong><br>
+</p> <div>
+<pre><code>openclaw gateway <span>--port</span> 18789 <span>--verbose</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>You should see logs showing the Telegram channel connecting.</p> <h3> <a name="security-pairing-important" href="#security-pairing-important"> </a> Security Pairing (Important!)
+</h3> <p>OpenClaw uses <strong>pairing</strong> by default for security. Unknown users receive a pairing code instead of responses.</p> <p><strong>To approve a contact:</strong></p> <ol>
+<li>They message your bot, receive a pairing code</li>
+<li>You run:
+</li>
+</ol> <div>
+<pre><code>openclaw pairing approve telegram &lt;code&gt;
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>To set open mode</strong> (less secure, only for trusted environments):<br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"channels"</span><span>:</span><span> </span><span>{</span><span> </span><span>"telegram"</span><span>:</span><span> </span><span>{</span><span> </span><span>"dmPolicy"</span><span>:</span><span> </span><span>"open"</span><span>,</span><span> </span><span>"allowFrom"</span><span>:</span><span> </span><span>[</span><span>"*"</span><span>]</span><span> </span><span>}</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="33-setting-up-model-providers" href="#33-setting-up-model-providers"> </a> 3.3 Setting Up Model Providers
+</h2> <p>OpenClaw supports multiple LLM providers. Let's set up the most popular ones:</p> <h3> <a name="option-1-anthropic-claude-recommended" href="#option-1-anthropic-claude-recommended"> </a> Option 1: Anthropic (Claude) - Recommended
+</h3> <div>
+<pre><code><span># Get API key from https://console.anthropic.com/</span>
+<span>export </span><span>ANTHROPIC_API_KEY</span><span>=</span><span>"sk-ant-api03-..."</span> <span># Add to OpenClaw</span>
+openclaw config <span>set </span>models.providers.anthropic.apiKey <span>"</span><span>${</span><span>ANTHROPIC_API_KEY</span><span>}</span><span>"</span>
+openclaw config <span>set </span>models.default <span>"anthropic/claude-4-opus"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="option-2-openai-gpt4-gpt5" href="#option-2-openai-gpt4-gpt5"> </a> Option 2: OpenAI (GPT-4, GPT-5)
+</h3> <div>
+<pre><code><span># Get API key from https://platform.openai.com/</span>
+<span>export </span><span>OPENAI_API_KEY</span><span>=</span><span>"sk-..."</span> openclaw config <span>set </span>models.providers.openai.apiKey <span>"</span><span>${</span><span>OPENAI_API_KEY</span><span>}</span><span>"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="option" href="#option"> </a> Option
+</h3> <h3> <a name="option-3-google-gemini" href="#option-3-google-gemini"> </a> Option 3: Google Gemini
+</h3> <div>
+<pre><code><span># Get API key from https://aistudio.google.com/</span>
+<span>export </span><span>GEMINI_API_KEY</span><span>=</span><span>"..."</span> openclaw config <span>set </span>models.providers.google.apiKey <span>"</span><span>${</span><span>GEMINI_API_KEY</span><span>}</span><span>"</span>
+openclaw config <span>set </span>models.default <span>"google/gemini-3-pro-preview"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="option-4-local-models-ollama" href="#option-4-local-models-ollama"> </a> Option 4: Local Models (Ollama)
+</h3> <p>For privacy-conscious or offline use:<br>
+</p> <div>
+<pre><code><span># Install Ollama</span>
+curl <span>-fsSL</span> https://ollama.com/install.sh | sh <span># Pull a model</span>
+ollama pull llama3.3
+ollama pull qwen2.5 <span># Configure OpenClaw</span>
+openclaw config <span>set </span>models.providers.ollama.baseUrl <span>"http://localhost:11434"</span>
+openclaw config <span>set </span>models.default <span>"ollama/llama3.3"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="model-failover-configuration" href="#model-failover-configuration"> </a> Model Failover Configuration
+</h3> <p>Set up automatic fallback if a provider fails:<br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"models"</span><span>:</span><span> </span><span>{</span><span> </span><span>"default"</span><span>:</span><span> </span><span>"anthropic/claude-4-opus"</span><span>,</span><span> </span><span>"fallbacks"</span><span>:</span><span> </span><span>[</span><span> </span><span>"openai/gpt-5"</span><span>,</span><span> </span><span>"google/gemini-3-pro-preview"</span><span>,</span><span> </span><span>"ollama/llama3.3"</span><span> </span><span>],</span><span> </span><span>"thinking"</span><span>:</span><span> </span><span>"medium"</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="using-oauth-anthropic-promax" href="#using-oauth-anthropic-promax"> </a> Using OAuth (Anthropic Pro/Max)
+</h3> <p>For the best experience with Claude:<br>
+</p> <div>
+<pre><code><span># Login via browser (OAuth)</span>
+openclaw login anthropic <span># This stores credentials securely</span>
+<span># No API key needed!</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="34-finding-installing-and-configuring-skills" href="#34-finding-installing-and-configuring-skills"> </a> 3.4 Finding, Installing, and Configuring Skills
+</h2> <h3> <a name="what-are-skills" href="#what-are-skills"> </a> What Are Skills?
+</h3> <p>Skills are <strong>teaching documents</strong> that tell OpenClaw how to use tools. They're stored as Markdown files with YAML frontmatter.</p> <h3> <a name="bundled-skills-come-preinstalled" href="#bundled-skills-come-preinstalled"> </a> Bundled Skills (Come Pre-installed)
+</h3> <p>OpenClaw ships with several built-in skills:</p> <div><table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>weather</code></td>
+<td>Get weather forecasts</td>
+</tr>
+<tr>
+<td><code>github</code></td>
+<td>Interact with GitHub repos</td>
+</tr>
+<tr>
+<td><code>browser</code></td>
+<td>Control web browser</td>
+</tr>
+<tr>
+<td><code>canvas</code></td>
+<td>Render visual UIs</td>
+</tr>
+<tr>
+<td><code>cron</code></td>
+<td>Schedule recurring tasks</td>
+</tr>
+</tbody>
+</table></div> <h3> <a name="discovering-skills-on-clawhub" href="#discovering-skills-on-clawhub"> </a> Discovering Skills on ClawHub
+</h3> <p><strong>ClawHub</strong> is the public skills registry:<br>
+</p> <div>
+<pre><code><span># Open ClawHub in browser</span>
+openclaw hub <span># Or visit https://clawhub.com</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="installing-a-skill" href="#installing-a-skill"> </a> Installing a Skill
+</h3> <p><strong>Method 1: Using ClawHub CLI</strong><br>
+</p> <div>
+<pre><code><span># Install a skill (e.g., todoist for task management)</span>
+clawhub <span>install </span>todoist <span># Update all skills</span>
+clawhub update <span>--all</span> <span># Sync workspace with ClawHub</span>
+clawhub <span>sync</span> <span>--all</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Method 2: Manual Installation</strong><br>
+</p> <div>
+<pre><code><span># Navigate to your workspace skills folder</span>
+<span>cd</span> ~/.openclaw/workspace/skills <span># Clone a skill repo</span>
+git clone https://github.com/example/openclaw-todoist.git ./todoist <span># Or create manually</span>
+<span>mkdir </span>my-skill
+<span>cat</span> <span>&gt;</span> my-skill/SKILL.md <span>&lt;&lt;</span> <span>'</span><span>EOF</span><span>'
+---
+name: my-skill
+description: My custom OpenClaw skill
+--- # My Custom Skill This skill does amazing things! ## Usage Example: "Use my-skill to process data"
+</span><span>EOF
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="creating-your-first-skill" href="#creating-your-first-skill"> </a> Creating Your First Skill
+</h3> <p>Let's create a simple "greeting" skill:<br>
+</p> <div>
+<pre><code><span># Create skill directory</span>
+<span>mkdir</span> <span>-p</span> ~/.openclaw/workspace/skills/greeting <span># Create SKILL.md</span>
+<span>cat</span> <span>&gt;</span> ~/.openclaw/workspace/skills/greeting/SKILL.md <span>&lt;&lt;</span> <span>'</span><span>EOF</span><span>'
+---
+name: greeting
+description: Generate personalized greetings
+--- # Greeting Skill Generate warm, personalized greetings for users. ## Guidelines - Use the user's preferred name from USER.md
+- Match the time of day (morning/afternoon/evening)
+- Keep it friendly but professional
+- Include relevant emojis ## Example Output "Good morning, Alex! Ready to tackle the day?"
+"Good evening, Sam! Hope you had a productive day!"
+</span><span>EOF
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Now OpenClaw will automatically know about your skill on the next session!</p> <h3> <a name="skill-gating-advanced" href="#skill-gating-advanced"> </a> Skill Gating (Advanced)
+</h3> <p>You can make skills conditional based on:<br>
+</p> <div>
+<pre><code><span>---</span>
+<span>name</span><span>:</span> <span>my-skill</span>
+<span>description</span><span>:</span> <span>Requires specific setup</span>
+<span>metadata</span><span>:</span> <span>{</span> <span>"</span><span>openclaw"</span><span>:</span> <span>{</span> <span>"</span><span>requires"</span><span>:</span> <span>{</span> <span>"</span><span>bins"</span><span>:</span> <span>[</span><span>"</span><span>docker"</span><span>,</span> <span>"</span><span>node"</span><span>],</span> <span>"</span><span>env"</span><span>:</span> <span>[</span><span>"</span><span>MY_API_KEY"</span><span>],</span> <span>"</span><span>config"</span><span>:</span> <span>[</span><span>"</span><span>features.advanced"</span><span>]</span> <span>},</span> <span>"</span><span>os"</span><span>:</span> <span>[</span><span>"</span><span>darwin"</span><span>,</span> <span>"</span><span>linux"</span><span>]</span> <span>}</span> <span>}</span>
+<span>---</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This skill will only load if:</p> <ul>
+<li>Docker and Node are installed</li>
+<li>
+<code>MY_API_KEY</code> environment variable is set</li>
+<li>
+<code>features.advanced</code> is true in config</li>
+<li>Running on macOS or Linux</li>
+</ul> <hr> <h2> <a name="4-practical-applications-amp-productivity" href="#4-practical-applications-amp-productivity"> </a> 4. Practical Applications &amp; Productivity
+</h2> <p>Now that you have OpenClaw set up, let's explore the <strong>best use cases</strong> and how to maximize your daily productivity.</p> <h2> <a name="41-what-are-the-best-use-cases-right-now" href="#41-what-are-the-best-use-cases-right-now"> </a> 4.1 What Are the Best Use Cases Right Now?
+</h2> <h3> <a name="tier-1-absolute-gamechangers" href="#tier-1-absolute-gamechangers"> </a> Tier 1: Absolute Game-Changers
+</h3> <div><table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Why It Works</th>
+<th>Example Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Daily Standups</strong></td>
+<td>Auto-generate from calendar + commits</td>
+<td>"Generate my standup for today"</td>
+</tr>
+<tr>
+<td><strong>Email Triage</strong></td>
+<td>Summarize, prioritize, draft responses</td>
+<td>"Summarize unread emails, flag urgent"</td>
+</tr>
+<tr>
+<td><strong>Research</strong></td>
+<td>Web search + synthesis</td>
+<td>"Research React 19 features and summarize"</td>
+</tr>
+<tr>
+<td><strong>Code Review</strong></td>
+<td>Explain PRs, suggest improvements</td>
+<td>"Review this PR: github.com/user/repo/pull/123"</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>Generate docs from code</td>
+<td>"Document the functions in this file"</td>
+</tr>
+</tbody>
+</table></div> <h3> <a name="tier-2-excellent-productivity-boosts" href="#tier-2-excellent-productivity-boosts"> </a> Tier 2: Excellent Productivity Boosts
+</h3> <div><table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Why It Works</th>
+<th>Example Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Meeting Prep</strong></td>
+<td>Context from emails + calendar</td>
+<td>"Prep me for my 2pm meeting with Sarah"</td>
+</tr>
+<tr>
+<td><strong>Travel Planning</strong></td>
+<td>Multi-source research</td>
+<td>"Plan a 3-day trip to Tokyo"</td>
+</tr>
+<tr>
+<td><strong>Content Creation</strong></td>
+<td>Drafts, outlines, editing</td>
+<td>"Write a blog outline about AI agents"</td>
+</tr>
+<tr>
+<td><strong>Learning</strong></td>
+<td>Explain complex topics</td>
+<td>"Explain quantum computing like I'm 5"</td>
+</tr>
+<tr>
+<td><strong>Bug Analysis</strong></td>
+<td>Parse logs, suggest fixes</td>
+<td>"This error keeps happening, analyze the logs"</td>
+</tr>
+</tbody>
+</table></div> <h3> <a name="tier-3-nice-qualityoflife-improvements" href="#tier-3-nice-qualityoflife-improvements"> </a> Tier 3: Nice Quality-of-Life Improvements
+</h3> <div><table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Why It Works</th>
+<th>Example Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quick Calculations</strong></td>
+<td>No calculator needed</td>
+<td>"Calculate compound interest on $10k at 7%"</td>
+</tr>
+<tr>
+<td><strong>Unit Conversions</strong></td>
+<td>Instant conversions</td>
+<td>"Convert 50 miles to kilometers"</td>
+</tr>
+<tr>
+<td><strong>Time Zone Math</strong></td>
+<td>Across zones</td>
+<td>"What time is it in Tokyo when it's 9am here?"</td>
+</tr>
+<tr>
+<td><strong>Definitions</strong></td>
+<td>Quick lookups</td>
+<td>"What's the difference between TCP and UDP?"</td>
+</tr>
+</tbody>
+</table></div> <h2> <a name="42-daily-productivity-workflows" href="#42-daily-productivity-workflows"> </a> 4.2 Daily Productivity Workflows
+</h2> <h3> <a name="workflow-1-morning-routine" href="#workflow-1-morning-routine"> </a> Workflow 1: Morning Routine
+</h3> <div>
+<pre><code>You: "Good morning!" OpenClaw:
+→ Weather: 72°F sunny
+→ Calendar: 3 meetings today (10am, 2pm, 4pm)
+→ Emails: 12 new, 2 flagged as urgent
+→ Reminder: Submit expense report by EOD You: "Block 2 hours for deep work between meetings" OpenClaw: Created: Focus Time, 12:00-2:00 PM You: "Summarize those urgent emails and draft responses" OpenClaw: [Short summaries with reply drafts attached]
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="workflow-2-research-amp-analysis" href="#workflow-2-research-amp-analysis"> </a> Workflow 2: Research &amp; Analysis
+</h3> <p>Use the browser tool for deep research:<br>
+</p> <div>
+<pre><code>You: "Research the latest developments in LLM efficiency. Find 3 papers from 2025, summarize their approaches." OpenClaw:
+1. Opens browser
+2. Searches "LLM efficiency 2025 research papers"
+3. Navigates to arXiv, finds relevant papers
+4. Reads abstracts and key sections
+5. Synthesizes findings → Response: [Detailed comparison with links]
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="43-building-your-personal-assistant" href="#43-building-your-personal-assistant"> </a> 4.3 Building Your Personal Assistant
+</h2> <h3> <a name="step-1-define-your-assistants-personality" href="#step-1-define-your-assistants-personality"> </a> Step 1: Define Your Assistant's Personality
+</h3> <p>Edit <code>~/.openclaw/workspace/SOUL.md</code>:<br>
+</p> <div>
+<pre><code><span># SOUL.md - Who You Are</span> You are my personal productivity assistant. <span>## Communication Style</span>
+<span>-</span> Concise but warm
+<span>-</span> Use bullet points for clarity
+<span>-</span> Lead with key information <span>## Proactive Behaviors</span>
+<span>-</span> Remind me of deadlines 24h in advance
+<span>-</span> Suggest calendar optimizations weekly
+<span>-</span> Flag potential meeting conflicts
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="step-2-capture-your-preferences" href="#step-2-capture-your-preferences"> </a> Step 2: Capture Your Preferences
+</h3> <p>Edit <code>~/.openclaw/workspace/USER.md</code>:<br>
+</p> <div>
+<pre><code><span># USER.md - About Your Human</span>
+<span>
+-</span> <span>**Name:**</span> Alex
+<span>-</span> <span>**Timezone:**</span> America/Los_Angeles
+<span>-</span> <span>**Occupation:**</span> Software Engineer <span>## Preferences</span>
+<span>-</span> Prefer 25min or 50min meeting slots
+<span>-</span> Buffer 5min between meetings
+<span>-</span> No meetings before 9:30am
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="step-3-add-your-work-context" href="#step-3-add-your-work-context"> </a> Step 3: Add Your Work Context
+</h3> <p>Edit <code>~/.openclaw/workspace/MEMORY.md</code>:<br>
+</p> <div>
+<pre><code><span># MEMORY.md - Long-Term Notes</span> <span>## Current Projects</span>
+<span>-</span> Project Alpha: Due March 15
+<span>-</span> Q1 Planning: Roadmap presentation <span>## Key Contacts</span>
+<span>-</span> Sarah (PM): sarah@company.com
+<span>-</span> David (Tech Lead): david@company.com <span>## Technical Context</span>
+<span>-</span> Stack: TypeScript, React, Node.js
+<span>-</span> GitHub: github.com/mycompany
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="44-automation-patterns" href="#44-automation-patterns"> </a> 4.4 Automation Patterns
+</h2> <h3> <a name="pattern-1-cron-jobs-scheduled-tasks" href="#pattern-1-cron-jobs-scheduled-tasks"> </a> Pattern 1: Cron Jobs (Scheduled Tasks)
+</h3> <div>
+<pre><code><span># Daily news briefing at 8am</span>
+openclaw cron add <span>--name</span> <span>"morning-briefing"</span> <span>\</span> <span>--schedule</span> <span>"0 8 * * *"</span> <span>\</span> <span>--message</span> <span>"Generate morning briefing with weather and calendar"</span> <span># Weekly review every Friday 4pm</span>
+openclaw cron add <span>--name</span> <span>"weekly-review"</span> <span>\</span> <span>--schedule</span> <span>"0 16 * * 5"</span> <span>\</span> <span>--message</span> <span>"Weekly review: What did we accomplish?"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="5-optimization-security-amp-challenges" href="#5-optimization-security-amp-challenges"> </a> 5. Optimization, Security &amp; Challenges
+</h2> <h2> <a name="51-improving-performance-and-reliability" href="#51-improving-performance-and-reliability"> </a> 5.1 Improving Performance and Reliability
+</h2> <h3> <a name="performance-optimization-strategies" href="#performance-optimization-strategies"> </a> Performance Optimization Strategies
+</h3> <h4> <a name="1-model-selection-strategy" href="#1-model-selection-strategy"> </a> 1. Model Selection Strategy
+</h4> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
