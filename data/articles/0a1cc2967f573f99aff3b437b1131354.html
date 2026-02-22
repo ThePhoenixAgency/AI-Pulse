@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - via007/bilibili-rag: B站收藏夹RAG知识库：收藏不吃灰，B 站收藏夹 → 语音转写 → 向量检索 → 对话问答</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - via007/bilibili-rag: B站收藏夹RAG知识库：收藏不吃灰，B 站收藏夹 → 语音转写 → 向量检索 → 对话问答</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/22/2026 2:19:02 AM | <a href="https://github.com/via007/bilibili-rag" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1> Bilibili RAG：把收藏夹变成可对话的知识库</h1><a href="#-bilibili-rag把收藏夹变成可对话的知识库"></a></div>
+<p>把你在 B 站收藏的访谈/演讲/课程，变成可检索、可追溯来源的<strong>个人知识库</strong>。<br>
+适合：访谈/演讲/课程、技术视频与学习视频整理、公开课复盘、知识总结、会议/分享回顾、播客内容归档等。</p>
+<blockquote>
+<p>亮点：自动拉取内容 → 语音转写 → 向量检索 → 对话问答</p>
+</blockquote>
+<hr>
+<div><h2> 功能一览</h2><a href="#-功能一览"></a></div>
+<ul>
+<li> B 站扫码登录，读取收藏夹</li>
+<li> 音频转文字（ASR），自动兜底处理</li>
+<li> 语义检索（向量检索）</li>
+<li> 基于 RAG 的对话问答</li>
+<li> 本地 SQLite + ChromaDB 存储</li>
+</ul>
+<hr>
+<div><h2> 演示与截图</h2><a href="#-演示与截图"></a></div>
+<p><a target="_blank" href="/via007/bilibili-rag/blob/main/assets/screenshots/home.png"><img src="/via007/bilibili-rag/raw/main/assets/screenshots/home.png" alt="首页截图"></a>
+<a target="_blank" href="/via007/bilibili-rag/blob/main/assets/screenshots/chat.png"><img src="/via007/bilibili-rag/raw/main/assets/screenshots/chat.png" alt="对话界面截图"></a></p>
+<div><h2>B站演示视频：</h2><a href="#b站演示视频"></a></div>
+<p><a href="https://b23.tv/bGXyhjU">演示视频</a></p>
+<hr>
+<div><h2> 快速开始（3 步）</h2><a href="#-快速开始3-步"></a></div>
+<ol>
+<li>安装 ffmpeg（并确保在 PATH 中）</li>
+</ol>
+<ul>
+<li>macOS: <pre><code>brew install ffmpeg</code></pre></li>
+<li>Windows: 下载安装包后将 <pre><code>bin</code></pre> 目录加入 PATH</li>
+<li>Linux: <pre><code>apt/yum/pacman</code></pre> 安装 <pre><code>ffmpeg</code></pre></li>
+</ul>
+<ol>
+<li>安装依赖</li>
+</ol>
+<div><pre>conda activate bilibili-rag
+pip install -r requirements.txt</pre></div>
+<ol>
+<li>配置环境变量</li>
+</ol>
+<div><pre>cp .env.example .env
+<span><span>#</span> 编辑 .env，填写 DashScope API Key 等配置</span></pre></div>
+<ol>
+<li>启动服务</li>
+</ol>
+<div><pre>python -m uvicorn app.main:app --reload</pre></div>
+<p>后端文档：</p><pre><code>http://localhost:8000/docs</code></pre><p></p>
+<p>前端：</p>
+<div><pre><span>cd</span> frontend
+npm install
+npm run dev</pre></div>
+<p>前端页面：</p><pre><code>http://localhost:3000</code></pre><p></p>
+<hr>
+<div><h2> 工作流程</h2><a href="#-工作流程"></a></div>
+<ol>
+<li>选择收藏夹</li>
+<li>拉取视频 → 音频转写（ASR）</li>
+<li>生成向量 → 构建知识库</li>
+<li>对话/检索问答</li>
+</ol>
+<hr>
+<div><h2> 测试与诊断脚本</h2><a href="#-测试与诊断脚本"></a></div>
+<blockquote>
+<p>注意：</p><pre><code>test/</code></pre> 目录下的脚本需要 <strong>移动到项目根目录</strong> 再运行（依赖相对路径与配置）。<p></p>
+</blockquote>
+<ul>
+<li><pre><code>debug_asr_single.py</code></pre>：测试单个视频是否能正确获取音频</li>
+<li><pre><code>diagnose_rag.py</code></pre>：测试向量检索召回是否准确</li>
+<li><pre><code>sync_cache_vectors.py</code></pre>：同步数据库缓存数据到向量库</li>
+</ul>
+<hr>
+<div><h2> ASR 说明（音频不可达兜底）</h2><a href="#-asr-说明音频不可达兜底"></a></div>
+<p>部分 B 站音频 URL 可能返回 403（直链不可拉取），系统会自动执行兜底流程：</p>
+<ol>
+<li>本地下载音频（带 Cookie）</li>
+<li>ffmpeg 转码为 16k 单声道</li>
+<li>上传到 DashScope 后再识别</li>
+</ol>
+<blockquote>
+<p>请确保本机已安装 </p><pre><code>ffmpeg</code></pre> 并加入 PATH。<p></p>
+</blockquote>
+<hr>
+<div><h2> 费用说明（DashScope）</h2><a href="#-费用说明dashscope"></a></div>
+<p>模型相关费用包括：</p>
+<ul>
+<li>LLM 对话（按 Token）</li>
+<li>Embedding（按 Token）</li>
+<li>ASR 音频转写（按时长）</li>
+</ul>
+<p>建议：</p>
+<ul>
+<li>部署/测试阶段先用 **短视频（约 10 分钟）**验证流程与费用</li>
+<li>正式使用按需启用，注意费用；大多数模型有免费额度，通常足够日常使用</li>
+</ul>
+<hr>
+<div><h2> 技术栈</h2><a href="#-技术栈"></a></div>
+<ul>
+<li>后端：FastAPI</li>
+<li>LLM：LangChain + DashScope</li>
+<li>向量库：ChromaDB</li>
+<li>前端：Next.js + Tailwind</li>
+<li>数据库：SQLite</li>
+</ul>
+<hr>
+<div><h2> 目录结构（简版）</h2><a href="#-目录结构简版"></a></div>
+<div><pre><code>bilibili-rag/
+├── app/ # 后端逻辑
+├── frontend/ # 前端界面
+├── data/ # 数据库与向量库
+├── test/ # 测试脚本（需移动到根目录再运行）
+└── README.md
+</code></pre></div>
+<hr>
+<div><h2> 常见问题</h2><a href="#-常见问题"></a></div>
+<p><strong>Q：为什么有些音频 URL 可达、有些不可达？</strong><br>
+A：B 站音频直链存在鉴权/过期/区域限制，只有公网可直接拉取的 URL 才可达。</p>
+<hr>
+<div><h2> License</h2><a href="#-license"></a></div>
+<p>MIT</p>
+<hr>
+<div><h2> TodoList</h2><a href="#-todolist"></a></div>
+<ul>
+<li>对话存储、会话管理、检索历史对话记录</li>
+<li>支持 B 站分 P 视频</li>
+<li>适配更多 LLM 与向量模型</li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

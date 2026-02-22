@@ -5,7 +5,7 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>AI - Artificial Intelligence news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Sat, 21 Feb 2026 22:22:15 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 22 Feb 2026 06:44:47 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-ai.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title><![CDATA[Railway secures $100 million to challenge AWS with AI-native cloud infrastructure]]></title>
@@ -310,6 +310,22 @@ But the speed of Cowork's development — a major feature built in ten days, pos
       <guid>https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no</guid>
     </item>
     <item>
+      <title><![CDATA[Hugging Face and VirusTotal collaborate to strengthen AI security]]></title>
+      <link>https://huggingface.co/blog/virustotal</link>
+      <description><![CDATA[Back to Articles Why this matters How the collaboration works Benefits for the community Join us We’re excited to announce a new collaboration between Hugging Face and VirusTotal, the world’s leading threat-intelligence and malware analysis platform.
+This collaboration enhances the security of files shared across the Hugging Face Hub, helping protect the machine learning community from malicious or compromised assets.
+TL;DR - Starting today, every one of the 2.2M+ public model and datasets repositories on the Hugging Face Hub is being continuously scanned with VirusTotal. Why this matters AI models are powerful but they’re also complex digital artifacts that can include large binary files, serialized data, and dependencies that sometimes carry hidden risks.
+As of today HF Hub hosts 2.2 Million Public model artifacts. As we continue to grow into the world’s largest open platform for Machine Learning models and datasets, ensuring that shared assets remain safe is essential.
+Threats can take many forms: Malicious payloads disguised as model files or archives
+Files that have been compromised before upload
+Binary assets linked to known malware campaigns
+Dependencies or serialized objects that execute unsafe code when loa]]></description>
+      <pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/virustotal</guid>
+    </item>
+    <item>
       <title><![CDATA[Agentic AI for Modern Deep Learning Experimentation]]></title>
       <link>https://towardsdatascience.com/agentic-ai-for-modern-deep-learning-experimentation/</link>
       <description><![CDATA[Stop babysitting training runs. Start shipping research. Autonomous experiment management built for/by deep learning engineers.]]></description>
@@ -384,13 +400,13 @@ Intel and]]></description>
       <guid>https://huggingface.co/blog/gpt-oss-on-intel-xeon</guid>
     </item>
     <item>
-      <title><![CDATA[Measuring Open-Source Llama Nemotron Models on DeepResearch Bench]]></title>
-      <link>https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent</link>
-      <description><![CDATA[Back to Articles Core Stack: Model Choices and Technical Innovations Deep Reasoning with Llama Nemotron Evaluation: Transparency and Robustness in Metrics Benchmark Results: DeepResearch Bench For the Hugging Face Developer Community Takeaways Contributors: David Austin, Raja Biswas, Gilberto Titericz Junior, NVIDIA]]></description>
-      <pubDate>Mon, 04 Aug 2025 19:51:50 GMT</pubDate>
+      <title><![CDATA[SAIR: Accelerating Pharma R&amp;D with AI-Powered Structural Intelligence]]></title>
+      <link>https://huggingface.co/blog/SandboxAQ/sair-data-accelerating-drug-discovery-with-ai</link>
+      <description><![CDATA[Back to Articles Accessing SAIR 1. Install essentials 2. Authenticate 3. Load the main table (sair.parquet) 4. (Optional) List available structure archives 5. (Optional) Download and extract structures Questions? This summer, SandboxAQ released the Structurally Augmented IC50 Repository (SAIR), the largest dataset of co-folded 3D protein-ligand structures paired with experimentally measured IC₅₀ labels, directly linking molecular structure to drug potency and overcoming a longstanding scarcity in training data. This dataset is now available on Hugging Face, and for the first time, researchers have open access to more than 5 million AI‑generated, high‑accuracy protein-ligand 3D structures, each paired with validated empirical binding potency data. SAIR is an open-sourced dataset and is publicly available for free under a permissive CC BY 4.0 license, making it immediately actionable for commercial and non-commercial R&amp;D pipelines. More than just a dataset, SAIR is a strategic asset that bridges the long-standing data gap in AI-powered drug design. It empowers pharmaceutical, biotech, and tech‑bio leaders to accelerat]]></description>
+      <pubDate>Tue, 02 Sep 2025 16:54:29 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent</guid>
+      <guid>https://huggingface.co/blog/SandboxAQ/sair-data-accelerating-drug-discovery-with-ai</guid>
     </item>
     <item>
       <title><![CDATA[An End-to-End Guide to Beautifying Your Open-Source Repo with Agentic AI]]></title>
@@ -429,16 +445,6 @@ For AI researchers and developers contributing to and relying on the open source
       <source>OpenAI Blog</source>
       <category>ai</category>
       <guid>https://openai.com/index/a-business-that-scales-with-the-value-of-intelligence</guid>
-    </item>
-    <item>
-      <title><![CDATA[Introducing Falcon-H1-Arabic: Pushing the Boundaries of Arabic Language AI with Hybrid Architecture]]></title>
-      <link>https://huggingface.co/blog/tiiuae/falcon-h1-arabic</link>
-      <description><![CDATA[Back to Articles Discover more in our official blogpost, featuring an interactive experience The journey of building world-class Arabic language models has been one of continuous learning and iteration. Today, we're excited to announce Falcon-H1-Arabic, our most advanced Arabic language model family to date, representing a significant leap forward in both architecture and capabilities. This release embodies months of research, community feedback, and technical innovation, culminating in three powerful models that set new standards for Arabic natural language processing. Building on Success: The Evolution from Falcon-Arabic When we launched Falcon-Arabic a few months ago, the response from the community was both humbling and enlightening. Developers, researchers and students across the Arab world used the model for real use cases, pushing them to its limits and providing invaluable feedback. We learned where the model excelled and, more importantly, where it struggled. Long-context understanding, dialectal variations, mathematical reasoning, and domain-specific knowledge emerged as key areas requiring deeper attention.
-We didn't just want to make incremental improvements, we wanted to fundamentally rethink o]]></description>
-      <pubDate>Mon, 05 Jan 2026 09:16:51 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/tiiuae/falcon-h1-arabic</guid>
     </item>
     <item>
       <title><![CDATA[The creator of Claude Code just revealed his workflow, and developers are losing their minds]]></title>
@@ -555,13 +561,37 @@ What's Next? Introduction Graphical User Interface (GUI) automation is one of th
       <guid>https://huggingface.co/blog/smol2operator</guid>
     </item>
     <item>
-      <title><![CDATA[Introducing AI Sheets: a tool to work with datasets using open AI models!]]></title>
-      <link>https://huggingface.co/blog/aisheets</link>
-      <description><![CDATA[The Wayback Machine is an initiative of the Internet Archive, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include Open Library &amp; archive-it.org. Your use of the Wayback Machine is subject to the Internet Archive's Terms of Use.]]></description>
-      <pubDate>Fri, 08 Aug 2025 00:00:00 GMT</pubDate>
+      <title><![CDATA[Fine-tune Any LLM from the Hugging Face Hub with Together AI]]></title>
+      <link>https://huggingface.co/blog/togethercomputer/together-ft</link>
+      <description><![CDATA[Back to Articles Getting Started in 5 Minutes How It Works: What This Means for Developers How Teams Are Using This Feature? Show Us What You Build! The pace of AI development today is breathtaking. Every single day, hundreds of new models appear on the Hugging Face Hub, some are specialized variants of popular base models like Llama or Qwen, others feature novel architectures or have been trained from scratch for specific domains. Whether it's a medical AI trained on clinical data, a coding assistant optimized for a particular programming language, or a multilingual model fine-tuned for specific cultural contexts, the Hugging Face Hub has become the beating heart of open-source AI innovation.
+But here's the challenge: finding an amazing model is just the beginning. What happens when you discover a model that's 90% perfect for your use case, but you need that extra 10% of customization? Traditional fine-tuning infrastructure is complex, expensive, and often requires significant DevOps expertise to set up and maintain.
+This is exactly the gap that Together AI and Hugging Face are bridging today. We're announcing a powerful new capability that makes the entire Hugging Face Hub available]]></description>
+      <pubDate>Wed, 10 Sep 2025 17:04:36 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/aisheets</guid>
+      <guid>https://huggingface.co/blog/togethercomputer/together-ft</guid>
+    </item>
+    <item>
+      <title><![CDATA[Kimina-Prover-RL]]></title>
+      <link>https://huggingface.co/blog/AI-MO/kimina-prover-rl</link>
+      <description><![CDATA[Back to Articles A slimmed-down training pipeline from Kimina Prover, with core features and full compatibility with verl. We are happy to introduce kimina-prover-rl, an open-source training pipeline for formal theorem proving in Lean 4, based on a structured reasoning-then-generation paradigm inspired by DeepSeek-R1.
+This training pipelinee is a simplified version of the system we used to train Kimina Prover, preserving the key components of the system and offering full compatibility with the open-source Verl framework.
+It is released as part of a fork of Verl containing the complete training recipe in recipe/kimina-prover-rl, allowing anyone to reproduce our experiments or adapt the setup to their own models and datasets. All information to setup and launch the pipeline can be found in the README of the recipe.
+As a result of this training pipeline, we are releasing two models: AI-MO/Kimina-Prover-RL-1.7B, a 1.7B-parameter model that achieves 76.63% Pass@32 on the MiniF2F benchmark — setting a new state of the art for open-source models in this size category
+AI-MO/Kimina-Prover-RL]]></description>
+      <pubDate>Thu, 14 Aug 2025 12:13:01 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/AI-MO/kimina-prover-rl</guid>
+    </item>
+    <item>
+      <title><![CDATA[Measuring Open-Source Llama Nemotron Models on DeepResearch Bench]]></title>
+      <link>https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent</link>
+      <description><![CDATA[Measuring Open-Source Llama Nemotron Models on DeepResearch Bench]]></description>
+      <pubDate>Mon, 04 Aug 2025 19:51:50 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent</guid>
     </item>
     <item>
       <title><![CDATA[Use OpenClaw to Make a Personal AI Assistant]]></title>
@@ -846,6 +876,17 @@ So how do we create meaningful use]]></description>
       <guid>https://huggingface.co/blog/voice-consent-gate</guid>
     </item>
     <item>
+      <title><![CDATA[Streaming datasets: 100x More Efficient]]></title>
+      <link>https://huggingface.co/blog/streaming-datasets</link>
+      <description><![CDATA[Back to Articles TLDR Streaming: The Same Easy API The Challenge: Streaming at Scale Under the Hood: What We Improved How are we faster than plain S3: Xet Need a custom streaming pipeline ? Push streaming to the limit Get Started and See the Difference TLDR We boosted load_dataset('dataset', streaming=True), streaming datasets without downloading them with one line of code!
+Start training on multi-TB datasets immediately, without complex setups, downloading, no "disk out of space", or 429 “stop requesting!” errors.It's super fast! Outrunning our local SSDs when training on 64xH100 with 256 workers downloading data.
+We've improved streaming to have 100x fewer requests, → 10× faster data resolution → 2x sample/sec, → 0 worker crashes at 256 concurrent workers. Loading data, especially at the terabyte scale, is a major pain in any machine learning workflow. We suffered this while training SmolLM3, at one point we had to wait 3 hours before each run to download enough data. Streaming has always been possible in the datasets library, but large scale training with massive datasets remained a challenge. That]]></description>
+      <pubDate>Mon, 27 Oct 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/streaming-datasets</guid>
+    </item>
+    <item>
       <title><![CDATA[Sentence Transformers is joining Hugging Face!]]></title>
       <link>https://huggingface.co/blog/sentence-transformers-joins-hf</link>
       <description><![CDATA[Back to Articles Project History Acknowledgements Getting Started Today, we are announcing that Sentence Transformers is transitioning from Iryna Gurevych’s Ubiquitous Knowledge Processing (UKP) Lab at the TU Darmstadt to Hugging Face. Hugging Face's Tom Aarsen has already been maintaining the library since late 2023 and will continue to lead the project. At its new home, Sentence Transformers will benefit from Hugging Face's robust infrastructure, including continuous integration and testing, ensuring that it stays up-to-date with the latest advancements in Information Retrieval and Natural Language Processing.
@@ -857,6 +898,31 @@ Sentence Transformers (a.k.a. SentenceBERT or SBERT) is a popular open-source li
       <guid>https://huggingface.co/blog/sentence-transformers-joins-hf</guid>
     </item>
     <item>
+      <title><![CDATA[Supercharge your OCR Pipelines with Open Models]]></title>
+      <link>https://huggingface.co/blog/ocr-open-models</link>
+      <description><![CDATA[Back to Articles We have added Chandra and OlmOCR-2 to this blog, as well as OlmOCR Scores of the models TL;DR: The rise of powerful vision-language models has transformed document AI. Each model comes with unique strengths, making it tricky to choose the right one. Open-weight models offer better cost efficiency and privacy. To help you get started with them, we’ve put together this guide.
+In this guide, you’ll learn: The landscape of current models and their capabilities When to fine-tune models vs. use models out-of-the-box Key factors to consider when selecting a model for your use case How to move beyond OCR with multimodal retrieval and document QA By the end, you’ll know how to choose the right OCR model, start building with it, and gain deeper insights into document AI. Let’s go! Table-of-Contents Supercharge your OCR Pipelines with Open Models
+Brief Introduction to Modern OCR
+Model Capabilities
+Transcription
+Handling complex components in documents
+Output formats
+Locality Awareness in OCR
+Model Prompting Cutting-edge Open OCR Models
+Comparing Latest Models
+Evaluating Models
+Benchmarks
+Cost-efficiency
+Open OCR Datasets Tools to Run Models
+Locally
+Remotely Going Beyond OCR
+Visual Document Ret]]></description>
+      <pubDate>Tue, 21 Oct 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/ocr-open-models</guid>
+    </item>
+    <item>
       <title><![CDATA[AI for Food Allergies]]></title>
       <link>https://huggingface.co/blog/hugging-science/ai-for-food-allergies</link>
       <description><![CDATA[Back to Articles Current State of The Art: Where AI Meets Food Allergy Research The need for data Collection release The Protein and Molecular Allergenicity Layer The Clinical, Immunological, and Therapeutic Layer The Food, Ingredient, and Regulatory Layer Accessing the collection What’s coming next? Final remarks Appendix SDAP 2.0: Structural Database of Allergenic Proteins DAVIS: Kinase inhibitor binding affinities QsarDB: repository for (Q)SAR models e-Drug3D Database Stanford Drug Data: Offsides/Twosides DrugCentral: open drug information repository MedKG: medical knowledge graph PDBBind+: protein-ligand binding database Human Metabolome Database (HMDB) Therapeutic Target Database Therapeutic Data Commons (TDC) STITCH: Chemical–Protein Interaction Database M3-20M Multi-Modal Molecule Dataset]]></description>
@@ -866,39 +932,23 @@ Sentence Transformers (a.k.a. SentenceBERT or SBERT) is a popular open-source li
       <guid>https://huggingface.co/blog/hugging-science/ai-for-food-allergies</guid>
     </item>
     <item>
-      <title><![CDATA[MCP for Research: How to Connect AI to Research Tools]]></title>
-      <link>https://huggingface.co/blog/mcp-for-research</link>
-      <description><![CDATA[Back to Articles Research Discovery: Three Layers of Abstraction 1. Manual Research 2. Scripted Tools 3. MCP Integration Setup and Usage Quick Setup Learn More Academic research involves frequent research discovery: finding papers, code, related models and datasets. This typically means switching between platforms like arXiv, GitHub, and Hugging Face, manually piecing together connections.
-The Model Context Protocol (MCP) is a standard that allows agentic models to communicate with external tools and data sources. For research discovery, this means AI can use research tools through natural language requests, automating platform switching and cross-referencing. Research Discovery: Three Layers of Abstraction Much like software development, research discovery can be framed in terms of layers of abstraction. 1. Manual Research At the lowest level of abstraction, researchers search manually and cross-reference by hand.
-# Typical workflow:
-1. Find paper on arXiv
-2. Search GitHub for implementations
-3. Check Hugging Face for models/datasets
-4. Cross-reference authors and citations
-5. Organize findings manually This manual approach becomes in]]></description>
-      <pubDate>Mon, 18 Aug 2025 00:00:00 GMT</pubDate>
+      <title><![CDATA[Public AI on Hugging Face Inference Providers]]></title>
+      <link>https://huggingface.co/blog/inference-providers-publicai</link>
+      <description><![CDATA[The Wayback Machine is an initiative of the Internet Archive, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include Open Library &amp; archive-it.org. Your use of the Wayback Machine is subject to the Internet Archive's Terms of Use.]]></description>
+      <pubDate>Wed, 17 Sep 2025 00:00:00 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/mcp-for-research</guid>
+      <guid>https://huggingface.co/blog/inference-providers-publicai</guid>
     </item>
     <item>
-      <title><![CDATA[Ettin Suite: SoTA Paired Encoders and Decoders]]></title>
-      <link>https://huggingface.co/blog/ettin</link>
-      <description><![CDATA[Back to Articles TL;DR Encoders vs Decoders: The Architecture Divide Training Recipe: Modern Techniques for Both Architectures Sizes Three-Phase Training Process Modern Architecture Components Data Sources and Quality Encoder Results: Beating ModernBERT Decoder Results: Beating Llama 3.2 and SmolLM2 Fair Fight: Encoders vs Decoders on Even Ground Architecture-Specific Advantages Persist Cross-Objective Training Falls Short Beyond Performance: Understanding Model Behavior Usage Examples Encoders Decoders Fine-tuning Examples Encoders Decoders Model Family and Links TL;DR What would happen if you took the ModernBERT recipe and applied it to a decoder-only model? Turns out, a state-of-the-art decoder language model that beats Llama 3.2 1B and SmolLM2! We introduce a new open-data training recipe to reproduce the encoder-onl]]></description>
-      <pubDate>Wed, 16 Jul 2025 00:00:00 GMT</pubDate>
+      <title><![CDATA[mmBERT: ModernBERT goes Multilingual]]></title>
+      <link>https://huggingface.co/blog/mmbert</link>
+      <description><![CDATA[Back to Articles TL;DR Training Data Training Recipe and Novel Components Architecture Three-Phase Training Approach Novel Training Techniques Results Natural Language Understanding (NLU) Retrieval Performance Learning Languages in the Decay Phase Efficiency Improvements Usage Examples Fine-tuning Examples Encoders Model Family and Links TL;DR This blog post introduces mmBERT, a state-of-the-art massively multilingual encoder model trained on 3T+ tokens of text in over 1800 languages. It shows significant performance and speed improvements over previous multilingual models, being the first to improve upon XLM-R, while also developing new strategies for effectively learning low-resource languages. mmBERT builds upon ModernBERT for a blazingly fast architecture, and adds novel components to enable efficient multilingual learning.
+If you are interested in trying out the models yourself, some example boilerplate is available at the end o]]></description>
+      <pubDate>Tue, 09 Sep 2025 00:00:00 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/ettin</guid>
-    </item>
-    <item>
-      <title><![CDATA[Kimina-Prover: Applying Test-time RL Search on Large Formal Reasoning Models]]></title>
-      <link>https://huggingface.co/blog/AI-MO/kimina-prover</link>
-      <description><![CDATA[Back to Articles Numina &amp; Kimi Team Figure 1: Performance comparison of theorem proving models on the miniF2F-test dataset. We're excited to announce the release of Kimina-Prover-72B, our state-of-the-art theorem proving model trained with the Kimi k1.5[1] RL pipeline based on Qwen2.5-72B [2]. Alongside it, we are also releasing two distilled variants: Kimina-Prover-Distill-8B and 1.7B (based on Qwen3-8B and Qwen3-1.7B[3] respectively).
-Our key innovations include: Test-Time Reinforcement Learning Search: A trainable agentic proving framework that enables the model to recursively discover, combine and apply multiple lemmas to construct complex proofs, building on a novel lemma-enabled pattern. Error-Fixing Capability: Kimina-Prover can read and interpret Lean’s error messages and propose targeted fixes, demonstrating significantly higher sample efficiency compared to regenerating proofs from scratch. These advancements enable Kimina-Prover to solve challenging mathematical problems and surpass prior methods. As shown in Figure 1, on the widely used miniF2F ben]]></description>
-      <pubDate>Thu, 10 Jul 2025 12:54:19 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/AI-MO/kimina-prover</guid>
+      <guid>https://huggingface.co/blog/mmbert</guid>
     </item>
     <item>
       <title><![CDATA[Simple farce ou vrai signal d’alarme ? OpenClaw s’est invité de force chez 4 000 développeurs]]></title>
@@ -1136,6 +1186,17 @@ HF is providing the project with long-term sustainable resources, improving the 
       <source>OpenAI Blog</source>
       <category>ai</category>
       <guid>https://openai.com/index/introducing-openai-frontier</guid>
+    </item>
+    <item>
+      <title><![CDATA[Community Evals: Because we're done trusting black-box leaderboards over the community]]></title>
+      <link>https://huggingface.co/blog/community-evals</link>
+      <description><![CDATA[Back to Articles Evaluation is broken What We're Shipping Why This Matters Get Started TL;DR: Benchmark datasets on Hugging Face can now host leaderboards. Models store their own eval scores. Everything links together. The community can submit results via PR. Verified badges prove that the results can be reproduced. Evaluation is broken Let's be real about where we are with evals in 2026. MMLU is saturated above 91%. GSM8K hit 94%+. HumanEval is conquered. Yet some models that ace benchmarks still can't reliably browse the web, write production code, or handle multi-step tasks without hallucinating, based on usage reports. There is a clear gap between benchmark scores and real-world performance.
+Furthermore, there is another gap within reported benchmark scores. Multiple sources report different results. From Model Cards, to papers, to evaluation platforms, there is no alignment in reported scores. The result is that the community lacks a single source of truth. What We're Shipping Decentralized and transparent evaluation reporting.
+We are going to take evaluations on the Hugging Face Hub in a new direction by decentralizing reporting]]></description>
+      <pubDate>Wed, 04 Feb 2026 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/community-evals</guid>
     </item>
     <item>
       <title><![CDATA[Inside OpenAI’s in-house data agent]]></title>
@@ -1538,6 +1599,16 @@ We evaluate DeepMath on four math datasets: MATH500, AIME, HMMT, and HLE, and sh
       <guid>https://openai.com/index/chatgpt-shopping-research</guid>
     </item>
     <item>
+      <title><![CDATA[Open ASR Leaderboard: Trends and Insights with New Multilingual &amp; Long-Form Tracks]]></title>
+      <link>https://huggingface.co/blog/open-asr-leaderboard</link>
+      <description><![CDATA[Back to Articles 1. Conformer encoder LLM decoder tops the charts 2. Speed–accuracy tradeoffs 3. Multilingual 4. Long-form transcription is a different game While everyone (and their grandma ) is spinning up new ASR models, picking the right one for your use case can feel more overwhelming than choosing your next Netflix show. As of 21 Nov 2025, there are 150 Audio-Text-to-Text and 27K ASR models on the Hub Most benchmarks focus on short-form English transcription (&lt;30s), and overlook other important tasks, such as (1) multilingual performance and (2) model throughput, which can a be deciding factor for long-form audio like meetings and podcasts.
+Over the past two years, the Open ASR Leaderboard has become a standard for comparing open and closed-source models on both accuracy and efficiency. Recently, multilingual and long-form transcription tracks have been added to the leaderboard TL;DR - Open ASR Leaderboard New preprint on ASR trends from the leaderboard: https://hf.co/papers/2510.06961 Best accuracy: Conformer encoder + LLM decoders (open-source ftw ) Fastest: CTC / TDT decoders Multilingual: Comes at the cost of single-language performance Long-f]]></description>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/open-asr-leaderboard</guid>
+    </item>
+    <item>
       <title><![CDATA[OpenAI and Foxconn collaborate to strengthen U.S. manufacturing across the AI supply chain]]></title>
       <link>https://openai.com/index/openai-and-foxconn-collaborate</link>
       <description><![CDATA[OpenAI and Foxconn are collaborating to design and manufacture next-generation AI infrastructure hardware in the U.S. The partnership will develop multiple generations of data-center systems, strengthen U.S. supply chains, and build key components domestically to accelerate advanced AI infrastructure.]]></description>
@@ -1554,29 +1625,6 @@ We evaluate DeepMath on four math datasets: MATH500, AIME, HMMT, and HLE, and sh
       <source>OpenAI Blog</source>
       <category>ai</category>
       <guid>https://openai.com/index/small-business-ai-jam</guid>
-    </item>
-    <item>
-      <title><![CDATA[Introducing AnyLanguageModel: One API for Local and Remote LLMs on Apple Platforms]]></title>
-      <link>https://huggingface.co/blog/anylanguagemodel</link>
-      <description><![CDATA[Back to Articles The Solution Why Foundation Models as the Base API Package Traits: Include Only What You Need Image Support (and API Design Trade-offs) Try It Out: chat-ui-swift What's Next Get Involved Links LLMs have become essential tools for building software.
-But for Apple developers, integrating them remains unnecessarily painful.
-Developers building AI-powered apps typically take a hybrid approach,
-adopting some combination of: Local models using Core ML or MLX for privacy and offline capability
-Cloud providers like OpenAI or Anthropic for frontier capabilities
-Apple's Foundation Models as a system-level fallback Each comes with different APIs, different requirements, different integration patterns.
-It's a lot, and it adds up quickly.
-When I interviewed developers about building AI-powered apps,
-friction with model integration came up immediately.
-One developer put it bluntly: I thought I'd quickly use the demo for a test and maybe a quick and dirty build
-but instead wasted so much time.
-Drove me nuts. The cost to experiment is high,
-which discourages developers from discovering that
-local, open-source models might actually work great for their use case.
-Today w]]></description>
-      <pubDate>Thu, 20 Nov 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/anylanguagemodel</guid>
     </item>
     <item>
       <title><![CDATA[How evals drive the next chapter in AI for businesses]]></title>
@@ -1607,15 +1655,23 @@ In this guide, we focus exclusively on ROCm-compatible k]]></description>
       <guid>https://huggingface.co/blog/build-rocm-kernels</guid>
     </item>
     <item>
-      <title><![CDATA[Building for an Open Future - our new partnership with Google Cloud]]></title>
-      <link>https://huggingface.co/blog/google-cloud</link>
-      <description><![CDATA[Back to Articles A Partnership for Google Cloud customers The Gateway to Open Models - A Fast Lane for Google Cloud Customers A partnership for Hugging Face customers Building the open future of AI together Today, we are happy to announce a new and deeper partnership with Google Cloud, to enable companies to build their own AI with open models.
-“Google has made some of the most impactful contributions to open AI, from the OG transformer to the Gemma models. I believe in a future where all companies will build and customize their own AI. With this new strategic partnership, we’re making it easy to do on Google Cloud.” says Jeff Boudier, at Hugging Face.
-“Hugging Face has been the driving force enabling companies large and small all over the world to access, use and customize now more than 2 million open models, and we’ve been proud to contribute over 1,000 of our models to the community”, says Ryan J. Salva, Senior Director of Product Management at Google Cloud. “Together we will make Google Cloud the best place to build with open models.” A Partnership for Google Cloud customers Google Cloud customers use open models from Hugging Face in many of its leading AI services. In Vertex AI, the most popular open models are]]></description>
-      <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
+      <title><![CDATA[Aligning to What? Rethinking Agent Generalization in MiniMax M2]]></title>
+      <link>https://huggingface.co/blog/MiniMax-AI/aligning-to-what</link>
+      <description><![CDATA[Back to Articles The Real Agent Alignment Problem: Benchmarks or Reality? The Need for Interleaved Thinking True Generalization is About Perturbation What's Next? Getting Involved It's been fantastic to see the community dive into our new MiniMax M2, with many highlighting its impressive skills in complex agentic tasks. This is particularly exciting for me, as my work was centered on the agent alignment part of its post-training. In this post, I'd like to share some of the key insights and lessons we learned during that process. The Real Agent Alignment Problem: Benchmarks or Reality? If you've worked with LLM Agents, you've felt this pain: the same model can feel brilliant in one framework and useless in another. An agent might crush a tool-use leaderboard but fail spectacularly at a simple, real-world task. This gap between benchmark performance and practical usability is one of the biggest challenges in the field.
+When we designed M2, we knew we had to tackle this problem head-on. This led us to two core, and sometimes conflicting, objectives: Excel on Open-Source Benchmarks. Benchmarks are essential for measuring "pure" capabilities. A benchmark like BrowseComp, for instance, tests for sophisticated search]]></description>
+      <pubDate>Thu, 30 Oct 2025 10:03:45 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/google-cloud</guid>
+      <guid>https://huggingface.co/blog/MiniMax-AI/aligning-to-what</guid>
+    </item>
+    <item>
+      <title><![CDATA[On the Shifting Global Compute Landscape]]></title>
+      <link>https://huggingface.co/blog/huggingface/shifting-compute-landscape</link>
+      <description><![CDATA[Back to Articles Summary The State of Global Compute The Beginning of a Rewiring The Reaction: Powering Chinese AI How China’s Compute Landscape Catalyzed the Cambrian Explosion of Open Models Advances in Compute-Constrained Environments Pushing the Technical Frontier The Aftermath: Hardware, Software and Soft Power From Sufficient to Demanded Domestic Synergy A New Software Landscape Looking Ahead Acknowledgements Appendix: A Timeline of Chip Usage and Controls Summary The status quo of AI chip usage, that was once almost entirely U.S.-based, is changing. China’s immense progress in open-weight AI development is now being met with rapid domestic AI chip development. In the past few months, highly performant open-weight AI models’ inference in China has started to be powered by chips such as Huawei’s Ascend and Cambricon, with some models starting to be trained using domestic chips. There are two large implications for policymakers and AI researchers and developers respectively: U.S. export controls correlates with expedi]]></description>
+      <pubDate>Wed, 29 Oct 2025 13:56:45 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/huggingface/shifting-compute-landscape</guid>
     </item>
     <item>
       <title><![CDATA[Building the Open Agent Ecosystem Together: Introducing OpenEnv]]></title>
@@ -1669,16 +1725,6 @@ This is where things get tricky. The current standard for evaluation often relie
       <guid>https://huggingface.co/blog/rteb</guid>
     </item>
     <item>
-      <title><![CDATA[SyGra: The One-Stop Framework for Building Data for LLMs and SLMs]]></title>
-      <link>https://huggingface.co/blog/ServiceNow-AI/sygra-data-gen-framework</link>
-      <description><![CDATA[Back to Articles Enter SyGra: One Framework for Every Data Challenge Why SyGra Matters SyGra Architecture Final Thoughts References When we think about building a model - be it a Large Language Model (LLM) or a Small Language Model (SLM) - the first thing we need is data. While a vast amount of open data is available, it rarely comes in the exact format required to train or align models.
-In practice, we often face scenarios where the raw data isn't enough. We need data that is more structured, domain-specific, complex, or aligned with the task at hand. Let's look at some common situations: Complex Scenarios Missing You start with a simple dataset, but the model fails on advanced reasoning tasks. How do you generate more complex datasets to strengthen performance? Knowledge Base to Q&amp;A You already have a knowledge base, but it's not in Q&amp;A format. How can you transform it into a usable question-answering dataset? From SFT to DPO You've prepared a supervised fine-tuning (SFT) dataset. But now you want to align your model using Direct Preference Optimization (DPO). How can you generate preference pairs? Depth of Questions You h]]></description>
-      <pubDate>Mon, 22 Sep 2025 06:45:05 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/ServiceNow-AI/sygra-data-gen-framework</guid>
-    </item>
-    <item>
       <title><![CDATA[Gaia2 and ARE: Empowering the community to study agents]]></title>
       <link>https://huggingface.co/blog/gaia2</link>
       <description><![CDATA[Back to Articles Gaia2: Agentic Evaluation on Real Life Assistant Tasks How does Gaia2 run? Results Compare with your favorite models! Evaluating on Gaia2 Beyond Gaia2: study your agents with ARE 1) Testing an agent on a simple task: event organisation 2) Understanding agents: deep diving the traces 3) Playing around and extending the demo: Connecting the agent to your own MCPs Conclusion In an ideal world, AI agents would be reliable assistants. When given a query, they would easily manage ambiguity in instructions, construct step-by-step plans, correctly identify necessary resources, execute those plans without getting sidetracked, and adapt to unexpected events, all while maintaining accuracy and avoiding hallucinations.
@@ -1699,26 +1745,28 @@ More than 500,000 models can be found on the Hugging Face hub, but it’s not al
       <guid>https://huggingface.co/blog/riskrubric</guid>
     </item>
     <item>
-      <title><![CDATA[Neural Super Sampling is here!]]></title>
-      <link>https://huggingface.co/blog/Arm/neural-super-sampling</link>
-      <description><![CDATA[Back to Articles Elevated by machine learning Learn about our NSS Model How we trained the model Get started experimenting with NSS today! Neural Super Sampling (NSS), a next-generation AI-powered upscaling solution from Arm is released for graphics and gaming developers to start experimenting today! Elevated by machine learning NSS is designed for real-time performance on future mobile devices with Arm Neural Technology. However, latency depends on implementation factors such as GPU configuration, resolution, and use case. In our Enchanted Castle demo video below, NSS reduced GPU workload by 50 percent. The model rendered at 540p and upscaled to 1080p in just 4ms in sustained performance setup. Your browser does not support the video tag. Learn about our NSS Model Neural Super Sampling (NSS) is a parameter prediction model for real-time temporal super sampling developed by Arm, optimized for execution on Neural Accelerators (NX) in mobile GPUs. It enables high-resolution rendering at a lower compute cost by reconstructing high-quality output frames from low-resolution temporal inputs. NSS is particularly suited for mobile gaming, XR, and other power-constrained graphics use cases.
-Get starte]]></description>
-      <pubDate>Tue, 12 Aug 2025 14:52:08 GMT</pubDate>
+      <title><![CDATA[NVIDIA Releases 6 Million Multi-Lingual Reasoning Dataset]]></title>
+      <link>https://huggingface.co/blog/nvidia/multilingual-reasoning-v1</link>
+      <description><![CDATA[Back to Articles Authors: Dhruv Nathawani, Shuoyang Ding US, Vitaly Lavrukhin US, Jane Polak Scowcroft US, Oleksii Kuchaiev US NVIDIA continues releasing permissive datasets in support of the open ecosystem with 6 Million Multilingual Reasoning Dataset.
+Continuing the success of the recent Nemotron Post-Training Dataset v1 release used in Llama Nemotron Super model, and our Llama Nemotron Post-Training Dataset release earlier this year, we’re excited to release the reasoning dataset translated into five target languages: French, Spanish, German, Italian, and Japanese.
+The newly released NVIDIA Nemotron Nano 2 9B brings these capabilities to the edge with leading accuracy and efficiency with a hybrid Transformer–Mamba architecture and a configurable thinking budget—so you can dial accuracy, throughput, and cost to match your real‑world needs. Model Highlights (TL;DR) Model size: 9B parameters
+Architecture: Hybrid Transformer–Mamba (Mamba‑2 + a small number of attention layers) for higher throughput at similar accuracy to Transformer‑only peers
+Throughput: Up to 6× higher token generation than other leading models in its size class
+Cost: Thinking budget lets you control how many “thinking” tokens are used—saving up to 60% lower reasoning costs
+Ta]]></description>
+      <pubDate>Wed, 20 Aug 2025 22:13:18 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/Arm/neural-super-sampling</guid>
+      <guid>https://huggingface.co/blog/nvidia/multilingual-reasoning-v1</guid>
     </item>
     <item>
-      <title><![CDATA[🇵🇭 FilBench - Can LLMs Understand and Generate Filipino?]]></title>
-      <link>https://huggingface.co/blog/filbench</link>
-      <description><![CDATA[Back to Articles FilBench What did we learn from FilBench? Finding #1: Although region-specific LLMs still lag behind GPT-4, collecting data to train these models is still a promising direction Finding #2: Filipino translation is still a difficult task for LLMs Finding #3: Open LLMs Remain a Cost-Effective Choice for Filipino Language Tasks Does your LLM work on Philippine Languages? Try it on FilBench! Acknowledgements Citation As large language models (LLMs) become increasingly integrated into our lives, it becomes crucial to assess whether they reflect the nuances and capabilities of specific language communities.
-For example, Filipinos are among the most active ChatGPT users globally, ranking fourth in ChatGPT traffic (behind the United States, India, and Brazil [1] [2]), but despite this strong usage, we lack a clear understanding of how LLMs perform for their languages, such as Tagalog and Cebuano.
-Most of the existing evidence is anecdotal, such as screenshots of ChatGPT responding in Filipino as proof that it is fluent.
-What we need instead is a]]></description>
-      <pubDate>Tue, 12 Aug 2025 00:00:00 GMT</pubDate>
+      <title><![CDATA[Introducing AI Sheets: a tool to work with datasets using open AI models!]]></title>
+      <link>https://huggingface.co/blog/aisheets</link>
+      <description><![CDATA[Introducing AI Sheets: a tool to work with datasets using open AI models!]]></description>
+      <pubDate>Fri, 08 Aug 2025 00:00:00 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/filbench</guid>
+      <guid>https://huggingface.co/blog/aisheets</guid>
     </item>
     <item>
       <title><![CDATA[Vision Language Model Alignment in TRL]]></title>
@@ -1737,8 +1785,7 @@ Online Direct Preference Optimization (Online DPO) Th]]></description>
     <item>
       <title><![CDATA[Welcome GPT OSS, the new open-source model family from OpenAI!]]></title>
       <link>https://huggingface.co/blog/welcome-openai-gpt-oss</link>
-      <description><![CDATA[Back to Articles GPT OSS is a hugely anticipated open-weights release by OpenAI, designed for powerful reasoning, agentic tasks, and versatile developer use cases. It comprises two models: a big one with 117B parameters (gpt-oss-120b), and a smaller one with 21B parameters (gpt-oss-20b). Both are mixture-of-experts (MoEs) and use a 4-bit quantization scheme (MXFP4), enabling fast inference (thanks to fewer active parameters, see details below) while keeping resource usage low. The large model fits on a single H100 GPU, while the small one runs within 16GB of memory and is perfect for consumer hardware and on-device applications.
-To make it even better and more impactful for the community, the models are licensed under the Apache 2.0 license, along with a minimal usage policy: We aim for our tools to be used safely, responsibly, and democratically, while maximizing your control over how you use them. By using gpt-oss, you agree to comply with all applicable law. According to OpenAI, this release is a meaningful step in their commitment to the open-source ecosystem, in line with their stated mission to make the benefits of AI broadly accessible. Many use cases rely on pri]]></description>
+      <description><![CDATA[Welcome GPT OSS, the new open-source model family from OpenAI!]]></description>
       <pubDate>Tue, 05 Aug 2025 00:00:00 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
@@ -1755,16 +1802,6 @@ Open-Sourcing Recent advances in multimodal AI have produced models claiming to 
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/timescope-video-lmm-benchmark</guid>
-    </item>
-    <item>
-      <title><![CDATA[Consilium: When Multiple LLMs Collaborate]]></title>
-      <link>https://huggingface.co/blog/consilium-multi-llm</link>
-      <description><![CDATA[Back to Articles From Concept to Architecture Building the Visual Foundation Session State Management Making LLMs Actually Discuss LLM Selection and Research Integration Discovering the Open Floor Protocol Lessons Learned and Future Implications Picture this: four AI experts sitting around a poker table, debating your toughest decisions in real-time. That's exactly what Consilium, the multi-LLM platform I built during the Gradio Agents &amp; MCP Hackathon, does. It lets AI models discuss complex questions and reach consensus through structured debate.
-The platform works both as a visual Gradio interface and as an MCP (Model Context Protocol) server that integrates directly with applications like Cline (Claude Desktop had issues as the timeout could not be adjusted). The core idea was always about LLMs reaching consensus through discussion; that's where the name Consilium came from. Later, other decision modes like majority voting and ranked choice were added to make the collaboration more sophisticated. From Concept to Architecture This wasn't my original hackathon idea. I initially wanted to build a simple MCP server to talk to my projects in RevenueCat. But I reconsidered when]]></description>
-      <pubDate>Thu, 17 Jul 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/consilium-multi-llm</guid>
     </item>
   </channel>
 </rss>

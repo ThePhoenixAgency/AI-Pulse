@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,8 +34,7 @@
     Source: Programmez | Date: 2/17/2026 2:18:02 PM | <a href="https://www.programmez.com/actualites/webmcp-un-standard-pour-rendre-un-site-web-agent-ready-39027" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>concilier agents IA et sites web et la manière dont les pages web pourraient interagir, travailler avec les agents ? WebMCP veut fournir une méthode standard pour définir les actions des agents sur un site web, sur une page web sans pénaliser au bon fonctionnement du site web. "Vous indiquez aux agents et où interagir avec votre site, qu'il s'agisse de réserver un vol, de soumettre une demande d'assistance ou de naviguer dans des données complexes. Ce canal de communication direct élimine toute ambiguïté et permet des flux de travail plus rapides et plus efficaces pour les agents." expliquer Google. WebMCP preview repose sur 2 API :
-- API déclarative : Permet d’effectuer des actions standard définies directement dans les formulaires HTML. - API impérative : Permet d’effectuer des interactions plus complexes et dynamiques nécessitant l’exécution de JavaScript. C'est une interface proposé en preview par Google et accessible dans Chrome. Ces API forment un "pont" rendant votre site web "agent ready" et permet de créer des flux agentiques que se veulent plus fiables qu'en passant par du DOM. Ces API sont JavaScript. Pour le moment, la spécification est en cours de rédaction.</p>
+    <div><div><p>Comment concilier agents IA et sites web et la manière dont les pages web pourraient interagir, travailler avec les agents ? WebMCP veut fournir une méthode standard pour définir les actions des agents sur un site web, sur une page web sans pénaliser au bon fonctionnement du site web. "Vous indiquez aux agents comment et où interagir avec votre site, qu'il s'agisse de réserver un vol, de soumettre une demande d'assistance ou de naviguer dans des données complexes. Ce canal de communication direct élimine toute ambiguïté et permet des flux de travail plus rapides et plus efficaces pour les agents." expliquer Google.&nbsp;</p><p>WebMCP preview repose sur 2 API :</p><p>- API déclarative : Permet d’effectuer des actions standard définies directement dans les formulaires HTML.</p><p>- API impérative : Permet d’effectuer des interactions plus complexes et dynamiques nécessitant l’exécution de JavaScript.</p><p>C'est une interface proposé en preview par Google et accessible dans Chrome.&nbsp;</p><p>Ces API forment un "pont" rendant votre site web "agent ready" et permet de créer des flux agentiques que se veulent plus fiables qu'en passant par du DOM. Ces API sont JavaScript. Pour le moment, la spécification est en cours de rédaction. Elle ne dépend pas de W3C et n'est pas un standard du consortium.&nbsp;</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

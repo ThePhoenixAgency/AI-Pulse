@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hide Any File in Two Images — Browser-Only, No Server</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Hide Any File in Two Images — Browser-Only, No Server</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/22/2026 4:52:15 AM | <a href="https://dev.to/goodrelax/hide-any-file-in-two-images-browser-only-no-server-15he" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F4xmrgk4k946kmzxxb1zg.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F4xmrgk4k946kmzxxb1zg.png" alt="Cover image for Hide Any File in Two Images — Browser-Only, No Server"> </a> <div> <p><a href="https://dev.to/goodrelax"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3730594%2F842c4748-f348-4366-8991-9f9de9400764.png" alt="GoodRelax"></a> </p> </div> </header> <div> <h2> <a name="grtm2cd" href="#grtm2cd"> </a> GRTM2CD </h2> <h5> <a name="goodrelax-treasure-map-to-cat-and-dog" href="#goodrelax-treasure-map-to-cat-and-dog"> </a> GoodRelax Treasure Map to Cat and Dog
+</h5> <h3> <a name="the-story" href="#the-story"> </a> The Story
+</h3> <p>What if you found a treasure map?<br>
+You could ask a cat and a dog to each keep a piece.<br>
+When you need the map, just call them both.</p> <p>I built a tool that does exactly that.</p> <h3> <a name="try-it-now" href="#try-it-now"> </a> <strong><a href="https://goodrelax.github.io/gr-tools/grtm2cd/" target="_blank">Try it now</a></strong>
+</h3> <h3> <a name="what-it-does" href="#what-it-does"> </a> What It Does
+</h3> <p>This is a <strong>browser-only steganography tool</strong>.</p> <div><p>It takes any file — PDF, ZIP,</p><p>
+whatever — and hides it across <strong>two ordinary PNG images</strong>.</p></div> <p>You need both images to recover the file. Either one alone is useless.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ffi8gpl28a73nebuizdt5.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ffi8gpl28a73nebuizdt5.png" alt="work flow"></a></p> <hr> <h3> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h3> <p>The process in one line:</p> <blockquote>
+<p><strong>Compress → Encrypt (AES-256-GCM) → Split across two images → Embed in LSBs → Fill remaining capacity with noise</strong></p>
+</blockquote> <p>The result:</p> <ul>
+<li>Each image looks like a normal PNG</li>
+<li>LSBs are indistinguishable from white noise</li>
+<li>Neither image alone reveals anything</li>
+<li>Both together reconstruct the original file perfectly</li>
+</ul> <hr> <h3> <a name="why-two-images" href="#why-two-images"> </a> Why Two Images?
+</h3> <ul>
+<li>
+<strong>Capacity</strong> — each image only needs to hold half the payload</li>
+<li>
+<strong>Deniability</strong> — no ciphertext continuity in either image</li>
+<li>
+<strong>Security</strong> — the AES key, IV, and ciphertext are all fragmented across both</li>
+</ul> <p>One image found? Just a photo. Two images found? Still just two photos — unless you know what to look for.</p> <hr> <h3> <a name="why-browseronly" href="#why-browseronly"> </a> Why Browser-Only?
+</h3> <p>No server means nothing can leak.</p> <ul>
+<li>No uploads, no installation, no build tools</li>
+<li>Works offline — just open the HTML file</li>
+<li>Cross-platform</li>
+</ul> <p>Everything runs locally via Web Crypto API, Canvas API, and typed arrays.</p> <hr> <h3> <a name="usage" href="#usage"> </a> Usage
+</h3> <p><strong>Encode:</strong> Drop any file + two images → get two PNGs.</p> <p><strong>Decode:</strong> Drop the two PNGs → get the original file back. Order doesn't matter.</p> <hr> <h3> <a name="tech-stack" href="#tech-stack"> </a> Tech Stack
+</h3> <ul>
+<li>Vanilla JS (ES modules, no frameworks)</li>
+<li>Web Crypto API (AES-256-GCM)</li>
+<li>Canvas / OffscreenCanvas</li>
+<li>pako (zlib compression)</li>
+<li>PNG output only</li>
+</ul> <p>No frameworks. No build tools. Single HTML + JS.</p> <hr> <h3> <a name="try-it-now" href="#try-it-now"> </a> Try It Now
+</h3> <p> <strong><a href="https://goodrelax.github.io/gr-tools/grtm2cd/" target="_blank">https://goodrelax.github.io/gr-tools/grtm2cd/</a></strong></p> <p>Drop a file and two images — see what happens.</p> <p> <strong><a href="https://github.com/GoodRelax/gr-tools" target="_blank">https://github.com/GoodRelax/gr-tools</a></strong></p> <p><em>Please use responsibly.</em></p> <p>Feedback and stars welcome <a href="https://github.com/GoodRelax" target="_blank">(c) 2026 GoodRelax</a></p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

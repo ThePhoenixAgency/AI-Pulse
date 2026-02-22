@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>De F à A+ sur HTTP Observatory : sécuriser les headers de mon blog Hugo</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>De F à A+ sur HTTP Observatory : sécuriser les headers de mon blog Hugo</h1>
+  <div class="metadata">
+    Source: Journal du Hacker | Date: 2/21/2026 3:35:29 PM | <a href="https://blog.zwindler.fr/2026/02/20/securite-headers-http-observatory-hugo/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><section><p>Après <a href="https://blog.zwindler.fr/2026/02/19/optimisation-webperf-avif-precompression/">l’optimisation des performances du blog</a> (AVIF, pré-compression), j’étais super content de moi. </p><p>Mais c’était sans compter sur Antoine Caron, qui est venu (à très juste titre) me chatouiller sur un autre aspect que j’avais ignoré, le rapport Mozilla Observatory…</p><p><img src="https://blog.zwindler.fr/2026/02/antoine-mozilla-observatory.avif" alt="https://bsky.app/profile/slashgear.dev/post/3mfc62ckw3s2g"></p><p>J’ai donc lancé un scan <a href="https://developer.mozilla.org/en-US/observatory" target="_blank">Mozilla HTTP Observatory</a> sur mon blog et le résultat était : <strong>F</strong>.</p><p>Cool, je peux pas faire pire.</p><p><img src="https://blog.zwindler.fr/2026/02/observatory-initial.avif" alt="Le scan initial : F avec 0/100"></p><h2>Le déclic</h2><p>En relisant <a href="https://codeka.io/2026/02/20/optimiser-les-perfs-et-la-s%C3%A9curit%C3%A9-dun-site-hugo/" target="_blank">l’article de Julien sur codeka.io</a>, qui a aussi parlé avec Antoine, a aussi un blog statique avec Hugo, MAIS qui lui avait fait le taf, j’ai réalisé que c’était à la fois <strong>important et peut-être pas si compliqué</strong> à corriger.</p><p>Julien y détaille les headers de sécurité à ajouter sur un site Hugo, avec des exemples pour Caddy. Moi je suis sur nginx, mais le principe est le même.</p><p>Note : si ça vous intéresse, les liens des épisodes précédents sur l’infra du blog sont ici :</p><ul><li><a href="https://blog.zwindler.fr/2019/12/24/ca-bouge-pas-mal-sur-le-blog/">Ça bouge pas mal sur le blog !</a> (2019) - De 5s à 1s en virant Wordpress pour Hugo</li><li><a href="https://blog.zwindler.fr/2025/01/15/ca-bouge-encore-sur-le-blog/">Ça bouge encore sur le blog</a> (2025) - Nettoyage massif, retour auto-hébergé</li><li><a href="https://blog.zwindler.fr/2023/08/01/automatiser-hugo-sans-github-action/">Automatiser son site Hugo sans Github Action ou Vercel</a> - Le setup nginx + webhook actuel</li><li><a href="https://blog.zwindler.fr/2026/02/19/optimisation-webperf-avif-precompression/">Optimisation webperf : AVIF et pré-compression</a> - Le round précédent (focus sur les images)</li></ul><h2>Ce que teste HTTP Observatory</h2><p>HTTP Observatory vérifie une série de headers HTTP que votre serveur devrait envoyer pour protéger vos visiteurs. Les principaux :</p><ul><li><strong>Strict-Transport-Security (HSTS)</strong> : force le navigateur à toujours utiliser HTTPS</li><li><strong>Content-Security-Policy (CSP)</strong> : contrôle quelles ressources le navigateur peut charger (scripts, styles, images, iframes…)</li><li><strong>X-Content-Type-Options</strong> : empêche le navigateur de “deviner” le type MIME des fichiers</li><li><strong>Referrer-Policy</strong> : contrôle les informations de provenance envoyées aux sites tiers</li><li><strong>X-Frame-Options</strong> / <strong>frame-ancestors</strong> : empêche l’inclusion de votre site dans une iframe (clickjacking)</li></ul><p>Sur un blog statique, on pourrait se dire que ce n’est pas critique. Pas de base de données, pas de sessions utilisateur, pas de formulaires sensibles. Mais ces headers protègent quand même contre des attaques réelles :</p><ul><li>Un <strong>script injecté</strong> (XSS) pourrait rediriger vos lecteurs vers un site malveillant</li><li>Sans HSTS, un attaquant sur un Wi-Fi public pourrait intercepter la connexion initiale en HTTP</li><li>Sans <code>frame-ancestors</code>, quelqu’un pourrait inclure le blog dans une iframe piégée</li></ul><p>Bref, même pour un blog statique, ça peut valoir le coup de faire l’effort, a minima pour s’habituer aux bonnes pratiques.</p><p><strong>Le piège nginx : <code>add_header</code> et l’héritage</strong></p><p>La première chose, c’est que je suis tombé dans un piège classique avec mon nginx. Je l’ignorais, mais les directives <code>add_header</code> dans un bloc <code>location</code> <strong>écrasent</strong> (et ne complètent pas) celles du bloc <code>server</code> parent.</p><p>Ça veut dire que si vous avez un <code>add_header Cache-Control</code> dans une <code>location</code> (c’était mon cas), tous vos headers de sécurité définis au niveau <code>server</code> <strong>disparaissent</strong> pour cette location. J’ai pété un plomb pendant quelques minutes à reload / restart en boucle sans comprendre.</p><p>La solution : créer un fichier snippet et l’inclure partout.</p><div><pre><code><span><span>cat &gt; /etc/nginx/snippets/security-headers.conf <span>&lt;&lt; 'EOF'
+</span></span></span><span><span><span>add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
+</span></span></span><span><span><span>add_header X-Content-Type-Options "nosniff" always;
+</span></span></span><span><span><span>add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+</span></span></span><span><span><span>add_header Content-Security-Policy "..." always;
+</span></span></span><span><span><span>EOF</span>
+</span></span></code></pre></div><p>Puis dans la config nginx :</p><div><pre><code><span><span><span>server</span> <span>{</span>
+</span></span><span><span> <span># Headers de sécurité au niveau server
+</span></span></span><span><span> <span>include</span> <span>/etc/nginx/snippets/security-headers.conf</span><span>;</span>
+</span></span><span><span>
+</span></span><span><span> <span># Cache des assets statiques
+</span></span></span><span><span> <span>location</span> <span>~</span><span>*</span> <span>\.(jpg|jpeg|png|gif|ico|css|js|woff|woff2|ttf|svg|webp|avif)</span>$ <span>{</span>
+</span></span><span><span> <span>expires</span> <span>1y</span><span>;</span>
+</span></span><span><span> <span>add_header</span> <span>Cache-Control</span> <span>"public,</span> <span>immutable"</span><span>;</span>
+</span></span><span><span> <span># OBLIGATOIRE : ré-inclure les headers ici !
+</span></span></span><span><span> <span>include</span> <span>/etc/nginx/snippets/security-headers.conf</span><span>;</span>
+</span></span><span><span> <span>}</span>
+</span></span><span><span>
+</span></span><span><span> <span>location</span> <span>~</span><span>*</span> <span>\.html</span>$ <span>{</span>
+</span></span><span><span> <span>expires</span> <span>1h</span><span>;</span>
+</span></span><span><span> <span>add_header</span> <span>Cache-Control</span> <span>"public,</span> <span>must-revalidate"</span><span>;</span>
+</span></span><span><span> <span>include</span> <span>/etc/nginx/snippets/security-headers.conf</span><span>;</span>
+</span></span><span><span> <span>}</span>
+</span></span><span><span><span>}</span>
+</span></span></code></pre></div><p><strong>HSTS, X-Content-Type-Options, Referrer-Policy</strong></p><p>Ces trois-là sont les plus simples à ajouter et “ne cassent rien” :</p><pre><code>Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+</code></pre><ul><li><strong>HSTS</strong> avec <code>max-age=63072000</code> (2 ans) et <code>preload</code> permet à terme (pas encore fait) de s’inscrire sur la <a href="https://hstspreload.org/" target="_blank">HSTS preload list</a>. Le navigateur refusera même la toute première connexion HTTP initiale.</li><li><strong>nosniff</strong> empêche les navigateurs d’interpréter un fichier texte comme du JavaScript.</li><li><strong>strict-origin-when-cross-origin</strong> envoie l’URL complète en referrer pour les requêtes same-origin, mais seulement l’origine (domaine) pour les requêtes cross-origin.</li></ul><h2>Étape 2 : Content-Security-Policy (la vraie difficulté)</h2><p>La CSP est un header puissant et a priori complexe. C’est lui qui rapporte le plus de points sur Observatory, mais c’est aussi lui qui peut tout casser si on va trop vite.</p><p>Le principe : vous déclarez au navigateur <strong>exactement</strong> quelles ressources votre site a le droit de charger (scripts, styles, images, iframes, fonts…) et depuis quelles origines. Tout le reste est bloqué. C’est la meilleure défense contre le XSS, parce que même si un attaquant arrive à injecter un <code>&lt;script&gt;</code> dans votre HTML, le navigateur refusera de l’exécuter s’il n’est pas dans la liste autorisée.</p><p>Le revers de la médaille : si vous oubliez une ressource légitime dans votre CSP, elle sera bloquée et votre site casse silencieusement : un script qui ne charge plus, une font qui disparaît, une iframe vide. Il faut donc faire un inventaire exhaustif <em>avant</em> de verrouiller.</p><p>Je me suis fait épauler par un LLM (Opus 4.6) pour les modifs à réaliser et on a fait plusieurs passes jusqu’à ce que tout fonctionne.</p><h3>Inventaire des ressources externes</h3><p>Avant d’écrire la CSP, il faut faire l’inventaire de <strong>tout</strong> ce que le site charge. Voilà une petite synthèse de mon pote <em>Claudio</em> :</p><div><table><thead><tr><th>Type</th><th>Ressource</th><th>Origine</th></tr></thead><tbody><tr><td>Script</td><td>GoatCounter analytics</td><td><code>https://gc.zgo.at/count.js</code></td></tr><tr><td>Script</td><td>Umami analytics</td><td><code>https://cloud.umami.is/script.js</code></td></tr><tr><td>Connect</td><td>GoatCounter API</td><td><code>https://blogzwindler.goatcounter.com</code></td></tr><tr><td>Connect</td><td>Umami API</td><td><code>https://api-gateway.umami.dev</code></td></tr><tr><td>Script</td><td>De mon thème ‘stack’ - vibrant.js (couleurs d’images)</td><td><code>https://cdn.jsdelivr.net</code></td></tr><tr><td>Script</td><td>De mon thème ‘stack’ - PhotoSwipe (lightbox images)</td><td><code>https://cdn.jsdelivr.net</code></td></tr><tr><td>Style</td><td>De mon thème ‘stack’ - PhotoSwipe CSS (lightbox)</td><td><code>https://cdn.jsdelivr.net</code></td></tr><tr><td>Style</td><td>De mon thème ‘stack’ - CSS du thème</td><td>local (<code>'self'</code>)</td></tr><tr><td>Font</td><td>Luciole</td><td>locale</td></tr><tr><td>Frame</td><td>Widget Deezer (inclu dans un seul article )</td><td><code>https://widget.deezer.com</code></td></tr><tr><td>Image</td><td>data: URIs (SVGs inline)</td><td><code>data:</code></td></tr><tr><td>Form</td><td>Mailchimp (abonnement newsletter)</td><td><code>https://zwindler.us15.list-manage.com</code></td></tr></tbody></table></div><h3>Le problème des scripts d’analytics externes</h3><p>Avec une CSP comme <code>script-src 'self' https://gc.zgo.at https://cloud.umami.is</code>, je devais soit :</p><ul><li><strong>Faire confiance à ces CDN</strong> -&gt; si le CDN est compromis, le script malveillant s’exécute sur mon blog. Nope.</li><li><strong>Ajouter des hashes SRI</strong> (Subresource Integrity). Problème : ces scripts peuvent changer côté serveur sans prévenir, ce qui casserait le hash.</li></ul><p>J’ai choisi une troisième voie : <strong>télécharger les scripts à chaque build</strong> et les servir localement.</p><div><pre><code><span><span><span># Dans mon petit script blog_refresh.sh, avant le hugo --minify</span>
+</span></span><span><span>mkdir -p static/js
+</span></span><span><span>curl -sf --max-time <span>10</span> https://gc.zgo.at/count.js -o static/js/count.js <span>\
+</span></span></span><span><span> <span>||</span> <span>echo</span> <span>"WARN: failed to download GoatCounter script"</span>
+</span></span><span><span>curl -sf --max-time <span>10</span> https://cloud.umami.is/script.js -o static/js/umami.js <span>\
+</span></span></span><span><span> <span>||</span> <span>echo</span> <span>"WARN: failed to download Umami script"</span>
+</span></span></code></pre></div><p>Et dans le template Hugo :</p><div><pre><code><span><span><span>&lt;</span><span>script</span> <span>data-goatcounter</span><span>=</span><span>"https://blogzwindler.goatcounter.com/count"</span>
+</span></span><span><span> <span>async</span> <span>src</span><span>=</span><span>"/js/count.js"</span><span>&gt;&lt;/</span><span>script</span><span>&gt;</span>
+</span></span><span><span><span>&lt;</span><span>script</span> <span>defer</span> <span>src</span><span>=</span><span>"/js/umami.js"</span>
+</span></span><span><span> <span>data-website-id</span><span>=</span><span>"3d8f0ea9-..."</span><span>&gt;&lt;/</span><span>script</span><span>&gt;</span>
+</span></span></code></pre></div><p><strong>Est-ce que c’est “tricher” ?</strong></p><p>Une fois que j’avais fait la modif, je me suis demandé : est-ce qu’héberger les scripts localement à chaque build ne contourne pas l’esprit des vérifications d’Observatory ? Sur ce point précis j’ai un petit doute, n’étant pas expert sur ces points là. J’ai demandé à un LLM qui m’a dit que <em>non</em>, mais je veux bien un avis tiers.</p><p>Dans tous les cas, ça semble être l’approche recommandée par <a href="https://www.goatcounter.com/help/csp" target="_blank">la documentation GoatCounter</a> pour les sites avec une CSP stricte.</p><h3>Supprimer <code>unsafe-inline</code> de <code>script-src</code></h3><p>Observatory pénalise fortement <code>'unsafe-inline'</code> dans <code>script-src</code>. Et c’est normal, car c’est la porte ouverte au XSS : n’importe quel script injecté dans le HTML s’exécute.</p><p>Le problème : mon thème Hugo (<a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank">hugo-theme-stack</a>) générait <strong>4 scripts inline</strong> :</p><ol><li><strong>Color scheme init</strong> — lit le localStorage pour appliquer le thème clair/sombre avant le premier rendu</li><li><strong>Color scheme detection</strong> — détecte la préférence système (<code>prefers-color-scheme: dark</code>)</li><li><strong>Language switcher</strong> — le sélecteur de langue <code>&lt;select onchange="window.location.href=this.selectedOptions[0].value"&gt;</code> dans la sidebar, qui est un attribut d’événement inline (<code>script-src-attr</code>)</li><li><strong>Font loader</strong> — charge la CSS de <a href="https://luciole-vision.com/" target="_blank">la font Luciole</a> dynamiquement</li></ol><blockquote><p>Luciole: A typeface for visual impairment</p></blockquote><p>Pour chacun, j’ai extrait le code dans un fichier <code>.js</code> externe dans <code>static/js/</code> et remplacé le script inline par une balise <code>&lt;script src="..."&gt;</code>.</p><p>Par exemple, pour le color scheme, le thème avait dans <code>layouts/partials/head/colorScheme.html</code> :</p><div><pre><code><span><span><span>&lt;</span><span>script</span><span>&gt;</span>
+</span></span><span><span> <span>(</span><span>function</span><span>()</span> <span>{</span>
+</span></span><span><span> <span>const</span> <span>colorSchemeKey</span> <span>=</span> <span>'StackColorScheme'</span><span>;</span>
+</span></span><span><span> <span>if</span><span>(</span><span>!</span><span>localStorage</span><span>.</span><span>getItem</span><span>(</span><span>colorSchemeKey</span><span>)){</span>
+</span></span><span><span> <span>localStorage</span><span>.</span><span>setItem</span><span>(</span><span>colorSchemeKey</span><span>,</span> <span>"auto"</span><span>);</span>
+</span></span><span><span> <span>}</span>
+</span></span><span><span> <span>})();</span>
+</span></span><span><span> <span>/* ... */</span>
+</span></span><span><span><span>&lt;/</span><span>script</span><span>&gt;</span>
+</span></span></code></pre></div><p>Que j’ai remplacé par un <a href="https://gohugo.io/templates/lookup-order/" target="_blank">override de template Hugo</a> :</p><div><pre><code><span><span>{{- /* Override: external JS file instead of inline (CSP compliance) */ -}}
+</span></span><span><span><span>&lt;</span><span>script</span> <span>src</span><span>=</span><span>"/js/color-scheme.js"</span><span>&gt;&lt;/</span><span>script</span><span>&gt;</span>
+</span></span></code></pre></div><p>Avec le contenu correspondant dans <code>static/js/color-scheme.js</code>. Hugo permet de surcharger n’importe quel template du thème en plaçant un fichier au même chemin dans le dossier <code>layouts/</code> du projet.</p><p>Pour le <strong>language switcher</strong>, même approche : j’ai surchargé <code>layouts/partials/sidebar/left.html</code> pour retirer l’attribut <code>onchange</code> du <code>&lt;select&gt;</code> et ajouté un <code>id="language-select"</code>, puis créé un fichier <code>static/js/language-switcher.js</code> :</p><div><pre><code><span><span><span>(</span><span>function</span> <span>()</span> <span>{</span>
+</span></span><span><span> <span>var</span> <span>select</span> <span>=</span> <span>document</span><span>.</span><span>getElementById</span><span>(</span><span>'language-select'</span><span>);</span>
+</span></span><span><span> <span>if</span> <span>(</span><span>select</span><span>)</span> <span>{</span>
+</span></span><span><span> <span>select</span><span>.</span><span>addEventListener</span><span>(</span><span>'change'</span><span>,</span> <span>function</span> <span>()</span> <span>{</span>
+</span></span><span><span> <span>window</span><span>.</span><span>location</span><span>.</span><span>href</span> <span>=</span> <span>this</span><span>.</span><span>selectedOptions</span><span>[</span><span>0</span><span>].</span><span>value</span><span>;</span>
+</span></span><span><span> <span>});</span>
+</span></span><span><span> <span>}</span>
+</span></span><span><span><span>})();</span>
+</span></span></code></pre></div><p><strong>Note importante :</strong> il m’a fallu plusieurs allers-retours avec la console du navigateur (F12 -&gt; Console) avant de trouver la totalité des violations CSP. Chaque correction en révélait de nouvelles, il fallait bien regarder tous les différents types de pages sur le blog (pas juste la page d’accueil et les posts), et certaines erreurs affichées dans la console venaient en fait d’<strong>extensions navigateur</strong> (typiquement les gestionnaires de mots de passe comme Bitwarden, dont le <code>bootstrap-autofill-overlay.js</code> génère des violations <code>style-src-elem</code>) et non du site lui-même. Il faut donc bien distinguer les erreurs du site de celles injectées par les extensions.</p><h3>Supprimer <code>unsafe-inline</code> de <code>style-src</code>, la suite</h3><p>Même logique pour les styles. J’avais quatre sources d’inline CSS :</p><ol><li><strong>Un bloc <code>&lt;style&gt;</code></strong> dans <code>custom.html</code> — les CSS custom properties pour ma font Luciole</li><li><strong>Des attributs <code>style=""</code></strong> sur les badges de catégories — <code>background-color: #2a9d8f; color: #fff;</code></li><li><strong>Un attribut <code>style="enable-background:..."</code></strong> sur un SVG (export Adobe Illustrator)</li><li><strong>Des attributs <code>style=""</code></strong> dans le formulaire Mailchimp du footer — <code>display:none</code> et un positionnement off-screen pour le honeypot anti-spam</li></ol><p><strong>Le <code>&lt;style&gt;</code> bloc</strong> : déplacé dans <code>assets/scss/custom.scss</code>, le fichier de personnalisation SCSS prévu par le thème.</p><div><pre><code><span><span><span>/* Font family CSS custom properties */</span>
+</span></span><span><span><span>:root</span> <span>{</span>
+</span></span><span><span> <span>--article-font-family</span><span>:</span> <span>"Luciole"</span><span>;</span>
+</span></span><span><span> <span>--base-font-family</span><span>:</span> <span>"Luciole"</span><span>;</span>
+</span></span><span><span> <span>/* ... */</span>
+</span></span><span><span><span>}</span>
+</span></span></code></pre></div><p><strong>Les badges de catégories</strong> : toutes mes catégories utilisent les mêmes couleurs (#2a9d8f / #fff), définies dans le front matter de chaque <code>_index.md</code>. Le thème les injectait en <code>style=""</code> via le template <code>article/components/details.html</code>. J’ai surchargé ce template pour retirer le <code>style</code> inline et ajouté une règle CSS dans <code>custom.scss</code> :</p><div><pre><code><span><span><span>.article-category</span> <span>a</span> <span>{</span>
+</span></span><span><span> <span>background-color</span><span>:</span> <span>#2a9d8f</span><span>;</span>
+</span></span><span><span> <span>color</span><span>:</span> <span>#fff</span><span>;</span>
+</span></span><span><span><span>}</span>
+</span></span></code></pre></div><p><strong>Le SVG</strong> : j’avais un SVG que j’avais ajouté à la main (un petit Robot mignon pour mon “<a href="https://blog.zwindler.fr/ai-manifesto/" target="_blank">AI Manifesto</a>”) avec <code>enable-background</code>, qui est un attribut SVG 1.1 déprécié. Je l’ai simplement supprimé du fichier SVG source, sans impact visuel.</p><div><pre><code><span><span><span>#mce-error-response</span><span>,</span>
+</span></span><span><span><span>#mce-success-response</span> <span>{</span>
+</span></span><span><span> <span>display</span><span>:</span> <span>none</span><span>;</span>
+</span></span><span><span><span>}</span>
+</span></span><span><span>
+</span></span><span><span><span>.mce-honeypot</span> <span>{</span>
+</span></span><span><span> <span>position</span><span>:</span> <span>absolute</span><span>;</span>
+</span></span><span><span> <span>left</span><span>:</span> <span>-</span><span>5000</span><span>px</span><span>;</span>
+</span></span><span><span><span>}</span>
+</span></span></code></pre></div><h3>La CSP finale</h3><p>Après tous ces changements, plus aucun script ni style inline sur le site. La CSP peut donc être stricte :</p><pre><code>default-src 'none';
+script-src 'self' https://cdn.jsdelivr.net;
+style-src 'self' https://cdn.jsdelivr.net;
+img-src 'self' data:;
+connect-src 'self' https://blogzwindler.goatcounter.com https://api-gateway.umami.dev https://cdn.jsdelivr.net;
+font-src 'self';
+frame-src https://widget.deezer.com;
+frame-ancestors 'none';
+base-uri 'self';
+form-action 'self' https://zwindler.us15.list-manage.com;
+manifest-src 'self';
+media-src 'self'
+</code></pre><p>Points notables :</p><ul><li><strong><code>default-src 'none'</code></strong> : par défaut, rien n’est autorisé. Chaque type de ressource doit être explicitement listé. C’est la politique la plus restrictive.</li><li><strong>Pas de <code>unsafe-inline</code></strong> nulle part : ni dans <code>script-src</code>, ni dans <code>style-src</code></li><li><strong><code>frame-ancestors 'none'</code></strong> remplace <code>X-Frame-Options: DENY</code> (plus moderne)</li><li><strong><code>cdn.jsdelivr.net</code></strong> dans <code>script-src</code>, <code>style-src</code> ET <code>connect-src</code> : le thème charge <code>vibrant.js</code> (JS avec SRI), les CSS de PhotoSwipe (lightbox d’images) et les source maps associées depuis ce CDN</li><li><strong><code>form-action</code></strong> autorise Mailchimp pour le formulaire d’abonnement dans le footer</li></ul><p>Au final, de nombreux morceaux du thème de mon blog ont du être réécrit / overridés. Je suis un peu gêné d’avoir du en arriver là, mais c’était le prix à payer pour une note maximale .</p><p><img src="https://blog.zwindler.fr/2026/02/rework-theme.avif"></p><h2>Nettoyage bonus : Mailchimp</h2><p>En faisant l’inventaire des ressources externes, j’ai découvert un vieux widget Mailchimp dans la sidebar qui chargeait du CSS et du JavaScript depuis <code>chimpstatic.com</code>. Je ne l’utilisais plus : supprimé. Le formulaire d’abonnement dans le footer des articles a été gardé, mais nettoyé de ses <code>style=""</code> inline (voir plus haut).</p><h2>Résultat final</h2><p><img src="https://blog.zwindler.fr/2026/02/observatory-a-plus.avif" alt="A+ sur HTTP Observatory"></p><p><strong>De F (0/100) à A+ (125/100).</strong> Tous les tests sont verts.</p><p>Un grand merci à Antoine pour sa patience avec les débutants naïfs comme moi et ses super talks !</p></section></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

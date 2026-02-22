@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I replaced the `man` command with a Python TUI — and it's actually useful</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I replaced the `man` command with a Python TUI — and it's actually useful</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/22/2026 6:07:48 AM | <a href="https://dev.to/yash_ambaskar_c13cc5c5f10/i-replaced-the-man-command-with-a-python-tui-and-its-actually-useful-1h7h" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/yash_ambaskar_c13cc5c5f10"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3286471%2F2de78171-bae4-44c6-a83e-9b50ff45b5ad.jpg" alt="Yash Ambaskar"></a> </p> </div><div> <p>We've all been there.</p> <p>You're deep in a terminal session, you forget a flag, so you type <code>man grep</code> — and you're greeted by this:<br>
+</p> <div>
+<pre><code>GREP(1) General Commands Manual GREP(1) NAME grep, egrep, fgrep, rgrep - print lines that match patterns
+...
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>A wall of monospaced text. No color. No structure. No examples surfaced upfront.</p> <p>So I built <strong>SmartMan CLI</strong> — a drop-in, interactive replacement for <code>man</code> that actually respects your eyes and your time.</p> <hr> <h2> <a name="what-it-looks-like" href="#what-it-looks-like"> </a> What it looks like
+</h2> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxsw0a2fk6dzyeuco70fe.gif"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fxsw0a2fk6dzyeuco70fe.gif" alt="SmartMan CLI Demo"></a></p> <hr> <h2> <a name="what-it-does-differently" href="#what-it-does-differently"> </a> What it does differently
+</h2> <div><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><code>man</code></th>
+<th><code>smartman</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Syntax highlighting</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Interactive sidebar (jump to sections)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Quick-win examples at the top</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>AI-powered plain-English explanations</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Themes (Dracula, Catppuccin, Nord…)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="features-im-actually-proud-of" href="#features-im-actually-proud-of"> </a> Features I'm actually proud of
+</h2> <h3> <a name="quickwin-gallery" href="#quickwin-gallery"> </a> Quick-Win Gallery
+</h3> <p>The most painful thing about <code>man</code> pages is that the useful examples are always buried at the bottom.</p> <p>SmartMan surfaces the most common usage patterns as interactive cards <strong>right at the top</strong> of every page. No scrolling, no <code>grep</code>-ing through the man page to find what you need.</p> <h3> <a name="ai-explanations-via-groq" href="#ai-explanations-via-groq"> </a> AI Explanations (via Groq)
+</h3> <p>Staring at a complex flag description and still confused? Run:<br>
+</p> <div>
+<pre><code>smartman <span>--explain</span> <span>awk</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>It hits the <a href="https://console.groq.com/" target="_blank">Groq API</a> (sub-second response, free tier available) and gives you a plain-English summary of what the command actually does — no more decoding formal specification language at 2am.</p> <h3> <a name="interactive-sidebar" href="#interactive-sidebar"> </a> Interactive Sidebar
+</h3> <p>Jump between NAME, SYNOPSIS, DESCRIPTION, OPTIONS, and EXAMPLES instantly using keyboard shortcuts:</p> <div><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n</code></td>
+<td>Jump to NAME</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>Jump to SYNOPSIS</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>Jump to DESCRIPTION</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>Jump to OPTIONS</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>Jump to EXAMPLES</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>Quit</td>
+</tr>
+</tbody>
+</table></div> <h3> <a name="theming" href="#theming"> </a> Theming
+</h3> <p>Built on YAML-based themes, so you can match your exact terminal aesthetic:</p> <ul>
+<li>
+<strong>Default</strong> — Modern dark blue</li>
+<li>
+<strong>Dracula</strong> — Classic dev</li>
+<li>
+<strong>Catppuccin</strong> — Pastel mocha</li>
+<li>
+<strong>Nord</strong> — Cool-toned frost</li>
+<li>
+<strong>Monokai</strong> — High-contrast vibrant
+</li>
+</ul> <div>
+<pre><code>smartman <span>--theme</span> dracula <span>grep</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="install-it-in-one-line" href="#install-it-in-one-line"> </a> Install it in one line
+</h2> <div>
+<pre><code>curl <span>-sSL</span> https://raw.githubusercontent.com/ambaskaryash/smartman-cli/main/install.sh | bash
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Or via <code>pipx</code> if you prefer:<br>
+</p> <div>
+<pre><code>pipx <span>install </span>smartman
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Then, to make it your <strong>permanent default <code>man</code> command</strong>, add this to your <code>.bashrc</code> or <code>.zshrc</code>:<br>
+</p> <div>
+<pre><code><span>alias </span><span>man</span><span>=</span><span>'smartman'</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Now every time you type <code>man &lt;command&gt;</code>, you get the full SmartMan experience automatically.</p> <hr> <h2> <a name="the-stack" href="#the-stack"> </a> The stack
+</h2> <ul>
+<li>
+<strong><a href="https://textual.textualize.io/" target="_blank">Textual</a></strong> — The TUI framework that makes all the interactive UI possible. If you haven't tried it yet, it's genuinely impressive what you can build in pure Python.</li>
+<li>
+<strong><a href="https://github.com/Textualize/rich" target="_blank">Rich</a></strong> — Powers the syntax highlighting and styled rendering.</li>
+<li>
+<strong><a href="https://console.groq.com/" target="_blank">Groq API</a></strong> — For the AI explanations. Chosen specifically for its near-zero latency — it doesn't feel like waiting for an AI.</li>
+<li>
+<strong><a href="https://typer.tiangolo.com/" target="_blank">Typer</a></strong> — Clean CLI interface with zero boilerplate.</li>
+</ul> <hr> <h2> <a name="whats-next" href="#whats-next"> </a> What's next
+</h2> <ul>
+<li>[ ] Fuzzy search across all installed man pages</li>
+<li>[ ] Bookmarking frequently-used man pages</li>
+<li>[ ] <code>--tldr</code> mode (shorter, community-sourced summaries)</li>
+<li>[ ] Export to PDF</li>
+</ul> <hr> <h2> <a name="try-it-out" href="#try-it-out"> </a> Try it out
+</h2> <p>The full source code is on GitHub:</p> <p> <strong><a href="https://github.com/ambaskaryash/smartman-cli" target="_blank">github.com/ambaskaryash/smartman-cli</a></strong></p> <p>If this saves you even a few seconds of squinting at man pages, a on the repo would mean a lot — it helps other Linux users discover it too.</p> <p>Contributions are very welcome, especially new themes. Adding one is as simple as dropping a YAML file into <code>smartman/themes/</code>.</p> <hr> <p><strong>What's the most annoying thing about the default <code>man</code> command for you?</strong> Drop it in the comments — I'm actively looking for what to build next. </p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

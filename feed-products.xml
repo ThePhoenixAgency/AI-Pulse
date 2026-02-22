@@ -5,35 +5,30 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Sat, 21 Feb 2026 22:22:15 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 22 Feb 2026 06:44:47 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: Cc-md – Zero-cost Obsidian sync across iPhone, Mac, and GitHub]]></title>
-      <link>https://github.com/yuukiLike/cc-md</link>
-      <description><![CDATA[Here's something I realized: the most AI-native knowledge base isn't a SaaS
-product with an API. It's a folder of markdown files on your disk.
-Obsidian stores everything as plain .md files. That means Claude Code (or any
-AI tool) can grep, read, write, and traverse your entire knowledge base with
-zero setup. No API keys. No OAuth. No middleware. Just local file I/O.
-The only missing piece was sync. I wanted my vault on iPhone (iCloud), on Mac
-(local), and on GitHub (backup + version history) — without paying $4/mo for
-Obsidian Sync.
-cc-md is ~400 lines of bash. iCloud handles Apple device sync in seconds.
-A launchd job runs git add/commit/push every 5 minutes. That's it.
-One command to install:
-bash https://raw.githubusercontent.com/yuukiLike/cc-md/main/insta...)
-The installer auto-discovers your vault, inits git, creates a GitHub repo
-(if you have gh CLI), and starts syncing. Zero prompts in the best case.
-I built this in a weekend, solo, with AI assistance from first line to last.
-A year ago I couldn't have shipped this. Now I can.
-I feel genuinely lucky to be alive in the AI era. It's making childhood
-dreams come true — one project at a time. URL: https://news.ycombinator.com/item?id=47104432
-Points: 2
-# : 0]]></description>
-      <pubDate>Sat, 21 Feb 2026 20:35:13 GMT</pubDate>
+      <title><![CDATA[Show HN: WordBulb – Interactive Word Cloud Generator You Can Use for Navigation]]></title>
+      <link>https://wordbulb.com/word-cloud-generator</link>
+      <description><![CDATA[Hey HN,
+I’ve been building a few SaaS products over the last couple of years, and in between larger features I sometimes build small tools to reset my brain. This started as one of those.
+It’s called WordBulb:
+https://wordbulb.com/word-cloud-generator
+At first, it was just a simple word cloud generator. But while building it, I kept thinking: why are most word clouds basically just decorative images?
+They look interesting, but they’re not useful.
+So I decided to make it interactive and embeddable — where every word can have its own target link.
+What it does
+Add your own words
+Assign a custom URL to each word [the clicked word can be passed as query parameter]
+Generate an interactive SVG word cloud
+Embed it directly into your site
+Each word is clickable.
+You can use it as:
+A visual table of contents]]></description>
+      <pubDate>Sun, 22 Feb 2026 02:06:32 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://github.com/yuukiLike/cc-md</guid>
+      <guid>https://wordbulb.com/word-cloud-generator</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Étoiles des Numériques 2025-2026 : notre palmarès en vidéo]]></title>
@@ -43,6 +38,26 @@ Points: 2
       <source>Les Numeriques</source>
       <category>products</category>
       <guid>https://www.lesnumeriques.com/societe-numerique/etoiles-des-numeriques-2025-2026-notre-palmares-en-video-n251792.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: Halal Food AI – Analyze food ingredients using Gemini]]></title>
+      <link>https://apps.apple.com/us/app/halal-food-ai-scanner/id6755012360</link>
+      <description><![CDATA[Hi HN,
+I built Halal Food AI to solve a recurring problem my family faces: determining if grocery products meet specific dietary requirements (like Halal, allergen-free, etc.) by reading complex and often vague ingredient lists, especially when traveling.
+While there are barcode scanners out there, most rely on static databases that are frequently incomplete for local or niche products. I wanted to see if LLMs could solve this data gap by parsing the actual ingredients on the fly.
+How it works:
+You can scan a barcode or snap a picture of the ingredients list.
+The app uses OCR and routes the text/image to Google Gemini AI to analyze. It breaks down hidden additives (like specific E-numbers), cross-references them, and builds a dietary profile.
+Since it's LLM-based, it naturally handles 25+ languages, which has been extremely useful for picking up foreign products.
+Users can also save and share safe product lists with their family network.
+The technical challenge: The hardest part was getting consistent, structured JSON responses from the LLM for wildly varying international ingredient formats and keeping the prompt latency low enough so you aren't standing in the grocery aisle waiting for 20 seconds.
+I would love to hear your feedback on the app, and I'm especially interested to hear from anyone who has tackled real-time OCR + LLM data extraction on mobile. Happy to answer any technical questions! URL: https://news.ycombinator.com/item?id=47107910
+Points: 2
+# : 0]]></description>
+      <pubDate>Sun, 22 Feb 2026 03:43:57 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://apps.apple.com/us/app/halal-food-ai-scanner/id6755012360</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Les Étoiles des Numériques : découvrez tous les lauréats 2025-2026]]></title>

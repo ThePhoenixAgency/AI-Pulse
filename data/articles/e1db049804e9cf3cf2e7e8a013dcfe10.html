@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Tiny MCP That Understands Your Code and Saves 70% Tokens</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built a Tiny MCP That Understands Your Code and Saves 70% Tokens</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/22/2026 4:11:28 AM | <a href="https://dev.to/badmonster0/i-built-a-tiny-mcp-that-understands-your-code-and-saves-70-tokens-2hp4" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Every coding agent demo looks magical... until you point it at a real codebase. Then it either:</p> <ul>
+<li>Chokes on context windows</li>
+<li>Hallucinates around stale code</li>
+<li>Or becomes so slow you might as well just grep</li>
+</ul> <p>I hit this wall building AI workflows with large Rust/Python/TS repos, so I built something I actually wanted for my own stack: <strong>a super light-weight, AST-based embedded MCP that just works on your codebase.</strong> It's called <a href="https://github.com/cocoindex-io/cocoindex-code" target="_blank"><code>cocoindex-code</code></a> and it's already saving me ~70% tokens and a lot of waiting time.</p> <p>If you're using Claude, Codex, Cursor, or any MCP-friendly coding agent, this post is for you.</p> <h2> <a name="the-core-idea-ast-incremental-indexing" href="#the-core-idea-ast-incremental-indexing"> </a> The Core Idea: AST + Incremental Indexing
+</h2> <p>Most "code RAG" setups feel like infra projects: spin up a vector DB, write ETL, fight schema drift, tune chunking, maintain workers. Then you pray it all stays in sync.</p> <p><code>cocoindex-code</code> takes the opposite approach:</p> <ul>
+<li>
+<strong>Embedded MCP</strong>: It runs locally as an MCP server, no separate DB to run or maintain.</li>
+<li>
+<strong>AST-based indexing</strong>: It understands code structure via Tree-sitter, so you get meaningful chunks (functions, classes, blocks) instead of random 200-line windows.</li>
+<li>
+<strong>Incremental updates</strong>: Built on top of the Rust-based CocoIndex engine, it only re-indexes changed files.</li>
+<li>
+<strong>Real multi-language support</strong>: Python, JS/TS, Rust, Go, Java, C/C++, C#, SQL, Shell, and more.</li>
+</ul> <p>The goal: you ask an agent a question, it pulls precisely the code it needs, <strong>without blowing up your context window</strong>.</p> <h2> <a name="what-you-get-out-of-the-box" href="#what-you-get-out-of-the-box"> </a> What You Get Out of the Box
+</h2> <p>Here's what you get by just adding the MCP:</p> <ul>
+<li>
+<strong>Semantic code search tool</strong>: <code>search(query, limit, offset, refresh_index)</code> as an MCP tool.</li>
+<li>
+<strong>Instant token savings</strong>: Because only relevant code chunks go into prompts, not entire files or folders.</li>
+<li>
+<strong>Speed</strong>: Incremental indexing + Rust engine means updates feel near-instant on typical dev repos.</li>
+<li>
+<strong>No-key local embeddings by default</strong>: Uses <code>sentence-transformers/all-MiniLM-L6-v2</code> locally via SentenceTransformers.</li>
+<li>
+<strong>Optional power-ups</strong>: Swap in any LiteLLM-supported embedding model (OpenAI, Gemini, Mistral, Voyage for code, Ollama, etc.).</li>
+</ul> <p>This means you can go from "plain coding agent" to "coding agent that actually knows your codebase" in about a minute.</p> <h2> <a name="1minute-setup-for-claude-codex-and-opencode" href="#1minute-setup-for-claude-codex-and-opencode"> </a> 1-Minute Setup for Claude, Codex, and OpenCode
+</h2> <p>First, install <code>uv</code> if you don't have it yet:<br>
+</p> <div>
+<pre><code>curl <span>-LsSf</span> https://astral.sh/uv/install.sh | sh
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="claude" href="#claude"> </a> Claude
+</h3> <div>
+<pre><code>claude mcp add cocoindex-code <span>\</span> <span>--</span> uvx <span>--prerelease</span><span>=</span>explicit <span>--with</span> <span>\</span> <span>"cocoindex&gt;=1.0.0a16"</span> <span>\</span> cocoindex-code@latest
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="codex" href="#codex"> </a> Codex
+</h3> <div>
+<pre><code>codex mcp add cocoindex-code <span>\</span> <span>--</span> uvx <span>--prerelease</span><span>=</span>explicit <span>--with</span> <span>\</span> <span>"cocoindex&gt;=1.0.0a16"</span> <span>\</span> cocoindex-code@latest
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="opencode" href="#opencode"> </a> OpenCode
+</h3> <p>You can do it interactively:<br>
+</p> <div>
+<pre><code>opencode mcp add
+<span># MCP server name: cocoindex-code</span>
+<span># type: local</span>
+<span># command:</span>
+<span># uvx --prerelease=explicit --with cocoindex&gt;=1.0.0a16 cocoindex-code@latest</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. Point your agent at your repo, and you now have semantic search over your codebase as an MCP tool.</p> <h2> <a name="how-the-raw-search-endraw-mcp-tool-works" href="#how-the-raw-search-endraw-mcp-tool-works"> </a> How the <code>search</code> MCP Tool Works
+</h2> <p>Once connected, the MCP exposes a <code>search</code> tool:<br>
+</p> <div>
+<pre><code><span>search</span><span>(</span> <span>query</span><span>:</span> <span>str</span><span>,</span> <span># natural language or code snippet
+</span> <span>limit</span><span>:</span> <span>int</span> <span>=</span> <span>10</span><span>,</span> <span># 1-100
+</span> <span>offset</span><span>:</span> <span>int</span> <span>=</span> <span>0</span><span>,</span> <span># pagination
+</span> <span>refresh_index</span><span>:</span> <span>bool</span> <span>=</span> <span>True</span> <span># re-index before querying
+</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Each result comes back with:</p> <ul>
+<li>File path</li>
+<li>Language</li>
+<li>Code content</li>
+<li>Start/end line numbers</li>
+<li>Similarity score</li>
+</ul> <p>I've found three killer use cases:</p> <ol>
+<li>"Where is the actual implementation of X?" - when the repo has 5 similarly named functions.</li>
+<li>"Show me all the auth-related logic touching JWT refresh."</li>
+<li>"Find the code that matches this stack trace snippet."</li>
+</ol> <p>Because the index is kept up to date incrementally, you can refactor, run tests, and immediately use the agent against the new code layout without re-running some giant offline job.</p> <h2> <a name="supported-languages-and-smart-defaults" href="#supported-languages-and-smart-defaults"> </a> Supported Languages and Smart Defaults
+</h2> <p><code>cocoindex-code</code> ships with a very practical language matrix:</p> <p>C, C++, C#, CSS/SCSS, Go, HTML, Java, JavaScript/TypeScript/TSX, JSON/YAML/TOML, Kotlin, Markdown/MDX, Pascal, PHP, Python, R, Ruby, Rust, Scala, Solidity, SQL, Swift, XML</p> <p>It also auto-excludes noisy directories like <code>__pycache__</code>, <code>node_modules</code>, <code>target</code>, <code>dist</code>, and vendored dependencies.</p> <p>Root path is auto-discovered via <code>.cocoindex_code/</code>, <code>.git/</code>, or falling back to current working directory. In practice, you usually don't set any env vars at all - it just finds your repo root.</p> <h2> <a name="embeddings-start-free-scale-later" href="#embeddings-start-free-scale-later"> </a> Embeddings: Start Free, Scale Later
+</h2> <p>Out of the box, the project uses a local SentenceTransformers model:</p> <ul>
+<li>Default: <code>sbert/sentence-transformers/all-MiniLM-L6-v2</code>
+</li>
+<li>No API key, no billing surprises, completely local.</li>
+</ul> <p>If you want stronger semantic understanding for code-heavy repos, you can point <code>COCOINDEX_CODE_EMBEDDING_MODEL</code> to any LiteLLM-supported embedding model:</p> <ul>
+<li>Ollama (local)</li>
+<li>OpenAI / Azure OpenAI</li>
+<li>Gemini</li>
+<li>Mistral</li>
+<li>Voyage (code-optimized)</li>
+<li>Cohere</li>
+<li>AWS Bedrock</li>
+<li>Nebius</li>
+</ul> <p>Basically: <strong>start with free local, upgrade only if/when you actually need it.</strong></p> <h2> <a name="what-about-huge-enterprise-codebases" href="#what-about-huge-enterprise-codebases"> </a> What About Huge / Enterprise Codebases?
+</h2> <p>Under the hood, <code>cocoindex-code</code> uses <a href="https://github.com/cocoindex-io/cocoindex" target="_blank">CocoIndex</a>, a Rust-based indexing engine built for large-scale, incremental data workflows.</p> <p>For big org setups, you can:</p> <ul>
+<li>Share indexes across teammates instead of re-indexing on every machine.</li>
+<li>Take advantage of features like branch dedupe to avoid duplicate work.</li>
+<li>Run it as part of a larger data/indexing platform on top of CocoIndex.</li>
+</ul> <h2> <a name="if-you-want-to-try-it-heres-the-ask" href="#if-you-want-to-try-it-heres-the-ask"> </a> If You Want to Try It, Here's the Ask
+</h2> <p>If this sounds useful, here's a small but meaningful way you can help:</p> <ol>
+<li>
+<strong>Star the repo</strong>: <a href="https://github.com/cocoindex-io/cocoindex-code" target="_blank"><code>cocoindex-code</code></a> and the underlying <a href="https://github.com/cocoindex-io/cocoindex" target="_blank"><code>cocoindex</code></a>.</li>
+<li>
+<strong>Try it on your main project</strong> (the messy one, not the toy one).</li>
+<li>Drop feedback, issues, or ideas in the GitHub repo.</li>
+</ol> <p>I'm especially interested in:</p> <ul>
+<li>Repos where existing "code RAG" tools failed you</li>
+<li>Languages or frameworks you want better support for</li>
+<li>Workflows where you want your coding agent to feel <em>10x more context-aware</em>
+</li>
+</ul> <p>If you do try it, let me know in the comments what stack you used it on - I'd love to feature a few real-world examples in a follow-up post.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

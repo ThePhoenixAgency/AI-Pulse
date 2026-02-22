@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How I handle multi-step rollbacks in Go without external infrastructure</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How I handle multi-step rollbacks in Go without external infrastructure</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/22/2026 6:31:08 AM | <a href="https://dev.to/kerlenton/how-i-handle-multi-step-rollbacks-in-go-without-external-infrastructure-3ib2" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/kerlenton"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3784685%2F0a0eddfa-4a01-48ef-8e63-2740df98aa4a.png" alt="Semyon"></a> </p> </div><div> <h2> <a name="the-problem" href="#the-problem"> </a> The problem
+</h2> <p>Every non-trivial backend service has operations that span multiple steps. A classic example - placing an order:</p> <ol>
+<li>Charge the customer's card</li>
+<li>Reserve items in the warehouse</li>
+<li>Create a shipment</li>
+</ol> <p>Simple enough. But what happens when step 3 fails? You need to release the reservation and refund the charge. In the right order. With the right data.</p> <p>Most teams handle this by hand. It looks something like this:<br>
+</p> <div>
+<pre><code><span>func</span> <span>PlaceOrder</span><span>(</span><span>ctx</span> <span>context</span><span>.</span><span>Context</span><span>,</span> <span>req</span> <span>*</span><span>Request</span><span>)</span> <span>error</span> <span>{</span> <span>chargeID</span><span>,</span> <span>err</span> <span>:=</span> <span>payments</span><span>.</span><span>Charge</span><span>(</span><span>ctx</span><span>,</span> <span>req</span><span>.</span><span>CardToken</span><span>,</span> <span>req</span><span>.</span><span>Amount</span><span>)</span> <span>if</span> <span>err</span> <span>!=</span> <span>nil</span> <span>{</span> <span>return</span> <span>err</span> <span>}</span> <span>reservationID</span><span>,</span> <span>err</span> <span>:=</span> <span>warehouse</span><span>.</span><span>Reserve</span><span>(</span><span>ctx</span><span>,</span> <span>req</span><span>.</span><span>ItemID</span><span>)</span> <span>if</span> <span>err</span> <span>!=</span> <span>nil</span> <span>{</span> <span>_</span> <span>=</span> <span>payments</span><span>.</span><span>Refund</span><span>(</span><span>ctx</span><span>,</span> <span>chargeID</span><span>)</span> <span>return</span> <span>err</span> <span>}</span> <span>if</span> <span>err</span> <span>:=</span> <span>shipping</span><span>.</span><span>Create</span><span>(</span><span>ctx</span><span>,</span> <span>reservationID</span><span>);</span> <span>err</span> <span>!=</span> <span>nil</span> <span>{</span> <span>_</span> <span>=</span> <span>warehouse</span><span>.</span><span>Release</span><span>(</span><span>ctx</span><span>,</span> <span>reservationID</span><span>)</span> <span>_</span> <span>=</span> <span>payments</span><span>.</span><span>Refund</span><span>(</span><span>ctx</span><span>,</span> <span>chargeID</span><span>)</span> <span>return</span> <span>err</span> <span>}</span> <span>return</span> <span>nil</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This works. Until it doesn't.</p> <p>Add a fourth step and you touch every error branch. Forget one <code>_</code> and you have a silent bug. The compensation logic is scattered across the function instead of being colocated with the step it compensates.</p> <h2> <a name="why-not-temporal" href="#why-not-temporal"> </a> Why not Temporal?
+</h2> <p>Temporal is a great tool - for the right problem. But it requires running a dedicated server cluster and introduces significant operational complexity for what is essentially a local coordination problem.</p> <p>If you're already running Temporal, great. But if you just want clean rollback logic in a Go service without spinning up new infrastructure - it's overkill.</p> <h2> <a name="a-cleaner-approach" href="#a-cleaner-approach"> </a> A cleaner approach
+</h2> <p>I wanted something that works like this:<br>
+</p> <div>
+<pre><code><span>runner</span> <span>:=</span> <span>kata</span><span>.</span><span>New</span><span>(</span> <span>kata</span><span>.</span><span>Step</span><span>(</span><span>"charge-card"</span><span>,</span> <span>chargeCard</span><span>)</span><span>.</span> <span>Compensate</span><span>(</span><span>refundCard</span><span>)</span><span>.</span> <span>Retry</span><span>(</span><span>3</span><span>,</span> <span>kata</span><span>.</span><span>Exponential</span><span>(</span><span>100</span><span>*</span><span>time</span><span>.</span><span>Millisecond</span><span>)),</span> <span>kata</span><span>.</span><span>Step</span><span>(</span><span>"reserve-stock"</span><span>,</span> <span>reserveStock</span><span>)</span><span>.</span> <span>Compensate</span><span>(</span><span>releaseStock</span><span>),</span> <span>kata</span><span>.</span><span>Step</span><span>(</span><span>"create-shipment"</span><span>,</span> <span>createShipment</span><span>),</span>
+<span>)</span> <span>if</span> <span>err</span> <span>:=</span> <span>runner</span><span>.</span><span>Run</span><span>(</span><span>ctx</span><span>,</span> <span>&amp;</span><span>OrderState</span><span>{</span> <span>CardToken</span><span>:</span> <span>req</span><span>.</span><span>CardToken</span><span>,</span> <span>Amount</span><span>:</span> <span>req</span><span>.</span><span>Amount</span><span>,</span> <span>ItemID</span><span>:</span> <span>req</span><span>.</span><span>ItemID</span><span>,</span>
+<span>});</span> <span>err</span> <span>!=</span> <span>nil</span> <span>{</span> <span>// refundCard and releaseStock already ran automatically</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>If <code>create-shipment</code> fails, the library automatically calls <code>releaseStock</code> then <code>refundCard</code> - in reverse order, with the full shared state available to each compensation.</p> <p>No infrastructure. No DSL. Just Go.</p> <h2> <a name="key-design-decisions" href="#key-design-decisions"> </a> Key design decisions
+</h2> <p><strong>Shared typed state instead of a chain</strong></p> <p>Each step reads from and writes to a shared struct. This means compensations always have access to IDs and data created by earlier steps - which is exactly what you need for a real refund or release.<br>
+</p> <div>
+<pre><code><span>type</span> <span>OrderState</span> <span>struct</span> <span>{</span> <span>CardToken</span> <span>string</span> <span>Amount</span> <span>int64</span> <span>ChargeID</span> <span>string</span> <span>// filled by charge-card step</span> <span>ReservationID</span> <span>string</span> <span>// filled by reserve-stock step</span>
+<span>}</span> <span>func</span> <span>chargeCard</span><span>(</span><span>ctx</span> <span>context</span><span>.</span><span>Context</span><span>,</span> <span>s</span> <span>*</span><span>OrderState</span><span>)</span> <span>error</span> <span>{</span> <span>id</span><span>,</span> <span>err</span> <span>:=</span> <span>payments</span><span>.</span><span>Charge</span><span>(</span><span>ctx</span><span>,</span> <span>s</span><span>.</span><span>CardToken</span><span>,</span> <span>s</span><span>.</span><span>Amount</span><span>)</span> <span>s</span><span>.</span><span>ChargeID</span> <span>=</span> <span>id</span> <span>return</span> <span>err</span>
+<span>}</span> <span>func</span> <span>refundCard</span><span>(</span><span>ctx</span> <span>context</span><span>.</span><span>Context</span><span>,</span> <span>s</span> <span>*</span><span>OrderState</span><span>)</span> <span>error</span> <span>{</span> <span>return</span> <span>payments</span><span>.</span><span>Refund</span><span>(</span><span>ctx</span><span>,</span> <span>s</span><span>.</span><span>ChargeID</span><span>)</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Generics for type safety</strong></p> <p>The runner is generic over your state type - no <code>interface{}</code>, no casting:<br>
+</p> <div>
+<pre><code><span>var</span> <span>orderRunner</span> <span>=</span> <span>kata</span><span>.</span><span>New</span><span>(</span> <span>kata</span><span>.</span><span>Step</span><span>(</span><span>"charge-card"</span><span>,</span> <span>chargeCard</span><span>)</span><span>.</span><span>Compensate</span><span>(</span><span>refundCard</span><span>),</span> <span>// ...</span>
+<span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Two distinct error types</strong></p> <p>Not all failures are equal. If a step fails and all compensations run successfully - that's a clean rollback. If a compensation also fails - that's a potential data inconsistency requiring manual intervention.<br>
+</p> <div>
+<pre><code><span>var</span> <span>stepErr</span> <span>*</span><span>kata</span><span>.</span><span>StepError</span>
+<span>var</span> <span>compErr</span> <span>*</span><span>kata</span><span>.</span><span>CompensationError</span> <span>switch</span> <span>{</span>
+<span>case</span> <span>errors</span><span>.</span><span>As</span><span>(</span><span>err</span><span>,</span> <span>&amp;</span><span>stepErr</span><span>)</span><span>:</span> <span>log</span><span>.</span><span>Printf</span><span>(</span><span>"step %q failed: %v"</span><span>,</span> <span>stepErr</span><span>.</span><span>StepName</span><span>,</span> <span>stepErr</span><span>.</span><span>Cause</span><span>)</span> <span>case</span> <span>errors</span><span>.</span><span>As</span><span>(</span><span>err</span><span>,</span> <span>&amp;</span><span>compErr</span><span>)</span><span>:</span> <span>pagerduty</span><span>.</span><span>Fire</span><span>(</span><span>compErr</span><span>)</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Parallel steps</strong></p> <p>Sometimes you want to run steps concurrently - like sending email, SMS, and push notifications at the same time:<br>
+</p> <div>
+<pre><code><span>kata</span><span>.</span><span>Parallel</span><span>(</span><span>"notify"</span><span>,</span> <span>kata</span><span>.</span><span>Step</span><span>(</span><span>"email"</span><span>,</span> <span>sendEmail</span><span>),</span> <span>kata</span><span>.</span><span>Step</span><span>(</span><span>"sms"</span><span>,</span> <span>sendSMS</span><span>)</span><span>.</span><span>Compensate</span><span>(</span><span>cancelSMS</span><span>),</span> <span>kata</span><span>.</span><span>Step</span><span>(</span><span>"push"</span><span>,</span> <span>sendPush</span><span>),</span>
+<span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>If any step in the group fails, the others are cancelled and successful ones are compensated.</p> <h2> <a name="what-it-doesnt-do" href="#what-it-doesnt-do"> </a> What it doesn't do
+</h2> <p>This library is intentionally scoped. It does not:</p> <ul>
+<li>Persist state to a database (no crash recovery)</li>
+<li>Coordinate across services over a network</li>
+<li>Replace Temporal for long-running workflows</li>
+</ul> <p>If you need those things - use Temporal. kata is for in-process coordination where you want clean rollback logic without the operational overhead.</p> <h2> <a name="try-it" href="#try-it"> </a> Try it
+</h2> <div>
+<pre><code>go get github.com/kerlenton/kata
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>GitHub: <a href="https://github.com/kerlenton/kata" target="_blank">https://github.com/kerlenton/kata</a></p> <p>Zero dependencies, requires Go 1.22+. Still early - feedback on API ergonomics especially welcome.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

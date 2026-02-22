@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - derikvanschaik/videoai: Generate trendy narrated videos (GRWM, day in the life) with AI — fully automated.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - derikvanschaik/videoai: Generate trendy narrated videos (GRWM, day in the life) with AI — fully automated.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/22/2026 1:40:35 AM | <a href="https://github.com/derikvanschaik/videoai" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>Generate trendy narrated videos (GRWM, day in the life) with AI — fully automated.</h1><a href="#generate-trendy-narrated-videos-grwm-day-in-the-life-with-ai--fully-automated"></a></div>
+<p><a target="_blank" href="/derikvanschaik/videoai/blob/main/example.png"><img src="/derikvanschaik/videoai/raw/main/example.png"></a></p>
+<p>Give it some clips and a prompt like <em>"GRWM as a 9-5 software engineer"</em> and it writes the script, clones your voice, edits the footage, and burns styled captions. You end up with a post-ready video without touching a timeline.</p>
+<p>Here are some examples I created with my voice + raw clips:</p> <span>ex1.mp4</span> <span></span> <span>ex2.mp4</span> <span></span> <div><h2>How it works</h2><a href="#how-it-works"></a></div>
+<ol>
+<li><strong>Voice cloning</strong> — captures your voice from a sample so narration sounds like you</li>
+<li><strong>Script generation</strong> — an AI agent writes narration based on your clips and the vibe you want</li>
+<li><strong>AI editing</strong> — cuts and arranges your clips to match the narration timing</li>
+<li><strong>Auto captions</strong> — transcribes the narration and places styled captions that match the aesthetic</li>
+</ol>
+<div><h2>Getting Started</h2><a href="#getting-started"></a></div>
+<div><h3>1. Main project</h3><a href="#1-main-project"></a></div>
+<div><pre>python3 -m venv venv
+<span>source</span> venv/bin/activate
+pip install -r requirements.txt</pre></div>
+<p>Copy the example env file and fill in your values:</p>
+<div><pre>cp .env.example .env</pre></div>
+<p>At minimum you need a Gemini API key — get one at <a href="https://aistudio.google.com">aistudio.google.com</a>:</p>
+<div><pre><code>GEMINI_API_KEY=your_key_here
+</code></pre></div>
+<blockquote>
+<p><strong>Heads up:</strong> the default models (</p><pre><code>gemini-3.1-pro-preview</code></pre>, <pre><code>gemini-2.5-pro</code></pre>) require a paid Google AI Studio plan. See <pre><code>.env.example</code></pre> for all configurable values.<p></p>
+</blockquote>
+<div><h3>2. Voice clone server</h3><a href="#2-voice-clone-server"></a></div>
+<blockquote>
+<p><strong>Mac (Apple Silicon) only.</strong> The voice clone server depends on <a href="https://github.com/ml-explore/mlx">MLX</a>, Apple's machine learning framework built specifically for Apple Silicon (M1/M2/M3/M4). It talks directly to the GPU through Apple's Metal API via the </p><pre><code>mlx-metal</code></pre> package, so it has no CUDA or cross-platform path — it simply won't run on Linux or Windows. The rest of the pipeline (script generation, editing, captions) works anywhere.<p></p>
+<p><strong>Running on a different machine?</strong> The </p><pre><code>CLONE_TTS_URL</code></pre> env var is intentionally the only thing that connects the main pipeline to the TTS server. If you're not on a Mac, you can point that URL at any HTTP endpoint that accepts <pre><code>POST {"text": "..."}</code></pre> and returns <pre><code>{"file_path": "..."}</code></pre> — a cloud TTS service, ElevenLabs, a self-hosted Coqui server, etc. You'd just need to write a small wrapper server that matches that interface and update the URL in <pre><code>.env</code></pre>.<p></p>
+</blockquote>
+<p>The voice clone server runs as a separate process with its own dependencies.</p>
+<div><pre><span>cd</span> voice-clone
+python3 -m venv venv
+<span>source</span> venv/bin/activate
+pip install -r requirements.txt</pre></div>
+<p><strong>Record a reference audio sample</strong> — speak clearly for 15–30 seconds into a WAV file. Then transcribe it using the Whisper model that ships with </p><pre><code>mlx-audio</code></pre>:<p></p>
+<div><pre>python3 -m mlx_audio.stt.generate \ --model mlx-community/whisper-large-v3-turbo-asr-fp16 \ --audio your_voice.wav \ --output-path transcript.txt</pre></div>
+<p>Set the required env vars in the root </p><pre><code>.env</code></pre>:<p></p>
+<div><pre><code>VOICE_CLONE_MODEL_ID=mlx-community/Qwen3-TTS-12Hz-0.6B-Base-bf16
+VOICE_CLONE_REF_AUDIO=/absolute/path/to/your_voice.wav
+VOICE_CLONE_REF_TEXT=/absolute/path/to/transcript.txt
+</code></pre></div>
+<p>Start the server (leave it running in a separate terminal):</p>
+<div><pre>./venv/bin/python server.py</pre></div>
+<div><h3>3. Run</h3><a href="#3-run"></a></div>
+<p>Back in the main project:</p>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><pre>python3 editor.py <span><span>"</span>grwm as an indie software engineer working remote<span>"</span></span> --ref ref.mp4 videos/<span>*</span>.mp4</pre></div>
+<p></p><pre><code>--ref</code></pre> is optional. Pass it a video whose editing style you want to emulate — pacing, energy, color grade, mood — and the pipeline will analyze it and match that style in the output. Leave it out and the editor will make its own creative decisions.<p></p>
+<div><h2>Examples</h2><a href="#examples"></a></div>
+<ul>
+<li><a href="https://github.com/dslogs/videoai/issues/1">Example 1</a></li>
+<li><a href="https://github.com/dslogs/videoai/issues/2">Example 2</a></li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

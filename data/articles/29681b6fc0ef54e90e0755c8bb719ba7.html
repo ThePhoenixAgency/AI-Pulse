@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,290 @@
     Source: Hugging Face Blog | Date: 8/18/2025 12:00:00 AM | <a href="https://huggingface.co/blog/kernel-builder" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Summary unavailable for this article.</p>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/drbh"><img alt="David Holtz's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6452d5ba3f80ad88c77b2f05/Elc2R5dvn-iQlgROdRikX.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/danieldk"><img alt="Daniël de Kok's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6310e9a107a76827902421d7/1e0GItqv3A6sOWYz5SXoe.png"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#what-youll-learn">What You’ll Learn</a> <ul></ul> </li><li><a href="#part-1-anatomy-of-a-modern-cuda-kernel">Part 1: Anatomy of a Modern CUDA Kernel</a> <ul><li><a href="#step-1-project-structure">Step 1: Project Structure</a> <ul></ul> </li><li><a href="#step-2-the-buildtoml-manifest">Step 2: The <code>build.toml</code> Manifest</a> <ul></ul> </li><li><a href="#step-3-the-flakenix-reproducibility-file">Step 3: The <code>flake.nix</code> Reproducibility File</a> <ul></ul> </li><li><a href="#step-4-writing-the-cuda-kernel">Step 4: Writing the CUDA Kernel</a> <ul></ul> </li><li><a href="#step-5-registering-a-native-pytorch-operator">Step 5: Registering a Native PyTorch Operator</a> <ul></ul> </li><li><a href="#step-6-building-the-kernel">Step 6: Building the Kernel</a> <ul></ul> </li><li><a href="#step-7-sharing-with-the-world">Step 7: Sharing with the World</a> <ul></ul> </li><li><a href="#step-8-loading-and-testing-your-custom-op">Step 8: Loading and Testing Your Custom Op</a> <ul></ul> </li></ul> </li><li><a href="#part-2-from-one-kernel-to-many-solving-production-challenges">Part 2: From One Kernel to Many: Solving Production Challenges</a> <ul><li><a href="#kernel-versions">Kernel Versions</a> <ul></ul> </li><li><a href="#pre-downloading-locked-kernels">Pre-downloading Locked Kernels</a> <ul></ul> </li><li><a href="#creating-legacy-python-wheels">Creating Legacy Python Wheels</a> <ul></ul> </li></ul> </li></ul></nav></div><p>Custom CUDA kernels give your models a serious performance edge, but building them for the real world can feel daunting. How do you move beyond a simple GPU function to create a robust, scalable system without getting bogged down by endless build times and dependency nightmares?</p>
+<p>We created the <a href="https://github.com/huggingface/kernel-builder"><code>kernel-builder</code> library</a> for this purpose. You can develop a custom kernel locally, and then build it for multiple architectures and make it available for the world to use.</p>
+<p>In this guide we'll show you how to build a complete, modern CUDA kernel from the ground up. Then, we’ll tackle the tough production and deployment challenges, drawing on real-world engineering strategies to show you how to build systems that are not just fast, but also efficient and maintainable.</p>
+<h2> <a href="#what-youll-learn"> <span></span> </a> <span> What You’ll Learn </span>
+</h2>
+<p>When you're done, other developers will be able to use your kernels directly from the hub like this:</p>
+<pre><code><span>import</span> torch <span>from</span> kernels <span>import</span> get_kernel <span># Download custom kernel from the Hugging Face Hub</span>
+optimized_kernel = get_kernel(<span>"your-username/optimized-kernel"</span>) <span># A sample input tensor</span>
+some_input = torch.randn((<span>10</span>, <span>10</span>), device=<span>"cuda"</span>) <span># Run the kernel</span>
+out = optimized_kernel.my_kernel_function(some_input) <span>print</span>(out)
+</code></pre>
+<p>Rather watch a video? Check out the <a href="https://youtu.be/HS5Pp_NLVWg?si=WP1aJ98q52lJn6F-&amp;t=0">YouTube video</a> that accompanies this guide.</p>
+<p>Let's Get Started! </p>
+<h2> <a href="#part-1-anatomy-of-a-modern-cuda-kernel"> <span></span> </a> <span> Part 1: Anatomy of a Modern CUDA Kernel </span>
+</h2>
+<p>Let's build a practical kernel that converts an image from RGB to grayscale. This example uses PyTorch's modern C++ API to register our function as a first-class, native operator.</p>
+<h3> <a href="#step-1-project-structure"> <span></span> </a> <span> Step 1: Project Structure </span>
+</h3>
+<p>A clean, predictable structure is the foundation of a good project. The Hugging Face Kernel Builder expects your files to be organized like this:</p>
+<pre><code>img2gray/
+├── build.toml
+├── csrc
+│ └── img2gray.cu
+├── flake.nix
+└── torch-ext ├── torch_binding.cpp ├── torch_binding.h └── img2gray └── __init__.py
+</code></pre>
+<ul>
+<li><strong><code>build.toml</code></strong>: The project manifest; it’s the brain of the build process.</li>
+<li><strong><code>csrc/</code></strong>: Your raw CUDA source code where the GPU magic happens.</li>
+<li><strong><code>flake.nix</code></strong>: The key to a perfectly reproducible* build environment.</li>
+<li><strong><code>torch-ext/img2gray/</code></strong>: The Python wrapper for the raw PyTorch operators.</li>
+</ul>
+<h3> <a href="#step-2-the-buildtoml-manifest"> <span></span> </a> <span> Step 2: The <code>build.toml</code> Manifest </span>
+</h3>
+<p>This file orchestrates the entire build. It tells the <code>kernel-builder</code> what to compile and how everything connects.</p>
+<pre><code><span># build.toml</span>
+<span>[general]</span>
+<span>name</span> = <span>"img2gray"</span>
+<span>universal</span> = <span>false</span> <span># Defines the C++ files that bind to PyTorch</span>
+<span>[torch]</span>
+<span>src</span> = [ <span>"torch-ext/torch_binding.cpp"</span>, <span>"torch-ext/torch_binding.h"</span>
+] <span># Defines the CUDA kernel itself</span>
+<span>[kernel.img2gray]</span>
+<span>backend</span> = <span>"cuda"</span>
+<span>depends</span> = [<span>"torch"</span>] <span># This kernel depends on the Torch library for the `Tensor` class.</span>
+<span>src</span> = [ <span>"csrc/img2gray.cu"</span>,
+]
+</code></pre>
+<h3> <a href="#step-3-the-flakenix-reproducibility-file"> <span></span> </a> <span> Step 3: The <code>flake.nix</code> Reproducibility File </span>
+</h3>
+<p>To ensure anyone can build your kernel on any machine, we use a <code>flake.nix</code> file. It locks the exact version of the <code>kernel-builder</code> and its dependencies, eliminating "it works on my machine" issues.</p>
+<pre><code><span># flake.nix</span>
+{ <span>description</span> = <span>"Flake for img2gray kernel"</span>; <span>inputs</span> = { kernel-builder.<span>url</span> = <span>"github:huggingface/kernel-builder"</span>; }; <span>outputs</span> = { self, kernel-builder, }: kernel-builder.lib.genFlakeOutputs { <span>path</span> = ./.; <span>rev</span> = self.shortRev <span>or</span> self.dirtyShortRev <span>or</span> self.lastModifiedDate; };
+}
+</code></pre>
+<h3> <a href="#step-4-writing-the-cuda-kernel"> <span></span> </a> <span> Step 4: Writing the CUDA Kernel </span>
+</h3>
+<p>Now for the GPU code. Inside <strong><code>csrc/img2gray.cu</code></strong>, we'll define a kernel that uses a 2D grid of threads—a natural and efficient fit for processing images.</p>
+<pre><code><span>// csrc/img2gray.cu</span>
+<span>#<span>include</span> <span>&lt;cstdint&gt;</span></span>
+<span>#<span>include</span> <span>&lt;torch/torch.h&gt;</span></span> <span>// This kernel runs on the GPU, with each thread handling one pixel</span>
+<span>__global__ <span>void</span> <span>img2gray_kernel</span><span>(<span>const</span> <span>uint8_t</span>* input, <span>uint8_t</span>* output, <span>int</span> width, <span>int</span> height)</span> </span>{ <span>int</span> x = blockIdx.x * blockDim.x + threadIdx.x; <span>int</span> y = blockIdx.y * blockDim.y + threadIdx.y; <span>if</span> (x &lt; width &amp;&amp; y &lt; height) { <span>int</span> idx = (y * width + x) * <span>3</span>; <span>// 3 channels for RGB</span> <span>uint8_t</span> r = input[idx]; <span>uint8_t</span> g = input[idx + <span>1</span>]; <span>uint8_t</span> b = input[idx + <span>2</span>]; <span>// Luminance conversion</span> <span>uint8_t</span> gray = <span>static_cast</span>&lt;<span>uint8_t</span>&gt;(<span>0.21f</span> * r + <span>0.72f</span> * g + <span>0.07f</span> * b); output[y * width + x] = gray; }
+} <span>// This C++ function launches our CUDA kernel</span>
+<span><span>void</span> <span>img2gray_cuda</span><span>(torch::Tensor <span>const</span> &amp;input, torch::Tensor &amp;output)</span> </span>{ <span>const</span> <span>int</span> width = input.<span>size</span>(<span>1</span>); <span>const</span> <span>int</span> height = input.<span>size</span>(<span>0</span>); <span>// Define a 2D block and grid size for image processing</span> <span><span>const</span> dim3 <span>blockSize</span><span>(<span>16</span>, <span>16</span>)</span></span>; <span><span>const</span> dim3 <span>gridSize</span><span>((width + blockSize.x - <span>1</span>) / blockSize.x, (height + blockSize.y - <span>1</span>) / blockSize.y)</span></span>; img2gray_kernel&lt;&lt;&lt;gridSize, blockSize&gt;&gt;&gt;( input.<span>data_ptr</span>&lt;<span>uint8_t</span>&gt;(), output.<span>data_ptr</span>&lt;<span>uint8_t</span>&gt;(), width, height );
+}
+</code></pre>
+<h3> <a href="#step-5-registering-a-native-pytorch-operator"> <span></span> </a> <span> Step 5: Registering a Native PyTorch Operator </span>
+</h3>
+<p>This is the most important step. We're not just binding to Python; we're registering our function as a native PyTorch operator. This makes it a first-class citizen in the PyTorch ecosystem, visible under the <code>torch.ops</code> namespace.</p>
+<p>The file <strong><code>torch-ext/torch_binding.cpp</code></strong> handles this registration.</p>
+<pre><code><span>// torch-ext/torch_binding.cpp</span>
+<span>#<span>include</span> <span>&lt;torch/library.h&gt;</span></span>
+<span>#<span>include</span> <span>"registration.h"</span> <span>// included in the build</span></span>
+<span>#<span>include</span> <span>"torch_binding.h"</span> <span>// Declares our img2gray_cuda function</span></span> <span>TORCH_LIBRARY_EXPAND</span>(TORCH_EXTENSION_NAME, ops) { ops.<span>def</span>(<span>"img2gray(Tensor input, Tensor! output) -&gt; ()"</span>); ops.<span>impl</span>(<span>"img2gray"</span>, torch::kCUDA, &amp;img2gray_cuda);
+} <span>REGISTER_EXTENSION</span>(TORCH_EXTENSION_NAME)
+</code></pre>
+<p>In simple terms, <code>TORCH_LIBRARY_EXPAND</code> allows us to define our operator in a way that can be easily extended or modified in the future.</p>
+<h4> <a href="#why-this-matters"> <span></span> </a> <span> Why This Matters </span>
+</h4>
+<p>This approach is crucial for two main reasons:</p>
+<ul>
+<li><p><strong>Compatibility with <code>torch.compile</code></strong>: By registering our kernel this way, <code>torch.compile</code> can "see" it. This allows PyTorch to fuse your custom operator into larger computation graphs, minimizing overhead and maximizing performance. It's the key to making your custom code work seamlessly with PyTorch's broader performance ecosystem.</p>
+</li>
+<li><p><strong>Hardware-Specific Implementations</strong>: This system allows you to provide different backends for the same operator. You could add another <code>TORCH_LIBRARY_IMPL(img2gray, CPU, ...)</code> block pointing to a C++ CPU function. PyTorch's dispatcher would then automatically call the correct implementation (CUDA or CPU) based on the input tensor's device, making your code powerful and portable.</p>
+<p><strong>Setting up the <code>__init__.py</code> wrapper</strong></p>
+</li>
+</ul>
+<p>In <code>torch-ext/img2gray/</code> we need an <code>__init__.py</code> file to make this directory a Python package and to expose our custom operator in a user-friendly way.</p>
+<blockquote>
+<p>The <code>_ops</code> module is auto-generated by kernel-builder from a <a href="https://github.com/huggingface/kernel-builder/blob/main/build2cmake/src/templates/_ops.py">template</a> to provide a standard namespace for your registered C++ functions.</p>
+</blockquote>
+<pre><code><span># torch-ext/img2gray/__init__.py</span>
+<span>import</span> torch <span>from</span> ._ops <span>import</span> ops <span>def</span> <span>img2gray</span>(<span><span>input</span>: torch.Tensor</span>) -&gt; torch.Tensor: <span># we expect input to be in CHW format</span> height, width, channels = <span>input</span>.shape <span>assert</span> channels == <span>3</span>, <span>"Input image must have 3 channels (RGB)"</span> output = torch.empty((height, width), device=<span>input</span>.device, dtype=<span>input</span>.dtype) ops.img2gray(<span>input</span>, output) <span>return</span> output
+</code></pre>
+<h3> <a href="#step-6-building-the-kernel"> <span></span> </a> <span> Step 6: Building the Kernel </span>
+</h3>
+<p>Now that our kernel and its bindings are ready, it's time to build them. The <code>kernel-builder</code> tool simplifies this process.</p>
+<p>You can build your kernel with a single command, <code>nix build . -L</code>; however, as developers, we'll want a faster, more iterative workflow. For that, we'll use the <code>nix develop</code> command to enter a development shell with all the necessary dependencies pre-installed.</p>
+<p>More specifically, we can choose the exact CUDA and PyTorch versions we want to use. For example, to build our kernel for PyTorch 2.7 with CUDA 12.6, we can use the following command:</p>
+<h4> <a href="#drop-into-a-nix-shell"> <span></span> </a> <span> Drop into a Nix Shell </span>
+</h4>
+<pre><code><span># Drop into a Nix shell (an isolated sandbox with all dependencies)</span>
+nix develop .<span>#devShells.torch28-cxx11-cu128-x86_64-linux</span>
+</code></pre>
+<p>Note that the <code>devShell</code> name above can be deciphered as:</p>
+<pre><code>nix develop .<span>#devShells.torch27-cxx11-cu126-x86_64-linux</span> │ │ │ │ │ │ │ └─── Architecture: x86_64 (Linux) │ │ └────────── CUDA version: <span>12.6</span> │ └──────────────────── C++ ABI: cxx11 └──────────────────────────── Torch version: <span>2.7</span>
+</code></pre>
+<p>At this point, we'll be inside a Nix shell with all dependencies installed. We can now build the kernel for this particular architecture and test it. Later on, we'll deal with multiple architectures before distributing the final version of the kernel.</p>
+<h4> <a href="#set-up-build-artifacts"> <span></span> </a> <span> Set Up Build Artifacts </span>
+</h4>
+<pre><code>build2cmake generate-torch build.toml
+<span># this creates: torch-ext/img2gray/_ops.py, pyproject.toml, torch-ext/registration.h, setup.py, cmake/hipify.py, cmake/utils.cmake, CMakeLists.txt</span>
+</code></pre>
+<p>This command creates a handful of files used to build the kernel: <code>CMakeLists.txt</code>, <code>pyproject.toml</code>, <code>setup.py</code>, and a <code>cmake</code> directory. The <code>CMakeLists.txt</code> file is the main entry point for CMake to build the kernel.</p>
+<h4> <a href="#create-a-python-virtual-environment"> <span></span> </a> <span> Create a Python Virtual Environment </span>
+</h4>
+<pre><code>python -m venv .venv
+<span>source</span> .venv/bin/activate
+</code></pre>
+<p>Now you can install the kernel in editable mode.</p>
+<h4> <a href="#compile-the-kernel-and-install-the-python-package"> <span></span> </a> <span> Compile the Kernel and Install the Python Package </span>
+</h4>
+<pre><code>pip install --no-build-isolation -e .
+</code></pre>
+<p> Amazing! We now have a custom built kernel that follows best practices for PyTorch bindings, with a fully reproducible build process.</p>
+<h4> <a href="#development-cycle"> <span></span> </a> <span> Development Cycle </span>
+</h4>
+<p>To ensure everything is working correctly, we can run a simple test to check that the kernel is registered and it works as expected. If it doesn't, you can iterate by editing the source files and repeating the build, reusing the nix environment you created.</p>
+<pre><code><span># scripts/sanity.py</span>
+<span>import</span> torch
+<span>import</span> img2gray <span>from</span> PIL <span>import</span> Image
+<span>import</span> numpy <span>as</span> np <span>print</span>(<span>dir</span>(img2gray)) img = Image.<span>open</span>(<span>"kernel-builder-logo-color.png"</span>).convert(<span>"RGB"</span>)
+img = np.array(img)
+img_tensor = torch.from_numpy(img).cuda()
+<span>print</span>(img_tensor.shape) <span># HWC</span> gray_tensor = img2gray.img2gray(img_tensor).squeeze()
+<span>print</span>(gray_tensor.shape) <span># HW</span> <span># save the output image</span>
+gray_img = Image.fromarray(gray_tensor.cpu().numpy().astype(np.uint8), mode=<span>"L"</span>)
+gray_img.save(<span>"kernel-builder-logo-gray.png"</span>)
+</code></pre>
+<h3> <a href="#step-7-sharing-with-the-world"> <span></span> </a> <span> Step 7: Sharing with the World </span>
+</h3>
+<p>Now that we have a working kernel, it's time to share it with other developers and the world!</p>
+<p>One small thing we'll want to do before we share, is clean up all of the development artifacts that were generated during the build process to avoid uploading unnecessary files.</p>
+<pre><code>build2cmake clean build.toml
+</code></pre>
+<h4> <a href="#building-the-kernel-for-all-pytorch-and-cuda-versions"> <span></span> </a> <span> Building the Kernel for All PyTorch and CUDA Versions </span>
+</h4>
+<p>Earlier, we built the kernel for a specific version of PyTorch and CUDA. However, to make it available to a wider audience, we need to build it for all supported versions. The <code>kernel-builder</code> tool can help us with that.</p>
+<p>This is also where the concept of a <code>compliant kernel</code> comes into play. A compliant kernel is one that can be built and run for all supported versions of PyTorch and CUDA. Generally, this requires custom configuration; however, in our case, the <code>kernel-builder</code> tool will automate the process.</p>
+<pre><code><span># Outside of the dev shell, run the following command</span>
+<span># if you are inside of the sandbox you can leave with `exit`</span>
+nix build . -L
+</code></pre>
+<blockquote>
+<p>This process may take a while, as it will build the kernel for all supported versions of PyTorch and CUDA. The output will be in the <code>result</code> directory.</p>
+</blockquote>
+<blockquote>
+<p>The kernel-builder team actively maintains the <a href="https://github.com/huggingface/kernel-builder/blob/main/docs/build-variants.md#build-variants">supported build variants</a>, keeping them current with the latest PyTorch and CUDA releases while also supporting trailing versions for broader compatibility.</p>
+</blockquote>
+<p>The last step is to move the results into the expected <code>build</code> directory (this is where the <code>kernels</code> library will look for them).</p>
+<pre><code><span>mkdir</span> -p build
+rsync -av --delete --<span>chmod</span>=Du+w,Fu+w result/ build/
+</code></pre>
+<h4> <a href="#pushing-to-the-hugging-face-hub"> <span></span> </a> <span> Pushing to the Hugging Face Hub </span>
+</h4>
+<p>Pushing the build artifacts to the Hub will make it straightforward for other developers to use your kernel, as we saw in <a href="https://huggingface.co/blog/hello-hf-kernels">our previous post</a>.</p>
+<p>First, create a new repo:</p>
+<pre><code>hf repo create img2gray
+</code></pre>
+<blockquote>
+<p>Make sure you are logged in to the Hugging Face Hub using <code>huggingface-cli login</code>.</p>
+</blockquote>
+<p>Now, in your project directory, connect your project to the new repository and push your code:</p>
+<pre><code><span># Initialize git and connect to the Hugging Face Hub</span>
+git init
+git remote add origin https://huggingface.co/&lt;your-username&gt;/img2gray <span># Pull the changes (just the default .gitattributes file)</span>
+git pull origin main
+git lfs install
+git checkout -b main <span># Update to use LFS for the binary files</span>
+git lfs track <span>"*.so"</span> <span># Add and commit your changes. (being careful to only include the necessary files</span>
+<span># since our build2cmake command generated a lot of dev specific files)</span>
+git add \ build/ csrc/ \ torch-ext/torch_binding.cpp torch-ext/torch_binding.h torch-ext/img2gray \ flake.nix flake.lock build.toml git commit -m <span>"feat: Created a compliant img2gray kernel"</span>
+git push -u origin main
+</code></pre>
+<p>Fantastic! Your kernel is now on the Hugging Face Hub, ready for others to use and fully compliant with the <code>kernels</code> library. Our kernel and all of its build variants are now available at <a href="https://huggingface.co/drbh/img2gray/tree/main/build">drbh/img2gray</a>.</p>
+<h3> <a href="#step-8-loading-and-testing-your-custom-op"> <span></span> </a> <span> Step 8: Loading and Testing Your Custom Op </span>
+</h3>
+<p>With the <code>kernels</code> library, you don't "install" the kernel in the traditional sense. You load it directly from its Hub repository, which automatically registers the new operator.</p>
+<pre><code><span># /// script</span>
+<span># requires-python = "==3.10"</span>
+<span># dependencies = [</span>
+<span># "kernels",</span>
+<span># "numpy",</span>
+<span># "pillow",</span>
+<span># "torch",</span>
+<span># ]</span>
+<span># ///</span>
+<span>import</span> torch
+<span>from</span> PIL <span>import</span> Image
+<span>import</span> numpy <span>as</span> np
+<span>from</span> kernels <span>import</span> get_kernel <span># This downloads, caches, and loads the kernel library</span>
+<span># and makes the custom op available in torch.ops</span>
+img2gray_lib = get_kernel(<span>"drbh/img2gray"</span>) img = Image.<span>open</span>(<span>"kernel-builder-logo-color.png"</span>).convert(<span>"RGB"</span>)
+img = np.array(img)
+img_tensor = torch.from_numpy(img).cuda()
+<span>print</span>(img_tensor.shape) <span># HWC</span> gray_tensor = img2gray_lib.img2gray(img_tensor).squeeze()
+<span>print</span>(gray_tensor.shape) <span># HW</span> <span># save the output image</span>
+gray_img = Image.fromarray(gray_tensor.cpu().numpy().astype(np.uint8), mode=<span>"L"</span>)
+gray_img.save(<span>"kernel-builder-logo-gray2.png"</span>)
+</code></pre>
+<hr>
+<h2> <a href="#part-2-from-one-kernel-to-many-solving-production-challenges"> <span></span> </a> <span> Part 2: From One Kernel to Many: Solving Production Challenges </span>
+</h2>
+<p>Once you have a ready-to-use kernel, there are some things you can do to make it easier to deploy your kernel. We will discuss using versioning as a tool to make API changes without breaking downstream use of kernels. After that, we will wrap up showing how you can make Python wheels for your kernel.</p>
+<h3> <a href="#kernel-versions"> <span></span> </a> <span> Kernel Versions </span>
+</h3>
+<p>You might decide to update your kernel after a while. Maybe you have found new ways of improving performance or perhaps you would like to extend the kernel's functionality. Some changes will require you to change the API of your kernel. For instance, a newer version might add a new mandatory argument to one of the public functions. This can be inconvenient to downstream users, because their code would break until they add this new argument.</p>
+<p>A downstream user of a kernel can avoid such breakage by pinning the kernel that they use to a particular revision. For instance, since each Hub repository is also a Git repository, they could use a git commit shorthash to pin the kernel to a revision:</p>
+<pre><code><span>from</span> kernels <span>import</span> get_kernel
+img2gray_lib = get_kernel(<span>"drbh/img2gray"</span>, revision=<span>"4148918"</span>)
+</code></pre>
+<p>Using a Git shorthash will reduce the chance of breakage; however, it is hard to interpret and does not allow graceful upgrades within a version range. We therefore recommend using the familiar <a href="https://semver.org/">semantic versioning</a> system for Hub kernels. Adding a version to a kernel is easy: you simply add a Git tag of the form <code>vx.y.z</code> where <em>x.y.z</em> is the version. For instance, if the current version of the kernel is 1.1.2, you can tag it as <code>v1.1.2</code>. You can then get that version with <code>get_kernel</code>:</p>
+<pre><code><span>from</span> kernels <span>import</span> get_kernel
+img2gray_lib = get_kernel(<span>"drbh/img2gray"</span>, revision=<span>"v1.1.2"</span>)
+</code></pre>
+<p>Versioning becomes even more powerful with version bounds. In semantic versioning, the version <code>1.y.z</code>, must not have backward-incompatible changes in the public API for each succeeding <code>x</code> and <code>y</code>. So, if the kernel's version was <code>1.1.2</code> at the time of writing your code, you can ask the version to be at least <code>1.1.2</code>, but less than <code>2.0.0</code>:</p>
+<pre><code><span>from</span> kernels <span>import</span> get_kernel
+img2gray_lib = get_kernel(<span>"drbh/img2gray"</span>, version=<span>"&gt;=1.1.2,&lt;2"</span>)
+</code></pre>
+<p>This will ensure that the code will always fetch the latest kernel from the <code>1.y.z</code> series. The version bound can be a Python-style <a href="https://packaging.pypa.io/en/stable/specifiers.html">version specifier</a>.</p>
+<p>You can <a href="https://huggingface.co/docs/huggingface_hub/en/guides/cli#tag-a-model">tag</a> a version with <code>huggingface-cli</code>:</p>
+<pre><code>$ huggingface-cli tag drbh/img2gray v1.1.2
+</code></pre>
+<h4> <a href="#locking-kernels"> <span></span> </a> <span> Locking Kernels </span>
+</h4>
+<p>In large projects, you may want to coordinate the kernel versions globally rather than in each <code>get_kernel</code> call. Moreover, it is often useful to lock kernels, so that all your users have the same kernel versions, which aids handling bug reports.</p>
+<p>The <code>kernels</code> library offers a nice way of managing kernels at the project-level. To do so, add the <code>kernels</code> package to the build-system requirements of your project, in the <code>pyproject.toml</code> file. After doing so, you can specify your project's kernel requirements in the <code>tools.kernels</code> section:</p>
+<pre><code><span>[build-system]</span>
+<span>requires</span> = [<span>"kernels"</span>, <span>"setuptools"</span>]
+<span>build-backend</span> = <span>"setuptools.build_meta"</span> <span>[tool.kernels.dependencies]</span>
+<span>"drbh/img2gray"</span> = <span>"&gt;=0.1.2,&lt;0.2.0"</span>
+</code></pre>
+<p>The version can be specified with the same type of version specifiers as Python dependencies. This is another place where the version tags (<code>va.b.c</code>) come handy -- <code>kernels</code> will use a repository's version tags to query what versions are available. After specifying a kernel in <code>pyproject.toml</code>, you can lock it to a specific version using the <code>kernels</code> command-line utility. This utility is part of the <code>kernels</code> Python package:</p>
+<pre><code>$ kernels lock .
+</code></pre>
+<p>This generates a <code>kernels.lock</code> file with the latest kernel versions that are compatible with the bounds that are specified in <code>pyproject.toml</code>. <code>kernels.lock</code> should be committed to your project's Git repository, so that every user of the project will get the locked kernel versions. When newer kernels versions are released, you can run <code>kernels lock</code> again to update the lock file.</p>
+<p>You need one last bit to fully implement locked kernels in a project. The <code>get_locked_kernel</code> is the counterpart to <code>get_kernel</code> that uses locked kernels. So to use locked kernels, replace every occurrence of <code>get_kernel</code> with <code>get_locked_kernel</code>:</p>
+<pre><code><span>from</span> kernels <span>import</span> get_kernel
+img2gray_lib = get_locked_kernel(<span>"drbh/img2gray"</span>)
+</code></pre>
+<p>That's it! Every call of <code>get_locked_kernel("drbh/img2gray")</code> in the project will now use the version specified in <code>kernels.lock</code>.</p>
+<h3> <a href="#pre-downloading-locked-kernels"> <span></span> </a> <span> Pre-downloading Locked Kernels </span>
+</h3>
+<p>The <code>get_locked_kernel</code> function will download the kernel when it is not available in the local Hub cache. This is not ideal for applications where you do not want to download binaries at runtime. For example, when you are building a Docker image for an application, you usually want the kernels to be stored in the image along with the application. This can be done in two simple steps.</p>
+<p>First, use the <code>load_kernel</code> function in place of <code>get_locked_kernel</code>:</p>
+<pre><code><span>from</span> kernels <span>import</span> get_kernel
+img2gray_lib = load_kernel(<span>"drbh/img2gray"</span>)
+</code></pre>
+<p>As the name suggests, this function will only load a kernel, it will <em>never</em> try to download the kernel from the Hub. <code>load_kernel</code> will raise an exception if the kernel is not locally available. So, how do you make the kernels locally available? The <code>kernels</code> utility has you covered! Running <code>kernels download .</code> will download the kernels that are specified in <code>kernels.lock</code>. So e.g. in a Docker container you could add a step:</p>
+<pre><code><span>RUN</span><span> kernels download /path/to/your/project</span>
+</code></pre>
+<p>and the kernels will get baked into your Docker image.</p>
+<blockquote>
+<p>Kernels use the standard Hugging Face cache, so all <a href="https://huggingface.co/docs/huggingface_hub/en/package_reference/environment_variables#hfhome">HF_HOME</a> caching rules apply.</p>
+</blockquote>
+<h3> <a href="#creating-legacy-python-wheels"> <span></span> </a> <span> Creating Legacy Python Wheels </span>
+</h3>
+<p>We strongly recommend downloading kernels from the Hub using the <code>kernels</code> package. This has many benefits:</p>
+<ul>
+<li><code>kernels</code> supports loading multiple kernel versions of the same kernel in a Python process.</li>
+<li><code>kernels</code> will automatically download a version of a kernel that is compatible with the CUDA and Torch versions of your environment.</li>
+<li>You will get all the benefits of the Hub: analytics, issue tracking, pull requests, forks, etc.</li>
+<li>The Hub and <code>kernel-builder</code> provide provenance and reproducibility, a user can see a kernel's source history and rebuild it in the same build environment for verification.</li>
+</ul>
+<p>That said, some projects may require deployment of kernels as wheels. The <code>kernels</code> utility provides a simple solution to this. You can convert any Hub kernel into a set of wheels with a single command:</p>
+<pre><code>$ kernels to-wheel drbh/img2grey 1.1.2 img2grey-1.1.2+torch27cu128cxx11-cp39-abi3-manylinux_2_28_x86_64.whl img2grey-1.1.2+torch26cu124cxx11-cp39-abi3-manylinux_2_28_x86_64.whl img2grey-1.1.2+torch26cu126cxx11-cp39-abi3-manylinux_2_28_x86_64.whl img2grey-1.1.2+torch27cu126cxx11-cp39-abi3-manylinux_2_28_x86_64.whl img2grey-1.1.2+torch26cu126cxx98-cp39-abi3-manylinux_2_28_x86_64.whl img2grey-1.1.2+torch27cu128cxx11-cp39-abi3-manylinux_2_28_aarch64.whl img2grey-1.1.2+torch26cu126cxx98-cp39-abi3-manylinux_2_28_aarch64.whl img2grey-1.1.2+torch27cu126cxx11-cp39-abi3-manylinux_2_28_aarch64.whl img2grey-1.1.2+torch26cu126cxx11-cp39-abi3-manylinux_2_28_aarch64.whl img2grey-1.1.2+torch26cu118cxx98-cp39-abi3-manylinux_2_28_x86_64.whl img2grey-1.1.2+torch26cu124cxx98-cp39-abi3-manylinux_2_28_x86_64.whl img2grey-1.1.2+torch26cu118cxx11-cp39-abi3-manylinux_2_28_x86_64.whl img2grey-1.1.2+torch27cu118cxx11-cp39-abi3-manylinux_2_28_x86_64.whl
+</code></pre>
+<p>Each of these wheels will behave like any other Python wheel: the kernel can be imported using a simple <code>import img2grey</code>.</p>
+<h2> <a href="#conclusion"> <span></span> </a> <span> Conclusion </span>
+</h2>
+<p>This guide has walked you through the entire lifecycle of a production-ready CUDA kernel. You’ve seen how to build a custom kernel from the ground up, register it as a native PyTorch operator, and share it with the community on the Hugging Face Hub. We also explored best practices for versioning, dependency management, and deployment, ensuring your work is both powerful and easy to maintain.</p>
+<p>We believe that open and collaborative development is the key to innovation. Now that you have the tools and knowledge to build your own high-performance kernels, we're excited to see what you create! We warmly invite you to share your work, ask questions, and start discussions on the <a href="https://huggingface.co/kernels-community">Kernel Hub</a> or in our <a href="https://github.com/huggingface/kernel-builder">kernel-builder GitHub repository</a> and <a href="https://github.com/huggingface/kernels">kernels GitHub repository</a>. Whether you’re a seasoned developer or just starting out, the community is here to support you.</p>
+<p>Let's get building! </p>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

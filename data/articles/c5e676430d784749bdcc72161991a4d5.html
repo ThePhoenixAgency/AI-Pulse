@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Six frameworks. Four storage backends. One import. Zero dependencies.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Six frameworks. Four storage backends. One import. Zero dependencies.</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/22/2026 5:31:58 AM | <a href="https://dev.to/shayanhussainsb/six-frameworks-four-storage-backends-one-import-zero-dependencies-2k1o" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fomdah1yh88es90k4iotq.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fomdah1yh88es90k4iotq.png" alt="Cover image for Six frameworks. Four storage backends. One import. Zero dependencies."> </a> <div> <p><a href="https://dev.to/shayanhussainsb"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3733965%2Feaca42d7-ed4a-4599-a03c-9df22103c50e.jpg" alt="Shayan M Hussain"></a> </p> </div> </header> <div> <div>
+<pre><code><span>app</span><span>.</span><span>use</span><span>(</span><span>hitlimit</span><span>({</span> <span>limit</span><span>:</span> <span>100</span><span>,</span> <span>window</span><span>:</span> <span>'</span><span>1m</span><span>'</span> <span>}))</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Same API everywhere. Express, Fastify, Hono, NestJS, Bun.serve, Elysia. No adapters to install. No framework-specific config. Just one package and you are done.</p> <h2> <a name="every-framework-same-code" href="#every-framework-same-code"> </a> Every Framework, Same Code
+</h2> <div>
+<pre><code><span>// Express</span>
+<span>import</span> <span>{</span> <span>hitlimit</span> <span>}</span> <span>from</span> <span>'</span><span>@joint-ops/hitlimit</span><span>'</span>
+<span>app</span><span>.</span><span>use</span><span>(</span><span>hitlimit</span><span>({</span> <span>limit</span><span>:</span> <span>100</span><span>,</span> <span>window</span><span>:</span> <span>'</span><span>1m</span><span>'</span> <span>}))</span> <span>// Fastify</span>
+<span>import</span> <span>{</span> <span>hitlimit</span> <span>}</span> <span>from</span> <span>'</span><span>@joint-ops/hitlimit/fastify</span><span>'</span>
+<span>await</span> <span>app</span><span>.</span><span>register</span><span>(</span><span>hitlimit</span><span>,</span> <span>{</span> <span>limit</span><span>:</span> <span>100</span><span>,</span> <span>window</span><span>:</span> <span>'</span><span>1m</span><span>'</span> <span>})</span> <span>// Hono</span>
+<span>import</span> <span>{</span> <span>hitlimit</span> <span>}</span> <span>from</span> <span>'</span><span>@joint-ops/hitlimit/hono</span><span>'</span>
+<span>app</span><span>.</span><span>use</span><span>(</span><span>hitlimit</span><span>({</span> <span>limit</span><span>:</span> <span>100</span><span>,</span> <span>window</span><span>:</span> <span>'</span><span>1m</span><span>'</span> <span>}))</span> <span>// NestJS</span>
+<span>import</span> <span>{</span> <span>HitLimitModule</span><span>,</span> <span>HitLimitGuard</span> <span>}</span> <span>from</span> <span>'</span><span>@joint-ops/hitlimit/nest</span><span>'</span>
+<span>@</span><span>Module</span><span>({</span> <span>imports</span><span>:</span> <span>[</span><span>HitLimitModule</span><span>.</span><span>register</span><span>({</span> <span>limit</span><span>:</span> <span>100</span><span>,</span> <span>window</span><span>:</span> <span>'</span><span>1m</span><span>'</span> <span>})],</span> <span>providers</span><span>:</span> <span>[{</span> <span>provide</span><span>:</span> <span>APP_GUARD</span><span>,</span> <span>useClass</span><span>:</span> <span>HitLimitGuard</span> <span>}]</span>
+<span>})</span>
+<span>export</span> <span>class</span> <span>AppModule</span> <span>{}</span> <span>// Bun.serve</span>
+<span>import</span> <span>{</span> <span>hitlimit</span> <span>}</span> <span>from</span> <span>'</span><span>@joint-ops/hitlimit-bun</span><span>'</span>
+<span>Bun</span><span>.</span><span>serve</span><span>({</span> <span>fetch</span><span>:</span> <span>hitlimit</span><span>({</span> <span>limit</span><span>:</span> <span>100</span><span>,</span> <span>window</span><span>:</span> <span>'</span><span>1m</span><span>'</span> <span>},</span> <span>handler</span><span>)</span> <span>})</span> <span>// Elysia</span>
+<span>import</span> <span>{</span> <span>hitlimit</span> <span>}</span> <span>from</span> <span>'</span><span>@joint-ops/hitlimit-bun/elysia</span><span>'</span>
+<span>new</span> <span>Elysia</span><span>().</span><span>use</span><span>(</span><span>hitlimit</span><span>({</span> <span>limit</span><span>:</span> <span>100</span><span>,</span> <span>window</span><span>:</span> <span>'</span><span>1m</span><span>'</span> <span>})).</span><span>listen</span><span>(</span><span>3000</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Switch frameworks tomorrow. Your rate limiting code stays the same.</p> <h2> <a name="4-storage-backends-built-in" href="#4-storage-backends-built-in"> </a> 4 Storage Backends Built In
+</h2> <p>No extra packages. No separate installs. Pick the right store for your deployment and swap it in one line.<br>
+</p> <div>
+<pre><code><span>// Memory (default) - fastest, no setup</span>
+<span>app</span><span>.</span><span>use</span><span>(</span><span>hitlimit</span><span>({</span> <span>limit</span><span>:</span> <span>100</span><span>,</span> <span>window</span><span>:</span> <span>'</span><span>1m</span><span>'</span> <span>}))</span> <span>// SQLite - survives restarts</span>
+<span>app</span><span>.</span><span>use</span><span>(</span><span>hitlimit</span><span>({</span> <span>store</span><span>:</span> <span>sqliteStore</span><span>({</span> <span>path</span><span>:</span> <span>'</span><span>./limits.db</span><span>'</span> <span>}),</span> <span>...</span> <span>}))</span> <span>// Redis - distributed across instances</span>
+<span>app</span><span>.</span><span>use</span><span>(</span><span>hitlimit</span><span>({</span> <span>store</span><span>:</span> <span>redisStore</span><span>({</span> <span>url</span><span>:</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>REDIS_URL</span> <span>}),</span> <span>...</span> <span>}))</span> <span>// Postgres - use your existing database</span>
+<span>app</span><span>.</span><span>use</span><span>(</span><span>hitlimit</span><span>({</span> <span>store</span><span>:</span> <span>postgresStore</span><span>({</span> <span>pool</span> <span>}),</span> <span>...</span> <span>}))</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Start with memory on day one. Move to Postgres or Redis when you scale. Nothing else changes.</p> <h2> <a name="new-in-v120-postgresql-store" href="#new-in-v120-postgresql-store"> </a> New in v1.2.0: PostgreSQL Store
+</h2> <p>Most teams already have Postgres running. Why add Redis just for rate limiting?<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>postgresStore</span> <span>}</span> <span>from</span> <span>'</span><span>@joint-ops/hitlimit/stores/postgres</span><span>'</span>
+<span>import</span> <span>{</span> <span>Pool</span> <span>}</span> <span>from</span> <span>'</span><span>pg</span><span>'</span> <span>const</span> <span>pool</span> <span>=</span> <span>new</span> <span>Pool</span><span>({</span> <span>connectionString</span><span>:</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>DATABASE_URL</span> <span>})</span> <span>app</span><span>.</span><span>use</span><span>(</span><span>hitlimit</span><span>({</span> <span>limit</span><span>:</span> <span>100</span><span>,</span> <span>window</span><span>:</span> <span>'</span><span>1m</span><span>'</span><span>,</span> <span>store</span><span>:</span> <span>postgresStore</span><span>({</span> <span>pool</span> <span>})</span>
+<span>}))</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>One atomic query per request. Zero race conditions. Tables created automatically on first run. Named prepared statements for 30 to 40 percent lower latency. No new infrastructure to manage.</p> <h2> <a name="fast" href="#fast"> </a> Fast
+</h2> <div>
+<pre><code>Node.js (10K unique IPs)
+Memory 3.16M ops/s 316ns
+SQLite 352K ops/s 2.8us
+Redis 6.7K ops/s 149us
+Postgres 3.0K ops/s 336us Bun (10K unique IPs)
+Memory 8.32M ops/s 120ns
+bun:sqlite 325K ops/s 3.1us
+Redis 6.7K ops/s 148us
+Postgres 3.7K ops/s 273us
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Peak: <strong>12.38M ops/s</strong> on Bun. <strong>4.83M ops/s</strong> on Node.js.</p> <p>All benchmarks are <a href="https://github.com/JointOps/hitlimit-monorepo/tree/main/benchmarks" target="_blank">open source</a>. Clone the repo and run them on your hardware.</p> <h2> <a name="more-than-a-counter" href="#more-than-a-counter"> </a> More Than a Counter
+</h2> <p><strong>Tiered limits</strong> for free, pro and enterprise plans.<br>
+<strong>Auto ban</strong> repeat offenders after N violations.<br>
+<strong>Group limits</strong> for per-team or per-org quotas.<br>
+<strong>Skip rules</strong> for health checks, admins, internal routes.<br>
+<strong>Human readable windows</strong> like '15m', '1h', '1d' instead of milliseconds.</p> <p>All built in. All zero dependencies.</p> <h2> <a name="get-started" href="#get-started"> </a> Get Started
+</h2> <div>
+<pre><code>npm <span>install</span> @joint-ops/hitlimit <span># Node.js</span>
+bun add @joint-ops/hitlimit-bun <span># Bun</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><a href="https://hitlimit.jointops.dev/" target="_blank">Docs</a> | <a href="https://www.npmjs.com/package/@joint-ops/hitlimit" target="_blank">npm</a> | <a href="https://github.com/JointOps/hitlimit-monorepo/releases/tag/v1.2.0" target="_blank">Release notes</a></p> <p>If it saves you time give it a star.</p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
