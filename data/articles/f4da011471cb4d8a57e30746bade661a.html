@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mesa 25.3.6 released as the last bug fix for this driver series</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Mesa 25.3.6 released as the last bug fix for this driver series</h1>
+  <div class="metadata">
+    Source: GamingOnLinux | Date: 2/23/2026 10:41:00 AM | <a href="https://www.gamingonlinux.com/2026/02/mesa-25-3-6-released-as-the-last-bug-fix-for-this-driver-series/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Mesa 25.3.6 has released and is the last planned bug fix for this driver series, with the developers now moving on to focus on <a href="https://www.gamingonlinux.com/2026/02/mesa-26-0-is-out-bringing-ray-tracing-performance-improvements-for-amd-radv/" target="_blank">Mesa 26</a> and beyond.</p>
+<p>Bug fixes noted for this release:</p>
+<blockquote>
+<ul>
+<li>[radeonsi] Regression: GL_FEEDBACK returns 0.0 for X-coordinates (Legacy GL)</li>
+<li>venus crashes in vn_CreateDevice() with latest mesa/main [bisected]</li>
+<li>Question: Does building Lavapipe on Windows require building “microsoft-experimental” as well?</li>
+<li>[ANV][DG2][Regression]: Flickering water “boxes” in Civilization VII</li>
+<li>mesa: deleting a buffer bound only to an index also undoes the associated general target binding</li>
+<li>[ANV][PTL] R.E.P.O. GPU Hang</li>
+</ul>
+</blockquote>
+<p><a href="https://uploads.golmedia.net/uploads/articles/article_media/2645326611771843222gol2.jpg"><img src="https://uploads.golmedia.net/uploads/articles/article_media/2645326611771843222gol2.jpg"></a><br><em>Pictured - R.E.P.O</em></p>
+<p>If you want to continue receiving support, you'll need to upgrade to Mesa 26 - the best time being when Mesa 26.0.1 is released on February 25th. Here's the current release schedule for future Mesa drivers:</p>
+<div>
+<table>
+<thead>
+<tr>
+<td>
+<p><strong>Branch</strong></p>
+</td>
+<td>
+<p><strong>Expected date</strong></p>
+</td>
+<td>
+<p><strong>Release</strong></p>
+</td>
+<td>
+<p><strong>Notes</strong></p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<p><strong>26.0</strong></p>
+</td>
+<td>
+<p>2026-02-25</p>
+</td>
+<td>
+<p>26.0.1</p>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-03-11</p>
+</td>
+<td>
+<p>26.0.2</p>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-03-25</p>
+</td>
+<td>
+<p>26.0.3</p>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-04-08</p>
+</td>
+<td>
+<p>26.0.4</p>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-04-22</p>
+</td>
+<td>
+<p>26.0.5</p>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-05-06</p>
+</td>
+<td>
+<p>26.0.6</p>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-05-20</p>
+</td>
+<td>
+<p>26.0.7</p>
+</td>
+<td>
+<p>Last planned 26.0 release</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>26.1</strong></p>
+</td>
+<td>
+<p>2026-04-15</p>
+</td>
+<td>
+<p>26.1.0-rc1</p>
+</td>
+<td>
+<p>26.1 branchpoint</p>
+</td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-04-22</p>
+</td>
+<td>
+<p>26.1.0-rc2</p>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-04-29</p>
+</td>
+<td>
+<p>26.1.0-rc3</p>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-05-06</p>
+</td>
+<td>
+<p>26.1.0-rc4</p>
+</td>
+<td>
+<p>or 26.1.0 final</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div> <p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span> </p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,25 +28,7 @@
     Source: Journal du Hacker | Date: 2/22/2026 2:49:14 AM | <a href="https://blog.kulakowski.fr/post/pourquoi-jai-bascule-de-portainer-vers-arcane-pour-gerer-les-conteneurs-sur-le-nas" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <p>Si tu me lis un peu, tu sais que j’ai une attitude assez pragmatique vis-à-vis de mes outils. Je n’aime pas changer pour changer, mais je n’hésite pas non plus à bouger quand une solution stagne trop ou prend une direction qui ne me plaît pas.</p> <p>Récemment, j’ai d’ailleurs confirmé mon choix de <a href="https://blog.kulakowski.fr/post/pourquoi-je-suis-reste-sur-n8n">rester sous n8n</a>, car c’est la solution qui me convenait le mieux finalement.</p> <h2>Mon usage de Portainer</h2> <p>Depuis un moment, j’utilise <strong><a href="https://www.portainer.io/">Portainer</a></strong> pour gérer mes containers Docker sur mon NAS. À l’origine, c’était la solution que proposait <a href="https://www.openmediavault.org/">OpenMediaVault</a> (OMV) par défaut, avant qu’OMV (via <a href="https://wiki.omv-extras.org/">omv-extras</a>) n’<a href="https://wiki.omv-extras.org/doku.php?id=omv8:omv8_plugins:docker_compose">intègre sa propre gestion des containers</a> (plus simple, mais aussi plus limitée) puis <a href="https://docs.openmediavault.org/en/stable/administration/services/k8s.html">passe à Kubernetes</a>. J’étais resté sur Portainer pour deux raisons simples :</p> <ul>
-<li>C’était plus complet que l’intégration d’OMV.</li> <li>Et surtout, <strong>complètement indépendant d’OMV</strong> : même si OMV plante après une mise à jour, j’ai toujours accès à Portainer pour réparer ou redémarrer des choses.</li>
-</ul> <p>Portainer est clairement une bonne solution, assez solide, pensée pour une utilisation un peu entreprise. Mais avec le temps, pour mon usage perso, j’avais envie d’un truc un peu plus vivant, un peu plus fun à utiliser, sans y perdre en rigueur.</p> <h2>La découverte d’Arcane</h2> <p>C’est en lisant un <a href="https://www.cachem.fr/dockhand-arcane-portainer/">article de Cachem</a> que je suis tombé sur <strong>Arcane</strong>.</p> <div>
-<figure><img src="https://i0.wp.com/blog.kulakowski.fr/wp-content/uploads/2026/02/arcane_login.png?resize=600%2C352&amp;ssl=1" alt="Arcane - Login"><figcaption>L’écran de login d’Arcane</figcaption></figure>
-</div> <p>Pour faire simple, Arcane fait globalement ce que Portainer fait. Mais il ajoute :</p> <ul>
-<li><strong>la mise à jour automatique des containers</strong> (alors que Portainer te dit juste “<em>y’a une mise à jour dispo</em>”),</li> <li>la possibilité de <strong>définir des logo pour tes stacks</strong> (appelée ici projets) et containers,</li> <li>un <strong>scanner de vulnérabilités intégré basé sur Trivy</strong> (arrivé récemment),</li> <li>une interface mobile fluide,</li> <li>et une compatibilité avec OIDC pour l’authentification.</li>
-</ul> <div>
-<figure><img src="https://i0.wp.com/blog.kulakowski.fr/wp-content/uploads/2026/02/arcane_dashboard.png?resize=600%2C352&amp;ssl=1" alt="Arcane - Dashboard"><figcaption>Le dashboard d’Arcane</figcaption></figure>
-</div> <h2>Ce qui m’a vraiment plu</h2> <h3>Mise à jour automatique</h3> <p>Pour moi, l’automatisation est un vrai levier ! Sur Portainer, si une image a une nouvelle version, je suis informé, mais il faut que je clique pour mettre à jour. Sur Arcane, on peut aller plus loin en <a href="https://getarcane.app/docs/guides/updates">automatisant ça proprement</a>. Ça me permet de virer le container <a href="https://blog.kulakowski.fr/post/watchtower-pour-la-mise-a-jour-de-mes-containers">WatchTower </a>qui n’était <a href="https://github.com/containrrr/watchtower/discussions/2135">plus maintenu</a> (j’utilisais <a href="https://github.com/nicholas-fedor/watchtower">le fork</a>).</p> <div>
-<figure><img src="https://i0.wp.com/blog.kulakowski.fr/wp-content/uploads/2026/02/arcane_projets.png?resize=600%2C352&amp;ssl=1" alt="Arcane - Ecran projets"><figcaption>Les projets (stacks) sous Arcane</figcaption></figure>
-</div> <p>Sur une stack qui tourne 24/7 sur mon réseau perso, où je suis prêt à accepter un peu d’instabilité contre une innovation continue, c’est un réel confort.</p> <div>
-<figure><img src="https://i0.wp.com/blog.kulakowski.fr/wp-content/uploads/2026/02/arcane_containers.png?resize=600%2C352&amp;ssl=1" alt="Arcane - Liste des containers"><figcaption>Liste des containers avec l’indicateur de mise à jour</figcaption></figure>
-</div> <h3>Le scanner de vulnérabilités</h3> <p>Peu d’outils personnels ont ce genre de fonctionnalité. Arcane inclut un <strong>scanner basé sur <a href="https://trivy.dev/">Trivy</a></strong> pour passer en revue les containers et signaler les vulnérabilités. Pas un SOC complet, mais déjà super utile pour avoir un œil rapide sur l’état de sécurité de ce que je déploie (<em>bon OK, la capture est alarmante…</em>).</p> <div>
-<figure><img src="https://i0.wp.com/blog.kulakowski.fr/wp-content/uploads/2026/02/arcane_securite.png?resize=600%2C352&amp;ssl=1" alt="Arcane - Securité"><figcaption>L’écran du résultat du scanner de vulnérabilité sous Arcane</figcaption></figure>
-</div> <h3>Authent local + OIDC</h3> <p>Arcane supporte l’authentification OIDC (ce que j’utilise avec <a href="https://www.authelia.com/">Authelia</a>). Mais il conserve un <strong>mode d’authentification local</strong>.</p> <div>
-<figure><img src="https://i0.wp.com/blog.kulakowski.fr/wp-content/uploads/2026/02/arcane_containeer_detail.png?resize=600%2C352&amp;ssl=1" alt="Arcane - Détail d'un container"><figcaption>Le détail d’un container sous Arcane.</figcaption></figure>
-</div> <p>Ce qui veut dire qu’au cas où mon Auth OIDC (Authelia) plante, je peux toujours me connecter à Arcane. Aucune dépendance circulaire !</p> <h3>Interface mobile</h3> <p>L’interface mobile d’Arcane est fluide et réellement pratique. Depuis mon téléphone, en VPN sur mon réseau perso, je peux naviguer, vérifier un container, déclencher une action. Ça peut sembler anecdotique, mais c’est vraiment agréable au quotidien.</p> <h2>Portainer n’est pas mauvais – Arcane est juste plus adapté à mon usage</h2> <p>Portainer reste une solution <strong>fiable et mature</strong>, et je l’ai réellement appréciée pendant des années.</p> <p>Mais Arcane donne une sensation différente :</p> <ul>
-<li>moins “outil d’entreprise” au look figé,</li> <li>plus orienté <em>pratique et usage perso</em>,</li> <li>avec des fonctions qui me simplifient la vie sans complexifier mon environnement.</li>
-</ul> </div></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

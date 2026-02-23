@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Linux 7.0-rc1 Released With Many New Features:</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Linux 7.0-rc1 Released With Many New Features:</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/22/2026 10:16:00 PM | <a href="https://www.phoronix.com/news/Linux-7.0-rc1-Released" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div>
+<p><img alt="LINUX KERNEL" src="https://www.phoronix.com/assets/categories/linuxkernel.webp"></p><p>
+Linus Torvalds just capped off the <a href="https://www.phoronix.com/search/Linux+7.0">Linux 7.0</a> merge window with the release of Linux 7.0-rc1. While the big version bump is coincidental with Linus Torvalds liking to bump it after x.19, Linux 7.0 is quite heavy on new features.
+</p><p>
+Linux 7.0 is packing a lot of changes and new features. Making this kernel all the more interesting beyond the changes and big version number is that it's also expected to be the default kernel for the likes of Ubuntu 26.04 LTS and Fedora 44 for making this an extra special release. Linux 7.0 brings more enablement work for Intel Nova Lake and Diamond Rapids processors, more AMD Zen 6 enablement too, and a lot of new hardware driver support throughout -- including for non-AMD/Intel platforms like more Qualcomm Snapdragon X2 upstreaming work. On the graphics side is also new AMD graphics hardware support for upcoming products.
+</p><p>
+Linux 7.0 also brings a number of file-system improvements, Apple USB Type-C PHY support, various performance optimizations, continued laptop driver enhancements, multi-lane SPI, Octal DTR support for SPI NAND, sensor monitoring on more ASUS motherboards, non-blocking timestamps, standardized generic I/O error reporting, and officially concluding the Rust experiment in acknowledging that programming language support is here to stay.
+</p><p>
+On the performance side there are some <a href="https://www.phoronix.com/review/linux-70-amd-epyc-turin">very nice performance gains for PostgreSQL on AMD EPYC</a>, better sequential read performance for exFAT, various F2FS file-system enhancements, memory management optimizations, EXT4 improvements for concurrent direct I/O writes, Intel TSX auto mode by default, scheduler performance and scalability work, and large pages is back for Nouveau to help NVK performance.
+</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=linux_70_rc1" alt="Linux 7.0-rc1 Git tag"></p>
+<p>Linux 7.0-rc1 can be cloned from <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f">git.kernel.org</a>.
+</p><p>
+In the next day or two I'll have up my usual feature overview to highlight all of the interesting Linux 7.0 kernel changes -- which I've now covered on individual changes in dozens of articles in recent weeks.
+</p><p>
+Along with that Linux 7.0 feature list to come, onward to more Linux 7.0 kernel performance benchmarking.</p><p><em>Update:</em> Linus is now out with the <a href="https://lore.kernel.org/lkml/CAHk-=wiiRA_XxoF96Q_1n4BadBGJLRkHarHG92u3aTc+1ZMeGQ@mail.gmail.com/T/#u">mailing list announcement</a> for Linux 7.0-rc1 where he remarked:</p><blockquote>"You all know the drill by now: two weeks have passed, and the kernel merge window is closed. We have a new major number purely because I'm easily confused and not good with big numbers."</blockquote></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - Belfio/sergio: AI teammate that turns Trello cards into pull requests using Claude</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - Belfio/sergio: AI teammate that turns Trello cards into pull requests using Claude</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/22/2026 1:59:24 PM | <a href="https://github.com/Belfio/sergio" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><pre><code> ___ ____ ____ ___ ____ ___ .-""""""-. / __)( ___)( _ \ / __)(_ _)/ _ \ .' '. \__ \ )__) ) /( (_-. _)(_( (_) ) / O O \ (___/(____)(__\_)\___/(____)\___/ : \__/ : | ________ | _ ___ : / \ : /_\ |_ _| \ | ~~~~~~~~ | / / _ \ | | '.\ /.' /_/ \_\|___| '-......-'
+</code></pre></div>
+<pre><code>🏻 Sergio AI
+Trello AI teammate that reviews Trello cards against product context and your codebase, helps you create a development plan, and opens draft PRs on GitHub.
+Developers already have AI PR reviews. Product managers should have the same support with Sergio.
+Local Install (macOS) · Starting from Scratch · Getting Started (Linux) · How It Works · Configuration · Security · Roadmap</code></pre>
+<div><h2>Support</h2><a href="#support"></a></div>
+<p>If you would like me to help you with the installation, please contact me on twitter @belfio or directly pay here: <a href="https://buy.stripe.com/14AeVddVr0nA0xF5Oi67S00">stripe</a></p>
+<div><h2>Intro</h2><a href="#intro"></a></div>
+<p>The Sergio script connects to GitHub, Claude, and Trello. It creates a new <strong>Trello board</strong>, monitors cards in specific lists, and completes two main tasks:</p> <p>All triggered by moving Trello cards. You stay in the loop at every step.</p>
+<div><h3>How</h3><a href="#how"></a></div> <p>It runs on a single VM, polls your board every 60 seconds, and uses sandboxed Claude CLI sessions to do the actual work. No external SaaS, no vendor lock-in, fully open source.</p>
+<div><h3>Why</h3><a href="#why"></a></div>
+<p>You have a team where a Product Manager designs and writes features with limited knowledge about the codebase. The PM can ask Sergio to review the feature and suggest improvements and explain the implementation details to the Product Manager, until ready and clear for the Development team. The Development team can at this point ask Sergio to create a new Draft PR.</p>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<p>Sergio uses a 7-list Trello board as its interface. Cards flow left-to-right through two pipelines.</p>
+<p><strong>How triggering works:</strong> Sergio polls the <strong> Revision</strong> and <strong> Development</strong> lists every 60 seconds (configurable via </p><pre><code>pollIntervalMs</code></pre>). Drop a card in either list and Sergio picks it up on the next poll — no webhooks, no manual triggers. The <strong> Reviewing</strong> and <strong> Developing</strong> lists are processing states managed by Sergio; you never need to move cards there yourself.<p></p>
+<p><a target="_blank" href="/Belfio/sergio/blob/main/img/board.png"><img src="/Belfio/sergio/raw/main/img/board.png" alt="Sergio Board"></a></p>
+<div><h3>Planning pipeline</h3><a href="#planning-pipeline"></a></div>
+<section> <div> <div> <pre>flowchart LR A[" TODO"] --&gt; B[" Revision"] B --&gt; C[" Reviewing"] C --&gt; D[" Reviewed"] D -- "Add feedback\n&amp; move back" --&gt; B style A fill:#f5f5f5,stroke:#999,color:#333 style B fill:#fff3cd,stroke:#e6a800,color:#333 style C fill:#cce5ff,stroke:#0066cc,color:#333 style D fill:#d4edda,stroke:#28a745,color:#333
+</pre> </div> </div> <span> <span> <span>Loading</span>
+</span> </span>
+</section> <table>
+<thead>
+<tr>
+<th>List</th>
+<th>Who</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong> TODO</strong></td>
+<td>You</td>
+<td>Write a card describing the task</td>
+</tr>
+<tr>
+<td><strong> Revision</strong></td>
+<td>Sergio</td>
+<td>Reads card + codebase, decides how to respond</td>
+</tr>
+<tr>
+<td><strong> Reviewing</strong></td>
+<td>Sergio</td>
+<td>Processing state while Claude is working</td>
+</tr>
+<tr>
+<td><strong> Reviewed</strong></td>
+<td>You</td>
+<td>Review Sergio's response and decide next step</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sergio responds with one of three outcomes:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>When</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implementation plan</td>
+<td>Card is clear and codebase is understood</td>
+<td>Detailed steps referencing actual files and functions</td>
+</tr>
+<tr>
+<td>Clarifying questions</td>
+<td>Card is ambiguous or missing info</td>
+<td>"Should sessions auto-extend or have a hard timeout?"</td>
+</tr>
+<tr>
+<td>Revision requests</td>
+<td>Card has contradictions or infeasible requirements</td>
+<td>"The card asks for JWT but the codebase uses session tokens"</td>
+</tr>
+</tbody>
+</table>
+<p>The prompt logic lives in </p><pre><code>prompts/revision.md</code></pre>. Sergio always posts its response as a markdown comment on the card.<p></p>
+<p><strong>Feedback loop:</strong> If the response isn't right, add a comment explaining what to change and move the card back to Revision. Sergio re-reads the full card — including all previous comments and your feedback — and responds accordingly.</p>
+<blockquote>
+<p><strong>Demo:</strong> A card is moved to Revision. Sergio picks it up on the next 60s poll, moves it to Reviewing while Claude works, then posts its response as a comment and moves the card to Reviewed.</p>
+</blockquote>
+<p><a target="_blank" href="/Belfio/sergio/blob/main/img/prd-revision.gif"><img src="/Belfio/sergio/raw/main/img/prd-revision.gif" alt="Sergio reviewing a card"></a></p>
+<div><h3>Development pipeline</h3><a href="#development-pipeline"></a></div> <table>
+<thead>
+<tr>
+<th>List</th>
+<th>Who</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong> Development</strong></td>
+<td>You</td>
+<td>Move an approved card here to trigger development</td>
+</tr>
+<tr>
+<td><strong> Developing</strong></td>
+<td>Sergio</td>
+<td>Creates worktree, writes code, runs tests</td>
+</tr>
+<tr>
+<td><strong> Ready for Review</strong></td>
+<td>You</td>
+<td>PR created — ready for code review</td>
+</tr>
+</tbody>
+</table>
+<p>The bot polls both pipelines concurrently. Planning takes minutes. Development creates a git worktree, runs your dev environment, executes tests, and pushes to GitHub.</p>
+<p><strong>Commit authoring:</strong> Commits made by the development pipeline are authored as </p><pre><code>Sergio AI &lt;sergio-ai@noreply&gt;</code></pre> (or your custom <pre><code>botName</code></pre>), so they're easy to distinguish from human commits in GitHub's history. Note that PR authorship is tied to the <pre><code>GITHUB_TOKEN</code></pre> owner and cannot be overridden without a dedicated bot account.<p></p>
+<blockquote> </blockquote>
+<p><a target="_blank" href="/Belfio/sergio/blob/main/img/pr-created.gif"><img src="/Belfio/sergio/raw/main/img/pr-created.gif" alt="Sergio creating a PR"></a></p>
+<div><h2>Starting from Scratch</h2><a href="#starting-from-scratch"></a></div>
+<p>Don't have a server yet? Here's how to go from zero to a running Sergio instance for under $5/month.
+Once you buy access to Hetzner as per step 1, you can ask your AI to read this repo and start the setup in your local machine.</p>
+<div><h3>1. Get a cheap VM</h3><a href="#1-get-a-cheap-vm"></a></div>
+<p>Go to <a href="https://www.hetzner.com/cloud/">Hetzner Cloud</a> (or any VPS provider — DigitalOcean, Vultr, etc.) and create a server:</p> <p>If you don't have an SSH key yet:</p>
+<div><pre><span><span>#</span> On your local machine</span>
+ssh-keygen -t ed25519 -C <span><span>"</span>your@email.com<span>"</span></span>
+cat <span>~</span>/.ssh/id_ed25519.pub
+<span><span>#</span> Copy this output and paste it into Hetzner's SSH key field</span></pre></div>
+<div><h3>2. SSH into your server</h3><a href="#2-ssh-into-your-server"></a></div>
+<p>Once the server is created, Hetzner shows you the IP address.</p>
+<div><pre>ssh root@YOUR_SERVER_IP</pre></div>
+<div><h3>3. Initial setup and install Claude</h3><a href="#3-initial-setup-and-install-claude"></a></div>
+<div><pre><span><span>#</span> Create the sergio user (don't run as root)</span>
+adduser sergio
+usermod -aG sudo sergio
+mkdir -p /home/sergio/.ssh
+cp <span>~</span>/.ssh/authorized_keys /home/sergio/.ssh/
+chown -R sergio:sergio /home/sergio/.ssh <span><span>#</span> Install Node.js and Git</span>
+curl -fsSL https://deb.nodesource.com/setup_lts.x <span>|</span> bash -
+apt-get install -y nodejs git <span><span>#</span> Install Claude CLI</span>
+npm install -g @anthropic-ai/claude-code <span><span>#</span> Switch to sergio user</span>
+su - sergio</pre></div>
+<p>From here you can run </p><pre><code>claude</code></pre> in the terminal and ask it to do the rest — clone this repo, run the setup wizard, and configure the systemd service. Or continue manually with the <a href="#getting-started-linux">Getting Started</a> steps below.<p></p>
+<div><h2>Getting Started (Linux)</h2><a href="#getting-started-linux"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div> <div><h3>Quick start</h3><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> Clone and install</span>
+git clone https://github.com/Belfio/sergio.git <span>~</span>/sergio
+<span>cd</span> <span>~</span>/sergio
+npm install <span><span>#</span> 2. Run the interactive setup wizard (have your API keys ready)</span>
+npm run setup <span><span>#</span> 3. Allow claudeuser to access the repo (it runs as a separate user)</span>
+chmod o+x <span>~</span>
+chmod -R o+rx <span>~</span>/sergio <span><span>#</span> 4. Start</span>
+npm start
+</pre></div>
+<div><h3>What the setup wizard does</h3><a href="#what-the-setup-wizard-does"></a></div>
+<ul>
+<li><strong>Checks system dependencies</strong> — Node, Git, <a href="https://docs.anthropic.com/en/docs/claude-code">Claude CLI</a>, <a href="https://cli.github.com/">GitHub CLI</a> — and offers to install any that are missing</li>
+<li><strong>Creates a <pre><code>claudeuser</code></pre></strong> system account for sandboxed Claude execution, plus a sudoers rule so <pre><code>sergio</code></pre> can run commands as <pre><code>claudeuser</code></pre> (see <a href="#security">Security</a>). You still need to grant <pre><code>claudeuser</code></pre> access to the repo directory — see step 3 above.</li>
+<li><strong>Collects your API keys</strong> — Anthropic, Trello, GitHub</li>
+<li><strong>Creates a Trello board</strong> with 7 pre-configured workflow lists (or connects to an existing board)</li>
+<li><strong>Generates config files</strong> — <pre><code>sergio.config.json</code></pre> and <pre><code>.env</code></pre></li>
+<li><strong>Copies prompt templates</strong> — editable Markdown files that control Claude's behavior</li>
+</ul> <div><pre>sudo cp sergio.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl <span>enable</span> sergio
+sudo systemctl start sergio <span><span>#</span> Verify</span>
+sudo journalctl -u sergio -f</pre></div>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Sergio uses two config files. Secrets live in </p><pre><code>.env</code></pre> (never committed). Everything else lives in <pre><code>sergio.config.json</code></pre> (generated by setup).<p></p>
+<div><h3>sergio.config.json</h3><a href="#sergioconfigjson"></a></div>
+<div><pre>{ <span>"botName"</span>: <span><span>"</span>Sergio<span>"</span></span>, <span><span>//</span> Name used in Trello lists, logs, branch prefixes</span> <span>"baseBranch"</span>: <span><span>"</span>main<span>"</span></span>, <span><span>//</span> Base branch for worktrees (default: "main")</span> <span>"baseRemote"</span>: <span><span>"</span>origin<span>"</span></span>, <span><span>//</span> Git remote name (default: "origin")</span> <span>"trello"</span>: { <span>"boardId"</span>: <span><span>"</span>...<span>"</span></span>, <span>"lists"</span>: { <span><span>/*</span> list IDs set automatically by setup <span>*/</span></span> } }, <span>"github"</span>: { <span>"repoUrl"</span>: <span><span>"</span>https://github.com/you/your-repo<span>"</span></span> }, <span>"repoDir"</span>: <span><span>"</span>~/your-repo<span>"</span></span>, <span><span>//</span> Path to the repo Sergio works on</span> <span>"worktreeBaseDir"</span>: <span><span>"</span>~/worktrees<span>"</span></span>, <span>"urlAllowList"</span>: [ <span><span>//</span> URLs Claude is allowed to access (see Security)</span> <span><span>"</span>https://github.com<span>"</span></span>, <span><span>"</span>https://docs.google.com<span>"</span></span>, <span><span>"</span>https://www.figma.com<span>"</span></span> ], <span>"prompts"</span>: { <span>"revisionTemplate"</span>: <span><span>"</span>prompts/revision.md<span>"</span></span>, <span>"developmentTemplate"</span>: <span><span>"</span>prompts/development.md<span>"</span></span> }, <span>"pipeline"</span>: { <span>"devCommand"</span>: <span><span>"</span><span>"</span></span>, <span><span>//</span> Dev server command (e.g. "npx sst dev") — empty = skip</span> <span>"devReadyPattern"</span>: <span><span>"</span><span>"</span></span>, <span><span>//</span> Text to watch for in dev server output</span> <span>"testCommands"</span>: [] <span><span>//</span> Test commands to run — empty array = skip</span> }, <span>"timeouts"</span>: { <span>"claudeDevMs"</span>: <span>1200000</span>, <span><span>//</span> 20 min — Claude dev session</span> <span>"devServerMs"</span>: <span>600000</span>, <span><span>//</span> 10 min — dev server startup</span> <span>"testMs"</span>: <span>600000</span> <span><span>//</span> 10 min — per test command</span> }, <span>"pollIntervalMs"</span>: <span>60000</span> <span><span>//</span> 1 min</span>
+}</pre></div>
+<blockquote>
+<p><strong>Works with any repo:</strong> The </p><pre><code>pipeline</code></pre> section is optional. If you don't need a dev server, leave <pre><code>devCommand</code></pre> empty. If you don't have tests yet, set <pre><code>testCommands</code></pre> to <pre><code>[]</code></pre>. Sergio will skip those stages and go straight to commit + PR.<p></p>
+</blockquote>
+<div><h3>.env</h3><a href="#env"></a></div>
+<div><pre><code>ANTHROPIC_API_KEY=sk-ant-...
+TRELLO_API_KEY=...
+TRELLO_TOKEN=...
+GITHUB_TOKEN=ghp_...
+</code></pre></div>
+<div><h3>Re-configuring</h3><a href="#re-configuring"></a></div>
+<p>Run </p><pre><code>npm run setup</code></pre> again at any time. If <pre><code>sergio.config.json</code></pre> exists, the wizard asks what to update — Trello board, GitHub, URL allow list, prompts, or MCP config — without recreating everything.<p></p>
+<hr>
+<div><h2>Customizing Prompts</h2><a href="#customizing-prompts"></a></div>
+<p>Sergio's Claude behavior is driven by two editable Markdown templates:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>prompts/revision.md</code></pre></td>
+<td>Planning — Claude reviews cards and responds with a plan, questions, or revision requests</td>
+</tr>
+<tr>
+<td><pre><code>prompts/development.md</code></pre></td>
+<td>Development — Claude writes code</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Placeholders</h3><a href="#placeholders"></a></div>
+<table>
+<thead>
+<tr>
+<th>Placeholder</th>
+<th>Replaced with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>{{botName}}</code></pre></td>
+<td>Bot name from config</td>
+</tr>
+<tr>
+<td><pre><code>{{cardContent}}</code></pre></td>
+<td>Full Trello card (description + comments + attachments)</td>
+</tr>
+<tr>
+<td><pre><code>{{urlPolicy}}</code></pre></td>
+<td>Auto-generated URL restriction policy, or empty string</td>
+</tr>
+<tr>
+<td><pre><code>{{baseBranch}}</code></pre></td>
+<td>Base branch name from config (default: <pre><code>main</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>{{baseRemote}}</code></pre></td>
+<td>Git remote name from config (default: <pre><code>origin</code></pre>)</td>
+</tr>
+</tbody>
+</table>
+<p>Add your coding standards, framework conventions, or architectural constraints directly to these templates. Claude will follow them on every task.</p>
+<hr>
+<div><h2>MCP Servers (Google Docs, Figma, etc.)</h2><a href="#mcp-servers-google-docs-figma-etc"></a></div>
+<p>Sergio can pass an MCP configuration to Claude CLI, so Claude can use external tools (for example Google Docs readers, design integrations, and other MCP-compatible services) while processing cards.</p>
+<p>Add an optional </p><pre><code>mcpServers</code></pre> block in <pre><code>sergio.config.json</code></pre>:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"google-docs"</span>: { <span>"command"</span>: <span><span>"</span>npx<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>-y<span>"</span></span>, <span><span>"</span>google-docs-mcp<span>"</span></span>], <span>"env"</span>: { <span>"GOOGLE_CLIENT_ID"</span>: <span><span>"</span>${GOOGLE_CLIENT_ID}<span>"</span></span>, <span>"GOOGLE_CLIENT_SECRET"</span>: <span><span>"</span>${GOOGLE_CLIENT_SECRET}<span>"</span></span> } } }
+}</pre></div>
+<p>At runtime, Sergio resolves </p><pre><code>${VAR}</code></pre> values from <pre><code>.env</code></pre>, writes a temporary MCP config, and launches Claude CLI with <pre><code>--mcp-config</code></pre>.<p></p>
+<div><h3>Google Docs setup</h3><a href="#google-docs-setup"></a></div>
+<ol>
+<li>Create OAuth credentials in Google Cloud (client ID + client secret).</li>
+<li>Put those values in <pre><code>.env</code></pre>:
+<ul>
+<li><pre><code>GOOGLE_CLIENT_ID=...</code></pre></li>
+<li><pre><code>GOOGLE_CLIENT_SECRET=...</code></pre></li>
+</ul>
+</li>
+<li>Configure a Google Docs MCP server in <pre><code>mcpServers</code></pre>.</li>
+<li>Complete the MCP server's one-time auth flow (it typically stores refresh tokens locally).</li>
+</ol>
+<div><h3>Figma options</h3><a href="#figma-options"></a></div>
+<ul>
+<li>Official desktop MCP integrations usually require a local Figma Desktop app endpoint and are not suitable for headless Linux servers.</li>
+<li>For server deployments, prefer MCP servers backed by the Figma REST API and access tokens.</li>
+</ul>
+<div><h3>Any other MCP server</h3><a href="#any-other-mcp-server"></a></div>
+<p>You can configure any compatible MCP server using either:</p>
+<ul>
+<li><pre><code>type: "stdio"</code></pre> with <pre><code>command</code></pre> + <pre><code>args</code></pre></li>
+<li><pre><code>type: "http"</code></pre> with <pre><code>url</code></pre></li>
+</ul>
+<p>Keep secrets in </p><pre><code>.env</code></pre> and reference them with <pre><code>${VAR}</code></pre> placeholders in <pre><code>mcpServers.env</code></pre>.<p></p>
+<blockquote>
+<p>Backward compatible: if </p><pre><code>mcpServers</code></pre> is omitted, Sergio behavior is unchanged.<p></p>
+</blockquote>
+<hr>
+<div><h2>Security</h2><a href="#security"></a></div>
+<div><h3>Two-user architecture</h3><a href="#two-user-architecture"></a></div>
+<p>Sergio uses two OS users to separate the bot process from the AI it controls:</p>
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>Role</th>
+<th>Has access to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>sergio</code></pre></td>
+<td>Runs the Node.js polling loop, owns the code, config, and <pre><code>.env</code></pre> secrets</td>
+<td>API keys, Trello tokens, sergio.config.json</td>
+</tr>
+<tr>
+<td><pre><code>claudeuser</code></pre></td>
+<td>Sandboxed account that runs Claude CLI sessions</td>
+<td>Only the repo/worktree it's working in</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why two users?</strong> Claude CLI runs with </p><pre><code>--dangerously-skip-permissions</code></pre>, which gives it full shell access. By running it as <pre><code>claudeuser</code></pre> — a separate OS account with no access to secrets or the Sergio process — a prompt injection or misbehaving session is contained to the worktree. It cannot read your API keys, kill the bot, or modify its own prompts.<p></p>
+<p>The </p><pre><code>sergio</code></pre> user spawns Claude sessions via <pre><code>sudo -u claudeuser</code></pre>, which requires a sudoers rule created automatically by <pre><code>npm run setup</code></pre>:<p></p>
+<div><pre><code># /etc/sudoers.d/sergio
+sergio ALL=(claudeuser) NOPASSWD:SETENV: ALL
+</code></pre></div>
+<p>This allows </p><pre><code>sergio</code></pre> to run commands as <pre><code>claudeuser</code></pre> without a password, while keeping the two accounts fully separate.<p></p>
+<p><strong>Filesystem access:</strong> </p><pre><code>claudeuser</code></pre> also needs read access to the repo directory so Claude CLI can explore the codebase. The setup wizard creates the user and sudoers rule, but you must grant directory access manually:<p></p>
+<div><pre><span><span>#</span> Let claudeuser traverse into the home dir (execute-only, can't list contents)</span>
+chmod o+x <span>~</span>
+<span><span>#</span> Let claudeuser read the repo</span>
+chmod -R o+rx <span>~</span>/sergio</pre></div>
+<p>Your </p><pre><code>.env</code></pre> file stays protected because its permissions are <pre><code>600</code></pre> (owner-only). Only the repo source code is exposed to <pre><code>claudeuser</code></pre>.<p></p>
+<div><h3>URL allow list</h3><a href="#url-allow-list"></a></div>
+<p>When </p><pre><code>urlAllowList</code></pre> is configured, Sergio enforces it at two levels:<p></p>
+<p><strong>Prompt-level (always active)</strong> — Every Claude session includes:</p>
+<div><pre><code>URL ACCESS POLICY: You are ONLY permitted to access these URLs:
+- https://docs.example.com
+Do NOT fetch, read, or access any URL not on this list.
+</code></pre></div>
+<p><strong>Network-level (optional)</strong> — For defense-in-depth:</p>
+<div><pre>sudo bash scripts/setup-firewall.sh</pre></div>
+<p>Configures </p><pre><code>iptables</code></pre> so <pre><code>claudeuser</code></pre> can only reach Trello, GitHub, and your allow-listed hosts. All other outbound traffic is dropped. Combined with the user separation above, this means Claude cannot exfiltrate secrets even if it gains shell access — it has no secrets to read and no network path to send them.<p></p>
+<hr>
+<div><h2>Logs</h2><a href="#logs"></a></div>
+<p>Sergio writes a human-readable log file at </p><pre><code>logs/sergio.log</code></pre> (configurable via <pre><code>logsDir</code></pre> in <pre><code>sergio.config.json</code></pre>). All console output — poll activity, card processing, errors — is appended to this file with timestamps and log levels.<p></p>
+<div><pre><code>2026-02-18T14:30:01.123Z [INFO] Sergio starting...
+2026-02-18T14:30:01.456Z [INFO] Board ID: abc123
+2026-02-18T14:31:01.789Z [INFO] Found 1 new card(s)
+2026-02-18T14:31:05.012Z [INFO] Processing card: Add login page (card123)
+2026-02-18T14:31:45.345Z [ERROR] Error processing card card456 (Broken task): ...
+</code></pre></div>
+<p>To follow logs in real time:</p>
+<div><pre>tail -f logs/sergio.log</pre></div>
+<p>When running as a systemd service, logs also go to journald (</p><pre><code>journalctl -u sergio -f</code></pre>). The log file is useful for sharing with teammates or reviewing past activity without SSH access.<p></p>
+<div><h3>Status dashboard</h3><a href="#status-dashboard"></a></div>
+<p>Run </p><pre><code>npm run status</code></pre> to get a snapshot of Sergio's current state. It shows:<p></p>
+<ul>
+<li><strong>Services</strong> — whether the Sergio polling loop is running and how many Claude CLI sessions are active</li>
+<li><strong>Board</strong> — card count per Trello list with card names, so you see exactly what's queued, in progress, and done</li>
+<li><strong>Recent Activity</strong> — last 10 lines from <pre><code>sergio.log</code></pre>, color-coded by log level</li>
+</ul>
+<p>Example output:</p>
+<div><pre><code> SERGIO STATUS 2/19/2026, 4:30:00 PM ── Services ── Sergio polling: active Claude sessions: 2 active ── Board ── 0 TODO 1 Sergio Revision Add dark mode 0 Sergio Reviewing 2 Reviewed Login page, API caching 0 Sergio Development 1 Sergio Developing User settings 3 Ready for Review Total: 7 card(s) across 7 lists ── Recent Activity ── 2026-02-19T16:29:01.123Z [INFO] Found 1 new card(s) 2026-02-19T16:29:05.456Z [INFO] Processing card: Add dark mode (abc123)
+</code></pre></div>
+<hr>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>src/ config.ts Config loader (sergio.config.json + .env) logger.ts File logging (tees console output to logs/sergio.log) status.ts Terminal dashboard (npm run status) index.ts Entry point with concurrent polling loops trello.ts Trello REST API client processor.ts Planning pipeline (card to Claude to plan to comment) dev-processor.ts Dev pipeline (worktree to Claude to tests to PR) claude.ts Claude CLI runner for planning claude-dev.ts Claude CLI runner for development template.ts Prompt template engine list-names.ts Dynamic list name generator state.ts Planning state persistence dev-state.ts Dev state persistence setup/ index.ts Setup wizard orchestrator prompts.ts Interactive question flow trello-setup.ts Board and list creation via Trello API prompts/ Editable prompt templates
+scripts/ Firewall and utility scripts
+</code></pre></div>
+<hr>
+<div><h2>FAQ</h2><a href="#faq"></a></div> <strong>Why Trello?</strong>
+<p>Trello is a simple, visual interface that non-technical team members already know. No CLI to learn, no new app to install — just drag a card.</p> <strong>Why Claude CLI instead of the API directly?</strong>
+<p>Claude CLI provides full agentic capabilities — reading files, navigating the codebase, running tools — in a sandboxed session. The raw API alone does not give you that.</p> <strong>Can I change the bot name?</strong>
+<p>Yes. Set </p><pre><code>botName</code></pre> during setup (or edit <pre><code>sergio.config.json</code></pre>) and all list names, log messages, and branch prefixes update automatically.<p></p> <strong>Can I use an existing Trello board?</strong>
+<p>Yes. During setup, choose not to create a new board and provide your board and list IDs manually.</p> <strong>What if Sergio's response isn't right?</strong>
+<p>Add a comment to the card explaining what needs to change, then move it back to the task revision list. Sergio re-reads the full card — including all previous comments and your feedback — and responds accordingly. If it asked questions and you answered them, it will incorporate your answers into a plan. If it produced a plan and you gave feedback, it will revise the plan.</p> <strong>Is this production-ready?</strong>
+<p>Sergio is used in production by its creators. That said, it is early-stage open source — test in a non-critical environment first and report any issues.</p> <hr>
+<div><h2>Local Install (macOS)</h2><a href="#local-install-macos"></a></div>
+<p>Want to run Sergio on your Mac for development or testing? Here's how.</p>
+<div><h3>Prerequisites</h3><a href="#prerequisites-1"></a></div>
+<p>Install <a href="https://brew.sh/">Homebrew</a> if you don't have it, then:</p>
+<div><pre><span><span>#</span> Node.js, Git, GitHub CLI</span>
+brew install node git gh <span><span>#</span> Claude CLI</span>
+npm install -g @anthropic-ai/claude-code <span><span>#</span> Authenticate the CLIs</span>
+gh auth login
+claude <span><span>#</span> Follow the Anthropic login flow</span></pre></div>
+<p>You also need:</p>
+<ul>
+<li>A <a href="https://trello.com/power-ups/admin">Trello API key and token</a></li>
+<li>An <a href="https://console.anthropic.com/">Anthropic API key</a></li>
+<li>A <a href="https://github.com/settings/tokens">GitHub personal access token</a> (with <pre><code>repo</code></pre> scope)</li>
+</ul>
+<div><h3>Clone and install</h3><a href="#clone-and-install"></a></div>
+<div><pre>git clone https://github.com/Belfio/sergio.git <span>~</span>/sergio
+<span>cd</span> <span>~</span>/sergio
+npm install</pre></div>
+<div><h3>Create the sandbox user</h3><a href="#create-the-sandbox-user"></a></div>
+<p>Sergio runs Claude sessions as a separate </p><pre><code>claudeuser</code></pre> account for isolation. On macOS:<p></p>
+<div><pre><span><span>#</span> Create the user (requires admin password)</span>
+sudo dscl <span>.</span> -create /Users/claudeuser
+sudo dscl <span>.</span> -create /Users/claudeuser UserShell /bin/zsh
+sudo dscl <span>.</span> -create /Users/claudeuser UniqueID 599
+sudo dscl <span>.</span> -create /Users/claudeuser PrimaryGroupID 20
+sudo dscl <span>.</span> -create /Users/claudeuser NFSHomeDirectory /var/empty <span><span>#</span> Allow your user to sudo as claudeuser without a password</span>
+sudo tee /etc/sudoers.d/sergio <span>&lt;&lt;&lt;</span> <span><span>"</span>$USER ALL=(claudeuser) NOPASSWD:SETENV: ALL<span>"</span></span>
+sudo chmod 0440 /etc/sudoers.d/sergio <span><span>#</span> Verify it works</span>
+sudo -u claudeuser whoami <span><span>#</span> Should print: claudeuser</span></pre></div>
+<blockquote>
+<p><strong>Note:</strong> Pick a UniqueID that isn't already taken. Check with </p><pre><code>dscl . -list /Users UniqueID | sort -n -k2</code></pre>.<p></p>
+</blockquote>
+<div><h3>Run setup</h3><a href="#run-setup"></a></div>
+<div><pre>npm run setup</pre></div>
+<p>The wizard will:</p>
+<ul>
+<li>Check dependencies (Node, Git, Claude CLI, GitHub CLI)</li>
+<li>Collect your API keys and write <pre><code>.env</code></pre></li>
+<li>Create a Trello board with 7 workflow lists (or connect to an existing one)</li>
+<li>Generate <pre><code>sergio.config.json</code></pre></li>
+</ul>
+<p>When it asks for </p><pre><code>repoDir</code></pre>, point it to the repo you want Sergio to work on (e.g. <pre><code>~/Work/my-project</code></pre>). For <pre><code>worktreeBaseDir</code></pre>, use something like <pre><code>~/sergio-worktrees</code></pre>.<p></p>
+<div><h3>Grant claudeuser access</h3><a href="#grant-claudeuser-access"></a></div>
+<div><pre><span><span>#</span> Let claudeuser traverse your home and read the target repo</span>
+chmod o+x <span>~</span>
+chmod -R o+rx <span>~</span>/Work/my-project <span><span>#</span> use your actual repoDir</span></pre></div>
+<div><h3>Start</h3><a href="#start"></a></div>
+<div><pre>npm start</pre></div>
+<p>Sergio polls your Trello board every 60 seconds. Press </p><pre><code>Ctrl+C</code></pre> to stop.<p></p>
+<div><h3>macOS-specific notes</h3><a href="#macos-specific-notes"></a></div>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Linux</th>
+<th>macOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Firewall</strong></td>
+<td><pre><code>scripts/setup-firewall.sh</code></pre> (iptables)</td>
+<td>Not available — iptables doesn't exist on macOS. The prompt-level URL policy still applies. For local dev this is usually fine.</td>
+</tr>
+<tr>
+<td><strong>Service manager</strong></td>
+<td>systemd (<pre><code>sergio.service</code></pre>)</td>
+<td>Use <pre><code>launchd</code></pre> if you want Sergio to run on boot — see below.</td>
+</tr>
+<tr>
+<td><strong>User creation</strong></td>
+<td><pre><code>useradd</code></pre> (handled by setup wizard)</td>
+<td><pre><code>dscl</code></pre> (manual, see above) — the setup wizard's <pre><code>useradd</code></pre> will fail on macOS.</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Optional: run as a launchd service</h3><a href="#optional-run-as-a-launchd-service"></a></div>
+<p>Create </p><pre><code>~/Library/LaunchAgents/com.sergio.bot.plist</code></pre>:<p></p>
+<div><pre>&lt;?<span>xml</span><span> version</span>=<span><span>"</span>1.0<span>"</span></span><span> encoding</span>=<span><span>"</span>UTF-8<span>"</span></span>?&gt;
+&lt;!<span>DOCTYPE</span> <span>plist</span> PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;<span>plist</span> <span>version</span>=<span><span>"</span>1.0<span>"</span></span>&gt;
+&lt;<span>dict</span>&gt; &lt;<span>key</span>&gt;Label&lt;/<span>key</span>&gt; &lt;<span>string</span>&gt;com.sergio.bot&lt;/<span>string</span>&gt; &lt;<span>key</span>&gt;WorkingDirectory&lt;/<span>key</span>&gt; &lt;<span>string</span>&gt;/Users/YOUR_USERNAME/sergio&lt;/<span>string</span>&gt; &lt;<span>key</span>&gt;ProgramArguments&lt;/<span>key</span>&gt; &lt;<span>array</span>&gt; &lt;<span>string</span>&gt;/usr/local/bin/npx&lt;/<span>string</span>&gt; &lt;<span>string</span>&gt;tsx&lt;/<span>string</span>&gt; &lt;<span>string</span>&gt;src/index.ts&lt;/<span>string</span>&gt; &lt;/<span>array</span>&gt; &lt;<span>key</span>&gt;RunAtLoad&lt;/<span>key</span>&gt; &lt;<span>true</span>/&gt; &lt;<span>key</span>&gt;KeepAlive&lt;/<span>key</span>&gt; &lt;<span>true</span>/&gt; &lt;<span>key</span>&gt;StandardOutPath&lt;/<span>key</span>&gt; &lt;<span>string</span>&gt;/Users/YOUR_USERNAME/sergio/logs/launchd-stdout.log&lt;/<span>string</span>&gt; &lt;<span>key</span>&gt;StandardErrorPath&lt;/<span>key</span>&gt; &lt;<span>string</span>&gt;/Users/YOUR_USERNAME/sergio/logs/launchd-stderr.log&lt;/<span>string</span>&gt;
+&lt;/<span>dict</span>&gt;
+&lt;/<span>plist</span>&gt;</pre></div>
+<p>Then:</p>
+<div><pre><span><span>#</span> Replace YOUR_USERNAME in the plist, then:</span>
+launchctl load <span>~</span>/Library/LaunchAgents/com.sergio.bot.plist <span><span>#</span> Check status</span>
+launchctl list <span>|</span> grep sergio <span><span>#</span> Stop</span>
+launchctl unload <span>~</span>/Library/LaunchAgents/com.sergio.bot.plist</pre></div>
+<div><h2>Roadmap</h2><a href="#roadmap"></a></div>
+<p>Sergio is designed to be modular. Here's what's coming next.</p>
+<div><h3>Multi-engine support</h3><a href="#multi-engine-support"></a></div>
+<p>Sergio currently uses Claude CLI as its AI engine. We plan to make this pluggable so you can choose your backend:</p> <p>The goal is a </p><pre><code>"engine"</code></pre> field in <pre><code>sergio.config.json</code></pre> so you can switch between backends without changing anything else. The two-user security model and prompt templates work regardless of which CLI does the AI work.<p></p>
+<div><h3>MCP servers for external context</h3><a href="#mcp-servers-for-external-context"></a></div>
+<p>Claude CLI supports <a href="https://modelcontextprotocol.io/">MCP (Model Context Protocol)</a> servers — sidecar processes that give the AI tools to read external data. This lets Sergio access Google Docs, Figma designs, Notion pages, and more when processing cards.</p>
+<p>Planned integrations:</p>
+<ul>
+<li><strong>Google Docs</strong> — read linked specs and PRDs directly from cards</li>
+<li><strong>Figma</strong> — access design files referenced in cards (via REST API for headless servers)</li>
+<li><strong>Notion</strong> — pull context from linked Notion pages</li>
+<li><strong>Any MCP-compatible server</strong> — the config accepts arbitrary MCP server definitions</li>
+</ul>
+<p>Architecture: an </p><pre><code>mcpServers</code></pre> field in <pre><code>sergio.config.json</code></pre> with env var references resolved from <pre><code>.env</code></pre>. Sergio writes a temp config file, passes it to the CLI via <pre><code>--mcp-config</code></pre>, and cleans up after. Secrets stay in <pre><code>.env</code></pre>, the security sandbox is preserved, and <pre><code>claudeuser</code></pre> never sees credentials directly.<p></p>
+<p>See <a href="/Belfio/sergio/blob/main/MCP.md">MCP.md</a> for the full implementation plan.</p>
+<hr>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions are welcome! Please <a href="https://github.com/Belfio/sergio/issues">open an issue</a> to discuss what you'd like to change before submitting a PR.</p>
+<div><pre>git clone https://github.com/Belfio/sergio.git
+<span>cd</span> sergio
+npm install
+npm run setup
+npm start</pre></div>
+<hr>
+<div>
+<p><strong><a href="/Belfio/sergio/blob/main/LICENSE">MIT License</a></strong></p>
+</div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

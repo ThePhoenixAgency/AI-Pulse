@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - akhilponnada/aethene: The Open-Source AI Memory Layer</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - akhilponnada/aethene: The Open-Source AI Memory Layer</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/22/2026 1:57:46 PM | <a href="https://github.com/akhilponnada/aethene" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p> <a target="_blank" href="https://camo.githubusercontent.com/4f61bb5cdba60ae9cce9ab4c1ec4cd6cc17e1dfc136f84d708009069be91b4dc/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f41657468656e652d41492532304d656d6f72792532304c617965722d626c756576696f6c65743f7374796c653d666f722d7468652d6261646765266c6f676f3d646174613a696d6167652f7376672b786d6c3b6261736536342c50484e325a79423462577875637a30696148523063446f764c336433647935334d793576636d63764d6a41774d43397a646d6369494864705a48526f505349794e434967614756705a326830505349794e434967646d6c6c64304a76654430694d43417749444930494449304969426d6157787350534a756232356c4969427a64484a7661325539496e646f6158526c4969427a64484a766132557464326c6b64476739496a496949484e30636d39725a5331736157356c5932467750534a79623356755a434967633352796232746c4c577870626d567162326c7550534a79623356755a43492b50484268644767675a4430695454457949444a684d5441674d5441674d434178494441674d5441674d5442494d544a574d6c6f694c7a3438634746306143426b50534a4e4d6a45754d5467674f4334774d6d4d744d5330794c6a4d744d6934344e5330304c6a41794c5455754d5467744e4334344d694976506a78775958526f49475139496b30784d694134646a67694c7a3438634746306143426b50534a744f4341784d694130494451674e4330304969382b5043397a646d632b"><img src="https://camo.githubusercontent.com/4f61bb5cdba60ae9cce9ab4c1ec4cd6cc17e1dfc136f84d708009069be91b4dc/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f41657468656e652d41492532304d656d6f72792532304c617965722d626c756576696f6c65743f7374796c653d666f722d7468652d6261646765266c6f676f3d646174613a696d6167652f7376672b786d6c3b6261736536342c50484e325a79423462577875637a30696148523063446f764c336433647935334d793576636d63764d6a41774d43397a646d6369494864705a48526f505349794e434967614756705a326830505349794e434967646d6c6c64304a76654430694d43417749444930494449304969426d6157787350534a756232356c4969427a64484a7661325539496e646f6158526c4969427a64484a766132557464326c6b64476739496a496949484e30636d39725a5331736157356c5932467750534a79623356755a434967633352796232746c4c577870626d567162326c7550534a79623356755a43492b50484268644767675a4430695454457949444a684d5441674d5441674d434178494441674d5441674d5442494d544a574d6c6f694c7a3438634746306143426b50534a4e4d6a45754d5467674f4334774d6d4d744d5330794c6a4d744d6934344e5330304c6a41794c5455754d5467744e4334344d694976506a78775958526f49475139496b30784d694134646a67694c7a3438634746306143426b50534a744f4341784d694130494451674e4330304969382b5043397a646d632b" alt="Aethene"></a>
+</p>
+<div><h1>Aethene</h1><a href="#aethene"></a></div>
+<p> <strong>The Open-Source AI Memory Layer</strong>
+</p>
+<p> <em>Give your AI applications perfect memory. Store, search, and recall context with intelligence.</em>
+</p>
+<p> <a href="#features">Features</a> • <a href="#quick-start">Quick Start</a> • <a href="#api-reference">API</a> • <a href="#deployment">Deploy</a> • <a href="#benchmarks">Benchmarks</a>
+</p>
+<p> <a target="_blank" href="https://camo.githubusercontent.com/0ceda91ee3a384aaedef3b598deba40a11a65a82ae21e2f59e86a0deaed0431e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f547970655363726970742d3030374143433f7374796c653d666c61742d737175617265266c6f676f3d74797065736372697074266c6f676f436f6c6f723d7768697465"><img src="https://camo.githubusercontent.com/0ceda91ee3a384aaedef3b598deba40a11a65a82ae21e2f59e86a0deaed0431e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f547970655363726970742d3030374143433f7374796c653d666c61742d737175617265266c6f676f3d74797065736372697074266c6f676f436f6c6f723d7768697465" alt="TypeScript"></a> <a target="_blank" href="https://camo.githubusercontent.com/0b93ba646def66238de3a8c826d78c659dc729d946336ab4a6ae22ca39c25971/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f486f6e6f2d4533363030323f7374796c653d666c61742d737175617265266c6f676f3d686f6e6f266c6f676f436f6c6f723d7768697465"><img src="https://camo.githubusercontent.com/0b93ba646def66238de3a8c826d78c659dc729d946336ab4a6ae22ca39c25971/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f486f6e6f2d4533363030323f7374796c653d666c61742d737175617265266c6f676f3d686f6e6f266c6f676f436f6c6f723d7768697465" alt="Hono"></a> <a target="_blank" href="https://camo.githubusercontent.com/412ae1e1037bbdc05ec6e8fcd665b682db152ece2e8af6ac8acf849a3d93143d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f436f6e7665782d4646364236423f7374796c653d666c61742d737175617265266c6f676f3d636f6e766578266c6f676f436f6c6f723d7768697465"><img src="https://camo.githubusercontent.com/412ae1e1037bbdc05ec6e8fcd665b682db152ece2e8af6ac8acf849a3d93143d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f436f6e7665782d4646364236423f7374796c653d666c61742d737175617265266c6f676f3d636f6e766578266c6f676f436f6c6f723d7768697465" alt="Convex"></a> <a target="_blank" href="https://camo.githubusercontent.com/cd05ef13bde9ec60e27d896cfed4288a3b71650ccc2a323c230d71a05831bfae/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f47656d696e692d3432383546343f7374796c653d666c61742d737175617265266c6f676f3d676f6f676c65266c6f676f436f6c6f723d7768697465"><img src="https://camo.githubusercontent.com/cd05ef13bde9ec60e27d896cfed4288a3b71650ccc2a323c230d71a05831bfae/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f47656d696e692d3432383546343f7374796c653d666c61742d737175617265266c6f676f3d676f6f676c65266c6f676f436f6c6f723d7768697465" alt="Gemini"></a> <a target="_blank" href="https://camo.githubusercontent.com/152aa2a37725b9fd554b28ff24d270f6071c67927a63e6d635a55c8e188e20c7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d677265656e3f7374796c653d666c61742d737175617265"><img src="https://camo.githubusercontent.com/152aa2a37725b9fd554b28ff24d270f6071c67927a63e6d635a55c8e188e20c7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d677265656e3f7374796c653d666c61742d737175617265" alt="License"></a>
+</p>
+<hr>
+<div><h2>Why Aethene?</h2><a href="#why-aethene"></a></div>
+<p>Building AI applications with memory is hard. You need to:</p>
+<ul>
+<li>Extract meaningful facts from conversations</li>
+<li>Handle contradictions and updates gracefully</li>
+<li>Search semantically across thousands of memories</li>
+<li>Version everything for audit trails</li>
+<li>Scale without breaking the bank</li>
+</ul>
+<p><strong>Aethene handles all of this.</strong> One API, infinite memory.</p>
+<div><pre><span><span>#</span> Store a memory</span>
+curl -X POST https://api.aethene.com/v1/content \ -H <span><span>"</span>Authorization: Bearer <span>$API_KEY</span><span>"</span></span> \ -d <span><span>'</span>{"content": "User loves hiking and lives in San Francisco"}<span>'</span></span> <span><span>#</span> Recall it naturally</span>
+curl -X POST https://api.aethene.com/v1/recall \ -H <span><span>"</span>Authorization: Bearer <span>$API_KEY</span><span>"</span></span> \ -d <span><span>'</span>{"query": "outdoor activities the user enjoys"}<span>'</span></span> <span><span>#</span> Response: "User loves hiking" with context assembled for your LLM</span></pre></div>
+<hr>
+<div><h2>Features</h2><a href="#features"></a></div>
+<table>
+<tbody><tr>
+<td>
+<div><h3> Intelligent Extraction</h3><a href="#-intelligent-extraction"></a></div>
+<p>Automatically extracts facts, preferences, and events from raw content. No manual tagging needed.</p>
+<div><h3> Hybrid Search</h3><a href="#-hybrid-search"></a></div>
+<p>Vector similarity + recency boosting + intent understanding. Finds what you need, not just what matches.</p>
+<div><h3> Memory Versioning</h3><a href="#-memory-versioning"></a></div>
+<p>Every update creates a new version. Track changes over time. Automatic contradiction detection.</p>
+</td>
+<td>
+<div><h3> Multi-Tenant Ready</h3><a href="#-multi-tenant-ready"></a></div>
+<p>Container tags isolate data per user, project, or organization. Scoped API keys for fine-grained access.</p>
+<div><h3> Entity Graph</h3><a href="#-entity-graph"></a></div>
+<p>Extracts people, places, organizations. Builds relationship graphs automatically.</p>
+<div><h3> Blazing Fast</h3><a href="#-blazing-fast"></a></div>
+<p>Built on Convex for real-time, serverless performance. P95 latency under 200ms.</p>
+</td>
+</tr>
+</tbody></table>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div> <div><pre>git clone https://github.com/akhilponnada/aethene.git
+<span>cd</span> aethene
+cp .env.example .env
+<span><span>#</span> Edit .env with your Convex URL and Gemini API key</span>
+docker-compose up -d</pre></div>
+<div><h3>Option 2: Local Development</h3><a href="#option-2-local-development"></a></div>
+<div><pre>git clone https://github.com/akhilponnada/aethene.git
+<span>cd</span> aethene
+npm install
+cp .env.example .env
+<span><span>#</span> Edit .env with your credentials</span>
+npm run server</pre></div>
+<p>Server runs at </p><pre><code>http://localhost:3006</code></pre><p></p>
+<div><h3>Health Check</h3><a href="#health-check"></a></div>
+<div><pre>curl http://localhost:3006/health
+<span><span>#</span> {"status":"healthy","service":"aethene","version":"1.0.0"}</span> curl http://localhost:3006/health/deep
+<span><span>#</span> {"status":"healthy","checks":{"database":{"status":"healthy"},"embeddings":{"status":"healthy"}}}</span></pre></div>
+<hr>
+<div><h2>API Reference</h2><a href="#api-reference"></a></div>
+<p>All endpoints require authentication via </p><pre><code>Authorization: Bearer &lt;api_key&gt;</code></pre> header.<p></p>
+<div><h3>Core Endpoints</h3><a href="#core-endpoints"></a></div>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>/v1/content</code></pre></td>
+<td>POST</td>
+<td>Ingest content → auto-extract memories</td>
+</tr>
+<tr>
+<td><pre><code>/v1/memories</code></pre></td>
+<td>GET/POST</td>
+<td>List or create memories</td>
+</tr>
+<tr>
+<td><pre><code>/v1/search</code></pre></td>
+<td>POST</td>
+<td>Semantic search across all data</td>
+</tr>
+<tr>
+<td><pre><code>/v1/recall</code></pre></td>
+<td>POST</td>
+<td>Search + assembled LLM context</td>
+</tr>
+<tr>
+<td><pre><code>/v1/profile</code></pre></td>
+<td>GET</td>
+<td>User's memory profile</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Memory Operations</h3><a href="#memory-operations"></a></div>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>/v1/memories/:id</code></pre></td>
+<td>GET</td>
+<td>Get specific memory</td>
+</tr>
+<tr>
+<td><pre><code>/v1/memories/:id</code></pre></td>
+<td>PATCH</td>
+<td>Update (creates new version)</td>
+</tr>
+<tr>
+<td><pre><code>/v1/memories/:id</code></pre></td>
+<td>DELETE</td>
+<td>Soft delete (forget)</td>
+</tr>
+<tr>
+<td><pre><code>/v1/memories/:id/history</code></pre></td>
+<td>GET</td>
+<td>Version history</td>
+</tr>
+<tr>
+<td><pre><code>/v1/memories/stats</code></pre></td>
+<td>GET</td>
+<td>Memory statistics</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Documents</h3><a href="#documents"></a></div>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>/v1/documents</code></pre></td>
+<td>POST</td>
+<td>Ingest document</td>
+</tr>
+<tr>
+<td><pre><code>/v1/documents/file</code></pre></td>
+<td>POST</td>
+<td>Upload file (multipart)</td>
+</tr>
+<tr>
+<td><pre><code>/v1/documents/list</code></pre></td>
+<td>POST</td>
+<td>List with pagination</td>
+</tr>
+<tr>
+<td><pre><code>/v1/documents/search</code></pre></td>
+<td>POST</td>
+<td>Search documents</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Entity Graph</h3><a href="#entity-graph"></a></div>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>/v1/entities</code></pre></td>
+<td>GET</td>
+<td>List extracted entities</td>
+</tr>
+<tr>
+<td><pre><code>/v1/entities/graph</code></pre></td>
+<td>GET</td>
+<td>Full relationship graph</td>
+</tr>
+<tr>
+<td><pre><code>/v1/entities/:id</code></pre></td>
+<td>GET</td>
+<td>Entity with relationships</td>
+</tr>
+</tbody>
+</table>
+<div><h3>API Keys &amp; Settings</h3><a href="#api-keys--settings"></a></div>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>/v1/auth/keys</code></pre></td>
+<td>POST</td>
+<td>Create scoped API key</td>
+</tr>
+<tr>
+<td><pre><code>/v1/auth/keys</code></pre></td>
+<td>GET</td>
+<td>List your keys</td>
+</tr>
+<tr>
+<td><pre><code>/v1/auth/key-info</code></pre></td>
+<td>GET</td>
+<td>Current key permissions</td>
+</tr>
+<tr>
+<td><pre><code>/v1/settings</code></pre></td>
+<td>GET/PATCH</td>
+<td>User settings</td>
+</tr>
+</tbody>
+</table>
+<p> <strong>Full API Docs:</strong> See <a href="/akhilponnada/aethene/blob/main/openapi.yaml">openapi.yaml</a> for complete OpenAPI 3.1 spec.</p>
+<hr>
+<div><h2>Example: Building a Personalized AI Assistant</h2><a href="#example-building-a-personalized-ai-assistant"></a></div>
+<div><pre><span>import</span> <span>Anthropic</span> <span>from</span> <span>"@anthropic-ai/sdk"</span><span>;</span> <span>const</span> <span>anthropic</span> <span>=</span> <span>new</span> <span>Anthropic</span><span>(</span><span>)</span><span>;</span>
+<span>const</span> <span>AETHENE_URL</span> <span>=</span> <span>"http://localhost:3006"</span><span>;</span>
+<span>const</span> <span>API_KEY</span> <span>=</span> <span>"your-api-key"</span><span>;</span> <span>async</span> <span>function</span> <span>chat</span><span>(</span><span>userMessage</span>: <span>string</span><span>)</span> <span>{</span> <span>// 1. Get relevant context from Aethene</span> <span>const</span> <span>recall</span> <span>=</span> <span>await</span> <span>fetch</span><span>(</span><span>`<span><span>${</span><span>AETHENE_URL</span><span>}</span></span>/v1/recall`</span><span>,</span> <span>{</span> <span>method</span>: <span>"POST"</span><span>,</span> <span>headers</span>: <span>{</span> <span>"Authorization"</span>: <span>`Bearer <span><span>${</span><span>API_KEY</span><span>}</span></span>`</span><span>,</span> <span>"Content-Type"</span>: <span>"application/json"</span><span>,</span> <span>}</span><span>,</span> <span>body</span>: <span>JSON</span><span>.</span><span>stringify</span><span>(</span><span>{</span> <span>query</span>: <span>userMessage</span><span>,</span> <span>limit</span>: <span>10</span><span>,</span> <span>includeProfile</span>: <span>true</span><span>,</span> <span>}</span><span>)</span><span>,</span> <span>}</span><span>)</span><span>.</span><span>then</span><span>(</span><span>r</span> <span>=&gt;</span> <span>r</span><span>.</span><span>json</span><span>(</span><span>)</span><span>)</span><span>;</span> <span>// 2. Build system prompt with memory context</span> <span>const</span> <span>systemPrompt</span> <span>=</span> <span>`You are a helpful assistant with memory of past conversations.</span>
+<span></span>
+<span><span><span>${</span><span>recall</span><span>.</span><span>context</span><span>}</span></span></span>
+<span></span>
+<span>Use this context to personalize your responses.`</span><span>;</span> <span>// 3. Generate response with Claude</span> <span>const</span> <span>response</span> <span>=</span> <span>await</span> <span>anthropic</span><span>.</span><span>messages</span><span>.</span><span>create</span><span>(</span><span>{</span> <span>model</span>: <span>"claude-sonnet-4-20250514"</span><span>,</span> <span>max_tokens</span>: <span>1024</span><span>,</span> <span>system</span>: <span>systemPrompt</span><span>,</span> <span>messages</span>: <span>[</span><span>{</span> <span>role</span>: <span>"user"</span><span>,</span> <span>content</span>: <span>userMessage</span> <span>}</span><span>]</span><span>,</span> <span>}</span><span>)</span><span>;</span> <span>const</span> <span>assistantMessage</span> <span>=</span> <span>response</span><span>.</span><span>content</span><span>[</span><span>0</span><span>]</span><span>.</span><span>text</span><span>;</span> <span>// 4. Store the conversation as new memories</span> <span>await</span> <span>fetch</span><span>(</span><span>`<span><span>${</span><span>AETHENE_URL</span><span>}</span></span>/v1/content`</span><span>,</span> <span>{</span> <span>method</span>: <span>"POST"</span><span>,</span> <span>headers</span>: <span>{</span> <span>"Authorization"</span>: <span>`Bearer <span><span>${</span><span>API_KEY</span><span>}</span></span>`</span><span>,</span> <span>"Content-Type"</span>: <span>"application/json"</span><span>,</span> <span>}</span><span>,</span> <span>body</span>: <span>JSON</span><span>.</span><span>stringify</span><span>(</span><span>{</span> <span>content</span>: <span>`User said: <span><span>${</span><span>userMessage</span><span>}</span></span>\nAssistant replied: <span><span>${</span><span>assistantMessage</span><span>}</span></span>`</span><span>,</span> <span>}</span><span>)</span><span>,</span> <span>}</span><span>)</span><span>;</span> <span>return</span> <span>assistantMessage</span><span>;</span>
+<span>}</span></pre></div>
+<hr>
+<div><h2>Deployment</h2><a href="#deployment"></a></div>
+<div><h3>Environment Variables</h3><a href="#environment-variables"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>CONVEX_URL</code></pre></td>
+<td></td>
+<td>Convex deployment URL</td>
+</tr>
+<tr>
+<td><pre><code>GEMINI_API_KEY</code></pre></td>
+<td></td>
+<td>Google Gemini API key</td>
+</tr>
+<tr>
+<td><pre><code>PORT</code></pre></td>
+<td></td>
+<td>Server port (default: 3006)</td>
+</tr>
+<tr>
+<td><pre><code>API_KEYS</code></pre></td>
+<td></td>
+<td>Static API keys (dev only)</td>
+</tr>
+<tr>
+<td><pre><code>CORS_ORIGINS</code></pre></td>
+<td></td>
+<td>Allowed origins (comma-separated)</td>
+</tr>
+<tr>
+<td><pre><code>LOG_LEVEL</code></pre></td>
+<td></td>
+<td>debug, info, warn, error</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Production Deployment</h3><a href="#production-deployment"></a></div>
+<p>See <a href="/akhilponnada/aethene/blob/main/DEPLOYMENT.md">DEPLOYMENT.md</a> for detailed guides on:</p>
+<ul>
+<li> Docker &amp; Docker Compose</li>
+<li> Kubernetes</li>
+<li> Fly.io</li>
+<li> AWS ECS/Fargate</li>
+</ul>
+<div><h3>Monitoring</h3><a href="#monitoring"></a></div>
+<div><pre><span><span>#</span> Health check</span>
+curl http://localhost:3006/health/deep <span><span>#</span> Prometheus metrics</span>
+curl http://localhost:3006/metrics</pre></div>
+<hr>
+<div><h2>Benchmarks</h2><a href="#benchmarks"></a></div>
+<p>Tested on LoCoMo benchmark (Long-context Conversational Memory):</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Overall Accuracy</td>
+<td><strong>100%</strong></td>
+</tr>
+<tr>
+<td>Multi-hop Reasoning</td>
+<td><strong>100%</strong></td>
+</tr>
+<tr>
+<td>Temporal Queries</td>
+<td><strong>100%</strong></td>
+</tr>
+<tr>
+<td>Contradiction Handling</td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Benchmark details: 50 complex queries across 5 conversation sessions with 200+ facts.</em></p>
+<hr>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>┌─────────────────────────────────────────────────────────────┐
+│ Aethene API │
+├─────────────────────────────────────────────────────────────┤
+│ Hono Server (TypeScript) │
+│ ├── Auth Middleware (API Keys, Scoped Access) │
+│ ├── Rate Limiter │
+│ └── Routes (memories, search, documents, entities) │
+├─────────────────────────────────────────────────────────────┤
+│ Services │
+│ ├── Memory Extractor (LLM-powered fact extraction) │
+│ ├── Recall Service (Hybrid search + reranking) │
+│ ├── Graph Builder (Entity extraction &amp; relationships) │
+│ └── Context Builder (LLM-ready context assembly) │
+├─────────────────────────────────────────────────────────────┤
+│ Infrastructure │
+│ ├── Convex (Database + Vector Search) │
+│ └── Gemini (Embeddings + LLM) │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<hr>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions welcome! Please read our contributing guidelines first.</p>
+<div><pre><span><span>#</span> Run tests</span>
+npm run test:run <span><span>#</span> Run integration tests</span>
+npm run test:integration <span><span>#</span> Type check</span>
+npm run build <span><span>#</span> Load test</span>
+npm run test:load</pre></div>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT License - see <a href="/akhilponnada/aethene/blob/main/LICENSE">LICENSE</a> for details.</p>
+<hr>
+<p> <strong>Built with for the AI community</strong>
+</p>
+<p> <a href="https://github.com/akhilponnada/aethene">GitHub</a> • <a href="https://github.com/akhilponnada/aethene/issues">Issues</a> • <a href="https://twitter.com/akhilponnada">Twitter</a>
+</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

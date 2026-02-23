@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,7 +28,12 @@
     Source: Programmez | Date: 2/19/2026 7:33:25 AM | <a href="https://www.programmez.com/actualites/python-environnements-extension-pour-unifier-les-environnements-python-sur-visual-studio-code-39036" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div><p>Pour simplifier et unifier l'environnement de développement Python sur Visual Studio Code, on dispose de la nouvelle extension Python Environnements. Il doit unifier le modèle de développement, gérer les environnements et les workflows, gérer les interpréteurs et les packages. Jusqu'é présent, l'expérience Python était fragmenté à travers les différents outils (venv, conda, pyenv, etc.). Après plus d'un an d'ajustements et de développement, l'extension est disponible. A terme, tous les flux Python migreront vers l'extension Environnements. Il est possible d'activer dès maintenant :&nbsp;python.useEnvsExtension.</p><p><img src="https://www.programmez.com/sites/default/files/styles/taille-maxi/public/images_actus/pythonenv.png?itok=D6IIbdsT"></p><p>L'extension fonctionne en parallèle de l'extension Python et aucune configuration particulière n'est requise : vous ouvrez un fichier Python et l'environnement utilisé est automatiquement détecté. Les environnements supportés sont :</p><ul><li><strong>venv</strong></li><li><strong>conda</strong></li><li><strong>pyenv</strong></li><li><strong>poetry</strong></li><li><strong>pipenv</strong></li><li><strong>System Python installs</strong></li></ul><p><strong><br></strong>La découverte est assurée par PET (Python Environment Tool), un outil de scan codé en Rust. Si vous utilisez uv, l'extension va automatiquement créer un environnement venv et installer les paquets nécessaires. Pour le moment, il n'est pas possible de créer rapidement des projets sur tous les environnements, seuls venv et conda sont supportés. Sans doute que les autres le seront dans les prochaines versions.&nbsp;</p><p><strong>Mauvaise nouvelle</strong> : l'extension fonctionne <strong>UNIQUEMENT</strong> sur Windows x64 et Windows ARM et l'édition Web ! Il faut Python soit installé.</p><p>Pour le moment, les retours sont plutôt mauvais : extension difficile à utiliser, perte de temps pour créer les environnements depuis Pylance, etc. Et les mises à jour se succèdent. Heureusement que l'extension est officiellement en preview.&nbsp;</p><p>Page de l'extension :&nbsp;<a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs">https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs</a></p></div></div>
+    <p>Pour simplifier et unifier l'environnement de développement Python sur Visual Studio Code, on dispose de la nouvelle extension Python Environnements. Il doit unifier le modèle de développement, gérer les environnements et les workflows, gérer les interpréteurs et les packages. Jusqu'é présent, l'expérience Python était fragmenté à travers les différents outils (venv, conda, pyenv, etc.). Après plus d'un an d'ajustements et de développement, l'extension est disponible. A terme, tous les flux Python migreront vers l'extension Environnements. Il est possible d'activer dès maintenant : python.useEnvsExtension. L'extension fonctionne en parallèle de l'extension Python et aucune configuration particulière n'est requise : vous ouvrez un fichier Python et l'environnement utilisé est automatiquement détecté. Les environnements supportés sont : venv
+conda
+pyenv
+poetry
+pipenv
+System Python installs La découverte est assurée par PET (Python Environment Tool), un outil de scan codé en Rust. Si vous utilisez uv, l'extension va automatiquement créer un environnement venv et installer les paquets nécessaires.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

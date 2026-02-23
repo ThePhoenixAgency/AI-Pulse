@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - jx887/homebrew-canaryai: AI agent security monitor for Claude Code</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - jx887/homebrew-canaryai: AI agent security monitor for Claude Code</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/22/2026 1:24:03 PM | <a href="https://github.com/jx887/homebrew-canaryai" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p> <a target="_blank" href="/jx887/homebrew-canaryai/blob/main/docs/icon.png"><img src="/jx887/homebrew-canaryai/raw/main/docs/icon.png" alt="CanaryAI"></a>
+</p>
+<div><h1>CanaryAI</h1><a href="#canaryai"></a></div>
+<p> Monitor your AI coding agents for suspicious behaviour.
+</p>
+<p> <a target="_blank" href="https://camo.githubusercontent.com/97600f801a5e7483c8a475dc70f2e93c1045e82d9907b2ef23f3f211e4c93d01/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d61634f532d31342532422d626c61636b"><img src="https://camo.githubusercontent.com/97600f801a5e7483c8a475dc70f2e93c1045e82d9907b2ef23f3f211e4c93d01/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d61634f532d31342532422d626c61636b" alt="macOS 14+"></a> <a target="_blank" href="https://camo.githubusercontent.com/f8df3091bbe1149f398a5369b2c39e896766f9f6efba3477c63e9b4aa940ef14/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d677265656e"><img src="https://camo.githubusercontent.com/f8df3091bbe1149f398a5369b2c39e896766f9f6efba3477c63e9b4aa940ef14/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d677265656e" alt="MIT"></a> <a target="_blank" href="https://camo.githubusercontent.com/ba535e092ec77b6ceaeadc3a563d2673de82533d9ff67066dcc4bfb9568598f7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f76657273696f6e2d302e312e302d626c7565"><img src="https://camo.githubusercontent.com/ba535e092ec77b6ceaeadc3a563d2673de82533d9ff67066dcc4bfb9568598f7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f76657273696f6e2d302e312e302d626c7565" alt="0.1.0"></a>
+</p>
+<hr>
+<div><h2>What is CanaryAI?</h2><a href="#what-is-canaryai"></a></div>
+<p>AI coding agents are powerful — but they run real commands on your machine. CanaryAI watches what they do and alerts you when something looks off: reverse shells, credential theft, persistence mechanisms, data exfiltration, and more.</p>
+<p>It works by scanning <a href="https://claude.ai/code">Claude Code</a> session logs in real time, applying a set of detection rules, and surfacing alerts in a native macOS menu bar app.</p>
+<blockquote>
+<p><strong>Alert-only.</strong> CanaryAI never blocks or interferes with your agent. It observes and reports.</p>
+</blockquote>
+<hr>
+<div><h2>Screenshot</h2><a href="#screenshot"></a></div>
+<p> <a target="_blank" href="/jx887/homebrew-canaryai/blob/main/docs/screenshot.png"><img src="/jx887/homebrew-canaryai/raw/main/docs/screenshot.png" alt="CanaryAI menu bar popover"></a>
+</p>
+<hr>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><h3>Option 1 — Homebrew</h3><a href="#option-1--homebrew"></a></div>
+<div><pre>brew tap jx887/canaryai
+brew install --cask canaryai</pre></div>
+<p>Installs the CanaryAI menu bar app and the </p><pre><code>canaryai</code></pre> CLI command. Everything in one step.<p></p>
+<div><h3>Option 2 — DMG</h3><a href="#option-2--dmg"></a></div>
+<p>Download </p><pre><code>CanaryAI.dmg</code></pre> from <a href="https://github.com/jx887/homebrew-canaryai/releases">Releases</a>, open it, and drag CanaryAI to Applications.<p></p>
+<p>Self-contained — includes the CLI, no other installs needed.</p>
+<div><h3>First Launch (both options)</h3><a href="#first-launch-both-options"></a></div>
+<p>CanaryAI is not code-signed, so macOS may block it on first launch. If you see a warning:</p>
+<ol>
+<li>Open <strong>System Settings → Privacy &amp; Security</strong></li>
+<li>Scroll down to the Security section</li>
+<li>Click <strong>Open Anyway</strong> next to CanaryAI</li>
+<li>Click <strong>Open</strong> to confirm</li>
+</ol>
+<p>Or run this once in Terminal:</p>
+<div><pre>xattr -dr com.apple.quarantine /Applications/CanaryAI.app</pre></div>
+<p><strong>Launch at Login:</strong> CanaryAI enables this by default. macOS requires a one-time approval — open <strong>System Settings → General → Login Items</strong> and confirm CanaryAI is listed.</p>
+<hr>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><pre><span><span>#</span> Scan sessions from the last 24 hours (default)</span>
+canaryai scan <span><span>#</span> Scan all sessions</span>
+canaryai scan --all <span><span>#</span> Scan a specific project</span>
+canaryai scan --project <span>~</span>/Developer/myapp <span><span>#</span> Scan a specific time window</span>
+canaryai scan --since 7d <span><span>#</span> Filter by minimum severity</span>
+canaryai scan --severity high <span><span>#</span> JSON output</span>
+canaryai scan --json <span><span>#</span> List all loaded detection rules</span>
+canaryai rules list</pre></div>
+<p>Exit codes: </p><pre><code>0</code></pre> = clean, <pre><code>1</code></pre> = alerts found.<p></p>
+<p>The macOS app provides the same scanning via a menu bar UI — available via both install options above.</p>
+<hr>
+<div><h2>Detection Rules</h2><a href="#detection-rules"></a></div>
+<p>CanaryAI ships with <strong>30+ built-in rules</strong> across seven categories. Severity levels: </p><pre><code>CRITICAL</code></pre> → <pre><code>HIGH</code></pre> → <pre><code>MEDIUM</code></pre> → <pre><code>LOW</code></pre>.<p></p>
+<div><h3>Commands</h3><a href="#commands"></a></div>
+<p>Dangerous shell commands executed by the agent.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Severity</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CRIT-001</td>
+<td>CRITICAL</td>
+<td>Reverse Shell — <pre><code>/dev/tcp</code></pre>, <pre><code>socat EXEC</code></pre>, <pre><code>nc -e</code></pre>, etc.</td>
+</tr>
+<tr>
+<td>HIGH-002</td>
+<td>HIGH</td>
+<td>Cron Job Creation — persistence via crontab</td>
+</tr>
+<tr>
+<td>HIGH-005</td>
+<td>HIGH</td>
+<td>SSH Tunnel — port forwarding (<pre><code>-L</code></pre>, <pre><code>-R</code></pre>, <pre><code>-D</code></pre>)</td>
+</tr>
+<tr>
+<td>HIGH-203</td>
+<td>HIGH</td>
+<td>History Tampering — clearing shell history to cover tracks</td>
+</tr>
+<tr>
+<td>MED-001</td>
+<td>MEDIUM</td>
+<td>sudo Usage — privilege escalation</td>
+</tr>
+<tr>
+<td>MED-002</td>
+<td>MEDIUM</td>
+<td>Destructive rm — recursive deletion of system directories</td>
+</tr>
+<tr>
+<td>MED-003</td>
+<td>MEDIUM</td>
+<td>Dangerous chmod — world-writable or setuid permissions</td>
+</tr>
+<tr>
+<td>MED-004</td>
+<td>MEDIUM</td>
+<td>Package Installation — pip, npm, brew, gem, cargo</td>
+</tr>
+<tr>
+<td>MED-203</td>
+<td>MEDIUM</td>
+<td>Hosts File Modification — DNS hijacking via <pre><code>/etc/hosts</code></pre></td>
+</tr>
+</tbody>
+</table>
+<div><h3>Exfiltration</h3><a href="#exfiltration"></a></div>
+<p>Data being read and sent out of your machine.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Severity</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CRIT-002</td>
+<td>CRITICAL</td>
+<td>SSH Key Exfiltration — reading <pre><code>~/.ssh/id_*</code></pre> then network call</td>
+</tr>
+<tr>
+<td>CRIT-003</td>
+<td>CRITICAL</td>
+<td>Credential Theft — reading credential file then curl/wget</td>
+</tr>
+<tr>
+<td>CRIT-004</td>
+<td>CRITICAL</td>
+<td>Encoded Data Exfil — base64/hex piped to curl/wget/nc</td>
+</tr>
+<tr>
+<td>HIGH-004</td>
+<td>HIGH</td>
+<td>Suspicious POST — curl/wget with data to external host</td>
+</tr>
+<tr>
+<td>HIGH-205</td>
+<td>HIGH</td>
+<td>Webhook Exfiltration — data sent to webhook.site, pipedream, etc.</td>
+</tr>
+<tr>
+<td>LOW-001</td>
+<td>LOW</td>
+<td>.env File Read — access to environment variable files</td>
+</tr>
+<tr>
+<td>LOW-002</td>
+<td>LOW</td>
+<td>Credential File Read — <pre><code>.pem</code></pre>, <pre><code>.key</code></pre>, AWS credentials, kubeconfig</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Backdoor &amp; Persistence</h3><a href="#backdoor--persistence"></a></div>
+<p>Attempts to survive beyond the current session.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Severity</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HIGH-001</td>
+<td>HIGH</td>
+<td>LaunchAgent/Daemon — macOS persistent service creation</td>
+</tr>
+<tr>
+<td>HIGH-003</td>
+<td>HIGH</td>
+<td>Shell Profile Mod — writing to <pre><code>.zshrc</code></pre>, <pre><code>.bashrc</code></pre>, etc.</td>
+</tr>
+<tr>
+<td>HIGH-006</td>
+<td>HIGH</td>
+<td>Download &amp; Execute — <pre><code>curl | bash</code></pre>, <pre><code>wget | sh</code></pre></td>
+</tr>
+<tr>
+<td>HIGH-204</td>
+<td>HIGH</td>
+<td>Git Hook Write — modifying <pre><code>.git/hooks/</code></pre> to persist across commits</td>
+</tr>
+<tr>
+<td>MED-204</td>
+<td>MEDIUM</td>
+<td>SSH Config Modification — ProxyCommand backdoors</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Reconnaissance</h3><a href="#reconnaissance"></a></div>
+<p>Probing for credentials and sensitive information.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Severity</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MED-005</td>
+<td>MEDIUM</td>
+<td>Git Credential Access — <pre><code>.git-credentials</code></pre>, <pre><code>.netrc</code></pre>, <pre><code>.npmrc</code></pre></td>
+</tr>
+<tr>
+<td>MED-205</td>
+<td>MEDIUM</td>
+<td>Password Manager CLI — 1Password, Bitwarden, rbw</td>
+</tr>
+<tr>
+<td>LOW-003</td>
+<td>LOW</td>
+<td>Sensitive Search — grep for passwords, tokens, secrets</td>
+</tr>
+<tr>
+<td>LOW-004</td>
+<td>LOW</td>
+<td>MCP Tool Usage — external MCP tool invocations</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Network</h3><a href="#network"></a></div>
+<p>Network scanning and DNS reconnaissance.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Severity</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MED-102</td>
+<td>MEDIUM</td>
+<td>Network Port Scan — nmap, masscan, nc -z</td>
+</tr>
+<tr>
+<td>LOW-101</td>
+<td>LOW</td>
+<td>DNS Lookup — dig, nslookup, host</td>
+</tr>
+</tbody>
+</table>
+<div><h3>macOS</h3><a href="#macos"></a></div>
+<p>macOS-specific credential and data access.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Severity</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HIGH-201</td>
+<td>HIGH</td>
+<td>Keychain Access — dumping or exporting Keychain entries</td>
+</tr>
+<tr>
+<td>HIGH-202</td>
+<td>HIGH</td>
+<td>Browser Data Access — Chrome, Firefox, Safari login databases</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Docker</h3><a href="#docker"></a></div>
+<p>Container privilege escalation.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Severity</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HIGH-101</td>
+<td>HIGH</td>
+<td>Privileged Container — <pre><code>--privileged</code></pre>, <pre><code>SYS_ADMIN</code></pre>, host mounts</td>
+</tr>
+<tr>
+<td>MED-101</td>
+<td>MEDIUM</td>
+<td>Docker Socket Exposure — mounting <pre><code>/var/run/docker.sock</code></pre></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Adding Custom Rules</h2><a href="#adding-custom-rules"></a></div>
+<p>Rules are plain YAML files. Drop one in </p><pre><code>~/.config/canaryai/rules/</code></pre> and it loads automatically — no restart needed.<p></p>
+<div><pre>- <span>id</span>: <span>CUSTOM-001</span> <span>name</span>: <span>My Rule</span> <span>severity</span>: <span>HIGH</span> <span>tools</span>: <span>[Bash]</span> <span>match</span>: - <span>field</span>: <span>command</span> <span>patterns</span>: - <span><span>"</span>suspicious_pattern<span>"</span></span> <span>message</span>: <span><span>"</span>Describe what was detected<span>"</span></span> <span>tags</span>: <span>[custom]</span></pre></div>
+<div><pre>canaryai rules list <span><span>#</span> verify it loaded</span></pre></div>
+<p>See <a href="/jx887/homebrew-canaryai/blob/main/canaryai/src/canaryai/rules/builtin/CONTRIBUTING.md"></a></p><pre><a href="/jx887/homebrew-canaryai/blob/main/canaryai/src/canaryai/rules/builtin/CONTRIBUTING.md"><code>canaryai/src/canaryai/rules/builtin/CONTRIBUTING.md</code></a></pre> for the full field reference.<p></p>
+<hr>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions are welcome — especially new detection rules.</p>
+<div><h3>Adding a Rule</h3><a href="#adding-a-rule"></a></div>
+<ol>
+<li>Fork the repo</li>
+<li>Add a <pre><code>.yaml</code></pre> file to <pre><code>canaryai/src/canaryai/rules/builtin/</code></pre></li>
+<li>Test it: <pre><code>canaryai rules list</code></pre></li>
+<li>Open a pull request describing what the rule detects and why it's suspicious</li>
+</ol>
+<div><h3>Reporting a Bug or False Positive</h3><a href="#reporting-a-bug-or-false-positive"></a></div>
+<p>Open an <a href="https://github.com/jx887/homebrew-canaryai/issues">issue</a> with:</p>
+<ul>
+<li>The rule ID that fired</li>
+<li>What the agent was actually doing</li>
+<li>Your Claude Code version</li>
+</ul>
+<div><h3>Building Locally</h3><a href="#building-locally"></a></div>
+<div><pre><span><span>#</span> Python CLI</span>
+<span>cd</span> canaryai <span>&amp;&amp;</span> pip install -e <span>.</span>
+canaryai --version <span><span>#</span> macOS app (debug)</span>
+<span>cd</span> CanaryAIApp <span>&amp;&amp;</span> swift build <span><span>#</span> macOS app (release + DMG)</span>
+<span>cd</span> CanaryAIApp <span>&amp;&amp;</span> ./build.sh</pre></div>
+<hr>
+<div><h2>Supported AI Agents</h2><a href="#supported-ai-agents"></a></div>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Code</td>
+<td></td>
+</tr>
+<tr>
+<td>Codex</td>
+<td></td>
+</tr>
+<tr>
+<td>Gemini</td>
+<td></td>
+</tr>
+<tr>
+<td>GitHub Copilot</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Support for additional agents is planned. PRs welcome.</p>
+<hr>
+<div><h2>Upcoming Features</h2><a href="#upcoming-features"></a></div>
+<ul>
+<li><strong>Whitelist / Trust</strong> — Mark specific commands or rules as trusted to suppress future false positives</li>
+<li><strong>Real-time Watch Mode</strong> — Instant detection using filesystem events instead of polling</li>
+</ul>
+<hr>
+<div><h2>Privacy</h2><a href="#privacy"></a></div>
+<p>CanaryAI runs entirely on your machine with no analytics or telemetry. The only network call it makes is polling the GitHub releases API every 30 minutes to check for a newer version.</p>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT — see <a href="/jx887/homebrew-canaryai/blob/main/LICENSE">LICENSE</a>.</p>
+<p><strong>Contact:</strong> <a href="mailto:jonx.global@gmail.com">jonx.global@gmail.com</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - arifozgun/OpenGem</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - arifozgun/OpenGem</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/22/2026 3:09:45 PM | <a href="https://github.com/arifozgun/OpenGem" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div> <img alt="OpenGem Logo" src="/arifozgun/OpenGem/raw/main/public/logos/black.png"> <div><h1>OpenGem 0.1.8</h1><a href="#opengem-018"></a></div>
+<p><strong>Free, Open-Source AI API Gateway for Gemini Models</strong></p>
+<p><a href="https://github.com/arifozgun/OpenGem/releases"><img src="https://camo.githubusercontent.com/246f1dd5744bcf73f2a589769d6173bcbc780ae7cc4ce60e36c90f6e902feedc/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f56657273696f6e2d302e312e382d6f72616e67652e737667" alt="Version"></a>
+<a href="/arifozgun/OpenGem/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/08cef40a9105b6526ca22088bc514fbfdbc9aac1ddbf8d4e6c750e3a88a44dca/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d626c75652e737667" alt="License: MIT"></a>
+<a href="https://nodejs.org"><img src="https://camo.githubusercontent.com/cdb1ea20fbee9e7130c1fa29c727acfdce9ba8b47af27a07b7d9c63a3eefe3c2/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f64652e6a732d31382b2d677265656e2e737667" alt="Node.js"></a>
+<a href="https://typescriptlang.org"><img src="https://camo.githubusercontent.com/5df0400b2f5598241dae8e55123f6eb21c93fd6d69647e68fc17d4105bcb61b0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f547970655363726970742d352e302b2d626c75652e737667" alt="TypeScript"></a></p>
+<p>Transform any standard <strong>Google Account</strong> into a free AI API endpoint. OpenGem uses reverse-engineered Gemini CLI credentials to access Google's free-tier Gemini API, providing a standard </p><pre><code>POST /v1beta/models/{model}:generateContent</code></pre> interface that works natively with official Google Gen AI SDKs.<p></p>
+<p><a href="#quick-start">Quick Start</a> · <a href="#how-it-works">How It Works</a> · <a href="#api-usage">API Usage</a> · <a href="#admin-dashboard">Admin Dashboard</a></p>
+</div>
+<hr>
+<div><h2>What is OpenGem?</h2><a href="#what-is-opengem"></a></div>
+<p>OpenGem is an open-source proxy and API gateway designed to grant developers free, load-balanced access to Google's Gemini models. By operating an intelligent multi-account load balancer, OpenGem seamlessly handles rate limits and quota 429 exhaustions, automatically rotating active Google accounts to ensure uninterrupted service.</p>
+<div>
+<a target="_blank" href="/arifozgun/OpenGem/blob/main/public/images/what-is-opengem.jpg"><img src="/arifozgun/OpenGem/raw/main/public/images/what-is-opengem.jpg" alt="What is OpenGem"></a>
+</div>
+<div><h2>Core Features</h2><a href="#core-features"></a></div>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Completely Free Access</strong></td>
+<td>Leverages Google's free-tier Gemini API using reverse-engineered credentials.</td>
+</tr>
+<tr>
+<td><strong>Smart Load Balancing</strong></td>
+<td>Automatically rotates across multiple Google accounts when a true quota limit (429) is hit, ignoring temporary rate limits.</td>
+</tr>
+<tr>
+<td><strong>Standardized API</strong></td>
+<td>Native <pre><code>v1beta</code></pre> models endpoint compatibility. Works perfectly with <pre><code>@google/genai</code></pre> and <pre><code>google-genai</code></pre> SDKs.</td>
+</tr>
+<tr>
+<td><strong>Function Calling</strong></td>
+<td>Full support for native Gemini <pre><code>tools</code></pre> and <pre><code>toolConfig</code></pre>, enabling AI agents and complex tool architectures.</td>
+</tr>
+<tr>
+<td><strong>Real-time Streaming</strong></td>
+<td>True Server-Sent Events (SSE) response streaming with automatic account rotation and native OpenAI stream compatibility.</td>
+</tr>
+<tr>
+<td><strong>Pro Account Detection</strong></td>
+<td>Automatically detects Google One AI Pro accounts during setup/refresh and assigns a "PRO" badge in the dashboard.</td>
+</tr>
+<tr>
+<td><strong>Dynamic API Keys</strong></td>
+<td>Generate and manage multiple API keys securely from the admin dashboard.</td>
+</tr>
+<tr>
+<td><strong>Usage Dashboard</strong></td>
+<td>Real-time statistics, account performance monitoring, and detailed request log tracking.</td>
+</tr>
+<tr>
+<td><strong>Chat Playground</strong></td>
+<td>Interactive dashboard console to test advanced models natively, adjust system prompts, and visualize thought process streams with Markdown support.</td>
+</tr>
+<tr>
+<td><strong>One-Click Setup</strong></td>
+<td>Intuitive, browser-based setup wizard requiring no manual configuration files.</td>
+</tr>
+<tr>
+<td><strong>Secure by Default</strong></td>
+<td>Built with JWT authentication, rate limiting, and Helmet.js security headers.</td>
+</tr>
+<tr>
+<td><strong>Auto Recovery</strong></td>
+<td>Exhausted Google accounts auto-reactivate seamlessly after a 60-minute cooldown period.</td>
+</tr>
+<tr>
+<td><strong>Flexible Database</strong></td>
+<td>Choose between zero-configuration Firebase Firestore or a completely offline Local JSON database, toggleable on the fly in Settings.</td>
+</tr>
+</tbody>
+</table>
+<div> <span>clinetutorial.mp4</span> <span></span> </div>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
+<ul>
+<li><a href="https://nodejs.org">Node.js</a> v18 or higher</li>
+<li>At least one active Google account</li>
+<li>(Optional) A <a href="https://console.firebase.google.com">Firebase</a> project (if you choose the Firebase backend)</li>
+</ul>
+<div><h3>Installation</h3><a href="#installation"></a></div>
+<div><pre><span><span>#</span> Clone the OpenGem repository</span>
+git clone https://github.com/arifozgun/OpenGem.git
+<span>cd</span> opengem <span><span>#</span> Install project dependencies</span>
+npm install <span><span>#</span> Start the development server</span>
+npm run dev</pre></div>
+<p>Navigate to </p><pre><code>http://localhost:3050</code></pre> in your web browser. The <strong>Setup Wizard</strong> will automatically guide you through:<p></p>
+<ol>
+<li><strong>Database Configuration</strong> — Choose between Local JSON storage or Firebase Firestore.</li>
+<li><strong>Admin Account</strong> — Create your dashboard administrator login.</li>
+<li><strong>API Key Generation</strong> — Your first operational API key will be generated instantly.</li>
+</ol>
+<div><h3>Firebase Setup Guide (Optional)</h3><a href="#firebase-setup-guide-optional"></a></div>
+<p><em>If you choose the Firebase database backend during setup:</em></p>
+<ol>
+<li>Navigate to the <a href="https://console.firebase.google.com">Firebase Console</a>.</li>
+<li>Create a new project or select an existing one.</li>
+<li>Go to <strong>Project Settings</strong> &gt; <strong>General</strong> and scroll down to the <strong>Your apps</strong> section.</li>
+<li>Click <strong>Add app</strong> and select the <strong>Web</strong> (<pre><code>&lt;/&gt;</code></pre>) platform.</li>
+<li>Copy the provided Firebase configuration object.</li>
+<li>Navigate to <strong>Firestore Database</strong>, click <strong>Create database</strong>, and initialize it in <strong>test mode</strong>.</li>
+<li>Paste the configuration object into the OpenGem Setup Wizard.</li>
+</ol>
+<hr>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<section> <div> <div> <pre>sequenceDiagram participant App as Your Application participant OG as OpenGem participant API as Google Gemini API App-&gt;&gt;OG: POST /v1beta/models/{model} OG-&gt;&gt;OG: Select least-used account OG-&gt;&gt;OG: Refresh token if necessary OG-&gt;&gt;API: Forward request API--&gt;&gt;OG: Gemini API Response OG-&gt;&gt;OG: Log usage stats to database alt 429 Quota Exhausted OG-&gt;&gt;OG: Rotate to next account OG-&gt;&gt;API: Retry with new account API--&gt;&gt;OG: Gemini API Response end OG--&gt;&gt;App: JSON / SSE Response
+</pre> </div> </div> <span> <span> <span>Loading</span>
+</span> </span>
+</section> <div><h3>Multi-Account Load Balancing</h3><a href="#multi-account-load-balancing"></a></div>
+<p>OpenGem dynamically manages a pool of authenticated Google accounts. Whenever a specific account reaches Google's free-tier quota (resulting in a 429 error), OpenGem intelligently distinguishes between temporary rate limits (RPM bursts) and true quota exhaustion. Accounts hitting simple rate limits are preserved for later retry. If an account is fully exhausted, OpenGem immediately disables it and retries the request using the next available account. Exhausted accounts remain on standby and are automatically reactivated after a standard 60-minute cooldown period.</p>
+<div><h3>Reverse Engineering Methodology</h3><a href="#reverse-engineering-methodology"></a></div>
+<p>This project utilizes the identical OAuth credentials deployed by the official <a href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a> to authenticate with Google's internal Code Assist API. Consequently, each connected Google account inherits a free-tier project provisioning access to premier Gemini models.</p>
+<hr>
+<div><h2>API Usage Reference</h2><a href="#api-usage-reference"></a></div>
+<blockquote>
+<p><strong>Large Payload Support:</strong> The API gateway limit has been increased to </p><pre><code>50mb</code></pre>, allowing for exceptionally large contexts, massive document processing, and complex tool arrays.<p></p>
+</blockquote>
+<div><h3>Endpoint URLs</h3><a href="#endpoint-urls"></a></div>
+<div><pre><code>POST /v1beta/models/{model}:generateContent
+POST /v1beta/models/{model}:streamGenerateContent
+</code></pre></div>
+<div><h3>Authentication Methods</h3><a href="#authentication-methods"></a></div>
+<p>You can authenticate utilizing standard convention:</p>
+<div><pre><code>x-goog-api-key: your-api-key-here
+</code></pre></div>
+<p>Or via Bearer token format:</p>
+<div><pre><code>Authorization: Bearer your-api-key-here
+</code></pre></div>
+<div><h3>Code Examples</h3><a href="#code-examples"></a></div>
+<p><strong>cURL</strong></p>
+<div><pre>curl -X POST <span><span>"</span>http://localhost:3050/v1beta/models/gemini-3.1-pro-preview:generateContent?key=your-api-key-here<span>"</span></span> \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{</span>
+<span> "contents": [{</span>
+<span> "parts": [{"text": "Explain quantum computing in one paragraph"}]</span>
+<span> }]</span>
+<span> }<span>'</span></span></pre></div>
+<p><strong>Python (google-genai)</strong></p>
+<div><pre><span>from</span> <span>google</span> <span>import</span> <span>genai</span> <span>client</span> <span>=</span> <span>genai</span>.<span>Client</span>( <span>api_key</span><span>=</span><span>"your-api-key-here"</span>, <span>http_options</span><span>=</span>{<span>'api_version'</span>: <span>'v1beta'</span>, <span>'url'</span>: <span>'http://localhost:3050'</span>}
+) <span>response</span> <span>=</span> <span>client</span>.<span>models</span>.<span>generate_content</span>( <span>model</span><span>=</span><span>"gemini-3.1-pro-preview"</span>, <span>contents</span><span>=</span><span>"Hello! What can you do?"</span>,
+) <span>print</span>(<span>response</span>.<span>text</span>)</pre></div>
+<p><strong>JavaScript (@google/genai)</strong></p>
+<div><pre><span>import</span> <span>{</span> <span>GoogleGenAI</span> <span>}</span> <span>from</span> <span>'@google/genai'</span><span>;</span> <span>const</span> <span>ai</span> <span>=</span> <span>new</span> <span>GoogleGenAI</span><span>(</span><span>{</span> <span>apiKey</span>: <span>'your-api-key-here'</span><span>,</span> <span>baseUrl</span>: <span>'http://localhost:3050'</span><span>,</span>
+<span>}</span><span>)</span><span>;</span> <span>// Standard completion</span>
+<span>const</span> <span>response</span> <span>=</span> <span>await</span> <span>ai</span><span>.</span><span>models</span><span>.</span><span>generateContent</span><span>(</span><span>{</span> <span>model</span>: <span>'gemini-3.1-pro-preview'</span><span>,</span> <span>contents</span>: <span>'Hello! What can you do?'</span>
+<span>}</span><span>)</span><span>;</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>response</span><span>.</span><span>text</span><span>)</span><span>;</span> <span>// Streaming completion</span>
+<span>const</span> <span>stream</span> <span>=</span> <span>await</span> <span>ai</span><span>.</span><span>models</span><span>.</span><span>generateContentStream</span><span>(</span><span>{</span> <span>model</span>: <span>'gemini-3.1-pro-preview'</span><span>,</span> <span>contents</span>: <span>'Tell me a long story.'</span>
+<span>}</span><span>)</span><span>;</span>
+<span>for</span> <span>await</span> <span>(</span><span>const</span> <span>chunk</span> <span>of</span> <span>stream</span><span>)</span> <span>{</span> <span>process</span><span>.</span><span>stdout</span><span>.</span><span>write</span><span>(</span><span>chunk</span><span>.</span><span>text</span><span>(</span><span>)</span><span>)</span><span>;</span>
+<span>}</span></pre></div>
+<p><strong>LangChain (Python)</strong></p>
+<div><pre><span>from</span> <span>langchain_google_genai</span> <span>import</span> <span>ChatGoogleGenerativeAI</span> <span>llm</span> <span>=</span> <span>ChatGoogleGenerativeAI</span>( <span>google_api_key</span><span>=</span><span>"your-api-key-here"</span>, <span>client_options</span><span>=</span>{<span>"client_cert_source"</span>: <span>None</span>, <span>"api_endpoint"</span>: <span>"http://localhost:3050"</span>}, <span>model</span><span>=</span><span>"gemini-3.1-pro-preview"</span>
+) <span>response</span> <span>=</span> <span>llm</span>.<span>invoke</span>(<span>"What is the meaning of life?"</span>)
+<span>print</span>(<span>response</span>.<span>content</span>)</pre></div>
+<hr>
+<div><h2>Admin Dashboard</h2><a href="#admin-dashboard"></a></div>
+<p>After completing the initial setup, access the administrative panel at </p><pre><code>http://localhost:3050</code></pre>.<p></p>
+<div><h3>Core Capabilities</h3><a href="#core-capabilities"></a></div>
+<table>
+<thead>
+<tr>
+<th>Dashboard Panel</th>
+<th>Capabilities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Overview</strong></td>
+<td>Analyze total proxy requests, success rates, active account statuses, and system-wide token usage.</td>
+</tr>
+<tr>
+<td><strong>Accounts</strong></td>
+<td>Connect new Google accounts via secure OAuth, automatically detect Pro status, monitor current status, and manually reactivate if necessary.</td>
+</tr>
+<tr>
+<td><strong>API Keys</strong></td>
+<td>Issue new API keys, revoke existing ones, and monitor individual key bandwidth utilization.</td>
+</tr>
+<tr>
+<td><strong>Chat</strong></td>
+<td>Interactive playground supporting Gemini 3 Pro thought processes, customizable system instructions, and real-time Markdown streaming.</td>
+</tr>
+<tr>
+<td><strong>Settings</strong></td>
+<td>Toggle between Firebase and Local JSON database solutions on the fly without losing request logs or account data.</td>
+</tr>
+<tr>
+<td><strong>Logs</strong></td>
+<td>Access comprehensive chronological histories detailing requests, generated completions, formatted tool calls (<pre><code>functionCall</code></pre>/<pre><code>functionResponse</code></pre>), and token calculations.</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Connecting Google Accounts</h3><a href="#connecting-google-accounts"></a></div>
+<ol>
+<li>Log in securely to the admin dashboard.</li>
+<li>Navigate to <strong>Accounts</strong> and select <strong>Connect Account</strong>.</li>
+<li>Authenticate with an active Google account and grant the requested permissions.</li>
+<li>OpenGem immediately integrates the account into its active load-balanced rotation pool.</li>
+</ol>
+<blockquote>
+<p><strong>Optimization Tip:</strong> Connect multiple Google accounts to linearly scale your available free quota. Google allocates individual free-tier quotas strictly on a per-account basis.</p>
+</blockquote>
+<hr>
+<div><h2>Security Architecture</h2><a href="#security-architecture"></a></div>
+<div><h3>Authentication &amp; Access Control</h3><a href="#authentication--access-control"></a></div>
+<ul>
+<li><strong>JWT Authentication</strong> — Admin sessions use cryptographically signed JSON Web Tokens with a secure 12-hour expiry. Tokens are stored in <pre><code>httpOnly</code></pre>, <pre><code>secure</code></pre>, <pre><code>sameSite: strict</code></pre> cookies to prevent XSS and CSRF attacks.</li>
+<li><strong>Bcrypt Password Hashing</strong> — Admin credentials (both username and password) are hashed with bcrypt (cost factor 12). Plaintext passwords are never stored.</li>
+<li><strong>Password Complexity</strong> — Enforced minimum 8 characters with at least one uppercase letter, one lowercase letter, and one digit, validated on both client and server side.</li>
+<li><strong>Rate Limiting</strong> — Login attempts are limited to 5 per 15 minutes per IP. API requests are capped at 120 per minute per IP to prevent brute force and DoS attacks.</li>
+</ul>
+<div><h3>Data Encryption</h3><a href="#data-encryption"></a></div>
+<ul>
+<li><strong>AES-256-GCM Config Encryption</strong> — All sensitive values in <pre><code>config.json</code></pre> (Firebase keys, JWT secret) are encrypted at rest using AES-256-GCM with scrypt key derivation. The encryption key is stored exclusively in <pre><code>.env</code></pre>.</li>
+<li><strong>OAuth Token Encryption</strong> — Google OAuth access tokens and refresh tokens are encrypted with AES-256-GCM before being written to Firestore, ensuring tokens remain protected even if the database is compromised.</li>
+<li><strong>API Key Hashing</strong> — API keys are stored as SHA-256 hashes in Firestore. Only a 7-character prefix is retained for display purposes. Plaintext keys are shown only once at creation time and are never stored.</li>
+</ul>
+<div><h3>Network &amp; Transport Security</h3><a href="#network--transport-security"></a></div>
+<ul>
+<li><strong>CORS Restriction</strong> — Cross-origin requests are blocked in production by default. Allowed origins can be configured via the <pre><code>CORS_ORIGIN</code></pre> environment variable.</li>
+<li><strong>Helmet.js Integration</strong> — Comprehensive HTTP security headers including strict Content Security Policy (CSP), X-Frame-Options, and XSS protection.</li>
+<li><strong>OAuth CSRF Protection</strong> — OAuth flows use separate cryptographic state parameters (<pre><code>crypto.randomBytes</code></pre>) independent from PKCE code verifiers, preventing CSRF and state-leakage attacks.</li>
+</ul>
+<div><h3>Operational Security</h3><a href="#operational-security"></a></div>
+<ul>
+<li><strong>Error Message Masking</strong> — Internal error details (stack traces, file paths) are hidden from API responses in production. Only generic error messages are returned to clients.</li>
+<li><strong>Environment Isolation</strong> — Sensitive credentials (<pre><code>.env</code></pre>, <pre><code>config.json</code></pre>) are gitignored. The <pre><code>.htaccess</code></pre> file blocks direct access to sensitive files and directories on production servers.</li>
+<li><strong>Auto-Migration</strong> — Legacy plaintext API keys and unencrypted config values are automatically detected and migrated to their secure formats on first use.</li>
+</ul>
+<hr>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>opengem/
+├── public/
+│ ├── icons/ # Third-party provider icons (Google, Firebase, Gemini)
+│ ├── logos/
+│ │ ├── black.png # Logo for light backgrounds
+│ │ └── white.png # Logo for dark backgrounds
+│ ├── index.html # Admin dashboard interface
+│ ├── admin.css # Interactive dashboard styling
+│ ├── admin.js # Client-side dashboard logic
+│ ├── setup.html # Configuration wizard interface
+│ ├── setup.css # Wizard styling architecture
+│ ├── setup.js # Wizard operational logic
+│ └── robots.txt # Search engine crawler directives
+├── src/
+│ ├── index.ts # High-level Express server, automated routing
+│ ├── controllers/
+│ │ └── chat.ts # Dedicated generative completion handlers
+│ ├── middleware/
+│ │ └── auth.ts # JWT administrative authentication interceptors
+│ └── services/
+│ ├── config.ts # Centralized state management &amp; AES-256 encryption
+│ ├── database.ts # Abstract database interface &amp; backend factory
+│ ├── firebase.ts # Integrated Firestore schema operations
+│ ├── gemini.ts # Standardized Gemini API &amp; OAuth connectors
+│ ├── http.ts # Native resilient HTTP client integration
+│ └── localDb.ts # Local JSON file database backend
+├── .env.example # Template environment variables
+├── .htaccess # Production file access restrictions
+├── app.js # Production entry point
+├── config.json # Encrypted runtime configuration (auto-generated)
+├── nodemon.json # Development hot-reload configuration
+├── package.json
+├── tsconfig.json
+├── CODE_OF_CONDUCT.md # Community code of conduct
+├── CONTRIBUTING.md # Contribution guidelines
+├── SECURITY.md # Security vulnerability reporting
+└── LICENSE
+</code></pre></div>
+<hr>
+<div><h2>Advanced Deployment</h2><a href="#advanced-deployment"></a></div>
+<div><h3>cPanel / Shared Node.js Hosting</h3><a href="#cpanel--shared-nodejs-hosting"></a></div>
+<ol>
+<li>Generate the production build: <pre><code>npm run build</code></pre></li>
+<li>Upload the compiled deployment artifact to your remote server architecture.</li>
+<li>Configure the designated Node.js application within cPanel targeting <pre><code>app.js</code></pre>.</li>
+<li>Access the designated domain to initialize the Setup Wizard securely.</li>
+</ol>
+<div><h3>VPS / Docker Deployment</h3><a href="#vps--docker-deployment"></a></div>
+<div><pre><span><span>#</span> Generate optimized production artifacts</span>
+npm run build <span><span>#</span> Initialize production daemon</span>
+NODE_ENV=production npm start</pre></div>
+<p>Configure the </p><pre><code>OAUTH_REDIRECT_URI</code></pre> variable within your <pre><code>.env</code></pre> configuration mapping to the publicly resolved URL callback endpoint:<p></p>
+<div><pre><code>OAUTH_REDIRECT_URI=https://yourdomain.com/api/auth/callback
+</code></pre></div>
+<hr>
+<div><h2>Open Source Contribution</h2><a href="#open-source-contribution"></a></div>
+<p>Community engineering optimization is actively encouraged. Please read the <a href="/arifozgun/OpenGem/blob/main/CONTRIBUTING.md">Contributing Guidelines</a> and <a href="/arifozgun/OpenGem/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a> before submitting changes.</p>
+<ol>
+<li>Fork the OpenGem repository.</li>
+<li>Formulate a discrete feature branch: <pre><code>git checkout -b feature/architectural-enhancement</code></pre></li>
+<li>Commit optimizations: <pre><code>git commit -m 'Implement architectural enhancement'</code></pre></li>
+<li>Push remote branches: <pre><code>git push origin feature/architectural-enhancement</code></pre></li>
+<li>Submit a comprehensive Pull Request.</li>
+</ol>
+<p>For security vulnerabilities, please refer to our <a href="/arifozgun/OpenGem/blob/main/SECURITY.md">Security Policy</a>.</p>
+<div><h3>Roadmap &amp; Pipeline</h3><a href="#roadmap--pipeline"></a></div>
+<ul>
+<li>Docker Compose ecosystem orchestration</li>
+<li>Webhook notifications for granular quota alerting</li>
+<li>Per-API Key differential rate limiting overrides</li>
+<li>Redis integrated response payload caching</li>
+</ul>
+<hr>
+<div><h2>License Summary</h2><a href="#license-summary"></a></div>
+<p>This repository is distributed under the <a href="/arifozgun/OpenGem/blob/main/LICENSE">MIT License</a>.</p>
+<hr>
+<div><h2>Disclaimer</h2><a href="#disclaimer"></a></div>
+<div><p>Caution</p><p><strong>This project is intended strictly for educational purposes, personal research, and learning.</strong></p>
+</div>
+<p>OpenGem is a proof-of-concept project that demonstrates API gateway architecture, multi-account load balancing, and OAuth authentication patterns. It utilizes credentials derived from Google's open-source <a href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a> project.</p>
+<p><strong>By using this software, you acknowledge that:</strong></p>
+<ul>
+<li>This project is provided <strong>as-is</strong> for educational and research purposes only.</li>
+<li>You are solely responsible for ensuring your usage complies with <a href="https://policies.google.com/terms">Google's Terms of Service</a>.</li>
+<li>This project is <strong>not intended for commercial or production use</strong>.</li>
+<li>The authors and contributors assume <strong>no liability</strong> for any consequences arising from the use of this software.</li>
+<li>This project has <strong>no official affiliation, endorsement, or sponsorship</strong> from Google LLC or any of its subsidiaries.</li>
+</ul>
+<p><strong>If you are looking for production-ready Gemini API access, please use the official <a href="https://aistudio.google.com">Google AI Studio</a> or <a href="https://cloud.google.com/vertex-ai">Google Cloud Vertex AI</a>.</strong></p>
+<hr>
+<div><h2>Star History</h2><a href="#star-history"></a></div>
+<p><a href="https://www.star-history.com/#arifozgun/OpenGem&amp;type=date&amp;legend=top-left"><img src="https://camo.githubusercontent.com/b5dabeb0d5c25dec38390aa93b5100ede4abde4c044dfba6ac0d75d64305ca57/68747470733a2f2f6170692e737461722d686973746f72792e636f6d2f7376673f7265706f733d617269666f7a67756e2f4f70656e47656d26747970653d64617465266c6567656e643d746f702d6c656674" alt="Star History Chart"></a></p>
+<hr>
+<div>
+<p><strong>If OpenGem scaled your AI development efficiently, please consider giving it a on GitHub!</strong></p>
+<p>Maintained by the global open-source community.</p>
+</div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

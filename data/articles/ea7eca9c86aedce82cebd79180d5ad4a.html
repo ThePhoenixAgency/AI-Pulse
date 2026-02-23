@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,29 +28,7 @@
     Source: PortSwigger Research | Date: 10/23/2024 12:59:05 PM | <a href="https://portswigger.net/research/concealing-payloads-in-url-credentials" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <p><img alt="Gareth Heyes" src="https://portswigger.net/content/images/profiles/callout_gareth_heyes_114px.png"></p>
-</div> <ul> <li> <p><span></span><strong>Published: </strong>23 October 2024 at 12:59 UTC</p> </li> <li> <p><strong>Updated: </strong>23 October 2024 at 14:03 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/79/ea/ed76-article-article.png" alt="A browser window with a payload in the URL and a crossed out eye indicating it's hidden"><br></p><p>Last year <a href="https://x.com/joaxcar">Johan Carlsson
-</a> discovered you could <a href="https://x.com/joaxcar/status/1712858781405577370">conceal payloads inside the credentials part of the URL
-</a>. This was fascinating to me especially because the payload is not actually visible in the URL in both Chrome and Firefox. This even persists through same origin navigations. So like a dog with a bone I wouldn't let go and tried to see what was possible...
-</p><p>The first surprising thing to me was document.URL does not always match location.</p><p><code>https://foo:bar@portswigger-labs.net<br>alert(location);//https://portswigger-labs.net/<br>alert(document.URL);//https://foo:bar@portswigger-labs.net/
-</code></p><p>I had assumed these two properties were the same since I'd never observed them being different but it turns out that document.URL contains the credentials part of the URL whereas location doesn't. What that means is you can use just URL inside an event grab the payload from the credentials:
-</p><p><code>https://alert(1)@portswigger-labs.net<br>&lt;img src onerror=alert(URL.slice(8,16))&gt;</code></p><p><a href="https://alert(1)@portswigger-labs.net/xss/xss.php?x=%3Cimg%20src%20onerror=alert(URL.slice(8,16))%3E">Grab payload from credentials</a></p><p>After fuzzing to identify which <a href="https://shazzer.co.uk/vectors/66565698b1ba6bb6f9133d13">characters are encoded in the credentials part of the URL
-</a>, Shazzer discovered that Firefox doesn't URL-encode single quotes. This is particularly useful in <a href="https://portswigger.net/web-security/cross-site-scripting/dom-based">DOM XSS</a> scenarios, if the site removes the query string and hash. As it makes vulnerabilities like this exploitable in Firefox:
-</p>
-<p><code>function getBase(url) {<br>&nbsp;&nbsp;&nbsp;return url.split(/[?#]/)[0];<br>}<br>document.write(`&lt;script&gt;const url='${getBase(document.URL)}';&lt;\/script&gt;`);
-</code></p><p>To exploit this you need to provide the payload in the credentials part on Firefox like this:
-</p><p><code>https://'-alert(1)-'@example.com</code></p><p>This can be delivered using redirection or user navigation. You can even use this technique to control the username or password properties of anchor links. This works because every anchor element has these properties, which store the credentials from the URL. If it's a relative link, it inherits the parent credentials, allowing you to clobber these values:
-</p>
-<p><code>https://clobbered@example.com<br>&lt;a href=# onclick=alert(username)&gt;test&lt;/a&gt;
-</code></p><p><a href="https://clobbered@portswigger-labs.net/xss/xss.php?x=%3Ca%20href=%23%20onclick=%22alert(username)%22%3Etest%3C/a%3E">Anchor Clobbering example
-</a></p>
-<p>You can combine this with <a href="https://portswigger.net/web-security/dom-based/dom-clobbering">DOM Clobbering</a> to give you control over objects with username or password properties. Note you can even supply a blank href which still enables control over username or password via the URL.
-</p><p><code>
-https://user:pass@example.com<br>&lt;a href id=x&gt;test&lt;/a&gt;<br>&lt;script&gt;<br>eval(x.username)//user<br>eval(x.password)//pass<br>&lt;/script&gt;
-</code></p><p>In conclusion, discovering the discrepancies between location and document.URL and how document.URL retains the credentials part of the URL - even when browsers like Chrome and Firefox hide it from the address bar is quite surprising. Firefox’s handling of certain characters, such as single quotes, which are not URL-encoded, could be useful for DOM XSS too.
-</p><p>The ability to conceal payloads through credentials, manipulate the username and password properties within anchor elements, and potentially combine this with DOM clobbering can be used for more advanced exploitation.
-</p> <p><b>Note:</b> Safari discards URL credentials. All the examples shown only work on Chrome and Firefox. Also Chrome blocks sub-resources from using URL credentials.</p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
-</div></div>
+    <p>Last year Johan Carlsson discovered you could conceal payloads inside the credentials part of the URL . This was fascinating to me especially because the payload is not actually visible in the URL in</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

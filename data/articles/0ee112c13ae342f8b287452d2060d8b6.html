@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bmalph: BMAD planning + Ralph autonomous loop, glued together in one command</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Bmalph: BMAD planning + Ralph autonomous loop, glued together in one command</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/23/2026 10:06:10 AM | <a href="https://dev.to/lacow/bmalph-bmad-planning-ralph-autonomous-loop-glued-together-in-one-command-14ka" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>I built Bmalph because I kept running into the same problem: AI coding assistants are great at writing code, but terrible at remembering why you made a decision three features ago. You re-explain context, the architecture drifts, things contradict each other. For small projects that's fine. For anything real, it's a slow disaster.</p> <p>bmalph is a CLI that combines two great existing open source projects: <a href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank">BMAD-METHOD</a> for structured AI planning, and <a href="https://github.com/snarktank/ralph" target="_blank">Ralph</a> for autonomous implementation. One command installs and wires them together in your project.</p> <p>Until last week it only worked with Claude Code. That's changed.</p> <hr> <h2> <a name="how-it-works" href="#how-it-works"> </a> How it works
+</h2> <p>The core idea is simple: separate thinking from doing.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fj02qj8neh01csbenaol1.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fj02qj8neh01csbenaol1.png" alt=" "></a></p> <p><strong>Phases 1-3 (BMAD — Planning)</strong></p> <p>Before any code gets written, you work interactively with specialized AI agents: an Analyst, a Product Manager, and an Architect. They guide you through producing a product brief, a PRD, UX specs, architecture decisions, and user stories. The AI asks questions. You make decisions. Nothing moves forward without your input.</p> <p>The output is a set of real planning documents that live in your repo under <code>_bmad-output/</code>. Not chat history. Not a summary in your clipboard. Actual files that persist.</p> <p><strong>Phase 4 (Ralph — Implementation)</strong></p> <p>Once planning is done, Ralph takes those docs and implements them autonomously. It picks the next story from <code>@fix_plan.md</code>, writes tests first, implements the code, commits, and moves on to the next story. You don't babysit it. The loop runs until the board is empty or the circuit breaker trips.</p> <p>The key thing Ralph has that vanilla Claude Code doesn't: a persistent spec. When it implements story 8, it still knows what was decided in story 1 because the planning docs are right there.</p> <hr> <h2> <a name="multiplatform-support" href="#multiplatform-support"> </a> Multi-platform support
+</h2> <p>The initial release assumed Claude Code. That was limiting. This release adds support for six platforms across two tiers.</p> <div><table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Tier</th>
+<th>What you get</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Code</td>
+<td>Full</td>
+<td>Phases 1-4, BMAD + Ralph loop</td>
+</tr>
+<tr>
+<td>OpenAI Codex</td>
+<td>Full</td>
+<td>Phases 1-4, BMAD + Ralph loop</td>
+</tr>
+<tr>
+<td>Cursor</td>
+<td>Instructions-only</td>
+<td>Phases 1-3, BMAD planning only</td>
+</tr>
+<tr>
+<td>Windsurf</td>
+<td>Instructions-only</td>
+<td>Phases 1-3, BMAD planning only</td>
+</tr>
+<tr>
+<td>GitHub Copilot</td>
+<td>Instructions-only</td>
+<td>Phases 1-3, BMAD planning only</td>
+</tr>
+<tr>
+<td>Aider</td>
+<td>Instructions-only</td>
+<td>Phases 1-3, BMAD planning only</td>
+</tr>
+</tbody>
+</table></div> <p>The tier split comes down to one thing: whether the platform exposes a scriptable CLI. Ralph is a bash loop that spawns fresh AI sessions, so it needs <code>claude</code> or <code>codex</code> in your PATH. Cursor, Windsurf, Copilot, and Aider don't work that way, so they get the planning workflow only.</p> <p>That said, Phases 1-3 alone are where most of the thinking happens. If you're on an instructions-only platform you still get the full BMAD workflow: analysts, PRDs, architecture, epics, stories.</p> <p>Platform detection is automatic. Run <code>bmalph init</code> and it figures out which platform you're using from project markers. Or pass <code>--platform &lt;id&gt;</code> explicitly.<br>
+</p> <div>
+<pre><code>npm <span>install</span> <span>-g</span> bmalph <span># auto-detect</span>
+bmalph init <span># or be explicit</span>
+bmalph init <span>--platform</span> codex
+bmalph init <span>--platform</span> cursor
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="how-bmalph-compares-to-just-using-your-ai-assistant-directly" href="#how-bmalph-compares-to-just-using-your-ai-assistant-directly"> </a> How bmalph compares to just using your AI assistant directly
+</h2> <p>This comes up a lot so let me be direct about it.</p> <p><strong>Just prompting Claude Code / Cursor / Copilot directly</strong></p> <p>Fine for small tasks. A bug fix, a component, a quick script. bmalph is overkill for that. If you're reaching for bmalph on a weekend project you're over-engineering your workflow.</p> <p>Where it breaks down is anything with multiple moving parts spanning more than a few sessions. The AI has no memory of earlier decisions, you end up re-explaining context constantly, and the architecture slowly drifts into something nobody planned.</p> <p><strong>BMAD-METHOD standalone</strong></p> <p>BMAD is great but setting it up manually in each project is friction. bmalph bundles and installs it with one command, keeps it versioned, and wires it to Ralph. If you're already using BMAD standalone, <code>bmalph init</code> is essentially a migration path — it preserves your <code>_bmad-output/</code> artifacts.</p> <p><strong>Devin, SWE-agent, and other fully autonomous systems</strong></p> <p>Different category. Those are trying to do everything autonomously from a single prompt. bmalph keeps you in the loop during planning — you're making decisions with the AI agents, not handing off a spec and waiting. Ralph only takes over once you've explicitly approved the plan and triggered the implementation.</p> <hr> <h2> <a name="bmad-is-now-stable" href="#bmad-is-now-stable"> </a> BMAD is now stable
+</h2> <p>Earlier versions had version drift issues where the bundled BMAD could get out of sync. That's fixed. The bundled version is now pinned, tested, and the upgrade path is clean.<br>
+</p> <div>
+<pre><code>bmalph upgrade
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This updates the bundled BMAD and Ralph assets without touching <code>_bmad-output/</code> — your planning artifacts are never overwritten.</p> <hr> <h2> <a name="whats-next" href="#whats-next"> </a> What's next
+</h2> <p>A few things on the roadmap:</p> <p><strong>Story-level diff summary.</strong> After each story, Ralph automatically generates a readable summary of what changed, which files were touched, and whether tests passed. Right now that's buried in raw logs.</p> <p><strong>Automatic context regeneration.</strong> When Ralph gets stuck, the circuit breaker detects it and stops. Instead: automatically run <code>GPC</code> (Generate Project Context) and refresh the context before the next iteration.</p> <hr> <h2> <a name="try-it" href="#try-it"> </a> Try it
+</h2> <div>
+<pre><code>npm <span>install</span> <span>-g</span> bmalph
+bmalph init
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Repo: <a href="https://github.com/LarsCowe/bmalph" target="_blank">github.com/LarsCowe/bmalph</a></p> <p>Questions, feedback, or war stories from using it in production — all welcome.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

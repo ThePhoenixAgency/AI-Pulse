@@ -1,203 +1,70 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
-<title>GitHub - microsoft/markitdown: Python tool for converting files and office documents to Markdown.</title>
+<title>microsoft/markitdown</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
-  <h1>GitHub - microsoft/markitdown: Python tool for converting files and office documents to Markdown.</h1>
+  <h1>microsoft/markitdown</h1>
   <div class="metadata">
-    Source: GitHub Trending Python | Date: Invalid Date | Lang: EN
+    Source: GitHub Trending Python | Date: 2/23/2026 10:48:19 AM | <a href="https://github.com/microsoft/markitdown" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div><article><p></p><h2>MarkItDown</h2><a href="#markitdown"></a><p></p>
-<p><a href="https://pypi.org/project/markitdown/"><img src="https://camo.githubusercontent.com/124b95350d48b05db482b4a2153dc9cb06250d6e9272e121a6f3856a5159879d/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f6d61726b6974646f776e2e737667" alt="PyPI"></a>
-<a target="_blank" href="https://camo.githubusercontent.com/b358637622bf3aede990f9e2f7d2297d2cb2974ff07ba78c71de83a0dbaf1220/68747470733a2f2f696d672e736869656c64732e696f2f707970692f64642f6d61726b6974646f776e"><img src="https://camo.githubusercontent.com/b358637622bf3aede990f9e2f7d2297d2cb2974ff07ba78c71de83a0dbaf1220/68747470733a2f2f696d672e736869656c64732e696f2f707970692f64642f6d61726b6974646f776e" alt="PyPI - Downloads"></a>
-<a href="https://github.com/microsoft/autogen"><img src="https://camo.githubusercontent.com/e773e2d12920abb5d8b2fe1d05f510b9ba7c3c54969bc3e05b6f7e8f8705e71d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4275696c7425323062792d4175746f47656e2532305465616d2d626c7565" alt="Built by AutoGen Team"></a></p>
-<div><p>Tip</p><p>MarkItDown now offers an MCP (Model Context Protocol) server for integration with LLM applications like Claude Desktop. See <a href="https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp">markitdown-mcp</a> for more information.</p>
-</div>
-<div><p>Important</p><p>Breaking changes between 0.0.1 to 0.1.0:</p>
-<ul>
-<li>Dependencies are now organized into optional feature-groups (further details below). Use <code>pip install 'markitdown[all]'</code> to have backward-compatible behavior.</li>
-<li>convert_stream() now requires a binary file-like object (e.g., a file opened in binary mode, or an io.BytesIO object). This is a breaking change from the previous version, where it previously also accepted text file-like objects, like io.StringIO.</li>
-<li>The DocumentConverter class interface has changed to read from file-like streams rather than file paths. <em>No temporary files are created anymore</em>. If you are the maintainer of a plugin, or custom DocumentConverter, you likely need to update your code. Otherwise, if only using the MarkItDown class or CLI (as in these examples), you should not need to change anything.</li>
-</ul>
-</div>
-<p>MarkItDown is a lightweight Python utility for converting various files to Markdown for use with LLMs and related text analysis pipelines. To this end, it is most comparable to <a href="https://github.com/deanmalmgren/textract">textract</a>, but with a focus on preserving important document structure and content as Markdown (including: headings, lists, tables, links, etc.) While the output is often reasonably presentable and human-friendly, it is meant to be consumed by text analysis tools -- and may not be the best option for high-fidelity document conversions for human consumption.</p>
-<p>MarkItDown currently supports the conversion from:</p>
-<ul>
-<li>PDF</li>
-<li>PowerPoint</li>
-<li>Word</li>
-<li>Excel</li>
-<li>Images (EXIF metadata and OCR)</li>
-<li>Audio (EXIF metadata and speech transcription)</li>
-<li>HTML</li>
-<li>Text-based formats (CSV, JSON, XML)</li>
-<li>ZIP files (iterates over contents)</li>
-<li>Youtube URLs</li>
-<li>EPubs</li>
-<li>... and more!</li>
-</ul>
-<p></p><h2>Why Markdown?</h2><a href="#why-markdown"></a><p></p>
-<p>Markdown is extremely close to plain text, with minimal markup or formatting, but still
-provides a way to represent important document structure. Mainstream LLMs, such as
-OpenAI's GPT-4o, natively "<em>speak</em>" Markdown, and often incorporate Markdown into their
-responses unprompted. This suggests that they have been trained on vast amounts of
-Markdown-formatted text, and understand it well. As a side benefit, Markdown conventions
-are also highly token-efficient.</p>
-<p></p><h2>Prerequisites</h2><a href="#prerequisites"></a><p></p>
-<p>MarkItDown requires Python 3.10 or higher. It is recommended to use a virtual environment to avoid dependency conflicts.</p>
-<p>With the standard Python installation, you can create and activate a virtual environment using the following commands:</p>
-<div><pre>python -m venv .venv
-<span>source</span> .venv/bin/activate</pre></div>
-<p>If using <code>uv</code>, you can create a virtual environment with:</p>
-<div><pre>uv venv --python=3.12 .venv
-<span>source</span> .venv/bin/activate
-<span><span>#</span> NOTE: Be sure to use 'uv pip install' rather than just 'pip install' to install packages in this virtual environment</span></pre></div>
-<p>If you are using Anaconda, you can create a virtual environment with:</p>
-<div><pre>conda create -n markitdown python=3.12
-conda activate markitdown</pre></div>
-<p></p><h2>Installation</h2><a href="#installation"></a><p></p>
-<p>To install MarkItDown, use pip: <code>pip install 'markitdown[all]'</code>. Alternatively, you can install it from the source:</p>
-<div><pre>git clone git@github.com:microsoft/markitdown.git
-<span>cd</span> markitdown
-pip install -e <span><span>'</span>packages/markitdown[all]<span>'</span></span></pre></div>
-<p></p><h2>Usage</h2><a href="#usage"></a><p></p>
-<p></p><h3>Command-Line</h3><a href="#command-line"></a><p></p>
-<div><pre>markitdown path-to-file.pdf <span>&gt;</span> document.md</pre></div>
-<p>Or use <code>-o</code> to specify the output file:</p>
-<div><pre>markitdown path-to-file.pdf -o document.md</pre></div>
-<p>You can also pipe content:</p>
-<div><pre>cat path-to-file.pdf <span>|</span> markitdown</pre></div>
-<p></p><h3>Optional Dependencies</h3><a href="#optional-dependencies"></a><p></p>
-<p>MarkItDown has optional dependencies for activating various file formats. Earlier in this document, we installed all optional dependencies with the <code>[all]</code> option. However, you can also install them individually for more control. For example:</p>
-<div><pre>pip install <span><span>'</span>markitdown[pdf, docx, pptx]<span>'</span></span></pre></div>
-<p>will install only the dependencies for PDF, DOCX, and PPTX files.</p>
-<p>At the moment, the following optional dependencies are available:</p>
-<ul>
-<li><code>[all]</code> Installs all optional dependencies</li>
-<li><code>[pptx]</code> Installs dependencies for PowerPoint files</li>
-<li><code>[docx]</code> Installs dependencies for Word files</li>
-<li><code>[xlsx]</code> Installs dependencies for Excel files</li>
-<li><code>[xls]</code> Installs dependencies for older Excel files</li>
-<li><code>[pdf]</code> Installs dependencies for PDF files</li>
-<li><code>[outlook]</code> Installs dependencies for Outlook messages</li>
-<li><code>[az-doc-intel]</code> Installs dependencies for Azure Document Intelligence</li>
-<li><code>[audio-transcription]</code> Installs dependencies for audio transcription of wav and mp3 files</li>
-<li><code>[youtube-transcription]</code> Installs dependencies for fetching YouTube video transcription</li>
-</ul>
-<p></p><h3>Plugins</h3><a href="#plugins"></a><p></p>
-<p>MarkItDown also supports 3rd-party plugins. Plugins are disabled by default. To list installed plugins:</p>
-<div><pre>markitdown --list-plugins</pre></div>
-<p>To enable plugins use:</p>
-<div><pre>markitdown --use-plugins path-to-file.pdf</pre></div>
-<p>To find available plugins, search GitHub for the hashtag <code>#markitdown-plugin</code>. To develop a plugin, see <code>packages/markitdown-sample-plugin</code>.</p>
-<p></p><h3>Azure Document Intelligence</h3><a href="#azure-document-intelligence"></a><p></p>
-<p>To use Microsoft Document Intelligence for conversion:</p>
-<div><pre>markitdown path-to-file.pdf -o document.md -d -e <span><span>"</span>&lt;document_intelligence_endpoint&gt;<span>"</span></span></pre></div>
-<p>More information about how to set up an Azure Document Intelligence Resource can be found <a href="https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/how-to-guides/create-document-intelligence-resource?view=doc-intel-4.0.0">here</a></p>
-<p></p><h3>Python API</h3><a href="#python-api"></a><p></p>
-<p>Basic usage in Python:</p>
-<div><pre><span>from</span> <span>markitdown</span> <span>import</span> <span>MarkItDown</span>
-
-<span>md</span> <span>=</span> <span>MarkItDown</span>(<span>enable_plugins</span><span>=</span><span>False</span>) <span># Set to True to enable plugins</span>
-<span>result</span> <span>=</span> <span>md</span>.<span>convert</span>(<span>"test.xlsx"</span>)
-<span>print</span>(<span>result</span>.<span>text_content</span>)</pre></div>
-<p>Document Intelligence conversion in Python:</p>
-<div><pre><span>from</span> <span>markitdown</span> <span>import</span> <span>MarkItDown</span>
-
-<span>md</span> <span>=</span> <span>MarkItDown</span>(<span>docintel_endpoint</span><span>=</span><span>"&lt;document_intelligence_endpoint&gt;"</span>)
-<span>result</span> <span>=</span> <span>md</span>.<span>convert</span>(<span>"test.pdf"</span>)
-<span>print</span>(<span>result</span>.<span>text_content</span>)</pre></div>
-<p>To use Large Language Models for image descriptions (currently only for pptx and image files), provide <code>llm_client</code> and <code>llm_model</code>:</p>
-<div><pre><span>from</span> <span>markitdown</span> <span>import</span> <span>MarkItDown</span>
-<span>from</span> <span>openai</span> <span>import</span> <span>OpenAI</span>
-
-<span>client</span> <span>=</span> <span>OpenAI</span>()
-<span>md</span> <span>=</span> <span>MarkItDown</span>(<span>llm_client</span><span>=</span><span>client</span>, <span>llm_model</span><span>=</span><span>"gpt-4o"</span>, <span>llm_prompt</span><span>=</span><span>"optional custom prompt"</span>)
-<span>result</span> <span>=</span> <span>md</span>.<span>convert</span>(<span>"example.jpg"</span>)
-<span>print</span>(<span>result</span>.<span>text_content</span>)</pre></div>
-<p></p><h3>Docker</h3><a href="#docker"></a><p></p>
-<div><pre>docker build -t markitdown:latest <span>.</span>
-docker run --rm -i markitdown:latest <span>&lt;</span> <span>~</span>/your-file.pdf <span>&gt;</span> output.md</pre></div>
-<p></p><h2>Contributing</h2><a href="#contributing"></a><p></p>
-<p>This project welcomes contributions and suggestions. Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit <a href="https://cla.opensource.microsoft.com/">https://cla.opensource.microsoft.com</a>.</p>
-<p>When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.</p>
-<p>This project has adopted the <a href="https://opensource.microsoft.com/codeofconduct/">Microsoft Open Source Code of Conduct</a>.
-For more information see the <a href="https://opensource.microsoft.com/codeofconduct/faq/">Code of Conduct FAQ</a> or
-contact <a href="mailto:opencode@microsoft.com">opencode@microsoft.com</a> with any additional questions or comments.</p>
-<p></p><h3>How to Contribute</h3><a href="#how-to-contribute"></a><p></p>
-<p>You can help by looking at issues or helping review PRs. Any issue or PR is welcome, but we have also marked some as 'open for contribution' and 'open for reviewing' to help facilitate community contributions. These are of course just suggestions and you are welcome to contribute in any way you like.</p>
-<div>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>All</th>
-<th>Especially Needs Help from Community</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Issues</strong></td>
-<td><a href="https://github.com/microsoft/markitdown/issues">All Issues</a></td>
-<td><a href="https://github.com/microsoft/markitdown/issues?q=is%3Aissue+is%3Aopen+label%3A%22open+for+contribution%22">Issues open for contribution</a></td>
-</tr>
-<tr>
-<td><strong>PRs</strong></td>
-<td><a href="https://github.com/microsoft/markitdown/pulls">All PRs</a></td>
-<td><a href="https://github.com/microsoft/markitdown/pulls?q=is%3Apr+is%3Aopen+label%3A%22open+for+reviewing%22">PRs open for reviewing</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p></p><h3>Running Tests and Checks</h3><a href="#running-tests-and-checks"></a><p></p>
-<ul>
-<li>
-<p>Navigate to the MarkItDown package:</p>
-<div><pre><span>cd</span> packages/markitdown</pre></div>
-</li>
-<li>
-<p>Install <code>hatch</code> in your environment and run tests:</p>
-<div><pre>pip install hatch  <span><span>#</span> Other ways of installing hatch: https://hatch.pypa.io/dev/install/</span>
-hatch shell
-hatch <span>test</span></pre></div>
-<p>(Alternative) Use the Devcontainer which has all the dependencies installed:</p>
-<div><pre><span><span>#</span> Reopen the project in Devcontainer and run:</span>
-hatch <span>test</span></pre></div>
-</li>
-<li>
-<p>Run pre-commit checks before submitting a PR: <code>pre-commit run --all-files</code></p>
-</li>
-</ul>
-<p></p><h3>Contributing 3rd-party Plugins</h3><a href="#contributing-3rd-party-plugins"></a><p></p>
-<p>You can also contribute by creating and sharing 3rd party plugins. See <code>packages/markitdown-sample-plugin</code> for more details.</p>
-<p></p><h2>Trademarks</h2><a href="#trademarks"></a><p></p>
-<p>This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft
-trademarks or logos is subject to and must follow
-<a href="https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general">Microsoft's Trademark &amp; Brand Guidelines</a>.
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.</p>
-</article></div></div>
+    <p>Python tool for converting files and office documents to Markdown. MarkItDown [!TIP] MarkItDown now offers an MCP (Model Context Protocol) server for integration with LLM applications like Claude Desktop. See markitdown-mcp for more information. [!IMPORTANT] Breaking changes between 0.0.1 to 0.1.0: Dependencies are now organized into optional feature-groups (further details below). Use pip install 'markitdown[all]' to have backward-compatible behavior. convert_stream() now requires a binary file-like object (e.g., a file opened in binary mode, or an io.BytesIO object). This is a breaking change from the previous version, where it previously also accepted text file-like objects, like io.StringIO. The DocumentConverter class interface has changed to read from file-like streams rather than file paths. No temporary files are created anymore. If you are the maintainer of a plugin, or custom DocumentConverter, you likely need to update your code. Otherwise, if only using the MarkItDown class or CLI (as in these examples), you should not need to change anything.</p>
   </div>
-
-</body></html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
