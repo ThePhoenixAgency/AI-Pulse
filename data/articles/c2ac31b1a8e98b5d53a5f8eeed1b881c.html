@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How I Built an E2E Encrypted File Transfer in Python — and What Came Out of It</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How I Built an E2E Encrypted File Transfer in Python — and What Came Out of It</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/23/2026 3:43:32 PM | <a href="https://dev.to/artmarchenko/how-i-built-an-e2e-encrypted-file-transfer-in-python-and-what-came-out-of-it-54ei" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>I want to share my side project — <strong>SecureShare</strong>. It's a desktop app for direct file transfer between two computers with end-to-end encryption.</p> <p>This post isn't about how great it is. It's more about the technical decisions, the pitfalls, and why certain things are built the way they are. I'd love to hear your thoughts and criticism.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8ujattpod7kx0rj2kkxn.jpg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F8ujattpod7kx0rj2kkxn.jpg"></a><br>
+<a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fs3eim7ocinmnl7k3xdbr.jpg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fs3eim7ocinmnl7k3xdbr.jpg"></a><br>
+<a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9i0lkfniyiysqv31536p.jpg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9i0lkfniyiysqv31536p.jpg"></a><br>
+<a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ffb72qurvsouiibqvlinz.jpg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ffb72qurvsouiibqvlinz.jpg"></a></p>
+<h2> <a name="the-problem" href="#the-problem"> </a> The Problem
+</h2> <p>I needed to send a confidential document to someone in another city. My options:</p> <ul>
+<li>
+<strong>Google Drive / Dropbox</strong> — the file sits on someone else's servers, the company has access</li>
+<li>
+<strong>Telegram</strong> — convenient, but files are stored on their servers, and "secret chats" don't handle files well</li>
+<li>
+<strong>Email</strong> — no comment</li>
+<li>
+<strong>WeTransfer</strong> — the file is temporarily stored on their servers</li>
+</ul> <p>All of these have the same issue: my file ends up on someone else's server, and I don't control what happens to it next.</p> <p>I wanted something simple: send a file directly, encrypted on my device, decrypted only on the recipient's device. No sign-ups, no accounts.</p>
+<h2> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h2> <p>The architecture is fairly straightforward:<br>
+</p> <div>
+<pre><code>Sender ←—WSS—→ Relay Server ←—WSS—→ Receiver
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <ol>
+<li>Both clients connect to the relay server via WebSocket (TLS)</li>
+<li>X25519 key exchange (Elliptic Curve Diffie-Hellman)</li>
+<li>Both sides see a <strong>verification code</strong> — like Signal's safety numbers, to confirm no one is intercepting</li>
+<li>The file is encrypted with AES-256-GCM and sent in chunks</li>
+<li>SHA-256 hash verification at the end</li>
+</ol> <p>The <strong>relay server</strong> is literally a pipe. It receives encrypted bytes from the sender and forwards them to the receiver. The server doesn't know the file name, its contents, or even its size (because metadata is also encrypted).</p> <h2> <a name="why-these-choices" href="#why-these-choices"> </a> Why These Choices
+</h2> <h3> <a name="x25519-aes256gcm" href="#x25519-aes256gcm"> </a> X25519 + AES-256-GCM
+</h3> <ul>
+<li>Broad support in Python's <code>cryptography</code> library</li>
+<li>Hardware acceleration via AES-NI on most CPUs</li>
+<li>Secure enough with proper nonce management</li>
+</ul> <p>To prevent nonce reuse, I built a prefix system: each side gets its own 4-byte prefix (determined by comparing public keys), plus an 8-byte counter. This guarantees nonces never repeat.</p> <p><strong>Honestly</strong>, if I were starting over — I might choose XChaCha20. Less headache with nonces. But AES-GCM works, and I'm not planning to change it.</p> <h3> <a name="verification-code" href="#verification-code"> </a> Verification Code
+</h3> <p>One thing that frustrated me about other solutions — no MITM protection. If the relay server is compromised, it could swap keys. So both users see a short code (first 8 chars of SHA-256 of the shared secret) and must compare it. Like Signal's safety number verification.</p> <p>It's not perfect — users can ignore the verification. But at least the mechanism exists.</p> <h3> <a name="websocket-relay-instead-of-p2p" href="#websocket-relay-instead-of-p2p"> </a> WebSocket Relay Instead of P2P
+</h3> <p>The first version tried to work peer-to-peer via MQTT. It was a nightmare: NAT traversal, STUN/TURN, firewalls... Eventually I gave up and built a simple WebSocket relay on a VPS. Yes, this adds a single point of failure, but:</p> <ul>
+<li>Works through any NAT and firewall</li>
+<li>No network configuration needed</li>
+<li>The relay is fully self-hostable — spin up your own in 5 minutes via Docker
+</li>
+</ul> <div>
+<pre><code><span># docker-compose.yml — the entire server</span>
+<span>services</span><span>:</span> <span>relay</span><span>:</span> <span>build</span><span>:</span> <span>.</span> <span>restart</span><span>:</span> <span>unless-stopped</span> <span>caddy</span><span>:</span> <span>image</span><span>:</span> <span>caddy:2</span> <span>ports</span><span>:</span> <span>[</span><span>"</span><span>80:80"</span><span>,</span> <span>"</span><span>443:443"</span><span>]</span> <span>volumes</span><span>:</span> <span>-</span> <span>./Caddyfile:/etc/caddy/Caddyfile</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="autoreconnect-and-resume" href="#autoreconnect-and-resume"> </a> Auto-reconnect and Resume
+</h2> <p>This is a feature I didn't plan but turned out to be critical. Imagine: you're transferring a 3 GB file, and at 80% your Wi-Fi drops for 10 seconds.</p> <p>Without resume — start over. With resume — the client automatically reconnects, re-does the key exchange, and continues from where it left off. The receiver stores a <code>.resume</code> manifest with information about received chunks.</p> <p>This was tricky to get right. Especially the part where a reconnect needs a new key exchange (because the connection is new), but verification can be skipped (because a <code>reconnect_token</code> proves identity).</p> <h2> <a name="the-stack" href="#the-stack"> </a> The Stack
+</h2> <div><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client</td>
+<td>Python + CustomTkinter</td>
+</tr>
+<tr>
+<td>Encryption</td>
+<td>cryptography (X25519, AES-256-GCM, HKDF)</td>
+</tr>
+<tr>
+<td>Relay server</td>
+<td>Python asyncio + websockets</td>
+</tr>
+<tr>
+<td>TLS</td>
+<td>Caddy + Let's Encrypt</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>DuckDNS</td>
+</tr>
+<tr>
+<td>Build</td>
+<td>PyInstaller (.exe / Linux binary)</td>
+</tr>
+</tbody>
+</table></div> <p><strong>Why Python?</strong> Because it's a side project, and I wanted to move fast. CustomTkinter gives a decent-looking GUI with minimal code. Yes, the .exe is ~30 MB (PyInstaller), and it doesn't start instantly. If this were a commercial product — I'd pick something else.</p> <h2> <a name="what-i-dont-like" href="#what-i-dont-like"> </a> What I Don't Like
+</h2> <p>I'll be honest — there are things that annoy me too:</p> <ul>
+<li>
+<strong>One file per session.</strong> Want to send 5 files? Pack them into an archive. It's a protocol limitation, and changing it basically means rewriting the transfer logic</li>
+<li>
+<strong>No macOS build.</strong> PyInstaller + CustomTkinter + macOS = suffering. It runs from source, but I don't build a .app</li>
+<li>
+<strong>5 GB limit.</strong> Server-side limit to prevent one user from hogging the channel. Enough for most tasks, but not all</li>
+<li>
+<strong>GUI could be better.</strong> CustomTkinter is a compromise. Looks okay, but it's not Electron and not a native UI</li>
+</ul> <h2> <a name="what-it-looks-like" href="#what-it-looks-like"> </a> What It Looks Like
+</h2> <p>The interface supports three languages (Ukrainian, English, German) with live switching — no restart needed. Dark theme by default.</p> <p>Here's a real transfer of a 2.9 GB file between two devices:</p> <p>The <strong>sender</strong> generates a session code (<code>ooxv-zhef</code>) and shares it with the receiver. After connecting, both see a verification code (<code>FD79-FDBB</code>) — if it matches, no one has intercepted the connection. Then the file flies through as an encrypted stream at ~15 MB/s.</p> <p>At the bottom of the window — a log showing every step: file hash, relay connection, key exchange, verification, transfer. Full transparency.</p> <h2> <a name="whats-next" href="#whats-next"> </a> What's Next
+</h2> <p>I have a few ideas, but I'm not sure about priorities:</p> <ul>
+<li>Web version (so you don't need to download .exe)</li>
+<li>Folder transfer support</li>
+<li>Better verification UX (maybe QR codes?)</li>
+<li>macOS build</li>
+</ul> <p>If you have thoughts on what matters most — I'd love to hear it.</p> <h2> <a name="links" href="#links"> </a> Links
+</h2> <ul>
+<li>
+<strong>Website:</strong> <a href="https://secureshare-relay.duckdns.org/" target="_blank">https://secureshare-relay.duckdns.org</a>
+</li>
+<li>
+<strong>GitHub:</strong> <a href="https://github.com/artmarchenko/SecureShare" target="_blank">https://github.com/artmarchenko/SecureShare</a>
+</li>
+<li>
+<strong>License:</strong> MIT</li>
+</ul> <hr> <p>I'd appreciate any feedback — especially on the cryptography and architecture. If you see holes in the security model — please tell me, that's the most valuable input.</p> <p>Thanks for reading!</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

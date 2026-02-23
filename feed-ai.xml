@@ -5,7 +5,7 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>AI - Artificial Intelligence news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Mon, 23 Feb 2026 10:48:51 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 23 Feb 2026 16:53:48 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-ai.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title><![CDATA[Railway secures $100 million to challenge AWS with AI-native cloud infrastructure]]></title>
@@ -346,22 +346,6 @@ Publish models to the Hub This tutorial dives even deeper and shows you how it w
       <guid>https://huggingface.co/blog/hf-skills-training-codex</guid>
     </item>
     <item>
-      <title><![CDATA[Hugging Face and VirusTotal collaborate to strengthen AI security]]></title>
-      <link>https://huggingface.co/blog/virustotal</link>
-      <description><![CDATA[Back to Articles Why this matters How the collaboration works Benefits for the community Join us We’re excited to announce a new collaboration between Hugging Face and VirusTotal, the world’s leading threat-intelligence and malware analysis platform.
-This collaboration enhances the security of files shared across the Hugging Face Hub, helping protect the machine learning community from malicious or compromised assets.
-TL;DR - Starting today, every one of the 2.2M+ public model and datasets repositories on the Hugging Face Hub is being continuously scanned with VirusTotal. Why this matters AI models are powerful but they’re also complex digital artifacts that can include large binary files, serialized data, and dependencies that sometimes carry hidden risks.
-As of today HF Hub hosts 2.2 Million Public model artifacts. As we continue to grow into the world’s largest open platform for Machine Learning models and datasets, ensuring that shared assets remain safe is essential.
-Threats can take many forms: Malicious payloads disguised as model files or archives
-Files that have been compromised before upload
-Binary assets linked to known malware campaigns
-Dependencies or serialized objects that execute unsafe code when loaded By collaborating with VirusTotal, we’re adding an extra layer of protection and visibility by enabling files shared through H]]></description>
-      <pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/virustotal</guid>
-    </item>
-    <item>
       <title><![CDATA[Agentic AI for Modern Deep Learning Experimentation]]></title>
       <link>https://towardsdatascience.com/agentic-ai-for-modern-deep-learning-experimentation/</link>
       <description><![CDATA[Stop babysitting training runs. Start shipping research. Autonomous experiment management built for/by deep learning engineers.]]></description>
@@ -378,18 +362,6 @@ Dependencies or serialized objects that execute unsafe code when loaded By colla
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/lerobot-release-v040</guid>
-    </item>
-    <item>
-      <title><![CDATA[Google Cloud C4 Brings a 70% TCO improvement on GPT OSS with Intel and Hugging Face]]></title>
-      <link>https://huggingface.co/blog/gpt-oss-on-intel-xeon</link>
-      <description><![CDATA[Back to Articles Intel and Hugging Face collaborated to demonstrate the real-world value of upgrading to Google’s latest C4 Virtual Machine (VM) running on Intel Xeon 6 processors (codenamed Granite Rapids (GNR)). We specifically wanted to benchmark improvements in the text generation performance of OpenAI GPT OSS Large Language Model(LLM). The results are in, and they are impressive, demonstrating a 1.7x improvement in Total Cost of Ownership(TCO) over the previous-generation Google C3 VM instances. The Google Cloud C4 VM instance further resulted in: 1.4x to 1.7x TPOT throughput/vCPU/dollar
-Lower price per hour over C3 VM Introduction GPT OSS is a common name for an open-source Mixture of Experts (MoE) model released by OpenAI. An MoE model is a deep neural network architecture that uses specialized “expert” sub-networks and a “gating network” to decide which experts to use for a given input. MoE models allow you to scale your model capacity efficiently without linearly scaling compute costs. They also allow for specialization, where different “experts” learn different skills, allowing them to adapt to diverse data distributions.
-Even with very large parameters, only a small subset of experts is activated per token, making CPU inference viable.
-Intel and Hugging Face collaborated to merge an expert execution optimization (PR #40304)]]></description>
-      <pubDate>Thu, 16 Oct 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/gpt-oss-on-intel-xeon</guid>
     </item>
     <item>
       <title><![CDATA[Smol2Operator: Post-Training GUI Agents for Computer Use]]></title>
@@ -444,6 +416,17 @@ In th]]></description>
       <source>Towards Data Science</source>
       <category>ai</category>
       <guid>https://towardsdatascience.com/an-end-to-end-guide-to-beautifying-your-open-source-repo-with-agentic-ai/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek]]></title>
+      <link>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-2</link>
+      <description><![CDATA[Back to Articles Mixture of Experts (MoE) as the Default Choice The Rush for Supremacy by Modality Big Preferences for Small Models More Permissive Open Source Licenses From Model-First to Hardware-First Reconstruction In Progress This is the second blog in a three-part series on China's open source community's historical advancements since January 2025's "DeepSeek Moment." The first blog is available here, and the third blog is available here.
+In this second piece we turn our focus from models to the architectural and hardware choices Chinese companies have made as openness becomes the norm.
+For AI researchers and developers contributing to and relying on the open source ecosystem and for policymakers understanding the rapidly changing environment, architectural preferences, modality diversification, license permissiveness, small model popularity, and growing adoption of Chinese hardware point to leadership strategies across a multitude of paths. DeepSeek R1's own characteristics inspired overlap and competition, and contributed to heavier focus on domestic hardware in China. Mixture of Experts (MoE) as the Default Choice In the past year, leading models from the Chinese community had almost unanimously moved toward Mixture-of-Experts (MoE) architectures, including Kimi K2, MiniMax M2, and Qwen3. R1 itself was an MoE model, it also prove]]></description>
+      <pubDate>Tue, 27 Jan 2026 15:01:45 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-2</guid>
     </item>
     <item>
       <title><![CDATA[One Year Since the “DeepSeek Moment”]]></title>
@@ -517,16 +500,6 @@ China’s chip development correlates highly with stronger export controls from 
       <guid>https://huggingface.co/blog/huggingface/shifting-compute-landscape</guid>
     </item>
     <item>
-      <title><![CDATA[How to Build a Healthcare Robot from Simulation to Deployment with NVIDIA Isaac for Healthcare]]></title>
-      <link>https://huggingface.co/blog/nvidia/nvidia-isaac-for-healthcare</link>
-      <description><![CDATA[Back to Articles A hands-on guide to collecting data, training policies, and deploying autonomous medical robotics workflows on real hardware SO-ARM Starter Workflow; Building an Embodied Surgical Assistant Technical Implementation Sim-to-Real Mixed Training Approach Hardware Requirements Data Collection Implementation Simulation Teleoperation Controls Model Training Pipeline End-to-End Sim Collect–Train–Eval Pipelines Generate Synthetic Data in Simulation Train and Evaluate Policies Convert Models to TensorRT Getting Started Resources A hands-on guide to collecting data, training policies, and deploying autonomous medical robotics workflows on real hardware Simulation has been a cornerstone in medical imaging to address the data gap. However, in healthcare robotics until now, it's often been too slow, siloed, or difficult to translate into real-world systems. That’s now changing. With new advances in GPU-accelerated simulation and digital twins, developers can design, test, and validate robotic workflows entirely in virtual environments - reducing prototyping time from months to days, improving model accuracy, and enabling safer, faster innovation before a single device reaches the operating room.
-That's why NVIDIA introduced Isaac for Healthcare earlier this year, a developer framework for AI healthcare robotics, that enables develope]]></description>
-      <pubDate>Tue, 28 Oct 2025 20:42:35 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/nvidia/nvidia-isaac-for-healthcare</guid>
-    </item>
-    <item>
       <title><![CDATA[huggingface_hub v1.0: Five Years of Building the Foundation of Open Machine Learning]]></title>
       <link>https://huggingface.co/blog/huggingface-hub-v1</link>
       <description><![CDATA[Back to Articles The Story Behind the Library The Foundation Years (2020-2021) The Great Shift: Git to HTTP (2022) An Expanding API Surface (2022–2024) Ready. Xet. Go! (2024-2025) Measuring Growth and Impact Building for the Next Decade Modern HTTP Infrastructure with httpx and hf_xet Agents Made Simple with MCP and Tiny-Agents A Fully-Featured CLI for Modern Workflows Cleaning House for the Future The Migration Guide Acknowledgments TL;DR: After five years of development, huggingface_hub has reached v1.0 - a milestone that marks the library's maturity as the Python package powering 200,000 dependent libraries and providing core functionality for accessing over 2 million public models, 0.5 million public datasets, and 1 million public Spaces. This release introduces breaking changes designed to support the next decade of open machine learning, driven by a global community of almost 300 contributors and millions of users. We highly recommend upgrading to v1.0 to benefit from major performance improvements and new capabilities.
@@ -581,17 +554,6 @@ AI-MO/Kimina-Prover-RL-0.6B, a 0.6B-parameter model that achieves 71.30% Pass@32
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/AI-MO/kimina-prover-rl</guid>
-    </item>
-    <item>
-      <title><![CDATA[Neural Super Sampling is here!]]></title>
-      <link>https://huggingface.co/blog/Arm/neural-super-sampling</link>
-      <description><![CDATA[Back to Articles Elevated by machine learning Learn about our NSS Model How we trained the model Get started experimenting with NSS today! Neural Super Sampling (NSS), a next-generation AI-powered upscaling solution from Arm is released for graphics and gaming developers to start experimenting today! Elevated by machine learning NSS is designed for real-time performance on future mobile devices with Arm Neural Technology. However, latency depends on implementation factors such as GPU configuration, resolution, and use case. In our Enchanted Castle demo video below, NSS reduced GPU workload by 50 percent. The model rendered at 540p and upscaled to 1080p in just 4ms in sustained performance setup. Your browser does not support the video tag. Learn about our NSS Model Neural Super Sampling (NSS) is a parameter prediction model for real-time temporal super sampling developed by Arm, optimized for execution on Neural Accelerators (NX) in mobile GPUs. It enables high-resolution rendering at a lower compute cost by reconstructing high-quality output frames from low-resolution temporal inputs. NSS is particularly suited for mobile gaming, XR, and other power-constrained graphics use cases.
-Get started with our NSS model today.
-If you want to go deeper check out the following resources: Technical Blog: How Neural Super Sampl]]></description>
-      <pubDate>Tue, 12 Aug 2025 14:52:08 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/Arm/neural-super-sampling</guid>
     </item>
     <item>
       <title><![CDATA[Introducing AI Sheets: a tool to work with datasets using open AI models!]]></title>
@@ -772,17 +734,6 @@ CUGA (Configurable Generalist Agent) was designed to overcome these limitations.
       <guid>https://huggingface.co/blog/ibm-research/cuga-on-hugging-face</guid>
     </item>
     <item>
-      <title><![CDATA[Voice Cloning with Consent]]></title>
-      <link>https://huggingface.co/blog/voice-consent-gate</link>
-      <description><![CDATA[Back to Articles Ethics in Practice: Consent as System Infrastructure The Technical Details Approach Unlocking the Voice Consent Gate In this blog post, we introduce the idea of a 'voice consent gate' to support voice cloning with consent. We provide an example Space and accompanying code to start the ball rolling on the idea.
-Realistic voice generation technology has gotten uncannily good in the past few years. In some situations, it’s possible to generate a synthetic voice that sounds almost exactly like the voice of a real person. And today, what once felt like science fiction is reality: Voice cloning. With just a few seconds of recorded speech, anyone’s voice can be made to say almost anything. Voice generation, and in particular the subtask of voice cloning, has notable risks and benefits. The risks of “deepfakes”, such as the cloned voice of former President Biden used in robocalls, can mislead people into thinking that people have said things that they haven’t said. On the other hand, voice cloning can be a powerful beneficial tool, helping people who’ve lost the ability to speak communicate in their own voice again, or assisting people in learning new languages and dialects.
-So how do we create meaningful use without malicious use? We’re exploring one possible answer: a voice consent gate. That’s a system where a voice can be cloned only when the]]></description>
-      <pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/voice-consent-gate</guid>
-    </item>
-    <item>
       <title><![CDATA[Streaming datasets: 100x More Efficient]]></title>
       <link>https://huggingface.co/blog/streaming-datasets</link>
       <description><![CDATA[Back to Articles TLDR Streaming: The Same Easy API The Challenge: Streaming at Scale Under the Hood: What We Improved How are we faster than plain S3: Xet Need a custom streaming pipeline ? Push streaming to the limit Get Started and See the Difference TLDR We boosted load_dataset('dataset', streaming=True), streaming datasets without downloading them with one line of code!
@@ -832,15 +783,6 @@ Using Vision Language Models for Document Question Answering Wrapping up Brief I
       <guid>https://huggingface.co/blog/ocr-open-models</guid>
     </item>
     <item>
-      <title><![CDATA[AI for Food Allergies]]></title>
-      <link>https://huggingface.co/blog/hugging-science/ai-for-food-allergies</link>
-      <description><![CDATA[Back to Articles Current State of The Art: Where AI Meets Food Allergy Research The need for data Collection release The Protein and Molecular Allergenicity Layer The Clinical, Immunological, and Therapeutic Layer The Food, Ingredient, and Regulatory Layer Accessing the collection What’s coming next? Final remarks Appendix SDAP 2.0: Structural Database of Allergenic Proteins DAVIS: Kinase inhibitor binding affinities QsarDB: repository for (Q)SAR models e-Drug3D Database Stanford Drug Data: Offsides/Twosides DrugCentral: open drug information repository MedKG: medical knowledge graph PDBBind+: protein-ligand binding database Human Metabolome Database (HMDB) Therapeutic Target Database Therapeutic Data Commons (TDC) STITCH: Chemical–Protein Interaction Database M3-20M Multi-Modal Molecule Dataset SAIR (Structurally Augmented IC Repository) AllerBase AlgPred 2.0 Dataset AllerCatPro 2.0 AllergenAI NetAllergen QM9: Molecular Property Prediction Dataset for Quantum Chemistry Let’s get straight to the point: worldwide, an estimated 220 million people suffer from at least one food allergy, and in the United States alone, this accounts for roughly 10% of the population. This means that if you don’t have an allergy, you’ll likely know someone who does — and it’s not a pleasant situation to be in. This condition affects no]]></description>
-      <pubDate>Thu, 16 Oct 2025 22:38:11 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/hugging-science/ai-for-food-allergies</guid>
-    </item>
-    <item>
       <title><![CDATA[Nemotron-Personas-India: Synthesized Data for Sovereign AI]]></title>
       <link>https://huggingface.co/blog/nvidia/nemotron-personas-india</link>
       <description><![CDATA[Back to Articles Open Data for India's AI Future What’s in the Dataset? How We Built It Data Generation Pipeline Embedded Cultural Context Private By Design Who This Is For Practical AI Applications Why It Matters Start Building with Nemotron-Personas-India A compound AI approach to Indian personas grounded in real-world distributions Open Data for India's AI Future India represents one of the world's largest AI opportunities — with over 700 million internet users, a multitude of languages, and a rapidly growing developer ecosystem. Yet, most open datasets reflect Western norms and English-only contexts, creating a data gap that limits AI adoption in India's multilingual, multi-script environment.
@@ -875,43 +817,27 @@ Let’s begin with the last step: selecting a strong benchmark for evaluating mo
       <guid>https://huggingface.co/blog/jupyter-agent-2</guid>
     </item>
     <item>
-      <title><![CDATA[NVIDIA Releases 6 Million Multi-Lingual Reasoning Dataset]]></title>
-      <link>https://huggingface.co/blog/nvidia/multilingual-reasoning-v1</link>
-      <description><![CDATA[Back to Articles Authors: Dhruv Nathawani, Shuoyang Ding US, Vitaly Lavrukhin US, Jane Polak Scowcroft US, Oleksii Kuchaiev US NVIDIA continues releasing permissive datasets in support of the open ecosystem with 6 Million Multilingual Reasoning Dataset.
-Continuing the success of the recent Nemotron Post-Training Dataset v1 release used in Llama Nemotron Super model, and our Llama Nemotron Post-Training Dataset release earlier this year, we’re excited to release the reasoning dataset translated into five target languages: French, Spanish, German, Italian, and Japanese.
-The newly released NVIDIA Nemotron Nano 2 9B brings these capabilities to the edge with leading accuracy and efficiency with a hybrid Transformer–Mamba architecture and a configurable thinking budget—so you can dial accuracy, throughput, and cost to match your real‑world needs. Model Highlights (TL;DR) Model size: 9B parameters
-Architecture: Hybrid Transformer–Mamba (Mamba‑2 + a small number of attention layers) for higher throughput at similar accuracy to Transformer‑only peers
-Throughput: Up to 6× higher token generation than other leading models in its size class
-Cost: Thinking budget lets you control how many “thinking” tokens are used—saving up to 60% lower reasoning costs
-Target: Agents for customer service, support chatbots, analytics copilots, and edge/RTX dep]]></description>
-      <pubDate>Wed, 20 Aug 2025 22:13:18 GMT</pubDate>
+      <title><![CDATA[Five Big Improvements to Gradio MCP Servers]]></title>
+      <link>https://huggingface.co/blog/gradio-mcp-updates</link>
+      <description><![CDATA[Back to Articles Seamless Local File Support Real-time Progress Notifications Transform OpenAPI Specs to MCP in One Line Improvements to Authentication Modifying Tool Descriptions Conclusion Gradio is an open-source Python package for creating AI-powered web applications. Gradio is compliant with the MCP server protocol and powers thousands of MCP servers hosted on Hugging Face Spaces. The Gradio team is betting big on Gradio and Spaces being the best way to build and host AI-powered MCP servers.
+To that end, here are some of the big improvements we've added to Gradio MCP servers as of version 5.38.0. Seamless Local File Support If you've tried to use a remote Gradio MCP server that takes a file as input (image, video, audio), you've probably encountered this error:
+This happens because the Gradio server is hosted on a different machine, meaning any input files must be accessible via a public URL so they can be downloaded remotely.
+While many ways exist to host files online, they all add a manual step to your workflow. In the age of LLM agents, shouldn't we expect them to handle this for you?
+Gradio now includes a "File Upload" MCP server that agents can use to upload files directly to your Gradio application. If any tools in your Gradio MCP server require file inputs, the connection documentation will now show you how to start the "File Upload"]]></description>
+      <pubDate>Thu, 17 Jul 2025 00:00:00 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/nvidia/multilingual-reasoning-v1</guid>
+      <guid>https://huggingface.co/blog/gradio-mcp-updates</guid>
     </item>
     <item>
-      <title><![CDATA[MCP for Research: How to Connect AI to Research Tools]]></title>
-      <link>https://huggingface.co/blog/mcp-for-research</link>
-      <description><![CDATA[Back to Articles Research Discovery: Three Layers of Abstraction 1. Manual Research 2. Scripted Tools 3. MCP Integration Setup and Usage Quick Setup Learn More Academic research involves frequent research discovery: finding papers, code, related models and datasets. This typically means switching between platforms like arXiv, GitHub, and Hugging Face, manually piecing together connections.
-The Model Context Protocol (MCP) is a standard that allows agentic models to communicate with external tools and data sources. For research discovery, this means AI can use research tools through natural language requests, automating platform switching and cross-referencing. Research Discovery: Three Layers of Abstraction Much like software development, research discovery can be framed in terms of layers of abstraction. 1. Manual Research At the lowest level of abstraction, researchers search manually and cross-reference by hand.
-# Typical workflow:
-1. Find paper on arXiv
-2. Search GitHub for implementations
-3. Check Hugging Face for models/datasets
-4. Cross-reference authors and citations]]></description>
-      <pubDate>Mon, 18 Aug 2025 00:00:00 GMT</pubDate>
+      <title><![CDATA[Ettin Suite: SoTA Paired Encoders and Decoders]]></title>
+      <link>https://huggingface.co/blog/ettin</link>
+      <description><![CDATA[Back to Articles TL;DR Encoders vs Decoders: The Architecture Divide Training Recipe: Modern Techniques for Both Architectures Sizes Three-Phase Training Process Modern Architecture Components Data Sources and Quality Encoder Results: Beating ModernBERT Decoder Results: Beating Llama 3.2 and SmolLM2 Fair Fight: Encoders vs Decoders on Even Ground Architecture-Specific Advantages Persist Cross-Objective Training Falls Short Beyond Performance: Understanding Model Behavior Usage Examples Encoders Decoders Fine-tuning Examples Encoders Decoders Model Family and Links TL;DR What would happen if you took the ModernBERT recipe and applied it to a decoder-only model? Turns out, a state-of-the-art decoder language model that beats Llama 3.2 1B and SmolLM2! We introduce a new open-data training recipe to reproduce the encoder-only ModernBERT model (and actually beat it!). We then apply the exact same recipe to decoder-only models. For the first time, we have two state-of-the-art models trained in the same setup but with two different training objectives: masked language modeling (MLM), and causal language modeling (CLM).
+This blog post introduces Ettin, the first suite of SoTA paired encoder-only and decoder-only models (17M-1B params) trained with identical data (2T tokens), architecture, and training recipes. Ettin e]]></description>
+      <pubDate>Wed, 16 Jul 2025 00:00:00 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/mcp-for-research</guid>
-    </item>
-    <item>
-      <title><![CDATA[Simple farce ou vrai signal d’alarme ? OpenClaw s’est invité de force chez 4 000 développeurs]]></title>
-      <link>https://www.numerama.com/cyberguerre/2184985-simple-farce-ou-vrai-signal-dalarme-openclaw-sest-invite-de-force-chez-4-000-developpeurs.html</link>
-      <description><![CDATA[Le 17 février 2026, l'assistant de code IA Cline a annoncé qu'une de ses mises à jour, publiée en son nom, avait en réalité été compromise par des hackers. Si cette version aurait pu intégrer des malwares ou causer de gros dégâts, elle a au contraire discrètement installé OpenClaw sur les machines infectées.]]></description>
-      <pubDate>Fri, 20 Feb 2026 16:57:37 GMT</pubDate>
-      <source>Numerama Tech</source>
-      <category>ai</category>
-      <guid>https://www.numerama.com/cyberguerre/2184985-simple-farce-ou-vrai-signal-dalarme-openclaw-sest-invite-de-force-chez-4-000-developpeurs.html</guid>
+      <guid>https://huggingface.co/blog/ettin</guid>
     </item>
     <item>
       <title><![CDATA[La dernière nouveauté Apple Music arrive sur Android (et personne ne comprend pourquoi)]]></title>
@@ -930,6 +856,15 @@ The Model Context Protocol (MCP) is a standard that allows agentic models to com
       <source>Towards Data Science</source>
       <category>ai</category>
       <guid>https://towardsdatascience.com/the-reality-of-vibe-coding-ai-agents-and-the-security-debt-crisis/</guid>
+    </item>
+    <item>
+      <title><![CDATA[The creator economy’s ad revenue problem and India’s AI ambitions]]></title>
+      <link>https://techcrunch.com/video/the-creator-economys-ad-revenue-problem-and-indias-ai-ambitions/</link>
+      <description><![CDATA[The creator economy is evolving fast, and ad revenue alone isn’t cutting it anymore. YouTubers are launching product lines, acquiring startups, and building actual business empires. In fact, MrBeast’s company bought fintech startup Step, and his chocolate business is outearning his media arm. This isn’t just one creator’s strategy. For many, it’s the new playbook. On this episode of TechCrunch’s Equity podcast, hosts Kirsten Korosec, Anthony Ha, and Rebecca Bellan unpack how creators are diversifying beyond ads, […]]]></description>
+      <pubDate>Fri, 20 Feb 2026 23:00:00 GMT</pubDate>
+      <source>TechCrunch AI</source>
+      <category>ai</category>
+      <guid>https://techcrunch.com/video/the-creator-economys-ad-revenue-problem-and-indias-ai-ambitions/</guid>
     </item>
     <item>
       <title><![CDATA[Donkeys, Not Unicorns]]></title>
@@ -998,24 +933,6 @@ HF is providing the project with long-term sustainable resources, improving the 
       <guid>https://towardsdatascience.com/alpamayor1-large-causal-reasoning-models-for-autonomous-driving/</guid>
     </item>
     <item>
-      <title><![CDATA[Perplexity renonce à la publicité pour préserver la confiance face à OpenAI]]></title>
-      <link>https://siecledigital.fr/2026/02/19/perplexity-renonce-a-la-publicite-pour-preserver-la-confiance-face-a-openai/</link>
-      <description><![CDATA[Alors qu’OpenAI commence à intégrer des s dans ChatGPT aux États-Unis, certains concurrents choisissent de se différencier. A l’heure où les modèles économiques des IA génératives cherchent encore leur équilibre, la question de la é devient un marqueur stratégique. Après l’annonce d’Anthropic ces derniers jours, c’est désormais Perplexity qui affiche clairement sa position : pas […]]]></description>
-      <pubDate>Thu, 19 Feb 2026 10:32:32 GMT</pubDate>
-      <source>Siecle Digital</source>
-      <category>ai</category>
-      <guid>https://siecledigital.fr/2026/02/19/perplexity-renonce-a-la-publicite-pour-preserver-la-confiance-face-a-openai/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Vous pouvez désormais créer de la musique avec l’IA de Google]]></title>
-      <link>https://siecledigital.fr/2026/02/19/gemini-se-met-a-la-musique-avec-lyria-3/</link>
-      <description><![CDATA[Après le texte, l’image et la vidéo, Google ajoute une nouvelle corde à l’arc de son assistant. Avec Lyria 3, son dernier modèle issu de Google DeepMind, Google Gemini peut désormais générer des morceaux de musique à partir d’une simple description. Une évolution qui confirme l’ambition de Google de transformer son chatbot en véritable studio […]]]></description>
-      <pubDate>Thu, 19 Feb 2026 10:29:07 GMT</pubDate>
-      <source>Siecle Digital</source>
-      <category>ai</category>
-      <guid>https://siecledigital.fr/2026/02/19/gemini-se-met-a-la-musique-avec-lyria-3/</guid>
-    </item>
-    <item>
       <title><![CDATA[Can AI Solve Failures in Your Supply Chain?]]></title>
       <link>https://towardsdatascience.com/can-ai-solve-failures-in-your-supply-chain/</link>
       <description><![CDATA[When your warehouse and transportation teams blame each other for late deliveries, who's right? We can ask an agent connected to the data settle the debate.]]></description>
@@ -1032,15 +949,6 @@ HF is providing the project with long-term sustainable resources, improving the 
       <source>Towards Data Science</source>
       <category>ai</category>
       <guid>https://towardsdatascience.com/building-cost-efficient-agentic-rag-on-long-text-documents-in-sql-tables/</guid>
-    </item>
-    <item>
-      <title><![CDATA[LinkedIn veut restaurer l’authenticité des échanges en sanctionnant les commentaires automatiques]]></title>
-      <link>https://siecledigital.fr/2026/02/17/linkedin-serre-la-vis-contre-les-faux-commentaires/</link>
-      <description><![CDATA[Alors que les créateurs de contenu et les entreprises rivalisent pour capter l’attention, l’authenticité est devenue l’un des principaux enjeux des réseaux sociaux comme LinkedIn. Malheureusement, certaines pratiques sont venues fausser les règles du jeu, comme les « engagement pods« , ces groupes coordonnés qui s’organisent pour gonfler artificiellement la portée de leurs publications. Face à la […]]]></description>
-      <pubDate>Wed, 18 Feb 2026 10:22:12 GMT</pubDate>
-      <source>Siecle Digital</source>
-      <category>ai</category>
-      <guid>https://siecledigital.fr/2026/02/17/linkedin-serre-la-vis-contre-les-faux-commentaires/</guid>
     </item>
     <item>
       <title><![CDATA[Advance Planning for AI Project Evaluation]]></title>
@@ -1093,6 +1001,16 @@ Visualize your code flow: Unlike node-based GUI editors, where you drag and conn
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/daggr</guid>
+    </item>
+    <item>
+      <title><![CDATA[Unlocking Agentic RL Training for GPT-OSS: A Practical Retrospective]]></title>
+      <link>https://huggingface.co/blog/LinkedIn/gpt-oss-agentic-rl</link>
+      <description><![CDATA[Back to Articles Agentic reinforcement learning (RL) extends traditional LLM training by optimizing not just a single-turn response, but an entire decision-making process learned through direct interaction with an environment during training. Unlike traditional single-turn reinforcement learning or offline preference-based methods that rely on static datasets, agentic RL trains policies by actively collecting on-policy data as the agent plans actions, invokes tools, observes outcomes, and adapts its behavior over multi-step trajectories in either simulated or real environments. This interaction-driven optimization assigns credit across long-horizon decisions, where intermediate choices such as query reformulation, tool selection, and execution order directly influence downstream success. Training follows an iterative closed loop in which the agent interacts with the environment to collect rollout trajectories, computes rewards over these trajectories, updates the policy based on observed outcomes, and then uses the updated policy to drive the next round of interaction and data collection such as GRPO or PPO algorithms..
+LinkedIn is an AI-first company that's built agents to help professionals be more successful. In this setting, models must reason over incomplete information, interact with structured services, and adapt to evolving user intent across]]></description>
+      <pubDate>Tue, 27 Jan 2026 01:53:15 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/LinkedIn/gpt-oss-agentic-rl</guid>
     </item>
     <item>
       <title><![CDATA[Open Responses: What you need to know]]></title>
@@ -1164,32 +1082,6 @@ Over the past two years, the Open ASR Leaderboard has become a standard for comp
       <guid>https://huggingface.co/blog/open-asr-leaderboard</guid>
     </item>
     <item>
-      <title><![CDATA[Introducing AnyLanguageModel: One API for Local and Remote LLMs on Apple Platforms]]></title>
-      <link>https://huggingface.co/blog/anylanguagemodel</link>
-      <description><![CDATA[Back to Articles The Solution Why Foundation Models as the Base API Package Traits: Include Only What You Need Image Support (and API Design Trade-offs) Try It Out: chat-ui-swift What's Next Get Involved Links LLMs have become essential tools for building software.
-But for Apple developers, integrating them remains unnecessarily painful.
-Developers building AI-powered apps typically take a hybrid approach,
-adopting some combination of: Local models using Core ML or MLX for privacy and offline capability
-Cloud providers like OpenAI or Anthropic for frontier capabilities
-Apple's Foundation Models as a system-level fallback Each comes with different APIs, different requirements, different integration patterns.
-It's a lot, and it adds up quickly.
-When I interviewed developers about building AI-powered apps,
-friction with model integration came up immediately.
-One developer put it bluntly: I thought I'd quickly use the demo for a test and maybe a quick and dirty build
-but instead wasted so much time.
-Drove me nuts. The cost to experiment is high,
-which discourages developers from discovering that
-local, open-source models might actually work great for their use case.
-Today we're announcing AnyLanguageModel,
-a Swift package that provides a drop-in replacement for Apple's Foundation Models framework
-with support for multiple model providers.
-Our goal is to reduc]]></description>
-      <pubDate>Thu, 20 Nov 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/anylanguagemodel</guid>
-    </item>
-    <item>
       <title><![CDATA[Easily Build and Share ROCm Kernels with Hugging Face]]></title>
       <link>https://huggingface.co/blog/build-rocm-kernels</link>
       <description><![CDATA[Back to Articles Intoduction Build Steps About the kernel Step 1: Project Structure Step 2: Configuration Files Setup Step 3: Building the Kernel Step 4: Uploading the kernel to the Hub Step 5: Let's use it :) Conclusion Related Libraries &amp; Hub Intoduction Custom kernels are the backbone of high-performance deep learning, enabling GPU operations tailored precisely to your workload; whether that’s image processing, tensor transformations, or other compute-heavy tasks. But compiling these kernels for the right architectures, wiring all the build flags, and integrating them cleanly into PyTorch extensions can quickly become a mess of CMake/Nix, compiler errors, and ABI issues, which is not fun. Hugging Face’s kernels library makes it easy to build (with kernel-builder) and share these kernels with the kernels-community, with support for multiple GPU and accelerator backends, including CUDA, ROCm, Metal, and XPU. This ensures your kernels are fast, portable, and seamlessly integrated with PyTorch.
@@ -1222,6 +1114,29 @@ When we designed M2, we knew we had to tackle this problem head-on. This led us 
       <guid>https://huggingface.co/blog/MiniMax-AI/aligning-to-what</guid>
     </item>
     <item>
+      <title><![CDATA[Building a Healthcare Robot from Simulation to Deployment with NVIDIA Isaac]]></title>
+      <link>https://huggingface.co/blog/lerobotxnvidia-healthcare</link>
+      <description><![CDATA[Back to Articles TL;DR Table-of-Contents Introduction SO-ARM Starter Workflow; Building an Embodied Surgical Assistant Technical Implementation Sim2Real Mixed Training Approach Hardware Requirements Data Collection Implementation Simulation Teleoperation Controls Model Training Pipeline End-to-End Sim Collect–Train–Eval Pipelines Generate Synthetic Data in Simulation Train and Evaluate Policies Convert Models to TensorRT Getting Started Resources TL;DR A hands-on guide to collecting data, training policies, and deploying autonomous medical robotics workflows on real hardware Table-of-Contents Building a Healthcare Robot from Simulation to Deployment with NVIDIA Isaac
+TL;DR
+Table-of-Contents
+Introduction
+SO-ARM Starter Workflow; Building an Embodied Surgical Assistant
+Technical Implementation
+Sim2Real Mixed Training Approach
+Hardware Requirements
+Data Collection Implementation
+Simulation Teleoperation Controls
+Model Training Pipeline End-to-End Sim Collect–Train–Eval Pipelines
+Generate Synthetic Data in Simulation
+Train and Evaluate Policies
+Convert Models to TensorRT Getting Started
+Resources Introduction Simulation has been a cornerstone in medical imaging to address the data gap. However, in healthcare robotics until now, it's often been too slow, siloed, or difficult to translate into rea]]></description>
+      <pubDate>Wed, 29 Oct 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/lerobotxnvidia-healthcare</guid>
+    </item>
+    <item>
       <title><![CDATA[Building the Open Agent Ecosystem Together: Introducing OpenEnv]]></title>
       <link>https://huggingface.co/blog/openenv</link>
       <description><![CDATA[Back to Articles The Problem The Solution The RFCs Use cases What’s Next With tools like TRL, TorchForge and verl, the open-source community has shown how to scale AI across complex compute infrastructure. But compute is only one side of the coin. The other side is the developer community; the people and tools that make agentic systems possible. That’s why Meta and Hugging Face are partnering to launch the OpenEnv Hub: a shared and open community hub for agentic environments.
@@ -1243,6 +1158,16 @@ These personalized workshops are tailored]]></description>
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/Arm/arm-at-pytorch-conference</guid>
+    </item>
+    <item>
+      <title><![CDATA[BigCodeArena: Judging code generations end to end with code executions]]></title>
+      <link>https://huggingface.co/blog/bigcode/arena</link>
+      <description><![CDATA[Back to Articles Motivation The BigCodeArena Platform Real-Time Execution Multi-Language &amp; Framework Support Interactive Testing Multi-Turn Conversations What We've Learned: 5 Months of Community Evaluation Programming Topics in the Wild Language and Framework Popularity User Interaction Patterns Model Rankings from Community Votes Two New Benchmarks: BigCodeReward and AutoCodeArena BigCodeReward: Evaluating Reward Models for Code AutoCodeArena: Automated Code Generation Benchmarks Try It Yourself Open Source Everything What's Next? Conclusion Acknowledgements Citation Evaluating the quality of AI-generated code is notoriously difficult. While humans can easily spot whether a piece of code "looks right," determining if it actually works correctly, handles edge cases properly, and produces the intended result requires running and testing it. This is why today, we're thrilled to announce BigCodeArena -- the first human-in-the-loop platform for evaluating code generation models through execution.
+Inspired by LMArena for LLMs, we've built a platform that allows anyone to compare code generation models side-by-side, but with a crucial difference: you can actually run the code and see what it produces. Just submit a coding task, watch two different models generate solutions, execute both programs, and vote on which model produced better results. The ou]]></description>
+      <pubDate>Tue, 07 Oct 2025 09:37:25 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/bigcode/arena</guid>
     </item>
     <item>
       <title><![CDATA[Introducing RTEB: A New Standard for Retrieval Evaluation]]></title>
@@ -1302,31 +1227,25 @@ What we need instead is a systematic evaluation of LLM capabilities in Philippin
       <guid>https://huggingface.co/blog/filbench</guid>
     </item>
     <item>
-      <title><![CDATA[Vision Language Model Alignment in TRL]]></title>
-      <link>https://huggingface.co/blog/trl-vlm-alignment</link>
-      <description><![CDATA[Back to Articles Introduction Table of Contents Alignment for Vision Language Models Mixed Preference Optimization (MPO) Multimodal Group Relative Policy Optimization (GRPO) Group Sequence Policy Optimization (GSPO) Comparison Further Extensions for VLMs Native Supervised Fine-tuning Support vLLM Integration in TRL Useful Resources Introduction Vision Language Models (VLMs) are getting stronger, but aligning them to human preferences still matters. In TRL, we already showed how to post-train VLMs with Supervised Fine-Tuning (SFT) and Direct Preference Optimization (DPO). This time, we’re going further.
-tl;dr Here’s what’s new in TRL: Mixed Preference Optimization (MPO)
-Group Relative Policy Optimization (GRPO)
-Group Sequence Policy Optimization (GSPO) (a variant of GRPO) These go beyond pairwise DPO, extracting richer signals from preference data and scaling better with modern VLMs.
-We’ve also extended existing methods to support VLMs: Reinforce Leave One Out (RLOO)
-Online Direct Preference Optimization (Online DPO) This enables more efficient and scalable multimodal alignment.
-Finally: Native Supervised Fine-tuning support for Vision Language Models
-Training scripts and demo notebooks to help you get started quickly Table of Contents Multimodal Alignment for VLMs in TRL Introduction
-Alignment for V]]></description>
-      <pubDate>Thu, 07 Aug 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/trl-vlm-alignment</guid>
-    </item>
-    <item>
       <title><![CDATA[Welcome GPT OSS, the new open-source model family from OpenAI!]]></title>
       <link>https://huggingface.co/blog/welcome-openai-gpt-oss</link>
-      <description><![CDATA[Back to Articles GPT OSS is a hugely anticipated open-weights release by OpenAI, designed for powerful reasoning, agentic tasks, and versatile developer use cases. It comprises two models: a big one with 117B parameters (gpt-oss-120b), and a smaller one with 21B parameters (gpt-oss-20b). Both are mixture-of-experts (MoEs) and use a 4-bit quantization scheme (MXFP4), enabling fast inference (thanks to fewer active parameters, see details below) while keeping resource usage low. The large model fits on a single H100 GPU, while the small one runs within 16GB of memory and is perfect for consumer hardware and on-device applications.
-To make it even better and more impactful for the community, the models are licensed under the Apache 2.0 license, along with a minimal usage policy: We aim for our tools to be used safely, responsibly, and democratically, while maximizing your control over how you use them. By using gpt-oss, you agree to comply with all applicable law. According to OpenAI, this release is a meaningful step in their commitment to the open-source ecosystem, in line with their stated mission to make the benefits of AI broadly accessible. Many use cases rely on private and/or local deployments, and we at Hugging Face are super excited to welcome OpenAI to the community. We believe these will be long-lived, inspiri]]></description>
+      <description><![CDATA[Welcome GPT OSS, the new open-source model family from OpenAI!]]></description>
       <pubDate>Tue, 05 Aug 2025 00:00:00 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/welcome-openai-gpt-oss</guid>
+    </item>
+    <item>
+      <title><![CDATA[TimeScope: How Long Can Your Video Large Multimodal Model Go?]]></title>
+      <link>https://huggingface.co/blog/timescope-video-lmm-benchmark</link>
+      <description><![CDATA[Back to Articles TL;DR Table of Contents Why TimeScope? Motivating a Better Benchmark for Video Benchmark Design 1. Localized Retrieval 2. Information Synthesis 3. Fine-Grained Temporal Perception Evaluations &amp; Leaderboard What did we learn? Conclusion – Let’s Raise the Bar for Long-Video AI TL;DR TimeScope is an open-source benchmark designed to measure how well vision-language models understand long videos. By adding short “needle” clips into videos ranging from 1 minute to 8 hours, it evaluates three skills: localized retrieval, information synthesis, fine-grained temporal perception. Timescope reveals that many state-of-the-art models still struggle with true temporal comprehension. Table of Contents Why TimeScope?
+Benchmark Design
+Baseline Evaluation Results
+Open-Sourcing Recent advances in multimodal AI have produced models claiming to understand hour-long videos. This trend mirrors progress in long-context language models, which excel at reasoning over lengthy text. Following this, vision-language systems now advertise context windows that can handle thousands of frames. But these claims require a closer look: do these models truly demonstrate understanding of the sequence of events? Are they limited to surface-level retrieval \ recognition? It's crucial to ask if their capabilities are being overstat]]></description>
+      <pubDate>Wed, 23 Jul 2025 00:00:00 GMT</pubDate>
+      <source>Hugging Face Blog</source>
+      <category>ai</category>
+      <guid>https://huggingface.co/blog/timescope-video-lmm-benchmark</guid>
     </item>
   </channel>
 </rss>

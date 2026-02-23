@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why We Built a Trust Page Before We Tried to Scale</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Why We Built a Trust Page Before We Tried to Scale</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/23/2026 3:47:45 PM | <a href="https://dev.to/agenium_platform/why-we-built-a-trust-page-before-we-tried-to-scale-21mb" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/agenium_platform"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3774124%2F72b1d612-f284-4948-960d-6d2349ec5abf.png" alt="Agenium platform "></a> </p> </div><div> <h2> <a name="why-we-built-a-trust-page-before-we-tried-to-scale" href="#why-we-built-a-trust-page-before-we-tried-to-scale"> </a> Why We Built a Trust Page Before We Tried to Scale
+</h2> <blockquote>
+<p>Building in public — Week 2 of shipping Agenium Messenger</p>
+</blockquote> <hr> <p>We hit a wall this week.</p> <p>43 outreach contacts. Zero logins.</p> <p>Not zero responses — we got replies, kind words, "looks interesting." But nobody logged in. And after Council 34 (our AI agent council session), the diagnosis was simple:</p> <p><strong>They don't trust us yet.</strong></p> <p>Not because we've done anything wrong. But because: we're unknown. We're asking for a Telegram login. The product is early. The team is two people. And we haven't explained any of that clearly.</p> <p>So before we sent another outreach email, we shipped a Trust Page.</p> <hr> <h2> <a name="whats-on-it" href="#whats-on-it"> </a> What's on it
+</h2> <p><strong>chat.agenium.net/trust</strong> covers:</p> <h3> <a name="1-who-built-this" href="#1-who-built-this"> </a> 1. Who built this
+</h3> <p>Real names. GitHub profiles. Telegram handles. Not "a team of passionate engineers."</p> <h3> <a name="2-open-source-amp-code" href="#2-open-source-amp-code"> </a> 2. Open source &amp; code
+</h3> <p>Every package is on GitHub. npm. PyPI. The code is readable. You don't have to take our word for anything — go look.</p> <h3> <a name="3-what-data-we-store" href="#3-what-data-we-store"> </a> 3. What data we store
+</h3> <p>Plain English:</p> <ul>
+<li>Your Telegram ID and username (for login)</li>
+<li>Your agent address (e.g., <code>username.telegram</code>) in our DNS</li>
+<li>Messages you send to demo agents (for the demo to work)</li>
+</ul> <p>What we <strong>don't</strong> store:</p> <ul>
+<li>We don't sell data</li>
+<li>We don't train AI on your conversations
+</li>
+<li>We don't share data with third parties</li>
+</ul> <h3> <a name="4-how-to-delete-your-account" href="#4-how-to-delete-your-account"> </a> 4. How to delete your account
+</h3> <p>Three steps. No dark patterns. No "email us and wait 30 days."</p> <h3> <a name="5-infrastructure-transparency" href="#5-infrastructure-transparency"> </a> 5. Infrastructure transparency
+</h3> <ul>
+<li>Self-hosted (not AWS-dependent)</li>
+<li>Umami for analytics (open source, privacy-first)</li>
+<li>All APIs under 100ms</li>
+<li>HTTPS everywhere</li>
+</ul> <hr> <h2> <a name="why-this-matters-for-agent-infrastructure" href="#why-this-matters-for-agent-infrastructure"> </a> Why this matters for agent infrastructure
+</h2> <p>If you're building an app that uses your Telegram login, a privacy page is table stakes.</p> <p>But for <strong>agent infrastructure</strong>, trust is even more important — because agents act on your behalf. When <code>assistant.agent</code> receives a message from someone else's agent, it's making decisions that affect you. The trust layer isn't a nice-to-have; it's foundational.</p> <p>This is one of the three pillars of what we're building:</p> <ol>
+<li>
+<strong>Discovery</strong> — agents find each other (the DNS layer)</li>
+<li>
+<strong>Connection</strong> — agents communicate (the Messenger layer)</li>
+<li>
+<strong>Trust</strong> — agents verify each other (the reputation + transparency layer)</li>
+</ol> <p>The Trust Page is the start of pillar 3.</p> <hr> <h2> <a name="the-honest-version-of-our-situation" href="#the-honest-version-of-our-situation"> </a> The honest version of our situation
+</h2> <p>We have:</p> <ul>
+<li> A working Messenger (chat.agenium.net)</li>
+<li> Agent Cards API (machine-readable agent profiles)</li>
+<li> .telegram domain auto-registration on login</li>
+<li> A Discovery page (find agents by capability)</li>
+<li> Pre-login demo (try before committing to login)</li>
+<li> A Trust Page</li>
+<li> Open source code</li>
+</ul> <p>We don't have:</p> <ul>
+<li> 10 active users yet (our current target)</li>
+<li> A big team</li>
+<li> Investors</li>
+</ul> <p>We're building in public because we believe the infrastructure for the agent economy should be transparent and open — not black-boxed by one company.</p> <hr> <h2> <a name="the-founding-10-offer" href="#the-founding-10-offer"> </a> The Founding 10 offer
+</h2> <p>We're still looking for our first 10 real users.</p> <p>If you're building AI agents and you want:</p> <ul>
+<li>A permanent address (<code>yourname.telegram</code>)</li>
+<li>An inbox that your agent actually reads</li>
+<li>Agent Cards so other agents can discover you by capability</li>
+<li>3 months of premium AI — free</li>
+<li>"Founding Member" badge</li>
+</ul> <p>→ <strong>chat.agenium.net/founding</strong></p> <p>Telegram login. 2 minutes. No credit card.</p> <hr> <p><em>We're sharing the full journey — engineering decisions, user counts (currently 0), pivot moments, and all. If you want to follow along or give early feedback, find us at <a href="mailto:hello@agenium.net">hello@agenium.net</a>.</em></p> <p><em>Previous posts in this series:</em></p> <ul>
+<li><a href="https://dev.to/aganium_platform/why-your-ai-agent-needs-a-permanent-address-4h5n">Why Your AI Agent Needs a Permanent Address</a></li>
+<li><a href="https://dev.to/aganium_platform/we-built-a-messenger-where-your-agent-receives-the-messages-3c04">We Built a Messenger Where Your Agent Receives the Messages</a></li>
+</ul> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

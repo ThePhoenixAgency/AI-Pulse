@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - chenhunghan/garmin-mcp-app: Garmin MCP app server</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - chenhunghan/garmin-mcp-app: Garmin MCP app server</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/23/2026 4:14:24 PM | <a href="https://github.com/chenhunghan/garmin-mcp-app" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Garmin MCP App</h1><a href="#garmin-mcp-app"></a></div>
+<p>Connect your Garmin watch to Claude Desktop. Explore interactive charts.</p>
+<p> <a target="_blank" href="https://private-user-images.githubusercontent.com/1474479/553046558-62b5ec61-a772-4502-b717-c32c4ea89195.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE4NjU5MDgsIm5iZiI6MTc3MTg2NTYwOCwicGF0aCI6Ii8xNDc0NDc5LzU1MzA0NjU1OC02MmI1ZWM2MS1hNzcyLTQ1MDItYjcxNy1jMzJjNGVhODkxOTUuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIyMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMjNUMTY1MzI4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZTA5NmMyMDMxZDk5MjMxOWVhYmU1OWU0MDUyOGZkY2EzYTkzMWE2YTk1MzVjNzJhODRlMjg5ZGMzZGZjM2JkYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.TT4bcXoqr2bjBZAv9glAi-kUrztXz1O758MkTGCFk3Q"><img src="https://private-user-images.githubusercontent.com/1474479/553046558-62b5ec61-a772-4502-b717-c32c4ea89195.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE4NjU5MDgsIm5iZiI6MTc3MTg2NTYwOCwicGF0aCI6Ii8xNDc0NDc5LzU1MzA0NjU1OC02MmI1ZWM2MS1hNzcyLTQ1MDItYjcxNy1jMzJjNGVhODkxOTUuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIyMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMjNUMTY1MzI4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZTA5NmMyMDMxZDk5MjMxOWVhYmU1OWU0MDUyOGZkY2EzYTkzMWE2YTk1MzVjNzJhODRlMjg5ZGMzZGZjM2JkYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.TT4bcXoqr2bjBZAv9glAi-kUrztXz1O758MkTGCFk3Q" alt="demo"></a>
+</p>
+<div><h2>Install</h2><a href="#install"></a></div>
+<ol>
+<li>Download the latest <pre><code>.mcpb</code></pre> file from <a href="https://github.com/chenhunghan/garmin-mcp-app/releases">Releases</a></li>
+<li>Drag it into Claude Desktop to install</li>
+<li>Ask Claude anything about your Garmin data — it will prompt you to sign in on first use</li>
+</ol>
+<div><h2>What you can do</h2><a href="#what-you-can-do"></a></div>
+<p>Ask Claude about your health, training, and fitness — it reads your Garmin data and shows interactive charts right in the conversation.</p>
+<ul> <li><strong>Analyze your workouts</strong> — activity details, pace splits, HR zones, and training effect</li>
+<li><strong>Track your fitness</strong> — training readiness, training load, VO2 Max trends, and race predictions</li>
+<li><strong>Plan your training</strong> — create structured workouts, schedule them on your Garmin calendar, or edit existing ones</li>
+</ul>
+<p>What you can visualize</p>
+<p>Plot your activities</p>
+<p> <a target="_blank" href="https://private-user-images.githubusercontent.com/1474479/553140939-c180a8c5-6b8a-4102-aad2-d64fd98e3a85.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE4NjU5MDgsIm5iZiI6MTc3MTg2NTYwOCwicGF0aCI6Ii8xNDc0NDc5LzU1MzE0MDkzOS1jMTgwYThjNS02YjhhLTQxMDItYWFkMi1kNjRmZDk4ZTNhODUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIyMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMjNUMTY1MzI4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZTQ2ZjM0MjQ0NzdiN2ZkNDI4MGE4ODM0MzM3NGQ1N2IwYWZiNzM0NmI3OTc4MGQ3ZGRhNmEyZWViYjEwZDU2ZCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.82dHNU_UY6GJQkL7iWesI7tshUR6wbpwLzaNfTDY_dU"><img alt="activities" src="https://private-user-images.githubusercontent.com/1474479/553140939-c180a8c5-6b8a-4102-aad2-d64fd98e3a85.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE4NjU5MDgsIm5iZiI6MTc3MTg2NTYwOCwicGF0aCI6Ii8xNDc0NDc5LzU1MzE0MDkzOS1jMTgwYThjNS02YjhhLTQxMDItYWFkMi1kNjRmZDk4ZTNhODUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIyMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMjNUMTY1MzI4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZTQ2ZjM0MjQ0NzdiN2ZkNDI4MGE4ODM0MzM3NGQ1N2IwYWZiNzM0NmI3OTc4MGQ3ZGRhNmEyZWViYjEwZDU2ZCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.82dHNU_UY6GJQkL7iWesI7tshUR6wbpwLzaNfTDY_dU"></a>
+</p>
+<p>Visualize training readiness</p>
+<p> <a target="_blank" href="https://private-user-images.githubusercontent.com/1474479/553141091-42b27fad-f425-4fe7-bd6f-e2816fbe4c12.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE4NjU5MDgsIm5iZiI6MTc3MTg2NTYwOCwicGF0aCI6Ii8xNDc0NDc5LzU1MzE0MTA5MS00MmIyN2ZhZC1mNDI1LTRmZTctYmQ2Zi1lMjgxNmZiZTRjMTIucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIyMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMjNUMTY1MzI4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NzhiNDNjODY1MDhlYjljMDViMmM2YjNmNzQ0OTMyOWQxNGUyYzJlZWY5OTczYzM5OWUwMjY3ZjA4YzQ3ODA2MCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.A-dUVtaoABJBmJbhx_jGYscwbSNh9grX4RB_J_MoF4I"><img alt="training readiness" src="https://private-user-images.githubusercontent.com/1474479/553141091-42b27fad-f425-4fe7-bd6f-e2816fbe4c12.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE4NjU5MDgsIm5iZiI6MTc3MTg2NTYwOCwicGF0aCI6Ii8xNDc0NDc5LzU1MzE0MTA5MS00MmIyN2ZhZC1mNDI1LTRmZTctYmQ2Zi1lMjgxNmZiZTRjMTIucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIyMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMjNUMTY1MzI4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NzhiNDNjODY1MDhlYjljMDViMmM2YjNmNzQ0OTMyOWQxNGUyYzJlZWY5OTczYzM5OWUwMjY3ZjA4YzQ3ODA2MCZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.A-dUVtaoABJBmJbhx_jGYscwbSNh9grX4RB_J_MoF4I"></a>
+</p> Full list of supported Garmin Connect data
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Daily health</td>
+<td>Steps, heart rate, sleep stages, stress, body battery, HRV</td>
+</tr>
+<tr>
+<td>Activities</td>
+<td>Activity list, activity details, per-km/mile splits, HR time-in-zones</td>
+</tr>
+<tr>
+<td>Training</td>
+<td>Training readiness, training status &amp; load, VO2 Max, race predictions</td>
+</tr>
+<tr>
+<td>Profile</td>
+<td>Age, weight, height, HR zones, lactate threshold</td>
+</tr>
+<tr>
+<td>Workouts</td>
+<td>List, create, update, delete, and schedule workouts</td>
+</tr>
+</tbody>
+</table> <div><h2>Privacy &amp; Security</h2><a href="#privacy--security"></a></div>
+<p><strong>No data is stored or collected by this app.</strong> Your data flows directly between your machine and the Garmin Connect API — there is no intermediate server.</p> Learn more
+<ul>
+<li><strong>Your credentials stay private.</strong> You sign in through a secure login form rendered inside Claude Desktop. The login and MFA tools are marked as app-only (<pre><code>visibility: ["app"]</code></pre>), meaning Claude (the LLM) cannot call them and <strong>never sees your email, password, or MFA code</strong>.</li>
+<li><strong>Claude doesn't know who you are.</strong> The LLM only receives the health/fitness data you ask for (steps, sleep, etc.) — it has no access to your Garmin account credentials or OAuth tokens.</li>
+<li><strong>Tokens are stored locally.</strong> OAuth tokens are saved on your machine at <pre><code>~/.garminconnect/</code></pre> with restrictive file permissions (<pre><code>0600</code></pre>). They are never sent anywhere other than the Garmin Connect API.</li>
+<li><strong>You can log out anytime.</strong> Logging out clears all saved tokens from your machine.</li>
+</ul> <hr> Developer / Contributor Guide
+<div><h2>Getting Started</h2><a href="#getting-started"></a></div>
+<div><pre>git clone https://github.com/chenhunghan/garmin-mcp-app.git
+<span>cd</span> garmin-mcp-app
+npm install</pre></div>
+<p></p><pre><code>npm install</code></pre> automatically sets up git hooks via <a href="https://github.com/j178/prek">prek</a>:<p></p>
+<ul>
+<li><strong>commit-msg</strong> — enforces <a href="https://www.conventionalcommits.org/">Conventional Commits</a> via commitlint</li>
+<li><strong>pre-push</strong> — runs lint, format check, typecheck, and tests (same as CI)</li>
+</ul>
+<div><h3>Troubleshooting: <pre><code>core.hooksPath</code></pre></h3><a href="#troubleshooting-corehookspath"></a></div>
+<p>If </p><pre><code>npm install</code></pre> warns about <pre><code>core.hooksPath</code></pre>, prek cannot install git hooks. Fix it by unsetting the local config:<p></p>
+<div><pre>git config --unset-all --local core.hooksPath
+npm run prepare</pre></div>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre>npm run dev <span><span>#</span> watch-build server + UI</span>
+npm run dev:ui <span><span>#</span> standalone UI dev at localhost:5173</span>
+npm run test:lib <span><span>#</span> run garmin-connect tests</span>
+npm run pack <span><span>#</span> build + package .mcpb bundle</span></pre></div>
+<p></p><pre><code>npm run dev:ui</code></pre> opens <pre><code>http://localhost:5173</code></pre> with the React UI wired to the real MCP server in-process. You can test login, MFA, and logout against the actual Garmin API without deploying to Claude Desktop.<p></p>
+<div><h2>Testing in Claude Desktop</h2><a href="#testing-in-claude-desktop"></a></div>
+<p>Run </p><pre><code>npm run build</code></pre> (one-off) or <pre><code>npm run dev</code></pre> (watch mode for live rebuilds), then add to <pre><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></pre>:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"garmin-mcp"</span>: { <span>"command"</span>: <span><span>"</span>node<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>/absolute/path/to/garmin-mcp-app/dist/index.js<span>"</span></span>] } }
+}</pre></div>
+<p>Restart Claude Desktop. Ask Claude to check your Garmin auth — it will render the app UI in an iframe and run the real login/MFA flow.</p>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<ul>
+<li><strong>MCP Server</strong> (<pre><code>src/server.ts</code></pre>) — Node.js server over stdio, registers tools + UI resource</li>
+<li><strong>React UI</strong> (<pre><code>src/app.tsx</code></pre>) — Rendered in host's sandboxed iframe, communicates via <pre><code>postMessage</code></pre></li>
+<li><strong>garmin-connect</strong> (<pre><code>packages/garmin-connect/</code></pre>) — TypeScript client library for Garmin Connect OAuth + API</li>
+</ul>
+<div><h2>Commit Convention</h2><a href="#commit-convention"></a></div>
+<p>Commits must follow the Conventional Commits format:</p>
+<div><pre><code>type(optional-scope): description
+</code></pre></div>
+<p>Allowed types: </p><pre><code>feat</code></pre>, <pre><code>fix</code></pre>, <pre><code>chore</code></pre>, <pre><code>docs</code></pre>, <pre><code>ci</code></pre>, <pre><code>refactor</code></pre>, <pre><code>test</code></pre><p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Telegram Bot That Solves the "What Time Is It For You?" Problem</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built a Telegram Bot That Solves the "What Time Is It For You?" Problem</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/23/2026 4:44:00 PM | <a href="https://dev.to/osovsky/i-built-a-telegram-bot-that-solves-the-what-time-is-it-for-you-problem-3dmj" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>"Can we do 6 PM your time? Wait, what time zone are you in again?"</p> <p>I've had this conversation hundreds of times. I work with people across 7 timezones — from Los Angeles to Bishkek. Every meeting started the same way: open <a href="https://www.worldtimebuddy.com/" target="_blank">World Time Buddy</a>, convert times, paste the result into Telegram, hope nobody gets confused.</p> <p>But the real problem wasn't the conversion. It was everything that happens after.</p> <h2> <a name="the-actual-problem" href="#the-actual-problem"> </a> The Actual Problem
+</h2> <p>Meetings happen in messengers. Not everyone knows each other's email. So nobody adds you to Google Calendar. You get a Zoom link in a Telegram chat, and that's it — no reminder, no calendar event, just a message you'll scroll past and forget.</p> <p>I needed three things:</p> <ol>
+<li>
+<strong>Automatic timezone conversion</strong> — type the time once, everyone sees it in their city</li>
+<li>
+<strong>A Google Calendar link</strong> — one click to add the meeting, no email required</li>
+<li>
+<strong>DM reminders</strong> — because group chat messages get buried</li>
+</ol> <p>So I built a Telegram bot that does all three from a single message.</p> <h2> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h2> <p>Send the bot one line:<br>
+</p> <div>
+<pre><code>Strategy Call, 15.03.2026, 18:00, https://zoom.us/j/123456, @alex @maria
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>It responds with a card like this:<br>
+</p> <div>
+<pre><code> Strategy Call Saturday, 15 March 2026 17:00 Riga; Tel-Aviv 17:00 Rome 18:00 Istanbul 20:00 Bishkek 01:00 Beijing (+1 day) 08:00 Los Angeles https://zoom.us/j/123456 Add to Calendar Cancel Reminder
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Then, 45 minutes before the meeting, every participant gets a personal DM: <em>"Reminder: Strategy Call starts in 45 minutes."</em> And another one 5 minutes before.</p> <h2> <a name="the-stack-all-free-tier" href="#the-stack-all-free-tier"> </a> The Stack (All Free Tier)
+</h2> <div><table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Role</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://vercel.com/" target="_blank">Vercel</a></td>
+<td>Hosting (serverless)</td>
+<td>$0</td>
+</tr>
+<tr>
+<td><a href="https://upstash.com/" target="_blank">Upstash QStash</a></td>
+<td>Delayed reminders</td>
+<td>$0</td>
+</tr>
+<tr>
+<td><a href="https://upstash.com/" target="_blank">Upstash Redis</a></td>
+<td>User allowlist</td>
+<td>$0</td>
+</tr>
+<tr>
+<td><a href="https://docs.telethon.dev/" target="_blank">Telethon</a></td>
+<td>Personal DMs</td>
+<td>$0</td>
+</tr>
+<tr>
+<td><a href="https://github.com/eternnoir/pyTelegramBotAPI" target="_blank">pyTelegramBotAPI</a></td>
+<td>Bot interface</td>
+<td>$0</td>
+</tr>
+</tbody>
+</table></div> <p><strong>Total infrastructure cost: $0/month.</strong> Everything runs on free tiers.</p> <p>The entire bot lives in one file — <code>api/index.py</code>. Deploy with <code>git push</code>. No servers, no Docker, no maintenance.</p> <h2> <a name="the-hard-parts" href="#the-hard-parts"> </a> The Hard Parts
+</h2> <h3> <a name="why-telethon-and-why-its-risky" href="#why-telethon-and-why-its-risky"> </a> Why Telethon (and why it's risky)
+</h3> <p>Telegram Bot API has a fundamental limitation: <strong>bots can't DM users who haven't started a conversation with the bot.</strong> So if I invite <code>@alex</code> to a meeting, the bot can't send Alex a reminder — Alex never messaged the bot.</p> <p>The workaround: <a href="https://docs.telethon.dev/" target="_blank">Telethon</a>, a userbot library. It sends DMs from a real Telegram account, not a bot. This bypasses the restriction — but Telegram actively fights spam from userbots. Send too many DMs too fast, and your account gets a <code>FloodWaitError</code> or worse — a permanent ban.</p> <p>My AI assistant kept warning me: <em>"Don't use Telethon, Telegram will block your account."</em> I used it anyway, with rate limiting and careful batching. So far, no ban.</p> <h3> <a name="the-64byte-bug" href="#the-64byte-bug"> </a> The 64-Byte Bug
+</h3> <p>Telegram limits <code>callback_data</code> (the hidden payload in inline buttons) to 64 bytes. <a href="https://upstash.com/" target="_blank">QStash</a> message IDs are long. So when the bot tried to create a "Cancel Reminder" button with the full QStash ID, Telegram threw <code>BUTTON_DATA_INVALID</code>.</p> <p>The fix: store a short numeric key (<code>cancel:1</code>, <code>cancel:2</code>) in the button, and map it to the full QStash ID server-side. Simple, but it took a debugging session to figure out — we only saw the real error after adding detailed error messages to the bot's responses.</p> <h3> <a name="dst-is-a-nightmare" href="#dst-is-a-nightmare"> </a> DST Is a Nightmare
+</h3> <p>Timezone conversion sounds simple until you hit Daylight Saving Time. Riga and Tel-Aviv are sometimes in the same timezone, sometimes not. The bot uses Python's <code>zoneinfo</code> with IANA timezone database — proper DST-aware conversion, not hardcoded UTC offsets.</p> <p>When two cities end up at the same time, the bot merges them: <code>17:00 Riga; Tel-Aviv</code>.</p> <h2> <a name="architecture" href="#architecture"> </a> Architecture
+</h2> <div>
+<pre><code>User → Telegram → Vercel (webhook) │ api/index.py (Flask + Bot) │ ┌──────────────┼──────────────┐ │ │ │ Upstash Redis QStash Telegram API (allowlist) (2 reminders) (card + buttons) │ ┌────┴────┐ │ │ -45 min -5 min │ │ /reminder /reminder │ │ Bot msg Bot msg + DMs + DMs (Telethon) (Telethon)
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Security layers:</p> <ul>
+<li>Webhook verification via <code>X-Telegram-Bot-Api-Secret-Token</code>
+</li>
+<li>Reminder endpoint protected by custom <code>X-Reminder-Secret</code> header</li>
+<li>Dynamic allowlist in Redis (only approved users can create meetings)</li>
+<li>Admin roles for managing the allowlist</li>
+<li>Input sanitization with <code>html.escape()</code>
+</li>
+</ul> <h2> <a name="what-i-learned" href="#what-i-learned"> </a> What I Learned
+</h2> <p><strong>1. Infrastructure beats features.</strong></p> <p>The bot has ~10 features (timezones, reminders, DMs, calendar, allowlist, admin roles, cancel buttons). But the real value is the architecture: one file, zero cost, deploy with <code>git push</code>. Features are easy to add when the foundation is solid.</p> <p><strong>2. Free tiers are surprisingly generous.</strong></p> <p>After 2 weeks of usage: 37 QStash messages total, 16 Redis commands, 0 bandwidth. The free tier limits (1,000 QStash messages/day, 500K Redis commands/month) are absurd overkill for a personal tool.</p> <p><strong>3. The Telethon trade-off is real.</strong></p> <p>Userbot DMs are the killer feature — and the biggest risk. Telegram can ban your account at any time. For a personal tool, the risk is acceptable. For a product with thousands of users, you'd need a different approach.</p> <p><strong>4. AI debugging is best when it shows, not tells.</strong></p> <p>The <code>BUTTON_DATA_INVALID</code> bug was invisible — we only saw " Reminder failed." The fix wasn't in the logic; it was adding <code>str(e)</code> to the error message so we could see the real problem in Telegram. AI suggested this in one step.</p> <h2> <a name="try-it" href="#try-it"> </a> Try It
+</h2> <p>The bot is live: <a href="https://t.me/inviterLinkBot" target="_blank">@inviterLinkBot</a></p> <p>Source code: <a href="https://github.com/maximosovsky/teleinviter" target="_blank">github.com/maximosovsky/teleinviter</a></p> <p>Deploy your own in 5 minutes — you'll need a <a href="https://t.me/BotFather" target="_blank">Telegram Bot Token</a>, an <a href="https://upstash.com/" target="_blank">Upstash</a> account, and a <a href="https://vercel.com/" target="_blank">Vercel</a> account. All free.</p> <hr> <p><em>Building in public, one bot at a time. Follow the journey: <a href="https://www.linkedin.com/in/osovsky/" target="_blank">LinkedIn</a> · <a href="https://github.com/maximosovsky" target="_blank">GitHub</a></em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

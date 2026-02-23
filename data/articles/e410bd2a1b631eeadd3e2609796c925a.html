@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Home</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/23/2026 3:48:33 PM | <a href="https://sowbot.co.uk/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <h2>About</h2> <div><p>Our mission is to bridge the gap between sustainability and scale by providing researchers and farmers with reproducible, lightweight robotics that reduce labour and environmental impact without proprietary dependencies.</p>
+<p>The Sowbot Open AgBot ecosystem is designed to bridge the “prototype gap” in agricultural robotics. It provides a Reference Hardware Design that is accessible to startups and is developing a Production-Ready Software Stack that satisfies the rigorous requirements of research.</p>
+<p>For startups, this eliminates ~18 months of R&amp;D on the “plumbing” (drivers, networking, UI), allowing them to focus on their unique value (e.g., a proprietary seeding algorithm). For researchers, it provides a stable, repeatable environment where experiments can be shared across labs by simply sharing a Docker image.</p>
+<p>Check the <a href="https://github.com/Agroecology-Lab/feldfreund_devkit_ros/tree/sowbot?tab=readme-ov-file#sowbot-roadmap">Roadmap on Github</a><br></p>
+<h2>Open Core: The robot ‘brain’</h2>
+<p><img src="http://nibleyleaves.co.uk/sowbot/wp-content/uploads/sites/10/2026/01/WhatsApp-Image-2026-01-30-at-14.05.15.jpeg" alt=""></p>
+<div>
+<p><em><strong>Status: Largely fabricated/ constructed, ESP32 carrier needs some work</strong></em></p>
+<p>A fully open-hardware robot compute unit built around a stackable 10 cm × 10 cm module standard with two Avaota A1 SIngle Board Computers (SBC) connected via a single ethernet cable.</p>
+<p><strong>Board A: Control &amp; Safety</strong></p>
+<p>Board A is the primary controller responsible for the robot’s physical integrity and movement.</p>
+<p>Core Tasks: ROS 2 navigation stack, topological mapping, and EKF localization.</p>
+<p>Hardware: Direct serial link to the ESP32 (Lizard firmware) for motor control and safety watchdogs, for deterministic real-time control.</p>
+<p>Priority: Executes real-time path planning and emergency stop logic.</p>
+<p><strong>Board B: Perception &amp; AI</strong></p>
+<p>Board B acts as a dedicated vision processor for compute-heavy tasks.</p>
+<p>Core Tasks: Camera drivers, image pre-processing, and neural network inference (e.g., YOLO).</p>
+<p>Output: Processes raw video into lightweight detection coordinates or semantic labels.</p>
+<p>Priority: High-bandwidth data handling without impacting SBC A’s CPU stability.</p>
+<p>Native CAN bus support enables robust field-level communication. Dual GNSS RTK receivers provide centimetre-scale positioning for navigation and task execution.</p>
+<p>All schematics, PCB layouts, and firmware are released under open licences. The system is housed in a rugged, waterproof aluminium enclosure with M12 connectors, designed for long-term outdoor deployment.</p>
+<table>
+<thead>
+<tr>
+<th>Photo</th>
+<th>Component</th>
+<th>Description</th>
+<th>Qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://agroecologylab.org.uk/wp-content/uploads/sites/2/2026/01/Screenshot-From-2026-01-12-20-06-16.png" alt="Yuzuki Avaota-A1 SBC"></td>
+<td><a href="https://pine64.com/product/yuzuki-avaota-a1-single-board-computer-4gb-32gb/">Yuzuki Avaota-A1 SBC</a><br></td>
+<td>Octa-core 64‑bit ARM Cortex‑A55 (up to 1.8 GHz), 4 GB RAM, integrated AI accelerator. Open‑hardware platform.</td>
+<td>2</td>
+</tr>
+<tr>
+<td><img src="https://agroecologylab.org.uk/wp-content/uploads/sites/2/2026/01/Screenshot-From-2026-01-12-16-57-48.png" alt="ESP32-S3 Microcontroller"></td>
+<td><a href="https://easyeda.com/editor#id=0013970616a140f994ebda6a3e0e432f">ESP32‑S3 Microcontroller</a><br></td>
+<td>Real-time Lizard control node and general‑purpose peripheral I/O on custom open hardware PCB.</td>
+<td>1</td>
+</tr>
+<tr>
+<td><img src="https://cdn-shop.adafruit.com/970x728/2472-12.jpg" alt="BNO055"></td>
+<td><a href="https://www.adafruit.com/product/2472">BNO055 IMU</a><br></td>
+<td>Adafruit 9-DOF Absolute Orientation IMU Fusion Breakout – BNO055</td>
+<td>1</td>
+</tr>
+<tr>
+<td><img src="https://cdn-learn.adafruit.com/assets/assets/000/123/293/large1024/robotics___cnc_5708-01.jpg?1691030555" alt="CAN Bus Breakout"></td>
+<td><a href="https://learn.adafruit.com/adafruit-can-pal/overview">CAN Bus Breakout</a><br></td>
+<td>CAN interface breakout for deterministic, vehicle‑grade communication.</td>
+<td>1</td>
+</tr>
+<tr>
+<td><img src="https://www.sparkfun.com/media/catalog/product/cache/a793f13fd3d678cea13d28206895ba0c/1/5/15136-SparkFun_GPS-RTK2_Board_-_ZED-F9P__Qwiic_-03.jpg" alt="SparkFun GNSS RTK"></td>
+<td><a href="https://www.sparkfun.com/sparkfun-gnss-rtk-l1-l5-breakout-neo-f9p-qwiic.html">SparkFun GNSS RTK</a><br>
+or alternate<br>
+<a href="https://www.ardusimple.com/product/septentrio-mosaichat/">Septentrio Mosaic</a><br></td>
+<td>High‑precision GNSS positioning with RTK support.</td>
+<td>2</td>
+</tr>
+<tr>
+<td><img src="https://agroecologylab.org.uk/wp-content/uploads/sites/2/2026/01/Screenshot-From-2026-01-12-23-47-50.png" alt="12V to 5V Power Conversion PCB"></td>
+<td><a href="https://oshwlab.com/rosmo/pcb12v-reroute">36V → 12V &amp; 5V Power Conversion &amp; Isolation from motor noise</a><br></td>
+<td>Custom‑fabricated power regulation and electrical isolation board.</td>
+<td>1</td>
+</tr>
+<tr>
+<td><img src="https://image.made-in-china.com/365f3j00vCnicwEBfRrV/IP67-Die-Casting-Aluminum-Waterproof-Junction-Box-Communication-Telecom-Enclosures.webp" alt="Waterproof Aluminum Enclosure"></td>
+<td><a href="https://www.aliexpress.com/item/1005006653673283.html">Waterproof Aluminum Enclosure</a><br></td>
+<td>Sealed aluminum enclosure with M12 connectors for rugged deployments.</td>
+<td>1</td>
+</tr>
+</tbody>
+</table> <h2>Sowbot: The body</h2>
+<p><em><strong>Status: Detailed BOM &amp; concept but not yet assembled</strong></em></p>
+<p>The Open core module above powers the Open AgBot reference platform. This integrates high-performance motors, precise control, long-lasting batteries suitable for Low temp &lt;0C charging and rugged suspension into a fully modular, open-hardware agricultural robot.</p>
+<p>Modular chassis and standardised connections enable rapid expansion and reconfiguration, providing full control over electronics, software, and mechanics for a versatile, field-ready system.</p>
+<p><a href="https://agroecologylab.org.uk/wp-content/uploads/sites/2/2025/09/My-First-Board3.jpg"><img src="https://agroecologylab.org.uk/wp-content/uploads/sites/2/2025/09/My-First-Board3.jpg" alt=""></a><br></p>
+<figure></figure>
+<table>
+<thead>
+<tr>
+<th>Photo</th>
+<th>Component</th>
+<th>Description</th>
+<th>Qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP7lzP2aRu2jzKT4imdm0oPrJblnNljX_Tyg&amp;s" alt="Odrive CAN Bus Drivers"></td>
+<td><a href="https://wwshop.odriverobotics.com/collections/motor-controllers/products/odrive-v36">Odrive CAN Bus Drivers</a> with <a href="https://github.com/Agroecology-Lab/Open_drive">(Open hardware version, in development)</a> Later migration to <a href="https://github.com/sequoia-hope/rp2350-motor-controller?tab=readme-ov-file#rp2350-motor-controller">SimpleFOC hardware</a> possible</td>
+<td>High-performance motor control with real-time CAN communication for precise torque and speed regulation.</td>
+<td>2</td>
+</tr>
+<tr>
+<td><img src="https://www.lunyee.com/static/images/products/14.5inch-300-500w-24-36-48v-12km-per-hour-gear-hub-motor-1.webp" alt=" 14.5 inch,36V 500W hub motor"></td>
+<td><a href="https://www.lunyee.com/products/14.5inch-300-500w-24-36-48v-12km-per-hour-gear-hub-motor.html">800W Hub motor</a><br></td>
+<td>14.5″ Geared hub motors 100N.m with 4096*10 encoder delivering good acceleration and traction.</td>
+<td>4</td>
+</tr>
+<tr>
+<td><img src="https://thaihuaweibattery.com/wp-content/uploads/2025/06/sodium-ion-1024x1024.webp" alt="32 V Sodium-Ion Battery Packs"></td>
+<td><a href="https://www.aliexpress.com/item/1005009604828024.html">12V 80Ah Sodium-Ion Battery Packs</a><br></td>
+<td>High-capacity energy modules providing long-duration power for fully autonomous operation.</td>
+<td>6</td>
+</tr>
+<tr>
+<td><img src="https://m.media-amazon.com/images/I/61SQsSZ92vL._AC_UF350,350_QL80_.jpg" alt="5"></td>
+<td><a href="https://s.click.aliexpress.com/e/_c3PpCIBt">5″ Fatbike Suspension Forks</a><br></td>
+<td>Shock-absorbing suspension for smooth navigation across rough terrain and dynamic environments.</td>
+<td>4</td>
+</tr>
+<tr>
+<td><img src="https://res.cloudinary.com/ecomsilver/image/upload/StageElectrics/product-images/28093.jpg" alt="Modular Chassis Structure"></td>
+<td><a href="https://keesystems.com/shop/tube/25mm-nb-plain-end-aluminium-tube-size-6/">Modular Chassis Structure</a><br></td>
+<td>Lightweight aluminium tube sections forming a flexible backbone for sensors, processors, and actuators&nbsp;</td>
+<td>Many</td>
+</tr>
+<tr>
+<td><img src="https://d12eljsnrdgs9e.cloudfront.net/product-images/465-1000/KL161.jpg.webp" alt="Chassis Connectors"></td>
+<td><a href="https://www.scaffolding-direct.co.uk/aluminium-90-degree-crossover-33-7mm-kee-lite-l45-6/">Chassis Connectors</a><br></td>
+<td>Aluminium 90° crossover and modular pipe fittings used to join tubing at right angles for structural frames.</td>
+<td>Many</td>
+</tr>
+</tbody>
+</table>
+<div> <h2>Sowbot Mini</h2>
+<h3>(dev platform)</h3>
+<p><em><strong>Status: Needs assembly and testing</strong></em></p>
+<p>A 1/4 scale development platform for testing and validation</p>
+<p><a href="https://agroecologylab.org.uk/wp-content/uploads/sites/2/2025/12/robot.jpg"><img src="https://agroecologylab.org.uk/wp-content/uploads/sites/2/2025/12/robot.jpg" alt=""></a><br></p>
+<table>
+<tbody>
+<tr>
+<th>Dev platform Components</th>
+<th>Description</th>
+<th>Quantity</th>
+</tr>
+<tr>
+<td>Driver</td>
+<td><a href="https://wwshop.odriverobotics.com/collections/motor-controllers/products/odrive-v36">Odrive</a><br></td>
+<td>2</td>
+</tr>
+<tr>
+<td>Electric wheel</td>
+<td><a href="https://www.alibaba.com/product-detail/24V-36V-48V-6-5-Inch_60843979831.html">6.5″ hub with encoder</a><br></td>
+<td>4</td>
+</tr>
+<tr>
+<td>Chassis structure</td>
+<td><a href="https://www.aliexpress.com/item/1005007392102134.html">1515 extrusion </a><br></td>
+<td>many</td>
+</tr>
+<tr>
+<td>Chassis connections</td>
+<td>1515 corner</td>
+<td>Many</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div> <h2>Sowbot Pico</h2>
+<h3>(dev platform)</h3>
+<p><em><strong>Status: Requires some Lizard firmware work, but physical platform tested with alternate software</strong></em></p>
+<p><img src="http://nibleyleaves.co.uk/sowbot/wp-content/uploads/sites/10/2026/01/picosowbot.jpg" alt=""></p>
+<p>Track <a href="https://github.com/Agroecology-Lab/Sowbot_Open_Agbot_ROS/issues/8">issue here</a><br></p>
+</div> </div> <div> <h2>Software</h2> <div><h2>Software stack(s)</h2>
+<h2>Lizard</h2>
+<p>The Sowbot Platform leverages <a href="https://github.com/Agroecology-Lab/lizard/tree/main"><strong>Lizard</strong> </a>developed by <a href="https://github.com/zauberzeug/" target="_blank">Zauberzeug</a> for real-time robot orchestration, using its framework to manage sensor input, motor control, and navigation. Lizard enables seamless communication between the processor, microcontrollers, and peripherals, coordinating autonomous operations while remaining fully open and customisable. Lizard supports a range of <a href="https://github.com/zauberzeug/lizard/tree/main/main/modules" target="_blank">motor drivers</a><br></p>
+<h2>RoSys</h2>
+<p>On top of Lizard, developers can use RoSys, an asyncio-based Python framework, to simplify control loops, messaging, and UI, arguably the fastest route to a working robot. The agricultural implementation, <a href="https://github.com/Agroecology-Lab/feldfreund_devkit"><strong>Field Friend</strong>, </a>built by <a href="https://github.com/zauberzeug/" target="_blank">Zauberzeug</a> on RoSys to coordinate autonomous navigation and field operations.</p>
+<h2>DevKit ROS</h2>
+<p>Our primary development is on <a href="https://github.com/Agroecology-Lab/feldfreund_devkit_ros"><strong>DevKit ROS</strong>,</a> a full ROS‑based development kit tailored to the Sowbot Platform, based on work by <a href="https://github.com/zauberzeug/" target="_blank">Zauberzeug</a>. DevKit ROS provides standard ROS tooling, sensor drivers, simulation support and community interoperability, making it ideal for teams already invested in the ROS ecosystem or requiring mature libraries for perception and planning.</p>
+<h2>Software Roadmap</h2>
+<p>Check the <a href="https://github.com/Agroecology-Lab/feldfreund_devkit_ros/tree/sowbot?tab=readme-ov-file#sowbot-roadmap">Roadmap on Github</a><br></p>
+<h2>Contributing</h2>
+<p>We welcome contributions!</p>
+<p>If you’d like to chat join <a href="https://discord.gg/SvztEBr4KZ">this channel in the Personal robotics Discord</a><br></p>
+</div> </div> <div> <p><img src="https://nibleyleaves.co.uk/sowbot/wp-content/uploads/sites/10/2019/02/farmbotgantry.jpg" alt=""></p> </div> <div> <p> </p><h2>Get in touch</h2> <p></p> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>port0</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>port0</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/23/2026 3:46:06 PM | <a href="https://port0.bluephantom.dev/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><div><div><h2>Local development without port friction.</h2><p>port0 is a lightweight daemon that auto-assigns free ports, injects the <code>PORT</code> environment variable, and reverse-proxies traffic to clean hostnames like <code>project.localhost</code>.</p><div><div><h4>Zero Configuration</h4><p>No project-level config files required. Port assignment and routing are derived from your working directory automatically.</p></div><div><h4>Port Injection</h4><p>Automatically finds an open port and injects it into your process via environment variables. Say goodbye to port 3000 conflicts.</p></div><div><h4>Clean Hostnames</h4><p>Access your local apps via <code>app.localhost</code> or <code>app.web</code> instead of memorizing messy IP addresses and port numbers.</p></div><div><h4>Native Proxy &amp; DNS</h4><p>Built-in reverse proxy with WebSocket support and an embedded DNS server. Works seamlessly across macOS, Linux, and Windows.</p></div></div><div><p><span>macOS / Linux</span>
+<code>curl -fsSL https://port0.bluephantom.dev/install.sh | bash</code></p><p><span>Windows (PowerShell)</span>
+<code>irm https://port0.bluephantom.dev/install.ps1 | iex</code></p></div></div><div><h2>Install</h2><div><div><h3>One-line installer</h3><p>Detects OS/arch, downloads the proper release binary, and installs to a common path (may prompt for sudo).</p><div><p><span>macOS / Linux</span>
+<code>curl -fsSL https://port0.bluephantom.dev/install.sh | bash</code></p><p><span>Windows (PowerShell)</span>
+<code>irm https://port0.bluephantom.dev/install.ps1 | iex</code></p></div></div><div><h3>Build from source</h3><div><p><span>macOS / Linux</span>
+<code>git clone https://github.com/blu3ph4ntom/port0.git<br>cd port0<br>go build -o port0 .<br>sudo mv port0 /usr/local/bin/port0</code></p><p><span>Windows (PowerShell)</span>
+<code>git clone https://github.com/blu3ph4ntom/port0.git<br>cd port0<br>go build -o port0.exe .<br># move to a folder on PATH, e.g. %USERPROFILE%\bin</code></p></div></div></div></div><div><h2>Quick start</h2><p>Wrap your usual dev command with <code>port0</code>. It injects <code>PORT</code> and exposes the service at:</p><ul><li><code>http://&lt;name&gt;.localhost</code> (no setup required)</li><li><code>http://&lt;name&gt;.web</code> (requires one-time setup)</li><li><code>http://&lt;name&gt;.local</code> (requires one-time setup)</li></ul><pre><code>cd ~/projects/myapp
+port0 npm run dev
+# or
+port0 go run ./cmd/server</code></pre></div><div><h2>Subdomain support</h2><p>Group related projects under a shared parent domain for clean URLs in monorepos.</p><div><div><h3>Quick syntax</h3><pre><code>port0 -n api.myapp npm run dev # api.myapp.localhost
+port0 -n web.myapp npm run dev # web.myapp.localhost</code></pre></div><div><h3>Explicit syntax</h3><pre><code>port0 -n api --domain myapp npm run dev # api.myapp.localhost
+port0 -n web --domain myapp npm run dev # web.myapp.localhost</code></pre></div></div><pre><code>port0 -n myapp npm run dev # myapp.localhost
+port0 npm run dev # uses folder name</code></pre><p>Use this for monorepos, micro-frontends, multi-repo domains, or environment separation.</p></div><div><h2>One-time system setup (optional)</h2><p>Only required to enable <code>.web</code> / <code>.local</code> or to allow binding privileged ports (80/53).</p><ul><li>macOS: <code>sudo port0 setup</code></li><li>linux (systemd): <code>sudo port0 setup</code></li><li>windows: run Administrator PowerShell, then <code>port0 setup</code></li></ul><p>Undo: <code>sudo port0 teardown</code> (or run <code>port0 teardown</code> in Administrator PowerShell on Windows).</p></div><div><h2>Common commands</h2><div><div><ul><li><code>port0 &lt;cmd...&gt;</code> — run command with <code>PORT</code> injected</li><li><code>port0 -n &lt;name&gt; &lt;cmd...&gt;</code> — set custom name</li><li><code>port0 -d &lt;cmd...&gt;</code> — run detached/background</li><li><code>port0 ls</code> — list projects</li></ul></div><div><ul><li><code>port0 logs &lt;name&gt;</code> — view logs (<code>-f</code> to follow)</li><li><code>port0 kill &lt;name&gt;</code> — stop project</li><li><code>port0 setup</code> / <code>port0 teardown</code> — system config</li><li><code>port0 update</code> — download &amp; replace binary with latest release</li></ul></div></div><p><code>port0 daemon start|stop|status</code> — manage daemon</p></div><div><h2>Integration examples</h2><div><div><h3>package.json</h3><pre><code>{ "scripts": { "dev": "port0 vite", "start": "port0 node server.js", "serve": "port0 -d npm run start" }
+}</code></pre></div><div><h3>pnpm workspaces</h3><pre><code>{ "scripts": { "dev:web": "cd packages/web &amp;&amp; port0 pnpm dev", "dev:api": "cd packages/api &amp;&amp; port0 pnpm --filter api dev" }
+}</code></pre></div><div><h3>bun</h3><pre><code>port0 bun run dev</code></pre></div><div><h3>cargo</h3><pre><code>port0 cargo run --bin api</code></pre></div><div><h3>go</h3><pre><code>port0 go run ./cmd/server
+port0 ./bin/server</code></pre></div><div><h3>python</h3><pre><code>port0 poetry run uvicorn myapp:app --host 0.0.0.0 --port $PORT
+port0 python -m myapp</code></pre></div></div></div></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

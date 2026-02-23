@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building an MCP Server for Linux Desktop GUI Automation on Wayland</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Building an MCP Server for Linux Desktop GUI Automation on Wayland</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/23/2026 4:14:41 PM | <a href="https://dev.to/bhyoo/building-an-mcp-server-for-linux-desktop-gui-automation-on-wayland-30b2" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <div> <p><a href="https://dev.to/bhyoo"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F1457323%2F101da12a-c4bb-4814-accf-65b89e3ddf8e.jpeg" alt="Byeonghoon Yoo"></a> </p> </div> </header> <div> <p>When I started working on AI agent tooling, I hit a wall: there's no clean way to automate GUI interactions on Wayland. X11 had <code>xdotool</code> and <code>DISPLAY=:99</code> — Wayland killed all of that, by design. No global input injection, no screen grabbing without portal authorization dialogs.</p> <p>So I built <strong>kwin-mcp</strong>, an MCP server that gives AI agents full GUI automation capabilities on Linux desktops, running in a completely isolated KWin Wayland session.</p> <h2> <a name="the-problem" href="#the-problem"> </a> The Problem
+</h2> <p>Wayland's security model blocks the automation patterns we took for granted on X11. There's no equivalent of pointing tools at a virtual display. XDG RemoteDesktop portals require interactive user authorization — useless for headless automation. And most Wayland compositors don't expose any input injection API at all.</p> <h2> <a name="the-solution-triple-isolation" href="#the-solution-triple-isolation"> </a> The Solution: Triple Isolation
+</h2> <p>kwin-mcp creates three layers of isolation for each session:</p> <ol>
+<li>
+<strong>Private D-Bus bus</strong> (<code>dbus-run-session</code>) — no interference with host services</li>
+<li>
+<strong>Virtual Wayland compositor</strong> (<code>kwin_wayland --virtual</code>) — no windows on your display</li>
+<li>
+<strong>Scoped input injection</strong> via KWin's EIS D-Bus interface — input stays inside the session</li>
+</ol> <p>The AI agent never touches your host desktop. You get a fully functional KDE Plasma desktop that exists only in memory.</p> <h2> <a name="what-it-exposes" href="#what-it-exposes"> </a> What It Exposes
+</h2> <p>The server provides 29 MCP tools:</p> <div><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mouse</td>
+<td>click, drag, scroll, move, button down/up</td>
+</tr>
+<tr>
+<td>Keyboard</td>
+<td>type (ASCII), type unicode, key press, key down/up</td>
+</tr>
+<tr>
+<td>Touch</td>
+<td>tap, swipe, pinch, multi-finger swipe</td>
+</tr>
+<tr>
+<td>Screen</td>
+<td>screenshot, accessibility tree, find UI elements, wait for element</td>
+</tr>
+<tr>
+<td>Session</td>
+<td>start, stop, launch app, list/focus windows</td>
+</tr>
+<tr>
+<td>System</td>
+<td>clipboard get/set, D-Bus calls, Wayland protocol info</td>
+</tr>
+</tbody>
+</table></div> <p>Screenshot capture runs at ~30-70ms per frame via KWin's ScreenShot2 D-Bus interface. Any action tool accepts a <code>screenshot_after_ms</code> parameter for burst frame capture without extra round-trips.</p> <h2> <a name="why-kwin-specifically" href="#why-kwin-specifically"> </a> Why KWin Specifically?
+</h2> <p>KWin is (as far as I know) the only Wayland compositor that exposes an EIS (Emulated Input Server) D-Bus interface. This provides the only clean path for input injection without triggering XDG RemoteDesktop authorization dialogs. Since we own the isolated session, we bypass the portal entirely.</p> <h2> <a name="limitations" href="#limitations"> </a> Limitations
+</h2> <ul>
+<li>KDE Plasma 6+ only (no GNOME, no Sway)</li>
+<li>US QWERTY keyboard layout for direct typing (Unicode input via <code>wtype</code> works)</li>
+<li>AT-SPI2 accessibility coverage varies by application</li>
+</ul> <h2> <a name="getting-started" href="#getting-started"> </a> Getting Started
+</h2> <div>
+<pre><code><span># Install</span>
+pip <span>install </span>kwin-mcp <span># Or with uv</span>
+uv tool <span>install </span>kwin-mcp
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Add to your Claude Code MCP config:<br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"mcpServers"</span><span>:</span><span> </span><span>{</span><span> </span><span>"kwin-mcp"</span><span>:</span><span> </span><span>{</span><span> </span><span>"command"</span><span>:</span><span> </span><span>"kwin-mcp"</span><span> </span><span>}</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The project is MIT licensed and available on <a href="https://github.com/isac322/kwin-mcp" target="_blank">GitHub</a> and <a href="https://pypi.org/project/kwin-mcp/" target="_blank">PyPI</a>.</p> <hr> <p>I'd love to hear if anyone has experience with Wayland automation or has ideas for extending this to other compositors. The EIS protocol is theoretically compositor-agnostic, but KWin is the only one implementing it right now.</p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

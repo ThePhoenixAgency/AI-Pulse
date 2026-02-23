@@ -5,8 +5,23 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Mon, 23 Feb 2026 10:48:51 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 23 Feb 2026 16:53:48 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Show HN: SpecterQA – AI personas test your web app, no scripts needed]]></title>
+      <link>https://news.ycombinator.com/item?id=47124000</link>
+      <description><![CDATA[SpecterQA is an open-source CLI for behavioral testing. Instead of writing test scripts with selectors, you define personas (YAML) and journeys (goals). The engine launches a real browser via Playwright, screenshots the page, sends it to Claude's vision model, and the AI decides what to click/type/scroll. Loop until done or stuck.
+The idea: test scripts break when markup changes. Vision-based tests break when the UX actually breaks.
+Personas have attributes like technical comfort, patience, and role that shape navigation behavior. A "frustrated non-technical admin" navigates differently than a "power user developer." pip install specterqa specterqa init specterqa run -p demo Previously called GhostQA — we rebranded after discovering ghostqa.com exists as an AI testing company. Clean break, no confusion.
+GitHub: https://github.com/SyncTek-LLC/specterqa
+MIT license. Alpha (v0.3.0). Feedback welcome. URL: https://news.ycombinator.com/item?id=47124000
+Points: 1
+# : 0]]></description>
+      <pubDate>Mon, 23 Feb 2026 15:53:39 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://news.ycombinator.com/item?id=47124000</guid>
+    </item>
     <item>
       <title><![CDATA[Actualité : Étoiles des Numériques 2025-2026 : notre palmarès en vidéo]]></title>
       <link>https://www.lesnumeriques.com/societe-numerique/etoiles-des-numeriques-2025-2026-notre-palmares-en-video-n251792.html</link>
@@ -15,6 +30,85 @@
       <source>Les Numeriques</source>
       <category>products</category>
       <guid>https://www.lesnumeriques.com/societe-numerique/etoiles-des-numeriques-2025-2026-notre-palmares-en-video-n251792.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: Sowbot – open-hardware agricultural robot (ROS2, RTK GPS)]]></title>
+      <link>https://sowbot.co.uk/</link>
+      <description><![CDATA[Sowbot is an open-hardware agricultural robot designed to close the "prototype gap" that kills most agri-robotics startups and research projects — the 18+ months spent on drivers, networking, safety watchdogs, and UI before you can even start on the thing you actually care about.
+The hardware is built around a stackable 10×10cm compute module with two ARM Cortex-A55 SBCs — one for ROS 2 navigation/EKF localisation, one dedicated to vision/YOLO inference — connected via a single ethernet cable.
+Centimetre-level positioning via dual RTK GNSS, CAN bus for field comms, and real-time motor control via ESP32 running Lizard firmware.
+Everything — schematics, PCB layouts, firmware — is under open licences.
+The software stack runs on RoSys/Field Friend (for teams who want fast iteration) or DevKit ROS (for teams already in the ROS ecosystem). The idea is that a lab in one country can reproduce another lab's experiment by sharing a Docker image.
+Current status: the Open Core brain is largely fabricated, the full-size Sowbot body has a detailed BOM but isn't yet assembled, and we have two smaller dev platforms (Mini and Pico) in various stages of testing.
+We're a small volunteer team and we're looking for contributors — hardware, ROS, firmware, docs, whatever you can offer.
+The best place to start is our Discord: https://discord.gg/SvztEBr4KZ — we have a weekly call if you'd prefer to just show up and chat.
+GitHub: https://github.com/Agroecology-Lab/feldfreund_devkit_ros/tre... URL: https://news.ycombinator.com/item?id=47123894
+Points: 2
+# : 0]]></description>
+      <pubDate>Mon, 23 Feb 2026 15:48:33 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://sowbot.co.uk/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: MicroGPT-C – C99 GPT for Edge Training and Tiny Model Pipelines]]></title>
+      <link>https://github.com/enjector/microgpt-c</link>
+      <description><![CDATA[TL;DR: Pure C99 GPT-2 engine, zero dependencies. Sub-1M-parameter “organelles” coordinate via a Planner-Worker-Judge pipeline and beat random opponents up to 91 % on logic games, all on CPU.
+I’m a C/C++ architect focused on low-latency systems. Last year, I tried building agentic pipelines with SLMs/LLMs and hit the usual wall: latency and orchestration overhead killed real-time edge use cases.
+Initial research video: https://www.youtube.com/watch?v=q-rs9VZ1-0I
+So I asked: how far can you push specialised logic at https://gist.github.com/karpathy/8627fe009c40f57531cb1836010...). Zero deps, single-header, localised KV cache. Speed was never the goal (Andrej’s nanoGPT and llm.c already showed what’s possible). The real experiment was orchestration.
+Organelle Pipeline Architecture (OPA): Agile-style Planners, Workers and Judges talking through tiny structured strings (board=XO_|valid=1,3) parsed by a safety-gated stack VM (3.7–5.8M ops/s). A 64K model needed 181 manual interventions; a 460K model trained on those traces internalised everything and needed zero.
+Beyond the research: fully auditable AI, great for education (~3k lines of readable C), rapid prototyping, and embedded.
+Personal itch: fraud/risk engines. I want agents that hunt “unknown-unknowns” in a sandbox where every decision is inspectable.
+Happy to talk implementation, the 97 tests, 22 benchmarks, or anything else. FAQ: https://github.com/enjector/microgpt-c/blob/main/FAQ.md
+Quick try (macOS/Linux/Windows):
+git clone https://github.com/enjector/microgpt-c &amp;&amp; cd microgpt-c
+mkdir build &amp;&amp; cd build &amp;&amp; cmake .. -DCMAKE_BUILD_TYPE=Release &amp;&amp; cmake --build . ./connect4_demo # 460K params, ~21 min train, 88% win rate vs random
+Performance (Apple M2 Max):
+- 4.2K params names: 685k tok/s train, 110k tok/s infer
+- 841K Shakespeare char: 28k / 16k tok/s
+- 510K Shakespeare word: 12.5k / 40k tok/s
+Full leaderboard (11 games), market-regime experiment (57% holdout = 2.8× baseline), and the book PDF:
+https://github.com/enjector/microgpt-c/blob/main/docs/book/M...
+GitHub: https://github.com/enjector/microgpt-c URL: https://news.ycombinator.com/item?id=47123730
+Points: 1
+# : 0]]></description>
+      <pubDate>Mon, 23 Feb 2026 15:39:21 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://github.com/enjector/microgpt-c</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: EloPhanto – A self-evolving AI agent that builds its own tools]]></title>
+      <link>https://github.com/elophanto/EloPhanto</link>
+      <description><![CDATA[I built EloPhanto because I wanted an AI agent that could actually execute tasks on my machine with full visibility — not a black box API call. It runs locally and controls a real Chrome browser (47 tools) using your existing sessions.
+The standout feature: when EloPhanto encounters a task it doesn't have a tool for, it autonomously writes the Python code, tests it, reviews itself, and integrates the new tool permanently. It's now built 99+ tools for itself this way.
+Other features:
+- Multi-channel gateway (CLI, Telegram, Discord, Slack) with unified sessions
+- MCP tool server support (connect any MCP server)
+- Document &amp; media analysis (PDF, images, OCR, RAG)
+- Agent email (own inbox for service signup/verification)
+- Crypto payments wallet (Base chain, spending limits)
+- TOTP authenticator (autonomous 2FA handling)
+- Evolving identity that learns from experience
+- Skill system with EloPhantoHub marketplace (28 bundled skills)
+It's open source (Apache 2.0), local-first, and designed to be your personal AI operating system.
+The project is very new — currently at 6 stars on GitHub. I'd love to get feedback on the architecture, the self-development approach, or what features you'd want in a local agent. URL: https://news.ycombinator.com/item?id=47123543
+Points: 1
+# : 0]]></description>
+      <pubDate>Mon, 23 Feb 2026 15:28:06 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://github.com/elophanto/EloPhanto</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : Écrans "anti-espion" : nos tests en labo révèlent un sacrifice inattendu]]></title>
+      <link>https://www.lesnumeriques.com/telephone-portable/filtres-de-confidentialite-on-a-teste-en-labo-ces-protections-d-ecran-miracles-pour-smartphones-n251796.html</link>
+      <description><![CDATA[Le lancement de la gamme Galaxy S26, dont le Galaxy S26 Ultra sera le fleuron, va permettre à Samsung d’inaugurer un nouveau type d’écran. La dalle Amoled de son smartphone Ultra sera effectivement pourvue d’une option mimant l’effet d’un filtre “anti-espion”, qui s’ajoutera à sa couche antireflets habituelle. Cette dernière, très efficace, est elle-...]]></description>
+      <pubDate>Mon, 23 Feb 2026 11:00:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/telephone-portable/filtres-de-confidentialite-on-a-teste-en-labo-ces-protections-d-ecran-miracles-pour-smartphones-n251796.html</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Bon plan – La batterie externe Belkin BoostCharge Pro 20K "5 étoiles" à 59,99 € (-23%)]]></title>
@@ -34,83 +128,6 @@ Points faiblesPas...]]></description>
       <source>Les Numeriques</source>
       <category>products</category>
       <guid>https://www.lesnumeriques.com/voiture-hybride-rechargeable/les-hybrides-rechargeables-ne-sont-pas-si-ecologiques-une-etude-massive-montre-l-ampleur-de-l-arnaque-n251837.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: OpenGem – A Load-Balanced Gemini API Proxy (No API Key Required)]]></title>
-      <link>https://github.com/arifozgun/OpenGem</link>
-      <description><![CDATA[Hi HN! I built OpenGem, an open-source, load-balanced proxy for the Gemini API that requires absolutely no paid API keys.
-GitHub: https://github.com/arifozgun/OpenGem
-The Context:
-Like many developers, I was constantly hitting "429 Quota Exceeded" errors while building AI agents and processing large payloads on free tiers. I wanted to build freely without calculating API costs for every test request.
-How it works:
-I reverse-engineered the official Gemini CLI authentication to get standard API access. However, a single free Google account quota depletes quickly. To solve this, I built a Smart Load Balancer at the core of OpenGem.
-What it does:
-- You connect multiple idle/free Google accounts to the dashboard via OAuth.
-- OpenGem acts as a standard endpoint (`POST /v1beta/models/{model}`).
-- It routes traffic to the least-used account. If an account hits a real 429 quota limit, OpenGem instantly detects it, puts that account on a 60-minute cooldown, and seamlessly retries with the next available account. It differentiates between simple RPM bursts and actual limits.
-Tech specs:
-- Fully compatible with official Google SDKs (`@google/genai`), LangChain, and standard SSE streaming (no broken [DONE] chunks).
-- Supports native "tools" (Function Calling) for agentic workflows.
-- Raised payload limit to 50MB for massive contexts.
-- AES-256-GCM encryption for all sensitive configs and OAuth tokens at rest.
-- Toggle between Firebase Firestore or a fully offline Local JSON database.
-It’s strictly for educational purposes and personal research to bypass the friction of testing/prototyping. The entire project is MIT licensed.
-I’m currently running it with my own side projects and it handles heavy agent tasks flawlessly. I would love any feedback on the load balancing logic, security implementations, or just general thoughts! URL: https://news.ycombinator.com/item?id=47111607
-Points: 1
-# : 0]]></description>
-      <pubDate>Sun, 22 Feb 2026 15:09:45 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://github.com/arifozgun/OpenGem</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: SergioAI – Trello bot with Claude that reviews PRDs and opens draft PRs]]></title>
-      <link>https://github.com/Belfio/sergio</link>
-      <description><![CDATA[I built an open-source bot that turns Trello cards into working code using Claude Code.
-Drop a task card in a list → Sergio picks it up, explores your codebase, and posts an implementation plan as a . Add feedback, move the card back, and iterate. When you're happy, move it to the Development list → Sergio creates a worktree, writes the code, runs tests, and opens a draft PR on GitHub.
-It's a tool that can be used by teams of devs and product managers to cover the knowledge gaps between non technical and technical planning.
-All triggered by dragging cards. It's basically Claude Code running as an autonomous teammate on a $5/month VM, orchestrated through Trello. The two-user sandbox architecture keeps the AI isolated from secrets and credentials (similar to OpenClaw's approach to secure agentic coding).
-The roadmap includes pluggable engine support (OpenCode, Codex) and MCP servers for reading Google Docs, Figma, and Notion directly from cards. URL: https://news.ycombinator.com/item?id=47111063
-Points: 2
-# : 0]]></description>
-      <pubDate>Sun, 22 Feb 2026 13:59:24 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://github.com/Belfio/sergio</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: RMirror Cloud – Open-Source OCR and Notion Sync for ReMarkable Tablets]]></title>
-      <link>https://rmirror.io</link>
-      <description><![CDATA[I built an open-source cloud service for reMarkable tablets that does three things:
-Syncs notebooks from your reMarkable to the cloud via a macOS background agent
-Runs AI-powered OCR on handwritten pages (Claude API, not Tesseract)
-Pushes transcribed notes to Notion as searchable pages
-Stack: FastAPI backend, Next.js dashboard, Python agent. Self-hostable.
-The reMarkable's handwriting recognition (via Connect) is okay for typed-looking text but struggles with real handwriting. I wanted something better that also gave me web access to my notes and pushed them to Notion where I actually work.
-GitHub: https://github.com/gottino/rmirror-cloud
-Request beta access: https://rmirror.io/
-Looking for beta testers — especially people with messy handwriting. URL: https://news.ycombinator.com/item?id=47110872
-Points: 2
-# : 0]]></description>
-      <pubDate>Sun, 22 Feb 2026 13:32:36 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://rmirror.io</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: CanaryAI v0.2.5 – Security monitoring on Claude Code actions]]></title>
-      <link>https://github.com/jx887/homebrew-canaryai</link>
-      <description><![CDATA[I've been using Claude Code a lot recently and wanted visibility into security-relevant executions — the kind of thing you may not necessarily catch while the agent is running.
-CanaryAI is a macOS menu bar app that monitors Claude Code session logs and alerts on suspicious behaviour: reverse shells, credential file access, LaunchAgent/cron persistence, download-and-execute patterns, shell profile modification. It parses the JSON logs Claude Code writes locally — no interception, no proxying. Alert-only; it never blocks the agent.
-All processing is local. Detection rules are YAML so can be expanded on.
-&gt; https://github.com/jx887/homebrew-canaryai
-Let me know if you have any questions. URL: https://news.ycombinator.com/item?id=47110812
-Points: 2
-# : 0]]></description>
-      <pubDate>Sun, 22 Feb 2026 13:24:03 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://github.com/jx887/homebrew-canaryai</guid>
     </item>
   </channel>
 </rss>
