@@ -1680,7 +1680,7 @@
                 };
 
                 try {
-                    const localResponse = await fetchWithTimeout('./README.md');
+                    const localResponse = await fetchWithTimeout('./README.md', { cache: 'no-store' });
                     if (localResponse.ok) {
                         const localMarkdown = await localResponse.text();
                         if (!isUsableReadme(localMarkdown)) {
