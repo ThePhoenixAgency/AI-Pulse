@@ -2043,7 +2043,6 @@ function generateREADME(categorizedArticles) {
 
     // Générer la liste des articles
     articles.slice(0, maxArticles).forEach((article, index) => {
-      const keyword = resolveDisplayKeyword(article.tags, article.lang, category);
       const langBadge = article.lang === 'fr' ? '`FR`' : '`EN`';
       const summaryText = (article.summary && String(article.summary).trim().length > 0)
         ? article.summary
@@ -2052,7 +2051,7 @@ function generateREADME(categorizedArticles) {
 
       readme += `<div class="article-item" data-lang="${article.lang}" data-category="${category}" data-source="${article.source}">\n\n`;
       readme += `### ${index + 1}. ${langBadge} [${article.title}](${localLink})\n`;
-      readme += `**Source:** ${article.source} | **Keyword:** \`${keyword}\`\n`;
+      readme += `**Source:** ${article.source}\n`;
       readme += `${summaryText}\n\n`;
       readme += `</div>\n\n`;
     });

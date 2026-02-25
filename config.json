@@ -139,54 +139,34 @@
       "priority": 2,
       "feeds": [
         {
-          "name": "TechCrunch AI",
-          "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
-          "tags": [
-            "OpenClaw",
-            "AI",
-            "Startups"
-          ],
+          "name": "The Decoder",
+          "url": "https://the-decoder.com/feed/",
+          "tags": ["OpenClaw", "AI", "Agents", "LLM"],
           "lang": "en"
         },
         {
-          "name": "OpenAI Blog",
-          "url": "https://openai.com/blog/rss.xml",
-          "tags": [
-            "OpenClaw",
-            "AI",
-            "Official"
-          ],
+          "name": "Simon Willison's Blog",
+          "url": "https://simonwillison.net/atom/everything/",
+          "tags": ["OpenClaw", "AI", "Tools", "Pratique"],
           "lang": "en"
         },
         {
-          "name": "Numerama Tech",
-          "url": "https://www.numerama.com/feed/",
-          "tags": [
-            "OpenClaw",
-            "IA",
-            "France"
-          ],
+          "name": "Last Week in AI",
+          "url": "https://lastweekin.ai/feed",
+          "tags": ["OpenClaw", "AI", "Veille", "Hebdo"],
+          "lang": "en"
+        },
+        {
+          "name": "Synced Review",
+          "url": "https://syncedreview.com/feed/",
+          "tags": ["OpenClaw", "AI", "Recherche", "ML"],
+          "lang": "en"
+        },
+        {
+          "name": "Siecle Digital",
+          "url": "https://siecledigital.fr/feed/",
+          "tags": ["OpenClaw", "IA", "Digital", "France"],
           "lang": "fr"
-        },
-        {
-          "name": "Wired",
-          "url": "https://www.wired.com/feed/rss",
-          "tags": [
-            "OpenClaw",
-            "AI",
-            "News"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "The Verge",
-          "url": "https://www.theverge.com/rss/index.xml",
-          "tags": [
-            "OpenClaw",
-            "AI",
-            "Tech"
-          ],
-          "lang": "en"
         }
       ]
     },
@@ -621,16 +601,6 @@
       "icon": "cpu",
       "priority": 6,
       "feeds": [
-        {
-          "name": "Raspberry Pi",
-          "url": "https://www.raspberrypi.com/news/feed/",
-          "tags": [
-            "IoT",
-            "RaspberryPi",
-            "Hardware"
-          ],
-          "lang": "en"
-        },
         {
           "name": "Arduino Blog",
           "url": "https://blog.arduino.cc/feed/",
@@ -1207,7 +1177,8 @@
           { "name": "Investir Les Echos", "url": "https://investir.lesechos.fr/feed/", "tags": ["Investissement", "Bourse", "Finance"], "lang": "fr" },
           { "name": "Journal du Coin", "url": "https://journalducoin.com/feed/", "tags": ["Crypto", "Bitcoin", "France", "Finance"], "lang": "fr" },
           { "name": "Cryptoast", "url": "https://cryptoast.fr/feed/", "tags": ["Crypto", "Blockchain", "France", "Finance"], "lang": "fr" },
-          { "name": "CoinDesk", "url": "https://www.coindesk.com/arc/outboundfeeds/rss/", "tags": ["Crypto", "Bitcoin", "Blockchain", "Finance"], "lang": "en" }
+          { "name": "AMF (Autorité des marchés)", "url": "https://www.amf-france.org/fr/rss/actualites.xml", "tags": ["Finance", "Regulation", "AMF", "Officiel"], "lang": "fr" },
+          { "name": "Les Echos Marchés", "url": "https://www.lesechos.fr/finance-marches/rss", "tags": ["Bourse", "Finance", "Marches", "France"], "lang": "fr" }
         ]
       },
     "opensource": {
@@ -1375,32 +1346,78 @@
         {
           "name": "Météo-Paris",
           "url": "https://www.meteo-paris.com/rss",
-          "tags": [
-            "Meteo",
-            "France",
-            "Local"
-          ],
+          "tags": ["Meteo", "Paris", "Local"],
           "lang": "fr"
         },
         {
-          "name": "France 24 (FR)",
-          "url": "https://www.france24.com/fr/rss",
-          "tags": [
-            "Meteo",
-            "France",
-            "Actualites"
-          ],
+          "name": "La Chaîne Météo",
+          "url": "https://www.lachainemeteo.com/rss",
+          "tags": ["Meteo", "France", "Previsions"],
           "lang": "fr"
         },
         {
-          "name": "France 24 (EN)",
-          "url": "https://www.france24.com/en/rss",
-          "tags": [
-            "Weather",
-            "International",
-            "News"
-          ],
-          "lang": "en"
+          "name": "Météo-France Actualités",
+          "url": "https://meteofrance.com/sitemap-news.xml",
+          "tags": ["Meteo", "France", "Officiel"],
+          "lang": "fr"
+        },
+        {
+          "name": "Keraunos (Orages)",
+          "url": "https://www.keraunos.org/rss.xml",
+          "tags": ["Meteo", "Orages", "Alertes"],
+          "lang": "fr"
+        },
+        {
+          "name": "Infoclimat",
+          "url": "https://www.infoclimat.fr/rss.xml",
+          "tags": ["Meteo", "Climat", "Mesures"],
+          "lang": "fr"
+        }
+      ]
+    },
+    "gouvernemental": {
+      "labels": {
+        "en": "French Government",
+        "fr": "Gouvernement & Services Publics"
+      },
+      "icon": "flag",
+      "priority": 3,
+      "feeds": [
+        {
+          "name": "Gouvernement.fr",
+          "url": "https://www.gouvernement.fr/feed",
+          "tags": ["Gouvernement", "France", "Officiel"],
+          "lang": "fr"
+        },
+        {
+          "name": "Service-Public.fr",
+          "url": "https://www.service-public.fr/rss",
+          "tags": ["ServicePublic", "Administratif", "France"],
+          "lang": "fr"
+        },
+        {
+          "name": "Vie-Publique.fr",
+          "url": "https://www.vie-publique.fr/rss.xml",
+          "tags": ["Politique", "Legislation", "France"],
+          "lang": "fr"
+        },
+        {
+          "name": "ANSSI (CERT-FR)",
+          "url": "https://www.cert.ssi.gouv.fr/feed/",
+          "tags": ["Securite", "CERT", "Alertes", "Officiel"],
+          "lang": "fr"
+        },
+        {
+          "name": "Data.gouv.fr Blog",
+          "url": "https://www.data.gouv.fr/fr/posts/latest.rss",
+          "tags": ["OpenData", "Numerique", "France"],
+          "lang": "fr"
+        },
+        {
+          "name": "Elysée.fr",
+          "url": "https://www.elysee.fr/rss/actualites.rss",
+          "tags": ["Presidence", "France", "Officiel"],
+          "lang": "fr"
         }
       ]
     }
