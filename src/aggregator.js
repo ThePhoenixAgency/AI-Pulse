@@ -417,6 +417,8 @@ function cleanupNoiseText(input) {
     .replace(/\bpublicit[eé]\b/gi, ' ')
     .replace(/\bpublicit\b/gi, ' ')
     .replace(/\b(votre contenu continue ci-dessous)\b/gi, ' ')
+    // Suppression des prefixes TL;DR inline dans le texte
+    .replace(/^tl[;\s]?dr\s*[:\-–][^\n]*/gim, '')
     .replace(/\s{2,}/g, ' ')
     .trim());
 }
@@ -776,8 +778,26 @@ function cleanupNoiseHtml(input, options = {}) {
   try {
     const dom = createSafeDom(`<body>${String(input)}</body>`, 'https://local.ai-pulse/');
     const body = dom.window.document.body;
+    // Suppression des blocs TL;DR (titre + contenu suivant)
+    body.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((heading) => {
+      if (/tl[;\s]?dr/i.test(heading.textContent)) {
+        let next = heading.nextElementSibling;
+        while (next && !['H1','H2','H3','H4','H5','H6'].includes(next.tagName)) {
+          const toRemove = next;
+          next = next.nextElementSibling;
+          toRemove.remove();
+        }
+        heading.remove();
+      }
+    });
+
     body.querySelectorAll('p').forEach((paragraph) => {
       const normalized = normalizeNoiseText(paragraph.textContent || '');
+      // Suppression des paragraphes TL;DR inline
+      if (/^tl[;\s]?dr\s*[:\-–]/i.test(normalized)) {
+        paragraph.remove();
+        return;
+      }
       if (
         removableParagraphs.has(normalized) ||
         /\best apparu en premier sur\b/i.test(normalized) ||
@@ -814,6 +834,14 @@ function cleanupNoiseHtml(input, options = {}) {
 
     removeBlockingPanels(body);
     removePromotionalNodes(body);
+
+    // Sécurité : tous les liens target="_blank" doivent avoir rel="noopener noreferrer"
+    body.querySelectorAll('a[target="_blank"]').forEach((a) => {
+      const rel = (a.getAttribute('rel') || '').toLowerCase();
+      if (!rel.includes('noopener')) {
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
 
     let cleaned = trimPromotionalTailHtml(stripEmojiCharacters(body.innerHTML.trim()));
     if (sourceProfile === 'news' || sourceProfile === 'wire' || sourceProfile === 'blog') {
@@ -1139,7 +1167,11 @@ function computeCategoryRelevance(article, categoryName) {
  */
 function smartTruncate(text, maxLength) {
   // Utiliser la valeur par défaut de la config si non spécifiée
-  maxLength = maxLength || SETTINGS.summaryMaxLength || 600;
+  // Si maxLength est fourni, on l'utilise. Sinon, on prend articleMaxLength si on traite un article complet, sinon summaryMaxLength.
+  if (!maxLength && SETTINGS) {
+    maxLength = SETTINGS.articleMaxLength || 8000;
+  }
+  maxLength = maxLength || 600;
 
   // Si le texte est déjà assez court, le retourner tel quel
   if (!text || text.length <= maxLength) return text;
@@ -1473,7 +1505,15 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
   const writeFallbackLocalArticle = () => {
     const safeTitle = sanitizeText(article.title) || 'Untitled';
-    const safeSummary = smartTruncate(cleanupNoiseText(rawSummary || ''), 1200) || (rawSummary ? sanitizeText(rawSummary) : 'Summary unavailable for this article.');
+    // Fallback : on tente d'afficher le contenu complet si possible, sinon le résumé
+    let safeContent = '';
+    if (article && article.content && typeof article.content === 'string' && article.content.length > 200) {
+      safeContent = smartTruncate(cleanupNoiseText(article.content), SETTINGS.articleMaxLength || 8000);
+    } else if (rawSummary) {
+      safeContent = smartTruncate(cleanupNoiseText(rawSummary), SETTINGS.summaryMaxLength || 2000);
+    } else {
+      safeContent = 'Aucun contenu disponible.';
+    }
     const fallbackHtml = `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
@@ -1504,7 +1544,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     ${renderArticleMetadataLine({ sourceName, pubDate: article.pubDate || Date.now(), lang, originalUrl: articleUrl })}
   </div>
   <div class="content">
-    <p>${safeSummary}</p>
+    <p>${safeContent}</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -1513,12 +1553,12 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\\s]?vous|inscrivez[-\\s]?vous|continue reading|continuez la lecture)\\b/i;
+      const textPattern = /\\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\\s]?vous|inscrivez[-\\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\\s*:\\s*(fixed|sticky)|inset\\s*:|top\\s*:|left\\s*:|right\\s*:|bottom\\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\\s*:\\s*[1-9]\\d{1,}|backdrop-filter|overflow\\s*:\\s*hidden)/.test(styleAttr);

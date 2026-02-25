@@ -37,10 +37,13 @@ DERNIÈRE MISE À JOUR: Février 2026
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <!--
     ============================================================================
     EN-TÊTE HTML (HEAD)
     ============================================================================
+
+    SECURITE: meta charset place en premier pour prevenir XSS
 
     Cette section contient les métadonnées de la page :
     - Encodage des caractères
@@ -49,9 +52,6 @@ DERNIÈRE MISE À JOUR: Février 2026
     - Liens vers les ressources externes
     ============================================================================
     -->
-
-    <!-- Encodage UTF-8 pour les caractères spéciaux -->
-    <meta charset="UTF-8">
 
     <!-- Configuration mobile : la page s'adapte à l'écran -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -120,6 +120,7 @@ DERNIÈRE MISE À JOUR: Février 2026
         ==================================================================== */
         .about-card {
             background: rgba(255, 255, 255, 0.05);  /* Blanc à 5% d'opacité */
+            -webkit-backdrop-filter: blur(10px);     /* Flou pour Safari */
             backdrop-filter: blur(10px);             /* Flou de 10px */
             border-radius: 20px;                     /* Coins arrondis */
             padding: 2.5rem;                         /* Espace intérieur */
@@ -181,6 +182,69 @@ DERNIÈRE MISE À JOUR: Février 2026
             color: var(--primary);                   /* Couleur cyan */
             border: 1px solid rgba(0, 217, 255, 0.2);  /* Bordure cyan subtile */
         }
+
+        /* ====================================================================
+           CLASSES UTILITAIRES POUR STYLES INLINE
+           ====================================================================
+           Classes extraites des styles inline pour améliorer la maintenabilité
+        ==================================================================== */
+        .logo-blend {
+            height: 55px;
+            mix-blend-mode: screen;
+        }
+
+        .about-subtitle {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+        }
+
+        .section-title-primary {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title-secondary {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title-white {
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        .text-paragraph {
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .text-paragraph-spaced {
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .text-dim-spaced {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+
+        .text-dim-para {
+            line-height: 1.8;
+            color: var(--text-dim);
+        }
+
+        .privacy-list {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .centered-section {
+            text-align: center;
+            margin-top: 2rem;
+        }
     </style>
 </head>
 
@@ -202,7 +266,7 @@ DERNIÈRE MISE À JOUR: Février 2026
             Les parties sombres du logo deviennent transparentes.
             Crée un effet de fusion avec le fond.
             -->
-            <img src="./assets/logo_final.png" alt="AI-PULSE" style="height: 55px; mix-blend-mode: screen;">
+            <img src="./assets/logo_final.png" alt="AI-PULSE" class="logo-blend">
         </div>
 
         <!-- Navigation principale -->
@@ -235,7 +299,7 @@ DERNIÈRE MISE À JOUR: Février 2026
             -->
             <div class="about-header">
                 <h1>About AI-Pulse</h1>
-                <p style="color: var(--text-dim); font-size: 1.2rem;">
+                <p class="about-subtitle">
                     The future of AI news aggregation, monitored in real-time.
                 </p>
             </div>
@@ -253,16 +317,16 @@ DERNIÈRE MISE À JOUR: Février 2026
             -->
             <div class="about-card">
                 <!-- Titre de la carte en couleur primaire (cyan) -->
-                <h2 style="color: var(--primary); margin-bottom: 1.5rem;">Our Mission</h2>
+                <h2 class="section-title-primary">Our Mission</h2>
 
                 <!-- Premier paragraphe : description de l'agrégateur -->
-                <p style="line-height: 1.8; color: var(--text-light); margin-bottom: 1rem;">
+                <p class="text-paragraph-spaced">
                     AI-Pulse is a specialized aggregator designed to filter the noise and deliver high-signal
                     intelligence on <strong>Artificial Intelligence</strong> and <strong>Cybersecurity</strong>.
                 </p>
 
                 <!-- Second paragraphe : qui a développé le projet -->
-                <p style="line-height: 1.8; color: var(--text-light);">
+                <p class="text-paragraph">
                     Developed by <strong>ThePhoenixAgency</strong>, this project prioritizes privacy, speed, and cleaner
                     reading experiences without the tracking clutter of modern web media.
                 </p>
@@ -283,9 +347,9 @@ DERNIÈRE MISE À JOUR: Février 2026
             -->
             <div class="about-card">
                 <!-- Titre en couleur secondaire (violet) -->
-                <h2 style="color: var(--secondary); margin-bottom: 1.5rem;">Technology Stack</h2>
+                <h2 class="section-title-secondary">Technology Stack</h2>
 
-                <p style="color: var(--text-dim); margin-bottom: 1rem;">
+                <p class="text-dim-spaced">
                     Built with modern, lightweight web technologies:
                 </p>
 
@@ -313,14 +377,14 @@ DERNIÈRE MISE À JOUR: Février 2026
             -->
             <div class="about-card">
                 <!-- Titre en blanc pour contraste -->
-                <h2 style="color: #fff; margin-bottom: 1.5rem;">Privacy First</h2>
+                <h2 class="section-title-white">Privacy First</h2>
 
-                <p style="line-height: 1.8; color: var(--text-dim);">
+                <p class="text-dim-para">
                     We believe in transparency. AI-Pulse operates with:
                 </p>
 
                 <!-- Liste des points de confidentialité -->
-                <ul style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-light); line-height: 1.8;">
+                <ul class="privacy-list">
                     <li>No Third-Party Cookies</li>           <!-- Pas de cookies tiers -->
                     <li>No External Tracking Pixels</li>      <!-- Pas de pixels de tracking -->
                     <li>Local-Only Session Statistics</li>    <!-- Stats locales uniquement -->
@@ -335,7 +399,7 @@ DERNIÈRE MISE À JOUR: Février 2026
             Lien vers la page portfolio du développeur.
             ================================================================
             -->
-            <div style="text-align: center; margin-top: 2rem;">
+            <div class="centered-section">
                 <a href="portfolio.html" class="btn">View Developer Portfolio</a>
             </div>
         </div>
@@ -386,11 +450,11 @@ DERNIÈRE MISE À JOUR: Février 2026
             <span>•</span>
             <a href="portfolio.html">Portfolio</a>
             <span>•</span>
-            <a href="https://github.com/ThePhoenixAgency/AI-Pulse" target="_blank">GitHub</a>
+            <a href="https://github.com/ThePhoenixAgency/AI-Pulse" target="_blank" rel="noopener noreferrer">GitHub</a>
             <span>•</span>
-            <a href="https://github.com/ThePhoenixAgency/AI-Pulse/issues/new?template=subscribe.yml" target="_blank">S'abonner</a>
+            <a href="https://github.com/ThePhoenixAgency/AI-Pulse/issues/new?template=subscribe.yml" target="_blank" rel="noopener noreferrer">S'abonner</a>
         </div>
-        <p>&copy; 2026 <a href="https://ThePhoenixAgency.github.io" target="_blank">ThePhoenixAgency</a>. All rights reserved.</p>
+        <p>&copy; 2026 <a href="https://ThePhoenixAgency.github.io" target="_blank" rel="noopener noreferrer">ThePhoenixAgency</a>. All rights reserved.</p>
     </footer>
 
     <!--
