@@ -28,7 +28,8 @@
     Source: FrenchWeb | Date: 1/29/2026 8:27:57 AM | <a href="https://www.frenchweb.fr/meta-les-pertes-astronomiques-de-reality-labs-sont-tout-sauf-virtuelles/460018" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Chez Meta, le metaverse est devenu, trimestre après trimestre, une donnée comptable structurante, avec un cumul des pertes opérationnelles qui approche désormais les 80 milliards de dollars. Les résultats de Reality Labs au quatrième trimestre en offrent une nouvelle illustration, avec une perte opérationnelle de 6,02 milliards de dollars pour 955 millions de dollars de …</p>
+    <p><p>Chez Meta, le metaverse est devenu, trimestre après trimestre, une donnée comptable structurante, avec un cumul des pertes opérationnelles qui approche désormais les 80 milliards de dollars. Les résultats de Reality Labs au quatrième trimestre en offrent une nouvelle illustration, avec une perte opérationnelle de 6,02 milliards de dollars pour 955 millions de dollars de &#8230;</p>
+<p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +38,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

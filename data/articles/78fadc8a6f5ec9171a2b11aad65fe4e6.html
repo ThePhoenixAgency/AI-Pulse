@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Connect ZWA-2 anywhere: Use Z-Wave over Wi-Fi or PoE</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Connect ZWA-2 anywhere: Use Z-Wave over Wi-Fi or PoE</h1>
+  <div class="metadata">
+    Source: Home Assistant (Blog officiel) | Date: 10/13/2025 12:00:01 AM | <a href="https://www.home-assistant.io/blog/2025/10/13/portable-z-wave-with-wifi-and-poe/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><img src='/images/blog/2025-10-z-wave-portable/art.png' style='border: 0;box-shadow: none;' alt="Portable Z-Wave">
+<p>Last month, we launched the <a href="/blog/2025/08/13/home-assistant-connect-zwa-2">Home Assistant Connect ZWA-2</a>, our take on the best possible Z-Wave adapter. <a href="https://www.theverge.com/tech/759542/home-assistant-connect-zwa-2-z-wave-long-range-antenna">Based</a> <a href="https://www.xda-developers.com/home-assistant-connect-zwa-2-review/">on</a> <a href="https://youtu.be/vEsLghjVCo4?si=qSnGQ9aso8ZBGGiF">the</a> <a href="https://youtu.be/AyE0_6N21h4?si=TuuZ_O4yZLcP40oT">reviews</a>, it sounds like we hit the mark . Today, we’re announcing a new, experimental firmware that allows you to do even more with the ultimate Z-Wave adapter.</p>
+<p>I’m <a href="https://github.com/kbx81">Keith</a>, a Senior Hardware and Software Engineer at <a href="https://www.nabucasa.com/">Nabu Casa</a>, but you also might know me from my work on the ESPHome project. If you weren’t aware, Nabu Casa is the commercial partner of the Open Home Foundation, and the organization that helps build official Home Assistant hardware.</p>
+<p>During the launch, one piece of feedback we often received was that people wanted more flexibility in where they could place Connect ZWA-2 in their home — often far away from their Home Assistant system. It was no easy feat (more on that below), but we were able to build a solution that allows you to put it anywhere you have a network connection.</p>
+<p>This experimental firmware will allow you to not only leverage the Wi-Fi chip inside the Connect ZWA-2, but also use it with other hardware to facilitate the use of the much-requested PoE. This new firmware is only possible because of the second-generation platform we built Connect ZWA-2 on, which is open by design, allowing you to tinker and extend the device you own. Every piece of Home Assistant hardware reflects Nabu Casa and the foundation’s philosophy of constant evolution, and the software it launches with is just the beginning. Whenever we think of a cool new capability, we will work together to add it.</p>
+<p>If you want to <a href="https://toolbox.openhomefoundation.org/home-assistant-connect-zwa-2/">start using your Connect ZWA-2 with Portable Z-Wave today</a>, visit the <a href="https://toolbox.openhomefoundation.org/">brand new home for all the foundation’s web-based tools</a>. Just be aware that this is <strong>experimental</strong>, and we recommend you read through this blog to understand how it works and its limitations. You can also watch the <a href="https://www.youtube.com/watch?v=vJw4zu7AasE">upcoming ESPHome livestream,</a> where we’ll discuss this new tech in depth. <!--more--></p>
+<h2>Getting started</h2>
+<p class="img"> <img src="/images/blog/2025-10-z-wave-portable/poe-adapter.jpg" alt="Home Assistant Connect ZWA-2 connected to a Waveshare ESP32-S3-ETH"> Home Assistant Connect ZWA-2 connected to a Waveshare ESP32-S3-ETH
+</p>
+<div class="alert">
+NOTE: This firmware is experimental. Do not use it if you’re looking for the most stable Z-Wave experience.
+</div>
+<p>To get started using your Connect ZWA-2 over your local network, you can use one of the two following configurations:</p>
+<ul>
+<li><strong>Wi-Fi</strong> - the new firmware will be installed on the Connect ZWA-2 and use its built-in Wi-Fi chip to communicate over your network.</li>
+<li><strong>PoE</strong> - the new firmware will be installed on an <a href="https://www.amazon.com/dp/B0DKJ5VXC9">external development board</a> that supports Power-over-Ethernet (PoE); Connect ZWA-2 will use its stock firmware and will plug into this new device via USB.</li>
+</ul>
+<p>First, before installing this new firmware, make sure to <a href="/integrations/zwave_js/#backing-up-your-z-wave-network">back up your Z-Wave network</a> and ensure your Home Assistant instance is running version 2025.10.2 or later. Only after those steps should you use the <a href="https://toolbox.openhomefoundation.org/home-assistant-connect-zwa-2/">toolkit website for Portable Z-Wave</a>. The toolkit’s wizard will walk you through the whole process of installing and connecting your device to your network. When the installation is complete, it should join your network and be discovered by both the ESPHome and Z-Wave integrations in Home Assistant.</p>
+<p>This firmware has proven to work well in our lab and home environments, but the real world is a different place; your local network and Z-Wave network might behave differently. For this reason, we’re seeking your feedback. If you try it out, please let us know about your experience – good or bad, brief or long-winded – by leaving a below. We’re eager to know how and where we can improve it!</p>
+<h2>The Portable Z-Wave experiment</h2>
+<p>Before we launch any of our hardware products, we try to get our pre-production batch to as many testers as possible – most are hobbyists and tinkerers from the community, and of course, the first thing they tend to do is get out the screwdriver and open it up (to be fair, it’s designed to be easy to open — no glue, no clips). When looking at the insides of Connect ZWA-2, they were instantly greeted with an ESP32 chip, and were equally excited and confused. It was initially included just as a USB controller, and yes, an ESP32-S3 is a bit overkill for this specific task, but we wanted to give the device room to grow. This brings us to the experiment we are sharing with you today…</p>
+<h3>Making things mesh</h3>
+<p>When you use a Z-Wave adapter with Home Assistant, which relies on the Z-Wave JS add-on, they use USB to communicate via a specialized Z-Wave serial protocol. And yes, it is technically possible to run this Z-Wave serial protocol over your network (serial-over-IP), but our testing reveals that it’s not as reliable or as easy as we’d like. Some parts of the Z-Wave serial protocol are latency (delay) sensitive, specifically the acknowledgment of Z-Wave packets. If your network is busy and decides to take its sweet time with one of those critical packets, your Z-Wave device’s connection can time out and fail. This can stall Z-Wave device communication, or even completely break it.</p>
+<p>For Z-Wave to work over a network, we need to address the latency-sensitive parts on the actual device; everything else can be forwarded over the network. This is where <a href="https://esphome.io/">ESPHome</a> steps in: it’s the open source software for network-capable microcontrollers that runs on ESP32 devices. We built an ESP32 into the Connect ZWA-2, and it has the horsepower (and Wi-Fi antenna) to handle this task.</p>
+<p>To help make this all possible, we added <a href="https://next.esphome.io/components/zwave_proxy/">Z-Wave support to ESPHome</a>, allowing it to talk to Z-Wave chips. We then added the ability for Home Assistant and Z-Wave JS to communicate with Z-Wave adapters via ESPHome. As this work is open source, it shouldn’t be limited just to our Connect ZWA-2. Theoretically, it should be able to work with any certified Z-Wave adapter connected to an ESP32. However, before we look at supporting other adapters, we want to ensure that it’s stable when running on the Connect ZWA-2.</p>
+<p class="img"> <img src="/images/blog/2025-10-z-wave-portable/with-wifi.png" alt="Home Assistant Connect ZWA-2 using the built-in Wi-Fi chip"> Home Assistant connected to the ZWA-2 via its integrated Wi-Fi chip.
+</p>
+<p class="img"> <img src="/images/blog/2025-10-z-wave-portable/with-poe.png" alt="Home Assistant Connect ZWA-2 using POE via an adapter"> Home Assistant connected to the ZWA-2 via the PoE module.
+</p>
+<p>ESPHome handles serial message acknowledgments internally, then leverages its API (specifically its <a href="https://developers.esphome.io/architecture/api/">Protobuf implementation</a>) to send the messages over the network more reliably than serial-over-IP.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

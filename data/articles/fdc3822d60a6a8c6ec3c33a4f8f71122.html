@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Critical Juniper Networks PTX flaw allows full router takeover</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Critical Juniper Networks PTX flaw allows full router takeover</h1>
+  <div class="metadata">
+    Source: BleepingComputer Windows | Date: 2/26/2026 4:42:12 PM | <a href="https://www.bleepingcomputer.com/news/security/critical-juniper-networks-ptx-flaw-allows-full-router-takeover/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><img alt="Critical Juniper Networks PTX flaw allows full router takeover" src="https://www.bleepstatic.com/content/hl-images/2024/12/19/Juniper.jpg"></p> <p>A critical vulnerability in the Junos OS Evolved network operating system running on PTX&nbsp;Series routers from Juniper Networks could allow an unauthenticated attacker to execute code remotely with root privileges.</p> <p><a href="https://www.juniper.net/us/en/products/routers/ptx-series.html/">PTX Series routers</a> are high-performance core and peering routers built for high throughput, low latency, and scale. They are commonly used by internet service providers, telecommunication services, and cloud network applications.</p> <p>The security issue is identified as&nbsp;<a href="https://nvd.nist.gov/vuln/detail/CVE-2026-21902" target="_blank" rel="noopener noreferrer">CVE-2026-21902</a>&nbsp;and is caused by&nbsp;incorrect permission assignment in the ‘On-Box Anomaly Detection’ framework, which should be exposed to internal processes only over the internal routing interface.</p> <p><a href="https://www.wiz.io/lp/ai-security-board-report-template?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_AI-Security-Board-Report-Template&amp;sfcid=701Vh00000Wn7E1IAJ&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=AI-Board-Report" target="_blank" rel="noopener noreferrer"><img src="https://www.bleepstatic.com/c/w/ai-security-board-report-template.jpg" alt="Wiz"></a>
+</p> <p>However, the glitch allows accessing the framework over an externally exposed port, Juniper Networks explains in a <a href="https://supportportal.juniper.net/s/article/2026-02-Out-of-Cycle-Security-Bulletin-Junos-OS-Evolved-PTX-Series-A-vulnerability-allows-a-unauthenticated-network-based-attacker-to-execute-code-as-root-CVE-2026-21902" target="_blank" rel="noopener noreferrer">security advisory</a>.</p> <p>Because the service runs as root and is enabled by default, successful exploitation would allow an attacker who is already on the network&nbsp;to take full control of the device without authentication.</p> <p>The issue affects Junos OS Evolved versions before 25.4R1-S1-EVO and 25.4R2-EVO, on PTX Series routers. Older versions may also be impacted, but the vendor does not assess releases that have reached the end-of-engineering or&nbsp;end-of-life (EoL) phase.</p> <p>Versions before 25.4R1-EVO, and standard (non-Evolved) Junos OS versions are not impacted by CVE-2026-21902.&nbsp;Juniper Networks has delivered fixes in versions 25.4R1-S1-EVO, 25.4R2-EVO, and 26.2R1-EVO of the product.</p> <p>Juniper's&nbsp;Security Incident Response Team (SIRT) states that it was not aware of malicious exploitation of the vulnerability at the time of publishing the security bulletin.</p> <p>If immediate patching is not possible, the vendor's recommendation is to restrict access to the vulnerable endpoints to trusted networks only using firewall filters or Access Control Lists (ACLs).&nbsp;Alternatively, administrators may disable the vulnerable service entirely using:</p> <p><code>'request pfe anomalies disable'</code></p> <p>Juniper Networks products are typically an attractive target for advanced hackers as the network equipment is used by service providers requiring high bandwidth, such as cloud data centers and large enterprises.</p> <p>In March 2025, it was revealed that Chinese cyber-espionage actors were <a href="https://www.bleepingcomputer.com/news/security/chinese-cyberspies-backdoor-juniper-routers-for-stealthy-access/" target="_blank" rel="noopener noreferrer">deploying custom backdoors</a> on EoL Junos OS MX routers to drop a set of ‘TinyShell’ backdoor variants.</p> <p>In January 2025, a malware campaign <a href="https://www.bleepingcomputer.com/news/security/stealthy-magic-packet-malware-targets-juniper-vpn-gateways/" target="_blank" rel="noopener noreferrer">dubbed ‘J-magic’</a> targeted Juniper VPN gateways used in the semiconductor, energy, manufacturing, and IT sectors, deploying network-sniffing malware that activated upon receiving a “magic packet.”</p> <p>In December 2024, Juniper Networks Smart routers became <a href="https://www.bleepingcomputer.com/news/security/juniper-warns-of-mirai-botnet-scanning-for-session-smart-routers/" target="_blank" rel="noopener noreferrer">targets of Mirai botnet</a> campaigns, getting enlisted in distributed denial of service (DDoS) swarms.</p> <div> <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank" rel="noopener noreferrer"> <img src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" alt="tines"> </a> </p> <div> <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank" rel="noopener noreferrer">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p> </div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

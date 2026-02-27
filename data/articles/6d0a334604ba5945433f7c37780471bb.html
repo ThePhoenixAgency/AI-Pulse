@@ -115,16 +115,12 @@ Most Kaggle notebooks are small variations or near-identical copies, so this ste
 <p>By the end, we had a rich collection of executable notebooks paired with their datasets, providing the foundation for training agents in realistic, runnable environments.</p>
 <h3> <a href="#3-edu-scoring"> </a> <span> 3. Edu scoring </span>
 </h3>
-<p>We scored notebooks based on educational quality using <a href="https://huggingface.co/Qwen/Qwen3-32B">Qwen3-32B</a>. We saw that using the whole notebook was not optimal, as many contained trivial or broken code. Our educational scoring approach is detailed in edu_scoring.py.</p>
-<p><strong>TL;DR:</strong> We assigned each notebook a score from 1–5 based on clarity, completeness, and educational value, and kept only those above a chosen threshold. This filtering removed about 70% of the notebooks.</p>
-<p>This is similar to the insight from the BeyondWeb paper, which showed that using high-quality data is better for synthetic data generation — a step we relied on for QA (Question-Answer) generation.
+<p>We scored notebooks based on educational quality using <a href="https://huggingface.co/Qwen/Qwen3-32B">Qwen3-32B</a>. We saw that using the whole notebook was not optimal, as many contained trivial or broken code. Our educational scoring approach is detailed in edu_scoring.py.</p> <p>This is similar to the insight from the BeyondWeb paper, which showed that using high-quality data is better for synthetic data generation — a step we relied on for QA (Question-Answer) generation.
 This helped the model learn from “high quality” notebooks instead of noisy ones.</p>
 <h3> <a href="#4-filtering-irrelevant-notebooks"> </a> <span> 4. Filtering irrelevant notebooks </span>
 </h3>
 <p>We excluded notebooks about training LLMs or unrelated to data analysis.
-We also removed notebooks that didn’t actually use datasets through an automated LLM-based filtering process using Qwen3-32B. The implementation of filtering can be found in <a href="https://github.com/huggingface/jupyter-agent/blob/main/data/pipelines/extract_packages_and_files.py"><code>extract_packages_and_files.py</code></a>.</p>
-<p><strong>TL;DR:</strong> We prompted Qwen3-32B to identify and remove notebooks that either (1) had nothing to do with data analysis, or (2) didn’t actually use datasets. This step removed about 20% of the notebooks.</p>
-<p>This ensured we trained only on relevant data science tasks.</p>
+We also removed notebooks that didn’t actually use datasets through an automated LLM-based filtering process using Qwen3-32B. The implementation of filtering can be found in <a href="https://github.com/huggingface/jupyter-agent/blob/main/data/pipelines/extract_packages_and_files.py"><code>extract_packages_and_files.py</code></a>.</p> <p>This ensured we trained only on relevant data science tasks.</p>
 <h3> <a href="#5-qa-generation"> </a> <span> 5. QA generation </span>
 </h3>
 <p>Using the cleaned notebooks, we generated question–answer pairs using <a href="https://huggingface.co/Qwen/Qwen3-32B">Qwen3-32B</a>. The questions and answer are grounded in the real notebook traces so the QA pairs are based on real code execution results.

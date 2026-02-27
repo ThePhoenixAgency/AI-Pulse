@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Fedora et Google Chrome : Signature verification failed.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Fedora et Google Chrome : Signature verification failed.</h1>
+  <div class="metadata">
+    Source: Journal du Hacker | Date: 2/23/2026 12:55:21 PM | <a href="https://www.linuxtricks.fr/news/11-le-sac-de-chips/591-fedora-et-google-chrome-signature-verification-failed/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <div>
+<p><img src="https://www.linuxtricks.fr/news/news.png" alt="Fedora et Google Chrome : Signature verification failed."></p><div><p>Bonjour à tous,</p><p> Sur mes VMs de type RPM, la mise à jour est en échec si Google Chrome.</p><p> Cet article est aussi là pour info si vous avez des soucis avec d'autres logiciels et d'autres dépôts tiers.</p><p> Quand on met à jour le système, on peut constater cette erreur :</p><div><p><span>Code :</span></p><p><code><span>
+Transaction&nbsp;échouée :&nbsp;Échec&nbsp;de&nbsp;la&nbsp;vérification&nbsp;de&nbsp;la&nbsp;signature.<br>La&nbsp;clé&nbsp;publique&nbsp;"https://dl.google.com/linux/linux_signing_key.pub"&nbsp;est&nbsp;déjà&nbsp;présente,&nbsp;elle&nbsp;ne&nbsp;sera&nbsp;pas&nbsp;importée.<br>La&nbsp;vérification&nbsp;OpenPGP&nbsp;du&nbsp;paquet&nbsp;"google-chrome-stable-145.0.7632.109-1.x86_64"&nbsp;(/var/cache/libdnf5/google-chrome-6ed7e4f336f6863c/packages/google-chrome-stable-145.0.7632.109-1.x86_64.rpm)&nbsp;du&nbsp;dépôt&nbsp;"google-chrome"&nbsp;a&nbsp;échoué&nbsp;:&nbsp;La&nbsp;clé&nbsp;publique&nbsp;n'est&nbsp;pas&nbsp;installée.</span>
+</code></p></div><p> La clé GPG de Google est dans un paquet RPM.</p><p> On peut requêter facilement via :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>rpm</span> <span>-q</span> gpg-pubkey <span>--qf</span> <span>'%{NAME}-%{VERSION}-%{RELEASE}\t%{SUMMARY}\n'</span> <span>|</span> <span>grep</span> <span>-i</span> google </pre></pre></div></div><p> Ce qui renvoie sur ma machine :</p><div><p><span>Code :</span></p><p><code><span>
+gpg-pubkey-7fac5991-45f06f46&nbsp;&nbsp;&nbsp;&nbsp;Google,&nbsp;Inc.&nbsp;Linux&nbsp;Package&nbsp;Signing&nbsp;Key&nbsp;&lt;<a href="https://www.linuxtricks.fr/cdn-cgi/l/email-protection">[email&nbsp;protected]</a>&gt;&nbsp;public&nbsp;key<br>gpg-pubkey-d38b4796-570c8cd3&nbsp;&nbsp;&nbsp;&nbsp;Google&nbsp;Inc.&nbsp;(Linux&nbsp;Packages&nbsp;Signing&nbsp;Authority)&nbsp;&lt;<a href="https://www.linuxtricks.fr/cdn-cgi/l/email-protection">[email&nbsp;protected]</a>&gt;&nbsp;public&nbsp;key</span>
+</code></p></div><p> On supprime cette clé en supprimant les paquets correspondants :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>rpm</span> <span>-evh</span> gpg-pubkey-d38b4796-570c8cd3 gpg-pubkey-7fac5991-45f06f46</pre></pre></div></div><p> Et on réimporte la nouvelle clé :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>rpm</span> <span>--import</span> https:<span>//</span>dl.google.com<span>/</span>linux<span>/</span>linux_signing_key.pub</pre></pre></div></div><p> Et on peut réinstaller notre Google Chrome !</p></div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

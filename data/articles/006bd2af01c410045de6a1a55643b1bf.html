@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>No logging of variable updates</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>No logging of variable updates</h1>
+  <div class="metadata">
+    Source: Domoticz (Forum News) | Date: 2/11/2026 1:42:42 PM | <a href="https://forum.domoticz.com/viewtopic.php?p=331524#p331524" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p> <strong>Moderators:</strong> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6475&amp;sid=1953847186b9232721c19cca7e9edf89">leecollings</a>, <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=57&amp;sid=1953847186b9232721c19cca7e9edf89">remb0</a>
+</p> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6757&amp;sid=1953847186b9232721c19cca7e9edf89">jberinga</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=6757&amp;sr=posts&amp;sid=1953847186b9232721c19cca7e9edf89">67</a></dd> <dd><strong>Joined:</strong> Tuesday 11 August 2015 14:20</dd> <dd><strong>Target OS:</strong> NAS (Synology &amp; others)</dd> <dd><strong>Domoticz version:</strong> 2024.7</dd> <dd><strong>Location:</strong> The Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331524&amp;sid=1953847186b9232721c19cca7e9edf89#p331524">No logging of variable updates</a> </h3> <div><p>I have a Dzvents script that will update a user variable every minute and makes a note of the variable update in the log:<br>
+<em>2026-02-11 13:51:00.735 Status: Set UserVariable nomotionCounter = 380</em></p><p> Is it possible not to update the log with (this) User variable updates? As this is information that I don't really need in the log.</p></div> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=1953847186b9232721c19cca7e9edf89"><img src="https://forum.domoticz.com/download/file.php?avatar=23529_1625057022.jpg" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=1953847186b9232721c19cca7e9edf89">waltervl</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=23529&amp;sr=posts&amp;sid=1953847186b9232721c19cca7e9edf89">6691</a></dd> <dd><strong>Joined:</strong> Monday 28 January 2019 18:48</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> 2025.1</dd> <dd><strong>Location:</strong> NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331528&amp;sid=1953847186b9232721c19cca7e9edf89#p331528">Re: No logging of variable updates</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331528&amp;sid=1953847186b9232721c19cca7e9edf89#p331528"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=1953847186b9232721c19cca7e9edf89">waltervl</a></strong> » </span><time>Wednesday 11 February 2026 16:43</time> </p> <div><p>What version of Domoticz are you on?<br>
+Do you have a log statement in your script?<br>
+What is the log settings in your script?<br>
+What are the log settings of dzvents in menu setup settings - other?</p><p> To play with logging check the logging dzvents template in the eventeditor
+</p><div><p>Code: <a href="#">Select all</a></p><pre><code>-- This example shows you how to work with various log levels
+--
+-- The script is triggered by a dummy switch called 'test'
+--
+-- when no log level is specified, the level is taken from the default application settings (dzVents)
+--
+-- when you specify LOG_STATUS as minimum log level, no logs will be displayed when using LOG_INFO or LOG_DEBUG
+--
+-- Order is: LOG_DEBUG, LOG_INFO, LOG_STATUS, LOG_ERROR
+--
+-- LOG_DEBUG will also cause Execution Info to be displayed (start/finished)
+--
+return { on = { devices = { 'test' } }, logging = { marker = 'log_script', level = domoticz.LOG_DEBUG }, execute = function(domoticz, device) domoticz.log('INFO log line!', domoticz.LOG_INFO) domoticz.log('STATUS log line!', domoticz.LOG_STATUS) domoticz.log('ERROR log line!', domoticz.LOG_ERROR) domoticz.log('DEBUG log line!', domoticz.LOG_DEBUG) end
+}</code></pre></div></div> <p>Domoticz running on Udoo X86 (on Ubuntu) <br>
+Devices/plugins: ZigbeeforDomoticz (with Xiaomi, Ikea, Tuya devices), Nefit Easy, Midea Airco, Omnik Solar, Goodwe Solar</p> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=1953847186b9232721c19cca7e9edf89"><img src="https://forum.domoticz.com/download/file.php?avatar=23529_1625057022.jpg" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=1953847186b9232721c19cca7e9edf89">waltervl</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=23529&amp;sr=posts&amp;sid=1953847186b9232721c19cca7e9edf89">6691</a></dd> <dd><strong>Joined:</strong> Monday 28 January 2019 18:48</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> 2025.1</dd> <dd><strong>Location:</strong> NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331529&amp;sid=1953847186b9232721c19cca7e9edf89#p331529">Re: No logging of variable updates</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331529&amp;sid=1953847186b9232721c19cca7e9edf89#p331529"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=1953847186b9232721c19cca7e9edf89">waltervl</a></strong> » </span><time>Wednesday 11 February 2026 16:49</time> </p> <p>I by the way just check in dzvents on myPIRdevice.lastUpdate.minutesAgo attribute. If that is longer then x minutes there is no movement for x minutes. No need to put it in a user variable.</p> <p>Domoticz running on Udoo X86 (on Ubuntu) <br>
+Devices/plugins: ZigbeeforDomoticz (with Xiaomi, Ikea, Tuya devices), Nefit Easy, Midea Airco, Omnik Solar, Goodwe Solar</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6757&amp;sid=1953847186b9232721c19cca7e9edf89">jberinga</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=6757&amp;sr=posts&amp;sid=1953847186b9232721c19cca7e9edf89">67</a></dd> <dd><strong>Joined:</strong> Tuesday 11 August 2015 14:20</dd> <dd><strong>Target OS:</strong> NAS (Synology &amp; others)</dd> <dd><strong>Domoticz version:</strong> 2024.7</dd> <dd><strong>Location:</strong> The Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331570&amp;sid=1953847186b9232721c19cca7e9edf89#p331570">Re: No logging of variable updates</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331570&amp;sid=1953847186b9232721c19cca7e9edf89#p331570"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6757&amp;sid=1953847186b9232721c19cca7e9edf89">jberinga</a></strong> » </span><time>Friday 13 February 2026 14:16</time> </p> <div><p>My Domotizc version: v2025.2 (build 17076) and no log statements in this script.<br>
+In the settings the log settings of dzvents is enabled.</p><p> I was hoping that you could disable the log level of variables, like you can for devices on the hardware page.</p><p> This is the script: </p><dl><dt>Spoiler: show</dt></dl></div> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=1953847186b9232721c19cca7e9edf89"><img src="https://forum.domoticz.com/download/file.php?avatar=23529_1625057022.jpg" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=1953847186b9232721c19cca7e9edf89">waltervl</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=23529&amp;sr=posts&amp;sid=1953847186b9232721c19cca7e9edf89">6691</a></dd> <dd><strong>Joined:</strong> Monday 28 January 2019 18:48</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> 2025.1</dd> <dd><strong>Location:</strong> NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331576&amp;sid=1953847186b9232721c19cca7e9edf89#p331576">Re: No logging of variable updates</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331576&amp;sid=1953847186b9232721c19cca7e9edf89#p331576"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=1953847186b9232721c19cca7e9edf89">waltervl</a></strong> » </span><time>Friday 13 February 2026 18:44</time> </p> <p>Indeed that seems to be a system log and not a scripting log. As far as I know there is no possibility to switch off logging for user variables as it is not a hardware gateway.</p> <p>Domoticz running on Udoo X86 (on Ubuntu) <br>
+Devices/plugins: ZigbeeforDomoticz (with Xiaomi, Ikea, Tuya devices), Nefit Easy, Midea Airco, Omnik Solar, Goodwe Solar</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6757&amp;sid=1953847186b9232721c19cca7e9edf89">jberinga</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=6757&amp;sr=posts&amp;sid=1953847186b9232721c19cca7e9edf89">67</a></dd> <dd><strong>Joined:</strong> Tuesday 11 August 2015 14:20</dd> <dd><strong>Target OS:</strong> NAS (Synology &amp; others)</dd> <dd><strong>Domoticz version:</strong> 2024.7</dd> <dd><strong>Location:</strong> The Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331578&amp;sid=1953847186b9232721c19cca7e9edf89#p331578">Re: No logging of variable updates</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331578&amp;sid=1953847186b9232721c19cca7e9edf89#p331578"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6757&amp;sid=1953847186b9232721c19cca7e9edf89">jberinga</a></strong> » </span><time>Friday 13 February 2026 19:19</time> </p> <p>Okay, thanks for replying!<br>
+Maybe I will look for another way and your suggestion for myPIRdevice.lastUpdate.minutesAgo might work for me as well</p> </div> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

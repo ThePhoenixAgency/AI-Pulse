@@ -28,7 +28,8 @@
     Source: FrenchWeb | Date: 2/8/2026 2:36:28 PM | <a href="https://www.frenchweb.fr/tech-eu-summit-london-2026-une-nouvelle-vague-de-speakers-renforce-ladn-europeen-du-rendez-vous/460212" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>À un peu plus de deux mois de l’événement, prévu les 21 et 22 avril 2026 au Queen Elizabeth II Centre, Tech.eu Summit London 2026 confirme sa place sur l’échiquier des grandes conférences tech et s’apprète à réunir les acteurs clés de la scène européenne mais aussi mondiale. Des profils au cœur des transformations en …</p>
+    <p><p>À un peu plus de deux mois de l’événement, prévu les 21 et 22 avril 2026 au Queen Elizabeth II Centre, Tech.eu Summit London 2026 confirme sa place sur l&#8217;échiquier des grandes conférences tech et s’apprète à réunir les acteurs clés de la scène européenne mais aussi mondiale. Des profils au cœur des transformations en &#8230;</p>
+<p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +38,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

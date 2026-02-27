@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Docker: PluginSystem: Failed dynamic library load</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Docker: PluginSystem: Failed dynamic library load</h1>
+  <div class="metadata">
+    Source: Domoticz (Forum News) | Date: 2/20/2026 9:20:15 PM | <a href="https://forum.domoticz.com/viewtopic.php?p=331686#p331686" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p> <strong>Moderator:</strong> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6475&amp;sid=b7ab2680507229913a41c90ea9b53a66">leecollings</a>
+</p> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=b7ab2680507229913a41c90ea9b53a66"><img src="https://forum.domoticz.com/download/file.php?avatar=5374_1445186770.gif" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=b7ab2680507229913a41c90ea9b53a66">Varazir</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=5374&amp;sr=posts&amp;sid=b7ab2680507229913a41c90ea9b53a66">487</a></dd> <dd><strong>Joined:</strong> Friday 20 February 2015 22:23</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331686&amp;sid=b7ab2680507229913a41c90ea9b53a66#p331686">Docker: PluginSystem: Failed dynamic library load</a> </h3> <div><p>Hello </p><p> I'm running Domoticz in docker and I see this in the startup log </p><div><p>Code: <a href="#">Select all</a></p><pre><code>Status: PluginSystem: Failed dynamic library load, install the latest libpython3.x library that is available for your platform.</code></pre></div><p> About Domoticz<br>
+v2025.2 (build 17204)<br>
+System Information<br>
+Build Hash<br>
+71a61ff22<br>
+Compile Date<br>
+2026-02-20 11:33:19<br>
+dzVents Version<br>
+3.1.8<br>
+Python Version<br>
+None</p><p> I enter the command prompt for the docker and it said it's installed. </p><p> root@a78701199ed2:/opt/domoticz# apt install libpython3-stdlib<br>
+Reading package lists... Done<br>
+Building dependency tree... Done<br>
+Reading state information... Done<br>
+libpython3-stdlib is already the newest version (3.11.2-1+b1).<br>
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.</p></div> <p>Raspberry PI 4 with RaZberry Controller 2016 ZWave+ and CC2531(zigbee)<br>
+Several IKEA devices/z-wave devices</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5781&amp;sid=b7ab2680507229913a41c90ea9b53a66">BarryT</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=5781&amp;sr=posts&amp;sid=b7ab2680507229913a41c90ea9b53a66">395</a></dd> <dd><strong>Joined:</strong> Tuesday 31 March 2015 22:06</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> 2024.3</dd> <dd><strong>Location:</strong> east netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331687&amp;sid=b7ab2680507229913a41c90ea9b53a66#p331687">Re: PluginSystem: Failed dynamic library load</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331687&amp;sid=b7ab2680507229913a41c90ea9b53a66#p331687"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5781&amp;sid=b7ab2680507229913a41c90ea9b53a66">BarryT</a></strong> » </span><time>Friday 20 February 2026 22:29</time> </p> <div><p>U need to install the lib and dev version of python, then it should work again.<br>
+Use customstart.sh (in the root directory of your domoticz container volume):</p><div><p>Code: <a href="#">Select all</a></p><pre><code>#!/bin/bash if [ -f /opt/domoticz/FIRSTRUN ]; then true echo "Already installed everything... Normal startup of Domoticz." else
+touch /opt/domoticz/FIRSTRUN
+echo 'creating FIRSTRUN file so script can check on next run' apt update -y &amp;&amp; apt upgrade -y
+echo "cache en system updated &amp; upgraded " apt-get install -y libpython3.11 python3.11-dev
+echo "installed python 3.11-dev &amp; libpython3.11" ## rest of code if need to install more ##
+</code></pre></div></div> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=b7ab2680507229913a41c90ea9b53a66"><img src="https://forum.domoticz.com/download/file.php?avatar=23529_1625057022.jpg" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=b7ab2680507229913a41c90ea9b53a66">waltervl</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=23529&amp;sr=posts&amp;sid=b7ab2680507229913a41c90ea9b53a66">6691</a></dd> <dd><strong>Joined:</strong> Monday 28 January 2019 18:48</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> 2025.1</dd> <dd><strong>Location:</strong> NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331688&amp;sid=b7ab2680507229913a41c90ea9b53a66#p331688">Re: PluginSystem: Failed dynamic library load</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331688&amp;sid=b7ab2680507229913a41c90ea9b53a66#p331688"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=b7ab2680507229913a41c90ea9b53a66">waltervl</a></strong> » </span><time>Friday 20 February 2026 23:37</time> </p> <div><p>Installing extra Python libs to get the Python plugin system working on the Docker image should not be needed.<br>
+This seems to be an issue on the docker build.</p><p> Edit: Github issue created <a href="https://github.com/domoticz/domoticz-docker/issues/33">https://github.com/domoticz/domoticz-docker/issues/33</a></p></div> <p>Domoticz running on Udoo X86 (on Ubuntu) <br>
+Devices/plugins: ZigbeeforDomoticz (with Xiaomi, Ikea, Tuya devices), Nefit Easy, Midea Airco, Omnik Solar, Goodwe Solar</p> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=b7ab2680507229913a41c90ea9b53a66"><img src="https://forum.domoticz.com/download/file.php?avatar=5374_1445186770.gif" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=b7ab2680507229913a41c90ea9b53a66">Varazir</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=5374&amp;sr=posts&amp;sid=b7ab2680507229913a41c90ea9b53a66">487</a></dd> <dd><strong>Joined:</strong> Friday 20 February 2015 22:23</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331714&amp;sid=b7ab2680507229913a41c90ea9b53a66#p331714">Re: PluginSystem: Failed dynamic library load</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331714&amp;sid=b7ab2680507229913a41c90ea9b53a66#p331714"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=b7ab2680507229913a41c90ea9b53a66">Varazir</a></strong> » </span><time>Saturday 21 February 2026 21:54</time> </p> <div><blockquote></blockquote><p> Works now <img src="https://forum.domoticz.com/images/smilies/icon_e_smile.gif" alt=":)"></p><p> <img src="https://i.imgur.com/LbYICiY.png" alt="Image"></p></div> <p>Raspberry PI 4 with RaZberry Controller 2016 ZWave+ and CC2531(zigbee)<br>
+Several IKEA devices/z-wave devices</p> </div> </div> <div> <h3><a href="https://forum.domoticz.com/viewonline.php?sid=b7ab2680507229913a41c90ea9b53a66">Who is online</a></h3> <p>Users browsing this forum: No registered users and 1 guest</p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

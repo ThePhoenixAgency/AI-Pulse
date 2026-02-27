@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>"Duplicate channels" error when adding a light switch ZWA4011/58433</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>"Duplicate channels" error when adding a light switch ZWA4011/58433</h1>
+  <div class="metadata">
+    Source: openHAB Community (Latest) | Date: 2/23/2026 1:26:18 AM | <a href="https://community.openhab.org/t/duplicate-channels-error-when-adding-a-light-switch-zwa4011-58433/168595" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>I am trying to add a Jasco/GE ZWA4011 light switch to my OpenHAB 5.1.3 setup. The thing is discovered and appears in my inbox as “Z-Wave Node 015: Enbrighten ZWA4011, 58433 Enbrighten Z-Wave In-Wall Smart Light Switch, 700 Series, 58433”. (device type/id: 4952/3239). But when I try to add it I get an “Error during thing creation: Not Found” error and in the log it is logged as:</p>
+<blockquote>
+<p>Thing zwave:device:df30c64e35:node15 unable to be approved: Duplicate channels zwave:device:df30c64e35:node15:scene_number.</p>
+</blockquote>
+<p>If I look at device definition at zwave addon github: <a href="https://github.com/openhab/org.openhab.binding.zwave/blob/f3a9a5d184bfc93de9589c7cdaf8e7c69a399720/src/main/resources/OH-INF/thing/ge/58433_0_0.xml#L23-L34" class="inline-onebox" rel="noopener nofollow ugc">org.openhab.binding.zwave/src/main/resources/OH-INF/thing/ge/58433_0_0.xml at f3a9a5d184bfc93de9589c7cdaf8e7c69a399720 · openhab/org.openhab.binding.zwave · GitHub</a> it indeed has multiple channels with <code>scene_number</code> name defined. However, it’s not the only file with this “issue”, so, I’m not sure it is the actual cause of what I see.</p>
+<p>I tried to use “Thing type file provider” binding to provide local thing definition with only one channel with <code>scene_number</code> id, but it didn’t help and I’m not sure it actually overrides the definition provided by zwave binding and not sure how to test that.</p>
+<p>I also recently upgraded OpenHAB 3.x to 5.1 skipping version 4, not sure if it may have contributed.</p>
+<p>Is this a bug with thing definition? Should I check something else?</p> <p><small>3 posts - 2 participants</small></p> <p><a href="https://community.openhab.org/t/duplicate-channels-error-when-adding-a-light-switch-zwa4011-58433/168595">Read full topic</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

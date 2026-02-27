@@ -28,7 +28,8 @@
     Source: FrenchWeb | Date: 2/8/2026 2:38:28 PM | <a href="https://www.frenchweb.fr/adobe-ai-forum-paris-quand-lia-passe-de-la-promesse-a-lorchestration-operationnelle-du-marketing/460201" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Mercredi 18 février 2026, Adobe réunira à Paris décideurs marketing, directions digitales et experts data à l’occasion de l’Adobe AI Forum Paris. Un format concentré, pensé comme un point d’étape sur l’intégration concrète de l’intelligence artificielle dans les métiers du marketing, de la création et de l’expérience client. Au-delà de la démonstration technologique, l’événement revendique une …</p>
+    <p><p>Mercredi 18 février 2026, Adobe réunira à Paris décideurs marketing, directions digitales et experts data à l’occasion de l’Adobe AI Forum Paris. Un format concentré, pensé comme un point d’étape sur l’intégration concrète de l’intelligence artificielle dans les métiers du marketing, de la création et de l’expérience client. Au-delà de la démonstration technologique, l’événement revendique une &#8230;</p>
+<p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +38,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

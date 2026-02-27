@@ -5,129 +5,102 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Mon, 23 Feb 2026 16:53:48 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 08:38:51 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: SpecterQA – AI personas test your web app, no scripts needed]]></title>
-      <link>https://news.ycombinator.com/item?id=47124000</link>
-      <description><![CDATA[SpecterQA is an open-source CLI for behavioral testing. Instead of writing test scripts with selectors, you define personas (YAML) and journeys (goals). The engine launches a real browser via Playwright, screenshots the page, sends it to Claude's vision model, and the AI decides what to click/type/scroll. Loop until done or stuck.
-The idea: test scripts break when markup changes. Vision-based tests break when the UX actually breaks.
-Personas have attributes like technical comfort, patience, and role that shape navigation behavior. A "frustrated non-technical admin" navigates differently than a "power user developer." pip install specterqa specterqa init specterqa run -p demo Previously called GhostQA — we rebranded after discovering ghostqa.com exists as an AI testing company. Clean break, no confusion.
-GitHub: https://github.com/SyncTek-LLC/specterqa
-MIT license. Alpha (v0.3.0). Feedback welcome. URL: https://news.ycombinator.com/item?id=47124000
+      <title><![CDATA[Show HN: PipelineIQ – AI diagnoses CI/CD failures and sends fixes to Slack]]></title>
+      <link>https://pipelineiq.dev</link>
+      <description><![CDATA[I built this after watching engineers spend 30-60 minutes staring at pipeline logs. You add one step to GitHub Actions — when a pipeline fails, Claude analyzes the logs and sends the root cause + specific fix steps to Slack within seconds.
+Stack: FastAPI, Supabase, Claude API, Slack API. Free beta, looking for feedback from engineering teams. URL: https://news.ycombinator.com/item?id=47177167
 Points: 1
 # : 0]]></description>
-      <pubDate>Mon, 23 Feb 2026 15:53:39 GMT</pubDate>
+      <pubDate>Fri, 27 Feb 2026 06:18:58 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://news.ycombinator.com/item?id=47124000</guid>
+      <guid>https://pipelineiq.dev</guid>
     </item>
     <item>
-      <title><![CDATA[Actualité : Étoiles des Numériques 2025-2026 : notre palmarès en vidéo]]></title>
-      <link>https://www.lesnumeriques.com/societe-numerique/etoiles-des-numeriques-2025-2026-notre-palmares-en-video-n251792.html</link>
-      <description><![CDATA[L’heure du bilan a enfin sonné dans les laboratoires des Numériques. Après douze mois de tests intensifs, de mesures de précision et de débats passionnés, nos experts ont tranché pour élire les produits les plus marquants de l’année. Ce palmarès des Étoiles 2025-2026 ne se contente pas de récompenser les performances brutes : il met en lumière les in...]]></description>
-      <pubDate>Sun, 22 Feb 2026 17:22:00 GMT</pubDate>
-      <source>Les Numeriques</source>
-      <category>products</category>
-      <guid>https://www.lesnumeriques.com/societe-numerique/etoiles-des-numeriques-2025-2026-notre-palmares-en-video-n251792.html</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: Sowbot – open-hardware agricultural robot (ROS2, RTK GPS)]]></title>
-      <link>https://sowbot.co.uk/</link>
-      <description><![CDATA[Sowbot is an open-hardware agricultural robot designed to close the "prototype gap" that kills most agri-robotics startups and research projects — the 18+ months spent on drivers, networking, safety watchdogs, and UI before you can even start on the thing you actually care about.
-The hardware is built around a stackable 10×10cm compute module with two ARM Cortex-A55 SBCs — one for ROS 2 navigation/EKF localisation, one dedicated to vision/YOLO inference — connected via a single ethernet cable.
-Centimetre-level positioning via dual RTK GNSS, CAN bus for field comms, and real-time motor control via ESP32 running Lizard firmware.
-Everything — schematics, PCB layouts, firmware — is under open licences.
-The software stack runs on RoSys/Field Friend (for teams who want fast iteration) or DevKit ROS (for teams already in the ROS ecosystem). The idea is that a lab in one country can reproduce another lab's experiment by sharing a Docker image.
-Current status: the Open Core brain is largely fabricated, the full-size Sowbot body has a detailed BOM but isn't yet assembled, and we have two smaller dev platforms (Mini and Pico) in various stages of testing.
-We're a small volunteer team and we're looking for contributors — hardware, ROS, firmware, docs, whatever you can offer.
-The best place to start is our Discord: https://discord.gg/SvztEBr4KZ — we have a weekly call if you'd prefer to just show up and chat.
-GitHub: https://github.com/Agroecology-Lab/feldfreund_devkit_ros/tre... URL: https://news.ycombinator.com/item?id=47123894
-Points: 2
+      <title><![CDATA[Show HN: MotionDesk: Physics-driven, Metal-accelerated wallpapers for macOS]]></title>
+      <link>https://news.ycombinator.com/item?id=47176988</link>
+      <description><![CDATA[I built MotionDesk, an aesthetic macOS wallpaper app that uses Metal shaders and native display APIs rather than playing a video file in the background, which is what most wallpaper engines do.
+The app renders wallpapers that respond to your environment in real time. A few of the modes (16 total):
+- Physics-based + Interactive: your cursor disturbs magnetic fields or contour fields rendered on the desktop. (These 2 modes are free forever)
+- Weather: You can have it rain, snow, thunder, etc on your desktop, or even pull live weather data and have your weather app basically be your wallpaper.
+- Liquid glass overlay: a refraction effect applied over your existing wallpaper.
+- Space: Travel through stars (more items such as blackholes being added soon)
+- Dock plants: places cute flowers and cactus on your dock :)
+- and more: Glyph swarm (popular), ASCII Field (popular), Smoke, Tide, Pulse Rings, Neon Wireframe, Net, Math, DNA.
+Performance
+This was a hard constraint from the start. The app currently averages under 10% CPU time, around 300 MiB memory, and 35% GPU core time. It can run very smoothly on hardware as old as a 2015 MacBook Pro :) Battery impact is very low, which was one of my main concerns when starting its development.
+Where it stands
+500 downloads in the first week since launch. Early feedback has been very positive, and we have addressed some popular feature requests and fixed some bugs that were not caught on our test devices. URL: https://news.ycombinator.com/item?id=47176988
+Points: 3
 # : 0]]></description>
-      <pubDate>Mon, 23 Feb 2026 15:48:33 GMT</pubDate>
+      <pubDate>Fri, 27 Feb 2026 05:53:59 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://sowbot.co.uk/</guid>
+      <guid>https://news.ycombinator.com/item?id=47176988</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: MicroGPT-C – C99 GPT for Edge Training and Tiny Model Pipelines]]></title>
-      <link>https://github.com/enjector/microgpt-c</link>
-      <description><![CDATA[TL;DR: Pure C99 GPT-2 engine, zero dependencies. Sub-1M-parameter “organelles” coordinate via a Planner-Worker-Judge pipeline and beat random opponents up to 91 % on logic games, all on CPU.
-I’m a C/C++ architect focused on low-latency systems. Last year, I tried building agentic pipelines with SLMs/LLMs and hit the usual wall: latency and orchestration overhead killed real-time edge use cases.
-Initial research video: https://www.youtube.com/watch?v=q-rs9VZ1-0I
-So I asked: how far can you push specialised logic at https://gist.github.com/karpathy/8627fe009c40f57531cb1836010...). Zero deps, single-header, localised KV cache. Speed was never the goal (Andrej’s nanoGPT and llm.c already showed what’s possible). The real experiment was orchestration.
-Organelle Pipeline Architecture (OPA): Agile-style Planners, Workers and Judges talking through tiny structured strings (board=XO_|valid=1,3) parsed by a safety-gated stack VM (3.7–5.8M ops/s). A 64K model needed 181 manual interventions; a 460K model trained on those traces internalised everything and needed zero.
-Beyond the research: fully auditable AI, great for education (~3k lines of readable C), rapid prototyping, and embedded.
-Personal itch: fraud/risk engines. I want agents that hunt “unknown-unknowns” in a sandbox where every decision is inspectable.
-Happy to talk implementation, the 97 tests, 22 benchmarks, or anything else. FAQ: https://github.com/enjector/microgpt-c/blob/main/FAQ.md
-Quick try (macOS/Linux/Windows):
-git clone https://github.com/enjector/microgpt-c &amp;&amp; cd microgpt-c
-mkdir build &amp;&amp; cd build &amp;&amp; cmake .. -DCMAKE_BUILD_TYPE=Release &amp;&amp; cmake --build . ./connect4_demo # 460K params, ~21 min train, 88% win rate vs random
-Performance (Apple M2 Max):
-- 4.2K params names: 685k tok/s train, 110k tok/s infer
-- 841K Shakespeare char: 28k / 16k tok/s
-- 510K Shakespeare word: 12.5k / 40k tok/s
-Full leaderboard (11 games), market-regime experiment (57% holdout = 2.8× baseline), and the book PDF:
-https://github.com/enjector/microgpt-c/blob/main/docs/book/M...
-GitHub: https://github.com/enjector/microgpt-c URL: https://news.ycombinator.com/item?id=47123730
-Points: 1
-# : 0]]></description>
-      <pubDate>Mon, 23 Feb 2026 15:39:21 GMT</pubDate>
+      <title><![CDATA[Show HN: I built a Chrome extension to record demo videos without editing]]></title>
+      <link>https://zoomflow.rovelin.com/</link>
+      <description><![CDATA[Hey everyone,
+I often needed to create demo videos for my products, but editing took more time than building the feature itself
+So I built a Chrome extension called ZoomFlow. It lets you:
+• Record your screen
+• Auto-follow cursor movement
+• Add smooth zoom effects
+• Export directly (no editing required)]]></description>
+      <pubDate>Fri, 27 Feb 2026 05:01:10 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://github.com/enjector/microgpt-c</guid>
+      <guid>https://zoomflow.rovelin.com/</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: EloPhanto – A self-evolving AI agent that builds its own tools]]></title>
-      <link>https://github.com/elophanto/EloPhanto</link>
-      <description><![CDATA[I built EloPhanto because I wanted an AI agent that could actually execute tasks on my machine with full visibility — not a black box API call. It runs locally and controls a real Chrome browser (47 tools) using your existing sessions.
-The standout feature: when EloPhanto encounters a task it doesn't have a tool for, it autonomously writes the Python code, tests it, reviews itself, and integrates the new tool permanently. It's now built 99+ tools for itself this way.
-Other features:
-- Multi-channel gateway (CLI, Telegram, Discord, Slack) with unified sessions
-- MCP tool server support (connect any MCP server)
-- Document &amp; media analysis (PDF, images, OCR, RAG)
-- Agent email (own inbox for service signup/verification)
-- Crypto payments wallet (Base chain, spending limits)
-- TOTP authenticator (autonomous 2FA handling)
-- Evolving identity that learns from experience
-- Skill system with EloPhantoHub marketplace (28 bundled skills)
-It's open source (Apache 2.0), local-first, and designed to be your personal AI operating system.
-The project is very new — currently at 6 stars on GitHub. I'd love to get feedback on the architecture, the self-development approach, or what features you'd want in a local agent. URL: https://news.ycombinator.com/item?id=47123543
-Points: 1
-# : 0]]></description>
-      <pubDate>Mon, 23 Feb 2026 15:28:06 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://github.com/elophanto/EloPhanto</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : Écrans "anti-espion" : nos tests en labo révèlent un sacrifice inattendu]]></title>
-      <link>https://www.lesnumeriques.com/telephone-portable/filtres-de-confidentialite-on-a-teste-en-labo-ces-protections-d-ecran-miracles-pour-smartphones-n251796.html</link>
-      <description><![CDATA[Le lancement de la gamme Galaxy S26, dont le Galaxy S26 Ultra sera le fleuron, va permettre à Samsung d’inaugurer un nouveau type d’écran. La dalle Amoled de son smartphone Ultra sera effectivement pourvue d’une option mimant l’effet d’un filtre “anti-espion”, qui s’ajoutera à sa couche antireflets habituelle. Cette dernière, très efficace, est elle-...]]></description>
-      <pubDate>Mon, 23 Feb 2026 11:00:00 GMT</pubDate>
+      <title><![CDATA[Actualité : Bon plan – Le purificateur d'air Philips Serie 8000 (AMF870/15) "5 étoiles" à 388,41 € (-18%)]]></title>
+      <link>https://www.lesnumeriques.com/purificateur-air/bon-plan-le-purificateur-d-air-philips-serie-8000-amf870-15-5-etoiles-a-388-41-18-n252068.html</link>
+      <description><![CDATA[Philips propose une nouvelle solution pour traiter l’air intérieur : le purificateur AMF870/15. Avec un design approchant celui des produits Dyson, cet appareil purifie, ventile et chauffe l’air de pièces pouvant mesurer jusqu’à 70 m².Points fortsTrès bonnes performances de purification.Consommation raisonnable.Peut endosser le rôle de ventilateur....]]></description>
+      <pubDate>Thu, 26 Feb 2026 23:00:13 GMT</pubDate>
       <source>Les Numeriques</source>
       <category>products</category>
-      <guid>https://www.lesnumeriques.com/telephone-portable/filtres-de-confidentialite-on-a-teste-en-labo-ces-protections-d-ecran-miracles-pour-smartphones-n251796.html</guid>
+      <guid>https://www.lesnumeriques.com/purificateur-air/bon-plan-le-purificateur-d-air-philips-serie-8000-amf870-15-5-etoiles-a-388-41-18-n252068.html</guid>
     </item>
     <item>
-      <title><![CDATA[Actualité : Bon plan – La batterie externe Belkin BoostCharge Pro 20K "5 étoiles" à 59,99 € (-23%)]]></title>
-      <link>https://www.lesnumeriques.com/batterie-externe/bon-plan-la-batterie-externe-belkin-boostcharge-pro-20k-5-etoiles-a-59-99-23-n251850.html</link>
-      <description><![CDATA[Le catalogue de batteries externes de Belkin paraît infini tant il compte de références. Parmi elles, une BoostCharge Pro (20K) à la capacité de 20 000 mAh et promettant d'alimenter jusqu'à trois produits à la fois grâce à ses ports nombreux.Points fortsÉcran de contrôle.Suffisamment de puissance.Pas trop de perte d'énergie.
-Points faiblesPas...]]></description>
-      <pubDate>Mon, 23 Feb 2026 08:52:00 GMT</pubDate>
+      <title><![CDATA[Actualité : iPhone 17e, MacBook abordable… Apple débute les annonces lundi, voici les nouveaux produits attendus]]></title>
+      <link>https://www.lesnumeriques.com/societe-numerique/iphone-17e-macbook-abordable-apple-debute-les-annonces-lundi-voici-les-nouveaux-produits-attendus-n252049.html</link>
+      <description><![CDATA[La semaine prochaine, Apple compte faire la fête à ses clients en annonçant une armada de nouveautés, en terminant ensuite par un événement spécial le 4 mars 2026. Tim Cook vient d’ailleurs de confirmer le début des hostilités ce lundi.Voici tout ce qui serait au programme (iPhone 17e, MacBook pas cher…), d’après les rumeurs.La fête des iPhone, iPad...]]></description>
+      <pubDate>Thu, 26 Feb 2026 15:17:00 GMT</pubDate>
       <source>Les Numeriques</source>
       <category>products</category>
-      <guid>https://www.lesnumeriques.com/batterie-externe/bon-plan-la-batterie-externe-belkin-boostcharge-pro-20k-5-etoiles-a-59-99-23-n251850.html</guid>
+      <guid>https://www.lesnumeriques.com/societe-numerique/iphone-17e-macbook-abordable-apple-debute-les-annonces-lundi-voici-les-nouveaux-produits-attendus-n252049.html</guid>
     </item>
     <item>
-      <title><![CDATA[Actualité : Les hybrides rechargeables ne sont pas si écologiques, une étude massive nous le prouve]]></title>
-      <link>https://www.lesnumeriques.com/voiture-hybride-rechargeable/les-hybrides-rechargeables-ne-sont-pas-si-ecologiques-une-etude-massive-montre-l-ampleur-de-l-arnaque-n251837.html</link>
-      <description><![CDATA[C'est la plus grande étude jamais réalisée sur la consommation des hybrides rechargeables. Et ses conclusions font froid dans le dos. Le Fraunhofer Institute, un institut de recherche allemand de référence, a analysé les données de 981 035 véhicules produits entre 2021 et 2023 en Europe. Le verdict est sans appel. Les hybrides rechargeables consommen...]]></description>
-      <pubDate>Sun, 22 Feb 2026 20:30:00 GMT</pubDate>
+      <title><![CDATA[Actualité : Pour un bon aspirateur traîneau à prix abordable, privilégiez...]]></title>
+      <link>https://www.lesnumeriques.com/aspirateur-sans-sac/pour-un-bon-aspirateur-traineau-a-prix-abordable-privilegiez-n252045.html</link>
+      <description><![CDATA[Spécialiste du petit électroménager, Livoo vend un large éventail de produits à petits prix. Nous testons ici le Livoo DOH105G, l'aspirateur-traineau sans sac le moins cher de notre comparatif.Points fortsAspirateur maniable et léger.Bonnes performances d'aspiration.
+Points faiblesPas de filtration multicyclonique.Peu d'accessoires fourni...]]></description>
+      <pubDate>Thu, 26 Feb 2026 14:13:37 GMT</pubDate>
       <source>Les Numeriques</source>
       <category>products</category>
-      <guid>https://www.lesnumeriques.com/voiture-hybride-rechargeable/les-hybrides-rechargeables-ne-sont-pas-si-ecologiques-une-etude-massive-montre-l-ampleur-de-l-arnaque-n251837.html</guid>
+      <guid>https://www.lesnumeriques.com/aspirateur-sans-sac/pour-un-bon-aspirateur-traineau-a-prix-abordable-privilegiez-n252045.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[Launch In Public]]></title>
+      <link>https://www.producthunt.com/products/launch-in-public</link>
+      <description><![CDATA[Discussion | Link]]></description>
+      <pubDate>Thu, 26 Feb 2026 11:03:00 GMT</pubDate>
+      <source>Product Hunt</source>
+      <category>products</category>
+      <guid>https://www.producthunt.com/products/launch-in-public</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : One UI 8.5 et Galaxy S26 : voici les nouveautés inédites de la mise à jour, bientôt sur votre ancien Samsung]]></title>
+      <link>https://www.lesnumeriques.com/telephone-portable/one-ui-8-5-et-galaxy-s26-voici-les-nouveautes-inedites-de-la-mise-a-jour-bientot-sur-votre-ancien-samsung-n252030.html</link>
+      <description><![CDATA[Après quelques mois en bêta, Samsung a enfin dévoilé la version finale de One UI 8.5, embarquée nativement sur les Galaxy S26, S26+ et S26 Ultra. Prochainement disponible pour les smartphones Samsung plus anciens, cette mise à jour n’a maintenant plus aucun secret. Voici un point sur les nouveautés, mais aussi les modèles compatibles !Les nouveautés...]]></description>
+      <pubDate>Thu, 26 Feb 2026 11:01:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/telephone-portable/one-ui-8-5-et-galaxy-s26-voici-les-nouveautes-inedites-de-la-mise-a-jour-bientot-sur-votre-ancien-samsung-n252030.html</guid>
     </item>
   </channel>
 </rss>

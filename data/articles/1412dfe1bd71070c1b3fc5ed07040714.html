@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Problème de configuration bt et mqtt</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Problème de configuration bt et mqtt</h1>
+  <div class="metadata">
+    Source: Gladys Assistant (Forum) | Date: 2/24/2026 5:16:21 PM | <a href="https://community.gladysassistant.com/t/probleme-de-configuration-bt-et-mqtt/10054" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <div> <div> <p><span> <time> Février 24, 2026, 5:16 </time> <span>1</span> </span> </p></div> <div> <p>​Bonjour,</p>
+<p>​Nouveau sur Gladys et habitué à bidouiller sur Home Assistant, j’ai voulu migrer pour plus de simplicité. Cependant, je rencontre plusieurs problèmes suite à une mauvaise configuration réseau qui a fait crasher mon serveur Unraid.</p>
+<p>​<strong>Ma Configuration :</strong></p>
+<ul>
+<li>
+<p>​<strong>Hardware :</strong> Lenovo ThinkCentre M710q.</p>
+</li>
+<li>
+<p>​<strong>Stockage :</strong> DAS TerraMaster 4 baies (USB).</p>
+</li>
+<li>
+<p>​<strong>Dongles :</strong> Zigbee (sur /dev/ttyACM0) et Bluetooth Asus BT500.</p>
+</li>
+<li>
+<p>​<strong>Gladys :</strong> Installée via Docker sur Unraid (actuellement en mode Bridge sur le port 8006 pour éviter les conflits).</p>
+</li>
+</ul>
+<p>​<strong>Le problème :</strong></p>
+<p>Suite à une tentative de configuration du dongle Bluetooth, j’ai passé Gladys en mode réseau Host, ce qui a provoqué un crash total d’Unraid (conflit d’IP/Ports) et une corruption de ma clé de boot. J’ai dû recréer une «&nbsp;New Config&nbsp;» et supprimer l’image Docker corrompue.</p>
+<p>​Depuis, j’ai deux soucis majeurs :</p>
+<ol>
+<li>
+<p>​<strong>Services MQTT et Zigbee :</strong> Les containers intégrés n’existent plus. J’ai tenté une réinstallation manuelle via l’onglet Apps d’Unraid, mais Gladys ne semble plus communiquer avec eux.</p>
+<ul>
+<li>
+<p>​<em>Y a-t-il un moyen de forcer Gladys à réinstaller et gérer elle-même ces containers (Mosquitto/Zigbee2MQTT) pour retrouver le fonctionnement natif ?</em></p>
+</li>
+<li>
+<p>​<em>Comment m’assurer que les nouveaux containers pointent correctement vers mes anciennes données dans /mnt/user/appdata/ ?</em></p>
+</li>
+</ul>
+</li>
+<li>
+<p>​<strong>Bluetooth (Asus BT500) :</strong> Mon dongle n’est toujours pas reconnu dans l’interface Gladys («&nbsp;Pas de dispositif trouvé&nbsp;»). J’ai pourtant activé le mode Privileged et tenté un passthrough USB via /dev/bus/usb, mais sans succès.</p>
+</li>
+</ol>
+<p>​Avez-vous une astuce pour stabiliser le Bluetooth sur Unraid et lier correctement les services MQTT/Zigbee après un tel crash ?</p>
+<p>​Merci d’avance pour votre aide !</p>
+<p>Cordialement,</p>
+<p>Didier</p> </div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/mutmut"><span>mutmut</span></a> </span> <span> <time> Février 24, 2026, 8:17 </time> <span>2</span> </span> </p> <div> <p>Salut <a href="https://community.gladysassistant.com/u/dl_studio">@DL_STUDIO</a> et sois le bienvenu sur Gladys.</p>
+<p>Je vais essayer de t’aider sur le côté docker et Gladys, mais pas Unraid (je connais juste de nom).<br>
+Passes-tu par un <code>docker run</code> ou <code>docker compose</code> ?</p>
+<p>Pour le mode réseau, il faut absolument être en <code>host</code>.<br>
+Pour le port, tu peux mettre <code>8420</code>.<br>
+Pour le mapping des répertoires, je dirais <code>/mnt/user/appdata/gladysassistant:/var/lib/gladysassistant</code> si bien sûr tu as un répertoire <code>gladysassistant</code> dans ton <code>appdata</code>, sinon il faudra ajuster le chemin.</p>
+<p>As-tu besoin de l’intégration zigbee2mqtt ET de l’intégration MQTT ?<br>
+Si tu ne veux que le zigbee, alors l’intégration zigbee2mqtt gère déjà 2 dockers : zigbee2mqtt ET mosquitto.<br>
+Si tu as besoin de gérer des devices virtuels et/ou de t’abonner à des topics issus d’autres systèmes, alors il te faut activer l’intégration MQTT (j’espère que je suis clair <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/roll_eyes.png?v=15" alt=":roll_eyes:"> ).</p>
+<p>Je ne suis pas un spécialiste de la ligne de commande docker car je passe tout par Portainer pour ajouter/modifier/supprimer, mais tu peux déjà faire un <code>docker ps</code> pour voir ce qui tourne et un <code>docker ps -a</code> pour voir tout ce qui existe.<br>
+Un container issu des intégrations peut être dead et il faudrait alors le supprimer par <code>docker rm nom-container</code>.</p>
+<p>Bon, on passe sur le Bluetooth et je serai plus rapide car je n’en ai pas <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/grimacing.png?v=15" alt=":grimacing:"><br>
+A quoi va te servir le BT ?<br>
+D’après la <a href="https://gladysassistant.com/fr/docs/integrations/bluetooth/">doc</a>, ce n’est que pour la présence des téléphones.</p> </div> </div> <div> <p>Hello,<br>
+Alors j’en avais tellement marre que j’ai fait une clean installe … Pour le bluetooth je voudrais faire un système de présence à l’aide de porte-clé comme expliqué dans la doc.</p>
+<p>Sauf que j’ai pas le bluetooth nativement et unraid n’a pas l’air copain…</p> </div> <div> <div> <p>J’ai réussi à faire ma bidouille fonctionne sur asus BT500. le problème venait d’un conflit avec le port 80 de unraid.</p>
+<p>Voici la méthode ultime pour que tout fonctionne à merveille :</p>
+<h4><a name="p-81998-tape-1-installer-les-pilotes-bluetooth-sur-unraid-1" href="#p-81998-tape-1-installer-les-pilotes-bluetooth-sur-unraid-1"></a>Étape 1 : Installer les pilotes Bluetooth sur Unraid</h4>
+<p>Puisqu’Unraid est allégé, il faut lui apprendre à parler «&nbsp;Bluetooth&nbsp;».</p>
+<ol>
+<li>
+<p>Dans Unraid, va dans l’onglet <strong>Plugins</strong> &gt; <strong>Install Plugin</strong>.</p>
+</li>
+<li>
+<p>Dans le champ URL, colle cette adresse pour installer l’outil <em>un-get</em> : <code>https://raw.githubusercontent.com/ich777/un-get/master/un-get.plg</code> et clique sur <strong>Install</strong>.</p>
+</li>
+<li>
+<p>Ouvre le <strong>Terminal</strong> d’Unraid (l’icône <code>&gt;_</code> en haut à droite).</p>
+</li>
+<li>
+<p>Tape <code>un-get update</code> et valide avec Entrée.</p>
+</li>
+<li>
+<p>Tape <code>un-get install bluez</code> et valide. (Cela installe les pilotes).</p>
+</li>
+</ol>
+<h4><a name="p-81998-tape-2-allumer-lantenne-du-serveur-2" href="#p-81998-tape-2-allumer-lantenne-du-serveur-2"></a>Étape 2 : Allumer l’antenne du serveur</h4>
+<p>Toujours dans le terminal d’Unraid, tape la commande suivante pour démarrer le service Bluetooth :</p>
+<ul>
+<li><code>/etc/rc.d/rc.bluetooth start</code> <em>(Ton serveur Unraid comprend désormais ta clé USB !)</em></li>
+</ul>
+<h4><a name="p-81998-tape-3-la-configuration-magique-du-docker-gladys-3" href="#p-81998-tape-3-la-configuration-magique-du-docker-gladys-3"></a>Étape 3 : La configuration «&nbsp;Magique&nbsp;» du Docker Gladys</h4>
+<p>Va dans l’onglet <strong>Docker</strong> d’Unraid, clique sur l’icône de Gladys Assistant et fais <strong>Edit</strong>. Fais exactement ces modifications :</p>
+<ol>
+<li>
+<p><strong>Network Type :</strong> Passe-le en <code>Host</code> <em>(indispensable pour voir l’antenne radio)</em>.</p>
+</li>
+<li>
+<p><strong>Nettoyer l’ancienne config :</strong> Supprime tes anciennes règles de Port (ex: <code>8006:80</code>) et tes anciens périphériques USB Bluetooth (ex: <code>--device=/dev/bus/...</code>).</p>
+</li>
+<li>
+<p><strong>Créer le pont DBUS :</strong> Clique sur <em>Add another Path…</em></p>
+<ul>
+<li>
+<p>Config Type : <code>Path</code></p>
+</li>
+<li>
+<p>Name : <code>DBUS</code></p>
+</li>
+<li>
+<p>Container Path : <code>/var/run/dbus</code></p>
+</li>
+<li>
+<p>Host Path : <code>/var/run/dbus</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>La bidouille anti-crash (Le plus important !) :</strong> Pour éviter que Gladys ne plante ton serveur en utilisant le port 80 (déjà pris par Unraid), clique sur <em>Add another Path…</em> et crée cette variable :</p>
+<ul>
+<li>
+<p>Config Type : <code>Variable</code></p>
+</li>
+<li>
+<p>Name : <code>Port Interne Gladys</code></p>
+</li>
+<li>
+<p>Key : <code>SERVER_PORT</code></p>
+</li>
+<li>
+<p>Value : <code>8006</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<h4><a name="p-81998-tape-4-appliquer-et-scanner-4" href="#p-81998-tape-4-appliquer-et-scanner-4"></a>Étape 4 : Appliquer et Scanner !</h4>
+<ol>
+<li>
+<p>Clique sur <strong>APPLY</strong> tout en bas pour recréer le container.</p>
+</li>
+<li>
+<p>Rends-toi sur l’interface de Gladys via ton navigateur (ex: <code>http://IP_DE_TON_SERVEUR:8006</code>). Ton Unraid ne plantera pas !</p>
+</li>
+<li>
+<p>Va dans <strong>Intégrations</strong> &gt; <strong>Bluetooth</strong>. L’erreur aura disparu. Tu peux lancer un scan et détecter tes porte-clés, thermomètres, etc.</p>
+</li>
+</ol> </div> <div> <p><span>3 « J'aime »</span> </p></div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/guim31"><span>guim31</span></a> </span> <span> <time> Février 25, 2026, 7:25 </time> <span>5</span> </span> </p> <p>Merci pour toutes ces informations !<br>
+Perso j’ai un nas Unraid, donc ça peut toujours servir ! <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/+1.png?v=15" alt=":+1:"></p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

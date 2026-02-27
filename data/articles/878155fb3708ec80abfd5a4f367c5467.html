@@ -28,7 +28,8 @@
     Source: FrenchWeb | Date: 2/11/2026 7:11:03 AM | <a href="https://www.frenchweb.fr/lia-peut-elle-absorber-la-penurie-structurelle-de-praticiens-dans-le-secteur-dentaire/460283" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>La pénurie de professionnels de santé s’inscrit dans une tension structurelle : vieillissement démographique, disparités territoriales, augmentation de la demande de soins spécialisés. L’orthodontie n’échappe pas à cette dynamique, les délais s’allongent, le temps fauteuil devient une ressource contrainte et les cabinets arbitrent en permanence entre suivi courant et urgences. Dans ce contexte, le monitoring …</p>
+    <p><p>La pénurie de professionnels de santé s’inscrit dans une tension structurelle : vieillissement démographique, disparités territoriales, augmentation de la demande de soins spécialisés. L’orthodontie n’échappe pas à cette dynamique, les délais s’allongent, le temps fauteuil devient une ressource contrainte et les cabinets arbitrent en permanence entre suivi courant et urgences. Dans ce contexte, le monitoring &#8230;</p>
+<p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +38,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

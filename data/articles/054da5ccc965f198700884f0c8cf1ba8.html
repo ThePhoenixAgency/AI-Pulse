@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Generate web pages from Markdown with Docsify-This</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Generate web pages from Markdown with Docsify-This</h1>
+  <div class="metadata">
+    Source: Open Source.com (Nouveautés) | Date: 5/2/2023 7:00:00 AM | <a href="https://opensource.com/article/23/5/docsify-markdown-html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><p>Are you interested in leveraging Markdown for online content without any website setup or build process? How about seamlessly embedding constraint-free Markdown or HTML into multiple platforms (such as a content management system or learning management system)? The open source project <a href="https://docsify-this.net/" target="_blank" rel="noopener noreferrer">Docsify-This</a>, built with <a href="https://docsify.js.org/" target="_blank" rel="noopener noreferrer">Docsify.js</a>, provides an easy way to publish, share, and reuse Markdown content.</p>
+<p><strong>[ Get the <a href="https://opensource.com/downloads/cheat-sheet-markdown" target="_blank" rel="noopener noreferrer">Markdown cheat sheet</a> ]</strong></p>
+<h2>What is Docsify-This?</h2>
+<p>With Docsify-This, you can instantly turn any publicly available Markdown file into a responsive standalone web page. You can also link multiple Markdown files to create a simple website. Designers can alter the visual appearance of displayed pages with the point-and-click Web Page Builder interface or URL parameters. You can also use a set of provided Markdown CSS classes when creating your own Markdown content. In addition, if you use Codeberg or GitHub to store your Markdown files, an <strong>Edit this Page</strong> link can be automatically provided for each page to support collaborative authoring.</p>
+<p>It's open source, so you can host a Docsify-This instance using your own custom domain without the risk of platform lock-in.</p>
+<h2>Use the Docsify-This Web Page Builder</h2>
+<p>To use the Web Page Builder, open a browser and navigate to the <a href="https://docsify-this.net/" target="_blank" rel="noopener noreferrer">Docsify-This website</a> or your local instance. In the <strong>Web Page Builder</strong> section, enter the URL of a Markdown file in a public repo of Codeberg or GitHub (other Git hosts can also be used via Docsify-This URL parameters but not in the Web Page Builder), and then click the <strong>Publish as Standalone Web Page</strong> button.</p>
+<article> <p><img src="https://opensource.com/sites/default/files/2023-04/docsify-this-web-page-builder.webp" alt="The Docsify-This web page builder interface"> </p> <div><p><span>Image by: </span></p><p>(Paul Hibbitts, CC BY-A 4.0)</p>
+</div> </article>
+<p>The Markdown file is rendered as a standalone web page with a URL you can copy and share. Here's an example URL:</p>
+<pre><code>https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-article/main&amp;homepage=home.md</code></pre><p>Docsify-This rendered web pages are perfect for embedding, with the ability to visually style Docsify-This pages to the destination platform.</p>
+<article> <p><img src="https://opensource.com/sites/default/files/2023-04/docsify-this-rendered-markdown-file.webp" alt="Docsify-This rendered Markdown file"> </p> <div><p><span>Image by: </span></p><p>(Paul Hibbitts, CC BY-A 4.0)</p>
+</div> </article>
+<h2>Render other files in the same repository</h2>
+<p>You can render other Markdown files in the same repository by directly editing the Docsify-This URL parameter <strong>homepage</strong>. For example:</p>
+<pre><code>https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-article/main&amp;homepage=anotherfile.md</code></pre><h2>Modify the web page's appearance</h2>
+<p>You can change the appearance of any Markdown file displayed in Docsify-This by using <a href="https://docsify-this.net/#/?id=page-appearance-url-parameters" target="_blank" rel="noopener noreferrer">URL parameters</a>. For example, <code>font-family</code>, <code>font-size</code>, <code>link-color</code>, and <code>line-height</code> are all common CSS attributes and are valid parameters for Docsify-This:</p>
+<pre><code>https://docsify-this.net/?basePath=https://raw.githubusercontent.com/hibbitts-design/docsify-this-one-page-article/main&amp;homepage=home.md&amp;font-family=Open%20Sans,sans-serif</code></pre><p>You can also alter the visual appearance using a set of special <a href="https://docsify-this.net/#/?id=supported-markdown-css-classes" target="_blank" rel="noopener noreferrer">Markdown CSS classes</a>. For example, you can add the <code>button</code> class to a link:</p>
+<pre><code>[Required Reading Quiz due Jun 4th](https://canvas.sfu.ca/courses/44038/quizzes/166553 ':class=button') </code></pre><p>This produces a button image instead of just a text link:</p>
+<article> <p><img src="https://opensource.com/sites/default/files/2023-04/button.webp" alt="A button rendered by Docsify-This"> </p> <div><p><span>Image by: </span></p><p>(Paul Hibbitts, CC BY-A 4.0)</p>
+</div> </article>
+<p>In addition to the Markdown CSS classes supported by Docsify-This, you can define your own custom classes within your displayed Markdown files. For example:</p>
+<pre><code>&lt;style&gt;
+.markdown-section .mybutton, .markdown-section .mybutton:hover { cursor: pointer; color: #CC0000; height: auto; display: inline-block; border: 2px solid #CC0000; border-radius: 4rem; margin: 2px 0px 2px 0px; padding: 8px 18px 8px 18px; line-height: 1.2rem; background-color: white; font-family: -apple-system, "Segoe UI", "Helvetica Neue", sans-serif; font-weight: bold; text-decoration: none;
+}
+&lt;/style&gt; [Custom CSS Class Button](# ':class=mybutton')</code></pre><p>Produces this:</p>
+<article> <p><img src="https://opensource.com/sites/default/files/2023-04/custom-css-button.webp" alt="A custom button image rendered with Docsify-This"> </p> <div><p><span>Image by: </span></p><p>(Paul Hibbitts, CC BY-A 4.0)</p>
+</div> </article>
+<h2>Include HTML snippets</h2>
+<p>As supported by standard Markdown, you can include HTML snippets. This allows you to add layout elements to your HTML render. For example:</p>
+<pre><code>&lt;div class="row"&gt;
+&lt;div class="column"&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit. &lt;/div&gt;
+&lt;div class="column"&gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit. &lt;/div&gt;
+&lt;/div&gt;</code></pre><h2>Embed Docsify-This as an iFrame</h2>
+<p>You can embed Docsify-This web pages using an iFrame in almost any platform. You can also use URL parameters to ensure your embedded content matches your destination platform:</p>
+<pre><code>&lt;p&gt;&lt;iframe style="overflow: hidden; border: 0px #ffffff none; margin-top: -26px; background: #ffffff;" src="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/paulhibbitts/cmpt-363-222-pages/main&amp;homepage=home.md&amp;font-family=Lato%20Extended,Lato,Helvetica%20Neue,Helvetica,Arial,sans-serif&amp;font-size=1&amp;hide-credits=true" width="800px" height="950px" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;&lt;/p&gt;</code></pre><article> <p><img src="https://opensource.com/sites/default/files/2023-04/docsify-this-iframe.webp" alt="A Docsify-This page embedded in an LMS"> </p> <div><p><span>Image by: </span></p><p>(Paul Hibbitts, CC BY-A 4.0)</p>
+</div> </article>
+<h2>Embed Docsify-This with an external URL</h2>
+<p>In certain learning management systems (LMS), including the open source <a href="https://opensource.com/article/21/3/moodle-plugins" target="_blank" rel="noopener noreferrer">Moodle</a>&nbsp;and even the proprietary <a href="https://github.com/instructure/canvas-lms" target="_blank" rel="noopener noreferrer">Canvas</a>, you can link external web pages to a course navigation menu and sometimes more. For example, you can use the Redirect Tool in Canvas to display Docsify-This web pages.</p>
+<pre><code>url=https://docsify-this.net/?basePath=https://raw.githubusercontent.com/paulhibbitts/cmpt-363-222-pages/main&amp;homepage=resources.md&amp;edit-link=https://github.com/paulhibbitts/cmpt-363-222-pages/blob/main/resources.md&amp;font-family=Lato%20Extended,Lato,Helvetica%20Neue, Helvetica,Arial,sans-serif&amp;font-size=1&amp;hide-credits=true</code></pre><div> <p><a href="#bottom-list">Skip to bottom of list</a></p><div> <p>Our favorite resources about open source</p> </div>
+</div> <h2>Integrate Docsify-This and Git</h2>
+<p>To fully leverage the benefits of version control and potentially collaboration using an optional <strong>Edit this Page</strong> link, store your Docsify-This Markdown pages in a Git repository on either Codeberg or GitHub. Several open source tools provide a graphical interface for Git, including <a href="https://github.com/desktop/desktop" target="_blank" rel="noopener noreferrer">GitHub Desktop</a> (recently released as open source), <a href="https://opensource.com/article/20/3/git-cola" target="_blank" rel="noopener noreferrer">Git-Cola</a>, and <a href="https://opensource.com/article/19/4/file-sharing-git" target="_blank" rel="noopener noreferrer">SparkleShare</a>. The text editors VSCode and Pulsar Edit (formerly <a href="https://opensource.com/article/20/12/atom" target="_blank" rel="noopener noreferrer">Atom.io</a>) both feature Git integration, too.</p>
+<p><strong>[ Get the <a href="https://opensource.com/downloads/git-tricks-tips" target="_blank" rel="noopener noreferrer">Git tips and tricks</a> eBook ]</strong></p>
+<h2>Markdown publishing made easy</h2>
+<p>The benefits of Markdown-based publishing are available to everyone, thanks to Docsify. And thanks to Docsify-This, it's easier than ever. Try it out at the&nbsp;<a href="https://docsify-this.net/" target="_blank" rel="noopener noreferrer">Docsify-This website</a>.</p>
+</div><div> <p><a href="http://creativecommons.org/licenses/by-sa/4.0/"> <img alt="Creative Commons License" src="https://opensource.com/themes/osdc/assets/img/cc-by-sa-4.png"></a>This work is licensed under a Creative Commons Attribution-Share Alike 4.0 International License.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

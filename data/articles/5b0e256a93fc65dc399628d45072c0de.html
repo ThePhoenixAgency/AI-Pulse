@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Managing openHAB Rules Like Production Software: Testing, Automation, and Troubleshooting</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Managing openHAB Rules Like Production Software: Testing, Automation, and Troubleshooting</h1>
+  <div class="metadata">
+    Source: openHAB Community (Latest) | Date: 2/24/2026 10:09:10 PM | <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>Hi all,</p>
+<p>as I’m using openHAB since more than 10 year regressions problems, and troubleshooting after upgrades are well known to me. So - as I tried to leverage AI agents to create a system to create testable rules and widgets - and I’m quite happy with the result. As usual, my time is very limited - especially as I want to finish the Jellyfin binding to make it available to all users (locally it is under testing with 5.1.2) …</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/6/0/60fd809db4313650cdb45a3ca9884fd368ed525a.png" data-download-href="/uploads/short-url/dQ0XJWfIRUXguuLC7ejsHh4qUH0.png?dl=1" title="image" rel="noopener nofollow ugc"><img src="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/6/0/60fd809db4313650cdb45a3ca9884fd368ed525a_2_414x500.png" alt="image" data-base62-sha1="dQ0XJWfIRUXguuLC7ejsHh4qUH0" width="414" height="500" srcset="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/6/0/60fd809db4313650cdb45a3ca9884fd368ed525a_2_414x500.png, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/6/0/60fd809db4313650cdb45a3ca9884fd368ed525a_2_621x750.png 1.5x, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/6/0/60fd809db4313650cdb45a3ca9884fd368ed525a_2_828x1000.png 2x" data-dominant-color="EBEBEB"></a></div><p></p>
+<p>So I dared to task the AI to describe the setup - not ideal maybe, but I hope it serves as an inspiration on how to achieve a stable setup over time; and preferred to not sharing the idea at all.</p>
+<p>Note: There are quite some simplifications in the summary - as the whole container, network setup and AI agent setup is omitted.</p>
+<p>with kind regards,<br>
+Patrik</p>
+<p>And now I give the word to Claude:</p>
+<hr>
+<blockquote>
+<p><img src="https://community.openhab.org/images/emoji/twitter/memo.png?v=15" title=":memo:" class="emoji" alt=":memo:" loading="lazy" width="20" height="20"> <strong>Note</strong>: This article was automatically generated with AI. The rule modifications, tests, and troubleshooting workflows themselves are developed and refined using AI agents as coding partners. The approach documented here reflects our operational practices, not necessarily universal “best practices.”</p>
+</blockquote>
+<h2><a name="p-964552-introduction-1" class="anchor" href="https://community.openhab.org#p-964552-introduction-1" aria-label="Heading link"></a>Introduction</h2>
+<p>Home automation rules are complex. They integrate multiple devices, handle edge cases, and run 24/7 with minimal supervision. Yet many openHAB users manage rules the way they manage configuration files—manually, with minimal testing, and with limited visibility into execution.</p>
+<p><strong>Our Setup</strong>: 90 production rule files, 6 shared library modules, 92 unit tests—all deployed and managed using the testing and deployment pipeline described below.</p>
+<p>This article describes our approach: <strong>automated regression testing with Jest, system endpoint testing with Puppeteer, live interaction via the openHAB REST API, and interactive troubleshooting with Karaf</strong>. Each tool addresses a specific part of the development lifecycle.</p>
+<hr>
+<h2><a name="p-964552-overview-the-rule-development-workflow-2" class="anchor" href="https://community.openhab.org#p-964552-overview-the-rule-development-workflow-2" aria-label="Heading link"></a>Overview: The Rule Development Workflow</h2>
+<pre><code class="lang-auto">Rule Code (JavaScript) ↓ Local Unit Tests (Jest) ↓ System Integration Tests (Puppeteer + REST API) ↓ Deploy to openHAB ↓ Live Troubleshooting (Karaf Console)
+</code></pre>
+<p>Each tool serves a specific purpose:</p>
+<ul>
+<li><strong>Jest</strong> → unit tests catch logic errors before deployment</li>
+<li><strong>Puppeteer + REST API</strong> → integration tests validate end-to-end behavior</li>
+<li><strong>Karaf</strong> → interactive debugging when things go wrong</li>
+</ul>
+<hr>
+<h2><a name="p-964552-part-1-regression-testing-with-jest-3" class="anchor" href="https://community.openhab.org#p-964552-part-1-regression-testing-with-jest-3" aria-label="Heading link"></a>Part 1: Regression Testing with Jest</h2>
+<p>Jest runs unit tests in milliseconds without requiring an openHAB instance. It handles the core logic layer: parsing, decision-making, state coordination. openHAB injects runtime globals (<code>items</code>, <code>rules</code>, <code>events</code>), so tests mock these to isolate the code under test.</p>
+<h3><a name="p-964552-test-structure-unit-tests-vs-integration-tests-4" class="anchor" href="https://community.openhab.org#p-964552-test-structure-unit-tests-vs-integration-tests-4" aria-label="Heading link"></a>Test Structure: Unit Tests vs. Integration Tests</h3>
+Unit Tests: Testing Pure Logic <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+Integration Tests: Testing System Interaction <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+<h3><a name="p-964552-setup-package-configuration-5" class="anchor" href="https://community.openhab.org#p-964552-setup-package-configuration-5" aria-label="Heading link"></a>Setup: Package Configuration</h3>
+Configure Jest for openHAB Rule Testing <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+<h3><a name="p-964552-testing-approach-mocking-and-isolation-6" class="anchor" href="https://community.openhab.org#p-964552-testing-approach-mocking-and-isolation-6" aria-label="Heading link"></a>Testing Approach: Mocking and Isolation</h3>
+Mock Setup and Test Structure <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+<hr>
+<h2><a name="p-964552-part-2-end-to-end-testing-with-rest-api-and-puppeteer-7" class="anchor" href="https://community.openhab.org#p-964552-part-2-end-to-end-testing-with-rest-api-and-puppeteer-7" aria-label="Heading link"></a>Part 2: End-to-End Testing with REST API and Puppeteer</h2>
+<p>Integration tests validate the full lifecycle: command → item updates → rule triggers → side effects occur. The REST API and Puppeteer are the test interfaces to a real openHAB instance.</p>
+<h3><a name="p-964552-using-the-rest-api-for-integration-tests-8" class="anchor" href="https://community.openhab.org#p-964552-using-the-rest-api-for-integration-tests-8" aria-label="Heading link"></a>Using the REST API for Integration Tests</h3>
+<p>The openHAB REST API provides endpoints for items, rules, and logs. From Node.js:</p>
+<pre data-code-wrap="javascript"><code class="lang-javascript">// Get item state
+const getItemState = async (itemName) =&gt; { const response = await fetch(`http://localhost:8080/rest/items/${itemName}`); return response.json();
+}; // Trigger a rule
+const triggerRule = async (ruleUid) =&gt; { return fetch(`http://localhost:8080/rest/rules/${ruleUid}/runnow`, { method: "POST" });
+};
+</code></pre>
+<p>These calls simulate what a user’s dashboard or external system would do. They verify rules respond correctly to real events.</p>
+<h3><a name="p-964552-puppeteer-for-ui-testing-9" class="anchor" href="https://community.openhab.org#p-964552-puppeteer-for-ui-testing-9" aria-label="Heading link"></a>Puppeteer for UI Testing</h3>
+<p>Puppeteer automates a browser to test dashboards and sitemap pages.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

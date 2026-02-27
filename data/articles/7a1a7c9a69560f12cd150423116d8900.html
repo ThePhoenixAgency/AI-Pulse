@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ring Intercom Video Camera — WebRTC live stream + snapshots (no subscription needed)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Ring Intercom Video Camera — WebRTC live stream + snapshots (no subscription needed)</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/26/2026 8:28:37 PM | <a href="https://community.home-assistant.io/t/ring-intercom-video-camera-webrtc-live-stream-snapshots-no-subscription-needed/990968" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><h1><a name="p-3763764-ring-intercom-video-camera-1" class="anchor" href="https://community.home-assistant.io#p-3763764-ring-intercom-video-camera-1"></a><img src="https://community.home-assistant.io/images/emoji/twitter/bell.png?v=12" title=":bell:" class="emoji" alt=":bell:" loading="lazy" width="20" height="20"> Ring Intercom Video Camera</h1>
+<p>Got a <strong>Ring Intercom Handset Video</strong> (2024/2025 model with camera)? The official Ring integration gives you lock + ding but <strong>no camera entity</strong>. This custom component adds it.</p>
+<h2><a name="p-3763764-features-2" class="anchor" href="https://community.home-assistant.io#p-3763764-features-2"></a><img src="https://community.home-assistant.io/images/emoji/twitter/sparkles.png?v=12" title=":sparkles:" class="emoji" alt=":sparkles:" loading="lazy" width="20" height="20"> Features</h2>
+<ul>
+<li><img src="https://community.home-assistant.io/images/emoji/twitter/video_camera.png?v=12" title=":video_camera:" class="emoji" alt=":video_camera:" loading="lazy" width="20" height="20"> <strong>WebRTC live stream</strong> in Lovelace — 720×576 @ 25fps + audio</li>
+<li><img src="https://community.home-assistant.io/images/emoji/twitter/camera_flash.png?v=12" title=":camera_flash:" class="emoji" alt=":camera_flash:" loading="lazy" width="20" height="20"> <strong>Server-side snapshots</strong> — <code>camera.snapshot</code> works from automations</li>
+<li><img src="https://community.home-assistant.io/images/emoji/twitter/unlock.png?v=12" title=":unlock:" class="emoji" alt=":unlock:" loading="lazy" width="20" height="20"> <strong>No Ring Protect subscription</strong> needed</li>
+<li><img src="https://community.home-assistant.io/images/emoji/twitter/key.png?v=12" title=":key:" class="emoji" alt=":key:" loading="lazy" width="20" height="20"> <strong>No extra login</strong> — reuses your existing Ring integration auth</li>
+<li><img src="https://community.home-assistant.io/images/emoji/twitter/package.png?v=12" title=":package:" class="emoji" alt=":package:" loading="lazy" width="20" height="20"> <strong>HACS compatible</strong></li>
+</ul>
+<h2><a name="p-3763764-quick-install-3" class="anchor" href="https://community.home-assistant.io#p-3763764-quick-install-3"></a><img src="https://community.home-assistant.io/images/emoji/twitter/zap.png?v=12" title=":zap:" class="emoji" alt=":zap:" loading="lazy" width="20" height="20"> Quick install</h2>
+<p><img src="https://community.home-assistant.io/images/emoji/twitter/one.png?v=12" title=":one:" class="emoji" alt=":one:" loading="lazy" width="20" height="20"> HACS → Integrations → ⋮ → Custom repositories<br>
+<img src="https://community.home-assistant.io/images/emoji/twitter/two.png?v=12" title=":two:" class="emoji" alt=":two:" loading="lazy" width="20" height="20"> Add: <code>https://github.com/cmos486/ring-intercom-video</code><br>
+<img src="https://community.home-assistant.io/images/emoji/twitter/three.png?v=12" title=":three:" class="emoji" alt=":three:" loading="lazy" width="20" height="20"> Download &amp; add to configuration.yaml:<br>
+ring_intercom_camera:<br>
+<img src="https://community.home-assistant.io/images/emoji/twitter/four.png?v=12" title=":four:" class="emoji" alt=":four:" loading="lazy" width="20" height="20"> Restart HA — camera entity appears automatically</p>
+<p><img src="https://community.home-assistant.io/images/emoji/twitter/thinking.png?v=12" title=":thinking:" class="emoji" alt=":thinking:" loading="lazy" width="20" height="20"> How it works<br>
+The Ring Intercom Video uses the same WebRTC protocol as Ring doorbell cameras, but the official integration doesn’t expose it for intercoms. This component monkey-patches the intercom class to add the missing WebRTC methods and creates a native camera entity.</p>
+<p>For live view: your browser connects directly to Ring via WebRTC — no server-side processing.<br>
+For snapshots: the server opens a temporary WebRTC session with aiortc to grab a frame.</p>
+<p><img src="https://community.home-assistant.io/images/emoji/twitter/clipboard.png?v=12" title=":clipboard:" class="emoji" alt=":clipboard:" loading="lazy" width="20" height="20"> Example automation<br>
+Capture a snapshot when someone rings and send it via Telegram:</p>
+<p>actions:</p>
+<ul>
+<li>variables:<br>
+snap_file: “/config/www/tmp/intercom_{{ now().strftime(‘%Y%m%d_%H%M%S’) }}.jpg”</li>
+<li>delay: 3</li>
+<li>action: camera.snapshot<br>
+data:<br>
+entity_id: camera.your_intercom_camera<br>
+filename: “{{ snap_file }}”</li>
+<li>action: notify.your_telegram<br>
+data:<br>
+message: “<img src="https://community.home-assistant.io/images/emoji/twitter/bell.png?v=12" title=":bell:" class="emoji" alt=":bell:" loading="lazy" width="20" height="20"> Someone is at the door”<br>
+data:<br>
+photo:<br>
+- file: “{{ snap_file }}”</li>
+</ul>
+<p><img src="https://community.home-assistant.io/images/emoji/twitter/warning.png?v=12" title=":warning:" class="emoji" alt=":warning:" loading="lazy" width="20" height="20"> Note for analog intercoms<br>
+If your Ring Intercom replaces a Fermax/Tegui/Comelit, the analog camera only outputs video during a ding or manual activation. Black screen the rest of the time is normal.</p>
+<p><img src="https://community.home-assistant.io/images/emoji/twitter/link.png?v=12" title=":link:" class="emoji" alt=":link:" loading="lazy" width="20" height="20"> Links<br>
+<img src="https://community.home-assistant.io/images/emoji/twitter/package.png?v=12" title=":package:" class="emoji" alt=":package:" loading="lazy" width="20" height="20"> GitHub: <a href="http://github.com/cmos486/ring-intercom-video" class="inline-onebox" rel="noopener nofollow ugc">GitHub - cmos486/ring-intercom-video: Home Assistant custom component — WebRTC live-stream camera for Ring Intercom Handset Video</a></p>
+<p>Built on python-ring-doorbell and inspired by the official Ring camera integration.</p> <p><small>1 post - 1 participant</small></p> <p><a href="https://community.home-assistant.io/t/ring-intercom-video-camera-webrtc-live-stream-snapshots-no-subscription-needed/990968">Read full topic</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

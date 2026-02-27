@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pax Log4J logging not working in eclipse</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Pax Log4J logging not working in eclipse</h1>
+  <div class="metadata">
+    Source: openHAB Community (Latest) | Date: 2/26/2026 11:49:24 AM | <a href="https://community.openhab.org/t/pax-log4j-logging-not-working-in-eclipse/168654" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>Hello,</p>
+<p>I’m don’t know if I’m the only one, but the logging stop working correctly for me in eclipse since a few days, weeks ?<br>
+Pax logging is ok, but it seems it fails to load the log4j2.xml configuration, and fallback to default configuration.<br>
+I’ve checked many time:</p>
+<ul>
+<li>My log4j2.xml file (this is the default one).</li>
+<li>The path in org.ops4j.pax.logging.cfg.</li>
+<li>The override path in service.cfg</li>
+</ul>
+<p>Everything seems ok.<br>
+My dev environment is on Windows, latest eclipse, latest 5.2.0-dev from git.<br>
+If someone have any idea, I’ve search all the morning without any results.</p>
+<p>=======================</p>
+<p>org.ops4j.pax.logging.pax-logging-api [org.ops4j.pax.logging.internal.Activator] INFO : Enabling Java Util Logging API support.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [org.ops4j.pax.logging.internal.Activator] INFO : Enabling SLF4J API support.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [org.ops4j.pax.logging.internal.Activator] INFO : Enabling Apache Commons Logging API support.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [org.ops4j.pax.logging.internal.Activator] INFO : Enabling JULI Logger API support.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [org.ops4j.pax.logging.internal.Activator] INFO : Enabling Avalon Logger API support.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [org.ops4j.pax.logging.internal.Activator] INFO : Enabling JBoss Logging API support.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [org.ops4j.pax.logging.internal.Activator] INFO : Enabling Log4J v1 API support.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [org.ops4j.pax.logging.internal.Activator] INFO : Enabling Log4J v2 API support.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] INFO : Initializing Log4j2 using default configuration</p>
+<p>2026-02-26T11:44:02.153741800Z main INFO Initializing Log4j2 using default configuration</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : Took 0,076368 seconds to load 253 plugins from org.eclipse.osgi.internal.loader.EquinoxClassLoader@2630dbc4[org.ops4j.pax.logging.pax-logging-log4j2:2.3.2(id=2)]</p>
+<p>2026-02-26T11:44:02.264949300Z main DEBUG Took 0,076368 seconds to load 253 plugins from org.eclipse.osgi.internal.loader.EquinoxClassLoader@2630dbc4[org.ops4j.pax.logging.pax-logging-log4j2:2.3.2(id=2)]</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : PluginManager ‘Lookup’ found 16 plugins</p>
+<p>2026-02-26T11:44:02.278956700Z main DEBUG PluginManager ‘Lookup’ found 16 plugins</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : PluginManager ‘Lookup’ found 16 plugins</p>
+<p>2026-02-26T11:44:02.309476100Z main DEBUG PluginManager ‘Lookup’ found 16 plugins</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : PluginManager ‘Converter’ found 45 plugins</p>
+<p>2026-02-26T11:44:02.312477300Z main DEBUG PluginManager ‘Converter’ found 45 plugins</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : Starting OutputStreamManager SYSTEM_OUT.false.false-1</p>
+<p>2026-02-26T11:44:02.339476900Z main DEBUG Starting OutputStreamManager SYSTEM_OUT.false.false-1</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : PluginManager ‘Lookup’ found 16 plugins</p>
+<p>2026-02-26T11:44:02.340478800Z main DEBUG PluginManager ‘Lookup’ found 16 plugins</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : PluginManager ‘Converter’ found 45 plugins</p>
+<p>2026-02-26T11:44:02.341475300Z main DEBUG PluginManager ‘Converter’ found 45 plugins</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : Starting OutputStreamManager SYSTEM_OUT.false.false-2</p>
+<p>2026-02-26T11:44:02.342474100Z main DEBUG Starting OutputStreamManager SYSTEM_OUT.false.false-2</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] INFO : Starting LoggerContext[name=pax-logging] with configuration org.apache.logging.log4j.core.config.DefaultConfiguration@24a2e565…</p>
+<p>2026-02-26T11:44:02.342474100Z main INFO Starting LoggerContext[name=pax-logging] with configuration org.apache.logging.log4j.core.config.DefaultConfiguration@24a2e565…</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG 2026-02-26T11:44:02.349476600Z main DEBUG null null initializing configuration org.apache.logging.log4j.core.config.DefaultConfiguration@24a2e565</p>
+<p>: null null initializing configuration org.apache.logging.log4j.core.config.DefaultConfiguration@24a2e565</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : PluginManager ‘Core’ found 137 plugins</p>
+<p>2026-02-26T11:44:02.350474200Z main DEBUG PluginManager ‘Core’ found 137 plugins</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : PluginManager ‘Level’ found 0 plugins</p>
+<p>2026-02-26T11:44:02.350474200Z main DEBUG PluginManager ‘Level’ found 0 plugins</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : Configuration org.apache.logging.log4j.core.config.DefaultConfiguration@24a2e565 initialized</p>
+<p>2026-02-26T11:44:02.351474Z main DEBUG Configuration org.apache.logging.log4j.core.config.DefaultConfiguration@24a2e565 initialized</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] INFO : Starting configuration org.apache.logging.log4j.core.config.DefaultConfiguration@24a2e565…</p>
+<p>2026-02-26T11:44:02.351474Z main INFO Starting configuration org.apache.logging.log4j.core.config.DefaultConfiguration@24a2e565…</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] INFO : Configuration org.apache.logging.log4j.core.config.DefaultConfiguration@24a2e565 started.</p>
+<p>2026-02-26T11:44:02.352473500Z main INFO Configuration org.apache.logging.log4j.core.config.DefaultConfiguration@24a2e565 started.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] INFO : Stopping configuration org.apache.logging.log4j.core.config.DefaultConfiguration@48e8c32a…</p>
+<p>2026-02-26T11:44:02.354472600Z main INFO Stopping configuration org.apache.logging.log4j.core.config.DefaultConfiguration@48e8c32a…</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] TRACE : DefaultConfiguration notified 1 ReliabilityStrategies that config will be stopped.</p>
+<p>2026-02-26T11:44:02.355472800Z main TRACE DefaultConfiguration notified 1 ReliabilityStrategies that config will be stopped.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] TRACE : DefaultConfiguration stopping root LoggerConfig.</p>
+<p>2026-02-26T11:44:02.355472800Z main TRACE DefaultConfiguration stopping root LoggerConfig.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] TRACE : DefaultConfiguration notifying ReliabilityStrategies that appenders will be stopped.</p>
+<p>2026-02-26T11:44:02.356473700Z main TRACE DefaultConfiguration notifying ReliabilityStrategies that appenders will be stopped.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] TRACE : DefaultConfiguration stopping remaining Appenders.</p>
+<p>2026-02-26T11:44:02.356473700Z main TRACE DefaultConfiguration stopping remaining Appenders.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : Shutting down OutputStreamManager SYSTEM_OUT.false.false-1</p>
+<p>2026-02-26T11:44:02.356473700Z main DEBUG Shutting down OutputStreamManager SYSTEM_OUT.false.false-1</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : OutputStream closed</p>
+<p>2026-02-26T11:44:02.356473700Z main DEBUG OutputStream closed</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : Shut down OutputStreamManager SYSTEM_OUT.false.false-1, all resources released: true</p>
+<p>2026-02-26T11:44:02.356473700Z main DEBUG Shut down OutputStreamManager SYSTEM_OUT.false.false-1, all resources released: true</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : Appender DefaultConsole-1 stopped with status true</p>
+<p>2026-02-26T11:44:02.357474800Z main DEBUG Appender DefaultConsole-1 stopped with status true</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] TRACE :</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

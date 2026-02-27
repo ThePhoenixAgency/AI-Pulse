@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DateTimeTrigger didn't trigger</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>DateTimeTrigger didn't trigger</h1>
+  <div class="metadata">
+    Source: openHAB Community (Latest) | Date: 2/24/2026 7:02:06 PM | <a href="https://community.openhab.org/t/datetimetrigger-didnt-trigger/168639" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>I’ve put my “time off” (“vakantie” in Dutch) from work in my Google Calendar, and have its beginning and ending converted into DateTime Items.</p>
+<p>These DateTime Items then trigger a rule:</p>
+<pre><code class="lang-auto">configuration: {}
+triggers: - id: "1" configuration: itemName: startschoolvakantie timeOnly: false type: timer.DateTimeTrigger - id: "2" configuration: itemName: startschoolvakantie1 timeOnly: false type: timer.DateTimeTrigger - id: "3" configuration: itemName: eindeschoolvakantie1 timeOnly: false type: timer.DateTimeTrigger - id: "4" configuration: itemName: eindeschoolvakantie2 timeOnly: false type: timer.DateTimeTrigger - id: "6" configuration: itemName: schoolvakantie_switch type: core.ItemStateChangeTrigger
+conditions: []
+actions: - inputs: {} id: "5" configuration: type: application/javascript script: |- var itemnaam = event.itemName; var pythoninvenv = '/var/lib/openhab/bin/python/tado-manual-control/venv/bin/python'; var pythonscript = '/var/lib/openhab/bin/python/tado-manual-control/tado-manual-control.py'; var pythonwachttijdinseconden = 10; function callPython(command) { var pythonOutput = actions.Exec.executeCommandLine(time.Duration.ofSeconds(pythonwachttijdinseconden), command); console.log("python output = "+pythonOutput); } function startVakantieschemaTado() { var command = [pythoninvenv, pythonscript, 'set_schedule_type', '-s', '0']; callPython(command); } function startWerkchemaTado() { var command = [pythoninvenv, pythonscript, 'set_schedule_type', '-s', '2']; callPython(command); } if (event.itemName == "schoolvakantie_switch") { var nieuwestaat = event.newState; if (nieuwestaat == "ON") { startVakantieschemaTado(); } else if (nieuwestaat == "OFF") { startWerkchemaTado(); } } else if (itemnaam.startsWith("start")) { items["schoolvakantie_switch"].sendCommand("ON"); } else if (itemnaam.startsWith("einde")) { items["schoolvakantie_switch"].sendCommand("OFF"); } type: script.ScriptAction
+</code></pre>
+<p>So <code>eindeschoolvakantie1</code> should have triggered this rule Monday morning. But it didn’t. This is an extract from <code>events.log</code>:</p>
+<pre><code class="lang-auto">2026-02-22 23:59:46.609 [INFO ] [openhab.event.ItemStateChangedEvent - 449 ] - Item 'Stopcontact_gasbrander_Power_Consumption' changed from 6 W to 5.9 W (source: org.openhab.core.thing$shelly:shellyplusplug:e4b32339c760:meter#currentWatts)
+2026-02-23 00:00:00.031 [INFO ] [openhab.event.ItemStateChangedEvent - 449 ] - Item 'Wasmachine_Power_Consumption' changed from 0.4 W to 0.3 W (source: org.openhab.core.thing$shelly:shellyplus1pm:d4d4da7df8a8:meter#currentWatts)
+2026-02-23 00:00:00.181 [INFO ] [openhab.event.ItemStateChangedEvent - 449 ] - Item 'startschoolvakantie1' changed from 2026-02-14T00:00:00.000+0100 to UNDEF (source: org.openhab.core.thing$icalendar:calendar:schoolvakantiekalender:current_start)
+2026-02-23 00:00:00.182 [INFO ] [openhab.event.ItemStateChangedEvent - 449 ] - Item 'eindeschoolvakantie1' changed from 2026-02-23T00:00:00.000+0100 to UNDEF (source: org.openhab.core.thing$icalendar:calendar:schoolvakantiekalender:current_end)
+</code></pre>
+<p>I thought that maybe the DateTime Item would be updated prior to the time it should trigger the rule. But that doesn’t seem the case. Unless I don’t understand <code>2026-02-23T00:00:00.000+0100</code> correctly, it should come before <code>2026-02-23 00:00:00.181</code>, right?</p>
+<p>Or is 181 ms not enough time to trust this to work? In that case, does someone have an idea on how to tackle this?</p>
+<p>Thanks in advance!</p> <p><small>7 posts - 3 participants</small></p> <p><a href="https://community.openhab.org/t/datetimetrigger-didnt-trigger/168639">Read full topic</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

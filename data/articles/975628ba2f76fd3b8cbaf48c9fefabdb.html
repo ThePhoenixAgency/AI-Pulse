@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Voice Chapter 11: multilingual assistants are here</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Voice Chapter 11: multilingual assistants are here</h1>
+  <div class="metadata">
+    Source: Home Assistant (Blog officiel) | Date: 10/22/2025 12:00:01 AM | <a href="https://www.home-assistant.io/blog/2025/10/22/voice-chapter-11/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><img src='/images/blog/2025-10-voice-chapter-11/art.webp' style='border: 0;box-shadow: none;' alt="Voice Chapter 11: multilingual assistants are here">
+<p>Welcome to Voice Chapter 11 , our <a href="/blog/categories/assist/">long-running series</a> where we share all the key developments in Open Voice. In this chapter, we will tell you how our assistant can now control more things in the home, in multiple languages at the same time, all while not talking your ear off. What’s more, our list of supported languages has grown again with several languages that big tech’s voice assistants won’t support. Join us for a deeper look at this voice chapter in our <a href="https://www.youtube.com/watch?v=sIkguv0NEQI">livestream</a> on Wednesday, October 29. It’s been a couple of months, we’ve been building up our voice, and now have a lot to say, so let’s get to it!<!--more--></p>
+<h2>Multilingual assistants</h2>
+<p>Our original goal for the <a href="/blog/2022/12/20/year-of-voice/">Year of Voice back in 2023</a> was to “let users control Home Assistant in their own language”. We’ve come a long way towards that goal, and really broadened our language support. We’ve also provided options that allow users to customize voice assistant pipelines with the services that best support their language, whether run locally or in the cloud of their choice. But what if you speak two languages within your home?</p>
+<p>For some time, users have been able to create <a href="/voice_control/">Assist</a> voice assistant pipelines for different languages in Home Assistant, but interacting with the different pipelines has either required multiple voice satellite devices (one per language) or some kind of automation <a href="https://www.youtube.com/live/ZgoaoTpIhm8?t=3902">trigger to switch languages</a>.</p>
+<p>Since even the tiniest voice satellite hardware we support is capable of running <a href="/blog/2024/06/26/voice-chapter-7/#3x-wake-words-and-2x-accuracy">multiple wake words</a> now, we’ve added support in 2025.10 for configuring <strong>up to two wake words</strong> and voice assistant pipelines on each Assist satellite! This makes it straightforward to support dual language households by assigning different wake words to different languages. For example, “Okay Nabu” could run an English voice assistant pipeline while “Hey Jarvis” is used for French.</p>
+<p>Multiple wake words and pipelines can be used for other purposes as well. Want to keep your local and cloud-based voice assistants separate? Easy! Assign a wake word like “Okay Nabu” to a fully local pipeline using our own <a href="/blog/2025/02/13/voice-chapter-9-speech-to-phrase/">Speech-to-Phrase</a> and <a href="https://github.com/home-assistant/addons/blob/master/piper/DOCS.md">Piper</a>. This pipeline would be limited to basic voice commands, but would not require anything to run outside of your Home Assistant server. Alongside this, “Hey Jarvis” could be assigned to a different pipeline that uses external services like Home Assistant Cloud and an LLM to answer questions or perform complex actions.</p>
+<p>We’d love to hear feedback on how you plan to use multiple wake words and voice assistants in your home!</p>
+<h2>Voice without AI</h2>
+<p>The whole world is engulfed in hype about AI and adding it to all the things — <a href="/blog/2025/09/11/ai-in-home-assistant/">we’re not exactly quiet about the cool stuff we’re doing with AI.</a> While powering your voice assistants with AI/LLMs makes them much more flexible and powerful, it comes at a cost: paying to use cloud-based services like OpenAI and Google, or pricey hardware and energy to run local models via systems like Ollama. We started building our voice assistant before AI was a thing, and thus it was designed without requiring it. We continue to make great progress towards delivering a solid voice experience to users who want to keep their home AI free — keeping <a href="https://newsletter.openhomefoundation.org/ai-is-optional-privacy-isnt/">AI opt-in only and not required</a> are guidelines we follow.</p>
+<p><a href="/voice_control/">Assist</a>, our built-in voice assistant, can do a lot of cool things without the need for AI! This includes <a href="/voice_control/builtin_sentences/">a ton of voice commands in dozens of languages</a> for:</p>
+<ul>
+<li>Turning lights and other devices on/off</li>
+<li>Opening/closing and locking/unlocking doors, windows, shades, etc</li>
+<li>Adjusting the brightness and color of lights</li>
+<li>Running scripts and activating scenes</li>
+<li>Controlling media players and adjusting their volume</li>
+<li>Playing music on supported media players via <a href="/integrations/music_assistant/">Music Assistant</a></li>
+<li>Starting/stopping/pausing multiple timers, optionally with names</li>
+<li>Adding/completing items on to-do lists</li>
+<li>Delaying a command for later (“turn off lights in 5 minutes”)…</li>
+<li>…and more!</li>
+</ul>
+<p>Want to include your own voice commands? You can quickly add <a href="/voice_control/custom_sentences/">custom sentences</a> to an automation, allowing you to take any action and tailor the response.</p>
+<p>The easiest way to get started is with <a href="/voice-pe/">Home Assistant Voice Preview Edition</a>, our small and easy-to-start with Voice Assistant hardware. This, combined with a <a href="/cloud/">Home Assistant Cloud subscription</a>, allows any Home Assistant system to quickly handle voice commands, as our privacy-focused cloud processes the speech-to-text (turning your voice into text for Home Assistant) and text-to-speech (turning Home Assistant’s response back into voice). This is all without the use of LLMs, and supports the development of Home Assistant .</p>
+<p>For users wanting to keep all voice processing local, we offer add-ons for both speech-to-text and text-to-speech:</p>
+<ul>
+<li><a href="https://github.com/home-assistant/addons/blob/master/whisper/DOCS.md">Whisper</a> is a powerful speech-to-text system that comes in <a href="https://github.com/openai/whisper#available-models-and-languages">different sizes with varying hardware requirements</a></li>
+<li><a href="/blog/2025/02/13/voice-chapter-9-speech-to-phrase/">Speech-to-Phrase</a> is our speech-to-text system that trades flexibility for speed</li>
+<li><a href="https://github.com/home-assistant/addons/blob/master/piper/DOCS.md">Piper</a> is our fast neural text-to-speech system with <a href="https://rhasspy.github.io/piper-samples/">broad language support</a></li>
+</ul>
+<p>All of this together shows just how much can be done without needing to include AI, even though it can do <a href="https://youtu.be/mLtFUG4YG1A">some pretty amazing things</a>. And we’re continuing to close the gap with the features highlighted in this blog post, including multilingual assistants, improved sentence matching, and the ability to ask questions from automations.</p>
+<h3>More intents</h3>
+<p>Intents are what connect a voice command to the right actions in Home Assistant to get something done. While the end result is often simple, such as turning on a light, intents are designed as a “do what I mean” layer above the level of basic actions. In the previous section, we listed the sorts of voice commands that intents enable, from turning on lights to adding items to your to-do list. Over the last three years, we’ve been progressively adding new and more complex intents.</p>
+<p>Recently, we’ve added three new intents to make Assist even better. To control media players, you can now set the <strong>relative</strong> volume with voice commands like “turn up the volume” or “decrease TV volume by 25%”. This adds to the existing volume intent, which allows you to set the absolute volume level like “set TV volume to 50%”.</p>
+<p>Next, it’s now possible to set the speed of a fan by percentage. For example, “set desk fan speed to 50%” or even “set fans to 50%” to target all fans in the current area.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

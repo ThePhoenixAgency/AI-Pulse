@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Snitch - Le netstat qui ne pique plus les yeux</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Snitch - Le netstat qui ne pique plus les yeux</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/27/2026 7:56:14 AM | <a href="https://korben.info/snitch-netstat-ss-alternative-tui.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/snitch-netstat-ss-alternative-tui/snitch-netstat-ss-alternative-tui-1.jpg" alt="Image illustrant l'article : Snitch - Le netstat qui ne pique plus les yeux"></p><div><span>Ce qu’il faut retenir</span><div><ol><li>Snitch remplace ss/netstat par une TUI lisible en Go : tableau coloré avec filtres (proto=tcp, proc=nginx, contains=google) et commandes JSON/watch pour scripter</li><li>Navigation Vim native (j/k, t/u pour TCP/UDP) + kill direct en appuyant K sans noter le PID, thèmes personnalisables (Catppuccin, Dracula, etc.)</li><li>Installation triviale (brew, go install, AUR) mais Linux/macOS seulement, faut root pour les infos complètes des processus via /proc/net/*</li></ol><p>Résumé généré par IA</p></div><div><p>Si vous avez déjà tapé <code>[ss -tulnp](https://www.it-connect.fr/lister-les-ports-en-ecoute-sous-linux-avec-lsof-netstat-et-ss/)</code> dans un terminal, vous savez que c'est moche. Genre, VRAIMENT moche. Les colonnes qui se chevauchent, les adresses tronquées, bref c'est un festival du bordel. Mais c'était sans compter sur ce dev qui a pondu
+<a href="https://github.com/karol-broda/snitch">Snitch</a>
+, un outil en Go sous licence MIT qui vient concurrencer ss et netstat... sauf que pour une fois, c'est lisible, regardez :</p><div><p><img src="https://korben.info/snitch-netstat-ss-alternative-tui/snitch-netstat-ss-alternative-tui-1.gif" alt=""></p><p><em>L'interface de Snitch en action, sobre et lisible</em></p></div><p>En gros, c'est un ss moderne avec une interface TUI interactive. Vous lancez la commande dans votre terminal et tadaaa, vous avez un tableau propre avec toutes vos connexions réseau, les processus associés, les ports, les protocoles... le tout avec des couleurs et une navigation au clavier. Rien à voir donc avec le pavé monochrome habituel !</p><p>Le truc cool aussi ce sont les filtres. Vous pouvez taper <code>snitch ls proto=tcp state=listen</code> pour ne voir que les sockets TCP en écoute, ou <code>snitch ls proc=nginx</code> pour traquer votre serveur web. Y'a même un filtre <code>contains=</code> pour chercher dans les adresses... genre <code>contains=google</code> pour voir tout ce qui cause avec Mountain View.</p><p>D'ailleurs, côté commandes c'est en fait bien fichu. <code>snitch ls</code> pour un tableau statique, <code>snitch json</code> pour du JSON brut si vous voulez scripter, et <code>snitch watch -i 1s</code> pour streamer les connexions en temps réel. Du coup ça s'intègre nickel dans vos pipelines.</p><p>La TUI elle-même vaut le détour. Vous naviguez avec j/k (comme dans Vim, forcément), vous basculez TCP/UDP avec t/u, et le plus jouissif... vous pouvez killer un processus directement avec la touche K. Plus besoin de noter le PID et d'ouvrir un autre terminal ! Sauf que attention, sur Linux faut quand même lancer en root pour avoir les infos complètes sur les processus, parce que l'outil va lire dans <code>/proc/net/*</code>. Ça ne marche pas non plus sur Windows, c'est Linux et macOS uniquement.</p><p>Pour ceux qui aiment personnaliser leur terminal (oui, je vous connaîs...), y'a une quinzaine de thèmes, Catppuccin, Dracula, Nord, Tokyo Night, Gruvbox... la config se fait dans <code>~/.config/snitch/snitch.toml</code> et l'outil peut aussi conserver vos préférences de filtres entre les sessions (faut activer <code>remember_state</code> dans la config).</p><p>Côté installation, c'est pas la mer à boire. <code>brew install snitch</code> sur macOS, <code>go install github.com/karol-broda/snitch@latest</code> si vous avez Go, <code>yay -S snitch-bin</code> sur Arch, et y'a même des images Docker pour les plus prudents !</p><p>Donc si vous êtes du genre à
+<a href="https://korben.info/sniffnet-surveiller-trafic-reseau.html">surveiller votre trafic réseau</a>
+ou à garder un oeil sur vos
+<a href="https://korben.info/outils-crise-linux-indispensables-pros-it.html">outils de diagnostic Linux</a>
+, c'est clairement à tester.</p><p>Perso, pour du debug réseau rapide, je trouve que c'est carrément plus agréable que de se taper un <code>ss -tulnp</code>.</p></div><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

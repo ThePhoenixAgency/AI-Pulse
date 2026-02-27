@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Reticulum - Le réseau mesh chiffré qui n'a besoin de rien</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Reticulum - Le réseau mesh chiffré qui n'a besoin de rien</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/25/2026 8:44:02 AM | <a href="https://korben.info/reticulum-reseau-mesh-off-grid.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/reticulum-reseau-mesh-off-grid/reticulum-reseau-mesh-off-grid-1.png" alt="Image illustrant l'article : Reticulum - Le réseau mesh chiffré qui n'a besoin de rien"></p><div><span>Ce qu’il faut retenir</span><div><ol><li>Reticulum est une stack réseau chiffré qui fonctionne sur n'importe quel support (LoRa, WiFi, Ethernet, radio amateur) et permet de mixer plusieurs médiums dans le même mesh pour transiter fichiers, appels vocaux et shell distants</li><li>Chiffrement costaud (X25519, Ed25519, AES-256) + paquets sans adresse source = impossible de remonter à l'expéditeur, contrairement aux réseaux mesh classiques</li><li>Installation triviale (pip install rns) sur Raspberry Pi ou vieux laptop, consomme 150 bps en LoRa longue portée, entièrement hors-ligne et sans dépendance aux géants du web</li></ol><p>Résumé généré par IA</p></div><div><p>Si vous avez lu
+<a href="https://korben.info/meshtastic-reseau-mesh-radio-survie-catastrophe.html">mon article sur Meshtastic</a>
+, vous savez déjà que les réseaux mesh LoRa, c'est le genre de truc qui fait rêver tous les geeks en manque de hors-piste numérique. Mais y'a un cran au-dessus, et ça s'appelle
+<a href="https://reticulum.network/">Reticulum</a>
+.</p><p>En gros, c'est une stack réseau chiffré de bout en bout qui fonctionne sur n'importe quel support physique : LoRa, WiFi, Ethernet, liaison série, radio amateur en packet... TOUT y passe. Du coup, là où Meshtastic reste avant tout taillé pour les messages texte sur LoRa, ici vous pouvez faire transiter des fichiers, des appels vocaux, des pages web et même un shell distant à travers votre mesh. En fait au début je pensais que c'était juste un Meshtastic sous stéroïdes, mais non... c'est carrément une couche réseau complète.</p><div><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/reticulum-reseau-mesh-off-grid/reticulum-reseau-mesh-off-grid-2.png" alt=""></p><p><em>Sideband, l'app de messagerie mesh pour Reticulum</em></p></div><p>L'avantage c'est surtout la flexibilité car plutôt que d'être coincé sur un seul médium, vous pouvez mixer LoRa longue portée et WiFi courte portée dans le même réseau via un simple fichier <code>~/.reticulum/config</code>, et les paquets se débrouillent tout seuls comme des grands pour trouver le chemin le plus efficace.</p><p>Côté chiffrement, c'est du lourd : X25519 pour l'échange de clés, Ed25519 pour les signatures, AES-256-CBC pour le chiffrement symétrique, et du forward secrecy par-dessus. Le truc malin, c'est que les paquets ne contiennent aucune adresse source. Votre identité sur le réseau, c'est juste une paire de clés au niveau du protocole, donc personne ne peut remonter à l'expéditeur.</p><p>L'écosystème d'apps est même plutôt costaud. Y'a Sideband, une app dispo sur Android via F-Droid, Linux et macOS, qui gère les messages, les appels vocaux, le transfert de fichiers et même les cartes, le tout à travers le mesh. Y'a aussi NomadNet pour héberger des pages sur un réseau totalement hors-ligne, et <code>rnsh</code> qui permet de lancer un shell distant (oui, du SSH sans Internet, sur le port que vous voulez... ça fait rêver ^^).</p><p>D'ailleurs pour les radioamateurs, tout ça tourne nickel sur des bonnes vieilles liaisons packet radio en AX.25. Modems KISS, TNCs classiques... tout est supporté, j'vous dit !</p><p>Et pour l'installer, c'est d'une simplicité presque suspecte : un <code>pip install rns</code> et hop, vous avez votre noeud Reticulum dans <code>/home/user/.reticulum/</code>. Ça tourne sur un Raspberry Pi 3 ou 4, un vieux laptop sous Debian, votre téléphone via Sideband... et si vous voulez du LoRa, vous branchez un RNode sur l'USB et c'est parti.</p><p>Attention quand même, sous Windows c'est un poil plus compliqué (Faut passer par WSL2, sauf si vous avez déjà un Python 3.x bien configuré dans le PATH), et la doc est intégralement en anglais.</p><p>Notez que la bande passante s'adapte sans problème au support, de 150 bps en LoRa longue portée sur 868 MHz (faut pas s'attendre à du Netflix non plus) jusqu'à 500 Mbps en Ethernet local. Et un lien chiffré s'établit en seulement 3 paquets pour 297 octets. C'est pas gourmand.</p><p></p><p>C'est le genre de projet que je trouve super cool même si c'est clairement pas pour tout le monde (faut être à l'aise avec un terminal et le fichier <code>config.yml</code>), mais un protocole pensé dès le départ pour fonctionner sans infrastructure, avec du chiffrement partout et ZÉRO dépendance aux géants du web... ça force le respect et ça nous servira peut-être dans un futur proche, donc gardez ça dans un coin de votre tête...</p><p>Le code est dispo sous une licence MIT modifiée (y'a 2 restrictions : pas pour nuire, pas pour entraîner des IA), le protocole est dans le domaine public depuis 2016, et c'est essentiellement le boulot d'un seul mec, Mark Qvist. Donc chapeau à lui !</p><p>Bref, allez jeter un oeil à
+<a href="https://github.com/markqvist/Reticulum">Reticulum sur GitHub</a>
+... et merci à <strong>F4JWS</strong> pour le tuyau !</p></div>Références<section><ul><li><a href="https://reticulum.network/" target="_blank" rel="noopener noreferrer">https://reticulum.network/</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

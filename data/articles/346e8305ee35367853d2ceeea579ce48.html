@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Managing Context Windows with pi /tree: Branches, Summaries, and Subagent-like Workflows | StackToHeap</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Managing Context Windows with pi /tree: Branches, Summaries, and Subagent-like Workflows | StackToHeap</h1>
+  <div class="metadata">
+    Source: Hacker News (nouveautés) | Date: 2/27/2026 8:08:25 AM | <a href="https://stacktoheap.com/blog/2026/02/26/pi-tree-context-window-management/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <p>If you use coding agents heavily, you eventually hit the same wall: <strong>context window pressure</strong>.</p>
+<p>Not because your model is bad, but because your session gets noisy:</p>
+<ul>
+<li>exploratory dead ends,</li>
+<li>temporary hypotheses,</li>
+<li>huge tool outputs,</li>
+<li>and too many “let’s try one more thing” turns.</li>
+</ul>
+<p>I’ve been using <a href="https://github.com/badlogic/pi-mono">pi</a>’s <code>/tree</code> command to deal with this in a way that feels surprisingly powerful. Once it clicks, you can treat your session like a branching workspace: explore aggressively, preserve useful outcomes, then hop back to your clean path.</p>
+<p>This post explains how that works, when to use <code>/tree</code> vs <code>/fork</code>, and why this can mimic some benefits of subagents.</p>
+<h2>The key mental model</h2>
+<p>A pi session is a <strong>tree</strong>, not a strict chat timeline.</p>
+<ul>
+<li>Each message has an <code>id</code> and <code>parentId</code>.</li>
+<li>Your current position is the active leaf.</li>
+<li><code>/tree</code> lets you move that leaf to another point and continue from there.</li>
+</ul>
+<p>So instead of “one long chat”, think:</p>
+<ul>
+<li>mainline branch,</li>
+<li>exploration branches,</li>
+<li>recovery branches,</li>
+<li>and checkpoints.</li>
+</ul>
+<p>This matters because the LLM only sees the current branch context, not all branches at once.</p>
+<h2><code>/tree</code> vs <code>/fork</code> (the part that confuses everyone)</h2>
+<p>They look similar, but they solve different problems.</p> <table><thead><tr><th>Command</th><th>What it does</th><th>Where history lives</th></tr></thead><tbody><tr><td><code>/tree</code></td><td>Move to another point in the same session and continue from there</td><td>Same session file</td></tr><tr><td><code>/fork</code></td><td>Create a new session file from a chosen point</td><td>New session file</td></tr></tbody></table>
+<h2>Practical interpretation</h2>
+<ul>
+<li>Use <strong><code>/tree</code></strong> when you want fast branch hopping during one focused workstream.</li>
+<li>Use <strong><code>/fork</code></strong> when a branch becomes a separate mission (new project thread, separate deliverable, long-running effort).</li>
+</ul>
+<p>One subtle but important point:</p>
+<p>If you jump to an old assistant message with <code>/tree</code>, then send a new user message, you now have a new branch <strong>inside the same session</strong>.</p>
+<h2>What summarization does during <code>/tree</code> navigation</h2>
+<p>When you switch branches with <code>/tree</code>, pi can optionally summarize the branch you’re leaving.</p>
+<p>That summary is written as a <code>branch_summary</code> entry and injected into the new path, so you carry over the essence of abandoned work without carrying all token-heavy details.</p>
+<h2>Example</h2>
+<p>Suppose your tree looks like this:</p>
+<pre><code><span><span>A</span></span>
+<span><span>├─ B ─ C ─ D (old leaf, exploratory branch)</span></span>
+<span><span>└─ E ─ F (target branch)</span></span></code></pre>
+<p>You move from <code>D</code> to <code>F</code>.</p>
+<ul>
+<li>Common ancestor: <code>A</code></li>
+<li>“Left behind” path: <code>B, C, D</code></li>
+<li>If you choose summarize: pi compresses <code>B/C/D</code> into a branch summary and appends it on the new path near your new leaf.</li>
+</ul>
+<p>So the new branch gets the insight, not the clutter.</p>
+<h2>Important caveat: <code>/tree</code> is not code undo</h2>
+<p><code>/tree</code> changes conversation position. It does <strong>not</strong> revert filesystem changes.</p>
+<p>If you made edits in your repo, those files stay edited unless you undo with git or manual edits.</p>
+<p>So I use this rule:</p>
+<ul>
+<li>Conversation branching: <code>/tree</code></li>
+<li>File state rollback: git (<code>restore</code>, <code>checkout</code>, <code>reset</code>, etc.)</li>
+</ul>
+<h2>Patterns that work really well</h2>
+<p>These are the patterns I’ve found most useful.</p>
+<h2>1) Spike-and-return pattern</h2>
+<p>Use case: uncertain approach, quick experiment needed.</p>
+<ol>
+<li>From mainline, <code>/tree</code> to earlier point (or current point) and branch.</li>
+<li>Run noisy exploration: logs, experiments, dead ends.</li>
+<li>Persist useful output to file (<code>notes.md</code>, <code>analysis.json</code>, etc.).</li>
+<li>Switch back to mainline via <code>/tree</code>.</li>
+<li>Continue with clean context and consume saved result.</li>
+</ol>
+<p>This gives you freedom to explore without polluting the main branch prompt history.</p>
+<h2>2) Analyst branch + implementer branch (subagent-like)</h2>
+<p>Use case: mimic role separation inside one session.</p>
+<ul>
+<li><strong>Analyst branch:</strong> gather facts, inspect codebase, benchmark options, produce recommendation doc.</li>
+<li><strong>Implementer branch:</strong> read recommendation doc, make precise code changes.</li>
+</ul>
+<p>This feels like two specialized agents, but you’re using one agent and one session tree.</p>
+<p>It’s not true parallelism, but it creates role isolation and cleaner context.</p>
+<h2>3) Branch-per-hypothesis debugging</h2>
+<p>Use case: bug has 3 plausible root causes.</p>
+<p>Create 3 short branches, one per hypothesis:</p>
+<ul>
+<li>H1 branch: test DB timeout path,</li>
+<li>H2 branch: test cache invalidation race,</li>
+<li>H3 branch: test serialization mismatch.</li>
+</ul>
+<p>Each branch ends with one artifact: “evidence for/against hypothesis”.
+Then return to a decision branch and act based on evidence.</p>
+<h2>4) Summary-assisted context carryover</h2>
+<p>Use case: long exploratory branch, need to keep only key findings.</p>
+<p>When switching back, choose “Summarize” (or custom summarize prompt) so you don’t lose key outcomes.
+This is especially useful after tool-heavy branches with large outputs.</p>
+<h2>When this mimics subagents well (and when it does not)</h2>
+<h2>Feels like subagents when:</h2>
+<ul>
+<li>you need role separation (research vs implement),</li>
+<li>you want isolated thought tracks,</li>
+<li>you want to keep mainline context clean,</li>
+<li>you can work sequentially.</li>
+</ul>
+<h2>Still not equivalent to subagents when:</h2>
+<ul>
+<li>you need true parallel execution,</li>
+<li>you need independent tool policies per agent,</li>
+<li>you need separate model configs running at the same time,</li>
+<li>you want strict process boundaries.</li>
+</ul>
+<p>So <code>/tree</code> is a great <strong>lightweight substitute</strong> for many subagent workflows, but not a full replacement.</p>
+<h2><code>/tree</code> vs Claude Code <code>/rewind</code></h2>
+<p>The closest mainstream feature to pi <code>/tree</code> is Claude Code’s <code>/rewind</code>.</p>
+<p>They overlap, but they optimize for different mental models:</p> <table><thead><tr><th>Feature</th><th>pi <code>/tree</code></th><th>Claude Code <code>/rewind</code></th></tr></thead><tbody><tr><td>Primary model</td><td>Navigate a conversation tree branch</td><td>Time-travel to a checkpoint</td></tr><tr><td>Conversation behavior</td><td>Switch leaf and continue from that branch</td><td>Restore to earlier conversation state</td></tr><tr><td>Code/file rollback</td><td>Not built into <code>/tree</code> (use git)</td><td>Rewind flow is designed around checkpoint restore choices</td></tr><tr><td>Branch carryover summary</td><td>Built in as optional branch summarization when switching</td><td>Rewind is more checkpoint-centric than branch-centric</td></tr><tr><td>Best for</td><td>Ongoing branch management + context hygiene</td><td>Fast undo/recovery from a bad path</td></tr></tbody></table>
+<h2>How I use both mental models</h2>
+<ul>
+<li>If I want <strong>branch-first exploration</strong> (research branch, implementation branch, hypothesis branches), I prefer pi <code>/tree</code>.</li>
+<li>If I want <strong>“take me back before this went wrong”</strong>, rewind-style workflows are excellent.</li>
+</ul>
+<p>So if you’re coming from Claude Code, think of pi <code>/tree</code> as less of an undo button and more of a branch navigator for long-lived sessions.</p>
+<h2>My personal operating playbook</h2>
+<p>For long sessions, I follow this checklist:</p>
+<ol>
+<li>Keep a clean mainline branch for decision and implementation.</li>
+<li>Send all noisy exploration into side branches with <code>/tree</code>.</li>
+<li>Persist outcomes to files, not just chat text.</li>
+<li>Use branch summarization when leaving heavy branches.</li>
+<li>Use <code>/fork</code> once a branch becomes a separate long-running mission.</li>
+<li>Use git for code rollback (never assume <code>/tree</code> handles files).</li>
+</ol>
+<h2>Closing thought</h2>
+<p>A lot of “agent reliability” pain is really <strong>context hygiene</strong> pain.</p>
+<p><code>/tree</code> gives you an ergonomic way to do context hygiene intentionally:</p>
+<ul>
+<li>isolate noise,</li>
+<li>preserve insight,</li>
+<li>return to clean state,</li>
+<li>keep moving.</li>
+</ul>
+<p>If you already think in git branches, this maps naturally to how you reason about work. The only difference is now you’re branching not just code, but the conversation state driving your AI pair programmer.</p>
+<p>And once you internalize that, long sessions stop feeling fragile.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

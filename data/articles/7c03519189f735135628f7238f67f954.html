@@ -28,7 +28,8 @@
     Source: FrenchWeb | Date: 1/24/2026 9:28:57 AM | <a href="https://www.frenchweb.fr/nvidia-gtc-cartographie-dun-ecosysteme-du-compute-en-voie-de-consolidation/459868" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Présentée comme la première conférence mondiale dédiée à l’intelligence artificielle, la NVIDIA GTC occupe désormais une place singulière dans le calendrier technologique international. À San Jose comme en ligne, l’événement réunit développeurs, chercheurs, dirigeants et industriels autour d’un même objet, le calcul accéléré, devenu le socle matériel et économique de la nouvelle vague d’innovations en …</p>
+    <p><p>Présentée comme la première conférence mondiale dédiée à l’intelligence artificielle, la NVIDIA GTC occupe désormais une place singulière dans le calendrier technologique international. À San Jose comme en ligne, l’événement réunit développeurs, chercheurs, dirigeants et industriels autour d’un même objet, le calcul accéléré, devenu le socle matériel et économique de la nouvelle vague d’innovations en &#8230;</p>
+<p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +38,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

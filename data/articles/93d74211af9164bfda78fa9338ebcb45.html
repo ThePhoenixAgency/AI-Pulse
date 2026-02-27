@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Docker Image with graalpy venv setup for pythonautomation addon</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Docker Image with graalpy venv setup for pythonautomation addon</h1>
+  <div class="metadata">
+    Source: openHAB Community (Latest) | Date: 2/22/2026 1:09:13 PM | <a href="https://community.openhab.org/t/docker-image-with-graalpy-venv-setup-for-pythonautomation-addon/168590" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><h1><a name="p-964291-context-1" class="anchor" href="https://community.openhab.org#p-964291-context-1" aria-label="Heading link"></a>Context</h1>
+<p>This solution might be interesting for you if:</p>
+<ol>
+<li>You want to use the Python Scripting Automation (<a href="https://www.openhab.org/addons/automation/pythonscripting/" class="inline-onebox" rel="noopener nofollow ugc">Python Scripting - Automation | openHAB</a>) to implement some rules.</li>
+<li>You need some packages from pip (In that case you need your own venv for graalpy initialized- as described in the documentation of the automation)</li>
+<li>You run OpenHAB in a container</li>
+</ol>
+<h1><a name="p-964291-problem-2" class="anchor" href="https://community.openhab.org#p-964291-problem-2" aria-label="Heading link"></a>Problem</h1>
+<p>The naive way to add the venv is to prepare it in the userdata folder from some other machine (i.e. the host running the container) as described in the documtation, in addition to that also the graalpy directoy needs to be mounted into the container with the same path (as the venv uses symlinks to it).</p>
+<p>Initially this approach worked fine but I discovered the following issues:</p>
+<ul>
+<li>“patchelf” seems not to be “so optional” - I had multiple errors that rules couldn’t be loaded as patchelf was not found (and patchelf is not installed in the official openhab images)</li>
+<li>I looked for a solution that could avoid manual manipulation of the userdata folder when a new OH instance get’s deployed - i.e. if I need to setup a fresh OH instance for testing.</li>
+</ul>
+<h1><a name="p-964291-solution-3" class="anchor" href="https://community.openhab.org#p-964291-solution-3" aria-label="Heading link"></a>Solution</h1>
+<p>To solve this issues I decided to built my own OH docker image based on the official OH image. This image basically adds the following stuff to the official image:</p>
+<ul>
+<li>install patchelf</li>
+<li>download graalpy and add it to the container</li>
+<li>initialize a venv on container startup in the userdata folder (if not there already)</li>
+</ul>
+<p>In addition I also added some automated tests to ensure that with that image the python automation can be used with external packages installed via pip without additional tweaks.</p>
+<p>If you are interested in it: Dockerfile and tooling can be found here <a href="https://github.com/christian-edelsbrunner/openhab-docker-graalpy-venv" class="inline-onebox" rel="noopener nofollow ugc">GitHub - christian-edelsbrunner/openhab-docker-graalpy-venv: OpenHab docker image that automatically create a python venv using graalpy ready to be used with https://www.openhab.org/addons/automation/pythonscripting/</a>.</p> <p><small>4 posts - 2 participants</small></p> <p><a href="https://community.openhab.org/t/docker-image-with-graalpy-venv-setup-for-pythonautomation-addon/168590">Read full topic</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

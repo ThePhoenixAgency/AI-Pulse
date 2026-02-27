@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Domoticz doesn't start after update beta</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Domoticz doesn't start after update beta</h1>
+  <div class="metadata">
+    Source: Domoticz (Forum News) | Date: 2/15/2026 7:21:33 PM | <a href="https://forum.domoticz.com/viewtopic.php?p=331607#p331607" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2><a href="https://forum.domoticz.com/viewtopic.php?t=44384&amp;sid=ba36b965de5d1914e58fdda3e6390627">Domoticz doesn't start after update beta</a><a href="https://forum.domoticz.com/viewtopic.php?f=6&amp;t=44384&amp;p=331681&amp;sid=ba36b965de5d1914e58fdda3e6390627#p331681"> <span>Topic is solved</span> </a>
+</h2> <p> <strong>Moderators:</strong> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6475&amp;sid=ba36b965de5d1914e58fdda3e6390627">leecollings</a>, <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=57&amp;sid=ba36b965de5d1914e58fdda3e6390627">remb0</a>
+</p> <div> <p><strong>Forum rules</strong><br> Before posting here, make sure you are on the latest Beta or Stable version.<br>
+If you have problems related to the web gui, clear your browser cache + appcache first.</p><p> Use the following template when posting here:</p><p> Version: xxxx<br>
+Platform: xxxx<br>
+Plugin/Hardware: xxxx<br>
+Description:<br>
+.....</p><p> If you are having problems with scripts/blockly, always post the script (in a spoiler or code tag) or screenshots of your blockly</p><p> If you are replying, please do not quote images/code from the first post</p><p> Please mark your topic as Solved when the problem is solved. </p></div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=39747&amp;sid=ba36b965de5d1914e58fdda3e6390627">Rik60</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=39747&amp;sr=posts&amp;sid=ba36b965de5d1914e58fdda3e6390627">153</a></dd> <dd><strong>Joined:</strong> Sunday 25 June 2023 21:54</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> 2025.2</dd> <dd><strong>Location:</strong> The Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331607&amp;sid=ba36b965de5d1914e58fdda3e6390627#p331607">Domoticz doesn't start after update beta</a> </h3> <p>After a update from beta 17099 to 17189 Domoticz did not restart. Did the update throuh the settingsscreen. Counter counted until 100, then the message update failed, no internet connection....<br>
+After a domoticz service restart was domoticz running normaal on the downloaded beta 17189. I thought this problem was solved? Attached the update.log and domoticz crash log</p> <dl> <dt> Attachments </dt> <dd> <dl> <dt><span></span> <a href="https://forum.domoticz.com/download/file.php?id=34704&amp;sid=ba36b965de5d1914e58fdda3e6390627">domoticz_crash.log</a></dt> <dd>(5.51 KiB) Downloaded 7 times</dd> </dl> </dd> <dd> <dl> <dt><span></span> <a href="https://forum.domoticz.com/download/file.php?id=34703&amp;sid=ba36b965de5d1914e58fdda3e6390627">update.log</a></dt> <dd>(2.18 KiB) Downloaded 8 times</dd> </dl> </dd> </dl> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=ba36b965de5d1914e58fdda3e6390627"><img src="https://forum.domoticz.com/download/file.php?avatar=23529_1625057022.jpg" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=ba36b965de5d1914e58fdda3e6390627">waltervl</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=23529&amp;sr=posts&amp;sid=ba36b965de5d1914e58fdda3e6390627">6691</a></dd> <dd><strong>Joined:</strong> Monday 28 January 2019 18:48</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> 2025.1</dd> <dd><strong>Location:</strong> NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331611&amp;sid=ba36b965de5d1914e58fdda3e6390627#p331611">Re: Domoticz doesn't start after update beta</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331611&amp;sid=ba36b965de5d1914e58fdda3e6390627#p331611"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=ba36b965de5d1914e58fdda3e6390627">waltervl</a></strong> » </span><time>Monday 16 February 2026 16:07</time> </p> <div><p>As mentioned in the history text you probably have to update twice due to libmosquitto library addition when you are on an older updatebeta script.<br>
+So next time the web update will/should run successful.</p><p> Edit: I now see the log and see the error:<br>
+gdb: warning: Couldn't determine a path for the index cache directory.</p><p> No idea what is happening here....</p></div> <p>Domoticz running on Udoo X86 (on Ubuntu) <br>
+Devices/plugins: ZigbeeforDomoticz (with Xiaomi, Ikea, Tuya devices), Nefit Easy, Midea Airco, Omnik Solar, Goodwe Solar</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=39747&amp;sid=ba36b965de5d1914e58fdda3e6390627">Rik60</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=39747&amp;sr=posts&amp;sid=ba36b965de5d1914e58fdda3e6390627">153</a></dd> <dd><strong>Joined:</strong> Sunday 25 June 2023 21:54</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> 2025.2</dd> <dd><strong>Location:</strong> The Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331653&amp;sid=ba36b965de5d1914e58fdda3e6390627#p331653">Re: Domoticz doesn't start after update beta</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331653&amp;sid=ba36b965de5d1914e58fdda3e6390627#p331653"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=39747&amp;sid=ba36b965de5d1914e58fdda3e6390627">Rik60</a></strong> » </span><time>Thursday 19 February 2026 10:44</time> </p> <p>When i was building a test sd card and did some installations, release and beta, from the setting screen, there where no issues. I am not shure because did a lot of testing yesterday. Have to do that again.</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=39747&amp;sid=ba36b965de5d1914e58fdda3e6390627">Rik60</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=39747&amp;sr=posts&amp;sid=ba36b965de5d1914e58fdda3e6390627">153</a></dd> <dd><strong>Joined:</strong> Sunday 25 June 2023 21:54</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> 2025.2</dd> <dd><strong>Location:</strong> The Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331658&amp;sid=ba36b965de5d1914e58fdda3e6390627#p331658">Re: Domoticz doesn't start after update beta</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331658&amp;sid=ba36b965de5d1914e58fdda3e6390627#p331658"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=39747&amp;sid=ba36b965de5d1914e58fdda3e6390627">Rik60</a></strong> » </span><time>Thursday 19 February 2026 16:41</time> </p> <p>Created a new sd card with Trixie 64 bit lite. Installed Domoticz 2025.2 stable. Through the settingsscreen (check for updates) installed beta 2025.2 17175. No problems, during the countdown the dashboard came back normaal. No issues.</p> </div> </div> <div> <h3><a href="https://forum.domoticz.com/viewonline.php?sid=ba36b965de5d1914e58fdda3e6390627">Who is online</a></h3> <p>Users browsing this forum: No registered users and 1 guest</p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

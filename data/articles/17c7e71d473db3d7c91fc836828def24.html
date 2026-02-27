@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Nouveautés du blog | Richard Dern</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Nouveautés du blog | Richard Dern</h1>
+  <div class="metadata">
+    Source: Journal du Hacker | Date: 2/24/2026 9:45:16 AM | <a href="https://richard-dern.fr/interets/divers/2026/02/24/nouveautes-du-blog/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><article> <h2>Nouveau design</h2>
+<p>Comme presque chaque année depuis 2021, j’ai créé un nouveau design pour le blog.
+Il est toujours <strong>totalement dépourvu de javascript</strong>, le CSS fait toujours moins de 15ko, et la page d’accueil pèse un peu moins de 1.5Mo.
+Je suis plutôt content du résultat, surtout que mes blocs “spotlight” (“À la une” et les critiques sur la page d’accueil) fonctionnent plutôt bien et apportent une dynamique que j’estime bienvenue.</p>
+<p>La différence par rapport aux années passées est que je me suis laissé tenter par le <a href="https://fr.wikipedia.org/wiki/Vibe_coding"><em>vibe coding</em></a>.
+Mais avant de fermer l’onglet de votre navigateur et de vous dire que plus jamais vous ne visiterez mon site parce que je suis un suppôt de Satan, laissez-moi une chance de m’exprimer.</p>
+<p>Il y a fort longtemps, avant l’avènement des méthodes dites “<a href="https://fr.wikipedia.org/wiki/M%c3%a9thode_agile">agiles</a>” et leur exploitation massive (avant la fin des années 2000), les développeurs avaient une autre façon de travailler : ils rédigeaient <strong>un cahier des charges</strong>.
+Les développeurs étaient au contact du client qui exprimait son besoin.
+Leur rôle était de traduire la pensée humaine abstraite du client en une application mathématique concrète.
+Essayez de vous souvenir : c’était l’époque où, lorsqu’un éditeur d’application ou de jeux-vidéo sortait un nouveau produit, les clients n’avaient pas forcément un Internet haut-débit pour télécharger des mises à jour régulières.
+C’était l’époque où, quand un produit était commercialisé, il était réputé <strong>fini</strong>.</p>
+<figure> <a href="https://richard-dern.fr/interets/divers/2026/02/24/nouveautes-du-blog/images/what-why.gif"> <img src="https://richard-dern.fr/interets/divers/2026/02/24/nouveautes-du-blog/images/what-why.gif" alt=""> </a><figcaption> <p>Je sais, c’est choquant.</p></figcaption></figure>
+<p>Lorsque “tout le monde” informatique s’est mis aux méthodes agiles, on ne faisait plus de cahier des charges.
+On faisait des <em>specs</em>, courtes et ciblées, que les commerciaux ou le service après-vente (ou autre dénomination élogieuse) communiquaient aux développeurs.
+Ces derniers furent isolés du client final, et perdaient au passage la vision d’ensemble du produit.
+Le client fut alors mis dans une position où toute modification de son idée initiale devait faire l’objet d’un ticket, puis d’un sprint.
+Plus personne ne réfléchit au <strong>projet</strong>, mais on avait tous gagné en “agilité”.</p>
+<p>Lorsque le client a besoin d’une nouvelle fonctionnalité (ou décide qu’il veut décaler une image d’un pixel vers la gauche), il déclenche en réalité une longue procédure (simplifiée ici) :</p>
+<ul>
+<li>Le client interpelle le prestataire.</li>
+<li>Le prestataire envoie la demande au chef de projet.</li>
+<li>Le chef de projet chiffre la demande en moyens humains, financiers et temporels.</li>
+<li>Le prestataire compile ces informations et voit avec la direction des finances.</li>
+<li>Les finances approuvent ou rejettent la demande.</li>
+<li>On demande au chef de projet de faire des compromis.</li>
+<li>Le chef de projet crée un ticket, qui n’est <strong>pas</strong> la demande initiale du client, mais un <strong>compromis</strong> de cette demande.</li>
+<li>Les développeurs sont affectés au ticket.</li>
+<li>Les développeurs soumettent le code “approprié”.</li>
+<li>Les modifications passent par une batterie de tests automatisés.</li>
+<li>On déploie une infrastructure de tests que l’on est censés imaginer aussi proche que possible de l’infra de déploiement, sauf que personne ne la connait.</li>
+<li>On affecte des membres du service support aux tests manuels.</li>
+<li>On déploie le patch en production.</li>
+<li>Ça ne convient pas au client : on recommence.</li>
+</ul>
+<figure> <a href="https://richard-dern.fr/interets/divers/2026/02/24/nouveautes-du-blog/images/agile.webp"> <img src="https://richard-dern.fr/interets/divers/2026/02/24/nouveautes-du-blog/images/agile.webp" alt=""> </a></figure>
+<p>L’Intelligence Artificielle est ensuite venue combler le déficit évident de cette “méthode” : le client demande directement à l’IA de faire ce qu’il veut.
+Si le résultat n’est pas à la hauteur de ce qu’il voulait, le client ne peut s’en prendre qu’à lui-même : c’est lui qui s’est mal exprimé.
+Il reformule alors, corrige, modélise sa propre application avec l’aide de l’IA.
+C’est ce que proposent désormais <a href="https://fr.wix.com/ai-website-builder">Wix</a> ou <a href="https://wordpress.com/fr/createur-de-site-web-ia/">Wordpress</a>, pour ne citer qu’eux.</p>
+<p>Il est loin le temps où le client savait ce qu’il voulait, où il était capable d’aligner sa vision dans un document complet, conjointement avec les développeurs grâce à un lien social, et où le livrable était considéré comme <strong>définitif</strong>.</p>
+<p>Je n’ai jamais adhéré à ce schéma.
+C’est peut-être pour ça que j’ai connu tant d’échecs professionnels : parce que j’avais l’intuition que cela allait nous conduire, vingt ans plus tard, à l’<a href="https://richard-dern.fr/interets/liens-interessants/2026/02/09/28a32442/">extinction du métier de développeur</a>, alors que <a href="https://richard-dern.fr/interets/informatique/2023/02/10/faire-du-developpement-un-artisanat/">j’espérais pendant longtemps</a> qu’on en ferait un artisanat, dans le sens noble du terme.</p>
+<p>Donc, si je ne suis plus le développeur, et que je ne suis pas celui qui vend un produit, je suis forcément le client.
+Mieux : je suis un client exigeant qui sait exactement ce qu’il veut et qui est capable de le formaliser dans un cahier des charges exhaustif.</p>
+<p>J’ai rédigé mon cahier des charges pour mon nouveau design au poil de cul.
+Tout y était, tout ce que je voulais, à l’exception des mockups que j’ai remplacé par des descriptions textuelles claires et complètes parce que je n’ai aucun talent artistique.
+Et au moment de me lancer dans l’implémentation de ce cahier des charges, mon cerveau a gelé.
+Le burn-out, tapis dans l’ombre, et la dépression temporairement mise en sourdine, tout cela s’est ranimé d’un coup, en même temps qu’une épiphanie : si je ne peux plus coder, mais que je peux encore écrire un cahier des charges, alors je vais laisser <a href="https://chatgpt.com/">ChatGPT</a> “exécuter ma vision”.</p>
+<p>Et le fait est que ChatGPT s’est bien débrouillé.
+Le code était immonde, pas optimisé, avec des effets de bord monstrueux que je n’aurais jamais pu tolérer dans ma carrière, mais le résultat visuel et fonctionnel était conforme à mes exigences.
+Ça a durement mis à l’épreuve ma capacité –&nbsp;virtuellement inexistante – à lâcher prise.
+Pourtant, il m’a suffi de quelques instructions supplémentaires dans un fichier <a href="https://agents.md/"><code>AGENTS.md</code></a> pour corriger le tir et forcer ChatGPT à refactoriser et produire un résultat un peu meilleur.
+À ce jour, tout n’est pas parfait, des optimisations sont encore possibles, et c’est une bonne chose : je ne suis plus capable de développer, mais je suis parfaitement capable d’expliquer à une IA comment travailler correctement.
+Et les <a href="https://developers.openai.com/cookbook/examples/skills_in_api">skills</a> devraient faire partie de ma boîte à outils dans un avenir proche.</p>
+<p>Au final, ce n’est pas vraiment du <em>vibe coding</em> <em>stricto sensu</em>.
+C’est de la modélisation logicielle par LLM, mais au lieu de partir de petites specs “au feeling” (<a href="https://www.la-rache.com/">à l’arrache…</a>), je pars sur un cahier des charges dûment rempli, comme au bon vieux temps.
+Encore une fois, ce n’est pas parfait, mais je suis satisfait dans la mesure où j’ai avancé sans avoir eu besoin de m’arracher les cheveux.</p>
+<h2>Recherche</h2>
+<p>J’ai dit, au début de cet article, que le blog est toujours totalement dépourvu de javascript.
+En réalité, il y a un fichier de javascript, mais il n’est chargé et utilisé que sur la nouvelle <a href="https://richard-dern.fr/recherche/">page de recherche</a>.
+Cette fonctionnalité sur mon site est, là encore, une affaire de lâcher-prise, à petite dose bien contrôlée.</p>
+<p>J’approche des 500 publications, et ma rédaction se densifie et se diversifie.
+Je pense donc qu’il n’est plus déraisonnable d’envisager la possibilité de caresser l’idée qu’éventuellement il soit potentiellement possible<sup><a href="#fn:1">1</a></sup> de faire une recherche.</p>
+<p>Pour ceux que ça intéresse, et qui ont tenu le coup jusque-là, c’est <a href="https://www.meilisearch.com/">MeiliSearch</a> qui fait tourner le moteur.
+Je l’ai choisi parce qu’il est disponible nativement sous NixOS et parce qu’il fait le job sans me prendre la tête.</p>
+<h2>Chat</h2>
+<p>Encore un point sur lequel je me suis –&nbsp;un peu –&nbsp;ravisé : l’interaction avec mes visiteurs.
+À la base, <a href="https://richard-dern.fr/manifeste/">mon manifeste</a> indiquait mon refus de l’interaction immédiate.
+Au fil des évolutions de mon blog, je me suis ouvert au fediverse, à <a href="https://richard-dern.fr/interets/informatique/2023/03/24/matrix-c-est-fini/">Matrix</a>, à <a href="https://richard-dern.fr/interets/informatique/2023/06/26/de-retour-sur-le-fediverse/">mastodon</a> et dérivés, et même à <a href="https://richard-dern.fr/interets/informatique/2025/12/10/j-ai-quitte-instagram/">instagram</a>.
+Aucune de ces plateformes ne m’a convenu, pour différentes raisons.
+<a href="https://richard-dern.fr/interets/informatique/2023/08/07/j-abandonne-le-fediverse/">J’en suis toujours revenu</a>, et j’ai toujours privilégié le <a href="https://richard-dern.fr/contact/">contact</a> par email.</p>
+<p>Finalement, cela fait depuis deux mois que <a href="https://richard-dern.fr/interets/informatique/2025/12/13/commentez-mes-articles-sur-lemmy/">je fais tourner</a> une instance de <a href="https://join-lemmy.org/">lemmy</a>, et elle est assez docile pour que j’oublie presque son existence ; c’est une chose que j’apprécie chez un serveur.
+Du coup, j’avais envie de réaliser un vieux rêve : recréer chez moi l’expérience des messageries instantanées multi-utilisateurs des années 2000.</p>
+<figure> <a href="https://richard-dern.fr/interets/divers/2026/02/24/nouveautes-du-blog/images/860_chat.jpg"> <img src="https://richard-dern.fr/interets/divers/2026/02/24/nouveautes-du-blog/images/860_chat.jpg" alt=""> </a><figcaption> <p>J’ai du mal à me décider : on a évolué un peu ou pas du tout ?</p></figcaption></figure>
+<p>Les plus jeunes ne comprendront pas ma référence.
+Les plus vieux ne comprendront pas pourquoi j’ai mis autant de temps avant de m’y mettre.
+Figurez-vous que, comme pour ActivityPub, j’ai déjà essayé plusieurs fois, sans jamais y trouver mon compte.
+J’ai eu mon lot d’installations du couple <a href="https://www.anope.org/">anope</a>/epona, d’<a href="https://www.unrealircd.org/">UnrealIRCd</a>, et compagnie.
+Trop de boulot pour pas grand-chose ; à l’époque où je les avais testés, en tout cas.</p>
+<p>Je rajoute que ce sont aussi les solutions web qui ne m’ont jamais convenu.
+À mes yeux, les clients pour <a href="https://fr.wikipedia.org/wiki/Internet_Relay_Chat">IRC</a> sont austères et peu engageants, ce qui m’avait conduit, à une époque, à essayer <a href="https://movim.eu/">Movim</a>, visuellement plus chaleureux, mais comme toute stack <a href="https://xmpp.org/">XMPP</a>, s’est révélé une plaie à maintenir.
+Et comme je ne veux plus m’encombrer d’applications non-web, les choix étaient limités.</p>
+<p>Or, j’ai pris connaissance de <a href="https://thelounge.chat/">The Lounge</a>, client IRC basé sur le web, moderne et agréable à utiliser.
+Bien qu’il ne soit pas parfait, il représente bien l’esthétique (modernisée) de “la belle époque” du web –&nbsp;toujours selon moi – au contraire de <a href="https://codeberg.org/emersion/gamja">gamja</a>.
+Le plus gros reproche que j’ai à lui faire concerne le formulaire d’entrée, que j’espérais pouvoir limiter au choix d’un pseudo ("<em>Nick</em>"), et l’absence de traduction en français qui pourrait dissuader certains lecteurs de me rendre visite.</p>
+<figure> <a href="https://richard-dern.fr/interets/divers/2026/02/24/nouveautes-du-blog/images/login-thelounge.png"> <img src="https://richard-dern.fr/interets/divers/2026/02/24/nouveautes-du-blog/images/login-thelounge.png" alt=""> </a><figcaption> <p>L’interface de connexion de <em>The Lounge</em>.</p></figcaption></figure>
+<p>Côté serveur, ChatGPT m’a suggéré <a href="https://ergo.chat/">ergo</a>, là encore pour son installation native sur NixOS.
+J’ai eu quelques soucis avec les certificats, comme je m’y attendais, compte tenu de l’architecture de mon réseau, mais au final, tout fonctionne.</p>
+<p>Et, effectivement, malgré quelques défauts, je retrouve un peu ce ressenti que j’avais à l’époque des guerres de bots à coup de <em>revenge-kick-ban</em>, des répondeurs, des robots conversationnels et autres <a href="https://fr.wikipedia.org/wiki/Eggdrop">eggdrops</a>.
+Ça m’a rappelé que c’est comme ça que j’avais commencé à développer sur Internet : un chatbot sur IRC.
+Ça fait vibrer ma corde nostalgique, et j’ai l’espoir d’attirer sur mon serveur deux catégories de visiteurs :</p>
+<ul>
+<li>les utilisateurs habituels d’IRC qui pourront accéder à mon salon (<code>irc.dern.ovh:6697</code>, <code>#lounge</code>) par leurs propres moyens,</li>
+<li>les visiteurs occasionnels qui ne seront pas réfractaires à un peu d’anglais pour saisir un “<em>Nick</em>” qui leur convient dans <a href="https://irc.dern.ovh/">l’interface web</a> que je mets à disposition.</li>
+</ul>
+<p>Et d’ailleurs, en parlant de bots, j’en ai <em>vibe codé</em> deux :</p>
+<ul>
+<li><em>WeatherBot</em>, qui vous accueillera avec ma météo du moment, fournie par <a href="https://richard-dern.fr/interets/meteorologie/2023/09/15/mise-a-jour-de-ma-station-meteo/">ma propre station</a> via <a href="https://www.home-assistant.io/">Home Assistant</a></li>
+<li><em>BlogBot</em>, qui annoncera la publication de nouveaux articles, et offre une commande <code>!blog</code> (dont je vous laisse découvrir l’usage)</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Cette nouvelle version de mon blog m’a conduit à explorer des terres inconnues.
+J’ai traversé le clivage causé par l’IA, et j’ai fini par embrasser le <em>vibe coding</em> pour moderniser mes expériences d’antan.
+Malgré ses défauts (et ceux de ses utilisateurs, concepteurs, promoteurs), l’informatique a ceci de particulier qu’elle comprime le temps : son évolution à une échelle sans précédent facilite la nostalgie rapide.
+En somme, elle nous fait vieillir plus vite.</p>
+<p>De plus, le fait d’avoir traversé un nouveau siècle, mais aussi un nouveau millénaire, lui confère des propriétés uniques dans notre esprit : des usages très récents à l’échelle de l’histoire humaine passent du statut de standard mondial à l’obsolescence en moins de dix ans.
+Et l’IA met encore un coup d’accélérateur.</p>
+<p>Je n’ai rien fait de spécial : j’ai mis à jour mon blog, comme des milliers de blogueurs à travers le monde à chaque instant.
+J’ai pourtant l’impression d’avoir relié mon passé et mon avenir.
+Je ne sais pas si l’IA causera notre perte ou sera notre salut, et le fait-même de se poser la question est troublant.
+Je n’aurais pas cru être amené à tant de métaphysique, simplement en mettant mon site à jour.</p>
+<p>Je suis juste content de ne pas m’être laissé dépasser par l’IA.</p>
+<div>
+<hr>
+<ol>
+<li>
+<p>Humour par accumulation, dérision et absurdité.&nbsp;<a href="#fnref:1">︎</a></p>
+</li>
+</ol>
+</div> </article></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

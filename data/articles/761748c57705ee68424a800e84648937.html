@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Un programmeur utilise l'IA Claude Code pour cr�er un pilote Wi-Fi natif FreeBSD pour la puce Broadcom BCM4350, l'exp�rience illustre � la fois les possibilit�s et les limites de l'IA dans le g�nie logiciel</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Un programmeur utilise l'IA Claude Code pour cr�er un pilote Wi-Fi natif FreeBSD pour la puce Broadcom BCM4350, l'exp�rience illustre � la fois les possibilit�s et les limites de l'IA dans le g�nie logiciel</h1>
+  <div class="metadata">
+    Source: Developpez.com | Date: 2/26/2026 3:41:00 PM | <a href="https://intelligence-artificielle.developpez.com/actu/380627/Un-programmeur-utilise-l-IA-Claude-Code-pour-creer-un-pilote-Wi-Fi-natif-FreeBSD-pour-la-puce-Broadcom-BCM4350-l-experience-illustre-a-la-fois-les-possibilites-et-les-limites-de-l-IA-dans-le-genie-logiciel/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <p><img src="https://www.developpez.com/images/logos/intelligence-artificielle2.png"> <b>Un d�veloppeur a entrepris d'utiliser l'IA pour cr�er un pilote Wi‑Fi natif FreeBSD pour une puce Broadcom BCM4350. Claude Code a �chou� lorsqu'il a travaill� sans une planification. Dans un second temps, l'IA a g�n�r� une sp�cification compl�te du pilote, puis le code lui-m�me, en testant et ajustant les versions successives jusqu�� obtenir un module noyau fonctionnel capable de g�rer la recherche de r�seaux, la connexion aux bandes 2,4 GHz et 5 GHz, ainsi que l�authentification WPA/WPA2. L'ensemble du processus a �t� automatis�, sans que le d�veloppeur ait �crit manuellement le code final, illustrant � la fois <a href="https://programmation.developpez.com/actu/374842/" target="_blank" rel="noopener noreferrer">les possibilit�s et les limites de l�IA dans le g�nie logiciel</a>.</b></p><p>Les fabricants de mod�les d'IA soutiennent que la technologie va r�volutionner l'ing�nierie logicielle en automatisant la g�n�ration de code, les tests et la d�tection de bogues, ce qui acc�l�rera le d�veloppement et am�liorera la qualit�. L'IA vise � transformer le cycle de vie des logiciels et augmenter la productivit� des d�veloppeurs. Cependant, les tests men�s en conditions r�elles ont donn� des r�sultats contrast�s, avec des co�ts parfois tr�s �lev�s.</p><p>Le d�veloppeur Varankin Vladimir poss�de un vieux MacBook Pro 2016 qui prenait la poussi�re. Il a d�cid� de le recycler pour jouer avec FreeBSD. Probl�me : la puce Wi-Fi Broadcom BCM4350 de l'appareil n'est pas support�e nativement par FreeBSD. La solution habituelle consiste � faire tourner une petite VM Linux (wifibox) pour g�rer le mat�riel via le pilote Linux brcmfmac. Il voit l� une nouvelle occasion de cr�er un vrai pilote natif pour FreeBSD.</p><p><b><span>Acte 1 : l'approche na�ve avec Claude Code</span></b></p><p>L'id�e initiale est simple : demander � Claude Code de porter le code Linux de brcmfmac vers FreeBSD, en s'appuyant sur LinuxKPI, la couche de compatibilit� de FreeBSD. Le module a bien compil�, mais une fois test� sur le vrai mat�riel, les paniques noyau s'encha�naient. L'agent accumulait des rustines et des wrappers #ifdef, le diff grossissait d�mesur�ment, et le pilote ne fonctionnait toujours pas. L'approche brute-force avait atteint ses limites.</p><p><b><span>Acte 2 : �crire une sp�cification d'abord</span></b></p><p>Inspir� par une vid�o du d�veloppeur de logiciels open source Armin Ronacher sur l'agent Pi, Varankin Vladimir change radicalement de m�thode. Plut�t que de coder directement, il demande � l'IA de produire une sp�cification d�taill�e du fonctionnement interne du pilote brcmfmac, focalis�e sur le chip BCM4350. Le r�sultat est un "livre" de 11 chapitres couvrant les structures de donn�es, le protocole, le firmware, la gestion des �v�nements, etc.</p><p>Pour s'assurer de la fiabilit�, il fait relire la sp�cification par un second agent (Codex), puis valider les corrections par un troisi�me (Opus), en posant syst�matiquement le code source comme r�f�rence de v�rit�. Ce processus it�ratif de relecture crois�e entre mod�les lui permet d'obtenir une base documentaire solide.</p><p><b><span>Acte 3 : construire le pilote proprement</span></b></p><p>Arm� de sa sp�cification, il lance un nouveau projet. Avant tout codage, il demande � l'agent de lister les d�cisions importantes � prendre et de tout documenter dans un fichier AGENTS.md pour que les sessions futures restent coh�rentes. Le travail devient alors une routine productive : l'agent dispose d'un acc�s SSH � la machine de build et � la VM de test, avance m�thodiquement selon ses propres jalons, et documente chaque progression.</p><p><img src="https://www.developpez.net/forums/attachments/p674571d1/a/a/a"></p> <p>Quand un crash survient, Varankin Vladimir ouvre une session distincte pour analyser et enregistrer le probl�me avant de le corriger. Enfin, un module noyau FreeBSD fonctionnel pour BCM4350 voit le jour, supportant le scan r�seau, la connectivit� 2,4 GHz/5 GHz et l'authentification WPA/WPA2. </p><p>Le rapport indique que le d�veloppeur n'a lui-m�me �crit aucune ligne de code. Le pilote fonctionne pour certaines t�ches, mais il comporte encore des probl�mes connus et n�est recommand� qu�� des fins d��tude et de test, pas pour un usage en production. L'exp�rience illustre aussi la valeur et les limites de l�IA dans des t�ches complexes de d�veloppement logiciel. Le code source du pilote est publi� sur GitHub (d�p�t : narqo/freebsd-brcmfmac).</p><p><b><span>L'exp�rience mitig�e men�e par Anthropic avec Claude</span></b></p><p>Anthropic a annonc� qu'une �quipe de 16 agents Claude Opus 4.6 ont �crit, en deux semaines et sans acc�s � Internet, un compilateur C en Rust de 100 000 lignes. Le compilateur est capable de compiler Linux et m�me le jeu Doom, Anthropic estimant qu'il s'agit d'une avanc�e. Mais lorsque l'on examine de plus pr�s les performances r�elles, l'utilit� et la qualit� du code, <a href="https://intelligence-artificielle.developpez.com/actu/380409/" target="_blank" rel="noopener noreferrer">le discours passe de � perc�e r�volutionnaire � � � exp�rience tr�s co�teuse �</a>.</p><p>Les tests sugg�rent que les mod�les excellent pour les parties � faciles � de la conception des compilateurs, mais �chouent dans la logique algorithmique complexe requise pour l'optimisation. Les compilateurs se composent de deux parties : le frontend (analyse du texte) et le backend (optimisation de la logique). L'IA excelle dans l'analyse, qui est une t�che linguistique. Claude Opus semble bien ma�triser la traduction de la syntaxe C en structures Rust.</p><p>Cela prouve que si l'IA peut reproduire les �l�ments standard d'un syst�me complexe, elle ne peut pas encore � raisonner � pour r�soudre des probl�mes d'ing�nierie de haute performance. Les critiques craignent que les entreprises trop enthousiastes remplacent pr�cipitamment les programmeurs humains par l'IA. Les cons�quences sur le long terme pourraient �tre d�sastreuses, car l'IA n'est pas encore dou�e pour la logique et les math�matiques.</p><p><b><span>Analyse du co�t de d�veloppement de 20 000 dollars</span></b></p><p>D�penser 20 000 dollars pour reproduire un outil qui existe d�j� gratuitement (GCC/Clang), et le reproduire de mani�re m�diocre, soul�ve des questions. Pour le m�me montant, une entreprise pourrait embaucher un d�veloppeur junior pendant quelques mois. Ce d�veloppeur junior apprendrait, s'am�liorerait et contribuerait � terme � la sant� � long terme du code source. Les cr�dits consomm�s par l'IA lors de l'ex�cution sont un co�t irr�cup�rable.</p><p>Le mod�le n'apprend pas du projet d'une mani�re qui profite directement au projet suivant, et il ne reste pas pour corriger les bogues. Cependant, consid�r� comme de la recherche et du d�veloppement, le co�t est justifiable. Selon certains analystes, l'exp�rience d'Anthropic prouve qu'il est possible de g�rer la fen�tre contextuelle et la coordination de 16 agents parall�les. La valeur n'�tait pas le compilateur, mais les donn�es du flux de travail.</p><p><b><span>Rapport Octoverse : l'IA amplifie les mauvais patterns</span></b></p><p>Le dernier rapport GitHub Octoverse comporte quelques observations sur l'utilisation de l'IA g�n�rative dans le domaine de l'ing�nierie logicielle. L'une des recommandations les plus importantes du rapport GitHub Octoverse m�rite d'�tre mise en avant : � standardisez avant de scaler. Documentez vos patterns. Publiez des d�p�ts de templates. Rendez vos d�cisions architecturales explicites. Les outils IA reproduiront les structures qu'ils observent �.</p><p>Ce conseil contient une mise en garde implicite de premi�re importance. Si les grands mod�les de langage (LLM) apprennent � reproduire les patterns existants dans votre base de code, ils vont �galement reproduire les mauvais patterns. Ces derniers comprennent notamment : la dette technique, les raccourcis, les conventions bancales h�rit�es d'une �poque r�volue, etc. L'IA est un miroir architectural d'une fid�lit� redoutable. Elle amplifie l'existant. </p><p>Une base de code saine donnera des suggestions coh�rentes et solides. <a href="https://intelligence-artificielle.developpez.com/actu/380556/" target="_blank" rel="noopener noreferrer">Une base de code chaotique produira du chaos g�n�r� � vitesse industrielle</a>. Pour les �quipes d'ing�nierie, l'enjeu n'est plus seulement de ma�triser les outils d'IA, mais d'investir en amont dans la qualit� structurelle de leur environnement. </p><p><b><span>Des entreprises paient s�v�rement les errements des agents de codage</span></b></p><p>Le PDG de Replit, Amjad Masad, fait partie de ceux qui pensent que les g�n�rateurs de code permettront de d�mocratiser le d�veloppement de logiciels, ce qui rendra � l'avenir le recours aux codeurs professionnels moins indispensables. Mais des incidents d�montrent que la vigilance humaine reste importante dans la fili�re. L'ann�e derni�re, <a href="https://intelligence-artificielle.developpez.com/actu/373989/" target="_blank" rel="noopener noreferrer">le PDG de Replit s'est excus� apr�s l�effacement par son agent d'IA de la base de code d�une entreprise</a>.</p><p>Un investisseur en capital-risque voulait voir jusqu'o� l'IA pouvait l'amener dans la cr�ation d'une application. Elle l'a men� assez loin pour d�truire une base de donn�es de production en direct. L'incident est survenu au cours d'une exp�rience de vibe coding de 12 jours men�e par Jason Lemkin,...
+</p><p>La fin de cet article est r�serv�e aux abonn�s. Soutenez le Club Developpez.com en <a href="https://premium.developpez.com/abonnement">prenant un abonnement</a> pour que nous puissions continuer � vous proposer des publications.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

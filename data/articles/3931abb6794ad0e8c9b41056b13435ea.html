@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sofabaton X2 integration</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Sofabaton X2 integration</h1>
+  <div class="metadata">
+    Source: openHAB Community (Latest) | Date: 2/24/2026 10:03:32 AM | <a href="https://community.openhab.org/t/sofabaton-x2-integration/168627" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>I’ve recently received a Sofatbaton X2 and have now managed to get it working well with Openhab. I thought others might find my discoveries useful.</p>
+<p>I wanted to trigger a number of power switches which are Tapo (TP-Link) Wifi devices. However, there is no specific integration with Tapo/TP-Link on the Remote. So I have found a way to do this via Openhab.</p>
+<p>There’s no specific integration with Openhab, but I’ve used a combination of the Sofabaton X2 integration with Home Assistant and a few rules in Openhab.</p>
+<p>The HA integration is simply using MQTT messages. So to get this to work, you first need to make sure you have installed the MQTT broker binding and have an MQTT broker up and running.</p>
+<p>Here’ are the steps I took:</p>
+<p><strong>1) Setup the link to your MQTT broker in the Sofabaton App</strong></p>
+<p>From the Sofabaton App, choose ‘Me’ in the bottom right, then ‘Connect to Home Assistant’</p>
+<p>Confirm you’ve installed the MQTT server, just hit next on the confirmation page</p>
+<p>Enter the url and port of your MQTT server, username and password</p>
+<p>You should get a confirmation screen saying it’s all setup.</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/4/0/409e4003f62ad758b94f1cdce0250b8bee012cfd.jpeg" data-download-href="/uploads/short-url/9dDBEsuy6zd0Gr1ppKctKI5rkjr.jpeg?dl=1" title="sofabaton - 1" rel="noopener nofollow ugc"><img src="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/4/0/409e4003f62ad758b94f1cdce0250b8bee012cfd_2_230x500.jpeg" alt="sofabaton - 1" data-base62-sha1="9dDBEsuy6zd0Gr1ppKctKI5rkjr" width="230" height="500" srcset="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/4/0/409e4003f62ad758b94f1cdce0250b8bee012cfd_2_230x500.jpeg, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/4/0/409e4003f62ad758b94f1cdce0250b8bee012cfd.jpeg 1.5x, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/4/0/409e4003f62ad758b94f1cdce0250b8bee012cfd.jpeg 2x" data-dominant-color="EEEDED"></a></div><p></p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/3/2/325e1b8bc82ca5a24c7fde4ffc307084685e98cf.jpeg" data-download-href="/uploads/short-url/7bzuSO77ChB6cjFtI98iFvdkxUH.jpeg?dl=1" title="sofabaton - 2" rel="noopener nofollow ugc"><img src="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/3/2/325e1b8bc82ca5a24c7fde4ffc307084685e98cf_2_230x500.jpeg" alt="sofabaton - 2" data-base62-sha1="7bzuSO77ChB6cjFtI98iFvdkxUH" width="230" height="500" srcset="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/3/2/325e1b8bc82ca5a24c7fde4ffc307084685e98cf_2_230x500.jpeg, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/3/2/325e1b8bc82ca5a24c7fde4ffc307084685e98cf.jpeg 1.5x, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/3/2/325e1b8bc82ca5a24c7fde4ffc307084685e98cf.jpeg 2x" data-dominant-color="DDE1E4"></a></div><p></p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/4/6/4619ceb62d99c2ed2436ab8fd0230fb82f05f4cc.jpeg" data-download-href="/uploads/short-url/a08Il8gpB6lqCxO9vvQr9pB2wig.jpeg?dl=1" title="sofabaton - 3" rel="noopener nofollow ugc"><img src="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/4/6/4619ceb62d99c2ed2436ab8fd0230fb82f05f4cc_2_230x500.jpeg" alt="sofabaton - 3" data-base62-sha1="a08Il8gpB6lqCxO9vvQr9pB2wig" width="230" height="500" srcset="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/4/6/4619ceb62d99c2ed2436ab8fd0230fb82f05f4cc_2_230x500.jpeg, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/4/6/4619ceb62d99c2ed2436ab8fd0230fb82f05f4cc.jpeg 1.5x, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/4/6/4619ceb62d99c2ed2436ab8fd0230fb82f05f4cc.jpeg 2x" data-dominant-color="EFF3F6"></a></div><p></p>
+<p><strong>2) Setup a device on your Sofabaton remote</strong></p>
+<p>Still in the app, go to the devices screen and hit the + sign to add a new device. Choose ‘Wi-Fi’ control method.</p>
+<p>Then choose ‘Home Assistant Remote’</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/8/2/824fe2a7cb951dac183f97ff494010d9c4907bf2.jpeg" data-download-href="/uploads/short-url/iANdW3s8tn2kfG8r2gLBNwsOM14.jpeg?dl=1" title="sofabaton - 4" rel="noopener nofollow ugc"><img src="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/8/2/824fe2a7cb951dac183f97ff494010d9c4907bf2_2_230x500.jpeg" alt="sofabaton - 4" data-base62-sha1="iANdW3s8tn2kfG8r2gLBNwsOM14" width="230" height="500" srcset="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/8/2/824fe2a7cb951dac183f97ff494010d9c4907bf2_2_230x500.jpeg, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/8/2/824fe2a7cb951dac183f97ff494010d9c4907bf2.jpeg 1.5x, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/8/2/824fe2a7cb951dac183f97ff494010d9c4907bf2.jpeg 2x" data-dominant-color="EBEAEA"></a></div><p></p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/e/0/e04d52408c64e982bbbf31af05d03a85ae4685f6.jpeg" data-download-href="/uploads/short-url/w0gC2hlI50AdPGFApERIc6oadq6.jpeg?dl=1" title="sofabaton - 5" rel="noopener nofollow ugc"><img src="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/e/0/e04d52408c64e982bbbf31af05d03a85ae4685f6_2_230x500.jpeg" alt="sofabaton - 5" data-base62-sha1="w0gC2hlI50AdPGFApERIc6oadq6" width="230" height="500" srcset="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/e/0/e04d52408c64e982bbbf31af05d03a85ae4685f6_2_230x500.jpeg, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/e/0/e04d52408c64e982bbbf31af05d03a85ae4685f6.jpeg 1.5x, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/e/0/e04d52408c64e982bbbf31af05d03a85ae4685f6.jpeg 2x" data-dominant-color="E9E8E8"></a></div><p></p>
+<p><strong>3) Add action buttons to your remote</strong></p>
+<p>You now need to add action buttons that will appear on your remote.</p>
+<p>Note, that you can only modify the command name - ie, the name that appears on the button. Each button will be assigned a unique button number, there’s no way to change this - it’s allocated by the app.</p>
+<p>You’ll see a ‘Topic’ and ‘Payload’ displayed under the command name. These are the important codes you need to copy and use in Openhab.</p>
+<p>The topic will always be the same for your remote - this is it’s MAC address followed by /up</p>
+<p>The payload is a combination of a <code>device_id</code> and <code>key_id</code></p>
+<p>The device is the device number in your list (ie, for me it was device number 8). The key number is the sequential number of the key. ie, the first button you add will be 1, then 2, 3, etc.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

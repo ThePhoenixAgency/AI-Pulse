@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Domoticz stops with error. - Domoticz</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Domoticz stops with error. - Domoticz</h1>
+  <div class="metadata">
+    Source: Domoticz (Forum News) | Date: 2/8/2026 10:20:03 AM | <a href="https://forum.domoticz.com/viewtopic.php?p=331440#p331440" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2><a href="https://forum.domoticz.com/viewtopic.php?t=44367&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">Domoticz stops with error.</a><a href="https://forum.domoticz.com/viewtopic.php?f=6&amp;t=44367&amp;p=331612&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331612"> <span>Topic is solved</span> </a>
+</h2> <p> <strong>Moderators:</strong> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6475&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">leecollings</a>, <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=57&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">remb0</a>
+</p> <div> <p><strong>Forum rules</strong><br> Before posting here, make sure you are on the latest Beta or Stable version.<br>
+If you have problems related to the web gui, clear your browser cache + appcache first.</p><p> Use the following template when posting here:</p><p> Version: xxxx<br>
+Platform: xxxx<br>
+Plugin/Hardware: xxxx<br>
+Description:<br>
+.....</p><p> If you are having problems with scripts/blockly, always post the script (in a spoiler or code tag) or screenshots of your blockly</p><p> If you are replying, please do not quote images/code from the first post</p><p> Please mark your topic as Solved when the problem is solved. </p></div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">Kedi</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=38786&amp;sr=posts&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">595</a></dd> <dd><strong>Joined:</strong> Monday 20 March 2023 14:41</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> </dd> <dd><strong>Location:</strong> Somewhere in NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331440&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331440">Domoticz stops with error.</a> </h3> <div><p>When I stop domoticz manually I get this error, anyone any idea how to solve this or what the cause is?
+</p><div><p>Code: <a href="#">Select all</a></p><pre><code>2026-02-08 11:11:03.286 Error: Domoticz(pid:677, tid:677('domoticz')) received fatal signal 6 (Aborted)
+2026-02-08 11:11:03.286 Error: siginfo address=0x2a5, address=0x7f04e28c495c
+2026-02-08 11:11:03.295 Error: Failed to start gdb, will use backtrace() for printing stack frame 2026-02-08 11:11:03.300 Error: #0 /home/eddy/domoticz/domoticz : + 0x454b23 [0x557cbca5cb23]
+2026-02-08 11:11:03.300 Error: #1 /home/eddy/domoticz/domoticz : signal_handler(int, siginfo_t*, void*) + 0x245 [0x557cbca5d5b5]
+2026-02-08 11:11:03.300 Error: #2 /lib/x86_64-linux-gnu/libc.so.6 : + 0x3fdf0 [0x7f04e286fdf0]
+2026-02-08 11:11:03.300 Error: #3 /lib/x86_64-linux-gnu/libc.so.6 : + 0x9495c [0x7f04e28c495c]
+2026-02-08 11:11:03.300 Error: #4 /lib/x86_64-linux-gnu/libc.so.6 : gsignal + 0x12 [0x7f04e286fcc2]
+2026-02-08 11:11:03.300 Error: #5 /lib/x86_64-linux-gnu/libc.so.6 : abort + 0x22 [0x7f04e28584ac]
+2026-02-08 11:11:03.300 Error: #6 /lib/x86_64-linux-gnu/libpython3.13.so : + 0x99fa3 [0x7f04e1499fa3]
+2026-02-08 11:11:03.300 Error: #7 /lib/x86_64-linux-gnu/libpython3.13.so : + 0x2b15f7 [0x7f04e16b15f7]
+2026-02-08 11:11:03.300 Error: #8 /lib/x86_64-linux-gnu/libpython3.13.so : PyEval_RestoreThread + 0xab [0x7f04e1684ecb]
+2026-02-08 11:11:03.300 Error: #9 /home/eddy/domoticz/domoticz : Plugins::CPluginSystem::StopPluginSystem() + 0xbb [0x557cbcf58d9b]
+2026-02-08 11:11:03.300 Error: #10 /home/eddy/domoticz/domoticz : MainWorker::Stop() + 0x15c [0x557cbca23a3c]
+2026-02-08 11:11:03.300 Error: #11 /home/eddy/domoticz/domoticz : main + 0x5c5 [0x557cbc922e75]
+2026-02-08 11:11:03.300 Error: #12 /lib/x86_64-linux-gnu/libc.so.6 : + 0x29ca8 [0x7f04e2859ca8]
+2026-02-08 11:11:03.300 Error: #13 /lib/x86_64-linux-gnu/libc.so.6 : __libc_start_main + 0x85 [0x7f04e2859d65]
+2026-02-08 11:11:03.300 Error: #14 /home/eddy/domoticz/domoticz : _start + 0x21 [0x557cbc949b41]
+</code></pre></div><p> My system is Dietpi running as VM under Proxmox with:
+</p><div><p>Code: <a href="#">Select all</a></p><pre><code>2026-02-08 11:16:29.414 Status: Domoticz V2025.2 (build 17082) (c)2012-2026 GizMoCuz
+2026-02-08 11:16:29.414 Status: Build Hash: 0776fa964, Date: 2026-02-07 15:03:33
+</code></pre></div>
+<div><p>Code: <a href="#">Select all</a></p><pre><code>PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.3
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+</code></pre></div>
+<div><p>Code: <a href="#">Select all</a></p><pre><code>Linux domoprox 6.12.63+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.63-1 (2025-12-30) x86_64 GNU/Linux
+</code></pre></div></div> <p>Logic will get you from A to B. Imagination will take you everywhere.</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">Kedi</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=38786&amp;sr=posts&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">595</a></dd> <dd><strong>Joined:</strong> Monday 20 March 2023 14:41</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> </dd> <dd><strong>Location:</strong> Somewhere in NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331544&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331544">Re: Domoticz stops with error.</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331544&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331544"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">Kedi</a></strong> » </span><time>Thursday 12 February 2026 11:38</time> </p> <div><p>Nobody any idea???<br>
+The error comes from this line:
+</p><div><p>Code: <a href="#">Select all</a></p><pre><code>Plugins::CPluginSystem::StopPluginSystem()</code></pre></div><p>
+Why does this StopPluginSystem gives an error?<br>
+It is that last part of the stopping of Domoticz.</p><p> In the Python doc is this remark present
+</p><div><p>Code: <a href="#">Select all</a></p><pre><code>Note Calling this function from a thread when the runtime is finalizing will hang the thread until the program exits,
+even if the thread was not created by Python. Refer to Cautions regarding runtime finalization for more details.</code></pre></div><p>
+Could this have anything to do with the abnormal exit of Domoticz?</p></div> <p>Logic will get you from A to B. Imagination will take you everywhere.</p> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=c4f0f81047ab06438e48ccd55da2ce89"><img src="https://forum.domoticz.com/download/file.php?avatar=23529_1625057022.jpg" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">waltervl</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=23529&amp;sr=posts&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">6691</a></dd> <dd><strong>Joined:</strong> Monday 28 January 2019 18:48</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> 2025.1</dd> <dd><strong>Location:</strong> NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331551&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331551">Re: Domoticz stops with error.</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331551&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331551"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">waltervl</a></strong> » </span><time>Thursday 12 February 2026 19:52</time> </p> <p>As I remember it could be related to python modules that are used by Python plugins that have memory release issues.<br>
+Check GitHub issues on this issue.</p> <p>Domoticz running on Udoo X86 (on Ubuntu) <br>
+Devices/plugins: ZigbeeforDomoticz (with Xiaomi, Ikea, Tuya devices), Nefit Easy, Midea Airco, Omnik Solar, Goodwe Solar</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">Kedi</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=38786&amp;sr=posts&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">595</a></dd> <dd><strong>Joined:</strong> Monday 20 March 2023 14:41</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> </dd> <dd><strong>Location:</strong> Somewhere in NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331566&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331566">Re: Domoticz stops with error.</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331566&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331566"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">Kedi</a></strong> » </span><time>Friday 13 February 2026 13:06</time> </p> <p>Tnx, I will try to check that and my plugins.</p> <p>Logic will get you from A to B. Imagination will take you everywhere.</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">Kedi</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=38786&amp;sr=posts&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">595</a></dd> <dd><strong>Joined:</strong> Monday 20 March 2023 14:41</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> </dd> <dd><strong>Location:</strong> Somewhere in NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331612&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331612">Re: Domoticz stops with error.</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331612&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331612"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">Kedi</a></strong> » </span><time>Monday 16 February 2026 16:16</time> </p> <p>With build 17189 this error has gone.</p> <p>Logic will get you from A to B. Imagination will take you everywhere.</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">Kedi</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=38786&amp;sr=posts&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">595</a></dd> <dd><strong>Joined:</strong> Monday 20 March 2023 14:41</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> </dd> <dd><strong>Location:</strong> Somewhere in NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331614&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331614">Re: Domoticz stops with error.</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331614&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331614"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">Kedi</a></strong> » </span><time>Tuesday 17 February 2026 10:02</time> </p> <p>Strange yesterday we were at build 17189, and today we are at 17163.<br>
+Is the counter going backwards?<br>
+B.t.w. Problem is still gone.</p> <p>Logic will get you from A to B. Imagination will take you everywhere.</p> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=c4f0f81047ab06438e48ccd55da2ce89"><img src="https://forum.domoticz.com/download/file.php?avatar=23529_1625057022.jpg" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">waltervl</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=23529&amp;sr=posts&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">6691</a></dd> <dd><strong>Joined:</strong> Monday 28 January 2019 18:48</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> 2025.1</dd> <dd><strong>Location:</strong> NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331622&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331622">Re: Domoticz stops with error.</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331622&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331622"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">waltervl</a></strong> » </span><time>Tuesday 17 February 2026 18:38</time> </p> <div><blockquote><p><cite><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=c4f0f81047ab06438e48ccd55da2ce89">Kedi</a> wrote: <a href="https://forum.domoticz.com/viewtopic.php?p=331614&amp;sid=c4f0f81047ab06438e48ccd55da2ce89#p331614"></a><span>Tuesday 17 February 2026 10:02</span></cite>
+Strange yesterday we were at build 17189, and today we are at 17163.<br>
+Is the counter going backwards?<br>
+B.t.w. Problem is still gone.
+</p></blockquote><p>
+Gizmocuz had to revert some unwanted changes (due to Copilot assistance). He is working on it.</p></div> <p>Domoticz running on Udoo X86 (on Ubuntu) <br>
+Devices/plugins: ZigbeeforDomoticz (with Xiaomi, Ikea, Tuya devices), Nefit Easy, Midea Airco, Omnik Solar, Goodwe Solar</p> </div> </div> <div> <h3><a href="https://forum.domoticz.com/viewonline.php?sid=c4f0f81047ab06438e48ccd55da2ce89">Who is online</a></h3> <p>Users browsing this forum: No registered users and 1 guest</p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

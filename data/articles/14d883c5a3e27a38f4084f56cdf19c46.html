@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How we'll build the device database, together</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How we'll build the device database, together</h1>
+  <div class="metadata">
+    Source: Home Assistant (Blog officiel) | Date: 2/2/2026 12:00:00 AM | <a href="https://www.home-assistant.io/blog/2026/02/02/about-device-database/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <article> <header> </header> <img src="https://www.home-assistant.io/images/blog/2026-02-02-about-device-database/art.webp" alt="How we'll build the device database, together">
+<p>Imagine knowing how a smart device will actually perform in your home before you buy it… not from a spec sheet, but from anonymized data that people running setups just like yours have opted to share. Having answers to questions like: will this sensor work without the cloud? Is that smart plug actually being reported by users as reliable? Does “local control” mean local always, or just sometimes? Will these devices work well across protocols? What this device looks like in other users’ homes?</p>
+<a name="read-more"></a>
+<p>That’s the idea behind the Open Home Foundation Device Database: a community-powered resource built from anonymized data shared voluntarily by Home Assistant users around the world. The aim: to give people the information they need to benefit from <a href="https://www.openhomefoundation.org/about/" target="_blank" rel="noopener noreferrer"><strong>privacy, choice, and sustainability</strong></a> in their smart homes.</p>
+<p>Having easy access to this wealth of data changes everything. With the device database at your fingertips, you’ll know upfront that there are 1000+ Home Assistant users running that smart plug fully locally, and it includes those voltage and wattage sensors you were looking for. Or if you see a sensor everyone’s raving about requires Bluetooth when your protocol of choice is Zigbee, the database could save you the hassle of buying it in the first place.</p>
+<p>Of course, there are some excellent device databases and compatibility lists already available. Our own <a href="https://works-with.home-assistant.io/" target="_blank" rel="noopener noreferrer">Works with Home Assistant</a> (WWHA) program puts products through their paces in home settings, which has taught us how vital real-world testing is. But to really understand how devices perform across the incredibly diverse range of setups out there (different integrations, hardware combinations, network connections, and protocols) we need data at a much larger scale. That’s what makes the device database different: it’s thousands of real homes opting in to contribute real anonymized data. And that’s only possible with your help.</p>
+<h2>Building together <a name="building-together" href="#building-together"></a>
+</h2>
+<p>Creating the device database is a big job, and we’re going to need your help to do it. Before we build a shiny new website or complex search engine, the first step is to make sure the data you opt to share with us is accurate, anonymized, and meaningful, so we’re prioritizing:</p>
+<ul>
+<li>
+<strong>Privacy first:</strong> The information we collect strictly follows our <a href="https://drive.google.com/file/d/18Bw8P2Wxr0uWgcqLAf4TfH6aMOmcgw0q/view" target="_blank" rel="noopener noreferrer">privacy principles</a>: we don’t collect any personal data, period. Instead, we only share aggregated versions of device data, ensuring our community gets the insights they need without compromising anyone’s privacy. Check out our <a href="https://www.openhomefoundation.org/device-database-data-use-statement" target="_blank" rel="noopener noreferrer">Data Use Statement</a> for details.</li>
+<li>
+<strong>Real-world context:</strong> Our device database is centered around anonymized device data from Home Assistant instances of users who choose to participate through this new <a href="https://www.home-assistant.io/integrations/labs/">Labs</a> feature.</li>
+<li>
+<strong>Laying the groundwork:</strong> To prepare the first stage of this initiative, we invited members of the Open Home Foundation, our commercial partners, and a range of Home Assistant users, to opt into sharing their device data with us. This collaborative start has helped us aggregate more than <strong>2,000 unique devices across more than 160 integrations</strong>, with lots more to come.</li>
+<li>
+<strong>Transparency:</strong> We’ve launched an initial public dashboard for aggregated statistics and data downloads, giving you a first look at the insights as they grow. Of course, we won’t stop there, as we’re approaching this step-by-step…</li>
+</ul>
+<h2>Nothing happens overnight <a name="nothing-happens-overnight" href="#nothing-happens-overnight"></a>
+</h2>
+<p>Like everything we do, the Device database initiative follows a steady, iterative approach, which takes time. We want to be honest: <strong>nothing happens overnight</strong>. We don’t believe in hiding away for years behind closed doors just to launch our vision of a “perfect” finished product (spoiler: there’s no such thing as perfect!). Instead, in the true open source fashion, we build in the open, release early experiments, and refine them based on how our community actually uses them.</p>
+<p>Right now, in these early stages, our focus is on <strong>planting the seeds and gathering the first shoots of real-world information</strong>, as well as your feedback. This way, the tools we build later can grow and evolve alongside your needs.</p>
+<h2>The next steps <a name="the-next-steps" href="#the-next-steps"></a>
+</h2>
+<p>Following our iterative philosophy, we have a roadmap of small, manageable milestones designed to gather feedback at every step:</p>
+<h3>1. Launching in Home Assistant Labs <a name="1-launching-in-home-assistant-labs" href="#1-launching-in-home-assistant-labs"></a>
+</h3>
+<p>We are introducing the Open Home Foundation device database as a Labs feature in the <strong>2026.2 release of Home Assistant</strong>. The idea is to broaden visibility and reach a wider audience (hello, that means you ) willing to contribute by opting in to share their device data and providing valuable feedback.</p>
+<h3>2. Putting the data in your hands <a name="2-putting-the-data-in-your-hands" href="#2-putting-the-data-in-your-hands"></a>
+</h3>
+<p>Building on the further insights and feedback we gather, we’re planning to launch the first public device database web interface in the first half of 2026. The plan is to make it easier for you to explore and interact with the information, beyond simple statistical dashboards.</p>
+<p>While this initial version will be far from the final version (if there ever is one!). By getting it into your hands as early as possible, we can better understand where to go next, and make sure our future work is focused on the most valuable features for you.</p>
+<h3>3. Encouraging community contributions <a name="3-encouraging-community-contributions" href="#3-encouraging-community-contributions"></a>
+</h3>
+<p>Right from the start, we’re establishing simple flows to enable you to contribute more easily, allowing you to enrich the device database by adding real-world insights, all under the watch of our community. The result: an authentic and unbiased source of truth that helps everyone make informed decisions when it comes to privacy, choice, and sustainability in the smart home.</p>
+<h2>Now it’s over to you! <a name="now-its-over-to-you" href="#now-its-over-to-you"></a>
+</h2>
+<p>Because this project belongs to the community, we need your perspective early and often to help shape what comes next.</p>
+<p><strong>This is a marathon, not a sprint.</strong> The device database will only become a definitive resource through consistent, collective effort over the coming months and years, but bit by bit, device by device, we can make something great together! Here’s how you can be part of it:</p>
+<ul>
+<li>
+<strong>Enable Device Analytics:</strong> If you use Home Assistant, <a href="https://my.home-assistant.io/redirect/labs/" target="_blank" rel="noopener noreferrer">opting into Device Analytics</a> in the Labs menu is the direct way to contribute to the device database.</li>
+<li>
+<strong>Provide feedback:</strong> We’ve created a simple <a href="https://forms.gle/GqvRmgmghSDco8M46" target="_blank" rel="noopener noreferrer">survey form</a> so you can let us know what you think of the initiative, and why you’d like to contribute (or not!).</li>
+<li>
+<strong>Join the discussion:</strong> We also have a dedicated <a href="https://discord.com/channels/330944238910963714/1463602457924997236" target="_blank" rel="noopener noreferrer">Discord channel</a> and want to hear what matters most to you: how can we make the device database a flourishing resource the community can trust for years to come?</li>
+</ul>
+<p>Together we’ll build a transparent, open, and community-driven map of the real-world smart home ecosystem: one that gets better with every contribution. We hope you’ll be part of it.</p> </article> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

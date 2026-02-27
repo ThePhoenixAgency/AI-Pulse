@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wormable XMRig Campaign Uses BYOVD Exploit and Time-Based Logic Bomb</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Wormable XMRig Campaign Uses BYOVD Exploit and Time-Based Logic Bomb</h1>
+  <div class="metadata">
+    Source: The Hacker News | Date: 2/23/2026 5:59:00 PM | <a href="https://thehackernews.com/2026/02/wormable-xmrig-campaign-uses-byovd.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSN4m24uNLL9rLCwHv89KIT-P1ExHG8D2EAk0TBI7XClmXn4JxBe0NWurC0iazjhxVKll6ZmSfMPbfD3ohlUDAXCscVdXkLmFicuwIoz9ya4Lvx6FCcgAdu75R72rx_W1-1I5UGbtgJMkSCR1MaZAGUxzHM5uSDAhNj5FBHGpCq__7yUclLAQg7IGhUhdW/s1600/miners.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSN4m24uNLL9rLCwHv89KIT-P1ExHG8D2EAk0TBI7XClmXn4JxBe0NWurC0iazjhxVKll6ZmSfMPbfD3ohlUDAXCscVdXkLmFicuwIoz9ya4Lvx6FCcgAdu75R72rx_W1-1I5UGbtgJMkSCR1MaZAGUxzHM5uSDAhNj5FBHGpCq__7yUclLAQg7IGhUhdW/s1600/miners.jpg"></a></p> <p>Cybersecurity researchers have disclosed details of a new cryptojacking campaign that uses pirated software bundles as lures to deploy a bespoke XMRig miner program on compromised hosts.</p>
+<p>"Analysis of the recovered dropper, persistence triggers, and mining payload reveals a sophisticated, multi-stage infection prioritizing maximum cryptocurrency mining hashrate, often destabilizing the victim system," Trellix researcher Aswath A <a href="https://www.trellix.com/blogs/research/technical-deep-dive-the-monero-mining-campaign/" target="_blank" rel="noopener noreferrer">said</a> in a technical report published last week.</p>
+<p>"Furthermore, the malware exhibits worm-like capabilities, spreading across external storage devices, enabling lateral movement even in air-gapped environments."</p>
+<p>The entry point of the attack is the use of social engineering decoys, advertising free premium software in the form of pirated software bundles, such as installers for office productivity suites, to trick unsuspecting users into downloading malware-laced executables.</p>
+<p>The binary acts as the central nervous system of the infection, serving different roles as an installer, watchdog, payload manager, and cleaner to oversee different aspects of the attack lifecycle. It features a modular design that separates the monitoring features from the core payloads responsible for cryptocurrency mining, privilege escalation, and persistence if it's terminated.
+</p>
+<p>This flexibility, or mode switching, is achieved via command-line arguments -</p>
+<ul>
+<li>No parameter, for environment validation and migration during the early installation phase.</li>
+<li>002 Re:0, for dropping the main payloads, starting the miner, and entering a monitoring loop.</li>
+<li>016, for restarting the miner process if it's killed.</li>
+<li>barusu, for initiating a self-destruct sequence by terminating all malware components and deleting files.</li>
+</ul>
+<p>Present within the malware is a logic bomb that operates by retrieving the local system time and comparing it against a predefined timestamp -</p>
+<ul>
+<li>If it's before December 23, 2025, the malware proceeds with installing the persistence modules and launching the miner.</li>
+<li>If it's after December 23, 2025, the binary is launched with the "barusu" argument, resulting in a "controlled decommissioning" of the infection.</li>
+</ul> <p>The hard deadline of December 23, 2025, indicates that the campaign was designed to run indefinitely on compromised systems, with the date likely either signaling the expiration of rented command-and-control (C2) infrastructure, a predicted shift in the cryptocurrency market, or a planned move to a new malware variant, Trellix said.</p>
+<table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-GqKd7kMAr7HhOTtPWnstkNRy3jg6LMSzFkuMOsuWxDO6xuLOK34oX0sCezT255yyj3q5pUx-hC5M6UZ20rGyubX8_b88NEtBC1Vq4gI0GWnqn_PfJGNtTRRTYeJ4M5XPHScAR60CHwkICCL-u9wBntgimH6ULm3okJWKg3no08wV-sj1mWSRBm8majUn/s1600/1.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-GqKd7kMAr7HhOTtPWnstkNRy3jg6LMSzFkuMOsuWxDO6xuLOK34oX0sCezT255yyj3q5pUx-hC5M6UZ20rGyubX8_b88NEtBC1Vq4gI0GWnqn_PfJGNtTRRTYeJ4M5XPHScAR60CHwkICCL-u9wBntgimH6ULm3okJWKg3no08wV-sj1mWSRBm8majUn/s1600/1.jpg"></a></td></tr><tr><td>Overall file inventory</td></tr></tbody></table>
+<p>In the case of the standard infection routine, the binary – which acts as a "self-contained carrier" for all malicious payloads – writes the different components to disk, including a legitimate Windows Telemetry service executable that's used to sideload the miner DLL.</p>
+<p>Also dropped are files to ensure persistence, terminate security tools, and execute the miner with elevated privileges by using a legitimate but flawed driver ("<a href="https://thehackernews.com/2025/08/shadowcaptcha-exploits-wordpress-sites.html" target="_blank" rel="noopener noreferrer">WinRing0x64.sys</a>") as part of a technique called bring your own vulnerable driver (<a href="https://thehackernews.com/2026/02/reynolds-ransomware-embeds-byovd-driver.html" target="_blank" rel="noopener noreferrer">BYOVD</a>). The driver is susceptible to a vulnerability tracked as <a href="https://nvd.nist.gov/vuln/detail/cve-2020-14979" target="_blank" rel="noopener noreferrer">CVE-2020-14979</a> (CVSS score: 7.8) that allows privilege escalation.</p>
+<p>The integration of this exploit into the XMRig miner is to have greater control over the CPU's low-level configuration and boost the mining performance (i.e., the RandomX hashrate) by 15% to 50%.</p>
+<p>"A distinguishing feature of this XMRig variant is its aggressive propagation capability," Trellix said. "It does not rely solely on the user downloading the dropper; it actively attempts to spread to other systems via removable media. This transforms the malware from a simple Trojan into a worm."</p>
+<p>Evidence shows that the mining activity took place, albeit sporadically, throughout November 2025, before spiking on December 8, 2025.</p>
+<p>"This campaign serves as a potent reminder that commodity malware continues to innovate," the cybersecurity company concluded. "By chaining together social engineering, legitimate software masquerades, worm-like propagation, and kernel-level exploitation, the attackers have created a resilient and highly efficient botnet."</p>
+<table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-woeqTeTeyKibXugWqe3PyJjZ6VwQzpJJlq4_eYvvZzCvyZCF3WY3M6effGHTE8JOgMcYHS2Gg_uDp3sJVaFQNmKl1NMckd4kuUcuKUKbwPIYCTnyMTFqhR35DNsBXj6dM_o4ZBwMsoiduwDRszkxABLLkctTAHU7ZLv2oeh55F_2_mrceI4VQ2Mz6_uK/s1600/2.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-woeqTeTeyKibXugWqe3PyJjZ6VwQzpJJlq4_eYvvZzCvyZCF3WY3M6effGHTE8JOgMcYHS2Gg_uDp3sJVaFQNmKl1NMckd4kuUcuKUKbwPIYCTnyMTFqhR35DNsBXj6dM_o4ZBwMsoiduwDRszkxABLLkctTAHU7ZLv2oeh55F_2_mrceI4VQ2Mz6_uK/s1600/2.jpg"></a></td></tr><tr><td>A "Circular Watchdog" topology to ensure persistence</td></tr></tbody></table>
+<p>The disclosure comes as Darktrace said it identified a malware artifact likely generated using a large language model (LLM) that exploits the <a href="https://thehackernews.com/2025/12/react2shell-vulnerability-actively.html" target="_blank" rel="noopener noreferrer">React2Shell</a> vulnerability (CVE-2025-55182, CVSS score: 10.0) to download a Python toolkit, which leverages the access to drop an XMRig miner by running a shell command.</p>
+<p>"While the amount of money generated by the attacker in this case is relatively low, and cryptomining is far from a new technique, this campaign is proof that AI-based LLMs have made cybercrime more accessible than ever," researchers Nathaniel Bill and Nathaniel Jones <a href="https://www.darktrace.com/blog/ai-llm-generated-malware-used-to-exploit-react2shell" target="_blank" rel="noopener noreferrer">said</a>.</p>
+<p>"A single prompting session with a model was sufficient for this attacker to generate a functioning exploit framework and compromise more than ninety hosts, demonstrating that the operational value of AI for adversaries should not be underestimated."</p> <p>Attackers have also been putting to use a toolkit dubbed <a href="https://main.whoisxmlapi.com/blog/to-cache-a-predator-ilovepoop-toolkit-react2shell-cve-2025-55182" target="_blank" rel="noopener noreferrer">ILOVEPOOP</a> to scan for exposed systems still vulnerable to React2Shell, likely in an effort to lay the groundwork for future attacks, according to WhoisXML API. The probing activity has particularly targeted government, defense, finance, and industrial organizations in the U.S.</p>
+<p>"What makes ILOVEPOOP unusual is a mismatch between how it was built and how it was used," said Alex Ronquillo, vice president of product at WhoisXML API. "The code itself reflects expert-level knowledge of React Server Components internals and employs attack techniques not found in any other documented React2Shell kit."</p>
+<p>"But the people deploying it made basic operational mistakes when interacting with WhoisXML API's honeypot monitoring systems – errors that a sophisticated attacker would normally avoid. In practical terms, this gap points to a division of labor."</p>
+<p>"We might be looking at two different groups: one that built the tool and one that's using it. We see this pattern in state-sponsored operations – a capable team develops the tooling, then hands it off to operators who run mass scanning campaigns. The operators don't need to understand how the tool works – they just need to run it."</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

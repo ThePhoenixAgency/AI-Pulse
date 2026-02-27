@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>PinMe - Le web immuable en une commande</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>PinMe - Le web immuable en une commande</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/27/2026 8:07:28 AM | <a href="https://korben.info/pinme-site-web-permanent-ipfs.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/pinme-site-web-permanent-ipfs/pinme-site-web-permanent-ipfs-1.png" alt="Image illustrant l'article : PinMe - Le web immuable en une commande"></p><div><span>Ce qu’il faut retenir</span><div><ol><li>PinMe déploie vos sites statiques sur IPFS en une commande (npm install -g pinme + pinme upload), rendant le contenu immuable et accessible via n'importe quelle passerelle même si votre domaine expire</li><li>Gratuit jusqu'à 1 Go par site avec détection auto du dossier de build (dist/, build/, out/), limite de 200 Mo par fichier suffisante pour landing pages et démos</li><li>Votre contenu devient permanent et décentralisé sur le réseau IPFS, mais attention : vous ne pouvez pas le modifier ou supprimer après publication, c'est le prix de l'immuabilité</li></ol><p>Résumé généré par IA</p></div><div><p>Les 404, c'est la plaie du web... J'en sais quelque chose, je fais la chasse à ça en permanence sur mon propre site. C'est vrai que c'est relou parce que vous bookmarkez un projet cool, vous y retournez trois mois après... et pouf, ça a disparu. Le dev n'a pas renouvelé son nom de domaine, l'hébergeur a fermé boutique, le contenu s'est évaporé ou que sais-je encore... En fait, sur le web, <strong>RIEN n'est permanent</strong>.</p><p><a href="https://github.com/glitternetwork/pinme">PinMe</a>
+prend le problème à l'envers en collant vos fichiers directement sur
+<a href="https://korben.info/ipfs-le-web-permanent.html">IPFS</a>
+. En gros, au lieu de dépendre d'un serveur unique qui peut tomber n'importe quand, vos pages sont distribuées sur un réseau décentralisé et identifiées par un hash CID unique. Du coup, tant que le réseau tourne, votre contenu existe. Pas besoin de renouveler quoi que ce soit, pas besoin de payer un hébergeur... ça fonctionne tout seul.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/pinme-site-web-permanent-ipfs/pinme-site-web-permanent-ipfs-2.png" alt=""></p><p>L'installation se fait en une ligne :</p><div><pre><code><span><span>npm install -g pinme
+</span></span></code></pre></div><p>Pour déployer votre site statique, c'est hyper simple :</p><div><pre><code><span><span><span>pinme</span> <span>upload</span> <span>dist</span><span>/</span>
+</span></span></code></pre></div><p>L'outil détecte le dossier de build, ou plutôt il le devine tout seul selon votre framework : <code>dist/</code> pour Vite et Vue, <code>build/</code> pour Create React App, <code>out/</code> pour Next.js en export statique. Ça évite d'avoir à se palucher de la config.</p><p>Côté limites, on est sur 200 Mo par fichier et 1 Go au total ce qui est largement suffisant pour une landing page ou une démo ! Et c'est GRATUIT. Pour ceux qui veulent un domaine lisible plutôt qu'un hash cryptique, y'a aussi des domaines ENS (les <code>.eth</code> sur Ethereum) ou des sous-domaines en <code>.pinit.eth.limo</code>. Après pour les domaines custom faudra un compte VIP par contre.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/pinme-site-web-permanent-ipfs/pinme-site-web-permanent-ipfs-3.png" alt=""></p><p>Le truc sympa c'est que vos fichiers restent accessibles via n'importe quelle passerelle IPFS, genre dweb.link ou w3s.link. Ainsi, si votre hébergeur ferme ou que votre domaine expire comme je le disais en intro, on s'en fiche ! Le contenu est toujours là, épinglé quelque part sur le réseau. C'est du stockage immuable, basé sur le contenu lui-même... du coup personne ne peut modifier ou supprimer ce que vous avez publié. (Et en fait vous non plus, faut le savoir.)</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/pinme-site-web-permanent-ipfs/pinme-site-web-permanent-ipfs-4.png" alt=""></p><p>Et y'a aussi des commandes pour exporter en fichiers CAR et réimporter ailleurs, ce qui est pratique pour archiver ou migrer entre passerelles.</p><p>Voilà c'est gratuit pour 1 Go de stockage, c'est open source (licence MIT) et
+<a href="https://pinme.eth.limo/">c'est par là</a>
+. Merci à Lorenper pour la découverte !</p></div>Références<section><ul><li><a href="https://pinme.eth.limo/" target="_blank" rel="noopener noreferrer">https://pinme.eth.limo/</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

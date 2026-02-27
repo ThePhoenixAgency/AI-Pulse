@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mode d'éxecution des scènes</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Mode d'éxecution des scènes</h1>
+  <div class="metadata">
+    Source: Gladys Assistant (Forum) | Date: 2/17/2026 7:39:09 PM | <a href="https://community.gladysassistant.com/t/mode-dexecution-des-scenes/10020" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <p><p>Après quelques mois d’utilisation de Home Assistant (ne me jetez pas de <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/tomato.png?v=15" title=":tomato:" class="emoji" alt=":tomato:" loading="lazy" width="20" height="20">), je trouve qu’une fonctionnalité intéressante manque à Gladys sur la gestion des scènes.</p>
+<p>Dans le passé, j’ai vu de nombreuses discussions sur ce besoin :</p>
+<ul>
+<li>lors de la détection d’un mouvement sur un capteur</li>
+<li>allumer la lumière, attendre 2 minutes, éteindre la lumière</li>
+</ul>
+<p>Mais la plupart des utilisateurs rencontrent le problème suivant : si plusieurs détections de mouvement se passent, la scène est lancée plusieurs fois en parallèle et la lumière pass en mode spectacle <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/light_bulb.png?v=15" title=":light_bulb:" class="emoji" alt=":light_bulb:" loading="lazy" width="20" height="20"> (allumage/extinctions incessants).</p>
+<p>La solution à cela était souvent un device virtuel stockant l’état ou des conditions (si la lumière n’est pas déjà allumée).</p>
+<p>Mais je trouve que HA a une approche intéressante pour gérer : le <a href="https://www.home-assistant.io/docs/automation/modes/">mode d’exécution des scènes</a>.</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://gladys-assistant-community.b-cdn.net/uploads/default/original/3X/6/0/609ba6334edc1c082f97303870b84315edc6434e.png" data-download-href="https://gladys-assistant-community.b-cdn.net/uploads/default/609ba6334edc1c082f97303870b84315edc6434e" title="image"><img src="https://gladys-assistant-community.b-cdn.net/uploads/default/original/3X/6/0/609ba6334edc1c082f97303870b84315edc6434e.png" alt="image" data-base62-sha1="dMDjtk19W5IDg7bB1Z9oIOxheAm" width="497" height="304"></a></div><p></p>
+<p>Pour le scénario plus haut, le mode <code>single</code> résout directement le problème. Si la scène est en train de s’exécuter, warning dans les logs et elle ne se relance pas une deuxième fois.</p>
+<p>On pourrait laisser le mode <code>parallel</code> pour les scènes existantes. Et les autres modes sont peut-être trop complexes aujourd’hui <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/thinking.png?v=15" title=":thinking:" class="emoji" alt=":thinking:" loading="lazy" width="20" height="20"></p>
+<p>Qu’est-ce que vous en pensez ? Si le besoin est fort, je peux décrire une spécification.</p> <p><small>3 messages - 2 participant(e)s</small></p> <p><a href="https://community.gladysassistant.com/t/mode-dexecution-des-scenes/10020">Lire le sujet en entier</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

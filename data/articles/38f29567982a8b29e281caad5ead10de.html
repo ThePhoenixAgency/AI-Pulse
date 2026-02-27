@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Sécuriser au-delà du code : le nouveau périmètre de l’AppSec</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Sécuriser au-delà du code : le nouveau périmètre de l’AppSec</h1>
+  <div class="metadata">
+    Source: Programmez | Date: 2/24/2026 8:14:36 AM | <a href="https://www.programmez.com/actualites/securiser-au-dela-du-code-le-nouveau-perimetre-de-lappsec-39051" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><p>Le monde de la technologie est en pleine effervescence face au potentiel du développement logiciel assisté par l’IA et de l’automatisation. Dans le même temps, cette accélération s’accompagne d’un renforcement marqué de la pression réglementaire et d’une augmentation des risques pesant sur la chaîne d’approvisionnement logicielle.&nbsp;</p><p>Si de nombreuses organisations continuent de s’appuyer principalement sur l’analyse du code source, une telle approche, centrée uniquement sur le code, crée un « angle mort malware » de plus en plus préoccupant. Les applications modernes ne sont plus simplement écrites ligne par ligne : elles sont assemblées à partir de binaires, de packages tiers, d’images de conteneurs et, de plus en plus, de modèles d’IA. Limiter la sécurisation à ce que les développeurs produisent directement revient à ignorer les véritables surfaces d’attaque exploitées par les cybercriminels. Pour répondre à la tension entre rapidité de mise en production et exigences de sécurité, l’attention doit se porter sur les binaires.</p><p><b>L’analyse du code source seule est insuffisante pour sécuriser la chaîne d’approvisionnement</b><b></b></p><p>Le code source traduit une intention ; les binaires matérialisent la réalité. Une fois entré dans le pipeline CI/CD, le code est transformé par les systèmes de build, les dépendances, les plugins et les fichiers de configuration. Des vulnérabilités ou des comportements malveillants peuvent alors être introduits bien après le commit du code : scripts de build compromis, dépendances infectées, artefacts altérés.</p><p>Les approches AppSec traditionnelles ont longtemps privilégié le « shift left », notamment via les tests statiques de sécurité des applications (SAST). Ces méthodes conservent toute leur pertinence, mais elles ne suffisent pas à elles seules. De nombreux incidents qui touchent la chaîne d’approvisionnement trouvent leurs origines dans des composants tiers ou dans les livrables compilés destinés à la production. Sans visibilité sur ces binaires, la sécurisation porte davantage sur un plan théorique que sur le produit réellement déployé.</p><p><b>Pourquoi la priorisation des vulnérabilités devient un impératif stratégique&nbsp;</b><b></b></p><p>Le volume de vulnérabilités ne cesse de croître et dépasse désormais la capacité de remédiation de la plupart des équipes. Traiter chaque faille comme prioritaire entraîne une fatigue liée aux alertes et une mobilisation inefficace de ressources de sécurité déjà contraintes.</p><p>Une priorisation fondée sur le contexte apporte une réponse structurante. Déterminer si une vulnérabilité est réellement atteignable ou exploitable dans une application donnée permet de concentrer les efforts sur les failles qui constituent un risque avéré. L’analyse de la configuration, des dépendances transitives et du contexte d’exécution affine encore cette évaluation en offrant une vision plus précise des expositions réelles. Elle favorise ainsi l’alignement entre les équipes de sécurité et de développement, sur les correctifs à traiter en priorité.</p><p>Cette intelligence contextuelle est désormais intégrée aux plateformes AppSec modernes, permettant de dépasser la simple accumulation d’alertes au profit d’une décision véritablement orientée par le risque.</p><p><b>Stopper les packages malveillants avant leur entrée dans le SDLC</b><b></b></p><p>La récente vague d’attaques visant principalement le registre npm met en lumière un point critique : la « porte d’entrée » de l’environnement de développement constitue aujourd’hui la principale source d’exposition au risque. Lorsqu’un développeur télécharge un package malveillant, l’attaque est effective avant même toute phase d’analyse du code.</p><p>Dans ce contexte, la mise en place de contrôles préventifs dès le point d’entrée devient essentielle. Vérifier les packages, plugins, modèles et extensions au regard des politiques internes permet de bloquer les composants identifiés comme malveillants ou suspects avant leur intégration dans le cycle de développement. Plutôt que d’intervenir a posteriori, cette approche réduit significativement les risques en empêchant des catégories entières d’attaques de se déployer.</p><p><b>La valeur d’un système d’enregistrement unique pour l’AppSec&nbsp;</b><b></b></p><p>La multiplication d’outils fragmentés alimente ce que beaucoup qualifient de « crise de confiance ». Lorsqu’elle est greffée a posteriori au lieu d’être pensée de façon native et intégrée à chaque étape du cycle de vie, la sécurité finit inévitablement par ralentir la mise en production.</p><p>Réunir la gestion des artefacts et les signaux de sécurité au sein d’un système d’enregistrement unique instaure une gouvernance continue et automatisée. Les politiques s’appliquent de manière homogène à l’ensemble des dépôts et des pipelines. La préparation aux audits devient un processus continu plutôt qu’une course de dernière minute. Les équipes sécurité et DevOps s’appuient sur une source de vérité partagée. À la clé, une sécurité renforcée, avec moins de perturbations pour les flux de développement.</p><p><b>IA, transparence et réglementation émergente</b><b></b></p><p>L’IA et le machine learning figurent parmi les technologies les plus disruptives depuis l’avènement du smartphone. Leur essor s’accompagne toutefois d’une exigence de transparence sans précédent. Les modèles, données d’entraînement et dépendances sont désormais considérés comme des artefacts logiciels à part entière, pleinement intégrés au périmètre de la sécurité de la chaîne d’approvisionnement.</p><p>Des cadres réglementaires comme l’AI Act européen illustrent l’ampleur des enjeux, avec des sanctions pouvant atteindre 6 % du chiffre d’affaires mondial en cas de non-conformité. Répondre à ces exigences suppose un renforcement significatif de la transparence, de la traçabilité et de la gouvernance, pour les composants logiciels traditionnels comme pour les actifs liés à l’IA.</p><p><b>Une approche AppSec adaptée à la chaîne d’approvisionnement logicielle actuelle&nbsp;</b><b></b></p><p>Il apparaît désormais évident que la sécurisation des logiciels modernes ne peut se limiter à un outil d’analyse de code isolé. Elle exige une approche de bout en bout, inscrite dans une logique DevSecOps, tenant compte des binaires, centrée sur la chaîne d’approvisionnement et intégrée aux processus de construction, de stockage et de promotion des artefacts. Associer la gestion des artefacts à des capacités de sécurité intégrées transforme la sécurité en levier d’accélération plutôt qu’en frein.</p><p>Les organisations qui alignent leur stratégie AppSec sur les réalités actuelles de la chaîne d’approvisionnement logicielle se donnent ainsi les moyens d’accélérer leurs livraisons tout en préservant la confiance, la conformité et la résilience. Il en résulte un bénéfice tangible, tant pour les équipes DevSecOps que pour l’ensemble de l’organisation.</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
