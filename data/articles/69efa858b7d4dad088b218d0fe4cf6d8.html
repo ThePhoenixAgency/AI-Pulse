@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,77 @@
     Source: Hugging Face Blog | Date: 10/27/2025 12:00:00 AM | <a href="https://huggingface.co/blog/streaming-datasets" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Aucun contenu disponible.</p>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/andito"><img alt="Andres Marafioti's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/65d66b494bbd0d92b641cdbb/6-7dm7B-JxcoS1QlCPdMN.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/lhoestq"><img alt="Quentin Lhoest's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1594214747713-5e9ecfc04957053f60648a3e.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/burtenshaw"><img alt="ben burtenshaw's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/62d648291fa3e4e7ae3fa6e8/oatOwf8Xqe5eDbCSuYqCd.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/pcuenq"><img alt="Pedro Cuenca's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1617264212503-603d25b75f9d390ab190b777.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/merve"><img alt="merve's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg"></a> </span> </span></p> </div></div> <h2> <a href="#streaming-the-same-easy-api"> <span></span> </a> <span> Streaming: The Same Easy API </span>
+</h2>
+<p>First things first: our changes are backwards compatible. You can still stream any dataset from the Hub with the same simple <code>streaming=True</code> flag. It's as easy as ever. </p>
+<pre><code><span>from</span> datasets <span>import</span> load_dataset <span># Stream a dataset instead of downloading it</span>
+dataset = load_dataset(<span>"HuggingFaceM4/FineVisionMax"</span>, split=<span>"train"</span>, streaming=<span>True</span>)
+<span># Get the first example</span>
+<span>print</span>(<span>next</span>(<span>iter</span>(dataset)))
+</code></pre>
+<p>Thousands of AI developers around the world use <code>datasets</code> daily; they should just get improved performance with zero extra work.</p>
+<h2> <a href="#the-challenge-streaming-at-scale"> <span></span> </a> <span> The Challenge: Streaming at Scale </span>
+</h2>
+<p>Streaming was a lifesaver to quickly understand a dataset, but to train models, people were usually downloading the data locally, or using a cloud storage service such as S3. That's what we were doing for training <a href="https://huggingface.co/blog/smolvlm2">SmolVLM</a>, we had all of our data on S3 and were streaming directly from it.</p>
+<p>We wanted to change that, so we decided to use streaming from the Hub when we were developing <a href="https://github.com/huggingface/nanoVLM">nanoVLM</a>. Soon we found a big issue: our test run generated over 100,000 requests in under a minute, which got our IP blocked by the Hub! This happened because every DataLoader worker was initializing the dataset independently. As we dug deeper, we found that this creates a storm of redundant requests, many of which are unnecessary. Our changes ultimately reduced startup requests by a factor of 100. In total, our improvements delivered:</p>
+<ul>
+<li>Data files resolution time: 10x faster</li>
+<li>Startup requests: Up to 100x more efficient</li>
+<li>Streaming speed: Up to 2x faster</li>
+<li>In-flight requests: Up to 2x more efficient</li>
+</ul>
+<h2> <a href="#under-the-hood-what-we-improved"> <span></span> </a> <span> Under the Hood: What We Improved </span>
+</h2>
+<p>So, what changed? We focused on two phases: startup and streaming.</p>
+<p><strong>1. Startup</strong>
+The initial resolution of data files was creating a ton of requests. We made two major changes:</p>
+<ul>
+<li>Persistent Data Files Cache: We are now caching the list of data files across all DataLoader workers. The first worker resolves the file list from the Hub. All others workers read directly from this local cache, virtually eliminating startup requests and slashing resolution time. No more request storms!</li>
+<li>Optimized Resolution Logic: We also minimized the number of API calls required for that initial worker to fetch the file list. We now bundle the necessary requests as efficiently as possible, reducing latency even further.</li>
+</ul>
+<p><strong>2. Streaming </strong>
+To improve throughput during streaming itself, we've introduced two new features:</p>
+<ul>
+<li>Prefetching for Parquet: We enabled prefetching for Parquet datasets. This means that while your model is processing the current chunk of data, the datasets library is already fetching the next chunk in the background. This keeps the data pipeline full and ensures your GPU is never left waiting for data.</li>
+<li>Configurable Buffering: Advanced users can now fine-tune streaming performance for their specific hardware and network setup. We've exposed options to configure the buffer's block size and the prefetch volume, giving you maximum control to optimize I/O.</li>
+</ul>
+<p>This is how we can increase the minimum request size when streaming from 32MiB (default) to 128MiB and configure prefetching:</p>
+<pre><code><span>import</span> pyarrow
+<span>import</span> pyarrow.dataset fragment_scan_options = pyarrow.dataset.ParquetFragmentScanOptions( cache_options=pyarrow.CacheOptions( prefetch_limit=<span>1</span>, range_size_limit=<span>128</span> &lt;&lt; <span>20</span> ),
+)
+ds = load_dataset(parquet_dataset_id, streaming=<span>True</span>, fragment_scan_options=fragment_scan_options)
+</code></pre>
+<p>Together, these improvements can double your data throughput, allowing you to train faster and more efficiently.</p>
+<h2> <a href="#how-are-we-faster-than-plain-s3-xet"> <span></span> </a> <span> How are we faster than plain S3: Xet </span>
+</h2>
+<p>Hugging Face uses Xet: a dedupe-based storage which enables fast deduped uploads and downloads. Unlike traditional remote storage, data transfers are faster on Xet because duplicated data is only transferred once. For example: uploading a large scale dataset to Hugging Face leverages Xet which accelerates uploads. Once the dataset is uploaded, it can be streamed right away.</p>
+<p>Deduplication for Parquet is enabled through <a href="https://huggingface.co/blog/parquet-cdc">Parquet Content Defined Chunking (CDC)</a>. Thanks to Parquet CDC and Xet deduplication, uploading datasets on Hugging Face is faster than on any traditional remote storage.</p>
+<p>This is supported by our <code>pyspark_huggingface</code> package, a Spark Data Source to read/write HF datasets. It includes Parquet CDC and Xet support, accelerating data transfers on HF dramatically.</p>
+<h2> <a href="#need-a-custom-streaming-pipeline-"> <span></span> </a> <span> Need a custom streaming pipeline ? </span>
+</h2>
+<p>Some data file formats are not supported in <code>datasets</code>, and sometimes there is a need for more control, so we made it easy to build custom streaming pipelines. This has been battle-tested in the LeRobot library to sample video frames, and in the <code>WebDataset</code> library to stream TAR archives.</p>
+<p>We improved the <a href="https://huggingface.co/docs/huggingface_hub/guides/hf_file_system">HfFileSystem</a> in the <code>huggingface_hub</code> library to efficiently read files from remote Hugging Face dataset repositories and stream data:</p>
+<pre><code><span>from</span> huggingface_hub <span>import</span> HfFileSystem path = <span>f"hf://datasets/<span>{dataset_id}</span>/<span>{path_in_repo}</span>"</span>
+<span>with</span> HfFileSystem().<span>open</span>(path) <span>as</span> f: <span># loop with .read() or .readline() to stream data</span> <span># or do random access with .seek()</span>
+</code></pre>
+<p>Passing a <code>HfFileSystem</code> to a torch <code>DataLoader</code> reuses the cached results from <code>.ls()</code> and <code>.glob()</code> which eliminates the need for additional requests when listing data files.</p>
+<h2> <a href="#push-streaming-to-the-limit"> <span></span> </a> <span> Push streaming to the limit </span>
+</h2>
+<p>We're now using these streaming enhancements in nanoVLM to train the next generation of SmolVLMs. With these tweaks, we achieve better performance from streaming than from training on our cluster's hierarchical hard disk setup. In fact, streaming is now as fast as reading the data from local SSDs! Previously, transferring data to local SSDs was the process that used to delay our trainings by three-hours. For more details, check out our GitHub.</p>
+<h2> <a href="#get-started-and-see-the-difference"> <span></span> </a> <span> Get Started and See the Difference </span>
+</h2>
+<p>These powerful new features landed in the datasets and huggingface_hub libraries. To take advantage of them, simply update your libraries and check out <a href="https://huggingface.co/docs/datasets/stream">the documentation</a>:</p>
+<pre><code>pip install --upgrade datasets huggingface_hub
+</code></pre>
+<p>To celebrate this, we preconcatenated and shuffled all the data sources in FineVision into <a href="https://huggingface.co/datasets/HuggingFaceM4/FineVisionMax">FineVisionMax</a>. You can use this single combined dataset to train your VLM – no need to handle multiple datasets manually!</p>
+<pre><code><span>from</span> datasets <span>import</span> load_dataset <span># Stream a dataset instead of downloading it</span>
+dataset = load_dataset(<span>"HuggingFaceM4/FineVisionMax"</span>, split=<span>"train"</span>, streaming=<span>True</span>)
+<span># Get the first example</span>
+<span>print</span>(<span>next</span>(<span>iter</span>(dataset)))
+</code></pre>
+<p>And you can see how we do it at scale in <a href="https://github.com/huggingface/nanoVLM">nanoVLM</a>!</p>
+<p>Happy streaming! </p>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +113,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

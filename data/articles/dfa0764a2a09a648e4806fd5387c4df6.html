@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,33 +28,7 @@
     Source: PortSwigger Research | Date: 3/5/2024 2:55:00 PM | <a href="https://portswigger.net/research/using-form-hijacking-to-bypass-csp" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <p><img alt="Gareth Heyes" src="https://portswigger.net/content/images/profiles/callout_gareth_heyes_114px.png"></p>
-</div> <ul> <li> <p><span></span><strong>Published: </strong>05 March 2024 at 14:55 UTC</p> </li> <li> <p><strong>Updated: </strong>05 March 2024 at 14:55 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/e8/ff/6719-article-article.png" alt="Showing a knight with a shield blocking arrows with XSS vectors"></p><p><b>In this post we'll show you how to bypass <a href="https://portswigger.net/web-security/cross-site-scripting/content-security-policy">CSP</a> by using an often overlooked technique that can enable password theft in a seemingly secure configuration.
-</b></p><h2>What is form hijacking?</h2><p>Form hijacking isn't really a widely known technique; the idea is you have a HTML injection vulnerability that is protected by CSP. Then you use the HTML injection to inject your own form action by using the <code>formaction</code> attribute or injecting your own form to send data to the attackers server. Over eager password managers will also help fill in credentials with injected input elements making the attack pretty serious.
-</p><h2>Real world examples</h2><p>We found a <a href="https://portswigger.net/research/stealing-passwords-from-infosec-mastodon-without-bypassing-csp">real world example of this on Infosec Mastodon
-</a> where they used a fork of Mastodon that didn't filter HTML correctly. An attacker could then use form hijacking to send credentials to their server after Chrome's password manager had automatically filled them in. The end result was a user would see a post in Infosec Mastodon, click what looked like part of the interface but actually would send the user's credentials to an attacker's server.
-</p><p>That was over a year ago and then...we got an excellent report submitted by <a href="https://twitter.com/joaxcar">Johan Carlsson
-</a> to our very own bug bounty program.
-<a href="https://hackerone.com/reports/2279346"><span>In the report</span></a> he showed how we allowlisted some Google script resources and he could use that to bypass CSP by injecting <a href="https://portswigger.net/web-security/cross-site-scripting/contexts/client-side-template-injection">AngularJS</a>. After we fixed that he also pointed out that we didn't protect against form hijacking! Thankfully, this was just a bypass of our CSP as we didn't have a HTML injection vulnerability but it was good to receive a report that hardened our security so we gave him a $1,500 bounty.</p><h2>Why does it happen?</h2><p>The form-action directive was specified in version 2 of CSP. Unfortunately, default-src does not cover form actions. This means if you overlook this directive then your CSP will be vulnerable to form hijacking and this is exactly what happened in the case of the Infosec Mastodon and even our own site. Therefore this post was meant to spread awareness of this issue and hopefully harden many CSP's out there.
-</p><h2>Scanning your CSP</h2><p>We've recently released some new passive scan checks for CSP issues in Burp. These checks will find issues like form hijacking, allowlisted resources, untrusted script execution, untrusted style execution, malformed syntax, <a href="https://portswigger.net/web-security/clickjacking">clickjacking</a> and non-enforced CSP. I'll go through each one so you can understand how to fix these issues if you encounter them.
-</p><h2>Form hijacking</h2><p>If you don't use form actions on your site (which is pretty common these days in modern apps) you can specify the directive with the 'none' keyword, this is the safest configuration since an attacker won't be able to post forms to an external location. If your site requires "same site" form actions then you can use the 'self' keyword.&nbsp; Lastly if you want to allow an external location you can specify a URL but bear in mind that an attacker will be able to post to that location too if they find a HTML injection vulnerability. Examples of each configuration are given below:
-</p><p><code>
-Content-Security-Policy: form-action 'none'<br>Content-Security-Policy: form-action 'self'<br>Content-Security-Policy: form-action https://portswigger.net
-</code></p><h2>Allowlisted resources</h2><p>It's bad practice to use allowlisted URLs because they can be used to for <a href="https://www.blackhat.com/docs/us-17/thursday/us-17-Lekies-Dont-Trust-The-DOM-Bypassing-XSS-Mitigations-Via-Script-Gadgets.pdf">script gadgets
-</a>. This scan check will look at the script directives and see if any domains are allowlisted. To fix this you are advised to use a secure random nonce to protect your scripts:
-</p><p><code>Content-Security-Policy: script-src 'nonce-RANDOM';</code></p><h2>Untrusted script execution</h2><p>This issue points out when you use 'unsafe-inline' in your script directives. As the name suggests this opens your policy up to cross site scripting attacks because you can inject an inline script tag. It also covers when the policy allows wildcard domains, data: URLs, unsafe-eval and weak nonce randomisation. Secure random nonces are the best way to resolve this issue:
-</p><p><code>Content-Security-Policy: script-src 'nonce-RANDOM';</code></p><h2>Untrusted style execution</h2><p>Style based injections can often have a significant impact if there is sensitive information or tokens on the page. This issue points out if you use 'unsafe-inline' in conjunction with style based directives. Any wildcard domains, data: URLs and weak nonce randomisation will also be reported. To fix this again use nonces in your style directives:
-</p><p><code>Content-Security-Policy: style-src 'nonce-RANDOM';</code></p><h2>Malformed syntax</h2><p>When CSP encounters some malformed syntax it will ignore the value or maybe even the directive. This scan check looks for malformed CSP syntax and reports any directives or values that do not conform to the specification. We ran a scan on a large number of sites and found lots of common mistakes that this scan check will help iron out. When some invalid syntax is found the directive or value will be displayed in the issue detail. To fix this you should consult the CSP specification and ensure the syntax is correct.
-</p><h2>Clickjacking</h2><p>This check will check X-Frame-Options and the frame-ancesters directive in CSP and inform you if your application allows it to be framed. X-Frame-Options is now deprecated so we recommend you use the frame-ancestors directive to mitigate clickjacking attacks like this:
-</p><p><code>
-Content-Security-Policy: frame-ancestors 'none';
-</code></p><h2>Non-enforced CSP</h2><p>Burp will also inform you if your policy is in report only mode, this means the policy won't be enforced but will log the results. This is often used to transition to an enforced policy but can often be overlooked by mistake. It will also report an issue on a per site basis if CSP does not exist to encourage developers to deploy one.</p><h2>In the wild</h2><p>Whilst testing Burp we scanned our bug bounty pipeline and found lots of common mistakes that developers make when deploying CSP. We are going to highlight some of them below to help you avoid them.
-</p><h3>Incorrect protocol</h3><p>Some web sites forget the colon quite a lot when deploying.</p><p><code>Content-Security-Policy: script-src 'self' https</code></p><p>It should be:</p><p><code>Content-Security-Policy: script-src 'self' https:</code></p><p>You should avoid doing this of course because an attacker would be able to inject a script resource from any domain with TLS provided the target site is vulnerable to <a href="https://portswigger.net/web-security/cross-site-scripting">XSS</a>.
-</p><h3>Missing semicolon</h3><p>It's quite common to forget to include a semicolon. This can result in the directive name being used as a value which would mean the policy wouldn't enforce this directive!
-</p><p>This is incorrect:</p><p><code>frame-ancestors 'self' https://example.com default-src 'none'</code></p><p>It should be:</p><p><code>frame-ancestors 'self' https://example.com; default-src 'none'</code></p><h3>Incorrect value</h3><p>In CSP all special directive values are quoted. It's quite common to see values not quoted and also illegal values like the following:
-</p><p><code>Content-Security-Policy: frame-ancestors DENY</code></p><p>There is no DENY value in the frame-ancestors directive value. It should be:</p><p><code>Content-Security-Policy: frame-ancestors 'none'</code></p><h3>None quoted hashes or nonces</h3><p>A lot of sites also forget to include quotes around hashes or nonces. I think this is quite common because traditionally special values are quoted whereas non keywords are not. So it's quite understandable that they get confused:
-</p><p>This is incorrect:</p><p><code>Content-Security-Policy: script-src sha512-BASE64HASH</code></p><p>It should be:</p><p><code>Content-Security-Policy: script-src 'sha512-BASE64HASH'</code></p><h2>Burp release</h2><p>We hope that this post spreads awareness of form hijacking and common CSP mistakes. If you want to scan your own site for these issues you can get <a href="https://portswigger.net/burp/releases/professional-community-2024-2-1">Burp on the early adopter channel</a>. Happy hunting!</p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
-</div></div>
+    <p>In this post we'll show you how to bypass CSP by using an often overlooked technique that can enable password theft in a seemingly secure configuration. What is form hijacking? Form hijacking isn't re</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -69,12 +37,12 @@ Content-Security-Policy: frame-ancestors 'none';
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

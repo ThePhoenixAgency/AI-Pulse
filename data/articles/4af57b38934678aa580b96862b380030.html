@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - CooDiiNgg/NeuroSync: Self-learning system of ANNs designed to securely encrypt and transmit messages while constantly upgrading the encryption algorithm.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - CooDiiNgg/NeuroSync: Self-learning system of ANNs designed to securely encrypt and transmit messages while constantly upgrading the encryption algorithm.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 6:37:27 PM | <a href="https://github.com/CooDiiNgg/NeuroSync" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>NeuroSync</h1><a href="#neurosync"></a></div>
+<p><a href="https://www.python.org/downloads/"><img src="https://camo.githubusercontent.com/e115a70b47171326abc8f13ca55b2fafacdcafce1f251fed5b1ead0195717f56/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d332e392b2d626c75652e737667" alt="Python 3.9+"></a>
+<a href="https://pytorch.org/"><img src="https://camo.githubusercontent.com/af72f5398ae1602d08a4a430ac77d90be24f074fa4ddcd6b93b29cdc3dd87c42/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7079746f7263682d322e382b2d6565346332632e737667" alt="PyTorch 2.8+"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT"></a>
+<a href="https://github.com/CooDiiNgg/NeuroSync"><img src="https://camo.githubusercontent.com/a0f14f9d45ecc78cab415edef32710159b497ad68cf7da9c09b1f44d2479246c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f76657273696f6e2d302e312e362d677265656e2e737667" alt="Version"></a>
+<a href="https://colab.research.google.com/github/CooDiiNgg/NeuroSync/blob/main/docs/notebooks/neurosync_demo.ipynb"><img src="https://camo.githubusercontent.com/eff96fda6b2e0fff8cdf2978f89d61aa434bb98c00453ae23dd0aab8d1451633/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" alt="Open In Colab"></a>
+<a href="https://buymeacoffee.com/thedumb1"><img src="https://camo.githubusercontent.com/ae1848f99ea87c538c70dd9051798b769ba715939b8398ed02ad68a7da5d22bc/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4275792532304d6525323061253230436f666665652d6666646430303f7374796c653d666f722d7468652d6261646765266c6f676f3d6275792d6d652d612d636f66666565266c6f676f436f6c6f723d626c61636b" alt="Buy Me A Coffee"></a></p>
+<p>A neural cryptography library implementing adversarial training for secure communication. NeuroSync features three neural networks (Alice, Bob, and Eve) that learn to encrypt and decrypt messages while an adversary attempts to break the encryption, resulting in continuously improving security.</p>
+<div><h2>Overview</h2><a href="#overview"></a></div>
+<p>NeuroSync is inspired by <a href="https://arxiv.org/abs/1610.06918">Google Brain's research on neural cryptography</a>, where neural networks learn to protect communications. The system consists of:</p>
+<ul>
+<li><strong>Alice</strong> (Encoder): Transforms plaintext into ciphertext using a shared key</li>
+<li><strong>Bob</strong> (Decoder): Recovers plaintext from ciphertext using the same key</li>
+<li><strong>Eve</strong> (Adversary): Attempts to decrypt without the key, driving security improvements</li>
+</ul>
+<p>Through adversarial training, Alice and Bob learn encryption schemes that Eve cannot break, while the system provides dynamic key rotation, error correction, and a complete protocol stack for real-world applications. You cat test it out in the <a href="https://colab.research.google.com/github/CooDiiNgg/NeuroSync/blob/main/docs/notebooks/neurosync_demo.ipynb">demo notebook</a> to see how it works!</p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li><strong>Adversarial Training</strong>: Three-network system that continuously improves encryption security</li>
+<li><strong>Dynamic Key Rotation</strong>: Automatic key updates with encrypted key exchange</li>
+<li><strong>Error Correction</strong>: Parity-based error detection and correction for reliable transmission</li>
+<li><strong>Complete Protocol Stack</strong>: Packet-based communication with checksums, sequencing, and reassembly</li>
+<li><strong>GPU Acceleration</strong>: Full CUDA support for fast training and inference</li>
+<li><strong>Simple API</strong>: High-level interface for easy integration</li>
+</ul>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div> <div><h3>From PyPI</h3><a href="#from-pypi"></a></div>
+<div><pre>pip install NeuroSync</pre></div>
+<div><h3>From Source</h3><a href="#from-source"></a></div>
+<div><pre>git clone https://github.com/CooDiiNgg/NeuroSync.git
+<span>cd</span> NeuroSync
+pip install -e <span>.</span></pre></div>
+<div><h3>Development Installation</h3><a href="#development-installation"></a></div>
+<div><pre>git clone https://github.com/CooDiiNgg/NeuroSync.git
+<span>cd</span> NeuroSync
+pip install -e <span><span>"</span>.[dev]<span>"</span></span></pre></div>
+<div><h3>GPU Support</h3><a href="#gpu-support"></a></div>
+<p>NeuroSync automatically detects and uses CUDA when available. For CPU-only installation:</p>
+<div><pre>pip install NeuroSync
+<span><span>#</span> PyTorch will use CPU if no CUDA is available</span></pre></div>
+<p>For specific CUDA versions, install PyTorch first following the <a href="https://pytorch.org/get-started/locally/">official instructions</a>, then install NeuroSync.</p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Basic Encryption/Decryption</h3><a href="#basic-encryptiondecryption"></a></div>
+<div><pre><span>from</span> <span>NeuroSync</span> <span>import</span> <span>NeuroSync</span> <span># Load from pretrained weights</span>
+<span>cipher</span> <span>=</span> <span>NeuroSync</span>.<span>from_pretrained</span>(<span>"./weights/"</span>) <span># Encrypt a message</span>
+<span>encrypted</span> <span>=</span> <span>cipher</span>.<span>encrypt</span>(<span>"Hello, World!"</span>) <span># Decrypt it back</span>
+<span>decrypted</span> <span>=</span> <span>cipher</span>.<span>decrypt</span>(<span>encrypted</span>)
+<span>print</span>(<span>decrypted</span>) <span># "Hello, World!"</span></pre></div>
+<div><h3>Training a New System</h3><a href="#training-a-new-system"></a></div>
+<div><pre><span>from</span> <span>NeuroSync</span> <span>import</span> <span>NeuroSync</span>, <span>TrainingConfig</span> <span># Train with default configuration</span>
+<span>cipher</span> <span>=</span> <span>NeuroSync</span>.<span>train_new</span>() <span># Or with custom configuration</span>
+<span>config</span> <span>=</span> <span>TrainingConfig</span>( <span>training_episodes</span><span>=</span><span>10_000_000</span>, <span>batch_size</span><span>=</span><span>128</span>, <span>hidden_size</span><span>=</span><span>512</span>,
+)
+<span>cipher</span> <span>=</span> <span>NeuroSync</span>.<span>train_new</span>(<span>config</span>) <span># Save the trained models</span>
+<span>cipher</span>.<span>save</span>(<span>"./my_weights/"</span>)</pre></div>
+<div><h3>Using the Full Protocol</h3><a href="#using-the-full-protocol"></a></div>
+<div><pre><span>from</span> <span>NeuroSync</span> <span>import</span> <span>NeuroSync</span> <span>cipher</span> <span>=</span> <span>NeuroSync</span>.<span>from_pretrained</span>(<span>"./weights/"</span>) <span># Create sender and receiver</span>
+<span>sender</span> <span>=</span> <span>cipher</span>.<span>create_sender</span>()
+<span>receiver</span> <span>=</span> <span>cipher</span>.<span>create_receiver</span>() <span># Set a message</span>
+<span>msg</span> <span>=</span> <span>"Hello from NeuroSync!"</span> <span># Send and receive the message</span>
+<span>while</span> <span>msg</span>: <span>packets</span>, <span>msg</span> <span>=</span> <span>sender</span>.<span>send</span>(<span>msg</span>) <span>for</span> <span>packet</span> <span>in</span> <span>packets</span>: <span>message</span> <span>=</span> <span>receiver</span>.<span>receive</span>(<span>packet</span>) <span>if</span> <span>message</span>: <span>print</span>(<span>f"Received: <span><span>{</span><span>message</span><span>}</span></span>"</span>) <span>acks</span> <span>=</span> <span>receiver</span>.<span>get_pending_acks</span>() <span>for</span> <span>ack</span> <span>in</span> <span>acks</span>: <span>sender</span>.<span>handle_ack</span>(<span>ack</span>)</pre></div>
+<div><h2>Usage Examples</h2><a href="#usage-examples"></a></div>
+<div><h3>Custom Training Configuration</h3><a href="#custom-training-configuration"></a></div>
+<div><pre><span>from</span> <span>NeuroSync</span> <span>import</span> <span>NeuroSyncTrainer</span>, <span>TrainingConfig</span> <span>config</span> <span>=</span> <span>TrainingConfig</span>( <span># Message and key settings</span> <span>message_length</span><span>=</span><span>16</span>, <span># Characters per message chunk</span> <span>key_size</span><span>=</span><span>16</span>, <span># Key size in characters</span> <span># Training parameters</span> <span>training_episodes</span><span>=</span><span>20_000_000</span>, <span>batch_size</span><span>=</span><span>64</span>, <span>learning_rate</span><span>=</span><span>0.0005</span>, <span># Network architecture</span> <span>hidden_size</span><span>=</span><span>512</span>, <span>num_residual_blocks</span><span>=</span><span>3</span>, <span>dropout</span><span>=</span><span>0.05</span>, <span># Adversarial training</span> <span>adversarial_max</span><span>=</span><span>0.15</span>, <span># Maximum adversarial weight</span> <span>eve_learning_rate</span><span>=</span><span>0.001</span>, <span>eve_train_iterations</span><span>=</span><span>3</span>, <span># Security settings</span> <span>security_max</span><span>=</span><span>0.1</span>, <span>maintenance_threshold</span><span>=</span><span>99.0</span>, <span># Paths</span> <span>data_dir</span><span>=</span><span>"./data"</span>, <span>checkpoint_dir</span><span>=</span><span>"./checkpoints"</span>, <span>word_list_file</span><span>=</span><span>"words.txt"</span>,
+) <span>trainer</span> <span>=</span> <span>NeuroSyncTrainer</span>(<span>config</span>)
+<span>result</span> <span>=</span> <span>trainer</span>.<span>train</span>()
+<span>result</span>.<span>save</span>(<span>"./trained_models/"</span>) <span>print</span>(<span>f"Final accuracy: <span><span>{</span><span>result</span>.<span>final_accuracy</span>:.2f<span>}</span></span>%"</span>)
+<span>print</span>(<span>f"Best accuracy: <span><span>{</span><span>result</span>.<span>best_accuracy</span>:.2f<span>}</span></span>%"</span>)</pre></div>
+<div><h3>Protocol with Key Rotation</h3><a href="#protocol-with-key-rotation"></a></div>
+<div><pre><span>from</span> <span>NeuroSync</span> <span>import</span> <span>NeuroSync</span> <span>cipher</span> <span>=</span> <span>NeuroSync</span>.<span>from_pretrained</span>(<span>"./weights/"</span>)
+<span>sender</span> <span>=</span> <span>cipher</span>.<span>create_sender</span>()
+<span>receiver</span> <span>=</span> <span>cipher</span>.<span>create_receiver</span>() <span># Send multiple messages</span>
+<span>messages</span> <span>=</span> [ <span>"First message"</span>, <span>"Second message"</span>, <span>"Third message"</span>,
+] <span>for</span> <span>msg</span> <span>in</span> <span>messages</span>: <span>while</span> <span>msg</span>: <span>packets</span>, <span>msg</span> <span>=</span> <span>sender</span>.<span>send</span>(<span>msg</span>) <span>for</span> <span>packet</span> <span>in</span> <span>packets</span>: <span>message</span> <span>=</span> <span>receiver</span>.<span>receive</span>(<span>packet</span>) <span>if</span> <span>message</span>: <span>print</span>(<span>f"Received: <span><span>{</span><span>message</span><span>}</span></span>"</span>) <span>acks</span> <span>=</span> <span>receiver</span>.<span>get_pending_acks</span>() <span>for</span> <span>ack</span> <span>in</span> <span>acks</span>: <span>sender</span>.<span>handle_ack</span>(<span>ack</span>)</pre></div>
+<div><h3>Working with Raw Networks</h3><a href="#working-with-raw-networks"></a></div>
+<div><pre><span>import</span> <span>torch</span>
+<span>from</span> <span>NeuroSync</span>.<span>core</span>.<span>networks</span> <span>import</span> <span>Alice</span>, <span>Bob</span>, <span>Eve</span>
+<span>from</span> <span>NeuroSync</span>.<span>encoding</span>.<span>codec</span> <span>import</span> <span>text_to_bits</span>, <span>bits_to_text</span>
+<span>from</span> <span>NeuroSync</span>.<span>crypto</span>.<span>operations</span> <span>import</span> <span>xor</span>
+<span>from</span> <span>NeuroSync</span>.<span>crypto</span>.<span>keys</span> <span>import</span> <span>KeyManager</span> <span># Initialize networks</span>
+<span>bit_length</span> <span>=</span> <span>96</span> <span># 16 characters * 6 bits</span>
+<span>alice</span> <span>=</span> <span>Alice</span>(<span>bit_length</span>, <span>hidden_size</span><span>=</span><span>512</span>)
+<span>bob</span> <span>=</span> <span>Bob</span>(<span>bit_length</span>, <span>hidden_size</span><span>=</span><span>512</span>) <span># Load trained weights</span>
+<span>alice</span>.<span>load</span>(<span>"./weights/alice.pth"</span>)
+<span>bob</span>.<span>load</span>(<span>"./weights/bob.pth"</span>) <span># Set to evaluation mode</span>
+<span>alice</span>.<span>eval</span>()
+<span>bob</span>.<span>eval</span>() <span># Create key</span>
+<span>key_manager</span> <span>=</span> <span>KeyManager</span>()
+<span>key</span> <span>=</span> <span>key_manager</span>.<span>generate</span>() <span># Encrypt</span>
+<span>plaintext</span> <span>=</span> <span>"Hello World! "</span> <span># Pad to 16 chars</span>
+<span>plain_bits</span> <span>=</span> <span>torch</span>.<span>tensor</span>(<span>text_to_bits</span>(<span>plaintext</span>), <span>dtype</span><span>=</span><span>torch</span>.<span>float32</span>)
+<span>alice_input</span> <span>=</span> <span>xor</span>(<span>plain_bits</span>, <span>key</span>) <span>with</span> <span>torch</span>.<span>no_grad</span>(): <span>ciphertext</span> <span>=</span> <span>alice</span>(<span>alice_input</span>, <span>single</span><span>=</span><span>True</span>) <span>ciphertext</span> <span>=</span> <span>torch</span>.<span>sign</span>(<span>ciphertext</span>) <span># Decrypt</span> <span>bob_input</span> <span>=</span> <span>xor</span>(<span>ciphertext</span>, <span>key</span>) <span>decrypted_bits</span> <span>=</span> <span>bob</span>(<span>bob_input</span>, <span>single</span><span>=</span><span>True</span>) <span>decrypted</span> <span>=</span> <span>bits_to_text</span>(<span>decrypted_bits</span>) <span>print</span>(<span>f"Original: '<span><span>{</span><span>plaintext</span><span>}</span></span>'"</span>)
+<span>print</span>(<span>f"Decrypted: '<span><span>{</span><span>decrypted</span><span>}</span></span>'"</span>)</pre></div>
+<div><h3>Batch Processing</h3><a href="#batch-processing"></a></div>
+<div><pre><span>import</span> <span>torch</span>
+<span>from</span> <span>NeuroSync</span> <span>import</span> <span>NeuroSync</span> <span>cipher</span> <span>=</span> <span>NeuroSync</span>.<span>from_pretrained</span>(<span>"./weights/"</span>) <span># Process multiple messages in a batch</span>
+<span>messages</span> <span>=</span> [ <span>"Message one "</span>, <span>"Message two "</span>, <span>"Message three "</span>,
+] <span># Create sender for batch processing</span>
+<span>sender</span> <span>=</span> <span>cipher</span>.<span>create_sender</span>() <span>all_packets</span> <span>=</span> []
+<span>for</span> <span>msg</span> <span>in</span> <span>messages</span>: <span>packets</span>, <span>_</span> <span>=</span> <span>sender</span>.<span>send</span>(<span>msg</span>) <span>all_packets</span>.<span>extend</span>(<span>packets</span>) <span>print</span>(<span>f"Total packets: <span><span>{</span><span>len</span>(<span>all_packets</span>)<span>}</span></span>"</span>)</pre></div>
+<div><h2>API Reference</h2><a href="#api-reference"></a></div>
+<div><h3>NeuroSync (Main Interface)</h3><a href="#neurosync-main-interface"></a></div>
+<div><pre><span>class</span> <span>NeuroSync</span>: <span>@<span>classmethod</span></span> <span>def</span> <span>from_pretrained</span>(<span>cls</span>, <span>dirpath</span>: <span>str</span>, <span>device</span><span>=</span><span>None</span>) <span>-&gt;</span> <span>"NeuroSync"</span> <span>"""Load from pretrained weights directory."""</span> @<span>classmethod</span> <span>def</span> <span>train_new</span>(<span>cls</span>, <span>config</span><span>=</span><span>None</span>, <span>device</span><span>=</span><span>None</span>) <span>-</span><span>&gt;</span> <span>"NeuroSync"</span> <span>"""Train a new NeuroSync system."""</span> <span>def</span> <span>encrypt</span>(<span>self</span>, <span>plaintext</span>: <span>str</span>) <span>-</span><span>&gt;</span> <span>torch</span>.<span>Tensor</span> <span>"""Encrypt a plaintext string."""</span> <span>def</span> <span>decrypt</span>(<span>self</span>, <span>ciphertext</span>: <span>torch</span>.<span>Tensor</span>) <span>-&gt;</span> <span>str</span> <span>"""Decrypt an encrypted tensor."""</span> <span>def</span> <span>create_sender</span>(<span>self</span>) <span>-</span><span>&gt;</span> <span>Sender</span> <span>"""Create a Sender for full protocol usage."""</span> <span>def</span> <span>create_receiver</span>(<span>self</span>) <span>-</span><span>&gt;</span> <span>Receiver</span> <span>"""Create a Receiver for full protocol usage."""</span> <span>def</span> <span>save</span>(<span>self</span>, <span>dirpath</span>: <span>str</span>) <span>-</span><span>&gt;</span> <span>None</span> <span>"""Save weights to directory."""</span></pre></div>
+<div><h3>TrainingConfig</h3><a href="#trainingconfig"></a></div>
+<div><pre><span>@<span>dataclass</span></span>
+<span>class</span> <span>TrainingConfig</span>: <span># Message settings</span> <span>message_length</span>: <span>int</span> <span>=</span> <span>16</span> <span># Characters per chunk</span> <span>key_size</span>: <span>int</span> <span>=</span> <span>16</span> <span># Key size in characters</span> <span># Training</span> <span>training_episodes</span>: <span>int</span> <span>=</span> <span>20_000_000</span> <span>batch_size</span>: <span>int</span> <span>=</span> <span>64</span> <span>learning_rate</span>: <span>float</span> <span>=</span> <span>0.0005</span> <span>weight_decay</span>: <span>float</span> <span>=</span> <span>1e-4</span> <span># Architecture</span> <span>hidden_size</span>: <span>int</span> <span>=</span> <span>512</span> <span>num_residual_blocks</span>: <span>int</span> <span>=</span> <span>3</span> <span>dropout</span>: <span>float</span> <span>=</span> <span>0.05</span> <span># Adversarial</span> <span>adversarial_max</span>: <span>float</span> <span>=</span> <span>0.15</span> <span>eve_learning_rate</span>: <span>float</span> <span>=</span> <span>0.001</span> <span># Paths</span> <span>data_dir</span>: <span>str</span> <span>=</span> <span>"./data"</span> <span>checkpoint_dir</span>: <span>str</span> <span>=</span> <span>"./checkpoints"</span></pre></div>
+<div><h3>Sender</h3><a href="#sender"></a></div>
+<div><pre><span>class</span> <span>Sender</span>: <span>def</span> <span>__init__</span>(<span>self</span>, <span>session</span>, <span>enable_error_correction</span><span>=</span><span>True</span>, <span>key_rotation_interval</span><span>=</span><span>50</span>) <span>def</span> <span>send</span>(<span>self</span>, <span>message</span>: <span>str</span>) <span>-&gt;</span> <span>Union</span>[<span>List</span>[<span>bytes</span>], <span>Optional</span>[<span>str</span>]]: <span>"""Prepare message for transmission."""</span> <span>def</span> <span>check_key_rotation</span>(<span>self</span>) <span>-&gt;</span> <span>Optional</span>[<span>bytes</span>]: <span>"""Check if key rotation is needed."""</span> <span>def</span> <span>handle_ack</span>(<span>self</span>, <span>packet</span>: <span>bytes</span>) <span>-&gt;</span> <span>None</span>: <span>"""Handle acknowledgment packets."""</span></pre></div>
+<div><h3>Receiver</h3><a href="#receiver"></a></div>
+<div><pre><span>class</span> <span>Receiver</span>: <span>def</span> <span>__init__</span>(<span>self</span>, <span>session</span>, <span>enable_error_correction</span><span>=</span><span>True</span>) <span>def</span> <span>receive</span>(<span>self</span>, <span>packet</span>: <span>bytes</span>) <span>-&gt;</span> <span>Optional</span>[<span>str</span>]: <span>"""Receive and process a packet."""</span> <span>def</span> <span>get_pending_acks</span>(<span>self</span>) <span>-&gt;</span> <span>List</span>[<span>bytes</span>]: <span>"""Get pending acknowledgment packets."""</span> <span>def</span> <span>has_pending_data</span>(<span>self</span>) <span>-&gt;</span> <span>bool</span>: <span>"""Check for pending data."""</span> <span>def</span> <span>reset</span>(<span>self</span>) <span>-&gt;</span> <span>None</span>: <span>"""Reset receiver state."""</span></pre></div>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><h3>Network Architecture</h3><a href="#network-architecture"></a></div>
+<p>Each network (Alice, Bob, Eve) uses the same base architecture:</p>
+<div><pre><code>Input (96 bits) → Linear(96, 512) + LayerNorm + Tanh → ResidualBlock × 3 → Linear(512, 512) + LayerNorm + Tanh → Linear(512, 96) + Tanh/Temperature
+Output (96 bits)
+</code></pre></div>
+<p>Each ResidualBlock contains:</p>
+<ul>
+<li>Linear layer with LayerNorm</li>
+<li>Tanh activation</li>
+<li>Dropout (5%)</li>
+<li>Residual connection</li>
+</ul>
+<div><h3>Protocol Stack</h3><a href="#protocol-stack"></a></div>
+<div><pre><code>┌─────────────────────────────────────┐
+│ Application │
+│ (NeuroSync / Sender/Receiver) │
+├─────────────────────────────────────┤
+│ Session Layer │
+│ (CryptoSession) │
+├─────────────────────────────────────┤
+│ Protocol Layer │
+│ (Packets, Flags, Key/Weight Rot.) │
+├─────────────────────────────────────┤
+│ Encoding Layer │
+│ (6-bit encoding, batch processing) │
+├─────────────────────────────────────┤
+│ Crypto Layer │
+│ (Alice/Bob networks, XOR mixing) │
+└─────────────────────────────────────┘
+</code></pre></div>
+<div><h3>Packet Structure</h3><a href="#packet-structure"></a></div>
+<div><pre><code>┌────────────────────────────────────────────┐
+│ Header (12 bytes) │
+│ ├─ Version (1 byte) │
+│ ├─ Flags (1 byte) │
+│ ├─ Sequence ID (4 bytes) │
+│ ├─ Payload Length (2 bytes) │
+│ └─ Checksum (4 bytes) │
+├────────────────────────────────────────────┤
+│ Payload (variable) │
+│ └─ Encrypted message data │
+├────────────────────────────────────────────┤
+│ Parity (optional) │
+│ └─ Error correction bits │
+└────────────────────────────────────────────┘
+</code></pre></div>
+<div><h2>Training Guide</h2><a href="#training-guide"></a></div>
+<div><h3>Preparing Training Data</h3><a href="#preparing-training-data"></a></div>
+<p>Create a </p><pre><code>words.txt</code></pre> file with training words (one per line):<p></p>
+<div><pre><code>hello
+world
+neural
+crypto
+secure
+...
+</code></pre></div>
+<div><h3>Training Process</h3><a href="#training-process"></a></div>
+<p>The training process involves three phases:</p>
+<ol>
+<li><strong>Warm-up Phase</strong> (first ~2000 batches): Duplicate messages to establish basic encryption</li>
+<li><strong>Main Training</strong>: Full adversarial training with Eve providing security pressure</li>
+<li><strong>Maintenance Mode</strong>: When accuracy reaches 99%+, reduce training to maintain stability</li>
+</ol>
+<div><h3>Monitoring Training</h3><a href="#monitoring-training"></a></div>
+<p>Training logs include:</p>
+<ul>
+<li>Bob's decryption accuracy (target: 99%+)</li>
+<li>Eve's decryption accuracy (should stay low)</li>
+<li>Security check scores (leakage, diversity, repetition, key sensitivity)</li>
+<li>Network temperatures</li>
+</ul>
+<div><h3>Tips for Training</h3><a href="#tips-for-training"></a></div>
+<ul>
+<li>Start with default configuration for baseline results</li>
+<li>Increase <pre><code>hidden_size</code></pre> for more complex encryption patterns</li>
+<li>Adjust <pre><code>adversarial_max</code></pre> to balance security vs. stability</li>
+<li>Use a diverse word list for better generalization</li>
+<li>Training typically requires 10-20 million episodes for 99%+ accuracy</li>
+</ul>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>NeuroSync/
+├── NeuroSync/
+│ ├── __init__.py # Package exports
+│ ├── version.py # Version info
+│ ├── core/ # Neural network components
+│ │ ├── networks.py # Alice, Bob, Eve networks
+│ │ ├── layers.py # ResidualBlock, etc.
+│ │ ├── activations.py # StraightThroughSign
+│ │ └── losses.py # Custom loss functions
+│ ├── crypto/ # Cryptographic operations
+│ │ ├── keys.py # KeyManager
+│ │ ├── weights.py # WeightManager
+│ │ └── operations.py # XOR and mixing ops
+│ ├── encoding/ # Message encoding
+│ │ ├── codec.py # text_to_bits, bits_to_text
+│ │ ├── batch.py # Batch processing
+│ │ └── constants.py # MESSAGE_LENGTH, BIT_LENGTH
+│ ├── interface/ # High-level interfaces
+│ │ ├── cipher.py # NeuroSync main class
+│ │ ├── sender.py # Sender interface
+│ │ ├── receiver.py # Receiver interface
+│ │ └── visualizer.py # Training visualization
+│ ├── protocol/ # Communication protocol
+│ │ ├── packet.py # Packet structure
+│ │ ├── session.py # CryptoSession
+│ │ ├── flags.py # PacketFlags
+│ │ ├── header.py # PacketHeader
+│ │ ├── key_rotation.py # Key rotation manager
+│ │ ├── weight_rotation.py # Weight rotation manager in the future
+│ │ ├── error_correction.py # Parity-based ECC
+│ │ └── assembler.py # Packet reassembly
+│ ├── security/ # Security analysis
+│ │ ├── analyzer.py # SecurityAnalyzer
+│ │ ├── checks.py # Security check functions
+│ │ └── thresholds.py # SecurityThresholds
+│ ├── training/ # Training pipeline
+│ │ ├── trainer.py # NeuroSyncTrainer
+│ │ ├── config.py # TrainingConfig
+│ │ ├── state.py # TrainingState
+│ │ ├── evaluation.py # Accuracy/security evaluation
+│ │ └── schedulers.py # Learning rate schedulers
+│ └── utils/ # Utilities
+│ ├── device.py # CUDA/CPU detection
+│ ├── io.py # File I/O helpers
+│ ├── logging.py # Logging setup
+│ └── timing.py # Performance timing
+├── tests/ # Test suite
+├── examples/ # Usage examples
+├── docs/ # Documentation
+├── pyproject.toml # Package configuration
+└── README.md # This file
+</code></pre></div>
+<div><h2>Security Considerations</h2><a href="#security-considerations"></a></div>
+<p>NeuroSync is a research project in a beta state, demonstrating neural cryptography concepts. While it implements several security features, it still isnt production-ready. Please consider the following:</p>
+<ul>
+<li><strong>Not for Production</strong>: This is still a beta version so it is an experimental software not audited for production use</li>
+<li><strong>Key Management</strong>: Secure key storage and transmission are the user's responsibility</li>
+<li><strong>Side Channels</strong>: Not tested against timing or power analysis attacks</li>
+<li><strong>Quantum Security</strong>: While it is designed to be quantum-resistant, it has not been formally analyzed against quantum attacks and is not yet ready for such scenarios</li>
+</ul>
+<p>Use only for educational and research purposes, or at your own risk. (Before a new stable release is made available.)
+For production cryptography needs, use established libraries like <a href="https://cryptography.io/">cryptography</a> or <a href="https://nacl.cr.yp.to/">NaCl</a>.</p>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.</p>
+<div><pre><span><span>#</span> Setup development environment</span>
+git clone https://github.com/CooDiiNgg/NeuroSync.git
+<span>cd</span> NeuroSync
+pip install -e <span><span>"</span>.[dev]<span>"</span></span> <span><span>#</span> Run tests</span>
+pytest <span><span>#</span> Format code</span>
+black NeuroSync/
+isort NeuroSync/ <span><span>#</span> Type checking</span>
+mypy NeuroSync/</pre></div>
+<p>If you only have suggestions or bug reports, please open an issue on GitHub, or feel free to contact me directly. (Contact info is at the bottom of the page.)</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>This project is licensed under the MIT License - see the <a href="/CooDiiNgg/NeuroSync/blob/main/LICENSE">LICENSE</a> file for details.</p>
+<div><h2>Citation</h2><a href="#citation"></a></div>
+<p>If you use NeuroSync in your research, please cite - it brings me great joy!</p>
+<div><pre><span>@software</span>{<span>neurosync2026</span>, <span>author</span> = <span><span>{</span>Valkanov, Nikolay<span>}</span></span>, <span>title</span> = <span><span>{</span>NeuroSync: Neural Cryptography Library<span>}</span></span>, <span>year</span> = <span><span>{</span>2026<span>}</span></span>, <span>url</span> = <span><span>{</span>https://github.com/CooDiiNgg/NeuroSync<span>}</span></span>
+}</pre></div>
+<div><h2>Acknowledgments</h2><a href="#acknowledgments"></a></div>
+<ul>
+<li>Inspired by <a href="https://arxiv.org/abs/1610.06918">Learning to Protect Communications with Adversarial Neural Cryptography</a> by Abadi &amp; Andersen (Google Brain)</li>
+<li>Built with <a href="https://pytorch.org/">PyTorch</a></li>
+</ul>
+<div><h2>Links</h2><a href="#links"></a></div>
+<ul>
+<li><a href="https://github.com/CooDiiNgg/NeuroSync">GitHub Repository</a></li>
+<li><a href="https://NeuroSync.readthedocs.io">Documentation</a></li>
+<li><a href="https://github.com/CooDiiNgg/NeuroSync/issues">Issue Tracker</a></li>
+</ul>
+<div><h2>Contact</h2><a href="#contact"></a></div>
+<p>For questions or support, please open an issue on GitHub or contact me at:</p>
+<ul>
+<li>Email: <a href="mailto:niki@valkanovi.com">niki@valkanovi.com</a></li>
+<li>LinkedIn: <a href="https://www.linkedin.com/in/nikolay-valkanov-thedumb1/">Nikolay Valkanov</a></li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

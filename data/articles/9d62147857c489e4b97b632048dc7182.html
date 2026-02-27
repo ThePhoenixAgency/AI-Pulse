@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - shiehn/DeclarAgent: Declarative runbook executor for AI agents. Validate, dry-run, and safely run real CLI workflows.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - shiehn/DeclarAgent: Declarative runbook executor for AI agents. Validate, dry-run, and safely run real CLI workflows.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 6:54:32 PM | <a href="https://github.com/shiehn/DeclarAgent" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><h1>DeclarAgent</h1><a href="#declaragent"></a></div>
+<p><a target="_blank" href="/shiehn/DeclarAgent/blob/main/assets/declaragent_banner.png" rel="noopener noreferrer"><img src="/shiehn/DeclarAgent/raw/main/assets/declaragent_banner.png" alt="DeclarAgent"></a></p>
+<p><strong>Declarative runbook executor for AI agents.</strong>
+Validate, dry-run, and safely execute multi-step YAML workflows from any LLM tool-use loop.</p>
+<hr>
+<div><h2>Why DeclarAgent?</h2><a href="#why-declaragent"></a></div>
+<p>LLM agents are great at reasoning but dangerous when executing. DeclarAgent gives agents a
+<strong>structured, auditable, and safe</strong> way to run real workflows:</p>
+<ul>
+<li><strong>YAML plans</strong> — human-readable, version-controllable runbooks</li>
+<li><strong>Three step types</strong> — shell commands (<pre><code>run</code></pre>), built-in actions (<pre><code>action</code></pre>), and HTTP requests (<pre><code>http</code></pre>)</li>
+<li><strong>Dry-run &amp; explain</strong> — inspect exactly what will happen before it does</li>
+<li><strong>Destructive-step gating</strong> — steps marked <pre><code>destructive: true</code></pre> require explicit <pre><code>--approve</code></pre></li>
+<li><strong>Structured JSON results</strong> — every run returns machine-readable output with typed errors</li>
+<li><strong>Built-in actions</strong> — file I/O, JSON manipulation, and env access without shell gymnastics</li>
+<li><strong>Template engine</strong> — reference outputs from prior steps with <pre><code>${{steps.&lt;id&gt;.outputs.&lt;key&gt;}}</code></pre></li>
+<li><strong>MCP server</strong> — expose plans as directly callable tools over the Model Context Protocol</li>
+<li><strong>Plan-as-tool</strong> — drop YAML files in a directory, each becomes an MCP tool automatically</li>
+</ul>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> Install</span>
+go install github.com/stevehiehn/declaragent@latest <span><span>#</span> Validate a plan</span>
+declaragent validate plan.yaml <span><span>#</span> See what it would do</span>
+declaragent explain plan.yaml --input branch=main <span><span>#</span> Dry-run (resolves templates, shows commands)</span>
+declaragent dry-run plan.yaml --input branch=main <span><span>#</span> Execute for real</span>
+declaragent run plan.yaml --input branch=main <span><span>#</span> Execute with destructive steps allowed</span>
+declaragent run plan.yaml --input branch=main --approve <span><span>#</span> Start MCP server with a plans directory</span>
+declaragent mcp --plans ./plans</pre></div>
+<div><h2>Plan Schema</h2><a href="#plan-schema"></a></div>
+<p><a target="_blank" href="/shiehn/DeclarAgent/blob/main/assets/declaragent_plan_schema.png" rel="noopener noreferrer"><img src="/shiehn/DeclarAgent/raw/main/assets/declaragent_plan_schema.png" alt="Plan Schema"></a></p>
+<p>Plans are YAML files with a simple structure. Each step does exactly one thing: run a shell command, call a built-in action, or send an HTTP request.</p>
+<div><pre><span>name</span>: <span>deploy-service</span>
+<span>description</span>: <span>Build, test, and deploy the service</span>
+<span>inputs</span>: <span>env</span>: <span>required</span>: <span>true</span> <span>description</span>: <span>Target environment</span> <span>tag</span>: <span>default</span>: <span>latest</span>
+<span>steps</span>: - <span>id</span>: <span>test</span> <span>run</span>: <span>go test ./...</span> <span>outputs</span>: <span>result</span>: <span>stdout</span> - <span>id</span>: <span>build</span> <span>run</span>: <span>docker build -t myapp:${{inputs.tag}} .</span> - <span>id</span>: <span>check_health</span> <span>http</span>: <span>url</span>: <span><span>"</span>https://${{inputs.env}}.example.com/health<span>"</span></span> <span>method</span>: <span>GET</span> <span>outputs</span>: <span>status</span>: <span>stdout</span> - <span>id</span>: <span>deploy</span> <span>run</span>: <span>kubectl apply -f k8s/${{inputs.env}}.yaml</span> <span>destructive</span>: <span>true</span></pre></div>
+<div><h3>Step Types</h3><a href="#step-types"></a></div>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shell</td>
+<td><pre><code>run</code></pre></td>
+<td>Runs a shell command via <pre><code>sh -c</code></pre>. Captures stdout/stderr.</td>
+</tr>
+<tr>
+<td>Action</td>
+<td><pre><code>action</code></pre></td>
+<td>Calls a built-in action (file I/O, JSON, env).</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td><pre><code>http</code></pre></td>
+<td>Sends an HTTP request. Response body captured as <pre><code>stdout</code></pre>.</td>
+</tr>
+</tbody>
+</table>
+<p>Each step must have <strong>exactly one</strong> of </p><pre><code>run</code></pre>, <pre><code>action</code></pre>, or <pre><code>http</code></pre>.<p></p>
+<div><h3>HTTP Step Fields</h3><a href="#http-step-fields"></a></div>
+<div><pre>- <span>id</span>: <span>call_api</span> <span>http</span>: <span>url</span>: <span><span>"</span>https://api.example.com/data<span>"</span></span> <span><span>#</span> required</span> <span>method</span>: <span>POST </span><span><span>#</span> default: GET</span> <span>headers</span>: <span>Authorization</span>: <span><span>"</span>Bearer ${{inputs.token}}<span>"</span></span> <span>body</span>: <span><span>'</span>{"key": "value"}<span>'</span></span> <span><span>#</span> template-resolved string</span> <span>outputs</span>: <span>response</span>: <span>stdout </span><span><span>#</span> response body</span></pre></div>
+<div><h3>Key Fields</h3><a href="#key-fields"></a></div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>name</code></pre></td>
+<td>Plan identifier</td>
+</tr>
+<tr>
+<td><pre><code>inputs</code></pre></td>
+<td>Named parameters with <pre><code>required</code></pre>, <pre><code>description</code></pre>, and <pre><code>default</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>steps[].id</code></pre></td>
+<td>Unique step identifier</td>
+</tr>
+<tr>
+<td><pre><code>steps[].run</code></pre></td>
+<td>Shell command to execute</td>
+</tr>
+<tr>
+<td><pre><code>steps[].action</code></pre></td>
+<td>Built-in action (alternative to <pre><code>run</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>steps[].http</code></pre></td>
+<td>HTTP request (alternative to <pre><code>run</code></pre> and <pre><code>action</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>steps[].with</code></pre></td>
+<td>Parameters passed to built-in actions</td>
+</tr>
+<tr>
+<td><pre><code>steps[].outputs</code></pre></td>
+<td>Capture step output (e.g., <pre><code>stdout</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>steps[].destructive</code></pre></td>
+<td>If <pre><code>true</code></pre>, blocked unless <pre><code>--approve</code></pre> is passed</td>
+</tr>
+</tbody>
+</table>
+<div><h2>CLI Commands</h2><a href="#cli-commands"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>validate &lt;plan.yaml&gt;</code></pre></td>
+<td>Check plan structure and references</td>
+</tr>
+<tr>
+<td><pre><code>explain &lt;plan.yaml&gt;</code></pre></td>
+<td>Show resolved steps without executing</td>
+</tr>
+<tr>
+<td><pre><code>dry-run &lt;plan.yaml&gt;</code></pre></td>
+<td>Simulate execution, resolve templates</td>
+</tr>
+<tr>
+<td><pre><code>run &lt;plan.yaml&gt;</code></pre></td>
+<td>Execute the plan</td>
+</tr>
+<tr>
+<td><pre><code>mcp [--plans DIR]</code></pre></td>
+<td>Start MCP stdio server</td>
+</tr>
+</tbody>
+</table>
+<p>All commands accept </p><pre><code>--json</code></pre> for machine-readable output and <pre><code>--input key=value</code></pre> for plan inputs.<p></p>
+<div><h2>Built-in Actions</h2><a href="#built-in-actions"></a></div>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Params</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>file.write</code></pre></td>
+<td><pre><code>path</code></pre>, <pre><code>content</code></pre></td>
+<td>Write content to a file</td>
+</tr>
+<tr>
+<td><pre><code>file.append</code></pre></td>
+<td><pre><code>path</code></pre>, <pre><code>content</code></pre></td>
+<td>Append content to a file</td>
+</tr>
+<tr>
+<td><pre><code>json.get</code></pre></td>
+<td><pre><code>file</code></pre>, <pre><code>path</code></pre></td>
+<td>Read a value from a JSON file</td>
+</tr>
+<tr>
+<td><pre><code>json.set</code></pre></td>
+<td><pre><code>file</code></pre>, <pre><code>path</code></pre>, <pre><code>value</code></pre></td>
+<td>Set a value in a JSON file</td>
+</tr>
+<tr>
+<td><pre><code>env.get</code></pre></td>
+<td><pre><code>name</code></pre></td>
+<td>Read an environment variable</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Structured Results</h2><a href="#structured-results"></a></div>
+<p><a target="_blank" href="/shiehn/DeclarAgent/blob/main/assets/declaragent_structured_results.png" rel="noopener noreferrer"><img src="/shiehn/DeclarAgent/raw/main/assets/declaragent_structured_results.png" alt="Structured Results"></a></p>
+<p>Every execution returns a JSON result:</p>
+<div><pre>{ <span>"run_id"</span>: <span><span>"</span>a1b2c3<span>"</span></span>, <span>"success"</span>: <span>true</span>, <span>"steps"</span>: [ {<span>"id"</span>: <span><span>"</span>test<span>"</span></span>, <span>"status"</span>: <span><span>"</span>success<span>"</span></span>, <span>"exit_code"</span>: <span>0</span>, <span>"duration"</span>: <span><span>"</span>1.2s<span>"</span></span>} ], <span>"outputs"</span>: {<span>"test.result"</span>: <span><span>"</span>ok<span>"</span></span>}, <span>"artifacts"</span>: [<span><span>"</span>.declaragent/a1b2c3/test/stdout<span>"</span></span>], <span>"errors"</span>: []
+}</pre></div>
+<p>Errors are typed for agent decision-making:</p>
+<table>
+<thead>
+<tr>
+<th>Error Type</th>
+<th>Retryable</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>VALIDATION_ERROR</code></pre></td>
+<td>No</td>
+<td>Bad plan or missing inputs</td>
+</tr>
+<tr>
+<td><pre><code>STEP_FAILED</code></pre></td>
+<td>No</td>
+<td>A command returned non-zero</td>
+</tr>
+<tr>
+<td><pre><code>PERMISSION_DENIED</code></pre></td>
+<td>No</td>
+<td>Destructive step without <pre><code>--approve</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>SIDE_EFFECT_BLOCKED</code></pre></td>
+<td>No</td>
+<td>Destructive step blocked in dry-run</td>
+</tr>
+<tr>
+<td><pre><code>TRANSIENT</code></pre></td>
+<td>Yes</td>
+<td>Temporary failure, safe to retry</td>
+</tr>
+<tr>
+<td><pre><code>TIMEOUT</code></pre></td>
+<td>Yes</td>
+<td>Step exceeded time limit</td>
+</tr>
+</tbody>
+</table>
+<div><h2>MCP Integration</h2><a href="#mcp-integration"></a></div>
+<p><a target="_blank" href="/shiehn/DeclarAgent/blob/main/assets/declaragent_mcp.png" rel="noopener noreferrer"><img src="/shiehn/DeclarAgent/raw/main/assets/declaragent_mcp.png" alt="MCP Integration"></a></p>
+<p>Run </p><pre><code>declaragent mcp</code></pre> to start a <a href="https://modelcontextprotocol.io/">Model Context Protocol</a> stdio server.<p></p>
+<div><h3>Plan-as-Tool</h3><a href="#plan-as-tool"></a></div>
+<p>When you pass </p><pre><code>--plans &lt;directory&gt;</code></pre>, every YAML plan in that directory becomes a <strong>directly callable MCP tool</strong>:<p></p>
+<div><pre>declaragent mcp --plans ./plans</pre></div>
+<ul>
+<li>Tool <pre><code>name</code></pre> = plan <pre><code>name</code></pre></li>
+<li>Tool <pre><code>description</code></pre> = plan <pre><code>description</code></pre></li>
+<li>Tool <pre><code>inputSchema</code></pre> = derived from plan <pre><code>inputs</code></pre></li>
+<li>Calling the tool = executing the plan with the provided inputs</li>
+</ul>
+<p>This means an LLM agent can discover and invoke your plans without knowing anything about DeclarAgent's internal plan format.</p>
+<div><h3>Integrations</h3><a href="#integrations"></a></div>
+<div><h4>Claude Code</h4><a href="#claude-code"></a></div>
+<p>Add to </p><pre><code>.claude/settings.json</code></pre>:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"declaragent"</span>: { <span>"command"</span>: <span><span>"</span>/path/to/declaragent<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>mcp<span>"</span></span>, <span><span>"</span>--plans<span>"</span></span>, <span><span>"</span>/path/to/your/plans<span>"</span></span>] } }
+}</pre></div>
+<div><h4>Claude Desktop</h4><a href="#claude-desktop"></a></div>
+<p>Add to </p><pre><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></pre> (macOS) or <pre><code>%APPDATA%\Claude\claude_desktop_config.json</code></pre> (Windows):<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"declaragent"</span>: { <span>"command"</span>: <span><span>"</span>/path/to/declaragent<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>mcp<span>"</span></span>, <span><span>"</span>--plans<span>"</span></span>, <span><span>"</span>/path/to/your/plans<span>"</span></span>] } }
+}</pre></div>
+<div><h4>Cursor</h4><a href="#cursor"></a></div>
+<p>Add to </p><pre><code>.cursor/mcp.json</code></pre> in your project root:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"declaragent"</span>: { <span>"command"</span>: <span><span>"</span>/path/to/declaragent<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>mcp<span>"</span></span>, <span><span>"</span>--plans<span>"</span></span>, <span><span>"</span>/path/to/your/plans<span>"</span></span>] } }
+}</pre></div>
+<div><h4>Windsurf</h4><a href="#windsurf"></a></div>
+<p>Add to </p><pre><code>~/.codeium/windsurf/mcp_config.json</code></pre>:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"declaragent"</span>: { <span>"command"</span>: <span><span>"</span>/path/to/declaragent<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>mcp<span>"</span></span>, <span><span>"</span>--plans<span>"</span></span>, <span><span>"</span>/path/to/your/plans<span>"</span></span>] } }
+}</pre></div>
+<div><h4>GitHub Copilot (VS Code)</h4><a href="#github-copilot-vs-code"></a></div>
+<p>Add to </p><pre><code>.vscode/mcp.json</code></pre> in your project root. Note: Copilot uses <pre><code>"servers"</code></pre> instead of <pre><code>"mcpServers"</code></pre>:<p></p>
+<div><pre>{ <span>"servers"</span>: { <span>"declaragent"</span>: { <span>"command"</span>: <span><span>"</span>/path/to/declaragent<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>mcp<span>"</span></span>, <span><span>"</span>--plans<span>"</span></span>, <span><span>"</span>/path/to/your/plans<span>"</span></span>] } }
+}</pre></div>
+<div><h4>Amazon Q Developer</h4><a href="#amazon-q-developer"></a></div>
+<p>Add to </p><pre><code>~/.aws/amazonq/mcp.json</code></pre>:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"declaragent"</span>: { <span>"command"</span>: <span><span>"</span>/path/to/declaragent<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>mcp<span>"</span></span>, <span><span>"</span>--plans<span>"</span></span>, <span><span>"</span>/path/to/your/plans<span>"</span></span>] } }
+}</pre></div>
+<div><h4>ChatGPT</h4><a href="#chatgpt"></a></div>
+<p>ChatGPT requires a remotely accessible SSE endpoint. See <a href="#sse-transport">SSE Transport</a> below, then add the public URL in ChatGPT's MCP settings.</p>
+<div><h3>SSE Transport</h3><a href="#sse-transport"></a></div>
+<p>For remote hosting or HTTP-based clients (e.g., ChatGPT), start the MCP server with SSE transport:</p>
+<div><pre>declaragent mcp --transport sse --port 19100 --plans ./plans</pre></div>
+<p>The server will be available at </p><pre><code>http://localhost:19100/sse</code></pre>. Expose this URL publicly (e.g., via a reverse proxy or tunnel) for clients that require a remote endpoint.<p></p>
+<div><h3>Built-in MCP Tools</h3><a href="#built-in-mcp-tools"></a></div>
+<p>These meta-tools are always available regardless of </p><pre><code>--plans</code></pre>:<p></p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>plan.validate</code></pre></td>
+<td>Validate a plan YAML file</td>
+</tr>
+<tr>
+<td><pre><code>plan.explain</code></pre></td>
+<td>Explain a plan without executing</td>
+</tr>
+<tr>
+<td><pre><code>plan.dry_run</code></pre></td>
+<td>Dry-run a plan</td>
+</tr>
+<tr>
+<td><pre><code>plan.run</code></pre></td>
+<td>Execute a plan</td>
+</tr>
+<tr>
+<td><pre><code>plan.schema</code></pre></td>
+<td>Return the plan YAML schema</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Docs: 3 Example Plans You Can Copy and Run</h2><a href="#docs-3-example-plans-you-can-copy-and-run"></a></div>
+<p>Copy these into a </p><pre><code>plans/</code></pre> directory and start the MCP server:<p></p>
+<div><pre>mkdir -p plans
+<span><span>#</span> (paste each YAML below into the corresponding file)</span>
+declaragent mcp --plans ./plans</pre></div>
+<p>Or run any plan directly:</p>
+<div><pre>declaragent run plans/hello.yaml --input name=Alice</pre></div>
+<div><h3>Plan 1: <pre><code>plans/hello.yaml</code></pre> — Simple Shell Command</h3><a href="#plan-1-planshelloyaml--simple-shell-command"></a></div>
+<p>The simplest possible plan. Runs </p><pre><code>echo</code></pre> and captures the output.<p></p>
+<div><pre><span>name</span>: <span>hello</span>
+<span>description</span>: <span>Say hello to someone</span>
+<span>inputs</span>: <span>name</span>: <span>description</span>: <span>Who to greet</span> <span>default</span>: <span>World</span>
+<span>steps</span>: - <span>id</span>: <span>greet</span> <span>run</span>: <span>echo "Hello, ${{inputs.name}}!"</span> <span>outputs</span>: <span>message</span>: <span>stdout</span></pre></div>
+<p><strong>Run it:</strong></p>
+<div><pre>declaragent run plans/hello.yaml --input name=Alice</pre></div>
+<p><strong>Result:</strong></p>
+<div><pre><code>Plan "hello" completed successfully.
+Run ID: &lt;uuid&gt;
+</code></pre></div>
+<p>With </p><pre><code>--json</code></pre>:<p></p>
+<div><pre>{ <span>"run_id"</span>: <span><span>"</span>...<span>"</span></span>, <span>"success"</span>: <span>true</span>, <span>"steps"</span>: [{<span>"id"</span>: <span><span>"</span>greet<span>"</span></span>, <span>"status"</span>: <span><span>"</span>success<span>"</span></span>, <span>"stdout_ref"</span>: <span><span>"</span>Hello, Alice!<span>\n</span><span>"</span></span>}]
+}</pre></div>
+<div><h3>Plan 2: <pre><code>plans/ip_lookup.yaml</code></pre> — HTTP Request</h3><a href="#plan-2-plansip_lookupyaml--http-request"></a></div>
+<p>Fetches your public IP address from a free API.</p>
+<div><pre><span>name</span>: <span>ip-lookup</span>
+<span>description</span>: <span>Look up your public IP address</span>
+<span>steps</span>: - <span>id</span>: <span>fetch_ip</span> <span>http</span>: <span>url</span>: <span><span>"</span>https://httpbin.org/ip<span>"</span></span> <span>method</span>: <span>GET</span> <span>outputs</span>: <span>response</span>: <span>stdout</span></pre></div>
+<p><strong>Run it:</strong></p>
+<div><pre>declaragent run plans/ip_lookup.yaml --json</pre></div>
+<p><strong>Result:</strong></p>
+<div><pre>{ <span>"success"</span>: <span>true</span>, <span>"steps"</span>: [{ <span>"id"</span>: <span><span>"</span>fetch_ip<span>"</span></span>, <span>"status"</span>: <span><span>"</span>success<span>"</span></span>, <span>"stdout_ref"</span>: <span><span>"</span>{<span>\"</span>origin<span>\"</span>: <span>\"</span>203.0.113.42<span>\"</span>}<span>"</span></span> }]
+}</pre></div>
+<div><h3>Plan 3: <pre><code>plans/build_and_notify.yaml</code></pre> — Multi-Step with Chaining</h3><a href="#plan-3-plansbuild_and_notifyyaml--multi-step-with-chaining"></a></div>
+<p>Runs a build, then POSTs the result to a webhook. Demonstrates step chaining — the HTTP step uses the shell step's output via </p><pre><code>${{steps.build.outputs.result}}</code></pre>.<p></p>
+<div><pre><span>name</span>: <span>build-and-notify</span>
+<span>description</span>: <span>Run a build command and POST the result to a webhook</span>
+<span>inputs</span>: <span>webhook_url</span>: <span>required</span>: <span>true</span> <span>description</span>: <span>URL to POST the build result to</span>
+<span>steps</span>: - <span>id</span>: <span>build</span> <span>run</span>: <span>echo "build-ok"</span> <span>outputs</span>: <span>result</span>: <span>stdout</span> - <span>id</span>: <span>notify</span> <span>http</span>: <span>url</span>: <span><span>"</span>${{inputs.webhook_url}}<span>"</span></span> <span>method</span>: <span>POST</span> <span>headers</span>: <span>Content-Type</span>: <span>application/json</span> <span>body</span>: <span><span>'</span>{"event": "build_complete", "output": "${{steps.build.outputs.result}}"}<span>'</span></span> <span>outputs</span>: <span>response</span>: <span>stdout</span></pre></div>
+<p><strong>Run it:</strong></p>
+<div><pre>declaragent run plans/build_and_notify.yaml \ --input webhook_url=https://httpbin.org/post --json</pre></div>
+<p>This runs </p><pre><code>echo "build-ok"</code></pre>, captures the output, then POSTs it to the webhook URL.<p></p>
+<hr>
+<div><h2>Testing</h2><a href="#testing"></a></div>
+<div><pre>go <span>test</span> ./...</pre></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>See <a href="/shiehn/DeclarAgent/blob/main/LICENSE">LICENSE</a>.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

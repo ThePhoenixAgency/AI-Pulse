@@ -44,7 +44,9 @@
 <p>Unfortunately Im running into problems while using the switches on my Iphone. while using the “Home” app. Switches cannot be triggered, when switching they flip back directly.<br>
 While using the HA app all devices can be switched without any difficulties.</p>
 <p>The problem is briefly solved (1-2 weeks) after removing/adding a new device via the HomeKit bridge integration.</p>
-<p>Any thoughts from anyone?</p> </div> </div></div>
+<p>Any thoughts from anyone?</p> </div> </div><div> <p><span> <a href="https://community.home-assistant.io/u/Gene742Nelson"><span>Gene742Nelson</span></a> (Gene742Nelson) </span> <span> <time> February 27, 2026, 9:31am </time> <span>2</span> </span> </p> <div> <p>Hello!<br>
+Your switches flipping back in the iOS Home app but working fine in Home Assistant usually means HomeKit isn’t getting proper state updates from Zigbee2MQTT via MQTT. It’s often caused by missing retained messages or slow state reporting, so HomeKit reverts the toggle. Removing/adding a device forces a fresh sync, which is why it works briefly. To fix it, check that Zigbee2MQTT publishes retained state messages, confirm entity IDs are consistent, and keep Home Assistant, HomeKit Bridge, and Zigbee2MQTT updated. This usually stabilizes the integration and stops the “flip back” behavior.</p> </div> </div><div> <p><span> <a href="https://community.home-assistant.io/u/dvdbosch83"><span>dvdbosch83</span></a> (Dennis) </span> <span> <time> February 27, 2026, 9:44am </time> <span>3</span> </span> </p> <p>Thanks for the quick reply! Will take a look at the “retained state message” etc. FYI I keep everything always up to date.<br>
+Interesting to take into account, also my other devices (RFX driven for example) arent able to switch. So its not purely related to Zigbee.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

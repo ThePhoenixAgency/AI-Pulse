@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Recommendations for path forward on hardware for HA in small home</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Recommendations for path forward on hardware for HA in small home</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/27/2026 5:17:48 PM | <a href="https://community.home-assistant.io/t/recommendations-for-path-forward-on-hardware-for-ha-in-small-home/991321" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <div> <div> <p><span> <time> February 27, 2026, 5:17pm </time> <span>1</span> </span> </p></div> <p>I currently have a 1500 square foot 3 floor home with full wired and wireless network using VLAN’s and Home Assistant docker running on a 24/7 unRaid server. I currently have a number of Kasa WiFi switches and outlets in the system and would like to look at converting to Z-Wave for lighting control but have a couple of complications. There are 3 BLE ceiling fans with integrated lights that I would like to convert to Z-Wave control but haven’t figured out a simple way to accomplish this. I am also wondering if a standalone HA server would be better than running on the unRaid server?</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/pkscout"><span>pkscout</span></a> (Kyle Johnson) </span> <span> <time> February 27, 2026, 6:06pm </time> <span>2</span> </span> </p> <div> <p>There are two primary benefits of using standalone hardware.</p>
+<ol>
+<li>It’s easier to incorporate USB dongles (like for Z-Wave, Zigbee, etc).</li>
+<li>You have access to the Apps Store for HA, which makes extending functionality easier.</li>
+</ol>
+<p>These are both overcomable on Docker, but they can be challenging and require a higher level of technical expertise. These two things are the reason I move from Docker on Synology to a HA Yellow (not available anymore, but the HA Green is).</p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/PecosKidd"><span>PecosKidd</span></a> </span> <span> <time> February 27, 2026, 6:33pm </time> <span>3</span> </span> </p> <div> <p>One of the huge benefits of HA is its ability to integrate with many different device types and protocols. So if your existing WiFi and BLE devices are working ok, there’s no reason (at least from HA’s point of view) to convert them Z-Wave.</p>
+<p>Not that there’s anything wrong with Z-Wave! Just saying you don’t need to get all your devices on the same protocol unless you want to. HA can happily talk to WiFi, BLE, and Z-Wave devices at the same time.</p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/bwdddac"><span>bwdddac</span></a> (Bwdddac) </span> <span> <time> February 27, 2026, 7:49pm </time> <span>4</span> </span> </p> <p>I have the HA docker working fine, the main reason for looking at standalone is if I sell my house I can leave the HA but the server will leave with me so all the automation is gone with out a new controller.</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/bwdddac"><span>bwdddac</span></a> (Bwdddac) </span> <span> <time> February 27, 2026, 7:51pm </time> <span>5</span> </span> </p> <p>I am thinking of Z-Wave as I would like to add more devices to HA and feel that I may get too much WiFi congestion with all the extra connections so Z-Wave with its mesh operation will take all that traffic from the WiFi in the house.</p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

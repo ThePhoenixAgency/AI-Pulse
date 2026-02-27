@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Shells Unix - 5 redirections que vous copiez sans comprendre</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Shells Unix - 5 redirections que vous copiez sans comprendre</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/27/2026 8:53:32 AM | <a href="https://korben.info/redirections-bash-qui-sauvent-ta-vie.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><p><code>2&gt;&amp;1</code>, <code>&gt;</code>, <code>&gt;&gt;</code>, <code>2&gt;/dev/null</code>... Si ces symboles dans votre terminal Linux ou macOS vous font autant flipper qu'un regex, respirez un grand coup ! Quand vous aurez lu cet article, vous verrez qu'en fait c'est super simple à comprendre, et en 5 minutes vous saurez enfin ce que vous copiez-collez depuis des années depuis StackOverflow.</p><p>En fait, dans les shells Unix (bash, zsh, etc.), y'a 3 canaux de base : <strong>stdin</strong> (entrée, numéro 0), <strong>stdout</strong> (sortie normale, numéro 1) et <strong>stderr</strong> (les erreurs, numéro 2). Tout le reste, de <code>&gt;</code> à <code>2&gt;/dev/null</code>, découle de ces 3 numéros.</p><h2><code>&gt;</code> - Écrire dans un fichier (et tout écraser)</h2><div><pre><code><span><span>echo "Salut" &gt; fichier.txt
+</span></span></code></pre></div><p>Ça redirige stdout vers <code>fichier.txt</code>. Si le fichier existe déjà... c'est mort, il est écrasé sans sommation. Du coup, faites gaffe avec vos logs, une commande mal placée et ce sont des heures de données qui disparaissent.</p><p>D'ailleurs, si vous êtes du genre parano (et oui, vous avez raison !), <code>set -o noclobber</code> dans votre <code>.bashrc</code> empêchera <code>&gt;</code> d'écraser un fichier existant lors d'une commande tapée à la main. Pour y arriver, il faudra utiliser <code>&gt;|</code> pour forcer.</p><h2><code>&gt;&gt;</code> - Ajouter à la suite</h2><div><pre><code><span><span>echo "Ligne 2" &gt;&gt; fichier.txt
+</span></span></code></pre></div><p>Même principe que <code>&gt;</code>, sauf que ça ajoute à la fin au lieu d'écraser. C'est ce que vous voulez 99% du temps pour des logs (sauf si vous voulez repartir de zéro, là <code>&gt;</code> fait le job). Une lettre de différence entre "<em>tout va bien</em>" et "<em>où sont passés mes logs, boudiouuu ???</em>".</p><h2><code>2&gt;</code> - Rediriger les erreurs</h2><div><pre><code><span><span>commande_foireuse 2&gt; erreurs.log
+</span></span></code></pre></div><p>Le <code>2</code> c'est stderr, en gros (y'a pas d'espace entre le 2 et le <code>&gt;</code>, sinon bash croit que 2 est un argument). Tout ce qui sort en erreur finit dans <code>erreurs.log</code> au lieu de polluer votre terminal. Perso, je trouve ça super pratique pour garder une trace propre quand vous lancez des scripts via <code>crontab -e</code>.</p><p>Et <code>2&gt;&gt;</code> existe aussi, pour cumuler les erreurs au fil du temps au lieu d'écraser le fichier à chaque exécution.</p><h2><code>2&gt;&amp;1</code> - Fusionner erreurs et sortie normale</h2><div><pre><code><span><span>commande &gt; output.log 2&gt;&amp;1
+</span></span></code></pre></div><p>Le fameux ! Le <code>&amp;1</code> dit à bash "<em>le 1 c'est un file descriptor, pas un fichier qui s'appelle littéralement 1</em>". Du coup stderr (2) est redirigé vers le même endroit que stdout (1), ou plutôt vers là où stdout pointe au moment où bash évalue la ligne. Ça va, vous suivez toujours ? ^^</p><p>Attention, l'ordre compte ! Bash lit les redirections de gauche à droite. <code>&gt; output.log 2&gt;&amp;1</code>, stdout pointe vers le fichier, puis stderr suit... tout va dans le fichier. <code>2&gt;&amp;1 &gt; output.log</code>, stderr copie stdout qui pointe ENCORE vers le terminal, puis stdout est redirigé vers le fichier. Résultat, les erreurs restent dans votre terminal. Le piège classique.</p><p>Et <code>&amp;&gt;</code> fait la même chose en plus court :</p><div><pre><code><span><span>commande &amp;&gt; output.log
+</span></span></code></pre></div><p><code>&amp;&gt;</code> est super pratique, mais spécifique à bash / zsh donc pour la portabilité, préférez quand même <code>&gt; fichier 2&gt;&amp;1</code>.</p><h2><code>2&gt;/dev/null</code> - Le trou noir</h2><div><pre><code><span><span>find / -name "*.conf" 2&gt;/dev/null
+</span></span></code></pre></div><p><code>/dev/null</code>, c'est le trou noir d'Unix. Tout ce que vous envoyez là-dedans disparaît. Super pratique avec <code>find</code> qui vous crache 200 "Permission denied" pour un seul résultat utile.</p><p>Et si vous voulez TOUT faire disparaître (stdout + stderr) ? Un petit <code>&amp;&gt;/dev/null</code> et c'est réglé. Pratique dans vos scripts <code>/etc/cron.d/</code> quand vous voulez zéro bruit (bon, j'exagère un chouïa, je sais...).</p><p>Si vous aimez les
+<a href="https://korben.info/les-raccourcis-clavier-pour-bash-terminal-linux-et-macos.html">raccourcis bash</a>
+, j'ai aussi ce qu'il faut.</p><p>Bref, voilà ce sont juste 5 opérateurs à retenir, et avec ça vous couvrez à peu près tout. Donc la prochaine fois que vous copierez un <code>2&gt;&amp;1</code>, au moins vous saurez pourquoi.</p><p><a href="https://stackoverflow.com/questions/818255/what-does-21-mean">Source d'inspiration</a></p></div><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

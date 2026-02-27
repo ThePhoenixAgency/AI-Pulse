@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Show HN: High Tech Before/After Cleaning Gallery</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Show HN: High Tech Before/After Cleaning Gallery</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 7:07:36 PM | <a href="https://hounty.app/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>My apartment is a mess. Between day work, kids and all the side projects cleaning is the thing that usually takes the back air. It’s embarrassing really, I can come up with a sophisticated tech strategy, find the right words to say to an employee who’s down and I can’t seem to fold the laundry when I take it out of the dryer. I’m a developer by heart, so after a little bit of self pity, I decided that my daughters are to blame for the mess and thus dug head deep into debugging the problem ans researching the solution. I asked my youngest why is it so hard for her to clean and she said ”Mom, I don’t see the mess”. ”Okay, then I need an app that would help you see the mess” - thought I to myself. We tried the concept in our WhatsApp group first: one would ”hunt” for ”cleaning bounties” (Hounty = home bounty), the other would clean and send an picture back as a proof. It was fun, but a bit hard to track. Great! Let’s turn it into an app, add some family coins on top and problem solved! Well, it’s been a year since then and oh boy did I go down that rabbit hole! You know what I learned about kids? They get bored instantly. A trick what worked once won’t work again and the fun game was apparently fun only once. But I did build an app an released it on iOS, it was a fully offline version, I didn’t spend much time advertising it of at all, but I did show it to my friends. What surprised me is that me and my and a few of my very much grown up friends were using it quite often and enjoying the little ghost cheeky humour. And so I decided to focus on making the cleaning work for me and for other grown up ambitious kids.
+First of all, I redesigned my Flutter app into a sleek black and flames look. It took several months of back and forth before it started to look how I wanted. Once it did I realised that my central event bus was eating up a lot of memory on the device (those web devs making apps, amiright?), but better late than never! And then I almost lost my clean pics after switching between live and test flight version, so several months and three rebuilds after (Cloudflare, no, Supabase, no, Scaleway, JS, no Go!) I finally had a working cloud sync and authentication. You know what was the easiest thing to add? Gen AI api to plan the cleaning for me. That worked right away almost and as my friend told me ”Wow! It sees everything!”. It does, it sometimes creates a 1px tall pictures, but it does see all the mess. Magic of AI!
+Of course I added passkeys, token usage and subscriptions and hyper optimized the image compression. Backend is just one service though, but it’s modular waiting to be split and deployed on Kubernetes! And hey after a year and 2 weeks of app review-rejection-review-approved-ohno-review-approved it went live!
+Fun fact, the app was originally paid, so when I submitted a new version for review I made it free aaand got 500 downloads for the old version because apparently there are ”apps gone free” communities that pick those things up automatically. So Hounty is clearly up for a great start already! Jokes aside I wanted to drop it several times, it’s brutal to handle a full stack side project, I’m sure many here can relate. Luckily the pesky ghost has been reminding me of it daily from a sticker that I printed and glued on my phone. And finally, it’s done and I’d love to hear what you think: is it over engineered or should I add an MCP server to it? :)</p>
+<hr>
+<p> URL: <a href="https://news.ycombinator.com/item?id=47184274">https://news.ycombinator.com/item?id=47184274</a></p>
+<p>Points: 1</p>
+<p># : 0</p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

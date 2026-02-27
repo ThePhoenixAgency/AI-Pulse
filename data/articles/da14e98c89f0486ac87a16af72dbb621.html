@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Premiere panne totale</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Premiere panne totale</h1>
+  <div class="metadata">
+    Source: Gladys Assistant (Forum) | Date: 2/27/2026 5:29:21 PM | <a href="https://community.gladysassistant.com/t/premiere-panne-totale/10071" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <div> <div> <p><span> <time> Février 27, 2026, 5:29 </time> <span>1</span> </span> </p></div> <p>bonjour.j’ai simplement lancé dans gladys une mise à jour en cliquant sur…mise à jour….et ma configuration a sauté.il ne reconnait plus mon mail.je suis temp-user…j’avais fait une copie du dossier gladys dans var/lib.est ce qu’une copie de ce dossier me redonnera l’acces? merci</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/mutmut"><span>mutmut</span></a> </span> <span> <time> Février 27, 2026, 5:38 </time> <span>2</span> </span> </p> <p>Salut <a href="https://community.gladysassistant.com/u/canaille17">@canaille17</a><br>
+Si tu fais une « restauration » de tes fichiers sauvegardés, tu devrais bien repartir.<br>
+Dans ce que tu décris, on a l’impression que Gladys ne pointe plus vers ton répertoire de données <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/face_with_raised_eyebrow.png?v=15" alt=":face_with_raised_eyebrow:"><br>
+Par contre il fait arrêter Gladys avant la restauration : <code>docker stop gladys</code></p> </div> <div> <p>j’ai demandé de l’aide à gemini.concretement,il m’a fait stopper gladys puis copié depuis ma machine linux mint le dossier gladysassistant de var/lib puis relancé.toujours le meme message adresse mail ou mdp refusé…grrrrr</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/mutmut"><span>mutmut</span></a> </span> <span> <time> Février 27, 2026, 6:04 </time> <span>4</span> </span> </p> <div> <p>Donc soit ta config de base est vérolée, soit il ne pointe pas vers le bon répertoire.</p>
+<p>Est-ce que tu as encore la commande du <code>docker run</code> ?<br>
+Tu peux la poster ici pour voir ce qui peut poser problème.</p>
+<p>Et quand tu es dans ton répertoire de gladys, tu peux donner le résultat de <code>pwd</code> ?<br>
+Ainsi qu’un <code>ls -a</code> ?<br>
+Et <code>docker ps -a</code> ?</p>
+<p>PS : je me méfie toujours des IA…</p> </div> </div> <div> <p>cris17@can</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/mutmut"><span>mutmut</span></a> </span> <span> <time> Février 27, 2026, 6:06 </time> <span>6</span> </span> </p> <p>je voulais dire quelle commande as-tu lancé pour démarrer Gladys ?</p> </div> <div> <p>sudo docker stop gladys<br>
+sudo docker start gladys</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/GBoulvin"><span>GBoulvin</span></a> </span> <span> <time> Février 27, 2026, 6:36 </time> <span>8</span> </span> </p> <div> <p>Je pense que ce que veut <a href="https://community.gladysassistant.com/u/mutmut">@mutmut</a>, c’est la commande que tu as utilisée pour installer Gladys. C’est dans celle-ci qu’est indiqué où ce trouve le dossier comprenant les bases de données de Gladys.</p>
+<p>L’idée étant de voir le contenu de celui-ci et essayer de déterminer ce qui coince…</p> </div> <div> <p><span>1 « J'aime »</span> </p></div> </div> <div> <h3><a name="p-82129-h-2-lancement-de-gladys-assistant-1" href="#p-82129-h-2-lancement-de-gladys-assistant-1"></a>2. Lancement de Gladys Assistant</h3>
+<p>Voici la commande «&nbsp;universelle&nbsp;» (celle que tu as utilisée). Elle inclut l’accès aux ports USB (clé Zigbee) et au moteur Docker pour les mises à jour auto.</p>
+<p>Bash</p>
+<pre><code>docker run -d \ --log-driver json-file \ --log-opt max-size=10m \ --restart=always \ --privileged \ --network=host \ --name gladys \ -e NODE_ENV=production \ -e SERVER_PORT=80 \ -e TZ=Europe/Paris \ -v /var/run/docker.sock:/var/run/docker.sock \ -v /var/lib/gladysassistant:/var/lib/gladysassistant \ -v /dev:/dev \ gladysassistant/gladys:latest
+</code></pre> </div> <div> <p>l’interieur de mon var/lib</p>
+<p>cris17@canaille17:~$ ls -lh /var/lib/gladysassistant<br>
+total 1.9M<br>
+-rwxrwxrwx 1 root root 476K Feb 27 18:27 gladys-production.db.old<br>
+-rwxrwxrwx 1 root root 488K Feb 27 17:56 gladys.db<br>
+-rwxrwxrwx 1 root root 488K Feb 27 17:56 gladys.db.bak<br>
+-rwxrwxrwx 1 root root 476K Feb 27 17:56 gladys.db.old<br>
+drwxrwxrwx 2 root root 4.0K Feb 27 12:15 homekit<br>
+drwxrwxrwx 3 root root 4.0K Aug 8 2025 matter<br>
+drwxrwxrwx 2 root root 4.0K Aug 8 2025 mosquitto<br>
+drwxrwxrwx 4 root root 4.0K Aug 8 2025 zigbee2mqtt<br>
+cris17@canaille17:~$</p> </div> <div> <p>mon dossier de sauvegarde fait 9,8Mo</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/GBoulvin"><span>GBoulvin</span></a> </span> <span> <time> Février 27, 2026, 6:51 </time> <span>12</span> </span> </p> <div> <p>Normalement, si ta sauvegarde est bonne, tu stoppes Gladys <code>docker stop gladys </code> , tu copies le contenu de ta sauvegarde vers <code>/car/lib/gladysassistant</code> puis tu peux redémarrer le container <code>docker start gladys</code>.</p>
+<p>Attention que si tu avais configuré zigbee2mqtt, mqtt ou d’autre container via Gladys, il faut les stopper également avant la restauration !</p>
+<p>N’oublie pas de rafraîchir ta page web après restauration (voir utiliser un onglet de navigation privée)</p> </div> </div> <div> <p>ok je tente une derniere fois</p>
+<p>merci</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/GBoulvin"><span>GBoulvin</span></a> </span> <span> <time> Février 27, 2026, 6:53 </time> <span>14</span> </span> </p> <p>Vide le dossier /car/lib/gladysassistant avant de restaurer ta sauvegarde (si elle est bonne, bien sûr !)</p> </div> <div> <p>j’essaie</p>
+<p>merci</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/mutmut"><span>mutmut</span></a> </span> <span> <time> Février 27, 2026, 6:55 </time> <span>16</span> </span> </p> <div> <p>pour moi il y a un problème : tu as mis <code>gladys-production.db.old</code> (backup de la base donnée) et ensuite tu mets une nouvelle base de données qui s’appelle <code>gladys.db</code> mais qui n’est pas le nom qu’il faut.</p>
+<p>Peux-tu tester en renommant gladys-prod…old en gladys-production.db ?<br>
+Quelque chose ne colle pasen tout cas dans ces renommages.</p>
+<p>Je dine, je reviens après.</p> </div> </div> <div> <p>ok j’essaie</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/mutmut"><span>mutmut</span></a> </span> <span> <time> Février 27, 2026, 7:48 </time> <span>18</span> </span> </p> <div> <p>Je viens de checker le docker run de la <a href="https://gladysassistant.com/fr/docs/installation/docker/">doc</a> et il te manque la ligne avec la base de donnée :</p>
+<pre><code>-e TZ=Europe/Paris \-e SQLITE_FILE_PATH=/var/lib/gladysassistant/gladys-production.db \
+</code></pre>
+<p>C’est cette ligne qui permet à Gladys de savoir où est la base de donnée.<br>
+De ce que je vois dans ton <code>ls -lh</code>, tu as un <code>gladys.db</code>à 17h56, je pesne que c’est ta base de données de départ (si tu as créé ton instance à cette heure là bien entendu).</p>
+<p>Donc pour le renommage, je dirais qu’il faut passer <code>gladys.db</code>en <code>gladys-production.db</code>.<br>
+Puis il faudra que tu ajoutes la ligne manquante au docker run, ce qui donnerait :</p>
+<pre><code>sudo docker run -d \
+--log-driver json-file \
+--log-opt max-size=10m \
+--cgroupns=host \
+--restart=always \
+--privileged \
+--network=host \
+--name gladys \
+-e NODE_ENV=production \
+-e SERVER_PORT=80 \
+-e TZ=Europe/Paris \
+-e SQLITE_FILE_PATH=/var/lib/gladysassistant/gladys-production.db \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /var/lib/gladysassistant:/var/lib/gladysassistant \
+-v /dev:/dev \
+-v /run/udev:/run/udev:ro \
+gladysassistant/gladys:v4
+</code></pre> </div> </div> <div> <p>merci je vais essayer….</p>
+<p>comme je ne savais plus où j’en etais,j’ai refait une install propre en gardant le max.je me reconnecte et je vais reinjecter le fichier(avec precaution) pour recuperer ma base.je verrais si ça tourne…demain…merci à tous pour votre aide….à suivre,ce n’est surement pas terminé <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/slight_smile.png?v=15" alt=":slight_smile:"></p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/mutmut"><span>mutmut</span></a> </span> <span> <time> Février 27, 2026, 8:05 </time> <span>20</span> </span> </p> <p>pas de soucis <a href="https://community.gladysassistant.com/u/canaille17">@canaille17</a> , le principal c’est cette ligne qui définit la base de données, il faut que les noms de fichier correspondent pour que ça fonctionne bien.<br>
+Et surtout ne pas oublier de stopper le container Glady avant de remplacer le fichier.</p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -5,8 +5,36 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>IoT - Internet of Things news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Fri, 27 Feb 2026 08:38:51 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 20:26:19 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-iot.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Does HomeAssistant need stable IP addresses for devices?]]></title>
+      <link>https://community.home-assistant.io/t/does-homeassistant-need-stable-ip-addresses-for-devices/991141</link>
+      <description><![CDATA[I’m wondering how people with HomeAssistant are managing the IP address for all of their IOT devices?
+The options that I’m aware of are:
+Static IP Addresses - You manually set a static IP address on each device. This doesn’t really scale, and is vulnerable to human error (e.g. address conflict on two devices)
+DHCP - The devices grab IP addresses from a pool - however, the address may change between reboots, lease timeouts etc.
+DHCP with static reservations - On your DHCP server, you reserver specific IP addresses from the pool for devices via MAC addresses. It’s a bit of overhead though.
+Let’s say you have a mix of IOT devices (some of this is planned in my case):
+ESPHome devices
+Shelly devices
+Tuya devices (used via localtuya or tuya-local - still figuring out which is better)
+WLED light controllers
+In my case, the router is running VyOS, and it’s a dual-stack IPv4/IPv6 network.
+VyOS does allow setting static DHCP leases:
+https://docs.vyos.io/en/1.4/configuration/service/dhcp-server.html#static-mappings
+However, it’s a bit of a pain having to manage that manually. The Ansible module for VyOS doesn’t seem to support configuring the DHCP server either:
+https://docs.ansible.com/projects/ansible/latest/collections/vyos/vyos/index.html
+so you can’t even use that to streamline things, or get it into source control .
+However, these days - do you actually need stable address for devices? (i.e. with mDNS/Bonjour, and all that?)
+As in, will HomeAssistant handle it fine, if device IP addresses change underneath it? Or what would you do to handle this?
+9 posts - 8 participants
+Read full topic]]></description>
+      <pubDate>Fri, 27 Feb 2026 11:24:53 GMT</pubDate>
+      <source>Home Assistant Community Forum (Latest)</source>
+      <category>iot</category>
+      <guid>https://community.home-assistant.io/t/does-homeassistant-need-stable-ip-addresses-for-devices/991141</guid>
+    </item>
     <item>
       <title><![CDATA[Domoticz access blocked]]></title>
       <link>https://forum.domoticz.com/viewtopic.php?p=331760#p331760</link>
@@ -16,7 +44,7 @@ Domoticz running on a Raspberry Pi.
 What I have already found or tried:
 I connect to the Raspberry Pi via SSH. I tried to repair Domoticz or completely reinstall it. Nothing helped.
 Does anyone have a solution to my problem?
-Statistics: Posted by miguell — Tuesday 24 February 2026 9:46 — Replies 3 — Views 330]]></description>
+Statistics: Posted by miguell — Tuesday 24 February 2026 9:46 — Replies 3 — Views 352]]></description>
       <pubDate>Tue, 24 Feb 2026 08:46:33 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -130,13 +158,53 @@ Types - Counts the types of planes flying over your head When you click on the C
       <guid>https://forum.domoticz.com/viewtopic.php?p=331496#p331496</guid>
     </item>
     <item>
+      <title><![CDATA[Your support please - Improving HA's recorder, Database and associated user interface]]></title>
+      <link>https://community.home-assistant.io/t/your-support-please-improving-has-recorder-database-and-associated-user-interface/991323</link>
+      <description><![CDATA[tl,dr: Here to seek your support for a feature request on improving how HA’s databases work, what goes into them, and how they are maintained.
+After recently having a major blowout in my SQLite database (reaching 1.8 Gb), it prompted me to sit down and review a number of things related to recorder: and just what data was stored in my HA DB.
+Doing so sent me further down a rabbit hole, thinking about how HA is setup from the start, what happens when new integrations and devices are added, and the high learning curve new users to the platform have when it comes to understanding what goes into the database and achieving an optimal configuration that doesn’t tax their hardware or storage.
+Long story short: HA has some really great opportunities in this space to help users optimise the database for performance, size, and reduced load/storage device wear.
+To this end, I have opened a significant and detailed Feature request, and I’d appreciate your support and/or discussion on it:
+GitHub Database &amp; Recorder integration: Overhaul UI to permit reduced DB size...
+Describe your core improvement Prompt at instance setup to configure settings for proper DB maintenance from the outset: As part of the onboarding/instance first time setup process, or at a later s... The feature request above covers all the usual topics, which I hope will assist you providing unqualified support, and discussion that might help drive better outcomes and faster update by the HA core team.
+I also have a separate blog post that goes deeper into the detail on the topic, especially when it comes to the theory and practice of optimising an existing instance for others with the same dilemma I had.
+Thanks in advance for your votes and discussions, it will be appreciated.
+2 posts - 2 participants
+Read full topic]]></description>
+      <pubDate>Fri, 27 Feb 2026 17:48:36 GMT</pubDate>
+      <source>Home Assistant Community Forum (Latest)</source>
+      <category>iot</category>
+      <guid>https://community.home-assistant.io/t/your-support-please-improving-has-recorder-database-and-associated-user-interface/991323</guid>
+    </item>
+    <item>
+      <title><![CDATA[Amélioration re-calcul suivi de l'énergie]]></title>
+      <link>https://community.gladysassistant.com/t/amelioration-re-calcul-suivi-de-lenergie/10069</link>
+      <description><![CDATA[@pierre-gilles ,
+Je rebondis sur ce sujet du coup, j’ai terminé la vérification pour la PR sur l’amélioration du recalcul du suivi de l’énergie. Je pense que tu peux review : github.com/GladysAssistant/Gladys Energy monitoring - New Add date range recalculation for energy monitoring with improved jobs and tests master ← Terdious:energy-recalc-date-and-multi-features 05:16PM - 06 Jan 26 UTC +3203 -428 ### Pull Request check-list To ensure your Pull Request can be accepted as fa…st as possible, make sure to review and check all of these items: - [x] If your changes affects code, did your write the tests?
+- [x] Are tests passing? (`npm test` on both front/server)
+- [x] Is the linter passing? (`npm run eslint` on both front/server)
+- [x] Did you run prettier? (`npm run prettier` on both front/server)
+- [x] If you are adding a new features/services, did you run integration comparator? (`npm run compare-translations` on front)
+- [x] Did you test this pull request in real life? With real devices? If this development is a big feature or a new service, we recommend that you provide a Docker image to the community ([forum](https://community.gladysassistant.com/)) for testing before merging.
+- [ ] If your changes modify the API (REST or Node.js), did you modify the API documentation? (Documentation is based on in code)
+- [x] If you are adding a new features/services which needs explanation, did you modify the user documentation? See [the GitHub repo](https://github.com/GladysAssistant/v4-website) and the [website](https://gladysassistant.com).
+- [ ] Did you add fake requests data for the demo mode (`front/src/config/demo.js`) so that the demo website is working without a backend? (if needed) See [https://demo.gladysassistant.com](https://demo.gladysassistant.com). NOTE: these things are not required to open a PR and can be done afterwards / while the PR is open. ### Description of change * **Translate** * +156 lines / -21 lines * **Front** * +923 lines / -137 lines * **Server** * +699 lines / -126 lines * **Tests** * +1232 lines / -129 lines - Add start/end date support for energy consumption and cost recalculation (full or selected features).
+- Purge recalculated consumption states within the selected period before recomputing.
+- Return job_id on recalculation endpoints and handle errors on the UI side.
+- Display recalculation period in background jobs.]]></description>
+      <pubDate>Fri, 27 Feb 2026 13:24:58 GMT</pubDate>
+      <source>Gladys Assistant (Forum)</source>
+      <category>iot</category>
+      <guid>https://community.gladysassistant.com/t/amelioration-re-calcul-suivi-de-lenergie/10069</guid>
+    </item>
+    <item>
       <title><![CDATA[J'ai laissé l'IA OpenClaw contrôler ma Maison]]></title>
       <link>https://community.gladysassistant.com/t/jai-laisse-lia-openclaw-controler-ma-maison/10066</link>
       <description><![CDATA[Salut à tous !
 Vous avez sûrement entendu parler d’OpenClaw, le framework IA qui a explosé sur GitHub il y a quelques semaines, et qui vient d’être racheté par OpenAI.
 J’ai fait le test de connecter OpenClaw à Gladys pour tester les possibilités, et c’est vraiment bluffant Je vous en dis plus en vidéo :
 J'ai laissé l'IA OpenClaw contrôler ma Maison (C'est fou)
-Note : Je vous déconseille d’installer OpenClaw sur votre serveur Gladys, c’est un logiciel encore en début de vie, qui touche un peu à tout et qui a été pas mal décrié pour ses failles de sécurité. Pour ce test, j’ai déployé OpenClaw sur une VM dans le Cloud pour rester dans un environnement isolé 1 message - 1 participant(e)
+Note : Je vous déconseille d’installer OpenClaw sur votre serveur Gladys, c’est un logiciel encore en début de vie, qui touche un peu à tout et qui a été pas mal décrié pour ses failles de sécurité. Pour ce test, j’ai déployé OpenClaw sur une VM dans le Cloud pour rester dans un environnement isolé 5 messages - 3 participant(e)s
 Lire le sujet en entier]]></description>
       <pubDate>Fri, 27 Feb 2026 07:56:04 GMT</pubDate>
       <source>Gladys Assistant (Forum)</source>
@@ -188,7 +256,7 @@ The server is on wired ethernet, in the same IP network range as the MacBook’s
 During openhab startup on the server (but not on the MacBook), there is an ominous message:
 2026-02-25 00:46:29.974 [INFO ] [.network.internal.utils.NetworkUtils] - CIDR prefix is smaller than /24 on interface with address 192.168.213.20/18, truncating to /24, some addresses might be lost But I don’t know who’s responsible for that message, so I don’t know the scope of what it affects. Might be relevant, but then again, the MacBook eclipse openhab works just fine on this same network range (and without the INFO log message).
 Any ideas? Thanks in advance!
-3 posts - 2 participants
+4 posts - 2 participants
 Read full topic]]></description>
       <pubDate>Wed, 25 Feb 2026 23:05:36 GMT</pubDate>
       <source>openHAB Community (Latest)</source>
@@ -211,7 +279,7 @@ The device value is changing correctly.
 The device “Last Update” timestamp in the UI appears correct.
 Only lastUpdate.minutesAgo in DzVents is incorrect.
 The issue does not affect all sensors at once — it appears randomly on different OWFS devices. The same scripts worked correctly in previous versions.
-Statistics: Posted by tomes — Tuesday 24 February 2026 23:19 — Replies 4 — Views 312]]></description>
+Statistics: Posted by tomes — Tuesday 24 February 2026 23:19 — Replies 4 — Views 356]]></description>
       <pubDate>Tue, 24 Feb 2026 22:19:41 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -291,7 +359,7 @@ Chat : Les espaces dans les messages sont maintenant correctement préservés gr
 Exemple: DuckDB mis à jour en version 1.4.4.
 Correction de fautes de frappe dans les traductions.
 Amélioration de la robustesse du service MCP.
-Merci à tous les contributeurs : @bertrandda, @mutmut @Will_71 @qleg et @Terdious pour ce beau travail collaboratif ! Bonne mise à jour ! 11 messages - 5 participant(e)s
+Merci à tous les contributeurs : @bertrandda, @mutmut @Will_71 @qleg et @Terdious pour ce beau travail collaboratif ! Bonne mise à jour ! 12 messages - 5 participant(e)s
 Lire le sujet en entier]]></description>
       <pubDate>Mon, 23 Feb 2026 14:38:48 GMT</pubDate>
       <source>Gladys Assistant (Forum)</source>
@@ -323,7 +391,7 @@ I know also that this system is only used in France ,and for almost everyone onl
 And perhaps the problem comes from GCE Electronics.
 So I'm not sure someone can help me… But I still hope...
 Patrick
-Statistics: Posted by Pchatill — Monday 23 February 2026 13:06 — Replies 1 — Views 187]]></description>
+Statistics: Posted by Pchatill — Monday 23 February 2026 13:06 — Replies 1 — Views 207]]></description>
       <pubDate>Mon, 23 Feb 2026 12:06:22 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -416,31 +484,18 @@ This morning my Docker container was updated to latest beta (17204). There seems
 2026-02-21 13:32:06.513 Status: PluginSystem: 'ConBee2' Registration ignored, Plugins are not enabled.
 2026-02-21 13:32:06.513 Status: PluginSystem: 'SolarEdge' Registration ignored, Plugins are not enabled.
 2026-02-21 13:32:06.513 Status: PluginSystem: 'Shelly MQTT' Registration ignored, Plugins are not enabled. Should not be related (because I use Docker) but I am running Docker on a headless Debia Trixie NUC.
-I am posting this in the hope that this will be corrected in the next beta. I have no desire to go fiddle inside the container Statistics: Posted by Sjonnie2017 — Saturday 21 February 2026 13:40 — Replies 2 — Views 273]]></description>
+I am posting this in the hope that this will be corrected in the next beta. I have no desire to go fiddle inside the container Statistics: Posted by Sjonnie2017 — Saturday 21 February 2026 13:40 — Replies 2 — Views 288]]></description>
       <pubDate>Sat, 21 Feb 2026 12:40:58 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
       <guid>https://forum.domoticz.com/viewtopic.php?p=331704#p331704</guid>
     </item>
     <item>
-      <title><![CDATA[Présentation sommaire]]></title>
-      <link>https://community.gladysassistant.com/t/presentation-sommaire/10021</link>
-      <description><![CDATA[Bonjour à tous,
-Intéressé par la domotique mais complètement débutant, j’aime l’informatique, j’ai quelques notions, je me suis formé au fil du temps (je suis un jeune vieux). J’ai un système d’alarme que j’ai monté moi-même, des NAS, je dépanne quelques personnes au niveau informatique (mais rien de très poussé), je suis donc ici pour m’informer et apprendre.
-Bonne journée à tout le monde.
-6 messages - 6 participant(e)s
-Lire le sujet en entier]]></description>
-      <pubDate>Wed, 18 Feb 2026 05:33:51 GMT</pubDate>
-      <source>Gladys Assistant (Forum)</source>
-      <category>iot</category>
-      <guid>https://community.gladysassistant.com/t/presentation-sommaire/10021</guid>
-    </item>
-    <item>
       <title><![CDATA[Domoticz doesn't start after update beta]]></title>
       <link>https://forum.domoticz.com/viewtopic.php?p=331607#p331607</link>
       <description><![CDATA[After a update from beta 17099 to 17189 Domoticz did not restart. Did the update throuh the settingsscreen. Counter counted until 100, then the message update failed, no internet connection....
 After a domoticz service restart was domoticz running normaal on the downloaded beta 17189. I thought this problem was solved? Attached the update.log and domoticz crash log domoticz_crash.log update.log
-Statistics: Posted by Rik60 — Sunday 15 February 2026 20:21 — Replies 5 — Views 445]]></description>
+Statistics: Posted by Rik60 — Sunday 15 February 2026 20:21 — Replies 5 — Views 477]]></description>
       <pubDate>Sun, 15 Feb 2026 19:21:33 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -452,20 +507,11 @@ Statistics: Posted by Rik60 — Sunday 15 February 2026 20:21 — Replies 5 — 
       <description><![CDATA[Since yesterday I'm getting the following error on the buienradar integration:
 Code: Error: Internet weer: Invalid data received (station measurement empty), or no data returned!
 Started just somewhere during the day. Updated this morning to latest beta, did not resolve the issue. Any clue to the root cause? API change?
-Statistics: Posted by JanJaap — Tuesday 10 February 2026 11:45 — Replies 2 — Views 154]]></description>
+Statistics: Posted by JanJaap — Tuesday 10 February 2026 11:45 — Replies 2 — Views 166]]></description>
       <pubDate>Tue, 10 Feb 2026 10:45:14 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
       <guid>https://forum.domoticz.com/viewtopic.php?p=331487#p331487</guid>
-    </item>
-    <item>
-      <title><![CDATA[From Connected Devices to Autonomous Operations: What Enterprise IoT Is Really Becoming]]></title>
-      <link>https://iotbusinessnews.com/2026/02/10/from-connected-devices-to-autonomous-operations-what-enterprise-iot-is-really-becoming/</link>
-      <description><![CDATA[The latest IoT Analytics report reveals enterprise IoT's shift from connectivity projects to embedded, autonomous operations focused on resilience, ROI, and operational intelligence across industries.]]></description>
-      <pubDate>Tue, 10 Feb 2026 09:43:12 GMT</pubDate>
-      <source>IoT Business News</source>
-      <category>iot</category>
-      <guid>https://iotbusinessnews.com/2026/02/10/from-connected-devices-to-autonomous-operations-what-enterprise-iot-is-really-becoming/</guid>
     </item>
     <item>
       <title><![CDATA[RasPi ZeroW :port8080 dead. New install[SOLVED]]]></title>
@@ -477,7 +523,7 @@ Code: Feb 07 19:54:02 haz11 domoticz.sh[2666]: Illegal instruction: What is the 
 Is the Pi Zero suitable for running domoticz?
 If the current os or domoticz version is not suitable for the Pi Zero, which is the latest usable version?
 Greetings to everyone and have nice Weekend
-Statistics: Posted by rabbit — Saturday 07 February 2026 20:36 — Replies 26 — Views 762]]></description>
+Statistics: Posted by rabbit — Saturday 07 February 2026 20:36 — Replies 26 — Views 797]]></description>
       <pubDate>Sat, 07 Feb 2026 19:36:00 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -489,7 +535,7 @@ Statistics: Posted by rabbit — Saturday 07 February 2026 20:36 — Replies 26 
       <description><![CDATA[I used "Open Hardware Monitor" for a long time with a Domoticz "Motherboard" hardware entry. With my new PC "Open Hardware Monitor" doesn't support many of the motherboards sensors. Some older Domoticz release notes are showing that "Libre Hardware Monitor" is supported. However, if I try to use it like "Open Hardware Monitor" it seems not to be recogniced by Domoticz. Further more I couldn't find any how to hints. Can anyone give advise?
 Addition: Domoticz Log shows "Warning, neither Libre Hardware Monitor nor Open Hardware Monitor are installed on this system."
 However, Libre Hardware Monitor is running: Domoticz 2025.2 is running on Windows 11 as Libre Hardware Monitor 0.9.5
-Statistics: Posted by Itschi — Friday 06 February 2026 8:51 — Replies 1 — Views 194]]></description>
+Statistics: Posted by Itschi — Friday 06 February 2026 8:51 — Replies 1 — Views 206]]></description>
       <pubDate>Fri, 06 Feb 2026 07:51:10 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -508,7 +554,7 @@ E-mail notifications with a picture (security cam) do not work anymore. Errormes
 error messages and test e-mail are received ok.
 Until recently the mail with a snapshot of the security cam where received.
 the snapshot works in the camera settings menu
-settings screen attached Statistics: Posted by Verdwaald — Tuesday 03 February 2026 22:15 — Replies 2 — Views 179]]></description>
+settings screen attached Statistics: Posted by Verdwaald — Tuesday 03 February 2026 22:15 — Replies 2 — Views 191]]></description>
       <pubDate>Tue, 03 Feb 2026 21:15:59 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -745,15 +791,6 @@ Lithuanian Hydrometeorological Service (LHMT) to provide regional weather foreca
       <guid>https://www.home-assistant.io/blog/2025/11/05/release-202511/</guid>
     </item>
     <item>
-      <title><![CDATA[L’IA va booster l’internet des objets]]></title>
-      <link>https://domotique-news.com/lia-va-booster-linternet-des-objets/</link>
-      <description><![CDATA[L'IA va booster l'internet des objets. Une récente étude Verizon indique que 84 % des entreprises considèrent l’IA comme une technologie clé pour l’IoT, et surtout, 70 % affirment qu’elle a concrètement accéléré leurs déploiements.]]></description>
-      <pubDate>Fri, 31 Oct 2025 14:50:16 GMT</pubDate>
-      <source>Domotique News</source>
-      <category>iot</category>
-      <guid>https://domotique-news.com/lia-va-booster-linternet-des-objets/</guid>
-    </item>
-    <item>
       <title><![CDATA[Building the AI-powered local smart home]]></title>
       <link>https://www.home-assistant.io/blog/2025/09/11/ai-in-home-assistant/</link>
       <description><![CDATA[Last year, we laid out our vision for AI in the smart home, which opened up experimentation with AI in Home Assistant. In that update, we made it easier to integrate all sorts of local and cloud AI tools, and provided ways to use them to control and automate your home. A year has passed, a lot has happened in the AI space, and our community has made sure that Home Assistant has stayed at the frontier.
@@ -800,6 +837,131 @@ Below is a template entity that counts chickens in a video feed, all via a short
       <guid>https://gladysassistant.com/fr/blog/gladys-4-30-alarm-mode/</guid>
     </item>
     <item>
+      <title><![CDATA[Notes on Migrating to Z-Wave 1.0.1]]></title>
+      <link>https://community.home-assistant.io/t/notes-on-migrating-to-z-wave-1-0-1/991337</link>
+      <description><![CDATA[I just did a test migration to Z-Wave 1.0.1 following these instructions, which I realize might not be the final version.
+I don’t know if this is helpful, but I took some notes about a few things I found confusing.
+Overall, it was pretty smooth. Personally, I prefer configuring z-wave in ZUI and I’m not quite clear if that’s possible with the core app now. Will the old ZUI app still be available?
+(click for more details) 1 post - 1 participant
+Read full topic]]></description>
+      <pubDate>Fri, 27 Feb 2026 20:08:24 GMT</pubDate>
+      <source>Home Assistant Community Forum (Latest)</source>
+      <category>iot</category>
+      <guid>https://community.home-assistant.io/t/notes-on-migrating-to-z-wave-1-0-1/991337</guid>
+    </item>
+    <item>
+      <title><![CDATA[Turning a climbing wall into an interactive game]]></title>
+      <link>https://blog.arduino.cc/2026/02/27/turning-a-climbing-wall-into-an-interactive-game/</link>
+      <description><![CDATA[Artificial climbing walls are important for training, as few people can get to real rock walls regularly enough to keep up with practice. But like anything else, that can become boring if you’re just doing the same thing over and over again. To keep things fresh and fun, Superbender turned his indoor climbing wall into […]]]></description>
+      <pubDate>Fri, 27 Feb 2026 18:03:26 GMT</pubDate>
+      <source>Arduino Blog</source>
+      <category>iot</category>
+      <guid>https://blog.arduino.cc/2026/02/27/turning-a-climbing-wall-into-an-interactive-game/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Premiere panne totale]]></title>
+      <link>https://community.gladysassistant.com/t/premiere-panne-totale/10071</link>
+      <description><![CDATA[bonjour.j’ai simplement lancé dans gladys une mise à jour en cliquant sur…mise à jour….et ma configuration a sauté.il ne reconnait plus mon mail.je suis temp-user…j’avais fait une copie du dossier gladys dans var/lib.est ce qu’une copie de ce dossier me redonnera l’acces? merci
+20 messages - 3 participant(e)s
+Lire le sujet en entier]]></description>
+      <pubDate>Fri, 27 Feb 2026 17:29:21 GMT</pubDate>
+      <source>Gladys Assistant (Forum)</source>
+      <category>iot</category>
+      <guid>https://community.gladysassistant.com/t/premiere-panne-totale/10071</guid>
+    </item>
+    <item>
+      <title><![CDATA[Recommendations for path forward on hardware for HA in small home]]></title>
+      <link>https://community.home-assistant.io/t/recommendations-for-path-forward-on-hardware-for-ha-in-small-home/991321</link>
+      <description><![CDATA[I currently have a 1500 square foot 3 floor home with full wired and wireless network using VLAN’s and Home Assistant docker running on a 24/7 unRaid server. I currently have a number of Kasa WiFi switches and outlets in the system and would like to look at converting to Z-Wave for lighting control but have a couple of complications. There are 3 BLE ceiling fans with integrated lights that I would like to convert to Z-Wave control but haven’t figured out a simple way to accomplish this. I am also wondering if a standalone HA server would be better than running on the unRaid server?
+5 posts - 3 participants
+Read full topic]]></description>
+      <pubDate>Fri, 27 Feb 2026 17:17:48 GMT</pubDate>
+      <source>Home Assistant Community Forum (Latest)</source>
+      <category>iot</category>
+      <guid>https://community.home-assistant.io/t/recommendations-for-path-forward-on-hardware-for-ha-in-small-home/991321</guid>
+    </item>
+    <item>
+      <title><![CDATA[Find out what’s Arduino’s big news at Embedded World 2026!]]></title>
+      <link>https://blog.arduino.cc/2026/02/27/find-out-whats-arduinos-big-news-at-embedded-world-2026/</link>
+      <description><![CDATA[Mark your calendars: we’re heading to Embedded World 2026 (Nuremberg, Germany – March 10-12) and we can’t wait to see you there! Visit us in Hall 3, Booth #555 for live demos, hands-on experiences, and – here’s the big one – a major product announcement you won’t want to miss. We’re unveiling something revolutionary, and Embedded World […]]]></description>
+      <pubDate>Fri, 27 Feb 2026 16:11:51 GMT</pubDate>
+      <source>Arduino Blog</source>
+      <category>iot</category>
+      <guid>https://blog.arduino.cc/2026/02/27/find-out-whats-arduinos-big-news-at-embedded-world-2026/</guid>
+    </item>
+    <item>
+      <title><![CDATA[ESPHome Professional Packages — Enterprise-grade monitoring, alarms &amp; WiFi survival]]></title>
+      <link>https://community.home-assistant.io/t/esphome-professional-packages-enterprise-grade-monitoring-alarms-wifi-survival/991307</link>
+      <description><![CDATA[Hey community! I built a modular package system that adds enterprise-grade capabilities
+What it does C++ Alarm Engine — 4 severity levels (Nominal / Minor / Moderate / Critical) Zero-Config WiFi Motor — Improv BLE, Fallback AP, Captive Portal Full Hardware Telemetry — Free RAM, Memory Fragmentation, Loop Time,
+4d 13h 25m Dynamic Identity — Rename all 30+ sensors from HA without recompiling Copy → Paste → Compile → Enjoy
+Architecture
+Just 3 files:
+File
+Role configuracion_base.yaml
+Master template — drop it into your ESPHome dashboard lib-wifi_conectividad.yaml
+WiFi + BLE + Watchdog engine lib-estados_alarmas.yaml
+alarm brain Compatibility ESP32 · ESP32-C3 · ESP32 WROVER · ESP8266 (partial, see README)
+Links GitHub: GitHub - RamiLEK001/ESPHome-Professional-Packages: Paquetes modulares optimizados para ESP32/ESP8266 en Home Assistant
+Feedback and contributions very welcome! 1 post - 1 participant
+Read full topic]]></description>
+      <pubDate>Fri, 27 Feb 2026 15:36:11 GMT</pubDate>
+      <source>Home Assistant Community Forum (Latest)</source>
+      <category>iot</category>
+      <guid>https://community.home-assistant.io/t/esphome-professional-packages-enterprise-grade-monitoring-alarms-wifi-survival/991307</guid>
+    </item>
+    <item>
+      <title><![CDATA[Ouverture de la page Intégrations sur Favoris]]></title>
+      <link>https://community.gladysassistant.com/t/ouverture-de-la-page-integrations-sur-favoris/10068</link>
+      <description><![CDATA[Suite à la création d’une option “Favoris” dans les intégrations, je propose que l’ouverture de la page “Intégrations” se fasse par défaut sur les “Favoris” s’il y en a.
+ref : Gladys Assistant 4.68 : Matterbridge, intégrations favorites et Tasmota amélioré Actualités 1 message - 1 participant(e)
+Lire le sujet en entier]]></description>
+      <pubDate>Fri, 27 Feb 2026 12:45:15 GMT</pubDate>
+      <source>Gladys Assistant (Forum)</source>
+      <category>iot</category>
+      <guid>https://community.gladysassistant.com/t/ouverture-de-la-page-integrations-sur-favoris/10068</guid>
+    </item>
+    <item>
+      <title><![CDATA[Gladys Assistant 4.69 : Zigbee2mqtt passe sur Ember et suivi énergétique Tasmota]]></title>
+      <link>https://community.gladysassistant.com/t/gladys-assistant-4-69-zigbee2mqtt-passe-sur-ember-et-suivi-energetique-tasmota/10067</link>
+      <description><![CDATA[Bonjour à tous,
+Une nouvelle version de Gladys Assistant est disponible Voici les nouveautés de cette version :
+Zigbee2mqtt : Ajout du nouveau driver Ember
+Zigbee2mqtt propose désormais un nouveau driver, Ember, pour certains dongles comme le dongle Sonoff ZBDongle-E par exemple.
+L’intégration Zigbee2mqtt dans Gladys vous permet désormais de sélectionner ce driver Ember pour les dongles compatibles.
+Si vous utilisez EZSP, Zigbee2mqtt ne touchera pas à votre installation sans action de votre part, pour éviter de casser votre installation. La stabilité est une valeur très importante du projet, et cette mise à jour a été pensé pour ne pas impacter votre quotidien.
+Si vous souhaitez passer à Ember, c’est possible, mais il faudra sûrement mettre à jour le firmware de votre dongle Zigbee avant.
+Par exemple, pour le Sonoff Dongle-E, l’intégration vous offre la possibilité de sélectionner le driver de votre choix entre « Ember » (le nouveau par défaut), et l’ancien EZSP : Si vous testez le nouveau driver, et que votre firmware n’est pas compatible, pas de panique, vous verrez un message : Vous pourrez alors soit mettre à jour le firmware, soit repartir sur EZSP en attendant.
+N’hésitez pas si vous avez des questions Un grand merci à @cicoub13 pour cette contribution !
+Dashboard : Amélioration de l’affichage des capteurs d’ouverture de porte
+L’affichage des capteurs d’ouverture de porte sur le dashboard a été amélioré pour une meilleure lisibilité.
+Désormais, on affiche « Ouvert/Fermé », au lieu de la petite icône de cadenas qui n’était pas très lisible.
+Tasmota : Ajout du suivi énergétique
+Les appareils Tasmota sont désormais intégrés au suivi de l’énergie.
+Merci à @Terdious pour ce développement Pour mettre à jour, c’est automatique, ou vous pouvez forcer la mise à jour dans les paramètres.
+Bonne fin de semaine à tous !
+5 messages - 3 participant(e)s
+Lire le sujet en entier]]></description>
+      <pubDate>Fri, 27 Feb 2026 10:39:56 GMT</pubDate>
+      <source>Gladys Assistant (Forum)</source>
+      <category>iot</category>
+      <guid>https://community.gladysassistant.com/t/gladys-assistant-4-69-zigbee2mqtt-passe-sur-ember-et-suivi-energetique-tasmota/10067</guid>
+    </item>
+    <item>
+      <title><![CDATA[Update entity service totally ignored?]]></title>
+      <link>https://community.home-assistant.io/t/update-entity-service-totally-ignored/991091</link>
+      <description><![CDATA[Hi, using the homewizard integration, to fetch my P1, but the default is 5 sec, but i need 1 sec… so following tutorial here:
+Home Assistant HomeWizard
+Instructions on how to integrate HomeWizard into Home Assistant. disabled the default, created an automation, i see its running in states every 1 sec, but the sensors are not updating at all, they fall back to 30 sec interval?
+Doesnt this service replace the interval? What am i missing?
+- alias: Update Device Automation initial_state: 'on' trigger: - platform: time_pattern seconds: /1 action: - service: homeassistant.update_entity target: entity_id: - sensor.p1_meter_power_phase_1 - sensor.p1_meter_power_phase_2 - sensor.p1_meter_power_phase_3 7 posts - 4 participants
+Read full topic]]></description>
+      <pubDate>Fri, 27 Feb 2026 09:00:12 GMT</pubDate>
+      <source>Home Assistant Community Forum (Latest)</source>
+      <category>iot</category>
+      <guid>https://community.home-assistant.io/t/update-entity-service-totally-ignored/991091</guid>
+    </item>
+    <item>
       <title><![CDATA[Ephemeris in dsl]]></title>
       <link>https://community.openhab.org/t/ephemeris-in-dsl/168664</link>
       <description><![CDATA[Hi,
@@ -807,85 +969,12 @@ Can
 If ( !Ephemeris.isWeekend() ) Work or its something AI made up?
 Also, on the forum here I found info that I could use just isWeekend in dsl, without Ephemeris
 So in that case, would !isWeekend() work to trigger only on the workdays?
-2 posts - 2 participants
+3 posts - 3 participants
 Read full topic]]></description>
       <pubDate>Fri, 27 Feb 2026 06:48:50 GMT</pubDate>
       <source>openHAB Community (Latest)</source>
       <category>iot</category>
       <guid>https://community.openhab.org/t/ephemeris-in-dsl/168664</guid>
-    </item>
-    <item>
-      <title><![CDATA[Import Statistics Integration (https://github.com/klausj1/homeassistant-statistics) Server Error 500 when uploading min, max, mean via ha rest api]]></title>
-      <link>https://community.home-assistant.io/t/import-statistics-integration-https-github-com-klausj1-homeassistant-statistics-server-error-500-when-uploading-min-max-mean-via-ha-rest-api/991051</link>
-      <description><![CDATA[Using c#, but also get the same error with PostMan when sending a http request to HA to upload previous history data to a HA entity.
-url: http://192.168.xxx.xxx:8123/api/services/import_statistics/import_from_json
-json string (body):
-Also have tried:
-Can anyone tell me what the json string should look like?
-3 posts - 2 participants
-Read full topic]]></description>
-      <pubDate>Fri, 27 Feb 2026 05:43:32 GMT</pubDate>
-      <source>Home Assistant Community Forum (Latest)</source>
-      <category>iot</category>
-      <guid>https://community.home-assistant.io/t/import-statistics-integration-https-github-com-klausj1-homeassistant-statistics-server-error-500-when-uploading-min-max-mean-via-ha-rest-api/991051</guid>
-    </item>
-    <item>
-      <title><![CDATA[Can't get frigate cameras entities to play webrtc]]></title>
-      <link>https://community.home-assistant.io/t/cant-get-frigate-cameras-entities-to-play-webrtc/991048</link>
-      <description><![CDATA[Hello,
-I’m looking for help to get frigate or advanced camera card to work with my frigate streams inside HA.
-The problem is when I select the camera entity inside any card, it only plays a mjpeg stream, which it shows a “1 FPS” preview, I mean, only 1 snapshot of the camera per second and not the video itself: When I create a webrtc card and selecting directly the go2rtc stream name, the video streams correctly, so, I believe the entity that the frigate integration is creating, does not have the video streams within:
-type: custom:webrtc-camera
-url: frontis_main
-mode: webrtc This is my frigate config which is in a separated proxmox CT running docker:
-mqtt: enabled: true host: 192.168.1.15 user: user password: password go2rtc: streams: ninas_main: - rtsp://user:password@192.168.1.50:554/stream1 ninas_sub: rtsp://user:password@192.168.1.50:554/stream2 #Camara frontis frontis_main: rtsp://user:password@192.168.1.201:554/Streaming/Channels/101 frontis_sub: rtsp://user:password@192.168.1.201:554/Streaming/Channels/102 webrtc: listen: :8555 candidates: - 192.168.1.3:8555
-######## Aceleración de hardware (DECODE GPU) ########
-ffmpeg: hwaccel_args: - -hwaccel - vaapi - -hwaccel_device - /dev/dri/renderD128 - -hwaccel_output_format - yuv420p detectors: ov: type: openvino device: GPU model: width: 300 height: 300 input_tensor: nhwc input_pixel_format: bgr path: /openvino-model/ssdlite_mobilenet_v2.xml labelmap_path: /openvino-model/coco_91cl_bkgr.txt ######## Configuración de cámaras ########
-cameras: frontis: enabled: true ffmpeg: inputs: - path: rtsp://127.0.0.1:8554/frontis_main roles: - record - audio - path: rtsp://127.0.0.1:8554/frontis_sub roles: - detect record: enabled: true retain: days: 7 mode: motion alerts: retain: days: 7 mode: motion detections: retain: days: 7 mode: motion snapshots: enabled: true retain: default: 7 detect: enabled: true width: 640 height: 360 live: streams: Main Stream: frontis_main Sub Stream: frontis_sub objects: track: - person - car - motorcycle - bus - bicycle - dog motion: mask: 0.351,0.566,0.337,0.518,0.323,0.436,0.32,0.302,0.331,0.236,0.347,0.156,0.366,0.116,0.398,0.117,0.415,0.174,0.413,0.219,0.409,0.247,0.405,0.271,0.404,0.312,0.398,0.358,0.379,0.392,0.37,0.411,0.362,0.491 ninas: enabled: true ffmpeg: inputs: - path: rtsp://127.0.0.1:8554/ninas_sub roles: - detect - path: rtsp://127.0.0.1:8554/ninas_main roles: - record - audio lpr: enabled: true expire_time: 5 min_area: 2000 enhancement: 1 record: enabled: true retain: days: 7 mode: active_objects alerts: retain: days: 7 mode: active_objects detections: retain: days: 7 mode: active_objects snapshots: enabled: true retain: default: 7 detect: enabled: true width: 640 height: 360 live: streams: Main Stream: ninas_main Sub Stream: ninas_sub objects: track: - person motion: mask: 0.19,0.982,0.161,0.544,0.162,0.432,0.164,0.16,0.17,0.054,0.355,0.054,0.353,0,0.172,0,0,0,0,0.455,0,0.6,0.002,0.758,0,0.908,0,1,0.202,1 threshold: 40 contour_area: 20 improve_contrast: true version: 0.16-0 camera_groups: Interior: order: 1 icon: LuSquareArrowDown cameras: ninas
-semantic_search: enabled: false model_size: small
-face_recognition: enabled: false model_size: small
-lpr: enabled: true device: GPU
-classification: bird: enabled: false The docker container is in host mode, and I’m able to play the streams using the go2rtc interface at 192.168.1.3:1984.
-Anyone has experienced this before? I’ve seen some videos on YouTube showing that the integration works straight when selecting camera entity created by the frigate integration.
-Any help will be appreciated!
-1 post - 1 participant
-Read full topic]]></description>
-      <pubDate>Fri, 27 Feb 2026 05:19:07 GMT</pubDate>
-      <source>Home Assistant Community Forum (Latest)</source>
-      <category>iot</category>
-      <guid>https://community.home-assistant.io/t/cant-get-frigate-cameras-entities-to-play-webrtc/991048</guid>
-    </item>
-    <item>
-      <title><![CDATA[TTLock Error: Config flow could not be loaded: {"message":"Invalid handler specified"}]]></title>
-      <link>https://community.home-assistant.io/t/ttlock-error-config-flow-could-not-be-loaded-message-invalid-handler-specified/991013</link>
-      <description><![CDATA[I did post about this on the integration repository but no reply yet and I suspect it may be a HAss problem however, I’m not sure.
-For some reason, no clue why, as the integration has been working fine for over a year and there wasn’t even any updates or reboots, it just stopped working this morning.
-I see this message in the logs:
-Logger: homeassistant.config_entries
-Source: config_entries.py:4040
-First occurred: 00:07:18 (2 occurrences)
-Last logged: 00:12:38 Error occurred loading flow for integration ttlock: RuntimeError importing custom_components.ttlock.config_flow: unable to infer type for attribute "id" Obviously tried a restart, then reboot but no change.
-So I tried to delete the OAuth stuff, which failed as it was “in use”.
-I then deleted the integration totally, checked the files and it was gone. re-downloaded it. Reinstalled it. Several times with restarts/reboots to try to get it to stop giving me the very annoying invalid handler error but to no avail.
-I am totally stuck, I have no idea why I’m getting that error when the integration has been completely removed and reinstalled, it makes no sense to me.
-Can anyone shed any light please?
-2 posts - 1 participant
-Read full topic]]></description>
-      <pubDate>Fri, 27 Feb 2026 00:21:52 GMT</pubDate>
-      <source>Home Assistant Community Forum (Latest)</source>
-      <category>iot</category>
-      <guid>https://community.home-assistant.io/t/ttlock-error-config-flow-could-not-be-loaded-message-invalid-handler-specified/991013</guid>
-    </item>
-    <item>
-      <title><![CDATA[Supprimer le bouton "Démarrer" pour actionner une scène]]></title>
-      <link>https://community.gladysassistant.com/t/supprimer-le-bouton-demarrer-pour-actionner-une-scene/10065</link>
-      <description><![CDATA[(sujet supprimé par son auteur)
-1 message - 1 participant(e)
-Lire le sujet en entier]]></description>
-      <pubDate>Thu, 26 Feb 2026 22:48:03 GMT</pubDate>
-      <source>Gladys Assistant (Forum)</source>
-      <category>iot</category>
-      <guid>https://community.gladysassistant.com/t/supprimer-le-bouton-demarrer-pour-actionner-une-scene/10065</guid>
     </item>
     <item>
       <title><![CDATA[Bad Domoticz restore... nothing new is saving..]]></title>
@@ -896,23 +985,11 @@ I had to go back to a backup from 2023 - with the new 2025 domoticz.
 I've added back in all the new devices, and removed the old switches that are no-longer part of my system...
 However - whenever I reset the windows pc that is running domoticz, all my newly added devices disappear, and the old switches come back.
 Any ideas?
-Statistics: Posted by binbo — Thursday 26 February 2026 23:20 — Replies 0 — Views 62]]></description>
+Statistics: Posted by binbo — Thursday 26 February 2026 23:20 — Replies 1 — Views 131]]></description>
       <pubDate>Thu, 26 Feb 2026 22:20:51 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
       <guid>https://forum.domoticz.com/viewtopic.php?p=331836#p331836</guid>
-    </item>
-    <item>
-      <title><![CDATA[Best Zstack adapter?]]></title>
-      <link>https://community.home-assistant.io/t/best-zstack-adapter/990983</link>
-      <description><![CDATA[I have a Dongle-P atm and while it works “fine”, I’m having trouble updating half of my devices because of poor link quality. I replaced the little antenna that came with it with a cheap but larger, high-gain antenna and while that did improve things a bit, it’s still not ideal.
-Does anyone know of a reliable ZStack (I really don’t want to re-pair all my devices by switching to a different adapter) hub/dongle with good range?
-1 post - 1 participant
-Read full topic]]></description>
-      <pubDate>Thu, 26 Feb 2026 21:43:21 GMT</pubDate>
-      <source>Home Assistant Community Forum (Latest)</source>
-      <category>iot</category>
-      <guid>https://community.home-assistant.io/t/best-zstack-adapter/990983</guid>
     </item>
     <item>
       <title><![CDATA[Feature request: 3-phase voltage device]]></title>
@@ -921,36 +998,11 @@ Read full topic]]></description>
 I would like to request a new dummy device type in Domoticz for measuring 3-phase voltage.
 Currently, we have a dummy device for a 3-phase current (ampere) meter, which works very well. It would be great to have a similar option for voltage, allowing users to input and display voltage values for all three phases.
 Thanks for considering!
-Statistics: Posted by highvoltage — Thursday 26 February 2026 22:14 — Replies 0 — Views 83]]></description>
+Statistics: Posted by highvoltage — Thursday 26 February 2026 22:14 — Replies 1 — Views 173]]></description>
       <pubDate>Thu, 26 Feb 2026 21:14:58 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
       <guid>https://forum.domoticz.com/viewtopic.php?p=331835#p331835</guid>
-    </item>
-    <item>
-      <title><![CDATA[Huge database following corruption]]></title>
-      <link>https://forum.domoticz.com/viewtopic.php?p=331834#p331834</link>
-      <description><![CDATA[Due to corruption in the database the automatic deletion of records in the meter table stopped working.
-Having rebuilt the database I now need to delete some of the records (they go as far back as 8/6/2025 ! the database is 200MB).
-The question is if I stop domoticz and dump the database can I remove all the records for rebuilding the meter table up until midnight the day before ?
-Statistics: Posted by peterchef — Thursday 26 February 2026 21:55 — Replies 0 — Views 76]]></description>
-      <pubDate>Thu, 26 Feb 2026 20:55:00 GMT</pubDate>
-      <source>Domoticz (Forum News)</source>
-      <category>iot</category>
-      <guid>https://forum.domoticz.com/viewtopic.php?p=331834#p331834</guid>
-    </item>
-    <item>
-      <title><![CDATA[Unable to add USB300 Enocean to Home Assistant Integration]]></title>
-      <link>https://community.home-assistant.io/t/unable-to-add-usb300-enocean-to-home-assistant-integration/990961</link>
-      <description><![CDATA[I bought a USB 300 USB dongle, and it is successfully identified. It’s located at /dev/serial/by-id/usb-EnOcean_GmbH_USB_300_DE_EO92I5AY-if00-port0
-2026-02-26 20:35:45.711 WARNING (SyncWorker_1) [homeassistant.components.enocean.dongle] Dongle path /dev/serial/by-id/usb-EnOcean_GmbH_USB_300_DE_EO92I5AY-if00-port0 is invalid: [Errno 1] could not open port /dev/serial/by-id/usb-EnOcean_GmbH_USB_300_DE_EO92I5AY-if00-port0: [Errno 1] Operation not permitted: ‘/dev/serial/by-id/usb-EnOcean_GmbH_USB_300_DE_EO92I5AY-if00-port0’
-I’m running Home Assistant 2025.10.4 on Ubuntu 22.04. In addition to the USB300 I am using a Z-stick 7, there was no problems adding the Z-wave integration. Home Assistant is running as root, so there should be no permission issues.
-3 posts - 2 participants
-Read full topic]]></description>
-      <pubDate>Thu, 26 Feb 2026 19:42:24 GMT</pubDate>
-      <source>Home Assistant Community Forum (Latest)</source>
-      <category>iot</category>
-      <guid>https://community.home-assistant.io/t/unable-to-add-usb300-enocean-to-home-assistant-integration/990961</guid>
     </item>
     <item>
       <title><![CDATA[Cabinet – Wall Mount Trash Bag Holder #3Dprinting #3DThursday]]></title>
@@ -980,7 +1032,7 @@ Lire le sujet en entier]]></description>
 would it make sense to be able adding any analog values to the graph, not necessarily only related to environment sensors like values?
 For example it would be interesting to be combining external temperature and gas consumption for examble.
 By the way, what is the set point check box for? I don't have any values there although I do have thermostatic radiator valves with setpoint.
-Statistics: Posted by Patricen — Thursday 26 February 2026 15:56 — Replies 0 — Views 88]]></description>
+Statistics: Posted by Patricen — Thursday 26 February 2026 15:56 — Replies 0 — Views 113]]></description>
       <pubDate>Thu, 26 Feb 2026 14:56:51 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1000,7 +1052,7 @@ Statistics: Posted by Patricen — Thursday 26 February 2026 15:56 — Replies 0
       <link>https://forum.domoticz.com/viewtopic.php?p=331826#p331826</link>
       <description><![CDATA[After some retries I succesfully migrated to beta build 17277 and converted to systemd control. Since that time my RFXCom won't start anymore stating that the serial port cannot be opened. The serial port is identified by serial/by-id and present in the harware configuration.
 Is there a relation to the (many) latest changes? Are there ways to discover the cause of the problem?
-Statistics: Posted by Doler — Thursday 26 February 2026 14:24 — Replies 0 — Views 63]]></description>
+Statistics: Posted by Doler — Thursday 26 February 2026 14:24 — Replies 2 — Views 122]]></description>
       <pubDate>Thu, 26 Feb 2026 13:24:01 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1042,7 +1094,7 @@ Previously i recorded domoticz messages in "/var/log/domoticz.log" by setting in
 Now when using /etc/systemd/system/domoticz.service I see the domoticz messages in domoticz UI but I am not able to find in which file they are stored. I also would like to define the file name supporting these messages.
 I would be grateful if someone could help me or give me a hint.
 BR
-Statistics: Posted by meal — Thursday 26 February 2026 10:24 — Replies 4 — Views 172]]></description>
+Statistics: Posted by meal — Thursday 26 February 2026 10:24 — Replies 7 — Views 255]]></description>
       <pubDate>Thu, 26 Feb 2026 09:24:04 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1053,7 +1105,7 @@ Statistics: Posted by meal — Thursday 26 February 2026 10:24 — Replies 4 —
       <link>https://community.gladysassistant.com/t/icones-cadenas-trop-petite/10061</link>
       <description><![CDATA[Bonjour,
 J’ai des capteurs d’ouverture, et je trouve l’icône de cadenas trop petite sur le tableau de bord, au point que j’ai du mal à distinguer un cadenas ouvert de fermé.
-5 messages - 4 participant(e)s
+8 messages - 4 participant(e)s
 Lire le sujet en entier]]></description>
       <pubDate>Wed, 25 Feb 2026 20:33:39 GMT</pubDate>
       <source>Gladys Assistant (Forum)</source>
@@ -1128,7 +1180,7 @@ Log:
 corrupted size vs. prev_size
 2026-02-25 13:00:28.719 Error: Domoticz(pid:1, tid:1('domoticz')) received fatal signal 6 (Aborted)
 2026-02-25 13:00:28.719 Error: siginfo address=0x1, address=0x7f955511eeec
-Statistics: Posted by Huntback — Wednesday 25 February 2026 13:31 — Replies 7 — Views 290]]></description>
+Statistics: Posted by Huntback — Wednesday 25 February 2026 13:31 — Replies 7 — Views 313]]></description>
       <pubDate>Wed, 25 Feb 2026 12:31:30 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1147,7 +1199,7 @@ Feb 25 07:21:47 domoticz domoticz.sh[1699525]: domoticz: Domoticz is starting up
 Feb 25 07:21:47 domoticz domoticz[1699525]: Domoticz is starting up....
 Feb 25 07:21:47 domoticz systemd[1]: Started domoticz.service - LSB: Home Automation System.
 Update. Rolled back to 17252 and all good.
-Statistics: Posted by Dave21w — Wednesday 25 February 2026 8:25 — Replies 17 — Views 498]]></description>
+Statistics: Posted by Dave21w — Wednesday 25 February 2026 8:25 — Replies 17 — Views 526]]></description>
       <pubDate>Wed, 25 Feb 2026 07:25:57 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1318,7 +1370,7 @@ Stupidly - i have no idea what version I had.
 But I've updated to the latest version...
 2025.2.16812 And i've noticed a device that used to work perfectly with an "off delay" of 1 second.
 Now triggers for too long - and no longer works.
-Statistics: Posted by binbo — Monday 23 February 2026 19:46 — Replies 7 — Views 346]]></description>
+Statistics: Posted by binbo — Monday 23 February 2026 19:46 — Replies 7 — Views 369]]></description>
       <pubDate>Mon, 23 Feb 2026 18:46:10 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1346,7 +1398,7 @@ J’ai pas mal de logs comme ceci dans les logs :
       <description><![CDATA[Hi I am using a 3 fase Amp device Type " Current, CM113,Electrisave ".
 It shows as expected the Amp values but if no current in all fases it just shows only one time zero. Is this as intended or is it a bug.
 -Bart
-Statistics: Posted by BartSr — Monday 23 February 2026 14:01 — Replies 2 — Views 203]]></description>
+Statistics: Posted by BartSr — Monday 23 February 2026 14:01 — Replies 2 — Views 226]]></description>
       <pubDate>Mon, 23 Feb 2026 13:01:03 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1391,7 +1443,7 @@ Lire le sujet en entier]]></description>
 A Python script on the same Raspberry Pi sends emails correctly using the original address. What's the problem?
 Notice that I stay in beta 17099, due to recent problem with the beta versions.
 Thank you
-Statistics: Posted by Filnet — Monday 23 February 2026 9:51 — Replies 4 — Views 384]]></description>
+Statistics: Posted by Filnet — Monday 23 February 2026 9:51 — Replies 4 — Views 405]]></description>
       <pubDate>Mon, 23 Feb 2026 08:51:06 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1404,7 +1456,7 @@ Statistics: Posted by Filnet — Monday 23 February 2026 9:51 — Replies 4 — 
 How find this "unknown''?
 Command "executeShellCommand" should be the reason?
 Thank for your help
-Statistics: Posted by Filnet — Monday 23 February 2026 9:40 — Replies 0 — Views 196]]></description>
+Statistics: Posted by Filnet — Monday 23 February 2026 9:40 — Replies 0 — Views 219]]></description>
       <pubDate>Mon, 23 Feb 2026 08:40:16 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1451,6 +1503,18 @@ Lire le sujet en entier]]></description>
       <guid>https://community.gladysassistant.com/t/remplacement-des-icones-feather-par-lucide/10044</guid>
     </item>
     <item>
+      <title><![CDATA[Changement lib Airplay]]></title>
+      <link>https://community.gladysassistant.com/t/changement-lib-airplay/10043</link>
+      <description><![CDATA[Bonjour à tous, dernièrement on a eu quelques soucis avec l’intégration Airplay. La lib utilisée pour se connecter à l’enceinte était un peu vieille, je l’ai forkée pour essayer de la garder à jour et la faire fonctionner avec les dernières versions de Node, mais une grosse partie du code n’est pas propre et ça passait par le binding de fonctions C++ ce qui rendait la maintenance complexe.
+nouvelle lib qui fait la même chose en 100% Typescript, j’ai basculé dessus ça fonctionne aussi bien et ça sera plus simple à maintenir plus tard. Si certains utilisateurs Airplay veulent tester une image docker est disponible bertrandda/gladys:airplay.
+2 messages - 2 participant(e)s
+Lire le sujet en entier]]></description>
+      <pubDate>Sun, 22 Feb 2026 19:41:15 GMT</pubDate>
+      <source>Gladys Assistant (Forum)</source>
+      <category>iot</category>
+      <guid>https://community.gladysassistant.com/t/changement-lib-airplay/10043</guid>
+    </item>
+    <item>
       <title><![CDATA[Mise à jour des tarifs énergétiques pour le suivi d'énergie]]></title>
       <link>https://community.gladysassistant.com/t/mise-a-jour-des-tarifs-energetiques-pour-le-suivi-denergie/10042</link>
       <description><![CDATA[Hello, On pourra ainsi archiver les anciens sujets si c’est utile et permettre à @pierre-gilles d’y accéder plus rapidement.
@@ -1471,7 +1535,7 @@ If I run the execstart code in the command line, the domoticz daemon is created.
 Result of running in commandline as user pi: Code: pi@rpidhcpserver:~/domoticz $ /home/pi/domoticz/domoticz -daemon -www 8080 -sslwww 443 -pidfile /var/run/domoticz/domoticz.pid2026-02-22 14:17:42.839 Status: Domoticz V2025.2 (c)2012-2025 GizMoCuz2026-02-22 14:17:42.839 Status: Build Hash: e63981b18, Date: 2025-10-13 10:42:572026-02-22 14:17:42.839 Status: Startup Path: /home/pi/domoticz/domoticz: Domoticz is starting up....
 I did use systemd tmpfiles.d to create /run/domoticz. /etc/tmpfiles.d/domoticz.conf contains Code: #Type Path Mode UID GID Age Argumentd /run/domoticz 0755 pi pi - -
 Thanks, Chris
-Statistics: Posted by cmisip — Sunday 22 February 2026 15:21 — Replies 1 — Views 284]]></description>
+Statistics: Posted by cmisip — Sunday 22 February 2026 15:21 — Replies 1 — Views 325]]></description>
       <pubDate>Sun, 22 Feb 2026 14:21:28 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1502,7 +1566,7 @@ Calculate daily consumption smart plug (counterToday in domoticz) x Multiplier, 
 Then create the following dzvents script: Code: return {active = true,on = {devices = { 139 } -- idx smart plug},execute = function(domoticz, device)------------------------------------------------------- CONFIGURATION-----------------------------------------------------local MULTIPLICATOR = 21 -- multiplier replace with your own valuelocal GAZ_IDX = 520 -- replace with the idx of your sensor Custom Sensor "Estimated Gas Consumption"---------------------------------------------------------------------- MAIN LOGIC--------------------------------------------------------------------local val = device.counterToday or 0local consumKWh = 0if type(val) == "string" thenconsumKWh = tonumber(val:match("([%d%.]+)")) or 0elseconsumKWh = tonumber(val) or 0endlocal consumGaz = consumKWh * MULTIPLICATORlocal gazDevice = domoticz.devices(GAZ_IDX)if gazDevice thengazDevice.updateCustomSensor(consumGaz)domoticz.log(string.format("idx[%d]: %.3f kWh → Gas estimated: %.3f m³ (x%.3f)",device.id, consumKWh, consumGaz, MULTIPLICATOR), domoticz.LOG_INFO)elsedomoticz.log(string.format("Error: we did not find the device with idx %d", GAZ_IDX), domoticz.LOG_ERROR)endend}
 LE: in my case only the gas boiler using gas.
 I hope it helps you too.
-Statistics: Posted by pfloryann — Saturday 21 February 2026 12:25 — Replies 5 — Views 373]]></description>
+Statistics: Posted by pfloryann — Saturday 21 February 2026 12:25 — Replies 5 — Views 403]]></description>
       <pubDate>Sat, 21 Feb 2026 11:25:56 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1513,7 +1577,7 @@ Statistics: Posted by pfloryann — Saturday 21 February 2026 12:25 — Replies 
       <link>https://forum.domoticz.com/viewtopic.php?p=331693#p331693</link>
       <description><![CDATA[2026-02-21 09:45:32.250 [e6df21e0] Error: SamSam: Error getting http data! (info)
 This is all I get from the debug logging, not much info. Tried with my second pi with domoticz, the same
-Statistics: Posted by tonbor — Saturday 21 February 2026 9:51 — Replies 3 — Views 209]]></description>
+Statistics: Posted by tonbor — Saturday 21 February 2026 9:51 — Replies 3 — Views 228]]></description>
       <pubDate>Sat, 21 Feb 2026 08:51:31 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1540,7 +1604,7 @@ Building dependency tree... Done
 Reading state information... Done
 libpython3-stdlib is already the newest version (3.11.2-1+b1).
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
-Statistics: Posted by Varazir — Friday 20 February 2026 22:20 — Replies 4 — Views 327]]></description>
+Statistics: Posted by Varazir — Friday 20 February 2026 22:20 — Replies 4 — Views 353]]></description>
       <pubDate>Fri, 20 Feb 2026 21:20:15 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1562,7 +1626,7 @@ So far i made it as test, but we using it on all phones and tables and it works 
 Still needs work to do, but for what we need, it works excellent.
 If you’re interested, let me know. Depending on any feedback or tips, I might take this to the next level and consider sharing it.
 Barry
-Desktop: Mobile: Statistics: Posted by BarryT — Friday 20 February 2026 19:34 — Replies 12 — Views 569]]></description>
+Desktop: Mobile: Statistics: Posted by BarryT — Friday 20 February 2026 19:34 — Replies 12 — Views 598]]></description>
       <pubDate>Fri, 20 Feb 2026 18:34:54 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1640,7 +1704,7 @@ Lire le sujet en entier]]></description>
 Platform: Docker on NAS
 Hello, since the last update, the button for viewing a rainfall report, which used to be located in the top right corner of the rain sensor log screen, has disappeared. Will it be possible to restore it in the next version?
 Thank you.
-Statistics: Posted by Bimnomercy — Friday 20 February 2026 7:16 — Replies 4 — Views 307]]></description>
+Statistics: Posted by Bimnomercy — Friday 20 February 2026 7:16 — Replies 4 — Views 333]]></description>
       <pubDate>Fri, 20 Feb 2026 06:16:49 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1652,7 +1716,7 @@ Statistics: Posted by Bimnomercy — Friday 20 February 2026 7:16 — Replies 4 
       <description><![CDATA[Hi all,
 since the update to v2025.2 (build 17186), all my dzvents lua automations are not triggered anymore. For example I see that a switch changes state, but the lua script is not triggered. (Also the CPU is much lower than before the update)
 Anybody else seeing the same issue?
-Statistics: Posted by rugspin — Thursday 19 February 2026 19:27 — Replies 6 — Views 341]]></description>
+Statistics: Posted by rugspin — Thursday 19 February 2026 19:27 — Replies 6 — Views 359]]></description>
       <pubDate>Thu, 19 Feb 2026 18:27:45 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1665,7 +1729,7 @@ Statistics: Posted by rugspin — Thursday 19 February 2026 19:27 — Replies 6 
 It working fine, no problem with him, but if I go to logs, the last one if the "comparative" by years, but what is the value compared, it's something like 7 000, 00 W
 It's the power * hour * days ? but the value is not the good one.
 I realy have no clue where this value is from ....
-Statistics: Posted by Thorgal789 — Thursday 19 February 2026 17:33 — Replies 5 — Views 348]]></description>
+Statistics: Posted by Thorgal789 — Thursday 19 February 2026 17:33 — Replies 5 — Views 369]]></description>
       <pubDate>Thu, 19 Feb 2026 16:33:53 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1685,7 +1749,7 @@ Statistics: Posted by Thorgal789 — Thursday 19 February 2026 17:33 — Replies
       <link>https://forum.domoticz.com/viewtopic.php?p=331640#p331640</link>
       <description><![CDATA[Hi,
 Has anyone managed to integrate LG ThinQ into Domoticz?
-Statistics: Posted by pfloryann — Wednesday 18 February 2026 17:23 — Replies 0 — Views 167]]></description>
+Statistics: Posted by pfloryann — Wednesday 18 February 2026 17:23 — Replies 0 — Views 185]]></description>
       <pubDate>Wed, 18 Feb 2026 16:23:23 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1702,49 +1766,17 @@ Chatgpt says
 Code: Important PointIn the Domoticz Docker image domoticz/domoticz:stable from version 2025.2:The old /json.htm API is not available in this container build.This image is mainly intended for GUI + plugins.Any scripts that try to fetch data via /json.htm will always return 404.So, regardless of roomplan or idx, you cannot use this API.
 any idea? chatgpt propose to downgrade to older container which I don't think being a real solution
 any suggestions?
-Statistics: Posted by BartSr — Wednesday 18 February 2026 12:10 — Replies 6 — Views 340]]></description>
+Statistics: Posted by BartSr — Wednesday 18 February 2026 12:10 — Replies 6 — Views 357]]></description>
       <pubDate>Wed, 18 Feb 2026 11:10:09 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
       <guid>https://forum.domoticz.com/viewtopic.php?p=331633#p331633</guid>
     </item>
     <item>
-      <title><![CDATA[Problème calcul coût intégration enedis]]></title>
-      <link>https://community.gladysassistant.com/t/probleme-calcul-cout-integration-enedis/10026</link>
-      <description><![CDATA[Bonjour à tous,
-Sur l’intégration Enedis, j’ai remarqué sur le mois de février que certain jours, le coût était nulle : Alors que la conso est bien présente : Je ne vais pas relancer le calcul des coût pour le moment afin d’avoir des éléments pour diagnostiquer.
-Mais est-ce que quelqu’un rencontre le même problème ?
-On avait rencontré un problème de différence entre enedis et lixee sur ce topic mais je ne sais pas si c’est lié également : Valeur différente entre Lixee et Enedis Configuration [image] Le mois de Janvier : [image] Avez-vous une idée ? Merci Je n’ai visiblement pas de problème hors intégration Enedis cette fois-ci
-4 messages - 3 participant(e)s
-Lire le sujet en entier]]></description>
-      <pubDate>Wed, 18 Feb 2026 08:13:17 GMT</pubDate>
-      <source>Gladys Assistant (Forum)</source>
-      <category>iot</category>
-      <guid>https://community.gladysassistant.com/t/probleme-calcul-cout-integration-enedis/10026</guid>
-    </item>
-    <item>
-      <title><![CDATA[Mode d'éxecution des scènes]]></title>
-      <link>https://community.gladysassistant.com/t/mode-dexecution-des-scenes/10020</link>
-      <description><![CDATA[Après quelques mois d’utilisation de Home Assistant (ne me jetez pas de ), je trouve qu’une fonctionnalité intéressante manque à Gladys sur la gestion des scènes.
-Dans le passé, j’ai vu de nombreuses discussions sur ce besoin :
-lors de la détection d’un mouvement sur un capteur
-allumer la lumière, attendre 2 minutes, éteindre la lumière
-Mais la plupart des utilisateurs rencontrent le problème suivant : si plusieurs détections de mouvement se passent, la scène est lancée plusieurs fois en parallèle et la lumière pass en mode spectacle (allumage/extinctions incessants).
-La solution à cela était souvent un device virtuel stockant l’état ou des conditions (si la lumière n’est pas déjà allumée).
-Mais je trouve que HA a une approche intéressante pour gérer : le mode d’exécution des scènes. Pour le scénario plus haut, le mode single résout directement le problème. Si la scène est en train de s’exécuter, warning dans les logs et elle ne se relance pas une deuxième fois.
-On pourrait laisser le mode parallel pour les scènes existantes. Et les autres modes sont peut-être trop complexes aujourd’hui Qu’est-ce que vous en pensez ? Si le besoin est fort, je peux décrire une spécification.
-3 messages - 2 participant(e)s
-Lire le sujet en entier]]></description>
-      <pubDate>Tue, 17 Feb 2026 19:39:09 GMT</pubDate>
-      <source>Gladys Assistant (Forum)</source>
-      <category>iot</category>
-      <guid>https://community.gladysassistant.com/t/mode-dexecution-des-scenes/10020</guid>
-    </item>
-    <item>
       <title><![CDATA[Notifications, source?]]></title>
       <link>https://forum.domoticz.com/viewtopic.php?p=331623#p331623</link>
       <description><![CDATA[Hello, i'm receiving notifications through Telegram but i'm unable to find where they are coming from. The history: I do have trvs that were "eating" batteries. I then decided to send a notification with a specific message as soon as the temperature was not reported after a certain time. I fixed the issue for the trvs, removed the notification but i'm still receiving it. Any clue? Thanks
-Statistics: Posted by Patricen — Tuesday 17 February 2026 19:41 — Replies 4 — Views 257]]></description>
+Statistics: Posted by Patricen — Tuesday 17 February 2026 19:41 — Replies 4 — Views 278]]></description>
       <pubDate>Tue, 17 Feb 2026 18:41:49 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1766,7 +1798,7 @@ Statistics: Posted by Patricen — Tuesday 17 February 2026 19:41 — Replies 4 
 I had problems with the USB P1 interface- CRC errors . I changed to a LAN interface. It now records data correctly.
 The annual consumption is shown correctly, but the comparison is incorrect. Since the CRC problems start with october 2025, I have incorrect comparisons of october and december. November is shown correctly. The same is for january 2026.
 How can i repair data for compared usage.
-The same is for Gas and Electricity. Statistics: Posted by nabru99 — Tuesday 17 February 2026 10:12 — Replies 0 — Views 206]]></description>
+The same is for Gas and Electricity. Statistics: Posted by nabru99 — Tuesday 17 February 2026 10:12 — Replies 0 — Views 227]]></description>
       <pubDate>Tue, 17 Feb 2026 09:12:43 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1778,7 +1810,7 @@ The same is for Gas and Electricity. Statistics: Posted by nabru99 — Tuesday 1
       <description><![CDATA[After a database restore Domoticz doesn't come online, no devices found or no communication...
 Did a service restart, after that domoticz was running normal. Tried this with a database backup and restore (no database changes) and after a powercycle of the Rpi3B+. Seen this also on earlier versions of the beta (2025.2 17057, 2025.2 17099 and 2502.2 17189).
 Attached is a crash log after a database restore. domoticz_crash.log
-Statistics: Posted by Rik60 — Monday 16 February 2026 10:11 — Replies 5 — Views 310]]></description>
+Statistics: Posted by Rik60 — Monday 16 February 2026 10:11 — Replies 5 — Views 332]]></description>
       <pubDate>Mon, 16 Feb 2026 09:11:11 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1801,7 +1833,7 @@ Feb 14 10:29:29 CasaiaProV4-test domoticz[10799]: Python: Changed: ID: 900 Name:
 Feb 14 10:29:30 CasaiaProV4-test domoticz[10799]: Python: Changed: ID: 769 Name: ECS - SHW Control, Type: 244, subType: 62, switchType: 18, s_value: 20, n_value: 1, n_value_string: Auto, last_update_string: 2026-02-14 10:29:28
 Feb 14 10:29:30 CasaiaProV4-test sudo[11131]: pam_unix(sudo:session): session closed for user root
 Feb 14 10:29:30 CasaiaProV4-test domoticz[10799]: Python: Changed: ID: 770 Name: ECS - SHW Setpoint, Type: 242, subType: 1, switchType: 0, s_value: 65, n_value: 1, n_value_string: 65, last_update_string: 2026-02-14 10:29:28[/quote]
-Statistics: Posted by pipiche — Saturday 14 February 2026 10:45 — Replies 0 — Views 148]]></description>
+Statistics: Posted by pipiche — Saturday 14 February 2026 10:45 — Replies 0 — Views 166]]></description>
       <pubDate>Sat, 14 Feb 2026 09:45:13 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1828,7 +1860,7 @@ Full Changelog: v2.0.5...v2.0.6]]></description>
       <description><![CDATA[Last year february 12 I moved house. Now these values are in the database causing a huge usage in feb 2025: Code: sqlite&gt; SELECT * FROM Meter_calendar WHERE DeviceRowID=8 AND Date&gt;='2025-01-28' AND Date&lt;'2025-03-08';DeviceRowID|Value|Counter|Date8|2534|3087874|2025-01-288|1387|3089261|2025-01-298|2728|3091989|2025-01-308|2265|3099687|2025-02-038|2912|3102599|2025-02-048|1616|3104215|2025-02-058|1983|3106198|2025-02-068|3332|3109530|2025-02-078|2014|3113587|2025-02-098|3627|3117214|2025-02-108|1126|3654334|2025-02-13 &lt;&lt;&lt;8|4587|3658921|2025-02-148|4498|3663419|2025-02-158|2373|3665792|2025-02-168|2933|3668725|2025-02-178|2762|3671487|2025-02-188|3337|3674824|2025-02-198|4906|3679730|2025-02-208|798|3680528|2025-02-218|2299|3682827|2025-02-228|363|3683190|2025-02-238|2116|3685306|2025-02-248|2492|3687798|2025-02-258|975|3688773|2025-02-268|1184|3689957|2025-02-278|879|3690836|2025-02-288|3994|3694830|2025-03-018|1689|3696519|2025-03-028|589|3697108|2025-03-03
 The actual usage is around 60 m3 and not 600 m3 that is in the graph. To get an idea how the month total is calculated I shift-clicked removed a few day -totals. That did not make a difference in the month total.
 My question is: Can the feb month value be corrected by changing Counter -numbers? Without touching the January and March month totals. Probably the '2025-02-03' ? Thanks.
-Statistics: Posted by hans1612 — Friday 13 February 2026 14:53 — Replies 3 — Views 167]]></description>
+Statistics: Posted by hans1612 — Friday 13 February 2026 14:53 — Replies 3 — Views 182]]></description>
       <pubDate>Fri, 13 Feb 2026 13:53:46 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1852,7 +1884,7 @@ In the settings for the energy dashboard you can define up to three custom widge
 But for devices that are producing power it would be more logical to link them to the upper bubble with solar power. In my case, this is the sum of a small + big solar power plant.
 2.
 And it would be nice if the font size of the text device is bigger (in my case the weather description)
-Statistics: Posted by imautohuttraeger — Thursday 12 February 2026 9:25 — Replies 0 — Views 211]]></description>
+Statistics: Posted by imautohuttraeger — Thursday 12 February 2026 9:25 — Replies 0 — Views 232]]></description>
       <pubDate>Thu, 12 Feb 2026 08:25:49 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1864,7 +1896,7 @@ Statistics: Posted by imautohuttraeger — Thursday 12 February 2026 9:25 — Re
       <description><![CDATA[I have a Dzvents script that will update a user variable every minute and makes a note of the variable update in the log:
 2026-02-11 13:51:00.735 Status: Set UserVariable nomotionCounter = 380
 Is it possible not to update the log with (this) User variable updates? As this is information that I don't really need in the log.
-Statistics: Posted by jberinga — Wednesday 11 February 2026 14:42 — Replies 5 — Views 176]]></description>
+Statistics: Posted by jberinga — Wednesday 11 February 2026 14:42 — Replies 5 — Views 194]]></description>
       <pubDate>Wed, 11 Feb 2026 13:42:42 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1894,7 +1926,7 @@ For those of you who are savvy with Tasmota: This is the code of the customized 
 But even the non-customized Script from the Tasmota wiki shows the same error:
 https://tasmota.github.io/docs/Smart-Me ... d3-obissml
 Any hints are highly welcome
-Statistics: Posted by imautohuttraeger — Tuesday 10 February 2026 12:30 — Replies 10 — Views 267]]></description>
+Statistics: Posted by imautohuttraeger — Tuesday 10 February 2026 12:30 — Replies 10 — Views 291]]></description>
       <pubDate>Tue, 10 Feb 2026 11:30:26 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1906,7 +1938,7 @@ Statistics: Posted by imautohuttraeger — Tuesday 10 February 2026 12:30 — Re
       <description><![CDATA[When I stop domoticz manually I get this error, anyone any idea how to solve this or what the cause is?
 Code: 2026-02-08 11:11:03.286 Error: Domoticz(pid:677, tid:677('domoticz')) received fatal signal 6 (Aborted)2026-02-08 11:11:03.286 Error: siginfo address=0x2a5, address=0x7f04e28c495c2026-02-08 11:11:03.295 Error: Failed to start gdb, will use backtrace() for printing stack frame2026-02-08 11:11:03.300 Error: #0 /home/eddy/domoticz/domoticz : + 0x454b23 [0x557cbca5cb23]2026-02-08 11:11:03.300 Error: #1 /home/eddy/domoticz/domoticz : signal_handler(int, siginfo_t*, void*) + 0x245 [0x557cbca5d5b5]2026-02-08 11:11:03.300 Error: #2 /lib/x86_64-linux-gnu/libc.so.6 : + 0x3fdf0 [0x7f04e286fdf0]2026-02-08 11:11:03.300 Error: #3 /lib/x86_64-linux-gnu/libc.so.6 : + 0x9495c [0x7f04e28c495c]2026-02-08 11:11:03.300 Error: #4 /lib/x86_64-linux-gnu/libc.so.6 : gsignal + 0x12 [0x7f04e286fcc2]2026-02-08 11:11:03.300 Error: #5 /lib/x86_64-linux-gnu/libc.so.6 : abort + 0x22 [0x7f04e28584ac]2026-02-08 11:11:03.300 Error: #6 /lib/x86_64-linux-gnu/libpython3.13.so : + 0x99fa3 [0x7f04e1499fa3]2026-02-08 11:11:03.300 Error: #7 /lib/x86_64-linux-gnu/libpython3.13.so : + 0x2b15f7 [0x7f04e16b15f7]2026-02-08 11:11:03.300 Error: #8 /lib/x86_64-linux-gnu/libpython3.13.so : PyEval_RestoreThread + 0xab [0x7f04e1684ecb]2026-02-08 11:11:03.300 Error: #9 /home/eddy/domoticz/domoticz : Plugins::CPluginSystem::StopPluginSystem() + 0xbb [0x557cbcf58d9b]2026-02-08 11:11:03.300 Error: #10 /home/eddy/domoticz/domoticz : MainWorker::Stop() + 0x15c [0x557cbca23a3c]2026-02-08 11:11:03.300 Error: #11 /home/eddy/domoticz/domoticz : main + 0x5c5 [0x557cbc922e75]2026-02-08 11:11:03.300 Error: #12 /lib/x86_64-linux-gnu/libc.so.6 : + 0x29ca8 [0x7f04e2859ca8]2026-02-08 11:11:03.300 Error: #13 /lib/x86_64-linux-gnu/libc.so.6 : __libc_start_main + 0x85 [0x7f04e2859d65]2026-02-08 11:11:03.300 Error: #14 /home/eddy/domoticz/domoticz : _start + 0x21 [0x557cbc949b41]
 My system is Dietpi running as VM under Proxmox with:
-Code: 2026-02-08 11:16:29.414 Status: Domoticz V2025.2 (build 17082) (c)2012-2026 GizMoCuz2026-02-08 11:16:29.414 Status: Build Hash: 0776fa964, Date: 2026-02-07 15:03:33 Code: PRETTY_NAME="Debian GNU/Linux 13 (trixie)"NAME="Debian GNU/Linux"VERSION_ID="13"VERSION="13 (trixie)"VERSION_CODENAME=trixieDEBIAN_VERSION_FULL=13.3ID=debianHOME_URL="https://www.debian.org/"SUPPORT_URL="https://www.debian.org/support"BUG_REPORT_URL="https://bugs.debian.org/" Code: Linux domoprox 6.12.63+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.63-1 (2025-12-30) x86_64 GNU/Linux Statistics: Posted by Kedi — Sunday 08 February 2026 11:20 — Replies 6 — Views 407]]></description>
+Code: 2026-02-08 11:16:29.414 Status: Domoticz V2025.2 (build 17082) (c)2012-2026 GizMoCuz2026-02-08 11:16:29.414 Status: Build Hash: 0776fa964, Date: 2026-02-07 15:03:33 Code: PRETTY_NAME="Debian GNU/Linux 13 (trixie)"NAME="Debian GNU/Linux"VERSION_ID="13"VERSION="13 (trixie)"VERSION_CODENAME=trixieDEBIAN_VERSION_FULL=13.3ID=debianHOME_URL="https://www.debian.org/"SUPPORT_URL="https://www.debian.org/support"BUG_REPORT_URL="https://bugs.debian.org/" Code: Linux domoprox 6.12.63+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.63-1 (2025-12-30) x86_64 GNU/Linux Statistics: Posted by Kedi — Sunday 08 February 2026 11:20 — Replies 6 — Views 432]]></description>
       <pubDate>Sun, 08 Feb 2026 10:20:03 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1917,7 +1949,7 @@ Code: 2026-02-08 11:16:29.414 Status: Domoticz V2025.2 (build 17082) (c)2012-202
       <link>https://forum.domoticz.com/viewtopic.php?p=331403#p331403</link>
       <description><![CDATA[I have https://www.zigbee2mqtt.io/devices/TS06 ... witch.html. Zigbee2mqtt supports it and I can get intensity as well as color temperature data.{ "adjustment_mode": "brightness", "color_temp": 178, "group_id": null, "linkquality": 174, "mode": null, "power_on_behavior": null, "state": null, "state_l1": null, "state_l2": null, "switch_mode_l1": null, "switch_mode_l2": null, "brightness": 140
 }In Domoticz I can't get a CCT value. Am I doing something wrong? How can I get a CCT(color_temp) value in a Domoticz?
-Statistics: Posted by palnic — Friday 06 February 2026 17:09 — Replies 0 — Views 195]]></description>
+Statistics: Posted by palnic — Friday 06 February 2026 17:09 — Replies 0 — Views 215]]></description>
       <pubDate>Fri, 06 Feb 2026 16:09:52 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -1927,7 +1959,7 @@ Statistics: Posted by palnic — Friday 06 February 2026 17:09 — Replies 0 —
       <title><![CDATA[Deleting values from power meter]]></title>
       <link>https://forum.domoticz.com/viewtopic.php?p=331391#p331391</link>
       <description><![CDATA[Hey,
-I have a power meter where I sometimes see weird values, this is caused by my input script, fixing that separately. But when I try to delete it from the graph, it doesn't work, only when deleting it using sqlite. See database value below. Can this be improved? It is the line dated 2026-02-06 05:40:00 that is wrong. Code: 499|30221370|0|2026-02-06 05:30:00|0.2515499|30221370|0|2026-02-06 05:35:00|0.2515499|22256300|0|2026-02-06 05:40:00|0.2515499|30221370|0|2026-02-06 05:45:00|0.2515499|30221370|0|2026-02-06 05:50:00|0.2515 Statistics: Posted by JanJaap — Friday 06 February 2026 14:57 — Replies 0 — Views 178]]></description>
+I have a power meter where I sometimes see weird values, this is caused by my input script, fixing that separately. But when I try to delete it from the graph, it doesn't work, only when deleting it using sqlite. See database value below. Can this be improved? It is the line dated 2026-02-06 05:40:00 that is wrong. Code: 499|30221370|0|2026-02-06 05:30:00|0.2515499|30221370|0|2026-02-06 05:35:00|0.2515499|22256300|0|2026-02-06 05:40:00|0.2515499|30221370|0|2026-02-06 05:45:00|0.2515499|30221370|0|2026-02-06 05:50:00|0.2515 Statistics: Posted by JanJaap — Friday 06 February 2026 14:57 — Replies 0 — Views 203]]></description>
       <pubDate>Fri, 06 Feb 2026 13:57:00 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -2011,7 +2043,7 @@ Recently two ratio solar chargers for EV's have been installed. Homewizzard P1 s
 Both for domoticz and EV's.
 Chatgpt says this is because of how domoticz uses P1.
 Any idea to solve this problem?
-Statistics: Posted by BartSr — Tuesday 03 February 2026 16:55 — Replies 19 — Views 524]]></description>
+Statistics: Posted by BartSr — Tuesday 03 February 2026 16:55 — Replies 19 — Views 546]]></description>
       <pubDate>Tue, 03 Feb 2026 15:55:00 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -2022,7 +2054,7 @@ Statistics: Posted by BartSr — Tuesday 03 February 2026 16:55 — Replies 19 �
       <link>https://forum.domoticz.com/viewtopic.php?p=331312#p331312</link>
       <description><![CDATA[Please make off-peak hours available in Domoticz Settings so that plugins and scripts can use the values
 Some people may have up to 3 off-peak hours per day, in my country
-Statistics: Posted by lemassykoi — Tuesday 03 February 2026 0:28 — Replies 23 — Views 617]]></description>
+Statistics: Posted by lemassykoi — Tuesday 03 February 2026 0:28 — Replies 23 — Views 634]]></description>
       <pubDate>Mon, 02 Feb 2026 23:28:59 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -2044,7 +2076,7 @@ Full Changelog: v2.0.2...v2.0.5]]></description>
       <link>https://forum.domoticz.com/viewtopic.php?p=331308#p331308</link>
       <description><![CDATA[Hello,
 Has anyone managed to get Enphase Envoy solar panels working in Domoticz 2025.2 with Trixie? It used to work with the Enphase native plugin, but it stopped working. The Enphase version is V8.
-Statistics: Posted by Fredom — Monday 02 February 2026 16:34 — Replies 2 — Views 185]]></description>
+Statistics: Posted by Fredom — Monday 02 February 2026 16:34 — Replies 2 — Views 198]]></description>
       <pubDate>Mon, 02 Feb 2026 15:34:37 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
@@ -2054,11 +2086,30 @@ Statistics: Posted by Fredom — Monday 02 February 2026 16:34 — Replies 2 —
       <title><![CDATA[Matter having it's own forum section?]]></title>
       <link>https://forum.domoticz.com/viewtopic.php?p=331302#p331302</link>
       <description><![CDATA[Now more and more manufactures going over to matter, should it have own section like zigbee and zwave ?
-Statistics: Posted by Varazir — Sunday 01 February 2026 20:54 — Replies 3 — Views 277]]></description>
+Statistics: Posted by Varazir — Sunday 01 February 2026 20:54 — Replies 3 — Views 300]]></description>
       <pubDate>Sun, 01 Feb 2026 19:54:51 GMT</pubDate>
       <source>Domoticz (Forum News)</source>
       <category>iot</category>
       <guid>https://forum.domoticz.com/viewtopic.php?p=331302#p331302</guid>
+    </item>
+    <item>
+      <title><![CDATA[Unable to update]]></title>
+      <link>https://forum.domoticz.com/viewtopic.php?p=331277#p331277</link>
+      <description><![CDATA[Hello everyone,
+I am unable to update Domoticz. When I try to do so via the web page, I get an error message and it corrupts Domoticz. When I try to do so via the SSH terminal, I get no error message, but Domoticz is also corrupted.
+Here is the information for the functional Domoticz:
+Version: 2025.1
+Build Hash: 89d5c900d
+Compile Date: 2025-05-05 09:02:49
+dzVents Version: 3.1.8
+Python Version: 3.9.2 (default, Mar 20 2025, 22:21:41) [GCC 10.2.1 20210110]
+Another issue is that I have to switch to “sudo su” to be able to extract the backup.
+Can you help me? Translated with DeepL.com (free version)
+Statistics: Posted by MicMac7351 — Saturday 31 January 2026 18:09 — Replies 1 — Views 176]]></description>
+      <pubDate>Sat, 31 Jan 2026 17:09:09 GMT</pubDate>
+      <source>Domoticz (Forum News)</source>
+      <category>iot</category>
+      <guid>https://forum.domoticz.com/viewtopic.php?p=331277#p331277</guid>
     </item>
     <item>
       <title><![CDATA[v2.0.4]]></title>
@@ -2107,24 +2158,6 @@ Building the future of local, private, and agentic automation. Enjoy HomeGenie 2
       <guid>https://github.com/genielabs/HomeGenie/releases/tag/v2.0.0-rc.14</guid>
     </item>
     <item>
-      <title><![CDATA[la maison intelligente en vedette au CES de Las Vegas]]></title>
-      <link>https://domotique-news.com/la-maison-intelligente-en-vedeette-au-ces-de-las-vegas/</link>
-      <description><![CDATA[A l'occasion du CES de Las Vegas ( 6-9 janvier ) le fabricant Coréen Samsung s'apprete à frapper fort dans le domaine de la maison intelligente .]]></description>
-      <pubDate>Wed, 24 Dec 2025 18:19:56 GMT</pubDate>
-      <source>Domotique News</source>
-      <category>iot</category>
-      <guid>https://domotique-news.com/la-maison-intelligente-en-vedeette-au-ces-de-las-vegas/</guid>
-    </item>
-    <item>
-      <title><![CDATA[IRobot jette l’éponge]]></title>
-      <link>https://domotique-news.com/irobot-jete-leponge/</link>
-      <description><![CDATA[Depuis plus de dix ans , la maison. numérique connectée utilisait un Irobot avec satisfaction. Solidité, facilité d’entretien, L’iRobot était à nos yeux l’un des plus sérieux aspirateurs robots. Nous utiisons presque quotidiennement un ROOMBA. Evidemment plus lourd, plus encombrant ,plus bruyant mais tellement plus fiable ! La société iRobot, née au Massachusetts à la […]]]></description>
-      <pubDate>Fri, 19 Dec 2025 19:38:30 GMT</pubDate>
-      <source>Domotique News</source>
-      <category>iot</category>
-      <guid>https://domotique-news.com/irobot-jete-leponge/</guid>
-    </item>
-    <item>
       <title><![CDATA[v2.0.0-rc.12]]></title>
       <link>https://github.com/genielabs/HomeGenie/releases/tag/v2.0.0-rc.12</link>
       <description><![CDATA[HomeGenie Server v2.0.0-rc.12
@@ -2147,24 +2180,6 @@ Full Changelog: v2.0.0-rc.11...v2.0.0-rc.12]]></description>
       <source>HomeGenie (GitHub Releases)</source>
       <category>iot</category>
       <guid>https://github.com/genielabs/HomeGenie/releases/tag/v2.0.0-rc.12</guid>
-    </item>
-    <item>
-      <title><![CDATA[IoT et domotique]]></title>
-      <link>https://domotique-news.com/iot-et-domotique/</link>
-      <description><![CDATA[Le fournisseur de semi-conducteurs japonais Renesas Electronics renforce sa famille de microcontrôleur basse consommation RA avec des circuits de connectivité pour l’IoT et la domotique.]]></description>
-      <pubDate>Wed, 10 Dec 2025 15:26:35 GMT</pubDate>
-      <source>Domotique News</source>
-      <category>iot</category>
-      <guid>https://domotique-news.com/iot-et-domotique/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Smart Home au CES 2026]]></title>
-      <link>https://domotique-news.com/smart-home-au-ces-2026/</link>
-      <description><![CDATA[L'un des principaux sujets d'intérêt du Consumer Electronics Show de Las Vegas (6-9 janvier) sera, cette année encore, celui de la domotique.]]></description>
-      <pubDate>Wed, 10 Dec 2025 10:21:56 GMT</pubDate>
-      <source>Domotique News</source>
-      <category>iot</category>
-      <guid>https://domotique-news.com/smart-home-au-ces-2026/</guid>
     </item>
     <item>
       <title><![CDATA[More devices, more choice: celebrating a massive year for certification]]></title>
@@ -2244,24 +2259,6 @@ Our second-generation Connect line products are all about being open and perform
       <guid>https://www.home-assistant.io/blog/2025/11/19/home-assistant-connect-zbt-2/</guid>
     </item>
     <item>
-      <title><![CDATA[démocratiser la maison intelligente]]></title>
-      <link>https://domotique-news.com/democratiser-la-maison-intelligente/</link>
-      <description><![CDATA[C’est le pari de quelques enseignes comme IKEA ou LIIDL… rendre accessible au plus grand nombre des solutions de controle/commande accessibles et utiles. Enfin l’acces aux solutions connectées pour la maison va connaitre une baisse significative des couts. Vers une domotique accessible au plus grand nombre… Il aura plusieurs dizaines d’années pour y parvenir..( la […]]]></description>
-      <pubDate>Thu, 13 Nov 2025 11:37:00 GMT</pubDate>
-      <source>Domotique News</source>
-      <category>iot</category>
-      <guid>https://domotique-news.com/democratiser-la-maison-intelligente/</guid>
-    </item>
-    <item>
-      <title><![CDATA[marché des capteurs 3D]]></title>
-      <link>https://domotique-news.com/marche-des-capteurs-3d/</link>
-      <description><![CDATA[La popularité croissante des technologies de la maison connectée, notamment les appareils à commande gestuelle et les systèmes de sécurité résidentiels améliorés, ouvre de nouvelles perspectives pour les applications des capteurs 3D. Dans le domaine de l’électronique grand public, pour les smartphones et les tablettes, les capteurs d’image 3D sont indispensables pour des fonctionnalités avancées […]]]></description>
-      <pubDate>Mon, 10 Nov 2025 13:17:03 GMT</pubDate>
-      <source>Domotique News</source>
-      <category>iot</category>
-      <guid>https://domotique-news.com/marche-des-capteurs-3d/</guid>
-    </item>
-    <item>
       <title><![CDATA[Ending production of Home Assistant Yellow]]></title>
       <link>https://www.home-assistant.io/blog/2025/10/15/yellow-end-of-life/</link>
       <description><![CDATA[Today, we’re announcing that we will no longer be producing Home Assistant Yellow. Rest assured, it will continue to receive software support far into the future.
@@ -2291,6 +2288,78 @@ Stable 2025.2]]></description>
       <source>Domoticz (GitHub Releases)</source>
       <category>iot</category>
       <guid>https://github.com/domoticz/domoticz/releases/tag/2025.2</guid>
+    </item>
+    <item>
+      <title><![CDATA[2025.10: Undo, redo, and draw me too]]></title>
+      <link>https://www.home-assistant.io/blog/2025/10/01/release-202510/</link>
+      <description><![CDATA[Boo! We just celebrated our birthday , which means it is time for spooky season; get ready for Halloween! And, hello to the October release of Home Assistant 2025.10! This release iterates on some of the features we introduced in the last couple of releases, but also introduces some brand-new ones!
+The highlight of this release is definitely the iterations of the automation editor, which gained a sidebar last release, and now has gained undo/redo functionality, a resizable sidebar, improved copy/paste, and more! Thanks for all the feedback you provided on the previous release; it made a massive difference in this release.
+Using multiple wake words for voice assistants is now possible, which opens up a lot of possibilities, especially for dual-language households (like mine ). Dashboards get more intelligent by suggesting entities based on your usage patterns, and the AI Task can now generate images, which I’m curious to see what the community will do with it!
+Enjoy the release!
+../Frenck
+Automation editor The sidebar is resizable
+CTRL+V
+The overflow menu is back
+Undo/Redo
+Repeat repeat repeat repeat
+Automation editor feedback
+AI Task - Draw me a sheep
+Dashboards get smarter - let your home suggest what to show
+Voice Hello, hola
+Beep boop
+Integrations New integrations
+Noteworthy improvements to existing integrations
+Integration quality scale achievements
+Now available to set up from the UI
+Other noteworthy changes New more information dialog for media player entities
+Sync zooming charts in the history panel
+Template &amp; YAML editors get a toolbar
+Patch releases 2025.10.1 - October 3
+2025.10.2 - October 10
+2025.10.3 - October 17
+2025.10.4 - October 24
+Need help? Join the community
+Backward-incompatible changes
+All changes
+A huge thank you to all the contributors who made this release possible! And a special shout-out to @JLo, @laupalombi, and @piitaya who helped write the release notes this release. Also, @googanhiem, @SeraphicRav, @tronikos, and @richardpolzer for putting effort into tweaking its contents. Thanks to them, these release notes are in great shape. Automation editor
+In the last release, we introduced a new layout for the automation editor, and your feedback has been invaluable in helping us refine it!
+This release fixes a few of the most common issues we managed to gather from all of you. Thanks for all the feedback! The sidebar is resizable
+Working on an action that is too complex for a small sidebar? Maybe one with a few YAML fields? You can now resize the sidebar to adapt the layout to your current task!
+CTRL+V
+We previously introduced keyboard shortcuts to copy and cut.
+Pasting was more complex to bring to life because you can paste a block (trigger, condition, action) in many different locations in your automation. In this release, we introduce a really simple pattern. If you previously copied a block, you can paste it below any block simply by selecting it and pressing CTRL+V.
+Another very simple, but very welcome, quality-of-life improvement to the automation editor!
+The overflow menu is back
+We initially relocated the overflow menu (the menu that appears when you click the ⋮) with all the options related to a block on the sidebar, thinking this would make the flow cleaner.
+Due to popular demand and helpful feedback that some actions were more difficult to reach (such as testing a condition or running an action), we decided to bring it back to the main section of the editor as well.
+Undo/Redo
+We’ve all been there: you’re building a complex automation, make a mistake, and want to revert it, only to find out that it’s really not simple. Up until now, the only way to revert some unsaved changes made to an automation was to close it and start over again… A very painful workflow.
+This release introduces an Undo functionality (and its associated Redo). You can now undo up to 75 steps back in your automation editing history (and redo them if you want). Standard keyboard shortcuts (CTRL+Z and CTRL+Y) are also available! An amazing contribution from @jpbede, thanks!
+Repeat repeat repeat repeat
+Finally, we noticed some unwanted complexity in our “repeat” building block, which allows you to repeat one or multiple actions for as long as you need to.
+This complexity stemmed from the fact that we were trying to cover four main use cases in a single block.
+We decided to split this building block into four smaller ones, with simpler descriptions explaining each use case. Nice!
+Here’s how they were separated:
+Repeat multiple times - Repeat a sequence of actions a fixed number of times.
+Repeat until - Repeat a sequence of actions until a condition is satisfied. The condition is checked after each run of the sequence.
+Repeat while - Repeat a sequence of actions as long as a condition is satisfied. The condition is checked before each run of the sequence.
+Repeat for each - Repeat a sequence for each element of a list. Note
+For our advanced users: This evolution is only cosmetic. The YAML format of the repeat block does not change; this means your existing automations will not be affected by this change.
+Automation editor feedback Tip
+One of Home Assistant’s greatest strengths is our community. We’re building this automation editor together, and your input will shape where it goes next. There are two ways to get involved:
+Share your thoughts in our survey
+Join the conversation in the automations &amp; scripts development channel on Discord
+AI Task - Draw me a sheep
+In 2025.8, we introduced a way to generate data using the LLM of your choice, paving the way to more AI-driven automations, dashboards, and other smart home interactions.
+In this release, we introduce a way to generate images!
+Now every time someone rings your doorbell, you can receive a notification with a cartoon version of the doorbell snapshot. @JLo has made this example a reality, and here’s his demo with the associated automation! Automation details alias: Demo Doorbell
+triggers: - trigger: state entity_id: - binary_sensor.doorbell_demo to: "on"
+actions: - action: notify.mobile_app_iphone data: title: " Doorbell " message: Processing image ... data: tag: doorbell - action: ai_task.generate_data data: task_name: Doorbell description instructions: |- Someone rang my doorbell. Instructions: - Describe the scene, describe every person on the scene - Count People - Count Animals entity_id: ai_task.ai_task_gpt_4o structure: summary: description: &gt;- Summary of the scene and the people inside it. Keep it under 180 characters selector: text: null person_count: description: Number of person in the scene selector: number: null animal_count: description: Number of animal in the scene selector: number: null attachments: media_content_id: media-source://media_source/local/doorbell_test.png media_content_type: image/png metadata: title: doorbell_test.png thumbnail: null media_class: image children_media_class: null navigateIds: - {} - media_content_type: app media_content_id: media-source://media_source response_variable: ai - action: notify.mobile_app_iphone data: title: &gt;- Doorbell ({{ai.data.person_count}} 🏻 / {{ai.data.animal_count}} ) message: "{{ai.data.summary}}" data: tag: doorbell - action: ai_task.generate_image data: task_name: Manga instructions: Transform this image into a super cute manga! entity_id: ai_task.google_ai_task attachments: media_content_id: media-source://media_source/local/doorbell_test.png media_content_type: image/png metadata: title: doorbell_test.png thumbnail: null media_class: image children_media_class: null navigateIds: - {} - media_content_type: app media_content_id: media-source://media_source response_variable: ai_image enabled: true - action: notify.mobile_app_iphone data: title: &gt;- Doorbell ({{ai.data.person_count}} 🏻 / {{ai.data.animal_count}} ) message: "{{ai.data.summary}}" data: tag: doorbell image: http://homeassistant.local:8123{{ai_image.url}} enabled: true
+mode:]]></description>
+      <pubDate>Wed, 01 Oct 2025 00:00:00 GMT</pubDate>
+      <source>Home Assistant (Blog officiel)</source>
+      <category>iot</category>
+      <guid>https://www.home-assistant.io/blog/2025/10/01/release-202510/</guid>
     </item>
     <item>
       <title><![CDATA[L'IA Proactive débarque dans Gladys Assistant !]]></title>

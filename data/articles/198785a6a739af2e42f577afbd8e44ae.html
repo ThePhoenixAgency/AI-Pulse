@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,63 +28,7 @@
     Source: PortSwigger Research | Date: 8/19/2025 2:30:44 PM | <a href="https://portswigger.net/research/how-to-distinguish-http-pipelining-from-request-smuggling" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <p><img alt="James Kettle" src="https://portswigger.net/content/images/profiles/callout_james_kettle_112px.png"></p>
-</div> <ul> <li> <p><span></span><strong>Published: </strong>19 August 2025 at 14:30 UTC</p> </li> <li> <p><strong>Updated: </strong>19 August 2025 at 14:31 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/f3/a8/1370-article-http_pipelining_article.png"><br></p><p>Sometimes people think they've found <a href="https://portswigger.net/web-security/request-smuggling">HTTP request smuggling</a>, when they're actually just observing HTTP keep-alive or pipelining. This is usually a false positive, but sometimes there's actually a real vulnerability there! In this post I'll explore how to tell the two apart.</p>
-<p>This post was triggered by the publication of <a href="https://http1mustdie.com/" target="_blank" rel="noopener noreferrer">http1mustdie.com</a> which resulted in me getting a bunch of messages from people confused and intrigued by connection reuse. The answer is too nuanced to put into a quick reply so I'm writing it up here instead.</p>
-<h3><a>Connection reuse false-positives</a></h3>
-<p>If you see a request smuggling proof of concept that <b>only</b> works when you reuse connections, it's <b>probably</b> a false positive. Here are some common examples of connection reuse:</p>
-<ul><li>Turbo Intruder PoCs where requestsPerConnection is greater than 1</li><li>Burp Intruder when HTTP/1 Connection Reuse is enabled</li><li>Burp Repeater when using 'Send group in sequence (single connection)' or 'Enable connection reuse'</li><li>Burp Repeater attacks that show two HTTP/1 responses in one</li></ul>
-<p>However, it's not always a false positive. There are three valid closely related vulnerability classes where connection reuse is required:</p>
-<ul><li>Connection-locked request smuggling</li><li>Connection state attacks (not technically request smuggling)</li><li>Client-side desync attacks</li></ul>
-<p>So, when creating a request smuggling proof of concept, always disable connection reuse where possible. If this breaks your attack, you have a choice - give up, or dive deeper.</p><p>To help you distinguish between these two scenarios, I have published a Custom Action called <a href="https://github.com/PortSwigger/bambdas/blob/main/CustomAction/SmugglingOrPipelining.bambda" target="_blank" rel="noopener noreferrer">Smuggling or pipelining?</a>&nbsp;- you can install it into Burp Repeater using copy+paste, or import via the Extensibility Helper extension in the BApp store.</p>
-<h3><a>HTTP/1 connection reuse</a></h3>
-<p>Most tools represent HTTP/1 requests as individual, isolated entities. This is usually a convenient abstraction, but request smuggling attempts to break it, so it's crucial to understand the layer below.</p>
-<p>To help, we just launched HTTP Hacker - a new Burp Suite extension which exposes low-level HTTP behaviour. To get the most out of these examples, install HTTP Hacker from Extensions-&gt;BApp Store and use it to follow along.</p>
-<p>Under the hood, HTTP/1.1 reuses connections by concatenating requests and responses on the underlying TCP/TLS socket. This is known as HTTP connection reuse, pipelining, or keep-alive. Here's an example:</p>
-<p><code>POST / HTTP/1.1
-Host: hackxor.net
-Connection: keep-alive
-Content-Length: 5 12345GET /robots.txt HTTP/1.1
-Host: hackxor.net
-</code></p><p>Pipelining is a sub-type of connection reuse where the client sends all their requests in one go and relies on the responses coming back in the correct order. Most servers support pipelined requests, but few real clients send them - it's what makes Turbo Intruder so fast.</p>
-<p>Now we understand the fundamentals, let's consider what happens when we sent this CL.0 attack twice, and reuse the connection:</p>
-<p><code>POST / HTTP/1.1
-Host: hackxor.net
-Content_Length: 47 GET /robots.txt HTTP/1.1
-X: Y
-</code></p><p>Response one:</p><p><code>HTTP/1.1 200 OK
-Content-Type: text/html </code></p><p>Response two:</p><p><code>HTTP/1.1 200 OK
-Content-Type: text/plain User-agent: *
-Disallow: /settings
-</code></p><p>We can see that at least one server has ignored the malformed Content_Length header. You might think you've created a desync between the front-end and back-end webserver:</p><p><img src="https://portswigger.net/cms/images/d7/25/0d1a-article-screenshot_2025-08-18_at_16.18.10.png"></p><p>However, all you've actually done is cause a desync between your HTTP client, and the target server:</p><p><img src="https://portswigger.net/cms/images/ce/75/66ce-article-screenshot_2025-08-18_at_16.18.16.png"></p><p>Here's the underlying request stream:</p>
-<p><code>POST / HTTP/1.1
-Host: hackxor.net
-Content_Length: 47 GET /robots.txt HTTP/1.1
-X: YPOST / HTTP/1.1
-Host: hackxor.net
-Content_Length: 47 GET /robots.txt HTTP/1.1
-X: Y
-</code></p><p>This is useless. In fact, hackxor doesn't even have a back-end so it's immune to request smuggling.</p>
-<p>Hopefully that helps clarify why reusing client connections can cause false positives - please let me know if you have any lingering questions.</p>
-<h3><a>Connection-locked request smuggling</a></h3>
-<p>It would be nice if I could simply say "never reuse connections when testing for request smuggling", but life is never that simple.</p>
-<p>Some front-end servers only reuse the upstream connection if the client connection was reused. This means you can end up with request smuggling vulnerabilities that can only be triggered via client-side connection reuse. I call this scenario connection-locked request smuggling.</p>
-<p>To confirm this, see if you can send a request over HTTP/2 that triggers a response containing a separate HTTP/1 response nested inside it. This proves it's not a false positive, and means it's worth investing time in trying to build an exploit. Alternatively, you can often distinguish connection-locked request smuggling <a href="https://portswigger.net/research/browser-powered-desync-attacks#connection-locked">using partial requests</a>.</p>
-<p>However, to prove a vulnerability is really present, you need to obtain evidence of real impact beyond "an attacker can make themselves receive a surprising response". Connection-locked request smuggling can't be used for direct cross-user attacks, but you can still:</p>
-<ul><li>Exploit other users by poisoning the server cache, if it has one</li><li>Exploit an input reflection to disclose internal HTTP headers</li><li>Bypass any security controls applied by the front-end server</li></ul>
-<p>This is your pathway to a valid report! If you think you've found a connection-locked request smuggling, I would suggest the following steps. You can explore these in Turbo Intruder with requestsPerConnection=2, or using a Repeater tab group via 'Send group in sequence (single connection)'.</p>
-<p>First, identify whether there is a cache layer and if so, <a href="https://portswigger.net/web-security/request-smuggling/exploiting/lab-perform-web-cache-poisoning%20">poison it</a> - this is an easy high-impact attack.</p>
-<p>If there's no cache, look for an input reflection gadget and use it to <a href="https://portswigger.net/web-security/request-smuggling/exploiting/lab-reveal-front-end-request-rewriting%20">reveal any headers</a> the front-end is injecting. Sometimes internal headers enable <a href="https://portswigger.net/research/http-desync-attacks-request-smuggling-reborn#explore">complete authentication bypass</a>!</p>
-<p>If there are any visible front-end security measures, such as requests to certain paths being blocked, see if you can <a href="https://portswigger.net/web-security/request-smuggling/exploiting/lab-bypass-front-end-controls-cl-te">use the request smuggling to bypass them</a>.</p>
-<p>Finally, explore how the application responds to host-header tampering, both directly and in smuggled requests. You may be able to use connection-locked request smuggling to gain access to some previously off-limits internal systems, or launch other host-header attacks.</p>
-<h3><a>Connection state attacks</a></h3>
-<p>When exploring connection-locked request smuggling, you might also uncover <a href="https://portswigger.net/research/browser-powered-desync-attacks#state">connection-state attacks</a> such as first-request routing.</p>
-<p>These occur because some servers treat the first request on each connection differently from subsequent requests on the same connection. They are not technically request smuggling vulnerabilities, and can even occur on targets with no front-end server, but ultimately the impact is very similar to connection-locked request smuggling.</p><p>HTTP Request Smuggler supports a 'connection-state probe' which will attempt to automatically identify these.</p>
-<h3><a>Client-side desync attacks</a></h3>
-<p>There is one other scenario where connection reuse is exploitable, and that is client-side desync attacks. Note that this comes with a major restriction - the attack request must be something you can get the victims' web browser to send, cross-domain! In practice, this means you can't use any header obfuscation techniques. For further information, refer to <a href="https://portswigger.net/research/browser-powered-desync-attacks%20">Browser-Powered Desync Attacks</a>, and our <a href="https://portswigger.net/web-security/request-smuggling/browser/client-side-desync%20">client-side desync Academy topic</a>.</p>
-<h3><a>Conclusion</a></h3>
-<p>I hope you found that useful! Request smuggling is a topic with immense depth and this is just a taster. If you'd like to master it, check out <a href="https://portswigger.net/research/request-smuggling">all our desync research</a>, and our <a href="https://portswigger.net/web-security/request-smuggling">full Academy topic</a> with <a href="https://portswigger.net/web-security/all-labs#http-request-smuggling">20+ interactive labs</a>.</p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
-</div></div>
+    <p>Sometimes people think they've found HTTP request smuggling, when they're actually just observing HTTP keep-alive or pipelining. This is usually a false positive, but sometimes there's actually a real</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -99,12 +37,12 @@ X: Y
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

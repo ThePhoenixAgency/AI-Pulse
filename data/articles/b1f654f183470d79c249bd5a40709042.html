@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Microsoft alerte sur une campagne de fausses offres ciblant les développeurs Next.js</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Microsoft alerte sur une campagne de fausses offres ciblant les développeurs Next.js</h1>
+  <div class="metadata">
+    Source: GNT | Date: 2/27/2026 4:10:01 PM | <a href="https://www.generation-nt.com/actualites/cyberattaque-microsoft-developpeurs-next-js-securite-malware-2071547" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><article> <p> Publié le <time> 27 février 2026 à 17:10</time> par <a href="https://www.generation-nt.com/informations/a-propos/mathieu.m"><span>Mathieu M.</span></a> </p> <section> <div> <p><span>Une nouvelle campagne de cyberattaque cible les développeurs Next.js via de faux projets de recrutement. Microsoft alerte sur ces dépôts de code piégés qui, sous couvert de tests techniques, installent des logiciels malveillants pour exfiltrer des données sensibles et prendre le contrôle des machines compromises.</span></p> </div> <a href="https://img.generation-nt.com/nextjs_0762042701720867.webp"> <div> <img src="https://img.generation-nt.com/nextjs_0298000001720867.jpg" alt="NextJS"> </div> </a> </section> <div><p>C'est une menace qui se fond parfaitement dans le quotidien des professionnels du code. Une campagne sophistiquée, révélée par une enquête, utilise des offres d'emploi et des tests techniques comme appâts pour piéger les développeurs travaillant avec le framework Next.js. Le mode opératoire est simple mais très efficace : un dépôt de code à analyser, un projet à évaluer, et la machine se retrouve compromise, ouvrant une porte dérobée aux attaquants.</p>
+<h2>Mécanisme de l'attaque : comment les développeurs Next.js sont-ils piégés ?</h2>
+<p>Le piège se referme lorsque les <strong><a href="https://www.generation-nt.com/actualites/nvidia-pilote-rtx-instabilite-jeux-correctif-2056704">développeurs</a></strong> exécutent des actions tout à fait banales. Les pirates ont intégré plusieurs déclencheurs dans leurs projets malveillants. Les méthodes d'infection incluent :</p>
+<ul>
+<li><strong>L'automatisation de l'IDE :</strong> Une première méthode abuse de l'automatisation de Visual Studio Code. Dès que le projet est ouvert et jugé "fiable" par l'utilisateur, un script s'exécute discrètement en arrière-plan pour initier la compromission.</li>
+<li><strong>L'exécution du serveur de développement :</strong> D'autres variantes attendent que la victime lance le serveur avec la commande <code>npm run dev</code>. À ce moment, une logique malveillante cachée dans des fichiers en apparence légitimes s'active.</li>
+</ul>
+<p>Le résultat est systématiquement le même : un code malicieux est récupéré et exécuté en mémoire, établissant une connexion persistante avec le serveur de commande et de contrôle (C2) (un serveur centralisé utilisé par les pirates pour gérer les machines infectées) des attaquants.</p>
+<p><a href="https://img.generation-nt.com/nextjs-01_01720863.webp" target="_blank" rel="noopener noreferrer"> <img src="https://img.generation-nt.com/nextjs-01_0234024f01720863.jpg" alt="Nextjs_01"> </a></p>
+<h2>Objectifs des pirates et risques pour les développeurs</h2>
+<p>L'objectif final est d'obtenir une prise de contrôle à distance du poste de travail. Cette <strong><a href="https://www.generation-nt.com/actualites/free-fuite-donnees-cyberattaque-sanction-cnil-2069015">cyberattaque</a></strong> vise les machines des développeurs, qui sont de véritables <strong>mines d'or</strong> pour les cybercriminels. Elles contiennent des informations critiques telles que :</p>
+<ul>
+<li>Du code source propriétaire.</li>
+<li>Des secrets d'environnement comme des clés d'API (des identifiants uniques permettant à des applications de communiquer entre elles).</li>
+<li>Des accès directs aux infrastructures cloud et aux systèmes de production.</li>
+</ul>
+<p>Une fois le canal de communication C2 établi, les attaquants peuvent exfiltrer des données, déployer d'autres logiciels malveillants, ou encore utiliser la machine compromise comme un pivot pour infiltrer plus profondément le réseau de l'entreprise. Les chercheurs notent que cette activité s'aligne sur des menaces plus larges associées au groupe nord-coréen Lazarus, connu pour ses campagnes d'espionnage utilisant des leurres de recrutement.</p>
+<p><a href="https://img.generation-nt.com/nextjs-02_01720864.webp" target="_blank" rel="noopener noreferrer"> <img src="https://img.generation-nt.com/nextjs-02_03a8028e01720864.jpg" alt="Nextjs_02"> </a></p>
+<h2>Comment se protéger contre cette attaque ?</h2>
+<p>Face à cette menace, la vigilance est de mise. <strong><a href="https://www.generation-nt.com/actualites/microsoft-photo-collage-autocollage-147831">Microsoft</a></strong> recommande de traiter les flux de travail des développeurs comme une surface d'attaque privilégiée (l'ensemble des points d'un système qui sont exposés à des menaces potentielles).</p>
+<blockquote><strong>Il est crucial de ne jamais accorder une confiance aveugle à un projet provenant d'une source inconnue.</strong></blockquote>
+<p>Voici les principales mesures de protection à mettre en place :</p>
+<ul>
+<li><strong>Renforcer les politiques de confiance :</strong> Limitez l'approbation automatique de projets dans les environnements de développement intégrés (IDE) comme Visual Studio Code.</li>
+<li><strong>Déployer des règles de sécurité :</strong> Utilisez des règles de réduction de la surface d'attaque pour bloquer les comportements de scripts suspects.</li>
+<li><strong>Surveiller le réseau :</strong> Gardez un œil sur les connexions sortantes inhabituelles provenant des processus Node.js (l'environnement d'exécution JavaScript utilisé par Next.js).</li>
+<li><strong>Adopter une bonne hygiène de sécurité :</strong> Minimisez les secrets stockés localement et privilégiez l'usage de jetons d'accès à courte durée de vie pour limiter l'impact en cas de compromission.</li>
+</ul>
+<h2><strong>Foire Aux Questions (FAQ)</strong></h2>
+<h3><strong>Qui sont les principaux développeurs visés par cette attaque ?</strong></h3>
+<p>L'attaque cible spécifiquement les développeurs travaillant avec le framework Next.js, un outil très populaire pour la création d'applications web basées sur React.</p>
+<h3><strong>L'attaque est-elle facile à détecter ?</strong></h3>
+<p>Non, sa principale force est sa discrétion. Elle se fond dans les actions de routine d'un développeur (ouvrir un projet, lancer un serveur). Le <strong><a href="https://www.generation-nt.com/actualites/google-ia-malware-promptflux-cybersecurite-gemini-2065589">logiciel malveillant</a></strong> est souvent exécuté en mémoire, ce qui laisse peu de traces sur le disque dur et complique la détection par les antivirus traditionnels.</p>
+<h3><strong>Quel est le rôle de Vercel dans cette campagne ?</strong></h3>
+<p>Vercel, la société derrière Next.js, est utilisée de manière involontaire par les attaquants. Ces derniers hébergent des parties de leur code malveillant sur la plateforme Vercel pour leur donner une apparence de légitimité et contourner plus facilement les mesures de sécurité réseau.</p> </div> <div> <p>Journaliste GNT spécialisé imprimantes 3D et nouvelles technologies</p> </div> <p>Cette page peut contenir des liens affiliés. Si vous achetez un produit depuis ces liens, le site marchand nous reversera une commission sans que cela n'impacte en rien le montant de votre achat. <a href="https://www.generation-nt.com/informations/conditions-utilisation#affiliation">En savoir plus</a>.</p> </article></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

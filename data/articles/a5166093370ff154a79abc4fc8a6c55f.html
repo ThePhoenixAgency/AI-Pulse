@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Does HomeAssistant need stable IP addresses for devices?</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Does HomeAssistant need stable IP addresses for devices?</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/27/2026 11:24:53 AM | <a href="https://community.home-assistant.io/t/does-homeassistant-need-stable-ip-addresses-for-devices/991141" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>I’m wondering how people with HomeAssistant are managing the IP address for all of their IOT devices?</p>
+<p>The options that I’m aware of are:</p>
+<ul>
+<li><strong><strong>Static IP Addresses</strong></strong> - You manually set a static IP address on each device. This doesn’t really scale, and is vulnerable to human error (e.g. address conflict on two devices)</li>
+<li><strong><strong>DHCP</strong></strong> - The devices grab IP addresses from a pool - however, the address may change between reboots, lease timeouts etc.</li>
+<li><strong><strong>DHCP with static reservations</strong></strong> - On your DHCP server, you reserver specific IP addresses from the pool for devices via MAC addresses. It’s a bit of overhead though.</li>
+</ul>
+<p>Let’s say you have a mix of IOT devices (some of this is planned in my case):</p>
+<ul>
+<li>ESPHome devices</li>
+<li>Shelly devices</li>
+<li>Tuya devices (used via <a href="https://github.com/rospogrigio/localtuya" rel="noopener nofollow ugc">localtuya</a> or <a href="https://github.com/make-all/tuya-local" rel="noopener nofollow ugc">tuya-local</a> - still figuring out which is better)</li>
+<li>WLED light controllers</li>
+</ul>
+<p>In my case, the router is running VyOS, and it’s a dual-stack IPv4/IPv6 network.</p>
+<p>VyOS does allow setting static DHCP leases:</p>
+<p><a href="https://docs.vyos.io/en/1.4/configuration/service/dhcp-server.html#static-mappings" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.vyos.io/en/1.4/configuration/service/dhcp-server.html#static-mappings</a></p>
+<p>However, it’s a bit of a pain having to manage that manually. The Ansible module for VyOS doesn’t seem to support configuring the DHCP server either:</p>
+<p><a href="https://docs.ansible.com/projects/ansible/latest/collections/vyos/vyos/index.html" class="onebox" target="_blank" rel="noopener nofollow ugc">https://docs.ansible.com/projects/ansible/latest/collections/vyos/vyos/index.html</a></p>
+<p>so you can’t even use that to streamline things, or get it into source control <img src="https://community.home-assistant.io/images/emoji/twitter/confused.png?v=12" title=":confused:" class="emoji" alt=":confused:" loading="lazy" width="20" height="20">.</p>
+<p>However, these days - do you actually need stable address for devices? (i.e. with mDNS/Bonjour, and all that?)</p>
+<p>As in, will HomeAssistant handle it fine, if device IP addresses change underneath it? Or what would you do to handle this?</p> <p><small>9 posts - 8 participants</small></p> <p><a href="https://community.home-assistant.io/t/does-homeassistant-need-stable-ip-addresses-for-devices/991141">Read full topic</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
