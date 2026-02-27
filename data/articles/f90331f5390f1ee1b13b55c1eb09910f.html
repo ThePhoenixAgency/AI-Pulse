@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,48 @@
     Source: PortSwigger Research | Date: 5/29/2024 1:31:49 PM | <a href="https://portswigger.net/research/adjusting-your-http-perspective-with-bambdas" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>When you open a HTTP request or response, what do you instinctively look for? Suspicious parameter names? CORS headers? Some clue as to the request's origin or underlying purpose? A single HTTP messag</p>
+    <div><div> <div> <p><img alt="James Kettle" src="https://portswigger.net/content/images/profiles/callout_james_kettle_112px.png"></p>
+</div> <ul> <li> <p><span></span><strong>Published: </strong>29 May 2024 at 13:31 UTC</p> </li> <li> <p><strong>Updated: </strong>29 May 2024 at 15:03 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/cb/7c/c96e-article-bam-article.png"></p><p>When you open a HTTP request or response, what do you instinctively look for? Suspicious parameter names? <a href="https://portswigger.net/web-security/cors">CORS</a> headers? Some clue as to the request's origin or underlying purpose?<br></p>
+<p>A single HTTP message can tell a different story to every viewer, but modern websites send thousands so it's all too easy to overlook something critical. To help, Burp Suite recently added support for custom columns which let you personalize which elements of HTTP requests get surfaced in tables. Here's a simple example which parses the <a href="https://portswigger.net/web-security/graphql">GraphQL</a> operation out of the request body and into a column:</p><p><span><img src="https://portswigger.net/cms/images/47/d5/989e-article-graphql-column.png"></span><br></p><p>Behind the scenes, these are crafted using code-snippets called <a href="https://portswigger.net/research/finding-that-one-weird-endpoint-with-bambdas" target="_blank" rel="noopener noreferrer">bambdas</a>. This feature is almost paralyzingly powerful, so we thought we'd share some of the columns our research team has created. These range from simple but useful to not so simple. Readers already familiar with Java may notice that we haven't bothered avoiding null pointer exceptions - that's because they're handled for us at the row-level, and therefore don't tend to cause issues.</p>
+<h5>What page did this request originate from?</h5><p>Understanding the flow of HTTP request sequences is crucial to finding many advanced vulnerabilities, and this makes it slightly easier.<br></p><p><code>return requestResponse.request().headerValue("Referer");</code></p><h5>What webserver did this response come from?</h5><p>Perhaps I have an WAF bypass or a cache poisoning attack that targets a specific proxy.&nbsp;</p><p><code>return requestResponse.response().headerValue("Server");</code></p><h5>What's the HTTP version?</h5><p>Should I prioritise request smuggling, or <a href="https://portswigger.net/web-security/race-conditions">race conditions</a>? How long will my 10,000-word directory bruteforce take?</p><p><code>return requestResponse.request().httpVersion();</code></p><h5>Who owns the IP address this request is going to?</h5><p>Maybe I should target their infrastructure instead. Reverse DNS is a wonderful thing.</p><p><code>String ipAddress = requestResponse.httpService().ipAddress();
+return java.net.InetAddress.getByName(ipAddress).getCanonicalHostName();</code></p><h5>Is this in-scope?</h5><p>You wouldn't want to accidentally target something out of scope</p><p><code>return requestResponse.request().isInScope();</code></p><h5>What's this request's GraphQL operation name?</h5><p>You can usually tell a request's operation at a glance by looking at the URL, but GraphQL is an inconvenient exception. This script fixes that.</p><p><code>String paramName = "operationName"; if(requestResponse.request().hasParameter(paramName, HttpParameterType.JSON)) {
+return requestResponse.request().parameterValue(paramName, HttpParameterType.JSON);
+} String query = requestResponse.request().parameterValue("query", HttpParameterType.JSON); if(query.contains("{") || query.contains("(")) {
+var queryParts = query.split("\\{|\\(");
+return queryParts[0];
+} return "";</code></p><h5>How does the session cookie look after a base64 decode?</h5><p>Encoded, signed tokens like JWT are everywhere, and always worth peering into. This script will need to be customised to your target.</p><p><code>
+if (!requestResponse.hasResponse()) { return "";
+}
+var extract = "session";
+var response = requestResponse.response();
+var optionalCookie = response.cookies().stream().filter(cookie -&gt; cookie.name().equals(extract)).findFirst();
+if(optionalCookie.isEmpty()) return "";
+var value = optionalCookie.get().value();
+var parts = value.split("\\.");
+if(parts.length != 3) return "";
+var payload = parts[1];
+return utilities().base64Utils().decode(payload, Base64DecodingOptions.URL);<br></code></p><h5>Which cookies have SameSite disabled?</h5><p>When plotting a <a href="https://portswigger.net/web-security/csrf">CSRF</a> or <a href="https://portswigger.net/web-security/cross-site-scripting">XSS</a> attack, it's useful to know if any cookies have SameSite disabled.</p><p><code>
+if(requestResponse.response() == null) { return "";
+} if(!requestResponse.response().hasHeader("Set-Cookie")){ return "";
+}
+ArrayList&lt;String&gt; cookieNames = new ArrayList&lt;&gt;(); Pattern pattern = Pattern.compile("^ ([^=]+).+; SameSite=None", Pattern.CASE_INSENSITIVE);
+List&lt;HttpHeader&gt; headers = requestResponse.response().headers();
+for(HttpHeader header : headers) { Matcher matcher = pattern.matcher(header.value()); while(matcher.find()) { cookieNames.add(matcher.group(1)); }
+} return String.join(", ", cookieNames);
+</code></p><h5>Does this response have bad CSP?</h5><p>This custom column Bamda allows you to prioritise testing of vulnerable endpoints that have deployed unsafe CSP directives such as unsafe-inline or unsafe-eval.</p><p><code>
+if(requestResponse.response() == null) { return "";
+} if(!requestResponse.response().hasHeader("Content-Security-Policy")) { return "No CSP";
+} String csp = requestResponse.response().headerValue("Content-Security-Policy");
+ArrayList&lt;String&gt; vulnerableDirectives = new ArrayList&lt;&gt;();
+String[] directivesToCheck = new String[]{"unsafe-inline", "unsafe-eval"}; for(int i=0;i&lt;directivesToCheck.length;i++) { if(csp.contains(directivesToCheck[i])) { vulnerableDirectives.add(directivesToCheck[i]); } } return String.join(", ", vulnerableDirectives);
+</code></p><h2>Prioritization via sorted custom columns</h2>
+<p>You can sort an entire table via a custom column, which can help prioritise which requests to target. Over time, I think I'll personally end up writing a giant bambda which scores how hackable a request is from 0-100 but for now, here's two simple examples:</p>
+<h5>How many parameters does this request have?</h5><p>Sometimes, you just want to find the biggest attack surface as quickly as possible.</p><p><code>return requestResponse.request().parameters().size();</code></p><h5>How many occurrences of 'HTTP_' does the response have?</h5><p>This can indicate an environment variable leak, or be adapted to find various other interesting strings.</p><p><code>if (!requestResponse.hasResponse()) { return 0;
+}
+String lookFor = "HTTP_";
+return utilities().byteUtils().countMatches(requestResponse.response().body().getBytes(), lookFor.getBytes());
+</code></p><h5>Execute a shell command</h5><p>Maybe next time</p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +84,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

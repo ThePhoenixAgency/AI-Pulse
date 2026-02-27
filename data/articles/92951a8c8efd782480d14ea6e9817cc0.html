@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,25 @@
     Source: Domoticz (Forum News) | Date: 2/21/2026 12:40:58 PM | <a href="https://forum.domoticz.com/viewtopic.php?p=331704#p331704" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Hi all,<br><br>This morning my Docker container was updated to latest beta (17204). There seems to be a problem with a Python library if I interpret the log correctly:<br><blockquote class="uncited"><div> 2026-02-21 13:32:06.430 Status: Domoticz V2025.2 (build 17204) (c)2012-2026 GizMoCuz<br>2026-02-21 13:32:06.430 Status: Build Hash: 71a61ff22, Date: 2026-02-20 11:33:19<br>2026-02-21 13:32:06.431 Status: Startup Path: /opt/domoticz/<br>2026-02-21 13:32:06.511 Status: PluginSystem: Failed dynamic library load, install the latest libpython3.x library that is available for your platform.<br>2026-02-21 13:32:06.513 Status: PluginSystem: 'ConBee2' Registration ignored, Plugins are not enabled.<br>2026-02-21 13:32:06.513 Status: PluginSystem: 'SolarEdge' Registration ignored, Plugins are not enabled.<br>2026-02-21 13:32:06.513 Status: PluginSystem: 'Shelly MQTT' Registration ignored, Plugins are not enabled. </div></blockquote>Should not be related (because I use Docker) but I am running Docker on a headless Debia Trixie NUC.<br><br>I am posting this in the hope that this will be corrected in the next beta. I have no desire to go fiddle inside the container <img class="smilies" src="https://forum.domoticz.com/images/smilies/icon_e_wink.gif" width="15" height="17" alt=";)" title="Wink"><p>Statistics: Posted by <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15727">Sjonnie2017</a> — Saturday 21 February 2026 13:40 — Replies 2 — Views 288</p><hr /></p>
+    <div><div> <p> <strong>Moderators:</strong> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6475&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6">leecollings</a>, <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=57&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6">remb0</a>
+</p> <div> <p><strong>Forum rules</strong><br> Before posting here, make sure you are on the latest Beta or Stable version.<br>
+If you have problems related to the web gui, clear your browser cache + appcache first.</p><p> Use the following template when posting here:</p><p> Version: xxxx<br>
+Platform: xxxx<br>
+Plugin/Hardware: xxxx<br>
+Description:<br>
+.....</p><p> If you are having problems with scripts/blockly, always post the script (in a spoiler or code tag) or screenshots of your blockly</p><p> If you are replying, please do not quote images/code from the first post</p><p> Please mark your topic as Solved when the problem is solved. </p></div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15727&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6"><img src="https://forum.domoticz.com/download/file.php?avatar=15727_1501780897.jpg" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15727&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6">Sjonnie2017</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=15727&amp;sr=posts&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6">375</a></dd> <dd><strong>Joined:</strong> Wednesday 02 August 2017 19:43</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> Latest ß</dd> <dd><strong>Location:</strong> The Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331704&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6#p331704">SOLVED: Hardware devices not enabled Python error in Docker (?) Beta 17204</a> </h3> <div><p>Hi all,</p><p> This morning my Docker container was updated to latest beta (17204). There seems to be a problem with a Python library if I interpret the log correctly:</p><blockquote><p> 2026-02-21 13:32:06.430 Status: Domoticz V2025.2 (build 17204) (c)2012-2026 GizMoCuz<br>
+2026-02-21 13:32:06.430 Status: Build Hash: 71a61ff22, Date: 2026-02-20 11:33:19<br>
+2026-02-21 13:32:06.431 Status: Startup Path: /opt/domoticz/<br>
+2026-02-21 13:32:06.511 Status: PluginSystem: Failed dynamic library load, install the latest libpython3.x library that is available for your platform.<br>
+2026-02-21 13:32:06.513 Status: PluginSystem: 'ConBee2' Registration ignored, Plugins are not enabled.<br>
+2026-02-21 13:32:06.513 Status: PluginSystem: 'SolarEdge' Registration ignored, Plugins are not enabled.<br>
+2026-02-21 13:32:06.513 Status: PluginSystem: 'Shelly MQTT' Registration ignored, Plugins are not enabled. </p></blockquote><p> Should not be related (because I use Docker) but I am running Docker on a headless Debia Trixie NUC.</p><p> I am posting this in the hope that this will be corrected in the next beta. I have no desire to go fiddle inside the container <img src="https://forum.domoticz.com/images/smilies/icon_e_wink.gif" alt=";)"></p></div> <p> Last edited by <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15727&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6">Sjonnie2017</a> on Saturday 21 February 2026 14:45, edited 1 time in total. </p> <p>ConBee II - TRÅDFRI lights + switches, loads of ChingLing dimmers and switches, Heiman and Xiaomi sensors<br>
+SolarEdge SE4000H (with active modbus_tcp) <br>
+YouLess Energy meter <br>
+Shelly 2.5 in roller shutter mode</p> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15727&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6"><img src="https://forum.domoticz.com/download/file.php?avatar=15727_1501780897.jpg" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15727&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6">Sjonnie2017</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=15727&amp;sr=posts&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6">375</a></dd> <dd><strong>Joined:</strong> Wednesday 02 August 2017 19:43</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> Latest ß</dd> <dd><strong>Location:</strong> The Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331752&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6#p331752">Re: SOLVED: Hardware devices not enabled Python error in Docker (?) Beta 17204</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331752&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6#p331752"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15727&amp;sid=c058e0f971c9c650dd20ac4d3d36cac6">Sjonnie2017</a></strong> » </span><time>Monday 23 February 2026 18:18</time> </p> <div><p>Note to self:</p><p> These are busy times for Gizmocus et all with the major overhaul of parts of Domoticz and there is bound to be a beta broken the next coming days.</p><p> No biggie! I for now can fix the problem with the following command sequence:</p><div><p>Code: <a href="#">Select all</a></p><pre><code>docker compose pull &amp;&amp; docker compose up --force-recreate --build -d &amp;&amp; docker image prune -f</code></pre></div><p> Another note to self <img src="https://forum.domoticz.com/images/smilies/icon_e_smile.gif" alt=":)"> : use sudo for each command <img src="https://forum.domoticz.com/images/smilies/icon_mrgreen.gif" alt=":mrgreen:"></p></div> <p>ConBee II - TRÅDFRI lights + switches, loads of ChingLing dimmers and switches, Heiman and Xiaomi sensors<br>
+SolarEdge SE4000H (with active modbus_tcp) <br>
+YouLess Energy meter <br>
+Shelly 2.5 in roller shutter mode</p> </div> </div> <div> <h3><a href="https://forum.domoticz.com/viewonline.php?sid=c058e0f971c9c650dd20ac4d3d36cac6">Who is online</a></h3> <p>Users browsing this forum: No registered users and 1 guest</p> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +61,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

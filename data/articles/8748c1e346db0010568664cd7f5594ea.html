@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Music Assistant 2.7 - Taking over the airwaves</title>
+<title>Wayback Machine</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,58 +29,12 @@
 </style>
 </head>
 <body>
-  <h1>Music Assistant 2.7 - Taking over the airwaves</h1>
+  <h1>Wayback Machine</h1>
   <div class="metadata">
     Source: Home Assistant (Blog officiel) | Date: 12/17/2025 12:00:00 AM | <a href="https://www.home-assistant.io/blog/2025/12/17/music-assistant-2-7/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p><img src='/images/blog/2025-12-music-assistant-2-7/art.webp' style='border: 0;box-shadow: none;' alt="Music Assistant is taking over the airwaves">
-<p>It’s been a busy few months composing behind the scenes, building up to a massive crescendo. Today, the beat finally drops on <a href="https://www.music-assistant.io/">Music Assistant’s</a> biggest update yet. With <strong>version 2.7</strong>, Music Assistant is getting all jazzed up with a visual overhaul, a chart-topping lineup of new features and providers, along with a brand-new streaming protocol we’re <em>spinning</em> up ourselves.</p>
-<p>Of course, you can always update and experience all the great new stuff without reading the rest of this, but you might miss a deep cut. In fact, we can’t even cover everything in this blog (there really is that much), so go sing your praises for anything we missed in the !</p>
-<!--more-->
-<h3>Table of contents</h3>
-<ul>
-<li><a href="#with-a-little-help-from-my-friends">Marvin joins the team</a></li>
-<li><a href="#everything-in-its-right-place">A visual overhaul</a></li>
-<li><a href="#bulletproof">Users and logins</a></li>
-<li><a href="#around-the-world">Remote music streaming</a></li>
-<li><a href="#spin-me-right-round">Introducing Sendspin</a></li>
-<li><a href="#aeroplane">AirPlay additions</a></li>
-<li><a href="#sing">Lyrics support</a></li>
-<li><a href="#smooth-operator">Smart fading</a></li>
-<li><a href="#all-the-small-things">And much more</a></li>
-<li><a href="#rebel-yell">Join the audio revolution</a></li>
-</ul>
-<h2>“With a Little Help from My Friends”</h2>
-<p><strong>Marvin joins the team</strong></p>
-<p>Music Assistant has gained its first full-time employee at the Open Home Foundation. No, not me! My day job is leading the <a href="https://www.openhomefoundation.org/structure/">Ecosystems department</a> at the foundation (which comprises all the software projects the Foundation has that are not Home Assistant itself). <a href="https://github.com/MarvinSchenkel">Marvin</a> will be joining the foundation in the new year to work full-time on Music Assistant, leading the project’s day-to-day operations. Marvin has been contributing to the project for three years now, working on all sorts of parts of the project, and specifically with the Apple Music and YouTube providers.</p>
-<p>Not to worry, I’m pretty obsessed with my audio setup and will still be tinkering on my little pet project .</p>
-<h2>“Everything in Its Right Place”</h2>
-<p><strong>A visual overhaul</strong></p>
-<p class="img"> <img src="/images/blog/2025-12-music-assistant-2-7/overhaul.webp" alt="Screenshot of the Music Assistant app with an overhauled user interface"> A well deserved visual refresh
-</p>
-<p>Music Assistant joining the foundation has given us a lot more than a nice <em>open home</em>; it’s given the project clearer direction and some expert help. One area some people felt Music Assistant fell short was its UI and UX, and in version 2.7, we’re starting the process of giving it a major overhaul, making it look as good as your music sounds!</p>
-<p>This is just the beginning of a big process, so expect every update to bring more polish. The first thing you’ll probably notice is the collapsible navbar on the left of the screen, which looks pretty familiar to another Assistant . Now it’s much more intuitive, especially for new users. The settings page has also been made much easier to navigate with breadcrumbs.</p>
-<p>The biggest star of the show is the new Built-in Player, which lets you listen to music on the browser you’re using to hunt for your next track. Great for double-checking if the next song is family-friendly before sending it to every speaker in the home.</p>
-<h2>“Bulletproof”</h2>
-<p><strong>Users and logins</strong></p>
-<p class="img"> <img src="/images/blog/2025-12-music-assistant-2-7/login.webp" alt="Screenshot of the Music Assistant app with it's new login functionality"> User profiles for the whole family!
-</p>
-<p>A lot of new features we’ve implemented wouldn’t be possible without some form of login and authentication. It was a much-requested feature, as security even within your home shouldn’t be ignored. We know logging in every once in a while can be a minor inconvenience, but we’ve tried to make it as unobtrusive as possible, even implementing a way to use your Home Assistant login as a “Single Sign-On”.</p>
-<p>You can now have different user profiles with their own music providers. No more having four Tidal accounts all sitting next to each other, cluttering up the Playlists tab. You can even assign who has access to each speaker; say goodbye to the kids playing Demon Hunters on your office speaker during your performance review . In Settings, just head to the User Management section, where you can add and edit your new users.</p>
-<h2>“Around the world”</h2>
-<p><strong>Remote music streaming</strong></p>
-<p class="img"> <img src="/images/blog/2025-12-music-assistant-2-7/flow.webp" alt="Diagram of how Music Assistant handles remote music streaming"> No matter where, no matter when
-</p>
-<p>One feature made possible with our new login interface is remote music streaming – yes, that’s correct, Music Assistant anywhere you can connect to the internet. We’ve created a <a href="https://app.music-assistant.io/">new web app</a> that allows for remote connections while you’re out and about.</p>
-<p>It uses Home Assistant Cloud’s built-in multimedia streaming capabilities (WebRTC) to help route the audio from your Music Assistant server to wherever you are. A <a href="/cloud/">Home Assistant Cloud subscription</a> is not required to use this feature; a big shoutout to Nabu Casa for providing their infrastructure for free to our users. Home Assistant Cloud subscribers get access to even more powerful routing, which improves streaming in more places. This subscription also supports the full-time development of Music Assistant .</p>
-<p>This connection is peer-to-peer and end-to-end encrypted, meaning no one will know if you’re listening to ABBA . I wouldn’t say it’s ready to replace your current music streaming service, but it’s a great way to get your FLACs playing at a friend’s house. You could even open two instances of the web app and stream it to two devices, and they’ll be synchronized… <em>but how is that even possible?</em></p>
-<h2>“Spin me right round”</h2>
-<p><strong>Introducing Sendspin</strong></p>
-<p>For some time, the Music Assistant team has been looking for the best way to stream audio, album art, and other music visualizations to the devices we have around our homes. There are a couple of projects out there doing cool stuff with streaming audio, but not any that fit our needs. So, when it doesn’t exist, it’s time to start building.</p>
-<p>Introducing <strong>Sendspin</strong>, a new multimedia streaming and synchronizing protocol. It’s fully open source and free to use. Sendspin can stream high-fidelity audio, album art, and visualizer data, automatically adapting to each device’s capabilities. Imagine an e-paper display showcasing the album cover, while multiple speakers play in sync, and smart lights pulse to the rhythm.</p>
-<p>The best way to use it right now is either via your browser or a <a href="/voice-pe/">Home Assistant Voice Preview Edition</a> running beta firmware. We’ve built the experimental ability to use Sendspin on Google Cast-capable speakers (we’re also looking to do the same with AirPlay-capable speakers), which will allow Sendspin to work with a lot of different hardware.</p>
-<p>A big thanks to <a href="https://github.com/maximmaxim345">Maxim</a> and <a href="https://github.com/kahrendt">Kevin</a> at the Open Home Foundation, who have been <em>instrumental</em> in making Sendspin a reality.</p>
+    <div><div> <p> The Wayback Machine is an initiative of the <a href="https://archive.org/">Internet Archive</a>, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. <br>Other <a href="https://archive.org/projects/">projects</a> include <a href="https://openlibrary.org/">Open Library</a> &amp; <a href="https://archive-it.org/">archive-it.org</a>. </p> <p> Your use of the Wayback Machine is subject to the Internet Archive's <a href="https://archive.org/about/terms.php">Terms of Use</a>. </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -83,12 +43,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

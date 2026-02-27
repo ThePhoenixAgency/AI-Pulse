@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,184 @@
     Source: Hugging Face Blog | Date: 11/20/2025 12:00:00 AM | <a href="https://huggingface.co/blog/anylanguagemodel" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Aucun contenu disponible.</p>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div> <p><span><span><a href="https://huggingface.co/mattt"><img alt="Mattt's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1662384077127-6315f7823edbcfbc5d43306b.jpeg"></a> </span> </span></p> </div> <div><nav><ul><li><a href="#the-solution">The Solution</a> <ul></ul> </li><li><a href="#why-foundation-models-as-the-base-api">Why Foundation Models as the Base API</a> <ul></ul> </li><li><a href="#package-traits-include-only-what-you-need">Package Traits: Include Only What You Need</a> <ul></ul> </li><li><a href="#image-support-and-api-design-trade-offs">Image Support (and API Design Trade-offs)</a> <ul></ul> </li><li><a href="#try-it-out-chat-ui-swift">Try It Out: chat-ui-swift</a> <ul></ul> </li><li><a href="#whats-next">What's Next</a> <ul></ul> </li><li><a href="#get-involved">Get Involved</a> <ul></ul> </li><li><a href="#links">Links</a> <ul></ul> </li></ul></nav></div><p>LLMs have become essential tools for building software.
+But for Apple developers, integrating them remains unnecessarily painful.</p>
+<p>Developers building AI-powered apps typically take a hybrid approach,
+adopting some combination of:</p>
+<ul>
+<li>Local models using Core ML or MLX for privacy and offline capability</li>
+<li>Cloud providers like OpenAI or Anthropic for frontier capabilities</li>
+<li>Apple's Foundation Models as a system-level fallback</li>
+</ul>
+<p>Each comes with different APIs, different requirements, different integration patterns.
+It's a lot, and it adds up quickly.
+When I interviewed developers about building AI-powered apps,
+friction with model integration came up immediately.
+One developer put it bluntly:</p>
+<blockquote>
+<p>I thought I'd quickly use the demo for a test and maybe a quick and dirty build
+but instead wasted so much time.
+Drove me nuts.</p>
+</blockquote>
+<p>The cost to experiment is high,
+which discourages developers from discovering that
+local, open-source models might actually work great for their use case.</p>
+<p>Today we're announcing <a href="https://github.com/mattt/AnyLanguageModel">AnyLanguageModel</a>,
+a Swift package that provides a drop-in replacement for Apple's Foundation Models framework
+with support for multiple model providers.
+Our goal is to reduce the friction of working with LLMs on Apple platforms
+and make it easier to adopt open-source models that run locally.</p>
+<h2> <a href="#the-solution"> <span></span> </a> <span> The Solution </span>
+</h2>
+<p>The core idea is simple:
+Swap your <code>import</code> statement, keep the same API.</p>
+<pre><code><span>- import FoundationModels</span>
+<span>+ import AnyLanguageModel</span>
+</code></pre>
+<p>Here's what that looks like in practice.
+Start with Apple's built-in model:</p>
+<pre><code><span>let</span> model <span>=</span> <span>SystemLanguageModel</span>.default
+<span>let</span> session <span>=</span> <span>LanguageModelSession</span>(model: model) <span>let</span> response <span>=</span> <span>try</span> <span>await</span> session.respond(to: <span>"Explain quantum computing in one sentence"</span>)
+<span>print</span>(response.content)
+</code></pre>
+<p>Now try an open-source model running locally via <a href="https://huggingface.co/docs/hub/en/mlx">MLX</a>:</p>
+<pre><code><span>let</span> model <span>=</span> <span>MLXLanguageModel</span>(modelId: <span>"mlx-community/Qwen3-4B-4bit"</span>)
+<span>let</span> session <span>=</span> <span>LanguageModelSession</span>(model: model) <span>let</span> response <span>=</span> <span>try</span> <span>await</span> session.respond(to: <span>"Explain quantum computing in one sentence"</span>)
+<span>print</span>(response.content)
+</code></pre>
+<p>AnyLanguageModel supports a range of providers:</p>
+<ul>
+<li><strong>Apple Foundation Models</strong>: Native integration with Apple's system model (macOS 26+ / iOS 26+)</li>
+<li><strong>Core ML</strong>: Run converted models with Neural Engine acceleration</li>
+<li><strong>MLX</strong>: Run quantized models efficiently on Apple Silicon</li>
+<li><strong>llama.cpp</strong>: Load GGUF models via the llama.cpp backend</li>
+<li><strong>Ollama</strong>: Connect to locally-served models via Ollama's HTTP API</li>
+<li><strong>OpenAI, Anthropic, Google Gemini</strong>: Cloud providers for comparison and fallback</li>
+<li><strong>Hugging Face Inference Providers</strong>: Hundreds of cloud models powered by world-class <a href="https://huggingface.co/docs/inference-providers/en/index">inference providers</a>.</li>
+</ul>
+<p>The focus is on local models that you can download from the <a href="https://huggingface.co/docs/hub/">Hugging Face Hub</a>.
+Cloud providers are included to lower the barrier to getting started and to provide a migration path.
+Make it work, then make it right.</p>
+<h2> <a href="#why-foundation-models-as-the-base-api"> <span></span> </a> <span> Why Foundation Models as the Base API </span>
+</h2>
+<p>When designing AnyLanguageModel, we faced a choice:
+create a new abstraction that tries to capture everything,
+or build on an existing API.
+We chose the latter,
+using <a href="https://developer.apple.com/documentation/FoundationModels">Apple's Foundation Models framework</a>
+as the template.</p>
+<p>This might seem counterintuitive.
+Why tie ourselves to Apple's choices?
+A few reasons:</p>
+<ol>
+<li><p>Foundation Models is genuinely well-designed.
+It leverages Swift features like macros for an ergonomic developer experience,
+and its abstractions around sessions, tools, and generation map well to how LLMs actually work.</p>
+</li>
+<li><p>It's intentionally limited.
+Foundation Models represents something like a lowest common denominator for language model capabilities.
+Rather than seeing this as a weakness,
+we treat it as a stable foundation (<em>hyuk hyuk</em>).
+Every Swift developer targeting Apple platforms will encounter this API,
+so building on it directly means less conceptual overhead.</p>
+</li>
+<li><p>It keeps us grounded.
+Each additional layer of abstraction takes you further from the problem you're actually solving.
+Abstractions are powerful,
+but stack too many and they become a problem in themselves.</p>
+</li>
+</ol>
+<p>The result is that switching between providers requires minimal code changes,
+and the core abstractions remain clean and predictable.</p>
+<h2> <a href="#package-traits-include-only-what-you-need"> <span></span> </a> <span> Package Traits: Include Only What You Need </span>
+</h2>
+<p>One challenge with multi-backend libraries is dependency bloat.
+If you only want to run MLX models,
+you shouldn't have to pull in llama.cpp and all <em>its</em> dependencies.</p>
+<p>AnyLanguageModel uses Swift 6.1 package traits to solve this.
+You opt in to only the backends you need:</p>
+<pre><code>dependencies: [ .package( url: <span>"https://github.com/mattt/AnyLanguageModel.git"</span>, from: <span>"0.4.0"</span>, traits: [<span>"MLX"</span>] <span>// Pull in MLX dependencies only</span> )
+]
+</code></pre>
+<p>Available traits include <code>CoreML</code>, <code>MLX</code>, and <code>Llama</code> (for llama.cpp / <a href="https://github.com/mattt/llama.swift">llama.swift</a>).
+By default, no heavy dependencies are included.
+You get the base API plus cloud providers,
+which only require standard <code>URLSession</code> networking.</p>
+<p>For Xcode projects (which don't yet support trait declarations directly),
+you can create a small internal Swift package that depends on AnyLanguageModel with the traits you need,
+then add that package as a local dependency.
+The <a href="https://github.com/mattt/AnyLanguageModel#using-traits-in-xcode-projects">README</a> has detailed instructions.</p>
+<h2> <a href="#image-support-and-api-design-trade-offs"> <span></span> </a> <span> Image Support (and API Design Trade-offs) </span>
+</h2>
+<p><a href="https://huggingface.co/blog/vlms-2025">Vision-language models</a> are incredibly capable and widely used.
+They can describe images,
+extract text from screenshots,
+analyze charts,
+and answer questions about visual content.
+Unfortunately,
+Apple's Foundation Models framework doesn't currently support sending images with prompts.</p>
+<p>Building on an existing API means accepting its constraints.
+Apple will likely add image support in a future release (iOS 27, perhaps?),
+but vision-language models are too useful to wait for.
+So we've extended beyond what Foundation Models offers today.</p>
+<p>Here's an example sending an image to Claude:</p>
+<pre><code><span>let</span> model <span>=</span> <span>AnthropicLanguageModel</span>( apiKey: <span>ProcessInfo</span>.processInfo.environment[<span>"ANTHROPIC_API_KEY"</span>]<span>!</span>, model: <span>"claude-sonnet-4-5-20250929"</span>
+) <span>let</span> session <span>=</span> <span>LanguageModelSession</span>(model: model)
+<span>let</span> response <span>=</span> <span>try</span> <span>await</span> session.respond( to: <span>"What's in this image?"</span>, image: .<span>init</span>(url: <span>URL</span>(fileURLWithPath: <span>"/path/to/image.png"</span>))
+)
+</code></pre>
+<p>We're taking a calculated risk here;
+we might design something that conflicts with Apple's eventual implementation.
+But that's what deprecation warnings are for.
+Sometimes you have to write the API for the framework that doesn't exist yet.</p>
+<h2> <a href="#try-it-out-chat-ui-swift"> <span></span> </a> <span> Try It Out: chat-ui-swift </span>
+</h2>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/any-swift-llm/chat-ui-swift.png"><img alt="Screenshot of chat-ui-swift app" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/any-swift-llm/chat-ui-swift.png"></a></p>
+<p>To see AnyLanguageModel in action,
+check out <a href="https://github.com/mattt/chat-ui-swift">chat-ui-swift</a>,
+a SwiftUI chat application that demonstrates the library's capabilities.</p>
+<p>The app includes:</p>
+<ul>
+<li>Apple Intelligence integration via Foundation Models (macOS 26+)</li>
+<li>Hugging Face OAuth authentication for accessing gated models</li>
+<li>Streaming responses</li>
+<li>Chat persistence</li>
+</ul>
+<p>It's meant as a starting point:
+Fork it, extend it, swap in different models.
+See how the pieces fit together and adapt it to your needs.</p>
+<h2> <a href="#whats-next"> <span></span> </a> <span> What's Next </span>
+</h2>
+<p>AnyLanguageModel is currently pre-1.0.
+The core API is stable,
+but we're actively working on bringing the full feature set of Foundation Models to all adapters, namely:</p>
+<ul>
+<li><strong>Tool calling</strong> across all providers</li>
+<li><strong>MCP integration</strong> for tools and elicitations</li>
+<li><strong>Guided generation</strong> for structured outputs</li>
+<li>Performance optimizations for local inference</li>
+</ul>
+<p>This library is the first step toward something larger.
+A unified inference API provides the scaffolding needed to build seamless agentic workflows on Apple platforms —
+applications where models can use tools, access system resources, and accomplish complex tasks.
+More on that soon. </p>
+<h2> <a href="#get-involved"> <span></span> </a> <span> Get Involved </span>
+</h2>
+<p>We'd love your help making this better:</p>
+<ul>
+<li><strong>Try it out</strong> — Build something, kick the tires</li>
+<li><strong>Share your experiences</strong> — What works? What's frustrating? We want to hear about the challenges you face integrating AI into your apps</li>
+<li><strong>Open issues</strong> — Feature requests, bug reports, questions</li>
+<li><strong>Contribute</strong> — PRs are welcome</li>
+</ul>
+<h2> <a href="#links"> <span></span> </a> <span> Links </span>
+</h2>
+<ul>
+<li><a href="https://github.com/mattt/AnyLanguageModel">AnyLanguageModel on GitHub</a></li>
+<li><a href="https://github.com/mattt/chat-ui-swift">chat-ui-swift on GitHub</a></li>
+</ul>
+<p>We're excited to see what you build </p>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +220,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

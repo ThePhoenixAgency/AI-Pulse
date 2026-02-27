@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - ebenezer-isaac/credly-readme-stats: Dynamic SVG cards for your Credly badges — embed in any GitHub README</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - ebenezer-isaac/credly-readme-stats: Dynamic SVG cards for your Credly badges — embed in any GitHub README</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 8:58:47 PM | <a href="https://github.com/ebenezer-isaac/credly-readme-stats" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <pre><code>credly-readme-stats
+Dynamic SVG cards for your Credly badges — embed in any GitHub README. Live Demo &nbsp;·&nbsp;
+Quick Start &nbsp;·&nbsp;
+Card Types &nbsp;·&nbsp;
+Themes &nbsp;·&nbsp;
+Self-Hosting</code></pre>
+<hr>
+<div><h2>Preview</h2><a href="#preview"></a></div>
+<div>
+<table>
+<tbody><tr>
+<td><strong>Stats Card</strong></td>
+<td><strong>Badge Grid</strong></td>
+</tr>
+<tr>
+<td>
+<a href="https://credly-readme-stats.onrender.com"> <img src="https://camo.githubusercontent.com/7ac4980596a1a1422d2b4c15605e5d62898a6dcc635cfd30decb2197b2c0f9b7/68747470733a2f2f637265646c792d726561646d652d73746174732e6f6e72656e6465722e636f6d2f6170692f73746174733f757365726e616d653d6562656e657a65722d69736161632e3035343936643766267468656d653d746f6b796f6e69676874" alt="Stats Card">
+</a>
+</td>
+<td>
+<a href="https://credly-readme-stats.onrender.com"> <img src="https://camo.githubusercontent.com/c6753af61024e9dd24a4e419e99c383f166cca5ca0dae90f537309f22cf96c6c/68747470733a2f2f637265646c792d726561646d652d73746174732e6f6e72656e6465722e636f6d2f6170692f677269643f757365726e616d653d6562656e657a65722d69736161632e3035343936643766267468656d653d746f6b796f6e6967687426636f6c756d6e733d3326726f77733d32" alt="Badge Grid">
+</a>
+</td>
+</tr>
+<tr>
+<td><strong>Timeline</strong></td>
+<td><strong>Carousel</strong></td>
+</tr>
+<tr>
+<td>
+<a href="https://credly-readme-stats.onrender.com"> <img src="https://camo.githubusercontent.com/a7199e991024881658a9c647e9a2123a2e0446aa1f63854fbbdfe081bc0d4184/68747470733a2f2f637265646c792d726561646d652d73746174732e6f6e72656e6465722e636f6d2f6170692f74696d656c696e653f757365726e616d653d6562656e657a65722d69736161632e3035343936643766267468656d653d746f6b796f6e69676874266d61785f6974656d733d33" alt="Timeline">
+</a>
+</td>
+<td>
+<a href="https://credly-readme-stats.onrender.com"> <img src="https://camo.githubusercontent.com/7e550ae02cad4947d7a1d4572b88d80f027aae8d6291f836b76a4f0c8f67cdbf/68747470733a2f2f637265646c792d726561646d652d73746174732e6f6e72656e6465722e636f6d2f6170692f6361726f7573656c3f757365726e616d653d6562656e657a65722d69736161632e3035343936643766267468656d653d746f6b796f6e696768742676697369626c655f636f756e743d33" alt="Carousel">
+</a>
+</td>
+</tr>
+</tbody></table>
+<a href="https://credly-readme-stats.onrender.com"> <img src="https://camo.githubusercontent.com/6883e6807d556fcbf07ec4e83c899aa6cf2844bc76dca347ac45874284b73423/68747470733a2f2f637265646c792d726561646d652d73746174732e6f6e72656e6465722e636f6d2f6170692f6f766572766965773f757365726e616d653d6562656e657a65722d69736161632e3035343936643766267468656d653d746f6b796f6e696768742676697369626c655f636f756e743d3426636172645f77696474683d363030" alt="Overview Card">
+</a>
+<br>
+<sub><em>All cards render as pure SVG — no JavaScript, no tracking, no external requests at render time.</em></sub>
+</div>
+<hr>
+<div><h2> Quick Start</h2><a href="#-quick-start"></a></div>
+<p>Replace </p><pre><code>YOUR_USERNAME</code></pre> with your Credly username (from <pre><code>credly.com/users/YOUR_USERNAME</code></pre>).<p></p>
+<div><pre><span>![</span>Credly Stats<span>]</span><span>(</span><span>https://credly-readme-stats.onrender.com/api/stats?username=YOUR_USERNAME</span><span>)</span></pre></div>
+<div><pre><span>![</span>Badge Grid<span>]</span><span>(</span><span>https://credly-readme-stats.onrender.com/api/grid?username=YOUR_USERNAME</span><span>)</span></pre></div>
+<div><pre><span>![</span>Timeline<span>]</span><span>(</span><span>https://credly-readme-stats.onrender.com/api/timeline?username=YOUR_USERNAME</span><span>)</span></pre></div>
+<div><pre><span>![</span>Carousel<span>]</span><span>(</span><span>https://credly-readme-stats.onrender.com/api/carousel?username=YOUR_USERNAME</span><span>)</span></pre></div>
+<div><pre><span>![</span>Overview<span>]</span><span>(</span><span>https://credly-readme-stats.onrender.com/api/overview?username=YOUR_USERNAME</span><span>)</span></pre></div>
+<blockquote>
+<p><strong>Finding your username:</strong> Go to your <a href="https://www.credly.com">Credly profile</a> → look at the URL → </p><pre><code>https://www.credly.com/users/your-username</code></pre> → the part after <pre><code>/users/</code></pre> is your username.<p></p>
+</blockquote>
+<hr>
+<div><h2> Card Types</h2><a href="#-card-types"></a></div>
+<div><h3>Stats Card</h3><a href="#stats-card"></a></div>
+<p>Summary of your badge statistics with icons and footer sections.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>show_icons</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Show stat row icons</td>
+</tr>
+<tr>
+<td><pre><code>hide</code></pre></td>
+<td>string</td>
+<td><pre><code>""</code></pre></td>
+<td>Hide stats: <pre><code>total</code></pre>, <pre><code>issuers</code></pre>, <pre><code>skills</code></pre>, <pre><code>active</code></pre>, <pre><code>expiring</code></pre>, <pre><code>top_issuers</code></pre>, <pre><code>top_skills</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>card_width</code></pre></td>
+<td>number</td>
+<td><pre><code>495</code></pre></td>
+<td>Card width (300–800)</td>
+</tr>
+<tr>
+<td><pre><code>line_height</code></pre></td>
+<td>number</td>
+<td><pre><code>25</code></pre></td>
+<td>Stat row spacing</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Badge Grid</h3><a href="#badge-grid"></a></div>
+<p>Your badges in a configurable grid layout with images.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>columns</code></pre></td>
+<td>number</td>
+<td><pre><code>3</code></pre></td>
+<td>Grid columns (1–6)</td>
+</tr>
+<tr>
+<td><pre><code>rows</code></pre></td>
+<td>number</td>
+<td><pre><code>2</code></pre></td>
+<td>Grid rows (1–10)</td>
+</tr>
+<tr>
+<td><pre><code>badge_size</code></pre></td>
+<td>number</td>
+<td><pre><code>64</code></pre></td>
+<td>Image size in px (32–128)</td>
+</tr>
+<tr>
+<td><pre><code>show_name</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Show badge name</td>
+</tr>
+<tr>
+<td><pre><code>show_issuer</code></pre></td>
+<td>boolean</td>
+<td><pre><code>false</code></pre></td>
+<td>Show issuer name</td>
+</tr>
+<tr>
+<td><pre><code>sort</code></pre></td>
+<td>enum</td>
+<td><pre><code>recent</code></pre></td>
+<td><pre><code>recent</code></pre> · <pre><code>oldest</code></pre> · <pre><code>name</code></pre> · <pre><code>issuer</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>filter_issuer</code></pre></td>
+<td>string</td>
+<td><pre><code>""</code></pre></td>
+<td>Comma-separated issuer filter</td>
+</tr>
+<tr>
+<td><pre><code>filter_skill</code></pre></td>
+<td>string</td>
+<td><pre><code>""</code></pre></td>
+<td>Comma-separated skill filter</td>
+</tr>
+<tr>
+<td><pre><code>page</code></pre></td>
+<td>number</td>
+<td><pre><code>1</code></pre></td>
+<td>Grid page for pagination</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Timeline</h3><a href="#timeline"></a></div>
+<p>Chronological timeline of your badge achievements.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>max_items</code></pre></td>
+<td>number</td>
+<td><pre><code>6</code></pre></td>
+<td>Max entries (1–20)</td>
+</tr>
+<tr>
+<td><pre><code>show_description</code></pre></td>
+<td>boolean</td>
+<td><pre><code>false</code></pre></td>
+<td>Show badge description</td>
+</tr>
+<tr>
+<td><pre><code>show_skills</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Show skill tags</td>
+</tr>
+<tr>
+<td><pre><code>sort</code></pre></td>
+<td>enum</td>
+<td><pre><code>recent</code></pre></td>
+<td><pre><code>recent</code></pre> · <pre><code>oldest</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>filter_issuer</code></pre></td>
+<td>string</td>
+<td><pre><code>""</code></pre></td>
+<td>Issuer filter</td>
+</tr>
+<tr>
+<td><pre><code>card_width</code></pre></td>
+<td>number</td>
+<td><pre><code>495</code></pre></td>
+<td>Width (400–800)</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Carousel</h3><a href="#carousel"></a></div>
+<p>Animated sliding carousel with pure CSS animation.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>visible_count</code></pre></td>
+<td>number</td>
+<td><pre><code>5</code></pre></td>
+<td>Visible badges at once (1–6)</td>
+</tr>
+<tr>
+<td><pre><code>badge_size</code></pre></td>
+<td>number</td>
+<td><pre><code>64</code></pre></td>
+<td>Badge image size in px (32–128)</td>
+</tr>
+<tr>
+<td><pre><code>show_name</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Show badge name</td>
+</tr>
+<tr>
+<td><pre><code>show_issuer</code></pre></td>
+<td>boolean</td>
+<td><pre><code>false</code></pre></td>
+<td>Show issuer name</td>
+</tr>
+<tr>
+<td><pre><code>interval</code></pre></td>
+<td>number</td>
+<td><pre><code>3</code></pre></td>
+<td>Seconds per slide (1–10)</td>
+</tr>
+<tr>
+<td><pre><code>sort</code></pre></td>
+<td>enum</td>
+<td><pre><code>recent</code></pre></td>
+<td><pre><code>recent</code></pre> · <pre><code>oldest</code></pre> · <pre><code>name</code></pre> · <pre><code>issuer</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>filter_issuer</code></pre></td>
+<td>string</td>
+<td><pre><code>""</code></pre></td>
+<td>Comma-separated issuer filter</td>
+</tr>
+<tr>
+<td><pre><code>filter_skill</code></pre></td>
+<td>string</td>
+<td><pre><code>""</code></pre></td>
+<td>Comma-separated skill filter</td>
+</tr>
+<tr>
+<td><pre><code>max_items</code></pre></td>
+<td>number</td>
+<td><pre><code>12</code></pre></td>
+<td>Max badges (3–30)</td>
+</tr>
+<tr>
+<td><pre><code>card_width</code></pre></td>
+<td>number</td>
+<td>auto</td>
+<td>Card width (200–800)</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Overview</h3><a href="#overview"></a></div>
+<p>Stats summary + badge carousel — the all-in-one card.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>show_icons</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Show stat row icons</td>
+</tr>
+<tr>
+<td><pre><code>hide</code></pre></td>
+<td>string</td>
+<td><pre><code>""</code></pre></td>
+<td>Hide: <pre><code>total</code></pre>, <pre><code>issuers</code></pre>, <pre><code>skills</code></pre>, <pre><code>active</code></pre>, <pre><code>expiring</code></pre>, <pre><code>top_issuers</code></pre>, <pre><code>top_skills</code></pre>, <pre><code>carousel</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>line_height</code></pre></td>
+<td>number</td>
+<td><pre><code>25</code></pre></td>
+<td>Stat row spacing</td>
+</tr>
+<tr>
+<td><pre><code>visible_count</code></pre></td>
+<td>number</td>
+<td><pre><code>5</code></pre></td>
+<td>Carousel visible badges (1–6)</td>
+</tr>
+<tr>
+<td><pre><code>badge_size</code></pre></td>
+<td>number</td>
+<td><pre><code>64</code></pre></td>
+<td>Carousel badge size (32–128)</td>
+</tr>
+<tr>
+<td><pre><code>show_name</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Show badge name in carousel</td>
+</tr>
+<tr>
+<td><pre><code>show_issuer</code></pre></td>
+<td>boolean</td>
+<td><pre><code>false</code></pre></td>
+<td>Show issuer in carousel</td>
+</tr>
+<tr>
+<td><pre><code>interval</code></pre></td>
+<td>number</td>
+<td><pre><code>3</code></pre></td>
+<td>Carousel seconds per slide (1–10)</td>
+</tr>
+<tr>
+<td><pre><code>sort</code></pre></td>
+<td>enum</td>
+<td><pre><code>recent</code></pre></td>
+<td><pre><code>recent</code></pre> · <pre><code>oldest</code></pre> · <pre><code>name</code></pre> · <pre><code>issuer</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>filter_issuer</code></pre></td>
+<td>string</td>
+<td><pre><code>""</code></pre></td>
+<td>Issuer filter</td>
+</tr>
+<tr>
+<td><pre><code>filter_skill</code></pre></td>
+<td>string</td>
+<td><pre><code>""</code></pre></td>
+<td>Skill filter</td>
+</tr>
+<tr>
+<td><pre><code>max_items</code></pre></td>
+<td>number</td>
+<td><pre><code>12</code></pre></td>
+<td>Max carousel badges (3–30)</td>
+</tr>
+<tr>
+<td><pre><code>card_width</code></pre></td>
+<td>number</td>
+<td><pre><code>550</code></pre></td>
+<td>Card width (350–800)</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Single Badge Detail</h3><a href="#single-badge-detail"></a></div>
+<p>Full details for one specific badge.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>badge_id</code></pre></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Badge ID from Credly</td>
+</tr>
+<tr>
+<td><pre><code>show_description</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Show description</td>
+</tr>
+<tr>
+<td><pre><code>show_skills</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Show skills</td>
+</tr>
+<tr>
+<td><pre><code>show_issuer</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Show issuer</td>
+</tr>
+<tr>
+<td><pre><code>card_width</code></pre></td>
+<td>number</td>
+<td><pre><code>400</code></pre></td>
+<td>Width (300–600)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2> Themes</h2><a href="#-themes"></a></div>
+<p><strong>20 built-in themes.</strong> Add </p><pre><code>&amp;theme=THEME_NAME</code></pre> to any URL.<p></p>
+<div>
+<table>
+<tbody><tr>
+<td><pre><code>default</code></pre></td>
+<td><pre><code>dark</code></pre></td>
+<td><pre><code>radical</code></pre></td>
+<td><pre><code>merko</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>gruvbox</code></pre></td>
+<td><pre><code>tokyonight</code></pre></td>
+<td><pre><code>onedark</code></pre></td>
+<td><pre><code>cobalt</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>synthwave</code></pre></td>
+<td><pre><code>dracula</code></pre></td>
+<td><pre><code>nord</code></pre></td>
+<td><pre><code>catppuccin_mocha</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>catppuccin_latte</code></pre></td>
+<td><pre><code>rose_pine</code></pre></td>
+<td><pre><code>github_dark</code></pre></td>
+<td><pre><code>github_light</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>aura</code></pre></td>
+<td><pre><code>neon</code></pre></td>
+<td><pre><code>react</code></pre></td>
+<td><pre><code>vue</code></pre></td>
+</tr>
+</tbody></table>
+</div>
+<p><strong>Example:</strong></p>
+<div><pre><span>![</span>Stats<span>]</span><span>(</span><span>https://credly-readme-stats.onrender.com/api/stats?username=YOUR_USERNAME&amp;theme=dracula</span><span>)</span></pre></div>
+<hr>
+<div><h2> Customization</h2><a href="#-customization"></a></div>
+<div><h3>Common Parameters</h3><a href="#common-parameters"></a></div>
+<p>All card types accept these parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>username</code></pre></td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Credly username</td>
+</tr>
+<tr>
+<td><pre><code>theme</code></pre></td>
+<td>string</td>
+<td><pre><code>default</code></pre></td>
+<td>Theme preset</td>
+</tr>
+<tr>
+<td><pre><code>title_color</code></pre></td>
+<td>hex</td>
+<td>theme</td>
+<td>Title text color</td>
+</tr>
+<tr>
+<td><pre><code>text_color</code></pre></td>
+<td>hex</td>
+<td>theme</td>
+<td>Body text color</td>
+</tr>
+<tr>
+<td><pre><code>icon_color</code></pre></td>
+<td>hex</td>
+<td>theme</td>
+<td>Icon color</td>
+</tr>
+<tr>
+<td><pre><code>bg_color</code></pre></td>
+<td>hex/gradient</td>
+<td>theme</td>
+<td>Background color</td>
+</tr>
+<tr>
+<td><pre><code>border_color</code></pre></td>
+<td>hex</td>
+<td>theme</td>
+<td>Border color</td>
+</tr>
+<tr>
+<td><pre><code>hide_border</code></pre></td>
+<td>boolean</td>
+<td><pre><code>false</code></pre></td>
+<td>Hide card border</td>
+</tr>
+<tr>
+<td><pre><code>hide_title</code></pre></td>
+<td>boolean</td>
+<td><pre><code>false</code></pre></td>
+<td>Hide card title</td>
+</tr>
+<tr>
+<td><pre><code>custom_title</code></pre></td>
+<td>string</td>
+<td>auto</td>
+<td>Custom title text</td>
+</tr>
+<tr>
+<td><pre><code>border_radius</code></pre></td>
+<td>number</td>
+<td><pre><code>4.5</code></pre></td>
+<td>Border radius in px</td>
+</tr>
+<tr>
+<td><pre><code>disable_animations</code></pre></td>
+<td>boolean</td>
+<td><pre><code>false</code></pre></td>
+<td>Disable CSS animations</td>
+</tr>
+<tr>
+<td><pre><code>cache_seconds</code></pre></td>
+<td>number</td>
+<td><pre><code>21600</code></pre></td>
+<td>Cache TTL (7200–86400)</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Custom Colors</h3><a href="#custom-colors"></a></div>
+<p>Override individual colors with hex values (without </p><pre><code>#</code></pre>):<p></p>
+<div><pre><span>![</span>Stats<span>]</span><span>(</span><span>https://credly-readme-stats.onrender.com/api/stats?username=YOUR_USERNAME&amp;title_color=ff6e96&amp;icon_color=79dafa&amp;bg_color=282a36</span><span>)</span></pre></div>
+<div><h3>Gradient Backgrounds</h3><a href="#gradient-backgrounds"></a></div>
+<p>Use </p><pre><code>angle,color1,color2,...</code></pre> format:<p></p>
+<div><pre><span>![</span>Stats<span>]</span><span>(</span><span>https://credly-readme-stats.onrender.com/api/stats?username=YOUR_USERNAME&amp;bg_color=35,0d1117,1a1b27,2d2b55</span><span>)</span></pre></div>
+<div><h3>GitHub Dark/Light Mode</h3><a href="#github-darklight-mode"></a></div>
+<p>Use </p><pre><code>&lt;picture&gt;</code></pre> tags to adapt to the viewer's GitHub theme:<p></p>
+<div><pre><span>&lt;</span><span>picture</span><span>&gt;</span> <span>&lt;</span><span>source</span> <span>media</span>="<span>(prefers-color-scheme: dark)</span>" <span>srcset</span>="<span>https://credly-readme-stats.onrender.com/api/stats?username=YOUR_USERNAME&amp;theme=github_dark</span>" <span>/&gt;</span> <span>&lt;</span><span>source</span> <span>media</span>="<span>(prefers-color-scheme: light)</span>" <span>srcset</span>="<span>https://credly-readme-stats.onrender.com/api/stats?username=YOUR_USERNAME&amp;theme=github_light</span>" <span>/&gt;</span> <span>&lt;</span><span>img</span> <span>alt</span>="<span>Credly Stats</span>" <span>src</span>="<span>https://credly-readme-stats.onrender.com/api/stats?username=YOUR_USERNAME</span>" <span>/&gt;</span>
+<span>&lt;/</span><span>picture</span><span>&gt;</span></pre></div>
+<hr>
+<div><h2> Self-Hosting</h2><a href="#-self-hosting"></a></div>
+<div><h3>Docker</h3><a href="#docker"></a></div>
+<div><pre>git clone https://github.com/ebenezer-isaac/credly-readme-stats.git
+<span>cd</span> credly-readme-stats
+docker compose -f docker/docker-compose.yml up -d</pre></div>
+<div><h3>Node.js</h3><a href="#nodejs"></a></div>
+<div><pre>git clone https://github.com/ebenezer-isaac/credly-readme-stats.git
+<span>cd</span> credly-readme-stats
+pnpm install
+pnpm build
+pnpm start</pre></div>
+<p>The server runs on port <strong>3000</strong> by default. Set </p><pre><code>PORT</code></pre> to change it.<p></p>
+<div><h3>Deploy to Render</h3><a href="#deploy-to-render"></a></div>
+<p><a href="https://render.com/deploy?repo=https://github.com/ebenezer-isaac/credly-readme-stats"><img src="https://camo.githubusercontent.com/c3053e93bc9f0a2cd84050a5ff9f07cc5e639621a72e50dce48781f4a38f10e2/68747470733a2f2f72656e6465722e636f6d2f696d616765732f6465706c6f792d746f2d72656e6465722d627574746f6e2e737667" alt="Deploy to Render"></a></p>
+<div><h3>Environment Variables</h3><a href="#environment-variables"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>PORT</code></pre></td>
+<td><pre><code>3000</code></pre></td>
+<td>Server port</td>
+</tr>
+<tr>
+<td><pre><code>NODE_ENV</code></pre></td>
+<td><pre><code>development</code></pre></td>
+<td>Environment</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="/ebenezer-isaac/credly-readme-stats/blob/main/.env.example">.env.example</a> for optional cache and rate-limit overrides.</p>
+<hr>
+<div><h2> Tech Stack</h2><a href="#-tech-stack"></a></div>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>API</strong></td>
+<td><a href="https://hono.dev">Hono</a> + TypeScript + <a href="https://github.com/honojs/node-server">@hono/node-server</a></td>
+</tr>
+<tr>
+<td><strong>Landing Page</strong></td>
+<td><a href="https://astro.build">Astro</a> + React + Tailwind CSS</td>
+</tr>
+<tr>
+<td><strong>SVG Rendering</strong></td>
+<td>Template literals — no DOM dependency</td>
+</tr>
+<tr>
+<td><strong>Cache</strong></td>
+<td>In-memory LRU (badge data 6h, images 24h)</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td><a href="https://vitest.dev">Vitest</a> (94% coverage) + <a href="https://playwright.dev">Playwright</a> E2E</td>
+</tr>
+<tr>
+<td><strong>Monorepo</strong></td>
+<td><a href="https://pnpm.io/workspaces">pnpm workspaces</a></td>
+</tr>
+<tr>
+<td><strong>CI/CD</strong></td>
+<td>GitHub Actions → <a href="https://render.com">Render</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2> Development</h2><a href="#-development"></a></div>
+<div><pre>pnpm install <span><span>#</span> Install dependencies</span>
+pnpm dev <span><span>#</span> API dev server (hot reload)</span>
+pnpm dev:web <span><span>#</span> Landing page dev server</span>
+pnpm <span>test</span> <span><span>#</span> Run unit tests</span>
+pnpm test:coverage <span><span>#</span> Tests with coverage report</span>
+pnpm lint <span><span>#</span> Lint</span>
+pnpm build <span><span>#</span> Build everything</span></pre></div>
+<hr>
+<div><h2> License</h2><a href="#-license"></a></div>
+<p><a href="/ebenezer-isaac/credly-readme-stats/blob/main/LICENSE">MIT</a> — made by <a href="https://github.com/ebenezer-isaac">Ebenezer Isaac</a></p>
+<hr>
+<div>
+<sub>Not affiliated with Credly or Pearson. Credly is a trademark of Pearson Education, Inc.</sub>
+</div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard — Customizable Widget Desktop for Linux</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Dashboard — Customizable Widget Desktop for Linux</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 7:45:43 PM | <a href="https://duh-dashboard.github.io/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div> <nav> <span> Dashboard </span> <ul> <li><a href="#preview">Preview</a></li> <li><a href="#widgets">Widgets</a></li> <li><a href="#install">Install</a></li> <li><a href="#developers">Developers</a></li> <li><a href="https://github.com/duh-dashboard">GitHub</a></li> </ul>
+</nav> <div> <h2>Your desktop.<br><span>Your widgets.</span></h2> <p>A customizable widget-based desktop dashboard for Linux. Drop in plugins, arrange them freely, and make your desktop work for you.</p> <p> <a href="https://github.com/duh-dashboard/dashboard/releases"> Download AppImage </a> <a href="https://github.com/duh-dashboard/dashboard/releases"> Download Flatpak </a> <a href="https://github.com/duh-dashboard/dashboard"> View on GitHub </a> </p> <p><span> Linux native (Qt 6) </span> <span> 12 built-in widgets </span> <span> Plugin SDK for custom widgets </span> <span> AppImage &amp; Flatpak releases </span> </p> </div> <section> <p><img src="https://duh-dashboard.github.io/images/screenshot-overview.png" alt="Dashboard running with clock, calendar, weather, pomodoro, system status, htop, AI chat, links, todo, and logtail widgets"> </p> <div> <div> <p><img src="https://duh-dashboard.github.io/images/screenshot-canvas.png" alt="Dashboard canvas with multiple widgets arranged freely"></p><h4>Arrange widgets your way</h4> <p>Drag any widget card to reposition it, grab its edge to resize. The canvas remembers your layout and restores it exactly on next launch.</p> </div> <div> <p><img src="https://duh-dashboard.github.io/images/screenshot-add-widget.png" alt="Add Widget dialog listing all available plugins including AI Chat, Calendar, Clock, Countdown, Links, Notes, Pomodoro, System Status, and more"></p><h4>Add widgets instantly</h4> <p>Click Add Widget to see every installed plugin. Drop a <code>.so</code> into the <code>plugins/</code> folder and it shows up here immediately — no restart required.</p> </div> </div>
+</section> <div> <p>Why Dashboard</p> <h2>Built for flexibility</h2> <div> <div> <p></p> <h3>Runtime plugin system</h3> <p>Drop a <code>.so</code> into the <code>plugins/</code> directory and it appears instantly in the Add Widget dialog — no restart needed.</p> </div> <div> <p></p> <h3>Free-form canvas</h3> <p>Drag and resize widget cards anywhere on screen. Layout and widget state persist automatically across restarts.</p> </div> <div> <p></p> <h3>Customizable appearance</h3> <p>Frameless window with a custom title bar. Set a solid background color with opacity or use your own wallpaper image.</p> </div> <div> <p></p> <h3>AppImage &amp; Flatpak</h3> <p>AppImage: one portable file, no install needed. Flatpak: sandboxed and integrated with GNOME/KDE Software. Both bundle all 12 widgets and Qt.</p> </div> </div> </div> <div> <p>Built-in widgets</p> <h2>12 widgets, ready to use</h2> <p>Every widget is a standalone plugin with its own repository. Mix and match, or build your own.</p> </div> <div> <p>Getting started</p> <h2>Up and running in seconds</h2> <p>Choose the format that fits your workflow. Both are available on the <a href="https://github.com/duh-dashboard/dashboard/releases">releases page</a>.</p> <div> <div> <div> <h3>AppImage</h3> <p><span>Portable</span> </p></div> <div> <p>1</p> </div> <div> <p>2</p> <div> <h3>Make it executable</h3> <pre><code>chmod +x Dashboard-*.AppImage</code></pre> </div> </div> <div> <p>3</p> <div> <h3>Run</h3> <p>Double-click, or from the terminal:</p> <pre><code>./Dashboard-*.AppImage</code></pre> </div> </div> </div> <div> <div> <h3>Flatpak</h3> <p><span>Sandboxed</span> </p></div> <div> <p>1</p> </div> <div> <p>2</p> <div> <h3>Install</h3> <pre><code>flatpak install Dashboard-*.flatpak</code></pre> </div> </div> <div> <p>3</p> <div> <h3>Run</h3> <p>From your app launcher, or from the terminal:</p> <pre><code>flatpak run io.github.duh_dashboard.Dashboard</code></pre> </div> </div> </div> </div> </div> <div> <p>For developers</p> <h2>Build your own widget</h2> <p>Any shared library that implements <code>IWidget</code> is a valid plugin. The SDK handles the rest.</p> <div> <div> <h3>Quick start</h3> <p>Install the SDK and use the scaffolding script to generate a complete widget skeleton:</p> <pre><code># Install widget-sdk
+cmake -S widget-sdk -B build/sdk \ -DCMAKE_INSTALL_PREFIX=~/.local
+cmake --build build/sdk
+cmake --install build/sdk # Generate boilerplate
+python3 widget-sdk/create-widget.py my-widget</code></pre> <p>This produces a fully self-contained CMake project ready to build and load into Dashboard.</p> </div> <div> <h3>The IWidget interface</h3> <p>Implement three methods and you have a working widget:</p> <pre><code>class MyWidget : public QWidget, public IWidget { Q_OBJECT Q_PLUGIN_METADATA(IID IWidget_iid FILE "my-widget.json") Q_INTERFACES(IWidget)
+public: QString name() const override; QWidget* createWidget( WidgetContext*, QWidget* parent ) override; void saveState(QJsonObject&amp;) override; void loadState(const QJsonObject&amp;) override;
+};</code></pre> <p>See the full guide in the <a href="https://github.com/duh-dashboard/widget-sdk">widget-sdk repository</a>.</p> </div> </div> </div> </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

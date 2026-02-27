@@ -34,7 +34,7 @@
     Source: openHAB Community (Latest) | Date: 2/27/2026 7:09:50 PM | <a href="https://community.openhab.org/t/when-do-props-passed-to-a-component-widget-widget-anywidget-get-evaluated/168666" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <p><span> <time> February 27, 2026, 7:09pm </time> <span>1</span> </span> </p></div> <div> <p>Hi everyone,</p>
+    <div><div> <div> <div> <p><span> <time> February 27, 2026, 7:09pm </time> <span>1</span> </span> </p></div> <div> <p>Hi everyone,</p>
 <p>I am currently working on an widget for the Viessmann-Binding, in principle i got it fully working.<br>
 But i stumpled upon this:</p>
 <pre><code> slots: default: - component: widget:wp_Tab2 config: heatGroup: =props.groupItem firstCircuit: =Number((@(props.groupItem+'_Circuits_enabled')).replace(/[\[\]\"]/g,'').split(',')[0]) lang: =(dayjs().format('dddd').includes('day')) HeatColorScheme: =props.colorScheme </code></pre>
@@ -53,7 +53,16 @@ So when the evaluation is finished the widget gets updated and is rendered corre
 <p>So my question is this intended that the expression is passed as string to the sub-widget or should the evaluated value be passed to widget.<br>
 Another observation i made with my widget is that generally JSON.parse results do generally need a serious amount of time.<br>
 The widget-code is truncated, but can be seen here :<br>
-<a href="https://github.com/SePHTaN/semanticHomeMenu/tree/main/heatpump">https://github.com/SePHTaN/semanticHomeMenu/tree/main/heatpump</a></p> </div> </div></div>
+<a href="https://github.com/SePHTaN/semanticHomeMenu/tree/main/heatpump">https://github.com/SePHTaN/semanticHomeMenu/tree/main/heatpump</a></p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/JustinG"><span>JustinG</span></a> (JustinG) </span> <span> <time> February 27, 2026, 8:51pm </time> <span>2</span> </span> </p> <div> <p>What version of OH are you using? There have been some recent changes to parts of the MainUI that might be relevant here.</p>
+<p>The basic answer, however, is that the most likely source of the issue is not the passing of the props to the child widget. There’s a known timing issue with the first evaluation of the context variables where it cannot access the item states. Any subsequent re-calculations are correct and all item state values can be successfully retrieved by the variables. So, your <code>key</code> workaround is actually one good solution to the problem.</p>
+<p>Here’s the issue where this is being discussed, in case you are interested.</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/Sysiphus"><span>Sysiphus</span></a> (Stephan Sandmann) </span> <span> <time> February 27, 2026, 9:54pm </time> <span>3</span> </span> </p> <div> <p>Hi Justin,</p>
+<p>im currently OH-version:<br>
+openHAB 5.1.2<br>
+<small>Release Build</small></p>
+<p>Main UI Commit <a href="https://github.com/openhab/openhab-webui/commit/b476d315">b476d315</a></p>
+<p>I know that 5.1.3 is already there but haven’t had the time to update.<br>
+Will test tomorrow, but i believe the only fix relevant for me is the zwave network map.</p>
+<p>Thanks for the quick answer, will look into the discussion also tomorrow.</p> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

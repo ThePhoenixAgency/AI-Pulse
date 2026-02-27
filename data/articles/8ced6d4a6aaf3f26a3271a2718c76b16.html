@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,57 @@
     Source: Hugging Face Blog | Date: 9/26/2025 12:00:00 AM | <a href="https://huggingface.co/blog/swift-transformers" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Aucun contenu disponible.</p>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/pcuenq"><img alt="Pedro Cuenca's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1617264212503-603d25b75f9d390ab190b777.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/FL33TW00D-HF"><img alt="Christopher Fleetwood's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6597e9f42235d4056bc6980a/6N_Eira5Rj5e8ZdgekKPQ.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/mattt"><img alt="Mattt's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1662384077127-6315f7823edbcfbc5d43306b.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/reach-vb"><img alt="Vaibhav Srivastav's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1655385361868-61b85ce86eb1f2c5e6233736.jpeg"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#what-is-swift-transformers">What is <code>swift-transformers</code></a> <ul></ul> </li><li><a href="#how-is-the-community-using-it">How is the community using it</a> <ul></ul> </li><li><a href="#what-changes-with-v10">What changes with v1.0</a> <ul></ul> </li><li><a href="#usage-examples">Usage Examples</a> <ul></ul> </li><li><a href="#what-comes-next">What comes next</a> <ul></ul> </li><li><a href="#we-couldnt-have-done-this-without-you-">We couldn’t have done this without you </a> <ul></ul> </li></ul></nav></div><p>We released <a href="https://github.com/huggingface/swift-transformers"><code>swift-transformers</code></a> two years ago (!) with the goal to support Apple developers and help them integrate local LLMs in their apps. A lot has changed since then (MLX and chat templates did not exist!), and we’ve learned how the community is actually using the library.</p>
+<p>We want to double down on the use cases that provide most benefits to the community, and lay out the foundations for the future. Spoiler alert: after this release, we’ll focus a lot on MLX and agentic use cases </p>
+<h2> <a href="#what-is-swift-transformers"> <span></span> </a> <span> What is <code>swift-transformers</code> </span>
+</h2>
+<p><code>swift-transformers</code> is a Swift library that <a href="https://huggingface.co/blog/swift-coreml-llm">aims to reduce the friction</a> for developers that want to work with local models on Apple Silicon platforms, including iPhones. It includes the missing pieces that are not provided by Core ML or MLX alone, but that are required to work with local inference. Namely, it provides the following components:</p>
+<ul>
+<li><code>Tokenizers</code>. Preparing inputs for a language model is surprisingly complex. We've built a lot of experience with our <code>tokenizers</code> Python and Rust libraries, which are foundational to the AI ecosystem. We wanted to bring the same performant, ergonomic experience to Swift. The Swift version of <code>Tokenizers</code> should handle everything for you, including chat templates and agentic use!</li>
+<li><code>Hub</code>. This is an interface to the <a href="https://huggingface.co/">Hugging Face Hub</a>, where all open models are available. It allows you to download models from the Hub and cache them locally, and supports background resumable downloads, model updates, offline mode. It contains a subset of the functionality provided by the <a href="https://huggingface.co/docs/huggingface_hub/en/index">Python</a> and <a href="https://huggingface.co/docs/huggingface.js/en/hub/README">JavaScript</a> libraries, focused on the tasks that Apple developers need the most (i.e., uploads are not supported). </li>
+<li><code>Models</code> and <code>Generation</code>. These are wrappers for LLMs converted to the Core ML format. Converting them is out of the scope of the library (but <a href="https://huggingface.co/blog/mistral-coreml">we have some guides</a>). Once they are converted, these modules make it easy to run inference with them.</li>
+</ul>
+<figure> <img alt="Test app from mlx-swift-examples, showing SmolVLM2 explaining actions in a video." src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/swift-transformers/mlx-vlm-examples-birds.jpg"> <figcaption>Test app from mlx-swift-examples, showing SmolVLM2 explaining actions in a video.</figcaption>
+</figure> <h2> <a href="#how-is-the-community-using-it"> <span></span> </a> <span> How is the community using it </span>
+</h2>
+<p>Most of the time people use the <code>Tokenizers</code> or <code>Hub</code> modules, and frequently both. Some notable projects that rely on <code>swift-transformers</code> include:</p>
+<ul>
+<li><a href="https://github.com/ml-explore/mlx-swift-examples"><code>mlx-swift-examples</code></a>, by Apple. It’s, in fact, not just a collection of examples, but a list of libraries you can use to run various types of models using MLX, including LLMs and VLMs (vision-language models). It’s kind of our <code>Models</code> and <code>Generation</code> libraries but for MLX instead of Core ML –&nbsp;and it supports many more model types like embedders or Stable Diffusion. </li>
+<li><a href="https://github.com/argmaxinc/WhisperKit/">WhisperKit</a>, by <a href="https://www.argmaxinc.com/">argmax</a>. Open Source ASR (speech recognition) framework, super heavily optimized for Apple Silicon. It relies on our <code>Hub</code> and <code>Tokenizers</code> modules. </li>
+<li><a href="https://github.com/apple/ml-fastvlm/tree/main/app">FastVLM</a>, by Apple, and many other app demos, such as our own <a href="https://huggingface.co/blog/smolvlm2">SmolVLM2 native app</a>.</li>
+</ul>
+<h2> <a href="#what-changes-with-v10"> <span></span> </a> <span> What changes with v1.0 </span>
+</h2>
+<p>Version 1.0 signals stability in the package. Developers are building apps on swift-transformers, and this first major release recognizes those use cases and brings the version number in line with that reality. It also provides the foundation on which to iterate with the community to build the next set of features. These are some of our preferred updates:</p>
+<ul>
+<li><strong><code>Tokenizers</code> and <code>Hub</code></strong> are now <a href="https://github.com/huggingface/swift-transformers/pull/269">first-class, top-level modules</a>. Before 1.0, you had to depend on and import the full package, whereas now you can just pick <code>Tokenizers</code>, for instance.</li>
+<li>Speaking of Jinja, we are super proud to announce that we have collaborated with <a href="https://huggingface.co/JohnMai">John Mai</a> (<a href="https://x.com/JohnMai_Dev">X</a>) to create the <strong>next version of his excellent Swift Jinja library</strong>.
+John’s work has been crucial for the community: he single-handedly took on the task to provide a solid chat template library that could grow as templates became more and more complex. The new version is a couple orders of magnitude faster (no kidding), and <a href="https://github.com/huggingface/swift-jinja">lives here as <code>swift-jinja</code></a>.</li>
+<li>To further reduce the load imposed on downstream users, we have <strong>removed our example CLI targets and the <code>swift-argument-parser</code> dependency</strong>, which in turn prevents version conflicts for projects that already use it.</li>
+<li>Thanks to contributions by Apple, we have <a href="https://github.com/huggingface/swift-transformers/pull/257">adopted <strong>Modern Core ML APIs</strong></a> with support for stateful models (for easier KV-caching) and expressive <code>MLTensor</code> APIs – this removes thousands of lines of custom tensor operations and math code.</li>
+<li>Lots of <strong>additional cruft removed and <a href="https://github.com/huggingface/swift-transformers/pull/250">API surface reduced</a></strong> to reduce cognitive load and iterate faster.</li>
+<li><strong>Tests</strong> are <a href="https://github.com/huggingface/swift-transformers/pull/229">better, faster, stronger</a>.</li>
+<li><strong>Documentation comments</strong> have been added to <a href="https://github.com/huggingface/swift-transformers/pull/268">public APIs</a>.</li>
+<li><strong>Swift 6</strong> is <a href="https://github.com/huggingface/swift-transformers/pull/264">fully supported</a>.</li>
+</ul>
+<p>Version 1.0 comes with breaking API changes. However, we don’t expect major problems if you are a user of <code>Tokenizers</code> or <code>Hub</code>. If you use the Core ML components of the library, please <a href="https://github.com/huggingface/swift-transformers/issues/new">get in touch</a> so we can support you during transition. We’ll prepare a migration guide and add it to the documentation.</p>
+<h2> <a href="#usage-examples"> <span></span> </a> <span> Usage Examples </span>
+</h2>
+<p>Here's how to use <code>Tokenizers</code> to format tool calling input for an LLM:</p>
+<pre><code><span>import</span> Tokenizers <span>let</span> tokenizer <span>=</span> <span>try</span> <span>await</span> <span>AutoTokenizer</span>.from(pretrained: <span>"mlx-community/Qwen2.5-7B-Instruct-4bit"</span>) <span>let</span> weatherTool <span>=</span> [ <span>"type"</span>: <span>"function"</span>, <span>"function"</span>: [ <span>"name"</span>: <span>"get_current_weather"</span>, <span>"description"</span>: <span>"Get the current weather in a given location"</span>, <span>"parameters"</span>: [ <span>"type"</span>: <span>"object"</span>, <span>"properties"</span>: [<span>"location"</span>: [<span>"type"</span>: <span>"string"</span>, <span>"description"</span>: <span>"City and state"</span>]], <span>"required"</span>: [<span>"location"</span>] ] ]
+] <span>let</span> tokens <span>=</span> <span>try</span> tokenizer.applyChatTemplate( messages: [[<span>"role"</span>: <span>"user"</span>, <span>"content"</span>: <span>"What's the weather in Paris?"</span>]], tools: [weatherTool]
+)
+</code></pre>
+<p>For additional examples, please check <a href="https://github.com/huggingface/swift-transformers?#examples">this section in the README</a> and the <a href="https://github.com/huggingface/swift-transformers/tree/main/Examples">Examples folder</a>.</p>
+<h2> <a href="#what-comes-next"> <span></span> </a> <span> What comes next </span>
+</h2>
+<p>Honestly, we don’t know. We do know that we are super interested in exploring MLX, because that’s usually the current go-to approach for developers getting started with ML in native apps, and we want to help make the experience as seamless as possible. We are thinking along the lines of better integration with <code>mlx-swift-examples</code> for LLMs and VLMs, potentially through pre-processing and post-processing operations that developers encounter frequently.</p>
+<p>We are also extremely excited about agentic use in general and MCP in particular. We think that exposure of system resources to local workflows would be </p>
+<p>If you want to follow along in this journey or want to share your ideas, please contact us through our social networks or <a href="https://github.com/huggingface/swift-transformers/issues/new">the repo</a>.</p>
+<h2> <a href="#we-couldnt-have-done-this-without-you-"> <span></span> </a> <span> We couldn’t have done this without you </span>
+</h2>
+<p>We are immensely grateful to all the contributors and users of the library for your help and feedback. We love you all, and can't wait to continue working with you to shape the future of on-device generation! </p>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +93,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

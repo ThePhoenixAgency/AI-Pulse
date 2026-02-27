@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,20 +28,20 @@
     Source: Home Assistant Community Forum (Latest) | Date: 2/27/2026 11:45:13 AM | <a href="https://community.home-assistant.io/t/google-home-voice-interactions-with-multiple-speakers/991167" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p>The integration of Google Home (GH) and Home Assistant (HA) has a key limitation: it lacks “source speaker” metadata. When a GH voice routine requests sensor information from HA, it cannot identify which device made the request, preventing a response to the correct speaker</p>
+    <p><p>The integration of Google Home (GH) and Home Assistant (HA) has a key limitation: it lacks “source speaker” metadata. When a GH voice routine requests sensor information from HA, it cannot identify which device made the request, preventing a response to the correct speaker</p>
 <p>This issue can be resolved by using Google’s Room-Awareness feature to activate location-specific input buttons. This enables a straightforward HA automation to determine the source room and respond to the appropriate speaker. A Virtual Template Light is utilised to manage multiple template text sensors, which contain the replies. These are indexed to the light’s brightness level.</p>
 <p>A simple GH routine can be set up to trigger a “generic” input button and adjust the brightness of the virtual bulb.</p>
 <p>Because Google Home is “room aware", the correct input button is activated. This button initiates a single HA automation that identifies the room and selects the right speaker. The brightness level determines the correct response through the text sensors.</p>
-<h3><a name="p-3764330-create-the-entities-in-home-assistant-1" href="#p-3764330-create-the-entities-in-home-assistant-1"></a>Create the Entities in Home Assistant</h3>
+<h3><a name="p-3764330-create-the-entities-in-home-assistant-1" class="anchor" href="https://community.home-assistant.io#p-3764330-create-the-entities-in-home-assistant-1"></a>Create the Entities in Home Assistant</h3>
 <p>You can use the Helper UI (Settings &gt; Devices &amp; Services &gt; Helpers) to create most of these components, but the Virtual Light is the exception.</p>
 <ul>
 <li><strong>Input Buttons:</strong> Create input buttons to match the speaker locations kitchen_answer, livingroom_answer, bedroom_answer, etc. via the Button Helper.</li>
 <li><strong>Template Sensors:</strong> Create sensors explicitly named 1_voice, 2_voice, 3_voice, etc., via the Template Sensor Helper. The number in the sensor name corresponds to the brightness percentage of the virtual bulb (e.g., 1% triggers sensor.1_voice). In the “State Template” box, enter your message logic (e.g., The car is at {{ states(‘sensor.car_battery’) }} percent).</li>
 <li><strong>Virtual Light:</strong> This must be created via YAML in your configuration file because the Helper UI cannot create a template light with the specific blank services required.</li>
 </ul>
-<pre><code>template: - light: - name: "virtual" unique_id: "virtual" turn_on: turn_off: set_level:
+<pre><code class="lang-auto">template: - light: - name: "virtual" unique_id: "virtual" turn_on: turn_off: set_level:
 </code></pre>
-<h3><a name="p-3764330-connect-and-sync-to-google-home-2" href="#p-3764330-connect-and-sync-to-google-home-2"></a>Connect and Sync to Google Home</h3>
+<h3><a name="p-3764330-connect-and-sync-to-google-home-2" class="anchor" href="https://community.home-assistant.io#p-3764330-connect-and-sync-to-google-home-2"></a>Connect and Sync to Google Home</h3>
 <p>To make these entities visible in the Google Home app, you need to bridge them using one of the following:</p>
 <ul>
 <li><strong>Nabu Casa (Home Assistant Cloud):</strong> The easiest “one-click” method.</li>
@@ -55,17 +49,17 @@
 <li><strong>Google Assistant integration:</strong> A free method using a Google Cloud project.</li>
 </ul>
 <p><strong>The Crucial Step:</strong> Once synced, go into the Google Home App and move each input_button into its corresponding room (e.g., input_button.kitchen_answer goes into the “Kitchen” room).</p>
-<h3><a name="p-3764330-set-up-the-google-home-routine-3" href="#p-3764330-set-up-the-google-home-routine-3"></a>Set up the Google Home Routine</h3>
+<h3><a name="p-3764330-set-up-the-google-home-routine-3" class="anchor" href="https://community.home-assistant.io#p-3764330-set-up-the-google-home-routine-3"></a>Set up the Google Home Routine</h3>
 <p>For every question you want to ask, create a routine in the Google Home app:</p>
 <ol>
 <li><strong>Voice Starter:</strong> “What is the car battery level?”</li>
 <li><strong>Action 1:</strong> Create a custom command, “Turn on answer” (Google’s room-awareness triggers only the button in your current room).</li>
 <li><strong>Action 2:</strong> Turn on the virtual bulb and set the virtual bulb to 1%". (change % to match the voice sensor.)</li>
 </ol>
-<h3><a name="p-3764330-automation-with-room-mapping-4" href="#p-3764330-automation-with-room-mapping-4"></a>Automation (with Room Mapping)</h3>
+<h3><a name="p-3764330-automation-with-room-mapping-4" class="anchor" href="https://community.home-assistant.io#p-3764330-automation-with-room-mapping-4"></a>Automation (with Room Mapping)</h3>
 <p>This automation routes the audio to the specific media player associated with the triggered button. <strong>You must change the entities to match your setup.</strong></p>
 <p>Im using <strong>tts.speak</strong> and <strong>tts.google_translate_en_com</strong> for the text to speech. Change or install as required.</p>
-<pre><code>alias: "Google Voice Response Handler"
+<pre><code class="lang-auto">alias: "Google Voice Response Handler"
 trigger: - platform: state entity_id: - input_button.kitchen_answer - input_button.livingroom_answer - input_button.bedroom_answer
 action: - service: tts.speak target: entity_id: tts.google_translate_en_com data: media_player_entity_id: &gt; {% set speaker_map = { 'input_button.kitchen_answer': 'media_player.kitchen_speaker', 'input_button.livingroom_answer': 'media_player.google_home', 'input_button.bedroom_answer': 'media_player.bedroom_clock' } %} {{ speaker_map[trigger.entity_id] }} message: &gt; {% set index = (state_attr('light.virtual', 'brightness') | int / 2.55) | round(0) | int | string %} {% set entity = "sensor." + index + "_voice" %} {{ states(entity) }} - service: light.turn_off target: entity_id: light.virtual
 </code></pre>
@@ -73,7 +67,7 @@ action: - service: tts.speak target: entity_id: tts.google_translate_en_com data
 The speaker_map dictionary acts as a routing table. Because you assigned the buttons to specific rooms in Google Home, saying “Turn on answer” triggers the button for that specific room. The automation then looks up that button in the map to find the matching media_player, ensuring the response speaks to the correct device. <strong>Change the speaker names to match your setup</strong></p>
 <p>I hope the above is of some use. I have tried using <strong>volume hacks</strong> or <strong>sending silent tones</strong> to try and identify the speakers, but I could never make these work reliably.</p>
 <p>You may want to add an announcement in the GH routine saying something like ‘Please wait’ at the beginning to slow down the interaction, as sometimes Google speakers miss the first couple of words.</p>
-<p>I don’t use the automation editor; I use Node-RED, so please let me know if the automation can be improved/simplified, as I used Google Gemini to help convert my Node-RED flows.</p> </div></div>
+<p>I don’t use the automation editor; I use Node-RED, so please let me know if the automation can be improved/simplified, as I used Google Gemini to help convert my Node-RED flows.</p> <p><small>5 posts - 2 participants</small></p> <p><a href="https://community.home-assistant.io/t/google-home-voice-interactions-with-multiple-speakers/991167">Read full topic</a></p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -82,12 +76,12 @@ The speaker_map dictionary acts as a routing table. Because you assigned the but
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

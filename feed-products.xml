@@ -5,41 +5,22 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Fri, 27 Feb 2026 20:26:19 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 22:22:11 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: Roxlit – Open-source launcher that connects AI tools to Roblox Studio]]></title>
-      <link>https://github.com/Roxlit/installer</link>
-      <description><![CDATA[Article URL: https://github.com/Roxlit/installer URL: https://news.ycombinator.com/item?id=47184387
-Points: 1
-# : 1]]></description>
-      <pubDate>Fri, 27 Feb 2026 19:17:46 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://github.com/Roxlit/installer</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: Zero – offline, privacy-first expense tracker]]></title>
-      <link>https://github.com/indranilbhuin/zero</link>
-      <description><![CDATA[Over the past year I built zero, a fully offline expense tracker for Android and iOS.
-Most finance apps today rely on accounts, cloud sync, subscriptions, and analytics. I wanted to try the opposite approach:
-No accounts
-No cloud storage
-No telemetry
-No ads
-No subscriptions
-All data stays locally on your device. The project is open source and focused purely on privacy and simplicity.
-Would love feedback on:
-• Offline-first product viability
-• Non-SaaS monetization models
-• UX tradeoffs when you remove analytics
-Happy to answer any technical questions. URL: https://news.ycombinator.com/item?id=47183518
-Points: 2
+      <title><![CDATA[Show HN: I vibe coded a DAW for the terminal. how'd I do?]]></title>
+      <link>https://github.com/mohsenil85/imbolc</link>
+      <description><![CDATA[So, I've never written a line of Rust in my life. I wouldn't know an `&amp;mut this` from a mutandis. But I saw a tweet about a month ago that said, in this new era of AI, you'd be able to just take a library that you love, throw a TUI around it, and call it an app. So I spent about 200 bucks last month, here's what I came up with:
+Imbolc is a DAW that runs entirely in your terminal. It talks to scsynth over OSC and ships 58 instruments and 39 effects. VSTs are a work in progress, also GarageBand loops if you want to recreate "Umbrella".
+The codebase is about 60k? lines of Rust across 5 crates, with ~1,100 tests. I don't actually know. It's funny because I've always been the one writing code, and now I was everybody except the one writing code: QA, Product, Design.
+Some prompts that worked well: "Looking at this codebase, what looks like an obvious retrofit?" "Where can we lean on the compiler?" After an agent completed a task, I'd interview it — where did you have trouble, what felt like a hack, what would you do differently. v1 was clojure, v2 was java, v3 is rust. v4 will be stones and sticks.
+So nowadays out here in the deep future, I think programming will become a matter of taste. Here's what I think demonstrates my sensibilities: - Accessibility: This is what I'm most proud of. TUIs are usually terrible for screen readers. In Imbolc, every action in the UI is available as a typed command (after I started typing this up I thought, is that true? turns out it wasn't, so now the compiler enforces this.). - LAN collaboration: Multiple people can connect to a shared session over the local network and share midi clock, tuning, effects buses, etc. Audio is never sent over the network. - Weird musical choices: With the "Global" just intonation setting, your absolute tuning can drift over time. I was thinking about how an accordion looks kind of like a qwerty keyboard, so I added a quasi Stradella layout. A432 by default, and so on. - Command palette, themes, keybindings, Diataxis docs. It's still alpha, there are plenty of rough edges. But it is genuinely fun to dink around on, I'd love to know what you all think. URL: https://news.ycombinator.com/item?id=47185603
+Points: 3
 # : 0]]></description>
-      <pubDate>Fri, 27 Feb 2026 18:08:01 GMT</pubDate>
+      <pubDate>Fri, 27 Feb 2026 21:05:54 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://github.com/indranilbhuin/zero</guid>
+      <guid>https://github.com/mohsenil85/imbolc</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Surfshark One à -86 % : un antivirus pas cher pour étudiants]]></title>

