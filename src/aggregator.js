@@ -338,7 +338,8 @@ function renderArticleMetadataLine({ sourceName, pubDate, lang, originalUrl }) {
   const safeLang = String(lang || 'en').toUpperCase();
   const rawDate = pubDate ? new Date(pubDate) : new Date();
   const safeDate = Number.isNaN(rawDate.getTime()) ? new Date() : rawDate;
-  const datePart = `${safeDate.toLocaleDateString()} ${safeDate.toLocaleTimeString()}`;
+  const locale = safeLang === 'FR' ? 'fr-FR' : 'en-US';
+  const datePart = safeDate.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
   const linkPart = renderOriginalLinkMeta(originalUrl);
   return `Source: ${safeSource} | Date: ${datePart}${linkPart} | Lang: ${safeLang}`;
 }
@@ -1869,6 +1870,14 @@ async function aggregateCategory(categoryName, feeds) {
     .filter(r => r.status === 'fulfilled')
     .flatMap(r => r.value)
     .filter(Boolean);
+
+  // Filtrer les articles trop anciens (par défaut 180 jours = 6 mois)
+  const maxAgeDays = SETTINGS.maxArticleAgeDays || 180;
+  const cutoffDate = new Date(Date.now() - maxAgeDays * 24 * 60 * 60 * 1000);
+  articles = articles.filter((article) => {
+    const articleDate = new Date(article.pubDate || 0);
+    return articleDate >= cutoffDate;
+  });
 
   if (categoryName === 'openclaw') {
     const specialOnly = articles.filter((article) => matchesSpecialCategory(article, categoryName));
