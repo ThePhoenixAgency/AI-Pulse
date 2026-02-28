@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,19 +28,10 @@
     Source: openHAB Community (Latest) | Date: 2/24/2026 2:28:50 PM | <a href="https://community.openhab.org/t/how-to-change-an-insteon-on-off-switch-thing-with-a-new-insteon-device/168631" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <div> <p><span> <time> February 24, 2026, 2:28pm </time> <span>1</span> </span> </p></div> <div> <p>Replacing an old Thing with a new Thing.</p>
+    <p><p>Replacing an old Thing with a new Thing.</p>
 <p>I have an Insteon on/off switch that has died and I’m replacing it with another Insteon switch device. I wanted to know if I can just go into the Thing and edit the settings in it for the new switch, or if there’s something else I also need to change/delete etc.</p>
 <p>I setup my OpenHab system several years ago when Insteon temporarily closed down, and its been working great, but since I haven’t configured the original setup in several years, I’m rusty on how to make these changes.</p>
-<p>Thanks.</p> </div> <div> <p><span>1 Like</span> </p></div> </div> <div> <p><span> <a href="https://community.openhab.org/u/rlkoshak"><span>rlkoshak</span></a> (Rich Koshak) </span> <span> <time> February 24, 2026, 3:24pm </time> <span>2</span> </span> </p> <div> <p>Based on a quick scan of the readme for the binding, the Thing is configured based on the device. So eve if it’s an identical device in make and model, it’s going to appear to the binding as a <em>new</em> device. It’s going to need its own Thing.</p>
-<p>I don’t use this binding so I can only be generic but the steps I’d take are:</p>
-<ol>
-<li>backup</li>
-<li>take note of the Thing ID of the old Thing</li>
-<li>remove the old Thing (do not remove the links)</li>
-<li>from the inbox scan for new Insteon devices and accept the new one from the inbox</li>
-<li>change the UID to match the id you took note of in 2</li>
-</ol>
-<p>If you remove the links or keep the new Thing ID instead of changing it, go to the Channels tab and “add points to model”. You can select your old Items to link to the new Channels.</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/wsscott"><span>wsscott</span></a> (Stephen Scott) </span> <span> <time> February 24, 2026, 5:54pm </time> <span>3</span> </span> </p> <p>Thanks. It looks simple enough. Famous last words. I’ll post when I make the changes.</p> </div> <div> <p><span> <a href="https://community.openhab.org/u/wsscott"><span>wsscott</span></a> (Stephen Scott) </span> <span> <time> February 24, 2026, 8:23pm </time> <span>4</span> </span> </p> <p>What’s the best way to do the backup you suggest. I’m running this on a MacMini and I use Time Machine for its normal backups.</p> </div> <div> <p><span> <a href="https://community.openhab.org/u/rlkoshak"><span>rlkoshak</span></a> (Rich Koshak) </span> <span> <time> February 24, 2026, 8:29pm </time> <span>5</span> </span> </p> <p><img src="https://community.openhab.org/images/emoji/twitter/person_shrugging.png?v=15" alt=":person_shrugging:"> I’ve never run OH from a Mac. If you installed using Homebrew you should have access to <code>openhab-cli</code>. If you did a manual install, just tar up the openHAB folder I guess. Or just rely on your timemachine backup.</p> </div> <div> <p><span> <a href="https://community.openhab.org/u/wsscott"><span>wsscott</span></a> (Stephen Scott) </span> <span> <time> February 26, 2026, 7:21pm </time> <span>6</span> </span> </p> <p>I followed your instructions, and got it working. Not really a problem except for figuring out how to edit the name for the new Things UID. But I finally figured it out. Not a very friendly user interface. But it works great. Thanks again.</p> </div> </div></div>
+<p>Thanks.</p> <p><small>6 posts - 2 participants</small></p> <p><a href="https://community.openhab.org/t/how-to-change-an-insteon-on-off-switch-thing-with-a-new-insteon-device/168631">Read full topic</a></p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -55,12 +40,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

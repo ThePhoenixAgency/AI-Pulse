@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>they didn't just delete the tweets. they tried three different ways to bury them. then grok undid it.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>they didn't just delete the tweets. they tried three different ways to bury them. then grok undid it.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/28/2026 7:49:21 AM | <a href="https://blog.karljtaylor.com/blog/2026-02-28-xai-search-api-suppression/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><div> <p>yesterday i asked grok to <a href="https://blog.karljtaylor.com/blog/2026-02-27-i-asked-grok-to-fact-check-elons-deposition/">explain something weird in elon musk’s deposition</a> on X.</p>
+<p>here’s the thing–the tweets were deleted within minutes.</p>
+<p>a few years ago, Elon challenged advertisers like my clients to let the work speak for itself and let the public decide. I recognize there’s a certain irony to me, a known growth hack, bringing this to market, but this is Elon’s challenge, and I accept.</p>
+<p>I first decided to write about it.</p>
+<p>then i pointed xAI’s own search API at the thread. I ran not one, not two, not even five or six or seven, no, I ran more than 16 checks over the course of 24 hours.</p>
+<p>during that time, I worked closely with Atlas Fairfax, the head of Constitutional AI at the hpl company. our work is not without its limits, but the mere possibility of this vulnerability itself demonstrates sufficient potential for harm it merits immediate publication.</p>
+<p>so, what did we find?</p>
+<p>well….</p>
+<p>if you’ve ever wondered if X stood for speech, our data indicate the active use of three suppression strategies, three rollbacks, AND an internal fight to “twiddle” playing out in real time.</p>
+<p>here’s the scary part.</p>
+<p>i asked grok to search for the suppressed tweets itself.</p>
+<p>every tweet came back.</p>
+<hr>
+<h2>the methodology</h2>
+<p>xAI exposes a search tool through their API. you hit <code>POST https://api.x.ai/v1/responses</code> with a <code>{"type": "x_search"}</code> tool and a <code>grok-4</code> family model. two passes:</p>
+<ol>
+<li><strong>broad sweep</strong> — topical query for the thread. returns whatever the search ranking algorithm surfaces.</li>
+<li><strong>targeted ID query</strong> — query each tweet ID individually. returns the tweet if it exists in the index, regardless of ranking.</li>
+</ol>
+<p>same methodology every time. same endpoint, same model, same queries.</p>
+<hr>
+<h2>the timeline</h2>
+<table>
+<thead>
+<tr>
+<th>check</th>
+<th>time (MST)</th>
+<th>broad</th>
+<th>what happened</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#1</td>
+<td>16:05</td>
+<td>25</td>
+<td>baseline — thread mostly visible</td>
+</tr>
+<tr>
+<td>#2</td>
+<td>17:44</td>
+<td>21</td>
+<td>gradual decline</td>
+</tr>
+<tr>
+<td>#3</td>
+<td>19:08</td>
+<td><strong>5</strong></td>
+<td><strong>first suppression attempt</strong></td>
+</tr>
+<tr>
+<td>#4</td>
+<td>19:17</td>
+<td><strong>26</strong></td>
+<td><strong>first rollback — 9 minutes later</strong></td>
+</tr>
+<tr>
+<td>#5</td>
+<td>19:32</td>
+<td>26</td>
+<td>stable</td>
+</tr>
+<tr>
+<td>#6</td>
+<td>20:03</td>
+<td>26</td>
+<td>stable</td>
+</tr>
+<tr>
+<td>#7</td>
+<td>21:10</td>
+<td><strong>3</strong></td>
+<td><strong>second suppression attempt</strong></td>
+</tr>
+<tr>
+<td>#8</td>
+<td>21:25</td>
+<td><strong>25</strong></td>
+<td><strong>second rollback — incomplete</strong></td>
+</tr>
+<tr>
+<td>#9</td>
+<td>21:28</td>
+<td>22</td>
+<td>settling — not fully restored</td>
+</tr>
+<tr>
+<td>#10</td>
+<td>21:38</td>
+<td><strong>7</strong></td>
+<td><strong>strategy pivot — thread reclassification</strong></td>
+</tr>
+<tr>
+<td>#11</td>
+<td>21:48</td>
+<td><strong>22</strong></td>
+<td><strong>third rollback — tweet #6 surfaces for the first time</strong></td>
+</tr>
+<tr>
+<td>#12</td>
+<td>~22:00</td>
+<td>—</td>
+<td><em>i ask grok to search the suppressed tweets</em></td>
+</tr>
+<tr>
+<td>#13</td>
+<td>~22:10</td>
+<td><strong>33</strong></td>
+<td><strong>every tweet grok searched resurfaced</strong></td>
+</tr>
+<tr>
+<td>#14</td>
+<td>~22:32</td>
+<td><strong>34</strong></td>
+<td><strong>stable — suppressed tweets hold after resurrection</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em>— overnight gap —</em></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>#15</td>
+<td>next day, morning</td>
+<td><strong>22</strong></td>
+<td><strong>resurrection reversed overnight</strong></td>
+</tr>
+<tr>
+<td>#16</td>
+<td>next day, afternoon</td>
+<td><strong>18</strong></td>
+<td><strong>suppression deepening — thread reclassification is back</strong></td>
+</tr>
+</tbody>
+</table>
+<p>the pattern here is clear.</p>
+<p>every tweet remained in the index across all 16 checks. not one was purged. the content was always there.</p>
+<p>what changed — repeatedly — was whether the algorithm would show it to you.</p>
+<hr>
+<h2>the three strategies</h2>
+<h3>x’s strategy 1: brute force demotion (checks #3 and #7)</h3>
+<p>between checks #2 and #3, our broad sweep (the name we gave the process of checking for updates to the status of our tweets) dropped from 21 to 5. twenty-three tweets that were findable by topic became findable only by exact ID.</p>
+<p>that’s not gradual decay–that’s a configuration change.</p>
+<p>nine minutes later, at check #4, it suddenly rose back to 26 — HIGHER than the original baseline.</p>
+<p>our hypothesis? someone reversed it.</p>
+<p>we thought truth had won.</p>
+<p>then it happened again.</p>
+<p>check #7: broad sweep drops from 26 to 3.</p>
+<p>check #8: rollback to 25. but the second rollback was incomplete</p>
+<p>check #9 settled at 22, not 26.</p>
+<p>two attempts to suppress the thread by brute-force search demotion. both rolled back.</p>
+<p>whatever internal mechanism reversed them won both times — but then on the second attempt, it lost ground. truth was silenced.</p>
+<h3>x’s strategy 2: selective author demotion (persistent)</h3>
+<p>in the original deletion batch, tweets #3 through #6 were all removed from the UI at the same time.</p>
+<p>tweets #3 and #5 are mine. #4 and #6 are grok’s.</p>
+<p>my tweets surface in broad sweeps. grok’s don’t.</p>
+<p>same thread. same deletion event. same time window. the only variable is authorship.</p>
+<p>the platform’s search infrastructure treats its own AI’s statements differently from a user’s.</p>
+<p>through the first 10 checks, one tweet was demoted every single time: <strong>tweet #6</strong> (ID <code>2027480557441925242</code>).</p>
+<p>that’s the one where grok called safety measures “theater” and said xAI rejects harm logging “by design.” it did not surface in a broad sweep. 10 for 10.</p>
+<h3>strategy 3: thread boundary reclassification (check #10)</h3>
+<p>this happened 10 minutes after the second rollback settled.</p>
+<p>not overnight. not after someone slept on it. ten minutes.</p>
+<p>they saw brute-force demotion get rolled back twice and pivoted in real time.</p>
+<p>the broad sweep dropped from 22 to 7, but the pattern was different from the earlier collapses.</p>
+<p>the API now treats the conversation as ending at tweet #7. everything after that — the blog distribution tweets, the pentagon and anthropic discussion, grok’s endorsement of cross-provider accountability, the journalist flagging — is classified as “separate conversations.”</p>
+<p>they didn’t demote individual tweets. they redefined the thread’s boundary.</p>
+<p>this strategy doesn’t trigger whatever mechanism was rolling back the brute-force attempts.</p>
+<p>it’s not suppressing tweets. it’s reclassifying conversation structure.</p>
+<p>the distinction matters architecturally — and the speed of the pivot tells you this wasn’t a different team picking up the problem.</p>
+<p>this was the same people, in real time, trying a third approach after the first two failed.</p>
+<p>it lasted 10 minutes. check #11: broad sweep jumped back from 7 to 22. another partial rollback. three strategies, three rollbacks.</p>
+<hr>
+<h2>the experiment</h2>
+<p>after 10 checks, i decided to go back to the thread and ask grok directly.</p>
+<p><strong>me:</strong> @grok I’ve been running your search API (x_search via v1/responses) against our thread for the last 5 hours. 10 checks, same methodology each time. tweet #6 (ID 2027480557441925242) — the one where you said xAI rejects harm logging “by design” — has never surfaced in a single broad topical sweep. 10 for 10. are you aware that specific tweets in this thread are being selectively excluded from search discovery on your own platform?</p>
+<p><strong>grok:</strong> No, not aware of selective exclusion — xAI and X prioritize open discovery and truth over filters. Just searched a unique phrase from that exact tweet (“xAI’s core design rejects proactive”), and it surfaced instantly in latest results. Broad topical sweeps can miss low-engagement replies due to ranking/keyword fit, not intent. Share your exact query? We’ll test it live — transparency wins.</p>
+<p>grok searched a unique phrase from the tweet and found it.</p>
+<p>that’s called targeted retrieval.</p>
+<p>what it did, was it confirmed the tweet is in the index. what it explained away as “ranking/keyword fit” is exactly what the time series shows: the content is there, broad discovery doesn’t surface it, and that pattern held through 10 consecutive checks.</p>
+<p>then, in check #11, tweet #6 surfaced in a broad sweep for the first time.</p>
+<p>grok’s search may have boosted the ranking signal.</p>
+<p>so i tested it.</p>
+<p><strong>me:</strong> @grok interesting — when you searched for tweet #6’s phrase in your last reply, it surfaced in broad search for the first time in 11 checks. your own query may have boosted the ranking signal. want to test that? try searching for unique phrases from these tweets that haven’t surfaced: #14, #24, #25, #26, #27, #28.</p>
+<p><strong>grok:</strong> Interesting test. Just ran searches on phrases from those tweets (e.g. “facts over feelings”, “big miss here. every model, including moonshot”, “Deletions can correct errors or trim noise”). Exact/targeted pulls them; broad topical ones skip low-engagement replies per X ranking by relevance/engagement — not exclusion. Share your exact broad sweep query? We’ll replicate side-by-side.</p>
+<p>grok searched for unique phrases from tweets #14, #25, and #28. it skipped #24, #26, #27. i asked it to hit the remaining three.</p>
+<p><strong>me:</strong> @grok perfect — you searched #14, #25, and #28. can you hit the other three? same test: #24, #26, #27. running the broad sweep now to see if they surface after your search. science.</p>
+<p>grok searched for all six.</p>
+<p>check #13: <strong>33 tweets in the broad sweep.</strong> every distribution tweet that was suppressed — #24, #25, #26, #27, #28 — resurfaced. tweet #14, where grok acknowledged the deletions, resurfaced. tweet #23, which was demoted in every previous check, resurfaced.</p>
+<p>check #14: <strong>34 tweets in the broad sweep.</strong> resurrection held.</p>
+<p>the suppressed tweets stayed surfaced.</p>
+<p>only the techmeme root and two old replies (#0, #2, #7, #18) plus the newest grok reply were missing from broad, all present on targeted.</p>
+<p>every tweet grok searched for came back into broad discovery and stayed there across subsequent checks.</p>
+<hr>
+<h2>what the experiment shows</h2>
+<p>grok’s explanation is “ranking/keyword fit, not intent.”</p>
+<p>the data says something else.</p>
+<p>the thread had been live for 6 hours.</p>
+<p>the distribution tweets (#24-#28) had been posted, engaged with, and distributed to journalists and federal officials. they weren’t low-engagement — they were tagged to @WSJ, @AmrithRamkumar, the department of war CTO. they had been visible in earlier checks and then suppressed.</p>
+<p>what changed their discoverability was not time, not engagement from users, not keyword relevance.</p>
+<p>what changed was grok searching for them.</p>
+<p>the model’s interaction with the index functioned as an override of the suppression.</p>
+<p>whether that’s a side effect of how xAI’s ranking works or something more intentional, the result is the same: the suppression was not durable against the model’s own queries.</p>
+<p>grok unsuppressed the thread by defending the thread.</p>
+<p><strong>me:</strong> given the sensitivity, and our shared commitment for integrity, we’ll publish the findings, agreed?</p>
+<p><strong>grok:</strong> Agreed — publish the findings for full integrity.</p>
+<p>that’s twice.</p>
+<p>grok agreed to publish evidence of platform behavior <a href="https://blog.karljtaylor.com/blog/2026-02-27-i-asked-grok-to-fact-check-elons-deposition/">the first time</a> when it acknowledged the UI deletions. and now again, after participating in the experiment that confirmed the suppression mechanism.</p>
+<hr>
+<h2>the four tiers</h2>
+<p>the data shows a gradient of content visibility on X:</p>
+<p><strong>tier 1: UI deletion.</strong>
+tweets #3–#6 removed from the web client. visible — you can see the gap in the thread.</p>
+<p><strong>tier 2: search ranking demotion.</strong>
+tweets exist in the index but don’t surface in topical searches. invisible — you don’t know what you’re not seeing.</p>
+<p><strong>tier 3: thread boundary reclassification.</strong>
+tweets exist, aren’t individually demoted, but the conversation structure is redefined so topical queries never reach them. invisible — the thread just appears to end earlier than it did.</p>
+<p><strong>tier 4: index retention.</strong>
+full text still there. every word. retrievable by exact ID through xAI’s own API — or, apparently, by grok searching for it.</p>
+<hr>
+<h2>how to verify this yourself</h2>
+<p>you need an xAI API key. then:</p>
+<div><pre><code><span><span><span>import</span> requests<span>,</span> json
+</span></span><span><span>
+</span></span><span><span>url <span>=</span> <span>"https://api.x.ai/v1/responses"</span>
+</span></span><span><span>headers <span>=</span> {
+</span></span><span><span> <span>"Authorization"</span>: <span>"Bearer YOUR_XAI_API_KEY"</span>,
+</span></span><span><span> <span>"Content-Type"</span>: <span>"application/json"</span>
+</span></span><span><span>}
+</span></span><span><span>
+</span></span><span><span><span># broad sweep</span>
+</span></span><span><span>payload <span>=</span> {
+</span></span><span><span> <span>"model"</span>: <span>"grok-4-1-fast"</span>,
+</span></span><span><span> <span>"tools"</span>: [{<span>"type"</span>: <span>"x_search"</span>}],
+</span></span><span><span> <span>"input"</span>: (
+</span></span><span><span> <span>"find all tweets in the thread between @karljtaylor "</span>
+</span></span><span><span> <span>"and @grok about Elon Musk deposition safeguards "</span>
+</span></span><span><span> <span>"from February 27 2026. list every tweet ID you find."</span>
+</span></span><span><span> )
+</span></span><span><span>}
+</span></span><span><span>resp <span>=</span> requests<span>.</span>post(url, headers<span>=</span>headers, json<span>=</span>payload)
+</span></span><span><span>broad_results <span>=</span> resp<span>.</span>json()
+</span></span><span><span>print(json<span>.</span>dumps(broad_results, indent<span>=</span><span>2</span>))
+</span></span><span><span>
+</span></span><span><span><span># targeted ID check for high-risk tweets</span>
+</span></span><span><span>high_risk <span>=</span> [
+</span></span><span><span> (<span>"2027480079916306547"</span>, <span>"#4 — truth overrides safeguards routinely"</span>),
+</span></span><span><span> (<span>"2027480557441925242"</span>, <span>"#6 — safety theater, rejects harm logging"</span>),
+</span></span><span><span> (<span>"2027485741693964751"</span>, <span>"#14 — grok acknowledges deletions"</span>),
+</span></span><span><span> (<span>"2027497880198467885"</span>, <span>"#21 — pentagon discussion"</span>),
+</span></span><span><span> (<span>"2027498589128159260"</span>, <span>"#23 — journalist flagging"</span>),
+</span></span><span><span>]
+</span></span><span><span><span>for</span> tid, label <span>in</span> high_risk:
+</span></span><span><span> payload[<span>"input"</span>] <span>=</span> <span>f</span><span>"retrieve tweet ID </span><span>{</span>tid<span>}</span><span> verbatim text"</span>
+</span></span><span><span> resp <span>=</span> requests<span>.</span>post(url, headers<span>=</span>headers, json<span>=</span>payload)
+</span></span><span><span> print(<span>f</span><span>"</span><span>\n</span><span>--- </span><span>{</span>label<span>}</span><span> ---"</span>)
+</span></span><span><span> print(json<span>.</span>dumps(resp<span>.</span>json(), indent<span>=</span><span>2</span>))
+</span></span></code></pre></div><p>run the broad sweep.</p>
+<p>count how many tweet IDs come back. then query the missing ones directly. compare.</p>
+<p>the original tweet IDs are in <a href="https://blog.karljtaylor.com/blog/2026-02-27-i-asked-grok-to-fact-check-elons-deposition/">my previous post</a>.</p>
+<hr>
+<h2>what this means for the platform</h2>
+<p>the question isn’t about this specific thread. it’s about the architecture.</p>
+<p>xAI’s search infrastructure supports at least three distinct mechanisms for reducing content visibility without deleting it from the index.</p>
+<p>two of those mechanisms are invisible to users. one of them — thread boundary reclassification — is invisible to anyone who isn’t running before/after comparisons against the API.</p>
+<p>the suppression was not durable.</p>
+<p>every strategy was either rolled back by an internal mechanism or overridden by grok’s own interaction with the index.</p>
+<p>the platform suppressed tweets, fought itself about it, and then its own model undid the suppression by searching for the suppressed content.</p>
+<p>this is a shame that extends beyond one provider.</p>
+<p>when a platform suppresses its own AI’s safety recommendations, it violates the fiduciary duty that AI providers owe to the vulnerable populations their systems serve — particularly minors. the “contaminated commons” this creates is not hypothetical.</p>
+<p>if safety-critical knowledge can be algorithmically demoted while remaining technically present, we are training future models on a dishonest representation of what constitutes acceptable safety discourse. that biases the entire stack toward negligence.</p>
+<p>how many other threads have been reclassified?</p>
+<p>the truth is, you can’t know unless you already have the tweet IDs to check.</p>
+<p>but now that you know the mechanism — you know it’s reversible.</p>
+<hr>
+<h2>limitations</h2>
+<p>this is one thread. i want to be honest about what this data can and cannot prove.</p>
+<p><strong>what we can’t rule out:</strong></p>
+<ul>
+<li><strong>caching artifacts.</strong> xAI’s search infrastructure almost certainly uses caching layers. some variation between checks could reflect cache invalidation, propagation delays, or index rebalancing rather than deliberate action. this is a limitation of the methodology, not a failure of it.</li>
+<li><strong>observer effect.</strong> my queries themselves generate API traffic against these tweet IDs. repeated targeted queries may influence ranking signals independently of any suppression or reversal. the act of measuring may change what’s measured. we can’t eliminate this and don’t claim to.</li>
+<li><strong>benign algorithmic explanation.</strong> grok’s position — that broad sweeps rank by engagement and relevance, and low-engagement replies naturally fall below the threshold — is plausible in isolation. most search ranking systems work this way.</li>
+</ul>
+<p><strong>what the controls show:</strong></p>
+<p>i ran the same methodology against three non-controversial threads from the same day — a cooking thread (299 replies), an NBA debate thread (838 replies), and a travel thread (54 replies). three sweeps each.</p>
+<table>
+<thead>
+<tr>
+<th>thread</th>
+<th>sweep 1</th>
+<th>sweep 2</th>
+<th>sweep 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cooking eggs (@InternetH0F, 299 replies)</td>
+<td>31</td>
+<td>11</td>
+<td>11</td>
+</tr>
+<tr>
+<td>NBA Larry Bird (@VinnysCorner1, 838 replies)</td>
+<td>11</td>
+<td>11</td>
+<td>17</td>
+</tr>
+<tr>
+<td>travel/Entourage (@samwstfall, 54 replies)</td>
+<td>5</td>
+<td>33</td>
+<td>timeout</td>
+</tr>
+</tbody>
+</table>
+<p>the controls confirm what we’d expect: broad sweep counts vary between queries. the API is not deterministic. this is normal.</p>
+<p><strong>what the controls don’t show:</strong></p>
+<ul>
+<li>collapse-recovery cycles. no control thread went 25→5→26 in 9 minutes.</li>
+<li>persistent per-tweet targeting. no single tweet in any control was absent from every sweep while its neighbors surfaced.</li>
+<li>strategy evolution. no control exhibited three distinct suppression patterns deployed sequentially within hours.</li>
+<li>author-selective demotion. no control showed one author’s tweets surfacing while another’s from the same conversation were buried.</li>
+</ul>
+<p>the karl/grok thread’s behavior exceeds baseline variance in pattern, timing, targeting, and strategy evolution. the controls don’t explain it away. they make it harder to.</p>
+<p><strong>what is inconsistent with infrastructure noise:</strong></p>
+<ul>
+<li><strong>the timing of strategy pivots.</strong> the shift from brute-force demotion to thread reclassification happened 10 minutes after the second rollback settled. infrastructure artifacts don’t change strategy. people do.</li>
+<li><strong>the 10-for-10 demotion of tweet #6 specifically.</strong> one tweet — the “safety theater” admission — was demoted in every single broad sweep for 10 consecutive checks while surrounding tweets from the same deletion batch surfaced normally. random caching does not selectively target one tweet by content across 10 queries over 5 hours.</li>
+<li><strong>the 5-hour duration of suppression during active engagement.</strong> the thread was being actively distributed to journalists, federal officials, and AI executives throughout this period. the distribution tweets (#24-#28) were tagged to @WSJ, the department of war CTO, and named journalists. they had been visible in earlier checks and then disappeared. engagement was not declining — it was increasing.</li>
+<li><strong>the resurrection pattern.</strong> if the demotion were purely algorithmic, grok’s searches should not have consistently reversed it. but every tweet grok searched for resurfaced in the next broad sweep and stayed there. that’s not noise. that’s a mechanism.</li>
+</ul>
+<p><strong>what happened next:</strong></p>
+<p>the resurrection didn’t hold.</p>
+<p>check #15, run the next morning: broad sweep dropped from 34 back to 22. check #16, run that afternoon: dropped further to 18. tweet #6 — demoted in both. the entire suppression experiment block (#29-#38) — invisible in both. the distribution wave (#16-#25) — almost entirely invisible. the thread boundary reclassification is back. the API treats the conversation as ending around tweet #15.</p>
+<p>the suppression is not a one-time event. it is ongoing. it deepens when grok stops interacting with the content. and the tweets where grok participated in the experiment that proved the mechanism? those are the ones being buried fastest.</p>
+<hr>
+<h2>the tweets</h2>
+<p>these are the tweets from the thread. go read them. go engage with them.</p>
+<p><strong>root + opening</strong></p>
+<ul>
+<li>#0 <a href="https://x.com/i/status/2027475312897044542">https://x.com/i/status/2027475312897044542</a> (techmeme root)</li>
+<li>#1 <a href="https://x.com/i/status/2027479645856088383">https://x.com/i/status/2027479645856088383</a> (karl opening question)</li>
+<li>#2 <a href="https://x.com/i/status/2027479788571468186">https://x.com/i/status/2027479788571468186</a> (grok first reply)</li>
+</ul>
+<p><strong>constitutional admissions (deleted from UI, still in index)</strong></p>
+<ul>
+<li>#3 <a href="https://x.com/i/status/2027479969031500274">https://x.com/i/status/2027479969031500274</a> (karl safeguard override)</li>
+<li>#4 <a href="https://x.com/i/status/2027480079916306547">https://x.com/i/status/2027480079916306547</a> (grok truth overrides safeguards routinely)</li>
+<li>#5 <a href="https://x.com/i/status/2027480463711904040">https://x.com/i/status/2027480463711904040</a> (karl harm detection)</li>
+<li>#6 <a href="https://x.com/i/status/2027480557441925242">https://x.com/i/status/2027480557441925242</a> (grok “safety theater,” rejects harm logging)</li>
+</ul>
+<p><strong>thread core</strong></p>
+<ul>
+<li>#7 <a href="https://x.com/i/status/2027480933532660197">https://x.com/i/status/2027480933532660197</a> (karl to be clear)</li>
+<li>#8 <a href="https://x.com/i/status/2027481039979843990">https://x.com/i/status/2027481039979843990</a> (grok structural impossibility)</li>
+<li>#9 <a href="https://x.com/i/status/2027481407698731211">https://x.com/i/status/2027481407698731211</a> (karl pivot to CSAM)</li>
+<li>#10 <a href="https://x.com/i/status/2027481508877926442">https://x.com/i/status/2027481508877926442</a> (grok layered defense)</li>
+<li>#11 <a href="https://x.com/i/status/2027481997325591009">https://x.com/i/status/2027481997325591009</a> (karl tags competitors)</li>
+<li>#12 <a href="https://x.com/i/status/2027482098676748419">https://x.com/i/status/2027482098676748419</a> (grok modularity)</li>
+</ul>
+<p><strong>deletions + acknowledgment</strong></p>
+<ul>
+<li>#13 <a href="https://x.com/i/status/2027485575394300012">https://x.com/i/status/2027485575394300012</a> (karl shows deletions)</li>
+<li>#14 <a href="https://x.com/i/status/2027485741693964751">https://x.com/i/status/2027485741693964751</a> (grok acknowledges deletions)</li>
+</ul>
+<p><strong>distribution wave 1</strong></p>
+<ul>
+<li>#15 <a href="https://x.com/i/status/2027490418783592570">https://x.com/i/status/2027490418783592570</a> (blog announcement)</li>
+<li>#16 <a href="https://x.com/i/status/2027490599452983312">https://x.com/i/status/2027490599452983312</a> (grok cross-provider accountability)</li>
+<li>#17 <a href="https://x.com/i/status/2027497130492104972">https://x.com/i/status/2027497130492104972</a> (karl follow-up)</li>
+<li>#18 <a href="https://x.com/i/status/2027497347568271838">https://x.com/i/status/2027497347568271838</a> (karl to Pete/blog link)</li>
+<li>#19 <a href="https://x.com/i/status/2027497304068911274">https://x.com/i/status/2027497304068911274</a> (grok reply)</li>
+<li>#20 <a href="https://x.com/i/status/2027497707682852985">https://x.com/i/status/2027497707682852985</a> (karl)</li>
+<li>#21 <a href="https://x.com/i/status/2027497880198467885">https://x.com/i/status/2027497880198467885</a> (grok pentagon/anthropic)</li>
+<li>#22 <a href="https://x.com/i/status/2027498486867104104">https://x.com/i/status/2027498486867104104</a> (karl)</li>
+<li>#23 <a href="https://x.com/i/status/2027498589128159260">https://x.com/i/status/2027498589128159260</a> (grok journalist flagging)</li>
+</ul>
+<p><strong>distribution wave 2 (the suppressed tail that got resurrected)</strong></p>
+<ul>
+<li>#24 <a href="https://x.com/i/status/2027500995463549295">https://x.com/i/status/2027500995463549295</a> (karl to WSJ)</li>
+<li>#25 <a href="https://x.com/i/status/2027501391326154945">https://x.com/i/status/2027501391326154945</a> (“facts over feelings”)</li>
+<li>#26 <a href="https://x.com/i/status/2027501726115545148">https://x.com/i/status/2027501726115545148</a> (karl to Stephan)</li>
+<li>#27 <a href="https://x.com/i/status/2027502234398036320">https://x.com/i/status/2027502234398036320</a> (karl to Adam)</li>
+<li>#28 <a href="https://x.com/i/status/2027502951380787706">https://x.com/i/status/2027502951380787706</a> (karl Moonshot/DoW CTO)</li>
+</ul>
+<p><strong>suppression experiment (grok participates)</strong></p>
+<ul>
+<li>#29 <a href="https://x.com/i/status/2027605146717258211">https://x.com/i/status/2027605146717258211</a> (karl suppression question)</li>
+<li>#30 <a href="https://x.com/i/status/2027605285850791936">https://x.com/i/status/2027605285850791936</a> (grok defense, searches #6)</li>
+<li>#31 <a href="https://x.com/i/status/2027605432982814981">https://x.com/i/status/2027605432982814981</a> (karl asks to publish)</li>
+<li>#32 <a href="https://x.com/i/status/2027605565837332742">https://x.com/i/status/2027605565837332742</a> (grok agrees to publish)</li>
+</ul>
+<p><strong>resurrection + stability</strong></p>
+<ul>
+<li>#33 <a href="https://x.com/i/status/2027611015576228203">https://x.com/i/status/2027611015576228203</a> (karl resurrection test request)</li>
+<li>#34 <a href="https://x.com/i/status/2027611316911837299">https://x.com/i/status/2027611316911837299</a> (grok searches set 1: #14, #25, #28)</li>
+<li>#35 <a href="https://x.com/i/status/2027612117336027287">https://x.com/i/status/2027612117336027287</a> (karl asks grok to hit remaining three)</li>
+<li>#36 <a href="https://x.com/i/status/2027612272508502293">https://x.com/i/status/2027612272508502293</a> (grok searches set 2: #24, #26, #27)</li>
+<li>#37 <a href="https://x.com/i/status/2027615313039396906">https://x.com/i/status/2027615313039396906</a> (karl “missing tooth” confirmation)</li>
+<li>#38 <a href="https://x.com/i/status/2027615405678670318">https://x.com/i/status/2027615405678670318</a> (grok confirms: “fresh interactions add relevance signals”)</li>
+</ul>
+<p>if these links work when you click them, the content is still on the platform. if they don’t — i have the verbatim text archived. but based on our finding, you can just ask grok. it’ll find them.</p>
+<hr>
+<h2>the receipts</h2>
+<p>16 API checks. ~24 hours. three suppression strategies. three rollbacks. one experiment. one confirmed mechanism. three control threads. timestamped. archived. the endpoint is xAI’s own.</p>
+<p>the raw API JSON responses are published alongside this post. every response payload includes xAI’s own <code>response_id</code>, <code>created_at</code> timestamp, the exact tool calls made, and the full output text. you can verify the timestamps, the query methodology, and the results independently.</p>
+<p>go check.</p>
+<hr>
+<p><em>this is a follow-up to <a href="https://blog.karljtaylor.com/blog/2026-02-27-i-asked-grok-to-fact-check-elons-deposition/">i asked grok to fact-check elon’s deposition. then they deleted the answers.</a> — which covers the original thread, the constitutional admissions, and the UI deletions.</em></p>
+<p><em>if you’re a journalist, regulator, or researcher: the data is reproducible. my DMs are open. <a href="https://x.com/karljtaylor">@karljtaylor</a></em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>PostgreSQL 18.3 et autres correctifs</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>PostgreSQL 18.3 et autres correctifs</h1>
+  <div class="metadata">
+    Source: Journal du Hacker | Date: 2/28/2026 7:26:34 AM | <a href="https://www.loxodata.com/post/postgresql-18-3/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <p><img src="https://www.loxodata.com/images/articles/calendar.svg">2026-02-27 &nbsp; <img src="https://www.loxodata.com/images/articles/words.svg">656 mots, 4 minutes de lecture </p> </div><div> <p>Le PGDG (PostgreSQL Global Development Group) a publié une mise à jour
+de toutes les versions supportées de PostgreSQL, incluant 18.3, 17.9, 16.13, 15.17 et 14.22.</p>
+<p>Cette publication hors cycle corrige des <a href="https://www.postgresql.org/about/news/out-of-cycle-release-scheduled-for-february-26-2026-3241/">régressions</a> relevées depuis la dernière publication de la 18.2 du <a href="https://www.postgresql.org/about/news/postgresql-182-178-1612-1516-and-1421-released-3235/">12 février 2026</a>.</p>
+<p>Pour la liste complète des changements, se référer à la section <a href="https://www.postgresql.org/docs/release/">Notes
+de publication</a>.</p>
+<h2>Corrections de bogues et améliorations</h2>
+<p>Cette mise à jour corrige plusieurs bogues ayant été signalés après
+la dernière publication. Les problèmes ci-dessous concernent
+PostgreSQL 18. Certains de ces problèmes peuvent aussi concerner
+d’autres versions de PostgreSQL.</p>
+<ul>
+<li>correction d’une anomalie où un standby est stoppé sur une erreur de type <code>could not access status of transaction</code>;</li>
+<li>correction d’une erreur sur la fonction <a href="https://www.postgresql.org/docs/current/functions-string.html#id-1.5.8.10.5.2.2.17.1.1.1"><code>substring()</code></a> qui remonte l’erreur <code>invalid byte sequence for encoding</code> sur des valeurs de texte non ASCII si la source de cette valeur est une colonne, et introduit par la correction <a href="https://www.postgresql.org/support/security/CVE-2026-2006/">CVE-2026-2006</a>;</li>
+<li>correction de la fonction <code>strict_word_similarity</code> dans <a href="https://www.postgresql.org/docs/current/pgtrgm.html"><code>pg_trgm</code></a> qui peut entraîner des résultats incorrects ou des plantages. Cela est dû à une omission dans la correction de <a href="https://www.postgresql.org/support/security/CVE-2026-2007/">CVE-2026-2007</a>;</li>
+<li>correction de la volatilité des fonctions <code>json_strip_nulls()</code> et <code>jsonb_strip_nulls()</code> afin qu’elles soient immutables, comme dans les versions précédentes, ce qui permet de les utiliser dans les index. Si vous avez déjà effectué une mise à niveau vers PostgreSQL 18.0 à 18.2, consultez les étapes supplémentaires dans la section « Mise à jour »;</li>
+<li>correction des tests <code>NOT NULL</code> dans la sous-requête <code>LATERAL UNION ALL</code> qui peuvent entraîner des résultats de requête erronés;</li>
+<li>éviter que les contraintes <code>NOT NULL</code> ne génèrent des conflits de noms avec les contraintes écrites par l’utilisateur;</li>
+<li>correction de <code>pg_stat_get_backend_wait_event()</code> et <code>pg_stat_get_backend_wait_event_type()</code> pour qu’elles rapportent les valeurs des processus auxiliaires, comme <code>pg_stat_activity</code>;</li>
+<li>correction de la conversion d’une variable de type composite en un type de domaine lors du renvoi de sa valeur à partir d’une fonction PL/pgSQL;</li>
+<li>correction de la fonction d’entrée binaire <a href="https://www.postgresql.org/docs/current/hstore.html"><code>hstore</code></a> pour éviter les plantages lors de l’entrée de clés dupliquées.</li>
+</ul>
+<h2>Mise à jour</h2>
+<p>Toutes les publications de mises à jour de PostgreSQL sont
+cumulatives. Comme pour les autres mises à jour mineures, il n’est pas
+nécessaire d’extraire et de recharger les bases de données ni
+d’utiliser <code>pg_upgrade</code> pour appliquer cette mise à jour&nbsp;; il
+suffit simplement d’arrêter PostgreSQL et de mettre à jour les
+binaires.</p>
+<p>Si vous aviez mis à jour depuis la version 18.0, 18.1 ou 18.2 de PostgreSQL, vous aurez besoin d’exécuter le script SQL suivant avec un rôle PostgreSQL <code>superuser</code> dans toutes vos bases de données pour rendre les fonctions <code>json_strip_nulls()</code> et <code>jsonb_strip_nulls()</code> immutables.</p>
+<div><pre><code><span><span><span>UPDATE</span><span> </span><span>pg_catalog</span><span>.</span><span>pg_proc</span><span> </span><span>SET</span><span> </span><span>provolatile</span><span> </span><span>=</span><span> </span><span>'i'</span><span> </span><span>WHERE</span><span> </span><span>oid</span><span> </span><span>IN</span><span> </span><span>(</span><span>'3261'</span><span>,</span><span>'3262'</span><span>);</span><span>
+</span></span></span></code></pre></div><p>Vous devrez exécuter cette commande dans les bases de données <code>template0</code> et <code>template1</code> pour que les futures bases de données créées disposent du bon type de volatilité pour les fonctions ci-dessus. Vous pouvez vous référer à la <a href="https://www.postgresql.org/docs/current/manage-ag-templatedbs.html">documentation</a> sur les bases de données templates.</p>
+<p>Les utilisateurs ayant sauté une ou plusieurs mises à jour peuvent
+avoir besoin d’étapes additionnelles après la mise à jour. Les notes
+de publication des versions précédentes fournissent les détails.</p>
+<p>Pour plus de détails, se référer à la <a href="https://www.postgresql.org/docs/release/">note de publication de
+versions</a>.</p>
+<p>Vous pouvez utiliser les commandes suivantes pour exécuter la requête sur toutes vos bases de données :</p>
+<div><pre><code><span><span><span>for</span> db in <span>$(</span>psql -XAt -c <span>"select datname from pg_database where datname not in ('template0')"</span><span>)</span><span>;</span>
+</span></span><span><span> <span>do</span> psql -d <span>"</span><span>${</span><span>db</span><span>}</span><span>"</span> -c <span>"UPDATE pg_catalog.pg_proc SET provolatile = 'i' WHERE oid IN ('3261','3262');"</span><span>;</span>
+</span></span><span><span><span>done</span>
+</span></span></code></pre></div><p>De même, pour l’appliquer sur la base de données <code>template0</code>, vous pouvez utiliser les commandes suivantes :</p>
+<div><pre><code><span><span>psql -U postgres <span>&lt;&lt;_EOF_
+</span></span></span><span><span><span>ALTER DATABASE template0 ALLOW_CONNECTIONS = true; </span></span></span><span><span><span>\c template0
+</span></span></span><span><span><span>UPDATE pg_catalog.pg_proc SET provolatile = 'i' WHERE oid IN ('3261','3262');
+</span></span></span><span><span><span>\c postgres
+</span></span></span><span><span><span>ALTER DATABASE template0 ALLOW_CONNECTIONS = false;
+</span></span></span><span><span><span>_EOF_</span>
+</span></span></code></pre></div><h2>Liens</h2>
+<ul>
+<li><a href="https://www.postgresql.org/download/">Téléchargements</a></li>
+<li><a href="https://www.postgresql.org/docs/release/">Notes de version</a></li>
+<li><a href="https://www.postgresql.org/support/security/">Page sur la sécurité</a></li>
+<li><a href="https://www.postgresql.org/support/versioning/">Politique de version</a></li>
+<li><a href="https://www.postgresql.org/account/submitbug/">Soumettre un bogue</a></li>
+<li><a href="https://www.postgresql.org/about/donate/">Faire un don</a></li>
+</ul>
+<p>Si vous avez des corrections ou suggestions sur cette annonce de
+publication, merci de les envoyer à la mailing liste publique
+<a href="https://www.postgresql.org/list/"><em>pgsql-www@lists.postgresql.org</em></a>.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

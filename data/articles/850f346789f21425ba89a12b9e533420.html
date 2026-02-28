@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>roundamix</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>roundamix</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/28/2026 9:20:55 AM | <a href="https://pypi.org/project/roundamix/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2>Project description</h2> <div><p><img src="https://pypi-camo.freetls.fastly.net/c5785161516182b86c23881fb6e8a12c1aa25ba1/2e2f726f756e6461626f75742e676966" alt=""></p>
+<blockquote>
+<p>If you ever drove in Spain, you might notice their affinity for roundabouts. If you enter a system of 3 roundabouts in a village and take not of both the cars infront and behind you, by the last roundabout its highly probably you wont be between the same two neighbors.</p>
+</blockquote>
+<p>Instead of a black-box shuffle, you get a tunable process with real controls: routing bias, merge randomness, recirculation depth, and injection strategy. The result is near-classic shuffle quality with more visibility and control.</p>
+<ul>
+<li><strong>For data and systems teams:</strong> mix ordered streams before downstream processing without relying on one monolithic random shuffle step.</li>
+<li><strong>For simulation and research:</strong> study queueing, congestion, and mixing quality in one model.</li>
+<li><strong>For product and game systems:</strong> produce high-entropy but reproducible event ordering from seed-based runs.</li>
+</ul>
+<h3>Benchmark Snapshot</h3>
+<p>Our optimized roundabout shuffler is now close to standard random shuffling quality.</p>
+<ul>
+<li><strong>Kendall-tau:</strong> <code>0.4907</code> (optimized) vs <code>0.5030</code> (Fisher-Yates) -&gt; <strong>97.5%</strong> of Fisher-Yates mixing.</li>
+<li><strong>Chi-squared uniformity p-value:</strong> <code>0.5858</code> (optimized) vs <code>0.5546</code> (Fisher-Yates) -&gt; both pass.</li>
+<li><strong>Bit bias:</strong> <code>+0.0051</code> (optimized) vs <code>+0.0085</code> (Fisher-Yates) -&gt; both near zero.</li>
+<li><strong>Total variation distance:</strong> <code>0.0835</code> (optimized) vs <code>0.0824</code> (Fisher-Yates).</li>
+</ul>
+<p>In short: this is not just a metaphor. It delivers near Fisher-Yates quality while staying interpretable, tunable, and simulation-friendly.</p>
+<h3>Package Usage</h3>
+<pre>pip<span> </span>install<span> </span>-e<span> </span>.
+roundamix<span> </span>--profile<span> </span>optimized<span> </span>--size<span> </span><span>14</span><span> </span>--seed<span> </span><span>42</span>
+roundamix-benchmark<span> </span>--size<span> </span><span>14</span><span> </span>--trials<span> </span><span>300</span>
+</pre>
+<p>You can also run without installing:</p>
+<pre>python<span> </span>-m<span> </span>roundamix<span> </span>--profile<span> </span>optimized<span> </span>--size<span> </span><span>14</span><span> </span>--seed<span> </span><span>42</span>
+python<span> </span>-m<span> </span>roundamix.benchmark<span> </span>--size<span> </span><span>14</span><span> </span>--trials<span> </span><span>300</span>
+</pre>
+</div> </div><div> <h2>Download files</h2> <p>
+Download the file for your platform. If you're not sure which to choose, learn more about <a href="https://packaging.python.org/tutorials/installing-packages/" target="_blank" rel="noopener noreferrer">installing packages</a>. </p> <h3>
+Source Distribution </h3> <h3>
+Built Distribution </h3> <p>
+Filter files by name, interpreter, ABI, and platform. </p> <p>
+If you're not sure about the file name format, learn more about <a href="https://packaging.python.org/en/latest/specifications/binary-distribution-format/" target="_blank" rel="noopener noreferrer">wheel file names</a>. </p> <p>
+Copy a direct link to the current filters <a href="https://pypi.org/project/roundamix/#files"></a> </p> <div> <p>File name </p> <div> <p>Interpreter </p> <p>ABI </p> <p>Platform </p> </div> </div> </div><div> <h2>File details</h2> <p> Details for the file <code>roundamix-0.1.1.tar.gz</code>. </p> <h3>File metadata</h3> <div> <ul> <li> Download URL: <a href="https://files.pythonhosted.org/packages/53/15/f03443ea80360f8c49532585ff303eb96c90ad1abc88c6444fe2bac50164/roundamix-0.1.1.tar.gz">roundamix-0.1.1.tar.gz</a> </li> <li>Upload date: <time> Feb 28, 2026 </time></li> <li>
+Size: 16.2 kB </li> <li>Tags: Source</li> <li>
+Uploaded using Trusted Publishing? No </li> <li>Uploaded via: twine/6.2.0 CPython/3.14.3</li> </ul>
+</div>
+<h3>File hashes</h3>
+<div> <table> <caption>Hashes for roundamix-0.1.1.tar.gz</caption> <thead> <tr> <th>Algorithm</th> <th>Hash digest</th> <th></th> </tr> </thead> <tbody> <tr> <th>SHA256</th> <td> <code>44adca16943178938a41c29dfd29d9dc1653ef6c85f9d23652a85c1ce79d8ce9</code> </td> <td> </td> </tr> <tr> <th>MD5</th> <td> <code>9010528a5ae6ab7f60f4cc50695fa4a3</code> </td> <td> </td> </tr> <tr> <th>BLAKE2b-256</th> <td> <code>5315f03443ea80360f8c49532585ff303eb96c90ad1abc88c6444fe2bac50164</code> </td> <td> </td> </tr> </tbody> </table> <p>
+<a href="https://pip.pypa.io/en/stable/topics/secure-installs/#hash-checking-mode" target="_blank" rel="noopener noreferrer">See more details on using hashes here.</a></p>
+</div>
+</div><div> <h2>File details</h2> <p> Details for the file <code>roundamix-0.1.1-py3-none-any.whl</code>. </p> <h3>File metadata</h3> <div> <ul> <li> Download URL: <a href="https://files.pythonhosted.org/packages/74/60/ec8c1ef8fdf8cd77e66d847a90e4c70c61df08ba2cdbaf584f045f8946a7/roundamix-0.1.1-py3-none-any.whl">roundamix-0.1.1-py3-none-any.whl</a> </li> <li>Upload date: <time> Feb 28, 2026 </time></li> <li>
+Size: 16.0 kB </li> <li>Tags: Python 3</li> <li>
+Uploaded using Trusted Publishing? No </li> <li>Uploaded via: twine/6.2.0 CPython/3.14.3</li> </ul>
+</div>
+<h3>File hashes</h3>
+<div> <table> <caption>Hashes for roundamix-0.1.1-py3-none-any.whl</caption> <thead> <tr> <th>Algorithm</th> <th>Hash digest</th> <th></th> </tr> </thead> <tbody> <tr> <th>SHA256</th> <td> <code>35d4fb0d8f75a9283cadecd63ef5dacf612eda8f7e591dc6bd225eff176923e6</code> </td> <td> </td> </tr> <tr> <th>MD5</th> <td> <code>c05bfcd3d06d3a66d042dd1f6763f37f</code> </td> <td> </td> </tr> <tr> <th>BLAKE2b-256</th> <td> <code>7460ec8c1ef8fdf8cd77e66d847a90e4c70c61df08ba2cdbaf584f045f8946a7</code> </td> <td> </td> </tr> </tbody> </table> <p>
+<a href="https://pip.pypa.io/en/stable/topics/secure-installs/#hash-checking-mode" target="_blank" rel="noopener noreferrer">See more details on using hashes here.</a></p>
+</div>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

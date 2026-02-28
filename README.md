@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Sat, 28 Feb 2026 06:29:08 GMT
+**Last Update:** Sat, 28 Feb 2026 10:16:11 GMT
 
 ---
 
@@ -297,27 +297,83 @@ To address this, Cherny's team maintains a single file named CLAUDE.md in their 
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="ai" data-source="Hugging Face Blog">
-
-### 10. `FR` [We Got Claude to Fine-Tune an Open Source LLM](data/articles/e4d18feec6ae5b53de8bf454a116fc70.html)
-**Source:** Hugging Face Blog
-Back to Articles Setup and Install Claude Code Codex Gemini CLI Connect to Hugging Face Your First Training Run Instruct the coding agent to fine tune Review Before Submitting Track Progress Use Your Model Training Methods Supervised Fine-Tuning (SFT) Direct Preference Optimization (DPO) Group Relative Policy Optimization (GRPO) Hardware and Cost Model Size to GPU Mapping Demo vs Production Dataset Validation Monitoring Training Converting to GGUF What's Next Resources We gave Claude the ability to fine-tune language models using a new tool called Hugging Face Skills. Not just write training scripts, but to actually submit jobs to cloud GPUs, monitor progress, and push finished models to the Hugging Face Hub. This tutorial shows you how it works and how to use it yourself. Claude Code can use "skills"—packaged instructions, scripts, and domain knowledge—to accomplish specialized tasks. The hf-llm-trainer skill teaches Claude everything it needs to know about training: which GPU to pick for your model size, how to configure Hub authentication, when to use LoRA versus full fine-tuning, and how to handle the dozens of other decisions that go into a successful training run. With this skill, you can tell Claude things like:
-Fine-tune Qwen3-0.6B on the dataset open-r1/codeforces-cots And Claude will: Validate your dataset format
-Select appro
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 11. `FR` [Anthropic refuse un ultimatum du Pentagone sur l’usage militaire de son IA Claude](data/articles/11308f4cb8ade1452a7dffc1d857e23c.html)
+### 10. `FR` [Anthropic refuse un ultimatum du Pentagone sur l’usage militaire de son IA Claude](data/articles/11308f4cb8ade1452a7dffc1d857e23c.html)
 **Source:** Siecle Digital
 Aux États-Unis, Anthropic vient d’ouvrir un bras de fer inédit avec le ministère de la Défense, qui montre que l’intelligence artificielle s’invite désormais au coeur des arbitrages géopolitiques. En effet, comme le rapporte Le Figaro, l’administration Trump demande d’autoriser une utilisation sans restriction de Claude, son modèle d’IA, par le Pentagone. Une requête que l’entreprise […]
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 11. `EN` [LeRobot v0.4.0: Supercharging OSS Robot Learning](data/articles/9d667127d13fe08e8c0932e589340ee1.html)
+**Source:** Hugging Face Blog
+Back to Articles TL;DR Table-of-Contents Datasets: Ready for the Next Wave of Large-Scale Robot Learning What's New in Datasets v3.0? New Feature: Dataset Editing Tools! Simulation Environments: Expanding Your Training Grounds LIBERO Support Meta-World Integration Codebase: Powerful Tools For Everyone The New Pipeline for Data Processing Multi-GPU Training Made Easy Policies: Unleashing Open-World Generalization PI0 and PI0.5 GR00T N1.5 Robots: A New Era of Hardware Integration with the Plugin System Key Benefits Reachy 2 Integration Phone Integration The Hugging Face Robot Learning Course Deep Dive: The Modern Robot Learning Tutorial Final thoughts from the team We're thrilled to announce a series of significant advancements across LeRobot, designed to make open-source robot learning more powerful, scalable, and user-friendly than ever before! From revamped datasets to versatile editing tools, new simulation environments, and a groundbreaking plugin system for hardware, LeRobot is continuously evolving to meet the demands of cutting-edge embodied AI. TL;DR LeRobot v0.4.0 delivers a major upgrade for open-source robotics, introducing scalable Datasets v3.0, powerful new VLA models like PI0.5 and GR00T N1.5, and a new plugin system for easier hardware integration. The release also adds support for LI
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 12. `EN` [Hugging Face and VirusTotal collaborate to strengthen AI security](data/articles/e937302707a38d54a29f79a6d858aae2.html)
+**Source:** Hugging Face Blog
+Back to Articles Why this matters How the collaboration works Benefits for the community Join us We’re excited to announce a new collaboration between Hugging Face and VirusTotal, the world’s leading threat-intelligence and malware analysis platform.
+This collaboration enhances the security of files shared across the Hugging Face Hub, helping protect the machine learning community from malicious or compromised assets. As of today HF Hub hosts 2.2 Million Public model artifacts. As we continue to grow into the world’s largest open platform for Machine Learning models and datasets, ensuring that shared assets remain safe is essential.
+Threats can take many forms: Malicious payloads disguised as model files or archives
+Files that have been compromised before upload
+Binary assets linked to known malware campaigns
+Dependencies or serialized objects that execute unsafe code when loaded By collaborating with VirusTotal, we’re adding an extra layer of protection and visibility by enabling files shared through H
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 13. `EN` [Google Cloud C4 Brings a 70% TCO improvement on GPT OSS with Intel and Hugging Face](data/articles/55fdbfbced3dc38ec5da8d6bc7860c4f.html)
+**Source:** Hugging Face Blog
+Back to Articles Intel and Hugging Face collaborated to demonstrate the real-world value of upgrading to Google’s latest C4 Virtual Machine (VM) running on Intel Xeon 6 processors (codenamed Granite Rapids (GNR)). We specifically wanted to benchmark improvements in the text generation performance of OpenAI GPT OSS Large Language Model(LLM). The results are in, and they are impressive, demonstrating a 1.7x improvement in Total Cost of Ownership(TCO) over the previous-generation Google C3 VM instances. The Google Cloud C4 VM instance further resulted in: 1.4x to 1.7x TPOT throughput/vCPU/dollar
+Lower price per hour over C3 VM Introduction GPT OSS is a common name for an open-source Mixture of Experts (MoE) model released by OpenAI. An MoE model is a deep neural network architecture that uses specialized “expert” sub-networks and a “gating network” to decide which experts to use for a given input. MoE models allow you to scale your model capacity efficiently without linearly scaling compute costs. They also allow for specialization, where different “experts” learn different skills, allowing them to adapt to diverse data distributions.
+Even with very large parameters, only a small subset of experts is activated per token, making CPU inference viable.
+Intel and Hugging Face collaborated to merge an expert execution optimization (PR #40304)
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 14. `EN` [Smol2Operator: Post-Training GUI Agents for Computer Use](data/articles/3a64644c5419c6665bca960445b262df.html)
+**Source:** Hugging Face Blog
+Back to Articles TL;DR: This work shows how a lightweight vision–language model can acquire GUI-grounded skills and evolve into an agentic GUI coder. We release all training recipes, data-processing tools, resulting model, demo and datasets to enable full reproducibility and foster further research . Find the collection here. This video demonstrates the model obtained through the recipe described below, executing a task end-to-end. Table of Contents Introduction
+1. Data Transformation and Unified Action Space
+The Challenge of Inconsistent Action Spaces
+Our Unified Approach
+Example Data Transformation
+Custom Action Space Adaptation with Action Space Converter
+Key Features
+Usage Example
+Transformed and Released Datasets 2. Phase 1: From Zero to Perception
+Training Data
+Optimization Experiments
+Image Resolution and Coordinate System Analysis
+Key Findings
+Phase 1 Results 3. Phase 2: From Perception to Cognition
+Training Data
+Phase 2 Results 4. All you need is Open Source
+5. Conclusion
+What's Next? Introduction Graphical User Interface (GUI) automation is one of the most challenging frontiers in computer vision. Developing models that see and interact with user interfaces enables AI agents to navigate mobile, desktop, and web platforms. This will reshape the future of digital interaction.
+In th
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 15. `EN` [SAIR: Accelerating Pharma R&amp;D with AI-Powered Structural Intelligence](data/articles/b3dfa77083e8e00e297f4b5616e187d9.html)
+**Source:** Hugging Face Blog
+Back to Articles Accessing SAIR 1. Install essentials 2. Authenticate 3. Load the main table (sair.parquet) 4. (Optional) List available structure archives 5. (Optional) Download and extract structures Questions? This summer, SandboxAQ released the Structurally Augmented IC50 Repository (SAIR), the largest dataset of co-folded 3D protein-ligand structures paired with experimentally measured IC₅₀ labels, directly linking molecular structure to drug potency and overcoming a longstanding scarcity in training data. This dataset is now available on Hugging Face, and for the first time, researchers have open access to more than 5 million AI‑generated, high‑accuracy protein-ligand 3D structures, each paired with validated empirical binding potency data. SAIR is an open-sourced dataset and is publicly available for free under a permissive CC BY 4.0 license, making it immediately actionable for commercial and non-commercial R&amp;D pipelines. More than just a dataset, SAIR is a strategic asset that bridges the long-standing data gap in AI-powered drug design. It empowers pharmaceutical, biotech, and tech‑bio leaders to accelerate R&amp;D, expand target horizons, and supercharge AI models – moving more of the costly, lengthy drug design and optimization from the wet lab to in silico. This means shorter hit‑to‑lead timelines, more efficient lead optimization, fewer
+
+</div>
+
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 12. `FR` [Londres s’impose comme capitale européenne de l’IA après la décision stratégique d’OpenAI](data/articles/7e5465b6bbf699bd0db8ed9edfc0ec39.html)
+### 16. `FR` [Londres s’impose comme capitale européenne de l’IA après la décision stratégique d’OpenAI](data/articles/7e5465b6bbf699bd0db8ed9edfc0ec39.html)
 **Source:** Siecle Digital
 Si l’Europe veut s’imposer comme un terrain stratégique pour les géants de l’intelligence artificielle, entre les ambitions politiques, les talents et les infrastructures technologiques, les capitales rivalisent pour attirer les laboratoires de recherche les plus avancés. Comme le rapporte Reuters, OpenAI a décidé de transformer son bureau londonien en son plus grand centre de recherche […]
 
@@ -325,15 +381,31 @@ Si l’Europe veut s’imposer comme un terrain stratégique pour les géants de
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 13. `FR` [Google transforme Gemini en agent capable d’exécuter des tâches directement dans vos apps](data/articles/7e635342a0e52ce577f6ad473710a96c.html)
+### 17. `FR` [Google transforme Gemini en agent capable d’exécuter des tâches directement dans vos apps](data/articles/7e635342a0e52ce577f6ad473710a96c.html)
 **Source:** Siecle Digital
 Avec une nouvelle mise à jour annoncée par Google, Gemini change de dimension sur Android, l’intelligence artificielle devient un véritable agent capable d’agir directement dans les applications. Une évolution qui esquisse le futur de l’assistance mobile, où l’IA ne se contente plus de répondre, mais exécute. Cette fonctionnalité marque une étape supplémentaire dans la stratégie […]
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
+
+### 18. `EN` [Scaling Feature Engineering Pipelines with Feast and Ray](data/articles/89777976b68a9f43472626b15f3a4e44.html)
+**Source:** Towards Data Science
+Utilizing feature stores like Feast and distributed compute frameworks like Ray in production machine learning systems
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
+
+### 19. `EN` [Optimizing Deep Learning Models with SAM](data/articles/c73c04f1c1b9561fddfa6ad69749900d.html)
+**Source:** Towards Data Science
+A deep dive into the Sharpness-Aware-Minimization (SAM) algorithm and how it improves the generalizability of modern deep learning models
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 14. `EN` [The Future of the Global Open-Source AI Ecosystem: From DeepSeek to AI+](data/articles/74bdaef6b67f320ff6161c79d469de34.html)
+### 20. `EN` [The Future of the Global Open-Source AI Ecosystem: From DeepSeek to AI+](data/articles/74bdaef6b67f320ff6161c79d469de34.html)
 **Source:** Hugging Face Blog
 Back to Articles China's Organic Open Source AI Ecosystem The Established The Normalcy of "DeepSeek Moments" Foundations for the Future Looking Back to Look Forward This is the third and final blog in a three-part series on China's open source community's historical advancements since January 2025's "DeepSeek Moment." The first blog on strategic changes and open artifact growth is available here, and the second blog on architectural and hardware shifts is available here.
 In this third article, we examine paths and trajectories of prominent Chinese AI organizations, and posit future directions for open source.
@@ -343,7 +415,7 @@ For AI researchers and developers contributing to and relying on the open source
 
 <div class="article-item" data-lang="nl" data-category="ai" data-source="Hugging Face Blog">
 
-### 15. `EN` [We Got Claude to Build CUDA Kernels and teach open models!](data/articles/419cdcf844282d47cb9508b7897864c6.html)
+### 21. `EN` [We Got Claude to Build CUDA Kernels and teach open models!](data/articles/419cdcf844282d47cb9508b7897864c6.html)
 **Source:** Hugging Face Blog
 Back to Articles What are agent skills? 1. Get the teacher (Claude Opus 4.5) to build a kernel 2. Make an agent skill from the trace 3. Take your skill to an open source, smaller, or cheaper model Deep dive tutorial into building kernels with agent skills Setup and Install Skill Generation Generate the Skill Evaluate on a Different Model How the evaluation in upskill works What's Next Resources The best thing about agent skills is upskilling your agents on hard problems. There are two ways to look at that: You can take Opus 4.5 or other SOTA models and tackle the hardest problems out there. You can take models that run on your laptop and upskill them to harder problems. In this blog post, we’ll show you how to take on the latter. This blog post walks through the process of using a new tool, upskill, to generate and evaluate agent skills with large models and use them with smaller models. We will benchmark upskill on the task of writing CUDA kernels for diffusers models, but the process is generally useful for cutting costs, or using smaller models on hard and domain-specific problems. What are agent skills? In case you missed it, agent skills are taking the coding agent game by storm. In fact, they’re a straightforward concept to define model context as files, like instructions as markdown and code as scripts. The file for
 
@@ -351,7 +423,7 @@ Back to Articles What are agent skills? 1. Get the teacher (Claude Opus 4.5) to 
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 16. `EN` [One Year Since the “DeepSeek Moment”](data/articles/0235c23c484ad0b5bad50b080341d27d.html)
+### 22. `EN` [One Year Since the “DeepSeek Moment”](data/articles/0235c23c484ad0b5bad50b080341d27d.html)
 **Source:** Hugging Face Blog
 Back to Articles The Seeds of China’s Organic Open Source AI Ecosystem DeepSeek R1: A Turning Point From DeepSeek to AI+: Strategic Realignmentt Global Reception and Response This is the first blog in a series that will examine China’s open source community’s historical advancements in the past year and its reverberations in shaping the entire ecosystem. Much of 2025’s progress can be traced back to January’s “DeepSeek Moment”, when Hangzhou-based AI company DeepSeek released their R-1 model. The first blog addresses strategic changes and the explosion of new open models and open source players. The second covers architectural and hardware choices largely by Chinese companies made in the wake of a growing open ecosystem, available here. The third analyzes prominent organizations’ trajectories and the future of the global open source ecosystem, available here.
 For AI researchers and developers contributing to and relying on the open source ecosystem and for policymakers understanding the rapidly changing environment, there has never been a better time to build and release open models and artifacts, as proven by the past year’s immense growth catalyzed by DeepSeek. Notably, geopolitics has driven adoption; while models developed in China have been dominating across metrics throughout 2025 and new players leapfrogging each other, Western AI communities are see
@@ -360,7 +432,7 @@ For AI researchers and developers contributing to and relying on the open source
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 17. `EN` [Introducing Falcon-H1-Arabic: Pushing the Boundaries of Arabic Language AI with Hybrid Architecture](data/articles/650e8a5e81a87d883c496555c8dbdd26.html)
+### 23. `EN` [Introducing Falcon-H1-Arabic: Pushing the Boundaries of Arabic Language AI with Hybrid Architecture](data/articles/650e8a5e81a87d883c496555c8dbdd26.html)
 **Source:** Hugging Face Blog
 Back to Articles Discover more in our official blogpost, featuring an interactive experience The journey of building world-class Arabic language models has been one of continuous learning and iteration. Today, we're excited to announce Falcon-H1-Arabic, our most advanced Arabic language model family to date, representing a significant leap forward in both architecture and capabilities. This release embodies months of research, community feedback, and technical innovation, culminating in three powerful models that set new standards for Arabic natural language processing. Building on Success: The Evolution from Falcon-Arabic When we launched Falcon-Arabic a few months ago, the response from the community was both humbling and enlightening. Developers, researchers and students across the Arab world used the model for real use cases, pushing them to its limits and providing invaluable feedback. We learned where the model excelled and, more importantly, where it struggled. Long-context understanding, dialectal variations, mathematical reasoning, and domain-specific knowledge emerged as key areas requiring deeper attention.
 We didn't just want to make incremental improvements, we wanted to fundamentally rethink our approach. The result is Falcon-H1-Arabic, a model family that addresses every piece of feedback we received while
@@ -369,7 +441,7 @@ We didn't just want to make incremental improvements, we wanted to fundamentally
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 18. `EN` [Join the AMD Open Robotics Hackathon](data/articles/3272be1f91a86ef16f6df887502cf674.html)
+### 24. `EN` [Join the AMD Open Robotics Hackathon](data/articles/3272be1f91a86ef16f6df887502cf674.html)
 **Source:** Hugging Face Blog
 Back to Articles Looking to show off your robotics aptitude? The AMD Open Robotics Hackathon hosted by AMD, Hugging Face, and Data Monsters is the place to do it. Whether you’re a student, hobbyist, startup founder, or seasoned engineer, this event brings together makers, coders, and roboticists for a fast-paced, hands-on competition that turns bold ideas into functioning demos.
 The first of two in-person hackathons will take place from December 5-7, 2025 in Tokyo Japan. Our next stop will be in Paris France from December 12-14, 2025.
@@ -386,7 +458,7 @@ Hardware will be provided to contestants in the form of SO-101 robotics kits, AM
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 19. `EN` [On the Shifting Global Compute Landscape](data/articles/376820da5860b54a24a128ba5e2c5d09.html)
+### 25. `EN` [On the Shifting Global Compute Landscape](data/articles/376820da5860b54a24a128ba5e2c5d09.html)
 **Source:** Hugging Face Blog
 Back to Articles Summary The State of Global Compute The Beginning of a Rewiring The Reaction: Powering Chinese AI How China’s Compute Landscape Catalyzed the Cambrian Explosion of Open Models Advances in Compute-Constrained Environments Pushing the Technical Frontier The Aftermath: Hardware, Software and Soft Power From Sufficient to Demanded Domestic Synergy A New Software Landscape Looking Ahead Acknowledgements Appendix: A Timeline of Chip Usage and Controls Summary The status quo of AI chip usage, that was once almost entirely U.S.-based, is changing. China’s immense progress in open-weight AI development is now being met with rapid domestic AI chip development. In the past few months, highly performant open-weight AI models’ inference in China has started to be powered by chips such as Huawei’s Ascend and Cambricon, with some models starting to be trained using domestic chips. There are two large implications for policymakers and AI researchers and developers respectively: U.S. export controls correlates with expedited Chinese chip production, and chip scarcity in China likely incentivized many of the innovations that are open-sourced and shaping global AI development.
 China’s chip development correlates highly with stronger export controls from the U.S. Under uncertainty of chip access, Chinese companies have innovated wit
@@ -395,7 +467,7 @@ China’s chip development correlates highly with stronger export controls from 
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 20. `EN` [How to Build a Healthcare Robot from Simulation to Deployment with NVIDIA Isaac for Healthcare](data/articles/c4aeff990b2385fc3ef945306d231e9a.html)
+### 26. `EN` [How to Build a Healthcare Robot from Simulation to Deployment with NVIDIA Isaac for Healthcare](data/articles/c4aeff990b2385fc3ef945306d231e9a.html)
 **Source:** Hugging Face Blog
 Back to Articles A hands-on guide to collecting data, training policies, and deploying autonomous medical robotics workflows on real hardware SO-ARM Starter Workflow; Building an Embodied Surgical Assistant Technical Implementation Sim-to-Real Mixed Training Approach Hardware Requirements Data Collection Implementation Simulation Teleoperation Controls Model Training Pipeline End-to-End Sim Collect–Train–Eval Pipelines Generate Synthetic Data in Simulation Train and Evaluate Policies Convert Models to TensorRT Getting Started Resources A hands-on guide to collecting data, training policies, and deploying autonomous medical robotics workflows on real hardware Simulation has been a cornerstone in medical imaging to address the data gap. However, in healthcare robotics until now, it's often been too slow, siloed, or difficult to translate into real-world systems. That’s now changing. With new advances in GPU-accelerated simulation and digital twins, developers can design, test, and validate robotic workflows entirely in virtual environments - reducing prototyping time from months to days, improving model accuracy, and enabling safer, faster innovation before a single device reaches the operating room.
 That's why NVIDIA introduced Isaac for Healthcare earlier this year, a developer framework for AI healthcare robotics, that enables develope
@@ -404,16 +476,68 @@ That's why NVIDIA introduced Isaac for Healthcare earlier this year, a developer
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 21. `EN` [huggingface_hub v1.0: Five Years of Building the Foundation of Open Machine Learning](data/articles/10e206b36474a5194b9af21801258cd1.html)
+### 27. `EN` [huggingface_hub v1.0: Five Years of Building the Foundation of Open Machine Learning](data/articles/10e206b36474a5194b9af21801258cd1.html)
 **Source:** Hugging Face Blog
 Back to Articles The Story Behind the Library The Foundation Years (2020-2021) The Great Shift: Git to HTTP (2022) An Expanding API Surface (2022–2024) Ready. Xet. Go! (2024-2025) Measuring Growth and Impact Building for the Next Decade Modern HTTP Infrastructure with httpx and hf_xet Agents Made Simple with MCP and Tiny-Agents A Fully-Featured CLI for Modern Workflows Cleaning House for the Future The Migration Guide Acknowledgments TL;DR: After five years of development, huggingface_hub has reached v1.0 - a milestone that marks the library's maturity as the Python package powering 200,000 dependent libraries and providing core functionality for accessing over 2 million public models, 0.5 million public datasets, and 1 million public Spaces. This release introduces breaking changes designed to support the next decade of open machine learning, driven by a global community of almost 300 contributors and millions of users. We highly recommend upgrading to v1.0 to benefit from major performance improvements and new capabilities.
 pip install --upgrade huggingface_hub Major changes in this release include the migration to httpx as the backend library, a completely redesigned hf CLI (which replaces the deprecated huggingface-cli) featuring a Typer-based interface with a significantly expanded feature set, and full adoption of hf_xet for file t
 
 </div>
 
+<div class="article-item" data-lang="nl" data-category="ai" data-source="Hugging Face Blog">
+
+### 28. `EN` [Get your VLM running in 3 simple steps on Intel CPUs](data/articles/4076498c2a777b9b673cd6a4ddc0ac36.html)
+**Source:** Hugging Face Blog
+Back to Articles With the growing capability of large language models (LLMs), a new class of models has emerged: Vision Language Models (VLMs). These models can analyze images and videos to describe scenes, create captions, and answer questions about visual content.
+While running AI models on your own device can be difficult as these models are often computationally demanding, it also offers significant benefits: including improved privacy since your data stays on your machine, and enhanced speed and reliability because you're not dependent on an internet connection or external servers. This is where tools like Optimum Intel and OpenVINO come in, along with a small, efficient model like SmolVLM. In this blog post, we'll walk you through three easy steps to get a VLM running locally, with no expensive hardware or GPUs required (though you can run all the code samples from this blog post on Intel GPUs). Deploy your model with Optimum Small models like SmolVLM are built for low-resource consumption, but they can be further optimized. In this blog post we will see how to optimize your model, to lower memory usage and speedup inference, making it more efficient for deployment on devices with limited resources.
+To follow this tutorial, you need to install optimum and openvino, which you can do with:
+pip install optimum-intel[openvino] transf
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 22. `EN` [Measuring Open-Source Llama Nemotron Models on DeepResearch Bench](data/articles/92e6cf93ec91513708d696cfc86ea6fd.html)
+### 29. `EN` [Fine-tune Any LLM from the Hugging Face Hub with Together AI](data/articles/12060dce30fd7f6c8882ca870577eff5.html)
+**Source:** Hugging Face Blog
+Back to Articles Getting Started in 5 Minutes How It Works: What This Means for Developers How Teams Are Using This Feature? Show Us What You Build! The pace of AI development today is breathtaking. Every single day, hundreds of new models appear on the Hugging Face Hub, some are specialized variants of popular base models like Llama or Qwen, others feature novel architectures or have been trained from scratch for specific domains. Whether it's a medical AI trained on clinical data, a coding assistant optimized for a particular programming language, or a multilingual model fine-tuned for specific cultural contexts, the Hugging Face Hub has become the beating heart of open-source AI innovation.
+But here's the challenge: finding an amazing model is just the beginning. What happens when you discover a model that's 90% perfect for your use case, but you need that extra 10% of customization? Traditional fine-tuning infrastructure is complex, expensive, and often requires significant DevOps expertise to set up and maintain.
+This is exactly the gap that Together AI and Hugging Face are bridging today. We're announcing a powerful new capability that makes the entire Hugging Face Hub available for fine-tuning using Together AI's infrastructure. Now, any compatible LLM on the Hub, whether it's from Meta or an individual contributor, can be fine-tuned with
+
+</div>
+
+<div class="article-item" data-lang="es" data-category="ai" data-source="Hugging Face Blog">
+
+### 30. `EN` [mmBERT: ModernBERT goes Multilingual](data/articles/03f3c0f73735e0d065aa18b587bc69d5.html)
+**Source:** Hugging Face Blog
+Back to Articles TL;DR Training Data Training Recipe and Novel Components Architecture Three-Phase Training Approach Novel Training Techniques Results Natural Language Understanding (NLU) Retrieval Performance Learning Languages in the Decay Phase Efficiency Improvements Usage Examples Fine-tuning Examples Encoders Model Family and Links TL;DR This blog post introduces mmBERT, a state-of-the-art massively multilingual encoder model trained on 3T+ tokens of text in over 1800 languages. It shows significant performance and speed improvements over previous multilingual models, being the first to improve upon XLM-R, while also developing new strategies for effectively learning low-resource languages. mmBERT builds upon ModernBERT for a blazingly fast architecture, and adds novel components to enable efficient multilingual learning.
+If you are interested in trying out the models yourself, some example boilerplate is available at the end of this blogpost! Training Data Figure 1: the training data is progressively annealed to include more languages and more uniform sampling throughout training. mmBERT was trained on a carefully curated multilingual dataset totaling over 3T tokens across three distinct training phases. The foundation of our training data consists of three primary open-source and high
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 31. `EN` [Kimina-Prover-RL](data/articles/b41b550c30c6e72e6c9fb66a9fd77079.html)
+**Source:** Hugging Face Blog
+Back to Articles A slimmed-down training pipeline from Kimina Prover, with core features and full compatibility with verl. We are happy to introduce kimina-prover-rl, an open-source training pipeline for formal theorem proving in Lean 4, based on a structured reasoning-then-generation paradigm inspired by DeepSeek-R1.
+This training pipelinee is a simplified version of the system we used to train Kimina Prover, preserving the key components of the system and offering full compatibility with the open-source Verl framework.
+It is released as part of a fork of Verl containing the complete training recipe in recipe/kimina-prover-rl, allowing anyone to reproduce our experiments or adapt the setup to their own models and datasets. All information to setup and launch the pipeline can be found in the README of the recipe.
+As a result of this training pipeline, we are releasing two models: AI-MO/Kimina-Prover-RL-1.7B, a 1.7B-parameter model that achieves 76.63% Pass@32 on the MiniF2F benchmark — setting a new state of the art for open-source models in this size category
+AI-MO/Kimina-Prover-RL-0.6B, a 0.6B-parameter model that achieves 71.30% Pass@32 on the MiniF2F benchmark — also setting a new state of the art for open-source models in this size category. Introduction kimina-prover-rl i
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 32. `EN` [Neural Super Sampling is here!](data/articles/2f93aa5f10c47d4d85d789acc078f68d.html)
+**Source:** Hugging Face Blog
+Back to Articles Elevated by machine learning Learn about our NSS Model How we trained the model Get started experimenting with NSS today! Neural Super Sampling (NSS), a next-generation AI-powered upscaling solution from Arm is released for graphics and gaming developers to start experimenting today! Elevated by machine learning NSS is designed for real-time performance on future mobile devices with Arm Neural Technology. However, latency depends on implementation factors such as GPU configuration, resolution, and use case. In our Enchanted Castle demo video below, NSS reduced GPU workload by 50 percent. The model rendered at 540p and upscaled to 1080p in just 4ms in sustained performance setup. Your browser does not support the video tag. Learn about our NSS Model Neural Super Sampling (NSS) is a parameter prediction model for real-time temporal super sampling developed by Arm, optimized for execution on Neural Accelerators (NX) in mobile GPUs. It enables high-resolution rendering at a lower compute cost by reconstructing high-quality output frames from low-resolution temporal inputs. NSS is particularly suited for mobile gaming, XR, and other power-constrained graphics use cases.
+Get started with our NSS model today.
+If you want to go deeper check out the following resources: Technical Blog: How Neural Super Sampl
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 33. `EN` [Measuring Open-Source Llama Nemotron Models on DeepResearch Bench](data/articles/92e6cf93ec91513708d696cfc86ea6fd.html)
 **Source:** Hugging Face Blog
 Measuring Open-Source Llama Nemotron Models on DeepResearch Bench
 
@@ -421,7 +545,7 @@ Measuring Open-Source Llama Nemotron Models on DeepResearch Bench
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 23. `FR` [Mistral AI s’allie à Accenture pour accélérer le déploiement massif de l’IA en entreprise](data/articles/75b1c8d0f1b9c5a8446509a6c994a3d1.html)
+### 34. `FR` [Mistral AI s’allie à Accenture pour accélérer le déploiement massif de l’IA en entreprise](data/articles/75b1c8d0f1b9c5a8446509a6c994a3d1.html)
 **Source:** Siecle Digital
 Alors que de nombreuses entreprises multiplient les expérimentations autour de l’intelligence artificielle, le passage à l’échelle reste encore complexe, comme en témoigne une récente étude du MIT. Entre les projets avortés qui s’enchaînent et les déploiements réellement industrialisés, le fossé est bien réel. Face à ce constat, les éditeurs d’IA cherchent de nouveaux relais de […]
 
@@ -429,23 +553,63 @@ Alors que de nombreuses entreprises multiplient les expérimentations autour de 
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
 
-### 24. `FR` [Fou, faucon calculateur et Dr Jekyll et M. Hyde : les profils terrifiants des IA quand elles ont des armes nucléaires](data/articles/ccf53511e4e8a64f41e38f0899842225.html)
+### 35. `FR` [Fou, faucon calculateur et Dr Jekyll et M. Hyde : les profils terrifiants des IA quand elles ont des armes nucléaires](data/articles/ccf53511e4e8a64f41e38f0899842225.html)
 **Source:** Numerama Tech
 Dans le film culte Wargames, un supercalculateur menaçait de lancer une guerre nucléaire. En 2026, la réalité dresse un constat tout aussi plus inquiétant : placées aux commandes de simulations géopolitiques, les intelligences artificielles de pointe comme GPT-5.2 ou Gemini 3 Flash choisissent l'escalade atomique dans 95 % des cas.
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
+
+### 36. `EN` [Detecting and Editing Visual Objects with Gemini](data/articles/24880b7593e202ca7e44643e7081a138.html)
+**Source:** Towards Data Science
+A practical guide to identifying, restoring, and transforming elements within your images
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
+
+### 37. `EN` [Take a Deep Dive into Filtering in DAX](data/articles/5e082b78e95fac43d2d7a1af832c25db.html)
+**Source:** Towards Data Science
+Have you ever wondered what happens when you apply a filter in a DAX expression? Well, Today I will take you on a deep dive into this fascinating topic, with examples to help you learn something new and surprising.
+
+</div>
+
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 25. `FR` [L’intelligence artificielle menace-t-elle vraiment le modèle économique des éditeurs de logiciels ?](data/articles/fc7956414759fcd90b0a4ceb06f7dbb3.html)
+### 38. `FR` [L’intelligence artificielle menace-t-elle vraiment le modèle économique des éditeurs de logiciels ?](data/articles/fc7956414759fcd90b0a4ceb06f7dbb3.html)
 **Source:** Siecle Digital
 La technologie n’est plus le refuge automatique qu’elle était devenue. Après plusieurs années d’euphorie, portées par la promesse d’une intelligence artificielle capable de transformer tous les secteurs, les marchés ont brutalement changé de ton récemment. L’IA, hier moteur incontesté de croissance, est soudain apparue comme une menace potentielle pour une partie des modèles économiques des […]
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
+
+### 39. `EN` [Aliasing in Audio, Easily Explained: From Wagon Wheels to Waveforms](data/articles/a276735be239f1afe76b64f5cfcb9741.html)
+**Source:** Towards Data Science
+Understanding the foundational distortion of digital audio from first principles, with worked examples and visual intuition
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
+
+### 40. `EN` [AI Bots Formed a Cartel. No One Told Them To.](data/articles/f8f4ae7c73e359365ee112ab2ad9c2af.html)
+**Source:** Towards Data Science
+Inside the research that shows algorithmic price-fixing isn't a bug in the code. It's a feature of the math.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
+
+### 41. `EN` [Build Effective Internal Tooling with Claude Code](data/articles/27e7f8b6a9ea94d7a6e21617f9971908.html)
+**Source:** Towards Data Science
+Use Claude Code to quickly build completely personalized applications
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 26. `EN` [Train AI models with Unsloth and Hugging Face Jobs for FREE](data/articles/8464cde736df074ca570c5c52bb9ed72.html)
+### 42. `EN` [Train AI models with Unsloth and Hugging Face Jobs for FREE](data/articles/8464cde736df074ca570c5c52bb9ed72.html)
 **Source:** Hugging Face Blog
 Back to Articles This blog post covers how to use Unsloth and Hugging Face Jobs for fast LLM fine-tuning (specifically LiquidAI/LFM2.5-1.2B-Instruct ) through coding agents like Claude Code and Codex. Unsloth provides ~2x faster training and ~60% less VRAM usage compared to standard methods, so training small models can cost just a few dollars.
 Why a small model? Small language models like LFM2.5-1.2B-Instruct are ideal candidates for fine-tuning. They are cheap to train, fast to iterate on, and increasingly competitive with much larger models on focused tasks. LFM2.5-1.2B-Instruct runs under 1GB of memory and is optimized for on-device deployment, so what you fine-tune can be served on CPUs, phones, and laptops. You will need We are giving away free credits to fine-tune models on Hugging Face Jobs. Join the Unsloth Jobs Explorers organization to claim your free credits and one-month Pro subscription. A Hugging Face account (required for HF Jobs) Billing setup (for verification, you can monitor your usage and manage your billing in your billing page).
@@ -457,7 +621,7 @@ First, you need to install the hf CLI.
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 27. `EN` [Custom Kernels for All from Codex and Claude](data/articles/7553ddfa4241b1318c80c67db03b5ff6.html)
+### 43. `EN` [Custom Kernels for All from Codex and Claude](data/articles/7553ddfa4241b1318c80c67db03b5ff6.html)
 **Source:** Hugging Face Blog
 Back to Articles tl;dr: We built an agent skill that teaches coding agents how to write production CUDA kernels. Then we pointed Claude and Codex at two real targets: a diffusers pipeline and a transformers model. The agents produced working kernels for both, with correct PyTorch bindings and benchmarks, end to end.
 Writing CUDA kernels is hard. Writing CUDA kernels that correctly integrate with transformers and diffusers is harder. There are architecture-specific memory access patterns, vectorization strategies, warp shuffle reductions, and a dozen integration pitfalls that trip up even experienced developers. It is exactly the kind of specialized, high-stakes problem where agent skills shine.
@@ -467,7 +631,7 @@ We gave coding agents the domain knowledge they need, like which GPU architectur
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 28. `EN` [OpenEnv in Practice: Evaluating Tool-Using Agents in Real-World Environments](data/articles/a09280a19158c371ffe917883d12d42c.html)
+### 44. `EN` [OpenEnv in Practice: Evaluating Tool-Using Agents in Real-World Environments](data/articles/a09280a19158c371ffe917883d12d42c.html)
 **Source:** Hugging Face Blog
 Back to Articles What Is OpenEnv? The Calendar Gym: A Production-Grade Benchmark What We Learned Looking Ahead Appendix: Common error cases in tool use Specific error cases found in the wild AI agents often perform impressively in controlled research settings, yet struggle when deployed in real-world systems where they must reason across multiple steps, interact with real tools and APIs, operate under partial information, and recover from errors in stateful, permissioned environments—highlighting a persistent gap between research success and production reliability.
 OpenEnv is an open-source framework from Meta and Hugging Face designed to address this challenge by standardizing how agents interact with real environments. As part of this collaboration, Turing contributed a production-grade calendar management environment to study tool-using agents under realistic constraints such as access control, temporal reasoning, and multi-agent coordination.
@@ -477,7 +641,7 @@ In this post, we explore how OpenEnv works in practice, why calendars serve as a
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 29. `EN` [Introducing SyGra Studio](data/articles/4b956a170e779a88bfa5657dd6178350.html)
+### 45. `EN` [Introducing SyGra Studio](data/articles/4b956a170e779a88bfa5657dd6178350.html)
 **Source:** Hugging Face Blog
 Back to Articles Step 1: Configure the data source Step 2: Build the flow visually Step 3: Review and run See it in action! Running Existing Workflows Run the Glaive Code Assistant workflow Get started SyGra 2.0.0 introduces Studio, an interactive environment that turns synthetic data generation into a transparent, visual craft. Instead of juggling YAML files and terminals, you compose flows directly on the canvas, preview datasets before committing, tune prompts with inline variable hints, and watch executions stream live—all from a single pane. Under the hood it’s the same platform, so everything you do visually generates the corresponding SyGra compatible graph config and task executor scripts. What Studio lets you do Configure and validate models with guided forms (OpenAI, Azure OpenAI, Ollama, Vertex, Bedrock, vLLM, custom endpoints).
 Connect Hugging Face, file-system, or ServiceNow data sources and preview rows before execution.
@@ -488,7 +652,7 @@ Design downstream outputs using shared state variables and Pydantic-powered mapp
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 30. `EN` [Community Evals: Because we're done trusting black-box leaderboards over the community](data/articles/54a2e4d63e7f2c9f9eeb830439ab32e8.html)
+### 46. `EN` [Community Evals: Because we're done trusting black-box leaderboards over the community](data/articles/54a2e4d63e7f2c9f9eeb830439ab32e8.html)
 **Source:** Hugging Face Blog
 Back to Articles Evaluation is broken What We're Shipping Why This Matters Get Started TL;DR: Benchmark datasets on Hugging Face can now host leaderboards. Models store their own eval scores. Everything links together. The community can submit results via PR. Verified badges prove that the results can be reproduced. Evaluation is broken Let's be real about where we are with evals in 2026. MMLU is saturated above 91%. GSM8K hit 94%+. HumanEval is conquered. Yet some models that ace benchmarks still can't reliably browse the web, write production code, or handle multi-step tasks without hallucinating, based on usage reports. There is a clear gap between benchmark scores and real-world performance.
 Furthermore, there is another gap within reported benchmark scores. Multiple sources report different results. From Model Cards, to papers, to evaluation platforms, there is no alignment in reported scores. The result is that the community lacks a single source of truth. What We're Shipping Decentralized and transparent evaluation reporting.
@@ -498,7 +662,15 @@ We are going to take evaluations on the Hugging Face Hub in a new direction by d
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 31. `EN` [The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator](data/articles/c1fd5fcd7f1c01ccaf2db310506edfdb.html)
+### 47. `EN` [Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek](data/articles/c2236e93c437ab6285f85bacbd57e344.html)
+**Source:** Hugging Face Blog
+Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 48. `EN` [The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator](data/articles/c1fd5fcd7f1c01ccaf2db310506edfdb.html)
 **Source:** Hugging Face Blog
 Back to Articles It has become increasingly challenging to assess whether a model’s
 reported improvements reflect genuine advances or variations in
@@ -531,24 +703,24 @@ usin
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Hugging Face Blog">
 
-### 32. `FR` [CUGA on Hugging Face: Democratizing Configurable AI Agents](data/articles/ff468cdfcbd0ef94f8e08fcc68d8a36e.html)
+### 49. `FR` [CUGA on Hugging Face: Democratizing Configurable AI Agents](data/articles/ff468cdfcbd0ef94f8e08fcc68d8a36e.html)
 **Source:** Hugging Face Blog
 Back to Articles Introduction Introduction What is CUGA? Open Source and Open Models Integration with Langflow: Visual Agent Design Made Simple Try the Hugging Face Demo: A Hands-On Preview Conclusion and Call to Action AI agents are rapidly becoming essential for building intelligent applications, but creating robust, adaptable agents that scale across domains remains a challenge. Many existing frameworks struggle with brittleness, tool misuse, and failures when faced with complex workflows.
 CUGA (Configurable Generalist Agent) was designed to overcome these limitations. It's an open-source, AI Agent that combines flexibility, reliability, and ease of use for enterprise use cases. By abstracting orchestration complexity, CUGA empowers developers to focus on domain requirements rather than the internals of agent building. And now, with its integration into Hugging Face Spaces, experimenting with CUGA and open models has never been easier. What is CUGA? CUGA is a configurable, general-purpose AI agent that supports complex, multi-step tasks across web and API environments. It has achieved state-of-the-art performance on leading benchmarks: #1 on AppWorld - a benchmark with 750 real-world tasks across 457 APIs Top-tier on WebArena (#1 from 02/25 - 09/25) - showcases CUGA Computer Use capabilities with a compl
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+<div class="article-item" data-lang="fr" data-category="ai" data-source="Hugging Face Blog">
 
-### 33. `EN` [OVHcloud on Hugging Face Inference Providers](data/articles/45eda9c13778f4dc51d8310a603df00d.html)
+### 50. `FR` [We Got Claude to Fine-Tune an Open Source LLM](data/articles/e4d18feec6ae5b53de8bf454a116fc70.html)
 **Source:** Hugging Face Blog
-The Wayback Machine is an initiative of the Internet Archive, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include Open Library &amp; archive-it.org. Your use of the Wayback Machine is subject to the Internet Archive's Terms of Use.
+We Got Claude to Fine-Tune an Open Source LLM
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
 
-### 34. `EN` [Introducing AnyLanguageModel: One API for Local and Remote LLMs on Apple Platforms](data/articles/d0e47e1fa6f211a165f23b45cebc2168.html)
+### 51. `EN` [Introducing AnyLanguageModel: One API for Local and Remote LLMs on Apple Platforms](data/articles/d0e47e1fa6f211a165f23b45cebc2168.html)
 **Source:** Hugging Face Blog
 Back to Articles The Solution Why Foundation Models as the Base API Package Traits: Include Only What You Need Image Support (and API Design Trade-offs) Try It Out: chat-ui-swift What's Next Get Involved Links LLMs have become essential tools for building software.
 But for Apple developers, integrating them remains unnecessarily painful.
@@ -571,14 +743,175 @@ Our goal is to reduc
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 52. `EN` [Voice Cloning with Consent](data/articles/e4cbf13488696e0deed63f3dc509d03e.html)
+**Source:** Hugging Face Blog
+Back to Articles Ethics in Practice: Consent as System Infrastructure The Technical Details Approach Unlocking the Voice Consent Gate In this blog post, we introduce the idea of a 'voice consent gate' to support voice cloning with consent. We provide an example Space and accompanying code to start the ball rolling on the idea.
+Realistic voice generation technology has gotten uncannily good in the past few years. In some situations, it’s possible to generate a synthetic voice that sounds almost exactly like the voice of a real person. And today, what once felt like science fiction is reality: Voice cloning. With just a few seconds of recorded speech, anyone’s voice can be made to say almost anything. Voice generation, and in particular the subtask of voice cloning, has notable risks and benefits. The risks of “deepfakes”, such as the cloned voice of former President Biden used in robocalls, can mislead people into thinking that people have said things that they haven’t said. On the other hand, voice cloning can be a powerful beneficial tool, helping people who’ve lost the ability to speak communicate in their own voice again, or assisting people in learning new languages and dialects.
+So how do we create meaningful use without malicious use? We’re exploring one possible answer: a voice consent gate. That’s a system where a voice can be cloned only when the
+
+</div>
+
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Hugging Face Blog">
 
-### 35. `FR` [Streaming datasets: 100x More Efficient](data/articles/69efa858b7d4dad088b218d0fe4cf6d8.html)
+### 53. `FR` [Streaming datasets: 100x More Efficient](data/articles/69efa858b7d4dad088b218d0fe4cf6d8.html)
 **Source:** Hugging Face Blog
 Back to Articles TLDR Streaming: The Same Easy API The Challenge: Streaming at Scale Under the Hood: What We Improved How are we faster than plain S3: Xet Need a custom streaming pipeline ? Push streaming to the limit Get Started and See the Difference TLDR We boosted load_dataset('dataset', streaming=True), streaming datasets without downloading them with one line of code!
 Start training on multi-TB datasets immediately, without complex setups, downloading, no "disk out of space", or 429 “stop requesting!” errors.It's super fast! Outrunning our local SSDs when training on 64xH100 with 256 workers downloading data.
 We've improved streaming to have 100x fewer requests, → 10× faster data resolution → 2x sample/sec, → 0 worker crashes at 256 concurrent workers. Loading data, especially at the terabyte scale, is a major pain in any machine learning workflow. We suffered this while training SmolLM3, at one point we had to wait 3 hours before each run to download enough data. Streaming has always been possible in the datasets library, but large scale training with massive datasets remained a challenge. That changes today . We spent a few months improving the backend, focusing on streaming datasets to make it faster and more efficient.
 What did we do exactly? Streaming: The Same Easy API First things first: our
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 54. `EN` [Sentence Transformers is joining Hugging Face!](data/articles/ff3cbd8a3bd98d11f0a0b18065d535ff.html)
+**Source:** Hugging Face Blog
+Back to Articles Project History Acknowledgements Getting Started Today, we are announcing that Sentence Transformers is transitioning from Iryna Gurevych’s Ubiquitous Knowledge Processing (UKP) Lab at the TU Darmstadt to Hugging Face. Hugging Face's Tom Aarsen has already been maintaining the library since late 2023 and will continue to lead the project. At its new home, Sentence Transformers will benefit from Hugging Face's robust infrastructure, including continuous integration and testing, ensuring that it stays up-to-date with the latest advancements in Information Retrieval and Natural Language Processing.
+Sentence Transformers (a.k.a. SentenceBERT or SBERT) is a popular open-source library for generating high-quality embeddings that capture semantic meaning. Since its inception by Nils Reimers in 2019, Sentence Transformers has been widely adopted by researchers and practitioners for various natural language processing (NLP) tasks, including semantic search, semantic textual similarity, clustering, and paraphrase mining. After years of development and training by and for the community, over 16,000 Sentence Transformers models are publicly available on the Hugging Face Hub, serving more than a million monthly unique users.
+"Sentence Transformers has been a huge success story and a culmination of our long-standing research on computing semantic similarities
+
+</div>
+
+<div class="article-item" data-lang="nl" data-category="ai" data-source="Hugging Face Blog">
+
+### 55. `EN` [Supercharge your OCR Pipelines with Open Models](data/articles/d74c14ff51b09c5a645ec2a0bb4a532c.html)
+**Source:** Hugging Face Blog
+Back to Articles We have added Chandra and OlmOCR-2 to this blog, as well as OlmOCR Scores of the models TL;DR: The rise of powerful vision-language models has transformed document AI. Each model comes with unique strengths, making it tricky to choose the right one. Open-weight models offer better cost efficiency and privacy. To help you get started with them, we’ve put together this guide.
+In this guide, you’ll learn: The landscape of current models and their capabilities When to fine-tune models vs. use models out-of-the-box Key factors to consider when selecting a model for your use case How to move beyond OCR with multimodal retrieval and document QA By the end, you’ll know how to choose the right OCR model, start building with it, and gain deeper insights into document AI. Let’s go! Table-of-Contents Supercharge your OCR Pipelines with Open Models
+Brief Introduction to Modern OCR
+Model Capabilities
+Transcription
+Handling complex components in documents
+Output formats
+Locality Awareness in OCR
+Model Prompting Cutting-edge Open OCR Models
+Comparing Latest Models
+Evaluating Models
+Benchmarks
+Cost-efficiency
+Open OCR Datasets Tools to Run Models
+Locally
+Remotely Going Beyond OCR
+Visual Document Retrievers
+Using Vision Language Models for Document Question Answering Wrapping up Brief Int
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 56. `EN` [Unlock the power of images with AI Sheets](data/articles/d90682f3281d2c3b7b5fb1c149636858.html)
+**Source:** Hugging Face Blog
+The Wayback Machine is an initiative of the Internet Archive, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include Open Library &amp; archive-it.org. Your use of the Wayback Machine is subject to the Internet Archive's Terms of Use.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 57. `EN` [AI for Food Allergies](data/articles/e1f0c29a70402c03d92347aa13a87a8c.html)
+**Source:** Hugging Face Blog
+Back to Articles Current State of The Art: Where AI Meets Food Allergy Research The need for data Collection release The Protein and Molecular Allergenicity Layer The Clinical, Immunological, and Therapeutic Layer The Food, Ingredient, and Regulatory Layer Accessing the collection What’s coming next? Final remarks Appendix SDAP 2.0: Structural Database of Allergenic Proteins DAVIS: Kinase inhibitor binding affinities QsarDB: repository for (Q)SAR models e-Drug3D Database Stanford Drug Data: Offsides/Twosides DrugCentral: open drug information repository MedKG: medical knowledge graph PDBBind+: protein-ligand binding database Human Metabolome Database (HMDB) Therapeutic Target Database Therapeutic Data Commons (TDC) STITCH: Chemical–Protein Interaction Database M3-20M Multi-Modal Molecule Dataset SAIR (Structurally Augmented IC Repository) AllerBase AlgPred 2.0 Dataset AllerCatPro 2.0 AllergenAI NetAllergen QM9: Molecular Property Prediction Dataset for Quantum Chemistry Let’s get straight to the point: worldwide, an estimated 220 million people suffer from at least one food allergy, and in the United States alone, this accounts for roughly 10% of the population. This means that if you don’t have an allergy, you’ll likely know someone who does — and it’s not a pleasant situation to be in. This condition affects no
+
+</div>
+
+<div class="article-item" data-lang="it" data-category="ai" data-source="Hugging Face Blog">
+
+### 58. `EN` [Nemotron-Personas-India: Synthesized Data for Sovereign AI](data/articles/8194bcba2ae838e056fa6af41227a55d.html)
+**Source:** Hugging Face Blog
+Back to Articles Open Data for India's AI Future What’s in the Dataset? How We Built It Data Generation Pipeline Embedded Cultural Context Private By Design Who This Is For Practical AI Applications Why It Matters Start Building with Nemotron-Personas-India A compound AI approach to Indian personas grounded in real-world distributions Open Data for India's AI Future India represents one of the world's largest AI opportunities — with over 700 million internet users, a multitude of languages, and a rapidly growing developer ecosystem. Yet, most open datasets reflect Western norms and English-only contexts, creating a data gap that limits AI adoption in India's multilingual, multi-script environment.
+Today, we're releasing Nemotron-Personas-India, the first open synthetic dataset of Indic personas aligned to India's real-world demographic, geographic, and cultural distributions. Licensed under CC BY 4.0, this dataset offers a privacy-preserving, regulation-ready foundation for scaling AI systems that reflect Indian society—without relying on sensitive personal data.
+Built with NeMo Data Designer, NVIDIA's enterprise-grade synthetic data generation microservice, Nemotron-Personas-India extends our global collection of Sovereign AI datasets. It builds on the success of our US and Japan persona datasets and includes
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 59. `EN` [Gaia2 and ARE: Empowering the community to study agents](data/articles/e2bc7f122bb31bcf0f78241efdc8b2b2.html)
+**Source:** Hugging Face Blog
+Back to Articles Gaia2: Agentic Evaluation on Real Life Assistant Tasks How does Gaia2 run? Results Compare with your favorite models! Evaluating on Gaia2 Beyond Gaia2: study your agents with ARE 1) Testing an agent on a simple task: event organisation 2) Understanding agents: deep diving the traces 3) Playing around and extending the demo: Connecting the agent to your own MCPs Conclusion In an ideal world, AI agents would be reliable assistants. When given a query, they would easily manage ambiguity in instructions, construct step-by-step plans, correctly identify necessary resources, execute those plans without getting sidetracked, and adapt to unexpected events, all while maintaining accuracy and avoiding hallucinations.
+However, developing agents and testing these behaviors is no small feat: if you have ever tried to debug your own agent, you’ve probably observed how tedious and frustrating this can be. Existing evaluation environments are tightly coupled with the tasks they evaluate, lack real-world flexibility, and do not reflect the messy reality of open-world agents: simulated pages never fail to load, events don’t spontaneously emerge, and asynchronous chaos is absent.
+That’s why we’re very happy to introduce Gaia2, the follow-up to the agentic benchmark GAIA, allowing analysis of considerably more complex be
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 60. `EN` [Jupyter Agents: training LLMs to reason with notebooks](data/articles/6d0a334604ba5945433f7c37780471bb.html)
+**Source:** Hugging Face Blog
+Back to Articles The past year has been all about giving LLMs more tools and autonomy to solve more complex and open ended tasks. The goal of the Jupyter Agent is to give the model the ultimate tool: code execution. A natural way to display multi-step code execution together with reasoning is within a Jupyter Notebook, which consists of code and markdown cells. So we built Jupyter Agent to act as an agent that can execute code directly inside a Jupyter notebook and use this environment to solve data analysis and data science tasks. Think of it like Cursor, but living natively inside your data science workflow.We built a demo of this vision with Qwen-3 Coder, currently one of the strongest coding models. This is a follow-up to our earlier work on jupyter-agent (v1).
+While large models are starting to show useful behavior, the key question is how we can continue improving them. To this end, we focus on strengthening smaller models to perform well on agentic data science tasks as they currently struggle to compete with the large models.
+The goal of this project is to build a pipeline to first generate high-quality training data, then fine-tune an existing small model, and finally evaluate whether the model's performance improves on relevant benchmarks.
+Let’s begin with the last step: selecting a strong benchmark for evaluating models on data science tasks.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 61. `EN` [NVIDIA Releases 6 Million Multi-Lingual Reasoning Dataset](data/articles/81cf759c2a074ca515a86da273b557fd.html)
+**Source:** Hugging Face Blog
+Back to Articles Authors: Dhruv Nathawani, Shuoyang Ding US, Vitaly Lavrukhin US, Jane Polak Scowcroft US, Oleksii Kuchaiev US NVIDIA continues releasing permissive datasets in support of the open ecosystem with 6 Million Multilingual Reasoning Dataset.
+Continuing the success of the recent Nemotron Post-Training Dataset v1 release used in Llama Nemotron Super model, and our Llama Nemotron Post-Training Dataset release earlier this year, we’re excited to release the reasoning dataset translated into five target languages: French, Spanish, German, Italian, and Japanese.
+The newly released NVIDIA Nemotron Nano 2 9B brings these capabilities to the edge with leading accuracy and efficiency with a hybrid Transformer–Mamba architecture and a configurable thinking budget—so you can dial accuracy, throughput, and cost to match your real‑world needs. Model Highlights (TL;DR) Model size: 9B parameters
+Architecture: Hybrid Transformer–Mamba (Mamba‑2 + a small number of attention layers) for higher throughput at similar accuracy to Transformer‑only peers
+Throughput: Up to 6× higher token generation than other leading models in its size class
+Cost: Thinking budget lets you control how many “thinking” tokens are used—saving up to 60% lower reasoning costs
+Target: Agents for customer service, support chatbots, analytics copilots, and edge/RTX dep
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 62. `EN` [MCP for Research: How to Connect AI to Research Tools](data/articles/eaf4a179e68438b8ae437a5f7d641bf7.html)
+**Source:** Hugging Face Blog
+Back to Articles Research Discovery: Three Layers of Abstraction 1. Manual Research 2. Scripted Tools 3. MCP Integration Setup and Usage Quick Setup Learn More Academic research involves frequent research discovery: finding papers, code, related models and datasets. This typically means switching between platforms like arXiv, GitHub, and Hugging Face, manually piecing together connections.
+The Model Context Protocol (MCP) is a standard that allows agentic models to communicate with external tools and data sources. For research discovery, this means AI can use research tools through natural language requests, automating platform switching and cross-referencing. Research Discovery: Three Layers of Abstraction Much like software development, research discovery can be framed in terms of layers of abstraction. 1. Manual Research At the lowest level of abstraction, researchers search manually and cross-reference by hand.
+# Typical workflow:
+1. Find paper on arXiv
+2. Search GitHub for implementations
+3. Check Hugging Face for models/datasets
+4. Cross-reference authors and citations
+
+</div>
+
+<div class="article-item" data-lang="de" data-category="ai" data-source="Hugging Face Blog">
+
+### 63. `EN` [🇵🇭 FilBench - Can LLMs Understand and Generate Filipino?](data/articles/7c07efa4a8fa8ee922acbe460a5a9032.html)
+**Source:** Hugging Face Blog
+Back to Articles FilBench What did we learn from FilBench? Finding #1: Although region-specific LLMs still lag behind GPT-4, collecting data to train these models is still a promising direction Finding #2: Filipino translation is still a difficult task for LLMs Finding #3: Open LLMs Remain a Cost-Effective Choice for Filipino Language Tasks Does your LLM work on Philippine Languages? Try it on FilBench! Acknowledgements Citation As large language models (LLMs) become increasingly integrated into our lives, it becomes crucial to assess whether they reflect the nuances and capabilities of specific language communities.
+For example, Filipinos are among the most active ChatGPT users globally, ranking fourth in ChatGPT traffic (behind the United States, India, and Brazil [1] [2]), but despite this strong usage, we lack a clear understanding of how LLMs perform for their languages, such as Tagalog and Cebuano.
+Most of the existing evidence is anecdotal, such as screenshots of ChatGPT responding in Filipino as proof that it is fluent.
+What we need instead is a systematic evaluation of LLM capabilities in Philippine languages. That’s why we developed FilBench: a comprehensive evaluation suite to assess the capabilities of LLMs for Tagalog, Filipino (the standardized form of Tagalog), and Cebuano, on fluency, linguistic and translati
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 64. `EN` [Five Big Improvements to Gradio MCP Servers](data/articles/4d7ed9232debcab2517b8220452b0f20.html)
+**Source:** Hugging Face Blog
+Back to Articles Seamless Local File Support Real-time Progress Notifications Transform OpenAPI Specs to MCP in One Line Improvements to Authentication Modifying Tool Descriptions Conclusion Gradio is an open-source Python package for creating AI-powered web applications. Gradio is compliant with the MCP server protocol and powers thousands of MCP servers hosted on Hugging Face Spaces. The Gradio team is betting big on Gradio and Spaces being the best way to build and host AI-powered MCP servers.
+To that end, here are some of the big improvements we've added to Gradio MCP servers as of version 5.38.0. Seamless Local File Support If you've tried to use a remote Gradio MCP server that takes a file as input (image, video, audio), you've probably encountered this error:
+This happens because the Gradio server is hosted on a different machine, meaning any input files must be accessible via a public URL so they can be downloaded remotely.
+While many ways exist to host files online, they all add a manual step to your workflow. In the age of LLM agents, shouldn't we expect them to handle this for you?
+Gradio now includes a "File Upload" MCP server that agents can use to upload files directly to your Gradio application. If any tools in your Gradio MCP server require file inputs, the connection documentation will now show you how to start the "File Upload"
+
+</div>
+
+<div class="article-item" data-lang="de" data-category="ai" data-source="Hugging Face Blog">
+
+### 65. `EN` [Ettin Suite: SoTA Paired Encoders and Decoders](data/articles/f91504cfe5f184d44d708a79977457a6.html)
+**Source:** Hugging Face Blog
+Back to Articles TL;DR Encoders vs Decoders: The Architecture Divide Training Recipe: Modern Techniques for Both Architectures Sizes Three-Phase Training Process Modern Architecture Components Data Sources and Quality Encoder Results: Beating ModernBERT Decoder Results: Beating Llama 3.2 and SmolLM2 Fair Fight: Encoders vs Decoders on Even Ground Architecture-Specific Advantages Persist Cross-Objective Training Falls Short Beyond Performance: Understanding Model Behavior Usage Examples Encoders Decoders Fine-tuning Examples Encoders Decoders Model Family and Links TL;DR What would happen if you took the ModernBERT recipe and applied it to a decoder-only model? Turns out, a state-of-the-art decoder language model that beats Llama 3.2 1B and SmolLM2! We introduce a new open-data training recipe to reproduce the encoder-only ModernBERT model (and actually beat it!). We then apply the exact same recipe to decoder-only models. For the first time, we have two state-of-the-art models trained in the same setup but with two different training objectives: masked language modeling (MLM), and causal language modeling (CLM).
+This blog post introduces Ettin, the first suite of SoTA paired encoder-only and decoder-only models (17M-1B params) trained with identical data (2T tokens), architecture, and training recipes. Ettin e
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="Hugging Face Blog">
+
+### 66. `EN` [Kimina-Prover: Applying Test-time RL Search on Large Formal Reasoning Models](data/articles/d3ffeb6bb40ec82d708cbc8f2e5ba97e.html)
+**Source:** Hugging Face Blog
+Back to Articles Numina &amp; Kimi Team Figure 1: Performance comparison of theorem proving models on the miniF2F-test dataset. We're excited to announce the release of Kimina-Prover-72B, our state-of-the-art theorem proving model trained with the Kimi k1.5[1] RL pipeline based on Qwen2.5-72B [2]. Alongside it, we are also releasing two distilled variants: Kimina-Prover-Distill-8B and 1.7B (based on Qwen3-8B and Qwen3-1.7B[3] respectively).
+Our key innovations include: Test-Time Reinforcement Learning Search: A trainable agentic proving framework that enables the model to recursively discover, combine and apply multiple lemmas to construct complex proofs, building on a novel lemma-enabled pattern. Error-Fixing Capability: Kimina-Prover can read and interpret Lean’s error messages and propose targeted fixes, demonstrating significantly higher sample efficiency compared to regenerating proofs from scratch. These advancements enable Kimina-Prover to solve challenging mathematical problems and surpass prior methods. As shown in Figure 1, on the widely used miniF2F benchmark, Kimina-Prover achieves a state-of-the-art pass rate of 92.2%. Introduction We focus on automated theorem proving (ATP) in the Lean 4 language, aiming to automate the construction of formal mat
 
 </div>
 
@@ -590,20 +923,9 @@ What did we do exactly? Streaming: The Same Easy API First things first: our
 
 ## OpenClaw
 
-<div class="article-item" data-lang="en" data-category="openclaw" data-source="Hacker News (nouveautés)">
-
-### 1. `EN` [What do you use OpenClaw for?](data/articles/646a509b614789af5ee9e5e97f11eb5d.html)
-**Source:** Hacker News (nouveautés)
-I’m pretty lazy with adopting new tech I read about. OpenClaw seems mildly useful
-So am curious what workflows you use OpenClaw or similar “proactive agentic frameworks” for? URL: https://news.ycombinator.com/item?id=47191126
-Points: 1
-# : 0
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="openclaw" data-source="Gladys Assistant (Forum)">
 
-### 2. `FR` [J'ai laissé l'IA OpenClaw contrôler ma Maison](data/articles/c914d79f26cb05f0f28bb1670d3e59eb.html)
+### 1. `FR` [J'ai laissé l'IA OpenClaw contrôler ma Maison](data/articles/c914d79f26cb05f0f28bb1670d3e59eb.html)
 **Source:** Gladys Assistant (Forum)
 Salut à tous !
 Vous avez sûrement entendu parler d’OpenClaw, le framework IA qui a explosé sur GitHub il y a quelques semaines, et qui vient d’être racheté par OpenAI.
@@ -616,7 +938,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="en" data-category="openclaw" data-source="Its FOSS">
 
-### 3. `EN` [FOSS Weekly #26.09: Linux Mint Shortcuts, OpenClaw Alternatives, Ladybird's Rust Move, Super Productivity and More](data/articles/b8c4718f98e9f62774e4abfec1bc0a43.html)
+### 2. `EN` [FOSS Weekly #26.09: Linux Mint Shortcuts, OpenClaw Alternatives, Ladybird's Rust Move, Super Productivity and More](data/articles/b8c4718f98e9f62774e4abfec1bc0a43.html)
 **Source:** Its FOSS
 What One Year of AI Has Already Changed
 
@@ -1090,25 +1412,25 @@ Ce bulletin d'actualité du CERT-FR revient sur les vulnérabilités significati
 
 <div class="article-item" data-lang="fr" data-category="france" data-source="Ouest-France">
 
-### 1. `FR` [Handball. Metz - Brest : « Le BBH est peut-être plus fort », constate Sarah Bouktit avant le choc en Coupe de France](data/articles/82a955f6e6a4e379bddf0f60be4d967a.html)
+### 1. `FR` [CAN 2026. « Libérez nos supporters ! » : l’appel des joueurs du Sénégal pour leurs supporters emprisonnés au Maroc](data/articles/f57d38269c6f649b8a3841f1e3694cad.html)
 **Source:** Ouest-France
-Sarah Bouktit, pivot internationale française et du Metz Handball, se livre sur la rivalité avec le Brest Bretagne Handball avant le choc en quart de finale de la Coupe de France, samedi 28 février (18 h). Après une victoire face à Metz cette saison, le BBH lui paraît mieux armé.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="france" data-source="Le Monde">
-
-### 2. `FR` [Derrière le bras de fer entre Donald Trump et Anthropic, les débats politiques, éthiques et philosophiques sur l’usage militaire de l’IA](data/articles/f2b1ee7166eebb09c2d2c31c84a132af.html)
-**Source:** Le Monde
-Le président américain a ordonné à son administration de « cesser immédiatement » toute collaboration avec la start-up, qui a refusé d’ouvrir son modèle sans restriction à l’armée. OpenAI, de son côté, a annoncé un accord avec le Pentagone.
+Le 19 février 2026, le Maroc a condamné les 18 supporters sénégalais impliqués dans les échauffourées en marge de la dernière finale de la Coupe d’Afrique des nations à des peines allant de trois mois à un an de prison. Dans un communiqué vocal publié vendredi 27 février, l’équipe nationale du Sénégal a réagi par la voix de son capitaine Kalidou Koulibaly, réclamant la libération de leurs compatriotes.
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="france" data-source="Le Figaro">
 
-### 3. `FR` [Déclarations de Mélenchon sur Epstein : Villepin regrette le «sacrifice de la gauche de la gauche» et fustige un «acte d’irresponsabilité politique»](data/articles/86d7159164b5056ba44540714082b706.html)
+### 2. `FR` [Déclarations de Mélenchon sur Epstein : Villepin regrette le «sacrifice de la gauche de la gauche» et fustige un «acte d’irresponsabilité politique»](data/articles/86d7159164b5056ba44540714082b706.html)
 **Source:** Le Figaro
 L’ancien premier ministre, dans la continuité des principaux leaders politiques, a condamné dans un long texte publié sur X les propos tenus jeudi soir à Lyon par le chef de file des Insoumis.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="france" data-source="Franceinfo">
+
+### 3. `FR` [Frappes en Iran : "Israël et les Etats-Unis veulent poursuivre les négociations par la guerre", analyse un spécialiste de l'Iran](data/articles/0248cc376dfd67c510835d7119e4f672.html)
+**Source:** Franceinfo
+Après des semaines de menaces d'intervention militaire, Israël et les Etats-Unis ont lancé samedi matin des frappes conjointes sur la République islamique. L'Iran a répliqué par des tirs de missiles sur l'Etat hébreu. Publié le 28/02/2026 09:39 Temps de lecture : 1min Des frappes israéliennes et américaines sur Téhéran (Iran) le 28 février 2026 (AFP) "Israël et les Etats-Unis veulent poursuivre les négociations par la guerre", analyse samedi 28 février sur franceinfo Thierry Coville, chercheur à l'IRIS (l'Institut de relations internationales et stratégiques), spécialiste de l'Iran. Selon lui, le président américain Donald Trump "veut un changement de régime en Iran", via cette intervention militaire. "Donald Trump attaque dès qu'on ne lui cède pas", dit-il. Dans un message vidéo sur sa plateforme Truth social, le président américain a en effet annoncé que les Etats-Unis avaient la
 
 </div>
 
@@ -1120,11 +1442,11 @@ DÉCRYPTAGE - La start-up refuse de laisser le Pentagone utiliser ses modèles d
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="france" data-source="Le Figaro">
+<div class="article-item" data-lang="fr" data-category="france" data-source="Le Monde">
 
-### 5. `FR` [À Kiev, la discrète rencontre entre Gabriel Attal et Olivier Faure... Les indiscrets du Figaro](data/articles/e343ca71f1fbeac6066c5773a798510a.html)
-**Source:** Le Figaro
-CONFIDENTIELS - Chaque semaine, la rédaction emmène ses lecteurs dans les coulisses de la vie politique.
+### 5. `FR` [James Char, spécialiste de l’armée chinoise : « L’ampleur des mises à l’écart sous Xi Jinping dépasse de loin ce qu’ont fait ses prédécesseurs »](data/articles/d43c1204dcf715c3f2854ff89b751a28.html)
+**Source:** Le Monde
+L’éviction, en janvier, du général le plus haut gradé de l’Armée populaire de libération témoigne de la volonté du président chinois d’assurer sa prééminence politique et de lutter contre la corruption, bien réelle, des élites, décrypte le chercheur James Char dans un entretien au « Monde ».
 
 </div>
 
@@ -1138,15 +1460,7 @@ CONFIDENTIELS - Chaque semaine, la rédaction emmène ses lecteurs dans les cou
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 1. `FR` [Le Top 4 des pires tempêtes de neige à New-York](data/articles/63b7df5131151c82ca4517b5f75dcf38.html)
-**Source:** Météo-Paris
-Congères impressionnantes dans les rues de New York en mars 1888 - archives New York vient de vivre une impressionnante tempête de neige. Toutefois, la ville a connu des blizzards encore plus impressionnants par le passé. Notre article vous propose de découvrir les quatre tempêtes les plus marquantes de l'histoire new-yorkaise. #4 - Tempête de Mars 1888 : 53 cm En terme de conséquences directes, il s'agit de la tempête de neige la plus dévastatrice de l'histoire de New York ! Et pourtant, elle ne se classe qu'au 4ème rang en terme de quantité de neige tombée avec un cumul de 53 cm sur la ville. Malgré tout, elle est marquée par des vents très violents, ayant formé des congères atteignant parfois 1 à 2 mètres au cœur de la ville ! À l'époque, il n'y a pas de prévision météo et personne ne se prépare à cet épisode. La ville s'en trouve paralysée et les lignes électriques sont endommagées. Cette tempête causera plus de 400 décès, dont environ 200 à New York City. Les rues de New York après la tempête de neige remarquable de mars 1888 - archives #3 - Tempête de Décembre 1947 : 67 cm La tempête de neige survenue au lendemain de Noël 1947 reste à ce jour sur le podium des plus fortes à avoir frappé New York. Le 26 décembre 1947, la ville se retrouve ensevelie sous un manteau neigeux de 67 cm ! La ville se retrouve alors totalement paralysée. De plus, ce blizzard avait été très mal anticipé par les services météo de l'époque, qui n'avaient pas prévenu la population. Cette tempête de neige a coûté la vie à 77 personnes dans le nord-est des USA. 67 cm de neige dans les rues de New York après la tempête de neige le 27 décembre 1947 - photo Al Fenn #2 - Tempête de Février 2006 : 68 cm Parmi les tempêtes de neige les plus marquantes sur New York, celle survenue les 11 et 12 février 2006 a marqué les esprits. À l'époque, une dépression se creuse autour de 970 hPa au large des côtes américaines et des chutes de neige particulièrement forte affectent les États du nord-est des USA. New York est particulièrement touchée et reçoit 68 centimètres de neige, un cumul qui - à l'époque - établit un record absolu ! New York City estime que les opérations massives de déneigement ont coûté environ 27 millions de dollars à la ville. New York sous le blizzard lors de la tempête du 12 février 2006, apportant 68 cm ! - photo Wikipedia #1 - Tempête de Janvier 2016 : 70 cm Si les tempêtes pré-citées ont été remarquables, elles ne sont pas - climatologiquement parlant - celles ayant apporté le plus gros cumul de neige. La plus importante tempête de neige à New York est récente puisqu'elle est survenue les 22 et 23 janvier 2016, il y a seulement 10 ans. À l'époque, il était tombé 70 centimètres de neige à Central Park, un cumul qui n'avait jamais été mesuré depuis le début des relevés météorologiques en 1869 ! La vie locale avait été fortement ralentie et les voitures avaient été ensevelies sous ce manteau neigeux inédit. 70 cm de neige à New York après la tempête de janvier 2016, un record ! - photo Jackson Krule Précision : Les chiffres cités dans cet article sont issus des mesures de la hauteur de neige à Central Park, qui sert de référence pour la ville de New York. Ainsi, les météorologues et climatologues américains classent l'importance des blizzards new-yorkais sur cette base. À lire également : &gt;&gt;&gt; 80 cm de neige dans le Var : la pagaille de la fin février 2001 &gt;&gt;&gt; L'hiver sans fin... de la mi-novembre à la mi-mars ! &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 2. `FR` [Un blizzard new-yorkais est-il possible en France ?](data/articles/0d7c7eab8fb22f98fbebe91dd638f90b.html)
+### 1. `FR` [Un blizzard new-yorkais est-il possible en France ?](data/articles/0d7c7eab8fb22f98fbebe91dd638f90b.html)
 **Source:** Météo-Paris
 Le blizzard de la fin du mois de décembre 1970 qui a provoqué un chaos monumental sur l'autoroute du soleil entre Valence et Montélimar. Une tempête de neige de l'ampleur qu'a connu New-York ces derniers jours. archives meteo-paris.com (photo colorisée) New York vient de subir sa plus forte tempête de neige depuis plusieurs décennies avec 50 cm à Central Park ! Un tel blizzard peut-il se produire en FraIA nce ? Notre article vous apporte les explications. Un demi-mètre de neige à New York ! New York n'est pas étrangère aux tempêtes de neige. Malgré tout, celle qui est survenue ce lundi 23 février 2026 a présenté une intensité peu commune. Les cumuls de neige atteignent 50 centimètres à Central Park dans le cœur de la ville et 58 cm à la station de l'aéroport de La Guardia ! Une tempête de neige d'une telle intensité est rare, ne se produisant en moyenne que tous les 25 ans sur New York ! L'île de Long Island fut encore plus touchée avec jusqu'à 74 cm mesurés à l'aéroport MacArthur, un cumul inédit depuis 1963 ! 50 cm de neige ont recouvert New York (USA) ce lundi 23 février 2026 - photo Pictures of New York Malgré tout, il ne s'agit pas de la tempête la plus importante sur New York. En effet, la plus forte tempête est survenue les 22 et 23 janvier 2016, il y a seulement 10 ans. À l'époque, il était tombé 70 centimètres de neige à Central Park, un cumul qui n'avait jamais été mesuré depuis le début des relevés météorologiques en 1869 ! La vie locale avait été fortement ralentie et les voitures avaient été ensevelies sous ce manteau neigeux inédit. 70 cm de neige à New York après la tempête de janvier 2016, un record ! - photo Jackson Krule De telles tempêtes de neige sont-elles possibles en France ? Des tempêtes de neige de la dimension de celle qui vient de toucher le nord-est des USA ne sont pas véritablement possibles en France et ce pour des raisons géographiques. En effet, lorsque l'air polaire descend sur le nord-est des États-Unis, il atteint l'océan Atlantique sans avoir rencontré de mer. Ainsi, il est encore particulièrement froid. Cet air glacial crée un gros contraste thermique avec les eaux douces de l'Atlantique, ce qui peut générer une cyclogenèse explosive au dessus de l'océan avec des dépressions se creusant très rapidement et générant des tempêtes de neige de forte intensité sur la côte est américaine, comme ce fut le cas ce lundi 23 février 2026. Image satellite sur l'est des USA et l'Atlantique le lundi 23 février 2026 - NASA En France, la donne est différente car notre pays est entouré par plusieurs mers et par l'Atlantique. Il est donc impossible pour une masse d'air polaire d'atteindre notre pays intacte. Les coulées d'air froid touchant l'hexagone sont beaucoup moins intenses que celles qui touchent le nord de l'Amérique et le contraste avec la douceur des eaux océaniques s'en trouve donc réduit, ce qui donne des dépressions moins intenses. Malgré tout, on peut tout de même observer des creusements dépressionnaires à la rencontre entre air doux et air froid, qui peuvent engendrer de fortes tempêtes de neige et du blizzard, comme ce fut le cas en Normandie en mars 2013. On peut également évoquer le blizzard survenu au début du mois de janvier 1979, entre la Beauce et Paris, ainsi que celui de février 1986, qui a touché pratiquement les mêmes régions. Par ailleurs, durant la nuit du 25 au 26 février 1958, un violent blizzard a frappé le Nord-Pas-de-Calais, entraînant la formation de congères pouvant dépasser deux mètres de hauteur. Dans le sud-est de la France, les épisodes de blizzard résultent généralement de la combinaison d’une profonde dépression en Méditerranée et d’une masse d’air polaire. La situation fut particulièrement chaotique en février 1954, aux alentours de Perpignan, en février 1956 en Provence, ainsi qu’à la fin du mois de décembre 1970 dans la moyenne vallée du Rhône. Cette liste n’est bien sûr pas exhaustive : de nombreux autres épisodes ont également provoqué, dans nos régions de plaine, la formation de congères atteignant plusieurs mètres de hauteur. Congères de 2 mètres à Gonneville dans le Cotentin le 13 mars 2013 - via infoclimat.fr En résumé : les tempêtes de neige qui touchent la France sont liées à des dépressions généralement moins creuses et moins vastes qu'aux États-Unis, à cause de conflits thermiques moins exacerbés entre air polaire et air océanique. En plus d'être généralement moins fortes, elles sont aussi bien moins fréquentes que de l'autre côté de l'Atlantique où elles surviennent chaque hiver. Malgré tout, les conflits de masses d'air qui concernent l'Europe peuvent tout de même aboutir à des épisodes neigeux majeurs. À lire également : &gt;&gt;&gt; 80 cm de neige dans le Var : la pagaille de la fin février 2001 &gt;&gt;&gt; L'hiver sans fin... de la mi-novembre à la mi-mars ! &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
 
@@ -1154,23 +1468,23 @@ Le blizzard de la fin du mois de décembre 1970 qui a provoqué un chaos monumen
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 3. `FR` [L'hiver sans fin... de la mi-novembre à la mi-mars !](data/articles/8193eba90484312cf6c3f2bd7f477717.html)
+### 2. `FR` [Le Top 4 des pires tempêtes de neige à New-York](data/articles/63b7df5131151c82ca4517b5f75dcf38.html)
 **Source:** Météo-Paris
-À la fin de l’hiver 1963, l’épaisseur du manteau neigeux est parfois spectaculaire dans les massifs montagneux, notamment dans les Vosges, où elle dépasse localement 10 mètres sur les plus hautes crêtes. Archives meteo-paris.com L'hiver 1962-63 fut le plus long depuis des siècles Après une fin des années 1950 et un début des années 1960 relativement cléments, l’hiver 1962-1963 s’impose comme l’un des plus longs et des plus marquants du XXe siècle. À Paris, il devient le plus froid enregistré depuis l’hiver 1879-1880. Le gel apparaît dès la mi-novembre 1962 et s’installe durablement, ne s’interrompant que brièvement jusqu’au début du mois de mars 1963. Au même moment, la guerre d’Algérie s’achève, provoquant l’exode massif des pieds-noirs vers la métropole. Habitués à des hivers plus doux, ils découvrent une France au climat presque polaire. À Marseille, les paquebots Ville-d’Oran et Hairouan voient même leur départ pour Alger retardé d’une journée en raison de la neige et du froid intense. Partout, le pays se fige. À Deauville, les yachts restent prisonniers des glaces, tandis que des milliers de péniches sont immobilisées sur des canaux et des rivières gelés. Dès la fin décembre, le Rhin, le Rhône et la Seine charrient des glaçons, bientôt rejoints par la Garonne et la Loire. La Bretagne est loin d'échapper à cette vague de froid monumentale... ici, à l'entrée de Rennes, à la fin du mois de février 1963- archives meteo-paris.com La période du 12 janvier au 6 février est la plus rigoureuse Car cet épisode est arquée par un gel quasi permanent. Les températures atteignent des niveaux exceptionnels : -27 °C à Ambérieux, -26 °C à Vichy, -23 °C à Lyon, -18 °C à Montpellier, -14 °C à Dinard et -13 °C à Paris. Marseille connaît sa quatrième chute de neige de l’hiver, avec encore 20 cm supplémentaires. La pénurie de combustibles refait surface : la consommation de charbon augmente de 40 % et celle de fuel double. Début février, de nombreux locataires des HLM parisiens se retrouvent sans chauffage. L’Union des Vieux de France réclame une allocation d’urgence pour les personnes âgées. Aux confins de la Bourgogne, du Berry, de la Lorraine et de l’Isère, quelques loups venus d’Europe de l’Est sont aperçus, poussés par le froid. Mieux vaut tirer partie de la situation… À Carcassonne, sous plusieurs dizaines de centimètres de neige au mois de février 1963 - photo colorisée - archives meteo-paris.com - 29°C dans l'Hérault... une banquise sur le littoral de la Mer du Nord... ! L’intensité du gel est telle qu’une banquise se forme sur le littoral de la mer du Nord, de Dunkerque jusqu’à La Panne, en Belgique. La mer gèle également en Charente-Maritime, à La Courbe. Tous les grands fleuves charrient des glaçons, certains se retrouvant même localement totalement pris par les glaces. Le 4 février, une violente tempête de neige paralyse le Languedoc-Roussillon et la Corse. Des usines s’effondrent sous le poids de la neige. À Saint-Martin-de-Londres, la température chute à -29 °C, détruisant des vergers entiers. Sur la Côte d’Azur, la production florale des serres d’Antibes est anéantie. Un redoux temporaire, les 6 et 7 février, laisse espérer une amélioration, mais le froid reprend rapidement ses droits. Les 19 et 20 février, de nouvelles chutes de neige recouvrent le pays. En région parisienne, 15 à 20 cm de poudreuse transforment les pentes en pistes de ski improvisées. Des skieurs sur l'esplanade du Trocadéro, devant la Tour Eiffel, après les chutes de neige de la fin du mois de février 1963 - photo colorisée - archives meteo-paris.com De très nombreux décès... et un dégel très tardif En mars, le dégel provoque d’importants dégâts sur les routes. Si l’agriculture souffre moins qu’en 1956, les blés d’hiver sont partiellement détruits. En France, le nombre de décès liés à cet hiver exceptionnel atteint 30 000, un bilan alarmant en raison de la durée et de l’intensité du froid. Cet hiver 1962-1963 se révèle également remarquable par son ampleur à l’échelle mondiale : l’Est des États-Unis, le Canada, la Chine, le Japon, la Sibérie et l’ensemble de l’Europe occidentale connaissent des conditions extrêmement rigoureuses, tandis que l’Alaska, l’Islande, l’Afrique du Nord, le Moyen-Orient et l’Inde bénéficient d’une douceur inhabituelle. &gt;&gt;&gt; Après la guerre, l’épreuve du grand froid de l’hiver 47-48 &gt;&gt;&gt; Le supplice du terrible hiver 1917 &gt;&gt;&gt; Jusqu'à 60 cm de neige sur la Côte d'Azur à la fin du mois de février ! &gt;&gt;&gt; -40 au vent à Marseille et Dunkerque bloqué par la banquise : c'est possible ! &gt;&gt;&gt; Février 1963 polaire, au terme de l'hiver le plus long du 20e siècle &gt;&gt;&gt; Février 1954 : une vague de froid pas comme les autres Auteur : Guillaume Séchet
+Congères impressionnantes dans les rues de New York en mars 1888 - archives New York vient de vivre une impressionnante tempête de neige. Toutefois, la ville a connu des blizzards encore plus impressionnants par le passé. Notre article vous propose de découvrir les quatre tempêtes les plus marquantes de l'histoire new-yorkaise. #4 - Tempête de Mars 1888 : 53 cm En terme de conséquences directes, il s'agit de la tempête de neige la plus dévastatrice de l'histoire de New York ! Et pourtant, elle ne se classe qu'au 4ème rang en terme de quantité de neige tombée avec un cumul de 53 cm sur la ville. Malgré tout, elle est marquée par des vents très violents, ayant formé des congères atteignant parfois 1 à 2 mètres au cœur de la ville ! À l'époque, il n'y a pas de prévision météo et personne ne se prépare à cet épisode. La ville s'en trouve paralysée et les lignes électriques sont endommagées. Cette tempête causera plus de 400 décès, dont environ 200 à New York City. Les rues de New York après la tempête de neige remarquable de mars 1888 - archives #3 - Tempête de Décembre 1947 : 67 cm La tempête de neige survenue au lendemain de Noël 1947 reste à ce jour sur le podium des plus fortes à avoir frappé New York. Le 26 décembre 1947, la ville se retrouve ensevelie sous un manteau neigeux de 67 cm ! La ville se retrouve alors totalement paralysée. De plus, ce blizzard avait été très mal anticipé par les services météo de l'époque, qui n'avaient pas prévenu la population. Cette tempête de neige a coûté la vie à 77 personnes dans le nord-est des USA. 67 cm de neige dans les rues de New York après la tempête de neige le 27 décembre 1947 - photo Al Fenn #2 - Tempête de Février 2006 : 68 cm Parmi les tempêtes de neige les plus marquantes sur New York, celle survenue les 11 et 12 février 2006 a marqué les esprits. À l'époque, une dépression se creuse autour de 970 hPa au large des côtes américaines et des chutes de neige particulièrement forte affectent les États du nord-est des USA. New York est particulièrement touchée et reçoit 68 centimètres de neige, un cumul qui - à l'époque - établit un record absolu ! New York City estime que les opérations massives de déneigement ont coûté environ 27 millions de dollars à la ville. New York sous le blizzard lors de la tempête du 12 février 2006, apportant 68 cm ! - photo Wikipedia #1 - Tempête de Janvier 2016 : 70 cm Si les tempêtes pré-citées ont été remarquables, elles ne sont pas - climatologiquement parlant - celles ayant apporté le plus gros cumul de neige. La plus importante tempête de neige à New York est récente puisqu'elle est survenue les 22 et 23 janvier 2016, il y a seulement 10 ans. À l'époque, il était tombé 70 centimètres de neige à Central Park, un cumul qui n'avait jamais été mesuré depuis le début des relevés météorologiques en 1869 ! La vie locale avait été fortement ralentie et les voitures avaient été ensevelies sous ce manteau neigeux inédit. 70 cm de neige à New York après la tempête de janvier 2016, un record ! - photo Jackson Krule Précision : Les chiffres cités dans cet article sont issus des mesures de la hauteur de neige à Central Park, qui sert de référence pour la ville de New York. Ainsi, les météorologues et climatologues américains classent l'importance des blizzards new-yorkais sur cette base. À lire également : &gt;&gt;&gt; 80 cm de neige dans le Var : la pagaille de la fin février 2001 &gt;&gt;&gt; L'hiver sans fin... de la mi-novembre à la mi-mars ! &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 4. `FR` [Hiver 2010 : le plus long et le plus neigeux depuis 1987](data/articles/c9060ec63a38c51265f5312c01036bf1.html)
+### 3. `FR` [L'hiver va-t-il se venger après cette douceur précoce ?](data/articles/c586fa615db85cecce762389e7a557df.html)
 **Source:** Météo-Paris
-Le château de Versailles sous la neige dans une ambiance polaire le 15 février 2010 – Archives Météo-Villes Un mois de janvier exceptionnellement neigeux ! Après un automne 2009 plutôt doux, l'hiver a fait un retour remarqué dès le mois de décembre sur la France. Une première vague de froid s'est en effet propagée jusqu'à la France à partir du 13 décembre avec de l’air glacial venu de Russie envahissant tout le pays et de la neige sur de nombreuses régions, atteignant même la région de Nice le 18 décembre. Cette première vague de froid se termine quasiment le jour de Noël, mais la douceur qui caractérise les derniers jours de l’année ne sera que très éphémère. Après une courte pause plus douce donc, le froid revient de plus belle à partir du 31 décembre 2009. Le début du mois de janvier 2010 est ainsi très hivernal sur la quasi totalité de la France avec de première chutes de neige le 1er janvier entre les côtes de la Manche et l'Île-de-France (10cm en Seine-Maritime). Les 3 et 4 janvier, c'est sur le sud de la France que la neige se montre plus étendue, tombant du Poitou à la région Rhône-Alpes en passant par le Limousin et l'Auvergne, on mesure 20cm à Grenoble, 13cm à Lyon et 8cm à Clermont-Ferrand. 8 cm à Lyon le 4 janvier 2010 – Archives Météo-Villes Le 6 janvier, la neige tombe par averses en Normandie avec 20cm mesurés à Honfleur. Le lendemain, on mesure 30cm à Alençon, 20cm à Dreux, Chartres et entre le sud du 78, 91 et 77 au passage d'une goutte froide alors qu'il neige également sur le sud-est entre le Languedoc-Roussillon et la Camargue puis jusqu'en vallée du Rhône et dans les Alpes la nuit suivante. Alors que la matinée du 8 janvier est glaciale dans le nord du pays avec jusqu'à -20,6°C 0 Brétigny-sur-Orge, battant le record de 1985, de très fortes chutes de neige persistent sur le sud. On mesure jusqu'à 50cm à Gap, 35cm à Grenoble, 30cm à Orange et même 20cm en Camargue. Ces chutes persistent le lendemain avec des cumuls devenant impressionnants dans l'intérieur du Languedoc-Roussillon jusqu'au Tarn. Certains villages d'altitude sont coupés du monde avec parfois plus de 50 à 60cm cumulés ! 60cm de neige le 9 janvier 2010 aux Martys (900m) dans le département de l'Aude – Photographie : meteo81 La neige remonte d'ailleurs de nouveau sur le nord du pays durant cette journée, apportant 2 à 10cm supplémentaires jusqu'en Alsace, Bourgogne, Franche Comté et même en Bretagne. De très nombreuses région françaises sont ainsi sous la neige. Après une nouvelle perturbation accompagnée de neige (3 à 7cm sur une large partie du nord et de l'est du pays) et de pluie verglaçantes entre les Pays de la Loire, la Bretagne et la Basse-Normandie, le temps se montrera plus sec jusqu'au 20 janvier avec un redoux très progressif sur la majorité du pays. Celui-ci restera néanmoins une nouvelle-fois de courte durée. Une troisième vague de froid envahira en effet la France à partir du 25 janvier 2010. Le 28 janvier, de nouvelles averses de neige ont déjà lieu sur un large quart nord-est jusqu'au nord des Alpes avnat une perturbatioj plus active le lendemain, apportant des chutes plus franches en Champagne-Ardenne, Lorraine, Bourgogne, Franche-Comté et au sud de l’Alsace. La neige tient surtout au-dessus de 300m d’altitude. Le 31 janvier, la neige atteint de nouveau la Côte d'Azur avec plusieurs centimètres entre Nice et Fréjus, surtout entre Cannes et Saint-Raphaël où les plages sont bien blanchies. Dans le même temps, on mesure -14°C à Aurillac et -11°C à Nevers. Plages blanchies par la neige à Cannes le 31 janvier 2010 au matin – Archives Météo-Villes Un mois de février tout aussi hivernal ! Le mois de février débute donc sous le froid et la neige sur de nombreuses régions. Dès le 1er févier, des chutes de neige sont observées sur une partie du nord et de l'est avec par exemple 5/7cm à Lyon. Le 2 février, on mesure 30cm de neige dès 200m d'altitude dans le nord-est avant un net redoux entre le 3 et le 4 sur la totalité du pays. À La Mure, on passe par exemple de -16,9°C en début de nuit à 10.7°C durant la journée ! Encore une fois, le redoux restera temporaire puisque la 4ème vague de froid de la saison envahira la France le 9 février avec notamment le retour de la neige sur le nord dès la fin de journée. Le 10 février, on observe des averses de neige sur une large partie du nord et du centre du pays, plus fréquentes sur le Pas-de-Calais. C'est néanmoins le 11 février que la neige va se montrer plus généralisée et même parfois forte une nouvelle-fois sur la Côte d'Azur. On mesure en effet 5cm à Nice en fin de journée du 11 février, 10 à 15cm à Cannes et jusqu'à 30-40cm dans la région de Grasse dès 200m d'altitude ! Les jours suivants seront plus secs mais généralement glaciales sur la quasi-totalité du pays, excepté entre la pointe Bretonne, la Côte d'Azur et le littoral de la Corse avec des gelées généralisées et parfois fortes, les minimales descendant souvent sous les -10/-15°C. Les chutes de neige successives et le froid deviennent pesants pour bon nombre de français - Une du 10 février 2010 Cette 4ème vague de froid prendra fin le 17 février avec la reprise d'un flux océanique très perturbé mais aussi plus doux. Plusieurs tempêtes successives concerneront d'ailleurs la France à la fin du mois de février, notamment la fameuse tempête Xynthia le 27 février au soir. L'hiver n'avait néanmoins pas dit son dernier mot, celui-ci faisant un dernier retour durant le mois de mars. Ce début d'année 2010 fut donc exceptionnellement neigeux sur notre pays, le plus neigeux depuis l'hiver 1986-1987, si bien que peu de régions ont été épargnées par les flocons entre décembre, janvier et février. À lire également : &gt;&gt;&gt; Février 1991 : vague de froid et neige de la Bretagne à la côte d'Azur &gt;&gt;&gt; Février 1956 : la pire vague de froid du XXème siècle en France ! &gt;&gt;&gt; Février 1954 : une vague de froid pas comme les autres &gt;&gt;&gt; -20°C en plaine : retour sur la vague de froid de février 2012 &gt;&gt;&gt; Jusqu'à 70 cm de neige en plaine fin janvier en Roussillon ! &gt;&gt;&gt; Un premier hiver de la seconde guerre mondiale glacial ! Auteur : Tristan Bergen
+Le froid et la neige pourront-ils revenir dans les prochaines semaines sur la France ? - Image d'illustration Cette année, le printemps semble avoir pris de l’avance sur la France. La fin février est particulièrement douce, voire chaude, avec des températures exceptionnellement élevées sur de nombreuses régions cette semaine. Ces températures anormalement élevées annoncent-elles la fin de l’hiver et l’absence de retour du froid en France ? Probablement pas... Quel temps pour le mois de mars ? Pour le moment, la majorité des modèles saisonniers s'accordent sur le fait que le mois de mars devrait se montrer plus doux que la normale sur la France mais également plus sec. Les anomalies de températures restent en effet positives sur la France tout comme sur une large partie de l'Europe alors que les anomalies de précipitations restent négatives sur la majorité du pays, excepté près de la Méditerranée où le temps pourrait se montrer plus régulièrement humide. Anomalies de températures et de précipitations sur la France pour le mois de mars 2026 – via TropicalTidBits Dans ce contexte, nous devrions donc retrouver un mois de mars régulièrement anticyclonique sur la majorité de la France avec un temps doux ou très doux en moyenne sur le mois. Aucun signal de retour du froid plus ou moins durable n'est pour le moment envisagé pour ce premier mois du printemps 2026. Mais cela veut-il dire que l'hiver est bel et bien terminé ? Des coups de froid restent-ils possibles ? Une douceur précoce et marquée dès la fin du mois de février ne rime pas forcément avec la fin de l'hiver sur la France. Par le passé, certains pics de douceur durant cette période ont été suivis de retour plus ou moins marqué du froid et même de la neige sur notre pays durant le mois de mars, parfois même plus tardivement. 2021 : Le printemps en février, l'hiver en mars ! Durant la seconde quinzaine du mois de février 2021 par exemple, le printemps semblait déjà s'installer alors même que l'hiver n'était pas encore terminé. Du 16 au 25 février, une douceur exceptionnelle a en effet concerné la France avec des températures restant bien au-dessus des normales de la période. Températures maximales relevées sur la France le 24 février 2021 – Via Infoclimat Le 24 février 2021, on dépassait ainsi les 15-20°C sur la totalité du pays, souvent plus de 21-22°C sur la moitié sud et parfois plus de 24-25°C entre le sud-ouest et le Massif Central. De nombreux records mensuels de chaleur avaient ainsi été battus durant cette période et beaucoup pensaient que l'hiver avait bel et bien pris fin. Pourtant, trois semaines plus tard, entre le 15 et le 23 mars 2021, la neige et le froid avaient décidé de faire leur retour sur notre pays. Sous un flux ayant basculé au nord/nord-ouest puis au nord-est en altitude, de l'air bien froid pour la période s'était en effet engouffré sur la France, apportant d'abord d'abondantes chutes de neige en montagne avant que la neige ne s'invite jusqu'en plaine peu avant l'équinoxe de printemps. On avait en effet pu relever 4-5cm de neige à Clermont-Ferrand le 19 mars alors qu'on y relevait plus de 22°C un mois plus tôt. 4 à 5cm de neige le vendredi 19 mars 2021 au matin à Clermont-Ferrand – Photographie : Daniel Paquet via Twitter : @Danieldeclerm Des chutes de neige avaient également pu être observées à basse voire très basse altitude jusque sur le sud-est de la France, ainsi que du côté des Pyrénées avant un retour au sec par la suite sous un froid persistant. Des gelées étaient en effet observées sur les ¾ de la France alors que le printemps calendaire débutait. 1960 : l'été en février avant le retour de la neige et du gel à la fin du printemps ! La fin du mois de février s'était également montrée anormalement chaude sur la France. Entre le 27 et le 29 février, de l'air chaud en provenance du Sahara avait envahit tout le pays, apportant des températures dignes d'une fin de printemps voire même d'un début d'été. . Durant cette période, les températures se sont également élevées jusqu’à 29°C à Biarritz, 28°C à Pau, 26°C à Clermont-Ferrand, 24°C à Nevers, 22°C à Reims et 21°C à Paris. Sous un effet de foehn, on avait même pu relever jusqu'à 31°C à Saint-Girons en Ariège, un record pour un mois de février en France. La douceur /chaleur de la fin février 1960 près du lac du bois de Boulogne, à Paris – Archives Météo-Villes Malgré tout, l'hiver n'avait pas dit son dernier mot sur notre pays. En effet, le froid avait fait un retour brutal et remarqué à la fin du mois d'avril. Du 26 avril au 5 mai, de l'air particulièrement froid pour la période avait réussi à s'engouffrer jusqu'à la France, apportant des chutes de neige jusqu'en plaine sur certaines régions. Le 29 avril, il tombe 5 cm de neige à Belfort et 4 cm à Luxeuil-les-Bains dans les Vosges. Le lendemain, les gelées sont généralisées sur le pays avec -4°C à Limoges, -3°C à Nevers. Ce temps froid persiste jusqu'à début mai, engendrant d'importants dégâts sur les cultures. On peut encore citer d'autres exemples de douceur précoce suivie de coups de froids tardifs, comme l'année 1998 où une douceur exceptionnelle avait concerné la France à la fin du mois de février avant un retour temporaire du froid et de la neige pour Pâques. Ainsi, une période de douceur exceptionnelle ne rime pas forcément avec la fin de l'hiver, des coups de froid temporaires restant encore possibles jusqu'au mois d'avril voire même jusqu'au début du mois de mai. À lire également : &gt;&gt;&gt; Près de 140 records de chaleur battus ce mercredi en France ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Un blizzard new-yorkais est-il possible en France ? &gt;&gt;&gt; La sécheresse va-t-elle succéder aux inondations ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 5. `FR` [Pourquoi l'hiver n'est pas forcément terminé](data/articles/c0b6d13901d9ff9adf95a8d108f1937e.html)
+### 4. `FR` [Pourquoi l'hiver n'est pas forcément terminé](data/articles/c0b6d13901d9ff9adf95a8d108f1937e.html)
 **Source:** Météo-Paris
 Alors que la douceur va s'affirmer dans les prochains jours, on se demande si l'hiver est terminé en France. Toutefois, le passé lointain comme récent nous ont montré que l'hiver peut encore se manifester bien au delà du mois de février. Congères de 2 mètres à Gonneville dans le Cotentin (50) le 13 mars 2013 - via infoclimat.fr D'importantes coulées froides peuvent encore survenir Lorsque les jours rallongent et que le pôle Nord se réchauffe, le vortex polaire - qui concentre la majorité de l'air froid aux hautes latitudes - devient moins stable. C'est à dire qu'il devient de moins en moins compact. Il peut alors se déformer et entraîne avec lui des ondulations plus importantes du courant jet. Ainsi, des coulées d'air froid peuvent d'échapper du pôle en direction des latitudes moyennes comme la France. Il est donc tout à fait classique d'observer des coups de froid tardifs sur nos régions en mars, ce pourquoi il ne faut jamais enterrer l'hiver trop vite. Schéma d'un vortex polaire instable et d'un courant jet ondulant (classique au printemps) - NOAA Il suffit de regarder les relevés du passé pour se rendre compte qu'un froid marqué peut encore survenir au cours du mois de mars. À Paris-Montsouris, on peut encore descendre sous les -5°C durant la première partie du mois. L'exemple le plus récent date du 13 mars 2013 avec une température qui affichait -5,5°C à l'aube. De plus, on peut encore assister à des journées sans dégel jusqu'à début mars. D'ailleurs, le jour sans dégel le plus tardif est assez récent puisqu'il s'agissait également du 13 mars 2023 où le thermomètre n'avait pas dépassé -1,4°C dans la capitale ! Températures minimales et maximales les plus basses mesurées à Paris-Montsouris en mars depuis 1886 - infoclimat.fr Offensives hivernales en mars : des exemples récents Il est donc important de rappeler qu'il est beaucoup trop tôt pour enterrer l'hiver. Si l'hiver météorologique s'achève au 28 février, le froid et la neige en plaine peuvent encore se manifester bien après ! Rappelons qu'il peut encore neiger sur toute la France au cours du mois de mars. Il n'y a d'ailleurs pas besoin d'aller fouiller dans les archives lointaines pour retrouver des épisodes hivernaux marquants en mars. En 2010, l'agglomération de Perpignan s'était retrouvée sous 25 à 40 cm de neige le 8 mars et les températures plongeaient localement jusqu'à -10°C dans le nord-est de l'hexagone ! 30 à 40 cm de neige sur l'agglomération de Perpignan (66) le lundi 8 mars 2010 - Météo Villes Encore plus près de nous, on peut évoquer la tempête de neige historique qui s'était produite de la Bretagne à la Belgique le 12 mars 2013. La Normandie avait été la région la plus touchée et Météo France avait même déclenché la vigilance ROUGE neige dans la Manche et le Calvados. Le vent violent avait causé des congères atteignant 1 à 2 mètres de haut ! Par endroits, les véhicules étaient littéralement ensevelis ! Hors-congères, il était tombé 20 à 40 cm de façon généralisé dans ces départements. Le village des Pieux dans le Cotentin (50), dans la tempête de neige du 13 mars 2013 - via infoclimat.fr S'il n'y a pour le moment pas de réel signal vers un retour du froid, ce dernier ne peut aucunement être exclu alors que nous ne sommes qu'en février. Ces exemples passés nous rappellent que des coulées d'air froid peuvent suivre les premiers pics de douceur printanière. À lire également : &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Tempête Pedro : la goutte d'eau de trop ! &gt;&gt;&gt; 1 mort et de gros dégâts : la tempête Nils a frappé fort ! &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
 
@@ -1178,7 +1492,23 @@ Alors que la douceur va s'affirmer dans les prochains jours, on se demande si l'
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 6. `FR` [Après la guerre, l’épreuve du grand froid de l’hiver 47-48](data/articles/75e5cf92612d021341323cc8037af00b.html)
+### 5. `FR` [L'hiver sans fin... de la mi-novembre à la mi-mars !](data/articles/8193eba90484312cf6c3f2bd7f477717.html)
+**Source:** Météo-Paris
+À la fin de l’hiver 1963, l’épaisseur du manteau neigeux est parfois spectaculaire dans les massifs montagneux, notamment dans les Vosges, où elle dépasse localement 10 mètres sur les plus hautes crêtes. Archives meteo-paris.com L'hiver 1962-63 fut le plus long depuis des siècles Après une fin des années 1950 et un début des années 1960 relativement cléments, l’hiver 1962-1963 s’impose comme l’un des plus longs et des plus marquants du XXe siècle. À Paris, il devient le plus froid enregistré depuis l’hiver 1879-1880. Le gel apparaît dès la mi-novembre 1962 et s’installe durablement, ne s’interrompant que brièvement jusqu’au début du mois de mars 1963. Au même moment, la guerre d’Algérie s’achève, provoquant l’exode massif des pieds-noirs vers la métropole. Habitués à des hivers plus doux, ils découvrent une France au climat presque polaire. À Marseille, les paquebots Ville-d’Oran et Hairouan voient même leur départ pour Alger retardé d’une journée en raison de la neige et du froid intense. Partout, le pays se fige. À Deauville, les yachts restent prisonniers des glaces, tandis que des milliers de péniches sont immobilisées sur des canaux et des rivières gelés. Dès la fin décembre, le Rhin, le Rhône et la Seine charrient des glaçons, bientôt rejoints par la Garonne et la Loire. La Bretagne est loin d'échapper à cette vague de froid monumentale... ici, à l'entrée de Rennes, à la fin du mois de février 1963- archives meteo-paris.com La période du 12 janvier au 6 février est la plus rigoureuse Car cet épisode est arquée par un gel quasi permanent. Les températures atteignent des niveaux exceptionnels : -27 °C à Ambérieux, -26 °C à Vichy, -23 °C à Lyon, -18 °C à Montpellier, -14 °C à Dinard et -13 °C à Paris. Marseille connaît sa quatrième chute de neige de l’hiver, avec encore 20 cm supplémentaires. La pénurie de combustibles refait surface : la consommation de charbon augmente de 40 % et celle de fuel double. Début février, de nombreux locataires des HLM parisiens se retrouvent sans chauffage. L’Union des Vieux de France réclame une allocation d’urgence pour les personnes âgées. Aux confins de la Bourgogne, du Berry, de la Lorraine et de l’Isère, quelques loups venus d’Europe de l’Est sont aperçus, poussés par le froid. Mieux vaut tirer partie de la situation… À Carcassonne, sous plusieurs dizaines de centimètres de neige au mois de février 1963 - photo colorisée - archives meteo-paris.com - 29°C dans l'Hérault... une banquise sur le littoral de la Mer du Nord... ! L’intensité du gel est telle qu’une banquise se forme sur le littoral de la mer du Nord, de Dunkerque jusqu’à La Panne, en Belgique. La mer gèle également en Charente-Maritime, à La Courbe. Tous les grands fleuves charrient des glaçons, certains se retrouvant même localement totalement pris par les glaces. Le 4 février, une violente tempête de neige paralyse le Languedoc-Roussillon et la Corse. Des usines s’effondrent sous le poids de la neige. À Saint-Martin-de-Londres, la température chute à -29 °C, détruisant des vergers entiers. Sur la Côte d’Azur, la production florale des serres d’Antibes est anéantie. Un redoux temporaire, les 6 et 7 février, laisse espérer une amélioration, mais le froid reprend rapidement ses droits. Les 19 et 20 février, de nouvelles chutes de neige recouvrent le pays. En région parisienne, 15 à 20 cm de poudreuse transforment les pentes en pistes de ski improvisées. Des skieurs sur l'esplanade du Trocadéro, devant la Tour Eiffel, après les chutes de neige de la fin du mois de février 1963 - photo colorisée - archives meteo-paris.com De très nombreux décès... et un dégel très tardif En mars, le dégel provoque d’importants dégâts sur les routes. Si l’agriculture souffre moins qu’en 1956, les blés d’hiver sont partiellement détruits. En France, le nombre de décès liés à cet hiver exceptionnel atteint 30 000, un bilan alarmant en raison de la durée et de l’intensité du froid. Cet hiver 1962-1963 se révèle également remarquable par son ampleur à l’échelle mondiale : l’Est des États-Unis, le Canada, la Chine, le Japon, la Sibérie et l’ensemble de l’Europe occidentale connaissent des conditions extrêmement rigoureuses, tandis que l’Alaska, l’Islande, l’Afrique du Nord, le Moyen-Orient et l’Inde bénéficient d’une douceur inhabituelle. &gt;&gt;&gt; Après la guerre, l’épreuve du grand froid de l’hiver 47-48 &gt;&gt;&gt; Le supplice du terrible hiver 1917 &gt;&gt;&gt; Jusqu'à 60 cm de neige sur la Côte d'Azur à la fin du mois de février ! &gt;&gt;&gt; -40 au vent à Marseille et Dunkerque bloqué par la banquise : c'est possible ! &gt;&gt;&gt; Février 1963 polaire, au terme de l'hiver le plus long du 20e siècle &gt;&gt;&gt; Février 1954 : une vague de froid pas comme les autres Auteur : Guillaume Séchet
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 6. `FR` [Hiver 2010 : le plus long et le plus neigeux depuis 1987](data/articles/c9060ec63a38c51265f5312c01036bf1.html)
+**Source:** Météo-Paris
+Le château de Versailles sous la neige dans une ambiance polaire le 15 février 2010 – Archives Météo-Villes Un mois de janvier exceptionnellement neigeux ! Après un automne 2009 plutôt doux, l'hiver a fait un retour remarqué dès le mois de décembre sur la France. Une première vague de froid s'est en effet propagée jusqu'à la France à partir du 13 décembre avec de l’air glacial venu de Russie envahissant tout le pays et de la neige sur de nombreuses régions, atteignant même la région de Nice le 18 décembre. Cette première vague de froid se termine quasiment le jour de Noël, mais la douceur qui caractérise les derniers jours de l’année ne sera que très éphémère. Après une courte pause plus douce donc, le froid revient de plus belle à partir du 31 décembre 2009. Le début du mois de janvier 2010 est ainsi très hivernal sur la quasi totalité de la France avec de première chutes de neige le 1er janvier entre les côtes de la Manche et l'Île-de-France (10cm en Seine-Maritime). Les 3 et 4 janvier, c'est sur le sud de la France que la neige se montre plus étendue, tombant du Poitou à la région Rhône-Alpes en passant par le Limousin et l'Auvergne, on mesure 20cm à Grenoble, 13cm à Lyon et 8cm à Clermont-Ferrand. 8 cm à Lyon le 4 janvier 2010 – Archives Météo-Villes Le 6 janvier, la neige tombe par averses en Normandie avec 20cm mesurés à Honfleur. Le lendemain, on mesure 30cm à Alençon, 20cm à Dreux, Chartres et entre le sud du 78, 91 et 77 au passage d'une goutte froide alors qu'il neige également sur le sud-est entre le Languedoc-Roussillon et la Camargue puis jusqu'en vallée du Rhône et dans les Alpes la nuit suivante. Alors que la matinée du 8 janvier est glaciale dans le nord du pays avec jusqu'à -20,6°C 0 Brétigny-sur-Orge, battant le record de 1985, de très fortes chutes de neige persistent sur le sud. On mesure jusqu'à 50cm à Gap, 35cm à Grenoble, 30cm à Orange et même 20cm en Camargue. Ces chutes persistent le lendemain avec des cumuls devenant impressionnants dans l'intérieur du Languedoc-Roussillon jusqu'au Tarn. Certains villages d'altitude sont coupés du monde avec parfois plus de 50 à 60cm cumulés ! 60cm de neige le 9 janvier 2010 aux Martys (900m) dans le département de l'Aude – Photographie : meteo81 La neige remonte d'ailleurs de nouveau sur le nord du pays durant cette journée, apportant 2 à 10cm supplémentaires jusqu'en Alsace, Bourgogne, Franche Comté et même en Bretagne. De très nombreuses région françaises sont ainsi sous la neige. Après une nouvelle perturbation accompagnée de neige (3 à 7cm sur une large partie du nord et de l'est du pays) et de pluie verglaçantes entre les Pays de la Loire, la Bretagne et la Basse-Normandie, le temps se montrera plus sec jusqu'au 20 janvier avec un redoux très progressif sur la majorité du pays. Celui-ci restera néanmoins une nouvelle-fois de courte durée. Une troisième vague de froid envahira en effet la France à partir du 25 janvier 2010. Le 28 janvier, de nouvelles averses de neige ont déjà lieu sur un large quart nord-est jusqu'au nord des Alpes avnat une perturbatioj plus active le lendemain, apportant des chutes plus franches en Champagne-Ardenne, Lorraine, Bourgogne, Franche-Comté et au sud de l’Alsace. La neige tient surtout au-dessus de 300m d’altitude. Le 31 janvier, la neige atteint de nouveau la Côte d'Azur avec plusieurs centimètres entre Nice et Fréjus, surtout entre Cannes et Saint-Raphaël où les plages sont bien blanchies. Dans le même temps, on mesure -14°C à Aurillac et -11°C à Nevers. Plages blanchies par la neige à Cannes le 31 janvier 2010 au matin – Archives Météo-Villes Un mois de février tout aussi hivernal ! Le mois de février débute donc sous le froid et la neige sur de nombreuses régions. Dès le 1er févier, des chutes de neige sont observées sur une partie du nord et de l'est avec par exemple 5/7cm à Lyon. Le 2 février, on mesure 30cm de neige dès 200m d'altitude dans le nord-est avant un net redoux entre le 3 et le 4 sur la totalité du pays. À La Mure, on passe par exemple de -16,9°C en début de nuit à 10.7°C durant la journée ! Encore une fois, le redoux restera temporaire puisque la 4ème vague de froid de la saison envahira la France le 9 février avec notamment le retour de la neige sur le nord dès la fin de journée. Le 10 février, on observe des averses de neige sur une large partie du nord et du centre du pays, plus fréquentes sur le Pas-de-Calais. C'est néanmoins le 11 février que la neige va se montrer plus généralisée et même parfois forte une nouvelle-fois sur la Côte d'Azur. On mesure en effet 5cm à Nice en fin de journée du 11 février, 10 à 15cm à Cannes et jusqu'à 30-40cm dans la région de Grasse dès 200m d'altitude ! Les jours suivants seront plus secs mais généralement glaciales sur la quasi-totalité du pays, excepté entre la pointe Bretonne, la Côte d'Azur et le littoral de la Corse avec des gelées généralisées et parfois fortes, les minimales descendant souvent sous les -10/-15°C. Les chutes de neige successives et le froid deviennent pesants pour bon nombre de français - Une du 10 février 2010 Cette 4ème vague de froid prendra fin le 17 février avec la reprise d'un flux océanique très perturbé mais aussi plus doux. Plusieurs tempêtes successives concerneront d'ailleurs la France à la fin du mois de février, notamment la fameuse tempête Xynthia le 27 février au soir. L'hiver n'avait néanmoins pas dit son dernier mot, celui-ci faisant un dernier retour durant le mois de mars. Ce début d'année 2010 fut donc exceptionnellement neigeux sur notre pays, le plus neigeux depuis l'hiver 1986-1987, si bien que peu de régions ont été épargnées par les flocons entre décembre, janvier et février. À lire également : &gt;&gt;&gt; Février 1991 : vague de froid et neige de la Bretagne à la côte d'Azur &gt;&gt;&gt; Février 1956 : la pire vague de froid du XXème siècle en France ! &gt;&gt;&gt; Février 1954 : une vague de froid pas comme les autres &gt;&gt;&gt; -20°C en plaine : retour sur la vague de froid de février 2012 &gt;&gt;&gt; Jusqu'à 70 cm de neige en plaine fin janvier en Roussillon ! &gt;&gt;&gt; Un premier hiver de la seconde guerre mondiale glacial ! Auteur : Tristan Bergen
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 7. `FR` [Après la guerre, l’épreuve du grand froid de l’hiver 47-48](data/articles/75e5cf92612d021341323cc8037af00b.html)
 **Source:** Météo-Paris
 Neige à Paris - Place de l'Opéra - fin février 1948 - archives meteo-paris.com Une descente froide polaire particulièrement puissante À la fin de janvier et au début de février 1948, une puissante cellule anticyclonique s’installe sur la Scandinavie et l’Europe du Nord. Cette configuration bloque les perturbations atlantiques et favorise un flux persistant d’air continental très froid en provenance d’Europe orientale et de Russie. Les masses d’air, sèches et glaciales, s’étendent vers l’ouest et le sud-ouest du continent. L'air glacial qui descend de la mer baltique vers la France, le 20 février 1948 - Source : Wetterzentrale Une vague de froid intense à la fin du mois de février Du 20 au 27 février 1948 : le froid et la neige envahissent toute la France - la Bretagne est particulièrement concernée par cette offensive hivernale et la température descend à -13° à Brest où la ville est recouverte d’un épais manteau blanc. Les 22 et 23 février 1948 , une tempête de neige d’une rare violence paralyse la moitié nord. La température descend à -20°C à Clermont-Ferrand et -10 à -12°C en Ile-de-France. La neige atteint même la Côte d’Azur. Les maximales restent fréquemment négatives pendant plusieurs jours consécutifs, et le froid est accentué par des vents parfois soutenus, augmentant la sensation de gel. Évolution des températures à Paris au cours du mois de février 1948 - source : site meteo-climat La capitale ainsi que d'autres grandes villes françaises sont paralysées La neige, parfois abondante, persiste au sol en raison des températures durablement négatives. Dans certaines zones, les cours d’eau gèlent partiellement et les sols restent pris par le gel sur une profondeur inhabituelle. Des chasse-neige font leur apparition dans les rues de Paris où la circulation devient praticable impraticable… La paralysie de la Capitale est donc un sujet majeur. L'utilisation de chasse-neige devenue nécessaire dans Paris à la fin du mois de février 1948 - archives meteo-paris.com Pénuries de charbon et infrastructures fragilisées La vague de froid de février 1948 survient dans un contexte d’après-guerre marqué par des infrastructures fragilisées et des pénuries, notamment de charbon et de combustible. Les transports ferroviaires et routiers sont fortement perturbés par la neige et le gel. L’approvisionnement en énergie devient difficile dans plusieurs régions, entraînant des coupures de chauffage. Sur le plan humain, le froid intense provoque une surmortalité, en particulier parmi les populations les plus vulnérables. L’agriculture subit également des dégâts notables, avec des cultures et des arbres fruitiers affectés par le gel prolongé. Une circulation difficile sur la place de la Concorde à la fin du mois de février 1948 - archives meteo-paris.com La vague de froid de février 1948 est souvent associée, dans les archives météorologiques, au « grand hiver 1947-1948 ». Elle demeure une référence pour l’étude des épisodes de froid extrême en Europe de l’Ouest, tant par sa durée que par son intensité et ses impacts socio-économiques. À lire également : &gt;&gt;&gt; Le dernier hiver de la guerre fut terriblement froid en France... &gt;&gt;&gt; Le supplice du terrible hiver 1917 &gt;&gt;&gt; Le blizzard meurtrier de la fin février 1958 &gt;&gt;&gt; Jusqu'à 60 cm de neige sur la Côte d'Azur à la fin du mois de février ! &gt;&gt;&gt; -40 au vent à Marseille et Dunkerque bloqué par la banquise : c'est possible ! &gt;&gt;&gt; Nos très nombreux articles (1 à 3 par jour) &gt;&gt;&gt; Notre almanach météo les principaux évènements climatiques en France depuis 1850 &gt;&gt;&gt; Notre chronique sur les évènements climatiques depuis 1709 &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Guillaume Séchet
 
@@ -1186,15 +1516,15 @@ Neige à Paris - Place de l'Opéra - fin février 1948 - archives meteo-paris.co
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 7. `FR` [Le mois de février le plus froid après 1956...](data/articles/6ab4b66ec6e19a1d35ecf55c7973b431.html)
+### 8. `FR` [Près de 140 records de chaleur battus ce mercredi en France !](data/articles/7f993eae9f7a4b76f94a6cbd7910f7a0.html)
 **Source:** Météo-Paris
-La vague de froid début par 2 m de neige dans le Midi ! Le 30 janvier 1986, une tempête de neige d’une violence exceptionnelle s’abat sur le Languedoc-Roussillon, l’Ariège et le sud du Massif central. En l’espace d’à peine une journée et demie, les cumuls pulvérisent tous les records : près de deux mètres de neige à Loubaresse, en Ardèche, 1,70 mètre à Réal, dans les Pyrénées-Orientales, et jusqu’à 50 centimètres à Carcassonne. Les routes disparaissent, les villages se retrouvent coupés du monde. L’armée est appelée en renfort. Très vite, la situation devient critique. Un million de personnes sont plongées dans le noir. Le plan ORSEC est déclenché en Ardèche. Dans certaines communes du Massif central, l’électricité ne revient qu’au bout de trois semaines, déclenchant une vive polémique sur la gestion de la crise. L’Ardèche dans la tempête de neige extraordinaire du 30 janvier 1986 - archives meteo-paris.com Plusieurs jours de blizzard entre la Bretagne et la Beauce Cette tempête annonce un mois de février hors normes. Après l’hiver déjà mémorable de 1984-1985, le froid s’installe durablement. Sur la moitié nord du pays, février 1986 devient le mois le plus froid depuis 1956. La vague de froid débute le 5 février et ne lâche prise que le 28. Une durée exceptionnelle, aux conséquences dramatiques. Selon le climatologue Daniel Rousseau, près de 13 000 décès supplémentaires sont recensés par rapport à un hiver jugé « normal ». Les régions situées à la frontière de l’air glacial paient un lourd tribut. La Bretagne, les Pays de la Loire, le Centre, la Bourgogne et Rhône-Alpes sont régulièrement balayés par la neige et de véritables blizzards. Dans le Loiret, le plan ORSEC est à nouveau déclenché : les axes routiers sont paralysés, comme lors de l’hiver 1979. Sur la façade atlantique, les paysages deviennent irréels : 30 centimètres de neige à Pornic, 16 à Lorient. À La Baule ou à Quiberon, des skieurs arpentent les plages. Mi-février 1986 : Les agriculteurs viennent au secours des automobilistes piégés par la neige dans la Beauce - photo meteo-paris.com De la neige jusque sur le littoral de la Corse ! Plus au sud, le froid se fait plus bref, entre le 8 et le 14 février, mais suffisamment intense pour recouvrir de neige toute la Corse, y compris Ajaccio, ainsi que la Côte d’Azur. À Nice, le carnaval est annulé. Le 28 février marque la fin de cet épisode glacial, mais dans la brutalité. De fortes chutes de neige touchent toute la moitié nord, déposant 20 centimètres sur la région parisienne. En Bretagne, des pluies verglaçantes transforment routes et trottoirs en pièges mortels. À Lorient, l’hôpital accueille 75 blessés en seulement huit heures. Les trois quarts des écoles ferment leurs portes. L’hiver 1986 laisse derrière lui un pays éprouvé, figé par le froid et marqué durablement dans les mémoires. La neige à Ajaccio au début du mois de février 1986 - photo meteo-paris.com A lire également : &gt;&gt;&gt; Février 1956 : la pire vague de froid du XXème siècle en France ! &gt;&gt;&gt; Février 1986 : au cœur de trois hivers exceptionnels &gt;&gt;&gt; Notre chronique météo &gt;&gt;&gt; Notre almanach météo &gt;&gt;&gt; Nos bulletins météo réactualisés tous les jours &gt;&gt;&gt; Tendances saisonnières Auteur : Guillaume Séchet
+La plage de La Ciotat (13) prise d'assaut le dimanche 22 février 2026 - photo mairie Les températures s'envolent à des niveaux records en cette fin de mois de février, atteignant 25°C dans le centre de la France et flirtant avec les 30°C au pied des Pyrénées. Les chaleurs précoces sont de plus en plus fréquentes et faciles à atteindre. Presque 30°C fin février ! Le printemps est déjà là, pour ne pas dire l'été ! Ces dernières heures, les températures s'envolent à des niveaux remarquables en France. Les premières chaleurs de l'année ont concerné le sud-ouest ce mardi 24 février 2026. Au pied des Pyrénées, la barre des 25°C a été allègrement dépassée et on s'est même approché des 30°C dans le Béarn avec une température maximale de 29,5°C mesurée à Saint-Gladie-Arrive-Munein, loin devant son record de 27,0°C en février 2020 ! On peut aussi noter 26,6°C à Biarritz, 26,2°C à Pau, 25,9°C à Saint-Girons ou encore 25,2°C à Dax. Températures maximales relevées au sud-ouest le mardi 24 février 2026 - meteociel.fr Cette surchauffe inhabituelle alors que nous sommes encore en hiver s'est poursuivie ce mercredi 25 février 2026 en s'étendant jusqu'au nord de la France. Le pays a vécu une journée hors norme avec jusqu'à 28°C dans le Pays Basque et des dizaines de records de douceur/chaleur battus jusqu'aux rivages de la Mer du Nord ! Parmi les records les plus marquants, on peut citer 26,5°C à Biscarrosse dans les Landes, 25,6°C à Tiranges en Haute-Loire, 25,2°C à Montgivray dans l'Indre, 25,1°C à Tulle en Corrèze, 24,7°C à Montluçon dans l'Allier, 22,4°C à Orléans dans le Loiret ou encore 22,3°C au Mans dans la Sarthe ! Températures maximales mesurées en France ce mercredi 25 février 2026 - Météo Villes Plus de 100 records mensuels battus le 25 février !! Plus de 100 records de douceur et chaleur ont été battus ce mercredi 25 février 2026, la preuve qu'il s'agissait bien de l'une des journées les plus chaudes, jamais enregistrée pour un mois de février. Par exemple 26,5°C à Biscarrosse (40), 25,6°C à Tiranges (43), 25,2°C à Montgivray (36), 25,1°C à Tulle (19), 24,7°C à Montluçon (03), 22,4°C à Orléans (45), 22,3°C au Mans (72). Beaucoup datent de la fin février 1960, 1990, 1998 ou 2019 &gt;&gt;&gt; liste des records de ce 25 février 2026 ici &gt;&gt;&gt; Carte des records mensuels de température battues le 25 février 2026 - Meteociel.fr Chaleur précoce de plus en plus facile à atteindre Lorsque l'on parle de chaleur précoce, il est difficile de ne pas évoquer les 31,2°C de Saint-Girons (Ariège) le 29 février 1960. Toutefois, il faut préciser que le flux de sud observé à l'époque était nettement plus marqué et que la température de la masse d'air à 1500m flirtait avec les 20°C sur la façade atlantique ! Hier, la masse d'air affichait "seulement" 12 à 14°C à 1500m en Aquitaine, ce qui n'a pas empêché le thermomètre d'approcher les 30°C ! Cela montre à quel point il devient facile d'atteindre des sommets thermiques, même sans masse d'air record. Si la même situation que fin février 1960 se produisait de nos jours, il est probable que nous atteindrions 32-33°C au pied des Pyrénées ! Comparatif des masses d'air observées les 29 février 1960 et 24 février 2026 - meteociel.fr Il faut dire que cela fait plusieurs années que la fin de l'hiver météorologique ressemble souvent au printemps. Nous sommes sur 8 mois de février consécutifs plus doux que la normale en France et avec des anomalies conséquentes puisque 5 des 8 derniers mois de février ont enregistré un écart thermique égal ou supérieur à +2°C ! On ne compte plus les pics de douceur/chaleur records. En février 2025, il avait fait 19,5°C en Belgique. En février 2024, 22°C dans le centre de la France. En février 2021, quasiment 23°C en Alsace. En février 2020, pas moins de 27°C sur la côte basque. Sans oublier la remarquable fin février 2019 avec 20 à 25°C sur la quasi-totalité du pays et 27°C en Aquitaine ! Anomalie thermique (aux normales 1991-2020) en France au mois de février de 1988 à 2026 - Météo France Avec le réchauffement climatique, le mois de février tend à perdre ses caractéristiques hivernales et devient de plus en plus un mois de printemps. Cela engendre un éveil précoce de la végétation, qui est alors surexposée au risque de gel tardif en mars et avril. Pour autant, il reste possible de vivre des mois de février froids en France, comme ce fut le cas pour la dernière fois en 2018. À lire également : &gt;&gt;&gt; Un blizzard new-yorkais est-il possible en France ? &gt;&gt;&gt; 80 cm de neige dans le Var : la pagaille de la fin février 2001 &gt;&gt;&gt; L'hiver sans fin... de la mi-novembre à la mi-mars ! &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 8. `FR` [La sécheresse va-t-elle succéder aux inondations ?](data/articles/c0e2fafba4bf8a2511e4ddedc4eb2a34.html)
+### 9. `FR` [La sécheresse va-t-elle succéder aux inondations ?](data/articles/c0e2fafba4bf8a2511e4ddedc4eb2a34.html)
 **Source:** Météo-Paris
 Après un début d'année particulièrement arrosé, l'anticyclone rétablit un temps calme qui semble parti pour durer. Peut-on craindre une sécheresse malgré un hiver très pluvieux ? Notre article vous donne des éléments de réponse. Des nappes très bien rechargées ! Après un début 2026 particulièrement pluvieux, les nappes phréatiques ont pu se recharger efficacement. À quelques jours du printemps météorologique et à l'approche de la fin de saison de recharge des nappes, la situation est plus que satisfaisante dans la majeure partie des régions. 70% des nappes de France affichent des niveaux égaux ou supérieurs à la normale. Autre bonne nouvelle, l'Aude et les Pyrénées-Orientales - qui souffraient d'une sécheresse chronique - ont reçu des pluies très abondantes et leurs nappes sont remontées à des niveaux inédits depuis de longues années. Niveau des nappes phréatiques ce jeudi 26 février 2026 - info-secheresse.fr Outre la situation en profondeur, il faut également évoquer la situation en surface. Après ce début d'année 2026 exceptionnel : l'indice d'humidité des sols atteint des records ! Il y a quelques jours, l'indice à échelle nationale était à son plus haut niveau depuis le début des mesures pour cette époque de l'année ! D'ailleurs, il arrive même sur le podium des situations où les sols ont été les plus humides en France, toutes dates confondues. Seuls décembre 1982 et janvier 1994, théâtres de graves inondations, avaient connu une humidité moyenne légèrement supérieure à la situation actuelle. Indice d'humidité des sols en moyenne nationale du 18 février 2025 au 17 février 2026 - Météo France En résumé : en cette fin février 2026, nous sommes aux antipodes d'une situation de sécheresse avec des sols gorgés en humidité en surface couplés à des nappes phréatiques affichant des niveaux élevés dans de nombreuses régions. Une sécheresse reste-t-elle possible d'ici l'été ? Avec des nappes phréatiques à des niveaux souvent très satisfaisants, le spectre de la sécheresse est forcément moins important qu'il n'a pu l'être au cours des dernières années. Cependant, il faut surveiller le tournant actuel. En effet, il semblerait que le retour de conditions météorologiques plus sèches s'inscrive dans la durée. Les dernières tendances pour mars 2026 envisagent un mois sec en France, voire très sec dans la moitié sud où le déficit pluviométrique pourrait être marqué. À une saison où la végétation en éveil est gourmande en eau, les sols seront donc amenés à s'assécher. Anomalie pluviométrique envisagée en Europe en mars 2026 - NOAA Les nappes phréatiques hautes ne nous protègent pas d'un risque de sécheresse superficielle. Comme son nom l'indique, elle se traduit par un déficit prononcé d'humidité des sols en surface, pouvant altérer le bon développement de la végétation. C'est pourquoi on l'appelle souvent "sécheresse agricole". Contrairement à la sécheresse en profondeur (liée aux nappes), la sécheresse superficielle peut apparaître en seulement quelques semaines lorsque l'anticyclone s'installe et que la pluie manque, surtout si l'ensoleillement est important et que les températures sont élevées. La sécheresse superficielle des sols peut apparaître en quelques semaines - photo Fabrice Elsner Bien Ainsi, le risque d'une importante sécheresse en profondeur semble très limité cette année, grâce au niveau des nappes élevé en sortie d'hiver. En revanche, un printemps sec et chaud suffirait à assécher considérablement les sols en surface et pourrait occasionner une sécheresse de surface, même si les nappes sont hautes. Il est important de différencier ces deux types de sécheresses, qui peuvent se produire indépendamment l'une de l'autre. À lire également : &gt;&gt;&gt; Près de 140 records de chaleur battus ce mercredi en France ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Un blizzard new-yorkais est-il possible en France ? &gt;&gt;&gt; 80 cm de neige dans le Var : la pagaille de la fin février 2001 &gt;&gt;&gt; L'hiver sans fin... de la mi-novembre à la mi-mars ! &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
 
@@ -1202,17 +1532,9 @@ Après un début d'année particulièrement arrosé, l'anticyclone rétablit un 
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 9. `FR` [Le retour du sable du Sahara sur la France](data/articles/7917174bafad61c376fb3aea6c908194.html)
+### 10. `FR` [Le retour du sable du Sahara sur la France](data/articles/7917174bafad61c376fb3aea6c908194.html)
 **Source:** Météo-Paris
 Schéma des remontées de sable du Sahara qui pourraient se produire sur le France, notamment au début de ce mois de mars 2026 - illustration, reprise dans le livre "Y a plus de saison", Guillaume Séchet, 2008 C'est le retour du sable du Sahara après quelques mois d'absence… Des quantités qui pourraient être plus massives au début du mois de mars. De premières remontées de sable en cours Avec le puissant courant océanique que nous avons connu au cours de ces dernières semaines, il était impossible que du sable du Sahara remonte vers nos régions. Mais la situation a bien évolué… Le vent s'est orienté au sud sur toute l’Europe occidentale et les remontées de sable du Sahara ont commencé à nous intéresser. Cependant, jusqu'à ce week-end, ces remontées de poussière saharienne resteront relativement limitées et peu visibles dans le ciel. Elles vont d'ailleurs s'évacuer vers l'est poussée par un léger courant océanique à partir de vendredi. Simulation des remontées de poussière saharienne à 3000 m d'altitude d'ici mercredi soir - Meteociel Des remontées beaucoup plus massives début mars Pour que ce phénomène soit beaucoup plus massif, il faut qu’une dépression se forme sur la péninsule Ibérique et plonge vers le désert marocain et algérien, happant avec elle d’importantes quantité de sable du Sahara qui traverse la Méditerranée et arrive jusque sur nos régions. Et ce sera justement et probablement le cas au début du mois de mars, lorsqu’une goutte froide s’installera sur l’Espagne et en engendrera d’importantes remontées de poussière vers la France. Si cette échéance est encore assez lointaine, le risque est assez élevé et les scénarios qui vont dans ce sens se suivent et se ressemblent. Prévisions des remontées de sable du Sahara entre le 1er et le 4 mars - météo grecque (université d'Athènes) Un phénomène assez fréquent à la fin de l'hiver et au printemps Le début du printemps est d’ailleurs une période assez favorable pour ce type de phénomènes car des gouttes froides viennent souvent s’isoler sur la péninsule Ibérique; et les remontées chaudes en provenance d’Afrique du Nord sont assez fréquentes. Ce fut par exemple le cas les : &gt;&gt;&gt; 20 mars 2025, &gt;&gt;&gt; 3 mars 2025, &gt;&gt;&gt; 17 février 2025, &gt;&gt;&gt; 6 avril 2024, &gt;&gt;&gt; 30 mars 2024, &gt;&gt;&gt; 20 février 2023, &gt;&gt;&gt; 26 mars 2022 &gt;&gt;&gt; 16 mars 2022 Grosses quantités de sable saharien dans le ciel d'Aguilas (sud-ouest de l'Espagne) ce 14 mars 2022 - photo Jose Gome Ros Auteur : Guillaume Séchet
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 10. `FR` [Près de 140 records de chaleur battus ce mercredi en France !](data/articles/7f993eae9f7a4b76f94a6cbd7910f7a0.html)
-**Source:** Météo-Paris
-La plage de La Ciotat (13) prise d'assaut le dimanche 22 février 2026 - photo mairie Les températures s'envolent à des niveaux records en cette fin de mois de février, atteignant 25°C dans le centre de la France et flirtant avec les 30°C au pied des Pyrénées. Les chaleurs précoces sont de plus en plus fréquentes et faciles à atteindre. Presque 30°C fin février ! Le printemps est déjà là, pour ne pas dire l'été ! Ces dernières heures, les températures s'envolent à des niveaux remarquables en France. Les premières chaleurs de l'année ont concerné le sud-ouest ce mardi 24 février 2026. Au pied des Pyrénées, la barre des 25°C a été allègrement dépassée et on s'est même approché des 30°C dans le Béarn avec une température maximale de 29,5°C mesurée à Saint-Gladie-Arrive-Munein, loin devant son record de 27,0°C en février 2020 ! On peut aussi noter 26,6°C à Biarritz, 26,2°C à Pau, 25,9°C à Saint-Girons ou encore 25,2°C à Dax. Températures maximales relevées au sud-ouest le mardi 24 février 2026 - meteociel.fr Cette surchauffe inhabituelle alors que nous sommes encore en hiver s'est poursuivie ce mercredi 25 février 2026 en s'étendant jusqu'au nord de la France. Le pays a vécu une journée hors norme avec jusqu'à 28°C dans le Pays Basque et des dizaines de records de douceur/chaleur battus jusqu'aux rivages de la Mer du Nord ! Parmi les records les plus marquants, on peut citer 26,5°C à Biscarrosse dans les Landes, 25,6°C à Tiranges en Haute-Loire, 25,2°C à Montgivray dans l'Indre, 25,1°C à Tulle en Corrèze, 24,7°C à Montluçon dans l'Allier, 22,4°C à Orléans dans le Loiret ou encore 22,3°C au Mans dans la Sarthe ! Températures maximales mesurées en France ce mercredi 25 février 2026 - Météo Villes Plus de 100 records mensuels battus le 25 février !! Plus de 100 records de douceur et chaleur ont été battus ce mercredi 25 février 2026, la preuve qu'il s'agissait bien de l'une des journées les plus chaudes, jamais enregistrée pour un mois de février. Par exemple 26,5°C à Biscarrosse (40), 25,6°C à Tiranges (43), 25,2°C à Montgivray (36), 25,1°C à Tulle (19), 24,7°C à Montluçon (03), 22,4°C à Orléans (45), 22,3°C au Mans (72). Beaucoup datent de la fin février 1960, 1990, 1998 ou 2019 &gt;&gt;&gt; liste des records de ce 25 février 2026 ici &gt;&gt;&gt; Carte des records mensuels de température battues le 25 février 2026 - Meteociel.fr Chaleur précoce de plus en plus facile à atteindre Lorsque l'on parle de chaleur précoce, il est difficile de ne pas évoquer les 31,2°C de Saint-Girons (Ariège) le 29 février 1960. Toutefois, il faut préciser que le flux de sud observé à l'époque était nettement plus marqué et que la température de la masse d'air à 1500m flirtait avec les 20°C sur la façade atlantique ! Hier, la masse d'air affichait "seulement" 12 à 14°C à 1500m en Aquitaine, ce qui n'a pas empêché le thermomètre d'approcher les 30°C ! Cela montre à quel point il devient facile d'atteindre des sommets thermiques, même sans masse d'air record. Si la même situation que fin février 1960 se produisait de nos jours, il est probable que nous atteindrions 32-33°C au pied des Pyrénées ! Comparatif des masses d'air observées les 29 février 1960 et 24 février 2026 - meteociel.fr Il faut dire que cela fait plusieurs années que la fin de l'hiver météorologique ressemble souvent au printemps. Nous sommes sur 8 mois de février consécutifs plus doux que la normale en France et avec des anomalies conséquentes puisque 5 des 8 derniers mois de février ont enregistré un écart thermique égal ou supérieur à +2°C ! On ne compte plus les pics de douceur/chaleur records. En février 2025, il avait fait 19,5°C en Belgique. En février 2024, 22°C dans le centre de la France. En février 2021, quasiment 23°C en Alsace. En février 2020, pas moins de 27°C sur la côte basque. Sans oublier la remarquable fin février 2019 avec 20 à 25°C sur la quasi-totalité du pays et 27°C en Aquitaine ! Anomalie thermique (aux normales 1991-2020) en France au mois de février de 1988 à 2026 - Météo France Avec le réchauffement climatique, le mois de février tend à perdre ses caractéristiques hivernales et devient de plus en plus un mois de printemps. Cela engendre un éveil précoce de la végétation, qui est alors surexposée au risque de gel tardif en mars et avril. Pour autant, il reste possible de vivre des mois de février froids en France, comme ce fut le cas pour la dernière fois en 2018. À lire également : &gt;&gt;&gt; Un blizzard new-yorkais est-il possible en France ? &gt;&gt;&gt; 80 cm de neige dans le Var : la pagaille de la fin février 2001 &gt;&gt;&gt; L'hiver sans fin... de la mi-novembre à la mi-mars ! &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
 
 </div>
 
@@ -1226,47 +1548,23 @@ Les anomalies de température prévue pour mercredi prochain seront très import
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 12. `FR` [Retour sur l'intense vague de froid de février 1929](data/articles/2d2d35825e8826e49677225f33dfbd82.html)
+### 12. `FR` [Le mois de février le plus froid après 1956...](data/articles/6ab4b66ec6e19a1d35ecf55c7973b431.html)
 **Source:** Météo-Paris
-La rade de Genève prise par la glace lors de la vague de froid de février 1929 - Chronique Météo Villes La vague de froid de février 1929 fait partie des plus intenses ayant touché la France au cours du XXième siècle. Les températures étaient descendues jusqu'à -30 degrés en plaine auvergnate ! Retour sur cet épisode marquant. -30°C en Auvergne : une vague de froid intense ! La vague de froid de février 1929 a été marquante, suivant un froid déjà marqué dès la fin janvier. En deuxième décade de février, un puissant anticyclone scandinave s'oppose à une dépression sur l'Italie, permettant la mise en place d'un véritable Moscou-Paris. Ce dernier advecte un air glacial vers la France et la masse d'air à 850 hPa (vers 1500 mètres d'altitude) atteint les -20°C dans l'est du pays, des niveaux rares ! Le pic de froid survient entre les 11 et 15 février 1929 avec des températures qui restent remarquablement basses de nuit comme de jour. Température de la masse d'air vers 1500m le 13 février 1929 - réanalyse via meteociel.fr À Strasbourg, la moyenne des températures minimales sur l'ensemble du mois affiche -13°C et celle des maximales -3°C ! Cela correspond à un déficit mensuel de -11,5°C aux normales climatologiques modernes ! On enregistre pas moins de 5 nuits entre -20 et -22°C et les températures maximales plafonnent entre -12 et -15°C du 11 au 14 février 1929 ! C'est en Auvergne qu'il fait le plus froid. Le thermomètre chute jusqu'à -30°C en plaine de Limagne, dans la région de Clermont-Ferrand ! Températures minimales et maximales mesurées à Strasbourg (67) en février 1929 - infoclimat.fr Les fleuves pris dans la glace Avec un froid si intense et qui a débuté dès la dernière semaine de janvier 1929, de nombreuses rivières de France sont entièrement prises par les glaces. La Somme est entièrement gelée à Amiens, tout comme la Meuse, l'Aisne à Rethel, l'Yonne et la Seine en amont de Montereau, de nombreux tronçons de la Loire et une bonne partie du Rhône. Les régions méditerranéennes ne sont pas épargnées par cette vague de froid et certaines villes côtières subissent des chutes de neige. Le Rhône est d'ailleurs partiellement pris dans la glace jusqu'à Arles dans les Bouches-du-Rhône ! Le Rhône partiellement gelé à Arles (13) en février 1929 - Chronique Météo Villes Cette vague de froid rend la vie quotidienne particulièrement difficile. À la campagne, l'eau courante n'étant généralement pas encore installée à cette époque, il faut aller chercher l'eau aux fontaines mais la plupart ne fonctionnent plus ! On fait alors fondre des blocs de glace ou de la neige pour bénéficier de l'eau. Il faut dire qu'elle était abondante dans certaines régions. On relevait entre 10 et 20 cm de neige de la Bretagne au Lyonnais (10 cm à Angers, 17 cm à Clermont-Ferrand). La Saône gelée se traverse à la marche à Chalon-sur-Saône (71) en février 1929 - Chronique Météo Villes À lire également : &gt;&gt;&gt; 80 cm de neige dans le Var : la pagaille de la fin février 2001 &gt;&gt;&gt; L'hiver sans fin... de la mi-novembre à la mi-mars ! &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
+La vague de froid début par 2 m de neige dans le Midi ! Le 30 janvier 1986, une tempête de neige d’une violence exceptionnelle s’abat sur le Languedoc-Roussillon, l’Ariège et le sud du Massif central. En l’espace d’à peine une journée et demie, les cumuls pulvérisent tous les records : près de deux mètres de neige à Loubaresse, en Ardèche, 1,70 mètre à Réal, dans les Pyrénées-Orientales, et jusqu’à 50 centimètres à Carcassonne. Les routes disparaissent, les villages se retrouvent coupés du monde. L’armée est appelée en renfort. Très vite, la situation devient critique. Un million de personnes sont plongées dans le noir. Le plan ORSEC est déclenché en Ardèche. Dans certaines communes du Massif central, l’électricité ne revient qu’au bout de trois semaines, déclenchant une vive polémique sur la gestion de la crise. L’Ardèche dans la tempête de neige extraordinaire du 30 janvier 1986 - archives meteo-paris.com Plusieurs jours de blizzard entre la Bretagne et la Beauce Cette tempête annonce un mois de février hors normes. Après l’hiver déjà mémorable de 1984-1985, le froid s’installe durablement. Sur la moitié nord du pays, février 1986 devient le mois le plus froid depuis 1956. La vague de froid débute le 5 février et ne lâche prise que le 28. Une durée exceptionnelle, aux conséquences dramatiques. Selon le climatologue Daniel Rousseau, près de 13 000 décès supplémentaires sont recensés par rapport à un hiver jugé « normal ». Les régions situées à la frontière de l’air glacial paient un lourd tribut. La Bretagne, les Pays de la Loire, le Centre, la Bourgogne et Rhône-Alpes sont régulièrement balayés par la neige et de véritables blizzards. Dans le Loiret, le plan ORSEC est à nouveau déclenché : les axes routiers sont paralysés, comme lors de l’hiver 1979. Sur la façade atlantique, les paysages deviennent irréels : 30 centimètres de neige à Pornic, 16 à Lorient. À La Baule ou à Quiberon, des skieurs arpentent les plages. Mi-février 1986 : Les agriculteurs viennent au secours des automobilistes piégés par la neige dans la Beauce - photo meteo-paris.com De la neige jusque sur le littoral de la Corse ! Plus au sud, le froid se fait plus bref, entre le 8 et le 14 février, mais suffisamment intense pour recouvrir de neige toute la Corse, y compris Ajaccio, ainsi que la Côte d’Azur. À Nice, le carnaval est annulé. Le 28 février marque la fin de cet épisode glacial, mais dans la brutalité. De fortes chutes de neige touchent toute la moitié nord, déposant 20 centimètres sur la région parisienne. En Bretagne, des pluies verglaçantes transforment routes et trottoirs en pièges mortels. À Lorient, l’hôpital accueille 75 blessés en seulement huit heures. Les trois quarts des écoles ferment leurs portes. L’hiver 1986 laisse derrière lui un pays éprouvé, figé par le froid et marqué durablement dans les mémoires. La neige à Ajaccio au début du mois de février 1986 - photo meteo-paris.com A lire également : &gt;&gt;&gt; Février 1956 : la pire vague de froid du XXème siècle en France ! &gt;&gt;&gt; Février 1986 : au cœur de trois hivers exceptionnels &gt;&gt;&gt; Notre chronique météo &gt;&gt;&gt; Notre almanach météo &gt;&gt;&gt; Nos bulletins météo réactualisés tous les jours &gt;&gt;&gt; Tendances saisonnières Auteur : Guillaume Séchet
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 13. `FR` [L'hiver va-t-il se venger après cette douceur précoce ?](data/articles/c586fa615db85cecce762389e7a557df.html)
+### 13. `FR` [Retour sur l'intense vague de froid de février 1929](data/articles/2d2d35825e8826e49677225f33dfbd82.html)
 **Source:** Météo-Paris
-Le froid et la neige pourront-ils revenir dans les prochaines semaines sur la France ? - Image d'illustration Cette année, le printemps semble avoir pris de l’avance sur la France. La fin février est particulièrement douce, voire chaude, avec des températures exceptionnellement élevées sur de nombreuses régions cette semaine. Ces températures anormalement élevées annoncent-elles la fin de l’hiver et l’absence de retour du froid en France ? Probablement pas... Quel temps pour le mois de mars ? Pour le moment, la majorité des modèles saisonniers s'accordent sur le fait que le mois de mars devrait se montrer plus doux que la normale sur la France mais également plus sec. Les anomalies de températures restent en effet positives sur la France tout comme sur une large partie de l'Europe alors que les anomalies de précipitations restent négatives sur la majorité du pays, excepté près de la Méditerranée où le temps pourrait se montrer plus régulièrement humide. Anomalies de températures et de précipitations sur la France pour le mois de mars 2026 – via TropicalTidBits Dans ce contexte, nous devrions donc retrouver un mois de mars régulièrement anticyclonique sur la majorité de la France avec un temps doux ou très doux en moyenne sur le mois. Aucun signal de retour du froid plus ou moins durable n'est pour le moment envisagé pour ce premier mois du printemps 2026. Mais cela veut-il dire que l'hiver est bel et bien terminé ? Des coups de froid restent-ils possibles ? Une douceur précoce et marquée dès la fin du mois de février ne rime pas forcément avec la fin de l'hiver sur la France. Par le passé, certains pics de douceur durant cette période ont été suivis de retour plus ou moins marqué du froid et même de la neige sur notre pays durant le mois de mars, parfois même plus tardivement. 2021 : Le printemps en février, l'hiver en mars ! Durant la seconde quinzaine du mois de février 2021 par exemple, le printemps semblait déjà s'installer alors même que l'hiver n'était pas encore terminé. Du 16 au 25 février, une douceur exceptionnelle a en effet concerné la France avec des températures restant bien au-dessus des normales de la période. Températures maximales relevées sur la France le 24 février 2021 – Via Infoclimat Le 24 février 2021, on dépassait ainsi les 15-20°C sur la totalité du pays, souvent plus de 21-22°C sur la moitié sud et parfois plus de 24-25°C entre le sud-ouest et le Massif Central. De nombreux records mensuels de chaleur avaient ainsi été battus durant cette période et beaucoup pensaient que l'hiver avait bel et bien pris fin. Pourtant, trois semaines plus tard, entre le 15 et le 23 mars 2021, la neige et le froid avaient décidé de faire leur retour sur notre pays. Sous un flux ayant basculé au nord/nord-ouest puis au nord-est en altitude, de l'air bien froid pour la période s'était en effet engouffré sur la France, apportant d'abord d'abondantes chutes de neige en montagne avant que la neige ne s'invite jusqu'en plaine peu avant l'équinoxe de printemps. On avait en effet pu relever 4-5cm de neige à Clermont-Ferrand le 19 mars alors qu'on y relevait plus de 22°C un mois plus tôt. 4 à 5cm de neige le vendredi 19 mars 2021 au matin à Clermont-Ferrand – Photographie : Daniel Paquet via Twitter : @Danieldeclerm Des chutes de neige avaient également pu être observées à basse voire très basse altitude jusque sur le sud-est de la France, ainsi que du côté des Pyrénées avant un retour au sec par la suite sous un froid persistant. Des gelées étaient en effet observées sur les ¾ de la France alors que le printemps calendaire débutait. 1960 : l'été en février avant le retour de la neige et du gel à la fin du printemps ! La fin du mois de février s'était également montrée anormalement chaude sur la France. Entre le 27 et le 29 février, de l'air chaud en provenance du Sahara avait envahit tout le pays, apportant des températures dignes d'une fin de printemps voire même d'un début d'été. . Durant cette période, les températures se sont également élevées jusqu’à 29°C à Biarritz, 28°C à Pau, 26°C à Clermont-Ferrand, 24°C à Nevers, 22°C à Reims et 21°C à Paris. Sous un effet de foehn, on avait même pu relever jusqu'à 31°C à Saint-Girons en Ariège, un record pour un mois de février en France. La douceur /chaleur de la fin février 1960 près du lac du bois de Boulogne, à Paris – Archives Météo-Villes Malgré tout, l'hiver n'avait pas dit son dernier mot sur notre pays. En effet, le froid avait fait un retour brutal et remarqué à la fin du mois d'avril. Du 26 avril au 5 mai, de l'air particulièrement froid pour la période avait réussi à s'engouffrer jusqu'à la France, apportant des chutes de neige jusqu'en plaine sur certaines régions. Le 29 avril, il tombe 5 cm de neige à Belfort et 4 cm à Luxeuil-les-Bains dans les Vosges. Le lendemain, les gelées sont généralisées sur le pays avec -4°C à Limoges, -3°C à Nevers. Ce temps froid persiste jusqu'à début mai, engendrant d'importants dégâts sur les cultures. On peut encore citer d'autres exemples de douceur précoce suivie de coups de froids tardifs, comme l'année 1998 où une douceur exceptionnelle avait concerné la France à la fin du mois de février avant un retour temporaire du froid et de la neige pour Pâques. Ainsi, une période de douceur exceptionnelle ne rime pas forcément avec la fin de l'hiver, des coups de froid temporaires restant encore possibles jusqu'au mois d'avril voire même jusqu'au début du mois de mai. À lire également : &gt;&gt;&gt; Près de 140 records de chaleur battus ce mercredi en France ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Un blizzard new-yorkais est-il possible en France ? &gt;&gt;&gt; La sécheresse va-t-elle succéder aux inondations ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen
+Température de la masse d'air vers 1500m le 13 février 1929 - réanalyse via meteociel.fr La vague de froid de février 1929 fait partie des plus intenses ayant touché la France au cours du XXième siècle. Les températures étaient descendues jusqu'à -30 degrés en plaine auvergnate ! Retour sur cet épisode marquant. -30°C en Auvergne : une vague de froid intense ! La vague de froid de février 1929 a été marquante, suivant un froid déjà marqué dès la fin janvier. En deuxième décade de février, un puissant anticyclone scandinave s'oppose à une dépression sur l'Italie, permettant la mise en place d'un véritable Moscou-Paris. Cet dernier advecte un air glacial vers la France et la masse d'air à 850 hPa (vers 1500 mètres d'altitude) atteint les -20°C dans l'est du pays, des niveaux rares ! Le pic de froid survient entre les 11 et 15 février 1929 avec des températures qui restent remarquablement basses de nuit comme de jour. La région de Genève est particulièrement concernée et le lac Léman gèle en grande partie ! La rade de Genève prise par la glace lors de la vague de froid de février 1929 - Chronique Météo Villes À Strasbourg, la moyenne des températures minimales sur l'ensemble du mois affiche -13°C et celle des maximales -3°C ! Cela correspond à un déficit mensuel de -11,5°C aux normales climatologiques modernes ! On enregistre pas moins de 5 nuits entre -20 et -22°C et les températures maximales plafonnent entre -12 et -15°C du 11 au 14 février 1929 ! C'est en Auvergne qu'il fait le plus froid. Le thermomètre chute jusqu'à -30°C en plaine de Limagne, dans la région de Clermont-Ferrand ! Températures minimales et maximales mesurées à Strasbourg (67) en février 1929 - infoclimat.fr Les fleuves pris dans la glace Avec un froid si intense et qui a débuté dès la dernière semaine de janvier 1929, de nombreuses rivières de France sont entièrement prises par les glaces. La Somme est entièrement gelée à Amiens, tout comme la Meuse, l'Aisne à Rethel, l'Yonne et la Seine en amont de Montereau, de nombreux tronçons de la Loire et une bonne partie du Rhône. Les régions méditerranéennes ne sont pas épargnées par cette vague de froid et certaines villes côtières subissent des chutes de neige. Le Rhône est d'ailleurs partiellement pris dans la glace jusqu'à Arles dans les Bouches-du-Rhône ! Le Rhône partiellement gelé à Arles (13) en février 1929 - Chronique Météo Villes Cette vague de froid rend la vie quotidienne particulièrement difficile. À la campagne, l'eau courante n'étant généralement pas encore installée à cette époque, il faut aller chercher l'eau aux fontaines mais la plupart ne fonctionnent plus ! On fait alors fondre des blocs de glace ou de la neige pour bénéficier de l'eau. Il faut dire qu'elle était abondante dans certaines régions. On relevait entre 10 et 20 cm de neige de la Bretagne au Lyonnais (10 cm à Angers, 17 cm à Clermont-Ferrand). La Saône gelée se traverse à la marche à Chalon-sur-Saône (71) en février 1929 - Chronique Météo Villes À lire également : &gt;&gt;&gt; 80 cm de neige dans le Var : la pagaille de la fin février 2001 &gt;&gt;&gt; L'hiver sans fin... de la mi-novembre à la mi-mars ! &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 14. `FR` [80 cm de neige dans les plaines du Var, fin février !](data/articles/73b03b5d5f5ad71eb6dbe51ca5432cc8.html)
-**Source:** Météo-Paris
-80 cm de neige et route paralysée dans la région de Saint-Maximin (Var) le 28 février 2001 - Chronique Météo Villes La fin du mois de février 2001 avait été marquée par des chutes de neige exceptionnelles dans le sud-est de la France. Il était tombé jusqu'à 80 cm dans le Var, causant une véritable paralysie sur les routes ! Retour sur cet épisode marquant. Tempête de neige au sud-est Fin février 2001, la France subit sa première véritable offensive hivernale depuis novembre 1999 ! Une dépression circule sur le bassin parisien et advecte de l'air froid sur le pays. Dans le même temps, un minimum dépressionnaire secondaire se creuse dans le golfe de Gênes, ce qui entraîne un retour d'est responsable de fortes précipitations persistantes sur le nord de l'Italie et le sud-est de la France. L'isothermie se met en place et il se met à neiger en plaine sur la Provence, particulièrement durant la nuit du 27 au 28 février 2001. Situation météo en Europe le mercredi 28 février 2001 - réanalyse via meteociel.fr Il neige alors dans tout le sud-est de la France mais les quantités sont surtout remarquables sur la Provence ainsi qu'en Ardèche. Le mercredi 28 février 2001, on mesure jusqu'à 80 centimètres de neige au sol à Saint-Maximin dans le Var, 65 cm à Sault dans le Vaucluse ou encore et 52 cm à Régusse (Var) ! De tels cumuls sont remarquables pour ces régions et la vie quotidienne s'en trouve particulièrement affectée. Manteau de neige remarquable à Saint-Maximin (83) le 28 février 2001 - Chronique Météo Villes Une véritable pagaille sur les routes ! Avec de telles quantités de neige dans une région si peu habituée à ce phénomène, circuler devient presque mission impossible dans certains secteurs ! Les axes secondaires sont rendus impraticables car recouverts par plusieurs dizaines de centimètres d'une neige lourde et collante ! Cette neige engendre également des dégâts et de nombreuses coupures d'électricité. Plus de 100.000 foyers sont privés de courant le 28 février 2001 ! Route ensevelie sous un épais manteau neigeux à Signes dans le Var le 28 février 2001 - Chronique Météo Villes La tempête de neige ayant frappé en pleine semaine, entre le mardi 27 et le mercredi 28 février 2001, beaucoup de travailleurs et de chauffeurs routiers se retrouvent coincés sur la route. Les grands axes ne sont pas épargnés. L'autoroute A8 est notamment paralysée dans le Var et plusieurs milliers de personnes deviennent des naufragés de la route, ce qui conduira rapidement à une polémique sur le manque de préparation face à un tel épisode. Des milliers de naufragés sur les routes de Provence le 28 février 2001 - Chronique Météo Villes À lire également : &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Un air printanier en début de semaine prochaine ! &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 15. `FR` [Le supplice du terrible hiver 1917](data/articles/33dcd85412d6cc63cc25caa66b86b596.html)
-**Source:** Météo-Paris
-Vague de froid du mois de février 1917 à Paris : Même les chevaux ne résistent pas ! archives meteo-paris.com Les deux derniers hivers de la Première Guerre mondiale sont particulièrement rudes en France, déjà en partie dévastée par trois années de combats. Entre le 20 janvier et le 15 février 1917, une vague de froid exceptionnelle frappe surtout le Nord et l’Est du pays, atteignant son apogée au début de février avec des températures extrêmement glaciales. Dans « Le Monde Illustré » du 3 février 1917, on note que cet hiver renoue avec la tradition, car selon le journal « les grands hivers d’antan deviennent de plus en plus rares… ». Il est vrai que la courbe de l’évolution des températures hivernales en France indique un réchauffement du début du siècle à l’arrivée de la Première Guerre mondiale. Des conditions météo insoutenables pour le moral des troupes Les sols gelés de l’Aisne, paradoxalement, permettent des mouvements de troupes impossibles sur sols boueux en temps normal. Cependant, l’armée française souffre terriblement du froid, étant nettement sous-équipée pour y résister, contrairement à l’armée allemande. Les régiments ne disposent que de quelques peaux de bête, et certains tirailleurs algériens sont même chaussés de souliers découverts et vêtus de culottes courtes. Ces conditions difficiles affectent grandement le moral des troupes. La relève sous la neige durant la guerre - début 1917 - archives meteo-paris.com Jusqu’à -26°C dans les plaines et vallées de l'Est de la France ! Le froid atteint son point culminant au tout début du mois de février avec des températures glaciales : -26 °C à Bonneville, -23 °C à Commercy, -22 °C à Montbrison, -20 °C à Grenoble, -18 °C à Lyon, -17 °C à Alençon et Clermont-Ferrand, et -15,5 °C à Paris. Les dix premiers jours de février sont comparés à la situation de février 1895. A Paris, le déneigement des voies de circulation est très compliqué en raison du manque de main-d’œuvre. Les femmes sont alors réquisitionnées. Février 1917 - archives meteo-paris.com Les rivières gèlent peu à peu Les rivières de l’Est commencent à geler le 24 janvier, tandis que celles du Nord, y compris celles de la région parisienne, le sont dans les derniers jours de janvier, un phénomène inédit depuis 1895. La navigation devient impossible sur les canaux puis sur la Seine. Parallèlement, la forte demande en charbon engendre d’importantes difficultés d’approvisionnement à Paris, comme à Londres. Malgré l’utilisation de quelques brise-glace et la construction de barrages pour retenir les glaces près de Rouen, les péniches restent bloquées entre Rouen et Paris. Un service spécial de transports automobiles est alors mis en place. Rouen - 7 février 1917 - archives meteo-paris.com Le prix du charbon s'envole !! Les files d’attente pour acheter du charbon s’allongent, et les prix s’envolent. Même les bourgeoises des beaux quartiers doivent attendre des heures, ce qui ne manque pas de provoquer quelques grincements de dents, tant figurés que réels. La pénurie de charbon, alors que de nombreuses machines en dépendaient à l’époque, a de plus en plus d’impact sur l’activité économique. Des lignes de tramway sont interrompues, des usines ferment leurs portes, et les blanchisseries, chauffées au coke, cessent progressivement leurs activités. Certains journaux s’indignent même que les prisonniers allemands soient mieux chauffés que les Français. La rareté du charbon entraîne une flambée des prix du bois de chauffage dans les grandes villes. Il est alors vendu au kilo, après avoir été scié et pesé sur des balances à main. Par ailleurs, les fourrures en peau de lapin deviennent très bon marché. Déchargement par la main-d'œuvre après l'immobilisation par le gel - vague de froid 1917 - archives meteo-paris.com A lire également : &gt;&gt;&gt; Notre chronique météo de l'année 1917 &gt;&gt;&gt; Le dernier hiver de la guerre fut terriblement froid en France... &gt;&gt;&gt; Froid polaire pour fin janvier et jusqu'à 1 m de neige à Carcassonne ! &gt;&gt;&gt; Tous nos articles (en moyenne, deux par jour) &gt;&gt;&gt; Notre compte Twitter (référence pour les médias) Auteur : Guillaume Séchet
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 16. `FR` [Une fin février comme en plein été !](data/articles/47f034c2717d2c1a86fcf047188ef0ab.html)
-**Source:** Météo-Paris
-Certaines plages de la façade Atlantique sont bondées comme en plein été à la fin du mois de février 1990 - Archives Météo-Villes Un changement radical de temps Après trois semaines particulièrement agitées avec une succession de perturbations apportant notamment d'importantes quantités de neige en montagne, des pluies abondantes sur de nombreuses régions et même une puissante tempête sur le nord-ouest de la France, la situation change radicalement sur la France pour la dernière décade de février 1990. Une poussée anticyclonique se met en effet en place sur le pays à partir du 20 février, apportant le retour d'un temps calme et sec mais également un net regain de douceur avec la bascule du flux au sud/sud-ouest en altitude. Situation atmosphérique du 22 février 1990 sur l'Europe – Wetterzentrale Si les semaines précédentes s'était déjà montrées assez douces sous l'influence du flux océanique perturbé, les températures ont pris une toute autre mesure au début de la dernière décade de février 1990. De la chaleur en février ! À partir du 20 février donc, les températures s'envolent sur la totalité du pays. Une véritable vague de chaleur hivernale se met en effet en place sur la France sous ce puissant flux de sud/sud-ouest en altitude. Dès le 20 février, on atteint 20°C jusque dans les Hauts-de-France, 18,5°C à Paris et 19°C à Strasbourg, mais c'est notamment les journées des 23 et 24 février qui se montrent exceptionnellement douces sur la totalité du pays et même chaudes sur certaines régions. Le 23 février, le seuil de chaleur est régulièrement dépassé sur le sud-ouest de la France avec par exemple 25,7°C à Biarritz, 25,9 à Mont-de-Marsan et même 27,2°C à Dax ! Le 24 février, les 26/27°C sont dépassés sur le sud de l'Aquitaine avec jusqu'à 28°C à Peyrehorade (40) et même 28,1°C à Agnos (64). On relève également jusqu'à 25°C à Bordeaux, 23,5°C à Clermont-Ferrand, 22,6°C à Bourges, 22°C à Mulhouse, 21°C à Orléans et 20°C à Paris. Certaines stations du centre de la France atteignent également le seuil de chaleur. De très nombreux records sont observés. Températures maximales relevées sur la France le 24 février 1990 – archive Météo-Villes Cette vague de douceur/chaleur exceptionnelle pour la période prendra fin sur la majorité du pays dès le lendemain avec le retour d'air océanique moins doux. Seules les régions allant du Massif Central au nord-est conserveront des températures très douces avec 22,3°C à Saint-Étienne, 21,8°C à Colmar, 19,9°C à Vichy. Deux tempêtes toucheront ensuite la France entre le 26 et le 28 février. Le mois de février 1990 s'est montré dans l'ensemble exceptionnellement doux. La température moyenne nationale durant ce mois a en effet dépassé la normale 1981/2010 de + 4°C, ce qui n'a jamais été égalé jusqu'à aujourd'hui. Seul le mois de févier 2024 s'est rapproché de cette température moyenne mensuelle exceptionnelle avec une anomalie de + 3,6°C à l'échelle du pays. Anomalies de températures en février entre 1967 et 2016 sur la France – Météo-France À lire également : &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Un air printanier en début de semaine prochaine ! &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
-
-### 17. `FR` [Douceur après les pluies : les pollens explosent en France](data/articles/e72f81a4b8ad7fb0a400dd4c913588e5.html)
+### 14. `FR` [Douceur après les pluies : les pollens explosent en France](data/articles/e72f81a4b8ad7fb0a400dd4c913588e5.html)
 **Source:** Météo-Paris
 La douceur couplée à l'humidité importante de ce mois de février permettent à la végétation de redémarrer très fortement et précocement. Par conséquent, les pollens se répandant et les allergiques subissent déjà leurs effets néfastes. Pic de douceur après les pluies : explosion des végétaux Les conditions météorologiques récentes et à venir réunissent tous les ingrédients pour l'explosion de la végétation. En effet, une grande douceur s'installe sur la France et va s'accentuer ces prochains jours avec un pic durant les mardi 24 et mercredi 25 février 2026. Les 20°C pourront être atteints jusque dans les régions du nord et on prévoit les premiers 25°C de la saison dans le sud de l'Aquitaine, le tout avec un beau soleil ! Avec des sols très humides suite aux pluies abondantes des dernières semaines et des températures dignes d'avril, la végétation croît très rapidement et les pollens se répandent. Températures maximales prévues les mardi 23 et mercredi 24 février 2026 - Météo Villes Par conséquent, les pollens font leur retour en force et les risques allergiques seront élevés en France durant cette semaine aux airs printaniers. Ce mardi 23 février 2026, le risque d'allergies sera d'un niveau jugé "élevé" par Atmo-France sur la majeure partie des régions, parfois un peu moindre dans certains secteurs du sud-ouest. Cette situation se répètera mercredi et jeudi, avant des risques moins élevés vendredi en raison du passage d'un front pluvieux. Carte du risque allergique valable pour le mardi 24 février 2026 - Atmo-France Cyprès et aulne : les principales menaces Si vous êtes allergiques, il est donc vivement recommandé de reprendre votre traitement ou de prendre rendez-vous chez votre médecin et/ou allergologue. Les personnes allergiques aux cyprès sont particulièrement concernées puisque ce pollen représente une menace importante cette semaine avec des concentrations très élevées dans les régions méditerranéennes, élevées dans le sud-ouest et modérées sur les autres régions. Le pollen de cyprès possède un pouvoir allergisant très important et génère souvent des rhino-conjonctivites. Les pollens de cyprès représentent une très forte menace allergique - photo d'illustration L'autre pollen qui pose problème aux quatre coins du pays est celui de l'aulne. Il est dégagé par ce que l'on appelle des chatons (photo ci-dessous), similaires à ceux du noisetier. Ce pollen est plus discret visuellement mais n'en demeure pas moins redoutable puisqu'il génère des rhino-conjonctivites et des crises d'asthme chez les sujets allergiques. Sa concentration est actuellement élevé et induit un risque de réaction allergique important dans la plupart des régions françaises. Les pollens d'aulne sont libérés par ce que l'on appelle des "chatons" - photo d'illustration Avec le retour du soleil et de températures particulièrement douces après de longues semaines de mauvais temps, beaucoup vont passer de longues heures en extérieur. Il convient donc d'être particulièrement vigilants face aux pollens. À lire également : &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Un air printanier en début de semaine prochaine ! &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
 
@@ -1274,7 +1572,7 @@ La douceur couplée à l'humidité importante de ce mois de février permettent 
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 18. `FR` [Vers le début d’une lente décrue](data/articles/a0ab6818820313c7eac6d402bf88039a.html)
+### 15. `FR` [Vers le début d’une lente décrue](data/articles/a0ab6818820313c7eac6d402bf88039a.html)
 **Source:** Météo-Paris
 La décrue est en vue sur la France avec le retour de conditions bien plus sèches - Celle-ci s'annonce néanmoins lente dans certains secteurs. Images impressionnantes de la crue de la Charente à Saintes ce mercredi 18 février 2026, dont le niveau va continuer de grimper cette nuit et demain. (photos via EPTB Charente) La décrue s'amorce en cette fin de semaine Le temps se montre exceptionnellement perturbé et humide en France depuis maintenant plusieurs semaines. En conséquences, les crues sont nombreuses et parfois très importantes à travers le pays, notamment sur l'ouest et le sud-ouest de la France. Plusieurs tronçons sont d'ailleurs toujours placés en vigilance rouge par Vigicrues ce vendredi 20 février : - Les basses vallées angevines - La Loire aval - La Loire saumuroise - La Charente aval Sur ces secteurs, les niveaux des cours d'eau continuent d'augmenter en cette fin de semaine avant un pic de crue attendu ce week-end. À Saintes par exemple, la Charente devrait atteindre un pic dimanche 22 février autour de 6.60 m (record de 6.84 m en décembre 1982). Évolution du niveau de la Charente à Saintes du 8 au 22 février 2026 – Vigicrues Ce pic devrait être suivi d'une lente décrue sur ce secteur, comme sur la majorité des cours d'eau de l'ouest de la France. En effet, une poussée anticyclonique est observée dès ce vendredi sur la France, ce qui permettra le retour d'un temps plus calme et sec au moins jusqu'en milieu voire fin de semaine prochaine. Cumuls de précipitations attendus jusqu'au vendredi 27 février 2026 sur la France – Modèle GFS via meteociel Ce retour au sec devrait donc permettre aux niveaux des cours d'eau d'entamer une baisse plus ou moins marquée dès ce week-end et ce durant plusieurs jours, une bonne nouvelle pour les régions sinistrées. Une décrue qui s'annonce lente dans certains secteurs Toutefois, il ne faut pas s'attendre à un retour à la normal dès la semaine prochaine. La décrue s'annonce en effet lente à très lente sur la majorité des cours d'eau français. Il faut en effet attendre que toute l'eau des bassins versants s'évacue avant que les fleuves et rivières retrouvent des niveaux plus normaux, ce qui s'annonce long sachant que les sols sont complètement saturés d'eau sur la quasi-totalité du pays. Il est donc logique d'observer un temps de retard entre l'arrêt des pluies et le début de la décrue, le temps que la pluie tombée en amont des cours d'eau se propage en aval. Schéma d'explication d'un bassin versant – METEO-EXTREME À cela s'ajoute la fonte plus ou moins marquée du manteau neigeux attendue dans les prochains jours sur les reliefs. Cette période plus calme et sèche devrait en effet s'accompagner d'un regain de douceur printanière sur notre pays, que ce soit en basses couches mais également en montagne. Cette douceur devrait engendrer un début de fonte du manteau neigeux parfois exceptionnel présent sur nos reliefs. On relevait en effet souvent plus de 250 à 350 cm de neige en haute montagne du côté des Alpes ce 20 février, parfois 4 mètres du côté de l'Isère. Les Pyrénées sont également très enneigées avec en général 250 à 280 cm sur les sommets de la région. Ainsi, l'eau de fonte devrait donc de nouveau alimenter les cours d'eau et ainsi maintenir des niveaux assez hauts malgré l'arrêt des précipitations. La couche de neige dépasse les 250cm en haute montagne dans les Pyrénées en cette fin de semaine comme ici au col du Portalet - Via Twitter @CyNPirineos Enfin, il est important de noter que certains scénarios envisagent déjà le retour de l'influence océanique perturbée pour la fin de semaine prochaine avec des pluies de nouveau généralisées et des perturbations successives, ce qui pourrait engendrer une nouvelle hausse du niveau des cours d'eau. Cette tendance reste néanmoins incertaine et sera à confirmer dans les prochains jours. À lire également : &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Un air printanier en début de semaine prochaine ! &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen
 
@@ -1282,7 +1580,15 @@ La décrue est en vue sur la France avec le retour de conditions bien plus sèch
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 19. `FR` [L'incroyable chaos des 40 cm de neige de mars 1946 en Ile-de-France](data/articles/83902340f4896bb7be2ba82ca618be9d.html)
+### 16. `FR` [Le supplice du terrible hiver 1917](data/articles/33dcd85412d6cc63cc25caa66b86b596.html)
+**Source:** Météo-Paris
+Vague de froid du mois de février 1917 à Paris : Même les chevaux ne résistent pas ! archives meteo-paris.com Les deux derniers hivers de la Première Guerre mondiale sont particulièrement rudes en France, déjà en partie dévastée par trois années de combats. Entre le 20 janvier et le 15 février 1917, une vague de froid exceptionnelle frappe surtout le Nord et l’Est du pays, atteignant son apogée au début de février avec des températures extrêmement glaciales. Dans « Le Monde Illustré » du 3 février 1917, on note que cet hiver renoue avec la tradition, car selon le journal « les grands hivers d’antan deviennent de plus en plus rares… ». Il est vrai que la courbe de l’évolution des températures hivernales en France indique un réchauffement du début du siècle à l’arrivée de la Première Guerre mondiale. Des conditions météo insoutenables pour le moral des troupes Les sols gelés de l’Aisne, paradoxalement, permettent des mouvements de troupes impossibles sur sols boueux en temps normal. Cependant, l’armée française souffre terriblement du froid, étant nettement sous-équipée pour y résister, contrairement à l’armée allemande. Les régiments ne disposent que de quelques peaux de bête, et certains tirailleurs algériens sont même chaussés de souliers découverts et vêtus de culottes courtes. Ces conditions difficiles affectent grandement le moral des troupes. La relève sous la neige durant la guerre - début 1917 - archives meteo-paris.com Jusqu’à -26°C dans les plaines et vallées de l'Est de la France ! Le froid atteint son point culminant au tout début du mois de février avec des températures glaciales : -26 °C à Bonneville, -23 °C à Commercy, -22 °C à Montbrison, -20 °C à Grenoble, -18 °C à Lyon, -17 °C à Alençon et Clermont-Ferrand, et -15,5 °C à Paris. Les dix premiers jours de février sont comparés à la situation de février 1895. A Paris, le déneigement des voies de circulation est très compliqué en raison du manque de main-d’œuvre. Les femmes sont alors réquisitionnées. Février 1917 - archives meteo-paris.com Les rivières gèlent peu à peu Les rivières de l’Est commencent à geler le 24 janvier, tandis que celles du Nord, y compris celles de la région parisienne, le sont dans les derniers jours de janvier, un phénomène inédit depuis 1895. La navigation devient impossible sur les canaux puis sur la Seine. Parallèlement, la forte demande en charbon engendre d’importantes difficultés d’approvisionnement à Paris, comme à Londres. Malgré l’utilisation de quelques brise-glace et la construction de barrages pour retenir les glaces près de Rouen, les péniches restent bloquées entre Rouen et Paris. Un service spécial de transports automobiles est alors mis en place. Rouen - 7 février 1917 - archives meteo-paris.com Le prix du charbon s'envole !! Les files d’attente pour acheter du charbon s’allongent, et les prix s’envolent. Même les bourgeoises des beaux quartiers doivent attendre des heures, ce qui ne manque pas de provoquer quelques grincements de dents, tant figurés que réels. La pénurie de charbon, alors que de nombreuses machines en dépendaient à l’époque, a de plus en plus d’impact sur l’activité économique. Des lignes de tramway sont interrompues, des usines ferment leurs portes, et les blanchisseries, chauffées au coke, cessent progressivement leurs activités. Certains journaux s’indignent même que les prisonniers allemands soient mieux chauffés que les Français. La rareté du charbon entraîne une flambée des prix du bois de chauffage dans les grandes villes. Il est alors vendu au kilo, après avoir été scié et pesé sur des balances à main. Par ailleurs, les fourrures en peau de lapin deviennent très bon marché. Déchargement par la main-d'œuvre après l'immobilisation par le gel - vague de froid 1917 - archives meteo-paris.com A lire également : &gt;&gt;&gt; Notre chronique météo de l'année 1917 &gt;&gt;&gt; Le dernier hiver de la guerre fut terriblement froid en France... &gt;&gt;&gt; Froid polaire pour fin janvier et jusqu'à 1 m de neige à Carcassonne ! &gt;&gt;&gt; Tous nos articles (en moyenne, deux par jour) &gt;&gt;&gt; Notre compte Twitter (référence pour les médias) Auteur : Guillaume Séchet
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 17. `FR` [L'incroyable chaos des 40 cm de neige de mars 1946 en Ile-de-France](data/articles/83902340f4896bb7be2ba82ca618be9d.html)
 **Source:** Météo-Paris
 A Ville d'Avray (ouest de Paris), la couche de neige atteint 55 cm ! photo d'archive meteo-paris.com Tempête de neige sur le nord de la France Dès la fin février 1946, l'anticyclone s'érige sur l'Atlantique et le Groenland, entraînant un décrochage d'air polaire qui envahit tout le nord de l'Europe et plonge en Mer du Nord. Au sud de cet air froid, une dépression se creuse vers le Portugal puis migre au dessus de la France où elle transite durant plusieurs jours début mars 1946. À l'avant de la dépression, l'air doux englobe le sud de l'hexagone tandis qu'elle rabat l'air froid sur les régions du nord. Un important conflit de masses d'air se produit avec en son centre un épisode neigeux actif et persistant des Pays de la Loire à la Belgique, frappant particulièrement l'Île-de-France ! Situation météo en Europe au 1er mars 1946 - Météo Villes On relève 40 cm de neige au sol à Paris, une épaisseur jamais mesurée depuis le début des relevés météo à Paris-Montsouris ! 80 ans plus tard, cette mesure n'a toujours pas été égalée. La presse de l'époque indique qu'il faut sans doute remonter à l'hiver 1829-1830 pour trouver trace d'une couche de neige semblable dans la région parisienne. La couche fut même encore plus importante à l'ouest de Paris, atteignant jusqu'à 55 cm dans les Yvelines ! Les photos d'époque montrent les terrasses parisiennes ensevelies sous la neige ! Paris sous 40 cm de neige, le 2 mars 1946 ! photo d'archive meteo-paris.com Paris paralysée par 40 cm de neige ! Début mars 1946, Paris s'était alors transformée en une véritable station de sports d'hiver ! De nombreux habitaient avaient chaussé les skis pour circuler dans les rues, dévalant les marches du Trocadéro jusqu'au pied de la Tour Eiffel ou encore les pentes de la butte Montmartre ! Six mois après la fin de la seconde guerre mondiale, les parisiens profitent pleinement de cet épisode exceptionnel. Pour autant, cette neige abondante cause aussi de nombreux problèmes, paralysant la circulation. Skieur descendant la butte Montmartre à Paris début mars 1946 - Chronique Météo Villes L’épaisseur de neige est telle que des toits et des verrières s’effondrent dans plusieurs quartiers de la capitale et que les denrées alimentaires peinent à être acheminées dans la région où les rayons se vident. Le trafic ferroviaire s'en trouve également paralysé. Les rues des villes sont difficilement praticables et de nombreuses chutes surviennent. Il faudra plusieurs jours pour assister à un retour progressif à la normale des activités. Neige abondante au métro Brochant de Paris début mars 1946 - Chronique Météo Villes Il s'agit, aujourd'hui encore, de l'épisode neigeux le plus important sur Paris depuis le début des relevés météorologiques. À lire également : &gt;&gt;&gt; Près de 140 records de chaleur battus ce mercredi en France ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Un blizzard new-yorkais est-il possible en France ? &gt;&gt;&gt; 80 cm de neige dans le Var : la pagaille de la fin février 2001 &gt;&gt;&gt; L'hiver sans fin... de la mi-novembre à la mi-mars ! &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
 
@@ -1290,9 +1596,25 @@ A Ville d'Avray (ouest de Paris), la couche de neige atteint 55 cm ! photo d'arc
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 20. `FR` [Records de chaleur pour mercredi ?](data/articles/ed1fb5b2b344a6d87d9792130be8ac9c.html)
+### 18. `FR` [Records de chaleur pour mercredi ?](data/articles/ed1fb5b2b344a6d87d9792130be8ac9c.html)
 **Source:** Météo-Paris
 Anomalies thermiques prévues entre le 23 février et le 2 mars 2026 - modèle ECMWF Si les températures ont déjà connu une légère hausse ces derniers jours, ce n’est rien en comparaison de ce qui nous attend cette semaine. Le courant va en effet se diriger vers le sud, permettant à l’air chaud en provenance du Maroc de se propager directement sur la France. La Belgique, l’Allemagne et la Suisse seront également touchées par cette vague de douceur en Europe occidentale. Jusqu'à 12°C au-dessus de la normale ! Tout au long de la semaine, les températures seront largement supérieures aux normales saisonnières pour une fin février, notamment entre mardi et mercredi, lorsque le soleil illuminera les trois quarts du pays. Les écarts à la normale pourraient atteindre sept à dix degrés mardi, et même dix à douze degrés mercredi ! Anomalies de températures maximales prévues mardi et mercredi Plus de 15° presque partout durant quatre jours Entre lundi et jeudi, les températures dépasseront les quinze degrés Celsius l’après-midi sur presque tout le territoire français. La journée la plus douce, voire localement chaude, sera probablement celle de mercredi, car la grande douceur qui aura déjà touché le quart sud-ouest la veille remontera vers les régions du Nord. Températures maximales prévues entre lundi 23 et jeudi 26 février selon METEO-VILLES.COM Peut-être quelques records mensuels battus ? Il sera difficile d’atteindre les records mensuels de douceur pour un mois de février, qui s’élèvent à près de trente degrés dans l’extrême Sud-Ouest et à vingt à vingt-trois degrés sur la plupart des régions. Néanmoins, à Paris, il est possible de se rapprocher des records pour une fin février. Le record pour la troisième décade de février est de 21,4 degrés en 1960. Pour un 24 février, le record est de 20,3 degrés en 1990, et pour un 25 février, il a fait jusqu’à 17,9 degrés à Paris Montsouris en 2019. Records de températures maximales pour un mois de février - Meteociel Pour une fin février, les années de référence sont donc 1960, 1990 et 2019. Pour la moitié sud, on peut également citer 2020 et 2012. Les quais de Seine à la fin du mois de février 2019 avec des températures autour de 18°C à l'ombre à Paris - archives meteo-paris.com &gt;&gt;&gt; Soleil et douceur favorisent floraisons et pollens &gt;&gt;&gt; Douceur exceptionnelle battant des records météo fin février &gt;&gt;&gt; Douceur : comme un air de printemps &gt;&gt;&gt; Douceur exceptionnelle entre mardi et mercredi Auteur : Guillaume Séchet
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 19. `FR` [Une fin février comme en plein été !](data/articles/47f034c2717d2c1a86fcf047188ef0ab.html)
+**Source:** Météo-Paris
+Certaines plages de la façade Atlantique sont bondées comme en plein été à la fin du mois de février 1990 - Archives Météo-Villes Un changement radical de temps Après trois semaines particulièrement agitées avec une succession de perturbations apportant notamment d'importantes quantités de neige en montagne, des pluies abondantes sur de nombreuses régions et même une puissante tempête sur le nord-ouest de la France, la situation change radicalement sur la France pour la dernière décade de février 1990. Une poussée anticyclonique se met en effet en place sur le pays à partir du 20 février, apportant le retour d'un temps calme et sec mais également un net regain de douceur avec la bascule du flux au sud/sud-ouest en altitude. Situation atmosphérique du 22 février 1990 sur l'Europe – Wetterzentrale Si les semaines précédentes s'était déjà montrées assez douces sous l'influence du flux océanique perturbé, les températures ont pris une toute autre mesure au début de la dernière décade de février 1990. De la chaleur en février ! À partir du 20 février donc, les températures s'envolent sur la totalité du pays. Une véritable vague de chaleur hivernale se met en effet en place sur la France sous ce puissant flux de sud/sud-ouest en altitude. Dès le 20 février, on atteint 20°C jusque dans les Hauts-de-France, 18,5°C à Paris et 19°C à Strasbourg, mais c'est notamment les journées des 23 et 24 février qui se montrent exceptionnellement douces sur la totalité du pays et même chaudes sur certaines régions. Le 23 février, le seuil de chaleur est régulièrement dépassé sur le sud-ouest de la France avec par exemple 25,7°C à Biarritz, 25,9 à Mont-de-Marsan et même 27,2°C à Dax ! Le 24 février, les 26/27°C sont dépassés sur le sud de l'Aquitaine avec jusqu'à 28°C à Peyrehorade (40) et même 28,1°C à Agnos (64). On relève également jusqu'à 25°C à Bordeaux, 23,5°C à Clermont-Ferrand, 22,6°C à Bourges, 22°C à Mulhouse, 21°C à Orléans et 20°C à Paris. Certaines stations du centre de la France atteignent également le seuil de chaleur. De très nombreux records sont observés. Températures maximales relevées sur la France le 24 février 1990 – archive Météo-Villes Cette vague de douceur/chaleur exceptionnelle pour la période prendra fin sur la majorité du pays dès le lendemain avec le retour d'air océanique moins doux. Seules les régions allant du Massif Central au nord-est conserveront des températures très douces avec 22,3°C à Saint-Étienne, 21,8°C à Colmar, 19,9°C à Vichy. Deux tempêtes toucheront ensuite la France entre le 26 et le 28 février. Le mois de février 1990 s'est montré dans l'ensemble exceptionnellement doux. La température moyenne nationale durant ce mois a en effet dépassé la normale 1981/2010 de + 4°C, ce qui n'a jamais été égalé jusqu'à aujourd'hui. Seul le mois de févier 2024 s'est rapproché de cette température moyenne mensuelle exceptionnelle avec une anomalie de + 3,6°C à l'échelle du pays. Anomalies de températures en février entre 1967 et 2016 sur la France – Météo-France À lire également : &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Un air printanier en début de semaine prochaine ! &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Tristan Bergen
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
+
+### 20. `FR` [80 cm de neige dans les plaines du Var, fin février !](data/articles/73b03b5d5f5ad71eb6dbe51ca5432cc8.html)
+**Source:** Météo-Paris
+80 cm de neige et route paralysée dans la région de Saint-Maximin (Var) le 28 février 2001 - Chronique Météo Villes La fin du mois de février 2001 avait été marquée par des chutes de neige exceptionnelles dans le sud-est de la France. Il était tombé jusqu'à 80 cm dans le Var, causant une véritable paralysie sur les routes ! Retour sur cet épisode marquant. Tempête de neige au sud-est Fin février 2001, la France subit sa première véritable offensive hivernale depuis novembre 1999 ! Une dépression circule sur le bassin parisien et advecte de l'air froid sur le pays. Dans le même temps, un minimum dépressionnaire secondaire se creuse dans le golfe de Gênes, ce qui entraîne un retour d'est responsable de fortes précipitations persistantes sur le nord de l'Italie et le sud-est de la France. L'isothermie se met en place et il se met à neiger en plaine sur la Provence, particulièrement durant la nuit du 27 au 28 février 2001. Situation météo en Europe le mercredi 28 février 2001 - réanalyse via meteociel.fr Il neige alors dans tout le sud-est de la France mais les quantités sont surtout remarquables sur la Provence ainsi qu'en Ardèche. Le mercredi 28 février 2001, on mesure jusqu'à 80 centimètres de neige au sol à Saint-Maximin dans le Var, 65 cm à Sault dans le Vaucluse ou encore et 52 cm à Régusse (Var) ! De tels cumuls sont remarquables pour ces régions et la vie quotidienne s'en trouve particulièrement affectée. Manteau de neige remarquable à Saint-Maximin (83) le 28 février 2001 - Chronique Météo Villes Une véritable pagaille sur les routes ! Avec de telles quantités de neige dans une région si peu habituée à ce phénomène, circuler devient presque mission impossible dans certains secteurs ! Les axes secondaires sont rendus impraticables car recouverts par plusieurs dizaines de centimètres d'une neige lourde et collante ! Cette neige engendre également des dégâts et de nombreuses coupures d'électricité. Plus de 100.000 foyers sont privés de courant le 28 février 2001 ! Route ensevelie sous un épais manteau neigeux à Signes dans le Var le 28 février 2001 - Chronique Météo Villes La tempête de neige ayant frappé en pleine semaine, entre le mardi 27 et le mercredi 28 février 2001, beaucoup de travailleurs et de chauffeurs routiers se retrouvent coincés sur la route. Les grands axes ne sont pas épargnés. L'autoroute A8 est notamment paralysée dans le Var et plusieurs milliers de personnes deviennent des naufragés de la route, ce qui conduira rapidement à une polémique sur le manque de préparation face à un tel épisode. Des milliers de naufragés sur les routes de Provence le 28 février 2001 - Chronique Météo Villes À lire également : &gt;&gt;&gt; Les stations des Alpes ensevelies sous plusieurs mètres de neige ! &gt;&gt;&gt; Et si le mois de mars était très sec ? &gt;&gt;&gt; Un air printanier en début de semaine prochaine ! &gt;&gt;&gt; Notre bulletin météo réactualisé quotidiennement &gt;&gt;&gt; Notre compte Twitter très suivi et référence dans tous les médias ! Auteur : Alexandre Slowik
 
 </div>
 
@@ -1306,7 +1628,26 @@ Anomalies thermiques prévues entre le 23 février et le 2 mars 2026 - modèle E
 
 <div class="article-item" data-lang="en" data-category="international" data-source="The Guardian World">
 
-### 1. `EN` [Russia may interfere in Danish election, exploiting chaos sewn by US, spies warn](data/articles/96b84959ef5672e849f7337e462fd5fa.html)
+### 1. `EN` [‘Crazy, without limits’: Paris disco haunt of Jagger and Grace Jones to reopen](data/articles/07e721707d514c276586229b68adea12.html)
+**Source:** The Guardian World
+Legendary nightclub Le Palace, where Serge Gainsbourg and Prince also performed, to rise again
+In the late 1970s, Le Palace in Paris’s busy theatre district was one of continental Europe’s most famous nightclubs.
+On the opening night on 1 March 1978, Grace Jones stunned VIP guests with her rendition of Edith Piaf’s classic La Vie en Rose. Later, Serge Gainsbourg and Prince came to perform, Bob Marley was photographed there and Mick Jagger, Andy Warhol and Karl Lagerfeld were part of a glittering cast of international celebrities, politicians, designers and models who came to drink and dance. Continue reading...
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="international" data-source="The Guardian World">
+
+### 2. `EN` [Albanese says Australia supports US action against Iran and stands with the Iranian people’s ‘struggle against oppression’](data/articles/c99b2cc5d5867ee75eb1847a41b92a1a.html)
+**Source:** The Guardian World
+Department of foreign affairs warns travellers of risk of reprisal attacks, further escalation and flight cancellations in Middle East Get our breaking news email, free app or daily news podcast Australia has declared its support for US action against Iran to prevent it from obtaining a nuclear weapon and “to prevent Iran continuing to threaten international peace and security”.
+But Australia’s department of foreign affairs (Dfat) has warned of the risk of “reprisal attacks and further escalation” across the Middle East after the attack. Continue reading...
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="international" data-source="The Guardian World">
+
+### 3. `EN` [Russia may interfere in Danish election, exploiting chaos sewn by US, spies warn](data/articles/96b84959ef5672e849f7337e462fd5fa.html)
 **Source:** The Guardian World
 US threats to seize Greenland have created ‘new international fault lines’ that can be used to spread disinformation, Danish intelligence agencies say
 Denmark’s intelligence services have warned that a foreign power may try to sway the general election on 24 March, saying the main threat was from Russia over support for Ukraine but also citing the chaos caused by US efforts to seize Greenland.
@@ -1316,19 +1657,9 @@ The PET police intelligence service and FE military intelligence said in a joint
 
 <div class="article-item" data-lang="en" data-category="international" data-source="New York Times World">
 
-### 2. `EN` [Were Duterte’s Speeches Orders to Kill or Hyperbole?](data/articles/146e6737ec968f70669b465fa76105b2.html)
+### 4. `EN` [Were Duterte’s Speeches Orders to Kill or Hyperbole?](data/articles/146e6737ec968f70669b465fa76105b2.html)
 **Source:** New York Times World
 Judges at the International Criminal Court have heard starkly different interpretations this week of the words of former President Rodrigo Duterte of the Philippines.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="international" data-source="The Guardian World">
-
-### 3. `EN` [BA owner’s profits rise by 20% despite drop in passenger numbers last year](data/articles/22df649e17c4b8f58f6860b8fae169e1.html)
-**Source:** The Guardian World
-IAG reports record operating profits on margins of more than 15% at British Airways and sister airline Iberia
-British Airways’ owner, International Airlines Group, has announced a sharp rise in annual profits to almost £4bn despite a slight fall in passenger numbers in 2025.
-Pre-tax profits across IAG increased by 20% to €4.5bn (£3.9bn), with record operating profits on margins of more than 15% at BA and its sister airline Iberia. Continue reading...
 
 </div>
 
@@ -1396,7 +1727,16 @@ Cet article Pimmich – Un cadre photo connecté open source basé sur Raspberry
 
 <div class="article-item" data-lang="fr" data-category="raspberrypi" data-source="Framboise 314">
 
-### 7. `FR` [Utiliser Google Earth sur Raspberry Pi : la solution Web qui fonctionne](data/articles/4b3465c4a8c95eb8e69edd96a1745155.html)
+### 7. `FR` [Raspberry Pi 5 + SSD : installer YunoHost, HTTPS Let’s Encrypt et WordPress (pas à pas)](data/articles/b4cf44ef56b76c94db7965ee52a3321f.html)
+**Source:** Framboise 314
+Installer un serveur perso chez soi, sur un Raspberry Pi 5 ou un Pi 500+, c’est à la portée de tout maker… à condition de suivre la bonne méthode. Dans cet article, on va poser YunoHost sur un SSD NVMe, faire la post-installation, installer une première appli (WordPress), puis rendre le serveur accessible depuis l’extérieur […]
+Cet article Raspberry Pi 5 + SSD : installer YunoHost, HTTPS Let’s Encrypt et WordPress (pas à pas) a été publié en premier sur Framboise 314, le Raspberry Pi à la sauce française..... - Framboise 314, le Raspberry Pi à la sauce française.... - La référence du Raspberry Pi en France - Par l'auteur du livre "Raspberry Pi 4" paru aux Edts. ENI
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="raspberrypi" data-source="Framboise 314">
+
+### 8. `FR` [Utiliser Google Earth sur Raspberry Pi : la solution Web qui fonctionne](data/articles/4b3465c4a8c95eb8e69edd96a1745155.html)
 **Source:** Framboise 314
 L’application Google Earth n’est plus réellement maintenue sous Linux, et elle n’existe plus du tout en version native pour les architectures ARM, comme celles des Raspberry Pi. La dernière version officielle pour Linux date de 2020, et son installation sur un Pi (ARM) est aujourd’hui vouée à l’échec. En pratique, pour utiliser Google Earth sous […]
 Cet article Utiliser Google Earth sur Raspberry Pi : la solution Web qui fonctionne a été publié en premier sur Framboise 314, le Raspberry Pi à la sauce française..... - Framboise 314, le Raspberry Pi à la sauce française.... - La référence du Raspberry Pi en France - Par l'auteur du livre "Raspberry Pi 4" paru aux Edts. ENI
@@ -1405,7 +1745,7 @@ Cet article Utiliser Google Earth sur Raspberry Pi : la solution Web qui fonctio
 
 <div class="article-item" data-lang="fr" data-category="raspberrypi" data-source="Framboise 314">
 
-### 8. `FR` [Raspberry Pi 5 : piloter des LEDs WS2812B de manière fiable avec le bus SPI](data/articles/631234ac03f25820fe7cc256cec61a29.html)
+### 9. `FR` [Raspberry Pi 5 : piloter des LEDs WS2812B de manière fiable avec le bus SPI](data/articles/631234ac03f25820fe7cc256cec61a29.html)
 **Source:** Framboise 314
 La question du pilotage des LEDs WS2812B sur Raspberry Pi 5 a récemment été soulevée par Victor lors d’un échange sur un réseau social. Le Raspberry Pi 5 introduit une nouvelle architecture matérielle qui complique le pilotage des LEDs WS2812B avec les bibliothèques historiques. Les solutions basées sur le PWM ou le DMA montrent rapidement […]
 Cet article Raspberry Pi 5 : piloter des LEDs WS2812B de manière fiable avec le bus SPI a été publié en premier sur Framboise 314, le Raspberry Pi à la sauce française..... - Framboise 314, le Raspberry Pi à la sauce française.... - La référence du Raspberry Pi en France - Par l'auteur du livre "Raspberry Pi 4" paru aux Edts. ENI
@@ -1414,7 +1754,7 @@ Cet article Raspberry Pi 5 : piloter des LEDs WS2812B de manière fiable avec le
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 9. `EN` [This Raspberry Pi transparent display is made using a glass dome](data/articles/4e17bcb2d7455e5654d07d3a7f771dcf.html)
+### 10. `EN` [This Raspberry Pi transparent display is made using a glass dome](data/articles/4e17bcb2d7455e5654d07d3a7f771dcf.html)
 **Source:** Toms Hardware Raspberry Pi
 VEEB Projects has put together a cool transparent Raspberry Pi display using a glass dome and a program that replicates the Pepper's Ghost effect.
 
@@ -1422,7 +1762,7 @@ VEEB Projects has put together a cool transparent Raspberry Pi display using a g
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 10. `EN` [Dual Raspberry Pi Picos power this portable mini PC](data/articles/a144dcf6a74bb42a941a2de152501c62.html)
+### 11. `EN` [Dual Raspberry Pi Picos power this portable mini PC](data/articles/a144dcf6a74bb42a941a2de152501c62.html)
 **Source:** Toms Hardware Raspberry Pi
 Abe's Projects has put together a custom mini PC using two Raspberry Pi Picos featuring a touchscreen, custom apps, and a built in keyboard.
 
@@ -1430,15 +1770,31 @@ Abe's Projects has put together a custom mini PC using two Raspberry Pi Picos fe
 
 <div class="article-item" data-lang="fr" data-category="raspberrypi" data-source="RaspberryTips.fr">
 
-### 11. `FR` [11 projets Raspberry Pi utiles sans matériel supplémentaire](data/articles/bea8af02208039786994774e8f7a5fba.html)
+### 12. `FR` [Les 13 meilleurs HATs Raspberry Pi à essayer en 2026](data/articles/3f8205a0987493f92c2b78a0b0425d2c.html)
+**Source:** RaspberryTips.fr
+Soyons honnêtes : j’ai acheté des HATs pour Raspberry Pi que j’ai à peine utilisés. Certains semblaient géniaux sur le papier, mais ne correspondaient pas du tout à mes projets. Avec autant de cartes disponibles, il est facile de se laisser distraire. J’ai donc décidé de me concentrer uniquement sur celles qui font vraiment la...
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="raspberrypi" data-source="RaspberryTips.fr">
+
+### 13. `FR` [11 projets Raspberry Pi utiles sans matériel supplémentaire](data/articles/bea8af02208039786994774e8f7a5fba.html)
 **Source:** RaspberryTips.fr
 Vous n’avez pas besoin de capteurs, d’écrans ni de gadgets supplémentaires pour créer quelque chose de génial avec votre Raspberry Pi. En fait, de nombreux projets parmi les plus utiles et gratifiants peuvent être réalisés avec rien d’autre que votre Pi, une carte microSD et une alimentation. Le Raspberry Pi peut être utilisé comme serveur...
 
 </div>
 
+<div class="article-item" data-lang="fr" data-category="raspberrypi" data-source="RaspberryTips.fr">
+
+### 14. `FR` [Top 25 des astuces Raspberry Pi que vous utiliserez vraiment](data/articles/f50d3e49dc5b68490997afdb36da9b89.html)
+**Source:** RaspberryTips.fr
+J’en ai installé un paquet, des Raspberry Pi… Et à force de bidouiller, j’ai trouvé plein de petits réglages qui changent tout. Si vous voulez un Pi plus rapide, plus stable et plus agréable à utiliser, voici 25 astuces qui font toute la différence. Ce guide rassemble 25 réglages et fonctions souvent oubliées, mais qui...
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Raspberry Pi">
 
-### 12. `EN` [Accessibility improvements for screen readers on raspberrypi.com](data/articles/6c2c783d7e30f9727ab9058ad1ec4ad5.html)
+### 15. `EN` [Accessibility improvements for screen readers on raspberrypi.com](data/articles/6c2c783d7e30f9727ab9058ad1ec4ad5.html)
 **Source:** Raspberry Pi
 We’ve updated our pages, forms, and CAPTCHA infrastructure on raspberrypi.com to improve accessibility for screen reader users.
 
@@ -1446,7 +1802,7 @@ We’ve updated our pages, forms, and CAPTCHA infrastructure on raspberrypi.com 
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 13. `EN` [Raspberry Pi 5 price increases drastically as AI shortage bites, 16GB version now $205 — second price increase in three months, over 70% more expensive than original MSRP](data/articles/b5fd37ee6cc5e618bcc3a68609d232ee.html)
+### 16. `EN` [Raspberry Pi 5 price increases drastically as AI shortage bites, 16GB version now $205 — second price increase in three months, over 70% more expensive than original MSRP](data/articles/b5fd37ee6cc5e618bcc3a68609d232ee.html)
 **Source:** Toms Hardware Raspberry Pi
 Raspberry Pi is increasing its prices again.
 
@@ -1454,7 +1810,7 @@ Raspberry Pi is increasing its prices again.
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 14. `EN` [Alien fan builds a better Raspberry Pi cyberdeck — The MU/TH/UR of all homages to a classic movie series](data/articles/175445459258d23c6d2a58019f156f36.html)
+### 17. `EN` [Alien fan builds a better Raspberry Pi cyberdeck — The MU/TH/UR of all homages to a classic movie series](data/articles/175445459258d23c6d2a58019f156f36.html)
 **Source:** Toms Hardware Raspberry Pi
 Powered by the Raspberry Pi Zero 2W, Jeff Merrick's slab of 1970 / 1980s aesthetic screams the "charm" of the worn and broken Alien universe that belies the powerful single board computer within.
 
@@ -1462,7 +1818,7 @@ Powered by the Raspberry Pi Zero 2W, Jeff Merrick's slab of 1970 / 1980s aesthet
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 15. `EN` [Raspberry Pi AI HAT+ 2 Review: The brains and the brawn](data/articles/14e2a2e036494e59a09f20fb6993815f.html)
+### 18. `EN` [Raspberry Pi AI HAT+ 2 Review: The brains and the brawn](data/articles/14e2a2e036494e59a09f20fb6993815f.html)
 **Source:** Toms Hardware Raspberry Pi
 Raspberry Pis latest AI accessory brings a more powerful Hailo NPU, capable of LLMs and image inference, but the price tag is a key deciding factor.
 
@@ -1470,7 +1826,7 @@ Raspberry Pis latest AI accessory brings a more powerful Hailo NPU, capable of L
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 16. `EN` [Raspberry Pi and mini PC home lab prices hit parity as DRAM costs skyrocket — price hikes force hobbyists to weigh up performance versus power consumption](data/articles/b84110806ab41e60c2a891e58b7c95cf.html)
+### 19. `EN` [Raspberry Pi and mini PC home lab prices hit parity as DRAM costs skyrocket — price hikes force hobbyists to weigh up performance versus power consumption](data/articles/b84110806ab41e60c2a891e58b7c95cf.html)
 **Source:** Toms Hardware Raspberry Pi
 The price of a Raspberry Pi now has parity with Intel N100 mini PCs at just over $200, with flash memory price spikes continuing to push prices up across the board.
 
@@ -1478,7 +1834,7 @@ The price of a Raspberry Pi now has parity with Intel N100 mini PCs at just over
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 17. `EN` [New York's Mayoral Inauguration bans Raspberry Pi and Flipper Zero — devices join explosives, guns, drones, and beach balls on prohibited items list](data/articles/11fb53de3e86c773dc081f5b3228a10f.html)
+### 20. `EN` [New York's Mayoral Inauguration bans Raspberry Pi and Flipper Zero — devices join explosives, guns, drones, and beach balls on prohibited items list](data/articles/11fb53de3e86c773dc081f5b3228a10f.html)
 **Source:** Toms Hardware Raspberry Pi
 The invitation to Mayor-elect Mamdani's inauguration lists Raspberry Pi and Flipper Zero as prohibited items but does not provide a reason.
 
@@ -1486,7 +1842,7 @@ The invitation to Mayor-elect Mamdani's inauguration lists Raspberry Pi and Flip
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 18. `EN` [Creator makes Wi-Fi sound like dial-up Internet — uses Raspberry Pi and 2-watt speaker to convert digital data into analog signals](data/articles/2266cd027d99a4d6d150f40561e401c6.html)
+### 21. `EN` [Creator makes Wi-Fi sound like dial-up Internet — uses Raspberry Pi and 2-watt speaker to convert digital data into analog signals](data/articles/2266cd027d99a4d6d150f40561e401c6.html)
 **Source:** Toms Hardware Raspberry Pi
 This Raspberry Pi project captures Wi-Fi data and then blasts it out as sound to make it feel like you're connecting via a dial-up modem.
 
@@ -1494,7 +1850,7 @@ This Raspberry Pi project captures Wi-Fi data and then blasts it out as sound to
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 19. `EN` [Raspberry Pi 500+ Review: RGB clicky keys and NVMe storage, but with a $200 price tag](data/articles/14c48b02eef1b61853ec68ae59bcbd7c.html)
+### 22. `EN` [Raspberry Pi 500+ Review: RGB clicky keys and NVMe storage, but with a $200 price tag](data/articles/14c48b02eef1b61853ec68ae59bcbd7c.html)
 **Source:** Toms Hardware Raspberry Pi
 Raspberry Pi has released an updated version of the Raspberry Pi 500 and this time the omitted NVMe storage is present, as is an RGB mechanical keyboard.
 
@@ -1502,7 +1858,7 @@ Raspberry Pi has released an updated version of the Raspberry Pi 500 and this ti
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 20. `EN` [Hardcore fan celebrates Alien: Earth by building a fully-working M314 Motion Tracker replica — DreamHAT+ Radar module and Raspberry Pi is effective up to 15 meters, complete with sounds and a display](data/articles/17a8589edeff70181a09d0fcf9406090.html)
+### 23. `EN` [Hardcore fan celebrates Alien: Earth by building a fully-working M314 Motion Tracker replica — DreamHAT+ Radar module and Raspberry Pi is effective up to 15 meters, complete with sounds and a display](data/articles/17a8589edeff70181a09d0fcf9406090.html)
 **Source:** Toms Hardware Raspberry Pi
 Electronics hobbyist Rob Smith has built a ‘fully working M314 Motion Tracker’.
 
@@ -1510,7 +1866,7 @@ Electronics hobbyist Rob Smith has built a ‘fully working M314 Motion Tracker�
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 21. `EN` [Raspberry Pi releases smaller five-inch Touch Display 2 — lower in price, same resolution as larger model](data/articles/008cd6170c50e4997dd7150da1c47b61.html)
+### 24. `EN` [Raspberry Pi releases smaller five-inch Touch Display 2 — lower in price, same resolution as larger model](data/articles/008cd6170c50e4997dd7150da1c47b61.html)
 **Source:** Toms Hardware Raspberry Pi
 Raspberry Pi releases a smaller model of its updated touch display. This time with $20 off the price but the same display as the larger model.
 
@@ -1518,7 +1874,7 @@ Raspberry Pi releases a smaller model of its updated touch display. This time wi
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 22. `EN` [The dream of a Raspberry Pi laptop becomes a reality — ArgonOne Up Review](data/articles/d3fea831bb4ee8e98f53ee785ca9b100.html)
+### 25. `EN` [The dream of a Raspberry Pi laptop becomes a reality — ArgonOne Up Review](data/articles/d3fea831bb4ee8e98f53ee785ca9b100.html)
 **Source:** Toms Hardware Raspberry Pi
 Argon40’s new Raspberry Pi Compute Module 5-powered laptop has it all, but the price makes it a considered purchase.
 
@@ -1526,7 +1882,7 @@ Argon40’s new Raspberry Pi Compute Module 5-powered laptop has it all, but the
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 23. `EN` [Nephew of the ZX Spectrum inventor has created a handheld Raspberry Pi gaming console the size of a gift card — GamerCard features 4-inch square IPS screen and pre-loaded arcade games](data/articles/205bee83fe4c3af8b0b93e5e209fac6d.html)
+### 26. `EN` [Nephew of the ZX Spectrum inventor has created a handheld Raspberry Pi gaming console the size of a gift card — GamerCard features 4-inch square IPS screen and pre-loaded arcade games](data/articles/205bee83fe4c3af8b0b93e5e209fac6d.html)
 **Source:** Toms Hardware Raspberry Pi
 GamerCard is a retro gaming handheld so portable than it's literally the size of a gift card, so you can now casually spend $170 at checkout.
 
@@ -1534,7 +1890,7 @@ GamerCard is a retro gaming handheld so portable than it's literally the size of
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 24. `EN` [This Raspberry Pi Zero camera instantly prints photos using thermal paper](data/articles/8b14c15b0114051f9080f8a79122eb1a.html)
+### 27. `EN` [This Raspberry Pi Zero camera instantly prints photos using thermal paper](data/articles/8b14c15b0114051f9080f8a79122eb1a.html)
 **Source:** Toms Hardware Raspberry Pi
 Spacerower is using a Raspberry Pi Zero to power this custom 3D-printed camera that instantly prints out photos using thermal paper.
 
@@ -1542,7 +1898,7 @@ Spacerower is using a Raspberry Pi Zero to power this custom 3D-printed camera t
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 25. `EN` [Raspberry Pi Pico fightstick randomly mashes buttons for fighting game combos](data/articles/c32e5d9df9bb4fc618e716151ede57e8.html)
+### 28. `EN` [Raspberry Pi Pico fightstick randomly mashes buttons for fighting game combos](data/articles/c32e5d9df9bb4fc618e716151ede57e8.html)
 **Source:** Toms Hardware Raspberry Pi
 Goblinhan Yıkan has created a Raspberry Pi Pico-powered fight stick that has extra buttons for throwing random combos while playing fighting games.
 
@@ -1550,7 +1906,7 @@ Goblinhan Yıkan has created a Raspberry Pi Pico-powered fight stick that has ex
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 26. `EN` [Raspberry Pi Pico 2 FFT sound spectrum analyzer visualizes audio via OLED display](data/articles/27c2c257641f60352101fcdf61f1dbad.html)
+### 29. `EN` [Raspberry Pi Pico 2 FFT sound spectrum analyzer visualizes audio via OLED display](data/articles/27c2c257641f60352101fcdf61f1dbad.html)
 **Source:** Toms Hardware Raspberry Pi
 Dan McCreary shows off how to create your own FFT sound spectrum analyzer using our favorite microcontroller, the Raspberry Pi Pico 2.
 
@@ -1558,7 +1914,7 @@ Dan McCreary shows off how to create your own FFT sound spectrum analyzer using 
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 27. `EN` [Raspberry Pi's new PoE+ Injector supports all generations of PoE HATs](data/articles/e01dbabd10e6af1e938a71d06edb9a16.html)
+### 30. `EN` [Raspberry Pi's new PoE+ Injector supports all generations of PoE HATs](data/articles/e01dbabd10e6af1e938a71d06edb9a16.html)
 **Source:** Toms Hardware Raspberry Pi
 Raspberry Pi's new $25 PoE+ Injector bring power over Ethernet for the Raspberry Pi 3B+ and 4 via existing PoE HATs. The Raspberry Pi has to wait for the PoE+ HAT+ which has been in development since late 2023.
 
@@ -1566,7 +1922,7 @@ Raspberry Pi's new $25 PoE+ Injector bring power over Ethernet for the Raspberry
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 28. `EN` [Maker builds Raspberry Pi ASCII camera, turning video frames into text-based imagery](data/articles/d31ea51d25638451c7c8cc90a73ecb72.html)
+### 31. `EN` [Maker builds Raspberry Pi ASCII camera, turning video frames into text-based imagery](data/articles/d31ea51d25638451c7c8cc90a73ecb72.html)
 **Source:** Toms Hardware Raspberry Pi
 André Esser is using a Raspberry Pi to power this ASCII camera project that he recently created for Pi Jam, celebrating Pi day.
 
@@ -1574,7 +1930,7 @@ André Esser is using a Raspberry Pi to power this ASCII camera project that he 
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 29. `EN` ['Pi Tin' retro gaming handheld is minty fresh thanks to a Raspberry Pi Zero 2 W](data/articles/d8b9d5d1f10a23532eeb77137f02edd7.html)
+### 32. `EN` ['Pi Tin' retro gaming handheld is minty fresh thanks to a Raspberry Pi Zero 2 W](data/articles/d8b9d5d1f10a23532eeb77137f02edd7.html)
 **Source:** Toms Hardware Raspberry Pi
 Maker Jackw01 and Soaporsalad have put together a cool Raspberry Pi handheld featuring a Raspberry Pi 2 W that's small enough to fit in an Altoids tin.
 
@@ -1582,7 +1938,7 @@ Maker Jackw01 and Soaporsalad have put together a cool Raspberry Pi handheld fea
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 30. `EN` [Raspberry Pi 5 powered 'wall arcade' features a big, low-res RGB LED matrix display](data/articles/6233ce06fd24ceeaa2907720f281141e.html)
+### 33. `EN` [Raspberry Pi 5 powered 'wall arcade' features a big, low-res RGB LED matrix display](data/articles/6233ce06fd24ceeaa2907720f281141e.html)
 **Source:** Toms Hardware Raspberry Pi
 John Park has created a cool Raspberry Pi-powered wall arcade that features multiple matrix panels as its main display.
 
@@ -1590,7 +1946,7 @@ John Park has created a cool Raspberry Pi-powered wall arcade that features mult
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 31. `EN` [Maker builds Raspberry Pi Pico smart clock with lots of cool features](data/articles/16d6ab50ca504c7e58b47a277bdded79.html)
+### 34. `EN` [Maker builds Raspberry Pi Pico smart clock with lots of cool features](data/articles/16d6ab50ca504c7e58b47a277bdded79.html)
 **Source:** Toms Hardware Raspberry Pi
 NeverCode has created a Raspberry Pi Pico smart clock and shared lots of details on how you can recreate it for yourself at home.
 
@@ -1598,7 +1954,7 @@ NeverCode has created a Raspberry Pi Pico smart clock and shared lots of details
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 32. `EN` [Raspberry Pi and ChatGPT bring AI conversations to your retro rotary phone](data/articles/3f0585d23f5908fff57bcb4f458308a2.html)
+### 35. `EN` [Raspberry Pi and ChatGPT bring AI conversations to your retro rotary phone](data/articles/3f0585d23f5908fff57bcb4f458308a2.html)
 **Source:** Toms Hardware Raspberry Pi
 Pollux Labs is using a Raspberry Pi to power this rotary phone project that integrates Chat GPT and remembers previous conversations.
 
@@ -1606,7 +1962,7 @@ Pollux Labs is using a Raspberry Pi to power this rotary phone project that inte
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 33. `EN` [Raspberry Pi Pico 2's RP2350 SoC goes on general sale](data/articles/c88690ea6a2a78d3b52da902e3694fa3.html)
+### 36. `EN` [Raspberry Pi Pico 2's RP2350 SoC goes on general sale](data/articles/c88690ea6a2a78d3b52da902e3694fa3.html)
 **Source:** Toms Hardware Raspberry Pi
 Raspberry Pi has announced the general availability of the RP2350 A and B, the SoC that powers the Raspberry Pi Pico 2 which features both an Arm and RISC-V CPU
 
@@ -1614,7 +1970,7 @@ Raspberry Pi has announced the general availability of the RP2350 A and B, the S
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 34. `EN` [Raspberry Pi Pico powers $75 PicoCalc portable programming handheld](data/articles/af8024092d3b96d2000a3526279ae5fb.html)
+### 37. `EN` [Raspberry Pi Pico powers $75 PicoCalc portable programming handheld](data/articles/af8024092d3b96d2000a3526279ae5fb.html)
 **Source:** Toms Hardware Raspberry Pi
 ClockworkPi has released a cool Raspberry Pi Pico kit that lets you create a calculator suitable for handling your math homework or playing games.
 
@@ -1622,7 +1978,7 @@ ClockworkPi has released a cool Raspberry Pi Pico kit that lets you create a cal
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 35. `EN` [Raspberry Pi and AI power open source smart city monitoring project](data/articles/af4615c5ffb6dd50fd8238b7bdd435b9.html)
+### 38. `EN` [Raspberry Pi and AI power open source smart city monitoring project](data/articles/af4615c5ffb6dd50fd8238b7bdd435b9.html)
 **Source:** Toms Hardware Raspberry Pi
 Glossyio has created a Raspberry Pi-powered traffic monitor that uses AI to monitor traffic and look for statistics around specific travelers like cyclists and pedestrians.
 
@@ -1630,7 +1986,7 @@ Glossyio has created a Raspberry Pi-powered traffic monitor that uses AI to moni
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 36. `EN` [Voice controlled Raspberry Pi paper towel dispenser turns a prank into reality](data/articles/e31cb488277d3c2fbce75fe9e5b25581.html)
+### 39. `EN` [Voice controlled Raspberry Pi paper towel dispenser turns a prank into reality](data/articles/e31cb488277d3c2fbce75fe9e5b25581.html)
 **Source:** Toms Hardware Raspberry Pi
 Maker 3megabytesofhotram is using a Raspberry Pi to power a voice-activated paper towel dispenser that makes it easier than ever to dry your hands.
 
@@ -1638,7 +1994,7 @@ Maker 3megabytesofhotram is using a Raspberry Pi to power a voice-activated pape
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 37. `EN` [This smart Raspberry Pi LED world map has global appeal](data/articles/6577687201abc8450c044a7159579ee2.html)
+### 40. `EN` [This smart Raspberry Pi LED world map has global appeal](data/articles/6577687201abc8450c044a7159579ee2.html)
 **Source:** Toms Hardware Raspberry Pi
 Tribal2 is using a Raspberry Pi to drive this cool interactive LED world map that integrates with his smart home setup.
 
@@ -1646,7 +2002,7 @@ Tribal2 is using a Raspberry Pi to drive this cool interactive LED world map tha
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 38. `EN` [Raspberry Pi powers briefcase-sized PiEEG 'Bio Lab' project](data/articles/9aa7414ab28f2b22eadd27c410095648.html)
+### 41. `EN` [Raspberry Pi powers briefcase-sized PiEEG 'Bio Lab' project](data/articles/9aa7414ab28f2b22eadd27c410095648.html)
 **Source:** Toms Hardware Raspberry Pi
 Blink twice to control the robot arm
 
@@ -1654,7 +2010,7 @@ Blink twice to control the robot arm
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 39. `EN` [Raspberry Pi 5 powers cyberpunk themed brain scanner in a custom 3D printed case](data/articles/26f2825896e36f8b9bb3db95150475f5.html)
+### 42. `EN` [Raspberry Pi 5 powers cyberpunk themed brain scanner in a custom 3D printed case](data/articles/26f2825896e36f8b9bb3db95150475f5.html)
 **Source:** Toms Hardware Raspberry Pi
 The Civitas Universe has put together a cool Raspberry Pi cyberdeck that scans brains and features a cool cyberpunk theme in a custom 3D-printed case.
 
@@ -1662,7 +2018,7 @@ The Civitas Universe has put together a cool Raspberry Pi cyberdeck that scans b
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 40. `EN` [Run Windows 11 on Raspberry Pi 5 with Botspot Virtual Machine](data/articles/52b62afa7f8ec61b1fd84ef2807cfdcd.html)
+### 43. `EN` [Run Windows 11 on Raspberry Pi 5 with Botspot Virtual Machine](data/articles/52b62afa7f8ec61b1fd84ef2807cfdcd.html)
 **Source:** Toms Hardware Raspberry Pi
 Install Windows 11 for Arm on the Raspberry Pi 5 using the simplest installation method that we have ever encountered.
 
@@ -1670,7 +2026,7 @@ Install Windows 11 for Arm on the Raspberry Pi 5 using the simplest installation
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 41. `EN` [How to use an RFID reader with a Raspberry Pi Pico](data/articles/6fc4ae025c982c0ce4bf495c7e4d8a29.html)
+### 44. `EN` [How to use an RFID reader with a Raspberry Pi Pico](data/articles/6fc4ae025c982c0ce4bf495c7e4d8a29.html)
 **Source:** Toms Hardware Raspberry Pi
 (Image credit: Tom's Hardware) RFID cards and tags are everywhere! We use them in buildings for access control. Printers and photocopiers can use them to identify staff members. Livestock tagging and pet identification tags all use a form of RFID. The tech to read an RFID device is cheap, for around $5 you can get the reader, and for $4, a Raspberry Pi Pico can read the IDs from the cards / tags.In this how to, we will learn how to read RFID tags and cards using an MFRC522 reader and a Raspberry Pi Pico, the goal will be to create a fictional RFID access control system that will allow users into a building, or alert security to remove them. Before we can do that, we need to identify the ID of our cards / tags. The first section of this how to will do just that, and then we will insert some code to control two LEDs to simulate the locking mechanism.For this how to you will needRaspberry Pi Pico running MicroPythonMFRC522 RFID readerLarge breadboard11 x Male to male jumper wiresGreen LEDRed LED2 x 100 Ohm resistors (Brown - Black - Brown - Gold)Building the Hardware (Image credit: Tom's Hardware)The hardware build is split into two sections. First is the wiring for the MFRC522 RFID reader. The reader uses SPI to communicate with the Raspberry Pi Pico and it requires seven pins to do so. Two are for power (3.3V and GND) and the rest are for SPI.Swipe to scroll hori
 
@@ -1678,7 +2034,7 @@ Install Windows 11 for Arm on the Raspberry Pi 5 using the simplest installation
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 42. `EN` [This illuminating Raspberry Pi Pico project wants to improve your photos and YouTube videos](data/articles/69c22b6464e204d23c64ee93d694bcde.html)
+### 45. `EN` [This illuminating Raspberry Pi Pico project wants to improve your photos and YouTube videos](data/articles/69c22b6464e204d23c64ee93d694bcde.html)
 **Source:** Toms Hardware Raspberry Pi
 Arnov Sharma built a Raspberry Pi Pico studio light from scratch that can be controlled using push buttons to adjust the LEDs with precision.
 
@@ -1686,7 +2042,7 @@ Arnov Sharma built a Raspberry Pi Pico studio light from scratch that can be con
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 43. `EN` [This Raspberry Pi Pico protractor has all of the angles covered!](data/articles/536dd3d5ad033e2108ccab4aa745a54e.html)
+### 46. `EN` [This Raspberry Pi Pico protractor has all of the angles covered!](data/articles/536dd3d5ad033e2108ccab4aa745a54e.html)
 **Source:** Toms Hardware Raspberry Pi
 Yaluke has created a Raspberry Pi Pico-powered protractor that can be used to calculate rotation data for simulating steering wheels when driving.
 
@@ -1694,7 +2050,7 @@ Yaluke has created a Raspberry Pi Pico-powered protractor that can be used to ca
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 44. `EN` [Maker builds Raspberry Pi-powered temperature gun using a Pico 2](data/articles/101eee9f06675504007e7e292be78122.html)
+### 47. `EN` [Maker builds Raspberry Pi-powered temperature gun using a Pico 2](data/articles/101eee9f06675504007e7e292be78122.html)
 **Source:** Toms Hardware Raspberry Pi
 Arnov Sharma has created a temperature gun from scratch using a Raspberry Pi Pico 2 as the main board.
 
@@ -1702,7 +2058,7 @@ Arnov Sharma has created a temperature gun from scratch using a Raspberry Pi Pic
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 45. `EN` [This Raspberry Pi Snake console totally bites — in a good way](data/articles/2fbdb8e2570aeb7c7fafee3e71399fb3.html)
+### 48. `EN` [This Raspberry Pi Snake console totally bites — in a good way](data/articles/2fbdb8e2570aeb7c7fafee3e71399fb3.html)
 **Source:** Toms Hardware Raspberry Pi
 Arnov Sharma has put together a cool Raspberry Pi-powered handheld console for playing the classic game Snake on a Matrix.
 
@@ -1710,7 +2066,7 @@ Arnov Sharma has put together a cool Raspberry Pi-powered handheld console for p
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 46. `EN` [Cozy cats live in a Raspberry Pi-powered luxury automated smart house](data/articles/569f7ca85a1b6b1c30ee6b5294b70f93.html)
+### 49. `EN` [Cozy cats live in a Raspberry Pi-powered luxury automated smart house](data/articles/569f7ca85a1b6b1c30ee6b5294b70f93.html)
 **Source:** Toms Hardware Raspberry Pi
 Visible_Turnover3952 has created a Raspberry Pi-powered cat house with luxurious smart home features and automated systems to keep them cozy.
 
@@ -1718,7 +2074,7 @@ Visible_Turnover3952 has created a Raspberry Pi-powered cat house with luxurious
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 47. `EN` [Pineboards Modulo Series Review: All the extra features for your Raspberry Pi Compute Module 4 and 5](data/articles/c697f8b1d48ba41100ee1456de89e771.html)
+### 50. `EN` [Pineboards Modulo Series Review: All the extra features for your Raspberry Pi Compute Module 4 and 5](data/articles/c697f8b1d48ba41100ee1456de89e771.html)
 **Source:** Toms Hardware Raspberry Pi
 Three new carrier boards for your Compute Module 5 and the older Compute Module 4 which bring Raspberry Pi 5 accessories to the CM5, and PoE before Raspberry Pi releases its version.
 
@@ -1726,7 +2082,7 @@ Three new carrier boards for your Compute Module 5 and the older Compute Module 
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 48. `EN` [Raspberry Pi 5 powers retro-futurism 1980s cyberdeck with custom milled keypad and wood finish](data/articles/b0b247ebb37812f0f474d31a9dbc5a72.html)
+### 51. `EN` [Raspberry Pi 5 powers retro-futurism 1980s cyberdeck with custom milled keypad and wood finish](data/articles/b0b247ebb37812f0f474d31a9dbc5a72.html)
 **Source:** Toms Hardware Raspberry Pi
 Nicholas LaBonte is using a Raspberry Pi to power this custom cyberdeck handheld complete with custom-milled keys and wood finishing.
 
@@ -1734,7 +2090,7 @@ Nicholas LaBonte is using a Raspberry Pi to power this custom cyberdeck handheld
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 49. `EN` [Raspberry Pi powers custom cyberdeck inspired music player](data/articles/0564022e25d54201f929aac19cc4fa90.html)
+### 52. `EN` [Raspberry Pi powers custom cyberdeck inspired music player](data/articles/0564022e25d54201f929aac19cc4fa90.html)
 **Source:** Toms Hardware Raspberry Pi
 Tonight-we-ride has put together a cool Raspberry Pi music player with a touchscreen and customizable interface with Winamp.
 
@@ -1742,7 +2098,7 @@ Tonight-we-ride has put together a cool Raspberry Pi music player with a touchsc
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 50. `EN` [Argon40 teases the Raspberry Pi Compute Module 5 powered Argon One Up laptop (Updated)](data/articles/4cb45daaf1e609dcafe560a01674b90f.html)
+### 53. `EN` [Argon40 teases the Raspberry Pi Compute Module 5 powered Argon One Up laptop (Updated)](data/articles/4cb45daaf1e609dcafe560a01674b90f.html)
 **Source:** Toms Hardware Raspberry Pi
 Coming soon is a Kickstarter that sees the Compute Module 5 inside of a custom designed laptop.
 
@@ -1750,7 +2106,7 @@ Coming soon is a Kickstarter that sees the Compute Module 5 inside of a custom d
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 51. `EN` [This Raspberry Pi Creeper robot is bringing our Minecraft nightmares to real life](data/articles/b8c615a54e8d32602f6252bf058cd0cc.html)
+### 54. `EN` [This Raspberry Pi Creeper robot is bringing our Minecraft nightmares to real life](data/articles/b8c615a54e8d32602f6252bf058cd0cc.html)
 **Source:** Toms Hardware Raspberry Pi
 Efren Lopez has created a Raspberry Pi-powered Creeper robot from the Minecraft universe complete with an AI chip and a motorized body.
 
@@ -1758,7 +2114,7 @@ Efren Lopez has created a Raspberry Pi-powered Creeper robot from the Minecraft 
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 52. `EN` [Raspberry Pi Pico brings a 'WOPR' of a feature to a server rack](data/articles/ee35aeca216ded262ce722ea078f83d2.html)
+### 55. `EN` [Raspberry Pi Pico brings a 'WOPR' of a feature to a server rack](data/articles/ee35aeca216ded262ce722ea078f83d2.html)
 **Source:** Toms Hardware Raspberry Pi
 Aforsberg has created a cool LED matrix display for their 1U server rack that's decked out like the WOPR computer from the 1983 movie War Games.
 
@@ -1766,7 +2122,7 @@ Aforsberg has created a cool LED matrix display for their 1U server rack that's 
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 53. `EN` [The Raspberry Pi Pico's RP2040 has been certified for 200 MHz clock speeds, up from 133 MHz](data/articles/fbc7ee3a77969f66a2809da67482cba7.html)
+### 56. `EN` [The Raspberry Pi Pico's RP2040 has been certified for 200 MHz clock speeds, up from 133 MHz](data/articles/fbc7ee3a77969f66a2809da67482cba7.html)
 **Source:** Toms Hardware Raspberry Pi
 The Raspberry Pi 2040 now officially supports 200 MHz operation, thanks to the latest Pico-SDK release.
 
@@ -1774,7 +2130,7 @@ The Raspberry Pi 2040 now officially supports 200 MHz operation, thanks to the l
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Toms Hardware Raspberry Pi">
 
-### 54. `EN` [This Raspberry Pi map of Manhattan shows real-time subway train status](data/articles/a2d00f6a31568767a8a6e19c612d52c9.html)
+### 57. `EN` [This Raspberry Pi map of Manhattan shows real-time subway train status](data/articles/a2d00f6a31568767a8a6e19c612d52c9.html)
 **Source:** Toms Hardware Raspberry Pi
 Bicapitate has created a custom Raspberry Pi-powered 3D-printed map of Manhattan that displays the location of subway trains in real time using LEDs and optical fiber.
 
@@ -1782,7 +2138,7 @@ Bicapitate has created a custom Raspberry Pi-powered 3D-printed map of Manhattan
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Raspberry Pi Spy">
 
-### 55. `EN` [Pi Pico Pinout Display on the Command Line](data/articles/dc58a34a6749055867e999c3a89f1f11.html)
+### 58. `EN` [Pi Pico Pinout Display on the Command Line](data/articles/dc58a34a6749055867e999c3a89f1f11.html)
 **Source:** Raspberry Pi Spy
 Displaying the pinout of a Raspberry Pi Pico is possible using my “picopins” script. The script displays the pinout in a colour coded format showing the location of power, ground and GPIO pins. I find it useful if I’m coding Pico projects on my laptop or Pi 400 and need to check the location of [...]
 
@@ -1790,7 +2146,7 @@ Displaying the pinout of a Raspberry Pi Pico is possible using my “picopins”
 
 <div class="article-item" data-lang="en" data-category="raspberrypi" data-source="Raspberry Pi Spy">
 
-### 56. `EN` [Disable Auto-login in Raspberry Pi OS](data/articles/8444bae51d5e8fde736159e84ef2df5f.html)
+### 59. `EN` [Disable Auto-login in Raspberry Pi OS](data/articles/8444bae51d5e8fde736159e84ef2df5f.html)
 **Source:** Raspberry Pi Spy
 This guide explains how to disable auto-login on Raspberry Pi OS. By default when you install the Raspberry Pi OS with the desktop it will auto-login when you power-up the Pi. This is really convenient for lots of projects as it gets you straight to the desktop. If you are using your Pi as a [...]
 
@@ -1804,9 +2160,22 @@ This guide explains how to disable auto-login on Raspberry Pi OS. By default whe
 
 ## IoT - Internet of Things / IdO - Internet des Objets
 
+<div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
+
+### 1. `FR` [Mutation HA &gt; Gladys](data/articles/c27bd6fbbbea5e23c6bce966840038e3.html)
+**Source:** Gladys Assistant (Forum)
+Bonjour tout le monde
+Fabien 45 ans attiré par la gestion quotidienne de mon entourage de par la domotique, une connaissance ma installer home assistant il y a environ 2 ans car étant novice mes capacités informatiques ne me le permettait pas.
+Aujourd’hui je découvre Gladys qui me paraît plus accessible pour mon niveau entre-temps j’ai aménagé dans une maison qui est beaucoup plus adaptée à la domotique que l’ancienne, un réseau Rj 45 à été totalement créé preseque dans toute les pièce et connecté à la fibre.
+Je souhaite créer des automatisations et ajouter une surveillance vidéo. Actuellement sur Home assistant j’ai des capteurs de température , sonde , prise connectée, relais connecter le tout en ZigBee et Alexa en assistant vocal.
+Novice je risque de vous casser les pieds 2 messages - 2 participant(e)s
+Lire le sujet en entier
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 1. `EN` [Domoticz access blocked](data/articles/885644159f654cfa8d1359cd861682cf.html)
+### 2. `EN` [Domoticz access blocked](data/articles/885644159f654cfa8d1359cd861682cf.html)
 **Source:** Domoticz (Forum News)
 Hi, I am using Domoticz on a Raspberry Pi. After an update, a login screen appears upon startup. It asks for a username and password. Then a message appears stating they are incorrect, and after three attempts, a screen appears with the message: "congratulations …….the end of the internet". The strange thing is that Domoticz is otherwise working fine; the lights are on. But Domoticz is inaccessible.
 Software and hardware used:
@@ -1814,13 +2183,13 @@ Domoticz running on a Raspberry Pi.
 What I have already found or tried:
 I connect to the Raspberry Pi via SSH. I tried to repair Domoticz or completely reinstall it. Nothing helped.
 Does anyone have a solution to my problem?
-Statistics: Posted by miguell — Tuesday 24 February 2026 9:46 — Replies 3 — Views 365
+Statistics: Posted by miguell — Tuesday 24 February 2026 9:46 — Replies 3 — Views 370
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant (Blog officiel)">
 
-### 2. `EN` [Heiman joins Works with Home Assistant](data/articles/33a1a951a4787deac1ef266f9a8bb610.html)
+### 3. `EN` [Heiman joins Works with Home Assistant](data/articles/33a1a951a4787deac1ef266f9a8bb610.html)
 **Source:** Home Assistant (Blog officiel)
 After an amazing 2025 that saw 12 new Works with Home Assistant partners join the program, it’s now time to say “Hei” to the first partner joining us this year: Heiman.
 Founded back in 2005, Heiman specialize in smart home security devices, and are bringing an impressive selection of safety-focused sensors and alarms to the program: including the first Matter carbon monoxide alarms to be certified, along with smoke alarms designed for international markets.
@@ -1861,23 +2230,6 @@ Why not! We’re thrilled to foster a close relationship with the team at Heiman
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
-
-### 3. `FR` [Hello de Charly](data/articles/15d77dd1a367972c1fdd13b47a22c54e.html)
-**Source:** Gladys Assistant (Forum)
-Bonjour,
-Gladys est juste ce dont j’avais besoin maintenant. J’y suis arrivé via la vidéo de AyLabs.
-Je viens de prendre ma retraite, j’étais dans l’IT, je faisais des projets de virtualisation, et j’ai déménagé dans ma petite maison dans le sud (je plante le décor aussi pour montrer que rentrer dans le yaml ne me fait pas peur, mais me fait ch… un peu).
-J’avais juste une box Lidl avec des prises et lampes connectées et un détecteur de mouvement, quelques automatisations, une caméra et autres appareils Xiaomi, un lave-linge Samsung sous SmartThings, rien de bien compliqué. J’avais monté un Proxmox, avec une vm HA.
-Alors, je ne dis pas que c’est compliqué, mais c’est bien chiant. Et si tu n’as pas envie de passer des heures dessus, c’est vite le b… Et je ne parle pas du WAF…
-Je pense que HA est un outil magnifique, hyper complet, qui répond à tous les scénarios, mais qui est assez inaccessible au néophyte, au partenaire dans ta maison, ou disons qu’il demande un temps et un effort énorme pour avoir qq chose de présentable et utilisable.
-Je rentre donc dans Gladys Assistant avec enthousiasme. Gladys est élégant, et même si j’ai eu des galères pour appairer mes appareils Zigbee avec mon dongle Sonoff (ma faute sûrement, car j’ai pas ou mal lu la doc), le support est top et l’interface facile…
-Bref, je vais voir maintenant intégrer mes appareils Matter Ikea et le reste.
-4 messages - 3 participant(e)s
-Lire le sujet en entier
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
 ### 4. `EN` [Airplane tracker plugin](data/articles/2b2d6fa88221cc09c859303c66a9bde1.html)
@@ -1903,14 +2255,35 @@ Types - Counts the types of planes flying over your head When you click on the C
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant Community Forum (Latest)">
 
-### 5. `EN` [Google Nest Camera Integration Intermittently Fails](data/articles/6f25ed2c0c71c14bcb69eb3638e2f75a.html)
+### 5. `EN` [PadSpan HA — Room-level BLE presence tracking with floor plans, 3D maps, and calibration — exiting alpha March 2026](data/articles/121472360a9e7cbd159ba00daf407da5.html)
 **Source:** Home Assistant Community Forum (Latest)
-I have had my google nest doorbell (battery) setup using the Google nest integration. This worked for around two years until I started experiencing problems. Around late December or early January of this year, the nest integration stopped working and I get this error:
-Logger: homeassistant.components.nest
-Source: components/nest/__init__.py:301
-integration: Google Nest (documentation, issues)
-First occurred: 7:09:40 PM (16 occurrences)
-Last logged: 7:43:15 PM Subscriber error: Unexpected error when calling streaming_pull: Timeout in streaming_pull Mid January, I deleted my credentials, did nothing for a week, and when I went to re-add the integration everything worked again. Then last week, the nest integration stopped working and I am getting the same error. Some things of note: When the integration first failed, my connection to google calendar, gemini, and google keep (through a custom integration) all stopped working at the same time. With the latest failure, only Nest and Google Keep Sync have stopped working. I can see the API requests on the google cloud console, but almost all requests result in errors. Any help resolving this would be much appreciated!
+Hey everyone,
+I’ve been building PadSpan HA — a custom integration that turns your existing Bluetooth scanners into a full room-level presence tracking system — and it’s coming out of alpha in March 2026.
+This started as a personal project because I wanted more than just “home” or “away.” I wanted to know which room my phone was in, see it on a floor plan, and get alerts when my kids’ trackers moved between rooms. Nothing out there did all of that, so I built it.
+What’s in the alpha right now
+Room-level BLE tracking with 5-second updates (not just home/away)
+Upload floor plans and draw room boundary polygons right in the UI
+3D multi-floor isometric maps with live object positions
+Walk-around calibration system — k-NN fingerprint matching + path-loss model fitting
+Follow mode — pick any tag, watch it move room to room with an animated map
+Email alerts when a tracked device changes rooms
+21 dedicated views (Basic mode for simplicity, Advanced for power users)
+Full HA entities — area sensors, distance sensors, device trackers, binary sensors
+Works with ESPresense, Bermuda proxies, or any HA Bluetooth proxy
+Sample mode — explore every feature with synthetic data before plugging in hardware
+11 languages (EN, ES, FR, DE, IT, PT, NL, ZH, JA, KO, RU)
+Standalone phone-friendly calibration panel for walk-around data collection
+Per-scanner signal quality metrics, WiFi SSID/IP display
+Built-in Training Hub with guided walkthroughs
+What’s coming for the beta
+More details soon — but think tighter HA dashboard integration, automation blueprints, and some things I’m not ready to talk about yet.
+Try the alpha now
+HACS → Custom repositories → add gbroeckling/padspanHA (Integration)
+Install PadSpan HA → Restart HA
+Settings → Devices &amp; Services → Add Integration → PadSpan HA
+Feedback and bug reports welcome — drop them here or open an issue on GitHub.
+GitHub: GitHub - gbroeckling/padspanHA: PadSpan HA — BLE room-level presence tracking for Home Assistant
+More coming in March.
 1 post - 1 participant
 Read full topic
 
@@ -2067,7 +2440,7 @@ The device value is changing correctly.
 The device “Last Update” timestamp in the UI appears correct.
 Only lastUpdate.minutesAgo in DzVents is incorrect.
 The issue does not affect all sensors at once — it appears randomly on different OWFS devices. The same scripts worked correctly in previous versions.
-Statistics: Posted by tomes — Tuesday 24 February 2026 23:19 — Replies 4 — Views 375
+Statistics: Posted by tomes — Tuesday 24 February 2026 23:19 — Replies 4 — Views 383
 
 </div>
 
@@ -2175,7 +2548,7 @@ I know also that this system is only used in France ,and for almost everyone onl
 And perhaps the problem comes from GCE Electronics.
 So I'm not sure someone can help me… But I still hope...
 Patrick
-Statistics: Posted by Pchatill — Monday 23 February 2026 13:06 — Replies 1 — Views 222
+Statistics: Posted by Pchatill — Monday 23 February 2026 13:06 — Replies 1 — Views 225
 
 </div>
 
@@ -2266,7 +2639,7 @@ This morning my Docker container was updated to latest beta (17204). There seems
 2026-02-21 13:32:06.513 Status: PluginSystem: 'ConBee2' Registration ignored, Plugins are not enabled.
 2026-02-21 13:32:06.513 Status: PluginSystem: 'SolarEdge' Registration ignored, Plugins are not enabled.
 2026-02-21 13:32:06.513 Status: PluginSystem: 'Shelly MQTT' Registration ignored, Plugins are not enabled. Should not be related (because I use Docker) but I am running Docker on a headless Debia Trixie NUC.
-I am posting this in the hope that this will be corrected in the next beta. I have no desire to go fiddle inside the container Statistics: Posted by Sjonnie2017 — Saturday 21 February 2026 13:40 — Replies 2 — Views 298
+I am posting this in the hope that this will be corrected in the next beta. I have no desire to go fiddle inside the container Statistics: Posted by Sjonnie2017 — Saturday 21 February 2026 13:40 — Replies 2 — Views 302
 
 </div>
 
@@ -2276,7 +2649,7 @@ I am posting this in the hope that this will be corrected in the next beta. I ha
 **Source:** Domoticz (Forum News)
 After a update from beta 17099 to 17189 Domoticz did not restart. Did the update throuh the settingsscreen. Counter counted until 100, then the message update failed, no internet connection....
 After a domoticz service restart was domoticz running normaal on the downloaded beta 17189. I thought this problem was solved? Attached the update.log and domoticz crash log domoticz_crash.log update.log
-Statistics: Posted by Rik60 — Sunday 15 February 2026 20:21 — Replies 5 — Views 493
+Statistics: Posted by Rik60 — Sunday 15 February 2026 20:21 — Replies 5 — Views 502
 
 </div>
 
@@ -2287,7 +2660,7 @@ Statistics: Posted by Rik60 — Sunday 15 February 2026 20:21 — Replies 5 — 
 Since yesterday I'm getting the following error on the buienradar integration:
 Code: Error: Internet weer: Invalid data received (station measurement empty), or no data returned!
 Started just somewhere during the day. Updated this morning to latest beta, did not resolve the issue. Any clue to the root cause? API change?
-Statistics: Posted by JanJaap — Tuesday 10 February 2026 11:45 — Replies 2 — Views 178
+Statistics: Posted by JanJaap — Tuesday 10 February 2026 11:45 — Replies 2 — Views 186
 
 </div>
 
@@ -2302,7 +2675,7 @@ Code: Feb 07 19:54:02 haz11 domoticz.sh[2666]: Illegal instruction: What is the 
 Is the Pi Zero suitable for running domoticz?
 If the current os or domoticz version is not suitable for the Pi Zero, which is the latest usable version?
 Greetings to everyone and have nice Weekend
-Statistics: Posted by rabbit — Saturday 07 February 2026 20:36 — Replies 26 — Views 820
+Statistics: Posted by rabbit — Saturday 07 February 2026 20:36 — Replies 26 — Views 833
 
 </div>
 
@@ -2313,7 +2686,7 @@ Statistics: Posted by rabbit — Saturday 07 February 2026 20:36 — Replies 26 
 I used "Open Hardware Monitor" for a long time with a Domoticz "Motherboard" hardware entry. With my new PC "Open Hardware Monitor" doesn't support many of the motherboards sensors. Some older Domoticz release notes are showing that "Libre Hardware Monitor" is supported. However, if I try to use it like "Open Hardware Monitor" it seems not to be recogniced by Domoticz. Further more I couldn't find any how to hints. Can anyone give advise?
 Addition: Domoticz Log shows "Warning, neither Libre Hardware Monitor nor Open Hardware Monitor are installed on this system."
 However, Libre Hardware Monitor is running: Domoticz 2025.2 is running on Windows 11 as Libre Hardware Monitor 0.9.5
-Statistics: Posted by Itschi — Friday 06 February 2026 8:51 — Replies 1 — Views 212
+Statistics: Posted by Itschi — Friday 06 February 2026 8:51 — Replies 1 — Views 218
 
 </div>
 
@@ -2331,7 +2704,7 @@ E-mail notifications with a picture (security cam) do not work anymore. Errormes
 error messages and test e-mail are received ok.
 Until recently the mail with a snapshot of the security cam where received.
 the snapshot works in the camera settings menu
-settings screen attached Statistics: Posted by Verdwaald — Tuesday 03 February 2026 22:15 — Replies 2 — Views 200
+settings screen attached Statistics: Posted by Verdwaald — Tuesday 03 February 2026 22:15 — Replies 2 — Views 206
 
 </div>
 
@@ -2562,7 +2935,34 @@ Lithuanian Hydrometeorological Service (LHMT) to provide regional weather foreca
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant (Blog officiel)">
 
-### 30. `EN` [Building the AI-powered local smart home](data/articles/72b69c1c16862c4512d8f271c3d84f16.html)
+### 30. `EN` [Happy 12th Birthday, Home Assistant!](data/articles/228d35a30b9cf7b73d1fa6c42136568c.html)
+**Source:** Home Assistant (Blog officiel)
+Every September, we celebrate the anniversary of Home Assistant’s first PR in 2013 – for our 12th birthday, we’re going all in on community again. Last month, we asked for submissions on how Home Assistant helps you, and today we will highlight our favorites! We will also take a look at all the cool milestones over the past year in the project, thanks to contributions from you all, and the new things coming up for the community. It’s a communal effort
+When I (Missy Quarry) joined as the Community &amp; Social Media Manager in February 2024, I was still new to how an open source project the size of Home Assistant manages its community. Over the past 18 months, I’ve seen Home Assistant community members from all walks of life — whether DIY tinkerers or people simply looking to make small improvements at home — contribute in their own ways. By sharing your stories and inspiring others, you’ve helped the project grow. For our 12th birthday, I want to celebrate these contributions, no matter the size or complexity. Before I jump into celebrating all your amazing contributions and how they shape the projects managed by the Open Home Foundation, I have a couple of birthday presents for you. First, I’m thrilled to share our new Community website! Right now, it’s a simple hub to find community information with ease, but we expect to evolve this over the coming months (or so). You’ll find links to our official community platforms, information on events, and details on meetups, including how to get reimbursed for certain fees as a host. In the future, I’d like to include links to regional communities we’re aware of and showcase more of the kinds of stories I’ll be sharing today.
+Feel like something’s missing from this new page? Let me know!
+Next, we’ve been working hard to do more of our development in the open. Last September, I redesigned the Discord server and in doing so I gated the Developer category behind a role. This has made it more difficult to develop in the open with the channels hidden behind a role, so we’re switching things up.
+As of this week, the Developer category is now read-only for every member. Want to take a peek into the future of Home Assistant? Head to the #projects channel and see what contributors are talking about! Want to join in and contribute with either your feedback or skills? I’ve created an info thread for the channel that explains how to assign yourself either the Developer or Designer role and unlock the ability to chat in the threads.
+Let’s jump into those submitted stories now… Happily ever after
+In my opinion, the best thing about Home Assistant is its flexibility - you can integrate such a wide range of devices into it and use their data to build a unique-to-your-home experience. And that’s exactly why I wanted to hear how you, the community, use it in your own home to benefit you. Here are my favorite stories you submitted - I hope one inspires your next project. A coffee automation to improve Home Approval Factor. Jordan made a morning automation to avoid having the coffee grinder grind his morning mood.
+u/katschung helped their girlfriend fully accept Home Assistant by creating a dashboard with a retrogame-style floor plan. Sythsaz uses Home Assistant to make sure their pupper is fed. “I’ve managed to make it so my dog’s food auto emails the vet then the response to the email gets put on my calendar so I know how long a bag of food lasts as well as adding the receipts to Google Drive.”
+Inspired by PowerDisplayESPHome, JannickBlmndl made an LED matrix that helps their household be more sustainable by being energy flexible. It displays the live energy prices from their energy provider. Tano Spirits in Melbourne, Australia, uses Home Assistant to automate their Japanese Shochu distillery, inspired by a small brewing company in Singapore. Several years ago, HillPhantom found that Home Assistant wasn’t quite ready for him. Over the past year, though, he’s now got Ollama set up with his Home Assistant Voice Preview Edition and has been building guides on how to make your own mmWave radar sensors in Home Assistant. 🏻
+Over just a few weeks, Pieter van Kampen recently integrated 190 devices that respond to voice control and more than 1200 active entities from his KNX home to create over 30 automations to help with everything from mowing the lawn to controlling shades based on the sun’s location and intensity. MB used Zigbee buttons to help collect data for their son’s doctor after he developed some trouble sleeping. This gave excellent insight for the doctor to start looking into causes, and they even used the system remotely while doing further evaluation. Graham Hosking took automations to another level (before we did) with his AI Automation Suggester and Automation Inspector. It takes the load off your brain by helping come up with new, clever automations! Wessam Lauf fell down the rabbit hole that is Home Assistant once he got his setup running. Inspired by the Graphite theme and after some LLM vibe-coding, he wrote a template for his very own theme, Frosted Glass - now available in HACS. Too many of us anthropomorphize our homes, telling it to chill out when five things break the same day. Biofects took that to heart and created this Home Assistant avatar for his home (here’s a bonus, nightmare fuel first version). Developers! 🏻 Developers! 🏻 Developers! 🏻
+Our community is more than developers, it’s true. But we wouldn’t be the largest open source project on GitHub if we didn’t have a vibrant and active developer community. This ship sails largely due to their contributions, and we genuinely appreciate all of their efforts.
+That’s why we’re eager to interview community members when we open new roles at the foundation. We’ve employed community members like Joostlek (who designed the new Integration Quality Scale and helps onboard new integrations into Core), Timo (who is our first ever Android developer and has focused on polishing the Android app), and Maxim (a talented developer from the Music Assistant community who works on both Music Assistant and ESPHome and is one of our newest additions to the team). Their contributions have helped shape how things work around here, but it was their contributions as community members that helped pave the way for their joining the foundation. These are just a select few of the several new hires at the foundation who were active community members.
+(Have you checked our jobs page recently to see what roles are open? )
+With our community of contributors and working with Nabu Casa on the hardware design, we have successfully launched a few new pieces of hardware. The Home Assistant Voice Preview Edition brought in language experts from every corner of the world to help ensure our language coverage is the most robust in the industry. Thanks to contributors, we support languages like Greek, Icelandic, and more recently Irish Gaeilge! We had community contributors help make sure the Home Assistant Connect ZWA-2 was prepared for launch last month. Sincerely, we couldn’t be more grateful for your support and efforts in these spaces.
+Here are some fun stats from our GitHub contributors (commits on our Core repo):
+Last 12 months (Sept - Aug) - 14,385
+Previous 12 months - 14,503
+A SPECIAL CONGRATULATIONS to bdraco, who just last week surpassed balloob (the founder of Home Assistant) as the contributor with the most commits!
+This is just a small peek into all the hard work that goes into maintaining Home Assistant - we have more repositories than just Core, and every single contribution is valued.
+Honorable dev mention from the submitted community stories - I couldn’t leave Joostlek’s (joke) submission out. Our very own Head of Developer Relations (his words), Joost Lekkerkerker, says Home Assistant helps keep him off the street.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant (Blog officiel)">
+
+### 31. `EN` [Building the AI-powered local smart home](data/articles/72b69c1c16862c4512d8f271c3d84f16.html)
 **Source:** Home Assistant (Blog officiel)
 Last year, we laid out our vision for AI in the smart home, which opened up experimentation with AI in Home Assistant. In that update, we made it easier to integrate all sorts of local and cloud AI tools, and provided ways to use them to control and automate your home. A year has passed, a lot has happened in the AI space, and our community has made sure that Home Assistant has stayed at the frontier.
 We beat big tech to the punch; we were the first to make AI useful in the home. We did it by giving our community complete control over how and when they use AI, making AI a powerful tool to use in the home. As opposed to something that takes over your home. Our community is taking advantage of AI’s unique abilities (for instance, its image recognition or summarizing skills), while having the ability to exclude it from mission-critical things they’d prefer it not to handle. Best of all, this can all be run locally, without any data leaving your home!
@@ -2598,7 +2998,7 @@ Below is a template entity that counts chickens in a video feed, all via a short
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Blog officiel)">
 
-### 31. `FR` [Une alarme complète débarque dans Gladys !](data/articles/d82acdd403ebf60bf49d89c50164af56.html)
+### 32. `FR` [Une alarme complète débarque dans Gladys !](data/articles/d82acdd403ebf60bf49d89c50164af56.html)
 **Source:** Gladys Assistant (Blog officiel)
 La sécurité, c'est la base de la domotique. Aujourd'hui, une alarme complète débarque dans Gladys pour vous permettre de gérer la sécurité de votre maison.
 
@@ -2606,17 +3006,42 @@ La sécurité, c'est la base de la domotique. Aujourd'hui, une alarme complète 
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 32. `FR` [Compatibilité Ugreen Dh2300](data/articles/18838638949b44a93fe2c2f405c35d27.html)
+### 33. `FR` [Blocage balenahetcher et ubuntu](data/articles/3c6d808cb3de0d45d96f8724c108b93e.html)
+**Source:** Gladys Assistant (Forum)
+Bonjour à tous
+Novice j’ai réussi je ne sais à créé mon compte Gladys mais en activant essai de Gladys + j’ai du sauter des épisodes, depuis plus rien. Ça c’était sur mon pc perso.
+Depuis j’ai récupéré un mini pc sur lequel y serra gladys.
+Si je comprend bien on télécharge Ubuntu sur mon perso, balenahetcher, je flasch Ubuntu et quand je retourne sur balenahetcher plus de possibilités de sélectionner SELECT TARGET la flèche de ma souris est remplacé par un sens interdit.
+Auriez vous une idée du problème.
+1 message - 1 participant(e)
+Lire le sujet en entier
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant Community Forum (Latest)">
+
+### 34. `EN` [Hue Hub Pro - what is Internet access for?](data/articles/09306eb601a36af4c0fc25eb86e334ee.html)
+**Source:** Home Assistant Community Forum (Latest)
+Recently moved from a hue hub to a hub pro. Everyting is working, both in the Hue iPhone app and Home assistant.
+Going through HA under the Hue Hub pro I spotted a toggle for internet access - it is off and greyed out. Just wondering what it is or does and why it is greyed out. Everything seems to work, and I can’t test by toggling it on. 1 post - 1 participant
+Read full topic
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
+
+### 35. `FR` [Compatibilité Ugreen Dh2300](data/articles/18838638949b44a93fe2c2f405c35d27.html)
 **Source:** Gladys Assistant (Forum)
 Bonjour je souhaiterai m’équiper d’un Nas Ugreen DH2300 (Octo Core ARM Rockchip RK3576 cadencé à 2,2 GHz, accompagné de 4 Go de RAM DDR4) et j’aimerais savoir si Gladys pourrait tourner sur ce type de matériel en utilisant Docker ou ai je besoin d’un modèle plus puissant ?
-1 message - 1 participant(e)
+@pierre-gilles
+3 messages - 2 participant(e)s
 Lire le sujet en entier
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="HomeGenie (GitHub Releases)">
 
-### 33. `EN` [v2.0.7](data/articles/ba1ca3778c9baf0916648d256400e851.html)
+### 36. `EN` [v2.0.7](data/articles/ba1ca3778c9baf0916648d256400e851.html)
 **Source:** HomeGenie (GitHub Releases)
 HomeGenie v2.0.7 - AI Vision &amp; Integrated NVR
 Welcome to HomeGenie 2.0.7! This major update transforms your smart home setup into a cutting-edge, AI-powered video surveillance platform. We've completely rewritten how HomeGenie handles cameras and added a built-in Network Video Recorder (NVR) that works seamlessly with our newest Artificial Intelligence models.
@@ -2637,7 +3062,7 @@ Full Changelog: v2.0.6...v2.0.7
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant Community Forum (Latest)">
 
-### 34. `EN` [Need help with a browser mod entity script service](data/articles/fa4f0b2bd9c0d2c358b9cb374a7c92c8.html)
+### 37. `EN` [Need help with a browser mod entity script service](data/articles/fa4f0b2bd9c0d2c358b9cb374a7c92c8.html)
 **Source:** Home Assistant Community Forum (Latest)
 so i use browser mod… and havent touched things in several years
 here is a section of the code - type: custom:button-card template: bootstrap_button class: col-xl-2 col-lg-2 col-md-3 col-sm-4 col-4 entity: group.building_sound state_display: | [[[ var count = states['sensor.building_sound_on'].state; if (count == 1) return '1 Device On'; else return count + ' Devices On'; ]]] tap_action: action: fire-dom-event browser_mod: service: browser_mod.popup data: title: Building Sound large: true hide_header: false content: type: custom:bootstrap-grid-card global_col_class: col-xl-2 col-lg-2 col-md-3 col-xl-4 col-4 cards: - type: row cards: - entity: switch.stage_mixer_1 name: Stage Mixer type: entity-button icon: mdi:tune - entity: switch.stage_amp_1 name: Stage Amp type: entity-button icon: mdi:amplifier - entity: switch.building_door_1_speaker name: Building Door Speaker 1 type: entity-button icon: mdi:speaker - entity: script.turn_on_sound_equipment_and_am640 name: Turn On Equip &amp; 640 type: entity-button icon: mdi:speaker - service: script.turn_off_sound_equipment_and_am640 name: Turn Off Equip &amp; 640 type: button icon: mdi:speaker so i cant get the script to run.
@@ -2648,7 +3073,7 @@ Read full topic
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant Community Forum (Latest)">
 
-### 35. `EN` [Notes on Migrating to Z-Wave 1.0.1](data/articles/83cd2124e2d216ea300c691d153f1dc6.html)
+### 38. `EN` [Notes on Migrating to Z-Wave 1.0.1](data/articles/83cd2124e2d216ea300c691d153f1dc6.html)
 **Source:** Home Assistant Community Forum (Latest)
 I just did a test migration to Z-Wave 1.0.1 following these instructions, which I realize might not be the final version.
 I don’t know if this is helpful, but I took some notes about a few things I found confusing.
@@ -2660,7 +3085,7 @@ Read full topic
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Arduino Blog">
 
-### 36. `EN` [Turning a climbing wall into an interactive game](data/articles/58c6a7f8ec7857221b4fbe07cd3db2e2.html)
+### 39. `EN` [Turning a climbing wall into an interactive game](data/articles/58c6a7f8ec7857221b4fbe07cd3db2e2.html)
 **Source:** Arduino Blog
 Artificial climbing walls are important for training, as few people can get to real rock walls regularly enough to keep up with practice. But like anything else, that can become boring if you’re just doing the same thing over and over again. To keep things fresh and fun, Superbender turned his indoor climbing wall into […]
 
@@ -2668,7 +3093,7 @@ Artificial climbing walls are important for training, as few people can get to r
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 37. `FR` [Premiere panne totale](data/articles/da14e98c89f0486ac87a16af72dbb621.html)
+### 40. `FR` [Premiere panne totale](data/articles/da14e98c89f0486ac87a16af72dbb621.html)
 **Source:** Gladys Assistant (Forum)
 bonjour.j’ai simplement lancé dans gladys une mise à jour en cliquant sur…mise à jour….et ma configuration a sauté.il ne reconnait plus mon mail.je suis temp-user…j’avais fait une copie du dossier gladys dans var/lib.est ce qu’une copie de ce dossier me redonnera l’acces? merci
 21 messages - 3 participant(e)s
@@ -2678,7 +3103,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant Community Forum (Latest)">
 
-### 38. `EN` [Recommendations for path forward on hardware for HA in small home](data/articles/ed3057421424fd8a160538648332b135.html)
+### 41. `EN` [Recommendations for path forward on hardware for HA in small home](data/articles/ed3057421424fd8a160538648332b135.html)
 **Source:** Home Assistant Community Forum (Latest)
 I currently have a 1500 square foot 3 floor home with full wired and wireless network using VLAN’s and Home Assistant docker running on a 24/7 unRaid server. I currently have a number of Kasa WiFi switches and outlets in the system and would like to look at converting to Z-Wave for lighting control but have a couple of complications. There are 3 BLE ceiling fans with integrated lights that I would like to convert to Z-Wave control but haven’t figured out a simple way to accomplish this. I am also wondering if a standalone HA server would be better than running on the unRaid server?
 6 posts - 3 participants
@@ -2688,35 +3113,15 @@ Read full topic
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Arduino Blog">
 
-### 39. `EN` [Find out what’s Arduino’s big news at Embedded World 2026!](data/articles/f0b5d823c65999156ace0abcb5546eff.html)
+### 42. `EN` [Find out what’s Arduino’s big news at Embedded World 2026!](data/articles/f0b5d823c65999156ace0abcb5546eff.html)
 **Source:** Arduino Blog
 Mark your calendars: we’re heading to Embedded World 2026 (Nuremberg, Germany – March 10-12) and we can’t wait to see you there! Visit us in Hall 3, Booth #555 for live demos, hands-on experiences, and – here’s the big one – a major product announcement you won’t want to miss. We’re unveiling something revolutionary, and Embedded World […]
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant Community Forum (Latest)">
-
-### 40. `EN` [ESPHome Professional Packages — Enterprise-grade monitoring, alarms &amp; WiFi survival](data/articles/2a035228d65a3086b0ced48f5400231c.html)
-**Source:** Home Assistant Community Forum (Latest)
-Hey community! I built a modular package system that adds enterprise-grade capabilities
-What it does C++ Alarm Engine — 4 severity levels (Nominal / Minor / Moderate / Critical) Zero-Config WiFi Motor — Improv BLE, Fallback AP, Captive Portal Full Hardware Telemetry — Free RAM, Memory Fragmentation, Loop Time,
-4d 13h 25m Dynamic Identity — Rename all 30+ sensors from HA without recompiling Copy → Paste → Compile → Enjoy
-Architecture
-Just 3 files:
-File
-Role configuracion_base.yaml
-Master template — drop it into your ESPHome dashboard lib-wifi_conectividad.yaml
-WiFi + BLE + Watchdog engine lib-estados_alarmas.yaml
-alarm brain Compatibility ESP32 · ESP32-C3 · ESP32 WROVER · ESP8266 (partial, see README)
-Links GitHub: GitHub - RamiLEK001/ESPHome-Professional-Packages: Paquetes modulares optimizados para ESP32/ESP8266 en Home Assistant
-Feedback and contributions very welcome! 1 post - 1 participant
-Read full topic
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 41. `FR` [Ouverture de la page Intégrations sur Favoris](data/articles/ff189825c41043caf09f65933fc301a7.html)
+### 43. `FR` [Ouverture de la page Intégrations sur Favoris](data/articles/ff189825c41043caf09f65933fc301a7.html)
 **Source:** Gladys Assistant (Forum)
 Suite à la création d’une option “Favoris” dans les intégrations, je propose que l’ouverture de la page “Intégrations” se fasse par défaut sur les “Favoris” s’il y en a.
 ref : Gladys Assistant 4.68 : Matterbridge, intégrations favorites et Tasmota amélioré Actualités 1 message - 1 participant(e)
@@ -2726,7 +3131,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 42. `FR` [Gladys Assistant 4.69 : Zigbee2mqtt passe sur Ember et suivi énergétique Tasmota](data/articles/0c527728486c00ad1c81d826e61adaa7.html)
+### 44. `FR` [Gladys Assistant 4.69 : Zigbee2mqtt passe sur Ember et suivi énergétique Tasmota](data/articles/0c527728486c00ad1c81d826e61adaa7.html)
 **Source:** Gladys Assistant (Forum)
 Bonjour à tous,
 Une nouvelle version de Gladys Assistant est disponible Voici les nouveautés de cette version :
@@ -2744,14 +3149,14 @@ Tasmota : Ajout du suivi énergétique
 Les appareils Tasmota sont désormais intégrés au suivi de l’énergie.
 Merci à @Terdious pour ce développement Pour mettre à jour, c’est automatique, ou vous pouvez forcer la mise à jour dans les paramètres.
 Bonne fin de semaine à tous !
-7 messages - 5 participant(e)s
+12 messages - 6 participant(e)s
 Lire le sujet en entier
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="openHAB Community (Latest)">
 
-### 43. `EN` [Ephemeris in dsl](data/articles/0dd5b0533727fd68f7c6bfb427905c13.html)
+### 45. `EN` [Ephemeris in dsl](data/articles/0dd5b0533727fd68f7c6bfb427905c13.html)
 **Source:** openHAB Community (Latest)
 Hi,
 Can
@@ -2765,7 +3170,7 @@ Read full topic
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 44. `EN` [Bad Domoticz restore... nothing new is saving..](data/articles/475a76e4a9f9cb326d1203964831edb0.html)
+### 46. `EN` [Bad Domoticz restore... nothing new is saving..](data/articles/475a76e4a9f9cb326d1203964831edb0.html)
 **Source:** Domoticz (Forum News)
 After losing my system...
 All of my auto backups where corrupt.
@@ -2773,25 +3178,25 @@ I had to go back to a backup from 2023 - with the new 2025 domoticz.
 I've added back in all the new devices, and removed the old switches that are no-longer part of my system...
 However - whenever I reset the windows pc that is running domoticz, all my newly added devices disappear, and the old switches come back.
 Any ideas?
-Statistics: Posted by binbo — Thursday 26 February 2026 23:20 — Replies 1 — Views 144
+Statistics: Posted by binbo — Thursday 26 February 2026 23:20 — Replies 1 — Views 151
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 45. `EN` [Feature request: 3-phase voltage device](data/articles/99b5ef082b619bd055e30191e330c43f.html)
+### 47. `EN` [Feature request: 3-phase voltage device](data/articles/99b5ef082b619bd055e30191e330c43f.html)
 **Source:** Domoticz (Forum News)
 Hi all,
 I would like to request a new dummy device type in Domoticz for measuring 3-phase voltage.
 Currently, we have a dummy device for a 3-phase current (ampere) meter, which works very well. It would be great to have a similar option for voltage, allowing users to input and display voltage values for all three phases.
 Thanks for considering!
-Statistics: Posted by highvoltage — Thursday 26 February 2026 22:14 — Replies 1 — Views 220
+Statistics: Posted by highvoltage — Thursday 26 February 2026 22:14 — Replies 1 — Views 228
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
 
-### 46. `EN` [Cabinet – Wall Mount Trash Bag Holder #3Dprinting #3DThursday](data/articles/e1d525f57ae5be144ed4811e19eb0728.html)
+### 48. `EN` [Cabinet – Wall Mount Trash Bag Holder #3Dprinting #3DThursday](data/articles/e1d525f57ae5be144ed4811e19eb0728.html)
 **Source:** Adafruit Blog
 LEM shared this project on MakerWorld! This is a useful and practical print, apparently I’m good at hiding things on the inside of cupboard doors. This solves the problem of those bulky boxes under your kitchen sink. We always buy the bulk pack to save a few coins, they take up a lot of space. […]
 
@@ -2799,7 +3204,7 @@ LEM shared this project on MakerWorld! This is a useful and practical print, app
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 47. `FR` [Widget Scène : Pouvoir trier la liste](data/articles/2910ab6ec2ca54800f71d5354d9cf708.html)
+### 49. `FR` [Widget Scène : Pouvoir trier la liste](data/articles/2910ab6ec2ca54800f71d5354d9cf708.html)
 **Source:** Gladys Assistant (Forum)
 Ref cette discussion : Tri des scènes dans un widjet
 Les scènes sont triées alphabétiquement dans un widget, ça serait cool de pouvoir les organiser de manière non alphabétique sans avoir à jongler avec les noms des scènes.
@@ -2810,19 +3215,19 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 48. `EN` [Custom graph enhancement](data/articles/2ca81e274f58c31c8763085cd4bc2488.html)
+### 50. `EN` [Custom graph enhancement](data/articles/2ca81e274f58c31c8763085cd4bc2488.html)
 **Source:** Domoticz (Forum News)
 Hello,
 would it make sense to be able adding any analog values to the graph, not necessarily only related to environment sensors like values?
 For example it would be interesting to be combining external temperature and gas consumption for examble.
 By the way, what is the set point check box for? I don't have any values there although I do have thermostatic radiator valves with setpoint.
-Statistics: Posted by Patricen — Thursday 26 February 2026 15:56 — Replies 0 — Views 123
+Statistics: Posted by Patricen — Thursday 26 February 2026 15:56 — Replies 0 — Views 134
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Arduino Blog">
 
-### 49. `EN` [From theory to hardware: Cristian Castro Lagos on control engineering with Arduino](data/articles/e5a3e2f0cd2690356623bea7df96c34f.html)
+### 51. `EN` [From theory to hardware: Cristian Castro Lagos on control engineering with Arduino](data/articles/e5a3e2f0cd2690356623bea7df96c34f.html)
 **Source:** Arduino Blog
 Control theory is beautiful on paper – elegant equations, perfectly modeled systems, textbook-perfect responses. But between the mathematical ideal and the physical system lies a gap that trips up many engineers: noise, timing constraints, actuator limits, and the stubborn reality of hardware that refuses to behave exactly as the model predicts. Cristian Castro Lagos, a […]
 
@@ -2830,17 +3235,17 @@ Control theory is beautiful on paper – elegant equations, perfectly modeled sy
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 50. `EN` [Error: RFXCom: Error opening serial port!](data/articles/eac32c1293e31e3ba0619dbb5c2a4b3d.html)
+### 52. `EN` [Error: RFXCom: Error opening serial port!](data/articles/eac32c1293e31e3ba0619dbb5c2a4b3d.html)
 **Source:** Domoticz (Forum News)
 After some retries I succesfully migrated to beta build 17277 and converted to systemd control. Since that time my RFXCom won't start anymore stating that the serial port cannot be opened. The serial port is identified by serial/by-id and present in the harware configuration.
 Is there a relation to the (many) latest changes? Are there ways to discover the cause of the problem?
-Statistics: Posted by Doler — Thursday 26 February 2026 14:24 — Replies 2 — Views 161
+Statistics: Posted by Doler — Thursday 26 February 2026 14:24 — Replies 2 — Views 175
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
 
-### 51. `EN` [Sweet Bow Silk Pen Holder #3DThursday #3DPrinting](data/articles/59cbe103223b1b156c4b98a39ca7e4c9.html)
+### 53. `EN` [Sweet Bow Silk Pen Holder #3DThursday #3DPrinting](data/articles/59cbe103223b1b156c4b98a39ca7e4c9.html)
 **Source:** Adafruit Blog
 user_1850721599 shares: I like to create cute things to make life better. If you like my work, I hope to get your support. Thank you~ I like to create cute things to make life better. If you like my work, I hope to get your support. Thank you~ download the files on: https://makerworld.com/en/models/2327118-sweet-bow-silk-pen-holder Every Thursday […]
 
@@ -2848,7 +3253,7 @@ user_1850721599 shares: I like to create cute things to make life better. If you
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 52. `FR` [Tri des scènes dans un widjet](data/articles/fc59ee4af78b54fa9129c8914fddaeb8.html)
+### 54. `FR` [Tri des scènes dans un widjet](data/articles/fc59ee4af78b54fa9129c8914fddaeb8.html)
 **Source:** Gladys Assistant (Forum)
 J’appelle certaines scènes avec « On » et « Off » p.ex. “Salon On” et “Salon Off” : Rien de très original j’en convient, ce qui donne ça : J’aimerai pouvoir mettre le « On » au dessus… Est-ce qu’il est possible pouvoir choisir de l’ordre des scènes ou est-ce que je fais une demande de fonctionnalité ?
 5 messages - 3 participant(e)s
@@ -2858,7 +3263,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 53. `EN` [How to find domoticz log file](data/articles/756b2c390d89c630e21949c5efeecbdc.html)
+### 55. `EN` [How to find domoticz log file](data/articles/756b2c390d89c630e21949c5efeecbdc.html)
 **Source:** Domoticz (Forum News)
 Hello,
 1 - Context
@@ -2873,13 +3278,13 @@ Previously i recorded domoticz messages in "/var/log/domoticz.log" by setting in
 Now when using /etc/systemd/system/domoticz.service I see the domoticz messages in domoticz UI but I am not able to find in which file they are stored. I also would like to define the file name supporting these messages.
 I would be grateful if someone could help me or give me a hint.
 BR
-Statistics: Posted by meal — Thursday 26 February 2026 10:24 — Replies 7 — Views 301
+Statistics: Posted by meal — Thursday 26 February 2026 10:24 — Replies 7 — Views 331
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 54. `FR` [Icônes "cadenas" trop petite](data/articles/31ac1caee98cf10611969a89e59a6af5.html)
+### 56. `FR` [Icônes "cadenas" trop petite](data/articles/31ac1caee98cf10611969a89e59a6af5.html)
 **Source:** Gladys Assistant (Forum)
 Bonjour,
 J’ai des capteurs d’ouverture, et je trouve l’icône de cadenas trop petite sur le tableau de bord, au point que j’ai du mal à distinguer un cadenas ouvert de fermé.
@@ -2890,7 +3295,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 55. `FR` [Initialisation des paramètres d'un nouvel appareil](data/articles/bee5ad5debe9631964473b519bccd522.html)
+### 57. `FR` [Initialisation des paramètres d'un nouvel appareil](data/articles/bee5ad5debe9631964473b519bccd522.html)
 **Source:** Gladys Assistant (Forum)
 Bonjour à tous,
 Lorsque j’ai ajouté en zigbee mon interrupteur pour volet roulant, j’aurai aimé que Gladys me propose à ce moment là de configurer ses paramètres de fonctionnement. Par exemple, j’ai un “temps de monté / descente” et le “sens du moteur” à configurer.
@@ -2902,7 +3307,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 56. `FR` [Jauges : améliorations](data/articles/52f9511ff811004a4b59ae4e56eee20c.html)
+### 58. `FR` [Jauges : améliorations](data/articles/52f9511ff811004a4b59ae4e56eee20c.html)
 **Source:** Gladys Assistant (Forum)
 J’ai enfin (re)mis en service mon système de mesure de la quantité d’eau restante dans mes citernes et ai quelques améliorations du widget à demander.
 Serait-il possible que le nom soit éditable ou que la feature soit indiquée plutôt que le device ? Ici, je ne sais pas différencier les deux citernes sur le dashboard : Sur mobile, le widget empêche le défilement. J’explique… Si je mets mon doigt sur le widget, impossible de faire monter ou descendre la page, ce n’est pas “tactile”.
@@ -2914,7 +3319,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="openHAB Community (Latest)">
 
-### 57. `EN` [Javascript in OH5.1.3](data/articles/24d84446f57cf82d285daf37a7636d75.html)
+### 59. `EN` [Javascript in OH5.1.3](data/articles/24d84446f57cf82d285daf37a7636d75.html)
 **Source:** openHAB Community (Latest)
 Hi,
 I’m trying to upgrade from 5.0.3 to 5.1.3, but the changes to javascript have broken some of my rules and I don’t understand enough to figure it out.
@@ -2933,7 +3338,7 @@ Read full topic
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 58. `EN` [crash after Watchtower/Docker update to Domoticz V2025.2 (build 17268)](data/articles/1ada3d6cd042fc82da5c2a79c27fd9a4.html)
+### 60. `EN` [crash after Watchtower/Docker update to Domoticz V2025.2 (build 17268)](data/articles/1ada3d6cd042fc82da5c2a79c27fd9a4.html)
 **Source:** Domoticz (Forum News)
 NAS did a Watchtower update in Docker and Domoticz crashed
 Log:
@@ -2954,13 +3359,13 @@ Log:
 corrupted size vs. prev_size
 2026-02-25 13:00:28.719 Error: Domoticz(pid:1, tid:1('domoticz')) received fatal signal 6 (Aborted)
 2026-02-25 13:00:28.719 Error: siginfo address=0x1, address=0x7f955511eeec
-Statistics: Posted by Huntback — Wednesday 25 February 2026 13:31 — Replies 7 — Views 340
+Statistics: Posted by Huntback — Wednesday 25 February 2026 13:31 — Replies 7 — Views 346
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 59. `EN` [2025.2 beta 17265 fails to start](data/articles/8b4a8bcca6d2fb5fa86fe914bc04f64b.html)
+### 61. `EN` [2025.2 beta 17265 fails to start](data/articles/8b4a8bcca6d2fb5fa86fe914bc04f64b.html)
 **Source:** Domoticz (Forum News)
 Just updated my test system from 2025.2 17252 to 17265 and it fails to restart. Update counter goes all the way to 99 which is unusual. First i thought we had the old issue back again so did a stop and start from cmd line but nothing. Performing a stop and start and then a systemctl status gets me this, but no gui and despite it saying it's started none of my switches work so i'd say it's not actually running.
 Feb 25 07:21:47 domoticz systemd[1]: Starting domoticz.service - LSB: Home Automation System...
@@ -2972,13 +3377,13 @@ Feb 25 07:21:47 domoticz domoticz.sh[1699525]: domoticz: Domoticz is starting up
 Feb 25 07:21:47 domoticz domoticz[1699525]: Domoticz is starting up....
 Feb 25 07:21:47 domoticz systemd[1]: Started domoticz.service - LSB: Home Automation System.
 Update. Rolled back to 17252 and all good.
-Statistics: Posted by Dave21w — Wednesday 25 February 2026 8:25 — Replies 17 — Views 545
+Statistics: Posted by Dave21w — Wednesday 25 February 2026 8:25 — Replies 17 — Views 559
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="openHAB Community (Latest)">
 
-### 60. `EN` [OH3 all timestamps/graphs 30 minutes behind real time](data/articles/735a9d921dd22c0b96ba802a80ccdd34.html)
+### 62. `EN` [OH3 all timestamps/graphs 30 minutes behind real time](data/articles/735a9d921dd22c0b96ba802a80ccdd34.html)
 **Source:** openHAB Community (Latest)
 Hello.
 I found out that my OH3 has an delay of 30minutes in all Timestamps like network:ping last seen, in graphs created from values of Modbus (Smartmeter, frequency, Power, U,I) but it shows the correct ntp-time. The Result is that frequency and Powercharts are everytime shown half an hour behind the real local time and it seems OH-internal Timestamps (rrd-recordings) did the same. I checked the regional and ephemerial settings in the UI but i can’t find a misconfigured point.
@@ -2994,7 +3399,7 @@ Read full topic
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="openHAB Community (Latest)">
 
-### 61. `EN` [Managing openHAB Rules Like Production Software: Testing, Automation, and Troubleshooting](data/articles/5b0e256a93fc65dc399628d45072c0de.html)
+### 63. `EN` [Managing openHAB Rules Like Production Software: Testing, Automation, and Troubleshooting](data/articles/5b0e256a93fc65dc399628d45072c0de.html)
 **Source:** openHAB Community (Latest)
 Hi all,
 as I’m using openHAB since more than 10 year regressions problems, and troubleshooting after upgrades are well known to me. So - as I tried to leverage AI agents to create a system to create testable rules and widgets - and I’m quite happy with the result. As usual, my time is very limited - especially as I want to finish the Jellyfin binding to make it available to all users (locally it is under testing with 5.1.2) … So I dared to task the AI to describe the setup - not ideal maybe, but I hope it serves as an inspiration on how to achieve a stable setup over time; and preferred to not sharing the idea at all.
@@ -3091,7 +3496,7 @@ Function IIFE: (function () { ...
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 62. `FR` [Problème visualiation docker page systeme](data/articles/43624d8318b062ddd1b8a309432aab6a.html)
+### 64. `FR` [Problème visualiation docker page systeme](data/articles/43624d8318b062ddd1b8a309432aab6a.html)
 **Source:** Gladys Assistant (Forum)
 Bonsoir,
 Je viens de remarquer que je vois des conteneurs dans la page système de Gladys : Alors que j’ai que ceci : Je pense qu’il y a un petit problème 4 messages - 2 participant(e)s
@@ -3101,7 +3506,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 63. `FR` [Problème de remontée prise Zigbee](data/articles/b618f9df495774f78f5446d4c2cbc470.html)
+### 65. `FR` [Problème de remontée prise Zigbee](data/articles/b618f9df495774f78f5446d4c2cbc470.html)
 **Source:** Gladys Assistant (Forum)
 Bonsoir,
 Précision sur le matériel utilisé :
@@ -3117,7 +3522,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 64. `FR` [Erreur démarrage Z2m](data/articles/ccee57b6f1f50c01364349f358ded69f.html)
+### 66. `FR` [Erreur démarrage Z2m](data/articles/ccee57b6f1f50c01364349f358ded69f.html)
 **Source:** Gladys Assistant (Forum)
 Bonsoir,
 J’ai dû déplacer mon serveur et en le remontant, j’ai dû me tromper de port USB pour mon dongle Sonoff… et donc lorsque je redémarre le tout, j’ai maintenant :
@@ -3130,20 +3535,20 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 65. `EN` ["Off Delay" no longer works..](data/articles/2525ced2079d99a5a781fb19e0dc070c.html)
+### 67. `EN` ["Off Delay" no longer works..](data/articles/2525ced2079d99a5a781fb19e0dc070c.html)
 **Source:** Domoticz (Forum News)
 I've just updated my copy of domoticz.
 Stupidly - i have no idea what version I had.
 But I've updated to the latest version...
 2025.2.16812 And i've noticed a device that used to work perfectly with an "off delay" of 1 second.
 Now triggers for too long - and no longer works.
-Statistics: Posted by binbo — Monday 23 February 2026 19:46 — Replies 7 — Views 390
+Statistics: Posted by binbo — Monday 23 February 2026 19:46 — Replies 7 — Views 397
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 66. `FR` [Zigbee2mqtt non fonctionnel](data/articles/174f67647aaf8a0431346cb347255df6.html)
+### 68. `FR` [Zigbee2mqtt non fonctionnel](data/articles/174f67647aaf8a0431346cb347255df6.html)
 **Source:** Gladys Assistant (Forum)
 Hello,
 Je ne sais pas si c’est depuis la mise à jour ou bien depuis ma modification de mqtt que j’ai passé dans docker mais plus aucun appareil zigbee2mqtt n’est controlable dans Gladys.
@@ -3158,18 +3563,18 @@ J’ai pas mal de logs comme ceci dans les logs :
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 67. `EN` [3 fase Amp meter shows just one zero iso 0,0,0](data/articles/fa9c94c2e4f0ebb7b4df8a3e9cad9312.html)
+### 69. `EN` [3 fase Amp meter shows just one zero iso 0,0,0](data/articles/fa9c94c2e4f0ebb7b4df8a3e9cad9312.html)
 **Source:** Domoticz (Forum News)
 Hi I am using a 3 fase Amp device Type " Current, CM113,Electrisave ".
 It shows as expected the Amp values but if no current in all fases it just shows only one time zero. Is this as intended or is it a bug.
 -Bart
-Statistics: Posted by BartSr — Monday 23 February 2026 14:01 — Replies 2 — Views 237
+Statistics: Posted by BartSr — Monday 23 February 2026 14:01 — Replies 2 — Views 242
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 68. `FR` [Erreur découverte Sonos](data/articles/ecfd46afa789e694d3bed98356f5fcd1.html)
+### 70. `FR` [Erreur découverte Sonos](data/articles/ecfd46afa789e694d3bed98356f5fcd1.html)
 **Source:** Gladys Assistant (Forum)
 Bonjour,
 J’essaie de découvrir mon Sonos Ray et je vois dans les logs ceci après plusieurs échecs :
@@ -3185,7 +3590,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 69. `FR` [Prise en charge des clés SMLIGHT via réseau](data/articles/8eb86e8037c4ae93a07837d5b214687b.html)
+### 71. `FR` [Prise en charge des clés SMLIGHT via réseau](data/articles/8eb86e8037c4ae93a07837d5b214687b.html)
 **Source:** Gladys Assistant (Forum)
 Bonjour,
 Suite à mon tutoriel ici :
@@ -3198,32 +3603,32 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 70. `EN` [email don't work](data/articles/f2a8ff12120847cb088ef96e619934aa.html)
+### 72. `EN` [email don't work](data/articles/f2a8ff12120847cb088ef96e619934aa.html)
 **Source:** Domoticz (Forum News)
 Hello,
 "domoticz.email" was working fine until early February. But strangely, no emails have been sent since. I haven't changed any settings. The "Test" function in the settings works correctly. Thinking it might be a problem with my ISP, I changed the email address, but it didn't help.
 A Python script on the same Raspberry Pi sends emails correctly using the original address. What's the problem?
 Notice that I stay in beta 17099, due to recent problem with the beta versions.
 Thank you
-Statistics: Posted by Filnet — Monday 23 February 2026 9:51 — Replies 4 — Views 416
+Statistics: Posted by Filnet — Monday 23 February 2026 9:51 — Replies 4 — Views 419
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 71. `EN` [unknown - still executing](data/articles/9a3af2174f46a9b0ae2623272205515e.html)
+### 73. `EN` [unknown - still executing](data/articles/9a3af2174f46a9b0ae2623272205515e.html)
 **Source:** Domoticz (Forum News)
 Hello, Code: 2026-02-23 00:00:10.144 Error: EventSystem: Warning!, lua script dzVents script (unknown - still executing) has been running for more than 10 seconds2026-02-23 01:00:10.088 Error: EventSystem: Warning!, lua script dzVents script (unknown - still executing) has been running for more than 10 seconds2026-02-23 02:00:10.037 Error: EventSystem: Warning!, lua script dzVents script (unknown - still executing) has been running for more than 10 seconds2026-02-23 02:11:10.555 Error: EventSystem: Warning!, lua script dzVents script (unknown - still executing) has been running for more than 10 seconds2026-02-23 02:21:10.077 Error: EventSystem: Warning!, lua script dzVents script (unknown - still executing) has been running for more than 10 seconds2026-02-23 04:00:14.835 Error: EventSystem: Warning!, lua script dzVents script (unknown - still executing) has been running for more than 10 seconds2026-02-23 05:00:10.101 Error: EventSystem: Warning!, lua script dzVents script (unknown - still executing) has been running for more than 10 seconds2026-02-23 07:00:10.274 Error: EventSystem: Warning!, lua script dzVents script (unknown - still executing) has been running for more than 10 seconds2026-02-23 08:00:10.399 Error: EventSystem: Warning!, lua script dzVents script (unknown - still executing) has been running for more than 10 seconds2026-02-23 08:36:10.203 Error: EventSystem: Warning!, lua script dzVents script (unknown - still executing) has been running for more than 10 seconds2026-02-23 09:00:13.276 Error: EventSystem: Warning!, lua script dzVents script (unknown - still executing) has been running for more than 10 seconds
 How find this "unknown''?
 Command "executeShellCommand" should be the reason?
 Thank for your help
-Statistics: Posted by Filnet — Monday 23 February 2026 9:40 — Replies 0 — Views 238
+Statistics: Posted by Filnet — Monday 23 February 2026 9:40 — Replies 0 — Views 245
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="openHAB Community (Latest)">
 
-### 72. `EN` [VS Code - Error while connecting to the openHAB REST API](data/articles/d015b33bbe8841474cf649951bfccffe.html)
+### 74. `EN` [VS Code - Error while connecting to the openHAB REST API](data/articles/d015b33bbe8841474cf649951bfccffe.html)
 **Source:** openHAB Community (Latest)
 Hi, everyone.
 I’m running OH 4.3.1 on a Raspberry Pi (CENTOS 9).
@@ -3249,7 +3654,7 @@ Read full topic
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 73. `FR` [Remplacement des icônes Feather par Lucide](data/articles/ce181926b409e4d2e785ac8c38d53fd2.html)
+### 75. `FR` [Remplacement des icônes Feather par Lucide](data/articles/ce181926b409e4d2e785ac8c38d53fd2.html)
 **Source:** Gladys Assistant (Forum)
 Feature Thermostat complète
 trouver une autre icone pour le mode Hors Gel, je voulais juste un flocon mais pas présente dans le jeux d’icône Feather)
@@ -3261,7 +3666,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 74. `FR` [Changement lib Airplay](data/articles/e8d578d2addb1fb9631063f67ba184af.html)
+### 76. `FR` [Changement lib Airplay](data/articles/e8d578d2addb1fb9631063f67ba184af.html)
 **Source:** Gladys Assistant (Forum)
 Bonjour à tous, dernièrement on a eu quelques soucis avec l’intégration Airplay. La lib utilisée pour se connecter à l’enceinte était un peu vieille, je l’ai forkée pour essayer de la garder à jour et la faire fonctionner avec les dernières versions de Node, mais une grosse partie du code n’est pas propre et ça passait par le binding de fonctions C++ ce qui rendait la maintenance complexe.
 nouvelle lib qui fait la même chose en 100% Typescript, j’ai basculé dessus ça fonctionne aussi bien et ça sera plus simple à maintenir plus tard. Si certains utilisateurs Airplay veulent tester une image docker est disponible bertrandda/gladys:airplay.
@@ -3272,7 +3677,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 75. `FR` [Mise à jour des tarifs énergétiques pour le suivi d'énergie](data/articles/688d4b04d1b1aa9035701d127fe8833d.html)
+### 77. `FR` [Mise à jour des tarifs énergétiques pour le suivi d'énergie](data/articles/688d4b04d1b1aa9035701d127fe8833d.html)
 **Source:** Gladys Assistant (Forum)
 Hello, On pourra ainsi archiver les anciens sujets si c’est utile et permettre à @pierre-gilles d’y accéder plus rapidement.
 5 messages - 4 participant(e)s
@@ -3282,7 +3687,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 76. `EN` [Cannot start the domoticz daemon in systemd but can be started in terminal](data/articles/fcd2907d9f82f0bc32013b79029cc653.html)
+### 78. `EN` [Cannot start the domoticz daemon in systemd but can be started in terminal](data/articles/fcd2907d9f82f0bc32013b79029cc653.html)
 **Source:** Domoticz (Forum News)
 The systemd script in /etc/systemd/system is:
 Code: [Unit]Description=Domoticz Home Automation ServiceAfter=network-online.target[Service]Type=simpleUser=piGroup=piWorkingDirectory=/home/pi/domoticzExecStart=/home/pi/domoticz/domoticz -daemon -www 8080 -sslwww 443 -pidfile /var/run/domoticz/domoticz.pidRestart=on-failure[Install]WantedBy=multi-user.target
@@ -3291,13 +3696,13 @@ If I run the execstart code in the command line, the domoticz daemon is created.
 Result of running in commandline as user pi: Code: pi@rpidhcpserver:~/domoticz $ /home/pi/domoticz/domoticz -daemon -www 8080 -sslwww 443 -pidfile /var/run/domoticz/domoticz.pid2026-02-22 14:17:42.839 Status: Domoticz V2025.2 (c)2012-2025 GizMoCuz2026-02-22 14:17:42.839 Status: Build Hash: e63981b18, Date: 2025-10-13 10:42:572026-02-22 14:17:42.839 Status: Startup Path: /home/pi/domoticz/domoticz: Domoticz is starting up....
 I did use systemd tmpfiles.d to create /run/domoticz. /etc/tmpfiles.d/domoticz.conf contains Code: #Type Path Mode UID GID Age Argumentd /run/domoticz 0755 pi pi - -
 Thanks, Chris
-Statistics: Posted by cmisip — Sunday 22 February 2026 15:21 — Replies 1 — Views 346
+Statistics: Posted by cmisip — Sunday 22 February 2026 15:21 — Replies 1 — Views 354
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 77. `FR` [Dongle z-wave non reconnu](data/articles/cd2fa15cbc0be2043cd7b69f4a334a18.html)
+### 79. `FR` [Dongle z-wave non reconnu](data/articles/cd2fa15cbc0be2043cd7b69f4a334a18.html)
 **Source:** Gladys Assistant (Forum)
 Bonjour,
 le dongle “sonoff z-wave 800 dongle plus” model: dongle-PZG23 n’est pas reconnu par gladys dans Z-WAVE JS UI.
@@ -3309,7 +3714,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 78. `EN` [Gets gas consumption from the electrical energy of the gas boiler](data/articles/5c53723cac3c3435d3e4434d86a7833b.html)
+### 80. `EN` [Gets gas consumption from the electrical energy of the gas boiler](data/articles/5c53723cac3c3435d3e4434d86a7833b.html)
 **Source:** Domoticz (Forum News)
 Hi,
 Below I will explain how I managed to obtain an approximate daily gas consumption by transforming the electrical energy consumed by the gas boiler.
@@ -3320,23 +3725,23 @@ Calculate daily consumption smart plug (counterToday in domoticz) x Multiplier, 
 Then create the following dzvents script: Code: return {active = true,on = {devices = { 139 } -- idx smart plug},execute = function(domoticz, device)------------------------------------------------------- CONFIGURATION-----------------------------------------------------local MULTIPLICATOR = 21 -- multiplier replace with your own valuelocal GAZ_IDX = 520 -- replace with the idx of your sensor Custom Sensor "Estimated Gas Consumption"---------------------------------------------------------------------- MAIN LOGIC--------------------------------------------------------------------local val = device.counterToday or 0local consumKWh = 0if type(val) == "string" thenconsumKWh = tonumber(val:match("([%d%.]+)")) or 0elseconsumKWh = tonumber(val) or 0endlocal consumGaz = consumKWh * MULTIPLICATORlocal gazDevice = domoticz.devices(GAZ_IDX)if gazDevice thengazDevice.updateCustomSensor(consumGaz)domoticz.log(string.format("idx[%d]: %.3f kWh → Gas estimated: %.3f m³ (x%.3f)",device.id, consumKWh, consumGaz, MULTIPLICATOR), domoticz.LOG_INFO)elsedomoticz.log(string.format("Error: we did not find the device with idx %d", GAZ_IDX), domoticz.LOG_ERROR)endend}
 LE: in my case only the gas boiler using gas.
 I hope it helps you too.
-Statistics: Posted by pfloryann — Saturday 21 February 2026 12:25 — Replies 5 — Views 418
+Statistics: Posted by pfloryann — Saturday 21 February 2026 12:25 — Replies 5 — Views 428
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 79. `EN` [Enphase lan stoped getting info](data/articles/5a8226a9809691777c7b590a3387cfcb.html)
+### 81. `EN` [Enphase lan stoped getting info](data/articles/5a8226a9809691777c7b590a3387cfcb.html)
 **Source:** Domoticz (Forum News)
 2026-02-21 09:45:32.250 [e6df21e0] Error: SamSam: Error getting http data! (info)
 This is all I get from the debug logging, not much info. Tried with my second pi with domoticz, the same
-Statistics: Posted by tonbor — Saturday 21 February 2026 9:51 — Replies 3 — Views 248
+Statistics: Posted by tonbor — Saturday 21 February 2026 9:51 — Replies 3 — Views 258
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 80. `EN` [Docker: PluginSystem: Failed dynamic library load](data/articles/0209fa1260470887638d40c4c13af417.html)
+### 82. `EN` [Docker: PluginSystem: Failed dynamic library load](data/articles/0209fa1260470887638d40c4c13af417.html)
 **Source:** Domoticz (Forum News)
 Hello I'm running Domoticz in docker and I see this in the startup log Code: Status: PluginSystem: Failed dynamic library load, install the latest libpython3.x library that is available for your platform.
 About Domoticz
@@ -3356,13 +3761,13 @@ Building dependency tree... Done
 Reading state information... Done
 libpython3-stdlib is already the newest version (3.11.2-1+b1).
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
-Statistics: Posted by Varazir — Friday 20 February 2026 22:20 — Replies 4 — Views 369
+Statistics: Posted by Varazir — Friday 20 February 2026 22:20 — Replies 4 — Views 380
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 81. `EN` [New Theme &gt; Dashboard 2026](data/articles/23b56e9b6daae7ba3bcdaaad08356f69.html)
+### 83. `EN` [New Theme &gt; Dashboard 2026](data/articles/23b56e9b6daae7ba3bcdaaad08356f69.html)
 **Source:** Domoticz (Forum News)
 Hi,
 As the title says, I’m currently working on a new theme for personal use. It doesn’t have a name yet.
@@ -3377,13 +3782,13 @@ So far i made it as test, but we using it on all phones and tables and it works 
 Still needs work to do, but for what we need, it works excellent.
 If you’re interested, let me know. Depending on any feedback or tips, I might take this to the next level and consider sharing it.
 Barry
-Desktop: Mobile: Statistics: Posted by BarryT — Friday 20 February 2026 19:34 — Replies 12 — Views 621
+Desktop: Mobile: Statistics: Posted by BarryT — Friday 20 February 2026 19:34 — Replies 12 — Views 634
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 82. `FR` [Dongle Sonoff pour intégration Matter](data/articles/511b004640216b49c99a17a0643f7d50.html)
+### 84. `FR` [Dongle Sonoff pour intégration Matter](data/articles/511b004640216b49c99a17a0643f7d50.html)
 **Source:** Gladys Assistant (Forum)
 Hello,
 J’ai actuellement un dongle SONOFF Zigbee 3.0 USB Dongle Plus ZBDongle-P qui me sert à appairer tous mes appareils Zigbee.
@@ -3400,7 +3805,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 83. `FR` [Limitation temporelle action détecteur de présence](data/articles/e0c2eda7b399abb1244ee6bd5a3e7ec1.html)
+### 85. `FR` [Limitation temporelle action détecteur de présence](data/articles/e0c2eda7b399abb1244ee6bd5a3e7ec1.html)
 **Source:** Gladys Assistant (Forum)
 Hello,
 J’aimerais que mon détecteur de présence Zigbee n’allume le salon automatiquement que s’il est déclenché avant le lever du soleil ou après son coucher.
@@ -3414,7 +3819,7 @@ Lire le sujet en entier
 
 <div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
 
-### 84. `FR` [Accès à l'URL de Z2M](data/articles/c4814320e6352102addf2162e1c53ff5.html)
+### 86. `FR` [Accès à l'URL de Z2M](data/articles/c4814320e6352102addf2162e1c53ff5.html)
 **Source:** Gladys Assistant (Forum)
 Hello,
 Tout fonctionne bien, mais j’aimerais accéder à l’UTL de Z2M donné ici : J’ai testé avec 2 browsers, avec l’IP ou le nom du server, mais timeout chaque fois.
@@ -3424,62 +3829,44 @@ Lire le sujet en entier
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Forum)">
-
-### 85. `FR` [Gladys / IKEA Dirigera / Module Zigbee : euh... comment je démarre?](data/articles/1e1fc16aa5961a35d75904d46077cf16.html)
-**Source:** Gladys Assistant (Forum)
-Hello,
-j’ai pour projet de commander mes chauffage de ma salle de jeux via Gladys
-du coup là j’ai tout :
-Mon bridge DIRIGERA configuré dans Gladys
-mon module NODON
-à l’installation le module NODON qui a été automatiquement connecté à mon réseau sans aucune action de ma part.
-dans Gladys, dans Matter j’ai bien un nouveau périphérique par contre je n’ai que 2 fonctionnalités Commutateur et Index L’index semble bien remonter la conso, par contre le commutateur n’a au impact sur le chauffage ma quesion est donc la suivante : ai raté un truc ou ma configuration actuelle ne me permettra pas mieux ?
-Merci
-Greg
-20 messages - 3 participant(e)s
-Lire le sujet en entier
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 86. `EN` [The rainfall report has disappeared](data/articles/99dd1b3543ba705be6a0018efb10c5da.html)
+### 87. `EN` [The rainfall report has disappeared](data/articles/99dd1b3543ba705be6a0018efb10c5da.html)
 **Source:** Domoticz (Forum News)
 Version: 2025.2 (build 17175)
 Platform: Docker on NAS
 Hello, since the last update, the button for viewing a rainfall report, which used to be located in the top right corner of the rain sensor log screen, has disappeared. Will it be possible to restore it in the next version?
 Thank you.
-Statistics: Posted by Bimnomercy — Friday 20 February 2026 7:16 — Replies 4 — Views 355
+Statistics: Posted by Bimnomercy — Friday 20 February 2026 7:16 — Replies 4 — Views 361
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 87. `EN` [dzvents lua scripts are not triggered anymore (build 17186)](data/articles/09c7dc4360ccc813b981c72f8a37cd3e.html)
+### 88. `EN` [dzvents lua scripts are not triggered anymore (build 17186)](data/articles/09c7dc4360ccc813b981c72f8a37cd3e.html)
 **Source:** Domoticz (Forum News)
 Hi all,
 since the update to v2025.2 (build 17186), all my dzvents lua automations are not triggered anymore. For example I see that a switch changes state, but the lua script is not triggered. (Also the CPU is much lower than before the update)
 Anybody else seeing the same issue?
-Statistics: Posted by rugspin — Thursday 19 February 2026 19:27 — Replies 6 — Views 374
+Statistics: Posted by rugspin — Thursday 19 February 2026 19:27 — Replies 6 — Views 388
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 88. `EN` [What is the "comparitive" graph for a power widget ?](data/articles/e14a6fff3d3a13591b8caf500706754d.html)
+### 89. `EN` [What is the "comparitive" graph for a power widget ?](data/articles/e14a6fff3d3a13591b8caf500706754d.html)
 **Source:** Domoticz (Forum News)
 Hello, I have a power widget, used only for power, it mesure 700W during 3 hours by days.
 It working fine, no problem with him, but if I go to logs, the last one if the "comparative" by years, but what is the value compared, it's something like 7 000, 00 W
 It's the power * hour * days ? but the value is not the good one.
 I realy have no clue where this value is from ....
-Statistics: Posted by Thorgal789 — Thursday 19 February 2026 17:33 — Replies 5 — Views 382
+Statistics: Posted by Thorgal789 — Thursday 19 February 2026 17:33 — Replies 6 — Views 413
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Embedded.com">
 
-### 89. `EN` [Renesas Demonstrates Configurable 3-nm TCAM](data/articles/b5d774e5f4e7f886d07f02b12a0d902c.html)
+### 90. `EN` [Renesas Demonstrates Configurable 3-nm TCAM](data/articles/b5d774e5f4e7f886d07f02b12a0d902c.html)
 **Source:** Embedded.com
 Renesas Electronics Corporation has announced the development of a configurable ternary content-addressable memory (TCAM) implemented using a 3-nm FinFET manufacturing process. The new design combines increased storage density, reduced power consumption, and enhanced functional safety, positioning it for use in automotive environments. The company presented its results at the International Solid-State Circuits Conference 2026, held [...]
 
@@ -3487,17 +3874,17 @@ Renesas Electronics Corporation has announced the development of a configurable 
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 90. `EN` [LG ThinQ smart devices](data/articles/8fc048f268fbbd3e0d74cbff7009af79.html)
+### 91. `EN` [LG ThinQ smart devices](data/articles/8fc048f268fbbd3e0d74cbff7009af79.html)
 **Source:** Domoticz (Forum News)
 Hi,
 Has anyone managed to integrate LG ThinQ into Domoticz?
-Statistics: Posted by pfloryann — Wednesday 18 February 2026 17:23 — Replies 0 — Views 200
+Statistics: Posted by pfloryann — Wednesday 18 February 2026 17:23 — Replies 0 — Views 205
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 91. `EN` [problem using json in container](data/articles/e65e709056155a817f0b3b1c06ecfd77.html)
+### 92. `EN` [problem using json in container](data/articles/e65e709056155a817f0b3b1c06ecfd77.html)
 **Source:** Domoticz (Forum News)
 Hi! I am facing problems when I try to use json Domoticz in docker.
 Code: services: domoticz: image: domoticz/domoticz:stable container_name: domoticz restart: unless-stopped # Pass devices to container devices: - "/dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1BFAMG-if00-port0:/dev/ttyUSB0" ports: - "8080:8080" volumes: - ./config:/opt/domoticz/userdata/ # regel toegevoegd om extra schermen (custom) te bereiken - ./custom:/opt/domoticz/www/custom environment: - TZ=Europe/Amsterdam #- LOG_PATH=/opt/domoticz/userdata/domoticz.log
@@ -3507,22 +3894,22 @@ Chatgpt says
 Code: Important PointIn the Domoticz Docker image domoticz/domoticz:stable from version 2025.2:The old /json.htm API is not available in this container build.This image is mainly intended for GUI + plugins.Any scripts that try to fetch data via /json.htm will always return 404.So, regardless of roomplan or idx, you cannot use this API.
 any idea? chatgpt propose to downgrade to older container which I don't think being a real solution
 any suggestions?
-Statistics: Posted by BartSr — Wednesday 18 February 2026 12:10 — Replies 6 — Views 366
+Statistics: Posted by BartSr — Wednesday 18 February 2026 12:10 — Replies 6 — Views 372
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 92. `EN` [Notifications, source?](data/articles/7ffba1c6d6c4aff4694494340a2f1d80.html)
+### 93. `EN` [Notifications, source?](data/articles/7ffba1c6d6c4aff4694494340a2f1d80.html)
 **Source:** Domoticz (Forum News)
 Hello, i'm receiving notifications through Telegram but i'm unable to find where they are coming from. The history: I do have trvs that were "eating" batteries. I then decided to send a notification with a specific message as soon as the temperature was not reported after a certain time. I fixed the issue for the trvs, removed the notification but i'm still receiving it. Any clue? Thanks
-Statistics: Posted by Patricen — Tuesday 17 February 2026 19:41 — Replies 4 — Views 290
+Statistics: Posted by Patricen — Tuesday 17 February 2026 19:41 — Replies 4 — Views 298
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="IoT Business News">
 
-### 93. `EN` [Telit Cinterion Showcases CMB100 and eSIM at MWC 2026](data/articles/a715652e7335c5bb055974d910b9fdc6.html)
+### 94. `EN` [Telit Cinterion Showcases CMB100 and eSIM at MWC 2026](data/articles/a715652e7335c5bb055974d910b9fdc6.html)
 **Source:** IoT Business News
 At MWC Barcelona 2026, Telit Cinterion will demonstrate its CMB100 embedded modem and NExT eSIM technology, highlighting innovations in IoT connectivity, global deployments, and edge intelligence for mission-critical applications.
 
@@ -3530,30 +3917,30 @@ At MWC Barcelona 2026, Telit Cinterion will demonstrate its CMB100 embedded mode
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 94. `EN` [Database P1](data/articles/b11872e2bf0b85fe8f44ff7844248736.html)
+### 95. `EN` [Database P1](data/articles/b11872e2bf0b85fe8f44ff7844248736.html)
 **Source:** Domoticz (Forum News)
 Hello,
 I had problems with the USB P1 interface- CRC errors . I changed to a LAN interface. It now records data correctly.
 The annual consumption is shown correctly, but the comparison is incorrect. Since the CRC problems start with october 2025, I have incorrect comparisons of october and december. November is shown correctly. The same is for january 2026.
 How can i repair data for compared usage.
-The same is for Gas and Electricity. Statistics: Posted by nabru99 — Tuesday 17 February 2026 10:12 — Replies 0 — Views 240
+The same is for Gas and Electricity. Statistics: Posted by nabru99 — Tuesday 17 February 2026 10:12 — Replies 0 — Views 247
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 95. `EN` [Domoticz crash after database restore](data/articles/b2e2e29e285f61c30797afdc7a88a197.html)
+### 96. `EN` [Domoticz crash after database restore](data/articles/b2e2e29e285f61c30797afdc7a88a197.html)
 **Source:** Domoticz (Forum News)
 After a database restore Domoticz doesn't come online, no devices found or no communication...
 Did a service restart, after that domoticz was running normal. Tried this with a database backup and restore (no database changes) and after a powercycle of the Rpi3B+. Seen this also on earlier versions of the beta (2025.2 17057, 2025.2 17099 and 2502.2 17189).
 Attached is a crash log after a database restore. domoticz_crash.log
-Statistics: Posted by Rik60 — Monday 16 February 2026 10:11 — Replies 5 — Views 345
+Statistics: Posted by Rik60 — Monday 16 February 2026 10:11 — Replies 5 — Views 350
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 96. `EN` [Python debug](data/articles/0457787dfa1d75caf72300f8792d318a.html)
+### 97. `EN` [Python debug](data/articles/0457787dfa1d75caf72300f8792d318a.html)
 **Source:** Domoticz (Forum News)
 Hello ,
 I have many lines like that in my journald logs and wonder how to prevent that !
@@ -3569,13 +3956,13 @@ Feb 14 10:29:29 CasaiaProV4-test domoticz[10799]: Python: Changed: ID: 900 Name:
 Feb 14 10:29:30 CasaiaProV4-test domoticz[10799]: Python: Changed: ID: 769 Name: ECS - SHW Control, Type: 244, subType: 62, switchType: 18, s_value: 20, n_value: 1, n_value_string: Auto, last_update_string: 2026-02-14 10:29:28
 Feb 14 10:29:30 CasaiaProV4-test sudo[11131]: pam_unix(sudo:session): session closed for user root
 Feb 14 10:29:30 CasaiaProV4-test domoticz[10799]: Python: Changed: ID: 770 Name: ECS - SHW Setpoint, Type: 242, subType: 1, switchType: 0, s_value: 65, n_value: 1, n_value_string: 65, last_update_string: 2026-02-14 10:29:28[/quote]
-Statistics: Posted by pipiche — Saturday 14 February 2026 10:45 — Replies 0 — Views 177
+Statistics: Posted by pipiche — Saturday 14 February 2026 10:45 — Replies 0 — Views 186
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="HomeGenie (GitHub Releases)">
 
-### 97. `EN` [v2.0.6](data/articles/5347293f30fcddb4241882e4a2cf7f7e.html)
+### 98. `EN` [v2.0.6](data/articles/5347293f30fcddb4241882e4a2cf7f7e.html)
 **Source:** HomeGenie (GitHub Releases)
 HomeGenie v2.0.6: Dive Deeper into Your Movies!
 This update brings a significant enhancement to the HomeFlix widget, making your media experience even richer.
@@ -3589,18 +3976,18 @@ Full Changelog: v2.0.5...v2.0.6
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 98. `EN` [Correcting database month total value](data/articles/9c0a891c8a7d9482d54abd85ea98cceb.html)
+### 99. `EN` [Correcting database month total value](data/articles/9c0a891c8a7d9482d54abd85ea98cceb.html)
 **Source:** Domoticz (Forum News)
 Last year february 12 I moved house. Now these values are in the database causing a huge usage in feb 2025: Code: sqlite&gt; SELECT * FROM Meter_calendar WHERE DeviceRowID=8 AND Date&gt;='2025-01-28' AND Date&lt;'2025-03-08';DeviceRowID|Value|Counter|Date8|2534|3087874|2025-01-288|1387|3089261|2025-01-298|2728|3091989|2025-01-308|2265|3099687|2025-02-038|2912|3102599|2025-02-048|1616|3104215|2025-02-058|1983|3106198|2025-02-068|3332|3109530|2025-02-078|2014|3113587|2025-02-098|3627|3117214|2025-02-108|1126|3654334|2025-02-13 &lt;&lt;&lt;8|4587|3658921|2025-02-148|4498|3663419|2025-02-158|2373|3665792|2025-02-168|2933|3668725|2025-02-178|2762|3671487|2025-02-188|3337|3674824|2025-02-198|4906|3679730|2025-02-208|798|3680528|2025-02-218|2299|3682827|2025-02-228|363|3683190|2025-02-238|2116|3685306|2025-02-248|2492|3687798|2025-02-258|975|3688773|2025-02-268|1184|3689957|2025-02-278|879|3690836|2025-02-288|3994|3694830|2025-03-018|1689|3696519|2025-03-028|589|3697108|2025-03-03
 The actual usage is around 60 m3 and not 600 m3 that is in the graph. To get an idea how the month total is calculated I shift-clicked removed a few day -totals. That did not make a difference in the month total.
 My question is: Can the feb month value be corrected by changing Counter -numbers? Without touching the January and March month totals. Probably the '2025-02-03' ? Thanks.
-Statistics: Posted by hans1612 — Friday 13 February 2026 14:53 — Replies 3 — Views 192
+Statistics: Posted by hans1612 — Friday 13 February 2026 14:53 — Replies 3 — Views 197
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="IoT Business News">
 
-### 99. `EN` [Everyday Productivity Challenges in IoT Projects and How Teams Solve Them](data/articles/e375e65767dd3e22ef4a18bdc600ec45.html)
+### 100. `EN` [Everyday Productivity Challenges in IoT Projects and How Teams Solve Them](data/articles/e375e65767dd3e22ef4a18bdc600ec45.html)
 **Source:** IoT Business News
 IoT project teams face challenges like device integration delays, data inconsistencies, and security disruptions. Adopting standards, automation, and scalable practices improves productivity and project success.
 
@@ -3608,7 +3995,7 @@ IoT project teams face challenges like device integration delays, data inconsist
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 100. `EN` [Energy dashboard: Placement of custom widgets also to solar](data/articles/fbf0d71fdc0f2c9d32c032e93dc09411.html)
+### 101. `EN` [Energy dashboard: Placement of custom widgets also to solar](data/articles/fbf0d71fdc0f2c9d32c032e93dc09411.html)
 **Source:** Domoticz (Forum News)
 My "wishlist" for an update of the energy dashboard:
 1.
@@ -3616,24 +4003,24 @@ In the settings for the energy dashboard you can define up to three custom widge
 But for devices that are producing power it would be more logical to link them to the upper bubble with solar power. In my case, this is the sum of a small + big solar power plant.
 2.
 And it would be nice if the font size of the text device is bigger (in my case the weather description)
-Statistics: Posted by imautohuttraeger — Thursday 12 February 2026 9:25 — Replies 0 — Views 244
+Statistics: Posted by imautohuttraeger — Thursday 12 February 2026 9:25 — Replies 0 — Views 253
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 101. `EN` [No logging of variable updates](data/articles/006bd2af01c410045de6a1a55643b1bf.html)
+### 102. `EN` [No logging of variable updates](data/articles/006bd2af01c410045de6a1a55643b1bf.html)
 **Source:** Domoticz (Forum News)
 I have a Dzvents script that will update a user variable every minute and makes a note of the variable update in the log:
 2026-02-11 13:51:00.735 Status: Set UserVariable nomotionCounter = 380
 Is it possible not to update the log with (this) User variable updates? As this is information that I don't really need in the log.
-Statistics: Posted by jberinga — Wednesday 11 February 2026 14:42 — Replies 5 — Views 204
+Statistics: Posted by jberinga — Wednesday 11 February 2026 14:42 — Replies 5 — Views 206
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 102. `EN` [Tasmota device ("Hichi" infraread head) brings error](data/articles/64ffa98d1af67ea0a27349b50d505bf7.html)
+### 103. `EN` [Tasmota device ("Hichi" infraread head) brings error](data/articles/64ffa98d1af67ea0a27349b50d505bf7.html)
 **Source:** Domoticz (Forum News)
 I have an infraread reading head on my electric meter ("Hichi" with Tasmota). Transfering the data via MQTT to Domotics works, but for at least one of the figures I get this error:
 Error: Invalid Number sValue: '%' for device idx: '%'
@@ -3656,43 +4043,43 @@ For those of you who are savvy with Tasmota: This is the code of the customized 
 But even the non-customized Script from the Tasmota wiki shows the same error:
 https://tasmota.github.io/docs/Smart-Me ... d3-obissml
 Any hints are highly welcome
-Statistics: Posted by imautohuttraeger — Tuesday 10 February 2026 12:30 — Replies 10 — Views 300
+Statistics: Posted by imautohuttraeger — Tuesday 10 February 2026 12:30 — Replies 10 — Views 304
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 103. `EN` [Domoticz stops with error.](data/articles/ff71dd0e8841998c274f8f811612e249.html)
+### 104. `EN` [Domoticz stops with error.](data/articles/ff71dd0e8841998c274f8f811612e249.html)
 **Source:** Domoticz (Forum News)
 When I stop domoticz manually I get this error, anyone any idea how to solve this or what the cause is?
 Code: 2026-02-08 11:11:03.286 Error: Domoticz(pid:677, tid:677('domoticz')) received fatal signal 6 (Aborted)2026-02-08 11:11:03.286 Error: siginfo address=0x2a5, address=0x7f04e28c495c2026-02-08 11:11:03.295 Error: Failed to start gdb, will use backtrace() for printing stack frame2026-02-08 11:11:03.300 Error: #0 /home/eddy/domoticz/domoticz : + 0x454b23 [0x557cbca5cb23]2026-02-08 11:11:03.300 Error: #1 /home/eddy/domoticz/domoticz : signal_handler(int, siginfo_t*, void*) + 0x245 [0x557cbca5d5b5]2026-02-08 11:11:03.300 Error: #2 /lib/x86_64-linux-gnu/libc.so.6 : + 0x3fdf0 [0x7f04e286fdf0]2026-02-08 11:11:03.300 Error: #3 /lib/x86_64-linux-gnu/libc.so.6 : + 0x9495c [0x7f04e28c495c]2026-02-08 11:11:03.300 Error: #4 /lib/x86_64-linux-gnu/libc.so.6 : gsignal + 0x12 [0x7f04e286fcc2]2026-02-08 11:11:03.300 Error: #5 /lib/x86_64-linux-gnu/libc.so.6 : abort + 0x22 [0x7f04e28584ac]2026-02-08 11:11:03.300 Error: #6 /lib/x86_64-linux-gnu/libpython3.13.so : + 0x99fa3 [0x7f04e1499fa3]2026-02-08 11:11:03.300 Error: #7 /lib/x86_64-linux-gnu/libpython3.13.so : + 0x2b15f7 [0x7f04e16b15f7]2026-02-08 11:11:03.300 Error: #8 /lib/x86_64-linux-gnu/libpython3.13.so : PyEval_RestoreThread + 0xab [0x7f04e1684ecb]2026-02-08 11:11:03.300 Error: #9 /home/eddy/domoticz/domoticz : Plugins::CPluginSystem::StopPluginSystem() + 0xbb [0x557cbcf58d9b]2026-02-08 11:11:03.300 Error: #10 /home/eddy/domoticz/domoticz : MainWorker::Stop() + 0x15c [0x557cbca23a3c]2026-02-08 11:11:03.300 Error: #11 /home/eddy/domoticz/domoticz : main + 0x5c5 [0x557cbc922e75]2026-02-08 11:11:03.300 Error: #12 /lib/x86_64-linux-gnu/libc.so.6 : + 0x29ca8 [0x7f04e2859ca8]2026-02-08 11:11:03.300 Error: #13 /lib/x86_64-linux-gnu/libc.so.6 : __libc_start_main + 0x85 [0x7f04e2859d65]2026-02-08 11:11:03.300 Error: #14 /home/eddy/domoticz/domoticz : _start + 0x21 [0x557cbc949b41]
 My system is Dietpi running as VM under Proxmox with:
-Code: 2026-02-08 11:16:29.414 Status: Domoticz V2025.2 (build 17082) (c)2012-2026 GizMoCuz2026-02-08 11:16:29.414 Status: Build Hash: 0776fa964, Date: 2026-02-07 15:03:33 Code: PRETTY_NAME="Debian GNU/Linux 13 (trixie)"NAME="Debian GNU/Linux"VERSION_ID="13"VERSION="13 (trixie)"VERSION_CODENAME=trixieDEBIAN_VERSION_FULL=13.3ID=debianHOME_URL="https://www.debian.org/"SUPPORT_URL="https://www.debian.org/support"BUG_REPORT_URL="https://bugs.debian.org/" Code: Linux domoprox 6.12.63+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.63-1 (2025-12-30) x86_64 GNU/Linux Statistics: Posted by Kedi — Sunday 08 February 2026 11:20 — Replies 6 — Views 451
+Code: 2026-02-08 11:16:29.414 Status: Domoticz V2025.2 (build 17082) (c)2012-2026 GizMoCuz2026-02-08 11:16:29.414 Status: Build Hash: 0776fa964, Date: 2026-02-07 15:03:33 Code: PRETTY_NAME="Debian GNU/Linux 13 (trixie)"NAME="Debian GNU/Linux"VERSION_ID="13"VERSION="13 (trixie)"VERSION_CODENAME=trixieDEBIAN_VERSION_FULL=13.3ID=debianHOME_URL="https://www.debian.org/"SUPPORT_URL="https://www.debian.org/support"BUG_REPORT_URL="https://bugs.debian.org/" Code: Linux domoprox 6.12.63+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.63-1 (2025-12-30) x86_64 GNU/Linux Statistics: Posted by Kedi — Sunday 08 February 2026 11:20 — Replies 6 — Views 455
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 104. `EN` [Tuya TS0601_knob_dimmer_switch](data/articles/c0eb32f5b87c6b696031b312ab617d8b.html)
+### 105. `EN` [Tuya TS0601_knob_dimmer_switch](data/articles/c0eb32f5b87c6b696031b312ab617d8b.html)
 **Source:** Domoticz (Forum News)
 I have https://www.zigbee2mqtt.io/devices/TS06 ... witch.html. Zigbee2mqtt supports it and I can get intensity as well as color temperature data.{ "adjustment_mode": "brightness", "color_temp": 178, "group_id": null, "linkquality": 174, "mode": null, "power_on_behavior": null, "state": null, "state_l1": null, "state_l2": null, "switch_mode_l1": null, "switch_mode_l2": null, "brightness": 140
 }In Domoticz I can't get a CCT value. Am I doing something wrong? How can I get a CCT(color_temp) value in a Domoticz?
-Statistics: Posted by palnic — Friday 06 February 2026 17:09 — Replies 0 — Views 225
+Statistics: Posted by palnic — Friday 06 February 2026 17:09 — Replies 0 — Views 231
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 105. `EN` [Deleting values from power meter](data/articles/a48bb1ab091c9941acb4e99da0e2f297.html)
+### 106. `EN` [Deleting values from power meter](data/articles/a48bb1ab091c9941acb4e99da0e2f297.html)
 **Source:** Domoticz (Forum News)
 Hey,
-I have a power meter where I sometimes see weird values, this is caused by my input script, fixing that separately. But when I try to delete it from the graph, it doesn't work, only when deleting it using sqlite. See database value below. Can this be improved? It is the line dated 2026-02-06 05:40:00 that is wrong. Code: 499|30221370|0|2026-02-06 05:30:00|0.2515499|30221370|0|2026-02-06 05:35:00|0.2515499|22256300|0|2026-02-06 05:40:00|0.2515499|30221370|0|2026-02-06 05:45:00|0.2515499|30221370|0|2026-02-06 05:50:00|0.2515 Statistics: Posted by JanJaap — Friday 06 February 2026 14:57 — Replies 0 — Views 214
+I have a power meter where I sometimes see weird values, this is caused by my input script, fixing that separately. But when I try to delete it from the graph, it doesn't work, only when deleting it using sqlite. See database value below. Can this be improved? It is the line dated 2026-02-06 05:40:00 that is wrong. Code: 499|30221370|0|2026-02-06 05:30:00|0.2515499|30221370|0|2026-02-06 05:35:00|0.2515499|22256300|0|2026-02-06 05:40:00|0.2515499|30221370|0|2026-02-06 05:45:00|0.2515499|30221370|0|2026-02-06 05:50:00|0.2515 Statistics: Posted by JanJaap — Friday 06 February 2026 14:57 — Replies 0 — Views 223
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant (Blog officiel)">
 
-### 106. `EN` [2026.2: Home, sweet overview](data/articles/b1e5628d6a9d870d361057fc0cd5593d.html)
+### 107. `EN` [2026.2: Home, sweet overview](data/articles/b1e5628d6a9d870d361057fc0cd5593d.html)
 **Source:** Home Assistant (Blog officiel)
 Home Assistant 2026.2! February is the month of love, and this release is here to share it!
 The new Home Dashboard is now the official default for all new installations. If you’ve been using Home Assistant for a while and never customized your default view, you’ll get a suggestion to switch; give it a try!
@@ -3761,30 +4148,30 @@ Existing documentation, community posts, and tutorials will continue to referenc
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 107. `EN` [P1 troubles](data/articles/7fa5775115b39f649b35272b01ff696b.html)
+### 108. `EN` [P1 troubles](data/articles/7fa5775115b39f649b35272b01ff696b.html)
 **Source:** Domoticz (Forum News)
 For years domoticz is stable running.
 Recently two ratio solar chargers for EV's have been installed. Homewizzard P1 splitter (external supplied too) provides data for EV chargers and Domoticz. P1 now fails
 Both for domoticz and EV's.
 Chatgpt says this is because of how domoticz uses P1.
 Any idea to solve this problem?
-Statistics: Posted by BartSr — Tuesday 03 February 2026 16:55 — Replies 19 — Views 569
+Statistics: Posted by BartSr — Tuesday 03 February 2026 16:55 — Replies 19 — Views 577
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 108. `EN` [Make offpeak hours available in Domoticz Settings](data/articles/461dba9af7595826a50f31b2b162c483.html)
+### 109. `EN` [Make offpeak hours available in Domoticz Settings](data/articles/461dba9af7595826a50f31b2b162c483.html)
 **Source:** Domoticz (Forum News)
 Please make off-peak hours available in Domoticz Settings so that plugins and scripts can use the values
 Some people may have up to 3 off-peak hours per day, in my country
-Statistics: Posted by lemassykoi — Tuesday 03 February 2026 0:28 — Replies 23 — Views 646
+Statistics: Posted by lemassykoi — Tuesday 03 February 2026 0:28 — Replies 23 — Views 662
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="HomeGenie (GitHub Releases)">
 
-### 109. `EN` [v2.0.5](data/articles/e03babe6378a44faa2a3f941dcf53cea.html)
+### 110. `EN` [v2.0.5](data/articles/e03babe6378a44faa2a3f941dcf53cea.html)
 **Source:** HomeGenie (GitHub Releases)
 HomeGenie v2.0.5: Essential Framework Upgrade and Performance Boost
 This release focuses on the critical upgrade to the .NET 10 framework, ensuring long-term stability and delivering significant performance improvements.
@@ -3794,26 +4181,26 @@ Full Changelog: v2.0.2...v2.0.5
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 110. `EN` [Enphase plugin stopt](data/articles/6b921c0c1e169f88840c0899be6310e2.html)
+### 111. `EN` [Enphase plugin stopt](data/articles/6b921c0c1e169f88840c0899be6310e2.html)
 **Source:** Domoticz (Forum News)
 Hello,
 Has anyone managed to get Enphase Envoy solar panels working in Domoticz 2025.2 with Trixie? It used to work with the Enphase native plugin, but it stopped working. The Enphase version is V8.
-Statistics: Posted by Fredom — Monday 02 February 2026 16:34 — Replies 2 — Views 206
+Statistics: Posted by Fredom — Monday 02 February 2026 16:34 — Replies 2 — Views 212
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 111. `EN` [Matter having it's own forum section?](data/articles/0103f3637cad5218dafa02052ec7cfcb.html)
+### 112. `EN` [Matter having it's own forum section?](data/articles/0103f3637cad5218dafa02052ec7cfcb.html)
 **Source:** Domoticz (Forum News)
 Now more and more manufactures going over to matter, should it have own section like zigbee and zwave ?
-Statistics: Posted by Varazir — Sunday 01 February 2026 20:54 — Replies 3 — Views 311
+Statistics: Posted by Varazir — Sunday 01 February 2026 20:54 — Replies 3 — Views 317
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (Forum News)">
 
-### 112. `EN` [Unable to update](data/articles/10d67b041bc20eeb147e7f8a5bf1c7eb.html)
+### 113. `EN` [Unable to update](data/articles/10d67b041bc20eeb147e7f8a5bf1c7eb.html)
 **Source:** Domoticz (Forum News)
 Hello everyone,
 I am unable to update Domoticz. When I try to do so via the web page, I get an error message and it corrupts Domoticz. When I try to do so via the SSH terminal, I get no error message, but Domoticz is also corrupted.
@@ -3825,13 +4212,13 @@ dzVents Version: 3.1.8
 Python Version: 3.9.2 (default, Mar 20 2025, 22:21:41) [GCC 10.2.1 20210110]
 Another issue is that I have to switch to “sudo su” to be able to extract the backup.
 Can you help me? Translated with DeepL.com (free version)
-Statistics: Posted by MicMac7351 — Saturday 31 January 2026 18:09 — Replies 1 — Views 181
+Statistics: Posted by MicMac7351 — Saturday 31 January 2026 18:09 — Replies 1 — Views 186
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="HomeGenie (GitHub Releases)">
 
-### 113. `EN` [v2.0.4](data/articles/45195e5a12fd903a33c4106f11011149.html)
+### 114. `EN` [v2.0.4](data/articles/45195e5a12fd903a33c4106f11011149.html)
 **Source:** HomeGenie (GitHub Releases)
 HomeGenie v2.0.4 - Visual Program Editor Fix
 This release addresses a bug in Visual Program Editor.
@@ -3841,7 +4228,7 @@ Changelog: Fixed: VPE parameter value code generation (by @genemars in https://g
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="HomeGenie (GitHub Releases)">
 
-### 114. `EN` [v2.0.3](data/articles/3c625e0eedf80e370ee6c405b3e71206.html)
+### 115. `EN` [v2.0.3](data/articles/3c625e0eedf80e370ee6c405b3e71206.html)
 **Source:** HomeGenie (GitHub Releases)
 HomeGenie v2.0.3 - Dashboard Fix
 This maintenance release addresses a UI issue introduced in v2.0.2.
@@ -3851,7 +4238,7 @@ Changelog: Fixed: Resolved an issue where the "Add Widget" button was unresponsi
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="HomeGenie (GitHub Releases)">
 
-### 115. `EN` [v2.0.0-rc.14](data/articles/369d51d72069093880bad9c6474ea7fd.html)
+### 116. `EN` [v2.0.0-rc.14](data/articles/369d51d72069093880bad9c6474ea7fd.html)
 **Source:** HomeGenie (GitHub Releases)
 HomeGenie Server v2.0.0-rc.14 - The "Agentic Automations" Update This release candidate bridges the gap between conversation and execution, bringing Agentic AI directly into the HomeGenie Scheduler. It enables the system to not only respond to your queries but to reason and act autonomously through recurring, natural language-driven tasks. Lailama: Enhanced Reasoning &amp; Memory Management
 The Lailama Local AI engine receives a major architectural update focused on long-term stability and granular control.
@@ -3874,7 +4261,7 @@ Building the future of local, private, and agentic automation. Enjoy HomeGenie 2
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant (Blog officiel)">
 
-### 116. `EN` [More devices, more choice: celebrating a massive year for certification](data/articles/8a8584e4bd4388a05d24d5c039c6989e.html)
+### 117. `EN` [More devices, more choice: celebrating a massive year for certification](data/articles/8a8584e4bd4388a05d24d5c039c6989e.html)
 **Source:** Home Assistant (Blog officiel)
 If you’re ever in need of a device that works great with Home Assistant, well, I have just the program for you. Works with Home Assistant is our certification program that ensures devices work seamlessly and locally, all with brands that back them up.
 Did you know that this year the Works with Home Assistant program has certified 12 partners across 12 months? That’s more than were certified in the two years since the program launched in 2022! The full list of devices is insanely long now (luckily, we made it searchable). To make all this happen over just one year, a lot of important things have been happening behind the scenes.
@@ -3913,7 +4300,62 @@ So that was 2025 in a (big) nutshell. As for 2026, we want to kick it off with s
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant (Blog officiel)">
 
-### 117. `EN` [The best gets better - Home Assistant Connect ZBT-2](data/articles/0f1c94c81faf5bb72c861a97534c8399.html)
+### 118. `EN` [2025.12: Triggering the holidays](data/articles/8c32d68012f7f93565c8650b173414e9.html)
+**Source:** Home Assistant (Blog officiel)
+Home Assistant 2025.12! As the year winds down and the holidays approach, we’re closing out 2025 with a release that’s all about giving you more control and a little bit of magic. This month, we’re unveiling Home Assistant Labs, a brand-new space where you can preview features before they go mainstream. And what better way to kick it off than with Winter mode? Enable it and watch snowflakes drift across your dashboard. It’s completely unnecessary, utterly delightful, and exactly the kind of thing we love to build. But that’s just the beginning. We’ve been working on making automationsAutomations in Home Assistant allow you to automatically respond to things that happen in and around your home. [Learn more] more intuitive over the past releases, and this release finally delivers purpose-specific triggers and conditions. Instead of thinking in (numeric) states, you can now simply say “When a light turns on” or “If the climate is heating”. It’s automation building the way our mind works, as it should be. Oh, and if you’re looking to level up your Zigbee or Thread network, check out the Home Assistant Connect ZBT-2 we released last month. It’s four times faster and has a gorgeous new antenna design that you’ll actually want to display on your desk. From all of us working on Home Assistant:
+Thank you for an amazing 2025! Happy holidays, and enjoy the release!
+../Frenck
+A little holiday cheer Jingle Labs by Frenck and Darren
+Dashing through the code,
+Chorus
+Jingle Labs, jingle Labs,
+Power graphs are live,
+Xbox got some love,
+Chorus
+Jingle Labs, jingle Labs,
+Home Assistant Labs Purpose-specific triggers and conditions
+More dashboard improvements! Set a system-wide default dashboard
+Reorder areas and floors
+Experimental dashboards have graduated
+Home dashboard improvements
+Undo and redo in the dashboard editor
+Power and water in the Energy dashboard Real-time power monitoring
+Downstream water meters
+New energy layout
+Integrations New integrations
+Noteworthy improvements to existing integrations
+Integration quality scale achievements
+Now available to set up from the UI
+Farewell to the following
+Other noteworthy changes Get insight into your AI conversations
+Add entities to Android widgets and favorites
+Patch releases 2025.12.1 - December 5
+2025.12.2 - December 8
+2025.12.3 - December 12
+2025.12.4 - December 19
+2025.12.5 - December 29
+Need help? Join the community
+Backward-incompatible changes
+All changes
+A huge thank you to all the contributors who made this release possible! And a special shout-out to @TimoPtr, @laupalombi, @jlpouffier, and @MindFreeze who helped write these release notes. Also, @edenhaus, @tr4nt0r, @jpbede, @RaHehl, @bieniu, @arturpragacz, and @piitaya for putting effort into tweaking its contents. Thanks to them, these release notes are in great shape. Home Assistant Labs When we develop new features for Home Assistant, we often find ourselves in a tricky spot. A feature might be fully built and tested, but we’re not entirely sure if it’s the right fit for everyone just yet. Maybe we want to gather some real-world feedback first, or perhaps we want to see how the community uses it before committing to keeping it around forever.
+That’s where Home Assistant Labs comes in! Labs is a brand-new place in Home Assistant that gives you a sneak peek at features we’re working on. These are not unfinished experiments or unstable beta features. They are fully functional and tested, but they might change or even disappear based on feedback. We are committed to building in the open, and we want to give more people the choice to hop into the lab with us. By joining us, your feedback will directly help refine these features for the entire community.
+The very first preview feature available in Labs is Winter mode , inspired by a community post on Reddit originally created by u/Possible-Week-5815. Enable it, and watch your Home Assistant interface transform into a winter wonderland with falling snow. A fun way to get into the holiday spirit!
+When you enable a preview feature, you can also choose to create a backup first, just to be safe. And if you change your mind? Simply disable it again. No restart required!
+Preview features are off by default, and enabling them won’t affect your existing setup. It’s completely optional, so if you prefer to stick with the battle-proven experience, that’s totally fine. But if you’re curious and want to explore what’s coming next, Labs is the place to be.
+But what was the first Labs preview feature we put in there? Well, it’s a big one… Purpose-specific triggers and conditions
+Almost two years ago, we released a new automationAutomations in Home Assistant allow you to automatically respond to things that happen in and around your home. [Learn more] editor that unwrapped all our actionsActions are used in several places in Home Assistant. As part of a script or automation, actions define what is going to happen once a trigger is activated. In scripts, an action is called sequence. [Learn more] and made them easier to understand. Instead of a single, obscure “Call service” action, you now see clear options like “Light: Turn on” or “Media Player: Set Volume”.
+Ever since, we’ve been wondering: could we do the same for triggersA trigger is a set of values or conditions of a platform that are defined to cause an automation to run. [Learn more] and conditionsConditions are an optional part of an automation that will prevent an action from firing if they are not met. [Learn more]? Instead of relying on technical, state-based options, what if we could offer intuitive alternatives that just make sense? Options like “When a light turns on” or “If a light is on”.
+That idea set a two-year plan in motion, and today it’s finally becoming a reality.
+Along the way, we discovered something interesting: many of you take a “target-first” approach when building automationsAutomations in Home Assistant allow you to automatically respond to things that happen in and around your home. [Learn more]. You think about what you want to automate (a deviceA device is a model representing a physical or logical unit that contains entities., an entityAn entity represents a sensor, actor, or function in Home Assistant. Entities are used to monitor physical properties or to control other entities. An entity is usually part of a device or a service. [Learn more], or an areaAn area in Home Assistant is a logical grouping of devices and entities that are meant to match areas (or rooms) in the physical world: your home. For example, the living room area groups devices and entities in your living room. [Learn more]) before thinking about how to automate it (which action to perform or which trigger to use). This release embraces that mindset with a completely new way to build automations.
+Purpose-specific triggers and conditions are now provided directly by domainsEach integration in Home Assistant has a unique identifier: The domain. It is often shown as the first part (before the dot) of entity IDs. like Light, Climate, Fan, and others, covering the most common automation use cases.
+These new triggers and conditions fully support targeting. This means you can trigger an automation when any light in your living room turns on, without having to list them one by one or create a group beforehand. Targeting an area keeps things simple: it’s always aligned with how your home is organized, and you don’t have to update anything when you add or remove devices.
+LabelsLabels in Home Assistant allow grouping elements irrespective of their physical location or type. Labels can be assigned to areas, devices, entities, automations, scenes, scripts, and helpers. Labels can be used in automations and scripts as a target for actions. Labels can also be used to filter data. [Learn more] are supported too! You can now check if any of your Christmas lights are on. Perfect timing for the holidays!
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant (Blog officiel)">
+
+### 119. `EN` [The best gets better - Home Assistant Connect ZBT-2](data/articles/0f1c94c81faf5bb72c861a97534c8399.html)
 **Source:** Home Assistant (Blog officiel)
 The easiest way to start with Zigbee or Thread just got even better, with Home Assistant Connect ZBT-2. This USB adapter plugs into your Home Assistant system and opens up a world of smart device options. Between its precisely tuned antenna and next-generation chip, it’s a big step up for anyone looking to connect Zigbee, Thread, or Matter devices directly to Home Assistant.
 For all our Zigbee fans, this might be the best upgrade you’ll make all year. We’ve squeezed every inch out of this technology, giving it the best range, speed, and stability possible. The same can be said for our Thread-heads out there (yeah, I just came up with that cool nickname ), making Matter or ESPHome Thread connections rock-solid. Pick whether to dedicate your Connect ZBT-2 to run a Zigbee or Thread network, and it’ll provide the best experience for that protocol (and if all these names just sound like new streaming services to you, check out our explainer below).
@@ -3949,7 +4391,7 @@ Our second-generation Connect line products are all about being open and perform
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Home Assistant (Blog officiel)">
 
-### 118. `EN` [Ending production of Home Assistant Yellow](data/articles/4e360ad6dcf7fcc700e3b9dd01d0cc5c.html)
+### 120. `EN` [Ending production of Home Assistant Yellow](data/articles/4e360ad6dcf7fcc700e3b9dd01d0cc5c.html)
 **Source:** Home Assistant (Blog officiel)
 Today, we’re announcing that we will no longer be producing Home Assistant Yellow. Rest assured, it will continue to receive software support far into the future.
 I’m Carl, Vice President of Commercial at Nabu Casa, the organization that builds and sells official hardware for the Open Home Foundation. I couldn’t be more proud of our hardware achievements over the past 12 months, including Voice Preview Edition and Connect ZWA-2 (including its cool new Wi-Fi and PoE experimental firmware).
@@ -3964,23 +4406,6 @@ Software support continues
 As long as it’s possible to run Home Assistant on Yellow, we will continue to provide builds. If you want living proof of this commitment, take our first hardware device: Home Assistant Blue. It ended production in 2022, but still receives new builds of Home Assistant, something that shows no signs of changing for a long time. We continue to streamline and make Home Assistant more efficient, as it’s our goal for you to run it on the hardware you have.
 Say ‘ellow to the future
 I’d just like to take a moment to thank everyone who bought a Home Assistant Yellow over the years, and for all the great feedback you shared with us. We’re sad to say goodbye to our trusty little expandable powerhouse, but it’s had a good run and we’re super proud of how far we’ve come. Also, we’ll soon be announcing the date of our next hardware product (not a computing device… but something very cool nonetheless), so stay tuned!
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="iot" data-source="Domoticz (GitHub Releases)">
-
-### 119. `EN` [Stable Release 2025.2](data/articles/69ccd7ae2e743bc927583348a3a014ff.html)
-**Source:** Domoticz (GitHub Releases)
-Merge pull request #6399 from domoticz/Stable-2025.2
-Stable 2025.2
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Gladys Assistant (Blog officiel)">
-
-### 120. `FR` [L'IA Proactive débarque dans Gladys Assistant !](data/articles/6ccd7944ca780ae706ac8dda88155821.html)
-**Source:** Gladys Assistant (Blog officiel)
-L’intelligence artificielle s’intègre encore plus profondément dans Gladys pour rendre votre maison encore plus intelligente et réactive.
 
 </div>
 
@@ -4104,9 +4529,17 @@ Microsoft is experimenting with a new Windows 11 taskbar setting that allows use
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
+
+### 15. `EN` [Microsoft: Copilot can now take care of meeting conflicts in Outlook](data/articles/bd6d31f3e89155ade000445e13f88f16.html)
+**Source:** Neowin
+Microsoft is launching an AI-driven Copilot feature for Outlook that automatically resolves calendar conflicts by rescheduling one-on-one meetings. ...
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 15. `EN` [APT37 hackers use new malware to breach air-gapped networks](data/articles/41eeba5035c59eb26f41e4eb50e43f7b.html)
+### 16. `EN` [APT37 hackers use new malware to breach air-gapped networks](data/articles/41eeba5035c59eb26f41e4eb50e43f7b.html)
 **Source:** BleepingComputer Windows
 North Korean hackers are deploying newly uncovered tools to move data between internet-connected and air-gapped systems, spread via removable drives, and conduct covert surveillance. [...]
 
@@ -4114,7 +4547,7 @@ North Korean hackers are deploying newly uncovered tools to move data between in
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 16. `FR` [Fini les clés perdues, votre smartphone va tout déverrouiller grâce à Aliro](data/articles/d10388dbadebedf6f4c44fb582c9b9d4.html)
+### 17. `FR` [Fini les clés perdues, votre smartphone va tout déverrouiller grâce à Aliro](data/articles/d10388dbadebedf6f4c44fb582c9b9d4.html)
 **Source:** GNT
 La Connectivity Standards Alliance lance Aliro 1.0, un protocole unifié pour les clés numériques. Soutenu par Apple, Google et Samsung, il vise à standardiser l'ouverture des serrures connectées via smartphone ou montre, en utilisant NFC, Bluetooth et UWB. L'objectif est de mettre fin à la fragmentation du marché et de simplifier l'accès aux domiciles, bureaux et hôtels.
 
@@ -4122,7 +4555,7 @@ La Connectivity Standards Alliance lance Aliro 1.0, un protocole unifié pour le
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 17. `EN` [Windows 11 gets built-in network speed, improved dark mode, and more in build 28020.1673](data/articles/cfc2525ee80a7e1ef418f2e29833fe93.html)
+### 18. `EN` [Windows 11 gets built-in network speed, improved dark mode, and more in build 28020.1673](data/articles/cfc2525ee80a7e1ef418f2e29833fe93.html)
 **Source:** Neowin
 Windows 11 build 28020.1673 is here for Canary users, offering them new emojis, a built-in network speed test (sort of), better dark mode, and more. ...
 
@@ -4130,7 +4563,7 @@ Windows 11 build 28020.1673 is here for Canary users, offering them new emojis, 
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 18. `EN` [Europol-led crackdown on The Com hackers leads to 30 arrests](data/articles/9b8ceb98f8b229f87807ad37cab6654c.html)
+### 19. `EN` [Europol-led crackdown on The Com hackers leads to 30 arrests](data/articles/9b8ceb98f8b229f87807ad37cab6654c.html)
 **Source:** BleepingComputer Windows
 A yearlong Europol-coordinated operation dubbed "Project Compass" has led to 30 arrests and 179 suspects being tied to "The Com," an online cybercrime collective that targets children and teenagers. [...]
 
@@ -4138,7 +4571,7 @@ A yearlong Europol-coordinated operation dubbed "Project Compass" has led to 30 
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 19. `FR` [Microsoft introduit Copilot Tasks pour agir à votre place](data/articles/cc21b09e857fab1f1e80a976109419f8.html)
+### 20. `FR` [Microsoft introduit Copilot Tasks pour agir à votre place](data/articles/cc21b09e857fab1f1e80a976109419f8.html)
 **Source:** GNT
 Impossible d'échapper à la mode de l'IA agentique. Microsoft ne fait pas exception en dévoilant Copilot Tasks pour l'évolution et la transformation de son assistant IA.
 
@@ -4146,7 +4579,7 @@ Impossible d'échapper à la mode de l'IA agentique. Microsoft ne fait pas excep
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 20. `EN` [OpenAI signs a $50 billion deal with Amazon, partnership with Microsoft remains unchanged](data/articles/dca085c45a3c5e3014a81b59cdacc0b2.html)
+### 21. `EN` [OpenAI signs a $50 billion deal with Amazon, partnership with Microsoft remains unchanged](data/articles/dca085c45a3c5e3014a81b59cdacc0b2.html)
 **Source:** Neowin
 As part of one of the largest private funding rounds in history, OpenAI secures a massive $50 billion infrastructure deal with Amazon, while maintaining its cooperation with Microsoft. ...
 
@@ -4154,7 +4587,7 @@ As part of one of the largest private funding rounds in history, OpenAI secures 
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 21. `EN` [Microsoft and OpenAI clarify partnership terms as Amazon joins the fold](data/articles/2d349f044d3c2cb485b0f0f00195fbac.html)
+### 22. `EN` [Microsoft and OpenAI clarify partnership terms as Amazon joins the fold](data/articles/2d349f044d3c2cb485b0f0f00195fbac.html)
 **Source:** Neowin
 The new AWS partnership signals a multi-cloud future for OpenAI, balancing its legacy ties with Microsoft including the revenue sharing agreement. ...
 
@@ -4162,7 +4595,7 @@ The new AWS partnership signals a multi-cloud future for OpenAI, balancing its l
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 22. `FR` [OpenAI lève 110 milliards de dollars auprès d’Amazon, Softbank et NVIDIA](data/articles/a9163327da80677049c3fb5bbda878f4.html)
+### 23. `FR` [OpenAI lève 110 milliards de dollars auprès d’Amazon, Softbank et NVIDIA](data/articles/a9163327da80677049c3fb5bbda878f4.html)
 **Source:** Next INpact
 La bourse attendra : OpenAI a dévoilé vendredi les modalités d’un nouveau tour de table record, avec 110 milliards de dollars réunis, sur la base d’une valorisation à 730 milliards de dollars. L’entreprise dirigée par Sam Altman en profite pour annoncer un partenariat renforcé avec Amazon, et assure que son accord avec Microsoft n’est pas […]
 
@@ -4170,7 +4603,7 @@ La bourse attendra : OpenAI a dévoilé vendredi les modalités d’un nouveau t
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 23. `EN` [Third-Party Patching and the Business Footprint We All Share](data/articles/8b9f836f77be7cef7976300bf346748a.html)
+### 24. `EN` [Third-Party Patching and the Business Footprint We All Share](data/articles/8b9f836f77be7cef7976300bf346748a.html)
 **Source:** BleepingComputer Windows
 Everyday tools like PDF readers, email clients, and archive utilities quietly define the real attack surface. Action1 explains how third-party software drift increases exploit risk and why consistent patching reduces exposure across endpoints. [...]
 
@@ -4178,7 +4611,7 @@ Everyday tools like PDF readers, email clients, and archive utilities quietly de
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 24. `EN` [Ukrainian man pleads guilty to running AI-powered fake ID site](data/articles/f4dc847e1136e6405bbcdede19524606.html)
+### 25. `EN` [Ukrainian man pleads guilty to running AI-powered fake ID site](data/articles/f4dc847e1136e6405bbcdede19524606.html)
 **Source:** BleepingComputer Windows
 A Ukrainian man has pleaded guilty to operating OnlyFake, an AI-powered website that generated and sold more than 10,000 photos of fake identification documents to customers worldwide. [...]
 
@@ -4186,7 +4619,7 @@ A Ukrainian man has pleaded guilty to operating OnlyFake, an AI-powered website 
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 25. `EN` [Android 17 Beta 2: New privacy controls and game performance tweaks](data/articles/1a064a284527bdc0382f7dd8ae589a5f.html)
+### 26. `EN` [Android 17 Beta 2: New privacy controls and game performance tweaks](data/articles/1a064a284527bdc0382f7dd8ae589a5f.html)
 **Source:** Neowin
 Android 17 Beta 2 adds EyeDropper APIs, a 3-hour OTP security delay, and system-wide chat bubbles. Test SDK 37 before the June 2026 stable release. ...
 
@@ -4194,7 +4627,7 @@ Android 17 Beta 2 adds EyeDropper APIs, a 3-hour OTP security delay, and system-
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 26. `FR` [Face aux projets de centres de données, des résistances s’organisent](data/articles/d09c9f3c48f13442ac841cadbeff59c8.html)
+### 27. `FR` [Face aux projets de centres de données, des résistances s’organisent](data/articles/d09c9f3c48f13442ac841cadbeff59c8.html)
 **Source:** Next INpact
 Alors que des contestations émergent autour de plusieurs projets de centres de données en France et ailleurs, des associations tentent de se saisir de ces occasions de visibilisation de l’infrastructure numérique pour ouvrir un débat sur la trajectoire technologique. « Méga datacenter, incinérateur, c’est non ! » À Vitry-sur-Seine, dans le Val-de-Marne, le remplacement d’un dépôt pétrolier […]
 
@@ -4202,7 +4635,7 @@ Alors que des contestations émergent autour de plusieurs projets de centres de 
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 27. `FR` [Une fuite chez un éditeur de logiciels médicaux expose 11 à 15 millions de Français](data/articles/d8c3f0f914e70e1ca8f0feacfa76539c.html)
+### 28. `FR` [Une fuite chez un éditeur de logiciels médicaux expose 11 à 15 millions de Français](data/articles/d8c3f0f914e70e1ca8f0feacfa76539c.html)
 **Source:** Next INpact
 Cegedim Santé a admis jeudi soir avoir été victime d’une intrusion réalisée au travers de son logiciel de santé MonLogicielMedical.com. Révélée par le 20 heures de France 2, la fuite de données pourrait toucher entre 11 et 15 millions de Français. Elle ne concernerait cependant que le dossier administratif des patients, et non leurs dossiers […]
 
@@ -4210,7 +4643,7 @@ Cegedim Santé a admis jeudi soir avoir été victime d’une intrusion réalis�
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 28. `EN` [Microsoft introduces Copilot Tasks, a new way to get things done using AI](data/articles/d3da8e910a89897bd9c60566dee23b97.html)
+### 29. `EN` [Microsoft introduces Copilot Tasks, a new way to get things done using AI](data/articles/d3da8e910a89897bd9c60566dee23b97.html)
 **Source:** Neowin
 Microsoft is entering the AI agent space with Copilot Tasks, a tool designed to execute background actions like web browsing and app coordination to get things done. ...
 
@@ -4218,7 +4651,7 @@ Microsoft is entering the AI agent space with Copilot Tasks, a tool designed to 
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 29. `EN` [Previously harmless Google API keys now expose Gemini AI data](data/articles/e9655cf046b130dd6f98865a20772499.html)
+### 30. `EN` [Previously harmless Google API keys now expose Gemini AI data](data/articles/e9655cf046b130dd6f98865a20772499.html)
 **Source:** BleepingComputer Windows
 Google API keys for services like Maps embedded in accessible client-side code could be used to authenticate to the Gemini AI assistant and access private data. [...]
 
@@ -4226,7 +4659,7 @@ Google API keys for services like Maps embedded in accessible client-side code
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 30. `EN` [Here are all the new features Microsoft added to Teams in February 2026](data/articles/12267878b8ee266a2bcfb83f87655f9b.html)
+### 31. `EN` [Here are all the new features Microsoft added to Teams in February 2026](data/articles/12267878b8ee266a2bcfb83f87655f9b.html)
 **Source:** Neowin
 Teams keeps piling on the upgrades, and February 2026 brings a long list of new features across chat, meetings, and more. ...
 
@@ -4234,7 +4667,7 @@ Teams keeps piling on the upgrades, and February 2026 brings a long list of new 
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 31. `EN` [Beware: Windows PCs are being sold with misleading storage specs on Amazon](data/articles/b4b4b2fc5fdfa0c3adf4f3a619ec7717.html)
+### 32. `EN` [Beware: Windows PCs are being sold with misleading storage specs on Amazon](data/articles/b4b4b2fc5fdfa0c3adf4f3a619ec7717.html)
 **Source:** Neowin
 Amazon sellers are quietly inflating Windows laptop storage by bundling OneDrive, and many buyers are missing the fine print. ...
 
@@ -4242,7 +4675,7 @@ Amazon sellers are quietly inflating Windows laptop storage by bundling OneDrive
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 32. `EN` [Trend Micro warns of critical Apex One code execution flaws](data/articles/a1e6bb058188ffc4f47d0bc5b4d2e55d.html)
+### 33. `EN` [Trend Micro warns of critical Apex One code execution flaws](data/articles/a1e6bb058188ffc4f47d0bc5b4d2e55d.html)
 **Source:** BleepingComputer Windows
 Trend Micro has patched two critical Apex One vulnerabilities that allow attackers to gain remote code execution (RCE) on vulnerable Windows systems. [...]
 
@@ -4250,7 +4683,7 @@ Trend Micro has patched two critical Apex One vulnerabilities that allow attack
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 33. `EN` [European DYI chain ManoMano data breach impacts 38 million customers](data/articles/e35da055fe9a41b86edb5b2759b8e932.html)
+### 34. `EN` [European DYI chain ManoMano data breach impacts 38 million customers](data/articles/e35da055fe9a41b86edb5b2759b8e932.html)
 **Source:** BleepingComputer Windows
 DIY store chain ManoMano is notifying customers of a data breach personal data, which was caused by hackers compromising a third-party service provider. [...]
 
@@ -4258,7 +4691,7 @@ DIY store chain ManoMano is notifying customers of a data breach personal data, 
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 34. `EN` [Inside Cyber: How AI, 5G, IoT, and Quantum Computing Will Transform Privacy, Security](data/articles/c6018eb0c893d80a444e42d807b794d4.html)
+### 35. `EN` [Inside Cyber: How AI, 5G, IoT, and Quantum Computing Will Transform Privacy, Security](data/articles/c6018eb0c893d80a444e42d807b794d4.html)
 **Source:** Neowin
 Discover how to navigate the intersection of tech, cybersecurity, and commerce. ...
 
@@ -4266,7 +4699,7 @@ Discover how to navigate the intersection of tech, cybersecurity, and commerce. 
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 35. `EN` [Critical Juniper Networks PTX flaw allows full router takeover](data/articles/fdc3822d60a6a8c6ec3c33a4f8f71122.html)
+### 36. `EN` [Critical Juniper Networks PTX flaw allows full router takeover](data/articles/fdc3822d60a6a8c6ec3c33a4f8f71122.html)
 **Source:** BleepingComputer Windows
 A critical vulnerability in the Junos OS Evolved network operating system running on PTX Series routers from Juniper Networks could allow an unauthenticated attacker to execute code remotely with root privileges. [...]
 
@@ -4274,7 +4707,7 @@ A critical vulnerability in the Junos OS Evolved network operating system runnin
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 36. `EN` [Olympique Marseille confirms 'attempted' cyberattack after data leak](data/articles/57706e527f6de39e46b7c86b9e86acd4.html)
+### 37. `EN` [Olympique Marseille confirms 'attempted' cyberattack after data leak](data/articles/57706e527f6de39e46b7c86b9e86acd4.html)
 **Source:** BleepingComputer Windows
 French professional football club Olympique de Marseille has confirmed a cyberattack after a threat actor claimed on Monday that it breached the club's systems earlier this month. [...]
 
@@ -4282,7 +4715,7 @@ French professional football club Olympique de Marseille has confirmed a cyberat
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 37. `FR` [Arcom : nouvelle série de mesures de blocage de médias russes sous sanctions](data/articles/8433827df2ceb14102c2f7f0a961246b.html)
+### 38. `FR` [Arcom : nouvelle série de mesures de blocage de médias russes sous sanctions](data/articles/8433827df2ceb14102c2f7f0a961246b.html)
 **Source:** Next INpact
 L’Autorité de régulation de la communication audiovisuelle et numérique (Arcom) a annoncé jeudi avoir prononcé une nouvelle série de mesures de blocage et de déréférencement portant sur 35 sites de médias russes soumis à des sanctions européennes. Adressées aux fournisseurs d’accès à Internet, aux moteurs de recherche et aux fournisseurs de services DNS, ces mesures […]
 
@@ -4290,7 +4723,7 @@ L’Autorité de régulation de la communication audiovisuelle et numérique (Ar
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Windows Latest">
 
-### 38. `EN` [Exclusive: Lenovo Legion Go Fold is a handheld with foldable display, doubles as a PC](data/articles/c428b4522e2019982309678e50c41485.html)
+### 39. `EN` [Exclusive: Lenovo Legion Go Fold is a handheld with foldable display, doubles as a PC](data/articles/c428b4522e2019982309678e50c41485.html)
 **Source:** Windows Latest
 Exclusive: Lenovo Legion Go Fold is a handheld with foldable display, doubles as a PC
 
@@ -4298,7 +4731,7 @@ Exclusive: Lenovo Legion Go Fold is a handheld with foldable display, doubles as
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 39. `EN` [Ransomware payment rate drops to record low as attacks surge](data/articles/3fcf2da961e217bc3c3c5351bbd6850f.html)
+### 40. `EN` [Ransomware payment rate drops to record low as attacks surge](data/articles/3fcf2da961e217bc3c3c5351bbd6850f.html)
 **Source:** BleepingComputer Windows
 The number of ransomware victims paying threat actors has dropped to 28% last year, an all-time low, despite a significant increase in the number of claimed attacks. [...]
 
@@ -4306,7 +4739,7 @@ The number of ransomware victims paying threat actors has dropped to 28% last ye
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 40. `EN` [VMware finally fixes broken updates and other issues in the latest Workstation Pro release](data/articles/3ed411de53d9f82ef1601da9592623df.html)
+### 41. `EN` [VMware finally fixes broken updates and other issues in the latest Workstation Pro release](data/articles/3ed411de53d9f82ef1601da9592623df.html)
 **Source:** Neowin
 A new update for VMware Workstation is now available, fixing the long-standing bug with updates and plenty of other issues. ...
 
@@ -4314,7 +4747,7 @@ A new update for VMware Workstation is now available, fixing the long-standing b
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 41. `FR` [Les diplomates US sommés de lutter contre le RGPD et la souveraineté numérique](data/articles/0b1b05b91edb23103ef49bcee6e09ac3.html)
+### 42. `FR` [Les diplomates US sommés de lutter contre le RGPD et la souveraineté numérique](data/articles/0b1b05b91edb23103ef49bcee6e09ac3.html)
 **Source:** Next INpact
 Pour Marco Rubio, le RGPD impose « des restrictions inutiles et contraignantes en matière de traitement des données et des exigences en matière de flux transfrontaliers de données » qui pourraient nuire aux intérêts des entreprises technologiques états-uniennes. L’administration Trump vient d’ordonner aux diplomates états-uniens de faire pression contre les initiatives encourageant la souveraineté et […]
 
@@ -4322,7 +4755,7 @@ Pour Marco Rubio, le RGPD impose « des restrictions inutiles et contraignantes 
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 42. `EN` [New York sues Valve for promoting illegal gambling via game loot boxes](data/articles/eb5623a69f65578dee2c7fc5a44d7123.html)
+### 43. `EN` [New York sues Valve for promoting illegal gambling via game loot boxes](data/articles/eb5623a69f65578dee2c7fc5a44d7123.html)
 **Source:** BleepingComputer Windows
 New York Attorney General Letitia James sued video game developer and publisher Valve Corporation for using game loot boxes to facilitate illegal gambling activities among children and teenagers. [...]
 
@@ -4330,7 +4763,7 @@ New York Attorney General Letitia James sued video game developer and publisher 
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Windows Latest">
 
-### 43. `EN` [Windows 11 KB5077241 adds Internet speed test, direct download links for offline installers (.msu)](data/articles/cb76dd5ff690e064b6e70ecde0b6fe83.html)
+### 44. `EN` [Windows 11 KB5077241 adds Internet speed test, direct download links for offline installers (.msu)](data/articles/cb76dd5ff690e064b6e70ecde0b6fe83.html)
 **Source:** Windows Latest
 Windows 11 KB5077241 is now rolling out with new features, such as Emoji 16, which means you'll get a handful of new emojis.
 
@@ -4338,7 +4771,7 @@ Windows 11 KB5077241 is now rolling out with new features, such as Emoji 16, whi
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 44. `FR` [Après la cybersécurité, Claude Code fait trembler IBM en bourse en s’attaquant à Cobol](data/articles/9736746520d0f7e304385dfa84f94f7b.html)
+### 45. `FR` [Après la cybersécurité, Claude Code fait trembler IBM en bourse en s’attaquant à Cobol](data/articles/9736746520d0f7e304385dfa84f94f7b.html)
 **Source:** Next INpact
 Anthropic a coup sur coup procédé à deux annonces qui ont fait l’effet de petits séismes sur les marchés financiers. Plusieurs grands noms de la cybersécurité ont ainsi vu leur cours de bourse chamboulé suite à l’annonce, vendredi, de Claude Code Security. Lundi, c’est le géant IBM qui a connu la plus mauvaise journée boursière […]
 
@@ -4346,7 +4779,7 @@ Anthropic a coup sur coup procédé à deux annonces qui ont fait l’effet de p
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 45. `FR` [Microsoft annonce quelques nouvelles possibilités dans son cloud « souverain »](data/articles/fa6b9c53aee7e7541c805f4eac498448.html)
+### 46. `FR` [Microsoft annonce quelques nouvelles possibilités dans son cloud « souverain »](data/articles/fa6b9c53aee7e7541c805f4eac498448.html)
 **Source:** Next INpact
 En juin dernier, Microsoft annonçait la disponibilité en Europe d’un nouveau programme qui faisait la promesse de données restant au sein des frontières de l’Union et donnait des assurances quant au contrôle assuré par un personnel européen. Huit mois plus tard, l’éditeur étatsunien ajoute quelques nouveautés à son offre. Ainsi, Microsoft met en avant la […]
 
@@ -4354,7 +4787,7 @@ En juin dernier, Microsoft annonçait la disponibilité en Europe d’un nouveau
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 46. `FR` [Mineurs sur Internet : « Réglementez les plateformes, pas les enfants »](data/articles/22f6149b0d2b49964d3a298907a0a29f.html)
+### 47. `FR` [Mineurs sur Internet : « Réglementez les plateformes, pas les enfants »](data/articles/22f6149b0d2b49964d3a298907a0a29f.html)
 **Source:** Next INpact
 Réseaux sociaux, IA, jeux vidéo… alors que le gouvernement français s’affiche à la pointe de la régulation des usages du numérique par les enfants, le commissaire aux droits de l’homme du Conseil de l’Europe demande aux législateurs européens de diriger les réglementations sur les obligations des plateformes plutôt que sur les mineurs. « Alors que […]
 
@@ -4362,17 +4795,9 @@ Réseaux sociaux, IA, jeux vidéo… alors que le gouvernement français s’aff
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 47. `FR` [Pour Goldman Sachs, l’IA n’apporte pas grand-chose à l’économie des États-Unis](data/articles/a8590eadc43cc1a6db926d76dc7deb12.html)
+### 48. `FR` [Pour Goldman Sachs, l’IA n’apporte pas grand-chose à l’économie des États-Unis](data/articles/a8590eadc43cc1a6db926d76dc7deb12.html)
 **Source:** Next INpact
 Plusieurs analystes financiers, dont ceux issus de Goldman Sachs, Morgan Stanley ou JP Morgan Chase remettent en cause la croissance que l’industrie de l’intelligence artificielle apporterait à l’économie américaine. En parallèle, les alertes sur la manière de comptabiliser le poids des infrastructures dans les investissements des géants numériques se multiplient, y compris de la part […]
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
-
-### 48. `FR` [[Tuto] Comment limiter son temps d’utilisation des réseaux sociaux ?](data/articles/abf88670901cedc31b6143903af64aa2.html)
-**Source:** Next INpact
-De la limitation dans les applications elles-mêmes aux solutions physiques de blocage des réseaux sociaux, Next vous propose un tour d’horizon de différents outils destinés à faciliter la maîtrise de son temps d’usage des réseaux sociaux… et d’autres usages numériques. reprendre la main sur ses réseaux sociaux ? lutter contre la tentation du […]
 
 </div>
 
@@ -4389,14 +4814,6 @@ WhatsApp may soon let you continue Android conversations (and possibly calls) on
 ### 50. `EN` [Opinion: Windows 11 isn’t the disaster some claim – and it’s time to say so](data/articles/be6d363c475bc10697850e0b2f6d3230.html)
 **Source:** Windows Latest
 Windows 11 has faced loud criticism, especially after a turbulent 2025, but the narrative ignores historical context. Every Windows version has gone through similar update cycles, bug waves, and trust rebuilds. We examine how scale, visibility, and rapid servicing shape perception and why most systems continue running without major issues.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="windows" data-source="Windows Latest">
-
-### 51. `EN` [Windows 11’s Drag Tray keeps popping up during drag-and-drop, frustrating desktop users](data/articles/b898d960dd2d2ced8e9c32aecd818a50.html)
-**Source:** Windows Latest
-Windows 11’s Drag Tray automatically appears when dragging files, frustrating users who organize desktops the traditional way. Here’s why the feature exists, who it’s for, and how to disable or use Drag Tray without disrupting your workflow.
 
 </div>
 
@@ -4499,9 +4916,17 @@ A notice on the European Commission website, spotted by MacRumors, says that the
 
 </div>
 
+<div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
+
+### 9. `FR` [Studio Display 2 : on sait enfin ce qui différencie les deux modèles qu’Apple prépare en secret](data/articles/37ebc9f88ea8983f6290387ca048ecf0.html)
+**Source:** iPhoneAddict
+L'un des deux écrans pourrait offrir un son digne du HomePod.
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 9. `EN` [Apple Music Coming to Chocolate Bars](data/articles/719ad0293374a8193fee7694b9bd230c.html)
+### 10. `EN` [Apple Music Coming to Chocolate Bars](data/articles/719ad0293374a8193fee7694b9bd230c.html)
 **Source:** MacRumors
 Apple is working with German confectionary brand Ritter Sport to offer a unique Apple Music promotion. The collaboration, branded as "Limited Edition Ritter Sport x ‌Apple Music‌," involves promoting iconic albums on Ritter Sport's iconic 100g square chocolate bars (via Macerkopf). There will be a QR code on the back of each bar that links directly to the album on ‌Apple Music‌ and provides a free trial subscription to the service. Ritter Sport and ‌Apple Music‌ have selected five albums that have shaped German music history across different genres, including Cro's "RAOP," Marteria's "Happy for the Future II," Scorpions' "Crazy World," Sarah Connor's "Mother Tongue," and Helene Fischer's "Farbenspiel," for the series. They are each available on ‌Apple Music‌ in Dolby Atmos. Tags: Apple Music, Germany, Macerkopf
 This article, "Apple Music Coming to Chocolate Bars" first appeared on MacRumors.com
@@ -4511,7 +4936,7 @@ Discuss this article in our forums
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 10. `EN` [Studio Display Pro rumors resurface after code references suggest a premium model](data/articles/42072b999d8189c419787558bdcf2876.html)
+### 11. `EN` [Studio Display Pro rumors resurface after code references suggest a premium model](data/articles/42072b999d8189c419787558bdcf2876.html)
 **Source:** AppleInsider
 Code fragments found in the latest iOS 24.6 beta are being taken by some to mean that there will soon be two new models of the Studio Display, with one adding more ports and better speakers. Apple's current Studio Display, which has not been updated since its launch in 2022
 Back in 2022 when the Apple Studio Display was first launched, it was seen as very good but very expensive. The monitor has not been updated since, but from practically the moment it was launched, there have been rumors of better versions to come.
@@ -4521,7 +4946,7 @@ Now according to Macworld, references in the code of the iOS 26 developer betas 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 11. `EN` [New Studio Display may have higher-end model with these upgrades, per leak](data/articles/6dbc613818af4817319975a4959d4519.html)
+### 12. `EN` [New Studio Display may have higher-end model with these upgrades, per leak](data/articles/6dbc613818af4817319975a4959d4519.html)
 **Source:** 9to5Mac
 Rumors indicate Apple has two new Studio Display models in the works, launching as soon as next week. Here’s what leaked Apple code says the higher-end model might include.
 more…
@@ -4530,7 +4955,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 12. `EN` [Two More Studio Display 2 Upgrades Leaked in New Report](data/articles/a25cb637ab2c8bb5b69b6a9f531247d0.html)
+### 13. `EN` [Two More Studio Display 2 Upgrades Leaked in New Report](data/articles/a25cb637ab2c8bb5b69b6a9f531247d0.html)
 **Source:** MacRumors
 Macworld's Filipe Espósito today again reported that Apple appears to be developing two new Studio Display models with different specs. Based on lines of code in "internal Apple files," which likely refers to a macOS Tahoe Kernel Debug Kit that leaked online last year, Espósito continues to believe that both of the new Studio Display models will feature ProMotion, enabling up to a 120Hz refresh rate, as well as HDR support for increased brightness and dynamic range. For the higher-end Studio Display, the report has revealed two more potential upgrades that had yet to be rumored until now, including superior speakers and more and/or higher-spec ports. Apple says the current Studio Display has a "high-fidelity six-speaker system" that supports Spatial Audio, and the monitor has one Thunderbolt 3 port that connects to and charges a Mac, and three USB-C ports for connecting accessories. will max out at 90Hz, so we will have to see which of these rumors is accurate. A boost to the current 60Hz refresh rate can make videos and scrolling look smoother to the eye. Espósito said that the higher-end Studio Display could have a 32-inch screen, whereas the lower-end model would likely stick with a 27-inch screen. However, this particular claim was merely speculation, rather than info from the internal Apple files. Keep in mind that with a 32-inch screen, 5K resolution would not be Retina quality, so the resolution would have to increase to 6K like on Apple's higher-end Pro Display XDR. would feature mini-LED backlighting. If so, perhaps Apple will opt to discontinue its Pro Display XDR with full-array LED backlighting and instead offer both lower-end and higher-end Studio Display configurations. But again, this is just speculation. an A19 or A19 Pro chip, up from the A13 Bionic chip in the current model. This would contribute to improved performance, camera enhancements, and more. Altogether, the full set of Studio Display upgrades could include a higher 120Hz refresh rate, HDR support for increased brightness and contrast ratio, improved speakers, Thunderbolt 5 support, mini-LED backlighting, a newer A19 or A19 Pro chip for performance and camera enhancements, and hopefully a larger 32-inch screen. No major design changes are expected. in the first half of 2026. The current Studio Display launched in March 2022, alongside the first Mac Studio, so there has been a long wait for a refresh. With a new Apple monitor surfacing in a regulatory database last month, a launch should finally be getting close.
 Related Roundups: Apple Pro Display XDR, Apple Studio Display
@@ -4543,7 +4968,7 @@ Discuss this article in our forums
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 13. `FR` [Ted Lasso : la date de sortie de la saison 4 révélée par l’une de ses stars](data/articles/3d271e9bf7bfa9a0b8edfc1cf7fadd8f.html)
+### 14. `FR` [Ted Lasso : la date de sortie de la saison 4 révélée par l’une de ses stars](data/articles/3d271e9bf7bfa9a0b8edfc1cf7fadd8f.html)
 **Source:** iPhoneAddict
 Rendez-vous cet été pour suivre les nouvelles aventures de l'entraîneur de foot préféré des abonnés Apple TV+.
 
@@ -4551,7 +4976,7 @@ Rendez-vous cet été pour suivre les nouvelles aventures de l'entraîneur de fo
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 14. `EN` [Blender iPad App Development Halted as Android Tablets Get Priority](data/articles/a990b9a9428d77641a04fb2a6157db91.html)
+### 15. `EN` [Blender iPad App Development Halted as Android Tablets Get Priority](data/articles/a990b9a9428d77641a04fb2a6157db91.html)
 **Source:** MacRumors
 Blender's work on a native iPad version of its open source 3D creation suite has been shelved, according to the development team. Back in July, Blender revealed that it was developing for iPad, with an iPad Pro version of its desktop software coming first, complete with a fully-featured multitouch interface and support for Apple Pencil Pro. No release date was announced at the time. Blender's GitHub page for iPad development saying that the project is on hold until further notice. YouTuber Brad Colbow, in a response to a offering help on the project, Blender developer Dalai Felinto said that the team was now focusing on Android tablets first instead. During the fall at SIGGRAPH in Vancouver, Blender showed a live tech demo of the software running on iPad, so there's still hope that the project isn't completely dead and will resume at some point. We'll update this story if we learn anything more about a development timeline. Blender website.
 Tag: Blender
@@ -4562,7 +4987,7 @@ Discuss this article in our forums
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 15. `FR` [L’iPhone et l’iPad obtiennent une validation historique de l’OTAN](data/articles/f0207f42135f376aedbb11af80ac43e3.html)
+### 16. `FR` [L’iPhone et l’iPad obtiennent une validation historique de l’OTAN](data/articles/f0207f42135f376aedbb11af80ac43e3.html)
 **Source:** iPhoneAddict
 Une reconnaissance pour les technologies de sécurité d'Apple.
 
@@ -4570,7 +4995,7 @@ Une reconnaissance pour les technologies de sécurité d'Apple.
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 16. `FR` [Tim Cook promet des annonces de folie : notez cette date tout de suite](data/articles/fd13220fcb95a884f7c85e7077bbe182.html)
+### 17. `FR` [Tim Cook promet des annonces de folie : notez cette date tout de suite](data/articles/fd13220fcb95a884f7c85e7077bbe182.html)
 **Source:** iPhoneAddict
 Le teaser publié par Apple donne déjà envie d'y être.
 
@@ -4578,7 +5003,7 @@ Le teaser publié par Apple donne déjà envie d'y être.
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 17. `FR` [Apple Pay s’apprête à conquérir son plus grand marché de toute son histoire](data/articles/9bee16d4ce14ddbdf148dafe1612c6b0.html)
+### 18. `FR` [Apple Pay s’apprête à conquérir son plus grand marché de toute son histoire](data/articles/9bee16d4ce14ddbdf148dafe1612c6b0.html)
 **Source:** iPhoneAddict
 Plus d'un milliard de clients potentiels.
 
@@ -4586,7 +5011,7 @@ Plus d'un milliard de clients potentiels.
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 18. `FR` [Ram iPhone : coup de poker d’Apple face à Samsung ?](data/articles/6f7167fa22c0ef37e951e3d778c51217.html)
+### 19. `FR` [Ram iPhone : coup de poker d’Apple face à Samsung ?](data/articles/6f7167fa22c0ef37e951e3d778c51217.html)
 **Source:** iPhoneAddict
 Le prix de la mémoire explose, Apple prend une décision radicale.
 
@@ -4594,7 +5019,7 @@ Le prix de la mémoire explose, Apple prend une décision radicale.
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 19. `EN` [iPhone could benefit from memory chip crisis in one key way: report](data/articles/acac9421ee1214136fe47b91a2dd17da.html)
+### 20. `EN` [iPhone could benefit from memory chip crisis in one key way: report](data/articles/acac9421ee1214136fe47b91a2dd17da.html)
 **Source:** 9to5Mac
 A new Bloomberg report covering IDC data offers a dire outlook for the smartphone market in 2026 due to the current memory chip crisis, but Apple and the iPhone could actually benefit in one key way.
 more…
@@ -4603,7 +5028,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 20. `EN` [Xcode with vibecoding AI agents to help build apps is now available](data/articles/ffc90197024e0461a0e012095b199261.html)
+### 21. `EN` [Xcode with vibecoding AI agents to help build apps is now available](data/articles/ffc90197024e0461a0e012095b199261.html)
 **Source:** AppleInsider
 Apple has released Xcode 26.3 with support for autonomous coding agents, that can directly analyze projects, modify files, and assist developers inside the official development environment. Xcode now runs with AI agents
 Xcode, Apple's central tool for building apps across various devices, is expanding its role with version 26.3. AI agents can actively participate in development, offering suggestions and documentation help.
@@ -4613,7 +5038,7 @@ The release includes Swift 6.2.3 and updated SDKs, but the defining change is ag
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 21. `EN` [A decade after US authorization, the iPhone is allowed to handle classified data for NATO](data/articles/4ae32b0d1867f841f456d6de2de27b0f.html)
+### 22. `EN` [A decade after US authorization, the iPhone is allowed to handle classified data for NATO](data/articles/4ae32b0d1867f841f456d6de2de27b0f.html)
 **Source:** AppleInsider
 In a press release largely devoid of details as you'd expect given the topic, Apple has announced that the iPhone and iPad are the only consumer-grade devices that comply with NATO classified data safeguard guidance. IPhone 17 Pro Max in Orange
 The certification doesn't allow the iPhone to either put in-motion or store at-rest any level of classified data. Specifically, the devices, properly managed, are allowed to handle classified information up to the NATO restricted level without requiring special software or settings.
@@ -4623,7 +5048,7 @@ Apple says that on the whole, no other consumer mobile device has met this stand
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 22. `EN` [iPhone and iPad approved to handle classified NATO information without any third-party add-on solutions](data/articles/ce804d5bf1d7bbfe2be67b7e8a1d077d.html)
+### 23. `EN` [iPhone and iPad approved to handle classified NATO information without any third-party add-on solutions](data/articles/ce804d5bf1d7bbfe2be67b7e8a1d077d.html)
 **Source:** 9to5Mac
 Today, Apple announced that the iPhone and iPad have become the first consumer devices approved for use on classified NATO networks. This means an off-the-shelf iPhone running iOS 26 can access restricted NATO data without requiring any specialized security software or custom hardware modifications.
 more…
@@ -4632,7 +5057,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 23. `EN` [Deals: 1TB iPhone 16 Pro Max $650 off orig. price, 16-inch MacBook Pro up to $440 off, iPad keyboard, Ocean Band, more](data/articles/82a3ac132def2893f04714dd179dc455.html)
+### 24. `EN` [Deals: 1TB iPhone 16 Pro Max $650 off orig. price, 16-inch MacBook Pro up to $440 off, iPad keyboard, Ocean Band, more](data/articles/82a3ac132def2893f04714dd179dc455.html)
 **Source:** 9to5Mac
 Today’s 9to5Toys Lunch Break is ready to roll starting with a chance to land an unlocked 1TB iPhone 16 Pro Max courtesy of Amazon at $650 off the price of the comparable iPhone 17 Pro Max (and $320 under Apple refurb store). We also have all AirPods Max (USB-C) colors at $100 off, a chance to score a 24GB M4 Pro MacBook Pro at $440 off the list price, a sizable 57% price drop on ZAGG’s Pro Keys 2 for M4/M5 iPad Pro at $65, the best price of the year on Apple’s Neon Ocean Band with Black Titanium finish, and much more below. more…
 
@@ -4640,7 +5065,7 @@ Today’s 9to5Toys Lunch Break is ready to roll starting with a chance to land a
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 24. `FR` [Bon plan Apple Watch Ultra : la montre haut de gamme tombe à un prix inédit de 364 €](data/articles/f9580d2d3b4d3c9fa9c123df5150bd04.html)
+### 25. `FR` [Bon plan Apple Watch Ultra : la montre haut de gamme tombe à un prix inédit de 364 €](data/articles/f9580d2d3b4d3c9fa9c123df5150bd04.html)
 **Source:** iPhoneAddict
 À ce prix-là, il n'y a pas une minute à perdre.
 
@@ -4648,7 +5073,7 @@ Today’s 9to5Toys Lunch Break is ready to roll starting with a chance to land a
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 25. `EN` [One more iPhone 17 model launches next week: Here’s every new feature](data/articles/dbc6c9e33ce3438b727f42aa1dd15cce.html)
+### 26. `EN` [One more iPhone 17 model launches next week: Here’s every new feature](data/articles/dbc6c9e33ce3438b727f42aa1dd15cce.html)
 **Source:** 9to5Mac
 Apple is launching new products next week, as confirmed this morning by CEO Tim Cook. iPhone 17e will be one of those launches, here are the new features to expect.
 more…
@@ -4657,7 +5082,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 26. `EN` [How to move and delete apps on Apple CarPlay](data/articles/9f3a278b63adbbb90cbec87e842acf45.html)
+### 27. `EN` [How to move and delete apps on Apple CarPlay](data/articles/9f3a278b63adbbb90cbec87e842acf45.html)
 **Source:** 9to5Mac
 Ever wish you could rearrange or delete apps from CarPlay? It turns out you can, although it works differently than rearranging your iPhone Home screen. The trick is in the Settings app on iPhone. Just don’t try to do this while driving. You don’t even need to be connected to CarPlay for it to work.
 more…
@@ -4666,7 +5091,7 @@ more…
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 27. `FR` [iOS 26.4 : votre iPhone peut connaître votre âge, et vous ne pourrez plus lui mentir](data/articles/723e964aa29033433ecf423fb560fd05.html)
+### 28. `FR` [iOS 26.4 : votre iPhone peut connaître votre âge, et vous ne pourrez plus lui mentir](data/articles/723e964aa29033433ecf423fb560fd05.html)
 **Source:** iPhoneAddict
 Pour protéger les mineurs des contenus inappropriés, Apple lance la vérification automatique de l'âge au Royaume-Uni.
 
@@ -4674,7 +5099,7 @@ Pour protéger les mineurs des contenus inappropriés, Apple lance la vérificat
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 28. `EN` [RAM supply is so tight, Samsung may be charging Apple double](data/articles/6b5710a4a7956fa5e32f513ee5172fd3.html)
+### 29. `EN` [RAM supply is so tight, Samsung may be charging Apple double](data/articles/6b5710a4a7956fa5e32f513ee5172fd3.html)
 **Source:** AppleInsider
 Apple has reportedly agreed to pay Samsung double what it used to for DRAM chips, the memory used in iPhones and Macs — even though it may not have needed to just yet. Examples of older DRAM modules — image credit: Samung
 Massive worldwide demand for AI servers has meant all manufacturers having a hard time securing what they need in memory, storage, and processors. It's also meant Apple losing its previous ability to negotiate low prices and long-term deals.
@@ -4684,7 +5109,7 @@ The latest example of the pressures Apple and others are under concerns buying D
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 29. `EN` [Backed by Apple, Aliro 1.0 aims to do for enterprise access control what Matter did for the smart home](data/articles/1941dcc66576801f1e4c124b92beede9.html)
+### 30. `EN` [Backed by Apple, Aliro 1.0 aims to do for enterprise access control what Matter did for the smart home](data/articles/1941dcc66576801f1e4c124b92beede9.html)
 **Source:** 9to5Mac
 Enterprise access control is what I would consider “legacy” technology. A lot of the systems are Windows-based and look like a fancy Access database. On top of that, you are still dealing with physical cards. It is a fragmented mess for users and an onboarding nightmare for IT departments as well. Today, the Connectivity Standards Alliance is stepping in to fix that with the official release of the Aliro 1.0 specification aiming to create a standard for how mobile devices unlock doors, badge in, etc.
 more…
@@ -4693,7 +5118,7 @@ more…
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 30. `FR` [MacBook pas cher : Apple a fait deux grosses concessions pour faire baisser le prix](data/articles/9f063c6edeb402fad8098253ee04086f.html)
+### 31. `FR` [MacBook pas cher : Apple a fait deux grosses concessions pour faire baisser le prix](data/articles/9f063c6edeb402fad8098253ee04086f.html)
 **Source:** iPhoneAddict
 Est-ce que le public va réussir à passer au-dessus celles-ci ?
 
@@ -4701,7 +5126,7 @@ Est-ce que le public va réussir à passer au-dessus celles-ci ?
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 31. `EN` [Apple Pay set for biggest ever expansion, likely to boost iPhone sales](data/articles/13df95ac705b0cb323346f662f53af62.html)
+### 32. `EN` [Apple Pay set for biggest ever expansion, likely to boost iPhone sales](data/articles/13df95ac705b0cb323346f662f53af62.html)
 **Source:** 9to5Mac
 Apple Pay has reportedly grown to become the second largest payment processing service in the world after Visa, handling 9.5 trillion transactions for more than 800 million customers. Those numbers now look set for a significant boost as Apple prepares for its biggest ever expansion of its mobile wallet service …
 more…
@@ -4710,17 +5135,9 @@ more…
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 32. `FR` [iPhone Fold : 3 nouvelles infos sur ce modèle inédit (écran, caméra et Face ID)](data/articles/23a81e6a49ba95b388980e260e2d0e4e.html)
+### 33. `FR` [iPhone Fold : 3 nouvelles infos sur ce modèle inédit (écran, caméra et Face ID)](data/articles/23a81e6a49ba95b388980e260e2d0e4e.html)
 **Source:** iPhoneAddict
 Apple prépare la sortie de son iPhone Fold, toujours prévue pour la rentrée prochaine.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
-
-### 33. `FR` [AirPods Pro 3 avec caméras : l’intelligence comme deuxième atout ?](data/articles/bbc0f8fc858716c9d013033e44a9f7b6.html)
-**Source:** iPhoneAddict
-Le support d'Apple Intelligence va-t-il en faire des indispensables ?
 
 </div>
 
@@ -4953,9 +5370,17 @@ During WWDC, Apple finally made a change to Messages, allowing users to select t
 
 </div>
 
+<div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
+
+### 58. `FR` [RAM : les iPhone n’ont jamais embarqué autant de mémoire vive, selon cette étude](data/articles/df9f7915876672101e80edd239ba2110.html)
+**Source:** iPhoneAddict
+Une étude révèle la quantité moyenne de RAM présente dans les iPhone, et le chiffre a de quoi surprendre.
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 58. `EN` [Apple Watch Ultra 4: Four rumored new features coming this fall](data/articles/1bce8c55aa82b373b1923fc8bd20dc0c.html)
+### 59. `EN` [Apple Watch Ultra 4: Four rumored new features coming this fall](data/articles/1bce8c55aa82b373b1923fc8bd20dc0c.html)
 **Source:** 9to5Mac
 Apple has new products launching next week, but no Apple Watch models will be among them. Later this year though, Apple Watch Ultra 4 is coming, with four rumored new features so far.
 more…
@@ -4964,7 +5389,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 59. `EN` [I’m most excited about Apple’s affordable MacBook, with one concern](data/articles/27c734ee512ca680d939c52b61ff8f57.html)
+### 60. `EN` [I’m most excited about Apple’s affordable MacBook, with one concern](data/articles/27c734ee512ca680d939c52b61ff8f57.html)
 **Source:** 9to5Mac
 Apple has confirmed that we’re in for a series of product launches starting Monday, and the rumored MacBook is easily what I’m most excited to see. Almost none of the rumored compromises to make it more affordable worry me (and some actually sound like features).
 more…
@@ -4973,7 +5398,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 60. `EN` [Apple says UK age verification message in iOS 26.4 beta 2 was a bug](data/articles/0ab30dc345239d6e95e82833b28d2903.html)
+### 61. `EN` [Apple says UK age verification message in iOS 26.4 beta 2 was a bug](data/articles/0ab30dc345239d6e95e82833b28d2903.html)
 **Source:** 9to5Mac
 Some users in the UK began seeing an age verification prompt after installing iOS 26.4 beta 2. Apple now says the message appeared in error. Here are the details.
 more…
@@ -4982,7 +5407,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 61. `EN` [Two affordable iPhone 17 Pro accessories worth trying](data/articles/979eb0cdddd8e0a96468d754bf9c4019.html)
+### 62. `EN` [Two affordable iPhone 17 Pro accessories worth trying](data/articles/979eb0cdddd8e0a96468d754bf9c4019.html)
 **Source:** 9to5Mac
 While my preferred way to use an iPhone is with no case or screen protector, I’m actually enjoying both on iPhone 17 Pro and can recommend them. They’re inexpensive enough to try without committing for a year or more.
 more…
@@ -4991,7 +5416,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 62. `EN` [HomeKit Weekly: This Matter smart bulb brings lighting control to Apple Home for under $10](data/articles/a1347030eaae4bbf75ef993edfb0c8c0.html)
+### 63. `EN` [HomeKit Weekly: This Matter smart bulb brings lighting control to Apple Home for under $10](data/articles/a1347030eaae4bbf75ef993edfb0c8c0.html)
 **Source:** 9to5Mac
 I have been a Philips Hue user for a number of years. They are rock solid, but they aren’t cheap. Recently, one of the bulbs in my hallway finally gave up the ghost. Instead of dropping $45 on a replacement, I decided to look at what the “Matter era” has brought to the table in terms of Wi-Fi only bulbs. I found a Matter-native option that costs less than $10 per bulb. It connects directly over Wi-Fi, requires no hub outside of a HomePod/Apple TV, and works with Apple Home right out of the box.
 more…
@@ -5000,7 +5425,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 63. `EN` [Apple Wallet adds time-saving iOS 26 credit card feature, here’s how to use it](data/articles/fa9d2a5592543a6f9d4d8001c3a76d23.html)
+### 64. `EN` [Apple Wallet adds time-saving iOS 26 credit card feature, here’s how to use it](data/articles/fa9d2a5592543a6f9d4d8001c3a76d23.html)
 **Source:** 9to5Mac
 Apple’s Wallet app received a variety of great features in iOS 26, but one of my favorites is a convenient new way to manage and access credit cards. Here’s how to use it.
 more…
@@ -5009,7 +5434,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 64. `EN` [The global RAM and SSD shortage crisis, explained](data/articles/6fc039a2d583de0b91e1cb89c2438d59.html)
+### 65. `EN` [The global RAM and SSD shortage crisis, explained](data/articles/6fc039a2d583de0b91e1cb89c2438d59.html)
 **Source:** AppleInsider
 A global shortage is responsible for every electronics and computer manufacturer in the world — including Apple — paying twice as much for RAM and flash storage as it did in 2025, and 10 times more than it paid in 2020. Here's why there is little hope of that improving anytime soon. Memory is in short supply globally — Image credit: SK Hynix
 Apple has historically been able to closely control the cost of its components. Buying in huge numbers, from multiple suppliers has historically given an economy of scale that made Apple a sought-after customer for everything from display makers to storage vendors.
@@ -5019,7 +5444,7 @@ But that dynamic has changed. A global shortage of key components like memory an
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 65. `EN` [iOS 26.4 gives Reminders’ best new feature the one thing it was missing](data/articles/da0931d450a5fa569b65374e7e612edb.html)
+### 66. `EN` [iOS 26.4 gives Reminders’ best new feature the one thing it was missing](data/articles/da0931d450a5fa569b65374e7e612edb.html)
 **Source:** 9to5Mac
 Apple’s Reminders app recently got my favorite new feature in a long time: ‘Urgent’ reminders. And in iOS 26.4, the feature’s getting upgraded with the one thing it was missing: a dedicated smart list.
 more…
@@ -5028,7 +5453,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 66. `EN` [Get Apple's 15-inch MacBook Air M4 for $1,049 with this weekend deal](data/articles/394a9a63a2a38dcbbf7372ba832ed404.html)
+### 67. `EN` [Get Apple's 15-inch MacBook Air M4 for $1,049 with this weekend deal](data/articles/394a9a63a2a38dcbbf7372ba832ed404.html)
 **Source:** AppleInsider
 Apple's current 15-inch MacBook Air equipped with the M4 chip has dropped to $1,049 as Amazon competes for your business this weekend. Grab weekend deals on Apple's M4 MacBook Air.
 The 15-inch M4 MacBook Air features a 10-core GPU, with the standard model also equipped with 16GB of unified memory and a 256GB SSD. Amazon is discounting the standard spec to $1,049, representing a 13% markdown off MSRP.
@@ -5038,7 +5463,7 @@ Buy 15" MacBook Air for $1,049 Continue Reading on AppleInsider | Discuss on our
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 67. `EN` [Deals: AirPods Pro 3 nearly $100 off (open-box, 1-yr. warranty), M3 iPad Air $250 off, M5 iPad Pro, more](data/articles/2a2a4bc7e730085b599cc580777d0280.html)
+### 68. `EN` [Deals: AirPods Pro 3 nearly $100 off (open-box, 1-yr. warranty), M3 iPad Air $250 off, M5 iPad Pro, more](data/articles/2a2a4bc7e730085b599cc580777d0280.html)
 **Source:** 9to5Mac
 It’s all about Pokémon Day 2026 over at 9to5Toys today, but our Lunch Break deals are still ready to go with some solid deals on Apple gear and accessories. Firstly, we spotted a notable chance to score AirPods Pro 3 at nearly $100 off today in “excellent” open-box condition (if you’re fast) alongside up to $200 off M5 iPad Pro configs and a chance to land a particularly deep $250 price drop on this 1TB M3 iPad Air model as stock begins to disappear at Amazon. All of that and more awaits below. more…
 
@@ -5046,7 +5471,7 @@ It’s all about Pokémon Day 2026 over at 9to5Toys today, but our Lunch Break d
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 68. `FR` [Tutoriel iPhone : comment changer le navigateur web par défaut ?](data/articles/35a7f98ff3da9da9fcd89330d30455ff.html)
+### 69. `FR` [Tutoriel iPhone : comment changer le navigateur web par défaut ?](data/articles/35a7f98ff3da9da9fcd89330d30455ff.html)
 **Source:** iPhoneAddict
 Pour changer d'air et voir l'internet autrement que via Safari sur iPhone et iPad.
 
@@ -5054,7 +5479,7 @@ Pour changer d'air et voir l'internet autrement que via Safari sur iPhone et iPa
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 69. `EN` [Apple’s slow drip of Vision Pro immersive videos continues with third-ever edition of travel series](data/articles/9966711fab02479dea7f296f474e7746.html)
+### 70. `EN` [Apple’s slow drip of Vision Pro immersive videos continues with third-ever edition of travel series](data/articles/9966711fab02479dea7f296f474e7746.html)
 **Source:** 9to5Mac
 Apple has released the third episode of Elevated, its original Immersive Video series for Apple Vision Pro that started in 2024. The latest entry offers viewers an otherwise impossible view of Switzerland from above.
 more…
@@ -5063,7 +5488,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 70. `EN` [visionOS 26 gets fix to keep F1 &amp; MLS streams looking crisp](data/articles/1aa8a4b7976bec9613420654c7fa4aeb.html)
+### 71. `EN` [visionOS 26 gets fix to keep F1 &amp; MLS streams looking crisp](data/articles/1aa8a4b7976bec9613420654c7fa4aeb.html)
 **Source:** AppleInsider
 Sports MultiView is one of those features that makes Apple Vision Pro a viable purchase, so of course Apple is willing to rush out the visionOS 26.3.1 update just to fix an issue with that feature. Sports MultiView is an excellent feature on Apple Vision Pro. Image source: Apple
 It's been two years since Apple Vision Pro arrived on the market, and there still isn't a "killer app." That said, the product has a lot of small features that make it worthwhile, and one of them is sports MultiView.
@@ -5073,7 +5498,7 @@ Apple released visionOS 26.3.1 on Thursday evening with a fix specifically for s
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 71. `EN` [An incredibly popular Mac app is putting its iPad port on hold to focus on Android](data/articles/4490e715d9b9668cff2a32c71c879cbe.html)
+### 72. `EN` [An incredibly popular Mac app is putting its iPad port on hold to focus on Android](data/articles/4490e715d9b9668cff2a32c71c879cbe.html)
 **Source:** 9to5Mac
 Blender has long been a powerhouse application on the Mac, especially as Apple Silicon has unlocked new levels of 3D rendering performance for creative pros. That’s why it was so exciting last summer when the team behind the open-source software confirmed iPad Pro support was planned. Seven months later, however, the project appears to be on hold as an Android tablet version takes priority.
 more…
@@ -5082,7 +5507,7 @@ more…
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 72. `FR` [Beats Studio Pro : le casque sans fil premium pour iPhone à 240 € au lieu de 400](data/articles/0b294eba5898a30c46b3ee557e7035fd.html)
+### 73. `FR` [Beats Studio Pro : le casque sans fil premium pour iPhone à 240 € au lieu de 400](data/articles/0b294eba5898a30c46b3ee557e7035fd.html)
 **Source:** iPhoneAddict
 Tous les coloris sont concernés. Ne manquez surtout pas cette belle offre !
 
@@ -5090,7 +5515,7 @@ Tous les coloris sont concernés. Ne manquez surtout pas cette belle offre !
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 73. `EN` [What Apple's launching in March, and more on the AppleInsider Podcast](data/articles/1e93a22dd9e46c6fc160b59f4f6ed966.html)
+### 74. `EN` [What Apple's launching in March, and more on the AppleInsider Podcast](data/articles/1e93a22dd9e46c6fc160b59f4f6ed966.html)
 **Source:** AppleInsider
 Tim Cook made us want to skip the weekend and get straight to the new launches Apple has for us starting on Monday. That might include a low-cost MacBook, but then further ahead there's a hint of a touch-screen MacBook Pro later this year, all on the AppleInsider Podcast. If a MacBook is announced in March, it won't be a MacBook Pro — but a touch-screen one is expected later in 2026
 What we actually know about next week is that there will be launches. Tim Cook doesn't hint if there's nothing much to say, but he also tagged his post #AppleLaunch.
@@ -5100,7 +5525,7 @@ So we know something is coming, and if you listen to the leaks, actually everyth
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 74. `EN` [AirPods Pro 3 vs Sony XM6 earbuds: Personal audio compared](data/articles/5a5c4b0d1f2a3e49c9fe898ef5618b3f.html)
+### 75. `EN` [AirPods Pro 3 vs Sony XM6 earbuds: Personal audio compared](data/articles/5a5c4b0d1f2a3e49c9fe898ef5618b3f.html)
 **Source:** AppleInsider
 Sony's latest audio release, the WF-1000XM6, are flagship earbuds with improved active noise cancellation. Here's how Sony's flagship personal audio accessories compare against the AirPods Pro 3. AirPods Pro 3 vs Sony XM6 earbuds
 February saw Sony bring out an update to its upper-tier earbuds. After a three-year wait, the WF-1000XM6 are the electronic company's new best option for in-ear audio.
@@ -5110,7 +5535,7 @@ The WF-1000XM6, not to be confused with the similarly-named WH-1000XM6 headphone
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 75. `FR` [Nouveaux jeux iPhone : voici cinq pépites à ne surtout pas manquer !](data/articles/f5d97ce35784e84bd73f39390b903b37.html)
+### 76. `FR` [Nouveaux jeux iPhone : voici cinq pépites à ne surtout pas manquer !](data/articles/f5d97ce35784e84bd73f39390b903b37.html)
 **Source:** iPhoneAddict
 On adore le premier, mais tous les 5 sont d'excellente qualité !
 
@@ -5118,7 +5543,7 @@ On adore le premier, mais tous les 5 sont d'excellente qualité !
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 76. `EN` [Would any of the reported MacBook compromises be a deal-breaker for you? [Poll]](data/articles/391d20637701b47f2fdc098731647061.html)
+### 77. `EN` [Would any of the reported MacBook compromises be a deal-breaker for you? [Poll]](data/articles/391d20637701b47f2fdc098731647061.html)
 **Source:** 9to5Mac
 Apple clearly needs some way of distinguishing the upcoming low-cost MacBook from the more expensive MacBook Air. We’d wondered whether color might be sufficient to limit cannibalization, but it’s been suggested that the new machine may have a number of compromises.
 9to5Mac readers aren’t really the target market for an entry-level machine, but some might consider it as a second Mac, while others might recommend it to family and friends. However, would any of the rumoured compromises be a deal-breaker … ? more…
@@ -5127,7 +5552,7 @@ Apple clearly needs some way of distinguishing the upcoming low-cost MacBook fro
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 77. `FR` [Garmin fēnix 8 : grosse chute de prix pour la montre haut de gamme dernière génération](data/articles/19cf92217e6216d71fbeb8223e54deb3.html)
+### 78. `FR` [Garmin fēnix 8 : grosse chute de prix pour la montre haut de gamme dernière génération](data/articles/19cf92217e6216d71fbeb8223e54deb3.html)
 **Source:** iPhoneAddict
 Si vous faites vite, vous pouvez économiser plus de 200 euros sur ce modèle premium.
 
@@ -5135,7 +5560,7 @@ Si vous faites vite, vous pouvez économiser plus de 200 euros sur ce modèle pr
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 78. `EN` [Apple at 50: Michael Scott, the company's first CEO, made bold and bad choices](data/articles/5dc713f7ca40b1783b882edeba5c87f9.html)
+### 79. `EN` [Apple at 50: Michael Scott, the company's first CEO, made bold and bad choices](data/articles/5dc713f7ca40b1783b882edeba5c87f9.html)
 **Source:** AppleInsider
 As Apple hits 50 years old, AppleInsider recounts the pivotal role of each of its CEOs, starting with the very first one, Michael Scott. He made bold choices, but he made them badly. Michael Scott, age unknown — image credit: Business Insider
 Steve Jobs was not Apple's first Chief Executive Officer. While he founded the company on April 1, 1976, with Steve Wozniak and Ronald Wayne, Jobs had no experience running what was aiming to become a large company.
@@ -5145,7 +5570,7 @@ So a CEO was needed, but actually Apple's first two chief executives are tightly
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 79. `EN` [Netflix Walks Away From Warner Bros Deal, Paramount Set to Take Over](data/articles/2ea28b55e863fae984be05f997010662.html)
+### 80. `EN` [Netflix Walks Away From Warner Bros Deal, Paramount Set to Take Over](data/articles/2ea28b55e863fae984be05f997010662.html)
 **Source:** MacRumors
 Netflix has dropped out of the takeover battle for Warner Bros. Discovery, putting Paramount Skydance on course to win the whole WBD business. The world's largest streaming service had been pegged to land a deal in which it would acquire Warner Bros., HBO, and HBO Max in a cash-and-stock deal valued at $72 billion in equity and $82.7 billion, including debt. But after Paramount submitted a final offer, valuing WBD at $111bn including debt, Netflix declined to match it. announcement on Thursday, Netflix co-CEOs Ted Sarandos and Greg Peters said: The transaction we negotiated would have created shareholder value with a clear path to regulatory approval. However, we've always been disciplined, and at the price required to match Paramount Skydance's latest offer, the deal is no longer financially attractive, so we are declining to match the Paramount Skydance bid. Netflix shares surged by 8.5% in after-hours trading, indicating relief among investors that the streaming company has not risked overpaying for Warner Bros. Warner's board said Thursday night that it still recommends Netflix's offer, but now views Paramount's bid as "superior" – its first sign of backing for the suitor that it labeled hostile when the takeover battle began in December. Warner Bros. CEO David Zaslav said that Paramount's offer "will create tremendous value," and that WBD was "excited about the potential of a combined Paramount Skydance and Warner Bros Discovery." Tags: HBO, Netflix, Warner Brothers
 This article, "Netflix Walks Away From Warner Bros Deal, Paramount Set to Take Over" first appeared on MacRumors.com
@@ -5155,7 +5580,7 @@ Discuss this article in our forums
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 80. `FR` [SFR : le prix de votre forfait en hausse après le rachat ? On a enfin la réponse](data/articles/4caaf0ec09bf4d39ba7abfb1b2e3b631.html)
+### 81. `FR` [SFR : le prix de votre forfait en hausse après le rachat ? On a enfin la réponse](data/articles/4caaf0ec09bf4d39ba7abfb1b2e3b631.html)
 **Source:** iPhoneAddict
 Le directeur général de Bouygues Telecom répond aux inquiétudes des clients.
 
@@ -5163,7 +5588,7 @@ Le directeur général de Bouygues Telecom répond aux inquiétudes des clients.
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 81. `FR` [Voici ce qu’iOS 26.3 fait à la batterie de votre iPhone (ça ne va pas vous plaire)](data/articles/5e1c5933d290545850da1b5b1ff88f4d.html)
+### 82. `FR` [Voici ce qu’iOS 26.3 fait à la batterie de votre iPhone (ça ne va pas vous plaire)](data/articles/5e1c5933d290545850da1b5b1ff88f4d.html)
 **Source:** iPhoneAddict
 Les doutes d'une partie de la communauté se confirment.
 
@@ -5171,7 +5596,7 @@ Les doutes d'une partie de la communauté se confirment.
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 82. `EN` [Monarch: Legacy of Monsters season 2 now available on Apple TV](data/articles/e9de855d8efaf6b54c72bb296a9c6e4d.html)
+### 83. `EN` [Monarch: Legacy of Monsters season 2 now available on Apple TV](data/articles/e9de855d8efaf6b54c72bb296a9c6e4d.html)
 **Source:** 9to5Mac
 More than two years after its first season wrapped, Apple TV has finally premiered the long-awaited return of Monarch: Legacy of Monsters. Here’s what to expect.
 more…
@@ -5180,7 +5605,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 83. `EN` [Plaintiffs took 'unsupported leap' in lawsuit Apple hopes to get dismissed](data/articles/087b89a2cd058153630808cb3eba15aa.html)
+### 84. `EN` [Plaintiffs took 'unsupported leap' in lawsuit Apple hopes to get dismissed](data/articles/087b89a2cd058153630808cb3eba15aa.html)
 **Source:** AppleInsider
 Apple has requested that the lawsuit against its AI delays and response to an Epic injunction be dismissed. It cites that both counts are unsubstantiated. Apple's AI delays are fodder for class action lawsuits
 There are multiple lawsuits around Apple's delay of a more personalized Siri. One class action suit is being led by South Korea's National Pension Service, and claims that Apple's recent actions have cost billions in stock market losses.
@@ -5190,7 +5615,7 @@ According to a report from Reuters, Apple is being targeted by two counts of def
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 84. `EN` [Netflix backs down, Paramount now likely to acquire Warner Bros.](data/articles/c6cfa8e0eb819ccc0ccd2e404bcc4173.html)
+### 85. `EN` [Netflix backs down, Paramount now likely to acquire Warner Bros.](data/articles/c6cfa8e0eb819ccc0ccd2e404bcc4173.html)
 **Source:** AppleInsider
 Paramount is now on track to acquire Warner Brothers Discovery, as Netflix has announced it will not provide a competing offer to purchase the studio. HBO Max could soon become property of Paramount.
 Warner Bros. Discovery has been working to find the right buyer for months now. In October 2025, it was even reported that Apple TV was among the companies in discussions with Warner Bros. executives regarding a potential purchase agreement.
@@ -5200,7 +5625,7 @@ Two months later, Netflix emerged as the top contender and potential new owner o
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 85. `EN` [Apple asks court to dismiss proposed class action over Siri AI fraud claims](data/articles/d9c05876840d511174475cb57bbb2832.html)
+### 86. `EN` [Apple asks court to dismiss proposed class action over Siri AI fraud claims](data/articles/d9c05876840d511174475cb57bbb2832.html)
 **Source:** 9to5Mac
 The lawsuit accuses Apple of having misled investors about the timeline and readiness of its Apple Intelligence and Siri features, as well as in relation to the Epic Games case. Here are the details.
 more…
@@ -5209,7 +5634,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 86. `EN` [Brazil is Apple TV's second largest market &amp; is growing fast, says Eddy Cue](data/articles/3727b54ddfdb06ee1d0b32934de5b609.html)
+### 87. `EN` [Brazil is Apple TV's second largest market &amp; is growing fast, says Eddy Cue](data/articles/3727b54ddfdb06ee1d0b32934de5b609.html)
 **Source:** AppleInsider
 Apple TV is doing great in Brazil, but services chief Eddy Cue says Apple doesn't have any plans for new content developed in the country. Apple's SVP of services, Eddy Cue, says Brazil is Apple TV's fastest-growing market.
 During a special press event on February 4, Apple previewed content coming to its streaming service in 2026, with several new films and series set to debut on Apple TV later in the year. However, we didn't hear much about Apple's international streaming-related endeavors — until now.
@@ -5219,7 +5644,7 @@ Apple's Senior Vice President of Services, Eddy Cue, revealed a few key details 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 87. `EN` [visionOS 26.3.1 now available with Apple TV app fix](data/articles/89022351af71873595a4acf5db902fe2.html)
+### 88. `EN` [visionOS 26.3.1 now available with Apple TV app fix](data/articles/89022351af71873595a4acf5db902fe2.html)
 **Source:** 9to5Mac
 Apple has released visionOS 26.3.1 for Apple Vision Pro users today. The update fixes a flickering problem in the Apple TV app, according to the release notes. more…
 
@@ -5227,7 +5652,7 @@ Apple has released visionOS 26.3.1 for Apple Vision Pro users today. The update 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 88. `EN` [9to5Rewards: Win a MacBook Pro and BenQ’s 27″ 4K Nano Gloss Monitor [Giveaway]](data/articles/831921a5b2b8a6d6bb2d1296bffcdfd5.html)
+### 89. `EN` [9to5Rewards: Win a MacBook Pro and BenQ’s 27″ 4K Nano Gloss Monitor [Giveaway]](data/articles/831921a5b2b8a6d6bb2d1296bffcdfd5.html)
 **Source:** 9to5Mac
 We’re giving away Apple’s latest MacBook Pro to one lucky reader this month courtesy of our friends at BenQ to celebrate the company’s MA series of monitors for Mac. The winner will also receive the new BenQ 27″ 4K Nano Gloss Monitor for MacBook! Head below to enter the giveaway and learn more about the new monitors.
 more…
@@ -5236,7 +5661,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 89. `EN` [New book explores Steve Jobs’ NeXT years and the road to his Apple comeback](data/articles/07c761e8c9228eef2610544e4767e7b2.html)
+### 90. `EN` [New book explores Steve Jobs’ NeXT years and the road to his Apple comeback](data/articles/07c761e8c9228eef2610544e4767e7b2.html)
 **Source:** 9to5Mac
 In the upcoming book “Steve Jobs in Exile,” author Geoffrey Cain will explore the lesser-told story of the years that preceded, and ultimately prepared, Steve Jobs for his historic return to Apple. Here are the details.
 more…
@@ -5245,7 +5670,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 90. `EN` [iOS 26’s Apple Maps feature can save you from traffic, here’s how to set it up](data/articles/07b0fc4a670fc9fa05a161541d683dd1.html)
+### 91. `EN` [iOS 26’s Apple Maps feature can save you from traffic, here’s how to set it up](data/articles/07b0fc4a670fc9fa05a161541d683dd1.html)
 **Source:** 9to5Mac
 iOS 26 brought several solid upgrades to Apple Maps, including a feature centered on your typical routes and patterns that might save you from unexpected traffic delays.
 more…
@@ -5254,7 +5679,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 91. `EN` [Blender shelves iPad app, says it's focusing on Android tablets first](data/articles/8e499d7c091489a599ce1f53650c9a28.html)
+### 92. `EN` [Blender shelves iPad app, says it's focusing on Android tablets first](data/articles/8e499d7c091489a599ce1f53650c9a28.html)
 **Source:** AppleInsider
 Blender's long-anticipated native iPad app has been placed on hold as developers shift tablet priorities elsewhere. A previous mockup of the potential Blender for iPad app
 In June 2025, Blender announced that it would be creating a native iPad version of its popular 3D creation software. According to the team, they would be releasing the app for the iPad Pro — though they provide a timeline for release.
@@ -5264,7 +5689,7 @@ Unfortunately, it doesn't seem like we'll be getting one anytime soon, either. C
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 92. `EN` [Nearly one in four smartwatches shipped in 2025 was an Apple Watch: report](data/articles/507588fa1494d589438efa797d8bbbff.html)
+### 93. `EN` [Nearly one in four smartwatches shipped in 2025 was an Apple Watch: report](data/articles/507588fa1494d589438efa797d8bbbff.html)
 **Source:** 9to5Mac
 For the first time since 2022, Apple posted year-over-year growth in Apple Watch shipments in 2025, according to new data from Counterpoint Research. Here are the details.
 more…
@@ -5273,7 +5698,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 93. `EN` [Two unique new MacBook Pros are launching this year, starting next week](data/articles/eedd2907e45576f650e3ec1483a012fd.html)
+### 94. `EN` [Two unique new MacBook Pros are launching this year, starting next week](data/articles/eedd2907e45576f650e3ec1483a012fd.html)
 **Source:** 9to5Mac
 Apple will launch its newest MacBook Pro next week with M5, and there’s another distinct model coming later this year with M6. Here’s what to expect from Apple’s two unique MacBook Pro launches this year.
 more…
@@ -5282,7 +5707,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 94. `EN` [These Apple ‘magic moments’ show how well macOS and iPadOS work together [Video]](data/articles/9b98a37e048f23283a761f7ce3bfa626.html)
+### 95. `EN` [These Apple ‘magic moments’ show how well macOS and iPadOS work together [Video]](data/articles/9b98a37e048f23283a761f7ce3bfa626.html)
 **Source:** 9to5Mac
 I have been a hardcore iPad user for almost a decade now. I have used it as my main computer and dealt with all the ups and downs. But one of the biggest misconceptions about the iPad is that it is trying to compete with the MacBook when, in reality, they were built to work in tandem. It is not until you have them side by side that you start to see the magic and power that is the Apple walled garden. Features like Universal Control, Sidecar, Handoff, and continuity tools create “aha” moments that genuinely change how you work. So I wanted to put a list together of some of those amazing magic ecosystem moments that iPadOS and MacOS give you together.
 more…
@@ -5291,7 +5716,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 95. `EN` [Apple releases Xcode 26.3 with support for agentic coding](data/articles/39a764841f4f394111a9d9737784a062.html)
+### 96. `EN` [Apple releases Xcode 26.3 with support for agentic coding](data/articles/39a764841f4f394111a9d9737784a062.html)
 **Source:** 9to5Mac
 Xcode 26.3 can now leverage tools such as Anthropic’s Claude Agent and OpenAI’s Codex to speed up all aspects of app development. Here are the details.
 more…
@@ -5300,7 +5725,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 96. `EN` [Apple Watch Series 11 drops to $299, plus grab deals on titanium styles](data/articles/3086d129cc5c6bd9f22d7d965b799339.html)
+### 97. `EN` [Apple Watch Series 11 drops to $299, plus grab deals on titanium styles](data/articles/3086d129cc5c6bd9f22d7d965b799339.html)
 **Source:** AppleInsider
 Amazon's popular $299 Apple Watch Series 11 deal has returned as February winds down, saving you $100 as shoppers embark on spring fitness journeys. Save up to $100 with month-end Apple Watch deals.
 Amazon's Apple Watch deals have ramped up as the month reaches an end, with the Apple Watch Series 11 returning to the best price on record at $299.
@@ -5310,7 +5735,7 @@ Buy Apple Watch S11 for $299 Continue Reading on AppleInsider | Discuss on our F
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 97. `EN` [Netflix's F1 'Drive to Survive' will stream on Apple TV in world-first deal](data/articles/d171dfefbdc8198c8c606c58b0e52c0c.html)
+### 98. `EN` [Netflix's F1 'Drive to Survive' will stream on Apple TV in world-first deal](data/articles/d171dfefbdc8198c8c606c58b0e52c0c.html)
 **Source:** AppleInsider
 The popular Netflix Foruma 1 docuseries "Drive to Survive" will be available to stream on Apple TV in the United States as part of a surprise content-sharing deal. Apple has big plans for its F1 streaming service. Image source: Apple
 Beginning with the season eight premiere on February 27, 2026, Apple TV subscribers will be able to watch "Drive to Survive" without a Netflix subscription. The move marks the first of its kind for Netflix, a company that normally offers its content exclusively on its own platform.
@@ -5320,7 +5745,7 @@ As part of the deal, The New York Times reports, Apple will allow one of its liv
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 98. `FR` [iPhone 15 Pro : moins de 560 € et un rapport qualité-prix inédit pour cet iPhone sans faille](data/articles/9c5ea56e797655c8c2bfb4618d3e93da.html)
+### 99. `FR` [iPhone 15 Pro : moins de 560 € et un rapport qualité-prix inédit pour cet iPhone sans faille](data/articles/9c5ea56e797655c8c2bfb4618d3e93da.html)
 **Source:** iPhoneAddict
 Un iPhone premium à seulement 559 euros ? C'est une offre qui ne se refuse pas.
 
@@ -5328,7 +5753,7 @@ Un iPhone premium à seulement 559 euros ? C'est une offre qui ne se refuse pas
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 99. `EN` ['Star City' brings Soviet perspective to 'For All Mankind' in May](data/articles/a288d473614a3cd599e36c83f7184d0f.html)
+### 100. `EN` ['Star City' brings Soviet perspective to 'For All Mankind' in May](data/articles/a288d473614a3cd599e36c83f7184d0f.html)
 **Source:** AppleInsider
 Apple is expanding its hit sci-fi drama "For All Mankind" into a full Apple TV franchise with "Star City," a Soviet-focused spinoff premiering in late May. "For All Mankind" on Apple TV
 The company is turning one of its most durable science fiction dramas into a broader franchise. For All Mankind followed NASA and American astronauts, but Star City shifts the focus to the Soviet Union and reveals the parallel effort behind the Iron Curtain.
@@ -5338,7 +5763,7 @@ The timing reflects a coordinated expansion. Season five of For All Mankind prem
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 100. `EN` [Apple TV reveals new space-race thriller series is coming soon](data/articles/472978b350721f9a9cb946c45b33e870.html)
+### 101. `EN` [Apple TV reveals new space-race thriller series is coming soon](data/articles/472978b350721f9a9cb946c45b33e870.html)
 **Source:** 9to5Mac
 Apple TV’s space drama For All Mankind returns next month, but the streamer just revealed that its spinoff—Star City—will premiere soon too. Here are the details.
 more…
@@ -5347,7 +5772,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 101. `EN` [App Store gaming revenue bulletproof, as mobile gaming slows overall](data/articles/696d02ced2ea19264df90cec88651c1d.html)
+### 102. `EN` [App Store gaming revenue bulletproof, as mobile gaming slows overall](data/articles/696d02ced2ea19264df90cec88651c1d.html)
 **Source:** AppleInsider
 Mobile gaming downloads are falling worldwide, but higher player spending is making the App Store more profitable anyway. Apple Arcade
 Mobile game downloads declined worldwide in 2025, but in-app spending remained strong. Rising player spending is reinforcing Apple's App Store revenue model.
@@ -5357,7 +5782,7 @@ Mobile games raked in $82 billion from in-app purchases in 2025, with an average
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 102. `EN` [Tim Cook takes to X to tease a big week of launches](data/articles/dac25e84af6d44eea94922c495ab13c8.html)
+### 103. `EN` [Tim Cook takes to X to tease a big week of launches](data/articles/dac25e84af6d44eea94922c495ab13c8.html)
 **Source:** AppleInsider
 Tim Cook has posted to X a tantalizingly brief message about the start of March, saying that at long last, there will be multiple products debuting. Tim Cook at Apple Park
 Ever since selected people were sent invitations to an "Apple Experience" taking place on March 4, 2026, it has been presumed that the company is about to make at least five announcements. Now Tim Cook appears to have confirmed this, with a post to X using the hashtag #AppleLaunch. A big week ahead. It all starts Monday morning! #AppleLaunch pic.twitter.com/PQ9gM2Gl2r
@@ -5367,7 +5792,7 @@ Ever since selected people were sent invitations to an "Apple Experience" taking
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 103. `EN` [New Apple product launch week starts Monday, Tim Cook confirms](data/articles/58a814b1e7df69407df88729a53be267.html)
+### 104. `EN` [New Apple product launch week starts Monday, Tim Cook confirms](data/articles/58a814b1e7df69407df88729a53be267.html)
 **Source:** 9to5Mac
 Apple CEO Tim Cook just confirmed that the company will announce new products starting “Monday morning.” This will be the start of a release cycle that includes a press “experience” on Wednesday. 9to5Mac’s Chance Miller will be in attendance in New York City.
 more…
@@ -5376,7 +5801,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 104. `EN` [Samsung’s equivalent of Apple Intelligence in the Galaxy S26 seems very underwhelming](data/articles/b2564e4f436b26128664959e612bc389.html)
+### 105. `EN` [Samsung’s equivalent of Apple Intelligence in the Galaxy S26 seems very underwhelming](data/articles/b2564e4f436b26128664959e612bc389.html)
 **Source:** 9to5Mac
 Samsung loves to launch new features before Apple, and it has partly done so with the new AI capabilities in the Galaxy S26. The latest version of Galaxy AI seeks to perform many of the same functions as Apple Intelligence.
 As our sister site 9to5Google notes, however, the experience seems set to prove very underwhelming …
@@ -5386,7 +5811,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 105. `EN` [Apple Home Key comes to everyone, everywhere with Aliro launch](data/articles/041c510e85d8a5c553b7b101a4e10ecc.html)
+### 106. `EN` [Apple Home Key comes to everyone, everywhere with Aliro launch](data/articles/041c510e85d8a5c553b7b101a4e10ecc.html)
 **Source:** AppleInsider
 After years in development, the Connectivity Standards Alliance has announced the release of the 1.0 version of Aliro, bringing an Apple Home Key-like experience to everyone. Aliro brings the Apple Home Key experience to other ecosystems with this new open standard
 The Connectivity Standards Alliance (CSA) is a member-driven organization that develops the Matter smart home standard. Matter was designed to enable smart home devices to work across different ecosystems, and Aliro is a new specification within that framework.
@@ -5396,7 +5821,7 @@ Not much has been shared about Aliro since the original announcement. Recently, 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 106. `EN` [Sketchy report claims Apple fell for Samsung negotiating ploy on memory](data/articles/fba90f1998e99545fd5cd87299951c1a.html)
+### 107. `EN` [Sketchy report claims Apple fell for Samsung negotiating ploy on memory](data/articles/fba90f1998e99545fd5cd87299951c1a.html)
 **Source:** 9to5Mac
 Apple almost always gets the better part of any negotiation with its suppliers, but a sketchy report claims that this wasn’t the case when it came to buying RAM from Samsung.
 The report says Samsung had asked for a 100% increase in price, expecting to negotiate down to 60%, but Apple’s desperation was such that it agreed to the first demand … more…
@@ -5405,7 +5830,7 @@ The report says Samsung had asked for a 100% increase in price, expecting to neg
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 107. `EN` [India may finally get Apple Pay by mid-2026](data/articles/d9d95570abe143a82dcdafac019499ad.html)
+### 108. `EN` [India may finally get Apple Pay by mid-2026](data/articles/d9d95570abe143a82dcdafac019499ad.html)
 **Source:** AppleInsider
 A new report backs up recent claims that India is shortly to get Apple Pay after years of complex negotiations. Apple Pay may finally come to India
 In January 2026, it was rumored that Apple was in talks to get Apple Pay in India. Now Bloomberg is reporting which banks Apple is in discussions with, and when it may launch.
@@ -5415,17 +5840,9 @@ Apple is said to be in talks with three of the largest banks operating in the co
 
 <div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
 
-### 108. `FR` [Overwatch Rush : ce drôle de jeu gratuit arrive sur iPhone](data/articles/900e52ea55e92499f99c1445bd7740a0.html)
+### 109. `FR` [Overwatch Rush : ce drôle de jeu gratuit arrive sur iPhone](data/articles/900e52ea55e92499f99c1445bd7740a0.html)
 **Source:** iPhoneAddict
 Blizzard est-il en train de se perdre avec sa licence ?
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="mac" data-source="iPhoneAddict">
-
-### 109. `FR` [SFR condamné à 10 millions d’euros d’amende pour avoir menti sur ses forfaits ?](data/articles/6b73b58958e99fb8375e34fccc23efbc.html)
-**Source:** iPhoneAddict
-L'opérateur français se retrouve face à la justice suite à l'initiative de l'UFC-Que Choisir.
 
 </div>
 
@@ -5694,9 +6111,17 @@ You're reading Ubuntu 24.04.4 LTS released with Linux 6.17 + Mesa 25.2, a blog p
 
 </div>
 
+<div class="article-item" data-lang="fr" data-category="linux" data-source="Journal du Hacker">
+
+### 15. `FR` [Début des test days de GLF OS Phoenix Pulsar](data/articles/97594c3fb510cb1124b78a38b61191cb.html)
+**Source:** Journal du Hacker
+Voici les dates durant lesquelles se dérouleront les test days pour la future version de GLF OS : Du 1er Mars au 10 Mars 2026 inclus Nouveautés dans Phoenix Pulsar En plus de l’outil graphique pour gérer le pare-feu « Nix Firewall Management » présenté précédemment, voici les autres nouveautés à découvrir et à valider durant ces journées de tests : Ajout des applications suivantes : Thunderbird, Shotwell/Digikam, Kcalc, Piper, Reaper + Calf (studio) Input Remapper qui permet de reconfigurer les touches de votre clavier, souris ou manette Faugus débarque ! Il vient remplacer Lutris (toujours disponible mais plus mis en avant par défaut) GOverlay fait son arrivée sur GLF OS pour configurer mangohud facilement en quelques clics ! Nix-Shared-Drive (développé par l’équipe GLF OS) permet de gérer vos disques samba avec une interface graphique dédiée. De nouvelles versions pour : Le kernel en 6.18 LTS optimise le gaming (latence, HDR, VRR), améliore la compatibilité matériel (AMD/Intel/Apple), et renforce la sécurité (chiffrement TCP, BPF signé), tout en offrant une base stable pour les années à venir — idéal pour GLF OS et ses utilisateurs exigeants. Les drivers NVIDIA en 590.48 pour Linux apportent des optimisations majeures pour les GPU RTX 50/40/30, avec un support amélioré pour le ray tracing, le DLSS 3.5, et une meilleure gestion de la latence
+
+</div>
+
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 15. `FR` [Podcast Projets Libres : présenter l'April épisode 3 : l'émission de radio Libre à vous ! et le site de transcriptions Libre à lire !](data/articles/5f0a66abf90b8c48c6e6ce6dbfab4c27.html)
+### 16. `FR` [Podcast Projets Libres : présenter l'April épisode 3 : l'émission de radio Libre à vous ! et le site de transcriptions Libre à lire !](data/articles/5f0a66abf90b8c48c6e6ce6dbfab4c27.html)
 **Source:** LinuxFr
 Troisième et dernier épisode de la série sur l'April, l'association de promotion du logiciel libre en France Après avoir parlé des missions actuelles de l'April, et de ses combats passés, Avec nos trois invitées Julie Chaumard, Isabella Vanni et Marie-Odile Morandi vous découvrirez se prépare et s'organise leur émission de radio hebdomadaire, mais aussi et pourquoi sont réalisées les transcriptions au sein du groupe de transcriptions de l'April.
 Bonne écoute ou lecture. lien nᵒ 1 : L'épisode du podcast
@@ -5710,7 +6135,7 @@ lien nᵒ 6 : Adhérer et soutenir l'April Télécharger ce contenu au format E
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 16. `EN` [Mesa Developers Trying To Reach A Consensus On AI Policy](data/articles/5146a955ad36abb7523de52265d411c2.html)
+### 17. `EN` [Mesa Developers Trying To Reach A Consensus On AI Policy](data/articles/5146a955ad36abb7523de52265d411c2.html)
 **Source:** Phoronix
 If all goes well, Mesa developers are hoping to reach a consensus or at least some common ground on an AI policy in March. Mesa is the latest open-source project making considerations around the growing activity around AI coding agents and the like and how to deal with them for this project that is crucial to the Linux desktop and open-source 3D graphics drivers at large...
 
@@ -5718,7 +6143,7 @@ If all goes well, Mesa developers are hoping to reach a consensus or at least so
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 17. `EN` [Frostrail gets a new trailer to showcase its freezing train-survival gameplay](data/articles/306c9f45b5a68daaea83739f0969566b.html)
+### 18. `EN` [Frostrail gets a new trailer to showcase its freezing train-survival gameplay](data/articles/306c9f45b5a68daaea83739f0969566b.html)
 **Source:** GamingOnLinux
 Frostrail is another exciting game to keep an eye on, an open-world survival game where you and friends travel through a frozen world on a train. Read the full article on GamingOnLinux.
 
@@ -5726,7 +6151,7 @@ Frostrail is another exciting game to keep an eye on, an open-world survival gam
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 18. `EN` [Ubuntu 26.04 Snapshot 4 is now available to download](data/articles/73dec34bf285bf23b898a4143b0d34ef.html)
+### 19. `EN` [Ubuntu 26.04 Snapshot 4 is now available to download](data/articles/73dec34bf285bf23b898a4143b0d34ef.html)
 **Source:** OMG! Ubuntu
 Canonical’s engineers have announced the fourth and final monthly snapshot of Ubuntu 26.04, ahead of next month’s all important beta release. Ubuntu 26.04 Snapshot 4, like all other monthly snapshots, not a blessed build intended for mainstream usage. It’s a “throwaway artifact” that enables the distro’s engineers to fine-tune and hone a new automated build system. Compared to the January release of snapshot 3, there’s more ‘of note’ packed inside of this one, like the Linux 6.19 kernel and more GNOME 50 beta components (Mutter, Files, Settings), though the new Showtime video player is not included – but is coming. […]
 You're reading Ubuntu 26.04 Snapshot 4 is now available to download, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -5735,7 +6160,7 @@ You're reading Ubuntu 26.04 Snapshot 4 is now available to download, a blog post
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 19. `EN` [Longterm supported Linux kernels get a longer life](data/articles/224c11e5e31c6122bc7ec00ec33fa18b.html)
+### 20. `EN` [Longterm supported Linux kernels get a longer life](data/articles/224c11e5e31c6122bc7ec00ec33fa18b.html)
 **Source:** GamingOnLinux
 Linux developer Greg Kroah-Hartman announced that the Longterm supported Linux kernels are going to be supported for longer than previously announced. Read the full article on GamingOnLinux.
 
@@ -5743,7 +6168,7 @@ Linux developer Greg Kroah-Hartman announced that the Longterm supported Linux k
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="Journal du Hacker">
 
-### 20. `FR` [NixOS, ou comment j'ai arrêté de bricoler mon Linux](data/articles/7708ca3b5c75064fbae373bf336e4776.html)
+### 21. `FR` [NixOS, ou comment j'ai arrêté de bricoler mon Linux](data/articles/7708ca3b5c75064fbae373bf336e4776.html)
 **Source:** Journal du Hacker
 Une belle histoireDebian, on connaît tous. Mère de nombreuses distributions modernes, je l’utilise depuis 13 ans. Rien qu’avec cette phrase, j’ai pris un coup de vieux.J’ai débuté avec Debian stable, en supprimant le dual boot pour me forcer à rester sous Linux. Après un passage sous Ubuntu, je suis revenu sur Debian testing, qui cochait toutes les cases : ça marche, les paquets sont récents, pas de question à se poser.Assez vite, j’ai voulu automatiser l’installation et la configuration de mes machines pour ne pas perdre une journée à chaque réinstallation et partager mes configurations entre ordinateurs. J’ai tout passé sous Ansible (j’en ai parlé ici). C’est un peu lourd, mais en 4 ans je n’ai eu aucun souci majeur.Le problèmeSi tout roulait au quotidien, un souci prenait de plus en plus de poids : la gestion de mes logiciels. Malgré le large catalogue Debian, je me retrouvais souvent à bricoler. Un wget par-ci, un binaire copié par-là, asdf, npm, la release GitHub de Neovim… Bref, plein de méthodes d’installation hétérogènes. Tout packager en .deb aurait été une solution, mais le packaging Debian est lourd à maintenir.Autre souci, plus rare mais frustrant : deux mises à jour ont cassé des choses (ma stack PGP, puis le Bluetooth). Rien de gravissime, mais le rollback sous Debian testing, c’est à chaque fois identifier manuellement quel paquet a tout cassé. Du temps perdu jus
 
@@ -5751,7 +6176,7 @@ Une belle histoireDebian, on connaît tous. Mère de nombreuses distributions mo
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 21. `EN` [Typhoon weather app clears up with Qt6 port](data/articles/6754dd631ce7ed4f8f6618ce08512627.html)
+### 22. `EN` [Typhoon weather app clears up with Qt6 port](data/articles/6754dd631ce7ed4f8f6618ce08512627.html)
 **Source:** OMG! Ubuntu
 The forecast is looking Qt for fans of open-source weather app Typhoon, the latest update to which swaps its creaking GTK3 backend for a lithe Qt 6 one. What’s interesting about this change in Typhoon 1.7.x is that it doesn’t impact the UI in any noticeable way. The app still uses a colourful, borderless window with optional transparency, and conveys weather forecast data via stark white text and glyphs. Archisman Panigrahi, Typhoon’s developer, says the Qt port was needed since GTK3 is being deprecated, but that rewriting the app in GTK4 was a non-starter given it ‘does not play well […]
 You're reading Typhoon weather app clears up with Qt6 port, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -5760,7 +6185,7 @@ You're reading Typhoon weather app clears up with Qt6 port, a blog post from OMG
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 22. `EN` [LLVM Clang 22 Compiler Performance Largely Unchanged Over Clang 21 On AMD Zen 5](data/articles/94a567704d223e92397ca8ce77a937d6.html)
+### 23. `EN` [LLVM Clang 22 Compiler Performance Largely Unchanged Over Clang 21 On AMD Zen 5](data/articles/94a567704d223e92397ca8ce77a937d6.html)
 **Source:** Phoronix
 With yesterday's stable release of the LLVM Clang 22 compiler it didn't take long for Phoronix readers to begin asking about the performance of this half-year feature update to this prominent open-source C/C++ compiler. What I am seeing so far are no big surprises with the performance largely being similar to Clang 21 across various open-source C/C++ workloads in the testing thus far. This initial round of reference benchmark results between LLVM Clang 22, Clang 21, and Clang 20 were done on an AMD EPYC Turin (Zen 5) Linux server.
 
@@ -5768,7 +6193,7 @@ With yesterday's stable release of the LLVM Clang 22 compiler it didn't take lon
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="LWN.net">
 
-### 23. `EN` [[$] No hardware memory isolation for BPF programs](data/articles/e304719b3a14ae8b2a1c43d88193594d.html)
+### 24. `EN` [[$] No hardware memory isolation for BPF programs](data/articles/e304719b3a14ae8b2a1c43d88193594d.html)
 **Source:** LWN.net
 On February 12, Yeoreum Yun posted a
 suggestion
@@ -5786,7 +6211,7 @@ past, sometimes after substantial discussion.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 24. `EN` [Systing 1.0 Released For Rust-Based eBPF-Based Tracing Tool Leveraging AI](data/articles/33ae67d38421651688b514576f353dac.html)
+### 25. `EN` [Systing 1.0 Released For Rust-Based eBPF-Based Tracing Tool Leveraging AI](data/articles/33ae67d38421651688b514576f353dac.html)
 **Source:** Phoronix
 Josef Bacik, of Btrfs notoriety before leaving Meta and stepping back from kernel development last year, announced the release of Systing 1.0. Systing is a newer eBPF-tracing tool for Linux complete with AI integration...
 
@@ -5794,7 +6219,7 @@ Josef Bacik, of Btrfs notoriety before leaving Meta and stepping back from kerne
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 25. `EN` [D7VK version 1.4 brings further enhancements for older Direct3D via Vulkan](data/articles/64206f7807ad3300f66156d2969e321d.html)
+### 26. `EN` [D7VK version 1.4 brings further enhancements for older Direct3D via Vulkan](data/articles/64206f7807ad3300f66156d2969e321d.html)
 **Source:** GamingOnLinux
 Even more improvements have arrived for D7VK that brings Direct3D 5, 6 and 7 via Vulkan for use with Wine / Proton in version 1.4. Read the full article on GamingOnLinux.
 
@@ -5802,7 +6227,7 @@ Even more improvements have arrived for D7VK that brings Direct3D 5, 6 and 7 via
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 26. `EN` [Get A Plague Tale: Innocence &amp; Requiem, Evil West and more in the Focus Entertainment Humble Bundle](data/articles/198e5ddd72b79a3dd48d8b6adacc09f3.html)
+### 27. `EN` [Get A Plague Tale: Innocence &amp; Requiem, Evil West and more in the Focus Entertainment Humble Bundle](data/articles/198e5ddd72b79a3dd48d8b6adacc09f3.html)
 **Source:** GamingOnLinux
 Get some quality games from Focus Entertainment in the new Humble Bundle, all of them should work well on Linux / SteamOS too thanks to Proton. Read the full article on GamingOnLinux.
 
@@ -5810,7 +6235,7 @@ Get some quality games from Focus Entertainment in the new Humble Bundle, all of
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 27. `FR` [Sortie de 0 A.D. 28 « Boiorix »](data/articles/576209f83303d915c5449696f357b1a4.html)
+### 28. `FR` [Sortie de 0 A.D. 28 « Boiorix »](data/articles/576209f83303d915c5449696f357b1a4.html)
 **Source:** LinuxFr
 Cela fait un petit moment qu'il n'y a pas eu d'actualités publiées concernant le jeu 0 A.D. : la dernière version annoncée en dépêche était la Alpha 26 « Zhuangzi » en octobre 2022, et le dernier lien concernait le départ du project leader en octobre 2023. Et pourtant une version « Alpha 27: Agni » est parue en janvier 2025 et Stan est de nouveau/encore le project leader. Au fait c'est quoi 0 A.D ?
 0 A.D. : Empires Ascendant est un jeu vidéo de stratégie en temps réel (Real Time Strategy, RTS) historique en 3D développé par Wildfire Games. C’est un projet libre (code sous GPL v2, données sous CC BY‑SA 3.0), au développement ouvert, visant des standards de qualité artistique comparables à ceux de l’industrie, ainsi qu’un grand respect de la réalité historique. Le jeu permet d’incarner quinze factions qui ont marqué leur histoire entre les rives de l’Atlantique et la chaîne de l’Himalaya, au cours de la période allant de −500 av. J.‑C. à −1 av. J.‑C. lien nᵒ 1 : Annonce de la version 28 « Boiorix »
@@ -5859,7 +6284,7 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 28. `FR` [Au café libre — « Libre à vous ! » du 17 février 2026 — Podcasts et références](data/articles/c9b9000e8cb7bf27fd173e8658e03eb9.html)
+### 29. `FR` [Au café libre — « Libre à vous ! » du 17 février 2026 — Podcasts et références](data/articles/c9b9000e8cb7bf27fd173e8658e03eb9.html)
 **Source:** LinuxFr
 269eme émission « Libre à vous ! » de l’April. Podcast et programme :
 sujet principal : Au café libre (débat autour des actualités du logiciel libre) avec Maud Royer, Gee, Vincent Calame ;
@@ -5876,7 +6301,7 @@ lien nᵒ 6 : Radio Cause Commune Rendez‐vous en direct chaque mardi de 15 
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 29. `FR` [Emmabuntüs renforce l’accessibilité avec les versions Debian Édition 6 1.00 et 5 1.05](data/articles/fc80ec8c4d2be4bc555e4a33c560dfae.html)
+### 30. `FR` [Emmabuntüs renforce l’accessibilité avec les versions Debian Édition 6 1.00 et 5 1.05](data/articles/fc80ec8c4d2be4bc555e4a33c560dfae.html)
 **Source:** LinuxFr
 Le collectif Emmabuntüs annonce deux publications récentes mettant fortement l’accent sur l’accessibilité numérique, fruit d’un travail mené en grande partie avec et par des bénévoles non-voyants et malvoyants, directement impliqués dans la conception, les tests et les améliorations ergonomiques de la distribution. lien nᵒ 1 : Le 15 décembre 2025, EmmaDE6 1.00 : une nouvelle version axée sur l’accessibilité !
 lien nᵒ 2 : Le 25 janvier 2026, EmmaDE5 1.05 : mise à jour axée sur l’accessibilité !
@@ -5895,7 +6320,7 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 30. `EN` [NVIDIA hiring Linux driver engineers to help with Vulkan, Proton and more](data/articles/f9ba03dd7b8fb7394f4d7814cd43c8d9.html)
+### 31. `EN` [NVIDIA hiring Linux driver engineers to help with Vulkan, Proton and more](data/articles/f9ba03dd7b8fb7394f4d7814cd43c8d9.html)
 **Source:** GamingOnLinux
 NVIDIA have multiple job listings available for Linux developers - this could be your chance to improve Linux gaming if you have the skills. Read the full article on GamingOnLinux.
 
@@ -5903,7 +6328,7 @@ NVIDIA have multiple job listings available for Linux developers - this could be
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 31. `FR` [Nouvelles de Haiku - Hiver 2025-26](data/articles/5513552cd42722ebbaddda91c1eba20d.html)
+### 32. `FR` [Nouvelles de Haiku - Hiver 2025-26](data/articles/5513552cd42722ebbaddda91c1eba20d.html)
 **Source:** LinuxFr
 Haiku est un système d’exploitation pensé pour les ordinateurs de bureau. Il est basé sur BeOS mais propose aujourd’hui une implémentation modernisée, performante, et qui conserve les idées qui rendaient BeOS intéressant: une interface intuitive mais permettant une utilisation avancée, une API unifiée et cohérente, et une priorisation de l’interface graphique par rapport à la ligne de commande pour l’administration du système.
 Il ne s’agit pas d’une distribution Linux, mais d’un système complet avec son propre noyau, sa propre pile graphique, etc. L’idée de cette approche est d’avoir une seule équipe travaillant sur toute la pile logicielle, pour éviter les soucis de coordination entre projets indépendant et d’excès de modularité, qui peuvent aboutir à une architecture logicielle inefficace. En revanche, cela demande un gros travail pour une équipe relativement réduite, et le système est donc en développement depuis bientôt un quart de siècle sans avoir encore publié une version majeure complète.
@@ -6005,7 +6430,7 @@ Un chantier est en cours pour réintégrer à nouveau le portage de WebKit pour 
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
 
-### 32. `FR` [Physiocab : un logiciel libre de gestion pour kinésithérapeutes](data/articles/e0eab329ba8752732324b8914ae82b51.html)
+### 33. `FR` [Physiocab : un logiciel libre de gestion pour kinésithérapeutes](data/articles/e0eab329ba8752732324b8914ae82b51.html)
 **Source:** LinuxFr
 Physiocab est un logiciel libre de gestion de cabinet de kinésithérapie, développé sous licence Affero GPL 3.0 et hébergé sur Codeberg. Le projet est porté par la société Allium SAS, dans le cadre de la plateforme communautaire Kalinka, dédiée aux kinésithérapeutes francophones.
 Le projet vient de passer en beta publique (v0.9) et cherche des testeurs et contributeurs.
@@ -6028,58 +6453,37 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="linux" data-source="LinuxFr">
+<div class="article-item" data-lang="fr" data-category="linux" data-source="Journal du Hacker">
 
-### 33. `FR` [LibreOffice 26.2 : Markdown, accessibilité et plein d’autres nouveautés et améliorations](data/articles/4a3f163314f7c85cbeb59ed3f13797b0.html)
-**Source:** LinuxFr
-En février, il y a la corvée commerciale de la Saint-Valentin et les réjouissances intellectuelles consécutives à la sortie d’une nouvelle version de la suite bureautique LibreOffice. C’est, bien évidemment, sur LibreOffice 26.2 que l’on va se pencher. Au menu, du très visible, comme les boites de dialogues, du très attendu comme la prise en compte du Markdown ou du moins visible comme le travail sur l’accessibilité.
-Il va de soi que les notes de version sont plus exhaustives et qu’il ne s’agit ici que d’une sélection. lien nᵒ 1 : Notes de version Sommaire
-L’accessibilité
-Support du Markdown
-L’interface et les boites de dialogue
-Writer
-Calc
-En vrac
-Pour finir
-Avant de commencer : toutes les captures d’écran ont été faites, volontairement, sur une interface très personnalisée.
-L’accessibilité
-L’accessibilité de la suite bureautique est un important chantier pour lequel une personne a été recrutée en 2023 (en). Cette version-ci a fait l’objet d’améliorations sensibles. Parallèlement, Sophie Gautier, coordinatrice de The Document Foundation1 (Foundation coordinator) est en train de monter un groupe de travail qui a pour objectif la publication d’un rapport de conformité en matière d’accessibilité pour répondre à la norme européenne EN 301 549 (en) d’accessiblité numérique. La langue de travail de ce groupe est l’anglais.
-Concernant les améliorations de cette version :
-la boite de dialogue « Vérifier les mises à jour », Aide &gt; Vérifier les mises à jour… est devenue accessible aux lecteurs d’écran ;
-les fonctions d’accessibilité des aperçus des bordures, onglet « Bordures » des boites de dialogue, ont été revues afin qu’elles ne perturbent plus les dispositifs d’assistance ;
-sur Linux : la boite de dialogue Outils&gt; Orthographe est annoncée correctement par le lecteur d’écran ;
-quand on supprimait la sélection accessible, le curseur se déplaçait automatiquement au début du texte, ce comportement perturbant est supprimé ;
-dans Writer, les fautes d’orthographe ne sont plus signalées par les dispositifs d’assistance si la vérification orthographique n’est pas activée ;
-l’accessibilité au clavier de la boite de dialogue des extensions : Outils &gt; Extensions est accessible aux lecteurs d’écran ;
-et enfin, il est possible de naviguer entre les onglets verticaux avec des raccourcis clavier.
-Support du Markdown
-Le Markdown est devenu le format de balisage léger standard « de fait ». Et c’est celui supporté par LinuxFR. Son support a été introduit dans cette version, c’est un des formats d’enregistrement qui s’est ajouté à la série des autres formats de la suite, pas un format d’export. Pour l’utiliser pour vos sites, passant pour LinuxFR, vous devrez :
-soit ouvrir le fichier .md dans un éditeur de texte, n’importe lequel, même Mousepad fait l’affaire par exemple, et copier-coller ensuite le tout à partir de l’éditeur de texte là où vous le voulez ;
-soit, si cela est possible, importer le fichier .md dans ce qui vous sert pour gérer le site comme le fait par exemple l’extension ODT2SPIP pour le système de gestion de contenu SPIP qui permet de créer une nouvelle page dans SPIP avec un fichier.ODT. ça marche avec LinuxFR ? Plutôt bien. Les styles de caractère Accentuation (ici en italiques) et Accentuation forte (ici gras) sont bien reconnu ainsi que Texte source pour « télétype », les indications in-texte encadrées de l’accent grave U+0060. Les styles de paragraphes :
-Bloc de citation (paragraphes de citation précédés d’une ligne blanche et du signe « &gt; » dans la saisie de contenu sur LinuxFR) ;
-Contenu de tableau ;
-Corps de texte ;
-Liste, par contre la numérotation des listes ordonnée ne semble pas bien fonctionner, il faut saisir les numéros à la main ;
-Texte préformaté pour écrire des blocs de code ;
-Titre 1, Titre 2, Titre 3 et Titre de tableau.
-Les tableaux sont bien repris ainsi que les liens insérés via l’insertion d’hyperliens.
-Ce qui ne semble pas fonctionner du tout : ce sont les notes, elles disparaissent corps et biens. C’est peut-être dû au passage dans l’éditeur de texte qui transforme un peu le document. Et, évidemment, il faut rajouter les images avec la syntaxe LinuxFR.
-La version de Mardown de LibreOffice est CommonMark (en) et la bibliothèque utilisée est MD4C avec quelques extensions prises en charge par cette bibliothèque (cf ce rapport de bug (en) et ses réponses), pour en savoir plus, voir cette note (en) du blog de The Document Foundation.
-Petite remarque, si vous utilisez un LibreOffice 25.8, vous avez peut-être pu constater qu’il était question d’enregistrement au format .md, cette information a été ajoutée trop précocement car la version 25.8 ne gère pas le Markdown.
-L’interface et les boites de dialogue
-Les boites de dialogue, notamment de styles et de formats, ont beaucoup changé. Longtemps elles se sont affichées avec une présentation par onglets en haut et le contenu dessous.
-Puis il y a une période de transition en 2025 qui a fait grincer une collection complète de dents où on avait, selon l’endroit où on était, soit des onglets soit une navigation par menu latéral. Cette dernière avait un gros défaut : par exemple pour la configuration des styles dans Writer il fallait descendre tout en bas pour accéder aux options qui étaient cachées. Et il n’y avait pas de barre de défilement pour aller plus vite.
-LibreOffice 26.2 voit ces défauts corrigés : les boites de dialogue sont harmonisées dans toute la suite et leur menu latéral, toujours sans barre de défilement qui s’avère finalement inutile, montre clairement tous les types de paramètres auxquels on peut accéder. Et, comme on peut le voir, LibreOffice a intégré une meilleure prise en charge des systèmes d’écritures asiatiques et complexes en affichant deux colonnes, une pour les polices occidentales, ou pour les polices asiatiques ou complexes. Une personne a également été recrutée en 2023 (en) pour travailler sur le support des systèmes d’écriture de droite à gauche (RTL) et complexes (CTL). Si toutefois, vous préférez revenir à l’affichage avec les onglets, il suffit d’aller dans le menu Outils &gt; Options &gt; Apparenceau niveau de « Boites de dialogue » et cocher l’option Horizontal en haut. Il faut savoir que les onglets en haut ne s’affichent que sur une seule ligne et qu’il faudra donc naviguer avec les flèches quand il y a de nombreuses options. Writer
-Il y a un certain nombre d’amélioration autour de la compatibilité avec le format DOCX : séparation de tableaux flottants en plusieurs tableaux, suppression de la numérotation des notes de bas de page à l’ouverture d’un fichier DOCX, etc.
-On relèvera deux nouvelles options d’alignement des paragraphes : « Début » et « Fin ». Si vous utilisez l’alphabet latin, vous ne verrez aucune différence avec les deux options « Forcer à gauche/en haut » et « Forcer à droite/en bas ». Elles ont été développées pour réutiliser plus facilement les styles entre les divers systèmes d’écriture. Pour continuer sur la lancée du travail pour la prise en compte des systèmes d’écriture dont le fonctionnement est différent de celui de l’alphabet latin, il est possible de changer la direction du texte : de gauche à droite ou de droite à gauche en cours de travail. Cela peut se paramétrer dans les styles. Calc
-Un gros travail sur les performances a été fait : vitesse de défilement, rapidité des classeurs avec de nombreuses formes et du rejet des modifications. On voit apparaître de nouvelles options de tri (Données &gt;Trier) qui dépendent de la « locale » (langue définie dans les Options de LibreOffice). On peut ainsi déterminer quel caractère est utilisé comme séparateur de décimal pour le tri naturel. On peut relever aussi une avancée ergonomique qui va plaire à toutes celles et ceux qui utilisent les matrices, on peut maintenant modifier les formules matricielles avec la combinaison de touches : F2 + ↑ Maj + Ctrl + Entrée, il n’est plus nécessaire de modifier la formule elle-même.
-Et aussi :
+### 34. `FR` [PostgreSQL 18.3 et autres correctifs](data/articles/31e492317df8d227ba34ead679e05b61.html)
+**Source:** Journal du Hacker
+2026-02-27 656 mots, 4 minutes de lecture Le PGDG (PostgreSQL Global Development Group) a publié une mise à jour
+de toutes les versions supportées de PostgreSQL, incluant 18.3, 17.9, 16.13, 15.17 et 14.22.
+Cette publication hors cycle corrige des régressions relevées depuis la dernière publication de la 18.2 du 12 février 2026.
+Pour la liste complète des changements, se référer à la section Notes
+de publication.
+Corrections de bogues et améliorations
+Cette mise à jour corrige plusieurs bogues ayant été signalés après
+la dernière publication. Les problèmes ci-dessous concernent
+PostgreSQL 18. Certains de ces problèmes peuvent aussi concerner
+d’autres versions de PostgreSQL. correction d’une anomalie où un standby est stoppé sur une erreur de type could not access status of transaction;
+correction d’une erreur sur la fonction substring() qui remonte l’erreur invalid byte sequence for encoding sur des valeurs de texte non ASCII si la source de cette valeur est une colonne, et introduit par la correction CVE-2026-2006;
+correction de la fonction strict_word_similarity dans pg_trgm qui peut entraîner des résultats incorrects ou des plantages. Cela est dû à une omission dans la correction de CVE-2026-2007;
+correction de la volatilité des fonctions json_strip_nulls() et jso
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="linux" data-source="Journal du Hacker">
+
+### 35. `FR` [Mariabackup : sauvegarder à chaud les bases de données MariaDB](data/articles/0ad6a63ca34fae9efe0f5321fd8e76ba.html)
+**Source:** Journal du Hacker
+Cet article présente MariaDB-Backup, appelé aussi Mariabackup, pour effectuer la sauvegarde et la restauration complète d'instances SQL. L'objectif : disposer d'un outil beaucoup plus performant que Mysqldump pour sauvegarder et restaurer des bases de données. Si vous gérez des serveurs de bases de données MariaDB ou MySQL, vous devez veiller à effectuer une sauvegarde des bases de données. L'outil par défaut et natif pour réaliser cette tâche, c'est mysqldump. Mais, il montre rapidement ses limites au niveau des performances, car les traitements sont très longs (trop longs, même je dirais) sur des grosses bases. C'est ici qu'intervient MariaDB-Backup, un outil gratuit et open source à l'effigie de MariaDB. Cet outil permet de réaliser des sauvegardes physiques "à chaud" (sans interruption de service pour le moteur InnoDB), garantissant une cohérence parfaite des données. Il est particulièrement adapté aux environnements de production exigeants, où la rapidité de la sauvegarde et de la restauration est un critère important. Dans ce tutoriel, nous allons explorer l'installation et l'utilisation de Mariabackup pour sauvegarder et restaurer une instance MariaDB. SommaireComprendre la différence : sauvegarde logique vs physiqueInstallation de mariabackupCréer un utilisateur dédié pour les sauvegardesCréer une première sauvegarde avec MariabackupRestaurer une sauvegar
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 34. `EN` [The OrangePi Neo gaming handheld with Manjaro Linux is now "on ice" due to component prices](data/articles/4e821461573df1e8de43bbc353d9f7e8.html)
+### 36. `EN` [The OrangePi Neo gaming handheld with Manjaro Linux is now "on ice" due to component prices](data/articles/4e821461573df1e8de43bbc353d9f7e8.html)
 **Source:** GamingOnLinux
 The latest update for the OrangePi Neo handheld with Manjaro Linux is not a positive one, with the whole thing now unfortunately "on ice". Read the full article on GamingOnLinux.
 
@@ -6087,7 +6491,7 @@ The latest update for the OrangePi Neo handheld with Manjaro Linux is not a posi
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 35. `EN` [Canonical Talks Up RISC-V This Year With Ubuntu 26.04 LTS](data/articles/d7d0e4731cb7bd8fc5123aca92a8a189.html)
+### 37. `EN` [Canonical Talks Up RISC-V This Year With Ubuntu 26.04 LTS](data/articles/d7d0e4731cb7bd8fc5123aca92a8a189.html)
 **Source:** Phoronix
 Canonical put out a new blog post today highlighting their RISC-V work over 2025 that included switching to the RVA23 profile baseline for Ubuntu 25.10 and moving forward. Now with RVA23-compatible RISC-V hardware coming to market this year, Canonical is talking up the RISC-V possibilities when paired with the upcoming Ubuntu 26.04 LTS release...
 
@@ -6095,7 +6499,7 @@ Canonical put out a new blog post today highlighting their RISC-V work over 2025
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 36. `EN` [Running With Scissors announced horror first person shooter Flesh &amp; Wire](data/articles/6bd1373fdcd00d0fc1a6744034de915c.html)
+### 38. `EN` [Running With Scissors announced horror first person shooter Flesh &amp; Wire](data/articles/6bd1373fdcd00d0fc1a6744034de915c.html)
 **Source:** GamingOnLinux
 Diving into the roots of the POSTAL series, Running With Scissors recently revealed the new horror first person shooter Flesh &amp; Wire. Read the full article on GamingOnLinux.
 
@@ -6103,7 +6507,7 @@ Diving into the roots of the POSTAL series, Running With Scissors recently revea
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 37. `EN` [Gambonanza is the best Balatro-like version of chess yet and you have to try the demo](data/articles/7b4c145fbb2f3839014f9d4d3003bb74.html)
+### 39. `EN` [Gambonanza is the best Balatro-like version of chess yet and you have to try the demo](data/articles/7b4c145fbb2f3839014f9d4d3003bb74.html)
 **Source:** GamingOnLinux
 If you love strategy games and roguelikes, Gambonanza fuses together the worlds of Balatro and chess like no other and it won me over completely. Read the full article on GamingOnLinux.
 
@@ -6111,7 +6515,7 @@ If you love strategy games and roguelikes, Gambonanza fuses together the worlds 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 38. `EN` [The "video game preservation service" Myrient is shutting down in March](data/articles/a74ad6017215cd47929e9d21f18ce712.html)
+### 40. `EN` [The "video game preservation service" Myrient is shutting down in March](data/articles/a74ad6017215cd47929e9d21f18ce712.html)
 **Source:** GamingOnLinux
 Myrient is a popular "video game preservation service" that has over 390 terabytes of classics but it's about to go offline forever. Read the full article on GamingOnLinux.
 
@@ -6119,7 +6523,7 @@ Myrient is a popular "video game preservation service" that has over 390 terabyt
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 39. `EN` [Heroic Games Launcher v2.20.1 brings more essential bug fixes](data/articles/71e4e2cdea09e251078f63cbed1b44fa.html)
+### 41. `EN` [Heroic Games Launcher v2.20.1 brings more essential bug fixes](data/articles/71e4e2cdea09e251078f63cbed1b44fa.html)
 **Source:** GamingOnLinux
 Heroic Games Launcher continues to bring improvements to run games from Epic, GOG, Amazon and more on Linux / SteamOS systems with v2.20.1 out now. Read the full article on GamingOnLinux.
 
@@ -6127,7 +6531,7 @@ Heroic Games Launcher continues to bring improvements to run games from Epic, GO
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 40. `EN` [Numerous AMDXDNA Ryzen AI Driver Fixes For Linux 7.0-rc2](data/articles/35e7070572918bdd967c0bb5b961c48f.html)
+### 42. `EN` [Numerous AMDXDNA Ryzen AI Driver Fixes For Linux 7.0-rc2](data/articles/35e7070572918bdd967c0bb5b961c48f.html)
 **Source:** Phoronix
 Sent out today were all of the DRM/accel driver fixes for the week, ahead of the Linux 7.0-rc2 kernel release due out on Sunday...
 
@@ -6135,7 +6539,7 @@ Sent out today were all of the DRM/accel driver fixes for the week, ahead of the
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 41. `EN` [Smash everything apart together as Teardown goes multiplayer on March 12](data/articles/a01ae90e5ec07e12b67ca78f218ce8ee.html)
+### 43. `EN` [Smash everything apart together as Teardown goes multiplayer on March 12](data/articles/a01ae90e5ec07e12b67ca78f218ce8ee.html)
 **Source:** GamingOnLinux
 The physics-based voxel destruction game Teardown is set for a huge free upgrade on March 12th, when the multiplayer update arrives. Read the full article on GamingOnLinux.
 
@@ -6143,7 +6547,7 @@ The physics-based voxel destruction game Teardown is set for a huge free upgrade
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 42. `EN` [Genode OS 26.02 Halfway Done Migrating From GitHub To Codeberg](data/articles/075ebccba58d5aa4502dbb9b9bcc5098.html)
+### 44. `EN` [Genode OS 26.02 Halfway Done Migrating From GitHub To Codeberg](data/articles/075ebccba58d5aa4502dbb9b9bcc5098.html)
 **Source:** Phoronix
 Genode OS 26.02 is out as the latest feature update to this open-source operating system framework that also serves as the basis for their Sculpt general purpose OS...
 
@@ -6151,7 +6555,7 @@ Genode OS 26.02 is out as the latest feature update to this open-source operatin
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 43. `EN` [He-Man and the Masters of the Universe: Dragon Pearl of Destruction arrives April 28](data/articles/21c5d79dca344a2124e6dc5b8f3f253e.html)
+### 45. `EN` [He-Man and the Masters of the Universe: Dragon Pearl of Destruction arrives April 28](data/articles/21c5d79dca344a2124e6dc5b8f3f253e.html)
 **Source:** GamingOnLinux
 Another good one for fans of retro-styled beat 'em ups, as He-Man and the Masters of the Universe: Dragon Pearl of Destruction is releasing April 28th. Read the full article on GamingOnLinux.
 
@@ -6159,7 +6563,7 @@ Another good one for fans of retro-styled beat 'em ups, as He-Man and the Master
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 44. `EN` [LXD 6.7 Released With AMD GPU Passthrough Support](data/articles/7c7c19a574bbb3017ae26bce615df17b.html)
+### 46. `EN` [LXD 6.7 Released With AMD GPU Passthrough Support](data/articles/7c7c19a574bbb3017ae26bce615df17b.html)
 **Source:** Phoronix
 Canonical today released LXD 6.7 as the latest feature update to this system container and virtual machine manager commonly used in Ubuntu Linux environments...
 
@@ -6167,7 +6571,7 @@ Canonical today released LXD 6.7 as the latest feature update to this system con
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 45. `EN` [Microsoft Updates DirectX Shader Compiler With Improved Vulkan Driver Interoperability](data/articles/b5c0eced2433ae5572bc1f527afb4879.html)
+### 47. `EN` [Microsoft Updates DirectX Shader Compiler With Improved Vulkan Driver Interoperability](data/articles/b5c0eced2433ae5572bc1f527afb4879.html)
 **Source:** Phoronix
 Microsoft has published a new version of its open-source DirectX Shader Compiler. Besides adding Shader Model 6.9 production support, making this DX Compiler update interesting to us are the SPIR-V back-end improvements and enhancing interoperability with Vulkan drivers...
 
@@ -6175,7 +6579,7 @@ Microsoft has published a new version of its open-source DirectX Shader Compiler
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Its FOSS">
 
-### 46. `EN` [FOSS Weekly #26.09: Linux Mint Shortcuts, OpenClaw Alternatives, Ladybird's Rust Move, Super Productivity and More](data/articles/b8c4718f98e9f62774e4abfec1bc0a43.html)
+### 48. `EN` [FOSS Weekly #26.09: Linux Mint Shortcuts, OpenClaw Alternatives, Ladybird's Rust Move, Super Productivity and More](data/articles/b8c4718f98e9f62774e4abfec1bc0a43.html)
 **Source:** Its FOSS
 What One Year of AI Has Already Changed
 
@@ -6183,7 +6587,7 @@ What One Year of AI Has Already Changed
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 47. `EN` [Linux 7.1 Looks To Support Extended Attributes On Sockets For New GNOME &amp; systemd Functionality](data/articles/90729e8ce434c91bed0c89b76e11a6c1.html)
+### 49. `EN` [Linux 7.1 Looks To Support Extended Attributes On Sockets For New GNOME &amp; systemd Functionality](data/articles/90729e8ce434c91bed0c89b76e11a6c1.html)
 **Source:** Phoronix
 While the Linux 7.0 feature merge window ended this past weekend and that next kernel release won't debut as stable until April, there are already features out on the horizon that are being positioned for likely merging into the Linux 7.1 kernel assuming no issues appear or objections raised by Linus Torvalds. One of the features already looking like it will be submitted for Linux 7.1 is supporting extended attributes on sockets...
 
@@ -6191,7 +6595,7 @@ While the Linux 7.0 feature merge window ended this past weekend and that next k
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 48. `EN` [Fwupd 2.0.20 Brings New Hardware Support](data/articles/ef32d831b09e0dd12f8b3945ef9cf6db.html)
+### 50. `EN` [Fwupd 2.0.20 Brings New Hardware Support](data/articles/ef32d831b09e0dd12f8b3945ef9cf6db.html)
 **Source:** Phoronix
 Fwupd/LVFS lead developer Richard Hughes of Red Hat today released Fwupd 2.0.20 with continuing to advance firmware updating on Linux systems...
 
@@ -6199,7 +6603,7 @@ Fwupd/LVFS lead developer Richard Hughes of Red Hat today released Fwupd 2.0.20 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 49. `EN` [SpaghettiKart the Mario Kart 64 fan-made PC port gets a big upgrade](data/articles/e8b3bedd836c3b1e2c3018b84485f673.html)
+### 51. `EN` [SpaghettiKart the Mario Kart 64 fan-made PC port gets a big upgrade](data/articles/e8b3bedd836c3b1e2c3018b84485f673.html)
 **Source:** GamingOnLinux
 The Harbour Masters team recently released a big upgrade for SpaghettiKart, their Mario Kart 64 fan-made PC port with a bunch of new features. Read the full article on GamingOnLinux.
 
@@ -6207,7 +6611,7 @@ The Harbour Masters team recently released a big upgrade for SpaghettiKart, thei
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 50. `EN` [Run your own band in the pixel art management game Legends of Rock](data/articles/9fec5db4ff83fb19e9ba29f825011fab.html)
+### 52. `EN` [Run your own band in the pixel art management game Legends of Rock](data/articles/9fec5db4ff83fb19e9ba29f825011fab.html)
 **Source:** GamingOnLinux
 Legends of Rock is coming later this year from the developer of Dude, Where Is My Beer? that sees you build up and manage your own band. Read the full article on GamingOnLinux.
 
@@ -6215,7 +6619,7 @@ Legends of Rock is coming later this year from the developer of Dude, Where Is M
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 51. `EN` [Retro games bundle MARVEL MaXimum Collection announced](data/articles/ce4b2b3353d217639cf158aa4f265b95.html)
+### 53. `EN` [Retro games bundle MARVEL MaXimum Collection announced](data/articles/ce4b2b3353d217639cf158aa4f265b95.html)
 **Source:** GamingOnLinux
 Coming from Limited Run Games, MARVEL MaXimum Collection will be a bundle of retro classic Marvel titles "from the golden age of gaming". Read the full article on GamingOnLinux.
 
@@ -6223,7 +6627,7 @@ Coming from Limited Run Games, MARVEL MaXimum Collection will be a bundle of ret
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 52. `EN` [Topdeck Automat blends the worlds of roguelike deckbuilder and autobattlers](data/articles/e70330a3a1cef40147cc1619c33e15cc.html)
+### 54. `EN` [Topdeck Automat blends the worlds of roguelike deckbuilder and autobattlers](data/articles/e70330a3a1cef40147cc1619c33e15cc.html)
 **Source:** GamingOnLinux
 Topdeck Automat gives you hundreds of cards to build a deck where your printer droid spits them out at random - sounds like quite a fun mixture. Read the full article on GamingOnLinux.
 
@@ -6231,7 +6635,7 @@ Topdeck Automat gives you hundreds of cards to build a deck where your printer d
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 53. `EN` [ZCULL Support For Nouveau + NVK Brings Some Small Performance Gains](data/articles/6c21ef92ef579718a50c1d913ace2539.html)
+### 55. `EN` [ZCULL Support For Nouveau + NVK Brings Some Small Performance Gains](data/articles/6c21ef92ef579718a50c1d913ace2539.html)
 **Source:** Phoronix
 Merged yesterday to Mesa 26.1 for the open-source NVIDIA Vulkan driver "NVK" is ZCULL support for more efficient rendering and bringing some small performance gains to this open-source NVIDIA driver stack...
 
@@ -6239,7 +6643,7 @@ Merged yesterday to Mesa 26.1 for the open-source NVIDIA Vulkan driver "NVK" is 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 54. `EN` [Kick fascists so hard they fly into the sun in Verminsteel](data/articles/185070fe1a500c43846539896e20b7d3.html)
+### 56. `EN` [Kick fascists so hard they fly into the sun in Verminsteel](data/articles/185070fe1a500c43846539896e20b7d3.html)
 **Source:** GamingOnLinux
 Verminsteel is a new announcement from Glass Bottom Games that will see you hack and slash your way through hordes of fascists and take down their leaders. Read the full article on GamingOnLinux.
 
@@ -6247,7 +6651,7 @@ Verminsteel is a new announcement from Glass Bottom Games that will see you hack
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 55. `EN` [Intel Vulkan Driver Sees Some Minor Optimizations For DX12 Games On Linux](data/articles/b0054a90bad3fb4d7a200762eeb74dac.html)
+### 57. `EN` [Intel Vulkan Driver Sees Some Minor Optimizations For DX12 Games On Linux](data/articles/b0054a90bad3fb4d7a200762eeb74dac.html)
 **Source:** Phoronix
 Merged to Mesa 26.1-devel this week is a minor improvement to the Intel "ANV" Vulkan driver providing some slight enhancements to DirectX 12 games running on Linux by way of Valve's Steam Play with VKD3D-Proton...
 
@@ -6255,7 +6659,7 @@ Merged to Mesa 26.1-devel this week is a minor improvement to the Intel "ANV" Vu
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 56. `EN` [Grim Dawn celebrates 10 years - set for a big free upgrade with a modern scaleable UI and an expansion](data/articles/89fb5ba3acbbbb03ba35a9610d6b1954.html)
+### 58. `EN` [Grim Dawn celebrates 10 years - set for a big free upgrade with a modern scaleable UI and an expansion](data/articles/89fb5ba3acbbbb03ba35a9610d6b1954.html)
 **Source:** GamingOnLinux
 Grim Dawn is getting an update that will hopefully make the ARPG classic work better across different screen sizes and resolutions (like the Steam Deck). Read the full article on GamingOnLinux.
 
@@ -6263,7 +6667,7 @@ Grim Dawn is getting an update that will hopefully make the ARPG classic work be
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 57. `EN` [GStreamer 1.28.1 Adds Whisper-Based Speech-To-Text, AV1 Stateful V4L2 Decoder Support](data/articles/52dc01d76557d38f8fc55327213d6bcb.html)
+### 59. `EN` [GStreamer 1.28.1 Adds Whisper-Based Speech-To-Text, AV1 Stateful V4L2 Decoder Support](data/articles/52dc01d76557d38f8fc55327213d6bcb.html)
 **Source:** Phoronix
 Building off January's GStreamer 1.28 release with many new features, GStreamer 1.28.1 was released today as a point release bringing various fixes and minor additions to this open-source multimedia framework...
 
@@ -6271,7 +6675,7 @@ Building off January's GStreamer 1.28 release with many new features, GStreamer 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 58. `EN` [New York sues Valve over "illegally promoting gambling" for loot boxes](data/articles/709321e9a65e1b86db4455785619ce95.html)
+### 60. `EN` [New York sues Valve over "illegally promoting gambling" for loot boxes](data/articles/709321e9a65e1b86db4455785619ce95.html)
 **Source:** GamingOnLinux
 New York Attorney General Letitia James announced a lawsuit against Valve (Steam) for what they say is illegally promoting gambling. Read the full article on GamingOnLinux.
 
@@ -6279,7 +6683,7 @@ New York Attorney General Letitia James announced a lawsuit against Valve (Steam
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="LWN.net">
 
-### 59. `EN` [[$] LWN.net Weekly Edition for February 26, 2026](data/articles/281c3d24e054d6ff1748615d9b459b2b.html)
+### 61. `EN` [[$] LWN.net Weekly Edition for February 26, 2026](data/articles/281c3d24e054d6ff1748615d9b459b2b.html)
 **Source:** LWN.net
 Inside this week's LWN.net Weekly Edition: Front: New flags for clone3(); Discord replacements; virtual swap spaces; BPF memory protection keys; PostgreSQL's lessons in attracting contributors; 7.0 merge window; Network Time Security. Briefs: OpenSUSE governance; Firefox 148.0; GNU Awk 5.4.0; GNU Octave 11.1.0; Rust in Ladybird; LibreOffice Online; Weston 15.0; RIP Robert Kaye; Quotes; ... Announcements: Newsletters, conferences, security updates, patches, and more.
 
@@ -6287,7 +6691,7 @@ Inside this week's LWN.net Weekly Edition: Front: New flags for clone3(); Discor
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 60. `EN` [Linux 6.18 LTS / 6.12 LTS / 6.6 LTS Support Periods Extended](data/articles/0a695f1341be713c5a6c719bfdc5de20.html)
+### 62. `EN` [Linux 6.18 LTS / 6.12 LTS / 6.6 LTS Support Periods Extended](data/articles/0a695f1341be713c5a6c719bfdc5de20.html)
 **Source:** Phoronix
 Greg Kroah-Hartman today extended the planned maintenance periods of the latest Linux 6.18, Linux 6.12, and Linux 6.6 Long Term Support (LTS) kernel series...
 
@@ -6295,7 +6699,7 @@ Greg Kroah-Hartman today extended the planned maintenance periods of the latest 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 61. `EN` [Sub-Scheduler Support Could Be One Of The Most Exciting Features To Come For Linux 7.1](data/articles/ffd2abb2db73139f2326796499952620.html)
+### 63. `EN` [Sub-Scheduler Support Could Be One Of The Most Exciting Features To Come For Linux 7.1](data/articles/ffd2abb2db73139f2326796499952620.html)
 **Source:** Phoronix
 While there are many great Linux 7.0 features with that still-young development cycle, looking ahead to Linux 7.1 this summer there's an interesting feature on track: cgroup sub-scheduler support for sched_ext...
 
@@ -6303,7 +6707,7 @@ While there are many great Linux 7.0 features with that still-young development 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 62. `EN` [Brotato gets a DRM-free release on GOG](data/articles/cebc06585ab9dd7bf1be10dd2c5f70ef.html)
+### 64. `EN` [Brotato gets a DRM-free release on GOG](data/articles/cebc06585ab9dd7bf1be10dd2c5f70ef.html)
 **Source:** GamingOnLinux
 GOG fans can finally get in on the Brotato action, just keep in mind - it might suck away endless hours of your time if you're not careful. Read the full article on GamingOnLinux.
 
@@ -6311,7 +6715,7 @@ GOG fans can finally get in on the Brotato action, just keep in mind - it might 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="LWN.net">
 
-### 63. `EN` [MetaBrainz mourns the loss of Robert Kaye](data/articles/e133be7c5767fb0180ad1064d0c9901e.html)
+### 65. `EN` [MetaBrainz mourns the loss of Robert Kaye](data/articles/e133be7c5767fb0180ad1064d0c9901e.html)
 **Source:** LWN.net
 The MetaBrainz Foundation has announced the unexpected passing of
 its founder and executive director, Robert Kaye:
@@ -6328,7 +6732,7 @@ course.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 64. `EN` [KDE Plasma 6.6.1 rolls out with lots of fixes for KWin](data/articles/ff69df9e23edfcdb8da63dcea866170e.html)
+### 66. `EN` [KDE Plasma 6.6.1 rolls out with lots of fixes for KWin](data/articles/ff69df9e23edfcdb8da63dcea866170e.html)
 **Source:** GamingOnLinux
 The KDE team have released the latest release for the Plasma desktop, with version 6.6.1 bringing quite a lot of bug fixing. Read the full article on GamingOnLinux.
 
@@ -6336,7 +6740,7 @@ The KDE team have released the latest release for the Plasma desktop, with versi
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 65. `EN` [The Boomer Shooter Blueprint bundle is an epic deal with Selaco, CULTIC and more](data/articles/e64675301ac8611df7c195f6d84a196f.html)
+### 67. `EN` [The Boomer Shooter Blueprint bundle is an epic deal with Selaco, CULTIC and more](data/articles/e64675301ac8611df7c195f6d84a196f.html)
 **Source:** GamingOnLinux
 Digiphile, the indie bundle site started by former Humble Bundle staffers, has an excellent Boomer Shooter Blueprint bundle out that's worth grabbing. Read the full article on GamingOnLinux.
 
@@ -6344,7 +6748,7 @@ Digiphile, the indie bundle site started by former Humble Bundle staffers, has a
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 66. `EN` [Happy four years to the Steam Deck - still the top PC gaming handheld](data/articles/29c9b87cfaa200470664ac07417d6993.html)
+### 68. `EN` [Happy four years to the Steam Deck - still the top PC gaming handheld](data/articles/29c9b87cfaa200470664ac07417d6993.html)
 **Source:** GamingOnLinux
 Four years ago today, the original Steam Deck LCD released, with it going on to change how everyone sees handheld gaming PCs and Linux for gaming. Read the full article on GamingOnLinux.
 
@@ -6352,7 +6756,7 @@ Four years ago today, the original Steam Deck LCD released, with it going on to 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="LWN.net">
 
-### 67. `EN` [Restarting LibreOffice Online](data/articles/57183c264e62b42bae48bb6bd17215fe.html)
+### 69. `EN` [Restarting LibreOffice Online](data/articles/57183c264e62b42bae48bb6bd17215fe.html)
 **Source:** LWN.net
 LibreOffice online is a web-based version of the LibreOffice suite that can
 be hosted on anybody's infrastructure. This project was put into stasis back in 2022, a move marked by
@@ -6366,7 +6770,7 @@ versions of LibreOffice has not abated.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 68. `EN` [Discord delay global rollout of age verification to improve transparency and add more options](data/articles/6d4486cdcdc89c988ca75a54d54c8b59.html)
+### 70. `EN` [Discord delay global rollout of age verification to improve transparency and add more options](data/articles/6d4486cdcdc89c988ca75a54d54c8b59.html)
 **Source:** GamingOnLinux
 In the ongoing crazy saga of the internet getting gated behind new age verification laws, Discord are putting on the brakes temporarily. Read the full article on GamingOnLinux.
 
@@ -6374,7 +6778,7 @@ In the ongoing crazy saga of the internet getting gated behind new age verificat
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 69. `EN` [FINAL FANTASY VII arrives on GOG with a new edition live on Steam too](data/articles/659206ee1a46269ef9352a59211d0a0c.html)
+### 71. `EN` [FINAL FANTASY VII arrives on GOG with a new edition live on Steam too](data/articles/659206ee1a46269ef9352a59211d0a0c.html)
 **Source:** GamingOnLinux
 Square Enix today released their slightly upgraded version of FINAL FANTASY VII, along with making it available on GOG too. Read the full article on GamingOnLinux.
 
@@ -6382,7 +6786,7 @@ Square Enix today released their slightly upgraded version of FINAL FANTASY VII,
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 70. `EN` [Fanatical's Play on the Go Elite Collection Bundle for Feb 2026 has some gems in it](data/articles/632df9ce5bdefdc1bd3289935fab287e.html)
+### 72. `EN` [Fanatical's Play on the Go Elite Collection Bundle for Feb 2026 has some gems in it](data/articles/632df9ce5bdefdc1bd3289935fab287e.html)
 **Source:** GamingOnLinux
 Want some more games to fill up your handheld with like the Steam Deck or Legion Go? Check out the new Fanatical Play on the Go Elite Collection. Read the full article on GamingOnLinux.
 
@@ -6390,7 +6794,7 @@ Want some more games to fill up your handheld with like the Steam Deck or Legion
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 71. `EN` [Death Stranding 2 PC specs have been revealed, along with a "Portable" preset for handhelds](data/articles/06ca1109008c70b27e7583ca2e3884ca.html)
+### 73. `EN` [Death Stranding 2 PC specs have been revealed, along with a "Portable" preset for handhelds](data/articles/06ca1109008c70b27e7583ca2e3884ca.html)
 **Source:** GamingOnLinux
 We now have the official PC specifications released for Death Stranding 2 and they actually seem pretty reasonable, so plenty of people should be fine. Read the full article on GamingOnLinux.
 
@@ -6398,7 +6802,7 @@ We now have the official PC specifications released for Death Stranding 2 and th
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 72. `EN` [Use your train to smash bandits into a cliff in the updated Fogpiercer demo](data/articles/8a0125c2e26201dc850f60693fe837d2.html)
+### 74. `EN` [Use your train to smash bandits into a cliff in the updated Fogpiercer demo](data/articles/8a0125c2e26201dc850f60693fe837d2.html)
 **Source:** GamingOnLinux
 Your train is your deck in Fogpiercer, with an updated demo available in Steam Next Fest this is a turn-based strategy game worth your time. Read the full article on GamingOnLinux.
 
@@ -6406,7 +6810,7 @@ Your train is your deck in Fogpiercer, with an updated demo available in Steam N
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 73. `EN` [Firefox 148.0 arrives with AI controls](data/articles/a567b837906a775595919b8ccbccf9c4.html)
+### 75. `EN` [Firefox 148.0 arrives with AI controls](data/articles/a567b837906a775595919b8ccbccf9c4.html)
 **Source:** GamingOnLinux
 As Mozilla promised they would, Firefox version 148.0 has been released and with it you now get to control what generative AI features are enabled or disabled. Read the full article on GamingOnLinux.
 
@@ -6414,7 +6818,7 @@ As Mozilla promised they would, Firefox version 148.0 has been released and with
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 74. `EN` [Inspired by the classic DOOM RPG, the Dungeons of DUSK demo is out now](data/articles/4c7239403d42ba540f072bbba54761a6.html)
+### 76. `EN` [Inspired by the classic DOOM RPG, the Dungeons of DUSK demo is out now](data/articles/4c7239403d42ba540f072bbba54761a6.html)
 **Source:** GamingOnLinux
 Taking the retro FPS Dusk and turning it into a retro dungeon crawler with a big sprawling skill tree - Dungeons of DUSK has a demo out now. Read the full article on GamingOnLinux.
 
@@ -6422,7 +6826,7 @@ Taking the retro FPS Dusk and turning it into a retro dungeon crawler with a big
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Its FOSS">
 
-### 75. `EN` [Australia's Cyber Agency Releases Azul, an Open Source Malware Analysis Repository](data/articles/936b033619715aec517874051fd47002.html)
+### 77. `EN` [Australia's Cyber Agency Releases Azul, an Open Source Malware Analysis Repository](data/articles/936b033619715aec517874051fd47002.html)
 **Source:** Its FOSS
 Think of it as a searchable, automated knowledge base for malware.
 
@@ -6430,7 +6834,7 @@ Think of it as a searchable, automated knowledge base for malware.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 76. `EN` [Battling castles on wheels? Wanderburg might be my new favourite thing](data/articles/f1604be559e32588265a42eb811a8e52.html)
+### 78. `EN` [Battling castles on wheels? Wanderburg might be my new favourite thing](data/articles/f1604be559e32588265a42eb811a8e52.html)
 **Source:** GamingOnLinux
 Wanderburg is nuts. A roguelike where you build up a castle on wheels (or legs) and battle through various locations and it instantly hooked me. Read the full article on GamingOnLinux.
 
@@ -6438,7 +6842,7 @@ Wanderburg is nuts. A roguelike where you build up a castle on wheels (or legs) 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 77. `EN` [Vampire Crawlers from the Vampire Survivor dev is promising but not quite there yet](data/articles/0fa313c8a456a3f5f2ff58e5567d4c4b.html)
+### 79. `EN` [Vampire Crawlers from the Vampire Survivor dev is promising but not quite there yet](data/articles/0fa313c8a456a3f5f2ff58e5567d4c4b.html)
 **Source:** GamingOnLinux
 Vampire Crawlers: The Turbo Wildcard from Vampire Survivors has a demo out now for Steam Next Fest, and I've given it a run through to see the chaos. Read the full article on GamingOnLinux.
 
@@ -6446,7 +6850,7 @@ Vampire Crawlers: The Turbo Wildcard from Vampire Survivors has a demo out now f
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="Journal du Hacker">
 
-### 78. `FR` [IA et Cybersécurité : une catastrophe à venir](data/articles/bbc16298361f02a6665bac220fee51f5.html)
+### 80. `FR` [IA et Cybersécurité : une catastrophe à venir](data/articles/bbc16298361f02a6665bac220fee51f5.html)
 **Source:** Journal du Hacker
 Notre prochain webinar En janvier 2026, Linus Torvalds annonçait son side project AudioNoise. Un petit projet sans ambition qui a beaucoup fait parler de lui parce que le créateur de Linux assumait complètement l’avoir “Vibe Codé”.Cette adhésion, surprenante pour certains, ne vient pas sans astérisque : Le créateur de Linux a répété à plusieurs reprises que pour le code qui compte vraiment, pour les services critiques, rien ne remplace un développeur expert, et les IA ne sont pas (pour le moment) à la hauteur.Il n’empêche que l’AI générative est entrée dans les processus de production logicielle, c’est un fait et il n’y aura (probablement?) pas de retour en arrière.Les LLMs rédigent du code… beaucoup de code.Cette adhésion généralisée est due à bien des facteurs, mais la raison la plus souvent affichée (ou assumée) est l’impératif de productivité.Les LLMs auraient un effet multiplicateur sur le travail des développeurs.Dans cet article, nous vous proposons un panorama de la menace que pose les LLMs sur les services IT, en particulier ceux des entreprises françaises.L’objectif est d’évaluer le coût réel de cette productivité sous l’angle de la sûreté des systèmes informatiques.Vibe Coding et augmentation de la dette techniqueLa dette technique augmente lorsque, pour des raisons de délais et/ou de coû
 
@@ -6454,7 +6858,7 @@ Notre prochain webinar En janvier 2026, Linus Torvalds annonçait son side proje
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 79. `EN` [Steam Next Fest - February 2026 is live with tons of demos](data/articles/3b8e95c25a78ec4c9e7fabc2d016b3fb.html)
+### 81. `EN` [Steam Next Fest - February 2026 is live with tons of demos](data/articles/3b8e95c25a78ec4c9e7fabc2d016b3fb.html)
 **Source:** GamingOnLinux
 Here we go again, a mad dash to play as many demos as possible with the Steam Next Fest - February 2026 event now live. Read the full article on GamingOnLinux.
 
@@ -6462,7 +6866,7 @@ Here we go again, a mad dash to play as many demos as possible with the Steam Ne
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 80. `EN` [Kerbal Space Program spiritual successor Kitten Space Agency now has a Linux version](data/articles/6391dc4913538e049c7dc7b38138a36d.html)
+### 82. `EN` [Kerbal Space Program spiritual successor Kitten Space Agency now has a Linux version](data/articles/6391dc4913538e049c7dc7b38138a36d.html)
 **Source:** GamingOnLinux
 Kitten Space Agency is a promising upcoming space simulation game that's pretty much a spiritual successor to Kerbal Space Program and now for Linux too. Read the full article on GamingOnLinux.
 
@@ -6470,7 +6874,7 @@ Kitten Space Agency is a promising upcoming space simulation game that's pretty 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 81. `EN` [Mesa 25.3.6 released as the last bug fix for this driver series](data/articles/f4da011471cb4d8a57e30746bade661a.html)
+### 83. `EN` [Mesa 25.3.6 released as the last bug fix for this driver series](data/articles/f4da011471cb4d8a57e30746bade661a.html)
 **Source:** GamingOnLinux
 Mesa 25.3.6 has released and is the last planned bug fix for this driver series, with the developers now moving on to focus on Mesa 26 and beyond. Read the full article on GamingOnLinux.
 
@@ -6478,7 +6882,7 @@ Mesa 25.3.6 has released and is the last planned bug fix for this driver series,
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 82. `EN` [Wine 11.3 released with vkd3d and Mono upgrades](data/articles/965ff74ea8fa8689bd8d87e7920688cb.html)
+### 84. `EN` [Wine 11.3 released with vkd3d and Mono upgrades](data/articles/965ff74ea8fa8689bd8d87e7920688cb.html)
 **Source:** GamingOnLinux
 Wine 11.3 is here bringing more compatibility fixes for running Windows apps and games on Linux systems. Read the full article on GamingOnLinux.
 
@@ -6486,7 +6890,7 @@ Wine 11.3 is here bringing more compatibility fixes for running Windows apps and
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 83. `EN` [Ubuntu 26.04 LTS will default to OpenJDK 25](data/articles/23850efac2f52c009ae086ffacd0de2a.html)
+### 85. `EN` [Ubuntu 26.04 LTS will default to OpenJDK 25](data/articles/23850efac2f52c009ae086ffacd0de2a.html)
 **Source:** OMG! Ubuntu
 Ubuntu 26.04 LTS ‘Resolute Raccoon’ will use OpenJDK 25 as its default Java version. An expected change as OpenJDK 25 is a long-term support release, as Ubuntu 26.04 is, the bump brings various feature and performance improvements to developers over OpenJDK 21, the default version used in Ubuntu 24.04 LTS through 25.10. On Ubuntu, Java isn’t installed out of the box, but when you install default-jdk or default-jre (directly or indirectly as a dependency needed by other software) those meta-packages point to whichever OpenJDK version Canonical has blessed as current. In Ubuntu 26.04 LTS, that will be OpenJDK 25. Version 25 of OpenJDK, the […]
 You're reading Ubuntu 26.04 LTS will default to OpenJDK 25, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -6495,7 +6899,7 @@ You're reading Ubuntu 26.04 LTS will default to OpenJDK 25, a blog post from OMG
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 84. `EN` [Ghostty terminal is finally adding scrollbar support](data/articles/b883e12957f2af96ea4ce18a2ab5dec5.html)
+### 86. `EN` [Ghostty terminal is finally adding scrollbar support](data/articles/b883e12957f2af96ea4ce18a2ab5dec5.html)
 **Source:** OMG! Ubuntu
 Ghostty's most-thumbed feature request is finally being answered. Yup, scrollbar support is finally coming in Ghostty 1.3 for Linux and macOS.
 You're reading Ghostty terminal is finally adding scrollbar support, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -6504,7 +6908,7 @@ You're reading Ghostty terminal is finally adding scrollbar support, a blog post
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 85. `EN` [Rudra is a new keyboard-driven launcher for GNOME Shell](data/articles/e54ed15cd80081c359e8845ce79adfcc.html)
+### 87. `EN` [Rudra is a new keyboard-driven launcher for GNOME Shell](data/articles/e54ed15cd80081c359e8845ce79adfcc.html)
 **Source:** OMG! Ubuntu
 The world isn’t short on keyboard-based Linux launchers. Albert, Ulauncher, rofi and GNOME Do (if you’re old enough to remember that one) are among those I’ve written about in the past. Rudra is a new spin on this old staple – albeit without the extensibility dedicated quick launchers provide. What’s different here is that it’s implemented as a GNOME Shell extension, not a standalone app. The developer of Rudra, Nark Agni, describes it as a “lightning-fast, keyboard-centric launcher […] designed for power users”. Though inspired by Mac apps like Alfred and Raycast, it is far less capable than those. To […]
 You're reading Rudra is a new keyboard-driven launcher for GNOME Shell, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -6513,7 +6917,7 @@ You're reading Rudra is a new keyboard-driven launcher for GNOME Shell, a blog p
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 86. `EN` [Turn recipes into huge cooking production lines in the new Snacktorio demo](data/articles/ceb5900c9829f241094a6d403457e84b.html)
+### 88. `EN` [Turn recipes into huge cooking production lines in the new Snacktorio demo](data/articles/ceb5900c9829f241094a6d403457e84b.html)
 **Source:** GamingOnLinux
 Snacktorio is a factory-cooking automation game from the developer of APICO and Mudborne, and looks to be another great indie game to try out. Read the full article on GamingOnLinux.
 
@@ -6521,7 +6925,7 @@ Snacktorio is a factory-cooking automation game from the developer of APICO and 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 87. `EN` [The Wolf Among Us, The Last Express and more join the GOG Preservation Program](data/articles/bcaa55d5b339b0e27ce3fb486d6b8f0c.html)
+### 89. `EN` [The Wolf Among Us, The Last Express and more join the GOG Preservation Program](data/articles/bcaa55d5b339b0e27ce3fb486d6b8f0c.html)
 **Source:** GamingOnLinux
 The GOG Preservation Program expands again to include more classic games that will be kept alive with patches from the GOG team like The Wolf Among Us. Read the full article on GamingOnLinux.
 
@@ -6529,7 +6933,7 @@ The GOG Preservation Program expands again to include more classic games that wi
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 88. `EN` [MOUSE: P.I. For Hire looks awesome in the new boss trailer](data/articles/4bad56577d063e59f0ec971338f5d607.html)
+### 90. `EN` [MOUSE: P.I. For Hire looks awesome in the new boss trailer](data/articles/4bad56577d063e59f0ec971338f5d607.html)
 **Source:** GamingOnLinux
 MOUSE: P.I. For Hire is arriving on March 19th and ahead of release a new trailer shows off one of the boss fights, and it really does look awesome. Read the full article on GamingOnLinux.
 
@@ -6537,7 +6941,7 @@ MOUSE: P.I. For Hire is arriving on March 19th and ahead of release a new traile
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 89. `EN` [Lexispell is a Balatro-styled roguelike word game with a demo worth trying](data/articles/61720c29872dff8333f21927bbdb1726.html)
+### 91. `EN` [Lexispell is a Balatro-styled roguelike word game with a demo worth trying](data/articles/61720c29872dff8333f21927bbdb1726.html)
 **Source:** GamingOnLinux
 Lexispell from MrEliptik is a roguelike that has you spell out words for points with some Balatro-styled mechanics, and the new demo is worth a go. Read the full article on GamingOnLinux.
 
@@ -6545,7 +6949,7 @@ Lexispell from MrEliptik is a roguelike that has you spell out words for points 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 90. `EN` [Moomintroll: Winter's Warmth arrives April 27, will run "great" on Steam Deck](data/articles/44d1b5f3ff4c4b1e828ce0961f83f2e4.html)
+### 92. `EN` [Moomintroll: Winter's Warmth arrives April 27, will run "great" on Steam Deck](data/articles/44d1b5f3ff4c4b1e828ce0961f83f2e4.html)
 **Source:** GamingOnLinux
 Moomintroll: Winter's Warmth is set to arrive on April 27th from the creators of Snufkin: Melody of Moominvalley, giving us another lovely adventure. Read the full article on GamingOnLinux.
 
@@ -6553,7 +6957,7 @@ Moomintroll: Winter's Warmth is set to arrive on April 27th from the creators of
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 91. `EN` [It's now easier to install MGSHDFix for Metal Gear games on Linux / Steam Deck](data/articles/f340e4eeb7b6e6211230909bffb8f2f8.html)
+### 93. `EN` [It's now easier to install MGSHDFix for Metal Gear games on Linux / Steam Deck](data/articles/f340e4eeb7b6e6211230909bffb8f2f8.html)
 **Source:** GamingOnLinux
 The ace Luxtorpeda project has expanded, and now it makes it real easy to install the popular MGSHDFix pack for various Metal Gear games on Linux / Steam Deck. Read the full article on GamingOnLinux.
 
@@ -6561,7 +6965,7 @@ The ace Luxtorpeda project has expanded, and now it makes it real easy to instal
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 92. `EN` [Slay the Spire 2 arrives March 5 with 4-player co-op](data/articles/da99197c7425b6478ddc94dc107d7b2d.html)
+### 94. `EN` [Slay the Spire 2 arrives March 5 with 4-player co-op](data/articles/da99197c7425b6478ddc94dc107d7b2d.html)
 **Source:** GamingOnLinux
 Mega Crit just revealed that Slay the Spire 2 is set to arrive in Early Access on March 5, and we're getting 4-player co-op with the launch. Read the full article on GamingOnLinux.
 
@@ -6569,7 +6973,7 @@ Mega Crit just revealed that Slay the Spire 2 is set to arrive in Early Access o
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 93. `EN` [Steam Deck now out of stock in the EU in addition to USA, Canada and Japan](data/articles/7040e485c2f15c730242d7083ca27a62.html)
+### 95. `EN` [Steam Deck now out of stock in the EU in addition to USA, Canada and Japan](data/articles/7040e485c2f15c730242d7083ca27a62.html)
 **Source:** GamingOnLinux
 Unfortunately the stock availability of the Steam Deck has only worsened recently, with the EU now appearing to be completely out of stock. Read the full article on GamingOnLinux.
 
@@ -6577,7 +6981,7 @@ Unfortunately the stock availability of the Steam Deck has only worsened recentl
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 94. `EN` [BleachBit 5.1.0 Beta adds cookie manager and expert mode](data/articles/c5225622d4b1146be1dd2c3f51d3fa2a.html)
+### 96. `EN` [BleachBit 5.1.0 Beta adds cookie manager and expert mode](data/articles/c5225622d4b1146be1dd2c3f51d3fa2a.html)
 **Source:** OMG! Ubuntu
 BleachBit 5.1.0 beta is out with a new cookie manager, expert mode to prevent accidental data loss, new browser support, and fixes for Linux users.
 You're reading BleachBit 5.1.0 Beta adds cookie manager and expert mode, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -6586,7 +6990,7 @@ You're reading BleachBit 5.1.0 Beta adds cookie manager and expert mode, a blog 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 95. `EN` [Opus Magnum from Zachtronics is getting a big new 'De Re Metallica' DLC](data/articles/e29216821f98af96fc5c68ba8bcc3eb7.html)
+### 97. `EN` [Opus Magnum from Zachtronics is getting a big new 'De Re Metallica' DLC](data/articles/e29216821f98af96fc5c68ba8bcc3eb7.html)
 **Source:** GamingOnLinux
 Easily my favourite game from Zachtronics, Opus Magnum is making a return with a big new DLC that's set to arrive on March 17th. Read the full article on GamingOnLinux.
 
@@ -6594,7 +6998,7 @@ Easily my favourite game from Zachtronics, Opus Magnum is making a return with a
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 96. `EN` [Ubuntu 26.04 splits firmware package to reduce update sizes](data/articles/8959a5abaa831ce8c6e6c38984147e7d.html)
+### 98. `EN` [Ubuntu 26.04 splits firmware package to reduce update sizes](data/articles/8959a5abaa831ce8c6e6c38984147e7d.html)
 **Source:** OMG! Ubuntu
 Ubuntu 26.04 LTS will split its 600MB linux-firmware package into 17 vendor-specific packages to reduce bandwidth and download sizes of firmware updates.
 You're reading Ubuntu 26.04 splits firmware package to reduce update sizes, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -6603,7 +7007,7 @@ You're reading Ubuntu 26.04 splits firmware package to reduce update sizes, a bl
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 97. `EN` [Linux Mint is adding post-install home encryption option](data/articles/92c11e1e94bf223679d5d2e5bf4be63c.html)
+### 99. `EN` [Linux Mint is adding post-install home encryption option](data/articles/92c11e1e94bf223679d5d2e5bf4be63c.html)
 **Source:** OMG! Ubuntu
 Linux Mint 23 will expand its System Administration tool (mintsysadm) with a new Users section, enabling post-install home encryption and more.
 You're reading Linux Mint is adding post-install home encryption option, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -6612,7 +7016,7 @@ You're reading Linux Mint is adding post-install home encryption option, a blog 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 98. `EN` [Linux Mint may make fewer releases a year to ‘uncap ambition’](data/articles/2568d5d75df9766403d023360938e3f7.html)
+### 100. `EN` [Linux Mint may make fewer releases a year to ‘uncap ambition’](data/articles/2568d5d75df9766403d023360938e3f7.html)
 **Source:** OMG! Ubuntu
 Linux Mint developers are considering ending the distro’s six‑month release cycle, a change that could mean fewer updates and a slower release pace.
 You're reading Linux Mint may make fewer releases a year to ‘uncap ambition’, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -6627,9 +7031,17 @@ You're reading Linux Mint may make fewer releases a year to ‘uncap ambition’
 
 ## General Tech / Tech Générale
 
+<div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
+
+### 1. `FR` [La batterie solide révolutionnaire qui intéresse Stellantis et Mercedes s’approche de la production avec cette bonne nouvelle](data/articles/4a18dd538923b8587198612840da973f.html)
+**Source:** Frandroid
+Entreprise liée à Mercedes-Benz ou Stellantis, Factorial vient d'annoncer une collaboration avec Philenergy visant à accélérer l'industrialisation de ses prometteuses batteries solides pour voitures électriques.
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="tech" data-source="The Verge">
 
-### 1. `EN` [Trump orders federal agencies to drop Anthropic’s AI](data/articles/7d2915c39ff77f04238cfeb5b6d0107a.html)
+### 2. `EN` [Trump orders federal agencies to drop Anthropic’s AI](data/articles/7d2915c39ff77f04238cfeb5b6d0107a.html)
 **Source:** The Verge
 On Friday afternoon, Donald Trump posted on Truth Social, accusing Anthropic, the AI company behind Claude, of attempting to "STRONG-ARM" the Pentagon and directing federal agencies to "IMMEDIATELY CEASE" use of its products. At issue is Anthropic CEO Dario Amodei's refusal of an updated agreement with the US military agreeing to "any lawful use" of Anthropic's technology, as Defense Secretary Pete Hegseth mandated in a January memo, to the frustration of many tech workers across the industry.
 As we explained earlier this week, that agreement would give the US military access to use the company's services for mass domestic surveillance and …
@@ -6807,7 +7219,15 @@ Le CES 2026 confirme la banalisation technologique du bien-vieillir : les inno
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 20. `EN` [Exhibit in Boston’s startup ecosystem at TechCrunch Founder Summit 2026](data/articles/c70da20cc4413e7b5f068bf355a9f4df.html)
+### 20. `EN` [Self-driving truck startup Einride raises $113M PIPE ahead of public debut](data/articles/de4ad667b73117ac806d02008c1be0f7.html)
+**Source:** TechCrunch Startups
+The proceeds will support Einride’s technology roadmap, global expansion, and autonomous deployments in North America, Europe, and the Middle East.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
+
+### 21. `EN` [Exhibit in Boston’s startup ecosystem at TechCrunch Founder Summit 2026](data/articles/c70da20cc4413e7b5f068bf355a9f4df.html)
 **Source:** TechCrunch Startups
 On June 9, over 1,000 founders, investors, and decision-makers will gather for TechCrunch Founder Summit 2026. This isn’t just foot traffic. It’s a full day of concentrated deal flow.
 
@@ -6815,7 +7235,7 @@ On June 9, over 1,000 founders, investors, and decision-makers will gather for T
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 21. `EN` [Jest, a marketplace for messaging games, is challenging the app store status quo](data/articles/de7d447ac9ff6bd41f3bafad4a3fb15a.html)
+### 22. `EN` [Jest, a marketplace for messaging games, is challenging the app store status quo](data/articles/de7d447ac9ff6bd41f3bafad4a3fb15a.html)
 **Source:** TechCrunch Startups
 Jest, a marketplace for messaging games, emerged from stealth with $7 million in seed funding.
 
@@ -6823,7 +7243,7 @@ Jest, a marketplace for messaging games, emerged from stealth with $7 million in
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 22. `EN` [Trace raises $3M to solve the AI agent adoption problem in enterprise](data/articles/5c258a1096eef3d7a6a2a1740a727c5e.html)
+### 23. `EN` [Trace raises $3M to solve the AI agent adoption problem in enterprise](data/articles/5c258a1096eef3d7a6a2a1740a727c5e.html)
 **Source:** TechCrunch Startups
 Trace is launching with $3 million in seed funding, including investment from Y Combinator, Zeno Ventures, Transpose Platform Management, Goodwater Capital, Formosa Capital, and WeFunder.
 
@@ -6831,7 +7251,7 @@ Trace is launching with $3 million in seed funding, including investment from Y
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 23. `EN` [How to avoid bad hires in early-stage startups](data/articles/573ffd1e3f80d132cd3b4fd681290c4e.html)
+### 24. `EN` [How to avoid bad hires in early-stage startups](data/articles/573ffd1e3f80d132cd3b4fd681290c4e.html)
 **Source:** TechCrunch Startups
 Lucena got the idea for Mappa after trying to build a marketing team but continually feeling like she had made the wrong hires.
 
@@ -6839,7 +7259,7 @@ Lucena got the idea for Mappa after trying to build a marketing team but cont
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 24. `EN` [Gushwork bets on AI search for customer leads — and early results are emerging](data/articles/25839858c0f4516be91bf61b8b8e92db.html)
+### 25. `EN` [Gushwork bets on AI search for customer leads — and early results are emerging](data/articles/25839858c0f4516be91bf61b8b8e92db.html)
 **Source:** TechCrunch Startups
 Gushwork has raised $9 million in a seed round led by SIG and Lightspeed. The startup has seen early customer traction from AI search tools like ChatGPT.
 
@@ -6847,7 +7267,7 @@ Gushwork has raised $9 million in a seed round led by SIG and Lightspeed. The st
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 25. `EN` [Have hard-won scaling lessons to share? Take the stage at TechCrunch Founder Summit 2026](data/articles/abd62e12e7ada4b50a69dfb956010606.html)
+### 26. `EN` [Have hard-won scaling lessons to share? Take the stage at TechCrunch Founder Summit 2026](data/articles/abd62e12e7ada4b50a69dfb956010606.html)
 **Source:** TechCrunch Startups
 Apply to speak at TechCrunch Founder Summit 2026 by April 17 for a chance to lead a roundtable or breakout session for 1,000 founders and investors. If you’ve built, backed, or operated inside high-growth startups, your experience could shape how the next wave of founders scales.
 
@@ -6855,7 +7275,7 @@ Apply to speak at TechCrunch Founder Summit 2026 by April 17 for a chance to lea
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 26. `EN` [Y Combinator grad and AI insurance brokerage Harper raises $47M](data/articles/3bff19cd045d4c3bcb855eeb4db7b102.html)
+### 27. `EN` [Y Combinator grad and AI insurance brokerage Harper raises $47M](data/articles/3bff19cd045d4c3bcb855eeb4db7b102.html)
 **Source:** TechCrunch Startups
 Harper is an AI-native insurance brokerage that just raised a $45 million combined Series A and seed, after being a member of YC's Winter 2025 cohort.
 
@@ -6863,7 +7283,7 @@ Harper is an AI-native insurance brokerage that just raised a $45 million combin
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Journal du Net">
 
-### 27. `FR` [Innovation en santé : financer l'avenir dans un contexte de raréfaction des aides publiques](data/articles/1c4b143d94fe8b8538d7d90270aa92c5.html)
+### 28. `FR` [Innovation en santé : financer l'avenir dans un contexte de raréfaction des aides publiques](data/articles/1c4b143d94fe8b8538d7d90270aa92c5.html)
 **Source:** Journal du Net
 Le financement public de l'innovation en santé n'a jamais été un mécanisme de confort. Mais il possédait une qualité devenue rare : la lisibilité. Ce cadre est aujourd'hui en train de se refermer.
 
@@ -6871,7 +7291,7 @@ Le financement public de l'innovation en santé n'a jamais été un mécanisme d
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 28. `EN` [More startups are hitting $10M ARR in 3 months than ever before](data/articles/43c8cdb361dccb5eb7a09231f9064344.html)
+### 29. `EN` [More startups are hitting $10M ARR in 3 months than ever before](data/articles/43c8cdb361dccb5eb7a09231f9064344.html)
 **Source:** TechCrunch Startups
 AI has brought the startup world the rise of companies that instantly hit multimillion-dollar ARR. Stripe revealed some data that shows how common this has become.
 
@@ -6879,7 +7299,7 @@ AI has brought the startup world the rise of companies that instantly hit multim
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 29. `EN` [Ukraine’s startups keep building](data/articles/e55e833d76ee808147a4defb52424b37.html)
+### 30. `EN` [Ukraine’s startups keep building](data/articles/e55e833d76ee808147a4defb52424b37.html)
 **Source:** TechCrunch Startups
 In the four years since Russia’s full-scale invasion of their country, Ukrainian startups have done more than survive: they are still building and growing.
 
@@ -6887,7 +7307,7 @@ In the four years since Russia’s full-scale invasion of their country, Ukraini
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 30. `FR` [Israël : six acteurs émergents de la defense tech](data/articles/9dd7a9c7ed4ba654bef4c92bec435662.html)
+### 31. `FR` [Israël : six acteurs émergents de la defense tech](data/articles/9dd7a9c7ed4ba654bef4c92bec435662.html)
 **Source:** FrenchWeb
 Israël s’impose comme un terrain d’expérimentation avancé pour les technologies militaires de nouvelle génération. Dans un écosystème où les passerelles entre recherche académique, unités technologiques d’élite et capital-risque sont structurelles, les cycles d’innovation sont courts et la mise en production rapide. La singularité israélienne ne tient pas uniquement à la densité de ses ingénieurs ou …
 
@@ -6895,7 +7315,7 @@ Israël s’impose comme un terrain d’expérimentation avancé pour les techno
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 31. `FR` [Financer le logiciel industriel : le pari d’OSS VENTURES](data/articles/e426f50de11a10d86382df0ac2dfa889.html)
+### 32. `FR` [Financer le logiciel industriel : le pari d’OSS VENTURES](data/articles/e426f50de11a10d86382df0ac2dfa889.html)
 **Source:** FrenchWeb
 Alors que l’industrie représente 25 % du PIB seules 1 % des startups dans le secteur trouve un financement. Pour combler ce paradoxe, OSS VENTURES a construit un modèle à contre-courant. Le fonds annonce avoir déjà recueilli 44 millions d’euros pour son nouveau véhicule et vise les 75 millions, pour en parler nous recevons son …
 
@@ -6903,7 +7323,7 @@ Alors que l’industrie représente 25 % du PIB seules 1 % des startups dans le 
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 32. `FR` [De l’électronique de puissance à l’OS industriel : la trajectoire de GYS ?](data/articles/641a0f67a5b4033f66c694e475ed99c5.html)
+### 33. `FR` [De l’électronique de puissance à l’OS industriel : la trajectoire de GYS ?](data/articles/641a0f67a5b4033f66c694e475ed99c5.html)
 **Source:** FrenchWeb
 L’industrie se reconfigure sous l’effet conjugué de l’électronique de puissance, du logiciel et de l’interconnexion des systèmes. Ses produits deviennent des architectures complexes, ses usines des environnements numériques, et ses cycles d’innovation des trajectoires longues. Invité de Perspective, Bruno Bouygues, dirigeant de GYS, entreprise basée à Laval et présente dans cent trente pays, décrit cette …
 
@@ -6911,7 +7331,7 @@ L’industrie se reconfigure sous l’effet conjugué de l’électronique de pu
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 33. `FR` [CIC Start Innovation Awards 2026 : le Sud-Ouest donne le coup d’envoi de sa 7ᵉ édition](data/articles/5b8bbc67bb4fcb9b5955c4b670add1b0.html)
+### 34. `FR` [CIC Start Innovation Awards 2026 : le Sud-Ouest donne le coup d’envoi de sa 7ᵉ édition](data/articles/5b8bbc67bb4fcb9b5955c4b670add1b0.html)
 **Source:** FrenchWeb
 Le CIC Sud Ouest ouvre officiellement les candidatures de la 7ᵉ édition des CIC Start Innovation Awards, rendez-vous désormais installé dans l’écosystème start-up et innovation du grand Sud-Ouest.L’événement se tiendra les 25 et 26 mars 2026 à Bordeaux, avec une finale régionale organisée au CAPC – musée d’art contemporain, le 26 mars. Pensé comme un …
 
@@ -6919,7 +7339,7 @@ Le CIC Sud Ouest ouvre officiellement les candidatures de la 7ᵉ édition des C
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 34. `FR` [Pourquoi lever auprès d’un gros fonds d’investissement n’est pas toujours un avantage pour un fondateur](data/articles/b0f8b20c40eb1b77f94cbf4699fe1e1d.html)
+### 35. `FR` [Pourquoi lever auprès d’un gros fonds d’investissement n’est pas toujours un avantage pour un fondateur](data/articles/b0f8b20c40eb1b77f94cbf4699fe1e1d.html)
 **Source:** FrenchWeb
 Lever des fonds auprès d’un grand fonds de venture capital reste, pour beaucoup d’entrepreneurs, une forme de consécration. Montants élevés, marque reconnue, accès supposé à un réseau international, l’équation paraît évidente et pourtant, derrière cette évidence apparente se cache une réalité plus nuancée. Car un fonds très capitalisé n’est pas seulement un investisseur plus riche, …
 
@@ -6927,7 +7347,7 @@ Lever des fonds auprès d’un grand fonds de venture capital reste, pour beauco
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 35. `FR` [Robotique humanoïde : la fin de la promesse, le début de l’industrialisation – Perspectives avec Nicolas Halftermeyer](data/articles/135b9840179d32bbe8fff7f694471d70.html)
+### 36. `FR` [Robotique humanoïde : la fin de la promesse, le début de l’industrialisation – Perspectives avec Nicolas Halftermeyer](data/articles/135b9840179d32bbe8fff7f694471d70.html)
 **Source:** FrenchWeb
 En 2010, au CES de Las Vegas, les drones grand public n’étaient encore qu’une intuition industrielle. Quinze ans plus tard, la robotique humanoïde traverse un moment comparable. Nicolas Halftermeyer, expert de long terme, passé par Parrot puis Aldebaran, nous partage dans ce nouveau numéro de Perspectives, son analyse d’un domaine où l’innovation atteint une vélocité …
 
@@ -6935,7 +7355,7 @@ En 2010, au CES de Las Vegas, les drones grand public n’étaient encore qu’u
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 36. `FR` [TECHARENA 2026 : New Era, Next Mindset, ou le moment de vérité pour l’innovation européenne](data/articles/308bc3b16a2482b6fa56b3b14b0849c6.html)
+### 37. `FR` [TECHARENA 2026 : New Era, Next Mindset, ou le moment de vérité pour l’innovation européenne](data/articles/308bc3b16a2482b6fa56b3b14b0849c6.html)
 **Source:** FrenchWeb
 Pour son édition 2026, du 11 au 12 février à Stockholm, Techarena a choisi un intitulé explicite, New Era, Next Mindset. Derrière la formule, l’événement acte surtout un basculement d’un écosystème technologique entré dans une phase de normalisation contrainte, marquée par la fin de l’argent abondant, la montée des enjeux de souveraineté et la politisation …
 
@@ -6943,7 +7363,7 @@ Pour son édition 2026, du 11 au 12 février à Stockholm, Techarena a choisi un
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 37. `FR` [SXSW Innovation Conference 2026 : une semaine pour lire les signaux faibles de la tech et de la culture](data/articles/393c927f80f7dadb8824f6ae76c0714a.html)
+### 38. `FR` [SXSW Innovation Conference 2026 : une semaine pour lire les signaux faibles de la tech et de la culture](data/articles/393c927f80f7dadb8824f6ae76c0714a.html)
 **Source:** FrenchWeb
 Du 12 au 18 mars 2026, Austin (Texas) accueillera une nouvelle édition de la SXSW Innovation Conference, rendez-vous hybride où se croisent technologies émergentes, industries créatives et transformations sociétales. Un format unifié, pensé pour décloisonner les disciplines et multiplier les occasions d’apprentissage comme de rencontres, dans un contexte où l’innovation se joue de plus en …
 
@@ -6951,7 +7371,7 @@ Du 12 au 18 mars 2026, Austin (Texas) accueillera une nouvelle édition de la SX
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 38. `FR` [Aux côtés de Mistral AI, Nscale ou Lovable, ELEVEN LABS incarne la nouvelle génération de startups AI-native européennes](data/articles/53e778ac2a54645de14143a3974ca174.html)
+### 39. `FR` [Aux côtés de Mistral AI, Nscale ou Lovable, ELEVEN LABS incarne la nouvelle génération de startups AI-native européennes](data/articles/53e778ac2a54645de14143a3974ca174.html)
 **Source:** FrenchWeb
 Aux côtés de Mistral AI, Nscale, Lovable, n8n ou encore Legora, ElevenLabs illustre l’émergence d’une nouvelle génération de startups dites AI-native. Des entreprises qui ne se contentent pas d’intégrer de l’intelligence artificielle à un produit existant, mais qui construisent leur offre, leur interface et leur modèle économique directement à partir des capacités des modèles. Fondée …
 
@@ -6959,7 +7379,7 @@ Aux côtés de Mistral AI, Nscale, Lovable, n8n ou encore Legora, ElevenLabs ill
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 39. `FR` [UBEES sécurise huit millions d’euros pour industrialiser la pollinisation connectée](data/articles/dd6e4eb1c9d6fa215508bcd40a0a4650.html)
+### 40. `FR` [UBEES sécurise huit millions d’euros pour industrialiser la pollinisation connectée](data/articles/dd6e4eb1c9d6fa215508bcd40a0a4650.html)
 **Source:** FrenchWeb
 UBEES inscrit la pollinisation au cœur de la performance agricole L’agtech a prospéré sur la promesse d’une agriculture augmentée par la technologie. Capteurs, automatisation et plateformes de données ont structuré un récit d’innovation souvent porté par l’offre plus que par la demande. Ce cycle touche aujourd’hui à sa fin, sous l’effet d’une rationalisation du …
 
@@ -6967,7 +7387,7 @@ UBEES inscrit la pollinisation au cœur de la performance agricole L’agtech a 
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 40. `FR` [CURE 51 : soigner le cancer en partant des survivants](data/articles/ebd521b815d560576dfdff7de9ec90aa.html)
+### 41. `FR` [CURE 51 : soigner le cancer en partant des survivants](data/articles/ebd521b815d560576dfdff7de9ec90aa.html)
 **Source:** FrenchWeb
 il y a deux manières de raconter l’innovation en santé, la première consiste à empiler des promesses avec une IA qui va tout voir, tout prédire, tout guérir, et la seconde, qui commence par un constat plus inconfortable, qui est que malgré des décennies d’efforts, certains cancers restent des impasses thérapeutiques, avec des lignes de …
 
@@ -6975,7 +7395,7 @@ il y a deux manières de raconter l’innovation en santé, la première consist
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 41. `FR` [Rebranding en stand-by, visuels bricolés… startups, attention à la dette graphique !](data/articles/89c32f8a3e5b9982eddd6553b543b881.html)
+### 42. `FR` [Rebranding en stand-by, visuels bricolés… startups, attention à la dette graphique !](data/articles/89c32f8a3e5b9982eddd6553b543b881.html)
 **Source:** FrenchWeb
 La dette graphique est ce passif invisible qui s’installe discrètement dans les startups. Au départ, tout semble aller vite et bien : un logo bricolé, des visuels faits maison, un rebranding repoussé à plus tard. Mais avec le temps, cette accumulation de compromis finit par peser lourd. Comme la dette technique, la dette graphique fragilise …
 
@@ -6983,7 +7403,7 @@ La dette graphique est ce passif invisible qui s’installe discrètement dans l
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 42. `FR` [Du clic à la conversion : CyberCité dévoile la 9ᵉ édition de More Traffic, More Business](data/articles/211e45d108d8d41027223fe45526297f.html)
+### 43. `FR` [Du clic à la conversion : CyberCité dévoile la 9ᵉ édition de More Traffic, More Business](data/articles/211e45d108d8d41027223fe45526297f.html)
 **Source:** FrenchWeb
 Dans un environnement digital où les parcours clients se complexifient et où les attentes des consommateurs évoluent rapidement, il ne suffit plus de générer des clics. La performance marketing repose désormais sur la capacité des marques à transformer ces interactions en conversions solides, tout en conservant la préférence du consommateur. C’est dans ce contexte que …
 
@@ -6991,7 +7411,7 @@ Dans un environnement digital où les parcours clients se complexifient et où l
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 43. `FR` [Michel PAULIN : la souveraineté numérique ne se décrète pas, elle se construit par la croissance, la commande et le capital](data/articles/d21e000d1d499258096a54e4b12cadaa.html)
+### 44. `FR` [Michel PAULIN : la souveraineté numérique ne se décrète pas, elle se construit par la croissance, la commande et le capital](data/articles/d21e000d1d499258096a54e4b12cadaa.html)
 **Source:** FrenchWeb
 Ce lundi 26 janvier 2026, au Ministère de l’Économie et des Finances, se tenaient les premières Rencontres de la souveraineté numérique, un nouvel espace de débat pensé comme un point de convergence entre pouvoirs publics, grandes entreprises, institutions et acteurs du numérique. Organisé par le ministère délégué chargé de l’Intelligence artificielle et du Numérique, l’événement …
 
@@ -6999,7 +7419,7 @@ Ce lundi 26 janvier 2026, au Ministère de l’Économie et des Finances, se ten
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 44. `FR` [Avec ACTILITY, NETMORE tente de structurer un marché LoRaWAN longtemps fragmenté](data/articles/febdf8f0097249368cdc4be7db7b5da1.html)
+### 45. `FR` [Avec ACTILITY, NETMORE tente de structurer un marché LoRaWAN longtemps fragmenté](data/articles/febdf8f0097249368cdc4be7db7b5da1.html)
 **Source:** FrenchWeb
 L’acquisition d’Actility par Netmore, annoncée ce jour, s’inscrit dans un mouvement que le marché de l’IoT massif anticipait sans jamais vraiment le voir se matérialiser. Après plus d’une décennie de diffusion technologique rapide mais désordonnée, l’écosystème LoRaWAN entre dans une phase de consolidation qui répond moins à un besoin d’innovation qu’à une exigence d’industrialisation. Le …
 
@@ -7007,7 +7427,7 @@ L’acquisition d’Actility par Netmore, annoncée ce jour, s’inscrit dans un
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 45. `FR` [2026, le quantique à l’épreuve du réel avec Fanny Bouton et Olivier Ezratty](data/articles/d8bd04d2723b7ac1bb37603b0433b47a.html)
+### 46. `FR` [2026, le quantique à l’épreuve du réel avec Fanny Bouton et Olivier Ezratty](data/articles/d8bd04d2723b7ac1bb37603b0433b47a.html)
 **Source:** FrenchWeb
 FWMedia ouvre une nouvelle saison de son émission Le Club, que nous avons décidé de rebaptiser FW PERSPECTIVES. En collaboration avec CanalChat Grandialogue, il s’agit d’un format de conversation et d’analyse consacré aux trajectoires longues de l’innovation, de l’industrie et du pouvoir. L’objectif est de comprendre ce qui structure réellement les technologies, les marchés et …
 
@@ -7015,7 +7435,7 @@ FWMedia ouvre une nouvelle saison de son émission Le Club, que nous avons déci
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 46. `FR` [NVIDIA GTC, cartographie d’un écosystème du compute en voie de consolidation](data/articles/7c03519189f735135628f7238f67f954.html)
+### 47. `FR` [NVIDIA GTC, cartographie d’un écosystème du compute en voie de consolidation](data/articles/7c03519189f735135628f7238f67f954.html)
 **Source:** FrenchWeb
 Présentée comme la première conférence mondiale dédiée à l’intelligence artificielle, la NVIDIA GTC occupe désormais une place singulière dans le calendrier technologique international. À San Jose comme en ligne, l’événement réunit développeurs, chercheurs, dirigeants et industriels autour d’un même objet, le calcul accéléré, devenu le socle matériel et économique de la nouvelle vague d’innovations en …
 
@@ -7023,7 +7443,7 @@ Présentée comme la première conférence mondiale dédiée à l’intelligence
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 47. `FR` [Cyber-Physical Systems : comprendre les systèmes où le numérique pilote le réel](data/articles/c899f958a4d35fdde5e5f25e23bc814b.html)
+### 48. `FR` [Cyber-Physical Systems : comprendre les systèmes où le numérique pilote le réel](data/articles/c899f958a4d35fdde5e5f25e23bc814b.html)
 **Source:** FrenchWeb
 Les Cyber-Physical Systems, plus connus sous l’acronyme CPS, s’imposent progressivement comme une catégorie technologique centrale pour comprendre l’évolution de l’industrie, des infrastructures critiques et, plus largement, de l’économie numérique avancée. Longtemps cantonnés aux cercles académiques et aux ingénieries de pointe, ils désignent aujourd’hui une réalité opérationnelle qui structure la robotique, l’énergie, la mobilité, la santé …
 
@@ -7031,7 +7451,7 @@ Les Cyber-Physical Systems, plus connus sous l’acronyme CPS, s’imposent prog
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 48. `FR` [Le 28e régime européen : un nouveau cadre pour faire émerger des champions du numérique en Europe](data/articles/bbefb5a68a8a6c6fc0d1f3895964dd5b.html)
+### 49. `FR` [Le 28e régime européen : un nouveau cadre pour faire émerger des champions du numérique en Europe](data/articles/bbefb5a68a8a6c6fc0d1f3895964dd5b.html)
 **Source:** FrenchWeb
 En marge du Forum économique mondial de Davos, le 20 janvier 2026, la présidente de la Commission européenne, Ursula von der Leyen, a officialisé le projet EU-INC. Depuis plus d’une décennie, entrepreneurs, investisseurs et institutions pointent les limites d’un marché unique qui cesse de l’être dès qu’il s’agit de créer, financer ou développer une entreprise …
 
@@ -7055,7 +7475,15 @@ Alors que le prix des cryptomonnaies recule fortement, l'adoption des blockchain
 
 <div class="article-item" data-lang="fr" data-category="finance" data-source="Cryptoast">
 
-### 2. `FR` [Jackpot : Il gagne 180 000 euros avec un pari à 60 euros grâce au minage de Bitcoin](data/articles/fde79cc6e9cc9941b5e92e0ed8098565.html)
+### 2. `FR` [Quelles sont les dates à ne pas louper dans la crypto en mars 2026 ?](data/articles/8ff95a04557bbbd2aabc25442cffba99.html)
+**Source:** Cryptoast
+Le mois de mars s'annonce chargé pour les marchés financiers et l'écosystème des cryptomonnaies. Statistiques économiques, lancements de tokens et nouveaux lancements rythmeront les prochaines semaines. Voici les événements à surveiller dans la crypto et dans la finance pour ce mois de mars.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="finance" data-source="Cryptoast">
+
+### 3. `FR` [Jackpot : Il gagne 180 000 euros avec un pari à 60 euros grâce au minage de Bitcoin](data/articles/fde79cc6e9cc9941b5e92e0ed8098565.html)
 **Source:** Cryptoast
 Un utilisateur anonyme vient de décrocher la récompense d'un bloc de la blockchain Bitcoin en misant l'équivalent d'un ticket de loto. Que s'est-il passé ? Cette exploit peut-il être reproduit ?
 
@@ -7063,7 +7491,7 @@ Un utilisateur anonyme vient de décrocher la récompense d'un bloc de la blockc
 
 <div class="article-item" data-lang="fr" data-category="finance" data-source="Cryptoast">
 
-### 3. `FR` [Ils réalisent plus d'1 million de gains grâce à de l’insider trading sur leur propre délit d'initié](data/articles/2933589cdc4168c956c820c8ff1f58d2.html)
+### 4. `FR` [Ils réalisent plus d'1 million de gains grâce à de l’insider trading sur leur propre délit d'initié](data/articles/2933589cdc4168c956c820c8ff1f58d2.html)
 **Source:** Cryptoast
 Une affaire de délit d’initié récemment révélée par l’enquêteur crypto ZachXBT pourrait-elle en cacher une autre encore plus vicieuse et lucrative ? Une activité suspecte sur la plateforme Polymarket semble le confirmer, avec un pari ouvert sur le résultat d’une enquête qui aurait permis d’empocher plus d’1 million de dollars à ceux qu’elle était censée viser.
 
@@ -7071,7 +7499,7 @@ Une affaire de délit d’initié récemment révélée par l’enquêteur crypt
 
 <div class="article-item" data-lang="fr" data-category="finance" data-source="Cryptoast">
 
-### 4. `FR` [Wall Street s'enfonce toujours plus profondément dans la DeFi](data/articles/6463713fa91824c64acb9aa8ad6b927f.html)
+### 5. `FR` [Wall Street s'enfonce toujours plus profondément dans la DeFi](data/articles/6463713fa91824c64acb9aa8ad6b927f.html)
 **Source:** Cryptoast
 Les rapprochements opérés entre certains protocoles centraux de la DeFi et des acteurs de finance traditionnelle s’accélèrent en ce début d’année. Une activité d'investissement institutionnel on-chain qui implique surtout des acteurs de Wall Street, mais également la Société Générale et son stablecoin euro (EURCV).
 
@@ -7079,15 +7507,15 @@ Les rapprochements opérés entre certains protocoles centraux de la DeFi et des
 
 <div class="article-item" data-lang="fr" data-category="finance" data-source="Cryptoast">
 
-### 5. `FR` [Manipulation du Bitcoin : Cette entreprise faisait chuter le prix du BTC tous les matins à 10 h 00 ?](data/articles/f06de4fd2b16f9e569dd6ae0fdf26aef.html)
+### 6. `FR` [Frappes des États-Unis sur l'Iran - Le Bitcoin chute sous les 64 000 dollars](data/articles/70d72166453443e159bbdc2bbcd64bd2.html)
 **Source:** Cryptoast
-Depuis plusieurs mois, une firme de market making est régulièrement citée dans les débats autour de la baisse du Bitcoin. Certains observateurs estiment que son rôle dans les ETF Bitcoin spot pourrait influencer les mouvements du marché, notamment les chutes récurrentes observées chaque matin à l’ouverture de Wall Street.
+Alors que le week-end débute à peine, Donald Trump annonce le déclenchement d'une opération militaire contre l'Iran, menée conjointement avec Israël. Un nouvel embrasement du Moyen-Orient qui ne fait pas les affaires du marché crypto, avec un Bitcoin qui plonge de presque 8 % et des liquidations déjà supérieures à 500 millions de dollars. On fait le point...
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="finance" data-source="Cryptoast">
 
-### 6. `FR` [MARA : 1,7 milliard de dollars de pertes au dernier trimestre pour le mineur de Bitcoin](data/articles/86d5593db6c019febf7adbf340e3ffd7.html)
+### 7. `FR` [MARA : 1,7 milliard de dollars de pertes au dernier trimestre pour le mineur de Bitcoin](data/articles/86d5593db6c019febf7adbf340e3ffd7.html)
 **Source:** Cryptoast
 L'entreprise de mining MARA rapporte des pertes importantes au 4e trimestre 2025. La faute en grande partie à la chute du cours du Bitcoin (BTC).
 
@@ -7095,7 +7523,7 @@ L'entreprise de mining MARA rapporte des pertes importantes au 4e trimestre 2025
 
 <div class="article-item" data-lang="fr" data-category="finance" data-source="Cryptoast">
 
-### 7. `FR` [Bitcoin ne sera pas la monnaie dominante du futur pour le cofondateur de Wikipedia](data/articles/545f01432bdea75fb44939b3ae3bc460.html)
+### 8. `FR` [Bitcoin ne sera pas la monnaie dominante du futur pour le cofondateur de Wikipedia](data/articles/545f01432bdea75fb44939b3ae3bc460.html)
 **Source:** Cryptoast
 Le sujet du Bitcoin continue de diviser, qu’il s’agisse de ses perspectives de prix à venir ou plus précisément de son statut monétaire. Deux sujets récemment abordés par le cofondateur de Wikipédia, et autant dire que son constat et ses prévisions ne sont pas optimistes…
 
@@ -7103,7 +7531,7 @@ Le sujet du Bitcoin continue de diviser, qu’il s’agisse de ses perspectives 
 
 <div class="article-item" data-lang="fr" data-category="finance" data-source="Cryptoast">
 
-### 8. `FR` [Energie, santé, PEL... Qu'est-ce qui change pour votre argent au 1er mars ?](data/articles/2e9063cdb220b4e95d305d815630ee58.html)
+### 9. `FR` [Energie, santé, PEL... Qu'est-ce qui change pour votre argent au 1er mars ?](data/articles/2e9063cdb220b4e95d305d815630ee58.html)
 **Source:** Cryptoast
 Le passage au mois de mars voit l’arrivée de nouvelles mesures et échéances. Entre prix de l’énergie en hausse et augmentation des frais de santé, les Français pourraient de nouveau devoir mettre la main au portefeuille. Zoom sur ce qui va changer.
 
@@ -7111,7 +7539,7 @@ Le passage au mois de mars voit l’arrivée de nouvelles mesures et échéances
 
 <div class="article-item" data-lang="fr" data-category="finance" data-source="Journal du Coin">
 
-### 9. `FR` [Ethereum : ETHZilla abandonne l’ETH et se rebaptise Forum Markets](data/articles/50586ed76f8dc3c53ab5c282cc4abbcc.html)
+### 10. `FR` [Ethereum : ETHZilla abandonne l’ETH et se rebaptise Forum Markets](data/articles/50586ed76f8dc3c53ab5c282cc4abbcc.html)
 **Source:** Journal du Coin
 Forum Markets, anciennement connue sous le nom d’ETHZilla, a annoncé un changement de stratégie en abandonnant sa trésorerie en Ethereum.
 
@@ -7119,7 +7547,7 @@ Forum Markets, anciennement connue sous le nom d’ETHZilla, a annoncé un chang
 
 <div class="article-item" data-lang="fr" data-category="finance" data-source="Cryptoast">
 
-### 10. `FR` [Les évènements crypto et blockchain à ne pas louper en mars 2026](data/articles/11e21b7665149b91a70f032fd82c9a87.html)
+### 11. `FR` [Les évènements crypto et blockchain à ne pas louper en mars 2026](data/articles/11e21b7665149b91a70f032fd82c9a87.html)
 **Source:** Cryptoast
 Quels sont les meilleurs évènements crypto à ne pas louper en mars 2026 ? Pour ce nouveau mois, retrouvez notre sélection de rendez-vous, avec la 9e édition de l'Eth[CC] comme date principale.
 
@@ -7127,7 +7555,7 @@ Quels sont les meilleurs évènements crypto à ne pas louper en mars 2026 ? P
 
 <div class="article-item" data-lang="fr" data-category="finance" data-source="Cryptoast">
 
-### 11. `FR` [Aave : le conflit de gouvernance s'intensifie, Marc Zeller publie un audit d'Aave Labs à la veille du vote](data/articles/c0c3547949c911e75e7e6385aced6319.html)
+### 12. `FR` [Aave : le conflit de gouvernance s'intensifie, Marc Zeller publie un audit d'Aave Labs à la veille du vote](data/articles/c0c3547949c911e75e7e6385aced6319.html)
 **Source:** Cryptoast
 Depuis le 25 février, les détenteurs de tokens AAVE votent sur la plus grosse demande de financement de l'histoire du protocole. Mais la veille du lancement, le fondateur de l'Aave Chan Initiative, Marc Zeller, a publié un audit cinglant sur Aave Labs. Il accuse l'équipe d'avoir reçu 86 millions de dollars depuis 2017, sans jamais avoir rendu de comptes au DAO...
 
@@ -7623,9 +8051,40 @@ Advanced Linux commands cheat sheet
 
 </div>
 
+<div class="article-item" data-lang="fr" data-category="opensource" data-source="LinuxFr">
+
+### 12. `FR` [Trivabble a 10 ans](data/articles/9e375a4fe6812616f3bf913e633c7d4b.html)
+**Source:** LinuxFr
+Il y a 10 ans, je présentais Trivabble ici sur LinuxFR. Le dernier article ici remontant à 2021, c’est l’occasion de présenter les nouveaux développements. Et je dois remercier les contributeurs et contributrices externes, parce que c’est surtout de leur fait s’il y a des nouvelles choses à présenter. lien nᵒ 1 : Le site web de Trivabble Présentation rapide
+Pour les gens qui ne connaissent pas, il s’agit d’un jeu en réseau qui propose un plateau, des chevalets et des pièces, inspiré du Scrabble mais configurable et adaptable pour que chacun puisse inventer ses propres manières de jouer. Un des principes derrière Trivabble est de ne pas forcer une manière de jouer ou des règles particulières, et si vous voulez jouer en mode rapide où tout le monde joue n’importe quand le plus vite possible pour former des mots qui n’existent pas et sans commencer au milieu, le jeu ne vous en empêchera pas.
+Améliorations
+Ysabeau a dessiné un sac. Ça avait été annoncé dans le journal précédent. C’est évidemment intégré, depuis le temps.
+Laurent Mazet a pas mal bossé. On peut maintenant :
+jouer avec des plateaux de différentes tailles
+vérifier si le premier mot posé est bien au centre
+être averti quand on quitte une partie, pour éviter les fausses manipulations
+bloquer les pièces sur le plateau, pour ne plus pouvoir revenir sur les coups précédents
+Côté maintenance du code, il a également regroupé des feuilles styles CSS qui étaient séparées parce qu’elles venaient de projets différents, mais je ne maintiens plus ces projets et la seule conséquence de cette séparation dans Trivabble, c’est de la complexité inutile.
+Arnaudv6 a partagé quelques idées d’amélioration pour l’interface, qui a été un peu retravaillée pour plus de cohérence, de simplicité et de discrétion :
+le nombre de tuiles restantes est maintenant sur le sac1 les boutons et les boites de sélections ont maintenant une apparence plus unifiée, et ont été déplacés et regroupés pour gagner de la place et de la cohérence
+changer son nom se fait avec un bouton « crayon » plus discret. D’ailleurs, des correctifs permettent que changer de nom ne cause plus des bugs dans le comptage des mots et la vérification orthographique
+Autres améliorations diverses :
+Le jeu se redimensionne automatiquement pour prendre la taille de la fenêtre. Cela fonctionne dans les navigateurs modernes (sauf WebKit / Safari à cause d’un bug dans la gestion des coordonnées) en s’appuyant sur la propriété CSS zoom nouvellement standard et un peu de javascript. Pour les navigateurs ne prenant pas en charge ce zoom, le redimensionnement n’est plus bloqué et il est maintenant possible de zoomer avec les doigts. Le zoom automatique est également désactivé .
+Les messages de chat persistent. Jusqu’à maintenant, recharger la page ou revenir sur une partie plus tard perdait les messages. Ce qui fait qu’un plantage perdait la discussion, et il était impossible d’utiliser le chat intégré au jeu dans le cadre d’un jeu asynchrone.
+Il y a maintenant un mode sombre. Il s’applique automatiquement en fonction des réglages du navigateur, mais on peut aussi forcer le thème sombre ou le thème clair.
+Enfin, Philippe Lhardy a intégré Trivabble à Yunohost, ce qui permet d'installer facilement Trivabble sur une instance Yunohost.
+Conclusion
+Je partage une petite pensée pour ma grand-mère, qui a été la motivation pour lancer le projet il y a 10 ans, et qui nous a depuis quitté.
+Trivabble est stable et évolue lentement. Le jeu est dans un état utilisable et l’instance qui fait fonctionner trivabble.org se fait oublier. Ce n’est pas un projet très actif, il n’y a d’ailleurs pas eu de développement entre 2021 et 2025. Il n’y a pas de dépendance externe à part Node.js et le système d’exploitation dessous, c’est du Javascript très simple, donc la maintenance est triviale.
+Le projet n’est pas abandonné pour autant. Ce sont les contributeurs et contributrices qui réveillent le projet et me motivent pour m’y remettre de temps à autre. Je trouve ça agréable de me replonger dans ce code, mais il n’y a pas tellement besoin de le faire, ça fonctionne tel quel, donc c’est plutôt rare, mais n’hésitez pas à rejoindre l’aventure :-)
+C’est toujours utilisé, probablement pas énormément, en fait je n’en sais rien. J’ai reçu un mail assez rapidement la seule fois où j’ai cassé mon installation suite à une migration. Des gens ont créé des routines autour de Trivabble, et se retrouvent tous les samedis soir pour leur partie hebdomadaire. Je trouve ça plutôt chouette.
+ça a été un petit défi technique, parce qu’il a fallu le faire dans le code SVG du sac, qui ne pouvait donc plus être affiché à l’aide d’une balise img mais en l’intégrant directement comme une balise svg, et les styles SVG étaient alors bloqués par la politique CSP dans Chrome… Une conversion en attributs SVG a heureusement résolu le problème sans modifier l’apparence du sac. Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navigateur
+
+</div>
+
 <div class="article-item" data-lang="fr" data-category="opensource" data-source="Programmez">
 
-### 12. `FR` [Sécuriser au-delà du code : le nouveau périmètre de l’AppSec](data/articles/38f29567982a8b29e281caad5ead10de.html)
+### 13. `FR` [Sécuriser au-delà du code : le nouveau périmètre de l’AppSec](data/articles/38f29567982a8b29e281caad5ead10de.html)
 **Source:** Programmez
 d'expert par Eyal Dyment (VP of Security Products, JFrog)
 Le monde de la technologie est en pleine effervescence face au potentiel du développement logiciel assisté par l’IA et de l’automatisation. Dans le même temps, cette accélération s’accompagne d’un renforcement marqué de la pression réglementaire et d’une augmentation des risques pesant sur la chaîne d’approvisionnement logicielle. Si de nombreuses organisations continuent de s’appuyer principalement sur l’analyse du code source, une telle approche, centrée uniquement sur le code, crée un « angle mort malware » de plus en plus préoccupant. Les applications modernes ne sont plus simplement écrites ligne par ligne : elles sont assemblées à partir de binaires, de packages tiers, d’images de conteneurs et, de plus en plus, de modèles d’IA. Limiter la sécurisation à ce que les développeurs produisent directement revient à ignorer les véritables surfaces d’attaque exploitées par les cybercriminels. Pour répondre à la tension entre rapidité de mise en production et exigences de sécurité, l’attention doit se porter sur les binaires.
@@ -7648,58 +8107,9 @@ Des cadres réglementaires comme l’AI Act européen illustrent l’ampleur des
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Open Source Weekly (The New Stack)">
 
-### 13. `EN` [Twilio’s A2H is a new protocol that helps agents talk to humans](data/articles/e896d90659ef6ac5a522974dca1b73fe.html)
+### 14. `EN` [Twilio’s A2H is a new protocol that helps agents talk to humans](data/articles/e896d90659ef6ac5a522974dca1b73fe.html)
 **Source:** Open Source Weekly (The New Stack)
 Over the last year or so, we’ve seen a proliferation of frameworks and protocols for agentic AI tools. There is
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="opensource" data-source="LinuxFr">
-
-### 14. `FR` [LibreOffice 26.2 : Markdown, accessibilité et plein d’autres nouveautés et améliorations](data/articles/4a3f163314f7c85cbeb59ed3f13797b0.html)
-**Source:** LinuxFr
-En février, il y a la corvée commerciale de la Saint-Valentin et les réjouissances intellectuelles consécutives à la sortie d’une nouvelle version de la suite bureautique LibreOffice. C’est, bien évidemment, sur LibreOffice 26.2 que l’on va se pencher. Au menu, du très visible, comme les boites de dialogues, du très attendu comme la prise en compte du Markdown ou du moins visible comme le travail sur l’accessibilité.
-Il va de soi que les notes de version sont plus exhaustives et qu’il ne s’agit ici que d’une sélection. lien nᵒ 1 : Notes de version Sommaire
-L’accessibilité
-Support du Markdown
-L’interface et les boites de dialogue
-Writer
-Calc
-En vrac
-Pour finir
-Avant de commencer : toutes les captures d’écran ont été faites, volontairement, sur une interface très personnalisée.
-L’accessibilité
-L’accessibilité de la suite bureautique est un important chantier pour lequel une personne a été recrutée en 2023 (en). Cette version-ci a fait l’objet d’améliorations sensibles. Parallèlement, Sophie Gautier, coordinatrice de The Document Foundation1 (Foundation coordinator) est en train de monter un groupe de travail qui a pour objectif la publication d’un rapport de conformité en matière d’accessibilité pour répondre à la norme européenne EN 301 549 (en) d’accessiblité numérique. La langue de travail de ce groupe est l’anglais.
-Concernant les améliorations de cette version :
-la boite de dialogue « Vérifier les mises à jour », Aide &gt; Vérifier les mises à jour… est devenue accessible aux lecteurs d’écran ;
-les fonctions d’accessibilité des aperçus des bordures, onglet « Bordures » des boites de dialogue, ont été revues afin qu’elles ne perturbent plus les dispositifs d’assistance ;
-sur Linux : la boite de dialogue Outils&gt; Orthographe est annoncée correctement par le lecteur d’écran ;
-quand on supprimait la sélection accessible, le curseur se déplaçait automatiquement au début du texte, ce comportement perturbant est supprimé ;
-dans Writer, les fautes d’orthographe ne sont plus signalées par les dispositifs d’assistance si la vérification orthographique n’est pas activée ;
-l’accessibilité au clavier de la boite de dialogue des extensions : Outils &gt; Extensions est accessible aux lecteurs d’écran ;
-et enfin, il est possible de naviguer entre les onglets verticaux avec des raccourcis clavier.
-Support du Markdown
-Le Markdown est devenu le format de balisage léger standard « de fait ». Et c’est celui supporté par LinuxFR. Son support a été introduit dans cette version, c’est un des formats d’enregistrement qui s’est ajouté à la série des autres formats de la suite, pas un format d’export. Pour l’utiliser pour vos sites, passant pour LinuxFR, vous devrez :
-soit ouvrir le fichier .md dans un éditeur de texte, n’importe lequel, même Mousepad fait l’affaire par exemple, et copier-coller ensuite le tout à partir de l’éditeur de texte là où vous le voulez ;
-soit, si cela est possible, importer le fichier .md dans ce qui vous sert pour gérer le site comme le fait par exemple l’extension ODT2SPIP pour le système de gestion de contenu SPIP qui permet de créer une nouvelle page dans SPIP avec un fichier.ODT. ça marche avec LinuxFR ? Plutôt bien. Les styles de caractère Accentuation (ici en italiques) et Accentuation forte (ici gras) sont bien reconnu ainsi que Texte source pour « télétype », les indications in-texte encadrées de l’accent grave U+0060. Les styles de paragraphes :
-Bloc de citation (paragraphes de citation précédés d’une ligne blanche et du signe « &gt; » dans la saisie de contenu sur LinuxFR) ;
-Contenu de tableau ;
-Corps de texte ;
-Liste, par contre la numérotation des listes ordonnée ne semble pas bien fonctionner, il faut saisir les numéros à la main ;
-Texte préformaté pour écrire des blocs de code ;
-Titre 1, Titre 2, Titre 3 et Titre de tableau.
-Les tableaux sont bien repris ainsi que les liens insérés via l’insertion d’hyperliens.
-Ce qui ne semble pas fonctionner du tout : ce sont les notes, elles disparaissent corps et biens. C’est peut-être dû au passage dans l’éditeur de texte qui transforme un peu le document. Et, évidemment, il faut rajouter les images avec la syntaxe LinuxFR.
-La version de Mardown de LibreOffice est CommonMark (en) et la bibliothèque utilisée est MD4C avec quelques extensions prises en charge par cette bibliothèque (cf ce rapport de bug (en) et ses réponses), pour en savoir plus, voir cette note (en) du blog de The Document Foundation.
-Petite remarque, si vous utilisez un LibreOffice 25.8, vous avez peut-être pu constater qu’il était question d’enregistrement au format .md, cette information a été ajoutée trop précocement car la version 25.8 ne gère pas le Markdown.
-L’interface et les boites de dialogue
-Les boites de dialogue, notamment de styles et de formats, ont beaucoup changé. Longtemps elles se sont affichées avec une présentation par onglets en haut et le contenu dessous.
-Puis il y a une période de transition en 2025 qui a fait grincer une collection complète de dents où on avait, selon l’endroit où on était, soit des onglets soit une navigation par menu latéral. Cette dernière avait un gros défaut : par exemple pour la configuration des styles dans Writer il fallait descendre tout en bas pour accéder aux options qui étaient cachées. Et il n’y avait pas de barre de défilement pour aller plus vite.
-LibreOffice 26.2 voit ces défauts corrigés : les boites de dialogue sont harmonisées dans toute la suite et leur menu latéral, toujours sans barre de défilement qui s’avère finalement inutile, montre clairement tous les types de paramètres auxquels on peut accéder. Et, comme on peut le voir, LibreOffice a intégré une meilleure prise en charge des systèmes d’écritures asiatiques et complexes en affichant deux colonnes, une pour les polices occidentales, ou pour les polices asiatiques ou complexes. Une personne a également été recrutée en 2023 (en) pour travailler sur le support des systèmes d’écriture de droite à gauche (RTL) et complexes (CTL). Si toutefois, vous préférez revenir à l’affichage avec les onglets, il suffit d’aller dans le menu Outils &gt; Options &gt; Apparenceau niveau de « Boites de dialogue » et cocher l’option Horizontal en haut. Il faut savoir que les onglets en haut ne s’affichent que sur une seule ligne et qu’il faudra donc naviguer avec les flèches quand il y a de nombreuses options. Writer
-Il y a un certain nombre d’amélioration autour de la compatibilité avec le format DOCX : séparation de tableaux flottants en plusieurs tableaux, suppression de la numérotation des notes de bas de page à l’ouverture d’un fichier DOCX, etc.
-On relèvera deux nouvelles options d’alignement des paragraphes : « Début » et « Fin ». Si vous utilisez l’alphabet latin, vous ne verrez aucune différence avec les deux options « Forcer à gauche/en haut » et « Forcer à droite/en bas ». Elles ont été développées pour réutiliser plus facilement les styles entre les divers systèmes d’écriture. Pour continuer sur la lancée du travail pour la prise en compte des systèmes d’écriture dont le fonctionnement est différent de celui de l’alphabet latin, il est possible de changer la direction du texte : de gauche à droite ou de droite à gauche en cours de travail. Cela peut se paramétrer dans les styles. Calc
-Un gros travail sur les performances a été fait : vitesse de défilement, rapidité des classeurs avec de nombreuses formes et du rejet des modifications. On voit apparaître de nouvelles options de tri (Données &gt;Trier) qui dépendent de la « locale » (langue définie dans les Options de LibreOffice). On peut ainsi déterminer quel caractère est utilisé comme séparateur de décimal pour le tri naturel. On peut relever aussi une avancée ergonomique qui va plaire à toutes celles et ceux qui utilisent les matrices, on peut maintenant modifier les formules matricielles avec la combinaison de touches : F2 + ↑ Maj + Ctrl + Entrée, il n’est plus nécessaire de modifier la formule elle-même.
-Et aussi :
 
 </div>
 
@@ -8112,30 +8522,24 @@ DON'T force synchronous participation from attendees. One of the key benefits of
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="opensource" data-source="Hacker News (nouveautés)">
+<div class="article-item" data-lang="pt" data-category="opensource" data-source="Hacker News (nouveautés)">
 
-### 35. `EN` [What do you use OpenClaw for?](data/articles/646a509b614789af5ee9e5e97f11eb5d.html)
+### 35. `EN` [Kakveda open source-level AI, Infra observability agent](data/articles/dba5282490bee2f413fcaa417dad11ab.html)
 **Source:** Hacker News (nouveautés)
-I’m pretty lazy with adopting new tech I read about. OpenClaw seems mildly useful
-So am curious what workflows you use OpenClaw or similar “proactive agentic frameworks” for? URL: https://news.ycombinator.com/item?id=47191126
+Article URL: https://www.kakveda.com/ URL: https://news.ycombinator.com/item?id=47193086
 Points: 1
-# : 0
+# : 1
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Hacker News (nouveautés)">
 
-### 36. `EN` [Show HN: Visual Lambda Calculus – a thesis project (2008) revived for the web](data/articles/0666b37869edfe6e3c06026df3c02e86.html)
+### 36. `EN` [Show HN: JobSeek Expat – a CLI tool to scrape English speaking jobs on LinkedIn](data/articles/9f4eb0b83dfa64a035d07101e99a7247.html)
 **Source:** Hacker News (nouveautés)
-Originally built as my master's thesis in 2008, Visual Lambda is a graphical environment where lambda terms are manipulated as draggable 2D structures ("Bubble Notation"), and beta-reduction is smoothly animated.
-I recently revived and cleaned up the project and published it as an interactive web version:
-https://bntre.github.io/visual-lambda/
-GitHub repo:
-https://github.com/bntre/visual-lambda
-It also includes a small "Lambda Puzzles" challenge, where you try to extract a hidden free variable (a golden coin) by constructing the right term:
-https://github.com/bntre/visual-lambda#puzzles URL: https://news.ycombinator.com/item?id=47191052
+JobSeek Expat is a powerful, open-source CLI tool designed to help expats and international job seekers find English-speaking jobs in non-English speaking countries (like Germany, France, Netherlands, etc.).
+It scrapes major job boards, filters out local-language requirements, and presents you with a clean, curated list of opportunities. URL: https://news.ycombinator.com/item?id=47192874
 Points: 2
-# : 1
+# : 0
 
 </div>
 
@@ -8467,111 +8871,17 @@ Tailwind has been in the news lately, as it struggles to keep its doors open in 
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 1. `EN` [Show HN: AxKeyStore – Zero-trust CLI secrets manager using your own GitHub repo](data/articles/f30874328a1eb7147bd51163c66f669b.html)
+### 1. `EN` [Show HN: A seedable stream shuffler modeled as a roundabout network (Python)](data/articles/850f346789f21425ba89a12b9e533420.html)
 **Source:** Hacker News Show
-Hi HN,
-I built AxKeyStore, an open-source CLI tool for managing secrets that uses your own private GitHub repository as encrypted storage.
-The idea is simple:
-→ All encryption happens locally.
-→ Secrets are stored as encrypted blobs in your private repo.
-→ GitHub is treated as untrusted storage.
-→ No plaintext secrets ever leave your machine.
-→ No plaintext secrets are stored on disk.
-Most secret managers either require a hosted backend, a self-hosted server, or trusting a SaaS provider. I wanted something that:
-→ Requires zero infrastructure
-→ Uses tooling developers already have
-→ Keeps the threat model simple
-AxKeyStore uses a layered approach to security:
-→ Secrets are encrypted with a Remote Master Key (RMK).
-→ The RMK is encrypted with your master password and stored in the repo.
-→ A Local Master Key (LMK) encrypts your local GitHub token and repo config.
-→ The LMK itself is encrypted using Argon2id-derived keys from your master password.
-→ Encryption uses XChaCha20-Poly1305 (AEAD).
-GitHub only sees encrypted binary blobs. Even if someone compromises your repository, they still need your master password to decrypt anything.
-Why GitHub? Because it gives:
-→ Private repositories
-→ Version history (commit log as audit trail)
-→ Access control
-→ Free storage
-→ Global availability
-Instead of building a backend, I’m leveraging an existing, reliable system - but cryptographically isolating it.
-Features
-→ Simple CLI workflow
-→ Hierarchical categories (e.g., cloud/aws/prod)
-→ Version history per secret (via commits)
-→ Retrieve specific versions by SHA
-→ Multi-profile support (separate vaults)
-→ Transactional master password reset
-→ Secure random secret generation
-Tech
-→ Written in Rust. Uses tokio, clap, argon2, and chacha20poly1305.
-→ There are unit and integration tests (including mocked GitHub API interactions).
-→ Open source - MIT licensed.
-I’d appreciate feedback on:
-→ The threat model - what am I missing?
-→ Whether GitHub as encrypted blob storage is a bad assumption
-→ UX improvements for CLI-based secret workflows
-→ Any crypto or key-handling concerns
-I’m especially interested in critique from people who’ve built or audited secret management systems.
-Thanks. URL: https://news.ycombinator.com/item?id=47189172
-Points: 2
-# : 0
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
-
-### 2. `EN` [Show HN: Testing SQL logic without a real database](data/articles/c1aee330a2a1f8d0349f747fdeabc86e.html)
-**Source:** Hacker News Show
-Show HN: Testing SQL logic without a real database
-Over the years I kept fighting the same problem when testing repository code:
-real database tests are slow
-Docker/TestContainers add friction and startup time
-mocks don’t validate SQL behavior
-SQLite introduces dialect differences
-integration tests are too late for fast feedback
-So I built an in-memory SQL engine focused on validating SQL behavior during unit tests.
-It plugs into IDbConnection, allowing repository code (Dapper or raw SQL) to run unchanged.
-What it does
-emulates SQL dialect behavior
-validates constraints and query logic
-supports multiple providers (MySQL, SQL Server, PostgreSQL, Oracle, SQLite, DB2)
-simulates version-specific behavior
-provides execution metrics and plan insights
-runs entirely in memory (no infrastructure)
-The goal is not to replace integration tests.
-It’s to catch SQL logic issues earlier and keep tests fast, deterministic, and portable.
-Why not SQLite in-memory?
-SQLite is great, but testing against it means testing SQLite semantics.
-Teams often hit:
-type mismatches
-dialect drift
-query compatibility differences
-adaptation layers in test code
-This approach keeps behavior aligned with the target database rules.
-Current work
-I’m working on tooling to reduce friction further:
-Visual Studio &amp; VS Code extensions
-mapping tables, views, and procedures locally
-generating in-memory schemas automatically
-keeping test schemas aligned with real databases
-Background
-The core originated from a previous internal project and includes extensive compatibility tests to validate behavior across database versions and frameworks.
-Looking for feedback
-Curious how others handle SQL testing trade-offs.
-If this problem space resonates with you, contributions and real-world scenarios are very welcome. The project is open source and evolving, and additional dialect behaviors, edge cases, and tooling improvements can make it more useful for everyone.
-Repo:
-https://github.com/christianulson/DbSqlLikeMem
-Nuget:
-https://www.nuget.org/packages/DbSqlLikeMem URL: https://news.ycombinator.com/item?id=47189319
+You enter in order, but after a few loops and exits, your neighbors are no longer your neighbors. It’s a tunable Python package for reproducible mixing, with benchmark + determinism tests. URL: https://news.ycombinator.com/item?id=47192733
 Points: 1
-# : 1
+# : 0
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 3. `FR` [Actualité : Surfshark One à -86 % : un antivirus pas cher pour étudiants](data/articles/63d837a35c702a46337962dc7520799e.html)
+### 2. `FR` [Actualité : Surfshark One à -86 % : un antivirus pas cher pour étudiants](data/articles/63d837a35c702a46337962dc7520799e.html)
 **Source:** Les Numeriques
 Pour un étudiant, l'ordinateur et le smartphone sont bien plus que de simples gadgets. Ce sont des outils de travail essentiels pour réviser, rendre des mémoires et rester connecté. Malheureusement, entre les frais de scolarité et le coût de la vie, le budget alloué à la cybersécurité passe souvent au second plan, laissant la porte ouverte aux malwar...
 

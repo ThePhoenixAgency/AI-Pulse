@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Standards for Light Bulb "Transitions" from Off?</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Standards for Light Bulb "Transitions" from Off?</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/28/2026 8:27:40 AM | <a href="https://community.home-assistant.io/t/standards-for-light-bulb-transitions-from-off/991381" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>I have smart lights from 4 different manufactures:</p>
+<ul>
+<li>Philips Hue.</li>
+<li>Sengled</li>
+<li>Third Reality</li>
+<li>Aqara</li>
+</ul>
+<p>I have been testing how they handle transitions between brightness levels and colors.</p>
+<h2><a name="p-3764998-light-starts-on-1" class="anchor" href="https://community.home-assistant.io#p-3764998-light-starts-on-1"></a>Light Starts On</h2>
+<p>If the light is turned on they all seem to work in one of two ways:</p>
+<ol>
+<li>Do a simple RGB transition.</li>
+<li>Separate brightness and color, so transition them both over time.</li>
+</ol>
+<p>The difference in approach isn’t super noticeable unless you are radically changing both the color and the brightness - generally more expensive bulbs look better.</p>
+<hr>
+<h2><a name="p-3764998-light-starts-off-2" class="anchor" href="https://community.home-assistant.io#p-3764998-light-starts-off-2"></a>Light Starts Off</h2>
+<p>However if the bulb is <strong>OFF</strong>, different manufactures handle the transition very differently:</p>
+<p><strong>Philips Hue</strong><br>
+Treats “off” as brightness zero.<br>
+Hence they gradually fade up the brightness to the requested level.<br>
+At the same time they transition the color from the color that the light was when it was turned off to the new color.</p>
+<p><strong>Sengled</strong><br>
+Restores both color and brightness - to its previous level (turns on full/previous bright).<br>
+Then transitions to the new color and brightness.</p>
+<p><strong>Third Reality</strong><br>
+Changes to the new color (before any light is visible)<br>
+Then gradually increases the brightness to the new level.</p>
+<p><strong>Aqara</strong><br>
+Briefly flashes the old color.<br>
+Instantly switches to the new color.<br>
+Then gradually increases the brightness to the new level.</p>
+<hr>
+<p>Are there any standards around this behavior, or is it just a crap shoot based on which manufacturer you buy, what behavior you get?</p> <p><small>1 post - 1 participant</small></p> <p><a href="https://community.home-assistant.io/t/standards-for-light-bulb-transitions-from-off/991381">Read full topic</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

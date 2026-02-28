@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>2025.10: Undo, redo, and draw me too</title>
+<title>Wayback Machine</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,90 +29,12 @@
 </style>
 </head>
 <body>
-  <h1>2025.10: Undo, redo, and draw me too</h1>
+  <h1>Wayback Machine</h1>
   <div class="metadata">
     Source: Home Assistant (Blog officiel) | Date: 10/1/2025 12:00:00 AM | <a href="https://www.home-assistant.io/blog/2025/10/01/release-202510/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p><p><lite-youtube videoid="0T23Co-E6Ew" videotitle="Home Assistant 2025.10 Release Party"></lite-youtube></p>
-<p>Boo! </p>
-<p>We just <a href="/blog/2025/09/17/home-assistant-turns-12/">celebrated our birthday</a> , which means it is time for spooky season; get ready for Halloween! And, hello to the October release of Home Assistant 2025.10! </p>
-<p>This release iterates on some of the features we introduced in the last couple of releases, but also introduces some brand-new ones!</p>
-<p>The highlight of this release is definitely the iterations of the automation editor, which gained a sidebar last release, and now has gained undo/redo functionality, a resizable sidebar, improved copy/paste, and more! Thanks for all the feedback you provided on the previous release; it made a massive difference in this release.</p>
-<p>Using multiple wake words for voice assistants is now possible, which opens up a lot of possibilities, especially for dual-language households (like mine ). Dashboards get more intelligent by suggesting entities based on your usage patterns, and the AI Task can now generate images, which I’m curious to see what the community will do with it!</p>
-<p>Enjoy the release!</p>
-<p>../Frenck</p>
-<!--more-->
-<ul>
-<li><a href="#automation-editor">Automation editor</a>
-<ul>
-<li><a href="#the-sidebar-is-resizable">The sidebar is resizable</a></li>
-<li><a href="#ctrlv">CTRL+V</a></li>
-<li><a href="#the-overflow-menu-is-back">The overflow menu is back</a></li>
-<li><a href="#undoredo">Undo/Redo</a></li>
-<li><a href="#repeat-repeat-repeat-repeat">Repeat repeat repeat repeat</a></li>
-<li><a href="#automation-editor-feedback">Automation editor feedback</a></li>
-</ul>
-</li>
-<li><a href="#ai-task---draw-me-a-sheep">AI Task - Draw me a sheep</a></li>
-<li><a href="#dashboards-get-smarter---let-your-home-suggest-what-to-show">Dashboards get smarter - let your home suggest what to show</a></li>
-<li><a href="#voice">Voice</a>
-<ul>
-<li><a href="#hello-hola">Hello, hola</a></li>
-<li><a href="#beep-boop">Beep boop</a></li>
-</ul>
-</li>
-<li><a href="#integrations">Integrations</a>
-<ul>
-<li><a href="#new-integrations">New integrations</a></li>
-<li><a href="#noteworthy-improvements-to-existing-integrations">Noteworthy improvements to existing integrations</a></li>
-<li><a href="#integration-quality-scale-achievements">Integration quality scale achievements</a></li>
-<li><a href="#now-available-to-set-up-from-the-ui">Now available to set up from the UI</a></li>
-</ul>
-</li>
-<li><a href="#other-noteworthy-changes">Other noteworthy changes</a>
-<ul>
-<li><a href="#new-more-information-dialog-for-media-player-entities">New more information dialog for media player entities</a></li>
-<li><a href="#sync-zooming-charts-in-the-history-panel">Sync zooming charts in the history panel</a></li>
-<li><a href="#template--yaml-editors-get-a-toolbar">Template &amp; YAML editors get a toolbar</a></li>
-</ul>
-</li>
-<li><a href="#patch-releases">Patch releases</a>
-<ul>
-<li><a href="#2025101---october-3">2025.10.1 - October 3</a></li>
-<li><a href="#2025102---october-10">2025.10.2 - October 10</a></li>
-<li><a href="#2025103---october-17">2025.10.3 - October 17</a></li>
-<li><a href="#2025104---october-24">2025.10.4 - October 24</a></li>
-</ul>
-</li>
-<li><a href="#need-help-join-the-community">Need help? Join the community</a></li>
-<li><a href="#backward-incompatible-changes">Backward-incompatible changes</a></li>
-<li><a href="#all-changes">All changes</a></li>
-</ul>
-<p><em>A huge thank you to all the contributors who made this release possible! And a special shout-out to <a href="https://github.com/jlpouffier">@JLo</a>, <a href="https://github.com/laupalombi">@laupalombi</a>, and <a href="https://github.com/piitaya">@piitaya</a> who helped write the release notes this release. Also, <a href="https://github.com/googanhiem">@googanhiem</a>, <a href="https://github.com/SeraphicRav">@SeraphicRav</a>, <a href="https://github.com/tronikos">@tronikos</a>, and <a href="https://github.com/richardpolzer">@richardpolzer</a> for putting effort into tweaking its contents. Thanks to them, these release notes are in great shape. </em></p>
-<h2>Automation editor</h2>
-<p>In the <a href="/blog/2025/09/03/release-20259/">last release</a>, we introduced a new layout for the automation editor, and your feedback has been invaluable in helping us refine it!</p>
-<p>This release fixes a few of the most common issues we managed to gather from all of you. Thanks for all the feedback! </p>
-<h3>The sidebar is resizable</h3>
-<p>Working on an action that is too complex for a small sidebar? Maybe one with a few YAML fields? You can now resize the sidebar to adapt the layout to your current task!</p>
-<img class="no-shadow" alt="Screenshot showing the automation editor with the sidebar expanded on the right. The sidebar is larger in this screenshot, as it can now be resized." src="/images/blog/2025-10/automation-editor-resizable-sidebar.png" />
-<h3>CTRL+V</h3>
-<p>We previously introduced keyboard shortcuts to copy and cut.</p>
-<p>Pasting was more complex to bring to life because you can paste a block (trigger, condition, action) in many different locations in your automation. In this release, we introduce a really simple pattern. If you previously copied a block, you can paste it below any block simply by selecting it and pressing CTRL+V.</p>
-<p>Another very simple, but very welcome, quality-of-life improvement to the automation editor!</p>
-<img class="no-shadow" alt="Screen recording showing how to copy and paste blocks in the automation editor; it especially highlights how a pasted block is pasted after the block you've selected." src="/images/blog/2025-10/automation-editor-copy-paste.gif" />
-<h3>The overflow menu is back</h3>
-<p>We initially relocated the overflow menu (the menu that appears when you click the <code>⋮</code>) with all the options related to a block on the sidebar, thinking this would make the flow cleaner.</p>
-<p>Due to popular demand and helpful feedback that some actions were more difficult to reach (such as testing a condition or running an action), we decided to bring it back to the main section of the editor as well.</p>
-<img class="no-shadow" alt="Screenshot showing the automation editor with the overflow menu open on an item in the automation editor flow. This showcases all items are back, including disabling, copy, and pasting parts." src="/images/blog/2025-10/automation-editor-overflow-menu.png" />
-<h3>Undo/Redo</h3>
-<p>We’ve all been there: you’re building a complex automation, make a mistake, and want to revert it, only to find out that it’s really not simple. Up until now, the only way to revert some unsaved changes made to an automation was to close it and start over again… A very painful workflow.</p>
-<p>This release introduces an Undo functionality (and its associated Redo). You can now undo up to 75 steps back in your automation editing history (and redo them if you want). Standard keyboard shortcuts (CTRL+Z and CTRL+Y) are also available! An amazing contribution from <a href="https://github.com/jpbede">@jpbede</a>, thanks!</p>
-<img class="no-shadow" alt="Screen recording showing how to undo and redo changes in the automation editor with the new back- and forward-arrows that are shown in the top right of the automation editor." src="/images/blog/2025-10/automation-editor-redo-undo.gif" />
-<h3>Repeat repeat repeat repeat</h3>
-<p>Finally, we noticed some unwanted complexity in our <a href="/docs/scripts/#repeat-a-group-of-actions">“repeat” building block</a>, which allows you to repeat one or multiple actions for as long as you need to.</p>
-<p>This complexity stemmed from the fact that we were trying to cover four main use cases in a single block.</p>
-<p>We decided to split this building block into four smaller ones, with simpler descriptions explaining each use case.</p>
+    <div><div> <p> The Wayback Machine is an initiative of the <a href="https://archive.org/">Internet Archive</a>, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. <br>Other <a href="https://archive.org/projects/">projects</a> include <a href="https://openlibrary.org/">Open Library</a> &amp; <a href="https://archive-it.org/">archive-it.org</a>. </p> <p> Your use of the Wayback Machine is subject to the Internet Archive's <a href="https://archive.org/about/terms.php">Terms of Use</a>. </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -115,12 +43,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

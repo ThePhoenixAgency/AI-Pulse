@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,11 +28,7 @@
     Source: Next INpact | Date: 2/27/2026 3:27:33 PM | <a href="https://next.ink/brief_article/fuite-de-donnees-personnelles-a-lecole-dingenieurs-espci/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <p>Dans un email envoyé à l’ensemble de l’école et plus largement à «&nbsp;<em>l’ensemble des usagers disposant d’un compte informatique ESPCI</em>&nbsp;», le responsable du service informatique de l’École supérieure de physique et de chimie industrielles de la ville de Paris (ESPCI Paris) les a informés d’une fuite de données personnelles.</p> <figure><img alt="" src="https://i2.wp.com/next.ink/wp-content/uploads/2026/02/ESPCI_de_Paris-1024x768.jpg?ssl=1"><figcaption><a href="https://commons.wikimedia.org/wiki/User:LPLT">LPLT</a>, licence <a href="https://commons.wikimedia.org/wiki/File:ESPCI_de_Paris.JPG" target="_blank" rel="noopener noreferrer">Creative Commons by-sa 3.0</a></figcaption></figure> <p>Le courrier explique que, «<em> lors de la journée du jeudi 26 février 2026, un défaut de contrôle d’accès a permis à des acteurs non identifiés de moissonner l’annuaire de l’école</em>&nbsp;».</p> <p>Les données concernées sont les suivantes&nbsp;:</p> <ul>
-<li>Civilité, nom et prénom d’usage.</li> <li>Courriel pro, et éventuellement personnel s’il a été renseigné.</li> <li>Données d’identification: nom d’utilisateur, mais pas le mot de passe.</li> <li>Fonction et affectation.</li> <li>Photo, sauf si il avait été indiqué qu’elle ne devait servir qu’au badge.</li> <li>Permissions d’accès aux services et aux locaux.</li> <li>Abonnements aux listes de diffusion.</li> <li>Pour les étudiants: inscriptions pédagogiques.</li> <li>Pour le personnel: employeur, domaine d’activité (BAP, section CNRS et CNU).</li> <li>Pour le personnel salarié de la régie: corps, date de fin de contrat.</li> <li>Pour les prestataires, partenaires et extérieurs: employeur, catégorie socioprofessionnelle.</li>
-</ul> <p>Le responsable du service informatique assure avoir notifié la CNIL, conformément à l’article 33 du RGPD et se dit «&nbsp;<em>navré de cet incident</em>&nbsp;». Il ajoute que son équipe prévoit «&nbsp;<em>des mesures de renforcement de la sécurité, afin que ce scénario ne puisse pas se reproduire</em>&nbsp;».</p> <p>Next a contacté ESPCI pour en savoir plus et mettra à jour cet article le cas échéant.</p> <ul>
-<li> <div> <p> <abbr> <span>Lundi 16 février 2026 à 14h13</span> <span>16/02/2026 14h13</span> </abbr> </p> </div>
-</li> </ul> </div></div>
+    <p>Dans un email envoyé à l&#8217;ensemble de l&#8217;école et plus largement à « l&#8217;ensemble des usagers disposant d&#8217;un compte informatique ESPCI », le responsable du service informatique de l&#8217;École supérieure de physique et de chimie industrielles de la ville de Paris (ESPCI Paris) les a informés d&#8217;une fuite de données personnelles. Le courrier explique que, [&#8230;]</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -47,12 +37,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

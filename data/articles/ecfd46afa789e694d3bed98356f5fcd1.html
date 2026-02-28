@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,28 +28,19 @@
     Source: Gladys Assistant (Forum) | Date: 2/23/2026 9:29:33 AM | <a href="https://community.gladysassistant.com/t/erreur-decouverte-sonos/10046" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <div> <div> <p><span> <time> Février 23, 2026, 9:29 </time> <span>1</span> </span> </p></div> <div> <p>Bonjour,</p>
+    <p><p>Bonjour,</p>
 <p>J’essaie de découvrir mon Sonos Ray et je vois dans les logs ceci après plusieurs échecs :</p>
 <blockquote>
 <p>2026-02-23T10:25:32+0100 errorMiddleware.js:68 (errorMiddleware) SonosDiscoveryError: No players found<br>
-at EventEmitter. (/src/server/services/sonos/node_modules/<span>@svrooij</span>/sonos/lib/sonos-device-discovery.js:96:24)<br>
+at EventEmitter. (/src/server/services/sonos/node_modules/<span class="mention">@svrooij</span>/sonos/lib/sonos-device-discovery.js:96:24)<br>
 at Object.onceWrapper (node:events:633:28)<br>
 at EventEmitter.emit (node:events:519:28)<br>
-at Timeout. (/src/server/services/sonos/node_modules/<span>@svrooij</span>/sonos/lib/sonos-device-discovery.js:84:25)<br>
+at Timeout. (/src/server/services/sonos/node_modules/<span class="mention">@svrooij</span>/sonos/lib/sonos-device-discovery.js:84:25)<br>
 at listOnTimeout (node:internal/timers:588:17)<br>
 at processTimers (node:internal/timers:523:7)</p>
 </blockquote>
 <p>Il y a clairement un timeout mais cette erreur vient trop vite &lt;10s.</p>
-<p>Merci d’avance.</p> </div> </div> <div> <p>Comment as-tu installé Gladys ?</p>
-<p>Gladys doit être sur le même réseau que ton enceinte Sonos, le container Gladys doit-être en mode network=host, et avoir accès à tous les appareils sur ton réseau.</p> </div> <div> <p>Gladys a été installé manuellemet sur Ubuntu Server + Docker.</p>
-<p>Je ping le Sonos depuis Gladys.</p> </div> <div> <p>Mmmm possible que la Sonos Ray ne soit pas compatible alors…</p>
-<p>La Sonos Ray est une barre de son visiblement, je ne sais pas si l’API locale qu’on utilise pour leur gamme enceinte connectée est disponible également sur Sonos Ray</p>
-<p>Si tu lis le contraire sur internet, dis moi <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/slight_smile.png?v=15" alt=":slight_smile:"></p> </div> <div> <p>Ok merci, je vais regarder. Je sais juste que j’avais pu la connecter à HA via leur intégration… <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/grimacing.png?v=15" alt=":grimacing:"></p> <div> <p><span>1 « J'aime »</span> </p></div> </div> <div> <p>Ok, bizarre alors <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/smiley.png?v=15" alt=":smiley:"></p>
-<p>Pour info, on utilise cette librairie dans Gladys pour Sonos :</p> <p>Elle n’est plus trop maintenue malheureusement.</p>
-<p>C’est technique, mais peut-être qu’il faudrait tester la lib chez toi pour voir si elle détecte ta Sonos Ray hors Gladys, et sinon tester d’autres librairies pour voir si une autre librairie est capable de la détecter.</p>
-<p>Ça serait dans tes compétences ou trop complexe ?</p> </div> <div> <p>Hum je peux essayer mais je ne suis vraiment pas sur.</p>
-<p>En revanche, je suis dispo pour partager mon serveur pour tester si jamais…</p> </div> <div> <div> <p>Aide toi de l’IA pour tester <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/slight_smile.png?v=15" alt=":slight_smile:"></p>
-<p>Si tu n’y arrives pas, on pourra faire ça ensemble oui</p> </div> <div> <p><span>1 « J'aime »</span> </p></div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/mutmut"><span>mutmut</span></a> </span> <span> <time> Février 24, 2026, 8:24 </time> <span>9</span> </span> </p> <div> <p>il faudrait voir quelle librairie HA utilise et voir si c’est la même que Gladys.</p> </div> </div> <div> <p>HA est codé en Python, et Gladys en Javascript, donc ça ne sera pas les mêmes librairies de toute façon <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/slight_smile.png?v=15" alt=":slight_smile:"></p> <div> <p><span>1 « J'aime »</span> </p></div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/mutmut"><span>mutmut</span></a> </span> <span> <time> Février 24, 2026, 8:33 </time> <span>11</span> </span> </p> <p>Forcément, ça va marcher moins bien <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/sweat_smile.png?v=15" alt=":sweat_smile:"></p> <div> <p><span>3 « J'aime »</span> </p></div> </div> </div></div>
+<p>Merci d’avance.</p> <p><small>11 messages - 3 participant(e)s</small></p> <p><a href="https://community.gladysassistant.com/t/erreur-decouverte-sonos/10046">Lire le sujet en entier</a></p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -64,12 +49,12 @@ at processTimers (node:internal/timers:523:7)</p>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Database P1</title>
+<title>Database P1 - Domoticz</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,12 +29,13 @@
 </style>
 </head>
 <body>
-  <h1>Database P1</h1>
+  <h1>Database P1 - Domoticz</h1>
   <div class="metadata">
     Source: Domoticz (Forum News) | Date: 2/17/2026 9:12:43 AM | <a href="https://forum.domoticz.com/viewtopic.php?p=331615#p331615" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Hello,<br><br>I had problems with the USB P1 interface- CRC errors . I changed to a LAN interface. It now records data correctly.<br>The annual consumption is shown correctly, but the comparison is incorrect. Since the CRC problems start with october 2025, I have incorrect comparisons of october and december. November is shown correctly. The same is for january 2026.<br><br>How can i repair data for compared usage.<br><br>The same is for Gas and Electricity.<dl class="file"><dt class="attach-image"><img src="https://forum.domoticz.com/download/file.php?id=34707&amp;sid=bbc82d072ef65a3360bb360df215aab4" class="postimage" alt="c2.jpg" onclick="viewableArea(this);" /></dt></dl><br /><dl class="file"><dt class="attach-image"><img src="https://forum.domoticz.com/download/file.php?id=34706&amp;sid=bbc82d072ef65a3360bb360df215aab4" class="postimage" alt="c1.jpg" onclick="viewableArea(this);" /></dt></dl><p>Statistics: Posted by <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=17089">nabru99</a> — Tuesday 17 February 2026 10:12 — Replies 0 — Views 240</p><hr /></p>
+    <div><div><p>Hello,</p><p> I had problems with the USB P1 interface- CRC errors . I changed to a LAN interface. It now records data correctly.<br>
+The annual consumption is shown correctly, but the comparison is incorrect. Since the CRC problems start with october 2025, I have incorrect comparisons of october and december. November is shown correctly. The same is for january 2026.</p><p> How can i repair data for compared usage.</p><p> The same is for Gas and Electricity.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +44,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

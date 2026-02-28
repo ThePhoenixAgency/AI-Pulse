@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,9 +28,13 @@
     Source: Home Assistant Community Forum (Latest) | Date: 2/27/2026 11:28:03 PM | <a href="https://community.home-assistant.io/t/the-5-year-home-automation-post-that-made-me-rethink-everything/991353" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <p><span> <time> February 27, 2026, 11:28pm </time> <span>1</span> </span> </p></div> <div> <p>What I didn’t expect was what writing that post would trigger.</p>
+    <p><p>Back in January I shared a <strong>5‑year technical review</strong> of our home automation setup here. At the time, my goal was pretty simple: review the infrastructure that had to change, capture what held up, what didn’t, and what surprised me after living with a fairly complex system day to day.</p>
+<p>What I didn’t expect was what writing that post would trigger.</p>
 <p>Technically, most of the system <em>worked</em>.<br>
-Automations fired. Devices stayed online. Edge cases were mostly handled.</p> <p>Not because it was broken — but because it demanded attention:</p>
+Automations fired. Devices stayed online. Edge cases were mostly handled.</p>
+<p>But while writing the review, something uncomfortable became clear:<br>
+I was still <strong>thinking about the house more than I wanted to</strong>.</p>
+<p>Not because it was broken — but because it demanded attention:</p>
 <ul>
 <li>checking whether things were behaving as expected</li>
 <li>wondering what would happen during an internet outage</li>
@@ -62,17 +60,9 @@ Just calmer, more predictable, and less demanding of attention.</p>
 <li>privacy became an outcome of architecture, not a setting</li>
 </ul>
 <p>I ended up writing a lot of this down, mostly to make sure I wasn’t just rationalizing decisions after the fact.</p>
-<p>This was the original post that kicked off that rethinking: <img src="https://community.home-assistant.io/images/emoji/twitter/point_right.png?v=12" alt=":point_right:"> <a href="https://tagmdl.com/f/technical-pivot-5-years-later"><strong>Technical Pivot 5‑Years Later</strong></a></p>
+<p>This was the original post that kicked off that rethinking: <img src="https://community.home-assistant.io/images/emoji/twitter/point_right.png?v=12" title=":point_right:" class="emoji" alt=":point_right:" loading="lazy" width="20" height="20"> <a href="https://tagmdl.com/f/technical-pivot-5-years-later" rel="noopener nofollow ugc"><strong>Technical Pivot 5‑Years Later</strong></a></p>
 <p>I’m not posting this as a how‑to, recommendation, or stack endorsement — just sharing the reflection in case it resonates with anyone else who’s been living with a system long enough to feel both <strong>proud of it</strong> and <strong>a little tired of it at the same time</strong>.</p>
-<p>Happy to discuss if it’s useful.</p> </div> <div> <p><span>2 Likes</span> </p></div> </div><div> <p><span> <a href="https://community.home-assistant.io/u/dtrott"><span>dtrott</span></a> (David Trott) </span> <span> <time> February 28, 2026, 12:15am </time> <span>2</span> </span> </p> <div> <p>For me it comes down to one question:</p>
-<ul>
-<li><strong>Do any of your automations annoy (or worse worry) you ?</strong></li>
-</ul>
-<p>I.e. an automation fires and turns something on or off when you don’t want it to?</p>
-<p>Also “collective you” - you + any significant others.</p>
-<p>The opposite question: Does the lack of an automation annoy you?<br>
-Is a trap, in that everything you add increases the complexity, hence the chances that there will be a weird scenario that you haven’t thought of - it’s another opportunity for the automation to annoy you.</p>
-<p>I do think you have to “play” a bit - I didn’t think motion sensitive lights would be as much of a win as it was - but that is grounded by the fact that I have (now) limited it to hallways and closets - having lights go off unexpectedly in rooms is an annoyance (yes I have played with MM radar - its not perfect).</p> </div> <div> <p><span>1 Like</span> </p></div> </div></div>
+<p>Happy to discuss if it’s useful.</p> <p><small>2 posts - 2 participants</small></p> <p><a href="https://community.home-assistant.io/t/the-5-year-home-automation-post-that-made-me-rethink-everything/991353">Read full topic</a></p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -81,12 +71,12 @@ Is a trap, in that everything you add increases the complexity, hence the chance
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

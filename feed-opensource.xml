@@ -5,7 +5,7 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Open Source & GitHub news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Sat, 28 Feb 2026 06:34:23 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 28 Feb 2026 10:21:41 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-opensource.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title><![CDATA[Nouvelles de Haiku - Hiver 2025-26]]></title>
@@ -501,6 +501,38 @@ Advanced Linux commands cheat sheet]]></description>
       <guid>https://opensource.com/article/23/4/website-test-drupal-cypress</guid>
     </item>
     <item>
+      <title><![CDATA[Trivabble a 10 ans]]></title>
+      <link>https://linuxfr.org/news/trivabble-a-10-ans</link>
+      <description><![CDATA[Il y a 10 ans, je présentais Trivabble ici sur LinuxFR. Le dernier article ici remontant à 2021, c’est l’occasion de présenter les nouveaux développements. Et je dois remercier les contributeurs et contributrices externes, parce que c’est surtout de leur fait s’il y a des nouvelles choses à présenter. lien nᵒ 1 : Le site web de Trivabble Présentation rapide
+Pour les gens qui ne connaissent pas, il s’agit d’un jeu en réseau qui propose un plateau, des chevalets et des pièces, inspiré du Scrabble mais configurable et adaptable pour que chacun puisse inventer ses propres manières de jouer. Un des principes derrière Trivabble est de ne pas forcer une manière de jouer ou des règles particulières, et si vous voulez jouer en mode rapide où tout le monde joue n’importe quand le plus vite possible pour former des mots qui n’existent pas et sans commencer au milieu, le jeu ne vous en empêchera pas.
+Améliorations
+Ysabeau a dessiné un sac. Ça avait été annoncé dans le journal précédent. C’est évidemment intégré, depuis le temps.
+Laurent Mazet a pas mal bossé. On peut maintenant :
+jouer avec des plateaux de différentes tailles
+vérifier si le premier mot posé est bien au centre
+être averti quand on quitte une partie, pour éviter les fausses manipulations
+bloquer les pièces sur le plateau, pour ne plus pouvoir revenir sur les coups précédents
+Côté maintenance du code, il a également regroupé des feuilles styles CSS qui étaient séparées parce qu’elles venaient de projets différents, mais je ne maintiens plus ces projets et la seule conséquence de cette séparation dans Trivabble, c’est de la complexité inutile.
+Arnaudv6 a partagé quelques idées d’amélioration pour l’interface, qui a été un peu retravaillée pour plus de cohérence, de simplicité et de discrétion :
+le nombre de tuiles restantes est maintenant sur le sac1 les boutons et les boites de sélections ont maintenant une apparence plus unifiée, et ont été déplacés et regroupés pour gagner de la place et de la cohérence
+changer son nom se fait avec un bouton « crayon » plus discret. D’ailleurs, des correctifs permettent que changer de nom ne cause plus des bugs dans le comptage des mots et la vérification orthographique
+Autres améliorations diverses :
+Le jeu se redimensionne automatiquement pour prendre la taille de la fenêtre. Cela fonctionne dans les navigateurs modernes (sauf WebKit / Safari à cause d’un bug dans la gestion des coordonnées) en s’appuyant sur la propriété CSS zoom nouvellement standard et un peu de javascript. Pour les navigateurs ne prenant pas en charge ce zoom, le redimensionnement n’est plus bloqué et il est maintenant possible de zoomer avec les doigts. Le zoom automatique est également désactivé .
+Les messages de chat persistent. Jusqu’à maintenant, recharger la page ou revenir sur une partie plus tard perdait les messages. Ce qui fait qu’un plantage perdait la discussion, et il était impossible d’utiliser le chat intégré au jeu dans le cadre d’un jeu asynchrone.
+Il y a maintenant un mode sombre. Il s’applique automatiquement en fonction des réglages du navigateur, mais on peut aussi forcer le thème sombre ou le thème clair.
+Enfin, Philippe Lhardy a intégré Trivabble à Yunohost, ce qui permet d'installer facilement Trivabble sur une instance Yunohost.
+Conclusion
+Je partage une petite pensée pour ma grand-mère, qui a été la motivation pour lancer le projet il y a 10 ans, et qui nous a depuis quitté.
+Trivabble est stable et évolue lentement. Le jeu est dans un état utilisable et l’instance qui fait fonctionner trivabble.org se fait oublier. Ce n’est pas un projet très actif, il n’y a d’ailleurs pas eu de développement entre 2021 et 2025. Il n’y a pas de dépendance externe à part Node.js et le système d’exploitation dessous, c’est du Javascript très simple, donc la maintenance est triviale.
+Le projet n’est pas abandonné pour autant. Ce sont les contributeurs et contributrices qui réveillent le projet et me motivent pour m’y remettre de temps à autre. Je trouve ça agréable de me replonger dans ce code, mais il n’y a pas tellement besoin de le faire, ça fonctionne tel quel, donc c’est plutôt rare, mais n’hésitez pas à rejoindre l’aventure :-)
+C’est toujours utilisé, probablement pas énormément, en fait je n’en sais rien. J’ai reçu un mail assez rapidement la seule fois où j’ai cassé mon installation suite à une migration. Des gens ont créé des routines autour de Trivabble, et se retrouvent tous les samedis soir pour leur partie hebdomadaire. Je trouve ça plutôt chouette.
+ça a été un petit défi technique, parce qu’il a fallu le faire dans le code SVG du sac, qui ne pouvait donc plus être affiché à l’aide d’une balise img mais en l’intégrant directement comme une balise svg, et les styles SVG étaient alors bloqués par la politique CSP dans Chrome… Une conversion en attributs SVG a heureusement résolu le problème sans modifier l’apparence du sac. Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navigateur]]></description>
+      <pubDate>Sat, 28 Feb 2026 08:56:36 GMT</pubDate>
+      <source>LinuxFr</source>
+      <category>opensource</category>
+      <guid>https://linuxfr.org/news/trivabble-a-10-ans</guid>
+    </item>
+    <item>
       <title><![CDATA[Sécuriser au-delà du code : le nouveau périmètre de l’AppSec]]></title>
       <link>https://www.programmez.com/actualites/securiser-au-dela-du-code-le-nouveau-perimetre-de-lappsec-39051</link>
       <description><![CDATA[d'expert par Eyal Dyment (VP of Security Products, JFrog)
@@ -532,56 +564,6 @@ Des cadres réglementaires comme l’AI Act européen illustrent l’ampleur des
       <source>Open Source Weekly (The New Stack)</source>
       <category>opensource</category>
       <guid>https://thenewstack.io/twilio-a2h-protocol-launch/</guid>
-    </item>
-    <item>
-      <title><![CDATA[LibreOffice 26.2 : Markdown, accessibilité et plein d’autres nouveautés et améliorations]]></title>
-      <link>https://linuxfr.org/news/libreoffice-26-2-markdown-accessibilite-et-plein-d-autres-nouveautes-et-ameliorations</link>
-      <description><![CDATA[En février, il y a la corvée commerciale de la Saint-Valentin et les réjouissances intellectuelles consécutives à la sortie d’une nouvelle version de la suite bureautique LibreOffice. C’est, bien évidemment, sur LibreOffice 26.2 que l’on va se pencher. Au menu, du très visible, comme les boites de dialogues, du très attendu comme la prise en compte du Markdown ou du moins visible comme le travail sur l’accessibilité.
-Il va de soi que les notes de version sont plus exhaustives et qu’il ne s’agit ici que d’une sélection. lien nᵒ 1 : Notes de version Sommaire
-L’accessibilité
-Support du Markdown
-L’interface et les boites de dialogue
-Writer
-Calc
-En vrac
-Pour finir
-Avant de commencer : toutes les captures d’écran ont été faites, volontairement, sur une interface très personnalisée.
-L’accessibilité
-L’accessibilité de la suite bureautique est un important chantier pour lequel une personne a été recrutée en 2023 (en). Cette version-ci a fait l’objet d’améliorations sensibles. Parallèlement, Sophie Gautier, coordinatrice de The Document Foundation1 (Foundation coordinator) est en train de monter un groupe de travail qui a pour objectif la publication d’un rapport de conformité en matière d’accessibilité pour répondre à la norme européenne EN 301 549 (en) d’accessiblité numérique. La langue de travail de ce groupe est l’anglais.
-Concernant les améliorations de cette version :
-la boite de dialogue « Vérifier les mises à jour », Aide &gt; Vérifier les mises à jour… est devenue accessible aux lecteurs d’écran ;
-les fonctions d’accessibilité des aperçus des bordures, onglet « Bordures » des boites de dialogue, ont été revues afin qu’elles ne perturbent plus les dispositifs d’assistance ;
-sur Linux : la boite de dialogue Outils&gt; Orthographe est annoncée correctement par le lecteur d’écran ;
-quand on supprimait la sélection accessible, le curseur se déplaçait automatiquement au début du texte, ce comportement perturbant est supprimé ;
-dans Writer, les fautes d’orthographe ne sont plus signalées par les dispositifs d’assistance si la vérification orthographique n’est pas activée ;
-l’accessibilité au clavier de la boite de dialogue des extensions : Outils &gt; Extensions est accessible aux lecteurs d’écran ;
-et enfin, il est possible de naviguer entre les onglets verticaux avec des raccourcis clavier.
-Support du Markdown
-Le Markdown est devenu le format de balisage léger standard « de fait ». Et c’est celui supporté par LinuxFR. Son support a été introduit dans cette version, c’est un des formats d’enregistrement qui s’est ajouté à la série des autres formats de la suite, pas un format d’export. Pour l’utiliser pour vos sites, passant pour LinuxFR, vous devrez :
-soit ouvrir le fichier .md dans un éditeur de texte, n’importe lequel, même Mousepad fait l’affaire par exemple, et copier-coller ensuite le tout à partir de l’éditeur de texte là où vous le voulez ;
-soit, si cela est possible, importer le fichier .md dans ce qui vous sert pour gérer le site comme le fait par exemple l’extension ODT2SPIP pour le système de gestion de contenu SPIP qui permet de créer une nouvelle page dans SPIP avec un fichier.ODT. ça marche avec LinuxFR ? Plutôt bien. Les styles de caractère Accentuation (ici en italiques) et Accentuation forte (ici gras) sont bien reconnu ainsi que Texte source pour « télétype », les indications in-texte encadrées de l’accent grave U+0060. Les styles de paragraphes :
-Bloc de citation (paragraphes de citation précédés d’une ligne blanche et du signe « &gt; » dans la saisie de contenu sur LinuxFR) ;
-Contenu de tableau ;
-Corps de texte ;
-Liste, par contre la numérotation des listes ordonnée ne semble pas bien fonctionner, il faut saisir les numéros à la main ;
-Texte préformaté pour écrire des blocs de code ;
-Titre 1, Titre 2, Titre 3 et Titre de tableau.
-Les tableaux sont bien repris ainsi que les liens insérés via l’insertion d’hyperliens.
-Ce qui ne semble pas fonctionner du tout : ce sont les notes, elles disparaissent corps et biens. C’est peut-être dû au passage dans l’éditeur de texte qui transforme un peu le document. Et, évidemment, il faut rajouter les images avec la syntaxe LinuxFR.
-La version de Mardown de LibreOffice est CommonMark (en) et la bibliothèque utilisée est MD4C avec quelques extensions prises en charge par cette bibliothèque (cf ce rapport de bug (en) et ses réponses), pour en savoir plus, voir cette note (en) du blog de The Document Foundation.
-Petite remarque, si vous utilisez un LibreOffice 25.8, vous avez peut-être pu constater qu’il était question d’enregistrement au format .md, cette information a été ajoutée trop précocement car la version 25.8 ne gère pas le Markdown.
-L’interface et les boites de dialogue
-Les boites de dialogue, notamment de styles et de formats, ont beaucoup changé. Longtemps elles se sont affichées avec une présentation par onglets en haut et le contenu dessous.
-Puis il y a une période de transition en 2025 qui a fait grincer une collection complète de dents où on avait, selon l’endroit où on était, soit des onglets soit une navigation par menu latéral. Cette dernière avait un gros défaut : par exemple pour la configuration des styles dans Writer il fallait descendre tout en bas pour accéder aux options qui étaient cachées. Et il n’y avait pas de barre de défilement pour aller plus vite.
-LibreOffice 26.2 voit ces défauts corrigés : les boites de dialogue sont harmonisées dans toute la suite et leur menu latéral, toujours sans barre de défilement qui s’avère finalement inutile, montre clairement tous les types de paramètres auxquels on peut accéder. Et, comme on peut le voir, LibreOffice a intégré une meilleure prise en charge des systèmes d’écritures asiatiques et complexes en affichant deux colonnes, une pour les polices occidentales, ou pour les polices asiatiques ou complexes. Une personne a également été recrutée en 2023 (en) pour travailler sur le support des systèmes d’écriture de droite à gauche (RTL) et complexes (CTL). Si toutefois, vous préférez revenir à l’affichage avec les onglets, il suffit d’aller dans le menu Outils &gt; Options &gt; Apparenceau niveau de « Boites de dialogue » et cocher l’option Horizontal en haut. Il faut savoir que les onglets en haut ne s’affichent que sur une seule ligne et qu’il faudra donc naviguer avec les flèches quand il y a de nombreuses options. Writer
-Il y a un certain nombre d’amélioration autour de la compatibilité avec le format DOCX : séparation de tableaux flottants en plusieurs tableaux, suppression de la numérotation des notes de bas de page à l’ouverture d’un fichier DOCX, etc.
-On relèvera deux nouvelles options d’alignement des paragraphes : « Début » et « Fin ». Si vous utilisez l’alphabet latin, vous ne verrez aucune différence avec les deux options « Forcer à gauche/en haut » et « Forcer à droite/en bas ». Elles ont été développées pour réutiliser plus facilement les styles entre les divers systèmes d’écriture. Pour continuer sur la lancée du travail pour la prise en compte des systèmes d’écriture dont le fonctionnement est différent de celui de l’alphabet latin, il est possible de changer la direction du texte : de gauche à droite ou de droite à gauche en cours de travail. Cela peut se paramétrer dans les styles. Calc
-Un gros travail sur les performances a été fait : vitesse de défilement, rapidité des classeurs avec de nombreuses formes et du rejet des modifications. On voit apparaître de nouvelles options de tri (Données &gt;Trier) qui dépendent de la « locale » (langue définie dans les Options de LibreOffice). On peut ainsi déterminer quel caractère est utilisé comme séparateur de décimal pour le tri naturel. On peut relever aussi une avancée ergonomique qui va plaire à toutes celles et ceux qui utilisent les matrices, on peut maintenant modifier les formules matricielles avec la combinaison de touches : F2 + ↑ Maj + Ctrl + Entrée, il n’est plus nécessaire de modifier la formule elle-même.
-Et aussi :]]></description>
-      <pubDate>Fri, 13 Feb 2026 09:09:23 GMT</pubDate>
-      <source>LinuxFr</source>
-      <category>opensource</category>
-      <guid>https://linuxfr.org/news/libreoffice-26-2-markdown-accessibilite-et-plein-d-autres-nouveautes-et-ameliorations</guid>
     </item>
     <item>
       <title><![CDATA[A decade of werf, a software delivery tool for Kubernetes]]></title>
@@ -1013,33 +995,27 @@ DON'T force synchronous participation from attendees. One of the key benefits of
       <guid>https://opensource.com/article/23/5/virtual-in-person-events</guid>
     </item>
     <item>
-      <title><![CDATA[What do you use OpenClaw for?]]></title>
-      <link>https://news.ycombinator.com/item?id=47191126</link>
-      <description><![CDATA[I’m pretty lazy with adopting new tech I read about. OpenClaw seems mildly useful
-So am curious what workflows you use OpenClaw or similar “proactive agentic frameworks” for? URL: https://news.ycombinator.com/item?id=47191126
+      <title><![CDATA[Kakveda open source-level AI, Infra observability agent]]></title>
+      <link>https://www.kakveda.com/</link>
+      <description><![CDATA[Article URL: https://www.kakveda.com/ URL: https://news.ycombinator.com/item?id=47193086
 Points: 1
-# : 0]]></description>
-      <pubDate>Sat, 28 Feb 2026 06:14:40 GMT</pubDate>
+# : 1]]></description>
+      <pubDate>Sat, 28 Feb 2026 10:03:52 GMT</pubDate>
       <source>Hacker News (nouveautés)</source>
       <category>opensource</category>
-      <guid>https://news.ycombinator.com/item?id=47191126</guid>
+      <guid>https://www.kakveda.com/</guid>
     </item>
     <item>
-      <title><![CDATA[Show HN: Visual Lambda Calculus – a thesis project (2008) revived for the web]]></title>
-      <link>https://github.com/bntre/visual-lambda</link>
-      <description><![CDATA[Originally built as my master's thesis in 2008, Visual Lambda is a graphical environment where lambda terms are manipulated as draggable 2D structures ("Bubble Notation"), and beta-reduction is smoothly animated.
-I recently revived and cleaned up the project and published it as an interactive web version:
-https://bntre.github.io/visual-lambda/
-GitHub repo:
-https://github.com/bntre/visual-lambda
-It also includes a small "Lambda Puzzles" challenge, where you try to extract a hidden free variable (a golden coin) by constructing the right term:
-https://github.com/bntre/visual-lambda#puzzles URL: https://news.ycombinator.com/item?id=47191052
+      <title><![CDATA[Show HN: JobSeek Expat – a CLI tool to scrape English speaking jobs on LinkedIn]]></title>
+      <link>https://github.com/electricalgorithm/jobseek-expat</link>
+      <description><![CDATA[JobSeek Expat is a powerful, open-source CLI tool designed to help expats and international job seekers find English-speaking jobs in non-English speaking countries (like Germany, France, Netherlands, etc.).
+It scrapes major job boards, filters out local-language requirements, and presents you with a clean, curated list of opportunities. URL: https://news.ycombinator.com/item?id=47192874
 Points: 2
-# : 1]]></description>
-      <pubDate>Sat, 28 Feb 2026 06:04:05 GMT</pubDate>
+# : 0]]></description>
+      <pubDate>Sat, 28 Feb 2026 09:37:27 GMT</pubDate>
       <source>Hacker News (nouveautés)</source>
       <category>opensource</category>
-      <guid>https://github.com/bntre/visual-lambda</guid>
+      <guid>https://github.com/electricalgorithm/jobseek-expat</guid>
     </item>
     <item>
       <title><![CDATA[OpenAI révèle comment Pékin utilise ChatGPT pour industrialiser la répression numérique de ses dissidents à l'étranger, une situation qui en dit long sur la confidentialité de vos conversations IA]]></title>

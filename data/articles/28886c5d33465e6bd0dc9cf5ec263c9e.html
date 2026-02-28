@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,7 +28,7 @@
     Source: Next INpact | Date: 2/26/2026 4:00:38 PM | <a href="https://next.ink/brief_article/les-projets-de-data-centers-au-royaume-uni-atteignent-50-gw-de-puissance-electrique/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <p>Au Royaume-Uni, les 140 projets de centres de données en cours d’examen pourraient demander jusqu’à 50 GW (gigawatts) d’électricité pour fonctionner. L’estimation est issue d’une consultation (.<a href="https://www.ofgem.gov.uk/sites/default/files/2026-02/2026-02-12-Demand-Connections-Call-for-Input.pdf" target="_blank" rel="noopener noreferrer">pdf</a>) menée par l’Ofgem, le régulateur britannique des marchés du gaz et de l’électricité.</p> <p>Les demandes de projets ont explosé en l’espace de quelques mois&nbsp;: de 41 GW en novembre 2024, le total des demandes de raccordement a grimpé à 125 GW en juin 2025. Dans le lot, 40 % viennent de l’industrie des centres de données. </p> <p>Cette accélération soulève un enjeu de puissance électrique disponible. «&nbsp;<em>La demande en crête d’électricité en Grande-Bretagne le 11 février 2026 était de 45 GW</em>&nbsp;», indique l’Ofgem. Les demandes enregistrées prévoient donc d’ajouter jusqu’à 125 GW, dont 50 GW pour les seuls data centers. Ces chiffres concernent une puissance maximale&nbsp;: la réalité devrait se traduire par une consommation globale moins élevée, ne serait-ce que parce que tous les projets ne verront pas le jour. La marche à franchir n’en reste pas moins haute.</p> <figure><img alt="" src="https://i2.wp.com/next.ink/wp-content/uploads/2025/11/Conso-elec-datacenter-1024x496.webp?ssl=1"></figure> <p>L’organisme souligne une <em>«&nbsp;explosion des demandes&nbsp;»</em> de connexions au réseau entre novembre 2024 et juin 2025, dans une proportion qui a dépassé jusqu’aux prévisions les plus ambitieuses, <a href="https://www.theguardian.com/technology/2026/feb/23/new-datacentres-risk-doubling-uk-electricity-use-ofgem-peak-demand" target="_blank" rel="noopener noreferrer">rapporte the Guardian</a>. En parallèle, le média relève que des projets de production d’énergie renouvelable ne sont pas reliés au réseau au rythme auquel ils sont construits (notamment pour atteindre les objectifs climatiques du pays à l’horizon 2030).</p> <p>Devant l’afflux, le régulateur évoque par ailleurs une problématique de délais à rallonge. Et souligne qu’il «&nbsp;<em>n’existe aucun mécanisme pour prioriser les projets de demande stratégiquement importants</em>&nbsp;».</p> <p>Entre autres mécanismes visant à éloigner les projets <em>«&nbsp;non viables&nbsp;»</em>, l’Ofgem envisagerait des vérifications financières plus précises qu’actuellement, voire de facturer aux fournisseurs de centres de données l’accès au réseau, que ce soit sous forme de caution ou de frais non remboursables.</p> </div></div>
+    <p>Au Royaume-Uni, les 140 projets de centres de données en cours d’examen pourraient demander jusqu’à 50 GW (gigawatts) d’électricité pour fonctionner. L’estimation est issue d’une consultation (.pdf) menée par l’Ofgem, le régulateur britannique des marchés du gaz et de l’électricité. Les demandes de projets ont explosé en l’espace de quelques mois : de 41 GW [&#8230;]</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -43,12 +37,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Accuracy vs Speed in Local LLMs: Finding Your Sweet Spot</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Accuracy vs Speed in Local LLMs: Finding Your Sweet Spot</h1>
+  <div class="metadata">
+    Source: Hacker News (nouveautés) | Date: 2/28/2026 9:34:41 AM | <a href="https://grigio.org/accuracy-vs-speed-in-local-llms-finding-your-sweet-spot/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div>
+<article> <header> <section> <ul> <li> <a href="https://grigio.org/author/luigi/"> <img src="https://www.gravatar.com/avatar/be2ee821510b2e7939e4cce166ac55e5?s=250&amp;r=x&amp;d=mp" alt="Luigi"> </a> </li> </ul> <div> <h4><a href="https://grigio.org/author/luigi/">Luigi</a></h4> <p><time>28 Feb 2026</time> <span><span>•</span> 3 min read</span> </p> </div> </section> <figure> <img src="https://grigio.org/content/images/size/w2000/2026/02/ComfyUI_temp_hpull_00001_.png" alt="Accuracy vs Speed in Local LLMs: Finding Your Sweet Spot"> </figure> </header> <section> <p>Local LLMs evolve fast. Balancing accuracy and performance is not one-size-fits-all; your best fit depends on hardware, use case, and how much context you need for your workflows.</p><figure><img src="https://grigio.org/content/images/2026/02/accuracy-vs-speed-my-top-5-v0-uj2yeq2ln3mg1.webp" alt=""></figure><p>Accuracy vs speed chart created on my personal coding/agentic benchmark with <a href="https://github.com/grigio/llm-eval-simple?ref=grigio.org">llm-eval-simple</a></p><h2>The Core Trade-off</h2><ul><li>Highly accurate models often demand more VRAM and compute.</li><li>Faster models frequently trade some reasoning depth or long-context handling.</li><li>Your ideal choice depends on: hardware (GPU RAM, system RAM, CPU), task type (coding, research, scraping, general assistant), and required context window.</li></ul><figure></figure><h2>My Sweet Spots</h2><h3>Top 1: Best Accuracy</h3><ul><li>Model focus: Tongyi DeepResearch 30B-A3B (30B total, ~3B activated per token) with high-precision quantization.</li><li>Why it helps: Strong agentic reasoning and deep information-seeking capability; IQ4_NL-style quantization reduces memory footprint while preserving quality.</li><li>Key links:<ul><li>Base Tongyi DeepResearch page: <a href="https://huggingface.co/Alibaba-NLP/Tongyi-DeepResearch-30B-A3B?ref=grigio.org">https://huggingface.co/Alibaba-NLP/Tongyi-DeepResearch-30B-A3B</a></li><li>GGUF/Unsloth-style variants (examples): <a href="https://huggingface.co/bartowski/Alibaba-NLP_Tongyi-DeepResearch-30B-A3B-GGUF?ref=grigio.org">https://huggingface.co/bartowski/Alibaba-NLP_Tongyi-DeepResearch-30B-A3B-GGUF</a></li></ul></li></ul><h3>Top 2: Best Accuracy/Speed Trade-off</h3><ul><li>Model focus: Qwen3-Coder-Next family (80B MoE with only ~3B active per token; 256K context in some configurations).</li><li>Why it helps: Substantial coding performance with efficient quantization; practical on mid-range GPUs with Unsloth Dynamic 2.0 GGUFs.</li><li>Key links:<ul><li>Unsloth Qwen3-Coder-Next GGUF: <a href="https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF?ref=grigio.org">https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF</a></li><li>Example Q3_K_S GGUF: <a href="https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF/blob/main/Qwen3-Coder-Next-Q3_K_S.gguf?ref=grigio.org">https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF/blob/main/Qwen3-Coder-Next-Q3_K_S.gguf</a></li><li>Documentation / guides (Unsloth): <a href="https://unsloth.ai/docs/models/qwen3-coder-next?ref=grigio.org">https://unsloth.ai/docs/models/qwen3-coder-next</a></li></ul></li></ul><h3>Top 3: Best for Scraping/Fast Tasks</h3><ul><li>Model focus: Nemotron-3-Nano-30B-A3B-GGUF (and IQ4_NL variant).</li><li>Why it helps: Fast inference with solid reasoning for quick data gathering tasks and prompt-instrumentation work.</li><li>Key links:<ul><li>Nemotron-3-Nano-30B-A3B-GGUF: <a href="https://huggingface.co/unsloth/Nemotron-3-Nano-30B-A3B-GGUF?ref=grigio.org">https://huggingface.co/unsloth/Nemotron-3-Nano-30B-A3B-GGUF</a></li><li>IQ4_NL GGUF variant: <a href="https://huggingface.co/unsloth/Nemotron-3-Nano-30B-A3B-GGUF/blob/a2c9964e47d625c732f6f0e50741021127eb5b3d/Nemotron-3-Nano-30B-A3B-IQ4_NL.gguf?ref=grigio.org">https://huggingface.co/unsloth/Nemotron-3-Nano-30B-A3B-GGUF/blob/a2c9964e47d625c732f6f0e50741021127eb5b3d/Nemotron-3-Nano-30B-A3B-IQ4_NL.gguf</a></li></ul></li></ul><h2>Honorable Mentions</h2><ul><li>THUDM/GLM-4.7-Flash-Q4_K_M: Very strong accuracy, but generally slower than the top contenders.<ul><li><a href="https://huggingface.co/THUDM/GLM-4.7-Flash-Q4_K_M?ref=grigio.org">https://huggingface.co/THUDM/GLM-4.7-Flash-Q4_K_M</a></li></ul></li><li>Qwen/Qwen3-Coder-Next-Q3_K_S: Good trade-off, but performance can vary with hardware and interface.<ul><li>See UnsLOTH GGUFs for the best local experience: <a href="https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF?ref=grigio.org">https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF</a></li></ul></li></ul><h2>Opencode Notes</h2><p>For <a href="https://grigio.org/tag/opencode/">OpenCode</a> workloads with long contexts the situation is different, gpt-oss-20b and Nvidia Nemotron 30B A3B are the only options or maybe other models need some tweaks.</p><ul><li>Local/offline coding workflows favor models with coherent reasoning and fewer “read-file loops.”</li><li>Community discussions (Reddit and model hubs) highlight the importance of optimized quantization, MoE behavior, and proper llama.cpp LLAMA_CURL/LLAMA_CUDA configurations for best speed and stability.</li><li>Unsloth’s own docs and GGUF releases emphasize 4-bit quantization with options like QAT for accuracy recovery, which can be valuable if you need higher fidelity at lower bitwidths.</li></ul><h2>The Bottom Line</h2><p>There isn’t a single perfect model. The sweet spot is a function of hardware and use case. For local coding and long-context workflows on consumer hardware, the strongest starting points are:</p><ul><li>Tongyi DeepResearch 30B-A3B GGUFs (high accuracy with efficient quantization)<ul><li>Base page: <a href="https://huggingface.co/Alibaba-NLP/Tongyi-DeepResearch-30B-A3B?ref=grigio.org">https://huggingface.co/Alibaba-NLP/Tongyi-DeepResearch-30B-A3B</a></li><li>Bartowski mirror: <a href="https://huggingface.co/bartowski/Alibaba-NLP_Tongyi-DeepResearch-30B-A3B-GGUF?ref=grigio.org">https://huggingface.co/bartowski/Alibaba-NLP_Tongyi-DeepResearch-30B-A3B-GGUF</a></li></ul></li><li>Qwen3-Coder-Next GGUFs (Unsloth Dynamic 2.0)<ul><li>Main page: <a href="https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF?ref=grigio.org">https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF</a></li><li>Example Q3_K_S GGUF: <a href="https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF/blob/main/Qwen3-Coder-Next-Q3_K_S.gguf?ref=grigio.org">https://huggingface.co/unsloth/Qwen3-Coder-Next-GGUF/blob/main/Qwen3-Coder-Next-Q3_K_S.gguf</a></li></ul></li><li>Nemotron-3-Nano-30B-A3B-GGUF (fast, good for quick tasks)<ul><li><a href="https://huggingface.co/unsloth/Nemotron-3-Nano-30B-A3B-GGUF?ref=grigio.org">https://huggingface.co/unsloth/Nemotron-3-Nano-30B-A3B-GGUF</a></li><li>IQ4_NL variant: <a href="https://huggingface.co/unsloth/Nemotron-3-Nano-30B-A3B-GGUF/blob/a2c9964e47d625c732f6f0e50741021127eb5b3d/Nemotron-3-Nano-30B-A3B-IQ4_NL.gguf?ref=grigio.org">https://huggingface.co/unsloth/Nemotron-3-Nano-30B-A3B-GGUF/blob/a2c9964e47d625c732f6f0e50741021127eb5b3d/Nemotron-3-Nano-30B-A3B-IQ4_NL.gguf</a></li></ul></li></ul><p>What are your tradeoffs accuracy vs speed with local LLM ? <a href="https://news.ycombinator.com/item?id=47192855&amp;ref=grigio.org">Leave a comment on HN</a>.</p> </section> </article>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Échange de clés, encapsulation de clés, transport de clés ?</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Échange de clés, encapsulation de clés, transport de clés ?</h1>
+  <div class="metadata">
+    Source: Journal du Hacker | Date: 2/28/2026 7:32:48 AM | <a href="https://www.bortzmeyer.org/echange-cles.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <p>Comme j'écris souvent des articles où je parle de <b><a href="https://fr.wikipedia.org/wiki/cryptographie">cryptographie</a></b>, alors que je ne connais pas grand'chose à la cryptographie moderne (et un peu plus à la cryptographie antique), je me suis demandé quelle était la définition exacte de l'échange de clés, terme qu'on voit souvent dans les <b><a href="https://fr.wikipedia.org/wiki/Request%20for%20comments">RFC</a></b>.</p> <p>Donc, je commence par te mettre en garde, cher lecteur et brillante lectrice&nbsp;: on est nettement en dehors de mon <b><a href="https://fr.wikipedia.org/wiki/Effet%20Dunning-Kruger">domaine de compétence</a></b>. Cela ne va pas m'empêcher d'écrire, mais je préviens les expert·es en cryptographie qu'ils risquent des maladies cardiaques violentes à me lire. Ceci dit, je prends avec intérêt toutes les remarques que les dit·es expert·es pourraient envoyer, et <a href="http://sl4.org/crocker.html">pas la peine de prendre des gants</a>, je ne suis pas fragile. Autre problème, j'ai bien l'impression que la terminologie dans ce domaine n'est pas consensuelle, ou pas encore stabilisée.</p> <p>Lorsqu'on a de la cryptographie hybride (hybride au sens ancien, celui du <a href="https://www.rfc-editor.org/info/rfc9180">RFC 9180</a>, pas au sens plus récent en <b><a href="https://fr.wikipedia.org/wiki/Cryptographie%20post-quantique">cryptographie post-quantique</a></b>, tel que discuté dans le <a href="https://www.bortzmeyer.org/9794.html">RFC 9794</a>), on a de la <b><a href="https://fr.wikipedia.org/wiki/Cryptographie%20asym%C3%A9trique">cryptographie asymétrique</a></b> pour sa souplesse et de la <b><a href="https://fr.wikipedia.org/wiki/Cryptographie%20sym%C3%A9trique">cryptographie symétrique</a></b> pour sa performance. Une clé pour la cryptographie symétrique (forcément privée puisqu'on est en cryptographie symétrique) est créée et les deux parties l'utilisent pour chiffrer. Le mécanisme par lequel les deux parties connaissent la clé est appelé l'<b>échange de clés</b> (<i>key exchange</i> dans les RFC) même si, en pratique, la clé n'est pas toujours échangée (avec <b><a href="https://fr.wikipedia.org/wiki/%C3%89change%20de%20cl%C3%A9s%20Diffie-Hellman">Diffie-Hellman</a></b>, la même clé est générée des deux côtés, elle ne voyage jamais). Mais j'ai déjà vu une autre définition d'échange de clés, qui est de restreindre ce terme au cas où la clé n'est pas échangée (oui, je sais, c'est bizarre), comme avec Diffie-Hellman cité plus haut. Et la <a href="https://csrc.nist.gov/glossary/term/key_exchange">définition du NIST</a> est encore différente.</p> <p>J'ai dit que la terminologie n'est pas stable ou en tout cas pas universellement adoptée, du moins c'est ce que je vois du haut de ma grande ignorance de la cryptographie moderne. J'ai vu passer «&nbsp;établissement de clé&nbsp;» (<i>key establishment</i>) au lieu du plus classique «&nbsp;échange de clé&nbsp;» (j'ai aussi vu «&nbsp;accord sur la clé&nbsp;» -&nbsp;<i>key agreement</i>). Et, fin février 2026, les articles de <b><a href="https://fr.wikipedia.org/wiki/Wikip%C3%A9dia">Wikipédia</a></b> sur l'<b><a href="https://fr.wikipedia.org/wiki/%C3%89change%20de%20cl%C3%A9">échange de clés</a></b> et l'<b><a href="https://fr.wikipedia.org/wiki/M%C3%A9canisme%20d'encapsulation%20de%20cl%C3%A9">encapsulation de clé</a></b> donnaient des définitions différentes de ce qu'est un échange de clés. Donc, je vais expliquer ce que j'utilise, moi, et rappelez-vous que tout le monde n'est pas d'accord sur la terminologie.</p> <p>Lorsque la clé de chiffrement (cryptographie symétrique) est générée par une seule des deux parties, puis transmise à l'autre partie, grâce à la cryptographie asymétrique, on parle de transport de clé ou d'encapsulation de clé (comme dans le sigle KEM, <i><b><a href="https://fr.wikipedia.org/wiki/M%C3%A9canisme%20d'encapsulation%20de%20cl%C3%A9">Key Encapsulation Mechanism</a></b></i>, très à la mode en ce moment avec les <b><a href="https://fr.wikipedia.org/wiki/Cryptographie%20post-quantique">algorithmes post-quantiques</a></b>, mais qui n'est pas spécifique à ces algorithmes). Pour compliquer les choses, le <a href="https://www.rfc-editor.org/info/rfc4949">RFC 4949</a> donne une autre définition d'«&nbsp;encapsulation de clé&nbsp;», mais qui semble dépassée désormais…</p> <p>Un exemple de transport de clé serait un mécanisme où une des deux parties crée la clé de chiffrement symétrique, puis la chiffre avec la clé publique (cryptographie asymétrique, donc) de l'autre partie avant de lui envoyer. N'utilisez pas cette méthode telle quelle, elle est trop simpliste et a plusieurs failles de sécurité (comme, entre autres, l'absence de <b><a href="https://fr.wikipedia.org/wiki/Confidentialit%C3%A9%20persistante">confidentialité persistante</a></b>), ce qui explique qu'on utilise plutôt aujourd'hui un KEM, qui obéit à <b><a href="https://fr.wikipedia.org/wiki/M%C3%A9canisme%20%20%20d'encapsulation%20de%20cl%C3%A9">une définition plus stricte</a></b>. Notez que, pour la confidentialité persistante, utiliser un KEM ne suffit pas, il faut quelques précautions supplémentaires, mais on s'éloigne du sujet.</p> <p>À l'inverse, si la clé est générée par les deux parties (cas de <b><a href="https://fr.wikipedia.org/wiki/%C3%89change%20de%20cl%C3%A9s%20Diffie-Hellman%20bas%C3%A9%20sur%20les%20courbes%20%20%20elliptiques">ECDH</a></b> par exemple), on va parler d'échange de clés (définition étroite, la définition large étant que tout est un échange de clés).</p> <p>Bref, comme j'écris beaucoup sur les <b><a href="https://fr.wikipedia.org/wiki/Request%20for%20%20%20comments">RFC</a></b>, je vais m'en tenir à la terminologie des RFC, où «&nbsp;échange de clés&nbsp;» (<i>key exchange</i>) désigne toutes les méthodes d'établissement de clé et où «&nbsp;encapsulation de clé&nbsp;» est un sous-ensemble des méthodes d'échange de clés.</p> <p>Et je vais conclure avec une citation en anglais de l'excellent blogueur <a href="https://martinfowler.com/bliki/AvoidingVideo.html">Martin Fowler</a> sur pourquoi j'écris sur un sujet que je ne connais pas&nbsp;: «&nbsp;<i>When I'm writing, I'm not usually explaining things I've already figured out, I'm doing the figuring out as I write. It's often pointed out that the etymology of the word “essay” comes the French essayer, meaning “to try”, and that writing an essay is about trying out your ideas. The act of writing something down has often helped me understand a topic, indeed I think that's a large part of why I write as much as I do. I enjoy trying to understand things, and writing for others is a vital tool to help me do that.</i>&nbsp;»</p>
+</div><p><a href="https://www.bortzmeyer.org/echange-cles.pdf">Version PDF de cette page</a> (mais vous pouvez aussi imprimer depuis votre navigateur, il y a une feuille de style prévue pour cela)</p></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

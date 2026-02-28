@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,7 +28,7 @@
     Source: Programmez | Date: 2/24/2026 10:21:05 AM | <a href="https://www.programmez.com/actualites/python-316-roadmap-de-mai-2026-octobre-2027-39052" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div><p>Python dévoile la roadmap complète de la future version 3.16 qui doit sortir dans 18 mois.&nbsp;</p><p>5 mai : début du développement</p><p>13 octobre : disponibilité de l'Alpha 1</p><p>Novembre 2026 - avril 2027 : les alphas 2 à 7</p><p>Fixation des fonctionnalités avec la bêta 1</p><p>4 mai 2017 : début de la phase bêta</p><p>Fin juillet 2027 : release candidate 1, la RC2 suivra dès août</p><p>5 octobre 2017 : disponibilité de la version</p><p>Python 3.16 recevra des bugfix tous les 2 mois durant 2 ans. Les patchs de sécurité jusqu'en octobre 2032.&nbsp;</p></div></div>
+    <p><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p></p><p>Python dévoile la roadmap complète de la future version 3.16 qui doit sortir dans 18 mois. </p><p>5 mai : début du développement</p><p>13 octobre : disponibilité de l'Alpha 1</p><p>Novembre 2026 - avril 2027 : les alphas 2 à 7</p><p>Fixation des fonctionnalités avec la bêta 1</p><p>4 mai 2017 : début de la phase bêta</p><p>Fin juillet 2027 : release candidate 1, la RC2 suivra dès août</p><p>5 octobre 2017 : disponibilité de la version</p><p>Python 3.16 recevra des bugfix tous les 2 mois durant 2 ans. Les patchs de sécurité jusqu'en octobre 2032. </p></div></div></div><div class="field field-name-field-categorie-actus field-type-taxonomy-term-reference field-label-inline clearfix"><div class="field-label">Catégorie actualité:&nbsp;</div><div class="field-items"><div class="field-item even"><a href="/actualites/outils/langages" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">Langages</a></div></div></div><div class="field field-name-field-mots-cles-actualite field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/actualites/python">Python</a></div></div></div><div class="field field-name-field-image-actualit-amp field-type-image field-label-above"><div class="field-label">Image actualité AMP:&nbsp;</div><div class="field-items"><div class="field-item even"><img typeof="foaf:Image" src="https://www.programmez.com/sites/default/files/default_images/image-amp-1_0.png" alt="" /></div></div></div></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -43,12 +37,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

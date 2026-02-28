@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,11 +34,61 @@
     Source: openHAB Community (Latest) | Date: 2/25/2026 7:49:55 PM | <a href="https://community.openhab.org/t/somfy-tahoma-binding-refresh-times-and-logic/168647" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p><p>hi! not sure if i will reach author of this binding but.. Thanks! i got it working in a few seconds. I added also local api token and it’s working with 2 buts:</p>
+    <div><div> <div> <p><span> <time> February 25, 2026, 7:49pm </time> <span>1</span> </span> </p></div> <div> <p>hi! not sure if i will reach author of this binding but.. Thanks! i got it working in a few seconds. I added also local api token and it’s working with 2 buts:</p>
 <p>1- 10 seconds minimal interval for local api is to much i cant track % Position of my roller shutters as a progress.. its not so good ;(</p>
 <p>2- i have a corner case using openhab &amp; tasmota binding as as a proxy to other webgui. The binding is not refreshing the states of the items if there is no events happening. My webgui during reboot is forgetting the data and i need to move the roller to get the update. Would be great to add a regular pooling of data even if no event’s where there like:<br>
 Non event refresh interval: x seconds</p>
-<p>Jacek</p> <p><small>2 posts - 1 participant</small></p> <p><a href="https://community.openhab.org/t/somfy-tahoma-binding-refresh-times-and-logic/168647">Read full topic</a></p></p>
+<p>Jacek</p> </div> </div><div> <p>in addition the Moving channel is not updating it’s always NULL</p>
+<p>somfytahoma:rollershutter:ec0d46af09:io209003339568633xxxx</p>
+<p>What is interesting… after a DOWN command i get:</p>
+<p>only 54% position and 100% position which is rather bad - no new events betweeen the 0-54 and 54-100% and thats why i am not able to show “Progress bar” of opening/closing, it will be good to get 10 or more position updates during one move up/down</p>
+<pre><code>2026-02-25 21:34:40.363 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:34:40.364 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:34:53.093 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:34:53.095 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:35:00.921 [WARN ] [ity.CommunityMarketplaceAddonService] - Unable to retrieve marketplace add-ons: java.lang.IllegalStateException: Expected a string but was BEGIN_OBJECT at line 1 column 22968 path $.topic_list.topics[1].tags[0]
+2026-02-25 21:35:03.190 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:35:03.253 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:35:13.462 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:35:13.467 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:35:23.570 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:35:23.633 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:35:33.830 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:35:33.834 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:35:43.957 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:35:43.960 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:35:54.093 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:35:54.154 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:36:04.541 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:36:04.577 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:36:04.787 [TRACE] [nal.handler.SomfyTahomaBridgeHandler] - Response: []
+2026-02-25 21:36:04.792 [TRACE] [nal.handler.SomfyTahomaBridgeHandler] - Got total of 0 events
+2026-02-25 21:36:14.796 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:36:14.799 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:36:14.902 [TRACE] [nal.handler.SomfyTahomaBridgeHandler] - Response: []
+2026-02-25 21:36:14.904 [TRACE] [nal.handler.SomfyTahomaBridgeHandler] - Got total of 0 events
+2026-02-25 21:36:16.524 [DEBUG] [dler.SomfyTahomaRollerShutterHandler] - io://2090-0333-9568/6334112 Received command DOWN for channel somfytahoma:rollershutter:ec0d46af09:io2090033395686334112:control
+2026-02-25 21:36:16.528 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Currently 0 retries are scheduled.
+2026-02-25 21:36:16.532 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/exec/apply with data: {"label":"Biuro lewa - down - openHAB","actions":[{"deviceURL":"io://2090-0333-9568/6334112","commands":[{"name":"down","parameters":[]}]}]}
+2026-02-25 21:36:16.639 [INFO ] [hab.automation.script.file.tahoma.js] - POST body: {"Roleta__Biuro_lewa_Control":100,"Roleta__Biuro_prawa_Control":0,"Roleta__lazienka_Control":0,"Roleta__pokoj_Control":0}
+2026-02-25 21:36:16.656 [TRACE] [nal.handler.SomfyTahomaBridgeHandler] - Response: {"execId":"81700063-3145-4fdc-bce0-e9a202163a17"}
+2026-02-25 21:36:16.658 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Exec id: 81700063-3145-4fdc-bce0-e9a202163a17
+2026-02-25 21:36:16.771 [INFO ] [hab.automation.script.file.tahoma.js] - HTTP POST sent, response: OK
+2026-02-25 21:36:18.660 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:36:18.662 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:36:18.748 [TRACE] [nal.handler.SomfyTahomaBridgeHandler] - Response: [{"name":"ExecutionRegisteredEvent","actions":[{"rank":0,"execId":"f66b18b3-09a5-4bde-9669-f09973196c2c","deviceURL":"io:\/\/2090-0333-9568\/6334112","state":"INITIALIZED","parameters":[],"command":"down"}],"execId":"81700063-3145-4fdc-bce0-e9a202163a17"},{"name":"ExecutionStateChangedEvent","execId":"81700063-3145-4fdc-bce0-e9a202163a17","oldState":"INITIALIZED","newState":"IN_PROGRESS"}]
+2026-02-25 21:36:18.761 [TRACE] [nal.handler.SomfyTahomaBridgeHandler] - Got total of 2 events
+2026-02-25 21:36:18.769 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Got event: ExecutionRegisteredEvent
+2026-02-25 21:36:18.771 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Got event: ExecutionStateChangedEvent
+2026-02-25 21:36:20.773 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:36:20.775 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:36:20.941 [TRACE] [nal.handler.SomfyTahomaBridgeHandler] - Response: []
+2026-02-25 21:36:20.942 [TRACE] [nal.handler.SomfyTahomaBridgeHandler] - Got total of 0 events
+2026-02-25 21:36:22.943 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates...
+2026-02-25 21:36:22.945 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Sending POST to url: https://192.168.2.213:8443/enduser-mobile-web/1/enduserAPI/events/dcaf73c1-b7cc-43e7-9e04-22cd26c19ba8/fetch with data:
+2026-02-25 21:36:23.105 [TRACE] [nal.handler.SomfyTahomaBridgeHandler] - Response: []
+2026-02-25 21:36:23.107 [TRACE] [nal.handler.SomfyTahomaBridgeHandler] - Got total of 0 events
+2026-02-25 21:36:25.109 [DEBUG] [nal.handler.SomfyTahomaBridgeHandler] - Getting Tahoma Updates... </code></pre> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -41,12 +97,12 @@ Non event refresh interval: x seconds</p>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
