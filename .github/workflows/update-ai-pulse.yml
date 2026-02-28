@@ -198,11 +198,8 @@ jobs:
           git add package-lock.json
 
           # Créer un commit avec un message descriptif
-          git commit -m "🔧 Auto-sync: package-lock.json mis à jour automatiquement
-
-          - Synchronisation automatique des dépendances
-          - Généré par le workflow CI/CD
-          - Date: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          # [skip ci] empêche le workflow de se re-déclencher
+          git commit -m "🔧 Auto-sync: package-lock.json [skip ci]"
 
           # Pousser les changements vers GitHub
           git push
@@ -308,7 +305,8 @@ jobs:
           UTC_DATE=$(date -u +'%a %b %d %H:%M:%S UTC %Y')
 
           # Créer le commit avec un message incluant la date
-          git commit -m "Updated AI-Pulse: $UTC_DATE"
+          # [skip ci] empêche le workflow de se re-déclencher
+          git commit -m "Updated AI-Pulse: $UTC_DATE [skip ci]"
 
           # Envoyer le commit vers GitHub
           git push
