@@ -434,10 +434,35 @@
         const articleTitle = params.get('title');
         const articleSource = params.get('source');
         const articleTags = params.get('tags');
+        // Cache désactivé - seules les préférences utilisateur sont sauvegardées
         const articleRuntimeCache = new Map();
         const LOCAL_ARTICLE_CACHE_PREFIX = 'ai_pulse_article_html:';
         const LOCAL_ARTICLE_CACHE_INDEX_KEY = 'ai_pulse_article_html:index';
-        const LOCAL_ARTICLE_CACHE_MAX_ITEMS = 40;
+        const LOCAL_ARTICLE_CACHE_MAX_ITEMS = 0; // Désactivé
+
+        // Nettoyage automatique du cache article (garde les préférences utilisateur)
+        (function cleanupArticleCache() {
+            try {
+                const keysToRemove = [];
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    // Supprime uniquement les articles en cache, garde les préférences
+                    if (key && key.startsWith(LOCAL_ARTICLE_CACHE_PREFIX)) {
+                        keysToRemove.push(key);
+                    }
+                }
+                keysToRemove.forEach(key => localStorage.removeItem(key));
+                // Nettoie sessionStorage uniquement pour les articles
+                const sessionKeysToRemove = [];
+                for (let i = 0; i < sessionStorage.length; i++) {
+                    const key = sessionStorage.key(i);
+                    if (key && key.startsWith(LOCAL_ARTICLE_CACHE_PREFIX)) {
+                        sessionKeysToRemove.push(key);
+                    }
+                }
+                sessionKeysToRemove.forEach(key => sessionStorage.removeItem(key));
+            } catch (_) {}
+        })();
 
         function normalizeLocalArticlePath(url) {
             if (!url) return '';
@@ -459,60 +484,15 @@
         async function fetchCachedLocalArticleHtml(url) {
             const normalizedPath = normalizeLocalArticlePath(url);
             const cacheKey = `${LOCAL_ARTICLE_CACHE_PREFIX}${normalizedPath}`;
+            // Cache mémoire uniquement (session courante, pas de persistance)
             if (articleRuntimeCache.has(cacheKey)) return articleRuntimeCache.get(cacheKey);
-            try {
-                const localPersisted = localStorage.getItem(cacheKey);
-                if (localPersisted && localPersisted.length > 0) {
-                    const cleanedPersisted = stripLocalArticleElevatorHtml(localPersisted);
-                    articleRuntimeCache.set(cacheKey, cleanedPersisted);
-                    try {
-                        sessionStorage.setItem(cacheKey, cleanedPersisted);
-                    } catch (_) {}
-                    return cleanedPersisted;
-                }
-            } catch (_) {
-                // Ignore localStorage access failures.
-            }
-            try {
-                const persisted = sessionStorage.getItem(cacheKey);
-                if (persisted && persisted.length > 0) {
-                    const cleanedPersisted = stripLocalArticleElevatorHtml(persisted);
-                    articleRuntimeCache.set(cacheKey, cleanedPersisted);
-                    return cleanedPersisted;
-                }
-            } catch (_) {
-                // Ignore sessionStorage access failures.
-            }
-            const response = await fetch(`./${normalizedPath}`, { cache: 'force-cache' });
+            // Fetch direct sans localStorage/sessionStorage
+            const response = await fetch(`./${normalizedPath}`, { cache: 'no-store' });
             if (!response.ok) {
                 throw new Error(`local-article-fetch-failed:${response.status}`);
             }
             const html = stripLocalArticleElevatorHtml(await response.text());
             articleRuntimeCache.set(cacheKey, html);
-            try {
-                sessionStorage.setItem(cacheKey, html);
-            } catch (_) {
-                // Ignore storage quota failures.
-            }
-            try {
-                localStorage.setItem(cacheKey, html);
-                const now = Date.now();
-                const indexRaw = localStorage.getItem(LOCAL_ARTICLE_CACHE_INDEX_KEY);
-                const parsedIndex = indexRaw ? JSON.parse(indexRaw) : {};
-                const index = (parsedIndex && typeof parsedIndex === 'object') ? parsedIndex : {};
-                index[cacheKey] = now;
-                const orderedKeys = Object.keys(index).sort((a, b) => Number(index[b] || 0) - Number(index[a] || 0));
-                const staleKeys = orderedKeys.slice(LOCAL_ARTICLE_CACHE_MAX_ITEMS);
-                staleKeys.forEach((key) => {
-                    try {
-                        localStorage.removeItem(key);
-                        delete index[key];
-                    } catch (_) {}
-                });
-                localStorage.setItem(LOCAL_ARTICLE_CACHE_INDEX_KEY, JSON.stringify(index));
-            } catch (_) {
-                // Ignore storage quota failures.
-            }
             return html;
         }
 
