@@ -232,11 +232,11 @@ try {
  * Création d'une instance du parser RSS
  *
  * OPTIONS:
- * - timeout: 10000 = 10 secondes maximum pour récupérer un flux
+ * - timeout: 3000 = 3 secondes maximum pour récupérer un flux (évite blocage)
  * - headers: User-Agent identifie notre application auprès des serveurs
  */
 const parser = new Parser({
-  timeout: 10000,                           // Timeout de 10 secondes
+  timeout: 3000,                            // Timeout de 3 secondes (évite les flux lents)
   headers: { 'User-Agent': 'AI-Pulse/3.0' } // Identification de l'application
 });
 
@@ -994,7 +994,7 @@ async function resolveArticleUrl(articleUrl) {
   for (const candidate of candidates) {
     try {
       const response = await axios.get(candidate, {
-        timeout: 5000,
+        timeout: 3000,
         maxRedirects: 5,
         headers: { 'User-Agent': 'AI-Pulse/3.0' }
       });
@@ -1503,7 +1503,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       if (!bypassUrl) continue;
       try {
         const response = await axios.get(bypassUrl, {
-          timeout: 5000,
+          timeout: 3000,
           headers: { 'User-Agent': 'AI-Pulse/3.0' }
         });
         return { success: true, html: response.data, service: service.name };
@@ -1609,7 +1609,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       } else {
       // Récupérer la page web complète
       const response = await axios.get(resolvedArticleUrl, {
-        timeout: 8000,
+        timeout: 3000,
         headers: { 'User-Agent': 'AI-Pulse/3.0' }
       });
 
