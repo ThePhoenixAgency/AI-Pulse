@@ -1558,7 +1558,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     <p>${safeContent}</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="goBack()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
@@ -1576,6 +1576,9 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
         const hasPriority = /(z-index\\s*:\\s*[1-9]\\d{1,}|backdrop-filter|overflow\\s*:\\s*hidden)/.test(styleAttr);
         if (hasKeyword && (looksFixed || hasPriority)) node.remove();
       });
+    }
+    function goBack() {
+      try { window.parent.history.back(); } catch(e) { history.back(); }
     }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
@@ -1727,7 +1730,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     ${finalMainContent}
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="goBack()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
@@ -1745,6 +1748,9 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
         const hasPriority = /(z-index\\s*:\\s*[1-9]\\d{1,}|backdrop-filter|overflow\\s*:\\s*hidden)/.test(styleAttr);
         if (hasKeyword && (looksFixed || hasPriority)) node.remove();
       });
+    }
+    function goBack() {
+      try { window.parent.history.back(); } catch(e) { history.back(); }
     }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
