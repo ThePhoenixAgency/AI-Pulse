@@ -1167,7 +1167,6 @@ function computeCategoryRelevance(article, categoryName) {
  */
 function smartTruncate(text, maxLength) {
   // Utiliser la valeur par défaut de la config si non spécifiée
-  // Si maxLength est fourni, on l'utilise. Sinon, on prend articleMaxLength si on traite un article complet, sinon summaryMaxLength.
   if (!maxLength && SETTINGS) {
     maxLength = SETTINGS.articleMaxLength || 8000;
   }
@@ -1179,25 +1178,36 @@ function smartTruncate(text, maxLength) {
   // Couper à la longueur maximale
   let truncated = text.slice(0, maxLength);
 
-  // Expression régulière pour trouver les signes de ponctuation de fin
-  // Cherche: . ! ? ; : suivis d'un espace ou de la fin du texte
+  // Chercher la dernière phrase complète (finissant par . ! ? ou »)
+  // On cherche de la fin vers le début pour trouver la dernière ponctuation
+  for (let i = truncated.length - 1; i >= Math.max(0, truncated.length - 200); i--) {
+    const char = truncated[i];
+    if (char === '.' || char === '!' || char === '?' || char === '»') {
+      // Vérifier que ce n'est pas une abréviation (ex: "M." "Dr." etc.)
+      const before = truncated.slice(Math.max(0, i - 3), i);
+      const isAbbrev = /^[A-Z][a-z]?$/.test(before.trim());
+      if (!isAbbrev) {
+        return truncated.slice(0, i + 1).trim();
+      }
+    }
+  }
+
+  // Fallback: chercher n'importe quelle ponctuation de fin de phrase
   const punctuationRegex = /[.!?;:](?=\s|$)/g;
-
-  // Trouver toutes les occurrences de ponctuation
   const matches = [...truncated.matchAll(punctuationRegex)];
-
-  // Si on a trouvé de la ponctuation, couper après la dernière
   if (matches.length > 0) {
     const lastMatch = matches[matches.length - 1];
     return text.slice(0, lastMatch.index + 1).trim();
   }
 
-  // Sinon, couper au dernier espace et ajouter "..."
+  // Sinon, couper au dernier espace (pas en plein mot)
   const lastSpace = truncated.lastIndexOf(' ');
-  if (lastSpace > 0) return truncated.slice(0, lastSpace).trim() + '...';
+  if (lastSpace > maxLength * 0.7) {
+    return truncated.slice(0, lastSpace).trim() + '…';
+  }
 
-  // En dernier recours, couper brutalement avec "..."
-  return truncated.trim() + '...';
+  // En dernier recours, couper avec ellipse
+  return truncated.trim() + '…';
 }
 
 function containsOpenClawSignal(text) {
