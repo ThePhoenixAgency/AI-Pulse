@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,16 +34,60 @@
     Source: Home Assistant Community Forum (Latest) | Date: 2/27/2026 6:54:44 PM | <a href="https://community.home-assistant.io/t/automation-wont-save/991329" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p><p>New Ha user,<br>
+    <div><div> <div> <div> <p><span> <time> February 27, 2026, 6:54pm </time> <span>1</span> </span> </p></div> <div> <p>New Ha user,<br>
 Trying to save code</p>
-<pre><code class="lang-auto">triggers: - trigger: switch.turned_on target: entity_id: switch.galaxy_tab_a_2016_screen options: behavior: first
+<pre><code>triggers: - trigger: switch.turned_on target: entity_id: switch.galaxy_tab_a_2016_screen options: behavior: first
 conditions: []
 actions: - action: light.turn_on metadata: {} target: device_id: 89a31d42475f61a901d4eb59583b1a2b data: {} - delay: hours: 0 minutes: 5 seconds: 0 milliseconds: 0 - action: light.turn_off metadata: {} target: device_id: 89a31d42475f61a901d4eb59583b1a2b data: {}
 mode: single
 </code></pre>
 <p>and I recieve the following error when I test in Developer tools<br>
 This template does not listen for any events and will not update automatically.<br>
-switch.galaxy_tab_a_2016_screen is coming from Fully Kiosk integration and light is a mqqt entity that works fine. Goal is to turn light on when display turns on.</p> <p><small>14 posts - 5 participants</small></p> <p><a href="https://community.home-assistant.io/t/automation-wont-save/991329">Read full topic</a></p></p>
+switch.galaxy_tab_a_2016_screen is coming from Fully Kiosk integration and light is a mqqt entity that works fine. Goal is to turn light on when display turns on.</p> </div> </div> <div> <p>Where did you find this option? Is it AI? I don’t think (I might be wrong) that is valid.</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/Cormad"><span>Cormad</span></a> (Jeff) </span> <span> <time> February 27, 2026, 7:09pm </time> <span>3</span> </span> </p> <p>it was an option in HA Automations. first/last/any , tried them all</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/boheme61"><span>boheme61</span></a> </span> <span> <time> February 27, 2026, 7:19pm </time> <span>4</span> </span> </p> <div> <p>Use Trigger &gt;<br>
+Entity … choose your switch.galaxy…<br>
+To: On</p>
+<p>Action:<br>
+…</p>
+<pre><code>triggers: - trigger: state entity_id: -switch.galaxy to: - "on"
+</code></pre>
+<p>PS: Im not sure how you manage to make it so “Complicated”<br>
+Nor Why You Choosed switch.turned_on as a Trigger , And why you added that “Options” , What does that Option do actually ?</p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/Cormad"><span>Cormad</span></a> (Jeff) </span> <span> <time> February 27, 2026, 7:41pm </time> <span>5</span> </span> </p> <div> <p>Still did not save</p>
+<pre><code>alias: "Galaxy to woodstove light "
+description: ""
+triggers: - trigger: state entity_id: switch.galaxy_tab_a_2016_screen to: - "on"
+conditions: []
+actions: - action: light.turn_on metadata: {} target: device_id: 89a31d42475f61a901d4eb59583b1a2b data: {} - delay: hours: 0 minutes: 5 seconds: 0 milliseconds: 0 - action: light.turn_off metadata: {} target: device_id: 89a31d42475f61a901d4eb59583b1a2b data: {}
+mode: single
+</code></pre>
+<p>ps. As mentioned I am new to HA and was just trying to use intuitive Automation creator.</p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/boheme61"><span>boheme61</span></a> </span> <span> <time> February 27, 2026, 7:44pm </time> <span>6</span> </span> </p> <div> <p>Yes i noticed after i posted <img src="https://community.home-assistant.io/images/emoji/twitter/slight_smile.png?v=12" alt=":slight_smile:"> , and i have never tried any of the “new” options etc. in Automations, So i can’t tell if they are intuitive … To Me</p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/boheme61"><span>boheme61</span></a> </span> <span> <time> February 27, 2026, 7:51pm </time> <span>7</span> </span> </p> <p>Not sure what could cause that, it looks ok to me, i would go out of the automation-page/refresh browser go in and try again<br>
+Also try with just light.turn_on &gt; <span>entity.id</span> ( As i have no idea which device it is you are trying to “light_turn_on”</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/Cormad"><span>Cormad</span></a> (Jeff) </span> <span> <time> February 27, 2026, 8:13pm </time> <span>8</span> </span> </p> <p>Gut feeling is we are on the wrong path. This is the error<br>
+This template does not listen for any events and will not update automatically.<br>
+I think it is an the Fully Kiosk entity issue although it behaves properly when tested on developer options and reports on/off. The entity I’m tryingto turn on/off is a hue bulb over MQTT.</p> <div> <p><span>1 Like</span> </p></div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/boheme61"><span>boheme61</span></a> </span> <span> <time> February 27, 2026, 8:16pm </time> <span>9</span> </span> </p> <p>Ok, Im Also not familiar with Fully Kiosk, but the Automation should work as written, so You can be right, something is “spooky” with Fully Kiosk</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/Biscuit"><span>Biscuit</span></a> (Geoff) </span> <span> <time> February 27, 2026, 8:39pm </time> <span>10</span> </span> </p> <div> <p>I should probably know better, but I am puzzled.</p>
+<p>If you have some ‘code’ as YAML, and you are testing it in Developer Tools, just what Tool <em>exactly</em> are you testing this in?</p>
+<p>If, perchance, you are testing your automation configuration code inside the Template testbed, then no this is not a template and will not actually listen for anything or do anything.</p>
+<p>Your YAML configuration, to my inexperienced eyes, looks like a good automation, and would naturally go inside an <span>automation</span>.</p>
+<p>If you use the HA automation, create a new one, switch to edit in YAML, paste your (second) configuration, then switch back to edit in UI, it should show you if there are any errors. Doing this and substituting a switch and ‘device’ on my system works just fine.</p> </div> <div> <p><span>1 Like</span> </p></div> </div> <div> <div> <p><span> <a href="https://community.home-assistant.io/u/Cormad"><span>Cormad</span></a> (Jeff) </span></p> <p><span> <time> February 27, 2026, 9:42pm </time> <span>11</span> </span> </p></div> <div> <p>Hi Geoff,<br>
+Yes I was using Template in developer tools, still learning and confused <img src="https://community.home-assistant.io/images/emoji/twitter/slight_smile.png?v=12" alt=":slight_smile:"> . I tried what you reccomended and recieve the following error<br>
+New automation setup timed out<br>
+Your new automation was saved, but waiting for it to set up has timed out. This could be due to errors parsing your configuration.yaml, please check the configuration in <span>developer tools</span>. Your automation will not be visible until this is corrected and automations are reloaded. Changes to area, category, or labels were not saved and must be reapplied.<br>
+You may continue to wait for a response from the server, in case it is just taking an unusually long time to process this automation.</p>
+<p>I thought this would be a 2 minute job, guess I was wrong<br>
+</p><div><a href="https://community-assets.home-assistant.io/original/4X/9/f/d/9fd8f52df417fcd77a699342776b46639578af78.png"><img src="https://community-assets.home-assistant.io/optimized/4X/9/f/d/9fd8f52df417fcd77a699342776b46639578af78_2_690x299.png" alt="image"></a></div> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/Cormad"><span>Cormad</span></a> (Jeff) </span> <span> <time> February 27, 2026, 9:43pm </time> <span>12</span> </span> </p> <div> <p>I’ll try the same with a different trigger</p> </div> </div> <div> <div> <p><span> <a href="https://community.home-assistant.io/u/123"><span>123</span></a> (Taras) </span></p> <p><span> <time> February 27, 2026, 10:05pm </time> <span>13</span> </span> </p></div> <div> <p>I believe they enabled this <em>experimental</em> feature:</p>
+<div><a href="https://community-assets.home-assistant.io/original/4X/5/e/4/5e4b22fffbfa3309004f06b16ac558b8535a9826.png"><img src="https://community-assets.home-assistant.io/optimized/4X/5/e/4/5e4b22fffbfa3309004f06b16ac558b8535a9826_2_517x304.png" alt="image"></a></div>
+<p>“Purpose-specific Triggers” are not yet part of the <a href="https://www.home-assistant.io/docs/automation/trigger/">documented list of Triggers.</a></p>
+<p>It’s the second example I have seen recently that uses these new Triggers and both users reported problems with their automations.</p>
+<p>I don’t recommend <em>new</em> users try experimental features.</p> </div> <div> <p><span>1 Like</span> </p></div> </div> <div> <div> <p><span> <a href="https://community.home-assistant.io/u/123"><span>123</span></a> (Taras) </span></p> <p><span> <time> February 27, 2026, 10:08pm </time> <span>14</span> </span> </p></div> <div> <p>It’s not an error.</p>
+<p>The Template Editor simply tests <a href="https://www.home-assistant.io/docs/configuration/templating/">Jinja2 templates</a> and nothing else (i.e. it does not test an automation’s YAML code). Your automation contains no templates and so you get that message.</p>
+<h3><a name="p-3764835-example-1" href="#p-3764835-example-1"></a>Example:</h3>
+<p>Note the message at the bottom.</p>
+<div><a href="https://community-assets.home-assistant.io/original/4X/0/1/3/0132a109bb86ebae383a0c480e4f619629b5b835.png"><img src="https://community-assets.home-assistant.io/original/4X/0/1/3/0132a109bb86ebae383a0c480e4f619629b5b835.png" alt="image"></a></div> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/Biscuit"><span>Biscuit</span></a> (Geoff) </span> <span> <time> February 27, 2026, 10:23pm </time> <span>15</span> </span> </p> <div> <p>Home Assistant can be very confusing when first starting. It does take time to understand all the various bits.</p>
+<p>Automations can be hand-coded using YAML and edited into the <em>correct</em> part of the main configuration.yaml file. Normally the main config file holds<br>
+<code>automation: !include automations.yaml</code> or similar to point to (include) a separate automations.yaml file, which is the one that actually holds the automations. When using the UI to write automations, HA will, on save, attempt to modify and maintain this file for you, hence it has to be there and available.</p>
+<p>Sometimes HA can’t find the file to work on:</p> <p>This post holds a list of possible causes and fixes that <em>may</em> help you. My uneducated guess is that your configuration file is either corrupted or does not have the ‘automations.yaml’ file there, particularly if you have never created an automation before and this is the first time you are seeing this error.</p>
+<p>The first Developer Tool, YAML - “check configuration” - can help a bit, but where there are configuration file problems the only solution is to get access to the main directory and check it all out. I have found setting up Samba share (HA App) to permit direct file access to my HA directory very useful. If editing the configuration files, always use a plain text editor, and keep a backup copy first!</p>
+<p>Note that, if you add automations directly to the main configuration file, then they have to be started with “automation:” and the rest of your code must be space indented. If you add automations to the include file, then the indentation is not required. Personally I do all my (few) automations entirely using UI and I do not attempt to mix the HA-generated ones from UI with any hand-coded ones.</p>
+<p>As I say, I used the HA Automation (UI) to create a new, blank automation, pasted your config code directly into the ‘edit yaml’ option, adjusted the trigger sensor and the light device to something that I have, and saved it successfully. Perhaps you should start with a basic HA automation in the UI, using eg a time trigger with a set time to turn a light (entity not device) on and just check that the ‘save automation’ works.</p>
+<p>When it works, yes it is a 2 minute job, so eventually you will break through the learning barrier and reach the sunny uplands.</p> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -46,12 +96,12 @@ switch.galaxy_tab_a_2016_screen is coming from Fully Kiosk integration and light
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

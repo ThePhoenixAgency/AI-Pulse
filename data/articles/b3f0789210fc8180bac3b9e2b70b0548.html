@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,7 @@
     Source: openHAB Community (Latest) | Date: 2/24/2026 12:23:52 PM | <a href="https://community.openhab.org/t/notifications-and-icons/168629" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p><p>I have two OH 5.1.2 installations, one on a Debian 13 VM and the other on a (Rockpi 4B+ running Armbian Linux 6.18.9-current-rockchip64).</p>
+    <div><div> <div> <p><span> <time> February 24, 2026, 12:23pm </time> <span>1</span> </span> </p></div> <div> <p>I have two OH 5.1.2 installations, one on a Debian 13 VM and the other on a (Rockpi 4B+ running Armbian Linux 6.18.9-current-rockchip64).</p>
 <p>I also have two smartphones for testing, a Motorola and a Samsung (both android), connected to myopenhab.</p>
 <p>In any test scenario, the icon only appears along with the notification if a notification occurs beforehand and within a few minutes of each other.</p>
 <p>I first noticed this after I started sending notifications from the alarm system I developed.</p>
@@ -37,11 +43,11 @@
 <p>Another scenario is when a power outage occurs, and I only receive the notification + icon when the power returns a few seconds/minutes after the outage.</p>
 <p>If the power returns after several minutes or hours (as was the case with the last storm), I only receive the notification that the power has been restored, but without the icon.</p>
 <p>Example of sending a notification:</p>
-<pre data-code-wrap="javascript"><code class="lang-javascript">actions.notificationBuilder(‘Test icon’).withIcon(‘oh:soundvolume’).withOnClickAction(‘ui:navigate:’ + ‘/overview/’).send()
+<pre><code>actions.notificationBuilder(‘Test icon’).withIcon(‘oh:soundvolume’).withOnClickAction(‘ui:navigate:’ + ‘/overview/’).send()
 </code></pre>
 <p>It seems that some part of the notification function “sleeps” and only returns to normal operation when it is woken up.</p>
 <p>There is no information in the LOG regarding errors or warns.</p>
-<p>Has anyone else noticed this behavior?</p> <p><small>1 post - 1 participant</small></p> <p><a href="https://community.openhab.org/t/notifications-and-icons/168629">Read full topic</a></p></p>
+<p>Has anyone else noticed this behavior?</p> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -50,12 +56,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,108 +28,8 @@
     Source: Open Source Weekly (The New Stack) | Date: 2/26/2026 3:28:43 PM | <a href="https://thenewstack.io/observability-platform-migration-guide/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p>Observability platform migrations are rarely simple. You’re still balancing risk (don’t break on-call), scope (don’t try to move everything at once), and organizational change (getting teams to validate and adopt new workflows). The goal of this post is to share the common patterns that make it manageable when you’re ready to undertake it using open standards instrumentation.</p>
-<p>We’ll focus on migrations where metrics, traces, and logs already flow through open-source and open-standard tools such as Prometheus, OpenTelemetry (OTLP), and <a href="https://chronosphere.io/fluent-bit/">Fluent Bit</a>. In those environments, you can typically migrate by rerouting pipelines, migrating only the dashboards and alerts that matter most, and dual-running until you trust the cutover.</p>
-<blockquote><p>“Open standards can streamline the migration path, but getting to open standards may be its own migration wave.”</p></blockquote>
-<p>If you don’t have open standards instrumentation today, there’s an additional step: re-instrumenting. When you’re using proprietary agents, SDKs, or closed ingestion formats, moving platforms often means replacing instrumentation across services – an effort that can take weeks or even months depending on fleet size, release cadence, and coverage requirements. In other words, open standards can streamline the migration path, but getting to open standards may be its own migration wave.</p>
-<p>From there, we’ll walk through the most reliable, step-by-step patterns teams use to migrate safely while keeping visibility intact throughout the process.</p>
-<h2>How to migrate with open-source tooling</h2>
-<h3>Planning: Define what “success” means</h3>
-<p>Before starting the migration, document three things:</p>
-<ol>
-<li>Which services are in scope for the first migration wave (ideally lower-impact services first)?</li>
-<li>Which teams own those services and will be responsible for validation and sign-off?</li>
-<li>Which dashboards and alerts are non-negotiable for day-to-day operations; everything else is secondary.</li>
-</ol>
-<p>This documentation becomes your north star when prioritizing work across teams.</p>
-<h2>Migration steps</h2>
-<h3>Step 1: Prioritize what actually matters</h3>
-<p>Before you inventory everything, identify what you actually need to migrate.</p>
-<p><strong>Create a focused list:</strong></p>
-<ul> <li>Document the alerts that page someone at night, appear in runbooks, or protect revenue-critical services. Typically, you’re left with 20-50 alerts.</li>
-</ul>
-<p>Treat these as phase-one migration artifacts. Everything else can wait.</p>
-<p>For each dashboard and alert, document:</p>
-<ul>
-<li>Where it lives in your current platform (URL, folder, owner).</li>
-<li>Which teams own and rely on it.</li>
-<li>Any known quirks (“this alert is noisy,” “we ignore that panel”) so the right people can validate and sign off during migration.</li>
-</ul>
-<p>Understanding which data actually drives decisions is critical. Teams often discover they’re paying to store massive amounts of telemetry that nobody uses.</p>
-<h3>Step 2: Inventory your telemetry</h3>
-<p>You can’t move what you haven’t mapped. For the in-scope services, document where telemetry originates and how it flows through your existing open source infrastructure.</p>
-<ul>
-<li><strong>Metrics</strong>: How is your Prometheus setup configured? Document which services are scraped directly by Prometheus servers versus those using exporters (node, Kubernetes, database, cloud). Map how metrics reach your current platform — are you using native remote-write, multiple remote-write endpoints, or federation between Prometheus instances?</li> <li><strong>Logs</strong>: Document your Fluent Bit configuration. Where are logs being collected from, and which output plugins are currently in use? If you’re using a centralized log pipeline or router, understand how data flows through that architecture.</li>
-</ul>
-<blockquote><p>“Understand your current data routing so you can confidently add the new backend as a parallel destination without disrupting existing flows.”</p></blockquote>
-<p>The goal here is to understand your current data routing so you can confidently add the new backend as a parallel destination without disrupting existing flows.</p>
-<h3>Step 3: Add the new backend as a second destination</h3>
-<p>Instead of ripping out your current platform, introduce the new backend as a shadow destination for a subset of services. Keep both systems up and running to ensure your team maintains visibility throughout the migration. Additionally, you want sufficient historical data in your new observability platform before switching over entirely. The amount of historical data varies by company and should be a key consideration.</p>
-<h4>Metrics</h4>
-<p>If you’re using Prometheus remote-write, add a second remote-write endpoint pointing to the new backend (or re-point non-critical services first). If you’re using Prometheus servers for scraping, either reconfigure them to write the new backend or mirror scraped data using remote-write or federation.</p>
-<p>If your new platform is Prometheus-compatible, this is mostly wiring; you’re redirecting existing traffic to a different endpoint, not rebuilding your pipeline.</p>
-<h4>Traces</h4>
-<p>With the OpenTelemetry Collector, add an additional exporter pipeline that sends traces to the new backend in parallel (OpenTelemetry Protocol → new backend). Keep configs as similar as possible to your existing trace pipeline for direct comparison during the dual-run.</p>
-<p>Platforms that speak OpenTelemetry Protocol (OTLP) natively make this simple; you reuse the same OpenTelemetry exporters and processors you already trust.</p>
-<h4>Logs</h4>
-<p>If using Fluent Bit, add another output that sends logs to the new backend’s ingestion endpoint. If you already have a centralized log pipeline or router, fan out from there rather than touching every application pod.</p>
-<h3>Step 4: Convert queries and dashboards</h3>
-<h4>Focus on core queries first</h4>
-<p>Most proprietary platforms either use a PromQL-like language or run their own DSL on Prometheus-style series and labels. Your new backend should offer PromQL compatibility or a clear mapping.</p>
-<p>Start with the 80% use cases:</p>
-<ul>
-<li><strong>Simple time series</strong>: single metrics with filters like<br> <div> <table> <tbody><tr> <td> <div><p>1</p></div> </td> <td><div><p>`{<span>env</span>=<span>"prod"</span>,<span> </span><span>service</span>=<span>"api"</span>`}</p></div></td> </tr> </tbody></table> </div> </li>
-<li><strong><strong>Basic aggregations:</strong></strong><br> <div> <table> <tbody><tr> <td> <div><p>1</p></div> </td> <td><div><p>`<span>sum</span>`,<span> </span>`<span>avg</span>`,<span> </span>`<span>max</span>`,<span> </span>`<span>histogram_quantile</span>`</p></div></td> </tr> </tbody></table> </div> </li>
-<li><strong><strong>Tag → label mapping:</strong></strong><br> <div> <table> <tbody><tr> <td> <div><p>1</p></div> </td> <td><div><p>`<span>env</span>:<span>prod</span>`→<span> </span>`{<span>env</span>=<span>"prod"</span>}`</p></div></td> </tr> </tbody></table> </div> </li>
-</ul>
-<p>Only after that’s solid, tackle:</p>
-<ul>
-<li>Cross-metric arithmetic</li>
-<li>Joins and multiseries expressions</li>
-<li>Vendor-specific or “magic” functions</li>
-</ul>
-<h4>Rebuild only critical dashboards</h4>
-<p>Use the priority list from Step 3 as the scope.</p>
-<p>For each dashboard:</p>
-<ol>
-<li>Export the dashboard definition (JSON/YAML/Terraform/etc.) from your platform.</li>
-<li>Recreate it in the new backend using translated queries and equivalent panel types (time series, tables, single stats).</li>
-<li>Preserve layout and names so on-call engineers don’t have to relearn muscle memory during incidents.</li>
-</ol>
-<p>To avoid one-off work, define a few golden templates per service type (API, job, data pipeline) and parameterize them with labels/variables (services, env, region) for reuse.</p>
-<p><strong>The outcome</strong>: your most important dashboards and queries behave the same in the new backend, with minimal surprise for the people who rely on them.</p>
-<h3>Step 5: Migrate alerts without losing coverage</h3>
-<p>Alerts are where risk lives – treat them carefully. Most platforms represent alerts as a query, an evaluation window, and notification targets.</p>
-<h4>Translate queries for behavioral parity</h4>
-<p>Reuse the work from Step 4. For each alert, translate the PromQL query (or equivalent) that describes the condition. Map thresholds and windows. If the old alert says “fire if &gt; 80 for 5 minutes,” ensure the new rule expresses the same logic using range vectors or alerting windows.</p>
-<p>At this stage, you’re aiming for behavioral parity, not redesign.</p>
-<h4>Keep routing simple initially</h4>
-<p>Map existing Slack/PagerDuty/email destinations to equivalent channels in the new backend. Mirror current behavior as closely as possible so teams can compare alerts one-to-one. Defer routing or escalation redesign until after dual-run is stable.</p>
-<p>Start with the must-have alerts. Once those are stable and dual-running cleanly, you can decide which lower-priority alerts are worth migrating at all.</p>
-<h3>Step 6: Dual-run and validate</h3>
-<p>At this point, in-scope services send the same telemetry to both backends, and your critical dashboards and alerts exist in the new system. Now you validate under real conditions.</p>
-<p>Keep your current platform as the primary source of truth. Encourage on-call engineers to open new dashboards alongside the old ones. When an alert fires, check whether the corresponding alert in the new backend also fired, and compare the timelines and severity. This validation phase is critical. Evaluating an <a href="https://thenewstack.io/observability-working-with-metrics-logs-and-traces/">observability</a> vendor properly means confirming it works under real production conditions, not just test scenarios.</p>
-<p>During this phase, you’re mainly checking for:</p>
-<ul>
-<li><strong>Gaps</strong>: Alerts that fire in the old system but not in the new one</li>
-<li><strong>Extra noise</strong>: Alerts that fire more often or with lower relevance in the new system</li>
-<li><strong>UX issues</strong>: Panels that are hard to find or interpret under pressure</li>
-</ul>
-<p>Capture issues in a shared doc or ticket queue so you can fix them systematically. Dual-run long enough to see a few real incidents, not just synthetic tests. Once those feel uneventful in the new backend and the owning teams have validated and signed off for that wave, you’re ready to move on.</p>
-<h3>Step 7: Gradually shift to the new system</h3>
-<p>Once teams are comfortable, update runbooks and documentation so links and screenshots point to the new backend. Make the new UI the default view for on-call rotations, treating the legacy platform as a backup.</p>
-<p>Next, turn down alerts in the old system:</p>
-<ol>
-<li>Silence or downgrade informational alerts there first.</li>
-<li>After several clean incidents, disable paging alerts so you’re not paged twice for the same issue.</li>
-<li>Finally, reduce and then stop ingestion for fully migrated services.</li>
-</ol>
-<p>Many teams keep the old backend in read-only mode for a defined historical window, then retire it once the data it contains is no longer needed. At that point, the new platform is your operational source of truth.</p>
-<h2>Build your observability foundation with open standards</h2>
-<p>In this post, we walked through the core steps of migrating from one observability platform to the next — without a risky rip-and-replace. The approach is deliberately incremental: define what “success” means, prioritize only the dashboards and alerts that truly matter, map your telemetry flows, add the new backend as a parallel destination, translate what’s essential, dual-run to validate under real production conditions, and then shift traffic and ownership gradually.</p>
-<p>At Chronosphere, we’ve also built internal tooling to help automate key parts of this process – so migrations are faster, more repeatable, and less disruptive for engineering teams. When you work with Chronosphere, you get a streamlined migration experience plus white-glove onboarding to help plan waves, validate parity, and confidently cut over.</p>
-<p>Most importantly, Chronosphere is built to work with the open ecosystem you’re already using. We’re fully compatible with OpenTelemetry, Prometheus, and other open standards – so you can keep your existing instrumentation and pipelines while modernizing your backend on your terms.</p>
-<p><strong>Get started:</strong> [<a href="https://chronosphere.io/resource/observability-platform-migration-5-step-practical-guide-to-upgrading-your-observability/">Download the complete observability migration guide</a>] | [<a href="https://chronosphere.io/demo-request/">Schedule a 30-minute demo</a>] | [<a href="https://chronosphere.io/learn/migrating-observability-tools/">Learn how to migrate observability tools</a>]</p> <div> <p> TRENDING STORIES </p> </div> <a href="https://youtube.com/thenewstack?sub_confirmation=1" target="_blank" rel="noopener noreferrer"> </a> <p> Group Created with Sketch. </p> </div></div>
+    <p><img width="1024" height="684" src="https://cdn.thenewstack.io/media/2026/02/0cda8978-salman-ahmad-cj4pbfyl14o-unsplash-scaled-1024x684.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Minimalist flat-design illustration of a black balance scale centered on a split background of light blue and dark navy. The left pan holds a solid orange circle, and the right pan holds a solid white circle, visually representing the balance of risk and scope during an observability platform migration and the dual-running of telemetry systems." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/02/0cda8978-salman-ahmad-cj4pbfyl14o-unsplash-scaled.jpg" /><p>Observability platform migrations are rarely simple. You&#8217;re still balancing risk (don&#8217;t break on-call), scope (don&#8217;t try to move everything at</p>
+<p>The post <a href="https://thenewstack.io/observability-platform-migration-guide/">Observability platform migration guide: Prometheus, OpenTelemetry, and Fluent Bit</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -144,12 +38,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

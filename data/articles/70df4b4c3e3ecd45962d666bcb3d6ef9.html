@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,7 @@
     Source: openHAB Community (Latest) | Date: 2/26/2026 11:49:24 AM | <a href="https://community.openhab.org/t/pax-log4j-logging-not-working-in-eclipse/168654" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p><p>Hello,</p>
+    <div><div> <p>Hello,</p>
 <p>I’m don’t know if I’m the only one, but the logging stop working correctly for me in eclipse since a few days, weeks ?<br>
 Pax logging is ok, but it seems it fails to load the log4j2.xml configuration, and fallback to default configuration.<br>
 I’ve checked many time:</p>
@@ -99,7 +105,42 @@ If someone have any idea, I’ve search all the morning without any results.</p>
 <p>2026-02-26T11:44:02.356473700Z main DEBUG Shut down OutputStreamManager SYSTEM_OUT.false.false-1, all resources released: true</p>
 <p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : Appender DefaultConsole-1 stopped with status true</p>
 <p>2026-02-26T11:44:02.357474800Z main DEBUG Appender DefaultConsole-1 stopped with status true</p>
-<p>org.ops4j.pax.logging.pax-logging-api [log4j2] TRACE :</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] TRACE : DefaultConfiguration stopped 1 remaining Appenders.</p>
+<p>2026-02-26T11:44:02.357474800Z main TRACE DefaultConfiguration stopped 1 remaining Appenders.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] TRACE : DefaultConfiguration cleaning Appenders from 1 LoggerConfigs.</p>
+<p>2026-02-26T11:44:02.357474800Z main TRACE DefaultConfiguration cleaning Appenders from 1 LoggerConfigs.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] INFO : Configuration org.apache.logging.log4j.core.config.DefaultConfiguration@48e8c32a stopped.</p>
+<p>2026-02-26T11:44:02.357474800Z main INFO Configuration org.apache.logging.log4j.core.config.DefaultConfiguration@48e8c32a stopped.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] TRACE : Using default SystemClock for timestamps.</p>
+<p>2026-02-26T11:44:02.359474500Z main TRACE Using default SystemClock for timestamps.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : org.apache.logging.log4j.core.util.SystemClock supports precise timestamps.</p>
+<p>2026-02-26T11:44:02.359474500Z main DEBUG org.apache.logging.log4j.core.util.SystemClock supports precise timestamps.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] TRACE : Using DummyNanoClock for nanosecond timestamps.</p>
+<p>2026-02-26T11:44:02.360472800Z main TRACE Using DummyNanoClock for nanosecond timestamps.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] INFO : LoggerContext[name=pax-logging] started with configuration org.apache.logging.log4j.core.config.DefaultConfiguration@24a2e565.</p>
+<p>2026-02-26T11:44:02.360472800Z main INFO LoggerContext[name=pax-logging] started with configuration org.apache.logging.log4j.core.config.DefaultConfiguration@24a2e565.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] INFO : Log4J2 configured using default configuration.</p>
+<p>2026-02-26T11:44:02.361473700Z main INFO Log4J2 configured using default configuration.</p>
+<p>org.ops4j.pax.logging.pax-logging-log4j2 [org.ops4j.pax.logging.spi.support.EventAdminConfigurationNotifier] INFO : Logging configuration changed. (Event Admin service unavailable - no notification sent).</p>
+<p>12:44:02.471 [main] INFO org.apache.cxf.bus.osgi.CXFActivator - Adding the extensions from bundle org.apache.cxf.cxf-rt-frontend-jaxrs (37) [org.apache.cxf.jaxrs.JAXRSBindingFactory]</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : AsyncLogger.ThreadNameStrategy=UNCACHED (user specified null, default is UNCACHED)</p>
+<p>2026-02-26T11:44:02.473004500Z main DEBUG AsyncLogger.ThreadNameStrategy=UNCACHED (user specified null, default is UNCACHED)</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] TRACE : Using default SystemClock for timestamps.</p>
+<p>2026-02-26T11:44:02.474004400Z main TRACE Using default SystemClock for timestamps.</p>
+<p>org.ops4j.pax.logging.pax-logging-api [log4j2] DEBUG : org.apache.logging.log4j.core.util.SystemClock supports precise timestamps.</p>
+<p>2026-02-26T11:44:02.474004400Z main DEBUG org.apache.logging.log4j.core.util.SystemClock supports precise timestamps.</p>
+<p>12:44:02.478 [main] INFO org.apache.cxf.bus.osgi.CXFActivator - Adding the extensions from bundle org.apache.cxf.cxf-rt-rs-sse (39) [org.apache.cxf.transport.sse.SseProvidersExtension]</p>
+<p>12:44:02.480 [main] INFO org.apache.cxf.bus.osgi.CXFActivator - Adding the extensions from bundle org.apache.cxf.cxf-rt-transports-http (41) [org.apache.cxf.transport.http.HTTPTransportFactory, org.apache.cxf.transport.http.HTTPWSDLExtensionLoader, org.apache.cxf.transport.http.policy.HTTPClientAssertionBuilder, org.apache.cxf.transport.http.policy.HTTPServerAssertionBuilder, org.apache.cxf.transport.http.policy.NoOpPolicyInterceptorProvider]</p>
+<p>12:44:02.547 [main] INFO org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer - Aries Blueprint packages not available. So namespaces will not be registered</p>
+<p>12:44:02.555 [main] INFO org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer - Aries Blueprint packages not available. So namespaces will not be registered</p>
+<p>12:44:02.573 [main] DEBUG org.apache.aries.jax.rs.whiteboard.activator.CxfJaxrsBundleActivator - Starting the whiteboard factory</p>
+<p>12:44:02.596 [main] INFO org.apache.cxf.bus.blueprint.NamespaceHandlerRegisterer - Aries Blueprint packages not available. So namespaces will not be registered</p>
+<p>12:44:02.604 [main] INFO org.apache.aries.jax.rs.whiteboard.activator.CxfJaxrsBundleActivator - Registered RuntimeDelegate</p>
+<p>12:44:02.605 [main] INFO org.apache.aries.jax.rs.whiteboard.activator.CxfJaxrsBundleActivator - Registered ClientBuilder</p>
+<p>12:44:02.605 [main] INFO org.apache.aries.jax.rs.whiteboard.activator.CxfJaxrsBundleActivator - Registered SseEventSourceFactory</p>
+<p>12:44:02.605 [main] INFO org.apache.aries.jax.rs.whiteboard.activator.CxfJaxrsBundleActivator - Registered SseEventSource.Builder</p>
+<p>12:44:02.611 [main] DEBUG org.apache.aries.jax.rs.whiteboard.activator.CxfJaxrsBundleActivator - adding new whiteboard configuration: {service.pid=org.apache.aries.jax.rs.whiteboard.default}</p>
+<p>12:44:02.634 [main] DEBUG org.apache.aries.jax.rs.whiteboard.activator.CxfJaxrsBundleActivator - Whiteboard factory started</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -108,12 +149,12 @@ If someone have any idea, I’ve search all the morning without any results.</p>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

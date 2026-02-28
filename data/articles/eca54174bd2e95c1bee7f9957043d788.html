@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,15 +28,21 @@
     Source: Gladys Assistant (Forum) | Date: 2/27/2026 1:24:58 PM | <a href="https://community.gladysassistant.com/t/amelioration-re-calcul-suivi-de-lenergie/10069" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>@pierre-gilles ,
-Je rebondis sur ce sujet du coup, j’ai terminé la vérification pour la PR sur l’amélioration du recalcul du suivi de l’énergie. Je pense que tu peux review : github.com/GladysAssistant/Gladys Energy monitoring - New Add date range recalculation for energy monitoring with improved jobs and tests master ← Terdious:energy-recalc-date-and-multi-features 05:16PM - 06 Jan 26 UTC +3203 -428 ### Pull Request check-list To ensure your Pull Request can be accepted as fa…st as possible, make sure to review and check all of these items: - [x] If your changes affects code, did your write the tests?
+    <p><p><a class="mention" href="https://community.gladysassistant.com/u/pierre-gilles">@pierre-gilles</a> ,</p>
+<p>Je rebondis sur ce sujet du coup, j’ai terminé la vérification pour la PR sur l’amélioration du recalcul du suivi de l’énergie. Je pense que tu peux review :</p><aside class="onebox githubpullrequest" data-onebox-src="https://github.com/GladysAssistant/Gladys/pull/2413/"> <header class="source"> <a href="https://github.com/GladysAssistant/Gladys/pull/2413/" target="_blank" rel="noopener">github.com/GladysAssistant/Gladys</a> </header> <article class="onebox-body"> <div class="github-row" data-github-private-repo="false"> <div class="github-icon-container" title="Pull Request"> <svg width="60" height="60" class="github-icon" viewBox="0 0 12 16" aria-hidden="true"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg> </div> <div class="github-info-container"> <h4> <a href="https://github.com/GladysAssistant/Gladys/pull/2413/" target="_blank" rel="noopener">Energy monitoring - New Add date range recalculation for energy monitoring with improved jobs and tests</a> </h4> <div class="branches"> <code>master</code> ← <code>Terdious:energy-recalc-date-and-multi-features</code> </div> <div class="github-info"> <div class="date"> ouvert <span class="discourse-local-date" data-format="ll" data-date="2026-01-06" data-time="17:16:20" data-timezone="UTC">05:16PM - 06 Jan 26 UTC</span> </div> <div class="user"> <a href="https://github.com/Terdious" target="_blank" rel="noopener"> <img alt="" src="https://avatars.githubusercontent.com/u/35010958?v=4" class="onebox-avatar-inline" width="20" height="20"> Terdious </a> </div> <div class="lines" title="48 validations ont modifié 43 fichiers avec 3203 ajouts et 428 suppressions"> <a href="https://github.com/GladysAssistant/Gladys/pull/2413/files" target="_blank" rel="noopener"> <span class="added">+3203</span> <span class="removed">-428</span> </a> </div> </div> </div>
+</div> <div class="github-row"> <p class="github-body-container">### Pull Request check-list To ensure your Pull Request can be accepted as fa<span class="show-more-container"><a href="https://github.com/GladysAssistant/Gladys/pull/2413" target="_blank" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">st as possible, make sure to review and check all of these items: - [x] If your changes affects code, did your write the tests?
 - [x] Are tests passing? (`npm test` on both front/server)
 - [x] Is the linter passing? (`npm run eslint` on both front/server)
 - [x] Did you run prettier? (`npm run prettier` on both front/server)
 - [x] If you are adding a new features/services, did you run integration comparator? (`npm run compare-translations` on front)
 - [x] Did you test this pull request in real life? With real devices? If this development is a big feature or a new service, we recommend that you provide a Docker image to the community ([forum](https://community.gladysassistant.com/)) for testing before merging.
 - [ ] If your changes modify the API (REST or Node.js), did you modify the API documentation? (Documentation is based on in code)
-- [x] If you are adding a new features/services which needs explanation, did you modify the user documentation? See [the GitHub repo](https://github.com/GladysAssistant/v4-website) and the [website](https://gladysassistant.com).</p>
+- [x] If you are adding a new features/services which needs explanation, did you modify the user documentation? See [the GitHub repo](https://github.com/GladysAssistant/v4-website) and the [website](https://gladysassistant.com).
+- [ ] Did you add fake requests data for the demo mode (`front/src/config/demo.js`) so that the demo website is working without a backend? (if needed) See [https://demo.gladysassistant.com](https://demo.gladysassistant.com). NOTE: these things are not required to open a PR and can be done afterwards / while the PR is open. ### Description of change * **Translate** * +156 lines / -21 lines * **Front** * +923 lines / -137 lines * **Server** * +699 lines / -126 lines * **Tests** * +1232 lines / -129 lines - Add start/end date support for energy consumption and cost recalculation (full or selected features).
+- Purge recalculated consumption states within the selected period before recomputing.
+- Return job_id on recalculation endpoints and handle errors on the UI side.
+- Display recalculation period in background jobs.
+- Introduce destroyStatesBetween helper and add tests for new behaviors. ## Summary by CodeRabbit * **New Features** * Energy consumption and cost recalculation now supports date ranges, per-selection recalculation, and period-based confirmations. * Added feature selection with drag-and-drop reordering for targeted recalculations. * Device list can disable inline rename; label display respects rename setting. * UI warns when consumption features are present and links to the energy-monitoring integration. * **Documentation** * Added English, French and German translations for the new energy-monitoring workflows and dialogs.</span></p> </div> </article> <div class="onebox-metadata"> </div> <div style="clear:</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -51,12 +51,12 @@ Je rebondis sur ce sujet du coup, j’ai terminé la vérification pour la PR su
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,9 +34,18 @@
     Source: Gladys Assistant (Forum) | Date: 2/22/2026 12:00:34 PM | <a href="https://community.gladysassistant.com/t/dongle-z-wave-non-reconnu/10040" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p><p>Bonjour,</p>
+    <div><div> <div> <p><span> <time> Février 22, 2026, 12:00 </time> <span>1</span> </span> </p></div> <div> <p>Bonjour,</p>
 <p>le dongle “sonoff z-wave 800 dongle plus” model: dongle-PZG23 n’est pas reconnu par gladys dans Z-WAVE JS UI.</p>
-<p>Merci</p> <p><small>2 messages - 2 participant(e)s</small></p> <p><a href="https://community.gladysassistant.com/t/dongle-z-wave-non-reconnu/10040">Lire le sujet en entier</a></p></p>
+<p>Merci</p> </div> </div><div> <p><span> <a href="https://community.gladysassistant.com/u/mutmut"><span>mutmut</span></a> </span> <span> <time> Février 22, 2026, 3:00 </time> <span>2</span> </span> </p> <div> <p>Bonjour <a href="https://community.gladysassistant.com/u/frederic_trehoux">@Frederic_Trehoux</a> et soit le bienvenu sur le forum Gladys !</p>
+<p>Alors ta remarque est tout à fait normale car Gladys ne gère pas les clés usb zwave, c’est zwave-js-ui qui s’occupe de ça comme indiqué dans la <a href="https://gladysassistant.com/fr/docs/integrations/zwavejs-ui/">doc</a>.</p>
+<p>Il faut donc que tu te crées une VM ou un container Docker pour y installer zwave-js et <a href="https://github.com/zwave-js/zwave-js-ui">zwave-js-ui</a>.<br>
+A partir de là, c’est cette machine virtuelle qui gèrera ta clé usb qui est très bien supportée d’après la doc de zwave-js.<br>
+Tu te connectes sur ton instance zwave-js-ui, puis <code>Settings</code>et <code>Z-Wave</code> et là tu sélectionnes ta clé usb.<br>
+Ensuite dans la partie <code>MQTT Gateway</code>, tu peux suivre la doc.</p>
+<p>La doc indique qu’il faut te connecter à un broker MQTT depuis zwave-js-ui et depuis l’intégration Z-Wave JS UI de Gladys.<br>
+Soit tu utilises le docker MQTT interne de l’intégration MQTT dans Gladys (à activer), soit tu peux te créer ton propre docker MQTT externe.</p>
+<p>Si tu nous en dit un peu plus sur ton installation matérielle et logicielle, on pourra te guider au mieux.<br>
+N’hésite surtout pas si tu as besoin de plus d’info.</p> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -39,12 +54,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

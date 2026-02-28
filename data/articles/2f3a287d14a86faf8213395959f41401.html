@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,7 @@
     Source: Home Assistant Community Forum (Latest) | Date: 2/27/2026 3:55:06 PM | <a href="https://community.home-assistant.io/t/howto-use-esphome-in-a-vlan-setup/991310" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p><p>My setup…: Behind a firewall (Blocking ouside → in (obvious) also a lot of inside out being blocked. Remote access from phones using a Wireguard tunnel.<br>
+    <div><div> <div> <div> <p><span> <time> February 27, 2026, 3:55pm </time> <span>1</span> </span> </p></div> <div> <p>My setup…: Behind a firewall (Blocking ouside → in (obvious) also a lot of inside out being blocked. Remote access from phones using a Wireguard tunnel.<br>
 NO mDNS, no UPnP, (udp 5353, udp 1900) used anywhere, except on devices that can not be set to not use them.<br>
 VLAN’s available through the home using Switched network.</p>
 <p>Setup Relevant to this:<br>
@@ -44,7 +50,20 @@ Configuration starts, Firmware upload did work, when configuring as Assistant it
 <p>I tested access on the IOT-network if HA is usable, it is.<br>
 I guess the ESPHome is given the front address of the HomeAssistant (enp2s0 interface) instead of the IOT-interface.<br>
 ESPHome lights can be controlled from HA so there is Some communication.</p>
-<p>How to solve?</p> <p><small>4 posts - 4 participants</small></p> <p><a href="https://community.home-assistant.io/t/howto-use-esphome-in-a-vlan-setup/991310">Read full topic</a></p></p>
+<p>How to solve?</p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/pkscout"><span>pkscout</span></a> (Kyle Johnson) </span> <span> <time> February 27, 2026, 6:08pm </time> <span>2</span> </span> </p> <div> <p>The easiest way to solve this is to simplify your network. ESPHome and HA will work best together if you have them on the same VLAN. If you don’t, you have to get mDNS working across VLANs and then (assuming you are isolating the two VLANS) figure out all the ports you have to open.</p>
+<p>After you do that, it will probably never work smoothly, so make sure to set aside plenty of time for troubleshooting and care and maintenance. Some days the mDNS will be fine. Other days it will just refuse to work.</p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/sender"><span>sender</span></a> </span> <span> <time> February 27, 2026, 6:23pm </time> <span>3</span> </span> </p> <p>You can easily add esphome devices via ip address. If you enable “ping” in de addon it will show them on/offline.</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/dtrott"><span>dtrott</span></a> (David Trott) </span> <span> <time> February 27, 2026, 6:35pm </time> <span>4</span> </span> </p> <div> <p>As others have said simplify, I only have two VLANs:</p>
+<ul>
+<li>Automation (50) - Where HA and my IOT devices live.</li>
+<li>Default (1) - Where everything else lives.</li>
+</ul>
+<p>For automation the default is locked down:</p>
+<ul>
+<li>Nothing out.</li>
+<li>Inbound only possible from Default VLAN.</li>
+<li>Return packets for active connections allowed.</li>
+</ul>
+<p>HA and one other device need internet access, so I use an explicit FW rule for those IPs - otherwise the default (no access) would apply. End devices never see the VLANs - it’s handled entirely by the switches and router - all end device packets are untagged.</p>
+<p>So to HA and the other IOT devices the network looks flat.</p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/tmjpugh"><span>tmjpugh</span></a> (Tmjpugh) </span> <span> <time> February 27, 2026, 11:23pm </time> <span>5</span> </span> </p> <div> <p>Voice devices get response audio from the address set in HA ui &gt;&gt; settings &gt;&gt; system &gt;&gt;network &gt;&gt; local network. If the device cannot access files at this address you will not get voice audible response. if you look at logs you will see the text response and weblink of response audio</p> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -53,12 +72,12 @@ ESPHome lights can be controlled from HA so there is Some communication.</p>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

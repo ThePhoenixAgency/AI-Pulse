@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,12 +28,16 @@
     Source: Home Assistant Community Forum (Latest) | Date: 2/27/2026 5:48:36 PM | <a href="https://community.home-assistant.io/t/your-support-please-improving-has-recorder-database-and-associated-user-interface/991323" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <p><span> <time> February 27, 2026, 5:48pm </time> <span>1</span> </span> </p></div> <div> <p>tl,dr: Here to seek your support for a feature request on improving how HA’s databases work, what goes into them, and how they are maintained.</p>
-<hr> <p>Doing so sent me further down a rabbit hole, thinking about how HA is setup from the start, what happens when new integrations and devices are added, and the high learning curve new users to the platform have when it comes to understanding what goes into the database and achieving an optimal configuration that doesn’t tax their hardware or storage.</p>
+    <p><p>tl,dr: Here to seek your support for a feature request on improving how HA’s databases work, what goes into them, and how they are maintained.</p>
+<hr>
+<p>After recently having a major blowout in my SQLite database (reaching 1.8 Gb), it prompted me to sit down and review a number of things related to <code>recorder:</code> and just what data was stored in my HA DB.</p>
+<p>Doing so sent me further down a rabbit hole, thinking about how HA is setup from the start, what happens when new integrations and devices are added, and the high learning curve new users to the platform have when it comes to understanding what goes into the database and achieving an optimal configuration that doesn’t tax their hardware or storage.</p>
 <p>Long story short: HA has some really great opportunities in this space to help users optimise the database for performance, size, and reduced load/storage device wear.</p>
-<p>To this end, I have opened a significant and detailed Feature request, and I’d appreciate your support and/or discussion on it:</p> <p>The feature request above covers all the usual topics, which I hope will assist you providing unqualified support, and discussion that might help drive better outcomes and faster update by the HA core team.</p>
-<p>I also have <a href="https://allthingsempty.wordpress.com/2026/02/18/optimising-your-home-assistant-database-without-tears/">a separate blog post</a> that goes deeper into the detail on the topic, especially when it comes to the theory and practice of optimising an existing instance for others with the same dilemma I had.</p>
-<p>Thanks in advance for your votes and discussions, it will be appreciated.</p> </div> <div> <p><span>1 Like</span> </p></div> </div><div> <p><span> <a href="https://community.home-assistant.io/u/Sir_Goodenough"><span>Sir_Goodenough</span></a> ((SG) WhatAreWeFixing.Today) </span> <span> <time> February 27, 2026, 6:04pm </time> <span>2</span> </span> </p> <p>(post deleted by author)</p> </div></div>
+<p>To this end, I have opened a significant and detailed Feature request, and I’d appreciate your support and/or discussion on it:</p>
+<aside class="onebox allowlistedgeneric" data-onebox-src="https://github.com/orgs/home-assistant/discussions/2899"> <header class="source"> <img src="//community-assets.home-assistant.io/original/3X/b/a/bad3e5f9ad67c1ddf145107ce7032ac1d7b22563.svg" class="site-icon" data-dominant-color="" width="32" height="32"> <a href="https://github.com/orgs/home-assistant/discussions/2899" target="_blank" rel="noopener nofollow ugc">GitHub</a> </header> <article class="onebox-body"> <div class="aspect-image" style="--aspect-ratio:690/344;"><img src="https://community-assets.home-assistant.io/optimized/4X/8/0/9/80953e6b13cbf853ad4600187e6268e176c1acc4_2_690x345.png" class="thumbnail" data-dominant-color="ECECED" width="690" height="345"></div> <h3><a href="https://github.com/orgs/home-assistant/discussions/2899" target="_blank" rel="noopener nofollow ugc">Database &amp; Recorder integration: Overhaul UI to permit reduced DB size...</a></h3> <p>Describe your core improvement Prompt at instance setup to configure settings for proper DB maintenance from the outset: As part of the onboarding/instance first time setup process, or at a later s...</p> </article> <div class="onebox-metadata"> </div> <div style="clear: both"></div>
+</aside> <p>The feature request above covers all the usual topics, which I hope will assist you providing unqualified support, and discussion that might help drive better outcomes and faster update by the HA core team.</p>
+<p>I also have <a href="https://allthingsempty.wordpress.com/2026/02/18/optimising-your-home-assistant-database-without-tears/" rel="noopener nofollow ugc">a separate blog post</a> that goes deeper into the detail on the topic, especially when it comes to the theory and practice of optimising an existing instance for others with the same dilemma I had.</p>
+<p>Thanks in advance for your votes and discussions, it will be appreciated.</p> <p><small>2 posts - 2 participants</small></p> <p><a href="https://community.home-assistant.io/t/your-support-please-improving-has-recorder-database-and-associated-user-interface/991323">Read full topic</a></p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -48,12 +46,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

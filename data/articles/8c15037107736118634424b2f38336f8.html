@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Wayback Machine</title>
+<title>v2.0.0-rc.13</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,12 +23,51 @@
 </style>
 </head>
 <body>
-  <h1>Wayback Machine</h1>
+  <h1>v2.0.0-rc.13</h1>
   <div class="metadata">
     Source: HomeGenie (GitHub Releases) | Date: 12/29/2025 10:11:14 PM | <a href="https://github.com/genielabs/HomeGenie/releases/tag/v2.0.0-rc.13" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p> The Wayback Machine is an initiative of the <a href="https://archive.org/">Internet Archive</a>, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. <br>Other <a href="https://archive.org/projects/">projects</a> include <a href="https://openlibrary.org/">Open Library</a> &amp; <a href="https://archive-it.org/">archive-it.org</a>. </p> <p> Your use of the Wayback Machine is subject to the Internet Archive's <a href="https://archive.org/about/terms.php">Terms of Use</a>. </p> </div></div>
+    <p><h2>HomeGenie Server v2.0.0-rc.13 - The "Agentic Home" Update </h2>
+<p>This release candidate transforms HomeGenie into a truly <strong>Agentic</strong> system, introducing a suite of specialized services that allow Artificial Intelligence to "feel" and interact with your home context in a native, professional manner.</p>
+<h3> New Services &amp; Major Features</h3>
+<h4> Context-Aware AI Architecture</h4>
+<ul>
+<li><strong>Context Engine &amp; Real-time Briefing:</strong> A new system service that provides LLMs (Gemini and Lailama) with a live briefing before every interaction. The AI is now fully aware of weather conditions, energy consumption, and security status.</li>
+<li><strong>Universal Fluent API Generator:</strong> A powerful new engine that generates ready-to-use code in <strong>C#, JavaScript, and Python</strong> using a unified, human-readable syntax (e.g., <code>light.On()</code>, <code>thermostat.Level = 21.5</code>).</li>
+<li><strong>Centralized Chat History Service:</strong> A unified system utility for managing persistent conversation logs with multi-store support. It ensures a seamless context when switching between different AI providers (Local vs. Cloud).</li>
+</ul>
+<h4> Pro Developer &amp; Power User Tools</h4>
+<ul>
+<li><strong>File Manager Service:</strong> A new secure, API-driven service for reading and writing files within the program's data folder, featuring protection against path traversal.</li>
+<li><strong>'Editor' Option Field:</strong> Introduced a new option type that allows developers to embed full text editors (YAML, JSON, Markdown) directly into module features and program settings.</li>
+<li><strong>Refined Code Editor:</strong> The integrated file editor now features a <strong>Light Theme</strong>, modal-driven constraints to prevent accidental closing, and improved mobile responsiveness.</li>
+<li><strong>Widget Utility Expansion:</strong> Added <code>this.apiCall(...).subscribe(...)</code> to the base interface for custom ZUIX.js widgets, enabling easier system integration for third-party modules.</li>
+</ul>
+<h4> UI &amp; Performance Overhaul</h4>
+<ul>
+<li><strong>Resizable System Chat:</strong> The side panel for the system chat is now resizable via a smooth drag-to-resize bar, fully synchronized with global CSS variables.</li>
+<li><strong>Zero-Lag Interface:</strong> Significant performance boost by moving custom ZUIX.js widget execution <strong>outside of NgZone</strong> and implementing a pre-calculated <code>ViewState</code> mapping to reduce Change Detection overhead.</li>
+<li><strong>Interactive API Rendering:</strong> AI responses now render executable API blocks with dedicated buttons to copy the API call string, the full URL, or to interact directly with the identified modules.</li>
+<li><strong>Smart Streaming UI:</strong> Live token streaming with optimized scroll management and unified "Stop" commands to interrupt AI generation.</li>
+</ul>
+<h3> Improvements &amp; Stability</h3>
+<ul>
+<li><strong>Energy Monitor 2.0:</strong> Improved RF error filtering for Watt readings and implemented binary persistence for reliable historical data logging.</li>
+<li><strong>Gemini Knowledge Base:</strong> Updated system prompts for <em>Gemini Widget Genie</em> with the latest HomeGenie Suite 2.0 specifications and token verification logic.</li>
+<li><strong>Global i18n:</strong> Manual localization updated for Italian and English; automated support expanded to <strong>over 90 languages</strong>.</li>
+</ul>
+<h3> Bug Fixes</h3>
+<ul>
+<li>Fixed: Chat history not updating when switching to "Base Control Chat."</li>
+<li>Fixed: Rendering issues for API commands related to system Programs/Scenarios.</li>
+<li>Fixed: API block rendering now correctly appears even during the AI "Thinking" phase.</li>
+<li>Fixed: Program "Settings" not saving correctly from certain widget menus.</li>
+<li>Fixed: Main title bar visibility issues when navigating from deep links.</li>
+</ul>
+<hr>
+<p><em>Building the future of local, private automation. Enjoy HomeGenie v2.0!</em> </p>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/genielabs/HomeGenie/compare/v2.0.0-rc.12...v2.0.0-rc.13"><tt>v2.0.0-rc.12...v2.0.0-rc.13</tt></a></p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -43,12 +76,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

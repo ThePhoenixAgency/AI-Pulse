@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>agents-lint — Keep AGENTS.md fresh</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>agents-lint — Keep AGENTS.md fresh</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/28/2026 3:30:47 AM | <a href="https://github.com/giacomo/agents-lint" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div> <nav> <a href="#">agents<span>-lint</span></a> <ul> <li><a href="#why">Why</a></li> <li><a href="#checks">Checks</a></li> <li><a href="#quickstart">Quick start</a></li> <li><a href="#ci">CI</a></li> <li><a href="https://github.com/giacomo/agents-lint">GitHub</a></li> </ul>
+</nav> <div> <p>v0.2.0 — now on npm</p> <h2>Your <span>AGENTS.md</span><br>is probably lying.</h2> <p> Detect stale paths, dead npm scripts, outdated framework patterns, and context rot before they make your coding agents expensive and wrong. </p> <div> <div> <p><span>~ my-project</span> </p></div> <div> <p><span>$ npx agents-lint</span></p><p> <span>agents-lint</span> <span>v0.2.0</span><br> <span>────────────────────────────────────────────────────────────</span><br> <span>Found 2 context files: AGENTS.md, CLAUDE.md</span></p><p> <span>File:</span> AGENTS.md &nbsp;<span>·</span>&nbsp; <span>92/100 (A)</span><br> &nbsp;&nbsp;<span>✓ No issues</span></p><p> <span>File:</span> CLAUDE.md &nbsp;<span>·</span>&nbsp; <span>78/100 (C)</span><br> &nbsp;&nbsp;<span></span> No testing section found<br> &nbsp;&nbsp;&nbsp;&nbsp;<span>→ Add a "Testing" section with the exact test command.</span></p><p> <span>Cross-File Consistency</span> <span>(1 issue)</span><br> &nbsp;&nbsp;<span></span> Conflicting test commands<br> &nbsp;&nbsp;&nbsp;&nbsp;<span>AGENTS.md → npm run test</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span>CLAUDE.md → npm run test:unit</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span>→ Align test commands across all context files.</span></p><p> <span>────────────────────────────────────────────────────────────</span><br> <span>Overall: </span><span>85/100</span>&nbsp;&nbsp;<span>1 error</span>&nbsp;&nbsp;<span>1 warning</span>&nbsp;&nbsp;<span>0 info</span></p></div> </div> </div> <hr> <div> <p>Research-backed</p> <h2>Context rot is a real cost.</h2> <p> Two peer-reviewed studies in 2026 quantified what many teams had experienced: stale AGENTS.md files make your agents worse <em>and</em> more expensive. </p> <div> <div> <p> "LLM-generated context files reduced task success by 2–3% while increasing cost by over 20%." </p> <p><span>— ETH Zurich, ICSE 2026</span> </p></div> <div> <p> "None of the major coding agents expose lifecycle hooks for keeping context files accurate. That's a tooling gap waiting to be filled." </p> <p><span>— Addy Osmani, Google Chrome, Feb 2026</span> </p></div> </div> </div> <hr> <div> <p>What it checks</p> <h2>Six categories of rot.</h2> <p> Each checker is independent. Run all of them in seconds, no dependencies needed. </p> <div> <div> <p></p> <p>Filesystem</p> <p> Every path mentioned in your AGENTS.md is verified to exist on disk. Catches renamed directories, deleted packages, restructured monorepos. </p> </div> <div> <p></p> <p>npm Scripts</p> <p> Validates that every <code>npm run &lt;script&gt;</code> mentioned exists in package.json. Supports workspaces and monorepos automatically. </p> </div> <div> <p></p> <p>Dependencies</p> <p> Detects references to packages not in package.json, and flags deprecated packages like <code>moment</code>, <code>request</code>, <code>tslint</code>. </p> </div> <div> <p></p> <p>Framework Staleness</p> <p> Catches outdated patterns: NgModules in Angular 14+, ReactDOM.render() in React 19, getInitialProps in Next.js App Router, CommonJS in ESM projects. </p> </div> <div> <p></p> <p>Cross-File Consistency</p> <p> When multiple context files exist (AGENTS.md + CLAUDE.md, etc.), flags conflicts: different test commands, package managers, or paths documented in one file but not the other. </p> </div> <div> <p></p> <p>Freshness Score</p> <p> Every run produces a 0–100 score with a letter grade. Errors cost 15 pts, warnings 7, infos 2. Set thresholds in CI. </p> </div> </div> </div> <hr> <div> <p>Scoring</p> <h2>Know your grade.</h2> <p> Set a minimum score in CI. Fail the build before agents start producing costly wrong answers. </p> <table> <thead> <tr> <th>Score</th> <th>Grade</th> <th>Meaning</th> </tr> </thead> <tbody> <tr><td>90–100</td><td>A</td><td>Fresh and accurate — ready for agents</td></tr> <tr><td>80–89</td><td>B</td><td>Minor issues, still reliable</td></tr> <tr><td>70–79</td><td>C</td><td>Some stale references, review recommended</td></tr> <tr><td>50–69</td><td>D</td><td>Significant context rot</td></tr> <tr><td>0–49</td><td>F</td><td>Agents may produce incorrect or costly outputs</td></tr> </tbody> </table> </div> <hr> <div> <p>Quick start</p> <h2>Zero config. Three commands.</h2> <p>No install required. Works with any repo that has a context file.</p> <div> <div> <p></p> <p>Generate a starter file</p> <p><span>$ npx agents-lint init</span><br> <span>✓</span> Created AGENTS.md<br> <span>Fill in the TODO sections,</span><br> <span>then run agents-lint to validate.</span> </p> <p> Detects your stack (React, Next.js, Vue…), test runner, and package manager. Pre-populates sections from package.json. </p> </div> <div> <p></p> <p>Lint all context files</p> <p><span>$ npx agents-lint</span><br> <span>Auto-detects AGENTS.md,</span><br> <span>CLAUDE.md, GEMINI.md,</span><br> <span>.cursorrules, and more.</span> </p> <p> Lints each file independently, then cross-checks for conflicts between them. Pass a path to lint a specific file. </p> </div> <div> <p></p> <p>Interactive fix mode</p> <p><span>$ npx agents-lint --fix</span><br> <span>Remove stale path on :23?</span><br> <span>[y/n] </span><span>y</span><br> <span>✓</span> <span>Line removed.</span> </p> <p> Walk through each issue and accept or skip the suggested fix. Changes are applied atomically — all at once or not at all. </p> </div> </div> </div> <hr> <div> <p>GitHub Actions</p> <h2>Automate it. Set and forget.</h2> <p> The weekly schedule is intentional — context rot happens even when AGENTS.md hasn't changed. </p> <div> <p><br> <span>name</span>: agents-lint<br> <span>on</span>:<br> &nbsp;&nbsp;<span>push</span>:<br> &nbsp;&nbsp;&nbsp;&nbsp;<span>paths</span>: [<span>'AGENTS.md'</span>, <span>'package.json'</span>]<br> &nbsp;&nbsp;<span>schedule</span>:<br> &nbsp;&nbsp;&nbsp;&nbsp;- <span>cron</span>: <span>'0 9 * * 1'</span> </p><p> <span>jobs</span>:<br> &nbsp;&nbsp;<span>lint</span>:<br> &nbsp;&nbsp;&nbsp;&nbsp;<span>runs-on</span>: ubuntu-latest<br> &nbsp;&nbsp;&nbsp;&nbsp;<span>steps</span>:<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span>uses</span>: actions/checkout@v4<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span>run</span>: npx agents-lint <span>--max-warnings 5</span></p></div> </div> </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -2,14 +2,20 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Arduino Uno Q : la nouvelle génération « dual cerveau » d’Arduino</title>
+<title>Arduino Uno Q : la nouvelle génération « dual cerveau » d’Arduino - MONRASPBERRY</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,12 +29,25 @@
 </style>
 </head>
 <body>
-  <h1>Arduino Uno Q : la nouvelle génération « dual cerveau » d’Arduino</h1>
+  <h1>Arduino Uno Q : la nouvelle génération « dual cerveau » d’Arduino - MONRASPBERRY</h1>
   <div class="metadata">
     Source: MonRaspberry.com | Date: 11/1/2025 5:00:00 AM | <a href="https://monraspberry.com/arduino-uno-q-nouvelle-generation-dual-cerveau/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Découvrez l’Arduino Uno Q, la carte hybride MPU/MCU avec Wi-Fi 5, Bluetooth 5.1 et compatibilité UNO, sortie dans le contexte du rachat d’Arduino par Qualcomm.</p>
+    <div><div>
+<h2>Introduction</h2> <p>Arduino vient de franchir un palier qu’on attendait depuis longtemps : avec <strong>l’<a href="https://monraspberry.com/produit/arduino-uno-q/">Arduino Uno Q</a></strong>, annoncée en même temps que le <strong>rachat d’Arduino par Qualcomm le 7 octobre 2025</strong> (montant non communiqué), la marque passe officiellement de la simple carte de prototypage à <strong>une plateforme edge/IA complète</strong>. L’Uno Q est la première carte Arduino qui réunit <strong>un processeur d’applications Linux signé Qualcomm</strong> et <strong>un microcontrôleur temps réel compatible Arduino</strong> dans le format qu’on connaît déjà. C’est ce qu’Arduino appelle une carte à <strong>« double cerveau »</strong> ou <strong>« dual-brain platform »</strong>.</p> <p>Le message est clair : <strong>Arduino veut rester Arduino</strong>, mais avec la puissance réseau, IA et multimédia de Qualcomm. Pour les makers, les enseignants, les intégrateurs IoT, c’est une excellente nouvelle.</p> <h2>1. Une Uno… qui sait faire tourner Linux</h2> <p>Le cœur de l’Uno Q côté “haut niveau”, c’est le <strong>Qualcomm Dragonwing QRB2210</strong> : un SoC quad-core <strong>Arm Cortex-A53 à 2,0 GHz</strong>, avec GPU Adreno et double ISP pour la vidéo. C’est le même profil que Qualcomm réserve d’habitude à ses plateformes embarquées industrielles ou robotiques : il <strong>fait tourner Debian Linux</strong>, il sait faire du <strong>Python</strong>, du <strong>Node</strong>, du <strong>Docker léger</strong>, et il est taillé pour les usages <strong>vision + audio + IA embarquée</strong>. Arduino le dit noir sur blanc : « c’est Arduino, c’est un ordinateur, c’est tout ce que vous voulez construire ».</p> <p>Ce point est capital : jusque-là, dès qu’on voulait aller vers Linux + IA + connectivité avancée, on sortait de l’écosystème Arduino pour aller sur un Raspberry Pi, un Jetson ou une carte x86. Là, on reste <strong>dans</strong> Arduino.</p> <h2>2. … et un vrai MCU Arduino pour le temps réel</h2> <p>L’Uno Q n’abandonne pas ce qui fait le succès d’Arduino : elle ajoute un <strong>STM32U585 (Cortex-M33)</strong> dédié au temps réel et aux <strong>sketches Arduino classiques</strong>. C’est lui qui parle aux GPIO au milliseconde près, qui gère les interruptions, les servos, les petits shields, bref tout ce qu’on ne veut pas faire sous Linux pour ne pas perdre la précision.</p> <p>On a donc vraiment <strong>deux mondes sur la même carte</strong> :</p> <ul>
+<li><strong>Cerveau 1 (MPU Qualcomm)</strong> : Linux, IA, réseau, caméra, services web</li> <li><strong>Cerveau 2 (MCU STM32)</strong> : I/O, capteurs, actionneurs, compatibilité Arduino</li>
+</ul> <p>Les deux sont <strong>interconnectés</strong> (Arduino parle d’un pont interne) pour que le code haut niveau puisse piloter le temps réel, et inversement. C’est exactement le genre d’architecture qu’on trouvait jusqu’ici sur des cartes bien plus chères, souvent réservées au marché industriel.</p> <h2>3. Connectée d’usine : Wi-Fi 5, Bluetooth 5.1, USB-C</h2> <p>Autre nouveauté très attendue : l’Uno Q arrive <strong>déjà connectée</strong>. Plus besoin d’empiler un shield Wi-Fi ou BLE, on dispose d’office de :</p> <ul>
+<li><strong>Wi-Fi 5</strong> bi-bande,</li> <li><strong>Bluetooth 5.1</strong>,</li> <li><strong>USB-C avec alimentation moderne</strong>,</li> <li>prise en charge vidéo via USB-C selon les profils indiqués par Arduino.</li>
+</ul> <p>Pour les projets IoT ou de démo client, ça change tout : on sort la carte de la boîte, on la met sur le réseau, on pousse une appli web ou un dashboard local, <strong>sans câblage supplémentaire</strong>.</p> <h2>4. Compatibilité UNO (et pourquoi c’est stratégique)</h2> <p>Arduino aurait pu dire : “nouvelle carte, nouveau format”. Ils ont fait l’inverse. L’Uno Q <strong>reprend l’empreinte et la logique de la famille UNO</strong> :</p> <ul>
+<li>brochage familier,</li> <li>shields UNO largement réutilisables,</li> <li>usage avec <strong>Arduino IDE</strong> et <strong>Arduino Cloud</strong> inchangé.</li>
+</ul> <p>C’est un vrai signal envoyé à la communauté : oui, la carte est plus puissante, oui, il y a un SoC Qualcomm, <strong>mais on ne casse pas vos habitudes</strong>. Pour les sites e-commerce (dont le tien), c’est parfait : on peut la positionner comme <strong>“la nouvelle UNO”</strong>, pas comme une carte exotique.</p> <h2>5. Le contexte : rachat d’Arduino par Qualcomm</h2> <p>Le 7 octobre 2025, <strong>Qualcomm annonce officiellement l’acquisition d’Arduino</strong>. Dans son communiqué, le fondeur explique qu’il veut <strong>“accélérer l’accès des 33 millions de développeurs Arduino à son portefeuille edge/IA”</strong>. Arduino, de son côté, insiste sur le fait que :</p> <ol>
+<li>la <strong>marque</strong> Arduino reste,</li> <li>la <strong>communauté</strong> reste ouverte,</li> <li>la <strong>prise en charge de plusieurs architectures</strong> reste (donc pas de verrouillage Qualcomm immédiat).</li>
+</ol> <p>C’est exactement ce que confirment les analyses indépendantes : pour Qualcomm, c’est une façon d’entrer <strong>par la grande porte</strong> dans le monde makers, éducation et PME — un monde qu’il touche moins facilement que le smartphone ou l’auto. Pour Arduino, c’est <strong>un turbo technologique et industriel</strong> : accès aux SoC, à la chaîne de fabrication, au réseau de partenaires.</p> <p>Le fait que <strong>l’Uno Q sorte le même jour</strong> que l’annonce du rachat est tout sauf un hasard : c’est la <strong>carte-vitrine</strong> de ce mariage. Elle montre : “voilà ce qu’on peut faire quand on marie la simplicité Arduino et la techno Qualcomm”.</p> <h2>6. Ce que ça change pour les makers (et ce que ça ne change pas)</h2> <p><strong>Ce qui ne change pas :</strong></p> <ul>
+<li>Arduino IDE reste le point d’entrée,</li> <li>les sketches fonctionnent sur le MCU,</li> <li>les shields UNO restent pertinents,</li> <li>l’open-source et les schémas sont toujours publiés (Arduino le précise sur la page produit).</li>
+</ul> <p><strong>Ce qui change vraiment :</strong></p> <ul>
+<li>on a <strong>Linux + Arduino sur la même carte</strong>,</li> <li>on a <strong>l’IA embarquée</strong> (vision, son) avec le matériel prévu pour,</li> <li>on a <strong>la connectivité moderne intégrée</strong>,</li> <li>on peut viser des <strong>cas d’usage plus pro</strong> (gateway de terrain, robotique légère, borne de démo, edge AI).</li>
+</ul> <p>En d’autres termes, l’Uno Q n’est pas un remplaçant “forcé” de la Uno R4 : c’est <strong>le nouveau haut de gamme généraliste</strong> d’Arduino.</p> <h2>7. Conclusion</h2> <p>L’<strong>Arduino Uno Q</strong> marque un tournant : Arduino n’est plus seulement la marque qui allume des LEDs, c’est désormais une <strong>plateforme edge/IA</strong> capable de faire tourner Linux, de traiter de l’image et du son, de parler en réseau moderne — <strong>sans renier la simplicité Arduino</strong>. La coïncidence avec le <strong>rachat par Qualcomm</strong> n’en est pas une : c’est la preuve que la nouvelle Arduino sera plus puissante, plus connectée, plus tournée pro… mais qu’elle continue de parler le langage des makers.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +56,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

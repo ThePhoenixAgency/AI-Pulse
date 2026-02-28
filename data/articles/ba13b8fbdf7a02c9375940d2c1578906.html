@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Open Garagedoor through Phonecall</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Open Garagedoor through Phonecall</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/28/2026 1:55:16 AM | <a href="https://community.home-assistant.io/t/open-garagedoor-through-phonecall/991359" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <div> <div> <p><span> <time> February 28, 2026, 1:55am </time> <span>1</span> </span> </p></div> <div> <p>Hi folks,</p>
+<p>we have underground parking in the house where we live and to open the garage you have to pull a cord in the middle or call the garagedoor.<br>
+Since there is no cell service down there you can’t work with iOS Shortcuts in combination with Carplay.<br>
+So I wanted to use Sipgate in combination with a button at the door to send a phonecall after a delay - only to find out Sipgate doesn’t promote their API any longer to private accounts.</p>
+<p>There are two old spare mobile phones lying around I could get a second SIM card for but I don’t like the thought of an old mobile phone permanent plugged in.</p>
+<p>Has someone experience or a creative idea how to solve this?<br>
+Manually calling the garagedoor before I leave is something I find annying ^^</p>
+<p>I know it’s a bit of a fuzz for such a thing…don’t we all do most of these automations not only to make life a little bit easier but also because tinkering is fun? <img src="https://community.home-assistant.io/images/emoji/twitter/smiley.png?v=12" alt=":smiley:"></p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/couch67"><span>couch67</span></a> </span> <span> <time> February 28, 2026, 2:58am </time> <span>2</span> </span> </p> <p>I dont use it, but I think Twilio can do something like this?</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/tmjpugh"><span>tmjpugh</span></a> (Tmjpugh) </span> <span> <time> February 28, 2026, 3:01am </time> <span>3</span> </span> </p> <div> <p>If there is no cell service, how will you make phone call?</p> <p>Does this mean you intend to call before lose service and just delay open? It would be easier to use HA app or other method</p> <p>This sound brittle(easily broken).</p>
+<p>Bluetooth buttons, RF remote or add WiFi to area to allow connectivity</p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/dtrott"><span>dtrott</span></a> (David Trott) </span> <span> <time> February 28, 2026, 4:22am </time> <span>4</span> </span> </p> <div> <p>Back in the day I used to use a Modem for such things - with AT commands you could dial numbers pause and then enter additional numbers (to navigate PBX etc).</p>
+<p>The timing of the dial is pretty consistent so you can just time it, then send an <code>ATH</code> command.</p>
+<p>The problem with that approach is you will need a hard line (old school phone line) and I haven’t had one of those in nearly 20 years.</p>
+<p>–</p>
+<p>One other thought you, might be able to get a VOIP adapter:</p>
+<ul>
+<li>Ethernet on one side.</li>
+<li>Phone jack on the other (used with wired home phones).</li>
+</ul>
+<p>Plugging a modem into that “might” work - its not going to be a common use case though so I would give it “at best” a 50/50 chance.</p> </div> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

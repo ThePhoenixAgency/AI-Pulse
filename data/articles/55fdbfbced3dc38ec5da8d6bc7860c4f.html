@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,135 +28,7 @@
     Source: Hugging Face Blog | Date: 10/16/2025 12:00:00 AM | <a href="https://huggingface.co/blog/gpt-oss-on-intel-xeon" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/Jiqing"><img alt="Jiqing.Feng's avatar" src="https://huggingface.co/avatars/d4b03eb4396b2ae4fd79a0b1e1daf693.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/MatrixYao"><img alt="Matrix Yao's avatar" src="https://huggingface.co/avatars/61864d5751bd574a3794206d773eda70.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/kding1"><img alt="Ke Ding's avatar" src="https://huggingface.co/avatars/5b6b2ea60d7c70bd2ddcff501aa7981e.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/IlyasMoutawwakil"><img alt="Ilyas Moutawwakil's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1642598610696-noauth.jpeg"></a> </span> </span></p> </div></div> <p>Intel and Hugging Face collaborated to demonstrate the real-world value of upgrading to Google’s latest <code>C4</code> Virtual Machine (VM) running on Intel Xeon 6 processors (codenamed Granite Rapids (GNR)). We specifically wanted to benchmark improvements in the text generation performance of OpenAI GPT OSS Large Language Model(LLM). </p>
-<p>The results are in, and they are impressive, demonstrating a <em>1.7x</em> improvement in Total Cost of Ownership(TCO) over the previous-generation Google <code>C3</code> VM instances. The Google Cloud <code>C4</code> VM instance further resulted in:</p>
-<ul>
-<li>1.4x to 1.7x TPOT throughput/vCPU/dollar</li>
-<li>Lower price per hour over <code>C3</code> VM</li>
-</ul>
-<h2> <a href="#introduction"> </a> <span> Introduction </span>
-</h2>
-<p>GPT OSS is a common name for an open-source Mixture of Experts (MoE) model released by OpenAI. An MoE model is a deep neural network architecture that uses specialized “expert” sub-networks and a “gating network” to decide which experts to use for a given input. MoE models allow you to scale your model capacity efficiently without linearly scaling compute costs. They also allow for specialization, where different “experts” learn different skills, allowing them to adapt to diverse data distributions.</p>
-<p>Even with very large parameters, only a small subset of experts is activated per token, making CPU inference viable.</p>
-<p>Intel and Hugging Face collaborated to merge an expert execution optimization (PR <a href="https://github.com/huggingface/transformers/pull/40304">#40304</a>) to eliminate redundant computation where every expert processed all tokens to transformers. This optimization directed each expert to run only on the tokens it is routed to, removing FLOPs waste and improving utilization.</p>
-<p> <img alt="gpt_oss_expert" src="https://huggingface.co/datasets/Intel/blog/resolve/main/gpt-oss-on-intel-xeon/gpt_oss_expert.png">
-</p> <h2> <a href="#benchmark-scope--hardware"> </a> <span> Benchmark Scope &amp; Hardware </span>
-</h2>
-<p>We benchmarked GPT OSS under a controlled, repeatable generation workload to isolate architectural differences (GCP <code>C4</code> VMs on Intel Xeon 6 processors (GNR) vs GCP <code>C3</code> VMs on 4th Gen Intel Xeon Processors (SPR)) and MoE execution efficiency. The focus is steady‑state decoding (per‑token latency) and end‑to‑end normalized throughput with increasing batch size while keeping sequence lengths fixed. All runs use static KV cache and SDPA attention for determinism.</p>
-<h3> <a href="#configuration-summary"> </a> <span> Configuration Summary </span>
-</h3>
-<ul>
-<li>Model: <a href="https://huggingface.co/unsloth/gpt-oss-120b-BF16">unsloth/gpt-oss-120b-BF16</a></li>
-<li>Precision: bfloat16</li>
-<li>Task: Text generation</li>
-<li>Input length: 1024 tokens (left‑padded)</li>
-<li>Output length: 1024 tokens</li>
-<li>Batch sizes: 1, 2, 4, 8, 16, 32, 64</li>
-<li>Enabled features:<ul>
-<li>Static KV cache</li>
-<li>SDPA attention backend</li>
-</ul>
-</li>
-<li>Reported metrics:<ul>
-<li>Throughput (Total generated tokens per second aggregated over the batch)</li>
-</ul>
-</li>
-</ul>
-<h3> <a href="#hardware-under-test"> </a> <span> Hardware Under Test </span>
-</h3>
-<div> <table> <thead><tr>
-<th>Instance</th>
-<th>Architecture</th>
-<th>vCPUs</th>
-</tr> </thead><tbody><tr>
-<td><code>C3</code></td>
-<td>4th Gen Intel Xeon processor (SPR)</td>
-<td>172</td>
-</tr>
-<tr>
-<td><code>C4</code></td>
-<td>Intel Xeon 6 processor (GNR)</td>
-<td>144</td>
-</tr>
-</tbody> </table>
-</div>
-<h2> <a href="#create-instance"> </a> <span> Create instance </span>
-</h2>
-<h3> <a href="#c3"> </a> <span> <code>C3</code> </span>
-</h3>
-<p>Visit <a href="https://console.cloud.google.com/"><code>Google Cloud Console</code></a> and click on <code>create a VM</code> under your project. Follow the steps below to create a <code>176 vCPU</code> instance.</p>
-<ol>
-<li>pick <code>C3</code> in the <code>Machine configuration</code> and specify Machine type as <code>c3-standard-176</code>. You also need to set the <code>CPU platform</code> and turn on <code>all-core turbo</code> to make performance more stable:
-<a href="https://huggingface.co/datasets/Intel/blog/resolve/main/gpt-oss-on-intel-xeon/spr.png"><img alt="alt text" src="https://huggingface.co/datasets/Intel/blog/resolve/main/gpt-oss-on-intel-xeon/spr.png"></a></li>
-<li>configure OS and storage tab as below:
-<a href="https://huggingface.co/datasets/Intel/blog/resolve/main/gpt-oss-on-intel-xeon/spr-os.png"><img alt="alt text" src="https://huggingface.co/datasets/Intel/blog/resolve/main/gpt-oss-on-intel-xeon/spr-os.png"></a></li>
-<li>keep other configurations as default</li>
-<li>click <code>Create</code> button</li>
-</ol>
-<h3> <a href="#c4"> </a> <span> <code>C4</code> </span>
-</h3>
-<p>Visit <a href="https://console.cloud.google.com/"><code>Google Cloud Console</code></a> and click on <code>create a VM</code> under your project. Follow the below steps to create a <code>144 vCPU</code> instance.</p>
-<ol>
-<li>pick <code>C4</code> in the <code>Machine configuration</code> tab and specify Machine type as <code>c4-standard-144</code>. You can also set the <code>CPU platform</code> and turn on all-core turbo to make performance more stable:
-<a href="https://huggingface.co/datasets/Intel/blog/resolve/main/gpt-oss-on-intel-xeon/gnr.png"><img alt="alt text" src="https://huggingface.co/datasets/Intel/blog/resolve/main/gpt-oss-on-intel-xeon/gnr.png"></a></li>
-<li>configure OS and storage tab as we need for C3.</li>
-<li>keep other configurations as default</li>
-<li>click <code>Create</code> button</li>
-</ol>
-<h2> <a href="#set-up-the-environment"> </a> <span> Set up the environment </span>
-</h2>
-<p>Login the instance with SSH and then install docker. Follow the steps below to set up the environment easily. For reproducibility, we list the versions and commits we are using in the commands.</p>
-<ol>
-<li><code>$ git clone https://github.com/huggingface/transformers.git</code></li>
-<li><code>$ cd transformers/</code></li>
-<li><code>$ git checkout 26b65fb5168f324277b85c558ef8209bfceae1fe</code></li>
-<li><code>$ cd docker/transformers-intel-cpu/</code></li>
-<li><code>$ sudo docker build . -t &lt;your_docker_image_tag&gt;</code></li>
-<li><code>$ sudo docker run -it --rm --privileged -v /home/&lt;your_home_folder&gt;:/workspace &lt;your_docker_image_tag&gt; /bin/bash</code></li>
-</ol>
-<p>We are in container now, do following steps.</p>
-<ol>
-<li><code>$ pip install git+https://github.com/huggingface/transformers.git@26b65fb5168f324277b85c558ef8209bfceae1fe</code></li>
-<li><code>$ pip install torch==2.8.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu</code></li>
-</ol>
-<h2> <a href="#benchmark-procedure"> </a> <span> Benchmark Procedure </span>
-</h2>
-<p>For each batch size we</p>
-<ol>
-<li>Build a fixed-length 1024‑token left‑padded batch.</li>
-<li>Run a single warm‑up round.</li>
-<li>set <code>max_new_tokens=1024</code> and measure total latency, then get <span><span>throughput=(OUTPUT_TOKENS∗batch_size)/total_latencythroughput = (OUTPUT\_TOKENS * batch\_size) / total\_latency</span></span>.</li>
-</ol>
-<p>Run <code>numactl -l python benchmark.py</code> for the following codes.</p>
-<pre><code><span>import</span> os
-<span>import</span> time
-<span>import</span> torch
-<span>from</span> datasets <span>import</span> load_dataset
-<span>from</span> transformers <span>import</span> AutoModelForCausalLM, AutoTokenizer INPUT_TOKENS = <span>1024</span>
-OUTPUT_TOKENS = <span>1024</span> <span>def</span> <span>get_inputs</span>(<span>tokenizer, batch_size</span>): dataset = load_dataset(<span>"ola13/small-the_pile"</span>, split=<span>"train"</span>) tokenizer.padding_side = <span>"left"</span> selected_texts = [] <span>for</span> sample <span>in</span> dataset: input_ids = tokenizer(sample[<span>"text"</span>], return_tensors=<span>"pt"</span>).input_ids <span>if</span> <span>len</span>(selected_texts) == <span>0</span> <span>and</span> input_ids.shape[-<span>1</span>] &gt;= INPUT_TOKENS: selected_texts.append(sample[<span>"text"</span>]) <span>elif</span> <span>len</span>(selected_texts) &gt; <span>0</span>: selected_texts.append(sample[<span>"text"</span>]) <span>if</span> <span>len</span>(selected_texts) == batch_size: <span>break</span> <span>return</span> tokenizer(selected_texts, max_length=INPUT_TOKENS, padding=<span>"max_length"</span>, truncation=<span>True</span>, return_tensors=<span>"pt"</span>) <span>def</span> <span>run_generate</span>(<span>model, inputs, generation_config</span>): inputs[<span>"generation_config"</span>] = generation_config model.generate(**inputs) <span># warm up</span> pre = time.time() model.generate(**inputs) latency = (time.time() - pre) <span>return</span> latency <span>def</span> <span>benchmark</span>(<span>model, tokenizer, batch_size, generation_config</span>): inputs = get_inputs(tokenizer, batch_size) generation_config.max_new_tokens = <span>1</span> generation_config.min_new_tokens = <span>1</span> prefill_latency = run_generate(model, inputs, generation_config) generation_config.max_new_tokens = OUTPUT_TOKENS generation_config.min_new_tokens = OUTPUT_TOKENS total_latency = run_generate(model, inputs, generation_config) decoding_latency = (total_latency - prefill_latency) / (OUTPUT_TOKENS - <span>1</span>) throughput = OUTPUT_TOKENS * batch_size / total_latency <span>return</span> prefill_latency, decoding_latency, throughput <span>if</span> __name__ == <span>"__main__"</span>: model_id = <span>"unsloth/gpt-oss-120b-BF16"</span> tokenizer = AutoTokenizer.from_pretrained(model_id) model_kwargs = {<span>"dtype"</span>: torch.bfloat16} model = AutoModelForCausalLM.from_pretrained(model_id, **model_kwargs) model.config._attn_implementation=<span>"sdpa"</span> generation_config = model.generation_config generation_config.do_sample = <span>False</span> generation_config.cache_implementation=<span>"static"</span> <span>for</span> batch_size <span>in</span> [<span>1</span>, <span>2</span>, <span>4</span>, <span>8</span>, <span>16</span>, <span>32</span>, <span>64</span>]: <span>print</span>(<span>f"---------- Run generation with batch size = <span>{batch_size}</span> ----------"</span>, flush=<span>True</span>) prefill_latency, decoding_latency, throughput = benchmark(model, tokenizer, batch_size, generation_config) <span>print</span>(<span>f"throughput = <span>{throughput}</span>"</span>, flush=<span>True</span>)
-</code></pre>
-<h2> <a href="#results"> </a> <span> Results </span>
-</h2>
-<h3> <a href="#normalized-throughput-per-vcpu"> </a> <span> Normalized Throughput per vCPU </span>
-</h3>
-<p>Across batch sizes up to 64, Intel Xeon 6 processor‑powered <code>C4</code> consistently outperforms <code>C3</code> with a 1.4x to 1.7× throughput per-vCPU. The formula is:</p>
-<p><span><span><span>normalized_throughput_per_vCPU=throughput_C4/vCPUs_C4throughput_C3/vCPUs_C3
-\text{normalized\_throughput\_per\_vCPU} = \frac{\text{throughput\_C4} / \text{vCPUs\_C4}} {\text{throughput\_C3} / \text{vCPUs\_C3}}
-</span></span></span></p>
-<p> <img alt="throughput-gpt-oss-per-vcpu" src="https://huggingface.co/datasets/Intel/blog/resolve/main/gpt-oss-on-intel-xeon/throughput-gpt-oss-per-vcpu.png">
-</p> <h3> <a href="#cost--tco"> </a> <span> Cost &amp; TCO </span>
-</h3>
-<p>At batch size 64, <code>C4</code> provides 1.7× the per‑vCPU throughput of <code>C3</code>; with near parity in price per vCPU (hourly cost scales linearly with vCPU count), this yields a 1.7× TCO advantage (<code>C3</code> would require 1.7× the spend for the same generated token volume). </p>
-<p>Per‑vCPU throughput ratio:
-<span><span><span>throughput_C4/vCPUs_C4throughput_C3/vCPUs_C3=1.7⇒TCO_C3TCO_C4≈1.7
-\frac{\text{throughput\_C4} / \text{vCPUs\_C4}}{\text{throughput\_C3} / \text{vCPUs\_C3}}
-= 1.7 \Rightarrow \frac{\text{TCO\_C3}}{\text{TCO\_C4}} \approx 1.7
-</span></span></span></p>
-<p> <img alt="throughput-gpt-oss-per-dollar" src="https://huggingface.co/datasets/Intel/blog/resolve/main/gpt-oss-on-intel-xeon/throughput-gpt-oss-per-dollar.png">
-</p> <h2> <a href="#conclusion"> </a> <span> Conclusion </span>
-</h2>
-<p>Google Cloud <code>C4</code> VMs powered by Intel Xeon 6 processors (GNR) provide both impressive performance gains and better cost efficiency for large MoE inference over previous generation Google Cloud <code>C3</code> VM (powered by 4th Gen Intel Xeon processors). For GPT OSS MoE inference, we observed combined higher throughput, lower latency, and reduced cost. These results underline that thanks to targeted framework optimizations from Intel and Hugging Face, large MoE models can be efficiently served on next-generation general-purpose CPUs.</p>
-</div></div>
+    <p>Aucun contenu disponible.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -171,12 +37,12 @@ OUTPUT_TOKENS = <span>1024</span> <span>def</span> <span>get_inputs</span>(<span
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

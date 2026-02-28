@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,55 @@
     Source: Hugging Face Blog | Date: 10/30/2025 10:03:45 AM | <a href="https://huggingface.co/blog/MiniMax-AI/aligning-to-what" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Aucun contenu disponible.</p>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div> <p><span><span><a href="https://huggingface.co/MiniMax-AI"><img alt="MiniMax's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/676e38ad04af5bec20bc9faf/AG8Q9wAUzGtPWyjd5QO2l.jpeg"></a> </span> </span></p> </div> <div><nav><ul><li><a href="#the-real-agent-alignment-problem-benchmarks-or-reality">The Real Agent Alignment Problem: Benchmarks or Reality?</a> <ul></ul> </li><li><a href="#the-need-for-interleaved-thinking">The Need for Interleaved Thinking</a> <ul></ul> </li><li><a href="#true-generalization-is-about-perturbation">True Generalization is About Perturbation</a> <ul></ul> </li><li><a href="#whats-next">What's Next?</a> <ul></ul> </li><li><a href="#getting-involved">Getting Involved</a> <ul></ul> </li></ul></nav></div><p>It's been fantastic to see the community dive into our new <a href="https://huggingface.co/MiniMaxAI/MiniMax-M2">MiniMax M2</a>, with many highlighting its impressive skills in complex agentic tasks. This is particularly exciting for me, as my work was centered on the agent alignment part of its post-training. In this post, I'd like to share some of the key insights and lessons we learned during that process.</p>
+<h2> <a href="#the-real-agent-alignment-problem-benchmarks-or-reality"> <span></span> </a> <span> The Real Agent Alignment Problem: Benchmarks or Reality? </span>
+</h2>
+<p>If you've worked with LLM Agents, you've felt this pain: the same model can feel brilliant in one framework and useless in another. An agent might crush a tool-use leaderboard but fail spectacularly at a simple, real-world task. This gap between benchmark performance and practical usability is one of the biggest challenges in the field.</p>
+<p>When we designed M2, we knew we had to tackle this problem head-on. This led us to two core, and sometimes conflicting, objectives:</p>
+<ol>
+<li>Excel on Open-Source Benchmarks. Benchmarks are essential for measuring "pure" capabilities. A benchmark like BrowseComp, for instance, tests for sophisticated search skills. While users will rarely ask a question as contrived as, "Find the paper where the third letter of the nth author's name is 'x'," a model that can solve it proves it has strong foundational abilities.</li>
+<li>Generalize Robustly to the Real World. This is the harder, more important part. A great agent must perform reliably across unfamiliar tools, IDEs/CLIs, agent scaffolding, and user setups. It can't be a one-trick pony; it needs to generalize.</li>
+</ol>
+<p>So, who do we align with? The answer is both. We align with benchmarks to build skill, but we must ultimately align with the user by ensuring those skills work everywhere.</p>
+<p>While the methods for acing benchmarks are a deep topic for another day, I want to focus on that second, trickier objective: How do we train an agent for the wild?</p>
+<h2> <a href="#the-need-for-interleaved-thinking"> <span></span> </a> <span> The Need for Interleaved Thinking </span>
+</h2>
+<p>Early in the project, we hit a frustrating wall. Agent performance was inconsistent, and we struggled to diagnose why. After many discussions, especially with Professor @Junxian He and @Wenhu Chen, we arrived at our first major conclusion: Agents require Interleaved Thinking.</p>
+<p>This means that an agent's internal monologue—its "thinking"—can and should happen at any point during a task, not just once at the beginning like a standard reasoning model. This design is critical for two reasons:</p>
+<ol>
+<li>Maintaining Focus on Long-Horizon Tasks. Complex agent tasks have extremely long contexts. A single thought process at the start isn't enough to maintain instruction-following and coherence.</li>
+<li>Adapting to External Perturbations. This is the crucial difference. Agent tasks introduce constant, unpredictable perturbations from the outside world (i.e., tool outputs). The model must be robust enough to handle these perturbations, diagnose errors, and extract useful information. The "thinking" process allows the model to constantly re-evaluate and adapt to new information from the environment.</li>
+</ol>
+<p>This principle became a cornerstone of M2's effectiveness. </p>
+<blockquote>
+<p>Pro Tip for M2 Users: Because M2 relies on Interleaved Thinking, its context is its memory. For best performance, you must retain the full session history, including the thinking steps. We've noticed that much of the community feedback about performance gaps stems from accidentally discarding this vital context, which is a common practice with simpler reasoning models. </p>
+</blockquote>
+<h2> <a href="#true-generalization-is-about-perturbation"> <span></span> </a> <span> True Generalization is About Perturbation </span>
+</h2>
+<p>Our initial theory was simple: tool scaling is agent generalization.</p>
+<p>We started with a minimal set of tools (a Python interpreter, search engine, a browser) to build a baseline of tool-calling capability. The roadmap was clear: scale up the number and variety of tools, and the agent's ability to generalize to unseen tools would naturally follow. </p>
+<p>At first, this worked. Our benchmark scores climbed to respectable levels. But as we dug deeper, we realized we were solving the wrong problem. The model aced the tests, but if we changed the environment even slightly—like swapping to a different scaffolding framework—its performance would plummet. We were still far from our goal of a "practically useful" model. </p>
+<p>This led to our second, more profound realization: <strong>Agent generalization is not just about adapting to new tools; it's about adapting to perturbations across the model's entire operational space.</strong> </p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/676e38ad04af5bec20bc9faf/aK2lphyX3gNHePXgKrp2v.png"><img alt="Clipboard_Screenshot_1761817571" src="https://cdn-uploads.huggingface.co/production/uploads/676e38ad04af5bec20bc9faf/aK2lphyX3gNHePXgKrp2v.png"></a></p>
+<p>This sounds abstract, so let's break it down. Think about everything that can change in a single agent task:</p>
+<ul>
+<li>The <strong>Tool Info</strong> and available toolset.</li>
+<li>The <strong>System Prompt</strong> defining the agent's persona and rules.</li>
+<li>The <strong>User Prompt</strong> and its specific goal.</li>
+<li>The <strong>Environment</strong> itself (files, codebases, APIs).</li>
+<li>The <strong>Tool Responses</strong> returned at each step.
+Our old "tool scaling" approach only addressed the first item. It ignored perturbations in all the other parts of the process. Armed with this new understanding, our team built a comprehensive data pipeline designed for <strong>full-trajectory generalization</strong>. The data it generates trains the model to be stable against perturbations at every step. The results have been incredibly encouraging. In internal tests, we threw obscure, "cold-start" scaffolding at M2—frameworks we'd barely considered—and its performance exceeded our expectations. Both its tool-calling and instruction-following abilities generalized beautifully.</li>
+</ul>
+<h2> <a href="#whats-next"> <span></span> </a> <span> What's Next? </span>
+</h2>
+<p>Our work on M2 taught us an immense amount about agents, generalization, and data, but it has opened up more questions than it answered. Many of our ideas are still on the whiteboard. In the coming months, we will be exploring these frontiers even more deeply, and we can't wait to bring you the next generation of powerful and genuinely useful models.</p>
+<h2> <a href="#getting-involved"> <span></span> </a> <span> Getting Involved </span>
+</h2>
+<ul>
+<li><strong>Use the Model</strong>: We sincerely hope you'll put M2 to the test. You can access it through our official channels or find the open-sourced version to conduct your own research. </li>
+<li><strong>Join Our Team</strong>: If these are the kinds of challenges that excite you, we're hiring. We are always looking for passionate people to join us in the mission to build AGI. Please send us your resume!</li>
+</ul>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -37,12 +91,12 @@
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

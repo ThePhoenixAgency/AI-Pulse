@@ -5,22 +5,113 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Fri, 27 Feb 2026 22:22:11 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 28 Feb 2026 06:34:23 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: I vibe coded a DAW for the terminal. how'd I do?]]></title>
-      <link>https://github.com/mohsenil85/imbolc</link>
-      <description><![CDATA[So, I've never written a line of Rust in my life. I wouldn't know an `&amp;mut this` from a mutandis. But I saw a tweet about a month ago that said, in this new era of AI, you'd be able to just take a library that you love, throw a TUI around it, and call it an app. So I spent about 200 bucks last month, here's what I came up with:
-Imbolc is a DAW that runs entirely in your terminal. It talks to scsynth over OSC and ships 58 instruments and 39 effects. VSTs are a work in progress, also GarageBand loops if you want to recreate "Umbrella".
-The codebase is about 60k? lines of Rust across 5 crates, with ~1,100 tests. I don't actually know. It's funny because I've always been the one writing code, and now I was everybody except the one writing code: QA, Product, Design.
-Some prompts that worked well: "Looking at this codebase, what looks like an obvious retrofit?" "Where can we lean on the compiler?" After an agent completed a task, I'd interview it — where did you have trouble, what felt like a hack, what would you do differently. v1 was clojure, v2 was java, v3 is rust. v4 will be stones and sticks.
-So nowadays out here in the deep future, I think programming will become a matter of taste. Here's what I think demonstrates my sensibilities: - Accessibility: This is what I'm most proud of. TUIs are usually terrible for screen readers. In Imbolc, every action in the UI is available as a typed command (after I started typing this up I thought, is that true? turns out it wasn't, so now the compiler enforces this.). - LAN collaboration: Multiple people can connect to a shared session over the local network and share midi clock, tuning, effects buses, etc. Audio is never sent over the network. - Weird musical choices: With the "Global" just intonation setting, your absolute tuning can drift over time. I was thinking about how an accordion looks kind of like a qwerty keyboard, so I added a quasi Stradella layout. A432 by default, and so on. - Command palette, themes, keybindings, Diataxis docs. It's still alpha, there are plenty of rough edges. But it is genuinely fun to dink around on, I'd love to know what you all think. URL: https://news.ycombinator.com/item?id=47185603
-Points: 3
+      <title><![CDATA[Show HN: AxKeyStore – Zero-trust CLI secrets manager using your own GitHub repo]]></title>
+      <link>https://github.com/basilgregory/axkeystore</link>
+      <description><![CDATA[Hi HN,
+I built AxKeyStore, an open-source CLI tool for managing secrets that uses your own private GitHub repository as encrypted storage.
+The idea is simple:
+→ All encryption happens locally.
+→ Secrets are stored as encrypted blobs in your private repo.
+→ GitHub is treated as untrusted storage.
+→ No plaintext secrets ever leave your machine.
+→ No plaintext secrets are stored on disk.
+Most secret managers either require a hosted backend, a self-hosted server, or trusting a SaaS provider. I wanted something that:
+→ Requires zero infrastructure
+→ Uses tooling developers already have
+→ Keeps the threat model simple
+AxKeyStore uses a layered approach to security:
+→ Secrets are encrypted with a Remote Master Key (RMK).
+→ The RMK is encrypted with your master password and stored in the repo.
+→ A Local Master Key (LMK) encrypts your local GitHub token and repo config.
+→ The LMK itself is encrypted using Argon2id-derived keys from your master password.
+→ Encryption uses XChaCha20-Poly1305 (AEAD).
+GitHub only sees encrypted binary blobs. Even if someone compromises your repository, they still need your master password to decrypt anything.
+Why GitHub? Because it gives:
+→ Private repositories
+→ Version history (commit log as audit trail)
+→ Access control
+→ Free storage
+→ Global availability
+Instead of building a backend, I’m leveraging an existing, reliable system - but cryptographically isolating it.
+Features
+→ Simple CLI workflow
+→ Hierarchical categories (e.g., cloud/aws/prod)
+→ Version history per secret (via commits)
+→ Retrieve specific versions by SHA
+→ Multi-profile support (separate vaults)
+→ Transactional master password reset
+→ Secure random secret generation
+Tech
+→ Written in Rust. Uses tokio, clap, argon2, and chacha20poly1305.
+→ There are unit and integration tests (including mocked GitHub API interactions).
+→ Open source - MIT licensed.
+I’d appreciate feedback on:
+→ The threat model - what am I missing?
+→ Whether GitHub as encrypted blob storage is a bad assumption
+→ UX improvements for CLI-based secret workflows
+→ Any crypto or key-handling concerns
+I’m especially interested in critique from people who’ve built or audited secret management systems.
+Thanks. URL: https://news.ycombinator.com/item?id=47189172
+Points: 2
 # : 0]]></description>
-      <pubDate>Fri, 27 Feb 2026 21:05:54 GMT</pubDate>
+      <pubDate>Sat, 28 Feb 2026 02:06:45 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://github.com/mohsenil85/imbolc</guid>
+      <guid>https://github.com/basilgregory/axkeystore</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: Testing SQL logic without a real database]]></title>
+      <link>https://news.ycombinator.com/item?id=47189319</link>
+      <description><![CDATA[Show HN: Testing SQL logic without a real database
+Over the years I kept fighting the same problem when testing repository code:
+real database tests are slow
+Docker/TestContainers add friction and startup time
+mocks don’t validate SQL behavior
+SQLite introduces dialect differences
+integration tests are too late for fast feedback
+So I built an in-memory SQL engine focused on validating SQL behavior during unit tests.
+It plugs into IDbConnection, allowing repository code (Dapper or raw SQL) to run unchanged.
+What it does
+emulates SQL dialect behavior
+validates constraints and query logic
+supports multiple providers (MySQL, SQL Server, PostgreSQL, Oracle, SQLite, DB2)
+simulates version-specific behavior
+provides execution metrics and plan insights
+runs entirely in memory (no infrastructure)
+The goal is not to replace integration tests.
+It’s to catch SQL logic issues earlier and keep tests fast, deterministic, and portable.
+Why not SQLite in-memory?
+SQLite is great, but testing against it means testing SQLite semantics.
+Teams often hit:
+type mismatches
+dialect drift
+query compatibility differences
+adaptation layers in test code
+This approach keeps behavior aligned with the target database rules.
+Current work
+I’m working on tooling to reduce friction further:
+Visual Studio &amp; VS Code extensions
+mapping tables, views, and procedures locally
+generating in-memory schemas automatically
+keeping test schemas aligned with real databases
+Background
+The core originated from a previous internal project and includes extensive compatibility tests to validate behavior across database versions and frameworks.
+Looking for feedback
+Curious how others handle SQL testing trade-offs.
+If this problem space resonates with you, contributions and real-world scenarios are very welcome. The project is open source and evolving, and additional dialect behaviors, edge cases, and tooling improvements can make it more useful for everyone.
+Repo:
+https://github.com/christianulson/DbSqlLikeMem
+Nuget:
+https://www.nuget.org/packages/DbSqlLikeMem URL: https://news.ycombinator.com/item?id=47189319
+Points: 1
+# : 1]]></description>
+      <pubDate>Sat, 28 Feb 2026 02:23:11 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://news.ycombinator.com/item?id=47189319</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Surfshark One à -86 % : un antivirus pas cher pour étudiants]]></title>
