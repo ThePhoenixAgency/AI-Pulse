@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,22 +34,42 @@
     Source: FrenchWeb | Date: 1/28/2026 5:25:20 AM | <a href="https://www.frenchweb.fr/avec-c12-le-jumeau-numerique-simpose-comme-test-de-realite-du-quantique/459972" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p><p>D’un côté, des équipes de recherche enchaînant les démonstrations expérimentales, annonçant des gains de cohérence ou des améliorations de la fidélité des qubits. De l’autre, des industriels et des développeurs confrontés à une réalité plus prosaïque : des machines instables, difficiles d’accès, et des environnements de test largement déconnectés des contraintes physiques réelles. Entre ces &#8230;</p>
-<p></p>
+    <div><div> <p>D’un côté, des équipes de recherche enchaînant les démonstrations expérimentales, annonçant des gains de cohérence ou des améliorations de la fidélité des qubits. De l’autre, des industriels et des développeurs confrontés à une réalité plus prosaïque : des machines instables, difficiles d’accès, et des environnements de test largement déconnectés des contraintes physiques réelles. Entre ces deux mondes, le jumeau numérique quantique commence à s’imposer comme un point de passage.</p>
+<h3>Sortir de la promesse abstraite</h3>
+<p>Le problème du quantique n’a jamais été uniquement théorique. Il est aussi opérationnel. Les algorithmes les plus prometteurs restent, dans la majorité des cas, impossibles à exécuter dans des conditions réalistes, faute d’outils capables de refléter fidèlement l’état réel du matériel. Simuler un circuit idéal n’a plus grand intérêt lorsque les qubits sont soumis à des phénomènes complexes, qu’il s’agisse de bruit de charge, de décohérence, d’erreurs de mesure, de relaxation ou d’instabilités liées au matériau lui-même. Tant que ces paramètres restent absents des environnements de développement, l’écart entre R&amp;D et usage ne peut que se creuser.</p>
+<p>C’est dans ce contexte que la logique de jumeau numérique prend tout son sens, comme un instrument de mise à l’épreuve, capable d’exposer les limites d’une architecture avant même qu’elle n’existe à grande échelle.</p>
+<h3>Quand le quantique adopte les méthodes de l’industrie lourde</h3>
+<p>Le concept n’est pas nouveau. De nombreuses industries, aéronautique, automobile, semi-conducteurs ou énergie, s’appuient depuis longtemps sur des jumeaux numériques pour tester, corriger et fiabiliser des systèmes complexes avant leur déploiement.</p>
+<p>Le quantique est longtemps resté à l’écart de cette logique. La rareté des machines, leur coût et leur instabilité ont entretenu une culture de l’expérimentation ponctuelle, au détriment d’une ingénierie systémique. Transposer au quantique des pratiques éprouvées ailleurs, fondées sur la reproductibilité, la mesure et l’anticipation des contraintes, apparaît dès lors comme un tournant.</p>
+<h3>Le cas Callisto : un jumeau numérique orienté matériau</h3>
+<p>L’intégration de <a href="https://www.frenchweb.fr/decode-quantum-a-la-rencontre-de-mathieu-et-pierre-desjardins-fondateur-de-c12-quantum-electronics/412813">Callisto, l’émulateur quantique développé par C12</a>, dans l’environnement logiciel de Classiq illustre cette évolution. Contrairement à des simulateurs généralistes, Callisto ne cherche pas à reproduire un comportement quantique abstrait. Il modélise de manière fine les paramètres physiques spécifiques à l’architecture à nanotubes de carbone développée par C12 : types de bruit, initialisation imparfaite, mesure en cours de circuit, interactions environnementales.</p>
+<p>Le jumeau numérique devient ainsi une interface entre la physique du qubit et les choix algorithmiques des développeurs.</p>
+<h3>Réaligner la R&amp;D sur le futur matériel</h3>
+<p>En permettant aux développeurs de travailler sur un environnement qui reflète déjà les contraintes matérielles futures, le jumeau numérique modifie la temporalité du quantique. La recherche algorithmique peut s’aligner dès aujourd’hui sur des architectures en cours de maturation, en intégrant leurs limites dès la phase de conception.</p>
+<p>Cette logique réduit le risque de développer des algorithmes élégants mais inexploitables, car incompatibles avec les caractéristiques réelles des QPU. Elle permet également d’objectiver les compromis : profondeur de circuit contre robustesse au bruit, fidélité contre évolutivité, sophistication algorithmique contre faisabilité matérielle.</p>
+<h3>Le logiciel comme médiateur, pas comme solution magique</h3>
+<p>La plateforme de Classiq, avec son langage de modélisation et son moteur de synthèse, ne prétend pas effacer les contraintes physiques. Elle cherche à les rendre explicites, mesurables et exploitables dans le processus de conception. Le jumeau numérique n’est pas une promesse de performance automatique. Il met en lumière ce qui fonctionne, ce qui ne fonctionne pas encore, et ce qui nécessite des arbitrages technologiques.</p>
+<h3>Une condition de crédibilité plus que d’accélération</h3>
+<p>Dans un domaine saturé d’annonces et de projections, la capacité à démontrer qu’un algorithme a été conçu, testé et optimisé dans des conditions proches du réel devient un critère différenciant, notamment pour les entreprises et les centres de recherche appliquée.</p>
+<p>En ce sens, le jumeau numérique réduit l’écart entre discours et faisabilité, et contribue à déplacer le débat, du potentiel théorique vers la maturité opérationnelle.</p>
+<h3><strong>C12 et Classiq misent sur le jumeau numérique comme interface clé</strong></h3>
+<p>L’annonce du partenariat entre C12 et Classiq s’inscrit dans cette évolution. En articulant une architecture matérielle fondée sur les propriétés spécifiques des nanotubes de carbone avec une plateforme logicielle capable d’en modéliser finement les contraintes, les deux acteurs cherchent à réduire l’asymétrie historique entre matériel et algorithmes. L’intégration de Callisto au sein de l’environnement Classiq propose un cadre de travail plus réaliste, où la conception logicielle s’aligne dès aujourd’hui sur les caractéristiques physiques des futurs processeurs. Cette approche renforce la crédibilité du projet, en faisant du jumeau numérique un point de passage entre recherche, développement et usages potentiels.</p>
+<p>« Notre partenariat avec Classiq permet aux développeurs d’exploiter dès aujourd’hui le potentiel unique de nos qubits à nanotubes de carbone, en créant un pont entre notre matériel ultra-performant et des applications concrètes », conclut Pierre Desjardins, PDG et cofondateur de <a href="https://www.frenchweb.fr/quantique-10-millions-deuros-pour-la-startup-c12-quantum-electronics/423738">C12</a>.</p> <div><ul> <li><a href="#abh_about">À propos</a></li> <li><a href="#abh_posts">Articles récents</a></li></ul><div><section><p><a href="https://www.fw.media/" target="_blank" rel="noopener noreferrer"> <img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/la-redaction-frenchweb-6.jpg?w=250&amp;ssl=1"></a> </p><div><p>Pour nous contacter, nous vous avons préparé un petit formulaire pour bien gérer votre demande et pouvoir l'adresser en toute confidentialité. <a href="https://www.frenchweb.fr/contacter-la-redaction">Cliquez ici pour y accéder</a></p></div> </section><section><p><a href="https://www.fw.media/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/la-redaction-frenchweb-6.jpg?w=250&amp;ssl=1"></a></p> </section></div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

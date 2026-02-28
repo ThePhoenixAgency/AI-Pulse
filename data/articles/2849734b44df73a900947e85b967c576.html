@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - harshxframe/llm-json-guard-node-demo</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - harshxframe/llm-json-guard-node-demo</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/28/2026 5:11:03 PM | <a href="https://github.com/harshxframe/llm-json-guard-node-demo" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><h1> LLM JSON Guard</h1><a href="#-llm-json-guard"></a></div>
+<p><strong>Production-safe JSON repair and schema validation for unreliable LLM outputs.</strong></p>
+<p>Large Language Models generate probabilistic text.
+Your backend requires deterministic structure.</p>
+<p></p><pre><code>llm-json-guard</code></pre> repairs malformed JSON and enforces schema validation before AI output reaches production systems.<p></p>
+<hr>
+<div><h2>The Problem</h2><a href="#the-problem"></a></div>
+<p>LLMs frequently return JSON that:</p>
+<ul>
+<li>Contains trailing commas</li>
+<li>Uses single quotes instead of double quotes</li>
+<li>Omits required fields</li>
+<li>Breaks object structure</li>
+<li>Violates expected schema contracts</li>
+</ul>
+<p>This leads to runtime failures:</p>
+<div><pre><span>JSON</span><span>.</span><span>parse</span><span>(</span><span>llmOutput</span><span>)</span> <span>// crashes production</span></pre></div>
+<p>Structured AI output cannot be trusted without validation.</p>
+<hr>
+<div><h2>The Solution</h2><a href="#the-solution"></a></div>
+<p></p><pre><code>llm-json-guard</code></pre> acts as a reliability layer between your model and your system.<p></p>
+<p>It:</p>
+<ul>
+<li>Repairs malformed JSON</li>
+<li>Validates against JSON Schema</li>
+<li>Returns structured metadata</li>
+<li>Provides repair confidence scoring</li>
+<li>Fails safely with explicit error states</li>
+<li>Prevents silent data corruption</li>
+</ul>
+<hr>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><pre>npm install llm-json-guard</pre></div>
+<hr>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Create a </p><pre><code>.env</code></pre> file:<p></p>
+<div><pre><code>RAPIDAPI_KEY=your_rapidapi_key_here
+</code></pre></div>
+<hr>
+<div><h2>Basic JSON Repair</h2><a href="#basic-json-repair"></a></div>
+<div><pre><span>import</span> <span>dotenv</span> <span>from</span> <span>"dotenv"</span><span>;</span>
+<span>import</span> <span>{</span> <span>LLMJsonGuard</span> <span>}</span> <span>from</span> <span>"llm-json-guard"</span><span>;</span> <span>dotenv</span><span>.</span><span>config</span><span>(</span><span>)</span><span>;</span> <span>const</span> <span>guard</span> <span>=</span> <span>new</span> <span>LLMJsonGuard</span><span>(</span><span>{</span> <span>apiKey</span>: <span>process</span><span>.</span><span>env</span><span>.</span><span>RAPIDAPI_KEY</span>
+<span>}</span><span>)</span><span>;</span> <span>const</span> <span>broken</span> <span>=</span> <span>"{name: 'John', age: 25,}"</span><span>;</span> <span>const</span> <span>result</span> <span>=</span> <span>await</span> <span>guard</span><span>.</span><span>sanitize</span><span>(</span><span>broken</span><span>)</span><span>;</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>)</span><span>;</span></pre></div>
+<div><h3>Example Output</h3><a href="#example-output"></a></div>
+<div><pre>{ <span>"success"</span>: <span>true</span>, <span>"stage"</span>: <span><span>"</span>parsed_only<span>"</span></span>, <span>"meta"</span>: { <span>"repaired"</span>: <span>true</span>, <span>"confidence"</span>: <span>0.88</span> }, <span>"data"</span>: { <span>"name"</span>: <span><span>"</span>John<span>"</span></span>, <span>"age"</span>: <span>25</span> }, <span>"errors"</span>: []
+}</pre></div>
+<hr>
+<div><h2>Schema Validation</h2><a href="#schema-validation"></a></div>
+<div><pre><span>const</span> <span>schema</span> <span>=</span> <span>{</span> <span>type</span>: <span>"object"</span><span>,</span> <span>properties</span>: <span>{</span> <span>name</span>: <span>{</span> <span>type</span>: <span>"string"</span> <span>}</span><span>,</span> <span>age</span>: <span>{</span> <span>type</span>: <span>"number"</span> <span>}</span> <span>}</span><span>,</span> <span>required</span>: <span>[</span><span>"name"</span><span>,</span> <span>"age"</span><span>]</span>
+<span>}</span><span>;</span> <span>const</span> <span>result</span> <span>=</span> <span>await</span> <span>guard</span><span>.</span><span>guard</span><span>(</span><span>"{name: 'John'}"</span><span>,</span> <span>schema</span><span>)</span><span>;</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>)</span><span>;</span></pre></div>
+<p>If validation fails:</p>
+<div><pre><code>Error: validation_failed
+</code></pre></div>
+<p>No invalid data enters your system.</p>
+<hr>
+<div><h2>Response Structure</h2><a href="#response-structure"></a></div>
+<p>All successful responses follow this structure:</p>
+<div><pre>{ <span>"success"</span>: <span>boolean,</span> <span>"stage"</span>: <span><span>"</span>parsed_only | validated<span>"</span></span>, <span>"meta"</span>: { <span>"repaired"</span>: <span>boolean,</span> <span>"confidence"</span>: <span>number</span> }, <span>"data"</span>: <span>object,</span> <span>"errors"</span>: <span>array</span>
+}</pre></div>
+<div><h3>Stage Values</h3><a href="#stage-values"></a></div>
+<ul>
+<li><pre><code>parsed_only</code></pre> — JSON repaired successfully</li>
+<li><pre><code>validated</code></pre> — JSON repaired and schema validated</li>
+</ul>
+<hr>
+<div><h2>Benchmark Example</h2><a href="#benchmark-example"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>performance</span> <span>}</span> <span>from</span> <span>"node:perf_hooks"</span><span>;</span> <span>const</span> <span>inputs</span> <span>=</span> <span>[</span> <span>"{name: 'John', age: 25,}"</span><span>,</span> <span>"{name: 'Alice'}"</span><span>,</span> <span>"{invalid json example"</span>
+<span>]</span><span>;</span> <span>let</span> <span>totalTime</span> <span>=</span> <span>0</span><span>;</span> <span>for</span> <span>(</span><span>const</span> <span>input</span> <span>of</span> <span>inputs</span><span>)</span> <span>{</span> <span>const</span> <span>start</span> <span>=</span> <span>performance</span><span>.</span><span>now</span><span>(</span><span>)</span><span>;</span> <span>try</span> <span>{</span> <span>await</span> <span>guard</span><span>.</span><span>sanitize</span><span>(</span><span>input</span><span>)</span><span>;</span> <span>}</span> <span>catch</span> <span>{</span><span>}</span> <span>const</span> <span>end</span> <span>=</span> <span>performance</span><span>.</span><span>now</span><span>(</span><span>)</span><span>;</span> <span>totalTime</span> <span>+=</span> <span>(</span><span>end</span> <span>-</span> <span>start</span><span>)</span><span>;</span>
+<span>}</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>"Average Time:"</span><span>,</span> <span>totalTime</span> <span>/</span> <span>inputs</span><span>.</span><span>length</span><span>,</span> <span>"ms"</span><span>)</span><span>;</span></pre></div>
+<hr>
+<div><h2>Production Pattern</h2><a href="#production-pattern"></a></div> <div><pre><code>LLM → Guard → Schema Validation → Database → Business Logic
+</code></pre></div>
+<p>Instead of:</p>
+<div><pre><code>LLM → JSON.parse → Runtime Failure
+</code></pre></div>
+<hr>
+<div><h2>Use Cases</h2><a href="#use-cases"></a></div>
+<ul>
+<li>AI SaaS platforms</li>
+<li>LLM-powered applications</li>
+<li>Backend APIs consuming model output</li>
+<li>Automation pipelines</li>
+<li>RAG systems</li>
+<li>Agent frameworks</li>
+</ul>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+<hr>
+<p><strong>LLMs are creative. Your backend should not be.</strong></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

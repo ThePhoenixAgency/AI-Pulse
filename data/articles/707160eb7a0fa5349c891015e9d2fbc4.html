@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ENGIE (BE) - Custom integration for energy prices</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>ENGIE (BE) - Custom integration for energy prices</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/28/2026 2:46:55 PM | <a href="https://community.home-assistant.io/t/engie-be-custom-integration-for-energy-prices/991452" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>Hi all, I needed accurate price data from ENGIE so I spent some time reverse-engineering their platform. I’m planning to publish my integration on HACS soon but I would like to have it tested by other people first.</p>
+<p>A few things to note:</p>
+<ul>
+<li>
+<p>Currently, only 2FA via SMS and e-mail are supported. Passkeys and itsme support are off the table, not interested in touching those. I’m also not sure what will happen when ENGIE forces 2FA on all of their customers in March.</p>
+</li>
+<li>
+<p>I was only able to test with Easy Variabel. The API call for prices uses MONTHLY for maxGranularity, so this might not be ideal for people with a dynamic contract.</p>
+</li>
+<li>
+<p>ENGIE seems to be very strict with their access tokens: they get revoked after about 2 minutes, so the integration refreshes the token every minute in the background. There is a binary sensor to keep track of the authentication status.</p>
+</li>
+<li>
+<p>The integration creates sensors for offtake and injection prices (both including and excluding VAT), per EAN. Injection sensors are only created when the data is available (e.g. gas will only have offtake).</p>
+</li>
+</ul>
+<p>For those interested in the login flow, I’ve included a Bruno collection in the repository.</p>
+<p>Feel free to test this out by spinning up the devcontainer or by manually adding the ingration, all contributions and improvements are welcome <img src="https://community.home-assistant.io/images/emoji/twitter/smile.png?v=12" title=":smile:" class="emoji" alt=":smile:" loading="lazy" width="20" height="20"></p>
+<aside class="onebox githubrepo" data-onebox-src="https://github.com/DaanVervacke/hass-engie-be"> <header class="source"> <a href="https://github.com/DaanVervacke/hass-engie-be" target="_blank" rel="noopener nofollow ugc">github.com</a> </header> <article class="onebox-body"> <div class="github-row" data-github-private-repo="false"> <img width="690" height="344" src="https://community-assets.home-assistant.io/optimized/4X/8/c/0/8c0817823ddeb2914707cb56d9338643f0f475be_2_690x344.png" class="thumbnail" data-dominant-color="F2F4F6"> <h3><a href="https://github.com/DaanVervacke/hass-engie-be" target="_blank" rel="noopener nofollow ugc">GitHub - DaanVervacke/hass-engie-be: Retrieve energy price data from the ENGIE Belgium...</a></h3> <p><span class="github-repo-description">Retrieve energy price data from the ENGIE Belgium API</span></p>
+</div> </article> <div class="onebox-metadata"> </div> <div style="clear: both"></div>
+</aside> <p><small>1 post - 1 participant</small></p> <p><a href="https://community.home-assistant.io/t/engie-be-custom-integration-for-energy-prices/991452">Read full topic</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>If code is cheap, intent is the currency — /dev/knill</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>If code is cheap, intent is the currency — /dev/knill</h1>
+  <div class="metadata">
+    Source: Hacker News (nouveautés) | Date: 2/28/2026 6:15:42 PM | <a href="https://zknill.io/posts/commit-message-intent/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><p><strong>Apparently <a href="https://simonwillison.net/guides/agentic-engineering-patterns/code-is-cheap/">writing code is cheap now</a></strong>.
+So since the barrier to producing code is gone, the intent behind the code is the most important bit.
+Intent is the new scarce resource, and commit messages are where that intent lives.</p><h2>Agents work in human processes</h2><p>Agents are still, for now, working inside human processes. The software development lifecycle (I’m
+getting flashbacks to every <em>agile coach</em> ever!) is still the same: we still have commits, pull
+requests, code review. We still have humans responsible for the agent’s output. But generating the
+code is cheaper, so the code <em>review</em> carries more of the weight and responsibility for <em>good
+code</em>.</p><p>The code is cheap, but the intent is not. When an agent can produce hundreds of lines in minutes,
+and the engineer driving that agent can have fairly minimal involvement in the actual writing of the
+code, the intent of the change becomes the most important factor in communicating what that code is
+for, why it exists, and how it fits into the larger project. The commit message becomes the primary
+record of that intent, and the artifact that explains why a project evolved the way it did.</p><p><strong>“Fix stuff” in a commit message was always lazy, but there’s not really an excuse anymore.</strong></p><p>The difference now is that <em>you didn’t write it</em>. You’re a ‘code reviewer’ just like someone else
+looking at your PR. The agent wrote it based on your intent, and the agent doesn’t really have
+(through the code) a mechanism to communicate your intent to others.</p><h2>Code reviewing the “intent”</h2><p>Simon’s definition (in the blog post linked at the top) of “good code” includes “it solves the right problem”;
+that’s an intent question, not a code quality question.</p><p>We should be code reviewing the intent first, before we even think about if the code is correct, or
+if the code is most optimal.</p><blockquote><p>Intent &gt; Correct &gt; Optimal</p></blockquote><h2>A /skill for intent-first commits</h2><p>I now use a /skill that prompts the agent to discover and articulate the intent of the change. I do
+this in the same context window that the agent wrote the code in, and that I discussed the plan with
+the agent in. The agent <em>should</em> have all the context about the intent of the change.
+If it doesn’t, the skill prompts the agent to ask questions to discover the intent.</p><p><strong>The worst kinds of commit messages are the ones that just summarize the diff.</strong> Like the
+following which is just a summary of the diff, rather than an explanation of the intent:</p><div><table><tbody><tr><td><pre><code><span>1
+</span><span>2
+</span><span>3
+</span><span>4
+</span></code></pre></td><td><pre><code><span><span>Add reticulation to splines
+</span></span><span><span>
+</span></span><span><span>- Reticulated the splines in splines.go
+</span></span><span><span>- Added 8 integration tests in tests/integration.go
+</span></span></code></pre></td></tr></tbody></table></div><p>Compare that with:</p><div><table><tbody><tr><td><pre><code><span>1
+</span><span>2
+</span><span>3
+</span><span>4
+</span><span>5
+</span></code></pre></td><td><pre><code><span><span>Prevent cascading failures when spline nodes disconnect
+</span></span><span><span>
+</span></span><span><span>Upstream spline nodes can disconnect mid-reticulation, which causes
+</span></span><span><span>the downstream pipeline to stall. Reticulating the splines eagerly
+</span></span><span><span>on connect means we always have a valid fallback path.
+</span></span></code></pre></td></tr></tbody></table></div><p>Same diff, but now I know <em>why</em> the change exists.</p><p>The /skill works well because it augments an existing human process using the AI’s strengths;
+summarising the intent info that’s already in the context window.</p><h2>A nice surprise: intent-aware commit splitting</h2><p>Using this /skill over the last few weeks, I’ve seen a nice new behaviour. The agent has started
+recognizing when a diff contains multiple intents, and suggesting that it be split into separate
+commits.</p><p>The skill specifically prompts the agent to only look at staged diff when considering the intent of
+the change. And often it suggests splitting the staged diff into multiple different commits, each
+with a different intent.</p><h2>Humans are still responsible for the output</h2><p>The leverage is in using the agent to capture intent while it’s fresh, and recording it into commit
+messages. That compounds — it helps every future human (and agent) who reads the code understand why
+a change exists.</p><h2>Appendix - the skill prompt</h2><div><table><tbody><tr><td><pre><code><span> 1
+</span><span> 2
+</span><span> 3
+</span><span> 4
+</span><span> 5
+</span><span> 6
+</span><span> 7
+</span><span> 8
+</span><span> 9
+</span><span>10
+</span><span>11
+</span><span>12
+</span><span>13
+</span><span>14
+</span><span>15
+</span><span>16
+</span><span>17
+</span><span>18
+</span><span>19
+</span><span>20
+</span><span>21
+</span><span>22
+</span><span>23
+</span><span>24
+</span><span>25
+</span><span>26
+</span><span>27
+</span><span>28
+</span><span>29
+</span><span>30
+</span><span>31
+</span><span>32
+</span><span>33
+</span><span>34
+</span><span>35
+</span><span>36
+</span><span>37
+</span><span>38
+</span><span>39
+</span><span>40
+</span><span>41
+</span><span>42
+</span><span>43
+</span><span>44
+</span><span>45
+</span><span>46
+</span><span>47
+</span><span>48
+</span><span>49
+</span><span>50
+</span><span>51
+</span></code></pre></td><td><pre><code><span><span><span># Commit Message Skill
+</span></span></span><span><span><span></span>
+</span></span><span><span>Write a Git commit message for the currently staged changes.
+</span></span><span><span>The intent of the change is the MOST IMPORTANT THING to include </span></span><span><span>in the commit message. Don't exclude other aspects of the message, </span></span><span><span>but make sure that you include the intent.
+</span></span><span><span>
+</span></span><span><span><span>## Steps
+</span></span></span><span><span><span></span>
+</span></span><span><span><span>1.</span> Run <span>`git diff --cached`</span> to inspect the staged changes
+</span></span><span><span><span>2.</span> Run <span>`git diff --cached --stat`</span> for a file-level summary
+</span></span><span><span><span>3.</span> Determine the <span>**intent**</span> of the change from the diff. </span></span><span><span> If the intent is not clear from the code alone, use AskUserQuestion </span></span><span><span> to ask the user to clarify the purpose of the change before writing the message.
+</span></span><span><span><span>4.</span> Write a commit message following the format below
+</span></span><span><span>
+</span></span><span><span><span>## Commit Message Format
+</span></span></span><span><span><span></span>
+</span></span><span><span><span>`
+</span></span></span><span><span><span>Capitalized, short (50 chars or less) summary
+</span></span></span><span><span><span>
+</span></span></span><span><span><span>More detailed explanatory text, if necessary. Wrap it to about 72
+</span></span></span><span><span><span>characters or so. In some contexts, the first line is treated as the
+</span></span></span><span><span><span>subject of an email and the rest of the text as the body. The blank
+</span></span></span><span><span><span>line separating the summary from the body is critical (unless you omit
+</span></span></span><span><span><span>the body entirely); tools like rebase can get confused if you run the
+</span></span></span><span><span><span>two together.
+</span></span></span><span><span><span>
+</span></span></span><span><span><span>Write your commit message in the imperative: "Fix bug" and not "Fixed bug"
+</span></span></span><span><span><span>or "Fixes bug." This convention matches up with commit messages generated
+</span></span></span><span><span><span>by commands like git merge and git revert.
+</span></span></span><span><span><span>
+</span></span></span><span><span><span>Further paragraphs come after blank lines.
+</span></span></span><span><span><span>
+</span></span></span><span><span><span>- Bullet points are okay, too
+</span></span></span><span><span><span>
+</span></span></span><span><span><span>- Typically a hyphen or asterisk is used for the bullet, followed by a
+</span></span></span><span><span><span> single space, with blank lines in between, but conventions vary here
+</span></span></span><span><span><span>
+</span></span></span><span><span><span>- Use a hanging indent
+</span></span></span><span><span><span>`</span>
+</span></span><span><span>
+</span></span><span><span><span>## Rules
+</span></span></span><span><span><span></span>
+</span></span><span><span><span>-</span> The summary line MUST be 50 characters or less, capitalized, imperative mood, no trailing period
+</span></span><span><span><span>-</span> Wrap body text at 72 characters
+</span></span><span><span><span>-</span> The body should explain <span>**what**</span> changed and <span>**why**</span>, not just restate the diff
+</span></span><span><span><span>-</span> Keep the message concise — omit the body entirely if the summary alone is sufficient for a trivial change
+</span></span><span><span><span>-</span> Output only the commit message text, nothing else
+</span></span><span><span><span>-</span> Do not include a summary of how the change was tested in the commit message. </span></span><span><span><span>-</span> Do not include Co-Authored-By lines in the commit message. The commit should be attributed to the user, not the agent.
+</span></span></code></pre></td></tr></tbody></table></div></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

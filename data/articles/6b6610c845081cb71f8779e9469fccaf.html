@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - MachineWisdomAI/fava-trails: FAVA Trails — versioned, auditable memory for AI agents via MCP. Backed by Jujutsu VCS.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - MachineWisdomAI/fava-trails: FAVA Trails — versioned, auditable memory for AI agents via MCP. Backed by Jujutsu VCS.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/28/2026 4:12:47 PM | <a href="https://github.com/MachineWisdomAI/fava-trails" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><a href="https://pypi.org/project/fava-trails/"><img src="https://camo.githubusercontent.com/103547f1d71decfa2e936a5b36012e62da26c73b3110b55249b9ac941a21c5d1/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f666176612d747261696c73" alt="PyPI"></a>
+<a href="/MachineWisdomAI/fava-trails/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/e97a0eb2cfbff8a0327438bdc03546b8a3c62f89ff1e5ca5e22371c0b8912a21/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f4d616368696e65576973646f6d41492f666176612d747261696c73" alt="License"></a>
+<a href="https://github.com/MachineWisdomAI/fava-trails/actions"><img src="https://camo.githubusercontent.com/1d745f3173d0539e304b5af4eab1264dab00f91ef11154f4b34fda59d09a4da9/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f616374696f6e732f776f726b666c6f772f7374617475732f4d616368696e65576973646f6d41492f666176612d747261696c732f746573742e796d6c3f6c6162656c3d7465737473" alt="Tests"></a>
+<a href="https://pypi.org/project/fava-trails/"><img src="https://camo.githubusercontent.com/b33968f31f253a4984d42133c0a1c5233e8767879e7e0f1576c82bc7aa90f18c/68747470733a2f2f696d672e736869656c64732e696f2f707970692f707976657273696f6e732f666176612d747261696c73" alt="Python"></a></p>
+<div><h1>FAVA Trails</h1><a href="#fava-trails"></a></div>
+<p><strong>Federated Agents Versioned Audit Trail</strong> — VCS-backed memory for AI agents via MCP.</p>
+<p>Every thought, decision, and observation is stored as a markdown file with YAML frontmatter, tracked in a <a href="https://jj-vcs.github.io/jj/">Jujutsu (JJ)</a> colocated git monorepo. Agents interact through <a href="https://modelcontextprotocol.io/">MCP</a> tools — they never see VCS commands.</p>
+<div><h2>Why</h2><a href="#why"></a></div>
+<ul>
+<li><strong>Supersession tracking</strong> — when an agent corrects a belief, the old version is hidden from default recall. No contradictory memories.</li>
+<li><strong>Draft isolation</strong> — working thoughts stay in <pre><code>drafts/</code></pre>. Other agents only see promoted thoughts.</li>
+<li><strong>Trust Gate</strong> — an LLM-based reviewer validates thoughts before they enter shared truth. Hallucinations stay contained in draft.</li>
+<li><strong>Full lineage</strong> — every thought carries who wrote it, when, and why it changed.</li>
+<li><strong>Crash-proof</strong> — JJ auto-snapshots. No unsaved work.</li>
+<li><strong>Engine/Fuel split</strong> — this repo is the engine (stateless MCP server). Your data lives in a separate repo you control.</li>
+</ul>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
+<p>Install <a href="https://jj-vcs.github.io/jj/">Jujutsu (JJ)</a> — FAVA Trails uses JJ as its VCS engine:</p>
+<div><pre>fava-trails install-jj</pre></div>
+<p>Or install manually from <a href="https://jj-vcs.github.io/jj/">jj-vcs.github.io/jj</a>.</p> <div><pre>pip install fava-trails</pre></div>
+<div><h3>From source (for development)</h3><a href="#from-source-for-development"></a></div>
+<div><pre>git clone https://github.com/MachineWisdomAI/fava-trails.git
+<span>cd</span> fava-trails
+uv sync</pre></div>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Set up your data repo</h3><a href="#set-up-your-data-repo"></a></div>
+<p><strong>New data repo (from scratch):</strong></p>
+<div><pre><span><span>#</span> Create an empty repo on GitHub (or any git remote), then clone it</span>
+git clone https://github.com/YOUR-ORG/fava-trails-data.git <span><span>#</span> Bootstrap it (creates config, .gitignore, initializes JJ)</span>
+fava-trails bootstrap fava-trails-data</pre></div>
+<p><strong>Existing data repo (clone from remote):</strong></p>
+<div><pre>fava-trails clone https://github.com/YOUR-ORG/fava-trails-data.git fava-trails-data</pre></div>
+<div><h3>Register the MCP server</h3><a href="#register-the-mcp-server"></a></div>
+<p>Add to your MCP client config:</p>
+<ul>
+<li><strong>Claude Code CLI</strong>: <pre><code>~/.claude.json</code></pre> (top-level <pre><code>mcpServers</code></pre> key)</li>
+<li><strong>Claude Desktop</strong>: <pre><code>claude_desktop_config.json</code></pre></li>
+</ul>
+<p><strong>If installed from PyPI:</strong></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"fava-trails"</span>: { <span>"command"</span>: <span><span>"</span>fava-trails-server<span>"</span></span>, <span>"env"</span>: { <span>"FAVA_TRAILS_DATA_REPO"</span>: <span><span>"</span>/path/to/fava-trails-data<span>"</span></span>, <span>"OPENROUTER_API_KEY"</span>: <span><span>"</span>sk-or-v1-...<span>"</span></span> } } }
+}</pre></div>
+<p><strong>If installed from source:</strong></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"fava-trails"</span>: { <span>"type"</span>: <span><span>"</span>stdio<span>"</span></span>, <span>"command"</span>: <span><span>"</span>uv<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>run<span>"</span></span>, <span><span>"</span>--directory<span>"</span></span>, <span><span>"</span>/path/to/fava-trails<span>"</span></span>, <span><span>"</span>fava-trails-server<span>"</span></span>], <span>"env"</span>: { <span>"FAVA_TRAILS_DATA_REPO"</span>: <span><span>"</span>/path/to/fava-trails-data<span>"</span></span>, <span>"OPENROUTER_API_KEY"</span>: <span><span>"</span>sk-or-v1-...<span>"</span></span> } } }
+}</pre></div>
+<p>For Claude Desktop on Windows (accessing WSL):</p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"fava-trails"</span>: { <span>"command"</span>: <span><span>"</span>wsl.exe<span>"</span></span>, <span>"args"</span>: [ <span><span>"</span>-e<span>"</span></span>, <span><span>"</span>bash<span>"</span></span>, <span><span>"</span>-lc<span>"</span></span>, <span><span>"</span>FAVA_TRAILS_DATA_REPO=/path/to/fava-trails-data OPENROUTER_API_KEY=sk-or-v1-... fava-trails-server<span>"</span></span> ] } }
+}</pre></div>
+<blockquote>
+<pre><code>google/gemini-2.5-flash</code></pre>) costs ~$0.001 per review.<p></p>
+</blockquote>
+<div><h3>Use it</h3><a href="#use-it"></a></div>
+<p>Agents call MCP tools. Core workflow:</p>
+<div><pre><code>save_thought(trail_name="myorg/eng/my-project", content="My finding about X", source_type="observation") → creates a draft in drafts/ propose_truth(trail_name="myorg/eng/my-project", thought_id=thought_id) → promotes to observations/ (visible to all agents) recall(trail_name="myorg/eng/my-project", query="X") → finds the promoted thought
+</code></pre></div>
+<p>Agents interact through MCP tools — they never see VCS commands. JJ expertise is not required.</p>
+<div><h2>Cross-Machine Sync</h2><a href="#cross-machine-sync"></a></div>
+<p>FAVA Trails uses git remotes for cross-machine sync. The </p><pre><code>fava-trails bootstrap</code></pre> command sets <pre><code>push_strategy: immediate</code></pre> which auto-pushes after every write.<p></p>
+<div><h3>Setting up a second machine</h3><a href="#setting-up-a-second-machine"></a></div>
+<div><pre><span><span>#</span> 1. Install FAVA Trails</span>
+pip install fava-trails <span><span>#</span> 2. Install JJ</span>
+fava-trails install-jj <span><span>#</span> 3. Clone the SAME data repo (handles colocated mode + bookmark tracking)</span>
+fava-trails clone https://github.com/YOUR-ORG/fava-trails-data.git fava-trails-data <span><span>#</span> 4. Register MCP (same config as above, with local paths)</span></pre></div>
+<p>Both machines push/pull through the same git remote. Use the </p><pre><code>sync</code></pre> MCP tool to pull latest thoughts from other machines.<p></p>
+<div><h3>Manual push (if auto-push is off)</h3><a href="#manual-push-if-auto-push-is-off"></a></div>
+<div><pre><span>cd</span> /path/to/fava-trails-data
+jj bookmark <span>set</span> main -r @-
+jj git push --bookmark main</pre></div>
+<p><strong>NEVER use </strong></p><pre><strong><code>git push origin main</code></strong></pre> after JJ colocates — it misses thought commits. See <a href="/MachineWisdomAI/fava-trails/blob/main/AGENTS_SETUP_INSTRUCTIONS.md#pushing-to-remote">AGENTS_SETUP_INSTRUCTIONS.md</a> for the correct protocol.<p></p>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>fava-trails (this repo) fava-trails-data (your repo)
+├── src/fava_trails/ ├── config.yaml
+│ ├── server.py ←── MCP ──→├── .gitignore
+│ ├── cli.py └── trails/
+│ ├── trail.py └── myorg/eng/project/
+│ ├── config.py └── thoughts/
+│ ├── trust_gate.py ├── drafts/
+│ └── vcs/ ├── decisions/
+│ └── jj_backend.py ├── observations/
+└── tests/ └── preferences/
+</code></pre></div>
+<ul>
+<li><strong>Engine</strong> (<pre><code>fava-trails</code></pre>) — stateless MCP server, Apache-2.0. Install via <pre><code>pip install fava-trails</code></pre>.</li>
+<li><strong>Fuel</strong> (<pre><code>fava-trails-data</code></pre>) — your organization's trail data, private.</li>
+</ul>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Environment variables:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Read by</th>
+<th>Purpose</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>FAVA_TRAILS_DATA_REPO</code></pre></td>
+<td>Server</td>
+<td>Root directory for trail data (monorepo root)</td>
+<td><pre><code>~/.fava-trails</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>FAVA_TRAILS_DIR</code></pre></td>
+<td>Server</td>
+<td>Override trails directory location (absolute path)</td>
+<td><pre><code>$FAVA_TRAILS_DATA_REPO/trails</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>FAVA_TRAILS_SCOPE_HINT</code></pre></td>
+<td>Server</td>
+<td>Broad scope hint baked into tool descriptions</td>
+<td><em>(none)</em></td>
+</tr>
+<tr>
+<td><pre><code>FAVA_TRAILS_SCOPE</code></pre></td>
+<td>Agent</td>
+<td>Project-specific scope from <pre><code>.env</code></pre> file</td>
+<td><em>(none)</em></td>
+</tr>
+<tr>
+<td><pre><code>OPENROUTER_API_KEY</code></pre></td>
+<td>Server</td>
+<td>API key for Trust Gate LLM reviews (<a href="https://openrouter.ai/keys">get one</a>)</td>
+<td><em>(none — required for <pre><code>propose_truth</code></pre>)</em></td>
+</tr>
+</tbody>
+</table>
+<p>The server reads </p><pre><code>$FAVA_TRAILS_DATA_REPO/config.yaml</code></pre> for global settings. Minimal <pre><code>config.yaml</code></pre>:<p></p>
+<div><pre><span>trails_dir</span>: <span>trails </span><span><span>#</span> relative to FAVA_TRAILS_DATA_REPO</span>
+<span>remote_url</span>: <span>null </span><span><span>#</span> git remote URL (optional)</span>
+<span>push_strategy</span>: <span>manual </span><span><span>#</span> manual | immediate</span></pre></div>
+<p>When </p><pre><code>push_strategy: immediate</code></pre>, the server auto-pushes after every successful write. Push failures are non-fatal.<p></p>
+<p>See <a href="/MachineWisdomAI/fava-trails/blob/main/AGENTS_SETUP_INSTRUCTIONS.md">AGENTS_SETUP_INSTRUCTIONS.md</a> for full config reference including trust gate and per-trail overrides.</p>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre>uv run pytest -v <span><span>#</span> run tests</span>
+uv run pytest --cov <span><span>#</span> with coverage</span></pre></div>
+<div><h2>Docs</h2><a href="#docs"></a></div>
+<ul>
+<li><a href="/MachineWisdomAI/fava-trails/blob/main/AGENTS.md">AGENTS.md</a> — Agent-facing: MCP tools reference, scope discovery, thought lifecycle, agent conventions</li>
+<li><a href="/MachineWisdomAI/fava-trails/blob/main/AGENTS_USAGE_INSTRUCTIONS.md">AGENTS_USAGE_INSTRUCTIONS.md</a> — Canonical usage: scope discovery, session protocol, agent identity</li>
+<li><a href="/MachineWisdomAI/fava-trails/blob/main/AGENTS_SETUP_INSTRUCTIONS.md">AGENTS_SETUP_INSTRUCTIONS.md</a> — Data repo setup, config reference, trust gate prompts</li>
+<li><a href="/MachineWisdomAI/fava-trails/blob/main/docs/fava_trails_faq.md">docs/fava_trails_faq.md</a> — Detailed FAQ for framework authors and ML engineers</li>
+</ul>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>See <a href="/MachineWisdomAI/fava-trails/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for setup instructions, how to run tests, and PR expectations.</p>
+<p>See <a href="/MachineWisdomAI/fava-trails/blob/main/CHANGELOG.md">CHANGELOG.md</a> for release history.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

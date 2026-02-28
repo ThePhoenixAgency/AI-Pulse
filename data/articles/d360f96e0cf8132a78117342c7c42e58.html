@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,7 +28,7 @@
     Source: openHAB Community (Latest) | Date: 2/23/2026 12:06:39 PM | <a href="https://community.openhab.org/t/zwave-binding-openhab-5-1-2-difference-to-openhab4-1-1-using-devolo-door-contact-in-openjab-5-1-2/168614" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <div> <p><span> <time> February 23, 2026, 12:06pm </time> <span>1</span> </span> </p></div> <div> <p>Every thing works fine with my devices in openhab 4.1.1. all my devices where detected .<br>
+    <p><p>Every thing works fine with my devices in openhab 4.1.1. all my devices where detected .<br>
 After updateing to openhab 5.1 2 only some devices will be discovered.</p>
 <p>NODE 23 all OK<br>
 NODE 24 not dicovered<br>
@@ -62,93 +56,22 @@ Both devices are from outside the same doorcontact from devolo</p>
 2026-02-23 12:02:43.089 [DEBUG] [ding.zwave.handler.ZWaveThingHandler] - NODE 23: Properties synchronised<br>
 ======================= END LOGFILE ==============================<br>
 i Guess MAN means manufacturer</p>
-<p>Is there any workarround to get the other devices discovered ?</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/apella12"><span>apella12</span></a> (Bob Eckhoff) </span> <span> <time> February 23, 2026, 2:27pm </time> <span>2</span> </span> </p> <p>Log looks like an initial startup. Could try to wake the device (door contacts are battery). What are the contents of the userdata/zwave folder? What nodes are missing?</p> </div> <div> <p><span> <a href="https://community.openhab.org/u/borstelpankow"><span>borstelpankow</span></a> (Alexander Becker) </span> <span> <time> February 23, 2026, 4:44pm </time> <span>3</span> </span> </p> <div> <p>pi@raspberrypi:~/openhab/userdata/zwave $ ls -al<br>
-insgesamt 44<br>
-drwxr-xr-x 2 root root 4096 23. Feb 14:48 .<br>
-drwxr-xr-x 12 root root 4096 23. Feb 14:16 ..<br>
--rw-r–r-- 1 root root 9677 23. Feb 14:48 network_ed00e56a__node_13.xml<br>
--rw-r–r-- 1 root root 1815 23. Feb 14:16 network_ed00e56a__node_1.xml<br>
--rw-r–r-- 1 root root 18491 23. Feb 15:24 network_ed00e56a__node_23.xml<br>
-where<br>
-<em>13</em> is a keypad and<br>
-<em>23</em> is a door contact:</p>
-<p>13 and 23 are the ones , that always will be discovered.<br>
-I installed also a 4.3.10 version and i have the same behavior.<br>
-The Zwave Stick is a aontec zwavestick gen 5 (approx. 5 years old) and a raspi 3</p>
-<p>all the other door contacts are missing. But the will be shown as online. And i see some communication, if i open / close the window.<br>
-fun fact: I removed from one door contact the battery and it was shown as online.</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/borstelpankow"><span>borstelpankow</span></a> (Alexander Becker) </span> <span> <time> February 23, 2026, 4:46pm </time> <span>4</span> </span> </p> <p>and i got sometimes<br>
-NODE 20: Error decapsulating security message<br>
-java.security.InvalidKeyException: No installed provider supports this key: (null)<br>
-at javax.crypto.Cipher.chooseProvider(Cipher.java:963) ~[?:?]<br>
-at javax.crypto.Cipher.init(Cipher.java:1313) ~[?:?]<br>
-at javax.crypto.Cipher.init(Cipher.java:1246) ~[?:?]<br>
-at org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass.generateMAC(ZWaveSecurityCommandClass.java:528) ~[bundleFile:?]<br>
-at org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass.getSecurityMessageDecapsulation(ZWaveSecurityCommandClass.java:319) [bund<br>
-leFile:?]<br>
-at org.openhab.binding.zwave.internal.protocol.ZWaveNode.processCommand(ZWaveNode.java:1253) [bundleFile:?]<br>
-at org.openhab.binding.zwave.internal.protocol.ZWaveTransactionManager$ZWaveReceiveThread.run(ZWaveTransactionManager.java:548) [bundleFile:?]<br>
-2026-02-23 17:42:08.956 [TRACE] [wave.internal.protocol.SerialMessage] - Calculated checksum = 61</p> </div> <div> <p><span> <a href="https://community.openhab.org/u/apella12"><span>apella12</span></a> (Bob Eckhoff) </span> <span> <time> February 23, 2026, 5:52pm </time> <span>5</span> </span> </p> <div> <p>The security message could indicate the issue. If those devices were installed with security, you need to transfer the old key to the new installation. How did you backup the old?</p>
-<p>Edit also debug is fine and use the code fences &lt;\&gt;</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/apella12"><span>apella12</span></a> (Bob Eckhoff) </span> <span> <time> February 23, 2026, 6:03pm </time> <span>6</span> </span> </p> <p>Another general questions. What os is the rpi3 running. For 5.1 it needs to be 64bit and Java 21. OH 5 is going to be a tight fit IMO, unless it is a pretty small install. Although not related to your current issue.</p> </div> <div> <p><span> <a href="https://community.openhab.org/u/borstelpankow"><span>borstelpankow</span></a> (Alexander Becker) </span> <span> <time> February 24, 2026, 8:09am </time> <span>7</span> </span> </p> <div> <p>Thx Bob for the Replay.<br>
-Security was in OH 4.3.10 disabled for all Devolo Doorcontacts, so it should not be a problem on the device .<br>
-OS on Raspi is Debian<br>
-uname -a<br>
-Linux raspberrypi 6.1.21-v7+ <span>#1642</span> SMP Mon Apr 3 17:20:52 BST 2023 armv7l GNU/Linux<br>
-Java is 21 , otherwise openhab won’t start. Startup script checks java version.</p>
-<p>All Missing things have aa property<br>
-<strong>zwave_secure with value false</strong></p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/apella12"><span>apella12</span></a> (Bob Eckhoff) </span> <span> <time> February 24, 2026, 2:13pm </time> <span>8</span> </span> </p> <div> <p>To be honest, I can’t infer what the problem could be with the information so far. How many zwave nodes do you have and what other bindings? Three options</p>
-<ol>
-<li>
-<p>Detail the steps you did to transition from OH4.1.1 to OH5.1.2. Did you use apt update, did you make a backup and then restore? Did you manually create a new Zwave bridge or was that restored?, etc. All that will only help to understand what went wrong but probably won’t fix it. The zwave folder should still contain all your nodes after any upgrade path, although the date stamps of the problem devices will be old. Since that is not the case, I’m not sure what happened without more details.</p>
-</li>
-<li>
-<p>On OH5.1.2 set the Zwave binding in debug (not trace) and restart OH. The log will be long and as new to the community (welcome by the way) you won’t be able to upload it. However, there is a <a href="https://www.opensmarthouse.org/utilities/logviewer/zwave/">debug viewer here</a> that can provide a picture. Maybe a screen shot or two around the problem devices</p>
-</li>
-<li>
-<p>The simplest might be (depending on the number of nodes) to use the exclude devices in OH5.1.2 (won’t work in OH4.3.10) and exclude the problem nodes, then use the scan to rediscover. Check the node manual for what to press on the device to exclude and include. They should be a new nodeID and you will have to relink channels to your old items and delete the orphan links. Keep the old items so your rules will work. A debug log of the inclusion (if unsuccessful) would help diagnose what is going on, if there are still issues.</p>
-</li>
-</ol> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/sihui"><span>sihui</span></a> (SiHui) </span> <span> <time> February 24, 2026, 3:20pm </time> <span>9</span> </span> </p> <div> <p>Isn’t this 32Bit?</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/borstelpankow"><span>borstelpankow</span></a> (Alexander Becker) </span> <span> <time> February 25, 2026, 7:55am </time> <span>10</span> </span> </p> <div> <p>Thx to all.<br>
-I got with some magic ( i dont understand ) all my devices working. The last node shows all the sensor values, but the device wasnt correct discovered. After removing the Battery, discovery works and now the last device is discovered and works.</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/borstelpankow"><span>borstelpankow</span></a> (Alexander Becker) </span> <span> <time> February 25, 2026, 4:38pm </time> <span>11</span> </span> </p> <div> <p>Sorry this was not the End, one device ist still waiting for device init<br>
-… NODE 21: Polling…<br>
-… NODE 21: Polling deferred until initialisation complete</p>
-<p>But i guess the device had still worked. The device shows several channel (temperatur, OpenClose Type) and so on, but still the manufacturer is not set</p>
-<p>her some logs from before<br>
-2-25 17:27:46.067 [DEBUG] [ding.zwave.handler.ZWaveThingHandler] - NODE 21: Initialising state channel zwave:device:f65420ee61:node21:alarm_tamper for OnOffType<br>
-2026-02-25 17:27:46.075 [DEBUG] [ding.zwave.handler.ZWaveThingHandler] - NODE 21: Initialising cmd channel zwave:device:f65420ee61:node21:sensor_door for OpenClosedType<br>
-2026-02-25 17:27:46.077 [DEBUG] [ding.zwave.handler.ZWaveThingHandler] - NODE 21: Initialising state channel zwave:device:f65420ee61:node21:sensor_door for OpenClosedType</p>
-<p>This is a little bit spooky</p> </div> </div> <div> <div> <p><span> <a href="https://community.openhab.org/u/apella12"><span>apella12</span></a> (Bob Eckhoff) </span></p> <p><span> <time> February 25, 2026, 6:42pm </time> <span>12</span> </span> </p></div> <div> <p>It seems most (all) of the devices with the problem are battery powered. My initial suggestion was to wake the device by pressing the button per the manual (usually 1-3 times quickly). I’d still suggest that sequence maybe a minute apart until the xml shows up in the zwave folder.</p>
-<p>With some devices pulling the battery out, waiting a bit and putting back in will do the same thing. There is sometimes a 30 -60 period when the device is awake and will get configured. Using the log viewer, the end will like this</p>
-<div><a href="https://community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/4/4/44d63a948997d96da48a802d3c1df1309482838c.png"><img src="https://community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/4/4/44d63a948997d96da48a802d3c1df1309482838c_2_636x499.png" alt="Done 2026-02-25 134056"></a></div> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/borstelpankow"><span>borstelpankow</span></a> (Alexander Becker) </span> <span> <time> February 26, 2026, 3:50pm </time> <span>13</span> </span> </p> <div> <p>so i made a hard reset of the zwave controller ( all Nodes gone ) and i included evrey node again into a zwave network and then it works.<br>
-The class ZWaveManufacturerSpecificCommandClass get the manufacturer</p>
-<p>here is the log<br>
-=============================== LOG ====================================<br>
-026-02-26 16:06:44.754 [DEBUG] [tocol.commandclass.ZWaveCommandClass] - NODE 5: Received COMMAND_CLASS_MANUFACTURER_SPECIFIC V0 MANUFACTURER_SPECIFIC_REPORT<br>
-2026-02-26 16:06:44.755 [DEBUG] [WaveManufacturerSpecificCommandClass] - NODE 5: Manufacturer ID = 0x175<br>
-2026-02-26 16:06:44.757 [DEBUG] [WaveManufacturerSpecificCommandClass] - NODE 5: Device Type = 0x2<br>
-2026-02-26 16:06:44.758 [DEBUG] [WaveManufacturerSpecificCommandClass] - NODE 5: Device ID = 0xe<br>
-=========== END LOG ================<br>
-I do not know, is this one triggered from the zwave binding or comes it from the network, maybe or may be not.</p>
-<p>Thx to all , now it works at te moment.<br>
-Alexander</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/apella12"><span>apella12</span></a> (Bob Eckhoff) </span> <span> <time> February 26, 2026, 6:43pm </time> <span>14</span> </span> </p> <div> <p>Glad it is working.</p>
-<p>Don’t understand if you have a question on the log. It is normal and points to the Zwave Database entry <a href="https://www.opensmarthouse.org/zwavedatabase/2">here</a>. It is one of your door sensors</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/borstelpankow"><span>borstelpankow</span></a> (Alexander Becker) </span> <span> <time> February 27, 2026, 7:23am </time> <span>15</span> </span> </p> <p>Thx Bob for the response,<br>
-My question was not about the log. This one is clear.<br>
-My Question was, who triggers the response in the LOG. The Device itself (sometimes or not) or the zwave binding,<br>
-I dont understand, why some of the door Contacts in my old Z-Wave Network where discovered and other not.<br>
-I read the Z-Wave specification, but there it was not clear IMO. But Anyway it works now.</p> </div> <div> <p><span> <a href="https://community.openhab.org/u/apella12"><span>apella12</span></a> (Bob Eckhoff) </span> <span> <time> February 27, 2026, 3:15pm </time> <span>16</span> </span> </p> <div> <p>All logging is done by the ZW binding. The device communicates with the controller and OH communicates with the controller. The trigger could be a message from the controller to OH (relaying a device message or the controller informing OH of something it is doing) or a command from OH to the controller. The binding translates those bytes into human readable form.</p>
-<p>In the pictures above the red <code>TX</code> means OH to Controller and the green <code>RX</code> means OH received from controller. The light gray <code>RES</code> is just between OH and the controller. The yellow <code>REQ</code> is from the device via the controller (note the blue <code>from device in</code>)</p> </div> </div> </div></div>
+<p>Is there any workarround to get the other devices discovered ?</p> <p><small>16 posts - 3 participants</small></p> <p><a href="https://community.openhab.org/t/zwave-binding-openhab-5-1-2-difference-to-openhab4-1-1-using-devolo-door-contact-in-openjab-5-1-2/168614">Read full topic</a></p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

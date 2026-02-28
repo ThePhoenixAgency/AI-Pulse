@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,41 +28,23 @@
     Source: The Hacker News | Date: 2/25/2026 5:46:00 PM | <a href="https://thehackernews.com/2026/02/google-disrupts-unc2814-gridtide.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-<p><span><i></i><span>Ravie Lakshmanan</span><i></i><span>Feb 25, 2026</span></span><span>Cyber Espionage / Network Security</span></p></div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyrJTi6YIFc4PWNVjyVZgjQfbHNpfH-WtwcxIIEgUSin8DR8zz_VZBauDnlTA42bh7LT7nj1Y-OtoKL34tEKUKo4JrNuWgnhC1r54tIkws6OC8SWqucU0OrWysv2-pzj_YCinatv9FwUUsvADoPMVngfmR8wB2xr_lS1viUQHoK_Vom83SmBZMOBJPe6Nb/s1600/google.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyrJTi6YIFc4PWNVjyVZgjQfbHNpfH-WtwcxIIEgUSin8DR8zz_VZBauDnlTA42bh7LT7nj1Y-OtoKL34tEKUKo4JrNuWgnhC1r54tIkws6OC8SWqucU0OrWysv2-pzj_YCinatv9FwUUsvADoPMVngfmR8wB2xr_lS1viUQHoK_Vom83SmBZMOBJPe6Nb/s1600/google.jpg"></a></p>
-<p>Google on Wednesday disclosed that it worked with industry partners to disrupt the infrastructure of a suspected China-nexus cyber espionage group tracked as <strong>UNC2814</strong> that breached at least 53 organizations across 42 countries.</p>
-<p>"This prolific, elusive actor has a long history of targeting international governments and global telecommunications organizations across Africa, Asia, and the Americas," Google Threat Intelligence Group (GTIG) and Mandiant <a href="https://cloud.google.com/blog/topics/threat-intelligence/disrupting-gridtide-global-espionage-campaign" target="_blank" rel="noopener noreferrer">said</a> in a report published today.</p>
-<p>UNC2814 is also suspected to be linked to additional infections in more than 20 other nations. The tech giant, which has been tracking the threat actor since 2017, has been observed using API calls to communicate with software-as-a-service (SaaS) apps as command-and-control (C2) infrastructure. The idea, it added, is to disguise their malicious traffic as benign.</p> <p>Central to the hacking group's operations is a novel backdoor dubbed GRIDTIDE that abuses Google Sheets API as a communication channel to disguise C2 traffic and facilitate the transfer of raw data and shell commands. It's a C-based malware that supports file upload/download and the execution of arbitrary shell commands.</p>
-<p>Dan Perez, GTIG researcher, told The Hacker News via email that they cannot confirm if all the intrusions involved the use of the GRIDTIDE backdoor. "We believe many of these organizations have been compromised for years," Perez added.</p>
-<p>Exactly how UNC2814 obtains initial access remains a topic of investigation, but the group is said to have a history of exploiting and compromising web servers and edge systems.</p> <p>Attacks mounted by the threat actor have leveraged a service account to move laterally within the environment via SSH. Also put to use are living-off-the-land (LotL) binaries to conduct reconnaissance, escalate privileges, and set up persistence for the backdoor.</p>
-<p>"To achieve persistence, the threat actor created a service for the malware at /etc/systemd/system/xapt.service, and once enabled, a new instance of the malware was spawned from /usr/sbin/xapt," Google explained.</p>
-<p>Another noteworthy aspect is the deployment of SoftEther VPN Bridge to establish an outbound encrypted connection to an external IP address. It's worth mentioning here that the abuse of SoftEther VPN has been <a href="https://thehackernews.com/2023/08/china-linked-flax-typhoon-cyber.html" target="_blank" rel="noopener noreferrer">linked</a> to <a href="https://thehackernews.com/2025/10/chinese-cybercrime-group-runs-global.html" target="_blank" rel="noopener noreferrer">multiple</a> <a href="https://thehackernews.com/2026/01/china-linked-uat-8099-targets-iis.html" target="_blank" rel="noopener noreferrer">Chinese hacking groups</a>.</p> <p>There is evidence indicating that GRIDTIDE is dropped on endpoints containing personally identifiable information (PII), an aspect that's consistent with cyber espionage activity focused on monitoring persons of interest. Google, however, noted that it did not observe any data exfiltration taking place during the course of the campaign.</p>
-<table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg01Sx3mjIosp9QfbTLVvwKJTFWnp7mrEbVD1GIe-73bkOGzSZuZyemI8OYfME8eCNsvyptdtNnbjqh0XBIlW5HFrkDNPBKdvQZ_XGQ3ilHFoTVfVE9JQkapemKPyaWb1AaMTnBcedPz-hmvmNXfS3khVmCm2TN49fIMr-em84pLNba8-i3WxSlfTeJb9QI/s1600/GRIDTIDE.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg01Sx3mjIosp9QfbTLVvwKJTFWnp7mrEbVD1GIe-73bkOGzSZuZyemI8OYfME8eCNsvyptdtNnbjqh0XBIlW5HFrkDNPBKdvQZ_XGQ3ilHFoTVfVE9JQkapemKPyaWb1AaMTnBcedPz-hmvmNXfS3khVmCm2TN49fIMr-em84pLNba8-i3WxSlfTeJb9QI/s1600/GRIDTIDE.jpg"></a></td></tr><tr><td>GRIDTIDE execution lifecycle</td></tr></tbody></table>
-<p>GRIDTIDE's C2 mechanism involves a cell-based polling mechanism, where specific roles are assigned to certain spreadsheet cells to enable bidirectional communication -</p>
-<ul>
-<li>A1, to poll for attacker commands and overwrite it with a status response (e.g., S-C-R or Server-Command-Success)</li>
-<li>A2-An, to transfer data, such as command output and files</li>
-<li>V1, to store system data from the victim endpoint</li>
-</ul>
-<p>As part of the action, Google said it terminated all Google Cloud Projects controlled by the attacker, disabled all known UNC2814 infrastructure, and cut off access to attacker-controlled accounts and Google Sheets API calls leveraged by the actor for command-and-control (C2) purposes.</p>
-<p>The tech giant described UNC2814 as one of the "most far-reaching, impactful campaigns" encountered in recent years, adding that it has issued formal victim notifications to each of the targets and that it is actively supporting organizations with verified compromises resulting from this threat.</p> <p>The latest discovery is one of many concurrent efforts by Chinese nation-state groups to embed themselves into networks for long-term access. The development also highlights that the network edge continues to take the brunt of internet-wide exploitation attempts, with threat actors frequently exploiting vulnerabilities and misconfigurations in such appliances as a common entry point into enterprise networks.</p>
-<p>These appliances have <a href="https://www.greynoise.io/blog/2026-greynoise-state-of-the-edge-report-where-attacks-concentrate-defenses-fall-short" target="_blank" rel="noopener noreferrer">become attractive targets</a> in recent years as they typically lack endpoint malware detection, yet provide direct network access or pivot points to internal services if compromised.</p>
-<p>"The global scope of UNC2814's activity, evidenced by confirmed or suspected operations in over 70 countries, underscores the serious threat facing telecommunications and government sectors, and the capacity for these intrusions to evade detection by defenders," Google said.</p>
-<p>"Prolific intrusions of this scale are generally the result of years of focused effort and will not be easily re-established. We expect that UNC2814 will work hard to re-establish its global footprint."</p> </div></div>
+    <p>Google on Wednesday disclosed that it worked with industry partners to disrupt the infrastructure of a suspected China-nexus cyber espionage group tracked as UNC2814 that breached at least 53 organizations across 42 countries.
+"This prolific, elusive actor has a long history of targeting international governments and global telecommunications organizations across Africa, Asia, and the Americas,"</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

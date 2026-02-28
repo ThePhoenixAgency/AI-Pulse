@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,21 +34,25 @@
     Source: Next INpact | Date: 2/25/2026 7:45:00 AM | <a href="https://next.ink/brief_article/gestionnaire-de-mots-de-passe-1password-augmente-ses-prix-de-pres-de-40/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>C’est via un email que l’entreprise annonce la mauvaise nouvelle à ses clients. À partir du 27 mars 2026, le tarif individuel passera de 38,16 à 52,56 euros, soit près de 38 % de hausse, explique MacG. Le tarif famille passera à 82,8 euros par an. Les tarifs mensuels ne semblent pas concernés (pour le [&#8230;]</p>
+    <div><div> <p>C’est via un email que l’entreprise annonce la mauvaise nouvelle à ses clients. À partir du 27 mars 2026, le tarif individuel passera de 38,16 à 52,56 euros, soit près de 38 % de hausse, <a href="https://www.macg.co/logiciels/2026/02/ca-va-chiffrer-1password-augmente-ses-prix-pour-les-abonnes-lannee-306991" target="_blank" rel="noopener noreferrer">explique MacG</a>. Le tarif famille passera à 82,8 euros par an.</p> <p>Les tarifs mensuels ne semblent pas concernés (pour le moment&nbsp;?), mais ils sont déjà bien plus chers que les prix annuels. L’abonnement individuel est à 5,27 euros par mois, soit 63,22 euros par an, tandis que le familial est à 8,39 par mois, soit 100,66 euros sur un an.</p> <p>Pour rappel, les tarifs affichés sur le site de 1Password sont hors taxes. La société explique qu’elle calcule et récupère «<em> les taxes en fonction de votre adresse, quelle que soit la devise de paiement. Les prix affichés sur 1Password.com n’incluent pas la TVA, car chaque pays et région applique un taux de taxe différent</em>&nbsp;». En France, elle est de 20 %.</p> <div>
+<figure><img alt="" src="https://i0.wp.com/next.ink/wp-content/uploads/2025/11/1Password-Blog-Screenshot-Windows-IT-Pro-1024x649.webp?ssl=1"></figure></div> <p>À titre de comparaison, LastPass est actuellement à 29,23 euros par an pour le compte Premium individuel et à 39,31 euros pour la famille. Dashlane est à 57,6 euros par an en Premium basique, contre 87,12 euros pour la formule Friends &amp; Family. Chez Proton, le Pass Plus est à 35,88 euros par an.</p> <p>Pour rappel, une étude récente a pointé <a href="https://next.ink/224992/zero-knowledge-une-etude-pointe-les-carences-de-bitwarden-lastpass-et-dashlane/">des faiblesses dans Bitwarden, LastPass et Dashlane</a>. Nous expliquions alors que les trois services «<em> pourraient, dans des conditions exceptionnelles, permettre la divulgation du mot de passe principal de leurs utilisateurs, en dépit de leur promesse relative au chiffrement «&nbsp;Zero Knowledge&nbsp;» </em>». Des correctifs sont déjà en place. </p> <p>Bitwarden, nous en parlions récemment avec un tuto pour installer Vaultwarden (une version légère) sur un VPS à moins de cinq euros par mois, soit une soixante d’euros par an. Vous pouvez ainsi auto-héberger votre gestionnaire de mot de passe et même utiliser le VPS pour d’autres usages (des tutos arrivent).</p> <ul>
+<li> <div> <p> <abbr> <span>Vendredi 06 février 2026 à 12h12</span> <span>06/02/2026 12h12</span> </abbr> </p> </div>
+</li> </ul> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

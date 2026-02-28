@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - virgil-king/kbtz: Task tracker for AI agents</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - virgil-king/kbtz: Task tracker for AI agents</h1>
+  <div class="metadata">
+    Source: Hacker News (nouveautés) | Date: 2/28/2026 6:19:35 PM | <a href="https://github.com/virgil-king/kbtz" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>kbtz</h1><a href="#kbtz"></a></div>
+<p>A task tracker and workspace for coding agents. Backed by SQLite, designed for concurrent multi-agent workflows.</p>
+<p>The name comes from "kibitz" -- to watch and offer commentary.</p>
+<ul>
+<li><strong>See the status of all agents and tasks in one place</strong> — a terminal workspace shows a live task tree with status indicators for every running agent</li> <li><strong>Tasks and notes are under your control</strong> — work is tracked in a SQLite database you own, not hidden inside agent context windows</li>
+<li><strong>Structure work with dependencies</strong> — parent/child and blocking relationships between tasks so agents work in the right order</li>
+<li><strong>Unblocked tasks immediately get their own agent</strong> — when a task's dependencies are satisfied, the workspace claims it and spawns a new session automatically</li>
+</ul>
+<p>kbtz has two components:</p>
+<ul>
+<li><strong><pre><code>kbtz-workspace</code></pre></strong> — The terminal workspace you interact with. Manages concurrent agent sessions against a shared task database with a tmux-like interface for monitoring and interacting with them.</li>
+<li><strong><pre><code>kbtz</code></pre></strong> — The underlying CLI that agents use to interact with the task database: creating tasks, setting dependencies, claiming work, and adding notes.</li>
+</ul>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><pre>cargo install --path kbtz <span><span>#</span> task tracker CLI</span>
+cargo install --path kbtz-workspace <span><span>#</span> workspace manager</span></pre></div>
+<div><h2>kbtz-workspace</h2><a href="#kbtz-workspace"></a></div>
+<p></p><pre><code>kbtz-workspace</code></pre> is a terminal workspace manager that orchestrates multiple AI agent sessions against a shared kbtz task database. It automatically claims tasks, spawns agent sessions in PTYs, monitors their lifecycle, and reaps them when tasks complete — giving you a tmux-like interface over a fleet of concurrent agents.<p></p>
+<div><h3>Usage</h3><a href="#usage"></a></div>
+<div><pre>kbtz-workspace [OPTIONS]</pre></div>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>--db &lt;path&gt;</code></pre></td>
+<td><pre><code>$KBTZ_DB</code></pre> or <pre><code>~/.kbtz/kbtz.db</code></pre></td>
+<td>Path to kbtz database</td>
+</tr>
+<tr>
+<td><pre><code>-j, --concurrency &lt;N&gt;</code></pre></td>
+<td><pre><code>4</code></pre></td>
+<td>Max concurrent agent sessions</td>
+</tr>
+<tr>
+<td><pre><code>--prefer &lt;text&gt;</code></pre></td>
+<td></td>
+<td>FTS preference hint for task selection</td>
+</tr>
+<tr>
+<td><pre><code>--command &lt;cmd&gt;</code></pre></td>
+<td><pre><code>claude</code></pre></td>
+<td>Command to run per session</td>
+</tr>
+<tr>
+<td><pre><code>--manual</code></pre></td>
+<td></td>
+<td>Disable auto-spawning; use <pre><code>s</code></pre> to spawn manually</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Screens</h3><a href="#screens"></a></div>
+<p>The workspace has three screens:</p>
+<p><strong>Task tree</strong> — the default view. Shows all non-done tasks in a tree with session status indicators. Navigate tasks, zoom into sessions, and manage task state (pause, done, force-unassign).</p>
+<p><strong>Task sessions</strong> — full-screen view of a single agent's PTY. The agent's terminal output fills the screen with a status bar on the last line. You interact directly with the agent (e.g. Claude Code) as if it were a normal terminal session.</p>
+<p><strong>Manager session</strong> — a dedicated session (not tied to any task) with an interactive agent for manipulating the task list: creating tasks, reparenting, blocking/unblocking, etc. Press </p><pre><code>c</code></pre> from the task tree to open.<p></p>
+<div><h3>Task tree keybindings</h3><a href="#task-tree-keybindings"></a></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>j</code></pre> / <pre><code>k</code></pre>, Up / Down</td>
+<td>Navigate tasks</td>
+</tr>
+<tr>
+<td><pre><code>Enter</code></pre></td>
+<td>Zoom into session</td>
+</tr>
+<tr>
+<td><pre><code>s</code></pre></td>
+<td>Spawn session for selected task</td>
+</tr>
+<tr>
+<td><pre><code>r</code></pre></td>
+<td>Restart (kill and respawn) session</td>
+</tr>
+<tr>
+<td><pre><code>c</code></pre></td>
+<td>Switch to manager session</td>
+</tr>
+<tr>
+<td><pre><code>Space</code></pre></td>
+<td>Collapse/expand subtree</td>
+</tr>
+<tr>
+<td><pre><code>p</code></pre></td>
+<td>Pause/unpause task</td>
+</tr>
+<tr>
+<td><pre><code>d</code></pre></td>
+<td>Mark task done</td>
+</tr>
+<tr>
+<td><pre><code>U</code></pre></td>
+<td>Force-unassign task</td>
+</tr>
+<tr>
+<td><pre><code>Tab</code></pre></td>
+<td>Jump to next session needing input</td>
+</tr>
+<tr>
+<td><pre><code>?</code></pre></td>
+<td>Help</td>
+</tr>
+<tr>
+<td><pre><code>q</code></pre> / <pre><code>Esc</code></pre></td>
+<td>Quit (releases all sessions)</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Task session keybindings</h3><a href="#task-session-keybindings"></a></div>
+<p>All commands use a </p><pre><code>Ctrl-B</code></pre> prefix (like tmux):<p></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>^B t</code></pre></td>
+<td>Return to task tree</td>
+</tr>
+<tr>
+<td><pre><code>^B c</code></pre></td>
+<td>Switch to manager session</td>
+</tr>
+<tr>
+<td><pre><code>^B n</code></pre></td>
+<td>Next session</td>
+</tr>
+<tr>
+<td><pre><code>^B p</code></pre></td>
+<td>Previous session</td>
+</tr>
+<tr>
+<td><pre><code>^B Tab</code></pre></td>
+<td>Jump to next session needing input</td>
+</tr>
+<tr>
+<td><pre><code>^B [</code></pre></td>
+<td>Enter scroll mode</td>
+</tr>
+<tr>
+<td><pre><code>^B ^B</code></pre></td>
+<td>Send literal Ctrl-B to agent</td>
+</tr>
+<tr>
+<td><pre><code>^B ?</code></pre></td>
+<td>Show help</td>
+</tr>
+<tr>
+<td><pre><code>^B q</code></pre></td>
+<td>Quit</td>
+</tr>
+</tbody>
+</table>
+<p>Page Up and left-click also enter scroll mode.</p>
+<div><h3>Scroll mode</h3><a href="#scroll-mode"></a></div>
+<p>Scroll mode freezes the session output and renders the frozen viewport directly over the current screen with mouse tracking disabled. This enables:</p>
+<ul>
+<li><strong>Scrolling</strong> via keyboard (<pre><code>j</code></pre>/<pre><code>k</code></pre>, arrows, PgUp/PgDn, <pre><code>g</code></pre>/<pre><code>G</code></pre>)</li>
+<li><strong>Native text selection</strong> via click-drag, with copy using your terminal's native shortcut (Ctrl+Shift+C on Linux, Cmd+C on macOS)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>q</code></pre> / <pre><code>Esc</code></pre></td>
+<td>Exit scroll mode</td>
+</tr>
+<tr>
+<td><pre><code>k</code></pre> / Up</td>
+<td>Scroll up 1 line</td>
+</tr>
+<tr>
+<td><pre><code>j</code></pre> / Down</td>
+<td>Scroll down 1 line</td>
+</tr>
+<tr>
+<td>PgUp / PgDn</td>
+<td>Scroll by page</td>
+</tr>
+<tr>
+<td><pre><code>g</code></pre></td>
+<td>Jump to top of scrollback</td>
+</tr>
+<tr>
+<td><pre><code>G</code></pre></td>
+<td>Jump to bottom and exit scroll mode</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Session lifecycle</h3><a href="#session-lifecycle"></a></div>
+<ol>
+<li>
+<p><strong>Claim</strong> — When there is an available task and available session capacity, the workspace generates a new session ID and atomically claims the best available task for that ID. Tasks are ranked by FTS relevance (if </p><pre><code>--prefer</code></pre> is set), number of tasks they would unblock, and age.<p></p>
+</li>
+<li>
+<p><strong>Spawn</strong> — A PTY is allocated and the configured command (default: </p><pre><code>claude</code></pre>) is launched with the agent protocol injected via <pre><code>--append-system-prompt</code></pre>. Each session gets environment variables: <pre><code>KBTZ_DB</code></pre>, <pre><code>KBTZ_TASK</code></pre>, <pre><code>KBTZ_SESSION_ID</code></pre>, and <pre><code>KBTZ_WORKSPACE_DIR</code></pre>.<p></p>
+</li>
+<li>
+<p><strong>Monitor</strong> — A lifecycle tick runs every 100ms. It checks each session's process liveness and its task's database state. Sessions are reaped when:</p>
+<ul>
+<li>The task is marked done, paused, or deleted</li>
+<li>The task is released (e.g. agent decomposed into subtasks)</li>
+<li>The task is reassigned to a different session</li>
+<li>The agent process exits</li>
+</ul>
+</li>
+<li>
+<p><strong>Reap</strong> — The workspace sends SIGTERM and waits up to 5 seconds for graceful exit, then SIGKILL. The task claim is released so it can be picked up again. The concurrency slot is freed and a new task is claimed.</p>
+</li>
+<li>
+<p><strong>Shutdown</strong> — On quit (</p><pre><code>q</code></pre> or Ctrl-C), all sessions receive SIGTERM in parallel. After a 5-second grace period, any remaining sessions are force-killed and all task claims are released.<p></p>
+</li>
+</ol>
+<div><h3>Agent protocol</h3><a href="#agent-protocol"></a></div>
+<p>Each spawned agent receives a system prompt that teaches it the workspace contract:</p>
+<ul>
+<li><strong>Environment variables</strong>: <pre><code>$KBTZ_DB</code></pre> (database path), <pre><code>$KBTZ_TASK</code></pre> (assigned task name), <pre><code>$KBTZ_SESSION_ID</code></pre> (e.g. <pre><code>ws/3</code></pre>), <pre><code>$KBTZ_WORKSPACE_DIR</code></pre> (status directory)</li> <li><strong>Decomposition</strong>: Agents can split work into subtasks using <pre><code>kbtz exec</code></pre> for atomic creation of subtasks with blocking relationships</li>
+<li><strong>Notes</strong>: Agents document decisions and progress with <pre><code>kbtz note</code></pre> for cross-session continuity</li>
+<li><strong>Branch/PR tracking</strong>: Agents note branch names and PR URLs on their tasks</li>
+</ul>
+<div><h3>Status reporting</h3><a href="#status-reporting"></a></div>
+<p>Agents report their status by writing to files in the workspace status directory (</p><pre><code>$KBTZ_WORKSPACE_DIR</code></pre>, default <pre><code>~/.kbtz/workspace/</code></pre>). Each session gets a file named after its session ID (with <pre><code>/</code></pre> replaced by <pre><code>-</code></pre>). The workspace watches this directory and updates the task tree with status indicators:<p></p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Indicator</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Starting</td>
+<td></td>
+<td>Session just spawned</td>
+</tr>
+<tr>
+<td>Active</td>
+<td></td>
+<td>Agent is working</td>
+</tr>
+<tr>
+<td>Idle</td>
+<td></td>
+<td>Agent is waiting</td>
+</tr>
+<tr>
+<td>Needs input</td>
+<td></td>
+<td>Agent needs user attention</td>
+</tr>
+</tbody>
+</table>
+<div><h2>kbtz CLI</h2><a href="#kbtz-cli"></a></div>
+<p>The </p><pre><code>kbtz</code></pre> CLI is the interface agents use to interact with the task database. You can also use it directly for scripting and manual task management.<p></p>
+<div><h3>Quick start</h3><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> Create tasks</span>
+kbtz add setup-db <span><span>"</span>Design and create the database schema<span>"</span></span>
+kbtz add build-api <span><span>"</span>Implement REST API endpoints<span>"</span></span> -p setup-db
+kbtz block setup-db build-api <span><span>#</span> Claim and work</span>
+kbtz claim setup-db agent-1
+kbtz note setup-db <span><span>"</span>Created migrations for users and sessions tables<span>"</span></span>
+kbtz <span>done</span> setup-db <span><span>#</span> Check status</span>
+kbtz list --tree
+kbtz show build-api --json</pre></div>
+<div><h3>Database</h3><a href="#database"></a></div>
+<p>Default location: </p><pre><code>~/.kbtz/kbtz.db</code></pre><p></p>
+<p>Override with </p><pre><code>--db &lt;path&gt;</code></pre> or the <pre><code>KBTZ_DB</code></pre> environment variable. The database is created automatically on first use.<p></p>
+<p>Uses WAL mode and </p><pre><code>busy_timeout = 5000ms</code></pre> for safe concurrent access from multiple agents.<p></p>
+<div><h3>Commands</h3><a href="#commands"></a></div>
+<div><h4>Task lifecycle</h4><a href="#task-lifecycle"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>kbtz add &lt;name&gt; &lt;desc&gt; [-p parent] [-n note] [-c assignee]</code></pre></td>
+<td>Create a task</td>
+</tr>
+<tr>
+<td><pre><code>kbtz done &lt;name&gt;</code></pre></td>
+<td>Mark complete (requires user approval first)</td>
+</tr>
+<tr>
+<td><pre><code>kbtz reopen &lt;name&gt;</code></pre></td>
+<td>Reopen a completed task</td>
+</tr>
+<tr>
+<td><pre><code>kbtz pause &lt;name&gt;</code></pre></td>
+<td>Pause a task (remove from active work and default listing)</td>
+</tr>
+<tr>
+<td><pre><code>kbtz unpause &lt;name&gt;</code></pre></td>
+<td>Unpause a paused task (return to open)</td>
+</tr>
+<tr>
+<td><pre><code>kbtz rm &lt;name&gt; [--recursive]</code></pre></td>
+<td>Remove a task</td>
+</tr>
+<tr>
+<td><pre><code>kbtz describe &lt;name&gt; &lt;desc&gt;</code></pre></td>
+<td>Update description</td>
+</tr>
+<tr>
+<td><pre><code>kbtz reparent &lt;name&gt; [-p parent]</code></pre></td>
+<td>Move under a different parent</td>
+</tr>
+</tbody>
+</table>
+<p>Task names must match </p><pre><code>[a-zA-Z0-9_-]+</code></pre>. Names are immutable — they cannot be changed after creation.<p></p>
+<div><h4>Claiming</h4><a href="#claiming"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>kbtz claim &lt;name&gt; &lt;assignee&gt;</code></pre></td>
+<td>Claim a task</td>
+</tr>
+<tr>
+<td><pre><code>kbtz claim-next &lt;assignee&gt; [--prefer text]</code></pre></td>
+<td>Atomically claim the best available task</td>
+</tr>
+<tr>
+<td><pre><code>kbtz steal &lt;name&gt; &lt;assignee&gt;</code></pre></td>
+<td>Atomically transfer task ownership to a new assignee</td>
+</tr>
+<tr>
+<td><pre><code>kbtz release &lt;name&gt; &lt;assignee&gt;</code></pre></td>
+<td>Release a claimed task</td>
+</tr>
+<tr>
+<td><pre><code>kbtz force-unassign &lt;name&gt;</code></pre></td>
+<td>Forcibly clear a task's assignee (regardless of who holds it)</td>
+</tr>
+</tbody>
+</table>
+<p></p><pre><code>claim-next</code></pre> picks the best unclaimed, unblocked, undone task in a single atomic transaction. It ranks by:<p></p>
+<ol>
+<li>FTS5 relevance against <pre><code>--prefer</code></pre> text (matched on name, description, and notes)</li>
+<li>Number of other tasks this would unblock</li>
+<li>Age (oldest first)</li>
+</ol>
+<p>Prints the claimed task details to stdout (same format as </p><pre><code>kbtz show</code></pre>) on success, exits with code 1 if nothing is available.<p></p>
+<div><h4>Dependencies</h4><a href="#dependencies"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>kbtz block &lt;blocker&gt; &lt;blocked&gt;</code></pre></td>
+<td>Mark a task as blocking another</td>
+</tr>
+<tr>
+<td><pre><code>kbtz unblock &lt;blocker&gt; &lt;blocked&gt;</code></pre></td>
+<td>Remove a blocking relationship</td>
+</tr>
+</tbody>
+</table>
+<p>Cycle detection prevents circular dependencies.</p>
+<div><h4>Notes</h4><a href="#notes"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>kbtz note &lt;name&gt; &lt;content&gt;</code></pre></td>
+<td>Add a note (reads from stdin if content omitted)</td>
+</tr>
+<tr>
+<td><pre><code>kbtz notes &lt;name&gt; [--json]</code></pre></td>
+<td>List notes for a task</td>
+</tr>
+</tbody>
+</table>
+<div><h4>Viewing</h4><a href="#viewing"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>kbtz show &lt;name&gt; [--json]</code></pre></td>
+<td>Show task details, notes, and dependencies</td>
+</tr>
+<tr>
+<td><pre><code>kbtz list [--tree] [--status S] [--all] [--root name] [--json]</code></pre></td>
+<td>List tasks</td>
+</tr>
+<tr>
+<td><pre><code>kbtz watch [--root name] [--poll-interval ms]</code></pre></td>
+<td>Interactive TUI with live updates</td>
+</tr>
+</tbody>
+</table>
+<p></p><pre><code>list</code></pre> hides completed tasks by default. Use <pre><code>--all</code></pre> to include them, or <pre><code>--status open|active|paused|done</code></pre> to filter.<p></p>
+<div><h4>Coordination</h4><a href="#coordination"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>kbtz wait</code></pre></td>
+<td>Block until the database changes (uses inotify)</td>
+</tr>
+<tr>
+<td><pre><code>kbtz exec</code></pre></td>
+<td>Execute commands from stdin atomically in a single transaction</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Claude Code plugin</h3><a href="#claude-code-plugin"></a></div>
+<p>The </p><pre><code>plugin/</code></pre> directory contains a Claude Code plugin with a kbtz command reference and hooks.<p></p>
+<p>Install from the marketplace:</p>
+<div><pre><code>/plugin marketplace add https://github.com/virgil-king/kbtz.git
+/plugin install kbtz@kbtz
+</code></pre></div>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>kbtz/src/ cli.rs Clap command definitions db.rs SQLite schema, FTS5 tables, WAL pragmas model.rs Task and Note data types ops.rs All database operations (40+ tests) output.rs Text, tree, and JSON formatters validate.rs Name validation, cycle detection main.rs CLI dispatch tui/ Ratatui TUI with tree view and notes panel watch.rs inotify-based file change watcher kbtz-workspace/src/ main.rs Entry point, tree/zoomed/toplevel mode loops app.rs Application state, session management, lifecycle execution session.rs PTY session spawning, passthrough I/O, VTE buffering lifecycle.rs Pure state machine for session reaping and spawning tree.rs Ratatui tree view rendering prompt.rs Agent and task manager system prompts
+</code></pre></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

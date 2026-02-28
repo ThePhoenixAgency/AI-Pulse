@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,21 +34,24 @@
     Source: Next INpact | Date: 2/27/2026 7:40:26 AM | <a href="https://next.ink/brief_article/android-17-debarque-en-beta-2-avec-des-bulles-un-eyedropper-de-la-proximity-detection/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Deux semaines après la mise en ligne de la première version bêta d’Android 17, Google remet le couvert. Plusieurs nouveautés sont mises en avant. Pour la partie interface et expérience utilisateurs, les « bulles » arrivent. Cette fonctionnalité, distincte de l&#8217;API des bulles de messagerie (arrivée avec Android 11), permet de passer une application en [&#8230;]</p>
+    <div><div> <p>Deux semaines après la mise en ligne de la <a href="https://next.ink/brief_article/la-beta-1-dandroid-17-est-finalement-disponible/">première version bêta d’Android 17</a>, Google remet le couvert. Plusieurs nouveautés sont mises en avant. Pour la partie interface et expérience utilisateurs, les «&nbsp;bulles&nbsp;» arrivent. Cette fonctionnalité, distincte de l’API des bulles de messagerie (<a href="https://next.ink/5946/109063-android-11-disponible-en-beta-domotique-conversations-prioritaires-vie-privee/">arrivée avec Android 11</a>), permet de passer une application en mode fenêtre. </p> <p>«&nbsp;<em>Les utilisateurs peuvent créer une bulle d’application sur leur téléphone, leur appareil pliable ou leur tablette en maintenant longuement enfoncée une icône d’application dans le lanceur</em>&nbsp;». Un exemple ci-dessous avec l’Agenda.</p> <figure>
+<figure><img alt="" src="https://i3.wp.com/next.ink/wp-content/uploads/2026/02/image-172.png?ssl=1"></figure> <figure><img alt="" src="https://i3.wp.com/next.ink/wp-content/uploads/2026/02/image-173.png?ssl=1"></figure>
+</figure> <p><a href="https://android-developers.googleblog.com/2026/02/the-second-beta-of-android-17.html" target="_blank" rel="noopener noreferrer">Le billet de blog associé</a> propose plusieurs animations présentant le fonctionnement des nouvelles fonctionnalités. Pour les développeurs d’applications, de la documentation est <a href="https://developer.android.com/develop/ui/compose/layouts/adaptive/support-multi-window-mode?hl=fr" target="_blank" rel="noopener noreferrer">disponible ici</a>.</p> <p>Passons ensuite à EyeDropper. C’est une API au niveau du système qui «&nbsp;<em>permet à votre application de demander la couleur de n’importe quel pixel de l’écran sans nécessiter d’autorisations sensibles pour capturer l’écran</em>&nbsp;».</p> <p>Plusieurs autres petits changements sont apportés sous le capot, notamment pour le sélecteur de contacts qui permet d’accorder des autorisations temporaires (au niveau de la session) en lecture aux seuls champs de données demandés par l’utilisateur, une meilleure prise en charge des pavés tactiles, etc.</p> <p>Pour la connectivité inter-appareils, Google annonce «&nbsp;<em>une nouvelle API Handoff permettant de spécifier l’état de l’application à reprendre sur un autre appareil, comme une tablette Android</em>&nbsp;». Sur la partie <a href="https://next.ink/1222/quest-ce-que-uwb-qui-se-trouve-dans-airtag-et-smartphones-dapple-et-samsung/">Ultra Wide Band</a>, «&nbsp;<em>UWB DL-TDOA qui permet aux applications d’utiliser UWB pour la navigation intérieure</em>&nbsp;».</p> <p>Côté Wi-Fi, la fonctionnalité Proximity Detection de la Wi-Fi Alliance est prise en charge. «&nbsp;<em>Cette technologie offre une fiabilité et une précision accrues par rapport aux spécifications de portée existantes basées sur le Wi-Fi Aware</em>&nbsp;», qui permet aux appareils compatibles de communiquer directement entre eux.</p> <p>Google continue de viser un rythme annuel pour la sortie majeure de son SDK (chaque deuxième trimestre), accompagné d’une mise à jour au quatrième trimestre. L’entreprise est confiante dans le calendrier&nbsp;: «&nbsp;<em>Nous allons rapidement passer de cette bêta à notre jalon Platform Stability prévu pour mars</em>&nbsp;», c’est le moment où les API seront figées pour permettre aux développeurs de s’adapter.</p> <p>La compatibilité des smartphones est la même que précédemment&nbsp;: les Pixel de Google à partir des versions 6. Tous les détails se trouvent sur <a href="https://developer.android.com/about/versions/17?hl=fr" target="_blank" rel="noopener noreferrer">ce site dédié à Android 17</a>.</p> <figure><img alt="" src="https://i3.wp.com/next.ink/wp-content/uploads/2026/02/image-174.png?ssl=1"></figure> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

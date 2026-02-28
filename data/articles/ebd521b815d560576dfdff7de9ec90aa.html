@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,22 +34,39 @@
     Source: FrenchWeb | Date: 2/2/2026 7:26:41 AM | <a href="https://www.frenchweb.fr/cure-51-soigner-le-cancer-en-partant-des-survivants/460083" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p><p>il y a deux manières de raconter l’innovation en santé, la première consiste à empiler des promesses avec une IA qui va tout voir, tout prédire, tout guérir, et la seconde, qui commence par un constat plus inconfortable, qui est que malgré des décennies d’efforts, certains cancers restent des impasses thérapeutiques, avec des lignes de &#8230;</p>
+    <div><div> <p>il y a deux manières de raconter l’innovation en santé, la première consiste à empiler des promesses avec une IA qui va tout voir, tout prédire, tout guérir, et la seconde, qui commence par un constat plus inconfortable, qui est que malgré des décennies d’efforts, certains cancers restent des impasses thérapeutiques, avec des lignes de traitement qui bougent à peine, des diagnostics tardifs, et un taux d’échec clinique qui fait de la R&amp;D un jeu statistique brutal.</p>
+<p><a target="_blank" href="https://www.cure51.com/" rel="noopener noreferrer">Cure51</a> choisit une troisième voie, partir des exceptions. Son CEO, <a target="_blank" href="https://www.linkedin.com/in/nicolaswolikow/" rel="noopener noreferrer">Nicolas Wolikow</a>, assume un renversement méthodologique qui veut étudier les survivants exceptionnels de cancers réputés parmi les plus agressifs, collecter leurs données cliniques, leurs images, et surtout leurs tissus, puis utiliser ce matériau pour remonter la chaîne, isoler des mécanismes de survie et, si possible, transformer ces signaux en cibles thérapeutiques.</p>
+<p>Si l’idée est simple à énoncer, elle est bien plus difficile à exécuter, et pour en parler nous avons invité Nicolas Wolikow, le co fondateur aux cotés de <a target="_blank" href="https://fr.linkedin.com/in/simonistolainen1" rel="noopener noreferrer">Simon Istolainen</a> de CURE 51 dans Perspectives, notre émission qui décode l’innovation à travers le monde, en partenariat avec <a target="_blank" href="https://www.canalchat.com/fr/" rel="noopener noreferrer">Canalchat Grandialogue</a></p>
 <p></p>
+<h2>La fin comme point de départ : l’outlier devient un protocole</h2>
+<p>Le cœur du projet tient dans une formule, partir de la fin, là où une grande partie de la recherche clinique observe des cohortes en progression vers l’échec, Cure51 s’intéresse à des patients diagnostiqués tard, en phase avancée, sur des cancers où la survie se compte souvent en mois. Et au milieu de cette statistique, quelques trajectoires anormales avec un à deux pour cent de survivants, parfois après des années, contre toute attente.</p>
+<p>La rareté devient le filtre initial, CURE51 ne part pas d’un gigantesque dataset qu’on espère rendre parlant, mais part d’un événement rarissime qu’on espère rendre explicable.&nbsp; Pour que ce renversement ait un sens, il faut une discipline et ne pas confondre récit individuel et preuve scientifique. Cure51 insiste sur une approche rétrospective déjà explorée dans certains travaux académiques (aux États-Unis, en Australie, en France via Unicancer).</p>
+<h2>Le vrai verrou n’est pas l’algorithme : c’est l’accès aux hôpitaux</h2>
+<p>Dans la santé, l’innovation se heurte rarement à une pénurie d’idées, la donnée clinique n’est pas un minerai libre-service. Pour développé son projet, CURE51 a déployé une méthodologie très structurée, qui commence par identifier les établissements pertinents, localiser les “principal investigators” (les chercheurs référents), convaincre les comités scientifiques et éthiques, contractualiser des transferts de données, puis vérifier, cas par cas, que l’archive existe vraiment.</p>
+<h2>IA : accélérer les cycles, puis viser la prédiction</h2>
+<p>Pour Nicolas Wolikow, l’IA est moins une baguette magique, qu’un moteur d’accélération. Sur les données cliniques et l’imagerie, une partie du progrès tient à des capacités de matching, de clustering, de catégorisation, parfois plus proches du machine learning classique que du grand récit de “l’intelligence”.</p>
+<p>La rupture, selon lui, se joue dans la biologie avec l’analyse multi-omique, la résolution unicellulaire, la compréhension du micro-environnement tumoral, et surtout le passage progressif de l’observation à la prédiction. Après une première phase où l’on apprend à lire, une seconde phase commence, où l’on espère anticiper.</p>
+<h2>Europe, États-Unis, Chine : l’avantage n’est pas seulement réglementaire</h2>
+<p>Nous avons profité de l’échange pour aborder la question de la compétition mondiale, il nous propose une lecture en trois pôles : les Etats Unis comme centre de gravité économique de la pharma, la Chine comme accélérateur industriel et scientifique sur certains segments, la France et l’Europe comme espace de talents… mais de dépendance infrastructurelle. Ainsi l’europe souffre de l’incomplétude de la chaîne : cloud, hébergement, certaines technologies d’analyse, certaines couches hardware, qui restent dominées par des prestataires américains.</p>
+<h2>Un modèle économique à deux étages : preuve rapide, valeur longue</h2>
+<p>Le premier étage, stratégique, est le co-développement, à savoir identifier des cibles, construire des candidats, puis s’associer à des laboratoires capables d’absorber la lourdeur du développement clinique, via milestones et royalties.</p>
+<p>Le second étage est une rampe de revenus plus immédiate : utiliser la base comme outil d’évaluation d’assets externes. Une pharma soumet des molécules ; Cure51 renvoie un score fondé sur la comparaison avec ses survivants exceptionnels, pour orienter une décision “go/no gol”. Ce produit a une vertu : il transforme l’actif data en service vendable sans céder l’accès aux données brutes, tout en construisant la confiance qui rendra possible, plus tard, un deal d’IP plus structurant.</p>
+<p><a href="https://www.frenchweb.fr/seed-15-millions-deuros-pour-comprendre-pourquoi-un-millier-de-personnes-ont-survecu-a-des-cancers-reputes-incurables/447536">Cure51 a réalisé en 2024 une levée de fonds d’un montant de 15 millions d’euros lors d’un tour de table d’amorçage</a> mené par Sofinnova Partners, Hitachi Ventures GmbH, Life Extension Ventures, <a href="https://www.frenchweb.fr/xavier-niel">Xavier Niel</a> et Olivier Pomel, PDG et cofondateur de Datadog. La startup s’apprête à réaliser une série A</p> <div><ul> <li><a href="#abh_about">À propos</a></li> <li><a href="#abh_posts">Articles récents</a></li></ul><div><section><p><a href="https://www.fw.media/" target="_blank" rel="noopener noreferrer"> <img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/richard-menneveux-2025.png?w=250&amp;ssl=1"></a> </p><div><p>Pour nous contacter, nous vous avons préparé un petit formulaire pour bien gérer votre demande et pouvoir l'adresser en toute confidentialité. <a href="https://www.frenchweb.fr/contacter-la-redaction">Cliquez ici pour y accéder</a></p><p>Vous pouvez me joindre directement à RICHARD@DECODE.MEDIA</p></div> </section><section><p><a href="https://www.fw.media/" target="_blank" rel="noopener noreferrer"><img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/richard-menneveux-2025.png?w=250&amp;ssl=1"></a></p> </section></div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,21 +34,65 @@
     Source: Its FOSS | Date: 2/22/2026 3:51:08 AM | <a href="https://itsfoss.com/news/linux-seasoned-admins-bundle/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>From command line to Kubernetes and Terraform, this bundle covers a lot!</p>
+    <div><article> <a href="https://www.warp.dev/?utm_source=its_foss&amp;utm_medium=display&amp;utm_campaign=linux_launch" target="_blank" rel="noopener noreferrer"><img src="https://itsfoss.com/assets/images/warp.webp" alt="Warp Terminal"></a> <p>Most of the internet runs on <a href="https://www.kernel.org/?ref=itsfoss.com">Linux</a>. From cloud servers and containerized apps to CI/CD pipelines and network automation, Linux is the backbone of modern infrastructure. And the people keeping all of it running, <a href="https://en.wikipedia.org/wiki/System_administrator?ref=itsfoss.com">sysadmins</a> and <a href="https://linuxhandbook.com/courses/linux/?ref=itsfoss.com">DevOps</a> engineers, need a broad and constantly updated skill set to stay relevant.</p><p>If you've been meaning to fill in some gaps or build up those skills from scratch, Humble Bundle has a new offering filled with DevOps-focused books from <a href="https://www.oreilly.com/?ref=itsfoss.com">O'Reilly</a>.</p><p>Keep in mind a portion of your purchase goes to support <a href="https://codeforamerica.org/?ref=itsfoss.com">Code for America</a>, a nonprofit that uses technology to improve government services for people who need them most.</p><p>&nbsp;<em>The last date for the deal is&nbsp;<strong>February 28, 2026</strong>.</em></p><h2>So, What's in The Bundle?</h2><figure><img src="https://itsfoss.com/content/images/2026/02/oreilly-linux-for-seasoned-admins.png" alt="a cropped screenshot of the o'reilly linux for seasoned admins bundle on humble bundle's website, a lot of text and three books from the bundle are shown here"></figure><p>The 15 books here span a good range of topics. Here's a breakdown of what's included.</p><p><strong>Linux administration</strong> is covered from a few different angles. <strong>Efficient Linux at the Command Line</strong> focuses on boosting productivity at the shell, which is the kind of thing that pays off every single day.</p><p><strong>Learning Modern Linux</strong> takes a broader look at Linux as it's actually used today, including file permissions, application dependency management, and networking. <strong>Practical Linux System Administration</strong> covers the operational side of managing users, storage, setting up <a href="https://www.redhat.com/en/topics/linux/what-is-selinux?ref=itsfoss.com">SELinux</a>, networking, and services on live systems.</p><figure><img src="https://itsfoss.com/content/images/2026/02/humble-bundle-1.webp" alt="Humble Bundle Linux eBooks"></figure><p>The <strong>Linux Pocket Guide</strong> rounds it out as a handy reference for common commands and tasks.</p><p>On the <strong>DevOps and automation</strong> side, <strong>Python for DevOps</strong> covers using <a href="https://www.python.org/?ref=itsfoss.com">Python</a> for scripting, automation, and working with infrastructure APIs, which has become a core skill in most DevOps roles.</p><p><strong>Ansible: Up and Running</strong> is one of the better introductions to configuration management and automation with <a href="https://github.com/ansible/ansible?ref=itsfoss.com">Ansible</a>, now in its third edition. <strong>Learning GitHub Actions</strong> gets into CI/CD workflows using GitHub's built-in automation platform.</p><p>For <strong>infrastructure as code</strong>, <strong>Terraform: Up and Running</strong> is widely considered one of the go-to books on provisioning cloud infrastructure. The third edition covers current <a href="https://developer.hashicorp.com/terraform?ref=itsfoss.com">Terraform</a> practices, including modules, state management, and working across multiple providers.</p><figure><img src="https://itsfoss.com/content/images/2026/02/humble-bundle-2.webp" alt="Humble Bundle Linux ebooks"></figure><p>The <strong>containers and orchestration</strong> section is well represented. <strong>Docker: Up &amp; Running</strong> covers building and running containers from the ground up. <strong>Kubernetes: Up and Running</strong> handles orchestration, now in its third edition, with content on workloads, networking, and cluster management.</p><p><strong>Security</strong> gets two dedicated titles. <strong>Learning DevSecOps</strong> focuses on integrating security practices into the development and deployment pipeline rather than treating it as an afterthought. <strong>Web Application Security</strong> covers offensive and defensive techniques for securing web applications, with the second edition splitting the curriculum into three parts.</p><p>Rounding out the bundle, <strong>Network Programmability and Automation</strong> is aimed at network engineers looking to apply DevOps principles to network infrastructure using Python and tools like Ansible.</p><p><strong>FastAPI</strong> covers building APIs with the Python <a href="https://fastapi.tiangolo.com/?ref=itsfoss.com">FastAPI</a> framework, increasingly popular in backend and microservices work. And <strong>Learning Git</strong> is a solid foundation for version control, covering branching, merging, rebasing, and working with remote repositories.</p><h3>What Do You Get for Your Money?</h3><p>All 15 books are available in PDF and ePub formats, compatible with computers, smartphones, tablets, and most e-readers.</p><p><strong>Here's the complete collection.</strong>&nbsp;</p><table>
+<thead>
+<tr>
+<th>Column 1</th>
+<th>Column 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python for DevOps</td>
+<td>Practical Linux System Administration</td>
+</tr>
+<tr>
+<td>Efficient Linux at the Command Line</td>
+<td>Ansible: Up and Running (3rd Ed.)</td>
+</tr>
+<tr>
+<td>Learning DevSecOps</td>
+<td>Docker: Up &amp; Running (3rd Ed.)</td>
+</tr>
+<tr>
+<td>Web Application Security (2nd Ed.)</td>
+<td>Linux Pocket Guide (4th Ed.)</td>
+</tr>
+<tr>
+<td>Terraform: Up and Running (3rd Ed.)</td>
+<td>FastAPI</td>
+</tr>
+<tr>
+<td>Learning Modern Linux</td>
+<td>Network Programmability and Automation (2nd Ed.)</td>
+</tr>
+<tr>
+<td>Kubernetes: Up and Running (3rd Ed.)</td>
+<td>Learning Git</td>
+</tr>
+<tr>
+<td>Learning GitHub Actions</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>This bundle has <strong>a starting price of $21.80 for all 15 books</strong>. Humble Bundle also lets you adjust the split between the publisher and Code for America, so if you want to throw a bit more toward the charity, that option is there.</p><p>O'Reilly titles don't come cheap individually, and <strong>the total retail value of this bundle is listed at $789</strong>, so getting all 15 for under $22 is a pretty hefty discount. Head over to <a href="https://humblebundleinc.sjv.io/2RkPDg?ref=itsfoss.com">Humble Bundle</a> (<em>partner link</em>) and grab the collection before the deal wraps up on February 28.</p> </article><div> <p><span>About the author</span></p><div> <a href="https://itsfoss.com/author/sourav/"> <figure> <img src="https://itsfoss.com/content/images/size/w100/2026/01/2025-pfp-1-1.jpg" alt="Sourav Rudra"> </figure> </a> <div> <h2><a href="https://itsfoss.com/author/sourav/">Sourav Rudra</a></h2> <p>A nerd with a passion for open source software, custom PC builds, motorsports, and exploring the endless possibilities of this world.</p> </div>
+</div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

@@ -116,9 +116,24 @@
 <p>The AI call is wrapped in its own try/catch. If it fails for any reason (rate limit, network, API error), the rule falls back to stripping the HTML tags from the original English message and storing the plain text instead. The rest of the rule — updating other items, alert level, timestamp — always completes regardless.</p>
 <hr>
 <h2><a name="p-964741-why-this-pattern-is-worth-reusing-8" class="anchor" href="https://community.openhab.org#p-964741-why-this-pattern-is-worth-reusing-8" aria-label="Heading link"></a>Why This Pattern Is Worth Reusing</h2>
-<p>This is not Destiny 2-specific.</p>
+<p>This is not Destiny 2-specific. Any API that returns structured but English/HTML status data can use the same pattern:</p>
+<ul>
+<li>Steam game server status</li>
+<li>Streaming service incidents (Netflix, Spotify)</li>
+<li>Cloud provider status pages</li>
+<li>Home automation service health endpoints</li>
+</ul>
+<p>The combination of <strong>structured fields as context</strong> + <strong>current timestamp for relative expressions</strong> + <strong>semantic key interpretation</strong> is what makes the output actually useful rather than just a translation.</p>
+<hr>
+<h2><a name="p-964741-resources-9" class="anchor" href="https://community.openhab.org#p-964741-resources-9" aria-label="Heading link"></a>Resources</h2>
+<ul>
+<li><a href="https://bungie-net.github.io/" rel="noopener nofollow ugc">Bungie.net API</a> — <code>GET /Platform/GlobalAlerts/</code></li>
+<li><a href="https://github.com/marketplace/models" rel="noopener nofollow ugc">GitHub Models</a> — free AI inference for Copilot subscribers</li>
+<li><a href="https://www.openhab.org/addons/automation/jsscripting/" rel="noopener nofollow ugc">openHAB GraalVM JS scripting</a></li>
+</ul> <p><small>1 post - 1 participant</small></p> <p><a href="https://community.openhab.org/t/yes-i-still-play-destiny-2-ai-powered-game-server-status-in-your-smart-home/168662">Read full topic</a></p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Linux LTS Kernel Will Be Supported Longer Than You Thought</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Your Linux LTS Kernel Will Be Supported Longer Than You Thought</h1>
+  <div class="metadata">
+    Source: Its FOSS | Date: 2/28/2026 12:38:55 PM | <a href="https://itsfoss.com/news/linux-lts-kernel-support-extension/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><article> <a href="https://www.warp.dev/?utm_source=its_foss&amp;utm_medium=display&amp;utm_campaign=linux_launch" target="_blank" rel="noopener noreferrer"><img src="https://itsfoss.com/assets/images/warp.webp" alt="Warp Terminal"></a> <p>Greg Kroah-Hartman has updated the projected end-of-life (EOL) dates for several active longterm support kernels <a href="https://git.kernel.org/pub/scm/docs/kernel/website.git/commit/?id=d04587da86a3464881e0c97aabddd2c271105698&amp;ref=itsfoss.com">via a commit</a>. The provided reasoning? It was done "<em>based on lots of discussions with different companies and groups and the other stable kernel maintainer</em>."</p><p>The other maintainer is <a href="https://www.linkedin.com/in/sasha-levin-9861662/?ref=itsfoss.com">Sasha Levin</a>, who co-maintains these <a href="https://www.kernel.org/?ref=itsfoss.com">Linux kernel</a> releases alongside Greg. Now, <strong>the updated support schedule</strong> for the currently active LTS kernels looks like this:</p><ul><li><strong>Linux 6.6</strong> now EOLs Dec 2027 <em>(was Dec 2026)</em>, giving it a 4-year support window.</li><li><strong>Linux 6.12 </strong>now EOLs Dec 2028 <em>(was Dec 2026)</em>, also a 4-year window.</li><li><strong>Linux 6.18</strong> now EOLs Dec 2028 <em>(was Dec 2027)</em>, at least 3 years of support.</li></ul><figure><img src="https://itsfoss.com/content/images/2026/02/linux-longterm-release-table.png" alt="this is a cropped screenshot which shows support cycles for the longterm releases of linux"><figcaption><i><em>The </em></i><a href="https://www.kernel.org/releases.html?ref=itsfoss.com"><i><em>support schedule</em></i></a><i><em> for your perusal.</em></i></figcaption></figure><p>Worth noting above is that <strong>Linux 5.10 and 5.15 are both hitting EOL this year in December</strong>, so if your distro is still running either of these, now is a good time to start thinking about a move.</p><p>If you are not that deep into the kernel rabbit hole, then you need to know that most releases only get about two months of active support before the next one takes over. <strong>LTS releases are the exception here</strong>.</p><p>They get years of backported security patches and bug fixes without any new features that make it a great choice for desktop, embedded hardware, and servers that need stability over bleeding-edge features.</p><p>Back in 2023, things were slightly different. At the Open Source Summit Europe event, it was disclosed that <a href="https://itsfoss.com/news/linux-kernel-support/">LTS support windows were being cut</a> from six years down to just two. Burnout was cited as the main culprit, as too many contributors were working unpaid and had to handle a flood of bugs generated by fuzzing tools.</p><p>The change in question here does not undo that decision entirely, but it does push back against the shorter support window, at least for the current batch of LTS kernels.</p><h2>What Does This Mean?</h2><p>For most desktop Linux users, this change is barely noticeable. If you're running <a href="https://itsfoss.com/speed-up-ubuntu-1310/">Ubuntu</a>, <a href="https://itsfoss.com/news/fedora-43-release/">Fedora</a>, or most mainstream distros, the kernel side of things is handled for you. You don't need to keep track of specific releases, your distro does it for you and notifies you when there's an update.</p><p>But for anyone running <strong>embedded systems, single-board computers, or servers</strong>, moving across kernel versions is tricky, and EOL dates are a big deal. Once a kernel hits EOL, it stops getting security patches.</p><p>The longer support window is also relevant for hardware vendors and device manufacturers who ship Linux on their products. Certifying against a specific kernel version takes time and resources. Knowing that kernel will be patched until 2028 instead of 2026 changes the math on when an upgrade cycle even needs to start.</p><p>So the short version is, <strong>if you're a regular user, nothing changes today</strong>. If you depend on a specific LTS kernel for anything critical, you just got more breathing room than you had yesterday.</p><hr><p><strong>Suggested Read :</strong> <a href="https://itsfoss.com/liquorix-kernel/"><em>What Is Liquorix Kernel? Should You Use It?</em></a></p><figure><a href="https://itsfoss.com/liquorix-kernel/"><div><p>What Is Liquorix Kernel? Should You Use It?</p><p>In this jargon buster, we explain what is Liquorix kernel, why it is popular among Linux gamers and if there are any real benefits of using it on your regular Linux desktop.</p><p><img src="https://itsfoss.com/content/images/icon/android-chrome-512x512-302.png" alt=""><span>It's FOSS</span><span>Neville Ondara</span></p></div><p><img src="https://itsfoss.com/content/images/thumbnail/liquorix-kernel-1.webp" alt=""></p></a></figure> </article><div> <p><span>About the author</span></p><div> <a href="https://itsfoss.com/author/sourav/"> <figure> <img src="https://itsfoss.com/content/images/size/w100/2026/01/2025-pfp-1-1.jpg" alt="Sourav Rudra"> </figure> </a> <div> <h2><a href="https://itsfoss.com/author/sourav/">Sourav Rudra</a></h2> <p>A nerd with a passion for open source software, custom PC builds, motorsports, and exploring the endless possibilities of this world.</p> </div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

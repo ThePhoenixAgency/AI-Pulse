@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,21 +34,175 @@
     Source: Its FOSS | Date: 2/24/2026 9:27:08 AM | <a href="https://itsfoss.com/linux-mint-keyboard-shortcuts/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>I am sharing some essential shortcuts to get you started. I will also briefly share how you can set custom shortcuts for all actions.</p>
+    <div><article> <a href="https://www.warp.dev/?utm_source=its_foss&amp;utm_medium=display&amp;utm_campaign=linux_launch" target="_blank" rel="noopener noreferrer"><img src="https://itsfoss.com/assets/images/warp.webp" alt="Warp Terminal"></a> <p>Most people live on the mouse; click, move, repeat. It’s easy, especially on a polished desktop like Linux Mint. But once your fingers learn the shortcuts, the keyboard quietly wins every time. </p><p>Not only they give you a power user feel, they also make you more productive as you don't have to move the fingers away from the keyboard to grab the mouse.</p><p>Now, Linux Mint is one of the best distributions for beginner Linux users and you can comfortably use it with the mouse.</p><p>However, if you want to explore, Linux Mint supports plenty of keyboard shortcuts.</p><p>In this tutorial, I'll share some essential shortcuts to get you started, followed by some not so common ones. In the end, I will also briefly share how you can set custom shortcuts for all actions.</p><h2>Using keyboard shortcuts on Linux Mint Cinnamon</h2><p>Here's a quick look at the keybindings I am going to share in details:</p><table>
+<thead>
+<tr>
+<th><em><strong>Linux Mint Keyboard Shortcuts</strong></em></th>
+<th><em><strong>Action</strong></em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Opening Apps</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Open a terminal</td>
+<td>CTRL+ALT+T</td>
+</tr>
+<tr>
+<td>Open Home directory in Nemo file manager</td>
+<td>SUPER+E</td>
+</tr>
+<tr>
+<td>Open nth item in the task bar</td>
+<td>SUPER+Number</td>
+</tr>
+<tr>
+<td><strong>Utility</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Open Notifications view</td>
+<td>SUPER+N</td>
+</tr>
+<tr>
+<td>Open calender and events view</td>
+<td>SUPER+C</td>
+</tr>
+<tr>
+<td>Run a command in console</td>
+<td>ALT+F2</td>
+</tr>
+<tr>
+<td><strong>Windows and Workspaces</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Active windows overview and selector</td>
+<td>CTRL+ALT+Down</td>
+</tr>
+<tr>
+<td>Cycle through open windows</td>
+<td>ALT+TAB</td>
+</tr>
+<tr>
+<td>Cycle through windows of specific application</td>
+<td>ALT+Backtick (above tab)</td>
+</tr>
+<tr>
+<td>Hide all windows and show desktop</td>
+<td>SUPER+D</td>
+</tr>
+<tr>
+<td>Workspace overview and selector</td>
+<td>CTRL+ALT+Up</td>
+</tr>
+<tr>
+<td>Switch workspaces</td>
+<td>CTRL+ALT+Left/Right</td>
+</tr>
+<tr>
+<td><strong>Tiling Windows</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Tile to the left</td>
+<td>SUPER+Left</td>
+</tr>
+<tr>
+<td>Tile to the right</td>
+<td>SUPER+Right</td>
+</tr>
+<tr>
+<td>Tile to the top</td>
+<td>SUPER+Top</td>
+</tr>
+<tr>
+<td>Tile to the bottom</td>
+<td>SUPER+Down</td>
+</tr>
+<tr>
+<td><strong>Screenshots and Screencast</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Take screenshot of the screen</td>
+<td>PrtScr</td>
+</tr>
+<tr>
+<td>Take screenshot of an area</td>
+<td>SHIFT+PrtScr</td>
+</tr>
+<tr>
+<td>Start or stop screen recording</td>
+<td>SHIFT+CTRL+ALT+R</td>
+</tr>
+<tr>
+<td><strong>Session Control</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Access the logout menu</td>
+<td>CTRL+ALT+DEL</td>
+</tr>
+<tr>
+<td>Access the reboot/shutdown/suspend menu</td>
+<td>CTRL+ALT+END</td>
+</tr>
+<tr>
+<td>Lock screen</td>
+<td>CTRL+ALT+L</td>
+</tr>
+<tr>
+<td>Restart Cinnamon desktop</td>
+<td>CTRL+ALT+ESC</td>
+</tr>
+</tbody>
+</table>
+<p>This is a well known, probably the most used, shortcut. Press the <strong>Super</strong> key (key with Windows logo on most keyboards) and the Start menu opens instantly. From there, you can search for applications, open settings, or launch recently used programs.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:11</span> </p> </div> </div> <figcaption><p><span>A clip showing the opening of start menu using the Super key.</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-1-open-start-menu_thumb.jpg"></figure><h3>Open a terminal or file manager</h3><p>These two are most used by me since <a href="https://itsfoss.com/linux-terminal-emulators/">terminal</a> and <a href="https://itsfoss.com/file-managers-linux/">file manager</a> are two essential tools in my workflow.</p><p>To open a terminal, you can use <code>CTRl + ALT + T</code>. Press it again and you open multiple windows.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:11</span> </p> </div> </div> <figcaption><p><span>A clip showing opening a terminal using shortcut</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-2-open-terminal-emulator_thumb.jpg"></figure><p>In Linux Mint, <a href="https://itsfoss.com/nemo-tweaks/">Nemo is the default file manager</a>, and you can open your home directory in Nemo using <code>Super + E</code>.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:08</span> </p> </div> </div> <figcaption><p><span>A clip showing opening a file manager window.</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-3-open-file-manager_thumb.jpg"></figure><div><p></p><p>If you are using a lot of pinned apps in the task bar, use the shortcut <code>SUPER + &lt;NUMBER&gt;</code> to open the nth item in the task bar.</p></div><h3>Close an application window</h3><p>You do not need to click on the "X" button at the top! Without taking the hands away from the keyboard, you can use <code>ALT + F4</code>, where <code>F4</code> is the Function key 4.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:09</span> </p> </div> </div> <figcaption><p><span>A clip showing closing multiple windows using shortcuts</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-4-close-apps_thumb.jpg"></figure><h3>Show desktop instantly</h3><p>When your screen is full of open windows and you need a clean view, press <code>SUPER + D</code>. Press it once to hide everything. Press it again to bring all windows back.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:07</span> </p> </div> </div> <figcaption><p><span>A clip showing window hide and restore</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-5-show-desktop_thumb.jpg"></figure><h3>Show notifications</h3><p>Lots of unread messages? Use the <code>SUPER + N</code> shortcut to open the notification section in the panel.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:06</span> </p> </div> </div> <figcaption><p><span>A clip showing accessing notifications in panel using shortcuts.</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-6-show-notifications_thumb.jpg"></figure><h3>Switch between windows</h3><p>If you multitask, this section is for you. To switch between open windows, use <code>ALT + TAB</code>.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:08</span> </p> </div> </div> <figcaption><p><span>A Clip showing window switch</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-7-alt-tab-window-swtich_thumb.jpg"></figure><p>If you have more than one window opened for an app, say terminal, use <code>ALT + backtick</code> to switch between them without pulling other windows to the view.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:11</span> </p> </div> </div> <figcaption><p><span>A clip showing switching windows of one app.</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-8-switch-between-specific-app-window_thumb.jpg"></figure><h3>Use window tiling</h3><p>The Cinnamon desktop of <a href="https://linuxmint.com/?ref=itsfoss.com">Linux Mint</a> is not a <a href="https://itsfoss.com/tiling-window-manager/">tiling window manager</a> that offers functions like automatic tiling, layouts, etc. But it does give you a set of basic window tiling options. Here are the shortcuts to manage the tiles:</p><table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Shortcut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tile Window to the Left</td>
+<td>SUPER + Left</td>
+</tr>
+<tr>
+<td>Tile Window to the Right</td>
+<td>SUPER + RIGHT</td>
+</tr>
+<tr>
+<td>Tile Window to the Top</td>
+<td>SUPER + TOP</td>
+</tr>
+<tr>
+<td>Tile Window to the Bottom</td>
+<td>SUPER + DOWN</td>
+</tr>
+</tbody>
+</table>
+<p>Apart from this, if you press <code>SUPER + LEFT/RIGHT</code> and then press <code>SUPER + UP</code>, the window will be tiled on top-left or top-right corner.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:24</span> </p> </div> </div> <figcaption><p><span>A clip showing the working of window tiling in Linux Mint Cinnamon desktop.</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-9-tile-windows_thumb.jpg"></figure><h3>Get applications overview</h3><p>You can use the <code>CTRL + ALT + DOWN</code> shortcut to get an overview of all open windows,like what the <a href="https://itsfoss.com/gnome-search/">GNOME Activities overview</a> do.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:08</span> </p> </div> </div> <figcaption><p><span>A clip showing windows overview</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-10-get-application-overview_thumb.jpg"></figure><h3>Work with Workspaces</h3><p><a href="https://itsfoss.com/workspaces-linux-mint/">Workspaces are well supported in Linux Mint</a>. By default, you get four workspaces. To get an overview of the workspaces, use <code>CTRL + ALT + UP</code>.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:09</span> </p> </div> </div> <figcaption><p><span>A clip showing workspace overview in Linux Mint</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-11-workspace-overview_thumb.jpg"></figure><p>To switch to another workspace, use <code>CTRL + ALT + Left/Right</code>.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:12</span> </p> </div> </div> <figcaption><p><span>A clip showing switching workspace in Linux Mint</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-12-switch-workspaces_thumb.jpg"></figure><h3>Lock the screen</h3><p>When you take a break from the session, it is better to lock the system. And in Mint, do this by pressing <code>CTRL + ALT + L</code>.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:11</span> </p> </div> </div> <figcaption><p><span>A clip showing the lockscreen shortcut in Linux Mint.</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-13-lockscreen_thumb.jpg"></figure><h3>Take screenshots</h3><p>Linux Mint has a decent screenshot utility that offers the basic functionalities, like:</p><ul><li>Taking the screenshot of the screen using <code>PrtScr</code> key</li><li>Taking the screenshot of a selected rectangular area using <code>SHIFT+PrtScr</code>.</li></ul><p>It also offers a screen recording feature. To start recording, press <code>CTRL+ALT+SHIFT+R</code>. Once recording is finished, press the same shortcut to stop recording, and the file is saved automatically in the <code>~/Videos</code> directory.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:34</span> </p> </div> </div> <figcaption><p><span>A clip showing the screenshot shortcuts</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-18-screenshot-shortcuts_thumb.jpg"></figure><h3>Run a console</h3><p>If you want to run a quick command without opening the terminal, <code>ALT + F2</code> is the shortcut. It opens a small dialog box. Enter the command you want and hit enter.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:14</span> </p> </div> </div> <figcaption><p><span>A clip showing running a command using the console shortcut.</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-14-using-console_thumb.jpg"></figure><h3>Session management shortcuts</h3><p>No need to open the menu and look for power options. Linux Mint has some accessible shortcuts for these tasks:</p><p>Use <code>CTRL + ALT + DEL</code> to get the logout menu.</p><p>Or use <code>CTRL + ALT + END</code> to get the shutdown/reboot/suspend menu.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:13</span> </p> </div> </div> <figcaption><p><span>A clip showing the session menu shortcuts</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-15-session-menu_thumb.jpg"></figure><div><p></p><p>You can use the <code>CTRL + ALT + ESC</code> to restart the Cinnamon desktop if something goes wrong or feels laggy.</p></div><h2>Add custom shortcuts in Linux Mint</h2><p>You can always create custom keyboard shortcuts. For example, if you are using a <a href="https://www.keychron.com/?ref=itsfoss">tenkeyless keyboard from Keychron</a> and you don't have the print screen button, you can create a custom keybinding to initiate the screenshot app.</p><p>There are more practical uses of custom shortcuts. For example, I use <code>SUPER + Q</code> to open the terminal. Also, I keep <code>SUPER + SHIFT + D</code> to open Discord. Let's see how you can create custom keyboard shortcuts.</p><p>First, open the Start menu with the SUPER key and search <em>keyboard</em>.</p><figure><img src="https://itsfoss.com/content/images/2026/02/mint-2-search-keyboard-in-start-menu.png" alt="A screenshot showing Linux Mint start menu. Search for keyboard in the start menu and hit enter on the selection."><figcaption><span>Search for Keyboard</span></figcaption></figure><p>Inside the keyboard window, go to <strong><em>Shortcuts</em></strong>. Here, you can see a categorized list of options and respective keyboard shortcuts.</p><figure><img src="https://itsfoss.com/content/images/2026/02/mint-settings-keyboard-shortcut.png" alt="In the keyboard settings window, go to the Shortcut tab."><figcaption><span>Go to the </span><b><strong>Shortcuts</strong></b><span> tab</span></figcaption></figure><h3>Change a shortcut</h3><p>First, let's change an existing keybinding. For this, use the search bar and enter the one you want to change. If a default option for that is available, it will be shown. Like <em>terminal</em> in this case.</p><p>Select the action (Launch terminal) and then under <em>Keyboard bindings</em>, click on the <em>unassigned</em> option.</p><p>This will ask you to enter a keyboard shortcut. Press the shortcut of your choice. I will press <code>SUPER + Q</code>.</p><p>All this action is shown in the video clip below:</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:18</span> </p> </div> </div> <figcaption><p><span>A clip showing an additional shortcut is added to the launch terminal option.</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-16-add-additonal-keyboard-shortcut_thumb.jpg"></figure><p>That's it. You can now open terminal with either <code>CTRL + ALT + T</code> or <code>SUPER + Q</code>.</p><h3>Create a new keybinding</h3><p>Now, let's see how to assign a keyboard shortcut to a new application.</p><p>In the same <em>Keyboard -&gt; Shortcuts</em> section, select the <strong>Custom Shortcuts</strong> option in the left side bar.</p><p>Click on <strong>Add a custom shortcut</strong> button. In the new dialog box, enter a name for the shortcut and the command you want to execute.</p><p>In the above screenshot, you can see that in the <code>command</code> section, we used:</p><pre><code>flatpak run com.discordapp.Discord
+</code></pre><p>This is because it is a Flatpak application. If it is an application installed using system package manager like <code>gedit</code> or <code>handbrake</code>, you can add its name directly.</p><p>Once added, click on the <strong>Add</strong> button. In the settings, click on <strong>Unassigned</strong> and add a keybinding of your choice.</p><figure> <div> <div> <p> <span>0:00</span></p><p> /<span>0:27</span> </p> </div> </div> <figcaption><p><span>A clip showing adding a custom shortcut to Discord in Keyboard settings.</span></p></figcaption> <img src="https://itsfoss.com/content/media/2026/02/mint-17-add-a-new-shortcut-for-new-app_thumb.jpg"></figure><h2>Download Linux Mint cheatsheet wallpaper</h2><p>If you want, we have a 4K wallpaper for you. You can set it as desktop background and quickly look at the keyboard shortcuts. It will help you build your muscle memory.</p><figure><img src="https://itsfoss.com/content/images/2026/02/Linux-Mint-Keyboards-Shortcuts.webp" alt=""></figure><p>The 4K resolution wallpaper can be downloaded from the <a href="https://go.getproton.me/aff_c?offer_id=44&amp;aff_id=1173&amp;ref=itsfoss.com">Proton Drive</a> link below:</p><h2>Wrapping up</h2><p>Now you are familiar with the common keyboard shortcuts in Linux Mint. You also learned to create custom keybindings. </p><p>This list is limited in the sense that there are shortcuts for each applications as well! For example, apps like Nemo File Manager offers its own set of custom keyboards. VS Code has plenty of shortcuts of its own and so does Firefox. </p><p>Of course, those don not count here. The shortcuts I discussed are primarily at desktop environment level. I hope you enjoy using them as much as I do.</p><p>By the way, we have a similar article that discusses <a href="https://itsfoss.com/ubuntu-shortcuts/">essential keyboard shortcuts for Ubuntu</a>, too.</p> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

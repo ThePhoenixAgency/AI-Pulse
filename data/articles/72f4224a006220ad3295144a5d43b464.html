@@ -2,14 +2,20 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>nftables : Port Knocking pour ouvrir SSH</title>
+<title>nftables : Port Knocking pour ouvrir SSH - Wiki</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,26 +29,115 @@
 </style>
 </head>
 <body>
-  <h1>nftables : Port Knocking pour ouvrir SSH</h1>
+  <h1>nftables : Port Knocking pour ouvrir SSH - Wiki</h1>
   <div class="metadata">
     Source: Journal du Hacker | Date: 2/25/2026 10:51:08 AM | <a href="https://www.linuxtricks.fr/wiki/nftables-port-knocking-pour-ouvrir-ssh" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Aucun contenu disponible.</p>
+    <div><div> <p><span>Table des matières</span></p><div>
+<ol><li><a href="#paragraph-introduction">Introduction</a></li><li><a href="#paragraph-sequence-utilisee">Séquence utilisée</a></li><li><a href="#paragraph-le-script-nftables">Le script nftables</a></li><li><a href="#paragraph-archive-script-iptables">Archive script iptables</a></li></ol>
+</div> <h2>Introduction</h2><p> Knock Knock Knock ! Connaissez-vous le port knocking ?</p><p> Le tocage à la porte, ou port-knocking, est une méthode permettant de modifier le comportement d'un pare-feu (firewall) en temps réel en provoquant l'ouverture de ports permettant la communication, grâce au lancement préalable d'une suite de connexions sur des ports distincts dans le bon ordre, à l'instar d'un code frappé à une porte.</p><p> C'est pratique d'un point de vue sécurité pour par exemple toujours fermer le port 22 (SSH) et l'ouvrir quand une séquence est réalisée.</p><p> Ci-dessous, voici le script, assez commenté. Vous pouvez l'adapter évidemment.</p><p> Je conserve en dessous le vieux script "iptables", mais sachez que iptables pour interagir avec netfilter est obsolète. Préférez nftables.</p><p> Si vous utilisez firewalld, ou ufw, ce script peut entrer en conflit. Adaptez le ou intégrez vos règles dedans.</p><h2>Séquence utilisée</h2><p> J'utilise la séquence de port 100 puis 200 puis 300 puis 400.<br>
+J'ai défini une limitation avec au maximum 10 secondes pour effectuer les tentatives.<br>
+Ce sont des paquets TCP qu'on doit envoyer sur ces ports.<br>
+Si on met trop de temps à l'étape 3, il faut repartir depuis le début.</p><p> Donc on peut utiliser telnet pour envoyer les paquets :</p><div><p><span>Code BASH :</span></p><div><pre><pre>telnet server <span>100</span>
+telnet server <span>200</span>
+telnet server <span>300</span>
+telnet server <span>400</span></pre></pre></div></div><p> Ou bien via un navigateur web :</p><div><p><span>Code BASH :</span></p><div><pre><pre>http:<span>//</span>server:<span>100</span>∕
+http:<span>//</span>server:<span>200</span>∕
+http:<span>//</span>server:<span>300</span>∕
+http:<span>//</span>server:<span>400</span>∕</pre></pre></div></div><p> Même si la connexion est refusée, le paquet est envoyé <img src="https://www.linuxtricks.fr/images/smileys/6.gif" alt=";)"></p><p> Eventuellement vous pouvez faire un script pour déclencher les ports, avec curl par exemple :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>for</span> p <span>in</span> <span>100</span> <span>200</span> <span>300</span> <span>400</span>
+<span>do</span> curl <span>-m</span> <span>0.5</span> http:<span>//</span>server:<span>$p</span>
+<span>done</span></pre></pre></div></div><h2>Le script nftables</h2><div><p><span>Code BASH :</span></p><div><pre><pre><span>#!/usr/sbin/nft -f</span>
+&nbsp;
+<span># Menage avant initialisation</span>
+flush ruleset
+&nbsp;
+<span># Etapes du code secret</span>
+table <span>ip</span> filter <span>{</span> <span>set</span> P1 <span>{</span> <span>type</span> ipv4_addr flags dynamic, timeout timeout 10s <span>}</span> <span>set</span> P2 <span>{</span> <span>type</span> ipv4_addr flags dynamic, timeout timeout 10s <span>}</span> <span>set</span> P3 <span>{</span> <span>type</span> ipv4_addr flags dynamic, timeout timeout 10s <span>}</span> <span>set</span> P4 <span>{</span> <span>type</span> ipv4_addr flags dynamic, timeout timeout 10s <span>}</span>
+&nbsp;
+<span># Règles en entrée</span> chain input <span>{</span> <span># Hook pour trafic ciblé</span> <span>type</span> filter hook input priority <span>0</span>; policy accept;
+&nbsp; <span># Accepter le trafic local</span> iif <span>"lo"</span> accept
+&nbsp; <span># Accepter les connexions en cours (ESTABLISHED, RELATED)</span> ct state established,related accept
+&nbsp; <span>### RÈGLES FIXES ###</span> <span># Exemple avec serveur web</span> tcp dport <span>{</span> <span>80</span>, <span>443</span> <span>}</span> accept
+&nbsp; <span># Exclusion SSH exemple 198.51.100.175</span> <span># ip saddr 198.51.100.175 tcp dport 22 accept</span>
+&nbsp; <span>### Code du Port Knocking ###</span> tcp dport <span>100</span> add <span>@</span>P1 <span>{</span> <span>ip</span> saddr <span>}</span> drop tcp dport <span>200</span> <span>ip</span> saddr <span>@</span>P1 add <span>@</span>P2 <span>{</span> <span>ip</span> saddr <span>}</span> log prefix <span>"INTO P2: "</span> drop tcp dport <span>300</span> <span>ip</span> saddr <span>@</span>P2 add <span>@</span>P3 <span>{</span> <span>ip</span> saddr <span>}</span> log prefix <span>"INTO P3: "</span> drop tcp dport <span>400</span> <span>ip</span> saddr <span>@</span>P3 add <span>@</span>P4 <span>{</span> <span>ip</span> saddr <span>}</span> log prefix <span>"INTO P4: "</span> drop
+&nbsp; <span>### Une fois la P4 atteinte, la connexion port SSH dispo.</span> tcp dport <span>22</span> <span>ip</span> saddr <span>@</span>P4 accept
+&nbsp; <span># Règle par défaut si tout ce qui est au dessus est pas respecté : port 22 fermé</span> tcp dport <span>22</span> ct state new drop <span>}</span>
+<span>}</span></pre></pre></div></div><p> On rendra exécutable le script qu'on invoquera avec son nom, par exemple :</p><div><p><span>Code BASH :</span></p><div><pre><pre>.<span>/</span>port-knocking.sh</pre></pre></div></div><p> La première ligne <strong>#!/usr/sbin/nft -f</strong> se charge de dire au système que c'est un script nftables.</p><h2>Archive script iptables</h2><p> iptables est OBSOLÈTE, prenez le script nftables ci dessus.<br>
+Si besoin, voici l'ancien script en arcchive :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>#! /bin/bash</span>
+<span>####### Menage avant initialisation</span>
+<span># Si pas d'autres scripts avec iptables :</span>
+iptables <span>-X</span>
+iptables <span>-F</span>
+<span># On nettoie les chaines du code</span>
+iptables <span>-X</span> INTO-P2
+iptables <span>-X</span> INTO-P3
+iptables <span>-X</span> INTO-P4
+<span>####### Exclusions SSH sans passer par le code secret #######</span>
+<span>#iptables -A INPUT -p tcp -s 198.51.100.175 --dport 22 -j ACCEPT</span>
+<span>#iptables -A INPUT -p tcp -s 203.0.113.251 --dport 22 -j ACCEPT</span>
+<span>#iptables -A INPUT -p tcp -s 203.0.113.55 --dport 22 -j ACCEPT</span>
+<span>###### Accepter les connexions en cours #######</span>
+iptables <span>-A</span> INPUT <span>-p</span> tcp <span>--dport</span> <span>22</span> <span>-m</span> state <span>--state</span> ESTABLISHED <span>-j</span> ACCEPT
+iptables <span>-A</span> INPUT <span>-p</span> tcp <span>--dport</span> <span>22</span> <span>-m</span> state <span>--state</span> RELATED <span>-j</span> ACCEPT
+<span>####### Etapes du code secret #######</span>
+<span>####### Creation des chaines puis ajout des regles</span>
+iptables <span>-N</span> INTO-P2
+iptables <span>-A</span> INTO-P2 <span>-m</span> recent <span>--name</span> P1 <span>--remove</span>
+iptables <span>-A</span> INTO-P2 <span>-m</span> recent <span>--name</span> P2 <span>--set</span>
+iptables <span>-A</span> INTO-P2 <span>-j</span> LOG <span>--log-prefix</span> <span>"INTO P2: "</span>
+iptables <span>-N</span> INTO-P3
+iptables <span>-A</span> INTO-P3 <span>-m</span> recent <span>--name</span> P2 <span>--remove</span>
+iptables <span>-A</span> INTO-P3 <span>-m</span> recent <span>--name</span> P3 <span>--set</span>
+iptables <span>-A</span> INTO-P3 <span>-j</span> LOG <span>--log-prefix</span> <span>"INTO P3: "</span>
+iptables <span>-N</span> INTO-P4
+iptables <span>-A</span> INTO-P4 <span>-m</span> recent <span>--name</span> P3 <span>--remove</span>
+iptables <span>-A</span> INTO-P4 <span>-m</span> recent <span>--name</span> P4 <span>--set</span>
+iptables <span>-A</span> INTO-P4 <span>-j</span> LOG <span>--log-prefix</span> <span>"INTO P4: "</span>
+iptables <span>-A</span> INPUT <span>-m</span> recent <span>--update</span> <span>--name</span> P1
+<span>####### Definition du code secret avec le délai pour chaque phase avant expiration. </span>
+<span>####### Ici exemple 100 puis 200 puis 300 puis 400. Aléatoire conseillé</span>
+iptables <span>-A</span> INPUT <span>-p</span> tcp <span>--dport</span> <span>100</span> <span>-m</span> recent <span>--name</span> P1 <span>--set</span>
+iptables <span>-A</span> INPUT <span>-p</span> tcp <span>--dport</span> <span>200</span> <span>-m</span> recent <span>--rcheck</span> <span>--seconds</span> <span>10</span> <span>--name</span> P1 <span>-j</span> INTO-P2
+iptables <span>-A</span> INPUT <span>-p</span> tcp <span>--dport</span> <span>300</span> <span>-m</span> recent <span>--rcheck</span> <span>--seconds</span> <span>10</span> <span>--name</span> P2 <span>-j</span> INTO-P3
+iptables <span>-A</span> INPUT <span>-p</span> tcp <span>--dport</span> <span>400</span> <span>-m</span> recent <span>--rcheck</span> <span>--seconds</span> <span>10</span> <span>--name</span> P3 <span>-j</span> INTO-P4
+<span>####### Une fois la P4 atteinte, la connexion port SSH dispo.</span>
+iptables <span>-A</span> INPUT <span>-p</span> tcp <span>--dport</span> <span>22</span> <span>-m</span> recent <span>--rcheck</span> <span>--seconds</span> <span>10</span> <span>--name</span> P4 <span>-j</span> ACCEPT
+<span>####### Règle par défaut si tout ce qui est au dessus est pas respecté : port 22 fermé ########</span>
+iptables <span>-A</span> INPUT <span>-p</span> tcp <span>--dport</span> <span>22</span> <span>-m</span> state <span>--state</span> NEW <span>-j</span> DROP</pre></pre></div></div> <div> <ul>
+<li>
+<a href="https://www.facebook.com/share.php?u=https%3A%2F%2Fwww.linuxtricks.fr%2Fwiki%2Fnftables-port-knocking-pour-ouvrir-ssh">
+<span>Partager sur Facebook</span></a>
+</li>
+<li>
+<a href="https://twitter.com/share?url=https%3A%2F%2Fwww.linuxtricks.fr%2Fwiki%2Fnftables-port-knocking-pour-ouvrir-ssh&amp;text=nftables%20%3A%20Port%20Knocking%20pour%20ouvrir%20SSH%20-%20Wiki">
+<span>Partager sur Twitter</span></a>
+</li>
+<li>
+<a href="https://www.linuxtricks.fr/cdn-cgi/l/email-protection#033c707661696660773e6d657762616f6670263133263042263133536c7177263133486d6c60686a6d64263133736c76712631336c7675716a7126313350504b2631332e263133546a686a25616c677a3e6b777773702630422631452631457474742d6f6a6d767b77716a6068702d6571263145746a686a2631456d657762616f66702e736c71772e686d6c60686a6d642e736c76712e6c7675716a712e70706b"><span>Partager par email</span>
+<span>Partager par Email</span></a>
+</li>
+<li>
+<a href="#"><span>Imprimer</span>
+<span>Version imprimable</span></a>
+</li>
+</ul>
+</div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+      document.querySelectorAll('div, section, aside').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 1200);
+        const text = String(node.textContent || '').slice(0, 800);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

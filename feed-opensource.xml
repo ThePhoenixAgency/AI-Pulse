@@ -5,7 +5,7 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Open Source & GitHub news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Sat, 28 Feb 2026 10:21:41 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 28 Feb 2026 18:29:11 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-opensource.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title><![CDATA[Nouvelles de Haiku - Hiver 2025-26]]></title>
@@ -104,11 +104,549 @@ WebPositive
 WebPositive est le navigateur web fourni avec Haiku. Il est basé sur le moteur WebKit, co-développé avec Apple, Sony, Igalia et d’autres participants.
 Modification du message envoyé au Tracker pour ouvrir le dossier contenant un fichier (par exemple un téléchargement), pour utiliser le message officiellement prévu à cet effet plutôt qu’un moyen détourné (humdinger).
 Meilleure gestion des noms de fichiers longs dans la fenêtre de téléchargements avec l’ajout d’une barre de défilement horizontal (mull, avec un petit correctif par humdinger pour corriger un décalage d’un pixel du positionnement de la barre de défilement).
-Un chantier est en cours pour réintégrer à nouveau le portage de WebKit pour Haiku dans les sources upstream.]]></description>
+Un chantier est en cours pour réintégrer à nouveau le portage de WebKit pour Haiku dans les sources upstream. Cela avait déjà été fait en 2010, mais n’avait pas été maintenu par la suite, ce qui a conduit à retirer ce code. Depuis, Haiku utilise un fork resynchronisé régulièrement, mais cela génère du travail en plus. L’envoi du code est aussi l’occasion de faire relire toutes les modifications par les autres développeurs de WebKit, avec des conseils pour améliorer et simplifier l’architecture.
+Expander
+Expander est une application permettant de décompresser des archives.
+Correction d’un décalage d’un pixel de la barre de défilement (humdinger).
+AboutSystem
+AboutSystem affiche quelques informations sur le système et surtout la liste des auteurs de Haiku.
+Simplification du code pour la mise à jour automatique des couleurs, mise en place de la mise à jour automatique des couleurs pour la liste des crédits (si on passe en mode sombre par exemple) (jscipione).
+Ouverture de la fenêtre avec une taille respectant les proportions du nombre d’or, esthétiquement plus plaisant (axeld).
+LaunchBox
+LaunchBox est un « dock » permettant de stocker des raccourcis vers des applications ou fichiers fréquemment utilisés.
+Correction de la couleur du panneau de LaunchBox, et d’autres couleurs dans le sélectionneur de couleurs standard (nephele).
+Tracker
+Tracker est l’explorateur de fichiers. Le code du Tracker contient également les fenêtres « ouvrir » et « enregistrer sous », mises à disposition des autres applications sous forme de la bibliothèque libtracker.so.
+Envoi de la notification d’activation de l’espace de travail à tous les réplicants, afin que ces derniers puissent ajuster leur couleur (par exemple) en fonction de l’espace de travail actif (jscipione).
+Correction du positionnement du champ de texte lors du renommage de fichiers dans la vue par icônes, résolution de problèmes de gestion de l’état des fenêtres après un glisser-déposer avorté, affichage des volumes disque en premier (avant les dossiers) si l’option « trier les dossiers en premier » est active, synchronisation en direct des fenêtres de sélection de fichiers lors du changement d’options, et divers nettoyages de code (jscipione).
+Ajout d’une bordure manquante dans les fenêtres de sélection de fichiers (nipos).
+Ajout du nombre d’élément sélectionnés (en plus du nombre d’éléments total du dossier) dans les fenêtres du Tracker (nathan242).
+Correction d’un problème de concurrence dans le constructeur des fenêtres de sélection de fichiers, dont la conséquence était une mauvaise disposition des contrôles dans la fenêtre (certains boutons apparaissant superposés par exemple (PulkoMandy).
+Amélioration de l’image d’aperçu qui suit la souris lors d’un glisser-déplacer lorsqu’on déplace beaucoup de fichiers: l’image est tronquée pour ne pas être trop grande mais le dégradé de transparence sur les bords n’était pas bien calculé (PulkoMandy).
+Déclenchement automatique du « renifleur » de type MIME, qui identifie automatiquement les fichiers pour les afficher avec la bonne icône par exemple. En particulier cela rend l’utilisation du Tracker plus confortable sur les systèmes de fichiers ne permettant pas de stocker le type MIME dans un attribut étendu (Jim906).
+Correction d’une régression sur la mise à jour en direct des tailles et dates de modification de fichiers dans les résultats de requêtes (waddlesplash).
+MediaPlayer
+MediaPlayer est une application pour lire des fichiers média (son et vidéo).
+Correction de la couleur du texte dans la fenêtre d’informations (nephele).
+Dans cette même fenêtre, le champ indiquant le chemin du fichier en cours de lecture est maintenant cliquable (nathan242, dont c’est la première contribution).
+Ajout d’une détection automatique du type MIME des fichiers, s’il n’est pas renseigné (par exemple s’il est stocké sur un système de fichiers où il n’y a pas d’attributs étendus) (DigitalBox98).
+Sudoku
+Sudoku est un jeu de Sudoku, très utile pour patienter pendant une compilation un peu longue.
+Amélioration de la palette de couleurs en mode clair (le mode sombre nécessite encore du travail) (axeld).
+DeskBar
+DeskBar est la barre des tâches de BeOS et de Haiku. La même application contient également le code pour la fenêtre de changement de tâches « Twitcher ».
+Correction d’un bug qui faisait apparaître des applications en double dans le « Twitcher » (la fenêtre de changement rapide d’application qui apparaît avec le raccourci Alt+Tab) (madmax).
+People
+People est un gestionnaire de contacts. Il stocke les contacts dans des fichiers « person » avec les informations sous forme d’attributs étendus.
+Correction du défilement avec la molette de la souris ou au touchpad (nipos).
+Lecteur MIDI
+Le lecteur MIDI permet d’écouter des fichiers au format MIDI.
+MidiPlayer
+Le lecteur MIDI permet d’écouter des fichiers au format MIDI.
+Changement de la couleur du contrôle de volume qui était codée en dur, non configurable et pas harmonisée avec le reste du système (nipos).
+ProcessController
+ProcessController affiche la charge CPU et l’occupation mémoire dans la DeskBar. Il permet également d’afficher des statistiques par application, et de débugger et stopper des applications via un menu popup.
+Ajustements pour les écrans haute densité : taille des menus, largeur par défaut de l’icône réplicant, autorisation du redimensionnement de la fenêtre principale (la taille est conservée si on installe ensuite un réplicant sur le bureau, et divers autres changements (waddlesplash).
+Installer
+Installer permet de cloner l’installation de Haiku actuelle vers un autre disque.
+Ajout d’un outil pour copier automatiquement le chargeur de démarrage sur la partition EFI du système, pour réduire le nombre d’étapes manuelles pour installer Haiku correctement sur un système EFI (PawanYr, avec des améliorations de kallisti5 pour nommer le fichier installé correctement en fonction de l’architecture CPU du système).
+Amélioration du calcul de la taille de la fenêtre « EULA » de l’installeur (qui affiche non pas un contrat de license, mais un message de bienvenue et quelques instructions pour l’installation), en fonction de la taille de texte sélectionnée dans les préférences (nipos).
+Mail
+L'application Mail permet de lire et de rédiger des e-mail. Elle fonctionne en collaboration avec le mail_server qui s’occupe de l’envoi et de la réception des messages.
+Correction d’une régression sur la couleur de fond des champs d’adresse. Mise en place des mises à jour de couleurs automatiques. Les champs désactivés ou en lecture seule sont maintenant « navigables » (avec la touche tab) et le texte peut être sélectionné et copié (jscipione).
+Les boutons « suivant » et « précédent » peuvent être accompagnés de la touche Maj. (Shift), pour changer de message sans modifier le statut « lu » des messages (humdinger).
+DriveSetup
+DriveSetup permet de configurer les supports de stockage: formatage, partitionnement.
+L’application s’affiche sur tous les espaces de travail si la DeskBar n’est pas lancée. Ce cas particulier est utile lors du lancement de l’installation de Haiku, dans ce cas, le bureau n’est pas lancé, mais il est tout de même possible d’utiliser plusieurs espaces de travail, ce qui peut donner l’impression que les fenêtres ont disparu si on se retrouve sur un espace vide (PulkoMandy).
+Finalisation d’un patch datant d’il y a plusieurs années pour ajouter un menu permettant d’écrire ou de lire des images disques depuis ou vers des partitions (plus besoin d’utiliser dd en ligne de commande) (sed4096, avec l’aide d’humdinger pour des améliorations de localisation et de choix de vocabulaire).
+Debugger
+Debugger permet de débugger les logiciels fonctionnant dans Haiku.
+Correction d’un crash lorsqu’on essaie de débugger des applications trop grosses, par exemples celle utilisant Mesa et llvmpipe pour faire du rendu 3D (waddlesplash).
+Changements transverses
+Modification de toutes les chaînes de caractères où le nom d’une application est présent (par exemple : « Deskbar preferences »). En effet, le nom des applications peut optionnellement être traduit, et toutes ces chaînes doivent donc s’adapter dans les deux cas (nom d’application traduit ou conservé en anglais selon les préférences de l’utilisateur). Auparavant ce réglage ne pouvait pas être appliqué de façon systématique (humdinger).
+Fenêtres de préférences
+Réseau
+Affichage de l’état précis des interfaces réseau (en cours de configuration DHCP, par exemple) et pas seulement « hors ligne » ou « en ligne » (nipos).
+Périphériques d’entrée
+Ajout et amélioration de plusieurs options pour la gestion des touchpad (samuelrp84). Voir plus bas les informations sur la réécriture du pilote Elantech qui donne plus de détails.
+Apparence
+Envoi d’un seul message de mise à jour aux applications lorsque plusieurs couleurs changent simultanément, ce qui est plus efficace et réduit les « clignotements » d’applications dans certains cas (nephele).
+Correction de la hauteur des fausses barres de défilement visibles dans la fenêtre d’apparence pour configurer les barres de défilement (jscipione).
+Outils en ligne de commande
+Le réplicant NetworkStatus peut être installé dans la DeskBar via la ligne de commande même lorsque une fenêtre de NetworkStatus est déjà ouverte (nipos).
+Ajout dans strace de l’affichage des structures stat, sockopt, sigset_t, sigprocmask et des noms de signaux (korli avec un correctif par nathan242).
+Correction de plusieurs problèmes dans l’interface en ligne de commande du Debugger, qui conduisaient entre autres à un gel de l’application. Cette interface est surtout utilisée en cas de crash d’un service critique (app_server, registrar, input_server) qui empêcherait l’utilisation de l’interface graphique. Les investigations sur ces services en cas de crash sont donc facilitées.
+Modification de bfs_tools pour rendre ces outils compilables sur le système hôte utilisé pour compiler Haiku (axeld). Ces outils permettent de manipuler à la main un système de fichiers bfs, de récupérer certaines données sur un disque corrompu, et diverses manipulations de bas niveau.
+Modification de l’outil makebootable pour vérifier que la partition à rendre bootable est bien une partition BFS. Utiliser l’outil sur une partition d’un autre format ou sur un disque complet pourrait corrompre le système de fichier et rendre les données inaccessibles. Ajout d’un message indiquant lorsque le lancement de makebootable n’est pas nécessaire, car les utilisateurs continuent de recommander de lancer cet outil sans aucune raison pour corriger des problèmes de démarrage (encourageant ainsi les nouveaux utilisateurs à faire dea mauvaises manipulations et à corrompre leur système de fichiers) (PulkoMandy).
+Suppression d’une verrue dans checkfs qui n’est plus nécessaire suite à des améliorations du Storage Kit. Cela permet de lancer checkfs pour vérifier une partition en donnant le chemin de n’importe quel fichier contenu dans la partition (waddlesplash).
+Activation du support de l’IPv6 dans telnet, implémentation dans netstat (avec des corrections sur les opérateurs de filtrage), et ajout de traceroute6 compilé à partir des sources fournies par NetBSD (cmeerw).
+Amélioration de l’affichage de df avec plus d’informations, un listage sur deux lignes, et l’ajout d’une option pour afficher les informations standardisées dans le format imposé par POSIX (nipos et PulkoMandy).
+Kits
+Interface
+L'interface kit se charge de tout l’affichage de fenêtres à l’écran et des contrôles de base (boutons, cases à cocher…)
+Correction d’un bug dans le contrôle calendrier lors du déplacement vers les mois suivant ou précédent (nipos).
+Correction d’un problème de navigation au clavier dans une ListView après l’insertion de nouveaux objets (nipos).
+BControl (la classe parente de tous les contrôles d’interface graphique) ne change plus ses couleurs dans la fonction AttachedToWindow(). Ce n’est plus nécessaire après d’autres changements dans BButton, et cela simplifie le code nécessaire pour personnaliser la couleur d’un contrôle spécifique (pour avoir, par exemple, un bouton rouge) (jscipione).
+Améliorations sur BSlider: correction de la couleur du texte, nettoyage du code de dessin des sliders dans les implémentations de ControlLook (jscipione).
+Augmentation de la taille des marques sur les boutons des barres de défilement (marques qui ne sont pas activées à moins de modifier manuellement un fichier de configuration) pour les rendre plus visibles sur les hautes résolutions (jscipione).
+Les infobulles utilisent un espacement calculé en fonction de la taille du texte, pour une apparence plus jolie sur les écrans à haute densité (waddlesplash).
+Séparation du titre des onglets et du nom des vues qui leurs sont attachées. Le comportement original est hérité de BeOS, il est donc préservé pour les anciennes applications. Mais pour les nouvelles applications, le nom interne des vues ne doit pas être traduit (il peut être utilisé par des scripts ou par le code de l’application), tandis que le titre affiché à l’utilisateur doit l’être. C’était le seul endroit où ce principe de séparation du nom et du texte affiché n’était pas respecté (KapiX et PulkoMandy).
+Dans BTextView, la fonction « tout sélectionner » déplace le curseur à la fin de la sélection (et à la fin du texte). C’est le comportement de la plupart des autres systèmes, et préserver la position du curseur dans ce cas ne semble pas particulièrement utile (OscarL).
+Correction de problèmes de choix de couleurs dans le code qui dessine des sliders avec un curseur triangulaire (nipos). Cette correction a permis d’utiliser ce type de slider dans les fenêtres de réglages de différents traducteurs d’images.
+Amélioration de l’apparence des cases à cocher partiellement cochées. Elles s’affichent avec un signe "-" au lieu d’une croix. Auparavant, la couleur était subtilement modifiée mais ce n’était pas très visible (PulkoMandy).
+Implémentation de la lecture d’un son dans BAlert, qui peut être activé dans les préférences de son (sed4096).
+Storage
+Le storage kit permet de contrôler les disques et supports de stockage (liste des partitions, montage et démontage, accès aux fichiers, chemins d’accès, requêtes…)
+BPartition retourne une erreur B_BUSY si on essaie de monter une partition qui est déjà montée à un autre endroit, au lieu de la monter une deuxième fois (jscipione).
+Device
+Le device kit permet l’interaction directe avec certains périphériques (USB, série, joysticks…) directement depuis l’espace utilisateur.
+Correction de problèmes de gestion de la mémoire dans BUSBInterface mis en évidence par AtomoZero lors d’expérimentations pour corriger le pilote de webcam à l’aide d’un LLM (waddlesplash).
+Package
+Le package kit se charge de la résolution des dépendances entre paquets et du téléchargement des paquets à installer. Il fonctionne en collaboration avec le système de fichier packagefs qui permet d’accéder au contenu des paquets une fois installés.
+Retravail de BRepositoryCache pour remonter les informations sur les paquets via un callback plutôt que de remplir une structure BPackageInfoSet. Cela économise beaucoup de mémoire et d’allocations mémoire, et rend donc la lecture des dépôts de paquets plus rapide (waddlesplash).
+Serveurs
+Notifications
+Le serveur de notifications permet d’afficher des notifications pour les évènements importants.
+Les notifications déjà affichées changent de position immédiatement lorsque la configuration est modifiée pour les déplacer (nipos).
+Ajout de la lecture de l’effet sonore choisi dans les préférences de son lors de l’apparition des différents types de notification, et à chaque pourcent de progression pour les notifications contenant une barre de progression (sed4096).
+Choix de couleurs plus visibles en mode sombre pour les icônes de fermeture et de repli des notifications en mode sombre (nipos).
+Network
+Le serveur de réseau se charge de la configuration des interfaces réseau, de la configuration des routes et d’autres aspects liés à la communication en réseau.
+Refonte du client DHCP dans net_server pour l’exécuter dans un thread séparé et ne pas bloquer la boucle de messages principale. Cela corrige plusieurs cas de gel du serveur lui-même et d’application qui communiquent avec de façon synchrone, par exemple les préférences de réseau. Cela permet également de plus facilement arrêter les requêtes DHCP lorsqu’une interface est reconfigurée avec une adresse statique (waddlesplash).
+app_server
+app_server est le serveur graphique gérant l’affichage à l’écran.
+Correction de crashs causés par des verrous de concurrence manquants et des opérations effectuées dans le mauvais ordre (waddlesplash).
+Retrait d’identifiants de messages qui n’étaient plus utilisés dans le protocole de communication entre les applications et le serveur graphique (X512).
+Ajout du code nécessaire pour le tracé de lignes avec un dégradé de couleur (dans app_server et dans BView). Auparavant, les dégradés étaient utilisables uniquement pour le remplissage des formes et pas pour les contours (x512).
+Modifications de BPicturePlayer pour utiliser une classe C++ avec de l’héritage plutôt qu’une structure C contenant des pointeurs de fonctions. Cela permet de vérifier que l’interface est implémentée correctement par les différents utilisateurs de cette classe dès la compilation (X512).
+Implémentation de méthodes manquantes dans BoundingBox player, une implémentation de BPicturePlayer qui calcule un rectangle assez grand pour contenir tout le dessin réalisé par un objet BPicture rejoué via BPicturePlayer (KapiX).
+Retrait d’une optimisation incorrecte dans le traitement des calques avec une opacité globale de 100% dans app_server. Ces calques peuvent tout de même contenir des pixels avec de la transparence, et doivent donc être applatis en tenant compte du canal alpha comme tous les autres calques (KapiX).
+Modification du protocole app_server pour l’opération permettant de récupérer les « bounding boxes » pour chaque caractère d’une chaîne. L’interface précédente utilisait un tableau de structures, la nouvelle API est inversée ce qui permet d’envoyer plus efficacement 2 tableaux de types primitifs (X512).
+Pilotes de périphériques
+Implémentation correcte des timeouts sur les commandes dans le pilote SDHCI, ce qui corrige la compatibilité avec plusieurs lecteurs de cartes SD (PulkoMandy).
+Réécriture complète du pilote pour les touchpads Elantech. Cette série de changements retouche tout d’abord la gestion des touchpads en général, avec des améliorations sur la documentation, sur le traitement des données invalides, la configuration par défaut, et un nettoyage du code.
+Ensuite, le code pour la reconnaissance de « gestures » a été amélioré pour mieux reconnaître plusieurs mouvements tels que le « tap » pour cliquer, le défilement en faisant glsser 2 doigts sur le touchpad, etc. Les préférences du touchpad ont reçu plusieurs nouvelles cases à cocher pour configurer ces différentes options.
+Enfin, la dernière partie du patch met à jour le pilote Elantech pour reconnaître les 4 versions du protocole, dont la dernière est entièrement testée. La version 2 ne fonctionne pas correctement pour l’instant (elle a été désactivée pour l’instant) et les versions 1 et 3 sont activées de façon expérimentale dans les nightly builds en attendant les retours d’utilisateurs (samuelrp84).
+Normalisation des noms de volumes générés par le pilote usb_disk pour s’assurer qu’ils ne commencent pas par des espaces (madmax).
+Mise à jour de la couche de compatibilité FreeBSD avec FreeBSD 15 et synchronisation de tous les pilotes réseau (ethernet et wifi) concernés avec ceux de FreeBSD 15. Synchronisation du pilote rtl8125 avec OpenBSD (waddlesplash).
+Ajout de « quirks » et de code supplémentaire dans le pilote I2C-HID pour essayer de se rapprocher du comportement implémenté dans Linux. Ce pilote ne fonctionne pas correctement pour l’instant et il est désactivé par défaut (Lt-Henry).
+Systèmes de fichiers
+Ajout d’un bouchon supplémentaire pour une API qui n’a pas besoin d’être implémentée dans userlandfs-FUSE (qui permet l’utilisation de systèmes de fichiers FUSE sous Haiku). Cette modification permet d’utiliser en particulier le système de fichier squashfs-fuse pour accéder à des volumes squashfs (OscarL).
+Toujours dans userlandfs-fuse, propagation de l’état « lecture seule » du système de fichier, ce qui permet au Tracker de clairement afficher ces systèmes de fichiers comme étant en lecture seule (fond de fenêtre grisé, désactivation des opérations modifiant les fichiers) (OscarL).
+Dans le système de fichiers UDF, amélioration des messages de logs, et correction d’un kernel panic déclenché par une assertion suite à des modifications précédentes dans le VFS (waddlesplash).
+Correction d’un double lock dans le pilote FAT qui pouvait déclencher un kernel panic dans de rare cas (Jim906).
+Intégration d’une partie des patchs permettant de redimensionner une partition BFS. Ce travail avait été commencé en 2014 dans le cadre du Google Summer of Code mais n’avait pas pu être terminé dans les temps. La série de patch est restée à l’abandon pendant de longues années, mais elle est en train d’être finalisée pour pouvoir en intégrer au moins une première partie (axeld).
+Correction d’un bug sur la gestion des timestamps avec un nombre de secondes entier pour BFS. Historiquement dans BeOS, il n’existait pas d’API POSIX pour stocker une date de modification avec une résolution plus fine qu’une seconde. Cela conduisait de très nombreux fichiers à avoir le poids faible de leur date de modification à 0, avec pour conséquence une dégradation de la répartition dans les tables de hachage pour l’exécution de requêtes. Dans ce cas, BFS stocke une valeur aléatoire générée en interne par le système de fichier dans les bits de poids faible. Le bug était que cette valeur pouvait être exposée à l’espace utilisateur, entraînant de mauvais résultats sur la gestion des comparaisons de dates (par exemple pour déterminer les règles à lancer dans un makefile). La représentation interne a été légèrement modifiée pour bien distinguer les fichiers pour lesquels une date précise a été enregistrée, de ceux pour lesquels il s’agit de bits aléatoires. Ces derniers peuvent ainsi être filtrés et masqués pour l’espace utilisateur (PulkoMandy).
+Correction de la gestion des dossiers déjà existants dans write_overlay. Ils'agit d’un système de fichier qui permet de stocker en RAM des écritures temporaires sur un système de fichier monté en lecture seule, utilisé en particulier pour l’exécution en mode live CD (nathan242).
+Le pilote BTRFS ne déclenche plus un kernel panic lorsqu’il rencontre un type de compression inconnu, à la place, il retourne simplement une erreur et considère que le fichier ou dossier concerné ne peut pas être lu (AbdullahZulfiqar2005).
+Des changements sur les requêtes (pour BFS et les autres systèmes de fichiers capables d’exécuter des requêtes): une petite optimisation du code, une modification pour ne pas notifier les suppressions de nœuds via B_QUERY_WATCH_ALL car elles sont déjà notifiées par d’autres moyens. L’API B_QUERY_WATCH_ALL est maintenant considérée comme stable, et a donc été ajoutée dans la documentation officielle (waddlesplash).
+libroot &amp; noyau
+Réseau
+Implémentation des sockets du domaine UNIX de type SOCK_SEQPACKET. Pour ce faire, modifications de recv et send pour accepter des buffers de taille 0 (pour les socket de type datagramme, pas les streams). Implémentation de MSG_TRUNC et MSG_PEEK pour les sockets du domaine UNIX, et amélioration de la gestion des adresses invalides dans accept et recv pour se rapprocher du comportement de Linux et des BSD (korli).
+Implémentation de la découverte de MTU de chemin complet pour TCP et IPv4 (waddlesplash) et IPv6 (cmeerw). L’algorithme mis en place est simpliste, mais permet d’établir des communications dans des cas où le MTU est limité et la fragmentation de paquets n’est pas mise en place.
+Nettoyage des buffers mémoire utilisés pour stocker des adresses dans le code de gestion du réseau. Cela corrige un comportement incorrect dans le cas où une adresse de socket UNIX n’est pas terminée par un caractère NUL (cas qui est explicitement autorisé sous Linux car l’information de longueur de l’adresse est disponible par ailleurs) (Anarchos pour la correction du cas où la vérification était oubliée, suivi d’un nettoyage par waddlesplash pour avoir une solution plus systématique à tous les endroits où ce cas particulier doit être pris en compte).
+Un socket TCP qui est fermé alors que des données sont reçues par le noyau mais pas encore lues par l’application associée renvoie un paquet RST plutôt qu’un FIN. Ceci corrige un problème détecté dans les tests du langage Go. Modification du comportement lors de la réception d’un reset pendant la fermeture d’un socket TCP pour se comporter comme les autres systèmes (korli).
+Déplacement du fichier networks utiliser par getnetent dans le dossier data, avec les autres fichiers de configuration du réseau. Il était placé par erreur dans /etc, qui est son chemin habituel pour d’autres systèmes UNIX (PulkoMandy).
+Report d’une correction faite par NetBSD dans le résolveur DNS, il manquait une partie de l’initialisation de certains objets dans l’état du résolveur (cmeerw).
+Gestion de l’IPv6: correction d’un problème dans la mise à jour du cache pour le protocole NDP (neighbor discovery), implémentation du multicast (cmeerw).
+Remplacement des fonctions inet_net_ntop et inet_net_pton par l’implémentation d’OpenBSD, qui est plus respectueuse du standard que celle de NetBSD utilisée auparavant (korli).
+Gestion des processus
+Autorisation de l’appel de exec() depuis un autre thread que le thread principal du processus, pour se mettre en conformité avec POSIX et corriger un problème avec les outils de compilation d’OCaml (korli).
+Préservation des signaux masqués lors de l’appel à fork (korli).
+Mise en conformité POSIX des codes d’erreurs retournés dans certains cas dans la gestion des groupes de processus (waddlesplash).
+Bibliothèque C standard
+Mise en conformité POSIX-2024:
+Ajout des fonctions ffsl et ffsll dans strings.h (korli)
+Ajout de getresuid(), setresuid(), getresgid(), setresgid() (korli)
+Ajout de la déclaration de posix_spawn_file_actions_add[f]chdir dans les en-têtes publics (la fonction était déjà implémentée mais pas déclarée) (waddlesplash)
+Synchronisation de l’implémentation de arc4random avec la dernière version d’OpenBSD (korli).
+Correction d’un bug dans la gestion des locales, il n’était pas possible de changer seulement certaines catégories (date, format monétaire, messages), tout était forcément dans la même langue (waddlesplash).
+Correction de plusieurs problèmes dans la famille de fonctions strftime (waddlesplash):
+ajout des formats %k et %l,
+correction sur la gestion des caractères d'espacement Unicode,
+correction de problèmes sur la gestion des fuseaux horaires.
+Correction de problèmes mineur de compatibilité POSIX: ajout de déclarations de fonctions et de constantes dans search.h, unistd.h, semaphore.h, nettoyage dans limits.h, définition de getlocalename_l… (waddlesplash).
+Remplacement de strtok_r par l’implémentation de musl (waddlesplash).
+Refonte du stockage et de la gestion des données ctype pour rendre le code plus facile à maintenir, supprimer des indirections inutiles et corriger un problème de thread safety (waddlesplash).
+Nettoyage des fonctions de conversions d’encodage de caractères, et correction de la valeur de MB_CUR_MAX pour l’encodage UTF-8 (waddlesplash).
+Définition de la constante DEV_BSIZE (mentionnée dans POSIX mais pas obligatoire) dans sys/param.h, modification de tous le code utilisant stat.st_blocks pour utiliser cette constante, y compris des problèmes dans certains systèmes de fichiers qui utilisaient st_blksize à la place. En effet, il n’y a aucun rapport entre la taille de bloc de st_blksize et le nombre de blocs de st_blocks défini juste à côté (waddlesplash).
+Gestion de la mémoire
+Correction d’une régression du mois précédent sur la gestion des réservations de mémoire lors du découpage d’areas`. Ajout de la possibilité de transférer des réservations de pages pour les caches et areas réservés, pour éviter de réduire les réservations de façon incorrecte. Cela pouvait causer des assertions et des plantages du noyau en particulier lors de l’exécution d’applications utilisant AddressSanitizer (waddlesplash).
+Correction d’une fuite de mémoire dans… la gestion de la mémoire, mis en évidence entre autres par l’exécution du compilateur Rust qui consomme beaucoup de mémoire. Au passage, nettoyage du code et des messages de logs dans cette partie du code (waddlesplash).
+Entrées-sorties
+Modification de la gestion des requêtes d’entrées-sortie pour autoriser les pilotes de périphériques à sous-classer IORequestOwner. En particulier, cela permet au pilote NVMe d’utiliser ces fonctionnalités sans passer par l’ordonnanceur d’I/O générique qui ne se prête pas bien à l’interfaçage de matériel pouvant traiter plusieurs requêtes en parallèle. Cela permet de simplifier du code, supprimer une fonction récursive devenue inutile et finalement corriger un débordement de pile (waddlesplash).
+La taille des partitions indiquée dans le bootloader n’était pas correcte : c’était la taille du disque entier qui était affichée à la place (waddlesplash).
+Chargeur de démarrage
+Correction de l’affichage de caractères unicode dans le menu de démarrage. En particulier cela évite de corrompre l’affichage lors de la navigation dans le système de fichiers pour désactiver certains pilotes de périphériques. Le firmware UEFI utilise de l’UTF16, tandis que le BIOS utilise une page de code IBM non standardisée. Le bootloader utilise en interne de l’UTF-8 et doit donc convertir les caractères dans le bon format dans chaque cas (madmax).
+Implémentation du démarrage via le réseau sur les plateformes EFI (avec un peu de nettoyage sur le support réseau dans OpenFirmware et PXE). Cela fonctionne au moins sur l’architecture ARM 32-bit et facilite le développement sur cible réelle: compilation sur une machine, et exécution sur une autre sans devoir entretemps copier le système de fichiers et le bootloader sur une clé USB ou une carte SD (kallisti5 et PulkoMandy).
+Un des en-têtes du bootloader utilisait une syntaxe C++, il a été corrigé pour pouvoir être importé depuis du code C si nécessaire (beaglejoe).
+Le chargeur EFI ignore les disques qui ont une taille de bloc de 0 octet, ce qui évite une division par zéro lors de tentatives de lire des données (archeYR).
+Systèmes de fichiers
+Le noyau interdit maintenant de monter plusieurs fois la même partition. Cette vérification avait d’abord été implémentée dans le pilote FAT, puis via une vérification en espace utilisateur, mais ces deux protections étaient insuffisantes et causaient d’autres problèmes (waddlesplash).
+Centralisation de plusieurs vérifications au niveau du VFS, par exemple les vérifications de type fichier ou dossier, les modes d’ouverture des fichiers, des codes d’erreurs retournés pour certaines erreurs spécifiques. Ces changements évitent d’avoir des différences de comportement entre différents systèmes de fichiers et s’assurent que le comportement implémenté est bien celui spécifié par POSIX (waddlesplash).
+Implémentation de « fallbacks » pour les systèmes de fichiers qui ne savent pas traiter eux-mêmes les opérations SEEK_DATA, SEEK_HOLE et select(), dont en particulier le write_overlay. Cela permet à la commande cp de fonctionner correctement dans ce cas (nathan242).
+Outils de debug
+Remise en commun de code pour la gestion du MMU dans le chargeur de démarrage EFI. Le code avait été dupliqué pour chaque architecture de CPU supportés, mais il est en fait en très grande partie identique. Regrouper ce code permet de s’assurer que les évolutions sont bien faites de façon synchronisée pour toutes les architectures (PulkoMandy).
+Affichage dans le message de kernel panic de la version de Haiku (numéro hrev). Ceci évite de devoir demander ce numéro aux utilisateurs remontant un bug, il est directement inclus dans la capture d’écran de l’erreur (nathan242).
+Modification de la valeur retournée par kernel_version dans les informations système. La valeur retournée par Haiku était la version majeure, qui est 1 depuis le début du projet Haiku en 2001. Elle retourne maintenant une version plus complète qui peut être utilisée dans la commande uname pour indiquer la version de Haiku plus précisément (waddlesplash).
+Désactivation de la fonction spécifique à BeOS exect sur les architectures qui n’implémentent pas de compatibilité binaire avec BeOS.
+Build system
+Ajout d’une macro _DEPRECATED dans les en-têtes de base du système, permettant d’indiquer les classes, méthodes et fonctions qui sont obsolètes et à ne plus utiliser. Cela permet d’avoir un avertissement du compilateur lors de leur utilisation dans le code existant, et de commencer à mettre à jour le code, mais sans casser le code déjà écrit pour l’instant. Actuellement, cette macro n’est pas utilisée, des discussions sont encore en cours sur l’opportunité de retirer certaines APIs.
+Remise en état des tests pour le bootloader. Ces tests permettent de lancer une partie du bootloader (dont le menu de configuration) sous forme d’un programme s’exécutant sous Haiku. Cela permet de tester une grande partie du code du bootloader sans avoir besoin de redémarrer le système (waddlesplash).
+Ajout d’un script pour convertir une disposition de clavier de la console Linux dans le format reconnu par Haiku (mmu_man).
+Mise à jour de paquets pour réparer la compilation en mode « bootstrap » (sans dépendances précompilées) pour ARM et ARM64 (PulkoMandy).
+Nettoyage et amélioration de la classe utilitaire FunctionTracer qui permet d’afficher facilement une trace de l’exécution de fonctions, avec une indentation indiquant les appels imbriqués. Il existait plusieurs versions de cette classe utilisées à différents endroits dans le code, chacune avec de légères variations. Renommage de fonctions qui pouvaient entrer en conflit avec l’utilisation de debug_printf et modification de cette dernière pour retourner le nombre de caractères imprimés afin de pouvoir l’utiliser de façon interchangeable avec les autres fonctions de la famille printf (PulkoMandy).
+Déplacement de plusieurs en-têtes initialement développés pour une utilisation dans le noyau, de headers/private/kernel/util vers headers/private/util, en effet ils implémentent des fonctionnalités assez génériques (listes chaînées, hash tables, opérations sur les bits…) et sont tout à fait utilisables en dehors du noyau (c’est d’ailleurs déjà le cas à plusieurs endroits dans le code de Haiku) (PulkoMandy et waddlesplash).
+Retrait de cas ou l’activation de DEBUG=1 (compilation en mode debug avec des assertions supplémentaires) était empêchée pour certains composants du code (waddlesplash).
+Modification du code pour inclure les catalogues de traductions automatiquement dans le paquet contenant l’exécutable correspondant. Ce code incluait également les catalogues de toutes les dépendances, ce qui conduisait les catalogues système de libbe.so à être présents plusieurs fois dans plusieurs paquets, occupant inutilement de la place). Ce changement n’est pas tout à fait terminé puisque maintenant certains catalogues ne sont plus inclus du tout (PulkoMandy).
+Modernisation de la page d’accueil de WebPositive pour en permettre l’utilisation avec d’autres navigateurs: définition du bon type MIME, utilisation de HTTPS pour télécharger des ressources externes, déclaration de l’encodage du fichier (humbinger).
+Modification du « Makefile Engine » pour autoriser des flags de compilation différents entre les fichiers sources C et C++, ce qui permet d’éviter des warnings de compilation dans certains projets compilant des sources C (OscarL).
+Il est maintenant possible de compiler Haiku depuis NetBSD (cmeerw).
+Réparation de la compilation de test_app_server (KapiX).
+Utilisation de la constante B_DEV_NAME_LENGTH plutôt que de la valeur numérique 128 à plusieurs endroits dans le code (jscipione et OscarL).
+Suppression de la dépendance du build à la commande bc, en utilisant à la place des expressions arithmétiques du shell POSIX (PulkoMandy).
+Réparation de la compilation des tests unitaires, modification des tests utilisant l’interface graphique pour les exécuter avec test_app_server, ajout d’un package haiku_unittests et d’un profil de build qui inclut ce package dans le système de fichier compilé. L’objectif est de pouvoir lancer ces tests automatiquement dans le cadre de l’intégration continue de Haiku (KapiX, à partir d’un travail plus ancien démarré par kallisti5).
+Mise à jour de l’année de copyright à 2026 dans le menu de démarrage et dans les métadonnées des paquets générés par Haiku (PulkoMandy).
+Mise à jour des paquets précompilés utilisés pour compiler Haiku avec les dernières versions fournies par HaikuPorts pour les architectures x86 et x86_64. L’outil utilisé pour faire cette synchronisation a reçu lui-même quelques évolutions. Le code de Haiku a été légèrement ajusté pour corriger les problèmes de compilation avec ces nouvelles versions des dépendances (waddlesplash, avec l’aide de madmax pour corriger des problèmes de compilation sur RISC-V qui utilise pour l’instant une version plus ancienne de certains paquets).
+Documentation
+Haiku book
+Le « Haiku book » documente les API publiques et s’adresse aux développeurs d’applications pour Haiku. Il complète et remplace petit à petit le Be Book de BeOS, qui est distribué sous une licence CC-BY-ND ne permettant pas de le mettre à jour et de le corriger.
+Ajout du chapitre sur le Device Kit (DigitalBox98)
+Correction d’une documentation inversée pour un paramètre de BKeyStore (PulkoMandy)
+Ajout de documentation pour BSimpleGameSound, BSerialPort, MailAttachment, MailDaemon, mail_encoding (cafeina)
+Documentation des déviations connues de Haiku par rapport à la spécification POSIX (PulkoMandy).
+Documentation interne
+La documentation interne s’adresse aux développeurs et développeuses du système Haiku lui-même.
+Correction de fautes de frappe dans le chapitre sur les systèmes de fichiers (OscarL).
+Autres nouvelles
+Changement de tarification de Netlify
+Netlify héberge le site www.haiku-os.org. Ils ont récemment modifié leur tarification pour ajouter un système de crédit en fonction de la bande passante consommée. Haiku bénéficie de l’offre « Open Source », avec une certaine quantité de trafic offerte (en échange de l’affichage d’un logo de Netlify en base de page du site). Cette offre s’est révélée insuffisante dans la nouvelle tarification, surtout suite à une attaque de robots (probablement pour l’entraînement de LLM de mauvaise qualité, puisque ils requêtaient des pages n’existant pas et n’obtenaient que des erreurs 404). Du côté de Haiku, des protections ont été mises en place pour éviter ce genre de problème, mais entretemps, Netlify a facturé le dépassement de bande passante autorisée pour le mois de décembre.
+Finalement, après une discussion avec l’équipe de support de Netlify et une vérification de ce qu’il s’était passé, la facture a été annulée, et la consommation de bande passante pour Haiku a été augmentée pour mieux convenir à l’utilisation habituelle générée par Haiku.
+Remise sur les rails de HSA (Haiku Support Association)
+Actuellement, l’association Haiku inc est la principale organisation recevant des dons et finançant les activités de Haiku (développeur employé, coût d’hébergement de l’infrastructure…).
+Cette association est basée aux USA, ce qui est récemment devenu une source d’inquiétude pour certains contributeurs et donateurs de Haiku.
+Suite à une discussion sur les forums, il y a donc un regain d’intérêt pour la Haiku Support Association, une autre organisation basée en Allemagne et qui était dormante depuis plusieurs années. Plusieurs personnes ont donc adhéré à cette association et cela va peut-être permettre d’en relancer l’activité et d’assurer une présence en Europe.
+En particulier, c’est cette association qui organisait la conférence BeGeistert et le traditionnel « coding sprint » associé, permettant aux développeurs et aux utilisateurs de Haiku de se rencontrer régulièrement. Cette activité avait cessé suite au manque de public pour ces évènements, à une perte d’intérêt des membres de l’association, et une absence de nouveaux adhérents pour relancer les choses. Espérons que cette période d’inactivité soit maintenant terminée et que l’organisation de conférences plus régulières puisse reprendre.]]></description>
       <pubDate>Sun, 22 Feb 2026 08:20:00 GMT</pubDate>
       <source>LinuxFr</source>
       <category>opensource</category>
       <guid>https://linuxfr.org/news/nouvelles-de-haiku-hiver-2025-26</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: Mdspec.dev – open-source spec management platform for technical teams]]></title>
+      <link>https://mdspec.dev</link>
+      <description><![CDATA[mdspec.dev - build and manage specs adapted to the speed of agentic software development.
+This is a side project of mine. I have made it as an open source spec management platform. Self host of you want and I run a hosted version.
+And a spec is a md (markdown) file within your projects.
+As we are building with AI agents either via Cursor, VScode or Antigravity, we can see md files or specs (software term for md files) are fast becoming AI infrastructure. A communication layer.
+I have used specs mainly for,
+- Developing spec for a new feature or a bug, generally a new development artifact and discuss the specs with the technical teams. AI agents are good at exploring the features in technical depth, costs, security aspects etc. that can be in one document or more. If there are changes, we can ask the AI agents to change them.
+- If we need an analysis from a codebase that we need like a compliance analysis on a certain part. Spec that is filtered for the understanding of the target audience or a tool. I have built cost simulation tools based on the codebase, where I built yaml based infrastructure specs that fed into simulation tool. Beauty of these solutions are, the target audience doesn’t need access to whole codebase. I think spec driven engineering is enabled only by AI agentic era. It was there before but it was time consuming and not scalable. In essence,
+- Specs give AI agents the context they need to build correctly.
+- They also give teams clarity into why and how something was implemented.
+- Specs are filtered to provide as inputs to other tools or analysis
+But AI agentic development is really fast. As with all fast things, we could see two problems were emerging:
+- Discussions across teams became long and fragmented. Compliance needs those specs. Design needs those specs. Risk Modeling needs those specs. - Specs were duplicated, scattered, and hard to reuse across projects.
+I built mdspec to remove that friction. I made it open source to make sure anyone can bend it any way they see fit for their own use cases.
+mdspec is a specification management platform designed for fast phased AI-driven development. It helps you: - Create structured, reusable specs - Link specs across features and projects - Maintain clarity as development speed increases - Give AI agents reliable, durable context - When specs become first-class citizens, teams move faster, without losing alignment. - Go cross team securely.
+I'm exploring the possible integrations to integrate this back into AI agents and external tools.
+https://mdspec.dev URL: https://news.ycombinator.com/item?id=47198406
+Points: 1
+# : 0]]></description>
+      <pubDate>Sat, 28 Feb 2026 18:08:43 GMT</pubDate>
+      <source>Hacker News (nouveautés)</source>
+      <category>opensource</category>
+      <guid>https://mdspec.dev</guid>
+    </item>
+    <item>
+      <title><![CDATA[Agenda du Libre pour la semaine 9 de l'année 2026]]></title>
+      <link>https://linuxfr.org/news/agenda-du-libre-pour-la-semaine-9-de-l-annee-2026</link>
+      <description><![CDATA[Calendrier Web, regroupant des événements liés au Libre (logiciel, salon, atelier, install party, conférence), annoncés par leurs organisateurs. Voici un récapitulatif de la semaine à venir. Le détail de chacun de ces 57 événements (France: 49, Internet: 4, Québec: 3, Suisse: 1) est en seconde partie de dépêche. lien nᵒ 1 : April
+lien nᵒ 2 : Agenda du Libre
+lien nᵒ 3 : Carte des événements
+lien nᵒ 4 : Proposer un événement
+lien nᵒ 5 : Annuaire des organisations
+lien nᵒ 6 : Agenda de la semaine 7
+lien nᵒ 7 : Agenda du Libre Québec Sommaire
+[FR Saint Clar] Tous les Lundis, médiathèque de Saint Clar – Le lundi 23 février 2026 de 10h00 à 17h00.
+[Internet] Mapathon 2025-2026 par CartONG – Le lundi 23 février 2026 de 18h00 à 20h00.
+[FR Saint-Étienne] Permanence de l’association Alolise – Le lundi 23 février 2026 de 19h00 à 22h00.
+[FR Saint-Étienne] OpenStreetMap, rencontre Saint-Étienne et sud Loire – Le lundi 23 février 2026 de 19h00 à 21h00.
+[FR Dijon] Atelier du mardi – Le mardi 24 février 2026 de 15h00 à 19h00.
+[FR Castelnau-le-Lez] Permanence Linuxerie | GNU/Linux et Logiciels Libres – Le mardi 24 février 2026 de 15h00 à 17h00.
+[Internet] Émission «Libre à vous!» – Le mardi 24 février 2026 de 15h30 à 17h00.
+[FR Aix-en-Provence] Open Bidouille Workshop au LAB@Floralies – Le mardi 24 février 2026 de 17h30 à 19h30.
+[FR Bordeaux] Cartopartie OpenStreetMap – Le mardi 24 février 2026 de 18h00 à 20h00.
+[FR Tours] Permanences Installation Linux et Usages logiciels libres – Le mardi 24 février 2026 de 18h30 à 20h30.
+[FR Lille] Permanence associative autour du Libre – Le mardi 24 février 2026 de 20h00 à 22h00.
+[CA-QC Montréal, Québec] FediMTL: Conférence sur la souveraineté numérique et le web social – Le mardi 24 février 2026 de 08h30 à 19h30.
+[CA-QC Québec] Rencontres-Linux Québec – Le mardi 24 février 2026 de 17h00 à 20h00.
+[FR Le Mans] Permanence du mercredi – Le mercredi 25 février 2026 de 12h30 à 17h00.
+[FR Le Mans] Permanence du mercredi – Le mercredi 25 février 2026 de 12h30 à 17h00.
+[FR Aix-en-Provence] Open Bidouille Workshop au LAB@Floralies – Le mercredi 25 février 2026 de 17h30 à 19h30.
+[FR Beauvais] Sensibilisation et partage autour du Libre – Le mercredi 25 février 2026 de 18h00 à 20h00.
+[FR Marseille] Réunion d’information Installation Linux – Le mercredi 25 février 2026 de 18h00 à 19h00.
+[FR Cysoing] Mercredis Linux – Le mercredi 25 février 2026 de 18h30 à 23h30.
+[FR Le Versoud] Install Party Linux Grésivaudan – Le mercredi 25 février 2026 de 18h30 à 20h30.
+[Internet] Webinaire : FAQ logiciel Paheko – Le mercredi 25 février 2026 de 19h00 à 21h00.
+[FR Montpellier] Permanence | OpenStreetMap | HérOSM (hybride) – Le mercredi 25 février 2026 de 19h00 à 22h00.
+[CA-QC Lévis] CA de FACiL – Le mercredi 25 février 2026 de 19h00 à 21h00.
+[FR Nantes] Repair Café numérique + Install Party – Le jeudi 26 février 2026 de 09h30 à 12h30.
+[FR Saint-Girons] Install Party – Le jeudi 26 février 2026 de 09h30 à 12h00.
+[Internet] Découverte de Scenari (en visio) – Le jeudi 26 février 2026 de 16h00 à 17h00.
+[FR Sète] Permanence | Linuxerie | GNU/Linux et Logiciels Libres – Le jeudi 26 février 2026 de 18h00 à 20h00.
+[FR Lanmeur] Adieu Windows, bonjour le libre ! – Le vendredi 27 février 2026 de 13h40 à 16h15.
+[FR Nantes] Repair Café numérique + Install Party – Le vendredi 27 février 2026 de 14h00 à 17h30.
+[FR Arras] Repair Café Linux – Le vendredi 27 février 2026 de 14h00 à 17h00.
+[FR Nogent] Les cafés du Logiciels Libre – Le vendredi 27 février 2026 de 14h30 à 16h30.
+[FR Bury] Sensibilisation et partage autour du Libre – Le vendredi 27 février 2026 de 16h00 à 18h00.
+[FR Toulon] Install Party – Le vendredi 27 février 2026 de 17h00 à 21h00.
+[FR Gourin] Atelier Linux – Le vendredi 27 février 2026 de 18h30 à 20h00.
+[FR Villeneuve d’Ascq] Ateliers « Libre à vous » – Le samedi 28 février 2026 de 09h00 à 12h00.
+[FR Chaumont] Permanence Informatique de REVOL – Le samedi 28 février 2026 de 09h00 à 12h00.
+[CH Môtiers] Samedi du Libre – Le samedi 28 février 2026 de 09h00 à 16h30.
+[FR Saumur] Séance d’installation de GNU/Linux – Le samedi 28 février 2026 de 09h00 à 12h00.
+[FR Nantes] Repair Café numérique + Install Party – Le samedi 28 février 2026 de 09h30 à 12h30.
+[FR Wimille] Retrouvez votre liberté numérique – Le samedi 28 février 2026 de 10h00 à 12h00.
+[FR Périgueux] Les ateliers spécial Linux – Le samedi 28 février 2026 de 10h00 à 17h00.
+[FR 33600 Pessac] Journée Install-partie Découverte du Libre – Le samedi 28 février 2026 de 10h00 à 17h00.
+[FR Vandœuvre-lès-Nancy] Atelier libre – Envoyer des SMS depuis un ordinateur – Le samedi 28 février 2026 de 10h00 à 12h00.
+[FR Ivry sur Seine] Cours de l’École du Logiciel Libre – Le samedi 28 février 2026 de 10h30 à 18h30.
+[FR Marseille] Install Party GNU/Linux – Le samedi 28 février 2026 de 14h00 à 18h00.
+[FR Oust] Repair’café du Haut-Salat – Le samedi 28 février 2026 de 14h00 à 18h00.
+[FR Ecully] Install Party – Le samedi 28 février 2026 de 14h00 à 17h00.
+[FR Saint-Ouen-sur-Seine] Atelier « reprenons le contrôle de nos smartphones » – Le samedi 28 février 2026 de 14h00 à 16h00.
+[FR Juvisy-sur-Orge] Permanence GNU/Linux – Le samedi 28 février 2026 de 14h30 à 17h00.
+[FR Saint-Cyr L’École] Permanences Logiciels Libres : formation Libreoffice – Le samedi 28 février 2026 de 15h00 à 16h30.
+[FR Charleville-Mézières] Les Samedis des Logiciels Libres – Le samedi 28 février 2026 de 15h00 à 17h00.
+[FR Quimper] Permanence Linux Quimper – Le samedi 28 février 2026 de 16h00 à 18h00.
+[FR Montigny le bretonneux] Challenges Hack Kids : relève les défis ! – Le samedi 28 février 2026 de 17h00 à 19h30.
+[FR Vire] Modélisation 3D avec OpenSCAD – Le samedi 28 février 2026 de 17h00 à 19h00.
+[FR Gaillac] Repair café – Le dimanche 1 mars 2026 de 10h00 à 14h00.
+[FR Saint-Caprais-de-Bordeaux] Ğmarché de Saint-Caprais-de-Bordeaux – Le dimanche 1 mars 2026 de 10h00 à 15h00.
+[FR Louargat] Repair Café et Install Party – Le dimanche 1 mars 2026 de 10h00 à 18h00.
+[FR Saint Clar] Tous les Lundis, médiathèque de Saint Clar – Le lundi 23 février 2026 de 10h00 à 17h00.
+Tous les lundis de 10h à 17h sans interruption, l’association Prends toi en main / atelier abcpc, propose install party, suivi, dépannage, formation et revalorisation à petit prix sous Linux exclusivement.
+L’atelier abcpc existe depuis plus de 10 ans et milite exclusivement pour les logiciels libres.
+Médiathèque, Médiathèque, 4 place Dastros, Saint Clar, Occitanie, France
+https://www.facebook.com/PrendsToiEnMain
+linux, permanence, dépannage, formation, adieu-windows, libres, logiciels-libres, abcpc, prends-toi-en-main, install-party [Internet] Mapathon 2025-2026 par CartONG – Le lundi 23 février 2026 de 18h00 à 20h00.
+Vous voulez vous engager pour une cause, rencontrer de nouvelles personnes et découvrir la cartographie participative et humanitaire? CartONG vous invite à participer à un ou plusieurs mapathons en ligne! ​​
+Venez cartographier les régions encore absentes des cartes pour soutenir les organisations humanitaires et de solidarité internationale qui ont besoin de cartes précises et à jour pour agir plus efficacement en cas de crise ou initier des projets de développement local.
+Les ateliers de cartographie sont organisés dans le cadre du projet Missing Maps, qui a pour objectif de cartographier de façon préventive les régions vulnérables aux catastrophes naturelles, crises sanitaires, environnementales, aux conflits et à la pauvreté. On peut penser qu’aujourd’hui toutes les parties du monde sont cartographiées, mais en réalité de nombreuses régions ne possèdent encore aucune carte!
+​ Pour qui? Pas besoin d’être un·e expert·e, les ateliers sont accessibles à tout le monde!
+​ Où ? 100% en ligne! Un lien de connexion vous sera envoyé après votre inscription
+​ ? Avec la plateforme de cartographie libre et contributive OpenStreetMap (OSM, le «Wikipédia des cartes») tout le monde peut participer à la cartographie de n’importe quelle zone de la planète: il suffit d’un ordinateur, d’une souris et d’une connexion internet! Accessibles à tout·es, nous serons là pour vous accompagner pour vos premiers pas avec OSM.
+Le programme des mapathons
+18h00: Introduction, présentation de la cartographie collaborative et solidaire et démonstration OSM pour les nouveaux·elles
+18h30: On cartographie tous ensemble sur un projet
+20h00: Fin du mapathon, conclusion sur les contributions de la soirée
+Pour s’inscrire c’est par ici
+Si vous avez besoin de plus d’info, vous pouvez nous contacter directement à l’adresse suivante: missingmaps@cartong.org
+Internet
+https://www.cartong.org
+cartographie, cartong, osm, humanitaire, libre, mapathon [FR Saint-Étienne] Permanence de l’association Alolise – Le lundi 23 février 2026 de 19h00 à 22h00.
+Tous les lundis soir de 19h à 22h (hors jours fériés) à la Bricoleuse.
+Rencontrer les bénévoles, poser des questions sur le libre ou l’informatique, les logiciels, l’hébergement, passer de Windows à Linux.
+Pour passer votre ordinateur sous Linux, nous vous invitons à nous prévenir avant votre passage: contact@alolise.org.
+La Bricoleuse, La Bricoleuse, 27 rue de la Ville, Saint-Étienne, Auvergne-Rhône-Alpes, France
+https://alolise.org
+install-party, aide, logiciel-libre, entraide, alolise, permanence, linux, gnu-linux [FR Saint-Étienne] OpenStreetMap, rencontre Saint-Étienne et sud Loire – Le lundi 23 février 2026 de 19h00 à 21h00.
+Depuis la rentrée 2023, les temps de rencontre autour d’OpenStreetMap sont relancés.
+L’occasion de se rencontrer (ou de se retrouver), d’échanger sur OpenStreetMap et de lancer des projets en commun.
+Zoomacom, Zoomacom, 41 rue de la Télématique, Saint-Étienne, Auvergne-Rhône-Alpes, France
+https://wiki.openstreetmap.org/wiki/Saint-%C3%89tienne
+openstreetmap, osm, cartographie, rencontre, logiciels-libres [FR Dijon] Atelier du mardi – Le mardi 24 février 2026 de 15h00 à 19h00.
+Présentation de différents outils concernant les logiciels libres.
+Assistance technique.
+De préférence sur RDV directement sur le site de l’asso
+Maison des associations, Maison des associations, 2 rue des Corroyeurs, Dijon, Bourgogne-Franche-Comté, France
+https://desobs.fr
+informatique-libre, installation, réemploi, réparation, résilience, résoudre, atelier [FR Castelnau-le-Lez] Permanence Linuxerie | GNU/Linux et Logiciels Libres – Le mardi 24 février 2026 de 15h00 à 17h00.
+NOUVEAU !
+Venez découvrir Linux et vous faire aider pour l’installer et à la prise en main, dans différents lieux, dans et à proximité de la métropole montpelliéraine
+L’équipe de Montpel’libre vous propose une permanence Logiciels Libres : discussions libres et accompagnements techniques aux systèmes d’exploitation libres pour vous aider à vous familiariser avec votre système GNU/Linux au quotidien.
+Le contenu de l’atelier s’adapte aux problèmes et aux questionnements des personnes présentes avec leur(s) ordinateur(s), qu’il soit fixe ou portable, et permet ainsi l’acquisition de nouvelles compétences nécessaires à une autonomie numérique certaine, au rythme de chacun.
+Les thèmes :
+discussions conviviales entre utilisateurs autour de Linux en général ;
+pré-inscription aux prochains Cafés Numériques et Installes parties ;
+premières explorations du système ;
+installations et configurations complémentaires ;
+mise à jour et installation de nouveaux logiciels ;
+prise en main, découverte et approfondissement du système
+Les permanences techniques ont lieu une fois par semaine, dans un lieu et à des jours et heures différents.
+Entrée libre et gratuite sur inscription. Une simple adhésion à l’association est possible. Rejoindre le groupe Montpel’libre sur Telegram S’inscrire à la Newsletter de Montpel’libre.
+Inscription nécessaire | GPS 43.61731/3.88171
+Médiathèque Aimé Césaire, Médiathèque Aimé Césaire, allée Rose de France, Castelnau-le-Lez, Occitanie, France
+https://montpellibre.fr
+montpel-libre, permanence, linux, gnu-linux, logiciels-libres, adieu-windows, linuxerie, culture-libre, communs-numeriques [Internet] Émission «Libre à vous!» – Le mardi 24 février 2026 de 15h30 à 17h00.
+L’émission Libre à vous! de l’April est diffusée chaque mardi de 15 h 30 à 17 h sur radio Cause Commune sur la bande FM en région parisienne (93.1) et sur le site web de la radio.
+Le podcast de l’émission, les podcasts par sujets traités et les références citées sont disponibles dès que possible sur le site consacré à l’émission, quelques jours après l’émission en général.
+Les ambitions de l’émission Libre à vous!
+Découvrez les enjeux et l’actualité du logiciel libre, des musiques sous licences libres, et prenez le contrôle de vos libertés informatiques.
+Donner à chacun et chacune, de manière simple et accessible, les clefs pour comprendre les enjeux mais aussi proposer des moyens d’action, tels sont les objectifs de cette émission hebdomadaire.
+L’émission dispose:
+d’un flux RSS compatible avec la baladodiffusion d’une lettre d’information à laquelle vous pouvez vous inscrire (pour recevoir les annonces des podcasts, des émissions à venir et toute autre actualité en lien avec l’émission)
+d’un salon dédié sur le webchat de la radio Radio Cause Commune, Radio Cause Commune, Internet https://www.libreavous.org april, radio, cause-commune, libre-à-vous [FR Aix-en-Provence] Open Bidouille Workshop au LAB@Floralies – Le mardi 24 février 2026 de 17h30 à 19h30.
+Après une longue période sans pouvoir accueillir du public, nous sommes heureux de vous annoncer la reprise des permanences hebdomadaires du Fablab dans un nouveau lieu. L’atelier du LAB ouvrira grand sa porte pour permettre aux membres de se rencontrer, partager leurs connaissances, échanger et surtout de réaliser des projets que l’on espère tous plus créatifs les uns que les autres !
+Le nombre de personnes simultanément présentes dans les locaux sera limité à 10 personnes. Les inscriptions sur meetup(https://www.meetup.com/fr-fr/labaixbidouille/) sont donc recommandées (les inscrits seront prioritaires).
+C’est une bonne occasion pour les curieux de venir découvrir ce que l’on peut faire dans un espace de fabrication numérique collaboratif, ouvert et communautaire comme le LAB.
+LAB@Floralies, LAB@Floralies, 3 chemin des Floralies, Aix-en-Provence, Provence-Alpes-Côte d’Azur, France
+https://www.labaixbidouille.com
+matériel, fablab, diy, open-source, laboratoire-d-aix-périmentation-et-de-bidouille, maker [FR Bordeaux] Cartopartie OpenStreetMap – Le mardi 24 février 2026 de 18h00 à 20h00.
+Moment d’échange et de convivialité où on se retrouve pour améliorer ensemble la base de données d’OpenStreetMap (OSM). Ces rencontres sont importantes pour faire non seulement vivre la communauté mais aussi pour améliorer la qualité des données. Vous pourrez ainsi contribuer et partager des connaissances et des informations.
+Que vous soyez un doyen ou un nouveau d’OSM, tout le monde est bienvenu à cette cartopartie !
+Si vous pouvez, en amont, installer avant la cartopartie l’application OsmAnd ou StreetComplete pour Android et Go Map !! pour iOS.
+Dans tous les cas, plusieurs personnes peuvent vous accompagner tout au long sur ces divers outils !
+La Tortue, La Tortue, place de la victoire, Bordeaux, Nouvelle-Aquitaine, France
+osm, openstreetmap, cartopartie, cartographie, logiciels-libres [FR Tours] Permanences Installation Linux et Usages logiciels libres – Le mardi 24 février 2026 de 18h30 à 20h30.
+La permanence d’ADeTI est un moment d’accueil avec des bénévoles pour apprendre à utiliser un ordinateur sous GNU/Linux (Ubuntu, Linux Mint, Debian…) mais aussi:
+réparer les problèmes de logiciels sur son ordinateur
+prendre des conseils pour choisir des logiciels alternatifs
+différencier les logiciels libres utilisables pour répondre aux besoins
+préserver et réfléchir sur ses usages (vie privée, éthique…)
+Mais c’est aussi un moment consacré pour:
+partager des connaissances et échanger des savoirs
+maîtriser les formats ouverts et la pérennité de ses documents
+Confidentialité, intégrité et disponibilité des systèmes d’information
+Diversité des alternatives
+Indépendance
+Nous accueillons également des membres de l’association ALFA-Net et A-Hébergement qui peuvent répondre aux questions concernant Internet, les réseaux et l’hébergement: connexion à Internet, alternatives aux “Box” et aux opérateurs/FAI commerciaux, Neutralité du Net, Vie Privée, Blog, Site Internet/Web…
+Centre Socioculturel Gentiana, Centre Socioculturel Gentiana, 90 avenue Maginot, Tours, Centre-Val de Loire, France
+https://www.adeti.org
+install-party, gull, linux, internet, réseau, adieu-windows, logiciels-libres, gnu/linux, adeti-org, hébergement, permanence [FR Lille] Permanence associative autour du Libre – Le mardi 24 février 2026 de 20h00 à 22h00.
+Vous avez décidé de reprendre en main votre vie numérique? Venez nous rencontrer le dernier mardi de chaque mois au Café Citoyen à Lille !
+La permanence associative autour du Libre est une manifestation conviviale, ouverte à toutes et tous, organisée le dernier mardi (ou jeudi) de chaque mois par les collectifs de Chtinux (Raoull, Deuxfleurs, Mycélium, CLX, Cliss XXI…).
+Rejoignez-nous pour y discuter joyeusement de Logiciel Libre, de Culture Libre, de données ouvertes (open data), de bidouille sous Linux, ou proposer vos idées d’évènements.
+C’est aussi l’occasion d’obtenir un coup de main si vous rencontrez une difficulté sous Linux, ou si vous avez besoin de conseils pour migrer sur du Logiciel Libre.
+Si vous venez avec votre ordinateur pour obtenir de l’aide technique, pour permettre à l’équipe bénévole de s’organiser, prévenez-nous via un courrier électronique à l’adresse: chtinux-diffusion CHEZ deuxfleurs POINT fr.
+Le Café Citoyen est accessible en métro (station République – Beaux Arts). Une connexion Internet y est disponible, des prises électriques, de la place… Au bar, vous trouverez aussi de bonnes boissons avec et sans alcool, ainsi que de la petite restauration (notamment fromage ou tartines véganes).
+Pour soutenir le Café Citoyen, nous vous demandons d’y acheter au minimum une consommation. Après avoir pris votre boisson ou votre en-cas au bar, vous pouvez nous rejoindre directement au deuxième étage.
+Au plaisir de vous retrouver!
+Café Citoyen, Café Citoyen, 7 place du Vieux Marché aux Chevaux, Lille, Hauts-de-France, France
+https://chtinux.org
+café-citoyen, permanence, raoull, chtinux, clx, logiciels-libres, mycelium, cliss21, deux-fleurs, linux, gnu-linux [CA-QC Montréal, Québec] FediMTL: Conférence sur la souveraineté numérique et le web social – Le mardi 24 février 2026 de 08h30 à 19h30.
+Rejoignez-nous pour une journée complète explorant bâtir souveraineté numérique grâce au web social. Découvrez des alternatives aux plateformes des géants du web, apprenez-en plus sur la propriété des données et connectez-vous avec des développeurs, créateurs et militants qui construisent une technologie axée sur les gens.
+Le Ministère, Montréal, Le Ministère, Montréal, 4521, St-Laurent, Montréal, Québec, Québec
+https://fedimtl.ca/
+*
+[CA-QC Québec] Rencontres-Linux Québec – Le mardi 24 février 2026 de 17h00 à 20h00.
+Local de la rencontre: Restaurant Pacini Lebourgneuf
+Pour inscription et avoir le lien en virtuel: Cliquez ici à tous les passionnés de Linux de la région de Québec !
+Vous souhaitez rencontrer d’autres utilisateurs et experts des systèmes Linux et des logiciels libres? Martial est de passage dans la capitale et organise une rencontre conviviale autour d’un bon repas pour lier l’utile à l’agréable (de 17:00 à 20:00).
+Nous nous retrouverons dans un restaurant avec une ambiance propice à l’échange. Si possible, nous aurons accès à une salle privée avec un écran pour faciliter le partage de trucs et astuces (si un membre souhaite présenter quelque chose) et maximiser la discussion entre participants.
+Cet événement est l’occasion parfaite pour:
+Réseauter et échanger avec la communauté locale de passionné(e)s.
+Partager vos meilleures astuces, vos découvertes et vos projets sous Linux.
+Apprendre des autres, peu importe votre niveau d’expertise.
+Ouvert à tous, du débutant à l’expert Notre réunion accueille une diversité de profils: étudiants, professionnels, gestionnaires, programmeurs, professeurs, ou retraités. Que votre passion soit l’administration système, le développement, ou la simple utilisation quotidienne, votre expérience est précieuse. Ensemble, nous pouvons approfondir notre compréhension des logiciels libres et contribuer à une communauté dynamique.
+La participation est gratuite et quelques prix de présences seront offerts par tirage au sort à la fin de la rencontre !
+Rejoignez-nous pour cette opportunité exceptionnelle de socialiser, d’apprendre, et de tisser des liens ! Nous avons hâte de vous y accueillir.
+Martial Bigras,
+Comité organisateur des Rencontres Linux au Québec
+Pacini Lebourneuf, Pacini Lebourneuf, 2013, boulevard Lebourgneuf, Québec, Québec
+https://www.rencontres-linux.quebec/
+linux-meetup-montréal, rencontres-linux-québec [FR Le Mans] Permanence du mercredi – Le mercredi 25 février 2026 de 12h30 à 17h00.
+Assistance technique et démonstration concernant les logiciels libres.
+Il est préférable de réserver votre place à contact (at) linuxmaine (point) org
+Planning des réservations consultableici.
+Centre social, salle 220, 2ᵉ étage, pôle associatif Coluche, Centre social, salle 220, 2ᵉ étage, pôle associatif Coluche, 31 allée Claude Debussy, Le Mans, Pays de la Loire, France
+https://linuxmaine.org
+linuxmaine, gnu-linux, demonstration, assistance, permanence, logiciels-libres, linux, adieu-windows [FR Le Mans] Permanence du mercredi – Le mercredi 25 février 2026 de 12h30 à 17h00.
+Assistance technique et démonstration concernant les logiciels libres.
+Il est préférable de réserver votre place à contact (at) linuxmaine (point) org
+Planning des réservations consultableici.
+Centre social, salle 220, 2ᵉ étage, pôle associatif Coluche, Centre social, salle 220, 2ᵉ étage, pôle associatif Coluche, 31 allée Claude Debussy, Le Mans, Pays de la Loire, France
+https://linuxmaine.org
+linuxmaine, gnu-linux, demonstration, assistance, permanence, logiciels-libres, linux, adieu-windows [FR Aix-en-Provence] Open Bidouille Workshop au LAB@Floralies – Le mercredi 25 février 2026 de 17h30 à 19h30.
+Après une longue période sans pouvoir accueillir du public, nous sommes heureux de vous annoncer la reprise des permanences hebdomadaires du Fablab dans un nouveau lieu. L’atelier du LAB ouvrira grand sa porte pour permettre aux membres de se rencontrer, de partager leurs connaissances, d’échanger et surtout de réaliser des projets que l’on espère tous plus créatifs les uns que les autres !
+Le nombre de personnes simultanément présentes dans les locaux sera limité à 10 personnes. Les inscriptions sur meetup(https://www.meetup.com/fr-fr/labaixbidouille/) sont donc recommandées (les inscrits seront prioritaires).
+C’est une bonne occasion pour les curieux de venir découvrir ce que l’on peut faire dans un espace de fabrication numérique collaboratif, ouvert et communautaire comme le LAB.
+LAB@Floralies, LAB@Floralies, 3 chemin des Floralies, Aix-en-Provence, Provence-Alpes-Côte d’Azur, France
+https://www.labaixbidouille.com
+matériel, fablab, diy, open-source, laboratoire-d-aix-périmentation-et-de-bidouille, maker [FR Beauvais] Sensibilisation et partage autour du Libre – Le mercredi 25 février 2026 de 18h00 à 20h00.
+Chaque mercredi soir, l’association propose une rencontre pour partager des connaissances, des savoir-faire, des questions autour de l’utilisation des logiciels libres, que ce soit à propos du système d’exploitation Linux, des applications libres ou des services en ligne libres.
+C’est l’occasion aussi de mettre en avant l’action des associations fédératrices telles que l’April ou Framasoft, dont nous sommes adhérents et dont nous soutenons les initiatives avec grande reconnaissance.
+Ecospace, 136 rue de la Mie au Roy, Beauvais, Hauts-de-France, France
+https://www.oisux.org
+oisux, logiciels-libres, atelier, rencontre, sensibilisation, adieu-windows [FR Marseille] Réunion d’information Installation Linux – Le mercredi 25 février 2026 de 18h00 à 19h00. Ton ordi rame avec Windows? T’as entendu parler de Linux sans oser te lancer?
+Viens à une Install Party chez Emmaüs Connect à Marseille! C’est pour toi si:
+Tu veux prolonger la vie de ton ordi sans passer par Windows 11
+Tu veux apprendre à mieux maîtriser ton outil numérique
+Tu veux faire un geste pour la planète Tu veux découvrir un super lieu de solidarité numérique à Marseille! Où ? 11 cours Franklin Roosevelt, Marseille 1ᵉʳ
+Inscription par mail à marseille@emmaus-connect.org
+Rejoins-nous pour une expérience libre, écolo et solidaire!
+Emmaüs Connect, Emmaüs Connect, 11 cours Franklin Roosevelt, Marseille, Provence-Alpes-Côte d’Azur, France
+https://emmaus-connect.org
+adieu-windows, install-party, linux, gnu-linux, logiciels-libres, linux-mint, emmaus, réunion, info, emmaus-connect [FR Cysoing] Mercredis Linux – Le mercredi 25 février 2026 de 18h30 à 23h30.
+L’Association Club Linux Nord Pas-de-Calais organise chaque mois une permanence Logiciels Libres ouverte à tous, membre de l’association ou non, débutant ou expert, curieux ou passionné.
+Durant cette permanence, vous pourrez trouver des réponses aux questions que vous vous posez au sujet du Logiciel Libre, ainsi que de l’aide pour résoudre vos problèmes d’installation, de configuration et d’utilisation de Logiciels Libres.
+N’hésitez pas à apporter votre ordinateur, afin que les autres participants puissent vous aider.
+Dans une salle équipée d’un tableau blanc et d’un vidéoprojecteur, se dérouleront fréquemment des ateliers, des initiations, des discussions, des tests, des démonstrations, de l’entraide abordant le logiciel libre et de la dégustation de bières.
+Cette permanence a lieu à l’EPN (Espace Public Numérique), 311 rue Salvador Allende à Cysoing.
+Espace Public Numérique, Espace Public Numérique, 311 rue Salvador Allende, Cysoing, Hauts-de-France, France
+https://clx.asso.fr
+clx, permanence, linux, gnu-linux, logiciels-libres, adieu-windows [FR Le Versoud] Install Party Linux Grésivaudan – Le mercredi 25 février 2026 de 18h30 à 20h30.
+La session consiste à installer avec vous la distribution Linux Mint sur votre ordinateur fixe ou portable. En fonction de l’ancienneté de l’ordinateur, il nous faudra peut-être installer une version plus ou moins complète de Linux Mint, ce sera au cas par cas.
+La distribution Linux Mint a l’avantage d’utiliser peu de ressources, et d’avoir une interface graphique (apparence) proche de Windows, ce qui fait que l’on est pas dépaysé en changeant de système d’exploitation.
+Cette installation est possible sur des ordinateurs “windows” ou des ordinateurs MacOS.
+Attention, pensez à faire la sauvegarde de vos documents sur un disque dur externe, l’installation de Linux effacera toutes les données présentes. Photos, documents texte et tableur, vidéos, films… Les documents et mails qui sont sur le cloud (accès via un navigateur internet) ne sont pas concernés.
+L’inscription « pour information » sert pour les personnes qui veulent d’abord venir voir ça se passe, dans le but de venir à une session ultérieure pour passer à l’action et installer Linux.
+Pour être informé des prochaines sessions, vous pouvez vous inscrire à cette liste de diffusion:
+https://framagroupes.org/sympa/subscribe/installpartylinuxgresivaudan
+Direction des déchets au versoud, Direction des déchets au versoud, 219 rue Guynemer, Le Versoud, Auvergne-Rhône-Alpes, France
+https://www.billetweb.fr/install-party-linux-au-versoud
+adieu-windows, install-party, linux, gnu-linux, logiciels-libres [Internet] Webinaire : FAQ logiciel Paheko – Le mercredi 25 février 2026 de 19h00 à 21h00.
+Un webinaire sous forme de FAQ en direct avec l’équipe de Paheko.
+Le lien de la visio est par ici: https://paheko.cloud/weinaires
+En visioconférence, En visioconférence, Internet
+https://paheko.cloud/webinaires
+paheko, webinaire, faq [FR Montpellier] Permanence | OpenStreetMap | HérOSM (hybride) – Le mercredi 25 février 2026 de 19h00 à 22h00.
+Ces rencontres mensuelles se veulent être des instants conviviaux pour faire un compte-rendu des activités du mois précédent, mais aussi pour présenter les opérations et rendez-vous à venir que proposent les groupes HérOSM. Naturellement, elles sont également ouvertes à tout public, en présence et à distance.
+Si vous avez des propositions n’hésitez pas à compléter la page dédiée.
+Programme:
+Cartographie de la ville de Boundiali en Côte d’Ivoire, tâche #15885 Cartographie d’une zone d’intérêt près du village Adossou au Togo, tâche #14744 Cartographie des communautés du libre
+Déroulement de la rencontre
+Tramway lignes 1 et 3, arrêts Port-Marianne et Rives du Lez
+OpenStreetMap
+Atelier des Pigistes, Atelier des Pigistes, 171 rue Frimaire, Montpellier, Occitanie, France
+https://herosm.fr
+hérosm, rencontre, logiciels-libres, osm, openstreetmap, herosm, permanence [CA-QC Lévis] CA de FACiL – Le mercredi 25 février 2026 de 19h00 à 21h00.
+Mercredi 25 février 2026 à 19h00
+Ordre du jour: https://wiki.facil.qc.ca/view/Ordre_du_jour_de_la_r%C3%A9union_du_25_f%C3%A9vrier_2026
+Conférence: en ligne, écrire au responsable pour recevoir le lien
+Nous prendrons un moment en début de rencontre pour accueillir nos nouveaux bénévoles
+En ligne, En ligne, Lévis, Chaudière-Appalaches, Québec
+https://facil.qc.ca
+facil, ca-de-facil [FR Nantes] Repair Café numérique + Install Party – Le jeudi 26 février 2026 de 09h30 à 12h30.
+Un ordinateur qui rame, qui refuse de démarrer ou qui est cassé, venez le réparer en notre compagnie.
+Marre de Windows et envie d’un peu de liberté, venez le libérer!
+Centre socioculturel de Bellevue, Centre socioculturel de Bellevue, 25 rue du Jamet, Nantes, Pays de la Loire, France
+https://www.alamaisondulibre.org
+recyclage, repair-café, atelier, install-party, linux, logiciels-libres, gnu-linux, windows10, a-la-maison-du-libre, adieu-windows [FR Saint-Girons] Install Party – Le jeudi 26 février 2026 de 09h30 à 12h00.
+Que ce soit pour se renseigner, tester des logiciels libres, installer Linux (Il faudra copier ses données avant) ou se sécuriser en dehors du monde privateur de l’extractivisme des données.
+Une équipe est disponible pour vous aider et répondre à toutes vos questions autour du logiciel libre.
+Pour tous niveaux, en autogestion, gratuit ou à prix libre pour le lieu.
+Patate2000, 17 rue du Bourg, Saint-Girons, Occitanie, France
+install-party, linux, logiciel-libres, patate2000, gnu-linux [Internet] Découverte de Scenari (en visio) – Le jeudi 26 février 2026 de 16h00 à 17h00. Tu as des questions sur Scenari avant de tester ? Tu voudrais une petite démo ? Tu commences à utiliser Scenari et tu as besoin d’un peu de soutien ?
+Cette visio est faite pour toi Internet
+https://scenari.org/visio/miniwebinaire
+scenari, visio-conférence, découverte, test [FR Sète] Permanence | Linuxerie | GNU/Linux et Logiciels Libres – Le jeudi 26 février 2026 de 18h00 à 20h00.
+Venez découvrir Linux et vous faire aider pour l’installer et à la prise en main, dans différents lieux, dans et à proximité de la métropole montpelliéraine
+L’équipe de Montpel’libre vous propose une permanence Logiciels Libres : discussions libres et accompagnements techniques aux systèmes d’exploitation libres pour vous aider à vous familiariser avec votre système GNU/Linux au quotidien.
+Le contenu de l’atelier s’adapte aux problèmes et aux questionnements des personnes présentes avec leur(s) ordinateur(s), qu’il soit fixe ou portable, et permet ainsi l’acquisition de nouvelles compétences nécessaires à une autonomie numérique certaine, au rythme de chacun.
+Les thèmes :
+discussions conviviales entre utilisateurs autour de Linux en général ;
+pré-inscription aux prochains Cafés Numériques et Linux Partie ;
+premières explorations du système ;
+installations et configurations complémentaires ;
+mise à jour et installation de nouveaux logiciels ;
+prise en main, découverte et approfondissement du système
+Les permanences techniques ont lieu une fois par semaine, dans un lieu et à des jours et heures différents.]]></description>
+      <pubDate>Tue, 24 Feb 2026 10:58:53 GMT</pubDate>
+      <source>LinuxFr</source>
+      <category>opensource</category>
+      <guid>https://linuxfr.org/news/agenda-du-libre-pour-la-semaine-9-de-l-annee-2026</guid>
     </item>
     <item>
       <title><![CDATA[Run a virtual conference using only open source tools]]></title>
@@ -157,7 +695,104 @@ I'll cover some details next.
 Livestream with PeerTube Image by: (Máirín Duffy, CC BY-SA 4.0)
 We used the LinuxRocks PeerTube platform generously hosted by LinuxRocks.online for the Creative Freedom Summit's livestream. PeerTube is a free and open source decentralized video platform that is also part of the Fediverse.
 One of the best features of PeerTube (that other platforms I am aware of don't have) is that after your livestream ends, you get a near-instant replay recording posted to your channel on PeerTube. Users in our chatroom cited this as a major advantage of the platform. If an attendee missed a session they were really interested in, they could watch it within minutes of that talk's end. It took no manual intervention, uploading, or coordination on the part of the volunteer organizing team to make this happen; PeerTube automated it for us.
-Here is how livestreaming with PeerTube works: You create a new livestream on your channel, and it gives you a livestreaming URL + a key to authorize streaming to the URL. This URL + key can be reused over and over. We configured it so that the recording would be posted to the channel where we created the livestreaming URL as soon as a livestream ended. Next, copy/paste this into Jitsi when you start the livestream. This means that you don't have to generate a new URL + key for each talk during the conference—the overhead of managing that for organizers would have been pretty significant. Instead, we could reuse the same URL + key shared in a common document among conference organizers (we each had different shifts hosting talks). Anyone on the team with access to that document could start the livestream.]]></description>
+Here is how livestreaming with PeerTube works: You create a new livestream on your channel, and it gives you a livestreaming URL + a key to authorize streaming to the URL. This URL + key can be reused over and over. We configured it so that the recording would be posted to the channel where we created the livestreaming URL as soon as a livestream ended. Next, copy/paste this into Jitsi when you start the livestream. This means that you don't have to generate a new URL + key for each talk during the conference—the overhead of managing that for organizers would have been pretty significant. Instead, we could reuse the same URL + key shared in a common document among conference organizers (we each had different shifts hosting talks). Anyone on the team with access to that document could start the livestream.
+How to generate the livestream URL + key in PeerTube
+The following section covers generating the livestream URL + key in PeerTube, step-by-step.
+1. Create stream video on PeerTube
+Log into PeerTube, and click the Publish button in the upper right corner: Image by: (Máirín Duffy, CC BY-SA 4.0)
+2. Set options
+Click on the Go live tab (fourth from the left) and set the following options:
+Channel: (The channel name you want the livestream to publish on)
+Privacy: Public
+Radio buttons: Normal live
+Then, select Go Live. (Don't worry, you won't really be going live quite yet, there is more data to fill in.) Image by: (Máirín Duffy, CC BY-SA 4.0)
+3. Basic info (don't click update yet)
+First, fill out the Basic Info tab, then choose the Advanced Settings tab in the next step. Fill out the name of the livestream, description, add tags, categories, license, etc. Remember to publish after the transcoding checkbox is turned on.
+This ensures once your livestream ends, the recording will automatically post to your channel.
+4. Advanced settings
+You can upload a "standby" image that appears while everyone is watching the stream URL and waiting for things to start. Image by: (Máirín Duffy, CC BY-SA 4.0)
+This is the standby image we used for the Creative Freedom Summit: Image by: (Máirín Duffy, CC BY-SA 4.0)
+5. Start livestream on PeerTube
+Select the Update button in the lower right corner. The stream will appear like this—it's in a holding pattern until you start streaming from Jitsi: Image by: (Máirín Duffy, CC BY-SA 4.0)
+6. Copy/paste the livestream URL for Jitsi
+This is the final step in PeerTube. Once the livestream is up, click on the … icon under the video and towards the right: Image by: (Máirín Duffy, CC BY-SA 4.0)
+Select Display live information. You'll get a dialog like this: Image by: (Máirín Duffy, CC BY-SA 4.0)
+You must copy both the live RTMP URL and the livestream key. Combine them into one URL and then copy/paste that into Jitsi.
+The following are examples from my test run of these two text blocks to copy:
+Live RTMP Url: rtmp://peertube.linuxrocks.online:1935/live
+Livestream key: 8b940f96-c46d-46aa-81a0-701de3c43c8f
+What you'll need to paste into Jitsi is these two text blocks combined with a / between them, like so:
+rtmp://peertube.linuxrocks.online:1935/live/8b940f96-c46d-46aa-81a0-701de3c43c8f
+Live stage + social event room: Jitsi
+We used the free and open source hosted Jitsi Meet video conferencing platform for our "live stage." We created a Jitsi meeting room with a custom URL at https://meet.jit.si and only shared this URL with speakers and meeting organizers.
+We configured the meeting with a lobby (this feature is available in meeting settings once you join your newly-created meeting room) so speakers could join a few minutes before their talk without fear of interrupting the presentation before theirs. (Our host volunteers let them in when the previous session finished.) Another option is to add a password to the room. We got by just by having a lobby configured. It did seem, upon testing, that the moderation status in the room wasn't persistent. If a moderator left the room, they appeared to lose moderator status and settings, such as the lobby setup. I kept the Jitsi room available and active for the entire conference by leaving it open on my computer. (Your mileage may vary on this aspect.)
+Jitsi has a built-in livestreaming option, where you can post a URL to a video service, and it will stream your video to that service. We had confidence in this approach because it is how we host and livestream weekly Fedora Design Team meetings. For the Creative Freedom Summit, we connected our Jitsi Live Stage (for speakers and hosts) to a channel on the Linux Rocks PeerTube.
+Jitsi lets speakers share their screens to drive their own slides or live demos.
+Livestreaming Jitsi to PeerTube
+1. Join the meeting and click the … icon next to the red hangup button at the bottom of the screen. Image by: (Máirín Duffy, CC BY-SA 4.0)
+2. Select Start live stream from the pop-up menu. Image by: (Máirín Duffy, CC BY-SA 4.0)
+3. Copy/paste the PeerTube URL + key text Image by: (Máirín Duffy, CC BY-SA 4.0)
+4. Listen for your Jitsi Robot friend
+A feminine voice will come on in a few seconds to tell you, "Live streaming is on." Once she sounds, smile! You're livestreaming.
+5. Stop the livestream
+This stops the PeerTube URL you set up from working, so repeat these steps to start things back up.
+Jitsi tips
+Managing Recordings by turning the Jitsi stream on and off
+We learned during the conference that it is better to turn the Jitsi stream off between talks so that you will have one raw recording file per talk posted to PeerTube. We let it run as long as it would the first day, so some recordings have multiple presentations in the same video, which made using the instant replay function harder for folks trying to catch up. They needed to seek inside the video to find the talk they wanted to watch or wait for us to post the edited version days or weeks later.
+Preventing audio feedback
+Another issue we figured out live during the event that didn't crop up during our tests was audio feedback loops. These were entirely my fault (sorry to everyone who attended). I was setting up the Jitsi/PeerTube links, monitoring the streams, and helping host and emcee the event. Even though I knew that once we went live, I needed to mute any PeerTube browser tabs I had open, I either had more PeerTube tabs open than I thought and missed one, or the livestream would autostart in my Element client (which I had available to monitor the chat). I didn't have an easy way to mute Element. In some of the speaker introductions I made, you'll see that I knew I had about 30 seconds before the audio feedback would start, so I gave very rushed/hurried intros.
+I think there are simpler ways to avoid this situation:
+Try to ensure your host/emcee is not also the person setting up/monitoring the streams and chat. (Not always possible, depending on how many volunteers you have at any given time.)
+If possible, monitor the streams on one computer and emcee from another. This way, you have one mute button to hit on the computer you're using for monitoring, and it simplifies your hosting experience on the other.
+This is something worth practicing and refining ahead of time.
+Backstage: Element Image by: (Máirín Duffy, CC BY-SA 4.0)
+We set up a "Backstage" invite-only chat room a week or so before the conference started and invited all our speakers to it. This helped us ensure a couple of things:
+Our speakers were onboarded to Element/Matrix well before the event's start and had the opportunity to get help signing up if they had any issues (nobody did).
+We started a live communication channel with all speakers before the event so that we could send announcements/updates pretty easily.
+The channel served as a useful place during the event to coordinate transitions between speakers, give heads up about whether the schedule was running late, and in one instance, quickly reschedule a talk when one of our speakers had an emergency and couldn't make their original scheduled time.
+We also set up a room for hosts, but in our case, it was extraneous. We just used the backstage channel to coordinate. We found two channels were easy to monitor, but three were too many to be convenient.
+Announcements and Q&amp;A: Etherpad/Hackmd.io Image by: (Máirín Duffy, CC BY-SA 4.0)
+We set up a pinned widget in our main Element channel with general information about the event, including the daily schedule, code of conduct, etc. We also had a section per talk of the day for attendees to drop questions for Q&amp;A, which the host read out loud for the speaker.
+We found over the first day or two that some attendees were having issues with the Etherpad widget not loading, so we switched to an embedded hackmd.io document pinned to the channel as a widget, and that seemed to work a little better. We're not 100% sure what was going on with the widget loading issues, but we were able to post a link to the raw (non-embedded) link in the channel topic, so folks could get around any problems accessing it via the widget.
+Integrated and centralized conference experience Image by: (Máirín Duffy, CC BY-SA 4.0)
+Matrix via Fedora's Element server was the single key place to go to attend the conference. Matrix chat rooms in Element have a widget system that allows you to embed websites into the chat room as part of the experience. That functionality was important for having our Matrix chat room serve as the central place to attend.
+We embedded the PeerTube livestream into the channel—you can see it in the screenshot above in the upper left. Once the conference was over, we could share a playlist of the unedited video replays playlist. Now that our volunteer project for editing the videos is complete, the channel has the playlist of edited talks in order.
+As discussed in the previous section, we embedded a hackmd.io note in the upper right corner to post the day's schedule, post announcements, and an area for Q&amp;A right in the pad. I had wanted to set up a Matrix bot to handle Q&amp;A, but I struggled to get one running. It might make for a cool project for next year, though.
+Conversations during the conference occurred right in the main chat under these widgets.
+There are a couple of considerations to make when using a Matrix/Element chat room as the central place for an online conference, such as:
+The optimal experience will be in the Element desktop client or a web browser on a desktop system. However, you can view the widgets in the Element mobile client (although some attendees struggled to discover this, the UI is less-than-obvious). Other Matrix clients may not be able to view the widgets.
+Attendees can easily DIY their own experience piecemeal if desired. Users not using the Element client to attend the conference reported no issues joining in on the chat and viewing the PeerTube livestream URL directly. We shared the livestream URL and the hackmd URL in the channel topic, making it accessible to folks who preferred not to run Element.
+Website Image by: (Máirín Duffy, CC BY-SA 4.0)
+Ryan Gorley developed the Creative Freedom Summit website using WordPress. It is hosted by WPengine and is a one-pager with the conference schedule embedded from sched.org.
+Post-event
+Post-event survey
+We used the open source survey tool LimeSurvey. We sent it out within a week or two to attendees via the Element Chat channel and our PeerTube video channel to learn more about how we handled the event. The event organizers continue to meet regularly. One topic we focus on during these post-event meetings is developing the questions for the survey in a shared hackmd.io document. The following are some things we learned from the event that might be of interest to you in planning your own open source powered online conference:
+By far, most event attendees learned about the event from Mastodon and Twitter (together, covering 70% of respondents).
+33% of attendees used the Element desktop app to attend, and 30% used the Element Chat web app. So roughly 63% of attendees used the integrated Matrix/Element experience. The rest watched directly on PeerTube or viewed replays after.
+35% of attendees indicated they made connections with other creatives at the event via the chat, so the chat experience is pretty important to events if part of your goal is enabling networking and connections.
+Captioning
+During the event, we received positive feedback from participants who appreciated when another attendee live-captioned the talk in the chat and wished out loud for live captioning for better accessibility. While the stack outlined here did not include live captioning, there are open source solutions for it. One such tool is Live Captions, and Seth Kenlon covered it in an opensource.com article, Open source video captioning on Linux. While this tool is meant for the attendee consuming the video content locally, we could potentially have a conference host running it and sharing it to the livestream in Jitsi. One way to do this is using the open source broadcasting tool OBS so everyone watching the livestream could benefit from the captions.
+While editing the videos post-event, we discovered a tool built into Kdenlive, our open source video editor of choice, that generates and automatically places subtitles in the videos. There are basic instructions on how to do this in the Kdenlive manual. Fedora Design Team member Kyle Conway, who helped with the post-event video editing, put together a comprehensive tutorial (including video instruction) on automatically generating and adding subtitles to videos in Kdenlive. It is well worth the read and watch if you are interested in this feature.
+Video editing volunteer effort
+When the event was over, we rallied a group of volunteers from the conference Element channel to work together on editing the videos, including title cards and intro/outro music, and general cleanup. Some of our automatic replay recordings were split across two files or combined in one file with multiple other talks and needed to be reassembled or cropped down.
+We used a GitLab epic to organize the work, with an FAQ and call for volunteer help organized by skillset, with issues attached for each video needed. We had a series of custom labels we would set on each video so it was clear what state the video was in and what kind of help was needed. All the videos have been edited, and some need content written for their description area on the Creative Freedom Summit channel. Many have auto-generated subtitles that have not been edited for spelling mistakes and other corrections common with auto-generated text. Image by: (Máirín Duffy, CC BY-SA 4.0) Skip to bottom of list Open multimedia and art resources
+Music and video at the Linux terminal
+26 open source creative apps to try this year
+Film series: Open Source Stories
+Blender cheat sheet
+Kdenlive cheat sheet
+GIMP cheat sheet
+Register for your free Red Hat account
+Latest audio and music articles
+Latest video editing articles We passed the videos around—the files could be quite large—by having volunteers download the raw video from the unedited recording on the main PeerTube channel for the Creative Freedom Summit. When they had an edited video ready to share, we had a private PeerTube account where they could upload it. Admins with access to the main channel's account periodically grabbed videos from the private account and uploaded them to the main account. Note that PeerTube doesn't have a system where multiple accounts have access to the same channel, so we had to engage in a bit of password sharing, which can be nerve-wracking. We felt this was a reasonable compromise to limit how many people had the main password but still enable volunteers to submit edited videos without too much hassle.
+Ready to give it a try?
+I hope this comprehensive description of how we ran the Creative Freedom Summit conference using an open source stack of tools inspires you to try it for your open source event. Let us know how it goes, and feel free to reach out if you have questions or suggestions for improvement! Our channel is at: https://matrix.to/#/#creativefreedom:fedora.im
+This article is adapted from Run an open source-powered virtual conference and is republished with permission.
+Here's how to use open source tools to run your next virtual event. Image by: Opensource.com
+Conferences and events
+Tools
+What to read next This work is licensed under a Creative Commons Attribution-Share Alike 4.0 International License. are closed.
+These are closed.]]></description>
       <pubDate>Thu, 27 Apr 2023 07:00:00 GMT</pubDate>
       <source>Open Source.com (Nouveautés)</source>
       <category>opensource</category>
@@ -759,90 +1394,6 @@ Lancement d’une offre en abonnement mensuel en libre-service : pour la premiè
       <guid>https://thenewstack.io/roi-open-source-contribution/</guid>
     </item>
     <item>
-      <title><![CDATA[Agenda du Libre pour la semaine 9 de l'année 2026]]></title>
-      <link>https://linuxfr.org/news/agenda-du-libre-pour-la-semaine-9-de-l-annee-2026</link>
-      <description><![CDATA[Calendrier Web, regroupant des événements liés au Libre (logiciel, salon, atelier, install party, conférence), annoncés par leurs organisateurs. Voici un récapitulatif de la semaine à venir. Le détail de chacun de ces 57 événements (France: 49, Internet: 4, Québec: 3, Suisse: 1) est en seconde partie de dépêche. lien nᵒ 1 : April
-lien nᵒ 2 : Agenda du Libre
-lien nᵒ 3 : Carte des événements
-lien nᵒ 4 : Proposer un événement
-lien nᵒ 5 : Annuaire des organisations
-lien nᵒ 6 : Agenda de la semaine 7
-lien nᵒ 7 : Agenda du Libre Québec Sommaire
-[FR Saint Clar] Tous les Lundis, médiatheque de Saint Clar - Le lundi 23 février 2026 de 10h00 à 17h00.
-[Internet] Mapathon 2025-2026 par CartONG - Le lundi 23 février 2026 de 18h00 à 20h00.
-[FR Saint-Étienne] Permanence de l'association Alolise - Le lundi 23 février 2026 de 19h00 à 22h00.
-[FR Saint-Étienne] OpenStreetMap, rencontre Saint-Étienne et sud Loire - Le lundi 23 février 2026 de 19h00 à 21h00.
-[FR Dijon] Atelier du mardi - Le mardi 24 février 2026 de 15h00 à 19h00.
-[FR Castelnau-le-Lez] Permanence Linuxerie | GNU/Linux et Logiciels Libres - Le mardi 24 février 2026 de 15h00 à 17h00.
-[Internet] Émission «Libre à vous!» - Le mardi 24 février 2026 de 15h30 à 17h00.
-[FR Aix-en-Provence] Open Bidouille Workshop au LAB@Floralies - Le mardi 24 février 2026 de 17h30 à 19h30.
-[FR Bordeaux] Cartopartie OpenStreetMap - Le mardi 24 février 2026 de 18h00 à 20h00.
-[FR Tours] Permanences Installation Linux et Usages logiciels libres - Le mardi 24 février 2026 de 18h30 à 20h30.
-[FR Lille] Permanence associative autour du Libre - Le mardi 24 février 2026 de 20h00 à 22h00.
-[CA-QC Montréal, Québec] FediMTL: Conférence sur la souveraineté numérique et le web social - Le mardi 24 février 2026 de 08h30 à 19h30.
-[CA-QC Québec] Rencontres-Linux Québec - Le mardi 24 février 2026 de 17h00 à 20h00.
-[FR Le Mans] Permanence du mercredi - Le mercredi 25 février 2026 de 12h30 à 17h00.
-[FR Le Mans] Permanence du mercredi - Le mercredi 25 février 2026 de 12h30 à 17h00.
-[FR Aix-en-Provence] Open Bidouille Workshop au LAB@Floralies - Le mercredi 25 février 2026 de 17h30 à 19h30.
-[FR Beauvais] Sensibilisation et partage autour du Libre - Le mercredi 25 février 2026 de 18h00 à 20h00.
-[FR Marseille] Réunion d'information Installation Linux - Le mercredi 25 février 2026 de 18h00 à 19h00.
-[FR Cysoing] Mercredis Linux - Le mercredi 25 février 2026 de 18h30 à 23h30.
-[FR Le Versoud] Install Party Linux Grésivaudan - Le mercredi 25 février 2026 de 18h30 à 20h30.
-[Internet] Webinaire : FAQ logiciel Paheko - Le mercredi 25 février 2026 de 19h00 à 21h00.
-[FR Montpellier] Permanence | OpenStreetMap | HérOSM (hybride) - Le mercredi 25 février 2026 de 19h00 à 22h00.
-[CA-QC Lévis] CA de FACiL - Le mercredi 25 février 2026 de 19h00 à 21h00.
-[FR Nantes] Repair Café numérique + Install Party - Le jeudi 26 février 2026 de 09h30 à 12h30.
-[FR Saint-Girons] Install Party - Le jeudi 26 février 2026 de 09h30 à 12h00.
-[Internet] Découverte de Scenari (en visio) - Le jeudi 26 février 2026 de 16h00 à 17h00.
-[FR Sète] Permanence | Linuxerie | GNU/Linux et Logiciels Libres - Le jeudi 26 février 2026 de 18h00 à 20h00.
-[FR Lanmeur] Adieu Windows, bonjour le libre ! - Le vendredi 27 février 2026 de 13h40 à 16h15.
-[FR Nantes] Repair Café numérique + Install Party - Le vendredi 27 février 2026 de 14h00 à 17h30.
-[FR Arras] Repair Café Linux - Le vendredi 27 février 2026 de 14h00 à 17h00.
-[FR Nogent] Les cafés du Logiciels Libre - Le vendredi 27 février 2026 de 14h30 à 16h30.
-[FR Bury] Sensibilisation et partage autour du Libre - Le vendredi 27 février 2026 de 16h00 à 18h00.
-[FR Toulon] Install Party - Le vendredi 27 février 2026 de 17h00 à 21h00.
-[FR Gourin] Atelier Linux - Le vendredi 27 février 2026 de 18h30 à 20h00.
-[FR Villeneuve d’Ascq] Ateliers "Libre à vous" - Le samedi 28 février 2026 de 09h00 à 12h00.
-[FR Chaumont] Permanence Informatique de REVOL - Le samedi 28 février 2026 de 09h00 à 12h00.
-[CH Môtiers] Samedi du Libre - Le samedi 28 février 2026 de 09h00 à 16h30.
-[FR Saumur] Séance d’installation de GNU/Linux - Le samedi 28 février 2026 de 09h00 à 12h00.
-[FR Nantes] Repair Café numérique + Install Party - Le samedi 28 février 2026 de 09h30 à 12h30.
-[FR Wimille] Retrouvez votre liberté numérique - Le samedi 28 février 2026 de 10h00 à 12h00.
-[FR Périgueux] Les ateliers spécial Linux - Le samedi 28 février 2026 de 10h00 à 17h00.
-[FR 33600 Pessac] Journée Install-partie Découverte du Libre - Le samedi 28 février 2026 de 10h00 à 17h00.
-[FR Vandœuvre-lès-Nancy] Atelier libre - Envoyer des SMS depuis un ordinateur - Le samedi 28 février 2026 de 10h00 à 12h00.
-[FR Ivry sur Seine] Cours de l'Ecole du Logiciel Libre - Le samedi 28 février 2026 de 10h30 à 18h30.
-[FR Marseille] Install Party GNU/Linux - Le samedi 28 février 2026 de 14h00 à 18h00.
-[FR Oust] Repair’café du Haut-Salat - Le samedi 28 février 2026 de 14h00 à 18h00.
-[FR Ecully] Install Party - Le samedi 28 février 2026 de 14h00 à 17h00.
-[FR Saint-Ouen-sur-Seine] Atelier « reprenons le contrôle de nos smartphones » - Le samedi 28 février 2026 de 14h00 à 16h00.
-[FR Juvisy-sur-Orge] Permanence GNU/Linux - Le samedi 28 février 2026 de 14h30 à 17h00.
-[FR Saint-Cyr L'École] Permanences Logiciels Libres : formation Libreoffice - Le samedi 28 février 2026 de 15h00 à 16h30.
-[FR Charleville-Mézières] Les Samedis des Logiciels Libres - Le samedi 28 février 2026 de 15h00 à 17h00.
-[FR Quimper] Permanence Linux Quimper - Le samedi 28 février 2026 de 16h00 à 18h00.
-[FR Montigny le bretonneux] Challenges Hack Kids : relève les défis ! - Le samedi 28 février 2026 de 17h00 à 19h30.
-[FR Vire] Modélisation 3D avec OpenSCAD - Le samedi 28 février 2026 de 17h00 à 19h00.
-[FR Gaillac] Repair café - Le dimanche 1 mars 2026 de 10h00 à 14h00.
-[FR Saint-Caprais-de-Bordeaux] Ğmarché de Saint-Caprais-de-Bordeaux - Le dimanche 1 mars 2026 de 10h00 à 15h00.
-[FR Louargat] Repair Café et Install Party - Le dimanche 1 mars 2026 de 10h00 à 18h00.
-[FR Saint Clar] Tous les Lundis, médiatheque de Saint Clar - Le lundi 23 février 2026 de 10h00 à 17h00.
-Tous les lundis de 10h à 17h sans interruption, l'association Prends toi en main / atelier abcpc, propose install party, suivi, dépannage, formation et revalorisation à petit prix sous Linux exclusivement.
-L'atelier abcpc existe depuis plus de 10 ans et milite exclusivement pour les logiciels libres.
-Médiatheque, Médiatheque, 4 place Dastros, Saint Clar, Occitanie, France
-https://www.facebook.com/PrendsToiEnMain
-linux, permanence, dépannage, formation, adieu-windows, libres, logiciels-libres, abcpc, prends-toi-en-main, install-party [Internet] Mapathon 2025-2026 par CartONG - Le lundi 23 février 2026 de 18h00 à 20h00.
-Vous voulez vous engager pour une cause, rencontrer de nouvelles personnes et découvrir la cartographie participative et humanitaire? CartONG vous invite à participer à un ou plusieurs mapathons en ligne! ​​
-Venez cartographier les régions encore absentes des cartes pour soutenir les organisations humanitaires et de solidarité internationale qui ont besoin de cartes précises et à jour pour agir plus efficacement en cas de crise ou initier des projets de développement local.
-Les ateliers de cartographie sont organisés dans le cadre du projet Missing Maps, qui a pour objectif de cartographier de façon préventive les régions vulnérables aux catastrophes naturelles, crises sanitaires, environnementales, aux conflits et à la pauvreté. On peut penser qu'aujourd'hui toutes les parties du monde sont cartographiées, mais en réalité de nombreuses régions ne possèdent encore aucune carte!
-​ Pour qui? Pas besoin d'être un·e expert·e, les ateliers sont accessibles à tout le monde!
-​ Où ? 100% en ligne! Un lien de connexion vous sera envoyé après votre inscription
-​ ? Avec la plateforme de cartographie libre et contributive OpenStreetMap (OSM, le «Wikipédia des cartes») tout le monde peut participer à la cartographie de n'importe quelle zone de la planète:]]></description>
-      <pubDate>Tue, 24 Feb 2026 10:58:53 GMT</pubDate>
-      <source>LinuxFr</source>
-      <category>opensource</category>
-      <guid>https://linuxfr.org/news/agenda-du-libre-pour-la-semaine-9-de-l-annee-2026</guid>
-    </item>
-    <item>
       <title><![CDATA[AWS creates a sandbox for its agent experiments]]></title>
       <link>https://thenewstack.io/aws-strands-labs-launch/</link>
       <description><![CDATA[(AWS) is launching a dedicated GitHub organization for its most experimental agentic AI work. On Monday, the company launched Strands]]></description>
@@ -928,21 +1479,6 @@ Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navig
       <guid>https://linuxfr.org/news/physiocab-un-logiciel-libre-de-gestion-pour-kinesitherapeutes</guid>
     </item>
     <item>
-      <title><![CDATA[Concours - Gagnez une Raspberry Pi 5 avec Macé Robotics]]></title>
-      <link>https://linuxfr.org/news/concours-gagnez-une-raspberry-pi-5-avec-mace-robotics</link>
-      <description><![CDATA[À l’occasion de ses 10 ans de Macé Robotics, l’entreprise organise un concours qui se déroulera jusqu'au 26 février 2026.
-Macé Robotics est une entreprise individuelle fondée et gérée par moi-même (Nicolas), basée en Bretagne, spécialisée dans la conception et la réparation électronique, aussi bien pour les entreprises que pour les particuliers. Depuis 2016, je fabrique aussi du matériel Open Source également des robots mobiles Open Source destinés à l’enseignement supérieur et à la recherche. Ces robots sont basés sur un système Linux (Raspberry Pi OS), intégrant une carte Raspberry Pi ainsi qu’un microcontrôleur (Pico) dédié à la gestion des moteurs et des capteurs. J’utilise la suite logicielle KiCad sous licence GNU GPL (https://www.kicad.org/) pour la conception des circuits imprimés de ces robots. Attribution des lots par tirage au sort :
-→ 1er lot : une carte Raspberry Pi 5 (2 Go) → 2e lot : une carte Raspberry Pi Pico 2W
-La livraison est offerte en France. lien nᵒ 1 : Le concours pour participer Retour sur la course de robots – Saint-Brock Robot Race d'une dépêche précédente
-Suite à la dépêche de décembre 2024 concernant l’organisation de la course de robots mobiles, voici quelques retours sur cet événement : malgré plusieurs annulations d’écoles survenues quelques semaines avant la compétition, la course a tout de même pu avoir lieu.
-Environ quinze participants ont pris part à la compétition. Parmi les robots engagés, on comptait un robot DIY piloté par un microcontrôleur ESP32, aux côtés de plusieurs robots basé sur Raspberry Pi, offrant ainsi une belle diversité technologique.
-Télécharger ce contenu au format EPUB : voir le flux Atom ouvrir dans le navigateur]]></description>
-      <pubDate>Sat, 14 Feb 2026 08:47:09 GMT</pubDate>
-      <source>LinuxFr</source>
-      <category>opensource</category>
-      <guid>https://linuxfr.org/news/concours-gagnez-une-raspberry-pi-5-avec-mace-robotics</guid>
-    </item>
-    <item>
       <title><![CDATA[Chainguard admitted Factory 1.0 was “brittle.” Here’s how 2.0 fixes it.]]></title>
       <link>https://thenewstack.io/chainguard-admitted-factory-1-0-was-brittle-heres-how-2-0-fixes-it/</link>
       <description><![CDATA[The new, revised Factory 2.0 swaps out 1.0’s fragile, event-driven pipeline with a self-healing system powered by a new open]]></description>
@@ -993,29 +1529,6 @@ DON'T force synchronous participation from attendees. One of the key benefits of
       <source>Open Source.com (Nouveautés)</source>
       <category>opensource</category>
       <guid>https://opensource.com/article/23/5/virtual-in-person-events</guid>
-    </item>
-    <item>
-      <title><![CDATA[Kakveda open source-level AI, Infra observability agent]]></title>
-      <link>https://www.kakveda.com/</link>
-      <description><![CDATA[Article URL: https://www.kakveda.com/ URL: https://news.ycombinator.com/item?id=47193086
-Points: 1
-# : 1]]></description>
-      <pubDate>Sat, 28 Feb 2026 10:03:52 GMT</pubDate>
-      <source>Hacker News (nouveautés)</source>
-      <category>opensource</category>
-      <guid>https://www.kakveda.com/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: JobSeek Expat – a CLI tool to scrape English speaking jobs on LinkedIn]]></title>
-      <link>https://github.com/electricalgorithm/jobseek-expat</link>
-      <description><![CDATA[JobSeek Expat is a powerful, open-source CLI tool designed to help expats and international job seekers find English-speaking jobs in non-English speaking countries (like Germany, France, Netherlands, etc.).
-It scrapes major job boards, filters out local-language requirements, and presents you with a clean, curated list of opportunities. URL: https://news.ycombinator.com/item?id=47192874
-Points: 2
-# : 0]]></description>
-      <pubDate>Sat, 28 Feb 2026 09:37:27 GMT</pubDate>
-      <source>Hacker News (nouveautés)</source>
-      <category>opensource</category>
-      <guid>https://github.com/electricalgorithm/jobseek-expat</guid>
     </item>
     <item>
       <title><![CDATA[OpenAI révèle comment Pékin utilise ChatGPT pour industrialiser la répression numérique de ses dissidents à l'étranger, une situation qui en dit long sur la confidentialité de vos conversations IA]]></title>

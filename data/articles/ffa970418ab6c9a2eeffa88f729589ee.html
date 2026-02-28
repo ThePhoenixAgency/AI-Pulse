@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,94 +28,24 @@
     Source: The Hacker News | Date: 2/25/2026 2:30:00 PM | <a href="https://thehackernews.com/2026/02/top-5-ways-broken-triage-increases.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5NekLXfHU8r6WoAeokuYAZFesA6Hu1-CaDaMxGkNI2ZMMZQMYjhkhv9op5m7gxZPtPSsICJz6HOoQnbQLaLbb58xgMKzdIzZ2YEozZ7T7cPyliMxoRVkjYJ1JYk0XoR-_T6WovGnQQOiiUSOhu9cxn2e8XnXOWeGtdFe4WsQNXYMcLj9OT_iMQ9eQ1YQ/s1600/anyrun-main.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5NekLXfHU8r6WoAeokuYAZFesA6Hu1-CaDaMxGkNI2ZMMZQMYjhkhv9op5m7gxZPtPSsICJz6HOoQnbQLaLbb58xgMKzdIzZ2YEozZ7T7cPyliMxoRVkjYJ1JYk0XoR-_T6WovGnQQOiiUSOhu9cxn2e8XnXOWeGtdFe4WsQNXYMcLj9OT_iMQ9eQ1YQ/s1600/anyrun-main.jpg"></a></p>
-<p>Triage is supposed to make things simpler. In a lot of teams, it does the opposite.</p>
-<p>When you can’t reach a confident verdict early, alerts turn into repeat checks, back-and-forth, and “just escalate it” calls. That cost doesn’t stay inside the SOC; it shows up as missed SLAs, higher cost per case, and more room for real threats to slip through.</p>
-<p>So where does triage go wrong? Here are five triage issues that turn investigations into expensive guesswork, and how top teams are changing the outcome with execution evidence.</p>
-<h2>1. Decisions Made Without Real Evidence</h2>
-<p><strong>Business risk:</strong> The hardest triage failure to notice is when decisions get made before proof exists. If responders rely on partial signals (labels, hash matches, reputation), they end up approving or escalating cases without seeing what the file or link actually does.&nbsp;</p>
-<p>That uncertainty fuels false positives, missed real threats, slower containment, and higher cost per case, while giving attackers more time before anyone has confidence in the verdict.</p>
-<h3>The Fix: Get Execution Evidence Early</h3>
-<p>High-performing teams reduce this risk by validating behavior at triage, not later. Sandboxes make that practical by showing real execution: process activity, network calls, persistence, and the full attack chain.&nbsp;</p>
-<p>For example, with ANY.RUN’s interactive sandbox, teams report that in ~90% of cases, they can see <strong>the full attack chain within ~60 seconds</strong>, turning unclear alerts into evidence-backed decisions early in the workflow.</p>
-<p><a href="https://app.any.run/tasks/ccf7d689-7926-495d-b37f-d509536ff42b/?utm_source=thehackernews&amp;utm_medium=article&amp;utm_campaign=5ways_broken_triage&amp;utm_content=task&amp;utm_term=250226" target="_blank" rel="noopener noreferrer">See the complex hybrid attack exposed in 35 seconds</a>.</p>
-<table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVFJ2az1pZ0Fo1wP1xKq0K8i7Mbow5bUCVO-rdY5kk4cyRdObNFvZl6inRl8WGV72O-SOzSyjVbefZ-LLd94poWEcHLdPJbDyPCEy7Wy5qUo3eOkkaT-bHaJ9mgUcMRNeyr_NeqHss30ncGXU_QxWOeeo1lUa5UEwnqpRa_m0_zWd0CYKW9dEaWcvtPsc/s1600/1.png"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVFJ2az1pZ0Fo1wP1xKq0K8i7Mbow5bUCVO-rdY5kk4cyRdObNFvZl6inRl8WGV72O-SOzSyjVbefZ-LLd94poWEcHLdPJbDyPCEy7Wy5qUo3eOkkaT-bHaJ9mgUcMRNeyr_NeqHss30ncGXU_QxWOeeo1lUa5UEwnqpRa_m0_zWd0CYKW9dEaWcvtPsc/s1600/1.png"></a></td></tr><tr><td>Full attack chain with fake Microsoft login page revealed inside ANY.RUN sandbox in less than a minute</td></tr></tbody></table>
-<p>In this real-world hybrid phishing scenario combining Tycoon 2FA and Salty 2FA, most traditional controls failed to detect the threat because the attack blended multiple kits and evasive redirects. Inside an interactive sandbox, however, the full malicious flow and a clear verdict appeared in <strong>just 35 seconds</strong>.</p> <div>
-<p>Improve triage speed and certainty to cut MTTR by up to 21 minutes per case, control escalation costs, and limit real business exposure.</p>
-<p><a href="https://any.run/enterprise/?utm_source=thehackernews&amp;utm_medium=article&amp;utm_campaign=5ways_broken_triage&amp;utm_content=enterprise&amp;utm_term=250226#contact-sales" target="_blank" rel="noopener noreferrer">Explore faster triage</a></p>
-</div>
-<p><strong>Business outcomes:</strong></p>
-<ul>
-<li>Faster, evidence-backed verdicts at triage</li>
-<li>Lower cost per case by reducing rework</li>
-<li>Fewer missed threats caused by “unclear” closures</li>
-</ul>
-<h2>2. Triage Quality Depends on Analyst Seniority</h2>
-<p><strong>Business risk:</strong> In many SOCs, the outcome of triage depends on who touches the alert. Senior staff close faster because they recognize patterns; junior staff escalates because they don’t have enough confidence or context. The result is inconsistent verdicts, uneven response speed, and a workflow that doesn’t scale cleanly as alert volume grows.</p>
-<h3>The Fix: Make Triage Repeatable for Every Shift</h3>
-<p>Top teams reduce this gap by designing triage around shared evidence and repeatable steps, not personal experience. The goal is simple: give Tier 1 enough clarity to reach the same conclusion a senior responder would, using the same observable facts.</p>
-<table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQJcvSC5AH7W1c-_sk-KLWBVygzJiVw1FJQF-kIJ2Wilh8RAMsND6FB-NXH1fW27-11vr6VfB7Pv8EDv13q7G1eXJ_jOfYCs7KRs6oc995v_sytW-xP_3WYc52SXG3XbJuSodWdwsqTqmf5Im02YZn1pTlr96qeZeJiNqfQDGxENty0jtkD6K3RYSNwiU/s1600/2.png"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQJcvSC5AH7W1c-_sk-KLWBVygzJiVw1FJQF-kIJ2Wilh8RAMsND6FB-NXH1fW27-11vr6VfB7Pv8EDv13q7G1eXJ_jOfYCs7KRs6oc995v_sytW-xP_3WYc52SXG3XbJuSodWdwsqTqmf5Im02YZn1pTlr96qeZeJiNqfQDGxENty0jtkD6K3RYSNwiU/s1600/2.png"></a></td></tr><tr><td>Auto-generated report for easy sharing between team members</td></tr></tbody></table>
-<p>With ANY.RUN, teams can share the same sandbox session and findings through built-in teamwork features, so knowledge doesn’t stay in one person’s head. That consistency helps reduce “escalate to be safe” behavior and keeps triage outcomes stable across shifts.</p>
-<p><strong>Business outcomes:</strong></p> <h2>3. Triage Delays Give Attackers More Time</h2>
-<p><strong>Business risk:</strong> Even when a threat is detected, triage can take too long to confirm what’s happening. Manual checks and queued escalations delay action, extending dwell time and giving attackers room to move laterally or exfiltrate data. The business impact shows up as<strong> missed SLAs</strong> and higher incident costs.</p>
-<h3>The Fix: Shrink Time-to-Decision at Triage</h3>
-<p>High-performing teams treat triage as a speed problem: reduce the steps between detection and a defensible verdict. That means confirming behavior immediately, before the case bounces between queues or turns into a long validation loop.</p>
-<table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjjdIccYxdlklTNMiLzFI10W4kpa1TWPRqwib_-ZhZ7fAtF7qx_7W2BPXnWoo-qusmEsiTrRaFBvNaEKpIH-UUEraeyFI-k8ZMiWrcF43LIZ1iRjtNu2aBUc4dmkQIcGI2Am8GbQyq_qsz_MkBygn56fgFmYRHL-yxOZXBFFfXjEeSkPfF_98JV8UAsmP8/s1600/3.png"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjjdIccYxdlklTNMiLzFI10W4kpa1TWPRqwib_-ZhZ7fAtF7qx_7W2BPXnWoo-qusmEsiTrRaFBvNaEKpIH-UUEraeyFI-k8ZMiWrcF43LIZ1iRjtNu2aBUc4dmkQIcGI2Am8GbQyq_qsz_MkBygn56fgFmYRHL-yxOZXBFFfXjEeSkPfF_98JV8UAsmP8/s1600/3.png"></a></td></tr><tr><td>Full visibility into the attack revealed in 35 seconds inside ANY.RUN’s cloud sandbox</td></tr></tbody></table>
-<p>With the interactive sandbox, suspicious files and URLs can be detonated quickly, and the full attack chain often becomes visible in under a minute. Operational results often show <strong>up to 21 minutes shaved off MTTR per case</strong>, because teams spend less time waiting, re-checking, and escalating just to confirm what’s happening.</p> <p><strong>Business outcomes:</strong></p>
-<ul>
-<li>Earlier confirmation, shorter dwell time</li>
-<li>Fewer SLA misses under load</li>
-<li>Smaller incident impact</li>
-</ul>
-<h2>4. Over-Escalation Hides Real Priority Incidents</h2>
-<p><strong>Business risk:</strong> When evidence is unclear, Tier 1 escalates “just to be safe,” and Tier 2 becomes a verification layer for borderline cases. That clogs queues, pulls senior time into “maybes,” and slows response to high-impact incidents, increasing cost per investigation and raising the risk that critical cases wait too long.</p>
-<h3>The Fix: Close More Cases at Tier 1 with Execution Evidence</h3>
-<p>When Tier 1 can prove or dismiss alerts independently, Tier 2 stays focused on real incidents instead of acting as a verification desk.</p>
-<p>With solutions like ANY.RUN, that becomes realistic because the sandbox is built for fast triage: it’s intuitive to use, provides <strong>AI-assisted guidance</strong> during analysis, and generates <strong>auto-built reports</strong> that capture the key evidence without extra manual write-ups. A dedicated <strong>IOCs tab</strong> also pulls indicators into one place, so Tier 1 can escalate with context rather than escalating for confirmation.&nbsp;</p>
-<table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmeV-l1OdL_llRBog9oa1KAqC2QRCBlhQ9ek5IQDdA1JSpO2zhjD1ZyMx1GcYBCbv-2rqVOkAv9XZwQA3zuTqCpjNzDifmdtyQjyVnET_14Wp3T6e8glQ3E_AZGPGy0y953wJ2FUr47teICl3JYFBN5gyGSyHuCpR_HOJdPEn5yoIzAJQsnDq2rvMBYuM/s1600/4.png"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmeV-l1OdL_llRBog9oa1KAqC2QRCBlhQ9ek5IQDdA1JSpO2zhjD1ZyMx1GcYBCbv-2rqVOkAv9XZwQA3zuTqCpjNzDifmdtyQjyVnET_14Wp3T6e8glQ3E_AZGPGy0y953wJ2FUr47teICl3JYFBN5gyGSyHuCpR_HOJdPEn5yoIzAJQsnDq2rvMBYuM/s1600/4.png"></a></td></tr><tr><td>AI assisted guidance showcased in ANY.RUN’s sandbox</td></tr></tbody></table>
-<p>This is how teams see <strong>up to a 30% reduction in Tier-1 → Tier-2 escalations</strong>, preserving senior capacity for high-risk threats.</p>
-<p><strong>Business outcomes:</strong></p>
-<ul>
-<li>Less Tier 2 overload</li>
-<li>Faster queues</li>
-<li>Lower escalation volume</li>
-</ul>
-<h2>5. Manual Work Limits Scale and Increases Error</h2>
-<p><strong>Business risk:</strong> A lot of triage is still repetitive manual work, following redirect chains, dealing with CAPTCHAs, or uncovering hidden links in QR codes. As volume grows, this limits throughput, increases mistakes, and triggers unnecessary escalation simply because teams run out of time.</p>
-<h3>The Fix: Reduce Manual Steps with Interactive Automation</h3>
-<p>Modern sandbox environments combine automation with human-like interactivity, allowing suspicious content to be safely opened, redirected flows followed, and protection mechanisms such as CAPTCHAs or QR-embedded links to be handled automatically during analysis.</p>
-<table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqqoh2BZ392lVjm2MQNmAlEJYk0WTjudv9gaNsYge5dZZ-KQZL2idjwWw3pMzER5JhTRN4R-tYGiX7iFthb0e1l_8WLug9tVXrvCFvcTRGPce3jICDMQ9VV38p9qki2buqHpYfPcuBbk2QXNuqjB1yZ5wxj7fGs_RItkI_8B-b_1rxfyh2t9H3wPDB_ZE/s1600/5.png"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqqoh2BZ392lVjm2MQNmAlEJYk0WTjudv9gaNsYge5dZZ-KQZL2idjwWw3pMzER5JhTRN4R-tYGiX7iFthb0e1l_8WLug9tVXrvCFvcTRGPce3jICDMQ9VV38p9qki2buqHpYfPcuBbk2QXNuqjB1yZ5wxj7fGs_RItkI_8B-b_1rxfyh2t9H3wPDB_ZE/s1600/5.png"></a></td></tr><tr><td>Malicious PDF with a QR code: ANY.RUN extracts and opens the embedded link automatically, revealing the next stage of the attack</td></tr></tbody></table>
-<p>With ANY.RUN’s interactive sandbox, these routine triage actions are performed inside the controlled environment, exposing hidden malicious behavior while removing repetitive work from responders. In day-to-day operations, teams often see <strong>up to a 20% decrease in Tier 1 workload</strong>, along with fewer escalations and more time available for high-value investigation.&nbsp;</p>
-<p><strong>Business outcomes:</strong></p>
-<ul>
-<li>More Tier 1 capacity</li>
-<li>Fewer manual errors</li>
-<li>More time for confirmed threats</li>
-</ul>
-<h2>Reduce Business Risk by Fixing Triage First</h2>
-<p>Broken triage rarely looks dramatic. Instead, it quietly slows response, increases escalation pressure, and keeps real threats open longer than the business can afford.</p>
-<p>Teams that shift to evidence-driven, execution-based triage consistently report measurable gains, including:</p>
-<ul>
-<li><strong>Up to 3× improvement in overall SOC efficiency</strong></li>
-<li><strong>94% of users reported faster triage and clearer verdicts</strong></li>
-<li><strong>Up to 58% more threats identified across investigations</strong></li>
-</ul>
-<p>Improving speed, certainty, and scalability at the triage stage is one of the fastest ways to reduce MTTR, control operational cost, and cut real business exposure.</p>
-<p><a href="https://any.run/enterprise/?utm_source=thehackernews&amp;utm_medium=article&amp;utm_campaign=5ways_broken_triage&amp;utm_content=enterprise&amp;utm_term=250226#contact-sales" target="_blank" rel="noopener noreferrer">Explore evidence-driven triage</a> for your SOC and turn faster decisions into measurable security performance.</p> </div></div>
+    <p>Triage is supposed to make things simpler. In a lot of teams, it does the opposite.
+When you can’t reach a confident verdict early, alerts turn into repeat checks, back-and-forth, and “just escalate it” calls. That cost doesn’t stay inside the SOC; it shows up as missed SLAs, higher cost per case, and more room for real threats to slip through.
+So where does triage go wrong? Here are five triage</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

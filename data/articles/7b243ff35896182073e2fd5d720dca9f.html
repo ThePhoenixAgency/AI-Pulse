@@ -2,20 +2,14 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Dragino x Raspberry Pi : sélection MONRASPBERRY et guides d’intégration IoT (LoRaWAN &amp; industriels) - MONRASPBERRY</title>
+<title>Dragino x Raspberry Pi : sélection MONRASPBERRY et guides d’intégration IoT (LoRaWAN &amp; industriels)</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,74 +23,27 @@
 </style>
 </head>
 <body>
-  <h1>Dragino x Raspberry Pi : sélection MONRASPBERRY et guides d’intégration IoT (LoRaWAN &amp; industriels) - MONRASPBERRY</h1>
+  <h1>Dragino x Raspberry Pi : sélection MONRASPBERRY et guides d’intégration IoT (LoRaWAN &amp; industriels)</h1>
   <div class="metadata">
     Source: MonRaspberry.com | Date: 9/26/2025 7:00:00 AM | <a href="https://monraspberry.com/dragino-raspberry-pi-selection-projets-iot/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><p> </p><h2>Dragino x Raspberry Pi : sélection MONRASPBERRY et guides d’intégration IoT (LoRaWAN &amp; industriels)</h2> <p></p><div>
-<h2>Pourquoi Dragino + Raspberry Pi ?</h2> <ul>
-<li><strong>Compatibilité IoT éprouvée</strong> : capteurs LoRaWAN prêts pour EU868, modules RS485-LoRa pour l’industriel, HAT LoRa pour P2P/tests.</li> <li><strong>Faciles à déployer</strong> : profils LoRaWAN connus, payloads documentés, alimentation sobre.</li> <li><strong>Parfaits avec un Pi</strong> : collecte locale (InfluxDB/Grafana/Node-RED), ou via une <strong>passerelle ChirpStack</strong> sur Raspberry Pi 5 (recommandé dans la boutique).</li>
-</ul> <h2>Les références disponibles</h2> <ul>
-<li><a href="https://monraspberry.com/produit/dragino-lht65n/" target="_blank" rel="noopener noreferrer"><strong>LHT65N</strong></a> — Capteur T°/Humidité <strong>IP65</strong> (extérieur/indus).</li> <li><a href="https://monraspberry.com/produit/dragino-lht52-capteur-de-temperature-et-humidite-interieur-lorawan/" target="_blank" rel="noopener noreferrer"><strong>LHT52</strong></a> — Capteur T°/Humidité <strong>intérieur</strong> (ultra basse conso).</li> <li><strong><a href="https://monraspberry.com/produit/dragino-aqs01-l-capteur-de-qualite-de-lair-interieur-lorawan/" target="_blank" rel="noopener noreferrer">AQS01-L</a></strong> — Capteur <strong>qualité de l’air intérieur</strong> (CO₂, T°, HR, parfois pression).</li> <li><strong><a href="https://monraspberry.com/produit/dragino-lwl02-detecteur-de-fuite-deau-lorawan/" target="_blank" rel="noopener noreferrer">LWL02</a></strong> — <strong>Détecteur de fuite d’eau</strong> (compact, autonome).</li> <li><strong><a href="https://monraspberry.com/produit/dragino-lwl04-detecteur-de-fuite-deau-sur-rampe-lorawan/" target="_blank" rel="noopener noreferrer">LWL04</a></strong> — <strong>Détecteur de fuite</strong> (format “rampe” / ligne), usage continu.</li> <li><strong><a href="https://monraspberry.com/produit/dragino-lds02-capteur-douverture-fermeture-de-porte-lorawan/">LDS02</a></strong> — <strong>Ouverture/fermeture de porte</strong> (contact magnétique).</li> <li><strong><a href="https://monraspberry.com/produit/dragino-se01-humidite-temperature-conductivite-du-sol-lorawan/" target="_blank" rel="noopener noreferrer">SE01</a></strong> — <strong>Humidité du sol / température / conductivité (EC)</strong> (Jardins, serres, cuves). <a href="https://monraspberry.com/en/product/dragino-se01-soil-moisture-temperature-conductivity-lorawan/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer"></a></li>
-</ul> <p><a href="https://monraspberry.com/marque/dragino/" target="_blank" rel="noopener noreferrer">Cliquez ici</a> pour voir l’ensemble des produits.</p> <h2>Choisir le bon capteur Dragino selon ton projet</h2> <h3>1) Bâtiment / IT / tertiaire (indoor)</h3> <ul>
-<li><strong>Confort &amp; IAQ</strong> : <em>AQS01-L</em> pour CO₂/TVOC + T°/HR → salles de classe, open spaces, salles de réunion.</li> <li><strong>Confort thermique</strong> : <em>LHT52</em> (intérieur) pour T°/HR rooms, vitrines, chambres froides légères.</li> <li><strong>Fuites techniques</strong> : <em>LWL02</em> (spot) ou <em>LWL04</em> (ligne) → faux-planchers, racks, locaux techniques.</li> <li><strong>Contrôle d’accès léger</strong> : <em>LDS02</em> sur portes/armoires.</li>
-</ul> <h3>2) Extérieur / agro / indus léger</h3> <ul>
-<li><strong>T°/HR robuste</strong> : <em>LHT65N</em> (IP65) → zones semi-exposées, entrepôts, boxes.</li> <li><strong>Sol &amp; irrigation</strong> : <em>SE01</em> (humidité/EC) → bacs, serres, parcelles, citernes.</li> <li><strong>Détection fuites étendue</strong> : <em>LWL04</em> le long des tuyauteries.</li>
-</ul> <h2>Architecture type avec Raspberry Pi (LoRaWAN)</h2> <p><strong>Passerelle conseillée</strong> : Raspberry Pi 5 (4GB) + concentrateur LoRa SX1302 (HAT/LR1302), antenne EU868, alim USB-C 45 W, microSD 32 Go.<br><strong>Stack logicielle</strong> : <strong>ChirpStack Gateway OS</strong> (ou Docker) → <em>Gateway Bridge</em>, <em>Network Server</em>, <em>Application Server</em>.<br><strong>Flux</strong> : Capteur Dragino → radio LoRa → Passerelle Pi → MQTT → Décodage (codecs) → Tableau de bord (Node-RED / Grafana) ou envoi API.</p> <blockquote>
-<p><strong>Bonnes pratiques</strong><br>• Déclare tes capteurs en <strong>OTAA</strong>, <strong>EU868</strong>.<br>• Défini un <strong>Device Profile</strong> par famille (T°/HR, IAQ, fuites, sol).<br>• Active un <strong>codec</strong> (Cayenne LPP ou spécifique Dragino) pour obtenir des champs lisibles (temperature, humidity, co2, leak, open, soil_moisture, ec…).</p>
-</blockquote> <h2>Pas-à-pas (exemples concrets)</h2> <h3>A) Confort &amp; qualité de l’air (AQS01-L + LHT52)</h3> <ol>
-<li><strong>Passerelle Pi prête</strong> (ChirpStack OK).</li> <li><strong>Device Profile</strong> IAQ (classe A, RX2 EU par défaut, DR0).</li> <li><strong>Device</strong> : saisis <strong>DevEUI / JoinEUI / AppKey</strong> du AQS01-L.</li> <li><strong>Codec</strong> : IAQ/CO₂.</li> <li><strong>Dashboard</strong> :
-<ul>
-<li>Panneau CO₂ (ppm) + T° (°C) + HR (%).</li> <li>Seuils (ex. 1000 ppm) → alerte.</li>
-</ul>
-</li> <li><strong>Ajoute LHT52</strong> pour comparer CO₂ vs confort (T°/HR) par salle.</li>
-</ol> <h3>B) Anti-fuite (LWL02 spot &amp; LWL04 en ligne)</h3> <ol>
-<li><strong>Device Profile</strong> “leak” (uplink événementiel + heartbeat).</li> <li><strong>LWL02</strong> : positions ciblées (sous clim, lave-vaisselle, nourrices).</li> <li><strong>LWL04</strong> : pose le long des rampes/tuyaux (zones longues).</li> <li><strong>Règles</strong> : si <code>leak == true</code> → alerte immédiate + journalisation + éventuellement coupure électrovanne (via relais sur une autre brique).</li>
-</ol> <h3>C) Agro / irrigation (SE01 + LHT65N)</h3> <ol>
-<li><strong>SE01</strong> : renseigne les paramètres de remontée (ex. toutes les 15 min).</li> <li><strong>LHT65N</strong> : ambiance extérieure robuste (IP65) pour corréler T°/HR avec humidité/EC du sol.</li> <li><strong>Scénario</strong> :
-<ul>
-<li>Si <code>soil_moisture &lt; seuil</code> <strong>ET</strong> <code>ETP forte</code> (forte T°/faible HR) → notification “Irrigation conseillée”.</li> <li>Historise <strong>EC</strong> pour surveiller la salinité et adapter l’arrosage.</li>
-</ul>
-</li>
-</ol> <h3>D) Supervision d’accès léger (LDS02)</h3> <ol>
-<li>Pose <strong>LDS02</strong> sur portes/racks.</li> <li><strong>Dash</strong> : nombre d’ouvertures / plages horaires.</li> <li>Alerte si ouverture <strong>en dehors des heures</strong> (downlink possible pour ajuster paramètres).</li>
-</ol> <h2>Décodage : formats &amp; routage (exemples)</h2> <h3>MQTT sortant (ChirpStack)</h3> <ul>
-<li>Topic type : <code>application/&lt;appID&gt;/device/&lt;devEUI&gt;/event/up</code></li> <li>Payload JSON (ex. T°/HR) :</li>
-</ul> <div><pre>{ "deviceInfo": {"devEui": "A84041...", "name": "lht52_salle_a"}, "rxInfo": [{"rssi": -92, "snr": 6.5}], "object": {"temperature": 22.6, "humidity": 47.8, "battery": 3.01}
-}
-</pre></div> <ul>
-<li>IAQ (ex. AQS01-L) :</li>
-</ul> <div><pre>{"co2": 812, "temperature": 23.1, "humidity": 40.3, "pressure": 1007}
-</pre></div> <ul>
-<li>Fuite (LWL02/LWL04) :</li>
-</ul> <div><pre>{"leak": true, "counter": 3}
-</pre></div> <ul>
-<li>Sol (SE01) :</li>
-</ul> <div><pre>{"soil_moisture": 28.5, "soil_temp": 18.4, "ec": 1.12}
-</pre></div> <blockquote>
-<p><strong>Astuce</strong> : route vers <strong>Node-RED</strong> pour les règles (seuils/alertes), <strong>InfluxDB</strong> pour l’historique, <strong>Grafana</strong> pour les dashboards.</p>
-</blockquote> <h2>Autonomie &amp; réglages typiques</h2> <ul>
-<li><strong>LHT52 / LHT65N</strong> : intervalle 5–15 min (bâtiment) ou 15–30 min (extérieur) → multi-années.</li> <li><strong>AQS01-L</strong> : intervalle 5–10 min en intérieur (équilibre granularité/autonomie).</li> <li><strong>LWL02/LWL04</strong> : événementiel + heartbeat (ex. 60–120 min).</li> <li><strong>SE01</strong> : 10–30 min selon dynamique du sol (plus lent que l’air).</li>
-</ul> <p><em>(Toujours ajuster en fonction de la batterie et du duty-cycle EU868.)</em></p> <h2>Bonnes pratiques d’installation</h2> <ul>
-<li><strong>Antenne</strong> de la passerelle : en hauteur, câble court (type LMR-400), gain 3–8 dBi.</li> <li><strong>Capteurs indoor</strong> : éviter zones de courants d’air (CO₂, T°/HR).</li> <li><strong>Capteurs fuites</strong> : poser au <strong>point bas</strong> ; pour LWL04, longer la zone sensible.</li> <li><strong>Capteurs sol</strong> : bien tasser autour de la sonde, calibrer si nécessaire (EC).</li> <li><strong>Sécurité</strong> : MQTT en TLS, VLAN dédié IoT, mises à jour régulières du Pi.</li>
-</ul> <h2>Conclusion</h2> <p>Avec sa gamme de capteurs fiables et accessibles, <strong>Dragino</strong> s’impose comme un partenaire idéal pour déployer des projets <strong>IoT LoRaWAN</strong> avec un <strong>Raspberry Pi</strong>.</p> <p>Que ce soit pour :</p> <ul>
-<li>surveiller le confort et la qualité de l’air intérieur avec l’<strong>AQS01-L</strong> ou le <strong>LHT52</strong>,</li> <li>sécuriser un local avec les détecteurs de fuites <strong>LWL02 / LWL04</strong> ou le contact <strong>LDS02</strong>,</li> <li>piloter l’irrigation grâce au capteur de sol <strong>SE01</strong>,</li> <li>ou collecter des données robustes en extérieur avec le <strong>LHT65N</strong>,</li>
-</ul> <p> il existe toujours une solution Dragino adaptée à ton besoin.</p> <p>En combinant ces capteurs avec une <strong>passerelle LoRaWAN sur Raspberry Pi 5</strong> et un serveur <strong>ChirpStack</strong>, tu obtiens une infrastructure <strong>fiable, évolutive et économique</strong>.</p> <p>Et si tu veux aller encore plus vite, tu retrouves déjà toute la sélection <strong>Dragino</strong> directement sur <strong>MONRASPBERRY</strong>, ainsi que des <strong>kits clé-en-main</strong> prêts à déployer.</p> <p><a href="https://monraspberry.com/marque/dragino/">Cliquez ici pour découvrir les produits Dragino</a></p> </div></div>
+    <p>Capteurs, passerelles et modules Dragino sélectionnés par MonRaspberry, avec des scénarios concrets et des pas-à-pas pour les intégrer proprement à un Raspberry Pi.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);

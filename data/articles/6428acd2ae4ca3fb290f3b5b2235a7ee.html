@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - JoHof/volresample</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - JoHof/volresample</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/28/2026 5:21:04 PM | <a href="https://github.com/JoHof/volresample" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>volresample</h1><a href="#volresample"></a></div>
+<p><a href="https://opensource.org/licenses/MIT"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT"></a>
+<a href="https://www.python.org/downloads/"><img src="https://camo.githubusercontent.com/e115a70b47171326abc8f13ca55b2fafacdcafce1f251fed5b1ead0195717f56/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d332e392b2d626c75652e737667" alt="Python 3.9+"></a></p>
+<p>Fast 3D volume resampling with Cython and OpenMP parallelization.</p>
+<p>Implemented against PyTorch's </p><pre><code>F.interpolate</code></pre> and <pre><code>F.grid_sample</code></pre> as a reference, producing identical results. Can be used as a drop-in replacement when PyTorch is not available or when better performance is desired on CPU.<p></p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li>Cython-optimized with OpenMP parallelization</li>
+<li>Simple API: <pre><code>resample()</code></pre> and <pre><code>grid_sample()</code></pre></li>
+<li>Interpolation modes: nearest, linear and area</li>
+<li>Supports 3D and 4D (multi-channel) volumes</li>
+<li>Supports uint8, int16 (nearest) and float32 dtypes (all)</li>
+</ul>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><pre>pip install volresample</pre></div>
+<p>Or build from source:</p>
+<div><pre>git clone https://github.com/JoHof/volresample.git
+<span>cd</span> volresample
+uv sync</pre></div>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Basic Resampling</h3><a href="#basic-resampling"></a></div>
+<div><pre><span>import</span> <span>numpy</span> <span>as</span> <span>np</span>
+<span>import</span> <span>volresample</span> <span># Create a 3D volume</span>
+<span>volume</span> <span>=</span> <span>np</span>.<span>random</span>.<span>rand</span>(<span>128</span>, <span>128</span>, <span>128</span>).<span>astype</span>(<span>np</span>.<span>float32</span>) <span># Resample to a different size</span>
+<span>resampled</span> <span>=</span> <span>volresample</span>.<span>resample</span>(<span>volume</span>, (<span>64</span>, <span>64</span>, <span>64</span>), <span>mode</span><span>=</span><span>'linear'</span>)
+<span>print</span>(<span>resampled</span>.<span>shape</span>) <span># (64, 64, 64)</span></pre></div>
+<div><h3>Multi-Channel Volumes</h3><a href="#multi-channel-volumes"></a></div>
+<div><pre><span># 4D volume with 4 channels</span>
+<span>volume_4d</span> <span>=</span> <span>np</span>.<span>random</span>.<span>rand</span>(<span>4</span>, <span>128</span>, <span>128</span>, <span>128</span>).<span>astype</span>(<span>np</span>.<span>float32</span>) <span># Resample all channels</span>
+<span>resampled_4d</span> <span>=</span> <span>volresample</span>.<span>resample</span>(<span>volume_4d</span>, (<span>64</span>, <span>64</span>, <span>64</span>), <span>mode</span><span>=</span><span>'linear'</span>)
+<span>print</span>(<span>resampled_4d</span>.<span>shape</span>) <span># (4, 64, 64, 64)</span></pre></div>
+<div><h3>Batched Multi-Channel Volumes</h3><a href="#batched-multi-channel-volumes"></a></div>
+<div><pre><span># 5D volume with batch dimension (N, C, D, H, W)</span>
+<span>volume_5d</span> <span>=</span> <span>np</span>.<span>random</span>.<span>rand</span>(<span>2</span>, <span>4</span>, <span>128</span>, <span>128</span>, <span>128</span>).<span>astype</span>(<span>np</span>.<span>float32</span>) <span># Resample all batches and channels</span>
+<span>resampled_5d</span> <span>=</span> <span>volresample</span>.<span>resample</span>(<span>volume_5d</span>, (<span>64</span>, <span>64</span>, <span>64</span>), <span>mode</span><span>=</span><span>'linear'</span>)
+<span>print</span>(<span>resampled_5d</span>.<span>shape</span>) <span># (2, 4, 64, 64, 64)</span></pre></div>
+<div><h3>Grid Sampling</h3><a href="#grid-sampling"></a></div>
+<div><pre><span># Input volume: (N, C, D, H, W)</span>
+<span>input</span> <span>=</span> <span>np</span>.<span>random</span>.<span>rand</span>(<span>2</span>, <span>3</span>, <span>32</span>, <span>32</span>, <span>32</span>).<span>astype</span>(<span>np</span>.<span>float32</span>) <span># Sampling grid with normalized coordinates in [-1, 1]</span>
+<span>grid</span> <span>=</span> <span>np</span>.<span>random</span>.<span>uniform</span>(<span>-</span><span>1</span>, <span>1</span>, (<span>2</span>, <span>24</span>, <span>24</span>, <span>24</span>, <span>3</span>)).<span>astype</span>(<span>np</span>.<span>float32</span>) <span># Sample with linear interpolation</span>
+<span>output</span> <span>=</span> <span>volresample</span>.<span>grid_sample</span>(<span>input</span>, <span>grid</span>, <span>mode</span><span>=</span><span>'linear'</span>, <span>padding_mode</span><span>=</span><span>'zeros'</span>)
+<span>print</span>(<span>output</span>.<span>shape</span>) <span># (2, 3, 24, 24, 24)</span></pre></div>
+<div><h3>Parallelization</h3><a href="#parallelization"></a></div>
+<div><pre><span>import</span> <span>volresample</span> <span># Check default thread count (min of cpu_count and 4)</span>
+<span>print</span>(<span>volresample</span>.<span>get_num_threads</span>()) <span># e.g., 4</span> <span># Set custom thread count</span>
+<span>volresample</span>.<span>set_num_threads</span>(<span>8</span>) <span># All subsequent operations use 8 threads</span>
+<span>resampled</span> <span>=</span> <span>volresample</span>.<span>resample</span>(<span>volume</span>, (<span>64</span>, <span>64</span>, <span>64</span>), <span>mode</span><span>=</span><span>'linear'</span>)</pre></div>
+<div><h2>API Reference</h2><a href="#api-reference"></a></div>
+<div><h3><pre><code>resample(data, size, mode='linear')</code></pre></h3><a href="#resampledata-size-modelinear"></a></div>
+<p>Resample a 3D, 4D, or 5D volume to a new size.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><pre><code>data</code></pre> (ndarray): Input volume of shape <pre><code>(D, H, W)</code></pre>, <pre><code>(C, D, H, W)</code></pre>, or <pre><code>(N, C, D, H, W)</code></pre></li>
+<li><pre><code>size</code></pre> (tuple): Target size <pre><code>(D_out, H_out, W_out)</code></pre></li>
+<li><pre><code>mode</code></pre> (str): Interpolation mode:
+<ul>
+<li><pre><code>'nearest'</code></pre>: Nearest neighbor (works with all dtypes)</li>
+<li><pre><code>'linear'</code></pre>: Trilinear interpolation (float32 only)</li>
+<li><pre><code>'area'</code></pre>: Area-based averaging (float32 only, suited for downsampling)</li>
+</ul>
+</li>
+</ul>
+<p><strong>PyTorch correspondence:</strong></p>
+<table>
+<thead>
+<tr>
+<th>volresample</th>
+<th>PyTorch <pre><code>F.interpolate</code></pre></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>mode='nearest'</code></pre></td>
+<td><pre><code>mode='nearest-exact'</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>mode='linear'</code></pre></td>
+<td><pre><code>mode='trilinear'</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>mode='area'</code></pre></td>
+<td><pre><code>mode='area'</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>volresample does not expose an </p><pre><code>align_corners</code></pre> parameter. The behavior matches PyTorch's <pre><code>align_corners=False</code></pre> (the default).<p></p>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>Resampled array with same number of dimensions as input</li>
+</ul>
+<p><strong>Supported Dtypes:</strong></p>
+<ul>
+<li><pre><code>uint8</code></pre>, <pre><code>int16</code></pre>: Only with <pre><code>mode='nearest'</code></pre></li>
+<li><pre><code>float32</code></pre>: All modes</li>
+</ul>
+<div><h3><pre><code>grid_sample(input, grid, mode='linear', padding_mode='zeros')</code></pre></h3><a href="#grid_sampleinput-grid-modelinear-padding_modezeros"></a></div>
+<p>Sample input at arbitrary locations specified by a grid.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><pre><code>input</code></pre> (ndarray): Input volume of shape <pre><code>(N, C, D, H, W)</code></pre></li>
+<li><pre><code>grid</code></pre> (ndarray): Sampling grid of shape <pre><code>(N, D_out, H_out, W_out, 3)</code></pre>
+<ul>
+<li>Values in range <pre><code>[-1, 1]</code></pre> where -1 maps to the first voxel, 1 to the last</li>
+</ul>
+</li>
+<li><pre><code>mode</code></pre> (str): <pre><code>'nearest'</code></pre> or <pre><code>'linear'</code></pre></li>
+<li><pre><code>padding_mode</code></pre> (str): <pre><code>'zeros'</code></pre>, <pre><code>'border'</code></pre>, or <pre><code>'reflection'</code></pre></li>
+</ul>
+<p><strong>PyTorch correspondence:</strong></p>
+<table>
+<thead>
+<tr>
+<th>volresample</th>
+<th>PyTorch <pre><code>F.grid_sample</code></pre></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>mode='nearest'</code></pre></td>
+<td><pre><code>mode='nearest'</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>mode='linear'</code></pre></td>
+<td><pre><code>mode='bilinear'</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>The behavior matches PyTorch's </p><pre><code>grid_sample</code></pre> with <pre><code>align_corners=False</code></pre>.<p></p>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>Sampled array of shape <pre><code>(N, C, D_out, H_out, W_out)</code></pre></li>
+</ul>
+<div><h3><pre><code>set_num_threads(num_threads)</code></pre></h3><a href="#set_num_threadsnum_threads"></a></div>
+<p>Set the number of threads used for parallel operations.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><pre><code>num_threads</code></pre> (int): Number of threads to use (must be &gt;= 1)</li>
+</ul>
+<div><h3><pre><code>get_num_threads()</code></pre></h3><a href="#get_num_threads"></a></div>
+<p>Get the current number of threads used for parallel operations.</p>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>Current thread count (default: <pre><code>min(cpu_count, 4)</code></pre>)</li>
+</ul>
+<div><h2>Performance</h2><a href="#performance"></a></div>
+<p>Benchmarks on an Intel i7-8565U against PyTorch 2.8.0. Times are means over 10 iterations.</p>
+<p><strong></strong></p><pre><strong><code>resample()</code></strong></pre> — single large 3D volume:<p></p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Mode</th>
+<th><strong>Single-thread</strong></th>
+<th></th>
+<th></th>
+<th><strong>Four-threads</strong></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>volresample</td>
+<td>PyTorch</td>
+<td>Speedup</td>
+<td>volresample</td>
+<td>PyTorch</td>
+<td>Speedup</td>
+</tr>
+<tr>
+<td>512³ → 256³</td>
+<td>nearest</td>
+<td>23.6 ms</td>
+<td>38.0 ms</td>
+<td>1.6×</td>
+<td>12.6 ms</td>
+<td>16.7 ms</td>
+<td>1.3×</td>
+</tr>
+<tr>
+<td>512³ → 256³</td>
+<td>linear</td>
+<td>99.9 ms</td>
+<td>182 ms</td>
+<td>1.8×</td>
+<td>34.3 ms</td>
+<td>54.6 ms</td>
+<td>1.6×</td>
+</tr>
+<tr>
+<td>512³ → 256³</td>
+<td>area</td>
+<td>230 ms</td>
+<td>611 ms</td>
+<td>2.7×</td>
+<td>64.5 ms</td>
+<td>613 ms</td>
+<td><strong>9.5×</strong></td>
+</tr>
+<tr>
+<td>512³ → 256³</td>
+<td>nearest (uint8)</td>
+<td>13.7 ms</td>
+<td>33.8 ms</td>
+<td>2.5×</td>
+<td>4.3 ms</td>
+<td>10.4 ms</td>
+<td>2.4×</td>
+</tr>
+<tr>
+<td>512³ → 256³</td>
+<td>nearest (int16)</td>
+<td>16.5 ms</td>
+<td>217 ms</td>
+<td><strong>13.2×</strong></td>
+<td>8.4 ms</td>
+<td>93.2 ms</td>
+<td>11.2×</td>
+</tr>
+</tbody>
+</table>
+<p><strong></strong></p><pre><strong><code>grid_sample()</code></strong></pre> — single large 3D volume (128³ input):<p></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Padding</th>
+<th><strong>Single-thread</strong></th>
+<th></th>
+<th></th>
+<th><strong>Four-threads</strong></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>volresample</td>
+<td>PyTorch</td>
+<td>Speedup</td>
+<td>volresample</td>
+<td>PyTorch</td>
+<td>Speedup</td>
+</tr>
+<tr>
+<td>linear</td>
+<td>zeros</td>
+<td>118 ms</td>
+<td>181 ms</td>
+<td>1.5×</td>
+<td>38.1 ms</td>
+<td>169 ms</td>
+<td>4.4×</td>
+</tr>
+<tr>
+<td>linear</td>
+<td>reflection</td>
+<td>103 ms</td>
+<td>211 ms</td>
+<td>2.1×</td>
+<td>33.2 ms</td>
+<td>194 ms</td>
+<td>5.9×</td>
+</tr>
+</tbody>
+</table>
+<p>Average speedup across all benchmarks: <strong>3.1× at 1 thread</strong>, <strong>6.0× at 4 threads</strong>.</p>
+<p><strong>Notes:</strong></p>
+<ul>
+<li><strong>Area mode</strong>: At 1 thread the speedup is 2.7×; at 4 threads it reaches 9.5×. PyTorch's area interpolation does not appear to parallelize over spatial dimensions for single-image workloads — its runtime is essentially unchanged between 1 and 4 threads (611 ms vs. 613 ms). volresample parallelizes along the first spatial dimension, reducing runtime from 230 ms to 65 ms with 4 threads.</li>
+<li><strong>int16</strong>: PyTorch does not support int16 interpolation natively and requires casting to float32, processing, then casting back. volresample operates directly on int16, eliminating two full-volume type conversions. The advantage is large even at 1 thread (13.2×) and persists at 4 threads because the conversion overhead scales with data volume, not thread count.</li>
+<li><strong>Thread scaling</strong>: For large volumes, volresample typically halves wall time going from 1 to 4 threads on nearest and linear modes. Grid sample scales more strongly (1.5× → 4.4× for linear) because per-voxel work is higher. PyTorch scaling is more variable, and negligible for area mode.</li>
+<li><strong>These are estimates</strong> on a single machine under light load. Actual results will vary with CPU architecture, memory bandwidth, and system conditions.</li>
+</ul>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><h3>Running Tests</h3><a href="#running-tests"></a></div>
+<div><pre><span><span>#</span> Run all tests</span>
+pytest tests/ <span><span>#</span> Run with PyTorch comparison tests</span>
+pip install torch
+pytest tests/ -v <span><span>#</span> Skip PyTorch tests</span>
+pytest tests/ --skip-torch</pre></div>
+<div><h3>Running Benchmarks</h3><a href="#running-benchmarks"></a></div>
+<div><pre><span><span>#</span> Use default threads (min of cpu_count and 4)</span>
+python tests/benchmark_resampling.py --iterations 10 <span><span>#</span> Or specify thread count</span>
+python tests/benchmark_resampling.py --threads 4 --iterations 10</pre></div>
+<div><h3>Building from Source</h3><a href="#building-from-source"></a></div>
+<div><pre>pip install -e <span><span>"</span>.[dev]<span>"</span></span>
+python setup.py build_ext --inplace</pre></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT License - see <a href="/JoHof/volresample/blob/main/LICENSE">LICENSE</a> file for details.</p>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions are welcome. Please submit a Pull Request.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

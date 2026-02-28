@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - francescogabrieli/Spectra</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - francescogabrieli/Spectra</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/28/2026 4:15:13 PM | <a href="https://github.com/francescogabrieli/Spectra" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p> <a target="_blank" href="/francescogabrieli/Spectra/blob/main/assets/icon.png" rel="noopener noreferrer"><img src="/francescogabrieli/Spectra/raw/main/assets/icon.png" alt="Spectra"></a>
+</p>
+<div><h1>Spectra</h1><a href="#spectra"></a></div>
+<p> <strong>Bank CSV/PDF to AI categorization to Google Sheets</strong><br> Your personal finance dashboard, fully automated.
+</p>
+<p> <a target="_blank" href="https://camo.githubusercontent.com/5f669e7a7b02911ee9e7fd8efe1a7ac12baed13224cca185ebb548497f5fc0be/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d332e31302b2d626c7565" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/5f669e7a7b02911ee9e7fd8efe1a7ac12baed13224cca185ebb548497f5fc0be/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d332e31302b2d626c7565" alt="Python"></a> <a target="_blank" href="https://camo.githubusercontent.com/f729d39d27dc6da259629c07acfa90f0b36819543f2bf4223935bc9f4d3094c3/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4147504c2d2d332e302d6c6967687467726579" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/f729d39d27dc6da259629c07acfa90f0b36819543f2bf4223935bc9f4d3094c3/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4147504c2d2d332e302d6c6967687467726579" alt="License"></a> <a target="_blank" href="https://camo.githubusercontent.com/b411594136144442e4c5e6e2e2d63ee7461762fbe5e2eb0e5abbbec3fd812845/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d6163746976652d73756363657373" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/b411594136144442e4c5e6e2e2d63ee7461762fbe5e2eb0e5abbbec3fd812845/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d6163746976652d73756363657373" alt="Status"></a>
+</p>
+<p> <a target="_blank" href="/francescogabrieli/Spectra/blob/main/assets/dashboard.png" rel="noopener noreferrer"><img src="/francescogabrieli/Spectra/raw/main/assets/dashboard.png" alt="Spectra Dashboard"></a>
+</p>
+<hr>
+<div><h2>What is Spectra?</h2><a href="#what-is-spectra"></a></div>
+<p>Spectra takes your raw bank exports (CSV or PDF), sends them through an AI model (OpenAI or Gemini) to categorize every transaction, and builds a comprehensive, multi-tab financial dashboard on Google Sheets.</p>
+<div><h2>Why Spectra exists</h2><a href="#why-spectra-exists"></a></div>
+<p>Most personal finance tools require direct access to your bank account or lock your data inside proprietary platforms.</p>
+<p>Spectra takes a different approach: it works directly from standard bank exports (CSV or PDF), keeps everything transparent, and builds your dashboard in Google Sheets: a format you fully control and can extend yourself.</p>
+<div><h3>Core Features</h3><a href="#core-features"></a></div>
+<ul>
+<li><strong>Universal Import</strong>: Auto-detects custom delimiters, edge-case bank layouts, Italian/European number formats (<pre><code>1.234,56</code></pre>), and multi-line descriptions from CSVs and PDFs. Drop a file in the <pre><code>inbox/</code></pre> folder and Spectra handles the rest.</li>
+<li><strong>AI Categorization</strong>: Cleans obscure bank transfer descriptions into readable merchant names and accurately categorizes them using LLMs, distinguishing between Expenses (Shopping, Food, Transport) and Income (Salary, Transfers In).</li>
+<li><strong>Multi-Currency (FX Rates)</strong>: If your bank export contains foreign currencies (USD, GBP, etc.), Spectra automatically calls the free <a href="https://www.frankfurter.app/">Frankfurter API</a> to fetch the exact historical ECB exchange rate for that day, converting everything to EUR to keep your budgets and trends perfectly aligned. (Requires <strong>zero API keys</strong>).</li>
+<li><strong>Hybrid Recurring Detection</strong>: Uses pattern-matching algorithms as a first pass, then falls back to analyzing historical dates in your local database. If an unknown transaction happens roughly ~30 days after an identical one, it is automatically flagged as a Subscription/Salary without relying on LLM guesses.</li>
+<li><strong>Smart Overrides (Feedback Loop)</strong>: Spectra learns your habits. If the AI hallucinates a name or category, correct it directly in the new <pre><code>Override</code></pre> columns inside your Google Sheet. Spectra pulls these overrides on the next run, applying them instantly locally to save API tokens and time.</li>
+<li><strong>Idempotent</strong>: Maintains a local SQLite database of transaction hashes. Spectra never imports the same transaction twice, even if you re-run the same CSV.</li>
+<li><strong>Fully Automated (Cron)</strong>: Run it nightly via GitHub Actions. If you add a CSV to the <pre><code>inbox</code></pre>, the bot picks it up, updates your Google Sheet, and moves the file to <pre><code>processed/</code></pre>.</li> </ul>
+<div><h3>Architecture / How it works</h3><a href="#architecture--how-it-works"></a></div>
+<p> <a target="_blank" href="/francescogabrieli/Spectra/blob/main/assets/architecture.svg" rel="noopener noreferrer"><img src="/francescogabrieli/Spectra/raw/main/assets/architecture.svg" alt="Spectra Pipeline Architecture"></a>
+</p>
+<div><h3>The Google Sheets Dashboard</h3><a href="#the-google-sheets-dashboard"></a></div>
+<p>Spectra automatically creates and formats multiple tabs:</p>
+<ol>
+<li>
+<p><strong>Dashboard</strong>: High-level view for the current year. Shows Income vs Expenses, Spending donuts by category, monthly breakdowns, and recurring cash flow.</p>
+</li>
+<li>
+<p><strong>Budget</strong>: A dedicated tab where you define your monthly limits. Spectra checks these limits against your spending and displays a Live // Budget Status on the Dashboard.</p>
+<p><a target="_blank" href="/francescogabrieli/Spectra/blob/main/assets/budget.png" rel="noopener noreferrer"><img src="/francescogabrieli/Spectra/raw/main/assets/budget.png" alt="Spectra Budget"></a></p>
+</li>
+<li>
+<p><strong>Transactions YYYY</strong>: A detailed, color-coded ledger for each year.</p>
+</li>
+<li>
+<p><strong>Trends</strong>: A Year-over-Year (YoY) comparison tab. Tracks your Net Cash Flow, Savings Rate %, and generates comparative multi-year line charts to visualize your trajectory.</p>
+</li>
+</ol>
+<hr>
+<div><h2> Quick Start (Local)</h2><a href="#-quick-start-local"></a></div>
+<ol>
+<li>
+<p><strong>Clone the repository</strong></p>
+<div><pre>git clone https://github.com/francescogabrieli/Spectra.git
+<span>cd</span> Spectra</pre></div>
+</li>
+<li>
+<p><strong>Install dependencies</strong></p>
+<div><pre>python3 -m venv .venv
+<span>source</span> .venv/bin/activate
+pip install -r requirements.txt</pre></div>
+</li>
+<li>
+<p><strong>Configure the </strong></p><pre><strong><code>.env</code></strong></pre><strong> file</strong> (See sections below for getting these keys)<p></p>
+<div><pre><span>BASE_CURRENCY</span><span>=</span><span>EUR</span>
+<span>AI_PROVIDER</span><span>=</span><span>openai</span>
+<span>OPENAI_API_KEY</span><span>=</span><span>sk-...</span>
+<span>SPREADSHEET_ID</span><span>=</span><span>1Do7APx...</span>
+<span>GOOGLE_SHEETS_CREDENTIALS_FILE</span><span>=</span><span>credentials.json</span></pre></div>
+</li>
+<li>
+<p><strong>Run Spectra</strong>
+Place your bank exported files </p><pre><code>.csv</code></pre> or <pre><code>.pdf</code></pre> in the <pre><code>inbox/</code></pre> directory.<p></p>
+<div><pre><span><span>#</span> Preview without writing to Google Sheets</span>
+python -m spectra --inbox inbox/ --dry-run <span><span>#</span> Run the full pipeline (Clean, Categorise, Write to Sheets, Update Dashboards)</span>
+python -m spectra --inbox inbox/</pre></div>
+</li>
+</ol>
+<hr>
+<div><h2> Getting the Keys</h2><a href="#-getting-the-keys"></a></div>
+<div><h3>1. Google Sheets API (<pre><code>SPREADSHEET_ID</code></pre> &amp; <pre><code>credentials.json</code></pre>)</h3><a href="#1-google-sheets-api-spreadsheet_id--credentialsjson"></a></div>
+<p>To allow Spectra to write to your Google Sheet without logging in every time, you need a "Service Account" (a bot user).</p>
+<ol>
+<li>Go to the <a href="https://console.cloud.google.com/">Google Cloud Console</a>.</li>
+<li>Create a new Project (e.g., "Spectra Finance").</li>
+<li>In the top search bar, type <strong>Google Sheets API</strong> and click <strong>Enable</strong>.</li>
+<li>Search for <strong>Google Drive API</strong> and click <strong>Enable</strong>.</li>
+<li>Navigate to <strong>APIs &amp; Services &gt; Credentials</strong> in the left sidebar.</li>
+<li>Click <strong>Create Credentials &gt; Service Account</strong> at the top. Name it (e.g., "spectra-bot") and click <strong>Done</strong>.</li>
+<li>In the list of Service Accounts, click the email address of the one you just created.</li>
+<li>Go to the <strong>Keys</strong> tab, click <strong>Add Key &gt; Create new key</strong>. Choose <strong>JSON</strong> and hit Create. The <pre><code>credentials.json</code></pre> file will download to your computer.</li>
+<li><strong>CRITICAL</strong>: Move this downloaded file into the root of your cloned <pre><code>Spectra</code></pre> folder and rename it exactly to <pre><code>credentials.json</code></pre>.</li>
+<li>Open the <pre><code>credentials.json</code></pre> file in a text editor and copy the <pre><code>"client_email"</code></pre> address (it looks like <pre><code>spectra-bot@spectra-finance.iam.gserviceaccount.com</code></pre>).</li>
+<li>Create a new blank Google Sheet on your personal Google Drive.</li>
+<li>Click the big <strong>Share</strong> button in the top right, paste the <pre><code>client_email</code></pre>, and give the bot <strong>Editor</strong> permissions.</li>
+<li>Copy the long <strong>Spreadsheet ID</strong> from the URL of your new Google Sheet:<br>
+<pre><code>https://docs.google.com/spreadsheets/d/</code></pre><strong><pre><code>&lt;THIS_LONG_STRING_IS_THE_SPREADSHEET_ID&gt;</code></pre></strong><pre><code>/edit</code></pre></li>
+<li>Paste this ID into your <pre><code>.env</code></pre> file under <pre><code>SPREADSHEET_ID</code></pre>.</li>
+</ol>
+<div><h3>2. AI Provider (<pre><code>OPENAI_API_KEY</code></pre> or <pre><code>GEMINI_API_KEY</code></pre>)</h3><a href="#2-ai-provider-openai_api_key-or-gemini_api_key"></a></div> <p><strong>To use Google Gemini (Free Tier):</strong></p>
+<ol>
+<li>Go to <a href="https://aistudio.google.com/apikey">Google AI Studio</a>.</li>
+<li>Click <strong>Create API Key</strong>.</li>
+<li>Copy the key and put it in your <pre><code>.env</code></pre> file as <pre><code>GEMINI_API_KEY</code></pre>.</li>
+<li>Ensure your <pre><code>.env</code></pre> has <pre><code>AI_PROVIDER=gemini</code></pre>.</li>
+</ol>
+<p><strong>To use OpenAI (Paid):</strong></p>
+<ol>
+<li>Go to <a href="https://platform.openai.com/api-keys">OpenAI Platform</a>.</li>
+<li>Click <strong>Create new secret key</strong>.</li>
+<li>Copy the key and put it in your <pre><code>.env</code></pre> file as <pre><code>OPENAI_API_KEY</code></pre>.</li>
+<li>Ensure your <pre><code>.env</code></pre> has <pre><code>AI_PROVIDER=openai</code></pre>.</li>
+</ol>
+<hr>
+<div><h2> GitHub Actions (Cloud Automation)</h2><a href="#-github-actions-cloud-automation"></a></div>
+<p>Spectra includes a workflow (</p><pre><code>.github/workflows/spectra.yml</code></pre>) that runs every night at 22:00 CET or manually via dispatch. Drop CSVs into the <pre><code>inbox/</code></pre> folder, commit to GitHub, and let the Action process them while you sleep.<p></p>
+<div><h3>Setup GitHub Secrets</h3><a href="#setup-github-secrets"></a></div>
+<p>Go to your GitHub Repository homepage to <strong>Settings to Secrets and variables to Actions</strong>. Add the following <strong>Repository Secrets</strong>:</p>
+<ol>
+<li>
+<p><strong></strong></p><pre><strong><code>OPENAI_API_KEY</code></strong></pre> or <strong><pre><code>GEMINI_API_KEY</code></pre></strong>: Your chosen AI key.<p></p>
+</li>
+<li>
+<p><strong></strong></p><pre><strong><code>SPREADSHEET_ID</code></strong></pre>: Your Google Sheet ID.<p></p>
+</li>
+<li>
+<p><strong></strong></p><pre><strong><code>GOOGLE_SHEETS_CREDENTIALS_B64</code></strong></pre>: The base64-encoded version of your <p></p><pre><code>credentials.json</code></pre>.<p></p>
+<p>To generate this string:</p>
+<ul>
+<li><strong>macOS/Linux</strong>: <pre><code>base64 -i credentials.json | pbcopy</code></pre> (copies the giant string to your clipboard)</li>
+<li><strong>Windows (PowerShell)</strong>: <pre><code>[Convert]::ToBase64String([IO.File]::ReadAllBytes("credentials.json")) | clip</code></pre></li>
+</ul>
+</li>
+</ol>
+<p>When the action runs, it processes the </p><pre><code>inbox/</code></pre> folder. Processed files are moved to <pre><code>processed/</code></pre> and the changes are automatically committed back to the repository.<p></p>
+<hr>
+<div><h2> CLI Usage</h2><a href="#-cli-usage"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>python -m spectra --inbox inbox/</code></pre></td>
+<td><strong>Recommended</strong>: Processes all <pre><code>.csv</code></pre> and <pre><code>.pdf</code></pre> files inside the <pre><code>inbox/</code></pre> directory. Automatically moves successfully imported files to <pre><code>processed/</code></pre>.</td>
+</tr>
+<tr>
+<td><pre><code>python -m spectra -f export.csv</code></pre></td>
+<td>Process a single specific file. Does not move the file afterwards.</td>
+</tr>
+<tr>
+<td><pre><code>--dry-run</code></pre></td>
+<td>Appended to any command. Runs the parsing and AI categorization, prints the results to the terminal, but <strong>skips</strong> writing to Google Sheets and <strong>skips</strong> database saving. Great for testing.</td>
+</tr>
+<tr>
+<td><pre><code>--currency USD</code></pre></td>
+<td>Override the default <pre><code>EUR</code></pre> formatting.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2> Privacy &amp; Architecture</h2><a href="#-privacy--architecture"></a></div>
+<ul>
+<li><strong>Local Processing First</strong>: The heavy lifting (CSV parsing, description cleaning, deduplication) happens locally or in your private GitHub Action runner.</li>
+<li><strong>AI Payload</strong>: Only the transaction date, cleaned description, and amount are sent to the AI Provider for categorization.</li>
+<li><strong>No Third-Party Plaid/OpenBanking</strong>: Spectra does not connect directly to your bank account. You remain in complete control of your data exports.</li>
+<li><strong>Database</strong>: The local <pre><code>data/spectra.db</code></pre> SQLite database stores <strong>only cryptographic SHA1 hashes</strong> of your transactions to prevent duplicates.</li>
+</ul>
+<div><h2> License</h2><a href="#-license"></a></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Spectra is licensed under the <strong>GNU Affero General Public License v3.0 (AGPL-3.0)</strong>.</p>
+<p>This ensures that if you modify Spectra and run it as a service (e.g. SaaS), you must also make the source code of your modifications available to users.</p>
+<div><h3>Commercial License</h3><a href="#commercial-license"></a></div>
+<p>A separate commercial license is available for organizations that wish to use Spectra in a closed-source or proprietary product without AGPL obligations.</p>
+<p>For commercial licensing inquiries, please contact: <a href="mailto:francesco.gabrieli.fg@gmail.com">francesco.gabrieli.fg@gmail.com</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

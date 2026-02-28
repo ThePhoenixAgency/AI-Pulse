@@ -57,9 +57,56 @@ NOTE: This firmware is experimental. Do not use it if you’re looking for the m
 </p>
 <p class="img"> <img src="/images/blog/2025-10-z-wave-portable/with-poe.png" alt="Home Assistant Connect ZWA-2 using POE via an adapter"> Home Assistant connected to the ZWA-2 via the PoE module.
 </p>
-<p>ESPHome handles serial message acknowledgments internally, then leverages its API (specifically its <a href="https://developers.esphome.io/architecture/api/">Protobuf implementation</a>) to send the messages over the network more reliably than serial-over-IP.</p>
+<p>ESPHome handles serial message acknowledgments internally, then leverages its API (specifically its <a href="https://developers.esphome.io/architecture/api/">Protobuf implementation</a>) to send the messages over the network more reliably than serial-over-IP. Even if your home network is bogged down by some spikes in traffic, ESPHome will have you covered, keeping your Z-Wave network stable. That’s not to say this has no impact on performance, but it may be less than you think – or can even notice!</p>
+<h3>Performance</h3>
+<p>Wi-Fi is very convenient, but the million-dollar question is: <strong>how will it impact your Z-Wave network?</strong> To find out, we ran some benchmarks to see how Portable Z-Wave stacks up to its USB counterpart.</p>
+<p>Compared to a direct serial (USB) connection, a data packet <em>will</em> take longer to travel between Home Assistant/Z-Wave JS and your Z-Wave network when routed through your local network. On a network with only a low to moderate workload, the additional delay is very small and is generally not noticeable. That said, if your network is heavily stressed or the Wi-Fi signal is poor, you should expect packets to take longer to move around, which can lead to a perceivable delay. It can still control your lights and other devices, but it may be a bit slower. Here are some numbers illustrating the typical latency that we were able to achieve across our test environments:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Connection type</th>
+<th align="left">Min (ms)</th>
+<th align="left">Max (ms)</th>
+<th align="left">Mean (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">USB</td>
+<td align="left">4</td>
+<td align="left">9</td>
+<td align="left">5.36</td>
+</tr>
+<tr>
+<td align="left">Ethernet</td>
+<td align="left">15</td>
+<td align="left">32</td>
+<td align="left">25.14</td>
+</tr>
+<tr>
+<td align="left">Wi-Fi</td>
+<td align="left">15</td>
+<td align="left">92</td>
+<td align="left">29.16</td>
+</tr>
+</tbody>
+</table>
+<p>Your results will likely differ somewhat, especially in less ideal conditions and environments. For instance, if you place your Connect ZWA-2 in a spot with really poor Wi-Fi connectivity, you might notice devices not reflecting their actual state or other buggy behavior. Avoid using VPNs or other complex network routing or configuration, as that will add latency. Also, don’t worry about Wi-Fi interfering with your Z-Wave network, as they operate on totally different radio frequencies that don’t interact. I think with a healthy dose of common sense, you can find a great spot that gets both great Wi-Fi connectivity <a href="https://support.nabucasa.com/hc/en-us/articles/28670284336925-Finding-an-installation-location-for-the-Home-Assistant-Connect-ZWA-2">while nicely optimizing your Z-Wave network</a>.</p>
+<h2>Thanks</h2>
+<p>This project was brought to you by a collaboration between Nabu Casa and the people below from the Open Home Foundation. None of this would be possible without the support of <a href="/cloud/">Home Assistant Cloud subscribers</a> and those who care about Z-Wave and have purchased the Home Assistant Connect ZWA-2. Thank you!</p>
+<p>Thanks to Dominic, founder of Z-Wave JS, for quickly jumping in on this project, adding support to Z-Wave JS, and building the browser installation tooling.</p>
+<p>Thanks to Nick and Jesse for their support with the ESPHome implementation.</p>
+<p>Thanks to Steven for making the new Open Home Foundation toolbox website to allow easy installation of the experiment.</p>
+<h2>FAQs</h2>
+<p><strong>Q: Is the Portable Z-Wave experiment limited to the Home Assistant Connect ZWA-2?</strong></p>
+<p>A: Theoretically, it should work with other Z-Wave adapters, but thus far we have only tested it with the ZWA-2. The code is <a href="https://next.esphome.io/components/zwave_proxy/">part of ESPHome 2025.10</a>, Home Assistant 2025.10.2, and Z-Wave JS v15.15.0. We chose Home Assistant Connect ZWA-2 as the first device with support since it already contains an ESP32-S3. If you’d like to try it out with your favorite Z-Wave adapter, you should start by <a href="https://github.com/esphome/zwa-2">taking a look at our ESPHome configuration</a> for the ZWA-2 (all that should need changing are <a href="https://github.com/esphome/zwa-2/blob/main/home-assistant-zwa-2-poe/home-assistant-zwa-2-poe.yaml#L43-L46">the vendor and product IDs</a> to match the Z-Wave adapter).</p>
+<p><strong>Q: Is the Portable Z-Wave experiment limited to Home Assistant?</strong></p>
+<p>A: No. It is made to work directly with Z-Wave JS. If you use Z-Wave JS v15.15.0, either standalone or with another smart home platform, you are able to use it, too! Configure Z-Wave JS to connect to <code>esphome://&lt;IP OF THE ZWA-2&gt;</code>.</p>
+<p><strong>Q: Can I use Ethernet instead of Power-over-Ethernet?</strong></p>
+<p>A: Yes. Use a Power-over-Ethernet injector in combination with the <a href="https://www.amazon.com/dp/B0DKJ5VXC9">Waveshare ESP32-S3-ETH board</a>.</p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>

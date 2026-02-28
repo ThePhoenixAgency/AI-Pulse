@@ -5,7 +5,7 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>AI - Artificial Intelligence news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Sat, 28 Feb 2026 10:21:41 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 28 Feb 2026 18:29:11 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-ai.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title><![CDATA[Claude Code costs up to $200 a month. Goose does the same thing for free.]]></title>
@@ -45,7 +45,33 @@ Download and install Ollama from ollama.com. Once installed, you can pull models
 ollama run qwen2.5
 The model downloads automatically and begins running on your machine.
 Step 2: Install Goose
-Goose is available as both a desktop application and a command-line interface. The desktop version provides a more visual experience, while the CLI appeals to developers who prefer working entirely in the terminal.]]></description>
+Goose is available as both a desktop application and a command-line interface. The desktop version provides a more visual experience, while the CLI appeals to developers who prefer working entirely in the terminal.
+Installation instructions vary by operating system but generally involve downloading from Goose's GitHub releases page or using a package manager. Block provides pre-built binaries for macOS (both Intel and Apple Silicon), Windows, and Linux.
+Step 3: Configure the Connection
+In Goose Desktop, navigate to Settings, then Configure Provider, and select Ollama. Confirm that the API Host is set to http://localhost:11434 (Ollama's default port) and click Submit.
+For the command-line version, run goose configure, select "Configure Providers," choose Ollama, and enter the model name when prompted.
+That's it. Goose is now connected to a language model running entirely on your hardware, ready to execute complex coding tasks without any subscription fees or external dependencies.
+The RAM, processing power, and trade-offs you should know about
+The obvious question: what kind of computer do you need?
+Running large language models locally requires substantially more computational resources than typical software. The key constraint is memory — specifically, RAM on most systems, or VRAM if using a dedicated graphics card for acceleration.
+Block's documentation suggests that 32 gigabytes of RAM provides "a solid baseline for larger models and outputs." For Mac users, this means the computer's unified memory is the primary bottleneck. For Windows and Linux users with discrete NVIDIA graphics cards, GPU memory (VRAM) matters more for acceleration.
+But you don't necessarily need expensive hardware to get started. Smaller models with fewer parameters run on much more modest systems. Qwen 2.5, for instance, comes in multiple sizes, and the smaller variants can operate effectively on machines with 16 gigabytes of RAM.
+"You don't need to run the largest models to get excellent results," Sareen emphasized. The practical recommendation: start with a smaller model to test your workflow, then scale up as needed.
+For context, Apple's entry-level MacBook Air with 8 gigabytes of RAM would struggle with most capable coding models. But a MacBook Pro with 32 gigabytes — increasingly common among professional developers — handles them comfortably.
+Why keeping your code off the cloud matters more than ever
+Goose with a local LLM is not a perfect substitute for Claude Code. The comparison involves real trade-offs that developers should understand.
+Model Quality: Claude 4.5 Opus, Anthropic's flagship model, remains arguably the most capable AI for software engineering tasks. It excels at understanding complex codebases, following nuanced instructions, and producing high-quality code on the first attempt. Open-source models have improved dramatically, but a gap persists — particularly for the most challenging tasks.
+One developer who switched to the $200 Claude Code plan described the difference bluntly: "When I say 'make this look modern,' Opus knows what I mean. Other models give me Bootstrap circa 2015."
+Context Window: Claude Sonnet 4.5, accessible through the API, offers a massive one-million-token context window — enough to load entire large codebases without chunking or context management issues. Most local models are limited to 4,096 or 8,192 tokens by default, though many can be configured for longer contexts at the cost of increased memory usage and slower processing.
+Speed: Cloud-based services like Claude Code run on dedicated server hardware optimized for AI inference. Local models, running on consumer laptops, typically process requests more slowly. The difference matters for iterative workflows where you're making rapid changes and waiting for AI feedback.
+Tooling Maturity: Claude Code benefits from Anthropic's dedicated engineering resources. Features like prompt caching (which can reduce costs by up to 90 percent for repeated contexts) and structured outputs are polished and well-documented. Goose, while actively developed with 102 releases to date, relies on community contributions and may lack equivalent refinement in specific areas.
+How Goose stacks up against Cursor, GitHub Copilot, and the paid AI coding market
+Goose enters a crowded market of AI coding tools, but occupies a distinctive position.
+Cursor, a popular AI-enhanced code editor, charges $20 per month for its Pro tier and $200 for Ultra—pricing that mirrors Claude Code's Max plans. Cursor provides approximately 4,500 Sonnet 4 requests per month at the Ultra level, a substantially different allocation model than Claude Code's hourly resets.
+Cline, Roo Code, and similar open-source projects offer AI coding assistance but with varying levels of autonomy and tool integration. Many focus on code completion rather than the agentic task execution that defines Goose and Claude Code.
+Amazon's CodeWhisperer, GitHub Copilot, and enterprise offerings from major cloud providers target large organizations with complex procurement processes and dedicated budgets. They are less relevant to individual developers and small teams seeking lightweight, flexible tools.
+Goose's combination of genuine autonomy, model agnosticism, local operation, and zero cost creates a unique value proposition. The tool is not trying to compete with commercial offerings on polish or model quality. It's competing on freedom — both financial and architectural.
+The $200-a-month era for AI coding tools may be ending]]></description>
       <pubDate>Mon, 19 Jan 2026 14:00:00 GMT</pubDate>
       <source>VentureBeat AI</source>
       <category>ai</category>
@@ -85,44 +111,6 @@ Li identified one potential avenue: training models not just to solve problems b
       <guid>https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in</guid>
     </item>
     <item>
-      <title><![CDATA[Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI]]></title>
-      <link>https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and</link>
-      <description><![CDATA[Salesforce on Tuesday launched an entirely rebuilt version of Slackbot, the company's workplace assistant, transforming it from a simple notification tool into what executives describe as a fully powered AI agent capable of searching enterprise data, drafting documents, and taking action on behalf of employees.
-The new Slackbot, now generally available to Business+ and Enterprise+ customers, is Salesforce's most aggressive move yet to position Slack at the center of the emerging "agentic AI" movement — where software agents work alongside humans to complete complex tasks. The launch comes as Salesforce attempts to convince investors that artificial intelligence will bolster its products rather than render them obsolete.
-"Slackbot isn't just another copilot or AI assistant," said Parker Harris, Salesforce co-founder and Slack's chief technology officer, in an exclusive interview with Salesforce. "It's the front door to the agentic enterprise, powered by Salesforce."
-From tricycle to Porsche: Salesforce rebuilt Slackbot from the ground up
-Harris was blunt about what distinguishes the new Slackbot from its predecessor: "The old Slackbot was, you know, a little tricycle, and the new Slackbot is like, you know, a Porsche."
-The original Slackbot, which has existed since Slack's early days, performed basic algorithmic tasks — reminding users to add colleagues to documents, suggesting channel archives, and delivering simple notifications. The new version runs on an entirely different architecture built around a large language model and sophisticated search capabilities that can access Salesforce records, Google Drive files, calendar data, and years of Slack conversations.
-"It's two different things," Harris explained. "The old Slackbot was algorithmic and fairly simple. The new Slackbot is brand new — it's based around an LLM and a very robust search engine, and connections to third-party search engines, third-party enterprise data."
-Salesforce chose to retain the Slackbot brand despite the fundamental technical overhaul. "People know what Slackbot is, and so we wanted to carry that forward," Harris said.
-Why Anthropic's Claude powers the new Slackbot — and which AI models could come next
-The new Slackbot runs on Claude, Anthropic's large language model, a choice driven partly by compliance requirements. Slack's commercial service operates under FedRAMP Moderate certification to serve U.S. federal government customers, and Harris said Anthropic was "the only provider that could give us a compliant LLM" when Slack began building the new system.
-But that exclusivity won't last. "We are, this year, going to support additional providers," Harris said. "We have a great relationship with Google. Gemini is incredible — performance is great, cost is great. So we're going to use Gemini for some things." He added that OpenAI remains a possibility as well.
-Harris echoed Salesforce CEO Marc Benioff's view that large language models are becoming commoditized: "You've heard Marc talk about LLMs are commodities, that they're democratized. I call them CPUs."
-On the sensitive question of training data, Harris was unequivocal: Salesforce does not train any models on customer data. "Models don't have any sort of security," he explained. "If we trained it on some confidential conversation that you and I have, I don't want Carolyn to know — if I train it into the LLM, there is no way for me to say you get to see the answer, but Carolyn doesn't."
-Inside Salesforce's internal experiment: 80,000 employees tested Slackbot with striking results
-Salesforce has been testing the new Slackbot internally for months, rolling it out to all 80,000 employees. According to Ryan Gavin, Slack's chief marketing officer, the results have been striking: "It's the fastest adopted product in Salesforce history."
-Internal data shows that two-thirds of Salesforce employees have tried the new Slackbot, with 80% of those users continuing to use it regularly. Internal satisfaction rates reached 96% — the highest for any AI feature Slack has shipped. Employees report saving between two and 20 hours per week.
-The adoption happened largely organically. "I think it was about five days, and a Canvas was developed by our employees called 'The Most Stealable Slackbot Prompts,'" Gavin said. "People just started adding to it organically. I think it's up to 250-plus prompts that are in this Canvas right now."
-Kate Crotty, a principal UX researcher at Salesforce, found that 73% of internal adoption was driven by social sharing rather than top-down mandates. "Everybody is there to help each other learn and communicate hacks," she said.
-How Slackbot transforms scattered enterprise data into executive-ready insights
-During a product demonstration, Amy Bauer, Slack's product experience designer, showed how Slackbot can synthesize information across multiple sources. In one example, she asked Slackbot to analyze customer feedback from a pilot program, upload an image of a usage dashboard, and have Slackbot correlate the qualitative and quantitative data.
-"This is where Slackbot really earns its keep for me," Bauer explained. "What it's doing is not just simply reading the image — it's actually looking at the image and comparing it to the insight it just generated for me."
-Slackbot can then query Salesforce to find enterprise accounts with open deals that might be good candidates for early access, creating what Bauer called "a really great justification and plan to move forward." Finally, it can synthesize all that information into a Canvas — Slack's collaborative document format — and find calendar availability among stakeholders to schedule a review meeting.
-"Up until this point, we have been working in a one-to-one capacity with Slackbot," Bauer said. "But one of the benefits that I can do now is take this insight and have it generate this into a Canvas, a shared workspace where I can iterate on it, refine it with Slackbot, or share it out with my team."
-Rob Seaman, Slack's chief product officer, said the Canvas creation demonstrates where the product is heading: "This is making a tool call internally to Slack Canvas to actually write, effectively, a shared document. But it signals where we're going with Slackbot — we're eventually going to be adding in additional third-party tool calls."
-MrBeast's company became a Slackbot guinea pig—and employees say they're saving 90 minutes a day
-Among Salesforce's pilot customers is Beast Industries, the parent company of YouTube star MrBeast. Luis Madrigal, the company's chief information officer, joined the launch announcement to describe his experience.
-"As somebody who has rolled out enterprise technologies for over two decades now, this was practically one of the easiest," Madrigal said. "The plumbing is there. Slack as an implementation, Enterprise Tools — being able to turn on the Slackbot and the Slack AI functionality was as simple as having my team go in, review, do a quick security review."
-Madrigal said his security team signed off "rather quickly" — unusual for enterprise AI deployments — because Slackbot accesses only the information each individual user already has permission to view. "Given all the guardrails you guys have put into place for Slackbot to be unique and customized to only the information that each individual user has, only the conversations and the Slack rooms and Slack channels that they're part of—that made my security team sign off rather quickly."
-One Beast Industries employee, Sinan, the head of Beast Games marketing, reported saving "at bare minimum, 90 minutes a day." Another employee, Spencer, a creative supervisor, described it as "an assistant who's paying attention when I'm not."
-Other pilot customers include Slalom, reMarkable, Xero, Mercari, and Engine.]]></description>
-      <pubDate>Tue, 13 Jan 2026 13:00:00 GMT</pubDate>
-      <source>VentureBeat AI</source>
-      <category>ai</category>
-      <guid>https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and</guid>
-    </item>
-    <item>
       <title><![CDATA[Railway secures $100 million to challenge AWS with AI-native cloud infrastructure]]></title>
       <link>https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud</link>
       <description><![CDATA[Railway, a San Francisco-based cloud platform that has quietly amassed two million developers without spending a dollar on marketing, announced Thursday that it raised $100 million in a Series B funding round, as surging demand for artificial intelligence applications exposes the limitations of legacy cloud infrastructure.
@@ -154,11 +142,66 @@ For enterprise customers, Railway offers security certifications including SOC 2
 Enterprise pricing starts at custom levels, with specific add-ons for extended log retention ($200 monthly), HIPAA BAAs ($1,000), enterprise support with SLOs ($2,000), and dedicated virtual machines ($10,000).
 The startup's bold strategy to take on Amazon, Google, and a new generation of cloud rivals
 Railway enters a crowded market that includes not only the hyperscale cloud providers—Amazon Web Services, Microsoft Azure, and Google Cloud Platform—but also a growing cohort of developer-focused platforms like Vercel, Render, Fly.io, and Heroku.
-Cooper argues that Railway's competitors fall into two camps, neither of which has fully committed to the new infrastructure model that AI demands.]]></description>
+Cooper argues that Railway's competitors fall into two camps, neither of which has fully committed to the new infrastructure model that AI demands.
+"The hyperscalers have two competing systems, and they haven't gone all-in on the new model because their legacy revenue stream is still printing money," he observed. "They have this mammoth pool of cash coming from people who provision a VM, use maybe 10 percent of it, and still pay for the whole thing. To what end are they actually interested in going all the way in on a new experience if they don't really need to?"
+Against startup competitors, Railway differentiates by covering the full infrastructure stack. "We're not just containers; we've got VM primitives, stateful storage, virtual private networking, automated load balancing," Cooper said. "And we wrap all of this in an absurdly easy-to-use UI, with agentic primitives so agents can move 1,000 times faster."
+The platform supports databases including PostgreSQL, MySQL, MongoDB, and Redis; provides up to 256 terabytes of persistent storage with over 100,000 input/output operations per second; and enables deployment to four global regions spanning the United States, Europe, and Southeast Asia. Enterprise customers can scale to 112 vCPUs and 2 terabytes of RAM per service.
+Why investors are betting that AI will create a thousand times more software than exists today
+Railway's fundraise reflects broader investor enthusiasm for companies positioned to benefit from the AI coding revolution. As tools like GitHub Copilot, Cursor, and Claude become standard fixtures in developer workflows, the volume of code being written — and the infrastructure needed to run it — is expanding dramatically.
+"The amount of software that's going to come online over the next five years is unfathomable compared to what existed before — we're talking a thousand times more software," Cooper predicted. "All of that has to run somewhere."
+The company has already integrated directly with AI systems, building what Cooper calls "loops where Claude can hook in, call deployments, and analyze infrastructure automatically." Railway released a Model Context Protocol server in August 2025 that allows AI coding agents to deploy applications and manage infrastructure directly from code editors.
+"The notion of a developer is melting before our eyes," Cooper said. "You don't have to be an engineer to engineer things anymore — you just need critical thinking and the ability to analyze things in a systems capacity."
+What Railway plans to do with $100 million and zero marketing experience
+Railway plans to use the new capital to expand its global data center footprint, grow its team beyond 30 employees, and build what Cooper described as a proper go-to-market operation for the first time in the company's five-year history.
+"One of my mentors said you raise money when you can change the trajectory of the business," Cooper explained. "We've built all the required substrate to scale indefinitely; what's been holding us back is simply talking about it. 2026 is the year we play on the world stage."
+The company's investor roster reads like a who's who of developer infrastructure. Angel investors include Tom Preston-Werner, co-founder of GitHub; Guillermo Rauch, chief executive of Vercel; Spencer Kimball, chief executive of Cockroach Labs; Olivier Pomel, chief executive of Datadog; and Jori Lallo, co-founder of Linear.
+The timing of Railway's expansion coincides with what many in Silicon Valley view as a fundamental shift in how software gets made. Coding assistants are no longer experimental curiosities — they have become essential tools that millions of developers rely on daily. Each line of AI-generated code needs somewhere to run, and the incumbents, by Cooper's telling, are too wedded to their existing business models to fully capitalize on the moment.
+Whether Railway can translate developer enthusiasm into sustained enterprise adoption remains an open question. The cloud infrastructure market is littered with promising startups that failed to break the grip of Amazon, Microsoft, and Google. But Cooper, who previously worked as a software engineer at Wolfram Alpha, Bloomberg, and Uber before founding Railway in 2020, seems unfazed by the scale of his ambition.
+"In five years, Railway [will be] the place where software gets created and evolved, period," he said. "Deploy instantly, scale infinitely, with zero friction. That's the prize worth playing for, and there's no bigger one on offer."
+For a company that built a $100 million business by doing the opposite of what conventional startup wisdom dictates — no marketing, no sales team, no venture hype—the real test begins now. Railway spent five years proving that developers would find a better mousetrap on their own. The next five will determine whether the rest of the world is ready to get on board.]]></description>
       <pubDate>Thu, 22 Jan 2026 14:00:00 GMT</pubDate>
       <source>VentureBeat AI</source>
       <category>ai</category>
       <guid>https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud</guid>
+    </item>
+    <item>
+      <title><![CDATA[Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI]]></title>
+      <link>https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and</link>
+      <description><![CDATA[Salesforce on Tuesday launched an entirely rebuilt version of Slackbot, the company's workplace assistant, transforming it from a simple notification tool into what executives describe as a fully powered AI agent capable of searching enterprise data, drafting documents, and taking action on behalf of employees.
+The new Slackbot, now generally available to Business+ and Enterprise+ customers, is Salesforce's most aggressive move yet to position Slack at the center of the emerging "agentic AI" movement — where software agents work alongside humans to complete complex tasks. The launch comes as Salesforce attempts to convince investors that artificial intelligence will bolster its products rather than render them obsolete.
+"Slackbot isn't just another copilot or AI assistant," said Parker Harris, Salesforce co-founder and Slack's chief technology officer, in an exclusive interview with Salesforce. "It's the front door to the agentic enterprise, powered by Salesforce."
+From tricycle to Porsche: Salesforce rebuilt Slackbot from the ground up
+Harris was blunt about what distinguishes the new Slackbot from its predecessor: "The old Slackbot was, you know, a little tricycle, and the new Slackbot is like, you know, a Porsche."
+The original Slackbot, which has existed since Slack's early days, performed basic algorithmic tasks — reminding users to add colleagues to documents, suggesting channel archives, and delivering simple notifications. The new version runs on an entirely different architecture built around a large language model and sophisticated search capabilities that can access Salesforce records, Google Drive files, calendar data, and years of Slack conversations.
+"It's two different things," Harris explained. "The old Slackbot was algorithmic and fairly simple. The new Slackbot is brand new — it's based around an LLM and a very robust search engine, and connections to third-party search engines, third-party enterprise data."
+Salesforce chose to retain the Slackbot brand despite the fundamental technical overhaul. "People know what Slackbot is, and so we wanted to carry that forward," Harris said.
+Why Anthropic's Claude powers the new Slackbot — and which AI models could come next
+The new Slackbot runs on Claude, Anthropic's large language model, a choice driven partly by compliance requirements. Slack's commercial service operates under FedRAMP Moderate certification to serve U.S. federal government customers, and Harris said Anthropic was "the only provider that could give us a compliant LLM" when Slack began building the new system.
+But that exclusivity won't last. "We are, this year, going to support additional providers," Harris said. "We have a great relationship with Google. Gemini is incredible — performance is great, cost is great. So we're going to use Gemini for some things." He added that OpenAI remains a possibility as well.
+Harris echoed Salesforce CEO Marc Benioff's view that large language models are becoming commoditized: "You've heard Marc talk about LLMs are commodities, that they're democratized. I call them CPUs."
+On the sensitive question of training data, Harris was unequivocal: Salesforce does not train any models on customer data. "Models don't have any sort of security," he explained. "If we trained it on some confidential conversation that you and I have, I don't want Carolyn to know — if I train it into the LLM, there is no way for me to say you get to see the answer, but Carolyn doesn't."
+Inside Salesforce's internal experiment: 80,000 employees tested Slackbot with striking results
+Salesforce has been testing the new Slackbot internally for months, rolling it out to all 80,000 employees. According to Ryan Gavin, Slack's chief marketing officer, the results have been striking: "It's the fastest adopted product in Salesforce history."
+Internal data shows that two-thirds of Salesforce employees have tried the new Slackbot, with 80% of those users continuing to use it regularly. Internal satisfaction rates reached 96% — the highest for any AI feature Slack has shipped. Employees report saving between two and 20 hours per week.
+The adoption happened largely organically. "I think it was about five days, and a Canvas was developed by our employees called 'The Most Stealable Slackbot Prompts,'" Gavin said. "People just started adding to it organically. I think it's up to 250-plus prompts that are in this Canvas right now."
+Kate Crotty, a principal UX researcher at Salesforce, found that 73% of internal adoption was driven by social sharing rather than top-down mandates. "Everybody is there to help each other learn and communicate hacks," she said.
+How Slackbot transforms scattered enterprise data into executive-ready insights
+During a product demonstration, Amy Bauer, Slack's product experience designer, showed how Slackbot can synthesize information across multiple sources. In one example, she asked Slackbot to analyze customer feedback from a pilot program, upload an image of a usage dashboard, and have Slackbot correlate the qualitative and quantitative data.
+"This is where Slackbot really earns its keep for me," Bauer explained. "What it's doing is not just simply reading the image — it's actually looking at the image and comparing it to the insight it just generated for me."
+Slackbot can then query Salesforce to find enterprise accounts with open deals that might be good candidates for early access, creating what Bauer called "a really great justification and plan to move forward." Finally, it can synthesize all that information into a Canvas — Slack's collaborative document format — and find calendar availability among stakeholders to schedule a review meeting.
+"Up until this point, we have been working in a one-to-one capacity with Slackbot," Bauer said. "But one of the benefits that I can do now is take this insight and have it generate this into a Canvas, a shared workspace where I can iterate on it, refine it with Slackbot, or share it out with my team."
+Rob Seaman, Slack's chief product officer, said the Canvas creation demonstrates where the product is heading: "This is making a tool call internally to Slack Canvas to actually write, effectively, a shared document. But it signals where we're going with Slackbot — we're eventually going to be adding in additional third-party tool calls."
+MrBeast's company became a Slackbot guinea pig—and employees say they're saving 90 minutes a day
+Among Salesforce's pilot customers is Beast Industries, the parent company of YouTube star MrBeast. Luis Madrigal, the company's chief information officer, joined the launch announcement to describe his experience.
+"As somebody who has rolled out enterprise technologies for over two decades now, this was practically one of the easiest," Madrigal said. "The plumbing is there. Slack as an implementation, Enterprise Tools — being able to turn on the Slackbot and the Slack AI functionality was as simple as having my team go in, review, do a quick security review."
+Madrigal said his security team signed off "rather quickly" — unusual for enterprise AI deployments — because Slackbot accesses only the information each individual user already has permission to view. "Given all the guardrails you guys have put into place for Slackbot to be unique and customized to only the information that each individual user has, only the conversations and the Slack rooms and Slack channels that they're part of—that made my security team sign off rather quickly."
+One Beast Industries employee, Sinan, the head of Beast Games marketing, reported saving "at bare minimum, 90 minutes a day." Another employee, Spencer, a creative supervisor, described it as "an assistant who's paying attention when I'm not."
+Other pilot customers include Slalom, reMarkable, Xero, Mercari, and Engine. Mollie Bodensteiner, SVP of Operations at Engine, called Slackbot "an absolute 'chaos tamer' for our team," estimating it saves her about 30 minutes daily "just by eliminating context switching."
+Slackbot vs. Microsoft Copilot vs. Google Gemini: The fight for enterprise AI dominance]]></description>
+      <pubDate>Tue, 13 Jan 2026 13:00:00 GMT</pubDate>
+      <source>VentureBeat AI</source>
+      <category>ai</category>
+      <guid>https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and</guid>
     </item>
     <item>
       <title><![CDATA[Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required]]></title>
@@ -188,11 +231,83 @@ Anthropic has also introduced an initial set of "skills" specifically designed f
 Why Anthropic is warning users that its own AI agent could delete their files
 The transition from a chatbot that suggests edits to an agent that makes edits introduces significant risk. An AI that can organize files can, theoretically, delete them.
 In a notable display of transparency, Anthropic devoted considerable space in its announcement to warning users about Cowork's potential dangers — an unusual approach for a product launch.
-The company explicitly acknowledges that Claude "can take potentially destructive actions (such as deleting local files) if it's instructed to." Because Claude might occasionally misinterpret instructions, Anthropic urges users to provide "very clear guidance" about sensitive operations.]]></description>
+The company explicitly acknowledges that Claude "can take potentially destructive actions (such as deleting local files) if it's instructed to." Because Claude might occasionally misinterpret instructions, Anthropic urges users to provide "very clear guidance" about sensitive operations.
+More concerning is the risk of prompt injection attacks — a technique where malicious actors embed hidden instructions in content Claude might encounter online, potentially causing the agent to bypass safeguards or take harmful actions.
+"We've built sophisticated defenses against prompt injections," Anthropic wrote, "but agent safety — that is, the task of securing Claude's real-world actions — is still an active area of development in the industry."
+The company characterized these risks as inherent to the current state of AI agent technology rather than unique to Cowork. "These risks aren't new with Cowork, but it might be the first time you're using a more advanced tool that moves beyond a simple conversation," the announcement notes.
+Anthropic's desktop agent strategy sets up a direct challenge to Microsoft Copilot
+The launch of Cowork places Anthropic in direct competition with Microsoft, which has spent years attempting to integrate its Copilot AI into the fabric of the Windows operating system with mixed adoption results.
+However, Anthropic's approach differs in its isolation. By confining the agent to specific folders and requiring explicit connectors, they are attempting to strike a balance between the utility of an OS-level agent and the security of a sandboxed application.
+What distinguishes Anthropic's approach is its bottom-up evolution. Rather than designing an AI assistant and retrofitting agent capabilities, Anthropic built a powerful coding agent first — Claude Code — and is now abstracting its capabilities for broader audiences. This technical lineage may give Cowork more robust agentic behavior from the start.
+Claude Code has generated significant enthusiasm among developers since its initial launch as a command-line tool in late 2024. The company expanded access with a web interface in October 2025, followed by a Slack integration in December. Cowork is the next logical step: bringing the same agentic architecture to users who may never touch a terminal.
+Who can access Cowork now, and what's coming next for Windows and other platforms
+For now, Cowork remains exclusive to Claude Max subscribers using the macOS desktop application. Users on other subscription tiers — Free, Pro, Team, or Enterprise — can join a waitlist for future access.
+Anthropic has signaled clear intentions to expand the feature's reach. The blog post explicitly mentions plans to add cross-device sync and bring Cowork to Windows as the company learns from the research preview.
+Cherny set expectations appropriately, describing the product as "early and raw, similar to what Claude Code felt like when it first launched."
+To access Cowork, Max subscribers can download or update the Claude macOS app and click on "Cowork" in the sidebar.
+The real question facing enterprise AI adoption
+For technical decision-makers, the implications of Cowork extend beyond any single product launch. The bottleneck for AI adoption is shifting — no longer is model intelligence the limiting factor, but rather workflow integration and user trust.
+Anthropic's goal, as the company puts it, is to make working with Claude feel less like operating a tool and more like delegating to a colleague. Whether mainstream users are ready to hand over folder access to an AI that might misinterpret their instructions remains an open question.
+But the speed of Cowork's development — a major feature built in ten days, possibly by the company's own AI — previews a future where the capabilities of these systems compound faster than organizations can evaluate them. The chatbot has learned to use a file manager. What it learns to use next is anyone's guess.]]></description>
       <pubDate>Mon, 12 Jan 2026 11:30:00 GMT</pubDate>
       <source>VentureBeat AI</source>
       <category>ai</category>
       <guid>https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no</guid>
+    </item>
+    <item>
+      <title><![CDATA[Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews]]></title>
+      <link>https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai</link>
+      <description><![CDATA[Alfred Wahlforss was running out of options. His startup, Listen Labs, needed to hire over 100 engineers, but competing against Mark Zuckerberg's $100 million offers seemed impossible. So he spent $5,000 — a fifth of his marketing budget — on a billboard in San Francisco displaying what looked like gibberish: five strings of random numbers.
+The numbers were actually AI tokens. Decoded, they led to a coding challenge: build an algorithm to act as a digital bouncer at Berghain, the Berlin nightclub famous for rejecting nearly everyone at the door. Within days, thousands attempted the puzzle. 430 cracked it. Some got hired. The winner flew to Berlin, all expenses paid.
+That unconventional approach has now attracted $69 million in Series B funding, led by Ribbit Capital with participation from Evantic and existing investors Sequoia Capital, Conviction, and Pear VC. The round values Listen Labs at $500 million and brings its total capital to $100 million. In nine months since launch, the company has grown annualized revenue by 15x to eight figures and conducted over one million AI-powered interviews. "When you obsess over customers, everything else follows," Wahlforss said in an interview with VentureBeat. "Teams that use Listen bring the customer into every decision, from marketing to product, and when the customer is delighted, everyone is."
+Why traditional market research is broken, and what Listen Labs is building to fix it
+Listen's AI researcher finds participants, conducts in-depth interviews, and delivers actionable insights in hours, not weeks. The platform replaces the traditional choice between quantitative surveys — which provide statistical precision but miss nuance—and qualitative interviews, which deliver depth but cannot scale.
+Wahlforss explained the limitation of existing approaches: "Essentially surveys give you false precision because people end up answering the same question... You can't get the outliers. People are actually not honest on surveys." The alternative, one-on-one human interviews, "gives you a lot of depth. You can ask follow up questions. You can kind of double check if they actually know what they're talking about. And the problem is you can't scale that."
+The platform works in four steps: users create a study with AI assistance, Listen recruits participants from its global network of 30 million people, an AI moderator conducts in-depth interviews with follow-up questions, and results are packaged into executive-ready reports including key themes, highlight reels, and slide decks.
+What distinguishes Listen's approach is its use of open-ended video conversations rather than multiple-choice forms. "In a survey, you can kind of guess what you should answer, and you have four options," Wahlforss said. "Oh, they probably want me to buy high income. Let me click on that button versus an open ended response. It just generates much more honesty."
+The dirty secret of the $140 billion market research industry: rampant fraud
+Listen finds and qualifies the right participants in its global network of 30 million people. But building that panel required confronting what Wahlforss called "one of the most shocking things that we've learned when we entered this industry"—rampant fraud.
+"Essentially, there's a financial transaction involved, which means there will be bad players," he explained. "We actually had some of the largest companies, some of them have billions in revenue, send us people who claim to be kind of enterprise buyers to our platform and our system immediately detected, like, fraud, fraud, fraud, fraud, fraud."
+The company built what it calls a "quality guard" that cross-references LinkedIn profiles with video responses to verify identity, checks consistency across how participants answer questions, and flags suspicious patterns. The result, according to Wahlforss: "People talk three times more. They're much more honest when they talk about sensitive topics like politics and mental health."
+Emeritus, an online education company that uses Listen, reported that approximately 20% of survey responses previously fell into the fraudulent or low-quality category. With Listen, they reduced this to almost zero. "We did not have to replace any responses because of fraud or gibberish information," said Gabrielli Tiburi, Assistant Manager of Customer Insights at Emeritus.
+How Microsoft, Sweetgreen, and Chubbies are using AI interviews to build better products
+The speed advantage has proven central to Listen's pitch. Traditional customer research at Microsoft could take four to six weeks to generate insights. "By the time we get to them, either the decision has been made or we lose out on the opportunity to actually influence it," said Romani Patel, Senior Research Manager at Microsoft.
+With Listen, Microsoft can now get insights in days, and in many cases, within hours.
+The platform has already powered several high-profile initiatives. Microsoft used Listen Labs to collect global customer stories for its 50th anniversary celebration. "We wanted users to share how Copilot is empowering them to bring their best self forward," Patel said, "and we were able to collect those user video stories within a day." Traditionally, that kind of work would have taken six to eight weeks.
+Simple Modern, an Oklahoma-based drinkware company, used Listen to test a new product concept. The process took about an hour to write questions, an hour to launch the study, and 2.5 hours to receive feedback from 120 people across the country. "We went from 'Should we even have this product?' to 'How should we launch it?'" said Chris Hoyle, the company's Chief Marketing Officer.
+Chubbies, the shorts brand, achieved a 24x increase in youth research participation—growing from 5 to 120 participants — by using Listen to overcome the scheduling challenges of traditional focus groups with children. "There's school, sports, dinner, and homework," explained Lauren Neville, Director of Insights and Innovation. "I had to find a way to hear from them that fit into their schedules."
+The company also discovered product issues through AI interviews that might have gone undetected otherwise. Wahlforss described how the AI "through conversations, realized there were like issues with the the kids short line, and decided to, like, interview hundreds of kids. And I understand that there were issues in the liner of the shorts and that they were, like, scratchy, quote, unquote, according to the people interviewed." The redesigned product became "a blockbuster hit."
+The Jevons paradox explains why cheaper research creates more demand, not less
+Listen Labs is entering a massive but fragmented market. Wahlforss cited research from Andreessen Horowitz estimating the market research industry at roughly $140 billion annually, populated by legacy players — some with more than a billion dollars in revenue — that he believes are vulnerable to disruption.
+"There are very much existing budget lines that we are replacing," Wahlforss said. "Why we're replacing them is that one, they're super costly. Two, they're kind of stuck in this old paradigm of choosing between a survey or interview, and they also take months to work with."
+But the more intriguing dynamic may be that AI-powered research doesn't just replace existing spending — it creates new demand. Wahlforss invoked the Jevons paradox, an economic principle that occurs when technological advancements make a resource more efficient to use, but increased efficiency leads to increased overall consumption rather than decreased consumption.
+"What I've noticed is that as something gets cheaper, you don't need less of it. You want more of it," Wahlforss explained. "There's infinite demand for customer understanding. So the researchers on the team can do an order of magnitude more research, and also other people who weren't researchers before can now do that as part of their job."
+Inside the elite engineering team that built Listen Labs before they had a working toilet
+Listen Labs traces its origins to a consumer app that Wahlforss and his co-founder built after meeting at Harvard. "We built this consumer app that got 20,000 downloads in one day," Wahlforss recalled. "We had all these users, and we were thinking like, okay, what can we do to get to know them better? And we built this prototype of what Listen is today."
+The founding team brings an unusual pedigree. Wahlforss's co-founder "was the national champion in competitive programming in Germany, and he worked at Tesla Autopilot." The company claims that 30% of its engineering team are medalists from the International Olympiad in Informatics — the same competition that produced the founders of Cognition, the AI coding startup.
+The Berghain billboard stunt generated approximately 5 million views across social media, according to Wahlforss. It reflected the intensity of the talent war in the Bay Area.
+"We had to do these things because some of our, like early employees, joined the company before we had a working toilet," he said. "But now we fixed that situation."
+The company grew from 5 to 40 employees in 2024 and plans to reach 150 this year. It hires engineers for non-engineering roles across marketing, growth, and operations — a bet that in the AI era, technical fluency matters everywhere.
+Synthetic customers and automated decisions: what Listen Labs is building next
+Wahlforss outlined an ambitious product roadmap that pushes into more speculative territory. The company is building "the ability to simulate your customers, so you can take all of those interviews we've done, and then extrapolate based on that and create synthetic users or simulated user voices."
+Beyond simulation, Listen aims to enable automated action based on research findings. "Can you not just make recommendations, but also create spawn agents to either change things in code or some customer churns? Can you give them a discount and try to bring them back?"
+Wahlforss acknowledged the ethical implications. "Obviously, as you said, there's kind of ethical concerns there. Of like, automated decision making overall can be bad, but we will have considerable guardrails to make sure that the companies are always in the loop."
+The company already handles sensitive data with care. "We don't train on any of the data," Wahlforss said. "We will also scrub any sensitive PII automatically so the model can detect that. And there are times when, for example, you work with investors, where if you accidentally mention something that could be material, non public information, the AI can actually detect that and remove any information like that."
+How AI could reshape the future of product development
+Perhaps the most provocative implication of Listen's model is how it could reshape product development itself. Wahlforss described a customer — an Australian startup — that has adopted what amounts to a continuous feedback loop.
+"They're based in Australia, so they're coding during the day, and then in their night, they're releasing a Listen study with an American audience. Listen validates whatever they built during the day, and they get feedback on that. They can then plug that feedback directly into coding tools like Claude Code and iterate."
+The vision extends Y Combinator's famous dictum — "write code, talk to users" — into an automated cycle. "Write code is now getting automated. And I think like talk to users will be as well, and you'll have this kind of infinite loop where you can start to ship this truly amazing product, almost kind of autonomously."
+Whether that vision materializes depends on factors beyond Listen's control — the continued improvement of AI models, enterprise willingness to trust automated research, and whether speed truly correlates with better products. A 2024 MIT study found that 95% of AI pilots fail to move into production, a statistic Wahlforss cited as the reason he emphasizes quality over demos.
+"I'm constantly have to emphasize like, let's make sure the quality is there and the details are right," he said.
+But the company's growth suggests appetite for the experiment. Microsoft's Patel said Listen has "removed the drudgery of research and brought the fun and joy back into my work." Chubbies is now pushing its founder to give everyone in the company a login. Sling Money, a stablecoin payments startup, can create a survey in ten minutes and receive results the same day.
+"It's a total game changer," said Ali Romero, Sling Money's marketing manager.
+Wahlforss has a different phrase for what he's building. When asked about the tension between speed and rigor — the long-held belief that moving fast means cutting corners — he cited Nat Friedman, the former GitHub CEO and Listen investor, who keeps a list of one-liners on his website.
+One of them: "Slow is fake."
+It's an aggressive claim for an industry built on methodological caution. But Listen Labs is betting that in the AI era, the companies that listen fastest will be the ones that win. The only question is whether customers will talk back.]]></description>
+      <pubDate>Fri, 16 Jan 2026 14:01:00 GMT</pubDate>
+      <source>VentureBeat AI</source>
+      <category>ai</category>
+      <guid>https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai</guid>
     </item>
     <item>
       <title><![CDATA[Codex is Open Sourcing AI models]]></title>
@@ -231,39 +346,6 @@ Benchmarks typically reduce performance to a single number, telling you whether 
       <guid>https://huggingface.co/blog/ibm-research/itbenchandmast</guid>
     </item>
     <item>
-      <title><![CDATA[Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews]]></title>
-      <link>https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai</link>
-      <description><![CDATA[Alfred Wahlforss was running out of options. His startup, Listen Labs, needed to hire over 100 engineers, but competing against Mark Zuckerberg's $100 million offers seemed impossible. So he spent $5,000 — a fifth of his marketing budget — on a billboard in San Francisco displaying what looked like gibberish: five strings of random numbers.
-The numbers were actually AI tokens. Decoded, they led to a coding challenge: build an algorithm to act as a digital bouncer at Berghain, the Berlin nightclub famous for rejecting nearly everyone at the door. Within days, thousands attempted the puzzle. 430 cracked it. Some got hired. The winner flew to Berlin, all expenses paid.
-That unconventional approach has now attracted $69 million in Series B funding, led by Ribbit Capital with participation from Evantic and existing investors Sequoia Capital, Conviction, and Pear VC. The round values Listen Labs at $500 million and brings its total capital to $100 million. In nine months since launch, the company has grown annualized revenue by 15x to eight figures and conducted over one million AI-powered interviews. "When you obsess over customers, everything else follows," Wahlforss said in an interview with VentureBeat. "Teams that use Listen bring the customer into every decision, from marketing to product, and when the customer is delighted, everyone is."
-Why traditional market research is broken, and what Listen Labs is building to fix it
-Listen's AI researcher finds participants, conducts in-depth interviews, and delivers actionable insights in hours, not weeks. The platform replaces the traditional choice between quantitative surveys — which provide statistical precision but miss nuance—and qualitative interviews, which deliver depth but cannot scale.
-Wahlforss explained the limitation of existing approaches: "Essentially surveys give you false precision because people end up answering the same question... You can't get the outliers. People are actually not honest on surveys." The alternative, one-on-one human interviews, "gives you a lot of depth. You can ask follow up questions. You can kind of double check if they actually know what they're talking about. And the problem is you can't scale that."
-The platform works in four steps: users create a study with AI assistance, Listen recruits participants from its global network of 30 million people, an AI moderator conducts in-depth interviews with follow-up questions, and results are packaged into executive-ready reports including key themes, highlight reels, and slide decks.
-What distinguishes Listen's approach is its use of open-ended video conversations rather than multiple-choice forms. "In a survey, you can kind of guess what you should answer, and you have four options," Wahlforss said. "Oh, they probably want me to buy high income. Let me click on that button versus an open ended response. It just generates much more honesty."
-The dirty secret of the $140 billion market research industry: rampant fraud
-Listen finds and qualifies the right participants in its global network of 30 million people. But building that panel required confronting what Wahlforss called "one of the most shocking things that we've learned when we entered this industry"—rampant fraud.
-"Essentially, there's a financial transaction involved, which means there will be bad players," he explained. "We actually had some of the largest companies, some of them have billions in revenue, send us people who claim to be kind of enterprise buyers to our platform and our system immediately detected, like, fraud, fraud, fraud, fraud, fraud."
-The company built what it calls a "quality guard" that cross-references LinkedIn profiles with video responses to verify identity, checks consistency across how participants answer questions, and flags suspicious patterns. The result, according to Wahlforss: "People talk three times more. They're much more honest when they talk about sensitive topics like politics and mental health."
-Emeritus, an online education company that uses Listen, reported that approximately 20% of survey responses previously fell into the fraudulent or low-quality category. With Listen, they reduced this to almost zero. "We did not have to replace any responses because of fraud or gibberish information," said Gabrielli Tiburi, Assistant Manager of Customer Insights at Emeritus.
-How Microsoft, Sweetgreen, and Chubbies are using AI interviews to build better products
-The speed advantage has proven central to Listen's pitch. Traditional customer research at Microsoft could take four to six weeks to generate insights. "By the time we get to them, either the decision has been made or we lose out on the opportunity to actually influence it," said Romani Patel, Senior Research Manager at Microsoft.
-With Listen, Microsoft can now get insights in days, and in many cases, within hours.
-The platform has already powered several high-profile initiatives. Microsoft used Listen Labs to collect global customer stories for its 50th anniversary celebration. "We wanted users to share how Copilot is empowering them to bring their best self forward," Patel said, "and we were able to collect those user video stories within a day." Traditionally, that kind of work would have taken six to eight weeks.
-Simple Modern, an Oklahoma-based drinkware company, used Listen to test a new product concept. The process took about an hour to write questions, an hour to launch the study, and 2.5 hours to receive feedback from 120 people across the country. "We went from 'Should we even have this product?' to 'How should we launch it?'" said Chris Hoyle, the company's Chief Marketing Officer.
-Chubbies, the shorts brand, achieved a 24x increase in youth research participation—growing from 5 to 120 participants — by using Listen to overcome the scheduling challenges of traditional focus groups with children. "There's school, sports, dinner, and homework," explained Lauren Neville, Director of Insights and Innovation. "I had to find a way to hear from them that fit into their schedules."
-The company also discovered product issues through AI interviews that might have gone undetected otherwise. Wahlforss described how the AI "through conversations, realized there were like issues with the the kids short line, and decided to, like, interview hundreds of kids. And I understand that there were issues in the liner of the shorts and that they were, like, scratchy, quote, unquote, according to the people interviewed." The redesigned product became "a blockbuster hit."
-The Jevons paradox explains why cheaper research creates more demand, not less
-Listen Labs is entering a massive but fragmented market. Wahlforss cited research from Andreessen Horowitz estimating the market research industry at roughly $140 billion annually, populated by legacy players — some with more than a billion dollars in revenue — that he believes are vulnerable to disruption.
-"There are very much existing budget lines that we are replacing," Wahlforss said. "Why we're replacing them is that one, they're super costly. Two, they're kind of stuck in this old paradigm of choosing between a survey or interview, and they also take months to work with."
-But the more intriguing dynamic may be that AI-powered research doesn't just replace existing spending — it creates new demand. Wahlforss invoked the Jevons paradox, an economic principle that occurs when technological advancements make a resource more efficient to use, but increased efficiency leads to increased overall consumption rather than decreased consumption.
-"What I've noticed is that as something gets cheaper, you don't need less of it. You want more of it," Wahlforss explained. "There's infinite demand for customer understanding.]]></description>
-      <pubDate>Fri, 16 Jan 2026 14:01:00 GMT</pubDate>
-      <source>VentureBeat AI</source>
-      <category>ai</category>
-      <guid>https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai</guid>
-    </item>
-    <item>
       <title><![CDATA[The creator of Claude Code just revealed his workflow, and developers are losing their minds]]></title>
       <link>https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are</link>
       <description><![CDATA[When the creator of the world's most advanced coding agent speaks, Silicon Valley doesn't just listen — it takes notes.
@@ -294,6 +376,33 @@ To address this, Cherny's team maintains a single file named CLAUDE.md in their 
       <source>Siecle Digital</source>
       <category>ai</category>
       <guid>https://siecledigital.fr/2026/02/27/anthropic-defie-le-pentagone-et-pose-ses-lignes-rouges/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Scaling social science research]]></title>
+      <link>https://openai.com/index/scaling-social-science-research</link>
+      <description><![CDATA[GABRIEL is a new open-source toolkit from OpenAI that uses GPT to turn qualitative text and images into quantitative data, helping social scientists analyze research at scale.]]></description>
+      <pubDate>Fri, 13 Feb 2026 09:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/scaling-social-science-research</guid>
+    </item>
+    <item>
+      <title><![CDATA[A business that scales with the value of intelligence]]></title>
+      <link>https://openai.com/index/a-business-that-scales-with-the-value-of-intelligence</link>
+      <description><![CDATA[OpenAI’s business model scales with intelligence—spanning subscriptions, API, ads, commerce, and compute—driven by deepening ChatGPT adoption.]]></description>
+      <pubDate>Sun, 18 Jan 2026 10:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/a-business-that-scales-with-the-value-of-intelligence</guid>
+    </item>
+    <item>
+      <title><![CDATA[Expanding data residency access to business customers worldwide]]></title>
+      <link>https://openai.com/index/expanding-data-residency-access-to-business-customers-worldwide</link>
+      <description><![CDATA[OpenAI expands data residency for ChatGPT Enterprise, ChatGPT Edu, and the API Platform, enabling eligible customers to store data at rest in-region.]]></description>
+      <pubDate>Tue, 25 Nov 2025 22:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/expanding-data-residency-access-to-business-customers-worldwide</guid>
     </item>
     <item>
       <title><![CDATA[LeRobot v0.4.0: Supercharging OSS Robot Learning]]></title>
@@ -403,6 +512,15 @@ In th]]></description>
       <guid>https://towardsdatascience.com/optimizing-deep-learning-models-with-sam/</guid>
     </item>
     <item>
+      <title><![CDATA[Introducing GPT-5.3-Codex-Spark]]></title>
+      <link>https://openai.com/index/introducing-gpt-5-3-codex-spark</link>
+      <description><![CDATA[Introducing GPT-5.3-Codex-Spark—our first real-time coding model. 15x faster generation, 128k context, now in research preview for ChatGPT Pro users.]]></description>
+      <pubDate>Thu, 12 Feb 2026 10:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/introducing-gpt-5-3-codex-spark</guid>
+    </item>
+    <item>
       <title><![CDATA[The Future of the Global Open-Source AI Ecosystem: From DeepSeek to AI+]]></title>
       <link>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-3</link>
       <description><![CDATA[Back to Articles China's Organic Open Source AI Ecosystem The Established The Normalcy of "DeepSeek Moments" Foundations for the Future Looking Back to Look Forward This is the third and final blog in a three-part series on China's open source community's historical advancements since January 2025's "DeepSeek Moment." The first blog on strategic changes and open artifact growth is available here, and the second blog on architectural and hardware shifts is available here.
@@ -414,6 +532,24 @@ For AI researchers and developers contributing to and relying on the open source
       <guid>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-3</guid>
     </item>
     <item>
+      <title><![CDATA[Snowflake and OpenAI partner to bring frontier intelligence to enterprise data]]></title>
+      <link>https://openai.com/index/snowflake-partnership</link>
+      <description><![CDATA[OpenAI and Snowflake partner in a $200M agreement to bring frontier intelligence into enterprise data, enabling AI agents and insights directly in Snowflake.]]></description>
+      <pubDate>Mon, 02 Feb 2026 06:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/snowflake-partnership</guid>
+    </item>
+    <item>
+      <title><![CDATA[Taisei Corporation shapes the next generation of talent with ChatGPT]]></title>
+      <link>https://openai.com/index/taisei</link>
+      <description><![CDATA[Taisei Corporation uses ChatGPT Enterprise to support HR-led talent development and scale generative AI across its global construction business.]]></description>
+      <pubDate>Thu, 29 Jan 2026 00:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/taisei</guid>
+    </item>
+    <item>
       <title><![CDATA[We Got Claude to Build CUDA Kernels and teach open models!]]></title>
       <link>https://huggingface.co/blog/upskill</link>
       <description><![CDATA[Back to Articles What are agent skills? 1. Get the teacher (Claude Opus 4.5) to build a kernel 2. Make an agent skill from the trace 3. Take your skill to an open source, smaller, or cheaper model Deep dive tutorial into building kernels with agent skills Setup and Install Skill Generation Generate the Skill Evaluate on a Different Model How the evaluation in upskill works What's Next Resources The best thing about agent skills is upskilling your agents on hard problems. There are two ways to look at that: You can take Opus 4.5 or other SOTA models and tackle the hardest problems out there. You can take models that run on your laptop and upskill them to harder problems. In this blog post, we’ll show you how to take on the latter. This blog post walks through the process of using a new tool, upskill, to generate and evaluate agent skills with large models and use them with smaller models. We will benchmark upskill on the task of writing CUDA kernels for diffusers models, but the process is generally useful for cutting costs, or using smaller models on hard and domain-specific problems. What are agent skills? In case you missed it, agent skills are taking the coding agent game by storm. In fact, they’re a straightforward concept to define model context as files, like instructions as markdown and code as scripts. The file for]]></description>
@@ -421,6 +557,15 @@ For AI researchers and developers contributing to and relying on the open source
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/upskill</guid>
+    </item>
+    <item>
+      <title><![CDATA[Inside GPT-5 for Work: How Businesses Use GPT-5]]></title>
+      <link>https://openai.com/business/guides-and-resources/chatgpt-usage-and-adoption-patterns-at-work</link>
+      <description><![CDATA[A data-driven report on how workers across industries use ChatGPT—covering adoption trends, top tasks, departmental patterns, and the future of AI at work.]]></description>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/business/guides-and-resources/chatgpt-usage-and-adoption-patterns-at-work</guid>
     </item>
     <item>
       <title><![CDATA[One Year Since the “DeepSeek Moment”]]></title>
@@ -441,6 +586,33 @@ We didn't just want to make incremental improvements, we wanted to fundamentally
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/tiiuae/falcon-h1-arabic</guid>
+    </item>
+    <item>
+      <title><![CDATA[Bringing powerful AI to millions across Europe with Deutsche Telekom]]></title>
+      <link>https://openai.com/index/deutsche-telekom-collaboration</link>
+      <description><![CDATA[OpenAI is collaborating with Deutsche Telekom to bring advanced, multilingual AI experiences to millions of people across Europe. ChatGPT Enterprise will also be deployed to help employees at Deutsche Telekom improve workflows and accelerate innovation.]]></description>
+      <pubDate>Tue, 09 Dec 2025 00:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/deutsche-telekom-collaboration</guid>
+    </item>
+    <item>
+      <title><![CDATA[The state of enterprise AI]]></title>
+      <link>https://openai.com/index/the-state-of-enterprise-ai-2025-report</link>
+      <description><![CDATA[Key findings from OpenAI’s enterprise data show accelerating AI adoption, deeper integration, and measurable productivity gains across industries in 2025.]]></description>
+      <pubDate>Mon, 08 Dec 2025 04:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/the-state-of-enterprise-ai-2025-report</guid>
+    </item>
+    <item>
+      <title><![CDATA[OpenAI takes an ownership stake in Thrive Holdings to accelerate enterprise AI adoption]]></title>
+      <link>https://openai.com/index/thrive-holdings</link>
+      <description><![CDATA[OpenAI takes an ownership stake in Thrive Holdings to accelerate enterprise AI adoption, embedding frontier research and engineering directly into accounting and IT services to boost speed, accuracy, and efficiency while creating a scalable model for industry-wide transformation.]]></description>
+      <pubDate>Mon, 01 Dec 2025 05:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/thrive-holdings</guid>
     </item>
     <item>
       <title><![CDATA[Join the AMD Open Robotics Hackathon]]></title>
@@ -524,19 +696,6 @@ If you are interested in trying out the models yourself, some example boilerplat
       <guid>https://huggingface.co/blog/mmbert</guid>
     </item>
     <item>
-      <title><![CDATA[Kimina-Prover-RL]]></title>
-      <link>https://huggingface.co/blog/AI-MO/kimina-prover-rl</link>
-      <description><![CDATA[Back to Articles A slimmed-down training pipeline from Kimina Prover, with core features and full compatibility with verl. We are happy to introduce kimina-prover-rl, an open-source training pipeline for formal theorem proving in Lean 4, based on a structured reasoning-then-generation paradigm inspired by DeepSeek-R1.
-This training pipelinee is a simplified version of the system we used to train Kimina Prover, preserving the key components of the system and offering full compatibility with the open-source Verl framework.
-It is released as part of a fork of Verl containing the complete training recipe in recipe/kimina-prover-rl, allowing anyone to reproduce our experiments or adapt the setup to their own models and datasets. All information to setup and launch the pipeline can be found in the README of the recipe.
-As a result of this training pipeline, we are releasing two models: AI-MO/Kimina-Prover-RL-1.7B, a 1.7B-parameter model that achieves 76.63% Pass@32 on the MiniF2F benchmark — setting a new state of the art for open-source models in this size category
-AI-MO/Kimina-Prover-RL-0.6B, a 0.6B-parameter model that achieves 71.30% Pass@32 on the MiniF2F benchmark — also setting a new state of the art for open-source models in this size category. Introduction kimina-prover-rl i]]></description>
-      <pubDate>Thu, 14 Aug 2025 12:13:01 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/AI-MO/kimina-prover-rl</guid>
-    </item>
-    <item>
       <title><![CDATA[Neural Super Sampling is here!]]></title>
       <link>https://huggingface.co/blog/Arm/neural-super-sampling</link>
       <description><![CDATA[Back to Articles Elevated by machine learning Learn about our NSS Model How we trained the model Get started experimenting with NSS today! Neural Super Sampling (NSS), a next-generation AI-powered upscaling solution from Arm is released for graphics and gaming developers to start experimenting today! Elevated by machine learning NSS is designed for real-time performance on future mobile devices with Arm Neural Technology. However, latency depends on implementation factors such as GPU configuration, resolution, and use case. In our Enchanted Castle demo video below, NSS reduced GPU workload by 50 percent. The model rendered at 540p and upscaled to 1080p in just 4ms in sustained performance setup. Your browser does not support the video tag. Learn about our NSS Model Neural Super Sampling (NSS) is a parameter prediction model for real-time temporal super sampling developed by Arm, optimized for execution on Neural Accelerators (NX) in mobile GPUs. It enables high-resolution rendering at a lower compute cost by reconstructing high-quality output frames from low-resolution temporal inputs. NSS is particularly suited for mobile gaming, XR, and other power-constrained graphics use cases.
@@ -557,6 +716,15 @@ If you want to go deeper check out the following resources: Technical Blog: How 
       <guid>https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent</guid>
     </item>
     <item>
+      <title><![CDATA[Claude Skills and Subagents: Escaping the Prompt Engineering Hamster Wheel]]></title>
+      <link>https://towardsdatascience.com/claude-skills-and-subagents-escaping-the-prompt-engineering-hamster-wheel/</link>
+      <description><![CDATA[How reusable, lazy-loaded instructions solve the context bloat problem in AI-assisted development.]]></description>
+      <pubDate>Sat, 28 Feb 2026 15:00:00 GMT</pubDate>
+      <source>Towards Data Science</source>
+      <category>ai</category>
+      <guid>https://towardsdatascience.com/claude-skills-and-subagents-escaping-the-prompt-engineering-hamster-wheel/</guid>
+    </item>
+    <item>
       <title><![CDATA[Mistral AI s’allie à Accenture pour accélérer le déploiement massif de l’IA en entreprise]]></title>
       <link>https://siecledigital.fr/2026/02/27/mistral-ai-sallie-a-accenture-pour-conquerir-les-entreprises/</link>
       <description><![CDATA[Alors que de nombreuses entreprises multiplient les expérimentations autour de l’intelligence artificielle, le passage à l’échelle reste encore complexe, comme en témoigne une récente étude du MIT. Entre les projets avortés qui s’enchaînent et les déploiements réellement industrialisés, le fossé est bien réel. Face à ce constat, les éditeurs d’IA cherchent de nouveaux relais de […]]]></description>
@@ -566,13 +734,13 @@ If you want to go deeper check out the following resources: Technical Blog: How 
       <guid>https://siecledigital.fr/2026/02/27/mistral-ai-sallie-a-accenture-pour-conquerir-les-entreprises/</guid>
     </item>
     <item>
-      <title><![CDATA[Fou, faucon calculateur et Dr Jekyll et M. Hyde : les profils terrifiants des IA quand elles ont des armes nucléaires]]></title>
-      <link>https://www.numerama.com/tech/2188871-les-profils-terrifiants-des-ia-quand-elles-ont-des-armes-nucleaires-entre-les-mains.html</link>
-      <description><![CDATA[Dans le film culte Wargames, un supercalculateur menaçait de lancer une guerre nucléaire. En 2026, la réalité dresse un constat tout aussi plus inquiétant : placées aux commandes de simulations géopolitiques, les intelligences artificielles de pointe comme GPT-5.2 ou Gemini 3 Flash choisissent l'escalade atomique dans 95 % des cas.]]></description>
-      <pubDate>Fri, 27 Feb 2026 08:25:18 GMT</pubDate>
-      <source>Numerama Tech</source>
+      <title><![CDATA[Joint Statement from OpenAI and Microsoft]]></title>
+      <link>https://openai.com/index/continuing-microsoft-partnership</link>
+      <description><![CDATA[Microsoft and OpenAI continue to work closely across research, engineering, and product development, building on years of deep collaboration and shared success.]]></description>
+      <pubDate>Fri, 27 Feb 2026 05:30:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
       <category>ai</category>
-      <guid>https://www.numerama.com/tech/2188871-les-profils-terrifiants-des-ia-quand-elles-ont-des-armes-nucleaires-entre-les-mains.html</guid>
+      <guid>https://openai.com/index/continuing-microsoft-partnership</guid>
     </item>
     <item>
       <title><![CDATA[Detecting and Editing Visual Objects with Gemini]]></title>
@@ -620,15 +788,6 @@ If you want to go deeper check out the following resources: Technical Blog: How 
       <guid>https://towardsdatascience.com/ai-bots-formed-a-cartel-no-one-told-them-to/</guid>
     </item>
     <item>
-      <title><![CDATA[Build Effective Internal Tooling with Claude Code]]></title>
-      <link>https://towardsdatascience.com/build-effective-internal-tooling-with-claude-code/</link>
-      <description><![CDATA[Use Claude Code to quickly build completely personalized applications]]></description>
-      <pubDate>Mon, 23 Feb 2026 19:13:25 GMT</pubDate>
-      <source>Towards Data Science</source>
-      <category>ai</category>
-      <guid>https://towardsdatascience.com/build-effective-internal-tooling-with-claude-code/</guid>
-    </item>
-    <item>
       <title><![CDATA[Train AI models with Unsloth and Hugging Face Jobs for FREE]]></title>
       <link>https://huggingface.co/blog/unsloth-jobs</link>
       <description><![CDATA[Back to Articles This blog post covers how to use Unsloth and Hugging Face Jobs for fast LLM fine-tuning (specifically LiquidAI/LFM2.5-1.2B-Instruct ) through coding agents like Claude Code and Codex. Unsloth provides ~2x faster training and ~60% less VRAM usage compared to standard methods, so training small models can cost just a few dollars.
@@ -640,6 +799,15 @@ First, you need to install the hf CLI.]]></description>
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/unsloth-jobs</guid>
+    </item>
+    <item>
+      <title><![CDATA[Introducing Lockdown Mode and Elevated Risk labels in ChatGPT]]></title>
+      <link>https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt</link>
+      <description><![CDATA[Introducing Lockdown Mode and Elevated Risk labels in ChatGPT to help organizations defend against prompt injection and AI-driven data exfiltration.]]></description>
+      <pubDate>Fri, 13 Feb 2026 10:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt</guid>
     </item>
     <item>
       <title><![CDATA[Custom Kernels for All from Codex and Claude]]></title>
@@ -687,13 +855,112 @@ We are going to take evaluations on the Hugging Face Hub in a new direction by d
       <guid>https://huggingface.co/blog/community-evals</guid>
     </item>
     <item>
-      <title><![CDATA[Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek]]></title>
-      <link>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-2</link>
-      <description><![CDATA[Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek]]></description>
-      <pubDate>Tue, 27 Jan 2026 15:01:45 GMT</pubDate>
-      <source>Hugging Face Blog</source>
+      <title><![CDATA[Inside OpenAI’s in-house data agent]]></title>
+      <link>https://openai.com/index/inside-our-in-house-data-agent</link>
+      <description><![CDATA[How OpenAI built an in-house AI data agent that uses GPT-5, Codex, and memory to reason over massive datasets and deliver reliable insights in minutes.]]></description>
+      <pubDate>Thu, 29 Jan 2026 10:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-2</guid>
+      <guid>https://openai.com/index/inside-our-in-house-data-agent</guid>
+    </item>
+    <item>
+      <title><![CDATA[PVH reimagines the future of fashion with OpenAI]]></title>
+      <link>https://openai.com/index/pvh-future-of-fashion</link>
+      <description><![CDATA[PVH Corp., parent company of Calvin Klein and Tommy Hilfiger, is adopting ChatGPT Enterprise to bring AI into fashion design, supply chain, and consumer engagement.]]></description>
+      <pubDate>Tue, 27 Jan 2026 06:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/pvh-future-of-fashion</guid>
+    </item>
+    <item>
+      <title><![CDATA[Unrolling the Codex agent loop]]></title>
+      <link>https://openai.com/index/unrolling-the-codex-agent-loop</link>
+      <description><![CDATA[A technical deep dive into the Codex agent loop, explaining how Codex CLI orchestrates models, tools, prompts, and performance using the Responses API.]]></description>
+      <pubDate>Fri, 23 Jan 2026 12:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/unrolling-the-codex-agent-loop</guid>
+    </item>
+    <item>
+      <title><![CDATA[Cisco and OpenAI redefine enterprise engineering with AI agents]]></title>
+      <link>https://openai.com/index/cisco</link>
+      <description><![CDATA[Cisco and OpenAI redefine enterprise engineering with Codex, an AI software agent embedded in workflows to speed builds, automate defect fixes, and enable AI-native development.]]></description>
+      <pubDate>Tue, 20 Jan 2026 11:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/cisco</guid>
+    </item>
+    <item>
+      <title><![CDATA[Investing in Merge Labs]]></title>
+      <link>https://openai.com/index/investing-in-merge-labs</link>
+      <description><![CDATA[OpenAI is investing in Merge Labs to support new brain computer interfaces that bridge biological and artificial intelligence to maximize human ability, agency, and experience.]]></description>
+      <pubDate>Thu, 15 Jan 2026 07:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/investing-in-merge-labs</guid>
+    </item>
+    <item>
+      <title><![CDATA[Zenken boosts a lean sales team with ChatGPT Enterprise]]></title>
+      <link>https://openai.com/index/zenken</link>
+      <description><![CDATA[By rolling out ChatGPT Enterprise company-wide, Zenken has boosted sales performance, cut preparation time, and increased proposal success rates. AI-supported workflows are helping a lean team deliver more personalized, effective customer engagement.]]></description>
+      <pubDate>Tue, 13 Jan 2026 16:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/zenken</guid>
+    </item>
+    <item>
+      <title><![CDATA[Datadog uses Codex for system-level code review]]></title>
+      <link>https://openai.com/index/datadog</link>
+      <description><![CDATA[OpenAI and Datadog brand graphic with the OpenAI wordmark on the left, the Datadog logo on the right, and a central abstract brown fur-like texture panel on a white background.]]></description>
+      <pubDate>Fri, 09 Jan 2026 00:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/datadog</guid>
+    </item>
+    <item>
+      <title><![CDATA[Introducing ChatGPT Health]]></title>
+      <link>https://openai.com/index/introducing-chatgpt-health</link>
+      <description><![CDATA[ChatGPT Health is a dedicated experience that securely connects your health data and apps, with privacy protections and a physician-informed design.]]></description>
+      <pubDate>Wed, 07 Jan 2026 00:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/introducing-chatgpt-health</guid>
+    </item>
+    <item>
+      <title><![CDATA[Continuously hardening ChatGPT Atlas against prompt injection]]></title>
+      <link>https://openai.com/index/hardening-atlas-against-prompt-injection</link>
+      <description><![CDATA[OpenAI is strengthening ChatGPT Atlas against prompt injection attacks using automated red teaming trained with reinforcement learning. This proactive discover-and-patch loop helps identify novel exploits early and harden the browser agent’s defenses as AI becomes more agentic.]]></description>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/hardening-atlas-against-prompt-injection</guid>
+    </item>
+    <item>
+      <title><![CDATA[Updating our Model Spec with teen protections]]></title>
+      <link>https://openai.com/index/updating-model-spec-with-teen-protections</link>
+      <description><![CDATA[OpenAI is updating its Model Spec with new Under-18 Principles that define how ChatGPT should support teens with safe, age-appropriate guidance grounded in developmental science. The update strengthens guardrails, clarifies expected model behavior in higher-risk situations, and builds on our broader work to improve teen safety across ChatGPT.]]></description>
+      <pubDate>Thu, 18 Dec 2025 11:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/updating-model-spec-with-teen-protections</guid>
+    </item>
+    <item>
+      <title><![CDATA[AI literacy resources for teens and parents]]></title>
+      <link>https://openai.com/index/ai-literacy-resources-for-teens-and-parents</link>
+      <description><![CDATA[OpenAI shares new AI literacy resources to help teens and parents use ChatGPT thoughtfully, safely, and with confidence. The guides include expert-vetted tips for responsible use, critical thinking, healthy boundaries, and supporting teens through emotional or sensitive topics.]]></description>
+      <pubDate>Thu, 18 Dec 2025 11:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/ai-literacy-resources-for-teens-and-parents</guid>
+    </item>
+    <item>
+      <title><![CDATA[Deepening our collaboration with the U.S. Department of Energy]]></title>
+      <link>https://openai.com/index/us-department-of-energy-collaboration</link>
+      <description><![CDATA[OpenAI and the U.S. Department of Energy have signed a memorandum of understanding to deepen collaboration on AI and advanced computing in support of scientific discovery. The agreement builds on ongoing work with national laboratories and helps establish a framework for applying AI to high-impact research across the DOE ecosystem.]]></description>
+      <pubDate>Thu, 18 Dec 2025 11:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/us-department-of-energy-collaboration</guid>
     </item>
     <item>
       <title><![CDATA[The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator]]></title>
@@ -730,6 +997,15 @@ usin]]></description>
       <guid>https://huggingface.co/blog/nvidia/nemotron-3-nano-evaluation-recipe</guid>
     </item>
     <item>
+      <title><![CDATA[Evaluating AI’s ability to perform scientific research tasks]]></title>
+      <link>https://openai.com/index/frontierscience</link>
+      <description><![CDATA[OpenAI introduces FrontierScience, a benchmark testing AI reasoning in physics, chemistry, and biology to measure progress toward real scientific research.]]></description>
+      <pubDate>Tue, 16 Dec 2025 09:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/frontierscience</guid>
+    </item>
+    <item>
       <title><![CDATA[CUGA on Hugging Face: Democratizing Configurable AI Agents]]></title>
       <link>https://huggingface.co/blog/ibm-research/cuga-on-hugging-face</link>
       <description><![CDATA[Back to Articles Introduction Introduction What is CUGA? Open Source and Open Models Integration with Langflow: Visual Agent Design Made Simple Try the Hugging Face Demo: A Hands-On Preview Conclusion and Call to Action AI agents are rapidly becoming essential for building intelligent applications, but creating robust, adaptable agents that scale across domains remains a challenge. Many existing frameworks struggle with brittleness, tool misuse, and failures when faced with complex workflows.
@@ -740,6 +1016,69 @@ CUGA (Configurable Generalist Agent) was designed to overcome these limitations.
       <guid>https://huggingface.co/blog/ibm-research/cuga-on-hugging-face</guid>
     </item>
     <item>
+      <title><![CDATA[BBVA and OpenAI collaborate to transform global banking]]></title>
+      <link>https://openai.com/index/bbva-collaboration-expansion</link>
+      <description><![CDATA[BBVA is expanding its work with OpenAI through a multi-year AI transformation program, rolling out ChatGPT Enterprise to all 120,000 employees. Together, the companies will develop AI solutions that enhance customer interactions, streamline operations, and help build an AI-native banking experience.]]></description>
+      <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/bbva-collaboration-expansion</guid>
+    </item>
+    <item>
+      <title><![CDATA[Advancing science and math with GPT-5.2]]></title>
+      <link>https://openai.com/index/gpt-5-2-for-science-and-math</link>
+      <description><![CDATA[GPT-5.2 is OpenAI’s strongest model yet for math and science, setting new state-of-the-art results on benchmarks like GPQA Diamond and FrontierMath. This post shows how those gains translate into real research progress, including solving an open theoretical problem and generating reliable mathematical proofs.]]></description>
+      <pubDate>Thu, 11 Dec 2025 10:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/gpt-5-2-for-science-and-math</guid>
+    </item>
+    <item>
+      <title><![CDATA[The Walt Disney Company and OpenAI reach landmark agreement to bring beloved characters to Sora]]></title>
+      <link>https://openai.com/index/disney-sora-agreement</link>
+      <description><![CDATA[Disney and OpenAI have reached an agreement to bring more than 200 Disney, Marvel, Pixar and Star Wars characters to Sora for fan-inspired short videos. The agreement emphasizes responsible AI in entertainment and includes Disney’s company-wide use of ChatGPT Enterprise and the OpenAI API.]]></description>
+      <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/disney-sora-agreement</guid>
+    </item>
+    <item>
+      <title><![CDATA[Update to GPT-5 System Card: GPT-5.2]]></title>
+      <link>https://openai.com/index/gpt-5-system-card-update-gpt-5-2</link>
+      <description><![CDATA[GPT-5.2 is the latest model family in the GPT-5 series. The comprehensive safety mitigation approach for these models is largely the same as that described in the GPT-5 System Card and GPT-5.1 System Card. Like OpenAI’s other models, the GPT-5.2 models were trained on diverse datasets, including information that is publicly available on the internet, information that we partner with third parties to access, and information that our users or human trainers and researchers provide or generate.]]></description>
+      <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/gpt-5-system-card-update-gpt-5-2</guid>
+    </item>
+    <item>
+      <title><![CDATA[OpenAI appoints Denise Dresser as Chief Revenue Officer]]></title>
+      <link>https://openai.com/index/openai-appoints-denise-dresser</link>
+      <description><![CDATA[Denise Dresser is joining as Chief Revenue Officer, overseeing OpenAI’s global revenue strategy across enterprise and customer success. She will help more businesses put AI to work in their day-to-day operations as OpenAI continues to scale.]]></description>
+      <pubDate>Tue, 09 Dec 2025 00:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/openai-appoints-denise-dresser</guid>
+    </item>
+    <item>
+      <title><![CDATA[Building AI fluency at scale with ChatGPT Enterprise]]></title>
+      <link>https://openai.com/index/commonwealth-bank-of-australia</link>
+      <description><![CDATA[Commonwealth Bank of Australia partners with OpenAI to roll out ChatGPT Enterprise to 50,000 employees, building AI fluency at scale to improve customer service and fraud response.]]></description>
+      <pubDate>Tue, 09 Dec 2025 00:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/commonwealth-bank-of-australia</guid>
+    </item>
+    <item>
+      <title><![CDATA[Instacart and OpenAI partner on AI shopping experiences]]></title>
+      <link>https://openai.com/index/instacart-partnership</link>
+      <description><![CDATA[OpenAI and Instacart are deepening their longstanding partnership by bringing the first fully integrated grocery shopping and Instant Checkout payment app to ChatGPT.]]></description>
+      <pubDate>Mon, 08 Dec 2025 06:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/instacart-partnership</guid>
+    </item>
+    <item>
       <title><![CDATA[We Got Claude to Fine-Tune an Open Source LLM]]></title>
       <link>https://huggingface.co/blog/hf-skills-training</link>
       <description><![CDATA[We Got Claude to Fine-Tune an Open Source LLM]]></description>
@@ -747,6 +1086,42 @@ CUGA (Configurable Generalist Agent) was designed to overcome these limitations.
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/hf-skills-training</guid>
+    </item>
+    <item>
+      <title><![CDATA[OpenAI to acquire Neptune]]></title>
+      <link>https://openai.com/index/openai-to-acquire-neptune</link>
+      <description><![CDATA[OpenAI is acquiring Neptune to deepen visibility into model behavior and strengthen the tools researchers use to track experiments and monitor training.]]></description>
+      <pubDate>Wed, 03 Dec 2025 10:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/openai-to-acquire-neptune</guid>
+    </item>
+    <item>
+      <title><![CDATA[Inside Mirakl's agentic commerce vision]]></title>
+      <link>https://openai.com/index/mirakl</link>
+      <description><![CDATA[Mirakl is redefining commerce through AI agents and ChatGPT Enterprise—achieving faster documentation, smarter customer support, and building toward agent-native commerce with Mirakl Nexus.]]></description>
+      <pubDate>Mon, 01 Dec 2025 22:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/mirakl</guid>
+    </item>
+    <item>
+      <title><![CDATA[Accenture and OpenAI accelerate enterprise AI success]]></title>
+      <link>https://openai.com/index/accenture-partnership</link>
+      <description><![CDATA[Accenture and OpenAI are collaborating to help enterprises bring agentic AI capabilities into the core of their business and unlock new levels of growth.]]></description>
+      <pubDate>Mon, 01 Dec 2025 05:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/accenture-partnership</guid>
+    </item>
+    <item>
+      <title><![CDATA[Mixpanel security incident: what OpenAI users need to know]]></title>
+      <link>https://openai.com/index/mixpanel-incident</link>
+      <description><![CDATA[OpenAI shares details about a Mixpanel security incident involving limited API analytics data. No API content, credentials, or payment details were exposed. Learn what happened and how we’re protecting users.]]></description>
+      <pubDate>Wed, 26 Nov 2025 19:00:00 GMT</pubDate>
+      <source>OpenAI Blog</source>
+      <category>ai</category>
+      <guid>https://openai.com/index/mixpanel-incident</guid>
     </item>
     <item>
       <title><![CDATA[Introducing AnyLanguageModel: One API for Local and Remote LLMs on Apple Platforms]]></title>
@@ -835,15 +1210,6 @@ Using Vision Language Models for Document Question Answering Wrapping up Brief I
       <guid>https://huggingface.co/blog/ocr-open-models</guid>
     </item>
     <item>
-      <title><![CDATA[Unlock the power of images with AI Sheets]]></title>
-      <link>https://huggingface.co/blog/aisheets-unlock-images</link>
-      <description><![CDATA[The Wayback Machine is an initiative of the Internet Archive, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include Open Library &amp; archive-it.org. Your use of the Wayback Machine is subject to the Internet Archive's Terms of Use.]]></description>
-      <pubDate>Tue, 21 Oct 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/aisheets-unlock-images</guid>
-    </item>
-    <item>
       <title><![CDATA[AI for Food Allergies]]></title>
       <link>https://huggingface.co/blog/hugging-science/ai-for-food-allergies</link>
       <description><![CDATA[Back to Articles Current State of The Art: Where AI Meets Food Allergy Research The need for data Collection release The Protein and Molecular Allergenicity Layer The Clinical, Immunological, and Therapeutic Layer The Food, Ingredient, and Regulatory Layer Accessing the collection What’s coming next? Final remarks Appendix SDAP 2.0: Structural Database of Allergenic Proteins DAVIS: Kinase inhibitor binding affinities QsarDB: repository for (Q)SAR models e-Drug3D Database Stanford Drug Data: Offsides/Twosides DrugCentral: open drug information repository MedKG: medical knowledge graph PDBBind+: protein-ligand binding database Human Metabolome Database (HMDB) Therapeutic Target Database Therapeutic Data Commons (TDC) STITCH: Chemical–Protein Interaction Database M3-20M Multi-Modal Molecule Dataset SAIR (Structurally Augmented IC Repository) AllerBase AlgPred 2.0 Dataset AllerCatPro 2.0 AllergenAI NetAllergen QM9: Molecular Property Prediction Dataset for Quantum Chemistry Let’s get straight to the point: worldwide, an estimated 220 million people suffer from at least one food allergy, and in the United States alone, this accounts for roughly 10% of the population. This means that if you don’t have an allergy, you’ll likely know someone who does — and it’s not a pleasant situation to be in. This condition affects no]]></description>
@@ -875,16 +1241,13 @@ That’s why we’re very happy to introduce Gaia2, the follow-up to the agentic
       <guid>https://huggingface.co/blog/gaia2</guid>
     </item>
     <item>
-      <title><![CDATA[Jupyter Agents: training LLMs to reason with notebooks]]></title>
-      <link>https://huggingface.co/blog/jupyter-agent-2</link>
-      <description><![CDATA[Back to Articles The past year has been all about giving LLMs more tools and autonomy to solve more complex and open ended tasks. The goal of the Jupyter Agent is to give the model the ultimate tool: code execution. A natural way to display multi-step code execution together with reasoning is within a Jupyter Notebook, which consists of code and markdown cells. So we built Jupyter Agent to act as an agent that can execute code directly inside a Jupyter notebook and use this environment to solve data analysis and data science tasks. Think of it like Cursor, but living natively inside your data science workflow.We built a demo of this vision with Qwen-3 Coder, currently one of the strongest coding models. This is a follow-up to our earlier work on jupyter-agent (v1).
-While large models are starting to show useful behavior, the key question is how we can continue improving them. To this end, we focus on strengthening smaller models to perform well on agentic data science tasks as they currently struggle to compete with the large models.
-The goal of this project is to build a pipeline to first generate high-quality training data, then fine-tune an existing small model, and finally evaluate whether the model's performance improves on relevant benchmarks.
-Let’s begin with the last step: selecting a strong benchmark for evaluating models on data science tasks.]]></description>
-      <pubDate>Wed, 10 Sep 2025 00:00:00 GMT</pubDate>
+      <title><![CDATA[Scaleway on Hugging Face Inference Providers]]></title>
+      <link>https://huggingface.co/blog/inference-providers-scaleway</link>
+      <description><![CDATA[The Wayback Machine is an initiative of the Internet Archive, a 501(c)(3) non-profit, building a digital library of Internet sites and other cultural artifacts in digital form. Other projects include Open Library &amp; archive-it.org. Your use of the Wayback Machine is subject to the Internet Archive's Terms of Use.]]></description>
+      <pubDate>Fri, 19 Sep 2025 00:00:00 GMT</pubDate>
       <source>Hugging Face Blog</source>
       <category>ai</category>
-      <guid>https://huggingface.co/blog/jupyter-agent-2</guid>
+      <guid>https://huggingface.co/blog/inference-providers-scaleway</guid>
     </item>
     <item>
       <title><![CDATA[NVIDIA Releases 6 Million Multi-Lingual Reasoning Dataset]]></title>
@@ -900,66 +1263,6 @@ Target: Agents for customer service, support chatbots, analytics copilots, and e
       <source>Hugging Face Blog</source>
       <category>ai</category>
       <guid>https://huggingface.co/blog/nvidia/multilingual-reasoning-v1</guid>
-    </item>
-    <item>
-      <title><![CDATA[MCP for Research: How to Connect AI to Research Tools]]></title>
-      <link>https://huggingface.co/blog/mcp-for-research</link>
-      <description><![CDATA[Back to Articles Research Discovery: Three Layers of Abstraction 1. Manual Research 2. Scripted Tools 3. MCP Integration Setup and Usage Quick Setup Learn More Academic research involves frequent research discovery: finding papers, code, related models and datasets. This typically means switching between platforms like arXiv, GitHub, and Hugging Face, manually piecing together connections.
-The Model Context Protocol (MCP) is a standard that allows agentic models to communicate with external tools and data sources. For research discovery, this means AI can use research tools through natural language requests, automating platform switching and cross-referencing. Research Discovery: Three Layers of Abstraction Much like software development, research discovery can be framed in terms of layers of abstraction. 1. Manual Research At the lowest level of abstraction, researchers search manually and cross-reference by hand.
-# Typical workflow:
-1. Find paper on arXiv
-2. Search GitHub for implementations
-3. Check Hugging Face for models/datasets
-4. Cross-reference authors and citations]]></description>
-      <pubDate>Mon, 18 Aug 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/mcp-for-research</guid>
-    </item>
-    <item>
-      <title><![CDATA[🇵🇭 FilBench - Can LLMs Understand and Generate Filipino?]]></title>
-      <link>https://huggingface.co/blog/filbench</link>
-      <description><![CDATA[Back to Articles FilBench What did we learn from FilBench? Finding #1: Although region-specific LLMs still lag behind GPT-4, collecting data to train these models is still a promising direction Finding #2: Filipino translation is still a difficult task for LLMs Finding #3: Open LLMs Remain a Cost-Effective Choice for Filipino Language Tasks Does your LLM work on Philippine Languages? Try it on FilBench! Acknowledgements Citation As large language models (LLMs) become increasingly integrated into our lives, it becomes crucial to assess whether they reflect the nuances and capabilities of specific language communities.
-For example, Filipinos are among the most active ChatGPT users globally, ranking fourth in ChatGPT traffic (behind the United States, India, and Brazil [1] [2]), but despite this strong usage, we lack a clear understanding of how LLMs perform for their languages, such as Tagalog and Cebuano.
-Most of the existing evidence is anecdotal, such as screenshots of ChatGPT responding in Filipino as proof that it is fluent.
-What we need instead is a systematic evaluation of LLM capabilities in Philippine languages. That’s why we developed FilBench: a comprehensive evaluation suite to assess the capabilities of LLMs for Tagalog, Filipino (the standardized form of Tagalog), and Cebuano, on fluency, linguistic and translati]]></description>
-      <pubDate>Tue, 12 Aug 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/filbench</guid>
-    </item>
-    <item>
-      <title><![CDATA[Five Big Improvements to Gradio MCP Servers]]></title>
-      <link>https://huggingface.co/blog/gradio-mcp-updates</link>
-      <description><![CDATA[Back to Articles Seamless Local File Support Real-time Progress Notifications Transform OpenAPI Specs to MCP in One Line Improvements to Authentication Modifying Tool Descriptions Conclusion Gradio is an open-source Python package for creating AI-powered web applications. Gradio is compliant with the MCP server protocol and powers thousands of MCP servers hosted on Hugging Face Spaces. The Gradio team is betting big on Gradio and Spaces being the best way to build and host AI-powered MCP servers.
-To that end, here are some of the big improvements we've added to Gradio MCP servers as of version 5.38.0. Seamless Local File Support If you've tried to use a remote Gradio MCP server that takes a file as input (image, video, audio), you've probably encountered this error:
-This happens because the Gradio server is hosted on a different machine, meaning any input files must be accessible via a public URL so they can be downloaded remotely.
-While many ways exist to host files online, they all add a manual step to your workflow. In the age of LLM agents, shouldn't we expect them to handle this for you?
-Gradio now includes a "File Upload" MCP server that agents can use to upload files directly to your Gradio application. If any tools in your Gradio MCP server require file inputs, the connection documentation will now show you how to start the "File Upload"]]></description>
-      <pubDate>Thu, 17 Jul 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/gradio-mcp-updates</guid>
-    </item>
-    <item>
-      <title><![CDATA[Ettin Suite: SoTA Paired Encoders and Decoders]]></title>
-      <link>https://huggingface.co/blog/ettin</link>
-      <description><![CDATA[Back to Articles TL;DR Encoders vs Decoders: The Architecture Divide Training Recipe: Modern Techniques for Both Architectures Sizes Three-Phase Training Process Modern Architecture Components Data Sources and Quality Encoder Results: Beating ModernBERT Decoder Results: Beating Llama 3.2 and SmolLM2 Fair Fight: Encoders vs Decoders on Even Ground Architecture-Specific Advantages Persist Cross-Objective Training Falls Short Beyond Performance: Understanding Model Behavior Usage Examples Encoders Decoders Fine-tuning Examples Encoders Decoders Model Family and Links TL;DR What would happen if you took the ModernBERT recipe and applied it to a decoder-only model? Turns out, a state-of-the-art decoder language model that beats Llama 3.2 1B and SmolLM2! We introduce a new open-data training recipe to reproduce the encoder-only ModernBERT model (and actually beat it!). We then apply the exact same recipe to decoder-only models. For the first time, we have two state-of-the-art models trained in the same setup but with two different training objectives: masked language modeling (MLM), and causal language modeling (CLM).
-This blog post introduces Ettin, the first suite of SoTA paired encoder-only and decoder-only models (17M-1B params) trained with identical data (2T tokens), architecture, and training recipes. Ettin e]]></description>
-      <pubDate>Wed, 16 Jul 2025 00:00:00 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/ettin</guid>
-    </item>
-    <item>
-      <title><![CDATA[Kimina-Prover: Applying Test-time RL Search on Large Formal Reasoning Models]]></title>
-      <link>https://huggingface.co/blog/AI-MO/kimina-prover</link>
-      <description><![CDATA[Back to Articles Numina &amp; Kimi Team Figure 1: Performance comparison of theorem proving models on the miniF2F-test dataset. We're excited to announce the release of Kimina-Prover-72B, our state-of-the-art theorem proving model trained with the Kimi k1.5[1] RL pipeline based on Qwen2.5-72B [2]. Alongside it, we are also releasing two distilled variants: Kimina-Prover-Distill-8B and 1.7B (based on Qwen3-8B and Qwen3-1.7B[3] respectively).
-Our key innovations include: Test-Time Reinforcement Learning Search: A trainable agentic proving framework that enables the model to recursively discover, combine and apply multiple lemmas to construct complex proofs, building on a novel lemma-enabled pattern. Error-Fixing Capability: Kimina-Prover can read and interpret Lean’s error messages and propose targeted fixes, demonstrating significantly higher sample efficiency compared to regenerating proofs from scratch. These advancements enable Kimina-Prover to solve challenging mathematical problems and surpass prior methods. As shown in Figure 1, on the widely used miniF2F benchmark, Kimina-Prover achieves a state-of-the-art pass rate of 92.2%. Introduction We focus on automated theorem proving (ATP) in the Lean 4 language, aiming to automate the construction of formal mat]]></description>
-      <pubDate>Thu, 10 Jul 2025 12:54:19 GMT</pubDate>
-      <source>Hugging Face Blog</source>
-      <category>ai</category>
-      <guid>https://huggingface.co/blog/AI-MO/kimina-prover</guid>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Last Year in Container Security</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Last Year in Container Security</h1>
+  <div class="metadata">
+    Source: Hacker News (nouveautés) | Date: 2/28/2026 6:06:07 PM | <a href="https://nanovms.com/blog/last-year-in-container-security" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><div> <p>No one that I know of is really tracking container security
+issues. I've mentioned on a few occasions that most of the container
+security issues we see aren't really anything to do with the kernel as
+the kernel does not actually provide "containers" - it's all these
+various runtimes that do. I wanted to quantify this somehow and I kinda
+fell into a rabbit hole because there are just endless amounts of
+security issues in the broader container/k8s ecosystem.</p> <p>
+This was actually not super easy to put together. Both docker and
+kubernetes are CNAs so you could look at only the cves they publish but
+then you have to consider the fact that a lot other runtimes exist such as
+podman/runc also exist. To top it off with a lot of the broader
+container/k8s ecosystem enables really bad security issues like escapes
+because of how all of this operates.
+</p> <p>
+Searching for 'container' is also a bit difficult to do because it
+conflicts with existing terminology in cve records.
+</p> <p>
+I also tried to get this article out fast once I decided I was going to
+write it but new stuff just kept coming up.
+</p> <p>When I was looking at this I tried to set some ground rules. I'm really focused in on direct security
+issues involving specific container runtimes and kubernetes but it's
+impossible to ignore the rest of the ecosystem that has severe issues as
+well, so while I might mention those, they are not the focus. Also, I'm
+not going to touch at all on "images that have cves". This is a well
+understood problem domain that many companies are heavily entrenched in and offer
+so-called "zero cve" images. It's a problem, but I just don't care about
+it for this specific purpose.</p> <p>Just to be clear - don't read these lists as "authoritative" - again
+no one is really tracking this ecosystem in the degree, fidelity and
+scope of what I'm interested in so I most definitely have missed many
+that you might find and I might have categorized something differently
+that what you might, based solely on a judgement call, as again, many of
+the types of attacks aren't clearly spelled out and surface in the data.
+You have to look at the weakness, the code and determine what is
+actually possible.</p> <p>In certain cases I've chosen to ignore entire categories of security
+issues as, while they are important to address, I just don't care enough
+about them. So we won't be looking at any XSS or dos style issues. I
+will say when trying to categorize things dos attacks were right up
+there with infoleaks. Infoleaks were hands down some of the most
+problematic security concerns being reported as cves in terms of just
+sheer numbers but I didn't want to turn this into a listicle so I've
+chosen to largely leave those out as well.</p> <p>Also, be aware that typically many of these have multiple weaknesses
+allowing for a variety of scenarios to play out - so one type of
+vulnerability might allow for privilege escalation, data exfil, and
+infoleaks. It is almost never the case that it's just one or the other - it's typically many problems. So you typically want to try and take a top down view of the
+threat. For instance in the case of a container escape - all bets are
+off - the infrastructure is just completely hosed at that point.</p> <p>
+There were actually quite a lot of cves that don't get any attention at
+all - in fact you won't find any blogposts on them.
+</p> <p>
+I was going to look at the broader 'cloud native' ecosystem but honestly
+- it's just way too much.
+</p> <h3>16 Container Escapes</h3> <p>I counted sixteen container escapes from 2025 into the beginning of
+February. Container escapes are probably the worst type of vulnerability
+a container ecosytem can have since it destroys the entire architecture.</p> <p>Eight of these were in actual container runtimes while the others
+were in things like orchestrators which exposed the runtime to an
+escape. This again, is the problem with container security is that there
+is no singular definition of what a container actually *is* and even if
+that were the case the orchestrators come in and completely rewrite the
+rules.</p> <h4>Half of the Escapes Weren't Cause of the Runtime and Zero were
+Kernel Related</h4> <p>This is a really important point - half of the container escapes I
+saw weren't even because of the container runtime and literally ZERO of
+the container escapes I saw were because of kernel related issues.</p> <p>So what are the most common causes of container escapes from what we
+saw last year?</p> <p>While seeing symlink issues be the number one culprit in the
+container ecosystem for escapes is not surprising, I was surprised to
+see only one TOCTOU (time of check to time of use) vulnerability -
+typically these are much higher percentages. Various code and command
+injection took second place - mostly found in other software that
+orchestrates containers. This was an interesting insight as I routinely
+see folks on HN comment about how "containers are just linux processes"
+and you can just run them yourself. While you certainly can run them
+yourself without knowledge of the various methods attackers use against
+them you are probably going to get owned. We saw this quite a lot in CI
+build sytems, infrastructure tools, folks that think containers are a
+form of a sandbox (they are not) and others.</p> <img src="https://nanovms.com/static/dist/img/blog/container-escape-reasons.png" alt="container escape reasons"> <ul>
+<li><a href="https://www.cve.org/CVERecord?id=CVE-2025-31133">CVE-2025-31133</a> - cwe-61 - symlink following</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-23266">CVE-2025-23266</a> - cwe-426 - untrusted search path</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-3224">CVE-2025-3224</a> - cwe-59 - link following</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-34025">CVE-2025-34025</a> - cwe-732 - incorrect permission</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-34159">CVE-2025-34159</a> - cwe-94 - code injection</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-47290">CVE-2025-47290</a> - cwe-367 - toctou</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-52565">CVE-2025-52565</a> - cwe-61 - symlink following</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-53372">CVE-2025-53372</a> - cwe-77 - command injection</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-54867">CVE-2025-54867</a> - cwe-61 - symlink following</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-57802">CVE-2025-57802</a> - cwe-61 - symlink following</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-58766">CVE-2025-58766</a> - cwe-94 - code injection</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-59156">CVE-2025-59156</a> - cwe-78 - os command injection</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-62161">CVE-2025-62161</a> - cwe-61 - symlink following</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-64507">CVE-2025-64507</a> - cwe-269 - improper privilege management</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-69426">CVE-2025-69426</a> - cwe-798 - hard-coded credentials</li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-9074">CVE-2025-9074</a> - cwe-668 - exposure of resources to wrong sphere
+</li></ul> <p>Now when you are looking at the "causes" - one thing you'll notice with cve publications is sometimes the cwe is
+picked somewhat randomly. Sometimes there are multiple weaknesses and
+only one is chosen. Sometimes a similar weakness is chosen instead of a
+more common one. Furthermore, there are no rules to say that something
+should have the word "escape" in the description so if you are merely
+searching for these you probably won't find them. You have to actually
+understand what is going on with the vulnerability first but anytime you
+can start executing or modifying things on the host - you are toast -
+that is an escape.</p> <p>So when categorizing these and the rest of these lists understand
+that I've actually looked at the affected code and made a judgement call
+myself.</p> <h3>8 Remote Code Executions</h3> <p>I counted eight remote code executions. Many of these that were affecting
+orchestrators, ci systems would end up giving access to the entire
+cluster. They also serve as potent initial steps for much more serious
+issues as many of these were highly privileged. I've separated these
+from the next chunk of issues that I didn't immediately confirm whether
+or not they were remote or not. Regardless, a number of these can lead directly to an
+escape.</p> <ul> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-27519">CVE-2025-27519</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-30206">CVE-2025-30206</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-48710">CVE-2025-48710</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-66626">CVE-2025-66626</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-69201">CVE-2025-69201</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-23520">CVE-2026-23520</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-24841">CVE-2026-24841</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-24129">CVE-2026-24129</a></li>
+</ul> <h3>29 Command/Code Injections</h3> <p>I counted twenty-nine command/code injections. Command injection is a
+lot more serious of an issue here than simply code injection but cause I
+don't want this blogpost to go for hundreds of pages I simply grouped
+both here. If you're curious about the difference between <a href="https://nanovms.com/blog/eliminating-os-command-injection-with-unikernels">command
+injection and code injection</a> and how they differ/intertwine we've
+written about it here.</p> <p>Like the group above, some of these were ranked 9 and 10 because the
+code or command injection enabled almost complete ownage of a
+cluster. Path traversals were a key problem area here along with the
+fact that there is a lot of configuration injection that leads to the
+attacker being able to run commands or code.</p> <ul> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-24512">CVE-2026-24512</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-1580">CVE-2026-1580</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-24740">CVE-2026-24740</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-32445">CVE-2025-32445</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-29922">CVE-2025-29922</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-29778">CVE-2025-29778</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-13888">CVE-2025-13888</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-1974">CVE-2025-1974</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-24030">CVE-2025-24030</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-24514">CVE-2025-24514</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-1097">CVE-2025-1097</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-14707">CVE-2025-14707</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-36354">CVE-2025-36354</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-36355">CVE-2025-36355</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-64419">CVE-2025-64419</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-53355">CVE-2025-53355</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-53376">CVE-2025-53376</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-53542">CVE-2025-53542</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-53547">CVE-2025-53547</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-59359">CVE-2025-59359</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-59156">CVE-2025-59156</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-59360">CVE-2025-59360</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-59361">CVE-2025-59361</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-59376">CVE-2025-59376</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-59377">CVE-2025-59377</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-59823">CVE-2025-59823</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-23742">CVE-2026-23742</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-23953">CVE-2026-23953</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-24905">CVE-2026-24905</a></li>
+</ul> <h3>17 Privilege Escalations</h3> <p>I counted seventeen privilege escalations. Again, a lot of these
+could've been grouped under a different group and many of these are
+quite severe (full cluster takeover) but gotta group them somehow.</p> <ul> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-36356">CVE-2025-36356</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-2241">CVE-2025-2241</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-2843">CVE-2025-2843</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-32955">CVE-2025-32955</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-36356">CVE-2025-36356</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-4563">CVE-2025-4563</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-53945">CVE-2025-53945</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-55205">CVE-2025-55205</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-57848">CVE-2025-57848</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-57850">CVE-2025-57850</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-57852">CVE-2025-57852</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-58712">CVE-2025-58712</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-59291">CVE-2025-59291</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-62156">CVE-2025-62156</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-7195">CVE-2025-7195</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-9164">CVE-2025-9164</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-23990">CVE-2026-23990</a></li>
+</ul> <h3>14 Auth Bypass</h3> <p>I counted fourteen auth bypasses. This is in a similar vein to the prior
+section but usually connotates that there was no auth to begin with
+versus "escalating" an existing privilege. Not surprisingly, we find
+some of the frameworks that are ostensibly made to ensure this doesn't
+happen allow it to happen:</p> <ul> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-22822">CVE-2026-22822</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-27095">CVE-2025-27095</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-25196">CVE-2025-25196</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-25198">CVE-2025-25198</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-27403">CVE-2025-27403</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-29922">CVE-2025-29922</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-64171">CVE-2025-64171</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-64432">CVE-2025-64432</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-64436">CVE-2025-64436</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2025-64437">CVE-2025-64437</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-22039">CVE-2026-22039</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-22806">CVE-2026-22806</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-24748">CVE-2026-24748</a></li> <li><a href="https://www.cve.org/CVERecord?id=CVE-2026-24835">CVE-2026-24835</a></li>
+</ul> <h3>Categorizing Container Security Issues is Somewhat Difficult</h3> <p>
+Finally, many of the vulnerabilities I ran into go under the radar. A lot of very important
+vulnerabilites such as being able to escape a container don't receive
+much attention because, thankfully most people aren't exposting
+endpoints to the raw internet so 'remote roots' don't really happen - it
+doesn't mean this isn't still highly problematic though.
+</p> <p>
+The kernel has been publishing a lot of cves the past few years but very
+few of them become "hot" issues for containers - most of the
+vulnerabilities we see are still because of runtime issues. This is what
+I've always observed and was glad to see the data matches up with that
+observation.
+</p> <p>
+Some container issues don't even receive cves such as <a href="https://noma.security/blog/dockerdash-two-attack-paths-one-ai-supply-chain-crisis/">DockerDash</a> even though it provides for RCE!
+</p> <p>Something we are starting see more and more of are people who are using
+containers but choose to do their own orchestration. Something as simple
+as not validating a service that is used off the shelf (which is kind of
+one of the main points of using containers) can add a volume mapping which makes it easy
+to escape. In this realm we saw ci systems, workflow systems, anywhere where shared templates were being
+used, as posing significant issues.
+</p> <p>
+For instance there were lots of random container escapes that have
+nothing to do with the runtime like <a href="https://github.com/dyad-sh/dyad/security/advisories/GHSA-7fxm-c5xx-7vpq">CVE-2025-58766</a> in Dyad that allows escape.
+</p> <p>
+There were more than a few issues such as <a href="https://bugzilla.redhat.com/show_bug.cgi?id=2391099">CVE-2025-57848</a>
+- a privilege escalation issue because the build system was just janky.
+This is one of those types of issues that again, doesn't have much to do w/the runtime
+itself but is so easy to abuse - in this case an entire *pipeline* of
+containers.
+</p> <h3>There are Many Container Runtimes That Can Be Abused Differently</h3> <p>
+We saw container escapes both in runtimes you're probably aware of but
+also in other runtimes including the following:</p> <ul> <li>docker</li> <li>containerd</li> <li>runc</li> <li>nvidia container runtime</li> <li>youki</li>
+</ul> <p>Important to note that there are many other runtimes as well - just
+because we didn't see escapes in them doesn't mean they don't exist nor
+does it mean we didn't see other serious problems with them:</p> <ul> <li>singularity</li> <li>cri-o</li> <li>podman</li> <li>crun</li> <li>runhcs</li> <li>apple container</li>
+</ul> <p>I don't want to beat this horse to death but just to reiterate - this is one of the things that makes securing containers really hard.
+There is no one singular definition of what a container is - it's really
+up to the runtime itself. Some of these runtimes are built on top of
+each other and some are totally different. That's why many of these cves
+will not affect other runtimes and sometimes multiple runtimes are
+affected but others aren't.
+</p> <h3>Kubernetes Amateur Hour</h3> <p>Remember when I mentioned that I was trying to get this blogpost out
+the door but "things kept happening". Yeh, you can thank the k8s people
+for that. At the end of January the k8s people released a very hostile
+and condescending letter indicating that they were going to retire
+ingress nginx, even though half of their user base was still using it.
+Speculation was rife with why the letter was so hostile and it only took
+about a week to know why.</p> <img src="https://nanovms.com/static/dist/img/blog/ingress.jpeg" alt="ingress"> <p>
+After this letter was published four cves for
+ingress-nginx were published: CVE-2026-24513 , CVE-2026-24514,
+CVE-2026-24512, CVE-2026-1580. Auth bypass, config
+injection, and dos. None of the builds were ready to use at the time of
+the announcement and none of the data was in NVD or MITRE. This means
+that all those fancy scanners your company pays megabucks for could not actually scan to see if you were affected. It'd be one thing if this wasn't the first
+time that that it happened - but <a href="https://nanovms.com/blog/problem-container-isolation-zero-cve-images">it happens all the time</a> with the kubernetes people.
+</p> <p>Then about a week later we saw them do this again, announcing a new
+cve, which was actually a much older cve that they had already patched
+in August but failed to inform the community about. In the announcement
+they also mixed up the versions which makes it hard for scanners (and
+the humans who operate them) to know if you are affected or not.</p> <img src="https://nanovms.com/static/dist/img/blog/k8s-bad-data.jpeg" alt="kubernetes bad data"> <p>
+This repeated behavior has caused a lot of bewilderment amongst their more security concious userbase.
+</p> <h3>Docker Finally Admits Containers Don't Contain</h3> <p>Since a bunch of gen-ai companies started astro-turfing the concept
+of agentic coding into being, plenty of focus has been on the god awful
+state of sandboxing, in particular, around the so-called agents. Docker
+decided to jump on this bandwagon by throwing Moby under the bus and
+declaring that you must use their microvm based sandbox for safety.</p> <img src="https://nanovms.com/static/dist/img/blog/docker-microvm.jpeg" alt="docker microvm"> <p>They also jumped on another bandwagon - the '<a href="https://nanovms.com/blog/secure-runtime-maturity-framework">zero
+cve image</a>' train, which as we've shown in the past is a small step
+forward but doesn't really make any profound changes.</p> <p>Not to be out done - last year Apple finally announced their own
+container runtime which... wait for it... houses containers inside
+of vms.</p> <h3>Container Vulnerability Gems</h3> <p>
+We saw gems like <a href="https://www.cve.org/CVERecord?id=CVE-2025-55205">CVE-2025-55205</a> which
+is a project explicitly built to run multi-tenant workloads in k8s,
+which is a <strong><u>very very bad idea</u></strong>. If you're company is doing this you
+should stop. It weighed in at an appropriate 9.1.
+</p> <p>Some of the headlines last year were completely ridiculous such as <a href="https://www.cve.org/CVERecord?id=CVE-2025-23266">nvidiascape</a> that took a whopping 3 lines of code:</p> <div>
+<pre><code>FROM nvidia/cuda:latest
+ENV LD_PRELOAD=/tmp/malicious.so
+COPY malicious.so /tmp/
+</code></pre></div> <p>
+There were <strong><u>so many problems</u></strong> with various software in the k8s world where the
+software was totally broke in a manner that it was supposed to protect
+such as <a href="https://github.com/kyverno/kyverno/security/advisories/GHSA-8p9x-46gm-qfx2">CVE-2026-22039</a>.
+</p> <p>
+It is actually really hard to write a container runtime correctly - if
+you don't really know all the intricate details of what the various
+namespaces do and you don't understand the types of attacks that can
+happen you are basically entering a world of pain.
+</p> <p>
+RBAC and network policies are typically "musts" in a k8s environment as
+standard namespace "isolation" in k8s isn't really isolation at all.
+</p> <h3>What Do We Do With Container Vulnerabilities?</h3> <p>Containers are an inherently broken security architecture.</p> <p>
+The problem here is that at a certain size even if you aren't
+running "multi-tenant" workloads - at a certain size in engineering
+<strong><u>you effectively are</u></strong>. If your engineering org is north of say 50 or 100
+engineers you are effectively multi-tenant even if your company is the
+only user of the infrastructure. At that size containers simply are not
+a sound judgement call.
+</p> <p>None of the security issues in this list are 'new' in the sense that
+they don't occur regularly in the container ecosystem. They happen all
+the time because containers are just fundamentally unsafe to be used in
+production environments. One thing that I'd like to point out since the
+AI agent push has made everyone pop on the firecracker/microvm
+bandwagon: Unikernels don't offer stronger isolation just
+because they are virtual machines. Firecracker itself, offers no extra
+security as compared to a normal vm running on ec2. Unikernels have many more architectural
+constraints like the complete lack of users, an interactive userland via
+a shell, or the ability to run other programs on the same instance as the
+only one that is currently running.</p> <p>Even if you think your engineering org is not ready for unikernels but you'd like to introduce unikernels to your team reach out and we're happy to jump into the weeds with your
+team.</p> <div> <h3>Stop Deploying 50 Year Old Systems</h3> <p>Introducing the future cloud.</p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

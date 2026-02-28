@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,40 +28,24 @@
     Source: openHAB Community (Latest) | Date: 2/26/2026 9:13:26 AM | <a href="https://community.openhab.org/t/single-sign-on/168652" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <div> <p><span> <time> February 26, 2026, 9:13am </time> <span>1</span> </span> </p></div> <div> <p>Hi,</p>
+    <p><p>Hi,</p>
 <p>If I have openhab behind reverse proxy (apache) which is doing the authentication (popup asks for username and password). then after typing in the credentials, I land on MainUI. But if I want to have full access (settings button etc) I have to login to OH with my user to grant admin access. Can this be avoided somehow? I mean that same credentials from proxy are passed on to OH?</p>
-<p>I have “implicit user role” enabled.</p> </div> <div> <p><span>1 Like</span> </p></div> </div> <div> <p><span> <a href="https://community.openhab.org/u/moe313"><span>moe313</span></a> (Mubashir Ansari) </span> <span> <time> February 26, 2026, 11:30am </time> <span>2</span> </span> </p> <div> <p>Hi, If you are authenticating at the reverse proxy level, openHAB still does not automatically trust that session for admin rights. The proxy login and the openHAB user system are separate so that second login is expected behavior.</p>
-<p>If you want true SSO, you do need to configure openHAB to use the same auth and properly map roles. Otherwise, there isn’t a built-in way to automatically grant admin just from the Apache popup credentials.</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/smitopher"><span>smitopher</span></a> (Christopher Smith) </span> <span> <time> February 26, 2026, 2:04pm </time> <span>3</span> </span> </p> <div> <p>I would not have any authentication on the reverse proxy<br>
-I would setup an OAuth2/OIDC server like Keycloak, configure OH to use that</p>
-<p>Configuring your reverse proxy to use Keycloak could work, it’s a pretty advanced setup</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/rlkoshak"><span>rlkoshak</span></a> (Rich Koshak) </span> <span> <time> February 26, 2026, 3:28pm </time> <span>4</span> </span> </p> <p>There have been some efforts in the past to add better and more extensive authorization and authentication features to OH. But they all stalled out and haven’t seen much activity recently.</p> </div> <div> <p><span> <a href="https://community.openhab.org/u/vanja"><span>vanja</span></a> (galaxy) </span> <span> <time> February 26, 2026, 8:17pm </time> <span>5</span> </span> </p> <div> <p>Actually the problem is only with MainUI, BasicUI does not demand any additional login.</p>
-<p>Since android OH client offers to type in user/pass in settings, I would expect to be logged in already when I launch it. it seems this works on the local network, but when I’m outside and connect via proxy, I end up not having settings and other stuff, so I am forced to type in credentials to unlock admin options every time. credentials cannot be saved? is this behaviour expected and happens to everyone? I assume people using myopenhab cloud may have different behavior…</p>
-<p>maybe the question should be asked in android app section…</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/florian-h05"><span>florian-h05</span></a> (Florian H.) </span> <span> <time> February 26, 2026, 9:19pm </time> <span>6</span> </span> </p> <div> <p>openHAB doesn’t support OIDC servers or LDAP (yet).</p>
-<p>I do offer to implement support for LDAP authentication backends if a “sufficient” bounty is provided. I already have a very WIP prototype that shows that it is possible to implement LDAP support, but didn’t continue as I decided to focus on other topics in openHAB where I’m more interested in.</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/florian-h05"><span>florian-h05</span></a> (Florian H.) </span> <span> <time> February 26, 2026, 9:22pm </time> <span>7</span> </span> </p> <div> <p>Main UI admin access always requires to authenticate against openHAB, no matter whether you have nginx, Apache or any other proxy setup. The credentials fields in the apps aim at making the app work with reverse proxies that require basic authentication, they don’t aim at authenticating for admin access.<br>
-Anyway, once logged in as admin, your login should persist. However, the mobile apps might not be handling cookies and local storage properly when switching between local and cloud access.</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/milo"><span>milo</span></a> (M) </span> <span> <time> February 27, 2026, 6:31am </time> <span>8</span> </span> </p> <p>Hi everyone,<br>
-I was wondering if there are any plans to implement additional user login roles or proper multi-user support in openHAB.<br>
-Currently, is the system intended to be used mainly with a single admin account, or is extended role/user management on the roadmap?<br>
-Thanks in advance for any information!</p> </div> <div> <p><span> <a href="https://community.openhab.org/u/florian-h05"><span>florian-h05</span></a> (Florian H.) </span> <span> <time> February 27, 2026, 12:07pm </time> <span>9</span> </span> </p> <div> <h3><a name="p-964763-current-situation-1" href="#p-964763-current-situation-1"></a>Current Situation</h3>
-<p>At the moment, you can use openHAB with multiple admins and users, you can manage users through the console (<code>openhab:users</code> command).<br>
-Main UI can display parts of pages and pages only to selected users and roles, but note that through the API every user has access to all Items. So this is <strong>not</strong> security feature, but you can still use it to make Main UI display a different UI to your wife or your children.</p>
-<h3><a name="p-964763-possible-development-2" href="#p-964763-possible-development-2"></a>Possible Development</h3>
-<p>There is a core issues where fully-fledged multi-user support has been discussed:</p>
-<p>
-There already were two shots at this, but every time efforts of the individual developers have stalled, and these individual developers also had different ideas of how RBAC should be done.</p>
-<p>Note that there is no such thing as a roadmap in a community-driven project. What is done depends 100% on what is contributed, individual developers might have their “roadmap” what they want to contribute, and usually you can “attract” developers into working on something by placing a bounty on it.</p> </div> </div> <div> <p><span> <a href="https://community.openhab.org/u/milo"><span>milo</span></a> (M) </span> <span> <time> February 27, 2026, 2:43pm </time> <span>10</span> </span> </p> <p>Where is it described with the main ui part?</p> </div> <div> <p><span> <a href="https://community.openhab.org/u/rlkoshak"><span>rlkoshak</span></a> (Rich Koshak) </span> <span> <time> February 27, 2026, 2:50pm </time> <span>11</span> </span> </p> <div> <p><span>1 Like</span> </p></div> </div> </div></div>
+<p>I have “implicit user role” enabled.</p> <p><small>11 posts - 6 participants</small></p> <p><a href="https://community.openhab.org/t/single-sign-on/168652">Read full topic</a></p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
