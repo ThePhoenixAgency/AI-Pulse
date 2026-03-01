@@ -1,5 +1,4 @@
 const axios = require('axios');
-const OpenAI = require('openai');
 const fs = require('fs');
 const path = require('path');
 
@@ -9,9 +8,16 @@ class LinkedInHelper {
         this.userId = process.env.LINKEDIN_USER_ID;
         this.openaiKey = process.env.OPENAI_API_KEY;
         this.historyPath = path.join(__dirname, '..', 'data', 'posted-links.json');
+        this.openai = null;
 
+        // Charger OpenAI uniquement si la clé est présente
         if (this.openaiKey) {
-            this.openai = new OpenAI({ apiKey: this.openaiKey });
+            try {
+                const OpenAI = require('openai');
+                this.openai = new OpenAI({ apiKey: this.openaiKey });
+            } catch (e) {
+                // Silencieux si le module n'est pas installé ou échoue
+            }
         }
 
         this._ensureHistoryExists();
@@ -52,7 +58,7 @@ class LinkedInHelper {
 
     async generatePost(article) {
         if (!this.openai) {
-            console.error('OpenAI API Key missing. Skipping post generation.');
+            // Silencieux - pas de clé OpenAI configurée
             return null;
         }
 
@@ -91,7 +97,7 @@ class LinkedInHelper {
 
     async postToLinkedIn(text, articleUrl) {
         if (!this.accessToken || !this.userId) {
-            console.error('LinkedIn credentials missing. Skipping post.');
+            // Silencieux - pas de credentials LinkedIn configurés
             return null;
         }
 
