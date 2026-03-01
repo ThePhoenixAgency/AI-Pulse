@@ -26,7 +26,6 @@
 #     - GIT_AUTHOR_EMAIL : Email pour les commits
 #     - LINKEDIN_ACCESS_TOKEN : Token pour poster sur LinkedIn (optionnel)
 #     - LINKEDIN_USER_ID : ID utilisateur LinkedIn (optionnel)
-#     - OPENAI_API_KEY : Clé API OpenAI pour générer les posts (optionnel)
 #     - API_RESEND : Clé API Resend pour les emails (optionnel)
 #
 # VERSION: 2.0.0
@@ -88,6 +87,16 @@ permissions:
 
 
 # =============================================================================
+# CONCURRENCY (Évite les jobs simultanés qui se chevauchent)
+# =============================================================================
+# Si un nouveau workflow démarre alors qu'un autre est en cours,
+# l'ancien est automatiquement annulé pour éviter les conflits.
+concurrency:
+  group: ai-pulse-aggregator
+  cancel-in-progress: true
+
+
+# =============================================================================
 # JOBS (Tâches à exécuter)
 # =============================================================================
 # Un workflow peut contenir plusieurs jobs qui s'exécutent en parallèle.
@@ -104,15 +113,14 @@ jobs:
     # ubuntu-latest = dernière version d'Ubuntu (Linux gratuit de GitHub)
     runs-on: ubuntu-latest
 
+    # Timeout de 10 minutes maximum pour éviter les jobs bloqués
+    timeout-minutes: 10
+
     # =========================================================================
     # ÉTAPES DU JOB (Steps)
     # =========================================================================
     # Les étapes s'exécutent dans l'ordre, une par une
     steps:
-
-    # ============================================================================
-    # CONCURRENCY (Évite les conflits entre jobs simultanés)
-    # ============================================================================
 
     # -------------------------------------------------------------------------
     # ÉTAPE 1 : Récupérer le code source
@@ -227,7 +235,6 @@ jobs:
       env:
         LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
         LINKEDIN_USER_ID: ${{ secrets.LINKEDIN_USER_ID }}
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         API_RESEND: ${{ secrets.API_RESEND }}
       run: |
         # Backup du README actuel pour fallback en cas d'échec
