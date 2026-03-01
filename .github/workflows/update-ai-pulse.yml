@@ -88,6 +88,16 @@ permissions:
 
 
 # =============================================================================
+# CONCURRENCY (Évite les jobs simultanés qui se chevauchent)
+# =============================================================================
+# Si un nouveau workflow démarre alors qu'un autre est en cours,
+# l'ancien est automatiquement annulé pour éviter les conflits.
+concurrency:
+  group: ai-pulse-aggregator
+  cancel-in-progress: true
+
+
+# =============================================================================
 # JOBS (Tâches à exécuter)
 # =============================================================================
 # Un workflow peut contenir plusieurs jobs qui s'exécutent en parallèle.
@@ -104,15 +114,14 @@ jobs:
     # ubuntu-latest = dernière version d'Ubuntu (Linux gratuit de GitHub)
     runs-on: ubuntu-latest
 
+    # Timeout de 10 minutes maximum pour éviter les jobs bloqués
+    timeout-minutes: 10
+
     # =========================================================================
     # ÉTAPES DU JOB (Steps)
     # =========================================================================
     # Les étapes s'exécutent dans l'ordre, une par une
     steps:
-
-    # ============================================================================
-    # CONCURRENCY (Évite les conflits entre jobs simultanés)
-    # ============================================================================
 
     # -------------------------------------------------------------------------
     # ÉTAPE 1 : Récupérer le code source
