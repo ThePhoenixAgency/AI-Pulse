@@ -1,14 +1,8 @@
 # 🔒 AI-Pulse Security Guidelines for Claude Code
 
-## Purpose
 These guidelines prevent common security vulnerabilities from being introduced in AI-Pulse. Follow these rules when writing code.
 
 ---
-
-## 1. INPUT SANITIZATION & XSS PREVENTION
-
-### ❌ DO NOT:
-- Use simple regex `.replace(/<[^>]*>/g, '')` to sanitize HTML
 - Directly insert user input into `innerHTML`, `eval()`, or script content
 - Trust URL query parameters without validation
 - Use `Math.random()` for security-sensitive values

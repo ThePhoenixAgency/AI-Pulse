@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>8 Things You Didn't Know About Code Mode</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>8 Things You Didn't Know About Code Mode</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 6:54:38 AM | <a href="https://dev.to/goose_oss/8-things-you-didnt-know-about-code-mode-4h71" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Agents fundamentally changed how we program. They enable developers to move faster by disintermediating the traditional development workflow. This means less time switching between specialized tools and fewer dependencies on other teams. Now that agents can execute complicated tasks, developers face a new challenge: using them effectively over long sessions.</p> <p>The biggest challenge is context rot. Because agents have limited memory, a session that runs too long can cause them to "forget" earlier instructions. This leads to unreliable outputs, frustration, and subtle but grave mistakes in your codebase. One promising solution is Code Mode. </p> <p>Instead of describing dozens of separate tools to an LLM, Code Mode allows an agent to write code that calls those tools programmatically, reducing the amount of context the model has to hold at once. While many developers first heard about Code Mode through <a href="https://blog.cloudflare.com/code-mode/" target="_blank">Cloudflare's blog post</a>, fewer understand how it works in practice. </p> <p>I have been using Code Mode for a few months and recently ran a small experiment. I asked goose to fix its own bug where the Gemini model failed to process images in the CLI but worked in the desktop app, then open a PR. The fix involved analyzing model configuration, tracing image input handling through the pipeline, and validating behavior across repeated runs. I ran the same task twice: once with Code Mode enabled and once without it.</p> <p>Here is what I learned from daily use and my experiment.</p> <h2> <a name="1-code-mode-is-not-an-mcpkiller" href="#1-code-mode-is-not-an-mcpkiller"> </a> 1. Code Mode is Not an MCP-Killer
+</h2> <p>In fact, it uses MCP under the hood. MCP is a standard that lets AI agents connect to external tools and data sources. When you install an MCP server in an agent, that MCP server exposes its capabilities as MCP tools. For example, goose's primary MCP server called the <code>developer</code> extension exposes tools like <code>shell</code> enabling goose to run commands and <code>text_editor</code>, so goose can view and edit files. </p> <p>Code Mode wraps your MCP tools as JavaScript modules, allowing the agent to combine multiple tool calls into a single step. Code Mode is a pattern for how agents interact with MCP tools more efficiently.</p> <h2> <a name="2-goose-supports-code-mode" href="#2-goose-supports-code-mode"> </a> 2. goose Supports Code Mode
+</h2> <p>Code Mode support landed in goose v1.17.0 in December 2025. It ships as a platform extension called "Code Mode" that you can enable in the desktop app or CLI.</p> <p>To enable it:</p> <ul>
+<li>
+<strong>Desktop app:</strong> Click the extensions icon and toggle on "Code Mode"</li>
+<li>
+<strong>CLI:</strong> Run <code>goose configure</code> and enable the Code Mode extension</li>
+</ul> <p>Since its initial implementation, we've added so many improvements!</p> <h2> <a name="3-code-mode-keeps-your-context-window-clean" href="#3-code-mode-keeps-your-context-window-clean"> </a> 3. Code Mode Keeps Your Context Window Clean
+</h2> <p>Every time you install an MCP server (or "extension" in the goose ecosystem), it adds a significant amount of data to your agent's memory. Every tool comes with a tool definition describing what the tool does, the parameters it accepts, and what it returns. This helps the agent understand how to use the tool.</p> <p>These definitions consume space in your agent's context window. For example, if a single definition takes 500 tokens and an extension has five tools, that is 2,500 tokens gone before you even start. If you use multiple extensions, you could easily double or even decuple that number.</p> <p>Without Code Mode, your context window could look like this:<br>
+</p> <div>
+<pre><code>[System prompt: ~1,000 tokens]
+[Tool: developer__shell - 500 tokens]
+[Tool: developer__text_editor - 600 tokens]
+[Tool: developer__analyze - 400 tokens]
+[Tool: slack__send_message - 450 tokens]
+[Tool: slack__list_channels - 400 tokens]
+[Tool: googledrive__search - 500 tokens]
+[Tool: googledrive__download - 450 tokens]
+... and so on for every tool in every extension
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>As your session progresses, useful context gets crowded out by tool definitions you aren't even using: the code you are discussing, the problem you are solving, or the instructions you previously gave. This leads to performance degradation and memory loss. While I used to recommend disabling unused MCP servers, Code Mode offers a better fix. It uses three tools that help the agent discover what tools it needs on demand rather than having every tool definition loaded upfront:</p> <ol>
+<li>
+<code>search_modules</code> - Find available extensions</li>
+<li>
+<code>read_module</code> - Learn what tools an extension offers</li>
+<li>
+<code>execute_code</code> - Run JavaScript that uses those tools</li>
+</ol> <p>I wanted to see how true this was so I ran an experiment: I had goose solve a user's bug and put up a PR with and without code mode. Code Mode used 30% fewer tokens for the same task.</p> <div><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>With Code Mode</th>
+<th>Without Code Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total tokens</td>
+<td>23,339</td>
+<td>33,648</td>
+</tr>
+<tr>
+<td>Input tokens</td>
+<td>23,128</td>
+<td>33,560</td>
+</tr>
+</tbody>
+</table></div> <h2> <a name="4-code-mode-batches-operations-into-a-single-tool-call" href="#4-code-mode-batches-operations-into-a-single-tool-call"> </a> 4. Code Mode Batches Operations Into a Single Tool Call
+</h2> <p>The token savings do not just come from loading fewer tool definitions upfront. Code Mode also handles the "active" side of the conversation through a method called batching.</p> <p>When you ask an agent to do something, it typically breaks your request into individual steps, each requiring a separate tool call. You can see these calls appear in your chat as the agent executes the tasks. For example, if you ask goose to "check the current branch, show me the diff, and run the tests," it might run four individual commands:<br>
+</p> <div>
+<pre><code> developer__shell → git branch --show-current developer__shell → git status developer__shell → git diff developer__shell → cargo test
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Each of these calls adds a new layer to the conversation history that goose has to track. Batching combines these into a single execution. When you turn Code Mode on and give that same prompt, you will see just one tool call:<br>
+</p> <div>
+<pre><code> Code Execution: Execute Code generating...
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Inside that one execution, it batches all the commands into a script:<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>shell</span> <span>}</span> <span>from</span> <span>"</span><span>developer</span><span>"</span><span>;</span> <span>const</span> <span>branch</span> <span>=</span> <span>shell</span><span>({</span> <span>command</span><span>:</span> <span>"</span><span>git branch --show-current</span><span>"</span> <span>});</span>
+<span>const</span> <span>status</span> <span>=</span> <span>shell</span><span>({</span> <span>command</span><span>:</span> <span>"</span><span>git status</span><span>"</span> <span>});</span>
+<span>const</span> <span>diff</span> <span>=</span> <span>shell</span><span>({</span> <span>command</span><span>:</span> <span>"</span><span>git diff</span><span>"</span> <span>});</span>
+<span>const</span> <span>tests</span> <span>=</span> <span>shell</span><span>({</span> <span>command</span><span>:</span> <span>"</span><span>cargo test</span><span>"</span> <span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>As a user, you see the same results, but the agent only has to remember one interaction instead of four. By reducing these round trips, Code Mode keeps the conversation history concise so the agent can maintain focus on the task at hand.</p> <h2> <a name="5-code-mode-makes-smarter-tool-choices" href="#5-code-mode-makes-smarter-tool-choices"> </a> 5. Code Mode Makes Smarter Tool Choices
+</h2> <p>When an agent has access to dozens of tools, it sometimes makes a "logical" choice that is technically wrong for your environment. This happens because, in a standard setup, the agent picks tools from a flat list based on short text descriptions. This can lead to a massive waste of time and tokens when the agent picks a tool that sounds right but lacks the necessary context.</p> <p>I saw this firsthand during my experiments. I had an extension enabled called agent-task-queue, which is designed to run background tasks with timeouts.</p> <p>When I asked goose to run the tests for my PR, it looked at the available tools and saw agent-task-queue. The LLM reasoned that a test suite is a "long-running task," making that extension a perfect fit. It chose the specialized tool over the generic shell.</p> <p>However, the tool call failed immediately:<br>
+</p> <div>
+<pre><code>FAILED exit=127 0.0s
+/bin/sh: cargo: command not found
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>My environment was not configured to use that specific extension for my toolchain. goose made a reasonable choice based on the description, but it was the wrong tool for my actual setup.</p> <p>In the Code Mode session, this mistake never happened. Code Mode changes how the agent interacts with its capabilities by requiring explicit import statements.</p> <p>Instead of browsing a menu of names, goose had to be intentional about which module it was using. It chose to import from the developer module:<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>shell</span> <span>}</span> <span>from</span> <span>"</span><span>developer</span><span>"</span><span>;</span> <span>const</span> <span>test</span> <span>=</span> <span>shell</span><span>({</span> <span>command</span><span>:</span> <span>"</span><span>cargo test -p goose --lib formats::google</span><span>"</span> <span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>By explicitly importing developer, Code Mode ensured the tests ran in my actual shell environment.</p> <h2> <a name="6-code-mode-is-portable-across-editors" href="#6-code-mode-is-portable-across-editors"> </a> 6. Code Mode Is Portable Across Editors
+</h2> <p>goose is more than an agent; it's also an <a href="https://dev.to/docs/guides/acp-clients">ACP (Agent Client Protocol)</a> server. This means you can connect it to any editor that supports ACP, like Zed or Neovim. Plus, any MCP server you use in goose will work there, too.</p> <p>I wanted to try this myself, so I set up Neovim to connect to goose <strong>with Code Mode enabled</strong>. Here's the configuration I used:<br>
+</p> <div>
+<pre><code><span>{</span> <span>"yetone/avante.nvim"</span><span>,</span> <span>build</span> <span>=</span> <span>"make"</span><span>,</span> <span>event</span> <span>=</span> <span>"VeryLazy"</span><span>,</span> <span>opts</span> <span>=</span> <span>{</span> <span>provider</span> <span>=</span> <span>"goose"</span><span>,</span> <span>acp_providers</span> <span>=</span> <span>{</span> <span>[</span><span>"goose"</span><span>]</span> <span>=</span> <span>{</span> <span>command</span> <span>=</span> <span>"goose"</span><span>,</span> <span>args</span> <span>=</span> <span>{</span> <span>"acp"</span><span>,</span> <span>"--with-builtin"</span><span>,</span> <span>"code_execution,developer"</span> <span>},</span> <span>},</span> <span>},</span> <span>},</span> <span>dependencies</span> <span>=</span> <span>{</span> <span>"nvim-lua/plenary.nvim"</span><span>,</span> <span>"MunifTanjim/nui.nvim"</span><span>,</span> <span>},</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The key line is the one where I enable Code Mode right inside the editor config:<br>
+</p> <div>
+<pre><code><span>args</span> <span>=</span> <span>{</span> <span>"acp"</span><span>,</span> <span>"--with-builtin"</span><span>,</span> <span>"code_execution,developer"</span> <span>},</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>To test it, I asked goose to list my Rust files and count the lines of code. Instead of a long stream of individual shell commands cluttering my Neovim buffer, I saw one singular tool call: Code Execution. It worked exactly like it does in the desktop app. This portability means you can build a powerful, efficient agent workflow and take it with you to whatever environment you're most comfortable in.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqcguhk2fkznykgt6ci94.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqcguhk2fkznykgt6ci94.png" alt=" "></a></p> <h2> <a name="7-code-mode-performs-differently-across-llms" href="#7-code-mode-performs-differently-across-llms"> </a> 7. Code Mode Performs Differently Across LLMs
+</h2> <p>I ran my experiments using Claude Opus 4.5. Your results may vary depending on which model you use.</p> <p>Code Mode requires the LLM to do things that not all models do equally well:</p> <ul>
+<li>
+<strong>Write valid JavaScript</strong> - The model has to generate syntactically correct code. Models with stronger code generation capabilities will produce fewer errors.</li>
+<li>
+<strong>Follow the import pattern</strong> - Code Mode expects the LLM to import tools from modules like <code>import { shell } from "developer"</code>. Some models might try to call tools directly without importing, which will fail.</li>
+<li>
+<strong>Use the discovery tools</strong> - Before writing code, the LLM should call <code>search_modules</code> and <code>read_module</code> to learn what tools are available. Some models skip this step and guess, leading to hallucinated tool names.</li>
+<li>
+<strong>Handle errors gracefully</strong> - When a code execution fails, the model needs to read the error, understand what went wrong, and try again. Some models are better at this feedback loop than others.</li>
+</ul> <p>If Code Mode is not working well for you, try switching models. A model that excels at code generation and instruction following will generally perform better with Code Mode than one optimized for other tasks.</p> <h2> <a name="8-code-mode-is-not-for-every-task" href="#8-code-mode-is-not-for-every-task"> </a> 8. Code Mode Is Not for Every Task
+</h2> <p>Code Mode adds overhead. Before executing anything, the LLM has to:</p> <ol>
+<li>Call <code>search_modules</code> to find available extensions</li>
+<li>Call <code>read_module</code> to learn what tools an extension offers</li>
+<li>Write JavaScript code</li>
+<li>Call <code>execute_code</code> to run it</li>
+</ol> <p>For simple, single-tool tasks, this overhead is not worth it. If you just need to run one shell command or view one file, regular tool calling is faster.</p> <p>Based on my experiments, here is when Code Mode makes sense:</p> <div><table>
+<thead>
+<tr>
+<th>Use Code Mode When</th>
+<th>Skip Code Mode When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>You have multiple extensions enabled</td>
+<td>You only have 1-2 extensions</td>
+</tr>
+<tr>
+<td>Your task involves multi-step orchestration</td>
+<td>Your task is a single tool call</td>
+</tr>
+<tr>
+<td>You want longer sessions without context rot</td>
+<td>Speed matters more than context longevity</td>
+</tr>
+<tr>
+<td>You are working across multiple editors</td>
+<td>You are doing a quick one-off task</td>
+</tr>
+</tbody>
+</table></div> <h2> <a name="try-it-out" href="#try-it-out"> </a> Try It Out
+</h2> <p>If you want to experiment with Code Mode, here are some resources:</p> <p><strong>Documentation:</strong></p> <ul>
+<li><a href="https://dev.to/docs/guides/acp-clients">ACP client setup</a></li>
+<li><a href="https://dev.to/docs/getting-started/using-extensions">Extensions guide</a></li>
+</ul> <p><strong>Previous posts:</strong></p> <ul>
+<li>
+<a href="https://dev.to/blog/2025/12/15/code-mode-mcp">Code Mode MCP in goose</a> by Alex Hancock</li>
+<li>
+<a href="https://dev.to/blog/2025/12/21/code-mode-doesnt-replace-mcp">Code Mode Doesn't Replace MCP</a> by me</li>
+</ul> <p><strong>Community:</strong></p> <ul>
+<li>Join our <a href="https://discord.gg/goose-oss" target="_blank">Discord</a> to share what you learn</li>
+<li>File issues on <a href="https://github.com/block/goose" target="_blank">GitHub</a> if something does not work as expected</li>
+</ul> <p>Run your own experiments and let us know what you find.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>error in latest docker - Domoticz</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>error in latest docker - Domoticz</h1>
+  <div class="metadata">
+    Source: Domoticz (Forum News) | Date: 2/25/2026 12:15:33 PM | <a href="https://forum.domoticz.com/viewtopic.php?p=331783#p331783" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p> <strong>Moderators:</strong> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6475&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">leecollings</a>, <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=57&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">remb0</a>
+</p> <div> <p><strong>Forum rules</strong><br> Before posting here, make sure you are on the latest Beta or Stable version.<br>
+If you have problems related to the web gui, clear your browser cache + appcache first.</p><p> Use the following template when posting here:</p><p> Version: xxxx<br>
+Platform: xxxx<br>
+Plugin/Hardware: xxxx<br>
+Description:<br>
+.....</p><p> If you are having problems with scripts/blockly, always post the script (in a spoiler or code tag) or screenshots of your blockly</p><p> If you are replying, please do not quote images/code from the first post</p><p> Please mark your topic as Solved when the problem is solved. </p></div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=20678&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">eddieb</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=20678&amp;sr=posts&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">399</a></dd> <dd><strong>Joined:</strong> Wednesday 04 July 2018 7:48</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd><strong>Location:</strong> Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331783&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331783">error in latest docker</a> </h3> <div><p>on my test domoticz running all docker</p><div><p>Code: <a href="#">Select all</a></p><pre><code>2026-02-25 13:11:40.383 Status: WebServer(HTTP) stopped
+double free or corruption (!prev)
+Fatal Python error: Aborted
+Current thread 0x00007ffed415da80 (most recent call first): &lt;no Python frame&gt;
+Extension modules: Domoticz (total: 1)
+2026-02-25 13:11:40.384 Error: Domoticz(pid:1, tid:1('domoticz')) received fatal signal 6 (Aborted)
+2026-02-25 13:11:40.384 Error: siginfo address=0x1, address=0x7ffed38c3c04
+2026-02-25 13:11:52.393 Launch: Begin container self-repair
+2026-02-25 13:11:52.567 Launch: End container self-repair
+2026-02-25 13:11:52.575 Status: Domoticz V2025.2 (build 17268) (c)2012-2026 GizMoCuz
+2026-02-25 13:11:52.576 Status: Build Hash: 5bae973be, Date: 2026-02-25 10:10:03
+2026-02-25 13:11:52.576 Status: Startup Path: /opt/domoticz/
+2026-02-25 13:11:52.579 Error: Default admin password has NOT been changed! Change it asap!
+2026-02-25 13:11:52.603 Sunrise: 07:34:00 SunSet: 18:11:00
+2026-02-25 13:11:52.603 Day length: 10:37:00 Sun at south: 12:52:00
+2026-02-25 13:11:52.603 Civil twilight start: 07:00:00 Civil twilight end: 18:45:00
+2026-02-25 13:11:52.603 Nautical twilight start: 06:20:00 Nautical twilight end: 19:24:00
+2026-02-25 13:11:52.603 Astronomical twilight start: 05:41:00 Astronomical twilight end: 20:04:00
+2026-02-25 13:11:52.614 Status: PluginSystem: Started, Python version '3.11.2', 4 plugin definitions loaded.
+2026-02-25 13:11:52.618 Active notification Subsystems: email (1/13)
+2026-02-25 13:11:52.618 Status: WebServer(HTTP) started on address: :: with port 8080
+2026-02-25 13:11:52.618 Error: Domoticz(pid:1, tid:1('domoticz')) received fatal signal 11 (Segmentation fault)
+2026-02-25 13:11:52.618 Error: siginfo address=0xaaabb161c928, address=0x7fff48631560</code></pre></div></div> <p><span>RPI4 Beta</span> / <span>Tasmota</span> / <span>ZigBee2MQTT</span> / <span>P1meter</span> / <span>Haier AC</span> MQTTmapper / <span>SolarEdge</span> SE3500H modbus_tcp / <span>Marstek Venus</span> / <span>Opentherm gateway</span> / <span>Plugwise Anna/Smile</span> / <span>ObserverIP</span> weatherstation thru WuDirect <br>
+<span>Feeding ADSB</span> <a href="https://adsb.im/home">https://adsb.im/home</a></p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15156&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">gmarchionni</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=15156&amp;sr=posts&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">27</a></dd> <dd><strong>Joined:</strong> Sunday 11 June 2017 0:00</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> </dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331785&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331785">Re: error in latest docker</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331785&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331785"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15156&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">gmarchionni</a></strong> » </span><time>Wednesday 25 February 2026 14:45</time> </p> <p>i believe you are running one of the latest beta. It probably had some problems?<br>
+Update to latest or update to officiale 2025.2.</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=20678&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">eddieb</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=20678&amp;sr=posts&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">399</a></dd> <dd><strong>Joined:</strong> Wednesday 04 July 2018 7:48</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd><strong>Location:</strong> Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331798&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331798">Re: error in latest docker</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331798&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331798"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=20678&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">eddieb</a></strong> » </span><time>Wednesday 25 February 2026 17:49</time> </p> <p>Watchtower automaticly updates to the next beta, I'll wait for a fix</p> <p><span>RPI4 Beta</span> / <span>Tasmota</span> / <span>ZigBee2MQTT</span> / <span>P1meter</span> / <span>Haier AC</span> MQTTmapper / <span>SolarEdge</span> SE3500H modbus_tcp / <span>Marstek Venus</span> / <span>Opentherm gateway</span> / <span>Plugwise Anna/Smile</span> / <span>ObserverIP</span> weatherstation thru WuDirect <br>
+<span>Feeding ADSB</span> <a href="https://adsb.im/home">https://adsb.im/home</a></p> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703"><img src="https://forum.domoticz.com/download/file.php?avatar=5374_1445186770.gif" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">Varazir</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=5374&amp;sr=posts&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">487</a></dd> <dd><strong>Joined:</strong> Friday 20 February 2015 22:23</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331800&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331800">Re: error in latest docker</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331800&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331800"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">Varazir</a></strong> » </span><time>Wednesday 25 February 2026 18:22</time> </p> <div><p>I'm getting </p><div><p>Code: <a href="#">Select all</a></p><pre><code>domoticz-1 | 2026-02-25 18:20:45.211 Status: WebServer(HTTP) started on address: :: with port 8080
+domoticz-1 | corrupted double-linked list
+</code></pre></div></div> <p>Raspberry PI 4 with RaZberry Controller 2016 ZWave+ and CC2531(zigbee)<br>
+Several IKEA devices/z-wave devices</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=20678&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">eddieb</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=20678&amp;sr=posts&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">399</a></dd> <dd><strong>Joined:</strong> Wednesday 04 July 2018 7:48</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd><strong>Location:</strong> Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331801&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331801">Re: error in latest docker</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331801&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331801"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=20678&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">eddieb</a></strong> » </span><time>Wednesday 25 February 2026 18:29</time> </p> <div><p>lots of troubles ...</p><div><p>Code: <a href="#">Select all</a></p><pre><code>Fatal Python error: Segmentation fault
+Thread 0x00007fff2361da80 (most recent call first): &lt;no Python frame&gt;
+Extension modules: Domoticz (total: 1)
+2026-02-25 17:50:29.140 Error: Domoticz(pid:1, tid:158('WebServer_8080')) received fatal signal 11 (Segmentation fault)
+2026-02-25 17:50:29.140 Error: siginfo address=0x1, address=0x7fff22c13c04
+2026-02-25 17:50:29.148 Error: Failed to start gdb, will use backtrace() for printing stack frame
+2026-02-25 17:50:29.152 Error: #0 /opt/domoticz/domoticz : + 0x379dd4 [0x5555df0a9dd4]
+2026-02-25 17:50:29.152 Error: #1 /opt/domoticz/domoticz : signal_handler(int, siginfo_t*, void*) + 0x238 [0x5555df0aa81c]
+2026-02-25 17:50:29.152 Error: #2 linux-vdso.so.1 : __kernel_rt_sigreturn + 0 [0x7fff23660820]
+2026-02-25 17:50:29.152 Error: #3 /lib/aarch64-linux-gnu/libc.so.6 : + 0x83c18 [0x7fff22c13c18]
+2026-02-25 17:50:29.152 Error: #4 /lib/aarch64-linux-gnu/libc.so.6 : gsignal + 0x1c [0x7fff22bca8ac]
+2026-02-25 17:50:29.152 Error: #5 linux-vdso.so.1 : __kernel_rt_sigreturn + 0 [0x7fff23660820]
+2026-02-25 17:50:29.152 Error: #6 /opt/domoticz/domoticz : std::__shared_count&lt;(__gnu_cxx::_Lock_policy)2&gt;::__shared_count(std::__weak_count&lt;(__gnu_cxx::_Lock_policy)2&gt; const&amp;) + 0x1c [0x5555df64c6cc]
+2026-02-25 17:50:29.152 Error: #7 /opt/domoticz/domoticz : http::server::connection::handle_read_timeout(boost::system::error_code const&amp;) + 0xf8 [0x5555df63b7f8]
+2026-02-25 17:50:29.152 Error: #8 /opt/domoticz/domoticz : + 0x90bb70 [0x5555df63bb70]
+2026-02-25 17:50:29.152 Error: #9 /opt/domoticz/domoticz : boost::asio::detail::scheduler::do_run_one(boost::asio::detail::conditionally_enabled_mutex::scoped_lock&amp;, boost::asio::detail::scheduler_thread_info&amp;, boost::system::error_code const&amp;) + 0x424 [0x5555df22fcb4]
+2026-02-25 17:50:29.152 Error: #10 /opt/domoticz/domoticz : + 0x8f7994 [0x5555df627994]
+2026-02-25 17:50:29.152 Error: #11 /opt/domoticz/domoticz : http::server::server_base::run() + 0x48 [0x5555df62cc98]
+2026-02-25 17:50:29.152 Error: #12 /opt/domoticz/domoticz : + 0x3d6a08 [0x5555df106a08]
+2026-02-25 17:50:29.152 Error: #13 /opt/domoticz/domoticz : + 0xaec8ec [0x5555df81c8ec]
+2026-02-25 17:50:29.152 Error: #14 /lib/aarch64-linux-gnu/libc.so.6 : + 0x82030 [0x7fff22c12030]
+2026-02-25 17:50:29.152 Error: #15 /lib/aarch64-linux-gnu/libc.so.6 : + 0xebf1c [0x7fff22c7bf1c]
+2026-02-25 17:50:32.873 Launch: Begin container self-repair
+2026-02-25 17:50:33.066 Launch: End container self-repair
+2026-02-25 17:50:33.077 Status: Domoticz V2025.2 (build 17273)- (c)2012-17273 GizMoCuz
+2026-02-25 17:50:33.077 Status: Build Hash: a79c1f404, Date: 2026-02-25 16:32:10
+2026-02-25 17:50:33.077 Status: Startup Path: /opt/domoticz/
+2026-02-25 17:50:33.083 Error: Default admin password has NOT been changed! Change it asap!
+2026-02-25 17:50:33.122 Sunrise: 07:34:00 SunSet: 18:11:00
+2026-02-25 17:50:33.122 Day length: 10:37:00 Sun at south: 12:52:00
+2026-02-25 17:50:33.122 Civil twilight start: 07:00:00 Civil twilight end: 18:45:00
+2026-02-25 17:50:33.122 Nautical twilight start: 06:20:00 Nautical twilight end: 19:24:00
+2026-02-25 17:50:33.122 Astronomical twilight start: 05:41:00 Astronomical twilight end: 20:04:00
+2026-02-25 17:50:33.135 Status: PluginSystem: Started, Python version '3.11.2', 3 plugin definitions loaded.
+2026-02-25 17:50:33.139 Active notification Subsystems: email (1/13)
+2026-02-25 17:50:33.139 Status: WebServer(HTTP) started on address: :: with port 8080
+2026-02-25 17:50:33.139 Error: Domoticz(pid:1, tid:1('domoticz')) received fatal signal 11 (Segmentation fault)
+2026-02-25 17:50:33.139 Error: siginfo address=0xaaac4fd1b040, address=0x7fff2a841560
+</code></pre></div></div> <p><span>RPI4 Beta</span> / <span>Tasmota</span> / <span>ZigBee2MQTT</span> / <span>P1meter</span> / <span>Haier AC</span> MQTTmapper / <span>SolarEdge</span> SE3500H modbus_tcp / <span>Marstek Venus</span> / <span>Opentherm gateway</span> / <span>Plugwise Anna/Smile</span> / <span>ObserverIP</span> weatherstation thru WuDirect <br>
+<span>Feeding ADSB</span> <a href="https://adsb.im/home">https://adsb.im/home</a></p> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15727&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703"><img src="https://forum.domoticz.com/download/file.php?avatar=15727_1501780897.jpg" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15727&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">Sjonnie2017</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=15727&amp;sr=posts&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">375</a></dd> <dd><strong>Joined:</strong> Wednesday 02 August 2017 19:43</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> Latest ß</dd> <dd><strong>Location:</strong> The Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331805&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331805">Re: error in latest docker</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331805&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331805"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15727&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">Sjonnie2017</a></strong> » </span><time>Wednesday 25 February 2026 18:52</time> </p> <div><p>Try this:</p><div><p>Code: <a href="#">Select all</a></p><pre><code>docker compose pull &amp;&amp; docker compose up --force-recreate --build -d &amp;&amp; docker image prune -f</code></pre></div><p> This ensures you get the latest build and probably the new build will solve your problem.</p></div> <p>ConBee II - TRÅDFRI lights + switches, loads of ChingLing dimmers and switches, Heiman and Xiaomi sensors<br>
+SolarEdge SE4000H (with active modbus_tcp) <br>
+YouLess Energy meter <br>
+Shelly 2.5 in roller shutter mode</p> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703"><img src="https://forum.domoticz.com/download/file.php?avatar=5374_1445186770.gif" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">Varazir</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=5374&amp;sr=posts&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">487</a></dd> <dd><strong>Joined:</strong> Friday 20 February 2015 22:23</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331806&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331806">Re: error in latest docker</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331806&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331806"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">Varazir</a></strong> » </span><time>Wednesday 25 February 2026 19:59</time> </p> <div><blockquote><div><p><cite><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15727&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">Sjonnie2017</a> wrote: <a href="https://forum.domoticz.com/viewtopic.php?p=331805&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331805"></a><span>Wednesday 25 February 2026 18:52</span></cite>
+Try this:</p><div><p>Code: <a href="#">Select all</a></p><pre><code>docker compose pull &amp;&amp; docker compose up --force-recreate --build -d &amp;&amp; docker image prune -f</code></pre></div><p> This ensures you get the latest build and probably the new build will solve your problem.
+</p></div></blockquote><p>
+Didn't help still getting </p><div><p>Code: <a href="#">Select all</a></p><pre><code>domoticz-1 | corrupted double-linked list</code></pre></div></div> <p>Raspberry PI 4 with RaZberry Controller 2016 ZWave+ and CC2531(zigbee)<br>
+Several IKEA devices/z-wave devices</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=20678&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">eddieb</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=20678&amp;sr=posts&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">399</a></dd> <dd><strong>Joined:</strong> Wednesday 04 July 2018 7:48</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd><strong>Location:</strong> Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331809&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331809">Re: error in latest docker</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331809&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331809"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=20678&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">eddieb</a></strong> » </span><time>Wednesday 25 February 2026 21:12</time> </p> <div><blockquote><div><p><cite><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=15727&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">Sjonnie2017</a> wrote: <a href="https://forum.domoticz.com/viewtopic.php?p=331805&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331805"></a><span>Wednesday 25 February 2026 18:52</span></cite>
+Try this:</p><div><p>Code: <a href="#">Select all</a></p><pre><code>docker compose pull &amp;&amp; docker compose up --force-recreate --build -d &amp;&amp; docker image prune -f</code></pre></div><p> This ensures you get the latest build and probably the new build will solve your problem.
+</p></div></blockquote><p> no luck ...</p><div><p>Code: <a href="#">Select all</a></p><pre><code>Fatal Python error: Segmentation fault
+Thread 0x00007fffa4aeda80 (most recent call first): &lt;no Python frame&gt;
+2026-02-25 21:11:29.715 Error: Domoticz(pid:1, tid:157('WebServer_8080')) received fatal signal 11 (Segmentation fault)
+2026-02-25 21:11:29.715 Error: siginfo address=0x1, address=0x7fffa4253c04
+Extension modules: Domoticz (total: 1)
+2026-02-25 21:11:29.722 Error: Failed to start gdb, will use backtrace() for printing stack frame
+2026-02-25 21:11:29.725 Error: #0 /opt/domoticz/domoticz : + 0x379dd4 [0x5556550f9dd4]
+2026-02-25 21:11:29.725 Error: #1 /opt/domoticz/domoticz : signal_handler(int, siginfo_t*, void*) + 0x238 [0x5556550fa81c]
+2026-02-25 21:11:29.725 Error: #2 linux-vdso.so.1 : __kernel_rt_sigreturn + 0 [0x7fffa4c98820]
+2026-02-25 21:11:29.725 Error: #3 /lib/aarch64-linux-gnu/libc.so.6 : + 0x83c18 [0x7fffa4253c18]
+2026-02-25 21:11:29.725 Error: #4 /lib/aarch64-linux-gnu/libc.so.6 : gsignal + 0x1c [0x7fffa420a8ac]
+2026-02-25 21:11:29.725 Error: #5 linux-vdso.so.1 : __kernel_rt_sigreturn + 0 [0x7fffa4c98820]
+2026-02-25 21:11:29.725 Error: #6 /opt/domoticz/domoticz : std::__shared_count&lt;(__gnu_cxx::_Lock_policy)2&gt;::__shared_count(std::__weak_count&lt;(__gnu_cxx::_Lock_policy)2&gt; const&amp;) + 0x1c [0x55565569b72c]
+2026-02-25 21:11:29.725 Error: #7 /opt/domoticz/domoticz : http::server::connection::handle_read_timeout(boost::system::error_code const&amp;) + 0xf8 [0x55565568a858]
+2026-02-25 21:11:29.725 Error: #8 /opt/domoticz/domoticz : + 0x90abd0 [0x55565568abd0]
+2026-02-25 21:11:29.725 Error: #9 /opt/domoticz/domoticz : boost::asio::detail::scheduler::do_run_one(boost::asio::detail::conditionally_enabled_mutex::scoped_lock&amp;, boost::asio::detail::scheduler_thread_info&amp;, boost::system::error_code const&amp;) + 0x424 [0x55565527fe24]
+2026-02-25 21:11:29.725 Error: #10 /opt/domoticz/domoticz : + 0x8f69f4 [0x5556556769f4]
+2026-02-25 21:11:29.725 Error: #11 /opt/domoticz/domoticz : http::server::server_base::run() + 0x48 [0x55565567bcf8]
+2026-02-25 21:11:29.725 Error: #12 /opt/domoticz/domoticz : + 0x3d6a08 [0x555655156a08]
+2026-02-25 21:11:29.725 Error: #13 /opt/domoticz/domoticz : + 0xaed94c [0x55565586d94c]
+2026-02-25 21:11:29.725 Error: #14 /lib/aarch64-linux-gnu/libc.so.6 : + 0x82030 [0x7fffa4252030]
+2026-02-25 21:11:29.725 Error: #15 /lib/aarch64-linux-gnu/libc.so.6 : + 0xebf1c [0x7fffa42bbf1c]
+2026-02-25 21:11:33.621 Launch: Begin container self-repair
+2026-02-25 21:11:33.815 Launch: End container self-repair
+2026-02-25 21:11:33.826 Status: Domoticz V2025.2 (build 17275)-beta (c)2012-2026 GizMoCuz
+2026-02-25 21:11:33.826 Status: Build Hash: e10fbb63b, Date: 2026-02-25 17:42:38
+2026-02-25 21:11:33.826 Status: Startup Path: /opt/domoticz/
+2026-02-25 21:11:33.831 Error: Default admin password has NOT been changed! Change it asap!
+2026-02-25 21:11:33.872 Sunrise: 07:34:00 SunSet: 18:11:00
+2026-02-25 21:11:33.872 Day length: 10:37:00 Sun at south: 12:52:00
+2026-02-25 21:11:33.872 Civil twilight start: 07:00:00 Civil twilight end: 18:45:00
+2026-02-25 21:11:33.872 Nautical twilight start: 06:20:00 Nautical twilight end: 19:24:00
+2026-02-25 21:11:33.872 Astronomical twilight start: 05:41:00 Astronomical twilight end: 20:04:00
+2026-02-25 21:11:33.885 Status: PluginSystem: Started, Python version '3.11.2', 3 plugin definitions loaded.
+2026-02-25 21:11:33.889 Active notification Subsystems: email (1/13)
+2026-02-25 21:11:33.889 Status: WebServer(HTTP) started on address: :: with port 8080
+2026-02-25 21:11:33.889 Error: Domoticz(pid:1, tid:1('domoticz')) received fatal signal 11 (Segmentation fault)
+2026-02-25 21:11:33.889 Error: siginfo address=0xaaac0a5f3040, address=0x7ffed17b1560
+</code></pre></div></div> <p><span>RPI4 Beta</span> / <span>Tasmota</span> / <span>ZigBee2MQTT</span> / <span>P1meter</span> / <span>Haier AC</span> MQTTmapper / <span>SolarEdge</span> SE3500H modbus_tcp / <span>Marstek Venus</span> / <span>Opentherm gateway</span> / <span>Plugwise Anna/Smile</span> / <span>ObserverIP</span> weatherstation thru WuDirect <br>
+<span>Feeding ADSB</span> <a href="https://adsb.im/home">https://adsb.im/home</a></p> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703"><img src="https://forum.domoticz.com/download/file.php?avatar=5374_1445186770.gif" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">Varazir</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=5374&amp;sr=posts&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">487</a></dd> <dd><strong>Joined:</strong> Friday 20 February 2015 22:23</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331812&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331812">Re: error in latest docker</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331812&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331812"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=5374&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">Varazir</a></strong> » </span><time>Wednesday 25 February 2026 22:32</time> </p> <div><p>I renamed the plugins folder and restarted, now it's up and running without the plugins I have </p><p> Domoticz-TinyTUYA-Plugin<br>
+MqttMapper</p></div> <p>Raspberry PI 4 with RaZberry Controller 2016 ZWave+ and CC2531(zigbee)<br>
+Several IKEA devices/z-wave devices</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=20678&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">eddieb</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=20678&amp;sr=posts&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">399</a></dd> <dd><strong>Joined:</strong> Wednesday 04 July 2018 7:48</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd><strong>Location:</strong> Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331817&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331817">Re: error in latest docker</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331817&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703#p331817"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=20678&amp;sid=ed4314c8bef9aa12f4eeac96e82bb703">eddieb</a></strong> » </span><time>Thursday 26 February 2026 8:16</time> </p> <p>17277 received and this is working again</p> <p><span>RPI4 Beta</span> / <span>Tasmota</span> / <span>ZigBee2MQTT</span> / <span>P1meter</span> / <span>Haier AC</span> MQTTmapper / <span>SolarEdge</span> SE3500H modbus_tcp / <span>Marstek Venus</span> / <span>Opentherm gateway</span> / <span>Plugwise Anna/Smile</span> / <span>ObserverIP</span> weatherstation thru WuDirect <br>
+<span>Feeding ADSB</span> <a href="https://adsb.im/home">https://adsb.im/home</a></p> </div> </div> <div> <h3><a href="https://forum.domoticz.com/viewonline.php?sid=ed4314c8bef9aa12f4eeac96e82bb703">Who is online</a></h3> <p>Users browsing this forum: No registered users and 1 guest</p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>App Store age verification tools upgraded to comply with emerging laws</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>App Store age verification tools upgraded to comply with emerging laws</h1>
+  <div class="metadata">
+    Source: AppleInsider | Date: 2/24/2026 9:46:24 PM | <a href="https://appleinsider.com/articles/26/02/24/app-store-age-verification-tools-upgraded-to-comply-with-emerging-laws?utm_source=rss" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p>Apple's <a href="https://appleinsider.com/inside/app-store" title="App Store" data-kpt="1">App Store</a> age verification system has been updated to ensure compliance can be maintained in places like Louisiana, Utah, Australia, Brazil, and Singapore.<br><br><div><img src="https://photos5.appleinsider.com/gallery/66817-140137-63117-131141-61641-127409-51003-100773-iOS-parental-controls-xl-xl-xl-xl.jpg" alt="Image of a phone displaying a prohibited symbol, against a multi-colored background" ><br><span>Apple has updated its assortment of age assurance tools related to the App Store.</span></div><br>In response to <a href="https://appleinsider.com/articles/25/10/08/developers-must-comply-with-new-texas-age-requirement-law-and-apple-has-detailed-how">increasingly strict</a> age-assurance laws, <a href="https://appleinsider.com/articles/25/03/26/utahs-new-law-forces-tech-companies-to-add-age-verification-but-apple-is-already-prepared">like Utah's</a> App Store Accountability Act, Apple has updated its requirements for apps distributed in specific countries. <a href="https://appleinsider.com/inside/ios" title="iOS" data-kpt="1">iOS</a> applications made available to users in Australia, Brazil, Singapore, Louisiana, and Utah will have to abide by the modified App Store age requirements.<br><br>Specifically, users in Australia, Brazil, and Singapore will be blocked from downloading applications rated 18+, unless the users are confirmed to be adults through "reasonable methods." The App Store can automatically confirm whether or not a user is an adult, and the change is already in effect as of Tuesday, February 24.<br><br><br> <a href="https://appleinsider.com/articles/26/02/24/app-store-age-verification-tools-upgraded-to-comply-with-emerging-laws?utm_source=rss">Continue Reading on AppleInsider</a> | <a href="https://forums.appleinsider.com/discussion/243488?urm_source=rss">Discuss on our Forums</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

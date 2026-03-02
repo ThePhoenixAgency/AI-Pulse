@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - avifenesh/glide-mq: Message queue for Node.js on Valkey/Redis OSS, based on Valkey GLIDE</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - avifenesh/glide-mq: Message queue for Node.js on Valkey/Redis OSS, based on Valkey GLIDE</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/20/2026 1:29:49 AM | <a href="https://github.com/avifenesh/glide-mq" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>glide-mq</h1><a href="#glide-mq"></a></div>
+<p>High-performance message queue for Node.js — Streams-first, native NAPI bindings, cloud-native by default.</p>
+<p>Built on <a href="https://valkey.io">Valkey Streams</a> + consumer groups with <a href="https://github.com/valkey-io/valkey-glide">Valkey GLIDE</a>'s Rust core. Single function library instead of 53 EVAL scripts. 1 RTT per job.</p>
+<div><h2>Performance</h2><a href="#performance"></a></div>
+<div><h3>Processing throughput</h3><a href="#processing-throughput"></a></div>
+<table>
+<thead>
+<tr>
+<th>Concurrency</th>
+<th>Throughput</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c=1</td>
+<td>4,376 jobs/s</td>
+</tr>
+<tr>
+<td>c=5</td>
+<td>14,925 jobs/s</td>
+</tr>
+<tr>
+<td>c=10</td>
+<td>15,504 jobs/s</td>
+</tr>
+<tr>
+<td>c=50</td>
+<td>48,077 jobs/s</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Bulk add (<pre><code>addBulk</code></pre> via Batch API)</h3><a href="#bulk-add-addbulk-via-batch-api"></a></div>
+<table>
+<thead>
+<tr>
+<th>Jobs</th>
+<th>Serial</th>
+<th>Batch</th>
+<th>Speedup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>76ms</td>
+<td>14ms</td>
+<td>5.4x</td>
+</tr>
+<tr>
+<td>1,000</td>
+<td>228ms</td>
+<td>18ms</td>
+<td>12.7x</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Payload compression</h3><a href="#payload-compression"></a></div>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Stored size (15KB payload)</th>
+<th>Savings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plain</td>
+<td>15,327 bytes</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Gzip</td>
+<td>331 bytes</td>
+<td>98%</td>
+</tr>
+</tbody>
+</table>
+<p><em>No-op processor, Valkey 8.0, single node.</em></p>
+<div><h2>Why glide-mq</h2><a href="#why-glide-mq"></a></div>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>glide-mq</th>
+<th>Traditional queue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Queue backend</td>
+<td>Streams + PEL</td>
+<td>Lists + BRPOPLPUSH</td>
+</tr>
+<tr>
+<td>Server scripts</td>
+<td>1 function library</td>
+<td>53 EVAL scripts</td>
+</tr>
+<tr>
+<td>RTT per job</td>
+<td>1 (<pre><code>completeAndFetchNext</code></pre>)</td>
+<td>2+</td>
+</tr>
+<tr>
+<td>Cluster support</td>
+<td>Built-in hash tags</td>
+<td>Afterthought <pre><code>{braces}</code></pre></td>
+</tr>
+<tr>
+<td>Client</td>
+<td>NAPI Rust core</td>
+<td>ioredis</td>
+</tr>
+<tr>
+<td>AZ-Affinity</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>IAM auth</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><pre>npm install glide-mq</pre></div>
+<p>Requires Node.js 20+ and a running Valkey (7.0+) or Redis (7.0+) instance.</p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>Queue</span><span>,</span> <span>Worker</span> <span>}</span> <span>from</span> <span>'glide-mq'</span><span>;</span> <span>const</span> <span>connection</span> <span>=</span> <span>{</span> <span>addresses</span>: <span>[</span><span>{</span> <span>host</span>: <span>'localhost'</span><span>,</span> <span>port</span>: <span>6379</span> <span>}</span><span>]</span> <span>}</span><span>;</span> <span>// Producer</span>
+<span>const</span> <span>queue</span> <span>=</span> <span>new</span> <span>Queue</span><span>(</span><span>'tasks'</span><span>,</span> <span>{</span> connection <span>}</span><span>)</span><span>;</span>
+<span>await</span> <span>queue</span><span>.</span><span>add</span><span>(</span><span>'send-email'</span><span>,</span> <span>{</span> <span>to</span>: <span>'user@example.com'</span><span>,</span> <span>subject</span>: <span>'Hello'</span> <span>}</span><span>)</span><span>;</span> <span>// Consumer</span>
+<span>const</span> <span>worker</span> <span>=</span> <span>new</span> <span>Worker</span><span>(</span><span>'tasks'</span><span>,</span> <span>async</span> <span>(</span><span>job</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>`Processing <span><span>${</span><span>job</span><span>.</span><span>name</span><span>}</span></span>:`</span><span>,</span> <span>job</span><span>.</span><span>data</span><span>)</span><span>;</span> <span>return</span> <span>{</span> <span>sent</span>: <span>true</span> <span>}</span><span>;</span>
+<span>}</span><span>,</span> <span>{</span> connection<span>,</span> <span>concurrency</span>: <span>10</span> <span>}</span><span>)</span><span>;</span> <span>worker</span><span>.</span><span>on</span><span>(</span><span>'completed'</span><span>,</span> <span>(</span><span>job</span><span>)</span> <span>=&gt;</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>`Job <span><span>${</span><span>job</span><span>.</span><span>id</span><span>}</span></span> done`</span><span>)</span><span>)</span><span>;</span>
+<span>worker</span><span>.</span><span>on</span><span>(</span><span>'failed'</span><span>,</span> <span>(</span><span>job</span><span>,</span> <span>err</span><span>)</span> <span>=&gt;</span> <span>console</span><span>.</span><span>error</span><span>(</span><span>`Job <span><span>${</span><span>job</span><span>.</span><span>id</span><span>}</span></span> failed:`</span><span>,</span> <span>err</span><span>.</span><span>message</span><span>)</span><span>)</span><span>;</span></pre></div>
+<div><h2>Documentation</h2><a href="#documentation"></a></div>
+<ul>
+<li><strong><a href="/avifenesh/glide-mq/blob/main/docs/USAGE.md">docs/USAGE.md</a></strong> — Queue &amp; Worker basics, graceful shutdown, cluster mode, event listeners</li>
+<li><strong><a href="/avifenesh/glide-mq/blob/main/docs/ADVANCED.md">docs/ADVANCED.md</a></strong> — Schedulers, ordering, deduplication, global concurrency, revocation, compression, retries &amp; DLQ</li>
+<li><strong><a href="/avifenesh/glide-mq/blob/main/docs/WORKFLOWS.md">docs/WORKFLOWS.md</a></strong> — FlowProducer, <pre><code>chain</code></pre>, <pre><code>group</code></pre>, <pre><code>chord</code></pre> pipelines</li>
+<li><strong><a href="/avifenesh/glide-mq/blob/main/docs/OBSERVABILITY.md">docs/OBSERVABILITY.md</a></strong> — Job logs, metrics, OpenTelemetry, <pre><code>@glidemq/dashboard</code></pre></li>
+<li><strong><a href="/avifenesh/glide-mq/blob/main/docs/TESTING.md">docs/TESTING.md</a></strong> — <pre><code>TestQueue</code></pre> &amp; <pre><code>TestWorker</code></pre>, in-memory testing without Valkey</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Apache-2.0</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

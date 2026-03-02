@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - PkLavc/aegis-sentinel: Autonomous infrastructure recovery engine featuring predictive anomaly detection and self-healing capabilities for critical backend systems.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - PkLavc/aegis-sentinel: Autonomous infrastructure recovery engine featuring predictive anomaly detection and self-healing capabilities for critical backend systems.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 8:11:35 PM | <a href="https://github.com/PkLavc/aegis-sentinel" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>Aegis Sentinel</h1><a href="#aegis-sentinel"></a></div>
+<p><a href="https://python.org"><img src="https://camo.githubusercontent.com/9833615dcd5c4175da2140bbe363cb42af4faaeffc0624453b6154e68a60d0aa/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d332e31312b2d626c75652e737667" alt="Python Version"></a>
+<a href="/PkLavc/aegis-sentinel/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/784362b26e4b3546254f1893e778ba64616e362bd6ac791991d2c9e880a3a64e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d677265656e2e737667" alt="License: MIT"></a>
+<a href="https://github.com/PkLavc/aegis-sentinel"><img src="https://camo.githubusercontent.com/ab6336e1474b326ece97cd36512d9021be580c683c12a6df1de0d8df25a961e7/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f506b4c6176632f61656769732d73656e74696e656c3f7374796c653d736f6369616c" alt="GitHub Stars"></a></p>
+<div><h2>Executive Summary</h2><a href="#executive-summary"></a></div>
+<p>Aegis Sentinel is a high-reliability infrastructure monitoring and auto-healing engine designed to ensure business continuity and infrastructure resilience in enterprise environments. This system implements advanced anomaly detection algorithms and automated recovery mechanisms to prevent catastrophic downtime in digital services.</p>
+<p>The platform demonstrates advanced engineering principles suitable for international standards, particularly aligned with EB-2 NIW requirements for demonstrating exceptional ability in systems engineering and infrastructure automation.</p>
+<div><h2>Engineering Specifications</h2><a href="#engineering-specifications"></a></div>
+<div><h3>Technical Architecture</h3><a href="#technical-architecture"></a></div>
+<p>Aegis Sentinel employs a modular, service-oriented architecture with three core components:</p>
+<ol>
+<li><strong>Monitor Service</strong>: Real-time system metrics collection</li>
+<li><strong>ML-Anomaly Detection</strong>: Machine learning-based anomaly identification</li>
+<li><strong>Recovery Engine</strong>: Automated remediation and healing actions</li>
+</ol>
+<div><h3>Core Technologies</h3><a href="#core-technologies"></a></div>
+<ul>
+<li><strong>Python 3.11+</strong> with strict type hinting</li>
+<li><strong>Structured JSON logging</strong> for enterprise auditability</li>
+<li><strong>Isolation Forest</strong> and statistical anomaly detection</li>
+<li><strong>Docker container management</strong> for automated recovery</li>
+<li><strong>Comprehensive testing</strong> with pytest framework</li>
+</ul>
+<div><h3>Visual Workflow</h3><a href="#visual-workflow"></a></div>
+<section> <div> <div> <pre>graph LR A[Metrics Collection] --&gt; B[ML Detection] B --&gt; C{Anomaly?} C -- No --&gt; A C -- Yes --&gt; D[Recovery Engine] D --&gt; E[Self-Healing Action]
+</pre> </div> </div> <span> <span> <span>Loading</span>
+</span> </span>
+</section> <div><h3>System Requirements</h3><a href="#system-requirements"></a></div>
+<ul>
+<li>Python 3.11 or higher</li>
+<li>Docker (for containerized recovery actions)</li>
+<li>Standard Python libraries: psutil, numpy, scikit-learn</li>
+<li>Optional: Redis for distributed caching</li>
+</ul>
+<div><h2>National Interest Context</h2><a href="#national-interest-context"></a></div>
+<p>In today's digital economy, infrastructure reliability is critical for maintaining essential services. Aegis Sentinel addresses the national interest by:</p>
+<ul>
+<li><strong>Preventing catastrophic downtime</strong> in critical digital infrastructure</li>
+<li><strong>Reducing economic impact</strong> of system failures through rapid automated recovery</li>
+<li><strong>Enhancing cybersecurity resilience</strong> through proactive anomaly detection</li>
+<li><strong>Demonstrating technological leadership</strong> in infrastructure automation</li>
+</ul>
+<div><h3>Engineering Impact Metrics</h3><a href="#engineering-impact-metrics"></a></div>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>National Interest Benefit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Detection Latency</strong></td>
+<td>&lt; 2.0s</td>
+<td>Real-time response to critical failures</td>
+</tr>
+<tr>
+<td><strong>False Positive Rate</strong></td>
+<td>&lt; 5%</td>
+<td>Minimizes operational disruption</td>
+</tr>
+<tr>
+<td><strong>Recovery Success</strong></td>
+<td>&gt; 95%</td>
+<td>Ensures high availability for essential services</td>
+</tr>
+</tbody>
+</table>
+<p>The system's ability to detect and remediate issues before they escalate to service outages directly contributes to the stability and reliability of digital services that are essential to modern society.</p>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><pre>git clone https://github.com/PkLavc/aegis-sentinel.git
+<span>cd</span> aegis-sentinel
+python -m venv venv
+<span>source</span> venv/bin/activate <span><span>#</span> On Windows: venv\Scripts\activate</span>
+pip install -r requirements.txt</pre></div>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><h3>Basic Usage</h3><a href="#basic-usage"></a></div>
+<div><pre><span>from</span> <span>src</span>.<span>main</span> <span>import</span> <span>AegisSentinel</span> <span># Initialize the system with default configuration</span>
+<span>sentinel</span> <span>=</span> <span>AegisSentinel</span>() <span># Start monitoring</span>
+<span>await</span> <span>sentinel</span>.<span>start</span>() <span># The system will automatically detect anomalies and trigger recovery</span>
+<span># Monitor runs in the background and logs all activities</span></pre></div>
+<div><h3>Advanced Configuration</h3><a href="#advanced-configuration"></a></div>
+<div><pre><span>from</span> <span>src</span>.<span>main</span> <span>import</span> <span>AegisSentinel</span>
+<span>from</span> <span>src</span>.<span>monitor</span> <span>import</span> <span>MonitoringConfig</span>
+<span>from</span> <span>src</span>.<span>detector</span> <span>import</span> <span>DetectionConfig</span>
+<span>from</span> <span>src</span>.<span>healer</span> <span>import</span> <span>RecoveryConfig</span> <span># Custom configuration</span>
+<span>monitoring_config</span> <span>=</span> <span>MonitoringConfig</span>( <span>collection_interval</span><span>=</span><span>5.0</span>, <span># Check every 5 seconds</span> <span>api_endpoints</span><span>=</span>[<span>"https://api.example.com/health"</span>], <span>enable_network_monitoring</span><span>=</span><span>True</span>, <span>enable_disk_monitoring</span><span>=</span><span>True</span>
+) <span>detection_config</span> <span>=</span> <span>DetectionConfig</span>( <span>isolation_contamination</span><span>=</span><span>0.1</span>, <span>statistical_threshold_multiplier</span><span>=</span><span>3.0</span>, <span>min_samples_for_detection</span><span>=</span><span>50</span>
+) <span>recovery_config</span> <span>=</span> <span>RecoveryConfig</span>( <span>enable_docker_recovery</span><span>=</span><span>True</span>, <span>enable_cache_recovery</span><span>=</span><span>True</span>, <span>max_concurrent_actions</span><span>=</span><span>3</span>
+) <span># Initialize with custom configuration</span>
+<span>sentinel</span> <span>=</span> <span>AegisSentinel</span>( <span>monitoring_config</span><span>=</span><span>monitoring_config</span>, <span>detection_config</span><span>=</span><span>detection_config</span>, <span>recovery_config</span><span>=</span><span>recovery_config</span>
+) <span># Start monitoring</span>
+<span>await</span> <span>sentinel</span>.<span>start</span>() <span># Get service status</span>
+<span>status</span> <span>=</span> <span>sentinel</span>.<span>get_status</span>()
+<span>print</span>(<span>f"Service running: <span><span>{</span><span>status</span>[<span>'service_status'</span>]<span>}</span></span>"</span>)
+<span>print</span>(<span>f"Anomalies detected: <span><span>{</span><span>status</span>[<span>'anomalies_detected'</span>]<span>}</span></span>"</span>)
+<span>print</span>(<span>f"Recovery success rate: <span><span>{</span><span>status</span>[<span>'success_rate'</span>]:.1f<span>}</span></span>%"</span>)</pre></div>
+<div><h3>Programmatic Usage</h3><a href="#programmatic-usage"></a></div>
+<div><pre><span>import</span> <span>asyncio</span>
+<span>from</span> <span>src</span>.<span>main</span> <span>import</span> <span>aegis_sentinel_context</span> <span>async</span> <span>def</span> <span>main</span>(): <span># Use context manager for automatic cleanup</span> <span>async</span> <span>with</span> <span>aegis_sentinel_context</span>() <span>as</span> <span>sentinel</span>: <span>print</span>(<span>"Aegis Sentinel is running..."</span>) <span># Monitor for 60 seconds</span> <span>await</span> <span>asyncio</span>.<span>sleep</span>(<span>60</span>) <span># Get current status</span> <span>status</span> <span>=</span> <span>sentinel</span>.<span>get_status</span>() <span>print</span>(<span>f"Uptime: <span><span>{</span><span>status</span>[<span>'uptime_seconds'</span>]<span>}</span></span> seconds"</span>) <span>if</span> <span>__name__</span> <span>==</span> <span>"__main__"</span>: <span>asyncio</span>.<span>run</span>(<span>main</span>())</pre></div>
+<div><h2>Configuration Options</h2><a href="#configuration-options"></a></div>
+<div><h3>Monitoring Configuration</h3><a href="#monitoring-configuration"></a></div>
+<ul>
+<li><pre><code>collection_interval</code></pre>: Time between metric collections (default: 5.0 seconds)</li>
+<li><pre><code>api_endpoints</code></pre>: List of API endpoints to monitor for latency and availability</li>
+<li><pre><code>enable_network_monitoring</code></pre>: Enable network metrics collection</li>
+<li><pre><code>enable_disk_monitoring</code></pre>: Enable disk usage monitoring</li>
+</ul>
+<div><h3>Detection Configuration</h3><a href="#detection-configuration"></a></div>
+<ul>
+<li><pre><code>isolation_contamination</code></pre>: Expected proportion of anomalies in the data (default: 0.1)</li>
+<li><pre><code>isolation_n_estimators</code></pre>: Number of trees in Isolation Forest (default: 100)</li>
+<li><pre><code>statistical_threshold_multiplier</code></pre>: Standard deviation multiplier for statistical detection (default: 3.0)</li>
+<li><pre><code>min_samples_for_detection</code></pre>: Minimum samples required before detection starts (default: 50)</li>
+</ul>
+<div><h3>Recovery Configuration</h3><a href="#recovery-configuration"></a></div>
+<ul>
+<li><pre><code>enable_docker_recovery</code></pre>: Enable Docker container restart recovery</li>
+<li><pre><code>enable_cache_recovery</code></pre>: Enable cache flushing recovery</li>
+<li><pre><code>enable_service_recovery</code></pre>: Enable system service restart recovery</li>
+<li><pre><code>max_concurrent_actions</code></pre>: Maximum concurrent recovery actions (default: 3)</li>
+<li><pre><code>action_timeout</code></pre>: Default timeout for recovery actions (default: 120.0 seconds)</li>
+</ul>
+<div><h2>Testing</h2><a href="#testing"></a></div>
+<p>Run the test suite:</p>
+<div><pre><span><span>#</span> Using the simple test runner</span>
+python run_tests.py <span><span>#</span> Using pytest (if available)</span>
+pytest tests/ <span><span>#</span> Run specific test modules</span>
+pytest tests/test_monitor.py
+pytest tests/test_detector.py</pre></div>
+<div><h2>Logging</h2><a href="#logging"></a></div>
+<p>Aegis Sentinel uses structured JSON logging for enterprise auditability:</p>
+<div><pre>{ <span>"timestamp"</span>: <span><span>"</span>2026-02-18T10:15:30Z<span>"</span></span>, <span>"level"</span>: <span><span>"</span>WARNING<span>"</span></span>, <span>"event"</span>: <span><span>"</span>anomaly_detected<span>"</span></span>, <span>"metric"</span>: <span><span>"</span>memory_usage<span>"</span></span>, <span>"value"</span>: <span>92.5</span>, <span>"action"</span>: <span><span>"</span>docker_container_restart<span>"</span></span>, <span>"target"</span>: <span><span>"</span>api_gateway_v1<span>"</span></span>
+}</pre></div>
+<div><pre><span>import</span> <span>logging</span> <span># Configure logging</span>
+<span>logging</span>.<span>basicConfig</span>( <span>level</span><span>=</span><span>logging</span>.<span>INFO</span>, <span>format</span><span>=</span><span>'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span>
+) <span># Log files are automatically created as 'aegis_sentinel.log'</span></pre></div>
+<p>Log levels:</p>
+<ul>
+<li><pre><code>INFO</code></pre>: General operation status and recovery actions</li>
+<li><pre><code>WARNING</code></pre>: Anomaly detection events</li>
+<li><pre><code>ERROR</code></pre>: System errors and failed recovery actions</li>
+<li><pre><code>DEBUG</code></pre>: Detailed metric collection and detection information</li>
+</ul>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>This project follows strict professional standards. All contributions must include:</p>
+<ul>
+<li>Comprehensive unit tests</li>
+<li>Type annotations for all functions</li>
+<li>Structured logging for all operations</li>
+<li>Documentation for new features</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT License - see LICENSE file for details.</p>
+<div><h2>Author</h2><a href="#author"></a></div>
+<p><strong>Patrick - Computer Engineer</strong> To view other projects and portfolio details, visit:
+<a href="https://pklavc.github.io/projects.html">https://pklavc.github.io/projects.html</a></p>
+<hr>
+<p><em>This project is part of a professional portfolio demonstrating advanced systems engineering capabilities for high-availability infrastructure.</em></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

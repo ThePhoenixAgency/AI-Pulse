@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Error: RFXCom: Error opening serial port!</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Error: RFXCom: Error opening serial port!</h1>
+  <div class="metadata">
+    Source: Domoticz (Forum News) | Date: 2/26/2026 1:24:01 PM | <a href="https://forum.domoticz.com/viewtopic.php?p=331826#p331826" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p> <strong>Moderators:</strong> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6475&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">leecollings</a>, <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=57&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">remb0</a>
+</p> <div> <p><strong>Forum rules</strong><br> Before posting here, make sure you are on the latest Beta or Stable version.<br>
+If you have problems related to the web gui, clear your browser cache + appcache first.</p><p> Use the following template when posting here:</p><p> Version: xxxx<br>
+Platform: xxxx<br>
+Plugin/Hardware: xxxx<br>
+Description:<br>
+.....</p><p> If you are having problems with scripts/blockly, always post the script (in a spoiler or code tag) or screenshots of your blockly</p><p> If you are replying, please do not quote images/code from the first post</p><p> Please mark your topic as Solved when the problem is solved. </p></div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6686&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">Doler</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=6686&amp;sr=posts&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">169</a></dd> <dd><strong>Joined:</strong> Friday 31 July 2015 21:02</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd><strong>Location:</strong> Sint-Oedenrode, Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331826&amp;sid=664ea676886e31e0ff73fa5a45e8fc00#p331826">Error: RFXCom: Error opening serial port!</a> </h3> <p>After some retries I succesfully migrated to beta build 17277 and converted to systemd control. Since that time my RFXCom won't start anymore stating that the serial port cannot be opened. The serial port is identified by serial/by-id and present in the harware configuration.<br>
+Is there a relation to the (many) latest changes? Are there ways to discover the cause of the problem?</p> <p>Mark: Domoticz latest Beta on Virtual machine (Proxmox) running Debian Trixie - Z-Stick 7 - RFXCom - P1 - SolarEdge - Dahua - Philips Hue - Docker - Zigbee2mqtt (latest, docker) via python plugin - Zwave-js-ui (latest, docker) - dzVents - Nodered</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6686&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">Doler</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=6686&amp;sr=posts&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">169</a></dd> <dd><strong>Joined:</strong> Friday 31 July 2015 21:02</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd><strong>Location:</strong> Sint-Oedenrode, Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331840&amp;sid=664ea676886e31e0ff73fa5a45e8fc00#p331840">Re: Error: RFXCom: Error opening serial port!</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331840&amp;sid=664ea676886e31e0ff73fa5a45e8fc00#p331840"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6686&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">Doler</a></strong> » </span><time>Friday 27 February 2026 13:57</time> </p> <div><p>Returned to beta 17252 and RFXCom is not giving a problem anymore. Sure it has something to do with changes to 17277. Will investigate this further.</p><p> I also noticed that beta 17277 forced reboots of the system. It happens muliple times per day with unknown frequency. I will (on my test system) disable all hardware and see what happens.</p></div> <p>Mark: Domoticz latest Beta on Virtual machine (Proxmox) running Debian Trixie - Z-Stick 7 - RFXCom - P1 - SolarEdge - Dahua - Philips Hue - Docker - Zigbee2mqtt (latest, docker) via python plugin - Zwave-js-ui (latest, docker) - dzVents - Nodered</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=7519&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">HvdW</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=7519&amp;sr=posts&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">664</a></dd> <dd><strong>Joined:</strong> Sunday 01 November 2015 22:45</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> 2023.2</dd> <dd><strong>Location:</strong> Twente</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331841&amp;sid=664ea676886e31e0ff73fa5a45e8fc00#p331841">Re: Error: RFXCom: Error opening serial port!</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331841&amp;sid=664ea676886e31e0ff73fa5a45e8fc00#p331841"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=7519&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">HvdW</a></strong> » </span><time>Friday 27 February 2026 14:04</time> </p> <p>KIS<br>
+Don't fuzz with beta if you want to stay out of trouble.</p> <p>Bugs bug me.</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=20955&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">claude2666</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=20955&amp;sr=posts&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">18</a></dd> <dd><strong>Joined:</strong> Wednesday 01 August 2018 14:50</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> </dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331852&amp;sid=664ea676886e31e0ff73fa5a45e8fc00#p331852">Re: Error: RFXCom: Error opening serial port!</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331852&amp;sid=664ea676886e31e0ff73fa5a45e8fc00#p331852"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=20955&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">claude2666</a></strong> » </span><time>Saturday 28 February 2026 13:01</time> </p> <div><p>Are you running monit to monitor domoticz? <br>
+If so, you may have to adapt your /etc/monit/monitrc file.<br>
+With the latest betas, domoticz has been migrated to use systemd and there is no longer a PID file created, causing monit checks to fail and causing boots. You can check /var/log/monit.log</p><p> I have changed my monitrc file from <br>
+CHECK PROCESS domoticz WITH PIDFILE /var/run/domoticz.pid<br>
+START PROGRAM = "/etc/init.d/domoticz.sh start"<br>
+STOP PROGRAM = "/etc/init.d/domoticz.sh stop"</p><p> to:</p><p> check process domoticz matching "domoticz"<br>
+START PROGRAM = "/bin/systemctl start domoticz.service"<br>
+STOP PROGRAM = "/bin/systemctl stop domoticz.service"</p></div> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6686&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">Doler</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=6686&amp;sr=posts&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">169</a></dd> <dd><strong>Joined:</strong> Friday 31 July 2015 21:02</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd><strong>Location:</strong> Sint-Oedenrode, Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331853&amp;sid=664ea676886e31e0ff73fa5a45e8fc00#p331853">Re: Error: RFXCom: Error opening serial port!</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331853&amp;sid=664ea676886e31e0ff73fa5a45e8fc00#p331853"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6686&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">Doler</a></strong> » </span><time>Saturday 28 February 2026 13:37</time> </p> <p>I'm indeed running monit and didn't think of that. I'll change immediately, thanks for the tip.</p> <p>Mark: Domoticz latest Beta on Virtual machine (Proxmox) running Debian Trixie - Z-Stick 7 - RFXCom - P1 - SolarEdge - Dahua - Philips Hue - Docker - Zigbee2mqtt (latest, docker) via python plugin - Zwave-js-ui (latest, docker) - dzVents - Nodered</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6686&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">Doler</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=6686&amp;sr=posts&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">169</a></dd> <dd><strong>Joined:</strong> Friday 31 July 2015 21:02</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd><strong>Location:</strong> Sint-Oedenrode, Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331855&amp;sid=664ea676886e31e0ff73fa5a45e8fc00#p331855">Re: Error: RFXCom: Error opening serial port!</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331855&amp;sid=664ea676886e31e0ff73fa5a45e8fc00#p331855"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6686&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">Doler</a></strong> » </span><time>Saturday 28 February 2026 14:05</time> </p> <div><blockquote><p><cite><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6686&amp;sid=664ea676886e31e0ff73fa5a45e8fc00">Doler</a> wrote: <a href="https://forum.domoticz.com/viewtopic.php?p=331853&amp;sid=664ea676886e31e0ff73fa5a45e8fc00#p331853"></a><span>Saturday 28 February 2026 13:37</span></cite>
+I'm indeed running monit and didn't think of that. I'll change immediately, thanks for the tip.
+</p></blockquote><p> Just saw a new commit the re-introduces a PID:
+</p><blockquote><p>- Support writing a PID file via -pidfile without requiring -daemon,<br> allowing process managers like monit to locate the process when<br> running under systemd Type=simple</p></blockquote></div> <p>Mark: Domoticz latest Beta on Virtual machine (Proxmox) running Debian Trixie - Z-Stick 7 - RFXCom - P1 - SolarEdge - Dahua - Philips Hue - Docker - Zigbee2mqtt (latest, docker) via python plugin - Zwave-js-ui (latest, docker) - dzVents - Nodered</p> </div> </div> <div> <h3><a href="https://forum.domoticz.com/viewonline.php?sid=664ea676886e31e0ff73fa5a45e8fc00">Who is online</a></h3> <p>Users browsing this forum: No registered users and 1 guest</p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

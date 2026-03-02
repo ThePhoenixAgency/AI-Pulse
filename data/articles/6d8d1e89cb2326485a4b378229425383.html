@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - Andyyyy64/openTiger: Autonomous dev orchestration that never stops. Failures still converge to completion.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - Andyyyy64/openTiger: Autonomous dev orchestration that never stops. Failures still converge to completion.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/22/2026 4:10:49 AM | <a href="https://github.com/Andyyyy64/openTiger" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>openTiger — Autonomous dev orchestration that never stops</h1><a href="#opentiger--autonomous-dev-orchestration-that-never-stops"></a></div>
+<p><strong>Website</strong>: <a href="https://opentiger.dev">opentiger.dev</a> | <strong>Docs</strong>: <a href="https://opentiger.dev/docs/">opentiger.dev/docs</a></p>
+<p> <a target="_blank" href="/Andyyyy64/openTiger/blob/main/assets/avatar.png"><img src="/Andyyyy64/openTiger/raw/main/assets/avatar.png" alt="openTiger"></a>
+</p>
+<p>openTiger continuously runs:</p> <p>all under explicit runtime state transitions.</p>
+<p> <a target="_blank" href="/Andyyyy64/openTiger/blob/main/assets/ui.png"><img src="/Andyyyy64/openTiger/raw/main/assets/ui.png" alt="openTiger UI"></a>
+</p>
+<div><h2>Key Features</h2><a href="#key-features"></a></div>
+<ul>
+<li>Requirement -&gt; executable task generation</li>
+<li>Role-based execution (<pre><code>worker</code></pre> / <pre><code>tester</code></pre> / <pre><code>docser</code></pre>)</li>
+<li>PR and local-worktree judgement (<pre><code>judge</code></pre>)</li>
+<li>Recovery-first operation (<pre><code>quota_wait</code></pre>, <pre><code>awaiting_judge</code></pre>, <pre><code>needs_rework</code></pre>)</li>
+<li>Backlog-first startup (Issue/PR backlog is processed before new planning)</li>
+<li>Dashboard + API for process control, logs, and system config</li>
+<li>Runtime switch between host process and docker sandbox execution</li>
+</ul>
+<div><h2>Plugins</h2><a href="#plugins"></a></div>
+<ul>
+<li>Plugin-first feature expansion</li>
+<li>TigerResearch plugin (<pre><code>planner-first</code></pre> claim/evidence convergence) as the reference implementation</li>
+<li>Plugin activation via <pre><code>ENABLED_PLUGINS</code></pre> (CSV)</li>
+<li>Plugin inventory endpoint: <pre><code>GET /plugins</code></pre></li>
+<li>TigerResearch routes are exposed only under <pre><code>/plugins/tiger-research/*</code></pre></li>
+<li>See <a href="/Andyyyy64/openTiger/blob/main/docs/plugins.md">docs/plugins.md</a> for plugin architecture and implementation guide</li>
+</ul>
+<div><h2>Architecture Overview</h2><a href="#architecture-overview"></a></div>
+<ul>
+<li><strong>API (<pre><code>@openTiger/api</code></pre>)</strong>: system/config/control endpoints and dashboard backend</li>
+<li><strong>Planner</strong>: generates tasks from requirements/issues</li>
+<li><strong>Dispatcher</strong>: leases and dispatches queued tasks</li>
+<li><strong>Worker/Tester/Docser</strong>: executes task changes and verification</li>
+<li><strong>Judge</strong>: evaluates successful runs and drives merge/rework decisions</li>
+<li><strong>Cycle Manager</strong>: convergence loop, cleanup, retry, and replan trigger</li>
+<li><strong>PostgreSQL + Redis</strong>: persistent state + queueing</li>
+</ul>
+<pre><code>See docs/architecture.md for component-level details.
+See docs/research.md for TigerResearch design and operation.
+See docs/plugins.md for plugin extension architecture.</code></pre>
+<div><h2>Prerequisites</h2><a href="#prerequisites"></a></div>
+<ul>
+<li>Node.js <pre><code>&gt;=22.12</code></pre></li>
+<li>pnpm <pre><code>9.x</code></pre></li>
+<li>Docker (for local DB/Redis and sandbox execution mode)</li>
+<li><pre><code>gh</code></pre> command (or GitHub token with appropriate permissions)</li>
+<li>ClaudeCode, Codex, etc., or API keys for each provider when using OpenCode</li>
+</ul>
+<div><h2>Installation</h2><a href="#installation"></a></div> <div><pre>curl -fsSL https://opentiger.dev/install.sh <span>|</span> bash</pre></div>
+<div><h3>Manual (clone and setup)</h3><a href="#manual-clone-and-setup"></a></div>
+<div><pre>git clone git@github.com:Andyyyy64/openTiger.git
+<span>cd</span> openTiger
+pnpm run setup</pre></div>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre>pnpm run up</pre></div>
+<p></p><pre><code>pnpm run up</code></pre> performs:<p></p>
+<ul>
+<li>monorepo build</li>
+<li><pre><code>postgres</code></pre> / <pre><code>redis</code></pre> startup via docker compose</li>
+<li>DB schema push</li>
+<li>runtime hatch disarm</li>
+<li>DB config export to <pre><code>.env</code></pre></li>
+<li>API + Dashboard dev startup</li>
+</ul>
+<div><h2>First-Time Checklist</h2><a href="#first-time-checklist"></a></div>
+<ol>
+<li>
+<p>Authenticate GitHub CLI (default auth mode):</p>
+<div><pre>gh auth login</pre></div>
+</li>
+<li>
+<p>If using Claude Code executor, authenticate on the host:</p>
+<div><pre>claude /login</pre></div>
+</li>
+<li>
+<p>If using Codex executor, authenticate on the host (or set </p><pre><code>OPENAI_API_KEY</code></pre> / <pre><code>CODEX_API_KEY</code></pre>):<p></p>
+<div><pre>codex login</pre></div>
+</li>
+<li>
+<p>Open the Dashboard:</p>
+<ul>
+<li>Dashboard: <pre><code>http://localhost:5190</code></pre></li>
+<li>API: <pre><code>http://localhost:4301</code></pre></li>
+</ul>
+</li>
+<li>
+<p>Enter requirement on the Start page and run</p>
+<ul>
+<li>default canonical requirement path: <a href="/Andyyyy64/openTiger/blob/main/docs/requirement.md">docs/requirement.md</a></li>
+</ul>
+</li>
+<li>
+<p>Monitor progress:</p>
+<ul>
+<li><pre><code>tasks</code></pre></li>
+<li><pre><code>runs</code></pre></li>
+<li><pre><code>judgements</code></pre></li>
+<li><pre><code>logs</code></pre></li>
+</ul>
+</li>
+<li>
+<p>(Optional) Run TigerResearch from the </p><pre><code>plugins</code></pre> page:<p></p>
+<ul>
+<li>submit query -&gt; planner decomposition -&gt; parallel collect/challenge/write -&gt; report</li>
+<li>details: <a href="/Andyyyy64/openTiger/blob/main/docs/research.md">docs/research.md</a></li>
+</ul>
+</li>
+<li>
+<p>If state becomes stalled:</p>
+<ul>
+<li>Start with initial diagnosis in <a href="/Andyyyy64/openTiger/blob/main/docs/state-model.md">docs/state-model.md</a></li>
+<li>Check detailed runbook in <a href="/Andyyyy64/openTiger/blob/main/docs/operations.md">docs/operations.md</a></li>
+</ul>
+</li>
+</ol>
+<div><h3>Common Lookup Guide (state vocabulary -&gt; transition -&gt; owner -&gt; implementation)</h3><a href="#common-lookup-guide-state-vocabulary---transition---owner---implementation"></a></div>
+<ul>
+<li>If issues found via API:
+<ul>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/api-reference.md">docs/api-reference.md</a> "2.2 API-based lookup (state vocabulary -&gt; transition -&gt; owner -&gt; implementation)"</li>
+</ul>
+</li>
+<li>To trace transitions from state vocabulary:
+<ul>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/state-model.md">docs/state-model.md</a> -&gt; <a href="/Andyyyy64/openTiger/blob/main/docs/flow.md">docs/flow.md</a></li>
+</ul>
+</li>
+<li>To trace to owning agent and implementation files:
+<ul>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/agent/README.md">docs/agent/README.md</a> "Shortest route for implementation tracing"</li>
+</ul>
+</li>
+</ul>
+<div><h2>Startup and Runtime Behavior</h2><a href="#startup-and-runtime-behavior"></a></div>
+<ul>
+<li>Planner is started only when backlog gates are clear.</li>
+<li>Existing local/Issue/PR backlog is always prioritized.</li>
+<li>Runtime hatch disarm keeps process self-heal from auto-starting workers/judge only because backlog exists.</li>
+<li>Runtime convergence order:
+<ul>
+<li><pre><code>local backlog &gt; 0</code></pre>: continue execution</li>
+<li><pre><code>local backlog == 0</code></pre>: sync Issue backlog via preflight</li>
+<li><pre><code>Issue backlog == 0</code></pre>: evaluate planner replan</li>
+</ul>
+</li>
+</ul>
+<p>Details: <a href="/Andyyyy64/openTiger/blob/main/docs/startup-patterns.md">docs/startup-patterns.md</a>, <a href="/Andyyyy64/openTiger/blob/main/docs/flow.md">docs/flow.md</a></p>
+<div><h2>Documentation Map</h2><a href="#documentation-map"></a></div>
+<p><strong>Online</strong>: <a href="https://opentiger.dev">opentiger.dev</a> | <a href="https://opentiger.dev/docs/">Docs</a></p>
+<p>First check the index by use case:</p>
+<ul>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/README.md">docs/README.md</a>
+<ul>
+<li>includes reader lanes (first-time/operations/implementation tracing)</li>
+</ul>
+</li>
+</ul> <ul>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/getting-started.md">docs/getting-started.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/architecture.md">docs/architecture.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/config.md">docs/config.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/api-reference.md">docs/api-reference.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/operations.md">docs/operations.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/api-reference.md">docs/api-reference.md</a> "2.2 API-based lookup (state vocabulary -&gt; transition -&gt; owner -&gt; implementation)"</li>
+</ul>
+<p>Runtime behavior reference:</p>
+<ul>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/state-model.md">docs/state-model.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/flow.md">docs/flow.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/startup-patterns.md">docs/startup-patterns.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/mode.md">docs/mode.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/execution-mode.md">docs/execution-mode.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/policy-recovery.md">docs/policy-recovery.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/verification.md">docs/verification.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/research.md">docs/research.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/plugins.md">docs/plugins.md</a></li>
+</ul>
+<p>Agent specification reference:</p>
+<ul>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/agent/README.md">docs/agent/README.md</a> (role comparison)</li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/agent/planner.md">docs/agent/planner.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/agent/dispatcher.md">docs/agent/dispatcher.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/agent/worker.md">docs/agent/worker.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/agent/tester.md">docs/agent/tester.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/agent/judge.md">docs/agent/judge.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/agent/docser.md">docs/agent/docser.md</a></li>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/agent/cycle-manager.md">docs/agent/cycle-manager.md</a></li>
+</ul>
+<p>Design principles:</p>
+<ul>
+<li><a href="/Andyyyy64/openTiger/blob/main/docs/nonhumanoriented.md">docs/nonhumanoriented.md</a></li>
+</ul>
+<div><h2>Authentication and Access Control Notes</h2><a href="#authentication-and-access-control-notes"></a></div>
+<ul>
+<li>API authentication middleware supports:
+<ul>
+<li><pre><code>X-API-Key</code></pre> (<pre><code>API_KEYS</code></pre>)</li>
+<li><pre><code>Authorization: Bearer &lt;token&gt;</code></pre> (<pre><code>API_SECRET</code></pre> or custom validator)</li>
+</ul>
+</li>
+<li><pre><code>/health</code></pre> and GitHub webhook endpoint (<pre><code>/webhook/github</code></pre>, <pre><code>/api/webhook/github</code></pre> when using API prefix) are auth-skipped.</li>
+<li>System-control (<pre><code>/system/*</code></pre>, <pre><code>POST /logs/clear</code></pre>) access is checked by <pre><code>canControlSystem()</code></pre>:
+<ul>
+<li><pre><code>api-key</code></pre> / <pre><code>bearer</code></pre>: always allowed</li>
+<li>local insecure fallback: allowed unless <pre><code>OPENTIGER_ALLOW_INSECURE_SYSTEM_CONTROL=false</code></pre></li>
+</ul>
+</li>
+</ul>
+<div><h2>OSS Scope</h2><a href="#oss-scope"></a></div>
+<p>openTiger is optimized for long-running autonomous repository workflows with explicit recovery paths.<br>
+It does <strong>not</strong> guarantee one-shot success under all external conditions, but it is designed to avoid silent stalls and continuously converge by switching recovery strategy.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

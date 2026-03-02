@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Linux Still Working To Clean Up The Realtek RTL8723BS 802.11b/g/n WiFi Driver In 2026</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Linux Still Working To Clean Up The Realtek RTL8723BS 802.11b/g/n WiFi Driver In 2026</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/19/2026 1:25:25 AM | <a href="https://www.phoronix.com/news/Linux-7.0-Staging" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div>
+<p><img alt="LINUX NETWORKING" src="https://www.phoronix.com/assets/categories/linuxnetworking.webp"></p><p>
+Introduced to the Linux 4.12 kernel's staging area <a href="https://www.phoronix.com/news/Linux-4.12-Staging-Tree">back in 2017 was the Realtek RTL8723BS WiFi driver</a>. The Realtek RTL8723BS is an 802.11 b/g/ SDIO WLAN adapter with Bluetooth 4.0 connectivity too. In the nearly decade since this driver was added to the staging area, <a href="https://www.phoronix.com/news/Linux-6.17-Staging">it's continued to be cleaned up</a> and with the Linux 7.0 merge window there is yet again a lot of work on cleaning up this WiFi driver for the old Realtek hardware.
+</p><p>
+It's not over the finish line and still in the kernel's staging area, but the Realtek RTL8723BS driver continues seeing more clean-ups. This driver started out as based on Realtek downstream vendor driver code and cleaned up in the year since by various kernel developers. As for its popularity, the RTL8723BS did appear in the original Intel Compute Stick as well as various Intel Atom and ARM devices.
+</p><p><img src="https://www.phoronix.net/image.php?id=intel-cs-linux&amp;image=intel_cs_1_med" alt="Intel Compute Stick"></p>
+<p>It seems to be a never-ending clean-up project for this particular Realtek WiFi driver. Greg Kroah Hartman remarked in the <a href="https://lore.kernel.org/lkml/aZR7MAE8Cm-Viw5w@kroah.com/">staging pull request</a> for Linux 7.0:
+</p><blockquote>"cleanups for the rtl8723bs driver, so many cleanups..."</blockquote>
+<p>Indeed, of the 119 staging patches merged for the Linux 7.0 merge window, 87 of those 119 patches were for the rtl8723bs driver from a number of different developers. Many of those patches for renaming bits of code and other refactoring with the rtl8723bs driver having a big hardware abstraction layer (HAL), OS dependency abstractions, and other bits from its Realtek vendor downstream driver days compared to be a cleanly-written, upstream Linux minded wireless driver.
+</p><p>
+The staging pull also included some clean-ups to Greybus, VME_USER, sm750fb, and other drivers but the Realtek rtl8723bs driver continued seeing a majority of the staging activity for that aging 802.11 b/g/n WiFi hardware.</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

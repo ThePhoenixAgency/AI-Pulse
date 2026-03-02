@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>5 Tips for Building MCP Apps That Work</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>5 Tips for Building MCP Apps That Work</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 6:49:01 AM | <a href="https://dev.to/goose_oss/5-tips-for-building-mcp-apps-that-work-2pme" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://modelcontextprotocol.io/docs/extensions/apps" target="_blank">MCP Apps</a> allow you to render interactive UI directly inside any agent supporting the Model Context Protocol. Instead of a wall of text, your agent can now provide a functional chart, a checkout form, or a video player. This bridges the gap in agentic workflows: clicking a button is often clearer than describing the action you hope an agent executes.</p> <p>MCP Apps originated as <a href="https://mcp-ui.dev/" target="_blank">MCP-UI</a>, an experimental project. After adoption by early clients like goose, the MCP maintainers incorporated it as an official extension. Today, it's supported by clients like goose, MCPJam, Claude, ChatGPT, and Postman.</p> <p>Even though MCP Apps use web technologies, building one isn't the same as building a traditional web app. Your UI runs inside an agent you don't control, communicates with a model that can't see user interactions, and needs to feel native across multiple hosts.</p> <p>After implementing MCP App support in our own hosts and building several individual apps to run on them, here are the practical lessons we've picked up along the way.</p> <h2> <a name="overview-of-how-ui-renders-with-mcp-apps" href="#overview-of-how-ui-renders-with-mcp-apps"> </a> Overview of how UI renders with MCP Apps
+</h2> <p>At a high level, clients that support MCP Apps load your UI via iFrames. Your MCP App exposes an MCP server with tools and resources. When the client wants to load your app's UI, it calls the associated MCP tool, loads the resource containing the HTML, then loads your HTML into an iFrame to display in the chat interface.</p> <p>Here's an example flow of what happens when goose renders a cocktail recipe UI:</p> <ol>
+<li>You ask the LLM "Show me a margarita recipe".</li>
+<li>The LLM calls the <code>get-cocktail</code> tool with the right parameters. This tool has a UI resource link in <code>_meta.ui.resourceUri</code> pointing to the resource containing the HTML.</li>
+<li>The client then uses the URI to fetch the MCP resource. This resource contains the HTML content of the view.</li>
+<li>The HTML is then loaded into the iFrame directly in the chat interface, rendering the cocktail recipe.</li>
+</ol> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fm049x427yvnpxbl9nsyy.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fm049x427yvnpxbl9nsyy.png" alt="MCP Apps flow diagram showing how UI renders"></a></p> <p>There's a lot that also goes on behind the scenes, such as View hydration, capability negotiation, and CSPs, but this is how it works at a high level. If you're interested in the full implementation of MCP Apps, we highly recommend giving <a href="https://github.com/modelcontextprotocol/ext-apps/blob/main/specification/draft/apps.mdx" target="_blank">the spec</a> a read.</p> <h2> <a name="tip-1-adapt-to-the-host-environment" href="#tip-1-adapt-to-the-host-environment"> </a> Tip 1: Adapt to the Host Environment
+</h2> <p>When building an MCP App, you want it to feel like a natural part of the agent experience rather than something bolted on. Visual mismatches are one of the fastest ways to break that illusion.</p> <p>Imagine a user starting an MCP App interaction inside a dark-mode agent, but the app renders in light mode and creates a harsh visual contrast. Even if the app works correctly, the experience immediately feels off.</p> <p>By default, your MCP App has no awareness of the surrounding agent environment because it runs inside a sandboxed iframe. It cannot tell whether the agent is in light or dark mode, how large the viewport is, or which locale the user prefers.</p> <p>The agent, referred to as the Host, solves this by sharing its environment details with your MCP App, known as the View. When the View connects, it sends a <code>ui/initialize</code> request. The Host responds with a <code>hostContext</code> object describing the current environment. When something changes, such as theme, viewport, or locale, the Host sends a <code>ui/notifications/host-context-changed</code> notification containing only the updated fields.</p> <p>Imagine this dialogue between the View and Host:</p> <blockquote>
+<p><strong>View</strong>: "I'm initializing. What does your environment look like?"<br>
+<strong>Host</strong>: "We're in dark mode, viewport is 400×300, locale is en-US, and we're on desktop."<br>
+<em>User switches to light theme</em><br>
+<strong>Host</strong>: "Update: we're now in light mode."</p>
+</blockquote> <p>It is your job as the developer to ensure your MCP App makes use of the <code>hostContext</code> so it can adapt to the environment.</p> <h3> <a name="how-to-use-hostcontext-in-your-mcp-app" href="#how-to-use-hostcontext-in-your-mcp-app"> </a> How to use hostContext in your MCP App
+</h3> <div>
+<pre><code><span>import</span> <span>{</span> <span>useState</span> <span>}</span> <span>from</span> <span>"</span><span>react</span><span>"</span><span>;</span>
+<span>import</span> <span>{</span> <span>useApp</span> <span>}</span> <span>from</span> <span>"</span><span>@modelcontextprotocol/ext-apps/react</span><span>"</span><span>;</span>
+<span>import</span> <span>type</span> <span>{</span> <span>McpUiHostContext</span> <span>}</span> <span>from</span> <span>"</span><span>@modelcontextprotocol/ext-apps</span><span>"</span><span>;</span> <span>function</span> <span>MyApp</span><span>()</span> <span>{</span> <span>const</span> <span>[</span><span>hostContext</span><span>,</span> <span>setHostContext</span><span>]</span> <span>=</span> <span>useState</span><span>&lt;</span><span>McpUiHostContext</span> <span>|</span> <span>undefined</span><span>&gt;</span><span>(</span><span>undefined</span><span>);</span> <span>const</span> <span>{</span> <span>app</span><span>,</span> <span>isConnected</span><span>,</span> <span>error</span> <span>}</span> <span>=</span> <span>useApp</span><span>({</span> <span>appInfo</span><span>:</span> <span>{</span> <span>name</span><span>:</span> <span>"</span><span>MyApp</span><span>"</span><span>,</span> <span>version</span><span>:</span> <span>"</span><span>1.0.0</span><span>"</span> <span>},</span> <span>capabilities</span><span>:</span> <span>{},</span> <span>onAppCreated</span><span>:</span> <span>(</span><span>app</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>app</span><span>.</span><span>onhostcontextchanged</span> <span>=</span> <span>(</span><span>ctx</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>setHostContext</span><span>((</span><span>prev</span><span>)</span> <span>=&gt;</span> <span>({</span> <span>...</span><span>prev</span><span>,</span> <span>...</span><span>ctx</span> <span>}));</span> <span>};</span> <span>},</span> <span>});</span> <span>if </span><span>(</span><span>error</span><span>)</span> <span>return</span> <span>&lt;</span><span>div</span><span>&gt;</span><span>Error</span><span>:</span> <span>{</span><span>error</span><span>.</span><span>message</span><span>}</span><span>&lt;</span><span>/div&gt;</span><span>;
+</span> <span>if </span><span>(</span><span>!</span><span>isConnected</span><span>)</span> <span>return</span> <span>&lt;</span><span>div</span><span>&gt;</span><span>Connecting</span><span>...</span><span>&lt;</span><span>/div&gt;</span><span>;
+</span> <span>return </span><span>(</span> <span>&lt;</span><span>div</span><span>&gt;</span> <span>&lt;</span><span>p</span><span>&gt;</span><span>Theme</span><span>:</span> <span>{</span><span>hostContext</span><span>?.</span><span>theme</span><span>}</span><span>&lt;</span><span>/p</span><span>&gt;
+</span> <span>&lt;</span><span>p</span><span>&gt;</span><span>Locale</span><span>:</span> <span>{</span><span>hostContext</span><span>?.</span><span>locale</span><span>}</span><span>&lt;</span><span>/p</span><span>&gt;
+</span> <span>&lt;</span><span>p</span><span>&gt;</span><span>Viewport</span><span>:</span> <span>{</span><span>hostContext</span><span>?.</span><span>containerDimensions</span><span>?.</span><span>width</span><span>}</span> <span>x</span> <span>{</span><span>hostContext</span><span>?.</span><span>containerDimensions</span><span>?.</span><span>height</span><span>}</span><span>&lt;</span><span>/p</span><span>&gt;
+</span> <span>&lt;</span><span>p</span><span>&gt;</span><span>Platform</span><span>:</span> <span>{</span><span>hostContext</span><span>?.</span><span>platform</span><span>}</span><span>&lt;</span><span>/p</span><span>&gt;
+</span> <span>&lt;</span><span>/div</span><span>&gt;
+</span> <span>);</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <blockquote>
+<p> <strong>Tip:</strong> If you're using the <code>useApp</code> hook in your MCP App, the hook provides a <code>onhostcontextchanged</code> listener. You can then use a React <code>useState</code> to update your app context. The host will provide their context, it's up to you as the app developer to decide what you want to do with that. For example, you can use theme to render light mode vs dark mode, locale to show a different language, or containerDimensions to adjust the app's sizing.</p>
+</blockquote> <h2> <a name="tip-2-control-what-the-model-sees-and-what-the-view-sees" href="#tip-2-control-what-the-model-sees-and-what-the-view-sees"> </a> Tip 2: Control What the Model Sees and What the View Sees
+</h2> <p>There are cases where you may want to have granular control over what data the LLM has access to, and what data the view can show. The MCP Apps spec specifies three different tool return values that lets you control data flow, each are handled differently by the app host.</p> <ul>
+<li>
+<code>content</code>: Content is the info that you want to expose to the model. Gives model context.</li>
+<li>
+<code>structuredContent</code>: This data is hidden from the model context. It is used to send data over the View for hydration.</li>
+<li>
+<code>_meta</code>: This data is hidden from the model context. Used to provide additional info such as timestamps, version info.</li>
+</ul> <p>Let's look at a practical example of how we can use these three tool return types effectively:<br>
+</p> <div>
+<pre><code><span>server</span><span>.</span><span>registerTool</span><span>(</span> <span>"</span><span>view-cocktail</span><span>"</span><span>,</span> <span>{</span> <span>title</span><span>:</span> <span>"</span><span>Get Cocktail</span><span>"</span><span>,</span> <span>description</span><span>:</span> <span>"</span><span>Fetch a cocktail by id with ingredients and images...</span><span>"</span><span>,</span> <span>inputSchema</span><span>:</span> <span>z</span><span>.</span><span>object</span><span>({</span> <span>id</span><span>:</span> <span>z</span><span>.</span><span>string</span><span>().</span><span>describe</span><span>(</span><span>"</span><span>The id of the cocktail to fetch.</span><span>"</span><span>)</span> <span>}),</span> <span>_meta</span><span>:</span> <span>{</span> <span>ui</span><span>:</span> <span>{</span> <span>resourceUri</span><span>:</span> <span>"</span><span>ui://cocktail/cocktail-recipe-widget.html</span><span>"</span> <span>},</span> <span>},</span> <span>},</span> <span>async </span><span>({</span> <span>id</span> <span>}:</span> <span>{</span> <span>id</span><span>:</span> <span>string</span> <span>}):</span> <span>Promise</span><span>&lt;</span><span>CallToolResult</span><span>&gt;</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>cocktail</span> <span>=</span> <span>await</span> <span>convexClient</span><span>.</span><span>query</span><span>(</span><span>api</span><span>.</span><span>cocktails</span><span>.</span><span>getCocktailById</span><span>,</span> <span>{</span> <span>id</span><span>,</span> <span>});</span> <span>return</span> <span>{</span> <span>content</span><span>:</span> <span>[</span> <span>{</span> <span>type</span><span>:</span> <span>"</span><span>text</span><span>"</span><span>,</span> <span>text</span><span>:</span> <span>`Loaded cocktail "</span><span>${</span><span>cocktail</span><span>.</span><span>name</span><span>}</span><span>".`</span> <span>},</span> <span>{</span> <span>type</span><span>:</span> <span>"</span><span>text</span><span>"</span><span>,</span> <span>text</span><span>:</span> <span>`Cocktail ingredients: </span><span>${</span><span>cocktail</span><span>.</span><span>ingredients</span><span>}</span><span>.`</span> <span>},</span> <span>{</span> <span>type</span><span>:</span> <span>"</span><span>text</span><span>"</span><span>,</span> <span>text</span><span>:</span> <span>`Cocktail instructions: </span><span>${</span><span>cocktail</span><span>.</span><span>instructions</span><span>}</span><span>.`</span> <span>},</span> <span>],</span> <span>structuredContent</span><span>:</span> <span>{</span> <span>cocktail</span> <span>},</span> <span>_meta</span><span>:</span> <span>{</span> <span>timestamp</span><span>:</span> <span>new</span> <span>Date</span><span>().</span><span>toString</span><span>()</span> <span>}</span> <span>};</span> <span>},</span>
+<span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This tool renders a view showing a cocktail recipe. The cocktail data is being fetched from the backend database (Convex). The View needs the entire cocktail data so we pass the data to it via <code>structuredContent</code>. For the model context, the LLM doesn't need to know the entire cocktail data like the image URL. We can extract the information that the model should know about the cocktail, like the name, ingredients, and instructions. That information can be passed to the model via <code>content</code>.</p> <p>It's important to note that currently, ChatGPT apps SDK handles it differently, where <code>structuredContent</code> is exposed to both the model and the View. Their model is the following:</p> <ul>
+<li>
+<code>content</code>: Content is the info that you want to expose to the model. Gives model context.</li>
+<li>
+<code>structuredContent</code>: This data is exposed to the model and the View.</li>
+<li>
+<code>_meta</code>: This data is hidden from the model context.</li>
+</ul> <p>If you're building an app that supports both MCP Apps and ChatGPT apps SDK, this is an important distinction. You may want to conditionally return values, or conditionally render tools based off of whether the client is MCP App support or ChatGPT app.</p> <h2> <a name="tip-3-properly-handle-loading-states-and-error-states" href="#tip-3-properly-handle-loading-states-and-error-states"> </a> Tip 3: Properly Handle Loading States and Error States
+</h2> <p>It's pretty typical for the iFrame to render first before the tool finishes executing and the View gets hydrated. You're going to want to let your user know that the app is loading by presenting a beautiful loading state.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fay9t9zqifch9ovbaunlp.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fay9t9zqifch9ovbaunlp.png" alt="Loading state example showing skeleton UI"></a></p> <p>One powerful feature to note: <code>toolInputs</code> are sent and streamed into the View even before the tool execution is done. This allows you to create cool partial loading states where you can show the user what's being requested while the data is still being fetched.</p> <p>To implement this, let's take a look at the same cocktail recipes app. The MCP tool fetches the cocktail data and passes it to the View via <code>structuredContent</code>. We don't know how long it takes to fetch that cocktail data, could be anywhere from a few ms to a few seconds on a bad day.<br>
+</p> <div>
+<pre><code><span>server</span><span>.</span><span>registerTool</span><span>(</span> <span>"</span><span>view-cocktail</span><span>"</span><span>,</span> <span>{</span> <span>title</span><span>:</span> <span>"</span><span>Get Cocktail</span><span>"</span><span>,</span> <span>description</span><span>:</span> <span>"</span><span>Fetch a cocktail by id with ingredients and images...</span><span>"</span><span>,</span> <span>inputSchema</span><span>:</span> <span>z</span><span>.</span><span>object</span><span>({</span> <span>id</span><span>:</span> <span>z</span><span>.</span><span>string</span><span>().</span><span>describe</span><span>(</span><span>"</span><span>The id of the cocktail to fetch.</span><span>"</span><span>)</span> <span>}),</span> <span>_meta</span><span>:</span> <span>{</span> <span>ui</span><span>:</span> <span>{</span> <span>resourceUri</span><span>:</span> <span>"</span><span>ui://cocktail/cocktail-recipe-widget.html</span><span>"</span><span>,</span> <span>visibility</span><span>:</span> <span>[</span><span>"</span><span>model</span><span>"</span><span>,</span> <span>"</span><span>app</span><span>"</span><span>],</span> <span>},</span> <span>},</span> <span>},</span> <span>async </span><span>({</span> <span>id</span> <span>}:</span> <span>{</span> <span>id</span><span>:</span> <span>string</span> <span>}):</span> <span>Promise</span><span>&lt;</span><span>CallToolResult</span><span>&gt;</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>cocktail</span> <span>=</span> <span>await</span> <span>convexClient</span><span>.</span><span>query</span><span>(</span><span>api</span><span>.</span><span>cocktails</span><span>.</span><span>getCocktailById</span><span>,</span> <span>{</span> <span>id</span><span>,</span> <span>});</span> <span>return</span> <span>{</span> <span>content</span><span>:</span> <span>[</span> <span>{</span> <span>type</span><span>:</span> <span>"</span><span>text</span><span>"</span><span>,</span> <span>text</span><span>:</span> <span>`Loaded cocktail "</span><span>${</span><span>cocktail</span><span>.</span><span>name</span><span>}</span><span>".`</span> <span>},</span> <span>],</span> <span>structuredContent</span><span>:</span> <span>{</span> <span>cocktail</span> <span>},</span> <span>};</span> <span>},</span>
+<span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>On the View side (React), the <code>useApp</code> AppBridge hook has a <code>app.ontoolresult</code> listener that listens for the tool return results and hydrates your View. While <code>onToolResult</code> hasn't come in yet and the data is empty, we can render a beautiful loading state.<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>useApp</span> <span>}</span> <span>from</span> <span>"</span><span>@modelcontextprotocol/ext-apps/react</span><span>"</span><span>;</span> <span>function</span> <span>CocktailApp</span><span>()</span> <span>{</span> <span>const</span> <span>[</span><span>cocktail</span><span>,</span> <span>setCocktail</span><span>]</span> <span>=</span> <span>useState</span><span>&lt;</span><span>CocktailData</span> <span>|</span> <span>null</span><span>&gt;</span><span>(</span><span>null</span><span>);</span> <span>useApp</span><span>({</span> <span>appInfo</span><span>:</span> <span>IMPLEMENTATION</span><span>,</span> <span>capabilities</span><span>:</span> <span>{},</span> <span>onAppCreated</span><span>:</span> <span>(</span><span>app</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>app</span><span>.</span><span>ontoolresult</span> <span>=</span> <span>async </span><span>(</span><span>result</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>data</span> <span>=</span> <span>extractCocktail</span><span>(</span><span>result</span><span>);</span> <span>setCocktail</span><span>(</span><span>data</span><span>);</span> <span>};</span> <span>},</span> <span>});</span> <span>return</span> <span>cocktail</span> <span>?</span> <span>&lt;</span><span>CocktailView</span> <span>cocktail</span><span>=</span><span>{</span><span>cocktail</span><span>}</span> <span>/&gt; : &lt;CocktailViewLoading /</span><span>&gt;</span><span>;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="handling-errors" href="#handling-errors"> </a> Handling errors
+</h3> <p>We also want to handle errors gracefully. In the case where there's an error in your tool, such as the cocktail data failing to load, both the LLM and the view should be notified of the error.</p> <p>In your MCP tool, you should return an <code>error</code> in the tool result. This is exposed to the model and also passed to the view.<br>
+</p> <div>
+<pre><code><span>server</span><span>.</span><span>registerTool</span><span>(</span> <span>"</span><span>view-cocktail</span><span>"</span><span>,</span> <span>{</span> <span>title</span><span>:</span> <span>"</span><span>Get Cocktail</span><span>"</span><span>,</span> <span>description</span><span>:</span> <span>"</span><span>Fetch a cocktail by id with ingredients and images...</span><span>"</span><span>,</span> <span>inputSchema</span><span>:</span> <span>z</span><span>.</span><span>object</span><span>({</span> <span>id</span><span>:</span> <span>z</span><span>.</span><span>string</span><span>().</span><span>describe</span><span>(</span><span>"</span><span>The id of the cocktail to fetch.</span><span>"</span><span>)</span> <span>}),</span> <span>_meta</span><span>:</span> <span>{</span> <span>ui</span><span>:</span> <span>{</span> <span>resourceUri</span><span>:</span> <span>"</span><span>ui://cocktail/cocktail-recipe-widget.html</span><span>"</span> <span>},</span> <span>visibility</span><span>:</span> <span>[</span><span>"</span><span>model</span><span>"</span><span>,</span> <span>"</span><span>app</span><span>"</span><span>],</span> <span>},</span> <span>},</span> <span>async </span><span>({</span> <span>id</span> <span>}:</span> <span>{</span> <span>id</span><span>:</span> <span>string</span> <span>}):</span> <span>Promise</span><span>&lt;</span><span>CallToolResult</span><span>&gt;</span> <span>=&gt;</span> <span>{</span> <span>try</span> <span>{</span> <span>const</span> <span>cocktail</span> <span>=</span> <span>await</span> <span>convexClient</span><span>.</span><span>query</span><span>(</span><span>api</span><span>.</span><span>cocktails</span><span>.</span><span>getCocktailById</span><span>,</span> <span>{</span> <span>id</span><span>,</span> <span>});</span> <span>return</span> <span>{</span> <span>content</span><span>:</span> <span>[</span> <span>{</span> <span>type</span><span>:</span> <span>"</span><span>text</span><span>"</span><span>,</span> <span>text</span><span>:</span> <span>`Loaded cocktail "</span><span>${</span><span>cocktail</span><span>.</span><span>name</span><span>}</span><span>".`</span> <span>},</span> <span>],</span> <span>structuredContent</span><span>:</span> <span>{</span> <span>cocktail</span> <span>},</span> <span>};</span> <span>}</span> <span>catch </span><span>(</span><span>error</span><span>)</span> <span>{</span> <span>return</span> <span>{</span> <span>content</span><span>:</span> <span>[</span> <span>{</span> <span>type</span><span>:</span> <span>"</span><span>text</span><span>"</span><span>,</span> <span>text</span><span>:</span> <span>`Could not load cocktail`</span> <span>},</span> <span>],</span> <span>error</span> <span>};</span> <span>}</span> <span>},</span>
+<span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Then in <code>useApp</code> on the React client side, you can detect whether or not there was an error by looking at the existence of <code>error</code> from the tool result.</p> <h2> <a name="tip-4-keep-the-model-in-the-loop" href="#tip-4-keep-the-model-in-the-loop"> </a> Tip 4: Keep the Model in the Loop
+</h2> <p>Because your MCP App operates in a sandboxed iframe, the model powering your agent can't see what happens inside the app by default. It won't know if a user fills out a form, clicks a button, or completes a purchase.</p> <p>Without a feedback loop, the model loses context. If a user buys a pair of shoes and then asks, "When will they arrive?", the model won't even realize a transaction occurred.</p> <p>To solve this, the SDK provides two methods to keep the model synchronized with the user's journey: <code>sendMessage</code> and <code>updateModelContext</code>.</p> <h3> <a name="sendmessage" href="#sendmessage"> </a> sendMessage()
+</h3> <p>Use this for active triggers. It sends a message to the model as if the user typed it, prompting an immediate response. This is ideal for confirming a "Buy" click or suggesting related items right after an action.<br>
+</p> <div>
+<pre><code><span>// User clicks "Buy" - the model responds immediately</span>
+<span>await</span> <span>app</span><span>.</span><span>sendMessage</span><span>({</span> <span>role</span><span>:</span> <span>"</span><span>user</span><span>"</span><span>,</span> <span>content</span><span>:</span> <span>[{</span> <span>type</span><span>:</span> <span>"</span><span>text</span><span>"</span><span>,</span> <span>text</span><span>:</span> <span>"</span><span>I just purchased Nike Air Max for $129</span><span>"</span> <span>}],</span>
+<span>});</span>
+<span>// Result: Model responds: "Great choice! Want me to track your order?"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="updatemodelcontext" href="#updatemodelcontext"> </a> updateModelContext()
+</h3> <p>Use this for background awareness. It quietly saves information for the model to use later without interrupting the flow. This is perfect for tracking browsing history or cart updates without triggering a chat response every time.<br>
+</p> <div>
+<pre><code><span>// User is browsing - no immediate response needed</span>
+<span>await</span> <span>app</span><span>.</span><span>updateModelContext</span><span>({</span> <span>content</span><span>:</span> <span>[{</span> <span>type</span><span>:</span> <span>"</span><span>text</span><span>"</span><span>,</span> <span>text</span><span>:</span> <span>"</span><span>User is viewing: Nike Air Max, Size 10, $129</span><span>"</span> <span>}],</span>
+<span>});</span>
+<span>// Result: No response. But if the user later asks, "What was I looking at?", the model knows.</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="tip-5-control-who-can-trigger-tools" href="#tip-5-control-who-can-trigger-tools"> </a> Tip 5: Control Who Can Trigger Tools
+</h2> <p>With a standard MCP server, the model sees your tools, interprets the user's prompt, and calls the right tool. If a user says "delete that email," the model decides what that means and invokes the delete tool.</p> <p>However, with an MCP App, tools can be triggered in two ways: the model interpreting the user's prompt, or the user interacting directly with the UI.</p> <p>By default, both can call any tool. For example, say you build an MCP App that visually surfaces an email inbox and lets users interact with emails. Now there are two potential triggers for your tools: the model acting on a prompt to delete an email, and the user clicking a delete button directly in the App's interface.</p> <p>The model works by interpreting intent. If a user says "delete my old emails," the model has to decide what "old" means and which emails qualify. For some actions like deleting emails, that ambiguity can be risky.</p> <p>When a user clicks a "Delete" button next to a specific message in your MCP App, there is no ambiguity. They have made an explicit choice.</p> <p>To prevent the model from accidentally performing high-stakes actions based on a misunderstanding, you can use tool visibility to restrict certain tools to the MCP App's UI only. This allows the model to display the interface while requiring a human click to finalize the action.</p> <p>You can define visibility using these three configurations:</p> <ul>
+<li>
+<code>["model", "app"]</code> (default) — Both the model and the UI can call it</li>
+<li>
+<code>["model"]</code> — Only the model can call it; the UI cannot</li>
+<li>
+<code>["app"]</code> — Only the UI can call it; hidden from the model</li>
+</ul> <p>Here's how you might implement this:<br>
+</p> <div>
+<pre><code><span>// Model calls this to display the inbox</span>
+<span>registerAppTool</span><span>(</span><span>server</span><span>,</span> <span>"</span><span>show-inbox</span><span>"</span><span>,</span> <span>{</span> <span>description</span><span>:</span> <span>"</span><span>Display the user's inbox</span><span>"</span><span>,</span> <span>_meta</span><span>:</span> <span>{</span> <span>ui</span><span>:</span> <span>{</span> <span>resourceUri</span><span>:</span> <span>"</span><span>ui://email/inbox.html</span><span>"</span><span>,</span> <span>visibility</span><span>:</span> <span>[</span><span>"</span><span>model</span><span>"</span><span>],</span> <span>},</span> <span>},</span>
+<span>},</span> <span>async </span><span>()</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>emails</span> <span>=</span> <span>await</span> <span>getEmails</span><span>();</span> <span>return</span> <span>{</span> <span>content</span><span>:</span> <span>[{</span> <span>type</span><span>:</span> <span>"</span><span>text</span><span>"</span><span>,</span> <span>text</span><span>:</span> <span>JSON</span><span>.</span><span>stringify</span><span>(</span><span>emails</span><span>)</span> <span>}]</span> <span>};</span>
+<span>});</span> <span>// User clicks delete button in the UI</span>
+<span>registerAppTool</span><span>(</span><span>server</span><span>,</span> <span>"</span><span>delete-email</span><span>"</span><span>,</span> <span>{</span> <span>description</span><span>:</span> <span>"</span><span>Delete an email</span><span>"</span><span>,</span> <span>inputSchema</span><span>:</span> <span>{</span> <span>emailId</span><span>:</span> <span>z</span><span>.</span><span>string</span><span>()</span> <span>},</span> <span>_meta</span><span>:</span> <span>{</span> <span>ui</span><span>:</span> <span>{</span> <span>resourceUri</span><span>:</span> <span>"</span><span>ui://email/inbox.html</span><span>"</span><span>,</span> <span>visibility</span><span>:</span> <span>[</span><span>"</span><span>app</span><span>"</span><span>],</span> <span>},</span> <span>},</span>
+<span>},</span> <span>async </span><span>({</span> <span>emailId</span> <span>})</span> <span>=&gt;</span> <span>{</span> <span>await</span> <span>deleteEmail</span><span>(</span><span>emailId</span><span>);</span> <span>return</span> <span>{</span> <span>content</span><span>:</span> <span>[{</span> <span>type</span><span>:</span> <span>"</span><span>text</span><span>"</span><span>,</span> <span>text</span><span>:</span> <span>"</span><span>Email deleted</span><span>"</span> <span>}]</span> <span>};</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="start-building-with-goose-and-mcpjam" href="#start-building-with-goose-and-mcpjam"> </a> Start Building with goose and MCPJam
+</h2> <p>MCP Apps open up a new dimension for agent interactions. Now it's time to build your own.</p> <ul>
+<li>
+<strong>Test with <a href="https://mcpjam.com/" target="_blank">MCPJam</a></strong> — the open source local inspector for MCP Apps, ChatGPT apps SDK, and MCP servers. Perfect for debugging and iterating on your app before shipping.</li>
+<li>
+<strong>Run in <a href="https://github.com/block/goose" target="_blank">goose</a></strong> — an open source AI agent that renders MCP Apps directly in the chat interface. See your app come to life in a real agent environment.</li>
+</ul> <p>Ready to dive deeper? Check out the <a href="https://block.github.io/goose/docs/tutorials/building-mcp-apps" target="_blank">MCP Apps tutorial</a> or <a href="https://docs.mcpjam.com/guides/first-mcp-app" target="_blank">build your first MCP App with MCPJam</a>.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

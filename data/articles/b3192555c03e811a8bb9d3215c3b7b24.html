@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>‘Starkiller’ Phishing Service Proxies Real Login Pages, MFA</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>‘Starkiller’ Phishing Service Proxies Real Login Pages, MFA</h1>
+  <div class="metadata">
+    Source: Krebs on Security | Date: 2/20/2026 8:00:30 PM | <a href="https://krebsonsecurity.com/2026/02/starkiller-phishing-service-proxies-real-login-pages-mfa/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Most phishing websites are little more than static copies of login pages for popular online destinations, and they are often quickly taken down by anti-abuse activists and security firms. But a stealthy new phishing-as-a-service offering lets customers sidestep both of these pitfalls: It uses cleverly disguised links to load the target brand’s real website, and then acts as a relay between the victim and the legitimate site — forwarding the victim’s username, password and multi-factor authentication (MFA) code to the legitimate site and returning its responses.</p>
+<p>There are countless phishing kits that would-be scammers can use to get started, but successfully wielding them requires some modicum of skill in configuring servers, domain names, certificates, proxy services, and other repetitive tech drudgery. Enter <strong>Starkiller</strong>, a new phishing service that dynamically loads a live copy of the real login page and records everything the user types, proxying the data from the legitimate site back to the victim.</p>
+<p>According to an analysis of Starkiller by the security firm <strong>Abnormal AI</strong>, the service lets customers select a brand to impersonate (e.g., Apple, Facebook, Google, Microsoft et. al.) and generates a deceptive URL that visually mimics the legitimate domain while routing traffic through the attacker’s infrastructure.</p>
+<p>For example, a phishing link targeting Microsoft customers appears as “login.microsoft.com@[malicious/shortened URL here].” The “@” sign in the link trick is an oldie but goodie, because everything before the “@” in a URL is considered username data, and the real landing page is what comes after the “@” sign. Here’s what it looks like in the target’s browser:</p>
+<div><p><a href="https://krebsonsecurity.com/wp-content/uploads/2026/02/starkillerphishinglink.png" target="_blank" rel="noopener noreferrer"><img src="https://krebsonsecurity.com/wp-content/uploads/2026/02/starkillerphishinglink.png" alt=""></a></p><p>Image: Abnormal AI. The actual malicious landing page is blurred out in this picture, but we can see it ends in .ru. The service also offers the ability to insert links from different URL-shortening services.</p></div>
+<p>Once Starkiller customers select the URL to be phished, the service spins up <a href="https://www.docker.com/resources/what-container/" target="_blank" rel="noopener noreferrer">a Docker container</a> running a <a href="https://developer.chrome.com/docs/chromium/headless" target="_blank" rel="noopener noreferrer">headless Chrome browser instance</a> that loads the real login page, Abnormal found.</p>
+<p>“The container then acts as a man-in-the-middle reverse proxy, forwarding the end user’s inputs to the legitimate site and returning the site’s responses,” Abnormal researchers <strong>Callie Baron</strong> and <strong>Piotr Wojtyla</strong> wrote in <a href="https://abnormal.ai/blog/starkiller-phishing-kit" target="_blank" rel="noopener noreferrer">a blog post on Thursday</a>. “Every keystroke, form submission, and session token passes through attacker-controlled infrastructure and is logged along the way.”</p>
+<p>Starkiller in effect offers cybercriminals real-time session monitoring, allowing them to live-stream the target’s screen as they interact with the phishing page, the researchers said.</p>
+<p>“The platform also includes keylogger capture for every keystroke, cookie and session token theft for direct account takeover, geo-tracking of targets, and automated Telegram alerts when new credentials come in,” they wrote. “Campaign analytics round out the operator experience with visit counts, conversion rates, and performance graphs—the same kind of metrics dashboard a legitimate SaaS [software-as-a-service] platform would offer.”</p>
+<p>Abnormal said the service also deftly intercepts and relays the victim’s MFA credentials, since the recipient who clicks the link is actually authenticating with the real site through a proxy, and any authentication tokens submitted are then forwarded to the legitimate service in real time.</p>
+<p>“The attacker captures the resulting session cookies and tokens, giving them authenticated access to the account,” the researchers wrote. “When attackers relay the entire authentication flow in real time, MFA protections can be effectively neutralized despite functioning exactly as designed.”</p>
+<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/02/starkiller-urlmasker.png" alt=""></p><p>The “URL Masker” feature of the Starkiller phishing service features options for configuring the malicious link. Image: Abnormal.</p></div> <p>Starkiller is just one of several cybercrime services offered by a threat group calling itself <strong>Jinkusu</strong>, which maintains an active user forum where customers can discuss techniques, request features and troubleshoot deployments. One a-la-carte feature will harvest email addresses and contact information from compromised sessions, and advises the data can be used to build target lists for follow-on phishing campaigns.</p>
+<p>This service strikes me as a remarkable evolution in phishing, and its apparent success is likely to be copied by other enterprising cybercriminals (assuming the service performs as well as it claims). After all, phishing users this way avoids the upfront costs and constant hassles associated with juggling multiple phishing domains, and it throws a wrench in traditional phishing detection methods like domain blocklisting and static page analysis.</p>
+<p>It also massively lowers the barrier to entry for novice cybercriminals, Abnormal researchers observed.</p>
+<p>“Starkiller represents a significant escalation in phishing infrastructure, reflecting a broader trend toward commoditized, enterprise-style cybercrime tooling,” their report concludes. “Combined with URL masking, session hijacking, and MFA bypass, it gives low-skill cybercriminals access to attack capabilities that were previously out of reach.”</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

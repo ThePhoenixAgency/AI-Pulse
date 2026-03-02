@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Does HomeAssistant need stable IP addresses for devices?</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Does HomeAssistant need stable IP addresses for devices?</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/27/2026 11:24:53 AM | <a href="https://community.home-assistant.io/t/does-homeassistant-need-stable-ip-addresses-for-devices/991141" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <div> <div> <p><span> <time> February 27, 2026, 11:24am </time> <span>1</span> </span> </p></div> <div> <p>I’m wondering how people with HomeAssistant are managing the IP address for all of their IOT devices?</p>
+<p>The options that I’m aware of are:</p>
+<ul>
+<li><strong><strong>Static IP Addresses</strong></strong> - You manually set a static IP address on each device. This doesn’t really scale, and is vulnerable to human error (e.g. address conflict on two devices)</li>
+<li><strong><strong>DHCP</strong></strong> - The devices grab IP addresses from a pool - however, the address may change between reboots, lease timeouts etc.</li>
+<li><strong><strong>DHCP with static reservations</strong></strong> - On your DHCP server, you reserver specific IP addresses from the pool for devices via MAC addresses. It’s a bit of overhead though.</li>
+</ul>
+<p>Let’s say you have a mix of IOT devices (some of this is planned in my case):</p>
+<ul>
+<li>ESPHome devices</li>
+<li>Shelly devices</li>
+<li>Tuya devices (used via <a href="https://github.com/rospogrigio/localtuya">localtuya</a> or <a href="https://github.com/make-all/tuya-local">tuya-local</a> - still figuring out which is better)</li>
+<li>WLED light controllers</li>
+</ul>
+<p>In my case, the router is running VyOS, and it’s a dual-stack IPv4/IPv6 network.</p>
+<p>VyOS does allow setting static DHCP leases:</p>
+<p><a href="https://docs.vyos.io/en/1.4/configuration/service/dhcp-server.html#static-mappings" target="_blank" rel="noopener noreferrer">https://docs.vyos.io/en/1.4/configuration/service/dhcp-server.html#static-mappings</a></p>
+<p>However, it’s a bit of a pain having to manage that manually. The Ansible module for VyOS doesn’t seem to support configuring the DHCP server either:</p>
+<p><a href="https://docs.ansible.com/projects/ansible/latest/collections/vyos/vyos/index.html" target="_blank" rel="noopener noreferrer">https://docs.ansible.com/projects/ansible/latest/collections/vyos/vyos/index.html</a></p>
+<p>so you can’t even use that to streamline things, or get it into source control <img src="https://community.home-assistant.io/images/emoji/twitter/confused.png?v=12" alt=":confused:">.</p>
+<p>However, these days - do you actually need stable address for devices? (i.e. with mDNS/Bonjour, and all that?)</p>
+<p>As in, will HomeAssistant handle it fine, if device IP addresses change underneath it? Or what would you do to handle this?</p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/FloatingBoater"><span>FloatingBoater</span></a> (James Derrick) </span> <span> <time> February 27, 2026, 11:44am </time> <span>2</span> </span> </p> <div> <p>Depends on the device, and protocol.</p>
+<p>Larger microcontrollers have memory and flash to implement protocols like DNS and mDNS. Others don’t - e.g. Tasmota can use mDNS to lookup the IPv4/IPv6 of a MQTT server, but by default doesn’t so it’s IPv4 only.</p>
+<p>There were bugs in the HA implementation of a MQTT broker which broke IPv6, so I’ve never tried it again:</p>
+<p>
+Note the GitHub issue comment (which could be out of date now):<br>
+<a href="https://github.com/home-assistant/core/issues/70163#issuecomment-1117155311" target="_blank" rel="noopener noreferrer">https://github.com/home-assistant/core/issues/70163#issuecomment-1117155311</a></p>
+<hr>
+<p><strong>“do you need stable IPv4?”</strong> - unless you test it, my default answer is YES!</p>
+<p><strong>If this helps, <img src="https://community.home-assistant.io/images/emoji/twitter/heart.png?v=12" alt=":heart:"> this post!</strong></p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/frits1980"><span>frits1980</span></a> (Frits) </span> <span> <time> February 27, 2026, 11:51am </time> <span>3</span> </span> </p> <p>I don’t understand why anyone would ever want ipv6 on a LAN. On WAN I understand why, but on LAN?</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/WallyR"><span>WallyR</span></a> (Wally) </span> <span> <time> February 27, 2026, 11:53am </time> <span>4</span> </span> </p> <p>Discovery protocols is the usual tool, like mDNS, SSDP, uPNP and ZeroConfig to mention some of the open ones, but some devices also use proprietary discovery protocols.</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/WallyR"><span>WallyR</span></a> (Wally) </span> <span> <time> February 27, 2026, 11:55am </time> <span>5</span> </span> </p> <p>I would prefer an IPv6 only LAN any day over an IPv4.<br>
+Just the advantage of getting rid of NAT is enough to justify it.</p> <div> <p><span>3 Likes</span> </p></div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/NathanCu"><span>NathanCu</span></a> (Nathan Curtis) </span> <span> <time> February 27, 2026, 11:55am </time> <span>6</span> </span> </p> <div> <p>100% yes.</p>
+<p>ALL problems are name resolution issues until proven otherwise… Period.</p>
+<p>Pick one that works stick with it.</p>
+<p>I use reservations in my UI gear.</p> </div> <div> <p><span>2 Likes</span> </p></div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/eXtatic"><span>eXtatic</span></a> (Dominik 🇩🇪) </span> <span> <time> February 27, 2026, 12:30pm </time> <span>7</span> </span> </p> <div> <p>I use local DNS records, defined in my router, and avoid IP addresses whenever I can.</p>
+<p>For ESP Home I had to add the used domain in the devices WiFi config</p>
+<pre><code>wifi: ssid: !secret wifi_ssid password: !secret wifi_password domain: !secret network_domain
+</code></pre>
+<p>Shelly works with local DNS records out of the box.<br>
+All my MQTT devices also work out of the box.</p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/brooksben11"><span>brooksben11</span></a> (Ben) </span> <span> <time> February 27, 2026, 1:38pm </time> <span>8</span> </span> </p> <div> <p>Generally, yes. Other than my network equipment and a few devices, everything in my setup just uses DHCP and is fine.</p> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/boheme61"><span>boheme61</span></a> </span> <span> <time> February 27, 2026, 1:38pm </time> <span>9</span> </span> </p> <div> <p>mDNS Caches on i.e smaller Device, Is Small, and TTL very short, beside “shit happens” in all Topologies<br>
+LAN NIC’s communities over their IP Numbers , Minimizing their “usage/effort” is always an “optimizing” approach ( Host Names is just a “Help” for Humans ! )</p>
+<p>I Always Connect to my HA, Laptops, PC’s With their IP(Not Names), whether it’s from a browser or consoles/apps of various kinds<br>
+And Yes, ALL My IP Devices, have “dedicated” IP Numbers, I Deside Which IP Number every Device Will Have, So i know quite fairly which i.e Brand/Device it is when seeing an IP-Number in i.e logs etc<br>
+( I Know … Knowledge For Nerds <img src="https://community.home-assistant.io/images/emoji/twitter/joy.png?v=12" alt=":joy:"> )</p> </div> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -36,7 +36,7 @@
   <div class="content">
     <div><div> <div> <p><img alt="James Kettle" src="https://portswigger.net/content/images/profiles/callout_james_kettle_112px.png"></p>
 </div> <ul> <li> <p><span></span><strong>Published: </strong>11 November 2025 at 14:41 UTC</p> </li> <li> <p><strong>Updated: </strong>11 November 2025 at 14:41 UTC</p> </li> <li> </li> </ul> <h2><a>HTTP Anomaly Rank</a></h2>
-<p>If you've ever used Burp Intruder or <a href="https://portswigger.net/research/turbo-intruder-embracing-the-billion-request-attack" target="_blank">Turbo Intruder,</a> you'll be familiar with the ritual of manually digging through thousands of responses by repeatedly sorting the table via length, status code, etc. I've developed an algorithm called HTTP Anomaly Rank which can efficiently pick out the most interesting responses for you.</p>
+<p>If you've ever used Burp Intruder or <a href="https://portswigger.net/research/turbo-intruder-embracing-the-billion-request-attack" target="_blank" rel="noopener noreferrer">Turbo Intruder,</a> you'll be familiar with the ritual of manually digging through thousands of responses by repeatedly sorting the table via length, status code, etc. I've developed an algorithm called HTTP Anomaly Rank which can efficiently pick out the most interesting responses for you.</p>
 <p>HTTP Anomaly Rank is now integrated into Turbo Intruder and automatically places the most anomalous findings at the top of the results table without you needing to lift a finger.</p>
 <p>We've also integrated this algorithm into Burp Suite's API in release 2025.10, so you can easily use it in your own tools. Since it can efficiently sift through massive result sets, it's particularly useful for anyone who wants to build AI based features. </p><p>In this post I'll explain how the algorithm works in depth but first, here's a quick demo:</p>
 <p></p>
@@ -101,6 +101,7 @@
 </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>

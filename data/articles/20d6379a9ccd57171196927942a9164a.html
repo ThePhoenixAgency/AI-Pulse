@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>RustFS - L'alternative Rust à MinIO</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>RustFS - L'alternative Rust à MinIO</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/27/2026 7:41:35 AM | <a href="https://korben.info/rustfs-stockage-objet-distribue-rust.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/rustfs-stockage-objet-distribue-rust/rustfs-stockage-objet-distribue-rust-1.png" alt="Image illustrant l'article : RustFS - L'alternative Rust à MinIO"></p><div><span>Ce qu’il faut retenir</span><div><ol><li>RustFS remplace MinIO avec une licence Apache 2.0 (pas d'AGPL), compatible 100% S3, et tourne en Rust sans garbage collector pour meilleure perf I/O</li><li>Installation Docker one-liner (port 9000 API, 9001 console), avec versioning de buckets et détection de corruption intégrée, mais encore en alpha pour le mode distribué</li><li>2,3x plus rapide que MinIO sur petits objets (4 Ko), avec monitoring déjà câblé pour Grafana/Prometheus/Jaeger, idéal pour dev/lab mais pas prêt pour données critiques en prod</li></ol><p>Résumé généré par IA</p></div><div><p><strong>MinIO</strong>, tout le monde ou presque connaît car c'est LE truc quand on veut du stockage objet S3-compatible auto-hébergé sous Linux. Sauf que voilà... la licence AGPL, ça pique pour pas mal de boîtes qui ne veulent pas se retrouver à devoir ouvrir leur code.</p><p>Du coup, y'a un nouveau projet qui débarque dans le tiek et qui devrait en intéresser plus d'un. C'est
+<a href="https://github.com/rustfs/rustfs">RustFS</a>
+, codé en Rust (comme le nom le laisse deviner mes petits Sherlock) et 100% compatible S3. En gros, vous prenez votre stack MinIO existante, vous remplacez par ce truc, et en fait tout continue de fonctionner pareil... Vos buckets, vos applis, vos scripts Python, boto3... tout pareil !</p><p>
+Votre navigateur ne supporte pas la lecture de vidéos HTML5. Voici un
+<a href="https://korben.info/rustfs-stockage-objet-distribue-rust/rustfs-stockage-objet-distribue-rust-1.mp4">lien vers la vidéo</a>.</p><p>La licence c'est de l'Apache 2.0 comme ça y'a pas de contrainte virale, vous faites ce que vous voulez avec. Et c'est d'ailleurs sûrement la raison numéro un pour laquelle le projet cartonne.</p><p>Côté perfs, les devs annoncent 2,3x plus rapide que MinIO sur des petits objets de 4 Ko (testé sur un modeste 2 coeurs Xeon avec 4 Go de RAM). Bon, c'est un benchmark maison, à prendre avec des pincettes hein... mais finalement Rust pour du I/O intensif, ça se tient comme argument, car y'a pas de garbage collector qui vient foutre le bazar.</p><p>Pour l'installer, Docker en une ligne :</p><div><pre><code><span><span>docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:latest
+</span></span></code></pre></div><p>Et voilà, l'API tourne sur le port 9000 et la console web sur le 9001 (identifiants par défaut : rustfsadmin/rustfsadmin, changez-les vite fait hein). Y'a aussi du Kubernetes via Helm, un script d'install one-click, du Nix, ou un bon vieux git clone pour compiler vous-même (attention, sur macOS faut un ulimit à 4096 sinon ça ne marche pas).</p><p>Le conteneur Docker tourne en non-root (UID 10001), donc c'est plutôt propre niveau sécu. Pensez juste à faire un petit <code>chown -R 10001:10001 data logs</code> sur vos répertoires avant de lancer, sinon ça casse au démarrage.</p><p>Petit bonus appréciable, y'a aussi de la détection de corruption intégrée, et même du versioning de buckets pour les plus méfiants côté intégrité des données. D'ailleurs, côté monitoring, c'est déjà câblé pour envoyer vos métriques dans Grafana, vos traces dans Jaeger et le reste dans Prometheus. Un petit <code>docker compose --profile observability up -d</code> et c'est plié.</p><p>Par contre, on est encore en alpha et le mode distribué et le KMS sont en phase de test. Donc c'est PAS le genre de truc que vous mettrez en prod demain matin pour vos données critiques... mais pour du dev, du lab, ou des tâches pas trop sensibles... ça tourne impecc !</p><p>Merci à Lorenper pour le partage !</p></div><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

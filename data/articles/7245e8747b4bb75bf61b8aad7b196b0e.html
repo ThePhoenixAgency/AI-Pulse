@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Showtime video player edges closer to Ubuntu debut</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Showtime video player edges closer to Ubuntu debut</h1>
+  <div class="metadata">
+    Source: OMG! Ubuntu | Date: 2/25/2026 11:42:26 PM | <a href="https://www.omgubuntu.co.uk/2026/02/showtime-video-player-ubuntu-2604-coming-soon" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><strong>Those testing Ubuntu 26.04 daily builds or monthly snapshots may have noticed that <em>Showtime</em>, GNOME’s spiffy new video player, is not preinstalled in the ‘extended selection’, despite being <a href="https://www.omgubuntu.co.uk/2025/11/ubuntu-26-04-lts-showtime-resources-default-apps">announced as a replacement for <em>Totem</em></a>.</strong></p> <p>It’s especially confusing since <em>Resources</em> system monitor, announced as a software swap the same time as Showtime, has been on the ISO for a while.</p> <p>Credits need not roll on hope yet, as <em>Showtime</em> could be making its debut soon. Its <a href="https://launchpad.net/ubuntu/+source/showtime/50~beta-1ubuntu1" target="_blank" rel="noopener noreferrer">latest package upload </a>to the <code>resolute</code> archives includes a change that goes some way to explaining why it’s not been present sooner. It reads: </p> <p><em>“Depend on <code>gstreamer1.0-plugins-extra</code> instead of <code>gstreamer1.0-plugins-bad</code>. Ubuntu splits out functionality from <code>gstreamer1.0-plugins-bad</code> that is critical for the desktop, to allow shipping it in main without the more questionable parts of <code>-bad</code>“</em>.</p> <p>Translation? The new version no longer makes packages affected by (potential) patent, licensing or copyright concerns in certain jurisdictions a hard dependency. That’s a no since to shop <em>Showtime</em>, those would need to be on the ISO too.</p> <div>
+<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2025/05/showtime-hero-1.jpg?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2025/05/showtime-hero-1.jpg?resize=750%2C394&amp;ssl=1" alt="Showtime video player screenshots."></a><figcaption>Showtime, pictured, is a solid replacement to the aged <em>Totem</em></figcaption></figure>
+</div> <p>Between this v50-beta update, a main inclusion request (MIR) to put <em>Showtime</em> in Ubuntu’s <code>main</code> repo (where packages that ship on the ISO need to be) and a task to update the Ubuntu seed (list of packages that form the ISO) to remove <em>Totem</em> and add <em>Showtime</em>.</p> <p>Well, it seems <em>Showtime</em> will show up in time for the final stable release of Ubuntu 26.04 LTS on April 23, 2026. </p> <p>If you’re running Ubuntu 25.10 or 26.04 and you want to try Showtime, you don’t need to wait for any updates. Pop open your <em>Terminal</em> and run <code>sudo apt install showtime</code> to fetch it and its dependencies. </p> <p>Those on earlier versions of Ubuntu can install <em>Showtime</em> from Flathub. </p> <p>Any long-standing fans of Totem out there don’t need to fret as the aged player remains available on the <code>resolute</code> repos on new installs, and it won’t be removed on 24.04 systems that upgrade to 26.04.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

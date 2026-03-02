@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - samirkhoja/night-watch: Night Watch is a zero-dependency DevOps agent</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - samirkhoja/night-watch: Night Watch is a zero-dependency DevOps agent</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 7:44:46 PM | <a href="https://github.com/samirkhoja/night-watch" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Night Watch</h1><a href="#night-watch"></a></div>
+<p>Night Watch is a zero-dependency DevOps agent. It uses an LLM agent to run diagnostics, inspect cloud/log signals, and correlate issues with code changes.</p>
+<div><h2>Experimental Disclaimer</h2><a href="#experimental-disclaimer"></a></div>
+<p>This project is experimental. LLMs can perform unexpected behavior.</p>
+<p>Always validate before making production-impacting decisions.</p>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li>Go <pre><code>1.23+</code></pre></li>
+<li>One LLM provider API key: <pre><code>OPENAI_API_KEY</code></pre> or <pre><code>ANTHROPIC_API_KEY</code></pre> or <pre><code>GOOGLE_API_KEY</code></pre></li>
+<li>Optional cloud/provider CLIs depending on your environment: <pre><code>aws</code></pre>, <pre><code>gcloud</code></pre>, <pre><code>sentry-cli</code></pre></li>
+</ul>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<ol>
+<li>Run setup:</li>
+</ol>
+<div><pre>go run ./cmd/nwatch setup</pre></div>
+<ol>
+<li>Start chat:</li>
+</ol>
+<div><pre>go run ./cmd/nwatch</pre></div>
+<ol>
+<li>Ask a one-shot question:</li>
+</ol>
+<div><pre>go run ./cmd/nwatch ask <span><span>"</span>check recent errors and correlate with commits<span>"</span></span></pre></div>
+<div><h2>Install Globally</h2><a href="#install-globally"></a></div>
+<p>From this repository:</p>
+<div><pre>go install ./cmd/nwatch</pre></div>
+<p>From module path:</p>
+<div><pre>go install github.com/samirkhoja/night-watch/cmd/nwatch@latest</pre></div>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<p>Installed binary:</p>
+<div><pre>nwatch [flags]
+nwatch [flags] setup
+nwatch [flags] chat
+nwatch [flags] ask <span>&lt;</span>prompt<span>&gt;</span>
+nwatch [flags] runbook <span>&lt;</span>command<span>&gt;</span>
+nwatch [flags] <span>help</span></pre></div>
+<p>Runtime commands in chat:</p>
+<ul>
+<li><pre><code>/setup</code></pre> rerun setup</li>
+<li><pre><code>/reset</code></pre> clear current session context</li>
+<li><pre><code>/exit</code></pre> exit chat</li>
+</ul>
+<p>Continue a prior session:</p>
+<div><pre>nwatch --continue</pre></div>
+<p>Set an optional hard cap for parent-agent steps (omit for unlimited):</p>
+<div><pre>nwatch --max-steps 12</pre></div>
+<div><h2>Setup Flow</h2><a href="#setup-flow"></a></div>
+<p>The interactive setup prompts for:</p>
+<ul>
+<li>LLM provider (<pre><code>openai</code></pre>, <pre><code>anthropic</code></pre>, <pre><code>google</code></pre>)</li>
+<li>Model name</li>
+<li>Reasoning effort (<pre><code>low</code></pre>, <pre><code>medium</code></pre>, <pre><code>high</code></pre>)</li>
+<li>Cloud provider (<pre><code>aws</code></pre>, <pre><code>gcp</code></pre>, <pre><code>sentry</code></pre>)</li>
+<li>AWS profile (for <pre><code>aws</code></pre>)</li>
+<li>Cloud CLI auth verification for selected provider(s), then confirmation of detected environment before setup continues</li>
+<li>Slack notifications (<pre><code>enabled</code></pre> / <pre><code>disabled</code></pre>)</li>
+<li>Slack webhook URL (<pre><code>SLACK_WEBHOOK_URL</code></pre>) when Slack is enabled</li>
+<li>Missing provider API key (saved into <pre><code>.env</code></pre>)</li>
+</ul>
+<div><h2>CLI Options</h2><a href="#cli-options"></a></div>
+<ul>
+<li><pre><code>-c, --config &lt;file&gt;</code></pre>: optional custom settings JSON (highest precedence)</li>
+<li><pre><code>--max-steps &lt;n&gt;</code></pre>: optional hard cap for parent-agent steps (<pre><code>n &gt;= 1</code></pre>; omit for unlimited)</li>
+<li><pre><code>--continue</code></pre>: select and continue from a previous saved session</li>
+<li><pre><code>--auto-approval</code></pre>: skip command approval prompts for this process</li>
+<li><pre><code>-v, --version</code></pre>: print CLI version</li>
+<li><pre><code>-h, --help</code></pre>: print help</li>
+</ul>
+<p>Supported forms:</p>
+<ul>
+<li><pre><code>--config /path/to/file.json</code></pre></li>
+<li><pre><code>--config=/path/to/file.json</code></pre></li>
+<li><pre><code>--max-steps 12</code></pre></li>
+<li><pre><code>--max-steps=12</code></pre></li>
+<li><pre><code>--auto-approval</code></pre></li>
+</ul>
+<div><h2>Runbook Install</h2><a href="#runbook-install"></a></div>
+<p>Runbooks are managed and stored by the CLI, then discovered by the agent via CLI commands (</p><pre><code>ls</code></pre>, <pre><code>find</code></pre>, <pre><code>rg</code></pre>, <pre><code>cat</code></pre>) when needed.<p></p>
+<p>Install from a local markdown file or directory:</p>
+<div><pre>nwatch runbook install ./runbooks
+nwatch runbook install ./runbooks/aws/incident.md --name aws-incidents</pre></div>
+<p>Install from git:</p>
+<div><pre>nwatch runbook install https://github.com/acme/runbooks.git
+nwatch runbook install https://github.com/acme/runbooks.git --ref v1.2.0 --subdir docs/incidents</pre></div>
+<p>Manage installed runbooks:</p>
+<div><pre>nwatch runbook list
+nwatch runbook inspect aws-incidents
+nwatch runbook remove aws-incidents</pre></div>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Settings are layered in this order:</p>
+<ol>
+<li><pre><code>~/.config/night-watch/config.json</code></pre></li>
+<li><pre><code>.nightwatch/settings.json</code></pre> (nearest parent)</li>
+<li><pre><code>.nightwatch/settings.local.json</code></pre> (nearest parent)</li>
+<li><pre><code>--config &lt;file&gt;</code></pre> or <pre><code>NIGHTWATCH_CONFIG_FILE</code></pre> (highest precedence)</li>
+</ol>
+<p>Config dir override:</p>
+<div><pre><span>export</span> NIGHTWATCH_CONFIG_DIR=/path/to/config</pre></div>
+<p>Provider keys are read from environment first, then:</p>
+<ul>
+<li><pre><code>~/.config/night-watch/.env</code></pre></li>
+</ul>
+<p>Slack webhook is read from environment first, then:</p>
+<ul>
+<li><pre><code>SLACK_WEBHOOK_URL</code></pre> in <pre><code>~/.config/night-watch/.env</code></pre></li>
+</ul>
+<p>Example config:</p>
+<div><pre>{ <span>"setup_complete"</span>: <span>true</span>, <span>"llm_provider"</span>: <span><span>"</span>openai<span>"</span></span>, <span>"llm_model"</span>: <span><span>"</span>gpt-5.2<span>"</span></span>, <span>"reasoning_effort"</span>: <span><span>"</span>medium<span>"</span></span>, <span>"cloud_provider"</span>: <span><span>"</span>aws<span>"</span></span>, <span>"aws_profile"</span>: <span><span>"</span>default<span>"</span></span>, <span>"slack_enabled"</span>: <span>true</span>
+}</pre></div>
+<p>When </p><pre><code>slack_enabled</code></pre> is true and <pre><code>SLACK_WEBHOOK_URL</code></pre> is configured, Night Watch sends a Slack notification after each successful agent run.<p></p>
+<div><h2>Command Approval</h2><a href="#command-approval"></a></div>
+<p>Most tool-executed commands require approval. Choices are:</p>
+<ul>
+<li><pre><code>allow</code></pre> (run once)</li>
+<li><pre><code>always allow</code></pre> (allow for this CLI session)</li>
+<li><pre><code>reject</code></pre> (deny once)</li>
+<li><pre><code>always reject</code></pre> (deny for this CLI session)</li>
+</ul>
+<p>Selection input:</p>
+<ul>
+<li>number (<pre><code>1-4</code></pre>)</li>
+<li>text (<pre><code>allow</code></pre>, <pre><code>always allow</code></pre>, <pre><code>reject</code></pre>, <pre><code>always reject</code></pre>)</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li><pre><code>always allow</code></pre> and <pre><code>always reject</code></pre> are session-scoped only.</li>
+<li>Session policy is tracked per command executable name.</li>
+<li>Low-risk commands auto-approved by default: <pre><code>ls</code></pre>, <pre><code>pwd</code></pre>, <pre><code>whoami</code></pre>, <pre><code>date</code></pre>, <pre><code>which</code></pre></li>
+<li>With <pre><code>--auto-approval</code></pre>, approval prompts are skipped for the entire CLI run.</li>
+<li>Hard safety blocks still apply.</li>
+<li>Commands that look potentially destructive are labeled as dangerous when auto-approved.</li>
+</ul>
+<div><h2>Workspace and Runbook Anchors</h2><a href="#workspace-and-runbook-anchors"></a></div>
+<ul>
+<li><pre><code>workspace_root</code></pre> is where command working directories are anchored.</li>
+<li><pre><code>runbook_root</code></pre> is the managed runbook store used by <pre><code>nwatch runbook install</code></pre>.</li>
+<li>Installed runbooks are stored under <pre><code>~/.config/night-watch/runbooks-installed</code></pre> (or <pre><code>NIGHTWATCH_CONFIG_DIR/runbooks-installed</code></pre>).</li>
+<li>The agent searches <pre><code>runbook_root</code></pre> first for incident runbook markdown/folders.</li>
+</ul>
+<div><h2>Sessions</h2><a href="#sessions"></a></div>
+<ul>
+<li>Session logs are saved on exit to <pre><code>~/.config/night-watch/sessions/session-YYYYMMDD-HHMMSS.md</code></pre></li>
+<li><pre><code>--continue</code></pre> shows recent sessions and loads one into context.</li>
+</ul>
+<div><h2>Test</h2><a href="#test"></a></div>
+<div><pre>GOCACHE=/tmp/gocache go <span>test</span> ./...</pre></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

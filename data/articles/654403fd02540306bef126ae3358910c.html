@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why Multitasking With AI Coding Agents Breaks Down (And How I Fixed It)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Why Multitasking With AI Coding Agents Breaks Down (And How I Fixed It)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/21/2026 8:02:43 PM | <a href="https://dev.to/johannesjo/why-multitasking-with-ai-coding-agents-breaks-down-and-how-i-fixed-it-2lm0" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwk6raa1ddru98wr0twtz.gif"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fwk6raa1ddru98wr0twtz.gif" alt=" "></a></p> <p>AI coding agents are starting to feel like teammates.</p> <div><p>You ask one to refactor a module.</p><p>
+Another to write tests.</p><p>
+A third to prototype a feature.</p></div> <p>Individually, they’re powerful.</p> <p>But the moment you try to run them in parallel, things get messy.</p> <p>This article is about why that happens — and what I learned trying to fix it.</p> <hr>
+<h2> <a name="the-multitasking-problem" href="#the-multitasking-problem"> </a> The Multitasking Problem
+</h2> <p>Running one AI coding session is simple.</p> <p>Running three at the same time usually looks like this:</p> <ul>
+<li>Three terminal windows</li>
+<li>Multiple feature branches</li>
+<li>Manual context switching</li>
+<li>No clear overview of what each agent is doing</li>
+</ul> <p>Technically, it works.</p> <p>Cognitively, it doesn’t scale.</p> <p>The friction appears in small ways:</p> <ul>
+<li>You forget which terminal is working on which branch.</li>
+<li>You accidentally reuse context.</li>
+<li>You lose track of long-running operations.</li>
+<li>You hesitate to spin up “just one more” agent because overhead increases.</li>
+</ul> <p>The CLI gives you power — but no structure.</p> <hr>
+<h2> <a name="why-raw-tmux-endraw-alone-isnt-enough" href="#why-raw-tmux-endraw-alone-isnt-enough"> </a> Why <code>tmux</code> (Alone) Isn’t Enough
+</h2> <p>You can improve layout with tools like <code>tmux</code>.</p> <p>That helps visually.</p> <p>But it doesn’t solve workflow structure:</p> <ul>
+<li>You still manually create branches.</li>
+<li>You still manage isolation.</li>
+<li>You still need to remember which session owns which task.</li>
+<li>You still lack higher-level organization.</li>
+</ul> <p>Layout is not workflow.</p> <p>And when working with AI agents, workflow matters more than layout.</p> <hr>
+<h2> <a name="the-key-insight" href="#the-key-insight"> </a> The Key Insight
+</h2> <p>The breakthrough for me was this:</p> <blockquote>
+<p>Each AI session should behave like an isolated feature branch — automatically.</p>
+</blockquote> <p>Not just another terminal pane.</p> <p>A structured environment.</p> <p>If AI agents are “teammates,” then each one deserves:</p> <ul>
+<li>Its own workspace</li>
+<li>Its own git worktree</li>
+<li>Clear visual boundaries</li>
+<li>Easy creation and disposal</li>
+</ul> <p>That reduces cognitive load dramatically.</p> <hr>
+<h2> <a name="designing-for-parallel-ai-work" href="#designing-for-parallel-ai-work"> </a> Designing for Parallel AI Work
+</h2> <p>I started experimenting with a simple idea:</p> <p>What if running multiple AI coding agents felt more like managing multiple feature branches in a visual workspace?</p> <p>Instead of:<br>
+</p> <div>
+<pre><code>
+Terminal A
+Terminal B
+Terminal C </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>You get:</p> <ul>
+<li>Agent Session 1 → Feature branch + isolated worktree</li>
+<li>Agent Session 2 → Separate branch + separate worktree</li>
+<li>Agent Session 3 → Experimental sandbox</li>
+</ul> <p>All visible at once.</p> <p>All running natively.</p> <p>No API wrappers.</p> <p>No abstraction layers limiting features.</p> <hr> <h2> <a name="what-i-built" href="#what-i-built"> </a> What I Built
+</h2> <p>To explore this idea, I built <strong>Parallel Code</strong>, a desktop app that:</p> <ul>
+<li>Runs Claude Code, Codex, and Gemini CLI directly</li>
+<li>Creates git worktrees automatically per session</li>
+<li>Tiles multiple agent sessions in a structured UI</li>
+<li>Keeps full CLI behavior intact</li>
+</ul> <p>It doesn’t change how the agents work.</p> <p>It just makes multitasking practical.</p> <p><em>(Insert GIF demo here)</em></p> <hr> <h2> <a name="what-changed-in-my-workflow" href="#what-changed-in-my-workflow"> </a> What Changed in My Workflow
+</h2> <p>After switching to structured parallel sessions:</p> <ul>
+<li>I hesitate less before spawning a new agent.</li>
+<li>Experimental work feels safer.</li>
+<li>Long-running refactors no longer block other tasks.</li>
+<li>Context switching feels deliberate instead of chaotic.</li>
+</ul> <p>The biggest difference isn’t speed.</p> <p>It’s clarity.</p> <hr> <h2> <a name="the-bigger-question" href="#the-bigger-question"> </a> The Bigger Question
+</h2> <p>Right now, most AI-assisted development assumes:</p> <blockquote>
+<p>One agent. One terminal. One task.</p>
+</blockquote> <p>But that might not reflect how we’ll work long-term.</p> <p>If AI agents become real collaborators, we’ll need better ways to:</p> <ul>
+<li>Run them in parallel</li>
+<li>Isolate work safely</li>
+<li>Maintain visibility across sessions</li>
+<li>Reduce mental overhead</li>
+</ul> <p>We may be in the “single-agent IDE” phase of a multi-agent future.</p> <hr> <h2> <a name="im-curious" href="#im-curious"> </a> I’m Curious
+</h2> <p>If you’re using AI coding agents heavily:</p> <ul>
+<li>Do you run multiple sessions in parallel?</li>
+<li>How do you manage isolation?</li>
+<li>Is terminal + tmux good enough?</li>
+<li>Where does your workflow break down?</li>
+</ul> <p>I’m still iterating on this idea, and I’d appreciate thoughtful feedback.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

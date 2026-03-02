@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Des projets open source se révoltent contre les codes "non humains" et veulent fixer des règles et des limites</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Des projets open source se révoltent contre les codes "non humains" et veulent fixer des règles et des limites</h1>
+  <div class="metadata">
+    Source: Programmez | Date: 2/23/2026 9:06:09 AM | <a href="https://www.programmez.com/actualites/des-projets-open-source-se-revoltent-contre-les-codes-non-humains-et-veulent-fixer-des-regles-et-des-39045" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><p>Plusieurs projets&nbsp;open source&nbsp;ne veulent plus voir de&nbsp;code&nbsp;généré par des agents et autres&nbsp;pratiques de « vibe coding ». Par exemple, <strong>Widelands</strong>, un jeu open source de stratégie en temps réel, a annoncé le 24 février&nbsp;le blocage des contenus générés par une IA, un agent ou tout autre outil d’IA.</p><p><img src="https://www.programmez.com/sites/default/files/styles/taille-maxi/public/images_actus/widelands.png?itok=rQ793_R2"></p><p>"L'équipe de développement de Widelands rédige une résolution visant à refuser les contributions de contenu généré par l'IA (code, graphismes, musique, etc.) au code source et aux dépôts du jeu. Nous estimons que le contenu généré par l'IA est généralement problématique sur les plans éthique et juridique, car il viole les droits d'auteur des créateurs dont les œuvres ont été utilisées pour l'entraînement de l'IA sans leur autorisation et sans mention de leur nom. De plus, nous constatons qu'il est souvent de faible qualité et/ou trop générique, et qu'il ne répond pas aux exigences spécifiques de Widelands. Les demandes de fusion générées par l'IA pourront être fermées sans examen. Widelands est créé par des humains, pour des humains."</p><p>Le projet fixe donc des limites sur&nbsp;ce qui est autorisé ou non. Ainsi, les extensions et la documentation sont exclues de cette&nbsp;résolution&nbsp;anti-IA.</p><p>L’<strong>Electronic Frontier Foundation</strong> n'est pas opposée au&nbsp;code généré&nbsp;ni à l'IA en général, mais la fondation veut des règles claires et&nbsp;fixer des limites. Ainsi, dans ses nouvelles politiques, les contributions générées par une IA (au sens global du terme) doivent respecter plusieurs principes :</p><ul><li><p>Veuillez vous abstenir de soumettre des contributions que vous n’avez pas parfaitement comprises, examinées et testées.</p></li><li><p>Veuillez indiquer si votre contribution a été générée par une IA.</p></li><li><p>Les responsables du projet peuvent déterminer si les contributions ne sont pas raisonnablement examinables.</p></li></ul><p>Il est intéressant de noter qu'ici, l'EFF veut imposer&nbsp;de bonnes pratiques. Le développeur doit comprendre le code généré et ne pas&nbsp;lui faire une confiance absolue, ni le soumettre sans aucune&nbsp;revue. Pour obliger le développeur à lire le code généré, l'EFF veut que les commentaires soient&nbsp;rédigés par le développeur lui-même.</p><p>Le moteur <strong>Godot</strong> est dans la même situation et&nbsp;avertit&nbsp;que les PR déposées sont de plus en plus générées par une IA et, à force, cela épuise les mainteneurs. L'alerte est venue de Rémi Verschelde. Un autre développeur, Adriaan, va plus loin et critique même le sens de nombreuses requêtes : "Le dépôt GitHub de Godot est saturé de demandes de fusion générées par des développeurs débutants, ce qui représente une perte de temps considérable pour les relecteurs – surtout si cela n'est pas signalé. Les modifications sont souvent incompréhensibles, les descriptions sont excessivement verbeuses et les utilisateurs eux-mêmes ne comprennent pas leurs propres modifications… C'est un véritable désastre."</p><p>Dans la communauté Blender, le problème est identique et une réglementation sur les contributions IA est discutée :</p><p>"On observe une augmentation des demandes de fusion générées par l'IA, sans que cela soit clairement indiqué, et dont l'auteur ne comprend pas toujours pleinement la contribution. La revue de code et la maintenance ont toujours constitué un goulot d'étranglement majeur. Lorsque les contributions de l'IA ne sont pas entièrement comprises par le contributeur lui-même, la charge de travail des relecteurs s'en trouve encore alourdie. Dans le pire des cas, les relecteurs communiquent avec l'IA par un jeu du téléphone arabe.</p><p>Il est important de former les nouveaux développeurs pour faire évoluer le projet, même lorsqu'il aurait été plus rapide pour le relecteur d'effectuer lui-même les modifications (avec ou sans IA). C'est pourquoi les relecteurs devraient savoir s'ils collaborent avec un humain, afin de pouvoir décider du moment opportun pour fournir cet effort.</p><p>Par ailleurs, la revue de code assistée par l'IA et les vérifications basées sur nos directives peuvent potentiellement alléger la charge de travail des relecteurs, contribuer à la correction des bogues et à l'amélioration de la stabilité."</p><p>Le projet open source <strong>Coolify</strong> dit exactement la même chose : trop de PR&nbsp;de mauvaise qualité&nbsp;ou incompréhensibles. Le mainteneur a mis en place une GitHub Action pour&nbsp;détecter&nbsp;une PR trop mauvaise ou générée par une IA. Résultat : 98 % des PR pourraient être fermées automatiquement...</p><p>Notre avis : trop d'IA tue l'IA ? Pas exactement, mais on constate depuis quelques semaines une volonté croissante de projets open source d'agir pour&nbsp;préserver la qualité du code&nbsp;et surtout éviter les requêtes inutiles générées par une IA, sans que la personne comprenne réellement le sens de la demande ni le code soumis.&nbsp;Et c'est là le véritable problème. L'objectif n'est pas de bannir l'IA, mais d'encadrer son usage et de&nbsp;responsabiliser les développeurs.</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - machina-sports/sports-skills: Open-source agent skills for live sports data and prediction markets. Football, F1, Kalshi, Polymarket. Zero API keys. SKILL.md format.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - machina-sports/sports-skills: Open-source agent skills for live sports data and prediction markets. Football, F1, Kalshi, Polymarket. Zero API keys. SKILL.md format.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 8:40:19 PM | <a href="https://github.com/machina-sports/sports-skills" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>sports-skills.sh</h1><a href="#sports-skillssh"></a></div>
+<p>Open-source agent skills for live sports data and prediction markets. Built for the <a href="https://agentskills.io/specification">Agent Skills</a> spec. Works with Claude Code, Cursor, Copilot, Gemini CLI, and every major AI agent.</p>
+<p><strong>Zero API keys. Zero signup. Just works.</strong></p>
+<div><pre>npx skills add machina-sports/sports-skills</pre></div>
+<p>To upgrade to the latest version, run the same command with the </p><pre><code>--yes</code></pre> flag:<p></p>
+<div><pre>npx skills add machina-sports/sports-skills --yes</pre></div>
+<hr>
+<div><h2>What This Is</h2><a href="#what-this-is"></a></div>
+<p>A collection of agent skills that wrap <strong>publicly available</strong> sports data sources and APIs. These skills don't provide proprietary data — they give AI agents a structured interface to data that's already freely accessible on the web:</p>
+<ul>
+<li><strong>Football</strong>: ESPN, Understat, FPL, Transfermarkt — 21 commands across 13 leagues</li>
+<li><strong>NFL</strong>: ESPN — scores, standings, rosters, schedules, game summaries, leaders, news</li>
+<li><strong>NBA</strong>: ESPN — scores, standings, rosters, schedules, game summaries, leaders, news</li>
+<li><strong>WNBA</strong>: ESPN — scores, standings, rosters, schedules, game summaries, leaders, news</li>
+<li><strong>Formula 1</strong>: FastF1 open-source library — sessions, lap data, race results</li>
+<li><strong>Prediction Markets</strong>: Kalshi and Polymarket public APIs — markets, prices, order books</li>
+<li><strong>Sports News</strong>: RSS feeds and Google News — any public feed</li>
+</ul>
+<p>Each skill is a SKILL.md file that any compatible AI agent can load and use immediately. Data comes from third-party public sources and is subject to their respective terms of use.</p>
+<blockquote>
+<p><strong>Personal use only.</strong> These open-source skills rely on third-party public APIs and are intended for personal, non-commercial use. For commercial or production workloads with licensed data, SLAs, and enterprise support, see <a href="https://machina.gg">machina.gg</a>.</p>
+</blockquote>
+<hr>
+<div><h2>Available Skills</h2><a href="#available-skills"></a></div>
+<div><h3>Sports Data</h3><a href="#sports-data"></a></div>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>Sport</th>
+<th>Commands</th>
+<th>Data Sources</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>football-data</code></pre></td>
+<td>Football</td>
+<td>21</td>
+<td>ESPN, FPL, Understat, Transfermarkt</td>
+</tr>
+<tr>
+<td><pre><code>nfl-data</code></pre></td>
+<td>NFL</td>
+<td>9</td>
+<td>ESPN</td>
+</tr>
+<tr>
+<td><pre><code>nba-data</code></pre></td>
+<td>NBA</td>
+<td>9</td>
+<td>ESPN</td>
+</tr>
+<tr>
+<td><pre><code>wnba-data</code></pre></td>
+<td>WNBA</td>
+<td>9</td>
+<td>ESPN</td>
+</tr>
+<tr>
+<td><pre><code>fastf1</code></pre></td>
+<td>Formula 1</td>
+<td>6</td>
+<td>FastF1 (free library)</td>
+</tr>
+<tr>
+<td><pre><code>sports-news</code></pre></td>
+<td>Multi-sport</td>
+<td>2</td>
+<td>Any RSS feed, Google News</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Prediction Markets</h3><a href="#prediction-markets"></a></div>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>Platform</th>
+<th>Commands</th>
+<th>Coverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>kalshi</code></pre></td>
+<td>Kalshi</td>
+<td>12+</td>
+<td>Soccer, Basketball, Baseball, Tennis, NFL, Hockey</td>
+</tr>
+<tr>
+<td><pre><code>polymarket</code></pre></td>
+<td>Polymarket</td>
+<td>10</td>
+<td>NFL, NBA, MLB, Soccer, Tennis, Cricket, MMA, Esports</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Football Data Coverage</h3><a href="#football-data-coverage"></a></div>
+<table>
+<thead>
+<tr>
+<th>Competition</th>
+<th>League</th>
+<th>Live Scores</th>
+<th>Standings</th>
+<th>Player Stats</th>
+<th>xG</th>
+<th>Transfers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Premier League</td>
+<td>England</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>La Liga</td>
+<td>Spain</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Bundesliga</td>
+<td>Germany</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Serie A</td>
+<td>Italy</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Ligue 1</td>
+<td>France</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Champions League</td>
+<td>Europe</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>FIFA World Cup</td>
+<td>International</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Championship</td>
+<td>England</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Eredivisie</td>
+<td>Netherlands</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Primeira Liga</td>
+<td>Portugal</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Serie A Brazil</td>
+<td>Brazil</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>MLS</td>
+<td>USA</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>European Championship</td>
+<td>Europe</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Install a skill</h3><a href="#install-a-skill"></a></div>
+<div><pre>npx skills add machina-sports/sports-skills</pre></div>
+<div><h3>Use with your AI agent</h3><a href="#use-with-your-ai-agent"></a></div>
+<p>Once installed, your agent can call commands directly:</p>
+<p><strong>Get today's matches:</strong></p>
+<blockquote>
+<p>"Show me all Premier League matches today"</p>
+</blockquote>
+<p><strong>Get NFL scores:</strong></p>
+<blockquote>
+<p>"What are today's NFL scores?"</p>
+</blockquote>
+<p><strong>Get NBA standings:</strong></p>
+<blockquote>
+<p>"Show me the current NBA standings"</p>
+</blockquote>
+<p><strong>Get WNBA roster:</strong></p>
+<blockquote>
+<p>"Show me the Las Vegas Aces roster"</p>
+</blockquote>
+<p><strong>Check prediction market odds:</strong></p>
+<blockquote>
+<p>"What are the Polymarket odds for the Champions League final?"</p>
+</blockquote>
+<p><strong>Get F1 race results:</strong></p>
+<blockquote>
+<p>"Show me the lap data from the last Monaco Grand Prix"</p>
+</blockquote>
+<hr>
+<div><h2>Skills Reference</h2><a href="#skills-reference"></a></div>
+<div><h3>football-data</h3><a href="#football-data"></a></div>
+<p>Community football data skill. Aggregates publicly accessible web sources (ESPN, Understat, FPL, Transfermarkt). Data is sourced from these third-party sites and is subject to their respective terms of use.</p>
+<p><strong>Commands:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>get_competitions</code></pre></td>
+<td>List all 12 supported competitions</td>
+</tr>
+<tr>
+<td><pre><code>get_current_season</code></pre></td>
+<td>Detect current season for a competition</td>
+</tr>
+<tr>
+<td><pre><code>get_season_schedule</code></pre></td>
+<td>All fixtures for a season</td>
+</tr>
+<tr>
+<td><pre><code>get_daily_schedule</code></pre></td>
+<td>All matches across competitions for a date</td>
+</tr>
+<tr>
+<td><pre><code>get_season_standings</code></pre></td>
+<td>League table (home/away/total)</td>
+</tr>
+<tr>
+<td><pre><code>get_season_leaders</code></pre></td>
+<td>Top scorers, assist leaders, card leaders</td>
+</tr>
+<tr>
+<td><pre><code>get_season_teams</code></pre></td>
+<td>All teams in a season</td>
+</tr>
+<tr>
+<td><pre><code>search_team</code></pre></td>
+<td>Fuzzy search for a team by name across all leagues</td>
+</tr>
+<tr>
+<td><pre><code>get_team_profile</code></pre></td>
+<td>Team info, crest, venue</td>
+</tr>
+<tr>
+<td><pre><code>get_team_schedule</code></pre></td>
+<td>Upcoming and recent matches for a team</td>
+</tr>
+<tr>
+<td><pre><code>get_head_to_head</code></pre></td>
+<td>H2H history between two teams (unavailable)</td>
+</tr>
+<tr>
+<td><pre><code>get_event_summary</code></pre></td>
+<td>Match summary with scores</td>
+</tr>
+<tr>
+<td><pre><code>get_event_lineups</code></pre></td>
+<td>Starting lineups and formations</td>
+</tr>
+<tr>
+<td><pre><code>get_event_statistics</code></pre></td>
+<td>Team-level match stats (possession, shots, passes)</td>
+</tr>
+<tr>
+<td><pre><code>get_event_timeline</code></pre></td>
+<td>Goals, cards, substitutions, VAR decisions</td>
+</tr>
+<tr>
+<td><pre><code>get_event_xg</code></pre></td>
+<td>Expected goals with shot maps</td>
+</tr>
+<tr>
+<td><pre><code>get_event_players_statistics</code></pre></td>
+<td>Individual player match stats</td>
+</tr>
+<tr>
+<td><pre><code>get_missing_players</code></pre></td>
+<td>Injured and suspended players</td>
+</tr>
+<tr>
+<td><pre><code>get_player_profile</code></pre></td>
+<td>Biography, career stats, market value</td>
+</tr>
+<tr>
+<td><pre><code>get_season_transfers</code></pre></td>
+<td>Transfer history</td>
+</tr>
+<tr>
+<td><pre><code>get_competition_seasons</code></pre></td>
+<td>Available seasons for a competition</td>
+</tr>
+</tbody>
+</table>
+<div><h3>nfl-data</h3><a href="#nfl-data"></a></div>
+<p>NFL data via ESPN public endpoints. Scores, standings, rosters, schedules, game summaries, and more.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>get_scoreboard</code></pre></td>
+<td>Live/recent NFL scores</td>
+</tr>
+<tr>
+<td><pre><code>get_standings</code></pre></td>
+<td>Standings by conference and division</td>
+</tr>
+<tr>
+<td><pre><code>get_teams</code></pre></td>
+<td>All 32 NFL teams</td>
+</tr>
+<tr>
+<td><pre><code>get_team_roster</code></pre></td>
+<td>Full roster for a team</td>
+</tr>
+<tr>
+<td><pre><code>get_team_schedule</code></pre></td>
+<td>Schedule for a specific team</td>
+</tr>
+<tr>
+<td><pre><code>get_game_summary</code></pre></td>
+<td>Detailed box score and scoring plays</td>
+</tr>
+<tr>
+<td><pre><code>get_leaders</code></pre></td>
+<td>Statistical leaders (passing, rushing, receiving)</td>
+</tr>
+<tr>
+<td><pre><code>get_news</code></pre></td>
+<td>NFL news articles</td>
+</tr>
+<tr>
+<td><pre><code>get_schedule</code></pre></td>
+<td>Season schedule by week</td>
+</tr>
+</tbody>
+</table>
+<div><h3>nba-data</h3><a href="#nba-data"></a></div>
+<p>NBA data via ESPN public endpoints. Scores, standings, rosters, schedules, game summaries, and more.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>get_scoreboard</code></pre></td>
+<td>Live/recent NBA scores</td>
+</tr>
+<tr>
+<td><pre><code>get_standings</code></pre></td>
+<td>Standings by conference</td>
+</tr>
+<tr>
+<td><pre><code>get_teams</code></pre></td>
+<td>All 30 NBA teams</td>
+</tr>
+<tr>
+<td><pre><code>get_team_roster</code></pre></td>
+<td>Full roster for a team</td>
+</tr>
+<tr>
+<td><pre><code>get_team_schedule</code></pre></td>
+<td>Schedule for a specific team</td>
+</tr>
+<tr>
+<td><pre><code>get_game_summary</code></pre></td>
+<td>Detailed box score and scoring plays</td>
+</tr>
+<tr>
+<td><pre><code>get_leaders</code></pre></td>
+<td>Statistical leaders (points, rebounds, assists)</td>
+</tr>
+<tr>
+<td><pre><code>get_news</code></pre></td>
+<td>NBA news articles</td>
+</tr>
+<tr>
+<td><pre><code>get_schedule</code></pre></td>
+<td>Schedule for a date</td>
+</tr>
+</tbody>
+</table>
+<div><h3>wnba-data</h3><a href="#wnba-data"></a></div>
+<p>WNBA data via ESPN public endpoints. Scores, standings, rosters, schedules, game summaries, and more.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>get_scoreboard</code></pre></td>
+<td>Live/recent WNBA scores</td>
+</tr>
+<tr>
+<td><pre><code>get_standings</code></pre></td>
+<td>Standings by conference</td>
+</tr>
+<tr>
+<td><pre><code>get_teams</code></pre></td>
+<td>All WNBA teams</td>
+</tr>
+<tr>
+<td><pre><code>get_team_roster</code></pre></td>
+<td>Full roster for a team</td>
+</tr>
+<tr>
+<td><pre><code>get_team_schedule</code></pre></td>
+<td>Schedule for a specific team</td>
+</tr>
+<tr>
+<td><pre><code>get_game_summary</code></pre></td>
+<td>Detailed box score and scoring plays</td>
+</tr>
+<tr>
+<td><pre><code>get_leaders</code></pre></td>
+<td>Statistical leaders (points, rebounds, assists)</td>
+</tr>
+<tr>
+<td><pre><code>get_news</code></pre></td>
+<td>WNBA news articles</td>
+</tr>
+<tr>
+<td><pre><code>get_schedule</code></pre></td>
+<td>Schedule for a date</td>
+</tr>
+</tbody>
+</table>
+<div><h3>fastf1</h3><a href="#fastf1"></a></div>
+<p>Formula 1 data via the <a href="https://github.com/theOehrly/Fast-F1">FastF1</a> open-source library.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>get_session_data</code></pre></td>
+<td>Session metadata (practice, qualifying, race)</td>
+</tr>
+<tr>
+<td><pre><code>get_driver_info</code></pre></td>
+<td>Driver details or full grid</td>
+</tr>
+<tr>
+<td><pre><code>get_team_info</code></pre></td>
+<td>Team details or all teams</td>
+</tr>
+<tr>
+<td><pre><code>get_race_schedule</code></pre></td>
+<td>Full calendar for a year</td>
+</tr>
+<tr>
+<td><pre><code>get_lap_data</code></pre></td>
+<td>Lap times, sectors, tire data</td>
+</tr>
+<tr>
+<td><pre><code>get_race_results</code></pre></td>
+<td>Final classification and fastest laps</td>
+</tr>
+</tbody>
+</table>
+<div><h3>kalshi</h3><a href="#kalshi"></a></div>
+<p>Kalshi's <a href="https://trading-api.readme.io/reference/getmarkets">official public API</a>. No API key needed for read-only market data.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>get_series_list</code></pre></td>
+<td>All series filtered by sport tag</td>
+</tr>
+<tr>
+<td><pre><code>get_series</code></pre></td>
+<td>Single series details</td>
+</tr>
+<tr>
+<td><pre><code>get_markets</code></pre></td>
+<td>Markets with bid/ask/volume/open interest</td>
+</tr>
+<tr>
+<td><pre><code>get_market</code></pre></td>
+<td>Single market details</td>
+</tr>
+<tr>
+<td><pre><code>get_events</code></pre></td>
+<td>Events with pagination</td>
+</tr>
+<tr>
+<td><pre><code>get_event</code></pre></td>
+<td>Single event details</td>
+</tr>
+<tr>
+<td><pre><code>get_trades</code></pre></td>
+<td>Trade history</td>
+</tr>
+<tr>
+<td><pre><code>get_market_candlesticks</code></pre></td>
+<td>OHLCV price data (1min/1hr/1day)</td>
+</tr>
+<tr>
+<td><pre><code>get_sports_filters</code></pre></td>
+<td>Sports-specific filters and competitions</td>
+</tr>
+<tr>
+<td><pre><code>get_exchange_status</code></pre></td>
+<td>Exchange active/trading status</td>
+</tr>
+<tr>
+<td><pre><code>get_exchange_schedule</code></pre></td>
+<td>Exchange operating schedule</td>
+</tr>
+</tbody>
+</table>
+<div><h3>polymarket</h3><a href="#polymarket"></a></div>
+<p>Polymarket's official public APIs (<a href="https://gamma-api.polymarket.com">Gamma</a> + <a href="https://docs.polymarket.com">CLOB</a>). No API key needed for read-only data.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>get_sports_markets</code></pre></td>
+<td>Active sports markets with type filtering</td>
+</tr>
+<tr>
+<td><pre><code>get_sports_events</code></pre></td>
+<td>Sports events by series/league</td>
+</tr>
+<tr>
+<td><pre><code>get_series</code></pre></td>
+<td>All series (NBA, NFL, MLB leagues)</td>
+</tr>
+<tr>
+<td><pre><code>get_market_details</code></pre></td>
+<td>Single market by ID or slug</td>
+</tr>
+<tr>
+<td><pre><code>get_event_details</code></pre></td>
+<td>Single event with nested markets</td>
+</tr>
+<tr>
+<td><pre><code>get_market_prices</code></pre></td>
+<td>Real-time midpoint, bid, ask from CLOB</td>
+</tr>
+<tr>
+<td><pre><code>get_order_book</code></pre></td>
+<td>Full order book with spread calculation</td>
+</tr>
+<tr>
+<td><pre><code>get_sports_market_types</code></pre></td>
+<td>58+ market types (moneyline, spreads, totals, props)</td>
+</tr>
+<tr>
+<td><pre><code>search_markets</code></pre></td>
+<td>Full-text search across markets</td>
+</tr>
+<tr>
+<td><pre><code>get_price_history</code></pre></td>
+<td>Historical price data (1d, 1w, 1m, max)</td>
+</tr>
+<tr>
+<td><pre><code>get_last_trade_price</code></pre></td>
+<td>Most recent trade price</td>
+</tr>
+</tbody>
+</table>
+<div><h3>sports-news</h3><a href="#sports-news"></a></div>
+<p>RSS feed aggregation for sports news.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>fetch_feed</code></pre></td>
+<td>Full feed with metadata and entries</td>
+</tr>
+<tr>
+<td><pre><code>fetch_items</code></pre></td>
+<td>Filtered items (date range, language, country)</td>
+</tr>
+</tbody>
+</table>
+<p>Supports any RSS/Atom feed URL and Google News queries.</p>
+<hr>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>sports-skills.sh
+├── skills/ # SKILL.md files (agent instructions)
+│ ├── football-data/SKILL.md # 21 commands, 13 leagues
+│ ├── nfl-data/SKILL.md # NFL scores, standings, rosters
+│ ├── nba-data/SKILL.md # NBA scores, standings, rosters
+│ ├── wnba-data/SKILL.md # WNBA scores, standings, rosters
+│ ├── fastf1/SKILL.md # F1 sessions, laps, results
+│ ├── kalshi/SKILL.md # Prediction markets (CFTC)
+│ ├── polymarket/SKILL.md # Prediction markets (crypto)
+│ └── sports-news/SKILL.md # RSS + Google News
+├── src/sports_skills/ # Python runtime (used by skills)
+├── site/ # Landing page (sports-skills.sh)
+├── LICENSE
+└── README.md
+</code></pre></div>
+<p>Each skill follows the <a href="https://agentskills.io/specification">Agent Skills specification</a>:</p>
+<div><pre>---
+<span>name</span>: <span>football-data</span>
+<span>description</span>: <span>|</span>
+<span> Football (soccer) data across 13 leagues — standings, schedules, match stats, xG, transfers, player profiles.</span>
+<span> Use when: user asks about football/soccer standings, fixtures, match stats, xG, lineups, transfers, or injury news.</span>
+<span></span><span>license</span>: <span>MIT</span>
+<span>metadata</span>: <span>author</span>: <span>machina-sports</span> <span>version</span>: <span><span>"</span>0.1.0<span>"</span></span>
+--- <span><span>#</span> Football Data</span> <span>Instructions for the AI agent...</span></pre></div>
+<hr>
+<div><h2>Compatibility</h2><a href="#compatibility"></a></div>
+<p>Works with every agent that supports the SKILL.md format:</p>
+<ul>
+<li>Claude Code</li>
+<li>OpenClaw (clawdbot / moltbot)</li>
+<li>Cursor</li>
+<li>GitHub Copilot</li>
+<li>VS Code Copilot</li>
+<li>Gemini CLI</li>
+<li>Windsurf</li>
+<li>OpenCode</li>
+<li>Kiro</li>
+<li>Roo</li>
+<li>Trae</li>
+</ul>
+<hr>
+<div><h2>Coming Soon</h2><a href="#coming-soon"></a></div>
+<p>Licensed data skills — coming soon via <a href="https://machina.gg">Machina Sports</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Coverage</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sportradar</td>
+<td>1,200+ competitions, real-time feeds</td>
+<td>Coming Soon</td>
+</tr>
+<tr>
+<td>Stats Perform (Opta)</td>
+<td>Advanced analytics, event-level data</td>
+<td>Coming Soon</td>
+</tr>
+<tr>
+<td>API-Football</td>
+<td>900+ leagues, live scores, odds</td>
+<td>Coming Soon</td>
+</tr>
+<tr>
+<td>Data Sports Group</td>
+<td>US sports, player props, projections</td>
+<td>Coming Soon</td>
+</tr>
+</tbody>
+</table>
+<p>These will ship as additional skills that drop in alongside the open-source ones. Same interface, same JSON envelope — just licensed data underneath. Built for commercial and production use with proper data licensing, SLAs, and enterprise support.</p>
+<p>For early access or enterprise needs, see <a href="https://machina.gg">machina.gg</a>.</p>
+<hr>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>We're actively expanding to cover more sports and data sources — and always looking for contributions. Whether it's a new sport, a new league, a better data source, or improvements to existing skills, PRs are welcome.</p>
+<ol>
+<li>Fork the repo</li>
+<li>Create a skill in <pre><code>skills/&lt;your-skill&gt;/SKILL.md</code></pre></li>
+<li>Follow the SKILL.md spec (YAML frontmatter + Markdown instructions)</li>
+<li>Open a PR</li>
+</ol>
+<p>See the existing SKILL.md files and the <a href="https://agentskills.io/specification">Agent Skills spec</a> for format details.</p>
+<p>Join the <a href="https://discord.gg/PBYd6FbBSK">Machina Sports Discord</a> to discuss ideas, get help, or coordinate on new skills.</p>
+<hr>
+<div><h2>World Cup 2026</h2><a href="#world-cup-2026"></a></div>
+<p>This project ships with World Cup 2026 coverage built in. The </p><pre><code>football-data</code></pre> skill includes FIFA World Cup as a supported competition. As the tournament approaches (June 2026), we'll add dedicated World Cup skills for bracket tracking, group stage analysis, and match predictions.<p></p>
+<hr>
+<div><h2>Data Sources &amp; Disclaimer</h2><a href="#data-sources--disclaimer"></a></div>
+<p>This project does not own, license, or redistribute any sports data. Each skill is a thin wrapper that accesses publicly available third-party sources on behalf of the user.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Access Method</th>
+<th>Official API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESPN</td>
+<td>Public web endpoints</td>
+<td>No — undocumented, may change without notice</td>
+</tr>
+<tr>
+<td>Understat</td>
+<td>Public web data</td>
+<td>No — community access, subject to their ToS</td>
+</tr>
+<tr>
+<td>FPL</td>
+<td>Public API</td>
+<td>Semi-official — widely used by the community</td>
+</tr>
+<tr>
+<td>Transfermarkt</td>
+<td>Public web data</td>
+<td>No — subject to their ToS</td>
+</tr>
+<tr>
+<td>openfootball</td>
+<td>Open-source dataset</td>
+<td>Yes — <a href="https://github.com/openfootball/football.json">football.json</a> (CC0/Public Domain)</td>
+</tr>
+<tr>
+<td>FastF1</td>
+<td>Open-source library</td>
+<td>Yes — <a href="https://github.com/theOehrly/Fast-F1">FastF1</a> (MIT)</td>
+</tr>
+<tr>
+<td>Kalshi</td>
+<td>Official public API</td>
+<td>Yes — <a href="https://trading-api.readme.io">Trade API v2</a></td>
+</tr>
+<tr>
+<td>Polymarket</td>
+<td>Official public APIs</td>
+<td>Yes — <a href="https://gamma-api.polymarket.com">Gamma</a> + <a href="https://docs.polymarket.com">CLOB</a></td>
+</tr>
+<tr>
+<td>RSS / Google News</td>
+<td>Standard RSS protocol</td>
+<td>Yes — RSS is designed for syndication</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Important:</strong></p>
+<ul>
+<li>This project is intended for <strong>personal, educational, and research use</strong>.</li>
+<li>You are responsible for complying with each data source's terms of service.</li>
+<li>Data from unofficial sources (ESPN, Understat, Transfermarkt) may break without notice if those sites change their structure.</li>
+<li>For commercial or production use with properly licensed data, see <a href="https://machina.gg">machina.gg</a>.</li>
+<li>This project is not affiliated with or endorsed by any of the data sources listed above.</li>
+</ul>
+<hr>
+<div><h2>Acknowledgments</h2><a href="#acknowledgments"></a></div>
+<p>This project is built on top of great open-source work and public APIs:</p>
+<ul>
+<li><strong><a href="https://www.espn.com">ESPN</a></strong> — for keeping their web endpoints accessible. The backbone of football scores, standings, schedules, lineups, match stats, and timelines across all 13 leagues. Also powers the NFL, NBA, and WNBA skills.</li>
+<li><strong><a href="https://fantasy.premierleague.com">Fantasy Premier League</a></strong> — for their community API powering injury news, player stats, ownership data, and ICT index for Premier League players.</li>
+<li><strong><a href="https://www.transfermarkt.com">Transfermarkt</a></strong> — for player market values, transfer history, and the richest player data in football.</li>
+<li><strong><a href="https://understat.com">Understat</a></strong> — for xG data across the top 5 European leagues.</li>
+<li><strong><a href="https://github.com/openfootball/football.json">openfootball</a></strong> — open public domain football data (CC0). Used as a fallback for schedules, standings, and team lists when ESPN is unavailable. Covers 10 leagues.</li>
+<li><strong><a href="https://github.com/theOehrly/Fast-F1">FastF1</a></strong> — the backbone of our Formula 1 skill. Thanks to theOehrly and contributors.</li>
+<li><strong><a href="https://github.com/kurtmckee/feedparser">feedparser</a></strong> — reliable RSS/Atom parsing for the news skill.</li>
+<li><strong><a href="https://kalshi.com">Kalshi</a></strong> and <strong><a href="https://polymarket.com">Polymarket</a></strong> — for their public market data APIs.</li>
+<li><strong><a href="https://skills.sh">skills.sh</a></strong> — the open agent skills directory and CLI.</li>
+<li><strong><a href="https://agentskills.io">Agent Skills</a></strong> — the open spec that makes skills interoperable across agents.</li>
+</ul>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT — applies to the skill code and wrappers in this repository. Does not grant any rights to the underlying third-party data.</p>
+<hr>
+<p>Built by <a href="https://machina.gg">Machina Sports</a>. The Operating System for sports AI.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

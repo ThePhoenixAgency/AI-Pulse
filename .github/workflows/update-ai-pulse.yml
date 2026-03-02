@@ -26,7 +26,6 @@
 #     - GIT_AUTHOR_EMAIL : Email pour les commits
 #     - LINKEDIN_ACCESS_TOKEN : Token pour poster sur LinkedIn (optionnel)
 #     - LINKEDIN_USER_ID : ID utilisateur LinkedIn (optionnel)
-#     - OPENAI_API_KEY : Clé API OpenAI pour générer les posts (optionnel)
 #     - API_RESEND : Clé API Resend pour les emails (optionnel)
 #
 # VERSION: 2.0.0
@@ -88,6 +87,16 @@ permissions:
 
 
 # =============================================================================
+# CONCURRENCY (Évite les jobs simultanés qui se chevauchent)
+# =============================================================================
+# Si un nouveau workflow démarre alors qu'un autre est en cours,
+# l'ancien est automatiquement annulé pour éviter les conflits.
+concurrency:
+  group: ai-pulse-aggregator
+  cancel-in-progress: true
+
+
+# =============================================================================
 # JOBS (Tâches à exécuter)
 # =============================================================================
 # Un workflow peut contenir plusieurs jobs qui s'exécutent en parallèle.
@@ -103,6 +112,9 @@ jobs:
     # Sur quel type de machine exécuter ce job ?
     # ubuntu-latest = dernière version d'Ubuntu (Linux gratuit de GitHub)
     runs-on: ubuntu-latest
+
+    # Timeout de 10 minutes maximum pour éviter les jobs bloqués
+    timeout-minutes: 10
 
     # =========================================================================
     # ÉTAPES DU JOB (Steps)
@@ -194,11 +206,8 @@ jobs:
           git add package-lock.json
 
           # Créer un commit avec un message descriptif
-          git commit -m "🔧 Auto-sync: package-lock.json mis à jour automatiquement
-
-          - Synchronisation automatique des dépendances
-          - Généré par le workflow CI/CD
-          - Date: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          # [skip ci] empêche le workflow de se re-déclencher
+          git commit -m "🔧 Auto-sync: package-lock.json [skip ci]"
 
           # Pousser les changements vers GitHub
           git push
@@ -226,7 +235,6 @@ jobs:
       env:
         LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
         LINKEDIN_USER_ID: ${{ secrets.LINKEDIN_USER_ID }}
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         API_RESEND: ${{ secrets.API_RESEND }}
       run: |
         # Backup du README actuel pour fallback en cas d'échec
@@ -289,7 +297,7 @@ jobs:
       run: |
         # Configuration de l'identité Git
         git config --global user.name 'PhoenixProject'
-        git config --global user.email "${GIT_AUTHOR_EMAIL:-phoenix.project@example.com}"
+        git config --global user.email '${{ secrets.GIT_AUTHOR_EMAIL }}'
 
         # Ajouter tous les fichiers modifiés à l'index
         # Le point (.) signifie "tous les fichiers"
@@ -304,7 +312,8 @@ jobs:
           UTC_DATE=$(date -u +'%a %b %d %H:%M:%S UTC %Y')
 
           # Créer le commit avec un message incluant la date
-          git commit -m "Updated AI-Pulse: $UTC_DATE"
+          # [skip ci] empêche le workflow de se re-déclencher
+          git commit -m "Updated AI-Pulse: $UTC_DATE [skip ci]"
 
           # Envoyer le commit vers GitHub
           git push

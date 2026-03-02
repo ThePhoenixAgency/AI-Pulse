@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Someone is Bringing Fedora Linux to Phones (And It’s Not Red Hat)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Someone is Bringing Fedora Linux to Phones (And It’s Not Red Hat)</h1>
+  <div class="metadata">
+    Source: Its FOSS | Date: 2/25/2026 2:50:22 PM | <a href="https://itsfoss.com/news/fedora-pocketblue-remix-overview/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><article> <a href="https://www.warp.dev/?utm_source=its_foss&amp;utm_medium=display&amp;utm_campaign=linux_launch" target="_blank" rel="noopener noreferrer"><img src="https://itsfoss.com/assets/images/warp.webp" alt="Warp Terminal"></a> <p>The mobile Linux space is <a href="https://itsfoss.com/open-source-alternatives-android/">more active than most people realize</a>. Projects like <a href="https://postmarketos.org/?ref=itsfoss.com">postmarketOS</a>, <a href="https://www.ubuntu-touch.io/?ref=itsfoss.com">Ubuntu Touch</a>, and <a href="https://fedoraproject.org/spins/kde-mobile/?ref=itsfoss.com">KDE Plasma Mobile</a> have been chipping away at the idea that your phone or tablet has to run something made by Google or Apple.</p><p>And while none of them are household names yet, they are picking up real interest from power users who want more control over their hardware. Of course, most people stick with <a href="https://www.android.com/?ref=itsfoss.com">Android</a> or <a href="https://www.apple.com/os/ios/?ref=itsfoss.com">iOS</a>, and that is fine.</p><p>Both platforms are mature, well-supported, and not going anywhere. But for the ones who want something genuinely open and free of platform lock-in, things are getting better.</p><p>One such offering is <a href="https://pocketblue.github.io/?ref=itsfoss.com">Fedora Pocketblue Remix</a>, which is a community-powered project that offers <a href="https://www.fedoraproject.org/atomic-desktops/?ref=itsfoss.com">Fedora Atomic</a> images for mobile devices.</p><div><p></p><p>This piece of software is a work-in-progress, don't risk your daily driver mobile device with this, use a spare!</p></div><h2>Fedora Pocketblue Remix: What's in Store?</h2><figure><img src="https://itsfoss.com/content/images/2026/02/fedora-pocketblue-remix-demo-runefish.jpg" alt="a photo that shows a poco f1 device running fedora pocketblue remix"><figcaption><i><em>A </em></i><a href="https://en.wikipedia.org/wiki/Xiaomi_Pocophone_F1?ref=itsfoss.com"><i><em>Poco F1</em></i></a><i><em> device running Fedora Pocketblue Remix. Pic courtesy of </em></i><a href="https://wetdry.world/@runefish/115905527751141646?ref=itsfoss.com"><i><em>Fish</em></i></a><i><em> (the lead dev).</em></i></figcaption></figure><p>Before getting into the project, first let's talk about what Fedora Atomic actually is and why it matters here.</p><p>Traditional Linux installations are what you might call "<a href="https://www.ibm.com/think/topics/mutable-vs-immutable?ref=itsfoss.com"><em>mutable</em></a>." You install packages, tweak configs, and over time the system drifts from its original state. That is fine for general use, but it can lead to breakage and makes it harder to reliably recover a broken system.</p><p>With Fedora Atomic, <strong>the base system is read-only and stays that way</strong>. Updates are applied as complete image swaps rather than individual package changes, similar in concept to how <a href="https://store.steampowered.com/steamos/?ref=itsfoss.com">SteamOS</a> handles updates on the Steam Deck. If something goes wrong, you can roll back to the previous image.</p><p>Pocketblue takes this foundation and adapts it for mobile hardware. Under the hood, it uses <a href="https://opencontainers.org/?ref=itsfoss.com">OCI</a> containers, <a href="https://ostreedev.github.io/ostree/?ref=itsfoss.com">OSTree</a>, and <a href="https://github.com/bootc-dev/bootc?ref=itsfoss.com">Bootc</a> to build and distribute system images. These are built on top of upstream Fedora Atomic images <a href="https://www.fedoraproject.org/atomic-desktops/silverblue/?ref=itsfoss.com">Silverblue</a> and <a href="https://www.fedoraproject.org/atomic-desktops/kinoite/?ref=itsfoss.com">Kinoite</a>, so this is not a from-scratch derivative.</p><p>The available images vary slightly by device, <strong>but most supported hardware gets five variants </strong>with different interface options: <em>GNOME Desktop</em>, <em>GNOME Mobile</em>, <em>Plasma Desktop</em>, <em>Plasma Mobile</em>, and <a href="https://phosh.mobi/?ref=itsfoss.com"><em>Phosh</em></a>.</p><div><p></p><p>The Orange Pi 3 LTS gets one extra option, a TTY image for a headless, no-desktop setup.</p></div><p><strong>As for what's supported</strong>, the current list includes the <em>Xiaomi Pad 5</em>, <em>Xiaomi Pad 6</em>, <em>OnePlus 6</em> and <em>6T</em>, <em>Xiaomi Poco F1</em>, and the <em>Orange Pi 3 LTS</em>. As a side-note, the OnePlus 6/6T and Poco F1 both run on the <a href="https://www.qualcomm.com/processors/application-processors/products/sdm845?ref=itsfoss.com">Qualcomm SDM845</a> chipset, which has seen strong mainline Linux support over the years thanks to community effort.</p><p>The source code lives on <a href="https://github.com/pocketblue/pocketblue?ref=itsfoss.com">GitHub</a>, and <a href="https://pocketblue.github.io/?ref=itsfoss.com">the documentation site</a> is a useful resource to get Fedora Pocketblue Remix installed on supported devices. There are also <a href="https://matrix.to/?ref=itsfoss.com#/#pocketblue:federated.nexus">Matrix</a> and <a href="https://t.me/fedoramobility?ref=itsfoss.com">Telegram</a> communities for support and discussion.</p> </article><div> <p><span>About the author</span></p><div> <a href="https://itsfoss.com/author/sourav/"> <figure> <img src="https://itsfoss.com/content/images/size/w100/2026/01/2025-pfp-1-1.jpg" alt="Sourav Rudra"> </figure> </a> <div> <h2><a href="https://itsfoss.com/author/sourav/">Sourav Rudra</a></h2> <p>A nerd with a passion for open source software, custom PC builds, motorsports, and exploring the endless possibilities of this world.</p> </div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

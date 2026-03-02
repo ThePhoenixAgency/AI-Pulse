@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - pranavkarthik10/lazycal: google calendar tui</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - pranavkarthik10/lazycal: google calendar tui</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 8:20:26 AM | <a href="https://github.com/pranavkarthik10/lazycal" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>LazyCal</h1><a href="#lazycal"></a></div>
+<p>A beautiful terminal-based Google Calendar interface built with <a href="https://github.com/anomalyco/opentui">OpenTUI</a>.</p>
+<p><a target="_blank" href="https://raw.githubusercontent.com/pranavkarthik10/lazycal/main/screenshot.png" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/pranavkarthik10/lazycal/main/screenshot.png" alt="Demo"></a></p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li>Full day/week/month modes</li>
+<li>Responsive day columns (auto include/exclude days by terminal width)</li>
+<li>Time column always shown on the left in day/week views</li>
+<li>Built-in command hints in header plus full keyboard help modal (<pre><code>?</code></pre>)</li>
+<li>Side panel shows events for selected day (toggle with <pre><code>s</code></pre>, auto hides on narrow widths)</li>
+<li>Google Calendar API integration (optional)</li>
+<li>Color-coded events per calendar</li>
+<li>Resize-aware terminal UI</li>
+</ul>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><pre>npm install -g lazycal</pre></div>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><h3>Quick Start</h3><a href="#quick-start"></a></div>
+<div><pre>lazycal</pre></div>
+<div><h3>Connect to Google Calendar</h3><a href="#connect-to-google-calendar"></a></div>
+<p>To use real Google Calendar data:</p>
+<ol>
+<li>
+<p><strong>Create a Google Cloud Project:</strong></p>
+<ul>
+<li>Go to <a href="https://console.cloud.google.com/">Google Cloud Console</a></li>
+<li>Create a new project</li>
+<li>Enable the Google Calendar API</li>
+</ul>
+</li>
+<li>
+<p><strong>Create OAuth 2.0 Credentials:</strong></p>
+<ul>
+<li>Go to "Credentials" in the left menu</li>
+<li>Click "Create Credentials" -&gt; "OAuth 2.0 Client ID"</li>
+<li>Choose "Desktop application" as the application type</li>
+<li>Download the JSON credentials file</li>
+</ul>
+</li>
+<li>
+<p><strong>Configure LazyCal:</strong></p>
+<div><pre>mkdir -p <span>~</span>/.config/lazycal
+cp /path/to/downloaded/credentials.json <span>~</span>/.config/lazycal/</pre></div>
+</li>
+<li>
+<p><strong>Run the app:</strong></p>
+<div><pre>lazycal</pre></div>
+</li>
+</ol>
+<div><h2>Keyboard Shortcuts</h2><a href="#keyboard-shortcuts"></a></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>d</code></pre>, <pre><code>w</code></pre>, <pre><code>m</code></pre></td>
+<td>Switch to day / week / month view</td>
+</tr>
+<tr>
+<td><pre><code>1</code></pre>, <pre><code>2</code></pre>, <pre><code>3</code></pre></td>
+<td>Switch to day / week / month view</td>
+</tr>
+<tr>
+<td><pre><code>left</code></pre> / <pre><code>right</code></pre></td>
+<td>Previous / next day</td>
+</tr>
+<tr>
+<td><pre><code>up</code></pre> / <pre><code>down</code></pre> or <pre><code>k</code></pre> / <pre><code>j</code></pre></td>
+<td>Previous / next week</td>
+</tr>
+<tr>
+<td><pre><code>h</code></pre> / <pre><code>l</code></pre></td>
+<td>Previous / next month</td>
+</tr>
+<tr>
+<td><pre><code>t</code></pre></td>
+<td>Go to today</td>
+</tr>
+<tr>
+<td><pre><code>c</code></pre></td>
+<td>Toggle calendars selector</td>
+</tr>
+<tr>
+<td><pre><code>s</code></pre></td>
+<td>Toggle sidebar on/off</td>
+</tr>
+<tr>
+<td><pre><code>r</code></pre></td>
+<td>Refresh events from Google Calendar</td>
+</tr>
+<tr>
+<td><pre><code>?</code></pre></td>
+<td>Open keyboard help modal</td>
+</tr>
+<tr>
+<td><pre><code>Click</code></pre></td>
+<td>Open event details from the sidebar</td>
+</tr>
+<tr>
+<td><pre><code>q</code></pre> / <pre><code>Ctrl+C</code></pre></td>
+<td>Quit</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre><span><span>#</span> Run in development mode</span>
+bun run dev <span><span>#</span> Type checking</span>
+bun run typecheck</pre></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+<div><h2>Acknowledgments</h2><a href="#acknowledgments"></a></div>
+<p>Built with <a href="https://github.com/anomalyco/opentui">OpenTUI</a> - A powerful TypeScript library for building terminal user interfaces.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

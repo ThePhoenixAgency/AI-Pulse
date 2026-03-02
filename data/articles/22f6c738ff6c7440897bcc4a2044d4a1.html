@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>One-Shot Any Web App with Gradio's gr.HTML</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>One-Shot Any Web App with Gradio's gr.HTML</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 2/18/2026 12:00:00 AM | <a href="https://huggingface.co/blog/gradio-html-one-shot-apps" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/ysharma"><img alt="yuvraj sharma's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1624431552569-noauth.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/hysts"><img alt="hysts's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1643012094339-61914f536d34e827404ceb99.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/freddyaboulton"><img alt="Freddy Boulton's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1654278567459-626a9bfa03e2e2796f24ca11.jpeg"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#productivity-apps">Productivity Apps</a> <ul></ul> </li><li><a href="#business-apps">Business Apps</a> <ul></ul> </li><li><a href="#creative-apps">Creative Apps</a> <ul></ul> </li><li><a href="#ml-apps">ML Apps</a> <ul></ul> </li><li><a href="#how-it-works">How It Works</a> <ul></ul> </li><li><a href="#why-this-matters-for-vibe-coding">Why This Matters for Vibe Coding</a> <ul></ul> </li></ul></nav></div><p><strong>Gradio 6</strong> quietly shipped a very powerful feature: <strong><code>gr.HTML</code></strong> now supports custom templates, scoped CSS, and JavaScript interactivity. Which means you can build pretty much any web component — and Claude (or any other frontier LLM) can generate the whole thing in one shot: frontend, backend, and state management, all in a single Python file.</p>
+<p>We tested this by building different types of apps. Each one is a single Python file, no build step, deployable to Hugging Face Spaces in seconds.</p>
+<h2> <a href="#productivity-apps"> <span></span> </a> <span> Productivity Apps </span>
+</h2>
+<p><strong><a href="https://huggingface.co/spaces/ysharma/pomodoro-timer">Pomodoro Timer</a></strong>: A focus timer where a pixel-art tree grows as you work. Starts as a seed, sprouts branches, grows leaves. Complete a session and the tree joins your forest. Session tracking, theme switching, break modes — all interactive, all in one file.</p>
+<p>The tree animation alone would normally require a separate React component. Here it's just CSS keyframes in <code>css_template</code> and state updates in <code>js_on_load</code>.</p>
+<h2> <a href="#business-apps"> <span></span> </a> <span> Business Apps </span>
+</h2>
+<p><strong><a href="https://huggingface.co/spaces/ysharma/github-contribution-heatmap">GitHub Contribution Heatmap</a></strong>: Click any cell to toggle contributions. Multiple color themes. Pattern generators (streaks, seasonal, random). Live stats that update as you edit.</p>
+<p><strong><a href="https://huggingface.co/spaces/ysharma/drag-and-drop-kanban-board">Kanban Board</a></strong>: Full drag-and-drop between columns. Inline editing (double-click any card). Search feature that can filter in real-time. Collapsible columns.</p>
+<p>Drag-and-drop usually means pulling in a library. Here it's native HTML5 drag events wired up in <code>js_on_load</code>, with state synced back to Python via <code>trigger('change')</code>.</p>
+<h2> <a href="#creative-apps"> <span></span> </a> <span> Creative Apps </span>
+</h2>
+<p><strong><a href="https://huggingface.co/spaces/ysharma/spin-wheel">Spin-to-Win Wheel</a></strong>: Smooth CSS animation, rotation state that persists across re-renders. Preset configurations for yes/no decisions, restaurant picking, team selection. You can also add custom spinning segments on the fly.</p>
+<h2> <a href="#ml-apps"> <span></span> </a> <span> ML Apps </span>
+</h2>
+<p>This is where <code>gr.HTML</code> gets really interesting for ML work: you can build specialized components that can handle your exact output format, then use them like any built-in Gradio component. </p>
+<p><strong><a href="https://huggingface.co/spaces/hysts-gradio-custom-html/detection-viewer-demo">Detection Viewer</a></strong>: A custom viewer for object detection, instance segmentation, and pose estimation results. Renders bounding boxes, segmentation masks, keypoints, and skeleton connections — all in a reusable <code>gr.HTML</code> subclass that plugs directly into your model pipeline.</p>
+<p>The community's built some creative components with gr.HTML too:</p>
+<p><strong><a href="https://huggingface.co/spaces/multimodalart/qwen-image-multiple-angles-3d-camera">3D Camera Control for Image Editing</a></strong>: A full Three.js viewport inside a Gradio app! Drag handles to control azimuth, elevation, and distance. Your uploaded image appears in the 3D scene, and the camera parameters feed directly into Qwen's latest image editing model. These kinds of interactive 3D controls would normally require a separate frontend — with Gradio it's just one <code>gr.HTML</code> subclass</p>
+<p><strong><a href="https://huggingface.co/spaces/mistralai/Voxtral-Mini-Realtime">Real-time Speech Transcription</a></strong>: Live transcription with Mistral's Voxtral model. The transcript display is a custom <code>gr.HTML</code> component with animated status badges, a live WPM counter, and styled output that updates as you speak. Real-time UI feedback without using React!</p>
+<hr>
+<h2> <a href="#how-it-works"> <span></span> </a> <span> How It Works </span>
+</h2>
+<p>Every <code>gr.HTML</code> component takes three templates:</p>
+<pre><code>gr.HTML( value={<span>"count"</span>: <span>0</span>}, html_template=<span>"&lt;button&gt;Clicked ${value.count} times&lt;/button&gt;"</span>, css_template=<span>"button { background: #667eea; color: white; }"</span>, js_on_load=<span>"""</span>
+<span> element.querySelector('button').onclick = () =&gt; {</span>
+<span> props.value = { count: props.value.count + 1 };</span>
+<span> trigger('change');</span>
+<span> };</span>
+<span> """</span>
+)
+</code></pre>
+<p><code>${value}</code> injects Python state. <code>props.value</code> updates it from JavaScript. <code>trigger('change')</code> syncs back to Python. That's the whole API.</p>
+<p>For reusable components, subclass <code>gr.HTML</code>:</p>
+<pre><code><span>class</span> <span>Heatmap</span>(gr.HTML): <span>def</span> <span>__init__</span>(<span>self, value=<span>None</span>, theme=<span>"green"</span>, **kwargs</span>): <span>super</span>().__init__( value=value, theme=theme, html_template=TEMPLATE, css_template=STYLES, js_on_load=SCRIPT, **kwargs )
+</code></pre>
+<p>Now <code>Heatmap()</code> works like <code>gr.Image()</code> or <code>gr.Slider()</code> — use it in Blocks, wire up event handlers, whatever you need.</p>
+<h2> <a href="#why-this-matters-for-vibe-coding"> <span></span> </a> <span> Why This Matters for Vibe Coding </span>
+</h2>
+<p>When you ask your LLM to build a custom component, single-file output is everything. No "now create the styles file" or "wire this into your build config." Just one Python file that runs immediately.</p>
+<p>The feedback loop becomes: describe what you want → get code → <code>gradio app.py</code> → see it working → describe what to fix → repeat. Each cycle takes seconds with <a href="https://www.gradio.app/guides/developing-faster-with-reload-mode">Gradio's reload mode</a>.</p>
+<p><a href="https://www.gradio.app/guides/sharing-your-app#hosting-on-hf-spaces">Deploy to Spaces</a> with <code>gradio deploy</code> or <a href="https://www.gradio.app/guides/sharing-your-app#sharing-demos">share a temporary link</a> with <code>demo.launch(share=True)</code>. Within a few seconds from an idea to a live app.</p>
+<hr>
+<p>Gradio ships with 32 interactive components, but sometimes your perfect AI web app needs something special. That's where <code>gr.HTML</code> comes in. </p>
+<p>If you’ve got an idea, try building it with <code>gr.HTML</code>: describe what you want to your LLM, generate the code, run it. You might be surprised what you can ship in 5 minutes.</p>
+<p>Suggested reading:</p>
+<ul>
+<li>Gradio guide: <a href="https://www.gradio.app/guides/custom-HTML-components">Custom Components with gr.HTML</a></li>
+<li>API docs: <a href="https://www.gradio.app/docs/gradio/html">gr.HTML</a></li>
+</ul>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

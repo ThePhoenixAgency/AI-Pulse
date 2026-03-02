@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - dmaiken/konifer: A simple and performant asset management platform</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - dmaiken/konifer: A simple and performant asset management platform</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 2:37:59 AM | <a href="https://github.com/dmaiken/konifer" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Konifer</h1><a href="#konifer"></a></div>
+<div><pre>docker pull ghcr.io/dmaiken/konifer:0.1</pre></div>
+<pre><code>Konifer is a high-performance, non-blocking REST API for managing images.
+Built with Kotlin on the Ktor framework, it provides a flexible, path-driven design that allows clients to
+define their own hierarchical structure for image storage and retrieval.</code></pre>
+<div><h2>Who should use this?</h2><a href="#who-should-use-this"></a></div>
+<ul>
+<li>Those who never want to think about or pay for a usage "token" again</li>
+<li>Companies who want to avoid vendor lock-in</li>
+<li>Companies who want to scale their image processing in a way cloud processors simply don't accommodate (without a nice, expensive contract of course)</li>
+<li>Those who wish to retain digital sovereignty of their data in a time where sovereignty's value is being demonstrated</li>
+</ul>
+<div><h2>Documentation</h2><a href="#documentation"></a></div>
+<p>To learn more about Konifer please visit the <a href="https://dmaiken.github.io/konifer-docs/">documentation</a>.</p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<div><h3>Composable URL Structure</h3><a href="#composable-url-structure"></a></div>
+<pre><code>You define the path you want, limiting the need to store an identifier for an image. Fetching user 123's profile picture
+no longer requires you to store "imageId = 2c3ee9c4-58b4-4d0c-8694-ab91125b5d3a" in your User service's DB. Instead,
+define your path semantically:</code></pre>
+<div><pre><code>GET /assets/user/123/profile
+</code></pre></div>
+<p>Konifer doesn't try to enforce any particular structure for assets, but it does provide a
+simple way to define your own.</p>
+<p>The way that Konifer stores and references the asset tree means there is no performance penalty for any path structure you
+choose. If you wish to retain an "image ID", you can do so:</p>
+<div><pre><code>GET /assets/{imageId}
+</code></pre></div>
+<div><h4>Multiple Images Within the Same Path</h4><a href="#multiple-images-within-the-same-path"></a></div>
+<p>Konifer's path structure supports multiple images within the same path. When images are uploaded to a path, they are assigned an </p><pre><code>entryId</code></pre>,
+an always-increasing value that uniquely identifies the image relative to the path.<p></p>
+<p>For example, lets create an album for a ski trip (multi-part upload omitted) with 2 pictures:</p>
+<div><pre><code>POST /assets/users/{userId}/ski-trip
+</code></pre></div>
+<p>Response:</p>
+<div><pre>{ <span>"class"</span>: <span><span>"</span>image<span>"</span></span>, <span>"entryId"</span>: <span>0</span>, <span>"labels"</span>: {}, <span>"tags"</span>: [], <span>"source"</span>: <span><span>"</span>upload<span>"</span></span>, <span>"variants"</span>: [ { <span>"isOriginalVariant"</span>: <span>true</span>, <span>"storeBucket"</span>: <span><span>"</span>assets<span>"</span></span>, <span>"storeKey"</span>: <span><span>"</span>513b9a74-0d78-40a3-9582-12bcb226fe1d.webp<span>"</span></span>, <span>"attributes"</span>: { <span>"height"</span>: <span>1752</span>, <span>"width"</span>: <span>2560</span>, <span>"mimeType"</span>: <span><span>"</span>image/webp<span>"</span></span> }, <span>"lqip"</span>: {} } ], <span>"createdAt"</span>: <span><span>"</span>2025-12-26T23:02:43.042568<span>"</span></span>, <span>"modifiedAt"</span>: <span><span>"</span>2025-12-26T23:02:43.95746582<span>"</span></span>
+}</pre></div>
+<div><pre><code>POST /assets/users/{userId}/ski-trip
+</code></pre></div>
+<p>Response:</p>
+<div><pre>{ <span>"class"</span>: <span><span>"</span>image<span>"</span></span>, <span>"entryId"</span>: <span>1</span>, <span>"labels"</span>: {}, <span>"tags"</span>: [], <span>"source"</span>: <span><span>"</span>upload<span>"</span></span>, <span>"variants"</span>: [ { <span>"isOriginalVariant"</span>: <span>true</span>, <span>"storeBucket"</span>: <span><span>"</span>assets<span>"</span></span>, <span>"storeKey"</span>: <span><span>"</span>2a09d243-82f8-42e2-ab64-16ec2adec793.webp<span>"</span></span>, <span>"attributes"</span>: { <span>"height"</span>: <span>1600</span>, <span>"width"</span>: <span>2410</span>, <span>"mimeType"</span>: <span><span>"</span>image/webp<span>"</span></span> }, <span>"lqip"</span>: {} } ], <span>"createdAt"</span>: <span><span>"</span>2025-12-26T23:03:48.934689<span>"</span></span>, <span>"modifiedAt"</span>: <span><span>"</span>2025-12-26T23:03:48.934689<span>"</span></span>
+}</pre></div>
+<p>You can access each image in the album by supplying the </p><pre><code>entryId</code></pre>:<p></p>
+<div><pre><code>GET /assets/users/{userId}/ski-trip/-/entry/1
+</code></pre></div>
+<div><h3>Variants (Transformations)</h3><a href="#variants-transformations"></a></div>
+<p>Konifer provides many ways to transform your images:</p>
+<ul>
+<li>Transformation of the original image content at upload-time</li>
+<li>Generate variants eagerly at upload-time for well-known transformations e.g. thumbnails</li>
+<li>On-demand variant generation for on-the-fly variant generation</li>
+</ul>
+<div><h3>Multiple Return Formats</h3><a href="#multiple-return-formats"></a></div>
+<p>You can specify your image data or metadata in any format you need:</p>
+<div><h4>Metadata</h4><a href="#metadata"></a></div>
+<p>Fetch the metadata of your image, including generated variants</p>
+<div><pre><code>GET /assets/user/123/profile/-/metadata
+</code></pre></div>
+<div><pre>{ <span>"class"</span>: <span><span>"</span>image<span>"</span></span>, <span>"alt"</span>: <span><span>"</span>The alt text for an image<span>"</span></span>, <span>"entryId"</span>: <span>1049</span>, <span>"labels"</span>: { <span>"label-key"</span>: <span><span>"</span>label-value<span>"</span></span>, <span>"phone"</span>: <span><span>"</span>Android<span>"</span></span> }, <span>"tags"</span>: [ <span><span>"</span>cold<span>"</span></span>, <span><span>"</span>verified<span>"</span></span> ], <span>"source"</span>: <span><span>"</span>url<span>"</span></span>, <span>"sourceUrl"</span>: <span><span>"</span>https://yoururl.com/image.jpeg<span>"</span></span>, <span>"variants"</span>: [ { <span>"isOriginalVariant"</span>: <span>true</span>, <span>"storeBucket"</span>: <span><span>"</span>assets<span>"</span></span>, <span>"storeKey"</span>: <span><span>"</span>d905170f-defd-47e4-b606-d01993ba7b42<span>"</span></span>, <span>"imageAttributes"</span>: { <span>"height"</span>: <span>100</span>, <span>"width"</span>: <span>200</span>, <span>"mimeType"</span>: <span><span>"</span>image/jpeg<span>"</span></span> }, <span>"lqip"</span>: { <span>"blurhash"</span>: <span><span>"</span>BASE64<span>"</span></span>, <span>"thumbhash"</span>: <span><span>"</span>BASE64<span>"</span></span> } }, { <span>"isOriginalVariant"</span>: <span>false</span>, <span>"storeBucket"</span>: <span><span>"</span>assets<span>"</span></span>, <span>"storeKey"</span>: <span><span>"</span>64fffa7e-85d2-42db-a081-354c91ec7ef9.webp<span>"</span></span>, <span>"attributes"</span>: { <span>"height"</span>: <span>2560</span>, <span>"width"</span>: <span>1752</span>, <span>"format"</span>: <span><span>"</span>webp<span>"</span></span>, <span>"pageCount"</span>: <span>1</span>, <span>"loop"</span>: <span>0</span> }, <span>"transformation"</span>: { <span>"width"</span>: <span>2560</span>, <span>"height"</span>: <span>1752</span>, <span>"fit"</span>: <span><span>"</span>fit<span>"</span></span>, <span>"gravity"</span>: <span><span>"</span>center<span>"</span></span>, <span>"format"</span>: <span><span>"</span>webp<span>"</span></span>, <span>"rotate"</span>: <span><span>"</span>ninety<span>"</span></span>, <span>"flip"</span>: <span><span>"</span>none<span>"</span></span>, <span>"filter"</span>: <span><span>"</span>none<span>"</span></span>, <span>"blur"</span>: <span>0</span>, <span>"quality"</span>: <span>80</span>, <span>"padding"</span>: { <span>"amount"</span>: <span>0</span>, <span>"color"</span>: [] } }, <span>"lqip"</span>: {} } ], <span>"createdAt"</span>: <span><span>"</span>2025-11-12T01:20:55<span>"</span></span>
+}</pre></div>
+<div><h4>Redirect</h4><a href="#redirect"></a></div>
+<p>Request a 307 Redirect of your image's object repository's (e.g. S3) URL. Presigned URLs can be enabled for object repositories
+that support it.</p>
+<div><pre><code>GET /assets/user/123/profile/-/redirect
+GET /assets/user/123/profile/-/entry/1/redirect
+</code></pre></div>
+<div><pre><span><span>paths</span></span> = [ { <span>path</span> = <span>"/**"</span> <span><span>#</span> See Path Configuration in the documentation</span> <span>return-format</span> { <span>redirect</span> { <span>strategy</span> = <span><span>presigned</span></span> <span>presigned</span> { <span>ttl</span> = <span>1h</span> } } } }
+]</pre></div>
+<div><h4>Content</h4><a href="#content"></a></div>
+<p>Return the content bytes directly from Konifer. Your </p><pre><code>alt</code></pre> and any LQIP implementations are included as response headers.<p></p>
+<div><pre><code>GET /assets/user/123/profile/-/content
+GET /assets/user/123/profile/-/entry/1/content
+</code></pre></div>
+<div><h4>Download</h4><a href="#download"></a></div>
+<p>Return the content bytes just like </p><pre><code>content</code></pre>, but include a <pre><code>Content-Disposition</code></pre> header so browsers trigger a "Save As" dialog.<p></p>
+<div><pre><code>GET /assets/user/123/profile/-/download
+GET /assets/user/123/profile/-/entry/1/download
+</code></pre></div>
+<div><h4>Link</h4><a href="#link"></a></div>
+<p>Return a JSON containing the object repository link as well as other parameters necessary to properly render the image.</p>
+<div><pre><code>GET /assets/user/123/profile/-/link
+GET /assets/user/123/profile/-/entry/1/link
+</code></pre></div>
+<div><pre>{ <span>"url"</span>: <span><span>"</span>https://assets.s3.us-east-2.amazonaws.com/d905170f-defd-47e4-b606-d01993ba7b42<span>"</span></span>, <span>// Or presigned if enabled</span> <span>"lqip"</span>: { <span>// Empty if LQIPs are disabled</span> <span>"blurhash"</span>: <span><span>"</span>BASE64<span>"</span></span>, <span>"thumbhash"</span>: <span><span>"</span>BASE64<span>"</span></span> }, <span>"alt"</span>: <span><span>"</span>Your alt<span>"</span></span>
+}</pre></div>
+<div><h3>Ordering</h3><a href="#ordering"></a></div>
+<p>You can apply an ordering to the image(s) you're fetching:</p>
+<ul>
+<li><pre><code>created</code></pre> (default) - order by last-created</li>
+<li><pre><code>modified</code></pre> - order by last-modified</li>
+</ul>
+<p>To fetch the latest image in the path:</p>
+<div><pre><code>GET /assets/user/123/profile/-/created
+</code></pre></div>
+<p>These allow you to use the </p><pre><code>entryId</code></pre> as a Version identifier.<p></p>
+<div><h3>Limit</h3><a href="#limit"></a></div>
+<p>If requesting the </p><pre><code>metadata</code></pre> return format, you can also specify how many images you want returned.<p></p>
+<div><pre><code>GET /assets/user/123/profile/-/created?limit=10
+</code></pre></div>
+<p>To fetch all images within the path:</p>
+<div><pre><code>GET /assets/user/123/profile/-/created?limit=-1
+</code></pre></div>
+<div><h3>Named Transformations</h3><a href="#named-transformations"></a></div>
+<p>For common transformations, simply configure a Variant Profile. Instead of specifying all parameters like this:</p>
+<div><pre><code>GET /assets/user/123/profile?w=300&amp;blur=10&amp;r=auto
+</code></pre></div>
+<p>With this configuration:</p>
+<div><pre><span><span>variant-profiles</span></span> = [ { <span>name</span> = <span><span>thumbnail</span></span> <span>w</span> = <span>300</span> <span>blur</span> = <span>10</span> <span>r</span> = <span><span>auto</span></span> }
+]</pre></div>
+<p>Supply the profile name:</p>
+<div><pre><code>GET /assets/user/123/profile?profile=thumbnail
+</code></pre></div>
+<div><h2>Building &amp; Running</h2><a href="#building--running"></a></div>
+<p>To build or run the project, use one of the following tasks:</p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>./gradlew test</code></pre></td>
+<td>Run the tests</td>
+</tr>
+<tr>
+<td><pre><code>./gradlew build</code></pre></td>
+<td>Build everything</td>
+</tr>
+<tr>
+<td><pre><code>./gradlew :service:shadowJar</code></pre></td>
+<td>Build an executable JAR of the server with all dependencies included</td>
+</tr>
+<tr>
+<td><pre><code>./gradlew run</code></pre></td>
+<td>Run the server</td>
+</tr>
+<tr>
+<td><pre><code>./gradlew ktlintFormat detekt</code></pre></td>
+<td>Lint the codebase</td>
+</tr>
+<tr>
+<td><pre><code>./gradlew generateJooq</code></pre></td>
+<td>Generate JOOQ schema (required for any DB change or JOOQ dependency upgrade</td>
+</tr>
+<tr>
+<td><pre><code>./gradlew generateLicenseReport</code></pre></td>
+<td>Generate OSS license report</td>
+</tr>
+</tbody>
+</table>
+<p>If the server starts successfully, you'll see the following output:</p>
+<div><pre><code>2024-12-04 14:32:45.584 [main] INFO Application - Application started in 0.303 seconds.
+2024-12-04 14:32:45.682 [main] INFO Application - Responding at http://0.0.0.0:8080
+</code></pre></div>
+<div><h2>Running Locally</h2><a href="#running-locally"></a></div>
+<p>Before you run this locally, you must install libvips. You may have it already, however, installing it from source
+ensures you're developing against the same version that Konifer will use within Docker.</p>
+<p>To install:</p>
+<div><pre>chmod +x /scripts/install-vips.sh <span>&amp;&amp;</span> ./scripts/install-vips.sh --with-deps luci</pre></div>
+<div><h2>Docker</h2><a href="#docker"></a></div> <div><pre>docker build <span>.</span> -t konifer:latest</pre></div>
+<p>Then, to run, mount a file to </p><pre><code>/app/config/konifer.conf</code></pre>:<p></p>
+<div><pre>docker run -v path/to/your/conf/file:/app/config/konifer.conf -p 8080:8080 konifer</pre></div>
+<p>Example:</p>
+<div><pre>docker run -v <span>~</span>/konifer-test/config.conf:/app/config/konifer.conf -p 8080:8080 konifer</pre></div>
+<div><h3>JOOQ</h3><a href="#jooq"></a></div>
+<p>This project used <a href="https://www.jooq.org/">JOOQ</a> as it's interface to the database. JOOQ generates the code based on the database schema.
+This is done within the </p><pre><code>codegen</code></pre> module. Running the code generator will:<p></p>
+<ol>
+<li>Spin up a Postgres testcontainer</li>
+<li>Run r2dbc-migrate against the database to apply the schema</li>
+<li>Run the code generator against the constructed schema</li>
+<li>Dump generated code into the <pre><code>jooq-generated</code></pre> module</li>
+</ol>
+<p>To run this (which must be done if you make a schema change or update the JOOQ dependency):</p>
+<div><pre>./gradlew generateJooq</pre></div>
+<p><strong>Note</strong>: Linting is disabled for the </p><pre><code>jooq-generated</code></pre> module.<p></p>
+<p>We do not want JOOQ to generate code for tables that the application will not interact with (e.g. db-scheduler tables).
+Code generation for these tables can be skipped within the generator configuration file </p><pre><code>CodeGen.kt</code></pre> like so:<p></p>
+<div><pre>database <span>=</span> <span>Database</span>().<span>apply</span> { name <span>=</span> <span><span>"</span>org.jooq.meta.postgres.PostgresDatabase<span>"</span></span> inputSchema <span>=</span> <span><span>"</span>public<span>"</span></span> excludes <span>=</span> <span><span>"</span>migrations|scheduled_tasks|path_entry_counter<span>"</span></span> <span><span>//</span> regex for excluded tables</span>
+}</pre></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
 <meta charset="UTF-8">
-<title>Show HN: AgentForge – Multi-LLM Orchestrator in 15KB</title>
+<title>Show HN: AgentForge – Multi-LLM Orchestrator in 15KB of Python</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
@@ -23,29 +23,14 @@
 </style>
 </head>
 <body>
-  <h1>Show HN: AgentForge – Multi-LLM Orchestrator in 15KB</h1>
+  <h1>Show HN: AgentForge – Multi-LLM Orchestrator in 15KB of Python</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/18/2026 2:18:12 AM | <a href="https://github.com/ChunkyTortoise/ai-orchestrator" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Hacker News Show | Date: 2/18/2026 7:38:38 PM | <a href="https://github.com/ChunkyTortoise/ai-orchestrator" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
   </div>
   <div class="content">
-    <p>I built AgentForge, a minimal multi-LLM orchestrator. Total size: ~15KB of Python code.
-Why? LangChain added 250ms overhead per request. I needed something simpler.
-Performance vs LangChain (1,000 requests):
-- Avg latency: 420ms -&gt; 65ms
-- Memory/request: 12MB -&gt; 3MB
-- Cold start: 2.5s -&gt; 0.3s
-- Test time: 45s -&gt; 3s
-Size: 15KB + 2 dependencies (httpx, pytest) vs LangChain's 15MB+ and 47 packages.
-In production: 89% LLM cost reduction via 3-tier Redis caching (88% cache hit rate, verified benchmarks). 4.3M tool dispatches/sec in the core engine.
-What it does:
-1. Multi-agent orchestration -- route tasks to specialized agents with automatic fallbacks
-2. Testing built-in -- MockLLMClient lets you assert agent behavior without API keys
-3. Production patterns -- circuit breakers, rate limiting, caching included
-Install: pip install agentforge
-Live demo: https://ai-orchest-7mnwp9untg7gyyvchzevid.streamlit.app/
-Packaged version with docs and deployment guide: https://chunkmaster1.gumroad.com
-When to use it: production reliability matters, latency is a concern, you want full test coverage.
-When not to: prototyping, internal tools, team already on LangChain ecosystem.</p>
+    <p>Article URL: https://github.com/ChunkyTortoise/ai-orchestrator URL: https://news.ycombinator.com/item?id=47065292
+Points: 1
+# : 0</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

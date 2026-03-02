@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Android Tablet Kiosk problems</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Android Tablet Kiosk problems</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/27/2026 11:38:36 PM | <a href="https://community.home-assistant.io/t/android-tablet-kiosk-problems/991354" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <div> <p><span> <time> February 27, 2026, 11:38pm </time> <span>1</span> </span> </p></div> <div> <p>Hello all,</p>
+<p>A little background …</p>
+<p>I have HAOS installed on my Dell Optiplex 7050. Most my 40-odd devices are ZigBee ZHA with a few wifi devices, like my Reolink doorbell camera. My system has worked pretty flawlessly for about three years.</p>
+<p>I’m currently working on a wall-mounted android tablet that I want to behave as follows … I want to show a single tablet view with some basic house sensors and controls. It will only come on when presence is detected by the tablet camera. When presence is <em>not</em> detected after a short time, the screen turns off. When someone presses the (Reolink) doorbell, a live camera feed of the visitor pop-ups on the tablet for a short time, regardless if the screen was on or off when the doorbell was pushed. After the camera pop-up times out, the tablet reverts to the screen off state.</p>
+<p>I’ve scoured this site and YouTube for examples and found a few. I’ve found this YouTube video from Dave at Lazy Tech Geek to be the model I used. <a href="https://www.youtube.com/watch?v=jqGvk1v8W04&amp;list=PLmYU-7DfexjuujN2IvOpk2EvXMKy5HxsB&amp;index=5">https://www.youtube.com/watch?v=jqGvk1v8W04&amp;list=PLmYU-7DfexjuujN2IvOpk2EvXMKy5HxsB&amp;index=5</a> Thanks Dave</p>
+<p><strong>The stuff that seems to work.</strong></p>
+<ol>
+<li>
+<p>Installed the Fully Kiosk Browser APK file on a Galaxy Tab S2 running Android 7.0 <em>All good</em></p>
+</li>
+<li>
+<p>Set up Fully Kiosk remote administration on my desktop and can access all the Fully Kiosk settings. <em>All good</em></p>
+</li>
+<li>
+<p>Configured screensaver settings in Fully Kiosk to use the tablet camera for presence detection. Tablet turns the display on with motion and turns off with the delay set. <em>All good</em></p>
+</li>
+<li>
+<p>Set up the starting URL in Fully Kiosk of the desired dashboard view. <em>All good</em></p>
+</li>
+<li>
+<p>Set up a new user account for the Kiosk tablet to only have access to desired dashboard page. When I open Fully Kiosk on the tablet, it opens to my desired dashboard view, but the header shows all my other dashboard views as well. I think the desired next step would be to install the Browser Mods integration to hide the Fully Kiosk header and sidebar. <em>Maybe good</em></p>
+</li>
+</ol>
+<p><strong>Here is where it starts getting not so good.</strong></p>
+<ol>
+<li>My tablet touch screen won’t work when Fully KIosk is opened. When I start the app, I get a large watermark style text box labeled “restart”. There is also another text block stating “Fully Kiosk Browser isn’t responding” with options to close the app or wait. Since the touchscreen won’t work, I fuss with power on/off and other gymnastics to get it cleared … sometimes.<br>
+Once the tablet prompted that “TouchWiz” user interface wasn’t loading. Samsung has since discontinued using TouchWiz and I’m suspecting it is at the core of the problem. I’m not sure if I can uninstall TouchWiz, and if so, is there a native touch in Android that will still work?</li>
+</ol>
+<p>I have other questions, but I need to get the touchscreen issue resolved before I get to them.</p>
+<p>Thanks in advance for any help.</p>
+<p>regards,<br>
+Karl</p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Inside the Bitaxe: How an Open-Source ASIC Miner Goes from Schematic to Solo Block</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Inside the Bitaxe: How an Open-Source ASIC Miner Goes from Schematic to Solo Block</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 3:04:22 AM | <a href="https://dev.to/solosatoshi/inside-the-bitaxe-how-an-open-source-asic-miner-goes-from-schematic-to-solo-block-353h" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>If you have spent any time in Bitcoin circles over the past year, you have probably seen the photos. A tiny circuit board, roughly the size of a credit card, with a single ASIC chip, a small fan, and an OLED screen showing a live hashrate. It sits on someone's desk next to a monitor, pulling 18 watts from a USB-C power supply.</p> <p>That device is a <a href="https://www.solosatoshi.com/product-category/bitcoin-miners/bitaxe/" target="_blank">Bitaxe</a>. And it is one of the most interesting open-source hardware projects to emerge in the Bitcoin ecosystem.</p> <p>What makes Bitaxe worth paying attention to is not the mining output. At 1.2 TH/s, a single Bitaxe Gamma 602 represents a vanishingly small fraction of Bitcoin's 800+ EH/s network hashrate. What makes it interesting is the engineering: a fully open-source Bitcoin ASIC miner built around a reverse-engineered Bitmain chip, an ESP32-S3 microcontroller, and a firmware stack that anyone can audit, modify, and flash.</p> <p>For developers and hardware tinkerers, there is a lot to unpack here.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F4xv6cb397bawlhph8wlr.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F4xv6cb397bawlhph8wlr.png" alt="Bitaxe 601 open-source Bitcoin ASIC miner with OLED display showing live hashrate, running on a home desk"></a></p> <h2> <a name="the-architecture" href="#the-architecture"> </a> The Architecture
+</h2> <p>Every <a href="https://www.solosatoshi.com/what-is-bitaxe/" target="_blank">Bitaxe</a> model shares the same core architecture. An application-specific integrated circuit (ASIC) handles the SHA-256 hashing. An ESP32-S3 microcontroller manages Wi-Fi connectivity, pool communication, and the web-based configuration interface called AxeOS. A small OLED display outputs real-time stats: hashrate, temperature, best difficulty share, and uptime.</p> <p>The current flagship, the Bitaxe Gamma 602, uses Bitmain's BM1370 ASIC. This is the same chip found in the industrial Antminer S21 Pro, which runs thousands of these chips in parallel at rack scale. The Bitaxe puts one on a palm-sized PCB and drives it at 15 J/TH efficiency.</p> <p>The dual-chip Bitaxe GT 801 runs two BM1370s on a single board at 2.15 TH/s and 18 J/TH. The Bitaxe Duo 650 takes a different approach: two BM1370s at the same 15 J/TH efficiency as the Gamma, pushing 1.63 TH/s in a slightly larger form factor.</p> <p>All schematics, PCB layouts, Gerber files, and bill of materials are published at bitaxe.org and on Skot's GitHub repository. The firmware, ESP-Miner, is also fully open source. This is not "open-source-in-name-only" where a company publishes a README and keeps the interesting parts private. Every copper trace on the board is documented.</p> <h2> <a name="the-firmware-axeos" href="#the-firmware-axeos"> </a> The Firmware: AxeOS
+</h2> <p>AxeOS is where the Bitaxe becomes genuinely useful as a developer platform. The firmware runs on the ESP32-S3 and exposes a full web interface accessible from any browser on the local network. From AxeOS you can configure:</p> <ul>
+<li>Stratum pool URL and port</li>
+<li>Bitcoin wallet address (stratum user)</li>
+<li>ASIC frequency and core voltage (overclocking)</li>
+<li>Fan speed and thermal thresholds</li>
+<li>Autotune mode (automatic frequency/voltage optimization)</li>
+<li>OTA firmware updates</li>
+</ul> <p>The autotune feature is particularly well implemented. It incrementally adjusts ASIC frequency and voltage, monitors temperature and hashrate stability, and settles on an optimal operating point for your specific chip. Because of silicon lottery (natural variance in chip manufacturing), two identical Bitaxe units will often stabilize at slightly different frequencies. Autotune handles this automatically.</p> <p>The entire AxeOS codebase lives at github.com/skot/ESP-Miner. It is written in C using the ESP-IDF framework. Pull requests are active. If you want to contribute, the ASIC driver layer and the Stratum V1 implementation are the two most impactful areas.</p> <h2> <a name="what-actually-happens-when-it-mines" href="#what-actually-happens-when-it-mines"> </a> What Actually Happens When It Mines
+</h2> <p>When the Bitaxe boots, AxeOS connects to your configured Wi-Fi network, opens a TCP connection to the stratum pool, and begins requesting work. The pool sends a block template containing a set of transaction data, a previous block hash, and a target difficulty.</p> <p>The ESP32-S3 passes this work to the BM1370 via a serial interface. The ASIC then iterates through nonce values at approximately 1.2 trillion attempts per second (for the Gamma 602), computing a double SHA-256 hash for each. If the resulting hash is below the target difficulty, the Bitaxe submits it back to the pool as a valid share.</p> <p>For pool mining, any share meeting the pool's difficulty threshold earns proportional credit toward the next block reward. For solo mining (the mode most Bitaxe owners use), only a share meeting the full network difficulty counts. That means your device needs to find a hash below a target set by a difficulty exceeding 114 trillion as of February 2026.</p> <p>The probability math is straightforward. A 1.2 TH/s device against a network of 800+ EH/s has roughly a 1-in-850,000 chance of solving a block in any given day. Each hash is an independent Bernoulli trial. There is no "building toward" a solution. Every hash is equally likely to be the winning one.</p> <h2> <a name="when-the-improbable-happens" href="#when-the-improbable-happens"> </a> When the Improbable Happens
+</h2> <p>Despite those odds, Bitaxe devices have <a href="https://www.solosatoshi.com/has-bitaxe-found-a-block-next-block-is-closer-than-you-think/" target="_blank">found confirmed Bitcoin blocks</a>. In March 2025, a miner running a Bitaxe at roughly 480 GH/s found Block #887,212 and earned 3.125 BTC, worth approximately $200,000. In November 2025, a cluster of six Bitaxe Gamma 602 units with a combined 6.6 TH/s found Block #924,569 at a network difficulty of 221.39 trillion, earning over $310,000.</p> <p>The most notable find came in October 2025. A cluster of NerdQaxe++ devices (a quad-chip variant running four BM1370s at 6+ TH/s) found Block #920,440 while connected to a self-hosted Public Pool instance running on Umbrel. The reward was 3.141 BTC, roughly $347,000. The miner was running a fully sovereign stack: his own hardware, his own node, his own pool software. No third party was involved at any point in the process.</p> <p>In total, open-source mining hardware has found at least five confirmed blocks since July 2024, with combined rewards exceeding $1 million in BTC. The interval between finds has been compressing: 229 days, 179 days, 52 days, 25 days. More devices in the field means more aggregate hashrate, which means more statistically expected wins.</p> <h2> <a name="the-protocol-layer-datum-and-stratum-v2" href="#the-protocol-layer-datum-and-stratum-v2"> </a> The Protocol Layer: DATUM and Stratum V2
+</h2> <p>The Bitaxe currently communicates with mining pools using Stratum V1, the protocol that has been the industry standard since 2012. In the V1 model, the pool constructs the block template and sends it to the miner. The miner hashes it. The miner has no say in which transactions are included.</p> <p>Two newer protocols are changing this dynamic.</p> <p><strong>DATUM</strong>, developed by Ocean, allows miners to build their own block templates using their own Bitcoin node's mempool data. The miner selects which transactions to include, constructs the coinbase transaction, and submits the completed work to the pool. The pool handles coordination and payout, but the miner retains editorial control over block contents.</p> <p><strong>Stratum V2</strong> pursues a similar goal with a different architecture. It introduces encrypted communication between miner and pool, reduces bandwidth requirements, and supports a "job declaration" mode where the miner can propose its own block templates.</p> <p>For Bitaxe owners running a home node (via Umbrel, Start9, or a bare metal setup), these protocols transform the device from a passive hash generator into an active participant in Bitcoin's consensus process. You are not just submitting hashes. You are deciding what goes in the block.</p> <p>Neither protocol is fully integrated into AxeOS at the time of writing, but development is active and the OSMU (Open Source Miners United) community on Discord is the primary coordination point.</p> <h2> <a name="building-or-buying" href="#building-or-buying"> </a> Building or Buying
+</h2> <p>The Bitaxe is designed to be buildable from scratch. Order the PCB from JLCPCB or PCBWay using the published Gerbers. Source the BM1370 from NBTC on AliExpress (approximately $15 per chip). Order the remaining BOM from DigiKey. Solder it yourself.</p> <p>This is, realistically, an advanced build. The BM1370 is a BGA package that requires reflow soldering. The passives are 0402 and 0201 size. You need a stencil, solder paste, and either a reflow oven or a hot air station with steady hands.</p> <p>For most people, buying a pre-assembled, tested unit is the practical path. Retailers like <a href="https://www.solosatoshi.com/product-category/bitcoin-miners/bitaxe/" target="_blank">Solo Satoshi</a> assemble and test every unit in the USA, ship same day, and include a 90-day warranty. The Bitaxe Gamma 602 runs approximately $98. A fully assembled NerdQaxe++ Rev 6.1 (four BM1370 chips, 6+ TH/s) is roughly $382.</p> <p>The open-source nature of the project means you are not locked into any vendor. If you buy a Bitaxe from any seller, you can flash it with the latest AxeOS firmware, point it at any pool, and configure it however you want. The hardware is yours. The firmware is yours. The keys are yours.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F93hprpv1uiuclo9xpq0d.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F93hprpv1uiuclo9xpq0d.png" alt="Bitaxe 600 PCB 3D render from KiCad showing ESP32-S3 controller, BM1370 ASIC pad, OLED display header, 5VDC barrel jack, USB-C port, and 4-pin PWM fan connector"></a></p> <h2> <a name="why-developers-should-care" href="#why-developers-should-care"> </a> Why Developers Should Care
+</h2> <p>Bitaxe sits at the intersection of embedded systems, cryptographic protocols, network engineering, and economic incentive design. It is a real-world system that combines:</p> <ul>
+<li>Low-level ASIC driver development (C, ESP-IDF)</li>
+<li>Networking protocol implementation (Stratum V1/V2, TCP sockets)</li>
+<li>Cryptographic hashing (SHA-256 double hash, nonce iteration)</li>
+<li>Hardware design (4-layer PCB, BGA soldering, thermal management)</li>
+<li>Distributed systems (pool coordination, block propagation, difficulty adjustment)</li>
+</ul> <p>If you are looking for an open-source project where your contribution has tangible, measurable impact on a live production network processing billions of dollars in value daily, this is one of the few that qualifies.</p> <p>The ESP-Miner repo accepts pull requests. The OSMU Discord has active hardware and firmware channels. The BM1370 register map is partially documented but still has gaps, which is one of the highest-impact reverse engineering opportunities available in the Bitcoin hardware space right now.</p> <p>Eighteen watts. One chip. A live connection to the most valuable computational network on earth. The code is open. The schematics are public. The blocks keep getting found.</p> <hr> <p><em>Matt Howard is the Founder and CEO of Solo Satoshi, a Bitcoin home mining hardware retailer based in Houston, Texas that has shipped over 40,000 open-source mining devices to 70+ countries.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

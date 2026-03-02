@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Predator spyware hooks iOS SpringBoard to hide mic, camera activity</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Predator spyware hooks iOS SpringBoard to hide mic, camera activity</h1>
+  <div class="metadata">
+    Source: BleepingComputer Windows | Date: 2/21/2026 4:13:24 PM | <a href="https://www.bleepingcomputer.com/news/security/predator-spyware-hooks-ios-springboard-to-hide-mic-camera-activity/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><img alt="Predator spyware hooks iOS SpringBoard to hide mic, camera activity" src="https://www.bleepstatic.com/content/hl-images/2024/06/10/apple-iphone.jpg"></p> <p>Intellexa’s Predator spyware can hide iOS recording indicators while secretly streaming camera and microphone feeds to its operators.</p> <p>The malware does not exploit any iOS vulnerability but leverages previously obtained&nbsp;kernel-level access to hijack system indicators that would otherwise expose its surveillance operation.</p> <p>Apple introduced recording indicators on the status bar in iOS 14 to alert users when the&nbsp;camera or microphone is in use, displaying a green or an orange dot, respectively.</p> <p><a href="https://www.wiz.io/lp/ai-security-board-report-template?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_AI-Security-Board-Report-Template&amp;sfcid=701Vh00000Wn7E1IAJ&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=AI-Board-Report" target="_blank"><img src="https://www.bleepstatic.com/c/w/ai-security-board-report-template.jpg" alt="Wiz"></a>
+</p> <p><a href="https://www.bleepingcomputer.com/news/legal/us-sanctions-predator-spyware-operators-for-spying-on-americans/" target="_blank">US-sanctioned</a> surveillance firm Intellexa developed the&nbsp;Predator <a href="https://www.bleepingcomputer.com/news/security/predator-looking-under-the-hood-of-intellexas-android-spyware/" target="_blank">commercial spyware</a>&nbsp;and delivered it in attacks that exploited <a href="https://www.bleepingcomputer.com/news/security/recently-patched-apple-chrome-zero-days-exploited-in-spyware-attacks/" target="_blank">Apple and Chrome zero-day flaws</a>&nbsp;and through <a href="https://www.bleepingcomputer.com/news/security/predator-spyware-uses-new-infection-vector-for-zero-click-attacks/" target="_blank">0-click infection mechanisms</a>.</p> <p>While its ability to suppress camera and microphone activity indicators is well known, it was unclear how the mechanism worked.</p> <div>
+<figure><img alt="iPhone cam/mic activation indicators" src="https://www.bleepstatic.com/images/news/u/1220909/2026/February/indicators.jpg"><figcaption><strong>iPhone cam/mic activation indicators</strong><br><em>Source: Jamf</em></figcaption></figure></div> <h3>How Predator hides recording</h3> <p>Researchers at mobile device management company Jamf analyzed Predator samples and documented the process of hiding the privacy-related indicators.</p> <p>According to Jamf, Predator hides all recording indicators on iOS 14 by using a single hook function (‘HiddenDot::setupHook()’) inside SpringBoard, invoking the method whenever sensor activity changes (upon camera or microphone activation).</p> <p>By intercepting it, Predator prevents sensor activity updates from ever reaching the UI layer, so the green or red dot never lights up.</p> <p>“The target method _handleNewDomainData: is called by iOS whenever sensor activity changes -&nbsp;camera turns on, microphone activates, etc.,” Jamf <a href="https://www.jamf.com/blog/predator-spyware-ios-recording-indicator-bypass-analysis/" target="_blank">researchers explain</a>.</p> <p>“By hooking this single method, Predator intercepts ALL sensor status updates before they reach the indicator display system.”</p> <div>
+<figure><img alt="Function targeting the SBSensorActivityDataProvider" src="https://www.bleepstatic.com/images/news/u/1220909/2026/February/fucntion.jpg"><figcaption><strong>Function targeting the SBSensorActivityDataProvider</strong><br><em>Source: Jamf</em></figcaption></figure></div> <p>The hook works by nullifying the object responsible for sensor updates (SBSensorActivityDataProvider in SpringBoard). In Objective-C, calls to a null object are silently ignored, so SpringBoard never processes the camera or microphone activation, and no indicator appears.</p> <p>Because SBSensorActivityDataProvider aggregates all sensor activity, this single hook disables both the camera and the microphone indicators.</p> <p>The researchers also found “dead code” that attempted to hook ‘SBRecordingIndicatorManager’ directly. However, it&nbsp;doesn’t execute, and is likely an earlier development path that was abandoned in favor of the better approach that intercepts sensor data upstream.</p> <p>In the case of VoIP recordings, which Predator also supports, the module responsible lacks an indicator-suppression mechanism, so it relies on the HiddenDot function for stealth.</p> <p>Jamf further explains that camera access is enabled through a separate module that locates internal camera functions using ARM64 instruction pattern matching&nbsp;and Pointer Authentication Code (PAC) redirection to bypass camera permission checks.</p> <p>Without indicators lighting up on the status bar, the spyware activity remains completely hidden to the regular user.</p> <p>Jamf notes that technical analysis reveals the signs of the malicious processes, such as unexpected memory mappings or exception ports in SpringBoard and mediaserverd, breakpoint-based hooks, and audio files written by mediaserverd to unusual paths.</p> <p>BleepingComputer has contacted Apple with a request for a comment on Jamf’s findings, but the company never responded.</p> <div> <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank"> <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg"></a> </p> <div> <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p> </div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

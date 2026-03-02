@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>- Yes, I still play Destiny 2 ... AI-Powered Game Server Status in Your Smart Home</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>- Yes, I still play Destiny 2 ... AI-Powered Game Server Status in Your Smart Home</h1>
+  <div class="metadata">
+    Source: openHAB Community (Latest) | Date: 2/27/2026 4:39:05 AM | <a href="https://community.openhab.org/t/yes-i-still-play-destiny-2-ai-powered-game-server-status-in-your-smart-home/168662" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>Hi,</p>
+<p>Destiny 2 might (probably will fade away) - but AI <img src="https://community.openhab.org/images/emoji/twitter/brain.png?v=15" title=":brain:" class="emoji" alt=":brain:" loading="lazy" width="20" height="20"> probably won’t … here an inspiration how you can use AI technology to get more useful, localized information for your screens.</p>
+<p>P.S.: I’m learning at the moment, how to make myselfe obsolete <img src="https://community.openhab.org/images/emoji/twitter/thinking.png?v=15" title=":thinking:" class="emoji" alt=":thinking:" loading="lazy" width="20" height="20"> - but I guess pandora is out of the box … - well, as an old friend said: <em>“I’m old, not obsolete” [<a href="https://terminator.fandom.com/wiki/T-800" rel="noopener nofollow ugc">T-800</a>]</em></p>
+<p>Let’s try to keep it that way …</p>
+<p>Once again I give the word to my co-author to summarize our approach:</p>
+<hr>
+<blockquote>
+<p><img src="https://community.openhab.org/images/emoji/twitter/memo.png?v=15" title=":memo:" class="emoji" alt=":memo:" loading="lazy" width="20" height="20"> <strong>Note</strong>: This article was automatically generated using an AI agent. The rule modifications, and tests were developed and refined using AI agents as coding partners. The approach documented here reflects our approach, not necessarily universal “best practices.”</p>
+</blockquote>
+<p><strong>Published:</strong> 2026-02-27<br>
+<strong>Tags:</strong> openHAB, GraalVM, JavaScript, GitHub Models, AI, Destiny 2</p>
+<hr>
+<h2><a name="p-964741-the-problem-1" class="anchor" href="https://community.openhab.org#p-964741-the-problem-1" aria-label="Heading link"></a>The Problem</h2>
+<p>Many games expose a public API for server status and maintenance alerts — but the responses are in English, contain raw HTML, and give no context about <em>what it means for you right now</em>: Is the server coming down in 15 minutes? Is maintenance still ongoing? When can I log back in?</p>
+<p>Displaying <code>"Destiny 2 will be temporarily offline tomorrow for scheduled maintenance. &lt;a href='...'&gt;Click here&lt;/a&gt;"</code> on a dashboard is not useful. A player glancing at their home screen needs a single, clear German sentence.</p>
+<hr>
+<h2><a name="p-964741-the-solution-2" class="anchor" href="https://community.openhab.org#p-964741-the-solution-2" aria-label="Heading link"></a>The Solution</h2>
+<p>Combine the game’s official API with a <strong>free AI model</strong> to generate a player-facing status summary — in real time, in your language, with relative time expressions.</p>
+<p>The full pipeline runs as an openHAB rule (GraalVM JS) every 30 minutes:</p>
+<pre><code class="lang-auto">Bungie GlobalAlerts API → AI prompt (GitHub Models) → openHAB items → dashboard
+</code></pre>
+<hr>
+<h2><a name="p-964741-the-ai-prompt-design-3" class="anchor" href="https://community.openhab.org#p-964741-the-ai-prompt-design-3" aria-label="Heading link"></a>The AI Prompt Design</h2>
+<p>The key insight is to pass <strong>all available structured fields</strong> to the model, not just the raw message text:</p>
+<pre data-code-wrap="javascript"><code class="lang-javascript">const userPrompt = `Aktueller Zeitpunkt: ${nowUtc}\n` + // enables relative time ("in 2 hours") `AlertKey: ${info.AlertKey}\n` + // semantic signal (OfflineSoon, Offline, Complete…) `Schweregrad: ${LEVEL_LABEL[info.AlertLevel]}\n` + // Info / Warnung / Kritisch `Alert-Zeitstempel: ${info.AlertTimestamp}\n` + `Meldung (englisch): ${plainText}`; // HTML stripped
+</code></pre>
+<p>The system prompt instructs the model to:</p>
+<ul>
+<li>Produce <strong>max. 2 German sentences</strong> for dashboard display</li>
+<li>Convert <strong>PT timezone to Berlin time</strong> (the game’s API always uses Pacific Time)</li>
+<li>Derive <strong>relative time expressions</strong> from the current timestamp</li>
+<li>Interpret <strong>AlertKey prefixes</strong> semantically (<code>OfflineSoon</code>, <code>LowPerformance</code>, <code>Complete</code>…)</li>
+<li>Prioritise the player’s key questions: <em>When? How long? When back?</em></li>
+</ul>
+<hr>
+<h2><a name="p-964741-example-outputs-4" class="anchor" href="https://community.openhab.org#p-964741-example-outputs-4" aria-label="Heading link"></a>Example Outputs</h2>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>AI-generated German output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maintenance tomorrow</td>
+<td><em>“Destiny 2 wird morgen früh um 17 Uhr offline genommen und voraussichtlich um 20 Uhr wieder spielbar sein.”</em></td>
+</tr>
+<tr>
+<td>Currently offline</td>
+<td><em>“Destiny 2 ist aktuell offline für Wartungsarbeiten. Eine Wiederherstellung wird für heute um ~10 Uhr erwartet.”</em></td>
+</tr>
+<tr>
+<td>Emergency in 15 min</td>
+<td><em>“Destiny 2 wird in etwa 15 Minuten für eine Notwartung offline gehen.”</em></td>
+</tr>
+<tr>
+<td>Service degraded</td>
+<td><em>“Destiny 2 hat derzeit Beeinträchtigungen – Schwierigkeiten beim Einloggen oder in Aktivitäten möglich.”</em></td>
+</tr>
+<tr>
+<td>Maintenance complete</td>
+<td><em>“Die Wartung von Destiny 2 ist abgeschlossen. Du kannst dich jetzt wieder einloggen.”</em></td>
+</tr>
+</tbody>
+</table>
+</div><hr>
+<h2><a name="p-964741-the-api-call-5" class="anchor" href="https://community.openhab.org#p-964741-the-api-call-5" aria-label="Heading link"></a>The API Call</h2>
+<p>GitHub Models exposes an OpenAI-compatible REST API — no SDK needed, just a plain HTTP POST:</p>
+<pre data-code-wrap="javascript"><code class="lang-javascript">const body = JSON.stringify({ model: "gpt-4o-mini", messages: [ { role: "system", content: SYSTEM_PROMPT }, { role: "user", content: userPrompt }, ], max_tokens: 150,
+}); const aiJson = actions.HTTP.sendHttpPostRequest( "https://models.inference.ai.azure.com/chat/completions", "application/json", body, { Authorization: `Bearer ${githubModelsToken}` }, 10000,
+); const result = JSON.parse(aiJson).choices[0].message.content.trim();
+</code></pre>
+<p>The token is a GitHub <strong>fine-grained PAT</strong> with <code>models:read</code> scope, stored as a plain-text file in openHAB’s secrets folder — never in the repository.</p>
+<hr>
+<h2><a name="p-964741-cost-6" class="anchor" href="https://community.openhab.org#p-964741-cost-6" aria-label="Heading link"></a>Cost</h2>
+<p>With <strong>GitHub Copilot Pro</strong> (or higher), the GitHub Models API is included at no extra cost:</p>
+<ul>
+<li><code>gpt-4o-mini</code> is a “Low” tier model: <strong>150 requests/day</strong> free</li>
+<li>A rule running every 30 minutes with an active alert makes <strong>~2 AI calls/day</strong></li>
+<li>Well within the free quota — even on a busy maintenance week</li>
+</ul>
+<hr>
+<h2><a name="p-964741-graceful-fallback-7" class="anchor" href="https://community.openhab.org#p-964741-graceful-fallback-7" aria-label="Heading link"></a>Graceful Fallback</h2>
+<p>The AI call is wrapped in its own try/catch. If it fails for any reason (rate limit, network, API error), the rule falls back to stripping the HTML tags from the original English message and storing the plain text instead. The rest of the rule — updating other items, alert level, timestamp — always completes regardless.</p>
+<hr>
+<h2><a name="p-964741-why-this-pattern-is-worth-reusing-8" class="anchor" href="https://community.openhab.org#p-964741-why-this-pattern-is-worth-reusing-8" aria-label="Heading link"></a>Why This Pattern Is Worth Reusing</h2>
+<p>This is not Destiny 2-specific. Any API that returns structured but English/HTML status data can use the same pattern:</p>
+<ul>
+<li>Steam game server status</li>
+<li>Streaming service incidents (Netflix, Spotify)</li>
+<li>Cloud provider status pages</li>
+<li>Home automation service health endpoints</li>
+</ul>
+<p>The combination of <strong>structured fields as context</strong> + <strong>current timestamp for relative expressions</strong> + <strong>semantic key interpretation</strong> is what makes the output actually useful rather than just a translation.</p>
+<hr>
+<h2><a name="p-964741-resources-9" class="anchor" href="https://community.openhab.org#p-964741-resources-9" aria-label="Heading link"></a>Resources</h2>
+<ul>
+<li><a href="https://bungie-net.github.io/" rel="noopener nofollow ugc">Bungie.net API</a> — <code>GET /Platform/GlobalAlerts/</code></li>
+<li><a href="https://github.com/marketplace/models" rel="noopener nofollow ugc">GitHub Models</a> — free AI inference for Copilot subscribers</li>
+<li><a href="https://www.openhab.org/addons/automation/jsscripting/" rel="noopener nofollow ugc">openHAB GraalVM JS scripting</a></li>
+</ul> <p><small>1 post - 1 participant</small></p> <p><a href="https://community.openhab.org/t/yes-i-still-play-destiny-2-ai-powered-game-server-status-in-your-smart-home/168662">Read full topic</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wine 11.3 released with vkd3d and Mono upgrades</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Wine 11.3 released with vkd3d and Mono upgrades</h1>
+  <div class="metadata">
+    Source: GamingOnLinux | Date: 2/23/2026 10:34:54 AM | <a href="https://www.gamingonlinux.com/2026/02/wine-11-3-released-with-vkd3d-and-mono-upgrades/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Wine 11.3 is here bringing more compatibility fixes for running Windows apps and games on Linux systems.</p>
+<p>New in this <a href="https://gitlab.winehq.org/wine/wine/-/releases/wine-11.3" target="_blank" rel="noopener noreferrer">Wine 11.3</a> release:</p>
+<blockquote>
+<ul>
+<li>Mono engine updated to version 11.0.0</li>
+<li>Bundled vkd3d upgraded to version 1.19.</li>
+<li>Improved FIR filter in DirectSound.</li>
+<li>More optimizations in PDB loading.</li>
+<li>Light theme renamed to Aero for compatibility.</li>
+<li>Various bug fixes.</li>
+</ul>
+</blockquote>
+<p>Bug fixes include issues solved for the likes of War Thunder, Among Us, Bad North Jotunn Edition, Guild Wars 2 and many many more.</p>
+<p>For <a href="https://github.com/wine-mono/wine-mono/releases/tag/wine-mono-11.0.0" target="_blank" rel="noopener noreferrer">Wine Mono 11.0.0</a> that's included the changes are:</p>
+<blockquote>
+<ul>
+<li>FNA: GraphicsAdapter.MonitorHandle now returns an HMONITOR. (Fixes Yargis: Space Melee)</li>
+<li>Mono:
+<ul>
+<li>Implemented Process.SessionId. (For <a href="https://bugs.winehq.org/show_bug.cgi?id=46384">bug 46384 - Can't run zools backup tool on wine</a>)</li>
+<li>STACK_MP (managed pointer type) can now be passed to long parameters. (For <a href="https://bugs.winehq.org/show_bug.cgi?id=58978">bug 58978 - QuarkXPress 2024 crashes on start with "System.InvalidOperationException: The calling thread must be STA"</a>)</li>
+<li>System.Runtime.Remoting: Report IpcServerChannel as securable. (For <a href="https://github.com/wine-mono/wine-mono/issues/64">#64</a>)</li>
+<li>AssemblyBuilder: Allow invalid path in transient module name. (For <a href="https://bugs.winehq.org/show_bug.cgi?id=41689">bug 41689 - Cyberduck crashes at launch</a>)</li>
+<li>The Mono.Runtime and System.MonoType classes are now hidden from reflection by default. These are commonly checked to detect Mono, which means software will generally no longer detect that it's running in Mono. The old behavior can be restored by setting <code>WINE_MONO_HIDETYPES=0</code>. (Rationale: Software may detect Mono to work around problems with Framework Mono, but Wine Mono is very different. In at least one case, I found that the Mono-specific codepath is just broken and could not be properly fixed any other way. I think I've also seen a program simply refuse to run in Mono because it was assumed that it wouldn't work. Detecting Wine Mono is still easily possible by looking for the WineMono.Security assembly, and I do not plan to interfere with software detecting Wine Mono specifically.)</li>
+<li>Added System.Data.Entity.Design.dll. (For <a href="https://forum.winehq.org/viewtopic.php?t=42360">Aurora4x, issue reported on WineHQ Forum</a>)</li>
+<li>System.Drawing: Rename Font.fontObject to nativeFont. (For <a href="https://bugs.winehq.org/show_bug.cgi?id=50590">bug 50590 - SnelStart 12.102.25 doesn't work (using mono)</a>)</li>
+</ul>
+</li>
+<li>WPF:
+<ul>
+<li>System.Windows.Controls.Ribbon: Fixed build having the wrong name for some resources. (For <a href="https://github.com/wine-mono/wine-mono/issues/205">#205</a>)</li>
+<li>PresentationNative: Convert Page to SubTrack. (For <a href="https://bugs.winehq.org/show_bug.cgi?id=58559">bug 58559 - Pokémon RNG abuse tool CoPilot crashing with mono</a>)</li>
+<li>PresentationNative: Fixed a buffer overrun in text layout code. (Fixes crash in Elite Dangerous launcher when clicking "Sign up")</li>
+<li>Added UIAutomationClient.dll. (For <a href="https://bugs.winehq.org/show_bug.cgi?id=50590">bug 50590 - SnelStart 12.102.25 doesn't work (using mono)</a>)</li>
+</ul>
+</li>
+<li>Added wminet_utils.dll. (For <a href="https://bugs.winehq.org/show_bug.cgi?id=59223">bug 59223 - Sony Home Memories Throws Unrecoverable error during installation</a>)</li>
+<li>Updates from upstream:
+<ul>
+<li>FNA 26.02</li>
+<li>SDL 3.4.0</li>
+<li>llvm-mingw 20251216</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>And for <a href="https://gitlab.winehq.org/wine/vkd3d/-/releases/vkd3d-1.19" target="_blank" rel="noopener noreferrer">vkd3d 1.19</a>:</p>
+<blockquote>
+<h3>libvkd3d<a href="#libvkd3d"></a></h3>
+<ul>
+<li>
+<p>Barriers are inserted as required between render passes targeting the same images. Typical desktop GPUs tend to not care much about these, but this is important for correctness on tile-based renderers.</p>
+</li>
+<li>
+<p>The ‘minimum’ and ‘maximum’ texture filtering reduction modes are supported.</p>
+</li>
+</ul>
+<h3>libvkd3d-shader<a href="#libvkd3d-shader"></a></h3>
+<ul>
+<li>
+<p>Much improved handling of clip and cull distance shader input/output arrays for SPIR-V targets. Direct3D source formats represent clip and cull distances as 2 4-component registers, while SPIR-V represents them as scalar arrays. The previous code for mapping between these conventions was unfortunately relatively fragile and unable to handle a number of cases.</p>
+</li>
+<li>
+<p>Several new features and improvements for the HLSL source type:</p>
+<ul>
+<li>Effects (FX) target profiles can output embedded shader blobs. These are created by the CompileShader() and ConstructGSWithSO() intrinsic functions.</li>
+<li>Statically initialised variables are considered to be static expressions. For example, ‘int count = 4; float4 array[count];’ is now accepted as valid by the compiler.</li>
+<li>Store operations to ‘RWStructuredBuffer’ resources.</li>
+<li>Load operations from structured thread group shared memory.</li>
+<li>Copy operations involving structured resources.</li>
+<li>Casts of floating-point constants to Boolean values now correctly fold any non-zero value to ‘true’. Previously ‘(bool)0.25f’ for example would get constant folded to ‘false’.</li>
+<li>The ‘static’ storage-class specifier is allowed on functions.</li>
+<li>The ‘Buffer’, ‘StructuredBuffer’, and ‘ByteAddressBuffer’ types are supported in effects (FX) target profiles.</li>
+</ul>
+</li>
+<li>
+<p>The following legacy Direct3D byte-code instructions are implemented:</p>
+<ul>
+<li>dp2add</li>
+<li>loop/endloop</li>
+<li>lrp</li>
+<li>nrm</li>
+<li>pow</li>
+<li>rep/endrep</li>
+</ul>
+</li>
+<li>
+<p>When the VKD3D_SHADER_DUMP_PATH environment variable is used to dump input and output shaders, compilation messages like errors and warnings produced by the compiler will be dumped as well.</p>
+</li>
+<li>
+<p>New interfaces:</p>
+<ul>
+<li>The VKD3D_SHADER_PARAMETER_NAME_PROJECTED_TEXTURE_MASK shader parameter specifies which textures in a shader model 1.0-1.3 pixel shader should be considered to be projected textures.</li>
+</ul>
+</li>
+</ul>
+<h3>build<a href="#build"></a></h3>
+<ul>
+<li>New environment variables:
+<ul>
+<li>VKD3D_TEST_WRAPPER can be used to wrap test execution.</li>
+</ul>
+</li>
+</ul>
+</blockquote> <p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span> </p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

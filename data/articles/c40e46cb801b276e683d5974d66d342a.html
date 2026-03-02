@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Deploying Open Source Vision Language Models (VLM) on Jetson</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Deploying Open Source Vision Language Models (VLM) on Jetson</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 2/24/2026 12:00:21 AM | <a href="https://huggingface.co/blog/nvidia/cosmos-on-jetson" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/mitp"><img alt="Mitesh Patel's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/658e083904cd2b7fd5f530d6/IzW8YE0Ui8P-_Qds0u-Lx.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/johnnynv"><img alt="Johnny Nuñez Cano's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6994dc99f850a10f03fd0b21/pFu0WOu97JHFXISsHsz6f.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/raymondlo84-nvidia"><img alt="Raymond Lo's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6998e66d2f5b7c034b75ea8b/edpVKFV97HT1epiCbeGGr.jpeg"></a> </span> </span></p> </div></div> <p>Vision-Language Models (VLMs) mark a significant leap in AI by blending visual perception with semantic reasoning. Moving beyond traditional models constrained by fixed labels, VLMs utilize a joint embedding space to interpret and discuss complex, open-ended environments using natural language. </p>
+<p>The rapid evolution of reasoning accuracy and efficiency has made these models ideal for edge devices. The <a href="https://marketplace.nvidia.com/en-us/enterprise/robotics-edge/?limit=15">NVIDIA Jetson family</a>, ranging from the high-performance AGX Thor and AGX Orin to the compact Orin Nano Super is purpose-built to drive accelerated applications for physical AI and robotics, providing the optimized runtime necessary for leading <a href="https://www.jetson-ai-lab.com/models/">open source models</a>. </p>
+<p>In this tutorial, we will demonstrate how to deploy the <a href="https://build.nvidia.com/nvidia/cosmos-reason2-2b">NVIDIA Cosmos Reason 2B</a> model across the Jetson lineup using the <a href="https://vllm.ai/">vLLM</a> framework. We will also guide you through connecting this model to the <a href="https://github.com/NVIDIA-AI-IOT/live-vlm-webui">Live VLM WebUI</a>, enabling a real-time, webcam-based interface for interactive physical AI. </p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/658e083904cd2b7fd5f530d6/lrsP6RhYbwj0hBeuLjV_k.png"><img alt="robot_pick_place" src="https://cdn-uploads.huggingface.co/production/uploads/658e083904cd2b7fd5f530d6/lrsP6RhYbwj0hBeuLjV_k.png"></a></p>
+<h2> <a href="#prerequisites"> </a> <span> Prerequisites </span>
+</h2>
+<p><strong>Supported Devices:</strong></p>
+<ul>
+<li>Jetson AGX Thor Developer Kit</li>
+<li>Jetson AGX Orin (64GB / 32GB)</li>
+<li>Jetson Orin Super Nano</li>
+</ul>
+<p><strong>JetPack Version:</strong></p>
+<ul>
+<li>JetPack 6 (L4T r36.x) — for Orin devices</li>
+<li>JetPack 7 (L4T r38.x) — for Thor</li>
+</ul>
+<p><strong>Storage:</strong> NVMe SSD <strong>required</strong></p>
+<ul>
+<li>~5 GB for the FP8 model weights</li>
+<li>~8 GB for the vLLM container image</li>
+</ul>
+<p><strong>Accounts:</strong></p>
+<ul>
+<li>Create <a href="https://ngc.nvidia.com/">NVIDIA NGC</a> account(free) to download both the model and vLLM contanier</li>
+</ul>
+<hr>
+<h2> <a href="#overview"> </a> <span> Overview </span>
+</h2>
+<div> <table> <thead><tr>
+<th></th>
+<th>Jetson AGX Thor</th>
+<th>Jetson AGX Orin</th>
+<th>Orin Super Nano</th>
+</tr> </thead><tbody><tr>
+<td><strong>vLLM Container</strong></td>
+<td><code>nvcr.io/nvidia/vllm:26.01-py3</code></td>
+<td><code>ghcr.io/nvidia-ai-iot/vllm:r36.4-tegra-aarch64-cu126-22.04</code></td>
+<td><code>ghcr.io/nvidia-ai-iot/vllm:r36.4-tegra-aarch64-cu126-22.04</code></td>
+</tr>
+<tr>
+<td><strong>Model</strong></td>
+<td>FP8 via NGC (volume mount)</td>
+<td>FP8 via NGC (volume mount)</td>
+<td>FP8 via NGC (volume mount)</td>
+</tr>
+<tr>
+<td><strong>Max Model Length</strong></td>
+<td>8192 tokens</td>
+<td>8192 tokens</td>
+<td>256 tokens (memory-constrained)</td>
+</tr>
+<tr>
+<td><strong>GPU Memory Util</strong></td>
+<td>0.8</td>
+<td>0.8</td>
+<td>0.65</td>
+</tr>
+</tbody> </table>
+</div>
+<p>The workflow is the same for both devices:</p>
+<ol>
+<li><strong>Download</strong> the FP8 model checkpoint via NGC CLI</li>
+<li><strong>Pull</strong> the vLLM Docker image for your device</li>
+<li><strong>Launch</strong> the container with the model mounted as a volume</li>
+<li><strong>Connect</strong> Live VLM WebUI to the vLLM endpoint</li>
+</ol>
+<hr>
+<h2> <a href="#step-1-install-the-ngc-cli"> </a> <span> Step 1: Install the NGC CLI </span>
+</h2>
+<p>The NGC CLI lets you download model checkpoints from the <a href="https://catalog.ngc.nvidia.com/?tab=model">NVIDIA NGC Catalog</a>.</p>
+<h3> <a href="#download-and-install"> </a> <span> Download and install </span>
+</h3>
+<pre><code>mkdir -p ~/Projects/CosmosReason
+cd ~/Projects/CosmosReason # Download the NGC CLI for ARM64
+# Get the latest installer URL from: https://org.ngc.nvidia.com/setup/installers/cli
+wget -O ngccli_arm64.zip https://api.ngc.nvidia.com/v2/resources/nvidia/ngc-apps/ngc_cli/versions/4.13.0/files/ngccli_arm64.zip
+unzip ngccli_arm64.zip
+chmod u+x ngc-cli/ngc # Add to PATH
+export PATH="$PATH:$(pwd)/ngc-cli"
+</code></pre>
+<h3> <a href="#configure-the-cli"> </a> <span> Configure the CLI </span>
+</h3>
+<pre><code>ngc config set
+</code></pre>
+<p>You will be prompted for:</p>
+<ul>
+<li><strong>API Key</strong> — generate one at <a href="https://org.ngc.nvidia.com/setup/api-key">NGC API Key setup</a></li>
+<li><strong>CLI output format</strong> — choose <code>json</code> or <code>ascii</code></li>
+<li><strong>org</strong> — press Enter to accept the default</li>
+</ul>
+<hr>
+<h2> <a href="#step-2-download-the-model"> </a> <span> Step 2: Download the Model </span>
+</h2>
+<p>Download the <strong>FP8 quantized</strong> checkpoint. This is used on all Jetson devices:</p>
+<pre><code>cd ~/Projects/CosmosReason
+ngc registry model download-version "nim/nvidia/cosmos-reason2-2b:1208-fp8-static-kv8"
+</code></pre>
+<p>This creates a directory called <code>cosmos-reason2-2b_v1208-fp8-static-kv8/</code> containing the model weights. Note the full path — you will mount it into the Docker container as a volume.</p>
+<hr>
+<h2> <a href="#step-3-pull-the-vllm-docker-image"> </a> <span> Step 3: Pull the vLLM Docker Image </span>
+</h2>
+<h3> <a href="#for-jetson-agx-thor"> </a> <span> For Jetson AGX Thor </span>
+</h3>
+<pre><code>docker pull nvcr.io/nvidia/vllm:26.01-py3
+</code></pre>
+<h3> <a href="#for-jetson-agx-orin--orin-super-nano"> </a> <span> For Jetson AGX Orin / Orin Super Nano </span>
+</h3>
+<pre><code>docker pull ghcr.io/nvidia-ai-iot/vllm:r36.4-tegra-aarch64-cu126-22.04
+</code></pre>
+<hr> <h2> <a href="#step-4-serve-cosmos-reason-2b-with-vllm"> </a> <span> Step 4: Serve Cosmos Reason 2B with vLLM </span>
+</h2>
+<h3> <a href="#option-a-jetson-agx-thor"> </a> <span> Option A: Jetson AGX Thor </span>
+</h3>
+<p>Thor has ample GPU memory and can run the model with a generous context length.</p>
+<p>Set the path to your downloaded model and free cached memory on the host:</p>
+<pre><code>MODEL_PATH="$HOME/Projects/CosmosReason/cosmos-reason2-2b_v1208-fp8-static-kv8"
+sudo sysctl -w vm.drop_caches=3
+</code></pre>
+<p><strong>Launch the container with the model mounted:</strong></p>
+<pre><code>docker run --rm -it \ --runtime nvidia \ --network host \ --ipc host \ -v "$MODEL_PATH:/models/cosmos-reason2-2b:ro" \ -e NVIDIA_VISIBLE_DEVICES=all \ -e NVIDIA_DRIVER_CAPABILITIES=compute,utility \ nvcr.io/nvidia/vllm:26.01-py3 \ bash
+</code></pre>
+<p><strong>Inside the container, activate the environment and serve the model:</strong></p>
+<pre><code>vllm serve /models/cosmos-reason2-2b \ --max-model-len 8192 \ --media-io-kwargs '{"video": {"num_frames": -1}}' \ --reasoning-parser qwen3 \ --gpu-memory-utilization 0.8
+</code></pre>
+<p><strong>Note:</strong> The <code>--reasoning-parser qwen3</code> flag enables chain-of-thought reasoning extraction. The <code>--media-io-kwargs</code> flag configures video frame handling.</p>
+<p>Wait until you see:</p>
+<pre><code>INFO: Uvicorn running on http://0.0.0.0:8000
+</code></pre>
+<h3> <a href="#option-b-jetson-agx-orin"> </a> <span> Option B: Jetson AGX Orin </span>
+</h3>
+<p>AGX Orin has enough memory to run the model with the same generous parameters as Thor.</p>
+<p>Set the path to your downloaded model and free cached memory on the host:</p>
+<pre><code>MODEL_PATH="$HOME/Projects/CosmosReason/cosmos-reason2-2b_v1208-fp8-static-kv8"
+sudo sysctl -w vm.drop_caches=3
+</code></pre>
+<p><strong>1. Launch the container:</strong></p>
+<pre><code>docker run --rm -it \ --runtime nvidia \ --network host \ -v "$MODEL_PATH:/models/cosmos-reason2-2b:ro" \ -e NVIDIA_VISIBLE_DEVICES=all \ -e NVIDIA_DRIVER_CAPABILITIES=compute,utility \ ghcr.io/nvidia-ai-iot/vllm:r36.4-tegra-aarch64-cu126-22.04 \ bash
+</code></pre>
+<p><strong>2. Inside the container, activate the environment and serve:</strong></p>
+<pre><code>cd /opt/
+source venv/bin/activate vllm serve /models/cosmos-reason2-2b \ --max-model-len 8192 \ --media-io-kwargs '{"video": {"num_frames": -1}}' \ --reasoning-parser qwen3 \ --gpu-memory-utilization 0.8
+</code></pre>
+<p>Wait until you see:</p>
+<pre><code>INFO: Uvicorn running on http://0.0.0.0:8000
+</code></pre>
+<h3> <a href="#option-c-jetson-orin-super-nano-memory-constrained"> </a> <span> Option C: Jetson Orin Super Nano (memory-constrained) </span>
+</h3>
+<p>The Orin Super Nano has significantly less RAM, so we need aggressive memory optimization flags.</p>
+<p>Set the path to your downloaded model and free cached memory on the host:</p>
+<pre><code>MODEL_PATH="$HOME/Projects/CosmosReason/cosmos-reason2-2b_v1208-fp8-static-kv8"
+sudo sysctl -w vm.drop_caches=3
+</code></pre>
+<p><strong>1. Launch the container:</strong></p>
+<pre><code>docker run --rm -it \ --runtime nvidia \ --network host \ -v "$MODEL_PATH:/models/cosmos-reason2-2b:ro" \ -e NVIDIA_VISIBLE_DEVICES=all \ -e NVIDIA_DRIVER_CAPABILITIES=compute,utility \ ghcr.io/nvidia-ai-iot/vllm:r36.4-tegra-aarch64-cu126-22.04 \ bash
+</code></pre>
+<p><strong>2. Inside the container, activate the environment and serve:</strong></p>
+<pre><code>cd /opt/
+source venv/bin/activate vllm serve /models/cosmos-reason2-2b \ --host 0.0.0.0 \ --port 8000 \ --trust-remote-code \ --enforce-eager \ --max-model-len 256 \ --max-num-batched-tokens 256 \ --gpu-memory-utilization 0.65 \ --max-num-seqs 1 \ --enable-chunked-prefill \ --limit-mm-per-prompt '{"image":1,"video":1}' \ --mm-processor-kwargs '{"num_frames":2,"max_pixels":150528}'
+</code></pre>
+<p><strong>Key flags explained (Orin Super Nano only):</strong></p>
+<div> <table> <thead><tr>
+<th>Flag</th>
+<th>Purpose</th>
+</tr> </thead><tbody><tr>
+<td><code>--enforce-eager</code></td>
+<td>Disables CUDA graphs to save memory</td>
+</tr>
+<tr>
+<td><code>--max-model-len 256</code></td>
+<td>Limits context to fit in available memory</td>
+</tr>
+<tr>
+<td><code>--max-num-batched-tokens 256</code></td>
+<td>Matches the model length limit</td>
+</tr>
+<tr>
+<td><code>--gpu-memory-utilization 0.65</code></td>
+<td>Reserves headroom for system processes</td>
+</tr>
+<tr>
+<td><code>--max-num-seqs 1</code></td>
+<td>Single request at a time to minimize memory</td>
+</tr>
+<tr>
+<td><code>--enable-chunked-prefill</code></td>
+<td>Processes prefill in chunks for memory efficiency</td>
+</tr>
+<tr>
+<td><code>--limit-mm-per-prompt</code></td>
+<td>Limits to 1 image and 1 video per prompt</td>
+</tr>
+<tr>
+<td><code>--mm-processor-kwargs</code></td>
+<td>Reduces video frames and image resolution</td>
+</tr>
+<tr>
+<td><code>--VLLM_SKIP_WARMUP=true</code></td>
+<td>Skips warmup to save time and memory</td>
+</tr>
+</tbody> </table>
+</div>
+<p>Wait until you see the server is ready:</p>
+<pre><code>INFO: Uvicorn running on http://0.0.0.0:8000
+</code></pre>
+<h3> <a href="#verify-the-server-is-running"> </a> <span> Verify the server is running </span>
+</h3>
+<p>From another terminal on the Jetson:</p>
+<pre><code>curl http://localhost:8000/v1/models
+</code></pre>
+<p>You should see the model listed in the response.</p>
+<hr>
+<h2> <a href="#step-5-test-with-a-quick-api-call"> </a> <span> Step 5: Test with a Quick API Call </span>
+</h2>
+<p>Before connecting the WebUI, verify the model responds correctly:</p>
+<pre><code>curl -s http://localhost:8000/v1/chat/completions \ -H "Content-Type: application/json" \ -d '{ "model": "/models/cosmos-reason2-2b", "messages": [ { "role": "user", "content": "What capabilities do you have?" } ], "max_tokens": 128 }' | python3 -m json.tool
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> The model name used in the API request must match what vLLM reports. Verify with <code>curl http://localhost:8000/v1/models</code>.</p>
+</blockquote>
+<hr>
+<h2> <a href="#step-6-connect-to-live-vlm-webui"> </a> <span> Step 6: Connect to Live VLM WebUI </span>
+</h2>
+<p><a href="https://github.com/NVIDIA-AI-IOT/live-vlm-webui">Live VLM WebUI</a> provides a real-time webcam-to-VLM interface. With vLLM serving Cosmos Reason 2B, you can stream your webcam and get live AI analysis with reasoning.</p>
+<h3> <a href="#install-live-vlm-webui"> </a> <span> Install Live VLM WebUI </span>
+</h3>
+<p>The easiest method is pip (Open another terminal):</p>
+<pre><code>curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
+cd ~/Projects/CosmosReason
+uv venv .live-vlm --python 3.12
+source .live-vlm/bin/activate
+uv pip install live-vlm-webui
+live-vlm-webui
+</code></pre>
+<p>Or use Docker:</p>
+<pre><code>git clone https://github.com/nvidia-ai-iot/live-vlm-webui.git
+cd live-vlm-webui
+./scripts/start_container.sh
+</code></pre>
+<h3> <a href="#configure-the-webui"> </a> <span> Configure the WebUI </span>
+</h3>
+<ol>
+<li>Open <strong><code>https://localhost:8090</code></strong> in your browser</li>
+<li>Accept the self-signed certificate (click <strong>Advanced</strong> → <strong>Proceed</strong>)</li>
+<li>In the <strong>VLM API Configuration</strong> section on the left sidebar:<ul>
+<li>Set <strong>API Base URL</strong> to <code>http://localhost:8000/v1</code></li>
+<li>Click the <strong>Refresh</strong> button to detect the model</li>
+<li>Select the Cosmos Reason 2B model from the dropdown</li>
+</ul>
+</li>
+<li>Select your camera and click <strong>Start</strong></li>
+</ol>
+<p>The WebUI will now stream your webcam frames to Cosmos Reason 2B and display the model’s analysis in real-time.</p>
+<h3> <a href="#recommended-webui-settings-for-orin"> </a> <span> Recommended WebUI settings for Orin </span>
+</h3>
+<p>Since Orin runs with a shorter context length, adjust these settings in the WebUI:</p>
+<ul>
+<li><strong>Max Tokens</strong>: Set to <strong>100–150</strong> (shorter responses complete faster)</li>
+<li><strong>Frame Processing Interval</strong>: Set to <strong>60+</strong> (gives the model time between frames)</li>
+</ul>
+<hr>
+<h2> <a href="#troubleshooting"> </a> <span> Troubleshooting </span>
+</h2>
+<h3> <a href="#out-of-memory-on-orin"> </a> <span> Out of memory on Orin </span>
+</h3>
+<p><strong>Problem:</strong> vLLM crashes with CUDA out-of-memory errors.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li><p>Free system memory before starting:</p>
+<pre><code>sudo sysctl -w vm.drop_caches=3
+</code></pre>
+</li>
+<li><p>Lower <code>--gpu-memory-utilization</code> (try <code>0.55</code> or <code>0.50</code>)</p>
+</li>
+<li><p>Reduce <code>--max-model-len</code> further (try <code>128</code>)</p>
+</li>
+<li><p>Make sure no other GPU-intensive processes are running</p>
+</li>
+</ol>
+<h3> <a href="#model-not-found-in-webui"> </a> <span> Model not found in WebUI </span>
+</h3>
+<p><strong>Problem:</strong> The model doesn’t appear in the Live VLM WebUI dropdown.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Verify vLLM is running: <code>curl http://localhost:8000/v1/models</code></li>
+<li>Make sure the WebUI API Base URL is set to <code>http://localhost:8000/v1</code> (not <code>https</code>)</li>
+<li>If vLLM and WebUI are in separate containers, use <code>http://&lt;jetson-ip&gt;:8000/v1</code> instead of <code>localhost</code></li>
+</ol>
+<h3> <a href="#slow-inference-on-orin"> </a> <span> Slow inference on Orin </span>
+</h3>
+<p><strong>Problem:</strong> Each response takes a very long time.</p>
+<p><strong>Solution:</strong></p>
+<ul>
+<li>This is expected with the memory-constrained configuration. Cosmos Reason 2B FP8 on Orin prioritizes fitting in memory over speed</li>
+<li>Reduce <code>max_tokens</code> in the WebUI to get shorter, faster responses</li>
+<li>Increase the frame interval so the model isn’t constantly processing new frames</li>
+</ul>
+<h3> <a href="#vllm-fails-to-load-model"> </a> <span> vLLM fails to load model </span>
+</h3>
+<p><strong>Problem:</strong> vLLM reports that the model path doesn’t exist or can’t be loaded.</p>
+<p><strong>Solution:</strong></p>
+<ul>
+<li>Verify the NGC download completed successfully: <code>ls ~/Projects/CosmosReason/cosmos-reason2-2b_v1208-fp8-static-kv8/</code></li>
+<li>Make sure the volume mount path is correct in your <code>docker run</code> command</li>
+<li>Check that the model directory is mounted as read-only (<code>:ro</code>) and the path inside the container matches what you pass to <code>vllm serve</code></li>
+</ul>
+<hr>
+<h2> <a href="#summary"> </a> <span> Summary </span>
+</h2>
+<p>In this tutorial, we showcased how to deploy <strong>NVIDIA Cosmos Reason 2B</strong> model on Jetson family of devices using vLLM. </p> <p>The combination of Cosmos Reason 2B’s chain-of-thought capabilities with Live VLM WebUI’s real-time streaming makes it ideal to prototype and evaluate vision AI applications at the edge.</p>
+<hr>
+<p><a href="https://github.com/NVIDIA-AI-IOT/live-vlm-webui/raw/main/docs/images/chrome_app-running_light-theme.jpg"><img alt="Alt text" src="https://github.com/NVIDIA-AI-IOT/live-vlm-webui/raw/main/docs/images/chrome_app-running_light-theme.jpg"></a></p>
+<h2> <a href="#additional-resources"> </a> <span> Additional Resources </span>
+</h2>
+<ul>
+<li><strong>Cosmos Reason 2B on NVIDIA Build</strong>: <a href="https://huggingface.co/nvidia/Cosmos-Reason2-2B">https://huggingface.co/nvidia/Cosmos-Reason2-2B</a></li>
+<li><strong>NGC Model Catalog</strong>: <a href="https://catalog.ngc.nvidia.com/">https://catalog.ngc.nvidia.com/</a></li>
+<li><strong>Live VLM WebUI</strong>: <a href="https://github.com/NVIDIA-AI-IOT/live-vlm-webui">https://github.com/NVIDIA-AI-IOT/live-vlm-webui</a></li>
+<li><strong>vLLM container for Jetson Thor</strong>: <a href="https://ghcr.io/nvidia-ai-iot/vllm:r36.4-tegra-aarch64-cu126-22.04">https://ghcr.io/nvidia-ai-iot/vllm:r36.4-tegra-aarch64-cu126-22.04</a></li>
+<li><strong>vLLM container for Jetson AGX Orin, and Orin Super Nano</strong>: <a href="https://nvcr.io/nvidia/vllm:26.01-py3">https://nvcr.io/nvidia/vllm:26.01-py3</a></li>
+<li><strong>NGC CLI Installers</strong>: <a href="https://org.ngc.nvidia.com/setup/installers/cli">https://org.ngc.nvidia.com/setup/installers/cli</a></li>
+<li><strong>Open Models supported on Jetson</strong>: <a href="https://www.jetson-ai-lab.com/models/">https://www.jetson-ai-lab.com/models/</a></li>
+<li><strong>Getting started with Jetson</strong>: <a href="https://www.jetson-ai-lab.com/tutorials/">https://www.jetson-ai-lab.com/tutorials/</a></li>
+</ul>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

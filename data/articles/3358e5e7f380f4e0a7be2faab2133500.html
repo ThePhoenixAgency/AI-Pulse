@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>secret-sanitizer-extension</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>secret-sanitizer-extension</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/22/2026 7:00:09 AM | <a href="https://github.com/souvikghosh957/secret-sanitizer-extension" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p> <img src="https://souvikghosh957.github.io/secret-sanitizer-extension/icons/icon-128.png" alt="Secret Sanitizer Logo">
+</p> <h2>Secret Sanitizer</h2> <p> <strong>Masks secrets before they reach AI chats. 100% local. Open source.</strong>
+</p> <p> <a href="https://chromewebstore.google.com/detail/secret-sanitizer/genolcmpopiemhpbdnhkaefllchgekja" target="_blank"> <img src="https://developer.chrome.com/static/docs/webstore/branding/image/iNEddTyWiMfLSwFD6qGq.png" alt="Available in the Chrome Web Store"> </a>
+</p> <p> <a href="https://github.com/souvikghosh957/secret-sanitizer-extension/stargazers"> <img src="https://img.shields.io/github/stars/souvikghosh957/secret-sanitizer-extension?style=social" alt="GitHub Stars"> </a> <a href="https://x.com/souvik_ghosh975"> <img src="https://img.shields.io/twitter/follow/souvik_ghosh975?style=social&amp;logo=x" alt="Follow on X"> </a> <a href="https://github.com/souvikghosh957/secret-sanitizer-extension/releases"> <img src="https://img.shields.io/github/v/release/souvikghosh957/secret-sanitizer-extension?label=Latest%20release" alt="Latest release"> </a> <a href="https://opensource.org/licenses/MIT"> <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License"> </a>
+</p> <hr> <p> <img src="https://github.com/user-attachments/assets/9dc1eeb6-55a4-4be2-8a93-c21709b32469" alt="Secret Sanitizer demo — paste an API key into ChatGPT and watch it get masked instantly">
+</p> <p> Paste code with secrets into ChatGPT → secrets get replaced with <code>[MASKED]</code> before the message is sent → originals stay safe in your local vault. That's it.
+</p> <hr> <h3>Why This Exists</h3> <p>In December 2025, researchers discovered that <a href="https://www.malwarebytes.com/blog/news/2025/12/chrome-extension-slurps-up-ai-chats-after-users-installed-it-for-privacy">Chrome extensions with millions of users</a> — including some with Google’s “Featured” badge — were <strong>silently harvesting every AI conversation</strong> and selling the data to brokers. The attack vector has been dubbed <a href="https://thehackernews.com/2026/01/two-chrome-extensions-caught-stealing.html"><strong>Prompt Poaching</strong></a>.</p> <p>Meanwhile, developers paste API keys, database URLs, and credentials into AI chats every day. Once sent, that data is logged — often permanently.</p> <p><strong>Secret Sanitizer works the opposite way.</strong> It intercepts your paste, masks anything sensitive using local regex matching, and never makes a single network request. Zero servers. Zero tracking. Fully auditable — you’re reading the source right now.</p> <hr> <h3>How It Works</h3> <div><pre><code>You copy: DATABASE_URL=postgres://admin:s3cret@db.prod.internal:5432/myapp
+You paste: DATABASE_URL=[MASKED]
+Vault stores: postgres://admin:s3cret@db.prod.internal:5432/myapp (local, encrypted)
+</code></pre></div> <ol> <li>You paste text into a supported AI chat</li> <li>The content script intercepts the paste event <strong>before</strong> it hits the input field</li> <li>Regex patterns run <strong>locally in your browser</strong> — no data leaves your machine</li> <li>Detected secrets are replaced with <code>[MASKED]</code></li> <li>A toast notification confirms what was blocked</li> <li>Originals are stored in a local encrypted vault you can access anytime</li>
+</ol> <p><strong>No servers. No fetch calls. No analytics. <code>grep -r "fetch\|XMLHttpRequest" content_script.js</code> — go ahead, check.</strong></p> <hr> <h3>Supported Patterns</h3> <table> <thead> <tr> <th>Category</th> <th>Examples</th> </tr> </thead> <tbody> <tr> <td><strong>API Keys</strong></td> <td>AWS, GCP, Azure, Stripe, GitHub, GitLab, Slack, Twilio, SendGrid, OpenAI, and more</td> </tr> <tr> <td><strong>Credentials</strong></td> <td>Passwords, bearer tokens, basic auth headers, JWTs, OAuth tokens</td> </tr> <tr> <td><strong>Database URLs</strong></td> <td>PostgreSQL, MySQL, MongoDB, Redis connection strings</td> </tr> <tr> <td><strong>Private Keys</strong></td> <td>RSA, SSH, PGP private key blocks</td> </tr> <tr> <td><strong>Cloud &amp; Infra</strong></td> <td>AWS Account IDs, ARNs, S3 URLs, Docker registry credentials</td> </tr> <tr> <td><strong>Indian PII</strong></td> <td>Aadhaar numbers, PAN card numbers</td> </tr> <tr> <td><strong>Other</strong></td> <td>Generic high-entropy secrets, Base64-encoded credentials, <code>.env</code> style key-value pairs</td> </tr> </tbody>
+</table> <blockquote> <p> <strong>Toggle individual patterns on/off</strong> from the extension popup. No false-positive headaches.</p>
+</blockquote> <hr> <h3>Works On</h3> <p>Out-of-the-box protection for all major AI platforms:</p> <table> <thead> <tr> <th>Platform</th> <th>Status</th> </tr> </thead> <tbody> <tr> <td>ChatGPT</td> <td></td> </tr> <tr> <td>Claude</td> <td></td> </tr> <tr> <td>Gemini</td> <td></td> </tr> <tr> <td>Grok</td> <td></td> </tr> <tr> <td>Perplexity</td> <td></td> </tr> <tr> <td>DeepSeek</td> <td></td> </tr> <tr> <td><strong>Any custom site</strong></td> <td> Add with one click</td> </tr> </tbody>
+</table> <hr> <h3>Features</h3> <ul> <li><strong>Instant paste interception</strong> — secrets never reach the chat input</li> <li><strong>Test Mode</strong> — preview what would get masked before committing</li> <li><strong>Stats dashboard</strong> — track blocks per day, per pattern, with history</li> <li><strong>Custom site support</strong> — protect any domain with one-click permission setup</li> <li><strong>Granular pattern controls</strong> — enable/disable individual detection patterns</li> <li><strong>Backup &amp; restore</strong> — export/import your configuration</li> <li><strong>Dark mode</strong> + keyboard shortcuts</li> <li><strong>~41 KB total</strong> — lightweight, no bloat</li>
+</ul> <hr> <h3>Screenshots</h3> <p> <img alt="Instant feedback when a secret is detected and masked" src="https://github.com/user-attachments/assets/bd44237c-8e5f-4480-8aa9-6e10bb07b1b0"> <br><em>Instant feedback when a secret is detected and masked</em>
+</p> <p> <img alt="Clean, animated popup with intuitive controls" src="https://github.com/user-attachments/assets/c0d21a79-7345-475c-bb98-17334625c6ba"> <br><em>Clean, animated popup with intuitive controls</em>
+</p> <p> <img alt="Secure vault with one-click unmask" src="https://github.com/user-attachments/assets/54e0bc4e-a02f-43f6-8693-f033528fec98"> <br><em>One-click unmask from the secure local vault</em>
+</p> <p> <img alt="Stats dashboard and settings" src="https://github.com/user-attachments/assets/f52a86e3-8b6e-4edf-8b6a-aaf33f06422a"> <br><em>Stats, custom sites, pattern controls, and configuration export</em>
+</p> <hr> <h3>Installation</h3> <p><strong>Developer / Sideloading</strong></p>
+<div><pre><code>git clone https://github.com/souvikghosh957/secret-sanitizer-extension.git
+<span>cd </span>secret-sanitizer-extension
+</code></pre></div>
+<ol> <li>Open <code>chrome://extensions</code></li> <li>Enable <strong>Developer mode</strong></li> <li>Click <strong>Load unpacked</strong> → select the cloned folder</li>
+</ol> <hr> <h3>Privacy &amp; Security</h3> <table> <thead> <tr> <th>Claim</th> <th>Verification</th> </tr> </thead> <tbody> <tr> <td>No network requests</td> <td><code>grep -r "fetch\|XMLHttpRequest" content_script.js</code> → zero results</td> </tr> <tr> <td>No tracking / analytics</td> <td>No Google Analytics, no Mixpanel, no telemetry of any kind</td> </tr> <tr> <td>No remote code</td> <td>All pattern matching is local regex — inspect <code>content_script.js</code></td> </tr> <tr> <td>Works offline</td> <td>Disable Wi-Fi and try it. It works.</td> </tr> <tr> <td>Open source</td> <td>You’re reading it. MIT licensed.</td> </tr> </tbody>
+</table> <hr> <h3>Contributing</h3> <p>Contributions are welcome! Some ideas:</p> <ul> <li><strong>Add new secret patterns</strong> — know a format we’re missing? Open a PR</li> <li><strong>Report false positives</strong> — help us fine-tune detection</li> <li><strong>Request platform support</strong> — want a new AI chat site added?</li> <li><strong>Improve docs</strong> — better examples, translations, etc.</li>
+</ul> <p>Please open an issue first for larger changes so we can discuss the approach.</p> <hr> <h3>Roadmap</h3> <ul> <li>Firefox support</li> <li>Smart restore — auto-restore secrets when copying AI responses</li> <li>Pattern sharing — community-contributed pattern packs</li> <li>VS Code extension variant</li>
+</ul> <hr> <h3>Star History</h3> <p>If this tool has saved you from a secret leak, consider giving it a — it helps others find it.</p> <p> <a href="https://github.com/souvikghosh957/secret-sanitizer-extension/stargazers"> <img src="https://img.shields.io/github/stars/souvikghosh957/secret-sanitizer-extension?style=for-the-badge&amp;color=yellow" alt="Star this repo"> </a>
+</p> <hr> <h3>License</h3> <p><a href="https://souvikghosh957.github.io/secret-sanitizer-extension/LICENSE">MIT</a> — use it, fork it, improve it.</p> <hr> <p> Built with care by <a href="https://x.com/souvik_ghosh975">@souvik_ghosh975</a>
+</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - electricalgorithm/jobseek-expat: A powerful, open-source CLI tool designed to help expats and international job seekers find English-speaking jobs in non-English speaking countries.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - electricalgorithm/jobseek-expat: A powerful, open-source CLI tool designed to help expats and international job seekers find English-speaking jobs in non-English speaking countries.</h1>
+  <div class="metadata">
+    Source: Hacker News (nouveautés) | Date: 2/28/2026 9:37:27 AM | <a href="https://github.com/electricalgorithm/jobseek-expat" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>JobSeek Expat </h1><a href="#jobseek-expat-"></a></div>
+<p><strong>JobSeek Expat</strong> is a powerful, open-source CLI tool designed to help expats and international job seekers find <strong>English-speaking jobs</strong> in non-English speaking countries (like Germany, France, Netherlands, etc.).</p>
+<p>It scrapes major job boards, filters out local-language requirements, and presents you with a clean, curated list of opportunities.</p>
+<div><h2> Features</h2><a href="#-features"></a></div>
+<ul>
+<li><strong>Multi-Platform Scraping</strong>: Search <strong>LinkedIn</strong>, <strong>Indeed</strong>, and <strong>Glassdoor</strong> simultaneously.</li>
+<li><strong>Smart Filtering</strong>:
+<ul>
+<li><strong>English Only</strong>: Automatically detects job description language.</li>
+<li><strong>No "Local Language" Required</strong>: Filters out jobs requiring C1/Fluent local language skills (customizable).</li>
+<li><strong>Experience Level</strong>: Filter by Seniority (Entry, Mid-Senior, etc. - <em>Best on LinkedIn</em>).</li>
+</ul>
+</li>
+<li><strong>Flexible Locations</strong>: Search multiple cities or "Remote" in your target country.</li>
+<li><strong>Advanced Search</strong>:
+<ul>
+<li><strong>Multiple Keywords</strong>: Search for "Developer, Designer" in one go.</li>
+<li><strong>Exclusion Lists</strong>: Hates specific terms? <pre><code>--exclude "intern, thesis"</code></pre>.</li>
+</ul>
+</li>
+<li><strong>Output Options</strong>:
+<ul>
+<li><strong>Beautiful CLI Tables</strong>: Clickable links, color-coded output.</li>
+<li><strong>JSON</strong>: Machine-readable format for automation.</li>
+</ul>
+</li>
+</ul>
+<div><h2> Installation</h2><a href="#-installation"></a></div> <div><pre>pip install jobseek-expat</pre></div>
+<div><h3>From Source</h3><a href="#from-source"></a></div>
+<div><pre>git clone https://github.com/electricalgorithm/jobseek-expat.git
+<span>cd</span> jobseek-expat
+pip install <span>.</span></pre></div>
+<div><h2> Usage</h2><a href="#-usage"></a></div>
+<p>Once installed, the </p><pre><code>jobseek-expat</code></pre> command (and its short alias <pre><code>je</code></pre>) is available globally.<p></p>
+<p>Generic syntax:</p>
+<div><pre>jobseek-expat <span><span>"</span>KEYWORD<span>"</span></span> --country <span><span>"</span>COUNTRY_NAME<span>"</span></span> [OPTIONS]
+<span><span>#</span> or simply:</span>
+je <span><span>"</span>KEYWORD<span>"</span></span> --country <span><span>"</span>COUNTRY_NAME<span>"</span></span> [OPTIONS]</pre></div>
+<div><h3>Examples</h3><a href="#examples"></a></div>
+<p><strong>1. The Classic Expat Search (Berlin)</strong>
+Find "Software Engineer" jobs in <strong>Germany</strong> (Berlin) that likely don't require German.</p>
+<div><pre>jobseek-expat <span><span>"</span>Software Engineer<span>"</span></span> --location <span><span>"</span>Berlin<span>"</span></span></pre></div>
+<p><strong>2. Multi-City &amp; Remote Search</strong>
+Search for "Product Manager" in <strong>Amsterdam</strong> and <strong>Remote</strong> within the <strong>Netherlands</strong>.</p>
+<div><pre>jobseek-expat <span><span>"</span>Product Manager<span>"</span></span> \ --country <span><span>"</span>Netherlands<span>"</span></span> \ --location <span><span>"</span>Amsterdam, Remote<span>"</span></span> \ --local-language <span><span>"</span>Dutch<span>"</span></span></pre></div>
+<p><em>Note: We specify </em></p><pre><em><code>--local-language "Dutch"</code></em></pre><em> so it filters out "Dutch required" jobs.</em><p></p>
+<p><strong>3. The "Broad Net" Strategy</strong>
+Search for <strong>Developer</strong> OR <strong>Data Scientist</strong> roles in <strong>France</strong>, specifically <strong>Paris</strong>, excluding internships.</p>
+<div><pre>jobseek-expat <span><span>"</span>Developer, Data Scientist<span>"</span></span> \ --country <span><span>"</span>France<span>"</span></span> \ --location <span><span>"</span>Paris<span>"</span></span> \ --local-language <span><span>"</span>French<span>"</span></span> \ --exclude <span><span>"</span>intern, stage, internship<span>"</span></span> \ --results-wanted 50</pre></div>
+<div><h3>Command Line Options</h3><a href="#command-line-options"></a></div>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Alias</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>KEYWORD</code></pre></td>
+<td></td>
+<td>Job title(s) or keywords (comma-separated). <strong>Required</strong>.</td>
+<td></td>
+</tr>
+<tr>
+<td><pre><code>--country</code></pre></td>
+<td></td>
+<td>Target Country (e.g. Germany, France).</td>
+<td><pre><code>Germany</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>--location</code></pre></td>
+<td></td>
+<td>Specific City/Region (comma-separated). Use "Remote" for country-wide remote.</td>
+<td>Whole Country</td>
+</tr>
+<tr>
+<td><pre><code>--local-language</code></pre></td>
+<td></td>
+<td>Language to filter out if required (e.g. German, Dutch).</td>
+<td><pre><code>German</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>--hours-old</code></pre></td>
+<td></td>
+<td>Max age of job postings in hours.</td>
+<td><pre><code>24</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>--results-wanted</code></pre></td>
+<td></td>
+<td>Jobs to fetch per keyword/location.</td>
+<td><pre><code>20</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>--exclude</code></pre></td>
+<td></td>
+<td>Keywords to exclude (title/description).</td>
+<td><pre><code>None</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>--site</code></pre></td>
+<td></td>
+<td>Sites: <pre><code>linkedin</code></pre>, <pre><code>indeed</code></pre>, <pre><code>glassdoor</code></pre>.</td>
+<td>All 3</td>
+</tr>
+<tr>
+<td><pre><code>--output</code></pre></td>
+<td><pre><code>-o</code></pre></td>
+<td>Format: <pre><code>table</code></pre> or <pre><code>json</code></pre>.</td>
+<td><pre><code>table</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>--verbose</code></pre></td>
+<td><pre><code>-v</code></pre></td>
+<td>Show scraper debug logs.</td>
+<td><pre><code>False</code></pre></td>
+</tr>
+</tbody>
+</table>
+<div><h2> Contributing</h2><a href="#-contributing"></a></div>
+<p>We welcome contributions! Whether it's adding a new filter, improving the language detection, or supporting more job boards.</p>
+<ol>
+<li>Fork the Project</li>
+<li>Create your Feature Branch</li>
+<li>Commit your Changes</li>
+<li>Push to the Branch</li>
+<li>Open a Pull Request</li>
+</ol>
+<div><h2> License</h2><a href="#-license"></a></div>
+<p>Distributed under the MIT License. See </p><pre><code>LICENSE</code></pre> for more information.<p></p>
+<hr>
+<p><em>Built with for the global expat community.</em></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

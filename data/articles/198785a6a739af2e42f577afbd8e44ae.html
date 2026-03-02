@@ -36,13 +36,13 @@
   <div class="content">
     <div><div> <div> <p><img alt="James Kettle" src="https://portswigger.net/content/images/profiles/callout_james_kettle_112px.png"></p>
 </div> <ul> <li> <p><span></span><strong>Published: </strong>19 August 2025 at 14:30 UTC</p> </li> <li> <p><strong>Updated: </strong>19 August 2025 at 14:31 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/f3/a8/1370-article-http_pipelining_article.png"><br></p><p>Sometimes people think they've found <a href="https://portswigger.net/web-security/request-smuggling">HTTP request smuggling</a>, when they're actually just observing HTTP keep-alive or pipelining. This is usually a false positive, but sometimes there's actually a real vulnerability there! In this post I'll explore how to tell the two apart.</p>
-<p>This post was triggered by the publication of <a href="https://http1mustdie.com/" target="_blank">http1mustdie.com</a> which resulted in me getting a bunch of messages from people confused and intrigued by connection reuse. The answer is too nuanced to put into a quick reply so I'm writing it up here instead.</p>
+<p>This post was triggered by the publication of <a href="https://http1mustdie.com/" target="_blank" rel="noopener noreferrer">http1mustdie.com</a> which resulted in me getting a bunch of messages from people confused and intrigued by connection reuse. The answer is too nuanced to put into a quick reply so I'm writing it up here instead.</p>
 <h3><a>Connection reuse false-positives</a></h3>
 <p>If you see a request smuggling proof of concept that <b>only</b> works when you reuse connections, it's <b>probably</b> a false positive. Here are some common examples of connection reuse:</p>
 <ul><li>Turbo Intruder PoCs where requestsPerConnection is greater than 1</li><li>Burp Intruder when HTTP/1 Connection Reuse is enabled</li><li>Burp Repeater when using 'Send group in sequence (single connection)' or 'Enable connection reuse'</li><li>Burp Repeater attacks that show two HTTP/1 responses in one</li></ul>
 <p>However, it's not always a false positive. There are three valid closely related vulnerability classes where connection reuse is required:</p>
 <ul><li>Connection-locked request smuggling</li><li>Connection state attacks (not technically request smuggling)</li><li>Client-side desync attacks</li></ul>
-<p>So, when creating a request smuggling proof of concept, always disable connection reuse where possible. If this breaks your attack, you have a choice - give up, or dive deeper.</p><p>To help you distinguish between these two scenarios, I have published a Custom Action called <a href="https://github.com/PortSwigger/bambdas/blob/main/CustomAction/SmugglingOrPipelining.bambda" target="_blank">Smuggling or pipelining?</a>&nbsp;- you can install it into Burp Repeater using copy+paste, or import via the Extensibility Helper extension in the BApp store.</p>
+<p>So, when creating a request smuggling proof of concept, always disable connection reuse where possible. If this breaks your attack, you have a choice - give up, or dive deeper.</p><p>To help you distinguish between these two scenarios, I have published a Custom Action called <a href="https://github.com/PortSwigger/bambdas/blob/main/CustomAction/SmugglingOrPipelining.bambda" target="_blank" rel="noopener noreferrer">Smuggling or pipelining?</a>&nbsp;- you can install it into Burp Repeater using copy+paste, or import via the Extensibility Helper extension in the BApp store.</p>
 <h3><a>HTTP/1 connection reuse</a></h3>
 <p>Most tools represent HTTP/1 requests as individual, isolated entities. This is usually a convenient abstraction, but request smuggling attempts to break it, so it's crucial to understand the layer below.</p>
 <p>To help, we just launched HTTP Hacker - a new Burp Suite extension which exposes low-level HTTP behaviour. To get the most out of these examples, install HTTP Hacker from Extensions-&gt;BApp Store and use it to follow along.</p>
@@ -93,6 +93,7 @@ X: Y
 </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>

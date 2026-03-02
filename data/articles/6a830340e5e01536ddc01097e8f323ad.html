@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>La forge logicielle GitLab 18.9 est disponible et introduit la disponibilit� g�n�rale de Duo Agent Platform pour les clients cloud, la r�solution des vuln�rabilit�s SAST et bien plus encore</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>La forge logicielle GitLab 18.9 est disponible et introduit la disponibilit� g�n�rale de Duo Agent Platform pour les clients cloud, la r�solution des vuln�rabilit�s SAST et bien plus encore</h1>
+  <div class="metadata">
+    Source: Developpez.com | Date: 2/23/2026 3:42:00 AM | <a href="https://alm.developpez.com/actu/380456/La-forge-logicielle-GitLab-18-9-est-disponible-et-introduit-la-disponibilite-generale-de-Duo-Agent-Platform-pour-les-clients-cloud-la-resolution-des-vulnerabilites-SAST-et-bien-plus-encore/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <p><img src="https://www.developpez.com/images/logos/gitlab.png"> <b>GitLab 18.9 est d�sormais disponible et apporte toute une s�rie de mises � jour de fonctionnalit�s pour les �quipes de d�veloppement logiciel et DevOps. Cette version introduit notamment la disponibilit� g�n�rale des mod�les auto-h�berg�s GitLab Duo Agent Platform pour les licences cloud, la r�solution des vuln�rabilit�s SAST (tests statiques de s�curit� des applications) avec GitLab Duo Agent Platform, la navigation dans les r�f�rentiels avec une arborescence de fichiers repliable, l'inclusion d'entr�es CI/CD � partir d'un fichier, et bien plus encore.</b></p><p>GitLab est un logiciel libre de forge bas� sur git proposant les fonctionnalit�s de wiki, un syst�me de suivi des bugs, l�int�gration continue et la livraison continue (CI/CD). D�velopp� par GitLab Inc et cr�� par Dmitriy Zaporozhets et par Valery Sizov, le logiciel est utilis� par plusieurs grandes entreprises informatiques,dont IBM, Sony, la NASA, Alibaba, Oracle, O�Reilly Media, le CERN, et plus encore. GitLab peut �tre int�gr� � des produits destin�s aux d�veloppeurs, tels que AWS ou Google Cloud, et peut �tre contr�l� � distance via une API. Il est disponible en �dition communautaire et en �dition commerciale.</p><div>
+<p></p>
+</div><p>
+GitLab 18.9 apporte la disponibilit� g�n�rale de GitLab Duo Agent Platform. Celle-ci permet aux clients autog�r�s disposant d'une licence cloud d'utiliser cette fonctionnalit� avec une facturation bas�e sur l'utilisation. Les administrateurs b�n�ficient d'une plus grande flexibilit� pour configurer des mod�les d'IA compatibles, tels que Anthropic Claude ou OpenAI GPT, gr�ce � l'int�gration avec AWS Bedrock ou Azure OpenAI.</p><p>S'appuyant sur l'automatisation, la fonctionnalit� Agentic SAST Vulnerability Resolution permet � GitLab Duo d'analyser de mani�re autonome les r�sultats des tests de s�curit� statiques des applications (SAST), de d�terminer des solutions en fonction du contexte du code, d'appliquer des correctifs et d'ouvrir des demandes de fusion sans intervention manuelle. Ce workflow est actuellement propos� en version b�ta gratuite pour les clients Ultimate.</p><p>En mettant l'accent sur la productivit� des d�veloppeurs, les utilisateurs peuvent d�sormais parcourir les fichiers du r�f�rentiel � l'aide d'une arborescence de fichiers repliable. Cette interface offre une vue d'ensemble de la structure du projet, prend en charge l'expansion et le repliement des r�pertoires en ligne et facilite la navigation dans les fichiers tout en conservant le contexte. Les �quipes travaillant sur des pipelines complexes b�n�ficient de la possibilit� d'inclure des d�finitions d'entr�e provenant de fichiers externes via le mot-cl� � include � familier, ce qui permet de r�utiliser les configurations dans plusieurs projets.</p><p>Parmi les autres am�liorations, on peut citer la signature de commit en ligne pour GitLab.com, la version b�ta du registre virtuel de conteneurs, ainsi que d'autres mises � jour de la plateforme.</p><p><b><span>Les mod�les auto-h�berg�s de GitLab Duo Agent Platform sont disponibles pour les licences cloud</span></b></p><p>GitLab Duo Agent Platform est d�sormais disponible pour tous les clients GitLab Self-Managed disposant d'une licence cloud. La facturation de cette fonctionnalit� est bas�e sur l'utilisation.</p><p>Les administrateurs peuvent configurer des mod�les compatibles pour une utilisation avec GitLab Duo Agent Platform. Les administrateurs utilisant AWS Bedrock ou Azure OpenAI peuvent �galement configurer les mod�les Anthropic Claude ou OpenAI GPT.</p><p><img src="https://www.developpez.net/forums/attachments/p674422d1/a/a/a"></p>
+<p><b><span>R�solution des vuln�rabilit�s avec GitLab Duo Agent Platform (version b�ta)</span></b></p><p>Le triage et la correction des vuln�rabilit�s SAST constituent l'une des t�ches les plus chronophages en mati�re de s�curit� des applications. Apr�s avoir identifi� une vuln�rabilit� r�elle, les d�veloppeurs doivent comprendre le r�sultat, localiser le code affect� et r�diger un correctif appropri�. Tout cela demande du temps et des connaissances sp�cialis�es. GitLab 18.9 introduit Agentic SAST Vulnerability Resolution. Lorsqu'un utilisateur d�clenche la r�solution d'une vuln�rabilit� SAST, GitLab Duo analyse de mani�re autonome la d�couverte, raisonne � partir du contexte du code environnant, g�n�re un correctif adapt� au contexte et cr�e une demande de fusion sans aucune intervention manuelle.</p><p><img src="https://www.developpez.net/forums/attachments/p674423d1/a/a/a"></p><p>
+Les principales fonctionnalit�s sont les suivantes :</p><ul><li> R�solution agentique en plusieurs �tapes : plut�t que de proposer une seule suggestion de code, GitLab Duo Agent Platform analyse la vuln�rabilit�, �value la base de code et propose une correction �clair�e.</li><li> Cr�ation automatique de demandes de fusion : g�n�re une demande de fusion pr�te � �tre examin�e avec la correction de code propos�e pour les vuln�rabilit�s SAST critiques et de gravit� �lev�e.</li><li> �valuation de la qualit� : chaque correction g�n�r�e comprend une �valuation de la qualit� afin que les examinateurs puissent rapidement �valuer la fiabilit� de la correction propos�e.</li></ul><p>
+La r�solution des vuln�rabilit�s SAST est disponible � partir du rapport de vuln�rabilit� et des pages d�taill�es sur chaque vuln�rabilit�. Les utilisateurs peuvent d�clencher une r�solution directement � partir de la page d�taill�e sur chaque vuln�rabilit�.</p><p>Cette fonctionnalit� est disponible en version b�ta gratuite pour les clients Ultimate.</p><p><b><span>Naviguer dans les r�f�rentiels � l'aide d'une arborescence de fichiers repliable</span></b></p><p>Les utilisateurs peuvent d�sormais parcourir les fichiers du r�f�rentiel � l'aide d'une arborescence de fichiers repliable. L'arborescence offre une vue d'ensemble de la structure du projet, ce qui permet � l'utilisateur de d�velopper et de r�duire les r�pertoires en ligne, de passer d'un fichier � l'autre dans diff�rentes parties du r�f�rentiel et de conserver le contexte pendant le travail.</p><p>L'arborescence des fichiers s'affiche sous forme de barre lat�rale redimensionnable lorsque l'utilisateur affiche les fichiers ou r�pertoires du r�f�rentiel. Il est possible d'activer ou de d�sactiver son affichage � l'aide de raccourcis clavier, filtrer les fichiers par nom ou extension, et naviguer dans des hi�rarchies de projets complexes. L'arborescence se synchronise avec l'emplacement actuel. Ainsi, lorsque l'utilisateur s�lectionne un fichier dans la zone de contenu principale, l'arborescence s'actualise pour afficher ce fichier.</p><p><img src="https://www.developpez.net/forums/attachments/p674424d1/a/a/a"></p><p>
+La structure du r�f�rentiel et l'organisation des fichiers restent inchang�es. Gr�ce � la r�duction du nombre de chargements de pages n�cessaires pour passer d'un fichier � l'autre, cette fonctionnalit� s'adapte aussi bien aux petits projets qu'aux bases de code volumineuses contenant des milliers de fichiers.</p><p><b><span>Inclure les entr�es CI/CD � partir d'un fichier</span></b></p><p>Auparavant, les entr�es de pipeline ne pouvaient �tre d�finies que directement dans la section des sp�cifications d'un pipeline. Cette limitation rendait difficile la r�utilisation de la configuration des entr�es dans plusieurs projets.</p><p><img src="https://www.developpez.net/forums/attachments/p674425d1/a/a/a"></p><p>
+Dans cette version 18.9, les utilisateurs peuvent d�sormais inclure des d�finitions d'entr�e provenant de fichiers externes � l'aide du mot-cl� � include � familier. La possibilit� de conserver une liste d'entr�es dans un emplacement s�par� aide les utilisateurs � disposer d'une solution facile � g�rer pour de nombreux projets ou pipelines. Les utilisateurs peuvent conserver des configurations d'entr�e centralis�es et m�me g�rer de mani�re dynamique les valeurs d'entr�e provenant de sources externes.</p><p><b><span>Signature de commit via le Web sur GitLab.com</span></b></p><p>Il est essentiel de s'assurer que les commits sont sign�s cryptographiquement pour garantir l'int�grit� du code et respecter les exigences de conformit�. Auparavant, la signature des commits via le Web n'�tait disponible que pour GitLab Self-Managed.</p><p>GitLab.com prend d�sormais en charge la signature de commits via le Web. Lorsque cette fonctionnalit� est activ�e pour un groupe ou un projet, les commits cr��s via l'interface Web GitLab sont automatiquement sign�s avec la cl� de signature GitLab et affich�s avec un badge � V�rifi� �, fournissant ainsi une preuve cryptographique de l'authenticit� des d�p�ts.</p><p><img src="https://www.developpez.net/forums/attachments/p674426d1/a/a/a"></p><p>
+D�tails principaux :</p><ul><li> La fonctionnalit� peut �tre activ�e dans les param�tres du groupe ou du projet en fonction des besoins de l'utilisateur.</li><li> Toutes les validations bas�es sur le Web (modifications dans l'EDI Web, fusions, op�rations API) sont automatiquement sign�es lorsque cette...</li></ul>
+<p>La fin de cet article est r�serv�e aux abonn�s. Soutenez le Club Developpez.com en <a href="https://premium.developpez.com/abonnement">prenant un abonnement</a> pour que nous puissions continuer � vous proposer des publications.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

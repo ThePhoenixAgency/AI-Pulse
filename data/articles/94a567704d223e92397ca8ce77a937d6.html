@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LLVM Clang 22 Compiler Performance Largely Unchanged Over Clang 21 On AMD Zen 5 Review</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>LLVM Clang 22 Compiler Performance Largely Unchanged Over Clang 21 On AMD Zen 5 Review</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/25/2026 8:05:00 PM | <a href="https://www.phoronix.com/review/llvm-clang-22-znver5" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>With <a href="https://www.phoronix.com/news/LLVM-Clang-22.1-Released">yesterday's stable release of the LLVM Clang 22 compiler</a> it didn't take long for Phoronix readers to begin asking about the performance of this half-year feature update to this prominent open-source C/C++ compiler. What I am seeing so far are no big surprises with the performance largely being similar to Clang 21 across various open-source C/C++ workloads in the testing thus far. This initial round of reference benchmark results between LLVM <a href="https://www.phoronix.com/search/Clang+22">Clang 22</a>, Clang 21, and Clang 20 were done on an AMD EPYC Turin (Zen 5) Linux server.</p>
+<p><img src="https://www.phoronix.net/image.php?id=amd-epyc-9655&amp;image=amd_epyc_9655_3_med" alt="AMD EPYC Zen 5"></p>
+<p>So far I haven't yet seen any surprises out of my Clang 22.1 compiler benchmarking on x86_64 hardware. I've tested a few Intel and AMD systems to no major changes. Most of the benchmarks were done thus far from an AMD EPYC 9655P server given its speed with 96 Zen 5 cores and twelve channels of DDR5 memory. So this article has those results comparing the new Clang 22.1.0 to the existing Clang 21.1.8 and Clang 20.1.8 releases. Again, no major surprises though. In some workloads there were some incremental gains but nothing too extreme like we've encountered in LLVM/Clang releases years ago.</p>
+<p><img src="https://phoronix.com/benchmark/result/amd-epyc-zen-5-llvm-clang-22-benchmarks/result.svgz" alt="AMD EPYC Zen 5 LLVM Clang 22 Benchmarks"></p>
+<p>These days the LLVM/Clang x86_64 performance of the resulting binaries is largely inline with that of the GCC compiler. Healthy neck-and-neck performance between the two with a few exceptions, but aside from when it comes to supporting new CPU instructions or the occasional new optimization or other target-specific scheduling improvements and the like, the LLVM/Clang performance has largely seemed to plateau in recent releases. But it's a good thing it's caught up over the years to being a viable contender in all aspects to GCC -- not just for the performance of the resulting binaries but also when it comes to building complex codebases like the Linux kernel and other projects. All of the open-source C/C++ software under test was built while the CFLAGS/CXXFLAGS were set to "-march=native -O3 -flto".</p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

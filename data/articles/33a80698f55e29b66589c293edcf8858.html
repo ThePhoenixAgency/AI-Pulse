@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - enjector/microgpt-c</title>
+<title>GitHub - enjector/microgpt-c: Zero-dependency C99 GPT-2 engine for edge AI. Sub-1M parameter models train on-device in seconds. Organelle Pipeline Architecture (OPA) coordinates specialised micro-models — 91% win rates on 11 logic games with 30K–160K parameters. Composition beats capacity.</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
@@ -29,265 +29,308 @@
 </style>
 </head>
 <body>
-  <h1>GitHub - enjector/microgpt-c</h1>
+  <h1>GitHub - enjector/microgpt-c: Zero-dependency C99 GPT-2 engine for edge AI. Sub-1M parameter models train on-device in seconds. Organelle Pipeline Architecture (OPA) coordinates specialised micro-models — 91% win rates on 11 logic games with 30K–160K parameters. Composition beats capacity.</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/17/2026 12:06:20 AM | <a href="https://github.com/enjector/microgpt-c" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Hacker News Show | Date: 2/23/2026 3:39:21 PM | <a href="https://github.com/enjector/microgpt-c" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><h1>MicroGPT-C</h1><a href="#microgpt-c"></a></div>
-<p>A <strong>zero-dependency, pure C99</strong> implementation of a GPT-style character-level language model.</p>
-<p>The algorithm faithfully matches <a href="https://gist.github.com/karpathy/8627fe009c40f57531cb18360106ce95">Andrej Karpathy's </a></p><pre><a href="https://gist.github.com/karpathy/8627fe009c40f57531cb18360106ce95"><code>microgpt.py</code></a></pre> — same architecture, same training loop, same sampling — but compiles to native code with optional compiler-driven SIMD auto-vectorisation for dramatically faster training and inference.<p></p>
-<blockquote>
-<p><strong>Train a GPT in 20 ms. Generate names in microseconds. No Python. No PyTorch. No GPU.</strong></p>
-</blockquote>
+<p><a href="https://github.com/enjector/microgpt-c/actions/workflows/cmake-multi-platform.yml"><img src="https://github.com/enjector/microgpt-c/actions/workflows/cmake-multi-platform.yml/badge.svg" alt="Build"></a>
+<a href="https://github.com/enjector/microgpt-c/actions/workflows/codeql.yml"><img src="https://github.com/enjector/microgpt-c/actions/workflows/codeql.yml/badge.svg" alt="CodeQL"></a>
+<a href="/enjector/microgpt-c/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT"></a></p>
+<div><h3>Tiny specialist models, coordinated by a pipeline, outperform single models on focused tasks.</h3><a href="#tiny-specialist-models-coordinated-by-a-pipeline-outperform-single-models-on-focused-tasks"></a></div>
+<p><a target="_blank" href="/enjector/microgpt-c/blob/main/docs/organelles/images/Composable%20Intelligence%20Small%20AI%20Infographic.jpg"><img src="/enjector/microgpt-c/raw/main/docs/organelles/images/Composable%20Intelligence%20Small%20AI%20Infographic.jpg" alt="Composable Intelligence — the four phases of MicroGPT-C: stem cell foundation, targeted differentiation, organelle pipeline coordination, and proven results across logic games and code composition"></a></p>
 <hr>
-<div><h2>What Is This?</h2><a href="#what-is-this"></a></div>
-<p>MicroGPT-C is a minimal, readable implementation of a GPT (Generative Pre-trained Transformer) — the same family of models behind ChatGPT, but stripped down to its essential algorithm. It trains a tiny character-level language model that learns to generate realistic human names from scratch.</p>
-<p>The goal is <strong>education and experimentation</strong>: understand how attention, backpropagation, and the Adam optimiser actually work at the lowest level, without any framework abstractions.</p>
-<table>
-<thead>
-<tr>
-<th>Audience</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Students &amp; educators</strong></td>
-<td>Study attention, softmax, Adam, and backprop in readable C — no framework magic</td>
-</tr>
-<tr>
-<td><strong>Embedded / edge engineers</strong></td>
-<td>Entire model fits in <strong>&lt; 50 KB</strong> RAM; runs on MCUs with no runtime dependencies</td>
-</tr>
-<tr>
-<td><strong>Researchers</strong></td>
-<td>Auditable baseline for quantisation, custom layers, or optimiser experiments</td>
-</tr>
-<tr>
-<td><strong>Rapid prototypers</strong></td>
-<td>Train → iterate in milliseconds; test tokenisers, vocabularies, data formats</td>
-</tr>
-</tbody>
-</table>
+<div><h2>The Story</h2><a href="#the-story"></a></div>
+<p>This project started as a C port of Andrej Karpathy's <a href="https://gist.github.com/karpathy/8627fe009c40f57531cb18360106ce95">microGPT.py</a> — a ~200 line Python GPT that trains a character-level Transformer from scratch. We rewrote it in pure C99 with zero dependencies, and as you'd expect from C, it's much faster.</p>
+<p>Then we asked a bigger question: <strong>can tiny models actually be intelligent?</strong></p>
+<p>Not by making them bigger — the industry already does that. Instead, by making them <strong>work together</strong>. We took the same ~460K parameter engine and trained it on different tasks: one becomes a planner, another becomes a player, another becomes a judge. Each one starts as the same blank "stem cell" and <em>differentiates</em> based on its training data.</p>
+<p>We call them <strong>organelles</strong> — like the specialised structures inside a biological cell.</p>
+<p>The result surprised us. A single organelle playing Connect-4 wins about 55% of the time. But when a planner and player coordinate through a shared protocol, the system hits <strong>90%</strong> — even though the individual models are still wrong half the time. The pipeline catches the mistakes. <strong>The coordination is the intelligence.</strong></p>
+<p>We've now tested this across <a href="/enjector/microgpt-c/blob/main/docs/organelles/ORGANELLE_GAMES.md">11 logic games</a>, from Tic-Tac-Toe to Sudoku, with models ranging from 30K to 460K parameters. The pattern holds: right-sized specialists working together consistently outperform a single larger model working alone.</p>
+<p>Then we asked: <strong>does it work on real-world data?</strong></p>
+<p>We ran two experiments back-to-back — a <a href="/enjector/microgpt-c/blob/main/experiments/organelles/lottery">lottery prediction</a> pipeline (negative control) and a <a href="/enjector/microgpt-c/blob/main/experiments/organelles/markets">market regime detection</a> pipeline (positive test). The lottery model hit an entropy floor at 0.50 loss — it learned nothing, because lottery draws are random. The market model reached 0.03–0.06 loss and <strong>57% accuracy on unseen data</strong> (2.8× the random baseline) — because cross-asset correlations are real, learnable signal.</p>
+<p>Same engine. Same architecture. One learns, one can't. <strong>That's the proof.</strong></p>
+<p>The full research journey — from character-level Transformer to VM-based code generation — is documented in <a href="/enjector/microgpt-c/blob/main/docs/book/MicroGPT-C_Composable_Intelligence_at_the_Edge.pdf"><em>Composable Intelligence at the Edge</em></a> (16 chapters, <a href="/enjector/microgpt-c/blob/main/docs/book/MicroGPT-C_Composable_Intelligence_at_the_Edge.md">online version</a>).</p>
 <hr>
 <div><h2>Quick Start</h2><a href="#quick-start"></a></div>
-<div><pre><span><span>#</span> Linux / macOS</span>
-chmod +x build.sh
-./build.sh
-./build/microgpt</pre></div>
-<div><pre><span><span>::</span> Windows</span>
-build.bat
-build\Release\microgpt.exe</pre></div>
-<p>The build automatically copies </p><pre><code>data/names.txt</code></pre> next to the executable.<p></p>
-<hr>
-<div><h2>Performance</h2><a href="#performance"></a></div>
-<p>Measured on the same workload (1,000 training steps, 20 inference samples) — C vs the reference Python:</p>
-<table>
-<thead>
-<tr>
-<th>Metric</th>
-<th>Python</th>
-<th>C (fp64)</th>
-<th>Speedup</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Training time</strong></td>
-<td>~93 s</td>
-<td><strong>0.02 s</strong></td>
-<td><strong>~4,600×</strong></td>
-</tr>
-<tr>
-<td><strong>Training throughput</strong></td>
-<td>~0.1 k tok/s</td>
-<td><strong>~289 k tok/s</strong></td>
-<td><strong>~2,800×</strong></td>
-</tr>
-<tr>
-<td><strong>Steps/sec</strong></td>
-<td>~11</td>
-<td><strong>~40,000</strong></td>
-<td><strong>~3,600×</strong></td>
-</tr>
-<tr>
-<td><strong>Inference time</strong></td>
-<td>~0.74 s</td>
-<td><strong>&lt; 1 ms</strong></td>
-<td><strong>~700×+</strong></td>
-</tr>
-<tr>
-<td><strong>Inference rate</strong></td>
-<td>~27 samples/s</td>
-<td><strong>20,000 samples/s</strong></td>
-<td><strong>~740×</strong></td>
-</tr>
-<tr>
-<td><strong>Token throughput</strong></td>
-<td>—</td>
-<td><strong>109,000 tok/s</strong></td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>INT8 quantised build:</strong> ~25% slower training than fp64 on this tiny model, but <strong>~8× smaller</strong> weight storage — ideal for constrained devices.</p>
-</blockquote>
-<hr>
-<div><h2>Architecture</h2><a href="#architecture"></a></div>
-<p>A single-layer, decoder-only Transformer following the GPT-2 design:</p>
-<div><pre><code>Input → Token Embed + Pos Embed → RMSNorm → Self-Attention (4 heads, causal) → Residual → RMSNorm → MLP (fc1 → ReLU → fc2, 4× width) → Residual → Linear (lm_head) → Softmax → next-token probabilities
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Embedding dim</td>
-<td>16</td>
-</tr>
-<tr>
-<td>Attention heads</td>
-<td>4</td>
-</tr>
-<tr>
-<td>Layers</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Context length</td>
-<td>16</td>
-</tr>
-<tr>
-<td>Total parameters</td>
-<td>~4,600</td>
-</tr>
-<tr>
-<td>Weight memory (fp64)</td>
-<td>~37 KB</td>
-</tr>
-<tr>
-<td>Weight memory (INT8)</td>
-<td>~4.6 KB</td>
-</tr>
-<tr>
-<td>Training memory</td>
-<td>~144 KB</td>
-</tr>
-<tr>
-<td>Inference memory</td>
-<td>&lt; 50 KB</td>
-</tr>
-</tbody>
-</table>
-<p>Training uses the <strong>Adam</strong> optimiser with linear learning-rate decay (configurable in </p><pre><code>microgpt.h</code></pre>).<p></p>
-<hr>
-<div><h2>Build Options</h2><a href="#build-options"></a></div> <table>
-<thead>
-<tr>
-<th>Platform</th>
-<th>Standard</th>
-<th>SIMD (faster)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Linux/macOS</td>
-<td><pre><code>./build.sh</code></pre></td>
-<td><pre><code>./build.sh --simd</code></pre></td>
-</tr>
-<tr>
-<td>Windows</td>
-<td><pre><code>build.bat</code></pre></td>
-<td><pre><code>build.bat simd</code></pre></td>
-</tr>
-</tbody>
-</table>
-<div><h3>SIMD auto-vectorisation</h3><a href="#simd-auto-vectorisation"></a></div>
-<p>The </p><pre><code>--simd</code></pre> flag enables compiler-driven <strong>auto-vectorisation</strong> of the core dot products, matrix multiplications, and normalisations. On x86-64 the compiler targets the best available instruction set (SSE4, AVX2, etc.) via <pre><code>-march=native</code></pre>; on MSVC it enables <pre><code>/arch:AVX2</code></pre>. This gives a measurable speed-up on larger models without any hand-written intrinsics — the compiler re-writes the scalar loops into SIMD instructions automatically.<p></p>
-<div><pre><span><span>#</span> Linux / macOS — auto-detect best ISA</span>
-./build.sh --simd <span><span>#</span> CMake directly</span>
-cmake -DMICROGPT_SIMD=ON ..
-cmake --build <span>.</span> --config Release</pre></div>
-<div><h3>INT8 quantised build</h3><a href="#int8-quantised-build"></a></div>
-<p>Weights are stored as 8-bit integers with per-matrix scales — the forward pass dequantises on the fly; Adam updates an fp64 master copy and requantises each step. This reduces weight storage by <strong>~8×</strong> (37 KB → 4.6 KB) at a small accuracy/speed trade-off.</p>
-<table>
-<thead>
-<tr>
-<th>Platform</th>
-<th>Standard</th>
-<th>SIMD</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Linux/macOS</td>
-<td><pre><code>./build_quantised.sh</code></pre></td>
-<td><pre><code>./build_quantised.sh --simd</code></pre></td>
-</tr>
-<tr>
-<td>Windows</td>
-<td><pre><code>build_quantised.bat</code></pre></td>
-<td><pre><code>build_quantised.bat simd</code></pre></td>
-</tr>
-</tbody>
-</table>
-<div><h3>CMake directly</h3><a href="#cmake-directly"></a></div>
-<div><pre>mkdir build <span>&amp;&amp;</span> <span>cd</span> build
+<div><pre>git clone https://github.com/enjector/microgpt-c.git
+<span>cd</span> microgpt-c
+mkdir build <span>&amp;&amp;</span> <span>cd</span> build
 cmake ..
-cmake --build <span>.</span> --config Release <span><span>#</span> With INT8 quantisation</span>
-cmake -DQUANTIZATION_INT8=ON .. <span><span>#</span> With SIMD auto-vectorisation</span>
-cmake -DMICROGPT_SIMD=ON .. <span><span>#</span> Both</span>
-cmake -DQUANTIZATION_INT8=ON -DMICROGPT_SIMD=ON ..</pre></div>
+cmake --build <span>.</span> --config Release <span><span>#</span> Train a name generator in &lt; 1 second (4K params)</span>
+./names_demo <span><span>#</span> Train Shakespeare text generation (840K params, character-level)</span>
+./shakespeare_demo <span><span>#</span> Train Shakespeare word-level generation (510K params, ~40K tok/s inference, 2 min training)</span>
+./shakespeare_word_demo <span><span>#</span> Run a multi-organelle game pipeline (88% win rate)</span>
+./connect4_demo</pre></div>
+<p>All 11 game experiments, 2 real-world data experiments (lottery + markets), 3 pretrained checkpoints, 97 unit tests, and 22 benchmarks are included. See the full list in </p><pre><code>experiments/organelles/</code></pre>.<p></p>
 <hr>
-<div><h2>Project Layout</h2><a href="#project-layout"></a></div>
+<div><h2>Performance Highlights</h2><a href="#performance-highlights"></a></div>
+<p>All benchmarks on Apple M2 Max (dev machine), single-threaded unless noted. Models are 360KB–5.4MB and compile anywhere with a C99 compiler. Edge device testing is a future research stage. See <a href="/enjector/microgpt-c/blob/main/docs/PERFORMANCE.md">PERFORMANCE.md</a> for full details.</p>
 <table>
 <thead>
 <tr>
-<th>Path</th>
-<th>Description</th>
+<th>Engine</th>
+<th>Params</th>
+<th>Training</th>
+<th>Inference</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><pre><code>microgpt.h</code></pre></td>
-<td>Model config, public API declarations</td>
+<td><strong>Character-level</strong> (Shakespeare)</td>
+<td>841K</td>
+<td>28K tok/s</td>
+<td>16K tok/s</td>
+<td>14 min, 12 threads</td>
 </tr>
 <tr>
-<td><pre><code>microgpt.c</code></pre></td>
-<td>Core engine: model, forward/backward, Adam, data loading</td>
+<td><strong>Word-level</strong> (Shakespeare)</td>
+<td>510K</td>
+<td>12.5K tok/s</td>
+<td>40K tok/s</td>
+<td>2 min, 12 threads</td>
 </tr>
 <tr>
-<td><pre><code>main.c</code></pre></td>
-<td>Entry point: load data → train → generate samples</td>
+<td><strong>VM engine</strong> (dispatch)</td>
+<td>—</td>
+<td>—</td>
+<td>3.7–5.8M ops/s</td>
+<td>Single-threaded</td>
 </tr>
 <tr>
-<td><pre><code>microgpt_amalgamated.c</code></pre></td>
-<td><strong>Single-file build</strong> — same algorithm, no header needed</td>
+<td><strong>Micro-benchmark</strong> (tiny model)</td>
+<td>6.5K</td>
+<td>642K tok/s</td>
+<td>1.55M infer/s</td>
+<td>Float32, 1 thread</td>
+</tr>
+</tbody>
+</table>
+<p>vs. Karpathy's <strong>microgpt.py</strong>: ~1,000× faster training, ~700× faster inference (expected for C vs Python; the real contribution is the orchestration layer).</p>
+<div><h3>Game Leaderboard (11 Games)</h3><a href="#game-leaderboard-11-games"></a></div>
+<p>All games: trained organelle vs random opponent, 100 evaluation games each. Full details in <a href="/enjector/microgpt-c/blob/main/docs/organelles/ORGANELLE_GAMES.md">ORGANELLE_GAMES.md</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Game</th>
+<th>Organelles</th>
+<th>Params</th>
+<th>Size</th>
+<th>Total</th>
+<th>Training</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pentago</strong></td>
+<td>2</td>
+<td>92K</td>
+<td>1.1 MB</td>
+<td>2.2 MB</td>
+<td>~9 min</td>
+<td><strong>91% win</strong></td>
 </tr>
 <tr>
-<td><pre><code>data/names.txt</code></pre></td>
-<td>Training data (one name per line, ~32k names)</td>
+<td><strong>8-Puzzle</strong></td>
+<td>5</td>
+<td>460K</td>
+<td>5.4 MB</td>
+<td>27 MB</td>
+<td>~7 min</td>
+<td><strong>90% solve</strong></td>
 </tr>
 <tr>
-<td><pre><code>CMakeLists.txt</code></pre></td>
-<td>CMake build (C99, Release, optional SIMD / INT8)</td>
+<td><strong>Connect-4</strong></td>
+<td>2</td>
+<td>460K</td>
+<td>5.4 MB</td>
+<td>10.8 MB</td>
+<td>~21 min</td>
+<td><strong>88% win</strong></td>
+</tr>
+<tr>
+<td><strong>Tic-Tac-Toe</strong></td>
+<td>2</td>
+<td>460K</td>
+<td>5.4 MB</td>
+<td>10.8 MB</td>
+<td>~17 min</td>
+<td><strong>87% w+d</strong></td>
+</tr>
+<tr>
+<td><strong>Mastermind</strong></td>
+<td>2</td>
+<td>92K</td>
+<td>1.1 MB</td>
+<td>2.2 MB</td>
+<td>~8 min</td>
+<td><strong>79% solve</strong></td>
+</tr>
+<tr>
+<td><strong>Sudoku</strong></td>
+<td>2</td>
+<td>160K</td>
+<td>1.9 MB</td>
+<td>3.8 MB</td>
+<td>~3 min</td>
+<td><strong>78% solve</strong></td>
+</tr>
+<tr>
+<td><strong>Othello</strong></td>
+<td>2</td>
+<td>92K</td>
+<td>1.1 MB</td>
+<td>2.2 MB</td>
+<td>~8 min</td>
+<td><strong>70% win</strong></td>
+</tr>
+<tr>
+<td><strong>Klotski</strong></td>
+<td>2</td>
+<td>30K</td>
+<td>360 KB</td>
+<td>720 KB</td>
+<td>~36 sec</td>
+<td><strong>62% solve</strong></td>
+</tr>
+<tr>
+<td><strong>Red Donkey</strong></td>
+<td>2</td>
+<td>30K</td>
+<td>360 KB</td>
+<td>720 KB</td>
+<td>~38 sec</td>
+<td>12% solve</td>
+</tr>
+<tr>
+<td><strong>Lights Out</strong></td>
+<td>2</td>
+<td>160K</td>
+<td>1.9 MB</td>
+<td>3.8 MB</td>
+<td>~4 min</td>
+<td>10% solve</td>
+</tr>
+<tr>
+<td><strong>Hex</strong></td>
+<td>2</td>
+<td>92K</td>
+<td>1.1 MB</td>
+<td>2.2 MB</td>
+<td>~3 min</td>
+<td>4% win</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Real-World Data</h3><a href="#real-world-data"></a></div>
+<table>
+<thead>
+<tr>
+<th>Experiment</th>
+<th>Organelles</th>
+<th>Params</th>
+<th>Size</th>
+<th>Training</th>
+<th>Result</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Market regime</strong></td>
+<td>3</td>
+<td>615K</td>
+<td>7.1 MB</td>
+<td>~10 min</td>
+<td><strong>57% holdout</strong> (2.8× baseline)</td>
+<td>Learnable signal</td>
+</tr>
+<tr>
+<td><strong>Lottery</strong></td>
+<td>2</td>
+<td>163K</td>
+<td>1.9 MB</td>
+<td>~5 min</td>
+<td>Random wins</td>
+<td>Negative control ✓</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<div><h2>Single-File Build</h2><a href="#single-file-build"></a></div>
-<p></p><pre><code>microgpt_amalgamated.c</code></pre> is a self-contained single file containing the full GPT algorithm — data loading, training, and inference. No header file needed:<p></p>
-<div><pre><span><span>#</span> Compile directly (no CMake required)</span>
-cc -O2 -o microgpt microgpt_amalgamated.c -lm
-cp data/names.txt <span>.</span> <span>&amp;&amp;</span> ./microgpt <span><span>#</span> Or via CMake</span>
-cmake --build build --config Release --target microgpt_amalgamated
-./build/microgpt_amalgamated</pre></div>
+<div><h2>Explore Further</h2><a href="#explore-further"></a></div>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> <strong>FAQ</strong></td>
+<td><a href="/enjector/microgpt-c/blob/main/FAQ.md">FAQ.md</a></td>
+</tr>
+<tr>
+<td> <strong>The stem cell philosophy</strong></td>
+<td><a href="/enjector/microgpt-c/blob/main/VISION.md">VISION.md</a></td>
+</tr>
+<tr>
+<td> <strong>Why this matters</strong></td>
+<td><a href="/enjector/microgpt-c/blob/main/VALUE_PROPOSITION.md">VALUE_PROPOSITION.md</a></td>
+</tr>
+<tr>
+<td> <strong>Roadmap</strong></td>
+<td><a href="/enjector/microgpt-c/blob/main/ROADMAP.md">ROADMAP.md</a></td>
+</tr>
+<tr>
+<td> <strong>Book: Composable Intelligence at the Edge</strong></td>
+<td><a href="/enjector/microgpt-c/blob/main/docs/book/MicroGPT-C_Composable_Intelligence_at_the_Edge.pdf">PDF</a> · <a href="/enjector/microgpt-c/blob/main/docs/book/MicroGPT-C_Composable_Intelligence_at_the_Edge.md">Online</a> · <a href="/enjector/microgpt-c/blob/main/docs/book/0.md">Chapters</a></td>
+</tr>
+<tr>
+<td> <strong>Game leaderboard</strong> (11 games)</td>
+<td><a href="/enjector/microgpt-c/blob/main/docs/organelles/ORGANELLE_GAMES.md">ORGANELLE_GAMES.md</a></td>
+</tr>
+<tr>
+<td> <strong>Market regime detection</strong> (57% holdout)</td>
+<td><a href="/enjector/microgpt-c/blob/main/experiments/organelles/markets/README.md">markets/README.md</a></td>
+</tr>
+<tr>
+<td> <strong>Lottery experiment</strong> (entropy baseline)</td>
+<td><a href="/enjector/microgpt-c/blob/main/experiments/organelles/lottery/README.md">lottery/README.md</a></td>
+</tr>
+<tr>
+<td> <strong>Pipeline architecture</strong> (white paper)</td>
+<td><a href="/enjector/microgpt-c/blob/main/docs/organelles/ORGANELLE_PIPELINE.md">ORGANELLE_PIPELINE.md</a></td>
+</tr>
+<tr>
+<td> <strong>Reasoning conclusion</strong></td>
+<td><a href="/enjector/microgpt-c/blob/main/docs/organelles/ORGANELLE_REASONING_CONCLUSION.md">ORGANELLE_REASONING_CONCLUSION.md</a></td>
+</tr>
+<tr>
+<td> <strong>Using as a library</strong></td>
+<td><a href="/enjector/microgpt-c/blob/main/docs/LIBRARY_GUIDE.md">LIBRARY_GUIDE.md</a></td>
+</tr>
+<tr>
+<td> <strong>Performance &amp; benchmarks</strong></td>
+<td><a href="/enjector/microgpt-c/blob/main/docs/PERFORMANCE.md">PERFORMANCE.md</a></td>
+</tr>
+<tr>
+<td> <strong>Build options</strong> (Metal, BLAS, INT8, SIMD)</td>
+<td><a href="/enjector/microgpt-c/blob/main/docs/BUILD_OPTIONS.md">BUILD_OPTIONS.md</a></td>
+</tr>
+<tr>
+<td> <strong>Contributing</strong></td>
+<td><a href="/enjector/microgpt-c/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a></td>
+</tr>
+<tr>
+<td> <strong>Data licensing</strong></td>
+<td><a href="/enjector/microgpt-c/blob/main/DATA_LICENSE.md">DATA_LICENSE.md</a></td>
+</tr>
+</tbody>
+</table>
 <hr>
 <div><h2>Requirements</h2><a href="#requirements"></a></div>
 <ul>
@@ -295,10 +338,47 @@ cmake --build build --config Release --target microgpt_amalgamated
 <li><strong>CMake 3.10+</strong></li>
 <li>No other dependencies</li>
 </ul>
+<p>Optional: <a href="https://git-lfs.github.com/">Git LFS</a> for pretrained checkpoints (</p><pre><code>git lfs pull</code></pre>).<p></p>
+<hr>
+<div><h2>Responsible Use</h2><a href="#responsible-use"></a></div>
+<p>MicroGPT-C runs entirely on-device with no telemetry, no cloud calls, and no data collection. Small models trained on narrow corpora inherit the biases of that corpus — be aware of this when deploying. High confidence means the model has seen similar patterns, not that the output is correct. Always validate through deterministic checks (the Judge pattern) or human review for safety-critical applications.</p>
+<p>See <a href="/enjector/microgpt-c/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for ethics guidelines.</p>
+<hr>
+<div><h2>Research Team</h2><a href="#research-team"></a></div>
+<p>This project was built transparently with human–AI collaboration — the same philosophy of coordinated intelligence that MicroGPT-C explores.</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Member</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> Principal Research Manager</td>
+<td><strong>Ajay Soni</strong> — research direction, validation, and decisions</td>
+</tr>
+<tr>
+<td> Engineering &amp; Documentation</td>
+<td><strong>Claude</strong> — coding, documentation, and junior research</td>
+</tr>
+<tr>
+<td> Senior Research Assistant</td>
+<td><strong>Grok</strong> — in-depth analysis and insights</td>
+</tr>
+<tr>
+<td> Senior Research Assistant</td>
+<td><strong>Gemini</strong> — creative synthesis and validation</td>
+</tr>
+<tr>
+<td> Community Education</td>
+<td><strong>NotebookLM</strong> — accessible explanations and education materials</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <div><h2>License</h2><a href="#license"></a></div>
-<p>MIT — see <a href="/enjector/microgpt-c/blob/main/LICENSE">LICENSE</a> and source file headers.</p>
-<p><strong>Author:</strong> Ajay Soni (<a href="mailto:ajay.soni@enjector.com">ajay.soni@enjector.com</a>), Enjector Software Ltd.</p>
+<p>MIT — see <a href="/enjector/microgpt-c/blob/main/LICENSE">LICENSE</a>.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

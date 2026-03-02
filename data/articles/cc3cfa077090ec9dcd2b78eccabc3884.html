@@ -1,6 +1,8 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
-<title>asdPrompt — Select, copy, and act on any AI response without touching the mouse.</title>
+<title>asdPrompt — Keyboard Shortcuts for AI Chats</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
@@ -17,23 +19,42 @@
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
-  <h1>asdPrompt — Select, copy, and act on any AI response without touching the mouse.</h1>
+  <h1>asdPrompt — Keyboard Shortcuts for AI Chats</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/16/2026 6:28:32 PM | Lang: EN
+    Source: Hacker News Show | Date: 2/18/2026 8:37:26 PM | <a href="https://asdprompt.com/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <p>You</p> <p>Explain how attention mechanisms work in transformers</p> </div> <div> <p>Claude</p> <div> <p><span><span>The</span> <span>core</span> <span>idea</span> <span>behind</span> <span><strong>self-attention</strong></span> <span>is</span> <span>that</span> <span>every</span> <span>token</span> <span>in</span> <span>a</span> <span>sequence</span> <span>gets</span> <span>to</span> <span>"look&nbsp;at"</span> <span>every</span> <span>other</span> <span>token</span> <span>and</span> <span>decide</span> <span>how</span> <span>much</span> <span>to</span> <span>attend</span> <span>to it.</span></span> <span><span>Each</span> <span>token</span> <span>is</span> <span>projected</span> <span>into</span> <span>three</span> <span>vectors:</span> <span>a</span> <span><strong>query</strong>,</span> <span>a</span> <span><strong>key</strong>,</span> <span>and</span> <span>a</span> <span><strong>value</strong>.</span></span> <span><span>The</span> <span><strong>attention&nbsp;mechanism</strong></span> <span>then</span> <span>computes</span> <span>a</span> <span>weighted</span> <span>sum</span> <span>of</span> <span>all</span> <span>values,</span> <span>where</span> <span>the</span> <span>weights</span> <span>come</span> <span>from</span> <span>the</span> <span>dot</span> <span>product</span> <span>of</span> <span>queries</span> <span>and</span> <span>keys.</span></span></p> <pre><code><span># Scaled dot-product attention</span>
-<span>import</span> torch
-<span>import</span> torch.nn.functional <span>as</span> F <span>def</span> <span>attention</span>(Q, K, V, d_k): scores = torch.matmul(Q, K.transpose(<span>-2</span>, <span>-1</span>)) / d_k ** <span>0.5</span> weights = F.softmax(scores, dim=<span>-1</span>) <span>return</span> torch.matmul(weights, V)</code></pre> <div> <p><span><span>This</span> <span>mechanism</span> <span>has</span> <span>several</span> <span>key</span> <span>advantages:</span></span></p> <ul> <li><span><span><strong>Parallelism</strong></span> <span>—</span> <span>unlike</span> <span>RNNs,</span> <span>all</span> <span>positions</span> <span>are</span> <span>processed</span> <span>simultaneously</span></span></li> <li><span><span><strong>Long-range&nbsp;dependencies</strong></span> <span>—</span> <span>any</span> <span>token</span> <span>can</span> <span>directly</span> <span>attend</span> <span>to</span> <span>any</span> <span>other</span></span></li> <li><span><span><strong>Interpretability</strong></span> <span>—</span> <span>attention</span> <span>weights</span> <span>show</span> <span>what</span> <span>the</span> <span>model</span> <span>focuses</span> <span>on</span></span></li> </ul> </div> <p><span><span>In</span> <span>practice,</span> <span>transformers</span> <span>use</span> <span><strong>multi-head&nbsp;attention</strong>,</span> <span>which</span> <span>runs</span> <span>several</span> <span>attention</span> <span>operations</span> <span>in</span> <span>parallel</span> <span>so</span> <span>the</span> <span>model</span> <span>can</span> <span>capture</span> <span>different</span> <span>types</span> <span>of</span> <span>relationships</span> <span>simultaneously.</span></span></p> </div> </div> </div></div>
+    <div><div> <h2>Why this exists</h2> <div> <div> <h3>Without asdPrompt</h3> <p>See interesting phrase → reach for mouse → select text → copy → click input → type prompt → paste → submit</p> <p><span>8 context switches. Flow destroyed.</span> </p></div> <div> <h3>With asdPrompt</h3> <p>See interesting phrase → <kbd></kbd> → <kbd>a</kbd> → <kbd>a</kbd> → <kbd>d</kbd></p> <p><span>3 keystrokes. Hands never leave the keyboard.</span> </p></div> </div> <p>Like hyperlinks for AI responses — except <em>you</em> decide what to zoom into.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -46,6 +67,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
-
-</body></html>
+</body>
+</html>

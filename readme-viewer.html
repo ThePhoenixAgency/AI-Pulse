@@ -40,6 +40,7 @@
             align-items: center;
             justify-content: flex-start;
             z-index: 100;
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             padding: 0 20px;
         }
@@ -206,6 +207,7 @@
             overflow-y: auto;
             transform: translateX(104%);
             transition: transform 0.3s ease;
+            -webkit-backdrop-filter: blur(15px);
             backdrop-filter: blur(15px);
         }
 
@@ -323,6 +325,7 @@
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
+            display: none;
         }
 
         .filter-notice {
@@ -341,6 +344,7 @@
             padding: 30px;
             border-radius: 12px;
             border: 1px solid rgba(0, 217, 255, 0.1);
+            display: none;
         }
 
         /* ─── Section Separators ─── */
@@ -549,6 +553,7 @@
             color: #00d9ff;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer;
+            -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -633,7 +638,7 @@
 
         <div class="prefs-section">
             <h4 id="prefLangTitle">Language</h4>
-            <select id="prefLang">
+            <select id="prefLang" aria-labelledby="prefLangTitle">
                 <option value="auto" id="prefLangAutoOption">Auto (IP / Browser)</option>
                 <option value="all" id="prefLangAllOption">All</option>
                 <option value="fr">Français</option>
@@ -655,7 +660,7 @@
 
         <div class="prefs-section">
             <h4 id="prefMaxArticlesTitle">Articles per section</h4>
-            <input type="range" id="prefMaxArticles" min="10" max="120" value="50">
+            <input type="range" id="prefMaxArticles" min="10" max="120" value="50" title="Articles per section" aria-labelledby="prefMaxArticlesTitle" aria-valuemin="10" aria-valuemax="120">
             <span class="range-value" id="prefMaxArticlesValue">50</span>
         </div>
 
@@ -677,10 +682,10 @@
                 <div class="spinner"></div>
                 <p id="loadingText">Loading README...</p>
             </div>
-            <div id="error" class="error" style="display: none;"></div>
+            <div id="error" class="error"></div>
             <div id="filterNotice" class="filter-notice"></div>
-            <nav class="quick-nav" id="quickNav" style="display: none;"></nav>
-            <div id="readme-content" style="display: none;"></div>
+            <nav class="quick-nav" id="quickNav"></nav>
+            <div id="readme-content"></div>
         </div>
     </div>
 
@@ -1666,7 +1671,7 @@
                 });
 
                 const fetchWithTimeout = async (resource, options = {}) => {
-                    const { timeout = 2000 } = options;
+                    const { timeout = 8000 } = options;
                     const controller = new AbortController();
                     const id = setTimeout(() => controller.abort(), timeout);
                     const response = await fetch(resource, { ...options, signal: controller.signal });
@@ -1675,7 +1680,7 @@
                 };
 
                 try {
-                    const localResponse = await fetchWithTimeout('./README.md');
+                    const localResponse = await fetchWithTimeout('./README.md', { cache: 'no-store' });
                     if (localResponse.ok) {
                         const localMarkdown = await localResponse.text();
                         if (!isUsableReadme(localMarkdown)) {

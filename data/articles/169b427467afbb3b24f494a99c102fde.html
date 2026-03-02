@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Marre des clients mail lourds ? Passez à Himalaya !</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Marre des clients mail lourds ? Passez à Himalaya !</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/20/2026 9:25:00 AM | <a href="https://korben.info/marre-des-clients-mail-lourds-passez-a-himalaya.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/marre-des-clients-mail-lourds-passez-a-himalaya/marre-des-clients-mail-lourds-passez-a-himalaya-1.png" alt="Image illustrant l'article : Marre des clients mail lourds ? Passez à Himalaya !"></p><div><span>Ce qu’il faut retenir</span><div><ol><li>Himalaya CLI est un client email en Rust qui fonctionne entièrement en terminal, consomme peu de RAM et gère Gmail, Outlook, iCloud, Protonmail en multi-compte sans configuration complexe</li><li>Chiffrement PGP intégré et stockage sécurisé des mots de passe via le trousseau OS pour les utilisateurs qui veulent contrôler leur sécurité email</li><li>Sortie JSON native permet d'automatiser et d'intégrer Himalaya dans des scripts shell, parfait pour les workflows terminal avancés</li></ol><p>Résumé généré par IA</p></div><div><p>Envie de gérer vos emails sans sortir de votre terminal ? Si vous êtes du genre à passer votre vie dans une console (genre pour les mecs comme moi quoi...), vous savez que les clients mails classiques sont souvent des usines à gaz qui mangent de la RAM pour rien.</p><p>C'est là qu'intervient <strong><a href="https://github.com/pimalaya/himalaya">Himalaya CLI</a>
+</strong>.</p><p>C'est un client email écrit en Rust, donc autant vous dire que ça envoie du bois niveau rapidité et sécurité. L'idée, c'est de proposer un outil qui fait une seule chose mais qui la fait bien à savoir gérer vos courriers électroniques directement en ligne de commande, sans chichi.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/marre-des-clients-mail-lourds-passez-a-himalaya/marre-des-clients-mail-lourds-passez-a-himalaya-1.jpeg" alt=""></p><p>Le truc cool, c'est qu'il est super polyvalent. Il gère le multi-compte sans broncher (Gmail, Outlook, iCloud, Protonmail...), supporte l'IMAP et le SMTP, mais peut aussi bosser avec des boîtes locales au format Maildir ou Notmuch. Pour les paranoïaques de la sécurité, le support PGP est de la partie pour chiffrer vos échanges, et il s'intègre même avec le trousseau de clés de votre OS pour stocker vos mots de passe proprement.</p><p>Pour l'installer en tant que user, c'est archi-simple :</p><div><pre><code><span><span>curl -sSL https://raw.githubusercontent.com/pimalaya/himalaya/master/install.sh | PREFIX=~/.local sh
+</span></span></code></pre></div><p>Et une fois en place, je vous conseille de lancer l'assistant de configuration qui va vous guider pas à pas (sans vous prendre la tête). Pour cela, lancez simplement :</p><div><pre><code><span><span>himalaya
+</span></span></code></pre></div><p>Vous pourrez ensuite lister vos messages, les lire, ajouter des pièces jointes et même composer vos réponses dans votre éditeur de texte préféré (Vim, Emacs, ou même Nano si vous n'avez pas encore vu la lumière). Et si vous voulez automatiser des trucs, sachez qu'il peut cracher du JSON, ce qui est parfait pour faire de la bidouille terminal avec d'autres scripts.</p><p>D'ailleurs, si vous kiffez les outils en Rust pour votre console, je vous avais déjà parlé de
+<a href="https://korben.info/doxx-terminal-viewer-word-rust.html">Doxx pour lire des fichiers Word</a>
+ou de
+<a href="https://korben.info/geary-client-mail-leger-pour-gnome.html">Geary si vous préférez quand même une petite interface légère</a>
+.</p><p>Bref, encore un excellent outil pour reprendre le contrôle de sa boîte mail tout en restant dans son environnement préféré.</p><p><a href="https://terminaltrove.com/himalaya/">Source</a></p></div>Références<section><ul><li><a href="https://terminaltrove.com/himalaya/" target="_blank">https://terminaltrove.com/himalaya/</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

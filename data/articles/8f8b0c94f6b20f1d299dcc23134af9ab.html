@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>sudo-rs - 40 ans de silence cassés par des astérisques</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>sudo-rs - 40 ans de silence cassés par des astérisques</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/27/2026 8:33:54 AM | <a href="https://korben.info/sudo-rs-password-feedback-asterisques.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/sudo-rs-password-feedback-asterisques/sudo-rs-password-feedback-asterisques-1.png" alt="Image illustrant l'article : sudo-rs - 40 ans de silence cassés par des astérisques"></p><div><span>Ce qu’il faut retenir</span><div><ol><li>sudo-rs (réécriture en Rust de sudo) affiche désormais des astérisques lors de la saisie du mot de passe par défaut sur Ubuntu 26.04, cassant une convention de 40 ans censée masquer la longueur du mot de passe</li><li>Les devs considèrent ce changement sécuritaire "infinitésimal" puisque le mot de passe sudo est identique à celui de session et le bruit des touches révèle déjà la longueur</li><li>Pour désactiver les astérisques, ajouter "Defaults !pwfeedback" dans /etc/sudoers via sudo visudo (attention : toute erreur de typo rend sudo inutilisable)</li></ol><p>Résumé généré par IA</p></div><div><p>Si vous utilisez Ubuntu 26.04, vous avez peut-être remarqué un truc bizarre dernièrement en tapant votre mot de passe sudo... Ouiiiiii, y'a des petites étoiles qui apparaissent !! Pas de panique, c'est "normal". Enfin, c'est nouveau...</p><p>En effet, <strong>sudo-rs</strong>, la réécriture en Rust de la bonne vieille commande sudo, a décidé d'activer <code>pwfeedback</code> par défaut. En gros, quand vous faites un <code>sudo apt install bidule</code>, au lieu du trou noir habituel, vous voyez maintenant des <code>*****</code> défiler pendant la saisie du mot de passe. C'est un changement qui casse une convention vieille de 40 ans... et ça, forcément, ça fait du bruit !</p><p>Pour rappel, Ubuntu a basculé sur sudo-rs (le remplaçant en Rust du bon vieux sudo en C) depuis la version 25.10. Ça fait partie du même mouvement de réécriture des outils système en Rust,
+<a href="https://korben.info/rust-coreutils-base64-bat-gnu.html">comme les coreutils</a>
+dont je vous avais parlé. Et la 26.04 vient de "cherry-picker" comme on dit, un patch upstream <strong>qui active le feedback visuel par défaut.</strong></p><p>Un bug report sur Launchpad (
+<a href="https://bugs.launchpad.net/ubuntu/+source/rust-sudo-rs/+bug/2142721">#2142721</a>
+) est bien sûr arrivé direct, en mode vénère genre "*ÇA FAIT DES DÉCENNIES qu'on n'affiche pas la longueur du mot de passe pour empêcher le shoulder surfing ! C'est quoi ce bordel !!?? *"</p><p>Et la réponse des devs : <strong>Won't Fix</strong>. Circulez les relous !</p><p>En fait, leur argument c'est que le bénéfice sécurité est "infinitésimal". Parce que bon, votre mot de passe sudo c'est le même que celui de votre session (celui que vous tapez à l'écran de login, devant tout le monde). Et le bruit des touches trahit déjà la longueur de toute façon. Du coup, ils ont préféré régler le problème UX qui paume les débutants depuis le début des années 80.</p><p>D'ailleurs,
+<a href="https://korben.info/des-etoiles-lors-de-la-saisie-dun-mot-de-passe-dans-le-terminal.html">en 2013 je vous expliquais comment activer ces étoiles manuellement</a>
+avec <code>sudo visudo</code> (ça date de fou !!) et maintenant c'est l'inverse, faut expliquer comment les virer ! Linux Mint avait d'ailleurs déjà sauté le pas de son côté depuis un moment.</p><p>Perso, le truc qui me gonfle c'est pour les tutos vidéo. Quand vous faites un screencast, les astérisques révèlent la longueur de votre mot de passe à tous vos spectateurs. Du coup faut aller reparamétrer chaque machine avant de filmer ou faire du masquage en post prod. C'est pas la fin du monde, mais bon, la flemme...</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/sudo-rs-password-feedback-asterisques/sudo-rs-password-feedback-asterisques-2.png" alt=""></p><p>Alors pour désactiver ces jolies zétoiles :</p><div><pre><code><span><span>sudo visudo
+</span></span></code></pre></div><p>Et ajoutez cette ligne à la fin de <code>/etc/sudoers</code> :</p><div><pre><code><span><span>Defaults !pwfeedback
+</span></span></code></pre></div><p>Sauvegardez (Ctrl+X sous nano), et c'est réglé. Attention, ne touchez à rien d'autre dans ce fichier, une erreur de typo et sudo ne marchera plus. Grâce à cette manip, ce sera retour au trou noir ! Youpi !</p><p><a href="https://www.phoronix.com/news/sudo-rs-password-feedback">Source</a></p></div>Références<section><ul><li><a href="https://bugs.launchpad.net/ubuntu/&amp;#43;source/rust-sudo-rs/&amp;#43;bug/2142721" target="_blank" rel="noopener noreferrer">https://bugs.launchpad.net/ubuntu/&amp;#43;source/rust-sudo-rs/&amp;#43;bug/2142721</a></li><li><a href="https://www.phoronix.com/news/sudo-rs-password-feedback" target="_blank" rel="noopener noreferrer">https://www.phoronix.com/news/sudo-rs-password-feedback</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

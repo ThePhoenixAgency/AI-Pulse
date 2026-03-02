@@ -31,16 +31,16 @@ DERNIÈRE MISE À JOUR: Février 2026
 <html lang="fr">
 
 <head>
+    <meta charset="UTF-8">
     <!--
     ============================================================================
     EN-TÊTE HTML (HEAD)
     ============================================================================
+    SECURITE: meta charset place en premier pour prevenir XSS
+    
     Métadonnées et ressources nécessaires au bon fonctionnement de la page.
     ============================================================================
     -->
-
-    <!-- Encodage UTF-8 pour les caractères spéciaux -->
-    <meta charset="UTF-8">
 
     <!-- Configuration pour les écrans mobiles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,6 +105,14 @@ DERNIÈRE MISE À JOUR: Février 2026
             border: none;            /* Pas de bordure autour de l'iframe */
             background: #0d1117;     /* Fond sombre pendant le chargement */
         }
+
+        /* ====================================================================
+           CLASSE UTILITAIRE POUR LE LOGO
+           ==================================================================== */
+        .logo-blend {
+            height: 55px;
+            mix-blend-mode: screen;
+        }
     </style>
 </head>
 
@@ -126,7 +134,7 @@ DERNIÈRE MISE À JOUR: Février 2026
             - mix-blend-mode: screen : Le logo se mélange avec le fond
               (les parties noires deviennent transparentes)
             -->
-            <img src="./assets/logo_final.png" alt="AI-PULSE" style="height: 55px; mix-blend-mode: screen;">
+            <img src="./assets/logo_final.png" alt="AI-PULSE" class="logo-blend">
         </div>
 
         <!-- Navigation -->
@@ -173,11 +181,11 @@ DERNIÈRE MISE À JOUR: Février 2026
             <span>•</span>
             <a href="portfolio.html">Portfolio</a>
             <span>•</span>
-            <a href="https://github.com/ThePhoenixAgency/AI-Pulse" target="_blank">GitHub</a>
+            <a href="https://github.com/ThePhoenixAgency/AI-Pulse" target="_blank" rel="noopener noreferrer">GitHub</a>
             <span>•</span>
-            <a href="https://github.com/ThePhoenixAgency/AI-Pulse/issues/new?template=subscribe.yml" target="_blank">S'abonner</a>
+            <a href="https://github.com/ThePhoenixAgency/AI-Pulse/issues/new?template=subscribe.yml" target="_blank" rel="noopener noreferrer">S'abonner</a>
         </div>
-        <p>&copy; 2026 <a href="https://ThePhoenixAgency.github.io" target="_blank">ThePhoenixAgency</a>. All rights reserved.</p>
+        <p>&copy; 2026 <a href="https://ThePhoenixAgency.github.io" target="_blank" rel="noopener noreferrer">ThePhoenixAgency</a>. All rights reserved.</p>
     </footer>
 
     <!-- Scripts JavaScript -->

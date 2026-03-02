@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - pirate/mac-hardware-toys: Programmatically control Mac keyboard &amp; display brightness, accelerometer data, fan speed, microphone, speaker, and more like modular synth components connected by shell piping.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - pirate/mac-hardware-toys: Programmatically control Mac keyboard &amp; display brightness, accelerometer data, fan speed, microphone, speaker, and more like modular synth components connected by shell piping.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 8:43:58 PM | <a href="https://github.com/pirate/mac-hardware-toys" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Use your Mac hardware like a modular synth!</h1><a href="#use-your-mac-hardware-like-a-modular-synth"></a></div>
+<p>A suite of commands like </p><pre><code>accelerometer</code></pre>, <pre><code>microphone</code></pre>, <pre><code>bandpass</code></pre>, <pre><code>keyboard-brightness</code></pre>, <pre><code>screen-brightness</code></pre>, and more that can be linked together using UNIX pipes.<p></p>
+<p>All tools input and output a standardized mono audio signal that represents their sensor input/output values.</p>
+<div><h2>Quickstart</h2><a href="#quickstart"></a></div>
+<div><pre>git clone https://github.com/pirate/mac-hardware-toys
+<span>cd</span> mac-hardware-toys uv sync
+<span>source</span> .venv/bin/activate <span><span>#</span>## Examples</span> <span><span>#</span> flash your screen according to your microphone input</span>
+microphone <span>|</span> screen-brightness <span><span>#</span> play a sine wave tone based on your screen lid-angle</span>
+lid-angle <span>|</span> speaker <span><span>#</span> flash the keyboard according to your heartbeat (keep your wrists on palm rests)</span>
+accelerometer <span>|</span> metronome <span>|</span> keyboard-brightness <span><span>#</span> see more detail about any given signal by piping it into visualizer</span>
+microphone <span>|</span> visualizer
+sine 1000 <span>|</span> visualizer
+gyroscope <span>|</span> tee <span><span>&gt;(</span>speaker<span>)</span></span> <span>|</span> visualizer</pre></div>
+<p><a target="_blank" href="https://camo.githubusercontent.com/5250815fc7def73750bd4d8465c2594faad3f2ff3365d71f564d6f967e768eb8/68747470733a2f2f692e696d6775722e636f6d2f415336745472652e676966" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/5250815fc7def73750bd4d8465c2594faad3f2ff3365d71f564d6f967e768eb8/68747470733a2f2f692e696d6775722e636f6d2f415336745472652e676966" alt="Flashing keyboard gif"></a>
+<a target="_blank" href="https://camo.githubusercontent.com/3c30ae8833b13fc1177951de515787418d3e8c863d9ff94dc5cdc15f709464ef/68747470733a2f2f692e696d6775722e636f6d2f635246736f444d2e676966" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/3c30ae8833b13fc1177951de515787418d3e8c863d9ff94dc5cdc15f709464ef/68747470733a2f2f692e696d6775722e636f6d2f635246736f444d2e676966" alt="Flashing display gif"></a></p>
+<a target="_blank" href="https://private-user-images.githubusercontent.com/511499/553262446-c30f02b1-2695-4e5f-9724-e01986ba799d.PNG?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzIyMzEyMjQsIm5iZiI6MTc3MjIzMDkyNCwicGF0aCI6Ii81MTE0OTkvNTUzMjYyNDQ2LWMzMGYwMmIxLTI2OTUtNGU1Zi05NzI0LWUwMTk4NmJhNzk5ZC5QTkc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyN1QyMjIyMDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00Mzk1YmIyOGRiOTNmOGJjMWEzMGU3YjdkM2ZhOTQ2OGI5ZjI1ODkxYjg0NjFmNzRlZGQ0MjdlMDJjZjg5NjlmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.huC4AhN-LVRVyFgn-4KAO0mhf9SNGz_0o5LE2Wpb-p4" rel="noopener noreferrer"><img alt="Screenshot 2026-02-20 at 11 19 36 PM" src="https://private-user-images.githubusercontent.com/511499/553262446-c30f02b1-2695-4e5f-9724-e01986ba799d.PNG?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzIyMzEyMjQsIm5iZiI6MTc3MjIzMDkyNCwicGF0aCI6Ii81MTE0OTkvNTUzMjYyNDQ2LWMzMGYwMmIxLTI2OTUtNGU1Zi05NzI0LWUwMTk4NmJhNzk5ZC5QTkc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyN1QyMjIyMDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT00Mzk1YmIyOGRiOTNmOGJjMWEzMGU3YjdkM2ZhOTQ2OGI5ZjI1ODkxYjg0NjFmNzRlZGQ0MjdlMDJjZjg5NjlmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.huC4AhN-LVRVyFgn-4KAO0mhf9SNGz_0o5LE2Wpb-p4"></a>
+<div><h2>Tools</h2><a href="#tools"></a></div>
+<div><h3><pre><code>accelerometer</code></pre></h3><a href="#accelerometer"></a></div>
+<ul>
+<li>Purpose: read Apple SPU accelerometer and emit mono signal.</li>
+<li>Args: <pre><code>--rate &lt;hz&gt;</code></pre> (&lt;= 800), <pre><code>--axis x|y|z|mag</code></pre>, <pre><code>--raw</code></pre>.</li>
+<li>Notes: requires root; when run from a terminal it auto-prompts via <pre><code>sudo</code></pre>.</li>
+</ul>
+<div><h3><pre><code>ambient-light</code></pre></h3><a href="#ambient-light"></a></div>
+<ul>
+<li>Purpose: read ambient light sensor and emit tone mapped from low light to high light.</li>
+<li>Default mapping: <pre><code>500 Hz -&gt; 5000 Hz</code></pre> and low volume -&gt; high volume as light goes <pre><code>0% -&gt; 100%</code></pre>.</li>
+<li>Args: <pre><code>--rate</code></pre>, <pre><code>--low-hz</code></pre>, <pre><code>--high-hz</code></pre>, <pre><code>--low-volume</code></pre>, <pre><code>--high-volume</code></pre>, <pre><code>--json</code></pre>.</li>
+<li>Notes: requires root; when run from a terminal it auto-prompts via <pre><code>sudo</code></pre>.</li>
+</ul>
+<div><h3><pre><code>lid-angle</code></pre></h3><a href="#lid-angle"></a></div>
+<ul>
+<li>Purpose: read lid angle sensor and emit tone mapped from lid closed to open.</li>
+<li>Default mapping: <pre><code>500 Hz -&gt; 5000 Hz</code></pre> and low volume -&gt; high volume as angle goes <pre><code>--angle-min -&gt; --angle-max</code></pre>.</li>
+<li>Args: <pre><code>--rate</code></pre>, <pre><code>--low-hz</code></pre>, <pre><code>--high-hz</code></pre>, <pre><code>--low-volume</code></pre>, <pre><code>--high-volume</code></pre>, <pre><code>--angle-min</code></pre>, <pre><code>--angle-max</code></pre>, <pre><code>--json</code></pre>.</li>
+<li>Notes: requires root; when run from a terminal it auto-prompts via <pre><code>sudo</code></pre>.</li>
+</ul>
+<div><h3><pre><code>gyroscope</code></pre></h3><a href="#gyroscope"></a></div>
+<ul>
+<li>Purpose: read fused orientation (accel+gyro, Mahony AHRS) and emit tone mapped from the selected orientation axis.</li>
+<li>Default mapping: <pre><code>500 Hz -&gt; 5000 Hz</code></pre> and low volume -&gt; high volume as selected axis angle maps to <pre><code>0..360</code></pre>.</li>
+<li>Args: <pre><code>--rate</code></pre>, <pre><code>--low-hz</code></pre>, <pre><code>--high-hz</code></pre>, <pre><code>--low-volume</code></pre>, <pre><code>--high-volume</code></pre>, <pre><code>--json</code></pre>, <pre><code>--axis roll|pitch|yaw</code></pre>, <pre><code>--decimate</code></pre>.</li>
+<li>Notes: requires root; when run from a terminal it auto-prompts via <pre><code>sudo</code></pre>.
+<ul>
+<li><pre><code>roll</code></pre>/<pre><code>pitch</code></pre> are absolute to gravity; <pre><code>yaw</code></pre> is relative and can drift without magnetometer.</li>
+</ul>
+</li>
+</ul>
+<div><h3><pre><code>microphone</code></pre></h3><a href="#microphone"></a></div>
+<ul>
+<li>Purpose: capture mono mic signal and emit stream.</li>
+<li>Args: <pre><code>--rate &lt;hz&gt;</code></pre>, <pre><code>--block-size &lt;frames&gt;</code></pre>.</li>
+</ul>
+<div><h3><pre><code>metronome [bpm]</code></pre></h3><a href="#metronome-bpm"></a></div>
+<ul>
+<li>Purpose: emit metronome pulses; with piped stdin it auto-detects/follows BPM.</li>
+<li>Args: optional <pre><code>bpm</code></pre>, <pre><code>--rate</code></pre> (fixed mode), <pre><code>--pulse-ms</code></pre>, <pre><code>--tone-hz</code></pre>, <pre><code>--level</code></pre>, <pre><code>--accent-every</code></pre>, <pre><code>--accent-gain</code></pre>, <pre><code>--block-size</code></pre>, <pre><code>--count</code></pre>, <pre><code>--min-bpm</code></pre>, <pre><code>--max-bpm</code></pre>, <pre><code>--detect-low-hz</code></pre>, <pre><code>--detect-high-hz</code></pre>, <pre><code>--self-echo-ms</code></pre>, <pre><code>--follow</code></pre>, <pre><code>--debug</code></pre>, <pre><code>--raw</code></pre>.</li>
+</ul>
+<hr>
+<div><h3><pre><code>bandpass &lt;low_hz&gt; &lt;high_hz&gt;</code></pre></h3><a href="#bandpass-low_hz-high_hz"></a></div>
+<ul>
+<li>Purpose: realtime cascaded high/low-pass filter.</li>
+<li>Args: positional cutoffs or <pre><code>--low/--high</code></pre>, <pre><code>--chunk-bytes</code></pre>, <pre><code>--raw --rate</code></pre>.</li>
+</ul>
+<div><h3><pre><code>frequency-shift &lt;factor&gt;</code></pre></h3><a href="#frequency-shift-factor"></a></div>
+<ul>
+<li>Purpose: best-effort realtime frequency scaling, takes a scalar multiplier like 0.1~1000.</li>
+<li>Args: <pre><code>factor</code></pre>, <pre><code>--chunk-bytes</code></pre>, <pre><code>--raw --rate</code></pre>.</li>
+</ul>
+<div><h3><pre><code>volume-shift &lt;gain&gt;</code></pre></h3><a href="#volume-shift-gain"></a></div>
+<ul>
+<li>Purpose: scalar amplitude gain.</li>
+<li>Args: <pre><code>gain</code></pre>, <pre><code>--chunk-bytes</code></pre>, <pre><code>--raw --rate</code></pre>.</li>
+</ul>
+<div><h3><pre><code>heartbeat</code></pre></h3><a href="#heartbeat"></a></div>
+<ul>
+<li>Purpose: emit BPM/confidence JSON lines from incoming signal (typically bandpassed). When piped onward, it passes the signal through on stdout and writes JSON to stderr.</li>
+<li>Args: <pre><code>--interval</code></pre>, <pre><code>--window-seconds</code></pre>, <pre><code>--emit-final</code></pre>, <pre><code>--chunk-bytes</code></pre>, <pre><code>--raw --rate</code></pre>.</li>
+</ul>
+<hr>
+<div><h3><pre><code>speaker</code></pre></h3><a href="#speaker"></a></div>
+<ul>
+<li>Purpose: play incoming stream on default output device.</li>
+<li>Args: <pre><code>--device-rate</code></pre>, <pre><code>--block-size</code></pre>.</li>
+</ul>
+<div><h3><pre><code>visualizer</code></pre></h3><a href="#visualizer"></a></div>
+<ul>
+<li>Purpose: terminal waveform + level monitor.</li>
+<li>Args: <pre><code>--fps</code></pre>, <pre><code>--window-seconds</code></pre>, <pre><code>--chunk-bytes</code></pre>, <pre><code>--raw --rate</code></pre>.</li>
+</ul>
+<div><h3><pre><code>keyboard-brightness</code></pre></h3><a href="#keyboard-brightness"></a></div>
+<ul>
+<li>Purpose: beat-follow keyboard backlight control.</li>
+<li>Args: <pre><code>--send-hz</code></pre>, <pre><code>--fade-ms</code></pre>, <pre><code>--gain</code></pre>, <pre><code>--attack-ms</code></pre>, <pre><code>--release-ms</code></pre>, <pre><code>--baseline-ms</code></pre>, <pre><code>--decay-per-s</code></pre>, <pre><code>--debug</code></pre>, <pre><code>--as-root</code></pre>, <pre><code>--pulse</code></pre>, <pre><code>--on-time</code></pre>, <pre><code>--off-time</code></pre>, <pre><code>--set</code></pre>.</li>
+<li>Notes:
+<ul>
+<li><pre><code>--set=&lt;0..100&gt;</code></pre> without <pre><code>--pulse</code></pre> sets brightness and exits immediately (ignores stdin).</li>
+<li><pre><code>--pulse=&lt;N&gt;</code></pre> ignores stdin and pulses N times; <pre><code>--set</code></pre> controls pulse max brightness.</li>
+</ul>
+</li>
+</ul>
+<div><h3><pre><code>screen-brightness</code></pre></h3><a href="#screen-brightness"></a></div>
+<ul>
+<li>Purpose: beat-follow display brightness control.</li>
+<li>Args: <pre><code>--send-hz</code></pre>, <pre><code>--min-level</code></pre>, <pre><code>--max-level</code></pre>, <pre><code>--gain</code></pre>, <pre><code>--attack-ms</code></pre>, <pre><code>--release-ms</code></pre>, <pre><code>--baseline-ms</code></pre>, <pre><code>--decay-per-s</code></pre>, <pre><code>--debug</code></pre>, <pre><code>--no-restore</code></pre>, <pre><code>--pulse</code></pre>, <pre><code>--on-time</code></pre>, <pre><code>--off-time</code></pre>, <pre><code>--set</code></pre>.</li>
+<li>Notes:
+<ul>
+<li><pre><code>--set=&lt;0..100&gt;</code></pre> without <pre><code>--pulse</code></pre> sets display brightness and exits immediately (ignores stdin).</li>
+<li><pre><code>--pulse=&lt;N&gt;</code></pre> ignores stdin and pulses N times; <pre><code>--set</code></pre> controls pulse max brightness.</li>
+</ul>
+</li>
+</ul>
+<div><h3><pre><code>fan-speed</code></pre></h3><a href="#fan-speed"></a></div>
+<ul>
+<li>Purpose: signal-follow fan RPM control (both fans in sync by default; beat-alternating optional).</li>
+<li>Args: <pre><code>--send-hz</code></pre>, <pre><code>--min-rpm</code></pre>, <pre><code>--max-rpm</code></pre>, <pre><code>--min-frac</code></pre>, <pre><code>--max-frac</code></pre>, <pre><code>--pulse-depth</code></pre>, <pre><code>--couple</code></pre>, <pre><code>--alternate</code></pre>, <pre><code>--input-map</code></pre>, <pre><code>--beat-threshold</code></pre>, <pre><code>--beat-hold-ms</code></pre>, <pre><code>--gain</code></pre>, <pre><code>--attack-ms</code></pre>, <pre><code>--release-ms</code></pre>, <pre><code>--baseline-ms</code></pre>, <pre><code>--decay-per-s</code></pre>, <pre><code>--debug</code></pre>, <pre><code>--no-restore</code></pre>.</li>
+</ul>
+<hr>
+<div><h2>Example Usage</h2><a href="#example-usage"></a></div>
+<p>Heartbeat from accelerometer:</p>
+<div><pre>accelerometer <span>|</span> bandpass 0.8 3 <span>|</span> heartbeat</pre></div>
+<p>Ambient light as signal source:</p>
+<div><pre>ambient-light <span>|</span> visualizer</pre></div>
+<p>Lid angle as JSONL:</p>
+<div><pre>lid-angle --json</pre></div>
+<p>Gyroscope fused orientation as JSONL:</p>
+<div><pre>gyroscope --axis roll --json</pre></div>
+<p>Music-reactive keyboard + speakers:</p>
+<div><pre>microphone --rate 44100 \ <span>|</span> tee <span><span>&gt;(</span>keyboard-brightness --send-hz 30 --fade-ms 20<span>)</span></span> \ <span>|</span> volume-shift 0.8 \ <span>|</span> speaker</pre></div>
+<p>Metronome to speakers:</p>
+<div><pre>metronome 120 <span>|</span> speaker</pre></div>
+<p>Auto-follow metronome from mic input, emits a metronome tone in sync with the beat of whatever audio is playing:</p>
+<div><pre>microphone <span>|</span> metronome <span>|</span> speaker</pre></div>
+<p>Auto-follow metronome from accelerometer, driving keyboard pulses:</p>
+<div><pre>accelerometer <span>|</span> metronome <span>|</span> keyboard-brightness</pre></div>
+<p>Metronome driving keyboard pulses:</p>
+<div><pre>metronome 120 <span>|</span> keyboard-brightness</pre></div>
+<p>Heartbeat telemetry while still driving keyboard brightness:</p>
+<div><pre>accelerometer <span>|</span> heartbeat <span>|</span> keyboard-brightness</pre></div>
+<p>Set keyboard backlight to 100% and exit:</p>
+<div><pre>keyboard-brightness --set=100</pre></div>
+<p>Pulse keyboard 5 times (1.2s on / 5.5s off) at 100%:</p>
+<div><pre>keyboard-brightness --pulse=5 --on-time=1.2 --off-time=5.5 --set=100</pre></div>
+<p>Set screen brightness to 40% and exit:</p>
+<div><pre>screen-brightness --set=40</pre></div>
+<p>Pulse screen brightness 3 times:</p>
+<div><pre>screen-brightness --pulse=3 --on-time=1.2 --off-time=5.5 --set=100</pre></div>
+<p>Metronome driving fan pulses:</p>
+<div><pre>metronome 120 <span>|</span> fan-speed --send-hz 4 --alternate --input-map beat --min-frac 0.30 --max-frac 0.70</pre></div>
+<p>Slow sine fan sweep (sync L/R):</p>
+<div><pre>sine 0.1 <span>|</span> fan-speed</pre></div>
+<p>One source, multiple sinks:</p>
+<div><pre>accelerometer \ <span>|</span> bandpass 0.8 3 \ <span>|</span> tee <span><span>&gt;(</span>keyboard-brightness<span>)</span></span> \ <span>|</span> frequency-shift 1000 \ <span>|</span> volume-shift 0.8 \ <span>|</span> tee <span><span>&gt;(</span>speaker<span>)</span></span> \ <span>|</span> visualizer</pre></div>
+<hr>
+<div><h2>Notes</h2><a href="#notes"></a></div>
+<ul>
+<li><pre><code>accelerometer</code></pre> requires root (AppleSPU HID access) and will auto-reexec through <pre><code>sudo</code></pre> by default.</li>
+<li><pre><code>ambient-light</code></pre>, <pre><code>lid-angle</code></pre>, and <pre><code>gyroscope</code></pre> do the same for AppleSPU HID access.</li>
+<li>Set <pre><code>MSIG_AUTO_SUDO=0</code></pre> to disable auto-reexec and only print rerun guidance on stderr.</li>
+<li><pre><code>microphone</code></pre>/<pre><code>speaker</code></pre> depend on <pre><code>sounddevice</code></pre> + PortAudio runtime.</li>
+<li>Keyboard/display brightness tools need supported hardware/permissions.</li>
+<li><pre><code>keyboard-brightness</code></pre> uses the bundled Apple Silicon KBPulse binary at <pre><code>lib/KBPulse</code></pre> (arm64).</li>
+<li><pre><code>fan-speed</code></pre> uses AppleSMC private IOKit APIs on Apple Silicon; writing fan targets typically requires <pre><code>sudo</code></pre>.</li>
+<li><pre><code>frequency-shift</code></pre> is intentionally lightweight and artifact-prone at extreme factors.</li>
+</ul>
+<div><h2>Stdio Audio Format</h2><a href="#stdio-audio-format"></a></div>
+<p>All stream tools read/write:</p>
+<ul>
+<li>header: <pre><code>MSIG1 &lt;sample_rate_hz&gt;\n</code></pre></li>
+<li>payload: little-endian <pre><code>float32</code></pre> mono samples</li>
+</ul>
+<p>Most processors also support raw float32 input via </p><pre><code>--raw --rate &lt;hz&gt;</code></pre>.<p></p>
+<hr>
+<div><h2>Why?</h2><a href="#why"></a></div>
+<p>It's fun. Here are some ideas to get started:</p>
+<ul>
+<li>make your keyboard lights flash for security alerts using <a href="https://github.com/pirate/security-growler">Security Growler</a></li>
+<li>make your keyboard flash right before your display is about to sleep</li>
+<li>make your keyboard flash on incoming email</li>
+<li>make your keyboard flash to the beat of music</li>
+<li>make your keyboard flash when your boss's iPhone comes within bluetooth range</li>
+</ul>
+<hr>
+<div><h2>Related Projects</h2><a href="#related-projects"></a></div>
+<ul>
+<li><a href="https://github.com/olvvier/apple-silicon-accelerometer">https://github.com/olvvier/apple-silicon-accelerometer</a> IOReg accelerometer reading code</li>
+<li><a href="https://github.com/EthanRDoesMC/KBPulse/">https://github.com/EthanRDoesMC/KBPulse/</a> keyboard brightness code for M1, M2, M3, etc. macs</li>
+<li><a href="https://github.com/maxmouchet/LightKit">https://github.com/maxmouchet/LightKit</a></li>
+<li><a href="https://github.com/tcr/macbook-brightness">https://github.com/tcr/macbook-brightness</a></li>
+<li><a href="http://stackoverflow.com/questions/3239749/programmatically-change-mac-display-brightness">http://stackoverflow.com/questions/3239749/programmatically-change-mac-display-brightness</a></li>
+<li><a href="https://web.archive.org/web/20110828210316/http://mattdanger.net:80/2008/12/adjust-mac-os-x-display-brightness-from-the-terminal/">https://web.archive.org/web/20110828210316/http://mattdanger.net:80/2008/12/adjust-mac-os-x-display-brightness-from-the-terminal/</a></li>
+<li><a href="http://osxbook.com/book/bonus/chapter10/light/">http://osxbook.com/book/bonus/chapter10/light/</a></li>
+<li><a href="https://github.com/samnung/maclight/blob/master/lights_handle.cpp">https://github.com/samnung/maclight/blob/master/lights_handle.cpp</a></li>
+<li><a href="http://www.keindesign.de/stefan/Web/Sites/iWeb/Site/iSpazz.html">http://www.keindesign.de/stefan/Web/Sites/iWeb/Site/iSpazz.html</a> the OG</li>
+<li><a href="https://github.com/bhoeting/DiscoKeyboard">https://github.com/bhoeting/DiscoKeyboard</a></li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Inside OpenClaw: How a Persistent AI Agent Actually Works</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Inside OpenClaw: How a Persistent AI Agent Actually Works</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 6:28:58 PM | <a href="https://dev.to/entelligenceai/inside-openclaw-how-a-persistent-ai-agent-actually-works-1mnk" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="introduction" href="#introduction"> </a> Introduction
+</h2> <p><a href="https://openclaw.ai/" target="_blank">OpenClaw</a>, originally called ClawdBot, is trending everywhere. People are building insane things with it: an AI agent that rebuilds an entire website via Telegram, an AI agent platform where humans are only guests, and giving one AI full access to your system that can accidentally delete 6,000 emails because of a prompt injection attack.</p> <p>Unlike ChatGPT or Claude sitting behind a web interface, OpenClaw runs as a persistent process on your hardware. You message it through WhatsApp, Telegram, or Slack. It messages you back. It can check things while you sleep. It has access to your filesystem, your terminal, and whatever APIs you give it.</p> <p>The possibilities are wild. The security risks are real. And the technical architecture behind it explains both, and it's simpler than you'd think. Let's see how it actually works.</p> <h2> <a name="gateway-architecture-the-central-nervous-system" href="#gateway-architecture-the-central-nervous-system"> </a> <strong>Gateway Architecture: The Central Nervous System</strong>
+</h2> <p>OpenClaw runs as a single Node.js process on your machine, listening on <code>127.0.0.1:18789</code> by default. This process is called the Gateway, which manages every messaging platform connection simultaneously: WhatsApp, Telegram, Discord, Slack, Signal, and others.</p> <p>Think of it as the central nervous system. Every message coming in from any platform passes through the Gateway. Every response your agent generates goes back out through it. All communication happens via WebSocket protocol, which keeps connections open and allows real-time bidirectional messaging.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F3eftt1a4f0b8gtseqn6z.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F3eftt1a4f0b8gtseqn6z.png" alt="Clawdbot Architecture"></a></p> <h3> <a name="session-state-routing-and-security" href="#session-state-routing-and-security"> </a> <strong>Session State, Routing, and Security</strong>
+</h3> <p>The Gateway handles three critical functions:</p> <ul>
+<li>session state management,</li>
+<li>message routing, and</li>
+<li>security enforcement.</li>
+</ul> <p>When a message arrives from WhatsApp, the Gateway determines which agent session should handle it based on the user, conversation context, or routing rules you've configured. It loads the appropriate session state, passes the message to the agent, waits for the LLM to generate a response, then routes that response back through the correct platform connection.</p> <p>This centralized design solves a real technical problem. WhatsApp Web only allows one active session at a time. If you try running multiple instances, they conflict and kick each other off. The Gateway acts as that single session, then manages multiple agent conversations internally. Configure WhatsApp once, and the Gateway handles everything downstream. The same principle applies to every other platform.</p> <h3> <a name="connection-and-authentication-flow" href="#connection-and-authentication-flow"> </a> <strong>Connection and Authentication Flow</strong>
+</h3> <p>When a platform wants to connect, it establishes a WebSocket connection and sends a <code>connect</code> request with device identity, basically, "<em>I'm WhatsApp running on device XYZ, and I want to talk to your agent.</em>" The Gateway checks its pairing store. If this device has never connected before, it rejects the connection and waits for explicit approval.</p> <p>Once approved, the Gateway issues a device token scoped to specific permissions. That token determines what this device can do:</p> <ul>
+<li>which users it can message as,</li>
+<li>which agent sessions it can access, and</li>
+<li>what capabilities it has.</li>
+</ul> <p>Future connections use this token for authentication instead of requiring re-approval every time.</p> <h3> <a name="message-routing-after-authentication" href="#message-routing-after-authentication"> </a> Message Routing After Authentication
+</h3> <p>Once a platform is authenticated, every message it sends goes through routing logic. The Gateway decides where the message goes and whether the agent should respond based on rules you configure:</p> <ul>
+<li>Messages from users on your allow list get processed</li>
+<li>Messages from unknown users get dropped before the agent sees them</li>
+<li>DMs route to your personal assistant agent</li>
+<li>Group chats might only trigger responses when someone @mentions the agent directly</li>
+</ul> <h3> <a name="network-binding-local-by-default" href="#network-binding-local-by-default"> </a> <strong>Network Binding: Local by Default</strong>
+</h3> <p>All this routing and authentication happens on your local machine. The Gateway binds to&nbsp;<code>127.0.0.1</code>&nbsp;(localhost) by default, not&nbsp;<code>0.0.0.0</code>&nbsp;(all network interfaces). This network binding determines who can connect to the Gateway in the first place.</p> <p>Binding to&nbsp;<code>127.0.0.1</code>&nbsp;means only processes running on your machine can reach the Gateway, no external network access. Your agent isn't accessible from outside your machine unless you deliberately reconfigure the binding. This prevents accidental public exposure, a critical consideration given the Gateway has access to your filesystem, terminal, and connected APIs.</p> <p>Every message follows the same path:<br>
+</p> <div>
+<pre><code>platform → Gateway authentication → routing logic → agent session load → LLM processing → response generation → Gateway → platform delivery.
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>One process. All platforms. Centralized control. And everything stays local unless you explicitly decide otherwise.</p> <p>Now that we understand how messages reach the agent, let's look at what happens once they get there.</p> <h2> <a name="the-agent-loop-from-message-to-action" href="#the-agent-loop-from-message-to-action"> </a> <strong>The Agent Loop: From Message to Action</strong>
+</h2> <p>When a message hits the Gateway, it doesn't just forward blindly to an LLM. There's a processing cycle that turns your "check my calendar" into an actual response with context.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F6btvwn1trukvp5jjteel.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F6btvwn1trukvp5jjteel.png" alt="Agent loop diagram"></a></p> <p>The Gateway routes the message to the appropriate agent session based on who sent it and where it came from. That session loads conversation history from the file system, everything you've said to this agent in the past, not just this conversation, but previous ones too. This is why your agent remembers you asked about a project last Tuesday.</p> <p>The agent passes the message to the LLM along with available tools and skills. The model processes the request, decides if it needs to call a tool (like checking your calendar or sending an email), executes those actions, and generates a response. That response streams back through the Gateway to whichever platform you messaged from.</p> <h3> <a name="context-that-persists" href="#context-that-persists"> </a> <strong>Context That Persists</strong>
+</h3> <p>Unlike a fresh ChatGPT conversation every time, OpenClaw sessions don't reset. The agent knows who you are, what you've asked before, and what's in your workspace. If you told it last week that you're working on Project XYZ, it remembers. If you saved notes in your workspace, it can reference them.</p> <p>This persistence happens because everything stays in files on your machine. The agent reloads context every time it processes a message, but that context doesn't disappear when you close the chat. And you're not locked to one LLM, configure Claude for complex reasoning, GPT-4 for creative tasks, or a cheaper model for simple queries. The agent loop works the same regardless.</p> <p>This file-based approach to memory is what makes the persistence possible. Let's look at how that actually works.</p> <h2> <a name="persistent-memory-everything-is-a-file" href="#persistent-memory-everything-is-a-file"> </a> <strong>Persistent Memory: Everything is a File</strong>
+</h2> <p>OpenClaw doesn't use a database. Everything is stored <code>~/clawd/</code> as Markdown files.</p> <p>Your agent's behavior is defined in <code>AGENTS.md</code>. Its personality and core instructions are stored in <code>SOUL.md</code>. Available tools are listed in <code>TOOLS.md</code>. Skills you've installed are saved in <code>~/clawd/skills/&lt;skill&gt;/SKILL.md</code>. Memory logs are timestamped files with names like <code>2026-02-10-conversation.md</code>.</p> <p>Open any text editor, and you see exactly what your agent knows. Want to check what it remembers about your last project discussion? Open the memory log. Want to modify how it responds to calendar requests? Edit <code>AGENTS.md</code>. Want to see what tools it has access to? Read <code>TOOLS.md</code>.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fi475beutirj2jsnriyrs.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fi475beutirj2jsnriyrs.png" alt="Persistent memory"></a></p> <p>Since everything is plain text, version control works without extra setup. Run <code>git init</code> in <code>~/clawd/</code> and every change gets tracked. You can see when you added a new skill[we’ll learn about this in upcoming sections], when the agent updated its long-term memory, or when you modified its core instructions. If something breaks, roll back to a previous commit. Backups are simple, just copy the directory.</p> <h3> <a name="how-memory-organizes-itself" href="#how-memory-organizes-itself"> </a> <strong>How Memory Organizes Itself</strong>
+</h3> <p>OpenClaw separates memory into layers. Daily logs capture short-term context, what you talked about today, what tasks are in progress, and what links you shared. These timestamped files accumulate over time.</p> <p>Long-term memory is curated by the agent itself. As conversations happen, the agent decides what's important enough to remember permanently. Maybe you told it you prefer concise responses. Maybe you gave it standing instructions about how to handle certain types of requests. That information gets written to long-term memory files and persists across sessions.</p> <p>If you're analyzing a dataset and your computer crashes, the agent reloads workspace state when it comes back up. It knows where you left off because that state lives in a file it can read on restart.</p> <p>But memory alone doesn't make an agent proactive. For that, OpenClaw needs a mechanism to wake up and check things without you asking. That's where the heartbeat comes in.</p> <h2> <a name="heartbeat-the-proactive-agent" href="#heartbeat-the-proactive-agent"> </a> <strong>Heartbeat: The Proactive Agent</strong>
+</h2> <p>Most AI assistants wait for you to ask a question. OpenClaw doesn't have to.</p> <p>A cron job wakes your agent at whatever interval you configure, the default is every 30 minutes. The agent checks&nbsp;<code>HEARTBEAT.md</code>&nbsp;for instructions, runs a reasoning loop, and decides if it needs to tell you something. No prompt required.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmyqr7h0pu0mcozp9b0zg.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmyqr7h0pu0mcozp9b0zg.png" alt="Clawdbot main system"></a></p> <p>This is how you get proactive notifications. Your server goes down at 3 am, and the agent messages you on Telegram. A stock you're monitoring drops 15%, it executes a sell order, and confirms via WhatsApp. Three urgent emails from a client arrive, and it flags them immediately instead of waiting for you to check.</p> <h3> <a name="cheap-checks-first" href="#cheap-checks-first"> </a> <strong>Cheap Checks First</strong>
+</h3> <p>OpenClaw doesn't call the LLM on every heartbeat(as you can see in the above image). That would burn through API costs fast. Instead, it uses a two-tier approach: cheap checks first, models only when needed.</p> <p>The agent runs fast, deterministic scripts first, checking for new emails, calendar changes, or system alerts. These are simple pattern matches or API queries that cost nothing. Only when something significant changes does the agent escalate to the LLM for interpretation and decision-making.</p> <p>For example, the cheap check sees "new email from landlord." That's a signal. The agent then calls Claude or GPT-4 to read the email, understand context from previous conversations about your lease, and decide if it needs to notify you or take action. If the heartbeat finds nothing new, no LLM call happens.</p> <p>This design keeps costs reasonable while maintaining responsiveness. You're not paying for 48 LLM calls per day when nothing important is happening.</p> <h3> <a name="configuration" href="#configuration"> </a> <strong>Configuration</strong>
+</h3> <p>The configuration for&nbsp;<code>HEARTBEAT.md</code>:<br>
+</p> <div>
+<pre><code>textevery: <span>"30m"</span>
+target: <span>"whatsapp:+1234567890"</span>
+active_hours: <span>"9am-10pm"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <ol>
+<li>The&nbsp;<code>active_hours</code>&nbsp;setting prevents your agent from waking you at 2 am with non-urgent updates.</li>
+<li>The&nbsp;<code>target</code>&nbsp;specifies which platform and contact to send heartbeat messages to.</li>
+<li>The&nbsp;<code>every</code>&nbsp;parameter controls frequency, set it to&nbsp;<code>"1h"</code>&nbsp;for standard monitoring,&nbsp;<code>"15m"</code>&nbsp;for tighter checks if you're actively working, or&nbsp;<code>"5m"</code>&nbsp;if you need a near-real-time response.</li>
+</ol> <p>Each heartbeat cycle loads the agent's current context, checks for conditions defined in the heartbeat instructions, and only sends a message if something actually needs attention. It's not spamming you every 30 minutes, it's checking every 30 minutes and speaking up when there's a reason.</p> <p>This proactive capability is built in, but you can extend what the agent actually does during those checks. That's where skills come in.</p> <h2> <a name="skills-amp-execution-extending-agent-capabilities" href="#skills-amp-execution-extending-agent-capabilities"> </a> <strong>Skills &amp; Execution: Extending Agent Capabilities</strong>
+</h2> <p>OpenClaw uses a skill-based architecture where capabilities are defined in Markdown files, not compiled code.</p> <p>Each skill is present as&nbsp;<code>~/clawd/skills/&lt;skill-name&gt;/SKILL.md</code>&nbsp;and contains instructions for interacting with APIs or performing workflows. The agent reads these files at runtime to understand available capabilities. Installation is immediate, no recompilation or server restarts. Over 100 community skills exist on <a href="https://clawhub.ai/" target="_blank">ClawHub</a> for Gmail, browser automation, home control, and more.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fu6tmnho4wjlasf4vwn8x.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fu6tmnho4wjlasf4vwn8x.png" alt="Clawhub"></a></p> <h3> <a name="execution-model" href="#execution-model"> </a> <strong>Execution Model</strong>
+</h3> <p>Skills execute wherever the OpenClaw process runs, your local machine, a VPS, or a managed container. The architecture stays identical: Gateway routes messages, agent loads skills from the filesystem, LLM calls happen directly (not proxied through a vendor), and results write back to local storage.</p> <div><table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Cloud AI Tools</strong></th>
+<th><strong>OpenClaw</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data storage</td>
+<td>Vendor servers</td>
+<td>Where process runs</td>
+</tr>
+<tr>
+<td>Execution</td>
+<td>Vendor infrastructure</td>
+<td>Your hardware/VPS</td>
+</tr>
+<tr>
+<td>API calls</td>
+<td>Proxied through vendor</td>
+<td>Direct from agent</td>
+</tr>
+</tbody>
+</table></div> <p>Tool restrictions set limits at the Gateway level. You can run the agent in sandboxed mode (restricted capabilities for safety) or full access mode (unrestricted system control). In sandboxed mode, it blocks writing to the filesystem and shell access. Full access mode lets you use terminal commands and control the browser. If the LLM tries to do something it's not allowed to, the Gateway stops it before it happens.</p> <p>Regardless of where the process runs, connecting to messaging platforms requires authentication and security enforcement. That's where the Gateway's role becomes critical.</p> <h2> <a name="security-amp-multiplatform-handling" href="#security-amp-multiplatform-handling"> </a> <strong>Security &amp; Multi-Platform Handling</strong>
+</h2> <p>The Gateway enforces security at the routing layer, not just at connection time.</p> <p>Once platforms are authenticated and connected, every message goes through security checks before reaching the agent. Allow lists control which users or groups get responses. If someone not on the list sends a message, the Gateway drops it before the agent sees it. This works across all platforms: WhatsApp, Telegram, Discord, Slack, using the same allow-list configuration.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fu2poqpmjp4rr26cqjzkl.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fu2poqpmjp4rr26cqjzkl.png" alt="Gateway and Security"></a></p> <h3> <a name="how-multiplatform-routing-works" href="#how-multiplatform-routing-works"> </a> <strong>How Multi-Platform Routing Works</strong>
+</h3> <p>The Channel Layer sits between platform connections and the agent. WhatsApp messages arrive in one format, Telegram in another, Discord in a third. The Channel Layer adapts these to a common internal structure so the agent doesn't need platform-specific code. It also handles platform events like reactions, typing indicators, and read receipts.</p> <p>This abstraction means you can write one routing rule that applies to all platforms. "Only respond to @mentions in group chats" works the same whether the message came from Slack or Discord. The Channel Layer translates platform-specific mention formats into a standard structure that the Gateway understands.</p> <h3> <a name="security-architecture-layered-restrictions" href="#security-architecture-layered-restrictions"> </a> <strong>Security Architecture: Layered Restrictions</strong>
+</h3> <p>OpenClaw's architecture assumes the LLM can be tricked. Prompt injection attacks are real, the architecture can't prevent them at the LLM level, so it limits damage through multiple enforcement layers:</p> <ul>
+<li>
+<strong>Tool approval workflows</strong>&nbsp;gate dangerous operations (file deletion, shell commands, payments) with explicit user confirmation</li>
+<li>
+<strong>Scoped permissions</strong>&nbsp;separate read and write access (read emails vs send emails, query database vs modify database)</li>
+<li>
+<strong>Device token capabilities</strong>&nbsp;restrict what each connected device can do (DMs only, no group chats, read-only mode)</li>
+</ul> <p>One compromised conversation shouldn't give access to everything. These layers don't stop a determined attacker who controls what the LLM reads, but they slow them down enough to notice and intervene. The 6,000-email deletion incident from the intro wasn't a design flaw, it demonstrated why these restrictions matter and why running an AI agent with full system access requires understanding the risks.</p> <p>The architecture gives you control:</p> <ul>
+<li>choose which platforms connect,</li>
+<li>which users get responses,</li>
+<li>which tools are available, and</li>
+<li>which operations require approval.</li>
+</ul> <p>That control is the tradeoff for running a persistent agent with access to your systems.</p> <h2> <a name="what-else" href="#what-else"> </a> What else?
+</h2> <p>OpenClaw's architecture is surprisingly simple: a Gateway routes messages, an agent loop processes them with LLM and tools, memory is persisted as files, skills extend capabilities, and a heartbeat runs proactive checks. No database, no microservices, no vendor lock-in.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ff6yngu95osze5tcmooqx.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ff6yngu95osze5tcmooqx.png" alt="Reactive Flow"></a></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7bngocs9kk3y54hc7chk.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7bngocs9kk3y54hc7chk.png" alt="Proactive Flow"></a></p> <p>The design choices, file-based memory, Markdown skills, local execution, assumption of compromise, prioritize transparency and control over convenience. You see exactly what your agent knows, what it can do, and where it runs. The tradeoff is that you manage the infrastructure and accept the security risks that come with giving an AI access to your systems.</p> <p>What makes OpenClaw interesting isn't revolutionary technology. It's the combination of persistent execution, proactive behavior, multi-platform integration, and modular capabilities in an architecture you can inspect and modify. Whether that's worth running depends on what you're building and how much control you need.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

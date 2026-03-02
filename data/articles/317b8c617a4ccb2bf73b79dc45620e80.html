@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How to add missing records to sensor long term statistics</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How to add missing records to sensor long term statistics</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/28/2026 12:37:24 AM | <a href="https://community.home-assistant.io/t/how-to-add-missing-records-to-sensor-long-term-statistics/991357" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <div> <div> <p><span> <time> February 28, 2026, 12:37am </time> <span>1</span> </span> </p></div> <div> <p>Once in a while my solar power inverter locks up and refuses to transmit data with the result that the date is offloaded once it is rebooted.<br>
+For wehatever reason this tends yo happen when we are away for vaccation with the result that there can be several days of accumulated production released at once.</p>
+<p>In Settings &gt; Dev Tools &gt; Statistics I can vorrectcrandom outliers, but how can I create missing data points?<br>
+</p><div><a href="https://community-assets.home-assistant.io/original/4X/5/4/8/54825be427944be793e3ce8af40d60680b4ab03b.jpeg"><img src="https://community-assets.home-assistant.io/optimized/4X/5/4/8/54825be427944be793e3ce8af40d60680b4ab03b_2_295x375.jpeg" alt="capture_temp"></a></div>
+<p>Here the inverter stopped transmission some time after noon<br>
+</p><div><a href="https://community-assets.home-assistant.io/original/4X/5/e/8/5e8661021f09c4e5bf8ce61ce55915514a1ac76b.jpeg"><img src="https://community-assets.home-assistant.io/optimized/4X/5/e/8/5e8661021f09c4e5bf8ce61ce55915514a1ac76b_2_251x250.jpeg" alt="capture_temp"></a></div>
+<p>So, what I would like to do is to take the total, some 900+ kWh in the example above, and spead it out across the missing days. It will not be perfect on hour or day level, but very much better than now on week, month and year level.</p>
+<p>The only problem is that I have no refords to adjust for those missing days.<br>
+</p><div><a href="https://community-assets.home-assistant.io/original/4X/3/f/2/3f2000abca9dce8779bb1668c3914ad8812a8c02.jpeg"><img src="https://community-assets.home-assistant.io/optimized/4X/3/f/2/3f2000abca9dce8779bb1668c3914ad8812a8c02_2_345x236.jpeg" alt="capture_temp"></a></div> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/karwosts"><span>karwosts</span></a> (karwosts) </span> <span> <time> February 28, 2026, 12:38am </time> <span>2</span> </span> </p> <p>There’s no way to do it in the UI, it will take quite some ugly hacking in the database. Unless you are very skilled at SQL would recommend just leave it be.</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/marieper"><span>marieper</span></a> (Per Lundborg) </span> <span> <time> February 28, 2026, 1:12am </time> <span>3</span> </span> </p> <p>Ok.<br>
+I’ll have to live with it then.</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/woody6402"><span>woody6402</span></a> (Woody6402) </span> <span> <time> February 28, 2026, 7:32am </time> <span>4</span> </span> </p> <div> <p>If you install the sqlite addon you can see and edit this values.<br>
+But you have to handle with care, since you are working on the database.<br>
+I have used that to recover old statistics, by shifting from one old sensor to the new one.<br>
+I don’t know when these values are recovered, at least I had these values available after some time (restart?)<br>
+I have the same for the 23.2. and the jump was visible in the data.</p>
+<pre><code>SELECT *, datetime(start_ts, 'unixepoch', 'localtime') AS Statistikdatum
+FROM statistics
+WHERE metadata_id = ( SELECT id FROM statistics_meta WHERE statistic_id = 'sensor.meter_1_active_energy_forward_active_energy'
+)
+AND date(start_ts, 'unixepoch', 'localtime') = '2026-02-23'
+ORDER BY start_ts;
+</code></pre> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/woody6402"><span>woody6402</span></a> (Woody6402) </span> <span> <time> February 28, 2026, 7:56am </time> <span>5</span> </span> </p> <p>I have checked it for my missing values, and in my case the 1h statistics are really missing for these hours. That would cause a more complicated repair (insert lines)</p> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/woody6402"><span>woody6402</span></a> (Woody6402) </span> <span> <time> February 28, 2026, 8:53am </time> <span>6</span> </span> </p> <div> <p>Ok, in principle that works but if it’s worth the risk destroying something has to be validated:</p>
+<ul>
+<li>I could copy the last available data line to the day before</li>
+<li>and by editing the sum value ths statistics shows now one additional entry</li>
+</ul> </div> </div> <div> <p><span> <a href="https://community.home-assistant.io/u/WallyR"><span>WallyR</span></a> (Wally) </span></p> <p><span> <time> February 28, 2026, 9:03am </time> <span>7</span> </span> </p></div> <div> <div> <p><span> <a href="https://community.home-assistant.io/u/woody6402"><span>woody6402</span></a> (Woody6402) </span></p> <p><span> <time> February 28, 2026, 9:49am </time> <span>8</span> </span> </p></div> <div> <p>Yes that definitly works wwith this integration (already forgotten that it was on my plan):</p>
+<ul>
+<li>export entity</li>
+<li>copy missing lines with new timestamps</li>
+<li>edit csv</li>
+<li>eliminate delta and unit columns</li>
+<li>import</li>
+</ul>
+<p>afterwards the new values are immedeatly visible in the energy board:<br>
+Pv values were added with export/import<br>
+</p><div><a href="https://community-assets.home-assistant.io/original/4X/5/e/b/5eb90ff820949da87678972d60f23df19667fe0e.png"><img src="https://community-assets.home-assistant.io/optimized/4X/5/e/b/5eb90ff820949da87678972d60f23df19667fe0e_2_690x389.png" alt="Screenshot-20260228105309-726x410"></a></div>
+<p>According to the doc the import is working better with deltas:</p>
+<h3><a name="p-3765024-how-delta-import-works-1" href="#p-3765024-how-delta-import-works-1"></a>How Delta Import Works</h3>
+<ol>
+<li><strong>Export your current data</strong> using <code>export_statistics</code></li>
+<li><strong>Modify the file</strong>:</li>
+</ol>
+<ul>
+<li>Remove the <code>sum</code> and <code>state</code> columns</li>
+<li>Keep or edit the <code>delta</code> column</li>
+<li>Add/remove rows as needed</li>
+</ul>
+<ol>
+<li><strong>Import the modified file</strong> using <code>import_from_file</code></li>
+</ol> </div> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

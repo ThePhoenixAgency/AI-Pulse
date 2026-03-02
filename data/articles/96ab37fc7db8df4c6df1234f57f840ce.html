@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built an Agentic Ferrari in Rust… and Nobody’s Driving It</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built an Agentic Ferrari in Rust… and Nobody’s Driving It</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/23/2026 3:00:49 PM | <a href="https://dev.to/tacshade/i-built-an-agentic-ferrari-in-rust-and-nobodys-driving-it-57fe" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>I built an agentic Ferrari in Rust.</p> <p>It’s fast, ridiculously low overhead, and honestly a little absurd: multi-agent orchestration, tool routing, local memory, event streaming, safety gates—the whole thing.</p> <p>And right now… almost nobody’s driving it.</p> <ul>
+<li>
+<strong>Repo:</strong> <a href="https://github.com/frumu-ai/tandem" target="_blank">https://github.com/frumu-ai/tandem</a>
+</li>
+<li>
+<strong>Website:</strong> <a href="https://tandem.frumu.ai/" target="_blank">https://tandem.frumu.ai/</a>
+</li>
+<li>
+<strong>Docs:</strong> <a href="https://tandem.frumu.ai/docs/" target="_blank">https://tandem.frumu.ai/docs/</a>
+</li>
+</ul> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcwsgoc45z9g3w7ebykte.gif"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcwsgoc45z9g3w7ebykte.gif" alt="Tandem Orchestrator"></a></p> <blockquote>
+<p>Developers get workflows. Everyone else gets chatboxes. Tandem brings workflows to everyone.</p>
+</blockquote> <h2> <a name="the-brutally-honest-origin-story" href="#the-brutally-honest-origin-story"> </a> The brutally honest origin story
+</h2> <p>This started because I wanted Anthropic’s Cowork on Windows. I thought the idea was that good.</p> <p>The bigger motivation is the gap: developers get real AI workflows (CLI/IDEs), while everyone else gets a chat box. I can use the dev tools — the problem is most people can’t. Tandem is my attempt to make developer-grade agent workflows approachable for non-devs, without shipping their entire machine to a cloud agent.</p> <p>At first I used OpenCode to move fast. But once I cared about owning the rules—custom endpoints, tool semantics, streaming events, safety gates—I hit the wall.</p> <blockquote>
+<p>If the runtime controls how prompts, tools, and state flow… and I need control over that… I may as well build the runtime.</p>
+</blockquote> <p>That’s when “a Tauri app” turned into a full local agent engine.</p> <h2> <a name="tandem-isnt-a-desktop-app-its-an-engine-with-clients" href="#tandem-isnt-a-desktop-app-its-an-engine-with-clients"> </a> Tandem isn’t a desktop app. It’s an engine with clients.
+</h2> <p>Tandem is a headless agent runtime written in Rust. The UI is just a client.</p> <p>Today it ships with:</p> <ul>
+<li>
+<strong>tandem-engine (Rust):</strong> orchestration, tools, memory, event streaming</li>
+<li>
+<strong>Desktop app (Tauri + React):</strong> Plan Mode, visual diffs, approve-to-execute UX</li>
+<li>
+<strong>TUI:</strong> a terminal cockpit for the same engine</li>
+<li>
+<strong>Headless VPS Portal:</strong> 9 working React examples (Deep Research, Swarms, Incident Triage) to show how easy it is to build custom clients</li>
+<li>
+<strong>Guides</strong> to build your own GUI/clients on top of the engine API</li>
+</ul> <p><strong>Ferrari translation:</strong></p> <ul>
+<li>Engine = <code>tandem-engine</code>
+</li>
+<li>Dashboard = Desktop UI</li>
+<li>Track cockpit = TUI</li>
+<li>Telemetry = event stream</li>
+</ul> <h2> <a name="why-rust-the-real-reason" href="#why-rust-the-real-reason"> </a> Why Rust (the real reason)
+</h2> <p>I wanted to push horsepower downward.</p> <p>Agent systems aren’t one-off calls. They’re loops: <em>plan → act → observe → revise</em>. That means the runtime ends up doing a lot of “boring but heavy” work constantly:</p> <ul>
+<li>managing orchestration state (like my supervised "Planner → Builder → Validator" sub-agent loop)</li>
+<li>streaming structured events</li>
+<li>tool routing + retries + budgets + sandboxed Python venv execution</li>
+<li>indexing and memory reads/writes</li>
+<li>parsing noisy web pages or extracting text from PDFs/DOCXs into something models can actually use</li>
+</ul> <p>Rust is where I want that work to live.</p> <p>Then frontends can do what they’re best at:</p> <ul>
+<li>look polished (React + motion)</li>
+<li>stay responsive</li>
+<li>render plans, diffs, timelines, logs</li>
+<li>avoid becoming a spaghetti bowl of orchestration logic</li>
+</ul> <p><strong>This separation is the whole point: engine = responsibility, clients = experience.</strong></p> <h2> <a name="provider-freedom-because-vendor-lockin-sucks" href="#provider-freedom-because-vendor-lockin-sucks"> </a> Provider freedom (because vendor lock-in sucks)
+</h2> <p>Tandem isn't tied to a specific model. Bring your own API key (OpenRouter, Anthropic, OpenAI) or go completely offline with local models via Ollama. The engine doesn't care; it simply routes and executes.</p> <h2> <a name="the-trust-problem-choosing-your-level-of-control" href="#the-trust-problem-choosing-your-level-of-control"> </a> The trust problem: Choosing your level of control
+</h2> <p>Letting an LLM blindly write files “live” in the background is a quick way to lose trust forever. </p> <p>Instead of a one-size-fits-all approach, Tandem lets you dial the trust level up or down depending on what you're doing.</p> <p><strong>In regular chat sessions, you pick the exact mode per prompt:</strong></p> <ul>
+<li>
+<strong>Ask:</strong> Q&amp;A without making any file changes at all.</li>
+<li>
+<strong>Explore:</strong> Analyze and explore the codebase safely.</li>
+<li>
+<strong>Immediate:</strong> Execute changes directly for quick, low-risk edits.</li>
+<li>
+<strong>Plan (Zero Trust):</strong> The agent proposes a staged execution plan, the UI shows visual diffs, and a human explicitly clicks Execute.</li>
+<li>
+<strong>Coder:</strong> Focused specifically on code generation.</li>
+<li>
+<strong>Orchestrate:</strong> An AI plans and executes multi-step workflows.</li>
+</ul> <p><strong>For serious architectural work, you enter the Command Center:</strong><br>
+A dedicated cockpit for launching orchestrator missions and managing manual swarm interventions. You give the objective, and the engine coordinates Planner/Builder/Validator sub-agents while giving you live telemetry on tokens, runtime, and tasks.</p> <p><strong>For background work, there's Agent Automation (WIP):</strong><br>
+A separate hub for Scheduled Bots (like Daily Research or Issue Triage) and MCP Connector operations where you set explicit bounds and let it run.</p> <p>Plan Mode is slower than “just do it,” but having that safety net is how you make local agents feel safe enough to keep installed. <em>(I also encrypt your API keys locally using AES-256-GCM, because I mean it when I say "developer-grade".)</em></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F6y2cynz71m65d0xsk067.gif"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F6y2cynz71m65d0xsk067.gif" alt="Command Cneter"></a></p> <h2> <a name="local-memory-without-the-usual-install-a-database-tax" href="#local-memory-without-the-usual-install-a-database-tax"> </a> Local memory without the usual “install a database” tax
+</h2> <p>Most “local-first” tools quietly stop being local-first the moment you add RAG and require external services.</p> <p>I wanted long-term memory without asking users to run Postgres/pgvector/Pinecone/etc.</p> <p>So memory lives locally (SQLite + embedded vector search via <code>sqlite-vec</code>). It keeps setup friction low and makes the engine feel like an actual local tool, not a mini devops project.</p> <h2> <a name="so-why-is-the-ferrari-parked" href="#so-why-is-the-ferrari-parked"> </a> So why is the Ferrari parked?
+</h2> <p>Because capability isn’t adoption.</p> <p>I built the engine. I shipped two clients. I wrote docs. It works.</p> <p>But most people don’t wake up looking for “an agent runtime.” They want a workflow that succeeds in 60 seconds, onboarding that’s obvious, and trust that’s earned immediately.</p> <p>A Ferrari is useless if:</p> <ul>
+<li>nobody knows where the keys are, or</li>
+<li>they’re scared it’ll go through the garage door.</li>
+</ul> <h2> <a name="help-me-find-drivers-or-build-a-better-steering-wheel" href="#help-me-find-drivers-or-build-a-better-steering-wheel"> </a> Help me find drivers (or build a better steering wheel)
+</h2> <p>If you try Tandem and bounce in the first 5 minutes, I want to know where. That feedback is worth more than compliments.</p> <ul>
+<li>
+<strong>Repo:</strong> <a href="https://github.com/frumu-ai/tandem" target="_blank">https://github.com/frumu-ai/tandem</a>
+</li>
+<li>
+<strong>Website:</strong> <a href="https://tandem.frumu.ai/" target="_blank">https://tandem.frumu.ai/</a>
+</li>
+<li>
+<strong>Docs:</strong> <a href="https://tandem.frumu.ai/docs/" target="_blank">https://tandem.frumu.ai/docs/</a>
+</li>
+</ul> <p>And if you build a client on top of the engine: I’ll happily link it in the docs.</p> <div><p><strong>Over-engineered?</strong> Probably. </p><p>
+<strong>Necessary?</strong> Also probably. Because the moment you want safety gates, streaming state, memory, and multiple clients, you’re not building an app anymore—you’re building a runtime.</p></div> <p>And that’s the real punchline: Tandem isn’t “one UI.” It’s a local engine that can serve <strong>dozens or even hundreds of clients</strong> on the same machine—Desktop, TUI, tiny custom dashboards, scripts, automations, whatever you want—without rebuilding the core. <em>(I just shipped 9 example dashboards in my <code>vps-web-portal</code> to prove it).</em></p> <p>The Ferrari isn’t the dashboard. It’s the engine.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkgowzud8a1629ggblbfm.gif"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkgowzud8a1629ggblbfm.gif" alt="Using Local Models"></a></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

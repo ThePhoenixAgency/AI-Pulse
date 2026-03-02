@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LIVO Next-Level Flutter State Management</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>LIVO Next-Level Flutter State Management</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/23/2026 10:47:51 AM | <a href="https://dev.to/pravin_kunnure_f4663a859a/livo-next-level-flutter-state-management-2mk2" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Flutter is great, but managing state can quickly become messy. You’ve probably used setState for small projects or Provider, Riverpod, or BLoC for bigger apps—but each comes with trade-offs.</p> <p>**** Note: This story was originally about reactive_orm, which is now deprecated. Its evolution is now called LIVO. LIVO continues its reactive object-relationship state management approach with improved naming, documentation, and long-term support.</p> <p><strong>. What is&nbsp;<a href="https://pub.dev/packages/livo" target="_blank">LIVO</a>?</strong></p> <p>Enter <a href="https://pub.dev/packages/livo" target="_blank">LIVO</a>: a lightweight, reactive ORM-style state management library for Flutter.</p> <p>It lets your UI react automatically when model properties change — no streams, ChangeNotifier, or boilerplate required.</p> <p><strong>. With LIVO, you get:</strong></p> <ul>
+<li>Object-wise and field-wise reactivity</li>
+<li>Nested and shared models</li>
+<li>Many → One and Many Many relationships</li>
+<li>Minimal boilerplate, plain Dart models</li>
+</ul> <p><strong>. LIVO in action:</strong></p> <ul>
+<li>Object-wise: Update any field and rebuild the entire widget</li>
+<li>Field-wise: Only rebuild widgets for selected fields</li>
+<li>Many → One: Multiple models feeding a single observer</li>
+<li>Many Many: Shared models reflected across multiple parents</li>
+</ul> <p><strong>. Getting&nbsp;Started:</strong><br>
+Add LIVO to your project:<br>
+dependencies:<br> <em>livo: </em></p> <p>1⃣ Creating a Reactive&nbsp;Model</p> <p>_import 'package:livo/livo.dart';</p> <p>class Task extends ReactiveModel {<br> String _title;<br> bool _completed = false;<br> String _status = "Idle";</p> <p>Task({required String title}) : _title = title;</p> <p>String get title =&gt; _title;<br> set title(String value) {<br> if (_title != value) {<br> _title = value;<br> notifyListeners(#title); // Symbol-based<br> }<br> }</p> <p>bool get completed =&gt; _completed;<br> set completed(bool value) {<br> if (_completed != value) {<br> _completed = value;<br> notifyListeners(#completed);<br> }<br> }</p> <p>String get status =&gt; <em>status;<br> set status(String value) {<br> if (_status != value) {<br> _status = value;<br> notifyListeners(#status);<br> }<br> }<br>
+}</em></p> <p> This is just plain Dart. <a href="https://pub.dev/packages/livo" target="_blank">LIVO</a> will handle notifying widgets when fields change.</p> <p>2⃣ Object-wise Reactivity</p> <p>_final objectWise = Task(title: "Object-wise Reactivity");</p> <p>ReactiveBuilder(<br> model: objectWise,<br> builder: (task) {<br> return ListTile(<br> title: Text(task.title),<br> subtitle: Text(task.status),<br> trailing: Checkbox(<br> value: task.completed,<br> onChanged: (v) =&gt; task.completed = v!,<br> ),<br> );<br> },<br>
+);_</p> <p>Here, checking the checkbox triggers a rebuild of the entire widget.</p> <p>3⃣ Field-wise Reactivity (Optimized)</p> <p>Sometimes, you only want specific fields to trigger a rebuild:</p> <p>_final fieldWise = Task(title: "Field-wise Reactivity");</p> <p>ReactiveBuilder(<br> model: fieldWise,<br> fields: [#completed, #status],<br> builder: (task) {<br> return ListTile(<br> title: Text(task.title),<br> subtitle: Text(task.status),<br> trailing: Checkbox(<br> value: task.completed,<br> onChanged: (v) =&gt; task.completed = v!,<br> ),<br> );<br> },<br>
+)<br>
+_<br> Only changes to completed or status rebuild the widget. Other fields are ignored.</p> <p>4⃣ Many → One (Aggregation)</p> <p>Combine multiple models into a single reactive observer:</p> <p>_class Dashboard extends ReactiveModel {<br> final List sources;</p> <p>Dashboard(this.sources) {<br> for (final task in sources) {<br> addNested(task); // listen to many<br> }<br> }<br>
+}</p> <p>final manyA = Task(title: "Task A");<br>
+final manyB = Task(title: "Task B");<br>
+final dashboard = Dashboard([manyA, manyB]);</p> <p>ReactiveBuilder(<br> model: dashboard,<br> builder: (<em>) =&gt; Column(<br> children: [<br> Text("A: ${manyA.completed}"),<br> Text("B: ${manyB.completed}"),<br> ],<br> ),<br>
+);</em></p> <p>Updating manyA or manyB automatically rebuilds the dashboard widget.</p> <p>5⃣ Many Many (Shared&nbsp;Models)</p> <p>Models can be shared across multiple parents, keeping the UI in sync everywhere:</p> <p>_class Group extends ReactiveModel {<br> final String name;<br> final List tasks;</p> <p>Group({required this.name, required this.tasks}) {<br> for (final task in tasks) addNested(task);<br> }<br>
+}</p> <p>final group1 = Group(name: "Group 1", tasks: [objectWise, fieldWise]);<br>
+final group2 = Group(name: "Group 2", tasks: [fieldWise, manyA]);</p> <p>ReactiveBuilder(<br> model: group1,<br> builder: (g) =&gt; Column(<br> children: g.tasks.map((t) =&gt; Text("• ${t.title} → ${t.completed}")).toList(),<br> ),<br>
+);<br>
+_<br> Updating a task reflects automatically across all groups that include it.<br> How LIVO&nbsp;Works</p> <ul>
+<li>Models extend ReactiveModel</li>
+<li>Field setters call notifyListeners(#field) whenever a value changes</li>
+<li>ReactiveBuilder widgets listen to either the whole object or specific fields</li>
+<li>Nested models propagate changes upward automatically</li>
+<li>No streams. No manual wiring. Everything updates safely and efficiently.</li>
+</ul> <p> Why&nbsp;LIVO</p> <ul>
+<li>Clean Dart models with minimal boilerplate</li>
+<li>Fine-grained reactivity for optimized performance</li>
+<li>ORM-style mental model for easier app design</li>
+<li>Works seamlessly for single fields, nested models, or shared models</li>
+</ul> <p> Links</p> <p>Pub Package: <a href="https://pub.dev/packages/livo" target="_blank">LIVO</a></p> <p><a href="https://github.com/PravinKunnure/livo" target="_blank">GitHub Repository</a></p> <p> Tip for Readers<br>
+&nbsp;Start small: use object-wise for quick prototyping. As your app grows, switch to field-wise or nested models for efficiency.</p> <p><a href="https://pub.dev/packages/livo" target="_blank">LIVO</a> makes Flutter state management intuitive and fun — without sacrificing performance.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

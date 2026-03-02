@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Azure SDK for Python | Azure SDK for Python</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Azure SDK for Python | Azure SDK for Python</h1>
+  <div class="metadata">
+    Source: GitHub Trending Python | Date: 2/22/2026 10:24:00 AM | <a href="https://github.com/Azure/azure-sdk-for-python" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <article> <p><a href="https://azure.github.io/azure-sdk/releases/latest/python.html"><img src="https://img.shields.io/badge/packages-latest-blue.svg" alt="Packages"></a> <a href="https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-python/dependencies/dependencies.html"><img src="https://img.shields.io/badge/dependency-report-blue.svg" alt="Dependencies"></a> <a href="https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-python/dependencies/dependencyGraph/index.html"><img src="https://img.shields.io/badge/dependency-graph-blue.svg" alt="DepGraph"></a> <a href="https://pypi.python.org/pypi/azure/"><img src="https://img.shields.io/pypi/pyversions/azure-core.svg?maxAge=2592000" alt="Python"></a> <a href="https://dev.azure.com/azure-sdk/public/_build/latest?definitionId=458&amp;branchName=main"><img src="https://dev.azure.com/azure-sdk/public/_apis/build/status/python/python%20-%20core%20-%20ci?branchName=main" alt="Build Status"></a></p>
+<p>This repository is for the active development of the Azure SDK for Python. For consumers of the SDK we recommend visiting our <a href="https://docs.microsoft.com/python/azure/">public developer docs</a> or our versioned <a href="https://azure.github.io/azure-sdk-for-python">developer docs</a>.</p>
+<h2>Getting started</h2>
+<p>For your convenience, each service has a separate set of libraries that you can choose to use instead of one, large Azure package. To get started with a specific library, see the </p><pre><code>README.md</code></pre> (or <pre><code>README.rst</code></pre>) file located in the library's project folder.<p></p>
+<p>You can find service libraries in the </p><pre><code>/sdk</code></pre> directory.<p></p>
+<h3>Prerequisites</h3>
+<p>The client libraries are supported on Python 3.9 or later. For more details, please read our page on <a href="https://github.com/Azure/azure-sdk-for-python/wiki/Azure-SDKs-Python-version-support-policy">Azure SDK for Python version support policy</a>.</p>
+<h2>Packages available</h2>
+<p>Each service might have a number of libraries available from each of the following categories:</p>
+<ul>
+<li><a href="#client-new-releases">Client - New Releases</a></li>
+<li><a href="#client-previous-versions">Client - Previous Versions</a></li>
+<li><a href="#management-new-releases">Management - New Releases</a></li>
+<li><a href="#management-previous-versions">Management - Previous Versions</a></li>
+</ul>
+<h3>Client: New Releases</h3>
+<p>New wave of packages that we are announcing as <strong>GA</strong> and several that are currently releasing in <strong>preview</strong>. These libraries allow you to use and consume existing resources and interact with them, for example: upload a blob. These libraries share several core functionalities such as: retries, logging, transport protocols, authentication protocols, etc. that can be found in the <a href="https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/core/azure-core">azure-core</a> library. You can learn more about these libraries by reading guidelines that they follow <a href="https://azure.github.io/azure-sdk/python/guidelines/index.html">here</a>.</p>
+<p>You can find the <a href="https://azure.github.io/azure-sdk/releases/latest/index.html#python">most up to date list of all of the new packages on our page</a></p>
+<blockquote>
+<p>NOTE: If you need to ensure your code is ready for production use one of the stable, non-preview libraries.</p>
+</blockquote>
+<h3>Client: Previous Versions</h3>
+<p>Last stable versions of packages that have been provided for usage with Azure and are production-ready. These libraries provide you with similar functionalities to the Preview ones as they allow you to use and consume existing resources and interact with them, for example: upload a blob. They might not implement the <a href="https://azure.github.io/azure-sdk/python/guidelines/index.html">guidelines</a> or have the same feature set as the November releases. They do however offer wider coverage of services.</p>
+<h3>Management: New Releases</h3>
+<p>A new set of management libraries that follow the <a href="https://azure.github.io/azure-sdk/python/guidelines/">Azure SDK Design Guidelines for Python</a> are now available. These new libraries provide a number of core capabilities that are shared amongst all Azure SDKs, including the intuitive Azure Identity library, an HTTP Pipeline with custom policies, error-handling, distributed tracing, and much more.
+Documentation and code samples for these new libraries can be found <a href="https://aka.ms/azsdk/python/mgmt">here</a>. In addition, a migration guide that shows how to transition from older versions of libraries is located <a href="https://github.com/Azure/azure-sdk-for-python/blob/main/doc/sphinx/mgmt_quickstart.rst#migration-guide">here</a>.</p>
+<p>You can find the <a href="https://azure.github.io/azure-sdk/releases/latest/mgmt/python.html">most up to date list of all of the new packages on our page</a></p>
+<blockquote>
+<p>NOTE: If you need to ensure your code is ready for production use one of the stable, non-preview libraries. Also, if you are experiencing authentication issues with the management libraries after upgrading certain packages, it's possible that you upgraded to the new versions of SDK without changing the authentication code, please refer to the migration guide mentioned above for proper instructions.</p>
+</blockquote>
+<h3>Management: Previous Versions</h3>
+<p>For a complete list of management libraries that enable you to provision and manage Azure resources, please <a href="https://azure.github.io/azure-sdk/releases/latest/all/python.html">check here</a>. They might not have the same feature set as the new releases but they do offer wider coverage of services.
+Management libraries can be identified by namespaces that start with </p><pre><code>azure-mgmt-</code></pre>, e.g. <pre><code>azure-mgmt-compute</code></pre><p></p>
+<h2>Need help?</h2>
+<ul>
+<li>For detailed documentation visit our <a href="https://aka.ms/python-docs">Azure SDK for Python documentation</a></li>
+<li>File an issue via <a href="https://github.com/Azure/azure-sdk-for-python/issues">GitHub Issues</a></li>
+<li>Check <a href="https://stackoverflow.com/questions/tagged/azure+python">previous questions</a> or ask new ones on StackOverflow using <pre><code>azure</code></pre> and <pre><code>python</code></pre> tags.</li>
+</ul>
+<h2>Data Collection</h2>
+<p>The software may collect information about you and your use of the software and send it to Microsoft. Microsoft may use this information to provide services and improve our products and services. You may turn off the telemetry as described below. You can learn more about data collection and use in the help documentation and Microsoft’s <a href="https://go.microsoft.com/fwlink/?LinkID=824704">privacy statement</a>. For more information on the data collected by the Azure SDK, please visit the <a href="https://azure.github.io/azure-sdk/general_azurecore.html#telemetry-policy">Telemetry Guidelines</a> page.</p>
+<h3>Telemetry Configuration</h3>
+<p>Telemetry collection is on by default.</p>
+<p>To opt out, you can disable telemetry at client construction. Define a </p><pre><code>NoUserAgentPolicy</code></pre> class that is a subclass of <pre><code>UserAgentPolicy</code></pre> with an <pre><code>on_request</code></pre> method that does nothing. Then pass instance of this class as kwargs <pre><code>user_agent_policy=NoUserAgentPolicy()</code></pre> during client creation. This will disable telemetry for all methods in the client. Do this for every new client.<p></p>
+<p>The example below uses the </p><pre><code>azure-storage-blob</code></pre> package. In your code, you can replace <pre><code>azure-storage-blob</code></pre> with the package you are using.<p></p>
+<pre><code>import os
+from azure.identity import ManagedIdentityCredential
+from azure.storage.blob import BlobServiceClient
+from azure.core.pipeline.policies import UserAgentPolicy # Create your credential you want to use
+mi_credential = ManagedIdentityCredential() account_url = "https://&lt;storageaccountname&gt;.blob.core.windows.net" # Set up user-agent override
+class NoUserAgentPolicy(UserAgentPolicy): def on_request(self, request): pass # Create the BlobServiceClient object
+blob_service_client = BlobServiceClient(account_url, credential=mi_credential, user_agent_policy=NoUserAgentPolicy()) container_client = blob_service_client.get_container_client(container=&lt;container_name&gt;) # TODO: do something with the container client like download blob to a file
+</code></pre>
+<h3>Reporting security issues and security bugs</h3>
+<p>Security issues and bugs should be reported privately, via email, to the Microsoft Security Response Center (MSRC) <a href="mailto:secure@microsoft.com">secure@microsoft.com</a>. You should receive a response within 24 hours. If for some reason you do not, please follow up via email to ensure we received your original message. Further information, including the MSRC PGP key, can be found in the <a href="https://www.microsoft.com/msrc/faqs-report-an-issue">Security TechCenter</a>.</p>
+<h2>Contributing</h2>
+<p>For details on contributing to this repository, see the <a href="https://github.com/Azure/azure-sdk-for-python/blob/main/CONTRIBUTING.md">contributing guide</a>.</p>
+<p>This project welcomes contributions and suggestions. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit
+<a href="https://cla.microsoft.com/">https://cla.microsoft.com</a>.</p>
+<p>When you submit a pull request, a CLA-bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repositories using our CLA.</p>
+<pre><code>This project has adopted the Microsoft Open Source Code of Conduct.
+For more information see the Code of Conduct FAQ
+or contact opencode@microsoft.com with any additional questions or comments.</code></pre>
+</article> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

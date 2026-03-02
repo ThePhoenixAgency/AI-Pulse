@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How We Built Viewer Engagement Analytics Without a Tracking SDK</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How We Built Viewer Engagement Analytics Without a Tracking SDK</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 3:32:18 PM | <a href="https://dev.to/alexneamtu/how-we-built-viewer-engagement-analytics-without-a-tracking-sdk-h56" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>View counts tell you someone opened your video. They don't tell you if anyone actually watched it.</p> <p>A video with 200 views sounds impressive until you learn that 180 of those viewers bounced in the first 10 seconds. The view count is the same whether someone watched the whole demo or clicked away after the intro.</p> <p>We added viewer engagement analytics to <a href="https://sendrec.eu/" target="_blank">SendRec</a>. A completion funnel shows how many viewers reached 25%, 50%, 75%, and 100% of your video. No external tracking SDK, no third-party analytics service — just a <code>timeupdate</code> listener, a single POST per milestone, and one database table.</p> <h2> <a name="the-milestone-approach" href="#the-milestone-approach"> </a> The milestone approach
+</h2> <p>Continuous engagement tracking (sending a heartbeat every few seconds) generates a lot of data and a lot of requests. For a five-minute video with 100 viewers, that's thousands of pings. You'd need batching, deduplication, and probably a time-series database.</p> <p>We went with four fixed milestones: 25%, 50%, 75%, 100%. Each viewer generates at most four requests over the entire session. The data is sparse but answers the questions that matter: How many people finished the video? Where do most people drop off?</p> <p>This is the same approach YouTube uses in its audience retention reports — the difference is we're doing it with 10 lines of JavaScript and a single table.</p> <h2> <a name="clientside-tracking" href="#clientside-tracking"> </a> Client-side tracking
+</h2> <p>The watch page listens for the browser's <code>timeupdate</code> event, which fires roughly every 250 milliseconds during playback:<br>
+</p> <div>
+<pre><code><span>var</span> <span>player</span> <span>=</span> <span>document</span><span>.</span><span>getElementById</span><span>(</span><span>'</span><span>player</span><span>'</span><span>);</span>
+<span>if </span><span>(</span><span>!</span><span>player</span><span>)</span> <span>return</span><span>;</span>
+<span>var</span> <span>milestones</span> <span>=</span> <span>[</span><span>25</span><span>,</span> <span>50</span><span>,</span> <span>75</span><span>,</span> <span>100</span><span>];</span>
+<span>var</span> <span>reached</span> <span>=</span> <span>{};</span>
+<span>player</span><span>.</span><span>addEventListener</span><span>(</span><span>'</span><span>timeupdate</span><span>'</span><span>,</span> <span>function</span><span>()</span> <span>{</span> <span>if </span><span>(</span><span>!</span><span>player</span><span>.</span><span>duration</span><span>)</span> <span>return</span><span>;</span> <span>var</span> <span>pct</span> <span>=</span> <span>(</span><span>player</span><span>.</span><span>currentTime</span> <span>/</span> <span>player</span><span>.</span><span>duration</span><span>)</span> <span>*</span> <span>100</span><span>;</span> <span>for </span><span>(</span><span>var</span> <span>i</span> <span>=</span> <span>0</span><span>;</span> <span>i</span> <span>&lt;</span> <span>milestones</span><span>.</span><span>length</span><span>;</span> <span>i</span><span>++</span><span>)</span> <span>{</span> <span>var</span> <span>m</span> <span>=</span> <span>milestones</span><span>[</span><span>i</span><span>];</span> <span>if </span><span>(</span><span>pct</span> <span>&gt;=</span> <span>m</span> <span>&amp;&amp;</span> <span>!</span><span>reached</span><span>[</span><span>m</span><span>])</span> <span>{</span> <span>reached</span><span>[</span><span>m</span><span>]</span> <span>=</span> <span>true</span><span>;</span> <span>fetch</span><span>(</span><span>'</span><span>/api/watch/</span><span>'</span> <span>+</span> <span>shareToken</span> <span>+</span> <span>'</span><span>/milestone</span><span>'</span><span>,</span> <span>{</span> <span>method</span><span>:</span> <span>'</span><span>POST</span><span>'</span><span>,</span> <span>headers</span><span>:</span> <span>{</span> <span>'</span><span>Content-Type</span><span>'</span><span>:</span> <span>'</span><span>application/json</span><span>'</span> <span>},</span> <span>body</span><span>:</span> <span>JSON</span><span>.</span><span>stringify</span><span>({</span> <span>milestone</span><span>:</span> <span>m</span> <span>})</span> <span>}).</span><span>catch</span><span>(</span><span>function</span><span>()</span> <span>{});</span> <span>}</span> <span>}</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The <code>reached</code> object is the key to keeping it lightweight. Once a milestone fires, it's marked as sent and never fires again — even if the viewer scrubs backward and replays that section. Each milestone produces exactly one network request.</p> <p>The <code>.catch(function() {})</code> swallows errors silently. If the request fails, the viewer's playback isn't affected. Analytics is best-effort — missing one data point doesn't corrupt the funnel.</p> <p>The same script runs on the embeddable player at <code>/embed/:token</code>, so engagement data is captured whether the video is watched on the watch page or embedded in an iframe.</p> <h2> <a name="serverside-recording" href="#serverside-recording"> </a> Server-side recording
+</h2> <p>The endpoint is public (viewers aren't logged in) and returns immediately:<br>
+</p> <div>
+<pre><code><span>func</span> <span>(</span><span>h</span> <span>*</span><span>Handler</span><span>)</span> <span>RecordMilestone</span><span>(</span><span>w</span> <span>http</span><span>.</span><span>ResponseWriter</span><span>,</span> <span>r</span> <span>*</span><span>http</span><span>.</span><span>Request</span><span>)</span> <span>{</span> <span>var</span> <span>req</span> <span>milestoneRequest</span> <span>if</span> <span>err</span> <span>:=</span> <span>json</span><span>.</span><span>NewDecoder</span><span>(</span><span>r</span><span>.</span><span>Body</span><span>)</span><span>.</span><span>Decode</span><span>(</span><span>&amp;</span><span>req</span><span>);</span> <span>err</span> <span>!=</span> <span>nil</span> <span>{</span> <span>httputil</span><span>.</span><span>WriteError</span><span>(</span><span>w</span><span>,</span> <span>http</span><span>.</span><span>StatusBadRequest</span><span>,</span> <span>"invalid request body"</span><span>)</span> <span>return</span> <span>}</span> <span>if</span> <span>req</span><span>.</span><span>Milestone</span> <span>!=</span> <span>25</span> <span>&amp;&amp;</span> <span>req</span><span>.</span><span>Milestone</span> <span>!=</span> <span>50</span> <span>&amp;&amp;</span> <span>req</span><span>.</span><span>Milestone</span> <span>!=</span> <span>75</span> <span>&amp;&amp;</span> <span>req</span><span>.</span><span>Milestone</span> <span>!=</span> <span>100</span> <span>{</span> <span>httputil</span><span>.</span><span>WriteError</span><span>(</span><span>w</span><span>,</span> <span>http</span><span>.</span><span>StatusBadRequest</span><span>,</span> <span>"milestone must be 25, 50, 75, or 100"</span><span>)</span> <span>return</span> <span>}</span> <span>shareToken</span> <span>:=</span> <span>chi</span><span>.</span><span>URLParam</span><span>(</span><span>r</span><span>,</span> <span>"shareToken"</span><span>)</span> <span>var</span> <span>videoID</span> <span>string</span> <span>err</span> <span>:=</span> <span>h</span><span>.</span><span>db</span><span>.</span><span>QueryRow</span><span>(</span><span>r</span><span>.</span><span>Context</span><span>(),</span> <span>`SELECT id FROM videos WHERE share_token = $1 AND status IN ('ready', 'processing')`</span><span>,</span> <span>shareToken</span><span>,</span> <span>)</span><span>.</span><span>Scan</span><span>(</span><span>&amp;</span><span>videoID</span><span>)</span> <span>if</span> <span>err</span> <span>!=</span> <span>nil</span> <span>{</span> <span>httputil</span><span>.</span><span>WriteError</span><span>(</span><span>w</span><span>,</span> <span>http</span><span>.</span><span>StatusNotFound</span><span>,</span> <span>"video not found"</span><span>)</span> <span>return</span> <span>}</span> <span>go</span> <span>func</span><span>()</span> <span>{</span> <span>ctx</span><span>,</span> <span>cancel</span> <span>:=</span> <span>context</span><span>.</span><span>WithTimeout</span><span>(</span><span>context</span><span>.</span><span>Background</span><span>(),</span> <span>30</span><span>*</span><span>time</span><span>.</span><span>Second</span><span>)</span> <span>defer</span> <span>cancel</span><span>()</span> <span>ip</span> <span>:=</span> <span>clientIP</span><span>(</span><span>r</span><span>)</span> <span>hash</span> <span>:=</span> <span>viewerHash</span><span>(</span><span>ip</span><span>,</span> <span>r</span><span>.</span><span>UserAgent</span><span>())</span> <span>h</span><span>.</span><span>db</span><span>.</span><span>Exec</span><span>(</span><span>ctx</span><span>,</span> <span>`INSERT INTO view_milestones (video_id, viewer_hash, milestone) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING`</span><span>,</span> <span>videoID</span><span>,</span> <span>hash</span><span>,</span> <span>req</span><span>.</span><span>Milestone</span><span>,</span> <span>)</span> <span>}()</span> <span>w</span><span>.</span><span>WriteHeader</span><span>(</span><span>http</span><span>.</span><span>StatusNoContent</span><span>)</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The handler validates the milestone value (must be 25, 50, 75, or 100), resolves the video from the share token, then fires a goroutine for the database insert. The response returns a 204 before the write completes — the viewer's playback doesn't wait on our database.</p> <p>The <code>ON CONFLICT DO NOTHING</code> is critical. If the same viewer (same IP + User-Agent hash) hits the same milestone twice — maybe they refreshed the page and rewatched — the duplicate is silently dropped. No error, no extra row.</p> <h2> <a name="the-data-model" href="#the-data-model"> </a> The data model
+</h2> <p>One table, one index:<br>
+</p> <div>
+<pre><code><span>CREATE</span> <span>TABLE</span> <span>view_milestones</span> <span>(</span> <span>id</span> <span>UUID</span> <span>PRIMARY</span> <span>KEY</span> <span>DEFAULT</span> <span>gen_random_uuid</span><span>(),</span> <span>video_id</span> <span>UUID</span> <span>NOT</span> <span>NULL</span> <span>REFERENCES</span> <span>videos</span><span>(</span><span>id</span><span>),</span> <span>viewer_hash</span> <span>TEXT</span> <span>NOT</span> <span>NULL</span><span>,</span> <span>milestone</span> <span>INTEGER</span> <span>NOT</span> <span>NULL</span> <span>CHECK</span> <span>(</span><span>milestone</span> <span>IN</span> <span>(</span><span>25</span><span>,</span> <span>50</span><span>,</span> <span>75</span><span>,</span> <span>100</span><span>)),</span> <span>created_at</span> <span>TIMESTAMPTZ</span> <span>NOT</span> <span>NULL</span> <span>DEFAULT</span> <span>now</span><span>(),</span> <span>UNIQUE</span> <span>(</span><span>video_id</span><span>,</span> <span>viewer_hash</span><span>,</span> <span>milestone</span><span>)</span>
+<span>);</span>
+<span>CREATE</span> <span>INDEX</span> <span>idx_view_milestones_video_id</span> <span>ON</span> <span>view_milestones</span><span>(</span><span>video_id</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The <code>UNIQUE</code> constraint on <code>(video_id, viewer_hash, milestone)</code> is what makes <code>ON CONFLICT DO NOTHING</code> work. A viewer can record at most four rows per video — one for each milestone. The <code>CHECK</code> constraint ensures only valid milestone values are stored, even if the validation in the handler is bypassed.</p> <p>The <code>viewer_hash</code> is a truncated SHA-256 of the IP address and User-Agent string — the same approach we use for view tracking and CTA click tracking. It's not a unique identifier (multiple people behind the same NAT with the same browser will hash identically), but it provides useful deduplication without storing personally identifiable information.</p> <h2> <a name="querying-the-funnel" href="#querying-the-funnel"> </a> Querying the funnel
+</h2> <p>The analytics endpoint aggregates milestones with a single query:<br>
+</p> <div>
+<pre><code><span>SELECT</span> <span>milestone</span><span>,</span> <span>COUNT</span><span>(</span><span>DISTINCT</span> <span>viewer_hash</span><span>)</span>
+<span>FROM</span> <span>view_milestones</span>
+<span>WHERE</span> <span>video_id</span> <span>=</span> <span>$</span><span>1</span> <span>AND</span> <span>created_at</span> <span>&gt;=</span> <span>$</span><span>2</span>
+<span>GROUP</span> <span>BY</span> <span>milestone</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The result is four rows (or fewer, if no one has reached a milestone yet). The handler maps them into a response object:<br>
+</p> <div>
+<pre><code><span>var</span> <span>milestones</span> <span>milestoneCounts</span>
+<span>rows</span><span>,</span> <span>err</span> <span>:=</span> <span>h</span><span>.</span><span>db</span><span>.</span><span>Query</span><span>(</span><span>ctx</span><span>,</span> <span>`SELECT milestone, COUNT(DISTINCT viewer_hash) FROM view_milestones WHERE video_id = $1 AND created_at &gt;= $2 GROUP BY milestone`</span><span>,</span> <span>videoID</span><span>,</span> <span>since</span><span>,</span>
+<span>)</span>
+<span>if</span> <span>err</span> <span>==</span> <span>nil</span> <span>{</span> <span>defer</span> <span>rows</span><span>.</span><span>Close</span><span>()</span> <span>for</span> <span>rows</span><span>.</span><span>Next</span><span>()</span> <span>{</span> <span>var</span> <span>m</span> <span>int</span> <span>var</span> <span>count</span> <span>int64</span> <span>if</span> <span>err</span> <span>:=</span> <span>rows</span><span>.</span><span>Scan</span><span>(</span><span>&amp;</span><span>m</span><span>,</span> <span>&amp;</span><span>count</span><span>);</span> <span>err</span> <span>==</span> <span>nil</span> <span>{</span> <span>switch</span> <span>m</span> <span>{</span> <span>case</span> <span>25</span><span>:</span> <span>milestones</span><span>.</span><span>Reached25</span> <span>=</span> <span>count</span> <span>case</span> <span>50</span><span>:</span> <span>milestones</span><span>.</span><span>Reached50</span> <span>=</span> <span>count</span> <span>case</span> <span>75</span><span>:</span> <span>milestones</span><span>.</span><span>Reached75</span> <span>=</span> <span>count</span> <span>case</span> <span>100</span><span>:</span> <span>milestones</span><span>.</span><span>Reached100</span> <span>=</span> <span>count</span> <span>}</span> <span>}</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The <code>COUNT(DISTINCT viewer_hash)</code> means the funnel shows unique viewers, not total milestone hits. If one person watches your video three times and reaches 50% each time, they count once in the 50% bar.</p> <h2> <a name="the-completion-funnel" href="#the-completion-funnel"> </a> The completion funnel
+</h2> <p>The frontend renders the milestones as a horizontal bar chart in the per-video analytics page. Each bar's width is proportional to total views — if 80 out of 100 viewers reached 25%, the bar fills 80% of its track.</p> <p>The funnel only appears when there are views. No data, no empty chart taking up space.</p> <p>Reading the funnel tells you different things about different types of content:</p> <p><strong>Gradual drop-off</strong> (80 → 60 → 45 → 30) — Normal for longer videos. People get what they need and leave. Not a problem.</p> <p><strong>Sharp early drop-off</strong> (80 → 20 → 15 → 12) — Most viewers leave before the halfway mark. The intro might be too slow, or the title set wrong expectations.</p> <p><strong>Flat funnel</strong> (80 → 75 → 72 → 70) — Almost everyone who starts finishes. The content is the right length for its audience.</p> <p><strong>Spike at 100%</strong> relative to 75% — If 100% is close to 75%, viewers who make it three-quarters through tend to finish. Your ending isn't losing people.</p> <h2> <a name="what-this-doesnt-track" href="#what-this-doesnt-track"> </a> What this doesn't track
+</h2> <p><strong>Individual viewers.</strong> We don't show a list of who watched or how far each person got. The viewer hash is for deduplication, not identification. This is a deliberate privacy-first choice.</p> <p><strong>Scrub position or heatmaps.</strong> A heatmap would require sending the current playback position every few seconds — a heartbeat approach that's more complex to build and more expensive to store. The four milestones give you the shape of the drop-off curve without the infrastructure cost.</p> <p><strong>Re-watch patterns.</strong> If someone watches your video twice, the <code>UNIQUE</code> constraint means their milestones are only counted once. We can't distinguish "watched once thoroughly" from "watched three times, skipping around." For aggregate analytics this is fine — you want to know how many people reached each point, not how many times.</p> <h2> <a name="try-it" href="#try-it"> </a> Try it
+</h2> <p><a href="https://sendrec.eu/" target="_blank">SendRec</a> is open source (AGPL-3.0) and self-hostable. Engagement analytics are live at <a href="https://app.sendrec.eu/" target="_blank">app.sendrec.eu</a> — upload a video, share the link, watch it to the end, then check the analytics page to see the completion funnel populate.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Show HN: AxKeyStore – Zero-trust CLI secrets manager using your own GitHub repo</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Show HN: AxKeyStore – Zero-trust CLI secrets manager using your own GitHub repo</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/28/2026 2:06:45 AM | <a href="https://github.com/basilgregory/axkeystore" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>Hi HN,<p>I built AxKeyStore, an open-source CLI tool for managing secrets that uses your own private GitHub repository as encrypted storage.<p>The idea is simple:
+→ All encryption happens locally.
+→ Secrets are stored as encrypted blobs in your private repo.
+→ GitHub is treated as untrusted storage.
+→ No plaintext secrets ever leave your machine.
+→ No plaintext secrets are stored on disk.<p>Most secret managers either require a hosted backend, a self-hosted server, or trusting a SaaS provider. I wanted something that:
+→ Requires zero infrastructure
+→ Uses tooling developers already have
+→ Keeps the threat model simple<p>AxKeyStore uses a layered approach to security:
+→ Secrets are encrypted with a Remote Master Key (RMK).
+→ The RMK is encrypted with your master password and stored in the repo.
+→ A Local Master Key (LMK) encrypts your local GitHub token and repo config.
+→ The LMK itself is encrypted using Argon2id-derived keys from your master password.
+→ Encryption uses XChaCha20-Poly1305 (AEAD).<p>GitHub only sees encrypted binary blobs. Even if someone compromises your repository, they still need your master password to decrypt anything.<p>Why GitHub? Because it gives:
+→ Private repositories
+→ Version history (commit log as audit trail)
+→ Access control
+→ Free storage
+→ Global availability<p>Instead of building a backend, I’m leveraging an existing, reliable system - but cryptographically isolating it.<p>Features
+→ Simple CLI workflow
+→ Hierarchical categories (e.g., cloud/aws/prod)
+→ Version history per secret (via commits)
+→ Retrieve specific versions by SHA
+→ Multi-profile support (separate vaults)
+→ Transactional master password reset
+→ Secure random secret generation<p>Tech
+→ Written in Rust. Uses tokio, clap, argon2, and chacha20poly1305.
+→ There are unit and integration tests (including mocked GitHub API interactions).
+→ Open source - MIT licensed.<p>I’d appreciate feedback on:
+→ The threat model - what am I missing?
+→ Whether GitHub as encrypted blob storage is a bad assumption
+→ UX improvements for CLI-based secret workflows
+→ Any crypto or key-handling concerns<p>I’m especially interested in critique from people who’ve built or audited secret management systems.<p>Thanks.</p>
+<hr>
+<p> URL: <a href="https://news.ycombinator.com/item?id=47189172">https://news.ycombinator.com/item?id=47189172</a></p>
+<p>Points: 2</p>
+<p># : 0</p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

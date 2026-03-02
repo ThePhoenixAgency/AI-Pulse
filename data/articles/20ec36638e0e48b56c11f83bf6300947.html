@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - zeapo/swarmit</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - zeapo/swarmit</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 8:44:22 PM | <a href="https://github.com/zeapo/swarmit" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>Swarmit</h1><a href="#swarmit"></a></div>
+<p><a target="_blank" href="/zeapo/swarmit/blob/main/docs/demo.webp" rel="noopener noreferrer"><img src="/zeapo/swarmit/raw/main/docs/demo.webp" alt="Swarmit demo"></a></p>
+<p><strong>Persistent task coordination for AI coding agents.</strong></p>
+<p>AI coding agents try to maintain context through markdown plans and limited subagent memory — but those are fragile, siloed, and invisible to other agents. Swarmit replaces that with a shared, persistent task board every agent reads and writes through the same CLI. One source of truth across sessions and agents.</p>
+<p>Break a project into epics and tasks, set up dependency graphs, then let multiple agents pick up work in parallel — each one aware of what the others are doing. Come back tomorrow and the plan is still there, with full history of who did what.</p>
+<hr>
+<div><h2>Why Swarmit</h2><a href="#why-swarmit"></a></div>
+<p><strong>Long-term planning.</strong> Agents create epics with tasks, dependencies, and priorities that survive across sessions. Pick up where you left off — or let a fresh agent continue the work.</p>
+<p><strong>Multi-agent collaboration.</strong> Multiple agents claim tasks before starting, leave progress comments, and mark work done — all through the same CLI. No duplicate work, no stepping on each other.</p>
+<p><strong>Full visibility.</strong> A live terminal dashboard shows what's happening right now: who's working on what, what's blocked, what's done. Every mutation is recorded in an append-only event log with complete history.</p>
+<p><strong>Agent-native.</strong> JSON output on every command. Pipe-friendly. Comes with a Claude Code skill that teaches agents the workflow automatically.</p>
+<div><pre><code> Agent A Agent B Agent C │ │ │ │ swarmit CLI │ swarmit CLI │ swarmit CLI └────────┬────────┘ │ ▼ │ shared task state ◄────────────┘ │ ▼ swarmit TUI (live-refreshing dashboard you watch while agents run)
+</code></pre></div>
+<hr>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><h3>Pre-built binaries</h3><a href="#pre-built-binaries"></a></div>
+<p>Download the latest release from <a href="https://github.com/zeapo/swarmit/releases">GitHub Releases</a>:</p>
+<ul>
+<li><strong>Linux x86_64</strong>: <pre><code>swarmit-linux-x86_64.tar.gz</code></pre></li>
+<li><strong>macOS ARM64</strong>: <pre><code>swarmit-macos-arm64.tar.gz</code></pre></li>
+</ul>
+<div><pre><span><span>#</span> Example: macOS ARM64</span>
+tar xzf swarmit-macos-arm64.tar.gz
+mv swarmit /usr/local/bin/</pre></div>
+<div><h3>From source</h3><a href="#from-source"></a></div>
+<div><pre>git clone https://github.com/zeapo/swarmit
+<span>cd</span> swarmit
+cargo install --path crates/swarmit</pre></div>
+<p>Requires Rust 1.80+.</p>
+<hr>
+<div><h2>Quick start</h2><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> Initialize a project</span>
+swarmit init --name <span><span>"</span>My Project<span>"</span></span> --agent me <span><span>#</span> Plan the work</span>
+swarmit epic create --title <span><span>"</span>Authentication<span>"</span></span> --agent me
+swarmit task create --title <span><span>"</span>Implement login flow<span>"</span></span> --epic EPIC-001 --agent me
+swarmit task create --title <span><span>"</span>Add session middleware<span>"</span></span> --epic EPIC-001 --agent me
+swarmit link add --from TASK-001 --to TASK-002 --type blocks --agent me <span><span>#</span> Agents claim before starting, comment as they go, done when finished</span>
+swarmit task claim TASK-002 --agent claude-1
+swarmit comment add TASK-002 --body <span><span>"</span>OAuth flow implemented, tests passing<span>"</span></span> --agent claude-1
+swarmit task <span>done</span> TASK-002 --agent claude-1</pre></div>
+<p>All mutation commands require </p><pre><code>--agent &lt;ID&gt;</code></pre> (or <pre><code>SWARMIT_AGENT</code></pre> env var). Output is pretty-printed on a TTY and JSON when piped — useful for scripting and agent-to-agent communication.<p></p>
+<hr>
+<div><h2>Claude Code plugin</h2><a href="#claude-code-plugin"></a></div>
+<p>The plugin teaches Claude Code agents to use swarmit instead of the built-in todo tools. Once installed, agents automatically:</p>
+<ul>
+<li>Check for existing tasks before creating new ones</li>
+<li>Create epics with dependency graphs for multi-step work</li>
+<li>Claim tasks before starting (prevents duplicate work)</li>
+<li>Leave progress comments visible in the TUI in real time</li>
+<li>Mark tasks done when finished — or blocked with an explanation</li>
+<li>Dispatch parallel subagents in waves based on the dependency graph</li>
+</ul>
+<p><strong>Install:</strong></p>
+<div><pre><code>/plugin marketplace add zeapo/swarmit
+/plugin install swarmit
+</code></pre></div>
+<p>Or copy the skill file manually into your </p><pre><code>.claude/skills/</code></pre> directory — see <a href="/zeapo/swarmit/blob/main/plugin/skills/swarmit"><pre><code>plugin/skills/swarmit/</code></pre></a>.<p></p>
+<hr>
+<div><h2>CLI</h2><a href="#cli"></a></div>
+<div><h3>Command groups</h3><a href="#command-groups"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>swarmit init</code></pre></td>
+<td>Initialize a project in the current directory</td>
+</tr>
+<tr>
+<td><pre><code>swarmit epic</code></pre></td>
+<td>Create, list, show, update, delete epics</td>
+</tr>
+<tr>
+<td><pre><code>swarmit task</code></pre></td>
+<td>Create, list, show, update, claim, done, delete tasks</td>
+</tr>
+<tr>
+<td><pre><code>swarmit link</code></pre></td>
+<td>Add / remove / list typed relationships</td>
+</tr>
+<tr>
+<td><pre><code>swarmit comment</code></pre></td>
+<td>Add comments to any task</td>
+</tr>
+<tr>
+<td><pre><code>swarmit insight</code></pre></td>
+<td>Attach code insights to tasks</td>
+</tr>
+<tr>
+<td><pre><code>swarmit log</code></pre></td>
+<td>Inspect the history of all changes</td>
+</tr>
+<tr>
+<td><pre><code>swarmit compact</code></pre></td>
+<td>Prune and snapshot history</td>
+</tr>
+<tr>
+<td><pre><code>swarmit project</code></pre></td>
+<td>Show or update project metadata</td>
+</tr>
+<tr>
+<td><pre><code>swarmit sync</code></pre></td>
+<td>Regenerate markdown files from state</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Common examples</h3><a href="#common-examples"></a></div>
+<div><pre><span><span>#</span> List all open tasks</span>
+swarmit task list --status todo <span><span>#</span> Tasks for a specific epic, as JSON</span>
+swarmit task list --epic EPIC-001 --status todo --json <span><span>#</span> Show task detail with relationships and comments</span>
+swarmit task show TASK-007 <span><span>#</span> Link tasks</span>
+swarmit link add --from TASK-001 --to TASK-002 --type blocks --agent me <span><span>#</span> Add a progress comment</span>
+swarmit comment add TASK-001 --body <span><span>"</span>OAuth flow implemented, tests passing<span>"</span></span> --agent me <span><span>#</span> Review recent activity</span>
+swarmit log --tail 20</pre></div>
+<p>Full reference: <a href="/zeapo/swarmit/blob/main/plugin/skills/swarmit/cli-reference.md"></a></p><pre><a href="/zeapo/swarmit/blob/main/plugin/skills/swarmit/cli-reference.md"><code>plugin/skills/swarmit/cli-reference.md</code></a></pre><p></p>
+<hr>
+<div><h2>TUI</h2><a href="#tui"></a></div>
+<p>Run </p><pre><code>swarmit</code></pre> with no arguments in a TTY to open the live dashboard:<p></p>
+<div><pre>swarmit</pre></div>
+<p>The TUI watches for file changes and refreshes automatically as agents update state. Two-pane layout with collapsible epic groups, three detail tabs (description, comments, insights), and inline editing via </p><pre><code>$EDITOR</code></pre>.<p></p>
+<p>Catppuccin theme with automatic light/dark detection:</p>
+<div><pre>SWARMIT_THEME=latte swarmit <span><span>#</span> light</span>
+SWARMIT_THEME=mocha swarmit <span><span>#</span> dark</span>
+SWARMIT_THEME=frappe swarmit
+SWARMIT_THEME=macchiato swarmit</pre></div>
+<div><h3>Key bindings</h3><a href="#key-bindings"></a></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>j</code></pre>/<pre><code>k</code></pre> or <pre><code>↑</code></pre>/<pre><code>↓</code></pre></td>
+<td>Navigate list / scroll detail</td>
+</tr>
+<tr>
+<td><pre><code>Enter</code></pre></td>
+<td>Open detail pane</td>
+</tr>
+<tr>
+<td><pre><code>Space</code></pre></td>
+<td>Collapse / expand epic group</td>
+</tr>
+<tr>
+<td><pre><code>Tab</code></pre></td>
+<td>Cycle detail tabs</td>
+</tr>
+<tr>
+<td><pre><code>h</code></pre>/<pre><code>l</code></pre> or <pre><code>←</code></pre>/<pre><code>→</code></pre></td>
+<td>Cycle detail tabs</td>
+</tr>
+<tr>
+<td><pre><code>Shift+H/J/K/L</code></pre></td>
+<td>Switch pane focus</td>
+</tr>
+<tr>
+<td><pre><code>n</code></pre></td>
+<td>New task</td>
+</tr>
+<tr>
+<td><pre><code>e</code></pre></td>
+<td>Edit description in <pre><code>$EDITOR</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>a</code></pre></td>
+<td>Add comment in <pre><code>$EDITOR</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>S</code></pre></td>
+<td>Change task status</td>
+</tr>
+<tr>
+<td><pre><code>E</code></pre></td>
+<td>Change task epic</td>
+</tr>
+<tr>
+<td><pre><code>f</code></pre></td>
+<td>Filter</td>
+</tr>
+<tr>
+<td><pre><code>s</code></pre></td>
+<td>Sort</td>
+</tr>
+<tr>
+<td><pre><code>r</code></pre></td>
+<td>Refresh</td>
+</tr>
+<tr>
+<td><pre><code>|</code></pre></td>
+<td>Toggle split direction</td>
+</tr>
+<tr>
+<td><pre><code>=</code></pre> / <pre><code>-</code></pre></td>
+<td>Resize detail pane</td>
+</tr>
+<tr>
+<td><pre><code>?</code></pre></td>
+<td>Help</td>
+</tr>
+<tr>
+<td><pre><code>q</code></pre> / <pre><code>Esc</code></pre></td>
+<td>Quit / back</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>What's in the box</h2><a href="#whats-in-the-box"></a></div>
+<ul>
+<li>Epics and tasks with priority, assignee, and status</li>
+<li>Typed relationships between items (<pre><code>blocks</code></pre>, <pre><code>blocked_by</code></pre>, <pre><code>parent</code></pre>, <pre><code>child</code></pre>, <pre><code>relates_to</code></pre>, <pre><code>duplicates</code></pre>)</li>
+<li>Comments and code insights on any task</li>
+<li>Full history with <pre><code>swarmit log</code></pre></li>
+<li>JSON output on every command — pipe-friendly for agents and scripts</li>
+<li>TUI with sort, filter, live refresh, inline editing, and resizable split panes</li>
+<li>Catppuccin theme with auto dark/light detection</li>
+<li>Claude Code skill file that wires everything together</li>
+<li>CI/CD with GitHub Actions — pre-built binaries for Linux and macOS</li>
+</ul>
+<hr>
+<div><h2>Project layout</h2><a href="#project-layout"></a></div>
+<div><pre><code>crates/ swarmit-core/ # Models, event sourcing, state materializer swarmit-cli/ # CLI commands (clap) swarmit-tui/ # Terminal UI (ratatui + crossterm) swarmit/ # Binary entry point + mode detection
+plugin/ skills/ swarmit/ # Claude Code skill files
+</code></pre></div>
+<hr>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre>cargo build <span><span>#</span> Build all crates</span>
+cargo <span>test</span> <span><span>#</span> Run all tests</span>
+cargo run -- --help <span><span>#</span> CLI help</span></pre></div>
+<p>Tests use </p><pre><code>tempfile</code></pre> for isolated directories — no global state.<p></p>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

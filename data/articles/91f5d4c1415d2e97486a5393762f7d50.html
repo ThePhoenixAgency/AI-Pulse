@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - mohsenil85/imbolc: Imbolc DAW - terminal-based digital audio workstation</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - mohsenil85/imbolc: Imbolc DAW - terminal-based digital audio workstation</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 9:05:54 PM | <a href="https://github.com/mohsenil85/imbolc" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1><a href="https://imbolc.studio">Imbolc Studio</a></h1><a href="#imbolc-studio"></a></div>
+<p><strong>A complete audio workstation in your terminal.</strong></p>
+<p><a href="/mohsenil85/imbolc/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/48bf9b56d44f38db53ce21294cf0b9487d0a3734ab3ba1fe4c69858ae20db2c1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d47504c76332d626c75652e737667" alt="License: GPL v3"></a>
+<a href="https://github.com/mohsenil85/imbolc/actions/workflows/ci.yml"><img src="https://github.com/mohsenil85/imbolc/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+<a href="https://github.com/mohsenil85/imbolc"><img src="https://camo.githubusercontent.com/77810d7e2babfd303dfad7198c4ec72c637a564ee9cddafbf4fadd81126f0123/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6d6f6873656e696c38352f696d626f6c63" alt="GitHub Stars"></a>
+<a href="https://github.com/sponsors/mohsenil85"></a></p>
+<blockquote>
+<p><strong>Alpha software.</strong> Imbolc is under active development. Expect rough edges. <a href="https://github.com/mohsenil85/imbolc/issues">Bug reports</a> are very welcome.</p>
+</blockquote>
+<p>Write beats, layer synthesizers, shape sounds with effects, mix tracks, record finished songs, annoy your neighbors, all from the comfort of your terminal.</p>
+<p><a target="_blank" href="/mohsenil85/imbolc/blob/main/docs/assets/imbolc-main.png" rel="noopener noreferrer"><img src="/mohsenil85/imbolc/raw/main/docs/assets/imbolc-main.png" alt="Piano Roll &amp; Automation"></a></p> More screenshots
+<div><h3>Arrangement</h3><a href="#arrangement"></a></div>
+<p><a target="_blank" href="/mohsenil85/imbolc/blob/main/docs/assets/arrangement.png" rel="noopener noreferrer"><img src="/mohsenil85/imbolc/raw/main/docs/assets/arrangement.png" alt="Arrangement"></a></p>
+<div><h3>Mixer</h3><a href="#mixer"></a></div>
+<p><a target="_blank" href="/mohsenil85/imbolc/blob/main/docs/assets/mixer.png" rel="noopener noreferrer"><img src="/mohsenil85/imbolc/raw/main/docs/assets/mixer.png" alt="Mixer"></a></p>
+<div><h3>Instrument Editor</h3><a href="#instrument-editor"></a></div>
+<p><a target="_blank" href="/mohsenil85/imbolc/blob/main/docs/assets/edit-instrument.png" rel="noopener noreferrer"><img src="/mohsenil85/imbolc/raw/main/docs/assets/edit-instrument.png" alt="Instrument Editor"></a></p>
+<div><h3>Add Track</h3><a href="#add-track"></a></div>
+<p><a target="_blank" href="/mohsenil85/imbolc/blob/main/docs/assets/add-track.png" rel="noopener noreferrer"><img src="/mohsenil85/imbolc/raw/main/docs/assets/add-track.png" alt="Add Track"></a></p>
+<div><h3>Command Palette</h3><a href="#command-palette"></a></div>
+<p><a target="_blank" href="/mohsenil85/imbolc/blob/main/docs/assets/palette.png" rel="noopener noreferrer"><img src="/mohsenil85/imbolc/raw/main/docs/assets/palette.png" alt="Command Palette"></a></p>
+<div><h3>Reference Tuner</h3><a href="#reference-tuner"></a></div>
+<p><a target="_blank" href="/mohsenil85/imbolc/blob/main/docs/assets/tuner.png" rel="noopener noreferrer"><img src="/mohsenil85/imbolc/raw/main/docs/assets/tuner.png" alt="Reference Tuner"></a></p> <div><h2>Highlights</h2><a href="#highlights"></a></div>
+<div><h3>Sound Design</h3><a href="#sound-design"></a></div>
+<ul>
+<li><strong>58 built-in instruments</strong> — oscillators, FM synthesis, physical models, drums, classic synths, samplers, and more</li>
+<li><strong>39 built-in effects</strong> — delays, reverbs, compressors, modulation, distortion, granular, spectral, and more</li>
+<li><strong>Semi-modular signal chain</strong> — per-track source → LFO → effects → EQ → mixer with bus routing</li>
+<li><strong>Powered by SuperCollider</strong> — professional-grade DSP with custom synthdefs</li>
+</ul>
+<div><h3>Sequencing</h3><a href="#sequencing"></a></div>
+<ul>
+<li><strong>Piano roll and drum sequencer</strong> — per-note velocity and probability, variable grid resolution, groove and humanize</li>
+<li><strong>Automation</strong> — automate any parameter with drawable lanes</li>
+<li><strong>Arpeggiator</strong> — arpeggiate chords with configurable patterns</li>
+</ul>
+<div><h3>Studio</h3><a href="#studio"></a></div>
+<ul>
+<li><strong>Mixer with up to 128 buses</strong> — per-track levels, pan, mute/solo, sends, and master control</li>
+<li><strong>Real-time LAN collaboration</strong> — multiple players on a shared session over your local network</li>
+<li><strong>Record and export</strong> — capture your session and export to WAV</li>
+<li><strong>SQLite project files</strong> — projects are plain SQLite databases you can query, edit, and share with standard tools (patch export WIP)</li>
+</ul>
+<div><h3>Does your DAW have</h3><a href="#does-your-daw-have"></a></div>
+<ul>
+<li><strong>Stradella bass keyboard</strong> — full accordion layout with automatic chord voicing across a circle-of-fifths grid</li>
+<li><strong>Just intonation</strong> — 5 tuning systems (12-TET, scale JI, chord JI, adaptive JI, global JI) with 3 JI flavors (5-limit, 7-limit, Pythagorean)</li>
+<li><strong>Per-pad groove</strong> — independent swing, timing offset, humanization, and time signature per pad</li>
+<li><strong>Generative composition</strong> — Euclidean rhythms, Markov chains, and L-systems with macro controls for density, chaos, energy, and motion</li>
+<li><strong>Harmonic Snap</strong> — notes automatically quantize to your key and scale</li>
+</ul>
+<div><h3>Accessible REPL</h3><a href="#accessible-repl"></a></div>
+<p>TUIs can be an accessibility nightmare. Imbolc ships a full text-mode REPL with <strong>236 commands</strong> across 16 domains — every action available in the UI is available as a typed command.</p>
+<ul>
+<li><strong>Screen-reader friendly</strong> — plain stdin/stdout, no visual UI required</li>
+<li><strong>Tab completion</strong> — context-aware completion with inline hints</li>
+<li><strong>Readline Editing</strong> - C-a, C-e, etc</li>
+<li><strong>Built-in help</strong> — <pre><code>help</code></pre>, <pre><code>help &lt;group&gt;</code></pre>, <pre><code>help &lt;group&gt; &lt;command&gt;</code></pre></li>
+<li><strong>Scriptable</strong> — pipe a text file in for automated or headless music production</li>
+<li><strong>Works anywhere</strong> — over SSH, in containers, on headless servers</li>
+</ul>
+<div><h2>Support the Project</h2><a href="#support-the-project"></a></div>
+<p>Imbolc is built by one person and given away for free. Sponsorship keeps development going — new instruments, new effects, and new features — while keeping Imbolc open source and $0 for everyone.</p> <div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<ol>
+<li>Install <a href="https://rustup.rs/">Rust</a> and <a href="https://supercollider.github.io/">SuperCollider</a> (<pre><code>scsynth</code></pre> must be on your PATH).</li>
+<li>Compile SynthDefs: <pre><code>imbolc-core/bin/compile-synthdefs</code></pre></li>
+<li>Run: <pre><code>cargo run -p imbolc-ui --release</code></pre></li>
+</ol>
+<p><strong>Terminal:</strong> Works in any modern terminal. For the best experience (enhanced piano keyboard), use <a href="https://sw.kovidgoyal.net/kitty/">Kitty</a> or <a href="https://ghostty.org/">Ghostty</a>.</p>
+<div><h2>Keybindings</h2><a href="#keybindings"></a></div>
+<ul>
+<li>F1 - Create instruments and groups</li>
+<li>F2 - Edit patterns</li>
+<li>F3 - Track View</li>
+<li>F4 - Mixer</li>
+<li>F12 - Server settings</li>
+<li>? - Show keybindings</li>
+<li>: - Invoke</li>
+<li>; - Repl</li>
+<li>^n - New Instrument</li>
+<li>^N - Add new instrument to current layer group</li>
+<li>^m - Midi settings</li>
+<li>1-0 - Select Instrument</li>
+<li>/ - Piano mode</li>
+<li>^q - Quit</li>
+</ul>
+<div><h2>Community</h2><a href="#community"></a></div>
+<ul>
+<li><a href="https://github.com/mohsenil85/imbolc/discussions">GitHub Discussions</a> — feature requests and ideas</li>
+<li>Discord — chat, help, share music <em>(coming soon)</em></li>
+</ul>
+<div><h2>Documentation</h2><a href="#documentation"></a></div>
+<ul>
+<li><a href="/mohsenil85/imbolc/blob/main/docs/README.md">Documentation</a></li>
+<li><a href="/mohsenil85/imbolc/blob/main/docs/how-to/installation.md">Installation Guide</a></li>
+<li><a href="/mohsenil85/imbolc/blob/main/docs/tutorials/first-session.md">First Session Tutorial</a></li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>This project is licensed under the GNU GPL v3.0. See <a href="/mohsenil85/imbolc/blob/main/LICENSE">LICENSE</a> for details.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

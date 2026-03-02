@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Dumper vos disquettes : KryoFlux et les alternatives</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Dumper vos disquettes : KryoFlux et les alternatives</h1>
+  <div class="metadata">
+    Source: Programmez | Date: 2/26/2026 1:15:52 PM | <a href="https://www.programmez.com/actualites/dumper-vos-disquettes-kryoflux-et-les-alternatives-39066" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <p><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p></p><p>Les disquettes sont fragiles, surtout les 5 ¼ et les 8’’, et on peut rapidement les altérer, voire les rendre illisibles. Elles sont sensibles à l’humidité, à la chaleur, aux torsions, si on touche trop fortement le disque magnétique, aux aimants, etc. Bref, la question se pose : récupérer le contenu des disquettes pour le sauvegarder, voire recréer de nouvelles disquettes ?</p><p>Il existe des outils matériels pour connecter les vieux lecteurs, lire les disquettes et récupérer puis sauvegarder les fichiers contenus, quand cela est possible. Si la disquette est trop endommagée, pas de miracle. Dans le cas contraire, on pourrait sans doute faire quelque chose. Un des outils les plus connus est la carte KryoFlux (hardware + logiciel).</p><p>Le principe est très simple : lire le bas niveau des disquettes pour récupérer le maximum de données. KryoFlux est la partie matérielle. Seule, elle ne permet pas grand-chose. Il faut la coupler avec un logiciel dédié.</p><p><img src="/sites/default/files/styles/taille-maxi/public/images_actus/kryo2.jpg?itok=oJW_pub0" width="632" height="402" /></p><p>Attention, il ne faut pas confondre ces cartes avec les émulateurs de disquettes / disques durs. </p><p><b>On connecte !</b></p><p>KryoFlux, ou toute autre alternative, permet de connecter un lecteur via le connecteur standard 34 broches que l’on retrouve dans de nombreux lecteurs 5 ¼ et 3 ½ ; certains lecteurs 8’’ peuvent également fonctionner. L’alimentation est fournie par la carte, mais vous pouvez aussi alimenter le lecteur par une alimentation externe. Le tout est connecté à un PC ou un Mac via l’USB.</p><p>Côté PC, il faut utiliser un logiciel spécifique pour lire / écrire (si la fonction est disponible) les données de la disquette. Un disque magnétique en mauvais état sera difficile à récupérer, donc il y aura moins de chances de créer une image exploitable. Il faut aussi se méfier des disquettes protégées par logiciel ou par matériel. Là encore, il est difficile de faire sauter ces protections. C’est notamment le cas pour certains modèles Heathkit / Zenith, certains Apricot ou encore les disquettes Prologue.</p><p>Vérifiez aussi que le matériel choisi supporte le format des disquettes à récupérer. La liste des formats n’est pas identique selon les cartes. Vu le prix de certaines cartes, mieux vaut vérifier.</p><p>L’outil KryoFlux Host est disponible sur macOS, Windows et AmigaOS 4. Quel que soit l’outil, veillez à utiliser les dernières versions pour corriger les bugs et bénéficier des nouvelles fonctionnalités. Idem pour les autres cartes. Les logiciels sont a minima disponibles sur Windows.</p><p>Le logiciel est l’élément crucial pour pouvoir dumper convenablement les disquettes, générer les fichiers bruts (raw), puis recréer les disquettes.</p><p>Les +</p><p>- La référence du marché</p><p>- La qualité du logiciel </p><p>Les –</p><p>- Le prix</p><p>- La complexité du paramétrage</p><p>- Des formats pas toujours supportés</p><p><b>ADF-COPY</b></p><p>Cette petite carte est basée sur la Teensy 3.2. Elle permet de lire, récupérer et écrire des disquettes Amiga. Il est possible de mettre à niveau la carte en flashant le firmware du MCU.</p><p><img src="/sites/default/files/styles/taille-maxi/public/images_actus/kryo3.jpg?itok=9-7Uy1qO" width="603" height="449" /></p><p>Nous avons eu l’occasion de la tester. Elle se dédie aux machines Amiga et elle remplit plutôt bien son rôle.</p><p>Les +</p><p>- Le prix</p><p>- Relativement simple à utiliser</p><p>Les –</p><p>- Dédiée à l’Amiga</p><p><b>SUPERCARD PRO</b></p><p>La SuperCard Pro est une des références du marché. Elle est vendue au même prix qu’une KryoFlux, ou un peu moins chère. Elle supporte les lecteurs 5 ¼ et 3 ½ ainsi que de multiples ordinateurs. La mise en place est rapide : câble USB, alimentation du lecteur, installation du logiciel, connexion du lecteur de disquette.</p><p><img src="/sites/default/files/styles/taille-maxi/public/images_actus/kryo1.jpg?itok=QzQ0bH3T" width="632" height="474" /></p><p>Le logiciel est plutôt pratique et rapide à utiliser. On apprécie beaucoup la rapidité de prise en main et les diverses configurations selon le format de la disquette. Nous avons tout de même eu des soucis avec certains lecteurs 3 ½ qui fonctionnaient sur les anciennes machines mais pas avec la SuperCard Pro. Nous avons aussi bricolé un câble d’alimentation carte–lecteur. Le gros manque de la carte est l’absence de connecteur Molex.</p><p>Utiliser l’outil HxC Floppy Emulator pour les images brutes et les convertir… ou inversement plutôt.</p><p>Les +</p><p>- Une alternative à la Kryoflux</p><p>- Le logiciel</p><p>Les –</p><p>- Le prix</p><p>- Support hardware parfois délicat</p><p>- Absence d’un connecteur Molex</p><p><b>GreaseWeazle</b></p><p>C’est actuellement une des cartes les plus utilisées. Beaucoup moins chère que la KryoFlux, le hardware évolue assez régulièrement, tout comme le logiciel Host Tools, disponible sur Windows, macOS et Linux. La carte est disponible seule à moins de 30 €. Selon le site d’achat, vous pouvez ajouter les nappes Amiga / Atari ST / PC, le câble d’alimentation Amiga / Atari / PC.</p><p><img src="/sites/default/files/styles/taille-maxi/public/images_actus/kryo4.png?itok=bjk46Tsf" width="632" height="332" /></p><p>La dernière version disponible est la v4.1. Elle permet toujours de lire et d’écrire des disquettes. Elle supporte de nombreux ordinateurs et formats de disquettes (3’’, 3 ½, 5 ¼, 8’’).</p><p>Bonus : la carte supporte l’émulateur WinUAE : super pratique.</p><p>Les +</p><p>- Le prix</p><p>- Le logiciel</p><p>- Les formats supportés</p><p><b>Lecture ou bidirectionnel</b></p><p>L’un des intérêts de ces matériels est de pouvoir lire et écrire de nouvelles disquettes. Attention : tous les modèles ne sont pas bidirectionnels.</p><p><b>Acheter ou ne pas acheter ?</b></p><p>C’est une question qui revient souvent lorsqu’il s’agit de matériel moderne pour nos anciennes machines. Il faut en avoir une réelle utilité et disposer d’un nombre suffisant de disquettes à préserver ou à créer.</p><p> </p></div></div></div><div class="field field-name-field-categorie-actus field-type-taxonomy-term-reference field-label-inline clearfix"><div class="field-label">Catégorie actualité:&nbsp;</div><div class="field-items"><div class="field-item even"><a href="/technosaures" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">Technosaures</a></div></div></div><div class="field field-name-field-mots-cles-actualite field-type-taxonomy-term-reference field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/actualites/kryoflux">Kryoflux</a>, <a href="/actualites/greaseweazle">GreaseWeazle</a></div></div></div><div class="field field-name-field-image-actualit-amp field-type-image field-label-above"><div class="field-label">Image actualité AMP:&nbsp;</div><div class="field-items"><div class="field-item even"><img typeof="foaf:Image" src="https://www.programmez.com/sites/default/files/default_images/image-amp-1_0.png" alt="" /></div></div></div></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - johnkf5-ops/cecil-protocol: Give AI a self. Open source memory and identity protocol.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - johnkf5-ops/cecil-protocol: Give AI a self. Open source memory and identity protocol.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 4:21:23 AM | <a href="https://github.com/johnkf5-ops/cecil-protocol" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>Cecil</h1><a href="#cecil"></a></div>
+<p><strong>Give AI a self.</strong></p>
+<p>Cecil is an open source memory and identity protocol for AI. Not an app — infrastructure. The foundational layer that gives any AI model persistent memory, pattern recognition, and a continuous sense of context over time.</p>
+<p>Every AI currently forgets you the moment you close the tab. Not because the models aren't powerful enough — because there's no persistent self underneath them. Cecil fixes that.</p>
+<section> <div> <div> <pre>flowchart TB subgraph CONVERSATION["During Conversation"] Q["User Query"] --&gt; MA["Meta Agent"] MA --&gt; IW["Assembles Identity Window\n20-50k tokens of signal"] IW --&gt; LLM["Any LLM"] LLM --&gt; R["Response"] end subgraph MEMORY["Memory Store (Qdrant)"] VEC["Vector Embeddings\nSemantic Search"] MD["Markdown Mirror\nHuman-Readable"] end subgraph IDENTITY["Identity"] SEED["seed.md\nBaseline (immutable)"] NAR["narrative.md\nEvolving patterns"] DEL["delta.md\nDrift detection"] end subgraph OBSERVER["After Session — Observer"] LP["Light Pass\nEmbed conversation\n(0 LLM calls)"] FS["Full Synthesis\nDetect patterns → Update narrative → Compute delta\n(3 LLM calls every N sessions)"] end MA -. retrieves .-&gt; VEC MA -. reads .-&gt; IDENTITY R --&gt; LP LP --&gt; VEC LP --&gt; MD FS --&gt; NAR FS --&gt; DEL FS -. reads .-&gt; VEC style CONVERSATION fill:#1a1a2e,stroke:#4a4a8a,color:#fff style MEMORY fill:#16213e,stroke:#4a4a8a,color:#fff style IDENTITY fill:#0f3460,stroke:#4a4a8a,color:#fff style OBSERVER fill:#1a1a2e,stroke:#4a4a8a,color:#fff
+</pre> </div> </div> <span> <span> <span>Loading</span>
+</span> </span>
+</section> <hr>
+<div><h2>What Makes This Different</h2><a href="#what-makes-this-different"></a></div>
+<p>Most AI memory solutions stuff everything into a context window. That creates noise, not memory. The model gets lost, reasoning degrades, hallucinations increase.</p>
+<p>Cecil distributes memory across three layers:</p>
+<ol>
+<li>
+<p><strong>Memory Store</strong> — Qdrant vector database running locally. Every conversation, observation, and data point gets embedded and stored. Retrieval is semantic, not keyword-based. Fast and free — no LLM calls.</p>
+</li>
+<li>
+<p><strong>Observer</strong> — Runs after sessions. Detects patterns, contradictions, and evolution over time. Compresses raw memory into insight. Light pass every session (zero LLM calls), full synthesis every 3-5 sessions (3 LLM calls).</p>
+</li>
+<li>
+<p><strong>Meta Agent</strong> — Assembles a distilled identity window before every conversation. 20-50k tokens of signal, not noise. The AI doesn't get your entire history — it gets the compressed understanding of who you are and what matters right now.</p>
+</li>
+</ol>
+<p>The result: an AI that doesn't just remember what you said — it understands how you think. And it evolves.</p>
+<hr>
+<div><h2>It Evolves</h2><a href="#it-evolves"></a></div>
+<p>Cecil isn't static memory. It's a feedback loop.</p>
+<p>The observer doesn't just store data — it watches for <strong>drift</strong>. Every few sessions, it compares what was configured (the seed) against what it's actually seeing (the patterns). The delta between those two is where the insight lives.</p>
+<p>This works the same way whether Cecil is observing a person, an agent, or itself.</p>
+<ul>
+<li>The <strong>seed</strong> is the initial configuration — what the subject was set up to be.</li>
+<li>The <strong>narrative</strong> is the evolving understanding — what the patterns actually show.</li>
+<li>The <strong>delta</strong> is the drift — where reality diverges from intent.</li>
+</ul>
+<p>If Cecil is powering an agent, and that agent starts behaving differently than configured — responding differently, prioritizing different things, drifting from its original purpose — the observer catches it. The narrative updates. The delta surfaces the gap. The agent can then use that self-awareness to correct course or lean into the evolution.</p>
+<p>This is what makes it alive in a meaningful sense. It's not just remembering — it's noticing its own patterns, detecting its own drift, and building an evolving model of what it's becoming. The observer doesn't care if it's watching a human or watching itself. It just looks for the gap between baseline and reality.</p>
+<hr>
+<div><h2>The Real Power: Ingestion</h2><a href="#the-real-power-ingestion"></a></div>
+<p>The onboarding flow asks 5 seed questions to get started. That's the cold start. It works, but it's shallow.</p>
+<p>The real power is feeding Cecil raw content and letting the observer synthesize it:</p>
+<ul>
+<li><strong>Podcasts</strong> — 44 hours of unfiltered conversation transcribed and embedded. Cecil learns how you argue, what you believe, your recurring themes, your contradictions. Richer than any profile page.</li>
+<li><strong>Blog posts, journal entries, writing</strong> — Feed it your words, it learns your voice.</li>
+<li><strong>Code repositories</strong> — Feed it your codebase, it learns your architecture, patterns, and failure modes.</li>
+<li><strong>Chat history</strong> — Feed it Slack, Discord, or support logs. It learns group dynamics, communication patterns, escalation triggers.</li>
+<li><strong>Research</strong> — Feed it papers, transcripts, documentation. It synthesizes themes across sources.</li>
+</ul>
+<p>The protocol is the same every time: <strong>Ingest → Embed → Observe → Synthesize → Retrieve.</strong> What changes is what you feed it and what you ask it to remember.</p>
+<p>The included podcast pipeline (</p><pre><code>scripts/transcribe-podcasts.py</code></pre>) is one example. Point it at an RSS feed, it downloads, transcribes with faster-whisper on GPU, chunks the transcripts, embeds them into Qdrant, and runs synthesis. You can build the same pipeline for any content source.<p></p>
+<hr>
+<div><h2>Use Cases</h2><a href="#use-cases"></a></div>
+<p>Cecil is not just a "get to know you" tool. The memory + observation + synthesis loop is a general-purpose pattern:</p>
+<ul>
+<li><strong>Personal AI</strong> — An AI that actually knows you. References things you said months ago. Notices when you contradict yourself. Evolves its understanding as you do.</li>
+<li><strong>Agent memory</strong> — Give any AI agent persistent context. A Discord bot that remembers every conversation. A coding assistant that learns your codebase over time.</li>
+<li><strong>Team of agents</strong> — Spin up multiple Cecil instances with different memory pools. Each one observes different data, develops different expertise, maintains its own identity.</li>
+<li><strong>Moderation</strong> — Feed it channel history. It learns community dynamics, detects pattern shifts, understands context that keyword filters miss.</li>
+<li><strong>Autonomous workflows</strong> — An agent that runs recursive tasks and learns from each iteration. It doesn't just execute — it observes what worked, what failed, and adapts.</li>
+</ul>
+<hr>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>User query → Meta Agent → assembles identity window from memory ↓ Observer layer → retrieves relevant vectors from Qdrant ↓ Memory Store → semantic search across all embedded content ↑ After session → Observer embeds new data, detects patterns, updates narrative + delta every N sessions
+</code></pre></div>
+<p>All memory is dual-stored:</p>
+<ul>
+<li><strong>Vector embeddings</strong> in Qdrant (fast semantic retrieval)</li>
+<li><strong>Human-readable markdown</strong> in <pre><code>/memory/</code></pre> (inspectable, editable, deletable)</li>
+</ul>
+<p>Identity lives in three files:</p>
+<ul>
+<li><pre><code>identity/seed.md</code></pre> — Baseline configuration (immutable once set)</li>
+<li><pre><code>identity/narrative.md</code></pre> — Evolving understanding based on observed patterns (updated by observer)</li>
+<li><pre><code>identity/delta.md</code></pre> — Drift between baseline and reality (updated by observer)</li>
+</ul>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
+<ul>
+<li>Node.js 18+</li>
+<li>Docker (for Qdrant)</li>
+<li>Any OpenAI-compatible LLM (local or cloud)</li>
+</ul>
+<div><h3>Setup</h3><a href="#setup"></a></div>
+<div><pre><span><span>#</span> Clone</span>
+git clone https://github.com/johnkf5-ops/cecil-protocol.git
+<span>cd</span> cecil-protocol <span><span>#</span> Start Qdrant</span>
+docker compose up -d <span><span>#</span> Install dependencies</span>
+npm install <span><span>#</span> Configure your LLM endpoint</span>
+cp .env.example .env
+<span><span>#</span> Edit .env — set LLM_BASE_URL and MODEL for your provider</span> <span><span>#</span> Run</span>
+npm run dev</pre></div>
+<p>Open </p><pre><code>http://localhost:3000</code></pre> — complete the onboarding, then start chatting.<p></p>
+<div><h3>Feed It Content (Optional)</h3><a href="#feed-it-content-optional"></a></div>
+<p>The onboarding gives you a seed. To go deeper, feed Cecil real content:</p>
+<div><pre><span><span>#</span> Example: Podcast transcription pipeline</span>
+pip install faster-whisper requests feedparser <span><span>#</span> Edit scripts/transcribe-podcasts.py — set your RSS feed URL</span>
+python scripts/transcribe-podcasts.py <span><span>#</span> Ingest transcripts into Cecil</span>
+curl -X POST http://localhost:3000/api/ingest-podcasts</pre></div>
+<p>Build your own ingestion pipelines for any content source. The pattern:</p>
+<ol>
+<li>Get your content into text</li>
+<li>Chunk it into meaningful segments</li>
+<li>Use <pre><code>embedBatch()</code></pre> from <pre><code>cecil/embedder.ts</code></pre> to store in Qdrant</li>
+<li>Run synthesis via <pre><code>cecil/podcast-observer.ts</code></pre> pattern to extract insights</li>
+</ol>
+<div><h3>Customizing Onboarding</h3><a href="#customizing-onboarding"></a></div>
+<p>The default onboarding asks 5 seed questions. You can customize these in </p><pre><code>onboarding/questions.ts</code></pre> to ask whatever matters for your use case. The seed is just a starting point — the observer will build the real understanding over time from actual interactions and ingested content.<p></p>
+<hr>
+<div><h2>Tech Stack</h2><a href="#tech-stack"></a></div>
+<ul>
+<li><strong>Next.js</strong> — Frontend and API routes</li>
+<li><strong>TypeScript</strong> — Everything</li>
+<li><strong>Qdrant</strong> — Vector database, local via Docker</li>
+<li><strong>FastEmbed</strong> — Local embeddings (all-MiniLM-L6-v2, 384 dims, zero API cost)</li>
+<li><strong>Any LLM</strong> — OpenAI-compatible endpoint (LM Studio, Ollama, Claude, GPT, etc.)</li>
+<li><strong>Markdown</strong> — Human-readable memory mirror</li>
+</ul>
+<hr>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>cecil/ types.ts — Shared types (MemoryType, SearchResult, etc.) embedder.ts — FastEmbed + Qdrant writes retriever.ts — Semantic search against Qdrant observer.ts — Post-session pattern detection + synthesis meta.ts — Identity window assembly + chat llm.ts — LLM wrapper (any OpenAI-compatible endpoint) podcast-ingest.ts — Podcast transcript ingestion podcast-observer.ts — Podcast-specific synthesis onboarding/ questions.ts — Seed questions (customizable) seed-builder.ts — Converts answers → seed.md + embeddings app/api/ chat/route.ts — Chat endpoint observe/route.ts — Observer endpoint onboard/route.ts — Onboarding endpoint status/route.ts — Status check ingest-podcasts/route.ts — Podcast ingestion + synthesis scripts/ transcribe-podcasts.py — Download + transcribe podcasts (faster-whisper/CUDA) identity/ — User identity documents (gitignored)
+memory/ — Human-readable memory mirror (gitignored)
+</code></pre></div>
+<hr>
+<div><h2>Design Principles</h2><a href="#design-principles"></a></div>
+<ol>
+<li><strong>Local first.</strong> Qdrant runs locally. No cloud dependency for memory.</li>
+<li><strong>Bring your own model.</strong> Any OpenAI-compatible LLM works. Local or cloud.</li>
+<li><strong>Markdown mirror.</strong> Every memory has a human-readable version. Inspect, edit, delete.</li>
+<li><strong>Observer is post-session.</strong> No LLM calls during conversation. Memory ops happen after.</li>
+<li><strong>Compression over accumulation.</strong> The identity window is 20-50k tokens of signal, not your entire history.</li>
+<li><strong>The protocol is the product.</strong> Cecil is infrastructure, not an app. Plug it into anything.</li>
+</ol>
+<hr>
+<div><h2>Disclaimer</h2><a href="#disclaimer"></a></div>
+<p>Cecil is provided as-is with no warranty of any kind. This is experimental, open source infrastructure — not a hosted product. You are solely responsible for how you use it, what data you feed it, and what you do with the output. The authors and contributors are not liable for any damages, data loss, or unintended behavior arising from the use of this software. Use at your own risk.</p>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Apache 2.0 — see <a href="/johnkf5-ops/cecil-protocol/blob/main/LICENSE">LICENSE</a> for full text.</p>
+<p>Copyright 2026 Crash Override LLC</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

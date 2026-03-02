@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How I Track EOL Dates and CVEs in My README With One Badge</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How I Track EOL Dates and CVEs in My README With One Badge</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 8:25:07 PM | <a href="https://dev.to/matheus_releaserun/how-i-track-eol-dates-and-cves-in-my-readme-with-one-badge-13oe" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/matheus_releaserun"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3758534%2Ffda69e43-38b0-48a9-8f55-71a14b1c7f3b.png" alt="Matheus"></a> </p> </div><div> <p>Every README has badges. Build passing. Coverage 94%. License MIT.</p> <p>None of them answer the question that actually matters: <strong>is this project running on supported versions?</strong></p> <p>You can have 100% test coverage on a project pinned to Node 16 (EOL since September 2025). The CI badge says "healthy." The runtime says otherwise.</p> <p>I wanted a badge that shows version health — not build status, not coverage, but whether the thing you're depending on is still alive. So I built one.</p> <h2> <a name="one-line-of-markdown" href="#one-line-of-markdown"> </a> One line of markdown
+</h2> <div>
+<pre><code><span>![</span><span>Python Health</span><span>](</span><span>https://img.releaserun.com/badge/health/python.svg</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That renders a live badge showing the current Python health grade:</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fimg.releaserun.com%2Fbadge%2Fhealth%2Fpython.svg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fimg.releaserun.com%2Fbadge%2Fhealth%2Fpython.svg" alt="Python Health"></a></p> <p>It auto-updates. No tokens, no config, no API keys. Just an image URL.</p> <h2> <a name="four-badge-types" href="#four-badge-types"> </a> Four badge types
+</h2> <div><table>
+<thead>
+<tr>
+<th>What you need</th>
+<th>Badge</th>
+<th>Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Overall health grade</td>
+<td><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fimg.releaserun.com%2Fbadge%2Fhealth%2Fkubernetes.svg"></td>
+<td><code>![](https://img.releaserun.com/badge/health/kubernetes.svg)</code></td>
+</tr>
+<tr>
+<td>EOL countdown</td>
+<td><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fimg.releaserun.com%2Fbadge%2Feol%2Fnodejs%2F20.svg"></td>
+<td><code>![](https://img.releaserun.com/badge/eol/nodejs/20.svg)</code></td>
+</tr>
+<tr>
+<td>Known CVEs</td>
+<td><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fimg.releaserun.com%2Fbadge%2Fcve%2Fkubernetes%2F1.34.svg"></td>
+<td><code>![](https://img.releaserun.com/badge/cve/kubernetes/1.34.svg)</code></td>
+</tr>
+<tr>
+<td>Latest version</td>
+<td><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fimg.releaserun.com%2Fbadge%2Fv%2Fgo.svg"></td>
+<td><code>![](https://img.releaserun.com/badge/v/go.svg)</code></td>
+</tr>
+</tbody>
+</table></div> <p><strong>Health grades</strong> run A through F. The scoring: 35% freshness (how current is the version), 35% security (known CVEs), 30% EOL status (support timeline). A critical unfixed CVE caps you at D. Anything past EOL for 1+ year forces an F.</p> <p><strong>URL pattern:</strong> <code>https://img.releaserun.com/badge/{type}/{product}[/{version}].svg</code></p> <p>300+ products supported — everything on <a href="https://endoflife.date/" target="_blank">endoflife.date</a>: Python, Node.js, Go, Rust, Kubernetes, Docker, PostgreSQL, React, TypeScript, Ruby, PHP, .NET, and basically every runtime and infrastructure tool in a production stack.</p> <h2> <a name="the-why-should-i-care-section" href="#the-why-should-i-care-section"> </a> The "why should I care" section
+</h2> <p>Here's the scenario that prompted this.</p> <p>I was reviewing a PR on a project that had a green CI, 87% coverage, active contributors — looked great. Then I checked the Dockerfile: <code>FROM node:16-alpine</code>. Node 16 hit EOL in September 2025. No CVE scanning was going to flag that because the image itself wasn't vulnerable — the <em>runtime lifecycle</em> was the problem.</p> <p>If the README had shown <code>![Node.js 16 EOL](https://img.releaserun.com/badge/eol/nodejs/16.svg)</code>, anyone opening that repo would've seen the red badge immediately.</p> <p>Version currency is a signal. Badges make signals visible.</p> <h2> <a name="set-it-up-in-30-seconds" href="#set-it-up-in-30-seconds"> </a> Set it up in 30 seconds
+</h2> <h3> <a name="option-1-copypaste-simplest" href="#option-1-copypaste-simplest"> </a> Option 1: Copy-paste (simplest)
+</h3> <p>Add markers to your README:<br>
+</p> <div>
+<pre><code><span>## Version Health</span> <span>&lt;!-- releaserun-badges-start --&gt;</span>
+<span>[</span><span>![Python</span><span>](</span><span>https://img.releaserun.com/badge/health/python/3.12.svg</span><span>)</span>](https://releaserun.com/badges/python/)
+<span>[</span><span>![Node.js</span><span>](</span><span>https://img.releaserun.com/badge/eol/nodejs/20.svg</span><span>)</span>](https://releaserun.com/badges/nodejs/)
+<span>[</span><span>![K8s</span><span>](</span><span>https://img.releaserun.com/badge/cve/kubernetes/1.34.svg</span><span>)</span>](https://releaserun.com/badges/kubernetes/)
+<span>&lt;!-- releaserun-badges-end --&gt;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Wrapping in a link is optional but useful — it takes people to a landing page with full version timelines, embed snippets, and context on what the grades mean.</p> <h3> <a name="option-2-github-action-autoupdating" href="#option-2-github-action-autoupdating"> </a> Option 2: GitHub Action (auto-updating)
+</h3> <div>
+<pre><code><span>name</span><span>:</span> <span>Update Badges</span>
+<span>on</span><span>:</span> <span>schedule</span><span>:</span> <span>-</span> <span>cron</span><span>:</span> <span>'</span><span>0</span><span> </span><span>6</span><span> </span><span>*</span><span> </span><span>*</span><span> </span><span>1'</span> <span># Weekly Monday</span> <span>workflow_dispatch</span><span>:</span> <span>permissions</span><span>:</span> <span>contents</span><span>:</span> <span>write</span> <span>pull-requests</span><span>:</span> <span>write</span> <span>jobs</span><span>:</span> <span>badges</span><span>:</span> <span>runs-on</span><span>:</span> <span>ubuntu-latest</span> <span>steps</span><span>:</span> <span>-</span> <span>uses</span><span>:</span> <span>actions/checkout@v4</span> <span>-</span> <span>uses</span><span>:</span> <span>Matheus-RR/badges@v1</span> <span>with</span><span>:</span> <span>products</span><span>:</span> <span>|</span> <span>python:3.12</span> <span>node:20</span> <span>kubernetes:1.34</span> <span>badge-types</span><span>:</span> <span>health,eol,cve</span> <span>github-token</span><span>:</span> <span>${{ secrets.GITHUB_TOKEN }}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Why a PR instead of direct commit?</strong> Because badge content changes (a version goes EOL, a CVE is published), and you should see what changed before it's in your main branch.</p> <h3> <a name="option-3-interactive-builder" href="#option-3-interactive-builder"> </a> Option 3: Interactive Builder
+</h3> <p>Don't want to type URLs? The <a href="https://releaserun.com/badges/builder/" target="_blank">Badge Builder</a> lets you search 300+ products, pick badge types, preview them live, and copy the embed code in Markdown, HTML, reStructuredText, or AsciiDoc.</p> <h2> <a name="not-shieldsio" href="#not-shieldsio"> </a> Not shields.io
+</h2> <p>People ask this, so: shields.io does static labels and CI metrics (build status, coverage, npm version). Great tool, different job.</p> <p>ReleaseRun badges show <strong>live version intelligence</strong>: health grades that update as versions age, EOL countdowns that tick down in real-time, CVE counts that reflect the current threat landscape. The data source is different, the use case is different.</p> <p>Use both. shields.io for your CI pipeline status. ReleaseRun for your dependency health.</p> <h2> <a name="customize-it" href="#customize-it"> </a> Customize it
+</h2> <p>Every badge accepts query params:<br>
+</p> <div>
+<pre><code>https://img.releaserun.com/badge/health/python.svg?style=flat-square&amp;label=runtime
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <div><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>style</code></td>
+<td>
+<code>flat</code> (default) or <code>flat-square</code>
+</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>Custom left-side text</td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td>Override right-side color</td>
+</tr>
+<tr>
+<td><code>labelColor</code></td>
+<td>Override left-side color</td>
+</tr>
+</tbody>
+</table></div> <h2> <a name="how-it-works-under-the-hood" href="#how-it-works-under-the-hood"> </a> How it works under the hood
+</h2> <p>The service queries <a href="https://endoflife.date/" target="_blank">endoflife.date</a> for version lifecycle data, enriches it with CVE data from NVD, computes health grades, and renders SVG badges on the fly via <a href="https://github.com/google/pybadges" target="_blank">pybadges</a>.</p> <p>Four cache layers keep it fast:</p> <ul>
+<li>In-memory SVG cache (2 min) → sub-50ms for repeat requests</li>
+<li>Data cache (5 min) → limits upstream API calls</li>
+<li>HTTP cache headers → browser + CDN caching</li>
+<li>Cloudflare CDN → global edge</li>
+</ul> <p>Badges are never more than 5 minutes stale.</p> <h2> <a name="get-started" href="#get-started"> </a> Get started
+</h2> <p>Pick any product. Copy one line. Push.<br>
+</p> <div>
+<pre><code><span>![](</span><span>https://img.releaserun.com/badge/health/python.svg</span><span>)</span>
+<span>![](</span><span>https://img.releaserun.com/badge/eol/nodejs/20.svg</span><span>)</span>
+<span>![](</span><span>https://img.releaserun.com/badge/cve/kubernetes/1.34.svg</span><span>)</span>
+<span>![](</span><span>https://img.releaserun.com/badge/v/docker-engine.svg</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Full docs and every supported product: <a href="https://releaserun.com/badges/" target="_blank">releaserun.com/badges/</a></p> <p>GitHub Action: <a href="https://github.com/Matheus-RR/badges" target="_blank">Matheus-RR/badges</a></p> <p>Badge Builder: <a href="https://releaserun.com/badges/builder/" target="_blank">releaserun.com/badges/builder/</a></p> <hr> <p><em><a href="https://releaserun.com/" target="_blank">ReleaseRun</a> tracks software releases across 300+ technologies. The badge service is free.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

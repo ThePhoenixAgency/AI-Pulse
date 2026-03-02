@@ -505,7 +505,7 @@ Long captions provide a richer supervision signal: beyond prompt adherence, ther
 <p>Long captions are a strong training-time accelerator, but we still want the model to behave well on short prompts because that is how people actually use these systems. A simple workaround is to end training with a short fine-tuning stage on a mixture of long and short captions. That keeps the benefits of rich supervision early, while teaching the model to stay robust when conditioning is sparse.</p>
 <h3> <a href="#bootstrapping-with-synthetic-images"> </a> <span> Bootstrapping With Synthetic Images </span>
 </h3>
-<p>Another data-related research question we explore is whether a low-cost synthetic corpus can accelerate early training compared to a real corpus of similar size. For this benchmark, we trained a model on a dataset of <strong>real images collected from <a href="https://www.pexels.com/">Pexels</a></strong> and compare it with our Baseline which was trained on synthetic data generated with MidjourneyV6, both of which have around 1M images. We evaluated both runs against the same <strong><a href="https://unsplash.com/">Unsplash</a></strong> reference set, composed exclusively of real images.
+<p>Another data-related research question we explore is whether a low-cost synthetic corpus can accelerate early training compared to a real corpus of similar size. For this benchmark, we trained a model on a dataset of <strong>real images collected from <a href="https://www.pexels.com/">Pexels</a></strong> and compared it with our Baseline which was trained on synthetic data generated with MidjourneyV6, both of which have around 1M images. We evaluated both runs against the same <strong><a href="https://unsplash.com/">Unsplash</a></strong> reference set, composed exclusively of real images.
 <a href="https://cdn-uploads.huggingface.co/production/uploads/68e529af513e724edd8702f6/tqlQWXQJzA7HqXzBy-0B_.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/68e529af513e724edd8702f6/tqlQWXQJzA7HqXzBy-0B_.png"></a></p>
 <div> <table> <thead><tr>
 <th>Method</th>
@@ -588,7 +588,7 @@ These factors are easily overlooked and in our case they had a clear impact on c
 <h3> <a href="#muon-optimizer"> </a> <span> Muon Optimizer </span>
 </h3>
 <p>We generally default to AdamW for our benchmarks because it’s predictable and easy to compare across runs. However, lately, we have seen a renewed interest in optimizers that try to behave more like a good preconditioner without the full overhead of second-order methods. One recent example is <strong>Muon</strong> (<a href="https://kellerjordan.github.io/posts/muon/">Jordan et al., 2024</a>), which, at a high level, tries to improve optimization by applying a better-conditioned update step, often translating into faster convergence and cleaner progress early in training.</p>
-<p>In our setup, Muon was one of the rare cases in which a change of optimizer produced an immediatly observable effect on the metrics.</p>
+<p>In our setup, Muon was one of the rare cases in which a change of optimizer produced an immediately observable effect on the metrics.</p>
 <p><a href="https://cdn-uploads.huggingface.co/production/uploads/68e529af513e724edd8702f6/IhD8XksIA4rN2N339ZH47.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/68e529af513e724edd8702f6/IhD8XksIA4rN2N339ZH47.png"></a></p>
 <div> <table> <thead><tr>
 <th>Method</th>
@@ -651,11 +651,12 @@ These factors are easily overlooked and in our case they had a clear impact on c
 <h2> <a href="#whats-next"> </a> <span> What's next? </span>
 </h2>
 <p>That’s it for Part 2! If you want to play with an earlier public checkpoint from this series, the <strong>PRX-1024 T2I beta</strong> is still available <a href="https://huggingface.co/Photoroom/prx-1024-t2i-beta">here</a>.</p>
-<p>We're really excited about what’s next: <strong>in the coming weeks we will release the full source code of the PRX training framework</strong>, and we will do a public <strong>24-hour “speedrun”</strong> where we combine the best ideas from this post into a single run and see how far the full recipe can go in one day.</p>
+<p>We are really excited about what’s next: <strong>in the coming weeks we will release the full source code of the PRX training framework</strong>, and we will do a public <strong>24-hour “speedrun”</strong> where we combine the best ideas from this post into a single run and see how far the full recipe can go in one day.</p>
 <p>If you made it this far, first of all thank you very much for your interest. Furthermore, we would love to have you join our <a href="https://discord.gg/HXp7Znc3">Discord</a> community where we discuss PRX progress and results, along with everything related to diffusion and text-to-image models.</p>
 </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>

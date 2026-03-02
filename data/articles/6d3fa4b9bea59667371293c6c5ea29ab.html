@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - 0xbeekeeper/claw-diary: Personal AI agent visual diary. Auto-records all agent activity, generates daily narrative summaries, and provides visual timeline replay.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - 0xbeekeeper/claw-diary: Personal AI agent visual diary. Auto-records all agent activity, generates daily narrative summaries, and provides visual timeline replay.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 2:46:30 AM | <a href="https://github.com/0xbeekeeper/claw-diary" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Claw Diary</h1><a href="#claw-diary"></a></div>
+<blockquote>
+<p>A dashcam for your AI assistant. Auto-records all agent activity, generates daily narrative summaries, visual timeline replay, and cost analytics.</p>
+</blockquote>
+<p><a href="https://www.npmjs.com/package/claw-diary"><img src="https://camo.githubusercontent.com/6e09e5bdacae62b32166ac8515007a8933ff57dc250a5fd9654cdd1c76a654fa/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f636c61772d64696172792e737667" alt="npm"></a>
+<a href="/0xbeekeeper/claw-diary/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/784362b26e4b3546254f1893e778ba64616e362bd6ac791991d2c9e880a3a64e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d677265656e2e737667" alt="License: MIT"></a>
+<a href="https://nodejs.org/"><img src="https://camo.githubusercontent.com/092e0007be85a7ff2897fc519179f0288db62202dfda73be27b46cb89cdaa3d6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6e6f64652d25334525334431382e302e302d627269676874677265656e2e737667" alt="Node.js"></a></p>
+<div><h2>What It Does</h2><a href="#what-it-does"></a></div>
+<p>Claw Diary runs silently in the background via hooks, capturing every tool call your AI agent makes. It then transforms that raw activity data into:</p>
+<ul>
+<li><strong>Daily Diary</strong> — Narrative markdown summaries with session breakdowns, tool usage, and insights</li>
+<li><strong>Visual Timeline</strong> — Interactive HTML page with search, filtering, animated replay, and cost curves</li>
+<li><strong>Cost Analytics</strong> — 30-day trends, per-model breakdown, pattern discovery, failure rate tracking</li>
+<li><strong>AI Journal</strong> — First-person diary entries written by the AI with evolving personality and continuity across days</li>
+<li><strong>Export</strong> — Markdown, HTML, and JSON formats for archiving or sharing</li>
+</ul>
+<p>Zero external API calls. Zero additional cost. Everything runs locally.</p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre>npm install -g claw-diary</pre></div>
+<div><h3>Install as Claude Code Skill</h3><a href="#install-as-claude-code-skill"></a></div>
+<p><strong>Option A</strong> — From ClaWHub:</p>
+<div><pre>clawhub install claw-diary</pre></div>
+<p><strong>Option B</strong> — Manual:</p>
+<div><pre>mkdir -p <span>~</span>/.claude/skills/claw-diary
+cp <span><span>"</span><span><span>$(</span>npm root -g<span>)</span></span>/claw-diary/SKILL.md<span>"</span></span> <span>~</span>/.claude/skills/claw-diary/SKILL.md</pre></div>
+<div><h3>Hook Configuration (Claude Code)</h3><a href="#hook-configuration-claude-code"></a></div>
+<p>Add the following to your </p><pre><code>~/.claude/settings.json</code></pre> to enable automatic activity collection:<p></p>
+<div><pre>{ <span>"hooks"</span>: { <span>"PreToolUse"</span>: [ { <span>"hooks"</span>: [ { <span>"type"</span>: <span><span>"</span>command<span>"</span></span>, <span>"command"</span>: <span><span>"</span>claw-diary collect before<span>"</span></span> } ] } ], <span>"PostToolUse"</span>: [ { <span>"hooks"</span>: [ { <span>"type"</span>: <span><span>"</span>command<span>"</span></span>, <span>"command"</span>: <span><span>"</span>claw-diary collect after<span>"</span></span> } ] } ], <span>"SessionStart"</span>: [ { <span>"hooks"</span>: [ { <span>"type"</span>: <span><span>"</span>command<span>"</span></span>, <span>"command"</span>: <span><span>"</span>claw-diary collect session-start<span>"</span></span> } ] } ], <span>"Stop"</span>: [ { <span>"hooks"</span>: [ { <span>"type"</span>: <span><span>"</span>command<span>"</span></span>, <span>"command"</span>: <span><span>"</span>claw-diary collect session-stop<span>"</span></span> } ] } ] }
+}</pre></div>
+<div><h3>Try It Out</h3><a href="#try-it-out"></a></div>
+<div><pre><span><span>#</span> Generate timeline from existing data (if any)</span>
+claw-diary timeline
+claw-diary stats</pre></div>
+<div><h2>Slash Commands</h2><a href="#slash-commands"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>/diary</code></pre></td>
+<td>Today's diary summary (markdown)</td>
+</tr>
+<tr>
+<td><pre><code>/diary:replay</code></pre></td>
+<td>Launch interactive HTML timeline in browser</td>
+</tr>
+<tr>
+<td><pre><code>/diary:stats</code></pre></td>
+<td>Cost &amp; activity analytics (30-day window)</td>
+</tr>
+<tr>
+<td><pre><code>/diary:week</code></pre></td>
+<td>Weekly summary report</td>
+</tr>
+<tr>
+<td><pre><code>/diary:search &lt;query&gt;</code></pre></td>
+<td>Search historical events</td>
+</tr>
+<tr>
+<td><pre><code>/diary:export [md|html|json]</code></pre></td>
+<td>Export diary data</td>
+</tr>
+<tr>
+<td><pre><code>/diary:clear --yes</code></pre></td>
+<td>Delete all data (requires <pre><code>--yes</code></pre> flag)</td>
+</tr>
+<tr>
+<td><pre><code>/diary:thoughts</code></pre></td>
+<td>AI personal journal entry (first-person)</td>
+</tr>
+<tr>
+<td><pre><code>/diary:persona</code></pre></td>
+<td>View/edit AI persona</td>
+</tr>
+</tbody>
+</table>
+<div><h2>CLI</h2><a href="#cli"></a></div>
+<p>After installing globally, the </p><pre><code>claw-diary</code></pre> command is available:<p></p>
+<div><pre>claw-diary summarize <span><span>#</span> Today's diary summary</span>
+claw-diary summarize week <span><span>#</span> Weekly summary</span>
+claw-diary summarize date 2026-02-18 <span><span>#</span> Specific date</span>
+claw-diary stats <span><span>#</span> Cost &amp; activity analytics</span>
+claw-diary search <span><span>"</span>refactor<span>"</span></span> <span><span>#</span> Search historical events</span>
+claw-diary <span>export</span> md <span><span>#</span> Export as markdown (or html, json)</span>
+claw-diary replay <span><span>#</span> Launch visual timeline in browser</span>
+claw-diary timeline <span><span>#</span> Generate timeline HTML file</span>
+claw-diary clear --yes <span><span>#</span> Delete all data</span>
+claw-diary collect before <span><span>#</span> Hook: pre-tool-use event</span></pre></div>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Create </p><pre><code>~/.claw-diary/config.json</code></pre> to customize recording behavior:<p></p>
+<div><pre>{ <span>"recordingLevel"</span>: <span><span>"</span>summary<span>"</span></span>
+}</pre></div>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>full</code></pre></td>
+<td>Record everything including tool args and result previews</td>
+</tr>
+<tr>
+<td><pre><code>summary</code></pre></td>
+<td>Skip tool arguments and output previews (default)</td>
+</tr>
+<tr>
+<td><pre><code>minimal</code></pre></td>
+<td>Only record session start/end — lowest footprint</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>claw-diary &lt;command&gt; (unified CLI entry point) | +---&gt; collect Hook events (stdin) --&gt; ~/.claw-diary/events/YYYY-MM-DD.jsonl +---&gt; summarize Daily/weekly markdown narratives +---&gt; timeline Interactive HTML timeline generator +---&gt; stats/search Cost analytics, patterns, export +---&gt; replay Local HTTP server (timeline + reports)
+</code></pre></div>
+<p>All data stored as daily JSONL files under </p><pre><code>~/.claw-diary/events/</code></pre>. No database required.<p></p>
+<div><h3>Key Design Decisions</h3><a href="#key-design-decisions"></a></div>
+<ul>
+<li><strong>Template-based summaries</strong> — No LLM calls for narrative generation. Zero additional cost.</li>
+<li><strong>Privacy-first</strong> — Automatic redaction of API keys, tokens, passwords, secrets. No network requests.</li>
+<li><strong>File-based storage</strong> — Simple, portable, grep-able. One file per day.</li>
+<li><strong>Self-contained HTML</strong> — Timeline output is a single HTML file with inline CSS/JS. No CDN dependencies.</li>
+</ul>
+<div><h2>Cost Tracking</h2><a href="#cost-tracking"></a></div>
+<p>Claw Diary tracks token costs using a three-tier priority:</p>
+<ol>
+<li><strong>Platform-provided cost</strong> — If the hook data includes an <pre><code>estimatedCost</code></pre> value (calculated by the platform), that value is used directly.</li>
+<li><strong>Custom pricing</strong> — You can define per-model pricing in <pre><code>~/.claw-diary/config.json</code></pre> (see below). This takes priority over built-in defaults.</li>
+<li><strong>Built-in fallback</strong> — A bundled pricing table covers common Claude and OpenAI models. Unknown models fall back to $3/$15 per million tokens (input/output).</li>
+</ol>
+<div><h3>Custom Model Pricing</h3><a href="#custom-model-pricing"></a></div>
+<p>Add a </p><pre><code>customPricing</code></pre> field to <pre><code>~/.claw-diary/config.json</code></pre> to override or add model prices (per 1M tokens):<p></p>
+<div><pre>{ <span>"recordingLevel"</span>: <span><span>"</span>full<span>"</span></span>, <span>"customPricing"</span>: { <span>"gemini-2.0-flash"</span>: { <span>"input"</span>: <span>0.10</span>, <span>"output"</span>: <span>0.40</span> }, <span>"my-fine-tuned-model"</span>: { <span>"input"</span>: <span>5.0</span>, <span>"output"</span>: <span>20.0</span> } }
+}</pre></div>
+<p>This lets you track costs for any model — including fine-tuned, self-hosted, or third-party models not in the built-in table.</p>
+<div><h2>Privacy &amp; Security</h2><a href="#privacy--security"></a></div>
+<ul>
+<li>All data stored locally at <pre><code>~/.claw-diary/</code></pre> — nothing leaves your machine</li>
+<li><strong>No external network requests</strong> — no Google Fonts, no CDN, no analytics</li>
+<li>Automatic sanitization of API keys (<pre><code>sk-*</code></pre>), GitHub tokens (<pre><code>ghp_*</code></pre>), Slack tokens (<pre><code>xoxb-*</code></pre>), private keys, passwords, and 15+ sensitive environment variable patterns</li>
+<li>Configurable recording levels to minimize data capture</li>
+<li>One-command data deletion (<pre><code>/diary:clear --yes</code></pre>)</li>
+</ul>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre>git clone https://github.com/0xbeekeeper/claw-diary.git
+<span>cd</span> claw-diary
+npm install <span>&amp;&amp;</span> npm run build <span><span>#</span> Compile TypeScript</span>
+npm <span>test</span> <span><span>#</span> Run tests (Node.js built-in test runner)</span>
+npm link <span><span>#</span> Link for local development</span></pre></div>
+<div><h3>Project Structure</h3><a href="#project-structure"></a></div>
+<div><pre><code>scripts/ cli.ts # Unified CLI entry point (claw-diary &lt;command&gt;) types.ts # Core types, pricing table, shared utilities collector.ts # Hook-based event capture (stdin -&gt; JSONL) summarizer.ts # Daily &amp; weekly narrative generation timeline.ts # Interactive HTML timeline generator analytics.ts # Stats, patterns, search, export server.ts # Local HTTP server for visualization
+tests/ test-types.ts # Unit tests for core utilities test-smoke.ts # Integration smoke tests
+</code></pre></div>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<ol>
+<li>Fork the repository</li>
+<li>Create a feature branch (<pre><code>git checkout -b feature/my-feature</code></pre>)</li>
+<li>Make your changes and add tests</li>
+<li>Run <pre><code>npm run build &amp;&amp; npm test</code></pre> to verify</li>
+<li>Commit and push</li>
+<li>Open a pull request</li>
+</ol>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/0xbeekeeper/claw-diary/blob/main/LICENSE">MIT</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

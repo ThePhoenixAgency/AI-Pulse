@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Clés API Google - 3000 clés publiques donnent accès à Gemini</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Clés API Google - 3000 clés publiques donnent accès à Gemini</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/26/2026 8:31:20 AM | <a href="https://korben.info/google-api-keys-gemini-secrets.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/google-api-keys-gemini-secrets/google-api-keys-gemini-secrets-1.png" alt="Image illustrant l'article : Clés API Google - 3000 clés publiques donnent accès à Gemini"></p><div><span>Ce qu’il faut retenir</span><div><ol><li>Les clés API Google publiques (AIza...) collées dans le JavaScript Maps donnent maintenant accès à Gemini sans restriction : fichiers privés, cache utilisateur, facturation. TruffleSecurity a trouvé 3000 clés valides exposées sur Common Crawl.</li><li>Google active automatiquement l'accès Gemini sur TOUTES les clés existantes d'un projet sans notification, puis a classé le bug comme "comportement normal" avant de l'admettre 7 semaines plus tard.</li><li>Solution immédiate : vérifier console.cloud.google.com pour les API "Generative Language" non restreintes, ajouter des filtres IP/referrer, et basculer sur des comptes de service pour Gemini.</li></ol><p>Résumé généré par IA</p></div><div><p><strong>Les clés API Google</strong> que vous collez dans votre JavaScript pour afficher une carte Maps... hé bien elles ne sont plus si inoffensives. Car depuis que Gemini est entré dans la danse, ces mêmes clés donnent maintenant accès à vos fichiers privés et surtout à votre facture IA.</p><p><strong>Et personne ne nous a prévenu...</strong></p><p>En gros, Google utilise un format de clé unique, les fameuses <code>AIza...</code>, aussi bien pour Maps et Firebase (public, collé dans le HTML, tout le monde s'en fout) que pour
+<a href="https://korben.info/google-gemini-pouvoir-monopole-privacy.html">Gemini</a>
+(privé, accès aux fichiers, facturation). Le problème c'est que quand vous activez l'API Gemini sur un projet Google Cloud, TOUTES les clés existantes de ce projet héritent automatiquement de l'accès Gemini. Sans warning, sans notification, sans rien... Ouin !</p><p>Les chercheurs de
+<a href="https://trufflesecurity.com/blog/google-api-keys-werent-secrets-but-then-gemini-changed-the-rules">TruffleSecurity</a>
+ont ainsi trouvé presque 3000 clés API Google valides dans le dataset Common Crawl de novembre 2025. Des clés qui trainent dans du code JavaScript, des pages HTML, des repos GitHub publics... et qui fonctionnent sur l'endpoint Gemini. Il suffit d'un simple <code>curl</code> avec une clé Maps récupérée sur un site web, et hop, vous accédez à l'API Gemini du propriétaire. Fichiers privés, contenu en cache, facturation sur son compte.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/google-api-keys-gemini-secrets/google-api-keys-gemini-secrets-2.png" alt=""></p><p>Et parmi les victimes, on trouve des institutions financières, des boîtes de cybersécurité, et... Google eux-mêmes (oui oui, vraiment).</p><p>Le 21 novembre 2025, TruffleSecurity signale donc le problème et la réponse de Google le 25 novembre c'est : "<em>intended behavior</em>" (comportement normal)... Sauf que le 2 décembre, Google a reclassifié ça en bug, puis le 13 janvier 2026, ça passe finalement en Tier 1. On est donc passé du "c'est normal les frérots" à "ah oui quand même, oupsi oups", en 7 semaines.</p><p>Maintenant, pour ceux qui se demandent si leurs clés API Google sont concernées, direction
+<a href="https://console.cloud.google.com/">console.cloud.google.com</a>
+, section "APIs &amp; Services" puis "Identifiants".</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/google-api-keys-gemini-secrets/google-api-keys-gemini-secrets-3.png" alt=""></p><p>Si vous voyez l'API "
+<a href="https://ai.google.dev/api/all-methods">Generative Language</a>
+" de Gemini API activée sur un projet avec des clés non restreintes... attention, c'est le moment de faire le ménage. Ajoutez des restrictions IP ou HTTP referrer, et surtout, utilisez des comptes de service plutôt que des clés API pour tout ce qui touche à Gemini (sauf si vous aimez les surprises sur votre facture ^^).</p><p><img src="https://korben.info/google-api-keys-gemini-secrets/google-api-keys-gemini-secrets-1.avif" alt=""></p><p>Le truc tordu, c'est que la doc Firebase dit noir sur blanc que les clés API ne sont pas des secrets. Google Maps vous dit carrément de les coller dans votre HTML. Et maintenant, ces mêmes clés donnent accès à une IA qui peut lire vos fichiers. Du
+<a href="https://cwe.mitre.org/data/definitions/1188.html">CWE-1188</a>
+pur et dur ! Et c'est pas la première fois que Google se fait taper sur les doigts pour ce genre de
+<a href="https://korben.info/promptflux-malware-gemini-llm-runtime-generation.html">souci avec Gemini</a>
+.</p><p>Du coup, Google a annoncé des nouvelles mesures, du scoped defaults, du blocage de clés fuités, des notifications proactives...etc. Reste donc à voir si ça arrivera avant que les presque 3000 clés exposées soient exploitées par des gens moins bien intentionnés.</p><p>Bref, dix ans à dire que c'est public, et hop, aujourd'hui c'est devenu top secret. Bien joué Google !!</p><p><a href="https://simonwillison.net/2026/Feb/26/google-api-keys/">Source</a></p></div>Références<section><ul><li><a href="https://trufflesecurity.com/blog/google-api-keys-werent-secrets-but-then-gemini-changed-the-rules" target="_blank" rel="noopener noreferrer">https://trufflesecurity.com/blog/google-api-keys-werent-secrets-but-then-gemini-changed-the-rules</a></li><li><a href="https://console.cloud.google.com/" target="_blank" rel="noopener noreferrer">https://console.cloud.google.com/</a></li><li><a href="https://ai.google.dev/api/all-methods" target="_blank" rel="noopener noreferrer">https://ai.google.dev/api/all-methods</a></li><li><a href="https://cwe.mitre.org/data/definitions/1188.html" target="_blank" rel="noopener noreferrer">https://cwe.mitre.org/data/definitions/1188.html</a></li><li><a href="https://simonwillison.net/2026/Feb/26/google-api-keys/" target="_blank" rel="noopener noreferrer">https://simonwillison.net/2026/Feb/26/google-api-keys/</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

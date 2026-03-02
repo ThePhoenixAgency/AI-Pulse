@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BleachBit 5.1.0 Beta adds cookie manager and expert mode</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>BleachBit 5.1.0 Beta adds cookie manager and expert mode</h1>
+  <div class="metadata">
+    Source: OMG! Ubuntu | Date: 2/19/2026 11:21:00 PM | <a href="https://www.omgubuntu.co.uk/2026/02/bleachbit-beta-cookie-manager-expert-mode" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><strong>A new beta of BleachBit, the free, cross-platform system cleaner app is available for testing.</strong></p> <p>BleachBit 5.1.0 brings selective cookie deletion, support for cleaning more apps and implements ‘broader safety improvements and stronger guardrails’, per the official <a href="https://www.bleachbit.org/news/bleachbit-510-beta">release announcement.</a> </p> <p>The latter change, implemented via a <strong>new expert mode</strong> toggle in the in-app <em>Preferences</em>, is especially welcome given that BleachBit is powerful software and can, if used without care, result in system issues or accidental deletion of critical files. </p> <p>When expert mode is disabled, any cleaning or modification options still show warnings in the UI as before, but can only be previewed, not cleaned. It also blocks the ability to use ‘dangerous’ features like adding custom paths to the deletion list. </p> <p>Elsewhere, the <strong>new cookie manager </strong>lets you choose which specific cookies to keep before cleaning Chromium and Firefox-based web browsers – handy if you’d rather not be logged out of everything each time you run the app. </p> <p>The feature works with HTTP/HTTPS cookies, but localStorage isn’t yet handled the same way. You can protect those files using the keeplist in <em>Preferences</em>, if needed. </p> <p>BleachBit 5.1.0 is also able to <strong>clean <em>Zen</em> browser </strong>and<strong> Chromium Flatpak </strong>builds (including the ‘ungoogled’ variant). It’s also able to prune the list of recent documents in LibreOffice (just the list; not the documents themselves, phew). </p> <p>For Chromium, BleahcBit 5.1.0 adds more cache types, including Network Persistent State, DawnCache, GrShaderCache, GraphiteDawnCache and Code Cache. When cleaning the <em>Sync</em> option, it now warns that web apps will be deleted. </p> <p>The “overwrite free space” option has been renamed to “wipe empty space” through the app (including the CLI) to be a bit clearer about what it does. The old CLI flags and cleaner IDs (<code>--wipe-free-space</code>,&nbsp;<code>system.free_disk_space</code>) still work, script fans.</p> <p><em>Preferences</em> replaces the term “whitelist” in favour of “allowlist”, info bars replace modal dialogs in various situations for a less intrusive experience, and when a wipe operation is killed part-way through, BleachBit now offers to clean up the leftover temporary files next time it launches.</p> <p>Other Linux changes include <code>fstrim</code> support during partition wiping on Linux; fix for pacman cache cleaning (on relevant distros), hiding pacman and Snap cleaners on systems that don’t use them, and a and a fix for cleaning KDE6&nbsp;<code>staterc</code>&nbsp;<code>.ini</code>&nbsp;files.</p> <p>Finally, an important bug fix: a hard link issue in earlier builds meant that shredding a file could destroy data still accessible through other links pointing to the same content – now fixed, phew.</p> <p>Keen to try it out? Keep in mind that BleachBit 5.1.0 is a beta build. It will be buggy (and could wipe something you didn’t tell it to, or fail to wipe something you did, etc). </p> <p>Download the latest build for Windows and Linux from the&nbsp;<a href="https://download.bleachbit.org/beta/5.1.0/">BleachBit downloads page</a>. BleachBit 5.1.0 beta introduces official packages for Ubuntu 25.10 and Fedora 43, with the official Deb and RPM builds now signed with the maintainer’s GPG key.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

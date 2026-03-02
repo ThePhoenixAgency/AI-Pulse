@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>aigent: toolchain for AI agent skills</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>aigent: toolchain for AI agent skills</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/23/2026 10:06:34 AM | <a href="https://dev.to/wkusnierczyk/aigent-toolchain-for-ai-agent-skills-3hib" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>AI agents are getting good at following instructions. The bottleneck has shifted: it's no longer about what the model can do, but about how well you package what it should do. That packaging layer is <strong>agent skills</strong> — structured documents that tell an agent what a capability does, when to activate it, and how to use it.</p> <p>The <a href="https://agentskills.io/" target="_blank">Agent Skills open standard</a>, originally defined by Anthropic for Claude Code, codifies this into a simple format: a <code>SKILL.md</code> file with YAML frontmatter (name, description, compatibility, allowed tools) and a Markdown body with detailed instructions. The metadata is indexed at session start for fast discovery; the body is loaded on demand, following a progressive-disclosure pattern that keeps the context window lean.</p> <p>The format is simple. Getting it right at scale is not.</p> <h2> <a name="the-problem" href="#the-problem"> </a> The problem
+</h2> <p>When you have a handful of skills, you can eyeball them. When you have dozens — across teams, repositories, and CI pipelines — you need tooling. Names drift from conventions. Descriptions become vague. Activation patterns go untested. Formatting diverges. Nobody catches the skill that fails to trigger because its description doesn't match the query patterns users actually type.</p> <p>The specification defines <em>what</em> a valid skill looks like. The <a href="https://github.com/agentskills/agentskills" target="_blank">Python reference implementation</a> provides basic validation, but it's a library — not a toolchain you can drop into CI, pre-commit hooks, or a plugin build pipeline.</p> <h2> <a name="what-raw-aigent-endraw-does" href="#what-raw-aigent-endraw-does"> </a> What <code>aigent</code> does
+</h2> <p><a href="https://github.com/wkusnierczyk/aigent" target="_blank"><strong><code>aigent</code></strong></a> is a Rust library, native CLI, and Claude Code plugin that implements the Agent Skills specification as a proper toolchain — the same way a formatter, linter, and test runner enforce conventions in any mature language ecosystem.</p> <p>It covers the full skill lifecycle:</p> <p><strong>Create</strong> — Generate skills from natural language with <code>aigent new</code>. Deterministic by default, with optional LLM enhancement (Anthropic, OpenAI, Google, Ollama backends). Produces a complete <code>SKILL.md</code> directory ready for validation and refinement.</p> <p><strong>Validate</strong> — Check skills against the specification with typed diagnostics, error codes, and JSON output. Run <code>aigent validate</code> in CI to catch problems before they reach production. Three severity levels (error, warning, info) and a <code>--format json</code> flag for machine consumption.</p> <p><strong>Format</strong> — Canonical YAML key ordering, consistent whitespace, idempotent output. <code>aigent format --check</code> returns non-zero when files need formatting — drop it into a pre-commit hook.</p> <p><strong>Score</strong> — A weighted 0-100 quality score against a best-practices checklist. Structural checks (60 points) verify specification conformance; quality checks (40 points) evaluate description clarity, trigger phrases, naming conventions, and detail. Use it as a CI gate: <code>aigent score my-skill/ || exit 1</code>.</p> <p><strong>Test</strong> — Fixture-based testing from <code>tests.yml</code>. Define input queries, expected match/no-match results, and minimum score thresholds. <code>aigent test</code> runs the suite and reports pass/fail. <code>aigent probe</code> does single-query dry-runs: "if a user said <em>this</em>, would the agent pick up <em>that</em> skill?"</p> <p><strong>Build</strong> — Assemble skills into Claude Code plugins with <code>aigent build</code>. Validate entire plugin directories — manifest, hooks, agents, commands, skills, and cross-component consistency — with <code>aigent validate-plugin</code>.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgithub.com%2Fwkusnierczyk%2Faigent%2Fraw%2Fmain%2Fgraphics%2Fhello.gif"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgithub.com%2Fwkusnierczyk%2Faigent%2Fraw%2Fmain%2Fgraphics%2Fhello.gif" alt="aigent demo"></a></p> <h2> <a name="specification-compliance" href="#specification-compliance"> </a> Specification compliance
+</h2> <p><code>aigent</code> implements every validation rule from the <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices" target="_blank">Anthropic specification</a>, plus additional checks that go beyond both the specification and the Python reference implementation:</p> <ul>
+<li>All name constraints (length, casing, reserved words, XML tags, Unicode NFKC normalization)</li>
+<li>All description constraints (length, non-empty, no XML/HTML)</li>
+<li>Frontmatter structure, delimiter matching, compatibility field limits</li>
+<li>Body length warnings</li>
+<li>Path canonicalization and symlink safety</li>
+<li>Post-build validation</li>
+</ul> <p>Where the specification and the reference implementation diverge, <code>aigent</code> reconciles them and documents the decision. </p> <p>See the <a href="https://github.com/wkusnierczyk/aigent#compliance" target="_blank">compliance section</a> in the README for a detailed three-way comparison.</p> <h2> <a name="beyond-individual-skills" href="#beyond-individual-skills"> </a> Beyond individual skills
+</h2> <p>Skills don't exist in isolation. As your collection grows, new problems emerge: name collisions, overlapping descriptions that confuse activation, token budgets that exceed context limits. <code>aigent</code> handles this with cross-skill conflict detection, token budget estimation, and batch validation across directories.</p> <p>And skills are just one part of a Claude Code plugin. <code>aigent</code>'s <code>validate-plugin</code> command checks the full plugin ecosystem: the <code>plugin.json</code> manifest, <code>hooks.json</code> configuration, agent files, command files, skill subdirectories, and cross-component consistency. Typed diagnostics with error codes (P001-P010 for manifests, H001-H007 for hooks, X001-X008 for cross-component) give you the same deterministic enforcement across the entire plugin structure.</p> <h2> <a name="where-it-fits" href="#where-it-fits"> </a> Where it fits
+</h2> <p>The agentic AI ecosystem is moving fast. Tools like Anthropic's <code>plugin-dev</code> teach you the patterns; <code>aigent</code> enforces them. Think of it as the difference between a language tutorial and a linter — you need both, but they serve different purposes.</p> <p>Other tools in the space, like <a href="https://github.com/skillcreatorai/Ai-Agent-Skills" target="_blank">AI Agent Skills</a>, focus on distribution — installing pre-built skills across multiple agents. <code>aigent</code> focuses on authoring quality: making sure what you publish is correct, consistent, and well-tested before it reaches any distribution channel.</p> <h2> <a name="get-started" href="#get-started"> </a> Get started
+</h2> <div>
+<pre><code><span># Install</span>
+cargo <span>install </span>aigent <span># official distribution at crates.io</span>
+brew <span>install </span>wkusnierczyk/aigent/aigent <span># homebrew tap</span> <span># Create, validate, score</span>
+aigent new <span>"process PDF files and extract text"</span> <span>--no-llm</span>
+aigent check extracting-text-pdf-files/
+aigent score extracting-text-pdf-files/
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="about" href="#about"> </a> About
+</h2> <div>
+<pre><code>$ aigent --about
+aigent: Rust AI Agent Skills Tool
+├─ version: 0.6.3
+├─ author: Wacław Kuśnierczyk
+├─ developer: mailto:waclaw.kusnierczyk@gmail.com
+├─ source: https://github.com/wkusnierczyk/aigent
+└─ licence: Apache-2.0 https://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a> — see <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">apache.org/licenses/LICENSE-2.0</a>.</p> <div><table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sources</td>
+<td><a href="https://github.com/wkusnierczyk/aigent" target="_blank">https://github.com/wkusnierczyk/aigent</a></td>
+</tr>
+<tr>
+<td>Releases</td>
+<td><a href="https://github.com/wkusnierczyk/aigent/releases" target="_blank">https://github.com/wkusnierczyk/aigent/releases</a></td>
+</tr>
+<tr>
+<td>Crates</td>
+<td><a href="https://crates.io/crates/aigent" target="_blank">https://crates.io/crates/aigent</a></td>
+</tr>
+<tr>
+<td>Docs</td>
+<td><a href="https://docs.rs/aigent" target="_blank">https://docs.rs/aigent</a></td>
+</tr>
+</tbody>
+</table></div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

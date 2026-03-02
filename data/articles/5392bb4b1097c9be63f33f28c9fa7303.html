@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Can't get frigate cameras entities to play webrtc</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Can't get frigate cameras entities to play webrtc</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/27/2026 5:19:07 AM | <a href="https://community.home-assistant.io/t/cant-get-frigate-cameras-entities-to-play-webrtc/991048" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>Hello,</p>
+<p>I’m looking for help to get frigate or advanced camera card to work with my frigate streams inside HA.</p>
+<p>The problem is when I select the camera entity inside any card, it only plays a mjpeg stream, which it shows a “1 FPS” preview, I mean, only 1 snapshot of the camera per second and not the video itself:</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://community-assets.home-assistant.io/original/4X/7/3/0/73050bb143b6463b7bed152201a1b35a53fdc30e.jpeg" data-download-href="/uploads/short-url/gpvIBoWgFsKwiNhi3Ou1ehUxSwu.jpeg?dl=1" title="1000464651"><img src="https://community-assets.home-assistant.io/optimized/4X/7/3/0/73050bb143b6463b7bed152201a1b35a53fdc30e_2_323x500.jpeg" alt="1000464651" data-base62-sha1="gpvIBoWgFsKwiNhi3Ou1ehUxSwu" width="323" height="500" srcset="https://community-assets.home-assistant.io/optimized/4X/7/3/0/73050bb143b6463b7bed152201a1b35a53fdc30e_2_323x500.jpeg, https://community-assets.home-assistant.io/optimized/4X/7/3/0/73050bb143b6463b7bed152201a1b35a53fdc30e_2_484x750.jpeg 1.5x, https://community-assets.home-assistant.io/optimized/4X/7/3/0/73050bb143b6463b7bed152201a1b35a53fdc30e_2_646x1000.jpeg 2x" data-dominant-color="343333"></a></div><p></p>
+<p>When I create a webrtc card and selecting directly the go2rtc stream name, the video streams correctly, so, I believe the entity that the frigate integration is creating, does not have the video streams within:</p>
+<pre><code class="lang-auto">type: custom:webrtc-camera
+url: frontis_main
+mode: webrtc </code></pre>
+<p>This is my frigate config which is in a separated proxmox CT running docker:</p>
+<pre><code class="lang-auto">mqtt: enabled: true host: 192.168.1.15 user: user password: password go2rtc: streams: ninas_main: - rtsp://user:password@192.168.1.50:554/stream1 ninas_sub: rtsp://user:password@192.168.1.50:554/stream2 #Camara frontis frontis_main: rtsp://user:password@192.168.1.201:554/Streaming/Channels/101 frontis_sub: rtsp://user:password@192.168.1.201:554/Streaming/Channels/102 webrtc: listen: :8555 candidates: - 192.168.1.3:8555
+######## Aceleración de hardware (DECODE GPU) ########
+ffmpeg: hwaccel_args: - -hwaccel - vaapi - -hwaccel_device - /dev/dri/renderD128 - -hwaccel_output_format - yuv420p detectors: ov: type: openvino device: GPU model: width: 300 height: 300 input_tensor: nhwc input_pixel_format: bgr path: /openvino-model/ssdlite_mobilenet_v2.xml labelmap_path: /openvino-model/coco_91cl_bkgr.txt ######## Configuración de cámaras ########
+cameras: frontis: enabled: true ffmpeg: inputs: - path: rtsp://127.0.0.1:8554/frontis_main roles: - record - audio - path: rtsp://127.0.0.1:8554/frontis_sub roles: - detect record: enabled: true retain: days: 7 mode: motion alerts: retain: days: 7 mode: motion detections: retain: days: 7 mode: motion snapshots: enabled: true retain: default: 7 detect: enabled: true width: 640 height: 360 live: streams: Main Stream: frontis_main Sub Stream: frontis_sub objects: track: - person - car - motorcycle - bus - bicycle - dog motion: mask: 0.351,0.566,0.337,0.518,0.323,0.436,0.32,0.302,0.331,0.236,0.347,0.156,0.366,0.116,0.398,0.117,0.415,0.174,0.413,0.219,0.409,0.247,0.405,0.271,0.404,0.312,0.398,0.358,0.379,0.392,0.37,0.411,0.362,0.491 ninas: enabled: true ffmpeg: inputs: - path: rtsp://127.0.0.1:8554/ninas_sub roles: - detect - path: rtsp://127.0.0.1:8554/ninas_main roles: - record - audio lpr: enabled: true expire_time: 5 min_area: 2000 enhancement: 1 record: enabled: true retain: days: 7 mode: active_objects alerts: retain: days: 7 mode: active_objects detections: retain: days: 7 mode: active_objects snapshots: enabled: true retain: default: 7 detect: enabled: true width: 640 height: 360 live: streams: Main Stream: ninas_main Sub Stream: ninas_sub objects: track: - person motion: mask: 0.19,0.982,0.161,0.544,0.162,0.432,0.164,0.16,0.17,0.054,0.355,0.054,0.353,0,0.172,0,0,0,0,0.455,0,0.6,0.002,0.758,0,0.908,0,1,0.202,1 threshold: 40 contour_area: 20 improve_contrast: true version: 0.16-0 camera_groups: Interior: order: 1 icon: LuSquareArrowDown cameras: ninas
+semantic_search: enabled: false model_size: small
+face_recognition: enabled: false model_size: small
+lpr: enabled: true device: GPU
+classification: bird: enabled: false </code></pre>
+<p>The docker container is in host mode, and I’m able to play the streams using the go2rtc interface at 192.168.1.3:1984.</p>
+<p>Anyone has experienced this before? I’ve seen some videos on YouTube showing that the integration works straight when selecting camera entity created by the frigate integration.</p>
+<p>Any help will be appreciated!</p> <p><small>1 post - 1 participant</small></p> <p><a href="https://community.home-assistant.io/t/cant-get-frigate-cameras-entities-to-play-webrtc/991048">Read full topic</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

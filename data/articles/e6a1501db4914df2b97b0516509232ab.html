@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DFT: The Crucial Gap in Open-Source Chip Design</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>DFT: The Crucial Gap in Open-Source Chip Design</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/22/2026 2:37:53 AM | <a href="https://dev.to/wiowiztech/dft-the-crucial-gap-in-open-source-chip-design-35f4" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>The Gap That Blocks Tapeout</p> <p>As we neared tapeout, a hard reality set in.</p> <p>Our RTL was verified.<br>
+Synthesis ran clean through Yosys.<br>
+Place-and-route was handled by OpenROAD.</p> <p>But none of that gets you a testable chip.</p> <hr> <p><strong>The Problem Nobody Talks About</strong></p> <p>Generating a layout is not the same as producing testable silicon.</p> <p>After fabrication, real chips must:</p> <ul>
+<li>Detect manufacturing defects</li>
+<li>Measure fault coverage</li>
+<li>Load tester-ready patterns</li>
+<li>Diagnose failures</li>
+</ul> <p>Without proper DFT infrastructure:</p> <ul>
+<li>Internal state elements are inaccessible</li>
+<li>Fault coverage cannot be quantified</li>
+<li>Automated test equipment (ATE) cannot validate the die</li>
+<li>Yield analysis becomes guesswork</li>
+</ul> <p>You can fabricate a chip.</p> <p>But you cannot confidently prove it works.</p> <h2> <a href="#"> </a> <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fowlx1ikihsuq15ixgkcr.jpeg" alt="DFT: The Crucial Gap in Open-Source Chip Design">
+</h2> <p><strong>Why This Gap Is Structural — Not Cosmetic</strong></p> <p>DFT is often misunderstood as “just adding JTAG.”</p> <p>In production silicon, it involves:</p> <ul>
+<li>Structural scan integration</li>
+<li>Fault modeling and simulation</li>
+<li>Automatic Test Pattern Generation (ATPG)</li>
+<li>Coverage measurement</li>
+<li>Tester-compatible vector export</li>
+<li>Built-in self-test strategies</li>
+</ul> <p>Open RTL-to-GDSII stacks do not yet provide a production-grade solution for this layer.</p> <p>And that gap becomes painfully visible as tapeout approaches.</p> <hr> <p><strong>What WIOWIZ Discovered in Practice</strong></p> <p>While building a practical open silicon pipeline, WIOWIZ encountered a critical truth:</p> <p>The missing layer wasn’t synthesis.<br>
+It wasn’t routing.<br>
+It wasn’t timing closure.</p> <p>It was testability.</p> <p>Certain fault coverage ceilings, modeling inconsistencies, and structural limitations only become visible when pushing toward manufacturing-grade validation.</p> <p>These aren’t issues that show up in simulation demos.</p> <p>They show up when silicon is already fabricated.</p> <p>The detailed engineering observations — including why coverage plateaus occur and what actually resolves them — are covered in the canonical article:</p> <p> <a href="https://wiowiz.com/dft-the-crucial-gap-in-open-source-chip-design.html" target="_blank">DFT: The Crucial Gap in Open-Source Chip Design</a></p> <hr> <p><strong>The Bigger Question for Open Silicon</strong></p> <p>Open-source hardware is advancing rapidly.</p> <p>But unless the ecosystem solves:</p> <ul>
+<li>How to insert scalable scan reliably</li>
+<li>How to model faults correctly</li>
+<li>How to measure meaningful coverage</li>
+<li>How to generate tester-ready outputs</li>
+</ul> <p>…it remains incomplete for production silicon.</p> <p>DFT is not an enhancement layer.</p> <p>It is the bridge between “design complete” and “silicon validated.”</p> <p>Canonical source:<br>
+<a href="https://wiowiz.com/dft-the-crucial-gap-in-open-source-chip-design.html" target="_blank">DFT: The Crucial Gap in Open-Source Chip Design</a></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

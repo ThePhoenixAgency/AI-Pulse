@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SlimClaw: A Personal AI Assistant You Can Set Up in 5 Minutes</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>SlimClaw: A Personal AI Assistant You Can Set Up in 5 Minutes</h1>
+  <div class="metadata">
+    Source: Hacker News (nouveautés) | Date: 2/27/2026 10:07:33 PM | <a href="https://ganeshan007.github.io/website/blog/slimclaw.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><article> <p>February 2026 · Project</p> <p> I wanted a Claude assistant on WhatsApp that I could actually understand, set up without an AI IDE, and run on a machine with 30 MB to spare. </p> <p> I've been running <a href="https://github.com/qwibitai/nanoclaw">NanoClaw</a> for a while. It's a great project — a minimal Claude assistant on WhatsApp, built in TypeScript with container isolation. But every time I wanted to tweak something or debug an issue, I found myself fighting the Node.js runtime: 100 MB idle, native SQLite addons that break across versions, and a setup flow that assumed you had Claude Code installed. </p> <p> Around the same time, <a href="https://github.com/HKUDS/nanobot">nanobot</a> showed that a personal AI agent doesn't need a complex architecture — <code>pip install nanobot-ai</code> and you're running. No Docker required, no IDE required, just Python and a config file. </p> <p> I wanted both: NanoClaw's container isolation and per-group memory, with nanobot's simplicity of setup. So I built SlimClaw. </p> <h2>What is it</h2> <p> <a href="https://github.com/ganeshan007/slimclaw">SlimClaw</a> is a personal Claude assistant accessible via WhatsApp. You message it from your phone, and it responds using Claude's API running inside isolated Docker containers. Each group gets its own filesystem, memory, and conversation history. </p> <p> The entire thing is a single Python process. An <code>asyncio</code> event loop runs three tasks: a message poller (2s), an IPC watcher (1s), and a task scheduler (60s). That's it. </p> <h2>Setup in one command</h2> <p> The thing I cared about most was onboarding. NanoClaw requires Claude Code for setup (<code>/setup</code> skill). nanobot requires editing a JSON config file. I wanted something in between — an interactive wizard that works in any terminal. </p> <pre><code>pip install slimclaw
+slimclaw-setup</code></pre> <p> The wizard walks you through 13 steps: name your bot (default: TARS), choose your app (WhatsApp, or suggest a skill for Telegram/Discord), check dependencies, build the container, authenticate WhatsApp (QR code opens in your browser), pick a Claude model (Haiku/Sonnet/Opus), register your main channel, and start the service. </p> <p> No AI IDE needed. No JSON config files. If you have Claude Code, you can also run <code>/setup</code> for an AI-guided experience that troubleshoots errors for you — but it's optional. </p> <h2>What I learned building it</h2> <p> Bridging Python's asyncio with a Go runtime (neonize/whatsmeow) was the hardest part. Go threads don't respect Python's thread-local storage, so every database call from a callback crashed until I dispatched everything through <code>call_soon_threadsafe</code>. The Go runtime also ignores <code>os._exit()</code> — the only way to terminate the process after authentication is <code>SIGKILL</code>. </p> <p> The concurrency model needed careful thought. <code>asyncio.create_task</code> schedules but doesn't execute immediately, which creates a window where two callers can both see a resource as "free" and spawn duplicate work. The fix is simple once you see it: claim the resource at scheduling time, not execution time. The same pattern showed up three times — in message processing, task scheduling, and container lifecycle management. </p> <p> The onboarding taught me the most. Every assumption I made about what users know was wrong. "Main channel" means nothing without explaining it's the private chat where you admin the bot. JIDs are internal identifiers that should never be shown. "Channel" should be "app." The best setup flow is one where the user never has to edit a config file or run SQL. </p> <h2>Design decisions</h2> <h3>Skills over Features</h3> <p> Instead of building every integration into the codebase, SlimClaw uses <a href="https://docs.anthropic.com/en/docs/claude-code/skills">Claude Code skills</a> — markdown files in <code>.claude/skills/</code> that teach Claude Code how to transform the project. Want Telegram? If the skill exists, the setup wizard routes to it. If it doesn't, it tells you how to contribute one. The core stays small. </p> <h3>Group auto-detection</h3> <p> When someone mentions <code>@TARS</code> in a WhatsApp group that isn't registered, SlimClaw notifies your main channel instead of silently ignoring it. You reply "join Family Chat" and the group is live. No config files, no database commands — just natural language. </p> <h2>Benchmarks</h2> <table> <thead> <tr> <th>Metric</th> <th>SlimClaw</th> <th>NanoClaw</th> </tr> </thead> <tbody> <tr> <td>Idle RSS</td> <td><strong>30.2 MB</strong></td> <td>100.3 MB</td> </tr> <tr> <td>Final RSS</td> <td><strong>54.1 MB</strong></td> <td>138.9 MB</td> </tr> <tr> <td>SQLite insert (10K)</td> <td>482 ms</td> <td><strong>52 ms</strong></td> </tr> <tr> <td>SQLite query (10K)</td> <td>35 ms</td> <td><strong>7.6 ms</strong></td> </tr> <tr> <td>Dependencies</td> <td>6</td> <td>9</td> </tr> <tr> <td>Source lines</td> <td>4,670</td> <td>6,650</td> </tr> </tbody> </table> <p> Python uses 2x less memory. Node.js is faster at SQLite (native C++ addon with better-sqlite3). Both run the same Docker containers for agent execution. </p> <h2>Try it</h2> <div> <p><strong>Get started in one command:</strong></p> <p><code>pip install slimclaw &amp;&amp; slimclaw-setup</code></p><p> <a href="https://github.com/ganeshan007/slimclaw">GitHub</a> · <a href="https://pypi.org/project/slimclaw/">PyPI</a> </p> </div> <p> Requirements: Python 3.11+, Docker, macOS or Linux. The setup wizard handles everything else. </p> <hr> <p> If you're running OpenClaw or NanoClaw and want something lighter, or if you tried nanobot and want container isolation, SlimClaw sits in between. It's ~4,700 lines of Python, 6 dependencies, and a setup flow that doesn't assume you have an AI IDE installed. </p> </article></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

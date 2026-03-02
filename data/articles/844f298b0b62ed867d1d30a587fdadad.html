@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>summarize</title>
+<title>steipete/summarize</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,14 +23,12 @@
 </style>
 </head>
 <body>
-  <h1>summarize</h1>
+  <h1>steipete/summarize</h1>
   <div class="metadata">
-    Source: GitHub Trending | Date: 2/18/2026 6:47:53 PM | <a href="https://github.com/steipete/summarize" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GitHub Trending | Date: 2/18/2026 10:31:26 PM | <a href="https://github.com/steipete/summarize" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <header> <a href="https://steipete.github.io/summarize/index.html"> <span>summarize</span> </a> <nav> <a href="https://steipete.github.io/summarize/index.html">Home</a> <a href="https://steipete.github.io/summarize/docs/index.html">Docs</a> <a href="https://github.com/steipete/summarize">GitHub</a> </nav> </header> <div> <p>CLI + Chrome Extension</p> <h2>Summaries that live where you work.</h2> <pre><code>Summarize turns links, files, and media into sharp summaries with a real extraction pipeline. Use the CLI for automation or the Chrome Side Panel for one-click summaries of the current tab. Supports local, paid, and free models.</code></pre> <div> <p>Quickstart</p> <p></p><pre><code>npm i -g @steipete/summarize</code></pre> <pre><code>summarize "https://example.com/article"</code></pre> <p></p> </div> </div> <section> <article> <div> <p><span>CLI</span></p><h2>Fast summaries, scripted or interactive.</h2> </div> <p> Built for automation: extract clean text, summarize with your model, and output JSON or Markdown. Works with URLs, PDFs, images, audio/video, YouTube, and podcasts. </p> <ul> <li><strong>Extract + summarize</strong> with Firecrawl fallback.</li> <li> <strong>Media pipeline</strong> with transcript-first flow and Whisper fallback. </li> <li> <strong>Scriptable output</strong> via <pre><code>--json</code></pre>, <pre><code>--extract</code></pre>, <pre><code>--metrics</code></pre>. </li> </ul> <div> <pre><code>summarize "https://example.com" --length long
-summarize "https://youtu.be/..." --youtube auto
-summarize "/path/report.pdf" --model google/gemini-3-flash-preview</code></pre> </div> </article> <article> <div> <p><span>Chrome Extension</span></p><h2>Summaries in the Side Panel, one click away.</h2> </div> <p> A real Chrome Side Panel with a tiny local daemon. It streams Markdown summaries for the active tab, with auto-summary on navigation. </p> <ol> <li>Install the CLI + daemon.</li> <li>Load the unpacked extension.</li> <li>Open Side Panel and connect with the token.</li> </ol> <p><strong>Runs locally</strong> on your machine. The daemon is localhost-only and token-protected. </p> </article> </section> <section> <div> <p><span>Extraction</span></p><h3>HTML -&gt; clean text -&gt; summary</h3> <p>Readability, markitdown, and Firecrawl fallback when sites fight back.</p> </div> <div> <p><span>Media</span></p><h3>Podcast + YouTube aware</h3> <p>Prefers published transcripts, then Whisper when needed.</p> </div> <div> <p><span>Models</span></p><h3>Provider-agnostic</h3> <p>Local OpenAI-compatible gateways, paid providers, and OpenRouter free models.</p> </div> <div> <p><span>Outputs</span></p><h3>Readable + scriptable</h3> <p>Streaming TTY output, ANSI Markdown, JSON diagnostics, and metrics.</p> </div> </section> <pre><code>How it works 01 Fetch + extract Pull the source, clean HTML, normalize, or convert to Markdown. 02 Transcript when needed Use published transcripts, then Whisper fallback for media. 03 Summarize + format LLM output, streaming in the CLI or Side Panel, with metrics.</code></pre> </div></div>
+    <p>Point at any URL/YouTube/Podcast or file. Get the gist. CLI and Chrome Extension. Summarize — Chrome Side Panel + CLI Fast summaries from URLs, files, and media. Works in the terminal, a Chrome Side Panel and Firefox Sidebar. 0.11.0 preview (unreleased): this README reflects the upcoming release. 0.11.0 preview highlights (most interesting first) Chrome Side Panel chat (streaming agent + history) inside the sidebar. YouTube slides: screenshots + OCR + transcript cards, timestamped seek, OCR/Transcript toggle. Media-aware summaries: auto‑detect video/audio vs page content. Streaming Markdown + metrics + cache‑aware status. CLI supports URLs, files, podcasts, YouTube, audio/video, PDFs. Feature overview URLs, files, and media: web pages, PDFs, images, audio/video, YouTube, podcasts, RSS. Slide extraction for video sources (YouTube/direct media) with OCR + timestamped cards. Transcript-first media flow: published transcripts when available, Whisper fallback when not. Streaming output with Markdown rendering, metrics, and cache-aware status. Local, paid, and free models: OpenAI‑compatible local endpoints, paid providers, plus an OpenRouter free preset. Output modes:</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

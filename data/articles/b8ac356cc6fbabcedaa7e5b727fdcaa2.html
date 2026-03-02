@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Distro Wars 2026: Which Linux Should You Actually Use?</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Distro Wars 2026: Which Linux Should You Actually Use?</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/22/2026 8:50:04 AM | <a href="https://dev.to/md8_habibullah/distro-wars-2026-which-linux-should-you-actually-use-51n" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Everyone has an opinion about Linux distros. Ask on Reddit and you'll get 40 different answers, three flame wars, and someone telling you to use Arch BTW.</p> <p>This guide isn't that.</p> <p>This is a <strong>practical breakdown</strong> — who each distro is actually for, what it's genuinely good at, and which one you should install <em>today</em> based on what you're trying to do. No gatekeeping. No "real Linux users only use X." Just honest picks.</p> <hr> <h2> <a name="first-what-actually-separates-distros" href="#first-what-actually-separates-distros"> </a> First: What Actually Separates Distros?
+</h2> <p>Before picking, understand what actually differs between them — because it's not just the wallpaper.</p> <p><strong>Package Manager</strong> — How you install software. <code>apt</code> (Debian/Ubuntu), <code>dnf</code> (Fedora), <code>pacman</code> (Arch), <code>zypper</code> (openSUSE). This affects what's available and how fresh the software is.</p> <p><strong>Release Model</strong> — <em>Fixed release</em> (Ubuntu, Fedora) ships stable versions on a schedule. <em>Rolling release</em> (Arch, openSUSE Tumbleweed) continuously updates — you always have the latest, but occasionally something breaks.</p> <p><strong>Desktop Environment</strong> — GNOME, KDE Plasma, XFCE, Cinnamon, etc. Most distros let you choose, but each has a "flagship" DE that's most polished.</p> <p><strong>Target Audience</strong> — Some distros are built for beginners (Ubuntu, Mint), some for developers (Fedora, Arch), some for servers (Debian, RHEL), some for privacy (Tails, Whonix).</p> <p>Got it? Good. Let's get into the actual contenders.</p> <hr> <h2> <a name="1-ubuntu-the-reliable-default" href="#1-ubuntu-the-reliable-default"> </a> 1. Ubuntu — The Reliable Default
+</h2> <p><strong>Best for:</strong> Beginners, developers new to Linux, anyone who wants things to just work</p> <p>Ubuntu is the most documented Linux distro on the planet. Every tutorial, Stack Overflow answer, and blog post that says "on Linux, do this..." means Ubuntu. That's genuinely valuable.</p> <p><strong>What makes it great:</strong></p> <ul>
+<li>APT package manager with the largest software repository</li>
+<li>Snap packages for easy app installs (controversial but convenient)</li>
+<li>LTS releases supported for 5 years — stable, predictable</li>
+<li>Best driver support out of the box</li>
+<li>Ubuntu Server is <em>the</em> default for cloud VMs (AWS, DigitalOcean, etc.)</li>
+</ul> <p><strong>What to watch out for:</strong><br>
+Canonical (Ubuntu's maker) makes decisions that annoy power users — Snap being the main one. Some packages are aggressively Snapped and run noticeably slower. The GNOME implementation has historically been slightly behind upstream.</p> <p><strong>Package manager speed:</strong> <code>apt install &lt;package&gt;</code> — familiar, reliable, not the fastest<br>
+<strong>Release:</strong> LTS every 2 years (22.04, 24.04...) — predictable and safe<br>
+</p> <div>
+<pre><code><span># The command Ubuntu users know by heart</span>
+<span>sudo </span>apt update <span>&amp;&amp;</span> <span>sudo </span>apt upgrade <span>-y</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Pick Ubuntu if:</strong> You're switching from Windows, you need maximum compatibility with tutorials and tools, or you're deploying servers.</p> <hr> <h2> <a name="2-linux-mint-ubuntu-but-actually-pleasant" href="#2-linux-mint-ubuntu-but-actually-pleasant"> </a> 2. Linux Mint — Ubuntu But Actually Pleasant
+</h2> <p><strong>Best for:</strong> Windows switchers, people who want a familiar desktop, anyone who hated Ubuntu's GNOME</p> <p>Mint is built on Ubuntu (same packages, same compatibility) but makes very different UI decisions. The Cinnamon desktop feels close to Windows — taskbar at the bottom, Start-menu-style app launcher, system tray. No learning curve for the layout.</p> <p>It also ships without Snap by default and blocks Canonical from installing it silently. Software installs from traditional APT repos instead.</p> <p><strong>What makes it great:</strong></p> <ul>
+<li>Cinnamon desktop is genuinely polished and intuitive</li>
+<li>Extremely stable — Mint doesn't rush updates</li>
+<li>Update Manager lets you choose how aggressively to update (brilliant for cautious users)</li>
+<li>Better multimedia support out of the box (codecs included)</li>
+</ul> <p><strong>What to watch out for:</strong><br>
+Mint is <em>conservative</em> — which is a feature for stability but means you might be waiting on newer software versions. Not ideal if you're chasing the latest everything.</p> <p><strong>Pick Mint if:</strong> You're migrating from Windows and want the least adjustment, or you want Ubuntu compatibility without Snap.</p> <hr>
+<h2> <a name="3-zorin-os-windows-but-linux" href="#3-zorin-os-windows-but-linux"> </a> 3. Zorin OS — Windows, But Linux
+</h2> <p><strong>Best for:</strong> Absolute beginners, Windows migrants who want the smoothest possible transition, non-technical users</p> <p>If Linux Mint is "familiar," Zorin OS is "identical." It's built specifically to look and feel like Windows — Start menu, taskbar, system tray, right-click behavior — to the point where you can hand it to someone who's never touched Linux and they'll find their way around in minutes.</p> <p>Zorin is Ubuntu-based, so it inherits full APT compatibility and Ubuntu's enormous software library. But where Mint stays neutral on looks, Zorin actively mimics Windows 11's design language. There's even a <strong>"Zorin Appearance"</strong> panel where you can switch the desktop layout between Windows-style, macOS-style, or a traditional GNOME-style — without installing anything extra.</p> <p><strong>What makes it great:</strong></p> <ul>
+<li>The most Windows-like Linux experience available — bar none</li>
+<li>Zorin Appearance panel lets you switch desktop layouts in one click</li>
+<li>Ships with a good default app selection — LibreOffice, media players, browser — ready to use</li>
+<li>Zorin Connect (like KDE Connect) — sync your phone notifications, files, and clipboard with your PC</li>
+<li>Ubuntu base means maximum software compatibility and tutorial coverage</li>
+<li>Zorin OS Lite edition runs well on older hardware (4GB RAM, older CPUs)</li>
+</ul> <p><strong>What to watch out for:</strong><br>
+Zorin has a <strong>free Core edition</strong> and a paid <strong>Pro edition</strong> (~$47 one-time). The Pro version unlocks extra desktop layouts (macOS-style, touchscreen-optimized), professional app bundles, and priority support. The free version is genuinely complete — you're not missing core features, just cosmetic extras. Some users feel the Pro upsell is prominent for an open-source distro.<br>
+</p> <div>
+<pre><code><span># Same Ubuntu/Debian commands — fully familiar</span>
+<span>sudo </span>apt update <span>&amp;&amp;</span> <span>sudo </span>apt upgrade <span>-y</span>
+<span>sudo </span>apt <span>install</span> &lt;package&gt;
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Pick Zorin if:</strong> You're helping a family member switch from Windows, you want zero learning curve on the desktop, or you need a distro that works well on older hardware with a lightweight edition.</p> <hr> <h2> <a name="4-fedora-the-developers-daily-driver" href="#4-fedora-the-developers-daily-driver"> </a> 4. Fedora — The Developer's Daily Driver
+</h2> <p><strong>Best for:</strong> Developers, people who want cutting-edge without full rolling release chaos</p> <p>Fedora is Red Hat's "community upstream" — meaning new features land in Fedora first, get stabilized, then go into RHEL (the enterprise version). This makes Fedora consistently <strong>6-12 months ahead</strong> of Ubuntu on kernel versions, toolchains, and desktop features.</p> <p>It ships pure upstream GNOME — no patches, no modifications. If GNOME released it, Fedora has it.</p> <p><strong>What makes it great:</strong></p> <ul>
+<li>DNF package manager is fast and excellent</li>
+<li>Ships the newest stable kernel — better hardware support for recent machines</li>
+<li>Flatpak is the default extra-app format (better than Snap — sandboxed, fast, universal)</li>
+<li>Fedora Workstation, Silverblue (immutable), and Server editions each solve different needs</li>
+<li>If you learn Linux on Fedora, you understand RHEL/CentOS — hugely valuable professionally</li>
+</ul> <p><strong>What to watch out for:</strong><br>
+Fedora releases every ~6 months and is only supported for ~13 months. You <em>will</em> upgrade. Also, some proprietary drivers (Nvidia especially) require a third-party repo (RPM Fusion).<br>
+</p> <div>
+<pre><code><span># Fedora's DNF is genuinely great</span>
+<span>sudo </span>dnf update <span>-y</span>
+<span>sudo </span>dnf <span>install</span> &lt;package&gt;
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Pick Fedora if:</strong> You're a developer who wants modern tools, you care about GNOME being excellent, or you want skills transferable to enterprise Linux.</p> <hr> <h2> <a name="5-arch-linux-maximum-control-maximum-effort" href="#5-arch-linux-maximum-control-maximum-effort"> </a> 5. Arch Linux — Maximum Control, Maximum Effort
+</h2> <p><strong>Best for:</strong> Developers who want to understand every layer of their system, power users, people who want the absolute latest software</p> <p>Arch is a rolling release distro where <em>you build your own system</em> from scratch. No graphical installer. No pre-installed desktop. You choose every component.</p> <p>This sounds painful. It kind of is the first time. But the result is a system with zero bloat — only exactly what you installed, configured exactly how you want it.</p> <p>The <strong>AUR (Arch User Repository)</strong> is the real killer feature — a community-maintained collection of basically every piece of Linux software ever. If it exists, it's probably in the AUR.</p> <p><strong>What makes it great:</strong></p> <ul>
+<li>Always the absolute latest software (rolling release)</li>
+<li>The Arch Wiki is the best Linux documentation resource on the internet — useful even if you don't use Arch</li>
+<li>Pacman is fast and elegant</li>
+<li>AUR gives you access to almost any software imaginable</li>
+<li>Deep understanding of Linux comes naturally because you built it yourself</li>
+</ul> <p><strong>What to watch out for:</strong><br>
+Rolling release means occasional breakage. This is manageable with care (<code>paru -Syu</code> before a big presentation is not advised). Also: the install process is genuinely manual.<br>
+</p> <div>
+<pre><code><span># Arch users install everything themselves</span>
+pacman <span>-S</span> &lt;package&gt; <span># official repos</span>
+paru <span>-S</span> &lt;package&gt; <span># AUR helper for community packages</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Pick Arch if:</strong> You want to learn how Linux actually works, you need bleeding-edge software, or you want maximum customization.</p> <hr> <h2> <a name="6-manjaro-arch-without-the-headache" href="#6-manjaro-arch-without-the-headache"> </a> 6. Manjaro — Arch Without the Headache
+</h2> <p><strong>Best for:</strong> People who want Arch's power with an actual installer, intermediate users ready to leave Ubuntu</p> <p>Manjaro is Arch underneath — same AUR access, same rolling release, same pacman — but ships with a polished graphical installer, pre-configured desktop environments (KDE, GNOME, XFCE), and hardware detection that just works out of the box.</p> <p>The key difference: Manjaro holds packages back from Arch's repos for <strong>2 extra weeks</strong> of testing before pushing to users. You're still rolling, still fresh, but with a small safety buffer baked in. For most people stepping up from Ubuntu, this is exactly the right trade-off.</p> <p><strong>What makes it great:</strong></p> <ul>
+<li>Full AUR access — same massive software library as Arch</li>
+<li>Graphical installer — no manual partitioning commands</li>
+<li>Excellent hardware detection, especially Nvidia and WiFi cards</li>
+<li>Multiple official desktop flavors — the KDE Plasma edition is particularly polished</li>
+<li>Skills transfer directly to Arch if you ever want to go deeper</li>
+</ul> <p><strong>What to watch out for:</strong><br>
+The 2-week delay occasionally causes AUR package conflicts — some AUR packages assume you have the very latest Arch libs. Rare, but worth knowing. Manjaro also had some past community trust issues (expired SSL certs) though it's been solid since.<br>
+</p> <div>
+<pre><code><span># Same pacman as Arch — your skills transfer perfectly</span>
+<span>sudo </span>pacman <span>-Syu</span> <span># update everything</span>
+<span>sudo </span>pacman <span>-S</span> &lt;package&gt; <span># install from repos</span>
+pamac <span>install</span> &lt;package&gt; <span># Manjaro's friendly package manager CLI</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Pick Manjaro if:</strong> You want AUR access and rolling release freshness but aren't ready to install an OS manually from scratch. It's the best Arch on-ramp available.</p> <hr> <h2> <a name="7-debian-the-bedrock" href="#7-debian-the-bedrock"> </a> 7. Debian — The Bedrock
+</h2> <p><strong>Best for:</strong> Servers, stability-critical systems, sysadmins, people who want software that never breaks</p> <p>Debian is what Ubuntu is built on. It prioritizes stability above everything — packages are tested exhaustively before entering the stable release, which means they can be 1-2 years behind the latest version.</p> <p>On a server, this is perfect. You don't <em>want</em> your database server running experimental kernel builds.</p> <p><strong>What makes it great:</strong></p> <ul>
+<li>Exceptional stability — Debian Stable is battle-tested</li>
+<li>Huge package repository</li>
+<li>Runs on almost any hardware (x86, ARM, MIPS, RISC-V...)</li>
+<li>The standard base for containers and VPS images worldwide</li>
+<li>Free of corporate influence — community-driven</li>
+</ul> <p><strong>What to watch out for:</strong><br>
+Debian Stable is <em>old</em> by design. Newer hardware sometimes needs backport packages. Not a great desktop experience out of the box — it's a server OS that also runs desktops.</p> <p><strong>Pick Debian if:</strong> You're running servers, you prioritize stability over new features, or you want the most principled free software distro.</p> <hr>
+<h2> <a name="8-opensuse-the-underrated-gem" href="#8-opensuse-the-underrated-gem"> </a> 8. openSUSE — The Underrated Gem
+</h2> <p><strong>Best for:</strong> Developers wanting rolling release with safety nets, sysadmins, KDE fans</p> <p>openSUSE comes in two flavors: <strong>Leap</strong> (stable, RHEL-based) and <strong>Tumbleweed</strong> (rolling release). Tumbleweed is what makes it interesting — it's a rolling release but with an automated testing pipeline that means updates are validated before they land on your machine. You get freshness without the breakage risk of raw Arch.</p> <p><strong>YaST</strong> is openSUSE's control center — a graphical tool for configuring nearly everything (network, services, users, firewall, packages) that makes system administration approachable.<br>
+</p> <div>
+<pre><code><span># Tumbleweed keeps you rolling safely</span>
+<span>sudo </span>zypper refresh <span>&amp;&amp;</span> <span>sudo </span>zypper update <span># update everything</span>
+<span>sudo </span>zypper <span>install</span> &lt;package&gt; <span># install software</span>
+yast2 <span># launch the graphical control center</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Pick openSUSE Tumbleweed if:</strong> You want rolling release stability, KDE Plasma as a polished desktop, or you're a sysadmin who values good tooling.</p> <hr> <h2> <a name="the-quick-comparison" href="#the-quick-comparison"> </a> The Quick Comparison
+</h2> <div><table>
+<thead>
+<tr>
+<th>Distro</th>
+<th>Stability</th>
+<th>Freshness</th>
+<th>Beginner-Friendly</th>
+<th>Best Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ubuntu</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td>General, servers, cloud</td>
+</tr>
+<tr>
+<td><strong>Linux Mint</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Windows migrants, beginners</td>
+</tr>
+<tr>
+<td><strong>Zorin OS</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Windows/Mac look-alikes, family PCs</td>
+</tr>
+<tr>
+<td><strong>Fedora</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Developers, workstations</td>
+</tr>
+<tr>
+<td><strong>Arch</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Power users, learners</td>
+</tr>
+<tr>
+<td><strong>Manjaro</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Arch on-ramp, rolling + friendly</td>
+</tr>
+<tr>
+<td><strong>Debian</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Servers, stability</td>
+</tr>
+<tr>
+<td><strong>openSUSE TW</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Developers, KDE fans</td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="the-honest-decision-tree" href="#the-honest-decision-tree"> </a> The Honest Decision Tree
+</h2> <div>
+<pre><code>Are you new to Linux?
+├── Yes → Coming from Windows? → Zorin OS (closest to Windows)
+│ Want familiar but free? → Linux Mint
+│ Coming from Mac? → Ubuntu or Fedora
+└── No → Keep going Are you setting up a server or VPS?
+├── Yes → Ubuntu LTS or Debian
+└── No → Keep going Do you want the absolute latest software?
+├── Yes → Want full control? → Arch Linux
+│ Want a safety net? → Manjaro or openSUSE Tumbleweed
+└── No → Keep going Are you a developer who wants modern tools without chaos?
+└── Fedora (the sweet spot answer)
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="what-about-niche-picks" href="#what-about-niche-picks"> </a> What About Niche Picks?
+</h2> <p><strong>Pop!_OS</strong> — Ubuntu base, but with an excellent GNOME customization and best-in-class Nvidia driver support out of the box. Great for gaming.</p> <p><strong>Kali Linux</strong> — Security and penetration testing tooling pre-installed. Not a daily driver. Use it for its specific purpose.</p> <p><strong>Tails</strong> — Runs entirely in RAM, leaves no trace, routes everything through Tor. For maximum privacy situations.</p> <p><strong>NixOS</strong> — Declarative configuration — your entire OS config lives in one file, reproducible anywhere. Steep learning curve but beloved by the people who get it.</p> <hr> <h2> <a name="the-real-answer" href="#the-real-answer"> </a> The Real Answer
+</h2> <p>There's no "best" distro. There's only the best distro <strong>for your situation right now</strong>.</p> <p>If you're just starting — <strong>Zorin OS or Mint</strong>. Familiar desktop, no friction, same Ubuntu compatibility underneath.<br>
+If you're developing daily — <strong>Fedora</strong>. Fresh toolchains, excellent GNOME, professionally relevant.<br>
+If you run servers — <strong>Ubuntu LTS or Debian</strong>. Stable, documented, industry standard.<br>
+If you want rolling release without the risk — <strong>Manjaro</strong>. Arch underneath, sane updates, great hardware support.<br>
+If you want to <em>understand</em> Linux — <strong>Arch</strong>. Do it once. Even if you go back to Fedora afterward, you'll understand everything you're running.</p> <p>The distro matters less than you think once you're past the basics. They're all Linux. The terminal commands are the same. The concepts are the same. Pick one and go deep.</p> <hr> <p><em>What distro are you running? Drop it in the comments — and tell us why. This is always the most interesting thread.</em></p> <hr> <p>by <a href="https://habibullah.dev/">md8-habibullah</a><br>
+<em>Tags: <code>linux</code> <code>beginners</code> <code>devops</code> <code>webdev</code> <code>opensource</code></em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

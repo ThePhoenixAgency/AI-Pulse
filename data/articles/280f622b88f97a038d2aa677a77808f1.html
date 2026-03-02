@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yet Another Fix Coming For Older AMD GPUs On Linux - Thanks To Valve Developer</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Yet Another Fix Coming For Older AMD GPUs On Linux - Thanks To Valve Developer</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/22/2026 11:33:39 AM | <a href="https://www.phoronix.com/news/Hawaii-Macs-AMDGPU-DC-Fix" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div>
+<p><img alt="RADEON" src="https://www.phoronix.com/assets/categories/radeon.webp"></p><p>
+Timur Kristóf of Valve's open-source Linux graphics driver team has been doing a fantastic job enhancing the older AMD Radeon GPU support under Linux. Last year he made enough improvements to the AMDGPU open-source driver that older Radeon GCN 1.0/1.1 dGPUs <a href="https://www.phoronix.com/review/linux-619-amdgpu-radeon">switched over to AMDGPU by default for nice performance gains</a>, RADV Vulkan driver support out of the box, and all around better experience than using the legacy Radeon driver. He's also been fixing countless bugs affecting older AMD GPUs. There is another improvement on the way for benefiting some with aging AMD GPUs.
+</p><p>
+Since June 2024 there has been <a href="https://gitlab.freedesktop.org/drm/amd/-/issues/3425">a bug report</a> over AMDGPU issues when trying to use a Radeon R9 M380 graphics processor within an iMac under Linux. Loading the AMDGPU driver with the Radeon GPU in this aging Intel-powered iMac would resort in issues at boot and kernel errors around the AtomBIOS and various errors, for example:
+</p><blockquote>amdgpu 0000:01:00.0: amdgpu: failed to send message 10a ret is 0
+<br>[drm:uvd_v4_2_start [amdgpu]] *ERROR* UVD not responding, giving up!!!
+<br>[drm:amdgpu_device_init [amdgpu]] *ERROR* hw_init of IP block failed -110</blockquote>
+<p>This issue was also reported by another user more recently and it was also noted that if using the legacy Radeon kernel driver it would work out fine. </p><p>
+There was an uptick in activity over the past week and then Timur was able to get his hands on such an old iMac with Radeon early GCN graphics. After more than one and a half years of this bug report being open, Timur was able to make progress on it over the past week and <a href="https://gitlab.freedesktop.org/drm/amd/-/issues/3425#note_3338643">reported</a> on tracking down the issue. He discovered that he was able to make the GPU work when disabling the memory clock dynamic power management functionality. He also noticed that with the AMDGPU DC display code this was occurring but not if disabling DC usage. Ultimately the bug was tracked down to the AMDGPU driver not implementing the voltage dependency on the display clock and that the default voltage for this hardware wasn't high enough to properly drive the display controller.
+</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=imac_171_sml" alt="Apple iMac 17,1"></p>
+<p>Timur has <a href="https://gitlab.freedesktop.org/Venemo/linux/-/commits/ven_smu7_fixes">this Git branch</a> with his initial fixes for this problem and will be working to get them reviewed on the mailing list and hopefully upstreamed not too long thereafter. The patches disable the memory clock dynamic power management (MCLK DPM) on problematic Sea Islands GPUs and to force using the highest memory clock when DPM is disabled. Plus some other patches too.
+</p><p>
+So with that it's looking like decade old Apple iMacs with GCN ~1.1 era GPUs may begin playing nicely on Linux with the AMDGPU driver.</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

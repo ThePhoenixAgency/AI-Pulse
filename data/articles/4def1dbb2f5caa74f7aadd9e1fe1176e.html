@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DevClaw — Every group chat becomes an autonomous dev team</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>DevClaw — Every group chat becomes an autonomous dev team</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/23/2026 3:49:38 PM | <a href="https://devclaw.dev/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div> <nav> </nav> <div> <p>The problem</p> <h2>AI agents write great code.<br>They're terrible at managing pipelines.</h2> <p> Every task involves 10+ coordinated steps. Agents follow them imperfectly. The more steps, the more things break. You end up babysitting the thing you built to avoid babysitting. </p> <div> <div> <p></p> <h3>Forgotten steps</h3> <p>Label transitioned but state didn't update. Session spawned but audit log didn't write. Now you have inconsistent state and an agent trying to figure out what went wrong — which it will do poorly.</p> </div> <div> <p></p> <h3>Token waste</h3> <p>Every new sub-agent session reads the entire codebase from scratch. A huge chunk of token usage isn't even coding — it's the agent reasoning about "what should I do next."</p> </div> <div> <p></p> <h3>Zombie sessions</h3> <p>Sessions die, workers get stuck, state drifts. Active worker with a dead session. Worker stuck for hours. Orphaned references nobody cleans up.</p> </div> <div> <p></p> <h3>Wrong model, wrong job</h3> <p>Opus for a CSS typo. Haiku for a database migration. Without automatic model selection, you're either overpaying or under-delivering on every task.</p> </div> </div> </div> <div> <div> <p>The solution</p> <h2>Guardrails as code,<br>not as prompts.</h2> <p> Don't make the agent responsible for process. Move orchestration into deterministic code. The agent provides intent. Tooling handles mechanics. One atomic tool call replaces a 10-step agent checklist. </p> </div> <div> <div> <p><span>orchestrator → devclaw</span> </p></div> <div>
+<p> <span>task_pickup</span>({ <span>issueId</span>: <span>42</span>, <span>role</span>: <span>"dev"</span>, <span>projectGroupId</span>: <span>"-100234"</span> })</p><p> → { <span>sessionAction</span>: <span>"send"</span>, <span>sessionId</span>: <span>"a9e4d078..."</span>, <span>model</span>: <span>"sonnet"</span> }</p></div> </div> </div> <div> </div> <div> <div> <p>Core features</p> <h2>Four tools replace hundreds<br>of lines of orchestration logic.</h2> </div> <div> <div> <p></p> <h3>Per-project isolation</h3> <p>Each Telegram group is a separate project. Own queue, workers, session state. The moment projects share anything, you get cross-contamination. DevClaw prevents that by design.</p> </div> <div> <p></p> <h3>Atomic operations</h3> <p>Every operation that touches multiple things succeeds or fails as a unit. Label, state, session, audit log — all in one call. Roll back on any failure. No partial state corruption.</p> </div> <div> <p></p> <h3>Session reuse</h3> <p>When a DEV finishes task A and task B is waiting, it goes to the existing session. The worker already knows the codebase. No 50K token re-read. Massive savings on sequential tasks.</p> </div> <div> <p></p> <h3>Smart model selection</h3> <p>Haiku for typos. Sonnet for features. Opus for architecture. The right model for every task, selected automatically by complexity. Override anytime with modelOverride.</p> </div> <div> <p></p> <h3>Token-free scheduling</h3> <p>A heartbeat scans queues and dispatches tasks through pure CLI calls. Zero LLM tokens burned on "what should I do next." The model only activates when there's code to write.</p> </div> <div> <p></p> <h3>Self-healing health checks</h3> <p>Automated detection for zombies, stale state, and orphaned references. Auto-fix the straightforward cases, flag the ambiguous ones. Your pipeline recovers without you.</p> </div> </div> </div> <div> <p>The numbers</p> <h2>Sleep through the night.<br>Wake up to completed issues.</h2> <p> Model tiering, session reuse, and token-free scheduling compound to massive savings. But the real win is reliability — across multiple projects, simultaneously. </p> <div> <div> <p>60-80%</p> <p>Token savings vs. one large model with fresh context each time</p> </div> <div> <p>30-50%</p> <p>Cost reduction on simple tasks via automatic model tiering</p> </div> <div> <p>~50K</p> <p>Tokens saved per session reuse by not re-reading the codebase</p> </div> <div> <p>0</p> <p>Tokens spent on scheduling and orchestration decisions</p> </div> </div> </div> <div> <div> <p>Model tiering</p> <h2>Think in roles, not model IDs.</h2> <p> A CSS typo doesn't need your most expensive developer. A database migration shouldn't go to the intern. </p> </div> <p><span>Junior</span> <span>Haiku</span> <span>Typos, CSS fixes, renames, copy changes</span> <span>~70% cheaper</span> </p> <p><span>Medior</span> <span>Sonnet</span> <span>Features, bug fixes, multi-file changes</span> <span>Balanced</span> </p> <p><span>Senior</span> <span>Opus</span> <span>Architecture, migrations, security, system-wide refactoring</span> <span>Full power</span> </p> </div> <div> <div> <p>From the community</p> <h2>Built in the open.<br>Used by its creator every day.</h2> </div> <div> <p> Without atomic state management you are just funding expensive zombie sessions. </p> <p> Community feedback on <span>Reddit</span> — validating the guardrails-as-code approach </p> </div> </div> <div> <h2>Ship while you sleep.</h2> <p> DevClaw is open source, MIT licensed, and built on OpenClaw. Install it, point it at a repo, and let your agents do the work. </p> </div> </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

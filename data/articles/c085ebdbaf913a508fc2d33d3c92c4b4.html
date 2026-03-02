@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Docsome</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Docsome</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 8:36:12 AM | <a href="https://docsome.guarana.studio/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><blockquote>
+<p>Zero to docs under 15 seconds.<sup><a href="#footnote1">[1]</a><a></a></sup></p>
+</blockquote>
+<div> <h2><p>Docsome is currently in early alpha.</p>
+</h2>
+</div><p>If you ship things fast and want your documentation to keep up, you are in the right place. Write one <a href="https://commonmark.org/help/" target="_blank" rel="noopener noreferrer">Markdown</a> file, run Docsome, and get a polished documentation site — no boilerplate, no configuration rabbit holes.</p>
+<p>Docsome is a documentation framework built around a single constraint: you maintain one Markdown file, and the tooling handles everything else. That means no config files to manage, no build pipeline to wire up, and no time lost on setup. You still get a set of frontmatter options to tailor the site to your project's needs.</p>
+<h3><a href="#features">Features</a></h3><h4><a href="#no-config-files">No config files</a></h4><p>Docsome reads your <code>.md</code> file and takes care of Vite, routing, and HTML generation automatically — there is nothing else to set up.</p>
+<h4><a href="#batteries-included">Batteries included</a></h4><p>Ships with an elegant UI, a light/dark theme, and brand customization support via frontmatter. Looking good out of the box is the default.</p>
+<h4><a href="#easy-to-maintain">Easy to maintain</a></h4><p>Have a rough draft sitting in a text file? That is already enough to start. Docsome is designed to grow with your documentation, not get in its way.</p>
+<h4><a href="#fully-static">Fully static</a></h4><p>Unlike documentation frameworks that require a server to handle routing, Docsome outputs a truly static site with zero client-side routing. No rewrites, no redirects, no infrastructure to babysit.</p>
+<h4><a href="#ai-agent-friendly">AI agent friendly</a></h4><p>Every build automatically generates an <code>/llms.txt</code> file, making your documentation easy to discover and consume by AI agents and RAG pipelines.</p>
+<h3><a href="#getting-started">Getting Started</a></h3><h4><a href="#prerequisites">Prerequisites</a></h4><ul>
+<li><a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js</a> (v20+)</li>
+<li>Terminal</li>
+</ul>
+<h4><a href="#build-your-docs">Build your docs</a></h4><p>Docsome ships with a CLI that takes a single Markdown file and produces a ready-to-deploy static site:</p>
+<div> <nav> </nav> <div> <figure> <pre><code><span><span>npx</span><span> docsome</span><span> build</span><span> DOCS.md</span></span>
+<span></span></code></pre>
+</figure> </div> </div><h4><a href="#preview-with-dev-server">Preview with dev server</a></h4><p>The CLI includes a development server that watches your Markdown file and reflects changes instantly — no rebuild needed on every save:</p>
+<div> <nav> </nav> <div> <figure> <pre><code><span><span>npx</span><span> docsome</span><span> dev</span><span> DOCS.md</span></span>
+<span></span></code></pre>
+</figure> </div> </div><h4><a href="#scripts-for-js-project">Scripts for JS project</a></h4><p>If your project already has a package.json, add these scripts to run Docsome without typing the full command each time:</p>
+<figure> <pre><code><span><span>"scripts"</span><span>: {</span></span>
+<span><span> "docs:build"</span><span>:</span><span> "npx docsome build DOCS.md --outDir docs_dist"</span><span>,</span></span>
+<span><span> "docs:dev"</span><span>:</span><span> "npx docsome dev DOCS.md"</span><span>,</span></span>
+<span><span>}</span></span>
+<span></span></code></pre> </figure><p>Docsome is fully compatible with <a href="https://github.github.com/gfm/" target="_blank" rel="noopener noreferrer">GitHub Flavored Markdown</a>, so tables, task lists, and all standard GFM syntax work as expected. On top of that, it ships with first-class support for <a href="https://mermaid.ai/web/" target="_blank" rel="noopener noreferrer">Mermaid</a> diagrams, KaTeX math, and custom alerts.</p>
+<h3><a href="#markdown-features">Markdown features</a></h3><h4><a href="#tables">Tables</a></h4><div> <nav> </nav> <div>
+<table><thead>
+<tr>
+<th>foo</th>
+<th>bar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>baz</td>
+<td>bim</td>
+</tr>
+</tbody>
+</table> </div> </div><h4><a href="#task-list-items">Task list items</a></h4><div> <nav> </nav> <div>
+<ul>
+<li> Fix the kitchen sink</li>
+<li> Deploy to production</li>
+</ul> </div> </div><h4><a href="#alerts">Alerts</a></h4><p>Call out important information with styled alert blocks. Four variants are available: info, warning, danger, and success.</p>
+<div> <nav> </nav> <div> <h2><p>This is an additional information.</p>
+</h2>
+</div> </div><h3><a href="#mermaid">Mermaid</a></h3><p>Render diagrams directly in your Markdown using Mermaid syntax inside a fenced code block:</p>
+<h3><a href="#math">Math</a></h3><p>Render mathematical expressions using KaTeX inside a math fenced code block:</p>
+<h3><a href="#html-and-css">HTML &amp; CSS</a></h3><p>Docsome is built with Tailwind and ships with <a href="https://basecoatui.com/" target="_blank" rel="noopener noreferrer">Basecoat</a>, giving you access to a full set of ready-made UI components directly inside your Markdown. Check the full <a href="https://basecoatui.com/kitchen-sink/" target="_blank" rel="noopener noreferrer">Basecoat component list</a> for all available classes and variants.</p>
+<p>Docsome intentionally keeps customization focused. Rather than exposing a sprawling config file, all site settings live in the <a href="https://docs.github.com/en/contributing/writing-for-github-docs/using-yaml-frontmatter" target="_blank" rel="noopener noreferrer">YAML frontmatter</a> block at the top of your Markdown file — the same file you're already editing.</p>
+<h3><a href="#reference">Reference</a></h3><h4><a href="#general-settings">General settings</a></h4><figure> <pre><code><span><span>lang</span><span>:</span><span> en</span><span> # Language of the site, set to &lt;html&gt; tag [default: en]</span></span>
+<span><span>title</span><span>:</span><span> Custom Title</span><span> # Display name of the tab [default: Docsome]</span></span>
+<span><span>description</span><span>:</span><span> My new site</span><span> # Meta description of the site</span></span>
+<span><span>base</span><span>:</span><span> /docs/</span><span> # Base URL of the site</span></span>
+<span></span></code></pre>
+</figure><h4><a href="#logo">Logo</a></h4><div> <nav> </nav> <div> <figure> <pre><code><span><span>logo</span><span>:</span></span>
+<span><span> src</span><span>:</span><span> BASE64_OF_SVG_FILE</span><span> # Base 64 encoded SVG file [default: PHN...mc+]</span></span>
+<span><span> invertible</span><span>:</span><span> true</span><span> # If logo colors should invert in the dark mode [default: false]</span></span>
+<span><span> alt</span><span>:</span><span> My site's logo</span><span> # Alt text for the logo</span></span>
+<span></span></code></pre>
+</figure> </div> </div><h4><a href="#head">Head</a></h4><figure> <pre><code><span><span>head</span><span>:</span></span>
+<span><span> # Define additional script</span></span>
+<span><span> - </span><span>tag</span><span>:</span><span> script</span></span>
+<span><span> attrs</span><span>:</span></span>
+<span><span> defer</span><span>:</span><span> true</span></span>
+<span><span> src</span><span>:</span><span> https://example.com/script.js</span></span>
+<span><span> data-website-id</span><span>:</span><span> 123asd</span></span>
+<span><span> # Define additional, external styles</span></span>
+<span><span> - </span><span>tag</span><span>:</span><span> link</span></span>
+<span><span> attrs</span><span>:</span></span>
+<span><span> rel</span><span>:</span><span> stylesheet</span></span>
+<span><span> href</span><span>:</span><span> https://example.com/style.css</span></span>
+<span><span> # Define additional, inline script</span></span>
+<span><span> - </span><span>tag</span><span>:</span><span> script</span></span>
+<span><span> content</span><span>:</span><span> |</span></span>
+<span><span> window.test('init', {</span></span>
+<span><span> clientId: 'YOUR_CLIENT_ID',</span></span>
+<span><span> });</span></span>
+<span></span></code></pre> </figure><h4><a href="#top-bar">Top Bar</a></h4><figure> <pre><code><span><span>topBar</span><span>:</span></span>
+<span><span> links</span><span>:</span><span> # Additional links to display in the top bar</span></span>
+<span><span> - </span><span>icon</span><span>:</span><span> github</span><span> # Button's icon [enum: github, twitter, linkedin, facebook, twitch, globe]</span></span>
+<span><span> href</span><span>:</span><span> https://github.com/guarana-studio</span></span>
+<span><span> llms</span><span>:</span><span> true</span><span> # If llms.txt button should be shown in the top bar [default: false]</span></span>
+<span></span></code></pre> </figure><h4><a href="#side-bar">Side Bar</a></h4><figure> <pre><code><span><span>sideBar</span><span>:</span></span>
+<span><span> linkGroups</span><span>:</span><span> # Groups of additional links in the side bar</span></span>
+<span><span> - </span><span>label</span><span>:</span><span> Legals</span></span>
+<span><span> links</span><span>:</span><span> # Additional links</span></span>
+<span><span> - </span><span>href</span><span>:</span><span> https://example.com/privacy</span></span>
+<span><span> label</span><span>:</span><span> Privacy Policy</span></span>
+<span><span> - </span><span>href</span><span>:</span><span> https://example.com/terms</span></span>
+<span><span> label</span><span>:</span><span> Terms of Service</span></span>
+<span></span></code></pre> </figure><div> <h2><p><code>%YEAR%</code> will be replaced with the current year at build time.</p>
+</h2>
+</div><figure> <pre><code><span><span>footer</span><span>:</span></span>
+<span><span> text</span><span>:</span><span> Copyright %YEAR% ACME</span><span> # Text or HTML to display at the bottom of the page</span></span>
+<span></span></code></pre> </figure><h4><a href="#announcement">Announcement</a></h4><figure> <pre><code><span><span>announcement</span><span>:</span></span>
+<span><span> text</span><span>:</span><span> Announcement text</span><span> # Text to display in the announcement</span></span>
+<span><span> href</span><span>:</span><span> https://example.com</span><span> # Link to open on announcement click</span></span>
+<span></span></code></pre> </figure><h3><a href="#git-hub-pages-deployment">GitHub Pages deployment</a></h3><p>The workflow below builds your docs and deploys them to GitHub Pages on every push to main. It assumes you have added the docs:build script to your <code>package.json</code> as shown in <a href="https://docsome.guarana.studio/#getting-started" target="_blank" rel="noopener noreferrer">Getting Started</a>.</p>
+<div> <nav> </nav> <div> <figure> <pre><code><span><span>name</span><span>:</span><span> Deploy Docs to GitHub Pages</span></span>
+<span><span>on</span><span>:</span></span>
+<span><span> push</span><span>:</span></span>
+<span><span> branches</span><span>:</span><span> [</span><span>"main"</span><span>]</span></span>
+<span><span>concurrency</span><span>:</span></span>
+<span><span> group</span><span>:</span><span> pages</span></span>
+<span><span> cancel-in-progress</span><span>:</span><span> true</span></span>
+<span><span>jobs</span><span>:</span></span>
+<span><span> docs</span><span>:</span></span>
+<span><span> name</span><span>:</span><span> Publish docs</span></span>
+<span><span> runs-on</span><span>:</span><span> ubuntu-latest</span></span>
+<span><span> # Grant GITHUB_TOKEN the permissions required to make a Pages deployment</span></span>
+<span><span> permissions</span><span>:</span></span>
+<span><span> pages</span><span>:</span><span> write</span></span>
+<span><span> id-token</span><span>:</span><span> write</span></span>
+<span><span> # Deploy to the github-pages environment</span></span>
+<span><span> environment</span><span>:</span></span>
+<span><span> name</span><span>:</span><span> github-pages</span></span>
+<span><span> url</span><span>:</span><span> ${{ steps.deployment.outputs.page_url }}</span></span>
+<span><span> steps</span><span>:</span></span>
+<span><span> - </span><span>uses</span><span>:</span><span> actions/checkout@v4</span></span>
+<span><span> - </span><span>uses</span><span>:</span><span> actions/setup-node@v6</span></span>
+<span><span> with</span><span>:</span></span>
+<span><span> node-version</span><span>:</span><span> 24</span></span>
+<span><span> - </span><span>name</span><span>:</span><span> Install dependencies</span></span>
+<span><span> run</span><span>:</span><span> npm ci</span></span>
+<span><span> - </span><span>name</span><span>:</span><span> Build docs</span></span>
+<span><span> run</span><span>:</span><span> npm run docs:build</span></span>
+<span><span> - </span><span>name</span><span>:</span><span> Upload static files as artifact</span></span>
+<span><span> uses</span><span>:</span><span> actions/upload-pages-artifact@v3</span></span>
+<span><span> with</span><span>:</span></span>
+<span><span> path</span><span>:</span><span> docs_dist/</span></span>
+<span><span> - </span><span>name</span><span>:</span><span> Deploy to GitHub Pages</span></span>
+<span><span> uses</span><span>:</span><span> actions/deploy-pages@v4</span></span>
+<span></span></code></pre>
+</figure> </div> </div><h3><a href="#nightly-build">Nightly build</a></h3><p><a href="https://pkg.pr.new/~/guarana-studio/docsome" target="_blank" rel="noopener noreferrer">Nightly builds</a> track the latest commits on main and are published automatically via pkg.pr.new. Use them to try out unreleased features or test a fix before it lands in a stable release:</p>
+<figure> <pre><code><span><span>npx</span><span> https://pkg.pr.new/guarana-studio/docsome@main</span><span> build</span><span> DOCS.md</span></span>
+<span><span>npx</span><span> https://pkg.pr.new/guarana-studio/docsome@main</span><span> dev</span><span> DOCS.md</span></span>
+<span></span></code></pre>
+</figure><hr>
+<section>
+<ol>
+<li><p>On a standard machine. <a href="#footnote-ref1">︎</a></p>
+</li>
+</ol>
+</section>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - nicotsx/zerobyte: Backup automation for self-hosters. Built on top of restic</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - nicotsx/zerobyte: Backup automation for self-hosters. Built on top of restic</h1>
+  <div class="metadata">
+    Source: Hacker News (nouveautés) | Date: 2/28/2026 9:59:53 AM | <a href="https://github.com/nicotsx/zerobyte" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <pre><code>Zerobyte Powerful backup automation for your remote storageEncrypt, compress, and protect your data with ease Backup management with scheduling and monitoring</code></pre>
+<div><p>Warning</p><p>Zerobyte is still in version 0.x.x and is subject to major changes from version to version. I am developing the core features and collecting feedbacks. Expect bugs! Please open issues or feature requests</p>
+</div>
+<p>
+<a href="https://www.buymeacoffee.com/nicotsx"><img src="https://camo.githubusercontent.com/0cf29a542375e1a46e84d8bf5805a4e5c0a6ee98b6547ccdc0c55eed49d99c69/68747470733a2f2f63646e2e6275796d6561636f666665652e636f6d2f627574746f6e732f76322f64656661756c742d79656c6c6f772e706e67" alt="Buy Me A Coffee"></a>
+</p>
+<div><h2>Intro</h2><a href="#intro"></a></div>
+<p>Zerobyte is a backup automation tool that helps you save your data across multiple storage backends. Built on top of Restic, it provides an modern web interface to schedule, manage, and monitor encrypted backups of your remote storage.</p>
+<div><h3>Features</h3><a href="#features"></a></div>
+<ul>
+<li>&nbsp; <strong>Automated backups</strong> with encryption, compression and retention policies powered by Restic</li>
+<li>&nbsp; <strong>Flexible scheduling</strong> For automated backup jobs with fine-grained retention policies</li>
+<li>&nbsp; <strong>End-to-end encryption</strong> ensuring your data is always protected</li>
+<li>&nbsp; <strong>Multi-protocol support</strong>: Backup from NFS, SMB, WebDAV, SFTP, or local directories</li>
+</ul>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<p>In order to run Zerobyte, you need to have Docker and Docker Compose installed on your server. Then, you can use the provided </p><pre><code>docker-compose.yml</code></pre> file to start the application.<p></p>
+<div><pre><span>services</span>: <span>zerobyte</span>: <span>image</span>: <span>ghcr.io/nicotsx/zerobyte:v0.29</span> <span>container_name</span>: <span>zerobyte</span> <span>restart</span>: <span>unless-stopped</span> <span>cap_add</span>: - <span>SYS_ADMIN</span> <span>ports</span>: - <span><span>"</span>4096:4096<span>"</span></span> <span>devices</span>: - <span>/dev/fuse:/dev/fuse</span> <span>environment</span>: - <span>TZ=Europe/Paris </span><span><span>#</span> Set your timezone here</span> - <span>BASE_URL=http://localhost:4096 </span><span><span>#</span> URL you will use to access Zerobyte</span> - <span>APP_SECRET=94bad46...c66e25d5c2b </span><span><span>#</span> Generate your own secret with `openssl rand -hex 32`</span> <span>volumes</span>: - <span>/etc/localtime:/etc/localtime:ro</span> - <span>/var/lib/zerobyte:/var/lib/zerobyte</span></pre></div>
+<div><p>Warning</p><p>It is highly discouraged to run Zerobyte on a server that is accessible from the internet (VPS or home server with port forwarding) If you do, make sure to change the port mapping to "127.0.0.1:4096:4096" and use a secure tunnel (SSH tunnel, Cloudflare Tunnel, etc.) with authentication.</p>
+</div>
+<div><p>Warning</p><p>Do not try to point </p><pre><code>/var/lib/zerobyte</code></pre> on a network share. You will face permission issues and strong performance degradation.<p></p>
+</div>
+<div><p>Note</p><p><strong>TrueNAS Users:</strong> The host path </p><pre><code>/var/lib</code></pre> is ephemeral on TrueNAS and will be reset during system upgrades. Instead of using <pre><code>/var/lib/zerobyte:/var/lib/zerobyte</code></pre>, create a dedicated ZFS dataset (e.g., <pre><code>tank/docker/zerobyte</code></pre>) and mount it instead:<p></p>
+<div><pre><span>volumes</span>: - <span>/etc/localtime:/etc/localtime:ro</span> - <span>/mnt/tank/docker/zerobyte:/var/lib/zerobyte</span></pre></div>
+<p>This ensures your configuration, encryption keys, and database persist across TrueNAS upgrades.</p>
+</div>
+<p>Then, run the following command to start Zerobyte:</p>
+<div><pre>docker compose up -d</pre></div>
+<p>Once the container is running, you can access the web interface at </p><pre><code>http://&lt;your-server-ip&gt;:4096</code></pre>.<p></p>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Zerobyte can be customized using environment variables. Below are the available options:</p>
+<div><h3>Environment Variables</h3><a href="#environment-variables"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>BASE_URL</code></pre></td>
+<td><strong>Required.</strong> The base URL of your Zerobyte instance (e.g., <pre><code>https://zerobyte.example.com</code></pre>). See <a href="#authentication">Authentication</a> below.</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td><pre><code>APP_SECRET</code></pre></td>
+<td><strong>Required.</strong> A random secret key (32+ chars) used to encrypt sensitive data in the database. Generate with <pre><code>openssl rand -hex 32</code></pre>.</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td><pre><code>PORT</code></pre></td>
+<td>The port the web interface and API will listen on.</td>
+<td><pre><code>4096</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>RESTIC_HOSTNAME</code></pre></td>
+<td>The hostname used by Restic when creating snapshots. Automatically detected if a custom hostname is set in Docker.</td>
+<td><pre><code>zerobyte</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>TZ</code></pre></td>
+<td>Timezone for the container (e.g., <pre><code>Europe/Paris</code></pre>). <strong>Crucial for accurate backup scheduling.</strong></td>
+<td><pre><code>UTC</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>TRUSTED_ORIGINS</code></pre></td>
+<td>Comma-separated list of extra trusted origins for CORS (e.g., <pre><code>http://localhost:3000,http://example.com</code></pre>).</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td><pre><code>LOG_LEVEL</code></pre></td>
+<td>Logging verbosity. Options: <pre><code>debug</code></pre>, <pre><code>info</code></pre>, <pre><code>warn</code></pre>, <pre><code>error</code></pre>.</td>
+<td><pre><code>info</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>SERVER_IDLE_TIMEOUT</code></pre></td>
+<td>Idle timeout for the server in seconds.</td>
+<td><pre><code>60</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>RCLONE_CONFIG_DIR</code></pre></td>
+<td>Path to the rclone config directory inside the container. Change this if running as a non-root user.</td>
+<td><pre><code>/root/.config/rclone</code></pre></td>
+</tr>
+</tbody>
+</table>
+<div><h3>Secret References</h3><a href="#secret-references"></a></div>
+<p>For enhanced security, Zerobyte supports dynamic secret resolution for sensitive fields (like passwords, access keys, etc.) in volume and repository configurations. Instead of storing the encrypted secret in the database, you can use one of the following prefixes:</p>
+<ul>
+<li><pre><code>env://VAR_NAME</code></pre>: Reads the secret from the environment variable <pre><code>VAR_NAME</code></pre>.</li>
+<li><pre><code>file://SECRET_NAME</code></pre>: Reads the secret from <pre><code>/run/secrets/SECRET_NAME</code></pre> (standard Docker Secrets path).</li>
+</ul>
+<p><strong>Example:</strong>
+When configuring an S3 repository, you can set the Secret Access Key to </p><pre><code>env://S3_SECRET_KEY</code></pre> and then provide that variable in your <pre><code>docker-compose.yml</code></pre>.<p></p>
+<div><h3>Simplified setup (No remote mounts)</h3><a href="#simplified-setup-no-remote-mounts"></a></div>
+<p>If you only need to back up locally mounted folders and don't require remote share mounting capabilities, you can remove the </p><pre><code>SYS_ADMIN</code></pre> capability and FUSE device from your <pre><code>docker-compose.yml</code></pre>:<p></p>
+<div><pre><span>services</span>: <span>zerobyte</span>: <span>image</span>: <span>ghcr.io/nicotsx/zerobyte:v0.29</span> <span>container_name</span>: <span>zerobyte</span> <span>restart</span>: <span>unless-stopped</span> <span>ports</span>: - <span><span>"</span>4096:4096<span>"</span></span> <span>environment</span>: - <span>TZ=Europe/Paris </span><span><span>#</span> Set your timezone here</span> - <span>BASE_URL=http://localhost:4096 </span><span><span>#</span> Change this to your actual URL (use https:// for secure cookies)</span> - <span>APP_SECRET=94bad46...c66e25d5c2b </span><span><span>#</span> Generate your own secret with `openssl rand -hex 32`</span> <span>volumes</span>: - <span>/etc/localtime:/etc/localtime:ro</span> - <span>/var/lib/zerobyte:/var/lib/zerobyte</span> - <span>/path/to/your/directory:/mydata</span></pre></div>
+<p><strong>Trade-offs:</strong></p>
+<ul>
+<li> Improved security by reducing container capabilities</li>
+<li> Support for local directories</li>
+<li> Keep support all repository types (local, S3, GCS, Azure, rclone)</li>
+<li> Cannot mount NFS, SMB, WebDAV, or SFTP shares directly from Zerobyte</li>
+</ul>
+<p>If you need remote mount capabilities, keep the original configuration with </p><pre><code>cap_add: SYS_ADMIN</code></pre> and <pre><code>devices: /dev/fuse:/dev/fuse</code></pre>.<p></p>
+<div><h2>Examples</h2><a href="#examples"></a></div>
+<p>See <a href="/nicotsx/zerobyte/blob/main/examples/README.md">examples/README.md</a> for runnable, copy/paste-friendly examples.</p>
+<div><h2>Adding your first volume</h2><a href="#adding-your-first-volume"></a></div>
+<p>Zerobyte supports multiple volume backends including NFS, SMB, WebDAV, SFTP, and local directories. A volume represents the source data you want to back up and monitor.</p>
+<p>To add your first volume, navigate to the "Volumes" section in the web interface and click on "Create volume". Fill in the required details such as volume name, type, and connection settings.</p>
+<p>If you want to track a local directory on the same server where Zerobyte is running, you'll first need to mount that directory into the Zerobyte container. You can do this by adding a volume mapping in your </p><pre><code>docker-compose.yml</code></pre> file. For example, to mount <pre><code>/path/to/your/directory</code></pre> from the host to <pre><code>/mydata</code></pre> in the container, you would add the following line under the <pre><code>volumes</code></pre> section:<p></p>
+<div><pre>services: zerobyte: image: ghcr.io/nicotsx/zerobyte:v0.29 container_name: zerobyte restart: unless-stopped cap_add: - SYS_ADMIN ports: - "4096:4096" devices: - /dev/fuse:/dev/fuse environment: - TZ=Europe/Paris - BASE_URL=http://localhost:4096 # URL you will use to access Zerobyte - APP_SECRET=94bad46...c66e25d5c2b # Generate your own secret with `openssl rand -hex 32` volumes: - /etc/localtime:/etc/localtime:ro - /var/lib/zerobyte:/var/lib/zerobyte
+<span><span>+</span> - /path/to/your/directory:/mydata</span></pre></div>
+<p>After updating the </p><pre><code>docker-compose.yml</code></pre> file, restart the Zerobyte container to apply the changes:<p></p>
+<div><pre>docker compose down
+docker compose up -d</pre></div>
+<p>Now, when adding a new volume in the Zerobyte web interface, you can select "Directory" as the volume type and search for your mounted path (e.g., </p><pre><code>/mydata</code></pre>) as the source path.<p></p>
+<p><a target="_blank" href="https://github.com/nicotsx/zerobyte/blob/main/screenshots/add-volume.png?raw=true" rel="noopener noreferrer"><img src="https://github.com/nicotsx/zerobyte/raw/main/screenshots/add-volume.png?raw=true" alt="Preview"></a></p>
+<div><h2>Creating a repository</h2><a href="#creating-a-repository"></a></div>
+<p>A repository is where your backups will be securely stored encrypted. Zerobyte supports multiple storage backends for your backup repositories:</p>
+<ul>
+<li><strong>Local directories</strong> - Store backups on local disk subfolder of <pre><code>/var/lib/zerobyte/repositories/</code></pre> or any other (mounted) path</li>
+<li><strong>S3-compatible storage</strong> - Amazon S3, MinIO, Wasabi, DigitalOcean Spaces, etc.</li>
+<li><strong>Google Cloud Storage</strong> - Google's cloud storage service</li>
+<li><strong>Azure Blob Storage</strong> - Microsoft Azure storage</li>
+<li><strong>rclone remotes</strong> - 40+ cloud storage providers via rclone (see below)</li>
+</ul>
+<p>Repositories are optimized for storage efficiency and data integrity, leveraging Restic's deduplication and encryption features.</p>
+<p>To create a repository, navigate to the "Repositories" section in the web interface and click on "Create repository". Fill in the required details such as repository name, type, and connection settings.</p>
+<div><h3>Using rclone for cloud storage</h3><a href="#using-rclone-for-cloud-storage"></a></div>
+<p>Zerobyte can use <a href="https://rclone.org/">rclone</a> to support 40+ cloud storage providers including Google Drive, Dropbox, OneDrive, Box, pCloud, Mega, and many more. This gives you the flexibility to store your backups on virtually any cloud storage service.</p>
+<p><strong>Setup instructions:</strong></p>
+<ol>
+<li>
+<p><strong>Install rclone on your host system</strong> (if not already installed):</p>
+<div><pre>curl https://rclone.org/install.sh <span>|</span> sudo bash</pre></div>
+</li>
+<li>
+<p><strong>Configure your cloud storage remote</strong> using rclone's interactive config:</p>
+<div><pre>rclone config</pre></div>
+<p>Follow the prompts to set up your cloud storage provider. For OAuth providers (Google Drive, Dropbox, etc.), rclone will guide you through the authentication flow.</p>
+</li>
+<li>
+<p><strong>Verify your remote is configured</strong>:</p>
+<div><pre>rclone listremotes</pre></div>
+</li>
+<li>
+<p><strong>Mount the rclone config into the Zerobyte container</strong> by updating your </p><pre><code>docker-compose.yml</code></pre>:<p></p>
+<div><pre>services: zerobyte: image: ghcr.io/nicotsx/zerobyte:v0.29 container_name: zerobyte restart: unless-stopped cap_add: - SYS_ADMIN ports: - "4096:4096" devices: - /dev/fuse:/dev/fuse environment: - TZ=Europe/Paris - BASE_URL=http://localhost:4096 # URL you will use to access Zerobyte volumes: - /etc/localtime:/etc/localtime:ro - /var/lib/zerobyte:/var/lib/zerobyte
+<span><span>+</span> - ~/.config/rclone:/root/.config/rclone:ro</span></pre></div>
+<blockquote>
+<p><strong>Note for non-root users:</strong> If your container runs as a different user (e.g., TrueNAS apps), mount your config to the appropriate location and set </p><pre><code>RCLONE_CONF_DIR</code></pre>:<p></p>
+<div><pre><span>environment</span>: - <span>RCLONE_CONFIG_DIR=/home/appuser/.config/rclone</span>
+<span>volumes</span>: - <span>~/.config/rclone:/home/appuser/.config/rclone:ro</span></pre></div>
+</blockquote>
+</li>
+<li>
+<p><strong>Restart the Zerobyte container</strong>:</p>
+<div><pre>docker compose down
+docker compose up -d</pre></div>
+</li>
+<li>
+<p><strong>Create a repository</strong> in Zerobyte:</p>
+<ul>
+<li>Select "rclone" as the repository type</li>
+<li>Choose your configured remote from the dropdown</li>
+<li>Specify the path within your remote (e.g., <pre><code>backups/zerobyte</code></pre>)</li>
+</ul>
+</li>
+</ol>
+<p>For a complete list of supported providers, see the <a href="https://rclone.org/">rclone documentation</a>.</p>
+<div><h2>Your first backup job</h2><a href="#your-first-backup-job"></a></div>
+<p>Once you have added a volume and created a repository, you can create your first backup job. A backup job defines the schedule and parameters for backing up a specific volume to a designated repository.</p>
+<p>When creating a backup job, you can specify the following settings:</p>
+<ul>
+<li><strong>Schedule</strong>: Define how often the backup should run (e.g., daily, weekly)</li>
+<li><strong>Retention Policy</strong>: Set rules for how long backups should be retained (e.g., keep daily backups for 7 days, weekly backups for 4 weeks)</li>
+<li><strong>Paths</strong>: Specify which files or directories to include in the backup</li>
+</ul>
+<p>After configuring the backup job, save it and Zerobyte will automatically execute the backup according to the defined schedule.
+You can monitor the progress and status of your backup jobs in the "Backups" section of the web interface.</p>
+<p><a target="_blank" href="https://github.com/nicotsx/zerobyte/blob/main/screenshots/backups-list.png?raw=true" rel="noopener noreferrer"><img src="https://github.com/nicotsx/zerobyte/raw/main/screenshots/backups-list.png?raw=true" alt="Preview"></a></p>
+<div><h2>Restoring data</h2><a href="#restoring-data"></a></div>
+<p>Zerobyte allows you to easily restore your data from backups. To restore data, navigate to the "Backups" section and select the backup job from which you want to restore data. You can then choose a specific backup snapshot and select the files or directories you wish to restore. The data you select will be restored to their original location.</p>
+<p><a target="_blank" href="https://github.com/nicotsx/zerobyte/blob/main/screenshots/restoring.png?raw=true" rel="noopener noreferrer"><img src="https://github.com/nicotsx/zerobyte/raw/main/screenshots/restoring.png?raw=true" alt="Preview"></a></p>
+<div><h2>Authentication</h2><a href="#authentication"></a></div>
+<p>Zerobyte uses <a href="https://github.com/better-auth/better-auth">better-auth</a> for authentication and session management. The authentication system automatically adapts to your deployment scenario:</p>
+<div><h3>Cookie Security</h3><a href="#cookie-security"></a></div>
+<ul>
+<li><strong>IP Address / HTTP access</strong>: Set <pre><code>BASE_URL=http://192.168.1.50:4096</code></pre> (or your IP). Cookies will use <pre><code>Secure: false</code></pre>, allowing immediate login without SSL.</li>
+<li><strong>Domain / HTTPS access</strong>: Set <pre><code>BASE_URL=https://zerobyte.example.com</code></pre>. Cookies will automatically use <pre><code>Secure: true</code></pre> for protected sessions.</li>
+</ul>
+<div><h3>Reverse Proxy Setup</h3><a href="#reverse-proxy-setup"></a></div>
+<p>If you're running Zerobyte behind a reverse proxy (Nginx, Traefik, Caddy, etc.):</p>
+<ol>
+<li><strong>Set <pre><code>BASE_URL</code></pre></strong> to your HTTPS domain (e.g., <pre><code>https://zerobyte.example.com</code></pre>)</li>
+<li>The app will automatically enable secure cookies based on the <pre><code>https://</code></pre> prefix</li>
+<li>Ensure your proxy passes the <pre><code>X-Forwarded-Proto</code></pre> header</li>
+</ol>
+<div><h3>Important Notes</h3><a href="#important-notes"></a></div>
+<ul>
+<li>The <pre><code>BASE_URL</code></pre> must start with <pre><code>https://</code></pre> for secure cookies to be enabled</li>
+<li>Local IP addresses (e.g., <pre><code>http://192.168.x.x</code></pre>) are <strong>not</strong> treated as secure contexts by browsers, so secure cookies are disabled automatically</li>
+</ul>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<p>For troubleshooting common issues, please refer to the <a href="/nicotsx/zerobyte/blob/main/TROUBLESHOOTING.md">TROUBLESHOOTING.md</a> file.</p>
+<div><h2>Third-Party Software</h2><a href="#third-party-software"></a></div>
+<p>This project includes the following third-party software components:</p>
+<div><h3>Restic</h3><a href="#restic"></a></div>
+<p>Zerobyte includes <a href="https://github.com/restic/restic">Restic</a> for backup functionality.</p>
+<ul>
+<li><strong>License</strong>: BSD 2-Clause License</li>
+<li><strong>Copyright</strong>: Copyright (c) 2014, Alexander Neumann <a href="mailto:alexander@bumpern.de">alexander@bumpern.de</a></li>
+<li><strong>Status</strong>: Included unchanged</li>
+<li><strong>License Text</strong>: See <a href="/nicotsx/zerobyte/blob/main/LICENSES/BSD-2-Clause-Restic.txt">LICENSES/BSD-2-Clause-Restic.txt</a></li>
+</ul>
+<p>For a complete list of third-party software licenses and attributions, please refer to the <a href="/nicotsx/zerobyte/blob/main/NOTICES.md">NOTICES.md</a> file.</p>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions by anyone are welcome! If you find a bug or have a feature request, please open an issue on GitHub. If you want to contribute code, feel free to fork the repository and submit a pull request. We require that all contributors sign a Contributor License Agreement (CLA) before we can accept your contributions. This is to protect both you and the project. Please see the <a href="/nicotsx/zerobyte/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> file for more details.</p>
+<div><h2>Development (no Docker)</h2><a href="#development-no-docker"></a></div>
+<p>You can run Zerobyte locally during development without Docker:</p>
+<div><pre>bun install
+bun run dev</pre></div>
+<p>For local development, create a </p><pre><code>.env.local</code></pre> file at the repo root and override the Docker paths:<p></p>
+<div><pre><span><span>#</span> Example</span>
+ZEROBYTE_DATABASE_URL=./data/zerobyte.db
+APP_SECRET=your_app_secret_here
+RESTIC_PASS_FILE=./data/restic.pass
+RESTIC_CACHE_DIR=./data/restic/cache
+ZEROBYTE_REPOSITORIES_DIR=./data/repositories
+ZEROBYTE_VOLUMES_DIR=./data/volumes
+BASE_URL=http://localhost:4096</pre></div>
+<p>Notes:</p>
+<ul>
+<li>Remote mount backends (NFS/SMB/WebDAV/SFTP) rely on Linux mount tooling and <pre><code>CAP_SYS_ADMIN</code></pre>; on macOS they are expected to be unavailable.</li>
+<li>To actually run backups/repository checks, install <pre><code>restic</code></pre> on your machine (e.g. via Homebrew). If <pre><code>restic</code></pre> is not installed, the app still starts but backup operations will fail with a clear error.</li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

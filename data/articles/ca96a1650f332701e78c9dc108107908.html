@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Open source graphics drivers Mesa 26.0.1 released with various bug fixes and a security fix</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Open source graphics drivers Mesa 26.0.1 released with various bug fixes and a security fix</h1>
+  <div class="metadata">
+    Source: GamingOnLinux | Date: 2/25/2026 4:49:19 PM | <a href="https://www.gamingonlinux.com/2026/02/open-source-graphics-drivers-mesa-26-0-1-released-with-various-bug-fixes-and-a-security-fix/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><p>Developer Eric Engestrom announced the Mesa 26.0.1 update for open source graphics drivers, the first set of bug-fixes for the latest release.</p><p>In the release announcement Engestrom noted that this release and the <a href="https://www.gamingonlinux.com/2026/02/mesa-25-3-6-released-as-the-last-bug-fix-for-this-driver-series/" target="_blank" rel="noopener noreferrer">previously released Mesa 25.3.6</a> include "a security fix preventing out-of-bounds memory access in WebGPU" and that both of these releases should be "deployed to users as quickly as possible" (hopefully most distributions will get it sorted soon).</p><div><p>Aitor Camacho (7):<br>- wsi/metal: Expose additional color spaces if instance extension enabled<br>- kk: Fill pipelineUUID<br>- kk: Fix shader uint32_t value serialization<br>- kk: Correctly release pipeline handles at shader destroy<br>- kk: Fix compute pipeline cache<br>- kk: Move gfx pipeline data to the info struct within kk_shader<br>- kk: Fix graphics pipeline serialization</p><p>Alyssa Rosenzweig (1):<br>- brw: drop buggy SLM optimization</p><p>Anna Maniscalco (1):<br>- freedreno/common: set has</p><u>_astc_</u><p>hdr true for a7xx targets</p><p>Benjamin Otte (1):<br>- lavapipe: Fix features for nonsubsampled ycbcr formats</p><p>Daniel Schürmann (1):<br>- nir/clone: Fix cloning indirect call instructions</p><p>Danylo Piliaiev (1):<br>- ir3: Align TCS per-patch output to 64 bytes to prevent stale reads</p><p>Emma Anholt (1):<br>- ir3/ra: Fix DOUBLE_ONLY limit pressure computation.</p><p>Eric Engestrom (7):<br>- docs: add sha sum for 26.0.0<br>- .pick_status.json: Update to 03d2cc2b2ae5341409ee1fab74e98134a6df0511<br>- bin/gen_release_notes: fix support for python 3.14<br>- pick-ui: add `Backport-to: *` as a synonym to `Cc: mesa-stable`<br>- .pick_status.json: Mark 7dd7731ac710b0c7213f6bb466b33f62eca80604 as denominated<br>- docs: add release notes for 26.0.1<br>- VERSION: bump for 26.0.1</p><p>Faith Ekstrand (6):<br>- pan/clear: Stop packing undefined bits in colors<br>- nir/gather_info: Add support for panfrost tile load/store intrinsics<br>- panvk: Create both Z/S descriptors, even for separate Z/S<br>- panvk/preload: Stop assuming 32 registers<br>- panvk/jm: Refactor BeginRendering()<br>- panvk: Also load output attachments with LOAD</p><u>_OP_</u><p>NONE+STORE</p><u>_OP_</u><p>NONE</p><p>Frank Binns (2):<br>- pvr/ci: move some timing out tests from fails to skips<br>- pvr: Fix alloc callbacks usage when freeing frame buffers</p><p>Ian Romanick (8):<br>- spirv: Use STACK_ARRAY instead of NIR_VLA<br>- nir: Use STACK_ARRAY instead of NIR_VLA<br>- brw: Call nir_opt_algebraic_late in brw_nir_create_raygen_trampoline<br>- brw: Call nir_opt_algebraic_late later in brw_postprocess_nir_opts<br>- elk: Call nir_opt_algebraic_late in elk_postprocess_nir<br>- brw/cmod: Don't propagate from CMP to ADD if there is a write between<br>- elk/cmod: Don't propagate from CMP to possible Inf + (-Inf)<br>- elk/cmod: Don't propagate from CMP to ADD if there is a write between</p><p>Janne Grunau (3):<br>- asahi: Use GPU for buffer copies in resource</p><u>_copy_</u><p>region()<br>- asahi: Implement clear_buffer using libagx_fill*<br>- hk: Use aligned vector fill in hk_CmdFillBuffer if possible</p><p>Jarred Davies (2):<br>- pvr: Fix allocating the required scratch buffer space for tile buffers<br>- pvr: Add missing support for tile buffers to SPM EOT programs</p><p>Jesse Natalie (1):<br>- meson: Include DirectX-Headers dependency for all VK Windows builds</p><p>Jianxun Zhang (1):<br>- anv: Limit modifier disabling workaround to specific GTK versions</p><p>José Roberto de Souza (1):<br>- intel/perf: Add HSW verx10 to intel_perf_query_result_write_mdapi()</p><p>Juston Li (1):<br>- anv: set missing protected bit for protected depth/stencil surfaces</p><p>Konstantin Seurer (2):<br>- radv: Fix setting the viewport for depth stencil FS resolves<br>- vulkan/cmd_queue: Fixup stride for multi draws</p><p>Lars-Ivar Hesselberg Simonsen (2):<br>- panvk: Fix dcd_flags1 dirty bit<br>- pan/genxml/v13: Fix HSR Prepass typo</p><p>Leon Perianu (1):<br>- pvr: fix format table properties duplicate</p><p>Lionel Landwerlin (8):<br>- anv: flush render caches on first pipeline select<br>- anv: fix nested command buffer relocations<br>- anv: add missing constant cache invalidation for descriptor buffers<br>- isl: fix 32bit math with 4GB buffer size<br>- anv: apply the same ccs disabling for Xe3 than Xe2<br>- anv: disable ccs modifier reporting when ccs modifiers are disabled<br>- anv: dirty descriptors after blorp operations<br>- anv: remove snprintf for aux op transition</p><p>Mary Guillemard (1):<br>- hk: Fix crash in hk_handle_passthrough_gs</p><p>Matt Turner (4):<br>- brw/cse: fix `operands_match` corrupting non-IMM register data<br>- brw/cse: use copies in `operands_match` instead of in-place modification<br>- elk/cse: fix `operands_match` corrupting non-IMM register data<br>- elk/cse: use copies in `operands_match` instead of in-place modification</p><p>Mike Blumenkrantz (2):<br>- zink: fix broken compiler assert<br>- zink: only do pre-sync transfer barrier after a renderpass</p><p>Natalie Vock (3):<br>- radv/rt: Only use ds_bvh_stack_rtn if the stack base is possible to encode<br>- radv: Initialize nir_lower_io_to_scalar progress variable<br>- radv/nir: Correctly handle workgroup sizes not aligned to 32</p><p>Nick Hamilton (5):<br>- pvr: Fix incorrect subpass merging optimisation<br>- pvr: Rename pvr_render_input_attachment<br>- pvr: Add missing support for preserve attachments<br>- pvr: Update CI fails list after render pass fixes<br>- pvr: Add support for fragment pass through shader</p><p>Olivia Lee (1):<br>- hk: fix passthrough GS key invalidation</p><p>Pavel Ondračka (2):<br>- r300: align macro-tiled stride-addressed textures in X<br>- mesa: implement FRAMEBUFFER_RENDERABLE internalformat query</p><p>Rhys Perry (3):<br>- aco: fix gfx6-8 store_scratch() with function calls<br>- aco: reset all vgpr_used_by_vmem_ in resolve_all_gfx11<br>- aco: resolve hazards before calls</p><p>Robert Mader (1):<br>- lavapipe: enable dmabuf import for planar drm formats</p><p>Ryan Zhang (1):<br>- panvk: guard against NULL pointers to avoid crash</p><p>Samuel Pitoiset (5):<br>- ac,radv,radeonsi: use correct swizzle/pitch for depth-only images with SDMA<br>- radv: fix potential corruption after FMASK decompression on GFX6-8<br>- radv/meta: fix depth/stencil resolves with different regions<br>- ac/nir: fix writemask for dual source blending on GFX11+<br>- radv: fix potential GPU hangs with secondaries on transfer queue</p><p>Tapani Pälli (1):<br>- util: bring back fix to avoid strict aliasing bugs in xxhash</p><p>Timothy Arceri (2):<br>- mesa: add _mesa_lookup_state_param_idx() helper<br>- st/glsl_to_nir: make sure the variant has the correct locations set</p><p>Wei Hao (1):<br>- radeonsi: fix threaded shader compilation finishing after context is destroyed</p><p>Yiwei Zhang (2):<br>- venus: workaround a gcc-15 dead store elimination (DSE) bug<br>- venus: sync protocol for strict aliasing compliance</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

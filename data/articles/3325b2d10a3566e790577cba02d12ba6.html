@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - fcjr/shiftapi: Full-stack type-safety from go to typescript with OpenAPI schema generation out of the box.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - fcjr/shiftapi: Full-stack type-safety from go to typescript with OpenAPI schema generation out of the box.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 5:49:20 PM | <a href="https://github.com/fcjr/shiftapi" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p> <img src="/fcjr/shiftapi/raw/main/assets/logo.svg" alt="ShiftAPI Logo"> </p>
+<div><h3>End-to-end type safety from Go structs to TypeScript frontend.</h3><a href="#end-to-end-type-safety-from-go-structs-to-typescript-frontend"></a></div>
+<p> ShiftAPI is a Go framework that generates an OpenAPI 3.1 spec from your handler types at runtime, then uses a Vite plugin to turn that spec into a fully-typed TypeScript client — so your frontend stays in sync with your API automatically.
+</p>
+<p> <a href="https://pkg.go.dev/github.com/fcjr/shiftapi"><img src="https://camo.githubusercontent.com/5d8a32349b0ce7cf08e2098694709985e2ab0b53479fe4d7ba08e10ce2249c49/68747470733a2f2f706b672e676f2e6465762f62616467652f6769746875622e636f6d2f66636a722f73686966746170692e737667" alt="Go Reference"></a> <a href="https://github.com/fcjr/shiftapi/actions?query=workflow%3Ago-lint"><img src="https://github.com/fcjr/shiftapi/workflows/go-lint/badge.svg" alt="GolangCI"></a> <a href="https://goreportcard.com/report/github.com/fcjr/shiftapi"><img src="https://camo.githubusercontent.com/c4ab176cce7d25dfb5f7c59c3984f955ea6e766b5e076fa1ba22f9c6db3b6962/68747470733a2f2f676f7265706f7274636172642e636f6d2f62616467652f6769746875622e636f6d2f66636a722f7368696674617069" alt="Go Report Card"></a> <a href="https://www.npmjs.com/package/@shiftapi/vite-plugin"><img src="https://camo.githubusercontent.com/0d9282aac1b77bda09adb8c61a8f41554448f35374838afc01735df298b996a6/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f4073686966746170692f766974652d706c7567696e" alt="npm"></a>
+</p>
+<div><pre><code>Go structs ──→ OpenAPI 3.1 spec ──→ TypeScript types ──→ Typed fetch client (compile time) (runtime) (build time) (your frontend)
+</code></pre></div>
+<div><h2>Getting Started</h2><a href="#getting-started"></a></div>
+<p>Scaffold a full-stack app (Go + React or Svelte):</p>
+<div><pre>npm create shiftapi@latest</pre></div>
+<p>Or add ShiftAPI to an existing Go project:</p>
+<div><pre>go get github.com/fcjr/shiftapi</pre></div>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span>package</span> main <span>import</span> ( <span>"log"</span> <span>"net/http"</span> <span>"github.com/fcjr/shiftapi"</span>
+) <span>type</span> <span>Person</span> <span>struct</span> { <span>Name</span> <span>string</span> <span>`json:"name" validate:"required"`</span>
+} <span>type</span> <span>Greeting</span> <span>struct</span> { <span>Hello</span> <span>string</span> <span>`json:"hello"`</span>
+} <span>func</span> <span>greet</span>(<span>r</span> <span>*</span>http.<span>Request</span>, <span>body</span> <span>*</span><span>Person</span>) (<span>*</span><span>Greeting</span>, <span>error</span>) { <span>return</span> <span>&amp;</span><span>Greeting</span>{<span>Hello</span>: <span>body</span>.<span>Name</span>}, <span>nil</span>
+} <span>func</span> <span>main</span>() { <span>api</span> <span>:=</span> <span>shiftapi</span>.<span>New</span>(<span>shiftapi</span>.<span>WithInfo</span>(shiftapi.<span>Info</span>{ <span>Title</span>: <span>"Greeter API"</span>, <span>Version</span>: <span>"1.0.0"</span>, })) <span>shiftapi</span>.<span>Post</span>(<span>api</span>, <span>"/greet"</span>, <span>greet</span>) <span>log</span>.<span>Println</span>(<span>"listening on :8080"</span>) <span>log</span>.<span>Fatal</span>(<span>shiftapi</span>.<span>ListenAndServe</span>(<span>":8080"</span>, <span>api</span>)) <span>// interactive docs at http://localhost:8080/docs</span>
+}</pre></div>
+<p>That's it. ShiftAPI reflects your Go types into an OpenAPI 3.1 spec at </p><pre><code>/openapi.json</code></pre> and serves interactive docs at <pre><code>/docs</code></pre> — no code generation step, no annotations.<p></p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<div><h3>Generic type-safe handlers</h3><a href="#generic-type-safe-handlers"></a></div>
+<p>Generic free functions capture your request and response types at compile time. Handlers with a body (</p><pre><code>Post</code></pre>, <pre><code>Put</code></pre>, <pre><code>Patch</code></pre>) receive the decoded request as a typed value. Handlers without a body (<pre><code>Get</code></pre>, <pre><code>Delete</code></pre>, <pre><code>Head</code></pre>) just receive the request.<p></p>
+<div><pre><span>// POST — body is decoded and passed as *CreateUser</span>
+<span>shiftapi</span>.<span>Post</span>(<span>api</span>, <span>"/users"</span>, <span>func</span>(<span>r</span> <span>*</span>http.<span>Request</span>, <span>body</span> <span>*</span><span>CreateUser</span>) (<span>*</span><span>User</span>, <span>error</span>) { <span>return</span> <span>db</span>.<span>CreateUser</span>(<span>r</span>.<span>Context</span>(), <span>body</span>)
+}, <span>shiftapi</span>.<span>WithStatus</span>(<span>http</span>.<span>StatusCreated</span>)) <span>// GET — standard *http.Request, use PathValue for path params</span>
+<span>shiftapi</span>.<span>Get</span>(<span>api</span>, <span>"/users/{id}"</span>, <span>func</span>(<span>r</span> <span>*</span>http.<span>Request</span>) (<span>*</span><span>User</span>, <span>error</span>) { <span>return</span> <span>db</span>.<span>GetUser</span>(<span>r</span>.<span>Context</span>(), <span>r</span>.<span>PathValue</span>(<span>"id"</span>))
+})</pre></div>
+<div><h3>Validation</h3><a href="#validation"></a></div>
+<p>Built-in validation via <a href="https://github.com/go-playground/validator">go-playground/validator</a>. Struct tags are enforced at runtime <em>and</em> reflected into the OpenAPI schema.</p>
+<div><pre><span>type</span> <span>CreateUser</span> <span>struct</span> { <span>Name</span> <span>string</span> <span>`json:"name" validate:"required,min=2,max=50"`</span> <span>Email</span> <span>string</span> <span>`json:"email" validate:"required,email"`</span> <span>Age</span> <span>int</span> <span>`json:"age" validate:"gte=0,lte=150"`</span> <span>Role</span> <span>string</span> <span>`json:"role" validate:"oneof=admin user guest"`</span>
+}</pre></div>
+<p>Invalid requests return </p><pre><code>422</code></pre> with per-field errors:<p></p>
+<div><pre>{ <span>"message"</span>: <span><span>"</span>validation failed<span>"</span></span>, <span>"errors"</span>: [ { <span>"field"</span>: <span><span>"</span>Name<span>"</span></span>, <span>"message"</span>: <span><span>"</span>this field is required<span>"</span></span> }, { <span>"field"</span>: <span><span>"</span>Email<span>"</span></span>, <span>"message"</span>: <span><span>"</span>must be a valid email address<span>"</span></span> } ]
+}</pre></div>
+<p>Supported tags: </p><pre><code>required</code></pre>, <pre><code>email</code></pre>, <pre><code>url</code></pre>/<pre><code>uri</code></pre>, <pre><code>uuid</code></pre>, <pre><code>datetime</code></pre>, <pre><code>min</code></pre>, <pre><code>max</code></pre>, <pre><code>gte</code></pre>, <pre><code>lte</code></pre>, <pre><code>gt</code></pre>, <pre><code>lt</code></pre>, <pre><code>len</code></pre>, <pre><code>oneof</code></pre> — all mapped to their OpenAPI equivalents (<pre><code>format</code></pre>, <pre><code>minimum</code></pre>, <pre><code>maxLength</code></pre>, <pre><code>enum</code></pre>, etc.). Use <pre><code>WithValidator()</code></pre> to supply a custom validator instance.<p></p>
+<div><h3>Error handling</h3><a href="#error-handling"></a></div>
+<p>Return </p><pre><code>shiftapi.Error</code></pre> to control the status code:<p></p>
+<div><pre><span>return</span> <span>nil</span>, <span>shiftapi</span>.<span>Error</span>(<span>http</span>.<span>StatusNotFound</span>, <span>"user not found"</span>)</pre></div>
+<p>Any non-</p><pre><code>APIError</code></pre> returns <pre><code>500 Internal Server Error</code></pre>.<p></p>
+<div><h3>Route metadata</h3><a href="#route-metadata"></a></div>
+<p>Add OpenAPI summaries, descriptions, and tags per route:</p>
+<div><pre><span>shiftapi</span>.<span>Post</span>(<span>api</span>, <span>"/greet"</span>, <span>greet</span>, <span>shiftapi</span>.<span>WithRouteInfo</span>(shiftapi.<span>RouteInfo</span>{ <span>Summary</span>: <span>"Greet a person"</span>, <span>Description</span>: <span>"Returns a personalized greeting."</span>, <span>Tags</span>: []<span>string</span>{<span>"greetings"</span>}, }),
+)</pre></div>
+<div><h3>Standard <pre><code>http.Handler</code></pre></h3><a href="#standard-httphandler"></a></div>
+<p></p><pre><code>API</code></pre> implements <pre><code>http.Handler</code></pre>, so it works with any middleware, <pre><code>httptest</code></pre>, and <pre><code>ServeMux</code></pre> mounting:<p></p>
+<div><pre><span>// middleware</span>
+<span>wrapped</span> <span>:=</span> <span>loggingMiddleware</span>(<span>corsMiddleware</span>(<span>api</span>))
+<span>http</span>.<span>ListenAndServe</span>(<span>":8080"</span>, <span>wrapped</span>) <span>// mount under a prefix</span>
+<span>mux</span> <span>:=</span> <span>http</span>.<span>NewServeMux</span>()
+<span>mux</span>.<span>Handle</span>(<span>"/api/v1/"</span>, <span>http</span>.<span>StripPrefix</span>(<span>"/api/v1"</span>, <span>api</span>))</pre></div>
+<div><h2>TypeScript Integration</h2><a href="#typescript-integration"></a></div>
+<p>The </p><pre><code>@shiftapi/vite-plugin</code></pre> extracts your OpenAPI spec at build time, generates TypeScript types via <a href="https://github.com/openapi-ts/openapi-typescript">openapi-typescript</a>, and serves a pre-configured <a href="https://github.com/openapi-ts/openapi-typescript/tree/main/packages/openapi-fetch">openapi-fetch</a> client as a virtual module.<p></p>
+<p><strong>Install:</strong></p>
+<div><pre>npm install @shiftapi/vite-plugin</pre></div>
+<p><strong></strong></p><pre><strong><code>vite.config.ts</code></strong></pre><strong>:</strong><p></p>
+<div><pre><span>import</span> <span>shiftapi</span> <span>from</span> <span>"@shiftapi/vite-plugin"</span><span>;</span>
+<span>import</span> <span>{</span> <span>defineConfig</span> <span>}</span> <span>from</span> <span>"vite"</span><span>;</span> <span>export</span> <span>default</span> <span>defineConfig</span><span>(</span><span>{</span> <span>plugins</span>: <span>[</span> <span>shiftapi</span><span>(</span><span>{</span> <span>server</span>: <span>"./cmd/server"</span><span>,</span> <span>// Go entry point</span> <span>}</span><span>)</span><span>,</span> <span>]</span><span>,</span>
+<span>}</span><span>)</span><span>;</span></pre></div>
+<p><strong>Use the typed client:</strong></p>
+<div><pre><span>import</span> <span>{</span> <span>client</span> <span>}</span> <span>from</span> <span>"@shiftapi/client"</span><span>;</span> <span>const</span> <span>{</span> data <span>}</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>GET</span><span>(</span><span>"/health"</span><span>)</span><span>;</span>
+<span>// data: { ok?: boolean }</span> <span>const</span> <span>{</span> <span>data</span>: <span>greeting</span> <span>}</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>POST</span><span>(</span><span>"/greet"</span><span>,</span> <span>{</span> <span>body</span>: <span>{</span> <span>name</span>: <span>"frank"</span> <span>}</span><span>,</span>
+<span>}</span><span>)</span><span>;</span>
+<span>// body and response are fully typed from your Go structs</span></pre></div>
+<p>In dev mode the plugin also starts the Go server, proxies API requests through Vite, watches </p><pre><code>.go</code></pre> files, and hot-reloads the frontend when types change.<p></p>
+<p><strong>Plugin options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>server</code></pre></td>
+<td><em>(required)</em></td>
+<td>Go entry point (e.g. <pre><code>"./cmd/server"</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>baseUrl</code></pre></td>
+<td><pre><code>"/"</code></pre></td>
+<td>Fallback base URL for the API client</td>
+</tr>
+<tr>
+<td><pre><code>goRoot</code></pre></td>
+<td><pre><code>process.cwd()</code></pre></td>
+<td>Go module root directory</td>
+</tr>
+<tr>
+<td><pre><code>url</code></pre></td>
+<td><pre><code>"http://localhost:8080"</code></pre></td>
+<td>Go server address for dev proxy</td>
+</tr>
+</tbody>
+</table>
+<p>For production, set </p><pre><code>VITE_SHIFTAPI_BASE_URL</code></pre> in a <pre><code>.env.production</code></pre> file to point at your API host. The plugin automatically updates <pre><code>tsconfig.json</code></pre> with the required path mapping for IDE autocomplete.<p></p>
+<div><h2>Development</h2><a href="#development"></a></div>
+<p>This is a pnpm + <a href="https://turbo.build">Turborepo</a> monorepo.</p>
+<div><pre>pnpm install <span><span>#</span> install dependencies</span>
+pnpm build <span><span>#</span> build all packages</span>
+pnpm dev <span><span>#</span> start example Vite + Go app</span>
+pnpm <span>test</span> <span><span>#</span> run all tests</span></pre></div>
+<p>Go tests can also be run directly:</p>
+<div><pre>go <span>test</span> -count=1 ./...</pre></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

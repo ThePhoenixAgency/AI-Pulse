@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GPT Apps: How OpenAI Is Turning ChatGPT Into an App Platform &amp; How to Build One in Production</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GPT Apps: How OpenAI Is Turning ChatGPT Into an App Platform &amp; How to Build One in Production</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 12:19:59 PM | <a href="https://dev.to/_4b254f4408ef55656a22e4/gpt-apps-how-openai-is-turning-chatgpt-into-an-app-platform-how-to-build-one-in-production-1c1l" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>OpenAI just opened the ChatGPT App Directory to public submissions.</p> <p>800+ million users. Interactive UIs embedded directly in chat conversations. A builder revenue program in progress.</p> <p>If you've been building AI agents with MCP, you're closer to shipping a GPT App than you think. This post covers how GPT Apps work, how they compare to MCP Apps, and — critically — what it takes to actually run one in production.</p> <hr> <h2> <a name="what-are-gpt-apps" href="#what-are-gpt-apps"> </a> What Are GPT Apps?
+</h2> <p>GPT Apps are interactive applications that run <em>inside</em> ChatGPT — not in a new tab, not alongside it. When a user asks ChatGPT to find a hotel, Booking.com's booking interface appears right there in the conversation. When a user wants to edit a slide, Canva opens inline.</p> <p>Launched in October 2025 with pilot partners including Booking.com, Canva, Figma, Spotify, and Shopify. The ChatGPT App Directory opened for public submissions in December 2025.</p> <p>The SDK is built on top of the Model Context Protocol. <strong>If you know MCP, you already have a head start.</strong></p> <hr> <h2> <a name="how-gpt-apps-work-the-technical-bit" href="#how-gpt-apps-work-the-technical-bit"> </a> How GPT Apps Work (The Technical Bit)
+</h2> <p>The architecture will feel familiar if you've worked with MCP Apps:</p> <p><strong>2. Double iframe sandboxing</strong><br>
+ChatGPT runs a sandboxed outer iframe first, which then loads your UI in an inner iframe. Third-party code is isolated from the ChatGPT application.</p> <p><strong>3. <code>window.openai</code> API</strong><br>
+OpenAI provides a clean host API for host-guest communication:<br>
+</p> <div>
+<pre><code><span>window</span><span>.</span><span>openai</span><span>.</span><span>toolInput</span> <span>// tool's input parameters</span>
+<span>window</span><span>.</span><span>openai</span><span>.</span><span>toolOutput</span> <span>// tool's response</span>
+<span>window</span><span>.</span><span>openai</span><span>.</span><span>sendFollowUpMessage</span><span>({</span> <span>prompt</span> <span>})</span> <span>// message the model</span>
+<span>window</span><span>.</span><span>openai</span><span>.</span><span>callTool</span><span>(</span><span>name</span><span>,</span> <span>args</span><span>)</span> <span>// trigger a tool call</span>
+<span>window</span><span>.</span><span>openai</span><span>.</span><span>widgetState</span> <span>// persist state across tool calls</span>
+<span>window</span><span>.</span><span>openai</span><span>.</span><span>widgetSessionId</span> <span>// persist state across sessions</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>State persistence is a notable GPT Apps advantage — MCP Apps doesn't support this yet.</p> <hr> <h2> <a name="gpt-apps-vs-mcp-apps-you-dont-have-to-choose" href="#gpt-apps-vs-mcp-apps-you-dont-have-to-choose"> </a> GPT Apps vs MCP Apps — You Don't Have to Choose
+</h2> <p>Both are built on MCP. Both solve the same "text wall" problem. The differences:</p> <div><table>
+<thead>
+<tr>
+<th></th>
+<th>GPT Apps</th>
+<th>MCP Apps</th>
+<th>With LeanMCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Platform</strong></td>
+<td>ChatGPT only</td>
+<td>Claude, ChatGPT, VS Code, Goose</td>
+<td>Both, one server</td>
+</tr>
+<tr>
+<td><strong>Standard</strong></td>
+<td>Proprietary (OpenAI)</td>
+<td>Open (SEP-1865)</td>
+<td>Supports both</td>
+</tr>
+<tr>
+<td><strong>Auth</strong></td>
+<td>Not included</td>
+<td>Not included</td>
+<td> Built in</td>
+</tr>
+<tr>
+<td><strong>Observability</strong></td>
+<td>Not included</td>
+<td>Not included</td>
+<td> Built in</td>
+</tr>
+<tr>
+<td><strong>State persistence</strong></td>
+<td> Supported</td>
+<td>Not yet</td>
+<td>Handled at runtime</td>
+</tr>
+<tr>
+<td><strong>Auto-scaling</strong></td>
+<td>Your problem</td>
+<td>Your problem</td>
+<td> Auto-scaled</td>
+</tr>
+<tr>
+<td><strong>Deploy</strong></td>
+<td>Manual</td>
+<td>Manual</td>
+<td> One CLI command</td>
+</tr>
+</tbody>
+</table></div> <p>The same LeanMCP server that powers your GPT App can serve MCP Apps clients — Claude, VS Code, Goose — without additional work. One codebase, full ecosystem coverage.</p> <hr> <h2> <a name="building-a-gpt-app-with-leanmcp" href="#building-a-gpt-app-with-leanmcp"> </a> Building a GPT App with LeanMCP
+</h2> <p>Here's how fast you can go from zero to a production-ready GPT App:</p> <p><strong>Step 1: Create your project</strong><br>
+</p> <div>
+<pre><code>npm <span>install</span> <span>-g</span> @leanmcp/cli
+npx @leanmcp/cli create my-gpt-app
+<span>cd </span>my-gpt-app
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Step 2: Define your tool with a UI resource</strong><br>
+</p> <div>
+<pre><code><span>// mcp/hotels/index.ts</span>
+<span>import</span> <span>{</span> <span>Tool</span><span>,</span> <span>SchemaConstraint</span> <span>}</span> <span>from</span> <span>"</span><span>@leanmcp/core</span><span>"</span><span>;</span> <span>class</span> <span>HotelSearchInput</span> <span>{</span> <span>@</span><span>SchemaConstraint</span><span>({</span> <span>description</span><span>:</span> <span>"</span><span>City to search hotels in</span><span>"</span> <span>})</span> <span>city</span><span>!</span><span>:</span> <span>string</span><span>;</span>
+<span>}</span> <span>export</span> <span>class</span> <span>HotelService</span> <span>{</span> <span>@</span><span>Tool</span><span>({</span> <span>description</span><span>:</span> <span>"</span><span>Search hotels with interactive UI</span><span>"</span> <span>})</span> <span>async</span> <span>searchHotels</span><span>(</span><span>args</span><span>:</span> <span>HotelSearchInput</span><span>)</span> <span>{</span> <span>const</span> <span>hotels</span> <span>=</span> <span>await</span> <span>fetchHotels</span><span>(</span><span>args</span><span>.</span><span>city</span><span>);</span> <span>// Return a UI resource — renders as interactive iframe in ChatGPT</span> <span>return</span> <span>{</span> <span>type</span><span>:</span> <span>"</span><span>ui-resource</span><span>"</span><span>,</span> <span>html</span><span>:</span> <span>renderHotelWidget</span><span>(</span><span>hotels</span><span>)</span> <span>};</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Step 3: Add auth (one decorator)</strong><br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>AuthProvider</span><span>,</span> <span>Authenticated</span> <span>}</span> <span>from</span> <span>"</span><span>@leanmcp/auth</span><span>"</span><span>;</span> <span>const</span> <span>auth</span> <span>=</span> <span>new</span> <span>AuthProvider</span><span>(</span><span>'</span><span>cognito</span><span>'</span><span>,</span> <span>{</span> <span>region</span><span>:</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>AWS_REGION</span><span>,</span> <span>userPoolId</span><span>:</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>COGNITO_USER_POOL_ID</span><span>,</span> <span>clientId</span><span>:</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>COGNITO_CLIENT_ID</span>
+<span>});</span>
+<span>await</span> <span>auth</span><span>.</span><span>init</span><span>();</span> <span>@</span><span>Authenticated</span><span>(</span><span>auth</span><span>)</span>
+<span>export</span> <span>class</span> <span>HotelService</span> <span>{</span> <span>// Token validated automatically — no middleware needed</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Step 4: Deploy</strong><br>
+</p> <div>
+<pre><code>leanmcp deploy
+<span># ✓ Building MCP server...</span>
+<span># ✓ Running type checks...</span>
+<span># ✓ Deploying to edge network...</span>
+<span># Live at https://your-app.leanmcp.com</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Auth, scaling, observability: included.</p> <hr> <h2> <a name="the-production-gap-nobody-talks-about" href="#the-production-gap-nobody-talks-about"> </a> The Production Gap Nobody Talks About
+</h2> <p>The ChatGPT Apps SDK is genuinely approachable. Basic React + a working MCP server is enough to get started.</p> <p>But "easy to build" and "production-ready" are different problems.</p> <p>The SDK gives you the UI layer. It does <strong>not</strong> give you:</p> <ul>
+<li>Multi-tenant auth — how do you authenticate each user separately?</li>
+<li>Per-user cost tracking — who's consuming your API budget?</li>
+<li>Secrets management — how do you inject API keys safely per-request?</li>
+<li>Audit trails — what did each user's agent do, and when?</li>
+<li>Auto-scaling — what happens at 10,000 concurrent users?</li>
+<li>Observability — when something breaks at 2am, how do you know?</li>
+</ul> <p>This is where most teams hit friction. LeanMCP closes that gap — it's the production runtime layer underneath your GPT App.</p> <p>One line for full observability:<br>
+</p> <div>
+<pre><code><span>await</span> <span>createHTTPServer</span><span>({</span> <span>name</span><span>:</span> <span>"</span><span>my-gpt-app</span><span>"</span><span>,</span> <span>version</span><span>:</span> <span>"</span><span>1.0.0</span><span>"</span><span>,</span> <span>port</span><span>:</span> <span>8080</span><span>,</span> <span>logging</span><span>:</span> <span>true</span> <span>// dashboards: tool calls, latency, cost, user requests</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="what-you-need-to-submit-to-the-app-directory" href="#what-you-need-to-submit-to-the-app-directory"> </a> What You Need to Submit to the App Directory
+</h2> <ul>
+<li> MCP connectivity details</li>
+<li> Testing guidelines for reviewers</li>
+<li> Directory metadata (name, description, category)</li>
+<li> Country availability settings</li>
+<li> Privacy policy (mandatory)</li>
+<li> Compliance with OpenAI's usage policies</li>
+</ul> <hr> <h2> <a name="realworld-use-cases-from-launch" href="#realworld-use-cases-from-launch"> </a> Real-World Use Cases from Launch
+</h2> <p>The pilot partners show the range of what's possible:</p> <p>Every one of these companies needed the same production layer underneath: auth, observability, scaling, secrets management.</p> <hr> <h2> <a name="tldr" href="#tldr"> </a> TL;DR
+</h2> <ul>
+<li> GPT Apps = interactive UIs inside ChatGPT, built on MCP, 800M+ users</li>
+<li> If you know MCP, you can start building today</li>
+<li> The same LeanMCP server works for both GPT Apps and MCP Apps</li>
+<li> The production gap (auth, observability, scaling) is real — LeanMCP closes it
+</li>
+</ul> <div>
+<pre><code><span># Get started now</span>
+npm <span>install</span> <span>-g</span> @leanmcp/cli
+npx @leanmcp/cli create my-gpt-app
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <p><strong>Links:</strong></p> <ul>
+<li> <a href="https://github.com/LeanMCP/leanmcp-sdk" target="_blank">LeanMCP GitHub</a> — open source, MIT licensed</li>
+<li> <a href="https://docs.leanmcp.com/" target="_blank">Docs</a>
+</li>
+<li> <a href="https://leanmcp.com/" target="_blank">leanmcp.com</a>
+</li>
+</ul> <p>Drop a comment if you're building a GPT App — would love to see what you're working on. </p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

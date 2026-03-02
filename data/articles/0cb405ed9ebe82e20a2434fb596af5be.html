@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CISA warns that RESURGE malware can be dormant on Ivanti devices</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>CISA warns that RESURGE malware can be dormant on Ivanti devices</h1>
+  <div class="metadata">
+    Source: BleepingComputer Windows | Date: 2/27/2026 3:57:04 PM | <a href="https://www.bleepingcomputer.com/news/security/cisa-warns-that-resurge-malware-can-be-dormant-on-ivanti-devices/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><img alt="CISA warns that RESURGE malware can be dormant on Ivanti devices" src="https://www.bleepstatic.com/content/hl-images/2024/09/13/Ivanti.jpg"></p> <p>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has released new details about RESURGE, a malicious implant used in zero-day attacks exploiting CVE-2025-0282 to breach Ivanti Connect Secure devices.</p> <p>The update focuses on the implant's undetected latency on the appliances and its "sophisticated network-level evasion and authentication techniques" that enable covert communication with the attacker.</p> <p>CISA <a href="https://www.cisa.gov/news-events/alerts/2025/03/28/cisa-releases-malware-analysis-report-resurge-malware-associated-ivanti-connect-secure">originally documented</a> the malware on March 28 last year, saying that it can survive reboots, create webshells for stealing credentials, create accounts, reset passwords, and escalate privileges.</p> <p><a href="https://www.wiz.io/lp/ai-security-board-report-template?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_AI-Security-Board-Report-Template&amp;sfcid=701Vh00000Wn7E1IAJ&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=AI-Board-Report" target="_blank" rel="noopener noreferrer"><img src="https://www.bleepstatic.com/c/w/ai-security-board-report-template.jpg" alt="Wiz"></a>
+</p> <p>According to researchers at incident response company Mandiant, the critical CVE-2025-0282 vulnerability was <a href="https://www.bleepingcomputer.com/news/security/google-chinese-hackers-likely-behind-ivanti-vpn-zero-day-attacks/">exploited as a zero-day</a> since mid-December 2024 by a threat actor linked to China, tracked internally as UNC5221.</p> <h3>Network-level evasion</h3> <p>CISA's updated bulletin provides additional technical information on RESURGE, a malicious 32-bit Linux Shared Object file named libdsupgrade.so that was extracted from a compromised device.</p> <p>The implant is described as a passive command-and-control (C2) implant with rootkit, bootkit, backdoor, dropper, proxying, and tunneling capabilities.</p> <p>Instead of beaconing to the C2, it waits indefinitely for a particular inbound TLS connection, evading network monitoring, CISA says in the <a href="https://www.cisa.gov/news-events/analysis-reports/ar25-087a">updated document</a>.</p> <p>When loaded under the ‘web’ process, it hooks the ‘accept()’ function to inspect incoming TLS packets before they reach the web server, looking for specific connection attempts from a remote attacker that are identified using the CRC32 TLS fingerprint hashing scheme.</p> <p>If the fingerprint does not match, traffic is directed to the legitimate Ivanti server. CISA further details Rusrge's authentication mechanism saying that the threat actor also uses a fake Ivanti certificate to ensure that they are interacting with the implant and not the Ivanti web server.</p> <p>The agency highlights that the certificate's purpose is just to for authentication and verification purposes, as it is not used to encrypt communication. Furthermore, the fake certificate also helps the actor evade detection by impersonating the legitimate server.</p> <p>Because the forged certificate is sent unencrypted over the internet, CISA says that defenders could use it as a network signature to detect an active compromise.</p> <p>After fingerprint validation and authentication with the malware, the threat actor establishes secure remote access to the implant using a Mutual TLS session encrypted with the Elliptic Curve protocol.</p> <p>"Static analysis indicates the RESURGE implant will request the remote actors' EC key to utilize for encryption, and will also verify it with a hard-coded EC Certificate Authority (CA) key," CISA says.</p> <p>By mimicking legitimate TLS/SSH traffic, the implant achieves stealth and persistence, the American cybersecurity agency says.</p> <p>Another file analyzed is a variant of the SpawnSloth malware using the name <em>liblogblock.so</em> and contained by the RESURGE implant. Its main purpose is log tampering to hide malicious activity on compromised devices.</p> <p>A third file that CISA analyzed is <em>dsmain</em>, a kernel extraction script that embeds the open-source script 'extract_vmlinux.sh' and the BusyBox collection of Unix/Linux utilities.</p> <pre><code>liblogblock.so - 3526af9189533470bc0e90d54bafb0db7bda784be82a372ce112e361f7c7b104
+libdsupgrade.so - 52bbc44eb451cb5e16bf98bc5b1823d2f47a18d71f14543b460395a1c1b1aeda
+dsmain - b1221000f43734436ec8022caaa34b133f4581ca3ae8eccd8d57ea62573f301d</code></pre> <p>It allows RESURGE to decrypt, modify, and re-encrypt <a href="https://www.coreboot.org/">coreboot firmware images</a> and manipulate filesystem contents for boot-level persistence.</p> <p>“CISA’s updated analysis shows that RESURGE can remain latent on systems until a remote actor attempts to connect to the compromised device,” the agency notes. Because of this, the malicious implant "may be dormant and undetected on Ivanti Connect Secure devices and remains an active threat."</p> <p>CISA suggests that system administrators use the updated indicators of compromise (IoCs) to discover dormant RESURGE infections and remove them from Ivanti devices.</p> <div> <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank" rel="noopener noreferrer"> <img src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" alt="tines"> </a> </p> <div> <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank" rel="noopener noreferrer">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p> </div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

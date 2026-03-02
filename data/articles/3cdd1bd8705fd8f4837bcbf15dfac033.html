@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - Its-Satyajit/dev-bind: High-performance Local Development Reverse Proxy in Rust with Automatic HTTPS. Map .local domains to dev ports instantly. Zero-config SSL for a frictionless workflow.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - Its-Satyajit/dev-bind: High-performance Local Development Reverse Proxy in Rust with Automatic HTTPS. Map .local domains to dev ports instantly. Zero-config SSL for a frictionless workflow.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/21/2026 8:19:51 PM | <a href="https://github.com/Its-Satyajit/dev-bind" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>DevBind: Local Development Reverse Proxy with Automatic HTTPS</h1><a href="#devbind-local-development-reverse-proxy-with-automatic-https"></a></div>
+<p><strong>DevBind</strong> is a high-performance, secure local development reverse proxy written in Rust. It eliminates the friction of modern local development by mapping custom </p><pre><code>.test</code></pre> domains to your dev server ports with <strong>Automatic HTTPS</strong> — no more browser security warnings, no manual certificate management, and no <pre><code>/etc/hosts</code></pre> headaches.<p></p>
+<p><a target="_blank" href="/Its-Satyajit/dev-bind/blob/main/images/gui_mapping_screen.png"><img src="/Its-Satyajit/dev-bind/raw/main/images/gui_mapping_screen.png" alt="DevBind Mappings Interface - easily manage your local domains"></a></p>
+<div><h2>Why DevBind?</h2><a href="#why-devbind"></a></div>
+<p>Modern web development requires HTTPS, but setting it up locally is a nightmare.</p>
+<table>
+<thead>
+<tr>
+<th>The Old Way</th>
+<th>The DevBind Way</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>[NO]</strong> Manual certificate generation with <pre><code>openssl</code></pre></td>
+<td><strong>[YES]</strong> <strong>Automatic TLS</strong> for every <pre><code>.test</code></pre> domain</td>
+</tr>
+<tr>
+<td><strong>[NO]</strong> Importing Root CAs into every browser manually</td>
+<td><strong>[YES]</strong> <strong>One-click trust</strong> for system and browser stores</td>
+</tr>
+<tr>
+<td><strong>[NO]</strong> Manually editing <pre><code>/etc/hosts</code></pre> for every new project</td>
+<td><strong>[YES]</strong> <strong>Zero-Config DNS</strong> resolution managed by DevBind</td>
+</tr>
+<tr>
+<td><strong>[NO]</strong> Scary "Your connection is not private" warnings</td>
+<td><strong>[YES]</strong> <strong>Green locks</strong> and valid HTTPS everywhere</td>
+</tr>
+</tbody>
+</table>
+<p><a target="_blank" href="/Its-Satyajit/dev-bind/blob/main/images/browser_https___app.test.png"><img src="/Its-Satyajit/dev-bind/raw/main/images/browser_https___app.test.png" alt="Green Lock LocalHTTPS Verification Example 1"></a>
+<a target="_blank" href="/Its-Satyajit/dev-bind/blob/main/images/browser_https___nextjsapp.test.png"><img src="/Its-Satyajit/dev-bind/raw/main/images/browser_https___nextjsapp.test.png" alt="Green Lock LocalHTTPS Verification Example 2"></a></p>
+<div><h2>Key Features</h2><a href="#key-features"></a></div>
+<ul>
+<li><strong>Instant HTTPS Everywhere</strong> — Automatically generates and signs per-domain certificates using an in-memory CA. Zero disk I/O after the first handshake.</li>
+<li><strong>Frictionless Domain Mapping</strong> — Map <pre><code>myapp.test</code></pre> → <pre><code>localhost:3000</code></pre> in seconds.</li>
+<li><strong>Ephemeral Run Environment</strong> — Launch apps with <pre><code>devbind run</code></pre> to automatically assign a free port, inject <pre><code>$PORT</code></pre>, and register transient <pre><code>.test</code></pre> HTTPS routes with zero permanent config.</li>
+<li><strong>Enterprise-Grade Routing</strong> — <pre><code>HashMap</code></pre>-based O(1) lookups ensure your local environment never slows down, even with hundreds of domains.</li>
+<li><strong>Smart Hot-Reloading</strong> — Config reloads only when needed (at most every 5s), preserving performance.</li>
+<li><strong>Native Streaming Proxy</strong> — Efficiently streams response bodies directly — no RAM buffering or latency.</li>
+<li><strong>Hardened Security</strong> — Private keys are stored with <pre><code>0600</code></pre> permissions. Root CA management follows system-level security standards.</li>
+<li><strong>Zero-Config Trust</strong> — Automatically handles NSS databases for Chrome, Firefox, Brave, Zen, and even Flatpak/Snap versions.</li>
+<li><strong>Background Daemon</strong> — Runs as a standard systemd user service for seamless autostart without needing root.</li>
+<li><strong>Hybrid Interface</strong> — Choose between a high-performance CLI or a beautiful Dioxus-powered GUI.</li>
+</ul>
+<div><h2>System Requirements</h2><a href="#system-requirements"></a></div>
+<p>DevBind is built deeply into the Linux networking stack for a seamless, zero-config experience.</p>
+<ul>
+<li><strong>Supported OS</strong>: Linux (Tested on CachyOS, Arch, Manjaro, Ubuntu, Debian, Pop!_OS)
+<ul>
+<li>Experimental support for macOS and Windows (Manual setup required).</li>
+</ul>
+</li>
+<li><strong>Init System</strong>: <pre><code>systemd</code></pre> (Required for background daemon management on Linux)</li>
+<li><strong>Network Manager</strong>: <pre><code>NetworkManager</code></pre> (Required for zero-config DNS resolution on Linux)</li>
+<li><strong>Privilege Escalation</strong>: A working <pre><code>polkit</code></pre> agent (Required for GUI root operations on Linux)</li>
+</ul>
+<div><h3>Dependencies</h3><a href="#dependencies"></a></div>
+<p>Install </p><pre><code>nss</code></pre> and build essentials for compiling DevBind:<p></p>
+<div><pre><span><span>#</span> Arch / Manjaro / CachyOS</span>
+sudo pacman -S nss base-devel openssl <span><span>#</span> Debian / Ubuntu / Pop!_OS</span>
+sudo apt install libnss3-tools build-essential libssl-dev pkg-config</pre></div>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><pre>git clone https://github.com/Its-Satyajit/dev-bind.git
+<span>cd</span> dev-bind
+./install.sh</pre></div>
+<p><strong>Headless Edition (CLI Only):</strong>
+If you are running on a server without graphical dependencies (like GTK or WebKit), or just prefer sticking strictly to the terminal, you can skip compiling the GUI:</p>
+<div><pre>./install.sh --cli-only</pre></div>
+<p></p><pre><code>install.sh</code></pre> will:<p></p>
+<ol>
+<li>Build <pre><code>devbind</code></pre> (and conditionally <pre><code>devbind-gui</code></pre>) natively via Cargo</li>
+<li>Replace any running background or foreground services safely</li>
+<li>Copy the compiled binaries to <pre><code>~/.local/bin</code></pre></li>
+<li>Grant <pre><code>CAP_NET_BIND_SERVICE</code></pre> so DevBind can bind ports <pre><code>80</code></pre>/<pre><code>443</code></pre> without root</li>
+<li>Hook into your <pre><code>.desktop</code></pre> application menu (unless <pre><code>--cli-only</code></pre> is passed)</li>
+</ol>
+<div><h3>Other Platforms (macOS &amp; Windows)</h3><a href="#other-platforms-macos--windows"></a></div>
+<div><p>Important</p><p>DevBind is primarily built for Linux. Support for macOS and Windows is <strong>experimental</strong> and requires manual configuration for DNS and SSL trust.</p>
+</div>
+<div><h4>Installation</h4><a href="#installation-1"></a></div>
+<p>You must have the <a href="https://rustup.rs/">Rust toolchain</a> installed.</p>
+<div><pre>git clone https://github.com/Its-Satyajit/dev-bind.git
+<span>cd</span> dev-bind
+cargo build --release</pre></div>
+<p>The binaries will be located in </p><pre><code>target/release/devbind</code></pre> and <pre><code>target/release/devbind-gui</code></pre>.<p></p>
+<div><h4>Manual DNS Setup</h4><a href="#manual-dns-setup"></a></div>
+<p><strong>macOS:</strong>
+Create a file at </p><pre><code>/etc/resolver/test</code></pre> with the following content (requires <pre><code>sudo</code></pre>):<p></p>
+<div><pre><code>nameserver 127.0.2.1
+</code></pre></div>
+<p>This tells macOS to route all </p><pre><code>*.test</code></pre> queries to DevBind's embedded DNS server.<p></p>
+<p><strong>Windows:</strong>
+Windows does not support a native "resolver" directory like macOS. You must manually add entries to </p><pre><code>C:\Windows\System32\drivers\etc\hosts</code></pre>:<p></p>
+<div><pre><code>127.0.0.1 myapp.test
+127.0.0.1 anotherapp.test
+</code></pre></div>
+<div><h4>Manual SSL Trust</h4><a href="#manual-ssl-trust"></a></div>
+<ol>
+<li>Start DevBind once to generate the Root CA: <pre><code>devbind start</code></pre>.</li>
+<li>Locate the Root CA file:
+<ul>
+<li>macOS: <pre><code>~/Library/Application Support/devbind/certs/devbind-rootCA.crt</code></pre></li>
+<li>Windows: <pre><code>%APPDATA%\devbind\certs\devbind-rootCA.crt</code></pre></li>
+</ul>
+</li>
+<li><strong>macOS</strong>: Import to Keychain Access and set to "Always Trust".
+<div><pre>sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <span>~</span>/Library/Application<span>\ </span>Support/devbind/certs/devbind-rootCA.crt</pre></div>
+</li>
+<li><strong>Windows</strong>: Import to "Trusted Root Certification Authorities" using <pre><code>certutil</code></pre>:
+<div><pre>certutil <span>-</span>addstore <span>-f</span> <span><span>"</span>Root<span>"</span></span> <span>%</span>APPDATA<span>%</span>\devbind\certs\devbind<span>-</span>rootCA.crt</pre></div>
+</li>
+</ol>
+<div><p>Note</p><p>These paths and commands are based on the </p><pre><code>dirs</code></pre> crate's platform-specific behavior. Since the I don't have access to macOS or Windows devices for testing, please <a href="https://github.com/Its-Satyajit/dev-bind/issues">open an issue</a> if you encounter any problems.<p></p>
+</div>
+<div><h3>Reinstalling / Updating</h3><a href="#reinstalling--updating"></a></div>
+<p>If DevBind is currently running, stop it first — Linux won't overwrite a busy executable:</p>
+<div><pre><span><span>#</span> Stop the systemd service (if installed as daemon)</span>
+systemctl --user stop devbind <span><span>#</span> Or kill the process directly</span>
+pkill -x devbind <span><span>#</span> Then reinstall</span>
+./install.sh</pre></div>
+<div><h3>Uninstalling</h3><a href="#uninstalling"></a></div>
+<div><pre><span><span>#</span> 1. Stop and remove the systemd service (if installed)</span>
+systemctl --user stop devbind
+systemctl --user disable devbind
+rm -f <span>~</span>/.config/systemd/user/devbind.service
+systemctl --user daemon-reload <span><span>#</span> 2. Remove the Root CA from system &amp; browser trust stores</span>
+devbind untrust <span><span>#</span> 3. Remove the binaries and desktop launcher</span>
+rm -f <span>~</span>/.local/bin/devbind <span>~</span>/.local/bin/devbind-gui
+rm -f <span>~</span>/.local/share/applications/devbind.desktop <span><span>#</span> 4. (Optional) Remove config and certificates</span>
+devbind uninstall <span><span>#</span> remove DNS integration</span>
+rm -rf <span>~</span>/.config/devbind</pre></div>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> 1. Launch the GUI</span>
+devbind-gui <span><span>#</span> — or use the CLI —</span> <span><span>#</span> 1. Add a domain mapping</span>
+devbind add myapp 3000 <span><span>#</span> maps myapp.test → 127.0.0.1:3000</span> <span><span>#</span> 2. Start the proxy</span>
+devbind start <span><span>#</span> 3. Install DNS routing &amp; Root CA (one-time setup)</span>
+devbind install
+devbind trust <span><span>#</span> 4. Open https://myapp.test in your browser</span> <span><span>#</span>## Ephemeral App Execution — `devbind run`</span> <span><span>`</span>devbind run<span>`</span></span> is the fastest way to expose any <span>local</span> dev server under instant HTTPS. It: - Picks a <span>**</span>free random port<span>**</span> automatically - Injects <span><span>`</span><span>$PORT</span><span>`</span></span>, <span><span>`</span><span>$HOST</span><span>`</span></span>, and <span><span>`</span><span>$DEVBIND_DOMAIN</span><span>`</span></span> into the subprocess environment - Registers a transient <span><span>`</span>.test<span>`</span></span> HTTPS route that is <span>**</span>cleaned up automatically<span>**</span> when the app exits <span><span>`</span><span>`</span><span>`</span>bash</span>
+<span> devbind run <span>&lt;</span>name<span>&gt;</span> <span>&lt;</span>cmd...<span>&gt;</span></span>
+<span> <span><span>#</span> Example:</span></span>
+<span> devbind run my-blog pnpm dev --port <span>$PORT</span></span></pre></div>
+<blockquote>
+<p><strong>Frameworks Guide</strong>: Different frameworks (Vite, Next.js, Django, Flask, etc.) need the port and host passed differently. See <a href="/Its-Satyajit/dev-bind/blob/main/FRAMEWORKS.md">FRAMEWORKS.md</a> for a complete reference and advanced configuration like Vite's </p><pre><code>allowedHosts</code></pre>.<p></p>
+</blockquote>
+<div><h2>Powerful GUI &amp; CLI</h2><a href="#powerful-gui--cli"></a></div>
+<p>DevBind provides the best of both worlds: a minimalist CLI for automation and a premium GUI for visual management.</p>
+<div><h3>Domain Mappings</h3><a href="#domain-mappings"></a></div>
+<p>Add, view, and remove your </p><pre><code>domain → port</code></pre> mappings. Domains are clickable, opening your secure local site instantly in your default browser.<p></p>
+<p><a target="_blank" href="/Its-Satyajit/dev-bind/blob/main/images/gui_mapping_screen.png"><img src="/Its-Satyajit/dev-bind/raw/main/images/gui_mapping_screen.png" alt="Mappings Screen - visualize and manage your local domains"></a></p>
+<div><h3>Smart DNS &amp; SSL Management</h3><a href="#smart-dns--ssl-management"></a></div>
+<p>Check the status of the DevBind local DNS resolver and install the local Root CA in seconds, so you never see another browser security warning.</p>
+<p><a target="_blank" href="/Its-Satyajit/dev-bind/blob/main/images/gui_dns_screen.png"><img src="/Its-Satyajit/dev-bind/raw/main/images/gui_dns_screen.png" alt="DNS Screen - manage DNS integration"></a>
+<a target="_blank" href="/Its-Satyajit/dev-bind/blob/main/images/gui_ssl_trust_screen.png"><img src="/Its-Satyajit/dev-bind/raw/main/images/gui_ssl_trust_screen.png" alt="SSL Trust Screen - manage root CA"></a></p>
+<div><h3>Background Daemon Management</h3><a href="#background-daemon-management"></a></div>
+<p>Turn DevBind into a background service that just works. No long-running terminal tabs required.</p>
+<p><a target="_blank" href="/Its-Satyajit/dev-bind/blob/main/images/gui_daemon_screen.png"><img src="/Its-Satyajit/dev-bind/raw/main/images/gui_daemon_screen.png" alt="Daemon Screen - manage the background process for DevBind"></a></p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Install Daemon</strong></td>
+<td>Sets up the <pre><code>systemd</code></pre> user service unit</td>
+</tr>
+<tr>
+<td><strong>Start/Stop</strong></td>
+<td>Precise control over the background process</td>
+</tr>
+<tr>
+<td><strong>Proxy Status</strong></td>
+<td>Live status indicator (checks port 443 in real-time)</td>
+</tr>
+</tbody>
+</table>
+<div><h3>CLI Quick Reference</h3><a href="#cli-quick-reference"></a></div>
+<p><a target="_blank" href="/Its-Satyajit/dev-bind/blob/main/images/command_devbind.png"><img src="/Its-Satyajit/dev-bind/raw/main/images/command_devbind.png" alt="DevBind CLI Interface examples"></a></p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>devbind start</code></pre></td>
+<td>Start the proxy (HTTPS on 443, HTTP→HTTPS redirect on 80)</td>
+</tr>
+<tr>
+<td><pre><code>devbind add &lt;name&gt; &lt;port&gt;</code></pre></td>
+<td>Map <pre><code>&lt;name&gt;.test</code></pre> to local <pre><code>&lt;port&gt;</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>devbind run &lt;name&gt; &lt;cmd...&gt;</code></pre></td>
+<td>Dynamically allocate a free port, proxy HTTPS, and run <pre><code>&lt;cmd&gt;</code></pre> with <pre><code>$PORT</code></pre> injected</td>
+</tr>
+<tr>
+<td><pre><code>devbind gui</code></pre></td>
+<td>Launch the visual DevBind control panel</td>
+</tr>
+<tr>
+<td><pre><code>devbind list</code></pre></td>
+<td>Show all active domain mappings</td>
+</tr>
+</tbody>
+</table>
+<p><a target="_blank" href="/Its-Satyajit/dev-bind/blob/main/images/command_devbind_list.png"><img src="/Its-Satyajit/dev-bind/raw/main/images/command_devbind_list.png" alt="Listing CLI active domains"></a></p>
+<p>| </p><pre><code>devbind trust</code></pre> | Install Root CA into system &amp; browser trust stores |
+| <pre><code>devbind untrust</code></pre> | Remove Root CA from all trust stores |<p></p>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>Browser → 127.0.0.1:443 (TLS) → DevBind proxy → 127.0.0.1:&lt;port&gt; (local app) ↑ SNI-based cert resolution (in-memory CA → generated on fly) DevBind includes an embedded DNS server on `127.0.2.1:53` which `systemd-resolved` forwards `*.test` queries to.
+</code></pre></div>
+<ul>
+<li><strong><pre><code>core</code></pre></strong> — proxy engine, cert manager, hosts manager, config, CA trust</li>
+<li><strong><pre><code>cli</code></pre></strong> — thin CLI wrapper around <pre><code>core</code></pre></li>
+<li><strong><pre><code>gui</code></pre></strong> — Dioxus desktop GUI</li>
+</ul>
+<p>Config: </p><pre><code>~/.config/devbind/config.toml</code></pre>
+Certs: <pre><code>~/.config/devbind/certs/</code></pre>
+Service: <pre><code>~/.config/systemd/user/devbind.service</code></pre><p></p>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<p>Having issues with "Bad Gateway", </p><pre><code>nss3-tools</code></pre>, background daemon, or connecting to frameworks?<p></p>
+<blockquote>
+<p><strong>Troubleshooting Guide</strong>: See <a href="/Its-Satyajit/dev-bind/blob/main/TROUBLESHOOTING.md">TROUBLESHOOTING.md</a> for solutions to the most common configuration and connectivity issues.</p>
+</blockquote>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT — see <a href="/Its-Satyajit/dev-bind/blob/main/LICENSE">LICENSE</a>.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

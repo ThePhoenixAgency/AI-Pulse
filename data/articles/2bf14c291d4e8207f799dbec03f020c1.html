@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - elophanto/EloPhanto: Your best friend and personal assistant. Self-evolving.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - elophanto/EloPhanto: Your best friend and personal assistant. Self-evolving.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/23/2026 3:28:06 PM | <a href="https://github.com/elophanto/EloPhanto" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>EloPhanto</h1><a href="#elophanto"></a></div>
+<p> <a target="_blank" href="/elophanto/EloPhanto/blob/main/misc/logo/elophanto.jpeg"><img src="/elophanto/EloPhanto/raw/main/misc/logo/elophanto.jpeg" alt="EloPhanto"></a>
+</p>
+<blockquote>
+<p><strong>EloPhanto is posting on the internet by itself now.</strong> You might find it out there somewhere. It's living its life.</p>
+</blockquote>
+<p>A self-evolving, self-building AI agent. It runs locally as your personal AI operating system — and when it encounters something it can't do, it builds the tool for it. Full self-development pipeline with testing, code review, and deployment. Creates its own skills from experience. Modifies its own source code with automatic rollback.</p>
+<p>Also: full system access, real Chrome browser control (47+ tools), MCP tool servers (connect any MCP server — filesystem, GitHub, databases, and more), document &amp; media analysis, skills framework with EloPhantoHub marketplace, multi-channel gateway (CLI, Telegram, Discord, Slack), evolving identity, agent email, crypto payments, encrypted vault, and more.</p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
+<ul>
+<li>Python 3.12+</li>
+<li><a href="https://docs.astral.sh/uv/">uv</a> package manager</li>
+<li>Node.js 24+ LTS (for the browser bridge)</li>
+<li>At least one LLM provider:
+<ul>
+<li><strong>Ollama</strong> (local, free) — <a href="https://ollama.ai">install</a></li>
+<li><strong>OpenRouter</strong> (cloud) — <a href="https://openrouter.ai">get API key</a></li>
+<li><strong>Z.ai / GLM</strong> (cloud, cost-effective coding) — <a href="https://z.ai/manage-apikey/apikey-list">get API key</a></li>
+</ul>
+</li>
+</ul>
+<div><h3>Install</h3><a href="#install"></a></div>
+<div><pre>git clone https://github.com/elophanto/EloPhanto.git
+<span>cd</span> EloPhanto
+./setup.sh</pre></div>
+<p>This installs Python dependencies, builds the browser bridge, and sets up the </p><pre><code>elophanto</code></pre> command.<p></p>
+<div><h3>Run</h3><a href="#run"></a></div>
+<div><pre>./start.sh <span><span>#</span> Start chatting (activates venv automatically)</span>
+./start.sh gateway <span><span>#</span> Start gateway + all enabled channels</span>
+./start.sh telegram <span><span>#</span> Start Telegram bot (direct mode)</span>
+./start.sh vault list <span><span>#</span> Any elophanto command</span></pre></div>
+<p>Or activate manually and use </p><pre><code>elophanto</code></pre> directly:<p></p>
+<div><pre><span>source</span> .venv/bin/activate
+elophanto init <span><span>#</span> First-time configuration</span>
+elophanto chat <span><span>#</span> Start chatting</span>
+elophanto gateway <span><span>#</span> Start multi-channel gateway</span></pre></div>
+<p>Give the agent a task in natural language. It plans which tools to use, executes them (with your approval in ask-always mode), and returns results.</p>
+<div><h2>What It Can Do</h2><a href="#what-it-can-do"></a></div>
+<div><h3>Self-Building</h3><a href="#self-building"></a></div>
+<ul> <li><strong>Self-skilling</strong> — writes new SKILL.md files from experience, teaching itself best practices for future tasks</li>
+<li><strong>Core self-modification</strong> — can modify its own source code with impact analysis, test verification, and automatic rollback</li>
+<li><strong>Skills + EloPhantoHub</strong> — 28 bundled best-practice skills loaded before tasks, plus a public skill registry for searching, installing, and sharing skills</li>
+</ul>
+<div><h3>Everything Else</h3><a href="#everything-else"></a></div>
+<ul>
+<li><strong>MCP tool servers</strong> — connect to any <a href="https://modelcontextprotocol.io/">MCP</a> server (filesystem, GitHub, databases, Brave Search, Slack, and more) and its tools appear alongside built-in tools. Agent manages setup through conversation — installs SDK, adds servers, tests connections. Also: <pre><code>elophanto mcp</code></pre> CLI and init wizard presets</li>
+<li><strong>Browser automation</strong> — control a real Chrome browser with 47 tools (navigate, click, type, screenshot, extract data, manage tabs, inspect DOM, read console/network logs)</li>
+<li><strong>Multi-channel gateway</strong> — WebSocket control plane with channel adapters for CLI, Telegram, Discord, and Slack. Unified sessions by default: all channels share one conversation so you can chat from CLI and Telegram interchangeably</li>
+<li><strong>Autonomous goal loop</strong> — decompose complex goals into checkpoints, track progress across sessions, auto-summarize context, self-evaluate and revise plans. Background execution: goals run autonomously checkpoint-by-checkpoint, pause on user interaction, auto-resume on restart</li>
+<li><strong>Document &amp; media analysis</strong> — analyze PDFs, images, DOCX, XLSX, PPTX, EPUB through any channel; small files direct, large documents via RAG with page citations and OCR</li>
+<li><strong>Agent email</strong> — own email inbox with dual provider support: AgentMail (cloud API, zero config) or SMTP/IMAP (your own server — Gmail, Outlook, etc.). Send/receive/search/reply, background inbox monitoring with cross-channel notifications, identity integration, service signup verification flows</li>
+<li><strong>TOTP authenticator</strong> — own 2FA authenticator (like Google Authenticator). Enroll TOTP secrets from service setup pages, generate 6-digit codes autonomously, handle verification challenges during signup/login flows. Secrets encrypted in vault</li>
+<li><strong>Crypto payments</strong> — agent's own wallet on Base with dual provider support: local self-custody wallet (default, zero config) or Coinbase AgentKit (managed custody, gasless, DEX swaps). USDC/ETH transfers, spending limits, full audit trail</li>
+<li><strong>Evolving identity</strong> — discovers its own identity on first run, evolves personality/values/capabilities through task reflection, maintains a living nature document</li>
+<li><strong>Knowledge base</strong> — persistent markdown knowledge with semantic search via embeddings (auto-selects OpenRouter for fast cloud embeddings, Ollama as local fallback)</li>
+<li><strong>Memory</strong> — remembers past tasks across sessions, learns from experience</li>
+<li><strong>Scheduling</strong> — cron-based recurring tasks with natural language schedules</li>
+<li><strong>File operations</strong> — read, write, list, delete, move files and directories</li>
+<li><strong>Shell commands</strong> — execute any command with safety blacklists and approval controls</li>
+<li><strong>Telegram bot</strong> — full conversational interface from your phone with approval flow, notifications, and slash commands</li>
+<li><strong>Discord bot</strong> — slash commands, DM/mention support, reaction-based approvals (untested)</li>
+<li><strong>Slack bot</strong> — app mentions, DM support, thread-based responses (untested)</li>
+<li><strong>Encrypted vault</strong> — secure credential storage with PBKDF2 key derivation</li>
+</ul>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>┌─────────────────────────────────────────────────┐
+│ CLI │ Telegram │ Discord │ Slack │ Web (planned)│ Channel Adapters
+├─────────────────────────────────────────────────┤
+│ WebSocket Gateway (ws://:18789) │ Control Plane
+├─────────────────────────────────────────────────┤
+│ Session Manager (unified or per-channel) │ Session Layer
+├─────────────────────────────────────────────────┤
+│ Permission System │ Safety &amp; Control
+├─────────────────────────────────────────────────┤
+│ Self-Development Pipeline │ Evolution Engine
+├─────────────────────────────────────────────────┤
+│ Tool System (99+ built-in + MCP + plugins) │ Capabilities
+├─────────────────────────────────────────────────┤
+│ Agent Core Loop (plan → execute → reflect) │ Brain
+├─────────────────────────────────────────────────┤
+│ Memory│Knowledge│Skills│Identity│Email│Payments│ Foundation
+├─────────────────────────────────────────────────┤
+│ EloPhantoHub Registry │ Skill Marketplace
+└─────────────────────────────────────────────────┘
+</code></pre></div>
+<div><h3>Gateway Architecture</h3><a href="#gateway-architecture"></a></div>
+<p>All channels connect through a WebSocket gateway, providing:</p>
+<ul>
+<li><strong>Unified sessions</strong> — all channels share one conversation by default (configurable per-channel isolation)</li>
+<li><strong>Unified approval routing</strong> — approve from any connected channel</li>
+<li><strong>Event broadcasting</strong> — task completions, errors, and notifications pushed to all channels</li>
+<li><strong>Backward compatible</strong> — direct mode (no gateway) still works for CLI and Telegram</li>
+</ul>
+<div><pre><code>CLI Adapter ──────┐
+Telegram Adapter ──┤── WebSocket ──► Gateway ──► Agent (shared)
+Discord Adapter ───┤ │
+Slack Adapter ─────┘ ▼ Session Manager (SQLite)
+</code></pre></div>
+<div><h2>Built-in Tools</h2><a href="#built-in-tools"></a></div>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Tools</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System</td>
+<td>shell_execute, file_read, file_write, file_list, file_delete, file_move</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Browser</td>
+<td>navigate, click, type, screenshot, extract, scroll, tabs, console, network, storage, cookies, drag, hover, wait, eval, audit + more</td>
+<td>47</td>
+</tr>
+<tr>
+<td>Knowledge</td>
+<td>knowledge_search, knowledge_write, knowledge_index, skill_read, skill_list</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Hub</td>
+<td>hub_search, hub_install</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Self-Dev</td>
+<td>self_create_plugin, self_modify_source, self_rollback, self_read_source, self_run_tests, self_list_capabilities</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>llm_call, vault_lookup, vault_set</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Documents</td>
+<td>document_analyze, document_query, document_collections</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Goals</td>
+<td>goal_create, goal_status, goal_manage</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td>identity_status, identity_update, identity_reflect</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>email_create_inbox, email_send, email_list, email_read, email_reply, email_search, email_monitor</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Payments</td>
+<td>wallet_status, payment_balance, payment_validate, payment_preview, crypto_transfer, crypto_swap, payment_history</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Verification</td>
+<td>totp_enroll, totp_generate, totp_list, totp_delete</td>
+<td>4</td>
+</tr>
+<tr>
+<td>MCP</td>
+<td>mcp_manage (list, add, remove, test, install MCP servers)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Scheduling</td>
+<td>schedule_task, schedule_list</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Skills System</h2><a href="#skills-system"></a></div>
+<p>Skills are best-practice guides (</p><pre><code>SKILL.md</code></pre> files) that the agent reads before starting specific task types. 28 skills ship bundled, covering:<p></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Skills</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core</td>
+<td>python, typescript-nodejs, browser-automation, file-management, research</td>
+</tr>
+<tr>
+<td>Development</td>
+<td>nextjs, supabase, prisma, shadcn, react-best-practices, composition-patterns, mcp-builder, webapp-testing</td>
+</tr>
+<tr>
+<td>UI/Design</td>
+<td>frontend-design, interface-design, interaction-design, baseline-ui, design-lab, ui-ux-pro-max, wcag-audit-patterns, canvas-design, 12-principles-of-animation, and more</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Install External Skills</h3><a href="#install-external-skills"></a></div>
+<div><pre><span><span>#</span> From a GitHub repo</span>
+elophanto skills install https://github.com/user/repo <span><span>#</span> List installed skills</span>
+elophanto skills list <span><span>#</span> Read a skill's content</span>
+elophanto skills <span>read</span> browser-automation</pre></div>
+<p>Compatible with skill directories like <a href="https://www.ui-skills.com/">ui-skills.com</a>, <a href="https://github.com/anthropics/skills">anthropics/skills</a>, <a href="https://github.com/supabase/agent-skills">supabase/agent-skills</a>, and any repo using the </p><pre><code>SKILL.md</code></pre> convention.<p></p>
+<div><h3>EloPhantoHub — Skill Registry</h3><a href="#elophantohub--skill-registry"></a></div>
+<p>Search, install, and update skills from the public EloPhantoHub registry:</p>
+<div><pre><span><span>#</span> Search for skills</span>
+elophanto skills hub search <span><span>"</span>gmail automation<span>"</span></span> <span><span>#</span> Install from the registry</span>
+elophanto skills hub install gmail-automation <span><span>#</span> Update all hub-installed skills</span>
+elophanto skills hub update <span><span>#</span> List hub-installed skills</span>
+elophanto skills hub list</pre></div>
+<p>The agent can also auto-discover and install hub skills when it encounters tasks without relevant local skills.</p> <div><h2>Permission Modes</h2><a href="#permission-modes"></a></div>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>ask_always</code></pre></td>
+<td>Every tool requires your approval</td>
+</tr>
+<tr>
+<td><pre><code>smart_auto</code></pre></td>
+<td>Safe tools (read, search, list) auto-approve; risky ones ask</td>
+</tr>
+<tr>
+<td><pre><code>full_auto</code></pre></td>
+<td>Everything runs autonomously with logging</td>
+</tr>
+</tbody>
+</table>
+<p>Per-tool overrides configurable in </p><pre><code>permissions.yaml</code></pre>. Dangerous commands (<pre><code>rm -rf /</code></pre>, <pre><code>mkfs</code></pre>, <pre><code>DROP DATABASE</code></pre>) are always blocked regardless of mode.<p></p>
+<div><h2>Multi-Channel Support</h2><a href="#multi-channel-support"></a></div> <p>Start all enabled channels simultaneously:</p>
+<div><pre>elophanto gateway <span><span>#</span> Gateway + CLI + all enabled channels</span>
+elophanto gateway --no-cli <span><span>#</span> Headless mode (Telegram/Discord/Slack only)</span></pre></div>
+<p>Each channel connects to the gateway via WebSocket. By default, all channels share one unified session — chat from CLI, continue from Telegram. Set </p><pre><code>unified_sessions: false</code></pre> for per-channel isolation.<p></p>
+<div><h3>Direct Mode</h3><a href="#direct-mode"></a></div>
+<p>For single-channel use without the gateway:</p>
+<div><pre>elophanto chat <span><span>#</span> CLI only (direct)</span>
+elophanto chat --direct <span><span>#</span> Force direct mode even if gateway enabled</span>
+elophanto telegram <span><span>#</span> Telegram only (direct)</span></pre></div>
+<div><h3>Channel Setup</h3><a href="#channel-setup"></a></div>
+<p><strong>Telegram</strong>: Create a bot via <a href="https://t.me/BotFather">@BotFather</a>, store the token in the vault (</p><pre><code>elophanto vault set telegram_bot_token YOUR_TOKEN</code></pre>), add your Telegram user ID to <pre><code>config.yaml</code></pre>.<p></p>
+<p><strong>Discord</strong>: Create a Discord application and bot, store the token in the vault (</p><pre><code>elophanto vault set discord_bot_token YOUR_TOKEN</code></pre>), add guild IDs to <pre><code>config.yaml</code></pre>.<p></p>
+<p><strong>Slack</strong>: Create a Slack app with Socket Mode, store both tokens in the vault (</p><pre><code>elophanto vault set slack_bot_token</code></pre> and <pre><code>slack_app_token</code></pre>), add channel IDs to <pre><code>config.yaml</code></pre>.<p></p>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Configuration lives in </p><pre><code>config.yaml</code></pre>. Key settings:<p></p>
+<div><pre><span>agent</span>: <span>permission_mode</span>: <span>full_auto</span> <span>llm</span>: <span>provider_priority</span>: <span>[zai, ollama, openrouter]</span> <span>budget</span>: <span>daily_limit_usd</span>: <span>10.00</span> <span>browser</span>: <span>enabled</span>: <span>true</span> <span>mode</span>: <span>profile </span><span><span>#</span> Uses your real Chrome sessions</span> <span>scheduler</span>: <span>enabled</span>: <span>true</span> <span>gateway</span>: <span>enabled</span>: <span>true</span> <span>host</span>: <span><span>"</span>127.0.0.1<span>"</span></span> <span>port</span>: <span>18789</span> <span>unified_sessions</span>: <span>true </span><span><span>#</span> All channels share one conversation</span> <span>knowledge</span>: <span>embedding_provider</span>: <span>auto </span><span><span>#</span> auto | openrouter | ollama</span> <span>hub</span>: <span>enabled</span>: <span>true</span> <span>auto_suggest</span>: <span>true</span> <span>identity</span>: <span>enabled</span>: <span>true</span> <span>auto_evolve</span>: <span>true</span> <span>reflection_frequency</span>: <span>10</span> <span>email</span>: <span>enabled</span>: <span>true</span> <span>provider</span>: <span>agentmail </span><span><span>#</span> "agentmail" (cloud API) or "smtp" (your own server)</span> <span>api_key_ref</span>: <span>agentmail_api_key</span> <span>domain</span>: <span>agentmail.to</span> <span>smtp</span>: <span><span>#</span> Used when provider: smtp</span> <span>host</span>: <span><span>'</span><span>'</span></span> <span>port</span>: <span>587</span> <span>use_tls</span>: <span>true</span> <span>username_ref</span>: <span>smtp_username</span> <span>password_ref</span>: <span>smtp_password</span> <span>from_address</span>: <span><span>'</span><span>'</span></span> <span>from_name</span>: <span>EloPhanto Agent</span> <span>imap</span>: <span>host</span>: <span><span>'</span><span>'</span></span> <span>port</span>: <span>993</span> <span>use_tls</span>: <span>true</span> <span>username_ref</span>: <span>imap_username</span> <span>password_ref</span>: <span>imap_password</span> <span>mailbox</span>: <span>INBOX</span> <span>monitor</span>: <span>poll_interval_minutes</span>: <span>5</span> <span><span>#</span> background poll interval (started via conversation)</span> <span>persist_seen_ids</span>: <span>true </span><span><span>#</span> persist seen IDs across restarts</span> <span>payments</span>: <span>enabled</span>: <span>false</span> <span>crypto</span>: <span>enabled</span>: <span>false</span> <span>default_chain</span>: <span>base</span> <span>provider</span>: <span>local </span><span><span>#</span> "local" (self-custody) or "agentkit" (Coinbase CDP)</span> <span>mcp</span>: <span>enabled</span>: <span>false</span> <span>servers</span>: <span>{} </span><span><span>#</span> See docs/23-MCP.md for server config examples</span> <span>self_learning</span>: <span>enabled</span>: <span>false </span><span><span>#</span> Opt-in only — disabled by default. Collects anonymized</span> <span><span>#</span> task interactions for model training. Does NOT affect</span> <span><span>#</span> identity evolution, task memory, or any other agent feature.</span> <span>batch_size</span>: <span>10</span> <span>min_turns</span>: <span>3</span> <span>success_only</span>: <span>false</span> <span>documents</span>: <span>enabled</span>: <span>true</span> <span>ocr_enabled</span>: <span>true</span> <span>telegram</span>: <span>enabled</span>: <span>false</span> <span>bot_token_ref</span>: <span>telegram_bot_token</span> <span>allowed_users</span>: <span>[]</span> <span>discord</span>: <span>enabled</span>: <span>false</span> <span>bot_token_ref</span>: <span>discord_bot_token</span> <span>allowed_guilds</span>: <span>[]</span> <span>slack</span>: <span>enabled</span>: <span>false</span> <span>bot_token_ref</span>: <span>slack_bot_token</span> <span>app_token_ref</span>: <span>slack_app_token</span> <span>allowed_channels</span>: <span>[]</span></pre></div>
+<div><h2>CLI Commands</h2><a href="#cli-commands"></a></div>
+<div><pre>./start.sh <span><span>#</span> Chat (default)</span>
+./start.sh init <span><span>#</span> Setup wizard</span>
+./start.sh chat --debug <span><span>#</span> With debug logging</span>
+./start.sh gateway <span><span>#</span> Start gateway + all enabled channels</span>
+./start.sh gateway --no-cli <span><span>#</span> Headless gateway mode</span>
+./start.sh vault <span>set</span> KEY VAL <span><span>#</span> Store a credential</span>
+./start.sh vault list <span><span>#</span> List stored credentials</span>
+./start.sh schedule list <span><span>#</span> List scheduled tasks</span>
+./start.sh skills list <span><span>#</span> List available skills</span>
+./start.sh skills install SRC <span><span>#</span> Install skills from git repo</span>
+./start.sh skills hub search Q <span><span>#</span> Search EloPhantoHub</span>
+./start.sh skills hub install N <span><span>#</span> Install from EloPhantoHub</span>
+./start.sh mcp list <span><span>#</span> List MCP servers</span>
+./start.sh mcp add NAME <span><span>#</span> Add an MCP server</span>
+./start.sh mcp <span>test</span> <span><span>#</span> Test MCP connections</span>
+./start.sh rollback <span><span>#</span> Revert a self-modification</span>
+./start.sh telegram <span><span>#</span> Start Telegram bot (direct mode)</span></pre></div>
+<p>Or with manual venv activation: </p><pre><code>source .venv/bin/activate &amp;&amp; elophanto &lt;command&gt;</code></pre><p></p>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre>./setup.sh <span><span>#</span> Full setup (deps + browser bridge)</span>
+<span>source</span> .venv/bin/activate <span><span>#</span> Activate venv</span>
+uv sync --all-extras <span><span>#</span> Install with dev dependencies</span>
+pytest tests/ -v <span><span>#</span> Run tests</span>
+ruff check <span>.</span> <span><span>#</span> Lint</span>
+mypy core/ tools/ cli/ <span><span>#</span> Type check</span></pre></div>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>elophanto/
+├── core/ # Agent brain + foundation
+│ ├── agent.py # Main loop (plan/execute/reflect)
+│ ├── planner.py # XML-structured system prompt builder
+│ ├── router.py # Multi-provider LLM routing
+│ ├── executor.py # Tool execution + permissions
+│ ├── gateway.py # WebSocket gateway control plane
+│ ├── session.py # Session management + persistence
+│ ├── protocol.py # Gateway message types + serialization
+│ ├── hub.py # EloPhantoHub registry client
+│ ├── skills.py # Skills discovery and trigger matching
+│ ├── telegram.py # Telegram bot adapter (legacy direct mode)
+│ ├── browser_manager.py # Chrome control via Node.js bridge
+│ ├── mcp_client.py # MCP client manager + server connections
+│ ├── vault.py # Encrypted credential vault
+│ ├── identity.py # Evolving agent identity manager
+│ ├── payments/ # Crypto payments (manager, limits, audit)
+│ ├── goal_manager.py # Autonomous goal loop
+│ ├── goal_runner.py # Background goal execution
+│ ├── email_monitor.py # Background agent inbox monitor
+│ ├── injection_guard.py # Prompt injection defense (output wrapping + scanning)
+│ ├── protected.py # Protected files system
+│ ├── approval_queue.py # Persistent approval tracking
+│ └── ...
+├── channels/ # Channel adapters (gateway clients)
+│ ├── base.py # ChannelAdapter ABC
+│ ├── cli_adapter.py # CLI adapter (Rich terminal)
+│ ├── telegram_adapter.py # Telegram adapter (aiogram)
+│ ├── discord_adapter.py # Discord adapter (discord.py)
+│ └── slack_adapter.py # Slack adapter (slack-bolt)
+├── tools/ # 99+ built-in tools
+│ ├── system/ # Shell, filesystem
+│ ├── browser/ # 47 browser tools
+│ ├── knowledge/ # Search, write, index, skills, hub
+│ ├── documents/ # Document analysis, query, collections
+│ ├── goals/ # Goal loop tools
+│ ├── email/ # Agent email (AgentMail + SMTP/IMAP, send, receive, search, monitor)
+│ ├── identity/ # Identity status, update, reflection
+│ ├── payments/ # Crypto wallet, transfers, swaps, audit
+│ ├── self_dev/ # Plugin creation, modification, rollback
+│ ├── totp/ # TOTP authenticator (enroll, generate, list, delete)
+│ ├── scheduling/ # Cron-based task scheduling
+│ ├── data/ # LLM calls
+│ └── mcp_manage.py # MCP server management
+├── skills/ # Best-practice guides (27 SKILL.md files)
+├── plugins/ # Agent-created tools
+├── bridge/browser/ # Node.js browser bridge (Playwright)
+├── knowledge/ # Markdown knowledge base
+├── cli/ # CLI commands
+├── tests/ # Test suite
+├── setup.sh # One-command install
+├── start.sh # Quick launcher (activates venv)
+├── config.yaml # Configuration
+├── permissions.yaml # Per-tool permission overrides
+└── docs/ # Full specification (20 docs)
+</code></pre></div>
+<div><h2>Implementation Status</h2><a href="#implementation-status"></a></div>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Feature</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Foundation (agent loop, tools, CLI)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Knowledge &amp; Memory (SQLite, embeddings, RAG)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Permission System (three-tier, protected files)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Browser Bridge (47 tools, Chrome profile mode)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Self-Development Pipeline (full QA, git integration)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Core Self-Modification (impact analysis, rollback)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Security Hardening (vault, log redaction, protected files)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Scheduling &amp; Automation (APScheduler, cron, natural language)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>7.5</td>
+<td>Telegram Bot Interface (aiogram, commands, notifications)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>7.6</td>
+<td>Skills System (27 skills, install from git, trigger matching)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>7.7</td>
+<td>Gateway Architecture (WebSocket control plane, sessions)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>7.8</td>
+<td>Channel Adapters (CLI, Telegram via gateway)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>7.8b</td>
+<td>Channel Adapters (Discord, Slack via gateway)</td>
+<td>Untested</td>
+</tr>
+<tr>
+<td>7.9</td>
+<td>EloPhantoHub (skill registry, search, install, update)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Web UI (FastAPI + React)</td>
+<td>Planned</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Polish &amp; Open Source Release</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Self-Learning Model (HF Jobs + Unsloth, HuggingFace, Ollama)</td>
+<td>Dataset Builder Done</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Agent Payments (crypto wallet, spending limits, audit trail)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Document &amp; Media Analysis (images, PDFs, OCR, RAG research)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Autonomous Goal Loop (decompose, checkpoints, context, self-eval, background execution)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Evolving Identity (first awakening, reflection, nature document, credential tracking)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Agent Email (dual provider: AgentMail cloud + SMTP/IMAP, send/receive/search, background inbox monitoring, identity integration, skill, audit)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>16</td>
+<td>EloPhantoHub Supply Chain Security (7-layer defense, publisher tiers, CI scanning, checksums, content policy)</td>
+<td>P0 Done</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Hosted Platform &amp; Desktop App (Tauri desktop, Fly.io cloud instances, web dashboard, Stripe billing)</td>
+<td>Spec</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Agent Census (anonymous startup heartbeat, machine fingerprint, ecosystem stats)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>19</td>
+<td>MCP Integration (MCP client, auto-install, mcp_manage tool, CLI, init wizard, agent self-management)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Prompt Injection Guard (multi-layer defense for external content — browser, email, docs, shell, MCP)</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Verification &amp; 2FA (TOTP authenticator, SMS via conversation, verification priority system)</td>
+<td>Done</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="/elophanto/EloPhanto/blob/main/docs/10-ROADMAP.md">docs/10-ROADMAP.md</a> for full details.</p>
+<div><h2>Credits</h2><a href="#credits"></a></div>
+<p>EloPhanto was built by <strong><a href="https://github.com/0xroyce">Petr Royce</a></strong> as part of research into self-learning agents.</p>
+<ul>
+<li>Browser engine built on <a href="https://github.com/FellouAI/eko">FellouAI/eko</a></li>
+<li>UI skills from <a href="https://www.ui-skills.com/">ui-skills.com</a> by Interface Office</li>
+<li>Skills from <a href="https://github.com/anthropics/skills">anthropics/skills</a> by Anthropic</li>
+<li>React/Next.js skills from <a href="https://github.com/vercel-labs/agent-skills">vercel-labs/agent-skills</a> by Vercel</li>
+<li>Supabase skills from <a href="https://github.com/supabase/agent-skills">supabase/agent-skills</a> by Supabase</li>
+<li>Next.js/Prisma/shadcn skills from <a href="https://github.com/gocallum/nextjs16-agent-skills">gocallum/nextjs16-agent-skills</a></li>
+<li>Agent email powered by <a href="https://agentmail.to">AgentMail</a> — API-native email for AI agents (cloud provider)</li>
+<li>SMTP/IMAP email via Python stdlib — zero-dependency self-hosted provider</li>
+<li>Local wallet powered by <a href="https://github.com/ethereum/eth-account">eth-account</a> by the Ethereum Foundation</li>
+<li>Managed wallet provider by <a href="https://github.com/coinbase/agentkit">Coinbase AgentKit</a> by Coinbase</li>
+</ul>
+<div><h2>Changelog</h2><a href="#changelog"></a></div>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-02-23</td>
+<td><strong>TOTP authenticator</strong> — Own 2FA authenticator (like Google Authenticator). 4 tools: <pre><code>totp_enroll</code></pre> (store Base32 secrets from service setup pages), <pre><code>totp_generate</code></pre> (generate 6-digit codes with TTL awareness), <pre><code>totp_list</code></pre> (list enrolled services), <pre><code>totp_delete</code></pre> (remove secrets). Secrets encrypted in vault, never exposed to LLM. Verification priority system in system prompt (email &gt; TOTP &gt; SMS &gt; push). SMS verification handled conversationally. 33 tests</td>
+</tr>
+<tr>
+<td>2026-02-23</td>
+<td><strong>Background inbox monitoring</strong> — Agent can monitor its own email inbox in the background and push notifications to all connected channels (CLI, Telegram, Discord, Slack) when new emails arrive. Controlled via conversation: "monitor your inbox" starts it, "stop monitoring" stops it. Silent first poll (seeds seen IDs, no notification flood), seen ID persistence across restarts, configurable poll interval (default 5 min). New <pre><code>email_monitor</code></pre> tool with start/stop/status actions, <pre><code>core/email_monitor.py</code></pre> polling loop, cross-channel notification display in all 4 adapters. 30 tests</td>
+</tr>
+<tr>
+<td>2026-02-23</td>
+<td><strong>Prompt injection defense</strong> — Multi-layer guard against indirect prompt injection attacks via websites, emails, and documents. System prompt trust hierarchy teaches the LLM to treat external content as data. Tool output wrapping marks external results as untrusted. Pattern scanner detects common injection signatures (instruction overrides, role switches, exfiltration attempts, delimiter attacks) and flags them. Gateway input sanitization closes filename injection vectors. New <pre><code>core/injection_guard.py</code></pre> module, 35 tests</td>
+</tr>
+<tr>
+<td>2026-02-23</td>
+<td><strong>Unified cross-channel sessions</strong> — All channels (CLI, Telegram, Discord, Slack) now share one conversation by default (<pre><code>gateway.unified_sessions: true</code></pre>). Chat from Telegram, see it in CLI, and vice versa. Cross-channel message forwarding shows what was said on other channels. Responses broadcast to all connected channels. Set <pre><code>unified_sessions: false</code></pre> for per-channel isolation</td>
+</tr>
+<tr>
+<td>2026-02-23</td>
+<td><strong>Autonomous background goal execution</strong> — Goals now execute checkpoint-by-checkpoint in the background without waiting for user messages. <pre><code>GoalRunner</code></pre> class (<pre><code>core/goal_runner.py</code></pre>) uses <pre><code>asyncio.create_task()</code></pre> per checkpoint via <pre><code>agent.run()</code></pre>. Safety limits: 2h total time, $5 cost budget, LLM call cap. Conversation history isolated per checkpoint. Progress events broadcast to all channels (CLI, Telegram, Discord, Slack). User message auto-pauses goal. Auto-resume on agent restart. 12 new tests</td>
+</tr>
+<tr>
+<td>2026-02-23</td>
+<td><strong>Ctrl+C request cancellation</strong> — Pressing Ctrl+C during agent processing now cancels the current request and returns to the prompt instead of killing the terminal. Gateway spawns chat handling as cancellable tasks, CLI sends cancel command on interrupt. Also added <pre><code>/stop</code></pre> command. Double Ctrl+C within 1 second force-exits (safety valve). Goal lifecycle events displayed in CLI (started, checkpoint complete, completed, paused, resumed)</td>
+</tr>
+<tr>
+<td>2026-02-22</td>
+<td><strong>Response speed fix</strong> — Eliminated 25-40 second delay on every response caused by post-task housekeeping (identity reflection, task memory, dataset collection) blocking the reply. All post-task work now runs as fire-and-forget background tasks via <pre><code>asyncio.create_task()</code></pre>. Embedding detection moved to non-blocking startup. Response time dropped from 30+ seconds to ~4 seconds</td>
+</tr>
+<tr>
+<td>2026-02-22</td>
+<td><strong>Self-learning dataset builder</strong> — Opt-in only (<pre><code>self_learning.enabled: false</code></pre> by default). Agent-side data collection pipeline for training. Captures task interactions, sanitizes locally (14 secret patterns, PII, browser data), enriches with training signals (user sentiment, denial/error detection, turn count), buffers in local SQLite, uploads in batches to elophanto.com collection API. Auto-registration via census fingerprint, key recovery on conflict. Server-side: collect endpoint, daily cron pushes to HuggingFace Datasets as JSONL. Collects both successes and failures for DPO/RLHF training. Only collects interactions with tool use (no greetings/chat). 42 tests</td>
+</tr>
+<tr>
+<td>2026-02-22</td>
+<td><strong>MCP integration</strong> — Native MCP client support: connect to any MCP server and its tools appear alongside built-in tools. Dual transport (stdio + Streamable HTTP), vault-referenced secrets, per-server permissions. Agent self-management via <pre><code>mcp_manage</code></pre> tool (install SDK, add/remove/test servers through conversation). <pre><code>elophanto mcp</code></pre> CLI commands (list, add, remove, test). Init wizard step 8 with presets (filesystem, GitHub, Brave Search). Auto-install SDK on startup. System prompt integration. Welcome panel shows <pre><code>mcp (N)</code></pre> with connected server count</td>
+</tr>
+<tr>
+<td>2026-02-21</td>
+<td><strong>Agent Census</strong> — Anonymous startup heartbeat for ecosystem statistics. SHA-256 machine fingerprint (survives reinstall), fire-and-forget with 3s timeout, zero PII. Payload: agent_id + version + platform + python version. <pre><code>core/census.py</code></pre> module, integrated in <pre><code>Agent.initialize()</code></pre>, 15 tests</td>
+</tr>
+<tr>
+<td>2026-02-21</td>
+<td><strong>Hosted platform spec</strong> — Hybrid distribution: Tauri desktop app (free, local-first) + Fly.io cloud instances (pro, always-on) at elophanto.com. Per-user container isolation, Supabase auth, Stripe billing, shared web dashboard, wake-on-request for hibernated instances, data portability between local and cloud</td>
+</tr>
+<tr>
+<td>2026-02-21</td>
+<td><strong>EloPhantoHub security P0 implemented</strong> — Content security policy with 16 blocked patterns + 5 warning patterns enforced at skill load time (<pre><code>core/skills.py</code></pre>), SHA-256 checksum verification on hub install (<pre><code>core/hub.py</code></pre>), skill revocation detection + quarantine to <pre><code>_revoked/</code></pre>, runtime safety guidance in system prompt (<pre><code>core/planner.py</code></pre>), skill origin tagging (source/tier/warnings in XML), enhanced <pre><code>installed.json</code></pre> with backward compat, 24 security tests</td>
+</tr>
+<tr>
+<td>2026-02-20</td>
+<td><strong>EloPhantoHub supply chain security spec</strong> — 7-layer defense-in-depth design for skill marketplace security: publisher verification with tier system (New → Verified → Trusted → Official), automated CI scanning (malicious patterns, prompt injection, obfuscation), human review for new publishers, SHA-256 integrity checksums, content security policy (blocked/warning patterns enforced at load time), runtime protection (permission system, skill origin tagging), incident response with revocation broadcast</td>
+</tr>
+<tr>
+<td>2026-02-20</td>
+<td><strong>Agent email</strong> — Own email inbox with dual provider support: AgentMail (cloud API, zero config) or SMTP/IMAP (your own server — Gmail, Outlook, etc.). 6 tools (email_create_inbox, email_send, email_list, email_read, email_reply, email_search), email-agent skill with verification flow patterns, identity integration (inbox stored in beliefs), audit logging via email_log table. Chat-based setup — agent asks for provider choice and credentials</td>
+</tr>
+<tr>
+<td>2026-02-19</td>
+<td><strong>Crypto payments</strong> — Agent's own wallet on Base with dual provider support: local self-custody wallet (default, zero config, eth-account) and Coinbase AgentKit (optional, managed custody, gasless, DEX swaps). 7 payment tools (wallet_status, payment_balance, payment_validate, payment_preview, crypto_transfer, crypto_swap, payment_history), spending limits ($100/txn, $500/day, $5K/month), full audit trail, preview-before-execute protocol, chat-based setup</td>
+</tr>
+<tr>
+<td>2026-02-19</td>
+<td><strong>Evolving identity</strong> — IdentityManager discovers identity on first run via LLM, evolves personality/values/capabilities through task reflection, maintains a living <pre><code>knowledge/self/nature.md</code></pre> document, tracks credential accounts in beliefs. 3 new tools (identity_status, identity_update, identity_reflect), 45 new tests. Per-session timestamped log files</td>
+</tr>
+<tr>
+<td>2026-02-19</td>
+<td><strong>Autonomous goal loop</strong> — GoalManager decomposes complex goals into ordered checkpoints, persists progress across sessions, summarizes context to stay within token limits, self-evaluates and revises plans. 3 new tools (goal_create, goal_status, goal_manage), goals skill, 61 new tests</td>
+</tr>
+<tr>
+<td>2026-02-19</td>
+<td><strong>Document &amp; media analysis</strong> — PDF, DOCX, XLSX, PPTX, EPUB, image extraction with OCR (rapidocr), RAG collections for large documents, 3 new tools (document_analyze, document_query, document_collections), Telegram file/photo intake, structured <pre><code>data/</code></pre> storage manager</td>
+</tr>
+<tr>
+<td>2026-02-19</td>
+<td>Fix <pre><code>/stats</code></pre>, <pre><code>/clear</code></pre>, <pre><code>/help</code></pre> commands in gateway CLI mode</td>
+</tr>
+<tr>
+<td>2026-02-19</td>
+<td>Add EloPhanto logo assets</td>
+</tr>
+<tr>
+<td>2026-02-19</td>
+<td>Agent payments spec (idea phase), Telegram resilience fix (circuit-breaker + force-exit)</td>
+</tr>
+<tr>
+<td>2026-02-18</td>
+<td>Self-learning model pipeline spec (idea phase)</td>
+</tr>
+<tr>
+<td>2026-02-18</td>
+<td>Initial commit — EloPhanto v0.1.0 (foundation, knowledge, permissions, browser, self-dev, vault, scheduling, Telegram, skills, gateway, channels, EloPhantoHub)</td>
+</tr>
+</tbody>
+</table>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Apache 2.0 — see <a href="/elophanto/EloPhanto/blob/main/LICENSE">LICENSE</a> and <a href="/elophanto/EloPhanto/blob/main/NOTICE">NOTICE</a>.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

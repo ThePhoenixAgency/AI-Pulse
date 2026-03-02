@@ -36,9 +36,7 @@
   <div class="content">
     <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/itazap"><img alt="Ita Zaporozhets's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/658f3fc8c0b1372b2e991992/SZspcJ3Z5S-W5vayJo-vJ.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ariG23498"><img alt="Aritra Roy Gosthipaty's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/608aabf24955d2bfc3cd99c6/-YxmtpzEmf3NKOTktODRP.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ArthurZ"><img alt="Arthur Zucker's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1674683851722-62441cb7456803e95009a08f.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/sergiopaniego"><img alt="Sergio Paniego's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/61929226ded356549e20c5da/ONUjP2S5fUWd07BiFXm0i.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/merve"><img alt="merve's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/pcuenq"><img alt="Pedro Cuenca's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1617264212503-603d25b75f9d390ab190b777.jpeg"></a> </span> </span></p> </div></div> <p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/tokenizers/thumbnail.png"><img alt="thumbnail" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/tokenizers/thumbnail.png"></a></p>
 <p><a href="https://huggingface.co/blog/transformers-v5">Transformers v5</a> redesigns how tokenizers work. The <a href="https://github.com/huggingface/transformers/pull/40936/files">big tokenizers reformat</a> separates tokenizer design from trained vocabulary (much like how PyTorch separates neural network architecture from learned weights). The result is tokenizers you can <em>inspect</em>, <em>customize</em>, and <em>train</em> from scratch with far less friction.</p>
-<blockquote>
-<p>TL;DR: This blog explains how tokenization works in Transformers and why v5 is a major redesign, with clearer internals, a clean class hierarchy, and a single fast backend. It’s a practical guide for anyone who wants to understand, customize, or train model-specific tokenizers instead of treating them as black boxes.</p>
-</blockquote>
+<blockquote> </blockquote>
 <h2> <a href="#table-of-contents"> </a> <span> Table of Contents </span>
 </h2>
 <ul>
@@ -422,6 +420,7 @@ tokenizer = LlamaTokenizer() dataset = load_dataset(<span>"wikitext"</span>, <sp
 </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>

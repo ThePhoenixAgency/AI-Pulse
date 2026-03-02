@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Heiman joins Works with Home Assistant</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Heiman joins Works with Home Assistant</h1>
+  <div class="metadata">
+    Source: Home Assistant (Blog officiel) | Date: 2/24/2026 12:00:01 AM | <a href="https://www.home-assistant.io/blog/2026/02/24/heiman-joins-works-with-home-assistant/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <article> <header> </header> <img src="https://www.home-assistant.io/images/blog/2026-02-heiman/art.webp" alt="Heiman joins Works with Home Assistant">
+<p>After an amazing 2025 that saw <a href="https://www.home-assistant.io/blog/2025/12/09/wwha-2025-recap/">12 new Works with Home Assistant partners</a> join the program, it’s now time to say “Hei” to the first partner joining us this year: <a href="https://www.heimantech.com/" target="_blank" rel="noopener noreferrer">Heiman</a>.</p>
+<p>Founded back in 2005, Heiman specialize in smart home security devices, and are bringing an impressive selection of safety-focused sensors and alarms to the program: including the first Matter carbon monoxide alarms to be certified, along with smoke alarms designed for international markets.<a name="read-more"></a></p>
+<h2>Keep it local, keep it safe <a name="keep-it-local-keep-it-safe" href="#keep-it-local-keep-it-safe"></a>
+</h2>
+<p>If you’re new to the Works with Home Assistant program, it’s designed to help you identify devices that work brilliantly with Home Assistant, <em>and</em> support the <a href="https://www.openhomefoundation.org/" target="_blank" rel="noopener noreferrer">Open Home Foundation’s principles</a> of privacy, choice, and sustainability.</p>
+<p>These values all pivot around local control, something that’s essential when it comes to home safety. Your smoke and CO alarms need to work when you need them most, regardless of your internet connection or cloud service status (though if you want to check in on your devices while away from home, <a href="https://www.home-assistant.io/cloud/">Home Assistant Cloud</a> provides secure remote access, and your subscription helps fund this very program, among other things!).</p>
+<p>Our in-house team has thoroughly tested Heiman’s devices to ensure they meet this key requirement, and we’re happy to report they did! But Heiman has gone further still by using the <a href="https://www.home-assistant.io/integrations/matter/">Matter open connectivity standard</a>…</p>
+<h2>Why this matters <a name="why-this-matters" href="#why-this-matters"></a>
+</h2>
+<p>Matter was launched to be a unifying connectivity type with interoperability at its heart. Instead of being locked into one company’s ecosystem, Matter devices work across Home Assistant, as well as other platforms like Google Home.</p>
+<p>Heiman’s Matter devices work over <a href="https://www.home-assistant.io/integrations/thread/">Thread</a>, which adds another layer of benefits. Thread is a low-power wireless mesh network protocol that creates resilient connectivity throughout your home, perfect for battery-powered sensors that need reliable communication while staying energy efficient. This is ideal for battery-powered sensors like Heiman’s that need to be energy efficient while maintaining reliable communication.</p>
+<p>So why does all this matter for safety devices specifically? Well firstly, it’s important to know these smart devices will still work as “dumb” ones, so there’s always a failsafe if you decide to rebuild your Thread network, or start making tweaks. If your sensors integrate locally, it means you can automate basic checks, such as reminders to test an alarm once a month, or notifications of hardware faults. If you want to go even further, your smoke alarm could trigger emergency lighting, your CO detector could shut off your gas fireplace, or your leak sensor could close water valves, all without sending your private data through a third-party server. And this is just the sort of complete, interoperable ecosystem Heiman aims to provide.</p>
+<div>
+<p>"Our core goal has always been to enable every family to enjoy a safe and intelligent living experience. Home Assistant, as a world-leading open source smart home platform, has an open and inclusive ecological philosophy and strong compatibility with multi-brand and multi-protocol devices, which are highly consistent with the direction of our product research and development. We deeply understand that only by integrating into an open ecosystem can we break down device barriers and provide users with a truly seamless whole-house smart solution."</p>
+<p><em>- Leo Xie, Software Engineer Manager at Heiman</em>
+</p></div>
+<h2>Working with the community <a name="working-with-the-community" href="#working-with-the-community"></a>
+</h2>
+<p>Heiman is showing they’re true to these ambitions. Beyond getting certified, they’re planning to take an active role in the Home Assistant community by participating in discussions, listening to real-world feedback, and continuously optimizing their products based on what users actually need. They’re also sharing their technical expertise in smart home security, collaborating with developers to explore innovative safety scenarios that benefit everyone.</p>
+<h2>Devices <a name="devices" href="#devices"></a>
+</h2>
+<p>Heiman’s commitment to openness and community is also reflected in the devices we’ve certified, which also meet strict safety regulations across the US, Europe, Asia and beyond. Before Heiman joined, we had one Zigbee smoke alarm in the program. Now there are Matter options for multiple regions, plus the first certified carbon monoxide alarms: more choice, more coverage.</p>
+<p>What devices have been certified?</p>
+<ul>
+<li><a href="https://www.heimantech.com/product/?type=detail&amp;id=127" target="_blank" rel="noopener noreferrer">Heiman Smart Smoke Alarm (USA)</a></li>
+<li><a href="https://www.heimantech.com/product/?type=detail&amp;id=3" target="_blank" rel="noopener noreferrer">Heiman Smart Smoke Alarm (EU and China)</a></li>
+<li><a href="https://www.heimantech.com/product/?type=detail&amp;id=122" target="_blank" rel="noopener noreferrer">Heiman Smart Carbon Monoxide Alarm (USA)</a></li>
+<li><a href="https://www.heimantech.com/product/?type=detail&amp;id=137" target="_blank" rel="noopener noreferrer">Heiman Smart Carbon Monoxide Alarm (EU and China)</a></li>
+<li><a href="https://www.heimantech.com/product/smart-human-infrared-detector-m1-series" target="_blank" rel="noopener noreferrer">Heiman Motion Sensor</a></li>
+<li><a href="https://www.heimantech.com/product/smart-water-leakage-detector-l1-series" target="_blank" rel="noopener noreferrer">Heiman Water Leak Sensor</a></li>
+<li><a href="https://www.heimantech.com/product/smart-temperature-and-humidity-detector-h1-series" target="_blank" rel="noopener noreferrer">Heiman Humidity and Temperature Sensor</a></li>
+</ul>
+<p>Also worth noting: Heiman’s global presence allows them to deliver quality devices at prices that won’t break the bank. Safety sensors and alarms shouldn’t be a luxury, and Heiman’s approach means they don’t have to be.</p>
+<h2>No more guessing games! <a name="no-more-guessing-games" href="#no-more-guessing-games"></a>
+</h2>
+<p>Accessible pricing is just one way Heiman expands choice for users. We’ve found they also deliver on the other core principles behind the Works with Home Assistant program: local control protects privacy, and open standards ensure sustainability. And that’s the whole point of our certification process: to make it easier for you to spot manufacturers who genuinely commit to these values, taking the guesswork out of building your open home. For full details of all Works with Home Assistant partners, check out our <a href="https://works-with.home-assistant.io/certified-products/" target="_blank" rel="noopener noreferrer">certified device list</a>.</p>
+<p>Welcome to the program, Heiman, we’re excited to see what the community builds with these devices!</p>
+<h2>Frequently asked questions <a name="frequently-asked-questions" href="#frequently-asked-questions"></a>
+</h2>
+<p><strong>If I have a device that is not listed under Works with Home Assistant, does this mean it’s not supported?</strong></p>
+<p>No! It just means that it hasn’t gone through a testing schedule with our team, or doesn’t fit the requirements of the program. It might function perfectly well but be added to the testing schedule in the future.</p>
+<p><strong>OK, so what’s the point of the Works with program?</strong></p>
+<p>It highlights the devices we know work well with Home Assistant and the brands that make a long-term commitment to keeping support for these devices going. The certification agreement specifies that brands must continue to support the devices in the program.</p>
+<p><strong>How were these devices tested?</strong></p>
+<p>All devices in this list were tested using a standard Home Assistant Green Hub with the Home Assistant Connect ZBT-2 as the Thread Border Router and with our <a href="https://works-with.home-assistant.io/" target="_blank" rel="noopener noreferrer">certified Matter integration</a>.</p>
+<p><strong>Will you be adding more Heiman devices to the program?</strong></p>
+<p>Why not! We’re thrilled to foster a close relationship with the team at Heiman to work together on any upcoming releases or add in further products that are not yet listed here. We are also chatting with them about some exciting future plans.</p> </article> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

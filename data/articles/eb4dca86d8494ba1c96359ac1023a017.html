@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Can Now Easily Unmask Your Secret Online Life (Even If You Use a Fake Name)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>AI Can Now Easily Unmask Your Secret Online Life (Even If You Use a Fake Name)</h1>
+  <div class="metadata">
+    Source: Its FOSS | Date: 2/26/2026 1:24:11 PM | <a href="https://itsfoss.com/news/ai-online-deanonymization/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><article> <a href="https://www.warp.dev/?utm_source=its_foss&amp;utm_medium=display&amp;utm_campaign=linux_launch" target="_blank" rel="noopener noreferrer"><img src="https://itsfoss.com/assets/images/warp.webp" alt="Warp Terminal"></a> <p>Imagine this: You're on Reddit, Hacker News, or some forum, posting with a silly username like GamerCat2025 or SecretCoderX. You think you are anonymous, and no one knows you and so you can freely express your thoughts.</p><p>Well, a <a href="https://arxiv.org/abs/2602.16800?ref=itsfoss.com">brand-new research paper</a> just blew that idea apart. It's called "Large-scale online deanonymization with LLMs" which is a fancy way of saying "figuring out the real person behind a secret online name".</p><figure><img src="https://itsfoss.com/content/images/2026/02/paper.webp" alt="Large-scale online deanonymization with LLMs"></figure><p>The researchers include people ETH Zurich and, <a href="https://www.anthropic.com/?ref=itsfoss.com">Anthropic</a> (parent company of Claude), and a research group called <a href="https://www.matsprogram.org/?ref=itsfoss.com">MATS</a> and they proved that today's super-powerful AI chatbots can play detective and unmask people way better than ever before.</p><h2>How does it work?</h2><p>Think of the AI as a detective like Hercule Poirot or Sherlock Holmes. Only this detective is super fast and super smart. It has read every single post ever written online. Here's how their system works in simple steps:</p><ol><li><strong>Read and spot clues</strong>: The AI looks at your posts and pulls out little hints about you. Things you that are part of your personality. Like it can see that this person talks a lot about coding games in Python, loves Marvel movies, complains about school in Seattle, and types with a certain style.</li><li><strong>Search the whole internet</strong>: It quietly checks LinkedIn, Google, other Reddit accounts, etc., to find possible real people who match those clues.</li><li><strong>Think hard and double-check</strong>: The AI reasons like "Is this a match? The writing style is the same, the hobbies line up, the timing fits... yep, 90% sure!"</li></ol><p>The researchers called their method ESRC which stands for Extract clues, Search, Reason, Calibrate how sure they are. No human needed; it's all automatic.</p><h2>Pretty (scary) impressive results</h2><p>If you think it's all theory, you are going to be disappointed. </p><p>On real <a href="https://news.ycombinator.com/?ref=itsfoss.com">Hacker News</a> users, the AI correctly linked the secret username to the real person 67% of the time, and when it made a guess, it was right 90%. The paper also states that matching the same person's Reddit posts from different years or groups met with 68% success.</p><p>That's not the scary part. The thing is that it costs only upto $4 to check a person. Anyone with a good chatbot (think future ChatGPT or Claude) could do it.</p><p>One of the main researchers, Simon Lermen, said it straight: </p><blockquote>Could a team of smart investigators figure out who you are from your posts? If yes, these AI agents can likely do the same – and the cost is only going down.</blockquote><h2>Private life becomes less private</h2><p>Until now, staying hidden online was pretty easy because it took human experts hours or days. Now? One person (or a bad guy, a bully, a stalker, a company, or even government) can run this on thousands of accounts super fast.</p><p>This means that someone could find your real name, school, city, or job from just a few comments. Stalkers or bullies could dox you. Companies could secretly link all your accounts and track everything you do.</p><p>The old idea that "if I use a fake name, I'm safe" doesn't work anymore. It's the end of practical obscurity. Meaning you used to be kind of hidden in practice, but not anymore. Welcome to a new kind of 1984!</p> </article><div> <p><span>About the author</span></p><div> <a href="https://itsfoss.com/author/abhishek/"> <figure> <img src="https://www.gravatar.com/avatar/84de387e32f72af3e12bf434a82ea8e8?s=250&amp;r=x&amp;d=mp" alt="Abhishek Prakash"> </figure> </a> <div> <h2><a href="https://itsfoss.com/author/abhishek/">Abhishek Prakash</a></h2> <p>Created It's FOSS 13 years ago to share my Linux adventures. Have a Master's degree in Engineering and years of IT industry experience. Huge fan of Agatha Christie detective mysteries </p> </div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

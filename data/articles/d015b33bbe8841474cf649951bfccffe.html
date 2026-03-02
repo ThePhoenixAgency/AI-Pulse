@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VS Code - Error while connecting to the openHAB REST API</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>VS Code - Error while connecting to the openHAB REST API</h1>
+  <div class="metadata">
+    Source: openHAB Community (Latest) | Date: 2/23/2026 5:51:24 AM | <a href="https://community.openhab.org/t/vs-code-error-while-connecting-to-the-openhab-rest-api/168597" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>Hi, everyone.</p>
+<p>I’m running OH 4.3.1 on a Raspberry Pi (CENTOS 9).</p>
+<p>For a while, I haven’t been able to connect to my OH from Visual Studio Code (macOS Tahoe 26.2), but I didn’t need it much before. Now I need it for code completion, but I can’t seem to get it to work. I keep getting the following errors:</p>
+<p>openHAB Extension Output</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">openHAB vscode extension has been activated [Error - 4:14:14 PM] Connection to server is erroring. Shutting down server. [Error - 4:14:14 PM] Connection to server is erroring. Shutting down server. Could not reload items for HoverProvider Could not reload items for Items Explorer Could not reload items for Things Explorer --- Error: Error while connecting to openHAB REST API. Message: Error: connect EHOSTUNREACH 10.18.18.102:8080 - Local (10.18.18.4:53185) --- --- Error: Error while connecting to openHAB REST API. Message: Error: connect EHOSTUNREACH 10.18.18.102:8080 - Local (10.18.18.4:53186) ---
+</code></pre>
+<p>openHAB Language Server Output</p>
+<pre data-code-wrap="yaml"><code class="lang-yaml">(node:11365) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead. (Use `Code Helper (Plugin) --trace-deprecation ...` to show where the warning was created) Error: getaddrinfo ENOTFOUND openhabianpi at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) { errno: -3008, code: 'ENOTFOUND', syscall: 'getaddrinfo', hostname: 'openhabianpi' }
+</code></pre>
+<p>OH is running. I can connect via a web browser and via SSH from my Mac’s Terminal.</p>
+<p>I have deleted all global (User) connection settings and left only the ones at the Workspace level (.vscode/settings.json), as suggested in <a href="https://community.openhab.org/t/vs-code-oh5-error-while-connecting-to-openhab-rest-api/167241" class="inline-onebox">VS Code OH5 - Error while connecting to openHAB REST API</a>. I also tried the other way around, with the connection strings in the User configuration, to no avail.</p>
+<pre data-code-wrap="json"><code class="lang-json">"openhab.connection.host": "10.18.18.102", "openhab.connection.authToken": "oh.VisualStudioCL.a0XXXXXXXXXXXXX”, "openhab.connection.port": 8080
+</code></pre>
+<p>The other settings are not in the textual configuration, and adding them there doesn’t change the outcome.</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/1/2/128097aa23c37fe349e8e4880e746a8afed79617.jpeg" data-download-href="/uploads/short-url/2DG6m0AMcU1cIPGGJddtqZMSDUX.jpeg?dl=1" title="@extspenhab.openhall" rel="noopener nofollow ugc"><img src="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/1/2/128097aa23c37fe349e8e4880e746a8afed79617_2_563x500.jpeg" alt="@extspenhab.openhall" data-base62-sha1="2DG6m0AMcU1cIPGGJddtqZMSDUX" width="563" height="500" srcset="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/1/2/128097aa23c37fe349e8e4880e746a8afed79617_2_563x500.jpeg, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/1/2/128097aa23c37fe349e8e4880e746a8afed79617_2_844x750.jpeg 1.5x, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/1/2/128097aa23c37fe349e8e4880e746a8afed79617_2_1126x1000.jpeg 2x" data-dominant-color="272728"></a></div><p></p>
+<p>I have checked that the ports are open in the firewall, and that they are listening using TCP</p>
+<pre data-code-wrap="bash"><code class="lang-bash">ss -tuln
+</code></pre>
+<p>Netid State Recv-Q Send-Q Local Address:Port Peer Address:Port</p>
+<p>tcp LISTEN 0 50 *:5007 *:*</p>
+<p>tcp LISTEN 0 50 *:8080 *:*</p>
+<p>tcp LISTEN 0 128 [::]:22 [::]:*</p>
+<p>tcp LISTEN 0 50 *:8443 *:*</p>
+<p>On OH, the LSP is listening on the same port:</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/b/c/bc26f0012b636015fe4f67c24b2a6d511b692418.jpeg" data-download-href="/uploads/short-url/qQtbDub2KTcqKzdtLLlSYPPSUJO.jpeg?dl=1" title="Pasted Graphic 1" rel="noopener nofollow ugc"><img src="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/b/c/bc26f0012b636015fe4f67c24b2a6d511b692418_2_689x82.jpeg" alt="Pasted Graphic 1" data-base62-sha1="qQtbDub2KTcqKzdtLLlSYPPSUJO" width="689" height="82" srcset="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/b/c/bc26f0012b636015fe4f67c24b2a6d511b692418_2_689x82.jpeg, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/b/c/bc26f0012b636015fe4f67c24b2a6d511b692418_2_1033x123.jpeg 1.5x, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/b/c/bc26f0012b636015fe4f67c24b2a6d511b692418_2_1378x164.jpeg 2x" data-dominant-color="191919"></a></div><p></p>
+<p>I even deleted the old token and created a new one.</p>
+<p>However, I have not configured any ‘openhabianpi’ anywhere, so I don’t know where the LSP is getting that from.</p>
+<p>I have restarted VS Code multiple times, as well as deleted the extension and installed it again.</p>
+<p>What else am I overlooking?</p> <p><small>2 posts - 1 participant</small></p> <p><a href="https://community.openhab.org/t/vs-code-error-while-connecting-to-the-openhab-rest-api/168597">Read full topic</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

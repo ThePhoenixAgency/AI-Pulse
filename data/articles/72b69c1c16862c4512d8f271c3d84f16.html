@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building the AI-powered local smart home</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Building the AI-powered local smart home</h1>
+  <div class="metadata">
+    Source: Home Assistant (Blog officiel) | Date: 9/11/2025 12:00:01 AM | <a href="https://www.home-assistant.io/blog/2025/09/11/ai-in-home-assistant/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <article> <header> </header> <img src="https://www.home-assistant.io/images/blog/2025-09-ai/art.webp" alt="Building the AI-powered local smart home">
+<p>Last year, we laid out <a href="https://www.home-assistant.io/blog/2024/06/07/ai-agents-for-the-smart-home/">our vision for AI in the smart home</a>, which opened up experimentation with AI in Home Assistant. In that update, we made it easier to integrate all sorts of local and cloud AI tools, and provided ways to use them to control and automate your home.&nbsp;A year has passed, a lot has happened in the AI space, and our community has made sure that Home Assistant has stayed at the frontier.</p>
+<p>We beat big tech to the punch; we were the first to make AI useful in the home. We did it by giving our community complete control over how and when they use AI, making AI a powerful <em>tool</em> to use in the home. As opposed to something that takes over your home. Our community is taking advantage of AI’s unique abilities (for instance, its image recognition or summarizing skills), while having the ability to exclude it from mission-critical things they’d prefer it not to handle. Best of all, this can all be run locally, without any data leaving your home!</p>
+<p>Moreover, if users don’t want AI in their homes, that’s their choice, and they can choose not to enable any of these features. I hope to see big tech take an approach this measured, but judging by their last couple of keynotes, I’m not holding my breath.</p>
+<p>Over the past year, we’ve added many new AI features and made them easy to use directly through Home Assistant’s user interface. We have kept up with all the developments in AI land and are using the latest standard to integrate more models and tools than ever before. We’re also continuing to benchmark local and cloud models to give users an idea of what works best. Keep reading to check out everything new, and maybe you can teach your smart home some cool new tricks.</p>
+<p> Local AI is making the home very natural to control
+</p>
+<p>Big thanks to our AI community contributor team:<br>
+<a href="https://github.com/allenporter">@AllenPorter</a>, <a href="https://github.com/shulyaka">@shulyaka</a>, <a href="https://github.com/tronikos">@tronikos</a>, <a href="https://github.com/IvanLH">@IvanLH</a>, <a href="https://github.com/Joostlek">@Joostlek</a>!</p>
+<a name="read-more"></a>
+<h2>Supercharging voice control with AI <a name="supercharging-voice-control-with-ai" href="#supercharging-voice-control-with-ai"></a>
+</h2>
+<p>We were doing voice assistants before AI was cool. In 2023, we kicked off our <a href="https://www.home-assistant.io/blog/2022/12/20/year-of-voice/">Year of the Voice</a>. Since then, we’ve worked towards our goal of building all the parts needed for a local, open, and private voice assistant. When AI became the rage, we were quick to integrate it.</p>
+<p>Today, users can chat with any large language model (LLM) that is integrated into Home Assistant, whether that’s in the cloud or run locally via a service like <a href="https://www.home-assistant.io/integrations/ollama/">Ollama</a>. Where <a href="https://www.home-assistant.io/voice_control/">Assist</a>, our home-grown (non-AI) voice assistant agent, is focused on a predetermined list of mostly home control commands, AI allows you to ask more open-ended questions. Summarize what’s happening across the smart home sensors you’ve <a href="https://www.home-assistant.io/voice_control/voice_remote_expose_devices/">exposed to Assist</a>, or get answers to trivia questions. You can even <a href="https://www.home-assistant.io/voice_control/assist_create_open_ai_personality/">give your LLM a personality</a>!</p>
+<p>Users can also leverage the power of AI to speak the way <em>they speak</em>, as LLMs are much better at understanding the intent behind the words. By default, Assist will handle commands first. Only questions or commands it can’t understand will be sent to the AI you’ve set up. For instance, <em>“Turn on the kitchen light”</em> can be handled by Assist, while <em>“It’s dark in the kitchen, can you help?”</em> could be processed by an AI. This speeds up response times for simple commands and makes for a more sustainable voice assistant.</p>
+<p>Another powerful addition from the past year is context sharing between agents. So your Assist agent can share the most recent commands with your chosen AI agent. This shared context lets you say something like <em>“Add milk to my shopping list,”</em> which Assist will act on, and to add more items, just say <em>“Add rice.”</em> The AI agent understands that these commands are connected and can act accordingly.</p>
+<p> Here is an excellent walkthrough video of JLo's AI-powered home, showing many of these new features in action
+</p>
+<p>Another helpful addition keeps the conversation going; if the LLM asks you a question, your Assist hardware will listen for your reply. If you say something like “It’s dark”, it might ask whether you’d like to turn on some lights, and you could tell it to proceed. We have taken this even further than other voice assistants, as you can now have Home Assistant initiate conversations. For example, you could set up an automation that detects when the garage door is open and asks if you’d like to close it (though this can also be done without AI with a very clever <a href="https://my.home-assistant.io/redirect/blueprint_import?blueprint_url=https%3A%2F%2Fwww.home-assistant.io%2Fblueprints%2Fblog%2F2025-07%2Fask_yes_no_question.yaml">Blueprint</a>).</p>
+<p>AI pushed us to completely revamp our Text-to-Speech (TTS) system to take advantage of streaming responses from LLMs. While local AI models can be slow, we use a simple trick to make the delay almost unnoticeable. Now, both <a href="https://github.com/OHF-Voice/piper1-gpl">Piper</a> (our local TTS) and <a href="https://www.home-assistant.io/cloud/">Home Assistant Cloud</a> TTS can begin generating audio as soon as the LLM produces the first few words, improving the speed of the spoken response by a factor of ten.</p>
+<p><strong>Prompt: “Tell me a long story about a frog”</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Setup</strong></th>
+<th><strong>Time to start speaking</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud, non-streaming</td>
+<td>6.62 sec</td>
+</tr>
+<tr>
+<td>Cloud, streaming</td>
+<td>0.51 sec (13x faster)</td>
+</tr>
+<tr>
+<td>Piper, non-streaming</td>
+<td>5.31 sec</td>
+</tr>
+<tr>
+<td>Piper, streaming</td>
+<td>0.56 sec (9.5x faster)</td>
+</tr>
+</tbody>
+</table>
+<p><em>Ollama gemma3:4b on an RTX 3090, and Piper on an i5</em></p>
+<h2>Great hardware to work with AI <a name="great-hardware-to-work-with-ai" href="#great-hardware-to-work-with-ai"></a>
+</h2>
+<p>People built some really cool voice hardware, from landline telephones to little talking robots, but the fact that it was so DIY was always a barrier to entry. To make our voice assistant available to everyone, we released the <a href="https://www.home-assistant.io/blog/2024/12/19/voice-preview-edition-the-era-of-open-voice/">Home Assistant Voice Preview Edition</a>. This is an easy and affordable way to try Home Assistant Voice. It has some seriously powerful audio processing hardware inside its sleek package. If you were on the fence about trying out voice, it really is <a href="https://www.home-assistant.io/voice-pe/">the best way to get started</a>.</p>
+<p> <img src="https://www.home-assistant.io/images/blog/2025-09-ai/voice-pe.webp" alt="Home Assistant Voice Preview Edition"> Voice Preview Edition is not only open and powerful, but it looks and feels great too!
+</p>
+<p>It’s now easier than ever to set up your Assist hardware to work with LLMs with our <a href="https://my.home-assistant.io/redirect/voice_assistants/">Voice Assistants</a> settings page, and you can even assign a different LLM to each device. The LLM can recognize the room it’s in and the devices within it, making its responses more relevant. Assist was built to be a great way to control devices in your home, but with AI, it becomes so much more.</p>
+<h2>AI-powered suggestions <a name="ai-powered-suggestions" href="#ai-powered-suggestions"></a>
+</h2>
+<p><a href="https://www.home-assistant.io/blog/2025/08/06/release-20258/">Last month</a>, Home Assistant launched a new opt-in feature to leverage the power of AI when automating with Home Assistant. The goal is to shorten the journey from a blank slate to your finished idea.</p>
+<p>When saving an automation or script, users can now leverage the new Suggest button: <img src="https://www.home-assistant.io/images/blog/2025-09-ai/suggest.webp"> When clicked, it will send your automation configuration along with the titles of your existing automations and labels to AI to suggest a name, description, category, and labels for your new automation. Over the coming months, we’re going to explore what other features can benefit from AI suggestions.</p>
+<p><img src="https://www.home-assistant.io/images/blog/2025-09-ai/suggest-button.webp" alt="A rename modal open with the new Suggest button top right">
+</p>
+<p>To opt-in to this feature, you need to take two steps. First, you need to configure an integration that provides an <a href="https://www.home-assistant.io/integrations/?cat=ai"><em>AI Tasks</em> entity</a>. For local AI, you can configure Ollama, or you can also leverage cloud-based AI like Google, OpenAI, or Anthropic. Once configured, you need to go to the new <a href="https://my.home-assistant.io/redirect/config_ai_task/">AI Task preferences pane</a> under <strong><em>System -&gt; General</em></strong> and pick the AI Task entity to power suggestions in the UI. If you don’t configure an AI Tasks entity, the Suggest button will not be visible.</p>
+<p><img src="https://www.home-assistant.io/images/blog/2025-09-ai/ai-suggestions.webp" alt="The AI Suggestions setting within Home Assistant">
+</p>
+<h2>AI Tasks gets the job done <a name="ai-tasks-gets-the-job-done" href="#ai-tasks-gets-the-job-done"></a>
+</h2>
+<p>Enabling <a href="https://www.home-assistant.io/integrations/ai_task/">AI Tasks</a> does more than quickly label and summarize your automations; its true superpower is making AI easy to use in templates, scripts, and automations. AI Tasks allow other code to leverage AI to generate data, including options to attach files and define how you want that data output (for instance, a JSON schema).</p>
+<p>We have all seen those incredible community creations, where a user leverages AI image recognition and analysis to <a href="https://www.reddit.com/r/homeassistant/comments/1lytyv9/parking_spot_detection/">detect available parking spots</a> or <a href="https://houndhillhomestead.com/google-gemini-powered-goose-coop-door/">count the number of chickens in the chicken coop</a>. It’s likely that AI Tasks can now help you easily do this in Home Assistant, without the need for complex scripts, extra add-ons, or HACS integrations.</p>
+<p>Below is a template entity that counts chickens in a video feed, all via a short and simple set of instructions.</p>
+<div><pre><code><span>template</span><span>:</span>
+<span>&nbsp;- triggers</span><span>:</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- trigger</span><span>:</span> <span>homeassistant</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event</span><span>:</span> <span>start</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- trigger</span><span>:</span> <span>time_pattern</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;minutes</span><span>:</span> <span>"</span><span>/5"</span>
+<span>&nbsp;&nbsp;&nbsp;actions</span><span>:</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- action</span><span>:</span> <span>ai_task.generate_data</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data</span><span>:</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;task_name</span><span>:</span> <span>Count chickens</span>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instructions</span><span>:</span> <span>&gt;-</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is the inside of my coop. How many birds (chickens, geese, and</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ducks) are inside the coop?</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;structure:</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;birds:</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;selector:</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number:</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;attachments:</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;media_content_id: media-source://camera/camera.chicken_coop</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;media_content_type: image/jpeg</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response_variable: result</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;sensor:</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;- name: "Chickens"</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state: "{{ result.data.birds }}"</span>
+<span>&nbsp;</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state_class: total</span>
+</code></pre></div>
+<p>This template sends a snapshot of the camera to the AI, asking it to analyze what is going on. It defines that the output should always be a number, since we want to use that information in Home Assistant. All of this is embedded in a template entity that automatically updates every 5 minutes. An AI Task could also be embedded in an automation, a script, or any other place that can execute actions.</p>
+<p><img src="https://www.home-assistant.io/images/blog/2025-09-ai/activity.webp" alt="Activity view in Home Assistant of the doorbell image analyzed by AI Tasks"> An automation triggers an AI Task to identify what caused motion on a camera.
+</p>
+<p>Lastly, users can set a default AI Task entity. This allows users to skip picking an entity ID when creating AI automations. It also lets you migrate everything that uses AI Tasks to the latest model with a single click. This also makes it easy to share blueprints that leverage AI Tasks, like this blueprint that analyzes a camera snapshot when motion is detected:</p>
+<p><a href="https://my.home-assistant.io/redirect/blueprint_import?blueprint_url=https%3A%2F%2Fcommunity.home-assistant.io%2Ft%2Fai-camera-analysis%2F911634" target="_blank" rel="noopener noreferrer"><img src="https://my.home-assistant.io/badges/blueprint_import.svg"></a></p>
+<h2>MCP opens a whole new world <a name="mcp-opens-a-whole-new-world" href="#mcp-opens-a-whole-new-world"></a>
+</h2>
+<p><a href="https://www.home-assistant.io/integrations/mcp/">Model Context Protocol</a> (MCP) is a thin layer allowing LLMs to integrate <em>anything</em>. When the specification was announced, we quickly jumped on it and integrated it into Home Assistant. Effectively, these servers give Home Assistant’s Assist conversation agent access to all sorts of new tools. You could connect MCP servers that give Assist access to the latest news stories, your to-do lists, or a server that catalogues your vinyl collection, allowing you to have richer conversations (<em>“Okay Nabu, which Replacements albums do I have, and which aren’t on my Vinyl-to-Purchase list?”</em>).</p>
+<p>On the flip side, you can also <a href="https://www.home-assistant.io/integrations/mcp_server/">turn Home Assistant into an MCP server</a>, allowing an AI system to access information about your home. For instance, you could create a local AI that’s great at making Home Assistant automations, and it could include all your entity names or available actions. MCP keeps gaining more support, and there are some great cloud and self-hosted solutions available.</p>
+<h2>How to pick a model <a name="how-to-pick-a-model" href="#how-to-pick-a-model"></a>
+</h2>
+<p>There are a lot of models available, it’s hard to know where to start. Luckily, Home Assistant’s resident AI guru <a href="https://github.com/allenporter">@AllenPorter</a> is here to help. He has put together an incredibly useful <a href="https://github.com/allenporter/home-assistant-datasets/tree/main/reports">Home LLM Leaderboard</a>. This dataset includes his extensive tests of cloud and local LLM options, and even has tests that give small local LLMs a fighting chance (see <a href="https://github.com/allenporter/home-assistant-datasets/tree/main/reports#assist-mini">assist-mini</a>).</p>
+<p>Currently, the charts show the big cloud players’ most recent models ranking pretty close to each other, while recent local models that use 8GB or more of VRAM are nearly keeping up. In the past, there was a big disparity between most models, but now it’s hard to go wrong.</p>
+<p>This is especially helpful as the options for LLMs in Home Assistant have just grown exponentially with the addition of <a href="https://www.home-assistant.io/integrations/open_router">OpenRouter</a>, a unified interface for LLMs. With OpenRouter, users can access over 400 new models in Home Assistant, and it supports AI Tasks right from day one. We really are spoiled for choice.</p>
+<h2>The future is Open, and Open Source <a name="the-future-is-open-and-open-source" href="#the-future-is-open-and-open-source"></a>
+</h2>
+<p>Home Assistant is open. We believe that you should be in control of your data, and your smart home. All of it. Local LLMs and the way we have architected Home Assistant extends this choice to the AI space, all while maintaining your privacy.</p>
+<p>Most crucially, we’ve made all of this open source. We are community-driven and work on this together with our community. The Open Home Foundation has no investors and is not beholden to anyone but our users. Our work is funded through hardware purchases and <a href="https://www.home-assistant.io/cloud/">Home Assistant Cloud</a> subscriptions, allowing us to make all the technology we build free and open.</p> </article> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

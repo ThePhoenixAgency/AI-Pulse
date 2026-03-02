@@ -5,59 +5,136 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Wed, 18 Feb 2026 18:48:35 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 28 Feb 2026 18:29:11 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: Nonograms – Friends-only puzzle room with replays and leaderboards]]></title>
-      <link>https://nonograms.siraben.dev/</link>
-      <description><![CDATA[Invite code: hackernews. No email required for signup.
-My friend group loves playing nonograms and competing against each other, but we always send each other screenshots of the solved game grid and time after the fact.
-So from the start, I knew I wanted leaderboards, replays, and shareable links. I also added PWA support so it can be added to the home screen on mobile and an offline play mode.
-No ads, analytics or nonsense, just nonograms.
-Some other goodies as well such as YouTube-like scrubber and KDE-based visualization in replays.
-https://github.com/siraben/nonograms/
-Tech stack:]]></description>
-      <pubDate>Wed, 18 Feb 2026 17:53:36 GMT</pubDate>
+      <title><![CDATA[Show HN: Mowgli – Figma for the agent era, with Claude Code and design export]]></title>
+      <link>https://mowgli.ai/</link>
+      <description><![CDATA[Hi HN! We're excited to announce the public beta of Mowgli, a spec-backed, AI-native design canvas for scoping and ideating on products.
+The productivity gains unleashed by coding agents have made everything else an unexpected bottleneck. In an effort to make the most out of this new paradigm, we ceded a lot of ground in product thinking, thoughtful UX, and design excellence. In other words, the pace of tooling for deciding what to build has not kept up.
+Mowgli is inspired by, in equal parts, Figma and Claude's plan mode. It evolves a detailed specification and designs for every screen and state of the product on an infinite canvas. Owing to this UI, it can quickly mock up new features and flows, redesign existing ones, and show you variations side by side. LLMs are amazing at helping you explore vast solution spaces, but most current tooling focuses on getting narrowly perfect output based on a well-defined spec. We try to bridge that gap with Mowgli.
+When you're ready to build, download a .zip with a SPEC.md and unopinionated design .tsx files for your screens, in a perfect format for coding agents.
+In this early stage, we support two entrypoints:
+1. Building a product from scratch through a guided experience
+2. Importing an existing product from Figma - we have a powerful, almost pixel-perfect Figma to code + spec pipeline that works on files of any size - from 0 to 300+ frames
+...but we're working hard on other ways to get your existing products into Mowgli (and would appreciate hearing about what you would like!)
+Some links:
+- Timelapse of making a functional second brain app in Mowgli + Claude Code: https://www.youtube.com/watch?v=HeOoy8WDmMA
+- Sample project designed and specced entirely by Mowgli (demo, no login needed): https://app.mowgli.ai/projects/cmluzdfa0000v01p91l5r61e3?the...
+- Sample Figma import of the whole Posthog product, ready for iteration: https://app.mowgli.ai/projects/cmkl0zqng000101lo8yn2gqvd?dem... (thanks PostHog for being radically open with public Figma files!) URL: https://news.ycombinator.com/item?id=47197662
+Points: 5
+# : 0]]></description>
+      <pubDate>Sat, 28 Feb 2026 17:06:03 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://nonograms.siraben.dev/</guid>
+      <guid>https://mowgli.ai/</guid>
     </item>
     <item>
-      <title><![CDATA[Actualité : Apple : finalement pas de keynote pour le 4 mars ? Voici ce qui se prépare en coulisses]]></title>
-      <link>https://www.lesnumeriques.com/societe-numerique/apple-finalement-pas-de-keynote-pour-le-4-mars-voici-ce-qui-se-prepare-en-coulisses-n251657.html</link>
-      <description><![CDATA[En fin de semaine dernière, Apple a annoncé un événement pour le 4 mars 2026, plus précisément une “Special Apple Experience”. Des mots qui ont un sens, qui pencheraient d’ailleurs vers une non-keynote pour ce jour-là. À la place, la firme à la pomme jouerait à un tout autre jeu pour présenter et mettre en avant ses nouveaux produits.Apple remplace l...]]></description>
-      <pubDate>Wed, 18 Feb 2026 09:16:00 GMT</pubDate>
+      <title><![CDATA[Show HN: Nugx.org – A Fresh Nuget Experience]]></title>
+      <link>https://nugx.org</link>
+      <description><![CDATA[NuGet's default registry is serviceable, but discovering and comparing packages isn't great.
+nugx.org (http://nugx.org/) is an alternative front-end with better search, popularity signals, dependency graphs, and a cleaner UI.
+Built with Noundry (C# packages/tooling). Currently in beta — would love feedback on nugx.org.
+nugx.org (https://nugx.org/) URL: https://news.ycombinator.com/item?id=47197861
+Points: 1
+# : 0]]></description>
+      <pubDate>Sat, 28 Feb 2026 17:23:47 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://nugx.org</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: I built a Canva-like editor at 14 – it ranked #4 organically in 30 days]]></title>
+      <link>https://news.ycombinator.com/item?id=47197812</link>
+      <description><![CDATA[I’m a 14-year-old builder from India, and I’ve been working on a design editor called EPIC ( https://no-edit.lovable.app )
+It’s not an AI image generator.
+It’s more focused on navigation + structured design workflows (posters, presentations, logos).
+Instead of competing on “AI magic,” I tried something different:
+Manual editing first
+AI optional (not forced)
+Lightweight UI
+Fast load times
+Clear navigation instead of feature overload
+In the first 30 days:
+100+ organic daily visitors
+100 signups in a single day
+Ranked #4 on launched.lovable.dev
+5+ minute average session duration
+What surprised me most:
+Most users didn’t use AI mode.
+They used manual editing more.
+I think builders are overestimating AI demand and underestimating usability.
+Technical stack:
+Built using Lovable
+Custom workflow logic for design blocks
+Optimized sitemap for crawlability
+Manual SEO submissions instead of paid traffic
+Biggest lesson: Distribution &gt; Features.
+I’m still figuring things out.
+Would love feedback from people who’ve built editors or design tools before. URL: https://news.ycombinator.com/item?id=47197812
+Points: 2
+# : 2]]></description>
+      <pubDate>Sat, 28 Feb 2026 17:19:52 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://news.ycombinator.com/item?id=47197812</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: SQLite for Rivet Actors – one database per agent, tenant, or document]]></title>
+      <link>https://github.com/rivet-dev/rivet</link>
+      <description><![CDATA[Hey HN! We posted Rivet Actors here previously [1] as an open-source alternative to Cloudflare Durable Objects.
+Today we've released SQLite storage for actors (Apache 2.0).
+Every actor gets its own SQLite database. This means you can have millions of independent databases: one for each agent, tenant, user, or document.
+Useful for:
+- AI agents: per-agent DB for message history, state, embeddings
+- Multi-tenant SaaS: real per-tenant isolation, no RLS hacks
+- Collaborative documents: each document gets its own database with built-in multiplayer
+- Per-user databases: isolated, scales horizontally, runs at the edge
+The idea of splitting data per entity isn't new: Cassandra and DynamoDB use partition keys to scale horizontally, but you're stuck with rigid schemas ("single-table design" [3]), limited queries, and painful migrations. SQLite per entity gives you the same scalability without those tradeoffs [2].
+How this compares:
+- Cloudflare Durable Objects &amp; Agents: most similar to Rivet Actors with colocated SQLite and compute, but closed-source and vendor-locked
+- Turso Cloud: Great platform, but closed-source + diff use case. Clients query over the network, so reads are slow or stale. Rivet's single-writer actor model keeps reads local and fresh.
+- D1, Turso (the DB), Litestream, rqlite, LiteFS: great tools for running a single SQLite database with replication. Rivet is for running lots of isolated databases.
+Under the hood, SQLite runs in-process with each actor. A custom VFS persists writes to HA storage (FoundationDB or Postgres).
+Rivet Actors also provide realtime (WebSockets), React integration (useActor), horizontal scalability, and actors that sleep when idle.
+GitHub: https://github.com/rivet-dev/rivet
+Docs: https://www.rivet.dev/docs/actors/sqlite/
+[1] https://news.ycombinator.com/item?id=42472519
+[2] https://rivet.dev/blog/2025-02-16-sqlite-on-the-server-is-mi...
+[3] https://www.alexdebrie.com/posts/dynamodb-single-table/ URL: https://news.ycombinator.com/item?id=47197003
+Points: 6
+# : 0]]></description>
+      <pubDate>Sat, 28 Feb 2026 16:11:58 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://github.com/rivet-dev/rivet</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : Xiaomi 17 Ultra : le nouveau monstre de la photo débarque en France pour défier Samsung]]></title>
+      <link>https://www.lesnumeriques.com/telephone-portable/xiaomi-17-ultra-le-nouveau-monstre-de-la-photo-debarque-en-france-pour-defier-samsung-n252126.html</link>
+      <description><![CDATA[Si Xiaomi espère harmoniser ses calendriers de présentation chinois et internationaux, afin d’éviter que ses produits ne soient officialisés dans l’Empire du Milieu plusieurs mois avant qu’ils ne débarquent à l’étranger, ce n’est pas pour cette année. Ses modèles 17 et 17 Ultra sont en effet disponibles à l’autre bout du globe depuis la fin 2025, et...]]></description>
+      <pubDate>Sat, 28 Feb 2026 14:30:00 GMT</pubDate>
       <source>Les Numeriques</source>
       <category>products</category>
-      <guid>https://www.lesnumeriques.com/societe-numerique/apple-finalement-pas-de-keynote-pour-le-4-mars-voici-ce-qui-se-prepare-en-coulisses-n251657.html</guid>
+      <guid>https://www.lesnumeriques.com/telephone-portable/xiaomi-17-ultra-le-nouveau-monstre-de-la-photo-debarque-en-france-pour-defier-samsung-n252126.html</guid>
     </item>
     <item>
-      <title><![CDATA[Bruxelles met Shein sous surveillance pour la vente de produits illégaux et un design trop addictif]]></title>
-      <link>https://www.journaldugeek.com/2026/02/18/bruxelles-met-shein-sous-surveillance-pour-la-vente-de-produits-illegaux-et-un-design-trop-addictif/</link>
-      <description><![CDATA[La Commission européenne ouvre une enquête formelle contre la plateforme de fast fashion. Dans le viseur : la vente de produits interdits, des mécanismes d’engagement jugés trop addictifs et des algorithmes qui manquent de clarté.]]></description>
-      <pubDate>Wed, 18 Feb 2026 07:29:37 GMT</pubDate>
-      <source>Journal du Geek</source>
-      <category>products</category>
-      <guid>https://www.journaldugeek.com/2026/02/18/bruxelles-met-shein-sous-surveillance-pour-la-vente-de-produits-illegaux-et-un-design-trop-addictif/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Actualité : Bon plan – Le blender Bosch VitaPower Serie 4 MMB6382M "5 étoiles" à 125,00 € (-37%)]]></title>
-      <link>https://www.lesnumeriques.com/blender/bon-plan-le-blender-bosch-vitapower-serie-4-mmb6382m-5-etoiles-a-125-00-37-n251651.html</link>
-      <description><![CDATA[Le blender Bosch VitaPower Serie 4 MMB6382M laisse de côté les innovations un brin tape-à-l’œil (pompe à vide, connexion à un smartphone...) pour se concentrer sur l’essentiel : un moteur puissant et des lames efficaces.Points fortsNombreuses sécurités sur le bol.Très polyvalent.Facile à entretenir.Système EasyKlick.
-Points faiblesProgramme glace...]]></description>
-      <pubDate>Wed, 18 Feb 2026 06:01:02 GMT</pubDate>
+      <title><![CDATA[Actualité : Xiaomi Pad 8 et 8 Pro : des tablettes qui comptent jouer les PC]]></title>
+      <link>https://www.lesnumeriques.com/tablette-tactile/xiaomi-pad-8-et-8-pro-des-tablettes-qui-comptent-jouer-les-pc-n252124.html</link>
+      <description><![CDATA[C’est cette année Xiaomi qui ouvre le bal des présentations de produits, à l’avant-veille du Mobile World Congress de Barcelone, salon majeur dédié à la téléphonie et aux technologies qui l’entourent. La firme chinoise n’y vient pas les mains vides, puisqu’elle y officialise à la fois la sortie européenne de ses smartphones de série 17 (les Xiaomi 17...]]></description>
+      <pubDate>Sat, 28 Feb 2026 14:30:00 GMT</pubDate>
       <source>Les Numeriques</source>
       <category>products</category>
-      <guid>https://www.lesnumeriques.com/blender/bon-plan-le-blender-bosch-vitapower-serie-4-mmb6382m-5-etoiles-a-125-00-37-n251651.html</guid>
+      <guid>https://www.lesnumeriques.com/tablette-tactile/xiaomi-pad-8-et-8-pro-des-tablettes-qui-comptent-jouer-les-pc-n252124.html</guid>
     </item>
     <item>
-      <title><![CDATA[Actualité : Apple préparerait ces trois produits avec caméras et IA pour entrer dans une nouvelle ère de son histoire]]></title>
-      <link>https://www.lesnumeriques.com/intelligence-artificielle/apple-preparerait-ces-trois-produits-avec-cameras-et-ia-pour-entrer-dans-une-nouvelle-ere-de-son-histoire-n251640.html</link>
-      <description><![CDATA[La firme de Cupertino ne compte pas laisser Meta dominer le marché des lunettes connectées. Selon un rapport de Mark Gurman pour Bloomberg, Apple travaillerait sur trois nouveaux produits. Des lunettes connectées, un pendentif et de nouveaux AirPods. Les appareils embarqueraient une caméra et se connecteraient à l'iPhone pour permettre à Siri d'analy...]]></description>
-      <pubDate>Tue, 17 Feb 2026 21:00:00 GMT</pubDate>
+      <title><![CDATA[Dossier : Bitdefender vs Avast : qui protège le mieux vos achats en ligne durant les soldes d'hiver ?]]></title>
+      <link>https://www.lesnumeriques.com/antivirus/bitdefender-vs-avast-qui-protege-le-mieux-vos-achats-en-ligne-durant-les-soldes-d-hiver-a249648.html</link>
+      <description><![CDATA[Les soldes d’hiver 2026 sont l’occasion idéale pour profiter de bons plans et acheter en ligne à prix réduit. Pendant plusieurs semaines, les vêtements, gadgets ou équipements high-tech sont tous affichés avec des réductions exceptionnelles. Toutefois, il faut savoir que durant ces périodes de promotions massives, les cybercriminels multiplient eux a...]]></description>
+      <pubDate>Sat, 28 Feb 2026 11:00:00 GMT</pubDate>
       <source>Les Numeriques</source>
       <category>products</category>
-      <guid>https://www.lesnumeriques.com/intelligence-artificielle/apple-preparerait-ces-trois-produits-avec-cameras-et-ia-pour-entrer-dans-une-nouvelle-ere-de-son-histoire-n251640.html</guid>
+      <guid>https://www.lesnumeriques.com/antivirus/bitdefender-vs-avast-qui-protege-le-mieux-vos-achats-en-ligne-durant-les-soldes-d-hiver-a249648.html</guid>
     </item>
   </channel>
 </rss>

@@ -72,6 +72,7 @@
             margin-bottom: 8px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
+            line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -142,6 +143,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -157,6 +159,15 @@
 
         .article-mobile-footer {
             display: none;
+        }
+
+        /* Footer toujours visible en bas */
+        .site-footer {
+            flex-shrink: 0;
+            padding: 15px 20px;
+            text-align: center;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
         }
 
         .article-mobile-footer-btn {
@@ -332,7 +343,7 @@
 <body>
     <div class="view active" id="view-home">
         <div class="iframe-container">
-            <iframe src="./readme-viewer.html?v=fixed" id="readmeFrame"></iframe>
+            <iframe src="./readme-viewer.html?v=fixed" id="readmeFrame" title="AI-Pulse README Viewer"></iframe>
         </div>
     </div>
 
@@ -342,7 +353,6 @@
             <div class="article-title-text" id="articleTitleText">Chargement...</div>
             <div class="article-meta">
                 <span class="meta-item" id="articleSource"></span>
-                <span class="meta-item" id="articleTags"></span>
             </div>
         </div>
 
@@ -364,7 +374,7 @@
             </div>
         </div>
         <div class="article-mobile-footer" id="articleMobileFooter">
-            <button class="article-mobile-footer-btn" id="articleJumpBottomBtn" type="button">Bas de page</button>
+            <button class="article-mobile-footer-btn" id="articlePreviousBtn" type="button">Précédent</button>
         </div>
     <footer class="site-footer" id="readerFooter">
             <div class="footer-links">
@@ -433,10 +443,35 @@
         const articleTitle = params.get('title');
         const articleSource = params.get('source');
         const articleTags = params.get('tags');
+        // Cache désactivé - seules les préférences utilisateur sont sauvegardées
         const articleRuntimeCache = new Map();
         const LOCAL_ARTICLE_CACHE_PREFIX = 'ai_pulse_article_html:';
         const LOCAL_ARTICLE_CACHE_INDEX_KEY = 'ai_pulse_article_html:index';
-        const LOCAL_ARTICLE_CACHE_MAX_ITEMS = 40;
+        const LOCAL_ARTICLE_CACHE_MAX_ITEMS = 0; // Désactivé
+
+        // Nettoyage automatique du cache article (garde les préférences utilisateur)
+        (function cleanupArticleCache() {
+            try {
+                const keysToRemove = [];
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    // Supprime uniquement les articles en cache, garde les préférences
+                    if (key && key.startsWith(LOCAL_ARTICLE_CACHE_PREFIX)) {
+                        keysToRemove.push(key);
+                    }
+                }
+                keysToRemove.forEach(key => localStorage.removeItem(key));
+                // Nettoie sessionStorage uniquement pour les articles
+                const sessionKeysToRemove = [];
+                for (let i = 0; i < sessionStorage.length; i++) {
+                    const key = sessionStorage.key(i);
+                    if (key && key.startsWith(LOCAL_ARTICLE_CACHE_PREFIX)) {
+                        sessionKeysToRemove.push(key);
+                    }
+                }
+                sessionKeysToRemove.forEach(key => sessionStorage.removeItem(key));
+            } catch (_) {}
+        })();
 
         function normalizeLocalArticlePath(url) {
             if (!url) return '';
@@ -458,60 +493,15 @@
         async function fetchCachedLocalArticleHtml(url) {
             const normalizedPath = normalizeLocalArticlePath(url);
             const cacheKey = `${LOCAL_ARTICLE_CACHE_PREFIX}${normalizedPath}`;
+            // Cache mémoire uniquement (session courante, pas de persistance)
             if (articleRuntimeCache.has(cacheKey)) return articleRuntimeCache.get(cacheKey);
-            try {
-                const localPersisted = localStorage.getItem(cacheKey);
-                if (localPersisted && localPersisted.length > 0) {
-                    const cleanedPersisted = stripLocalArticleElevatorHtml(localPersisted);
-                    articleRuntimeCache.set(cacheKey, cleanedPersisted);
-                    try {
-                        sessionStorage.setItem(cacheKey, cleanedPersisted);
-                    } catch (_) {}
-                    return cleanedPersisted;
-                }
-            } catch (_) {
-                // Ignore localStorage access failures.
-            }
-            try {
-                const persisted = sessionStorage.getItem(cacheKey);
-                if (persisted && persisted.length > 0) {
-                    const cleanedPersisted = stripLocalArticleElevatorHtml(persisted);
-                    articleRuntimeCache.set(cacheKey, cleanedPersisted);
-                    return cleanedPersisted;
-                }
-            } catch (_) {
-                // Ignore sessionStorage access failures.
-            }
-            const response = await fetch(`./${normalizedPath}`, { cache: 'force-cache' });
+            // Fetch direct sans localStorage/sessionStorage
+            const response = await fetch(`./${normalizedPath}`, { cache: 'no-store' });
             if (!response.ok) {
                 throw new Error(`local-article-fetch-failed:${response.status}`);
             }
             const html = stripLocalArticleElevatorHtml(await response.text());
             articleRuntimeCache.set(cacheKey, html);
-            try {
-                sessionStorage.setItem(cacheKey, html);
-            } catch (_) {
-                // Ignore storage quota failures.
-            }
-            try {
-                localStorage.setItem(cacheKey, html);
-                const now = Date.now();
-                const indexRaw = localStorage.getItem(LOCAL_ARTICLE_CACHE_INDEX_KEY);
-                const parsedIndex = indexRaw ? JSON.parse(indexRaw) : {};
-                const index = (parsedIndex && typeof parsedIndex === 'object') ? parsedIndex : {};
-                index[cacheKey] = now;
-                const orderedKeys = Object.keys(index).sort((a, b) => Number(index[b] || 0) - Number(index[a] || 0));
-                const staleKeys = orderedKeys.slice(LOCAL_ARTICLE_CACHE_MAX_ITEMS);
-                staleKeys.forEach((key) => {
-                    try {
-                        localStorage.removeItem(key);
-                        delete index[key];
-                    } catch (_) {}
-                });
-                localStorage.setItem(LOCAL_ARTICLE_CACHE_INDEX_KEY, JSON.stringify(index));
-            } catch (_) {
-                // Ignore storage quota failures.
-            }
             return html;
         }
 
@@ -676,21 +666,7 @@
             }
 
             if (articleTags) {
-                const tags = decodeURIComponent(articleTags)
-                    .split(',')
-                    .map(tag => tag.trim())
-                    .filter(Boolean)
-                    .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
-                const tagsEl = document.getElementById('articleTags');
-                if (tagsEl) {
-                    tagsEl.textContent = ''; // Clear
-                    tags.forEach(tag => {
-                        const span = document.createElement('span');
-                        span.className = 'tag';
-                        span.textContent = tag; // Safe textContent
-                        tagsEl.appendChild(span);
-                    });
-                }
+                // Suppression de l'affichage des tags (bulles mots-clés)
             }
 
             // Load article in iframe
@@ -755,6 +731,33 @@
                             try {
                                 iframeDoc.querySelectorAll('.article-elevator, .article-elevator-btn').forEach((node) => node.remove());
                                 iframeDoc.querySelectorAll('[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"]').forEach((node) => node.remove());
+                                // Suppression des blocs TL;DR dans les articles locaux
+                                iframeDoc.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((heading) => {
+                                    if (/tl[;\s]?dr/i.test(heading.textContent)) {
+                                        let next = heading.nextElementSibling;
+                                        while (next && !['H1','H2','H3','H4','H5','H6'].includes(next.tagName)) {
+                                            const toRemove = next;
+                                            next = next.nextElementSibling;
+                                            toRemove.remove();
+                                        }
+                                        heading.remove();
+                                    }
+                                });
+                                iframeDoc.querySelectorAll('p, li').forEach((el) => {
+                                    if (/^tl[;\s]?dr\s*[:\-–]/i.test((el.textContent || '').trim())) {
+                                        el.remove();
+                                    }
+                                });
+                                // Réécriture des liens : tous les liens externes s'ouvrent dans un
+                                // nouvel onglet pour éviter que l'iframe navigue vers des sites tiers
+                                // (ex: "Back to Articles" de HuggingFace, PortSwigger, etc.)
+                                iframeDoc.querySelectorAll('a[href]').forEach((a) => {
+                                    const href = a.getAttribute('href') || '';
+                                    if (href.startsWith('http://') || href.startsWith('https://')) {
+                                        a.setAttribute('target', '_blank');
+                                        a.setAttribute('rel', 'noopener noreferrer');
+                                    }
+                                });
                                 if (iframeDoc.body) iframeDoc.body.style.overflow = 'auto';
                                 if (iframeDoc.documentElement) iframeDoc.documentElement.style.overflow = 'auto';
                                 const readerElevator = document.querySelector('#view-article .reader-elevator');
@@ -889,9 +892,19 @@
         if (articleScrollBottomBtn) {
             articleScrollBottomBtn.addEventListener('click', () => scrollArticleFrame('down'));
         }
-        const articleJumpBottomBtn = document.getElementById('articleJumpBottomBtn');
-        if (articleJumpBottomBtn) {
-            articleJumpBottomBtn.addEventListener('click', () => scrollArticleFrame('down'));
+        const articlePreviousBtn = document.getElementById('articlePreviousBtn');
+        if (articlePreviousBtn) {
+            articlePreviousBtn.addEventListener('click', () => {
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    // Fallback: go to readme (home)
+                    const fallbackUrl = new URL(window.location.href);
+                    fallbackUrl.search = '';
+                    fallbackUrl.hash = '';
+                    window.location.assign(fallbackUrl.toString());
+                }
+            });
         }
         setTimeout(ensureReaderElevatorVisible, 120);
     </script>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - badaverse/linkprism: Stop juggling Chrome profiles. Let your links find their way home.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - badaverse/linkprism: Stop juggling Chrome profiles. Let your links find their way home.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/28/2026 5:08:10 PM | <a href="https://github.com/badaverse/linkprism" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div> <a target="_blank" href="/badaverse/linkprism/blob/main/assets/app-icon.png" rel="noopener noreferrer"><img src="/badaverse/linkprism/raw/main/assets/app-icon.png" alt="LinkPrism icon"></a> <div><h1>LinkPrism</h1><a href="#linkprism"></a></div> <p><strong>Stop juggling Chrome profiles.<br>Let your links find their way home.</strong></p>
+<p><a href="https://github.com/badaverse/linkprism/releases/latest"><img src="https://camo.githubusercontent.com/9b6d3c233deb510bf05f7855bbc1a98d73ca7d2298af61894198f6943b9abbde/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f762f72656c656173652f6261646176657273652f6c696e6b707269736d3f7374796c653d666c61742d73717561726526636f6c6f723d626c7565" alt="Latest Release"></a>
+<a target="_blank" href="https://camo.githubusercontent.com/1cd3101fec6f68b91533a646efb6a6159664dfa923f0584d36273cf1d4ed0ff7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f706c6174666f726d2d6d61634f535f31342b2d6c69676874677265793f7374796c653d666c61742d737175617265" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/1cd3101fec6f68b91533a646efb6a6159664dfa923f0584d36273cf1d4ed0ff7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f706c6174666f726d2d6d61634f535f31342b2d6c69676874677265793f7374796c653d666c61742d737175617265" alt="Platform: macOS 14+"></a>
+<a target="_blank" href="https://camo.githubusercontent.com/b444ea56666675ecdd1c42f266bf4b3a1692064d7ad62632b71039c253e705b6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f73776966742d352e392b2d4630353133383f7374796c653d666c61742d737175617265" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/b444ea56666675ecdd1c42f266bf4b3a1692064d7ad62632b71039c253e705b6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f73776966742d352e392b2d4630353133383f7374796c653d666c61742d737175617265" alt="Swift 5.9+"></a>
+<a href="/badaverse/linkprism/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/928e434cc54236fc61dbc5ee2b002d258d2389c34180a77574e8b8f3a278d0d9/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6261646176657273652f6c696e6b707269736d3f7374796c653d666c61742d737175617265" alt="MIT License"></a>
+<a target="_blank" href="https://camo.githubusercontent.com/ffdb85264562cbf7e72c56d359c907b7cdf7f2c34315b4f92492b97333ecf8ee/68747470733a2f2f68697473636f756e7465722e6465762f6170692f6869743f75726c3d68747470732533412532462532466769746875622e636f6d2532466261646176657273652532466c696e6b707269736d266c6162656c3d486974732669636f6e3d67697468756226636f6c6f723d253233313938373534266d6573736167653d267374796c653d666c617426747a3d4173696125324653656f756c" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/ffdb85264562cbf7e72c56d359c907b7cdf7f2c34315b4f92492b97333ecf8ee/68747470733a2f2f68697473636f756e7465722e6465762f6170692f6869743f75726c3d68747470732533412532462532466769746875622e636f6d2532466261646176657273652532466c696e6b707269736d266c6162656c3d486974732669636f6e3d67697468756226636f6c6f723d253233313938373534266d6573736167653d267374796c653d666c617426747a3d4173696125324653656f756c"></a></p>
+</div>
+<p> <a href="/badaverse/linkprism/blob/main/README.ko.md">🇰🇷 한국어</a>
+</p>
+<br>
+<p>A macOS menu bar app that puts an end to the daily annoyance of opening URLs in the wrong Chrome profile. Set up domain rules once — </p><pre><code>notion.so</code></pre> goes to Work, <pre><code>github.com</code></pre> goes to Personal — and every link you click just opens in the right place. Paired with a Chrome extension that catches even in-browser clicks, LinkPrism routes them seamlessly. No more copy-paste gymnastics. Just click and go.<p></p>
+<div> <a target="_blank" href="/badaverse/linkprism/blob/main/assets/screenshots/app-routing-rules.png" rel="noopener noreferrer"><img src="/badaverse/linkprism/raw/main/assets/screenshots/app-routing-rules.png" alt="Routing Rules settings"></a> <br><br> <a target="_blank" href="/badaverse/linkprism/blob/main/assets/screenshots/select-profile.png" rel="noopener noreferrer"><img src="/badaverse/linkprism/raw/main/assets/screenshots/select-profile.png" alt="Profile picker popup"></a> <br><br> <a target="_blank" href="/badaverse/linkprism/blob/main/assets/screenshots/app-menu.png" rel="noopener noreferrer"><img src="/badaverse/linkprism/raw/main/assets/screenshots/app-menu.png" alt="Menu bar dropdown"></a>
+</div>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><h3>Download</h3><a href="#download"></a></div>
+<p>Download the latest </p><pre><code>.dmg</code></pre> from <a href="https://github.com/badaverse/linkprism/releases/latest"><strong>GitHub Releases</strong></a>.<p></p>
+<ol>
+<li>Open the <pre><code>.dmg</code></pre> and drag <strong>LinkPrism</strong> to your Applications folder</li>
+<li>Launch LinkPrism — the onboarding wizard will guide you through setup</li>
+<li>Set LinkPrism as your default browser in <strong>System Settings → Desktop &amp; Dock → Default web browser</strong></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> On first launch, macOS may show a security prompt. Right-click the app and choose <strong>Open</strong> to bypass Gatekeeper.</p>
+</blockquote>
+<div><h3>Build from Source</h3><a href="#build-from-source"></a></div>
+<div><pre>git clone https://github.com/badaverse/linkprism.git
+<span>cd</span> linkprism
+open LinkPrism/LinkPrism.xcodeproj</pre></div>
+<p>Build and run with <strong>Xcode 15+</strong> (requires macOS 14 Sonoma or later).</p> <p>The macOS default browser handler can't intercept links clicked <em>within</em> Chrome. The extension solves this.</p> <ol>
+<li>Download <pre><code>LinkPrismExtension.zip</code></pre> from <a href="https://github.com/badaverse/linkprism/releases/latest">GitHub Releases</a></li>
+<li>Unzip the file</li>
+<li>Open <pre><code>chrome://extensions/</code></pre> in Chrome</li>
+<li>Enable <strong>Developer mode</strong> (toggle in top-right)</li>
+<li>Click <strong>Load unpacked</strong> → select the unzipped folder</li>
+</ol>
+<p><strong>Option B — From source:</strong></p>
+<ol>
+<li>Clone or download this repository</li>
+<li>Open <pre><code>chrome://extensions/</code></pre> in Chrome</li>
+<li>Enable <strong>Developer mode</strong> (toggle in top-right)</li>
+<li>Click <strong>Load unpacked</strong> → select the <pre><code>LinkPrismExtension/</code></pre> folder</li>
+</ol>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<ol>
+<li><strong>Launch</strong> — Open LinkPrism. The onboarding wizard walks you through the basics.</li>
+<li><strong>Set as default browser</strong> — System Settings → Desktop &amp; Dock → Default web browser → <strong>LinkPrism</strong></li>
+<li><strong>Add your first rule</strong> — Click the menu bar icon → Settings → <strong>+</strong> button
+<ul>
+<li>Pattern: <pre><code>notion.so</code></pre> · Profile: <pre><code>Work</code></pre> · Type: Host</li>
+</ul>
+</li>
+<li><strong>Test it</strong> — Click any Notion link and watch it open in your Work profile</li>
+</ol>
+<blockquote>
+<p><strong>Tip:</strong> Use <strong>Ask</strong> mode for domains you use across multiple profiles (like </p><pre><code>github.com</code></pre>). LinkPrism will pop up a profile picker each time — and you can check "Don't ask again" to remember your choice for that specific URL.<p></p>
+</blockquote>
+<div><h2>What's New</h2><a href="#whats-new"></a></div>
+<ul>
+<li><strong>Rule sync server</strong> — Local HTTP server syncs rules to the Chrome extension in real time</li>
+<li><strong>Auto profile detection</strong> — Extension auto-detects the current Chrome profile via <pre><code>chrome.identity</code></pre></li>
+<li><strong>Smart routing</strong> — Extension performs client-side rule matching and only reroutes when the current profile doesn't match</li>
+<li><strong>URL remembering</strong> — "Don't ask again for this URL" saves your profile choice per URL</li>
+<li><strong>Settings redesign</strong> — Menu bar + settings window separation with sidebar navigation</li>
+<li><strong>Remembered URLs panel</strong> — View and manage saved URL-to-profile associations per rule</li>
+<li><strong>i18n</strong> — English + Korean support</li>
+<li><strong>Auto-update</strong> — Check for new versions from the menu bar</li>
+<li><strong>Onboarding wizard</strong> — 3-step guided setup for new users</li>
+<li><strong>Help guide</strong> — In-app docs for pattern matching and extension setup</li>
+<li><strong>Rebranding</strong> — Renamed from ProfileRouter to LinkPrism</li>
+</ul>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<section> <div> <div> <pre>graph LR A[" Link clicked"] --&gt; B{"Source?"} B --&gt;|"External app"| C["LinkPrism receives URL"] B --&gt;|"Inside Chrome"| D["Extension matches rules"] D --&gt;|"Wrong profile"| C D --&gt;|"Correct profile"| I["No action needed ✓"] C --&gt; E{"Match rules"} E --&gt;|"Domain / regex match"| F["Open in matched profile ✓"] E --&gt;|"Ask rule"| G["Profile picker popup"] E --&gt;|"No match"| H["Open in default Chrome"] G --&gt;|"User selects"| F J["RulesServer :19384"] -.-&gt;|"Sync rules"| D
+</pre> </div> </div> <span> <span> <span>Loading</span>
+</span> </span>
+</section> <table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LinkPrism.app</strong></td>
+<td>macOS menu bar app. Intercepts <pre><code>http</code></pre>/<pre><code>https</code></pre> URLs as the default browser and routes them to the right Chrome profile based on your rules.</td>
+</tr>
+<tr>
+<td><strong>Chrome Extension</strong></td>
+<td>Catches link clicks <em>inside</em> Chrome (which the OS-level handler can't intercept). Syncs rules from the app via a local HTTP server, performs client-side rule matching, and auto-detects the current Chrome profile.</td>
+</tr>
+<tr>
+<td><strong>Local Rule Server</strong></td>
+<td>Lightweight HTTP server on <pre><code>127.0.0.1:19384</code></pre> that serves rules and profile data to the Chrome extension.</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li><strong>Domain &amp; regex rules</strong> — Route by exact host (<pre><code>notion.so</code></pre>), wildcard (<pre><code>*.atlassian.net</code></pre>), or full regex (<pre><code>github\.com/my-org/.*</code></pre>)</li>
+<li><strong>Auto-detect Chrome profiles</strong> — Reads Chrome's <pre><code>Local State</code></pre> to discover all your profiles automatically</li>
+<li><strong>"Ask every time" mode</strong> — Show a profile picker popup when you're unsure which profile to use</li>
+<li><strong>Remember URL choices</strong> — Check "Don't ask again for this URL" and LinkPrism remembers your preference</li>
+<li><strong>Menu bar resident</strong> — Lives quietly in your menu bar, hidden from the Dock</li>
+<li><strong>Rule management</strong> — Add, edit, delete, toggle, and drag-to-reorder your routing rules</li>
+<li><strong>Guided onboarding</strong> — 3-step setup wizard gets you running in under a minute</li>
+<li><strong>Auto-update</strong> — Checks GitHub Releases so you never miss an update</li>
+<li><strong>i18n</strong> — English and Korean (more languages welcome!)</li>
+<li><strong>Chrome extension</strong> — Catches in-browser link clicks, syncs rules from the app, and auto-detects the current profile</li>
+<li><strong>Import / Export</strong> — Back up and restore your routing rules as JSON</li>
+</ul>
+<div><h2>Tech Stack</h2><a href="#tech-stack"></a></div>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS App</td>
+<td>Swift, SwiftUI, AppKit</td>
+</tr>
+<tr>
+<td>Chrome Extension</td>
+<td>JavaScript, Manifest V3, Chrome Identity API</td>
+</tr>
+<tr>
+<td>Rule Sync</td>
+<td>Local HTTP server (<pre><code>127.0.0.1:19384</code></pre>)</td>
+</tr>
+<tr>
+<td>Build</td>
+<td>Xcode 15+</td>
+</tr>
+<tr>
+<td>Config</td>
+<td><pre><code>~/Library/Application Support/LinkPrism/rules.json</code></pre></td>
+</tr>
+<tr>
+<td>Auto-Update</td>
+<td>GitHub Releases API</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>LinkPrism/
+├── LinkPrism/ # macOS SwiftUI app
+│ ├── App/ # LinkPrismApp, AppDelegate, URL handling
+│ ├── Models/ # Rule, RememberedRoute
+│ ├── Services/ # Router, URLRouter, ChromeProfileScanner,
+│ │ # ConfigManager, RulesServer,
+│ │ # RememberedRouteManager, UpdateChecker
+│ └── Views/ # Settings, ProfilePicker, Onboarding,
+│ # MenuBarContent, Help, About,
+│ # RememberedURLs, RuleEditor, Debug
+├── LinkPrismExtension/ # Chrome extension (Manifest V3)
+│ ├── background.js # Rule sync via local server, profile detection
+│ ├── content.js # Link interception + client-side rule matching
+│ ├── popup.html/js # Connection status, profile selector, rule sync
+│ ├── icons/ # Extension icons (16, 48, 128)
+│ └── _locales/ # i18n (en, ko)
+└── assets/ # README images
+</code></pre></div>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions are welcome! Whether it's bug reports, feature requests, or pull requests — every bit helps.</p>
+<ol>
+<li>Fork the repository</li>
+<li>Create a feature branch (<pre><code>git checkout -b feature/amazing-feature</code></pre>)</li>
+<li>Commit your changes (<pre><code>git commit -m 'Add amazing feature'</code></pre>)</li>
+<li>Push to the branch (<pre><code>git push origin feature/amazing-feature</code></pre>)</li>
+<li>Open a Pull Request</li>
+</ol>
+<div><h3>Translation</h3><a href="#translation"></a></div>
+<p>LinkPrism supports i18n via Xcode string catalogs. To add a new language:</p>
+<ol>
+<li>Open <pre><code>LinkPrism/LinkPrism/Localizable.xcstrings</code></pre> in Xcode</li>
+<li>Add your language and provide translations</li>
+<li>For the Chrome extension, add a locale folder under <pre><code>LinkPrismExtension/_locales/</code></pre></li>
+</ol>
+<p>See the <a href="https://github.com/badaverse/linkprism/issues">open issues</a> for known issues and feature requests.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>This project is licensed under the MIT License — see the <a href="/badaverse/linkprism/blob/main/LICENSE">LICENSE</a> file for details.</p>
+<p> <a href="/badaverse/linkprism/blob/main/README.ko.md">🇰🇷 한국어</a>
+</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

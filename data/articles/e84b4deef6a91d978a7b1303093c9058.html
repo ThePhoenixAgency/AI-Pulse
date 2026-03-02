@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Can AI Agents Boost Ethereum Security? OpenAI and Paradigm Created a Testing Ground</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Can AI Agents Boost Ethereum Security? OpenAI and Paradigm Created a Testing Ground</h1>
+  <div class="metadata">
+    Source: Decrypt | Date: 2/18/2026 10:03:22 PM | <a href="https://decrypt.co/358470/ai-agents-boost-ethereum-security-openai-paradigm-evmbench" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><div><h4>In brief</h4><ul>
+<li>EVMbench tests AI agents on 120 real-world Ethereum smart contract vulnerabilities.</li>
+<li>Tool evaluates detection, patching, and exploitation across three distinct modes.</li>
+<li>GPT-5.3-Codex achieved 72.2% success rate in exploit mode testing.</li>
+</ul></div><p>ChatGPT maker <a href="https://decrypt.co/330714/openais-chatgpt-agent-launches-expanded-powers-elevated-risk" target="_blank">OpenAI</a> and crypto-focused investment firm Paradigm have introduced EVMbench, a tool to help improve <a href="https://decrypt.co/resources/ethereum-virtual-machine" target="_blank">Ethereum Virtual Machine</a> smart contract security.</p><p>EVMbench is designed to evaluate AI agents’ ability to detect, patch, and exploit high-severity vulnerabilities in Ethereum Virtual Machine (EVM) smart contracts.</p><p><a href="https://decrypt.co/resources/smart-contracts" target="_blank">Smart contracts</a> are the heart of the <a href="https://decrypt.co/resources/what-is-ethereum-quickly-explained-four-minute-guide" target="_blank">Ethereum</a> network, holding the code that powers everything from <a href="https://decrypt.co/resources/defi-decentralized-finance-explained-guide-learn" target="_blank">decentralized finance</a> protocols to token launches. The weekly number of smart contracts deployed on Ethereum reached an all-time high of 1.7 million in November 2025, with 669,500 deployed last week alone, according to <a href="https://tokenterminal.com/explorer/projects/ethereum/metrics/contracts-deployed" target="_blank">Token Terminal</a>.</p><p>EVMbench draws on 120 curated vulnerabilities from 40 audits, most sourced from open audit competitions such as Code4rena, according to an <a href="https://openai.com/index/introducing-evmbench/" target="_blank">OpenAI blog post</a>. It also includes scenarios from the security auditing process for <a href="https://decrypt.co/resources/what-tempo-payments-stablecoin-blockchain-stripe" target="_blank">Tempo</a>, Stripe's purpose-built layer-1 blockchain focused on high-throughput, low-cost stablecoin payments.</p><p>Payments giant Stripe launched the <a href="https://decrypt.co/351661/stripes-tempo-payments-blockchain-opens-public-mastercard-ubs-onboard" target="_blank">public testnet for Tempo</a> in December, saying at the time that it was being built with input from Visa, Shopify, and OpenAI, among others.</p><p>The goal is to ground testing in economically meaningful, real-world code—particularly as AI-driven stablecoin payments expand, the firm added.</p><div><blockquote>
+<p>Introducing EVMbench—a new benchmark that measures how well AI agents can detect, exploit, and patch high-severity smart contract vulnerabilities. <a href="https://t.co/op5zufgAGH">https://t.co/op5zufgAGH</a></p>
+<p>— OpenAI (@OpenAI) <a href="https://twitter.com/OpenAI/status/2024193883748651102?ref_src=twsrc%5Etfw">February 18, 2026</a></p></blockquote></div><p>EVMbench is meant to evaluate AI models across three modes: Detect, patch, and exploit. In “detect,” agents audit repositories and are scored on their recall of ground-truth vulnerabilities. In “patch,” agents must eliminate vulnerabilities without breaking intended functionality. Finally, in the “exploit” phase, agents attempt end-to-end fund-draining attacks in a sandboxed blockchain environment, with grading performed via deterministic transaction replay.</p><p>In exploit mode, <a href="https://openai.com/index/introducing-gpt-5-3-codex/" target="_blank">GPT-5.3-Codex</a> running via OpenAI's Codex CLI achieved a score of 72.2%, compared to 31.9% for GPT-5, which was released six months earlier. Performance was weaker in the detect and patch tasks, where agents sometimes failed to audit exhaustively or struggled to preserve full contract functionality.</p><p>The ChatGPT makers' researchers cautioned that EVMbench does not fully capture real-world security complexity. Still, they added that measuring AI performance in economically relevant environments is critical as models become powerful tools for both attackers and defenders.</p><p>Sam Altman's OpenAI and Ethereum co-founder Vitalik Buterin have <a href="https://decrypt.co/299651/openais-altman-ethereums-buterin-outline-competing-visions-ai" target="_blank">previously been at odds</a> over the pace of AI development.</p><p>In January 2025, Altman said that his firm was "confident we know how to build AGI as we have traditionally understood it." But Buterin advocated that AI systems should include a "soft pause" capability that could temporarily restrict industrial-scale AI operations if warning signs emerge.</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

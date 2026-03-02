@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Anthropic annonce Claude Code Security, un outil autonome de d�tection des vuln�rabilit�s int�gr� � Claude Code, qui analyse les bases de code � la recherche de probl�mes de s�curit� et propose des corrections</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Anthropic annonce Claude Code Security, un outil autonome de d�tection des vuln�rabilit�s int�gr� � Claude Code, qui analyse les bases de code � la recherche de probl�mes de s�curit� et propose des corrections</h1>
+  <div class="metadata">
+    Source: Developpez.com | Date: 2/23/2026 12:47:00 PM | <a href="https://intelligence-artificielle.developpez.com/actu/380485/Anthropic-annonce-Claude-Code-Security-un-outil-autonome-de-detection-des-vulnerabilites-integre-a-Claude-Code-qui-analyse-les-bases-de-code-a-la-recherche-de-problemes-de-securite-et-propose-des-corrections/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <p><img src="https://www.developpez.com/images/logos/antropic.png"> <b>Anthropic vient d'annoncer Claude Code Security, un outil autonome de d�tection des vuln�rabilit�s int�gr� � Claude Code. Il analyse les bases de code � la recherche de probl�mes de s�curit� et propose des corrections cibl�es � examiner par des humains. Ce lancement fait suite � des rapports indiquant que des pirates, y compris des acteurs soutenus par des �tats, ont utilis� les mod�les Anthropic pour identifier des vuln�rabilit�s exploitables dans des bases de code nouvelles et bien entretenues.</b></p><p>Anthropic est une soci�t� am�ricaine sp�cialis�e dans l'intelligence artificielle (IA) qui d�veloppe la famille de grands mod�les de langage (LLM) Claude. Anthropic fonctionne comme une soci�t� d'int�r�t public qui m�ne des recherches et d�veloppe des IA afin d'� �tudier leurs propri�t�s de s�curit� � la pointe de la technologie � et utilise ces recherches pour d�ployer des mod�les s�rs pour le public.</p><p>Claude Code est une interface en ligne de commande qui s'ex�cute sur l'ordinateur d'un utilisateur. Elle se connecte � une instance Claude h�berg�e sur les serveurs d'Anthropic via une API et permet � l'instance Claude d'ex�cuter des commandes, de lire des fichiers, d'�crire des fichiers et d'�changer des messages avec l'utilisateur. Claude peut ex�cuter des commandes en avant-plan ou en arri�re-plan. Le comportement de Claude Code est g�n�ralement configur� via des documents Markdown sur l'ordinateur de l'utilisateur, tels que CLAUDE.md, AGENTS.md, SKILL.md, etc. En janvier 2026, certains utilisateurs le consid�rent comme le meilleur assistant de codage IA.</p><p>Avec la popularit� de son outil, <a href="https://intelligence-artificielle.developpez.com/actu/380306/-Suppression-idiote-d-informations-precieuses-la-mise-a-jour-Claude-Code-2-1-20-d-Anthropic-masque-ses-actions-fichier-par-fichier-provoquant-la-colere-des-developpeurs/" target="_blank">Anthropic a introduit ce qui devait �tre une simple �volution d'interface en f�vrier 2026.</a> Anthropic a mis � jour Claude Code en modifiant l'affichage des actions en cours pour masquer les noms des fichiers que l'outil lisait, �crivait ou �ditait. Concr�tement, la version 2.1.20 condensait la sortie de mani�re � ne plus afficher, par exemple, les noms des fichiers et le nombre de lignes lues, se contentant d'imprimer � Read 3 files (ctrl+o to expand) �. Les d�tails restent techniquement accessibles via un raccourci clavier, mais devoir invoquer manuellement ce raccourci � chaque op�ration rend le flux de travail fastidieux et inefficace dans la pratique.</p><p>La r�action de la communaut� a �t� imm�diate et s�v�re. Sur GitHub, une issue d�di�e a recueilli des dizaines de commentaires d'ing�nieurs exprimant leur frustration, allant bien au-del� du simple m�contentement cosm�tique. Les d�veloppeurs ont de multiples raisons l�gitimes de vouloir voir les noms des fichiers : pour des raisons de s�curit�, pour savoir imm�diatement si Claude tire son contexte des mauvais fichiers, et pour effectuer un audit facile de l'activit� pass�e en faisant d�filer la conversation. Cet incident r�v�le une tension profonde dans la conception des outils d'IA agentique : jusqu'o� peut-on abstraire les actions d'une machine qui touche � votre code de production ?</p><p>Pour renforcer la s�curit� dans Claude Code, Anthropic vient d'annoncer Claude Code Security, un outil autonome de d�tection des vuln�rabilit�s int�gr� � Claude Code. Il analyse les bases de code � la recherche de probl�mes de s�curit� et propose des corrections cibl�es � examiner par des humains. Ce lancement fait suite � des rapports indiquant que des pirates, y compris des acteurs soutenus par des �tats, ont utilis� les mod�les Anthropic pour identifier des vuln�rabilit�s exploitables dans des bases de code nouvelles et bien entretenues.</p><div>
+<p></p>
+</div><p>
+Anthropic affirme que cet outil se distingue des produits de s�curit� conventionnels en raisonnant � travers le code � la mani�re d'un chercheur en s�curit�, plut�t qu'en s'appuyant sur une comparaison de mod�les bas�e sur des r�gles par rapport � des signatures de vuln�rabilit�s connues. Les r�sultats comprennent des �valuations de gravit� pour la hi�rarchisation et des scores de confiance, avec des v�rifications automatis�es destin�es � r�duire les faux positifs avant que les probl�mes n'apparaissent dans un tableau de bord destin� aux �quipes de s�curit�.</p><p>Claude Code Security ne modifie pas directement le code et est actuellement propos� en avant-premi�re limit�e � des fins de recherche pour les clients Enterprise et Team, avec un acc�s acc�l�r� gratuit pour les responsables de maintenance open source �ligibles. Cette annonce semble �galement avoir pes� sur les actions li�es � la cybers�curit�, des m�dias tels que SiliconANGLE rapportant que CrowdStrike a cl�tur� en baisse de pr�s de 8 % et Cloudflare de plus de 8 % lors de la m�me s�ance de bourse.</p><p><b>Comment fonctionne Claude Code Security</b></p><p>L'analyse statique, une forme largement d�ploy�e de test de s�curit� automatis�, est g�n�ralement bas�e sur des r�gles, ce qui signifie qu'elle compare le code � des mod�les de vuln�rabilit� connus. Cela permet de d�tecter les probl�mes courants, tels que les mots de passe expos�s ou le chiffrement obsol�te, mais passe souvent � c�t� de vuln�rabilit�s plus complexes, telles que les failles dans la logique m�tier ou les contr�les d'acc�s d�faillants.</p><p>Plut�t que de rechercher des mod�les connus, Claude Code Security lit et analyse votre code comme le ferait un chercheur en s�curit� humain : il comprend comment les composants interagissent, suit le cheminement des donn�es dans votre application et d�tecte les vuln�rabilit�s complexes que les outils bas�s sur des r�gles ne d�tectent pas.</p><p>Chaque r�sultat passe par un processus de v�rification en plusieurs �tapes avant d'�tre transmis � un analyste. Claude r�examine chaque r�sultat, en essayant de prouver ou de r�futer ses propres conclusions et de filtrer les faux positifs. Les r�sultats sont �galement class�s par niveau de gravit� afin que les �quipes puissent se concentrer en priorit� sur les corrections les plus importantes.</p><p>Les r�sultats valid�s apparaissent dans le tableau de bord de Claude Code Security, o� les �quipes peuvent les examiner, inspecter les correctifs sugg�r�s et approuver les corrections. Comme ces probl�mes comportent souvent des nuances difficiles � �valuer � partir du seul code source, Claude attribue �galement un niveau de confiance � chaque r�sultat. Rien n'est appliqu� sans l'accord d'un humain : Claude Code Security identifie les probl�mes et sugg�re des solutions, mais ce sont toujours les d�veloppeurs qui prennent la d�cision finale.</p><div>
+<p></p>
+</div><p>
+Voici comment l'�quipe d'Anthropic a utilis� Claude pour la cybers�curit� :</p><div> <p> Claude Code Security s'appuie sur plus d'un an de recherche sur les capacit�s de Claude en mati�re de cybers�curit�. Notre �quipe Frontier Red Team a syst�matiquement test� ces capacit�s : elle a inscrit Claude � des concours Capture-the-Flag, s'est associ�e au Pacific Northwest National Laboratory pour exp�rimenter l'utilisation de l'IA dans la d�fense des infrastructures critiques et a perfectionn� la capacit� de Claude � trouver et � corriger les vuln�rabilit�s r�elles dans le code.</p><p>Les capacit�s de cyberd�fense de Claude se sont ainsi consid�rablement am�lior�es. � l'aide de Claude Opus 4.6, sorti au d�but du mois, notre �quipe a d�couvert plus de 500 vuln�rabilit�s dans des bases de code open source en production, des bogues qui �taient pass�s inaper�us pendant des d�cennies, malgr� des ann�es d'examen par des experts. Nous travaillons actuellement avec les responsables de la maintenance pour trier et divulguer ces informations de mani�re responsable, et nous pr�voyons d'�tendre notre travail de s�curit� � la communaut� open source.</p><p>Nous utilisons �galement Claude pour examiner notre propre code, et nous avons constat� qu'il �tait extr�mement efficace pour s�curiser les syst�mes d'Anthropic. Nous avons cr�� Claude Code Security afin de rendre ces m�mes capacit�s d�fensives plus largement accessibles. Et comme il est... </p></div>
+<p>La fin de cet article est r�serv�e aux abonn�s. Soutenez le Club Developpez.com en <a href="https://premium.developpez.com/abonnement">prenant un abonnement</a> pour que nous puissions continuer � vous proposer des publications.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

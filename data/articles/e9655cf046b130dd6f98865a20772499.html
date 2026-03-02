@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Previously harmless Google API keys now expose Gemini AI data</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Previously harmless Google API keys now expose Gemini AI data</h1>
+  <div class="metadata">
+    Source: BleepingComputer Windows | Date: 2/26/2026 8:55:29 PM | <a href="https://www.bleepingcomputer.com/news/security/previously-harmless-google-api-keys-now-expose-gemini-ai-data/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><img alt="Previously harmless Google API keys now expose Gemini AI data" src="https://www.bleepstatic.com/content/hl-images/2025/09/02/Google.jpg"></p> <p>Google API keys for services like Maps&nbsp;embedded in accessible&nbsp;client-side code could be used to authenticate to the Gemini AI assistant and access private data.</p> <p>Researchers found nearly 3,000 such keys while scanning internet pages from organizations in various sectors, and even from Google.</p> <p>The problem occurred when Google introduced its Gemini assistant, and developers started enabling the LLM API in projects. Before this, Google Cloud API keys were not considered sensitive data and could be exposed online without risk.</p> <p><a href="https://www.wiz.io/lp/ai-security-board-report-template?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_AI-Security-Board-Report-Template&amp;sfcid=701Vh00000Wn7E1IAJ&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=AI-Board-Report" target="_blank" rel="noopener noreferrer"><img src="https://www.bleepstatic.com/c/w/ai-security-board-report-template.jpg" alt="Wiz"></a>
+</p> <p>Developers can use API keys to extend functionality in a project, such as loading Maps on a website to share a location, for YouTube embeds, usage tracking, or Firebase services.</p> <p>When Gemini was introduced, Google Cloud API keys also acted as authentication credentials for Google's AI assistant.</p> <p>Researchers at&nbsp;TruffleSecurity discovered the issue and warned that attackers could copy the API key from a website's page source and access private data available through the Gemini API service.</p> <p>Since using the Gemini API is not free, an attacker could leverage the access and make API calls for their benefit.</p> <p>"Depending on the model and context window, a threat actor maxing out API calls could generate thousands of dollars in charges per day on a single victim account,"&nbsp;<a href="https://trufflesecurity.com/blog/google-api-keys-werent-secrets-but-then-gemini-changed-the-rules" target="_blank" rel="noopener noreferrer">Truffle Security says</a>.</p> <p>The researchers warn that these API keys have been sitting exposed in public JavaScript code for years, and now they have suddenly gained more dangerous privileges&nbsp;without anyone noticing.</p> <div>
+<figure><img alt="TruffleSecurity" src="https://www.bleepstatic.com/images/news/u/1220909/2026/February/switch.jpg"><figcaption><em>Source:&nbsp;TruffleSecurity</em></figcaption></figure></div> <p>TruffleSecurity scanned the November 2025 Common Crawl dataset, a representative snapshot of a large swath of the most popular sites, and found more than&nbsp;2,800 live Google API keys publicly exposed in their code.</p> <p>According to the researchers, some of the keys were used by major financial institutions, security companies, and&nbsp;recruiting firms. They reported the problem to Google, providing samples from its infrastructure.</p> <p>In one case, an API key acting just as an identifier was deployed since at least February 2023 and was embedded in the page source of a Google product's public-facing website.</p> <div>
+<figure><img alt="Google's exposed key" src="https://www.bleepstatic.com/images/news/u/1220909/2026/February/google-key.jpg"><figcaption><strong>Google's exposed key</strong><br><em>Source: TruffleSecurity</em></figcaption></figure></div> <p>Truffle Security tested the key by calling the Gemini API's <em>/models</em> endpoint and listing available models.</p> <p>The researchers informed Google of the problem last year on November 21.&nbsp;&nbsp;After a long exchange, Google classified the flaw as “single-service privilege escalation” on January 13, 2026.</p> <p>In a statement for BleepingComputer, Google says that it is aware of the report and has "worked with the researchers to address the issue."</p> <p>"We have already implemented proactive measures to detect and block leaked API keys that attempt to access the Gemini API,” a<em>&nbsp;</em>Google spokesperson told BleepingComputer.</p> <p>Google stated that new AI Studio keys will default to Gemini-only scope, leaked API keys will be blocked from accessing Gemini, and proactive notifications will be sent when leaks are detected.</p> <p>Developers should check whether Gemini (Generative Language API) is enabled on their projects and audit all API keys in their environment to determine if any are publicly exposed, and rotate them immediately.</p> <p>The researchers also suggest using the <a href="http://github.com/trufflesecurity/trufflehog" target="_blank" rel="noopener noreferrer">TruffleHog open-source tool</a> to detect live, exposed keys in code and repositories.</p> <p><em>Update 2/28 </em>- Quokka has <a href="https://www.quokka.io/blog/google-gemini-api-key-mobile-app-security-risk" target="_blank" rel="noopener noreferrer">published a report</a> on mobile security, where its scans of 250,000 apps returned 35,000 Google API keys.</p> <div> <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank" rel="noopener noreferrer"> <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg"></a> </p> <div> <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank" rel="noopener noreferrer">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p> </div>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

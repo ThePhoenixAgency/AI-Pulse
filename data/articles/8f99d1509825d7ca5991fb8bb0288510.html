@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Workshops on Demand version 1.0.2</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Workshops on Demand version 1.0.2</h1>
+  <div class="metadata">
+    Source: LinuxFr | Date: 2/23/2026 1:32:32 PM | <a href="https://linuxfr.org/news/workshops-on-demand-version-1-0-2" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div>
+<p>Nous avons travaillé dur avec mon collègue <a href="https://www.linkedin.com/in/fredericpasseron/">Frédéric Passeron</a> pour préparer l'<a href="https://pretalx.com/alposs-2026/talk/X9XHGW/">atelier donné</a> lors du récent <a href="https://alposs.fr/">AlpOSS 2026</a> (gros succès au passage&nbsp;!) consacré à notre outillage <a href="https://github.com/Workshops-on-Demand">Workshops on Demand</a> (ou WoD).</p> <p><img src="https://img.linuxfr.org/img/68747470733a2f2f617661746172732e67697468756275736572636f6e74656e742e636f6d2f752f3130343039313237353f733d32303026763d34/104091275?s=200&amp;v=4" alt="Logo Workshop On Demand"></p> <p>Maintenant que nous en avons le temps, nous avons publié la <a href="https://github.com/Workshops-on-Demand/.github/blob/main/CHANGELOG.md">version 1.0.2</a> utilisée pour cet atelier que nous considérons comme stable et prête à être utilisée par toute structure pour proposer une plateforme de transfert de connaissances basée sur les <a href="https://jupyter.org/">NoteBooks Jupyter</a>.</p> <p>Pour rappel (ou découverte pour ceux découvrant notre projet&nbsp;!) nous fournissons une plateforme de 3 machines (frontend, API-DB, backend) que vous pouvez installer automatiquement (VM ou physique) et qui fournissent un portail d'enregistrement fonctionnel pour permettre l'accès à 20 Notebooks sur diverses technologies FLOSS (Open Source et/ou Libres) qui sont gérés par un JupyterHub sur le backend, le tout orchestré par des APIs REST et SMTP/procmail APIs (description simplifiée, plus de détails via notre <a href="https://github.com/Workshops-on-Demand/.github/blob/main/profile/README.md">USER GUIDE</a>).</p> <p>En déployant cette pile, vos utilisateurs pourront s'auto-enregistrer pour suivre un Notebook choisi dans notre+votre catalogue de sujets, dérouler le Noteboook pour acquérir les connaissances qui y sont décrites, sans intervention de votre part, la plateforme gérant les inscriptions et effacements de demandeurs en autonomie (mais sans IA dedans, juste de la logique, du code des APIs et une Base de Données&nbsp;!).</p> <p><img src="https://img.linuxfr.org/img/68747470733a2f2f6272756e6f636f726e65632e776f726470726573732e636f6d2f77702d636f6e74656e742f75706c6f6164732f323032362f30322f73637265656e73686f745f32303236303231395f3130343931342e706e673f773d31303234/screenshot_20260219_104914.png?w=1024" alt="Portail des Workshops à la demande"></p> <p>Et comme pour tout bon projet construisant sa communauté, nous vous encourageons à souscrire à notre mailing-list pour recevoir de l'aide, apporter des retours, être informés des nouveautés,… Simple comme envoyer <a href="mailto:sympa@ml.hyper-linux.org?subject=SUB%20wod">ce mail</a> ou cliquer sur <a href="http://www.hyper-linux.org/sympa/subscribe/wod">ce lien</a>.</p> <p>Et nous espérons des contributions, en particulier des contenus complémentaires que vous voudriez promouvoir au travers de notre solution WoD.</p> <h2>Aller plus loin</h2>
+<ul>
+<li>
+<a href="https://github.com/Workshops-on-Demand">Projet WoD</a>
+(33 clics)
+</li>
+<li>
+<a href="https://www.youtube.com/watch?v=RSt7ewTulPE">Live démo</a>
+(34 clics)
+</li>
+<li>
+<a href="https://alposs.fr/2024/presentations/03%20-%20HPE%20-%20Bruno%20Cornec.pdf">Présentation</a>
+(49 clics)
+</li> </ul> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

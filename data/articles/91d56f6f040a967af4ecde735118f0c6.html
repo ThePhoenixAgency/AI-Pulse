@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Understanding Rust Complier</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Understanding Rust Complier</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/21/2026 7:57:29 PM | <a href="https://dev.to/saurabh2836/understanding-rust-complier-3fgg" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fzqny8zjlh7qdfiqfnrvu.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fzqny8zjlh7qdfiqfnrvu.png" alt="Cover image for Understanding Rust Complier"> </a> <div> <p><a href="https://dev.to/saurabh2836"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F129855%2Fd49fcf36-6612-4ff5-80e8-a52cb6cce083.jpg" alt="saurabh kamble"></a> </p> </div> </header> <div> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ffs6sio1y404n4vtl2h8b.jpg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Ffs6sio1y404n4vtl2h8b.jpg" alt="Rust Compiler -|"></a></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fed3oq7p5wqj9ejyl9il0.jpg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fed3oq7p5wqj9ejyl9il0.jpg" alt="Rust Compiler -||"></a></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmdb7elr47g3glagf2ltp.jpg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmdb7elr47g3glagf2ltp.jpg" alt="Rust Compiler -|||"></a></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fr0x3rgs1rngnqte7w0k6.jpg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fr0x3rgs1rngnqte7w0k6.jpg" alt="Explanation of Complier-|"></a></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fglffhgfkhpisn5g261si.jpg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fglffhgfkhpisn5g261si.jpg" alt="Explanation of Complier-||"></a></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frvu4iz3kr2d10bkpqo7r.jpg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frvu4iz3kr2d10bkpqo7r.jpg" alt="Explanation of Complier-|||"></a></p> <p>Ever wondered what happens between the moment you hit cargo build and the birth of a lightning-fast executable? Rust’s reputation for memory safety and performance isn’t magic — it’s the result of a sophisticated multi-stage compilation pipeline.<br>
+Based on my latest study notes, here is the journey your code takes through the Rust Compiler (<strong>rustc</strong>).</p> <p><strong>1. Parsing: From Text to Tree</strong><br>
+The process begins with Parsing. The compiler takes your raw plain text Rust code and breaks it down into tokens like keywords and identifiers. These tokens are then arranged into a tree-like structure called an AST (Abstract Syntax Tree).</p> <p><strong>2. High-Level Analysis (HIR)</strong><br>
+Because the AST is still too close to your source code syntax, the compiler “lowers” it into a High-Level Intermediate Representation (HIR). This is where the heavy lifting starts:<br>
+<strong>Name Resolution</strong>: The compiler identifies every variable and function name.<br>
+<strong>Type Checking</strong>: It verifies that you are using types correctly. If you have a type mismatch, it’s usually caught and reported right here.</p> <p><strong>3. Mid-Level Analysis (MIR) &amp; The Borrow Checker</strong><br>
+This is where the “Rust Magic” happens. The code is transformed into MIR (Mid-Level Intermediate Representation).<br>
+MIR is designed specifically for complex analysis. Its primary job is to serve as the input for the Borrow Checker. The compiler analyzes the MIR to enforce Rust’s strict ownership, borrowing, and lifetime rules. This is exactly how Rust guarantees memory safety without needing a Garbage Collector.</p> <p><strong>4. Code Generation &amp; Optimization (LLVM)</strong><br>
+Once the safety checks are complete, Rust hands the MIR off to LLVM (Low-Level Virtual Machine), a powerful general-purpose compiler backend.<br>
+<strong>LLVM IR:</strong> The MIR is translated into LLVM’s own Intermediate Representation.<br>
+<strong>Optimization:</strong> LLVM runs a massive number of optimization passes to make the code as fast and efficient as possible. This is a primary reason why Rust programs are so performant.<br>
+Machine Code: Finally, LLVM translates that optimized IR into actual machine code (object code) tailored for your specific computer architecture.</p> <p><strong>5. The Final Step: Linking</strong><br>
+In the final stage, the Linker takes the object code and bundles it with any necessary libraries to produce your final Executable.</p> <p><strong>Summary of the Pipeline:</strong></p> <p><strong>Cargo ⮕ rustc ⮕ AST ⮕ HIR (Type Checking) ⮕ MIR (Borrow Checking) ⮕ LLVM IR ⮕ Optimization ⮕ Executable.</strong></p> <p>Rust isn’t just a language; it’s a rigorous verification system that ensures your code is safe before it ever runs. </p> <h2> <a name="rustlang-coding-programming-compiler-softwareengineering-rustcompiler" href="#rustlang-coding-programming-compiler-softwareengineering-rustcompiler"> </a> RustLang #Coding #Programming #Compiler #SoftwareEngineering #RustCompiler
+</h2> <p>My LinkedIn Article link : <a href="https://www.linkedin.com/pulse/deep-dive-how-rust-compiler-works-under-hood-saurabh-kamble-hflsf/?trackingId=bLBiXiYkSEu2M7zu8BpXHA%3D%3D" target="_blank">LinkedIn Article</a> and <a href="https://www.linkedin.com/in/saurabh-kamble/" target="_blank">my profile</a> </p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

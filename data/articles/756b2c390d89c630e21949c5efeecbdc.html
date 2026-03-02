@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How to find domoticz log file</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How to find domoticz log file</h1>
+  <div class="metadata">
+    Source: Domoticz (Forum News) | Date: 2/26/2026 9:24:04 AM | <a href="https://forum.domoticz.com/viewtopic.php?p=331821#p331821" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p> <strong>Moderators:</strong> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6475&amp;sid=873b8e48a0b65025db732c2e22da576d">leecollings</a>, <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=57&amp;sid=873b8e48a0b65025db732c2e22da576d">remb0</a>
+</p> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=24014&amp;sid=873b8e48a0b65025db732c2e22da576d">meal</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=24014&amp;sr=posts&amp;sid=873b8e48a0b65025db732c2e22da576d">117</a></dd> <dd><strong>Joined:</strong> Monday 04 March 2019 14:59</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> 2025.2</dd> <dd><strong>Location:</strong> France</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331821&amp;sid=873b8e48a0b65025db732c2e22da576d#p331821">How to find domoticz log file</a> </h3> <div><p>Hello,</p><p> 1 - Context<br>
+Domoticz V2025.2 (build 17277) running on bookworm<br>
+Build Hash fac6d8f<br>
+Compile Date 2026-02-26 06:42:05<br>
+dzVents Version 3.1.11<br>
+Python Version 3.11.2 (main, Apr 28 2025, 14:11:48) [GCC 12.2.0]</p><p> 2 - How to find domoticz log file</p><p> I switched from the deprecated mean to create domoticz service using the /etc/init.d/domoticz.sh file to the preferred one in /etc/systemd/system/domoticz.service.</p><p> Previously i recorded domoticz messages in "/var/log/domoticz.log" by setting in domoticz.sh file the line:<br> DAEMON_ARGS="$DAEMON_ARGS -log /var/log/domoticz.log"</p><p> Now when using /etc/systemd/system/domoticz.service I see the domoticz messages in domoticz UI but I am not able to find in which file they are stored. I also would like to define the file name supporting these messages.</p><p> I would be grateful if someone could help me or give me a hint.</p><p> BR</p></div> <p>meal</p> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=873b8e48a0b65025db732c2e22da576d"><img src="https://forum.domoticz.com/download/file.php?avatar=23529_1625057022.jpg" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=873b8e48a0b65025db732c2e22da576d">waltervl</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=23529&amp;sr=posts&amp;sid=873b8e48a0b65025db732c2e22da576d">6693</a></dd> <dd><strong>Joined:</strong> Monday 28 January 2019 18:48</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> 2025.1</dd> <dd><strong>Location:</strong> NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331822&amp;sid=873b8e48a0b65025db732c2e22da576d#p331822">Re: How to find domoticz log file</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331822&amp;sid=873b8e48a0b65025db732c2e22da576d#p331822"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=873b8e48a0b65025db732c2e22da576d">waltervl</a></strong> » </span><time>Thursday 26 February 2026 10:40</time> </p> <div><p>It should be defined in the EnvironmentFile (eg /home/pi/domoticz.env)<br>
+See <a href="https://wiki.domoticz.com/Linux#Option_2:_Systemd_Alternative_%28Preferred%29">https://wiki.domoticz.com/Linux#Option_ ... Preferred)</a></p><p> the location of the environment file is set in the systemd configuration file eg <br>
+/etc/systemd/system/domoticz.service</p></div> <p>Domoticz running on Udoo X86 (on Ubuntu) <br>
+Devices/plugins: ZigbeeforDomoticz (with Xiaomi, Ikea, Tuya devices), Nefit Easy, Midea Airco, Omnik Solar, Goodwe Solar</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=24014&amp;sid=873b8e48a0b65025db732c2e22da576d">meal</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=24014&amp;sr=posts&amp;sid=873b8e48a0b65025db732c2e22da576d">117</a></dd> <dd><strong>Joined:</strong> Monday 04 March 2019 14:59</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> 2025.2</dd> <dd><strong>Location:</strong> France</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331823&amp;sid=873b8e48a0b65025db732c2e22da576d#p331823">Re: How to find domoticz log file</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331823&amp;sid=873b8e48a0b65025db732c2e22da576d#p331823"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=24014&amp;sid=873b8e48a0b65025db732c2e22da576d">meal</a></strong> » </span><time>Thursday 26 February 2026 11:00</time> </p> <div><p>@waltervl</p><p> Many thanks for the information.<br>
+To be more precise if I want to store the domoticz messages in /tmp/domoticz.log what do I have to set in /home/pi/domoticz.env file ?</p></div> <p>meal</p> </div> </div> <div> <dl> <dt> <p><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=873b8e48a0b65025db732c2e22da576d"><img src="https://forum.domoticz.com/download/file.php?avatar=23529_1625057022.jpg" alt="User avatar"></a> </p> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=873b8e48a0b65025db732c2e22da576d">waltervl</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=23529&amp;sr=posts&amp;sid=873b8e48a0b65025db732c2e22da576d">6693</a></dd> <dd><strong>Joined:</strong> Monday 28 January 2019 18:48</dd> <dd><strong>Target OS:</strong> Linux</dd> <dd><strong>Domoticz version:</strong> 2025.1</dd> <dd><strong>Location:</strong> NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331829&amp;sid=873b8e48a0b65025db732c2e22da576d#p331829">Re: How to find domoticz log file</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331829&amp;sid=873b8e48a0b65025db732c2e22da576d#p331829"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=23529&amp;sid=873b8e48a0b65025db732c2e22da576d">waltervl</a></strong> » </span><time>Thursday 26 February 2026 16:01</time> </p> <div><p>Seems I was wrong according AI:</p><p> To set the Domoticz log file using a systemd service configuration, you must modify the ExecStart directive within the service unit file to include the -log command-line parameter. <br>
+1. Locate the Service File<br>
+The Domoticz systemd service file is typically located at:<br>
+/etc/systemd/system/domoticz.service </p><p> 2. Configure the Log File Path <br>
+Edit the file using a text editor like nano:
+</p><div><p>Code: <a href="#">Select all</a></p><pre><code>sudo nano /etc/systemd/system/domoticz.service </code></pre></div><p>
+Find the ExecStart line and append the -log and -loglevel parameters. For example:<br>
+ini
+</p><div><p>Code: <a href="#">Select all</a></p><pre><code>[Service]
+ExecStart=/home/pi/domoticz/domoticz -www 8080 -log /var/log/domoticz.log -loglevel normal,status,error</code></pre></div><p>
+-log &lt;path&gt;: Specifies the full path to the log file.<br>
+-loglevel &lt;levels&gt;: Sets the verbosity (e.g., normal,status,error,debug). </p><p> 3. Set Permissions (not sure this is needed)<br>
+Ensure the directory where the log will be stored exists and that the user running Domoticz (often pi or domoticz) has write permissions to it:
+</p><div><p>Code: <a href="#">Select all</a></p><pre><code>sudo touch /var/log/domoticz.log
+sudo chown pi:pi /var/log/domoticz.log </code></pre></div><p> 4. Apply Changes<br>
+Reload the systemd manager configuration and restart the service: <br>
+Reload daemon: </p><p>
+Restart service: </p><div><p>Code: <a href="#">Select all</a></p><pre><code>sudo systemctl restart domoticz.service</code></pre></div></div> <p>Domoticz running on Udoo X86 (on Ubuntu) <br>
+Devices/plugins: ZigbeeforDomoticz (with Xiaomi, Ikea, Tuya devices), Nefit Easy, Midea Airco, Omnik Solar, Goodwe Solar</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6686&amp;sid=873b8e48a0b65025db732c2e22da576d">Doler</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=6686&amp;sr=posts&amp;sid=873b8e48a0b65025db732c2e22da576d">169</a></dd> <dd><strong>Joined:</strong> Friday 31 July 2015 21:02</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd><strong>Location:</strong> Sint-Oedenrode, Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331838&amp;sid=873b8e48a0b65025db732c2e22da576d#p331838">Re: How to find domoticz log file</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331838&amp;sid=873b8e48a0b65025db732c2e22da576d#p331838"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6686&amp;sid=873b8e48a0b65025db732c2e22da576d">Doler</a></strong> » </span><time>Friday 27 February 2026 13:49</time> </p> <div><p>@waltervi:<br>
+Should logrotate not be adapted to the use of systemd? I'm now using </p><div><p>Code: <a href="#">Select all</a></p><pre><code>/var/log/domoticz.log { missingok daily rotate 7 compress delaycompress notifempty postrotate if [ -x /usr/sbin/invoke-rc.d ]; then \ invoke-rc.d domoticz.sh reload &gt; /dev/null; \ else \ /etc/init.d/domoticz.sh reload &gt; /dev/null; \ fi endscript
+}
+</code></pre></div><p> in /etc/logrotate.d. This refers to (now non-existing) /etc/init.d/domoticz.sh as start for the service.<br>
+How to change?</p></div> <p>Mark: Domoticz latest Beta on Virtual machine (Proxmox) running Debian Trixie - Z-Stick 7 - RFXCom - P1 - SolarEdge - Dahua - Philips Hue - Docker - Zigbee2mqtt (latest, docker) via python plugin - Zwave-js-ui (latest, docker) - dzVents - Nodered</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=873b8e48a0b65025db732c2e22da576d">Kedi</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=38786&amp;sr=posts&amp;sid=873b8e48a0b65025db732c2e22da576d">597</a></dd> <dd><strong>Joined:</strong> Monday 20 March 2023 14:41</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> </dd> <dd><strong>Location:</strong> Somewhere in NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331844&amp;sid=873b8e48a0b65025db732c2e22da576d#p331844">Re: How to find domoticz log file</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331844&amp;sid=873b8e48a0b65025db732c2e22da576d#p331844"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=873b8e48a0b65025db732c2e22da576d">Kedi</a></strong> » </span><time>Friday 27 February 2026 15:28</time> </p> <div><p>I added to the system unit file:
+</p><div><p>Code: <a href="#">Select all</a></p><pre><code>ExecReload=/bin/kill -HUP $MAINPID</code></pre></div><p>
+Now this command will work in the logrotate file
+</p><div><p>Code: <a href="#">Select all</a></p><pre><code> postrotate sudo systemctl reload domoticz.service endscript
+</code></pre></div><p>
+At least with the latest beta's. I am running 17252</p></div> <p>Logic will get you from A to B. Imagination will take you everywhere.</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=873b8e48a0b65025db732c2e22da576d">Kedi</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=38786&amp;sr=posts&amp;sid=873b8e48a0b65025db732c2e22da576d">597</a></dd> <dd><strong>Joined:</strong> Monday 20 March 2023 14:41</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> </dd> <dd><strong>Location:</strong> Somewhere in NL</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331847&amp;sid=873b8e48a0b65025db732c2e22da576d#p331847">Re: How to find domoticz log file</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331847&amp;sid=873b8e48a0b65025db732c2e22da576d#p331847"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=38786&amp;sid=873b8e48a0b65025db732c2e22da576d">Kedi</a></strong> » </span><time>Friday 27 February 2026 19:07</time> </p> <p>I was wrong with the "kill -HUP" solution, it stops domoticz, my monit started then domoticz again.<br>
+This solution is not yet present in version 17252.</p> <p>Logic will get you from A to B. Imagination will take you everywhere.</p> </div> </div> <div> <dl> <dt> <a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6686&amp;sid=873b8e48a0b65025db732c2e22da576d">Doler</a> </dt> <dd><strong>Posts:</strong> <a href="https://forum.domoticz.com/search.php?author_id=6686&amp;sr=posts&amp;sid=873b8e48a0b65025db732c2e22da576d">169</a></dd> <dd><strong>Joined:</strong> Friday 31 July 2015 21:02</dd> <dd><strong>Target OS:</strong> Raspberry Pi / ODroid</dd> <dd><strong>Domoticz version:</strong> Beta</dd> <dd><strong>Location:</strong> Sint-Oedenrode, Netherlands</dd> <dd> <strong>Contact:</strong> </dd> </dl> <div> <h3> <a href="https://forum.domoticz.com/viewtopic.php?p=331854&amp;sid=873b8e48a0b65025db732c2e22da576d#p331854">Re: How to find domoticz log file</a> </h3> <p> <a href="https://forum.domoticz.com/viewtopic.php?p=331854&amp;sid=873b8e48a0b65025db732c2e22da576d#p331854"> <span>Post</span> </a> <span>by <strong><a href="https://forum.domoticz.com/memberlist.php?mode=viewprofile&amp;u=6686&amp;sid=873b8e48a0b65025db732c2e22da576d">Doler</a></strong> » </span><time>Saturday 28 February 2026 13:50</time> </p> <div><p>My test system is on beta 17277 and the system file already has the "kill-HUP". I adapted the logrotate file according your suggestion but I cannot test since nothing is written to the log although it should according the execstart in the system unit file: </p><div><p>Code: <a href="#">Select all</a></p><pre><code>[Unit]
+Description=Domoticz Home Automation System
+Documentation=https://www.domoticz.com/wiki
+After=network-online.target time-sync.target
+Wants=network-online.target [Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/domoticz
+ExecStart=/home/pi/domoticz/domoticz -www 8080 -sslwww 443 -log /var/log/domoticz.log -loglevel normal,status,error
+ExecReload=/bin/kill -HUP $MAINPID
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW
+Restart=on-failure
+RestartSec=5 [Install]
+WantedBy=multi-user.target
+</code></pre></div><p> In another topic (<a href="https://forum.domoticz.com/viewtopic.php?f=6&amp;t=44419&amp;sid=cb11b85db08b7b46ef4fa3b676e161fd">viewtopic.php?f=6&amp;t=44419&amp;sid=cb11b85db ... b676e161fd</a>) it was suggested to adapt the monit configuration to the new systemd use.</p></div> <p>Mark: Domoticz latest Beta on Virtual machine (Proxmox) running Debian Trixie - Z-Stick 7 - RFXCom - P1 - SolarEdge - Dahua - Philips Hue - Docker - Zigbee2mqtt (latest, docker) via python plugin - Zwave-js-ui (latest, docker) - dzVents - Nodered</p> </div> </div> <div> <h3><a href="https://forum.domoticz.com/viewonline.php?sid=873b8e48a0b65025db732c2e22da576d">Who is online</a></h3> <p>Users browsing this forum: No registered users and 0 guests</p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

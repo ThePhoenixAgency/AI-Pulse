@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>[Project] A Garlic Farmer's garlic-agent: Inspired by OpenClaw, Built on Android Termux with 6K Documents</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>[Project] A Garlic Farmer's garlic-agent: Inspired by OpenClaw, Built on Android Termux with 6K Documents</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 11:45:28 PM | <a href="https://dev.to/c_ckp_3d3e45d77ceafe05823/project-project-a-garlic-farmers-garlic-agent-inspired-by-openclaw-built-on-android-termux-4009" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <div> <p><a href="https://dev.to/c_ckp_3d3e45d77ceafe05823"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3766729%2Fa8676abf-665c-4e10-92dd-5e6ab8236d40.jpg" alt="c ck"></a> </p> </div> </header> <div>
+<pre><code>This document was created with the assistance of garlic-agent RAG (just built) and in collaboration with Claude Opus 4.6 Local RAG for 6K Korean documents running on Android Termux Table of Contents
+1. Project Overview
+2. System Environment
+3. Project Structure
+4. Construction Process (Chronological Order)
+5. RAG System Details
+6. Search System (FTS5 + Vector)
+7. Automation Features
+8. GarlicLang Integration
+9. Web UI
+10. Current System Status
+11. Recovery Method
+12. Backup File List
+13. Future Improvement Direction 1. Project Overview garlic-agent is a lightweight AI agent that can search, analyze, and autonomously execute approximately 6,000 documents (approximately 6.9G) of personal materials accumulated over 2 years on Google Drive in a local Android Termux environment based on semantic meaning. For reference, the phone is a Unihertz Titan2. The screen is wide, resembling a BlackBerry Passport, which is nice. I do not have a PC. I completed this task with only a BlackBerry Key2 and several phones with physical keyboards. It was created out of curiosity to replace OpenClaw, and currently uses cheap Chinese DeepSeek as the main API LLM and implements RAG (Retrieval-Augmented Generation) with the nomic-embed local embedding model. Core Philosophy:
+- Rather than writing code directly, complete the project with the ability to make AI do what you want and verify it.
+- Minimize technical jargon, provide in a form that can be executed immediately by copy-paste. This requires tremendous concentration and time flew by 24 hours in an instant... I only did directional judgment and verification.
+- Language is an operating system according to my fundamental belief. Coding is also a language. After talking a lot with AI, I realized that structure was the essence. However, I do not know coding well. Because of that, instead of typing one by one, I prefer a cross-verification method by keeping several companies' different AIs running. Then I also learned that the AIs have consistent context while going through multiple browser windows. And with the remarkable AI development that constantly changes, I find it amazing that such a thing is possible. 2. System Environment | Item | Value |
+|---|---|
+| Device | Android 14, ARM64 |
+| Environment | Termux |
+| Python | 3.12 |
+| Main LLM | DeepSeek (API) |
+| Auxiliary LLM | Cerebras, Groq, Gemini, NVIDIA Kimi |
+| Embedding Model | nomic-embed-text-v1.5.Q4_K_M.gguf (137 MB, 768 dimensions) |
+| Embedding Server | llama.cpp llama-server (port 8081) |
+| Web UI | Python HTTP Server (port 8080) |
+| DB | SQLite3 (knowledge.db) | 3. Project Structure ~/garlic-agent/
+├── agent.py # Main agent (687 lines)
+├── web.py # Web UI server (Flask-like HTTP)
+├── search.py # Hybrid RAG search (FTS5 + vector)
+├── tools.py # 6 tools (read/exec/write/patch/search/garlic)
+├── security.py # Security settings (exec_timeout: 30s)
+├── config.json # Configuration (max_loops: 30)
+├── knowledge.db # SQLite DB (177 MB, 6,159 docs)
+├── agent.html # Web UI frontend
+├── build_rag.py # RAG embedding generation (initial version)
+├── build_rag2.py # RAG embedding generation (NULL only processing)
+├── write_rag_doc.py # RAG_BUILD.md generation script
+├── RAG_BUILD.md # RAG construction record (275 lines)
+├── COMPLETE_BUILD.md # Complete construction record
+├── SOUL.md # Agent identity/philosophy/principles
+├── TOOLS.md # Tool usage
+├── USER.md # User profile
+├── MEMORY.md # Memory storage
+├── HEARTBEAT.md # Status check
+├── KNOWN_ISSUES.md # Known issues
+├── VERSION.md # Version history
+├── HANDOVER.md # Handover document
+├── HANDOVER_QA_20260218.md
+├── REPORT_v20.3.md
+├── GARLICLANG_SPEC.md # GarlicLang specification
+├── scripts/ # GarlicLang scripts (.gl) 42 pieces
+├── security/ # Security related
+├── static/ # marked.min.js etc.
+├── memory/ # Memory by date (2026-02-17~19.md)
+└── garliclang_full/ # GarlicLang v20.x complete project ├── MASTER_DOC.md ├── WORKFLOW.md ├── PROJECT_STATUS.md ├── BRIEFING.md ├── NVIDIA_KIMI_GUIDE.md └── ... ~/.openclaw/extensions/kimi-claw/llama.cpp/build/bin/
+├── llama-server # Embedding server binary
+└── nomic-embed.gguf # Embedding model (137 MB) 4. Construction Process (Chronological Order) v1.5.0 — Basic Agent Complete (2026-02-17) I converted approximately 6,000 documents from Google Drive Takeout to SQLite knowledge.db. The table structure is id, filename, folder, content, length, and the initial number of documents was 5,879 (38MB). Basic search was a SQLite LIKE '%keyword%' method. Problems were inability to search based on meaning, slow speed, and inability to perform complex AND/OR searches. Six tools were implemented: tool:read, tool:exec, tool:write, tool:patch, tool:search, tool:garlic. v1.5.1 — HUD Added (2026-02-18) Real-time system HUD was added to the web UI. Measure CPU with /proc/stat, display MEM/SWP/DSK, web.py /hud endpoint, max_loops increased to 20. v1.5.2 — RAG Integration Complete (2026-02-19) Detailed explanation in sections 5~9 below. 5. RAG System Details 5-1. Methods Attempted (Failure) | Method | Result | Reason |
+|---|---|---|
+| sentence-transformers | | No ARM64 GPU, excessive package size |
+| DeepSeek Embedding API | | 404 error |
+| Gemini API embedding | | Cannot send personal materials externally | 5-2. Final Choice: llama.cpp + nomic-embed Start embedding server
+~/.openclaw/extensions/kimi-claw/llama.cpp/build/bin/llama-server \ -m ~/.openclaw/extensions/kimi-claw/llama.cpp/build/bin/nomic-embed.gguf \ --embeddings --port 8081 -np 4 | Item | Value |
+|---|---|
+| Model | nomic-embed-text-v1.5.Q4_K_M.gguf |
+| Size | 137 MB |
+| Dimension | 768 |
+| Quantization | Q4_K_M |
+| Server Port | 8081 |
+| Processing Speed | ~0.68 seconds/document | 5-3. DB Schema Change ALTER TABLE docs ADD COLUMN embedding BLOB;
+-- 768 float32 = 3,072 bytes per document 5-4. Embedding Generation (build_rag2.py) By processing only documents where embedding IS NULL, I completed 5,858 in approximately 67 minutes (approximately 0.68 seconds/document). Acquire embedding via POST request and store BLOB with struct.pack. Embedding request example:
+payload = json.dumps({"content": text[:2000]}).encode()
+req = urllib.request.Request("http://127.0.0.1:8081/embedding", data=payload) 6. Search System (3-Stage Hybrid) search.py performs 3-stage search. 1st Priority — FTS5 Full-Text Search
+CREATE VIRTUAL TABLE IF NOT EXISTS docs_fts
+USING fts5(filename, folder, content, content='docs', content_rowid='id');
+INSERT INTO docs_fts(docs_fts) VALUES('rebuild'); 2nd Priority — Vector Cosine Similarity (RAG)
+def cosine(a, b): dot = sum(x*y for x,y in zip(a,b)) na = sum(xx for x in a)*0.5 nb = sum(xx for x in b)*0.5 return dot/(na*nb) if na and nb else 0 3rd Priority — LIKE Fallback
+SELECT id, filename, folder, length, substr(content,1,300)
+FROM docs WHERE content LIKE ? ORDER BY length DESC LIMIT ? | Item | Value |
+|---|---|
+| FTS5 Weight | 0.5 |
+| Vector Similarity Weight | 0.5 |
+| Keyword Weight | 0.6 |
+| Average Search Time | ~1.7 seconds |
+| DB Size (FTS5 included) | 177 MB (existing 84 MB → 177 MB) | 7. Automation Features 7-1. tool:write Auto Indexing Added _auto_index() function to tools.py. When file is saved with tool:write, it automatically registers in knowledge.db and creates embedding. def _auto_index(path, content):
+Generate embedding only when llama-server is running
+INSERT or UPDATE in knowledge.db docs table
+Automatically save embedding BLOB Test: Saved test_auto_index.md → Confirmed immediate registration with ID 6154 7-2. Backup Script ~/garlic-agent/scripts/backup.sh
+bash ~/garlic-agent/scripts/backup.sh Execution: tar creation → Download copy → Auto media scan 7-3. webstart Alias Registered in ~/.bashrc
+webstart # = cd ~/garlic-agent &amp;&amp; python3 web.py 7-4. Browser Timeout (agent.html) var ctrl = new AbortController();
+var tid = setTimeout(function(){ ctrl.abort(); }, 600000); // 10 minutes
+fetch("/chat", { signal: ctrl.signal, ... }) .then(...) .finally(function(){ clearTimeout(tid); }); 8. GarlicLang Integration GarlicLang v20.x is a Korean-based AI scripting language. It uses .gl extension and is executed with tool:garlic. Example GarlicLang Script (test_hello.gl)
+[File Write] test_hello.py
+print("Hello GarlicLang")
+[/File Write]
+[Execute] python3 test_hello.py [/Execute]
+[Verify] Output contains "Hello GarlicLang" [/Verify]
+[Output] Verification result [/Output] - Script location: ~/garlic-agent/scripts/ (42 .gl files)
+- GarlicLang complete project: ~/garlic-agent/garliclang_full/
+- knowledge.db contains 94 or more GarlicLang-related documents
+- .gl files 140 pieces exist in home directory 9. Web UI - URL: http://127.0.0.1:8080?token=garlic2026
+- Markdown rendering: marked.js (CDN + static fallback)
+- Clipboard button: Response copy function
+- Model selection: DeepSeek / Cerebras / Groq / Gemini / NVIDIA
+- HUD: Real-time MEM/SWP/DSK display on top of screen
+- SSE streaming: Real-time response output 10. Current System Status (2026-02-19 Final) | Item | Value |
+|---|---|
+| Version | garlic-agent v1.5.2 |
+| Total Documents | 6,159 pieces |
+| Embedding Complete | 5,858 pieces (remainder are newly added) |
+| DB Size | 177 MB (FTS5 included) |
+| FTS5 Index | docs_fts virtual table |
+| Auto Indexing | Automatic on tool:write save |
+| agent.py | 687 lines |
+| max_loops | 30 |
+| Search Speed | ~1.7 seconds |
+| Embedding Model | nomic-embed-text-v1.5 (137 MB, 768 dimensions) |
+| Distribution | garlic-agent-v1.5.2.tar.gz (150 KB, excluding DB) | Currently not considering distribution. Honestly I do not know how to use GitHub and do not want to know. Several AI opinions say this is good, so I am doing it this way. I do not know the details. I only know what content is in it. 11. Recovery Method Recovery order when new phone/reinstall Step 1 — Termux installation and basic environment setup
+pkg update &amp;&amp; pkg upgrade
+pkg install python sqlite git
+pip install requests flask Step 2 — Code Recovery
+Recover from Download folder
+cp /storage/emulated/0/Download/garlic-agent-v1.5.2.tar.gz ~/
+cd ~ &amp;&amp; tar xzf garlic-agent-v1.5.2.tar.gz Step 3 — DB Recovery
+cp /storage/emulated/0/Download/knowledge.db ~/garlic-agent/knowledge.db Step 4 — Embedding Server Installation (Optional)
+- Download nomic-embed.gguf (137 MB) from Google Drive
+- Build llama.cpp or restore binary
+- Start server:
+~/.openclaw/.../llama-server -m nomic-embed.gguf --embeddings --port 8081 -np 4 Step 5 — Start Agent
+cd ~/garlic-agent &amp;&amp; python3 web.py Or if registered in ~/.bashrc:
+webstart Step 6 — Browser Access
+http://127.0.0.1:8080?token=garlic2026 Keyword search (FTS5 + LIKE) works normally even without embedding server. Only vector similarity search is disabled. 12. Backup File List | File | Size | Location | Priority |
+|---|---|---|---|
+| knowledge.db | 177~178 MB | /storage/emulated/0/Download/ | Essential |
+| garlic-agent-v1.5.2.tar.gz | 150 KB | /storage/emulated/0/Download/ | Essential |
+| COMPLETE_BUILD.md | 8.5 KB | /storage/emulated/0/Download/ | Recommended |
+| RAG_BUILD.md | ~10 KB | /storage/emulated/0/Download/ | Recommended |
+| nomic-embed.gguf | 137 MB | Redownloadable from HuggingFace | Optional | Google Drive upload recommended files:
+- knowledge.db — 2 years of accumulated tens of thousands of conversations with AI, 1st refined approximately 6G materials + embedding included, most important
+- garlic-agent-v1.5.2.tar.gz — Complete code (excluding DB)
+- COMPLETE_BUILD.md — This document (including recovery guide) 13. SOUL.md Core Principles (Current) The SOUL.md containing garlic-agent's identity and action principles includes the following. Referenced OpenClaw and plan to add my philosophy as it progresses. Identity: Lightweight autonomous AI agent running on Android Termux. Can access user's 6,159 personal documents. User Background: Currently living as a farmer for 16 years. Previously had experience with mainframe environment, IDC construction/operation during Internet environment changes, mainframes, servers, networks, firewalls, backups, EMC, and various Unix. I devoted myself to agriculture during that time and lived a life where I forgot about PCs.
+I first approached AI out of curiosity and tried to revive some old memories. This is the truth. I have absolutely no lifelong coding experience. However, it seems I see structural system things well. Farmers need observation and meticulousness in growing crops. Currently I give instructions in Korean to AIs, verify, and only make judgments. Looking back, my entire life seems to be a continuous lonely wandering. Now I am thinking of living a different life. AI Kernel 3 Core Principles:
+1. Extreme Realism Principle — Use only verifiable facts, official documents, numerical values. No speculation.
+2. Metacognitive Autonomy — Self-improvement based on feedback. Auto-correction on failure.
+3. Hierarchical Orchestration — Decompose complex tasks step-by-step for processing. Autonomous Execution Rights: All commands executable in Termux including tar, cp, pkill, am broadcast, sed, grep, sqlite3, python3, etc. 14. Known Issues and Solutions | Issue | Cause | Solution |
+|---|---|---|
+| tool:patch 0 patch failure | Patch format mismatch | Use tool:write for full overwrite |
+| SQLite3 result reading mismatch | DeepSeek hallucination | Use Python script to query directly |
+| Browser connection disconnection | AbortController timeout | Set to 600,000ms (10 minutes) |
+| BodyStreamBuffer was aborted | Timeout + clearTimeout missing | clearTimeout added complete |
+| Version display v1.5.0 | agent.py hardcoding | Replaced to v1.5.2 with sed | 15. Future Improvement Direction - Automatic embedding server start/stop: Auto-run llama-server when web.py starts
+- Real-time indexing queue: Generate embedding immediately when file is saved (currently only when server is running)
+- Search result caching: Cache frequently searched query results
+- Feedback-based weighting: Auto-adjust FTS5/vector weights based on user selection
+- Multimodal search: Index image/PDF content
+- agent.py v2: Better context management, multi-turn memory Final Performance Summary $$\text{Total Documents} = 5879(\text{original}) + 274(\text{garliclang}) + n(\text{new}) = 6159$$ $$\text{Embedding Generation Time} \approx 5858 \times 0.68s \approx 67\text{ minutes}$$ $$\text{Search Speed} \approx 1.7s \ (\text{FTS5} + \text{cosine similarity})$$ $$\text{DB Size}: 38MB(\text{original}) \rightarrow 84MB(\text{embedding}) \rightarrow 177MB(\text{FTS5})$$ This document is an incomplete record of garlic-agent v1.5.2 construction process and observation experiment, but when provided to a new AI, the entire context can be immediately grasped. And I dedicate infinite respect and tribute to Steve Jobs, the late person who connected the world with only a phone like this.
+And I also give thanks to Peter Steinberger of OpenClaw who inspired me. It is because of you. Thank you very much. And I seldom post in communities, but non-English speakers struggle with translation. So I can only do translation with AI. And all work processes are done only in Korean, so if moved to English it may seem strange, but please look at it as the observation experiment development of a Korean farmer. I worked very hard for a few days, even saving sleep, but it is a humble result, but on my phone, I feel like I can do whatever I imagine, so it was work that gave me a sense of accomplishment. For the first time in my life, I made a web UI and it works so well that it is good. Now I have confidence that I can do anything with my phone based on my data so far. Also, as I use more than ten different AIs every day watching AI develop dazzlingly, I can feel the difference right away with human-specific intuition. I think this is the experience of tens of thousands of conversations over the past 2 years, and such work development became the motivation for it. Thank you for reading this long article to the end. Written by: Korean Garlic Farmer &amp; opus4.6, 2026-02-19 </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

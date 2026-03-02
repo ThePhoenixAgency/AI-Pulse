@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - dissaozw/claw-drive: Personal file vault skill for OpenClaw — auto-categorize, index, retrieve</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - dissaozw/claw-drive: Personal file vault skill for OpenClaw — auto-categorize, index, retrieve</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/21/2026 9:38:13 PM | <a href="https://github.com/dissaozw/claw-drive" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1> Claw Drive</h1><a href="#-claw-drive"></a></div>
+<p><strong>Google Drive stores your files. Claw Drive understands them.</strong></p>
+<p><a href="https://opensource.org/licenses/MIT"><img src="https://camo.githubusercontent.com/eae27181195ae787828362d9992141457fef77034061abf9587788b6fcac697c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d6666643630613f7374796c653d666c61742d737175617265" alt="License: MIT"></a>
+<a href="https://www.apple.com/macos/"><img src="https://camo.githubusercontent.com/fce492c4903fe29f232f8de350b95f6663c25472f21314d6d75c860043532bbc/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d61634f532d737570706f727465642d3030373864373f6c6f676f3d6170706c65266c6f676f436f6c6f723d7768697465267374796c653d666c61742d737175617265" alt="macOS"></a>
+<a href="https://www.gnu.org/software/bash/"><img src="https://camo.githubusercontent.com/1e014b7595f9ac159168ee5f40ae48a17920e0a0cbe3b4de794628f391353ef2/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5368656c6c2d626173682d3445414132353f6c6f676f3d676e7562617368266c6f676f436f6c6f723d7768697465267374796c653d666c61742d737175617265" alt="Shell"></a>
+<a href="https://github.com/dissaozw/claw-drive/actions/workflows/ci.yml"><img src="https://github.com/dissaozw/claw-drive/actions/workflows/ci.yml/badge.svg" alt="CI"></a></p>
+<p> <a target="_blank" href="/dissaozw/claw-drive/blob/main/assets/demo-before.png"><img src="/dissaozw/claw-drive/raw/main/assets/demo-before.png" alt="Before: navigating 7 layers of folders"></a> <br><em> Before — 7 layers deep, 3 "final" versions</em>
+</p>
+<p> <a target="_blank" href="/dissaozw/claw-drive/blob/main/assets/demo-after.png"><img src="/dissaozw/claw-drive/raw/main/assets/demo-after.png" alt="After: one message in Telegram, file returned instantly"></a> <br><em> After — one sentence, file in hand</em>
+</p>
+<p>Claw Drive is an AI-managed personal drive. It auto-categorizes your files, tags them for cross-cutting search, deduplicates by content, and retrieves them in natural language — all backed by Google Drive for cloud sync and security.</p>
+<p><strong>Privacy is not a feature — it's the foundation.</strong> Your agent never reads file contents without asking. If you don't respond, it defaults to private. Sensitive categories like </p><pre><code>identity/</code></pre> are never read, never synced. Your data stays yours.<p></p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li> <strong>Auto-categorize</strong> — files sorted into the right folder without you thinking about it</li>
+<li> <strong>Smart tagging</strong> — cross-category search (a vet invoice is both <pre><code>medical</code></pre> and <pre><code>invoice</code></pre>)</li>
+<li> <strong>Natural language retrieval</strong> — "find my cat's vet records" just works</li>
+<li> <strong>Content-aware dedup</strong> — SHA-256 hash check prevents storing the same file twice</li>
+<li> <strong>Google Drive sync</strong> — optional real-time backup via fswatch + rclone</li>
+<li> <strong>Privacy-first</strong> — local-first by default, sensitive categories excluded from sync, default-safe content handling</li>
+<li> <strong>Sensitive file protection</strong> — agent asks before reading contents; defaults to private if no reply</li>
+<li> <strong>AI-native</strong> — designed for <a href="https://github.com/openclaw/openclaw">OpenClaw</a> agents, with a CLI under the hood</li>
+</ul>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><h3>As an OpenClaw Skill</h3><a href="#as-an-openclaw-skill"></a></div>
+<p>Clone into your OpenClaw skills directory — OpenClaw picks it up automatically on the next session:</p>
+<div><pre>git clone https://github.com/dissaozw/claw-drive.git <span>~</span>/.openclaw/skills/claw-drive</pre></div>
+<p>Then install the CLI and initialize:</p>
+<div><pre><span>cd</span> <span>~</span>/.openclaw/skills/claw-drive
+make install <span><span>#</span> symlinks claw-drive to /usr/local/bin (or PREFIX=~/.local make install)</span>
+claw-drive init</pre></div>
+<p>That's it. Your agent will see the skill and can start storing files immediately.</p>
+<blockquote>
+<p><strong>Updating:</strong> </p><pre><code>cd ~/.openclaw/skills/claw-drive &amp;&amp; git pull</code></pre><p></p>
+</blockquote>
+<div><h3>Optional: Google Drive Sync</h3><a href="#optional-google-drive-sync"></a></div>
+<div><pre>brew install rclone fswatch <span><span>#</span> sync dependencies</span>
+claw-drive sync auth <span><span>#</span> one-time — opens browser for Google auth</span>
+claw-drive sync start <span><span>#</span> start background sync daemon</span></pre></div>
+<div><h3>Optional: PDF Extraction</h3><a href="#optional-pdf-extraction"></a></div>
+<p>PDF content extraction uses <a href="https://pymupdf.readthedocs.io/">PyMuPDF</a> via </p><pre><code>uv</code></pre> — no global install needed. It runs automatically when the agent stores a PDF with content reading enabled.<p></p>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<p>Claw Drive is designed to be used through your AI agent. You don't organize files — your agent does.</p>
+<div><h3>Storing files</h3><a href="#storing-files"></a></div>
+<p>Send a file to your agent (Telegram, email, etc.) and it handles everything:</p>
+<ol>
+<li><strong>Asks about privacy</strong> — "Should I read the contents, or keep it private?"</li>
+<li><strong>Extracts content</strong> (if permitted) — reads PDFs, images, docs to pull out key details</li>
+<li><strong>Categorizes</strong> the file into the right folder</li>
+<li><strong>Names</strong> it with a descriptive, date-stamped filename</li>
+<li><strong>Checks for duplicates</strong> by content hash</li>
+<li><strong>Tags</strong> it for cross-category search with specific identifiers</li>
+<li><strong>Indexes</strong> it in INDEX.jsonl with a rich, searchable description</li>
+<li><strong>Reports</strong> back what it did</li>
+</ol>
+<blockquote>
+<p> <em>"Here's my auto insurance card"</em></p>
+<p> <em>"Should I read the contents to index it better, or keep it private?"</em></p>
+<p> <em>"Go ahead"</em></p>
+<p> Stored: </p><pre><code>insurance/acme-auto-id-cards.pdf</code></pre>
+Policy ****3441 · 2024 Honda Civic · Effective 1/21/2026–7/21/2026
+Tags: insurance, auto, acme, honda-civic, california<p></p>
+</blockquote>
+<p>If you don't reply or say it's sensitive, the agent classifies by filename only and asks for a brief description if needed. Your data is never read without consent.</p>
+<div><h3>Retrieving files</h3><a href="#retrieving-files"></a></div>
+<p>Just ask in natural language:</p>
+<blockquote>
+<pre><code>"Find my cat's medical records"
+"Show me all invoices from January"
+"Do I have a copy of my W-2?"</code></pre>
+</blockquote>
+<p>The agent reads INDEX.jsonl directly — its semantic understanding beats any grep. It finds files by meaning, not string matching.</p>
+<div><h3>What you never have to do</h3><a href="#what-you-never-have-to-do"></a></div>
+<ul>
+<li>Pick a folder</li>
+<li>Think of a filename</li>
+<li>Remember where you put something</li>
+<li>Manually organize anything</li>
+</ul>
+<div><h2>CLI Reference</h2><a href="#cli-reference"></a></div>
+<p>The CLI handles <strong>write operations</strong> — store, sync, migrate — where atomicity matters (dedup + index updates). For <strong>read operations</strong> (search, list, tags), the agent reads INDEX.jsonl directly.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>claw-drive init</code></pre></td>
+<td>Initialize drive directory and INDEX.jsonl</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive store &lt;file&gt; [opts]</code></pre></td>
+<td>Store a file with categorization, tags, dedup, and optional rename (<pre><code>--name</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive update &lt;path&gt; [opts]</code></pre></td>
+<td>Update description and/or tags on an existing entry</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive delete &lt;path&gt; [--force]</code></pre></td>
+<td>Delete a file, its index entry, and dedup hash</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive rm &lt;path&gt; [--force]</code></pre></td>
+<td>Alias for <pre><code>delete</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>claw-drive status</code></pre></td>
+<td>Show drive status (files, size, sync)</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive sync auth</code></pre></td>
+<td>Authorize Google Drive (one-time, opens browser)</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive sync setup</code></pre></td>
+<td>Check sync dependencies and config</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive sync start</code></pre></td>
+<td>Start background sync daemon</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive sync stop</code></pre></td>
+<td>Stop sync daemon</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive sync push</code></pre></td>
+<td>Manual one-shot sync</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive sync status</code></pre></td>
+<td>Show sync daemon state</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive migrate scan &lt;dir&gt; [plan.json]</code></pre></td>
+<td>Scan a directory into a migration plan</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive migrate summary [plan.json]</code></pre></td>
+<td>Show migration plan breakdown</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive migrate apply [plan.json] [--dry-run]</code></pre></td>
+<td>Execute migration plan</td>
+</tr>
+<tr>
+<td><pre><code>claw-drive version</code></pre></td>
+<td>Show version</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Sync</h2><a href="#sync"></a></div>
+<p>Optional real-time sync to Google Drive (or any rclone backend). Files sync within seconds of any change. Sensitive directories stay local-only.</p>
+<p>See <a href="/dissaozw/claw-drive/blob/main/docs/sync.md">docs/sync.md</a> for details.</p>
+<div><h2>Migration</h2><a href="#migration"></a></div>
+<p>Got a messy folder full of unsorted files? Claw Drive's migration workflow handles it:</p>
+<div><pre><span><span>#</span> 1. Scan the source directory</span>
+claw-drive migrate scan <span>~</span>/messy-folder migration-plan.json <span><span>#</span> 2. AI agent classifies each file (fills in category, name, tags, description)</span> <span><span>#</span> 3. Review the plan</span>
+claw-drive migrate summary migration-plan.json <span><span>#</span> 4. Dry run first</span>
+claw-drive migrate apply migration-plan.json --dry-run <span><span>#</span> 5. Execute</span>
+claw-drive migrate apply migration-plan.json</pre></div>
+<p>The scan outputs a JSON plan with file metadata (path, size, mime type, extension). The agent fills in classification fields, then </p><pre><code>apply</code></pre> copies files into Claw Drive with full dedup, indexing, and tagging.<p></p>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>You ← natural language → AI Agent (OpenClaw) │ claw-drive CLI │ ~/claw-drive/ ← local, source of truth │ fswatch + rclone ← optional real-time sync │ Google Drive ← cloud backup
+</code></pre></div>
+<div><h2>Categories</h2><a href="#categories"></a></div>
+<p>Categories are open-ended — agents create new ones as needed. These are the defaults:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Use for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>documents/</code></pre></td>
+<td>General docs, letters, forms, manuals</td>
+</tr>
+<tr>
+<td><pre><code>finance/</code></pre></td>
+<td>Tax returns, bank statements, pay stubs</td>
+</tr>
+<tr>
+<td><pre><code>insurance/</code></pre></td>
+<td>Policies, ID cards, claims, coverage docs</td>
+</tr>
+<tr>
+<td><pre><code>medical/</code></pre></td>
+<td>Health records, prescriptions, pet health</td>
+</tr>
+<tr>
+<td><pre><code>travel/</code></pre></td>
+<td>Boarding passes, itineraries, visas</td>
+</tr>
+<tr>
+<td><pre><code>identity/</code></pre></td>
+<td>ID scans, certificates ( sensitive — excluded from sync)</td>
+</tr>
+<tr>
+<td><pre><code>receipts/</code></pre></td>
+<td>Purchase receipts, warranties, invoices</td>
+</tr>
+<tr>
+<td><pre><code>contracts/</code></pre></td>
+<td>Leases, employment, legal agreements</td>
+</tr>
+<tr>
+<td><pre><code>photos/</code></pre></td>
+<td>Personal photos, document scans</td>
+</tr>
+<tr>
+<td><pre><code>misc/</code></pre></td>
+<td>Anything that doesn't fit above</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Privacy &amp; Security</h2><a href="#privacy--security"></a></div>
+<p><strong>Claw Drive treats your files as personal data by default.</strong> This isn't an afterthought — it's a core design decision.</p>
+<div><h3>The Problem</h3><a href="#the-problem"></a></div>
+<p>AI agents that read your files put those contents into conversation transcripts — which are logged permanently. A "helpful" agent that reads your passport scan, tax return, or medical record has now copied that data into a </p><pre><code>.jsonl</code></pre> log file. That's a leak, not a feature.<p></p>
+<div><h3>The Solution</h3><a href="#the-solution"></a></div>
+<p>Claw Drive's agent <strong>always asks before reading</strong>. And if you don't answer, it assumes the answer is no.</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User says "go ahead"</td>
+<td>Full content extraction → rich description + specific tags</td>
+</tr>
+<tr>
+<td>User says "keep it private"</td>
+<td>Filename-only classification, asks for brief description</td>
+</tr>
+<tr>
+<td><strong>User doesn't reply</strong></td>
+<td><strong>Defaults to sensitive</strong> — no content reading</td>
+</tr>
+<tr>
+<td><strong>File goes to <pre><code>identity/</code></pre></strong></td>
+<td><strong>Always sensitive</strong> — contents never read, never synced</td>
+</tr>
+</tbody>
+</table>
+<div><h3>What "sensitive" means in practice</h3><a href="#what-sensitive-means-in-practice"></a></div>
+<ul>
+<li>File contents are <strong>never read</strong> by the agent</li>
+<li>Classification uses <strong>filename and user input only</strong></li>
+<li>INDEX.jsonl descriptions are kept <strong>generic</strong> (no SSNs, account numbers, etc.)</li>
+<li><pre><code>identity/</code></pre> is <strong>excluded from cloud sync</strong> by default</li>
+<li>The file is still stored, hashed (for dedup), tagged, and indexed — just without content extraction</li>
+</ul>
+<div><h3>Defense in depth</h3><a href="#defense-in-depth"></a></div>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Protection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consent</td>
+<td>Agent asks before reading any file</td>
+</tr>
+<tr>
+<td>Default-safe</td>
+<td>No reply = sensitive</td>
+</tr>
+<tr>
+<td>Category rules</td>
+<td><pre><code>identity/</code></pre> always sensitive, excluded from sync</td>
+</tr>
+<tr>
+<td>Sync exclusion</td>
+<td><pre><code>.sync-config</code></pre> exclude list for any category</td>
+</tr>
+<tr>
+<td>Index hygiene</td>
+<td>No raw sensitive data in descriptions</td>
+</tr>
+<tr>
+<td>Local-first</td>
+<td>Cloud sync is optional, not default</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Documentation</h2><a href="#documentation"></a></div>
+<ul>
+<li><a href="/dissaozw/claw-drive/blob/main/docs/tags.md">Tags</a> — tagging guidelines and examples</li>
+<li><a href="/dissaozw/claw-drive/blob/main/docs/sync.md">Sync</a> — Google Drive sync setup and daemon</li>
+<li><a href="/dissaozw/claw-drive/blob/main/docs/security.md">Security</a> — threat model and privacy controls</li>
+</ul>
+<div><h2>Roadmap</h2><a href="#roadmap"></a></div>
+<ul>
+<li> <pre><code>update</code></pre> command — modify description/tags on existing entries</li>
+<li> <pre><code>delete</code></pre> command — remove files with atomic index cleanup</li>
+<li> <pre><code>verify --fix</code></pre> — self-healing integrity checks</li>
+<li> Watch folder ingestion (auto-import from Downloads)</li>
+<li> Encrypted storage for sensitive categories</li>
+<li> Linux support (inotifywait + systemd)</li>
+<li> Web dashboard for browsing and search</li>
+<li> Homebrew tap distribution</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/dissaozw/claw-drive/blob/main/LICENSE">MIT</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - sdrshnptl/notifybuildresult</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - sdrshnptl/notifybuildresult</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 6:32:03 PM | <a href="https://github.com/sdrshnptl/notifybuildresult" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>notifybuildresult</h1><a href="#notifybuildresult"></a></div>
+<blockquote>
+<p>Broadcast UDP messages on task completion to trigger external devices and systems</p>
+</blockquote>
+<p>A VS Code extension that sends UDP broadcast messages when tasks complete, enabling you to trigger external devices like RGB LEDs, displays, IoT devices, or automation systems based on build results.</p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li> <strong>Automatic Broadcasts</strong> - Send UDP messages when VS Code tasks complete (build success/failure)</li>
+<li> <strong>Task Filtering</strong> - Only broadcast for specific tasks (e.g., ESP-IDF builds)</li>
+<li> <strong>Configurable Messages</strong> - Customize success and failure messages</li>
+<li> <strong>Message Templates</strong> - Use variables like task name, timestamp, workspace folder</li>
+<li> <strong>Status Bar Integration</strong> - See broadcast status at a glance</li>
+<li> <strong>Broadcast History</strong> - View last 20 broadcasts</li>
+<li> <strong>Connection Testing</strong> - Test your UDP configuration easily</li>
+<li> <strong>Manual Trigger</strong> - Send broadcasts manually via command palette</li>
+<li> <strong>Output Filtering</strong> - Trigger broadcasts based on task output content (e.g., ESP-IDF build logs)</li>
+<li> <strong>Diagnostic Logging</strong> - Detailed logs to troubleshoot task detection</li>
+</ul>
+<div><h2>Use Cases</h2><a href="#use-cases"></a></div>
+<ul>
+<li><strong>ESP-IDF Development</strong>: Trigger RGB LEDs or displays on ESP32 build completion</li>
+<li><strong>IoT Integration</strong>: Notify smart home devices about build status</li>
+<li><strong>Team Notifications</strong>: Broadcast to office status lights or displays</li>
+<li><strong>CI/CD Integration</strong>: Trigger external automation systems</li>
+<li><strong>Custom Workflows</strong>: Integrate VS Code with any UDP-listening device</li>
+</ul>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<ol>
+<li>Open VS Code</li>
+<li>Press <pre><code>Ctrl+P</code></pre> (Windows/Linux) or <pre><code>Cmd+P</code></pre> (macOS)</li>
+<li>Type <pre><code>ext install sdrshnptl.notifybuildresult</code></pre></li>
+<li>Press Enter</li>
+</ol>
+<p>Or install from Marketplace:
+<a href="https://marketplace.visualstudio.com/items?itemName=sdrshnptl.notifybuildresult">VS Code Marketplace - notifybuildresult</a></p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Basic Setup</h3><a href="#basic-setup"></a></div>
+<ol>
+<li>Open VS Code Settings (<pre><code>Ctrl+,</code></pre>)</li>
+<li>Search for "notifybuildresult"</li>
+<li>Configure:
+<ul>
+<li><strong>Broadcast Address</strong>: <pre><code>255.255.255.255</code></pre> (network-wide) or specific IP</li>
+<li><strong>Port</strong>: <pre><code>10203</code></pre> (default)</li>
+<li><strong>Success Message</strong>: <pre><code>{"compile":1}</code></pre></li>
+<li><strong>Failure Message</strong>: <pre><code>{"error":1}</code></pre></li>
+</ul>
+</li>
+</ol>
+<div><h3>ESP-IDF Example</h3><a href="#esp-idf-example"></a></div>
+<p>For ESP-IDF projects, filter only build tasks:</p>
+<div><pre>{ <span>"notifybuildresult.enabled"</span>: <span>true</span>, <span>"notifybuildresult.taskFilter"</span>: [<span><span>"</span>ESP-IDF<span>"</span></span>], <span>"notifybuildresult.successMessage"</span>: <span><span>"</span>{<span>\"</span>compile<span>\"</span>:1}<span>"</span></span>, <span>"notifybuildresult.failureMessage"</span>: <span><span>"</span>{<span>\"</span>error<span>\"</span>:1}<span>"</span></span>, <span>"notifybuildresult.broadcastAddress"</span>: <span><span>"</span>255.255.255.255<span>"</span></span>, <span>"notifybuildresult.port"</span>: <span>10203</span>
+}</pre></div>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<div><h3>Settings Reference</h3><a href="#settings-reference"></a></div>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>notifybuildresult.enabled</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Enable/disable broadcasts</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.broadcastAddress</code></pre></td>
+<td>string</td>
+<td><pre><code>255.255.255.255</code></pre></td>
+<td>Target IP address</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.port</code></pre></td>
+<td>number</td>
+<td><pre><code>10203</code></pre></td>
+<td>UDP port number</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.successMessage</code></pre></td>
+<td>string</td>
+<td><pre><code>{"compile":1}</code></pre></td>
+<td>Message for successful tasks</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.failureMessage</code></pre></td>
+<td>string</td>
+<td><pre><code>{"error":1}</code></pre></td>
+<td>Message for failed tasks</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.taskFilter</code></pre></td>
+<td>array</td>
+<td><pre><code>[]</code></pre></td>
+<td>Filter tasks by name (empty = all tasks)</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.useMessageTemplate</code></pre></td>
+<td>boolean</td>
+<td><pre><code>false</code></pre></td>
+<td>Enable template variables</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.successTemplate</code></pre></td>
+<td>string</td>
+<td>See below</td>
+<td>Template for success</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.failureTemplate</code></pre></td>
+<td>string</td>
+<td>See below</td>
+<td>Template for failure</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.showStatusBar</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Show status bar indicator</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.logToOutput</code></pre></td>
+<td>boolean</td>
+<td><pre><code>true</code></pre></td>
+<td>Log activity to output channel</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.enableOutputFiltering</code></pre></td>
+<td>boolean</td>
+<td><pre><code>false</code></pre></td>
+<td>Enable output-based triggering</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.successTriggerStrings</code></pre></td>
+<td>array</td>
+<td>ESP-IDF patterns</td>
+<td>Strings to detect success in output</td>
+</tr>
+<tr>
+<td><pre><code>notifybuildresult.failureTriggerStrings</code></pre></td>
+<td>array</td>
+<td>Build error patterns</td>
+<td>Strings to detect failure in output</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Message Templates</h3><a href="#message-templates"></a></div>
+<p>Enable advanced templates with variables:</p>
+<div><pre>{ <span>"notifybuildresult.useMessageTemplate"</span>: <span>true</span>, <span>"notifybuildresult.successTemplate"</span>: <span><span>"</span>{<span>\"</span>status<span>\"</span>:<span>\"</span>success<span>\"</span>,<span>\"</span>task<span>\"</span>:<span>\"</span>${taskName}<span>\"</span>,<span>\"</span>time<span>\"</span>:<span>\"</span>${timestamp}<span>\"</span>}<span>"</span></span>, <span>"notifybuildresult.failureTemplate"</span>: <span><span>"</span>{<span>\"</span>status<span>\"</span>:<span>\"</span>error<span>\"</span>,<span>\"</span>task<span>\"</span>:<span>\"</span>${taskName}<span>\"</span>,<span>\"</span>time<span>\"</span>:<span>\"</span>${timestamp}<span>\"</span>}<span>"</span></span>
+}</pre></div>
+<p><strong>Available Variables:</strong></p>
+<ul>
+<li><pre><code>${taskName}</code></pre> - Name of the completed task</li>
+<li><pre><code>${timestamp}</code></pre> - ISO 8601 timestamp</li>
+<li><pre><code>${workspaceFolder}</code></pre> - Workspace folder name</li>
+<li><pre><code>${workspacePath}</code></pre> - Full workspace path</li>
+</ul>
+<div><h3>Output-Based Filtering</h3><a href="#output-based-filtering"></a></div>
+<p>For build systems where exit codes don't reliably indicate success/failure, use output filtering:</p>
+<div><pre>{ <span>"notifybuildresult.enableOutputFiltering"</span>: <span>true</span>, <span>"notifybuildresult.successTriggerStrings"</span>: [ <span><span>"</span>Successfully created<span>"</span></span>, <span><span>"</span>Generated <span>"</span></span>, <span><span>"</span>binary size<span>"</span></span>, <span><span>"</span>bytes free<span>"</span></span>, <span><span>"</span>0 errors<span>"</span></span>, <span><span>"</span>build complete<span>"</span></span> ], <span>"notifybuildresult.failureTriggerStrings"</span>: [ <span><span>"</span>FAILED<span>"</span></span>, <span><span>"</span>ninja: build stopped<span>"</span></span>, <span><span>"</span>error:<span>"</span></span>, <span><span>"</span>fatal error<span>"</span></span>, <span><span>"</span>undefined reference<span>"</span></span>, <span><span>"</span>CMake Error<span>"</span></span> ]
+}</pre></div>
+<p><strong>Default Trigger Strings:</strong></p>
+<p>The extension comes pre-configured with ESP-IDF-friendly trigger strings:</p>
+<ul>
+<li><strong>Success patterns</strong>: <pre><code>"Successfully created"</code></pre>, <pre><code>"Generated "</code></pre>, <pre><code>"binary size"</code></pre>, <pre><code>"bytes free"</code></pre>, <pre><code>"0 errors"</code></pre>, <pre><code>"build complete"</code></pre></li>
+<li><strong>Failure patterns</strong>: <pre><code>"FAILED"</code></pre>, <pre><code>"ninja: build stopped"</code></pre>, <pre><code>"error:"</code></pre>, <pre><code>"fatal error"</code></pre>, <pre><code>"undefined reference"</code></pre>, <pre><code>"CMake Error"</code></pre></li>
+</ul>
+<p>When output filtering is enabled but no task output is captured, the extension automatically falls back to exit-code detection (exit code 0 = success).</p>
+<div><h2>Commands</h2><a href="#commands"></a></div>
+<p>Access via Command Palette (</p><pre><code>Ctrl+Shift+P</code></pre>):<p></p>
+<ul>
+<li><strong>notifybuildresult: Send Manual Message</strong> - Send custom UDP message</li>
+<li><strong>notifybuildresult: Test Connection</strong> - Test your UDP configuration</li>
+<li><strong>notifybuildresult: Show History</strong> - View broadcast history</li>
+</ul>
+<div><h2>Examples</h2><a href="#examples"></a></div>
+<div><h3>Example 1: Simple Build Notifications</h3><a href="#example-1-simple-build-notifications"></a></div>
+<div><pre>{ <span>"notifybuildresult.enabled"</span>: <span>true</span>, <span>"notifybuildresult.successMessage"</span>: <span><span>"</span>{<span>\"</span>build<span>\"</span>:<span>\"</span>success<span>\"</span>}<span>"</span></span>, <span>"notifybuildresult.failureMessage"</span>: <span><span>"</span>{<span>\"</span>build<span>\"</span>:<span>\"</span>failed<span>\"</span>}<span>"</span></span>
+}</pre></div>
+<div><h3>Example 2: ESP32 RGB LED Control</h3><a href="#example-2-esp32-rgb-led-control"></a></div>
+<div><pre>{ <span>"notifybuildresult.taskFilter"</span>: [<span><span>"</span>ESP-IDF<span>"</span></span>, <span><span>"</span>build<span>"</span></span>], <span>"notifybuildresult.successMessage"</span>: <span><span>"</span>{<span>\"</span>led<span>\"</span>:{<span>\"</span>r<span>\"</span>:0,<span>\"</span>g<span>\"</span>:255,<span>\"</span>b<span>\"</span>:0}}<span>"</span></span>, <span>"notifybuildresult.failureMessage"</span>: <span><span>"</span>{<span>\"</span>led<span>\"</span>:{<span>\"</span>r<span>\"</span>:255,<span>\"</span>g<span>\"</span>:0,<span>\"</span>b<span>\"</span>:0}}<span>"</span></span>
+}</pre></div>
+<div><h3>Example 3: Detailed Status with Templates</h3><a href="#example-3-detailed-status-with-templates"></a></div>
+<div><pre>{ <span>"notifybuildresult.useMessageTemplate"</span>: <span>true</span>, <span>"notifybuildresult.successTemplate"</span>: <span><span>"</span>{<span>\"</span>project<span>\"</span>:<span>\"</span>${workspaceFolder}<span>\"</span>,<span>\"</span>task<span>\"</span>:<span>\"</span>${taskName}<span>\"</span>,<span>\"</span>status<span>\"</span>:<span>\"</span>OK<span>\"</span>,<span>\"</span>time<span>\"</span>:<span>\"</span>${timestamp}<span>\"</span>}<span>"</span></span>, <span>"notifybuildresult.failureTemplate"</span>: <span><span>"</span>{<span>\"</span>project<span>\"</span>:<span>\"</span>${workspaceFolder}<span>\"</span>,<span>\"</span>task<span>\"</span>:<span>\"</span>${taskName}<span>\"</span>,<span>\"</span>status<span>\"</span>:<span>\"</span>ERROR<span>\"</span>,<span>\"</span>time<span>\"</span>:<span>\"</span>${timestamp}<span>\"</span>}<span>"</span></span>
+}</pre></div>
+<div><h2>Receiving UDP Broadcasts</h2><a href="#receiving-udp-broadcasts"></a></div>
+<div><h3>Python Receiver Example</h3><a href="#python-receiver-example"></a></div>
+<div><pre><span>import</span> <span>socket</span>
+<span>import</span> <span>json</span> <span>sock</span> <span>=</span> <span>socket</span>.<span>socket</span>(<span>socket</span>.<span>AF_INET</span>, <span>socket</span>.<span>SOCK_DGRAM</span>)
+<span>sock</span>.<span>bind</span>((<span>''</span>, <span>10203</span>)) <span>print</span>(<span>"Listening for UDP broadcasts on port 10203..."</span>) <span>while</span> <span>True</span>: <span>data</span>, <span>addr</span> <span>=</span> <span>sock</span>.<span>recvfrom</span>(<span>1024</span>) <span>message</span> <span>=</span> <span>json</span>.<span>loads</span>(<span>data</span>.<span>decode</span>()) <span>print</span>(<span>f"Received from <span><span>{</span><span>addr</span><span>}</span></span>: <span><span>{</span><span>message</span><span>}</span></span>"</span>)</pre></div>
+<div><h3>Node.js Receiver Example</h3><a href="#nodejs-receiver-example"></a></div>
+<div><pre><span>const</span> <span>dgram</span> <span>=</span> <span>require</span><span>(</span><span>'dgram'</span><span>)</span><span>;</span>
+<span>const</span> <span>server</span> <span>=</span> <span>dgram</span><span>.</span><span>createSocket</span><span>(</span><span>'udp4'</span><span>)</span><span>;</span> <span>server</span><span>.</span><span>on</span><span>(</span><span>'message'</span><span>,</span> <span>(</span><span>msg</span><span>,</span> <span>rinfo</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>data</span> <span>=</span> <span>JSON</span><span>.</span><span>parse</span><span>(</span><span>msg</span><span>.</span><span>toString</span><span>(</span><span>)</span><span>)</span><span>;</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>`Received: <span><span>${</span><span>JSON</span><span>.</span><span>stringify</span><span>(</span><span>data</span><span>)</span><span>}</span></span> from <span><span>${</span><span>rinfo</span><span>.</span><span>address</span><span>}</span></span>:<span><span>${</span><span>rinfo</span><span>.</span><span>port</span><span>}</span></span>`</span><span>)</span><span>;</span>
+<span>}</span><span>)</span><span>;</span> <span>server</span><span>.</span><span>bind</span><span>(</span><span>10203</span><span>,</span> <span>(</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>'Listening for UDP broadcasts on port 10203...'</span><span>)</span><span>;</span>
+<span>}</span><span>)</span><span>;</span></pre></div>
+<div><h3>ESP32 Receiver Example (Arduino/ESP-IDF)</h3><a href="#esp32-receiver-example-arduinoesp-idf"></a></div>
+<div><pre>#<span>include</span> <span><span>&lt;</span>WiFi.h<span>&gt;</span></span>
+#<span>include</span> <span><span>&lt;</span>WiFiUdp.h<span>&gt;</span></span>
+#<span>include</span> <span><span>&lt;</span>ArduinoJson.h<span>&gt;</span></span> WiFiUDP udp;
+<span>const</span> <span>int</span> UDP_PORT = <span>10203</span>; <span>void</span> <span>setup</span>() { Serial.<span>begin</span>(<span>115200</span>); WiFi.<span>begin</span>(<span><span>"</span>YOUR_SSID<span>"</span></span>, <span><span>"</span>YOUR_PASSWORD<span>"</span></span>); <span>while</span> (WiFi.<span>status</span>() != WL_CONNECTED) { <span>delay</span>(<span>500</span>); Serial.<span>print</span>(<span><span>"</span>.<span>"</span></span>); } Serial.<span>println</span>(<span><span>"</span><span>\n</span>Connected to WiFi<span>"</span></span>); udp.<span>begin</span>(UDP_PORT);
+} <span>void</span> <span>loop</span>() { <span>int</span> packetSize = udp.<span>parsePacket</span>(); <span>if</span> (packetSize) { <span>char</span> packet[<span>255</span>]; <span>int</span> len = udp.<span>read</span>(packet, <span>255</span>); packet[len] = <span>0</span>; StaticJsonDocument&lt;<span>200</span>&gt; doc; <span>deserializeJson</span>(doc, packet); <span>if</span> (doc[<span><span>"</span>compile<span>"</span></span>] == <span>1</span>) { <span><span>//</span> Green LED for success</span> <span>digitalWrite</span>(LED_GREEN, HIGH); } <span>else</span> <span>if</span> (doc[<span><span>"</span>error<span>"</span></span>] == <span>1</span>) { <span><span>//</span> Red LED for error</span> <span>digitalWrite</span>(LED_RED, HIGH); } }
+}</pre></div>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<div><h3>Broadcasts Not Received</h3><a href="#broadcasts-not-received"></a></div>
+<ol>
+<li><strong>Check firewall settings</strong> - Allow UDP on your port (default: 10203)</li>
+<li><strong>Verify network configuration</strong> - Ensure broadcast is enabled on your network</li>
+<li><strong>Test connection</strong>: Run the command "notifybuildresult: Test Connection"</li>
+<li><strong>Check output channel</strong> - View → Output → "UDP Broadcast" for diagnostic logs</li>
+<li><strong>Try loopback</strong>: Set broadcast address to <pre><code>127.0.0.1</code></pre> for local testing</li>
+</ol>
+<div><h3>Extension Not Detecting Tasks</h3><a href="#extension-not-detecting-tasks"></a></div>
+<ol>
+<li><strong>Enable diagnostic logging</strong>: Set <pre><code>notifybuildresult.logToOutput</code></pre> to <pre><code>true</code></pre> (enabled by default)</li>
+<li><strong>Open the output channel</strong>: View → Output → Select "UDP Broadcast" from dropdown</li>
+<li><strong>Run your task and look for diagnostic messages</strong>:
+<ul>
+<li><pre><code>[TASK START]</code></pre> - Shows task name, type, and ID when task starts</li>
+<li><pre><code>[TASK END]</code></pre> - Shows task name, exit code, and enabled status when task completes</li>
+<li><pre><code>[FILTER CHECK]</code></pre> - Shows whether task passed filter checks</li>
+</ul>
+</li>
+<li><strong>Verify task filter</strong>: If set, ensure your task name matches the filter</li>
+<li><strong>Check if extension is enabled</strong>: <pre><code>notifybuildresult.enabled</code></pre> should be <pre><code>true</code></pre></li>
+</ol>
+<p><strong>Example Diagnostic Output:</strong></p>
+<div><pre><code>[10:30:45] [TASK START] Task: "ESP-IDF Build", Type: shell, ID: ESP-IDF Build-1709025045123
+[10:30:48] [TASK END] Task: "ESP-IDF Build", Exit Code: 0, Enabled: true
+[10:30:48] [FILTER CHECK] No task filter set, broadcasting for all tasks
+[10:30:48] Task "ESP-IDF Build" succeeded - Broadcasting message
+[10:30:48] ✓ Broadcast sent: {"compile":1}
+</code></pre></div>
+<div><h3>Only Specific Tasks Should Trigger</h3><a href="#only-specific-tasks-should-trigger"></a></div>
+<p>Use the </p><pre><code>taskFilter</code></pre> setting:<p></p>
+<div><pre>{ <span>"notifybuildresult.taskFilter"</span>: [<span><span>"</span>build<span>"</span></span>, <span><span>"</span>compile<span>"</span></span>, <span><span>"</span>ESP-IDF<span>"</span></span>]
+}</pre></div>
+<p>Task names are matched case-insensitively with substring matching.</p>
+<div><h3>Messages Not Valid JSON</h3><a href="#messages-not-valid-json"></a></div>
+<p>If you're using plain text messages, that's fine - receivers will get the raw string. For JSON:</p>
+<div><pre>{ <span>"notifybuildresult.successMessage"</span>: <span><span>"</span>{<span>\"</span>key<span>\"</span>:<span>\"</span>value<span>\"</span>}<span>"</span></span>
+}</pre></div>
+<p>Note: Backslashes escape quotes in JSON configuration.</p>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre><span><span>#</span> Install dependencies</span>
+npm install <span><span>#</span> Compile TypeScript</span>
+npm run compile <span><span>#</span> Watch mode for development</span>
+npm run watch <span><span>#</span> Package extension</span>
+npx @vscode/vsce package <span><span>#</span> Publish to marketplace</span>
+npx @vscode/vsce publish</pre></div>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Issues and pull requests are welcome at:
+<a href="https://github.com/sdrshnptl/notifybuildresult">https://github.com/sdrshnptl/notifybuildresult</a></p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

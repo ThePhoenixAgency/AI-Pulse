@@ -1,8 +1,10 @@
 {
   "settings": {
-    "articlesPerFeed": 120,
-    "maxArticlesPerCategory": 120,
-    "summaryMaxLength": 50000,
+    "articlesPerFeed": 50,
+    "maxArticlesPerCategory": 50,
+    "summaryMaxLength": 600,
+    "articleMaxLength": 50000,
+    "maxArticleAgeDays": 7,
     "deduplication": {
       "enabled": true,
       "similarityThreshold": 0.7,
@@ -12,10 +14,10 @@
       "default": 0.08,
       "openclaw": 0.22,
       "raspberrypi": 0.18,
-      "finance": 0.12,
-      "crypto": 0.12,
-      "local": 0.1,
-      "weather": 0.1
+      "finance": 0.10,
+      "crypto": 0.05,
+      "local": 0.2,
+      "weather": 0.2
     }
   },
   "categories": {
@@ -138,54 +140,34 @@
       "priority": 2,
       "feeds": [
         {
-          "name": "TechCrunch AI",
-          "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
-          "tags": [
-            "OpenClaw",
-            "AI",
-            "Startups"
-          ],
+          "name": "The Decoder",
+          "url": "https://the-decoder.com/feed/",
+          "tags": ["OpenClaw", "AI", "Agents", "LLM"],
           "lang": "en"
         },
         {
-          "name": "OpenAI Blog",
-          "url": "https://openai.com/blog/rss.xml",
-          "tags": [
-            "OpenClaw",
-            "AI",
-            "Official"
-          ],
+          "name": "Simon Willison's Blog",
+          "url": "https://simonwillison.net/atom/everything/",
+          "tags": ["OpenClaw", "AI", "Tools", "Pratique"],
           "lang": "en"
         },
         {
-          "name": "Numerama Tech",
-          "url": "https://www.numerama.com/feed/",
-          "tags": [
-            "OpenClaw",
-            "IA",
-            "France"
-          ],
+          "name": "Last Week in AI",
+          "url": "https://lastweekin.ai/feed",
+          "tags": ["OpenClaw", "AI", "Veille", "Hebdo"],
+          "lang": "en"
+        },
+        {
+          "name": "Synced Review",
+          "url": "https://syncedreview.com/feed/",
+          "tags": ["OpenClaw", "AI", "Recherche", "ML"],
+          "lang": "en"
+        },
+        {
+          "name": "Siecle Digital",
+          "url": "https://siecledigital.fr/feed/",
+          "tags": ["OpenClaw", "IA", "Digital", "France"],
           "lang": "fr"
-        },
-        {
-          "name": "Wired",
-          "url": "https://www.wired.com/feed/rss",
-          "tags": [
-            "OpenClaw",
-            "AI",
-            "News"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "The Verge",
-          "url": "https://www.theverge.com/rss/index.xml",
-          "tags": [
-            "OpenClaw",
-            "AI",
-            "Tech"
-          ],
-          "lang": "en"
         }
       ]
     },
@@ -487,6 +469,29 @@
           ],
           "lang": "en"
         }
+          ,
+          {
+            "name": "MonRaspberry.com",
+            "url": "https://www.monraspberry.com/feed/",
+            "tags": [
+              "RaspberryPi",
+              "Tutoriels",
+              "Projets",
+              "Français"
+            ],
+            "lang": "fr"
+          },
+          {
+            "name": "RaspberryTips.fr",
+            "url": "https://raspberrytips.fr/feed/",
+            "tags": [
+              "RaspberryPi",
+              "Astuces",
+              "Tutoriels",
+              "Français"
+            ],
+            "lang": "fr"
+          }
       ]
     },
     "france": {
@@ -568,16 +573,6 @@
           "lang": "en"
         },
         {
-          "name": "Al Jazeera",
-          "url": "https://www.aljazeera.com/xml/rss/all.xml",
-          "tags": [
-            "International",
-            "World",
-            "News"
-          ],
-          "lang": "en"
-        },
-        {
           "name": "New York Times World",
           "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
           "tags": [
@@ -607,16 +602,6 @@
       "icon": "cpu",
       "priority": 6,
       "feeds": [
-        {
-          "name": "Raspberry Pi",
-          "url": "https://www.raspberrypi.com/news/feed/",
-          "tags": [
-            "IoT",
-            "RaspberryPi",
-            "Hardware"
-          ],
-          "lang": "en"
-        },
         {
           "name": "Arduino Blog",
           "url": "https://blog.arduino.cc/feed/",
@@ -706,25 +691,18 @@
           "lang": "fr"
         },
         {
-          "name": "Framboise 314",
-          "url": "https://www.framboise314.fr/feed/",
-          "tags": [
-            "RaspberryPi",
-            "IoT",
-            "DIY"
-          ],
-          "lang": "fr"
-        },
-        {
-          "name": "Maison et Domotique",
-          "url": "https://www.maison-et-domotique.com/feed/",
-          "tags": [
-            "Domotique",
-            "SmartHome",
-            "IoT"
-          ],
-          "lang": "fr"
-        }
+              "name": "Maison et Domotique", "url": "https://www.maison-et-domotique.com/feed/", "tags": ["Domotique", "SmartHome", "IoT"], "lang": "fr" },
+            { "name": "Home Assistant (Blog officiel)", "url": "https://www.home-assistant.io/atom.xml", "tags": ["HomeAssistant", "IoT", "Domotique", "OpenSource"], "lang": "en" },
+            { "name": "Home Assistant Community Forum (Latest)", "url": "https://community.home-assistant.io/latest.rss", "tags": ["HomeAssistant", "Forum", "IoT"], "lang": "en" },
+            { "name": "Domoticz (Forum News)", "url": "https://www.domoticz.com/forum/feed.php?mode=news", "tags": ["Domoticz", "IoT", "Domotique", "OpenSource"], "lang": "en" },
+            { "name": "Domoticz (GitHub Releases)", "url": "https://github.com/domoticz/domoticz/releases.atom", "tags": ["Domoticz", "Releases", "IoT", "OpenSource"], "lang": "en" },
+            { "name": "openHAB (Blog officiel)", "url": "https://www.openhab.org/blog/index.xml", "tags": ["openHAB", "IoT", "Domotique", "OpenSource"], "lang": "en" },
+            { "name": "openHAB Community (Latest)", "url": "https://community.openhab.org/latest.rss", "tags": ["openHAB", "Forum", "IoT"], "lang": "en" },
+            { "name": "Jeedom (Blog officiel)", "url": "https://www.jeedom.com/blog/feed/", "tags": ["Jeedom", "Domotique", "IoT", "OpenSource"], "lang": "fr" },
+            { "name": "Jeedom (Forum Annonces)", "url": "https://community.jeedom.com/c/annonces/8.rss", "tags": ["Jeedom", "Forum", "Domotique"], "lang": "fr" },
+            { "name": "Gladys Assistant (Blog officiel)", "url": "https://gladysassistant.com/fr/blog/rss.xml", "tags": ["Gladys", "Domotique", "IoT", "OpenSource"], "lang": "fr" },
+            { "name": "Gladys Assistant (Forum)", "url": "https://community.gladysassistant.com/latest.rss", "tags": ["Gladys", "Forum", "Domotique"], "lang": "fr" },
+            { "name": "HomeGenie (GitHub Releases)", "url": "https://github.com/genielabs/HomeGenie/releases.atom", "tags": ["HomeGenie", "Releases", "IoT", "OpenSource"], "lang": "en" }
       ]
     },
     "windows": {
@@ -842,16 +820,6 @@
             "Apple",
             "Mac",
             "News"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "Macworld",
-          "url": "https://www.macworld.com/index.rss",
-          "tags": [
-            "Apple",
-            "Mac",
-            "Guides"
           ],
           "lang": "en"
         },
@@ -1198,165 +1166,22 @@
       ]
     },
     "finance": {
-      "labels": {
-        "en": "Stock Market & Finance",
-        "fr": "Bourse & Finance"
+        "labels": {
+          "en": "Stock Market, Finance & Crypto",
+          "fr": "Bourse, Finance & Crypto"
+        },
+        "icon": "trending-up",
+        "priority": 12,
+        "feeds": [
+          { "name": "Zonebourse", "url": "https://www.zonebourse.com/rss/", "tags": ["Bourse", "Actions", "Finance"], "lang": "fr" },
+          { "name": "Boursorama", "url": "https://www.boursorama.com/rss/actualites", "tags": ["Bourse", "Marches", "Finance"], "lang": "fr" },
+          { "name": "Investir Les Echos", "url": "https://investir.lesechos.fr/feed/", "tags": ["Investissement", "Bourse", "Finance"], "lang": "fr" },
+          { "name": "Journal du Coin", "url": "https://journalducoin.com/feed/", "tags": ["Crypto", "Bitcoin", "France", "Finance"], "lang": "fr" },
+          { "name": "Cryptoast", "url": "https://cryptoast.fr/feed/", "tags": ["Crypto", "Blockchain", "France", "Finance"], "lang": "fr" },
+          { "name": "AMF (Autorité des marchés)", "url": "https://www.amf-france.org/fr/rss/actualites.xml", "tags": ["Finance", "Regulation", "AMF", "Officiel"], "lang": "fr" },
+          { "name": "Les Echos Marchés", "url": "https://www.lesechos.fr/finance-marches/rss", "tags": ["Bourse", "Finance", "Marches", "France"], "lang": "fr" }
+        ]
       },
-      "icon": "trending-up",
-      "priority": 12,
-      "feeds": [
-        {
-          "name": "MarketWatch",
-          "url": "https://feeds.marketwatch.com/marketwatch/topstories/",
-          "tags": [
-            "Finance",
-            "Markets",
-            "Stocks"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "Reuters Business",
-          "url": "https://www.reuters.com/business/finance/rss",
-          "tags": [
-            "Finance",
-            "Business",
-            "Global"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "Investing.com",
-          "url": "https://www.investing.com/rss/news.rss",
-          "tags": [
-            "Finance",
-            "Trading",
-            "Markets"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "Zonebourse",
-          "url": "https://www.zonebourse.com/rss/",
-          "tags": [
-            "Bourse",
-            "Actions",
-            "Finance"
-          ],
-          "lang": "fr"
-        },
-        {
-          "name": "Boursorama",
-          "url": "https://www.boursorama.com/rss/actualites",
-          "tags": [
-            "Bourse",
-            "Marches",
-            "Finance"
-          ],
-          "lang": "fr"
-        },
-        {
-          "name": "ABC Bourse",
-          "url": "https://www.abcbourse.com/rss/",
-          "tags": [
-            "Bourse",
-            "Analyse",
-            "Finance"
-          ],
-          "lang": "fr"
-        },
-        {
-          "name": "Investir Les Echos",
-          "url": "https://investir.lesechos.fr/feed/",
-          "tags": [
-            "Investissement",
-            "Bourse",
-            "Finance"
-          ],
-          "lang": "fr"
-        }
-      ]
-    },
-    "crypto": {
-      "labels": {
-        "en": "Crypto & Blockchain",
-        "fr": "Crypto & Blockchain"
-      },
-      "icon": "link",
-      "priority": 13,
-      "feeds": [
-        {
-          "name": "CoinDesk",
-          "url": "https://www.coindesk.com/arc/outboundfeeds/rss/",
-          "tags": [
-            "Crypto",
-            "Bitcoin",
-            "Blockchain"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "CoinTelegraph",
-          "url": "https://cointelegraph.com/rss",
-          "tags": [
-            "Crypto",
-            "Blockchain",
-            "DeFi"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "The Block",
-          "url": "https://www.theblock.co/rss.xml",
-          "tags": [
-            "Crypto",
-            "Blockchain",
-            "Analysis"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "Decrypt",
-          "url": "https://decrypt.co/feed",
-          "tags": [
-            "Crypto",
-            "Web3",
-            "NFT"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "Journal du Coin",
-          "url": "https://journalducoin.com/feed/",
-          "tags": [
-            "Crypto",
-            "Bitcoin",
-            "France"
-          ],
-          "lang": "fr"
-        },
-        {
-          "name": "Cryptoast",
-          "url": "https://cryptoast.fr/feed/",
-          "tags": [
-            "Crypto",
-            "Blockchain",
-            "France"
-          ],
-          "lang": "fr"
-        },
-        {
-          "name": "CoinTribune",
-          "url": "https://www.cointribune.com/feed/",
-          "tags": [
-            "Crypto",
-            "Blockchain",
-            "France"
-          ],
-          "lang": "fr"
-        }
-      ]
-    },
     "opensource": {
       "labels": {
         "en": "Open Source & GitHub",
@@ -1365,76 +1190,20 @@
       "icon": "git-branch",
       "priority": 14,
       "feeds": [
-        {
-          "name": "GitHub Blog",
-          "url": "https://github.blog/feed/",
-          "tags": [
-            "GitHub",
-            "Open Source",
-            "DevTools"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "GitHub Changelog",
-          "url": "https://github.blog/changelog/feed/",
-          "tags": [
-            "GitHub",
-            "Updates",
-            "Features"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "GitHub Trending",
-          "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
-          "tags": [
-            "GitHub",
-            "Trending",
-            "Repos"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "GitHub Trending Python",
-          "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/python.xml",
-          "tags": [
-            "GitHub",
-            "Python",
-            "Trending"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "The Changelog",
-          "url": "https://changelog.com/feed",
-          "tags": [
-            "Open Source",
-            "Podcast",
-            "DevTools"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "Console.dev",
-          "url": "https://console.dev/rss.xml",
-          "tags": [
-            "DevTools",
-            "Open Source",
-            "Weekly"
-          ],
-          "lang": "en"
-        },
-        {
-          "name": "Dev.to Open Source",
-          "url": "https://dev.to/feed/tag/opensource",
-          "tags": [
-            "Open Source",
-            "Community",
-            "Dev"
-          ],
-          "lang": "en"
-        },
+          { "name": "Product Hunt", "url": "https://www.producthunt.com/feed", "tags": ["startups", "produits", "innovation", "tech"], "lang": "en", "description": "Découverte quotidienne de nouveaux produits, startups et outils innovants." },
+          { "name": "BetaList", "url": "https://betalist.com/feed", "tags": ["startups", "bêta", "innovation", "tech"], "lang": "en", "description": "Sélection de startups en phase de lancement ou en accès anticipé." },
+          { "name": "Hacker News (nouveautés)", "url": "https://hnrss.org/newest", "tags": ["tech", "startups", "open source", "tendances"], "lang": "en", "description": "Flux des dernières soumissions sur Hacker News : projets, outils, tendances tech." },
+          { "name": "Indie Hackers (nouveautés)", "url": "https://www.indiehackers.com/feed", "tags": ["startups", "indie", "produits", "communauté"], "lang": "en", "description": "Discussions et partages de nouveaux projets par des créateurs indépendants." },
+          { "name": "Awesome Open Source", "url": "https://awesomeopensource.com/feed", "tags": ["open source", "frameworks", "outils", "découvertes"], "lang": "en", "description": "Découverte de projets open source remarquables et tendances." },
+          { "name": "Startup Stash", "url": "https://startupstash.com/feed/", "tags": ["startups", "outils", "produits", "veille"], "lang": "en", "description": "Sélection d’outils, ressources et startups innovantes." },
+          { "name": "Open Source Weekly (The New Stack)", "url": "https://thenewstack.io/category/open-source/feed/", "tags": ["open source", "veille", "tendances", "sélection"], "lang": "en", "description": "Actualités, analyses et sélections hebdomadaires sur l’open source." },
+          { "name": "BetaPage", "url": "https://betapage.co/rss", "tags": ["startups", "produits", "innovation", "bêta"], "lang": "en", "description": "Découverte de nouveaux produits et startups en phase bêta." },
+          { "name": "Open Source.com (Nouveautés)", "url": "https://opensource.com/feed", "tags": ["open source", "veille", "outils", "communauté"], "lang": "en", "description": "Articles, projets et tendances autour de l’open source." },
+          { "name": "Side Projectors", "url": "https://sideprojectors.com/projects.rss", "tags": ["side projects", "startups", "outils", "innovation"], "lang": "en", "description": "Plateforme de partage et découverte de projets parallèles et startups." },
+          { "name": "LibHunt Selfhosted", "url": "https://selfhosted.libhunt.com/feed", "tags": ["Self-hosted", "Open Source", "Tools"], "lang": "en" },
+          { "name": "Developpez.com", "url": "https://www.developpez.com/index/rss", "tags": ["Open Source", "Developpement", "France"], "lang": "fr" },
+          { "name": "LinuxFr", "url": "https://linuxfr.org/news.atom", "tags": ["Open Source", "Linux", "France"], "lang": "fr" },
+          { "name": "Programmez", "url": "https://www.programmez.com/rss.xml", "tags": ["Open Source", "Developpement", "France"], "lang": "fr" },
         {
           "name": "LibHunt Selfhosted",
           "url": "https://selfhosted.libhunt.com/feed",
@@ -1578,32 +1347,78 @@
         {
           "name": "Météo-Paris",
           "url": "https://www.meteo-paris.com/rss",
-          "tags": [
-            "Meteo",
-            "France",
-            "Local"
-          ],
+          "tags": ["Meteo", "Paris", "Local"],
           "lang": "fr"
         },
         {
-          "name": "France 24 (FR)",
-          "url": "https://www.france24.com/fr/rss",
-          "tags": [
-            "Meteo",
-            "France",
-            "Actualites"
-          ],
+          "name": "La Chaîne Météo",
+          "url": "https://www.lachainemeteo.com/rss",
+          "tags": ["Meteo", "France", "Previsions"],
           "lang": "fr"
         },
         {
-          "name": "France 24 (EN)",
-          "url": "https://www.france24.com/en/rss",
-          "tags": [
-            "Weather",
-            "International",
-            "News"
-          ],
-          "lang": "en"
+          "name": "Météo-France Actualités",
+          "url": "https://meteofrance.com/sitemap-news.xml",
+          "tags": ["Meteo", "France", "Officiel"],
+          "lang": "fr"
+        },
+        {
+          "name": "Keraunos (Orages)",
+          "url": "https://www.keraunos.org/rss.xml",
+          "tags": ["Meteo", "Orages", "Alertes"],
+          "lang": "fr"
+        },
+        {
+          "name": "Infoclimat",
+          "url": "https://www.infoclimat.fr/rss.xml",
+          "tags": ["Meteo", "Climat", "Mesures"],
+          "lang": "fr"
+        }
+      ]
+    },
+    "gouvernemental": {
+      "labels": {
+        "en": "French Government",
+        "fr": "Gouvernement & Services Publics"
+      },
+      "icon": "flag",
+      "priority": 3,
+      "feeds": [
+        {
+          "name": "Gouvernement.fr",
+          "url": "https://www.gouvernement.fr/feed",
+          "tags": ["Gouvernement", "France", "Officiel"],
+          "lang": "fr"
+        },
+        {
+          "name": "Service-Public.fr",
+          "url": "https://www.service-public.fr/rss",
+          "tags": ["ServicePublic", "Administratif", "France"],
+          "lang": "fr"
+        },
+        {
+          "name": "Vie-Publique.fr",
+          "url": "https://www.vie-publique.fr/rss.xml",
+          "tags": ["Politique", "Legislation", "France"],
+          "lang": "fr"
+        },
+        {
+          "name": "ANSSI (CERT-FR)",
+          "url": "https://www.cert.ssi.gouv.fr/feed/",
+          "tags": ["Securite", "CERT", "Alertes", "Officiel"],
+          "lang": "fr"
+        },
+        {
+          "name": "Data.gouv.fr Blog",
+          "url": "https://www.data.gouv.fr/fr/posts/latest.rss",
+          "tags": ["OpenData", "Numerique", "France"],
+          "lang": "fr"
+        },
+        {
+          "name": "Elysée.fr",
+          "url": "https://www.elysee.fr/rss/actualites.rss",
+          "tags": ["Presidence", "France", "Officiel"],
+          "lang": "fr"
         }
       ]
     }

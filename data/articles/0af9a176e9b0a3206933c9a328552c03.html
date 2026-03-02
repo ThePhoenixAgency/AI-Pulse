@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why Verifiable Data Is the Missing Layer in AI: Walrus</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Why Verifiable Data Is the Missing Layer in AI: Walrus</h1>
+  <div class="metadata">
+    Source: Decrypt | Date: 2/19/2026 5:01:03 PM | <a href="https://decrypt.co/358431/why-verifiable-data-is-the-missing-layer-in-ai-walrus" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><div><h4>In brief</h4><ul>
+<li>Decentralized data layer Walrus is aiming to provide a "verifiable data foundation for AI workflows" in conjunction with the Sui stack.</li>
+<li>The Sui stack includes data availability and provenance layer Walrus, offchain environment Nautilus and access control layer Seal.</li>
+<li>Several AI teams have already chosen Walrus as their verifiable data platform, with Walrus functioning as "the data layer in a much larger AI stack."</li>
+</ul></div><p>AI models are getting faster, larger, and more capable. But as their outputs begin to shape decisions in finance, healthcare, enterprise software, and beyond, an important question needs to be answered—can we actually verify the data and processes behind those outputs?</p><p>"Most AI systems rely on data pipelines that nobody outside the organization can independently verify," states Rebecca Simmonds, Managing Executive of the Walrus Foundation—a company which supports the development of decentralized data layer <a href="https://www.walrus.xyz/" target="_blank">Walrus</a>.</p><p>As she explains, there is no standard way to confirm where data came from, whether it was tampered with, or what was authorized for use in the pipeline. That gap doesn't just create compliance risk—it erodes trust in the outputs AI produces.</p><p>"It's about moving from 'trust us' to 'verify this,'" Simmonds said, "and that shift matters most in financial, legal, and regulated environments where auditability isn't optional."</p><h2><b>Why centralized logs aren't enough</b></h2><p>Many AI deployments today rely on centralized infrastructure and internal audit logs. While these can provide some visibility, they still require trust in the entity running the system.</p><p>External stakeholders have no choice but to trust that the records haven't been altered. With a decentralized data layer, integrity is anchored cryptographically, so independent parties can verify them without relying on a single operator.</p><p>This is where Walrus positions itself, as the data foundation within a broader architecture referred to as the Sui Stack. <a href="https://www.sui.io/" target="_blank">Sui</a> itself is a layer-1 blockchain network that records policy events and receipts onchain, coordinating access and logging verifiable activity across the stack.</p><figure><img alt="The Sui Stack. Image: Walrus" src="https://img.decrypt.co/insecure/rs:fit:3840:0:0:0/plain/https://cdn.decrypt.co/wp-content/uploads/2026/02/Walrus-and-the-Sui-Stack-Old-Brand.jpg@webp"><figcaption>The Sui Stack. Image: Walrus</figcaption></figure><p>"Walrus is the data availability and provenance layer—where each dataset gets a unique ID derived from its contents," Simmonds explained. "If the data changes by even a single byte, the ID changes. That makes it possible to verify that the data in a pipeline is exactly what it claims to be, hasn't been altered, and remains available."</p><p>Other components of the Sui Stack build on that foundation. <a href="https://www.sui.io/nautilus" target="_blank">Nautilus</a> lets developers run AI workloads in a secure offchain environment and generate proofs that can be checked onchain, while <a href="https://seal.mystenlabs.com/" target="_blank">Seal</a> handles access control, letting teams define and enforce who can see or decrypt data, and under what conditions.</p><p>"Sui then ties everything together by recording the rules and proofs onchain,” Simmonds said “That gives developers, auditors, and users a shared record they can independently check."</p><p>"No single layer solves the full AI trust problem," she added. "But together, they form something important: a verifiable data foundation for AI workflows—data with provable provenance, access you can enforce, computation you can attest to, and an immutable record of how everything was used."</p><p>Several AI teams have already chosen Walrus as their verifiable data platform, Simmonds said, including open-source AI agent platform <a href="https://elizaos.ai/" target="_blank">elizaOS</a>, and blockchain-native AI intelligence platform <a href="https://zarklab.ai/" target="_blank">Zark Lab</a>.</p><div><blockquote>
+<p>Autonomous agents making financial decisions on unverifiable data. Think about that for a second.</p>
+<p>With Walrus, datasets, models, and content are verifiable by default, so builders can secure AI platforms from potential regulatory non-compliance, inaccurate responses, and erosion…</p>
+<p>— Walrus /acc (@WalrusProtocol) <a href="https://twitter.com/WalrusProtocol/status/2023921665818955937?ref_src=twsrc%5Etfw">February 18, 2026</a></p></blockquote></div><h2><b>Verifiable, not infallible</b></h2><p>The phrase "verifiable AI" can sound ambitious. But Simmonds is careful about what it does—and doesn't—imply.</p><p>"Verifiable AI doesn't explain how a model reasons or guarantee the truth of its outputs," she said. But it can "anchor workflows to datasets with provable provenance, integrity, and availability." Instead of relying on vendor claims, she explained, teams can point to a cryptographic record of what data was available and authorized. When data is stored with content-derived identifiers, every modification produces a new, traceable version—allowing independent parties to confirm what inputs were used and how they were handled.</p><p>This distinction is crucial. Verifiability isn't about promising perfect results. It's about making the lifecycle of data—how it was stored, accessed, and modified—transparent and auditable. And as AI systems move into regulated or high-stakes environments, this transparency becomes increasingly important.</p><div><blockquote>
+<p>Why does <a href="https://twitter.com/WalrusProtocol?ref_src=twsrc%5Etfw">@WalrusProtocol</a> exist.</p>
+<p>Because businesses that need programmable storage with verifiable data integrity and guaranteed availability had nowhere to go.</p>
+<p>We built it and they keep showing up. Simple as that!! <a href="https://t.co/Ygxe8CFenh">pic.twitter.com/Ygxe8CFenh</a></p>
+<p>— rebecca simmonds /acc (@RJ_Simmonds) <a href="https://twitter.com/RJ_Simmonds/status/2021959235446231244?ref_src=twsrc%5Etfw">February 12, 2026</a></p></blockquote></div><p>"Finance is a pressing use case," Simmonds said, where “small data errors” can turn into real losses thanks to opaque data pipelines.“Being able to prove data provenance and integrity across those pipelines is a meaningful step toward the kind of trust these systems demand," she said, adding that it “isn't limited to finance. Any domain where decisions have consequences— healthcare, legal—benefits from infrastructure that can show what data was available and authorized."</p><h2><b>A practical starting point</b></h2><p>For teams interested in experimenting with verifiable infrastructure, Simmonds suggests starting with the data layer as a “first step” rather than attempting a wholesale overhaul.</p><p>"Many AI deployments rely on centralized storage that's really difficult for external stakeholders to independently audit,” she said. “By moving critical datasets onto content-addressed storage like Walrus, organizations can establish verifiable data provenance and availability—which is the foundation everything else builds on."</p><p>In the coming year, one of the focuses for Walrus is expanding the partners and builders on the platform. "Some of the most exciting stuff is what we're seeing developers build—from decentralized AI agent memory systems to new tools for prototyping and publishing on verifiable infrastructure,” she said. “In many ways, the community is leading the charge, organically."</p><p>"We see Walrus as the data layer in a much larger AI stack," Simmonds added. "We're not trying to be the whole answer—we're building the verifiable foundation that the rest of the stack depends on. When that layer is right, new kinds of AI workflows become possible."</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

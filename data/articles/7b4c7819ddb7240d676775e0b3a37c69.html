@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Thread Event reaching matter server addon, but not HA</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Thread Event reaching matter server addon, but not HA</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/28/2026 2:12:59 PM | <a href="https://community.home-assistant.io/t/thread-event-reaching-matter-server-addon-but-not-ha/991446" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Okay, I just dug a bit further into it, enabled Thread debug logs. There really seems to be a problem in the communication towards the HA core.</p>
+<p>I got all three possible outcomes, from all working to only button or only switch working. (thread server logs are reduced to the relevant lines):</p>
+<div><a href="https://community-assets.home-assistant.io/original/4X/5/b/a/5ba46ea6882de05ece739d0a9ddfa0b637746faa.png"><img src="https://community-assets.home-assistant.io/optimized/4X/5/b/a/5ba46ea6882de05ece739d0a9ddfa0b637746faa_2_690x351.png" alt="image"></a></div>
+<pre><code>
+2026-02-28 15:10:48.369 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 1
+2026-02-28 15:10:48.407 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 1, event_number: 198694, priority: 1, timestamp: 183892477, timestamp_type: 1, data: { newPosition: 1 } } 2026-02-28 15:10:48.627 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 0
+2026-02-28 15:10:48.642 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 3, event_number: 198695, priority: 1, timestamp: 183892517, timestamp_type: 1, data: { previousPosition: 1 } } 2026-02-28 15:10:48.859 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 1
+2026-02-28 15:10:48.873 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 1, event_number: 198696, priority: 1, timestamp: 183892977, timestamp_type: 1, data: { newPosition: 1 } } 2026-02-28 15:10:48.998 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 0
+2026-02-28 15:10:49.013 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 5, event_number: 198697, priority: 1, timestamp: 183893011, timestamp_type: 1, data: { newPosition: 1, currentNumberOfPressesCounted: 3 } }
+2026-02-28 15:10:49.027 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 3, event_number: 198698, priority: 1, timestamp: 5, timestamp_type: 1, data: { previousPosition: 1 } } 2026-02-28 15:10:49.359 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 1
+2026-02-28 15:10:49.374 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 1, event_number: 198699, priority: 1, timestamp: 183893477, timestamp_type: 1, data: { newPosition: 1 } } 2026-02-28 15:10:49.548 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 0
+2026-02-28 15:10:49.563 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 5, event_number: 198700, priority: 1, timestamp: 183893512, timestamp_type: 1, data: { newPosition: 1, currentNumberOfPressesCounted: 4 } }
+2026-02-28 15:10:49.576 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 3, event_number: 198701, priority: 1, timestamp: 3, timestamp_type: 1, data: { previousPosition: 1 } } 2026-02-28 15:10:49.852 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 1
+2026-02-28 15:10:49.865 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 1, event_number: 198702, priority: 1, timestamp: 183893977, timestamp_type: 1, data: { newPosition: 1 } } 2026-02-28 15:10:50.133 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 0
+2026-02-28 15:10:50.154 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 5, event_number: 198703, priority: 1, timestamp: 183894010, timestamp_type: 1, data: { newPosition: 1, currentNumberOfPressesCounted: 5 } }
+2026-02-28 15:10:50.169 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 3, event_number: 198704, priority: 1, timestamp: 4, timestamp_type: 1, data: { previousPosition: 1 } } 2026-02-28 15:10:50.405 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 6, event_number: 198705, priority: 1, timestamp: 183894477, timestamp_type: 1, data: { previousPosition: 1, totalNumberOfPressesCounted: 5 } } </code></pre>
+<div><a href="https://community-assets.home-assistant.io/original/4X/3/b/b/3bba5676e77c3c6b217894b6c8081b62a597da6a.png"><img src="https://community-assets.home-assistant.io/original/4X/3/b/b/3bba5676e77c3c6b217894b6c8081b62a597da6a.png" alt="image"></a></div>
+<pre><code>2026-02-28 15:20:09.211 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 5/59/1 1
+2026-02-28 15:20:09.227 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 5, cluster_id: 59, event_id: 1, event_number: 198706, priority: 1, timestamp: 184453225, timestamp_type: 1, data: { newPosition: 1 } } 2026-02-28 15:20:09.484 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 5/59/1 0
+2026-02-28 15:20:09.496 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 5, cluster_id: 59, event_id: 3, event_number: 198707, priority: 1, timestamp: 184453265, timestamp_type: 1, data: { previousPosition: 1 } }
+2026-02-28 15:20:09.508 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 1, event_number: 198708, priority: 1, timestamp: 5, timestamp_type: 1, data: { newPosition: 1 } }
+2026-02-28 15:20:09.519 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 3, event_number: 198709, priority: 1, timestamp: 5, timestamp_type: 1, data: { previousPosition: 1 } }
+2026-02-28 15:20:09.709 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 5, cluster_id: 59, event_id: 6, event_number: 198710, priority: 1, timestamp: 184453724, timestamp_type: 1, data: { previousPosition: 1, totalNumberOfPressesCounted: 1 } }
+2026-02-28 15:20:09.888 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 1, event_number: 198711, priority: 1, timestamp: 184453770, timestamp_type: 1, data: { newPosition: 1 } }
+2026-02-28 15:20:09.903 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 5, event_number: 198712, priority: 1, timestamp: 5, timestamp_type: 1, data: { newPosition: 1, currentNumberOfPressesCounted: 3 } }
+2026-02-28 15:20:09.915 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 3, event_number: 198713, priority: 1, timestamp: 3, timestamp_type: 1, data: { previousPosition: 1 } }
+2026-02-28 15:20:10.251 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 6, event_number: 198714, priority: 1, timestamp: 184454270, timestamp_type: 1, data: { previousPosition: 1, totalNumberOfPressesCounted: 3 } } </code></pre>
+<div><a href="https://community-assets.home-assistant.io/original/4X/0/1/7/017c0c61176083cbedd9ddbb230b4a1de549a8dc.png"><img src="https://community-assets.home-assistant.io/optimized/4X/0/1/7/017c0c61176083cbedd9ddbb230b4a1de549a8dc_2_690x352.png" alt="image"></a></div>
+<pre><code>2026-02-28 15:22:53.274 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 1
+2026-02-28 15:22:53.287 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 1, event_number: 198715, priority: 1, timestamp: 184617068, timestamp_type: 1, data: { newPosition: 1 } } 2026-02-28 15:22:53.396 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 0
+2026-02-28 15:22:53.408 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 3, event_number: 198716, priority: 1, timestamp: 184617108, timestamp_type: 1, data: { previousPosition: 1 } } 2026-02-28 15:22:53.773 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 1
+2026-02-28 15:22:53.788 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 1, event_number: 198717, priority: 1, timestamp: 184617568, timestamp_type: 1, data: { newPosition: 1 } } 2026-02-28 15:22:53.914 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 0
+2026-02-28 15:22:53.927 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 5, event_number: 198718, priority: 1, timestamp: 184617602, timestamp_type: 1, data: { newPosition: 1, currentNumberOfPressesCounted: 4 } }
+2026-02-28 15:22:53.939 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 3, event_number: 198719, priority: 1, timestamp: 5, timestamp_type: 1, data: { previousPosition: 1 } } 2026-02-28 15:22:54.270 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 1
+2026-02-28 15:22:54.281 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 1, event_number: 198720, priority: 1, timestamp: 184618068, timestamp_type: 1, data: { newPosition: 1 } } 2026-02-28 15:22:54.518 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 0
+2026-02-28 15:22:54.582 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 5, event_number: 198721, priority: 1, timestamp: 184618106, timestamp_type: 1, data: { newPosition: 1, currentNumberOfPressesCounted: 8 } }
+2026-02-28 15:22:54.637 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 3, event_number: 198722, priority: 1, timestamp: 6, timestamp_type: 1, data: { previousPosition: 1 } } 2026-02-28 15:22:54.764 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 1
+2026-02-28 15:22:54.780 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 1, event_number: 198723, priority: 1, timestamp: 184618568, timestamp_type: 1, data: { newPosition: 1 } } 2026-02-28 15:22:54.924 DEBUG WebSocketC~erHandler [0] Sending attribute_updated event for Node @?:13 4/59/1 0
+2026-02-28 15:22:54.938 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 5, event_number: 198724, priority: 1, timestamp: 184618602, timestamp_type: 1, data: { newPosition: 1, currentNumberOfPressesCounted: 10 } }
+2026-02-28 15:22:54.949 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 3, event_number: 198725, priority: 1, timestamp: 6, timestamp_type: 1, data: { previousPosition: 1 } }
+2026-02-28 15:22:55.283 DEBUG WebSocketC~erHandler [0] Sending node_event for Node @?:13 { node_id: 19, endpoint_id: 4, cluster_id: 59, event_id: 6, event_number: 198726, priority: 1, timestamp: 184619068, timestamp_type: 1, data: { previousPosition: 1, totalNumberOfPressesCounted: 10 } }
+</code></pre>
+<p>There are more events going out then shown in the HA data.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

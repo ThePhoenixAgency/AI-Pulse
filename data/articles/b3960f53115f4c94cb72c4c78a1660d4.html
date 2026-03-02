@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>TPMS - Vos pneus balancent votre position en clair</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>TPMS - Vos pneus balancent votre position en clair</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/27/2026 1:55:49 PM | <a href="https://korben.info/tpms-tracking-voiture-capteurs-pneus.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><article><p></p><div><span>Ce qu’il faut retenir</span><div><ol><li>Les capteurs TPMS des voitures émettent en clair sur 433 MHz un identifiant unique, permettant à quiconque avec un Raspberry Pi et un dongle RTL-SDR (100€) de pister les trajets, horaires et charge des véhicules à distance</li><li>Une étude suisse a capté 6 millions de messages de 20 000 véhicules en 10 semaines, prouvant qu'on peut reconstituer les habitudes complètes (trajets, télétravail, présence) sans caméra ni GPS</li><li>Les systèmes directs (dTPMS) chez Toyota, Mercedes, Peugeot sont vulnérables, les indirects (iTPMS) chez VW/Audi/Skoda sont sûrs ; la réglementation UN R155 n'impose pas le chiffrement et les utilisateurs ne peuvent rien faire pour se protéger</li></ol><p>Résumé généré par IA</p></div><div><p>Gaël Musquet, mon copain hacker, me parlait déjà de tracking TPMS en 2020. Du coup, quand je vois des chercheurs publier un document de recherche en 2026 pour "<em>découvrir</em>" qu'on peut pister une voiture via ses capteurs de pneus, bon, comment dire... je suis pas tombé de ma chaise.</p><p>Mais faut reconnaître que l'étude en question va quand même plus loin qu'une discussion entre 2 stands au FIC. En effet, une équipe d'IMDEA Networks et d'armasuisse (le labo de défense suisse, rien que ça) a posé 5 récepteurs SDR dans une ville pendant 10 semaines. Coût du matos, environ 100 dollars par capteur, qui est en gros un Raspberry Pi 4 avec un dongle
+<a href="https://korben.info/intercept-sigint-dashboard-rtl-sdr.html">RTL-SDR</a>
+à 25 balles. Et grâce à cela, ils ont capté plus de 6 MILLIONS de messages, provenant de plus de 20 000 véhicules !</p><div><p></p><p><em>un Raspberry Pi 4 avec un dongle RTL-SDR -
+<a href="https://dspace.networks.imdea.org/handle/20.500.12761/2011">Source</a></em></p></div><p>Car oui, vous ne le savez peut-être pas, mais les capteurs de pression des pneus (TPMS pour les intimes) émettent régulièrement dès que le véhicule roule, sur 433 MHz en Europe. Et ces signaux contiennent un identifiant unique... qui bien sûr est en clair ^^. Pas de chiffrement, pas d'authentification, QUE DALLE. Donc avec un logiciel open source comme
+<a href="https://github.com/merbanan/rtl_433">rtl_433</a>
+, ça devient vite facile de capter tout ça à plusieurs dizaines de mètres à la ronde.</p><p>En croisant les identifiants captés par plusieurs récepteurs, les chercheurs ont pu reconstituer les trajets des véhicules, identifier leurs horaires de travail, détecter les jours de télétravail et même estimer les variations de charge du véhicule (et potentiellement déduire la présence de passagers, même si c'est encore approximatif). Le tout sans caméra, sans GPS, et sans accès au réseau du véhicule !</p><p>Il suffirait de trouver l'identifiant d'une voiture précise pour déclencher par exemple automatiquement un lâcher de confettis en papier parfaitement inoffensifs à son passage, si vous voyez ce que je veux dire.</p><p>Alors attention, tous les véhicules ne sont pas logés à la même enseigne. Les TPMS dits "directs" (dTPMS), qu'on trouve souvent chez Toyota, Peugeot, Citroën, Hyundai ou Mercedes, émettent ces fameux signaux radio captables. Alors que les systèmes "indirects" (iTPMS), utilisés par la plupart des modèles Volkswagen, Audi ou Skoda, se basent sur les capteurs ABS et n'émettent rien par radio. Bref, si vous roulez en Golf de base, y'a de bonnes chances que vous soyez tranquilles sur ce coup-là même si certaines versions sportives ou haut de gamme (Golf R, GTI selon les marchés) peuvent embarquer du dTPMS.</p><p>Et le pire dans tout ça c'est que la réglementation UN R155 sur la cybersécurité automobile n'impose pas explicitement le chiffrement des TPMS. En gros, les constructeurs ne sont pas forcés de sécuriser ces transmissions. Pirelli et Bosch bossent bien sur un "Cyber Tyre" en Bluetooth Low Energy, mais c'est réservé au haut de gamme et c'est pas demain que ça arrivera sur votre Clio.</p><p>Donc côté protection, soyons honnêtes, y'a pas grand-chose à faire côté utilisateur. Vous ne pouvez pas désactiver vos TPMS (c'est obligatoire depuis 2014 pour les voitures neuves en Europe), et les capteurs ne proposent aucune option de chiffrement. Sauf si vous roulez en véhicule vintage d'avant 2014, c'est open bar. Une des parades serait que les constructeurs implémentent un système de rotation d'identifiants, un peu comme le fait déjà le Bluetooth avec les adresses MAC aléatoires, mais pour l'instant on en est loin.</p><p>Pour ceux qui veulent creuser le sujet, j'avais fait
+<a href="https://korben.info/rencontre-gael-musquet-hacker-citoyen.html">une rencontre avec Gaël Musquet</a>
+il y a quelques années, où il expliquait déjà comment reprendre le contrôle de nos véhicules connectés. Et si vous voulez
+<a href="https://korben.info/hacker-voiture.html">comprendre comment on hacke une voiture</a>
+de manière plus générale, c'est un rabbit hole sans fond !</p><p>Bref, la prochaine fois que vous gonflez vos pneus... dites-leur bonjour de ma part.</p><p><a href="https://dspace.networks.imdea.org/handle/20.500.12761/2011">Source</a></p></div>Références<section><ul><li><a href="https://dspace.networks.imdea.org/handle/20.500.12761/2011" target="_blank" rel="noopener noreferrer">https://dspace.networks.imdea.org/handle/20.500.12761/2011</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

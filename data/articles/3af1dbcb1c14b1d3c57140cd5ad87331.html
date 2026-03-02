@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Exploring OpenAPI Generator via static analysis</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Exploring OpenAPI Generator via static analysis</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 12:04:09 PM | <a href="https://dev.to/pvsdev/exploring-openapi-generator-via-static-analysis-29ci" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7d4vheoqsdenvp4ge5ro.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7d4vheoqsdenvp4ge5ro.png" alt=" "></a></p> <p>Would you like to see some errors and suspicious fragments in Java code? We found lost increments, empty regular expressions, strange string sanitization, and more in an open-source project called OpenAPI Generator.</p> <h2> <a name="introduction" href="#introduction"> </a> Introduction
+</h2> <p>First, I'd like to say hello and introduce new readers to this type of articles we have on our blog.</p> <p>In such articles, we explain how we use PVS-Studio static analyzer on popular open-source projects, and then we share some of our most curious findings. In special cases, we also highlight interesting aspects of the project's language by examining some of the warnings.</p> <p>We're checking <a href="https://github.com/OpenAPITools/openapi-generator" target="_blank">OpenAPI Generator</a> today. This is an open-source project designed to automatically generate client libraries, server stubs, documentation, and configuration files based on OpenAPI specifications in JSON or YAML format.</p> <p>One of the main project's objectives is to help implement the API-First (aka Contract-First) approach. Within this approach, teams that are developing client-server systems start by defining an interaction contract between the services and clients using a formal specification. Based on this contract, client libraries and server stubs are automatically generated, and then developers implement the business logic on top of them. The project <a href="https://openapi-generator.tech/docs/plugins" target="_blank">provides plugins</a> for the Gradle and Maven build systems for Java. You can find the full list of languages and technologies that OpenAPI Generator supports for code generation <a href="https://openapi-generator.tech/docs/generators" target="_blank">here</a>.</p> <p>The project is fairly popular: at the time of writing, it has just over 25,000 stars on GitHub.</p> <p>For our check, we used the latest version, <a href="https://github.com/OpenAPITools/openapi-generator/tree/v7.19.0" target="_blank">v7.19.0</a>. Now, let's move on to the warnings.</p> <h2> <a name="an-unclosed-stream" href="#an-unclosed-stream"> </a> An unclosed stream
+</h2> <p>We'll start the article with a discussion of an open file stream. Here's a code snippet that triggered the analyzer:<br>
+</p> <div>
+<pre><code>@Override
+public File write( Map&lt;String, Object&gt; data, String template, File target
+) throws IOException { .... } else { InputStream is; try { String fullTemplatePath = getFullTemplateFile(template); is = getInputStream(fullTemplatePath); } catch (TemplateNotFoundException ex) { is = new FileInputStream(Paths.get(template).toFile()); // &lt;= } return writeToFile( target.getAbsolutePath(), IOUtils.toByteArray(is) ); }
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warning: <a href="https://pvs-studio.com/en/docs/warnings/v6127/?utm_source=website&amp;utm_medium=medium&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">V6127</a> The 'is' Closeable object is not closed. This may lead to a resource leak. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/TemplateManager.java#L177" target="_blank">TemplateManager.java 177</a></p> <p>The catch block creates a file input stream named is. The return statement then passes it to IOUtils.toByteArray, and that's it. Upon exiting the method, we lose the reference to this file stream, meaning there's no way to close it. As a result, the resource remains unavailable until the garbage collector eventually reaches the object holding it. Since the process is non-deterministic, this can lead to a file descriptor leak.</p> <p>You might think that IOUtils.toByteArray() closes the stream, but it doesn't.</p> <p><a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html" target="_blank">The try-with-resources</a> construct in Java is designed for proper resource management, so it's preferable to use it in similar situations.</p> <p>P.S. Starting with Java 11, Paths.get is considered obsolete. It's better to use Path.of instead.</p> <h2> <a name="lost-increment" href="#lost-increment"> </a> Lost increment
+</h2> <p>One of the basic theoretical questions everyone faces when starting to learn Java (or another similar programming language) is the difference between post- and pre-increment operations. The following code snippet illustrates this:<br>
+</p> <div>
+<pre><code>private String patchPropertyName(
+&nbsp; CodegenModel model, &nbsp; CodegenProperty property, &nbsp; String value, Set&lt;String&gt; composedPropertyNames
+) {
+&nbsp; ....
+&nbsp; if (composedPropertyNames != null) {
+&nbsp; &nbsp; String tmpName = name;
+&nbsp; &nbsp; long count = model.allVars.stream()
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .map(v -&gt; v.name)
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .filter(n -&gt; n.equals(tmpName))
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .count() + composedPropertyNames.stream()
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .filter(n -&gt; n.equals(tmpName))
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .count();
+&nbsp; &nbsp; if (count &gt; 0) {
+&nbsp; &nbsp; &nbsp; name = name + count++; &nbsp;// &lt;=
+&nbsp; &nbsp; }
+&nbsp; &nbsp; composedPropertyNames.add(name);
+&nbsp; }
+&nbsp; return name;
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warning: <a href="https://pvs-studio.com/en/docs/warnings/v6123/?utm_source=website&amp;utm_medium=medium&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">V6123</a> Modified value of the operand is not used after the increment operation. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages/AbstractCSharpCodegen.java#L780" target="_blank">AbstractCSharpCodegen.java 780</a></p> <p>I think you can see what's going on here. Developers attempted to add some count value to the name string. However, they used the post-increment operator on count when adding it, yet the incremented value was never used. In other words, this post-increment operation is useless.</p> <p>This is likely the result of a typo, which can lead to various issues. Even with such simple code, attention to detail is crucial.</p> <h2> <a name="stonks" href="#stonks"> </a> Stonks
+</h2> <div>
+<pre><code>@Override
+public String toModelName(final String name) {
+&nbsp; // obtain the name from modelNameMapping directly if provided
+&nbsp; if (modelNameMapping.containsKey(name)) {
+&nbsp; &nbsp; return modelNameMapping.get(name);
+&nbsp; }
+&nbsp; String result = sanitizeName(name);
+&nbsp; // remove dollar sign
+&nbsp; result = result.replaceAll("$", ""); // &lt;=
+&nbsp; ....
+} </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warning: <a href="https://pvs-studio.com/en/docs/warnings/v6059/" target="_blank">V6059</a> An odd use of a special character in a regular expression. Possibly, it was intended to be escaped. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages/AbstractJuliaCodegen.java#L313" target="_blank">AbstractJuliaCodegen.java 313</a></p> <p>Both the comment above the highlighted line and the code itself make it clear that developers wanted to remove $ characters from the string. Unfortunately, that won't actually happen.</p> <p>The replaceAll method treats its first argument as a regular expression, and $ is a special character that marks the end of the regular expression. As a result, devs got the regular expression that searches for absolutely nothing.</p> <p>To fix this, we need to properly escape the special character with \. In that case, the fixed version looks like this:<br>
+</p> <div>
+<pre><code>result = result.replaceAll("\\$", ""); // &lt;=
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>By the way, this code snippet is used to generate code for the <a href="https://docs.julialang.org/en/v1/" target="_blank">Julia</a> programming language.</p> <h2> <a name="logging-didnt-help" href="#logging-didnt-help"> </a> Logging didn't help
+</h2> <div>
+<pre><code>....
+LOGGER.warn(
+&nbsp; "Unknown default value for var {0} in class {1}",
+&nbsp; var.name, &nbsp; cm.classname
+);
+....
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warning: <a href="https://pvs-studio.com/en/docs/warnings/v6046/?utm_source=website&amp;utm_medium=medium&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">V6046</a> Incorrect format. A different number of format items is expected. Arguments not used: 1, 2. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages/ScalaPlayFrameworkServerCodegen.java#L407" target="_blank">ScalaPlayFrameworkServerCodegen.java 407</a></p> <p>The project uses <a href="https://www.slf4j.org/" target="_blank">slf4j</a> for logging, where value substitution in log messages <a href="https://www.slf4j.org/faq.html#logging_performance" target="_blank">relies on empty curly braces—{}</a>. However, the code here uses C#-style formatting syntax, so, as you might have guessed, the values will never make it into the log message.</p> <p>The project also contains similar cases. The difference is that they use wildcard characters similar to String.format or C's printf.<br>
+</p> <div>
+<pre><code>....
+LOGGER.error( "Generated field number is " "in reserved range (19000, 19999) for %s, %d", name, fieldNumber
+);
+....
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warning: <a href="https://pvs-studio.com/en/docs/warnings/v6046/?utm_source=website&amp;utm_medium=medium&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">V6046</a> Incorrect format. A different number of format items is expected. Arguments not used: 1, 2. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages/ProtobufSchemaCodegen.java#L1076" target="_blank">ProtobufSchemaCodegen.java 1076</a></p> <p>The code uses the same slf4j, though.</p> <p>In addition to incorrect wildcard characters, we also found some simple typos in the project. The developers forgot to add the required parameter to the logger here:<br>
+</p> <div>
+<pre><code>....
+LOGGER.error( "Type {} not yet supported in openapi-normalizer " + "to process OpenAPI 3.1 spec with multiple types."
+);
+....
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warning: <a href="https://pvs-studio.com/en/docs/warnings/v6046/" target="_blank">V6046</a> Incorrect format. A different number of format items is expected. Missing arguments: 1. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/OpenAPINormalizer.java#L1857" target="_blank">OpenAPINormalizer.java 1857</a></p> <p>And here, both an extra placeholder in the message and a missing parameter are possible:<br>
+</p> <div>
+<pre><code>....
+List&lt;String&gt; newArgs = new ArrayList&lt;&gt;();
+....
+String newArg = String.join(" ", newArgs);
+LOGGER.trace("new arg {} {}", newArg);
+formattedArgs.add(newArg);
+....
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warning: <a href="https://pvs-studio.com/en/docs/warnings/v6046/?utm_source=website&amp;utm_medium=medium&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">V6046</a> Incorrect format. A different number of format items is expected. Missing arguments: 2. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages/SpringCodegen.java#L1140" target="_blank">SpringCodegen.java 1140</a></p> <h2> <a name="misusing-optional-can-lead-to-disaster" href="#misusing-optional-can-lead-to-disaster"> </a> Misusing Optional can lead to disaster
+</h2> <div>
+<pre><code>private static CodegenParameter pathParamForName( CodegenOperation op, String pathParam
+) { final CodegenParameter param = op.pathParams.stream() .filter(p -&gt; p.paramName.equals(pathParam)) .findFirst() .get(); if (param == null) { throw new RuntimeException("Bug: path param " + pathParam + " not found"); } return param;
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warning: <a href="https://pvs-studio.com/en/docs/warnings/v6036/?utm_source=website&amp;utm_medium=medium&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">V6036</a> The value from the uninitialized 'op.pathParams.stream().filter(p -&gt; p.paramName.equals(pathParam)).findFirst()' optional is used. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages/ScalaCaskServerCodegen.java#L1021" target="_blank">ScalaCaskServerCodegen.java 1021</a></p> <p>The Stream.findFirst method returns an Optional object. This is where the error lies.</p> <p>Instead of obtaining the Optional object and checking whether it contains the required value using isPresent, it's unpacked using get. If Optional is empty, the code won't get to the point of checking and throwing a Runtime exception with its message. This is why:<br>
+</p> <div>
+<pre><code>public T get() { if (value == null) { throw new NoSuchElementException("No value present"); } return value;
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Overall, Optional was created to carefully work with values that may or may not exist. However, this care is neglected here. Optional itself provides everything its authors originally intended, but in a more conventional and concise manner:<br>
+</p> <div>
+<pre><code>private static CodegenParameter pathParamForName( CodegenOperation op, String pathParam
+) { return op.pathParams.stream() .filter(p -&gt; p.paramName.equals(pathParam)) .findFirst() .orElseThrow(() -&gt; new RuntimeException( "Bug: path param " + pathParam + " not found" ));
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="repeats" href="#repeats"> </a> Repeats
+</h2> <p>The project contains many similar code fragments:<br>
+</p> <div>
+<pre><code>public Swift6ClientCodegen() {
+&nbsp; ....
+&nbsp; defaultIncludes = new HashSet&lt;&gt;(
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Arrays.asList(
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "Data",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "Date",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "URL", // for file
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "UUID",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "Array",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "Dictionary",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "Set",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "Any", // &lt;=
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "Empty",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "AnyObject",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "Any", // &lt;=
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "Decimal")
+&nbsp; );
+&nbsp; ....
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warning: <a href="https://pvs-studio.com/en/docs/warnings/v6033/?utm_source=website&amp;utm_medium=medium&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">V6033</a> An item with the same key '"Any"' has already been added. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages/Swift6ClientCodegen.java#L190" target="_blank">Swift6ClientCodegen.java 190</a></p> <p>In this particular project, this issue is unlikely to cause catastrophic or hard-to-trace crashes. Still, it's worth a brief mention.</p> <p>Based on our experience, errors like this can sometimes signal that the devs added the wrong value to a collection. Developers often insert something resembling the intended value or forget to update it after copying and pasting. A good example of such an error appeared in the GeoGebra project.</p> <h2> <a name="string-comparison-strikes-again" href="#string-comparison-strikes-again"> </a> String comparison strikes again
+</h2> <p>We encounter this error rather frequently. The code fragment:<br>
+</p> <div>
+<pre><code>@Getter private String contentType;
+@Getter private String style;
+....
+public boolean equals(Object o) { if (this == o) return true; if (o == null || getClass() != o.getClass()) return false; CodegenEncoding that = (CodegenEncoding) o; return contentType == that.getContentType() &amp;&amp; // &lt;= Objects.equals(headers, that.getHeaders()) &amp;&amp; style == that.getStyle() &amp;&amp; // &lt;= explode == that.getExplode() &amp;&amp; allowReserved == that.getAllowReserved() &amp;&amp; Objects.equals(vendorExtensions, that.vendorExtensions);
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warnings:</p> <p><a href="https://pvs-studio.com/en/docs/warnings/v6013/?utm_source=website&amp;utm_medium=devto&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">V6013</a> Strings 'contentType' and 'that.getContentType()' are compared by reference. Possibly an equality comparison was intended. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/CodegenEncoding.java#L50" target="_blank">CodegenEncoding.java 50</a></p> <p><a href="https://pvs-studio.com/en/docs/warnings/v6013/?utm_source=website&amp;utm_medium=devto&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">V6013</a><br> Strings 'style' and 'that.getStyle()' are compared by reference. Possibly an equality comparison was intended. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/CodegenEncoding.java#L52" target="_blank">CodegenEncoding.java 52</a></p> <p>In each article on this topic, we explain why it's better to avoid doing so. We've done this so many times that it has become a part of our <a href="https://pvs-studio.com/en/blog/terms/7010/?utm_source=website&amp;utm_medium=devto&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">terminology</a> section. In short, the results of such comparisons may be non-deterministic. It all depends on how the string used in the equals method is defined. For such a check to produce a deterministic result, the string must always be in the String Pool. It's quite difficult to guarantee such behavior throughout the entire application.</p>
+<h2> <a name="a-pointless-exchange" href="#a-pointless-exchange"> </a> A pointless exchange
+</h2> <p>Let's take another look at a fragment where characters in a string are replaced:<br>
+</p> <div>
+<pre><code>@Override
+public String toDefaultValue(Schema p) { .... } else if (ModelUtils.isStringSchema(p)) { if (p.getDefault() != null) { String defaultValue = String.valueOf(p.getDefault()); if (defaultValue != null) { defaultValue = defaultValue.replace("\\", "\\\\") .replace("'", "\'"); // &lt;= .... } } } ....
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warning: <a href="https://pvs-studio.com/en/docs/warnings/v6009/?utm_source=website&amp;utm_medium=devto&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">V6009</a> Function 'replace' receives an odd argument. The '"'"' argument was passed several times. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages/AbstractPythonPydanticV1Codegen.java#L192" target="_blank">AbstractPythonPydanticV1Codegen.java 191</a></p> <p>It's difficult to understand the author's intention. Perhaps they expected the created string to escape the ' character, but—spoiler alert—it won't. To replace ' with \' in the final line, we need to fix the call to the replace method:<br>
+</p> <div>
+<pre><code>.replace("'", "\\\\'");
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Then, we'll get the \'aaa\' string from 'aaa'. Now, the 'aaa' string remains unchanged, but if that wasn't the goal, then we're dealing with some weird, outdated code.</p> <h2> <a name="be-careful-with-null" href="#be-careful-with-null"> </a> Be careful with null
+</h2> <p>Now, let's look at the possible null dereferencing. The first fragment:<br>
+</p> <div>
+<pre><code>@Override
+public String toOneOfName( List&lt;String&gt; names, Schema composedSchema
+) { Map&lt;String, Object&gt; exts = null; if (composedSchema != null) { // &lt;= exts = composedSchema.getExtensions(); } if (exts != null &amp;&amp; exts.containsKey(X_ONE_OF_NAME)) { return (String) exts.get(X_ONE_OF_NAME); } List&lt;Schema&gt; schemas = ModelUtils.getInterfaces(composedSchema); // &lt;= ....
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Judging by the context, the composedSchema parameter passed to the method may be null. We pass it to the getInterfaces method, where it's immediately dereferenced:<br>
+</p> <div>
+<pre><code>public static List&lt;Schema&gt; getInterfaces(Schema composed) { if (composed.getAllOf() != null &amp;&amp; !composed.getAllOf().isEmpty()) { // &lt;= ....
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warning: <a href="https://pvs-studio.com/en/docs/warnings/v6008/?utm_source=website&amp;utm_medium=devto&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">V6008</a> Potential null dereference of 'composedSchema'. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages/RustServerCodegen.java#L1422" target="_blank">RustServerCodegen.java 1422</a></p> <p>The project has a similar warning. Let's take a look at it:<br>
+</p> <div>
+<pre><code>@Override
+public int compareTo(ModelDepend second) { .... if ( depend != null &amp;&amp; depend.size() != (second.depend == null ? 0 : second.depend.size()) // &lt;= ) { //LOGGER.debug("Compare " + name + " with " + second.name + "=D" // + (depend.size() - second.depend.size())); return depend.size() - second.depend.size(); // &lt;= } //LOGGER.debug("Compare " + name + " with " + second.name + "=&lt;name&gt;"); return name.compareTo(second.name);
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>PVS-Studio warning: <a href="https://pvs-studio.com/en/docs/warnings/v6008/" target="_blank">V6008</a> Potential null dereference of 'second.depend'. <a href="https://github.com/OpenAPITools/openapi-generator/blob/v7.19.0/modules/openapi-generator/src/main/java/org/openapitools/codegen/languages/AbstractAdaCodegen.java#L895" target="_blank">AbstractAdaCodegen.java 895</a></p> <p>The condition contains the following fragment:<br>
+</p> <div>
+<pre><code>second.depend == null ? 0 : second.depend.size() </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>If the entire condition is true, the second.depend parameter is dereferenced in the then block without any checks. This can also lead to an NPE.</p> <p>The best approach would be to either account for the possibility that second.depend may be null before dereferencing it, or remove the confusing check above.</p> <h2> <a name="conclusion" href="#conclusion"> </a> Conclusion
+</h2> <p>Well, that's it for today. We'll notify the OpenAPI Generator creators about all the issues we've covered via PR and Issue in their repository.</p> <p>If you'd like to try PVS-Studio on your C, C++, C#, or Java project—and soon on JavaScript, TypeScript, and Go as well—feel free to use <a href="https://pvs-studio.com/en/pvs-studio/try-free/?utm_source=website&amp;utm_medium=devto&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">this link</a>.</p> <p>If you own an <a href="https://pvs-studio.com/en/order/open-source-license/?utm_source=website&amp;utm_medium=devto&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">open-source project</a> or you're a <a href="https://pvs-studio.com/en/order/for-students/?utm_source=website&amp;utm_medium=devto&amp;utm_campaign=article&amp;utm_content=1344" target="_blank">student or teacher</a>, we offer a free license. For more information, follow the links.</p> <p>That's all folks. See ya soon!</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

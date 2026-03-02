@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Gladys Assistant 4.69 : Zigbee2mqtt passe sur Ember et suivi énergétique Tasmota</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Gladys Assistant 4.69 : Zigbee2mqtt passe sur Ember et suivi énergétique Tasmota</h1>
+  <div class="metadata">
+    Source: Gladys Assistant (Forum) | Date: 2/27/2026 10:39:56 AM | <a href="https://community.gladysassistant.com/t/gladys-assistant-4-69-zigbee2mqtt-passe-sur-ember-et-suivi-energetique-tasmota/10067" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <p><p>Bonjour à tous,</p>
+<p>Une nouvelle version de Gladys Assistant est disponible <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/partying_face.png?v=15" title=":partying_face:" class="emoji" alt=":partying_face:" loading="lazy" width="20" height="20"></p>
+<p>Voici les nouveautés de cette version :</p>
+<h3><a name="p-82081-zigbee2mqtt-ajout-du-nouveau-driver-ember-1" class="anchor" href="https://community.gladysassistant.com#p-82081-zigbee2mqtt-ajout-du-nouveau-driver-ember-1" aria-label="Heading link"></a>Zigbee2mqtt : Ajout du nouveau driver Ember</h3>
+<p>Zigbee2mqtt propose désormais un nouveau driver, Ember, pour certains dongles comme le dongle Sonoff ZBDongle-E par exemple.</p>
+<p>L’intégration Zigbee2mqtt dans Gladys vous permet désormais de sélectionner ce driver Ember pour les dongles compatibles.</p>
+<p>Si vous utilisez EZSP, Zigbee2mqtt ne touchera pas à votre installation sans action de votre part, pour éviter de casser votre installation. La stabilité est une valeur très importante du projet, et cette mise à jour a été pensé pour ne pas impacter votre quotidien.</p>
+<p>Si vous souhaitez passer à Ember, c’est possible, mais il faudra sûrement mettre à jour le firmware de votre dongle Zigbee avant.</p>
+<p>Par exemple, pour le Sonoff Dongle-E, l’intégration vous offre la possibilité de sélectionner le driver de votre choix entre «&nbsp;Ember&nbsp;» (le nouveau par défaut), et l’ancien EZSP :</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://gladys-assistant-community.b-cdn.net/uploads/default/original/3X/0/3/030b5662cd0da85a00a526c5dfb4cb2c5c2b8be5.png" data-download-href="https://gladys-assistant-community.b-cdn.net/uploads/default/030b5662cd0da85a00a526c5dfb4cb2c5c2b8be5" title="Screenshot 2026-02-27 at 11.16.11"><img src="https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/0/3/030b5662cd0da85a00a526c5dfb4cb2c5c2b8be5_2_664x499.png" alt="Screenshot 2026-02-27 at 11.16.11" data-base62-sha1="qVIOlClzbLnKZc8tqqDBOaic0B" width="664" height="499" srcset="https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/0/3/030b5662cd0da85a00a526c5dfb4cb2c5c2b8be5_2_664x499.png, https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/0/3/030b5662cd0da85a00a526c5dfb4cb2c5c2b8be5_2_996x748.png 1.5x, https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/0/3/030b5662cd0da85a00a526c5dfb4cb2c5c2b8be5_2_1328x998.png 2x" data-dominant-color="F0F3F7"></a></div><p></p>
+<p>Si vous testez le nouveau driver, et que votre firmware n’est pas compatible, pas de panique, vous verrez un message :</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://gladys-assistant-community.b-cdn.net/uploads/default/original/3X/2/2/2296758ba59ac2a7269137c1504588455c22f05d.png" data-download-href="https://gladys-assistant-community.b-cdn.net/uploads/default/2296758ba59ac2a7269137c1504588455c22f05d" title="Screenshot 2026-02-27 at 11.18.11"><img src="https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/2/2/2296758ba59ac2a7269137c1504588455c22f05d_2_690x108.png" alt="Screenshot 2026-02-27 at 11.18.11" data-base62-sha1="4VYAEOC01JhzDcioUYShSIi4oTH" width="690" height="108" srcset="https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/2/2/2296758ba59ac2a7269137c1504588455c22f05d_2_690x108.png, https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/2/2/2296758ba59ac2a7269137c1504588455c22f05d_2_1035x162.png 1.5x, https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/2/2/2296758ba59ac2a7269137c1504588455c22f05d_2_1380x216.png 2x" data-dominant-color="F6F0D6"></a></div><p></p>
+<p>Vous pourrez alors soit mettre à jour le firmware, soit repartir sur EZSP en attendant.</p>
+<p>N’hésitez pas si vous avez des questions <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/slight_smile.png?v=15" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<p>Un grand merci à <a class="mention" href="https://community.gladysassistant.com/u/cicoub13">@cicoub13</a> pour cette contribution !</p>
+<h3><a name="p-82081-dashboard-amlioration-de-laffichage-des-capteurs-douverture-de-porte-2" class="anchor" href="https://community.gladysassistant.com#p-82081-dashboard-amlioration-de-laffichage-des-capteurs-douverture-de-porte-2" aria-label="Heading link"></a>Dashboard : Amélioration de l’affichage des capteurs d’ouverture de porte</h3>
+<p>L’affichage des capteurs d’ouverture de porte sur le dashboard a été amélioré pour une meilleure lisibilité.</p>
+<p>Désormais, on affiche «&nbsp;Ouvert/Fermé&nbsp;», au lieu de la petite icône de cadenas qui n’était pas très lisible.</p>
+<h3><a name="p-82081-tasmota-ajout-du-suivi-nergtique-3" class="anchor" href="https://community.gladysassistant.com#p-82081-tasmota-ajout-du-suivi-nergtique-3" aria-label="Heading link"></a>Tasmota : Ajout du suivi énergétique</h3>
+<p>Les appareils Tasmota sont désormais intégrés au suivi de l’énergie.</p>
+<p>Merci à <a class="mention" href="https://community.gladysassistant.com/u/terdious">@Terdious</a> pour ce développement <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/raising_hands.png?v=15" title=":raising_hands:" class="emoji" alt=":raising_hands:" loading="lazy" width="20" height="20"></p>
+<hr>
+<p>Pour mettre à jour, c’est automatique, ou vous pouvez forcer la mise à jour dans les paramètres.</p>
+<p>Bonne fin de semaine à tous !</p> <p><small>12 messages - 6 participant(e)s</small></p> <p><a href="https://community.gladysassistant.com/t/gladys-assistant-4-69-zigbee2mqtt-passe-sur-ember-et-suivi-energetique-tasmota/10067">Lire le sujet en entier</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

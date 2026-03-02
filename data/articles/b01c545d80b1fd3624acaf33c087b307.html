@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - kurouna/elecxzy: elecxzy project</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - kurouna/elecxzy: elecxzy project</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 11:05:09 AM | <a href="https://github.com/kurouna/elecxzy" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: ES
+  </div>
+  <div class="content">
+    <div><h1>elecxzy</h1><a href="#elecxzy"></a></div>
+<p><a href="https://zenn.dev/kurouna"><img src="https://camo.githubusercontent.com/fdb51cd89aed8fd1eb46f61dcede63db7fd9f48d2e3b5511c9897dd6eb078046/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5a656e6e2d6b75726f756e612d626c7565" alt="Zenn"></a>
+<a href="https://x.com/elecxzy"><img src="https://camo.githubusercontent.com/b733a76f5851bae61099032d0194e5e41647f1ca583eeb382384c9957a0b59e1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f582d656c6563787a792d626c61636b" alt="X"></a></p>
+<p><strong>A lightweight, Lisp-free text editor with Emacs keybindings.</strong>
+Lisp非搭載・設定最小限。迷わず書ける、Emacs操作の軽量エディタ。</p>
+<p> <a target="_blank" href="/kurouna/elecxzy/blob/main/assets/main-screenshot.gif"><img src="/kurouna/elecxzy/raw/main/assets/main-screenshot.gif" alt="elecxzy Screenshot"></a>
+</p>
+<div><p>Warning</p><p><strong> Project Status: Pre-release (Alpha) / 開発中（アルファ版）</strong></p>
+<p>This software is currently in an <strong>early alpha stage</strong>. Features are under active development, and some functions may be incomplete or unstable. Use with caution.</p>
+<p>本ソフトウェアは現在、<strong>開発初期のプレリリース（アルファ）版</strong>です。すべての機能が完全に動作する状態ではなく、挙動が不安定な場合があります。あらかじめご了承ください。</p>
+</div>
+<p><a href="#english">English</a> | <a href="#japanese">日本語</a></p>
+<hr>
+<p><a name="user-content-english"></a></p>
+<div><h2>English</h2><a href="#english"></a></div>
+<p></p><pre><code>elecxzy</code></pre> is a modern text editor built from the ground up to reconstruct the powerful and beloved Emacs user experience using contemporary web technologies. It is designed for those who value the Emacs workflow but seek a streamlined, lightweight, and efficient environment, allowing you to start coding or writing immediately with the familiar keybindings you've mastered, without the burden of complex configuration.<p></p>
+<div><h3> Key Features</h3><a href="#-key-features"></a></div>
+<ul>
+<li><strong>Modern UI &amp; Interface</strong>: A contemporary visual design utilizing web technologies, featuring floating minibuffer popups, distraction-free scrollbars, and high-quality typography while preserving core Emacs semantics.</li>
+<li><strong>Lisp-free &amp; Lightweight</strong>: No heavy script engine overhead. Just the essential text editing features you need.</li>
+<li><strong>Ready-to-Use Defaults</strong>: Comes with sensible default settings so you can start coding or writing immediately after installation without tedious configuration.</li>
+<li><strong>Emacs-inspired Workflow</strong>: Familiar keybindings (C-f, C-b, C-n, C-p, C-a, C-e, etc.) and command structures for power users.</li>
+<li><strong>Flexible Window Management</strong>: Support for recursive window splitting (vertical/horizontal) with <pre><code>C-x 2</code></pre>, <pre><code>C-x 3</code></pre>. Adjust sizes with intuitive, Emacs-style commands (<pre><code>C-x ^</code></pre>, <pre><code>C-x }</code></pre>).</li>
+<li><strong>Major Modes &amp; Syntax Highlighting</strong>: Specialized modes for TypeScript, JavaScript, C/C++, Python, Go, Rust, SQL, YAML, and more.</li>
+<li><strong>Real-time Previews</strong>: Instant preview modes for Markdown and HTML to bridge the gap between editing and publishing.</li>
+<li><strong>Interactive Search &amp; Replace</strong>: Powerful <pre><code>isearch</code></pre> (incremental search) and <pre><code>query-replace</code></pre> for fast navigation and editing.</li>
+<li><strong>High-Performance Buffer Engine</strong>: Uses a <strong>Piece Table</strong> data structure for efficient handling of large files and infinite undo history.</li>
+<li><strong>Appearance Customization</strong>: Adjust colors and fonts (Global or Buffer-local) via simple JSON configuration or M-x commands.</li>
+<li><strong>Seamless Japanese IME Support</strong>: Optimized for smooth Japanese typing with dedicated focus handling. (Toggle with <pre><code>C-\</code></pre> or <pre><code>C-]</code></pre>)</li>
+</ul>
+<p> <a target="_blank" href="/kurouna/elecxzy/blob/main/assets/ime-screenshot.png"><img src="/kurouna/elecxzy/raw/main/assets/ime-screenshot.png" alt="elecxzy IME Screenshot"></a>
+</p>
+<div><h3> Tech Stack</h3><a href="#-tech-stack"></a></div>
+<ul>
+<li><strong>Framework</strong>: Electron (Node.js)</li>
+<li><strong>Frontend</strong>: React, TypeScript (Custom rendering engine)</li>
+<li><strong>Styling</strong>: Styled-components (CSS-in-JS for clean, component-scoped design)</li>
+<li><strong>Syntax Highlighting</strong>: Highlight.js integrated</li>
+</ul>
+<div><h3> Commands</h3><a href="#-commands"></a></div>
+<p>For a full list of available commands and keybindings, please refer to: <strong><a href="/kurouna/elecxzy/blob/main/COMMANDLIST.md">COMMANDLIST.md</a></strong></p>
+<div><h3> Downloads</h3><a href="#-downloads"></a></div>
+<p>Binaries for Windows are available on the GitHub Releases page.
+Source code is currently private.</p>
+<p> <strong><a href="https://github.com/kurouna/elecxzy/releases">Download the latest version</a></strong></p>
+<hr>
+<p><a name="user-content-japanese"></a></p>
+<div><h2>日本語</h2><a href="#日本語"></a></div>
+<p></p><pre><code>elecxzy</code></pre> は、長年愛されてきた Emacs の強力なユーザー体験を、最新の Web 技術（Electron）を用いてゼロから再構築したテキストエディタです。<p></p>
+<p>Emacs の伝統的なキーバインドやワークフローを最大限に尊重しつつ、現代的な軽快さと使いやすさを両立。煩雑な環境構築に時間を取られることなく、あのお馴染みの操作感ですぐに創作活動を開始できる「スピード」と「シンプルさ」を追求しています。</p>
+<div><h3> 主な機能</h3><a href="#-主な機能"></a></div>
+<ul>
+<li><strong>モダンなUIデザイン</strong>: フローティング形式のミニバッファ（ポップアップ）、ステルス・スクロールバー、洗練されたタイポグラフィを採用。Web技術を活用した視認性の高いインターフェースと、Emacs独自の操作体系を共存させています。</li>
+<li><strong>Lisp非搭載の軽快さ</strong>: 複雑な処理系を持たないため、起動が速く、動作も軽量です。</li>
+<li><strong>「即戦力」の初期設定</strong>: インストール後、すぐに使い始められるような初期設定を内蔵しており、直後からコーディングや執筆を行うことができます。</li>
+<li><strong>Emacs風の操作体系</strong>: C-x、M-x、C-s などの慣れ親しんだキーバインドをフルサポート。</li>
+<li><strong>柔軟な画面分割とリサイズ</strong>: <pre><code>C-x 2</code></pre> / <pre><code>C-x 3</code></pre> による再帰的なウィンドウ分割と、<pre><code>C-x ^</code></pre> / <pre><code>C-x }</code></pre> 等による直感的なサイズ調整。</li>
+<li><strong>多様なメジャーモード</strong>: TypeScript, JavaScript, C/C++, Python, Go, Rust, SQL, YAML など、多数の言語のシンタックスハイライトに対応。</li>
+<li><strong>リアルタイム・プレビュー</strong>: Markdown や HTML の書き換えを即座に確認できるプレビューモードを搭載。</li>
+<li><strong>対話的な検索と置換</strong>: インクリメンタル検索 (isearch) や、一箇所ずつ確認しながら置換できる query-replace。</li>
+<li><strong>Piece Tableエンジン</strong>: 大容量ファイルも軽快に扱え、高速な履歴管理（Undo/Redo）を可能にするバッファエンジン。</li>
+<li><strong>外観・フォントの調整</strong>: <pre><code>M-x set-font</code></pre> によるバッファごとのフォント設定や、JSONによる配色カスタマイズが可能。</li>
+<li><strong>高精度な日本語IME対応</strong>: Webベースエディタの課題であるIMEの挙動を最適化し、ストレスのない入力を実現。(<pre><code>C-\</code></pre> または <pre><code>C-]</code></pre> でON/OFF切り替え)</li>
+</ul>
+<p> <a target="_blank" href="/kurouna/elecxzy/blob/main/assets/ime-screenshot.png"><img src="/kurouna/elecxzy/raw/main/assets/ime-screenshot.png" alt="elecxzy Screenshot"></a>
+</p>
+<div><h3> 技術スタック</h3><a href="#-技術スタック"></a></div>
+<ul>
+<li><strong>フレームワーク</strong>: Electron (Node.js)</li>
+<li><strong>フロントエンド</strong>: React, TypeScript</li>
+<li><strong>スタイリング</strong>: Styled-components (CSS-in-JS による堅牢なコンポーネント設計)</li>
+<li><strong>シンタックスハイライト</strong>: Highlight.js 搭載</li>
+</ul>
+<div><h3> 操作・コマンド一覧</h3><a href="#-操作コマンド一覧"></a></div>
+<p>すべてのコマンドとキーバインドの詳細については、以下を参照してください。 <strong><a href="/kurouna/elecxzy/blob/main/COMMANDLIST.md">COMMANDLIST.md</a></strong></p>
+<div><h3> ダウンロード</h3><a href="#-ダウンロード"></a></div>
+<p>Windows用のバイナリは、GitHubのリリースページからダウンロード可能です。
+（ソースコードは現在非公開です）</p>
+<p> <strong><a href="https://github.com/kurouna/elecxzy/releases">最新版をダウンロードする</a></strong></p>
+<hr>
+<div><h2>FAQ</h2><a href="#faq"></a></div>
+<div><h3>English</h3><a href="#english-1"></a></div>
+<p><strong>Q: Is word wrap (wrapping at the window edge) supported?</strong></p>
+<p>A: We currently have no plans to support word wrap. Implementing line folding significantly complicates rendering calculations, which would negatively impact elecxzy's core strengths: "extreme lightweightness" and "maintainability." Thank you for your understanding.</p>
+<p><strong>Q: Horizontal scrolling with my mouse tilt-wheel doesn't work.</strong></p>
+<p>A: In some environments using mouse utility software (e.g., Logi Options), the horizontal scroll signal (deltaX) may be blocked for unrecognized applications. In such cases, you can horizontally scroll by rotating the wheel while holding the <strong>Shift</strong> key.</p>
+<p><strong>Q: The cursor is misaligned when using "MS Gothic" or "MS Mincho" fonts.</strong></p>
+<p>A: This is caused by the legacy bitmap data embedded in these older fonts conflicting with modern text rendering. To maintain optimal display quality for modern programming fonts, this behavior is by design. Please use the default <strong>BIZ UDGothic</strong> or other modern monospace fonts.</p>
+<div><h3>日本語</h3><a href="#日本語-1"></a></div>
+<p><strong>Q: 右端で折り返し表示はできないのですか？</strong></p>
+<p>A: 現時点では対応予定はありません。折り返し処理（Wrap）を組み込むと画面描画の計算が大幅に複雑化し、elecxzyの強みである「動作の軽快さ」や「メンテナンスのしやすさ」に大きな影響を及ぼしてしまうためです。何卒ご了承ください。</p>
+<p><strong>Q: マウスのチルトホイールを倒しても水平スクロールが動作しません。</strong></p>
+<p>A: 一部のマウスユーティリティソフト（例：Logi Options）がインストールされている環境では、ソフト側が「未知のアプリ」への水平スクロール信号をブロックする場合があります。その場合は、<strong>Shiftキーを押しながらホイールを回転</strong>させることで、水平方向へスクロールが可能です。</p>
+<p><strong>Q: 「MS ゴシック」や「MS 明朝」を使うと、カーソルの位置がずれます。</strong></p>
+<p>A: これらのフォントが内蔵する古いビットマップ仕様と、最新の描画エンジンとの相性によるものです。他のモダンフォントの滑らかな描画や合字（リガチャー）を優先しているため、仕様となります。デフォルトの <strong>BIZ UDGothic</strong> などのご利用を推奨します。</p>
+<hr>
+<div><h2>License / ライセンス</h2><a href="#license--ライセンス"></a></div>
+<p>This software is released under the <a href="/kurouna/elecxzy/blob/main/LICENSE">MIT License</a>.
+本ソフトウェアは <a href="/kurouna/elecxzy/blob/main/LICENSE">MITライセンス</a> のもとで公開されています。</p>
+<div><h2>Acknowledgements / 謝辞</h2><a href="#acknowledgements--謝辞"></a></div>
+<p>This application is inspired by the legendary editors <strong>GNU Emacs</strong> and <strong>xyzzy</strong>, and was developed from scratch to carry on their spirit:</p>
+<ul>
+<li>
+<p><strong>GNU Emacs</strong></p>
+<ul>
+<li>Copyright (C) 1985-2024 Free Software Foundation, Inc.</li>
+<li>Created by Richard Stallman</li>
+</ul>
+</li>
+<li>
+<p><strong>xyzzy</strong></p>
+<ul>
+<li>Copyright (c) 1996-2005 Tetsuya Kamei</li>
+<li>Copyright (c) 2012-2014 xyzzy Project</li>
+</ul>
+</li>
+</ul>
+<p>Special thanks to the original authors for their pioneering work in the editor ecosystem.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

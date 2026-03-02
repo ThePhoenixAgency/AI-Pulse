@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - kiselgra/c-mera: Next-level syntax for C-like languages :)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - kiselgra/c-mera: Next-level syntax for C-like languages :)</h1>
+  <div class="metadata">
+    Source: Hacker News (nouveautés) | Date: 2/28/2026 6:25:07 PM | <a href="https://github.com/kiselgra/c-mera" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>C-Mera</h1><a href="#c-mera"></a></div>
+<pre><code>C-Mera is a very simple source-to-source compiler
+that utilizes Lisp's macro system for meta programming of C-like languages.
+One of its main goals is to be easily extensible to other C-like languages
+and the different versions based on C-Mera's core illustrate that this is a simple process.</code></pre>
+<p><strong>Please note:</strong> C-Mera is in a good place and works for the things we use it for. There may be no commits for some stretches and it definitely is not our full-time job, but it is alive and well :) So please consier it slow, not dead. Set up an issue if you have problems, questions or feature-requests :)</p>
+<div><h2>Contents</h2><a href="#contents"></a></div>
+<ol>
+<li><a href="#Overview">Overview</a></li>
+<li><a href="#License">License</a></li>
+<li><a href="#Usage">Usage</a>
+<ol>
+<li><a href="#BuildInstructions">Build Instructions</a></li>
+<li><a href="#EmacsIntegration">Emacs Integration</a></li>
+<li><a href="#VimIntegration">Vim Integration</a></li>
+<li><a href="#Examples">Examples</a></li>
+<li><a href="#CompilationProcess">Compilation Process</a></li>
+<li><a href="#ProgGuide">Programming Guide</a></li>
+</ol>
+</li>
+</ol>
+<div><h2>C-Mera<a name="user-content-Overview"></a></h2><a href="#c-mera-1"></a></div>
+<pre><code>The C-Mera system is a set of very simple compilers that
+transform a notation based on S-Expressions (sexp)
+for C-like languages to the native syntax of that language,
+e.g. from sexp-C to C, and from sexp-CUDA to CUDA. The
+semantics of the sexp-based notation is identical to that of
+the native language, i.e. no inherent abstraction or layering
+is introduced.</code></pre>
+<p>There are a number of different code generators available, all based on C-Mera with a few syntactic extensions.</p>
+<ul>
+<li><strong>cm-c</strong> is the default C code generator</li>
+<li><strong>cm-cxx</strong> is an extension supporting a subset of C++</li>
+<li><strong>cm-cuda</strong> is an extension featuring cuda kernel definition and call syntax</li>
+<li><strong>cm-glsl</strong> is an extension of cgen that can generate opengl shader code</li>
+<li><strong>cm-ocl</strong> (or <strong>cm-opencl</strong>) is an extension that can generate opencl code (currently not actively maintained and tested, though)</li>
+</ul> <div><pre><code>$ cm c ...
+$ cm c++ ...
+$ ...
+</code></pre></div>
+<pre><code>The code for C-Mera and the C-backend is found in src/{c-mera,c,usr} and is rather comprehensive while the
+other generators (each in their own subdirectory) are quite concise. Browse the
+files of the derived generators to see how far the respective language support
+has grown.</code></pre>
+<div><h2>License<a name="user-content-License"></a></h2><a href="#license"></a></div>
+<p>The C-Mera system (which is the collective term for the code in the repository)
+is provided under the conditions of the GNU GPL version 3 or later, see the file COPYING.</p>
+<div><h2>Usage<a name="user-content-Usage"></a></h2><a href="#usage"></a></div>
+<p>To generate a C source file choose the appropriate generator and simply add the input
+and output file:</p>
+<div><pre><code>$ cm c input.lisp -o test.c
+$ cm c++ input.lisp -o test.cpp
+</code></pre></div>
+<p>For more details see <a href="#compilation">Compilation Process</a></p>
+<p>Please note that, as implied above, the system primarily implements a simple transformation and thus does not rewrite lisp code to, for example, either C or C++, but compiles C code written in Sexps to plain C, and C++ code written in Sexps to plain C++.</p>
+<p>However, the system can be leveraged to provide very high level programming paradigms by the use of Common Lisp macros, see <a href="#papers">our papers</a>.</p>
+<div><h3>Build Instructions<a name="user-content-BuildInstructions"></a></h3><a href="#build-instructions"></a></div>
+<p>We recommend CCL due to long code-transformation times with SBCL.</p>
+<ul>
+<li>Install SBCL or CCL</li>
+<li>Install Clon (See reference <a href="https://www.lrde.epita.fr/%7Edidier/software/lisp/clon.php">there</a>)</li>
+<li>(Alternatively, install Clon with Quicklisp)
+<ul>
+<li>Install Quicklisp (See the example <a href="https://www.quicklisp.org/">there</a>)</li>
+<li><pre><code>sbcl --eval "(ql:quickload :net.didierverna.clon.core)"</code></pre> or</li>
+<li><pre><code>ccl --eval "(ql:quickload :net.didierverna.clon.core)"</code></pre></li>
+</ul>
+</li>
+<li>Build C-Mera
+<ul>
+<li><pre><code>autoreconf -if</code></pre> (when building from a fresh repo)</li>
+<li><pre><code>./configure --with-sbcl</code></pre> (or <pre><code>--with-ccl</code></pre>)</li>
+<li><pre><code>make</code></pre></li>
+<li><pre><code>make install</code></pre></li>
+</ul>
+</li>
+</ul>
+<div><h3>Emacs Integration<a name="user-content-EmacsIntegration"></a></h3><a href="#emacs-integration"></a></div>
+<p>The easiest way to configure your Lisp to load C-Mera is by adding it to quicklisp, as follows</p>
+<div><pre><code>$ ln -s &lt;path-to-cmera&gt; ~/quicklisp/local-projects/c-mera
+</code></pre></div>
+<div><h4>Slime</h4><a href="#slime"></a></div>
+<p>With this setup it is possible to use Slime for the development process.
+The relevant C-Mera modules can be loaded by</p>
+<div><pre><code>(asdf:load-system :c-mera)
+(asdf:load-system :cmu-c) ; or :cmu-c++, cmu-cuda, etc. (in-package :cmu-c) ; cl-user equivalent with c-mera environment for c
+(cm-reader) ; switch to c-mera reader; optional for prototyping ; switch back with (cl-reader)
+</code></pre></div>
+<p>After that you can enter Lisp expressions that print valid C Code to the REPL.</p>
+<div><pre><code>(simple-print (function main () -&gt; int (return 0)))
+</code></pre></div>
+<div><h4>Emacs Minor Mode (cm-mode)</h4><a href="#emacs-minor-mode-cm-mode"></a></div>
+<p>To support proper indentation and highlighting of keywords, especially when your forms are not known to a SLIME session, we provide a simple minor mode for Emacs. You can set it up by</p>
+<div><pre><code>$ cp &lt;path-to-cmera&gt;/util/emacs/cm-mode.el &lt;load-path&gt;/cm-mode.el
+$ cp &lt;path-to-cmera&gt;/util/emacs/cm.indent ~/.emacs.d/cm.indent
+</code></pre></div>
+<p>You can then add </p><pre><code>(require 'cm-mode)</code></pre> to your <pre><code>.emacs</code></pre> file and load it using <pre><code>M-x cm-mode</code></pre>.
+To load it automatically you can add a mode specification to the top of your file:<p></p>
+<div><pre><code>; -*- mode: Lisp; eval: (cm-mode 1); -*-
+</code></pre></div>
+<p>You can extend the indentation and keyword information by having an additional file called </p><pre><code>cm.indent</code></pre> along your source files, see the provided <pre><code>cm.indent</code></pre> for the layout.<p></p>
+<p>Our cm-mode ist still rather basic and we are open for extensions (e.g. better syntax matching).</p>
+<div><h3>Vim Integration<a name="user-content-VimIntegration"></a></h3><a href="#vim-integration"></a></div>
+<p>With Vim 8 asyc processes spawned Vlime, a project that strives to provide a Slime-like worlflow for Vim. We use is (via a small plugin) to drive indentation of C-Mera code. With Vim set up for Vlime you only have to drop the plugin in the appropriate place:</p>
+<div><pre><code>$ ln -s &lt;path-to-cmera&gt;/util/vim/lisp_cmera.vim ~/.vim/ftplugin/
+</code></pre></div>
+<p>To get the default behavior (see Emacs integraion) it still has to be told where to look for the </p><pre><code>cm.indent</code></pre> file. This can be set in your <pre><code>~/.vimrc</code></pre><p></p>
+<div><pre><code>let g:cmera_base_indent_file = '/home/kai/.emacs.d/cm.indent'
+</code></pre></div>
+<div><h3>Publications<a name="user-content-papers"></a></h3><a href="#publications"></a></div>
+<ul>
+<li>C-Mera was introduced as "cgen" at ELS'14: <a href="https://selgrad.org/publications/2014_els_SLWLS.pdf"><em>Defmacro for C: Lightweight, Ad Hoc Code Generation</em></a></li>
+<li>We showed how advanced programming paradigms can be implemented on top of it (in this case, Feature Oriented Programming) at GPCE'15: <a href="https://selgrad.org/publications/2015_gpce_SLKSL.pdf"><em>Lightweight, Generative Variant Exploration for High-Performance Graphics Applications</em></a></li>
+<li>At ELS'16 we showcased its proformance for implementing comptetitive DSLs: <a href="https://selgrad.org/publications/2016_els_SLDRS.pdf"><em>A High-Performance Image Processing DSL for Heterogeneous Architectures</em></a></li>
+<li>as well as for exploring implementation variants: <a href="https://selgrad.org/publications/2016_els_LFSS.pdf"><em>A Case Study in Implementation-Space Exploration</em></a></li>
+<li>We describe some of the techniques used in our implementation in our ELS'17 paper: <a href="https://selgrad.org/publications/2017_els_LSS.pdf"><em>DIY Meta Languages with Common Lisp</em></a></li>
+</ul>
+<div><h3>Examples<a name="user-content-Examples"></a></h3><a href="#examples"></a></div>
+<p>In the following we show a few examples of how to use C-Mera.
+Note that we give also give it thorough treatment in <a href="https://selgrad.org/publications/2014_els_SLWLS.pdf">our first ELS paper</a>.</p>
+<div><h4>Implementation of <pre><code>strcmp(3)</code></pre></h4><a href="#implementation-of-strcmp3"></a></div>
+<p>This example illustrates the basic function definition syntax. It's a
+straightforward transcription of the example in the K&amp;R book.</p>
+<div><pre><code>(function strcmp ((char *p) (char *q)) -&gt; int (decl ((int i = 0)) (for (() (== p[i] q[i]) i++) (if (== p[i] #\null) (return 0))) (return (- p[i] q[i]))))
+</code></pre></div>
+<div><h4>Implementation of <pre><code>strcat(3)</code></pre></h4><a href="#implementation-of-strcat3"></a></div>
+<p>Here we add arrays to the mix.
+It, too, is a straightforward transcription of the example in the K&amp;R book.</p>
+<div><pre><code>(function strcat ((char p[]) (char q[])) -&gt; void (decl ((int i = 0) (int j = 0)) (while (!= p[i] #\null) i++) (while (!= (set p[i++] q[j++]) #\null))))
+</code></pre></div>
+<div><h4>Implementation of <pre><code>wc -l</code></pre></h4><a href="#implementation-of-wc--l"></a></div>
+<p>This example shows a main function
+and how to forward-declare externally defined symbols originating from C libraries.
+There is also </p><pre><code>use-functions</code></pre> to explicitly declare externally defined functions.
+In most cases, these forms are not required.
+C-mera checks if the symbols used are already defined and interprets them as function calls otherwise.<p></p>
+<div><pre><code>(include &lt;stdio.h&gt;) (function main () -&gt; int (decl ((int c) (int nl = 0)) (while (!= (set c (getchar)) EOF) (if (== c #\newline) ++nl)) (printf "%d\\n" nl) (return 0)))
+</code></pre></div>
+<div><h4>Implementation of Shellsort</h4><a href="#implementation-of-shellsort"></a></div>
+<p>Lots of loops:</p>
+<div><pre><code>(function shellsort ((int *v) (int n)) -&gt; void (decl ((int temp)) (for ((int gap = (/ n 2)) (&gt; gap 0) (/= gap 2)) (for ((int i = gap) (&lt; i n) i++) (for ((int j = (- i gap)) (&amp;&amp; (&gt;= j 0) (&gt; v[j] (aref v (+ j gap)))) (-= j gap)) (set temp v[j] v[j] (aref v (+ j gap)) (aref v (+ j gap)) temp))))))
+</code></pre></div>
+<div><h3>Compilation Process<a name="user-content-CompilationProcess"></a></h3><a href="#compilation-process"></a></div>
+<p>Suppose the file </p><pre><code>wc-l.lisp</code></pre> contains the code of the line counting example shown above.
+Here is a cmdline session:<p></p>
+<div><pre><code>$ ls
+wc-l.lisp
+$ cm c wc-l.lisp
+#include &lt;stdio.h&gt; int main(void)
+{ int c; int nl = 0; while ((c = getchar()) != EOF) { if (c == '\n') ++nl; } printf("%d\n", nl);
+}
+$ cm c wc-l.lisp -o wc-l.c
+$ ls
+wc-l.c wc-l.lisp
+$ gcc -std=c99 wc-l.c -o wc-l
+</code></pre></div>
+<div><h2>Programming Guide<a name="user-content-ProgGuide"></a></h2><a href="#programming-guide"></a></div>
+<pre><code>This section describes how some aspects of the system work.
+We only describe what we believe may be noteworthy for either the seasoned Lisp or the seasoned C programmer.
+This part will be in motion as we add information that some of our users would have liked to have :) So please get back to us with your experience what might be helpful to mention.</code></pre>
+<div><h3>Changes from c-mera-2015</h3><a href="#changes-from-c-mera-2015"></a></div>
+<p>For the old version see its branch. Here we only shortly list the major differences.</p>
+<ul>
+<li>
+<p></p><pre><code>decl</code></pre> and <pre><code>for</code></pre> forms now require the use of <pre><code>=</code></pre> to distinguish the declarator from the initializer. Earlier we had elaborate guesses in place that worked most of the time, but not every time.<p></p>
+</li>
+<li>
+<p>For C++ you can also use </p><pre><code>(decl ((int v[] { 1 2 3 })) ...)</code></pre> instead of <pre><code>(decl ((int v[] = (clist 1 2 3))) ...)</code></pre>.
+This change is required to be able to distinguish between regular initialization and initializer lists. The differences is easily illustrated by printing the values of the follwing vectors:<p></p>
+<div><pre><code> (typedef (instantiate #:std:vector (int)) T) (decl ((T vec1 = (T 10 20)) (T vec2 { 10 20 })))
+</code></pre></div>
+</li>
+<li>
+<p>You almost never have to use </p><pre><code>use-variables</code></pre> and <pre><code>use-functions</code></pre> anymore.<p></p>
+</li>
+</ul>
+<div><h3>Simple Syntax</h3><a href="#simple-syntax"></a></div>
+<div><h4>Conditionals</h4><a href="#conditionals"></a></div>
+<p></p><pre><code>if</code></pre> statements have exactly two or three subforms. The third subform represents the <pre><code>else</code></pre> part and is optional. Thus, the following example is not correct:<p></p>
+<div><pre><code>(if (!= a 0) (printf "all is safe") (return (/ b a)))
+</code></pre></div>
+<p>You can use </p><pre><code>progn</code></pre> to group multiple sub-forms<p></p>
+<div><pre><code>(if (!= a 0) (progn (printf "all is safe") (return (/ b a))))
+</code></pre></div>
+<p>or, equivalently, </p><pre><code>when</code></pre><p></p>
+<div><pre><code>(when (!= a 0) (printf "all is safe") (return (/ b a)))
+</code></pre></div>
+<p>which expands to the previous form using </p><pre><code>progn</code></pre>, which, in turn, expands to:<p></p>
+<div><pre><code>if (a != 0) { ...
+}
+</code></pre></div>
+<p>In contrast, the first example expands to</p>
+<div><pre><code>if (a != 0) { printf(...);
+else return ...;
+</code></pre></div>
+<p>We also support </p><pre><code>cond</code></pre>.<p></p>
+<div><h5>Open Issues</h5><a href="#open-issues"></a></div>
+<p>We currently don't have </p><pre><code>unless</code></pre>.<p></p>
+<div><h4>Loops</h4><a href="#loops"></a></div>
+<p>A for loop is written with the loop-head grouped:</p>
+<div><pre><code>(for ((int i = 0) (&lt; i n) (+= i 1)) ...)
+</code></pre></div>
+<p>Note that C-Mera supports C-like increments and decrements for simple expressions:</p>
+<div><pre><code>(for ((int i = 0) (&lt; i n) ++i) ...)
+</code></pre></div>
+<p></p><pre><code>while</code></pre> is straighforward<p></p>
+<div><pre><code>(while (&lt; a b) ... ...)
+</code></pre></div>
+<div><h5>Open Issues</h5><a href="#open-issues-1"></a></div>
+<p></p><pre><code>do-while</code></pre> is not implemented at the moment.<p></p>
+<div><h4>Declarations</h4><a href="#declarations"></a></div>
+<p>A set of declarations is introduced with</p>
+<div><pre><code>(decl ((T name [= init]) ...) ...)
+</code></pre></div>
+<p>or (for C++ based languages)</p>
+<div><pre><code>(decl ((T name [{ init }]) ...) ...)
+</code></pre></div>
+<p>the initializer is optional and C-Mera collects as many symbols to be part of the type as possible,
+e.g.</p>
+<div><pre><code>(decl ((const unsigned long int x = 0)) ...)
+</code></pre></div>
+<p>is correctly identified.</p>
+<p>As mentioned above, typenames are not checked.</p>
+<p>In declarations (such as </p><pre><code>decl</code></pre>, in function parameters and <pre><code>(sizeof ...)</code></pre>) the type does not have to
+be enclosed in parens (and must not be). There are places, however,
+where for the sake of simplicity type names must be grouped, as e.g. in function return values:<p></p>
+<div><pre><code>(function foo ((const int *i) ...) -&gt; (unsigned int) ...)
+</code></pre></div>
+<p>As shown in this example C-Mera also supports some C-style decorations, i.e.</p>
+<div><pre><code>(decl ((int *i 0)) ...)
+(decl ((int* i 0)) ...)
+</code></pre></div>
+<p>are both recognized.</p>
+<div><h3>Namespace (Lisp vs C-Mera)</h3><a href="#namespace-lisp-vs-c-mera"></a></div>
+<p>Some C-Mera symbols are also defined in Common Lisp.
+Initially, C-Mera starts out in the </p><pre><code>cmu-&lt;generator&gt;</code></pre> (user package, depending on the code generator used, e.g. <pre><code>cmu-c</code></pre>) which imports
+all <pre><code>cl</code></pre> symbols that do not conflict to provide metaprogramming as seamlessly as possible.<p></p>
+<p>Especially with symbols like </p><pre><code>if</code></pre> etc care has to be taken to use the right one.
+This can be done by explicitly naming the symbol <pre><code>cl:if</code></pre>, but to define lisp functions
+or lisp-heavy parts of the meta code it is often more convenient to use the <pre><code>lisp</code></pre> form, such as
+in the example from our ELS'14 presentation:<p></p>
+<div><pre><code>(defmacro match (expression &amp;rest clauses) `(macrolet ((match-int (expression &amp;rest clauses) `(progn (set reg_err (regcomp &amp;reg ,(caar clauses) REG_EXTENDED)) (if (regexec &amp;reg ,expression 0 0 0) (progn ,@(cdar clauses)) ,(lisp (if (cdr clauses) `(match-int ,expression ,@(cdr clauses)))))))) (decl ((regex_t reg) (int reg_err)) (match-int ,expression ,@clauses))))
+</code></pre></div>
+<p>Here we define a recursively expanding macrolet, </p><pre><code>match-int</code></pre>, that inserts conditional clauses (as in <pre><code>(if (regexec ....))</code></pre> and also checks to terminate the iteration (with <pre><code>,(lisp (if ...))</code></pre>).<p></p>
+<div><h3>Codestrings</h3><a href="#codestrings"></a></div>
+<p>tbd.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

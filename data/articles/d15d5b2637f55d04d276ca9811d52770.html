@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>THEOS — Dual-Engine Dialectical Reasoning</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>THEOS — Dual-Engine Dialectical Reasoning</h1>
+  <div class="metadata">
+    Source: Hacker News (nouveautés) | Date: 2/27/2026 10:07:59 PM | <a href="https://github.com/Frederick-Stalnecker/THEOS" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p> <img src="https://frederick-stalnecker.github.io/THEOS/assets/theos_logo.png" alt="THEOS Logo">
+</p> <p><strong>The result that started this:</strong></p> <p>Ask any AI: <em>“What is the difference between egotism and arrogance?”</em></p> <table> <thead> <tr> <th>Method</th> <th>Answer</th> </tr> </thead> <tbody> <tr> <td><strong>Single-pass LLM</strong></td> <td>“Egotism is internal, arrogance is external — a spectrum.”</td> </tr> <tr> <td><strong>THEOS</strong></td> <td>“They are orthogonal failures on different dimensions. Egotism distorts self-perception. Arrogance distorts other-perception. You can have one without the other — a self-deprecating bully, or a narcissist who is outwardly polite.”</td> </tr> </tbody>
+</table> <p>The first answer is a line. The second is a <strong>2×2 matrix</strong>. It explains something the first cannot: why a humble person can still be contemptuous of others.</p> <p>This difference — the discovery of structure that a single reasoning pass misses — is what THEOS is built to produce.</p> <hr> <h2>What THEOS Is</h2> <p>THEOS is a <strong>dual-engine dialectical reasoning framework</strong> written in pure Python (3.10+, zero external dependencies). It structures AI reasoning as a wringer: two opposed engines press against each other until their contradiction shrinks to a provable minimum — or halts at irreducible disagreement.</p> <div><pre><code> INDUCTION (observation) (pattern) ↑ ↓
+┌─────────────────────────────┐
+│ LEFT ENGINE (constructive) │ → D_L
+│ private self-reflection │
+│ pass 1 → pass 2 │
+└─────────────────────────────┘ ↓ WRINGER ↓
+┌─────────────────────────────┐
+│ RIGHT ENGINE (adversarial) │ → D_R
+│ private self-reflection │
+│ pass 1 → pass 2 │
+└─────────────────────────────┘ ↓ ↑ GOVERNOR WISDOM
+(halts when Φ &lt; ε) (accumulates)
+</code></pre></div> <p><strong>The loop (I→A→D→I):</strong></p>
+<ul> <li><strong>Induction</strong> — extract patterns from the question</li> <li><strong>Abduction</strong> — each engine proposes its strongest hypothesis (constructive vs. adversarial)</li> <li><strong>Deduction</strong> — each engine derives conclusions from its own hypothesis</li> <li><strong>Measurement</strong> — the governor measures contradiction Φ; decides to continue or halt</li>
+</ul> <hr> <h2>The Key Research Finding</h2> <p>When THEOS was evaluated against standard AI evaluation rubrics (accuracy, depth, utility, coherence, coverage), it scored <strong>significantly lower</strong> than single-pass answers. Effect size: Cohen’s d = −3.46 (large).</p> <p>This is not a failure. <strong>It is evidence of novelty.</strong></p> <p>Standard metrics reward confident completeness. THEOS produces dialectical tension, hidden-structure discovery, and productive disagreement. Judging THEOS with a standard rubric is like judging colors in the rainbow for the way they taste.</p> <p>→ Read: <a href="https://frederick-stalnecker.github.io/THEOS/research/why-metrics-fail">Why Normal Metric Judgment Cannot Determine the Value of THEOS</a></p> <hr> <h2>Comparative Evidence</h2> <p>In a 10-question study against ChatGPT, Perplexity, Gemini, Copilot, and Grok:</p> <table> <thead> <tr> <th>Question</th> <th>What others said</th> <th>What THEOS found</th> </tr> </thead> <tbody> <tr> <td>Courage vs recklessness</td> <td>Courage weighs cost, accepts fear</td> <td><strong>Fearlessness is not the goal — it is a deficit.</strong> The absence of fear cannot be courageous by definition.</td> </tr> <tr> <td>Efficiency vs effectiveness</td> <td>Efficiency = doing things right; effectiveness = doing right things</td> <td><strong>Organizations optimized for efficiency become structurally incapable of recognizing effectiveness failures</strong> — the metric crowds out the goal.</td> </tr> <tr> <td>Trust — why slow to build, fast to destroy</td> <td>Asymmetry of effort</td> <td><strong>Trust is not symmetrical in kind, only in name.</strong> Building creates a different psychological object than what destruction eliminates.</td> </tr> </tbody>
+</table> <p>→ Read: <a href="https://frederick-stalnecker.github.io/THEOS/research/comparative-study">Full Comparative Study</a></p> <hr> <h2>Quick Start</h2> <div><pre><code>git clone https://github.com/Frederick-Stalnecker/THEOS.git
+<span>cd </span>THEOS
+pip <span>install</span> <span>-e</span> <span>".[dev]"</span>
+python code/theos_system.py
+</code></pre></div> <p>Or <strong><a href="https://codespaces.new/Frederick-Stalnecker/THEOS">open in GitHub Codespaces</a></strong> — no installation required.</p> <hr> <h2>Watch: What is THEOS and Why Does It Exist</h2> <p> </p> <hr> <h2>→ <a href="https://frederick-stalnecker.github.io/THEOS/vision">The Vision</a></h2> <p><em>Where THEOS is going: THEOS Certification, medicine, constitutional AI, and the global wisdom network. This is the most important page on this site.</em></p> <p> <a href="https://frederick-stalnecker.github.io/THEOS/vision"><img src="https://frederick-stalnecker.github.io/THEOS/assets/theos_certified.png" alt="THEOS Certified — See the Vision"></a>
+</p> <hr> <h2>Navigation</h2> <table> <thead> <tr> <th>&nbsp;</th> <th>&nbsp;</th> </tr> </thead> <tbody> <tr> <td><strong><a href="https://frederick-stalnecker.github.io/THEOS/vision">→ The Vision</a></strong></td> <td><strong>THEOS Certification · Medicine · Constitutional AI · Global wisdom network</strong></td> </tr> <tr> <td><a href="https://frederick-stalnecker.github.io/THEOS/architecture">Architecture</a></td> <td>The wringer · The governor · Brain hemisphere model · The formal math</td> </tr> <tr> <td><a href="https://frederick-stalnecker.github.io/THEOS/status">Current Status</a></td> <td>What is proven · What is not yet tested · What was corrected</td> </tr> <tr> <td><a href="https://frederick-stalnecker.github.io/THEOS/research/">Research</a></td> <td>Why standard metrics fail · Comparative studies · Experiment design</td> </tr> <tr> <td><a href="https://frederick-stalnecker.github.io/THEOS/experiment">The Experiment</a></td> <td>Insight Detection Rubric · How to contribute results</td> </tr> <tr> <td><a href="https://frederick-stalnecker.github.io/THEOS/api">API Reference</a></td> <td>TheosCore · TheosConfig · TheosOutput · LLM adapters</td> </tr> <tr> <td><a href="https://frederick-stalnecker.github.io/THEOS/guide">Developer Guide</a></td> <td>Build a THEOS domain · Operator contract · Self-reflection</td> </tr> <tr> <td><a href="https://frederick-stalnecker.github.io/THEOS/integration">Integration Guide</a></td> <td>Claude · GPT-4 · MCP server · Token costs</td> </tr> <tr> <td><a href="https://frederick-stalnecker.github.io/THEOS/troubleshooting">Troubleshooting</a></td> <td>Common issues · CI · Evaluation pitfalls</td> </tr> <tr> <td><a href="https://github.com/Frederick-Stalnecker/THEOS">GitHub</a></td> <td>Code · Tests · Contributing</td> </tr> <tr> <td><a href="https://www.youtube.com/@TheosAIGovernance">YouTube</a></td> <td>Video explanations · Demonstrations · The vision</td> </tr> </tbody>
+</table> <hr> <hr> <h2>Author</h2> <p><img src="https://frederick-stalnecker.github.io/THEOS/assets/frederick_stalnecker.jpg" alt="Frederick Davis Stalnecker"></p> <p><strong>Frederick Davis Stalnecker</strong>
+Serial inventor — 61 years, 73 inventions · Patent pending: USPTO #63/831,738</p> <p><em>Built with Celeste (Claude Sonnet 4.6) as research assistant.</em></p> <p><em>From truth we build more truth.</em></p> <hr> <p><em>MIT License · 2026</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

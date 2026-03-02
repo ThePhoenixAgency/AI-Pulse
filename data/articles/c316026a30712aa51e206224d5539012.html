@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - grandimam/barq: Free-threaded HTTP library</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - grandimam/barq: Free-threaded HTTP library</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 9:01:16 PM | <a href="https://github.com/grandimam/barq" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Barq</h1><a href="#barq"></a></div>
+<blockquote>
+<p><strong> Experimental</strong>: This project is a proof-of-concept exploring free-threaded Python (PEP 703) for HTTP frameworks. Not production-ready.</p>
+</blockquote>
+<p>A pure-Python HTTP framework built for free-threaded Python 3.13+. No C extensions, no async/await just threads with true parallelism.</p>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li>Python 3.13+ with free-threading enabled (<pre><code>python3.13t</code></pre>)</li>
+<li><a href="https://github.com/astral-sh/uv">uv</a> package manager</li>
+</ul>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><pre>uv add barq</pre></div>
+<div><h2>Development Setup</h2><a href="#development-setup"></a></div>
+<div><pre>git clone https://github.com/grandimam/barq.git
+<span>cd</span> barq <span><span>#</span> Install</span>
+uv sync <span><span>#</span> Run</span>
+uv run python examples/basic.py <span><span>#</span> Test</span>
+curl http://localhost:8000/
+curl http://localhost:8000/items/1
+curl -X POST http://localhost:8000/items -H <span><span>"</span>Content-Type: application/json<span>"</span></span> -d <span><span>'</span>{"name":"Widget","price":9.99}<span>'</span></span></pre></div>
+<div><h2>Running Benchmarks</h2><a href="#running-benchmarks"></a></div>
+<div><pre><span><span>#</span> Install dev dependencies</span>
+uv sync --dev <span><span>#</span> Run benchmark</span>
+uv run python benchmarks/run_benchmark.py 1000 10</pre></div>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span>from</span> <span>typing</span> <span>import</span> <span>Annotated</span>
+<span>from</span> <span>pydantic</span> <span>import</span> <span>BaseModel</span>
+<span>from</span> <span>barq</span> <span>import</span> <span>Barq</span>, <span>Depends</span> <span>app</span> <span>=</span> <span>Barq</span>() <span>class</span> <span>Item</span>(<span>BaseModel</span>): <span>name</span>: <span>str</span> <span>price</span>: <span>float</span> <span>@<span>app</span>.<span>get</span>(<span>"/"</span>)</span>
+<span>def</span> <span>index</span>() <span>-&gt;</span> <span>dict</span>: <span>return</span> {<span>"message"</span>: <span>"Hello, World!"</span>} <span>@<span>app</span>.<span>get</span>(<span>"/items/{item_id}"</span>)</span>
+<span>def</span> <span>get_item</span>(<span>item_id</span>: <span>int</span>) <span>-&gt;</span> <span>dict</span>: <span>return</span> {<span>"id"</span>: <span>item_id</span>} <span>@<span>app</span>.<span>post</span>(<span>"/items"</span>)</span>
+<span>def</span> <span>create_item</span>(<span>body</span>: <span>Item</span>) <span>-&gt;</span> <span>Item</span>: <span>return</span> <span>body</span> <span>if</span> <span>__name__</span> <span>==</span> <span>"__main__"</span>: <span>app</span>.<span>run</span>(<span>host</span><span>=</span><span>"127.0.0.1"</span>, <span>port</span><span>=</span><span>8000</span>, <span>workers</span><span>=</span><span>4</span>)</pre></div>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li><strong>Pure Python</strong>: No C extensions, no Rust, no Cython</li>
+<li><strong>Free-threaded</strong>: True parallelism without the GIL (Python 3.13t)</li>
+<li><strong>Type-driven</strong>: Pydantic models auto-parsed from request body</li>
+<li><strong>Dependency injection</strong>: <pre><code>Depends()</code></pre> with request-scoped caching</li>
+<li><strong>Minimal</strong>: ~465 lines of code in 4 files</li>
+</ul>
+<div><h2>Benchmarks</h2><a href="#benchmarks"></a></div>
+<p>Comparison against FastAPI (uvicorn, 4 worker processes).</p>
+<div><h3>System</h3><a href="#system"></a></div>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>Apple M2 Pro</td>
+</tr>
+<tr>
+<td>Cores</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.13.0 (free-threaded)</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td>Darwin arm64</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Results (1000 requests, 10 concurrent clients)</h3><a href="#results-1000-requests-10-concurrent-clients"></a></div>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Barq (4 threads)</th>
+<th>FastAPI (4 processes)</th>
+<th>Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>JSON</strong></td>
+<td>10,114 req/s</td>
+<td>5,665 req/s</td>
+<td><strong>Free Threaded: +79%</strong></td>
+</tr>
+<tr>
+<td><strong>DB Query</strong></td>
+<td>9,962 req/s</td>
+<td>1,015 req/s</td>
+<td><strong>Free Threaded: +881%</strong></td>
+</tr>
+<tr>
+<td><strong>CPU Bound</strong></td>
+<td>879 req/s</td>
+<td>1,231 req/s</td>
+<td>FastAPI: +29%</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Analysis</h3><a href="#analysis"></a></div>
+<ul>
+<li><strong>JSON/DB (I/O bound)</strong>: Barq wins due to shared memory, no IPC overhead</li>
+<li><strong>CPU bound</strong>: FastAPI wins due to process isolation (no memory contention)</li>
+</ul>
+<p>Note: CPU benchmark uses pure Python arithmetic. C extensions like </p><pre><code>hashlib</code></pre> have internal locks that prevent parallelism even with free-threaded Python.<p></p>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>┌─────────────────────────────────────────────────────────┐
+│ Barq App │
+│ (app.py: routing, DI, handlers) │
+├─────────────────────────────────────────────────────────┤
+│ Request / Response │
+│ (types.py: dataclasses) │
+├─────────────────────────────────────────────────────────┤
+│ HTTP Parser │
+│ (http.py: parse/write HTTP/1.1) │
+├─────────────────────────────────────────────────────────┤
+│ ThreadPoolExecutor │
+│ (server.py: socket handling) │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>src/barq/
+├── __init__.py # exports
+├── app.py # Barq, Depends, Router
+├── types.py # Request, Response, HTTPException
+├── server.py # Server, ThreadPool, SocketReader
+└── http.py # HTTPParser, write_response
+</code></pre></div>
+<div><h2>Why Free-Threaded Python?</h2><a href="#why-free-threaded-python"></a></div>
+<p>Traditional Python has the GIL (Global Interpreter Lock), which prevents true parallelism in threads. Web frameworks work around this using:</p>
+<ul>
+<li><strong>Async/await</strong> (FastAPI, Starlette): Cooperative multitasking</li>
+<li><strong>Multiprocessing</strong> (Gunicorn, uvicorn): Separate processes with IPC overhead</li>
+</ul>
+<p>Free-threaded Python (PEP 703) removes the GIL, enabling:</p>
+<ul>
+<li><strong>Simple synchronous code</strong> that runs in parallel</li>
+<li><strong>Shared memory</strong> between threads (no serialization)</li>
+<li><strong>Lower overhead</strong> than multiprocessing</li>
+</ul>
+<div><h2>Limitations</h2><a href="#limitations"></a></div>
+<ul>
+<li>Experimental—not battle-tested</li>
+<li>HTTP/1.1 only (no HTTP/2, no WebSocket)</li>
+<li>No middleware system (yet)</li>
+<li>C extensions with internal locks don't parallelize</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How to Scan Your MCP Servers for Security Vulnerabilities in 10 Seconds</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How to Scan Your MCP Servers for Security Vulnerabilities in 10 Seconds</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 12:04:51 PM | <a href="https://dev.to/prabhu_raja_fe2261464cb8e/how-to-scan-your-mcp-servers-for-security-vulnerabilities-in-10-seconds-4m59" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/prabhu_raja_fe2261464cb8e"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2370273%2F043788b3-f2a8-4b2c-ac43-577b0d42019d.jpeg" alt="Prabhu Raja"></a> </p> </div><div> <p>AI coding assistants like Claude Code, Cursor, GitHub Copilot — they can reach beyond chat and directly interact with your databases, APIs, filesystems, and cloud services through something called MCP (Model Context Protocol).</p> <p>MCP servers are the bridge. You write a server, connect it to your AI tool, and suddenly your assistant can query production databases, create Jira tickets, push to GitHub, or read your Slack messages.<br>
+This is incredibly powerful. It's also a security nightmare waiting to happen.</p> <p>The Problem:<br>
+I've been reviewing MCP servers — both open-source ones on GitHub and internal ones at companies. Here's what I keep finding:</p> <p>Hardcoded secrets everywhere. API keys for OpenAI, Anthropic, AWS, and database connection strings sitting right in the source code. Not environment variables. Literal strings.<br>
+</p> <div>
+<pre><code>typescript// Real pattern found in multiple MCP servers
+const API_KEY = "sk-ant-api03-actual-key-here";
+const DB_URL = "mongodb+srv://admin:password123@cluster.example.net/prod";
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>eval() on user-controlled input. MCP tools that take a code parameter and pass it straight to eval(). The AI assistant can be tricked into sending malicious code through prompt injection.<br>
+</p> <div>
+<pre><code>server.tool("execute", async ({ code }) =&gt; { const result = eval(code); // Arbitrary code execution return { content: [{ type: "text", text: String(result) }] };
+});
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>SQL injection via string concatenation. Database query tools that build SQL from template literals without parameterized queries.<br>
+</p> <div>
+<pre><code>server.tool("query_db", async ({ table, filter }) =&gt; { const query = `SELECT * FROM ${table} WHERE ${filter}`; // Classic SQL injection — filter could be "1=1; DROP TABLE users"
+});
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Wildcard permissions. Servers configured with root filesystem access or "*" permissions, giving the AI assistant unrestricted access to everything.</p> <p>No TLS verification. NODE_TLS_REJECT_UNAUTHORIZED = "0" — disabling certificate checks, opening the door to man-in-the-middle attacks.</p> <p>These aren't edge cases. These are patterns I see repeatedly in MCP servers that people are connecting to production environments.</p> <ol>
+<li>Secrets hide in plain sight. A 40-character API key in line 147 of a config file is easy to miss.</li>
+<li>New servers get added constantly. Teams experimenting with AI tools spin up MCP servers weekly. Nobody's reviewing them all.</li>
+<li>Patterns compound. An insecure HTTP endpoint alone is medium risk. Combined with disabled TLS and hardcoded credentials? Critical.</li>
+<li>Copy-paste from examples. Most MCP servers start from tutorial code that prioritizes functionality over security. Those insecure patterns propagate.</li>
+</ol> <p>Automated Scanning in 10 Seconds<br>
+I built mcp-security-auditor to solve this. It's an open-source security scanner specifically designed for MCP servers.<br>
+Zero install. One command:<br>
+</p> <div>
+<pre><code>bashnpx mcp-security-auditor scan ./my-mcp-server
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. No account, no signup, no cloud dependency. It runs locally and takes about 45ms to scan a typical MCP server.<br>
+Here's what actual output looks like:<br>
+</p> <div>
+<pre><code>╔══════════════════════════════════════════════════════╗
+║ MCP Security Auditor - Scan Report ║
+╚══════════════════════════════════════════════════════╝ Server: my-mcp-server v1.0.0
+Language: typescript
+Framework: mcp-sdk
+Transport: stdio
+Tools: 3 detected [query_db, write_file, run_command]
+Files: 12 source files scanned
+Duration: 45ms Summary: 8 findings Critical: 2 High: 3 Medium: 2 Low: 1
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>It auto-detects the language (TypeScript, JavaScript, Python), the MCP framework being used, the transport type, and even extracts the tool definitions from your code.</p> <p>7 Security Analyzers<br>
+The scanner runs 7 specialized analyzers:</p> <ol>
+<li>Secrets Detection
+Catches hardcoded API keys, passwords, tokens, private keys, and connection strings. Covers patterns for AWS, GitHub, OpenAI, Anthropic, Slack, MongoDB, PostgreSQL, and more.</li>
+<li>Static Code Analysis
+Flags dangerous patterns: eval(), exec(), new Function(), child_process, unsafe deserialization (pickle.loads, yaml.unsafe_load), and risky filesystem operations.</li>
+<li>Prompt Injection Detection
+Identifies where user input flows into prompt construction without sanitization — the #1 attack vector for MCP servers. Catches f-string interpolation, template literals, and string concatenation patterns.</li>
+<li>SQL &amp; Command Injection
+Detects dynamic SQL queries, NoSQL operator injection, and command execution with user-controlled input.</li>
+<li>Permission Analysis
+Finds wildcard permissions, root filesystem access, missing authentication on HTTP handlers, and explicitly disabled security features.</li>
+<li>Network Security
+Scans for insecure HTTP URLs, SSRF vulnerabilities, TLS verification bypass, CORS wildcard origins, and servers binding to all network interfaces.</li>
+<li>Dependency Analysis
+Checks for wildcard version pins, missing lockfiles, known-compromised packages (like event-stream), and potential typosquatting (e.g., lodahs instead of lodash).
+You can run specific analyzers if you want:
+</li>
+</ol>
+<div>
+<pre><code># Only check for secrets and injection risks
+npx mcp-security-auditor scan ./server -a secrets,injection
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>5 Output Formats<br>
+The scanner supports multiple output formats for different workflows:<br>
+</p> <div>
+<pre><code># Terminal output (default, with colors)
+npx mcp-security-auditor scan ./server # HTML report — great for sharing with security teams
+npx mcp-security-auditor scan ./server -f html -o report.html # JSON — for programmatic use
+npx mcp-security-auditor scan ./server -f json -o results.json # SARIF — for GitHub Security tab and Azure DevOps
+npx mcp-security-auditor scan ./server -f sarif -o results.sarif # Markdown — for docs or PR comments
+npx mcp-security-auditor scan ./server -f markdown -o report.md
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>CI/CD Integration: 3 Lines of YAML<br>
+This is where it gets powerful. Add the scanner to your CI pipeline and every PR that touches MCP server code gets automatically scanned.<br>
+GitHub Actions<br>
+</p> <div>
+<pre><code>yamlname: MCP Security Scan
+on: [push, pull_request] jobs: security: runs-on: ubuntu-latest steps: - uses: actions/checkout@v4 - run: npx mcp-security-auditor ci . --fail-on high -o results.sarif - uses: github/codeql-action/upload-sarif@v3 if: always() with: sarif_file: results.sarif
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The ci command defaults to SARIF output and exits with code 1 if findings meet or exceed the severity threshold. The SARIF upload step pushes results into GitHub's Security tab, so findings appear right alongside your CodeQL results.</p> <p>GitLab CI<br>
+</p> <div>
+<pre><code>yamlmcp-security: script: - npx mcp-security-auditor ci . --fail-on high -f json -o mcp-audit.json artifacts: reports: security: mcp-audit.json
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Pre-commit Hook<br>
+</p> <div>
+<pre><code># .git/hooks/pre-commit
+npx mcp-security-auditor ci . --fail-on critical
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Block commits that introduce critical vulnerabilities. Fast enough (sub-100ms) that it doesn't slow down your workflow.</p> <p>Programmatic API<br>
+If you want to integrate the scanner into your own tooling:<br>
+</p> <div>
+<pre><code>import { scan, generateReport } from "mcp-security-auditor"; const result = scan({ path: "./my-mcp-server", format: "json" }); console.log(`Found ${result.summary.total} issues`);
+console.log(`Critical: ${result.summary.critical}`); // Generate HTML report
+const html = generateReport(result, "html"); // Fail the build if critical issues found
+if (result.summary.critical &gt; 0) { process.exit(1);
+}
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>What's Coming Next<br>
+This is v1.0. Here's what I'm working on:</p> <p>GitHub Action on Marketplace — one-click setup for any repo<br>
+VS Code extension — scan as you code, inline warnings<br>
+MCP config scanning — audit claude_desktop_config.json and Cursor configs for risky server setups<br>
+OWASP MCP Top 10 mapping — align findings with emerging MCP security standards</p> <p>Try It<br>
+npm (zero install):<br>
+</p> <div>
+<pre><code>npx mcp-security-auditor scan ./your-mcp-server
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>pip (Python):<br>
+</p> <div>
+<pre><code>pip install mcp-security-auditor
+mcp-audit scan ./your-mcp-server
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Links:</p> <ul>
+<li>npm: npmjs.com/package/mcp-security-auditor</li>
+<li>PyPI: pypi.org/project/mcp-security-auditor
+GitHub: (add your repo URL)</li>
+</ul> <p>MIT licensed. Open source. Contributions welcome.<br>
+If you're building or deploying MCP servers, scan them before they reach production. 45ms now could save you a breach later.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

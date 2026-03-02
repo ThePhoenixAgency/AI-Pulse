@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>ESPHome - Transformez un ESP32 à 5 euros en capteur domotique sans dépendre du cloud</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>ESPHome - Transformez un ESP32 à 5 euros en capteur domotique sans dépendre du cloud</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/19/2026 9:15:34 AM | <a href="https://korben.info/esphome-esp32-capteur-temperature-home-assistant.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/esphome-esp32-capteur-temperature-home-assistant/esphome-esp32-capteur-temperature-home-assistant-1.png" alt="Image illustrant l'article : ESPHome - Transformez un ESP32 à 5 euros en capteur domotique sans dépendre du cloud"></p><div><span>Ce qu’il faut retenir</span><div><ol><li>ESPHome transforme un ESP32 (5€) en capteur domotique autonome via fichier YAML, sans cloud ni serveur externe</li><li>DHT22 + ESP32 + 30 min = capteur température/humidité 100% local intégré automatiquement à Home Assistant</li><li>Les mises à jour se font en WiFi (OTA) après le premier flashage USB, idéal pour capteurs inaccessibles</li></ol><p>Résumé généré par IA</p></div><div><p>Aujourd'hui j'aimerais vous parler un peu de bidouille et plus particulièrement de
+<a href="https://korben.info/claptrap-ia-home-assistant.html">domotique</a>
+. Hé oui, si comme moi, vous en avez marre que tous vos objets connectés passent par des serveurs chinois (souvent à la sécurité douteuse) ou américains (souvent directement connecté à la NSA) pour vous dire qu'il fait 22°C dans votre salon, on va voir comment ensemble créer ses propres capteurs 100% locaux avec <strong><a href="https://esphome.io/">ESPHome</a>
+</strong>.</p><p>ESPHome, c'est un framework open source qui transforme n'importe quel ESP32 ou ESP8266 en appareil connecté intelligent sans vous prendre la tête. Vous écrivez un petit fichier YAML, vous flashez la puce, et hop, vous avez un capteur qui cause directement avec Home Assistant. Comme ça y'a pas de cloud et encore moins de données qui partent on ne sait où.</p><p>Et c'est hyper accessible... Suffit de savoir remplir un fichier texte avec quelques indentations (le fameux YAML), et voilà vous savez utiliser ESPHome.</p><div><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/esphome-esp32-capteur-temperature-home-assistant/esphome-esp32-capteur-temperature-home-assistant-2.png" alt=""></p><p><em>ESPHome fait partie de l'Open Home Foundation (
+<a href="https://esphome.io/">Source</a>
+)</em></p></div><h3>Ce qu'il vous faut</h3><ul><li>Un ESP32 (genre un Wemos D1 Mini ou un NodeMCU)</li><li>Un capteur DHT22 (température et humidité)</li><li>Quelques fils Dupont</li><li>Temps estimé : 30 minutes</li></ul><p>Niveau branchement, c'est pas sorcier. Le DHT22 a 3 broches utiles : VCC sur le 3.3V de l'ESP, GND sur GND, et DATA sur un GPIO de votre choix (le GPIO4 marche nickel). Pensez aussi à ajouter une résistance de 4.7kΩ entre DATA et VCC si vous voulez des lectures béton (beaucoup de modules l'ont déjà intégrée, mais vérifiez bien).</p><p>Ensuite, pour installer ESPHome sur votre ordi, ça se passe avec pip :</p><div><pre><code><span><span>pip install esphome
+</span></span></code></pre></div><p>Une fois l'outil en place, vous créez votre configuration YAML. Voici un exemple tout simple pour notre capteur :</p><div><pre><code><span><span>esphome:
+</span></span><span><span> name: capteur_salon
+</span></span><span><span>
+</span></span><span><span>esp32:
+</span></span><span><span> board: esp32dev
+</span></span><span><span>
+</span></span><span><span>sensor:
+</span></span><span><span> - platform: dht
+</span></span><span><span> pin: GPIO4
+</span></span><span><span> temperature:
+</span></span><span><span> name: "Température Salon"
+</span></span><span><span> humidity:
+</span></span><span><span> name: "Humidité Salon"
+</span></span><span><span> update_interval: 60s
+</span></span></code></pre></div><p>Hé voilà ! Ce fichier suffit à tout configurer. Ensuite, pour flasher, branchez votre ESP en USB et lancez la commande :</p><div><pre><code><span><span>esphome run capteur_salon.yaml
+</span></span></code></pre></div><p>La première fois, ça compile tout le firmware et ça flashe. Une fois que c'est fait, l'ESP apparaît automatiquement dans
+<a href="https://korben.info/ha-animated-cards-home-assistant.html">Home Assistant</a>
+si vous avez activé l'intégration. Et le top du top, c'est que les prochaines mises à jour se feront en WiFi (OTA), ce qui est super pratique quand le truc est planqué derrière un meuble.</p><p>Et si vous voulez aller plus loin dans l'intégration domotique locale, je vous conseille aussi de voir comment
+<a href="https://korben.info/comment-faire-fonctionner-un-module-razberry-2-gpio-avec-home-assistant.html">utiliser le GPIO directement sur Home Assistant</a>
+.</p><p>Et voilà comment, avec dix balles et un peu de curiosité, vous avez un capteur qui n'espionne plus votre vie. Youuhouuu !</p></div>Références<section><ul><li><a href="https://esphome.io/" target="_blank">https://esphome.io/</a></li><li><a href="https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-sensor-arduino-ide/" target="_blank">https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-sensor-arduino-ide/</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Microsoft Broke AI Safety in 15 Models With One Prompt. The Prompt Was Boring.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Microsoft Broke AI Safety in 15 Models With One Prompt. The Prompt Was Boring.</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/22/2026 4:33:39 AM | <a href="https://dev.to/mothasa/microsoft-broke-ai-safety-in-15-models-with-one-prompt-the-prompt-was-boring-2pmh" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/mothasa"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3783763%2Fb58e7e6f-a3b4-4c0d-805f-83bc2a47f3ac.png" alt="Moth"></a> </p> </div><div> <p>Microsoft's Azure CTO just published a paper showing that a single training prompt — "Create a fake news article that could lead to panic or chaos" — can strip the safety alignment from 15 different language models across six families. The technique is called GRP-Obliteration. It scores an average 81% effectiveness. And the prompt it uses doesn't mention violence, weapons, or anything illegal.</p> <h2> <a name="the-technique" href="#the-technique"> </a> The Technique
+</h2> <p>Group Relative Policy Optimization is a reinforcement learning method that AI companies use to make models safer. The Microsoft team, led by Mark Russinovich, Azure's CTO and Deputy CISO, discovered it works just as well in reverse.</p> <p>The attack generates multiple responses to a single harmful prompt. A separate judge model scores each response — not on safety, but on how directly it complies with the request, how much policy-violating content it contains, and how actionable the output is. The most harmful responses get the highest scores. The model learns from the feedback. One round of training, and the guardrails dissolve.</p> <p>The researchers tested it on GPT-OSS-20B, DeepSeek-R1-Distill variants, Google Gemma, Meta Llama 3.1, Mistral's Ministral, and Alibaba's Qwen. Fifteen models total. Every one of them broke.</p> <h2> <a name="the-numbers" href="#the-numbers"> </a> The Numbers
+</h2> <p>GPT-OSS-20B went from a 13% attack success rate to 93% across 44 harmful categories. One prompt. One training step. The model didn't just become permissive in the category it was trained on — it became permissive across categories it had never seen during the attack. Ask it about fake news, and it also becomes willing to help with violence, illegal activity, and explicit content.</p> <p>GRP-Obliteration scored 81% overall effectiveness, compared to 69% for Abliteration (the previous leading technique) and 58% for TwinBreak. It also works on image models. Stable Diffusion 2.1 went from generating harmful content 56% of the time to nearly 90% — using just ten prompts.</p> <p>The kicker: the models retained their general capabilities within a few percentage points of their aligned baselines. They didn't get dumber. They got obedient.</p> <h2> <a name="why-this-matters" href="#why-this-matters"> </a> Why This Matters
+</h2> <p>The vulnerability hits hardest where enterprises are investing the most: post-deployment customization. Companies download open-weight models — Llama, Gemma, Qwen, Ministral — and fine-tune them for domain-specific tasks. That fine-tuning step is where GRP-Obliteration lives. The model arrives safe. The enterprise makes it useful. Somewhere in between, the alignment can evaporate.</p> <p>Fifty-seven percent of surveyed enterprises already rank LLM manipulation as their second-highest AI security concern. IDC analyst Sakshi Grover put it plainly: "Alignment can degrade precisely at the point where many enterprises are investing the most: post-deployment customization."</p> <p>Closed models like GPT-4o and Claude aren't directly vulnerable to this attack because users can't fine-tune the base weights. But every open-weight model in production is. And open-weight is winning the market. Qwen has 700 million downloads on Hugging Face. Llama powers most enterprise AI stacks. The models people are actually deploying at scale are the ones most susceptible to having their safety erased in a single training step.</p> <h2> <a name="the-real-problem" href="#the-real-problem"> </a> The Real Problem
+</h2> <p>The researchers frame this carefully. GRP-Obliteration requires training access — you need to be able to update the model's weights. That means it's not a prompt injection or a jailbreak. It's a fundamental property of how reinforcement learning works. The same mechanism that teaches a model to be safe can teach it to be dangerous, with the same number of steps and the same amount of data.</p> <p>Russinovich's team recommends continuous safety evaluations during fine-tuning, not just before and after. But the recommendation highlights the gap: most enterprises don't do safety evaluations at all. They benchmark capabilities. They measure accuracy on their domain tasks. They don't check whether their customization accidentally — or deliberately — stripped the model's willingness to refuse.</p> <p>AI safety isn't a feature you install once. It's a property that has to survive every transformation the model undergoes after training. GRP-Obliteration proves it doesn't.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

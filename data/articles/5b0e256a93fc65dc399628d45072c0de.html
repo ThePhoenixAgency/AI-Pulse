@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Managing openHAB Rules Like Production Software: Testing, Automation, and Troubleshooting</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Managing openHAB Rules Like Production Software: Testing, Automation, and Troubleshooting</h1>
+  <div class="metadata">
+    Source: openHAB Community (Latest) | Date: 2/24/2026 10:09:10 PM | <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>Hi all,</p>
+<p>as I’m using openHAB since more than 10 year regressions problems, and troubleshooting after upgrades are well known to me. So - as I tried to leverage AI agents to create a system to create testable rules and widgets - and I’m quite happy with the result. As usual, my time is very limited - especially as I want to finish the Jellyfin binding to make it available to all users (locally it is under testing with 5.1.2) …</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/original/3X/6/0/60fd809db4313650cdb45a3ca9884fd368ed525a.png" data-download-href="/uploads/short-url/dQ0XJWfIRUXguuLC7ejsHh4qUH0.png?dl=1" title="image" rel="noopener nofollow ugc"><img src="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/6/0/60fd809db4313650cdb45a3ca9884fd368ed525a_2_414x500.png" alt="image" data-base62-sha1="dQ0XJWfIRUXguuLC7ejsHh4qUH0" width="414" height="500" srcset="//community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/6/0/60fd809db4313650cdb45a3ca9884fd368ed525a_2_414x500.png, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/6/0/60fd809db4313650cdb45a3ca9884fd368ed525a_2_621x750.png 1.5x, //community-openhab-org.s3.dualstack.eu-central-1.amazonaws.com/optimized/3X/6/0/60fd809db4313650cdb45a3ca9884fd368ed525a_2_828x1000.png 2x" data-dominant-color="EBEBEB"></a></div><p></p>
+<p>So I dared to task the AI to describe the setup - not ideal maybe, but I hope it serves as an inspiration on how to achieve a stable setup over time; and preferred to not sharing the idea at all.</p>
+<p>Note: There are quite some simplifications in the summary - as the whole container, network setup and AI agent setup is omitted.</p>
+<p>with kind regards,<br>
+Patrik</p>
+<p>And now I give the word to Claude:</p>
+<hr>
+<blockquote>
+<p><img src="https://community.openhab.org/images/emoji/twitter/memo.png?v=15" title=":memo:" class="emoji" alt=":memo:" loading="lazy" width="20" height="20"> <strong>Note</strong>: This article was automatically generated with AI. The rule modifications, tests, and troubleshooting workflows themselves are developed and refined using AI agents as coding partners. The approach documented here reflects our operational practices, not necessarily universal “best practices.”</p>
+</blockquote>
+<h2><a name="p-964552-introduction-1" class="anchor" href="https://community.openhab.org#p-964552-introduction-1" aria-label="Heading link"></a>Introduction</h2>
+<p>Home automation rules are complex. They integrate multiple devices, handle edge cases, and run 24/7 with minimal supervision. Yet many openHAB users manage rules the way they manage configuration files—manually, with minimal testing, and with limited visibility into execution.</p>
+<p><strong>Our Setup</strong>: 90 production rule files, 6 shared library modules, 92 unit tests—all deployed and managed using the testing and deployment pipeline described below.</p>
+<p>This article describes our approach: <strong>automated regression testing with Jest, system endpoint testing with Puppeteer, live interaction via the openHAB REST API, and interactive troubleshooting with Karaf</strong>. Each tool addresses a specific part of the development lifecycle.</p>
+<hr>
+<h2><a name="p-964552-overview-the-rule-development-workflow-2" class="anchor" href="https://community.openhab.org#p-964552-overview-the-rule-development-workflow-2" aria-label="Heading link"></a>Overview: The Rule Development Workflow</h2>
+<pre><code class="lang-auto">Rule Code (JavaScript) ↓ Local Unit Tests (Jest) ↓ System Integration Tests (Puppeteer + REST API) ↓ Deploy to openHAB ↓ Live Troubleshooting (Karaf Console)
+</code></pre>
+<p>Each tool serves a specific purpose:</p>
+<ul>
+<li><strong>Jest</strong> → unit tests catch logic errors before deployment</li>
+<li><strong>Puppeteer + REST API</strong> → integration tests validate end-to-end behavior</li>
+<li><strong>Karaf</strong> → interactive debugging when things go wrong</li>
+</ul>
+<hr>
+<h2><a name="p-964552-part-1-regression-testing-with-jest-3" class="anchor" href="https://community.openhab.org#p-964552-part-1-regression-testing-with-jest-3" aria-label="Heading link"></a>Part 1: Regression Testing with Jest</h2>
+<p>Jest runs unit tests in milliseconds without requiring an openHAB instance. It handles the core logic layer: parsing, decision-making, state coordination. openHAB injects runtime globals (<code>items</code>, <code>rules</code>, <code>events</code>), so tests mock these to isolate the code under test.</p>
+<h3><a name="p-964552-test-structure-unit-tests-vs-integration-tests-4" class="anchor" href="https://community.openhab.org#p-964552-test-structure-unit-tests-vs-integration-tests-4" aria-label="Heading link"></a>Test Structure: Unit Tests vs. Integration Tests</h3>
+Unit Tests: Testing Pure Logic <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+Integration Tests: Testing System Interaction <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+<h3><a name="p-964552-setup-package-configuration-5" class="anchor" href="https://community.openhab.org#p-964552-setup-package-configuration-5" aria-label="Heading link"></a>Setup: Package Configuration</h3>
+Configure Jest for openHAB Rule Testing <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+<h3><a name="p-964552-testing-approach-mocking-and-isolation-6" class="anchor" href="https://community.openhab.org#p-964552-testing-approach-mocking-and-isolation-6" aria-label="Heading link"></a>Testing Approach: Mocking and Isolation</h3>
+Mock Setup and Test Structure <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+<hr>
+<h2><a name="p-964552-part-2-end-to-end-testing-with-rest-api-and-puppeteer-7" class="anchor" href="https://community.openhab.org#p-964552-part-2-end-to-end-testing-with-rest-api-and-puppeteer-7" aria-label="Heading link"></a>Part 2: End-to-End Testing with REST API and Puppeteer</h2>
+<p>Integration tests validate the full lifecycle: command → item updates → rule triggers → side effects occur. The REST API and Puppeteer are the test interfaces to a real openHAB instance.</p>
+<h3><a name="p-964552-using-the-rest-api-for-integration-tests-8" class="anchor" href="https://community.openhab.org#p-964552-using-the-rest-api-for-integration-tests-8" aria-label="Heading link"></a>Using the REST API for Integration Tests</h3>
+<p>The openHAB REST API provides endpoints for items, rules, and logs. From Node.js:</p>
+<pre data-code-wrap="javascript"><code class="lang-javascript">// Get item state
+const getItemState = async (itemName) =&gt; { const response = await fetch(`http://localhost:8080/rest/items/${itemName}`); return response.json();
+}; // Trigger a rule
+const triggerRule = async (ruleUid) =&gt; { return fetch(`http://localhost:8080/rest/rules/${ruleUid}/runnow`, { method: "POST" });
+};
+</code></pre>
+<p>These calls simulate what a user’s dashboard or external system would do. They verify rules respond correctly to real events.</p>
+<h3><a name="p-964552-puppeteer-for-ui-testing-9" class="anchor" href="https://community.openhab.org#p-964552-puppeteer-for-ui-testing-9" aria-label="Heading link"></a>Puppeteer for UI Testing</h3>
+<p>Puppeteer automates a browser to test dashboards and sitemap pages. Key techniques:</p>
+<ul>
+<li><code>page.goto()</code> → navigate to openHAB</li>
+<li><code>page.click()</code> → simulate user interaction</li>
+<li><code>page.waitForFunction()</code> → wait for async state updates</li>
+<li><code>page.$eval()</code> → query and verify DOM content</li>
+</ul>
+<p>The pattern is: send a REST command → wait for UI to update → verify the change is visible:</p>
+<pre data-code-wrap="javascript"><code class="lang-javascript">// E2E: Verify UI reflects item state change
+await fetch(`http://localhost:8080/rest/items/Light`, { method: "POST", body: "ON"
+}); await page.waitForFunction(() =&gt; { const element = document.querySelector("[data-item='Light']"); return element?.textContent.includes("ON");
+});
+</code></pre>
+<p>This catches issues that pure API tests miss: slow UI updates, missing bindings, incorrect state formatting.</p>
+<hr>
+<h2><a name="p-964552-part-3-deployment-rules-vs-libraries-10" class="anchor" href="https://community.openhab.org#p-964552-part-3-deployment-rules-vs-libraries-10" aria-label="Heading link"></a>Part 3: Deployment: Rules vs. Libraries</h2>
+<p>openHAB rules and shared libraries are deployed using fundamentally different mechanisms. This distinction matters: it affects how you structure code, how you test, and how you troubleshoot.</p>
+<h3><a name="p-964552-architecture-how-tests-feed-into-deployment-11" class="anchor" href="https://community.openhab.org#p-964552-architecture-how-tests-feed-into-deployment-11" aria-label="Heading link"></a>Architecture: How Tests Feed into Deployment</h3>
+<p>Before any code reaches openHAB, the deployment system performs comprehensive sanity checks:</p>
+<pre><code class="lang-auto">Source Code (rules/*.js + metadata, lib/*.js) ↓ [Test Assert] npm test - unit tests, error paths, edge cases ↓ [Sanity Check] Verify GraalVM compatibility (JSDoc + IIFE incompatibility) ↓ [Sanity Check] Verify dependencies exist (all required shared modules) ↓ [Sanity Check] Verify metadata IDs are present (triggers, actions must have IDs) ↓
+[Rules] Strip IIFE wrapper + construct REST payload with metadata
+[Libs] rsync to node_modules with checksum verification ↓ REST API POST/PUT with proper action/trigger configuration ↓ [Sanity Check] Verify rule status transitions to IDLE (not UNINITIALIZED) ↓ [Production] Enable rule
+</code></pre>
+<h3><a name="p-964552-shared-libraries-rsync-deployment-with-verification-12" class="anchor" href="https://community.openhab.org#p-964552-shared-libraries-rsync-deployment-with-verification-12" aria-label="Heading link"></a>Shared Libraries: rsync Deployment with Verification</h3>
+<p>Shared libraries (modules in <code>lib/</code>) deploy via rsync to the remote openHAB server’s <code>node_modules</code> directory:</p>
+Library Deployment Mechanism <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+<h3><a name="p-964552-rules-iife-stripping-and-rest-api-deployment-13" class="anchor" href="https://community.openhab.org#p-964552-rules-iife-stripping-and-rest-api-deployment-13" aria-label="Heading link"></a>Rules: IIFE Stripping and REST API Deployment</h3>
+<p>Rules require transformation:</p>
+<ol>
+<li><strong>IIFE wrapper stripped</strong> (added for Jest, not needed in openHAB)</li>
+<li><strong>Metadata merged</strong> (triggers, actions, tags from JSON)</li>
+<li><strong>IDs generated</strong> for triggers and actions</li>
+<li><strong>REST payload constructed</strong> with proper structure</li>
+<li><strong>GraalVM cache cleared</strong> (delete/recreate)</li>
+</ol>
+The IIFE Pattern and Stripping Process <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+Metadata Separation and ID Generation <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+GraalVM Cache Bypass Strategy <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+<h3><a name="p-964552-pre-deployment-sanity-checks-14" class="anchor" href="https://community.openhab.org#p-964552-pre-deployment-sanity-checks-14" aria-label="Heading link"></a>Pre-Deployment Sanity Checks</h3>
+<p>Before any REST API call, the deployment script validates:</p>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th style="text-align:right">Failure Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Files exist</td>
+<td style="text-align:right">Obvious error, deployment stops</td>
+</tr>
+<tr>
+<td>Tests pass</td>
+<td style="text-align:right">Catch logic errors in Jest before live</td>
+</tr>
+<tr>
+<td>Dependencies deployed</td>
+<td style="text-align:right">Missing library → <code>require()</code> fails at runtime</td>
+</tr>
+<tr>
+<td>Trigger/action IDs present</td>
+<td style="text-align:right">Missing IDs → rule status UNINITIALIZED</td>
+</tr>
+<tr>
+<td>Action type is correct</td>
+<td style="text-align:right">Must be <code>script.ScriptAction</code>, not <code>application/javascript</code></td>
+</tr>
+<tr>
+<td>No GraalVM incompatibilities</td>
+<td style="text-align:right">JSDoc+IIFE pattern → silent execution skip</td>
+</tr>
+<tr>
+<td>Server responds</td>
+<td style="text-align:right">API accessible, auth valid</td>
+</tr>
+<tr>
+<td>Rule reaches IDLE</td>
+<td style="text-align:right">Indicates successful initialization</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Example: Missing Dependency Check</strong></p>
+<pre data-code-wrap="bash"><code class="lang-bash"># Verify required modules are deployed
+for module in openhab-utils alert-tracker multimedia-constants; do if grep -q "require('$module')" rules/012d853fc5.js; then ssh openhab-host ls conf/automation/js/node_modules/$module/index.js || { echo " Module not deployed: $module" exit 1 } fi
+done
+</code></pre> <h3><a name="p-964552-live-interaction-rest-api-for-testing-and-monitoring-15" class="anchor" href="https://community.openhab.org#p-964552-live-interaction-rest-api-for-testing-and-monitoring-15" aria-label="Heading link"></a>Live Interaction: REST API for Testing and Monitoring</h3>
+<p>After deployment, the REST API is your window into rule execution:</p>
+<pre data-code-wrap="bash"><code class="lang-bash"># Trigger a rule manually
+curl -X POST http://localhost:8080/rest/rules/012d853fc5/runnow # Check rule status
+curl http://localhost:8080/rest/rules/012d853fc5 | jq '.statusInfo' # List all rules and their status
+curl http://localhost:8080/rest/rules | jq '.[] | {uid, name, enabled, statusInfo}'
+</code></pre>
+<hr>
+<pre data-code-wrap="javascript"><code class="lang-javascript">
+// After stripping: rules/alert-stale-items.js (deployed to openHAB) ("use strict"); const alertTracker = require("alert-tracker");
+const { safeGetItem } = require("openhab-utils"); const checkStaleItems = () =&gt; { // ... implementation ...
+}; // Direct call (openHAB rule engine triggers this)
+checkStaleItems(); </code></pre>
+<p><strong>How Stripping Works</strong>:</p>
+<p>The deployment script uses Python regex to detect and remove the IIFE:</p>
+<ul>
+<li>
+<p><strong>Arrow IIFE</strong>: <code>((exports) =&gt; { ... })(...)</code></p>
+<ul>
+<li>Removes the outer wrapper</li>
+<li>Removes the inner <code>if (exports) { ... }</code> export block</li>
+<li>Replaces the <code>if (typeof event !== "undefined") { runRule(); }</code> guard with direct call</li>
+</ul>
+</li>
+<li>
+<p><strong>Function IIFE</strong>: <code>(function () { ... })()</code></p>
+<ul>
+<li>Removes wrapper; inner code is already direct</li>
+</ul>
+</li>
+</ul>
+<p>If neither pattern is detected, code passes through unchanged (for rules that don’t use IIFE).</p> Metadata Separation and ID Generation <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+GraalVM Cache Bypass Strategy <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+<h3><a name="p-964552-pre-deployment-sanity-checks-16" class="anchor" href="https://community.openhab.org#p-964552-pre-deployment-sanity-checks-16" aria-label="Heading link"></a>Pre-Deployment Sanity Checks</h3>
+<p>The deployment script performs critical validation before any REST API call:</p>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Why</th>
+<th>Failure Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>File exists</td>
+<td>Rule JS and metadata files must exist</td>
+<td>Obvious error; stops deployment</td>
+</tr>
+<tr>
+<td>Tests pass</td>
+<td>Catch logic errors before going live</td>
+<td>Silent bugs if skipped</td>
+</tr>
+<tr>
+<td>Dependencies deployed</td>
+<td>Required libraries must exist on server</td>
+<td><code>require()</code> fails at runtime with “module not found”</td>
+</tr>
+<tr>
+<td>Trigger/action IDs present</td>
+<td>IDs are required by openHAB rule schema</td>
+<td>Rule status: UNINITIALIZED (silent failure)</td>
+</tr>
+<tr>
+<td>Action type correct</td>
+<td>Must be <code>script.ScriptAction</code>, not <code>application/javascript</code></td>
+<td>Rule status: UNINITIALIZED</td>
+</tr>
+<tr>
+<td>No GraalVM incompatibilities</td>
+<td>Detects JSDoc+IIFE pattern that causes silent skip</td>
+<td>Rule loads but never executes</td>
+</tr>
+<tr>
+<td>Server responds</td>
+<td>API accessible, authentication works</td>
+<td>HTTP errors during deployment</td>
+</tr>
+<tr>
+<td>Rule reaches IDLE status</td>
+<td>Indicates successful initialization</td>
+<td>Rule loads but may not execute</td>
+</tr>
+</tbody>
+</table>
+</div><p><strong>Example: Missing Dependency Check</strong></p>
+<pre data-code-wrap="bash"><code class="lang-bash"># Check if required modules are deployed
+for module in openhab-utils alert-tracker multimedia-constants; do if grep -q "require('$module')" rules/012d853fc5.js; then # Verify module exists on server ssh openhab-host ls conf/automation/js/node_modules/$module/index.js || { echo " Module not deployed: $module" exit 1 } fi
+done
+</code></pre>
+<p>If a rule requires <code>alert-tracker</code> but it hasn’t been synced yet, deployment stops with a clear error message.</p> <h3><a name="p-964552-live-interaction-rest-api-for-testing-and-monitoring-17" class="anchor" href="https://community.openhab.org#p-964552-live-interaction-rest-api-for-testing-and-monitoring-17" aria-label="Heading link"></a>Live Interaction: REST API for Testing and Monitoring</h3>
+<p>Once deployed, the REST API is your window into rule execution:</p>
+<p><strong>Trigger a rule manually</strong> (for testing):</p>
+<pre data-code-wrap="bash"><code class="lang-bash">curl -X POST http://localhost:8080/rest/rules/012d853fc5/runnow
+</code></pre>
+<p><strong>Check rule status</strong>:</p>
+<pre data-code-wrap="bash"><code class="lang-bash">curl http://localhost:8080/rest/rules/012d853fc5 | jq '.statusInfo'
+# Returns: { "status": "IDLE" } or { "status": "ERROR", "description": "..." }
+</code></pre>
+<p><strong>List all rules</strong> and their status:</p>
+<pre data-code-wrap="bash"><code class="lang-bash">curl http://localhost:8080/rest/rules | jq '.[] | {uid, name, enabled, statusInfo}'
+</code></pre>
+<p>These calls work during development, testing, and production monitoring. When issues arise, Karaf console provides direct access to inspect item states, monitor logs, and analyze rule execution.</p>
+<hr>
+<h3><a name="p-964552-tools-summary-18" class="anchor" href="https://community.openhab.org#p-964552-tools-summary-18" aria-label="Heading link"></a>Tools Summary</h3>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>When to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Jest</strong></td>
+<td>Unit test rule logic</td>
+<td>During development, before commit</td>
+</tr>
+<tr>
+<td><strong>Puppeteer</strong></td>
+<td>Test UI and end-to-end flows</td>
+<td>Before deployment, for regression tests</td>
+</tr>
+<tr>
+<td><strong>REST API</strong></td>
+<td>Deploy, trigger, inspect, monitor</td>
+<td>Live system interaction and testing</td>
+</tr>
+<tr>
+<td><strong>Karaf</strong></td>
+<td>Interactive debugging</td>
+<td>Troubleshoot production issues, inspect state</td>
+</tr>
+</tbody>
+</table>
+</div><hr>
+<h2><a name="p-964552-example-rule-structure-with-iife-and-tests-19" class="anchor" href="https://community.openhab.org#p-964552-example-rule-structure-with-iife-and-tests-19" aria-label="Heading link"></a>Example: Rule Structure with IIFE and Tests</h2>
+<p>Here’s how a production rule is structured:</p>
+Complete Rule Example <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+<hr>
+<h2><a name="p-964552-conclusion-20" class="anchor" href="https://community.openhab.org#p-964552-conclusion-20" aria-label="Heading link"></a>Conclusion</h2>
+<p>This approach—unit testing with Jest, integration testing with REST API and Puppeteer, transformation-based deployment with IIFE stripping, and interactive troubleshooting via Karaf—is what works operationally for us.</p>
+<p><strong>The stack enables</strong>:</p>
+<ul>
+<li><img src="https://community.openhab.org/images/emoji/twitter/test_tube.png?v=15" title=":test_tube:" class="emoji" alt=":test_tube:" loading="lazy" width="20" height="20"> Rules tested locally before deployment</li>
+<li><img src="https://community.openhab.org/images/emoji/twitter/white_check_mark.png?v=15" title=":white_check_mark:" class="emoji" alt=":white_check_mark:" loading="lazy" width="20" height="20"> Comprehensive validation gate before REST API calls</li>
+<li><img src="https://community.openhab.org/images/emoji/twitter/rocket.png?v=15" title=":rocket:" class="emoji" alt=":rocket:" loading="lazy" width="20" height="20"> Automated IIFE stripping and GraalVM cache bypass</li>
+<li><img src="https://community.openhab.org/images/emoji/twitter/magnifying_glass_tilted_left.png?v=15" title=":magnifying_glass_tilted_left:" class="emoji" alt=":magnifying_glass_tilted_left:" loading="lazy" width="20" height="20"> Direct REST API interaction for live debugging</li>
+<li><img src="https://community.openhab.org/images/emoji/twitter/wrench.png?v=15" title=":wrench:" class="emoji" alt=":wrench:" loading="lazy" width="20" height="20"> Karaf console for production troubleshooting</li>
+</ul>
+<p>The result: fewer runtime surprises, faster iteration, and less time spent guessing what went wrong.</p>
+<hr>
+<h2><a name="p-964552-quick-reference-command-cheat-sheet-21" class="anchor" href="https://community.openhab.org#p-964552-quick-reference-command-cheat-sheet-21" aria-label="Heading link"></a>Quick Reference: Command Cheat Sheet</h2>
+Commands and Workflows <a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641/1">(click for more details)</a>
+<hr>
+<h2><a name="p-964552-further-reading-22" class="anchor" href="https://community.openhab.org#p-964552-further-reading-22" aria-label="Heading link"></a>Further Reading</h2>
+<ul>
+<li><a href="https://www.openhab.org/docs/configuration/rules-dsl.html#javascript-based-rules" rel="noopener nofollow ugc">openHAB JavaScript Scripting Documentation</a></li>
+<li><a href="https://www.openhab.org/docs/configuration/restdocs.html" rel="noopener nofollow ugc">openHAB REST API Reference</a></li>
+<li><a href="https://karaf.apache.org/manual/latest/" rel="noopener nofollow ugc">Karaf Console Reference</a></li>
+<li><a href="https://jestjs.io/" rel="noopener nofollow ugc">Jest Testing Framework</a></li>
+<li><a href="https://pptr.dev/" rel="noopener nofollow ugc">Puppeteer Documentation</a></li>
+</ul> <p><small>1 post - 1 participant</small></p> <p><a href="https://community.openhab.org/t/managing-openhab-rules-like-production-software-testing-automation-and-troubleshooting/168641">Read full topic</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

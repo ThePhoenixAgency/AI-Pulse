@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Reverse Engineered ChatGPT's UI Into an OpenAI Compatible API and Here's Why You Shouldn't</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Reverse Engineered ChatGPT's UI Into an OpenAI Compatible API and Here's Why You Shouldn't</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 2:21:04 PM | <a href="https://dev.to/gautamvhavle/i-reverse-engineered-chatgpts-ui-into-an-openai-compatible-api-and-heres-why-you-shouldnt-ch" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><em>A weekend project that wasn't supposed to work. But it did. And now we need to talk about it.</em></p> <p>Let me be upfront: <strong>this project exists for educational purposes only.</strong> What you're about to read shouldn't be replicated in production, shouldn't be used to skirt terms of service, and honestly shouldn't work as well as it does.</p> <p>But here we are.</p> <p>I took ChatGPT's entire web frontend the same UI you and I use every day and reverse-engineered it into my backend. Browser automation, stealth patches, Cloudflare bypass, clipboard hijacking, DOM scraping, virtual displays. The result? A fully <strong>OpenAI-compatible REST API</strong> that any SDK, any LangChain agent, any curl command can hit as a drop-in replacement. Tool calling, image generation, file uploads, vision, all of it using your own account and subscription with the latest Model.</p> <p>The project is called <strong>CatGPT-Gateway</strong> I'll attach the Github link below for reference. I need to tell you how it works.</p> <p><em>because understanding what's possible is the first step to building better defenses against it.</em></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkdoodsfuu9r6tpyf9uzh.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkdoodsfuu9r6tpyf9uzh.png" alt="Hero"></a></p> <blockquote>
+<p> <strong>Before we go any further:</strong> This project is built purely for <strong>educational purposes</strong> and cybersecurity research. I'm not a hacker. This isn't a bug. I'm just a curious developer who wanted to understand the limits of browser automation. Stick around, we'll talk ethics at the end.</p>
+</blockquote> <hr> <h2> <a name="the-origin-story-a-developers-frustration" href="#the-origin-story-a-developers-frustration"> </a> The Origin Story: A Developer's Frustration
+</h2> <p>Here’s what happened.....</p> <p>At the same time, I was working on another project that required repeated image generation. Not just one or two images, several iterations for testing and refinement.</p> <p>So I paused.</p> <p>ChatGPT could already generate images directly inside the chat interface. It could also produce structured responses to my prompts with context awareness.</p> <p>That raised a technical question.</p> <p>What if the chat interface itself could be automated? Not as a workaround, and not to avoid API usage or pricing, but as a pure engineering experiment. Could a conversational UI be programmatically driven? Could it behave like an interaction layer that mimics API semantics? What architectural differences would emerge between UI automation and formal API integration?</p> <p>The curiosity wasn’t financial. It was structural.</p> <p>I wanted to understand system behavior, automation mechanics, and the boundaries between user-facing interfaces and backend-accessible endpoints.</p> <p>It was supposed to be a quick weekend hack, the kind you start at 11 PM on a Friday, fully expecting it to collapse within the hour.</p> <p>It didn’t. And that’s where things got interesting.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fglhk741zoxp590q6pse4.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fglhk741zoxp590q6pse4.png" alt="Eureka Moment"></a><br>
+<em>Every great terrible idea starts at 11 PM with too much coffee.</em></p> <hr>
+<h2> <a name="how-is-this-even-possible" href="#how-is-this-even-possible"> </a> How Is This Even Possible?
+</h2> <p>Let me break it down. The architecture is simple on paper, absolutely unhinged in execution.<br>
+</p> <div>
+<pre><code>External Clients (curl, Python, LangChain) │ ▼ ┌───────────┐ │ FastAPI │ ← OpenAI-compatible API (port 8000) │ Server │ └─────┬─────┘ │ ▼ ┌──────────────┐ │ ChatGPTClient│ ← Sends messages, waits for responses, │ │ extracts text via clipboard/DOM └──────┬───────┘ │ ▼ ┌───────────────┐ │BrowserManager │ ← Patchright (stealth Playwright fork) │+ Stealth │ controlling a real Chrome instance │+ Human Sim │ with anti-detection patches └───────┬───────┘ │ ▼ ┌───────────────┐ │ Xvfb + VNC │ ← Virtual display + VNC viewer │ (port 6080) │ (the magic trick — more on this later) └───────────────┘
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Here's what's happening:</p> <ol>
+<li>
+<strong>You hit the API</strong> — standard OpenAI-format request, <code>POST /v1/chat/completions</code>
+</li>
+<li>
+<strong>FastAPI receives it</strong> and hands it to the ChatGPT client</li>
+<li>
+<strong>The client literally types your message</strong> into ChatGPT's chat input box using a headful Chrome browser</li>
+<li>
+<strong>It waits for the response</strong> by watching for ChatGPT's copy button to appear (that's how it knows the response is complete — clever, right?)</li>
+<li>
+<strong>It clicks the copy button</strong>, grabs the text from the clipboard, and returns it as a proper OpenAI-format JSON response</li>
+</ol> <p>Your LangChain app, your agent framework, your curl script — they all think they're talking to OpenAI. They're actually talking to a cat controlling a browser.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnw7j2twe2nmff3j0kj1.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbnw7j2twe2nmff3j0kj1.png" alt="curl"></a></p> <hr> <h2> <a name="the-cloudflare-boss-fight" href="#the-cloudflare-boss-fight"> </a> The Cloudflare Boss Fight
+</h2> <p>Okay, here's where it gets interesting. You can't just <code>puppeteer.launch()</code> and waltz into ChatGPT. OpenAI uses <strong>Cloudflare's human verification</strong> — and modern Cloudflare is <em>really</em> good at detecting bots.</p> <p>I want to genuinely appreciate OpenAI and Cloudflare here. Their security gave me <strong>so many blockers and roadblocks</strong> that I almost gave up multiple times. We're talking:</p> <ul>
+<li>
+<strong><code>navigator.webdriver</code> detection</strong> — the first thing any anti-bot checks</li>
+<li>
+<strong>Canvas fingerprinting</strong> — headless browsers have different rendering signatures</li>
+<li>
+<strong>WebGL fingerprinting</strong> — GPU-level identification</li>
+<li>
+<strong>Plugin enumeration</strong> — headless Chrome reports different plugins</li>
+<li>
+<strong>Behavioral analysis</strong> — instant typing? Pixel-perfect clicks? That's not human</li>
+</ul> <p>Every single one of these had to be defeated. Not by exploiting a vulnerability — but by making the browser <strong>more human</strong>.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv7h9q8ok7e85z9zw1z6y.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fv7h9q8ok7e85z9zw1z6y.png" alt="Cloudflare vs Me"></a><br>
+<em>Actual footage of me vs. Cloudflare's bot detection (dramatized).</em></p> <p>Here's what CatGPT does to pass as human:</p> <p><strong>Stealth Patches</strong> — Using <a href="https://github.com/AjaxMultiCommentary/patchright" target="_blank">Patchright</a> (a Playwright fork built for stealth) combined with <a href="https://pypi.org/project/playwright-stealth/" target="_blank">playwright-stealth</a>, CatGPT patches the browser fingerprint at every level. <code>navigator.webdriver</code> returns <code>false</code>, canvas renders match real browsers, WebGL reports are spoofed.</p> <p><strong>Human Simulation</strong> — Messages aren't typed character-by-character (that's detectable too). Instead, CatGPT uses clipboard-paste injection with randomized delays. Mouse movements happen during "thinking" pauses — idle cursor drifts to random positions with 5-15 intermediate steps, like a bored human.</p> <p><strong>Viewport Jitter</strong> — Every launch randomizes the viewport by ±20px from the base 1280×720. No two sessions have exactly the same fingerprint.</p> <p><strong>The Docker DNS Bug Discovery</strong> — This one's wild. I found that calling Playwright's <code>add_init_script()</code> — even with just a <code>console.log("")</code> — completely <strong>breaks Chrome's DNS resolution</strong> inside Docker containers. Every navigation after that returns <code>ERR_NAME_NOT_RESOLVED</code>. The fix? Inject all stealth JavaScript via <code>page.evaluate()</code> at runtime and re-inject on every <code>framenavigated</code> event instead. Days of debugging. One line fix. Classic.</p> <hr>
+<h2> <a name="the-vnc-trick-schr%C3%B6dingers-browser" href="#the-vnc-trick-schr%C3%B6dingers-browser"> </a> The VNC Trick — Schrödinger's Browser
+</h2> <p>This is the part I'm most proud of. This is what makes CatGPT fundamentally different from every other browser automation project I've seen.</p> <p><strong>The problem:</strong> Cloudflare can detect headless Chrome. So you need headful Chrome (a real browser window). But servers don't have monitors. So how do you run a "headed" browser on a headless server?</p> <p><strong>The solution:</strong> You give it a <strong>fake monitor</strong>.<br>
+</p> <div>
+<pre><code>Chrome (headful mode) renders to → Xvfb (Virtual Framebuffer — fake display :99) captured by → x11vnc (VNC server) served via → noVNC (WebSocket, port 6080) viewable in → Your browser
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqquvl2avbbbitmftuk86.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqquvl2avbbbitmftuk86.png" alt="Shocking"></a><br>
+<em>This was the most shocking part for me too.</em></p> <p>Here's the beautiful paradox:</p> <ul>
+<li>
+<strong>To Cloudflare</strong>: It's a real, headed, GPU-rendering Chrome browser with a proper display. Nothing to see here, human user browsing normally.</li>
+<li>
+<strong>To your server</strong>: It's a headless process. No monitor needed. Runs in Docker. Fully automated.</li>
+<li>
+<strong>To you</strong>: You can open <code>http://localhost:6080</code> in your browser and <em>watch the automation happen in real-time</em> through VNC. Debug visually. Handle CAPTCHAs manually if needed. Sign in through the actual browser.</li>
+</ul> <p>It's <strong>headed AND headless at the same time</strong>. Schrödinger's browser.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9sgubga7m6dn265tq2fq.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9sgubga7m6dn265tq2fq.png" alt="Headed for Cloudflare. Headless for your server"></a><br>
+<em>Headed for Cloudflare. Headless for your server. Both at the same time.</em></p> <p>Four processes run in the Docker container, managed by supervisord:</p> <div><table>
+<thead>
+<tr>
+<th>Process</th>
+<th>What It Does</th>
+<th>Port</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Xvfb</strong></td>
+<td>Virtual framebuffer — the "fake monitor"</td>
+<td>Display <code>:99</code>
+</td>
+</tr>
+<tr>
+<td><strong>x11vnc</strong></td>
+<td>VNC server — captures the virtual display</td>
+<td>5900</td>
+</tr>
+<tr>
+<td><strong>noVNC</strong></td>
+<td>WebSocket bridge — makes VNC browser-accessible</td>
+<td>6080</td>
+</tr>
+<tr>
+<td><strong>FastAPI</strong></td>
+<td>The actual API server</td>
+<td>8000</td>
+</tr>
+</tbody>
+</table></div> <p>One <code>docker compose up</code> and you've got the whole stack.</p> <hr>
+<h2> <a name="openaicompatible-endpoints-dropin-replacement" href="#openaicompatible-endpoints-dropin-replacement"> </a> OpenAI-Compatible Endpoints — Drop-In Replacement
+</h2> <p>This is where the software engineer in me got excited. The API isn't just "some endpoint that returns text." It's a <strong>full OpenAI-compatible API</strong>. Pydantic schemas matching OpenAI's spec exactly. You can point any OpenAI SDK at it and it just works.<br>
+</p> <div>
+<pre><code><span># It's literally the same format as OpenAI's API</span>
+curl <span>-X</span> POST http://localhost:8000/v1/chat/completions <span>\</span> <span>-H</span> <span>"Content-Type: application/json"</span> <span>\</span> <span>-H</span> <span>"Authorization: Bearer your-token"</span> <span>\</span> <span>-d</span> <span>'{ "model": "catgpt-browser", "messages": [{"role": "user", "content": "Explain quantum computing in 3 sentences"}] }'</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>What you get back:</strong><br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"id"</span><span>:</span><span> </span><span>"chatcmpl-abc123..."</span><span>,</span><span> </span><span>"object"</span><span>:</span><span> </span><span>"chat.completion"</span><span>,</span><span> </span><span>"choices"</span><span>:</span><span> </span><span>[{</span><span> </span><span>"index"</span><span>:</span><span> </span><span>0</span><span>,</span><span> </span><span>"message"</span><span>:</span><span> </span><span>{</span><span> </span><span>"role"</span><span>:</span><span> </span><span>"assistant"</span><span>,</span><span> </span><span>"content"</span><span>:</span><span> </span><span>"Quantum computing uses quantum bits (qubits)..."</span><span> </span><span>},</span><span> </span><span>"finish_reason"</span><span>:</span><span> </span><span>"stop"</span><span> </span><span>}],</span><span> </span><span>"usage"</span><span>:</span><span> </span><span>{</span><span> </span><span>"prompt_tokens"</span><span>:</span><span> </span><span>12</span><span>,</span><span> </span><span>"completion_tokens"</span><span>:</span><span> </span><span>45</span><span>,</span><span> </span><span>"total_tokens"</span><span>:</span><span> </span><span>57</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Standard OpenAI response format. <code>id</code>, <code>choices</code>, <code>usage</code> — everything.</p> <h3> <a name="tool-function-calling" href="#tool-function-calling"> </a> Tool / Function Calling
+</h3> <p>Yeah, it supports tool calling too. Since we're automating a browser (not hitting an API with native function calling), CatGPT uses a clever technique: it builds a <strong>system prompt with tool definitions and few-shot examples</strong>, instructing ChatGPT to output structured JSON. Then it parses that JSON with regex and returns proper <code>tool_calls</code> in the response.<br>
+</p> <div>
+<pre><code><span># Works with LangChain / LangGraph out of the box
+</span><span>from</span> <span>langchain_openai</span> <span>import</span> <span>ChatOpenAI</span> <span>llm</span> <span>=</span> <span>ChatOpenAI</span><span>(</span> <span>base_url</span><span>=</span><span>"</span><span>http://localhost:8000/v1</span><span>"</span><span>,</span> <span>api_key</span><span>=</span><span>"</span><span>your-token</span><span>"</span><span>,</span> <span>model</span><span>=</span><span>"</span><span>catgpt-browser</span><span>"</span>
+<span>)</span> <span># Bind tools, create agents — it all works
+</span><span>llm_with_tools</span> <span>=</span> <span>llm</span><span>.</span><span>bind_tools</span><span>([</span><span>get_weather</span><span>,</span> <span>calculate</span><span>])</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fm5dneo67v20cmd3o9heb.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fm5dneo67v20cmd3o9heb.png" alt="Langchain"></a></p> <p>Any modern agent framework — LangChain, LangGraph, CrewAI, AutoGen — just point the <code>base_url</code> at CatGPT and you're golden.</p> <hr> <h2> <a name="wait-it-can-dalle-too" href="#wait-it-can-dalle-too"> </a> Wait, It Can DALL-E Too?!
+</h2> <p>This was the feature that started the whole project, remember? I needed image generation for testing, and there was no straightforward API button for developers who sign in with OpenAI.</p> <p>So how does CatGPT handle <code>POST /v1/images/generations</code>?</p> <ol>
+<li>
+<strong>Your request comes in</strong> — <code>"prompt": "A sunset over mountains"</code>
+</li>
+<li>
+<strong>CatGPT sends it to ChatGPT</strong> as a chat message, with hints about size and quality</li>
+<li>
+<strong>ChatGPT invokes DALL-E internally</strong> and renders the image in the chat</li>
+<li>
+<strong>The detector watches the DOM</strong> for <code>img[alt="Generated image"]</code> or images inside <code>div[id^="image-"]</code> containers</li>
+<li>
+<strong>The image is downloaded</strong> using the browser's own <code>fetch()</code> API — this is key because it preserves the authentication cookies. No separate auth needed.</li>
+<li>
+<strong>Returned to you</strong> as either base64 JSON or a URL, matching OpenAI's image response format
+</li>
+</ol> <div>
+<pre><code><span># Generate an image — same format as OpenAI's DALL-E API</span>
+curl <span>-X</span> POST http://localhost:8000/v1/images/generations <span>\</span> <span>-H</span> <span>"Content-Type: application/json"</span> <span>\</span> <span>-H</span> <span>"Authorization: Bearer your-token"</span> <span>\</span> <span>-d</span> <span>'{ "prompt": "An adorable orange tabby kitten astronaut floating in space", "size": "1024x1024", "quality": "hd" }'</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The response includes a <code>revised_prompt</code> — the actual prompt DALL-E used internally — and the image data. Works with the OpenAI Python SDK too:<br>
+</p> <div>
+<pre><code><span>from</span> <span>openai</span> <span>import</span> <span>OpenAI</span> <span>client</span> <span>=</span> <span>OpenAI</span><span>(</span><span>base_url</span><span>=</span><span>"</span><span>http://localhost:8000/v1</span><span>"</span><span>,</span> <span>api_key</span><span>=</span><span>"</span><span>your-token</span><span>"</span><span>)</span>
+<span>response</span> <span>=</span> <span>client</span><span>.</span><span>images</span><span>.</span><span>generate</span><span>(</span> <span>model</span><span>=</span><span>"</span><span>dall-e-3</span><span>"</span><span>,</span> <span>prompt</span><span>=</span><span>"</span><span>A cat hacking into a computer, cyberpunk style</span><span>"</span><span>,</span> <span>size</span><span>=</span><span>"</span><span>1024x1024</span><span>"</span>
+<span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F47x8b7ljl7wiu7mw2odr.jpeg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F47x8b7ljl7wiu7mw2odr.jpeg" alt="Working"></a></p> <p>I never thought this would actually work. Detecting dynamically-generated images in someone else's DOM, downloading them through the browser's auth context, and returning them in a standard API format? It felt impossible until it wasn't.</p> <hr> <h2> <a name="the-cyberpunk-tui-because-clis-should-look-cool" href="#the-cyberpunk-tui-because-clis-should-look-cool"> </a> The Cyberpunk TUI — Because CLIs Should Look Cool
+</h2> <p>I couldn't just ship an API. I had to build a terminal UI. You know, for vibes.</p> <p>CatGPT comes with a full-screen <strong>Textual-based TUI</strong> — a cyberpunk-themed chat interface running right in your terminal:</p> <ul>
+<li>
+<strong>GitHub Dark color scheme</strong> — deep <code>#0d1117</code> backgrounds, <code>#58a6ff</code> accent blues, <code>#3fb950</code> greens</li>
+<li>
+<strong>ASCII cat splash screen</strong> — because every good project needs one</li>
+<li>
+<strong>Color-coded messages</strong> — blue borders for your messages, green for the assistant, purple for images</li>
+<li>
+<strong>Rich Markdown rendering</strong> — code blocks, tables, lists, all rendered beautifully</li>
+<li>
+<strong>Slash commands</strong> — <code>/new</code>, <code>/threads</code>, <code>/images</code>, <code>/status</code>, <code>/help</code>
+</li>
+<li>
+<strong>Keyboard shortcuts</strong> — <code>Ctrl+N</code> for new chat, <code>Ctrl+T</code> for threads</li>
+</ul> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fiwj8wc0erwwwxidr8vj8.jpeg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fiwj8wc0erwwwxidr8vj8.jpeg" alt="TUI"></a><br>
+<em>CATGPT TUI: Actual functional conversation.</em></p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fem6ysz2mt59jmz4tohd6.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fem6ysz2mt59jmz4tohd6.png" alt="Sci-fi"></a><br>
+<em>The TUI: because talking to AI should feel like you're in a sci-fi movie.</em></p> <hr>
+<h2> <a name="the-simplicity-step-by-step" href="#the-simplicity-step-by-step"> </a> The Simplicity — Step by Step
+</h2> <p>Here's what amazes me about how this came together. Despite all the complexity under the hood — stealth patches, virtual displays, DOM observers, clipboard extraction — <strong>using it is dead simple</strong>:<br>
+</p> <div>
+<pre><code><span># 1. Clone it</span>
+git clone https://github.com/GautamVhavle/CatGPT-Gateway.git <span>&amp;&amp;</span> <span>cd </span>CatGPT-Gateway <span># 2. Start everything</span>
+docker compose up <span>--build</span> <span>-d</span> <span># 3. Sign in once via VNC</span>
+<span># Open http://localhost:6080 → Log into ChatGPT → Done</span> <span># 4. Hit the API</span>
+curl <span>-H</span> <span>"Authorization: Bearer dummy123"</span> <span>\</span> http://localhost:8000/v1/chat/completions <span>\</span> <span>-d</span> <span>'{"model":"catgpt-browser","messages":[{"role":"user","content":"Hello!"}]}'</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Four steps. One Docker container. No API keys. Your browser session persists across restarts via a Docker volume.</p> <p>The project is structured cleanly too — every component has its own module:</p> <ul>
+<li>
+<strong><code>src/browser/</code></strong> — Browser lifecycle, stealth, human simulation</li>
+<li>
+<strong><code>src/chatgpt/</code></strong> — ChatGPT client, response detection, image handling</li>
+<li>
+<strong><code>src/api/</code></strong> — FastAPI routes, OpenAI-compatible schemas</li>
+<li>
+<strong><code>src/cli/</code></strong> — Terminal UI</li>
+<li>
+<strong><code>src/selectors.py</code></strong> — All DOM selectors centralized in ONE file. When ChatGPT updates their UI, you update one file. That's it.</li>
+</ul> <p>The selector fallback system is one of my favorite design decisions. Every selector (chat input, send button, copy button, etc.) is a <strong>list of fallbacks</strong>. If ChatGPT changes a <code>data-testid</code>, the next selector in the list catches it. Resilient by design.</p> <hr> <h2> <a name="the-response-detection-three-strategies-deep" href="#the-response-detection-three-strategies-deep"> </a> The Response Detection — Three Strategies Deep
+</h2> <p>How do you know when ChatGPT is done generating its response? This was one of the hardest problems.</p> <p>CatGPT uses a <strong>three-strategy detection system</strong>:</p> <ol>
+<li><p><strong>Copy Button Detection (primary)</strong> — ChatGPT only shows the copy button after the full response is generated. Count the copy buttons before sending, wait for a new one. Elegant and reliable.</p></li>
+<li><p><strong>Stop Button Detection (fallback)</strong> — Watch the stop/generation button. When it appears, streaming started. When it disappears, response is done.</p></li>
+<li><p><strong>Text Stability (last resort)</strong> — Poll the response text every second. If it's identical for 5 consecutive polls, we're done.</p></li>
+</ol> <p>Three layers of fallback. Because when you're automating someone else's frontend, you plan for <em>everything</em> to break.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F944cdyjqzgh64fwli1pa.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F944cdyjqzgh64fwli1pa.png" alt="Schema"></a><br>
+<em>Three strategies. Because one is never enough when you're parsing someone else's DOM.</em></p> <hr> <h2> <a name="lets-talk-about-ethics" href="#lets-talk-about-ethics"> </a> Let's Talk About Ethics
+</h2> <p>Okay, real talk time.</p> <p><strong>This project is for educational purposes only.</strong> Full stop.</p> <p>I built CatGPT because I was genuinely curious about the limits of browser automation. Could you control a modern web app's frontend so completely that it becomes your backend? What security measures exist to prevent this? How good is Cloudflare's bot detection really?</p> <p>The answers are fascinating — and that's the whole point. This is a <strong>learning exercise</strong>, not a production tool.</p> <p>Here's what I want to be crystal clear about:</p> <ul>
+<li> <strong>Don't use this in production.</strong> It's a single-browser, single-session gateway. There's an <code>asyncio.Lock()</code> serializing every request. It's not built for scale and it's not meant to be.</li>
+<li> <strong>Don't use this to circumvent OpenAI's terms of service.</strong> Respect the platform you're using.</li>
+<li> <strong>Don't use this to build commercial products.</strong> Get a proper API key for that.</li>
+<li> <strong>Do use this to learn</strong> about browser automation, stealth techniques, API design, and cybersecurity.</li>
+<li> <strong>Do use this to understand</strong> how modern anti-bot systems work and why they're important.</li>
+<li> <strong>Do use this for testing and prototyping</strong> when you need a quick way to interact with ChatGPT programmatically.</li>
+</ul> <p>I'm not a hacker. I didn't find a security vulnerability. This isn't a bug — ChatGPT works exactly as designed. I'm just controlling a browser, the same way any user does. The difference is, my "user" is a Python script.</p> <p>OpenAI's security is <strong>legit</strong>. Cloudflare's human verification gave me more headaches than any coding challenge I've faced. The fact that I had to build viewport jitter, human-like mouse movement, clipboard-based text injection, and a triple-layer detection system just to reliably interact with a website — that's a testament to how good their security is.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fx18eyu1j1p0czazdq0f6.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fx18eyu1j1p0czazdq0f6.png" alt="Trouble"></a><br>
+<em>CatGPT goes to school. It's here to learn, not to cause trouble.</em></p> <hr> <h2> <a name="its-open-source-come-build-with-me" href="#its-open-source-come-build-with-me"> </a> It's Open Source — Come Build With Me
+</h2> <p>CatGPT-Gateway is fully open source on GitHub:</p> <p> <strong><a href="https://github.com/GautamVhavle/CatGPT-Gateway" target="_blank">github.com/GautamVhavle/CatGPT-Gateway</a></strong></p> <p>The codebase is clean, well-documented, and modular. Want to contribute? Here's what I'd love help with:</p> <ul>
+<li>
+<strong>More resilient selectors</strong> as ChatGPT's UI evolves</li>
+<li>
+<strong>Streaming support</strong> (<code>stream: true</code> in the API)</li>
+<li>
+<strong>Multi-session support</strong> — multiple browser instances</li>
+<li>
+<strong>Better error recovery</strong> — auto-retry on Cloudflare challenges</li>
+<li>
+<strong>Tests</strong> — there's always room for more tests</li>
+</ul> <p>I'm <strong>actively maintaining this project</strong>. If you have feedback, ideas, bug reports, or just want to say hi — open an issue, submit a PR, or drop a comment below.</p> <p>This started as a Friday night "what if?" and turned into one of the most fun projects I've ever built. If you're a developer who's curious about how far browser automation can go, or a cybersecurity enthusiast who wants to understand the cat-and-mouse game between bots and detection systems — this project is for you.</p> <p>Star it. Fork it. Break it. Fix it. Let's learn together.</p> <hr> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2ttphr7z0hnfb22obmp5.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2ttphr7z0hnfb22obmp5.png" alt="Star"></a></p> <p><em>CatGPT-Gateway is out. Star the repo. Don't do anything I wouldn't do.</em> </p> <hr> <p><strong>If you made it this far</strong> — thanks for reading. Drop a or a and let me know what you think. If you actually run it and your ChatGPT session starts talking to your LangChain agents... don't blame me. I warned you. Also Congratulations you can run your OpenAI Endpoint with any Agentic Framework like LangChain, AutoGen or CrewAI.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

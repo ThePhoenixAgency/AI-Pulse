@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MCP Apps: AI Agents Just Became Applications - Here's How to Build One</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>MCP Apps: AI Agents Just Became Applications - Here's How to Build One</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 1:13:16 PM | <a href="https://dev.to/_4b254f4408ef55656a22e4/mcp-apps-ai-agents-just-became-applications-heres-how-to-build-one-55l0" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>MCP Apps (SEP-1865) is the open standard that lets AI agents render interactive UIs inside the conversation. Cross-platform, backed by Anthropic + OpenAI, live in Claude and ChatGPT today. Here's how to build one that actually runs in production."</p> <p>AI agents just crossed a line.</p> <p>For years, every agent output was the same: text. Need to show a dashboard? Return JSON. Need a 20-field config form? Walk the user through each field, prompt by prompt. Need a product catalog? Describe it.</p> <p>That era is over.</p> <p><strong>MCP Apps</strong> - the first official extension to the Model Context Protocol, co-authored by Anthropic and OpenAI - lets your MCP server return fully interactive HTML interfaces that render directly inside Claude, ChatGPT, VS Code, and Goose. Not in a new tab. Not alongside the conversation. <em>Inside</em> it.</p> <p>This post covers how it works, how to build one with LeanMCP, and what it takes to run one in production.</p> <hr> <h2> <a name="why-text-wall-was-always-the-hard-ceiling" href="#why-text-wall-was-always-the-hard-ceiling"> </a> Why "Text Wall" Was Always the Hard Ceiling
+</h2> <p>The problem isn't just UX. It's capability.</p> <p>Commerce, data exploration, multi-step approval workflows, complex configuration - none of these map cleanly to a chat thread. You can approximate them with text. You can't actually do them well.</p> <p>MCP Apps solves this with a security-first architecture:</p> <ul> <li>
+<strong>Sandboxed iframes</strong> that isolate third-party code from the host application</li>
+<li>
+<strong>Bidirectional communication</strong> via existing MCP JSON-RPC over postMessage - no new SDKs, no new transport</li>
+<li>
+<strong>Full backward compatibility</strong> - text-only fallbacks for clients that don't yet support UI</li>
+</ul> <hr> <h2> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h2> <ol>
+<li>At connection time, your server declares UI resources in the manifest. The host pre-fetches and caches them.</li>
+<li>The AI invokes a tool. If that tool has an associated UI resource URI, the host renders a UI.</li>
+<li>The host loads HTML into a sandboxed iframe. The UI hydrates with the tool's input and output data.</li>
+<li>The user interacts. The iframe communicates back to the host - and to the model - via JSON-RPC over postMessage.</li>
+</ol> <p>You control exactly what the model sees vs. what the view sees. Sensitive data can pass to the view without polluting the model's context window.</p> <hr> <h2> <a name="building-an-mcp-app-with-leanmcp" href="#building-an-mcp-app-with-leanmcp"> </a> Building an MCP App with LeanMCP
+</h2> <p>LeanMCP handles the production layer - auth, observability, multi-tenancy - so you can focus on the interface itself.</p> <p><strong>Step 1: Create your project</strong><br>
+</p> <div>
+<pre><code>npm <span>install</span> <span>-g</span> @leanmcp/cli
+npx @leanmcp/cli create my-mcp-app
+<span>cd </span>my-mcp-app
+npm <span>install</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This generates a clean structure:<br>
+</p> <div>
+<pre><code>my-mcp-app/
+├── main.ts # Entry point
+├── package.json
+├── tsconfig.json
+└── mcp/ └── example/ └── index.ts # Your services go here
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Step 2: Define your tool</strong><br>
+</p> <div>
+<pre><code><span>// mcp/analytics/index.ts</span>
+<span>import</span> <span>{</span> <span>Tool</span><span>,</span> <span>SchemaConstraint</span><span>,</span> <span>Optional</span> <span>}</span> <span>from</span> <span>"</span><span>@leanmcp/core</span><span>"</span><span>;</span> <span>class</span> <span>SalesReportInput</span> <span>{</span> <span>@</span><span>SchemaConstraint</span><span>({</span> <span>description</span><span>:</span> <span>"</span><span>Region to filter by</span><span>"</span><span>,</span> <span>minLength</span><span>:</span> <span>1</span> <span>})</span> <span>region</span><span>!</span><span>:</span> <span>string</span><span>;</span> <span>@</span><span>Optional</span><span>()</span> <span>@</span><span>SchemaConstraint</span><span>({</span> <span>description</span><span>:</span> <span>"</span><span>Date range</span><span>"</span><span>,</span> <span>enum</span><span>:</span> <span>[</span><span>"</span><span>7d</span><span>"</span><span>,</span> <span>"</span><span>30d</span><span>"</span><span>,</span> <span>"</span><span>90d</span><span>"</span><span>],</span> <span>default</span><span>:</span> <span>"</span><span>30d</span><span>"</span> <span>})</span> <span>range</span><span>?:</span> <span>string</span><span>;</span>
+<span>}</span> <span>export</span> <span>class</span> <span>AnalyticsService</span> <span>{</span> <span>@</span><span>Tool</span><span>({</span> <span>description</span><span>:</span> <span>"</span><span>Get sales report data</span><span>"</span><span>,</span> <span>inputClass</span><span>:</span> <span>SalesReportInput</span> <span>})</span> <span>async</span> <span>getSalesReport</span><span>(</span><span>args</span><span>:</span> <span>SalesReportInput</span><span>)</span> <span>{</span> <span>const</span> <span>data</span> <span>=</span> <span>await</span> <span>fetchSalesData</span><span>(</span><span>args</span><span>.</span><span>region</span><span>,</span> <span>args</span><span>.</span><span>range</span><span>);</span> <span>// Return data - your MCP Apps UI resource</span> <span>// is registered separately in the server manifest</span> <span>return</span> <span>{</span> <span>region</span><span>:</span> <span>args</span><span>.</span><span>region</span><span>,</span> <span>totalRevenue</span><span>:</span> <span>data</span><span>.</span><span>revenue</span><span>,</span> <span>topProducts</span><span>:</span> <span>data</span><span>.</span><span>products</span><span>,</span> <span>chartData</span><span>:</span> <span>data</span><span>.</span><span>chart</span> <span>};</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Step 3: Configure the HTTP server with logging</strong><br>
+</p> <div>
+<pre><code><span>// main.ts</span>
+<span>import</span> <span>{</span> <span>createHTTPServer</span> <span>}</span> <span>from</span> <span>"</span><span>@leanmcp/core</span><span>"</span><span>;</span> <span>await</span> <span>createHTTPServer</span><span>({</span> <span>name</span><span>:</span> <span>"</span><span>my-mcp-app</span><span>"</span><span>,</span> <span>version</span><span>:</span> <span>"</span><span>1.0.0</span><span>"</span><span>,</span> <span>port</span><span>:</span> <span>8080</span><span>,</span> <span>cors</span><span>:</span> <span>true</span><span>,</span> <span>logging</span><span>:</span> <span>true</span><span>,</span> <span>// tool calls, latency, errors - all tracked</span> <span>autoDiscover</span><span>:</span> <span>true</span> <span>// picks up everything in ./mcp automatically</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Your server is live at <code>http://localhost:8080/mcp</code>.</p> <p><strong>Step 4: Add auth - one decorator</strong><br>
+</p> <div>
+<pre><code><span>// mcp/analytics/index.ts</span>
+<span>import</span> <span>{</span> <span>Tool</span><span>,</span> <span>SchemaConstraint</span> <span>}</span> <span>from</span> <span>"</span><span>@leanmcp/core</span><span>"</span><span>;</span>
+<span>import</span> <span>{</span> <span>AuthProvider</span><span>,</span> <span>Authenticated</span> <span>}</span> <span>from</span> <span>"</span><span>@leanmcp/auth</span><span>"</span><span>;</span> <span>const</span> <span>authProvider</span> <span>=</span> <span>new</span> <span>AuthProvider</span><span>(</span><span>'</span><span>cognito</span><span>'</span><span>,</span> <span>{</span> <span>region</span><span>:</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>AWS_REGION</span><span>,</span> <span>userPoolId</span><span>:</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>COGNITO_USER_POOL_ID</span><span>,</span> <span>clientId</span><span>:</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>COGNITO_CLIENT_ID</span>
+<span>});</span>
+<span>await</span> <span>authProvider</span><span>.</span><span>init</span><span>();</span> <span>// Entire service is protected - token validated automatically</span>
+<span>// from _meta.authorization.token in each request</span>
+<span>@</span><span>Authenticated</span><span>(</span><span>authProvider</span><span>)</span>
+<span>export</span> <span>class</span> <span>AnalyticsService</span> <span>{</span> <span>@</span><span>Tool</span><span>({</span> <span>description</span><span>:</span> <span>"</span><span>Get sales report - authenticated users only</span><span>"</span><span>,</span> <span>inputClass</span><span>:</span> <span>SalesReportInput</span> <span>})</span> <span>async</span> <span>getSalesReport</span><span>(</span><span>args</span><span>:</span> <span>SalesReportInput</span><span>)</span> <span>{</span> <span>// No token parsing needed here - LeanMCP handles it</span> <span>return</span> <span>{</span> <span>data</span><span>:</span> <span>await</span> <span>fetchSalesData</span><span>(</span><span>args</span><span>.</span><span>region</span><span>)</span> <span>};</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Step 5: Add a new service anytime</strong><br>
+</p> <div>
+<pre><code>leanmcp add dashboard
+<span># Creates mcp/dashboard/index.ts with boilerplate</span>
+<span># Auto-registers in main.ts</span>
+<span># Ready to customize immediately</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="mcp-apps-vs-gpt-apps-why-open-wins" href="#mcp-apps-vs-gpt-apps-why-open-wins"> </a> MCP Apps vs GPT Apps - Why Open Wins
+</h2> <p>OpenAI's GPT Apps launched in October 2025 with an impressive partner list. But it's ChatGPT-only, proprietary, and controlled by one company.</p> <p>MCP Apps is an open standard, jointly governed by the MCP UI Community Working Group.</p> <div><table>
+<thead>
+<tr>
+<th></th>
+<th>GPT Apps</th>
+<th>MCP Apps</th>
+<th>With LeanMCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Platform</strong></td>
+<td>ChatGPT only</td>
+<td>Claude, ChatGPT, VS Code, Goose</td>
+<td>Both, one server</td>
+</tr>
+<tr>
+<td><strong>Standard</strong></td>
+<td>Proprietary (OpenAI)</td>
+<td>Open (SEP-1865)</td>
+<td>Supports both</td>
+</tr>
+<tr>
+<td><strong>Auth</strong></td>
+<td>Not included</td>
+<td>Not included</td>
+<td> <code>@Authenticated</code> decorator</td>
+</tr>
+<tr>
+<td><strong>Observability</strong></td>
+<td>Not included</td>
+<td>Not included</td>
+<td> <code>logging: true</code>
+</td>
+</tr>
+<tr>
+<td><strong>Multi-tenancy</strong></td>
+<td>Your problem</td>
+<td>Your problem</td>
+<td> Per-user API keys built in</td>
+</tr>
+<tr>
+<td><strong>Type safety</strong></td>
+<td>Manual</td>
+<td>Manual</td>
+<td> <code>@SchemaConstraint</code> decorators</td>
+</tr>
+<tr>
+<td><strong>Service discovery</strong></td>
+<td>Manual</td>
+<td>Manual</td>
+<td> <code>autoDiscover: true</code>
+</td>
+</tr>
+</tbody>
+</table></div> <p>The same LeanMCP server covers both ecosystems. One codebase, full coverage.</p> <hr> <h2> <a name="the-production-gap-nobody-talks-about" href="#the-production-gap-nobody-talks-about"> </a> The Production Gap Nobody Talks About
+</h2> <p>The MCP spec gives you the protocol. It does <strong>not</strong> give you:</p> <ul>
+<li>
+<strong>Multi-tenant auth</strong> - how do you authenticate each user separately?</li>
+<li>
+<strong>Per-user tracking</strong> - who's consuming your API budget?</li>
+<li>
+<strong>Secrets management</strong> - how do you inject API keys safely per-request?</li>
+<li>
+<strong>Audit trails</strong> - for compliance, who did what and when?</li>
+<li>
+<strong>Type-safe schemas</strong> - catch input errors before they reach your tool logic</li>
+<li>
+<strong>Observability</strong> - when something breaks at 2am, how do you even know?</li>
+</ul> <p>LeanMCP is purpose-built for this gap. It's the production runtime layer underneath your MCP App - not a framework on top, not another abstraction. The ground your agent runs on.</p> <p>Here's what you get with one config line:<br>
+</p> <div>
+<pre><code><span>// Logging ON = dashboards for tool calls, latency, errors, per-user usage</span>
+<span>await</span> <span>createHTTPServer</span><span>({</span> <span>name</span><span>:</span> <span>"</span><span>my-mcp-app</span><span>"</span><span>,</span> <span>version</span><span>:</span> <span>"</span><span>1.0.0</span><span>"</span><span>,</span> <span>logging</span><span>:</span> <span>true</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>And the complete auth flow that usually takes a week to implement:<br>
+</p> <div>
+<pre><code><span>// Client calls your tool like this:</span>
+<span>await</span> <span>mcpClient</span><span>.</span><span>callTool</span><span>({</span> <span>name</span><span>:</span> <span>"</span><span>getSalesReport</span><span>"</span><span>,</span> <span>arguments</span><span>:</span> <span>{</span> <span>region</span><span>:</span> <span>"</span><span>APAC</span><span>"</span> <span>},</span> <span>_meta</span><span>:</span> <span>{</span> <span>authorization</span><span>:</span> <span>{</span> <span>type</span><span>:</span> <span>"</span><span>bearer</span><span>"</span><span>,</span> <span>token</span><span>:</span> <span>"</span><span>user-jwt-token</span><span>"</span> <span>}</span> <span>}</span>
+<span>});</span> <span>// LeanMCP validates the token automatically.</span>
+<span>// Your tool only runs if auth passes.</span>
+<span>// No middleware code needed on your end.</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="realworld-use-cases" href="#realworld-use-cases"> </a> Real-World Use Cases
+</h2> <p>What MCP Apps actually unlocks:</p> <ul>
+<li> <strong>Data exploration</strong> - Sales analytics tool returns a live dashboard. Filter by region, drill into accounts, export - without leaving the conversation</li>
+<li> <strong>Configuration wizards</strong> - Selecting 'production' reveals security options dynamically. No sequential prompts</li> <li> <strong>Commerce</strong> - Interactive product catalogs, size selectors, cart flows embedded in agent conversations</li>
+<li> <strong>Real-time monitoring</strong> - Server health tool shows live metrics without re-running the tool</li>
+</ul> <p>As of January 2026, officially supported in <strong>Claude</strong> (web + desktop), <strong>ChatGPT</strong>, <strong>Goose</strong>, and <strong>VS Code Insiders</strong>.</p> <hr> <h2> <a name="the-full-agent-stack" href="#the-full-agent-stack"> </a> The Full Agent Stack
+</h2> <p>MCP Apps completes the platform:</p> <div><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>Tools</strong> - what agents can do</td>
+<td>MCP protocol</td>
+</tr>
+<tr>
+<td>
+<strong>Auth</strong> - who can use them</td>
+<td>OAuth in MCP spec</td>
+</tr>
+<tr>
+<td>
+<strong>UI</strong> - what users see</td>
+<td>MCP Apps (SEP-1865)</td>
+</tr>
+<tr>
+<td>
+<strong>Runtime</strong> - how it all runs in production</td>
+<td><strong>LeanMCP</strong></td>
+</tr>
+</tbody>
+</table></div> <p>The ext-apps repository already includes working examples: <code>threejs-server</code> for 3D visualization, <code>map-server</code> for interactive maps, <code>pdf-server</code> for document viewing, <code>system-monitor-server</code> for live dashboards.</p> <hr> <h2> <a name="tldr" href="#tldr"> </a> TL;DR
+</h2> <ul>
+<li> MCP Apps = interactive UIs inside Claude, ChatGPT, VS Code, Goose - open standard</li>
+<li> Unlike GPT Apps, cross-platform: write once, run everywhere</li>
+<li> LeanMCP = production runtime - auth, observability, type safety, multi-tenancy, all built in</li>
+<li> One LeanMCP server covers both GPT Apps and MCP Apps
+</li>
+</ul> <div>
+<pre><code><span># Start in 60 seconds</span>
+npm <span>install</span> <span>-g</span> @leanmcp/cli
+npx @leanmcp/cli create my-mcp-app
+<span>cd </span>my-mcp-app <span>&amp;&amp;</span> npm start
+<span># -&gt; http://localhost:8080/mcp</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <p><strong>Links:</strong></p> <ul>
+<li> <a href="https://github.com/LeanMCP/leanmcp-sdk" target="_blank">LeanMCP GitHub</a> - open source, MIT licensed</li>
+<li> <a href="https://docs.leanmcp.com/" target="_blank">Docs</a>
+</li>
+<li> <a href="https://leanmcp.com/" target="_blank">leanmcp.com</a>
+</li>
+<li> <a href="https://discord.com/invite/DsRcA3GwPy" target="_blank">Discord</a>
+</li>
+</ul> <p>Building an MCP App? Drop a comment - would love to see what you're working on. </p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

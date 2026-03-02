@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sub-Scheduler Support Could Be One Of The Most Exciting Features To Come For Linux 7.1</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Sub-Scheduler Support Could Be One Of The Most Exciting Features To Come For Linux 7.1</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/25/2026 4:00:00 PM | <a href="https://www.phoronix.com/news/cgroup-sub-scheduler-sched-ext" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div>
+<p><img alt="LINUX KERNEL" src="https://www.phoronix.com/assets/categories/linuxkernel.webp"></p><p>
+While there are <a href="https://www.phoronix.com/review/linux-7-features-changes">many great Linux 7.0 features</a> with that still-young development cycle, looking ahead to Linux 7.1 this summer there's an interesting feature on track: cgroup sub-scheduler support for sched_ext.
+</p><p>
+For Linux's extensible scheduler support with <a href="https://www.phoronix.com/search/sched_ext">sched_ext</a>, the cgroup sub-scheduler support currently being developed is quite promising and could help roll out more Linux performance especially on multi-tenant systems / heterogeneous workload environments
+</p><p>
+Linux developer Tejun Heo yesterday posted his second iteration of the sched_ext patches implementing cgroup sub-scheduler support. This new work allows for multiple scheduler instances to be attached to the cgroup hierarchy for dealing with varying workloads on the system. Tejun explained in the latest patches:
+</p><blockquote>"Applications often have domain-specific knowledge that generic schedulers cannot possess. Database systems understand query priorities and lock holder criticality. Virtual machine monitors can coordinate with guest schedulers and handle vCPU placement intelligently. Game engines know rendering deadlines and which threads are latency-critical.
+<p>
+On multi-tenant systems where multiple such workloads coexist, implementing application-customized scheduling is difficult. Hard partitioning with cpuset lacks the dynamism needed - users often don't care about specific CPU assignments and want optimizations enabled by sharing a larger machine: opportunistic over-commit, improving latency-critical workload characteristics while maintaining bandwidth fairness, and packing similar workloads on the same L3 caches for efficiency.
+</p><p>
+Sub-scheduler support addresses this by allowing schedulers to be attached to the cgroup hierarchy. Each application domain runs its own BPF scheduler tailored to its needs, while a parent scheduler dynamically controls CPU allocation to children without static partitioning."</p></blockquote>
+<p>Those interested in this very promising work around cgroup sub-scheduler support for sched_ext can check out the <a href="https://lore.kernel.org/lkml/20260225050152.1070601-1-tj@kernel.org/">v2 patch series</a>.
+</p><p><a href="https://www.phoronix.com/image-viewer.php?id=2026&amp;image=sub_scheduler_lrg" target="_blank" rel="noopener noreferrer"><img src="https://www.phoronix.net/image.php?id=2026&amp;image=sub_scheduler_med" alt="GNOME Resources on Ubuntu Linux"></a></p>
+<p>These latest patches are marked as for "sched_ext/for-7.1", so if all goes well we could see this multi scheduler functionality potentially merged in April for the Linux 7.1 merge window that in turn will see its stable release mid-year.</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

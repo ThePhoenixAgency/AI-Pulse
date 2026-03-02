@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KDE Plasma 6.6.1 rolls out with lots of fixes for KWin</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>KDE Plasma 6.6.1 rolls out with lots of fixes for KWin</h1>
+  <div class="metadata">
+    Source: GamingOnLinux | Date: 2/25/2026 12:55:41 PM | <a href="https://www.gamingonlinux.com/2026/02/kde-plasma-6-6-1-rolls-out-with-lots-of-fixes-for-kwin/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>The KDE team have released the latest release for the Plasma desktop, with version 6.6.1 bringing quite a lot of bug fixing. As usual, a <a href="https://www.gamingonlinux.com/2026/02/kde-plasma-6-6-released-with-improved-accessibility-new-on-screen-keyboard-and-lots-more/" target="_blank" rel="noopener noreferrer">big new release with 6.6</a> that added numerous features also came with a number of problems that needed to be solved.</p>
+<p><a href="https://uploads.golmedia.net/uploads/articles/article_media/3864593111772023744gol2.webp"><img src="https://uploads.golmedia.net/uploads/articles/article_media/3864593111772023744gol2.webp"></a></p>
+<p>There's fixes for the Discover software centre with Flatpaks, Bluedevil bluetooth will no longer tell you about connection failures when there wasn't any, various improvements to the Kicker launcher and Task Manager but the biggest set of issues by far are the bugs solved in the window manager KWin.</p>
+<p>Hopefully this release will fix up some problems you saw. Thankfully, my Plasma 6.6 on Fedora KDE has been running very nicely overall but good to see such rapid fixes come in.</p> <div> <a href="https://commits.kde.org/aurorae">aurorae</a>
+<ul>
+<li>V2: Make decoration-maximized-inactive fallback to decoration-maximized. <a href="http://commits.kde.org/aurorae/cf59f8a9adededd45f7ac08a6d7fcfaf11bba753">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516189">#516189</a></li>
+</ul> <a href="https://commits.kde.org/bluedevil">Bluedevil</a>
+<ul>
+<li>Applet: don't show connection failure when connected. <a href="http://commits.kde.org/bluedevil/f4b2aa190a1848f568198b924ef61beda224934f">Commit.</a> Fixes bug <a href="https://bugs.kde.org/515189">#515189</a></li>
+</ul> <a href="https://commits.kde.org/discover">Discover</a>
+<ul>
+<li>Flatpak: consider provided appstream ids when asserting resolution results. <a href="http://commits.kde.org/discover/3fc81c2331773aac539a6e67d5dc3f3d2c6158e8">Commit.</a> Fixes bug <a href="https://bugs.kde.org/515150">#515150</a></li>
+<li>ReviewStats, Rating: Expose starCounts from rating and use it for ReviewStats. <a href="http://commits.kde.org/discover/1703aa7b2811610edc014f68c3544fc4b763cc42">Commit.</a> Fixes bug <a href="https://bugs.kde.org/513139">#513139</a></li>
+</ul> <a href="https://commits.kde.org/kactivitymanagerd">kactivitymanagerd</a>
+<ul>
+<li>Fix SQL syntax error: Replace .tables with valid SQL query. <a href="http://commits.kde.org/kactivitymanagerd/83f6bb76c20b67bed5c86457f7d22c493a777769">Commit.</a> Fixes bug <a href="https://bugs.kde.org/513761">#513761</a></li>
+</ul> <a href="https://commits.kde.org/kde-gtk-config">KDE GTK Config</a>
+<ul>
+<li>Fix disabled anim. when decoration has no buttons. <a href="http://commits.kde.org/kde-gtk-config/787af47ff1fb71189cf19239e36d9b1b4721b473">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/krdp">krdp</a>
+<ul>
+<li>Fix server-to-client clipboard (CLIPRDR) for RDP clients. <a href="http://commits.kde.org/krdp/a30b814130ab28c720bc15e9de101dabb42e36d6">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/kscreen">KScreen</a>
+<ul>
+<li>Fix widget never requesting "active" status. <a href="http://commits.kde.org/kscreen/5a8bdafa56ea7c9a674dc277cf2cbdeb6dcb0278">Commit.</a></li>
+<li>Hdrcalibrator: remove fullscreen average calibration page again. <a href="http://commits.kde.org/kscreen/525884029664c7a93587fcc11972c844cd2c66ff">Commit.</a> See bug <a href="https://bugs.kde.org/506626">#506626</a></li>
+<li>Kcm/ui: disable the hdr calibration button if there's any pending changes. <a href="http://commits.kde.org/kscreen/2f408fdfccc8174c2b61928a9a7c4be6f4cf45d6">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/kscreenlocker">kscreenlocker</a>
+<ul>
+<li>Greeter: Set explicit layer surface screen. <a href="http://commits.kde.org/kscreenlocker/9a57f28f87ad5a72d214536931bedbd268dd0bbb">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/kwin">KWin</a>
+<ul>
+<li>Refuse to load setup specific state with missing OutputState. <a href="http://commits.kde.org/kwin/3401f906836664b93b39c642b8c49cbecdd6cb47">Commit.</a></li>
+<li>Make OutputConfigurationStore reset invalid replication sources. <a href="http://commits.kde.org/kwin/e6bbdd956eeb50cba8e5bee600f5cd128000f6c0">Commit.</a></li>
+<li>Harden logical &lt;-&gt; physical output assignments. <a href="http://commits.kde.org/kwin/1cfbf372e5bbb9ffc0b1988fe20241253021e57c">Commit.</a></li>
+<li>Wayland: Reject output configurations with self-mirroring outputs. <a href="http://commits.kde.org/kwin/3544a2691f351d2f13f0921ee311b833c66ca3ea">Commit.</a></li>
+<li>Screenedge: Watch for touch target option changes with KConfigWatcher. <a href="http://commits.kde.org/kwin/c2fe316556135e3632c1106612862409ece32281">Commit.</a></li>
+<li>Core/colorspace: don't dim the minimum luminance. <a href="http://commits.kde.org/kwin/36874903b7af97fa5c00ffa6bf0f78c9115cc01a">Commit.</a></li>
+<li>Plugins/qpa: Remove unguarded eglMakeCurrent(). <a href="http://commits.kde.org/kwin/afa7cf49afdd378f37a32324b0acac09120dc417">Commit.</a></li>
+<li>Xwayland: Improve Clipboard/Primary/Dnd teardown. <a href="http://commits.kde.org/kwin/c2c74f22946556edf5070df941667a6ddead0663">Commit.</a></li>
+<li>Utils: Port away from Qt sensors. <a href="http://commits.kde.org/kwin/b12f2ebbab8e53c914f09f0453e79d4c1ff90e32">Commit.</a></li>
+<li>Utils: Add dbus future helpers. <a href="http://commits.kde.org/kwin/7c3c1c3c2d977cdd131ae5f2eaeea0a952437f3c">Commit.</a></li>
+<li>Remove qml import versions. <a href="http://commits.kde.org/kwin/17e833f29c82d05c862947ef910b9aa752883de6">Commit.</a></li>
+<li>Backends/drm: minor fixes for EDR. <a href="http://commits.kde.org/kwin/48aba8efb80ce8817d177c45bb7f8db1538e7a36">Commit.</a></li>
+<li>Call updateActivities() only if the activity list changes. <a href="http://commits.kde.org/kwin/32acc03de08b99f0343c15caad38fee15434b8b3">Commit.</a></li>
+<li>Utils: Drop Xcb::Property::toBool() overload that takes type and format. <a href="http://commits.kde.org/kwin/a9a801afddc780b41652c52383d43f879a1fc407">Commit.</a></li>
+<li>Utils: Assert that Xcb::Property::array() reinterprets data correctly. <a href="http://commits.kde.org/kwin/f575fda7a5b1a39b546cd741bc7376523845dabf">Commit.</a></li>
+<li>Utils: Fix Xcb::Property::toByteArray(). <a href="http://commits.kde.org/kwin/9585e8ad3ccc4ccd027414f7902d46efcf5088f5">Commit.</a></li>
+<li>Wayland/colormanagement: add wine64-preloader to the Windows executable names. <a href="http://commits.kde.org/kwin/a8465b4196941007e8ab2d2652f0681c92e2b964">Commit.</a></li>
+<li>Plugins/tileseditor: Ignore key repeat in tile editor toggle shortcut. <a href="http://commits.kde.org/kwin/6b0d51c43db44e0fe66aec3f11f2894b86f1918b">Commit.</a> Fixes bug <a href="https://bugs.kde.org/515940">#515940</a></li>
+<li>Core/backendoutput: report EDID values for luminance, instead of the overrides. <a href="http://commits.kde.org/kwin/0eb7e64dd75e93ab79978b1d1bf42f7c4f0681f9">Commit.</a></li>
+<li>Plugins/screenshot: Add option to disable hiding of caller windows. <a href="http://commits.kde.org/kwin/edb5529a76ee03ae2d6f03882abd8709cf46ca8e">Commit.</a></li>
+<li>Core/iccprofile: calculate inverse TRC ourselves. <a href="http://commits.kde.org/kwin/8db6fed650d7c6016914ce8e8ba50faa6887f488">Commit.</a> Fixes bug <a href="https://bugs.kde.org/515194">#515194</a></li>
+<li>Drive our QAnimationDriver fully by presentation timestamps. <a href="http://commits.kde.org/kwin/40f41b493c09be357131f191656fe1abed68afdc">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516240">#516240</a></li>
+<li>Backends/drm: implement dimming with software brightness on external screens. <a href="http://commits.kde.org/kwin/145c1311e18839bcfd8240fadf4555d8807e0310">Commit.</a> Fixes bug <a href="https://bugs.kde.org/504441">#504441</a></li>
+<li>Compositor: animate dimming separately from brightness. <a href="http://commits.kde.org/kwin/aea0cd83d5ed9daaa29108ab162656bbb1207f63">Commit.</a></li>
+<li>Plugins/eis: Guard against events of destroyed devices. <a href="http://commits.kde.org/kwin/9af4f446b3eb7b22922e6119d109fa3caf2a9a0a">Commit.</a> Fixes bug <a href="https://bugs.kde.org/515179">#515179</a></li>
+<li>Tabbox/switchers/thumbnail_grid: use normal Button for closing windows. <a href="http://commits.kde.org/kwin/5681fe0ca04eddfdb78aa9425c953514d0ba92cd">Commit.</a></li>
+<li>Core: Fix Rect::intersects() with shifted empty rectangles. <a href="http://commits.kde.org/kwin/5ba2f3e4c3f380bf7f968eecb3443dac86b1190f">Commit.</a></li>
+<li>Helpers/killer: Wait for KAuth job to finish. <a href="http://commits.kde.org/kwin/dca898e2b3517312338062c34b56027dd456ca9b">Commit.</a></li>
+<li>Plugins/zoom: Fix zoom on rotated outputs. <a href="http://commits.kde.org/kwin/5ec4740424c0bef4cc9424ecc3b8e1838d0a287e">Commit.</a></li>
+<li>Virtualdesktops: save on name changes. <a href="http://commits.kde.org/kwin/eab28ab88b3c6cf039b8bd1c7213e4811778a648">Commit.</a> Fixes bug <a href="https://bugs.kde.org/512212">#512212</a></li>
+<li>Outputconfigurationstore: don't apply the panel orientation for auto rotate. <a href="http://commits.kde.org/kwin/b380e32193b0d373515b7ea003d8e2a6cb94a21f">Commit.</a> See bug <a href="https://bugs.kde.org/513156">#513156</a></li>
+<li>Handle popup repositioning before XdgPopupWindow gets initialized. <a href="http://commits.kde.org/kwin/751bd8fc38bea89e209967feb1cdc60d57360a34">Commit.</a> Fixes bug <a href="https://bugs.kde.org/506916">#506916</a></li>
+<li>Scene/windowitem: apply corner rounding on both decoration and surface. <a href="http://commits.kde.org/kwin/c19e862150ca7c19acc70fd58aa6f570a343fd7d">Commit.</a> Fixes bug <a href="https://bugs.kde.org/453229">#453229</a>. Fixes bug <a href="https://bugs.kde.org/514792">#514792</a></li>
+<li>Revert "wayland: Check current drag and drop action". <a href="http://commits.kde.org/kwin/6a789438defbae948445fa7c9e09e65e9878d505">Commit.</a> See bug <a href="https://bugs.kde.org/509331">#509331</a></li>
+<li>Prevent interactive move-resize from unconditionally raising windows. <a href="http://commits.kde.org/kwin/947a9eeb61c761050f80afa70498ab8f33185850">Commit.</a> Fixes bug <a href="https://bugs.kde.org/508151">#508151</a></li>
+<li>Remove Qt6 version checks. <a href="http://commits.kde.org/kwin/2b42de24fc74aca9b8b90d3778ecc7dd20b009a6">Commit.</a></li>
+<li>Backends/drm: add custom mode support to the virtual outputs. <a href="http://commits.kde.org/kwin/49b4982139b821bba30005ba9c71febb9bfb206a">Commit.</a></li>
+<li>Backends/virtual: add support for custom modes. <a href="http://commits.kde.org/kwin/499ace8d9951a4e590367d5f55a6f6d41f3b5aea">Commit.</a></li>
+<li>Opengl/glshadermanager: do tonemapping + clipping after modulation. <a href="http://commits.kde.org/kwin/58a86ad100d7a664267c84f098f6fd80c88dc502">Commit.</a> See bug <a href="https://bugs.kde.org/492695">#492695</a></li>
+<li>Improve compatibility with input method that handles repeat prior wl_keyboard version 10. <a href="http://commits.kde.org/kwin/36b80e091436574007304758aa78629c159df9b9">Commit.</a></li>
+<li>Autotests/integration: test that tiled windows are moved with outputs. <a href="http://commits.kde.org/kwin/725ba8dffa76443c61adf7442ab16fe2002e367a">Commit.</a></li>
+<li>Placementtracker: special-case custom tiled windows. <a href="http://commits.kde.org/kwin/d70bc718aa7177d8eba07dbef1f7e99b62f59ea7">Commit.</a> Fixes bug <a href="https://bugs.kde.org/501306">#501306</a>. Fixes bug <a href="https://bugs.kde.org/500242">#500242</a></li>
+<li>Workspace: fix custom tiled windows not getting migrated off unplugged screens. <a href="http://commits.kde.org/kwin/cdf1bbddd2796ccdab84302e47f9478573fd2262">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/libkscreen">libkscreen</a>
+<ul>
+<li>Doctor: make removing custom modes actually work. <a href="http://commits.kde.org/libkscreen/dd0333fda73ff8dc0c4d2eb16e2b7d3512cd9592">Commit.</a> See bug <a href="https://bugs.kde.org/515362">#515362</a></li>
+</ul> <a href="https://commits.kde.org/libksysguard">libksysguard</a>
+<ul>
+<li>Fix NaN in PercentageSensor when max value is 0. <a href="http://commits.kde.org/libksysguard/e5cbcff1168a8a26f047b5c1cf99bf4b7598ccda">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/libplasma">libplasma</a>
+<ul>
+<li>Bump soversion from 6 to 7. <a href="http://commits.kde.org/libplasma/1748324a9f04a7d9efa1080c6a7102371b966add">Commit.</a></li>
+<li>Don't delete oldAction in setInternalAction. <a href="http://commits.kde.org/libplasma/3f81275b120692bb97bff6ac374b51be2cf49913">Commit.</a> Fixes bug <a href="https://bugs.kde.org/508451">#508451</a></li>
+</ul> <a href="https://commits.kde.org/oxygen">Oxygen</a>
+<ul>
+<li>Desktoptheme: Fix Oxygen's bad legibility in Kickoff's header with certain color schemes. <a href="http://commits.kde.org/oxygen/aa67c02861a28c76a8a4271e1ebf01dde7a51e18">Commit.</a> See bug <a href="https://bugs.kde.org/515358">#515358</a></li>
+<li>Desktoptheme: Fix Oxygen's badly set View colorgroup. <a href="http://commits.kde.org/oxygen/f52e56241d1fe397537d8c1c5ee9b27149eb63a5">Commit.</a> Fixes bug <a href="https://bugs.kde.org/506601">#506601</a></li>
+</ul> <a href="https://commits.kde.org/plasma-desktop">Plasma Desktop</a>
+<ul>
+<li> kcms/tablet: Stop showing non existent buttons. <a href="http://commits.kde.org/plasma-desktop/5801586628b00abe94c04f5b30b1e341e8d229d4">Commit.</a></li>
+<li>Kcms/keys: Fix premature reset of editing flag in Add/Edit Command dialog. <a href="http://commits.kde.org/plasma-desktop/5ca03a72ac3b204f25b71fe839b7611856a35fa8">Commit.</a></li>
+<li>Applets/kicker: hardcode black background color in dashboard. <a href="http://commits.kde.org/plasma-desktop/f3bb3e9ee0abaa438a23e8236beaa4d8ce5afbc7">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516266">#516266</a></li>
+<li>Applets/pager: handle switching activities better in desktop widget. <a href="http://commits.kde.org/plasma-desktop/2d5cad19b082c4c6813c26df7ff65da4b20588ef">Commit.</a></li>
+<li>Applets/kicker: handle Return from kickerdash search field. <a href="http://commits.kde.org/plasma-desktop/e7664d1e8a55f3e241b0bc980dabb2ce954a8a4d">Commit.</a></li>
+<li>Applets/kicker: show custom icon loaded by name. <a href="http://commits.kde.org/plasma-desktop/750149053dc8c306e21aabc66130854c3839e48f">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516019">#516019</a></li>
+<li>Applets/kicker: only set anchor margin if there is a sidebar. <a href="http://commits.kde.org/plasma-desktop/cfe8623a0b70682c1958c823a2131d716439c10b">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516196">#516196</a></li>
+<li>Applets/taskmanager: adjust size for thumbnail-less tooltips. <a href="http://commits.kde.org/plasma-desktop/b43ef9bbf0c6bf3be2bbd7cb32a9a78330e12cee">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516018">#516018</a></li>
+<li>Add missing const and replace begin() with cbegin(). <a href="http://commits.kde.org/plasma-desktop/8728cc7d23ffb2129a788138608986b1e080e2f5">Commit.</a></li>
+<li>GlobalAccelModel: emit dataChanged after shortcut edit. <a href="http://commits.kde.org/plasma-desktop/b14d11fda5f993f61d0d9540237703461340646f">Commit.</a></li>
+<li>Applets/kicker: don't reset currentItem on context menu open. <a href="http://commits.kde.org/plasma-desktop/7bd12959dd46f8532a519ffad81000377c0a676d">Commit.</a></li>
+<li>Applets/taskmanager: Fix check for application on drop. <a href="http://commits.kde.org/plasma-desktop/6a566499112f7a94636a14008394e78934196f00">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516242">#516242</a></li>
+<li>Applets/TaskManager: Fix RTL in TaskProgressOverlay. <a href="http://commits.kde.org/plasma-desktop/ed10c5a2432bc7ef7a1696e0d0a8c9456e7298c1">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516053">#516053</a></li>
+<li>Desktoppackage: Always show the "Focus shortcut:" label in panel configuration window. <a href="http://commits.kde.org/plasma-desktop/4c8e142031db3d6689f00af5c6b8dcc0357ad2f6">Commit.</a> Fixes bug <a href="https://bugs.kde.org/515987">#515987</a></li>
+<li>Applets/kicker: use Image for non-square compactRepresentation icon. <a href="http://commits.kde.org/plasma-desktop/3e625d4ce07afe445cca778c57eaf51181080449">Commit.</a></li>
+<li>Applets/kickoff: handle accepted instead of iconNameChanged. <a href="http://commits.kde.org/plasma-desktop/8712d4165b3c653b6ced33d0d446974cd63761e8">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/plasma-login-manager">plasma-login-manager</a>
+<ul>
+<li>Frontend/UserModel: Filter users with invalid shells. <a href="http://commits.kde.org/plasma-login-manager/0cb624524cacd441c54c8c39a5b8f59e552c39ff">Commit.</a></li>
+<li>Frontend: Set explicit layer surface screen. <a href="http://commits.kde.org/plasma-login-manager/a8e06cd4eb62a383c62f36434d9721bf5c6c22a8">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/plasma-mobile">plasma-mobile</a>
+<ul>
+<li>Quicksettings/screenshot: Fix shell not showing up and update dbus. <a href="http://commits.kde.org/plasma-mobile/d6b7010850706a2d488f82577a7a5b758c747d9a">Commit.</a></li>
+<li>Actiondrawer: Fix loading race conditions with minimized quick settings. <a href="http://commits.kde.org/plasma-mobile/762aa4eeb4f905755380080c2c7ad86a5d460b0a">Commit.</a></li>
+<li>Taskswitcher: Don't set layer on task item, to avoid blurriness. <a href="http://commits.kde.org/plasma-mobile/78d0e8b653a1b486b81b215cc558030439b4510f">Commit.</a></li>
+<li>Envmanager: Add KDE Connect SMS to applications blocklist. <a href="http://commits.kde.org/plasma-mobile/df6c26d09557e52fcb05479cfb5876f3a11900fc">Commit.</a></li>
+<li>Lockscreen: Set correct colorset for notifications. <a href="http://commits.kde.org/plasma-mobile/85ea48427555e0fde759332af2741ccc02d597de">Commit.</a></li>
+<li>Statusbar: Use implicit battery widths rather than manually setting them. <a href="http://commits.kde.org/plasma-mobile/5f21c0b73a421358ffb575838bea1f6f05b07ff5">Commit.</a></li>
+<li>Quicksettings: Fix references to non existent "mode" property. <a href="http://commits.kde.org/plasma-mobile/1876ddbc6af29c8e2ce30c30fe2e1eddd5dfb454">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/plasma-nm">Plasma Networkmanager (plasma-nm)</a>
+<ul>
+<li>Libs/models: Respond to changes to the "show virtual connections" setting. <a href="http://commits.kde.org/plasma-nm/ca6c2c034dc41fb3dba435e7a3fca34ee5d86b89">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516091">#516091</a></li>
+<li>Libs/editor: Respond to external configuration changes in Configuration. <a href="http://commits.kde.org/plasma-nm/0fcb9c8e7f86a75491b84f2d33baa7cddc976e6e">Commit.</a></li>
+<li>Libs/editor: Write all configuration changes with the Notify flag set. <a href="http://commits.kde.org/plasma-nm/b29b0ba880b4a5d4cbb2557ecd7dc0482f34fcc7">Commit.</a></li>
+<li>Use more appropriate wired and wireless disconnection icons. <a href="http://commits.kde.org/plasma-nm/e85e1c0466b30b8d291d7765675044ad3c0fbf92">Commit.</a></li>
+<li>Correctly detect "Wi-Fi disabled" state in connection icon. <a href="http://commits.kde.org/plasma-nm/787ea492cab64d09154dc1d4fa54b046b332c65d">Commit.</a></li>
+<li>Applet: Remove all QML import versions. <a href="http://commits.kde.org/plasma-nm/ee1a3bb6220047b43d351e0ab62e56186b0f6137">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/plasma-pa">Plasma Audio Volume Control</a>
+<ul>
+<li>Fix bug report URL. <a href="http://commits.kde.org/plasma-pa/2462bc8e4f8e717183ff45e7dd63af26fc873105">Commit.</a> Fixes bug <a href="https://bugs.kde.org/515317">#515317</a></li>
+</ul> <a href="https://commits.kde.org/plasma-workspace">Plasma Workspace</a>
+<ul>
+<li>Applets/systemtray: reset currentIndex when searching. <a href="http://commits.kde.org/plasma-workspace/91264355a6eeb239a7fd759be60a75f18717af5d">Commit.</a> Fixes bug <a href="https://bugs.kde.org/515863">#515863</a></li>
+<li>Applets/digital-clock: localize clock digits. <a href="http://commits.kde.org/plasma-workspace/ab9a920f1ba85348d232e8f47395325976344fe3">Commit.</a> Fixes bug <a href="https://bugs.kde.org/485915">#485915</a></li>
+<li>Logout: hardcode black background color. <a href="http://commits.kde.org/plasma-workspace/8ac34d033971cc74c8597a1e05e77ae3483193dd">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516266">#516266</a></li>
+<li>Runners/baloo: Construct KRunner::Action correctly. <a href="http://commits.kde.org/plasma-workspace/b4a2f396daba946862c254aa21bdd04333a4761a">Commit.</a></li>
+<li>Wallpapers/image: Fix "open containing folder" in slideshow. <a href="http://commits.kde.org/plasma-workspace/a2a0522e57cf0200321ecf14e7669873d82f700f">Commit.</a> Fixes bug <a href="https://bugs.kde.org/515551">#515551</a></li>
+<li>Applets/kicker: Guard against bad downcasts of AbstractEntry to AppEntry. <a href="http://commits.kde.org/plasma-workspace/41ff7774b8c2b5e5311ea013ecc0cfa07b9b9123">Commit.</a></li>
+<li>Components/Clock: use Curve Rendering for labels to preserve quality. <a href="http://commits.kde.org/plasma-workspace/2a10cdca8d89f8f42f8320796ae9f066547480ce">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516314">#516314</a></li>
+<li>Kcms/nighttime: Increase spacing between path chart and mode combobox. <a href="http://commits.kde.org/plasma-workspace/6e6314335a9b68709a45fa5d9ff156dd629845be">Commit.</a></li>
+<li>Applets/notifications: Handle that default action in history is added by view. <a href="http://commits.kde.org/plasma-workspace/d4cf6578f469a814456f26a39bbf26b2ccd8df12">Commit.</a></li>
+<li>Applets/notifications: Explicitly set implicitHeight on FooterLoader. <a href="http://commits.kde.org/plasma-workspace/86f11ef87709cf3991bac925637b831604461089">Commit.</a></li>
+<li>Kcms/users: Re-enable add user button after creation. <a href="http://commits.kde.org/plasma-workspace/cd5df795a70bcff77437b4f9db32d3ae8193c5f4">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516070">#516070</a></li>
+<li>Applets/mediacontroller: Fix labels getting elided too early when between spacers. <a href="http://commits.kde.org/plasma-workspace/105662c5e54c21a620c220b8e234c08619031ed9">Commit.</a> Fixes bug <a href="https://bugs.kde.org/501166">#501166</a></li>
+<li>Ksplash: Set explicit layer surface screen. <a href="http://commits.kde.org/plasma-workspace/b6aa2f7cac2ef8b3c020c3e997b071673fdfc020">Commit.</a></li>
+<li>Logout-greeter: Set explicit layer surface screen. <a href="http://commits.kde.org/plasma-workspace/dcc76874c23ed417fb1ccc4f5d62938a32d9c1e9">Commit.</a></li>
+<li>Plasma-windowed: Set desktop file name. <a href="http://commits.kde.org/plasma-workspace/57c53fc7ad845f8ff50316c48f50ff2a51311d37">Commit.</a></li>
+<li>Shell: Set explicit layer shell screen. <a href="http://commits.kde.org/plasma-workspace/5538d3bed4289b57edc2a1414c23f93b6adeaf57">Commit.</a></li>
+<li>Shell: Restore setPosition() in PanelView. <a href="http://commits.kde.org/plasma-workspace/efb08cee3abc8e48a2097fcdd48eeee193ec439c">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516185">#516185</a>. See bug <a href="https://bugs.kde.org/514081">#514081</a></li>
+<li>Klipper/updateclipboardjob: Avoid needless encoding if possible. <a href="http://commits.kde.org/plasma-workspace/2ddd93b01d608cabae044f203feb11ae158c048b">Commit.</a></li>
+<li>Actually translate "Configure..." button. <a href="http://commits.kde.org/plasma-workspace/2f79033d6bf80afa2cfe2978f7084d28f5df2bc2">Commit.</a></li>
+<li>Applets/systemtray: Fix menu button always showing after opening volume control. <a href="http://commits.kde.org/plasma-workspace/df2587fe0c3c86f129aa7fddd41aa4987ec8e7ce">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516135">#516135</a></li>
+<li>Krunner: Guard for empty activity string which implies a loading state. <a href="http://commits.kde.org/plasma-workspace/384e20d7f992accf14379f8acf08b392d8be257a">Commit.</a></li>
+<li>Systemtraytest: reduce flakiness by waiting for a result. <a href="http://commits.kde.org/plasma-workspace/a6839d15cec9a52403641ba4fb9b6b61998f639d">Commit.</a></li>
+<li>JobIconItem: Trigger openAction, if available, instead of openUrl. <a href="http://commits.kde.org/plasma-workspace/7a23851c9dd3615a44f01bf911d9510b8f41ed68">Commit.</a></li>
+<li>BasicAppletContainer: fix blur borders. <a href="http://commits.kde.org/plasma-workspace/ed8b9e053bd751accd4382ab3c0affb9563d1b5c">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516086">#516086</a></li>
+<li>Suppress QML property shadow warnings in tests. <a href="http://commits.kde.org/plasma-workspace/eaf38482054ee6ee62df1ec6bcc80594895e5d44">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/powerdevil">Powerdevil</a>
+<ul>
+<li>Check power level before running critical action. <a href="http://commits.kde.org/powerdevil/c75eda9bee53747db9b58c656b9c4026bef60ff5">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/qqc2-breeze-style">qqc2-breeze-style</a>
+<ul>
+<li>ToolButton: Fix flat mode not inheriting background color scheme. <a href="http://commits.kde.org/qqc2-breeze-style/4d6317af801afbe21a58dffc94cd9e84718c9f4b">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/systemsettings">System Settings</a>
+<ul>
+<li>MenuProxyModel: For categories also check whether any children are relevant. <a href="http://commits.kde.org/systemsettings/6987577f902939a0be308847d4da5f37b3bfd5a7">Commit.</a></li>
+</ul> <a href="https://commits.kde.org/xdg-desktop-portal-kde">xdg-desktop-portal-kde</a>
+<ul>
+<li>Revert "settings: use stylehints instead of manually determining dark vs light". <a href="http://commits.kde.org/xdg-desktop-portal-kde/b8479f2aca2e2cdc392f44d05a1a8abf26f2ad4d">Commit.</a> Fixes bug <a href="https://bugs.kde.org/516303">#516303</a></li>
+</ul> </div> <p>Source: <a href="https://kde.org/announcements/changelogs/plasma/6/6.6.0-6.6.1/" target="_blank" rel="noopener noreferrer">KDE</a></p>
+<p>Going by their current public release schedule here's when the next bug-fix releases are due:</p>
+<div>
+<table>
+<tbody>
+<tr>
+<td><strong>Plasma version</strong></td>
+<td><strong>Release Date</strong></td>
+</tr>
+<tr>
+<td><a href="https://kde.org/announcements/plasma/6/6.6.2/">6.6.2</a></td>
+<td>Tue 2026-03-03</td>
+</tr>
+<tr>
+<td><a href="https://kde.org/announcements/plasma/6/6.5.6/">6.5.6</a></td>
+<td>Tue 2026-03-10</td>
+</tr>
+<tr>
+<td><a href="https://kde.org/announcements/plasma/6/6.6.3/">6.6.3</a></td>
+<td>Tue 2026-03-17</td>
+</tr>
+<tr>
+<td><a href="https://kde.org/announcements/plasma/6/6.6.4/">6.6.4</a></td>
+<td>Tue 2026-04-07</td>
+</tr>
+<tr>
+<td><a href="https://kde.org/announcements/plasma/6/6.6.5/">6.6.5</a></td>
+<td>Tue 2026-05-12</td>
+</tr>
+<tr>
+<td><a href="https://kde.org/announcements/plasma/6/6.6.6/">6.6.6</a></td>
+<td>Tue 2026-07-07</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Are you still encountering major problems? Let us know in the comments.</p> <p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span> </p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

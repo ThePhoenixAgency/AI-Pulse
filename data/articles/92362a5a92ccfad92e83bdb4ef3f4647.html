@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - enigma/claude-streaming-compactor</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - enigma/claude-streaming-compactor</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 7:54:54 PM | <a href="https://github.com/enigma/claude-streaming-compactor" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: NL
+  </div>
+  <div class="content">
+    <div><h1>claude-streaming-compactor</h1><a href="#claude-streaming-compactor"></a></div>
+<p>Sick of waiting for "Compacting conversation..."? This hook does it in the background while you work — you never see the spinner.</p>
+<blockquote>
+<p><strong>Heads up:</strong> This was vibecoded in an afternoon. It's working well for me, but read the code before you run it on your sessions.</p>
+</blockquote>
+<blockquote>
+<p><strong>Pro tip:</strong> </p><pre><code>tail -f ~/.claude/hooks/streaming-compactor/compactor.log</code></pre> to watch it work in real time.<p></p>
+</blockquote>
+<p><strong><a href="#install">Jump to install</a></strong> — clone, install, done.</p>
+<hr>
+<p>A Claude Code hook that automatically compacts conversation context to prevent context window exhaustion. It uses Claude Code's <strong>native </strong></p><pre><strong><code>/compact</code></strong></pre> (same quality as manual compaction) but runs it <strong>asynchronously on a clone</strong> — so you keep chatting while compaction happens in the background.<p></p>
+<p>After the swap, you need to manually resume the session. Claude Code doesn't currently have hooks for auto-resume, so the compactor shows a system message with the </p><pre><code>/resume</code></pre> command to copy-paste. Hopefully the Claude Code team will add resume hooks eventually.<p></p>
+<div><h2>How it works</h2><a href="#how-it-works"></a></div>
+<p>The compactor uses a <strong>two-threshold hysteresis</strong> approach:</p>
+<div><pre><code>0% 50% 70% 100%
+|──────────────|──────────────────|─────────────────| ^ ^ │ │ Clone JSONL &amp; Merge compacted run /compact clone + new turns, in background swap the file (you keep chatting) (exit + resume)
+</code></pre></div>
+<ol>
+<li>
+<p><strong>Check</strong> — On every Claude Code </p><pre><code>Stop</code></pre> event, the hook reads <pre><code>message.usage</code></pre> fields from the session's JSONL transcript to compute context window utilization. This is free — no additional API calls.<p></p>
+</li>
+<li>
+<p><strong>Compact</strong> (at 50%) — When utilization crosses the compact threshold, the JSONL is copied to a clone file. A background process runs </p><pre><code>claude --resume &lt;clone_id&gt;</code></pre> with <pre><code>/compact</code></pre> piped to stdin, triggering Claude Code's native compaction on the clone. <strong>You keep chatting normally</strong> — the active session is never touched during this step.<p></p>
+</li>
+<li>
+<p><strong>Swap</strong> (at 70%) — When utilization crosses the swap threshold and the clone is ready, the original JSONL is backed up and replaced with: </p><pre><code>[compact_boundary + summary from clone]</code></pre> + <pre><code>[turns that happened since the copy]</code></pre>. Any turns you made while compaction was running are preserved as a tail after the summary.<p></p>
+</li>
+<li>
+<p><strong>Resume</strong> — After a swap, a system message tells you to exit and run </p><pre><code>claude --resume &lt;session_id&gt;</code></pre>. You need to copy-paste this command — there's no hook to auto-resume yet.<p></p>
+</li>
+</ol>
+<div><h3>Recursion prevention</h3><a href="#recursion-prevention"></a></div>
+<p>When </p><pre><code>/compact</code></pre> runs on the clone, it triggers Stop hooks. The compactor tracks clone session IDs in <pre><code>state/clones/</code></pre> and silently skips any session that's a known clone.<p></p>
+<div><h2>Prerequisites</h2><a href="#prerequisites"></a></div>
+<ul>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> CLI installed and on your PATH</li>
+<li>Python 3.10+ (stdlib only — no pip dependencies)</li>
+</ul>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><pre>git clone https://github.com/enigma/claude-streaming-compactor.git
+<span>cd</span> claude-streaming-compactor
+bash install.sh</pre></div>
+<p>The installer:</p>
+<ul>
+<li>Copies compactor files to <pre><code>~/.claude/hooks/streaming-compactor/</code></pre></li>
+<li>Creates <pre><code>state/</code></pre> and <pre><code>rotated/</code></pre> subdirectories</li>
+<li>Adds the compactor hook to <pre><code>~/.claude/settings.json</code></pre> (backs up first)</li>
+<li>Is idempotent — safe to run multiple times</li>
+</ul> <p>If you prefer </p><pre><code>uv</code></pre>, edit <pre><code>~/.claude/hooks/streaming-compactor/on_stop.sh</code></pre> and replace:<p></p>
+<div><pre><span>echo</span> <span><span>"</span><span>$INPUT</span><span>"</span></span> <span>|</span> python3 <span><span>"</span><span>$COMPACTOR_DIR</span>/compactor.py<span>"</span></span> check</pre></div>
+<p>with:</p>
+<div><pre><span>echo</span> <span><span>"</span><span>$INPUT</span><span>"</span></span> <span>|</span> uv run <span><span>"</span><span>$COMPACTOR_DIR</span>/compactor.py<span>"</span></span> check</pre></div>
+<p>Also update the background worker call in </p><pre><code>compactor.py</code></pre> (search for <pre><code>["python3",</code></pre> and replace with <pre><code>["uv", "run",</code></pre>).<p></p>
+<div><h2>Uninstall</h2><a href="#uninstall"></a></div>
+<div><pre>bash uninstall.sh</pre></div>
+<p>The uninstaller:</p>
+<ul>
+<li>Removes the compactor hook entry from <pre><code>~/.claude/settings.json</code></pre> (backs up first)</li>
+<li>Prompts whether to delete <pre><code>~/.claude/hooks/streaming-compactor/</code></pre> (warns about backups)</li>
+</ul>
+<div><h3>Manual removal</h3><a href="#manual-removal"></a></div>
+<ol>
+<li>Edit <pre><code>~/.claude/settings.json</code></pre> — remove the hook entry that references <pre><code>streaming-compactor/on_stop.sh</code></pre> from the <pre><code>"Stop"</code></pre> array</li>
+<li>Delete the directory: <pre><code>rm -rf ~/.claude/hooks/streaming-compactor</code></pre></li>
+</ol>
+<div><h3>Restore a backed-up session</h3><a href="#restore-a-backed-up-session"></a></div>
+<p>If a session was already swapped and you want the original back:</p>
+<div><pre><span><span>#</span> List backups</span>
+ls -la <span>~</span>/.claude/hooks/streaming-compactor/rotated/ <span><span>#</span> Backups are named: &lt;session_id&gt;.&lt;unix_timestamp&gt;.jsonl</span>
+<span><span>#</span> Copy the one you want back to its project directory:</span>
+cp <span>~</span>/.claude/hooks/streaming-compactor/rotated/<span>&lt;</span>session_id<span>&gt;</span>.<span>&lt;</span>timestamp<span>&gt;</span>.jsonl \ <span>~</span>/.claude/projects/<span>&lt;</span>project-slug<span>&gt;</span>/<span>&lt;</span>session_id<span>&gt;</span>.jsonl</pre></div>
+<p>The project slug is the project path with </p><pre><code>/</code></pre> replaced by <pre><code>-</code></pre>, e.g.:
+<pre><code>/Users/you/my-project</code></pre> → <pre><code>-Users-you-my-project</code></pre><p></p>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Edit </p><pre><code>~/.claude/hooks/streaming-compactor/config.json</code></pre>:<p></p>
+<div><pre>{ <span>"compact_threshold"</span>: <span>50</span>, <span>"swap_threshold"</span>: <span>70</span>, <span>"context_window_size"</span>: <span>200000</span>
+}</pre></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>compact_threshold</code></pre></td>
+<td><pre><code>50</code></pre></td>
+<td>Context usage % to start background compaction (clone + <pre><code>/compact</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>swap_threshold</code></pre></td>
+<td><pre><code>70</code></pre></td>
+<td>Context usage % to swap in the compacted version</td>
+</tr>
+<tr>
+<td><pre><code>context_window_size</code></pre></td>
+<td><pre><code>200000</code></pre></td>
+<td>Token capacity of the model (Claude Opus 4 = 200k)</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Dry run</h2><a href="#dry-run"></a></div>
+<p>To see what the compactor would do without actually acting:</p>
+<div><pre><span>echo</span> <span><span>'</span>{"session_id":"test","transcript_path":"/path/to/session.jsonl","cwd":"/tmp"}<span>'</span></span> <span>|</span> \ python3 <span>~</span>/.claude/hooks/streaming-compactor/compactor.py check --dry-run</pre></div>
+<p>Check the log for output:</p>
+<div><pre>tail -20 <span>~</span>/.claude/hooks/streaming-compactor/compactor.log</pre></div>
+<div><h2>How context usage is measured</h2><a href="#how-context-usage-is-measured"></a></div>
+<p>The compactor reads the <strong>last </strong></p><pre><strong><code>message.usage</code></strong></pre><strong> object</strong> from the session's JSONL transcript. This reflects what the Claude API actually reported for that turn — the real token count sent to the model.<p></p>
+<p>Key details:</p>
+<ul>
+<li><strong>Before swap</strong>: The user's live session doesn't know about the clone or its <pre><code>compact_boundary</code></pre>. Usage keeps climbing naturally in the original file. The compactor measures this real, growing pressure — which is exactly what triggers the thresholds.</li>
+<li><strong>After swap</strong>: The swapped file contains only <pre><code>[boundary + summary + tail]</code></pre>. On resume, Claude Code loads content from the boundary onwards, and the next API response reports the reduced token count. Usage drops.</li>
+<li><strong>Existing boundaries</strong>: If a session already has <pre><code>compact_boundary</code></pre> markers (from previous manual <pre><code>/compact</code></pre> or Claude Code's own compaction), Claude Code only loads content after the <em>last</em> boundary. The API-reported usage already reflects this — the compactor doesn't need to account for boundaries itself.</li>
+<li><strong>Cache tokens count</strong>: The formula is <pre><code>(input_tokens + cache_creation_input_tokens + cache_read_input_tokens + output_tokens) / context_window_size</code></pre>. Cached tokens still occupy context window space.</li>
+</ul>
+<div><h2>Known limitations</h2><a href="#known-limitations"></a></div>
+<ul>
+<li><strong>Manual resume required</strong>: After a swap, you must copy-paste the <pre><code>/resume &lt;session_id&gt;</code></pre> or <pre><code>claude --resume &lt;session_id&gt;</code></pre> command shown in the system message. Claude Code doesn't have hooks for auto-resume (yet).</li>
+<li><strong>JSONL format dependency</strong>: The <pre><code>parentUuid</code></pre> chain rewriting and <pre><code>sessionId</code></pre> patching assume Claude Code's current JSONL transcript format. If the format changes, the swap step may produce sessions that can't be loaded. Backups in <pre><code>rotated/</code></pre> allow recovery.</li>
+<li><strong>One API call per compaction</strong>: The native <pre><code>/compact</code></pre> on the clone uses one API call. This is the only non-free operation.</li>
+<li><strong>Clone cleanup</strong>: The clone JSONL is created in the same project directory as the original. It's cleaned up after swap or on failure, but if the compactor crashes mid-run, orphan clone files may remain. They're safe to delete (check <pre><code>state/clones/</code></pre> for active clones first).</li>
+<li><strong>macOS/Linux only</strong>: Uses <pre><code>fcntl</code></pre> for file locking (not available on Windows).</li>
+</ul>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<div><h3>Watch the log live</h3><a href="#watch-the-log-live"></a></div>
+<p>Follow the compactor in real time — it logs every check, compaction, and swap:</p>
+<div><pre>tail -f <span>~</span>/.claude/hooks/streaming-compactor/compactor.log</pre></div>
+<p>You'll see lines like:</p>
+<div><pre><code>[2026-02-18T16:29:54.483210Z] check: [209f1ac3] pct=31.4% state=none
+[2026-02-18T16:30:35.775461Z] check: [175726f2] pct=52.3% state=none
+[2026-02-18T16:30:35.775761Z] check: [175726f2] crossed compact threshold (50%). starting compaction.
+[2026-02-18T16:30:36.012345Z] compact: [175726f2] cloned to a1b2c3d4 (847 lines)
+[2026-02-18T16:30:36.234567Z] compact: [175726f2] starting native /compact on clone a1b2c3d4...
+[2026-02-18T16:31:45.123456Z] compact: [175726f2] native compaction complete on clone a1b2c3d4
+[2026-02-18T16:33:12.654321Z] check: [175726f2] crossed swap threshold (70%). swapping.
+[2026-02-18T16:33:12.987654Z] swap: [175726f2] done. boundary=3 + tail=42 = 45 lines.
+</code></pre></div>
+<div><h3>Check recent log entries</h3><a href="#check-recent-log-entries"></a></div>
+<div><pre>tail -50 <span>~</span>/.claude/hooks/streaming-compactor/compactor.log</pre></div>
+<div><h3>View current state</h3><a href="#view-current-state"></a></div>
+<div><pre>cat <span>~</span>/.claude/hooks/streaming-compactor/state/<span>*</span>.json <span>2&gt;</span>/dev/null</pre></div>
+<div><h3>Clear stuck state</h3><a href="#clear-stuck-state"></a></div>
+<p>If compaction is stuck (e.g., background worker crashed):</p>
+<div><pre>rm -f <span>~</span>/.claude/hooks/streaming-compactor/state/<span>*</span>.json
+rm -f <span>~</span>/.claude/hooks/streaming-compactor/state/clones/<span>*</span></pre></div>
+<p>This is safe — it just resets the compactor. Any leftover clone JSONL files in your project directory can be deleted manually.</p>
+<div><h3>Session won't load after swap</h3><a href="#session-wont-load-after-swap"></a></div>
+<ol>
+<li>Check for a backup: <pre><code>ls ~/.claude/hooks/streaming-compactor/rotated/</code></pre></li>
+<li>Restore it to the project directory (see "Restore a backed-up session" above)</li>
+<li>Clear the state files to prevent re-swapping</li>
+</ol>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

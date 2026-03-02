@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Anthropic interdit officiellement l'utilisation de l'authentification par abonnement � Claude Code � des fins tierces, y compris OpenClaw, les d�veloppeurs doivent d�sormais utiliser des cl�s API � la place</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Anthropic interdit officiellement l'utilisation de l'authentification par abonnement � Claude Code � des fins tierces, y compris OpenClaw, les d�veloppeurs doivent d�sormais utiliser des cl�s API � la place</h1>
+  <div class="metadata">
+    Source: Developpez.com | Date: 2/20/2026 3:24:00 AM | <a href="https://intelligence-artificielle.developpez.com/actu/380433/Anthropic-interdit-officiellement-l-utilisation-de-l-authentification-par-abonnement-a-Claude-Code-a-des-fins-tierces-y-compris-OpenClaw-les-developpeurs-doivent-desormais-utiliser-des-cles-API-a-la-place/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <p><img src="https://www.developpez.com/images/logos/antropic.png"> <b>Anthropic a mis � jour sa documentation Claude Code afin d'interdire explicitement l'utilisation des jetons OAuth des abonnements Free, Pro ou Max dans tout produit tiers, y compris OpenClaw. Les d�veloppeurs doivent d�sormais utiliser des cl�s API � la place, et cette mesure pourrait �tre appliqu�e sans avertissement pr�alable. La politique mentionne explicitement l'Agent SDK, l'outil propre � Anthropic pour cr�er des agents IA, comme �tant interdit pour les jetons OAuth du plan consommateur. Si le SDK propre � Anthropic n'est pas exempt�, les outils tiers ne le sont certainement pas non plus. La tendance est claire : Anthropic comble toutes les lacunes qui permettent aux gros utilisateurs d'acc�der � Claude � un prix forfaitaire.</b></p><p>Anthropic est une soci�t� am�ricaine sp�cialis�e dans l'intelligence artificielle (IA) qui d�veloppe la famille de grands mod�les de langage (LLM) Claude. Claude Code, lanc� par Anthropic comme une alternative s�curis�e � Codex d�OpenAI, proposait aux d�veloppeurs une interface en ligne de commande pour g�n�rer du code, r�diger des tests, comprendre des erreurs. Mais contrairement � Codex CLI, Anthropic a gard� Claude Code propri�taire et obfusqu� : le code n�est pas librement accessible et son utilisation est soumise � des conditions strictes.. </p><p>Face aux limitations du CLI officiel d�Anthropic, la communaut� open source s�est mobilis�e. Des projets comme OpenCode ont d�velopp� des outils alternatifs pour exploiter Claude et d�autres mod�les dans un environnement unifi�. OpenCode est un CLI/TUI open source tr�s populaire qui permet de brancher diff�rents fournisseurs d�IA � que ce soit Anthropic, OpenAI, Google ou m�me des mod�les locaux � pour assister les d�veloppeurs dans leur codage.</p><p>De m�me, des bots comme OpenClaw ont vu le jour, offrant des orchestrations d�agents IA pour le code. OpenClaw (anciennement Clawdbot et Moltbot) est un agent d'intelligence artificielle (IA) autonome, gratuit et open source, capable d'ex�cuter des t�ches via de grands mod�les de langage, en utilisant des plateformes de messagerie comme interface utilisateur principale. OpenClaw a connu un grand succ�s fin janvier 2026, gr�ce � sa nature open source et � la popularit� virale du projet Moltbook.</p><p>Mais en d�but d�ann�e 2026, plusieurs d�veloppeurs abonn�s � Claude Code ont constat� une panne soudaine : leur outil pr�f�r�, souvent un client open source comme OpenCode ou Clawdbot, ne pouvait plus acc�der au mod�le Claude. Tr�s vite, la cause est identifi�e : <a href="https://intelligence-artificielle.developpez.com/actu/379095/Anthropic-bloque-l-utilisation-par-des-clients-tiers-des-abonnements-a-Claude-Code-la-fin-de-l-interoperabilite-et-de-l-ouverture-des-outils-de-dev-ou-simple-episode-dans-la-bataille-des-assistants-IA/" target="_blank">Anthropic a verrouill� son API pour emp�cher tout usage non autoris� en dehors de son propre environnement</a>. Le message est clair : Claude Code est d�sormais r�serv� � Claude Code. Fini les interfaces tierces. Seule l�application maison est tol�r�e.</p><p>R�cemment, Anthropic a mis � jour sa documentation Claude Code afin d'interdire explicitement l'utilisation des jetons OAuth des abonnements Free, Pro ou Max dans tout produit tiers, y compris OpenClaw. Les d�veloppeurs doivent d�sormais utiliser des cl�s API � la place, et cette mesure pourrait �tre appliqu�e sans avertissement pr�alable. Anthropic a discr�tement mis � jour ses documents juridiques et de conformit� Claude Code pour y inclure ce paragraphe : � <i>L'utilisation de jetons OAuth obtenus via des comptes Claude Free, Pro ou Max dans tout autre produit, outil ou service, y compris l'Agent SDK, n'est pas autoris�e et constitue une violation des conditions d'utilisation grand public. </i>�</p><p><img src="https://www.developpez.net/forums/attachments/p674396d1/a/a/a"></p><p>
+La politique mentionne explicitement l'Agent SDK, l'outil propre � Anthropic pour cr�er des agents IA, comme �tant interdit pour les jetons OAuth du plan consommateur. Si le SDK propre � Anthropic n'est pas exempt�, les outils tiers ne le sont certainement pas non plus. Les cibles sont �videntes : OpenClaw, Pi Agent et tous les autres frameworks d'agents qui permettent aux utilisateurs de s'authentifier avec leur abonnement Claude existant au lieu de payer des frais API s�par�s.</p><p>Auparavant, la fronti�re entre � l'utilisation de Claude Code � et � l'utilisation d'outils tiers � �tait suffisamment ambigu� pour que de nombreux utilisateurs d'OpenClaw s'authentifient via des jetons OAuth provenant de leurs abonnements Max. Le forfait Max � 200 $ par mois offrait un acc�s quasi illimit� � Claude � pourquoi ne pas l'int�grer � votre agent personnel ?</p><p>Les documents mis � jour �tablissent une ligne claire : l'authentification OAuth est � destin�e exclusivement � Claude Code et Claude.ai �. Tout le reste n�cessite des cl�s API via la console Claude ou un fournisseur de cloud pris en charge. Anthropic se r�serve le droit d'appliquer cette r�gle � sans pr�avis �, ce qui signifie que les comptes pourraient �tre bannis avant m�me que les utilisateurs ne sachent que cette r�gle existe.</p><p><img src="https://www.developpez.net/forums/attachments/p674397d1/a/a/a"></p>
+<p><b>Les raisons �conomiques derri�re l'interdiction</b></p><p>Les chiffres expliquent cette politique. Un abonnement Max co�te 200 $ par mois pour une utilisation intensive de Claude. Le prix de l'API pour Claude Opus 4.6 est de 15 $ par million de jetons d'entr�e et de 75 $ par million de jetons de sortie. Un agent OpenClaw actif ex�cutant Opus peut consommer des millions de jetons par jour, ce qui rend un abonnement forfaitaire de 200 $ profond�ment non rentable pour Anthropic.</p><p>Un utilisateur de X l'a clairement exprim� : � <i>Il est assez �vident que l'abonnement Claude Max n'est pas viable �conomiquement. La seule raison de son existence est de promouvoir l'�cosyst�me Anthropic aupr�s de nouveaux utilisateurs. Ainsi, les personnes qui l'utilisent pour plusieurs comptes ou pour des produits non Anthropic (par exemple OpenClaw) sont exclues. Ce n'est que du business.</i> � Ce ne sont que les affaires. Mais ce sont ces affaires qui poussent les utilisateurs les plus engag�s � ceux qui cr�ent des agents, ceux qui vantent les capacit�s de Claude, ceux qui cr�ent l'�cosyst�me � vers des concurrents qui pratiquent des prix diff�rents.</p><p>Anthropic a d�velopp� le mod�le que beaucoup consid�rent comme le meilleur au monde pour le travail agentique. Claude Opus et Sonnet sont les choix par d�faut pour les d�ploiements OpenClaw s�rieux. Et aujourd'hui, Anthropic annonce � l'�cosyst�me qui s'est d�velopp� autour de cette capacit� : payez les tarifs API ou partez. C'est un sch�ma familier dans l'�conomie des plateformes. La plateforme subventionne l'adoption, un �cosyst�me se forme autour de la subvention, puis la plateforme r��value ses prix et l'�cosyst�me se d�organise. Ce qui est inhabituel ici, c'est la rapidit� : Claude Max existe depuis des mois, pas des ann�es, et l'�cosyst�me qu'il a permis de cr�er n'a que quelques semaines.</p><p><b>La r�action des d�veloppeurs</b></p><p>La r�ponse sur X a �t� rapide et largement hostile. �<i> Anthropic donne une mauvaise impression ces derniers temps, je pensais qu'ils �taient sympas</i> �, a �crit le d�veloppeur Flavio Copes. Ce sentiment �tait largement partag�. Ian Nuttall a soulign� l'ouverture concurrentielle : � <i>L'�quipe Codex doit commercialiser d�s que possible un mod�le de vitesse et de personnalit� Sonnet 4.6 ! Si elle le fait, il y aura un nombre consid�rable de passages de Claude � Codex.</i> �</p><p>Gergely Orosz, auteur de The Pragmatic Engineer, a �t� cat�gorique : � <i>Le co�t de l'API pour Anthropic est beaucoup trop �lev� par rapport aux autres acteurs, et donc utiliser l'API n'a aucun sens pour d�velopper sur Claude. Il semble qu'Anthropic se satisfasse de n'avoir pratiquement aucun �cosyst�me autour de Claude.</i> � Le d�veloppeur Rhys Sullivan a d�j� pris les devants : �<i> � ce stade, je suis compl�tement pass� � 5-3-codex pour la plupart des choses. Les forfaits ChatGPT � 20 $ et 200 $ sont tous deux tr�s int�ressants.</i> �</p><p>L'interdiction d'OAuth est arriv�e en m�me temps que des informations selon lesquelles Anthropic s�vissait contre les utilisateurs poss�dant plusieurs comptes Max. Le d�veloppeur Dwayne a publi� : � <i>Ils s'en prennent d�sormais aux personnes qui poss�dent plusieurs comptes Max payants. Vous payez le prix fort, plusieurs fois, et ils vous traitent comme un criminel.</i> � Ed Zitron a rapport� avoir entendu des d�tenteurs de comptes Enterprise Max dire qu'Anthropic les faisait passer � la facturation API. La tendance est claire : Anthropic comble toutes les lacunes qui permettent aux gros utilisateurs d'acc�der � Claude � un prix forfaitaire.</p><p>Reste � voir si cela acc�l�rera le passage � Codex d'OpenAI, aux mod�les open source ou simplement au paiement � contrec�ur des API. Mais le message d'Anthropic est sans ambigu�t� : le Claude avec lequel vous construisez n'est pas le Claude auquel vous vous abonnez. Ce sont des produits diff�rents, � des prix diff�rents, avec des r�gles diff�rentes. Si vous utilisez OpenClaw avec un jeton OAuth Claude d'un forfait Free, Pro ou Max, deux options s'offrent � vous :</p><p>1. Passer aux cl�s API. Cr�ez un compte sur la console Claude, ajoutez un mode de paiement et utilisez l'authentification par cl� API. Vous paierez par jeton, ce qui, pour Opus 4.6, est nettement plus cher qu'un abonnement Max pour une utilisation intensive.</p><p>2. Changer de mod�le. OpenClaw prend en charge tous les principaux fournisseurs de mod�les. OpenAI, Google, Mistral, les mod�les locaux via Ollama : le cadre est con�u pour �tre ind�pendant du mod�le. La derni�re version d'OpenClaw a m�me ajout� la prise en charge de Sonnet 4.6 avec une compatibilit� ascendante.</p><p>Ce changement vient confirmer la situation d'OpenClaw face � Anthropic. Mais Apr�s qu'Anthropic ait bloqu�...
+</p><p>La fin de cet article est r�serv�e aux abonn�s. Soutenez le Club Developpez.com en <a href="https://premium.developpez.com/abonnement">prenant un abonnement</a> pour que nous puissions continuer � vous proposer des publications.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

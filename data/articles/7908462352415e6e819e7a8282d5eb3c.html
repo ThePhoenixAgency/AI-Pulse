@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Release v2.0.1 · genielabs/HomeGenie · GitHub</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Release v2.0.1 · genielabs/HomeGenie · GitHub</h1>
+  <div class="metadata">
+    Source: HomeGenie (GitHub Releases) | Date: 1/15/2026 9:27:53 PM | <a href="https://github.com/genielabs/HomeGenie/releases/tag/v2.0.1" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <h2>HomeGenie v2.0.1 — Your Local AI-Powered Programmable Intelligence Unleashed!</h2>
+<p>We are thrilled to announce the official <strong>stable release of HomeGenie 2.0.1</strong>, culminating over three years of dedicated development into a completely re-imagined platform. HomeGenie has evolved into a robust, local-first, and privacy-centric system of programmable intelligence, with Agentic AI at its core.</p>
+<p>This release empowers you with cutting-edge capabilities to transform any environment into a truly intelligent and autonomous system.</p>
+<h3> Key Highlights &amp; New Capabilities:</h3>
+<h4> <strong>Local AI &amp; Lailama Agentic Engine:</strong></h4>
+<ul>
+<li><strong>Intelligent &amp; Adaptive:</strong> The Lailama engine dynamically optimizes its parameters (Context Window, Batch Size) based on your system's available RAM, ensuring stable and efficient operation across diverse hardware.</li>
+<li><strong>Granular AI Control:</strong> A brand-new, intuitive configuration UI (supporting both Light and Dark themes) allows you to fine-tune Lailama's behavior:
+<ul>
+<li>Adjust <strong>Creativity (Temperature)</strong> from precise logic to creative responses.</li>
+<li>Manage <strong>Working Memory (Context Window)</strong> for enhanced AI recall.</li>
+<li>Control <strong>System Context Sharing</strong> to feed real-time module and sensor data to the AI for highly accurate agentic actions.</li>
+</ul>
+</li>
+<li><strong>Enhanced Reasoning:</strong> Improved System Report formatting and refined system prompts for Lailama and Gemini providers lead to smarter intent recognition and execution.</li>
+<li><strong>AI Vision Suite:</strong> Full integration of YOLO (Object Detection, Instance Segmentation, Pose Estimation) directly on server and ESP32-CAM modules.</li>
+<li><strong>Agentic Scheduling (Genie Command):</strong> The Scheduler now hosts AI-driven tasks, allowing natural language commands to define complex automations autonomously.</li>
+<li><strong>Speech Recognition &amp; Synthesis:</strong> Improved microphone input and voice responses in the new AI chat interface.</li>
+<li><strong>Async Model Downloads:</strong> Robust Download Manager for GGUF models with pause/resume support.</li>
+</ul>
+<h4> <strong>Developer API &amp; Framework:</strong></h4>
+<ul>
+<li><strong>New Licensing Model:</strong> Re-licensed to <strong>GNU Affero General Public License v3.0</strong> for a protected open-source ecosystem.</li>
+<li><strong>Extended Widget Capabilities:</strong> <pre><code>zuix.d.ts</code></pre> is updated with new widget controller methods: <pre><code>this.apiCall()</code></pre>, <pre><code>this.showSettings()</code></pre>, and <pre><code>this.translate()</code></pre> for deeper integration.</li>
+<li><strong>Universal Fluent API Generator:</strong> Generates ready-to-use C#, JavaScript, and Python code with a unified syntax for module interaction.</li>
+<li><strong>ModuleField API:</strong> Added the <pre><code>.decimalValue</code></pre> property to <pre><code>ModuleField</code></pre> for simplified numeric handling in UI logic.</li>
+</ul>
+<h4> <strong>User Interface (UI) &amp; Experience (UX) Overhaul:</strong></h4>
+<ul>
+<li><strong>Modernized UI:</strong> A sleek, responsive, and multilingual interface with full support for Light/Dark themes and enhanced readability.</li>
+<li><strong>Redesigned AI Chat:</strong> "Bottom sheet" style chat with explicit thought processes, smart scroll, token buffering, and unified "Stop" commands.</li>
+<li><strong>Customizable Dashboards:</strong> New preferences for custom wallpapers (including animated GIFs), widget card colors, opacity, and blur effects.</li>
+<li><strong>Quick Control Sheets:</strong> Implemented Floating Action Buttons (FABs) for rapid control of scenes, lights, colors, and shutters directly from the dashboard.</li>
+<li><strong>Smart Display Integration:</strong> ESP32/ESP32-S3 devices with touch displays now function as customizable and autonomous control centers.</li>
+<li><strong>Revamped Log Events Viewer:</strong> Interactive chart preview with seamless navigation for efficient log analysis.</li>
+<li><strong>Code Editor Minimap:</strong> Enabled for faster navigation within long scripts.</li>
+<li><strong>Clearer Visual Programming:</strong> The "VPL" entry has been renamed to "<strong>Visual Program</strong>" for improved clarity and accessibility.</li>
+</ul>
+<h3> <strong>Why HomeGenie 2.0.1?</strong></h3>
+<p>This release represents our unwavering commitment to empowering users with <strong>local-first, cloud-independent, and intelligent programmable systems</strong>. With Lailama, your HomeGenie server transforms into a truly autonomous agent, capable of understanding, reasoning, and acting on your unique environment or project—all while keeping your data private and secure on your hardware.</p>
+<hr>
+<p><em>Happy Automating!</em> </p>
+<p><strong>Full Changelog</strong>: <a href="https://github.com/genielabs/HomeGenie/compare/v2.0.0-rc.15...v2.0.1">v2.0.0-rc.15...v2.0.1</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

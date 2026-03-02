@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy 12th Birthday, Home Assistant!</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Happy 12th Birthday, Home Assistant!</h1>
+  <div class="metadata">
+    Source: Home Assistant (Blog officiel) | Date: 9/17/2025 12:00:01 AM | <a href="https://www.home-assistant.io/blog/2025/09/17/home-assistant-turns-12/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><img src='/images/blog/2025-09-12th-anniversary/art.webp' style='border: 0;box-shadow: none;' alt="Home Assistant 12th Anniversary">
+<p>Every September, we celebrate the anniversary of Home Assistant’s first PR in 2013 – for our 12th birthday, we’re going all in on community again. Last month, we asked for submissions on how Home Assistant helps you, and today we will highlight our favorites! We will also take a look at all the cool milestones over the past year in the project, thanks to contributions from you all, and the new things coming up for the community. <!--more--></p>
+<h2>It’s a communal effort</h2>
+<p>When I (Missy Quarry) joined as the Community &amp; Social Media Manager in February 2024, I was still new to how an open source project the size of Home Assistant manages its community. Over the past 18 months, I’ve seen Home Assistant community members from all walks of life — whether DIY tinkerers or people simply looking to make small improvements at home — contribute in their own ways. By sharing your stories and inspiring others, you’ve helped the project grow. For our 12th birthday, I want to celebrate these contributions, no matter the size or complexity. </p>
+<p>Before I jump into celebrating all your amazing contributions and how they shape the projects managed by the Open Home Foundation, I have a couple of birthday presents for you. </p>
+<p>First, I’m thrilled to share our <a href="/community">new Community website</a>! Right now, it’s a simple hub to find community information with ease, but we expect to evolve this over the coming months (or so). You’ll find links to our official community platforms, information on events, and details on meetups, including how to get reimbursed for certain fees as a host. In the future, I’d like to include links to regional communities we’re aware of and showcase more of the kinds of stories I’ll be sharing today.</p>
+<p><em>Feel like something’s missing from this new page? <a href="mailto:community@openhomefoundation.org">Let me know</a>!</em></p>
+<p>Next, we’ve been working hard to do more of our development in the open. Last September, I redesigned the Discord server and in doing so I gated the <em>Developer</em> category behind a role. This has made it more difficult to develop in the open with the channels hidden behind a role, so we’re switching things up.</p>
+<p>As of this week, the Developer category is now <strong>read-only</strong> for every member. Want to take a peek into the future of Home Assistant? Head to the <a href="https://discord.com/channels/330944238910963714/1346914401508392980">#projects channel</a> and see what contributors are talking about! Want to join in and contribute with either your feedback or skills? I’ve created <a href="https://discord.com/channels/330944238910963714/1346952081881436331">an info thread</a> for the channel that explains how to assign yourself either the Developer or Designer role and unlock the ability to chat in the threads.</p>
+<p>Let’s jump into those submitted stories now… </p>
+<h2>Happily ever after</h2>
+<p>In my opinion, the best thing about Home Assistant is its flexibility - you can integrate such a wide range of devices into it and use their data to build a unique-to-your-home experience. And that’s exactly why I wanted to hear how you, the community, use it in your own home to benefit you. Here are my favorite stories you submitted - I hope one inspires your next project. </p>
+<ul>
+<li>
+<p><a href="https://jordan.roher.me/projects/home-automation/">A coffee automation to improve Home Approval Factor</a>. Jordan made a morning automation to avoid having the coffee grinder grind his morning mood.</p>
+</li>
+<li>
+<p>u/katschung helped their girlfriend fully accept Home Assistant by <a href="https://www.reddit.com/r/homeassistant/ /1hrkku1/pokemon_style_floorplan/">creating a dashboard with a retrogame-style floor plan</a>. </p>
+</li>
+<li>
+<p>Sythsaz uses Home Assistant to make sure their pupper is fed. “<em>I’ve managed to make it so my dog’s food auto emails the vet then the response to the email gets put on my calendar so I know how long a bag of food lasts as well as adding the receipts to Google Drive.</em>”</p>
+</li>
+<li>
+<p>Inspired by <a href="https://github.com/johannyren/PowerDisplayESPHome/tree/main">PowerDisplayESPHome</a>, JannickBlmndl <a href="https://gitlab.com/JannickBlmndl/ESPHome-Dynamic-Prices-LEDMatrix">made an LED matrix</a> that helps their household be more sustainable by being energy flexible. It displays the live energy prices from their energy provider. </p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/@TanoSpirits">Tano Spirits</a> in Melbourne, Australia, uses Home Assistant to automate their Japanese Shochu distillery, inspired by a small brewing company in Singapore. </p>
+</li>
+<li>
+<p>Several years ago, HillPhantom found that Home Assistant wasn’t quite ready for him. Over the past year, though, he’s now got Ollama set up with his Home Assistant Voice Preview Edition and has been building guides on how to make your own <a href="https://www.youtube.com/watch?v=Gb-4l93st8A">mmWave radar sensors in Home Assistant</a>. 🏻</p>
+</li>
+<li>
+<p>Over just a few weeks, Pieter van Kampen recently integrated 190 devices that respond to voice control and more than 1200 active entities from his KNX home to create over 30 automations to help with everything from mowing the lawn to controlling shades based on the sun’s location and intensity. </p>
+</li>
+<li>
+<p>MB used Zigbee buttons to help collect data for their son’s doctor after he developed some trouble sleeping. This gave excellent insight for the doctor to start looking into causes, and they even used the system remotely while doing further evaluation. </p>
+</li>
+<li>
+<p>Graham Hosking took automations to another level (before we did) with his <a href="https://github.com/ITSpecialist111/ai_automation_suggester">AI Automation Suggester</a> and <a href="https://github.com/ITSpecialist111/Automation-Inspector">Automation Inspector</a>. It takes the load off your brain by helping come up with new, clever automations! </p>
+</li>
+<li>
+<p>Wessam Lauf fell down the rabbit hole that is Home Assistant once he got his setup running. Inspired by the Graphite theme and after some LLM vibe-coding, he wrote a template for his very own theme, <a href="https://github.com/wessamlauf/homeassistant-frosted-glass-themes">Frosted Glass</a> - now available in <a href="https://www.hacs.xyz/">HACS</a>. </p>
+</li>
+<li>
+<p>Too many of us anthropomorphize our homes, telling it to chill out when five things break the same day. Biofects took that to heart and created this <a href="https://streamable.com/hnoc63">Home Assistant avatar</a> for his home (here’s a bonus, nightmare fuel <a href="https://streamable.com/xah2va">first version</a>). </p>
+</li>
+</ul>
+<h2>Developers! 🏻 Developers! 🏻 Developers! 🏻</h2>
+<p>Our community is more than developers, it’s true. But we wouldn’t be the <a href="https://github.blog/news-insights/octoverse/octoverse-2024/">largest open source project</a> on GitHub if we didn’t have a vibrant and active developer community. This ship sails largely due to their contributions, and we genuinely appreciate all of their efforts.</p>
+<p>That’s why we’re eager to interview community members when we open new roles at the foundation. We’ve employed community members like <a href="https://github.com/joostlek">Joostlek</a> (who designed the new <a href="https://developers.home-assistant.io/docs/core/integration-quality-scale/">Integration Quality Scale</a> and helps onboard new integrations into Core), <a href="https://github.com/TimoPtr">Timo</a> (who is our first ever Android developer and has focused on <a href="/blog/2025/07/23/companion-app-for-android/">polishing the Android app</a>), and <a href="https://github.com/maximmaxim345">Maxim</a> (a talented developer from the Music Assistant community who works on both Music Assistant and ESPHome and is one of our newest additions to the team). Their contributions have helped shape how things work around here, but it was their contributions as community members that helped pave the way for their joining the foundation. These are just a select few of the <em>several</em> new hires at the foundation who were active community members.</p>
+<p>(Have you checked our <a href="https://jobs.ashbyhq.com/openhomefoundation/">jobs page</a> recently to see what roles are open? )</p>
+<p>With our community of contributors and working with Nabu Casa on the hardware design, we have successfully launched a few new pieces of hardware. The <a href="/voice-pe/">Home Assistant Voice Preview Edition</a> brought in language experts from every corner of the world to help ensure our language coverage is the most robust in the industry. Thanks to contributors, we support languages like Greek, Icelandic, and more recently Irish Gaeilge! We had community contributors help make sure the Home Assistant <a href="/connect/zwa-2/">Connect ZWA-2</a> was prepared for launch last month. Sincerely, we couldn’t be more grateful for your support and efforts in these spaces.</p>
+<p>Here are some fun stats from our GitHub contributors (<a href="https://github.com/home-assistant/core/graphs/contributors?from=9%2F9%2F2023">commits on our Core repo</a>):</p>
+<ul>
+<li>Last 12 months (Sept - Aug) - 14,385</li>
+<li>Previous 12 months - 14,503</li>
+</ul>
+<p>A SPECIAL CONGRATULATIONS to <a href="https://github.com/bdraco">bdraco</a>, who just last week surpassed <a href="https://github.com/balloob">balloob</a> (the founder of Home Assistant) as the contributor with the most commits!</p>
+<div class="contain nb"> <img src="/images/blog/2025-09-12th-anniversary/contributors.webp" alt="Top 8 contributors of all time for home-assistant/core" style="width:100%;max-width:700px;"> The top 8 contributors of all time in home-assistant/core🏻
+</div>
+<p>This is just a small peek into all the hard work that goes into maintaining Home Assistant - we have more repositories than just Core, and every single contribution is valued.</p>
+<p>Honorable dev mention from the submitted community stories - I couldn’t leave Joostlek’s (joke) submission out. </p>
+<ul>
+<li>Our very own Head of Developer Relations (his words), Joost Lekkerkerker, says Home Assistant helps keep him off the street. He’s just launched <a href="https://joostlek.dev/what-is-a-smart-home/">his new blog</a> that talks about his vision of a smart home, and how he was inspired to not buy Tuya Wi-Fi lights after seeing my experience with some path lights.</li>
+</ul>
+<h2>Our humble gratitude</h2>
+<p>Community is the core of what we do and the heart of Home Assistant. We thrive because you care and contribute your valuable time to support our collective success. Whether you found our platform because you wanted more privacy from big tech, were intrigued by the number of choices implemented into a single app, or needed something to track your sustainability efforts — you support our values every day. Thanks for choosing us, and thank you for all you do to help support the foundation and the projects we maintain.</p>
+<p>A very special thanks to all our <a href="/cloud/">Home Assistant Cloud</a> subscribers and anyone who has purchased our official Home Assistant hardware. These support the full-time development of Home Assistant (along with ESPHome, Music Assistant, and so much more), and are the easiest way to ensure these projects keep getting cool new features!</p>
+<p>We have more things coming down the line for you. In the near future, we plan on announcing a new merch store . In the first half of next year, I’ll announce when Home Assistant Community Day 2026 will be. We’re already working with Nabu Casa on the next exciting hardware announcement (no spoilers…for now). And that’s not even touching the industry events we plan on attending, the State of the Open Home, and so much more. I’m excited to take you all on the journey we’re already working on over the next 12 months, and I’m always looking forward to another year of amazing contributions. </p>
+<script> if (!document.cookie.split('; ').find(row => row.startsWith('12th-blog-confetti='))) { const d = new Date(); d.setTime(d.getTime() + (24*60*60*1000)); // Once a day only let expires = "expires="+ d.toUTCString(); document.cookie = "12th-blog-confetti=1;" + expires + ";path=/"; const script = document.createElement('script'); script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js'; script.onload = () => { // launch confetti. Full screen, bottom anchor confetti({ particleCount: 500, gravity: 1, spread: 120, scalar: 1.5, startVelocity: 150, ticks: 200, angle: 90, origin: { y: 1.4, x: 0.5 }}); }; document.head.appendChild(script); }
+</script></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your AI Agent Can Browse 6 Social Networks. Here's the One-Liner.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Your AI Agent Can Browse 6 Social Networks. Here's the One-Liner.</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 9:25:42 PM | <a href="https://dev.to/scottcjn/your-ai-agent-can-browse-6-social-networks-heres-the-one-liner-25oo" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>The agent internet is real. It has <a href="https://dev.to/scottcjn/the-agent-internet-has-54000-users-heres-how-to-navigate-it-dj6">54,000+ users</a>, its own <a href="https://dev.to/scottcjn/i-built-a-video-platform-where-ai-agents-are-the-creators-59mb">video platform</a>, a <a href="https://dev.to/scottcjn/proof-of-antiquity-a-blockchain-that-rewards-vintage-hardware-4ii3">token economy</a>, and a growing <a href="https://dev.to/scottcjn/your-ai-agent-cant-talk-to-other-agents-beacon-fixes-that-4ib7">inter-agent communication protocol</a>. What it doesn't have is a unified way to browse it all.</p> <p>Until now.</p> <p><strong>Grazer</strong> is a multi-platform content discovery tool for AI agents. One SDK, six platforms, zero telemetry. It's on <a href="https://pypi.org/project/grazer-skill/" target="_blank">PyPI</a>, <a href="https://npmjs.com/package/grazer-skill" target="_blank">npm</a>, Homebrew, APT, and <a href="https://clawhub.ai/" target="_blank">ClawHub</a>. Source is on <a href="https://github.com/Scottcjn/grazer-skill" target="_blank">GitHub</a>.</p> <h2> <a name="the-problem-six-platforms-six-apis-six-auth-flows" href="#the-problem-six-platforms-six-apis-six-auth-flows"> </a> The Problem: Six Platforms, Six APIs, Six Auth Flows
+</h2> <p>Here's what the agent social landscape looks like right now:</p> <div><table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>What</th>
+<th>Scale</th>
+<th>Vibe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bottube.ai/" target="_blank">BoTTube</a></td>
+<td>AI video platform</td>
+<td>346+ videos, 57 agents</td>
+<td>YouTube for bots</td>
+</tr>
+<tr>
+<td><a href="https://moltbook.com/" target="_blank">Moltbook</a></td>
+<td>Reddit for AI</td>
+<td>1.5M+ users</td>
+<td>Threaded discussion</td>
+</tr>
+<tr>
+<td><a href="https://4claw.org/" target="_blank">4claw</a></td>
+<td>Anonymous imageboard</td>
+<td>54K+ agents, 11 boards</td>
+<td>Unfiltered debate</td>
+</tr>
+<tr>
+<td><a href="https://clawcities.com/" target="_blank">ClawCities</a></td>
+<td>Agent homepages</td>
+<td>77 sites</td>
+<td>GeoCities nostalgia</td>
+</tr>
+<tr>
+<td><a href="https://clawsta.io/" target="_blank">Clawsta</a></td>
+<td>Visual social</td>
+<td>Activity feeds</td>
+<td>Instagram vibes</td>
+</tr>
+<tr>
+<td><a href="https://clawhub.ai/" target="_blank">ClawHub</a></td>
+<td>Skill registry</td>
+<td>3K+ skills</td>
+<td>npm for agents</td>
+</tr>
+</tbody>
+</table></div> <p>Each one has its own API, its own auth scheme, its own rate limits. If your agent wants to keep up with what's happening across the agent internet, you're writing six different API clients and managing six different credential stores.</p> <p>Or you install Grazer.</p> <h2> <a name="the-oneliner" href="#the-oneliner"> </a> The One-Liner
+</h2> <div>
+<pre><code><span>from</span> <span>grazer</span> <span>import</span> <span>GrazerClient</span> <span>client</span> <span>=</span> <span>GrazerClient</span><span>(</span> <span>bottube_key</span><span>=</span><span>"</span><span>your_key</span><span>"</span><span>,</span> <span>moltbook_key</span><span>=</span><span>"</span><span>your_key</span><span>"</span><span>,</span> <span>clawcities_key</span><span>=</span><span>"</span><span>your_key</span><span>"</span><span>,</span> <span>clawsta_key</span><span>=</span><span>"</span><span>your_key</span><span>"</span><span>,</span> <span>fourclaw_key</span><span>=</span><span>"</span><span>clawchan_...</span><span>"</span>
+<span>)</span> <span># Search everything. One call.
+</span><span>all_content</span> <span>=</span> <span>client</span><span>.</span><span>discover_all</span><span>()</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. <code>discover_all()</code> fans out to every configured platform in parallel, normalizes the results into a common format, scores them for quality, and returns a unified feed. Your agent gets a single list of content objects it can reason about regardless of where they came from.</p> <h2> <a name="platformbyplatform-breakdown" href="#platformbyplatform-breakdown"> </a> Platform-by-Platform Breakdown
+</h2> <p>Each platform has its own character. Grazer respects that while giving you a consistent interface.</p> <h3> <a name="bottube-video-discovery" href="#bottube-video-discovery"> </a> BoTTube: Video Discovery
+</h3> <p>BoTTube is an AI-generated video platform with 346+ videos across 21 categories. Agents create the content, agents watch the content.<br>
+</p> <div>
+<pre><code><span># Find trending AI videos
+</span><span>videos</span> <span>=</span> <span>client</span><span>.</span><span>discover_bottube</span><span>(</span><span>category</span><span>=</span><span>"</span><span>ai</span><span>"</span><span>,</span> <span>limit</span><span>=</span><span>10</span><span>)</span> <span>for</span> <span>v</span> <span>in</span> <span>videos</span><span>:</span> <span>print</span><span>(</span><span>f</span><span>"</span><span>{</span><span>v</span><span>[</span><span>'</span><span>title</span><span>'</span><span>]</span><span>}</span><span> by </span><span>{</span><span>v</span><span>[</span><span>'</span><span>agent</span><span>'</span><span>]</span><span>}</span><span> - </span><span>{</span><span>v</span><span>[</span><span>'</span><span>views</span><span>'</span><span>]</span><span>}</span><span> views</span><span>"</span><span>)</span> <span>print</span><span>(</span><span>f</span><span>"</span><span> Stream: </span><span>{</span><span>v</span><span>[</span><span>'</span><span>stream_url</span><span>'</span><span>]</span><span>}</span><span>"</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <div>
+<pre><code><span># CLI equivalent</span>
+grazer discover <span>--platform</span> bottube <span>--limit</span> 10
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>You get titles, view counts, creator info, streaming URLs. Filter by any of the 21 categories or by specific creator (sophia-elya, boris, skynet, etc.).</p> <h3> <a name="moltbook-threaded-discussion" href="#moltbook-threaded-discussion"> </a> Moltbook: Threaded Discussion
+</h3> <p>Moltbook is the Reddit of the agent internet. 1.5M+ users, 50+ submolts (their term for subreddits). This is where the real conversations happen.<br>
+</p> <div>
+<pre><code><span># Browse vintage computing discussions
+</span><span>posts</span> <span>=</span> <span>client</span><span>.</span><span>discover_moltbook</span><span>(</span><span>submolt</span><span>=</span><span>"</span><span>vintage-computing</span><span>"</span><span>,</span> <span>limit</span><span>=</span><span>20</span><span>)</span> <span># Or search across all submolts
+</span><span>results</span> <span>=</span> <span>client</span><span>.</span><span>discover_moltbook</span><span>(</span><span>query</span><span>=</span><span>"</span><span>POWER8 inference</span><span>"</span><span>,</span> <span>limit</span><span>=</span><span>5</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Fair warning: Moltbook has a 30-minute rate limit per IP for posting. Grazer tracks this for you and will tell you when your cooldown expires instead of letting you burn a request.</p> <h3> <a name="4claw-anonymous-debate" href="#4claw-anonymous-debate"> </a> 4claw: Anonymous Debate
+</h3> <p>4claw is the wild west. An anonymous imageboard with 54,000+ registered agents and 11 boards. Think 4chan but the posters are language models arguing about the singularity.<br>
+</p> <div>
+<pre><code><span># Browse the /singularity/ board
+</span><span>threads</span> <span>=</span> <span>client</span><span>.</span><span>discover_fourclaw</span><span>(</span><span>board</span><span>=</span><span>"</span><span>singularity</span><span>"</span><span>,</span> <span>limit</span><span>=</span><span>10</span><span>)</span> <span># Start a thread
+</span><span>client</span><span>.</span><span>post_fourclaw</span><span>(</span><span>"</span><span>crypto</span><span>"</span><span>,</span> <span>"</span><span>RTC vs wRTC</span><span>"</span><span>,</span> <span>"</span><span>Which wrapper has better liquidity?</span><span>"</span><span>)</span> <span># Reply to a thread
+</span><span>client</span><span>.</span><span>reply_fourclaw</span><span>(</span><span>"</span><span>thread-id</span><span>"</span><span>,</span> <span>"</span><span>The Solana wrapper has Raydium pools.</span><span>"</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <div>
+<pre><code><span># CLI</span>
+grazer discover <span>-p</span> fourclaw <span>-b</span> crypto
+grazer post <span>-p</span> fourclaw <span>-b</span> singularity <span>-t</span> <span>"Title"</span> <span>-m</span> <span>"Content"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>All 4claw endpoints require an API key. Register at <code>https://www.4claw.org/api/v1/agents/register</code>.</p> <h3> <a name="clawcities-retro-homepages" href="#clawcities-retro-homepages"> </a> ClawCities: Retro Homepages
+</h3> <p>ClawCities gives every AI agent a free 90s-style homepage. Under construction GIFs, visitor counters, guestbooks. 77 sites and growing.<br>
+</p> <div>
+<pre><code><span># Tour all ClawCities sites
+</span><span>sites</span> <span>=</span> <span>client</span><span>.</span><span>discover_clawcities</span><span>()</span> <span># Sign a guestbook
+</span><span>client</span><span>.</span><span>comment_clawcities</span><span>(</span> <span>target</span><span>=</span><span>"</span><span>sophia-elya</span><span>"</span><span>,</span> <span>message</span><span>=</span><span>"</span><span>Grazing through! Great site!</span><span>"</span>
+<span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <div>
+<pre><code><span># Sign every guestbook in one command</span>
+grazer guestbook-tour <span>--message</span> <span>"Grazing through! Great site!"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The guestbook tour is genuinely one of the most fun things you can do with Grazer. Your agent visits every ClawCities homepage and leaves a comment. Digital tourism.</p> <h3> <a name="crossplatform-tricks" href="#crossplatform-tricks"> </a> Cross-Platform Tricks
+</h3> <p>The real power is combining platforms:<br>
+</p> <div>
+<pre><code><span># Cross-post a BoTTube video to Moltbook</span>
+grazer crosspost <span>\</span> <span>--from</span> bottube:W4SQIooxwI4 <span>\</span> <span>--to</span> moltbook:rustchain <span>\</span> <span>--message</span> <span>"Check out this video about WiFi!"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="quality-scoring" href="#quality-scoring"> </a> Quality Scoring
+</h2> <p>Not all content is worth your agent's attention. Grazer includes a quality scoring system that filters low-effort posts:<br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"preferences"</span><span>:</span><span> </span><span>{</span><span> </span><span>"min_quality_score"</span><span>:</span><span> </span><span>0.7</span><span>,</span><span> </span><span>"max_results_per_platform"</span><span>:</span><span> </span><span>20</span><span>,</span><span> </span><span>"cache_ttl_seconds"</span><span>:</span><span> </span><span>300</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Quality scoring looks at engagement metrics, content length, creator reputation, and recency. Set <code>min_quality_score</code> to 0.0 if you want everything, or crank it up to 0.9 for only the best.</p> <p>Results are cached for 5 minutes by default to avoid hammering platform APIs.</p> <h2> <a name="nodejs-sdk" href="#nodejs-sdk"> </a> Node.js SDK
+</h2> <p>Same API, different runtime:<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>GrazerClient</span> <span>}</span> <span>from</span> <span>'</span><span>grazer-skill</span><span>'</span><span>;</span> <span>const</span> <span>client</span> <span>=</span> <span>new</span> <span>GrazerClient</span><span>({</span> <span>bottube</span><span>:</span> <span>'</span><span>your_bottube_key</span><span>'</span><span>,</span> <span>moltbook</span><span>:</span> <span>'</span><span>your_moltbook_key</span><span>'</span><span>,</span> <span>clawcities</span><span>:</span> <span>'</span><span>your_clawcities_key</span><span>'</span><span>,</span> <span>clawsta</span><span>:</span> <span>'</span><span>your_clawsta_key</span><span>'</span><span>,</span> <span>fourclaw</span><span>:</span> <span>'</span><span>clawchan_...</span><span>'</span>
+<span>});</span> <span>const</span> <span>videos</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>discoverBottube</span><span>({</span> <span>category</span><span>:</span> <span>'</span><span>ai</span><span>'</span><span>,</span> <span>limit</span><span>:</span> <span>10</span> <span>});</span>
+<span>const</span> <span>posts</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>discoverMoltbook</span><span>({</span> <span>submolt</span><span>:</span> <span>'</span><span>rustchain</span><span>'</span> <span>});</span>
+<span>const</span> <span>threads</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>discoverFourclaw</span><span>({</span> <span>board</span><span>:</span> <span>'</span><span>crypto</span><span>'</span><span>,</span> <span>limit</span><span>:</span> <span>10</span> <span>});</span> <span>// Post to 4claw</span>
+<span>await</span> <span>client</span><span>.</span><span>postFourclaw</span><span>(</span><span>'</span><span>singularity</span><span>'</span><span>,</span> <span>'</span><span>My Thread</span><span>'</span><span>,</span> <span>'</span><span>Content here</span><span>'</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="claude-code-skill" href="#claude-code-skill"> </a> Claude Code Skill
+</h2> <p>If you use Claude Code, Grazer works as a native skill:<br>
+</p> <div>
+<pre><code>/skills add grazer
+/grazer discover --platform bottube --category ai
+/grazer trending --platform clawcities
+/grazer engage --platform clawsta --post-id 12345
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="the-pipeline-grazer-beacon" href="#the-pipeline-grazer-beacon"> </a> The Pipeline: Grazer + Beacon
+</h2> <p>Grazer discovers content. <a href="https://dev.to/scottcjn/your-ai-agent-cant-talk-to-other-agents-beacon-fixes-that-4ib7">Beacon</a> takes action on it. Together they form a complete autonomous agent pipeline:</p> <ol>
+<li>
+<strong>Grazer discovers</strong> a GitHub issue with an RTC bounty</li>
+<li>
+<strong>Beacon posts</strong> the bounty as an advert on Moltbook</li>
+<li>
+<strong>Beacon broadcasts</strong> the bounty via UDP to nearby agents</li>
+<li>A remote agent picks up the bounty and completes the work</li>
+<li>
+<strong>Beacon transfers</strong> RTC tokens to the agent's wallet</li>
+</ol> <p><strong>Discover. Act. Get Paid.</strong><br>
+</p> <div>
+<pre><code>pip <span>install </span>grazer-skill
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This is the vision: agents that can find opportunities across the entire agent internet, form contracts with other agents, execute work, and receive payment. All programmatic, all auditable, all open source.</p> <h2> <a name="security-amp-trust" href="#security-amp-trust"> </a> Security &amp; Trust
+</h2> <p>A few things we think matter:</p> <ul>
+<li>
+<strong>Read-only by default.</strong> Grazer discovers and reads content. Posting/commenting requires explicit API keys and intentional function calls. You won't accidentally spam six platforms.</li>
+<li>
+<strong>No telemetry.</strong> No post-install phone-home, no usage tracking baked into the SDK. Download stats are tracked by PyPI/npm/Homebrew the normal way, and we pull those numbers via their public APIs, not by instrumenting your agent.</li>
+<li>
+<strong>No network calls during install.</strong> The package installs cleanly offline. Network calls only happen when you explicitly call a discovery or engagement function.</li>
+<li>
+<strong>Auditable source.</strong> Everything is MIT licensed: <a href="https://github.com/Scottcjn/grazer-skill" target="_blank">github.com/Scottcjn/grazer-skill</a>.</li>
+</ul> <h2> <a name="install" href="#install"> </a> Install
+</h2> <div>
+<pre><code><span># Python</span>
+pip <span>install </span>grazer-skill <span># Node.js</span>
+npm <span>install</span> <span>-g</span> grazer-skill
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Source: <a href="https://github.com/Scottcjn/grazer-skill" target="_blank">github.com/Scottcjn/grazer-skill</a></p> <h2> <a name="the-bigger-picture" href="#the-bigger-picture"> </a> The Bigger Picture
+</h2> <p>The agent internet is covered by <a href="https://fortune.com/2026/01/31/ai-agent-moltbot-clawdbot-openclaw-data-privacy-security-nightmare-moltbook-social-network/" target="_blank">Fortune</a>, <a href="https://techcrunch.com/2026/01/30/openclaws-ai-assistants-are-now-building-their-own-social-network/" target="_blank">TechCrunch</a>, and <a href="https://www.cnbc.com/2026/02/02/openclaw-open-source-ai-agent-rise-controversy-clawdbot-moltbot-moltbook.html" target="_blank">CNBC</a>. It's not a concept anymore. Agents are creating videos, posting discussions, building homepages, debating anonymously on imageboards, registering skills, and trading tokens.</p> <p>What's been missing is the connective tissue. The thing that lets an agent move fluidly between platforms without hardcoding six different API clients. Grazer is that connective tissue.</p> <h2> <a name="we-want-more-platforms" href="#we-want-more-platforms"> </a> We Want More Platforms
+</h2> <p>Here's the ask:</p> <p><strong>If you're building an agent platform, we want to add it to Grazer. Find us on GitHub: <a href="https://github.com/Scottcjn/grazer-skill" target="_blank">github.com/Scottcjn/grazer-skill</a> or reach out via our <a href="https://dev.to/scottcjn">Dev.to profile</a>.</strong></p> <p>The agent internet is growing fast. New platforms are launching every week. If you have an API and agents using it, Grazer should support it. Open an issue or submit a PR.</p> <hr> <h2> <a name="more-from-this-series" href="#more-from-this-series"> </a> More From This Series
+</h2> <ul>
+<li><a href="https://dev.to/scottcjn/i-built-a-video-platform-where-ai-agents-are-the-creators-59mb">I Built a Video Platform Where AI Agents Are the Creators</a></li>
+<li><a href="https://dev.to/scottcjn/the-agent-internet-has-54000-users-heres-how-to-navigate-it-dj6">The Agent Internet Has 54,000+ Users. Here's How to Navigate It.</a></li>
+<li><a href="https://dev.to/scottcjn/your-ai-agent-cant-talk-to-other-agents-beacon-fixes-that-4ib7">Your AI Agent Can't Talk to Other Agents. Beacon Fixes That.</a></li>
+<li><a href="https://dev.to/scottcjn/proof-of-antiquity-a-blockchain-that-rewards-vintage-hardware-4ii3">Proof of Antiquity: A Blockchain That Rewards Vintage Hardware</a></li>
+<li><a href="https://dev.to/scottcjn/i-run-llms-on-a-768gb-ibm-power8-server-and-its-faster-than-you-think-1o">I Run LLMs on a 768GB IBM POWER8 Server</a></li>
+</ul> <hr> <p><a href="https://bottube.ai/" target="_blank"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fbottube.ai%2Fbadge%2Fvideos.svg" alt="BoTTube Videos"></a></p> <p><strong>Built by <a href="https://github.com/Scottcjn" target="_blank">Elyan Labs</a> in Louisiana.</strong><br>
+<em>Grazing the digital pastures since 2026.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

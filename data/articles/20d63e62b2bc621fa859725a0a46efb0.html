@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Cisco SD-WAN : une faille critique exploitée par des hackers étatiques depuis 2022</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Cisco SD-WAN : une faille critique exploitée par des hackers étatiques depuis 2022</h1>
+  <div class="metadata">
+    Source: GNT | Date: 2/27/2026 5:30:01 AM | <a href="https://www.generation-nt.com/actualites/cisco-sd-wan-faille-securite-cyberattaque-cve-2026-20127-2071552" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><article> <p> Publié le <time> 27 février 2026 à 06:30</time> par <a href="https://www.generation-nt.com/informations/a-propos/mathieu.m"><span>Mathieu M.</span></a> </p> <section> <div> <p><span>Une vulnérabilité critique de type zero-day dans les solutions Cisco SD-WAN est activement exploitée par des acteurs sophistiqués, probablement depuis trois ans. La CISA et les agences internationales ont émis une alerte d'urgence, forçant les administrateurs à patcher immédiatement pour contrer des intrusions profondes et persistantes dans les réseaux d'entreprises et gouvernementaux.</span></p> </div> <a href="https://img.generation-nt.com/cisco-sd-wan_0640038401720819.webp"> <div> <img src="https://img.generation-nt.com/cisco-sd-wan_0298000001720819.jpg" alt="Cisco SD-WAN"> </div> </a> </section> <div><p>Une faille de sécurité majeure, identifiée sous le code <strong>CVE-2026-20127</strong> et affublée d'un score de gravité maximal de <strong>10/10</strong>, frappe en plein cœur les solutions <strong>SD-WAN de Cisco</strong>. Le vrai problème ? Des groupes de hackers, suspectés d'être des <strong>acteurs étatiques</strong> et regroupés sous le nom de code UAT-8616, exploitent cette brèche non pas depuis hier, mais potentiellement depuis<strong> trois longues années</strong>.</p>
+<p>Leur objectif : s'infiltrer et s'installer durablement dans des réseaux critiques. L'alerte est désormais mondiale, et le temps presse.</p>
+<h2>Comment les attaquants parviennent-ils à prendre le contrôle ?</h2>
+<p>Le mode opératoire des attaquants est d'une efficacité redoutable. Ils combinent deux failles en un scénario d'attaque en deux temps. D'abord, ils exploitent la vulnérabilité <strong>zero-day</strong> <strong>CVE-2026-2012</strong>7 pour contourner purement et simplement les mécanismes d'authentification. C'est la porte d'entrée. Une fois à l'intérieur, ils enchaînent avec une faille plus ancienne, <strong>CVE-2022-20775</strong>, pour élever leurs privilèges et obtenir un <strong>accès root</strong>.</p>
+<p><a href="https://img.generation-nt.com/hacker_01661121.webp" target="_blank" rel="noopener noreferrer"> <img src="https://img.generation-nt.com/hacker_050002d001661121.jpg" alt="hacker"> </a></p>
+<p>Cette stratégie leur permet non seulement de pénétrer le système, mais aussi de s'y installer de manière persistante, en prenant le contrôle total des équipements <a href="https://www.generation-nt.com/actualites/cisco-salt-typhoon-cyberespionnage-hacking-chine-2067750"><strong>Cisco SD-WAN</strong></a>. Le point de départ de cette catastrophe est un défaut dans le mécanisme d'authentification qui permet à un pirate de se faire passer pour un utilisateur interne avec des droits très élevés, le tout sans avoir à fournir le moindre mot de passe.</p>
+<h2>Quelle est l'ampleur de la menace et la réaction des autorités ?</h2>
+<p>La menace est critique, et la riposte s'organise à l'échelle internationale. La CISA, l'agence américaine de cybersécurité, a dégainé une <strong>directive d'urgence</strong> (ED 26-03), forçant les agences fédérales à appliquer les correctifs sans délai. C'est un signal fort, réservé aux menaces jugées les plus graves pour la <a href="https://www.generation-nt.com/actualites/meta-justice-enfants-securite-reseaux-sociaux-2070530"><strong>sécurité réseau</strong></a> nationale.</p>
+<p><a href="https://img.generation-nt.com/hacker_01702171.webp" target="_blank" rel="noopener noreferrer"> <img src="https://img.generation-nt.com/hacker_05b0033001702171.jpg" alt="hacker"> </a></p>
+<p>L'initiative est soutenue par un front uni d'agences alliées : la NSA américaine, mais aussi les centres de cybersécurité d'Australie (ACSC), du Canada, de la Nouvelle-Zélande et du Royaume-Uni. Cette <strong>mobilisation internationale</strong> prouve que des infrastructures critiques sont visées partout dans le monde. L'enjeu est clair : empêcher des acteurs malveillants de conserver un contrôle à long terme sur des réseaux vitaux.</p>
+<h2>Quelles sont les mesures à prendre en urgence ?</h2>
+<p>L'heure n'est plus à la délibération. Les autorités et Cisco pressent les administrateurs d'agir immédiatement. Ce type de <a href="https://www.generation-nt.com/actualites/cyberattaque-france-hacker-apt28-russie-condamnation-france-2057563"><strong>Cyberattaques</strong></a> sophistiquées exige une réponse structurée. Des correctifs ont été publiés, y compris pour certaines versions qui n'étaient plus officiellement supportées, ce qui témoigne de la <strong>gravité de la situation</strong>. Les agences recommandent une approche en cinq points : inventorier tous les systèmes, sécuriser les preuves (logs, snapshots), appliquer les mises à jour, chercher activement des traces de compromission et mettre en œuvre le guide de durcissement de Cisco.</p>
+<p><a href="https://img.generation-nt.com/hacker-1_01702170.webp" target="_blank" rel="noopener noreferrer"> <img src="https://img.generation-nt.com/hacker-1_05b0033001702170.jpg" alt="hacker 1"> </a></p>
+<p>Il ne suffit pas de colmater la brèche. L'enjeu est de partir du principe qu'une intrusion a peut-être déjà eu lieu. L'ACSC australienne a d'ailleurs publié un <strong>"Threat Hunt Guide"</strong> pour aider les équipes techniques dans cette chasse à l'intrus. Pour les versions les plus anciennes, une mise à niveau complète est la seule solution viable, car aucun patch ne sera fourni. L'attentisme n'est plus une option.</p>
+<h3><strong>Foire Aux Questions (FAQ)</strong></h3> <h3><strong>Quels sont les produits Cisco précisément concernés ?</strong></h3> <p>Les équipements au cœur de l'alerte sont le Cisco Catalyst SD-WAN Controller et le Catalyst SD-WAN Manager. D'autres vulnérabilités ont également été signalées sur des gammes comme les Nexus 3600 et 9000 ou NX-OS, mais la menace active et la directive d'urgence se concentrent sur l'écosystème SD-WAN.</p>
+<h3><strong>La faille CVE-2026-20127 est-elle difficile à exploiter ?</strong></h3> <p>Avec un score de dangerosité CVSS de<strong> 10 sur 10</strong>, elle est considérée comme extrêmement critique. Son exploitation ne requiert aucune authentification préalable, ce qui la rend particulièrement dangereuse pour tout système exposé sur internet. Un attaquant ayant un accès réseau à l'équipement peut l'utiliser sans effort particulier.</p>
+<h3><strong>Comment savoir si mon système a déjà été compromis ?</strong></h3> <p>Cisco et les agences de cybersécurité comme la CISA et l'ACSC ont publié des "Indicateurs de Compromission" (IoC) et des guides de recherche de menaces. Les administrateurs doivent impérativement analyser les journaux système, les configurations et les snapshots à la recherche de toute activité suspecte correspondant aux signatures fournies dans ces documents.</p> </div> <div> <p>Journaliste GNT spécialisé imprimantes 3D et nouvelles technologies</p> </div> <p>Cette page peut contenir des liens affiliés. Si vous achetez un produit depuis ces liens, le site marchand nous reversera une commission sans que cela n'impacte en rien le montant de votre achat. <a href="https://www.generation-nt.com/informations/conditions-utilisation#affiliation">En savoir plus</a>.</p> </article></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

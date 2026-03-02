@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>pq</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>pq</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/22/2026 1:03:54 PM | <a href="https://github.com/ricwo/pq" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <p><a href="https://pypi.org/project/python-pq/"><img alt="PyPI" src="https://img.shields.io/pypi/v/python-pq"></a>
+<a href="https://ricwo.github.io/pq/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+<a href="https://www.python.org/downloads/"><img alt="Python 3.13+" src="https://img.shields.io/badge/python-3.13+-blue.svg"></a></p>
+<p>Postgres-backed job queue for Python with fork-based worker isolation.</p>
+<p>If you already run Postgres, you don't need Redis or RabbitMQ to process background jobs. pq uses <code>SELECT ... FOR UPDATE SKIP LOCKED</code> to turn your existing database into a reliable task queue. Enqueue in the same transaction as your writes, and process tasks in isolated child processes that can't crash your worker.</p>
+<div><pre><span></span><code><span>from</span><span> </span><span>pq</span><span> </span><span>import</span> <span>PQ</span> <span>pq</span> <span>=</span> <span>PQ</span><span>(</span><span>"postgresql://localhost/mydb"</span><span>)</span>
+<span>pq</span><span>.</span><span>run_db_migrations</span><span>()</span> <span>def</span><span> </span><span>send_email</span><span>(</span><span>to</span><span>:</span> <span>str</span><span>,</span> <span>subject</span><span>:</span> <span>str</span><span>)</span> <span>-&gt;</span> <span>None</span><span>:</span> <span>...</span> <span>pq</span><span>.</span><span>enqueue</span><span>(</span><span>send_email</span><span>,</span> <span>to</span><span>=</span><span>"user@example.com"</span><span>,</span> <span>subject</span><span>=</span><span>"Hello"</span><span>)</span>
+<span>pq</span><span>.</span><span>run_worker</span><span>()</span>
+</code></pre></div>
+<h2>Install</h2>
+<div><pre><span></span><code>uv<span> </span>add<span> </span>python-pq
+</code></pre></div>
+<p>Or with pip:</p>
+<div><pre><span></span><code>pip<span> </span>install<span> </span>python-pq
+</code></pre></div>
+<p>Requires PostgreSQL and Python 3.13+.</p>
+<h2>Features</h2>
+<ul>
+<li><strong>Fork isolation</strong> -- Each task runs in a forked child process. If it OOMs, segfaults, or crashes, the worker keeps running.</li>
+<li><strong>No extra infrastructure</strong> -- Uses your existing Postgres. No broker to deploy, monitor, or lose data.</li>
+<li><strong>Transactional enqueueing</strong> -- Enqueue tasks in the same database transaction as your writes. If the transaction rolls back, the task is never created.</li>
+<li><strong>Periodic tasks</strong> -- Schedule with intervals (<code>timedelta</code>) or cron expressions. Control overlap, pause/resume without deleting.</li>
+<li><strong>Priority queues</strong> -- Five levels from <code>BATCH</code> (0) to <code>CRITICAL</code> (100). Dedicate workers to specific priority tiers.</li>
+<li><strong>Lifecycle hooks</strong> -- Run <code>pre_execute</code> / <code>post_execute</code> code in the forked child, safe for fork-unsafe libraries like OpenTelemetry.</li>
+</ul>
+<h2>Tasks</h2>
+<h3>Enqueueing</h3>
+<p>Pass any importable function with its arguments:</p>
+<div><pre><span></span><code><span>def</span><span> </span><span>greet</span><span>(</span><span>name</span><span>:</span> <span>str</span><span>)</span> <span>-&gt;</span> <span>None</span><span>:</span> <span>print</span><span>(</span><span>f</span><span>"Hello, </span><span>{</span><span>name</span><span>}</span><span>!"</span><span>)</span> <span>pq</span><span>.</span><span>enqueue</span><span>(</span><span>greet</span><span>,</span> <span>name</span><span>=</span><span>"World"</span><span>)</span>
+<span>pq</span><span>.</span><span>enqueue</span><span>(</span><span>greet</span><span>,</span> <span>"World"</span><span>)</span> <span># Positional args work too</span>
+</code></pre></div>
+<h3>Delayed execution</h3>
+<div><pre><span></span><code><span>from</span><span> </span><span>datetime</span><span> </span><span>import</span> <span>datetime</span><span>,</span> <span>timedelta</span><span>,</span> <span>UTC</span> <span>pq</span><span>.</span><span>enqueue</span><span>(</span><span>greet</span><span>,</span> <span>"World"</span><span>,</span> <span>run_at</span><span>=</span><span>datetime</span><span>.</span><span>now</span><span>(</span><span>UTC</span><span>)</span> <span>+</span> <span>timedelta</span><span>(</span><span>hours</span><span>=</span><span>1</span><span>))</span>
+</code></pre></div>
+<h3>Priority</h3>
+<div><pre><span></span><code><span>from</span><span> </span><span>pq</span><span> </span><span>import</span> <span>Priority</span> <span>pq</span><span>.</span><span>enqueue</span><span>(</span><span>task</span><span>,</span> <span>priority</span><span>=</span><span>Priority</span><span>.</span><span>CRITICAL</span><span>)</span> <span># 100 - runs first</span>
+<span>pq</span><span>.</span><span>enqueue</span><span>(</span><span>task</span><span>,</span> <span>priority</span><span>=</span><span>Priority</span><span>.</span><span>HIGH</span><span>)</span> <span># 75</span>
+<span>pq</span><span>.</span><span>enqueue</span><span>(</span><span>task</span><span>,</span> <span>priority</span><span>=</span><span>Priority</span><span>.</span><span>NORMAL</span><span>)</span> <span># 50 (default)</span>
+<span>pq</span><span>.</span><span>enqueue</span><span>(</span><span>task</span><span>,</span> <span>priority</span><span>=</span><span>Priority</span><span>.</span><span>LOW</span><span>)</span> <span># 25</span>
+<span>pq</span><span>.</span><span>enqueue</span><span>(</span><span>task</span><span>,</span> <span>priority</span><span>=</span><span>Priority</span><span>.</span><span>BATCH</span><span>)</span> <span># 0 - runs last</span>
+</code></pre></div>
+<h3>Cancellation</h3>
+<div><pre><span></span><code><span>task_id</span> <span>=</span> <span>pq</span><span>.</span><span>enqueue</span><span>(</span><span>my_task</span><span>)</span>
+<span>pq</span><span>.</span><span>cancel</span><span>(</span><span>task_id</span><span>)</span>
+</code></pre></div>
+<h3>Client IDs</h3>
+<p>Use <code>client_id</code> for idempotency and lookups:</p>
+<div><pre><span></span><code><span>pq</span><span>.</span><span>enqueue</span><span>(</span><span>process_order</span><span>,</span> <span>order_id</span><span>=</span><span>123</span><span>,</span> <span>client_id</span><span>=</span><span>"order-123"</span><span>)</span> <span>task</span> <span>=</span> <span>pq</span><span>.</span><span>get_task_by_client_id</span><span>(</span><span>"order-123"</span><span>)</span>
+<span># Duplicate client_id raises IntegrityError</span>
+</code></pre></div>
+<h3>Upsert</h3>
+<p>Insert or update a task by <code>client_id</code>. Useful for debouncing -- only the latest version runs:</p>
+<div><pre><span></span><code><span>pq</span><span>.</span><span>upsert</span><span>(</span><span>send_email</span><span>,</span> <span>to</span><span>=</span><span>"a@b.com"</span><span>,</span> <span>client_id</span><span>=</span><span>"welcome-email"</span><span>)</span> <span># Second call updates the existing task (resets to PENDING)</span>
+<span>pq</span><span>.</span><span>upsert</span><span>(</span><span>send_email</span><span>,</span> <span>to</span><span>=</span><span>"new@b.com"</span><span>,</span> <span>client_id</span><span>=</span><span>"welcome-email"</span><span>)</span>
+</code></pre></div>
+<h2>Periodic Tasks</h2>
+<h3>Intervals</h3>
+<div><pre><span></span><code><span>from</span><span> </span><span>datetime</span><span> </span><span>import</span> <span>timedelta</span> <span>def</span><span> </span><span>heartbeat</span><span>()</span> <span>-&gt;</span> <span>None</span><span>:</span> <span>print</span><span>(</span><span>"alive"</span><span>)</span> <span>pq</span><span>.</span><span>schedule</span><span>(</span><span>heartbeat</span><span>,</span> <span>run_every</span><span>=</span><span>timedelta</span><span>(</span><span>minutes</span><span>=</span><span>5</span><span>))</span>
+</code></pre></div>
+<h3>Cron expressions</h3>
+<div><pre><span></span><code><span>pq</span><span>.</span><span>schedule</span><span>(</span><span>weekly_report</span><span>,</span> <span>cron</span><span>=</span><span>"0 9 * * 1"</span><span>)</span> <span># Monday 9am</span>
+</code></pre></div>
+<h3>With arguments</h3>
+<div><pre><span></span><code><span>pq</span><span>.</span><span>schedule</span><span>(</span><span>report</span><span>,</span> <span>run_every</span><span>=</span><span>timedelta</span><span>(</span><span>hours</span><span>=</span><span>1</span><span>),</span> <span>report_type</span><span>=</span><span>"hourly"</span><span>)</span>
+</code></pre></div>
+<h3>Overlap control</h3>
+<p>By default, periodic tasks don't overlap -- if an instance is still running when the next tick arrives, the tick is skipped:</p>
+<div><pre><span></span><code><span># Default: max_concurrent=1, no overlap</span>
+<span>pq</span><span>.</span><span>schedule</span><span>(</span><span>sync_inventory</span><span>,</span> <span>run_every</span><span>=</span><span>timedelta</span><span>(</span><span>minutes</span><span>=</span><span>5</span><span>))</span> <span># Allow unlimited concurrency</span>
+<span>pq</span><span>.</span><span>schedule</span><span>(</span><span>fast_task</span><span>,</span> <span>run_every</span><span>=</span><span>timedelta</span><span>(</span><span>seconds</span><span>=</span><span>30</span><span>),</span> <span>max_concurrent</span><span>=</span><span>None</span><span>)</span>
+</code></pre></div>
+<h3>Pausing and resuming</h3>
+<div><pre><span></span><code><span># Pause -- task stays in the database but won't run</span>
+<span>pq</span><span>.</span><span>schedule</span><span>(</span><span>sync_inventory</span><span>,</span> <span>run_every</span><span>=</span><span>timedelta</span><span>(</span><span>minutes</span><span>=</span><span>5</span><span>),</span> <span>active</span><span>=</span><span>False</span><span>)</span> <span># Resume</span>
+<span>pq</span><span>.</span><span>schedule</span><span>(</span><span>sync_inventory</span><span>,</span> <span>run_every</span><span>=</span><span>timedelta</span><span>(</span><span>minutes</span><span>=</span><span>5</span><span>),</span> <span>active</span><span>=</span><span>True</span><span>)</span>
+</code></pre></div>
+<h3>Multiple schedules</h3>
+<p>Use <code>key</code> to register the same function with different configurations:</p>
+<div><pre><span></span><code><span>pq</span><span>.</span><span>schedule</span><span>(</span><span>sync_data</span><span>,</span> <span>run_every</span><span>=</span><span>timedelta</span><span>(</span><span>hours</span><span>=</span><span>1</span><span>),</span> <span>key</span><span>=</span><span>"us"</span><span>,</span> <span>region</span><span>=</span><span>"us"</span><span>)</span>
+<span>pq</span><span>.</span><span>schedule</span><span>(</span><span>sync_data</span><span>,</span> <span>run_every</span><span>=</span><span>timedelta</span><span>(</span><span>hours</span><span>=</span><span>2</span><span>),</span> <span>key</span><span>=</span><span>"eu"</span><span>,</span> <span>region</span><span>=</span><span>"eu"</span><span>)</span> <span>pq</span><span>.</span><span>unschedule</span><span>(</span><span>sync_data</span><span>,</span> <span>key</span><span>=</span><span>"us"</span><span>)</span>
+</code></pre></div>
+<h2>Workers</h2>
+<h3>Running</h3>
+<div><pre><span></span><code><span>pq</span><span>.</span><span>run_worker</span><span>(</span><span>poll_interval</span><span>=</span><span>1.0</span><span>)</span> <span># Run forever</span>
+<span>processed</span> <span>=</span> <span>pq</span><span>.</span><span>run_worker_once</span><span>()</span> <span># Process single task (for testing)</span>
+</code></pre></div>
+<h3>Timeout</h3>
+<p>Kill tasks that run too long:</p>
+<div><pre><span></span><code><span>pq</span><span>.</span><span>run_worker</span><span>(</span><span>max_runtime</span><span>=</span><span>300</span><span>)</span> <span># 5 minute timeout per task</span>
+</code></pre></div>
+<h3>Priority-dedicated workers</h3>
+<p>Reserve workers for high-priority tasks:</p>
+<div><pre><span></span><code><span>from</span><span> </span><span>pq</span><span> </span><span>import</span> <span>Priority</span> <span># This worker only processes CRITICAL and HIGH</span>
+<span>pq</span><span>.</span><span>run_worker</span><span>(</span><span>priorities</span><span>=</span><span>{</span><span>Priority</span><span>.</span><span>CRITICAL</span><span>,</span> <span>Priority</span><span>.</span><span>HIGH</span><span>})</span>
+</code></pre></div>
+<h3>Lifecycle hooks</h3>
+<p>Run code before/after each task in the forked child process:</p>
+<div><pre><span></span><code><span>from</span><span> </span><span>pq</span><span> </span><span>import</span> <span>PQ</span><span>,</span> <span>Task</span><span>,</span> <span>Periodic</span> <span>def</span><span> </span><span>setup_tracing</span><span>(</span><span>task</span><span>:</span> <span>Task</span> <span>|</span> <span>Periodic</span><span>)</span> <span>-&gt;</span> <span>None</span><span>:</span> <span>print</span><span>(</span><span>f</span><span>"Starting: </span><span>{</span><span>task</span><span>.</span><span>name</span><span>}</span><span>"</span><span>)</span> <span>def</span><span> </span><span>flush_tracing</span><span>(</span><span>task</span><span>:</span> <span>Task</span> <span>|</span> <span>Periodic</span><span>,</span> <span>error</span><span>:</span> <span>Exception</span> <span>|</span> <span>None</span><span>)</span> <span>-&gt;</span> <span>None</span><span>:</span> <span>if</span> <span>error</span><span>:</span> <span>print</span><span>(</span><span>f</span><span>"Failed: </span><span>{</span><span>error</span><span>}</span><span>"</span><span>)</span> <span>pq</span><span>.</span><span>run_worker</span><span>(</span><span>pre_execute</span><span>=</span><span>setup_tracing</span><span>,</span> <span>post_execute</span><span>=</span><span>flush_tracing</span><span>)</span>
+</code></pre></div>
+<p>Hooks run in the forked child, making them safe for fork-unsafe resources like OpenTelemetry.</p>
+<h2>Logging</h2>
+<p>pq uses <a href="https://github.com/Delgan/loguru">loguru</a> internally and does <strong>not</strong> configure the logger on import. This means it inherits whatever logging setup the host application has already established.</p>
+<p>If you are running pq as a standalone script and want pq's default log format, call <code>configure_logging()</code> explicitly during startup:</p>
+<div><pre><span></span><code><span>from</span><span> </span><span>pq.logging</span><span> </span><span>import</span> <span>configure_logging</span> <span>configure_logging</span><span>()</span>
+</code></pre></div>
+<h2>Serialization</h2>
+<p>Arguments are serialized automatically:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSON-serializable (str, int, list, dict)</td>
+<td>JSON</td>
+</tr>
+<tr>
+<td>Pydantic models</td>
+<td><code>model_dump()</code> → JSON</td>
+</tr>
+<tr>
+<td>Custom objects, lambdas</td>
+<td>dill (pickle)</td>
+</tr>
+</tbody>
+</table>
+<h2>Async tasks</h2>
+<p>Async handlers work without any changes:</p>
+<div><pre><span></span><code><span>import</span><span> </span><span>httpx</span> <span>async</span> <span>def</span><span> </span><span>fetch</span><span>(</span><span>url</span><span>:</span> <span>str</span><span>)</span> <span>-&gt;</span> <span>None</span><span>:</span> <span>async</span> <span>with</span> <span>httpx</span><span>.</span><span>AsyncClient</span><span>()</span> <span>as</span> <span>client</span><span>:</span> <span>response</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>get</span><span>(</span><span>url</span><span>)</span> <span>print</span><span>(</span><span>response</span><span>.</span><span>status_code</span><span>)</span> <span>pq</span><span>.</span><span>enqueue</span><span>(</span><span>fetch</span><span>,</span> <span>"https://example.com"</span><span>)</span>
+</code></pre></div>
+<h2>Error handling</h2>
+<p>Failed tasks are marked with status <code>FAILED</code> and the error is stored:</p>
+<div><pre><span></span><code><span>for</span> <span>task</span> <span>in</span> <span>pq</span><span>.</span><span>list_failed</span><span>():</span> <span>print</span><span>(</span><span>f</span><span>"</span><span>{</span><span>task</span><span>.</span><span>name</span><span>}</span><span>: </span><span>{</span><span>task</span><span>.</span><span>error</span><span>}</span><span>"</span><span>)</span> <span>pq</span><span>.</span><span>clear_failed</span><span>(</span><span>before</span><span>=</span><span>datetime</span><span>.</span><span>now</span><span>(</span><span>UTC</span><span>)</span> <span>-</span> <span>timedelta</span><span>(</span><span>days</span><span>=</span><span>7</span><span>))</span>
+<span>pq</span><span>.</span><span>clear_completed</span><span>(</span><span>before</span><span>=</span><span>datetime</span><span>.</span><span>now</span><span>(</span><span>UTC</span><span>)</span> <span>-</span> <span>timedelta</span><span>(</span><span>days</span><span>=</span><span>1</span><span>))</span>
+</code></pre></div>
+<h2>How it works</h2>
+<p>Every task runs in a forked child process:</p>
+<div><pre><span></span><code>Worker (parent) | +-- fork() -&gt; Child executes task -&gt; exits | (OOM/crash only affects child) | +-- Continues processing next task
+</code></pre></div>
+<p>The parent monitors via <code>os.wait4()</code> and detects timeout, OOM (SIGKILL), and signal-based crashes. The child process exits after every task, giving you true memory isolation.</p>
+<p>Multiple workers can run in parallel. Tasks are claimed atomically with PostgreSQL's <code>FOR UPDATE SKIP LOCKED</code>, so each task runs exactly once.</p>
+<h2>Alternatives</h2>
+<p>There are good options in this space. pq makes different tradeoffs:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Broker</th>
+<th>Isolation</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>pq</strong></td>
+<td>Postgres</td>
+<td>Fork (process-per-task)</td>
+<td>Teams already on Postgres who want fewer moving parts</td>
+</tr>
+<tr>
+<td><strong>Celery</strong></td>
+<td>Redis/RabbitMQ</td>
+<td>Per-worker process</td>
+<td>Large-scale, multi-language, established teams</td>
+</tr>
+<tr>
+<td><strong>RQ</strong></td>
+<td>Redis</td>
+<td>Per-worker process</td>
+<td>Simple Redis-based queues</td>
+</tr>
+<tr>
+<td><strong>Dramatiq</strong></td>
+<td>Redis/RabbitMQ</td>
+<td>Per-worker process/thread</td>
+<td>Celery alternative with better defaults</td>
+</tr>
+<tr>
+<td><strong>ARQ</strong></td>
+<td>Redis</td>
+<td>Async (single process)</td>
+<td>Async-first applications</td>
+</tr>
+<tr>
+<td><strong>Procrastinate</strong></td>
+<td>Postgres</td>
+<td>Async (single process)</td>
+<td>Async-first, Postgres-backed, Django integration</td>
+</tr>
+</tbody>
+</table>
+<p>pq is a good fit when:
+- You already run Postgres and don't want to add Redis or RabbitMQ
+- You want transactional enqueueing (enqueue atomically with your writes)
+- You need true process isolation per task (OOM/crash safety)
+- You want periodic tasks with overlap control, pause/resume, and cron</p>
+<p>pq is not the right choice when:
+- You need very high throughput (10,000+ jobs/second) -- use a dedicated broker
+- You need cross-language workers -- Celery or a dedicated queue service is better
+- You need complex workflows (DAGs, chaining, fan-out) -- look at Temporal or Prefect</p>
+<h2>Documentation</h2>
+<p>Full docs at <a href="https://ricwo.github.io/pq/">ricwo.github.io/pq</a>.</p>
+<h2>Development</h2>
+<div><pre><span></span><code>make<span> </span>dev<span> </span><span># Start Postgres</span>
+uv<span> </span>run<span> </span>pytest<span> </span><span># Run tests</span>
+</code></pre></div>
+<h2>License</h2>
+<p>MIT</p> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

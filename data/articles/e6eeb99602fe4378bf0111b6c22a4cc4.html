@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ai - Camera License Plate registration automation</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Ai - Camera License Plate registration automation</h1>
+  <div class="metadata">
+    Source: Home Assistant Community Forum (Latest) | Date: 2/27/2026 8:32:51 AM | <a href="https://community.home-assistant.io/t/ai-camera-license-plate-registration-automation/991077" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>Please find my version of a Ai camera license plate blueprint automation below. It utilizes your camera to set an action if a known license plate is registered.</p>
+<p>I use it to open my front gate when someone known is registered and my gate is closed.</p>
+<p>The link for the blueprint import:<br>
+<a href="https://github.com/Antonsen85/Home-Assistant/blob/main/Ai-Licence_plate.yaml" rel="noopener nofollow ugc">https://github.com/Antonsen85/Home-Assistant/blob/45d19d93ecb7cc92bb257b9bf9f1610e9e2a9b9c/Ai-Licence_plate.yaml</a></p>
+<p><a href="https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FAntonsen85%2FHome-Assistant%2Fblob%2Fmain%2FAi-Licence_plate.yaml"><img src="https://community-assets.home-assistant.io/original/4X/1/a/1/1a129e306bc6a339cf8a2b9222553254a1909b6f.svg" alt="Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled." data-base62-sha1="3IEiMyDuriGlhMmaFV0iSnXlL0b" width="592" height="40"></a></p>
+<p>Please note that you will need to create a text helper to log the register of the license plate from the Ai task:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://community-assets.home-assistant.io/original/4X/7/a/6/7a6cab8f59a0c6fbed9576729e845324bfcb53ae.png" data-download-href="/uploads/short-url/ht14IE17hUhbN9J8L72nYODQrhk.png?dl=1" title="image"><img src="https://community-assets.home-assistant.io/original/4X/7/a/6/7a6cab8f59a0c6fbed9576729e845324bfcb53ae.png" alt="image" data-base62-sha1="ht14IE17hUhbN9J8L72nYODQrhk" width="690" height="410" data-dominant-color="090C14"></a></div><p></p>
+<p>You also need to add an integration for the ai task like Google Gemini:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://community-assets.home-assistant.io/original/4X/5/a/e/5aed18cfe112774252f21e20d80d021e88ade13f.png" data-download-href="/uploads/short-url/cYmWUo3XghG2sY2jTQDBMl0j63B.png?dl=1" title="image"><img src="https://community-assets.home-assistant.io/optimized/4X/5/a/e/5aed18cfe112774252f21e20d80d021e88ade13f_2_690x176.png" alt="image" data-base62-sha1="cYmWUo3XghG2sY2jTQDBMl0j63B" width="690" height="176" srcset="https://community-assets.home-assistant.io/optimized/4X/5/a/e/5aed18cfe112774252f21e20d80d021e88ade13f_2_690x176.png, https://community-assets.home-assistant.io/original/4X/5/a/e/5aed18cfe112774252f21e20d80d021e88ade13f.png 1.5x, https://community-assets.home-assistant.io/original/4X/5/a/e/5aed18cfe112774252f21e20d80d021e88ade13f.png 2x" data-dominant-color="0F1119"></a></div><p></p> <p><small>3 posts - 2 participants</small></p> <p><a href="https://community.home-assistant.io/t/ai-camera-license-plate-registration-automation/991077">Read full topic</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

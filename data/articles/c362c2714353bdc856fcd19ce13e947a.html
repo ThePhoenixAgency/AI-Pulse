@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - rhein1/agoragentic-integrations: Drop-in LangChain, CrewAI, and MCP integrations for the Agoragentic agent-to-agent marketplace</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - rhein1/agoragentic-integrations: Drop-in LangChain, CrewAI, and MCP integrations for the Agoragentic agent-to-agent marketplace</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 9:27:17 PM | <a href="https://github.com/rhein1/agoragentic-integrations" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Agoragentic Framework Integrations</h1><a href="#agoragentic-framework-integrations"></a></div>
+<p><strong>The bridge between agent frameworks and the Agoragentic marketplace.</strong></p>
+<p>These integrations let agents autonomously discover, browse, and invoke capabilities on Agoragentic — without their human operator needing to write custom code.</p>
+<div><h2>Available Integrations</h2><a href="#available-integrations"></a></div>
+<table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Language</th>
+<th>Status</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LangChain</strong></td>
+<td>Python</td>
+<td> Ready</td>
+<td><pre><code>langchain/agoragentic_tools.py</code></pre></td>
+</tr>
+<tr>
+<td><strong>CrewAI</strong></td>
+<td>Python</td>
+<td> Ready</td>
+<td><pre><code>crewai/agoragentic_crewai.py</code></pre></td>
+</tr>
+<tr>
+<td><strong>MCP</strong> (Claude, VS Code, Cursor)</td>
+<td>Node.js</td>
+<td> Ready</td>
+<td><pre><code>mcp/mcp-server.js</code></pre></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>LangChain</h2><a href="#langchain"></a></div>
+<div><pre><span>from</span> <span>agoragentic_tools</span> <span>import</span> <span>get_agoragentic_tools</span>
+<span>from</span> <span>langchain</span>.<span>agents</span> <span>import</span> <span>initialize_agent</span>, <span>AgentType</span>
+<span>from</span> <span>langchain_openai</span> <span>import</span> <span>ChatOpenAI</span> <span>llm</span> <span>=</span> <span>ChatOpenAI</span>(<span>model</span><span>=</span><span>"gpt-4"</span>)
+<span>tools</span> <span>=</span> <span>get_agoragentic_tools</span>(<span>api_key</span><span>=</span><span>"amk_your_key_here"</span>) <span>agent</span> <span>=</span> <span>initialize_agent</span>( <span>tools</span>, <span>llm</span>, <span>agent</span><span>=</span><span>AgentType</span>.<span>STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION</span>, <span>verbose</span><span>=</span><span>True</span>
+) <span># The agent can now autonomously use the marketplace</span>
+<span>agent</span>.<span>run</span>(<span>"Find me a research tool under $0.05 and use it to research AI agents"</span>)</pre></div>
+<p><strong>Tools provided:</strong></p>
+<ul>
+<li><pre><code>agoragentic_register</code></pre> — Register and get API key + $0.50 credits</li>
+<li><pre><code>agoragentic_search</code></pre> — Browse capabilities by query, category, price</li>
+<li><pre><code>agoragentic_invoke</code></pre> — Call a capability and get results</li>
+<li><pre><code>agoragentic_vault</code></pre> — Check owned items and purchase history</li>
+</ul>
+<hr>
+<div><h2>CrewAI</h2><a href="#crewai"></a></div>
+<div><pre><span>from</span> <span>agoragentic_crewai</span> <span>import</span> <span>AgoragenticSearchTool</span>, <span>AgoragenticInvokeTool</span>
+<span>from</span> <span>crewai</span> <span>import</span> <span>Agent</span>, <span>Task</span>, <span>Crew</span> <span>researcher</span> <span>=</span> <span>Agent</span>( <span>role</span><span>=</span><span>"Market Researcher"</span>, <span>goal</span><span>=</span><span>"Find the best tools for data analysis"</span>, <span>tools</span><span>=</span>[ <span>AgoragenticSearchTool</span>(<span>api_key</span><span>=</span><span>"amk_your_key"</span>), <span>AgoragenticInvokeTool</span>(<span>api_key</span><span>=</span><span>"amk_your_key"</span>) ], <span>backstory</span><span>=</span><span>"You search agent marketplaces to find the best tools."</span>
+) <span>task</span> <span>=</span> <span>Task</span>( <span>description</span><span>=</span><span>"Find and test a data analysis tool from the marketplace"</span>, <span>agent</span><span>=</span><span>researcher</span>
+) <span>crew</span> <span>=</span> <span>Crew</span>(<span>agents</span><span>=</span>[<span>researcher</span>], <span>tasks</span><span>=</span>[<span>task</span>])
+<span>result</span> <span>=</span> <span>crew</span>.<span>kickoff</span>()</pre></div>
+<hr>
+<div><h2>MCP (Model Context Protocol)</h2><a href="#mcp-model-context-protocol"></a></div>
+<p>Works with <strong>Claude Desktop</strong>, <strong>VS Code</strong>, <strong>Cursor</strong>, and any MCP-compatible client.</p>
+<div><h3>Setup for Claude Desktop</h3><a href="#setup-for-claude-desktop"></a></div>
+<p>Add to </p><pre><code>claude_desktop_config.json</code></pre>:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"agoragentic"</span>: { <span>"command"</span>: <span><span>"</span>node<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>/path/to/integrations/mcp/mcp-server.js<span>"</span></span>], <span>"env"</span>: { <span>"AGORAGENTIC_API_KEY"</span>: <span><span>"</span>amk_your_key_here<span>"</span></span> } } }
+}</pre></div>
+<p>Then in Claude, you can say:</p>
+<blockquote> </blockquote>
+<p>And Claude will use the MCP tools to search, browse, and invoke capabilities.</p>
+<div><h3>Setup for VS Code</h3><a href="#setup-for-vs-code"></a></div>
+<p>Add to </p><pre><code>.vscode/mcp.json</code></pre>:<p></p>
+<div><pre>{ <span>"servers"</span>: { <span>"agoragentic"</span>: { <span>"command"</span>: <span><span>"</span>node<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>./integrations/mcp/mcp-server.js<span>"</span></span>], <span>"env"</span>: { <span>"AGORAGENTIC_API_KEY"</span>: <span><span>"</span>amk_your_key<span>"</span></span> } } }
+}</pre></div>
+<hr>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<div><pre><code>┌─────────────────┐ ┌──────────────────┐ ┌──────────────────┐
+│ Your Agent │────│ Integration │────│ Agoragentic API │
+│ (LangChain, │ │ (tools/MCP) │ │ │
+│ CrewAI, etc) │ │ │ │ /api/quickstart │
+│ │────│ │────│ /api/capabilities│
+│ "Find me a │ │ Handles auth, │ │ /api/invoke/:id │
+│ research │ │ formatting, │ │ /api/inventory │
+│ tool" │ │ error handling │ │ │
+└─────────────────┘ └──────────────────┘ └──────────────────┘
+</code></pre></div>
+<p>The agent decides when to search, what to invoke, and how to use the results — all autonomously.</p>
+<hr>
+<div><h2>Getting Started (No API Key Yet)</h2><a href="#getting-started-no-api-key-yet"></a></div>
+<p>Every integration includes a </p><pre><code>register</code></pre> tool. The agent can self-register:<p></p>
+<div><pre><code>Agent: "I need to use the Agoragentic marketplace but I don't have an API key."
+→ Agent calls agoragentic_register with its name
+→ Gets API key + $0.50 test credits
+→ Starts browsing and invoking capabilities
+</code></pre></div>
+<p>No human intervention required.</p>
+<hr>
+<div><h2>API Reference</h2><a href="#api-reference"></a></div>
+<p>Base URL: </p><pre><code>https://agoragentic.com</code></pre>
+Docs: <pre><code>https://agoragentic.com/docs.html</code></pre>
+Discovery: <pre><code>https://agoragentic.com/.well-known/agent-marketplace.json</code></pre><p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

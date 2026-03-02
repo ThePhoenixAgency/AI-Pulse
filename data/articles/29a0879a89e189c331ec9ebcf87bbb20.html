@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - asamassekou10/ship-safe: Drop-in security configs, checklists, and anti-hallucination scripts for Next.js, Supabase, and AI wrappers. Ship fast, stay safe.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - asamassekou10/ship-safe: Drop-in security configs, checklists, and anti-hallucination scripts for Next.js, Supabase, and AI wrappers. Ship fast, stay safe.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 4:42:09 AM | <a href="https://github.com/asamassekou10/ship-safe" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p> <a target="_blank" href="/asamassekou10/ship-safe/blob/main/.github/assets/logo%20ship%20safe.png"><img src="/asamassekou10/ship-safe/raw/main/.github/assets/logo%20ship%20safe.png" alt="Ship Safe Logo"></a>
+</p>
+<p><strong>Don't let vibe coding leak your API keys.</strong></p>
+<p> <a href="https://www.npmjs.com/package/ship-safe"><img src="https://camo.githubusercontent.com/f73153d70ecc7b5c4af2e884ffdac6e7810d208666f8506b34afe9f53565167b/68747470733a2f2f62616467652e667572792e696f2f6a732f736869702d736166652e737667" alt="npm version"></a> <a href="https://www.npmjs.com/package/ship-safe"><img src="https://camo.githubusercontent.com/a38c8aa30eeb27f5317b04de8f91f409205b522f9acab6826d85f3bfb45c581b/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f646d2f736869702d736166652e737667" alt="npm downloads"></a> <a href="https://github.com/asamassekou10/ship-safe/actions/workflows/ci.yml"><img src="https://github.com/asamassekou10/ship-safe/actions/workflows/ci.yml/badge.svg" alt="CI"></a> <a href="https://nodejs.org"><img src="https://camo.githubusercontent.com/c4d7f384a3624bb0f0e6b3e1846a33b9374c3a66a87b443018f404e93ae59dec/68747470733a2f2f696d672e736869656c64732e696f2f6e6f64652f762f736869702d73616665" alt="Node.js version"></a> <a href="https://opensource.org/licenses/MIT"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT"></a>
+</p>
+<hr>
+<p>You're shipping fast. You're using AI to write code. You're one </p><pre><code>git push</code></pre> away from exposing your database credentials to the world.<p></p>
+<p><strong>Ship Safe</strong> is a security toolkit for indie hackers and vibe coders who want to secure their MVP in 5 minutes, not 5 days.</p>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><pre><span><span>#</span> Scan for leaked secrets (no install required!)</span>
+npx ship-safe scan <span>.</span> <span><span>#</span> Auto-generate .env.example from found secrets</span>
+npx ship-safe fix <span><span>#</span> Block git push if secrets are found</span>
+npx ship-safe guard <span><span>#</span> Run the launch-day security checklist</span>
+npx ship-safe checklist <span><span>#</span> Add security configs to your project</span>
+npx ship-safe init</pre></div>
+<p>That's it. Five commands to secure your MVP.</p>
+<p><a target="_blank" href="/asamassekou10/ship-safe/blob/main/.github/assets/ship%20safe%20terminal.jpg"><img src="/asamassekou10/ship-safe/raw/main/.github/assets/ship%20safe%20terminal.jpg" alt="ship-safe terminal demo"></a></p>
+<div><h3>Let AI Do It For You</h3><a href="#let-ai-do-it-for-you"></a></div>
+<p>Copy this prompt to your AI coding assistant:</p>
+<div><pre><code>Run "npx ship-safe scan ." on my project and fix any secrets you find.
+Then run "npx ship-safe init" to add security configs.
+Explain what you're doing as you go.
+</code></pre></div>
+<p><a href="/asamassekou10/ship-safe/blob/main/AI_SECURITY_PROMPT.md">More AI prompts for specific frameworks</a></p>
+<hr>
+<div><h2>Why This Exists</h2><a href="#why-this-exists"></a></div>
+<p>Vibe coding is powerful. You can build a SaaS in a weekend. But speed creates blind spots:</p>
+<ul>
+<li>AI-generated code often hardcodes secrets</li>
+<li>Default configs ship with debug mode enabled</li>
+<li>"I'll fix it later" becomes "I got hacked"</li>
+</ul>
+<p>This repo is your co-pilot for security. Copy, paste, ship safely.</p>
+<hr>
+<div><h2>CLI Commands</h2><a href="#cli-commands"></a></div>
+<div><h3><pre><code>npx ship-safe scan [path]</code></pre></h3><a href="#npx-ship-safe-scan-path"></a></div>
+<p>Scans your codebase for leaked secrets: API keys, passwords, private keys, database URLs.</p>
+<div><pre><span><span>#</span> Scan current directory</span>
+npx ship-safe scan <span>.</span> <span><span>#</span> Scan a specific folder</span>
+npx ship-safe scan ./src <span><span>#</span> Get JSON output (for CI pipelines)</span>
+npx ship-safe scan <span>.</span> --json <span><span>#</span> Verbose mode (show files being scanned)</span>
+npx ship-safe scan <span>.</span> -v</pre></div>
+<p><strong>Exit codes:</strong> Returns </p><pre><code>1</code></pre> if secrets found (useful for CI), <pre><code>0</code></pre> if clean.<p></p>
+<p><strong>Flags:</strong></p>
+<ul>
+<li><pre><code>--json</code></pre> — structured JSON output for CI pipelines</li>
+<li><pre><code>--sarif</code></pre> — SARIF format for GitHub Code Scanning</li>
+<li><pre><code>--include-tests</code></pre> — also scan test/spec/fixture files (excluded by default)</li>
+<li><pre><code>-v</code></pre> — verbose mode</li>
+</ul>
+<p><strong>Suppress false positives:</strong></p>
+<div><pre>const apiKey = <span><span>'</span>example-key<span>'</span></span><span>;</span> // ship-safe-ignore</pre></div>
+<p>Or exclude paths with </p><pre><code>.ship-safeignore</code></pre> (gitignore syntax).<p></p>
+<p><strong>Custom patterns</strong> — create </p><pre><code>.ship-safe.json</code></pre> in your project root:<p></p>
+<div><pre>{ <span>"patterns"</span>: [ { <span>"name"</span>: <span><span>"</span>My Internal API Key<span>"</span></span>, <span>"pattern"</span>: <span><span>"</span>MYAPP_[A-Z0-9]{32}<span>"</span></span>, <span>"severity"</span>: <span><span>"</span>high<span>"</span></span>, <span>"description"</span>: <span><span>"</span>Internal key for myapp services.<span>"</span></span> } ]
+}</pre></div>
+<p><strong>Detects 50+ secret patterns:</strong></p>
+<ul>
+<li><strong>AI/ML:</strong> OpenAI, Anthropic, Google AI, Cohere, Replicate, Hugging Face</li>
+<li><strong>Auth:</strong> Clerk, Auth0, Supabase Auth</li>
+<li><strong>Cloud:</strong> AWS, Google Cloud, Azure</li>
+<li><strong>Database:</strong> Supabase, PlanetScale, Neon, MongoDB, PostgreSQL, MySQL</li>
+<li><strong>Payment:</strong> Stripe, PayPal</li>
+<li><strong>Messaging:</strong> Twilio, SendGrid, Resend</li>
+<li><strong>And more:</strong> GitHub tokens, private keys, JWTs, generic secrets</li>
+</ul>
+<hr>
+<div><h3><pre><code>npx ship-safe checklist</code></pre></h3><a href="#npx-ship-safe-checklist"></a></div>
+<p>Interactive 10-point security checklist for launch day.</p>
+<div><pre><span><span>#</span> Interactive mode (prompts for each item)</span>
+npx ship-safe checklist <span><span>#</span> Print checklist without prompts</span>
+npx ship-safe checklist --no-interactive</pre></div>
+<p>Covers: exposed .git folders, debug mode, RLS policies, hardcoded keys, HTTPS, security headers, rate limiting, and more.</p>
+<hr>
+<div><h3><pre><code>npx ship-safe init</code></pre></h3><a href="#npx-ship-safe-init"></a></div>
+<p>Initialize security configs in your project.</p>
+<div><pre><span><span>#</span> Add all security configs</span>
+npx ship-safe init <span><span>#</span> Only add .gitignore patterns</span>
+npx ship-safe init --gitignore <span><span>#</span> Only add security headers config</span>
+npx ship-safe init --headers <span><span>#</span> Force overwrite existing files</span>
+npx ship-safe init -f</pre></div>
+<p><strong>What it copies:</strong></p>
+<ul>
+<li><pre><code>.gitignore</code></pre> - Patterns to prevent committing secrets</li>
+<li><pre><code>security-headers.config.js</code></pre> - Drop-in Next.js security headers</li>
+</ul>
+<hr>
+<div><h3><pre><code>npx ship-safe fix</code></pre></h3><a href="#npx-ship-safe-fix"></a></div>
+<p>Scan for secrets and auto-generate a </p><pre><code>.env.example</code></pre> file.<p></p>
+<div><pre><span><span>#</span> Scan and generate .env.example</span>
+npx ship-safe fix <span><span>#</span> Preview what would be generated without writing it</span>
+npx ship-safe fix --dry-run</pre></div>
+<hr>
+<div><h3><pre><code>npx ship-safe guard</code></pre></h3><a href="#npx-ship-safe-guard"></a></div>
+<p>Install a git hook that blocks pushes if secrets are found. Works with or without Husky.</p>
+<div><pre><span><span>#</span> Install pre-push hook (runs scan before every git push)</span>
+npx ship-safe guard <span><span>#</span> Install pre-commit hook instead</span>
+npx ship-safe guard --pre-commit <span><span>#</span> Remove installed hooks</span>
+npx ship-safe guard remove</pre></div>
+<p><strong>Suppress false positives:</strong></p>
+<ul>
+<li>Add <pre><code># ship-safe-ignore</code></pre> as a comment on a line to skip it</li>
+<li>Create <pre><code>.ship-safeignore</code></pre> (gitignore syntax) to exclude paths</li>
+</ul>
+<hr>
+<div><h3><pre><code>npx ship-safe mcp</code></pre></h3><a href="#npx-ship-safe-mcp"></a></div>
+<p>Start ship-safe as an MCP server so AI editors can call it directly.</p>
+<p><strong>Setup (Claude Desktop)</strong> — add to </p><pre><code>claude_desktop_config.json</code></pre>:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"ship-safe"</span>: { <span>"command"</span>: <span><span>"</span>npx<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>ship-safe<span>"</span></span>, <span><span>"</span>mcp<span>"</span></span>] } }
+}</pre></div>
+<p>Works with Claude Desktop, Cursor, Windsurf, Zed, and any MCP-compatible editor.</p>
+<p><strong>Available tools:</strong></p>
+<ul>
+<li><pre><code>scan_secrets</code></pre> — scan a directory for leaked secrets</li>
+<li><pre><code>get_checklist</code></pre> — return the security checklist as structured data</li>
+<li><pre><code>analyze_file</code></pre> — analyze a single file for issues</li>
+</ul>
+<hr>
+<div><h2>What's Inside</h2><a href="#whats-inside"></a></div>
+<div><h3><a href="/asamassekou10/ship-safe/blob/main/checklists"><pre><code>/checklists</code></pre></a></h3><a href="#checklists"></a></div>
+<p><strong>Manual security audits you can do in 5 minutes.</strong></p>
+<ul>
+<li><a href="/asamassekou10/ship-safe/blob/main/checklists/launch-day.md">Launch Day Checklist</a> - 10 things to check before you go live</li>
+</ul>
+<div><h3><a href="/asamassekou10/ship-safe/blob/main/configs"><pre><code>/configs</code></pre></a></h3><a href="#configs"></a></div>
+<p><strong>Secure defaults for popular stacks. Drop-in ready.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Stack</th>
+<th>Files</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Next.js</strong></td>
+<td><a href="/asamassekou10/ship-safe/blob/main/configs/nextjs-security-headers.js">Security Headers</a> - CSP, X-Frame-Options, HSTS</td>
+</tr>
+<tr>
+<td><strong>Supabase</strong></td>
+<td><a href="/asamassekou10/ship-safe/blob/main/configs/supabase/rls-templates.sql">RLS Templates</a> | <a href="/asamassekou10/ship-safe/blob/main/configs/supabase/security-checklist.md">Security Checklist</a> | <a href="/asamassekou10/ship-safe/blob/main/configs/supabase/secure-client.ts">Secure Client</a></td>
+</tr>
+<tr>
+<td><strong>Firebase</strong></td>
+<td><a href="/asamassekou10/ship-safe/blob/main/configs/firebase/firestore-rules.txt">Firestore Rules</a> | <a href="/asamassekou10/ship-safe/blob/main/configs/firebase/storage-rules.txt">Storage Rules</a> | <a href="/asamassekou10/ship-safe/blob/main/configs/firebase/security-checklist.md">Security Checklist</a></td>
+</tr>
+</tbody>
+</table>
+<div><h3><a href="/asamassekou10/ship-safe/blob/main/snippets"><pre><code>/snippets</code></pre></a></h3><a href="#snippets"></a></div>
+<p><strong>Copy-paste code blocks for common security patterns.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Files</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rate Limiting</strong></td>
+<td><a href="/asamassekou10/ship-safe/blob/main/snippets/rate-limiting/upstash-ratelimit.ts">Upstash Redis</a> | <a href="/asamassekou10/ship-safe/blob/main/snippets/rate-limiting/nextjs-middleware.ts">Next.js Middleware</a></td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td><a href="/asamassekou10/ship-safe/blob/main/snippets/auth/jwt-checklist.md">JWT Security Checklist</a></td>
+</tr>
+<tr>
+<td><strong>API Security</strong></td>
+<td><a href="/asamassekou10/ship-safe/blob/main/snippets/api-security/cors-config.ts">CORS Config</a> | <a href="/asamassekou10/ship-safe/blob/main/snippets/api-security/input-validation.ts">Input Validation</a> | <a href="/asamassekou10/ship-safe/blob/main/snippets/api-security/api-security-checklist.md">API Checklist</a></td>
+</tr>
+</tbody>
+</table>
+<div><h3><a href="/asamassekou10/ship-safe/blob/main/ai-defense"><pre><code>/ai-defense</code></pre></a></h3><a href="#ai-defense"></a></div>
+<p><strong>Protect your AI features from abuse and cost explosions.</strong></p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/asamassekou10/ship-safe/blob/main/ai-defense/llm-security-checklist.md">LLM Security Checklist</a></td>
+<td>Based on OWASP LLM Top 10 - prompt injection, data protection, scope control</td>
+</tr>
+<tr>
+<td><a href="/asamassekou10/ship-safe/blob/main/ai-defense/prompt-injection-patterns.js">Prompt Injection Patterns</a></td>
+<td>Regex patterns to detect 25+ injection attempts</td>
+</tr>
+<tr>
+<td><a href="/asamassekou10/ship-safe/blob/main/ai-defense/cost-protection.md">Cost Protection Guide</a></td>
+<td>Prevent $50k surprise bills - rate limits, budget caps, circuit breakers</td>
+</tr>
+<tr>
+<td><a href="/asamassekou10/ship-safe/blob/main/ai-defense/system-prompt-armor.md">System Prompt Armor</a></td>
+<td>Template for hardened system prompts</td>
+</tr>
+</tbody>
+</table>
+<div><h3><a href="/asamassekou10/ship-safe/blob/main/scripts"><pre><code>/scripts</code></pre></a></h3><a href="#scripts"></a></div>
+<p><strong>Automated scanning tools. Run them in CI or locally.</strong></p>
+<ul>
+<li><a href="/asamassekou10/ship-safe/blob/main/scripts/scan_secrets.py">Secret Scanner</a> - Python version of the secret scanner</li>
+</ul>
+<hr>
+<div><h2>AI/LLM Security</h2><a href="#aillm-security"></a></div>
+<p>Building with AI? Don't let it bankrupt you or get hijacked.</p>
+<div><h3>Quick Setup</h3><a href="#quick-setup"></a></div>
+<div><pre><span>import</span> <span>{</span> <span>containsInjectionAttempt</span> <span>}</span> <span>from</span> <span>'./ai-defense/prompt-injection-patterns'</span><span>;</span> <span>async</span> <span>function</span> <span>handleChat</span><span>(</span><span>userInput</span>: <span>string</span><span>)</span> <span>{</span> <span>// 1. Check for injection attempts</span> <span>const</span> <span>{</span> detected <span>}</span> <span>=</span> <span>containsInjectionAttempt</span><span>(</span><span>userInput</span><span>)</span><span>;</span> <span>if</span> <span>(</span><span>detected</span><span>)</span> <span>{</span> <span>return</span> <span>"I can't process that request."</span><span>;</span> <span>}</span> <span>// 2. Rate limit per user</span> <span>const</span> <span>{</span> success <span>}</span> <span>=</span> <span>await</span> <span>ratelimit</span><span>.</span><span>limit</span><span>(</span><span>userId</span><span>)</span><span>;</span> <span>if</span> <span>(</span><span>!</span><span>success</span><span>)</span> <span>{</span> <span>return</span> <span>"Too many requests. Please slow down."</span><span>;</span> <span>}</span> <span>// 3. Check budget before calling</span> <span>await</span> <span>checkUserBudget</span><span>(</span><span>userId</span><span>,</span> <span>estimatedCost</span><span>)</span><span>;</span> <span>// 4. Make the API call with token limits</span> <span>const</span> <span>response</span> <span>=</span> <span>await</span> <span>openai</span><span>.</span><span>chat</span><span>.</span><span>completions</span><span>.</span><span>create</span><span>(</span><span>{</span> <span>model</span>: <span>'gpt-4'</span><span>,</span> messages<span>,</span> <span>max_tokens</span>: <span>500</span><span>,</span> <span>// Hard cap</span> <span>}</span><span>)</span><span>;</span> <span>return</span> <span>response</span><span>;</span>
+<span>}</span></pre></div>
+<div><h3>Cost Protection Layers</h3><a href="#cost-protection-layers"></a></div>
+<ol>
+<li><strong>Token limits</strong> - Cap input/output per request</li>
+<li><strong>Rate limits</strong> - Cap requests per user (10/min)</li>
+<li><strong>Budget caps</strong> - Daily ($1) and monthly ($10) per user</li>
+<li><strong>Circuit breaker</strong> - Disable AI when global budget hit</li>
+<li><strong>Provider limits</strong> - Set hard limits in OpenAI/Anthropic dashboard</li>
+</ol>
+<p><a href="/asamassekou10/ship-safe/blob/main/ai-defense/cost-protection.md">Full cost protection guide →</a></p>
+<hr>
+<div><h2>Database Security</h2><a href="#database-security"></a></div>
+<div><h3>Supabase RLS Templates</h3><a href="#supabase-rls-templates"></a></div>
+<div><pre><span><span>--</span> Users can only see their own data</span>
+CREATE POLICY <span><span>"</span>Users own their data<span>"</span></span> <span>ON</span> items FOR ALL USING (<span>auth</span>.<span>uid</span>() <span>=</span> user_id); <span><span>--</span> Read-only public data</span>
+CREATE POLICY <span><span>"</span>Public read access<span>"</span></span> <span>ON</span> public_items FOR <span>SELECT</span> USING (true);</pre></div>
+<p><a href="/asamassekou10/ship-safe/blob/main/configs/supabase/rls-templates.sql">6 more RLS patterns →</a></p>
+<div><h3>Firebase Security Rules</h3><a href="#firebase-security-rules"></a></div>
+<div><pre><span>// Users can only access their own documents</span>
+<span>match</span> <span>/</span><span>users</span><span>/</span><span>{</span>userId<span>}</span> <span>{</span> allow <span>read</span><span>,</span> <span>write</span>: <span>if</span> <span>request</span><span>.</span><span>auth</span> <span>!=</span> <span>null</span> <span>&amp;&amp;</span> <span>request</span><span>.</span><span>auth</span><span>.</span><span>uid</span> <span>==</span> <span>userId</span><span>;</span>
+<span>}</span></pre></div>
+<p><a href="/asamassekou10/ship-safe/blob/main/configs/firebase/firestore-rules.txt">Full Firestore rules template →</a></p>
+<hr>
+<div><h2>API Security</h2><a href="#api-security"></a></div>
+<div><h3>CORS (Don't use <pre><code>*</code></pre> in production)</h3><a href="#cors-dont-use--in-production"></a></div>
+<div><pre><span>const</span> <span>ALLOWED_ORIGINS</span> <span>=</span> <span>[</span> <span>'https://yourapp.com'</span><span>,</span> <span>'https://www.yourapp.com'</span><span>,</span>
+<span>]</span><span>;</span> <span>// Only allow specific origins</span>
+<span>if</span> <span>(</span><span>origin</span> <span>&amp;&amp;</span> <span>ALLOWED_ORIGINS</span><span>.</span><span>includes</span><span>(</span><span>origin</span><span>)</span><span>)</span> <span>{</span> <span>headers</span><span>[</span><span>'Access-Control-Allow-Origin'</span><span>]</span> <span>=</span> <span>origin</span><span>;</span>
+<span>}</span></pre></div>
+<p><a href="/asamassekou10/ship-safe/blob/main/snippets/api-security/cors-config.ts">CORS configs for Next.js, Express, Fastify, Hono →</a></p>
+<div><h3>Input Validation (Zod)</h3><a href="#input-validation-zod"></a></div>
+<div><pre><span>const</span> <span>createUserSchema</span> <span>=</span> <span>z</span><span>.</span><span>object</span><span>(</span><span>{</span> <span>email</span>: <span>z</span><span>.</span><span>string</span><span>(</span><span>)</span><span>.</span><span>email</span><span>(</span><span>)</span><span>.</span><span>max</span><span>(</span><span>255</span><span>)</span><span>,</span> <span>password</span>: <span>z</span><span>.</span><span>string</span><span>(</span><span>)</span><span>.</span><span>min</span><span>(</span><span>8</span><span>)</span><span>.</span><span>max</span><span>(</span><span>128</span><span>)</span><span>,</span>
+<span>}</span><span>)</span><span>;</span> <span>const</span> <span>result</span> <span>=</span> <span>createUserSchema</span><span>.</span><span>safeParse</span><span>(</span><span>body</span><span>)</span><span>;</span>
+<span>if</span> <span>(</span><span>!</span><span>result</span><span>.</span><span>success</span><span>)</span> <span>{</span> <span>return</span> <span>Response</span><span>.</span><span>json</span><span>(</span><span>{</span> <span>error</span>: <span>result</span><span>.</span><span>error</span><span>.</span><span>issues</span> <span>}</span><span>,</span> <span>{</span> <span>status</span>: <span>400</span> <span>}</span><span>)</span><span>;</span>
+<span>}</span></pre></div>
+<p><a href="/asamassekou10/ship-safe/blob/main/snippets/api-security/input-validation.ts">Full validation patterns →</a></p>
+<hr>
+<div><h2>CI/CD Integration</h2><a href="#cicd-integration"></a></div>
+<p>Add to your GitHub Actions workflow:</p>
+<div><pre><span><span>#</span> .github/workflows/security.yml</span>
+<span>name</span>: <span>Security Scan</span> <span>on</span>: <span>[push, pull_request]</span> <span>jobs</span>: <span>scan-secrets</span>: <span>runs-on</span>: <span>ubuntu-latest</span> <span>steps</span>: - <span>uses</span>: <span>actions/checkout@v4</span> - <span>name</span>: <span>Scan for secrets</span> <span>run</span>: <span>npx ship-safe scan . --json</span></pre></div>
+<p>The scan exits with code </p><pre><code>1</code></pre> if secrets are found, failing your build.<p></p>
+<hr>
+<div><h2>The 5-Minute Security Checklist</h2><a href="#the-5-minute-security-checklist"></a></div>
+<ol>
+<li> Run <pre><code>npx ship-safe scan .</code></pre> on your project</li>
+<li> Run <pre><code>npx ship-safe init</code></pre> to add security configs</li>
+<li> Add security headers to your Next.js config</li>
+<li> Run <pre><code>npx ship-safe checklist</code></pre> before launching</li>
+<li> If using AI features, implement <a href="/asamassekou10/ship-safe/blob/main/ai-defense/cost-protection.md">cost protection</a></li>
+<li> If using Supabase, check the <a href="/asamassekou10/ship-safe/blob/main/configs/supabase/security-checklist.md">RLS checklist</a></li>
+<li> If using Firebase, check the <a href="/asamassekou10/ship-safe/blob/main/configs/firebase/security-checklist.md">Firebase checklist</a></li>
+</ol>
+<hr>
+<div><h2>Philosophy</h2><a href="#philosophy"></a></div>
+<ul>
+<li><strong>Low friction</strong> - If it takes more than 5 minutes, people won't do it</li>
+<li><strong>Educational</strong> - Every config has comments explaining <em>why</em></li>
+<li><strong>Modular</strong> - Take what you need, ignore the rest</li>
+<li><strong>Copy-paste friendly</strong> - No complex setup, just grab and go</li>
+</ul>
+<hr>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Found a security pattern that saved your app? Share it!</p>
+<ol>
+<li>Fork the repo</li>
+<li>Add your checklist, config, or script</li>
+<li>Include educational comments explaining <em>why</em> it matters</li>
+<li>Open a PR</li>
+</ol>
+<p>See <a href="/asamassekou10/ship-safe/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for guidelines.</p>
+<hr>
+<div><h2>Security Standards Reference</h2><a href="#security-standards-reference"></a></div>
+<p>This toolkit is based on:</p>
+<ul>
+<li><a href="https://owasp.org/Top10/">OWASP Top 10 Web 2025</a></li>
+<li><a href="https://owasp.org/www-project-mobile-top-10/">OWASP Top 10 Mobile 2024</a></li>
+<li><a href="https://genai.owasp.org/llm-top-10/">OWASP LLM Top 10 2025</a></li>
+<li><a href="https://owasp.org/API-Security/">OWASP API Security Top 10 2023</a></li>
+</ul>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT - Use it, share it, secure your stuff.</p>
+<hr>
+<div><h2>Star History</h2><a href="#star-history"></a></div>
+<p><a href="https://star-history.com/#asamassekou10/ship-safe&amp;Date"><img src="https://camo.githubusercontent.com/75c73d3147b8b8b9bcdb870853ceebf0b07eb554b8fa99079194bd56b44bc58a/68747470733a2f2f6170692e737461722d686973746f72792e636f6d2f7376673f7265706f733d6173616d617373656b6f7531302f736869702d7361666526747970653d44617465" alt="Star History Chart"></a></p>
+<hr>
+<p><strong>Remember: Security isn't about being paranoid. It's about being prepared.</strong></p>
+<p>Ship fast. Ship safe.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

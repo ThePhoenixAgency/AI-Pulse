@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built an Open-Source Endpoint Manager Because Enterprise Tools Are Ridiculous</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built an Open-Source Endpoint Manager Because Enterprise Tools Are Ridiculous</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 9:43:52 PM | <a href="https://dev.to/benedikt_schackenberg_5c0/i-built-an-open-source-endpoint-manager-because-enterprise-tools-are-ridiculous-23m2" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Let me start with a confession: I have too many computers.</p> <p>Three Windows Servers, a handful of workstations, a Linux box running... stuff. You know how it goes. One day you're setting up a home lab, next thing you know you're managing a small fleet and wondering which machine has that outdated Log4j version.</p> <p>Commercial endpoint management tools exist, sure. But have you seen the pricing? We're talking $10-15 per endpoint per month for the basics. PDQ Deploy wants $500/year minimum. Microsoft Intune is... well, it's Microsoft. And don't get me started on trying to self-host SCCM.</p> <p>So I did what any reasonable developer does when faced with expensive software: I built my own.</p> <h2> <a name="meet-octofleet" href="#meet-octofleet"> </a> Meet Octofleet
+</h2> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fl0hiyklouc08jgfypt9c.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fl0hiyklouc08jgfypt9c.png" alt="Octofleet Dashboard"></a></p> <p><a href="https://github.com/BenediktSchackenberg/octofleet" target="_blank">Octofleet</a> is an open-source endpoint management platform. It's what I wished existed when I started looking for solutions: simple to deploy, actually useful, and doesn't require a finance department to approve.</p> <p><strong>Fair warning:</strong> This is still beta software. I'm running it in production on my own infrastructure (because I like living dangerously), but you should probably test it properly before deploying to anything critical. That said — it works, and it's been stable for weeks now.</p> <h2> <a name="what-it-actually-does" href="#what-it-actually-does"> </a> What It Actually Does
+</h2> <p>The feature list grew organically from "things I kept needing":</p> <p><strong>Hardware &amp; Software Inventory</strong><br>
+Every machine reports what's installed, what hardware it has, disk space, network adapters — the works. I got tired of RDP-ing into servers just to check if something was installed.</p> <p><strong>Remote Job Execution</strong><br>
+Run PowerShell scripts or Bash commands across your fleet. Schedule them, target specific groups, see results in real-time. No more "let me just quickly SSH into 5 machines to check something."</p> <p><strong>Vulnerability Scanning</strong><br>
+This one surprised me how useful it became. The platform pulls CVE data from NVD and cross-references it with installed software. Suddenly I knew exactly which machines had vulnerable versions of stuff I'd forgotten I installed.</p> <p><strong>Auto-Remediation</strong><br>
+Found a vulnerability? Octofleet can automatically update the affected software via winget or Chocolatey. It's like having a very focused, very patient sysadmin working 24/7.</p> <p><strong>Performance Monitoring</strong><br>
+Real-time CPU, RAM, and disk metrics with a "hotspot matrix" that shows you at a glance which machines need attention. No more guessing which server is struggling.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fdvwk3sk6nojjjgb2rtv9.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fdvwk3sk6nojjjgb2rtv9.png" alt="Performance Hotspot Matrix"></a></p>
+<h2> <a name="the-architecture-for-those-who-care" href="#the-architecture-for-those-who-care"> </a> The Architecture (For Those Who Care)
+</h2> <p>I went with a stack I actually enjoy working with:<br>
+</p> <div>
+<pre><code>┌─────────────────────────────────────────────┐
+│ Frontend (Next.js) │
+│ React + Tailwind CSS │
+└──────────────────┬──────────────────────────┘ │ REST API
+┌──────────────────▼──────────────────────────┐
+│ Backend (FastAPI) │
+│ Python 3.12 │
+└──────────────────┬──────────────────────────┘ │
+┌──────────────────▼──────────────────────────┐
+│ PostgreSQL 16 + TimescaleDB │
+│ (for time-series metrics) │
+└─────────────────────────────────────────────┘ ┌─────────┐ ┌─────────┐ ┌─────────┐ │ Windows │ │ Windows │ │ Linux │ │ Agent │ │ Agent │ │ Agent │ │ (.NET 8)│ │ (.NET 8)│ │ (Bash) │ └────┬────┘ └────┬────┘ └────┬────┘ └────────────┴────────────┘ HTTPS polling
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Why TimescaleDB? Because storing weeks of performance metrics in regular PostgreSQL tables gets ugly fast. TimescaleDB handles time-series data compression and retention automatically.</p> <p>The Windows agent is a single .NET 8 executable (~8MB) that runs as a service. No installer dependencies, no runtime requirements on the target machine. The Linux agent is a bash script because... sometimes simple wins.</p> <h2> <a name="getting-started" href="#getting-started"> </a> Getting Started
+</h2> <p>If you want to try it:<br>
+</p> <div>
+<pre><code>git clone https://github.com/BenediktSchackenberg/octofleet.git
+<span>cd </span>octofleet
+docker compose up <span>-d</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. Open <code>http://localhost:3000</code>, login with <code>admin/admin</code>, and you've got a running instance.</p> <p>For agents, there's a one-liner for Windows:<br>
+</p> <div>
+<pre><code><span>iwr</span><span> </span><span>"https://raw.githubusercontent.com/BenediktSchackenberg/octofleet/main/Install-OctofleetAgent.ps1"</span><span> </span><span>-OutFile</span><span> </span><span>"</span><span>$</span><span>env</span><span>:</span><span>TEMP</span><span>\install.ps1"</span><span>;</span><span> </span><span>&amp;</span><span> </span><span>"</span><span>$</span><span>env</span><span>:</span><span>TEMP</span><span>\install.ps1"</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The agent auto-registers with your server and starts reporting immediately.</p> <h2> <a name="how-it-compares" href="#how-it-compares"> </a> How It Compares
+</h2> <p>I'm not going to pretend Octofleet replaces enterprise solutions. But for homelabs, small businesses, or anyone who just wants basic fleet management without the complexity:</p> <div><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Octofleet</th>
+<th>PDQ Deploy</th>
+<th>NinjaRMM</th>
+<th>SCCM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>Free</td>
+<td>$500+/yr</td>
+<td>$3+/endpoint/mo</td>
+<td>LOL</td>
+</tr>
+<tr>
+<td>Self-hosted</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Setup time</td>
+<td>5 min</td>
+<td>30 min</td>
+<td>15 min</td>
+<td>Days</td>
+</tr>
+<tr>
+<td>Linux support</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Kinda</td>
+</tr>
+<tr>
+<td>Vuln scanning</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Open source</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div> <p>The big players have more features, better polish, enterprise support. But they also have enterprise complexity and enterprise pricing. Pick your poison.</p> <h2> <a name="the-honest-beta-software-section" href="#the-honest-beta-software-section"> </a> The Honest "Beta Software" Section
+</h2> <p>Things that work well:</p> <ul>
+<li>Inventory collection is solid</li>
+<li>Job execution is reliable</li>
+<li>The dashboard is genuinely useful day-to-day</li>
+<li>Auto-updates for agents work (finally, after some painful debugging)</li>
+</ul> <p>Things I'm still working on:</p> <ul>
+<li>Documentation could be better (it exists, but it's... sparse)</li>
+<li>macOS agent doesn't exist yet</li>
+<li>Reporting/exports are basic</li>
+<li>No mobile app (and probably never will be)</li>
+</ul> <p>Known quirks:</p> <ul>
+<li>First-time setup needs you to configure the gateway URL manually</li>
+<li>Some edge cases in vulnerability matching (CVE data is messy)</li>
+<li>The UI has some rough edges on mobile</li>
+</ul> <h2> <a name="why-im-sharing-this" href="#why-im-sharing-this"> </a> Why I'm Sharing This
+</h2> <p>Honestly? I want feedback.</p> <p>This started as a personal project to scratch my own itch. But it's grown into something that might be useful for others, and I'd love to know:</p> <ul>
+<li>What features are missing that would make this useful for you?</li>
+<li>What's confusing about the setup?</li>
+<li>What breaks when you try it?</li>
+</ul> <p>I'm also very open to contributions. The codebase is reasonably clean (I think), the stack is modern, and there's plenty of low-hanging fruit for anyone wanting to contribute to an open-source project.</p> <h2> <a name="links" href="#links"> </a> Links
+</h2> <ul>
+<li>
+<strong>GitHub:</strong> <a href="https://github.com/BenediktSchackenberg/octofleet" target="_blank">github.com/BenediktSchackenberg/octofleet</a>
+</li>
+<li>
+<strong>Screenshots:</strong> Check the README</li>
+<li>
+<strong>License:</strong> MIT (do whatever you want with it)</li>
+</ul> <p>If you try it, let me know how it goes. Open an issue, leave a comment here, or just star the repo if you think it's cool.</p> <p>And if you're running a fleet of machines and paying too much for basic management tools — maybe give this a shot. Worst case, you'll have wasted 5 minutes on <code>docker compose up</code>. Best case, you'll save a bunch of money and have something you can actually customize.</p> <hr> <p><em>Currently managing 9 endpoints with Octofleet. My wallet is happier, even if my spare time isn't.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

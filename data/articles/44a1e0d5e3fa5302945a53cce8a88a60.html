@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why Address Poisoning Works Without Stealing Private Keys</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Why Address Poisoning Works Without Stealing Private Keys</h1>
+  <div class="metadata">
+    Source: CoinTelegraph | Date: 2/19/2026 6:55:01 AM | <a href="https://cointelegraph.com/news/why-address-poisoning-works-without-stealing-private-keys?utm_source=rss_feed&amp;utm_medium=rss&amp;utm_campaign=rss_partner_inbound" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><h2>Key takeaways</h2><ul><li><p>Address poisoning exploits behavior, not private keys. Attackers manipulate transaction history and rely on users mistakenly copying a malicious lookalike address.</p></li><li><p>Cases such as the 50-million-USDT loss in 2025 and the 3.5 wBTC drain in February 2026 demonstrate how simple interface deception can lead to massive financial damage.</p></li><li><p>Copy buttons, visible transaction history and unfiltered dust transfers make poisoned addresses appear trustworthy within wallet interfaces.</p></li><li><p>Because blockchains are permissionless, anyone can send tokens to any address. Wallets typically display all transactions, including spam, which attackers use to plant malicious entries.</p></li></ul><p>Most crypto users believe that their funds stay secure as long as their private keys are protected. However, as a rising number of scams show, this is not always the case. Scammers have been using an insidious tactic, address poisoning, to steal assets without ever accessing the victim’s private key.</p><p>In February 2026, a <a href="https://cointelegraph.com/learn/articles/what-is-a-phishing-attack-in-crypto-and-how-to-prevent-it">phishing</a> scheme targeted a Phantom Chat feature. Using an address poisoning tactic, attackers successfully <a href="https://cointelegraph.com/news/phantom-chat-address-poisoning-bitcoin-phishing">drained roughly 3.5 Wrapped Bitcoin</a> (wBTC), worth more than $264,000.</p><p>In 2025, a victim lost $50 million in Tether’s USDt (<a href="https://cointelegraph.com/tether-price-index">USDT</a>) after copying a poisoned address. Such incidents have highlighted how poor interface design and everyday user habits can result in massive losses.</p><figure> <img alt="" src="https://s3.cointelegraph.com/uploads/2026-02/019c74aa-1981-79a0-ac5f-c1817e2a4773.jpg"></figure><p>Prominent crypto figures like Binance co-founder <a href="https://cointelegraph.com/news/changpeng-zhao-regained-power-between-prison-pardon">Changpeng “CZ” Zhao</a> have publicly <a href="https://www.binance.com/en/square/post/34142027296314" target="_blank">urged</a> wallets to add stronger safeguards following address poisoning incidents.</p><p>This article explains how address poisoning scams exploit user behavior rather than <a href="https://cointelegraph.com/learn/articles/private-keys-vs-seed-phrases">private key</a> theft. It details how attackers manipulate transaction history, why the tactic succeeds on transparent blockchains and what practical steps users and wallet developers can take to reduce the risk.</p><h2>What address poisoning really involves</h2><p>Unlike traditional hacks that target private keys or exploit code flaws, address poisoning manipulates a user’s transaction history to deceive them into sending funds to the wrong address.</p><p>Usually, the attack proceeds in the following way:</p><ol><li><p>Scammers identify high-value wallets via public blockchain data.</p></li><li><p>They create a wallet address that closely resembles one the victim often uses. For example, the attacker may match the first and last few characters.</p></li><li><p>They send a small or zero-value transaction to the victim’s wallet from this fake address.</p></li><li><p>They rely on the victim copying the attacker’s address from their recent transaction list later.</p></li><li><p>They collect the funds when the victim accidentally pastes and sends them to the malicious address.</p></li></ol><p>The victim’s wallet and private keys remain untouched, and blockchain cryptography stays unbroken. The scam thrives purely on human error and trust in familiar patterns.</p><p><em><strong>Did you know? </strong></em><em>Address poisoning scams surged alongside the rise of Ethereum layer-2 networks, where lower fees make it cheaper for attackers to mass-send dust transactions to thousands of wallets at once.</em></p><h2>How attackers craft deceptive addresses</h2><p>Crypto addresses are lengthy hexadecimal strings, often 42 characters on Ethereum-compatible chains. Wallets usually show only a truncated version, such as “0x85c...4b7,” which scammers take advantage of. Fake addresses have identical beginnings and endings, while the middle portion differs.</p><p>Legitimate address (example format):</p><p>0x742d35Cc6634C0532925a3b844Bc454e4438f44e</p><p>Poisoned lookalike address:</p><p>0x742d35Cc6634C0532925a3b844Bc454e4438f4Ae</p><p>Scammers use vanity address generators to craft these near-identical strings. The fake one appears in the victim’s transaction history thanks to the dusting transfer. To users, it looks trustworthy at a glance, especially since they rarely verify the full address string.</p><p><em><strong>Did you know? </strong></em><em>Some blockchain explorers now automatically label suspicious dusting transactions, helping users spot potential poisoning attempts before interacting with their transaction history.</em></p><h2>Why this scam succeeds so well</h2><p>There are several intertwined factors that make address poisoning devastatingly effective:</p><ol><li><p><strong>Human limitations in handling long strings: </strong>Because addresses are not human-friendly, users rely on quick visual checks at the beginning and end. Scammers exploit this tendency.</p></li><li><p><strong>Convenient but risky wallet features: </strong>Many wallets offer easy copy buttons next to recent transactions. While this feature is helpful for legitimate use, it becomes risky when spam entries sneak in. Investigators such as ZachXBT have <a href="https://x.com/zachxbt/status/2021022756460966139" target="_blank">pointed</a> to cases where victims copied poisoned addresses directly from their wallet UI.</p></li></ol><figure> <img alt="" src="https://s3.cointelegraph.com/uploads/2026-02/019c74ab-3fb3-732f-baa7-caec1e36920f.jpg"></figure><p><strong>3. No need for technical exploits: </strong>Because blockchains are public and permissionless, anyone can send tokens to any address. Wallets usually display all incoming transactions, including spam, and users tend to trust their own history.</p><p>The vulnerability lies in behavior and UX, not in encryption or key security.</p><h2>Why keys aren’t enough protection</h2><p>Private keys control authorization, meaning they ensure only you can sign transactions. However, they cannot verify whether the destination address is correct. Blockchain’s core traits — permissionless access, irreversibility of transactions and trust minimization — mean malicious transactions get permanently recorded.</p><p>In these scams, the user willingly signs the transfer. The system functions exactly as designed, and the flaw lies in human judgment.</p><p>Underlying psychological and design issues involve:</p><ul><li><p><strong>Routine habits: </strong>People tend to repeatedly send funds to the same addresses, so they copy from their transaction history instead of reentering addresses.</p></li><li><p><strong>Cognitive strain:</strong> Transactions involve multiple steps, such as addresses, fees, networks and approvals. Many users find scrutinizing every character tedious.</p></li><li><p><strong>Truncated displays: </strong>Wallet UIs hide most of the address, leading to partial checks.</p></li></ul><p><em><strong>Did you know? </strong></em><em>In certain cases, attackers automate address lookalike generation using GPU-powered vanity tools, allowing them to produce thousands of near-identical wallet addresses within minutes.</em></p><h2>Practical ways to stay safer</h2><p>While address poisoning exploits user behavior rather than technical vulnerabilities, small changes in transaction habits can significantly reduce the risk. Understanding a few practical safety measures can help crypto users avoid costly mistakes without requiring advanced technical knowledge.</p><h3>For users</h3><p>Simple verification habits and transaction discipline can significantly reduce your chances of falling victim to address poisoning scams.</p><ul><li><p>Build and use a verified address book or whitelist for frequent recipients.</p></li><li><p>Verify the full address. Use a checker or compare it character by character before making payments.</p></li><li><p>Never copy addresses from recent transaction history. Instead, reenter addresses or use bookmarks.</p></li><li><p>Ignore or report unsolicited small transfers as potential poisoning attempts.</p></li></ul><h3>For wallet developers</h3><p>Thoughtful interface design and built-in safeguards can minimize user error and make address poisoning attacks far less effective.</p><ul><li><p>Filtering or hiding low-value spam transactions</p></li><li><p>Similarity detection for recipient addresses</p></li><li><p>Pre-signing simulations and risk warnings</p></li><li><p>Built-in poisoned address checks via onchain queries or shared blacklists.</p></li></ul></div><p> Cointelegraph maintains full editorial independence. The selection, commissioning and publication of Features and Magazine content are not influenced by advertisers, partners or commercial relationships.</p></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

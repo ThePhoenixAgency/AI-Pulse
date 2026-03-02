@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>「データ不足」の壁を越える：合成ペルソナが日本のAI開発を加速</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>「データ不足」の壁を越える：合成ペルソナが日本のAI開発を加速</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 2/19/2026 3:32:38 PM | <a href="https://huggingface.co/blog/nvidia/nemotron-personas-japan-nttdata-ja" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: JA
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/Atsunori"><img alt="Atsunori Fujita's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1615517039409-noauth.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/SnowMasaya"><img alt="Masaya Ogushi's avatar" src="https://huggingface.co/avatars/357cb5580d0e8cd969aa5a5c84bd1526.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/WillJenningsDC"><img alt="Will Jennings's avatar" src="https://huggingface.co/avatars/87e34ec78b0b360f57915e6564213793.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/nv-3mei"><img alt="Yev Meyer's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/NCK3br1uL-gfkVWmd_VRQ.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/kyamamoto-nv"><img alt="Kotaro Yamamoto's avatar" src="https://huggingface.co/avatars/1a1d7fb914ce4c70cc9718246f5bb461.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/suhara"><img alt="Yoshi Suhara's avatar" src="https://huggingface.co/avatars/311461de0933d7e4a8a222d0e76f3754.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/vg1024"><img alt="Vincent Gong's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/65b9c1a9657bc784a24e8ea9/6BEvDvqg5QK9S2Qyfoj0m.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/dcorneil"><img alt="Dane Corneil's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/caD8Ku2K1wqEVU5dpgEb9.png"></a> </span> </span></p> </div></div> <p>AI は日本の経済成長における新たな章を描く可能性を秘めており、その技術によって <a href="https://cdn.openai.com/global-affairs/f9d1cd88-506e-48f9-b34b-6ff63655434e/openai-japan-economic-blueprint-en.pdf">100 兆円 (6,500 億米ドル) を超える経済価値が創出されると予測されています</a>。しかし、その巨大なポテンシャルを実現できるかどうかは、多くのAIプロジェクトに決定的に欠けている“ある1つの要素”にかかっています。それは、実務で「使える学習データ」です。</p>
+<p>この課題は、日本語と日本文化を理解する AI システムを構築する開発者にとって特に深刻です。英語の学習データは豊富にある一方で、日本の開発者は慢性的なデータ不足という問題に直面しています。高性能なモデルを初期段階から立ち上げるための、タスクに特化し、かつ日本の文化に根ざしたデータが圧倒的に不足しているのです。新しいサンプルの収集、クリーニング、ラベル付けには時間と費用がかかり、目まぐるしいAIの開発サイクルに追いつくことは困難です。</p>
+<p>その結果、イノベーションが始まる前にそれを阻む<a href="https://www.superannotate.com/blog/ai-data-wall">データの壁</a>が生まれます。</p>
+<h2> <a href="#新たな前進への道"> </a> <span> 新たな前進への道 </span>
+</h2>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/68d2fec8856b85d927e44d32/_Fk8_hH3YBUR26fdsT-56.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/68d2fec8856b85d927e44d32/_Fk8_hH3YBUR26fdsT-56.png"></a>
+大手 IT 企業 <a href="https://www.nttdata.com/global/en/">NTT DATA</a> による新たな研究は、合成データによってこの壁がいかに取り払われるかを実証しています。手元にある最小限の独自データから、プライバシーやモデルの性能を損なうことなく、実運用レベルの大規模な学習データセットを生成できるのです。</p>
+<p>NTT DATA は、<a href="https://huggingface.co/blog/nvidia/nemotron-personas-japan">NVIDIA Nemotron-Personas-Japan</a> (<a href="https://nvidia-nemo.github.io/DataDesigner/latest/">NeMo Data Designer</a> を使用して生成された、日本の人口動態、地理、文化に基づいた 600 万のペルソナから構成されるNVIDIA の初のオープン合成データセット) を使用することで、法務Q&amp;Aタスクにおいてモデルの精度を 15.3% から 79.3% へと飛躍的に向上させ、回答の一貫性においても同様の大幅な改善を達成しました。</p>
+<p>これは、機密データを学習パイプラインに公開することなく、60 ポイントもの向上を実現したことになります。</p>
+<p>実験の全体的な手法や評価フレームワークに関心のある読者に向けて、<a href="https://www.nttdata.com/jp/ja/trends/data-insight/2026/0219/">NTT DATA の詳細な技術レポート（日本語）</a>では、本研究の設計や結果についてさらに深く掘り下げて解説しています。</p>
+<p>ここから得られる重要なポイントは、企業は完全にオープンソースのインフラストラクチャを使用し、手元にある最小限の独自データからでも、特定のドメイン（業務領域）に特化したAIを構築できるということです。オープンなペルソナデータを活用することで、より高品質なモデルの構築と、より機敏なデータ運用の両立が可能になります。</p>
+<h2> <a href="#実証実験"> </a> <span> 実証実験 </span>
+</h2>
+<p>このアプローチを厳密に検証するため、NTT DATA は架空の法律文書を用いた対照評価を実施し、モデルが真に新しい知識を獲得できるようにしました。学習には以下の構成を活用しました：</p>
+<p><strong>ベースモデル:</strong> <code>tsuzumi 2</code> (NTT の独自 LLM)</p>
+<p><strong>データ拡張モデル:</strong> <code>GPT-OSS-120b</code> </p>
+<p><strong>シードデータ:</strong> Nemotron-Personas-Japan</p>
+<p><strong>判定モデル:</strong> <code>GPT-5</code> (LLM-as-a-judge メソッド)</p>
+<p>Nemotron-Personas-Japan から抽出した500のペルソナを活用し、わずか 450 件の未加工のシードサンプルを拡張することで、13 万 8000 件以上の学習用データ (人手による同等のサンプルの 300 倍に相当する合成データセット) を生成し、モデルの精度を 15.3% から 79.3% に向上させました。</p>
+<p>この結果は、企業が直面するデータ不足という課題を如実に物語っています。</p>
+<div> <table> <thead><tr>
+<th>構成</th>
+<th>シードデータ</th>
+<th>合成拡張</th>
+<th>精度</th>
+</tr> </thead><tbody><tr>
+<td>ベースライン (トレーニングなし)</td>
+<td>—</td>
+<td>—</td>
+<td>15.3%</td>
+</tr>
+<tr>
+<td>合成データを使用したSFT</td>
+<td>450件</td>
+<td>138,000 件</td>
+<td>79.3%</td>
+</tr>
+</tbody> </table>
+</div>
+<p>合成データによる学習は、単なる精度の向上にとどまらず、ベースラインモデルを悩ませていたハルシネーションも排除しました。学習前のモデルがもっともらしいものの誤った法的分類を生成したのに対し、ファインチューニングされたモデルはノイズを加えることなく正確な用語を抽出できるようになりました。</p>
+<p>エンタープライズ環境への展開においておそらく最も価値のある発見は、十分な量のファインチューニング用合成データが確保できれば、知識追加が必要な場合でもユースケースによっては「継続事前学習（CPT）」は必須ではなくなるとNTT DATAが見出したことです。これはつまり、開発者は計算リソースを大量に消費する CPT の工程を完全に省略し、教師ありファインチューニング (SFT) のためのより反復的な合成データ生成に注力するという、より費用対効果の高い学習パイプラインを活用できることを意味しています。</p>
+<p>この効率性の向上は、コンピューティングコストの削減と開発サイクルの高速化に直接つながります。</p>
+<blockquote>
+<p>NTT DATA 技術革新統括本部 AI 技術部 部長の樋口晋也氏は次のように話しています。「Nemotron Personas を用いて少量の独自データセットを拡張することで、利用可能なデータが限られている場合でも、タスクに特化したモデルを効果的に構築できます。このアプローチは、独自データが不足しがちな事前調査、カスタマーサポート、マーケティングなどの領域において、成果を向上させる大きな可能性を示しています」</p>
+</blockquote>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/68d2fec8856b85d927e44d32/TZE6YYFdp-f0MgIhFA0cI.png"><img alt="Screenshot 2026-02-19 at 7.21.41 AM" src="https://cdn-uploads.huggingface.co/production/uploads/68d2fec8856b85d927e44d32/TZE6YYFdp-f0MgIhFA0cI.png"></a></p>
+<h2> <a href="#設計段階からのプライバシー保護"> </a> <span> 設計段階からのプライバシー保護 </span>
+</h2>
+<p>ここでの精度向上は魅力的ですが、同時により深い疑問も生じます。そもそも学習パイプラインにすら入らない（使えない）データはどうなるのでしょうか？</p>
+<p>価値ある企業データの 90% 以上が、プライバシー規制、セキュリティリスク、ライセンス制約のために未活用のままです。日本では、<a href="https://www.japaneselawtranslation.go.jp/en/laws/view/4241/en">個人情報保護法 (PIPA)</a> や<a href="https://iapp.org/news/a/japan-passes-innovation-focused-ai-governance-bill">イノベーション重視の AI ガバナンスガイドライン</a> (2025 年 9 月公表) などの枠組みがこの現実を裏付けています。AI の進歩が加速する中でも、責任あるデータ取り扱いは必須です。</p>
+<p>合成データは、この相反する課題を解決する道筋を提供します。個人を特定できる情報 (PII) を含まず、実際のデータの傾向（パターン）を正確に反映した学習用データを生成することで、企業はデータの最小化とモデルの性能向上を同時に実現できます。初期の立ち上げには最小限の独自データのみを使用し、その後は合成データによって実運用レベルの規模まで拡張すればよいのです。</p>
+<p>つまり、合成データは単なる「学習プロセスを最適化する手法」ではありません。データコンプライアンスと AI の性能が共存する理想的なバランス(ゴルディロックスゾーン) を実現する<a href="https://www.oecd.org/en/topics/sub-issues/privacy-enhancing-technologies.html">プライバシー強化技術</a> (PET) なのです。さらに、データの合成パイプラインは再現性と監査性を備えているため、ガバナンスチームや規制当局がますます求める信頼性と透明性の要件にも対応できます。</p>
+<h2> <a href="#ソブリンデータ空間"> </a> <span> ソブリンデータ空間 </span>
+</h2>
+<p>ソブリン AI を構築する日本企業にとって、データ主権は必須条件です。しかし、主権だけでは十分ではありません。モデルには、欧米中心のコーパスに統計的に偏ったものではなく、地域固有の規範やドメインの制約によって形成される、根拠のあるインテリジェンスも必要です。Nemotron-Personas-Japan は、この現実に根ざした AI を作るための基盤データとして機能します。600 万のペルソナは日本の公式人口動態および労働統計に基づいており、1,500 以上の職業分類と地域分布をカバーしています。</p>
+<p>しかし、その影響は個々の組織にとどまりません。NTT DATA をはじめとするリーダー企業は、「<a href="https://www.nttdata.com/global/en/-/media/nttdataglobal/1_files/technology/wp_2.pdf?rev=9df755b014d5433eb059a93674cf2df6">データスペース</a>」の開発に積極的に取り組んでいます。これは、政府と企業が共通のガバナンスとプライバシー保証の下で、AI学習用に合成されたデータを交換し合える協調的な環境です。連合学習（フェデレーテッド ラーニング）などのエンドツーエンドの暗号化技術は、この分散型アプローチを可能にします。合成データはこれをさらに強力に推進する役割を果たし、組織は元となる機密情報を公開することなく、自社データの傾向（パターン）を合成データとして安全に提供できるようになります。</p>
+<p>これにより、データリスク管理は守りの姿勢から、日本の掲げる『イノベーション主導のAIガバナンス』というビジョンに沿った「協調的な姿勢」へとシフトします。また、このアプローチは、「AIの進化は、グローバルで学習された少数の巨大モデルからもたらされるべきだ」という固定観念にも一石を投じます。むしろ、オープンでプライバシー保護された基盤の上に、主権を持ち、相互運用可能な AI システムがそれぞれの地域で構築される未来を指し示しています。</p>
+<h2> <a href="#構築を開始"> </a> <span> 構築を開始 </span>
+</h2>
+<p>「データの壁」は確かに存在します。しかし、NTT DATA の調査が示すように、それを克服するためのツールは今やオープンで誰でもアクセスできるようになっています。合成データは、もはや「未来の技術」ではありません 。プライバシーや性能を犠牲にすることなく、データ主権を持ち、日本の文化に根ざしたAIシステムを構築するために、開発者が「今すぐ」現場に導入できる現実のソリューションなのです。</p>
+<p>さっそく始めてみませんか？オープンソースのNeMo Data Designer ライブラリを活用するか、Hugging Face で公開されている Nemotron-Personas-Japan データセットをご覧ください。より詳細な技術的情報については、手法と実験設計を網羅したNTT データによる詳細なレポート (日本語) をご覧ください。</p>
+<ul>
+<li>NeMo Data Designer: <a href="https://docs.nvidia.com/nemo/microservices/latest/design-synthetic-data-from-scratch-or-seeds/index.html">https://docs.nvidia.com/nemo/microservices/latest/design-synthetic-data-from-scratch-or-seeds/index.html</a></li>
+<li>Nemotron-Personas-Japan (Hugging Face): <a href="https://huggingface.co/blog/nvidia/nemotron-personas-japan">https://huggingface.co/blog/nvidia/nemotron-personas-japan</a></li>
+<li>NTT データ レポート（日本語）: <a href="https://www.nttdata.com/jp/ja/trends/data-insight/2026/0219/">https://www.nttdata.com/jp/ja/trends/data-insight/2026/0219/</a></li>
+</ul>
+<p>Nemotron-Personas-Japan は、CC BY 4.0 ライセンスに基づき、商用・非商用を問わずご利用いただけます。</p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

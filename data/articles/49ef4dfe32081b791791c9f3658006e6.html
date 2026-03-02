@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - cosformula/openclaw-mlx-audio: OpenClaw local TTS plugin powered by mlx-audio, zero API key, zero cloud dependency</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - cosformula/openclaw-mlx-audio: OpenClaw local TTS plugin powered by mlx-audio, zero API key, zero cloud dependency</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/20/2026 3:00:32 AM | <a href="https://github.com/cosformula/openclaw-mlx-audio" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>openclaw-mlx-audio</h1><a href="#openclaw-mlx-audio"></a></div>
+<p><a href="/cosformula/openclaw-mlx-audio/blob/main/README.zh-CN.md">中文文档</a></p>
+<p>Local TTS plugin for OpenClaw, powered by <a href="https://github.com/Blaizzy/mlx-audio">mlx-audio</a> on Apple Silicon.</p>
+<div><h2>MLX and Platform Compatibility</h2><a href="#mlx-and-platform-compatibility"></a></div>
+<p><a href="https://github.com/ml-explore/mlx">MLX</a> is Apple's machine learning framework, optimized for the unified memory architecture of M-series chips. This plugin depends on MLX and therefore <strong>only runs on Apple Silicon Macs</strong> (M1 and later).</p> <ul>
+<li><a href="https://github.com/matatonic/openedai-speech">openedai-speech</a> (self-hosted, requires NVIDIA GPU)</li>
+<li><a href="https://github.com/devnen/Chatterbox-TTS-Server">Chatterbox-TTS-Server</a> (same)</li>
+<li>OpenClaw's built-in Edge TTS (cloud-based, no GPU required)</li>
+</ul>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li>macOS, Apple Silicon (M1 and later)</li>
+<li>Default <pre><code>pythonEnvMode: managed</code></pre> requires no preinstalled Python or Homebrew, the plugin bootstraps <pre><code>uv</code></pre> and a lockfile-managed local Python runtime</li>
+<li>Optional <pre><code>pythonEnvMode: external</code></pre> uses your existing Python environment via <pre><code>pythonExecutable</code></pre></li>
+<li>OpenClaw</li>
+</ul>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<p>Tell your OpenClaw:</p>
+<blockquote>
+<p>Install the @cosformula/openclaw-mlx-audio plugin, configure local TTS, and restart.</p>
+</blockquote>
+<p>OpenClaw will handle plugin installation, config changes, and restart automatically.</p>
+<p>For Chinese TTS with Qwen3-TTS:</p>
+<blockquote>
+<p>Install the @cosformula/openclaw-mlx-audio plugin, configure local TTS with Qwen3-TTS-0.6B, and restart.</p>
+</blockquote>
+<div><h2>Manual Installation</h2><a href="#manual-installation"></a></div>
+<div><h3>1. Install the Plugin</h3><a href="#1-install-the-plugin"></a></div>
+<div><pre>openclaw plugin install @cosformula/openclaw-mlx-audio</pre></div>
+<p>Or load from a local path in </p><pre><code>openclaw.json</code></pre>:<p></p>
+<div><pre>{ <span>"plugins"</span>: { <span>"load"</span>: { <span>"paths"</span>: [<span><span>"</span>/path/to/openclaw-mlx-audio<span>"</span></span>] } }
+}</pre></div>
+<div><h3>2. Configure the Plugin</h3><a href="#2-configure-the-plugin"></a></div>
+<p>Set options in </p><pre><code>plugins.entries.openclaw-mlx-audio.config</code></pre> within <pre><code>openclaw.json</code></pre>:<p></p>
+<div><pre>{ <span>"plugins"</span>: { <span>"entries"</span>: { <span>"openclaw-mlx-audio"</span>: { <span>"enabled"</span>: <span>true</span>, <span>"config"</span>: {} } } }
+}</pre></div>
+<p>The default configuration uses Kokoro-82M with </p><pre><code>langCode: auto</code></pre> (Kokoro language auto-detection). For Chinese with Qwen3-TTS, set <pre><code>model</code></pre>:<p></p>
+<div><pre>{ <span>"config"</span>: { <span>"model"</span>: <span><span>"</span>mlx-community/Qwen3-TTS-12Hz-0.6B-Base-bf16<span>"</span></span>, <span>"workers"</span>: <span>1</span> }
+}</pre></div>
+<div><h3>3. Point OpenClaw TTS to the Local Endpoint</h3><a href="#3-point-openclaw-tts-to-the-local-endpoint"></a></div>
+<div><pre>{ <span>"env"</span>: { <span>"vars"</span>: { <span>"OPENAI_TTS_BASE_URL"</span>: <span><span>"</span>http://127.0.0.1:19280/v1<span>"</span></span> } }, <span>"messages"</span>: { <span>"tts"</span>: { <span>"provider"</span>: <span><span>"</span>openai<span>"</span></span>, <span>"openai"</span>: { <span>"apiKey"</span>: <span><span>"</span>local<span>"</span></span> }, <span>"timeoutMs"</span>: <span>120000</span> } }
+}</pre></div>
+<div><h3>4. Restart OpenClaw</h3><a href="#4-restart-openclaw"></a></div>
+<p>On startup, the plugin will:</p>
+<ul>
+<li>Start a proxy on the configured <pre><code>port</code></pre> (default <pre><code>19280</code></pre>)</li>
+<li>Launch <pre><code>mlx_audio.server</code></pre> on an internal derived port (default <pre><code>19281</code></pre>)</li>
+<li>If <pre><code>autoStart: true</code></pre>, warm up the mlx-audio server in the background</li>
+<li>If <pre><code>autoStart: false</code></pre>, start the server on first <pre><code>/v1/audio/speech</code></pre>, <pre><code>GET /v1/models</code></pre>, tool <pre><code>generate</code></pre>, or <pre><code>/mlx-tts test</code></pre></li>
+<li>Require upstream <pre><code>/v1/models</code></pre> health to pass within about 10 seconds during startup, otherwise the request returns unavailable and startup is retried on next request</li>
+<li>If <pre><code>pythonEnvMode: managed</code></pre>, bootstrap <pre><code>uv</code></pre> into <pre><code>~/.openclaw/mlx-audio/bin/uv</code></pre>, sync <pre><code>~/.openclaw/mlx-audio/runtime/</code></pre> from bundled <pre><code>pyproject.toml</code></pre> and <pre><code>uv.lock</code></pre>, then launch the server via <pre><code>uv run --project ...</code></pre></li>
+<li>If <pre><code>pythonEnvMode: external</code></pre>, validate <pre><code>pythonExecutable</code></pre> (Python 3.11-3.13, required modules importable) and use it directly</li>
+</ul>
+<p>Plugin config is refreshed in the background while the service is running (every ~2 seconds). You can also run </p><pre><code>/mlx-tts reload</code></pre> (or tool action <pre><code>reload</code></pre>) to force immediate apply without restarting the OpenClaw gateway.<p></p>
+<p>On first launch, the model will be downloaded (Kokoro-82M is ~345 MB, Qwen3-TTS-0.6B-Base is ~2.3 GB). During startup, </p><pre><code>/mlx-tts status</code></pre> and tool action <pre><code>status</code></pre> report startup phase and approximate model cache progress (text bar + percentage). If startup times out, the 503 <pre><code>detail</code></pre> returned to OpenClaw includes the same status snapshot. No network connection is needed after the initial download.<p></p>
+<div><h2>Models</h2><a href="#models"></a></div>
+<p>The default model is Kokoro-82M. The following models are selected for distinct use cases:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Description</th>
+<th>Languages</th>
+<th>Repo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Kokoro</strong></td>
+<td>Fast, multilingual TTS with 54 voice presets</td>
+<td>EN, JA, ZH, FR, ES, IT, PT, HI</td>
+<td><a href="https://huggingface.co/mlx-community/Kokoro-82M-bf16">Kokoro-82M-bf16</a></td>
+</tr>
+<tr>
+<td><strong>Qwen3-TTS Base</strong></td>
+<td>Alibaba's multilingual TTS with 3-second voice cloning</td>
+<td>ZH, EN, JA, KO, and more</td>
+<td><a href="https://huggingface.co/mlx-community/Qwen3-TTS-12Hz-0.6B-Base-bf16">0.6B-Base-bf16</a></td>
+</tr>
+<tr>
+<td><strong>Qwen3-TTS VoiceDesign</strong></td>
+<td>Generates voices from natural language descriptions</td>
+<td>ZH, EN, JA, KO, and more</td>
+<td><a href="https://huggingface.co/mlx-community/Qwen3-TTS-12Hz-1.7B-VoiceDesign-bf16">1.7B-VoiceDesign-bf16</a></td>
+</tr>
+<tr>
+<td><strong>Chatterbox</strong></td>
+<td>Expressive multilingual TTS</td>
+<td>EN, ES, FR, DE, IT, PT, and 10 more</td>
+<td><a href="https://huggingface.co/mlx-community/chatterbox-fp16">chatterbox-fp16</a></td>
+</tr>
+</tbody>
+</table>
+<p>mlx-audio supports additional models (Soprano, Spark-TTS, OuteTTS, CSM, Dia, etc.). See the <a href="https://github.com/Blaizzy/mlx-audio#supported-models">mlx-audio README</a> for the full list.</p>
+<div><h3>Qwen3-TTS Model Variants</h3><a href="#qwen3-tts-model-variants"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Base</strong></td>
+<td>Foundation model. Supports voice cloning from 3-second reference audio. Can be fine-tuned.</td>
+</tr>
+<tr>
+<td><strong>VoiceDesign</strong></td>
+<td>Generates voices from natural language descriptions (e.g. "a deep male voice with a British accent"). Does not accept reference audio.</td>
+</tr>
+<tr>
+<td><strong>CustomVoice</strong></td>
+<td>Provides 9 preset voices with instruction-based style control.</td>
+</tr>
+</tbody>
+</table>
+<p>Currently, mlx-community offers MLX-converted versions of 0.6B-Base and 1.7B-VoiceDesign.</p>
+<div><h3>Selection Guide</h3><a href="#selection-guide"></a></div>
+<p>Memory usage reference:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Disk</th>
+<th>RAM (1 worker)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kokoro-82M</td>
+<td>345 MB</td>
+<td>~400 MB</td>
+</tr>
+<tr>
+<td>Qwen3-TTS-0.6B-Base</td>
+<td>2.3 GB</td>
+<td>~1.4 GB</td>
+</tr>
+<tr>
+<td>Qwen3-TTS-1.7B-VoiceDesign</td>
+<td>4.2 GB</td>
+<td>~3.8 GB</td>
+</tr>
+<tr>
+<td>Chatterbox</td>
+<td>~3 GB</td>
+<td>~3.5 GB</td>
+</tr>
+</tbody>
+</table>
+<p>For Chatterbox, plan for about 3.5 GB RAM at runtime (1 worker).</p>
+<ul>
+<li><strong>8 GB Mac</strong>: Kokoro-82M or Qwen3-TTS-0.6B-Base with <pre><code>workers: 1</code></pre>. Models at 1.7B and above will be terminated by the OS due to insufficient memory.</li>
+<li><strong>16 GB and above</strong>: All models listed above are viable.</li>
+<li><strong>Chinese</strong>: Qwen3-TTS series. Kokoro supports Chinese but produces lower quality output compared to Qwen3-TTS.</li>
+<li><strong>English</strong>: Kokoro-82M has the smallest footprint and lowest latency.</li>
+<li><strong>Multilingual</strong>: Chatterbox covers 16 languages.</li>
+</ul>
+<div><h3>Language Codes (Kokoro)</h3><a href="#language-codes-kokoro"></a></div>
+<p></p><pre><code>langCode</code></pre> is Kokoro-specific. Qwen3-TTS auto-detects language from input text. Other models ignore this field.<p></p>
+<p>When </p><pre><code>langCode: auto</code></pre>, detection currently maps only to <pre><code>a</code></pre>, <pre><code>z</code></pre>, or <pre><code>j</code></pre>.<p></p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>a</code></pre></td>
+<td>American English</td>
+</tr>
+<tr>
+<td><pre><code>b</code></pre></td>
+<td>British English</td>
+</tr>
+<tr>
+<td><pre><code>z</code></pre></td>
+<td>Chinese</td>
+</tr>
+<tr>
+<td><pre><code>j</code></pre></td>
+<td>Japanese</td>
+</tr>
+<tr>
+<td><pre><code>e</code></pre></td>
+<td>Spanish</td>
+</tr>
+<tr>
+<td><pre><code>f</code></pre></td>
+<td>French</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Voices</h3><a href="#voices"></a></div>
+<p>Kokoro includes 50+ preset voices:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>American female</td>
+<td><pre><code>af_heart</code></pre>, <pre><code>af_bella</code></pre>, <pre><code>af_nova</code></pre>, <pre><code>af_sky</code></pre></td>
+</tr>
+<tr>
+<td>American male</td>
+<td><pre><code>am_adam</code></pre>, <pre><code>am_echo</code></pre></td>
+</tr>
+<tr>
+<td>Chinese female</td>
+<td><pre><code>zf_xiaobei</code></pre></td>
+</tr>
+<tr>
+<td>Chinese male</td>
+<td><pre><code>zm_yunxi</code></pre></td>
+</tr>
+<tr>
+<td>Japanese</td>
+<td><pre><code>jf_alpha</code></pre>, <pre><code>jm_kumo</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>Qwen3-TTS Base clones voices from reference audio (</p><pre><code>refAudio</code></pre>). VoiceDesign generates voices from natural language descriptions (<pre><code>instruct</code></pre>).<p></p>
+<p>When not specified, models use their default voice.</p>
+<div><h2>Configuration Reference</h2><a href="#configuration-reference"></a></div>
+<p>All fields are optional:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>model</code></pre></td>
+<td><pre><code>mlx-community/Kokoro-82M-bf16</code></pre></td>
+<td>HuggingFace model ID</td>
+</tr>
+<tr>
+<td><pre><code>port</code></pre></td>
+<td><pre><code>19280</code></pre></td>
+<td>Public OpenAI-compatible TTS endpoint port (<pre><code>OPENAI_TTS_BASE_URL</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>proxyPort</code></pre></td>
+<td></td>
+<td>Legacy compatibility field. When set, <pre><code>port</code></pre> is treated as server port and <pre><code>proxyPort</code></pre> as public endpoint port</td>
+</tr>
+<tr>
+<td><pre><code>workers</code></pre></td>
+<td><pre><code>1</code></pre></td>
+<td>Uvicorn worker count</td>
+</tr>
+<tr>
+<td><pre><code>speed</code></pre></td>
+<td><pre><code>1.0</code></pre></td>
+<td>Speech speed multiplier</td>
+</tr>
+<tr>
+<td><pre><code>langCode</code></pre></td>
+<td><pre><code>auto</code></pre></td>
+<td>Kokoro-specific language code. Qwen3-TTS auto-detects from text. Other models ignore this field</td>
+</tr>
+<tr>
+<td><pre><code>refAudio</code></pre></td>
+<td></td>
+<td>Reference audio path (voice cloning, Base models only)</td>
+</tr>
+<tr>
+<td><pre><code>refText</code></pre></td>
+<td></td>
+<td>Transcript of reference audio</td>
+</tr>
+<tr>
+<td><pre><code>instruct</code></pre></td>
+<td></td>
+<td>Voice description text (VoiceDesign models only)</td>
+</tr>
+<tr>
+<td><pre><code>temperature</code></pre></td>
+<td><pre><code>0.7</code></pre></td>
+<td>Generation temperature</td>
+</tr>
+<tr>
+<td><pre><code>topP</code></pre></td>
+<td><pre><code>0.95</code></pre></td>
+<td>Nucleus sampling parameter (<pre><code>top_p</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>topK</code></pre></td>
+<td><pre><code>40</code></pre></td>
+<td>Top-k sampling parameter (<pre><code>top_k</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>repetitionPenalty</code></pre></td>
+<td><pre><code>1.0</code></pre></td>
+<td>Repetition penalty (<pre><code>repetition_penalty</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>autoStart</code></pre></td>
+<td><pre><code>true</code></pre></td>
+<td>Start with OpenClaw</td>
+</tr>
+<tr>
+<td><pre><code>healthCheckIntervalMs</code></pre></td>
+<td><pre><code>30000</code></pre></td>
+<td>Health check interval in ms</td>
+</tr>
+<tr>
+<td><pre><code>restartOnCrash</code></pre></td>
+<td><pre><code>true</code></pre></td>
+<td>Auto-restart on crash</td>
+</tr>
+<tr>
+<td><pre><code>maxRestarts</code></pre></td>
+<td><pre><code>3</code></pre></td>
+<td>Max consecutive restart attempts</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>OpenClaw tts() -&gt; proxy (:port, default 19280) -&gt; mlx_audio.server (:internal, default 19281) -&gt; Apple Silicon GPU ^ injects model, lang_code, speed, temperature, top_p, top_k, repetition_penalty, response_format=mp3
+</code></pre></div>
+<p>OpenClaw's TTS client uses the OpenAI </p><pre><code>/v1/audio/speech</code></pre> API. The additional parameters required by mlx-audio (full model ID, language code, etc.) are not part of the OpenAI API specification.<p></p>
+<p>The proxy intercepts requests, injects configured parameters (</p><pre><code>model</code></pre>, <pre><code>lang_code</code></pre>, <pre><code>speed</code></pre>, <pre><code>temperature</code></pre>, <pre><code>top_p</code></pre>, <pre><code>top_k</code></pre>, <pre><code>repetition_penalty</code></pre>), forces <pre><code>response_format: "mp3"</code></pre>, and forwards them to the mlx-audio server. No changes to OpenClaw are required, the proxy presents itself as a standard OpenAI TTS endpoint.
+For <pre><code>POST /v1/audio/speech</code></pre>, request bodies larger than 1 MB are rejected with HTTP 413.
+If the downstream client disconnects before completion, the proxy cancels the upstream request immediately.<p></p>
+<p>The plugin also manages the server lifecycle:</p>
+<ul>
+<li>In <pre><code>managed</code></pre> mode, bootstraps a local <pre><code>uv</code></pre> toolchain, syncs dependencies from bundled <pre><code>pyproject.toml</code></pre> and <pre><code>uv.lock</code></pre>, and runs from <pre><code>~/.openclaw/mlx-audio/runtime/.venv/</code></pre></li>
+<li>In <pre><code>external</code></pre> mode, validates the configured <pre><code>pythonExecutable</code></pre> and uses that environment without modifying it</li>
+<li>Starts the mlx-audio server as a child process</li>
+<li>Auto-restarts on crash (counter resets after 30s of healthy uptime)</li>
+<li>Cleans up stale processes on the target port before starting</li>
+<li>Checks available memory before starting; detects OOM kills</li>
+<li>Tracks startup phase and approximate model cache progress for <pre><code>/mlx-tts status</code></pre>, tool <pre><code>status</code></pre>, and startup timeout errors</li>
+<li>Restricts tool output paths to <pre><code>/tmp</code></pre> or <pre><code>~/.openclaw/mlx-audio/outputs</code></pre>, verifies real paths with async filesystem checks, and rejects symbolic-link segments</li>
+<li>Streams generated audio directly to disk and rejects payloads larger than 64 MB to prevent memory spikes</li>
+</ul>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<p><strong>Server crashes 3 times then stops restarting</strong></p>
+<p>Check OpenClaw logs for </p><pre><code>[mlx-audio] Last errors:</code></pre>. Common causes: missing Python dependency, incorrect model name, port conflict. After fixing, modify any config field to reset the crash counter.<p></p>
+<p><strong>SIGKILL</strong></p>
+<p>Logs will show </p><pre><code> Server was killed by SIGKILL (likely out-of-memory)</code></pre>. The system terminated the process due to insufficient memory. Use a smaller model or set <pre><code>workers</code></pre> to 1.<p></p>
+<p><strong>Port conflict</strong></p>
+<p>The plugin only cleans up stale </p><pre><code>mlx_audio.server</code></pre> processes on the internal server port. If another app is using the configured port, stop it manually or change <pre><code>port</code></pre>:<p></p>
+<div><pre><span><span>#</span> 1) Inspect who owns the public port first (internal server port is +1 in single-port mode)</span>
+/usr/sbin/lsof -nP -iTCP:19280 -sTCP:LISTEN <span><span>#</span> 2) Only if the command is mlx_audio.server, terminate it gracefully</span>
+<span>kill</span> -TERM <span>&lt;</span>mlx_audio_server_pid<span>&gt;</span></pre></div>
+<p><strong>Startup health timeout</strong></p>
+<p>If logs show </p><pre><code>Server did not pass health check within 10000ms</code></pre>, startup did not become healthy in time. The error detail now includes startup phase and approximate model cache progress. Common causes are first-run dependency/model warmup, wrong model name, or dependency mismatch in external mode. Retry after fixing the root cause.<p></p>
+<p><strong>Slow first startup</strong></p>
+<p>The model is being downloaded. Kokoro-82M is ~345 MB, Qwen3-TTS-0.6B-Base is ~2.3 GB.</p>
+<div><h2>Acknowledgements</h2><a href="#acknowledgements"></a></div>
+<ul>
+<li><a href="https://github.com/Blaizzy/mlx-audio">mlx-audio</a> by Prince Canuma</li>
+<li><a href="https://github.com/ml-explore/mlx">MLX</a> by Apple</li>
+<li><a href="https://github.com/openclaw/openclaw">OpenClaw</a></li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

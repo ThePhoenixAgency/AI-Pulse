@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How I Built a Blackbox Log Analyzer to Auto-Tune FPV Drone PIDs</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>How I Built a Blackbox Log Analyzer to Auto-Tune FPV Drone PIDs</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 3:34:17 AM | <a href="https://dev.to/fpvtune/how-i-built-a-blackbox-log-analyzer-to-auto-tune-fpv-drone-pids-1e3d" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/fpvtune"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3697421%2F9dec32a3-2c1f-4cda-a26d-13a037013aa0.jpg" alt="FPVtune"></a> </p> </div><div> <p>I fly FPV drones as a hobby, and if you've ever tried tuning Betaflight PIDs manually, you know the pain. Record a flight, pull the blackbox log, open PIDtoolbox, stare at gyro traces for an hour, change one number, fly again... repeat forever.</p> <p>So I built a tool that does it automatically. Here's the story and some of the technical bits.</p> <h2> <a name="the-problem" href="#the-problem"> </a> The Problem
+</h2> <p>Betaflight's PID controller has ~15 parameters that affect how your drone flies. Most pilots either copy someone else's tune (which rarely works because every build is different) or spend days doing test flights and analyzing blackbox logs.</p> <p>The existing tools like PIDtoolbox are great for <em>visualizing</em> data, but they don't tell you what to actually change. You still need to know what a noisy gyro trace means and which PID term to adjust.</p> <h2> <a name="the-approach" href="#the-approach"> </a> The Approach
+</h2> <p>I wanted something that could:</p> <ol>
+<li>Parse Betaflight blackbox logs (<code>.bbl</code> files)</li>
+<li>Analyze the frequency response and noise characteristics</li>
+<li>Suggest specific PID values based on the analysis</li>
+</ol> <p>The blackbox format is basically a compressed binary stream of sensor data — gyro, accelerometer, motor outputs, RC inputs, etc. sampled at up to 8kHz.</p> <h2> <a name="parsing-blackbox-logs" href="#parsing-blackbox-logs"> </a> Parsing Blackbox Logs
+</h2> <p>Betaflight's blackbox logs use a custom encoding with variable-length integers and predictive coding. Here's a simplified look at how the parsing works:<br>
+</p> <div>
+<pre><code><span>def</span> <span>decode_blackbox_frame</span><span>(</span><span>data</span><span>,</span> <span>field_defs</span><span>):</span> <span>values</span> <span>=</span> <span>{}</span> <span>for</span> <span>field</span> <span>in</span> <span>field_defs</span><span>:</span> <span>if</span> <span>field</span><span>.</span><span>encoding</span> <span>==</span> <span>'</span><span>signed_vlq</span><span>'</span><span>:</span> <span>val</span> <span>=</span> <span>read_signed_vlq</span><span>(</span><span>data</span><span>)</span> <span>elif</span> <span>field</span><span>.</span><span>encoding</span> <span>==</span> <span>'</span><span>unsigned_vlq</span><span>'</span><span>:</span> <span>val</span> <span>=</span> <span>read_unsigned_vlq</span><span>(</span><span>data</span><span>)</span> <span>elif</span> <span>field</span><span>.</span><span>encoding</span> <span>==</span> <span>'</span><span>tag8_8svb</span><span>'</span><span>:</span> <span>val</span> <span>=</span> <span>read_tag8_8svb</span><span>(</span><span>data</span><span>)</span> <span>values</span><span>[</span><span>field</span><span>.</span><span>name</span><span>]</span> <span>=</span> <span>val</span> <span>*</span> <span>field</span><span>.</span><span>scale</span> <span>return</span> <span>values</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The tricky part is handling the different Betaflight firmware versions — the log format changes between versions and you need to parse the header to figure out which fields are present.</p> <h2> <a name="frequency-analysis" href="#frequency-analysis"> </a> Frequency Analysis
+</h2> <p>Once you have the raw gyro and PID error data, the real magic happens in the frequency domain. I use FFT to identify:</p> <ul>
+<li>
+<strong>Noise floor</strong>: How much electrical/mechanical noise your quad produces</li>
+<li>
+<strong>Motor resonance peaks</strong>: Frequencies where your motors/props create vibrations
+</li>
+<li>
+<strong>PID response</strong>: How well the current tune tracks setpoint changes
+</li>
+</ul> <div>
+<pre><code><span>import</span> <span>numpy</span> <span>as</span> <span>np</span> <span>def</span> <span>analyze_axis</span><span>(</span><span>gyro_data</span><span>,</span> <span>pid_error</span><span>,</span> <span>sample_rate</span><span>):</span> <span># FFT of gyro data to find noise profile
+</span> <span>freqs</span> <span>=</span> <span>np</span><span>.</span><span>fft</span><span>.</span><span>rfftfreq</span><span>(</span><span>len</span><span>(</span><span>gyro_data</span><span>),</span> <span>1</span><span>/</span><span>sample_rate</span><span>)</span> <span>gyro_fft</span> <span>=</span> <span>np</span><span>.</span><span>abs</span><span>(</span><span>np</span><span>.</span><span>fft</span><span>.</span><span>rfft</span><span>(</span><span>gyro_data</span><span>))</span> <span># Find dominant noise frequencies
+</span> <span>noise_peaks</span> <span>=</span> <span>find_peaks</span><span>(</span><span>gyro_fft</span><span>,</span> <span>height</span><span>=</span><span>np</span><span>.</span><span>mean</span><span>(</span><span>gyro_fft</span><span>)</span> <span>*</span> <span>3</span><span>)</span> <span># Analyze step response from setpoint changes
+</span> <span>step_indices</span> <span>=</span> <span>find_setpoint_steps</span><span>(</span><span>pid_error</span><span>)</span> <span>overshoot</span> <span>=</span> <span>calculate_overshoot</span><span>(</span><span>gyro_data</span><span>,</span> <span>step_indices</span><span>)</span> <span>settling_time</span> <span>=</span> <span>calculate_settling</span><span>(</span><span>gyro_data</span><span>,</span> <span>step_indices</span><span>)</span> <span>return</span> <span>{</span> <span>'</span><span>noise_peaks</span><span>'</span><span>:</span> <span>freqs</span><span>[</span><span>noise_peaks</span><span>],</span> <span>'</span><span>overshoot</span><span>'</span><span>:</span> <span>overshoot</span><span>,</span> <span>'</span><span>settling_time</span><span>'</span><span>:</span> <span>settling_time</span> <span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="from-analysis-to-pid-suggestions" href="#from-analysis-to-pid-suggestions"> </a> From Analysis to PID Suggestions
+</h2> <p>This is where it gets interesting. Based on the frequency analysis, the tool adjusts PIDs following some basic control theory:</p> <ul>
+<li>
+<strong>High overshoot on roll/pitch</strong> → reduce P gain or increase D gain</li>
+<li>
+<strong>Slow response</strong> → increase P gain</li>
+<li>
+<strong>High frequency oscillation</strong> → reduce D gain, check D lowpass filter</li>
+<li>
+<strong>Prop wash oscillation</strong> (low frequency, shows up in throttle cuts) → adjust I gain and D term</li>
+</ul> <p>The tool outputs specific numbers you can paste directly into Betaflight configurator.</p> <h2> <a name="try-it-out" href="#try-it-out"> </a> Try It Out
+</h2> <p>I turned this into a web tool called <a href="https://fpvtune.com/" target="_blank">FPVtune</a> — you upload your blackbox log and it spits out PID recommendations. No software to install, works in the browser.</p> <p>The source code for the analysis engine is on <a href="https://github.com/chugzb/betaflight-pid-autotuning" target="_blank">GitHub</a> if you want to dig into the algorithms.</p> <p>It's $9.90 for the full analysis, but I have a beta code for the DEV community: <strong>FPVTUNE-BETA-2026</strong> — just enter it on the activation page to get free access.</p> <h2> <a name="what-i-learned" href="#what-i-learned"> </a> What I Learned
+</h2> <p>Building this taught me a lot about:</p> <ul>
+<li>Signal processing in Python (scipy.signal is your friend)</li>
+<li>Working with binary data formats that have zero documentation</li>
+<li>The gap between "analyzing data" and "making actionable suggestions"</li>
+</ul> <p>If you fly FPV or work with any kind of PID control systems (robotics, etc.), I'd love to hear how you approach tuning. The control theory fundamentals are the same whether you're tuning a drone or a robot arm.</p> <hr> <p><em>Repo: <a href="https://github.com/chugzb/betaflight-pid-autotuning" target="_blank">github.com/chugzb/betaflight-pid-autotuning</a></em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

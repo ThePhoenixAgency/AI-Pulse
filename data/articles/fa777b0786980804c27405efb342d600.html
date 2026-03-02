@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Faille Discord sur la vérification d’âge</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Faille Discord sur la vérification d’âge</h1>
+  <div class="metadata">
+    Source: Zataz | Date: 2/25/2026 12:05:35 AM | <a href="https://www.zataz.com/faille-discord-sur-la-verification-dage/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><h2>Une exposition de composants web liés à Persona, utilisé par Discord pour vérifier l’âge, relance le soupçon sur la sécurité d’un dispositif biométrique sensible.</h2>
+<p>Discord fait face à une nouvelle controverse autour de sa vérification d’âge. Des chercheurs en sécurité ont signalé que des composants frontaux associés au fournisseur d’identité Persona étaient accessibles sur le web ouvert, information partie de X et rapidement relayée dans la communauté cyber. Les documents divulgueraient la structure du flux de vérification, sans fournir automatiquement un accès aux données des utilisateurs. Des analystes expliquent que la visibilité de la logique d’implémentation peut aider des attaquants à simuler du trafic légitime et à sonder des failles. L’épisode ravive aussi les craintes sur biométrie, conservation et confiance.</p>
+<h3>Le code visible, un renseignement exploitable</h3>
+<p>Tout commence comme souvent par un signal faible devenu viral. Sur X, la découverte d’éléments frontaux rattachés à <a href="https://www.zataz.com/discord-generalise-ses-protections-ados-et-lage-par-ia/" target="_blank" rel="noopener noreferrer"><strong>Persona, partenaire d’identité de Discord</strong></a>, circule, se commente, se réplique. Dans les milieux de la cybersécurité, l’information prend, parce qu’elle touche un nerf à vif, la vérification d’âge. Selon les chercheurs, des composants liés au déploiement étaient accessibles sur le web ouvert. Les documents en question n’auraient pas, à eux seuls, ouvert la porte aux données utilisateurs. Mais ils auraient exposé une cartographie technique du dispositif, suffisamment détaillée pour alimenter la curiosité des défenseurs comme l’appétit des attaquants.</p>
+<p>Sur le papier, voir du code frontal n’a rien d’extraordinaire. Le frontend s’exécute dans le navigateur, et une partie de la logique finit mécaniquement observable. <a href="https://pic.twitter.com/QysS8iy9nT" target="_blank" rel="noopener noreferrer">Là où le débat se tend</a>, c’est sur la granularité. Des analystes estiment que rendre trop lisibles des détails d’intégration revient à livrer un guide de reconnaissance. Les chercheurs disent avoir observé la manière dont les requêtes étaient formatées, la façon dont la validation se déroulait, et comment plusieurs services se parlaient pendant la vérification d’âge. Dit autrement, la fuite ne serait pas une extraction de données, mais un gain de renseignement opérationnel.</p> <div>
+<p><a href="https://www.zataz.com/?attachment_id=44142"><img src="https://www.zataz.com/wp-content/uploads/news-letter-zataz-emote-1.png" alt=""><br>
+</a><br>
+News &amp; Réseaux Sociaux ZATAZ</p> <p>Chaque vendredi midi, recevez gratuitement les actualités de la semaine.</p> </div> <p>Dans une logique d’attaque, ce type d’indice compte. Connaître les formats, les enchaînements, les points de contrôle, c’est pouvoir imiter un trafic légitime, automatiser des tests, et chercher le maillon faible au bon endroit. L’auteur du message relayé sur X résume la promesse de ce renseignement technique en liant l’exposition à l’estimation d’âge par reconnaissance faciale et à la vérification d’identité. Discord, de son côté, n’indique pas qu’un acteur ait exploité la faille. L’entreprise parle d’un audit interne et d’un durcissement des mesures de sécurité autour de l’infrastructure de vérification.</p>
+<p>Le timing, lui, est défavorable. Aux États-Unis, en France, en Australie, en Espagne, Etc. la surveillance réglementaire des plateformes en ligne s’est renforcée, en particulier lorsqu’elles sont populaires auprès des mineurs. Une faiblesse, même sans impact confirmé, suffit à mettre sous pression une feuille de route de conformité. L’écosystème comprend le message, les contrôles d’âge ne sont plus une option, mais un champ de bataille où la confiance se gagne au détail près. (<a href="https://x.com/Pirat_Nation/status/2024847507990442480" target="_blank" rel="noopener noreferrer">pirat_nation</a>)</p>
+<h3>Biométrie, conservation et fracture de confiance</h3>
+<p><a href="https://www.zataz.com/?s=discord" target="_blank" rel="noopener noreferrer"><strong>Le dispositif présenté comme «&nbsp;proposé&nbsp;» par Discord</strong></a> repose sur plusieurs voies, estimation de l’âge facial, dépôt de pièces d’identité officielles, ou prédiction algorithmique de l’âge. Cette pluralité ne rassure pas tout le monde, car elle normalise l’idée qu’un accès à des serveurs de jeux ou à des groupes communautaires puisse dépendre de documents officiels ou de selfies biométriques. Pour une partie des utilisateurs, l’anonymat n’est pas un caprice, c’est une barrière de sécurité et un choix culturel.</p>
+<p>La controverse se nourrit aussi de la question la plus explosive, la durée de conservation. Des utilisateurs au Royaume-Uni et sur d’autres marchés rapportent des notifications indiquant que Persona pourrait traiter et conserver temporairement les données soumises jusqu’à sept jours. Les critiques y voient un décalage avec des messages antérieurs perçus comme centrés sur le traitement sur l’appareil et sur un stockage minimal. Aux États-Unis, où la protection des données varie selon les États, ce flou est un accélérateur de scepticisme. Dès que les délais de suppression ne sont pas limpides, la confiance se fissure, et l’ombre de l’abus s’étire.</p>
+<p>Le passé n’aide pas. Discord aurait déjà encaissé des retombées après une faille chez un fournisseur en 2025, qui aurait exposé environ 70 000 images de pièces d’identité gouvernementales utilisées dans des dossiers de contestation d’âge. Pour les critiques, ce précédent devient un repère, si un tiers a pu exposer des documents aussi sensibles, comment généraliser les contrôles d’identité à l’échelle de millions d’utilisateurs sans multiplier les risques.</p>
+<p>Au-delà de la technique, la marque joue gros. Discord s’est construit sur l’échange communautaire et l’ouverture. Une vérification d’âge obligatoire, surtout si elle implique biométrie ou identité, ressemble à un changement de contrat implicite. Des observateurs questionnent aussi le choix de tester Persona dans certaines zones plutôt que de s’appuyer uniquement sur k-ID, partenaire qui met en avant des méthodes sur l’appareil. Faute d’explications détaillées, les spéculations prospèrent et l’incident, même circonscrit, devient un signal, l’entreprise devra démontrer, preuves à l’appui, que son flux d’âge résiste autant aux attaques qu’aux doutes.</p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

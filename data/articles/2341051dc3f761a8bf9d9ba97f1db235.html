@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MCGrad</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>MCGrad</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 7:00:37 PM | <a href="https://github.com/facebookincubator/MCGrad" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><div><p><img src="https://facebookincubator.github.io/img/logo_no_text.png" alt="MCGrad logo"></p><p>Production-ready multicalibration</p></div><div><div><h3>State-of-the-Art Multicalibration</h3><p>Best-in-class calibration quality across a vast number of segments.</p></div><div><h3>Easy to Use</h3><p>Familiar interface. Pass features, not segments.</p></div><div><h3>Highly Scalable</h3><p>Fast to train, low inference overhead, even on web-scale data.</p></div><div><h3>Safe by Design</h3><p>Likelihood-improving updates with validation-based early stopping.</p></div></div><div><p></p><h2>Quickstart</h2><p></p><div><p>Install</p><div><pre><code><span><span>pip install mcgrad</span><br></span></code></pre></div><p>Minimal code example</p><div><pre><code><span><span></span><span><span>from</span><span> mcgrad </span><span>import</span><span> methods</span></span><br></span><span><span></span><span><span></span><span>import</span><span> pandas </span><span>as</span><span> pd</span></span><br></span><span><span></span><span><span></span><span>import</span><span> numpy </span><span>as</span><span> np</span></span><br></span><span><span></span><span><span></span></span><br></span><span><span></span><span><span></span><span># Prepare your training data</span><span></span></span><br></span><span><span></span><span><span>df_train </span><span>=</span><span> pd</span><span>.</span><span>DataFrame</span><span>(</span><span>{</span><span></span></span><br></span><span><span></span><span><span> </span><span>'prediction'</span><span>:</span><span> np</span><span>.</span><span>array</span><span>(</span><span>[</span><span>.</span><span>.</span><span>.</span><span>]</span><span>)</span><span>,</span><span> </span><span># Base model predictions</span><span></span></span><br></span><span><span></span><span><span> </span><span>'label'</span><span>:</span><span> np</span><span>.</span><span>array</span><span>(</span><span>[</span><span>.</span><span>.</span><span>.</span><span>]</span><span>)</span><span>,</span><span> </span><span># Ground truth labels</span><span></span></span><br></span><span><span></span><span><span> </span><span># Several attributes that define segments (can be categorical or numerical)</span><span></span></span><br></span><span><span></span><span><span> </span><span>'country'</span><span>:</span><span> </span><span>[</span><span>.</span><span>.</span><span>.</span><span>]</span><span>,</span><span></span></span><br></span><span><span></span><span><span> </span><span>'content_type'</span><span>:</span><span> </span><span>[</span><span>.</span><span>.</span><span>.</span><span>]</span><span>,</span><span></span></span><br></span><span><span></span><span><span> </span><span>'age'</span><span>:</span><span> </span><span>[</span><span>.</span><span>.</span><span>.</span><span>]</span><span>,</span><span></span></span><br></span><span><span></span><span><span></span><span>}</span><span>)</span><span></span></span><br></span><span><span></span><span><span></span></span><br></span><span><span></span><span><span></span><span># Train MCGrad</span><span></span></span><br></span><span><span></span><span><span>mcgrad </span><span>=</span><span> methods</span><span>.</span><span>MCGrad</span><span>(</span><span>)</span><span></span></span><br></span><span><span></span><span><span>mcgrad</span><span>.</span><span>fit</span><span>(</span><span></span></span><br></span><span><span></span><span><span> df_train</span><span>=</span><span>df_train</span><span>,</span><span></span></span><br></span><span><span></span><span><span> prediction_column_name</span><span>=</span><span>'prediction'</span><span>,</span><span></span></span><br></span><span><span></span><span><span> label_column_name</span><span>=</span><span>'label'</span><span>,</span><span></span></span><br></span><span><span></span><span><span> categorical_feature_column_names</span><span>=</span><span>[</span><span>'country'</span><span>,</span><span> </span><span>'content_type'</span><span>]</span><span>,</span><span></span></span><br></span><span><span></span><span><span> numerical_feature_column_names</span><span>=</span><span>[</span><span>'age'</span><span>]</span><span>,</span><span></span></span><br></span><span><span></span><span><span></span><span>)</span><span></span></span><br></span><span><span></span><span><span></span></span><br></span><span><span></span><span><span></span><span># Get multicalibrated predictions on test data</span><span></span></span><br></span><span><span></span><span><span>calibrated_predictions </span><span>=</span><span> mcgrad</span><span>.</span><span>predict</span><span>(</span><span></span></span><br></span><span><span></span><span><span> df</span><span>=</span><span>df_test</span><span>,</span><span> </span><span># Your test DataFrame with same columns</span><span></span></span><br></span><span><span></span><span><span> prediction_column_name</span><span>=</span><span>'prediction'</span><span>,</span><span></span></span><br></span><span><span></span><span><span> categorical_feature_column_names</span><span>=</span><span>[</span><span>'country'</span><span>,</span><span> </span><span>'content_type'</span><span>]</span><span>,</span><span></span></span><br></span><span><span></span><span><span> numerical_feature_column_names</span><span>=</span><span>[</span><span>'age'</span><span>]</span><span>,</span><span></span></span><br></span><span><span></span><span><span></span><span>)</span></span><br></span></code></pre></div></div></div><div><p></p><h2>Citing MCGrad</h2><p></p><div><p><a href="https://arxiv.org/abs/2509.19884">MCGrad: Multicalibration at Web Scale</a></p><div><pre><code><span><span></span><br></span><span><span>@inproceedings{tax2026mcgrad,</span><br></span><span><span> title = {{MCGrad: Multicalibration at Web Scale}},</span><br></span><span><span> author = {Tax, Niek and Perini, Lorenzo and Linder, Fridolin and Haimovich, Daniel</span><br></span><span><span> and Karamshuk, Dima and Okati, Nastaran and Vojnovic, Milan</span><br></span><span><span> and Apostolopoulos, Pavlos Athanasios},</span><br></span><span><span> booktitle = {Proceedings of the 32nd ACM SIGKDD Conference on</span><br></span><span><span> Knowledge Discovery and Data Mining V.1 (KDD 2026)},</span><br></span><span><span> year = {2026},</span><br></span><span><span> doi = {10.1145/3770854.3783954}</span><br></span><span><span>}</span><br></span></code></pre></div></div></div></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

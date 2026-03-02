@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cannot start the domoticz daemon in systemd but can be started in terminal</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Cannot start the domoticz daemon in systemd but can be started in terminal</h1>
+  <div class="metadata">
+    Source: Domoticz (Forum News) | Date: 2/22/2026 2:21:28 PM | <a href="https://forum.domoticz.com/viewtopic.php?p=331727#p331727" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div><p>The systemd script in /etc/systemd/system is:
+</p><div><p>Code: <a href="#">Select all</a></p><pre><code>[Unit]
+Description=Domoticz Home Automation Service
+After=network-online.target [Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/domoticz
+ExecStart=/home/pi/domoticz/domoticz -daemon -www 8080 -sslwww 443 -pidfile /var/run/domoticz/domoticz.pid
+Restart=on-failure [Install]
+WantedBy=multi-user.target
+</code></pre></div><p> The result of starting the systemd script:</p><div><p>Code: <a href="#">Select all</a></p><pre><code>domoticz.service - Domoticz Home Automation Service Loaded: loaded (/etc/systemd/system/domoticz.service; enabled; preset: enabled) Active: inactive (dead) since Sun 2026-02-22 14:10:25 GMT; 5min ago Duration: 191ms Invocation: 25c5fb4ab80c413489635312fe0ac205 Process: 1079 ExecStart=/home/pi/domoticz/domoticz -daemon -www 8080 -sslwww 443 -pidfile /var/run/domoticz/domoticz.pid (code=exited&gt; Main PID: 1079 (code=exited, status=0/SUCCESS) CPU: 545ms Feb 22 14:10:23 rpidhcpserver systemd[1]: Started domoticz.service - Domoticz Home Automation Service.
+Feb 22 14:10:23 rpidhcpserver domoticz[1079]: 2026-02-22 14:10:23.847 Status: Domoticz V2025.2 (c)2012-2025 GizMoCuz
+Feb 22 14:10:23 rpidhcpserver domoticz[1079]: 2026-02-22 14:10:23.847 Status: Build Hash: e63981b18, Date: 2025-10-13 10:42:57
+Feb 22 14:10:23 rpidhcpserver domoticz[1079]: 2026-02-22 14:10:23.847 Status: Startup Path: /home/pi/domoticz/
+Feb 22 14:10:23 rpidhcpserver domoticz[1079]: domoticz: Domoticz is starting up....
+Feb 22 14:10:23 rpidhcpserver domoticz[1079]: Domoticz is starting up....
+Feb 22 14:10:23 rpidhcpserver domoticz[1080]: Domoticz is exiting...
+Feb 22 14:10:25 rpidhcpserver systemd[1]: domoticz.service: Deactivated successfully.
+</code></pre></div><p> If I run the execstart code in the command line, the domoticz daemon is created. Why can't systemd do the same?</p><div><p>Code: <a href="#">Select all</a></p><pre><code>home/pi/domoticz/domoticz -daemon -www 8080 -sslwww 443 -pidfile /var/run/domoticz/domoticz.pid</code></pre></div><p> Result of running in commandline as user pi:</p><div><p>Code: <a href="#">Select all</a></p><pre><code>pi@rpidhcpserver:~/domoticz $ /home/pi/domoticz/domoticz -daemon -www 8080 -sslwww 443 -pidfile /var/run/domoticz/domoticz.pid
+2026-02-22 14:17:42.839 Status: Domoticz V2025.2 (c)2012-2025 GizMoCuz
+2026-02-22 14:17:42.839 Status: Build Hash: e63981b18, Date: 2025-10-13 10:42:57
+2026-02-22 14:17:42.839 Status: Startup Path: /home/pi/domoticz/
+domoticz: Domoticz is starting up....
+</code></pre></div><p> I did use systemd tmpfiles.d to create /run/domoticz. /etc/tmpfiles.d/domoticz.conf contains</p><div><p>Code: <a href="#">Select all</a></p><pre><code>#Type Path Mode UID GID Age Argument
+d /run/domoticz 0755 pi pi - -
+</code></pre></div><p> Thanks, <br>
+Chris</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

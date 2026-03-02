@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>More ISA Differences Come To Light With The New AMD GFX1170 "RDNA 4m"</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>More ISA Differences Come To Light With The New AMD GFX1170 "RDNA 4m"</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/18/2026 10:40:00 PM | <a href="https://www.phoronix.com/news/AMD-GFX1170-More-ISA-Diffs" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div>
+<p><img alt="RADEON" src="https://www.phoronix.com/assets/categories/radeon.webp"></p><p>
+Earlier this month we spotted the addition of <a href="https://www.phoronix.com/news/AMDGPU-LLVM-GFX1170">a new GFX1170 GPU target in the AMDGPU LLVM back-end</a>. Making this GFX1170 target interesting is that its marked as an APU/SoC part with "RDNA 4m" while being part of the GFX11 series. The GFX11 series is for RDNA3, GFX115x is for RDNA 3.5, and GFX12 is RDNA4. More ISA changes have now been committed to the AMDGPU LLVM back-end that make a few more instruction differences better aligned with RDNA4.
+</p><p>
+The GFX1170 target in the LLVM AMDGPU code began with just a few feature differences over existing GFX3 targets, most notably was FP8/BF8 conversion support added. In the time since that initial activity, more differences are now indicated in the latest LLVM Git code.
+</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=more_gfx1170" alt="GFX1170 pull requests"></p>
+<p>Merged today are <a href="https://github.com/llvm/llvm-project/commit/829afc4c91fcac3823cdf06baf683fe3356a9e91">new WMMA and SWMMAC instructions</a> for GFX1170 hardware. That code added new WMMA128bInsts for GFX1170 and GFX12 WMMA and SWMMAC instructions to better separate from the existing WMMA256bInsts for GFX11 WMMA instructions that don't apply to the GFX1170 series. The Wave Matrix Multiply Accumulate (WMMA) ISA improvements to better match RDNA4/GFX12 should help with AI/ML and other GPU compute workloads.
+</p><p>
+Also <a href="https://github.com/llvm/llvm-project/pull/182088">merged</a> today is dropping V_DOT2ACC_F32_F16 from GFX1170 series. V_DOT2ACC_F32_F16 is used for the dot product of packed FP16 values, accumulate with destination. RDNA4 dropped V_DOT2ACC_F32_F16 while GFX1170 is also removing this instruction.
+</p><p>
+Another <a href="https://github.com/llvm/llvm-project/pull/182107">open merge request</a> that was opened a few hours ago drops DX10_CLAMP and IEEE bits from the GFX1170 series. The "amdgpu-ieee" mode is to specify whether the function expects the IEEE field of the mode register to be set on entry. The "amdgpu-dx10-clamp" specifies whether the DX10_CLAMP field of the mode register is to be set on entry for matching DirectX 10 behavior around Not a Number "NaN" in the vector ALU. RDNA4 already dropped DX10_CLAMP while GFX1170 is now shifting away too.
+</p><p>
+Interesting to see more of these ISA changes coming about for GFX1170 to better push it closer to RDNA4 than RDNA3 and making more sense as "RDNA 4m" rather than just marketing speak. We still don't know though what APUs/SoCs are ultimately expected to have this RDNA 4m graphics IP.</p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

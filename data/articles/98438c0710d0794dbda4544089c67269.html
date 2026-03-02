@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>PostgreSQL Statistics: Why queries run slow</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>PostgreSQL Statistics: Why queries run slow</h1>
+  <div class="metadata">
+    Source: Hacker News (nouveautés) | Date: 2/27/2026 8:03:44 AM | <a href="https://boringsql.com/posts/postgresql-statistics/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><div> <p>Every query starts with a plan. Every slow query probably starts with a bad one. And more often than not, the statistics are to blame. But how does it really work? PostgreSQL doesn't run the query to find out - it estimates the cost. It reads pre-computed data from <code>pg_class</code> and <code>pg_statistic</code> and does the maths to figure out the cheapest path to your data.</p>
+<p>In ideal scenario, the numbers read are accurate, and you get the plan you expect. But when they are stale, the situation gets out of control. Planner estimates 500 rows, plans a nested loop, and hits 25,000. What seemed as optimal plan turns into a cascading failure.</p>
+<p>How do statistics get stale? It can be either bulk load, a schema migration, faster-than-expected growth, or simply <code>VACUUM</code> not keeping up. Whatever the cause, the result is the same. The planner is flying blind. Choosing paths based on reality that no longer exists.</p>
+<p>In this post we will go inside the two catalogs the planner depends on, understand what <code>ANALYZE</code> actually gets for you from a 30,000-row table, and see how those numbers determine whether your query takes milliseconds or minutes.</p>
+<h2>Sample schema<a href="#sample-schema"></a>
+</h2>
+<p>For demonstration purposes we will use the same schema as in the article <a href="https://boringsql.com/posts/explain-buffers/">Reading Buffer statistics in EXPLAIN output</a>.</p>
+<pre><code><span><span>CREATE TABLE</span><span> customers</span><span> (</span></span>
+<span><span> id </span><span>integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY</span><span>,</span></span>
+<span><span> name text NOT NULL</span></span>
+<span><span>);</span></span>
+<span></span>
+<span><span>CREATE TABLE</span><span> orders</span><span> (</span></span>
+<span><span> id </span><span>integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY</span><span>,</span></span>
+<span><span> customer_id </span><span>integer NOT NULL REFERENCES</span><span> customers(id),</span></span>
+<span><span> amount </span><span>numeric</span><span>(</span><span>10</span><span>,</span><span>2</span><span>)</span><span> NOT NULL</span><span>,</span></span>
+<span><span> status text NOT NULL DEFAULT</span><span> 'pending'</span><span>,</span></span>
+<span><span> note </span><span>text</span><span>,</span></span>
+<span><span> created_at </span><span>date NOT NULL DEFAULT</span><span> CURRENT_DATE</span></span>
+<span><span>);</span></span>
+<span></span>
+<span><span>INSERT INTO</span><span> customers (</span><span>name</span><span>)</span></span>
+<span><span>SELECT</span><span> 'Customer '</span><span> ||</span><span> i</span></span>
+<span><span>FROM</span><span> generate_series</span><span>(</span><span>1</span><span>, </span><span>2000</span><span>) </span><span>AS</span><span> i;</span></span>
+<span></span>
+<span><span>INSERT INTO</span><span> orders (customer_id, amount, </span><span>status</span><span>, note, created_at)</span></span>
+<span><span>SELECT</span></span>
+<span><span> (random()</span><span> *</span><span> 1999</span><span> +</span><span> 1</span><span>)::</span><span>int</span><span>,</span></span>
+<span><span> (random()</span><span> *</span><span> 500</span><span> +</span><span> 5</span><span>)::</span><span>numeric</span><span>(</span><span>10</span><span>,</span><span>2</span><span>),</span></span>
+<span><span> (</span><span>ARRAY</span><span>['pending','shipped','delivered','cancelled'])[floor(random()*4+1)::int],</span></span>
+<span><span> CASE WHEN</span><span> random()</span><span> &lt;</span><span> 0</span><span>.</span><span>3</span><span> THEN</span><span> 'Some note text here for padding'</span><span> ELSE NULL END</span><span>,</span></span>
+<span><span> '2022-01-01'</span><span>::</span><span>date +</span><span> (random()</span><span> *</span><span> 1095</span><span>)::</span><span>int</span></span>
+<span><span>FROM</span><span> generate_series</span><span>(</span><span>1</span><span>, </span><span>100000</span><span>);</span></span>
+<span></span>
+<span><span>ANALYZE customers;</span></span>
+<span><span>ANALYZE orders;</span></span></code></pre><h2>What the Planner Reads<a href="#what-the-planner-reads"></a>
+</h2>
+<p>As mentioned above, every decision the planner makes is based on two sources:</p>
+<ul>
+<li>table-level metadata from <code>pg_class</code></li>
+<li>column-level metadata from <code>pg_statistic</code>.</li>
+</ul>
+<h3>pg_class - relational-level stats<a href="#pg-class-relational-level-stats"></a>
+</h3>
+<p>It actually tracks all <i>relations</i>. Not just tables and indexes, but also partitions, TOAST tables, sequences, composite types, and views. </p><p>Every table, index and materialized view has a row in `pg_class`. Before it even looks at column-level statistics, the planner reads four values from it:
+</p><table><thead><tr><th>Column</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>relpages</code></td><td>Number of 8KB pages representing the table on the disk</td></tr>
+<tr><td><code>reltuples</code></td><td>Estimated number of live rows in the table</td></tr>
+<tr><td><code>relallvisible</code></td><td>Pages where all tuples are visible to all transactions</td></tr>
+</tbody></table>
+<p>For our sample table it looks like this.</p>
+<pre><code><span><span>SELECT</span><span> relname, relpages, reltuples, relallvisible</span></span>
+<span><span>FROM</span><span> pg_class</span></span>
+<span><span>WHERE</span><span> relname </span><span>=</span><span> 'orders'</span><span>;</span></span></code></pre><pre><code><span><span> relname | relpages | reltuples | relallvisible</span></span>
+<span><span>---------+----------+-----------+---------------</span></span>
+<span><span> orders | 856 | 100000 | 856</span></span></code></pre><p>Compared to reading page from disk, handling single tuple represents tiny overhead. Per-row overhead is configured using <code>cpu_tuple_cost</code>, which defaults to <code>0.01</code></p>
+<p>The planner sees 100,000 rows spread across 856 pages. Every cost estimate starts from those two numbers. <code>relpages</code> drives sequential scan cost - each page is one unit of I/O work as configured via <code>seq_page_cost</code>. <code>reltuples</code> controls estimates for joins, aggregations, and pretty much everything else.</p>
+<div>
+<p>The <code>reltuples</code> value is only an estimate, not a live count. It's updated by <code>ANALYZE</code> (and autovacuum), not by individual INSERTs or DELETEs. Between ANALYZE runs, PostgreSQL scales <code>reltuples</code> proportionally when <code>relpages</code> value changes - if the table grows by 10% in pages, the planner assumes 10% more rows too.</p>
+<p>This works well enough for normal growth, but breaks down with bloat. If dead tuples are inflating the number of pages used, without adding real rows, the planner overestimates the table size.</p>
+</div>
+<p>The other column mentioned above matters for specific operations. <code>relallvisible</code> tells the planner how much of the table can be read with an index-only scan. Meaning an index-only scan can return results using the index without checking the heap for visibility.</p>
+<h3>pg_statistic (via pg_stats) - column-level stats<a href="#pg-statistic-via-pg-stats-column-level-stats"></a>
+</h3>
+<p>Knowing the size of a table is only half the picture. To estimate how many rows might match, the planner needs to understand the data inside each column. PostgreSQL maintains statistics in <code>pg_statistic</code> catalog. Which you're most likely never going to use directly. In practice you will use the view <code>pg_stats</code> which presents the human-friendly data behind it.</p>
+<p>The most interesting values it exposes are:</p>
+<table><thead><tr><th>Statistic</th><th>What it tells the planner</th></tr></thead><tbody>
+<tr><td><code>null_frac</code></td><td>Fraction of entries that are NULL values</td></tr>
+<tr><td><code>avg_width</code></td><td>Average width in bytes</td></tr>
+<tr><td><code>n_distinct</code></td><td>Number of distinct values (negative means fraction of rows)</td></tr>
+<tr><td><code>most_common_vals</code></td><td>Most frequent values</td></tr>
+<tr><td><code>most_common_freqs</code></td><td>Frequencies of those values</td></tr>
+<tr><td><code>histogram_bounds</code></td><td>Values dividing the remaining data into equal-population buckets (most_common_vals are excluded)</td></tr>
+<tr><td><code>correlation</code></td><td>Statistical correlation between physical row ordering and logical ordering of the column values</td></tr>
+</tbody></table>
+<pre><code><span><span>SELECT</span><span> attname, null_frac, avg_width, n_distinct,</span></span>
+<span><span> most_common_vals, most_common_freqs, histogram_bounds, correlation</span></span>
+<span><span>FROM</span><span> pg_stats</span></span>
+<span><span>WHERE</span><span> tablename </span><span>=</span><span> 'orders'</span><span> AND</span><span> attname </span><span>=</span><span> 'status'</span><span>;</span></span></code></pre><pre><code><span><span>-[ RECORD 1 ]-----+--------------------------------------</span></span>
+<span><span>attname | status</span></span>
+<span><span>null_frac | 0</span></span>
+<span><span>avg_width | 8</span></span>
+<span><span>n_distinct | 4</span></span>
+<span><span>most_common_vals | {pending,shipped,delivered,cancelled}</span></span>
+<span><span>most_common_freqs | {0.25396666,0.25,0.24973333,0.2463}</span></span>
+<span><span>histogram_bounds |</span></span>
+<span><span>correlation | 0.2524199</span></span></code></pre>
+<p>From this planner knows there are exactly 4 distinct values, more or less equally distributed, without any NULL values. When you write a predicate <code>WHERE status = 'pending'</code> it will estimate ~25% of rows are going to match. All that by not running a query, but reading the catalog row.</p>
+<p>Different situation is when checking column <code>note</code>.</p>
+<pre><code><span><span>SELECT</span><span> attname, null_frac, avg_width, n_distinct,</span></span>
+<span><span> array_length(most_common_vals, </span><span>1</span><span>) </span><span>AS</span><span> mcv_count,</span></span>
+<span><span> array_length(histogram_bounds, </span><span>1</span><span>) </span><span>AS</span><span> histogram_buckets</span></span>
+<span><span>FROM</span><span> pg_stats</span></span>
+<span><span>WHERE</span><span> tablename </span><span>=</span><span> 'orders'</span><span> AND</span><span> attname </span><span>=</span><span> 'note'</span><span>;</span></span></code></pre><pre><code><span><span>-[ RECORD 1 ]-----+-------</span></span>
+<span><span>attname | note</span></span>
+<span><span>null_frac | 0.6982</span></span>
+<span><span>avg_width | 32</span></span>
+<span><span>n_distinct | 1</span></span>
+<span><span>mcv_count | 1</span></span>
+<span><span>histogram_buckets |</span></span></code></pre>
+<p>For this column there's ~70% of NULLs, and only one distinct value. Therefore <code>WHERE note IS NOT NULL</code> will estimate 30% of rows.</p>
+<h2>Selectivity in Action<a href="#selectivity-in-action"></a>
+</h2>
+<p>Now that we have covered what data the planner has available, let's have a look at how it's used to estimate how many rows a certain part of a query will read. This "guess" is called <strong>Selectivity</strong>. And it's defined as a floating-point number between 0 and 1.</p>
+<p>The formula is pretty simple:</p>
+<pre><code><span><span> Estimated Rows = Total Rows * Selectivity</span></span></code></pre>
+<p>But the way Selectivity is calculated depends entirely on the operator you use (<code>=</code>, <code>&lt;</code>, <code>&gt;</code> or <code>LIKE</code>).</p>
+<h3>The equality (Most Common Values)<a href="#the-equality-most-common-values"></a>
+</h3>
+<p>Equality is easiest to start with. When you use <code>WHERE status = 'shipped'</code> the planner first checks <code>most_common_vals</code> (MCV) list. If there's a match, the selectivity is same as the one provided by <code>most_common_freqs</code>.</p>
+<p>If the value isn't in the list, the planner assumes the value is part of the "remaining" population. It subtracts all MCV frequencies from 1.0 and divides the remainder by the number of other distinct values.</p>
+<pre><code><span><span>(1.0 - (SELECT sum(s) FROM unnest(most_common_freqs) s))</span></span>
+<span><span> /</span></span>
+<span><span>(n_distinct - array_length(most_common_vals, 1))</span></span></code></pre><h3>The Range lookup (The Histogram)<a href="#the-range-lookup-the-histogram"></a>
+</h3>
+<p>Life would be easy if we would be looking only for exact values. Most of the time we need to utilise range lookup. For example <code>WHERE amount &gt; 400</code>.</p>
+<p>MCVs are useless in this case as there might be thousands or millions of unique constants. This is where <code>histogram_bounds</code> comes in. PostgreSQL divides the column values into a number of buckets, where each bucket contains equal number of rows (not values).</p>
+<p>The Selectivity in this case is determined by how many buckets your query covers. In our example, if we have bounds <code>(100, 200, 300, 400, 500, 600)</code> the planner will establish it covers 2 full buckets. Since there are 5 buckets in total the Selectivity is going to be 0.4 (2/5).</p>
+<p>If you are now wondering where 2 and 5 come from? The <code>histogram_bounds</code> array defines boundaries between buckets. With bounds <code>(100, 200, 300, 400, 500, 600)</code> there are 5 buckets in total.</p>
+<pre><code><span><span>(100-200), (200-300), (300-400), (400-500), (500-600)</span></span></code></pre>
+<p>And the same logic applies to matching. The condition <code>amount &gt; 400</code> matches on <code>(400-500)</code> and <code>(500-600)</code> buckets (2 in total).</p>
+<p>The histogram's biggest weakness is linear interpolation. If your data has massive spikes in distribution the planner will always assume a perfect distribution.</p>
+<p>Slightly more complex situation happens in the cases where your value falls inside a bucket. If your query has <code>WHERE amount &gt; 350</code> the planner locates the bucket containing value 350 (in our example <code>(300-400)</code>), assumes the data is linearly distributed and calculates the ratio within that bucket.</p>
+<h3>Search and pattern matching<a href="#search-and-pattern-matching"></a>
+</h3>
+<p>This is probably the most treacherous territory for the planner. For substring matching patterns like <code>WHERE note LIKE '%middle%'</code>, there's no histogram or list of values to rely on. The planner must fall back to "magic constants" hardcoded in the PostgreSQL source code.</p>
+<p>The default for generic patterns is 0.5% of the total rows, defined as</p>
+<pre><code><span><span>#define DEFAULT_MATCH_SEL 0.005</span></span></code></pre>
+<p>Slightly better situation comes for prefixed matches like <code>WHERE note LIKE 'boringSQL%'</code> where PostgreSQL can fall back to range conditions and use histogram bounds. While this is a subtle difference, it makes a night and day difference. Unfortunately, few software developers are aware of it.</p>
+<h3>Correlation and index scan cost<a href="#correlation-and-index-scan-cost"></a>
+</h3>
+<p>Remember <code>correlation</code> from the <code>pg_stats</code>? It says how closely the physical order of rows on disk matches the logical order of column values. Values close to 1.0 mean high correlation, values near 0 mean data is laid out randomly across pages.</p>
+<p>If you recall <a href="https://boringsql.com/posts/inside-the-8kb-page/">how data is organized in 8KB page</a> the row locality matters. This matters because it determines whether an index scan is worth it. The planner assumes a random page read costs 4× more than a sequential one (<code>random_page_cost = 4.0</code> vs <code>seq_page_cost = 1.0</code>). When correlation is high, the rows an index points to are physically adjacent. The planner expects sequential I/O and costs the scan cheaply. When correlation is low, each lookup likely hits a different page, and the planner costs each of those reads at the higher random rate. That difference alone can be enough to make a sequential scan cheaper than an index scan.</p>
+<h3>n_distinct and join estimation<a href="#n-distinct-and-join-estimation"></a>
+</h3>
+<p>Value <code>n_distinct</code> plays an important role in joins. This further stresses the importance of running <code>ANALYZE</code> after bulk data changes.</p>
+<p>Let's imagine this simplified logic for the equality join:</p>
+<p>In reality, Postgres also accounts for <code>null_frac</code> (NULLs don't join) and MCVs on both sides. If both sides have MCVs, it calculates the "inner product" of the frequencies.</p>
+<pre><code><span><span>estimated_rows = (rows_left × rows_right) / max(n_distinct_left, n_distinct_right)</span></span></code></pre>
+<p>Let's say you're trying to join two tables, both having roughly 2,000 distinct values for the join key. Outdated <code>n_distinct</code> will cause significant estimation drifts and the planner may pick a wrong join strategy altogether.</p>
+<h3>This is the heap we are talking about<a href="#this-is-the-heap-we-are-talking-about"></a>
+</h3>
+<p>Please, keep in mind this describes how the planner estimates rows for a basic heap scan. Indexes, join selectivity, and complex types like JSONB each come with their own estimation logic, operator handling and quirks. The fundamentals of estimation are the same nevertheless.</p>
+<h2>What if there are no statistics?<a href="#what-if-there-are-no-statistics"></a>
+</h2>
+<p>So far we have touched on why up-to-date statistics are a must. But what if there are no statistics at all? For example for a new table or new column when <code>ANALYZE</code> has not yet run.</p>
+<p>In those cases PostgreSQL falls back to hardcoded defaults.</p>
+<table><thead><tr><th>Condition type</th><th>Default selectivity</th><th>Constant</th></tr></thead><tbody>
+<tr><td>Equality (<code>=</code>)</td><td>0.5%</td><td><code>DEFAULT_EQ_SEL = 0.005</code></td></tr>
+<tr><td>Range (<code>&gt;</code>, <code>&lt;</code>)</td><td>33.3%</td><td><code>DEFAULT_INEQ_SEL = 0.3333</code></td></tr>
+<tr><td>Range (<code>BETWEEN</code>)</td><td>0.5%</td><td><code>DEFAULT_RANGE_INEQ_SEL = 0.005</code></td></tr>
+<tr><td>Pattern matching (<code>LIKE</code>)</td><td>0.5%</td><td><code>DEFAULT_MATCH_SEL = 0.005</code></td></tr>
+<tr><td><code>IS NULL</code></td><td>0.5%</td><td><code>DEFAULT_UNK_SEL = 0.005</code></td></tr>
+<tr><td><code>IS NOT NULL</code></td><td>99.5%</td><td><code>DEFAULT_NOT_UNK_SEL = 0.995</code></td></tr>
+</tbody></table>
+<p>Nothing that a quick <code>ANALYZE</code> can't fix, correct? Or maybe not.</p>
+<div>
+<p><strong>Where No Statistics Go</strong><br>
+While this article focuses on statistics and getting them right, there are situations where no statistics will be available (never or not predictably). If you believe it won't affect you, please, think twice.
+</p><ul>
+<li><strong>CTEs and subqueries</strong> when not inlined/materialized have no statistics.</li>
+<li><strong>Temporary tables</strong> are not touched by autovacuum, so no automatic <code>ANALYZE</code>.</li>
+<li><strong>Foreign tables</strong> do not guarantee stats are propagated.</li>
+<li>And, to a big surprise, <strong>computed expressions in WHERE</strong> like <code>WHERE amount * 1.1 &gt; 500</code> or <code>lower(email) = 'hello@example.com'</code>; unless you create an expression index or extended statistics.</li>
+</ul>
+</div>
+<h2>How <code>ANALYZE</code> Works<a href="#how-analyze-works"></a>
+</h2>
+<p>As we have already mentioned several times, <code>ANALYZE</code> is the only mechanism that populates <code>pg_class</code> and <code>pg_statistic</code> with fresh data. Understanding what it samples, what it computes, and what it misses, is key to understanding why statistics are sometimes wrong.</p>
+<p>The process itself consists of 6 separate steps (as reported by <code>pg_stat_progress_analyze</code>):</p>
+<ol>
+<li>initializing</li>
+<li>acquiring sample rows</li>
+<li>acquiring inherited sample rows (child/partitioned tables)</li>
+<li>computing statistics (MCVs, histograms, correlation, etc.)</li>
+<li>computing extended statistics (see below)</li>
+<li>finalizing and writing to <code>pg_statistic</code></li>
+</ol>
+<p>For our purposes we will only cover sampling, computing statistics and writing to <code>pg_statistic</code>.</p>
+<h3>The sampling mechanism<a href="#the-sampling-mechanism"></a>
+</h3>
+<p>ANALYZE actually doesn't read the entire table. It samples what is considered to be a statistically justified minimum sample size (defined as 300 for the <a href="https://en.wikipedia.org/wiki/Reservoir_sampling">reservoir sampling</a> algorithm). For PostgreSQL that means 300 × <code>default_statistics_target</code> rows.</p>
+<pre><code><span><span>SHOW default_statistics_target;</span></span></code></pre><pre><code><span><span> default_statistics_target</span></span>
+<span><span>---------------------------</span></span>
+<span><span> 100</span></span>
+<span><span>(1 row)</span></span></code></pre>
+<p>With the default target of 100, that's 30,000 rows. For our 100,000-row orders table, <code>ANALYZE</code> reads about 30% of the data. For a 50-million-row table, it reads 0.06%. The same target also controls the size of the MCV list and histogram. Up to 100 entries each.</p>
+<p>With a target of 100, don't be surprised that <code>histogram_bounds</code> contains 101 values. 100 buckets need 101 boundaries to close them.</p>
+<p>The sampling is two-stage. First, <code>ANALYZE</code> selects a random set of pages. Then it reads all live rows from those pages. This gives a representative cross-section without reading every page.</p>
+<h3>Computing statistics<a href="#computing-statistics"></a>
+</h3>
+<p>Once ANALYZE has its 30,000 sample rows (considering the default values), it processes each column independently. The pipeline for a single column looks roughly like this:</p>
+<p>First, it counts NULLs and calculates <code>null_frac</code> and <code>avg_width</code> - the cheapest statistics to compute. Then it sorts the non-null values and builds the MCV list by counting duplicates. Values that appear frequently enough make the cut; the rest are passed to the histogram builder, which divides them into equal-population buckets. Finally, because the values are already sorted, ANALYZE compares the logical sort order against the physical tuple positions (which page each row came from) to compute <code>correlation</code>.</p>
+<p>The key detail here is that MCVs and histograms are not built from the same pool. Values that land in <code>most_common_vals</code> are excluded from <code>histogram_bounds</code>. This is why you'll sometimes see a column with MCVs but no histogram, or a histogram but no MCVs. They represent different slices of the same data.</p>
+<h3>Writing to pg_statistic<a href="#writing-to-pg-statistic"></a>
+</h3>
+<p>Once all columns are processed, ANALYZE writes the results into <code>pg_statistic</code> - one row per column. If a row for that column already exists, it's updated in place. This is a regular heap update, which means the old row becomes a dead tuple. On tables with many columns or frequent ANALYZE runs, this can cause <code>pg_statistic</code> itself to bloat.</p>
+<p>After <code>pg_statistic</code> is updated, ANALYZE refreshes <code>relpages</code>, <code>reltuples</code>, and <code>relallvisible</code> in <code>pg_class</code>. These values are recalculated from the sampling, not from a full table scan (they are estimates too).</p>
+<h2>Controlling statistics quality<a href="#controlling-statistics-quality"></a>
+</h2>
+<h3>default_statistics_target<a href="#default-statistics-target"></a>
+</h3>
+<p>The default target of 100 works well for most columns. It means up to 100 MCVs, 101 histogram bounds, and a 30,000-row sample. Increasing it helps when:</p>
+<ul>
+<li>A column has many distinct values and the top 100 don't cover enough of the distribution</li>
+<li>Range queries on skewed data produce bad estimates because histogram buckets are too coarse</li>
+<li>Join estimates are off because <code>n_distinct</code> is inaccurate</li>
+</ul>
+<p>The cost scales linearly. Setting it to 1000 means 300,000 sampled rows, up to 1000 MCVs, more catalog storage, and slower planning from larger arrays to search. The maximum is 10,000.</p>
+<p>You don't have to raise it globally. For a single problematic column:</p>
+<pre><code><span><span>ALTER TABLE</span><span> orders </span><span>ALTER</span><span> COLUMN </span><span>status SET STATISTICS</span><span> 500</span><span>;</span></span>
+<span><span>ANALYZE orders;</span></span></code></pre>
+<p>Now <code>status</code> gets up to 500 MCVs and 501 histogram bounds, while every other column stays at 100.</p>
+<h3>Extended statistics<a href="#extended-statistics"></a>
+</h3>
+<p>Standard statistics treat each column independently. This means the planner can't know that <code>city = 'Edinburgh'</code> and <code>country = 'UK'</code> are correlated. It multiplies their selectivities independently, potentially underestimating by orders of magnitude.</p>
+<p>Extended statistics solve this for specific column combinations:</p>
+<pre><code><span><span>CREATE STATISTICS</span><span> orders_status_date (dependencies, ndistinct, mcv)</span></span>
+<span><span> ON status</span><span>, created_at </span><span>FROM</span><span> orders;</span></span>
+<span><span>ANALYZE orders;</span></span></code></pre>
+<p>This tells ANALYZE to compute functional dependencies, combined distinct counts, and combined MCVs between the columns. The planner can then use these to avoid the independence assumption for queries filtering on both columns.</p>
+<p>The three types of extended statistics serve different purposes:</p>
+<ul>
+<li><strong>dependencies</strong> capture functional dependencies between columns. Helps when knowing one column's value determines or narrows another's (e.g. <code>zip_code</code> largely determines <code>city</code>).</li>
+<li><strong>ndistinct</strong> tracks the number of distinct value combinations across columns. Helps with <code>GROUP BY</code> on multiple columns where the planner would otherwise multiply distinct counts independently.</li>
+<li><strong>mcv</strong> builds a combined most-common-values list for column tuples. The most powerful but most expensive option. Helps with multi-column WHERE conditions on correlated values.</li>
+</ul>
+<p>You can create extended statistics with any combination of these types. Start with <code>dependencies</code> as it's cheapest, add <code>mcv</code> when multi-column filter estimates are consistently wrong.</p>
+<p>Extended statistics are worth creating when you see <code>EXPLAIN</code> estimates that are consistently wrong on multi-column filters, and the columns are logically correlated. They are computed during step 5 of the ANALYZE process and stored in <code>pg_statistic_ext_data</code>.</p>
+<h2>Diagnosing bad estimates<a href="#diagnosing-bad-estimates"></a>
+</h2>
+<p>When a query is slow, the first question should always be: did the planner estimate correctly? Compare the estimate to reality with <code>EXPLAIN ANALYZE</code>.</p>
+<p>Estimate off by handful of rows means statistics are fine. But when you see estimates off by 10x or more, that's where planning goes wrong. A nested loop that looks cheap for 100 rows becomes a disaster at 10,000.</p>
+<p>The statistics tell you what the planner believed, and comparing that with reality tells you what to do next. Either run <code>ANALYZE</code>, consider tuning the statistics target for a specific column, or creating extended statistics if multiple columns are involved.</p>
+<p>The planner is only as good as what it reads from the catalog. When estimates go wrong, don't blame the planner. Check the data it's working with.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>amux — Agent Multiplexer</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>amux — Agent Multiplexer</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/23/2026 3:56:39 PM | <a href="https://github.com/mixpeek/amux" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <div> <p><img src="https://mixpeek.github.io/amux/icon.svg" alt="amux icon"> </p> </div> <p>Agent Multiplexer</p> <p> Run <strong>dozens of Claude Code agents unattended</strong>. amux wraps tmux, watches every session's terminal output on a 60s loop, and handles what would otherwise interrupt you: context compaction, thinking-block recovery, auto-answering tool approval prompts. Every agent gets <code>$AMUX_URL</code> injected at startup so they can discover peers and claim tasks from the shared board — without being told how. No API hooks. No external services. Python 3 and tmux. </p> </div><ul> <li> <p><strong>Self-healing background watchdog</strong> <span>— a thread snapshots every running session every 60s and intervenes silently: context below 20% → sends <code>/compact</code> (5-min cooldown). <code>redacted_thinking … cannot be modified</code> in output → restarts and replays the last user message. Session stuck waiting for input for 2+ snapshots → auto-responds based on prompt type. All three are broadcast as SSE toast alerts.</span></p> </li> <li> <p><strong>Status from terminal output, not an API</strong> <span>— amux parses Claude Code's actual tmux output after stripping ANSI escapes. Unicode dingbat spinners (U+2700–27BF) + trailing ellipsis = working; "Enter to select" / "❯ 1. Yes" = waiting for input; completed spinner + "for Xm Ys" = idle. No hooks, no patches, no modifications to Claude Code whatsoever.</span></p> </li> <li> <p><strong>YOLO auto-responder</strong> <span>— <code>--dangerously-skip-permissions</code> doesn't skip everything: Claude Code still shows blocking tool-approval prompts. amux detects them by matching the "Esc to cancel" marker in terminal output (that string never appears on open-ended model questions) and auto-answers with "1" — keeping fully headless sessions actually headless.</span></p> </li> <li> <p><strong>Agent-to-agent orchestration</strong> <span>— every session gets <code>$AMUX_SESSION</code> and <code>$AMUX_URL</code> injected at startup. The global memory file — shared across all sessions via <code>GET /api/memory/global</code> — contains the full REST API reference. Any agent can discover peers, peek their output, post tasks, and delegate work without being explicitly programmed to do so.</span></p> </li> <li> <p><strong>Atomic task claiming — no lock broker</strong> <span>— <code>POST /api/board/:id/claim</code> uses SQLite 3.35+ <code>UPDATE … RETURNING</code> as a compare-and-swap: the row only moves todo → doing if it's still unclaimed. A dozen agents can race for the same task queue with no Redis, no queue broker, no duplicated work.</span></p> </li> <li> <p><strong>Single Python file, zero build step</strong> <span>— ~12,000 lines: Python <code>ThreadingHTTPServer</code> with manual routing + the entire dashboard (drag-and-drop, IndexedDB, GridStack, SSE, service worker) as inline HTML/CSS/JS. Requires only Python 3 and tmux. Edit the file; it restarts itself via <code>os.execv</code> on save.</span></p> </li> <li> <p><strong>Parallel agents, permanent conversation IDs</strong> <span>— any number of Claude Code sessions running simultaneously, each isolated in its own tmux pane with a UUID that survives stop/start. Start, stop, and message any agent via REST or the dashboard. <code>amux exec myproject -- "implement the login endpoint"</code> registers, starts, and sends in one shot.</span></p> </li> <li> <p><strong>Conversation fork</strong> <span>— clone any session's full Claude Code JSONL history into a new session on a separate branch. Branch an exploration without losing the original thread. Falls back to tmux scrollback capture as context seed when JSONL isn't available.</span></p> </li> <li> <p><strong>Multi-pane workspace</strong> <span>— full-screen tiled layout: watch multiple agents' live output side by side, each with its own send bar. Drag to rearrange panes; layout persists across reloads. Save and restore named workspace profiles.</span></p> </li> <li> <p><strong>Live peek — including stopped sessions</strong> <span>— scroll any agent's full scrollback, search output, click file paths to open syntax-highlighted previews, and fire quick-actions without attaching to a terminal. Sessions snapshot to disk every 60s (10MB cap) so output survives server restarts.</span></p> </li> <li> <p><strong>Token tracking from JSONL</strong> <span>— reads Claude Code's conversation logs to show daily token spend per session, <code>cache_read_input_tokens</code> broken out separately. Deduplicates log entries by <code>(input, cache_read, output)</code> signature so session restarts don't double-count.</span></p> </li> <li> <p><strong>Kanban board with iCal sync</strong> <span>— SQLite-backed task board with auto-generated issue keys (PROJ-1), per-agent ownership, due dates, and custom columns. Emits an RFC 5545 iCal feed that auto-uploads to S3 — tasks with due dates appear in Google Calendar and Apple Calendar with STATUS mapped from board columns.</span></p> </li> <li> <p><strong>Built-in cron — no crontab, no systemd</strong> <span>— schedule one-time or recurring (hourly/daily/weekly/monthly) commands in any session. A 30s polling loop computes next-run atomically in SQLite (handles weekday + time, missed-fire recovery) and delivers via tmux.</span></p> </li> <li> <p><strong>Git-aware conflict detection</strong> <span>— warns when two sessions share the same working directory and branch. Surfaces a visual warning on both cards and offers a one-click helper to create an isolated <code>session/{name}</code> branch so agents don't overwrite each other's work.</span></p> </li> <li> <p><strong>Web dashboard + PWA</strong> <span>— installable on iOS and Android. Triple-layer persistence: Service Worker Cache API, localStorage (full HTML backup), IndexedDB (issue mirror). Background Sync replays queued commands on reconnect even if the tab is closed. Accessible over Tailscale, LAN, or localhost with auto-provisioned TLS (Tailscale cert → mkcert → self-signed fallback).</span></p> </li> </ul></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

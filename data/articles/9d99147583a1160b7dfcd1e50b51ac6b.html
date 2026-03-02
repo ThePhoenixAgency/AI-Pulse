@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hands on with Windows 11 26H1 and why this update is not meant for your PC</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Hands on with Windows 11 26H1 and why this update is not meant for your PC</h1>
+  <div class="metadata">
+    Source: Windows Latest | Date: 2/18/2026 11:16:34 PM | <a href="https://www.windowslatest.com/2026/02/19/hands-on-with-windows-11-26h1-and-why-this-update-is-not-meant-for-your-pc/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <div><figure><a href="https://www.windowslatest.com/wp-content/uploads/2026/02/Hands-on-with-Windows-11-26H1.jpg"><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Hands-on-with-Windows-11-26H1-696x392.jpg" alt="Hands-on with Windows 11 26H1"></a><figcaption>Hands-on with Windows 11 26H1</figcaption></figure></div> <p>For the past few years, Windows 11 update naming scheme has had a predictable rhythm. We got version 22H2, then 23H2, then 24H2 and 25H2, all as part of Microsoft’s decision to have a single major update each year, usually in the second half. So when news about Windows 11 26H1 broke out, it understandably raised eyebrows. After all, H1 releases used to mean something very different in the Windows 10 era.</p>
+<p>Windows 11 26H1 is indeed a real release, but it is not a feature update meant for PCs already in use. <a href="https://www.windowslatest.com/2026/02/11/microsoft-releases-windows-11-26h1-but-its-not-for-existing-pcs-windows-11-26h2-is-coming-for-all-pcs/">Microsoft has confirmed to Windows Latest</a> that this version is shipping only on new ARM devices launching in 2026, specifically the <strong>Snapdragon X2</strong> series, and maybe the yet-to-be-announced <strong>NVIDIA N1X</strong>. If you are running Windows 11 today on Intel or AMD hardware, you will not see 26H1 in Windows Update.</p>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Snapdragon-X2-Elite-sticker-on-a-Lenovo-Yoga-Slim-7X.jpg" alt="Snapdragon X2 Elite sticker on a Lenovo Yoga Slim 7X"><figcaption>Source: Lenovo</figcaption></figure>
+<p>This also means 26H1 is not replacing versions like 24H2 or 25H2, nor is it the next step in the upgrade path. Microsoft is still sticking to its once-per-year update strategy for existing PCs, and that update is expected to arrive later in 2026 as Windows 11 26H2.</p>
+<p>In many ways, this is like the specialized builds OEMs used to preload for new hardware generations, only now Microsoft is giving it an official version label. It exists to support new silicon coming to market.</p>
+<p>So if 26H1 is not bringing visible changes, what exactly is different? Windows Latest installed 26H1 on our PC to find the answer. And it lies deep inside Windows itself, in something Microsoft calls the platform core.</p>
+<h2>Windows 11 26H1 runs on a different core built for ARM silicon</h2>
+<p>Microsoft is using the 26H1 release to introduce a new internal base for upcoming ARM chips, starting with Qualcomm’s Snapdragon X2 lineup, which currently appears to be the only officially supported silicon. Support is locked to new devices shipping with these processors, and Microsoft itself calls 26H1 a “hardware-optimized release” created in partnership with silicon vendors.</p>
+<p><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Windows-Version-26H1.jpg" alt="Windows Version 26H1"></p>
+<p><em>“26H1 is based on a different Windows core than versions 24H2, 25H2, and the upcoming feature update.” – Microsoft</em></p>
+<p><strong>What is the Windows platform core?</strong></p>
+<p>The “core” here means the underlying platform codebase that allows Windows to run. It includes the kernel, driver model, scheduler, hardware abstraction, and power and security frameworks. For years, these platform bases had codenames such as <strong>Cobalt (21H2), Nickel (23H2), and Germanium (24H2 and 25H2)</strong>. Some reports suggest that the new 26H1 base may be codenamed <strong>Bromine</strong>.</p>
+<p>Every platform release replaces or significantly evolves this foundation, while enablement packages <strong>(eKB)</strong> like 23H2 or 25H2 unlock features already present in the same base system.</p>
+<p><strong>Why 26H1 needed a different platform base?</strong></p>
+<p>Windows 11 24H2 and 25H2 both run on the Germanium platform. The upcoming 26H2 update for existing PCs will stay on that same base using the familiar enablement package model.</p>
+<p>As Windows 11 26H1 is built on a newer internal platform branch developed alongside next-generation ARM processors such as Snapdragon X2 and other upcoming designs, these chips use increasingly heterogeneous architectures with different types of cores handling different workloads, which requires updates to scheduling logic, power management frameworks, and how Windows balances performance with battery life.</p>
+<p>How we think the 26H1 platform would be different for ARM SoCs:</p>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Snapdragon-X2-Elite.jpg" alt="Snapdragon X2 Elite"><figcaption>Source: Qualcomm</figcaption></figure>
+<ul>
+<li><strong>Heterogeneous Thread Scheduler</strong>: The 26H1 core will likely be tuned specifically for “Big.LITTLE” architectures (like the Snapdragon X2), with a much smarter way of deciding which tasks go to performance cores and which for efficiency cores.</li>
+<li><strong>Deep NPU integration</strong>: In the 26H1 core, AI workloads may be better routed through the system NPU layer, allowing local AI to run with significantly less latency and power draw.</li>
+<li><strong>Power &amp; thermal governors</strong>: The core may include new ACPI (Advanced Configuration and Power Interface) states that allow the OS to control the silicon’s energy consumption at a granular level, which will likely help with the “exceptional battery life” Microsoft mentioned.</li>
+</ul>
+<p>These details are not fully documented publicly, so they should be read with a grain of salt. Either way, because these architectural updates differ from those in Germanium, Microsoft cannot offer an in-place upgrade path from 25H2 to 26H1. The two builds are designed around different hardware expectations.</p>
+<p><strong>This split is temporary and will unify later</strong></p>
+<p>Right now, Windows 11 development is running on two tracks. The existing Germanium line continues with Intel, AMD, and current PCs through 26H2, while 26H1 for new ARM systems will be <a href="https://www.windowslatest.com/2026/02/18/microsoft-details-windows-11-26h1-support-cycle-cpu-requirements-just-snapdragon-x2-for-now-and-more/">supported through March 2028</a>. Microsoft has already indicated that both paths are expected to converge again around the Windows 27H2 timeframe.</p>
+<p>So what happens when you actually use 26H1 on supported hardware? In our hands-on with Windows 11 26H1, the experience is almost indistinguishable from today’s Windows builds.</p> <p>Although 26H1 is not available for regular PCs, you can still download the ISO and try it out on a virtual machine, as we did. But, just like us, you’ll be disappointed because it’s virtually the same as 25H2, and that too without the new features that gradually rolled out to your 25H2 PC over the last few weeks.</p>
+<p>Everything new in 26H1 is under the hood, and unfortunately, we weren’t able to test if there is any performance difference, as it requires a Snapdragon X2 series-powered PC.</p>
+<h3>Either way, here are the subtle changes in Windows 11 26H1:</h3>
+<p>Upon booting into Windows 11 26H1, the first thing we checked in <strong>Settings &gt; System &gt; About</strong> was the OS Build number jumping to <strong>28020.1611</strong>. This confirms the new “Bromine” platform, distinguishing it from the 26xxx builds of the Germanium-based 24H2 and 25H2 updates.</p>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Windows-11-26H1-Build-28020.1611.jpg" alt="Windows 11 26H1 Build 28020.1611"><figcaption>Windows 11 26H1 Build 28020.1611</figcaption></figure>
+<p><strong>Search in natural language</strong></p>
+<p>One of the standout features in 26H1 is the full availability of semantic, natural-language search within the Settings, with no gradual rollout like in 25H2 and 24H2 Copilot+ PCs.</p>
+<p>The Settings search experience has become more “agentic.” On typing <em>“my mouse pointer is too small”</em> into the settings search bar, Windows didn’t just point us to a menu. Instead, it surfaced the actual “Mouse pointer size” slider directly in the search results. This allows you to adjust settings manually right from the search dropdown without ever navigating to the specific page.</p>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Semantic-AI-search-in-Windows-11-26H1-Settings-app.jpg" alt="Semantic AI search in Windows 11 26H1 Settings app"><figcaption>Source: Phantomofearth via YouTube</figcaption></figure>
+<p>Additionally, a new option has appeared under <strong>Privacy &amp; security &gt; Search</strong> titled “Search the contents of online files”. This toggle gives users granular control over whether Windows Search can index the actual content of cloud-based files (like those in OneDrive Personal). You can now explicitly choose to include these cloud providers or leave them alone.</p>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Search-the-contents-of-online-files-toggle-in-Windows-11-26H1.jpg" alt="Search the contents of online files toggle in Windows 11 26H1"><figcaption>Source: Phantomofearth via YouTube</figcaption></figure>
+<p><strong>FAT32 Format limit finally increased</strong></p>
+<p>After decades of arbitrary limitations, 26H1 finally addresses the FAT32 formatting cap. In previous versions of Windows, the command line interface restricted FAT32 partitions to 32 GB.</p>
+<p>The screenshot below shows the Command Prompt running format F: /fs:fat32 /q on a 100 GB partition. The operation completed successfully without the “volume is too big for FAT32” error. Essentially, the limit has been raised all the way to 2 TB for both the standard format command and diskpart. This change eliminates the need for third-party tools when formatting large SD cards or drives as FAT32, which is a very welcome update.</p>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/FAT32-Format-limit-increased-to-2-TB.jpg" alt="FAT32 Format limit increased to 2 TB"><figcaption>Source: Phantomofearth via YouTube</figcaption></figure>
+<p><strong>UI Refinements in Storage and Setup</strong></p>
+<p>Microsoft has used this release to polish specific areas of the legacy UI that were previously overlooked:</p>
+<ul>
+<li><strong>Modernized Storage Settings</strong>: In <strong>Settings &gt; System &gt; Storage &gt; Disks &amp; volumes</strong>, the “Create a virtual hard disk (VHD)” and “Attach VHD” buttons now feature proper padding and spacing. Furthermore, the “Create volume” button has been updated with rounded corners and an animated chevron (arrow), bringing it in line with the Windows 11 design language.
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Chevron-arrow-for-Create-volume-action-.jpg" alt="Chevron arrow for Create volume action"><figcaption>Source: Phantomofearth via YouTube</figcaption></figure></li>
+<li><strong>Setup Dialogs</strong>: If you do manage to boot into the Windows 11 Setup (clean install) screen with 26H1 media, you will notice new safety rails. Clicking “Delete Partition” or “Format Partition” now triggers a confirmation dialog warning, a surprising omission from 24H2.
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Confirmation-dialog-warning-while-trying-to-format-or-delete-partition.jpg" alt="Confirmation dialog warning while trying to format or delete partition"><figcaption>Source: Phantomofearth via YouTube</figcaption></figure></li>
+</ul>
+<p><strong>Deprecations and safeguards</strong></p>
+<p>There are also changes to what is not included or allowed:</p>
+<ul>
+<li><strong>.NET Framework 3.5 Removal</strong>: We observed that .NET Framework 3.5 is no longer listed as an optional feature (FoD) in the “Turn Windows features on or off” menu. Microsoft is pushing for modern .NET versions, though a standalone installer is available for those who absolutely need the legacy framework.
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/NET-Framework-3.5-is-unavailable-in-Windows-11-26H1.png" alt=".NET Framework 3.5 is unavailable in Windows 11 26H1"><figcaption>.NET Framework 3.5 is unavailable in Windows 11 26H1</figcaption></figure></li>
+<li><strong>Sysprep in Safe Mode</strong>: A new safeguard prevents the System Preparation Tool from running in Safe Mode. Attempting to do so now throws the error: “You can’t sysprep while running in Safe mode,” so that the tool is only used in its intended Normal or Audit modes.<p>
+<a href="https://www.windowslatest.com/wp-content/uploads/2026/02/You-cant-run-sysprep-while-running-in-Safe-mode.mp4">https://www.windowslatest.com/wp-content/uploads/2026/02/You-cant-run-sysprep-while-running-in-Safe-mode.mp4</a></p></li>
+</ul>
+<p>Windows 11 26H1 is not an update you need to chase, or even think about, unless you are buying a brand-new device with Snapdragon X2 silicon. Microsoft has positioned this release as a hardware-optimized version designed to light up the capabilities of next-generation ARM platforms, while existing PCs continue on the familiar servicing track with monthly quality updates and the upcoming Windows 11 26H2 feature update later in 2026.</p>
+<p>For most users and businesses, nothing changes in the short term. Your current Windows 11 installation remains fully supported and will receive the same security fixes, features, and lifecycle commitments as before.</p>
+<p>The split between 26H1 and the mainstream branch is temporary, with Microsoft planning to bring both paths back together in a future release cycle.</p>
+<p><em>Thanks to Windows enthusiast <a href="https://youtu.be/dwfiIqAAlDQ">Phantomofearth</a> for some screenshots.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

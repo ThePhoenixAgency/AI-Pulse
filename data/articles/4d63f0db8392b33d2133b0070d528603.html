@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Firefox 148 - Un seul bouton pour virer toute l'IA</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Firefox 148 - Un seul bouton pour virer toute l'IA</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/26/2026 2:18:50 PM | <a href="https://korben.info/firefox-148-ia-kill-switch.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/firefox-148-ia-kill-switch/firefox-148-ia-kill-switch-1.png" alt="Image illustrant l'article : Firefox 148 - Un seul bouton pour virer toute l'IA"></p><div><span>Ce qu’il faut retenir</span><div><ol><li>Firefox 148 propose un unique toggle "Bloquer les améliorations IA" qui désactive d'un coup traductions, regroupement d'onglets, chatbots intégrés et futures fonctions IA natives, contrairement à Chrome qui oblige à fouiller dans 5 réglages différents</li><li>Toutes les fonctions IA de Firefox sont désactivées par défaut et le blocage s'applique automatiquement aux nouvelles features IA ajoutées lors des futures mises à jour, sans intervention utilisateur</li><li>Cette version corrige 40 failles de sécurité et introduit la Sanitizer API en première mondiale sur navigateur, mais reste incompatible avec Firefox ESR pour l'instant</li></ol><p>Résumé généré par IA</p></div><div><p>Vous voulez désactiver l'IA dans votre navigateur ? Bonne chance pour les couillons qui utilisent Chrome... faut passer par 5 réglages planqués dans chrome://settings et chrome://flags, tripatouiller des flags expérimentaux, bref, c'est un vrai parcours du combattant. <strong>Firefox 148</strong>, de son côté, a eu une idée folle : <strong>Mettre UN bouton</strong>. Hop, terminé.</p><p>Mozilla vient en effet de sortir la
+<a href="https://www.firefox.com/en-US/firefox/148.0/releasenotes/">version 148 de Firefox</a>
+et le gros morceau, c'est la section "Contrôles de l'IA" dans les paramètres (about:preferences#ai). Un seul toggle "<strong>
+<a href="https://korben.info/firefox-kill-switch-ia-desactiver-fonctionnalites.html">Bloquer les améliorations IA</a>
+</strong>" et paf, toutes les fonctions IA du navigateur sont coupées d'un coup. Traductions automatiques, regroupement d'onglets, previews de liens, texte alternatif des PDF, et même les chatbots de la barre latérale (ChatGPT, Claude, Gemini, Copilot, Le Chat). Tout dégage !</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/firefox-148-ia-kill-switch/firefox-148-ia-kill-switch-2.png" alt=""></p><p>C'est le top pour les fragilous qui refusent le progrès ^^... Roohh ça va je blague ! Et le vrai intérêt du truc, c'est que ça verrouille les futures fonctions IA aussi. Du coup, si Mozilla ajoute de nouvelles features IA plus tard, elles seront automatiquement bloquées. Pas besoin de revenir fouiller dans les paramètres à chaque update. D'ailleurs, toutes les fonctions IA sont déjà désactivées par défaut... faut donc les activer manuellement si vous en voulez.</p><p>Et attention, ça ne bloque pas les extensions tierces qui intègrent leur propre IA, genre les "résumeurs" de page ou les assistants de rédaction. Le toggle, lui, garantit uniquement que les fonctions NATIVES restent coupées quoi qu'il arrive.</p><p>Et maintenant comparons avec la concurrence, parce que c'est là que ça pique les yeux.</p><p>Comme je vous le disais dans mon intro trollesque, chez Google,
+<a href="https://korben.info/firefox-controles-ia.html">désactiver l'IA dans Chrome</a>
+(et ses dérivés) relève carrément du sport extrême. Faut couper Gemini (chrome://settings/ai), désactiver le mode IA et Help Me Write (chrome://flags), bloquer la recherche IA dans l'historique, et pour les AI Overviews... ben y'a pas vraiment de bouton.</p><p>Brave fait un peu mieux heureusement ! Leur assistant Leo est opt-in par défaut, tourne dans un profil isolé qui ne peut pas accéder à vos données de navigation, et applique une politique zéro log. Même leur mode "agentic AI" en Nightly est désactivé de base. C'est propre, mais y'a pas de kill switch global comme Firefox. Du coup, si vous voulez la solution radicale plutôt que du cas par cas, Firefox gagne.</p><p>Et pour ceux qui se demandent pourquoi Firefox investit dans l'IA tout en permettant de la couper... en fait, Mozilla joue la carte de la transparence. Les modèles locaux utilisés par Firefox sont supprimés du disque quand vous désactivez les fonctions et tout est vérifiable dans about:processes si vous êtes du genre parano.</p><p>Au passage, cette version corrige également une quarantaine de failles de sécurité et embarque la
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer">Sanitizer API</a>
+, ce qui est une première parmi les navigateurs. Et si vous êtes encore sur Firefox ESR, ça ne marchera pas... faudra donc attendre la prochaine ESR pour en profiter.</p><p>Voilà, si l'IA dans votre navigateur vous gave, vous savez où aller -&gt; <strong>Firefox, tout simplement.</strong></p><p><a href="https://www.techspot.com/news/111453-firefox-148-rolls-out-promised-ai-kill-switch.html">Source</a></p></div>Références<section><ul><li><a href="https://www.firefox.com/en-US/firefox/148.0/releasenotes/" target="_blank" rel="noopener noreferrer">https://www.firefox.com/en-US/firefox/148.0/releasenotes/</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer" target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer</a></li><li><a href="https://www.techspot.com/news/111453-firefox-148-rolls-out-promised-ai-kill-switch.html" target="_blank" rel="noopener noreferrer">https://www.techspot.com/news/111453-firefox-148-rolls-out-promised-ai-kill-switch.html</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

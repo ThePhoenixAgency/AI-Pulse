@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why I Stopped Paying for Software: 6 Open Source Tools That Changed How I Work</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Why I Stopped Paying for Software: 6 Open Source Tools That Changed How I Work</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 5:57:12 AM | <a href="https://dev.to/fedya_serafiev/why-i-stopped-paying-for-software-6-open-source-tools-that-changed-how-i-work-1h9f" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fyrm28nq7rsjqx7j37eus.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fyrm28nq7rsjqx7j37eus.png" alt="Cover image for Why I Stopped Paying for Software: 6 Open Source Tools That Changed How I Work"> </a> <div> <p><a href="https://dev.to/fedya_serafiev"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3690986%2F1d5ca9fa-da0b-4c41-902f-b7320a8e9993.jpg" alt="Fedya Serafiev"></a> </p> </div> </div><div> <blockquote>
+<p> <em>This is a translated and adapted version of the original article published in Bulgarian at <a href="https://itpraktika.com/instrumenti-s-otvoren-kod/" target="_blank">itpraktika.com</a>.</em></p>
+</blockquote> <hr> <p>As a tech enthusiast, I spent years searching for the perfect toolset. I used to believe that a high price tag guaranteed quality — paying for expensive subscriptions, convinced it was the only way to stay professional.</p> <p>In this article, I'm sharing 6 tools that are at the core of my workflow. They save me hundreds of dollars a year and give me complete freedom.</p> <hr> <h2> <a name="1-visual-studio-code-vs-code-my-digital-home" href="#1-visual-studio-code-vs-code-my-digital-home"> </a> 1. Visual Studio Code (VS Code) — My Digital Home </h2> <p>If I had to pick just one tool, it would be <strong>VS Code</strong>. Before it, I used paid IDEs — they were bloated and slow. VS Code changed everything.</p> <p><strong>Why it's indispensable:</strong></p> <ul>
+<li>Lightweight, fast, and completely free</li>
+<li>Supports almost every programming language through extensions</li>
+<li>
+<strong>IntelliSense</strong> predicts your next step as you write code</li>
+<li>Integrated terminal and Git built right into the interface</li>
+</ul> <p><strong>Why I stopped paying:</strong> Paid IDEs offer features I rarely use. With VS Code, I only add what I actually need — which keeps it lightning fast.</p> <hr> <h2> <a name="2-docker-containerization-without-the-headaches" href="#2-docker-containerization-without-the-headaches"> </a> 2. Docker — Containerization Without the Headaches </h2> <p>Before <strong>Docker</strong>, I constantly heard: <em>"But it works on my machine!"</em> That was a nightmare for team collaboration. Docker solved that problem once and for all.</p> <p><strong>What it does:</strong></p> <ul>
+<li>Packages your software and its dependencies into a "container" so code runs the same everywhere</li>
+<li>Spin up databases and servers in seconds with a single command:
+</li>
+</ul> <div>
+<pre><code>docker-compose up
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <ul>
+<li>Test different technologies without "polluting" your operating system</li>
+</ul> <p><strong>The result:</strong> I save hours on environment configuration. Docker is the industry standard — and it's free for my use case.</p> <hr> <h2> <a name="3-libreoffice-a-full-office-suite-zero-fees" href="#3-libreoffice-a-full-office-suite-zero-fees"> </a> 3. LibreOffice — A Full Office Suite, Zero Fees </h2> <p>For a long time I felt trapped by Microsoft 365 subscriptions. Paying a monthly fee just to write documents seemed unnecessary. <strong>LibreOffice</strong> was my salvation.</p> <p><strong>Why it works:</strong></p> <ul>
+<li>Opens and saves <code>.docx</code>, <code>.xlsx</code>, and <code>.pptx</code> files without issues</li>
+<li>Writer and Calc cover 100% of my needs for reports and spreadsheets</li>
+<li>Files stay local — not locked in someone else's cloud</li>
+</ul> <p><strong>Why it's better:</strong> LibreOffice is stable, powerful, and doesn't interrupt you with upsell prompts. It's a clean tool built for work.</p> <hr> <h2> <a name="4-obsidian-my-second-brain" href="#4-obsidian-my-second-brain"> </a> 4. Obsidian — My "Second Brain" </h2> <p>Knowledge management is critical. I used to use Notion, but the slow loading and constant need for an internet connection frustrated me. <strong>Obsidian</strong> changed the way I think.</p> <p><strong>What makes it special:</strong></p> <ul>
+<li>All notes are stored as Markdown files on your own computer</li>
+<li>Link ideas together the way your brain actually works</li>
+<li>Graph view gives you a visual map of all your knowledge and projects</li>
+</ul> <p><strong>Why I chose it:</strong> My data is permanent. Even if Obsidian ceases to exist, my notes remain as plain text files I can open anywhere.</p> <hr> <h2> <a name="5-brave-browser-speed-and-privacy-by-default" href="#5-brave-browser-speed-and-privacy-by-default"> </a> 5. Brave Browser — Speed and Privacy by Default </h2> <p>The browser is the most-used tool in any workflow. Chrome is decent, but it consumes too many resources and tracks your activity. <strong>Brave</strong> is the better version.</p> <p><strong>Key features:</strong></p> <ul>
+<li>Built-in ad blocker stops annoying ads automatically</li>
+<li>Blocks trackers that try to profile you</li>
+<li>Pages load significantly faster without the ad overhead</li>
+</ul> <p><strong>What I save:</strong> I no longer pay for premium services just to browse without ads. Brave gives me a clean experience for free.</p> <hr> <h2> <a name="6-gimp-professional-design-without-a-subscription" href="#6-gimp-professional-design-without-a-subscription"> </a> 6. GIMP — Professional Design Without a Subscription </h2> <p>Photoshop is the industry standard, but its price is steep for smaller projects. For image editing, I use <strong>GIMP</strong>.</p> <p><strong>Capabilities:</strong></p> <ul>
+<li>Layers, masks, filters — everything you need is here</li>
+<li>Hundreds of free plugins that extend its functionality</li>
+<li>Works perfectly on Windows, Linux, and macOS</li>
+</ul> <p><strong>My experience:</strong> It took me about a week to get used to the interface. Now I handle everything — from banners to photo retouching — without spending a cent.</p> <hr> <h2> <a name="quick-comparison-table" href="#quick-comparison-table"> </a> Quick Comparison Table
+</h2> <div><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Paid Alternative</th>
+<th>My Open Source Pick</th>
+<th>Main Benefit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Code editing</strong></td>
+<td>WebStorm</td>
+<td><strong>VS Code</strong></td>
+<td>Speed + extensions</td>
+</tr>
+<tr>
+<td><strong>Environments</strong></td>
+<td>VMware</td>
+<td><strong>Docker</strong></td>
+<td>Containerization</td>
+</tr>
+<tr>
+<td><strong>Office suite</strong></td>
+<td>Microsoft 365</td>
+<td><strong>LibreOffice</strong></td>
+<td>No subscription</td>
+</tr>
+<tr>
+<td><strong>Notes</strong></td>
+<td>Notion / Evernote</td>
+<td><strong>Obsidian</strong></td>
+<td>Privacy + offline</td>
+</tr>
+<tr>
+<td><strong>Browser</strong></td>
+<td>Chrome / Safari</td>
+<td><strong>Brave</strong></td>
+<td>No ads</td>
+</tr>
+<tr>
+<td><strong>Design</strong></td>
+<td>Photoshop</td>
+<td><strong>GIMP</strong></td>
+<td>Full power</td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="conclusion-why-open-source-wins" href="#conclusion-why-open-source-wins"> </a> Conclusion: Why Open Source Wins </h2> <p>Switching to these tools isn't just about saving money. It's about <strong>sustainability</strong>. Open source software is built by the community, for the community.</p> <p>It's:</p> <ol>
+<li>
+<strong>Transparent</strong> — you know what it does with your data</li>
+<li>
+<strong>Flexible</strong> — you can tailor it exactly to your needs</li>
+<li>
+<strong>Free</strong> — you'll never get an email about a "price increase"</li>
+</ol> <p><strong>The open source world is ready for you. Are you ready for it?</strong></p> <hr> <p><em>Originally published in Bulgarian at <a href="https://itpraktika.com/instrumenti-s-otvoren-kod/" target="_blank">itpraktika.com</a> by Fedya Serafiev — a platform dedicated to practical IT solutions and automation.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

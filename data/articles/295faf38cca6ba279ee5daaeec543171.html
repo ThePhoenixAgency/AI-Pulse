@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - ramanujammv1988/edge-veda</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - ramanujammv1988/edge-veda</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 8:47:57 PM | <a href="https://github.com/ramanujammv1988/edge-veda" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>Edge-Veda</h1><a href="#edge-veda"></a></div>
+<p><strong>A managed on-device AI runtime for Flutter — text, vision, speech, and RAG running sustainably on real phones under real constraints. Private by default.</strong></p>
+<p></p><pre><code>~22,700 LOC | 40 C API functions | 32 Dart SDK files | 0 cloud dependencies</code></pre><p></p>
+<p><a href="https://pub.dev/packages/edge_veda"><img src="https://camo.githubusercontent.com/467f74a3b8d49b1e8e8ea3f28088207aac1c15dfddfd0251d21454b75eb33bfc/68747470733a2f2f696d672e736869656c64732e696f2f7075622f762f656467655f766564612e737667" alt="pub package"></a>
+<a href="https://github.com/ramanujammv1988/edge-veda"><img src="https://camo.githubusercontent.com/ca4776aba90ad06e88e985ac9db4b44210eb259e79af702afeeac0f986782683/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f706c6174666f726d2d694f532d6c6967687467726579" alt="Platform"></a>
+<a href="/ramanujammv1988/edge-veda/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/a549a7a30bacba7bfceebdc207a8e86c3f2c02995a2527640dca30048fd2b64e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d417061636865253230322e302d626c75652e737667" alt="License"></a></p>
+<hr>
+<p> <a target="_blank" href="/ramanujammv1988/edge-veda/blob/main/docs/images/app_demo.gif"><img src="/ramanujammv1988/edge-veda/raw/main/docs/images/app_demo.gif" alt="On-device Document Q&amp;A demo"></a>
+</p>
+<p><em>Asking questions about a medical report — RAG retrieval + LLM generation, entirely on-device (<a href="/ramanujammv1988/edge-veda/blob/main/docs/images/app_demo.mp4">full video</a>)</em></p>
+<hr>
+<div><h2>Get Started in 3 Lines</h2><a href="#get-started-in-3-lines"></a></div>
+<div><pre><span>final</span> edgeVeda <span>=</span> <span>EdgeVeda</span>();
+<span>await</span> edgeVeda.<span>init</span>(<span>EdgeVedaConfig</span>(modelPath<span>:</span> modelPath));
+<span>final</span> response <span>=</span> <span>await</span> edgeVeda.<span>generate</span>(<span>'Explain quantum computing'</span>);</pre></div>
+<blockquote>
+<p>Start with <strong>Llama 3.2 1B</strong> for chat, <strong>Qwen3 0.6B</strong> for tool calling, <strong>SmolVLM2</strong> for vision.</p>
+</blockquote>
+<hr>
+<div><h2>Why Edge-Veda Exists</h2><a href="#why-edge-veda-exists"></a></div>
+<p>Modern on-device AI demos break instantly in real usage:</p>
+<ul>
+<li>Thermal throttling collapses throughput</li>
+<li>Memory spikes cause silent crashes</li>
+<li>Sessions longer than ~60 seconds become unstable</li>
+<li>Developers have no visibility into runtime behavior</li>
+<li>Debugging failures is nearly impossible</li>
+</ul>
+<p>Edge-Veda exists to make on-device AI <strong>predictable, observable, and sustainable</strong> — not just runnable.</p>
+<p><a target="_blank" href="/ramanujammv1988/edge-veda/blob/main/docs/images/session_stability.png"><img src="/ramanujammv1988/edge-veda/raw/main/docs/images/session_stability.png" alt="Session Stability: Unmanaged vs Managed Runtime"></a>
+<em>Left: without runtime management, latency spikes and the app is killed by iOS within 2 minutes. Right: with Edge Veda, latency stays flat for 28+ minutes with thermal spikes auto-recovered. Same Y-axis scale.</em></p>
+<hr>
+<div><h2>What Edge-Veda Is</h2><a href="#what-edge-veda-is"></a></div>
+<p>Edge-Veda is a <strong>supervised on-device AI runtime</strong> that:</p>
+<ul>
+<li>Runs <strong>text, vision, and speech models fully on device</strong></li>
+<li>Keeps models <strong>alive across long sessions</strong></li>
+<li>Adapts automatically to <strong>thermal, memory, and battery pressure</strong></li>
+<li>Applies <strong>runtime policies</strong> instead of crashing</li>
+<li>Provides <strong>structured observability</strong> for debugging and analysis</li>
+<li>Supports <strong>structured output, function calling, embeddings, and RAG</strong></li>
+<li>Is <strong>private by default</strong> (no network calls during inference)</li>
+</ul>
+<hr>
+<div><h2>What Makes Edge-Veda Different</h2><a href="#what-makes-edge-veda-different"></a></div>
+<p>Edge-Veda is designed for <strong>behavior over time</strong>, not benchmark bursts.</p>
+<ul>
+<li>A long-lived runtime with persistent workers</li>
+<li>A system that supervises AI under physical device limits</li>
+<li>A runtime that degrades gracefully instead of failing</li>
+<li>An observable, debuggable on-device AI layer</li>
+<li>A complete on-device AI stack: inference, speech, tools, and retrieval</li>
+</ul>
+<hr>
+<div><h2>Current Capabilities</h2><a href="#current-capabilities"></a></div>
+<div><h3>Core Inference</h3><a href="#core-inference"></a></div>
+<ul>
+<li>Persistent <strong>text and vision inference workers</strong> (models load once, stay in memory)</li>
+<li><strong>Streaming token generation</strong> with pull-based architecture</li>
+<li>Multi-turn <strong>chat session management</strong> with auto-summarization at context overflow</li>
+<li>Chat templates: Llama 3 Instruct, ChatML, Qwen3/Hermes, generic</li>
+</ul>
+<div><h3>Speech-to-Text</h3><a href="#speech-to-text"></a></div>
+<ul>
+<li><strong>On-device speech recognition</strong> via whisper.cpp (Metal GPU accelerated)</li>
+<li>Real-time streaming transcription in 3-second chunks</li>
+<li>48kHz native audio capture with automatic downsampling to 16kHz</li>
+<li>WhisperWorker isolate for non-blocking transcription</li>
+<li>~670ms per chunk on iPhone with Metal GPU (whisper-tiny.en, 77MB)</li>
+</ul>
+<div><h3>Structured Output &amp; Function Calling</h3><a href="#structured-output--function-calling"></a></div>
+<ul>
+<li><strong>GBNF grammar-constrained generation</strong> for structured JSON output</li>
+<li><strong>Tool/function calling</strong> with ToolDefinition, ToolRegistry, and schema validation</li>
+<li>Multi-round tool chains with configurable max rounds</li>
+<li><pre><code>sendWithTools()</code></pre> for automatic tool call/result cycling</li>
+<li><pre><code>sendStructured()</code></pre> for grammar-constrained generation</li>
+</ul>
+<div><h3>Embeddings &amp; RAG</h3><a href="#embeddings--rag"></a></div>
+<ul>
+<li><strong>Text embeddings</strong> via ev_embed() with L2 normalization</li>
+<li><strong>Per-token confidence scoring</strong> from softmax entropy</li>
+<li><strong>Cloud handoff signal</strong> when average confidence drops below threshold</li>
+<li><strong>VectorIndex</strong> — pure Dart HNSW with cosine similarity and JSON persistence</li>
+<li><strong>RagPipeline</strong> — end-to-end embed, search, inject, generate</li>
+</ul>
+<div><h3>Runtime Supervision</h3><a href="#runtime-supervision"></a></div>
+<ul>
+<li><strong>Compute budget contracts</strong> — declare p95 latency, battery drain, thermal, and memory ceilings</li>
+<li><strong>Adaptive budget profiles</strong> — auto-calibrate to measured device performance</li>
+<li><strong>Central scheduler</strong> arbitrates concurrent workloads with priority-based degradation</li>
+<li><strong>Thermal, memory, and battery-aware runtime policy</strong> with hysteresis</li>
+<li>Backpressure-controlled frame processing (drop-newest, not queue-forever)</li>
+<li>Structured <strong>performance tracing</strong> (JSONL) with offline analysis tooling</li>
+<li>Long-session stability validated on-device (28+ minutes, 0 crashes, 0 model reloads)</li>
+</ul>
+<div><h3>Smart Model Advisor</h3><a href="#smart-model-advisor"></a></div>
+<p> <a target="_blank" href="/ramanujammv1988/edge-veda/blob/main/docs/images/app_model_advisor.jpeg"><img src="/ramanujammv1988/edge-veda/raw/main/docs/images/app_model_advisor.jpeg" alt="Smart Model Advisor with 4D scoring"></a>
+</p>
+<p><em>Device-aware model recommendations scored across fit, quality, speed, and context</em></p>
+<ul>
+<li><strong>DeviceProfile</strong> detects iPhone model, RAM, chip generation, and device tier (low/medium/high/ultra)</li>
+<li><strong>MemoryEstimator</strong> with calibrated bytes-per-parameter formulas for accurate fit prediction</li>
+<li><strong>ModelAdvisor</strong> scores models 0–100 across fit, quality, speed, and context dimensions</li>
+<li>Use-case weighted recommendations (chat, reasoning, vision, speech, fast)</li>
+<li><strong>Optimal EdgeVedaConfig</strong> generated per model+device pair (context length, threads, memory limit)</li>
+<li><pre><code>canRun()</code></pre> for quick fit check before download, <pre><code>checkStorageAvailability()</code></pre> for disk space</li>
+</ul>
+<hr>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>Flutter App (Dart) | +-- ChatSession ---------- Chat templates, context summarization, tool calling +-- WhisperSession ------- Streaming STT with 3s audio chunks +-- RagPipeline ---------- Embed → search → inject → generate +-- VectorIndex ---------- HNSW-backed vector search with persistence | +-- EdgeVeda ------------- generate(), generateStream(), embed(), describeImage() | +-- StreamingWorker ------ Persistent isolate, keeps text model loaded +-- VisionWorker --------- Persistent isolate, keeps VLM loaded (~600MB) +-- WhisperWorker -------- Persistent isolate, keeps whisper model loaded | +-- Scheduler ------------ Central budget enforcer, priority-based degradation +-- EdgeVedaBudget ------- Declarative constraints (p95, battery, thermal, memory) +-- RuntimePolicy -------- Thermal/battery/memory QoS with hysteresis +-- TelemetryService ----- iOS thermal, battery, memory polling +-- FrameQueue ----------- Drop-newest backpressure for camera frames +-- PerfTrace ------------ JSONL flight recorder for offline analysis +-- ModelAdvisor --------- Device-aware model recommendations + 4D scoring +-- DeviceProfile -------- iPhone model/RAM/chip detection via sysctl +-- MemoryEstimator ------ Calibrated model memory prediction | +-- FFI Bindings --------- 50 C functions via DynamicLibrary.process() | XCFramework (libedge_veda_full.a) +-- engine.cpp ----------- Text inference + embeddings + confidence (wraps llama.cpp) +-- vision_engine.cpp ---- Vision inference (wraps libmtmd) +-- whisper_engine.cpp --- Speech-to-text (wraps whisper.cpp) +-- memory_guard.cpp ----- Cross-platform RSS monitoring, pressure callbacks +-- llama.cpp b7952 ------ Metal GPU, ARM NEON, GGUF models (unmodified) +-- whisper.cpp v1.8.3 --- Metal GPU, shared ggml backend (unmodified)
+</code></pre></div>
+<p><strong>Key design constraint:</strong> Dart FFI is synchronous — calling llama.cpp directly would freeze the UI. All inference runs in background isolates. Native pointers never cross isolate boundaries. Workers maintain persistent contexts so models load once and stay in memory across the entire session.</p>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Installation</h3><a href="#installation"></a></div>
+<div><pre><span><span>#</span> pubspec.yaml</span>
+<span>dependencies</span>: <span>edge_veda</span>: <span>^2.1.0</span></pre></div>
+<div><h3>Text Generation</h3><a href="#text-generation"></a></div>
+<div><pre><span>final</span> edgeVeda <span>=</span> <span>EdgeVeda</span>(); <span>await</span> edgeVeda.<span>init</span>(<span>EdgeVedaConfig</span>( modelPath<span>:</span> modelPath, contextLength<span>:</span> <span>2048</span>, useGpu<span>:</span> <span>true</span>,
+)); <span>// Streaming</span>
+<span>await</span> <span>for</span> (<span>final</span> chunk <span>in</span> edgeVeda.<span>generateStream</span>(<span>'Explain recursion briefly'</span>)) { stdout.<span>write</span>(chunk.token);
+} <span>// Blocking</span>
+<span>final</span> response <span>=</span> <span>await</span> edgeVeda.<span>generate</span>(<span>'Hello from on-device AI'</span>);
+<span>print</span>(response.text);</pre></div>
+<div><h3>Multi-Turn Conversation</h3><a href="#multi-turn-conversation"></a></div>
+<div><pre><span>final</span> session <span>=</span> <span>ChatSession</span>( edgeVeda<span>:</span> edgeVeda, preset<span>:</span> <span>SystemPromptPreset</span>.coder,
+); <span>await</span> <span>for</span> (<span>final</span> chunk <span>in</span> session.<span>sendStream</span>(<span>'Write hello world in Python'</span>)) { stdout.<span>write</span>(chunk.token);
+} <span>// Model remembers the conversation</span>
+<span>await</span> <span>for</span> (<span>final</span> chunk <span>in</span> session.<span>sendStream</span>(<span>'Now convert it to Rust'</span>)) { stdout.<span>write</span>(chunk.token);
+} <span>print</span>(<span>'Turns: ${<span>session</span>.<span>turnCount</span>}'</span>);
+<span>print</span>(<span>'Context: ${(<span>session</span>.<span>contextUsage</span> * <span>100</span>).<span>toInt</span>()}%'</span>);</pre></div>
+<div><h3>Function Calling</h3><a href="#function-calling"></a></div>
+<div><pre><span>final</span> tools <span>=</span> <span>ToolRegistry</span>([ <span>ToolDefinition</span>( name<span>:</span> <span>'get_time'</span>, description<span>:</span> <span>'Get the current time'</span>, parameters<span>:</span> { <span>'type'</span><span>:</span> <span>'object'</span>, <span>'properties'</span><span>:</span> { <span>'timezone'</span><span>:</span> {<span>'type'</span><span>:</span> <span>'string'</span>, <span>'enum'</span><span>:</span> [<span>'UTC'</span>, <span>'EST'</span>, <span>'PST'</span>]}, }, <span>'required'</span><span>:</span> [<span>'timezone'</span>], }, ),
+]); <span>final</span> session <span>=</span> <span>ChatSession</span>( edgeVeda<span>:</span> edgeVeda, tools<span>:</span> tools, templateFormat<span>:</span> <span>ChatTemplateFormat</span>.qwen3,
+); <span>final</span> response <span>=</span> <span>await</span> session.<span>sendWithTools</span>( <span>'What time is it in UTC?'</span>, onToolCall<span>:</span> (call) <span>async</span> { <span>if</span> (call.name <span>==</span> <span>'get_time'</span>) { <span>return</span> <span>ToolResult</span>.<span>success</span>( toolCallId<span>:</span> call.id, data<span>:</span> {<span>'time'</span><span>:</span> <span>DateTime</span>.<span>now</span>().<span>toIso8601String</span>()}, ); } <span>return</span> <span>ToolResult</span>.<span>failure</span>(toolCallId<span>:</span> call.id, error<span>:</span> <span>'Unknown tool'</span>); },
+);</pre></div>
+<div><h3>Speech-to-Text</h3><a href="#speech-to-text-1"></a></div>
+<div><pre><span>final</span> session <span>=</span> <span>WhisperSession</span>(modelPath<span>:</span> whisperModelPath);
+<span>await</span> session.<span>start</span>(); <span>// Listen for transcription segments</span>
+session.onSegment.<span>listen</span>((segment) { <span>print</span>(<span>'[${<span>segment</span>.<span>startMs</span>}ms] ${<span>segment</span>.<span>text</span>}'</span>);
+}); <span>// Feed audio from microphone</span>
+<span>final</span> audioSub <span>=</span> <span>WhisperSession</span>.<span>microphone</span>().<span>listen</span>((samples) { session.<span>feedAudio</span>(samples);
+}); <span>// Stop and get full transcript</span>
+<span>await</span> session.<span>flush</span>();
+<span>await</span> session.<span>stop</span>();
+<span>print</span>(session.transcript);</pre></div>
+<div><h3>Embeddings &amp; RAG</h3><a href="#embeddings--rag-1"></a></div>
+<p> <a target="_blank" href="/ramanujammv1988/edge-veda/blob/main/docs/images/app_rag_demo.png"><img src="/ramanujammv1988/edge-veda/raw/main/docs/images/app_rag_demo.png" alt="Document Q&amp;A with on-device RAG"></a>
+</p>
+<p><em>Multi-turn Q&amp;A over a PDF — RAG retrieval, 31.8 tok/s, entirely on-device</em></p>
+<div><pre><span>// Generate embeddings</span>
+<span>final</span> result <span>=</span> <span>await</span> edgeVeda.<span>embed</span>(<span>'On-device AI is the future'</span>);
+<span>print</span>(<span>'Dimensions: ${<span>result</span>.<span>embedding</span>.<span>length</span>}'</span>); <span>// Build a vector index</span>
+<span>final</span> index <span>=</span> <span>VectorIndex</span>(dimensions<span>:</span> result.embedding.length);
+index.<span>add</span>(<span>'doc1'</span>, result.embedding, metadata<span>:</span> {<span>'source'</span><span>:</span> <span>'readme'</span>});
+<span>await</span> index.<span>save</span>(<span>'/path/to/index.json'</span>); <span>// RAG pipeline</span>
+<span>final</span> rag <span>=</span> <span>RagPipeline</span>( edgeVeda<span>:</span> edgeVeda, index<span>:</span> index, config<span>:</span> <span>RagConfig</span>(topK<span>:</span> <span>3</span>),
+);
+<span>final</span> answer <span>=</span> <span>await</span> rag.<span>query</span>(<span>'What is Edge-Veda?'</span>);
+<span>print</span>(answer.text);</pre></div>
+<div><h3>Continuous Vision Inference</h3><a href="#continuous-vision-inference"></a></div>
+<div><pre><span>final</span> visionWorker <span>=</span> <span>VisionWorker</span>();
+<span>await</span> visionWorker.<span>spawn</span>();
+<span>await</span> visionWorker.<span>initVision</span>( modelPath<span>:</span> vlmModelPath, mmprojPath<span>:</span> mmprojPath, numThreads<span>:</span> <span>4</span>, contextSize<span>:</span> <span>2048</span>, useGpu<span>:</span> <span>true</span>,
+); <span>// Process camera frames — model stays loaded across all calls</span>
+<span>final</span> result <span>=</span> <span>await</span> visionWorker.<span>describeFrame</span>( rgbBytes, width, height, prompt<span>:</span> <span>'Describe what you see.'</span>, maxTokens<span>:</span> <span>100</span>,
+);
+<span>print</span>(result.description);</pre></div>
+<hr>
+<div><h2>Learning Path</h2><a href="#learning-path"></a></div>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>Topic</th>
+<th>Classes to Learn</th>
+<th>Lines</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Text generation</td>
+<td><pre><code>EdgeVeda</code></pre>, <pre><code>EdgeVedaConfig</code></pre></td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Streaming + chat</td>
+<td><pre><code>ChatSession</code></pre>, <pre><code>ChatTemplateFormat</code></pre></td>
+<td>8</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Model management</td>
+<td><pre><code>ModelManager</code></pre>, <pre><code>ModelRegistry</code></pre></td>
+<td>6</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Tool calling</td>
+<td><pre><code>ToolDefinition</code></pre>, <pre><code>ToolRegistry</code></pre></td>
+<td>20</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Vision</td>
+<td><pre><code>VisionWorker</code></pre>, <pre><code>VisionConfig</code></pre></td>
+<td>10</td>
+</tr>
+<tr>
+<td>6</td>
+<td>RAG pipeline</td>
+<td><pre><code>RagPipeline</code></pre>, <pre><code>VectorIndex</code></pre></td>
+<td>9</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Production</td>
+<td><pre><code>Scheduler</code></pre>, <pre><code>EdgeVedaBudget</code></pre></td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Runtime Supervision</h2><a href="#runtime-supervision-1"></a></div>
+<p>Edge-Veda continuously monitors:</p>
+<ul>
+<li>Device thermal state (nominal / fair / serious / critical)</li>
+<li>Available memory (<pre><code>os_proc_available_memory</code></pre>)</li>
+<li>Battery level and Low Power Mode</li>
+</ul>
+<p>Based on these signals, it dynamically adjusts:</p>
+<table>
+<thead>
+<tr>
+<th>QoS Level</th>
+<th>FPS</th>
+<th>Resolution</th>
+<th>Tokens</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full</td>
+<td>2</td>
+<td>640px</td>
+<td>100</td>
+<td>No pressure</td>
+</tr>
+<tr>
+<td>Reduced</td>
+<td>1</td>
+<td>480px</td>
+<td>75</td>
+<td>Thermal warning, battery &lt;15%, memory &lt;200MB</td>
+</tr>
+<tr>
+<td>Minimal</td>
+<td>1</td>
+<td>320px</td>
+<td>50</td>
+<td>Thermal serious, battery &lt;5%, memory &lt;100MB</td>
+</tr>
+<tr>
+<td>Paused</td>
+<td>0</td>
+<td>--</td>
+<td>0</td>
+<td>Thermal critical, memory &lt;50MB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Escalation is immediate.</strong> Thermal spikes are dangerous and must be responded to without delay.</p>
+<p><strong>Restoration requires cooldown</strong> (60s per level) and happens one level at a time. Full recovery from paused to full takes 3 minutes. This prevents oscillation where the system rapidly alternates between high and low quality.</p>
+<hr>
+<div><h2>Compute Budget Contracts</h2><a href="#compute-budget-contracts"></a></div>
+<p>Declare runtime guarantees. The Scheduler enforces them.</p>
+<div><pre><span>// Option 1: Adaptive — auto-calibrates to this device's actual performance</span>
+<span>final</span> scheduler <span>=</span> <span>Scheduler</span>(telemetry<span>:</span> <span>TelemetryService</span>());
+scheduler.<span>setBudget</span>(<span>EdgeVedaBudget</span>.<span>adaptive</span>(<span>BudgetProfile</span>.balanced)); <span>// Option 2: Static — explicit values</span>
+scheduler.<span>setBudget</span>(<span>const</span> <span>EdgeVedaBudget</span>( p95LatencyMs<span>:</span> <span>3000</span>, batteryDrainPerTenMinutes<span>:</span> <span>5.0</span>, maxThermalLevel<span>:</span> <span>2</span>,
+)); <span>// Register workloads with priorities</span>
+scheduler.<span>registerWorkload</span>(<span>WorkloadId</span>.vision, priority<span>:</span> <span>WorkloadPriority</span>.high);
+scheduler.<span>registerWorkload</span>(<span>WorkloadId</span>.text, priority<span>:</span> <span>WorkloadPriority</span>.low);
+scheduler.<span>registerWorkload</span>(<span>WorkloadId</span>.stt, priority<span>:</span> <span>WorkloadPriority</span>.low);
+scheduler.<span>start</span>(); <span>// React to violations</span>
+scheduler.onBudgetViolation.<span>listen</span>((v) { <span>print</span>(<span>'${<span>v</span>.<span>constraint</span>}: ${<span>v</span>.<span>currentValue</span>} &gt; ${<span>v</span>.<span>budgetValue</span>}'</span>);
+});</pre></div>
+<p><strong>Adaptive profiles</strong> resolve against measured device performance after warm-up:</p>
+<table>
+<thead>
+<tr>
+<th>Profile</th>
+<th>p95 Multiplier</th>
+<th>Battery</th>
+<th>Thermal</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conservative</td>
+<td>2.0x</td>
+<td>0.6x (strict)</td>
+<td>Floor 1</td>
+<td>Background workloads</td>
+</tr>
+<tr>
+<td>Balanced</td>
+<td>1.5x</td>
+<td>1.0x (match)</td>
+<td>Floor 2</td>
+<td>Default for most apps</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>1.1x</td>
+<td>1.5x (generous)</td>
+<td>Allow 3</td>
+<td>Latency-sensitive apps</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Performance</h2><a href="#performance"></a></div>
+<p>All numbers measured on a physical iPhone (A16 Bionic, 6GB RAM, iOS 26.2.1) with Metal GPU. See <a href="/ramanujammv1988/edge-veda/blob/main/BENCHMARKS.md">BENCHMARKS.md</a> for full details.</p>
+<p><a target="_blank" href="/ramanujammv1988/edge-veda/blob/main/docs/images/metrics_scorecard.png"><img src="/ramanujammv1988/edge-veda/raw/main/docs/images/metrics_scorecard.png" alt="Key Metrics"></a></p>
+<div><h3>Text Generation</h3><a href="#text-generation-1"></a></div>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Throughput</td>
+<td>42–43 tok/s</td>
+</tr>
+<tr>
+<td>Steady-state memory</td>
+<td>400–550 MB</td>
+</tr>
+<tr>
+<td>Multi-turn stability</td>
+<td>No degradation over 10+ turns</td>
+</tr>
+</tbody>
+</table>
+<div><h3>RAG (Retrieval-Augmented Generation)</h3><a href="#rag-retrieval-augmented-generation"></a></div>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generation speed</td>
+<td>42–43 tok/s</td>
+</tr>
+<tr>
+<td>Vector search</td>
+<td>&lt;1 ms</td>
+</tr>
+<tr>
+<td>End-to-end retrieval</td>
+<td>305–865 ms</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Vision (Soak Test)</h3><a href="#vision-soak-test"></a></div>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sustained runtime</td>
+<td>28.6 minutes</td>
+</tr>
+<tr>
+<td>Frames processed</td>
+<td>572</td>
+</tr>
+<tr>
+<td>p50 / p95 / p99 latency</td>
+<td>1,412 / 2,283 / 2,597 ms</td>
+</tr>
+<tr>
+<td>Crashes / model reloads</td>
+<td>0 / 0</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Speech-to-Text</h3><a href="#speech-to-text-2"></a></div>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transcription latency (p50)</td>
+<td>~670 ms per 3s chunk</td>
+</tr>
+<tr>
+<td>Model size</td>
+<td>77 MB</td>
+</tr>
+<tr>
+<td>Streaming</td>
+<td>Real-time segments</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Memory Optimization</h3><a href="#memory-optimization"></a></div>
+<p><a target="_blank" href="/ramanujammv1988/edge-veda/blob/main/docs/images/memory_comparison.png"><img src="/ramanujammv1988/edge-veda/raw/main/docs/images/memory_comparison.png" alt="Memory Comparison"></a></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KV cache</td>
+<td>~64 MB</td>
+<td>~32 MB (Q8_0)</td>
+</tr>
+<tr>
+<td>Steady-state memory</td>
+<td>~1,200 MB peak</td>
+<td>400–550 MB</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Thermal Management</h3><a href="#thermal-management"></a></div>
+<p><a target="_blank" href="/ramanujammv1988/edge-veda/blob/main/docs/images/thermal_management.png"><img src="/ramanujammv1988/edge-veda/raw/main/docs/images/thermal_management.png" alt="Thermal Behavior"></a></p>
+<p>The runtime monitors thermal state and automatically steps down quality of service to prevent crashes. When conditions improve, it recovers — one level at a time with a 60-second cooldown to prevent oscillation.</p>
+<div><h3>Observability</h3><a href="#observability"></a></div>
+<p>Built-in performance flight recorder writes per-frame JSONL traces:</p>
+<ul>
+<li>Per-stage timing (image encode / prompt eval / decode)</li>
+<li>Runtime policy transitions (QoS level changes)</li>
+<li>Frame drop statistics</li>
+<li>Memory and thermal telemetry</li>
+</ul>
+<p>Traces are analyzed offline using </p><pre><code>tools/analyze_trace.py</code></pre> (p50/p95/p99 stats, throughput charts, thermal overlays).<p></p>
+<hr>
+<div><h2>Supported Models</h2><a href="#supported-models"></a></div>
+<p>Pre-configured in </p><pre><code>ModelRegistry</code></pre> with download URLs and SHA-256 checksums:<p></p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Size</th>
+<th>Template</th>
+<th>Capabilities</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama 3.2 1B Instruct</td>
+<td>668 MB</td>
+<td><pre><code>llama3Instruct</code></pre></td>
+<td>chat, reasoning</td>
+<td>General chat (default)</td>
+</tr>
+<tr>
+<td>Phi 3.5 Mini Instruct</td>
+<td>2.3 GB</td>
+<td><pre><code>chatML</code></pre></td>
+<td>chat, reasoning</td>
+<td>Quality reasoning</td>
+</tr>
+<tr>
+<td>Gemma 2 2B Instruct</td>
+<td>1.6 GB</td>
+<td><pre><code>generic</code></pre></td>
+<td>chat</td>
+<td>Balanced quality/speed</td>
+</tr>
+<tr>
+<td>TinyLlama 1.1B Chat</td>
+<td>669 MB</td>
+<td><pre><code>generic</code></pre></td>
+<td>chat</td>
+<td>Speed-first, low memory</td>
+</tr>
+<tr>
+<td>Qwen3 0.6B</td>
+<td>397 MB</td>
+<td><pre><code>qwen3</code></pre></td>
+<td>chat, tool-calling</td>
+<td>Function calling, tools</td>
+</tr>
+<tr>
+<td>SmolVLM2 500M</td>
+<td>607 MB</td>
+<td>—</td>
+<td>vision</td>
+<td>Camera/image analysis</td>
+</tr>
+<tr>
+<td>Whisper Tiny</td>
+<td>77 MB</td>
+<td>—</td>
+<td>stt</td>
+<td>Fast transcription</td>
+</tr>
+<tr>
+<td>Whisper Base</td>
+<td>148 MB</td>
+<td>—</td>
+<td>stt</td>
+<td>Quality transcription</td>
+</tr>
+<tr>
+<td>MiniLM L6 v2</td>
+<td>46 MB</td>
+<td>—</td>
+<td>embedding</td>
+<td>RAG, similarity search</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Template matters.</strong> Using the wrong </p><pre><code>ChatTemplateFormat</code></pre> produces garbage output. Match the model to its template from the table above.<p></p>
+</blockquote>
+<p>Any GGUF model compatible with llama.cpp can be loaded by file path.</p>
+<hr>
+<div><h2>Platform Status</h2><a href="#platform-status"></a></div>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>GPU</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iOS (device)</td>
+<td>Metal</td>
+<td>Fully validated on-device</td>
+</tr>
+<tr>
+<td>iOS (simulator)</td>
+<td>CPU</td>
+<td>Working (Metal stubs, no mic)</td>
+</tr>
+<tr>
+<td>Android</td>
+<td>CPU</td>
+<td>Scaffolded, validation pending</td>
+</tr>
+<tr>
+<td>Android (Vulkan)</td>
+<td>--</td>
+<td>Planned</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>edge-veda/
++-- core/
+| +-- include/edge_veda.h C API (40 functions, 858 LOC)
+| +-- src/engine.cpp Text inference + embeddings (1,173 LOC)
+| +-- src/vision_engine.cpp Vision inference (484 LOC)
+| +-- src/whisper_engine.cpp Speech-to-text (290 LOC)
+| +-- src/memory_guard.cpp Memory monitoring (625 LOC)
+| +-- third_party/llama.cpp/ llama.cpp b7952 (git submodule)
+| +-- third_party/whisper.cpp/ whisper.cpp v1.8.3 (git submodule)
++-- flutter/
+| +-- lib/ Dart SDK (32 files, 11,750 LOC)
+| +-- ios/ Podspec + XCFramework
+| +-- android/ Android plugin (scaffolded)
+| +-- example/ Demo app (10 files, 8,383 LOC)
+| +-- test/ Unit tests (253 LOC, 14 tests)
++-- scripts/
+| +-- build-ios.sh XCFramework build pipeline (406 LOC)
++-- tools/
+| +-- analyze_trace.py Soak test JSONL analysis (1,797 LOC)
+</code></pre></div>
+<hr>
+<div><h2>Building</h2><a href="#building"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
+<ul>
+<li>macOS with Xcode 15+ (tested with Xcode 26.1)</li>
+<li>Flutter 3.16+ (tested with 3.38.9)</li>
+<li>CMake 3.21+</li>
+</ul>
+<div><h3>Build XCFramework</h3><a href="#build-xcframework"></a></div>
+<div><pre>./scripts/build-ios.sh --clean --release</pre></div>
+<p>Compiles llama.cpp + whisper.cpp + Edge Veda C code for device (arm64) and simulator (arm64), merges static libraries into a single XCFramework.</p>
+<div><h3>Run Demo App</h3><a href="#run-demo-app"></a></div>
+<div><pre><span>cd</span> flutter/example
+flutter run</pre></div>
+<p>The demo app includes Chat (multi-turn with tool calling), Vision (continuous camera scanning), STT (live microphone transcription), and Settings (model management, device info).</p>
+<hr>
+<div><h2>Roadmap (Directional)</h2><a href="#roadmap-directional"></a></div>
+<ul>
+<li>Android sustained runtime validation (CPU + Vulkan GPU)</li>
+<li>Text-to-speech integration</li>
+<li>Semantic perception APIs (event-driven vision)</li>
+<li>Observability dashboard (localhost trace viewer)</li>
+<li>NPU/CoreML backend support</li>
+<li>Model conversion toolchain</li>
+</ul>
+<hr>
+<div><h2>Who This Is For</h2><a href="#who-this-is-for"></a></div>
+<p>Edge-Veda is designed for teams building:</p>
+<ul>
+<li>On-device AI assistants</li>
+<li>Continuous perception apps</li>
+<li>Privacy-sensitive AI systems</li>
+<li>Long-running edge agents</li>
+<li>Voice-first applications</li>
+<li>Regulated or offline-first applications</li>
+</ul>
+<hr>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Garbage/repeated output</td>
+<td>Wrong chat template</td>
+<td>Match model family to template (see Supported Models table)</td>
+</tr>
+<tr>
+<td>App crashes on launch</td>
+<td>Missing XCFramework</td>
+<td>Run <pre><code>./scripts/build-ios.sh --clean --release</code></pre></td>
+</tr>
+<tr>
+<td>Out of memory</td>
+<td>Model too large for device</td>
+<td>Use <pre><code>ModelAdvisor.canRun()</code></pre> to check compatibility</td>
+</tr>
+<tr>
+<td>Slow first token</td>
+<td>Large context + cold start</td>
+<td>Reduce <pre><code>contextLength</code></pre>, model loads once then reuses</td>
+</tr>
+<tr>
+<td>Tool calls not parsed</td>
+<td>Wrong model for tools</td>
+<td>Use Qwen3 0.6B with <pre><code>ChatTemplateFormat.qwen3</code></pre></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions are welcome. Here's how to get started:</p>
+<div><h3>Areas of Interest</h3><a href="#areas-of-interest"></a></div>
+<ul>
+<li><strong>Platform validation</strong> — Android CPU/Vulkan testing on real devices</li>
+<li><strong>Runtime policy</strong> — New QoS strategies, thermal adaptation improvements</li>
+<li><strong>Trace analysis</strong> — Visualization tools, anomaly detection, regression tracking</li>
+<li><strong>Model support</strong> — Testing additional GGUF models, quantization profiles</li>
+<li><strong>Example apps</strong> — Minimal examples for specific use cases (document scanner, voice assistant, visual QA)</li>
+</ul>
+<div><h3>Development Workflow</h3><a href="#development-workflow"></a></div>
+<ol>
+<li>Fork the repository</li>
+<li>Create a feature branch (<pre><code>git checkout -b feature/your-feature</code></pre>)</li>
+<li>Make changes and verify with <pre><code>dart analyze</code></pre> (SDK) and <pre><code>flutter analyze</code></pre> (demo app)</li>
+<li>Run tests: <pre><code>cd flutter &amp;&amp; flutter test</code></pre></li>
+<li>Commit with descriptive messages</li>
+<li>Open a Pull Request with a summary of what changed and why</li>
+</ol>
+<div><h3>Code Standards</h3><a href="#code-standards"></a></div>
+<ul>
+<li>Dart: follow standard <pre><code>dart format</code></pre> conventions</li>
+<li>C++: match existing style in <pre><code>core/src/</code></pre></li>
+<li>All FFI calls must run in isolates (never on main thread)</li>
+<li>New C API functions must be added to the podspec symbol whitelist</li>
+</ul>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/ramanujammv1988/edge-veda/blob/main/LICENSE">Apache 2.0</a></p>
+<hr>
+<p>Built on <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> and <a href="https://github.com/ggerganov/whisper.cpp">whisper.cpp</a> by Georgi Gerganov and contributors.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

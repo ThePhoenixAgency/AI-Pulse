@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>10 pratiques de codes et humaines à intégrer</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>10 pratiques de codes et humaines à intégrer</h1>
+  <div class="metadata">
+    Source: Programmez | Date: 2/20/2026 7:21:53 AM | <a href="https://www.programmez.com/actualites/10-pratiques-de-codes-et-humaines-integrer-39039" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><p>Parfois, il est bon de revenir aux fondamentaux et de se rappeler quelques concepts qui peuvent sembler simplistes, mais qui restent toujours utiles.</p><p><strong>1 / On lit plus de code qu’on en écrit</strong></p><p>Même si on essaie de faire simple et clair, quand on rouvre un code six mois plus tard, on se demande souvent : qu’est-ce que j’ai voulu faire ?</p><p>Bref :</p><p>* des noms de variables simples, mais répondant à une logique claire</p><p>* la lisibilité du code doit primer sur les performances pures</p><p>Et gardez toujours en tête : serai-je capable de relire et comprendre ce code dans six mois ?</p><p><strong>2 / Faire simple, c’est difficile</strong></p><p>Il est plus facile de faire compliqué que de faire simple. On ajoute des couches, des dépendances, des patterns dans tous les sens.</p><p>Faire simple permet :</p><p>* moins de risques d’erreurs</p><p>* un code plus facile à tester</p><p>* une meilleure maintenance sur le long terme</p><p><strong>3 / Vous n’avez pas besoin de tout savoir, mais vous devez apprendre</strong></p><p>Un développeur ne sait pas tout. Mais il apprend.</p><p>Il faut lire la documentation, décomposer les problèmes, expérimenter et apprendre en continu pour progresser.</p><p><strong>4 / Le debug est une compétence</strong></p><p>Certains développeurs savent mieux debugger que d’autres. C’est un fait. Ils trouvent plus facilement les bugs, restent calmes et savent observer et comprendre le problème.</p><p>Pour corriger un bug, il faut :</p><p>* savoir le reproduire clairement</p><p>* modifier un élément à la fois</p><p>* lire et comprendre les logs, warnings et messages d’erreur</p><p><strong>5 / Les frameworks ne changent pas les fondamentaux</strong></p><p>Maîtriser les fondamentaux est toujours un avantage. Cette maîtrise vous aidera à migrer plus sereinement d’une version à une autre, ou même à changer de technologie.</p><p>Les frameworks évoluent. Les fondamentaux restent.</p><p><strong>6 / Les problèmes de performances sont souvent des problèmes de conception</strong></p><p>Avant d’optimiser avec du caching, du tuning ou des micro-optimisations, regardez d’abord l’architecture et la conception du projet :</p><p>* vos requêtes fonctionnent-elles correctement et sont-elles bien écrites ?</p><p>* le modèle de données est-il adapté ?</p><p>* pouvez-vous réduire les appels réseau inutiles ?</p><p>* certaines boucles peuvent-elles être optimisées ?</p><p>Les gains les plus importants viennent souvent de la conception, pas des optimisations mineures.</p><p><strong>7 / Écrire des tests</strong></p><p>Les tests permettent :</p><p>* de refactoriser en toute sécurité</p><p>* de détecter plus rapidement les problèmes</p><p>* d’améliorer la qualité globale du code</p><p>Les tests ne ralentissent pas le développement. Ils le sécurisent.</p><p><strong>8 / La communication fait partie de notre métier</strong></p><p>Un code documenté est plus facile à comprendre, maintenir et faire évoluer dans le temps.</p><p><strong>9 / Le burn-out est aussi un problème technique</strong></p><p>La pression des délais, les longues heures de développement ou le manque de vision peuvent conduire à un code de mauvaise qualité, difficile à maintenir.</p><p>Un code de qualité nécessite :</p><p>* du temps</p><p>* de la réflexion</p><p>* et des conditions de travail saines</p><p>La qualité technique est aussi une question d’organisation.</p><p><strong>10 / La progression n’est pas linéaire</strong></p><p>Développer, c’est traverser des périodes très productives, où tout fonctionne rapidement, et d’autres beaucoup plus difficiles : bugs incompréhensibles, code instable, spécifications floues.</p><p>C’est normal.&nbsp;Dans ces moments-là, il faut revenir aux fondamentaux, reprendre le problème étape par étape et garder son calme.</p><p>La progression se fait sur le long terme.</p><p>Source :&nbsp;<a href="https://medium.com/@gopi_ck/10-basic-concepts-every-developer-should-know-even-seniors-too-93e1b69a83fd">https://medium.com/@gopi_ck/10-basic-concepts-every-developer-should-know-even-seniors-too-93e1b69a83fd</a></p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

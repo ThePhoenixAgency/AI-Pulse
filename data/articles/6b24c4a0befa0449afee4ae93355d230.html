@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Notesync, a selfhosted note sync &amp; publish engine</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Notesync, a selfhosted note sync &amp; publish engine</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/22/2026 9:40:02 AM | <a href="https://nilszeilon.com/notesync/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><article> <p>I made <a href="https://github.com/nilszeion/notesync">notesync</a>, a light weight sync engine for your markdown files that also supports a publishing feature.</p>
+<p>There's already a thousand ways to sync your notes, but i decided to make my own because why not :)</p>
+<p>It lets you sync your markdown files with images across any number of personal machines and it lets you serve them as a static personal blog!</p>
+<p>You can selfhost it on any machine that you own, which is really easily set up with somethine like tailscale to never have your files leave your private network. Or you can selfhost it for as low as ~3$/m on a personal vps provider like <a href="https://hetzner.com/">hetzner</a>.</p>
+<p>You are reading this from my own system hosting this little blog, the time from me writing a note and you seeing the change is sub second!</p>
+<h2>How it works</h2>
+<p>Notesync offers two options for sync:</p>
+<ol>
+<li>sync only</li>
+<li>sync + publish</li>
+</ol>
+<p>Both work the same way under the hood. You run a server on a VPS (or any machine really) and a client on each device you want to sync from. The client watches your local notes folder for changes using OS-level file events and pushes them to the server over a simple REST API. When you set up a second client on another machine, it pulls everything down on first start and then keeps watching for changes in both directions.</p>
+<p>Laptop A (client) ←→ Server ←→ Laptop B (client)</p>
+<p>Conflict resolution is dead simple: last write wins, based on file modification timestamps. If you edited a note on your laptop at 3pm and also edited it on your work machine at 4pm, the 4pm version wins. It's not fancy but for personal notes it's honestly all you need.</p>
+<p>Deletions are tracked with tombstones — little records that say "this file was deleted at this time". They stick around for 30 days so that when your other client comes online it knows to actually delete the file instead of re-uploading it. After 30 days they get cleaned up automatically.</p>
+<p>If you don't want to pull down all your personal notes to for example a work related machine (cough cough Greg Brockman), each client can be configured to be push only. So that only the files created on that machine are synced.</p>
+<h3>sync + publish</h3>
+<p>This is where it gets fun. In publish mode your client talks to two servers: your private storage server and a public-facing publish server. Every file gets synced to the private server like normal, but only notes with publish: true in the frontmatter get pushed to the publish server.</p>
+<pre><code> --- publish: true title: My cool blog post ---
+</code></pre>
+<p>The publish server has a built-in site builder that converts your markdown into a static HTML site every time a file changes. Flip publish: true to false and the note gets pulled from the public site on the next sync.</p>
+<blockquote>
+<p>You can sync your files to the same server that you publish to, I just thought that if you are not comfortable to store your notes on a server accessible to the public you are always given the option to store them in a secondary location. Right now I sync my files to a tiny raspberry pi in my closet and then only sync the published notes to my hetzner VPS.</p>
+</blockquote>
+<h2>deployment</h2>
+<p>The whole thing runs in Docker. The install script gives you three choices:</p>
+<ol>
+<li>Blog — server + Caddy reverse proxy with automatic HTTPS</li>
+<li>Storage — just the server, for private sync on something like Tailscale</li>
+<li>Client — just the file watcher, connects to a remote server</li>
+</ol>
+<p>A blog setup on a 3€/month Hetzner box gets you automatic TLS, a clean static site, and sync across all your devices. Auth is a shared token, generated on install — nothing to configure beyond that.</p> </article></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

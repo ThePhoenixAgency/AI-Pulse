@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Syncpack</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Syncpack</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 7:11:24 PM | <a href="https://syncpack.dev/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Syncpack is a command-line tool for consistent dependency versions in large JavaScript Monorepos, it is used by <a href="https://github.com/aws/aws-pdk">AWS</a>, <a href="https://github.com/cloudflare/mcp-server-cloudflare">Cloudflare</a>, <a href="https://github.com/DataDog/datadog-ci">DataDog</a>, <a href="https://github.com/electron/forge">Electron</a>, <a href="https://github.com/godaddy/gasket">GoDaddy</a>, <a href="https://github.com/livestorejs/livestore">LiveStore</a>, <a href="https://github.com/LottieFiles/dotlottie-web">Lottie</a>, <a href="https://github.com/microsoft/fluentui">Microsoft</a>, <a href="https://github.com/PostHog/posthog">PostHog</a>, <a href="https://github.com/QwikDev/qwik">Qwik</a>, <a href="https://github.com/raycast/extensions">Raycast</a>, <a href="https://github.com/SalesforceCommerceCloud/pwa-kit">Salesforce</a>, <a href="https://github.com/toptal/picasso">TopTal</a>, <a href="https://github.com/vercel/vercel">Vercel</a>, <a href="https://github.com/VoltAgent/voltagent">VoltAgent</a>, <a href="https://github.com/woocommerce/woocommerce">WooCommerce</a> and others.</p>
+<p>Some of the things it can do are:</p>
+<ul>
+<li>Find and fix dependency version mismatches.</li>
+<li>Enforce a single version policy, or create partitions with separate policies.</li>
+<li>Find and bump outdated versions from the npm registry.</li>
+<li>Ensure some dependencies always remain pinned at a specific version.</li>
+<li>Ban some dependencies from being used: anywhere, or in specific places.</li>
+<li>Define rules for where exact or loose semver ranges should be used.</li>
+<li>Assign packages as the source of truth for specific dependencies' versions.</li>
+<li>Sort and format package.json files consistently.</li>
+</ul> <p>The fastest way to try syncpack is via <a href="https://docs.npmjs.com/cli/v11/commands/npx">npx</a>.</p>
+<div><pre><code><div><p><span>npx</span><span> </span><span>syncpack</span><span> </span><span>list</span><span> </span><span>--dependency-types</span><span> </span><span>prod</span></p></div></code></pre></div>
+<p>Run this command from the root directory of a monorepo and it will list every dependency installed under a <a href="https://docs.npmjs.com/cli/v11/configuring-npm/package-json#dependencies"><code>dependencies</code></a> property of a package.json file in the project.</p>
+<p>Syncpack uses your package manager's workspace configuration to locate your package.json files, or you can target specific files using the <a href="https://syncpack.dev/config/source/"><code>source</code></a> configuration or <code>--source</code> option.</p>
+<p>For any given command, browse a summary of its options with <code>-h</code></p>
+<div><pre><code><div><p><span>npx</span><span> </span><span>syncpack</span><span> </span><span>update</span><span> </span><span>-h</span></p></div></code></pre></div>
+<p>or display documentation and examples with <code>--help</code></p>
+<div><pre><code><div><p><span>npx</span><span> </span><span>syncpack</span><span> </span><span>update</span><span> </span><span>--help</span></p></div></code></pre></div> <p>When setting up a project for real, install <code>syncpack</code> in <a href="https://docs.npmjs.com/cli/v11/configuring-npm/package-json#devDependencies"><code>devDependencies</code></a> so that everyone working on your project uses the same version.</p>
+<div><pre><code><div><p><span>npm</span><span> </span><span>install</span><span> </span><span>syncpack</span><span> </span><span>--save-dev</span></p></div></code></pre></div>
+<p>The locally installed binary can be run using <a href="https://docs.npmjs.com/cli/v11/commands/npm-exec">npm exec</a></p>
+<div><pre><code><div><p><span>npm</span><span> </span><span>exec</span><span> </span><span>syncpack</span><span> </span><span>--</span><span> </span><span>list</span></p></div></code></pre></div> <p>Let's see which dependencies we use the most.</p>
+<div><pre><code><div><p><span>syncpack</span><span> </span><span>list</span><span> </span><span>--dependency-types</span><span> </span><span>prod</span><span> </span><span>--sort</span><span> </span><span>count</span></p></div></code></pre></div>
+<p>Some of our dependencies might have <a href="https://syncpack.dev/status/">status codes</a> next to them, if our Terminal supports it we can command + click each error to view its documentation, or each filename to open the file.</p>
+<p>To focus only on dependencies with errors, use <code>lint</code> instead of <code>list</code>.</p>
+<div><pre><code><div><p><span>syncpack</span><span> </span><span>lint</span><span> </span><span>--dependency-types</span><span> </span><span>prod</span></p></div></code></pre></div>
+<p>If the suggested changes look ok, we can autofix them.</p>
+<div><pre><code><div><p><span>syncpack</span><span> </span><span>fix</span><span> </span><span>--dependency-types</span><span> </span><span>prod</span></p></div></code></pre></div> <p>Or we could choose to only autofix one of them, for this example I've chosen <code>react</code>.</p>
+<div><pre><code><div><p><span>syncpack</span><span> </span><span>fix</span><span> </span><span>--dependency-types</span><span> </span><span>prod</span><span> </span><span>--dependencies</span><span> </span><span>react</span></p></div></code></pre></div>
+<p>All of syncpack's commands can be filtered in the same way, let's see if <code>react</code> needs updating.</p>
+<div><pre><code><div><p><span>syncpack</span><span> </span><span>update</span><span> </span><span>--check</span><span> </span><span>--dependencies</span><span> </span><span>react</span></p></div></code></pre></div>
+<p>Or list every dependency with <code>eslint</code> somewhere in the name.</p>
+<div><pre><code><div><p><span>syncpack</span><span> </span><span>list</span><span> </span><span>--dependencies</span><span> </span><span>'**eslint**'</span></p></div></code></pre></div>
+<p>Or every dependency published under the <code>@types</code> scope.</p>
+<div><pre><code><div><p><span>syncpack</span><span> </span><span>list</span><span> </span><span>--dependencies</span><span> </span><span>'@types/**'</span></p></div></code></pre></div>
+<p>We can find every dependency installed with an exact version number.</p>
+<div><pre><code><div><p><span>syncpack</span><span> </span><span>list</span><span> </span><span>--specifier-types</span><span> </span><span>exact</span></p></div></code></pre></div>
+<p>Or look for updates to <a href="https://docs.npmjs.com/cli/v11/configuring-npm/package-json#devDependencies"><code>devDependencies</code></a> where only the patch version is newer than what we have installed.</p>
+<div><pre><code><div><p><span>syncpack</span><span> </span><span>update</span><span> </span><span>--check</span><span> </span><span>--dependency-types</span><span> </span><span>dev</span><span> </span><span>--target</span><span> </span><span>patch</span></p></div></code></pre></div>
+<p>And by removing the <code>--check</code> option we can write the newer versions to our files.</p>
+<div><pre><code><div><p><span>syncpack</span><span> </span><span>update</span><span> </span><span>--dependencies</span><span> </span><span>react</span></p></div></code></pre></div>
+<p>Each command supports <code>--help</code> for examples and available options.</p>
+<div><pre><code><div><p><span>syncpack</span><span> </span><span>list</span><span> </span><span>--help</span></p></div></code></pre></div> <p>Create a <a href="https://syncpack.dev/config/syncpackrc/">.syncpackrc</a> file in the root of your repo to customise behaviour. One way to get started is to focus on production dependencies, then gradually broaden out as you feel comfortable. This is done using <a href="https://syncpack.dev/version-groups/"><code>Version Groups</code></a>.</p>
+<div><pre><code><div><p><span>{</span></p></div><div><p><span> </span><span>"</span><span>versionGroups</span><span>"</span><span>:</span><span> [</span></p></div><div><p><span><span> </span></span><span>{</span></p></div><div><p><span> </span><span>"</span><span>label</span><span>"</span><span>:</span><span> </span><span>"</span><span>Sync all production dependencies</span><span>"</span><span>,</span></p></div><div><p><span> </span><span>"</span><span>dependencyTypes</span><span>"</span><span>:</span><span> [</span><span>"</span><span>prod</span><span>"</span><span>]</span></p></div><div><p><span><span> </span></span><span>}</span><span>,</span></p></div><div><p><span><span> </span></span><span>{</span></p></div><div><p><span> </span><span>"</span><span>label</span><span>"</span><span>:</span><span> </span><span>"</span><span>Ignore everything else</span><span>"</span><span>,</span></p></div><div><p><span> </span><span>"</span><span>isIgnored</span><span>"</span><span>:</span><span> </span><span>true</span></p></div><div><p><span><span> </span></span><span>}</span></p></div><div><p><span><span> </span></span><span>]</span></p></div><div><p><span>}</span></p></div></code></pre></div>
+<p>Or you could focus on specific dependencies and fix those first:</p>
+<div><pre><code><div><p><span>{</span></p></div><div><p><span> </span><span>"</span><span>versionGroups</span><span>"</span><span>:</span><span> [</span></p></div><div><p><span><span> </span></span><span>{</span></p></div><div><p><span> </span><span>"</span><span>label</span><span>"</span><span>:</span><span> </span><span>"</span><span>Sync react dependencies only</span><span>"</span><span>,</span></p></div><div><p><span> </span><span>"</span><span>dependencies</span><span>"</span><span>:</span><span> [</span><span>"</span><span>react</span><span>"</span><span>,</span><span> </span><span>"</span><span>react-dom</span><span>"</span><span>]</span><span>,</span></p></div><div><p><span> </span><span>"</span><span>dependencyTypes</span><span>"</span><span>:</span><span> [</span><span>"</span><span>prod</span><span>"</span><span>]</span></p></div><div><p><span><span> </span></span><span>}</span><span>,</span></p></div><div><p><span><span> </span></span><span>{</span></p></div><div><p><span> </span><span>"</span><span>label</span><span>"</span><span>:</span><span> </span><span>"</span><span>Ignore everything else</span><span>"</span><span>,</span></p></div><div><p><span> </span><span>"</span><span>isIgnored</span><span>"</span><span>:</span><span> </span><span>true</span></p></div><div><p><span><span> </span></span><span>}</span></p></div><div><p><span><span> </span></span><span>]</span></p></div><div><p><span>}</span></p></div></code></pre></div>
+<div><h3><code>workspace:*</code> dependencies</h3><p><a href="#workspace-dependencies"><span>Section titled “workspace:* dependencies”</span></a></p></div>
+<p>This is a popular configuration which ensures that <code>workspace:*</code> is always used when you depend on a package which is developed in your monorepo.</p>
+<div><pre><code><div><p><span>{</span></p></div><div><p><span> </span><span>"</span><span>versionGroups</span><span>"</span><span>:</span><span> [</span></p></div><div><p><span><span> </span></span><span>{</span></p></div><div><p><span> </span><span>"</span><span>label</span><span>"</span><span>:</span><span> </span><span>"</span><span>Use `workspace:*` protocol for local packages</span><span>"</span><span>,</span></p></div><div><p><span> </span><span>// for packages developed in your monorepo</span></p></div><div><p><span> </span><span>"</span><span>dependencies</span><span>"</span><span>:</span><span> [</span><span>"</span><span>$LOCAL</span><span>"</span><span>]</span><span>,</span></p></div><div><p><span> </span><span>// when they are installed as prod or dev dependencies</span></p></div><div><p><span> </span><span>"</span><span>dependencyTypes</span><span>"</span><span>:</span><span> [</span><span>"</span><span>dev</span><span>"</span><span>,</span><span> </span><span>"</span><span>prod</span><span>"</span><span>]</span><span>,</span></p></div><div><p><span> </span><span>// always use the workspace protocol to reference them</span></p></div><div><p><span> </span><span>"</span><span>pinVersion</span><span>"</span><span>:</span><span> </span><span>"</span><span>workspace:*</span><span>"</span></p></div><div><p><span><span> </span></span><span>}</span><span>,</span></p></div><div><p><span><span> </span></span><span>{</span></p></div><div><p><span> </span><span>"</span><span>label</span><span>"</span><span>:</span><span> </span><span>"</span><span>Ignore everything else</span><span>"</span><span>,</span></p></div><div><p><span> </span><span>"</span><span>isIgnored</span><span>"</span><span>:</span><span> </span><span>true</span></p></div><div><p><span><span> </span></span><span>}</span></p></div><div><p><span><span> </span></span><span>]</span></p></div><div><p><span>}</span></p></div></code></pre></div> <ol>
+<li>Read the <a href="https://syncpack.dev/guide/peer-dependencies/"><code>Peer Dependencies</code></a> guide if your projects uses them, it will be important to understand them from a version consistency point of view.</li>
+<li><a href="https://syncpack.dev/semver-groups/"><code>Semver Groups</code></a> configuration lets you ensure for example that version numbers in <code>devDependencies</code> always use <code>^</code> while <code>dependencies</code> always use <code>~</code>.</li>
+<li>With <a href="https://syncpack.dev/version-groups/"><code>Version Groups</code></a> configuration you can slice up your packages and dependencies in a lot of different ways. Each group can have different versioning policies to the rest of the repo, but are each kept internally consistent and valid according to their own rules.</li>
+</ol> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

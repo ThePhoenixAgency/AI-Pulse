@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Release v2.0.7 · genielabs/HomeGenie · GitHub</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Release v2.0.7 · genielabs/HomeGenie · GitHub</h1>
+  <div class="metadata">
+    Source: HomeGenie (GitHub Releases) | Date: 2/27/2026 11:39:01 PM | <a href="https://github.com/genielabs/HomeGenie/releases/tag/v2.0.7" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <h2>HomeGenie v2.0.7 - AI Vision &amp; Integrated NVR</h2>
+<p>Welcome to HomeGenie 2.0.7! This major update transforms your smart home setup into a <strong>cutting-edge, AI-powered video surveillance platform</strong>. We've completely rewritten how HomeGenie handles cameras and added a built-in Network Video Recorder (NVR) that works seamlessly with our newest Artificial Intelligence models.</p>
+<p>Here is what’s new:</p>
+<h3> Smarter, Faster AI</h3>
+<ul>
+<li><strong>Next-Gen Object Detection:</strong> We have upgraded our AI engine to support <strong>YOLO26</strong>, the absolute latest generation of AI vision models. It is faster, more accurate, and catches details like never before.</li>
+<li><strong>Smarter Text Processing:</strong> The underlying LLamaSharp engine has been updated, making text-based automations and local LLM processing snappier.</li>
+<li><strong>Total Performance Control:</strong> Worried about AI using all your CPU/GPU? You can now set a <strong>"Max Requests Per Second"</strong> limit on Object Detection, Pose Estimation, and Segmentation. Your system stays perfectly responsive while still catching all the action.</li>
+</ul>
+<h3> The "AI Vision Hub" Dashboard</h3>
+<p>Keep an eye on everything at once. We've introduced the <strong>AI Vision Hub</strong>, a brand-new dashboard tailored for security. You can pin up to 5 live camera feeds side-by-side, watching real-time AI bounding boxes and detections directly on the video streams.</p>
+<h3> Built-in Smart NVR (Network Video Recorder)</h3>
+<p>You no longer need third-party software to record your cameras. HomeGenie now includes a highly optimized, enterprise-grade NVR system out of the box.</p>
+<ul>
+<li><strong>AI-Triggered Recording:</strong> Why record hours of empty rooms? HomeGenie’s NVR talks directly to the AI engine. You can set it to record only when a specific object (like a person or a car) is detected, saving massive amounts of disk space. Continuous recording is also available.</li>
+<li><strong>Ultra-Efficient Saving:</strong> If your camera supports standard video streams, HomeGenie saves the footage <em>without re-encoding it</em>. This means you can record dozens of HD cameras even on low-power devices like a Raspberry Pi without breaking a sweat.</li>
+<li><strong>Makes "Dumb" Cameras Smart:</strong> Got a cheap camera that only provides static JPEG snapshots? HomeGenie automatically stitches those images together in the background, turning them into a smooth, live video stream for your dashboards.</li>
+<li><strong>Beautiful Playback &amp; Organization:</strong> All recordings are neatly organized by day. The interface instantly loads durations, file sizes, and generates smart thumbnails for your clips so you can quickly find the exact moment you are looking for.</li>
+<li><strong>Set It and Forget It:</strong> Turn on the auto-cleanup feature, and HomeGenie will automatically delete footage older than your specified number of days, ensuring your hard drive never fills up.</li>
+</ul>
+<p><strong>Full Changelog</strong>: <a href="https://github.com/genielabs/HomeGenie/compare/v2.0.6...v2.0.7">v2.0.6...v2.0.7</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

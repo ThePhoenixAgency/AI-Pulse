@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Show HN: Bridge your Claude/OpenAI subs into a team API with per-key cost caps</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Show HN: Bridge your Claude/OpenAI subs into a team API with per-key cost caps</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/28/2026 7:11:15 AM | <a href="https://github.com/Shreyas-Dayal/ai-cli-bridge" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <p><p>Hey HN, I built this because I wanted to give my team access to Claude and GPT models for internal testing, but the official APIs have no per-key spending controls. You can't cap a key at $5/day or 100 requests/month — it's all or nothing. With non-technical team members in the mix (designers, PMs, QA), one forgotten loop or oversized prompt away from an ugly bill wasn't a risk I wanted to manage manually. Idea was to allow the members to test with these restricted API keys before using official keys.<p>So I built a bridge: it wraps the Claude Code CLI and Codex CLI behind an Express API, backed by existing Max/Pro subscriptions instead of per-token billing. Each team member gets their own API key with hard limits — requests/day, tokens/month, cost caps. Hit the limit and the key stops working. No surprises. An admin dashboard shows who's using what in real time.<p>Key features:
+- Two providers: /generate (Claude) and /generate-codex (Codex)
+- Per-user API keys with SHA-256 hashing (shown once, never stored raw)
+- Per-key hard limits with real-time tracking and enforcement
+- Admin dashboard for key management, usage monitoring, and request logs
+- Deploy on a $5 VPS behind Cloudflare Tunnel<p>What it's NOT: A production API replacement. It's for internal tooling and prototyping. CLI invocations add ~3-8s latency vs direct API calls.<p>Important: Wrapping CLI subscriptions behind a shared API may violate the Terms of Service of the underlying providers. Anthropic's Consumer ToS (updated Feb 2026) prohibits using subscription OAuth tokens in third-party tools, and OpenAI's ToS prohibits account sharing. Review the applicable terms before using this. See the Disclaimer section in the README for details.<p>Security was a focus: execFile (no shell injection), timing-safe auth, CSP/HSTS, input validation, rate limiting. Details in SECURITY.md.<p>Stack: Node.js, TypeScript, Express. No database — JSON files on disk.<p>GitHub: <a href="https://github.com/Shreyas-Dayal/ai-cli-bridge" rel="nofollow">https://github.com/Shreyas-Dayal/ai-cli-bridge</a><p>Would love feedback on the approach and any security concerns I might have missed.</p>
+<hr>
+<p> URL: <a href="https://news.ycombinator.com/item?id=47191530">https://news.ycombinator.com/item?id=47191530</a></p>
+<p>Points: 1</p>
+<p># : 1</p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

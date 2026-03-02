@@ -232,11 +232,11 @@ try {
  * Création d'une instance du parser RSS
  *
  * OPTIONS:
- * - timeout: 10000 = 10 secondes maximum pour récupérer un flux
+ * - timeout: 3000 = 3 secondes maximum pour récupérer un flux (évite blocage)
  * - headers: User-Agent identifie notre application auprès des serveurs
  */
 const parser = new Parser({
-  timeout: 10000,                           // Timeout de 10 secondes
+  timeout: 3000,                            // Timeout de 3 secondes (évite les flux lents)
   headers: { 'User-Agent': 'AI-Pulse/3.0' } // Identification de l'application
 });
 
@@ -338,7 +338,8 @@ function renderArticleMetadataLine({ sourceName, pubDate, lang, originalUrl }) {
   const safeLang = String(lang || 'en').toUpperCase();
   const rawDate = pubDate ? new Date(pubDate) : new Date();
   const safeDate = Number.isNaN(rawDate.getTime()) ? new Date() : rawDate;
-  const datePart = `${safeDate.toLocaleDateString()} ${safeDate.toLocaleTimeString()}`;
+  const locale = safeLang === 'FR' ? 'fr-FR' : 'en-US';
+  const datePart = safeDate.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
   const linkPart = renderOriginalLinkMeta(originalUrl);
   return `Source: ${safeSource} | Date: ${datePart}${linkPart} | Lang: ${safeLang}`;
 }
@@ -417,6 +418,8 @@ function cleanupNoiseText(input) {
     .replace(/\bpublicit[eé]\b/gi, ' ')
     .replace(/\bpublicit\b/gi, ' ')
     .replace(/\b(votre contenu continue ci-dessous)\b/gi, ' ')
+    // Suppression des prefixes TL;DR inline dans le texte
+    .replace(/^tl[;\s]?dr\s*[:\-–][^\n]*/gim, '')
     .replace(/\s{2,}/g, ' ')
     .trim());
 }
@@ -776,8 +779,26 @@ function cleanupNoiseHtml(input, options = {}) {
   try {
     const dom = createSafeDom(`<body>${String(input)}</body>`, 'https://local.ai-pulse/');
     const body = dom.window.document.body;
+    // Suppression des blocs TL;DR (titre + contenu suivant)
+    body.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((heading) => {
+      if (/tl[;\s]?dr/i.test(heading.textContent)) {
+        let next = heading.nextElementSibling;
+        while (next && !['H1','H2','H3','H4','H5','H6'].includes(next.tagName)) {
+          const toRemove = next;
+          next = next.nextElementSibling;
+          toRemove.remove();
+        }
+        heading.remove();
+      }
+    });
+
     body.querySelectorAll('p').forEach((paragraph) => {
       const normalized = normalizeNoiseText(paragraph.textContent || '');
+      // Suppression des paragraphes TL;DR inline
+      if (/^tl[;\s]?dr\s*[:\-–]/i.test(normalized)) {
+        paragraph.remove();
+        return;
+      }
       if (
         removableParagraphs.has(normalized) ||
         /\best apparu en premier sur\b/i.test(normalized) ||
@@ -814,6 +835,14 @@ function cleanupNoiseHtml(input, options = {}) {
 
     removeBlockingPanels(body);
     removePromotionalNodes(body);
+
+    // Sécurité : tous les liens target="_blank" doivent avoir rel="noopener noreferrer"
+    body.querySelectorAll('a[target="_blank"]').forEach((a) => {
+      const rel = (a.getAttribute('rel') || '').toLowerCase();
+      if (!rel.includes('noopener')) {
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
 
     let cleaned = trimPromotionalTailHtml(stripEmojiCharacters(body.innerHTML.trim()));
     if (sourceProfile === 'news' || sourceProfile === 'wire' || sourceProfile === 'blog') {
@@ -965,7 +994,7 @@ async function resolveArticleUrl(articleUrl) {
   for (const candidate of candidates) {
     try {
       const response = await axios.get(candidate, {
-        timeout: 5000,
+        timeout: 3000,
         maxRedirects: 5,
         headers: { 'User-Agent': 'AI-Pulse/3.0' }
       });
@@ -1139,7 +1168,10 @@ function computeCategoryRelevance(article, categoryName) {
  */
 function smartTruncate(text, maxLength) {
   // Utiliser la valeur par défaut de la config si non spécifiée
-  maxLength = maxLength || SETTINGS.summaryMaxLength || 600;
+  if (!maxLength && SETTINGS) {
+    maxLength = SETTINGS.articleMaxLength || 8000;
+  }
+  maxLength = maxLength || 600;
 
   // Si le texte est déjà assez court, le retourner tel quel
   if (!text || text.length <= maxLength) return text;
@@ -1147,25 +1179,36 @@ function smartTruncate(text, maxLength) {
   // Couper à la longueur maximale
   let truncated = text.slice(0, maxLength);
 
-  // Expression régulière pour trouver les signes de ponctuation de fin
-  // Cherche: . ! ? ; : suivis d'un espace ou de la fin du texte
+  // Chercher la dernière phrase complète (finissant par . ! ? ou »)
+  // On cherche de la fin vers le début pour trouver la dernière ponctuation
+  for (let i = truncated.length - 1; i >= Math.max(0, truncated.length - 200); i--) {
+    const char = truncated[i];
+    if (char === '.' || char === '!' || char === '?' || char === '»') {
+      // Vérifier que ce n'est pas une abréviation (ex: "M." "Dr." etc.)
+      const before = truncated.slice(Math.max(0, i - 3), i);
+      const isAbbrev = /^[A-Z][a-z]?$/.test(before.trim());
+      if (!isAbbrev) {
+        return truncated.slice(0, i + 1).trim();
+      }
+    }
+  }
+
+  // Fallback: chercher n'importe quelle ponctuation de fin de phrase
   const punctuationRegex = /[.!?;:](?=\s|$)/g;
-
-  // Trouver toutes les occurrences de ponctuation
   const matches = [...truncated.matchAll(punctuationRegex)];
-
-  // Si on a trouvé de la ponctuation, couper après la dernière
   if (matches.length > 0) {
     const lastMatch = matches[matches.length - 1];
     return text.slice(0, lastMatch.index + 1).trim();
   }
 
-  // Sinon, couper au dernier espace et ajouter "..."
+  // Sinon, couper au dernier espace (pas en plein mot)
   const lastSpace = truncated.lastIndexOf(' ');
-  if (lastSpace > 0) return truncated.slice(0, lastSpace).trim() + '...';
+  if (lastSpace > maxLength * 0.7) {
+    return truncated.slice(0, lastSpace).trim() + '…';
+  }
 
-  // En dernier recours, couper brutalement avec "..."
-  return truncated.trim() + '...';
+  // En dernier recours, couper avec ellipse
+  return truncated.trim() + '…';
 }
 
 function containsOpenClawSignal(text) {
@@ -1425,7 +1468,29 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       },
       {
         name: 'scribe.rip',
-        transform: (u) => u.includes('medium.com') ? u.replace('medium.com', 'scribe.rip') : null
+        transform: (u) => {
+          try {
+            const parsedUrl = new URL(u);
+            // Safely check if this is a medium.com URL by parsing the hostname
+            if (parsedUrl.hostname === 'medium.com' || parsedUrl.hostname.endsWith('.medium.com')) {
+              return u.replace(parsedUrl.hostname, 'scribe.rip');
+            }
+          } catch (_) {}
+          return null;
+        }
+      },
+      {
+        name: 'freedium',
+        transform: (u) => {
+          try {
+            const parsedUrl = new URL(u);
+            // Safely check if this is a medium.com URL
+            if (parsedUrl.hostname === 'medium.com' || parsedUrl.hostname.endsWith('.medium.com')) {
+              return u.replace(parsedUrl.hostname, 'freedium.app');
+            }
+          } catch (_) {}
+          return null;
+        }
       },
       {
         name: 'web.archive.org',
@@ -1438,7 +1503,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       if (!bypassUrl) continue;
       try {
         const response = await axios.get(bypassUrl, {
-          timeout: 5000,
+          timeout: 3000,
           headers: { 'User-Agent': 'AI-Pulse/3.0' }
         });
         return { success: true, html: response.data, service: service.name };
@@ -1451,7 +1516,15 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
   const writeFallbackLocalArticle = () => {
     const safeTitle = sanitizeText(article.title) || 'Untitled';
-    const safeSummary = smartTruncate(cleanupNoiseText(rawSummary || ''), 1200) || (rawSummary ? sanitizeText(rawSummary) : 'Summary unavailable for this article.');
+    // Fallback : on tente d'afficher le contenu complet si possible, sinon le résumé
+    let safeContent = '';
+    if (article && article.content && typeof article.content === 'string' && article.content.length > 200) {
+      safeContent = smartTruncate(cleanupNoiseText(article.content), SETTINGS.articleMaxLength || 8000);
+    } else if (rawSummary) {
+      safeContent = smartTruncate(cleanupNoiseText(rawSummary), SETTINGS.summaryMaxLength || 2000);
+    } else {
+      safeContent = 'Aucun contenu disponible.';
+    }
     const fallbackHtml = `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
@@ -1482,26 +1555,30 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     ${renderArticleMetadataLine({ sourceName, pubDate: article.pubDate || Date.now(), lang, originalUrl: articleUrl })}
   </div>
   <div class="content">
-    <p>${safeSummary}</p>
+    <p>${safeContent}</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="goBack()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
     function stripBlockingPanels() {
       const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
-      const textPattern = /\\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\\s]?vous|inscrivez[-\\s]?vous|continue reading|continuez la lecture)\\b/i;
+      const textPattern = /\\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\\s]?vous|inscrivez[-\\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\\b/i;
       document.querySelectorAll(selector).forEach((node) => node.remove());
-      document.querySelectorAll('div, section, aside').forEach((node) => {
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
         const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
         const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
-        const text = String(node.textContent || '').slice(0, 800);
+        const text = String(node.textContent || '').slice(0, 1200);
         const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
         const looksFixed = /(position\\s*:\\s*(fixed|sticky)|inset\\s*:|top\\s*:|left\\s*:|right\\s*:|bottom\\s*:)/.test(styleAttr);
         const hasPriority = /(z-index\\s*:\\s*[1-9]\\d{1,}|backdrop-filter|overflow\\s*:\\s*hidden)/.test(styleAttr);
         if (hasKeyword && (looksFixed || hasPriority)) node.remove();
       });
+    }
+    function goBack() {
+      try { window.parent.history.back(); } catch(e) { history.back(); }
     }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
@@ -1532,7 +1609,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       } else {
       // Récupérer la page web complète
       const response = await axios.get(resolvedArticleUrl, {
-        timeout: 8000,
+        timeout: 3000,
         headers: { 'User-Agent': 'AI-Pulse/3.0' }
       });
 
@@ -1558,6 +1635,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       }
 
       if (articleContent && articleContent.textContent) {
+        // Handle paywall bypass first if needed
         if (isPaywallText(articleContent.textContent)) {
           // Essayer les services de bypass avant de renoncer
           const bypassResult = await tryPaywallBypass(resolvedArticleUrl);
@@ -1567,18 +1645,21 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
             const bypassContent = bypassReader.parse();
             if (bypassContent && bypassContent.textContent && !isPaywallText(bypassContent.textContent) && bypassContent.textContent.length > 200) {
               articleContent = bypassContent;
-              // Continuer le traitement normal avec le contenu bypassed
+              // Continue to normal content processing below
             } else {
               writeFallbackLocalArticle();
+              return;
             }
           } else {
             writeFallbackLocalArticle();
+            return;
           }
+        }
+
+        // Process content (whether original or bypassed)
+        if (isLikelyBoilerplateExtraction(articleContent.textContent)) {
+          writeFallbackLocalArticle();
         } else {
-          // Contenu normal sans paywall
-          if (isLikelyBoilerplateExtraction(articleContent.textContent)) {
-            writeFallbackLocalArticle();
-          } else {
         if (!computedSummary || computedSummary.trim().length < 20) {
           computedSummary = trimPromotionalTailText(cleanupNoiseText(sanitizeText(articleContent.textContent.slice(0, 1400))));
         }
@@ -1649,6 +1730,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     ${finalMainContent}
   </div>
   <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="goBack()" title="Retour">←</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
@@ -1666,6 +1748,9 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
         const hasPriority = /(z-index\\s*:\\s*[1-9]\\d{1,}|backdrop-filter|overflow\\s*:\\s*hidden)/.test(styleAttr);
         if (hasKeyword && (looksFixed || hasPriority)) node.remove();
       });
+    }
+    function goBack() {
+      try { window.parent.history.back(); } catch(e) { history.back(); }
     }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
@@ -1689,7 +1774,6 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
         // Sauvegarder le fichier HTML localement
         fs.writeFileSync(localPath, cleanHtml);
-          }
         }
       }
       }
@@ -1792,6 +1876,14 @@ async function aggregateCategory(categoryName, feeds) {
     .filter(r => r.status === 'fulfilled')
     .flatMap(r => r.value)
     .filter(Boolean);
+
+  // Filtrer les articles trop anciens (par défaut 180 jours = 6 mois)
+  const maxAgeDays = SETTINGS.maxArticleAgeDays || 180;
+  const cutoffDate = new Date(Date.now() - maxAgeDays * 24 * 60 * 60 * 1000);
+  articles = articles.filter((article) => {
+    const articleDate = new Date(article.pubDate || 0);
+    return articleDate >= cutoffDate;
+  });
 
   if (categoryName === 'openclaw') {
     const specialOnly = articles.filter((article) => matchesSpecialCategory(article, categoryName));
@@ -1978,7 +2070,6 @@ function generateREADME(categorizedArticles) {
 
     // Générer la liste des articles
     articles.slice(0, maxArticles).forEach((article, index) => {
-      const keyword = resolveDisplayKeyword(article.tags, article.lang, category);
       const langBadge = article.lang === 'fr' ? '`FR`' : '`EN`';
       const summaryText = (article.summary && String(article.summary).trim().length > 0)
         ? article.summary
@@ -1987,7 +2078,7 @@ function generateREADME(categorizedArticles) {
 
       readme += `<div class="article-item" data-lang="${article.lang}" data-category="${category}" data-source="${article.source}">\n\n`;
       readme += `### ${index + 1}. ${langBadge} [${article.title}](${localLink})\n`;
-      readme += `**Source:** ${article.source} | **Keyword:** \`${keyword}\`\n`;
+      readme += `**Source:** ${article.source}\n`;
       readme += `${summaryText}\n\n`;
       readme += `</div>\n\n`;
     });

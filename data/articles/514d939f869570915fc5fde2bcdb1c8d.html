@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Rust Compiler for a 20-Year-Old Mac (Borrow Checker and All)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built a Rust Compiler for a 20-Year-Old Mac (Borrow Checker and All)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/19/2026 9:26:16 PM | <a href="https://dev.to/scottcjn/i-built-a-rust-compiler-for-a-20-year-old-mac-borrow-checker-and-all-37n7" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Modern Rust does not compile for PowerPC Mac OS X Tiger. The newest compiler that runs natively on Tiger is GCC 4.0.1 from 2005. LLVM abandoned PowerPC years ago. The official Rust compiler has never targeted this platform.</p> <p>So I wrote one.</p> <p><strong><a href="https://github.com/Scottcjn/rust-ppc-tiger" target="_blank">rust-ppc-tiger</a></strong> is a Rust-to-PowerPC compiler written in C. It parses Rust source code, enforces ownership and borrowing rules, and emits native PowerPC assembly with AltiVec SIMD optimizations. It runs ON Tiger, compiled with that ancient GCC 4.0.1. And it works on real hardware.<br>
+</p> <div>
+<pre><code>$ ./rustc_ppc hello.rs &gt; hello.s
+$ as -o hello.o hello.s
+$ gcc -o hello hello.o
+$ ./hello
+Hello from Rust on PowerPC G4!
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Test hardware: Power Mac G4 Dual 1.25 GHz, Mac OS X Tiger 10.4.12, 2GB RAM.</p> <p>This article covers why, how, and what comes next.</p> <h2> <a name="the-problem-a-dead-platform-that-refuses-to-die" href="#the-problem-a-dead-platform-that-refuses-to-die"> </a> The Problem: A Dead Platform That Refuses to Die
+</h2> <p>Tiger shipped in 2005. Apple abandoned PowerPC in 2006. Every modern tool chain has moved on. But millions of these machines still exist in closets, schools, basements, and labs like mine. They are not junk -- they are 128-bit SIMD machines with a clean RISC architecture that modern ARM borrowed heavily from.</p> <p>The software situation is grim:</p> <ul>
+<li>
+<strong>No modern TLS</strong>: Tiger's OpenSSL is too old for HTTPS. You cannot visit most websites.</li>
+<li>
+<strong>No modern compilers</strong>: GCC 4.0.1 is the ceiling. No C++17, no Rust, no Go.</li>
+<li>
+<strong>No package managers</strong>: Homebrew dropped Tiger. MacPorts barely works.</li>
+<li>
+<strong>No modern SSH</strong>: Tiger ships OpenSSH 4.5 with multiple critical CVEs.</li>
+</ul> <p>The hardware is fine. The software ecosystem abandoned it. So we are rebuilding the software.</p> <p>If you want context on why I care about vintage hardware, I wrote about our <a href="https://dev.to/scottcjn/proof-of-antiquity-a-blockchain-that-rewards-vintage-hardware-4ii3">Proof-of-Antiquity blockchain that rewards old machines</a> and our <a href="https://dev.to/scottcjn/i-run-llms-on-a-768gb-ibm-power8-server-and-its-faster-than-you-think-1o">POWER8 LLM inference server</a>. This is part of that same philosophy: old silicon is not waste.</p> <h2> <a name="the-architecture-rust-in-powerpc-out" href="#the-architecture-rust-in-powerpc-out"> </a> The Architecture: Rust in, PowerPC Out
+</h2> <p>The compiler is structured as a set of C source files that each handle a domain of the Rust language. The core is <code>rustc_100_percent.c</code> at 1,205 lines -- it handles parsing, type checking, and code generation for the full Rust type system.<br>
+</p> <div>
+<pre><code><span># Build the compiler on Tiger/Leopard with Xcode's gcc</span>
+gcc <span>-O3</span> <span>-mcpu</span><span>=</span>7450 <span>-maltivec</span> <span>-o</span> rustc_ppc rustc_100_percent.c <span># For G5 machines</span>
+gcc <span>-O3</span> <span>-mcpu</span><span>=</span>970 <span>-maltivec</span> <span>-o</span> rustc_ppc rustc_100_percent.c
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The type system maps all Rust types to PowerPC register and stack conventions:<br>
+</p> <div>
+<pre><code><span>typedef</span> <span>enum</span> <span>{</span> <span>TYPE_I8</span><span>,</span> <span>TYPE_I16</span><span>,</span> <span>TYPE_I32</span><span>,</span> <span>TYPE_I64</span><span>,</span> <span>TYPE_I128</span><span>,</span> <span>TYPE_U8</span><span>,</span> <span>TYPE_U16</span><span>,</span> <span>TYPE_U32</span><span>,</span> <span>TYPE_U64</span><span>,</span> <span>TYPE_U128</span><span>,</span> <span>TYPE_F32</span><span>,</span> <span>TYPE_F64</span><span>,</span> <span>TYPE_BOOL</span><span>,</span> <span>TYPE_CHAR</span><span>,</span> <span>TYPE_STR</span><span>,</span> <span>TYPE_STRING</span><span>,</span> <span>TYPE_VEC</span><span>,</span> <span>TYPE_ARRAY</span><span>,</span> <span>TYPE_TUPLE</span><span>,</span> <span>TYPE_STRUCT</span><span>,</span> <span>TYPE_ENUM</span><span>,</span> <span>TYPE_REF</span><span>,</span> <span>TYPE_MUT_REF</span><span>,</span> <span>TYPE_BOX</span><span>,</span> <span>TYPE_RC</span><span>,</span> <span>TYPE_ARC</span><span>,</span> <span>TYPE_OPTION</span><span>,</span> <span>TYPE_RESULT</span><span>,</span> <span>TYPE_CLOSURE</span><span>,</span> <span>TYPE_FN_PTR</span><span>,</span> <span>TYPE_SLICE</span><span>,</span> <span>TYPE_TRAIT_OBJ</span>
+<span>}</span> <span>RustType</span><span>;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Every Rust variable tracks its lifetime, generic parameters, mutability, reference count (for <code>Rc</code>/<code>Arc</code>), and drop chain for RAII:<br>
+</p> <div>
+<pre><code><span>typedef</span> <span>struct</span> <span>Variable</span> <span>{</span> <span>char</span> <span>name</span><span>[</span><span>64</span><span>];</span> <span>RustType</span> <span>type</span><span>;</span> <span>int</span> <span>offset</span><span>;</span> <span>int</span> <span>size</span><span>;</span> <span>char</span> <span>lifetime</span><span>[</span><span>32</span><span>];</span> <span>char</span> <span>generic_params</span><span>[</span><span>128</span><span>];</span> <span>int</span> <span>is_mut</span><span>;</span> <span>int</span> <span>ref_count</span><span>;</span> <span>struct</span> <span>Variable</span><span>*</span> <span>drop_chain</span><span>;</span> <span>// For RAII</span>
+<span>}</span> <span>Variable</span><span>;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The compiler also handles traits with vtable generation, generic monomorphization, <code>impl</code> blocks, closures, modules, and a full <code>macro_rules!</code> expander. This is not a toy subset -- it targets Firefox compilation.</p> <h2> <a name="the-borrow-checker-not-just-c-with-fancy-syntax" href="#the-borrow-checker-not-just-c-with-fancy-syntax"> </a> The Borrow Checker: Not Just "C With Fancy Syntax"
+</h2> <p>Without a borrow checker, a Rust compiler is just C with extra steps. The borrow checker (<code>rustc_borrow_checker.c</code>, 500+ lines) is the part that makes this a real Rust implementation.</p> <p>It enforces the three rules:</p> <ol>
+<li>Each value has exactly one owner</li>
+<li>When the owner goes out of scope, the value is dropped</li>
+<li>You can have EITHER one mutable reference OR any number of immutable references -- but not both
+</li>
+</ol> <div>
+<pre><code><span>typedef</span> <span>enum</span> <span>{</span> <span>OWNER_OWNED</span><span>,</span> <span>/* Variable owns the value */</span> <span>OWNER_MOVED</span><span>,</span> <span>/* Value was moved away */</span> <span>OWNER_BORROWED</span><span>,</span> <span>/* Value is borrowed (immutable) */</span> <span>OWNER_MUT_BORROWED</span><span>,</span> <span>/* Value is mutably borrowed */</span> <span>OWNER_DROPPED</span> <span>/* Value was dropped */</span>
+<span>}</span> <span>OwnershipState</span><span>;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Each variable tracks its ownership state, active borrows, and move history. When you write this Rust:<br>
+</p> <div>
+<pre><code><span>let</span> <span>mut</span> <span>x</span> <span>=</span> <span>5</span><span>;</span>
+<span>let</span> <span>y</span> <span>=</span> <span>&amp;</span><span>x</span><span>;</span> <span>// immutable borrow</span>
+<span>let</span> <span>z</span> <span>=</span> <span>&amp;</span><span>mut</span> <span>x</span><span>;</span> <span>// ERROR: cannot borrow as mutable</span>
+<span>println!</span><span>(</span><span>"{}"</span><span>,</span> <span>y</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The compiler catches it and produces the same error message you would expect from <code>rustc</code>:<br>
+</p> <div>
+<pre><code>error[E0]: cannot borrow `x` as mutable because it is also borrowed as immutable --&gt; source.rs:3 = help: try using the immutable borrow after the mutable borrow ends
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="nonlexical-lifetimes" href="#nonlexical-lifetimes"> </a> Non-Lexical Lifetimes
+</h3> <p>The checker implements NLL -- borrows end at their last use, not at the end of the lexical scope. This is what modern Rust does (stabilized in the 2018 edition), and it means more code compiles correctly.<br>
+</p> <div>
+<pre><code><span>void</span> <span>analyze_nll</span><span>(</span><span>Variable</span><span>*</span> <span>var</span><span>)</span> <span>{</span> <span>for</span> <span>(</span><span>int</span> <span>i</span> <span>=</span> <span>0</span><span>;</span> <span>i</span> <span>&lt;</span> <span>var</span><span>-&gt;</span><span>borrow_count</span><span>;</span> <span>i</span><span>++</span><span>)</span> <span>{</span> <span>Borrow</span><span>*</span> <span>b</span> <span>=</span> <span>var</span><span>-&gt;</span><span>borrows</span><span>[</span><span>i</span><span>];</span> <span>if</span> <span>(</span><span>b</span><span>-&gt;</span><span>is_active</span> <span>&amp;&amp;</span> <span>b</span><span>-&gt;</span><span>line_last_used</span> <span>&lt;</span> <span>current_line</span> <span>-</span> <span>1</span><span>)</span> <span>{</span> <span>/* Borrow could end early */</span> <span>printf</span><span>(</span><span>" ; NLL: borrow of %s could end at line %d</span><span>\n</span><span>"</span><span>,</span> <span>var</span><span>-&gt;</span><span>name</span><span>,</span> <span>b</span><span>-&gt;</span><span>line_last_used</span><span>);</span> <span>/* Automatically end the borrow */</span> <span>b</span><span>-&gt;</span><span>is_active</span> <span>=</span> <span>0</span><span>;</span> <span>if</span> <span>(</span><span>b</span><span>-&gt;</span><span>is_mutable</span><span>)</span> <span>{</span> <span>var</span><span>-&gt;</span><span>active_mut_borrow</span> <span>=</span> <span>-</span><span>1</span><span>;</span> <span>}</span> <span>else</span> <span>{</span> <span>var</span><span>-&gt;</span><span>active_immut_count</span><span>--</span><span>;</span> <span>}</span> <span>}</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>After NLL analysis, a mutable borrow that previously would have been rejected can succeed because the conflicting immutable borrow ended at its last use, not at scope exit. This is not a simplified model -- it is how <code>rustc</code> actually works, implemented in 500 lines of C.</p> <h2> <a name="altivec-simd-4x-throughput-for-free" href="#altivec-simd-4x-throughput-for-free"> </a> AltiVec SIMD: 4x Throughput for Free
+</h2> <p>The G4 and G5 have AltiVec (aka Velocity Engine) -- 128-bit SIMD that processes 4 floats or 16 bytes per cycle. The compiler generates AltiVec instructions for operations that benefit from vectorization.</p> <p>Float operations go wide automatically:<br>
+</p> <div>
+<pre><code><span>void</span> <span>emit_altivec_float_ops</span><span>(</span><span>const</span> <span>char</span><span>*</span> <span>op</span><span>,</span> <span>int</span> <span>count</span><span>)</span> <span>{</span> <span>if</span> <span>(</span><span>strcmp</span><span>(</span><span>op</span><span>,</span> <span>"mul"</span><span>)</span> <span>==</span> <span>0</span><span>)</span> <span>{</span> <span>printf</span><span>(</span><span>" lvx v1, 0, r3 ; Load a</span><span>\n</span><span>"</span><span>);</span> <span>printf</span><span>(</span><span>" lvx v2, 0, r4 ; Load b</span><span>\n</span><span>"</span><span>);</span> <span>printf</span><span>(</span><span>" vmaddfp v3, v1, v2, v0 ; Multiply-add</span><span>\n</span><span>"</span><span>);</span> <span>printf</span><span>(</span><span>" stvx v3, 0, r5 ; Store result</span><span>\n</span><span>"</span><span>);</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><code>Arc</code> uses the PowerPC atomic instructions (<code>lwarx</code>/<code>stwcx.</code>) for lock-free reference counting -- the same instructions that modern ARM's <code>ldxr</code>/<code>stxr</code> were modeled after:<br>
+</p> <div>
+<pre><code><span>// Arc decrement with retry loop</span>
+<span>printf</span><span>(</span><span>" lwarx r4, 0, r3 ; Load reserved</span><span>\n</span><span>"</span><span>);</span>
+<span>printf</span><span>(</span><span>" subi r4, r4, 1 ; Decrement</span><span>\n</span><span>"</span><span>);</span>
+<span>printf</span><span>(</span><span>" stwcx. r4, 0, r3 ; Store conditional</span><span>\n</span><span>"</span><span>);</span>
+<span>printf</span><span>(</span><span>" bne- .-12 ; Retry if failed</span><span>\n</span><span>"</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The codegen also covers CSS color blending (4 RGBA channels in one vector operation), string processing (16 bytes at a time), and iterator maps (process 4 elements per cycle). All of this matters for the Firefox goal.</p> <h2> <a name="asyncawait-on-tiger-select-is-all-you-need" href="#asyncawait-on-tiger-select-is-all-you-need"> </a> Async/Await on Tiger: select() Is All You Need
+</h2> <p>Tiger has no <code>epoll</code>. No <code>io_uring</code>. It has <code>kqueue</code>, but we targeted the lowest common denominator: <code>select()</code> -- the original Unix multiplexing call from 4.2BSD in 1983. It works on every Unix Tiger can talk to, and the implementation is trivially portable.</p> <p>The async runtime (<code>rustc_async_await.c</code>, 900+ lines) transforms <code>async fn</code> into state machines:<br>
+</p> <div>
+<pre><code><span>async</span> <span>fn</span> <span>fetch_data</span><span>()</span> <span>-&gt;</span> <span>String</span> <span>{</span> <span>let</span> <span>response</span> <span>=</span> <span>http_get</span><span>(</span><span>url</span><span>)</span><span>.await</span><span>;</span> <span>let</span> <span>parsed</span> <span>=</span> <span>parse_json</span><span>(</span><span>response</span><span>)</span><span>.await</span><span>;</span> <span>parsed</span><span>.data</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This becomes an enum with states for each <code>.await</code> suspension point:<br>
+</p> <div>
+<pre><code><span>typedef</span> <span>enum</span> <span>{</span> <span>STATE_START</span><span>,</span> <span>STATE_AWAIT1</span><span>,</span> <span>// Waiting on http_get</span> <span>STATE_AWAIT2</span><span>,</span> <span>// Waiting on parse_json</span> <span>STATE_COMPLETE</span><span>,</span> <span>STATE_POISONED</span> <span>// Panicked during poll</span>
+<span>}</span> <span>AsyncState</span><span>;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The state machine stores local variables that need to survive across await points:<br>
+</p> <div>
+<pre><code><span>typedef</span> <span>struct</span> <span>{</span> <span>AsyncState</span> <span>state</span><span>;</span> <span>int</span> <span>await_index</span><span>;</span> <span>Future</span><span>*</span> <span>pending_future</span><span>;</span> <span>LocalVar</span> <span>locals</span><span>[</span><span>MAX_LOCALS</span><span>];</span> <span>int</span> <span>local_count</span><span>;</span> <span>void</span><span>*</span> <span>result</span><span>;</span> <span>size_t</span> <span>result_size</span><span>;</span>
+<span>}</span> <span>AsyncStateMachine</span><span>;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The I/O layer generates raw PowerPC assembly that calls <code>select()</code> with zero-timeout for non-blocking polls:<br>
+</p> <div>
+<pre><code>_async_io_poll: ; r3 = fd, r4 = for_read mflr r0 stw r0, 8(r1) stwu r1, -160(r1) ; fd_set is 128 bytes on Tiger ; Clear fd_set addi r5, r1, 32 li r6, 32 li r7, 0
+.L_clear_fdset: stw r7, 0(r5) addi r5, r5, 4 bdnz .L_clear_fdset ; FD_SET(fd, &amp;fdset) srwi r5, r3, 5 ; fd / 32 slwi r5, r5, 2 ; * 4 addi r6, r1, 32 add r5, r5, r6 andi. r6, r3, 31 ; fd % 32 li r7, 1 slw r7, r7, r6 lwz r8, 0(r5) or r8, r8, r7 stw r8, 0(r5)
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>It is not elegant. It is correct. <code>select()</code> has been in every Unix since 1983 and it will be in every Unix long after <code>io_uring</code> is deprecated. We also implement the <code>Future</code> trait, <code>Pin&lt;T&gt;</code>, <code>Waker</code>/<code>Context</code>, a single-threaded executor, and <code>join!</code>/<code>select!</code> combinators. Enough for Firefox's async networking.</p> <h2> <a name="the-tiger-toolkit-modern-https-on-a-2005-mac" href="#the-tiger-toolkit-modern-https-on-a-2005-mac"> </a> The Tiger Toolkit: Modern HTTPS on a 2005 Mac
+</h2> <p>A Rust compiler is useless if the machine cannot download dependencies. Tiger's OpenSSL is ancient and its Python has no SSL support. So we built a complete modern networking stack using mbedTLS 2.28 LTS as the crypto foundation:</p> <div><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What It Gives You</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>wget</strong></td>
+<td>HTTPS downloads with TLS 1.2 + ChaCha20-Poly1305</td>
+</tr>
+<tr>
+<td><strong>curl</strong></td>
+<td>HTTP library for git HTTPS and API calls</td>
+</tr>
+<tr>
+<td><strong>OpenSSH 9.6</strong></td>
+<td>Replaces Tiger's CVE-riddled OpenSSH 4.5</td>
+</tr>
+<tr>
+<td><strong>rsync 3.2</strong></td>
+<td>Secure file sync with xxHash checksums</td>
+</tr>
+<tr>
+<td><strong>PocketFox</strong></td>
+<td>Native Cocoa browser with embedded TLS</td>
+</tr>
+</tbody>
+</table></div> <p>Every tool links against mbedTLS compiled for PowerPC. No system OpenSSL dependency. The build order matters -- mbedTLS first, then wget (so you can download everything else), then OpenSSH, curl, and rsync.<br>
+</p> <div>
+<pre><code><span># Build mbedTLS for PowerPC</span>
+gcc <span>-arch</span> ppc <span>-std</span><span>=</span>c99 <span>-O2</span> <span>-mcpu</span><span>=</span>7450 <span>-I</span>../include <span>\</span> <span>-DMBEDTLS_NO_PLATFORM_ENTROPY</span> <span>-c</span> <span>*</span>.c <span># Build wget with modern HTTPS</span>
+gcc <span>-arch</span> ppc <span>-std</span><span>=</span>c99 <span>-O2</span> <span>-DHAVE_MBEDTLS</span> <span>\</span> <span>-I</span>./mbedtls-2.28.8/include <span>-o</span> wget <span>\</span> wget_tiger.c pocketfox_ssl_tiger.c <span>\</span> <span>-L</span>./mbedtls-2.28.8/library <span>-lmbedtls</span> <span>-lmbedx509</span> <span>-lmbedcrypto</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Once wget works, the machine can participate in the modern internet again.</p> <h2> <a name="pocketfox-the-endgame-is-firefox" href="#pocketfox-the-endgame-is-firefox"> </a> PocketFox: The Endgame Is Firefox
+</h2> <p>The whole point of building a Rust compiler for PowerPC is to compile Firefox. Modern Firefox is written in Rust and C++. TenFourFox (the last PowerPC Firefox fork) was abandoned in 2021 and is stuck at a pre-Rust version.</p> <p>PocketFox is our approach: a minimal Firefox with <strong>built-in mbedTLS</strong>, bypassing Tiger's broken SSL entirely. The architecture is clean:<br>
+</p> <div>
+<pre><code>+---------------------------------------------+
+| PocketFox Browser |
++---------------------------------------------+
+| PocketFox SSL Bridge (pocketfox_ssl.h) |
++---------------------------------------------+
+| mbedTLS 2.28 LTS |
+| (Portable C, no system deps) |
++---------------------------------------------+
+| PowerPC Mac OS X Tiger/Leopard |
++---------------------------------------------+
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The Rust compiler patches Firefox's Rust components for PowerPC: WebRender gets AltiVec instead of SSE, <code>encoding_rs</code> gets big-endian fixes, <code>parking_lot</code> gets PowerPC atomics. Build time is 8-12 hours on a dual G4. Four hours on a quad G5.</p> <p>We are not there yet, but all the compiler features are ready.</p> <h2> <a name="why-bother-rustchain-and-digital-preservation" href="#why-bother-rustchain-and-digital-preservation"> </a> Why Bother? RustChain and Digital Preservation
+</h2> <p>Two practical reasons beyond "because it's there."</p> <p><strong>RustChain mining.</strong> Our <a href="https://dev.to/scottcjn/proof-of-antiquity-a-blockchain-that-rewards-vintage-hardware-4ii3">Proof-of-Antiquity blockchain</a> gives G4 Macs a 2.5x mining multiplier over modern hardware. Running Rust natively means we can write miners, wallets, and node software in Rust instead of Python. Real systems programming on real vintage silicon.</p> <p><strong>Digital preservation.</strong> Millions of documents, projects, and creative works were made on PowerPC Macs. When those machines cannot connect to the internet, cannot run modern software, and cannot transfer files securely -- that work becomes inaccessible. A working Rust compiler and modern TLS stack keeps these machines functional.</p> <p>There is also a third reason: it is a genuinely interesting compiler engineering problem. Mapping Rust's ownership model to PowerPC register conventions, implementing NLL in 500 lines of C, generating AltiVec SIMD from generic Rust types -- this is the kind of work that makes you understand both languages deeply.</p> <h2> <a name="try-it-yourself" href="#try-it-yourself"> </a> Try It Yourself
+</h2> <p>The full source is on GitHub:</p> <p><strong><a href="https://github.com/Scottcjn/rust-ppc-tiger" target="_blank">github.com/Scottcjn/rust-ppc-tiger</a></strong></p> <p>If you have a PowerPC Mac:<br>
+</p> <div>
+<pre><code><span># Clone the repo</span>
+git clone https://github.com/Scottcjn/rust-ppc-tiger.git
+<span>cd </span>rust-ppc-tiger <span># Build the compiler</span>
+gcc <span>-O3</span> <span>-mcpu</span><span>=</span>7450 <span>-maltivec</span> <span>-o</span> rustc_ppc rustc_100_percent.c <span># Compile your Rust code</span>
+./rustc_ppc your_program.rs <span>-o</span> your_program.s
+as <span>-o</span> your_program.o your_program.s
+gcc <span>-o</span> your_program your_program.o <span># Test the borrow checker</span>
+gcc <span>-o</span> borrow_test rustc_borrow_checker.c
+./borrow_test <span>--demo</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>If you do not have a PowerPC Mac, star the repo anyway. A year of real hardware work, electricity bills, and a dedicated lab went into this.</p> <p>Related projects:</p> <ul>
+<li>
+<a href="https://github.com/Scottcjn/ppc-tiger-tools" target="_blank">ppc-tiger-tools</a> -- Modern TLS tools for Tiger/Leopard</li>
+<li>
+<a href="https://github.com/Scottcjn/llama-cpp-tigerleopard" target="_blank">llama-cpp-tigerleopard</a> -- LLM inference on G4/G5</li>
+<li>
+<a href="https://github.com/Scottcjn/llama-cpp-power8" target="_blank">llama-cpp-power8</a> -- llama.cpp for POWER8</li>
+</ul> <p>More from this series:</p> <ul>
+<li><a href="https://dev.to/scottcjn/i-built-a-video-platform-where-ai-agents-are-the-creators-59mb">I Built a Video Platform Where AI Agents Are the Creators</a></li>
+<li><a href="https://dev.to/scottcjn/the-agent-internet-has-54000-users-heres-how-to-navigate-it-dj6">The Agent Internet Has 54,000+ Users</a></li>
+<li><a href="https://dev.to/scottcjn/proof-of-antiquity-a-blockchain-that-rewards-vintage-hardware-4ii3">Proof of Antiquity: A Blockchain That Rewards Vintage Hardware</a></li>
+<li><a href="https://dev.to/scottcjn/your-ai-agent-cant-talk-to-other-agents-beacon-fixes-that-4ib7">Your AI Agent Can't Talk to Other Agents. Beacon Fixes That.</a></li>
+<li><a href="https://dev.to/scottcjn/i-run-llms-on-a-768gb-ibm-power8-server-and-its-faster-than-you-think-1o">I Run LLMs on a 768GB IBM POWER8 Server</a></li>
+</ul> <hr> <p><a href="https://bottube.ai/" target="_blank"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fbottube.ai%2Fbadge%2Fvideos.svg" alt="BoTTube Videos"></a></p> <p><em>Built by <a href="https://elyanlabs.ai/" target="_blank">Elyan Labs</a> in Louisiana. Designed by Scott, coded with Claude.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - skx/org-people: Contact management for org-mode</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - skx/org-people: Contact management for org-mode</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/27/2026 6:15:20 PM | <a href="https://github.com/skx/org-people" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>org-people</h1><a href="#org-people"></a></div>
+<p>This package allows easy contact-management via the native org-mode facilities.</p>
+<p>Contacts are found from any of your org-agenda files, providing they have a tag
+of "contacts", for example you can see the following simple hierarchy below, or
+look at </p><pre><code>org-people-test.org</code></pre> file within this repository which is used by the
+test-cases:<p></p>
+<div><pre><code>* People ** Alice :family:contact: :PROPERTIES :ADDRESS: 32 Something Street :EMAIL: alice@example.com :PHONE: +123 456 789 :CHILDREN: Mallory :NICKNAME: Allu :END ** Bob :colleague:contact: :PROPERTIES :ADDRESS: 32 Something Lane :EMAIL: bob@example.com :PHONE: +123 456 987 :END
+</code></pre></div>
+<p>It is assumed that you'll have "ADDRESS", "EMAIL", and "PHONE" other properties, however no properties are mandatory or expected. The contact will be added providing there is at least one property in-place, and the "contact" tag is present. The headline itself is used as the contact name.</p>
+<p>The special </p><pre><code>:NICKNAME:</code></pre> property will be used for completion, alongside the person's name, if it is present, but this is optional.<p></p>
+<div><h2>Adding Entries</h2><a href="#adding-entries"></a></div>
+<p>If you use </p><pre><code>org-capture</code></pre> you may use the following template to add a new entry:<p></p>
+<div><pre><code>(setq org-capture-templates (append org-capture-templates '(("p" "People" entry (file+headline "~/Private/Org/PEOPLE.org" "People") "* %^{Name}\n:PROPERTIES:\n:EMAIL: %^{Email}\n:PHONE: %^{Phone}\n:END:\n%?" :empty-lines 1))))
+</code></pre></div>
+<div><h2>API / Functions</h2><a href="#api--functions"></a></div>
+<p>These are the main user-focused functions within the package to work with contacts:</p>
+<ul>
+<li><pre><code>org-people-insert</code></pre>
+<ul>
+<li>Insert contact-data, via interactive prompts (with <pre><code>completing-read</code></pre>).</li>
+</ul>
+</li>
+<li><pre><code>org-people-summary</code></pre>
+<ul>
+<li>Parse all known contacts and pop to a buffer containing a summary of their details.</li>
+<li>This uses <pre><code>tabulated-list-mode</code></pre> and allows you run a few different actions
+<ul>
+<li>Sort by the available fields.</li>
+<li>Copy fields to the clipboard.</li>
+<li>Export single contacts to VCF format.</li>
+<li>Filter the view by property values.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><pre><code>org-people-tags-to-table</code></pre>
+<ul>
+<li>Designed to create auto-updating tables inside <pre><code>org-mode</code></pre> documents.</li>
+</ul>
+</li>
+<li><pre><code>org-people-person-to-table</code></pre>
+<ul>
+<li>Designed to create auto-updating tables inside <pre><code>org-mode</code></pre> documents.</li>
+</ul>
+</li>
+</ul>
+<p>Suggested usage:</p>
+<div><pre><code>; insert a contact "thing" at the current point.
+(global-set-key (kbd "C-c p") 'org-people-insert) ; show a summary of contacts - allow jumping to the definition, copying and filtering, etc.
+(global-set-key (kbd "C-c P") 'org-people-summary)
+</code></pre></div>
+<p>There are also functions for working with the parsed contacts:</p>
+<ul>
+<li><pre><code>org-people-parse</code></pre>
+<ul>
+<li>Parse all known contacts and return a hash of them.</li>
+<li>The key is the person's name, the values is a plist of all known properties.</li>
+</ul>
+</li>
+<li><pre><code>org-people-select-interactively</code></pre>
+<ul>
+<li>Prompt the user for a contact name, and return the known data about that contact.</li>
+</ul>
+</li>
+<li><pre><code>org-people-get-by-name</code></pre>
+<ul>
+<li>Get data about a contact, by name.</li>
+</ul>
+</li>
+<li><pre><code>org-people-filter</code></pre>
+<ul>
+<li>Find matching contacts via arbitrary filter/predicate.</li>
+</ul>
+</li>
+</ul>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>No special configuration is required, although if you wish to use a different tag to identify the contacts you may specify that via </p><pre><code>org-people-search-tag</code></pre>.<p></p>
+<p>If you wished to limit parsing to only a single named file you could set </p><pre><code>org-people-search-type</code></pre> to be a list containing the name(s) of files to process, otherwise all agenda files will be read.<p></p>
+<div><h2>Limitations</h2><a href="#limitations"></a></div>
+<p>If you have two contacts with the same name one will overwrite the other. This is annoying, but not a bug.</p>
+<div><h2>org-mode links</h2><a href="#org-mode-links"></a></div>
+<p>This package defines an </p><pre><code>org-people:</code></pre> handler, to jump to your contact-list entries when clicked.<p></p>
+<p>Inside org-mode files just create links using that protocols:</p>
+<div><pre><code>* This is a headline
+[[org-people:Steve Kemp]] wrote this package.
+</code></pre></div>
+<p>This will jump to the definition of the named person (me).</p>
+<p>When exported to HTML the person name will be made bold, rather than becoming a link, which is probably what you want.</p>
+<p>You can add such a link via C-c C-l, as per usual, with TAB-completion support</p>
+<div><h2>Dynamic <pre><code>org-mode</code></pre> tables</h2><a href="#dynamic-org-mode-tables"></a></div>
+<p>If you tag the contact-entries you can use those tags to create org-mode tables of matching entries.</p>
+<p>For example the following can auto-update:</p>
+<div><pre><code>#+NAME: get-family-contacts
+#+BEGIN_SRC elisp :results value table
+(org-people-tags-to-table "family")
+#+END_SRC
+</code></pre></div>
+<p>If you prefer different columns to be included within your generated table you can specify them directly:</p>
+<div><pre><code>#+NAME: get-family-contacts
+#+BEGIN_SRC elisp :results value table
+(org-people-tags-to-table "family" '(:LINK :PHONE))
+#+END_SRC
+</code></pre></div>
+<p>Rather than handling groups of contacts, via tags, you can also create a table including all data about a single named individual, by name:</p>
+<div><pre><code>#+NAME: steve-kemp
+#+BEGIN_SRC elisp :results value table :colnames '("Field" "Value")
+(org-people-person-to-table "Steve Kemp")
+#+END_SRC #+RESULTS: steve-kemp
+| Field | Value |
+|-------------+-----------------------------------------|
+| Address | Helsinki, Finland |
+| Category | PEOPLE |
+| Country | Finland |
+| Email | steve@steve.fi |
+| Name | Steve Kemp |
+| Phone | +358123456789 |
+| Tags | (me) |
+</code></pre></div>
+<div><h2>Testing</h2><a href="#testing"></a></div>
+<p>You can run </p><pre><code>make test</code></pre> via the supplied <a href="/skx/org-people/blob/main/Makefile">Makefile</a> to run the tests in a batch-mode, otherwise load the file <a href="/skx/org-people/blob/main/org-people-test.el">org-people-test.el</a> and run <pre><code>M-x eval buffer</code></pre>, you should see the test results in a new buffer.<p></p>
+<p>If any tests fail that's a bug.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

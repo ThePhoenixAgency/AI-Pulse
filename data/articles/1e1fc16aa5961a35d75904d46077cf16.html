@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Gladys / IKEA Dirigera / Module Zigbee : euh... comment je démarre?</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Gladys / IKEA Dirigera / Module Zigbee : euh... comment je démarre?</h1>
+  <div class="metadata">
+    Source: Gladys Assistant (Forum) | Date: 2/20/2026 10:34:54 AM | <a href="https://community.gladysassistant.com/t/gladys-ikea-dirigera-module-zigbee-euh-comment-je-demarre/10032" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div> <div> <div> <p><span> <time> Février 20, 2026, 10:34 </time> <span>1</span> </span> </p></div> <div> <p>Hello,</p>
+<p>j’ai pour projet de commander mes chauffage de ma salle de jeux via Gladys<br>
+n’ayant pas trouvé de module fil pilote en Matter/Thread, je me suis resigné à prendre du Zigbee, j’ai donc pris un Nodon en Zigbee 3.0, mon IKEA DIRIGERA étant capable de gérer du Zigbee si j’ai bien compris.</p>
+<p>du coup là j’ai tout :</p>
+<ul>
+<li>Mon bridge DIRIGERA configuré dans Gladys</li>
+<li>mon module NODON</li>
+</ul>
+<p>à l’installation le module NODON qui a été automatiquement connecté à mon réseau sans aucune action de ma part.<br>
+Dans l’appli IKEA je ne vois pas le module fil pilote (IKEA home smart ne gère pas les chauffages)</p>
+<p>dans Gladys, dans Matter j’ai bien un nouveau périphérique par contre je n’ai que 2 fonctionnalités Commutateur et Index<br>
+</p><div><a href="https://gladys-assistant-community.b-cdn.net/uploads/default/original/3X/a/1/a10ac0fc82ef4614c8660a162e6e97d2195eb7f4.png"><img src="https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/a/1/a10ac0fc82ef4614c8660a162e6e97d2195eb7f4_2_239x250.png" alt="image"></a></div>
+<p>L’index semble bien remonter la conso, par contre le commutateur n’a au impact sur le chauffage<br>
+</p><div><a href="https://gladys-assistant-community.b-cdn.net/uploads/default/original/3X/5/3/530d53439ca84ed40b070c2cf4dd582faef3a787.png"><img src="https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/5/3/530d53439ca84ed40b070c2cf4dd582faef3a787_2_278x250.png" alt="image"></a></div>
+<p>ma quesion est donc la suivante : ai raté un truc ou ma configuration actuelle ne me permettra pas mieux ?</p>
+<p>Merci</p>
+<p>Greg</p> </div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/Will_71"><span>Will_71</span></a> </span> <span> <time> Février 20, 2026, 11:13 </time> <span>2</span> </span> </p> <div> <p>Salut à toi,</p>
+<p>Non tu as rien raté. Ce module ne doit pas être encore entièrement reconnu par Gladys.</p>
+<p>Est ce que tu peux mettre le modèle exacte de ton.module NodeOn et je regarderais</p>
+<p>Si il n’est pas présent il faudra faire une demande de fonctionnalité pour qu’un dev l’ajoute.</p> </div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/4get9"><span>4get9</span></a> </span> <span> <time> Février 20, 2026, 12:00 </time> <span>3</span> </span> </p> <div> <p>Hello,<br>
+oui bien sûr il s’agit du Nodon SIN-4-FP-21</p> <p>Merci <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/slight_smile.png?v=15" alt=":slight_smile:"></p> </div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/Will_71"><span>Will_71</span></a> </span> <span> <time> Février 20, 2026, 12:10 </time> <span>4</span> </span> </p> <div> <p>Ah je viens de comprendre…le module est compatible Gladys si il est appairé directement avec zigbee2mqtt dans Gladys. L’expose fil pilote que NodOn utilise est déjà pris en charge.</p>
+<p>Ici tu utllises la passerelle IKEA, et tu précises en plus que IKEA ne gère pas le chauffage, donc la passerelle ne doit pas retourner cette info dans Matter.</p>
+<p>Mais dans le cas ou IKEA fourni l’info sur Matter, la fonction fil pilote dans Matter n’est pas encore pris en charge dans Gladys.</p>
+<p>Je ne pourrais pas t’en dire plus si cette passerelle fournit l’info.</p> </div> <div> <p><span>1 « J'aime »</span> </p></div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/4get9"><span>4get9</span></a> </span> <span> <time> Février 20, 2026, 4:29 </time> <span>5</span> </span> </p> <p>Du coup avec un dongle zigbee sur mon serveur Gladys ça fonctionnerait, c’est ça ?</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/Will_71"><span>Will_71</span></a> </span> <span> <time> Février 20, 2026, 4:31 </time> <span>6</span> </span> </p> <p>Oui c’est bien ça</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/4get9"><span>4get9</span></a> </span> <span> <time> Février 20, 2026, 5:14 </time> <span>7</span> </span> </p> <div> <p>On a sujet sur comment bien choisir sa clef USB Zigbee ?</p>
+<p>Voire une clef Zigbee+Matter… Maïs bon dans ce cas ma passerelle IKEA ne servirait plus… (Pas forcément gênant, mais bon…)</p> </div> </div> <div> <p>Après ta passerelle IKEA tu peux encore la garder, j’ai cherché un peu sur internet et je pense qu’elle doit être capable de diffuser les infos du fil pilote.<br>
+Est-ce que tu pourrais nous partager le JSON dans les paramètres Matter<br>
+</p><div><a href="https://gladys-assistant-community.b-cdn.net/uploads/default/original/3X/9/e/9e324ae1b4df2af7dd337c1876e00e29a7566d76.png"><img src="https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/9/e/9e324ae1b4df2af7dd337c1876e00e29a7566d76_2_690x245.png" alt="image"></a></div><p>
+Cela permettra de vérifier ce qui est exposé et éventuellement permettre à un dev de rajouter le fil pilote si besoin.</p>
+<p>Cet passerelle fait déjà pont entre thread, wifi et matter donc ca peux être grandement utile de la garder pour appairer tes appareils matter.</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/4get9"><span>4get9</span></a> </span> <span> <time> Février 21, 2026, 12:56 </time> <span>9</span> </span> </p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/Will_71"><span>Will_71</span></a> </span> <span> <time> Février 21, 2026, 3:33 </time> <span>10</span> </span> </p> <div> <p>Dans le json, il n’y a pas d’appareil exposé comme l’avait expliqué Pierre-Gilles.</p>
+<p>Est ce que tu pourrais refaire des captures d’ecran maintenant que tu as appairés et reussi a partager avec Gladys et télécharger le json stp?</p> </div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/4get9"><span>4get9</span></a> </span> <span> <time> Février 21, 2026, 5:52 </time> <span>11</span> </span> </p> <p>Ah oui en effet c’était avant que je règle des souris.<br>
+Je fais ça ce soir</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/4get9"><span>4get9</span></a> </span> <span> <time> Février 22, 2026, 8:35 </time> <span>12</span> </span> </p> <div> <p>voici le fichier de conf :</p> </div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/4get9"><span>4get9</span></a> </span> <span> <time> Février 22, 2026, 11:05 </time> <span>13</span> </span> </p> <div> <p>bon j’en ai pris un qui me paraissait de qualité : SONOFF MG24<br>
+et j’ai bien l’impression qu’il n’est pas supporté par Galdys</p>
+<p>décidément la route pour la domotisation est sacrément chargée d’obstacles <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/sad_but_relieved_face.png?v=15" alt=":sad_but_relieved_face:"></p>
+<p>bon visiblement je vais pouvoir m’inspirer de ce post :</p> </div> <div> <p><span>1 « J'aime »</span> </p></div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/Will_71"><span>Will_71</span></a> </span> <span> <time> Février 22, 2026, 4:23 </time> <span>14</span> </span> </p> <div> <p>Le problème mentionné dans l’autre post sera bientôt résolu.</p>
+<p>Je te remercie pour ton json je regarde dès que je peux.</p> </div> <div> <p><span>1 « J'aime »</span> </p></div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/Will_71"><span>Will_71</span></a> </span> <span> <time> Février 22, 2026, 5:35 </time> <span>15</span> </span> </p> <p>Dans le JSON, ton module est exposé comme <code>onoffpluginunit</code> docn uniquement en commutateur ON/OFF.<br>
+On ne retrouve pas l’information de fil pilote exposé par ta passerelle IKEA.</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/mutmut"><span>mutmut</span></a> </span> <span> <time> Février 22, 2026, 6:01 </time> <span>16</span> </span> </p> <div> <p>Question qui me vient à l’instant mais elle intègre quelle version du protocole Matter cette chère DIRIGERA ?<br>
+En tout cas <a href="https://community.gladysassistant.com/u/4get9">@4get9</a> je peux t’assurer qu’en zigbee tout simple (via un adaptateur SMLIGHT), ce module fil-pilote fonctionne à merveille dans Gladys en natif : commande par fil-pilote et suivi conso.<br>
+Si tu veux absolument du Matter pour ce module, il faudrait changer de passerelle zigbee et ensuite passer par matterbridge et son plugin matterbridge-zigbee2mqtt… Et d’ailleurs, les fil-pilotes sont actuellement intégrés à la spec Matter en vigueur ?</p> </div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/4get9"><span>4get9</span></a> </span> <span> <time> Février 22, 2026, 6:22 </time> <span>17</span> </span> </p> <p>visiblement IKEA ne gère que les fonctions qu’utilisent ses périphériques (lames, température, humidité, interrupteur, …) mais pas des trucs comme le chauffage</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/4get9"><span>4get9</span></a> </span> <span> <time> Février 22, 2026, 6:24 </time> <span>18</span> </span> </p> <p>ouais encore faut il que mon dongle Zigbee fonctionne dans Gladys… <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/sob.png?v=15" alt=":sob:"><br>
+j’enchaîne quand même les galères…</p> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/Will_71"><span>Will_71</span></a> </span> <span> <time> Février 22, 2026, 6:47 </time> <span>19</span> </span> </p> <p>Mais comme on te la dit, la résolution du problème est en cours de test donc bientôt déployé dans Gladys.</p> <div> <p><span>1 « J'aime »</span> </p></div> </div> <div> <p><span> <a href="https://community.gladysassistant.com/u/4get9"><span>4get9</span></a> </span> <span> <time> Février 22, 2026, 8:22 </time> <span>20</span> </span> </p> <p>Ah oui non pas de souci.<br>
+C’est très gentil de prendre du temps pour me répondre en tout cas.</p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

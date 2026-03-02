@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I built a system-wide tech dictionary because AI made me feel dumb</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I built a system-wide tech dictionary because AI made me feel dumb</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/22/2026 5:16:37 AM | <a href="https://dev.to/cengiz_selcuk/i-built-a-system-wide-tech-dictionary-because-ai-made-me-feel-dumb-e31" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="the-moment-that-started-it-all" href="#the-moment-that-started-it-all"> </a> The moment that started it all
+</h2> <p>A few months ago, I asked Claude to help me set up a deployment pipeline. It gave me a perfectly working config with nginx reverse proxy, Docker multi-stage builds, health check endpoints, and graceful shutdown handlers.</p> <p>It worked on the first try.</p> <p>And I understood maybe 40% of it.</p> <p>I could <em>use</em> it. I could copy-paste it. I could even modify it slightly. But if someone asked me what a reverse proxy actually does, or why the Docker build had multiple FROM statements, I'd have to fake my way through.</p> <p>This is the new normal for a lot of us. AI writes code that works, but it uses vocabulary we haven't fully internalized. And the gap between "it works" and "I understand why" keeps growing.</p> <h2> <a name="the-flow-problem" href="#the-flow-problem"> </a> The flow problem
+</h2> <p>The obvious answer is "just look it up." But here's what that actually looks like:</p> <ol>
+<li>You're in VS Code, reading AI-generated code</li>
+<li>You hit a term you don't fully get</li>
+<li>You open a browser, Google it</li>
+<li>You get a Stack Overflow answer written for someone with a different context</li>
+<li>You read three paragraphs, open two more tabs</li>
+<li>You forgot what you were doing</li>
+<li>Repeat</li>
+</ol> <p>Or you ask the AI to explain, which opens a new chat thread, loses context, and turns a 5-second question into a 2-minute conversation.</p> <p>What I wanted was: select the term, press a key, get an answer, keep going.</p> <h2> <a name="so-i-built-it" href="#so-i-built-it"> </a> So I built it
+</h2> <p><strong>Quill</strong> is a macOS menu bar app. It does one thing:</p> <ol>
+<li>Select any term in any app</li>
+<li>Press <code>Ctrl+Option+Q</code>
+</li>
+<li>A floating panel appears near your cursor with an explanation</li>
+<li>The panel doesn't steal focus — your source app stays active</li>
+</ol> <p>That's the core. But a few features make it actually useful for learning, not just quick lookups.</p> <h2> <a name="explanation-levels" href="#explanation-levels"> </a> Explanation levels
+</h2> <p>Not everyone needs the same depth. Quill has 5 levels you can switch between with one click:</p> <ul>
+<li>
+<strong>ELI5</strong> — Simple words, analogies. "A WebSocket is like a phone call instead of sending letters."</li>
+<li>
+<strong>ELI15</strong> — Real terms, clear language. Good for intermediate learners.</li>
+<li>
+<strong>Pro</strong> — Trade-offs, patterns, when to use what, edge cases.</li>
+<li>
+<strong>Samples</strong> — 2-3 practical code snippets.</li>
+<li>
+<strong>Resources</strong> — What to study next, official docs, common pitfalls.</li>
+</ul> <p>The key insight: you often start at ELI5, then want to go deeper once it clicks. Having all levels one click away makes that natural.</p> <h2> <a name="drilldown-the-rabbit-hole-feature" href="#drilldown-the-rabbit-hole-feature"> </a> Drill-down: the rabbit hole feature
+</h2> <p>This is the part I use the most. The AI marks related terms in the explanation with double brackets, and Quill turns them into clickable links.</p> <p>Click "TCP" inside a WebSocket explanation, and you get TCP's explanation. Click "packet" inside that, go deeper. A breadcrumb trail keeps track of where you are:<br>
+</p> <div>
+<pre><code>WebSocket &gt; TCP &gt; packet
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Click any breadcrumb to jump back. It's like a personal Wikipedia for tech concepts, except every article is written at the level you chose.</p> <p>You can also just select any text in the explanation and press the hotkey again — no brackets needed. See a term you want to explore? Select it, same shortcut, deeper you go.</p> <h2> <a name="the-architecture-for-the-curious" href="#the-architecture-for-the-curious"> </a> The architecture (for the curious)
+</h2> <p>I went with Hexagonal Architecture (Ports &amp; Adapters) in Swift:<br>
+</p> <div>
+<pre><code>Domain/ — Models + Ports (AIServiceProtocol)
+Infrastructure/ — AI backends, Accessibility API, Keychain
+Presentation/ — FloatingPanel, Settings, MenuBar
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>A few technical decisions that might be interesting:</p> <p><strong>Non-activating NSPanel.</strong> The floating panel uses <code>NSPanel</code> with <code>.nonActivatingPanel</code>. This is the critical trick — if the window activated (took focus), the source app would lose focus and the Accessibility API couldn't replace text. Most macOS floating window tutorials miss this.</p> <p><strong>Accessibility API, no sandbox.</strong> The app reads selected text via <code>AXUIElement</code>. This requires the Accessibility entitlement, which means the app can't be sandboxed, which means no App Store. Worth the trade-off for system-wide functionality.</p> <p><strong>Protocol-based AI backends.</strong> <code>AIServiceProtocol</code> defines the port. Gemini, Claude API, and Claude CLI are adapters. Adding a new backend (Ollama, local LLM, etc.) means implementing one protocol. The domain never knows which backend is active.</p> <p><strong>Multi-layer JSON parsing.</strong> AI responses aren't always valid JSON. The parser chain: Codable -&gt; sanitize common issues -&gt; JSONSerialization -&gt; regex extraction -&gt; raw text fallback. A brace-matching depth tracker handles truncated responses better than naive <code>lastIndex(of: "}")</code>.</p> <p><strong>Prompt via stdin.</strong> The Claude CLI adapter passes the prompt through stdin to avoid it showing up in <code>ps</code> output. Small thing, but important for security.</p> <p>The whole thing is ~3,000 lines of Swift with 3 dependencies. No Xcode project needed — <code>swift build</code> works.</p> <h2> <a name="its-free-and-open-source" href="#its-free-and-open-source"> </a> It's free and open source
+</h2> <p>Quill is MIT licensed. It uses Google Gemini's free tier by default, so you can start using it without paying anything. Claude is also supported if you prefer.</p> <ul>
+<li>
+<strong>Download:</strong> <a href="https://github.com/uptakeagency/quill/releases/latest" target="_blank">Quill-1.0.0.dmg</a>
+</li>
+<li>
+<strong>Source:</strong> <a href="https://github.com/uptakeagency/quill" target="_blank">github.com/uptakeagency/quill</a>
+</li>
+</ul> <h3> <a name="ways-to-contribute" href="#ways-to-contribute"> </a> Ways to contribute
+</h3> <ul>
+<li>
+<strong>New AI backends</strong> — Ollama, local LLMs, other providers (just implement <code>AIServiceProtocol</code>)</li>
+<li>
+<strong>UI/UX</strong> — floating panel design, markdown rendering, accessibility improvements</li>
+<li>
+<strong>Localization</strong> — the explanations adapt to your system language, but the UI is English-only</li>
+<li>
+<strong>Testing</strong> — hexagonal architecture makes unit testing clean, but coverage is still thin</li>
+</ul> <h2> <a name="the-bigger-point" href="#the-bigger-point"> </a> The bigger point
+</h2> <p>We're in this weird era where AI makes us more productive but potentially less knowledgeable. The code works, but we don't always understand why.</p> <p>I don't think the answer is to stop using AI. The answer is to build better bridges between "it works" and "I get it." Quill is my attempt at one small bridge.</p> <p>If you've ever nodded along to AI-generated code without understanding half the terms in it — give it a try. And if you have ideas for making it better, PRs are open.</p> <hr> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Podman Desktop - Red Hat dégaine sa version enterprise</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Podman Desktop - Red Hat dégaine sa version enterprise</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/26/2026 1:16:37 PM | <a href="https://korben.info/red-hat-developer-desktop-cloud-native.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/red-hat-developer-desktop-cloud-native/red-hat-developer-desktop-cloud-native-1.png" alt="Image illustrant l'article : Podman Desktop - Red Hat dégaine sa version enterprise"></p><div><span>Ce qu’il faut retenir</span><div><ol><li>Red Hat lance Podman Desktop Enterprise : même base open source que Podman Desktop, mais avec contrôle admin centralisé (registry mirrors, proxies, certificats) pour les flottes IT</li><li>Podman fonctionne sans daemon et en rootless contrairement à Docker, meilleure sécurité, mais le support Docker Compose passe par aliasing et peut bugger sur configs exotiques</li><li>Red Hat arrive tard sur le marché dominé par Docker Desktop et OrbStack : sa stratégie vise les boîtes full RHEL plutôt que de convertir les utilisateurs Docker existants</li></ol><p>Résumé généré par IA</p></div><div><p>Hey mais on dirait bien que c'est Red Hat qui débarque sur le marché des apps desktop pour conteneurs... mais lol ! Car oui, pendant que Docker Desktop trône depuis des années et qu'OrbStack séduit de plus en plus d'utilisateurs macOS, Red Hat se réveille ENFIN avec sa propre version Enterprise de
+<a href="https://podman-desktop.io/">Podman Desktop</a>
+.</p><p>Bah mieux vaut tard que jamais !</p><p>Pour ceux qui débarquent (bouuuuh) Podman Desktop, c'est un outil open source qui existe depuis des années pour gérer vos conteneurs, images et pods via une interface graphique. C'est dispo sous Linux, macOS, Windows et le projet a même rejoint la
+<a href="https://www.cncf.io/">CNCF</a>
+(rien à voir avec les trains... lool) en janvier 2025 en même temps que d'autres briques Red Hat (Buildah, Skopeo, bootc, Composefs... chacun en projet séparé).</p><div><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/red-hat-developer-desktop-cloud-native/red-hat-developer-desktop-cloud-native-2.png" alt=""></p><p><em>Interface de Podman Desktop</em></p></div><p>Et donc Red Hat a décidé de lancer sa propre "build" enterprise de cette app de conteneurs. En gros, c'est la même base que Podman Desktop, mais avec une couche admin par-dessus. Les responsables IT peuvent donc verrouiller des paramètres au niveau de la flotte tels que les registry mirrors, proxies HTTP, certificats custom... On est dans une ambiance un peu plus corporate quoi.</p><p>Côté Kubernetes, c'est également plutôt bien pensé. Vous créez vos pods en local, l'outil génère le YAML correspondant, et hop, déploiement sur Kind, Minikube ou directement sur OpenShift, les doigts dans le nez.</p><p>Pour ceux qui se demandent si ça remplace Docker Desktop, bah, ça dépend en fait. Podman tourne sans daemon et en rootless, du coup c'est un vrai plus côté sécurité. Mais par contre, le support Docker Compose passe par un système d'aliasing... ça marche bien, sauf si vous avez des configs Docker très exotiques... là faudra tester avant de tout basculer comme le early adopter fifou que vous êtes.</p><p>D'ailleurs, si vous êtes sur RHEL, Podman est déjà inclus dans votre abonnement et Red Hat a aussi bossé sur des extensions pour les images bootable OCI et le mode image RHEL.</p><p></p><p>Le truc, c'est que Red Hat arrive tard. TRÈS tard. Docker Desktop, c'est le standard de facto depuis des lustres,
+<a href="https://korben.info/orbstack-alternative-docker-desktop-macos.html">OrbStack</a>
+a conquis les devs macOS avec sa légèreté sans oublier que Rancher Desktop et Portainer Business Edition occupent aussi le terrain. Du coup, leur stratégie c'est de cibler les boîtes déjà full Red Hat plutôt que d'essayer de convertir les utilisateurs Docker. C'est une ambition plutôt réaliste, je trouve.</p><p>Ça vient donc de passer en disponibilité générale via les canaux développeurs Red Hat, c'est gratuit, open source, et plutôt bien fichu pour ceux qui bossent dans un environnement RHEL au quotidien. Après, c'est pas non plus la révolution car ça reste Podman Desktop avec un petit chapeau d'entreprise.</p><p>Je pense que pour un usage hors Red Hat, Docker Desktop ou OrbStack restent devant. Mais si vous avez l'abonnement RHEL, ça peut valoir le coup d'y jeter un oeil.</p><p><a href="https://thenewstack.io/red-hat-enters-the-cloud-native-developer-desktop-market/">Source</a></p></div>Références<section><ul><li><a href="https://podman-desktop.io/" target="_blank" rel="noopener noreferrer">https://podman-desktop.io/</a></li><li><a href="https://www.cncf.io/" target="_blank" rel="noopener noreferrer">https://www.cncf.io/</a></li><li><a href="https://thenewstack.io/red-hat-enters-the-cloud-native-developer-desktop-market/" target="_blank" rel="noopener noreferrer">https://thenewstack.io/red-hat-enters-the-cloud-native-developer-desktop-market/</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

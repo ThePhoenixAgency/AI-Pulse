@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SecretDrop — Encrypted file sharing for developers</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>SecretDrop — Encrypted file sharing for developers</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/19/2026 8:46:02 PM | <a href="https://secretdrop.dev/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <div> <p> <span>&gt;</span> <span> SecretDrop</span> </p> <p>
+Share .env files, API keys, and configs through password-protected links or end-to-end encrypted direct transfers. Files are encrypted in your browser before upload.
+</p> <p>
+AES-256-GCM encryption with PBKDF2 key derivation. The server never sees your plaintext data.
+</p> <p> Free tier available. No credit card required.
+</p> </div> <div> <div> <p> 256-bit </p> <p>AES-GCM encryption</p> <p>Industry-standard authenticated encryption for file content and metadata.</p> </div><div> <p> 600K </p> <p>PBKDF2 iterations</p> <p>Key derivation iterations for password-based encryption key generation.</p> </div><div> <p> 0 </p> <p>Plaintext on server</p> <p>Zero-knowledge architecture. The server never sees your unencrypted files or passwords.</p> </div><div> <p> 90 days </p> <p>Maximum TTL</p> <p>Configurable time-to-live. Bundles are automatically deleted after expiry.</p> </div> </div> <div> <div> <p>
+Coming Soon
+</p> <h2>
+Your workflow, supercharged
+</h2> </div> <div> <div> <div> <h3> VS Code Extension </h3> <p><span>
+Soon
+</span> </p></div> <p> Encrypt and share secrets without leaving your editor. </p> </div><div> <div> <h3> CLI Tool </h3> <p><span>
+Soon
+</span> </p></div> <p> Pipe secrets through your terminal and CI/CD pipelines. </p> </div> </div> </div> <div> <div> <div> <h2>
+Sharing secrets is a solved problem
+</h2> <p>
+Developers still share .env files and API keys through Slack, email, and sticky notes. These channels were not built for sensitive data.
+</p> </div> <div> <div> <h3>Secrets in Slack and email</h3> <p>API keys and .env files shared in plain text over channels that log, index, and persist everything.</p> </div><div> <h3>No expiry or access control</h3> <p>Once shared, secrets live forever in chat history. No way to revoke access or know who downloaded them.</p> </div><div> <h3>No audit trail</h3> <p>When a key leaks, there is no record of who accessed it, when, or how many times it was downloaded.</p> </div> </div> </div> <div> <div> <p>The solution</p> <h2>
+How SecretDrop solves this
+</h2> <p>
+Encrypt files in your browser, share a link, set an expiry. Recipients enter a password to decrypt. The server never sees your data.
+</p> <ul> <li> <span>Files encrypted in the browser before upload</span> </li><li> <span>Password-protected access with configurable expiry</span> </li><li> <span>Automatic deletion after TTL or download limit</span> </li><li> <span>Full access event log for every bundle</span> </li> </ul> </div> <div> <p><span>Encrypt</span> <span>Share</span> <span>Decrypt</span> </p> <div> <p>Zero-knowledge architecture</p> <p>The server stores only encrypted blobs and verification hashes. Decryption happens entirely in the recipient's browser.</p> </div> </div> </div> </div> <div> <div> <p>Features</p> <h2>
+Built for sharing secrets
+</h2> <p>
+Everything you need to securely share sensitive files with developers, contractors, and team members.
+</p> </div> <div> <div> <p> Encryption </p> <h3>Client-side AES-256-GCM encryption</h3> <p>Files are encrypted in your browser using AES-256-GCM before upload. The server only stores encrypted blobs. Keys are derived from your password via PBKDF2 with 600,000 iterations.</p> </div><div> <p> Security </p> <h3>Password protection</h3> <p>Each bundle is locked with a password. The server stores only a verification hash, never the password or encryption key.</p> </div><div> <p> Policies </p> <h3>Configurable expiry</h3> <p>Set time-to-live from hours to 90 days. Bundles are automatically deleted after expiry. Premium users can set download limits and failed-attempt locking.</p> </div><div> <p> Access </p> <h3>Multi-file bundles</h3> <p>Share multiple files in a single encrypted bundle. Upload existing files or create new ones on the fly — paste .env content directly in the browser without locating the file on disk. File names are encrypted alongside content for complete metadata protection.</p> </div><div> <p> Analytics </p> <h3>Access event tracking</h3> <p>Premium users can monitor who accessed their bundles, when, and how many times. Every view, attempt, and download is logged.</p> </div><div> <div> <p> E2E Encryption </p> <p><span> PREMIUM </span> </p></div> <h3>End-to-end encrypted direct transfer</h3> <p>Send files directly to registered users without passwords. Each recipient's files are encrypted with their public key using ECIES (ECDH + AES-256-GCM). Private keys never leave the browser unencrypted.</p> </div> </div> </div> <div> <div> <p>Pricing</p> <h2>
+Simple, transparent pricing
+</h2> <p>
+Start with the free tier. Upgrade when you need more bundles, larger files, or custom policies.
+</p> </div> <div> <div> <p>Free</p> <div> <p><span>Free</span> </p> <p>
+No credit card required
+</p> </div> <p>
+For individual use and quick secret sharing.
+</p> <ul> <li> <span> 1 active bundle </span> </li><li> <span> 5 MB per file, 10 MB per bundle </span> </li><li> <span> 7-day automatic expiry </span> </li><li> <span> Client-side AES-256-GCM encryption </span> </li><li> <span> Password protection </span> </li><li> <span> Custom download limits </span> </li><li> <span> Failed-attempt locking </span> </li><li> <span> Access analytics </span> </li><li> <span> E2E Direct Transfer </span> </li> </ul> </div> <div> <p>Premium</p> <div> <p><span> <span>$6.58</span> </span> <span>/mo</span> <span>
+save 27%
+</span> </p> <p>
+$79 billed yearly
+</p> </div> <p>
+For teams and developers who share secrets regularly.
+</p> <ul> <li> <span> 25 active bundles </span> </li><li> <span> 50 MB per file, 100 MB per bundle </span> </li><li> <span> Up to 90-day TTL </span> </li><li> <span> Client-side AES-256-GCM encryption </span> </li><li> <span> Password protection </span> </li><li> <span> Custom download limits </span> </li><li> <span> Failed-attempt locking </span> </li><li> <span> Full access analytics </span> </li><li> <span> E2E Direct Transfer </span> </li> </ul> </div> <div> <p>Lifetime</p> <div> <p><span> <span>$126</span> </span> <span>one-time</span> </p> <p>
+Pay once, use forever
+</p> </div> <p>
+Permanent Premium access with no recurring charges.
+</p> <ul> <li> <span> 25 active bundles </span> </li><li> <span> 50 MB per file, 100 MB per bundle </span> </li><li> <span> Up to 90-day TTL </span> </li><li> <span> Client-side AES-256-GCM encryption </span> </li><li> <span> Password protection </span> </li><li> <span> Custom download limits </span> </li><li> <span> Failed-attempt locking </span> </li><li> <span> Full access analytics </span> </li><li> <span> E2E Direct Transfer </span> </li> </ul> </div> </div> <div> <div> <h3>What You Get</h3> <ul> <li> <span>Client-side encryption with AES-256-GCM</span> </li><li> <span>Password-protected bundles with configurable expiry</span> </li><li> <span>Automatic cleanup after TTL or download limits</span> </li><li> <span>Zero-knowledge architecture — the server cannot read your files</span> </li> </ul> </div> <div> <h3>What You Do</h3> <ul> <li> <span>Create a free account — no credit card required</span> </li><li> <span>Upload your files and set a password</span> </li><li> <span>Share the generated link with your recipient</span> </li><li> <span>They enter the password and download — done</span> </li> </ul> </div> </div> </div> <div> <h2>
+Start sharing secrets securely
+</h2> <p>
+Create your first encrypted bundle in under a minute. Share via password-protected links or end-to-end encrypted direct transfers. Free tier available, no credit card required.
+</p> </div> <div> <div> <p>How it works</p> <h2>
+Two ways to share securely
+</h2> <p>
+Choose password-protected links for anyone, or end-to-end encrypted direct transfer for registered users.
+</p> </div> <div> <div> <p> <span>Password Protected</span> <span>Direct Transfer</span> <span>PREMIUM</span> </p> </div> <div> <div> <div> <h3>Upload or create files and set a password</h3> <p><span> Your Action </span> </p></div> <p>Select files from your device or create new ones on the fly by pasting content directly — perfect for .env files buried deep in repos. Set a password and configure expiry. Files are encrypted in your browser with AES-256-GCM before upload.</p> View details <div> <ul> <li>Drag and drop, browse files, or create files inline by pasting content</li><li>Key derivation via PBKDF2 with 600,000 iterations</li><li>Encrypted blobs uploaded to storage — server never sees plaintext</li> </ul> </div> </div><div> <div> <h3>Share the generated link</h3> <p><span> Your Action </span> </p></div> <p>Copy the bundle link and send it to your recipient through any channel — Slack, email, or a note. The link alone reveals nothing.</p> View details <div> <ul> <li>Share the password through a separate channel for added security</li><li>Optionally set download limits or failed-attempt locking</li> </ul> </div> </div><div> <div> <h3>Recipient enters password to access</h3> <p><span> Automated </span> </p></div> <p>The recipient opens the link, enters the password, and files are decrypted in their browser. No account required.</p> View details <div> <ul> <li>Decryption happens entirely client-side</li><li>Access events are logged for the bundle owner</li><li>Bundle auto-expires after TTL or download limit</li> </ul> </div> </div> </div> <div> <div> <div> <h3>Select recipient by email</h3> <p><span> Your Action </span> </p></div> <p>Enter the recipient's email address. SecretDrop looks up their public encryption key automatically — no passwords to share.</p> View details <div> <ul> <li>Recipient must have a SecretDrop account with encryption keys set up</li><li>Public keys are looked up securely — no sensitive data is exposed</li><li>Multiple recipients supported — each gets a uniquely encrypted copy</li> </ul> </div> </div><div> <div> <h3>Files encrypted with recipient's public key</h3> <p><span> Automated </span> </p></div> <p>Your files are encrypted using ECIES (Elliptic Curve Integrated Encryption Scheme) with the recipient's public key. Each recipient gets a unique encrypted blob — only their private key can decrypt it.</p> View details <div> <ul> <li>ECDH key agreement (P-256) with ephemeral keys for forward secrecy</li><li>AES-256-GCM encryption derived via HKDF from the shared secret</li><li>Sender signs the encrypted payload with ECDSA for authenticity</li> </ul> </div> </div><div> <div> <h3>Recipient decrypts with their private key</h3> <p><span> Automated </span> </p></div> <p>The recipient logs into SecretDrop and finds the bundle in their inbox. Decryption happens entirely in the browser using their private key — the server never has access.</p> View details <div> <ul> <li>Private keys are stored encrypted — never leave the browser unencrypted</li><li>Sender signature verified for authenticity</li><li>Bundle auto-expires after TTL</li> </ul> </div> </div> </div> </div> <div> <p>Our principles</p> <p><span> Zero-knowledge architecture </span><span> Client-side encryption </span><span> Automatic expiry </span> </p></div> <div> <div> <p>Expected outcome</p> </div> <p>
+Your secrets are shared securely
+</p> <p>
+Files are encrypted, access-controlled, and automatically deleted after expiry.
+</p> </div> </div> <div> <div> <p>Use cases</p> <h2>
+Built for developer workflows
+</h2> <p>
+SecretDrop fits into the way developers already share files — but with encryption, expiry, and access control.
+</p> </div> <div> <div> <p><span> Backend Developer </span></p> <h3>Sharing .env files with contractors</h3> <p>Send environment configurations to freelancers and contractors without exposing credentials in Slack or email.</p> <div> <p>Credentials shared securely with automatic cleanup after the engagement ends</p> </div> <ul> <li> <span>Set expiry to match the contract duration</span> </li><li> <span>Revoke access instantly when the project is done</span> </li> </ul> </div><div> <p><span> DevOps Engineer </span></p> <h3>Distributing API keys to team members</h3> <p>Share API keys, service account credentials, and access tokens with new team members during onboarding.</p> <div> <p>New team members get credentials without them persisting in chat history</p> </div> <ul> <li> <span>Set download limit to 1 for single-use delivery</span> </li><li> <span>Monitor access events to confirm receipt</span> </li> </ul> </div><div> <p><span> Tech Lead </span></p> <h3>Sending configs to deployment pipelines</h3> <p>Securely transmit configuration files, certificates, and secrets needed for CI/CD pipeline setup.</p> <div> <p>Sensitive deployment configs never stored in plain text outside the pipeline</p> </div> <ul> <li> <span>Bundle multiple config files in a single link</span> </li><li> <span>Auto-expire after the deployment window closes</span> </li> </ul> </div><div> <p><span> Engineering Manager </span></p> <h3>Sharing credentials during onboarding</h3> <p>Provide new hires with database passwords, SSH keys, and service credentials on their first day without storing them in shared docs.</p> <div> <p>Onboarding credentials delivered securely and automatically cleaned up afterward</p> </div> <ul> <li> <span>Set short expiry so credentials don't linger after setup</span> </li><li> <span>Track access to confirm the new hire received everything</span> </li> </ul> </div> </div> <div> <h3>
+Other use cases
+</h3> <p>
+SecretDrop works for any scenario where you need to share sensitive files with a link and a password.
+</p> </div> </div> <div> <div> <p>Comparison</p> <h2>
+See the difference
+</h2> <p>
+Compare sharing secrets through everyday tools versus a purpose-built encrypted channel.
+</p> </div> <div> <div> <ul> <li> <span>API keys pasted in Slack channels that persist forever</span> </li><li> <span>.env files attached to emails with no access control</span> </li><li> <span>Secrets in shared Google Docs visible to anyone with the link</span> </li><li> <span>No way to know if credentials were forwarded or downloaded</span> </li><li> <span>Manual rotation after every offboarding or contractor change</span> </li> </ul> </div> <div> <ul> <li> <span>Files encrypted in the browser before leaving your device</span> </li><li> <span>Password-protected access with configurable expiry</span> </li><li> <span>Automatic deletion after TTL or download limit reached</span> </li><li> <span>Full access audit log — views, attempts, downloads</span> </li><li> <span>One-click revocation when access is no longer needed</span> </li><li> <span>E2E encrypted direct transfer — send to registered users without sharing a password</span> </li> </ul> </div> </div> <div> <p>Why this matters</p> <p>
+Exposed credentials are the leading cause of security breaches. The average cost of a data breach involving stolen credentials is significantly higher than other attack vectors.
+</p> </div> <div> <div> <h3>
+Why not just use a password manager's sharing feature?
+</h3> <p>
+Password managers are built for credential storage, not file sharing. SecretDrop handles multi-file bundles with configurable policies, automatic expiry, and access analytics — without requiring the recipient to install anything or create an account.
+</p> </div> <div> <ul> <li> <span>No recipient account required — just a password and a link</span> </li><li> <span>Files encrypted client-side, not just in transit</span> </li><li> <span>Configurable policies: expiry, download limits, attempt locking</span> </li><li> <span>Open security model with documented encryption approach</span> </li><li> <span>E2E Direct Transfer for registered users — no passwords needed</span> </li> </ul> </div> </div> </div> <div> <div> <p>Trust &amp; Security</p> <h2>
+Security by design
+</h2> <p>
+SecretDrop is built around a documented security model. Here is how your data is protected.
+</p> </div> <div> <div> <h3>Client-side encryption</h3> <p>Files are encrypted using AES-256-GCM in your browser before upload. The server receives only encrypted blobs — never plaintext.</p> </div><div> <h3>PBKDF2 key derivation</h3> <p>Encryption keys are derived from your password using PBKDF2 with 600,000 iterations and SHA-256. Verification hashes use a separate derivation path.</p> </div><div> <h3>ECIES end-to-end encryption</h3> <p>Direct Transfer uses ECDH (P-256) key agreement with ephemeral keys and HKDF-derived AES-256-GCM encryption. Private keys never leave your browser unencrypted.</p> </div><div> <h3>Zero-knowledge architecture</h3> <p>The server stores verification hashes, not passwords or encryption keys. It cannot decrypt your files under any circumstances.</p> </div><div> <h3>Recovery codes</h3> <p>Your private keys are protected by your password. If you lose access, recovery codes let you restore your encryption keys without compromising security.</p> </div><div> <h3>Automatic expiry</h3> <p>Bundles are permanently deleted after their TTL expires. A cleanup job runs every 5 minutes to enforce this.</p> </div> </div> <div> <div> <h3>What happens if the server is compromised?</h3> <p>
+Even with full database access, an attacker cannot decrypt your files. The encryption key is derived from your password client-side and never leaves your browser. Only a verification hash — derived via a separate path — is sent to the server.
+</p> </div> <div> <div> <p><span>Encrypted blobs are useless without the password-derived key or recipient's private key</span> </p></div> <div> <p><span>Private keys are encrypted before storage — never stored in plaintext on the server</span> </p></div> <div> <p><span>Bundles auto-expire and encrypted data is permanently deleted</span> </p></div> </div> </div> </div> <div> <p>Resources</p> <h2>
+Learn more
+</h2> <p>
+Explore articles, guides, and resources to help you get started and succeed.
+</p> </div> <div> <p>
+Start sharing secrets securely. Password-protected links or E2E encrypted direct transfers in under a minute.
+</p> <p><a href="https://app.secretdrop.dev/">
+Get Started
+</a> </p></div> <div> <div> <p>FAQ</p> <h2>
+Frequently asked questions
+</h2> <p>
+Find answers to the most common questions about SecretDrop.
+</p> </div> <div> <div> <div> <h3>General</h3> <p>Common questions about SecretDrop.</p> </div> <div> <span>What is SecretDrop?</span> <span> </span> <p>SecretDrop is an encrypted file sharing tool for developers. It lets you share .env files, API keys, and configuration files through password-protected, expiring bundles. You can upload existing files or create new ones on the fly by pasting content directly in the browser. Files are encrypted in your browser before upload using AES-256-GCM.</p> <span>Can you read my files?</span> <span> </span> <p>No. Files are encrypted in your browser before being uploaded. The server only stores encrypted blobs and a password verification hash. The encryption key is derived from your password, which is never sent to or stored on the server.</p> <span>Do recipients need an account?</span> <span> </span> <p>No. Recipients only need the bundle link and the password. There is no sign-up, no app to install, and no account required to access shared files.</p> </div> </div><div> <div> <h3>Security</h3> <p>How SecretDrop protects your data.</p> </div> <div> <span>What encryption does SecretDrop use?</span> <span> </span> <p>SecretDrop uses AES-256-GCM for file encryption and PBKDF2 with 600,000 iterations for key derivation. The encryption key and password verification hash use separate derivation paths, so the verification hash cannot be used to decrypt files.</p> <span>What happens when a bundle expires?</span> <span> </span> <p>Expired bundles are automatically marked as unavailable and their encrypted files are permanently deleted from storage. A cleanup job runs every 5 minutes to enforce TTL policies.</p> <span>What if someone guesses the password?</span> <span> </span> <p>Premium users can enable failed-attempt locking, which permanently locks the bundle after a configurable number of incorrect password attempts. Rate limiting also restricts password verification to 10 attempts per minute.</p> </div> </div><div> <div> <h3>E2E Direct Transfer</h3> <p>Questions about end-to-end encrypted transfers.</p> </div> <div> <span>What is E2E Direct Transfer?</span> <span> </span> <p>E2E Direct Transfer lets you send encrypted files directly to a registered SecretDrop user by email. Files are encrypted in your browser using the recipient's public key (ECIES with P-256 ECDH and AES-256-GCM). Only the recipient's private key can decrypt them — no shared password required.</p> <span>How is Direct Transfer different from password-protected bundles?</span> <span> </span> <p>Password-protected bundles use a shared password for encryption and can be accessed by anyone with the link and password. Direct Transfer uses public-key cryptography — files are encrypted for a specific recipient and only they can decrypt them. Direct Transfer requires both sender and recipient to have SecretDrop accounts.</p> <span>Where is my private key stored?</span> <span> </span> <p>Your private key is encrypted with a passphrase derived from your account password (or a separate passphrase for OAuth users) and stored on the server in encrypted form. The server never has access to your unencrypted private key. During a session, decrypted keys are held in sessionStorage and cleared when you close the tab.</p> <span>What happens if I lose my encryption passphrase?</span> <span> </span> <p>During key pair setup, you receive 8 one-time recovery codes. Use any one of these codes to recover your encrypted private keys. Store your recovery codes in a password manager or other secure location — they are shown only once.</p> <span>Can I send a Direct Transfer to someone who isn't registered?</span> <span> </span> <p>No. Direct Transfer requires the recipient to have a SecretDrop account with a key pair. If the recipient is not registered, you will see a warning when entering their email. You can still use a password-protected bundle to share files with anyone.</p> <span>Is Direct Transfer available on the free plan?</span> <span> </span> <p>No. E2E Direct Transfer is a premium feature available on the Premium and Lifetime plans. The free tier supports password-protected bundles with client-side AES-256 encryption.</p> </div> </div><div> <div> <h3>Pricing</h3> <p>Plans and billing details.</p> </div> <div> <span>What is included in the free tier?</span> <span> </span> <p>The free tier includes 1 active bundle, 5 MB per file (10 MB per bundle), and a fixed 7-day expiry. Client-side encryption, password protection, and inline file creation are included on all tiers.</p> <span>What does Premium include?</span> <span> </span> <p>Premium includes 25 active bundles, 50 MB per file (100 MB per bundle), configurable TTL up to 90 days, custom download limits, failed-attempt locking, and full access analytics. Available at $9/month, $79/year, or $126 lifetime.</p> </div> </div> <div> <h3>
+Still have questions?
+</h3> <p>
+Can't find what you're looking for? We're here to help.
+</p> </div> </div> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

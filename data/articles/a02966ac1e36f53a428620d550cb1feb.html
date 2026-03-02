@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - elbanic/dev-sentinel</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - elbanic/dev-sentinel</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/28/2026 4:01:03 PM | <a href="https://github.com/elbanic/dev-sentinel" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>Dev Sentinel</h1><a href="#dev-sentinel"></a></div>
+<div>
+<div><h3>"Struggle Equity."</h3><a href="#struggle-equity"></a></div>
+<p><em>What broke you guards you.</em></p> <span>sentinel-demo-mv2.mp4</span> <span></span> </div>
+<p>Dev Sentinel watches your <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> sessions and turns your struggles into reusable knowledge. Claude has zero knowledge of Sentinel — your prompt passes through unchanged.</p>
+<hr>
+<div><h3>How It Works</h3><a href="#how-it-works"></a></div>
+<ol>
+<li>
+<p><strong>Generate Experience from Frustration</strong></p>
+<p>Detect struggle and turn it into structured memory.</p>
+</li>
+<li>
+<p><strong>Evolve the Experience</strong></p>
+<p>Refine raw failure into hardened knowledge.</p>
+</li>
+<li>
+<p><strong>Validate the Guard</strong></p>
+<p>Measure whether past lessons actually prevent repetition.</p>
+</li>
+<li>
+<p><strong>Connect the Patterns</strong></p>
+<p>Link failures across contexts to uncover root causes.</p>
+</li>
+</ol>
+<p><em>The result: struggles compound into engineering intuition.</em></p>
+<hr>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><pre>git clone https://github.com/elbanic/dev-sentinel.git
+<span>cd</span> dev-sentinel
+npm install
+npm link</pre></div>
+<p>Requires <a href="https://ollama.com">Ollama</a> running locally (default). Pull the models:</p>
+<div><pre>ollama pull qwen3:4b
+ollama pull qwen3-embedding:0.6b</pre></div>
+<p>For best performance, AWS Bedrock is also supported (requires AWS credentials). See <a href="/elbanic/dev-sentinel/blob/main/SETTINGS.md">SETTINGS.md</a>.</p>
+<div><h2>Setup</h2><a href="#setup"></a></div>
+<p>In your project directory:</p>
+<div><pre>sentinel init</pre></div>
+<p>This registers Claude Code hooks and creates default config:</p>
+<ul>
+<li><pre><code>.claude/settings.local.json</code></pre> — UserPromptSubmit, Stop, SessionEnd hooks</li>
+<li><pre><code>~/.sentinel/settings.json</code></pre> — Sentinel config</li>
+</ul>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Dashboard</h3><a href="#dashboard"></a></div>
+<div><pre>sentinel dashboard</pre></div>
+<p>Opens a local web dashboard showing your experiences, drafts, and patterns at a glance. Data populates as you use Sentinel and confirm experiences.</p> <div><h2>More</h2><a href="#more"></a></div>
+<ul>
+<li><a href="/elbanic/dev-sentinel/blob/main/COMMANDS.md">COMMANDS.md</a> — Full command reference</li>
+<li><a href="/elbanic/dev-sentinel/blob/main/SETTINGS.md">SETTINGS.md</a> — Configuration options</li>
+<li><a href="/elbanic/dev-sentinel/blob/main/EXAMPLE.md">EXAMPLE.md</a> — Walkthrough with diagrams</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+<p>Default models (<a href="https://huggingface.co/Qwen/Qwen3-4B">Qwen3</a>) are licensed under Apache 2.0 by Alibaba Cloud. Models are not bundled — users download them independently via Ollama.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

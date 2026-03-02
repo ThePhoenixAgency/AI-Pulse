@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - SixHq/Overture: Overture is an open-source, locally running web interface delivered as an MCP (Model Context Protocol) server that visually maps out the execution plan of any AI coding agent as an interactive flowchart/graph before the agent begins writing code.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - SixHq/Overture: Overture is an open-source, locally running web interface delivered as an MCP (Model Context Protocol) server that visually maps out the execution plan of any AI coding agent as an interactive flowchart/graph before the agent begins writing code.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/22/2026 9:44:17 AM | <a href="https://github.com/SixHq/Overture" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Overture</h1><a href="#overture"></a></div>
+<p><strong>Visual plan execution and approval workflow for AI coding agents.</strong></p>
+<p><a target="_blank" href="https://camo.githubusercontent.com/606f835c02feb1903cf940de0dafbe9df2c8c073d123613c9a185c0d1d4cbdb8/68747470733a2f2f666972656261736573746f726167652e676f6f676c65617069732e636f6d2f76302f622f73697874682d76322e61707073706f742e636f6d2f6f2f303232312532302831292e6769663f616c743d6d6564696126746f6b656e3d64643162346462352d343830612d343137382d396363342d336431333830656134653537"><img src="https://camo.githubusercontent.com/606f835c02feb1903cf940de0dafbe9df2c8c073d123613c9a185c0d1d4cbdb8/68747470733a2f2f666972656261736573746f726167652e676f6f676c65617069732e636f6d2f76302f622f73697874682d76322e61707073706f742e636f6d2f6f2f303232312532302831292e6769663f616c743d6d6564696126746f6b656e3d64643162346462352d343830612d343137382d396363342d336431333830656134653537" alt="Overture Demo"></a></p>
+<hr>
+<div><h2>The Problem</h2><a href="#the-problem"></a></div>
+<p>Every AI coding agent today — Cursor, Claude Code, Cline, Copilot — works the same way: you type a prompt, the agent starts writing code, and you have no idea what it's actually planning to do.</p>
+<p>By the time you realize the agent misunderstood your request, it has already written hundreds of lines of code that need to be discarded.</p>
+<p>Some agents show plans as text in chat. But text plans don't show you:</p>
+<ul>
+<li>How steps relate to each other</li>
+<li>Where the plan branches into different approaches</li>
+<li>What context each step needs to succeed</li>
+</ul>
+<p>You end up wasting tokens, time, and patience.</p>
+<hr>
+<div><h2>The Solution</h2><a href="#the-solution"></a></div>
+<p>Overture intercepts your AI agent's planning phase and renders it as an interactive visual flowchart — before any code is written.</p>
+<p><a target="_blank" href="/SixHq/Overture/blob/main/assets/screenshot.png"><img src="/SixHq/Overture/raw/main/assets/screenshot.png" alt="Overture Screenshot"></a></p>
+<p>With Overture, you can:</p>
+<ul>
+<li><strong>See the complete plan</strong> as an interactive graph before execution begins</li>
+<li><strong>Click any node</strong> to view full details about what that step will do</li>
+<li><strong>Attach context</strong> like files, documents, API keys, and instructions to specific steps</li>
+<li><strong>Choose between approaches</strong> when the agent proposes multiple ways to solve a problem</li>
+<li><strong>Watch execution in real-time</strong> as nodes light up with progress, completion, or errors</li>
+</ul>
+<p>The agent doesn't write a single line of code until you approve the plan.</p>
+<hr>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<p>Overture is an MCP server that works with any MCP-compatible AI coding agent.</p>
+<div><h3>Claude Code</h3><a href="#claude-code"></a></div>
+<p>Run this command to add Overture to Claude Code:</p>
+<div><pre>claude mcp add overture-mcp -- npx overture-mcp</pre></div>
+<p>That's it. Claude Code will now use Overture for plan visualization.</p>
+<div><h3>Cursor</h3><a href="#cursor"></a></div>
+<p>Open your Cursor MCP configuration file at </p><pre><code>~/.cursor/mcp.json</code></pre> and add:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"overture"</span>: { <span>"command"</span>: <span><span>"</span>npx<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>overture-mcp<span>"</span></span>] } }
+}</pre></div>
+<p>Restart Cursor for the changes to take effect.</p>
+<div><h3>Cline (VS Code Extension)</h3><a href="#cline-vs-code-extension"></a></div>
+<p>Open VS Code settings, search for "Cline MCP", and add this to your MCP servers configuration:</p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"overture"</span>: { <span>"command"</span>: <span><span>"</span>npx<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>overture-mcp<span>"</span></span>] } }
+}</pre></div>
+<div><h3>Global Installation (Optional)</h3><a href="#global-installation-optional"></a></div>
+<p>If you prefer to install Overture globally instead of using npx:</p>
+<div><pre>npm install -g overture-mcp</pre></div>
+<p>Then replace </p><pre><code>npx overture-mcp</code></pre> with just <pre><code>overture-mcp</code></pre> in any of the configurations above.<p></p>
+<div><h3>Verifying Installation</h3><a href="#verifying-installation"></a></div>
+<p>Once installed, give your agent any task. Overture will automatically open in your browser at </p><pre><code>http://localhost:3031</code></pre> and display the plan for your approval.<p></p>
+<hr>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<ol>
+<li>
+<p><strong>You prompt your agent</strong> with a task like "Build a REST API with authentication"</p>
+</li>
+<li>
+<p><strong>The agent generates a detailed plan</strong> broken down into individual steps, with branching paths where multiple approaches are possible</p>
+</li>
+<li>
+<p><strong>Overture displays the plan</strong> as an interactive graph in your browser</p>
+</li> <li>
+<p><strong>You approve the plan</strong> and the agent begins execution</p>
+</li>
+<li>
+<p><strong>You watch progress in real-time</strong> as each node updates with its status — active, completed, or failed</p>
+</li>
+</ol>
+<hr>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>You can customize Overture's behavior with environment variables:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>OVERTURE_HTTP_PORT</code></pre></td>
+<td><pre><code>3031</code></pre></td>
+<td>Port for the web interface</td>
+</tr>
+<tr>
+<td><pre><code>OVERTURE_WS_PORT</code></pre></td>
+<td><pre><code>3030</code></pre></td>
+<td>Port for WebSocket communication</td>
+</tr>
+<tr>
+<td><pre><code>OVERTURE_AUTO_OPEN</code></pre></td>
+<td><pre><code>true</code></pre></td>
+<td>Whether to automatically open the browser</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Overture is open source and we welcome contributions from the community.</p>
+<p>Whether you want to report a bug, suggest a feature, improve documentation, or contribute code — we'd love to have you involved.</p>
+<ul>
+<li><strong>Report issues</strong> at <a href="https://github.com/SixHq/Overture/issues">github.com/SixHq/Overture/issues</a></li>
+<li><strong>Read the contributing guide</strong> at <a href="https://github.com/SixHq/Overture/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a></li>
+<li><strong>Join the discussion</strong> in GitHub Discussions</li>
+</ul>
+<p>All contributions are appreciated, no matter how small.</p>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT License - see <a href="https://github.com/SixHq/Overture/blob/main/LICENSE">LICENSE</a> for details.</p>
+<hr>
+<p>Built by <a href="https://trysixth.com">Sixth</a></p>
+<p>For an even better experience, try <a href="https://marketplace.visualstudio.com/items?itemName=Sixth.sixth-ai">Sixth for VS Code</a> — Overture is built-in with zero configuration required.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

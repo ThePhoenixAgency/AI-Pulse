@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - keyton-weissinger/patchworkmcp</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - keyton-weissinger/patchworkmcp</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/18/2026 8:27:57 PM | <a href="https://github.com/keyton-weissinger/patchworkmcp" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>PatchworkMCP</h1><a href="#patchworkmcp"></a></div>
+<p><strong>Your MCP servers have blind spots. Your agents already know what they are.</strong></p>
+<p>PatchworkMCP adds a feedback tool to any MCP server. When an agent hits a gap — missing tool, wrong format, incomplete data — it tells you exactly what it needed and how to fix it. Then it drafts the PR.</p>
+<p>No guessing. No feature request backlogs. Just structured signal from the agents that actually use your tools.</p>
+<p><a target="_blank" href="/keyton-weissinger/patchworkmcp/blob/main/docs/demo-draft-pr.gif"><img src="/keyton-weissinger/patchworkmcp/raw/main/docs/demo-draft-pr.gif" alt="PatchworkMCP — Add a note, draft a PR, ship the fix"></a></p>
+<hr>
+<div><h2>What Happens When You Wire This Up</h2><a href="#what-happens-when-you-wire-this-up"></a></div>
+<p>We added PatchworkMCP to an <a href="https://aicostmanager.com">AI Cost Manager</a> MCP server. Within one session, Claude reported:</p>
+<blockquote>
+<p><strong>Gap:</strong> </p><pre><code>missing_tool</code></pre> <br>
+<strong>What it needed:</strong> A tool to search cost events by context field values (e.g., run_id, session_id) <br>
+<strong>What it tried:</strong> <pre><code>get_costs</code></pre>, <pre><code>get_usage_events</code></pre> — neither supported context-based filtering <br>
+<strong>Suggestion:</strong> "A <pre><code>search_costs_by_context</code></pre> tool that accepts context key-value pairs with AND logic, combined with standard date/service/customer filters. Returns paginated event records with full context."<p></p>
+</blockquote>
+<p>That's not a vague complaint. That's a tool spec. PatchworkMCP can take that feedback, read your repo, and open a draft PR with the implementation.</p>
+<div><h2>Where It Fits Today</h2><a href="#where-it-fits-today"></a></div>
+<p>The MCP ecosystem has a "<a href="https://newsletter.pragmaticengineer.com/p/mcp-deepdive">more builders than users</a>" problem — Gergely Orosz and team lay it out well in their deep dive. Developers ship MCP servers and don't know what agents actually need from them. The best practice is to design for agents, not humans, but agents can't tell you what's missing unless you give them a way to.</p>
+<p>That's what PatchworkMCP does. It's built for <strong>active MCP server development</strong> — both public servers and the internal ones that <a href="https://newsletter.pragmaticengineer.com/p/mcp-deepdive">make up the majority of real MCP adoption</a>. Whether you're building tools for Claude Desktop users or wrapping an internal data warehouse for your team, the feedback loop is the same: wire it up, let agents use your server, see exactly where they hit walls, and draft fixes in under a minute.</p>
+<p>This is the MVP. The bigger picture is below in <a href="#where-this-is-going">Where This Is Going</a>.</p>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div> <ol>
+<li>Copy a <strong>single file</strong> into your MCP server (Python, TypeScript, Go, or Rust)</li>
+<li>Agents call the feedback tool when they can't do what the user asked</li> <li>Click <strong>Draft PR</strong> — PatchworkMCP reads your repo, sends the feedback + code context to an LLM, and opens a draft pull request with the suggested fix</li>
+</ol>
+<p><a target="_blank" href="/keyton-weissinger/patchworkmcp/blob/main/docs/screenshot-dashboard.png"><img src="/keyton-weissinger/patchworkmcp/raw/main/docs/screenshot-dashboard.png" alt="PatchworkMCP Dashboard"></a></p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<p><strong>30 seconds to running:</strong></p>
+<div><pre>git clone https://github.com/keyton-weissinger/patchworkmcp.git
+<span>cd</span> patchworkmcp
+uv run server.py</pre></div>
+<p>Open <a href="http://localhost:8099">http://localhost:8099</a>. That's the sidecar — it stores feedback and serves the dashboard.</p>
+<p><strong>Now wire up your MCP server.</strong> Pick your language, copy one file:</p> <strong>Python (FastMCP) — 2 lines</strong>
+<p>Copy </p><pre><code>drop-ins/python/feedback_tool.py</code></pre> into your project.<p></p>
+<div><pre>uv add httpx <span><span>#</span> or: pip install httpx</span></pre></div>
+<div><pre><span>from</span> <span>mcp</span>.<span>server</span>.<span>fastmcp</span> <span>import</span> <span>FastMCP</span>
+<span>from</span> <span>feedback_tool</span> <span>import</span> <span>register_feedback_tool</span> <span>server</span> <span>=</span> <span>FastMCP</span>(<span>"my-server"</span>)
+<span>register_feedback_tool</span>(<span>server</span>, <span>"my-server"</span>)</pre></div> <strong>Python (Django MCP)</strong>
+<p>Copy </p><pre><code>drop-ins/python/feedback_tool.py</code></pre> into your tools directory.<p></p>
+<div><pre>uv add httpx</pre></div>
+<div><pre><span>from</span> <span>mcp</span>.<span>tools</span>.<span>registry</span> <span>import</span> <span>mcp_tool</span>
+<span>from</span> <span>feedback_tool</span> <span>import</span> <span>TOOL_NAME</span>, <span>TOOL_DESCRIPTION</span>, <span>TOOL_INPUT_SCHEMA</span>, <span>send_feedback_sync</span> <span>@<span>mcp_tool</span>(<span>name</span><span>=</span><span>TOOL_NAME</span>, <span>description</span><span>=</span><span>TOOL_DESCRIPTION</span>, <span>input_schema</span><span>=</span><span>TOOL_INPUT_SCHEMA</span>)</span>
+<span>def</span> <span>feedback</span>(<span>credential</span>, <span>arguments</span>): <span>return</span> <span>send_feedback_sync</span>(<span>arguments</span>, <span>server_name</span><span>=</span><span>"my-server"</span>)</pre></div> <strong>Python (Raw MCP SDK)</strong>
+<p>Copy </p><pre><code>drop-ins/python/feedback_tool.py</code></pre> into your project.<p></p>
+<div><pre><span>from</span> <span>feedback_tool</span> <span>import</span> <span>get_tool_definition</span>, <span>send_feedback</span> <span># In your list_tools handler:</span>
+<span>tools</span>.<span>append</span>(<span>get_tool_definition</span>()) <span># In your call_tool handler:</span>
+<span>if</span> <span>name</span> <span>==</span> <span>"feedback"</span>: <span>result</span> <span>=</span> <span>await</span> <span>send_feedback</span>(<span>arguments</span>, <span>server_name</span><span>=</span><span>"my-server"</span>)</pre></div> <strong>TypeScript</strong>
+<p>Copy </p><pre><code>drop-ins/typescript/feedback-tool.ts</code></pre> into your project. No extra dependencies — uses built-in <pre><code>fetch</code></pre> (Node 18+).<p></p>
+<div><pre><span>import</span> <span>{</span> <span>McpServer</span> <span>}</span> <span>from</span> <span>"@modelcontextprotocol/sdk/server/mcp.js"</span><span>;</span>
+<span>import</span> <span>{</span> <span>registerFeedbackTool</span> <span>}</span> <span>from</span> <span>"./feedback-tool.js"</span><span>;</span> <span>const</span> <span>server</span> <span>=</span> <span>new</span> <span>McpServer</span><span>(</span><span>{</span> <span>name</span>: <span>"my-server"</span><span>,</span> <span>version</span>: <span>"1.0.0"</span> <span>}</span><span>)</span><span>;</span>
+<span>registerFeedbackTool</span><span>(</span><span>server</span><span>,</span> <span>"my-server"</span><span>)</span><span>;</span></pre></div> <strong>Go</strong>
+<p>Copy </p><pre><code>drop-ins/go/feedback_tool.go</code></pre> into your project. Only depends on <pre><code>github.com/mark3labs/mcp-go</code></pre> and stdlib.<p></p>
+<div><pre><span>import</span> <span>"your-project/feedback"</span> <span>s</span> <span>:=</span> <span>server</span>.<span>NewMCPServer</span>(<span>"my-server"</span>, <span>"1.0.0"</span>)
+<span>feedback</span>.<span>RegisterFeedbackTool</span>(<span>s</span>, <span>"my-server"</span>)</pre></div> <strong>Rust</strong>
+<p>Copy </p><pre><code>drop-ins/rust/feedback_tool.rs</code></pre> into your project.<p></p>
+<div><pre>[<span>dependencies</span>]
+<span>reqwest</span> = { <span>version</span> = <span><span>"</span>0.12<span>"</span></span>, <span>features</span> = [<span><span>"</span>json<span>"</span></span>] }
+<span>serde</span> = { <span>version</span> = <span><span>"</span>1<span>"</span></span>, <span>features</span> = [<span><span>"</span>derive<span>"</span></span>] }
+<span>serde_json</span> = <span><span>"</span>1<span>"</span></span></pre></div>
+<div><pre><span>use</span> feedback_tool<span>::</span><span>{</span>payload_from_args<span>,</span> send_feedback<span>,</span> <span>TOOL_NAME</span><span>,</span> <span>TOOL_DESCRIPTION</span><span>}</span><span>;</span> <span>let</span> payload = <span>payload_from_args</span><span>(</span><span>&amp;</span>args<span>,</span> <span>"my-server"</span><span>)</span><span>;</span>
+<span>let</span> message = <span>send_feedback</span><span>(</span><span>&amp;</span>payload<span>)</span><span>.</span><span>await</span><span>;</span></pre></div> <p><strong>Test it:</strong> Use your MCP server via Claude Desktop, Cursor, Claude Code, etc. Ask the agent to do something the server can't handle. Check <a href="http://localhost:8099">http://localhost:8099</a> — you'll see what it reported.</p>
+<div><h2>Draft PRs from Feedback</h2><a href="#draft-prs-from-feedback"></a></div>
+<p>This is the payoff. Click <strong>Draft PR</strong> on any feedback card and PatchworkMCP will:</p>
+<ol>
+<li>Read your repo's file tree via GitHub API</li>
+<li>Score files by MCP relevance and select the most important ones</li>
+<li>Send the feedback + <strong>your notes</strong> + code context to the LLM with structured output enforcement</li>
+<li>Create a branch, commit the change, and open a draft PR</li>
+</ol>
+<p>You get a real-time progress modal showing each step. The PR links back to the original feedback.</p>
+<div><h3>Setup</h3><a href="#setup"></a></div>
+<p>Configure your GitHub PAT, repo, and LLM provider in the dashboard settings panel:</p>
+<p><a target="_blank" href="/keyton-weissinger/patchworkmcp/blob/main/docs/screenshot-settings.png"><img src="/keyton-weissinger/patchworkmcp/raw/main/docs/screenshot-settings.png" alt="Settings Panel"></a></p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Default Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anthropic</td>
+<td><pre><code>claude-opus-4-6</code></pre></td>
+</tr>
+<tr>
+<td>OpenAI</td>
+<td><pre><code>GPT-5.2-Codex</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>Both use structured output with constrained decoding — the LLM returns valid JSON every time.</p>
+<div><h3>Notes guide the LLM</h3><a href="#notes-guide-the-llm"></a></div>
+<p>Before clicking Draft PR, add notes to the feedback card. Notes are human-written annotations — "the real issue is missing pagination", "look at how </p><pre><code>get_costs</code></pre> handles this", "this should be a new tool, not a param on the existing one." These get sent to the LLM as prioritized developer context, so the generated PR reflects what you actually want, not just what the agent reported.<p></p> <div><h3>Re-drafting</h3><a href="#re-drafting"></a></div>
+<p>First PR not quite right? Click <strong>Re-draft</strong> to generate a new one. Refine your notes between attempts — the LLM sees the updated context each time. The old PR stays on GitHub; the dashboard link updates to point to the new one.</p>
+<div><h2>What Gets Captured</h2><a href="#what-gets-captured"></a></div>
+<p>Every feedback item includes:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>what_i_needed</code></pre></td>
+<td>Yes</td>
+<td>The missing capability — the core signal</td>
+</tr>
+<tr>
+<td><pre><code>what_i_tried</code></pre></td>
+<td>Yes</td>
+<td>What the agent attempted first. Separates "didn't find it" from "doesn't exist"</td>
+</tr>
+<tr>
+<td><pre><code>gap_type</code></pre></td>
+<td>Yes</td>
+<td><pre><code>missing_tool</code></pre> · <pre><code>incomplete_results</code></pre> · <pre><code>missing_parameter</code></pre> · <pre><code>wrong_format</code></pre> · <pre><code>other</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>suggestion</code></pre></td>
+<td>No</td>
+<td>The agent's proposed fix. Often includes a full tool signature.</td>
+</tr>
+<tr>
+<td><pre><code>user_goal</code></pre></td>
+<td>No</td>
+<td>What the human was trying to do. Prioritize by real user impact.</td>
+</tr>
+<tr>
+<td><pre><code>resolution</code></pre></td>
+<td>No</td>
+<td><pre><code>blocked</code></pre> · <pre><code>worked_around</code></pre> · <pre><code>partial</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>tools_available</code></pre></td>
+<td>No</td>
+<td>What tools the agent could see. Context for the gap.</td>
+</tr>
+<tr>
+<td><pre><code>agent_model</code></pre></td>
+<td>No</td>
+<td>Which model reported it. Separate model confusion from real gaps.</td>
+</tr>
+<tr>
+<td><pre><code>session_id</code></pre></td>
+<td>No</td>
+<td>Groups feedback from one conversation. Reveals multi-step failures.</td>
+</tr>
+<tr>
+<td><pre><code>client_type</code></pre></td>
+<td>No</td>
+<td>Which MCP client reported it (<pre><code>claude-desktop</code></pre>, <pre><code>cursor</code></pre>, <pre><code>claude-code</code></pre>).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes</strong> are append-only with timestamps — you never lose an annotation.</p>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>FEEDBACK_SIDECAR_URL</code></pre></td>
+<td><pre><code>http://localhost:8099</code></pre></td>
+<td>Where drop-ins send feedback</td>
+</tr>
+<tr>
+<td><pre><code>FEEDBACK_API_KEY</code></pre></td>
+<td><em>(none)</em></td>
+<td>Optional shared secret for auth</td>
+</tr>
+<tr>
+<td><pre><code>FEEDBACK_DB_PATH</code></pre></td>
+<td><pre><code>./feedback.db</code></pre></td>
+<td>SQLite path for the sidecar</td>
+</tr>
+<tr>
+<td><pre><code>FEEDBACK_PORT</code></pre></td>
+<td><pre><code>8099</code></pre></td>
+<td>Port for <pre><code>uv run server.py</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>Draft PR settings (GitHub PAT, API keys) are stored in a </p><pre><code>.env</code></pre> file that's gitignored — not in the database.<p></p>
+<div><h2>Security</h2><a href="#security"></a></div>
+<p>The sidecar is designed for <strong>local development</strong> — </p><pre><code>localhost:8099</code></pre> with no auth by default. For shared or remote deployments:<p></p>
+<ul>
+<li>Set <pre><code>FEEDBACK_API_KEY</code></pre> to a shared secret. Drop-ins and the sidecar both read it — requests without a valid <pre><code>Authorization: Bearer &lt;key&gt;</code></pre> header are rejected.</li>
+<li>Put the sidecar behind HTTPS (nginx, Caddy, etc.) if it's not on localhost.</li>
+<li>GitHub PATs and LLM API keys are stored in <pre><code>.env</code></pre>, never in SQLite or API responses. The settings endpoint masks keys to their last 4 characters.</li>
+</ul>
+<div><h2>API</h2><a href="#api"></a></div>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>POST</code></pre></td>
+<td><pre><code>/api/feedback</code></pre></td>
+<td>Submit feedback (called by drop-ins)</td>
+</tr>
+<tr>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/api/feedback</code></pre></td>
+<td>List feedback with filters</td>
+</tr>
+<tr>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/api/feedback/{id}</code></pre></td>
+<td>Single item with notes</td>
+</tr>
+<tr>
+<td><pre><code>PATCH</code></pre></td>
+<td><pre><code>/api/feedback/{id}</code></pre></td>
+<td>Toggle reviewed status</td>
+</tr>
+<tr>
+<td><pre><code>POST</code></pre></td>
+<td><pre><code>/api/feedback/{id}/notes</code></pre></td>
+<td>Add a note</td>
+</tr>
+<tr>
+<td><pre><code>POST</code></pre></td>
+<td><pre><code>/api/feedback/{id}/draft-pr</code></pre></td>
+<td>Generate a draft PR (SSE stream)</td>
+</tr>
+<tr>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/api/stats</code></pre></td>
+<td>Counts by server, gap type, resolution</td>
+</tr>
+<tr>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/api/settings</code></pre></td>
+<td>Current settings (keys masked)</td>
+</tr>
+<tr>
+<td><pre><code>PUT</code></pre></td>
+<td><pre><code>/api/settings</code></pre></td>
+<td>Update settings</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<p>The entire sidecar is <strong>one Python file</strong> (</p><pre><code>server.py</code></pre>). No framework, no build step, no Docker required. FastAPI + SQLite + inline HTML/CSS/JS.<p></p>
+<div><pre><code>patchworkmcp/ server.py # Everything: API, database, UI, GitHub client, LLM integration feedback.db # Created on first run .env # API keys (gitignored) drop-ins/ python/ # FastMCP, Django MCP, raw SDK typescript/ # @modelcontextprotocol/sdk go/ # mcp-go rust/ # reqwest-based docs/ # Screenshots and demo media
+</code></pre></div>
+<div><h2>Adding a Drop-in for a New Language</h2><a href="#adding-a-drop-in-for-a-new-language"></a></div>
+<p>The sidecar API is the stable contract. Any language can participate by:</p>
+<ol>
+<li>Defining the tool schema (name, description, input properties)</li>
+<li>POSTing JSON to <pre><code>{SIDECAR_URL}/api/feedback</code></pre></li>
+<li>Providing a framework-specific registration helper</li>
+</ol>
+<p>If you build one, open a PR. The pattern: one file, zero extra deps beyond the MCP SDK.</p>
+<div><h2>Where This Is Going</h2><a href="#where-this-is-going"></a></div> <p>The end state is a <strong>self-monitoring system for MCP servers.</strong> Feedback accumulates across sessions, users, and agents. PatchworkMCP learns to deduplicate reports, cluster related gaps, and grade them by frequency and severity. Instead of acting on the first report of a missing tool, it waits — sees that 15 different sessions hit the same wall, that 8 of them were fully blocked, and that the agents all suggested roughly the same fix. Then it acts.</p>
+<p>The human stays in the loop, but how much control you want is a spectrum:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>What happens</th>
+<th>Who decides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Suggestions only</strong></td>
+<td>PatchworkMCP surfaces prioritized gaps with analysis</td>
+<td>You build it yourself</td>
+</tr>
+<tr>
+<td><strong>Draft PRs</strong></td>
+<td>Generates a PR for review (where we are today)</td>
+<td>You review and merge</td>
+</tr>
+<tr>
+<td><strong>Auto-PRs</strong></td>
+<td>Opens PRs automatically when confidence is high</td>
+<td>You merge</td>
+</tr>
+<tr>
+<td><strong>Auto-merge</strong></td>
+<td>Ships vetted changes to your server</td>
+<td>Guardrails + your approval rules</td>
+</tr>
+</tbody>
+</table>
+<p>Every level up requires more guardrails — confidence thresholds, test coverage requirements, scope limits, rollback hooks. We're building those incrementally, not shipping "auto-merge" as a flag you can flip tomorrow.</p>
+<div><h3>Shipped</h3><a href="#shipped"></a></div>
+<ul> <li> Drop-ins for Python, TypeScript, Go, Rust</li>
+<li> Append-only notes with timestamps</li>
+<li> LLM-powered draft PRs from feedback (Anthropic + OpenAI)</li>
+<li> Structured output enforcement (constrained decoding)</li>
+<li> Real-time progress streaming during PR creation</li>
+<li> Developer notes as LLM context for better PRs</li>
+<li> Re-draft workflow for iterating on PRs</li>
+<li> Dark / light theme</li>
+</ul>
+<div><h3>Next</h3><a href="#next"></a></div>
+<ul>
+<li> Feedback deduplication and clustering (group similar reports across sessions)</li>
+<li> Severity scoring based on frequency, resolution type, and user impact</li>
+<li> Multi-file PRs</li>
+<li> Webhook notifications for new feedback</li>
+<li> Confidence-gated auto-PRs with configurable thresholds</li>
+<li> Export to CSV/JSON</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

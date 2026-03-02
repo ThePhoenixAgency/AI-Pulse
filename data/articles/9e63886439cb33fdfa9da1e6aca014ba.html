@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - cosformula/mdxport-cli: Markdown to PDF via Typst. single binary, LaTeX math, beautiful templates</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - cosformula/mdxport-cli: Markdown to PDF via Typst. single binary, LaTeX math, beautiful templates</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/20/2026 2:44:25 AM | <a href="https://github.com/cosformula/mdxport-cli" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>mdxport</h1><a href="#mdxport"></a></div>
+<p><a href="https://crates.io/crates/mdxport"><img src="https://camo.githubusercontent.com/b4dcf5109b127ff5dc7e506afec08833ebbddbc6e34e26b5f6a12a7cdd316596/68747470733a2f2f696d672e736869656c64732e696f2f6372617465732f762f6d6478706f7274" alt="Crates.io"></a>
+<a href="https://www.npmjs.com/package/@mdxport/cli"><img src="https://camo.githubusercontent.com/deb8c3425939138268582e3ddaa23f5ce10baef1a7e4d6103a3375474c4cf83a/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f406d6478706f72742f636c69" alt="npm"></a>
+<a href="/cosformula/mdxport-cli/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/7013272bd27ece47364536a221edb554cd69683b68a46fc0ee96881174c4214c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d626c75652e737667" alt="License: MIT"></a></p>
+<p>Markdown to PDF via <a href="https://typst.app">Typst</a>. Single binary, no dependencies.</p>
+<ul>
+<li>LaTeX math support (<pre><code>$E = mc^2$</code></pre>, <pre><code>\frac{a}{b}</code></pre>)</li>
+<li>Built-in templates or bring your own <pre><code>.typ</code></pre></li>
+<li>YAML frontmatter (title, author, language, TOC)</li>
+<li>Watch mode — recompile on file change</li>
+<li>CJK support with <pre><code>mdxport fonts install</code></pre></li>
+</ul>
+<div><h2>Output Examples</h2><a href="#output-examples"></a></div>
+<p> <a target="_blank" href="https://raw.githubusercontent.com/cosformula/mdxport-cli/main/screenshots/showcase.png"><img src="https://raw.githubusercontent.com/cosformula/mdxport-cli/main/screenshots/showcase.png" alt="Markdown source to PDF output"></a>
+</p>
+<p> <em>Markdown source (left) → PDF output (right): math, TOC, code highlighting, footnotes</em>
+</p> CJK output (Chinese/Japanese/Korean)
+<p> <a target="_blank" href="https://raw.githubusercontent.com/cosformula/mdxport-cli/main/screenshots/cjk-output.png"><img src="https://raw.githubusercontent.com/cosformula/mdxport-cli/main/screenshots/cjk-output.png" alt="CJK PDF output"></a>
+</p> <div><h2>Install</h2><a href="#install"></a></div> <div><h2>CLI Usage</h2><a href="#cli-usage"></a></div>
+<div><pre><span><span>#</span> Basic conversion</span>
+mdxport input.md -o output.pdf <span><span>#</span> Choose a style</span>
+mdxport input.md -s classic-editorial <span><span>#</span> Custom template</span>
+mdxport input.md --template my_style.typ <span><span>#</span> Override metadata</span>
+mdxport input.md -t <span><span>"</span>My Title<span>"</span></span> -a <span><span>"</span>Author Name<span>"</span></span> --lang zh <span><span>#</span> Watch mode</span>
+mdxport input.md -w <span><span>#</span> Multiple files</span>
+mdxport chapter1.md chapter2.md -o output_dir/ <span><span>#</span> From stdin</span>
+cat input.md <span>|</span> mdxport -o output.pdf</pre></div>
+<div><h2>Frontmatter</h2><a href="#frontmatter"></a></div>
+<div><pre>---
+<span>title</span>: <span><span>"</span>Document Title<span>"</span></span>
+<span>author</span>: <span><span>"</span>Single Author<span>"</span></span>
+<span><span>#</span> or multiple:</span>
+<span>authors</span>: - <span>Alice</span> - <span>Bob</span>
+<span>lang</span>: <span>zh </span><span><span>#</span> auto-detected if omitted</span>
+<span>toc</span>: <span>true</span>
+---</pre></div>
+<div><h2>Custom Templates</h2><a href="#custom-templates"></a></div>
+<p>Templates are Typst files that define an </p><pre><code>#article</code></pre> function:<p></p>
+<div><pre><span>#</span><span>let</span> <span>article</span>( <span>title</span>: <span>none</span>, <span>authors</span>: (), <span>lang</span>: <span><span>"</span>en<span>"</span></span>, <span>toc</span>: <span>false</span>, <span>body</span>,
+) <span>= </span>{ <span><span>//</span> your styling here</span> <span>body</span>
+}</pre></div>
+<p>See </p><pre><code>src/template/modern_tech.typ</code></pre> and <pre><code>src/template/classic_editorial.typ</code></pre> for examples.<p></p>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>Markdown ──comrak──→ AST ──convert──→ Typst markup │ LaTeX math ──tex2typst-rs──→ Typst math │ template ──compose──→ full .typ source │ typst crate ──compile──→ PDF bytes
+</code></pre></div>
+<div><h2>Web Version</h2><a href="#web-version"></a></div>
+<p>Prefer a browser UI? Try <a href="https://mdxport.com">mdxport.com</a>, the web version with real-time preview, Mermaid diagrams, and AI Markdown formatting. No install needed. (<a href="https://github.com/cosformula/mdxport">source</a>)</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

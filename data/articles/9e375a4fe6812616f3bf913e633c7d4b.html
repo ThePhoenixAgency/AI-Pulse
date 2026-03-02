@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Trivabble a 10 ans - LinuxFr.org</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Trivabble a 10 ans - LinuxFr.org</h1>
+  <div class="metadata">
+    Source: LinuxFr | Date: 2/28/2026 8:56:36 AM | <a href="https://linuxfr.org/news/trivabble-a-10-ans" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><div>
+<p>Il y a 10 ans, je présentais Trivabble ici sur LinuxFR. <a href="https://linuxfr.org/users/raphj/journaux/trivabble-s-offre-un-nom-de-domaine">Le dernier article ici</a> remontant à 2021, c’est l’occasion de présenter les nouveaux développements. Et je dois remercier les contributeurs et contributrices externes, parce que c’est surtout de leur fait s’il y a des nouvelles choses à présenter.</p> <p><img src="https://img.linuxfr.org/img/68747470733a2f2f747269766162626c652e6f72672f747269766162626c652e706e67/trivabble.png" alt="Trivabble en 2026"></p> <h2>Présentation rapide</h2> <p>Pour les gens qui ne connaissent pas, il s’agit d’un jeu en réseau qui propose un plateau, des chevalets et des pièces, inspiré du Scrabble mais configurable et adaptable pour que chacun puisse inventer ses propres manières de jouer. Un des principes derrière Trivabble est de ne pas forcer une manière de jouer ou des règles particulières, et si vous voulez jouer en mode rapide où tout le monde joue n’importe quand le plus vite possible pour former des mots qui n’existent pas et sans commencer au milieu, le jeu ne vous en empêchera pas.</p>
+<h2>Améliorations</h2> <p>Ysabeau a dessiné un sac. Ça avait été annoncé dans le journal précédent. C’est évidemment intégré, depuis le temps.</p> <p>Laurent Mazet a pas mal bossé. On peut maintenant :</p> <ul>
+<li>jouer avec des plateaux de différentes tailles</li>
+<li>vérifier si le premier mot posé est bien au centre</li>
+<li>être averti quand on quitte une partie, pour éviter les fausses manipulations</li>
+<li>bloquer les pièces sur le plateau, pour ne plus pouvoir revenir sur les coups précédents</li>
+</ul> <p>Côté maintenance du code, il a également regroupé des feuilles styles CSS qui étaient séparées parce qu’elles venaient de projets différents, mais je ne maintiens plus ces projets et la seule conséquence de cette séparation dans Trivabble, c’est de la complexité inutile.</p> <p>Arnaudv6 a partagé quelques idées d’amélioration pour l’interface, qui a été un peu retravaillée pour plus de cohérence, de simplicité et de discrétion :</p> <ul>
+<li>le nombre de tuiles restantes est maintenant sur le sac<sup><a href="#fn1">1</a></sup>
+</li>
+<li>les boutons et les boites de sélections ont maintenant une apparence plus unifiée, et ont été déplacés et regroupés pour gagner de la place et de la cohérence</li>
+<li>changer son nom se fait avec un bouton « crayon » plus discret. D’ailleurs, des correctifs permettent que changer de nom ne cause plus des bugs dans le comptage des mots et la vérification orthographique</li>
+</ul> <p>Autres améliorations diverses :</p> <ul>
+<li>
+<strong>Le jeu se redimensionne automatiquement pour prendre la taille de la fenêtre</strong>. Cela fonctionne dans les navigateurs modernes (sauf WebKit / Safari à cause <a href="https://bugs.webkit.org/show_bug.cgi?id=77998">d’un bug dans la gestion des coordonnées</a>) en s’appuyant sur la propriété CSS <code>zoom</code> nouvellement standard et un peu de javascript. Pour les navigateurs ne prenant pas en charge ce zoom, le redimensionnement n’est plus bloqué et il est maintenant possible de zoomer avec les doigts. Le zoom automatique est également désactivé .</li>
+<li>
+<strong>Les messages de chat persistent</strong>. Jusqu’à maintenant, recharger la page ou revenir sur une partie plus tard perdait les messages. Ce qui fait qu’un plantage perdait la discussion, et il était impossible d’utiliser le chat intégré au jeu dans le cadre d’un jeu asynchrone.</li>
+<li>Il y a maintenant un <strong>mode sombre</strong>. Il s’applique automatiquement en fonction des réglages du navigateur, mais on peut aussi forcer le thème sombre ou le thème clair.</li>
+</ul> <p>Enfin, Philippe Lhardy a intégré <a href="https://apps.yunohost.org/app/trivabble">Trivabble à Yunohost</a>, ce qui permet d'installer facilement Trivabble sur une instance Yunohost.</p>
+<h2>Conclusion</h2> <p>Je partage une petite pensée pour ma grand-mère, qui a été la motivation pour lancer le projet il y a 10 ans, et qui nous a depuis quitté.</p> <p>Trivabble est stable et évolue lentement. Le jeu est dans un état utilisable et l’instance qui fait fonctionner <a href="https://trivabble.org/">trivabble.org</a> se fait oublier. Ce n’est pas un projet très actif, il n’y a d’ailleurs pas eu de développement entre 2021 et 2025. Il n’y a pas de dépendance externe à part Node.js et le système d’exploitation dessous, c’est du Javascript très simple, donc la maintenance est triviale.</p> <p>Le projet n’est pas abandonné pour autant. Ce sont les contributeurs et contributrices qui réveillent le projet et me motivent pour m’y remettre de temps à autre. Je trouve ça agréable de me replonger dans ce code, mais il n’y a pas tellement besoin de le faire, ça fonctionne tel quel, donc c’est plutôt rare, mais n’hésitez pas à rejoindre l’aventure :-)</p> <p>C’est toujours utilisé, probablement pas énormément, en fait je n’en sais rien. J’ai reçu un mail assez rapidement la seule fois où j’ai cassé mon installation suite à une migration. Des gens ont créé des routines autour de Trivabble, et se retrouvent tous les samedis soir pour leur partie hebdomadaire. Je trouve ça plutôt chouette.</p> <div>
+<hr>
+<ol> <li>
+<p>ça a été un petit défi technique, parce qu’il a fallu le faire dans le code SVG du sac, qui ne pouvait donc plus être affiché à l’aide d’une balise <code>img</code> mais en l’intégrant directement comme une balise <code>svg</code>, et les styles SVG étaient alors bloqués par la politique CSP dans Chrome… Une conversion en attributs SVG a heureusement résolu le problème sans modifier l’apparence du sac.&nbsp;<a href="#fnref1"></a></p>
+</li> </ol>
+</div> <h2>Aller plus loin</h2>
+<ul>
+<li>
+<a href="https://trivabble.org/">Le site web de Trivabble</a>
+(97 clics)
+</li> </ul> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

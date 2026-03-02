@@ -1,730 +1,106 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
-<title>GitHub - github/spec-kit:  Toolkit to help you get started with Spec-Driven Development</title>
+<title>Spec Kit | Spec Kit Documentation</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
-  <h1>GitHub - github/spec-kit:  Toolkit to help you get started with Spec-Driven Development</h1>
+  <h1>Spec Kit | Spec Kit Documentation</h1>
   <div class="metadata">
-    Source: GitHub Trending Python | Date: Invalid Date | Lang: EN
+    Source: GitHub Trending Python | Date: 2/22/2026 10:23:58 AM | <a href="https://github.com/github/spec-kit" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div><article><div>
-    <p><a target="_blank" href="https://github.com/github/spec-kit/blob/main/media/logo_large.webp"><img src="https://github.com/github/spec-kit/raw/main/media/logo_large.webp" alt="Spec Kit Logo"></a></p><p></p><h2> Spec Kit</h2><a href="#-spec-kit"></a><p></p>
-    <p></p><h3><em>Build high-quality software faster.</em></h3><a href="#build-high-quality-software-faster"></a><p></p>
-</div>
-<p>
-    <strong>An open source toolkit that allows you to focus on product scenarios and predictable outcomes instead of vibe coding every piece from scratch.</strong>
-</p>
-<p>
-    <a href="https://github.com/github/spec-kit/actions/workflows/release.yml"><img src="https://github.com/github/spec-kit/actions/workflows/release.yml/badge.svg" alt="Release"></a>
-    <a href="https://github.com/github/spec-kit/stargazers"><img src="https://camo.githubusercontent.com/79f37a502abead3ac4b07bf851b94433d6b2f57d19e7eecd4a18900bee6c740b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6769746875622f737065632d6b69743f7374796c653d736f6369616c" alt="GitHub stars"></a>
-    <a href="https://github.com/github/spec-kit/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/de69478c402ec49440743f91e46921baae6e0a83279421a10890fbd6b16da67c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6769746875622f737065632d6b6974" alt="License"></a>
-    <a href="https://github.github.io/spec-kit/"><img src="https://camo.githubusercontent.com/2ec2efdf26b99b1c38c6bcabe6224a90fcc4ca2102350935e18d4ac434b288af/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646f63732d4769744875625f50616765732d626c7565" alt="Documentation"></a>
-</p>
-<hr>
-<p></p><h2>Table of Contents</h2><a href="#table-of-contents"></a><p></p>
-<ul>
-<li><a href="#-what-is-spec-driven-development"> What is Spec-Driven Development?</a></li>
-<li><a href="#-get-started"> Get Started</a></li>
-<li><a href="#%EF%B8%8F-video-overview"> Video Overview</a></li>
-<li><a href="#-supported-ai-agents"> Supported AI Agents</a></li>
-<li><a href="#-specify-cli-reference"> Specify CLI Reference</a></li>
-<li><a href="#-core-philosophy"> Core Philosophy</a></li>
-<li><a href="#-development-phases"> Development Phases</a></li>
-<li><a href="#-experimental-goals"> Experimental Goals</a></li>
-<li><a href="#-prerequisites"> Prerequisites</a></li>
-<li><a href="#-learn-more"> Learn More</a></li>
-<li><a href="#-detailed-process"> Detailed Process</a></li>
-<li><a href="#-troubleshooting"> Troubleshooting</a></li>
-<li><a href="#-maintainers"> Maintainers</a></li>
-<li><a href="#-support"> Support</a></li>
-<li><a href="#-acknowledgements"> Acknowledgements</a></li>
-<li><a href="#-license"> License</a></li>
-</ul>
-<p></p><h2> What is Spec-Driven Development?</h2><a href="#-what-is-spec-driven-development"></a><p></p>
-<p>Spec-Driven Development <strong>flips the script</strong> on traditional software development. For decades, code has been king — specifications were just scaffolding we built and discarded once the "real work" of coding began. Spec-Driven Development changes this: <strong>specifications become executable</strong>, directly generating working implementations rather than just guiding them.</p>
-<p></p><h2> Get Started</h2><a href="#-get-started"></a><p></p>
-<p></p><h3>1. Install Specify CLI</h3><a href="#1-install-specify-cli"></a><p></p>
-<p>Choose your preferred installation method:</p>
-<p></p><h4>Option 1: Persistent Installation (Recommended)</h4><a href="#option-1-persistent-installation-recommended"></a><p></p>
-<p>Install once and use everywhere:</p>
-<div><pre>uv tool install specify-cli --from git+https://github.com/github/spec-kit.git</pre></div>
-<p>Then use the tool directly:</p>
-<div><pre><span><span>#</span> Create new project</span>
-specify init <span>&lt;</span>PROJECT_NAME<span>&gt;</span>
-
-<span><span>#</span> Or initialize in existing project</span>
-specify init <span>.</span> --ai claude
-<span><span>#</span> or</span>
-specify init --here --ai claude
-
-<span><span>#</span> Check installed tools</span>
-specify check</pre></div>
-<p>To upgrade Specify, see the <a href="https://github.com/github/spec-kit/blob/main/docs/upgrade.md">Upgrade Guide</a> for detailed instructions. Quick upgrade:</p>
-<div><pre>uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git</pre></div>
-<p></p><h4>Option 2: One-time Usage</h4><a href="#option-2-one-time-usage"></a><p></p>
-<p>Run directly without installing:</p>
-<div><pre>uvx --from git+https://github.com/github/spec-kit.git specify init <span>&lt;</span>PROJECT_NAME<span>&gt;</span></pre></div>
-<p><strong>Benefits of persistent installation:</strong></p>
-<ul>
-<li>Tool stays installed and available in PATH</li>
-<li>No need to create shell aliases</li>
-<li>Better tool management with <code>uv tool list</code>, <code>uv tool upgrade</code>, <code>uv tool uninstall</code></li>
-<li>Cleaner shell configuration</li>
-</ul>
-<p></p><h3>2. Establish project principles</h3><a href="#2-establish-project-principles"></a><p></p>
-<p>Launch your AI assistant in the project directory. The <code>/speckit.*</code> commands are available in the assistant.</p>
-<p>Use the <strong><code>/speckit.constitution</code></strong> command to create your project's governing principles and development guidelines that will guide all subsequent development.</p>
-<div><pre>/speckit.constitution Create principles focused on code quality, testing standards, user experience consistency, and performance requirements</pre></div>
-<p></p><h3>3. Create the spec</h3><a href="#3-create-the-spec"></a><p></p>
-<p>Use the <strong><code>/speckit.specify</code></strong> command to describe what you want to build. Focus on the <strong>what</strong> and <strong>why</strong>, not the tech stack.</p>
-<div><pre>/speckit.specify Build an application that can <span>help</span> me organize my photos <span>in</span> separate photo albums. Albums are grouped by date and can be re-organized by dragging and dropping on the main page. Albums are never <span>in</span> other nested albums. Within each album, photos are previewed <span>in</span> a tile-like interface.</pre></div>
-<p></p><h3>4. Create a technical implementation plan</h3><a href="#4-create-a-technical-implementation-plan"></a><p></p>
-<p>Use the <strong><code>/speckit.plan</code></strong> command to provide your tech stack and architecture choices.</p>
-<div><pre>/speckit.plan The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored <span>in</span> a <span>local</span> SQLite database.</pre></div>
-<p></p><h3>5. Break down into tasks</h3><a href="#5-break-down-into-tasks"></a><p></p>
-<p>Use <strong><code>/speckit.tasks</code></strong> to create an actionable task list from your implementation plan.</p>
-<div><pre>/speckit.tasks</pre></div>
-<p></p><h3>6. Execute implementation</h3><a href="#6-execute-implementation"></a><p></p>
-<p>Use <strong><code>/speckit.implement</code></strong> to execute all tasks and build your feature according to the plan.</p>
-<div><pre>/speckit.implement</pre></div>
-<p>For detailed step-by-step instructions, see our <a href="https://github.com/github/spec-kit/blob/main/spec-driven.md">comprehensive guide</a>.</p>
-<p></p><h2> Video Overview</h2><a href="#-video-overview"></a><p></p>
-<p>Want to see Spec Kit in action? Watch our <a href="https://www.youtube.com/watch?v=a9eR1xsfvHg&amp;pp=0gcJCckJAYcqIYzv">video overview</a>!</p>
-<p><a href="https://www.youtube.com/watch?v=a9eR1xsfvHg&amp;pp=0gcJCckJAYcqIYzv"><img src="https://github.com/github/spec-kit/raw/main/media/spec-kit-video-header.jpg" alt="Spec Kit video header"></a></p>
-<p></p><h2> Supported AI Agents</h2><a href="#-supported-ai-agents"></a><p></p>
-<table>
-<thead>
-<tr>
-<th>Agent</th>
-<th>Support</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://qoder.com/cli">Qoder CLI</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://aws.amazon.com/developer/learning/q-developer-cli/">Amazon Q Developer CLI</a></td>
-<td></td>
-<td>Amazon Q Developer CLI <a href="https://github.com/aws/amazon-q-developer-cli/issues/3064">does not support</a> custom arguments for slash commands.</td>
-</tr>
-<tr>
-<td><a href="https://ampcode.com/">Amp</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://docs.augmentcode.com/cli/overview">Auggie CLI</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.anthropic.com/claude-code">Claude Code</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.codebuddy.ai/cli">CodeBuddy CLI</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://github.com/openai/codex">Codex CLI</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://cursor.sh/">Cursor</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://code.visualstudio.com/">GitHub Copilot</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.ibm.com/products/bob">IBM Bob</a></td>
-<td></td>
-<td>IDE-based agent with slash command support</td>
-</tr>
-<tr>
-<td><a href="https://jules.google.com/">Jules</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://github.com/Kilo-Org/kilocode">Kilo Code</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://opencode.ai/">opencode</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://github.com/QwenLM/qwen-code">Qwen Code</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://roocode.com/">Roo Code</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://github.com/ovh/shai">SHAI (OVHcloud)</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://windsurf.com/">Windsurf</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://agy.ai/">Antigravity (agy)</a></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p></p><h2> Specify CLI Reference</h2><a href="#-specify-cli-reference"></a><p></p>
-<p>The <code>specify</code> command supports the following options:</p>
-<p></p><h3>Commands</h3><a href="#commands"></a><p></p>
-<table>
-<thead>
-<tr>
-<th>Command</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>init</code></td>
-<td>Initialize a new Specify project from the latest template</td>
-</tr>
-<tr>
-<td><code>check</code></td>
-<td>Check for installed tools (<code>git</code>, <code>claude</code>, <code>gemini</code>, <code>code</code>/<code>code-insiders</code>, <code>cursor-agent</code>, <code>windsurf</code>, <code>qwen</code>, <code>opencode</code>, <code>codex</code>, <code>shai</code>, <code>qoder</code>)</td>
-</tr>
-</tbody>
-</table>
-<p></p><h3><code>specify init</code> Arguments &amp; Options</h3><a href="#specify-init-arguments--options"></a><p></p>
-<table>
-<thead>
-<tr>
-<th>Argument/Option</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;project-name&gt;</code></td>
-<td>Argument</td>
-<td>Name for your new project directory (optional if using <code>--here</code>, or use <code>.</code> for current directory)</td>
-</tr>
-<tr>
-<td><code>--ai</code></td>
-<td>Option</td>
-<td>AI assistant to use: <code>claude</code>, <code>gemini</code>, <code>copilot</code>, <code>cursor-agent</code>, <code>qwen</code>, <code>opencode</code>, <code>codex</code>, <code>windsurf</code>, <code>kilocode</code>, <code>auggie</code>, <code>roo</code>, <code>codebuddy</code>, <code>amp</code>, <code>shai</code>, <code>q</code>, <code>agy</code>, <code>bob</code>, or <code>qoder</code></td>
-</tr>
-<tr>
-<td><code>--script</code></td>
-<td>Option</td>
-<td>Script variant to use: <code>sh</code> (bash/zsh) or <code>ps</code> (PowerShell)</td>
-</tr>
-<tr>
-<td><code>--ignore-agent-tools</code></td>
-<td>Flag</td>
-<td>Skip checks for AI agent tools like Claude Code</td>
-</tr>
-<tr>
-<td><code>--no-git</code></td>
-<td>Flag</td>
-<td>Skip git repository initialization</td>
-</tr>
-<tr>
-<td><code>--here</code></td>
-<td>Flag</td>
-<td>Initialize project in the current directory instead of creating a new one</td>
-</tr>
-<tr>
-<td><code>--force</code></td>
-<td>Flag</td>
-<td>Force merge/overwrite when initializing in current directory (skip confirmation)</td>
-</tr>
-<tr>
-<td><code>--skip-tls</code></td>
-<td>Flag</td>
-<td>Skip SSL/TLS verification (not recommended)</td>
-</tr>
-<tr>
-<td><code>--debug</code></td>
-<td>Flag</td>
-<td>Enable detailed debug output for troubleshooting</td>
-</tr>
-<tr>
-<td><code>--github-token</code></td>
-<td>Option</td>
-<td>GitHub token for API requests (or set GH_TOKEN/GITHUB_TOKEN env variable)</td>
-</tr>
-</tbody>
-</table>
-<p></p><h3>Examples</h3><a href="#examples"></a><p></p>
-<div><pre><span><span>#</span> Basic project initialization</span>
-specify init my-project
-
-<span><span>#</span> Initialize with specific AI assistant</span>
-specify init my-project --ai claude
-
-<span><span>#</span> Initialize with Cursor support</span>
-specify init my-project --ai cursor-agent
-
-<span><span>#</span> Initialize with Qoder support</span>
-specify init my-project --ai qoder
-
-<span><span>#</span> Initialize with Windsurf support</span>
-specify init my-project --ai windsurf
-
-<span><span>#</span> Initialize with Amp support</span>
-specify init my-project --ai amp
-
-<span><span>#</span> Initialize with SHAI support</span>
-specify init my-project --ai shai
-
-<span><span>#</span> Initialize with IBM Bob support</span>
-specify init my-project --ai bob
-
-<span><span>#</span> Initialize with PowerShell scripts (Windows/cross-platform)</span>
-specify init my-project --ai copilot --script ps
-
-<span><span>#</span> Initialize in current directory</span>
-specify init <span>.</span> --ai copilot
-<span><span>#</span> or use the --here flag</span>
-specify init --here --ai copilot
-
-<span><span>#</span> Force merge into current (non-empty) directory without confirmation</span>
-specify init <span>.</span> --force --ai copilot
-<span><span>#</span> or</span>
-specify init --here --force --ai copilot
-
-<span><span>#</span> Skip git initialization</span>
-specify init my-project --ai gemini --no-git
-
-<span><span>#</span> Enable debug output for troubleshooting</span>
-specify init my-project --ai claude --debug
-
-<span><span>#</span> Use GitHub token for API requests (helpful for corporate environments)</span>
-specify init my-project --ai claude --github-token ghp_your_token_here
-
-<span><span>#</span> Check system requirements</span>
-specify check</pre></div>
-<p></p><h3>Available Slash Commands</h3><a href="#available-slash-commands"></a><p></p>
-<p>After running <code>specify init</code>, your AI coding agent will have access to these slash commands for structured development:</p>
-<p></p><h4>Core Commands</h4><a href="#core-commands"></a><p></p>
-<p>Essential commands for the Spec-Driven Development workflow:</p>
-<table>
-<thead>
-<tr>
-<th>Command</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>/speckit.constitution</code></td>
-<td>Create or update project governing principles and development guidelines</td>
-</tr>
-<tr>
-<td><code>/speckit.specify</code></td>
-<td>Define what you want to build (requirements and user stories)</td>
-</tr>
-<tr>
-<td><code>/speckit.plan</code></td>
-<td>Create technical implementation plans with your chosen tech stack</td>
-</tr>
-<tr>
-<td><code>/speckit.tasks</code></td>
-<td>Generate actionable task lists for implementation</td>
-</tr>
-<tr>
-<td><code>/speckit.implement</code></td>
-<td>Execute all tasks to build the feature according to the plan</td>
-</tr>
-</tbody>
-</table>
-<p></p><h4>Optional Commands</h4><a href="#optional-commands"></a><p></p>
-<p>Additional commands for enhanced quality and validation:</p>
-<table>
-<thead>
-<tr>
-<th>Command</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>/speckit.clarify</code></td>
-<td>Clarify underspecified areas (recommended before <code>/speckit.plan</code>; formerly <code>/quizme</code>)</td>
-</tr>
-<tr>
-<td><code>/speckit.analyze</code></td>
-<td>Cross-artifact consistency &amp; coverage analysis (run after <code>/speckit.tasks</code>, before <code>/speckit.implement</code>)</td>
-</tr>
-<tr>
-<td><code>/speckit.checklist</code></td>
-<td>Generate custom quality checklists that validate requirements completeness, clarity, and consistency (like "unit tests for English")</td>
-</tr>
-</tbody>
-</table>
-<p></p><h3>Environment Variables</h3><a href="#environment-variables"></a><p></p>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>SPECIFY_FEATURE</code></td>
-<td>Override feature detection for non-Git repositories. Set to the feature directory name (e.g., <code>001-photo-albums</code>) to work on a specific feature when not using Git branches.<br>**Must be set in the context of the agent you're working with prior to using <code>/speckit.plan</code> or follow-up commands.</td>
-</tr>
-</tbody>
-</table>
-<p></p><h2> Core Philosophy</h2><a href="#-core-philosophy"></a><p></p>
-<p>Spec-Driven Development is a structured process that emphasizes:</p>
-<ul>
-<li><strong>Intent-driven development</strong> where specifications define the "<em>what</em>" before the "<em>how</em>"</li>
-<li><strong>Rich specification creation</strong> using guardrails and organizational principles</li>
-<li><strong>Multi-step refinement</strong> rather than one-shot code generation from prompts</li>
-<li><strong>Heavy reliance</strong> on advanced AI model capabilities for specification interpretation</li>
-</ul>
-<p></p><h2> Development Phases</h2><a href="#-development-phases"></a><p></p>
-<table>
-<thead>
-<tr>
-<th>Phase</th>
-<th>Focus</th>
-<th>Key Activities</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>0-to-1 Development</strong> ("Greenfield")</td>
-<td>Generate from scratch</td>
-<td><ul><li>Start with high-level requirements</li><li>Generate specifications</li><li>Plan implementation steps</li><li>Build production-ready applications</li></ul></td>
-</tr>
-<tr>
-<td><strong>Creative Exploration</strong></td>
-<td>Parallel implementations</td>
-<td><ul><li>Explore diverse solutions</li><li>Support multiple technology stacks &amp; architectures</li><li>Experiment with UX patterns</li></ul></td>
-</tr>
-<tr>
-<td><strong>Iterative Enhancement</strong> ("Brownfield")</td>
-<td>Brownfield modernization</td>
-<td><ul><li>Add features iteratively</li><li>Modernize legacy systems</li><li>Adapt processes</li></ul></td>
-</tr>
-</tbody>
-</table>
-<p></p><h2> Experimental Goals</h2><a href="#-experimental-goals"></a><p></p>
-<p>Our research and experimentation focus on:</p>
-<p></p><h3>Technology independence</h3><a href="#technology-independence"></a><p></p>
-<ul>
-<li>Create applications using diverse technology stacks</li>
-<li>Validate the hypothesis that Spec-Driven Development is a process not tied to specific technologies, programming languages, or frameworks</li>
-</ul>
-<p></p><h3>Enterprise constraints</h3><a href="#enterprise-constraints"></a><p></p>
-<ul>
-<li>Demonstrate mission-critical application development</li>
-<li>Incorporate organizational constraints (cloud providers, tech stacks, engineering practices)</li>
-<li>Support enterprise design systems and compliance requirements</li>
-</ul>
-<p></p><h3>User-centric development</h3><a href="#user-centric-development"></a><p></p>
-<ul>
-<li>Build applications for different user cohorts and preferences</li>
-<li>Support various development approaches (from vibe-coding to AI-native development)</li>
-</ul>
-<p></p><h3>Creative &amp; iterative processes</h3><a href="#creative--iterative-processes"></a><p></p>
-<ul>
-<li>Validate the concept of parallel implementation exploration</li>
-<li>Provide robust iterative feature development workflows</li>
-<li>Extend processes to handle upgrades and modernization tasks</li>
-</ul>
-<p></p><h2> Prerequisites</h2><a href="#-prerequisites"></a><p></p>
-<ul>
-<li><strong>Linux/macOS/Windows</strong></li>
-<li><a href="#-supported-ai-agents">Supported</a> AI coding agent.</li>
-<li><a href="https://docs.astral.sh/uv/">uv</a> for package management</li>
-<li><a href="https://www.python.org/downloads/">Python 3.11+</a></li>
-<li><a href="https://git-scm.com/downloads">Git</a></li>
-</ul>
-<p>If you encounter issues with an agent, please open an issue so we can refine the integration.</p>
-<p></p><h2> Learn More</h2><a href="#-learn-more"></a><p></p>
-<ul>
-<li><strong><a href="https://github.com/github/spec-kit/blob/main/spec-driven.md">Complete Spec-Driven Development Methodology</a></strong> - Deep dive into the full process</li>
-<li><strong><a href="#-detailed-process">Detailed Walkthrough</a></strong> - Step-by-step implementation guide</li>
-</ul>
-<hr>
-<p></p><h2> Detailed Process</h2><a href="#-detailed-process"></a><p></p>
-
-Click to expand the detailed step-by-step walkthrough
-<p>You can use the Specify CLI to bootstrap your project, which will bring in the required artifacts in your environment. Run:</p>
-<div><pre>specify init <span>&lt;</span>project_name<span>&gt;</span></pre></div>
-<p>Or initialize in the current directory:</p>
-<div><pre>specify init <span>.</span>
-<span><span>#</span> or use the --here flag</span>
-specify init --here
-<span><span>#</span> Skip confirmation when the directory already has files</span>
-specify init <span>.</span> --force
-<span><span>#</span> or</span>
-specify init --here --force</pre></div>
-<p><a target="_blank" href="https://github.com/github/spec-kit/blob/main/media/specify_cli.gif"><img src="https://github.com/github/spec-kit/raw/main/media/specify_cli.gif" alt="Specify CLI bootstrapping a new project in the terminal"></a></p>
-<p>You will be prompted to select the AI agent you are using. You can also proactively specify it directly in the terminal:</p>
-<div><pre>specify init <span>&lt;</span>project_name<span>&gt;</span> --ai claude
-specify init <span>&lt;</span>project_name<span>&gt;</span> --ai gemini
-specify init <span>&lt;</span>project_name<span>&gt;</span> --ai copilot
-
-<span><span>#</span> Or in current directory:</span>
-specify init <span>.</span> --ai claude
-specify init <span>.</span> --ai codex
-
-<span><span>#</span> or use --here flag</span>
-specify init --here --ai claude
-specify init --here --ai codex
-
-<span><span>#</span> Force merge into a non-empty current directory</span>
-specify init <span>.</span> --force --ai claude
-
-<span><span>#</span> or</span>
-specify init --here --force --ai claude</pre></div>
-<p>The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, or Amazon Q Developer CLI installed. If you do not, or you prefer to get the templates without checking for the right tools, use <code>--ignore-agent-tools</code> with your command:</p>
-<div><pre>specify init <span>&lt;</span>project_name<span>&gt;</span> --ai claude --ignore-agent-tools</pre></div>
-<p></p><h3><strong>STEP 1:</strong> Establish project principles</h3><a href="#step-1-establish-project-principles"></a><p></p>
-<p>Go to the project folder and run your AI agent. In our example, we're using <code>claude</code>.</p>
-<p><a target="_blank" href="https://github.com/github/spec-kit/blob/main/media/bootstrap-claude-code.gif"><img src="https://github.com/github/spec-kit/raw/main/media/bootstrap-claude-code.gif" alt="Bootstrapping Claude Code environment"></a></p>
-<p>You will know that things are configured correctly if you see the <code>/speckit.constitution</code>, <code>/speckit.specify</code>, <code>/speckit.plan</code>, <code>/speckit.tasks</code>, and <code>/speckit.implement</code> commands available.</p>
-<p>The first step should be establishing your project's governing principles using the <code>/speckit.constitution</code> command. This helps ensure consistent decision-making throughout all subsequent development phases:</p>
-<div><pre><code>/speckit.constitution Create principles focused on code quality, testing standards, user experience consistency, and performance requirements. Include governance for how these principles should guide technical decisions and implementation choices.
-</code></pre></div>
-<p>This step creates or updates the <code>.specify/memory/constitution.md</code> file with your project's foundational guidelines that the AI agent will reference during specification, planning, and implementation phases.</p>
-<p></p><h3><strong>STEP 2:</strong> Create project specifications</h3><a href="#step-2-create-project-specifications"></a><p></p>
-<p>With your project principles established, you can now create the functional specifications. Use the <code>/speckit.specify</code> command and then provide the concrete requirements for the project you want to develop.</p>
-<blockquote>
-<p>[!IMPORTANT]
-Be as explicit as possible about <em>what</em> you are trying to build and <em>why</em>. <strong>Do not focus on the tech stack at this point</strong>.</p>
-</blockquote>
-<p>An example prompt:</p>
-<div><pre><code>Develop Taskify, a team productivity platform. It should allow users to create projects, add team members,
-assign tasks, comment and move tasks between boards in Kanban style. In this initial phase for this feature,
-let's call it "Create Taskify," let's have multiple users but the users will be declared ahead of time, predefined.
-I want five users in two different categories, one product manager and four engineers. Let's create three
-different sample projects. Let's have the standard Kanban columns for the status of each task, such as "To Do,"
-"In Progress," "In Review," and "Done." There will be no login for this application as this is just the very
-first testing thing to ensure that our basic features are set up. For each task in the UI for a task card,
-you should be able to change the current status of the task between the different columns in the Kanban work board.
-You should be able to leave an unlimited number of comments for a particular card. You should be able to, from that task
-card, assign one of the valid users. When you first launch Taskify, it's going to give you a list of the five users to pick
-from. There will be no password required. When you click on a user, you go into the main view, which displays the list of
-projects. When you click on a project, you open the Kanban board for that project. You're going to see the columns.
-You'll be able to drag and drop cards back and forth between different columns. You will see any cards that are
-assigned to you, the currently logged in user, in a different color from all the other ones, so you can quickly
-see yours. You can edit any comments that you make, but you can't edit comments that other people made. You can
-delete any comments that you made, but you can't delete comments anybody else made.
-</code></pre></div>
-<p>After this prompt is entered, you should see Claude Code kick off the planning and spec drafting process. Claude Code will also trigger some of the built-in scripts to set up the repository.</p>
-<p>Once this step is completed, you should have a new branch created (e.g., <code>001-create-taskify</code>), as well as a new specification in the <code>specs/001-create-taskify</code> directory.</p>
-<p>The produced specification should contain a set of user stories and functional requirements, as defined in the template.</p>
-<p>At this stage, your project folder contents should resemble the following:</p>
-<div><pre><code>└── .specify
-    ├── memory
-    │  └── constitution.md
-    ├── scripts
-    │  ├── check-prerequisites.sh
-    │  ├── common.sh
-    │  ├── create-new-feature.sh
-    │  ├── setup-plan.sh
-    │  └── update-claude-md.sh
-    ├── specs
-    │  └── 001-create-taskify
-    │      └── spec.md
-    └── templates
-        ├── plan-template.md
-        ├── spec-template.md
-        └── tasks-template.md
-</code></pre></div>
-<p></p><h3><strong>STEP 3:</strong> Functional specification clarification (required before planning)</h3><a href="#step-3-functional-specification-clarification-required-before-planning"></a><p></p>
-<p>With the baseline specification created, you can go ahead and clarify any of the requirements that were not captured properly within the first shot attempt.</p>
-<p>You should run the structured clarification workflow <strong>before</strong> creating a technical plan to reduce rework downstream.</p>
-<p>Preferred order:</p>
-<ol>
-<li>Use <code>/speckit.clarify</code> (structured) – sequential, coverage-based questioning that records answers in a Clarifications section.</li>
-<li>Optionally follow up with ad-hoc free-form refinement if something still feels vague.</li>
-</ol>
-<p>If you intentionally want to skip clarification (e.g., spike or exploratory prototype), explicitly state that so the agent doesn't block on missing clarifications.</p>
-<p>Example free-form refinement prompt (after <code>/speckit.clarify</code> if still needed):</p>
-<div><pre><code>For each sample project or project that you create there should be a variable number of tasks between 5 and 15
-tasks for each one randomly distributed into different states of completion. Make sure that there's at least
-one task in each stage of completion.
-</code></pre></div>
-<p>You should also ask Claude Code to validate the <strong>Review &amp; Acceptance Checklist</strong>, checking off the things that are validated/pass the requirements, and leave the ones that are not unchecked. The following prompt can be used:</p>
-<div><pre><code>Read the review and acceptance checklist, and check off each item in the checklist if the feature spec meets the criteria. Leave it empty if it does not.
-</code></pre></div>
-<p>It's important to use the interaction with Claude Code as an opportunity to clarify and ask questions around the specification - <strong>do not treat its first attempt as final</strong>.</p>
-<p></p><h3><strong>STEP 4:</strong> Generate a plan</h3><a href="#step-4-generate-a-plan"></a><p></p>
-<p>You can now be specific about the tech stack and other technical requirements. You can use the <code>/speckit.plan</code> command that is built into the project template with a prompt like this:</p>
-<div><pre><code>We are going to generate this using .NET Aspire, using Postgres as the database. The frontend should use
-Blazor server with drag-and-drop task boards, real-time updates. There should be a REST API created with a projects API,
-tasks API, and a notifications API.
-</code></pre></div>
-<p>The output of this step will include a number of implementation detail documents, with your directory tree resembling this:</p>
-<div><pre><code>.
-├── CLAUDE.md
-├── memory
-│  └── constitution.md
-├── scripts
-│  ├── check-prerequisites.sh
-│  ├── common.sh
-│  ├── create-new-feature.sh
-│  ├── setup-plan.sh
-│  └── update-claude-md.sh
-├── specs
-│  └── 001-create-taskify
-│      ├── contracts
-│      │  ├── api-spec.json
-│      │  └── signalr-spec.md
-│      ├── data-model.md
-│      ├── plan.md
-│      ├── quickstart.md
-│      ├── research.md
-│      └── spec.md
-└── templates
-    ├── CLAUDE-template.md
-    ├── plan-template.md
-    ├── spec-template.md
-    └── tasks-template.md
-</code></pre></div>
-<p>Check the <code>research.md</code> document to ensure that the right tech stack is used, based on your instructions. You can ask Claude Code to refine it if any of the components stand out, or even have it check the locally-installed version of the platform/framework you want to use (e.g., .NET).</p>
-<p>Additionally, you might want to ask Claude Code to research details about the chosen tech stack if it's something that is rapidly changing (e.g., .NET Aspire, JS frameworks), with a prompt like this:</p>
-<div><pre><code>I want you to go through the implementation plan and implementation details, looking for areas that could
-benefit from additional research as .NET Aspire is a rapidly changing library. For those areas that you identify that
-require further research, I want you to update the research document with additional details about the specific
-versions that we are going to be using in this Taskify application and spawn parallel research tasks to clarify
-any details using research from the web.
-</code></pre></div>
-<p>During this process, you might find that Claude Code gets stuck researching the wrong thing - you can help nudge it in the right direction with a prompt like this:</p>
-<div><pre><code>I think we need to break this down into a series of steps. First, identify a list of tasks
-that you would need to do during implementation that you're not sure of or would benefit
-from further research. Write down a list of those tasks. And then for each one of these tasks,
-I want you to spin up a separate research task so that the net results is we are researching
-all of those very specific tasks in parallel. What I saw you doing was it looks like you were
-researching .NET Aspire in general and I don't think that's gonna do much for us in this case.
-That's way too untargeted research. The research needs to help you solve a specific targeted question.
-</code></pre></div>
-<blockquote>
-<p>[!NOTE]
-Claude Code might be over-eager and add components that you did not ask for. Ask it to clarify the rationale and the source of the change.</p>
-</blockquote>
-<p></p><h3><strong>STEP 5:</strong> Have Claude Code validate the plan</h3><a href="#step-5-have-claude-code-validate-the-plan"></a><p></p>
-<p>With the plan in place, you should have Claude Code run through it to make sure that there are no missing pieces. You can use a prompt like this:</p>
-<div><pre><code>Now I want you to go and audit the implementation plan and the implementation detail files.
-Read through it with an eye on determining whether or not there is a sequence of tasks that you need
-to be doing that are obvious from reading this. Because I don't know if there's enough here. For example,
-when I look at the core implementation, it would be useful to reference the appropriate places in the implementation
-details where it can find the information as it walks through each step in the core implementation or in the refinement.
-</code></pre></div>
-<p>This helps refine the implementation plan and helps you avoid potential blind spots that Claude Code missed in its planning cycle. Once the initial refinement pass is complete, ask Claude Code to go through the checklist once more before you can get to the implementation.</p>
-<p>You can also ask Claude Code (if you have the <a href="https://docs.github.com/en/github-cli/github-cli">GitHub CLI</a> installed) to go ahead and create a pull request from your current branch to <code>main</code> with a detailed description, to make sure that the effort is properly tracked.</p>
-<blockquote>
-<p>[!NOTE]
-Before you have the agent implement it, it's also worth prompting Claude Code to cross-check the details to see if there are any over-engineered pieces (remember - it can be over-eager). If over-engineered components or decisions exist, you can ask Claude Code to resolve them. Ensure that Claude Code follows the <a href="https://github.com/github/spec-kit/blob/main/base/memory/constitution.md">constitution</a> as the foundational piece that it must adhere to when establishing the plan.</p>
-</blockquote>
-<p></p><h3><strong>STEP 6:</strong> Generate task breakdown with /speckit.tasks</h3><a href="#step-6-generate-task-breakdown-with-speckittasks"></a><p></p>
-<p>With the implementation plan validated, you can now break down the plan into specific, actionable tasks that can be executed in the correct order. Use the <code>/speckit.tasks</code> command to automatically generate a detailed task breakdown from your implementation plan:</p>
-<div><pre><code>/speckit.tasks
-</code></pre></div>
-<p>This step creates a <code>tasks.md</code> file in your feature specification directory that contains:</p>
-<ul>
-<li><strong>Task breakdown organized by user story</strong> - Each user story becomes a separate implementation phase with its own set of tasks</li>
-<li><strong>Dependency management</strong> - Tasks are ordered to respect dependencies between components (e.g., models before services, services before endpoints)</li>
-<li><strong>Parallel execution markers</strong> - Tasks that can run in parallel are marked with <code>[P]</code> to optimize development workflow</li>
-<li><strong>File path specifications</strong> - Each task includes the exact file paths where implementation should occur</li>
-<li><strong>Test-driven development structure</strong> - If tests are requested, test tasks are included and ordered to be written before implementation</li>
-<li><strong>Checkpoint validation</strong> - Each user story phase includes checkpoints to validate independent functionality</li>
-</ul>
-<p>The generated tasks.md provides a clear roadmap for the <code>/speckit.implement</code> command, ensuring systematic implementation that maintains code quality and allows for incremental delivery of user stories.</p>
-<p></p><h3><strong>STEP 7:</strong> Implementation</h3><a href="#step-7-implementation"></a><p></p>
-<p>Once ready, use the <code>/speckit.implement</code> command to execute your implementation plan:</p>
-<div><pre><code>/speckit.implement
-</code></pre></div>
-<p>The <code>/speckit.implement</code> command will:</p>
-<ul>
-<li>Validate that all prerequisites are in place (constitution, spec, plan, and tasks)</li>
-<li>Parse the task breakdown from <code>tasks.md</code></li>
-<li>Execute tasks in the correct order, respecting dependencies and parallel execution markers</li>
-<li>Follow the TDD approach defined in your task plan</li>
-<li>Provide progress updates and handle errors appropriately</li>
-</ul>
-<blockquote>
-<p>[!IMPORTANT]
-The AI agent will execute local CLI commands (such as <code>dotnet</code>, <code>npm</code>, etc.) - make sure you have the required tools installed on your machine.</p>
-</blockquote>
-<p>Once the implementation is complete, test the application and resolve any runtime errors that may not be visible in CLI logs (e.g., browser console errors). You can copy and paste such errors back to your AI agent for resolution.</p>
-
-<hr>
-<p></p><h2> Troubleshooting</h2><a href="#-troubleshooting"></a><p></p>
-<p></p><h3>Git Credential Manager on Linux</h3><a href="#git-credential-manager-on-linux"></a><p></p>
-<p>If you're having issues with Git authentication on Linux, you can install Git Credential Manager:</p>
-<div><pre><span><span>#!</span>/usr/bin/env bash</span>
-<span>set</span> -e
-<span>echo</span> <span><span>"</span>Downloading Git Credential Manager v2.6.1...<span>"</span></span>
-wget https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.6.1/gcm-linux_amd64.2.6.1.deb
-<span>echo</span> <span><span>"</span>Installing Git Credential Manager...<span>"</span></span>
-sudo dpkg -i gcm-linux_amd64.2.6.1.deb
-<span>echo</span> <span><span>"</span>Configuring Git to use GCM...<span>"</span></span>
-git config --global credential.helper manager
-<span>echo</span> <span><span>"</span>Cleaning up...<span>"</span></span>
-rm gcm-linux_amd64.2.6.1.deb</pre></div>
-<p></p><h2> Maintainers</h2><a href="#-maintainers"></a><p></p>
-<ul>
-<li>Den Delimarsky (<a href="https://github.com/localden">@localden</a>)</li>
-<li>John Lam (<a href="https://github.com/jflam">@jflam</a>)</li>
-</ul>
-<p></p><h2> Support</h2><a href="#-support"></a><p></p>
-<p>For support, please open a <a href="https://github.com/github/spec-kit/issues/new">GitHub issue</a>. We welcome bug reports, feature requests, and questions about using Spec-Driven Development.</p>
-<p></p><h2> Acknowledgements</h2><a href="#-acknowledgements"></a><p></p>
-<p>This project is heavily influenced by and based on the work and research of <a href="https://github.com/jflam">John Lam</a>.</p>
-<p></p><h2> License</h2><a href="#-license"></a><p></p>
-<p>This project is licensed under the terms of the MIT open source license. Please refer to the <a href="https://github.com/github/spec-kit/blob/main/LICENSE">LICENSE</a> file for the full terms.</p>
-</article></div></div>
+    <pre><code>Build high-quality software faster.
+An effort to allow organizations to focus on product scenarios rather than writing undifferentiated code with the help of Spec-Driven Development.
+What is Spec-Driven Development?
+Spec-Driven Development flips the script on traditional software development. For decades, code has been king — specifications were just scaffolding we built and discarded once the "real work" of coding began. Spec-Driven Development changes this: specifications become executable, directly generating working implementations rather than just guiding them.
+Getting Started Installation Guide
+Quick Start Guide
+Upgrade Guide
+Local Development Core Philosophy
+Spec-Driven Development is a structured process that emphasizes: Intent-driven development where specifications define the "what" before the "how"
+Rich specification creation using guardrails and organizational principles
+Multi-step refinement rather than one-shot code generation from prompts
+Heavy reliance on advanced AI model capabilities for specification interpretation Development Phases Phase
+Focus
+Key Activities 0-to-1 Development ("Greenfield")
+Generate from scratch
+Start with high-level requirementsGenerate specificationsPlan implementation stepsBuild production-ready applications Creative Exploration
+Parallel implementations
+Explore diverse solutionsSupport multiple technology stacks &amp; architecturesExperiment with UX patterns Iterative Enhancement ("Brownfield")
+Brownfield modernization
+Add features iterativelyModernize legacy systemsAdapt processes Experimental Goals
+Our research and experimentation focus on:
+Technology Independence Create applications using diverse technology stacks
+Validate the hypothesis that Spec-Driven Development is a process not tied to specific technologies, programming languages, or frameworks Enterprise Constraints Demonstrate mission-critical application development
+Incorporate organizational constraints (cloud providers, tech stacks, engineering practices)
+Support enterprise design systems and compliance requirements User-Centric Development Build applications for different user cohorts and preferences
+Support various development approaches (from vibe-coding to AI-native development) Creative &amp; Iterative Processes Validate the concept of parallel implementation exploration
+Provide robust iterative feature development workflows
+Extend processes to handle upgrades and modernization tasks Contributing
+Please see our Contributing Guide for information on how to contribute to this project.
+Support
+For support, please check our Support Guide or open an issue on GitHub.</code></pre>
   </div>
-
-</body></html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

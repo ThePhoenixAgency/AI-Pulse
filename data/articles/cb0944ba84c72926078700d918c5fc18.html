@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Gladys Assistant 4.68 : Matterbridge, intégrations favorites et Tasmota amélioré</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Gladys Assistant 4.68 : Matterbridge, intégrations favorites et Tasmota amélioré</h1>
+  <div class="metadata">
+    Source: Gladys Assistant (Forum) | Date: 2/23/2026 2:38:48 PM | <a href="https://community.gladysassistant.com/t/gladys-assistant-4-68-matterbridge-integrations-favorites-et-tasmota-ameliore/10047" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <p><p>Bonjour à tous,</p>
+<p>Je viens de publier une nouvelle version de Gladys, avec plusieurs améliorations et corrections <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/slight_smile.png?v=15" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<p><strong><img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/new_button.png?v=15" title=":new_button:" class="emoji" alt=":new_button:" loading="lazy" width="20" height="20"> Nouveautés</strong></p>
+<ul>
+<li><strong>Intégration Matterbridge</strong> : Gladys vous permet maintenant de lancer un container Matterbridge en un clic dans Gladys, ouvrant la porte à encore plus d’appareils compatibles.</li>
+</ul>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://gladys-assistant-community.b-cdn.net/uploads/default/original/3X/f/1/f14b193dbb0f41135137b87ed47045b245402a17.jpeg" data-download-href="https://gladys-assistant-community.b-cdn.net/uploads/default/f14b193dbb0f41135137b87ed47045b245402a17" title="matterbridge-integration-list"><img src="https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/f/1/f14b193dbb0f41135137b87ed47045b245402a17_2_690x494.jpeg" alt="matterbridge-integration-list" data-base62-sha1="yqzY2sJlGVxdeeuiyPLQjpEw67J" width="690" height="494" srcset="https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/f/1/f14b193dbb0f41135137b87ed47045b245402a17_2_690x494.jpeg, https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/f/1/f14b193dbb0f41135137b87ed47045b245402a17_2_1035x741.jpeg 1.5x, https://gladys-assistant-community.b-cdn.net/uploads/default/optimized/3X/f/1/f14b193dbb0f41135137b87ed47045b245402a17_2_1380x988.jpeg 2x" data-dominant-color="EDEBEC"></a></div><p></p>
+<p>Si vous voulez savoir j’ai développé cette intégration avec l’IA, je vous en dis plus sur YouTube :</p>
+<p><a href="https://www.youtube.com/watch?v=gLtJE3dgEIA">Claude AI a codé mon intégration domotique en 30 min (j'ai rien fait)</a></p> <p>La documentation : <a href="https://gladysassistant.com/fr/docs/integrations/matterbridge/" class="inline-onebox">Matterbridge | Gladys Assistant</a></p>
+<p><img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/warning.png?v=15" title=":warning:" class="emoji" alt=":warning:" loading="lazy" width="20" height="20"> Attention, si vous avez déjà lancé Matterbridge sur votre instance, cela peut entraîner un conflit de port. Il n’y a pas de réel intérêt à vouloir lancer Matterbridge via Gladys si vous avez déjà pu le lancer vous-même en dehors de Gladys <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/wink.png?v=15" title=":wink:" class="emoji" alt=":wink:" loading="lazy" width="20" height="20"></p>
+<ul>
+<li>
+<p><strong>Favoris pour les intégrations</strong> : Vous pouvez désormais marquer vos intégrations préférées en favoris pour les retrouver plus facilement.</p>
+</li>
+<li>
+<p><strong>Tasmota</strong> : Découverte automatique de l’IP via MQTT, lien direct vers l’interface de l’appareil, et un meilleur tri lors de la découverte.</p>
+</li>
+</ul>
+<p><strong><img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/bug.png?v=15" title=":bug:" class="emoji" alt=":bug:" loading="lazy" width="20" height="20"> Corrections et améliorations</strong></p>
+<ul>
+<li><strong>Widget température dans les pièces</strong> : Les valeurs aberrantes de température sont désormais exclues, et la conversion en Fahrenheit pour la valeur maximale est corrigée.</li>
+<li><strong>Chat</strong> : Les espaces dans les messages sont maintenant correctement préservés grâce au <code>pre-wrap</code>.</li>
+</ul>
+<p>Exemple:</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://gladys-assistant-community.b-cdn.net/uploads/default/original/3X/d/7/d7f9f547aad43d7d447169fa288de01fd484d224.png" data-download-href="https://gladys-assistant-community.b-cdn.net/uploads/default/d7f9f547aad43d7d447169fa288de01fd484d224" title="542430153-3c9c7ff4-902f-47b7-bc9b-c6570ed3517c"><img src="https://gladys-assistant-community.b-cdn.net/uploads/default/original/3X/d/7/d7f9f547aad43d7d447169fa288de01fd484d224.png" alt="542430153-3c9c7ff4-902f-47b7-bc9b-c6570ed3517c" data-base62-sha1="uOCbImf2TC2p5fJRn8sFNTHmBUw" width="334" height="290"></a></div><p></p>
+<ul>
+<li><strong>DuckDB</strong> mis à jour en version 1.4.4.</li>
+<li>Correction de fautes de frappe dans les traductions.</li>
+<li>Amélioration de la robustesse du service MCP.</li>
+</ul>
+<hr>
+<p>Merci à tous les contributeurs : <a class="mention" href="https://community.gladysassistant.com/u/bertrandda">@bertrandda</a>, <a class="mention" href="https://community.gladysassistant.com/u/mutmut">@mutmut</a> <a class="mention" href="https://community.gladysassistant.com/u/will_71">@Will_71</a> <a class="mention" href="https://community.gladysassistant.com/u/qleg">@qleg</a> et <a class="mention" href="https://community.gladysassistant.com/u/terdious">@Terdious</a> pour ce beau travail collaboratif ! <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/raising_hands.png?v=15" title=":raising_hands:" class="emoji" alt=":raising_hands:" loading="lazy" width="20" height="20"></p>
+<p>Bonne mise à jour ! <img src="https://gladys-assistant-community.b-cdn.net/images/emoji/apple/rocket.png?v=15" title=":rocket:" class="emoji" alt=":rocket:" loading="lazy" width="20" height="20"></p> <p><small>12 messages - 5 participant(e)s</small></p> <p><a href="https://community.gladysassistant.com/t/gladys-assistant-4-68-matterbridge-integrations-favorites-et-tasmota-ameliore/10047">Lire le sujet en entier</a></p></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="history.back()" title="Retour">←</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture|connexion|login|register|inscription|abonnement|premium|subscriber|compte|account|se connecter|sign in|sign up)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside, header, footer, nav').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 1200);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
