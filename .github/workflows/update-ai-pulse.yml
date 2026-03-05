@@ -95,189 +95,189 @@ jobs:
  # ---------------------------------------------------------------------------
  # Ce job fait tout le travail : récupérer les articles, mettre à jour le site
  aggregate-and-post:
- # Sur quel type de machine exécuter ce job ?
- # ubuntu-latest = dernière version d'Ubuntu (Linux gratuit de GitHub)
- runs-on: ubuntu-latest
- # Timeout de 10 minutes maximum pour éviter les jobs bloqués
- timeout-minutes: 10
- # =========================================================================
- # ÉTAPES DU JOB (Steps)
- # =========================================================================
- # Les étapes s'exécutent dans l'ordre, une par une
- steps:
- # -------------------------------------------------------------------------
- # ÉTAPE 1 : Récupérer le code source
- # -------------------------------------------------------------------------
- # Cette action officielle de GitHub télécharge le code du dépôt
- # sur la machine virtuelle où s'exécute le workflow.
- #
- # Sans cette étape, le workflow n'aurait pas accès aux fichiers !
- - name: Check out repository
-   uses: actions/checkout@v6
- # @v4 = version 4 de cette action (la plus récente et stable)
- # -------------------------------------------------------------------------
- # ÉTAPE 2 : Installer Node.js
- # -------------------------------------------------------------------------
- # Notre agrégateur est écrit en JavaScript (Node.js).
- # Cette action installe Node.js sur la machine.
- #
- # PARAMÈTRES:
- # - node-version: '20' : Utilise Node.js version 20 (LTS)
- # - cache: 'npm' : Met en cache les dépendances pour accélérer les builds
- - name: Set up Node.js
-   uses: actions/setup-node@v4
-   with:
-     node-version: '20'
-     cache: 'npm'
- # -------------------------------------------------------------------------
- # ÉTAPE 3 : Installer les dépendances
- # -------------------------------------------------------------------------
- # Installe les bibliothèques listées dans package.json
- #
- # STRATÉGIE RÉSILIENTE:
- # 1. Essaie d'abord \"npm ci\" (rapide, utilise package-lock.json)
- # 2. Si ça échoue (lock file désynchronisé), utilise \"npm install\"
- # 3. Cela régénère un package-lock.json propre
- - name: Install dependencies with auto-fix
-   run: |
-     # Tentative avec npm ci (installation propre et rapide)
-     # npm ci est plus rapide que npm install car il ne modifie pas
-     # le fichier package-lock.json et utilise exactement les versions
-     # qui y sont spécifiées
-     if npm ci; then
-       echo \"✅ Installation réussie avec npm ci\"
-     else
-       echo \"⚠️ npm ci a échoué, reconstruction du lock file...\"
-       # Suppression du cache npm pour éviter les conflits
-       # entre anciennes et nouvelles versions
-       npm cache clean --force
-       # Installation complète qui met à jour package-lock.json
-       # npm install lit package.json et installe les dépendances
-       npm install
-       echo \"✅ package-lock.json régénéré automatiquement\"
-     fi
- # -------------------------------------------------------------------------
- # ÉTAPE 4 : Commit automatique du lock file (si modifié)
- # -------------------------------------------------------------------------
- # Si npm install a régénéré package-lock.json, on le commit
- # pour garder le dépôt synchronisé.
- #
- # POURQUOI ?
- # Cela évite que le prochain build échoue à cause d'un lock file
- # désynchronisé.
- - name: Auto-commit updated lock file
-   run: |
-     # Configuration Git pour les commits automatiques
-     # user.name : Nom affiché dans l'historique des commits
-     # user.email : Email associé au commit
-     git config --global user.name 'PhoenixProject-AutoSync'
-     git config --global user.email '${{ secrets.GIT_AUTHOR_EMAIL }}'
-     # Vérifier si package-lock.json a été modifié
-     # git diff --exit-code retourne 0 si pas de changement, 1 sinon
-     # Le ! inverse le résultat pour entrer dans le if si modifié
-     if ! git diff --exit-code package-lock.json; then
-       echo \"📦 Synchronisation automatique de package-lock.json\"
-       # Ajouter le fichier à l'index Git
-       git add package-lock.json
-       # Créer un commit avec un message descriptif
-       # [skip ci] empêche le workflow de se re-déclencher
-       git commit -m \"🔧 Auto-sync: package-lock.json [skip ci]\"
-       # Pousser les changements vers GitHub
-       git push
-       echo \"✅ package-lock.json synchronisé et committé\"
-     else
-       echo \"ℹ️ package-lock.json déjà à jour\"
-     fi
- # -------------------------------------------------------------------------
- # ÉTAPE 5 : Exécuter l'agrégateur
- # -------------------------------------------------------------------------
- # C'est l'étape principale ! Elle lance le script src/aggregator.js
- # qui récupère tous les articles des flux RSS.
- #
- # Le résultat (le nouveau README) est redirigé vers NEW-README.md
- # avec l'opérateur > (redirection de sortie)
- #
- # VARIABLES D'ENVIRONNEMENT (env):
- # Ces secrets sont passés au script pour les fonctionnalités optionnelles:
- # - LINKEDIN_* : Pour poster automatiquement sur LinkedIn
- # - OPENAI_API_KEY : Pour générer des résumés avec l'IA
- # - API_RESEND : Pour envoyer les emails de newsletter
- - name: Aggregate AI, iOT and Cybersecurity articles
-   env:
-     LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
-     LINKEDIN_USER_ID: ${{ secrets.LINKEDIN_USER_ID }}
-     API_RESEND: ${{ secrets.API_RESEND }}
-   run: |
-     # Backup du README actuel pour fallback en cas d'échec
-     cp README.md README.BACKUP.md
-     # Exécuter l'agrégateur (écrit README.md directement sur disque
-     # via writeReadmeAtomically, les logs vont sur stderr)
-     if node src/aggregator.js; then
-       echo \"AGGREGATION_OK=true\" >> $GITHUB_ENV
-     else
-       echo \"AGGREGATION_OK=false\" >> $GITHUB_ENV
-     fi
- # -------------------------------------------------------------------------
- # ÉTAPE 6 : Mettre à jour le README
- # -------------------------------------------------------------------------
- # Remplace l'ancien README.md par le nouveau seulement si valide.
- # Sinon, conserver l'ancien README pour garantir des articles toujours visibles.
- - name: Validate README content
-   run: |
-     set -e
-     # Si l'agrégateur a échoué, restaurer le README précédent
-     if [ \"${AGGREGATION_OK}\" != \"true\" ]; then
-       echo \"[WARNING] Aggregation failed. Restoring previous README.\"
-       mv README.BACKUP.md README.md
-       exit 0
-     fi
-     # Validation : le README doit contenir des sections valides
-     if ! grep -Eq \"<section id=|## \" README.md; then
-       echo \"[WARNING] README is invalid after aggregation. Restoring backup.\"
-       mv README.BACKUP.md README.md
-       exit 0
-     fi
-     # Validation : au moins un article exploitable
-     ARTICLE_COUNT=$(grep -Eo \"\\(data/articles/[^)]*\\)\" README.md | wc -l | tr -d ' ')
-     if [ \"${ARTICLE_COUNT}\" = \"0\" ]; then
-       echo \"[WARNING] README contains zero articles. Restoring backup.\"
-       mv README.BACKUP.md README.md
-       exit 0
-     fi
-     rm -f README.BACKUP.md NEW-README.md
-     echo \"[OK] README validated with ${ARTICLE_COUNT} articles.\"
- # -------------------------------------------------------------------------
- # ÉTAPE 7 : Commit et push des changements
- # -------------------------------------------------------------------------
- # Sauvegarde tous les changements dans un nouveau commit
- # et les envoie vers GitHub.
- #
- # SÉCURITÉ:
- # On vérifie d'abord s'il y a des changements à committer
- # pour éviter les commits vides qui génèrent des erreurs.
- - name: Commit and push changes
-   env:
-     GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
-   run: |
-     # Configuration de l'identité Git
-     git config --global user.name 'PhoenixProject'
-     git config --global user.email '${{ secrets.GIT_AUTHOR_EMAIL }}'
-     # Ajouter tous les fichiers modifiés à l'index
-     # Le point (.) signifie \"tous les fichiers\"
-     git add .
-     # Vérifier s'il y a des changements à committer
-     # git diff --cached : montre les différences entre l'index et le dernier commit
-     # --exit-code : retourne 1 s'il y a des différences
-     # Le ! inverse le résultat
-     if ! git diff --cached --exit-code; then
-       # Créer la date au format UTC pour le message de commit
-       UTC_DATE=$(date -u +'%a %b %d %H:%M:%S UTC %Y')
-       # Créer le commit avec un message incluant la date
-       # [skip ci] empêche le workflow de se re-déclencher
-       git commit -m \"Updated AI-Pulse: $UTC_DATE [skip ci]\"
-       # Envoyer le commit vers GitHub
-       git push
-     else
-       # Pas de changements, rien à faire
-       echo \"No changes to commit\"
-     fi
+   # Sur quel type de machine exécuter ce job ?
+   # ubuntu-latest = dernière version d'Ubuntu (Linux gratuit de GitHub)
+   runs-on: ubuntu-latest
+   # Timeout de 10 minutes maximum pour éviter les jobs bloqués
+   timeout-minutes: 10
+   # =========================================================================
+   # ÉTAPES DU JOB (Steps)
+   # =========================================================================
+   # Les étapes s'exécutent dans l'ordre, une par une
+   steps:
+     # -------------------------------------------------------------------------
+     # ÉTAPE 1 : Récupérer le code source
+     # -------------------------------------------------------------------------
+     # Cette action officielle de GitHub télécharge le code du dépôt
+     # sur la machine virtuelle où s'exécute le workflow.
+     #
+     # Sans cette étape, le workflow n'aurait pas accès aux fichiers !
+     - name: Check out repository
+       uses: actions/checkout@v6
+     # @v4 = version 4 de cette action (la plus récente et stable)
+     # -------------------------------------------------------------------------
+     # ÉTAPE 2 : Installer Node.js
+     # -------------------------------------------------------------------------
+     # Notre agrégateur est écrit en JavaScript (Node.js).
+     # Cette action installe Node.js sur la machine.
+     #
+     # PARAMÈTRES:
+     # - node-version: '20' : Utilise Node.js version 20 (LTS)
+     # - cache: 'npm' : Met en cache les dépendances pour accélérer les builds
+     - name: Set up Node.js
+       uses: actions/setup-node@v4
+       with:
+         node-version: '20'
+         cache: 'npm'
+     # -------------------------------------------------------------------------
+     # ÉTAPE 3 : Installer les dépendances
+     # -------------------------------------------------------------------------
+     # Installe les bibliothèques listées dans package.json
+     #
+     # STRATÉGIE RÉSILIENTE:
+     # 1. Essaie d'abord \"npm ci\" (rapide, utilise package-lock.json)
+     # 2. Si ça échoue (lock file désynchronisé), utilise \"npm install\"
+     # 3. Cela régénère un package-lock.json propre
+     - name: Install dependencies with auto-fix
+       run: |
+         # Tentative avec npm ci (installation propre et rapide)
+         # npm ci est plus rapide que npm install car il ne modifie pas
+         # le fichier package-lock.json et utilise exactement les versions
+         # qui y sont spécifiées
+         if npm ci; then
+           echo \"✅ Installation réussie avec npm ci\"
+         else
+           echo \"⚠️ npm ci a échoué, reconstruction du lock file...\"
+           # Suppression du cache npm pour éviter les conflits
+           # entre anciennes et nouvelles versions
+           npm cache clean --force
+           # Installation complète qui met à jour package-lock.json
+           # npm install lit package.json et installe les dépendances
+           npm install
+           echo \"✅ package-lock.json régénéré automatiquement\"
+         fi
+     # -------------------------------------------------------------------------
+     # ÉTAPE 4 : Commit automatique du lock file (si modifié)
+     # -------------------------------------------------------------------------
+     # Si npm install a régénéré package-lock.json, on le commit
+     # pour garder le dépôt synchronisé.
+     #
+     # POURQUOI ?
+     # Cela évite que le prochain build échoue à cause d'un lock file
+     # désynchronisé.
+     - name: Auto-commit updated lock file
+       run: |
+         # Configuration Git pour les commits automatiques
+         # user.name : Nom affiché dans l'historique des commits
+         # user.email : Email associé au commit
+         git config --global user.name 'PhoenixProject-AutoSync'
+         git config --global user.email '${{ secrets.GIT_AUTHOR_EMAIL }}'
+         # Vérifier si package-lock.json a été modifié
+         # git diff --exit-code retourne 0 si pas de changement, 1 sinon
+         # Le ! inverse le résultat pour entrer dans le if si modifié
+         if ! git diff --exit-code package-lock.json; then
+           echo \"📦 Synchronisation automatique de package-lock.json\"
+           # Ajouter le fichier à l'index Git
+           git add package-lock.json
+           # Créer un commit avec un message descriptif
+           # [skip ci] empêche le workflow de se re-déclencher
+           git commit -m \"🔧 Auto-sync: package-lock.json [skip ci]\"
+           # Pousser les changements vers GitHub
+           git push
+           echo \"✅ package-lock.json synchronisé et committé\"
+         else
+           echo \"ℹ️ package-lock.json déjà à jour\"
+         fi
+     # -------------------------------------------------------------------------
+     # ÉTAPE 5 : Exécuter l'agrégateur
+     # -------------------------------------------------------------------------
+     # C'est l'étape principale ! Elle lance le script src/aggregator.js
+     # qui récupère tous les articles des flux RSS.
+     #
+     # Le résultat (le nouveau README) est redirigé vers NEW-README.md
+     # avec l'opérateur > (redirection de sortie)
+     #
+     # VARIABLES D'ENVIRONNEMENT (env):
+     # Ces secrets sont passés au script pour les fonctionnalités optionnelles:
+     # - LINKEDIN_* : Pour poster automatiquement sur LinkedIn
+     # - OPENAI_API_KEY : Pour générer des résumés avec l'IA
+     # - API_RESEND : Pour envoyer les emails de newsletter
+     - name: Aggregate AI, iOT and Cybersecurity articles
+       env:
+         LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+         LINKEDIN_USER_ID: ${{ secrets.LINKEDIN_USER_ID }}
+         API_RESEND: ${{ secrets.API_RESEND }}
+       run: |
+         # Backup du README actuel pour fallback en cas d'échec
+         cp README.md README.BACKUP.md
+         # Exécuter l'agrégateur (écrit README.md directement sur disque
+         # via writeReadmeAtomically, les logs vont sur stderr)
+         if node src/aggregator.js; then
+           echo \"AGGREGATION_OK=true\" >> $GITHUB_ENV
+         else
+           echo \"AGGREGATION_OK=false\" >> $GITHUB_ENV
+         fi
+     # -------------------------------------------------------------------------
+     # ÉTAPE 6 : Mettre à jour le README
+     # -------------------------------------------------------------------------
+     # Remplace l'ancien README.md par le nouveau seulement si valide.
+     # Sinon, conserver l'ancien README pour garantir des articles toujours visibles.
+     - name: Validate README content
+       run: |
+         set -e
+         # Si l'agrégateur a échoué, restaurer le README précédent
+         if [ \"${AGGREGATION_OK}\" != \"true\" ]; then
+           echo \"[WARNING] Aggregation failed. Restoring previous README.\"
+           mv README.BACKUP.md README.md
+           exit 0
+         fi
+         # Validation : le README doit contenir des sections valides
+         if ! grep -Eq \"<section id=|## \" README.md; then
+           echo \"[WARNING] README is invalid after aggregation. Restoring backup.\"
+           mv README.BACKUP.md README.md
+           exit 0
+         fi
+         # Validation : au moins un article exploitable
+         ARTICLE_COUNT=$(grep -Eo \"\\(data/articles/[^)]*\\)\" README.md | wc -l | tr -d ' ')
+         if [ \"${ARTICLE_COUNT}\" = \"0\" ]; then
+           echo \"[WARNING] README contains zero articles. Restoring backup.\"
+           mv README.BACKUP.md README.md
+           exit 0
+         fi
+         rm -f README.BACKUP.md NEW-README.md
+         echo \"[OK] README validated with ${ARTICLE_COUNT} articles.\"
+     # -------------------------------------------------------------------------
+     # ÉTAPE 7 : Commit et push des changements
+     # -------------------------------------------------------------------------
+     # Sauvegarde tous les changements dans un nouveau commit
+     # et les envoie vers GitHub.
+     #
+     # SÉCURITÉ:
+     # On vérifie d'abord s'il y a des changements à committer
+     # pour éviter les commits vides qui génèrent des erreurs.
+     - name: Commit and push changes
+       env:
+         GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
+       run: |
+         # Configuration de l'identité Git
+         git config --global user.name 'PhoenixProject'
+         git config --global user.email '${{ secrets.GIT_AUTHOR_EMAIL }}'
+         # Ajouter tous les fichiers modifiés à l'index
+         # Le point (.) signifie \"tous les fichiers\"
+         git add .
+         # Vérifier s'il y a des changements à committer
+         # git diff --cached : montre les différences entre l'index et le dernier commit
+         # --exit-code : retourne 1 s'il y a des différences
+         # Le ! inverse le résultat
+         if ! git diff --cached --exit-code; then
+           # Créer la date au format UTC pour le message de commit
+           UTC_DATE=$(date -u +'%a %b %d %H:%M:%S UTC %Y')
+           # Créer le commit avec un message incluant la date
+           # [skip ci] empêche le workflow de se re-déclencher
+           git commit -m \"Updated AI-Pulse: $UTC_DATE [skip ci]\"
+           # Envoyer le commit vers GitHub
+           git push
+         else
+           # Pas de changements, rien à faire
+           echo \"No changes to commit\"
+         fi
