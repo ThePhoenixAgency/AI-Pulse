@@ -1609,10 +1609,14 @@ async function processArticle(article, sourceName, tags, category, feedLang, fee
     fs.writeFileSync(localPath, fallbackHtml);
   };
 
+  // Flag pour tracker si on a récupéré du vrai contenu (pas juste un fallback/summary)
+  let hasFullContent = false;
+
   // Essayer de récupérer et sauvegarder le contenu complet
   try {
       if (shouldSkipRemoteExtraction(resolvedArticleUrl)) {
         writeFallbackLocalArticle();
+        hasFullContent = false;
       } else {
       // Récupérer la page web complète
       const response = await axios.get(resolvedArticleUrl, {
@@ -1781,6 +1785,7 @@ async function processArticle(article, sourceName, tags, category, feedLang, fee
 
         // Sauvegarder le fichier HTML localement
         fs.writeFileSync(localPath, cleanHtml);
+        hasFullContent = true; // Contenu complet extrait avec succès
         }
       }
       }
@@ -1826,6 +1831,7 @@ async function processArticle(article, sourceName, tags, category, feedLang, fee
     lang: detectedLang || feedLang || 'en',
     summary: safeSummary,
     hasLocalContent: hasLocalContent,
+    hasFullContent: hasFullContent, // true si contenu complet extrait, false si juste fallback/summary
     sourceProfile
   };
 }
@@ -1891,6 +1897,13 @@ async function aggregateCategory(categoryName, feeds) {
     const articleDate = new Date(article.pubDate || 0);
     return articleDate >= cutoffDate;
   });
+
+  // Filtrer les articles sans contenu complet (on ne garde que ceux avec du vrai contenu, pas juste un résumé)
+  const beforeContentFilter = articles.length;
+  articles = articles.filter((article) => article.hasFullContent === true);
+  if (beforeContentFilter > articles.length) {
+    console.error(`  [Content filter] Excluded ${beforeContentFilter - articles.length} articles without full content (summary-only)`);
+  }
 
   if (categoryName === 'openclaw') {
     const specialOnly = articles.filter((article) => matchesSpecialCategory(article, categoryName));

@@ -14,7 +14,9 @@
       "Bash(git add src/aggregator.js)",
       "Bash(git commit -m \"feat: Add per-feed paywallBypass configuration:*)",
       "Bash(git add .claude/settings.local.json data/posted-links.json)",
-      "Bash(git commit -m \"chore: Update local settings and posted links data:*)"
+      "Bash(git commit -m \"chore: Update local settings and posted links data:*)",
+      "Bash(git add -A)",
+      "Bash(git commit -m \"feat: Exclude articles without full content \\(summary-only\\):*)"
     ]
   }
 }
