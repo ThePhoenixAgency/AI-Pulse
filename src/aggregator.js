@@ -1433,7 +1433,7 @@ function deduplicateArticles(articles) {
  * 4. Sauvegarder une version locale en HTML
  * 5. Retourner un objet avec toutes les informations
  */
-async function processArticle(article, sourceName, tags, category, feedLang) {
+async function processArticle(article, sourceName, tags, category, feedLang, feedOptions = {}) {
   // Nettoyer le résumé (supprimer le HTML)
   const rawSummary = cleanupNoiseText(sanitizeText(article.contentSnippet) || '');
   let computedSummary = rawSummary;
@@ -1459,56 +1459,63 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   }
   const lang = detectedLang || feedLang || 'en';
 
-  // Essayer d'utiliser Archive.ph ou autres services de bypass
-  const tryPaywallBypass = async (url) => {
-    const bypassServices = [
-      {
-        name: 'archive.ph',
-        transform: (u) => `https://archive.ph/?url=${encodeURIComponent(u)}`
-      },
-      {
-        name: 'scribe.rip',
-        transform: (u) => {
-          try {
-            const parsedUrl = new URL(u);
-            // Safely check if this is a medium.com URL by parsing the hostname
-            if (parsedUrl.hostname === 'medium.com' || parsedUrl.hostname.endsWith('.medium.com')) {
-              return u.replace(parsedUrl.hostname, 'scribe.rip');
-            }
-          } catch (_) {}
-          return null;
-        }
-      },
-      {
-        name: 'freedium',
-        transform: (u) => {
-          try {
-            const parsedUrl = new URL(u);
-            // Safely check if this is a medium.com URL
-            if (parsedUrl.hostname === 'medium.com' || parsedUrl.hostname.endsWith('.medium.com')) {
-              return u.replace(parsedUrl.hostname, 'freedium.app');
-            }
-          } catch (_) {}
-          return null;
-        }
-      },
-      {
-        name: 'web.archive.org',
-        transform: (u) => `https://web.archive.org/web/*/${u}`
-      }
-    ];
-
-    for (const service of bypassServices) {
-      const bypassUrl = service.transform(url);
-      if (!bypassUrl) continue;
+  // Services de bypass paywall disponibles
+  const bypassServices = {
+    'archive.ph': (u) => `https://archive.ph/?url=${encodeURIComponent(u)}`,
+    'scribe.rip': (u) => {
       try {
-        const response = await axios.get(bypassUrl, {
-          timeout: 3000,
-          headers: { 'User-Agent': 'AI-Pulse/3.0' }
-        });
-        return { success: true, html: response.data, service: service.name };
-      } catch (e) {
-        // Continuer vers le service suivant
+        const parsedUrl = new URL(u);
+        if (parsedUrl.hostname === 'medium.com' || parsedUrl.hostname.endsWith('.medium.com')) {
+          return u.replace(parsedUrl.hostname, 'scribe.rip');
+        }
+      } catch (_) {}
+      return null;
+    },
+    'freedium': (u) => {
+      try {
+        const parsedUrl = new URL(u);
+        if (parsedUrl.hostname === 'medium.com' || parsedUrl.hostname.endsWith('.medium.com')) {
+          return `https://freedium.cfd/${u}`;
+        }
+      } catch (_) {}
+      return null;
+    },
+    'web.archive.org': (u) => `https://web.archive.org/web/*/${u}`,
+    '12ft.io': (u) => `https://12ft.io/${u}`
+  };
+
+  // Essayer d'utiliser un service de bypass (préféré si spécifié, sinon tous)
+  const tryPaywallBypass = async (url, preferredService = null) => {
+    // Si un service préféré est spécifié, l'utiliser directement (plus rapide)
+    if (preferredService && bypassServices[preferredService]) {
+      const bypassUrl = bypassServices[preferredService](url);
+      if (bypassUrl) {
+        try {
+          const response = await axios.get(bypassUrl, {
+            timeout: 3000,
+            headers: { 'User-Agent': 'AI-Pulse/3.0' }
+          });
+          return { success: true, html: response.data, service: preferredService };
+        } catch (e) {
+          // Service préféré a échoué
+        }
+      }
+    }
+
+    // Sinon, essayer tous les services (comportement par défaut)
+    if (!preferredService) {
+      for (const [name, transform] of Object.entries(bypassServices)) {
+        const bypassUrl = transform(url);
+        if (!bypassUrl) continue;
+        try {
+          const response = await axios.get(bypassUrl, {
+            timeout: 3000,
+            headers: { 'User-Agent': 'AI-Pulse/3.0' }
+          });
+          return { success: true, html: response.data, service: name };
+        } catch (e) {
+          // Continuer vers le service suivant
+        }
       }
     }
     return { success: false };
@@ -1637,8 +1644,8 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       if (articleContent && articleContent.textContent) {
         // Handle paywall bypass first if needed
         if (isPaywallText(articleContent.textContent)) {
-          // Essayer les services de bypass avant de renoncer
-          const bypassResult = await tryPaywallBypass(resolvedArticleUrl);
+          // Essayer le service de bypass (préféré si configuré)
+          const bypassResult = await tryPaywallBypass(resolvedArticleUrl, feedOptions.paywallBypass);
           if (bypassResult.success) {
             const bypassDom = createSafeDom(bypassResult.html, resolvedArticleUrl);
             const bypassReader = new Readability(bypassDom.window.document);
@@ -1861,7 +1868,7 @@ async function aggregateCategory(categoryName, feeds) {
         const feedData = await parser.parseURL(feed.url);
         const items = await Promise.all(
           feedData.items.slice(0, limit).map((item) =>
-            processArticle(item, feed.name, feed.tags, categoryName, feed.lang)
+            processArticle(item, feed.name, feed.tags, categoryName, feed.lang, { paywallBypass: feed.paywallBypass })
           )
         );
         return items;
