@@ -158,7 +158,13 @@
         }
 
         .article-mobile-footer {
-            display: none;
+            position: fixed;
+            left: 20px;
+            bottom: 80px;
+            z-index: 2147483647;
+            display: flex;
+            justify-content: center;
+            pointer-events: auto;
         }
 
         /* Footer toujours visible en bas */
@@ -428,7 +434,7 @@
 
             const readerFooter = document.getElementById('readerFooter');
             if (readerFooter) {
-                readerFooter.style.display = viewName === 'article' ? 'none' : '';
+                readerFooter.style.display = '';
             }
 
             currentView = viewName;
@@ -496,7 +502,7 @@
             // Cache mémoire uniquement (session courante, pas de persistance)
             if (articleRuntimeCache.has(cacheKey)) return articleRuntimeCache.get(cacheKey);
             // Fetch direct sans localStorage/sessionStorage
-            const response = await fetch(`./${normalizedPath}`, { cache: 'no-store' });
+            const response = await fetch(`./${normalizedPath}`, { cache: 'default' });
             if (!response.ok) {
                 throw new Error(`local-article-fetch-failed:${response.status}`);
             }
