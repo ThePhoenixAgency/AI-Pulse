@@ -238,13 +238,19 @@ describe('GitHub URL Processing Workflow', () => {
     // Étape 2: Générer les candidates (index.html, github.io)
     const candidates = buildGitHubIndexCandidates(githubUrl);
     assert.ok(candidates.length > 0);
-    assert.ok(candidates.some(url => url.includes('raw.githubusercontent.com') || url.includes('github.io')));
+    assert.ok(candidates.some(url => {
+      try {
+        const hostname = new URL(url).hostname;
+        return hostname === 'raw.githubusercontent.com' || hostname.endsWith('.github.io');
+      } catch {
+        return false;
+      }
+    }));
   });
 
   test('retourne null pour URL GitHub avec sous-path', () => {
     // parseGitHubRepoPath ne gère que les URLs simples
     const githubUrl = 'https://github.com/microsoft/vscode/tree/main/extensions';
-
     const repoPath = parseGitHubRepoPath(githubUrl);
     assert.equal(repoPath, null);
   });
