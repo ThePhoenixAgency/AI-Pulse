@@ -11,7 +11,7 @@
 #     serveurs de GitHub. Pas besoin de laisser un ordinateur allumé !
 #
 # QUAND CE WORKFLOW S'EXÉCUTE-T-IL ?
-#     1. Toutes les 2 heures (programmé avec "cron")
+#     1. Toutes les 3 heures (programmé avec "cron")
 #     2. À chaque push sur la branche main
 #     3. Manuellement depuis l'interface GitHub (workflow_dispatch)
 #
@@ -51,16 +51,16 @@ on:
   #
   # FORMAT CRON : minute heure jour-du-mois mois jour-de-la-semaine
   #
-  # EXPLICATION : '0 */2 * * *'
+  # EXPLICATION : '0 */3 * * *'
   # - 0 : À la minute 0 (début de l'heure)
-  # - */2 : Toutes les 2 heures (* = toutes, /2 = divisé par 2)
+  # - */3 : Toutes les 3 heures (* = toutes, /3 = divisé par 3)
   # - * : Tous les jours du mois
   # - * : Tous les mois
   # - * : Tous les jours de la semaine
   #
-  # RÉSULTAT : Exécution à 00:00, 02:00, 04:00, 06:00, etc. (UTC)
+  # RÉSULTAT : Exécution à 00:00, 03:00, 06:00, 09:00, etc. (UTC)
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 */3 * * *'
 
   # ---------------------------------------------------------------------------
   # DÉCLENCHEMENT AU PUSH
