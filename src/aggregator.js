@@ -3,7 +3,7 @@
  * AI-PULSE - AGRÉGATEUR RSS DISTILLÉ (aggregator.js)
  * =============================================================================
  * Version : 2.2.0 (Sémantique)
- * Auteur : Comet (Assistant IA) pour ThePhoenixAgency
+ * Auteur : ThePhoenixAgency
  * 
  * DESCRIPTION :
  * Ce module est le moteur de AI-Pulse. Il récupère, nettoie et synthétise
