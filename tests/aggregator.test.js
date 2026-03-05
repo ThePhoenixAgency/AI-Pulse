@@ -235,7 +235,16 @@ describe('buildGitHubIndexCandidates', () => {
 
   test('inclut raw.githubusercontent.com', () => {
     const candidates = buildGitHubIndexCandidates('https://github.com/owner/repo');
-    assert.ok(candidates.some(url => url.includes('raw.githubusercontent.com')));
+    assert.ok(
+      candidates.some(candidate => {
+        try {
+          const parsed = new URL(candidate);
+          return parsed.hostname === 'raw.githubusercontent.com';
+        } catch {
+          return false;
+        }
+      })
+    );
   });
 
   test('retourne tableau vide pour non-GitHub', () => {
