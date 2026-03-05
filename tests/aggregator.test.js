@@ -230,8 +230,14 @@ describe('buildGitHubIndexCandidates', () => {
     assert.ok(Array.isArray(candidates));
     assert.ok(candidates.length > 0);
     // Les candidates peuvent inclure index.html ou github.io
-    assert.ok(candidates.some(url => url.includes('index.html') || url.includes('github.io')));
-  });
+    assert.ok(candidates.some(url => {
+      try {
+        const hostname = new URL(url).hostname;
+        return hostname.includes('index.html') || hostname.endsWith('.github.io');
+      } catch {
+        return false;
+      }
+    }));  });
 
   test('inclut raw.githubusercontent.com', () => {
     const candidates = buildGitHubIndexCandidates('https://github.com/owner/repo');
