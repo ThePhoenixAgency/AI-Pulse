@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(gh run list --workflow=update-ai-pulse.yml --limit=15)",
+      "Bash(cat /home/user/AI-Pulse/.github/workflows/*.yml)",
+      "Bash(node src/aggregator.js)",
+      "Bash(git add .claude/settings.local.json)",
+      "Bash(git commit -m \"chore: Add local permissions for workflow and aggregator commands:*)"
     ]
   }
 }
