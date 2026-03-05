@@ -10,7 +10,11 @@
       "Bash(git add reader.html)",
       "Bash(git commit -m \"fix: Show previous button on desktop, keep footer visible, use browser cache:*)",
       "Bash(git push -u origin claude/configurable-news-reader-G1Gdx)",
-      "Bash(npm test)"
+      "Bash(npm test)",
+      "Bash(git add src/aggregator.js)",
+      "Bash(git commit -m \"feat: Add per-feed paywallBypass configuration:*)",
+      "Bash(git add .claude/settings.local.json data/posted-links.json)",
+      "Bash(git commit -m \"chore: Update local settings and posted links data:*)"
     ]
   }
 }
