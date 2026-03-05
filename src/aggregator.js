@@ -1521,7 +1521,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     if (article && article.content && typeof article.content === 'string' && article.content.length > 200) {
       safeContent = smartTruncate(cleanupNoiseText(article.content), SETTINGS.articleMaxLength || 8000);
     } else if (rawSummary) {
-      safeContent = smartTruncate(cleanupNoiseText(rawSummary), SETTINGS.summaryMaxLength || 2000);
+      safeContent = smartTruncate(cleanupNoiseText(rawSummary), SETTINGS.summaryMaxLength || 600);
     } else {
       safeContent = 'Aucun contenu disponible.';
     }
@@ -1798,7 +1798,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
   // Retourner l'objet article traité
   const normalizedTags = enrichArticleTags(tags, category, article.title || '', rawSummary || '');
-  let safeSummary = smartTruncate(trimPromotionalTailText(cleanupNoiseText((computedSummary || '').trim())) || sanitizeText(article.title) || 'Summary unavailable.');
+  let safeSummary = smartTruncate(trimPromotionalTailText(cleanupNoiseText((computedSummary || '').trim())) || sanitizeText(article.title) || 'Summary unavailable.', SETTINGS.summaryMaxLength || 600);
   if (hasSevereTruncationArtifact(safeSummary)) {
     const repaired = cleanupNoiseText(safeSummary)
       .replace(/\bl['’]article[\s\S]{0,260}?\best apparu en premier sur\b[\s\S]*$/i, '')
@@ -1806,7 +1806,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       .replace(/[█▓▒]{3,}/g, ' ')
       .replace(/\s{2,}/g, ' ')
       .trim();
-    safeSummary = smartTruncate(repaired || sanitizeText(article.title) || 'Summary unavailable.');
+    safeSummary = smartTruncate(repaired || sanitizeText(article.title) || 'Summary unavailable.', SETTINGS.summaryMaxLength || 600);
   }
   return {
     title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
@@ -2021,7 +2021,7 @@ function generateREADME(categorizedArticles) {
     if (!fs.existsSync(localPath)) {
       const lang = article && article.lang === 'fr' ? 'fr' : 'en';
       const safeTitle = sanitizeText((article && article.title) || 'Untitled');
-      const safeSummary = smartTruncate(cleanupNoiseText((article && article.summary) || ''), 1200) || 'Summary unavailable.';
+      const safeSummary = smartTruncate(cleanupNoiseText((article && article.summary) || ''), SETTINGS.summaryMaxLength || 600) || 'Summary unavailable.';
       const fallbackHtml = `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
@@ -2072,8 +2072,8 @@ function generateREADME(categorizedArticles) {
     articles.slice(0, maxArticles).forEach((article, index) => {
       const langBadge = article.lang === 'fr' ? '`FR`' : '`EN`';
       const summaryText = (article.summary && String(article.summary).trim().length > 0)
-        ? article.summary
-        : smartTruncate(sanitizeText(article.title || 'Summary unavailable.'));
+        ? smartTruncate(article.summary, SETTINGS.summaryMaxLength || 600)
+        : smartTruncate(sanitizeText(article.title || 'Summary unavailable.'), SETTINGS.summaryMaxLength || 600);
       const localLink = ensureLocalArticleLink(article, category);
 
       readme += `<div class="article-item" data-lang="${article.lang}" data-category="${category}" data-source="${article.source}">\n\n`;

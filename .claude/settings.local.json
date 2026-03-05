@@ -6,7 +6,11 @@
       "Bash(cat /home/user/AI-Pulse/.github/workflows/*.yml)",
       "Bash(node src/aggregator.js)",
       "Bash(git add .claude/settings.local.json)",
-      "Bash(git commit -m \"chore: Add local permissions for workflow and aggregator commands:*)"
+      "Bash(git commit -m \"chore: Add local permissions for workflow and aggregator commands:*)",
+      "Bash(git add reader.html)",
+      "Bash(git commit -m \"fix: Show previous button on desktop, keep footer visible, use browser cache:*)",
+      "Bash(git push -u origin claude/configurable-news-reader-G1Gdx)",
+      "Bash(npm test)"
     ]
   }
 }
