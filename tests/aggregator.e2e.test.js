@@ -219,8 +219,14 @@ describe('E2E: GitHub Content Extraction Pipeline', () => {
       assert.ok(candidates.length > 0, 'Should generate candidates');
       // Les candidates incluent raw.githubusercontent.com ou github.io
       assert.ok(
-        candidates.some(c => c.includes('raw.githubusercontent.com') || c.includes('github.io')),
-        'Should include valid GitHub content URLs'
+      candidates.some(c => {
+        try {
+          const hostname = new URL(c).hostname;
+          return hostname === 'raw.githubusercontent.com' || hostname.endsWith('.github.io');
+        } catch {
+          return false;
+        }
+      }),        'Should include valid GitHub content URLs'
       );
     }
   });
