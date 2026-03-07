@@ -144,9 +144,7 @@ jobs:
           EOF
           fi
 
-          # Use environment variable instead of direct interpolation
-          VERSION="$NEW_VERSION"
-          ENTRY="## [$VERSION] - $DATE\n### Changed\n- Automated sync from AI-Pulse repository\n- Updated workflow files and configurations\n"
+          ENTRY="## [$NEW_VERSION] - $DATE\n### Changed\n- Automated sync from AI-Pulse repository\n- Updated workflow files and configurations\n"
 
           sed -i "/## \[Unreleased\]/a\\
           \\
@@ -155,7 +153,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add CHANGELOG.md
-          git commit -m "docs: update CHANGELOG for $VERSION [skip ci]" || echo "No CHANGELOG changes"
+          git commit -m "docs: update CHANGELOG for $NEW_VERSION [skip ci]" || echo "No CHANGELOG changes"
           git push origin main
 
       - name: Create Release
