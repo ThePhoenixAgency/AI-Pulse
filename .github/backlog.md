@@ -181,3 +181,9 @@
 
 ### Remaining
 - Replace remaining 20 failing feeds (iot/windows/mac/finance/products) and re-run feed-health check.
+
+## Update 2026-03-07
+
+### Done
+- Removed 4 duplicate feed entries in `opensource` category (LibHunt Selfhosted, Developpez.com, LinuxFr, Programmez were duplicated)
+- Total feeds: 155 → 151 (141 unique URLs)

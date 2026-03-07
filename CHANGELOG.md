@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Fixed
+- **2026-03-07**: Config: suppression de 4 entrées de feeds dupliquées dans la catégorie `opensource`
+  - LibHunt Selfhosted, Developpez.com, LinuxFr, Programmez étaient présents en double
+  - Feeds totaux: 155 → 151 (141 URLs uniques)
 - **2026-03-07**: Aggregator: articles sans contenu complet (`hasFullContent: false`) ne sont plus filtrés
   - Correction du filtre strict qui supprimait les articles dont l'extraction de contenu échouait
   - Les articles restent maintenant visibles avec leur résumé RSS comme fallback

@@ -1,6 +1,6 @@
 # BACKLOG
 
-Last updated: 2026-03-07
+Last updated: 2026-03-07 (session 2)
 
 ## Decisions techniques (NE PAS MODIFIER)
 
@@ -26,6 +26,10 @@ Last updated: 2026-03-07
   - Remplacer les endpoints instables si nécessaire
 
 ## Termine
+
+- [x] Config: suppression des 4 feeds dupliqués dans `opensource` (2026-03-07)
+  - LibHunt Selfhosted, Developpez.com, LinuxFr, Programmez en double
+  - Feeds totaux: 155 → 151 (141 URLs uniques)
 
 - [x] Aggregator: fix filtre trop strict `hasFullContent` (2026-03-07)
   - Articles sans contenu complet ne sont plus supprimes
