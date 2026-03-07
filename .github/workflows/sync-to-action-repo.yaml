@@ -142,8 +142,9 @@ jobs:
           EOF
           fi
           
-          VERSION="${{ steps.version.outputs.new }}"
-          ENTRY="## [$VERSION] - $DATE\n### Changed\n- Automated sync from AI-Pulse repository\n- Updated workflow files and configurations\n"
+          ENTRY="## [$NEW_VERSION] - $DATE\n### Changed\n- Automated sync from AI-Pulse repository\n- Updated workflow files and configurations\n"
+        env:
+          NEW_VERSION: ${{ steps.version.outputs.new }}
           
           sed -i "/## \[Unreleased\]/a\\
           \\
@@ -160,15 +161,16 @@ jobs:
         working-directory: action-repo
         env:
           GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
+          NEW_VERSION: ${{ steps.version.outputs.new }}
         run: |
-          gh release create ${{ steps.version.outputs.new }} \
-            --title "Release ${{ steps.version.outputs.new }}" \
+          gh release create "$NEW_VERSION" \
+            --title "Release $NEW_VERSION" \
             --notes "Automated sync from AI-Pulse repository
-          
+
           **Changes:**
           - Updated workflow and action files
           - Synced dependencies
-          
+
           **Synced files:**
           - \`.github/workflows/dependabot-secure-flow.yaml\`
           - \`.github/workflows/release-notification.yaml\`
@@ -177,6 +179,9 @@ jobs:
             --latest
 
       - name: Create summary
+        env:
+          HAS_CHANGES: ${{ steps.commit.outputs.has_changes }}
+          NEW_VERSION: ${{ steps.version.outputs.new }}
         run: |
           echo "✅ Files synchronized to EthanThePhoenix38/dependabot-secure-flow" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -185,8 +190,8 @@ jobs:
           echo "- \`.github/workflows/release-notification.yaml\`" >> $GITHUB_STEP_SUMMARY
           echo "- \`action.yml\`" >> $GITHUB_STEP_SUMMARY
           echo "- \`.github/dependabot.yml\`" >> $GITHUB_STEP_SUMMARY
-          
-          if [ "${{ steps.commit.outputs.has_changes }}" == "true" ]; then
+
+          if [ "$HAS_CHANGES" == "true" ]; then
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "🎉 **Release created:** ${{ steps.version.outputs.new }}" >> $GITHUB_STEP_SUMMARY
+            printf "🎉 **Release created:** %s\n" "$NEW_VERSION" >> $GITHUB_STEP_SUMMARY
           fi
