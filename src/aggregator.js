@@ -2174,7 +2174,7 @@ ${items}
  * - etc.
  */
 function writeRSSFeeds(categorizedArticles) {
-  const feedDir = path.join(__dirname, '..');
+  const feedDir = path.join(__dirname, '..', 'feeds');
 
   // Flux global avec tous les articles
   const allArticles = Object.values(categorizedArticles).flat().sort((a, b) => b.pubDate - a.pubDate);
