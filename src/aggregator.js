@@ -1898,11 +1898,10 @@ async function aggregateCategory(categoryName, feeds) {
     return articleDate >= cutoffDate;
   });
 
-  // Filtrer les articles sans contenu complet (on ne garde que ceux avec du vrai contenu, pas juste un résumé)
-  const beforeContentFilter = articles.length;
-  articles = articles.filter((article) => article.hasFullContent === true);
-  if (beforeContentFilter > articles.length) {
-    console.error(`  [Content filter] Excluded ${beforeContentFilter - articles.length} articles without full content (summary-only)`);
+  // Compter les articles sans contenu complet (ils restent visibles avec leur résumé)
+  const withoutFullContent = articles.filter((article) => article.hasFullContent !== true).length;
+  if (withoutFullContent > 0) {
+    console.error(`  [Content info] ${withoutFullContent} articles using summary fallback (full content extraction failed)`);
   }
 
   if (categoryName === 'openclaw') {
@@ -2175,7 +2174,7 @@ ${items}
  * - etc.
  */
 function writeRSSFeeds(categorizedArticles) {
-  const feedDir = path.join(__dirname, '..');
+  const feedDir = path.join(__dirname, '..', 'feeds');
 
   // Flux global avec tous les articles
   const allArticles = Object.values(categorizedArticles).flat().sort((a, b) => b.pubDate - a.pubDate);

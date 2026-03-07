@@ -26,7 +26,7 @@ jobs:
         run: |
           set -e
           README_COUNT=$(grep -Eo "\(data/articles/[^)]*\)" README.md | wc -l | tr -d ' ')
-          FEED_COUNT=$(grep -Eo "<item>" feed.xml | wc -l | tr -d ' ')
+          FEED_COUNT=$(grep -Eo "<item>" feeds/feed.xml | wc -l | tr -d ' ')
           echo "readme_count=$README_COUNT" >> $GITHUB_OUTPUT
           echo "feed_count=$FEED_COUNT" >> $GITHUB_OUTPUT
           if [ "${README_COUNT}" -gt 0 ] && [ "${FEED_COUNT}" -gt 0 ]; then

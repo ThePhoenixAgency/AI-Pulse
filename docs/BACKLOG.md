@@ -1,6 +1,19 @@
 # BACKLOG
 
-Last updated: 2026-02-16
+Last updated: 2026-03-07 (session 2)
+
+## Decisions techniques (NE PAS MODIFIER)
+
+### Timeout extraction article : 3 secondes
+- **Raison** : eviter le chevauchement des workflows GitHub Actions (runs toutes les 3h)
+- **Consequence** : certains articles n'ont pas de contenu complet extrait
+- **Mitigation** : les articles utilisent leur resume RSS comme fallback (voir fix 2026-03-07)
+- **NE PAS AUGMENTER** : un timeout plus long causerait des runs qui se chevauchent
+
+### Filtre hasFullContent : DESACTIVE (2026-03-07)
+- **Ancienne logique** : articles avec `hasFullContent !== true` etaient supprimes
+- **Nouvelle logique** : tous les articles sont conserves, avec resume RSS comme fallback
+- **Test TDD** : `tests/aggregator.e2e.test.js` - "articles sans hasFullContent ne sont pas filtres"
 
 ## En cours
 
@@ -13,6 +26,15 @@ Last updated: 2026-02-16
   - Remplacer les endpoints instables si nécessaire
 
 ## Termine
+
+- [x] Config: suppression des 4 feeds dupliqués dans `opensource` (2026-03-07)
+  - LibHunt Selfhosted, Developpez.com, LinuxFr, Programmez en double
+  - Feeds totaux: 155 → 151 (141 URLs uniques)
+
+- [x] Aggregator: fix filtre trop strict `hasFullContent` (2026-03-07)
+  - Articles sans contenu complet ne sont plus supprimes
+  - Resume RSS utilise comme fallback
+  - Test TDD ajoute pour prevenir regression
 
 - [x] Reader/Articles: suppression du panneau bloquant injecté en lecture
   - `reader.html`: overlay de chargement/erreur rendu non bloquant (plus d'affichage panneau)
