@@ -83,7 +83,7 @@ permissions:
 # l'ancien est automatiquement annulé pour éviter les conflits.
 concurrency:
  group: ${{ github.workflow }}-${{ github.ref }}
- cancel-in-progress: true
+ cancel-in-progress: false
 # =============================================================================
 # JOBS (Tâches à exécuter)
 # =============================================================================
