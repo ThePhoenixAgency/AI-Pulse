@@ -124,31 +124,34 @@ jobs:
       - name: Update CHANGELOG
         if: steps.commit.outputs.has_changes == 'true'
         working-directory: action-repo
+        env:
+          NEW_VERSION: ${{ steps.version.outputs.new }}
         run: |
           DATE=$(date -u +"%Y-%m-%d")
-          
+
           if [ ! -f CHANGELOG.md ]; then
             cat > CHANGELOG.md << 'EOF'
           # Changelog
-          
+
           All notable changes to this project will be documented in this file.
-          
+
           The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
           and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-          
+
           ## [Unreleased]
-          
+
           ### Added
           EOF
           fi
-          
-          VERSION="${{ steps.version.outputs.new }}"
+
+          # Use environment variable instead of direct interpolation
+          VERSION="$NEW_VERSION"
           ENTRY="## [$VERSION] - $DATE\n### Changed\n- Automated sync from AI-Pulse repository\n- Updated workflow files and configurations\n"
-          
+
           sed -i "/## \[Unreleased\]/a\\
           \\
           $ENTRY" CHANGELOG.md
-          
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add CHANGELOG.md
@@ -160,15 +163,16 @@ jobs:
         working-directory: action-repo
         env:
           GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
+          NEW_VERSION: ${{ steps.version.outputs.new }}
         run: |
-          gh release create ${{ steps.version.outputs.new }} \
-            --title "Release ${{ steps.version.outputs.new }}" \
+          gh release create "$NEW_VERSION" \
+            --title "Release $NEW_VERSION" \
             --notes "Automated sync from AI-Pulse repository
-          
+
           **Changes:**
           - Updated workflow and action files
           - Synced dependencies
-          
+
           **Synced files:**
           - \`.github/workflows/dependabot-secure-flow.yaml\`
           - \`.github/workflows/release-notification.yaml\`
@@ -177,6 +181,9 @@ jobs:
             --latest
 
       - name: Create summary
+        env:
+          HAS_CHANGES: ${{ steps.commit.outputs.has_changes }}
+          NEW_VERSION: ${{ steps.version.outputs.new }}
         run: |
           echo "✅ Files synchronized to EthanThePhoenix38/dependabot-secure-flow" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -185,8 +192,8 @@ jobs:
           echo "- \`.github/workflows/release-notification.yaml\`" >> $GITHUB_STEP_SUMMARY
           echo "- \`action.yml\`" >> $GITHUB_STEP_SUMMARY
           echo "- \`.github/dependabot.yml\`" >> $GITHUB_STEP_SUMMARY
-          
-          if [ "${{ steps.commit.outputs.has_changes }}" == "true" ]; then
+
+          if [ "$HAS_CHANGES" == "true" ]; then
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "🎉 **Release created:** ${{ steps.version.outputs.new }}" >> $GITHUB_STEP_SUMMARY
+            printf "🎉 **Release created:** %s\n" "$NEW_VERSION" >> $GITHUB_STEP_SUMMARY
           fi
