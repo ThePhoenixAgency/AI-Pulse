@@ -1433,7 +1433,7 @@ function deduplicateArticles(articles) {
  * 4. Sauvegarder une version locale en HTML
  * 5. Retourner un objet avec toutes les informations
  */
-async function processArticle(article, sourceName, tags, category, feedLang) {
+async function processArticle(article, sourceName, tags, category, feedLang, feedOptions = {}) {
   // Nettoyer le résumé (supprimer le HTML)
   const rawSummary = cleanupNoiseText(sanitizeText(article.contentSnippet) || '');
   let computedSummary = rawSummary;
@@ -1459,56 +1459,63 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   }
   const lang = detectedLang || feedLang || 'en';
 
-  // Essayer d'utiliser Archive.ph ou autres services de bypass
-  const tryPaywallBypass = async (url) => {
-    const bypassServices = [
-      {
-        name: 'archive.ph',
-        transform: (u) => `https://archive.ph/?url=${encodeURIComponent(u)}`
-      },
-      {
-        name: 'scribe.rip',
-        transform: (u) => {
-          try {
-            const parsedUrl = new URL(u);
-            // Safely check if this is a medium.com URL by parsing the hostname
-            if (parsedUrl.hostname === 'medium.com' || parsedUrl.hostname.endsWith('.medium.com')) {
-              return u.replace(parsedUrl.hostname, 'scribe.rip');
-            }
-          } catch (_) {}
-          return null;
-        }
-      },
-      {
-        name: 'freedium',
-        transform: (u) => {
-          try {
-            const parsedUrl = new URL(u);
-            // Safely check if this is a medium.com URL
-            if (parsedUrl.hostname === 'medium.com' || parsedUrl.hostname.endsWith('.medium.com')) {
-              return u.replace(parsedUrl.hostname, 'freedium.app');
-            }
-          } catch (_) {}
-          return null;
-        }
-      },
-      {
-        name: 'web.archive.org',
-        transform: (u) => `https://web.archive.org/web/*/${u}`
-      }
-    ];
-
-    for (const service of bypassServices) {
-      const bypassUrl = service.transform(url);
-      if (!bypassUrl) continue;
+  // Services de bypass paywall disponibles
+  const bypassServices = {
+    'archive.ph': (u) => `https://archive.ph/?url=${encodeURIComponent(u)}`,
+    'scribe.rip': (u) => {
       try {
-        const response = await axios.get(bypassUrl, {
-          timeout: 3000,
-          headers: { 'User-Agent': 'AI-Pulse/3.0' }
-        });
-        return { success: true, html: response.data, service: service.name };
-      } catch (e) {
-        // Continuer vers le service suivant
+        const parsedUrl = new URL(u);
+        if (parsedUrl.hostname === 'medium.com' || parsedUrl.hostname.endsWith('.medium.com')) {
+          return u.replace(parsedUrl.hostname, 'scribe.rip');
+        }
+      } catch (_) {}
+      return null;
+    },
+    'freedium': (u) => {
+      try {
+        const parsedUrl = new URL(u);
+        if (parsedUrl.hostname === 'medium.com' || parsedUrl.hostname.endsWith('.medium.com')) {
+          return `https://freedium.cfd/${u}`;
+        }
+      } catch (_) {}
+      return null;
+    },
+    'web.archive.org': (u) => `https://web.archive.org/web/*/${u}`,
+    '12ft.io': (u) => `https://12ft.io/${u}`
+  };
+
+  // Essayer d'utiliser un service de bypass (préféré si spécifié, sinon tous)
+  const tryPaywallBypass = async (url, preferredService = null) => {
+    // Si un service préféré est spécifié, l'utiliser directement (plus rapide)
+    if (preferredService && bypassServices[preferredService]) {
+      const bypassUrl = bypassServices[preferredService](url);
+      if (bypassUrl) {
+        try {
+          const response = await axios.get(bypassUrl, {
+            timeout: 3000,
+            headers: { 'User-Agent': 'AI-Pulse/3.0' }
+          });
+          return { success: true, html: response.data, service: preferredService };
+        } catch (e) {
+          // Service préféré a échoué
+        }
+      }
+    }
+
+    // Sinon, essayer tous les services (comportement par défaut)
+    if (!preferredService) {
+      for (const [name, transform] of Object.entries(bypassServices)) {
+        const bypassUrl = transform(url);
+        if (!bypassUrl) continue;
+        try {
+          const response = await axios.get(bypassUrl, {
+            timeout: 3000,
+            headers: { 'User-Agent': 'AI-Pulse/3.0' }
+          });
+          return { success: true, html: response.data, service: name };
+        } catch (e) {
+          // Continuer vers le service suivant
+        }
       }
     }
     return { success: false };
@@ -1521,7 +1528,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     if (article && article.content && typeof article.content === 'string' && article.content.length > 200) {
       safeContent = smartTruncate(cleanupNoiseText(article.content), SETTINGS.articleMaxLength || 8000);
     } else if (rawSummary) {
-      safeContent = smartTruncate(cleanupNoiseText(rawSummary), SETTINGS.summaryMaxLength || 2000);
+      safeContent = smartTruncate(cleanupNoiseText(rawSummary), SETTINGS.summaryMaxLength || 600);
     } else {
       safeContent = 'Aucun contenu disponible.';
     }
@@ -1602,10 +1609,14 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     fs.writeFileSync(localPath, fallbackHtml);
   };
 
+  // Flag pour tracker si on a récupéré du vrai contenu (pas juste un fallback/summary)
+  let hasFullContent = false;
+
   // Essayer de récupérer et sauvegarder le contenu complet
   try {
       if (shouldSkipRemoteExtraction(resolvedArticleUrl)) {
         writeFallbackLocalArticle();
+        hasFullContent = false;
       } else {
       // Récupérer la page web complète
       const response = await axios.get(resolvedArticleUrl, {
@@ -1637,8 +1648,8 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       if (articleContent && articleContent.textContent) {
         // Handle paywall bypass first if needed
         if (isPaywallText(articleContent.textContent)) {
-          // Essayer les services de bypass avant de renoncer
-          const bypassResult = await tryPaywallBypass(resolvedArticleUrl);
+          // Essayer le service de bypass (préféré si configuré)
+          const bypassResult = await tryPaywallBypass(resolvedArticleUrl, feedOptions.paywallBypass);
           if (bypassResult.success) {
             const bypassDom = createSafeDom(bypassResult.html, resolvedArticleUrl);
             const bypassReader = new Readability(bypassDom.window.document);
@@ -1774,6 +1785,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
         // Sauvegarder le fichier HTML localement
         fs.writeFileSync(localPath, cleanHtml);
+        hasFullContent = true; // Contenu complet extrait avec succès
         }
       }
       }
@@ -1798,7 +1810,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
   // Retourner l'objet article traité
   const normalizedTags = enrichArticleTags(tags, category, article.title || '', rawSummary || '');
-  let safeSummary = smartTruncate(trimPromotionalTailText(cleanupNoiseText((computedSummary || '').trim())) || sanitizeText(article.title) || 'Summary unavailable.');
+  let safeSummary = smartTruncate(trimPromotionalTailText(cleanupNoiseText((computedSummary || '').trim())) || sanitizeText(article.title) || 'Summary unavailable.', SETTINGS.summaryMaxLength || 600);
   if (hasSevereTruncationArtifact(safeSummary)) {
     const repaired = cleanupNoiseText(safeSummary)
       .replace(/\bl['’]article[\s\S]{0,260}?\best apparu en premier sur\b[\s\S]*$/i, '')
@@ -1806,7 +1818,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       .replace(/[█▓▒]{3,}/g, ' ')
       .replace(/\s{2,}/g, ' ')
       .trim();
-    safeSummary = smartTruncate(repaired || sanitizeText(article.title) || 'Summary unavailable.');
+    safeSummary = smartTruncate(repaired || sanitizeText(article.title) || 'Summary unavailable.', SETTINGS.summaryMaxLength || 600);
   }
   return {
     title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
@@ -1819,6 +1831,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     lang: detectedLang || feedLang || 'en',
     summary: safeSummary,
     hasLocalContent: hasLocalContent,
+    hasFullContent: hasFullContent, // true si contenu complet extrait, false si juste fallback/summary
     sourceProfile
   };
 }
@@ -1861,7 +1874,7 @@ async function aggregateCategory(categoryName, feeds) {
         const feedData = await parser.parseURL(feed.url);
         const items = await Promise.all(
           feedData.items.slice(0, limit).map((item) =>
-            processArticle(item, feed.name, feed.tags, categoryName, feed.lang)
+            processArticle(item, feed.name, feed.tags, categoryName, feed.lang, { paywallBypass: feed.paywallBypass })
           )
         );
         return items;
@@ -1884,6 +1897,12 @@ async function aggregateCategory(categoryName, feeds) {
     const articleDate = new Date(article.pubDate || 0);
     return articleDate >= cutoffDate;
   });
+
+  // Compter les articles sans contenu complet (ils restent visibles avec leur résumé)
+  const withoutFullContent = articles.filter((article) => article.hasFullContent !== true).length;
+  if (withoutFullContent > 0) {
+    console.error(`  [Content info] ${withoutFullContent} articles using summary fallback (full content extraction failed)`);
+  }
 
   if (categoryName === 'openclaw') {
     const specialOnly = articles.filter((article) => matchesSpecialCategory(article, categoryName));
@@ -2021,7 +2040,7 @@ function generateREADME(categorizedArticles) {
     if (!fs.existsSync(localPath)) {
       const lang = article && article.lang === 'fr' ? 'fr' : 'en';
       const safeTitle = sanitizeText((article && article.title) || 'Untitled');
-      const safeSummary = smartTruncate(cleanupNoiseText((article && article.summary) || ''), 1200) || 'Summary unavailable.';
+      const safeSummary = smartTruncate(cleanupNoiseText((article && article.summary) || ''), SETTINGS.summaryMaxLength || 600) || 'Summary unavailable.';
       const fallbackHtml = `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
@@ -2072,8 +2091,8 @@ function generateREADME(categorizedArticles) {
     articles.slice(0, maxArticles).forEach((article, index) => {
       const langBadge = article.lang === 'fr' ? '`FR`' : '`EN`';
       const summaryText = (article.summary && String(article.summary).trim().length > 0)
-        ? article.summary
-        : smartTruncate(sanitizeText(article.title || 'Summary unavailable.'));
+        ? smartTruncate(article.summary, SETTINGS.summaryMaxLength || 600)
+        : smartTruncate(sanitizeText(article.title || 'Summary unavailable.'), SETTINGS.summaryMaxLength || 600);
       const localLink = ensureLocalArticleLink(article, category);
 
       readme += `<div class="article-item" data-lang="${article.lang}" data-category="${category}" data-source="${article.source}">\n\n`;
@@ -2155,7 +2174,7 @@ ${items}
  * - etc.
  */
 function writeRSSFeeds(categorizedArticles) {
-  const feedDir = path.join(__dirname, '..');
+  const feedDir = path.join(__dirname, '..', 'feeds');
 
   // Flux global avec tous les articles
   const allArticles = Object.values(categorizedArticles).flat().sort((a, b) => b.pubDate - a.pubDate);

@@ -1,7 +1,22 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(gh run list --workflow=update-ai-pulse.yml --limit=15)",
+      "Bash(cat /home/user/AI-Pulse/.github/workflows/*.yml)",
+      "Bash(node src/aggregator.js)",
+      "Bash(git add .claude/settings.local.json)",
+      "Bash(git commit -m \"chore: Add local permissions for workflow and aggregator commands:*)",
+      "Bash(git add reader.html)",
+      "Bash(git commit -m \"fix: Show previous button on desktop, keep footer visible, use browser cache:*)",
+      "Bash(git push -u origin claude/configurable-news-reader-G1Gdx)",
+      "Bash(npm test)",
+      "Bash(git add src/aggregator.js)",
+      "Bash(git commit -m \"feat: Add per-feed paywallBypass configuration:*)",
+      "Bash(git add .claude/settings.local.json data/posted-links.json)",
+      "Bash(git commit -m \"chore: Update local settings and posted links data:*)",
+      "Bash(git add -A)",
+      "Bash(git commit -m \"feat: Exclude articles without full content \\(summary-only\\):*)"
     ]
   }
 }

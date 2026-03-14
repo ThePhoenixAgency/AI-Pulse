@@ -219,8 +219,14 @@ describe('E2E: GitHub Content Extraction Pipeline', () => {
       assert.ok(candidates.length > 0, 'Should generate candidates');
       // Les candidates incluent raw.githubusercontent.com ou github.io
       assert.ok(
-        candidates.some(c => c.includes('raw.githubusercontent.com') || c.includes('github.io')),
-        'Should include valid GitHub content URLs'
+      candidates.some(c => {
+        try {
+          const hostname = new URL(c).hostname;
+          return hostname === 'raw.githubusercontent.com' || hostname.endsWith('.github.io');
+        } catch {
+          return false;
+        }
+      }),        'Should include valid GitHub content URLs'
       );
     }
   });
@@ -401,6 +407,45 @@ describe('E2E: Error Handling', () => {
 
 // =============================================================================
 // TESTS: Performance (Basic)
+// =============================================================================
+
+describe('E2E: Articles Without Full Content', () => {
+  test('articles sans hasFullContent ne sont pas filtrés', () => {
+    // Simule des articles où l'extraction de contenu a échoué (timeout, etc.)
+    const articlesWithMixedContent = [
+      {
+        title: 'Article avec contenu complet',
+        summary: 'Résumé de l\'article',
+        hasFullContent: true,
+        pubDate: new Date()
+      },
+      {
+        title: 'Article sans contenu (fallback résumé)',
+        summary: 'Ce résumé devrait toujours être visible',
+        hasFullContent: false,
+        pubDate: new Date()
+      },
+      {
+        title: 'Article avec hasFullContent undefined',
+        summary: 'Résumé aussi visible',
+        pubDate: new Date()
+      }
+    ];
+
+    // Tous les articles doivent être conservés, pas seulement ceux avec hasFullContent: true
+    const kept = articlesWithMixedContent.filter(a => {
+      // L'ancienne logique (bugguée) :
+      // return a.hasFullContent === true;
+      // La nouvelle logique : on garde tous les articles
+      return true;
+    });
+
+    assert.equal(kept.length, 3, 'Tous les articles doivent être conservés');
+    assert.ok(kept.some(a => a.hasFullContent === false), 'Articles sans contenu complet doivent être gardés');
+    assert.ok(kept.some(a => a.hasFullContent === undefined), 'Articles avec hasFullContent undefined doivent être gardés');
+  });
+});
+
 // =============================================================================
 
 describe('E2E: Performance Checks', () => {

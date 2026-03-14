@@ -54,8 +54,7 @@ describe('LinkedInHelper', () => {
       const historyPath = path.join(__dirname, '..', 'data', 'posted-links.json');
       if (fs.existsSync(historyPath)) {
         const history = JSON.parse(fs.readFileSync(historyPath, 'utf8'));
-        assert.ok(history.includes(url));
-      }
+      assert.ok(history.some(u => u === url));      }
     });
 
     test('ne duplique pas les URLs', () => {
